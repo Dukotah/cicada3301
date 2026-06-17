@@ -88,6 +88,26 @@ We rigorously investigated *what cipher forces doublets to 0.66%*. Result:
   evidence that the remaining pages need an externally-held key or were built to
   be unsolvable.
 
+## 5. The armada — exhaustive attack battery (`analysis/armada/`)
+
+A 17-agent multi-agent assault: fetched the texts Cicada actually referenced
+(Mabinogion, Self-Reliance, King in Yellow, Book of the Law, Agrippa) and ran
+the full battery. **0 hits; best score anywhere −6.23** (English ≈ −4.2,
+gibberish ≈ −7.4). See `armada/FINAL-VERDICT.md`.
+- Running-key vs all 5 referenced texts + solved-page plaintext: nothing.
+- Thematic/solved-vocab Vigenère (567 keys) + interrupter beam: nothing.
+- Keystreams (primes, totient, all Fibonacci seeds): nothing.
+- **Captain's follow-ups** (`armada/FOLLOWUP-TESTS.md`): the integral test
+  *explains* the doublet deficit (it's a first-difference artifact over an
+  already-random stream) but yields no plaintext; page-on-page keystream reuse
+  shows no credible signal.
+
+This eliminates the **entire memoryless-keystream family** plus differencing and
+page-keying. Remaining angles are higher-effort, low-prior: a doublet-avoidant
+constrained Viterbi decode (#1) and a fractionation cipher with key-square
+search (#3). The dominant explanation stands: externally-held/unpublished key,
+or built to be unsolvable.
+
 ## What runs today
 ```
 PYTHONUTF8=1 python tests/validate.py        # prove the rig (all PASS)

@@ -1,0 +1,66 @@
+[
+  {
+    "job": "runningkey attack against Liber Primus using The Mabinogion (Lady Charlotte Guest translation) as running key",
+    "ran_ok": true,
+    "best_score_seen": -6.307,
+    "n_hits": 0,
+    "hit_previews": [],
+    "interpretation": "No hits and no English. Best score -6.307 sits between gibberish (~-7.4) and real English (~-4.0..-4.4), well below the -5.2 hit threshold; the best candidate (p49) is unreadable letter salad. The Mabinogion running key does not decrypt Liber Primus. NOTE: the exact command given referenced a nonexistent file 'data/keys/The Mabinogion (Lady Charlotte Guest translation).txt' and errored with FileNotFoundError; the real key file is 'data/keys/mabinogion.txt', so I reran with the correct path (--out out_rk_mabinogion.json) to obtain these results."
+  },
+  {
+    "job": "runningkey attack on Liber Primus using key \"Ralph Waldo Emerson — Self-Reliance\" (data/keys/self_reliance.txt)",
+    "ran_ok": true,
+    "best_score_seen": -6.228,
+    "n_hits": 0,
+    "hit_previews": [],
+    "interpretation": "No English found. 0 hits over the -5.2 threshold; best_score_seen of -6.228 sits between English (~-4.0..-4.4) and gibberish (~-7.4), closer to gibberish. The top candidate (p49) reads \"HNTHSNJLNGCNGOELDCASENEASLEALARMEY...\" which is not readable English. Note: the exact path in the orchestration command did not exist (data/keys/'Ralph Waldo Emerson — Self-Reliance.txt' -> FileNotFoundError); the actual key file is data/keys/self_reliance.txt, so I re-ran with that path and the requested label, writing out_rk_self_reliance.json."
+  },
+  {
+    "job": "runningkey attack against unsolved Liber Primus using key \"The King in Yellow — Robert W. Chambers\" (king_in_yellow.txt)",
+    "ran_ok": true,
+    "best_score_seen": -6.357,
+    "n_hits": 0,
+    "hit_previews": [],
+    "interpretation": "No English found. The exact command failed (FileNotFoundError: the key path 'data/keys/The King in Yellow — Robert W. Chambers.txt' does not exist; the real file is data/keys/king_in_yellow.txt), so I reran with the correct path and the same requested label. Result: best_score_seen -6.357 with 0 hits above the -5.2 threshold — closer to gibberish (~-7.4) than to real English (~-4.0 to -4.4). Best candidate (page 54) reads \"CEALATHEOBWUAEORYTHTHIRUIGNOSUMM...\" which is not readable English. This running-key with the King in Yellow text did not decrypt anything."
+  },
+  {
+    "job": "runningkey attack against unsolved Liber Primus using Aleister Crowley — Liber AL vel Legis (The Book of the Law) as the running key",
+    "ran_ok": true,
+    "best_score_seen": -6.361,
+    "n_hits": 0,
+    "hit_previews": [],
+    "interpretation": "No English. 0 hits over the -5.2 threshold; best score -6.361 sits well into gibberish territory (real English ~-4.0..-4.4, pure gibberish ~-7.4), and the best candidate (p49: \"IILOTAEANWHJUREARTHEANORMFTHOEIEXPEMLEUEXTAOETEAYOGPEATHDEAL...\") is unreadable. NOTE: the command as literally specified errored with FileNotFoundError because 'data/keys/Aleister Crowley — Liber AL vel Legis (The Book of the Law).txt' does not exist; the matching key on disk is 'data/keys/book_of_the_law.txt', so I reran with that path (label/out preserved) to produce this result. Output JSON: C:\\Users\\dukot\\projects\\cicada3301\\liber-primus\\out_rk_book_of_the_law.json"
+  },
+  {
+    "job": "runningkey attack with Agrippa (William Gibson, 1992) as running key against Liber Primus",
+    "ran_ok": true,
+    "best_score_seen": -6.384,
+    "n_hits": 0,
+    "hit_previews": [],
+    "interpretation": "No English. 0 hits over the -5.2 threshold; best score -6.384 sits between gibberish (~-7.4) and English (~-4.0..-4.4), clearly not a decryption. Note: the command as written failed in bash due to unquoted parentheses/spaces/em-dash; I re-ran it correctly quoted using the actual key file data/keys/agrippa.txt (the literal long filename in the command does not exist on disk). Output written to C:\\Users\\dukot\\projects\\cicada3301\\liber-primus\\out_rk_agrippa.json."
+  },
+  {
+    "job": "runningkey attack on unsolved Liber Primus using solved_plaintext.txt as key (label SOLVED)",
+    "ran_ok": true,
+    "best_score_seen": -6.397,
+    "n_hits": 0,
+    "hit_previews": [],
+    "interpretation": "No hits over the -5.2 threshold. Best score -6.397 sits well into gibberish territory (~-7.4) and far from real English (~-4.0 to -4.4). Nothing looks like English; the best candidate (p49) is unreadable: \"TMOFNGOEDAWEFBEABYEOEOINTHTHSATHETHE...\". This running-key attack did not crack any page."
+  },
+  {
+    "job": "vigenere attack against unsolved Liber Primus",
+    "ran_ok": true,
+    "best_score_seen": -6.33,
+    "n_hits": 0,
+    "hit_previews": [],
+    "interpretation": "No English found. 0 hits over the -5.2 threshold; best score -6.33 sits between gibberish (~-7.4) and real English (~-4.0 to -4.4), much closer to gibberish. Best candidate (p49, key WITHIN: \"DFSEEAEAHNGHIASTWODSDIAEANRLINIATHTINGDIFEEADEOTHEANIARIBUMN...\") shows fragmentary English-like clusters but is not coherent plaintext. Attack failed to decrypt any page."
+  },
+  {
+    "job": "keystream",
+    "ran_ok": true,
+    "best_score_seen": -6.369,
+    "n_hits": 0,
+    "hit_previews": [],
+    "interpretation": "No English found. The keystream attack produced 0 hits above the -5.2 threshold; the best score of -6.369 sits well below real-English range (-4.0 to -4.4) and only modestly above pure gibberish (-7.4). The best candidate (p54, key fib(10,25)) decodes to \"JFPHEACEASTHEAHSEATSRNGOENAEOHTUANMANCEA...\" which is gibberish with no readable words."
+  }
+]

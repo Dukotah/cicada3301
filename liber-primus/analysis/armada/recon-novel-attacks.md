@@ -1,0 +1,43 @@
+This is a cryptanalysis question, not a coding task. No skill applies and no tools are needed — the user wants rigorous, novel attack proposals on the unsolved Liber Primus pages, grounded in the five established facts. Let me answer directly and precisely.
+
+The five constraints are doing heavy lifting here, so let me reason from what they jointly rule in/out before proposing attacks.
+
+**What the constraints force (the logical core)**
+
+The combination (a)+(c)+(d) is the key tension. Flat monographic stats with a uniform IoC means the cipher destroys single-symbol bias — but (c) the *doublet deficit* (0.66% vs 3.45% expected even at uniform IoC) is the real fingerprint. A genuinely memoryless substitution stream (running key, autokey, Vigenère, prime/totient) cannot suppress doublets below the chance floor; you only get sub-chance doublets when the construction **explicitly forbids a symbol from equaling its predecessor (or some local function of it)**. That is a *no-repeat* generative rule, not a keystream. (d) flat-random differences with a single zero-hole is the same fact viewed in difference-space: the difference `c[i]-c[i-1] mod 29` is uniform *except* it (nearly) never hits 0. So the design constraint is almost certainly: **adjacent ciphertext symbols are not allowed to be equal** (or "not allowed to differ by a forbidden delta that maps to 0"). Every attack below targets *that* mechanism rather than a key.
+
+---
+
+**Idea 1 — Doublet-avoidant homophonic / "skip-the-collision" substitution (de-bruijn-style rank cipher)**
+
+*Model.* Plaintext over 29 runes is enciphered position-by-position through a keyed permutation, but with a hard rule: if the emitted symbol would equal the previous ciphertext symbol, the encoder advances to the *next* allowed value (a deterministic bump, e.g. +1 mod 29, or next in a keyed ordering) and records that it bumped. This is a standard way to manufacture a doublet deficit while keeping marginals flat: it's a **collision-avoiding rank code**. The zero-hole in (d) is the literal signature — the encoder guarantees `c[i] != c[i-1]`, so `delta=0` is structurally impossible except where the F-rune null breaks the chain.
+
+*How to search.* This cipher is **invertible without the key if you can model the bump**. Decode hypothesis: `p[i] = f(c[i], c[i-1])` where `f` un-does the bump. Brute the bump function family: (i) constant additive bump `b in 1..28`; (ii) bump = "next symbol in keyed alphabet" — here you brute the 29-symbol alphabet *ordering* but constrained by Gematria order, so really a handful of candidate orderings (Latin, runic Futhorc order, prime-indexed). For each candidate decode, also try the inverse-rank reading where `p[i] = rank of c[i] in the set of 28 allowed symbols (all-but-previous)`. That last one is the strongest: it's only `28!`-free because the "allowed set" is fully determined by `c[i-1]`, so decoding is a *parameter-free* deterministic map up to one global alphabet permutation (29 cyclic shifts × small number of orderings ≈ a few hundred trials).
+
+*Confirming signal.* Run the resulting stream through (i) English/Latin/Old-English IoC (~0.066/0.072, not 0.034), (ii) rune-bigram log-likelihood against known *solved* LP pages' plaintext bigram model, (iii) crib hunt for known LP vocabulary ("PARABLE", "WELCOME", "CIRCUMFERENCE", "PRIMES"). A jump from flat IoC to language-IoC on *any* of the few hundred trials is decisive and unfakeable.
+
+---
+
+**Idea 2 — Difference/derivative cipher (first-difference plaintext over a no-equal-neighbor channel)**
+
+*Model.* The plaintext itself was pre-transformed into its **first differences** `d[i] = p[i] - p[i-1] mod 29` before any further step, OR the ciphertext is `c[i] = c[i-1] + g(p[i]) mod 29` with `g` a permutation that **omits 0 from its range** (a 28→29 injection that never emits the "no-change" delta). Either way, the natural-language doublets of the plaintext (the "ll", "ee", "ss" that drive the 3.45%) get mapped onto a delta alphabet where the most common plaintext event (repeat) is *forbidden or rare*, producing exactly the 0.66% residual and the zero-hole. Crucially this also explains why **Kasiski is negative** (c/b): differencing a periodic keystream destroys the period, and differencing English flattens monographic stats — so (a),(b),(c),(d) all fall out of *one* operation.
+
+*How to search.* This is cheap and fully testable. Compute the **cumulative sum** (integral) of the ciphertext: `q[i] = sum_{j<=i} c[j] mod 29`, and also the integral of `(c[i] with the F-nulls stripped)`. The integral inverts a difference cipher. Then test `q` (and `q + k` for all 29 offsets, and `±q` for sign ambiguity) for language signal. If the construction was "delta-permutation that skips 0," brute the 28-element delta permutation only over structured candidates (identity-skip-0, Atbash-skip-0, prime-indexed-skip-0) — small search. Do the F-stripping two ways (F = pure null removed before integrating; F = "reset the running sum") because the per-page interrupter (e) most plausibly **re-seeds the chain**, which is why the deficit is *per-page* and the zero-hole isn't perfectly clean.
+
+*Confirming signal.* Same battery as Idea 1: IoC, bigram LL, cribs. The tell that *specifically* validates a difference cipher: after integration the doublet rate should *rise back toward 3.45%+* (you've restored the plaintext repeats) and consecutive-difference flatness should *break* — i.e., the statistical fingerprint should invert. That predicted inversion is a strong, falsifiable pre-registration.
+
+---
+
+**Idea 3 — Constrained-permutation / "no-repeat block" transposition over a fixed-radix index stream**
+
+*Model.* Not a substitution at all in the usual sense: the page is encoded as a sequence drawn from a **structure that mathematically cannot repeat adjacents** — e.g. each rune indexes into a Lehmer code / factorial-number-system representation of a permutation, or the runes are the output of a **sequence-without-repeats generator** (a graph walk on a 29-node graph whose only missing edges are self-loops). The plaintext is recovered not by substituting symbols but by reading the *permutation/path* the stream encodes. The F-rune interrupter (e) is the **block delimiter** that says "this maximal no-repeat run is one codeword/permutation; start a new one." This is the one model that explains a *deliberate* no-repeat construction as the whole point rather than a side effect, and it predicts the doublet deficit, the zero-hole, the flat marginals, and Kasiski-negativity simultaneously.
+
+*How to search.* Segment the ciphertext on the F-rune nulls into runs. For each run, test whether it is a valid Lehmer/factoradic codeword (digits bounded by descending radix) or a valid path with no immediate backtrack. If runs decode to **permutations of small fixed length** (look for a dominant run length — e.g. consistently length ~k), map each permutation to its rank (`0..k!-1`) and read those ranks as a number stream; convert to base-29 / base-26 and test for language. Alternatively treat each no-repeat run as a **mixed-radix integer** and decode to text. The search is over: (i) the codeword family (Lehmer vs path vs combinatorial rank), (ii) radix order, (iii) the few alphabet orderings. Strongly diagnostic pre-check: **histogram the run lengths between F-runes** — a sharp peak at a fixed k (or k+1) is near-proof of a block/permutation construction; a geometric/exponential distribution argues against it and would *kill this idea fast* before any expensive decode.
+
+---
+
+**Cross-cutting rigor notes**
+- All three should be run **per page** and the F-rune treated three ways (delete-as-null / reset-chain / it-is-data) since (e) is page-local; never pool pages, or you'll smear the very signal you're hunting.
+- Pre-register the confirm threshold: a true break shows up as IoC moving decisively toward natural-language values AND independent crib hits AND bigram-LL beating random by many sigma — require at least two of three to avoid the classic Cicada false-positive on a single shifted alphabet.
+- Ideas 1 and 2 are *parameter-light* (hundreds of trials) — run them first, today. Idea 3 is gated cheaply by the run-length histogram; compute that histogram before committing to the combinatorial decode.
+- The single most leveraged single experiment: **the cumulative-sum/integral test (Idea 2)**, because one operation directly attacks the difference-space fingerprint in (d) and would reverse all four statistical anomalies at once if correct.
