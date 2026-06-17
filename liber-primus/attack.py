@@ -169,6 +169,61 @@ def attack_runningkey(keyfile, out, label=None):
 
 
 # --------------------------------------------------------------- keystreams
+_ENGFREQ = None
+
+
+def _engfreq():
+    global _ENGFREQ
+    if _ENGFREQ is None:
+        eng = np.array(english_baseline())
+        c = np.bincount(eng, minlength=N).astype(float) + 0.5
+        _ENGFREQ = c / c.sum()
+    return _ENGFREQ
+
+
+def _best_shift(column):
+    """Caesar shift for one Vigenere column via chi-square vs English monograms."""
+    ef = _engfreq()
+    m = len(column)
+    if m == 0:
+        return 0
+    col = np.array(column)
+    best_s, best_chi = 0, 1e18
+    for s in range(N):
+        dec = (col - s) % N
+        obs = np.bincount(dec, minlength=N).astype(float)
+        exp = ef * m
+        chi = float(np.sum((obs - exp) ** 2 / exp))
+        if chi < best_chi:
+            best_chi, best_s = chi, s
+    return best_s
+
+
+def attack_vigauto(out, maxlen=40):
+    """Automatic Vigenere for ALL key lengths (column-wise frequency attack).
+    Finds any periodic key, not just dictionary words. Per page; +Atbash; both signs."""
+    pages = unsolved_pages()
+    hits = []
+    for pi, idxs in enumerate(pages):
+        n = len(idxs)
+        for atb in (False, True):
+            base = [(N - 1 - c) for c in idxs] if atb else idxs
+            for sign in (-1, +1):
+                bb = [(sign * c) % N for c in base]
+                for L in range(1, min(maxlen, n // 4) + 1):
+                    key = [_best_shift(bb[col::L]) for col in range(L)]
+                    p = [(bb[i] - key[i % L]) % N for i in range(n)]
+                    s = SC.score_norm(gp.indices_to_translit(p))
+                    rec = {"page": pi, "method": f"vigauto L={L} sign{sign:+d} atb{atb}",
+                           "key": "len" + str(L), "plaintext": gp.indices_to_translit(p)[:80]}
+                    consider(s, rec)
+                    if s > THRESHOLD:
+                        rec2 = dict(rec); rec2["score"] = round(s, 3)
+                        rec2["plaintext"] = gp.indices_to_translit(p)[:200]
+                        hits.append(rec2)
+    return emit(hits, out)
+
+
 def _fib(n, a, b):
     out = []
     for _ in range(n):
@@ -236,6 +291,7 @@ def main():
     b = sub.add_parser("runningkey", parents=[parent]); b.add_argument("--key", required=True)
     b.add_argument("--label")
     sub.add_parser("keystream", parents=[parent])
+    sub.add_parser("vigauto", parents=[parent])
     args = ap.parse_args()
     if args.cmd == "selftest":
         return selftest(args.out)
@@ -245,6 +301,8 @@ def main():
         attack_runningkey(args.key, args.out, args.label)
     elif args.cmd == "keystream":
         attack_keystream(args.out)
+    elif args.cmd == "vigauto":
+        attack_vigauto(args.out)
     return 0
 
 
