@@ -68,11 +68,25 @@ Consistent with the research phase, now confirmed by our own measurements:
   passages have multiple valid plaintexts with no way to choose — the
   one-time-pad wall.
 - **The only realistic openings are insight-based**, and the **doublet deficit**
-  is exactly the kind of insight thread worth pulling: *what cipher construction
-  forces ciphertext doublets down to 0.66%?* Answering that could constrain the
-  mechanism. (Candidates to test next: autokey where key = prior plaintext/
-  ciphertext; running key from a known text — Mabinogion/Agrippa/Self-Reliance/
-  the solved pages themselves; a totient/prime stream seeded per page.)
+  was the thread to pull. We pulled it — see below.
+
+## 4. Update: the doublet deficit, chased to the end (`analysis/DOUBLET-INVESTIGATION.md`)
+
+We rigorously investigated *what cipher forces doublets to 0.66%*. Result:
+- The deficit is **real and unique to the unsolved pages** — every solved
+  enciphered page is normal (1.9–3.6%), even the flat-IoC totient page (2.38%).
+  So flat statistics alone don't cause it; the unsolved cipher does something
+  extra no known Cicada cipher does.
+- **No standard construction reproduces it** (running key 3.3%, prime/totient
+  2.9%, Vigenère 3.4%, autokey 4.2%). Autokey matches the *rate* but its
+  decryptions are pure gibberish, and the consecutive **differences are flat
+  random with a single hole at zero** (IoC·N 1.04, entropy 4.83/4.86) — so there
+  is no keystream or plaintext hidden in them.
+- **Verdict: the deficit is a hardening artifact, not a crack.** The cipher was
+  engineered to avoid repeated runes and otherwise behaves like a one-time pad.
+  This lead, fully chased, did not open the cipher — and it's strong own-measured
+  evidence that the remaining pages need an externally-held key or were built to
+  be unsolvable.
 
 ## What runs today
 ```
