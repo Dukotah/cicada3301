@@ -26,11 +26,19 @@ text. Flag only high-confidence disagreements (the vision pass has its own error
 rate). Outcome is valuable either way: clean = first independent verification;
 discrepancies = candidate transcription errors that may unblock attacks.
 
-## 2. Doublet-avoidant constrained Viterbi decode (last untried attack)
-The one cipher model that *predicts* the doublet deficit. A DP/Viterbi decoder
-that maximizes rune n-gram likelihood subject to a "no consecutive repeat" rule,
-co-searching a short key. Low prior (the differences are flat-random, suggesting
-no recoverable structure), but it is the only classical attack not yet built.
+## 2. Doublet-avoidant / fractionation attacks — TESTED, CLOSED (2026-06-17)
+The remaining "different class" of ciphers, examined against our own evidence:
+- **Fractionation (bifid)** tested directly: every period gives doublet 3.6–4.6%
+  and IoC·N 1.39–1.55 — it cannot reach the observed flat 1.00 or the deficit.
+  Ruled out.
+- **Substitution / homophonic** preserve IoC, so they cannot turn flat (1.00)
+  into English (1.78). Ruled out by IoC.
+- **Collision-skip / constrained Viterbi on a short key** ≈ plain Vigenère except
+  at the ~0.66% doublet positions, so the all-key-length auto-Vigenère already
+  covered it — nothing. A *free-length* key is ill-posed (one-time pad).
+- **New finding:** perfect IoC flatness (1.00) is only reachable by a full-length
+  keystream; fractionation/substitution top out ~1.4–1.5. This makes the
+  one-time-pad characterization stronger, not weaker.
 
 ## 3. Contribute our novel findings to the community
 The integral-test result (the doublet deficit is a first-difference artifact over
