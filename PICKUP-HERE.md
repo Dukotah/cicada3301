@@ -42,6 +42,22 @@ python analysis/vision/diff_vision.py                   # DIFF-REPORT.md
 Only conceivable revival = per-rune cropping (~13k individual high-zoom reads) —
 cost-prohibitive, documented but not executed.
 
+## ✅ AVENUE #5 — Image steganography (NEW, run + closed 2026-06-20)
+
+Asked: do the LP2 page images carry stego (like Cicada's 2012/2013 images)? Never
+examined here before. Result: **no recoverable image stego.** Highlights:
+- **Provenance proven:** our circulating images are byte-authentic — **56/56 SHA1
+  match** the archive.org `ky2khlqdf7qdznac.onion` onion7 hashes (first published
+  verification). They're 400-DPI Ghostscript/Artifex renders ⇒ not OutGuess carriers.
+- No appended-data (0 trailing bytes/56), no EXIF/COM, carve = validated-clean,
+  LSB = lossy-noise, red/black color = **relikd solver annotation** (dead).
+- OutGuess: 30/33 LP2 pages **empty**; 3 give capacity-length (58152 B) entropy-7.997
+  false-positives that share a **1417-byte prefix** — most likely OutGuess default-key
+  keystream over the pages' shared blank margins (artifact, not payload).
+- Full writeup: `liber-primus/analysis/stego/STEGO-VERDICT.md` (+ `stego_scan.py`,
+  `provenance.json`). **Not 100% closed:** the decisive control needs OutGuess 0.2 on
+  a Linux env (no WSL/Docker/compiler on this box) — see verdict §"decisive next experiment".
+
 ## Other live (long-shot) thread, if wanted
 - **CT-logs brute force** for the "AN END" deep-web hash (avenue #4 tail): hash
   early-2014 Certificate Transparency log entries against
