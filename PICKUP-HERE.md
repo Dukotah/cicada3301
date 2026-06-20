@@ -58,6 +58,21 @@ examined here before. Result: **no recoverable image stego.** Highlights:
   `provenance.json`). **Not 100% closed:** the decisive control needs OutGuess 0.2 on
   a Linux env (no WSL/Docker/compiler on this box) — see verdict §"decisive next experiment".
 
+## ✅ AVENUE #6 — Transcription cross-verification (NEW, run + closed 2026-06-20)
+
+Re-attacked the "canonical transcription unverified" question the right way (after
+AI vision failed). Recon armada mapped every machine-readable LP2 transcription:
+**the whole field has ONE root — rtkd/iddqd (2017)** (krisyotam credits it, the
+wiki copies it, cadrypt/LiberPrimusSolver/cicada-library/JBO derive from it). So
+unanimity ≠ independence. BUT a 3-way rune-stream diff (`analysis/transcription/crossdiff.py`)
+shows all distinct lineages — krisyotam (canonical), relikd (diff delimiters,
+"double-checked"), rtkd (root) — are **rune-for-rune IDENTICAL: 13136/13136, 0
+divergences**. Plus the rtkd baseline was image-audited via PRs (2017–21), I
+spot-verified p0/p20/p44 lines by eye against the authentic images (`linecrop.py`),
+and it reproduces all solved pages. **Verdict: canonical corroborated; no
+transcription error found** (full writeup `analysis/transcription/TRANSCRIPTION-VERDICT.md`).
+Limit: not a from-scratch independent re-read (none exists; vision can't deliver one).
+
 ## Other live (long-shot) thread, if wanted
 - **CT-logs brute force** for the "AN END" deep-web hash (avenue #4 tail): hash
   early-2014 Certificate Transparency log entries against
