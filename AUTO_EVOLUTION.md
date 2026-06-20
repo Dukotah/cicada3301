@@ -28,6 +28,12 @@ test refactor (subprocess → import) was verified and adopted. CI green on GitH
 - **Convenience runner (roadmap #3).** Added `tasks.py` with
   `validate / test / test-full / analyze / cross / dataset / fetch / all`
   (PYTHONUTF8-safe). Verified `validate`, `test`, `analyze`, `dataset`.
+- **Adopted an external CI-safe provenance test + fixed a stale artifact.**
+  `tests/test_provenance.py` (manifest-integrity guard, no network needed —
+  partially covers roadmap #1) verified passing and committed. Regenerating the
+  dataset surfaced that the committed `dataset/liber_primus.json` had a **stale
+  `n_unsolved_runes` (13041)** out of sync with its generator (12956); corrected
+  and confirmed idempotent. Full suite now 9 passed.
 
 ### 3. Discovered Debt / Opportunities
 - The in-process tests depend on `validate.main()` / `attack.selftest(out=...)` /
