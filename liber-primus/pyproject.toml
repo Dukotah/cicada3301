@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "liber-primus-rig"
+version = "0.1.0"
+description = "Validated Cicada 3301 Liber Primus cryptanalysis toolkit (gematria, ciphers, stats, scoring) + provenance-verified dataset"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Dukotah" }]
+keywords = ["cicada3301", "liber-primus", "cryptanalysis", "runes", "gematria"]
+
+# Pure-stdlib core (gematria/ciphers/stats/score/solve). numpy/pillow are only
+# needed for the image tools (analysis/stego, analysis/transcription).
+dependencies = []
+
+[project.optional-dependencies]
+images = ["numpy>=1.24", "pillow>=9"]
+
+[project.urls]
+Homepage = "https://github.com/Dukotah/cicada3301"
+Dossier = "https://github.com/Dukotah/cicada3301/blob/master/liber-primus/SOLVERS-DOSSIER.md"
+
+[project.scripts]
+lp-try = "lp_try:main_cli"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+py-modules = ["lp_try"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

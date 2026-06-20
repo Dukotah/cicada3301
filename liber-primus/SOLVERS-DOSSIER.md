@@ -92,11 +92,25 @@ They are not "hard"; absent the key they are unsolvable by ciphertext-only analy
    (shared 1417-byte prefix) are a default-key/blank-margin artifact, not a
    passphrase-locked payload. See `analysis/stego/STEGO-VERDICT.md`.
 
-## 7. Tools in this repo
-`attack.py` (vigenere/runningkey/keystream, self-validating) · `tests/validate.py`
-· `analysis/run_stats.py` · `analysis/crypto_rigor.py` · `analysis/vision/` ·
-`analysis/stego/stego_scan.py` · `analysis/transcription/crossdiff.py` +
-`linecrop.py`. Gematria/ciphers/scoring in `src/lp/`.
+## 6b. The keystream is one continuous stream over the whole book
+The no-repeat suppression holds across **every** boundary — word, clause, line,
+and even page joins (page-boundary doublet rate = 0.0000). So the keystream does
+**not** reset per page/paragraph; it spans the entire concatenated book. There is
+no boundary where it restarts, so per-page/in-depth-at-boundary attacks don't
+apply. Also: the ᚠ-interrupter carries no hidden ASCII/sequence, and **no page is
+a non-flat outlier**. Details + the F-count sequence (for OEIS-checking):
+`analysis/STRUCTURE-FINDINGS.md` (reproduce: `analysis/structure_analysis.py`).
+
+## 7. Tools & data in this repo (build on these)
+- **`dataset/liber_primus.json`** — one machine-readable corpus: gematria, per-page
+  runes + transliteration + indices, **verified image hashes**, solved-page keys,
+  ruled-out registry, stats. (`dataset/build_dataset.py`)
+- **`lp_try.py`** (`pip install -e .` → `lp-try`) — test any key/method against all
+  pages with quadgram scoring + a built-in sanity gate. `python lp_try.py --selftest`.
+- `attack.py` (vigenere/runningkey/keystream, self-validating) · `tests/validate.py`
+  · `analysis/run_stats.py` · `analysis/crypto_rigor.py` · `analysis/structure_analysis.py`
+  · `analysis/vision/` · `analysis/stego/stego_scan.py` ·
+  `analysis/transcription/crossdiff.py` + `linecrop.py`. Core lib in `src/lp/`.
 
 *Shared in the spirit of the puzzle: verify, don't trust. PGP-authenticate any
 claimed key against Cicada's key 7A35090F.*
