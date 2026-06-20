@@ -4,7 +4,14 @@ Wraps the rig's self-validations as real assertions so `pytest` is the single
 regression gate (CI runs this). Fast: the heavy work is the rig reproducing
 known solved pages, which is the whole point of the gate.
 
-Run:  pytest               (from liber-primus/)
+Run:  pytest                      (full gate, from liber-primus/)
+      pytest -m "not network"     (fast subset, no archive.org calls)
+
+STABLE TEST ENTRYPOINTS (do not rename without updating this gate):
+  - tests/validate.py  : main() -> int      (0 == all solved pages reproduced)
+  - attack.py          : selftest(out) -> int (0 == re-found DIVINITY)
+  - lp_try.py          : selftest() -> bool    (True == scorer separates English)
+These are imported and called in-process by the tests below.
 """
 import io
 import os
@@ -122,6 +129,43 @@ def test_image_provenance_live():
         raise
     except Exception as e:
         pytest.skip(f"archive.org unreachable: {e}")
+
+
+# ---- headline-claim guards (network) ------------------------------------
+@pytest.mark.network
+def test_transcription_lineages_identical():
+    """Guards the transcription headline: every community lineage is rune-identical
+    (krisyotam == relikd == rtkd root). Fetches sources; skips offline."""
+    sys.path.insert(0, os.path.join(LP, "analysis", "transcription"))
+    sys.path.insert(0, os.path.join(LP, "data"))
+    try:
+        from fetch_sources import ensure_sources
+        ensure_sources(verbose=False)
+        import crossdiff as cd
+        K = cd.load_krisyotam()
+        R = cd.load_relikd()
+        T, _ = cd.load_rtkd_lp2(K)
+    except Exception as e:
+        pytest.skip(f"sources unreachable: {e}")
+    assert len(K) == len(R) == len(T) > 12000
+    assert K == R == T, "transcription lineages diverged!"
+
+
+@pytest.mark.network
+def test_onion7_image_has_no_trailing_bytes():
+    """Guards the stego headline: authentic onion7 JPEGs have no appended data
+    after the EOI marker. Fetches one image; skips offline."""
+    import urllib.request
+    url = "https://archive.org/download/ky2khlqdf7qdznac.onion/0.jpg"
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "cicada3301-rig"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            data = r.read()
+    except Exception as e:
+        pytest.skip(f"archive.org unreachable: {e}")
+    eoi = data.rfind(b"\xff\xd9")
+    assert eoi != -1 and eoi == len(data) - 2, \
+        f"trailing bytes after EOI: {len(data) - (eoi + 2)}"
 
 
 if __name__ == "__main__":

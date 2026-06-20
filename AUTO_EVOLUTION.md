@@ -3,6 +3,68 @@
 Long-term memory for the recursive audit→execute→verify→re-plan loop on the
 `Dukotah/cicada3301` repository. Newest epoch at the top.
 
+**Loop is DUAL-TRACK** (owner directive): every epoch advances BOTH a *hardening*
+task (engineering/robustness) AND a *seek* task (a novel attack angle toward the
+solve). Audit phase must FIRST `git fetch` + diff against `origin/master` — a
+concurrent overseer may also drive this loop; never race it (act only if synced).
+
+---
+
+## Epoch 5 — 2026-06-20  (first DUAL-TRACK epoch)
+
+### 1. Current Status
+Health **excellent**. The loop is now explicitly dual-track: hardening AND
+answer-seeking each epoch (owner directive). Test gate is 11 tests (fast subset
+~2.5s, full ~7s). Audit re-confirmed `origin/master == local` (no overseer race).
+
+### 2. Completed in This Epoch
+**Audit:** `git fetch` + diff confirmed local == origin (0 ahead/behind); all
+recent commits are this loop's; safe to proceed (a recalled note warned a
+concurrent overseer might drive this loop — verified it currently is not).
+
+**Hardening track:**
+- Two **network-marked headline guards** (`test_rig.py`): transcription lineages
+  are rune-identical (krisyotam == relikd == rtkd), and an authentic onion7 image
+  has 0 trailing bytes after EOI. Protect the two biggest published claims.
+- **`tasks.py` de-duplicated** via composition (`COMPOSITE`); added `seek` and
+  `evo` (dual-track) tasks. README now cross-references the runner.
+- **Documented the stable test-entrypoint API** (`validate.main`,
+  `attack.selftest`, `lp_try.selftest`) so refactors don't silently break the gate.
+- Deferred GitHub-Release publish of the dataset (outward-facing → owner sign-off).
+
+**Seek track:**
+- New probe `analysis/seek_primes.py`: **history-dependent prime-value transforms**
+  — motivated by the solved-page hint "THE PRIMES ARE SACRED", the 2016 "their
+  numbers are the direction", AND the history-dependent fingerprint (prior work
+  only tested *memoryless* prime keystreams, excluded by the doublet deficit).
+  Result: all decodes flat (best 1.0244, the difference-cipher control); **no
+  break** → a new ruled-out class, consistent with OTP-class.
+
+**Verify:** full gate 11/11 (fast subset 8 passed + 3 network); `tasks.py evo`
+green; re-confirmed 0 behind origin. 0 regressions.
+
+### 3. Discovered Debt / Opportunities
+- Seek probes will mostly be negative (OTP-class); their value is the ruled-out
+  record — should be folded into `SOLVERS-DOSSIER.md` + the dataset registry
+  periodically, else they fragment across `analysis/`.
+- A concurrent editor/overseer touches this repo; coordinate (audit-phase fetch
+  is the guard).
+- GitHub-Release publish still pending owner sign-off.
+
+### 4. The Next Epoch Roadmap (DUAL-TRACK — do one HARDEN + one SEEK)
+**HARDEN:**
+- H1. Fold all seek-probe results into the `SOLVERS-DOSSIER.md` ruled-out registry
+  + `dataset/liber_primus.json` (single source of truth).
+- H2. Add a `pre-commit` (ruff) config for the growing analysis layer.
+- H3. *(owner)* publish `liber_primus.json` as a versioned GitHub Release asset.
+
+**SEEK:**
+- S1. Thorough **in-depth / superimposition** scan: all 55 pages × all offsets,
+  difference-IoC scored, to detect any shared-keystream page pair.
+- S2. **Positional keystream-structure** probe: fixed-position rune statistics
+  across pages (does the keystream repeat at a column/positional period?).
+- S3. Extend `seek_primes` with **φ(prime) history-dependent** variants.
+
 ---
 
 ## Epoch 4 — 2026-06-20

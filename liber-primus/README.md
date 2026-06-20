@@ -40,8 +40,13 @@ python analysis/structure_analysis.py      # interrupter / boundary / per-page p
 python analysis/transcription/crossdiff.py # all transcription lineages are rune-identical
 
 # regression gate
-pytest tests/test_rig.py -q
+pytest -m "not network"          # fast subset; `pytest` for the full gate
 ```
+
+**Shortcut — `tasks.py` runner:** `python tasks.py <task>` wraps the common jobs:
+`validate`, `test` (fast) / `test-full`, `analyze` (hardening probes),
+`seek` (answer-seeking probes), `cross`, `dataset`, `fetch`, `all`, and
+`evo` (dual-track: harden **and** seek in one go).
 
 ## The dataset
 [`dataset/liber_primus.json`](dataset/liber_primus.json) — one machine-readable
