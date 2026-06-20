@@ -33,13 +33,48 @@ def load_pages():
     return pages
 
 
+QGRAM = os.path.normpath(os.path.join(HERE, "..", "data", "english_quadgrams.txt"))
+
+
+def _english_from_quadgrams(n=6000):
+    """Deterministic English-like letter stream built from the committed quadgram
+    model (a fixed-seed quadgram Markov walk). Used as a baseline when the large
+    gitignored kjv.txt is absent, so the rig works on a fresh clone. Reproduces
+    realistic monogram *and* sequence stats (bigrams/doublets), which the
+    order-sensitive callers (e.g. doublet_probe) require."""
+    import random
+    nxt = {}  # 3-letter prefix -> ([next chars], [weights])
+    with open(QGRAM, encoding="ascii") as f:
+        for line in f:
+            q, c = line.split()
+            chs, wts = nxt.setdefault(q[:3], ([], []))
+            chs.append(q[3]); wts.append(int(c))
+    rng = random.Random(3301)
+    cur = "THE"
+    out = list(cur)
+    while len(out) < n:
+        opts = nxt.get(cur)
+        if not opts:
+            cur = "THE"; continue
+        ch = rng.choices(opts[0], weights=opts[1], k=1)[0]
+        out.append(ch)
+        cur = (cur + ch)[-3:]
+    return "".join(out)
+
+
 def english_baseline():
     """Map a chunk of archaic English onto Gematria Primus indices, the way the
-    book itself would encode plaintext (greedy multi-rune matching)."""
-    kjv = os.path.normpath(os.path.join(HERE, "..", "data", "kjv.txt"))
+    book itself would encode plaintext (greedy multi-rune matching).
+
+    Prefers the richest source (kjv.txt) when present; otherwise falls back to a
+    deterministic quadgram-derived sample so `attack.py`, `run_stats.py` and
+    `doublet_probe.py` all run on a fresh clone (kjv.txt is gitignored)."""
     import re
-    t = re.sub(r"[^A-Za-z]", "", open(kjv, encoding="utf-8", errors="ignore").read())
-    return gp.keyword_to_indices(t[5000:5000 + 6000])
+    kjv = os.path.normpath(os.path.join(HERE, "..", "data", "kjv.txt"))
+    if os.path.exists(kjv):
+        t = re.sub(r"[^A-Za-z]", "", open(kjv, encoding="utf-8", errors="ignore").read())
+        return gp.keyword_to_indices(t[5000:5000 + 6000])
+    return gp.keyword_to_indices(_english_from_quadgrams(6000))
 
 
 def main():

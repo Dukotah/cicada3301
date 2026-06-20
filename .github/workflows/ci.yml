@@ -1,0 +1,47 @@
+name: liber-primus CI
+
+# Regression gate for the cryptanalysis rig. Runs on a fresh checkout (no
+# gitignored corpora present), which is exactly why english_baseline() must
+# fall back to the committed quadgram model — see analysis/run_stats.py.
+
+on:
+  push:
+    paths:
+      - "liber-primus/**"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    paths:
+      - "liber-primus/**"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: liber-primus
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install core deps (numpy for attack.py)
+        run: pip install numpy
+
+      - name: Rig validation — reproduces every solved page
+        run: python tests/validate.py
+
+      - name: attack.py self-test — re-finds DIVINITY on WELCOME
+        run: python attack.py selftest
+
+      - name: lp-try scorer self-test — separates plaintext from ciphertext
+        run: python lp_try.py --selftest
+
+      # Only fresh-clone-safe scripts (committed data only). crossdiff.py and
+      # structure_analysis.py need the gitignored data/sources/ and are excluded.
+      - name: Smoke-test committed-data analysis scripts
+        run: |
+          python analysis/run_stats.py
+          python analysis/crypto_rigor.py
