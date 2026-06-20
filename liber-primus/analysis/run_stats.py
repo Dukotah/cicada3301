@@ -13,6 +13,11 @@ Run: PYTHONUTF8=1 python analysis/run_stats.py
 import os
 import sys
 
+try:  # cross-platform: the report prints '→' etc.; don't crash on Windows cp1252
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 from lp import gematria as gp, stats, corpus  # noqa
 

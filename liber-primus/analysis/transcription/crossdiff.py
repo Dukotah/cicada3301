@@ -11,10 +11,17 @@ transcription errors to adjudicate against the authentic page images (linecrop.p
 import os, sys, glob
 from difflib import SequenceMatcher
 
+try:  # cross-platform stdout (Windows cp1252 safety)
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 HERE = os.path.dirname(__file__)
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 sys.path.insert(0, os.path.join(ROOT, "src"))
+sys.path.insert(0, os.path.join(ROOT, "data"))
 from lp.gematria import RUNE_TO_IDX, IDX_TO_TRANS  # noqa: E402
+from fetch_sources import ensure_sources  # noqa: E402
 
 DATA = os.path.join(ROOT, "data")
 
@@ -75,6 +82,8 @@ def diff(a, b, na, nb):
 
 
 def main():
+    if not os.path.exists(os.path.join(DATA, "sources", "rtkd_master.txt")):
+        ensure_sources()
     K = load_krisyotam()
     R = load_relikd()
     T, off = load_rtkd_lp2(K)

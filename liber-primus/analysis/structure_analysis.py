@@ -16,11 +16,18 @@ Run: python analysis/structure_analysis.py
 import os, sys, math
 from collections import Counter
 
+try:  # cross-platform: don't crash printing runes under Windows cp1252
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 HERE = os.path.dirname(__file__)
 ROOT = os.path.abspath(os.path.join(HERE, ".."))
 sys.path.insert(0, os.path.join(ROOT, "src"))
+sys.path.insert(0, os.path.join(ROOT, "data"))
 from lp import gematria as gp            # noqa: E402
 from lp.stats import ioc_norm, doublet_rate, shannon_entropy  # noqa: E402
+from fetch_sources import ensure_sources  # noqa: E402
 
 RTKD = os.path.join(ROOT, "data", "sources", "rtkd_master.txt")
 N = 29
@@ -157,6 +164,8 @@ def probe_pages(pages):
 
 
 if __name__ == "__main__":
+    if not os.path.exists(RTKD):
+        ensure_sources()
     pages = lp2_unsolved(tokenize(open(RTKD, encoding="utf-8").read()))
     nr = sum(1 for p in pages for t, _ in p if t == "r")
     print(f"unsolved LP2 (rtkd): {len(pages)} pages, {nr} runes\n")

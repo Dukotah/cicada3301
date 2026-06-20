@@ -5,6 +5,67 @@ Long-term memory for the recursive audit→execute→verify→re-plan loop on th
 
 ---
 
+## Epoch 2 — 2026-06-20
+
+### 1. Current Status
+Architectural health **very good**. This epoch closed the reproducibility and
+regression-gating gaps from Epoch 1: the rig is now gated by a **pytest** suite,
+**every** analysis script runs on a fresh clone (gitignored sources auto-fetched),
+and a real cross-platform output bug was fixed. CI mirrors the full local battery.
+The research itself remains complete (ciphertext is one-time-pad-class); work
+continues on robustness, reproducibility, and solver onboarding.
+
+### 2. Completed in This Epoch
+- **Fresh-clone runnability for the source-dependent scripts (roadmap #1).** Added
+  `data/fetch_sources.py` (stdlib urllib, idempotent) and wired `ensure_sources()`
+  into `structure_analysis.py` and `crossdiff.py` so they auto-download the
+  gitignored rtkd/relikd transcriptions on demand. Verified by hiding
+  `data/sources/` and re-running — both fetched and produced identical results
+  (13136/13136, 0 divergences). Both are now in CI.
+- **Pytest regression gate (roadmap #3).** Added `tests/test_rig.py` — 6 tests:
+  gematria invariants (incl. the V/U shared-rune behavior), an **OTP-flatness
+  guard** on the unsolved corpus (IoC≈1.0, doublet<1.5% — protects the core
+  finding from silent drift), and integration wrappers for `validate.py`,
+  `attack.py selftest`, `lp_try --selftest`, plus the kjv-fallback baseline. CI
+  now gates on `pytest`.
+- **UTF-8 stdout guard (roadmap #2).** The loop surfaced a *real* latent bug:
+  `run_stats.py` (`→`) and `lp_try.py` (`≈`) crashed under Windows cp1252 when
+  stdout is piped. Added guarded `sys.stdout.reconfigure(encoding="utf-8")` to
+  both (and to the source-dependent scripts). Verified against the exact failure
+  condition (piped, no `PYTHONUTF8`). Confirmed the other scripts are ASCII-only.
+- **Tidy (roadmap #5a).** Removed the stray tracked `data/tmp.txt`
+  ("404: Not Found" fetch artifact).
+- **CI updated** (`.github/workflows/ci.yml`): installs pytest, runs the pytest
+  gate, fetches sources, then smoke-tests all four analysis scripts.
+
+### 3. Discovered Debt / Opportunities
+- The cp1252 crash was a **genuine latent bug**, not theoretical — it only shows
+  when stdout is piped without `PYTHONUTF8`. Lesson: exercise scripts under the
+  failing condition (piped), not just interactively.
+- `tests/test_rig.py` shells out via subprocess (~5s). Could import-and-call for
+  speed, or mark the integration tests `slow`.
+- No assertion-level coverage for the stego / vision / transcription *verdicts*
+  (they need gitignored images; a tiny fetch-a-few-images provenance test could
+  guard the 56/56 SHA1 claim).
+- Any doc citing the old kjv English-IoC (~1.785) is now slightly stale (the
+  quadgram fallback gives ~1.69); cosmetic.
+- Still no `liber-primus/README.md` quickstart; `stego_scan.py` still computes
+  JPEG spatial-LSB (noise) unconditionally.
+
+### 4. The Next Epoch Roadmap (priority order)
+1. **`liber-primus/README.md` quickstart**: `pip install -e .`, `lp-try` usage,
+   dataset schema, CI badge, link to `SOLVERS-DOSSIER.md`.
+2. **Gate `stego_scan.py` spatial-LSB behind `--lsb`** with a "lossless-only"
+   note (reduce false-signal confusion).
+3. **Provenance regression test**: fetch 2–3 onion7 images in CI and assert their
+   SHA1 == the published archive.org hashes (guards the headline provenance claim).
+4. **Speed up the test gate**: convert subprocess integration tests to
+   import-and-call, or mark `slow` and run a fast subset on PRs.
+5. **Confirm CI is green on GitHub** after first push (Actions enabled), add the
+   status badge.
+
+---
+
 ## Epoch 1 — 2026-06-20
 
 ### 1. Current Status

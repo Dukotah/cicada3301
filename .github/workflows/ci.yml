@@ -27,21 +27,18 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install core deps (numpy for attack.py)
-        run: pip install numpy
+      - name: Install deps (numpy for attack.py, pytest gate)
+        run: pip install numpy pytest
 
-      - name: Rig validation — reproduces every solved page
-        run: python tests/validate.py
+      - name: Test suite (validate + attack/lp-try selftests + OTP-flat guard)
+        run: pytest tests/test_rig.py -q
 
-      - name: attack.py self-test — re-finds DIVINITY on WELCOME
-        run: python attack.py selftest
+      - name: Fetch third-party transcription sources (gitignored)
+        run: python data/fetch_sources.py
 
-      - name: lp-try scorer self-test — separates plaintext from ciphertext
-        run: python lp_try.py --selftest
-
-      # Only fresh-clone-safe scripts (committed data only). crossdiff.py and
-      # structure_analysis.py need the gitignored data/sources/ and are excluded.
-      - name: Smoke-test committed-data analysis scripts
+      - name: Smoke-test analysis scripts (no exceptions on a fresh clone)
         run: |
           python analysis/run_stats.py
           python analysis/crypto_rigor.py
+          python analysis/structure_analysis.py
+          python analysis/transcription/crossdiff.py
