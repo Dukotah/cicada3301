@@ -23,12 +23,7 @@ images = ["numpy>=1.24", "pillow>=9"]
 Homepage = "https://github.com/Dukotah/cicada3301"
 Dossier = "https://github.com/Dukotah/cicada3301/blob/master/liber-primus/SOLVERS-DOSSIER.md"
 
-[project.scripts]
-lp-try = "lp_try:main_cli"
-
-[tool.setuptools]
-package-dir = { "" = "src" }
-py-modules = ["lp_try"]
-
+# Installs the `lp` core library (gematria/ciphers/stats/score/solve). The
+# solver CLI lives at the project root — run it directly: `python lp_try.py`.
 [tool.setuptools.packages.find]
 where = ["src"]

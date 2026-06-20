@@ -146,7 +146,7 @@ def lsb_planes(path, outdir, stem):
     return res
 
 
-def scan_one(path, outdir):
+def scan_one(path, outdir, do_lsb=False):
     d = open(path, "rb").read()
     stem = os.path.splitext(os.path.basename(path))[0]
     r = {"file": os.path.basename(path), "size": len(d),
@@ -188,18 +188,27 @@ def scan_one(path, outdir):
     r["n_strings"] = nruns
     r["flagged_strings"] = [{"tag": t, "s": s} for t, s in flagged]
     r["file_entropy"] = round(entropy(d), 3)
-    r["lsb"] = lsb_planes(path, outdir, stem)
+    # Spatial-pixel LSB is only meaningful for LOSSLESS images; for JPEG it is
+    # compression noise. Off by default to avoid false signal — enable with --lsb.
+    if do_lsb:
+        r["lsb"] = lsb_planes(path, outdir, stem)
     return r
 
 
 def main():
-    src = sys.argv[1] if len(sys.argv) > 1 else "data/relikd"
-    out = sys.argv[2] if len(sys.argv) > 2 else "analysis/stego/out"
+    import argparse
+    ap = argparse.ArgumentParser(description="Image-steganography sweep for LP page images.")
+    ap.add_argument("src", nargs="?", default="data/relikd", help="image directory")
+    ap.add_argument("out", nargs="?", default="analysis/stego/out", help="output directory")
+    ap.add_argument("--lsb", action="store_true",
+                    help="compute spatial-pixel LSB planes (meaningful only for LOSSLESS images; JPEG=noise)")
+    a = ap.parse_args()
+    src, out = a.src, a.out
     carved = os.path.join(out, "carved"); os.makedirs(carved, exist_ok=True)
     imgs = sorted([f for f in os.listdir(src)
                    if f.lower().endswith((".jpg", ".jpeg", ".png", ".bmp", ".gif"))],
                   key=lambda x: (len(x), x))
-    results = [scan_one(os.path.join(src, f), carved) for f in imgs]
+    results = [scan_one(os.path.join(src, f), carved, do_lsb=a.lsb) for f in imgs]
     json.dump(results, open(os.path.join(out, "results.json"), "w"), indent=1)
 
     # cross-page anomaly summary

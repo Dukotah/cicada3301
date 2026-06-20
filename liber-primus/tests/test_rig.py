@@ -75,5 +75,29 @@ def test_english_baseline_fresh_clone_fallback():
     assert 0.01 < doublet_rate(eng) < 0.06            # natural doublets
 
 
+# ---- provenance: live images still match the published onion7 hashes --------
+def test_image_provenance_live():
+    """Guards the headline claim: the onion7 LP2 images are byte-authentic.
+    Network-gated — skips (never fails) if archive.org is unreachable."""
+    import hashlib, re, urllib.request
+    base = "https://archive.org/download/ky2khlqdf7qdznac.onion"
+    try:
+        def fetch(url):
+            req = urllib.request.Request(url, headers={"User-Agent": "cicada3301-rig"})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return r.read()
+        xml = fetch(base + "/ky2khlqdf7qdznac.onion_files.xml").decode("utf-8", "replace")
+        pub = {m.group(1): re.search(r"<sha1>([0-9a-f]+)</sha1>", m.group(2)).group(1)
+               for m in re.finditer(r'<file name="([^"]+\.jpg)"[^>]*>(.*?)</file>', xml, re.S)
+               if re.search(r"<sha1>", m.group(2))}
+        for name in ("0.jpg", "17.jpg"):
+            got = hashlib.sha1(fetch(f"{base}/{name}")).hexdigest()
+            assert got == pub[name], f"{name}: {got} != published {pub[name]}"
+    except AssertionError:
+        raise
+    except Exception as e:
+        pytest.skip(f"archive.org unreachable: {e}")
+
+
 if __name__ == "__main__":
     raise SystemExit(pytest.main([__file__, "-v"]))

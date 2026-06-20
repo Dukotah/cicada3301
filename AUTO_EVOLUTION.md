@@ -5,6 +5,58 @@ Long-term memory for the recursive audit→execute→verify→re-plan loop on th
 
 ---
 
+## Epoch 3 — 2026-06-20
+
+### 1. Current Status
+Health **excellent**. CI is confirmed **green on GitHub** (Epochs 1–2, ~19s runs).
+This epoch added solver onboarding (README quickstart + CI badge), de-noised the
+stego tool, added a live provenance regression test, and **fixed a real packaging
+bug** that made the advertised install/CLI broken. The rig is gated (pytest 7/7),
+fully fresh-clone runnable, and documented end-to-end.
+
+### 2. Completed in This Epoch
+- **README quickstart + CI badge (roadmap #1, #5).** Rewrote `liber-primus/README.md`
+  from a stub into a real quickstart: install, `lp_try.py` usage, the analysis
+  commands, the dataset schema, a CI status badge, and a link to the dossier.
+- **Gated stego spatial-LSB behind `--lsb` (roadmap #2).** `stego_scan.py` no longer
+  computes JPEG spatial-LSB by default (it's compression noise for lossy images);
+  `--lsb` opts in, with a "lossless-only" note. Verified: `lsb` key absent by
+  default, present with the flag.
+- **Live provenance regression test (roadmap #3).** `test_image_provenance_live`
+  fetches the onion7 `files.xml` + two images and asserts SHA1 == the published
+  archive.org hashes — guarding the headline byte-authenticity claim. Network-gated
+  (skips, never fails, if archive.org is unreachable). Passed live (7/7).
+- **Fixed a real packaging bug (discovered this epoch).** `pip install -e .` plus
+  the `lp-try` console script failed with `ModuleNotFoundError: No module named
+  'lp_try'` — a mixed root/src layout that editable installs don't expose. Removed
+  the console-script entry; the install now cleanly provides the `lp` **library**,
+  and the CLI runs directly as `python lp_try.py` (documented). Verified both.
+- **Confirmed CI green on GitHub** via `gh run list` (roadmap #5).
+
+### 3. Discovered Debt / Opportunities
+- The `lp-try`/`pip install -e .` breakage was a genuine bug shipped in Epoch 2 and
+  advertised by this epoch's README before verification caught it. Lesson: **run
+  every install/CLI command you document**, in a clean-ish path, before claiming it.
+- The pytest gate is now ~15s (the live provenance test adds a ~1.3 MB download);
+  no fast/slow split yet (carry-over roadmap #4).
+- The stego REPORT still prints "lossless (LSB-meaningful): 0" when LSB is skipped —
+  mildly misleading; should say "skipped (pass --lsb)".
+- No single convenience runner (commands are sprawling across README).
+
+### 4. The Next Epoch Roadmap (priority order)
+1. **Split the test gate by speed**: mark the subprocess + network tests `slow`
+   (`pytest -m "not slow"` fast locally; full suite in CI). Carry-over.
+2. **Clarify the stego REPORT when LSB is skipped** ("LSB: skipped — pass --lsb").
+3. **Add a convenience runner** (`nox`/`make`/`tasks.py`: `validate`, `test`,
+   `analyze`, `dataset`, `fetch`) to collapse the command sprawl.
+4. **Extend regression guards** to the stego + transcription headline claims: a
+   small test that fetches 2–3 images and asserts 0 trailing-bytes and
+   rune-identical lineages (depends on `fetch_sources`).
+5. **Publish the dataset** as a GitHub Release artifact (versioned, citable) so
+   solvers can pull `liber_primus.json` without cloning.
+
+---
+
 ## Epoch 2 — 2026-06-20
 
 ### 1. Current Status
