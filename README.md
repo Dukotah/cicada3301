@@ -2,6 +2,11 @@
 
 A research repository documenting the **Cicada 3301** internet mystery: its puzzles (2012, 2013, 2014), the cryptographic and steganographic techniques used, every credible theory about *who* was behind it, and the current state of the still-unsolved **Liber Primus**.
 
+> **📄 For solvers:** the consolidated, reproducible findings on the *unsolved*
+> pages — verified image provenance, the full map of ruled-out attacks, what's
+> verified correct, and the genuinely open threads — are in
+> **[`liber-primus/SOLVERS-DOSSIER.md`](liber-primus/SOLVERS-DOSSIER.md)**.
+>
 > **Status note (honest framing):**
 > - The **identity** of Cicada 3301's creators is *unknown and unconfirmed*. This repo catalogs and weighs theories; it does not claim to name them.
 > - The **2012** and **2013** puzzles are *fully solved* and documented here.

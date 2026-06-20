@@ -3,6 +3,12 @@
 Resume point for the Cicada 3301 / Liber Primus work. Repo is public at
 https://github.com/Dukotah/cicada3301 (default branch `master`).
 
+## 📄 Community deliverable
+**`liber-primus/SOLVERS-DOSSIER.md`** = the consolidated solver-facing contribution
+(verified provenance, full ruled-out map, verified-positives, open threads, tools).
+Final crypto-rigor probes: `liber-primus/analysis/crypto_rigor.py` + `analysis/CRYPTO-RIGOR.md`
+(F-run histogram, transposition-validity, no-repeat decodes — all closed).
+
 ## TL;DR state
 - The **solvable** Cicada puzzles (2012, 2013, early Liber Primus pages) are
   reconstructed and the cryptanalysis rig is validated (`liber-primus/tests/validate.py`).
