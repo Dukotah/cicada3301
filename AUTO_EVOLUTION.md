@@ -5,6 +5,54 @@ Long-term memory for the recursive audit→execute→verify→re-plan loop on th
 
 ---
 
+## Epoch 4 — 2026-06-20
+
+### 1. Current Status
+Health **excellent**. The regression gate now has a fast/full split (fast subset
+**2.4s** vs full **~16s**), a convenience runner collapses the command sprawl, and
+the stego report no longer emits a misleading LSB line. An external in-process
+test refactor (subprocess → import) was verified and adopted. CI green on GitHub.
+
+### 2. Completed in This Epoch
+- **Verified + adopted the external in-process test refactor.** `test_rig.py` now
+  imports and calls `validate.main()`, `attack.selftest(out="")`, and
+  `lp_try.selftest()` instead of shelling out. Confirmed the required functions
+  exist and the suite is green (6 passed + 1 network-skip).
+- **Fast/full test split (roadmap #1).** Registered a `network` pytest marker
+  (`pyproject.toml`) and tagged the live provenance test. `pytest -m "not network"`
+  now runs in **2.4s** (6 passed, 1 deselected) for tight local loops; CI still
+  runs the full gate. No unknown-marker warnings.
+- **Stego REPORT clarity (roadmap #2).** When `--lsb` is off (default), the report
+  now prints `spatial LSB: skipped (pass --lsb; meaningful only for lossless
+  images)` instead of a misleading `lossless: 0`.
+- **Convenience runner (roadmap #3).** Added `tasks.py` with
+  `validate / test / test-full / analyze / cross / dataset / fetch / all`
+  (PYTHONUTF8-safe). Verified `validate`, `test`, `analyze`, `dataset`.
+
+### 3. Discovered Debt / Opportunities
+- The in-process tests depend on `validate.main()` / `attack.selftest(out=...)` /
+  `lp_try.selftest()` signatures — these are now a de-facto test API but aren't
+  documented as stable; a rename would silently break the gate.
+- `tasks.py` duplicates command lists (`all` repeats sub-tasks) — could compose.
+- README documents raw commands but not `tasks.py`; should cross-reference.
+- Headline stego/transcription claims still lack dedicated regression guards
+  (carry-over). Dataset still not published as a release artifact (carry-over).
+
+### 4. The Next Epoch Roadmap (priority order)
+1. **Extend regression guards (network-marked):** assert fetched lineages are
+   rune-identical (transcription headline) and a fetched onion7 image has 0
+   trailing bytes (stego headline). Carry-over.
+2. **Publish `dataset/liber_primus.json`** as a versioned GitHub Release asset;
+   document the direct pull URL in the README. Carry-over.
+3. **Cross-reference `tasks.py`** in the README quickstart; de-duplicate its task
+   lists by composition.
+4. **Document the test entrypoint API** (`validate.main`, `attack.selftest`,
+   `lp_try.selftest`) so refactors don't silently break the gate.
+5. **Add a `pre-commit` config** (ruff) for consistent style across the analysis
+   layer as it grows.
+
+---
+
 ## Epoch 3 — 2026-06-20
 
 ### 1. Current Status

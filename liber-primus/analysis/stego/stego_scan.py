@@ -219,7 +219,9 @@ def main():
           f"- images with carved embedded sigs: {sum(1 for r in results if r.get('carved'))}",
           f"- images with EXIF: {sum(1 for r in results if r.get('exif'))}",
           f"- images with flagged strings: {sum(1 for r in results if r.get('flagged_strings'))}",
-          f"- lossless (LSB-meaningful): {sum(1 for r in results if r.get('lsb',{}).get('lossless'))}", ""]
+          (f"- lossless (LSB-meaningful): {sum(1 for r in results if r.get('lsb',{}).get('lossless'))}"
+           if a.lsb else "- spatial LSB: skipped (pass --lsb; meaningful only for lossless images)"),
+          ""]
     L.append("## Per-image anomalies (only rows with something)")
     for r in results:
         notes = []

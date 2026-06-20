@@ -27,3 +27,10 @@ Dossier = "https://github.com/Dukotah/cicada3301/blob/master/liber-primus/SOLVER
 # solver CLI lives at the project root — run it directly: `python lp_try.py`.
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+# Fast local run:  pytest -m "not network"
+# Full gate (CI):  pytest
+markers = [
+    "network: hits the network (archive.org); self-skips offline",
+]

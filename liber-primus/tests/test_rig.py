@@ -6,20 +6,16 @@ known solved pages, which is the whole point of the gate.
 
 Run:  pytest               (from liber-primus/)
 """
+import io
 import os
-import subprocess
 import sys
 
 import pytest
 
 LP = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# src/ for lp.* packages; LP root for top-level scripts (attack, lp_try, etc.)
 sys.path.insert(0, os.path.join(LP, "src"))
-
-
-def _run(*args):
-    env = dict(os.environ, PYTHONUTF8="1")
-    return subprocess.run([sys.executable, *args], cwd=LP, env=env,
-                          capture_output=True, text=True, encoding="utf-8", errors="replace")
+sys.path.insert(0, LP)
 
 
 # ---- unit: gematria is the single source of truth -----------------------
@@ -47,21 +43,49 @@ def test_unsolved_corpus_is_otp_flat():
 
 # ---- integration: the rig reproduces known solves -----------------------
 def test_validate_reproduces_solved_pages():
-    r = _run("tests/validate.py")
-    assert r.returncode == 0, r.stdout + r.stderr
-    assert "ALL VALIDATIONS PASSED" in r.stdout
+    """In-process: import validate.main() and check return code + output."""
+    sys.path.insert(0, os.path.join(LP, "tests"))
+    import validate  # tests/validate.py
+    buf = io.StringIO()
+    old_stdout = sys.stdout
+    sys.stdout = buf
+    try:
+        rc = validate.main()
+    finally:
+        sys.stdout = old_stdout
+    out = buf.getvalue()
+    assert rc == 0, out
+    assert "ALL VALIDATIONS PASSED" in out
 
 
 def test_attack_selftest_refinds_divinity():
-    r = _run("attack.py", "selftest")
-    assert r.returncode == 0, r.stdout + r.stderr
-    assert "SELFTEST PASS" in r.stdout
+    """In-process: import attack.selftest() and check return code + output."""
+    import attack  # top-level attack.py (LP root already on sys.path)
+    buf = io.StringIO()
+    old_stdout = sys.stdout
+    sys.stdout = buf
+    try:
+        rc = attack.selftest(out="")
+    finally:
+        sys.stdout = old_stdout
+    out = buf.getvalue()
+    assert rc == 0, out
+    assert "SELFTEST PASS" in out
 
 
 def test_lp_try_scorer_selftest():
-    r = _run("lp_try.py", "--selftest")
-    assert r.returncode == 0, r.stdout + r.stderr
-    assert "PASS" in r.stdout
+    """In-process: import lp_try.selftest() and check return value + output."""
+    import lp_try  # top-level lp_try.py (LP root already on sys.path)
+    buf = io.StringIO()
+    old_stdout = sys.stdout
+    sys.stdout = buf
+    try:
+        ok = lp_try.selftest()
+    finally:
+        sys.stdout = old_stdout
+    out = buf.getvalue()
+    assert ok, out
+    assert "PASS" in out
 
 
 # ---- english baseline works WITHOUT the gitignored kjv.txt --------------
@@ -76,6 +100,7 @@ def test_english_baseline_fresh_clone_fallback():
 
 
 # ---- provenance: live images still match the published onion7 hashes --------
+@pytest.mark.network
 def test_image_provenance_live():
     """Guards the headline claim: the onion7 LP2 images are byte-authentic.
     Network-gated — skips (never fails) if archive.org is unreachable."""
