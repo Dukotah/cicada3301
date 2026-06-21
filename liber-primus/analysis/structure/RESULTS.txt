@@ -1,0 +1,129 @@
+=== UNSOLVED CORPUS: pages 0-55, 13041 runes, 56 pages, 599 lines ===
+
+--- 1. UNIGRAM FREQUENCIES ---
+    F idx 0:   463   3.55%
+    U idx 1:   453   3.47%
+   TH idx 2:   457   3.50%
+    O idx 3:   462   3.54%
+    R idx 4:   429   3.29%
+    C idx 5:   448   3.44%
+    G idx 6:   441   3.38%
+    W idx 7:   406   3.11%
+    H idx 8:   415   3.18%
+    N idx 9:   450   3.45%
+    I idx10:   472   3.62%
+    J idx11:   453   3.47%
+   EO idx12:   400   3.07%
+    P idx13:   447   3.43%
+    X idx14:   460   3.53%
+    S idx15:   437   3.35%
+    T idx16:   443   3.40%
+    B idx17:   446   3.42%
+    E idx18:   441   3.38%
+    M idx19:   439   3.37%
+    L idx20:   463   3.55%
+   NG idx21:   457   3.50%
+   OE idx22:   493   3.78%
+    D idx23:   444   3.40%
+    A idx24:   484   3.71%
+   AE idx25:   452   3.47%
+    Y idx26:   451   3.46%
+   IA idx27:   473   3.63%
+   EA idx28:   462   3.54%
+unigram entropy = 4.8566 bits (max = 4.8580)
+chi-square vs uniform: 25.6  (df=28, crit_0.01~49.6)
+
+--- 1b. BIGRAM ADJACENCY (within-page only) ---
+total adjacent bigrams (within-page): 12985
+DOUBLETS observed (diagonal): 88 (0.678%)
+DOUBLETS expected (independence): 448.7 (3.455%)
+suppression ratio: 5.10x
+
+--- DOUBLET per-rune: obs vs expected on diagonal ---
+rune  obs     exp  ratio (o-e)/sqrt(e)
+   F    4   16.30   4.07         -3.05
+   U    2   15.63   7.81         -3.45
+  TH    4   15.94   3.99         -2.99
+   O    4   16.37   4.09         -3.06
+   R    2   14.14   7.07         -3.23
+   C    1   15.28  15.28         -3.65
+   G    5   14.88   2.98         -2.56
+   W    7   12.60   1.80         -1.58
+   H    2   13.01   6.50         -3.05
+   N    4   15.49   3.87         -2.92
+   I    2   17.01   8.51         -3.64
+   J    4   15.73   3.93         -2.96
+  EO    2   12.14   6.07         -2.91
+   P    1   15.22  15.22         -3.64
+   X    6   16.19   2.70         -2.53
+   S    3   14.54   4.85         -3.03
+   T    2   14.98   7.49         -3.35
+   B    0   15.28    inf         -3.91
+   E    4   14.91   3.73         -2.83
+   M    2   14.71   7.35         -3.31
+   L    3   16.37   5.46         -3.30
+  NG    2   15.91   7.95         -3.49
+  OE    4   18.60   4.65         -3.39
+   D    3   14.98   4.99         -3.09
+   A    1   17.93  17.93         -4.00
+  AE    7   15.59   2.23         -2.18
+   Y    2   15.56   7.78         -3.44
+  IA    2   17.08   8.54         -3.65
+  EA    3   16.30   5.43         -3.29
+
+realized-fraction (obs/exp) per rune: mean=0.198 std=0.117 min=0.000 max=0.556
+(if uniform suppression, all ~ equal & small)
+
+--- FORBIDDEN PAIRS (obs=0 but expected>=5) ---
+  B->B  exp=15.28  (DOUBLET)
+total forbidden (exp>=5): 1, of which doublets: 1
+
+--- TOP-20 SUPPRESSED PAIRS by z-score (z<0) ---
+    A->A   obs=   1 exp=  17.9 z=  -4.00 <DOUBLET>
+    B->B   obs=   0 exp=  15.3 z=  -3.91 <DOUBLET>
+    C->C   obs=   1 exp=  15.3 z=  -3.65 <DOUBLET>
+   IA->IA  obs=   2 exp=  17.1 z=  -3.65 <DOUBLET>
+    P->P   obs=   1 exp=  15.2 z=  -3.64 <DOUBLET>
+    I->I   obs=   2 exp=  17.0 z=  -3.64 <DOUBLET>
+   NG->NG  obs=   2 exp=  15.9 z=  -3.49 <DOUBLET>
+    U->U   obs=   2 exp=  15.6 z=  -3.45 <DOUBLET>
+    Y->Y   obs=   2 exp=  15.6 z=  -3.44 <DOUBLET>
+   OE->OE  obs=   4 exp=  18.6 z=  -3.39 <DOUBLET>
+    T->T   obs=   2 exp=  15.0 z=  -3.35 <DOUBLET>
+    M->M   obs=   2 exp=  14.7 z=  -3.31 <DOUBLET>
+    L->L   obs=   3 exp=  16.4 z=  -3.30 <DOUBLET>
+   EA->EA  obs=   3 exp=  16.3 z=  -3.29 <DOUBLET>
+    R->R   obs=   2 exp=  14.1 z=  -3.23 <DOUBLET>
+    D->D   obs=   3 exp=  15.0 z=  -3.09 <DOUBLET>
+    O->O   obs=   4 exp=  16.4 z=  -3.06 <DOUBLET>
+    H->H   obs=   2 exp=  13.0 z=  -3.05 <DOUBLET>
+    F->F   obs=   4 exp=  16.3 z=  -3.05 <DOUBLET>
+    S->S   obs=   3 exp=  14.5 z=  -3.03 <DOUBLET>
+
+--- TOP-10 OVER-represented pairs by z-score ---
+    G->L   obs=  29 exp=  15.5 z=   3.42
+   TH->F   obs=  29 exp=  16.2 z=   3.20
+    E->T   obs=  27 exp=  15.0 z=   3.11
+    H->R   obs=  25 exp=  13.6 z=   3.10
+    A->E   obs=  28 exp=  16.4 z=   2.88
+   TH->Y   obs=  26 exp=  15.7 z=   2.59
+   OE->G   obs=  27 exp=  16.6 z=   2.54
+    N->P   obs=  25 exp=  15.4 z=   2.46
+    B->U   obs=  25 exp=  15.5 z=   2.43
+    R->IA  obs=  25 exp=  15.5 z=   2.40
+
+bigram chi-square total=1106.1, diagonal contribution=295.7 (26.7%), off-diagonal=810.4
+df=840. If off-diagonal ~ df it's consistent with independence except the diagonal.
+
+
+=== SUMMARY (see RESULTS2.txt for positional/higher-order) ===
+DOUBLET DEFICIT: 88 obs vs 442+-21 (marginal-preserving permutation, n=2000) => z=-16.9, p<5e-4 (never reached). 0.678% vs 3.455%, 5.10x.
+UNIFORM: all 29 doublet pairs suppressed (every diagonal z<-2.1, top-20 suppressed cells are ALL doublets). realized obs/exp mean=0.198 across runes. Off-diagonal chi=810 vs df=812 => off-diagonal is pure independence.
+FORBIDDEN: only B->B (exp 15.3, obs 0) and that is just B being rare; no semantic forbidden pair.
+PERIOD: none. doublet-position mod M all within noise (max mod-11 chi=18.75/df10, n.s.). gaps geometric (std~mean). autocorr IoC flat at all lags except lag1 (the hole).
+n-GRAM repeats at random-chance levels (128 4-grams vs 120 expected). trigram IoC*N^3=1.038.
+WORD STRUCTURE: word-start chi=18.6/df28 (n.s.), word-end chi=28.9/df28 (n.s.) -> no positional rune bias at semantic boundaries. earlier 'line-start chi=79.8' was a physical line-wrap artifact.
+INTER-PAGE: head/tail-aligned match rate = chance (0.0344 vs 1/29=0.0345). no shared keystream.
+GEMATRIA prime stream: flat. mod-3/7/29 line & word sums all uniform (mod-3 trivially so).
+PER-PAGE doublets: Poisson (mean 1.57 var 1.85). residual doublets scattered uniformly, no key-reuse page.
+MODEL MATCH: 'partial no-repeat rejection sampling' from empirical unigram dist reproduces ~0 diagonal + flat off-diagonal. Real has 20% residual doublets => SOFT no-repeat rule.

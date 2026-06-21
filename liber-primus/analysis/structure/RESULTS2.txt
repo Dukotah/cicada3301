@@ -1,0 +1,88 @@
+=== 2. POSITIONAL / PERIODIC DOUBLET STRUCTURE ===
+total doublets: 88
+gap stats: mean=147.8 median=112 std=142.1 min=6 max=712
+  (geometric/Poisson would give std ~= mean = 147.8)
+  small-gap histogram (gap:count): 6:1, 7:2, 9:1, 10:1, 11:2
+
+-- doublet position-in-page mod M (chi-square vs uniform) --
+  mod  2: chi=  2.91 df=1  counts=[36, 52]
+  mod  3: chi=  0.43 df=2  counts=[27, 32, 29]
+  mod  4: chi=  7.64 df=3  counts=[14, 20, 22, 32]
+  mod  5: chi=  4.73 df=4  counts=[21, 22, 15, 11, 19]
+  mod  6: chi=  4.73 df=5  counts=[11, 21, 14, 16, 11, 15]
+  mod  7: chi=  1.09 df=6  counts=[11, 12, 11, 14, 15, 12, 13]
+  mod  8: chi= 10.36 df=7  counts=[6, 11, 9, 19, 8, 9, 13, 13]
+  mod 11: chi= 18.75 df=10  counts=[5, 10, 5, 13, 8, 3, 8, 10, 15, 3, 8]
+  mod 13: chi=  9.50 df=12  counts=[10, 4, 5, 5, 8, 5, 9, 9, 9, 6, 3, 9, 6]
+
+=== 3a. AUTOCORRELATION / KASISKI: IoC at lag k (within page) ===
+  lag : IoC*N  (1.000=random; >1 suggests period)
+    1 : 0.197 <--
+    2 : 0.980
+    3 : 0.978
+    4 : 1.029
+    5 : 1.059
+    6 : 1.009
+    7 : 1.009
+    8 : 0.972
+    9 : 1.057
+   10 : 0.994
+   11 : 0.857 <--
+   12 : 0.978
+   13 : 1.003
+   14 : 1.001
+   15 : 0.972
+   16 : 0.984
+   17 : 1.020
+   18 : 1.051
+   19 : 0.954
+   20 : 0.993
+   21 : 0.909 <--
+   22 : 0.975
+   23 : 0.985
+   24 : 1.086 <--
+   25 : 1.056
+   26 : 1.059
+   27 : 0.973
+   28 : 0.966
+   29 : 1.006
+   30 : 0.962
+
+=== 3b. TRIGRAM IoC & REPEATED N-GRAMS ===
+trigram IoC*N^3 = 1.038 (1.0=random)
+  4-grams repeated >=2x: 128 distinct; max repeat = 3
+      expected colliding pairs (random) ~ 120.16
+  5-grams repeated >=2x: 7 distinct; max repeat = 2
+      expected colliding pairs (random) ~ 4.14
+  6-grams repeated >=2x: 2 distinct; max repeat = 2
+      expected colliding pairs (random) ~ 0.14
+  7-grams repeated >=2x: 1 distinct; max repeat = 2
+      expected colliding pairs (random) ~ 0.00
+  8-grams repeated >=2x: 0 distinct; max repeat = 0
+      expected colliding pairs (random) ~ 0.00
+
+=== 3c. POSITIONAL RUNE-FREQ BIAS (does position-in-line bias the rune?) ===
+line-start rune dist chi-square vs overall = 79.8 df=28 (n=599 lines)
+  most common line-START runes: EA=38, P=34, D=32, IA=29, NG=28
+  page-START runes: H=5, L=4, C=4, EA=4, D=4, IA=3
+  page-END runes: EO=5, I=4, F=4, H=3, U=3, T=3
+
+=== 3d. INTER-PAGE positional agreement (shared keystream test) ===
+page-pair head-aligned match rate: mean=0.0344 max=0.0921 (chance=1/29=0.0345)
+  pairs with match > 2x chance: 20 of 1540
+page-pair tail-aligned match rate: mean=0.0342 max=0.0992
+
+=== 4. GEMATRIA PRIME-VALUE STREAM STRUCTURE ===
+prime-stream: n=13041 sum=672366 mean=51.56
+  total prime-sum mod 3 = 0
+  total prime-sum mod 7 = 2
+  total prime-sum mod 3301 = 2263
+  total prime-sum mod 1033 = 916
+  total prime-sum mod 29 = 1
+  total prime-sum mod 109 = 54
+  line prime-sums: n=599 mean=1122.5
+  line-sum mod 3: chi=0.00 df=2 counts=[199, 200, 200]
+  line-sum mod 7: chi=4.67 df=6 counts=[84, 84, 80, 100, 74, 87, 90]
+  line-sum mod 29: chi=20.55 df=28 counts=[27, 23, 20, 22, 12, 21, 13, 26, 17, 21, 25, 15, 19, 23, 18, 24, 21, 25, 19, 23, 25, 17, 19, 17, 19, 25, 18, 25, 20]
+  line-sum mod 3301: distinct residues hit = 383
+  prime-stream IoC by VALUE residue mod 29 == rune IoC (same), skipping

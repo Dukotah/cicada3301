@@ -1,0 +1,23 @@
+CROWLEY CORPUS - Phase C task id 42
+
+PRIMARY ASSET (flowing prose, used as running key):
+  Aleister Crowley - The Book of Thoth (Egyptian Tarot), Equinox vol III no V (1944)
+  Source: https://archive.org/stream/AleisterCrowleyTheBookOfThoth/Aleister+Crowley+-+The+book+of+Thoth_djvu.txt
+  Extracted from the <pre> block of the Internet Archive full-text HTML.
+  Files:
+    thoth_text.txt    raw extracted text (545,102 chars)
+    thoth_letters.txt letters-only, uppercase (410,952 letters) -- exceeds max page (~277 runes)
+    thoth_body.txt    front-matter-trimmed prose (398,952 letters)
+  keyword_to_indices() collapses Q/K etc to the 29-rune Gematria, giving an effective key of 383,256 indices.
+
+LIBER 777: NOT used. It is overwhelmingly correspondence TABLES (Hebrew letters,
+  numbers, single-word column entries) -- not flowing prose, so it is unsuitable
+  running-key material. The Internet Archive copy (Liber777Revised) is a JS BookReader
+  page with no inline <pre> text. The Book of Thoth is the decisive prose test of the
+  Crowley corpus. (Liber AL / Book of the Law is ELIMINATED per campaign rules.)
+
+RESULTS (canonical ciphertext data/krisyotam_runes.txt, 55 unsolved pages):
+  selftest: PASS (DIVINITY -4.34)
+  runningkey sweep (signs/atbash/all offsets): best -6.079  (p54, sign-1 atbash off29517) -- gibberish
+  interrupter beam (width 200, top-3 offsets/page, all 55 pages): best -6.927 (p0) -- gibberish
+  Threshold for a real break: < -5.0 with readable English. NOT met. NEGATIVE.

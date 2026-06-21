@@ -1,0 +1,146 @@
+======================================================================
+{
+ "file": "cicada-3301-public-key.asc",
+ "armor_version": null,
+ "clearsigned": false,
+ "packets": [
+  {
+   "tag": 6,
+   "name": "PublicKey",
+   "newfmt": false,
+   "len": 525,
+   "version": 4,
+   "creation": "2012-01-05 03:39:43 UTC",
+   "creation_raw": 1325734783,
+   "algo": "RSA(E+S)",
+   "n_bits": 4096,
+   "e_bits": 17,
+   "e_bytes": "b'\\x01\\x00\\x01'",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "keyid": "181F01E57A35090F"
+  },
+  {
+   "tag": 13,
+   "name": "UserID",
+   "newfmt": false,
+   "len": 23,
+   "uid": "Cicada 3301 (845145127)"
+  },
+  {
+   "tag": 2,
+   "name": "Signature",
+   "newfmt": false,
+   "len": 568,
+   "version": 4,
+   "sigtype": "positive-cert",
+   "pubalgo": "RSA(E+S)",
+   "hashalgo": "SHA1",
+   "hashed_subpkts": [
+    {
+     "type": "sig-creation-time",
+     "crit": false,
+     "val": "2012-01-05 03:39:43 UTC"
+    },
+    {
+     "type": "key-flags",
+     "crit": false,
+     "val": "flags=03"
+    },
+    {
+     "type": "pref-sym",
+     "crit": false,
+     "val": [
+      9,
+      8,
+      7,
+      3,
+      2
+     ]
+    },
+    {
+     "type": "pref-hash",
+     "crit": false,
+     "val": [
+      8,
+      2,
+      9,
+      10,
+      11
+     ]
+    },
+    {
+     "type": "pref-comp",
+     "crit": false,
+     "val": [
+      2,
+      3,
+      1
+     ]
+    },
+    {
+     "type": "features",
+     "crit": false,
+     "val": "01"
+    },
+    {
+     "type": "keyserver-prefs",
+     "crit": false,
+     "val": "80"
+    }
+   ],
+   "unhashed_subpkts": [
+    {
+     "type": "issuer-keyid",
+     "crit": false,
+     "val": "181F01E57A35090F"
+    }
+   ],
+   "left16": "6af6"
+  },
+  {
+   "tag": 14,
+   "name": "PublicSubkey",
+   "newfmt": false,
+   "len": 525,
+   "version": 4,
+   "creation": "2012-01-05 03:39:43 UTC",
+   "creation_raw": 1325734783,
+   "algo": "RSA(E+S)",
+   "n_bits": 4096,
+   "e_bits": 17,
+   "e_bytes": "b'\\x01\\x00\\x01'",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "keyid": "4D390ECF671DDEB1"
+  },
+  {
+   "tag": 2,
+   "name": "Signature",
+   "newfmt": false,
+   "len": 543,
+   "version": 4,
+   "sigtype": "subkey-binding",
+   "pubalgo": "RSA(E+S)",
+   "hashalgo": "SHA1",
+   "hashed_subpkts": [
+    {
+     "type": "sig-creation-time",
+     "crit": false,
+     "val": "2012-01-05 03:39:43 UTC"
+    },
+    {
+     "type": "key-flags",
+     "crit": false,
+     "val": "flags=0c"
+    }
+   ],
+   "unhashed_subpkts": [
+    {
+     "type": "issuer-keyid",
+     "crit": false,
+     "val": "181F01E57A35090F"
+    }
+   ],
+   "left16": "2f91"
+  }
+ ]
+}
