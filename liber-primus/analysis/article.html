@@ -1,0 +1,721 @@
+<title>The Object in the Data Files — Cicada 3301 / Liber Primus</title>
+<style>
+  :root {
+    /* light "vellum manuscript" — cool aged paper, not the AI-default warm cream */
+    --ground: #e8e8e1;
+    --surface: #f2f1ea;
+    --surface-2: #deded4;
+    --rule: #c8c8bc;
+    --rule-soft: #d9d9cf;
+    --ink: #191f1b;
+    --ink-dim: #4d554f;
+    --ink-faint: #7c847d;
+    --accent: #1f7a63;
+    --accent-soft: rgba(31,122,99,0.14);
+    --ember: #b0562f;
+    --shadow: rgba(30,40,34,0.10);
+    --hexbg: #edece3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* dark "onion / terminal" — near-black with a cool patina bias */
+      --ground: #0c110f;
+      --surface: #121815;
+      --surface-2: #182019;
+      --rule: #2a352e;
+      --rule-soft: #1e2721;
+      --ink: #e6e9e2;
+      --ink-dim: #98a19a;
+      --ink-faint: #626d65;
+      --accent: #58c0a0;
+      --accent-soft: rgba(88,192,160,0.13);
+      --ember: #d98a5a;
+      --shadow: rgba(0,0,0,0.4);
+      --hexbg: #0a0f0d;
+    }
+  }
+  /* explicit toggle overrides must win in both directions */
+  :root[data-theme="light"] {
+    --ground: #e8e8e1; --surface: #f2f1ea; --surface-2: #deded4;
+    --rule: #c8c8bc; --rule-soft: #d9d9cf;
+    --ink: #191f1b; --ink-dim: #4d554f; --ink-faint: #7c847d;
+    --accent: #1f7a63; --accent-soft: rgba(31,122,99,0.14); --ember: #b0562f;
+    --shadow: rgba(30,40,34,0.10); --hexbg: #edece3;
+  }
+  :root[data-theme="dark"] {
+    --ground: #0c110f; --surface: #121815; --surface-2: #182019;
+    --rule: #2a352e; --rule-soft: #1e2721;
+    --ink: #e6e9e2; --ink-dim: #98a19a; --ink-faint: #626d65;
+    --accent: #58c0a0; --accent-soft: rgba(88,192,160,0.13); --ember: #d98a5a;
+    --shadow: rgba(0,0,0,0.4); --hexbg: #0a0f0d;
+  }
+
+  * { box-sizing: border-box; }
+  :root {
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .col { width: 100%; max-width: 41rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ---------- hero ---------- */
+  .hero {
+    border-bottom: 1px solid var(--rule);
+    padding: 3.2rem 0 2.6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hexstrip {
+    font-family: "SFMono-Regular","SF Mono","Cascadia Code","JetBrains Mono","Consolas",monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--ink-faint);
+    opacity: 0.38;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 1.5;
+    -webkit-user-select: none;
+    user-select: none;
+    margin-bottom: 2.4rem;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .eyebrow {
+    font-family: "SFMono-Regular","SF Mono","Cascadia Code","JetBrains Mono","Consolas",monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.4rem;
+  }
+  h1 {
+    font-family: "Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    font-weight: 600;
+    font-size: clamp(2.4rem, 7vw, 3.9rem);
+    line-height: 1.04;
+    letter-spacing: -0.012em;
+    margin: 0 0 1.4rem;
+    text-wrap: balance;
+  }
+  .deck {
+    font-family: "Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    font-size: clamp(1.15rem, 2.6vw, 1.42rem);
+    line-height: 1.5;
+    color: var(--ink-dim);
+    font-style: italic;
+    margin: 0 0 2rem;
+    max-width: 34rem;
+    text-wrap: pretty;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.1rem;
+    align-items: center;
+    font-family: "SFMono-Regular","SF Mono","Cascadia Code","JetBrains Mono","Consolas",monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .meta .dot { color: var(--accent); }
+
+  /* ---------- article body ---------- */
+  .article { padding: 3rem 0 1rem; }
+  .article p { margin: 0 0 1.5rem; }
+  .article p .lead-cap::first-letter { }
+  .article > .col > p:first-of-type { }
+  .drop::first-letter {
+    font-family: "Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    float: left;
+    font-size: 3.5rem;
+    line-height: 0.82;
+    padding: 0.35rem 0.6rem 0 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  h2 {
+    font-family: "Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3.6vw, 2rem);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    margin: 3.2rem 0 0.4rem;
+    text-wrap: balance;
+  }
+  .kicker {
+    font-family: "SFMono-Regular","SF Mono","Cascadia Code","JetBrains Mono","Consolas",monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 3.4rem 0 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .kicker::before {
+    content: "";
+    width: 1.6rem;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.6;
+  }
+  .kicker + h2 { margin-top: 0; }
+  .article a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  .article a:hover { border-bottom-color: var(--accent); }
+  strong { font-weight: 600; color: var(--ink); }
+  .refuted { text-decoration: line-through; text-decoration-color: var(--ember); color: var(--ink-dim); }
+
+  code, .mono { font-family: "SFMono-Regular","SF Mono","Cascadia Code","JetBrains Mono","Consolas",monospace; }
+  .article code {
+    font-size: 0.86em;
+    background: var(--surface-2);
+    padding: 0.08em 0.36em;
+    border-radius: 3px;
+    color: var(--ink);
+  }
+
+  /* ---------- pull quote ---------- */
+  .pull {
+    margin: 2.6rem 0;
+    padding: 0.2rem 0 0.2rem 1.4rem;
+    border-left: 2px solid var(--accent);
+  }
+  .pull p {
+    font-family: "Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    font-size: clamp(1.35rem, 3.4vw, 1.75rem);
+    line-height: 1.28;
+    font-style: italic;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* ---------- figure shell ---------- */
+  figure {
+    margin: 2.6rem 0;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  figure .figbody { padding: 1.4rem 1.4rem 0.4rem; }
+  figcaption {
+    font-family: "SFMono-Regular","SF Mono","Cascadia Code","JetBrains Mono","Consolas",monospace;
+    font-size: 0.73rem;
+    line-height: 1.55;
+    letter-spacing: 0.02em;
+    color: var(--ink-dim);
+    padding: 0.9rem 1.4rem 1.2rem;
+    border-top: 1px solid var(--rule-soft);
+  }
+  figcaption b { color: var(--accent); font-weight: 600; }
+
+  /* doublet grid */
+  #doublet { display: block; width: 100%; height: auto; }
+  .fig-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: "SFMono-Regular","SF Mono","Cascadia Code","JetBrains Mono","Consolas",monospace;
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 1.1rem 1.4rem 0.4rem;
+  }
+  .fig-head b { color: var(--accent); font-weight: 600; letter-spacing: 0.06em; }
+
+  /* structure bar 80/104/72 */
+  .structbar { display: flex; height: 2.6rem; border-radius: 3px; overflow: hidden; font-family: "SFMono-Regular","SF Mono","Consolas",monospace; }
+  .structbar span {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; letter-spacing: 0.08em; color: var(--ground);
+    font-weight: 600; white-space: nowrap;
+  }
+  .seg-a { background: var(--accent); flex: 80; }
+  .seg-b { background: var(--accent); opacity: 0.72; flex: 104; }
+  .seg-c { background: var(--accent); opacity: 0.5; flex: 72; }
+  .struct-legend {
+    display: flex; justify-content: space-between; margin-top: 0.55rem;
+    font-family: "SFMono-Regular","SF Mono","Consolas",monospace;
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  .struct-sum {
+    text-align: center; margin-top: 0.9rem;
+    font-family: "SFMono-Regular","SF Mono","Consolas",monospace;
+    font-size: 0.92rem; letter-spacing: 0.05em; color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .struct-sum b { color: var(--accent); }
+
+  /* readout tiles (null results) */
+  .readout {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;
+    margin: 2.6rem 0;
+  }
+  .tile { background: var(--surface); padding: 1.2rem 1.2rem; }
+  .tile .label {
+    font-family: "SFMono-Regular","SF Mono","Consolas",monospace;
+    font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+  .tile .val {
+    font-family: "SFMono-Regular","SF Mono","Consolas",monospace;
+    font-size: 1.75rem; font-weight: 600; letter-spacing: -0.02em;
+    color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1;
+  }
+  .tile .val small { font-size: 0.8rem; color: var(--ink-dim); font-weight: 400; letter-spacing: 0; }
+  .tile.null .val { color: var(--ember); }
+  .tile .sub {
+    font-family: "SFMono-Regular","SF Mono","Consolas",monospace;
+    font-size: 0.66rem; color: var(--ink-faint); margin-top: 0.4rem; letter-spacing: 0.04em;
+  }
+
+  /* hex dump */
+  .hexdump {
+    background: var(--hexbg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.1rem 1.2rem;
+    margin: 2.4rem 0;
+    overflow-x: auto;
+  }
+  .hexdump .hx-title {
+    font-family: "SFMono-Regular","SF Mono","Consolas",monospace;
+    font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.9rem;
+  }
+  .hexdump pre {
+    margin: 0;
+    font-family: "SFMono-Regular","SF Mono","Cascadia Code","JetBrains Mono","Consolas",monospace;
+    font-size: 0.78rem;
+    line-height: 1.62;
+    color: var(--ink-dim);
+    white-space: pre;
+  }
+  .hexdump .off { color: var(--ink-faint); }
+  .hexdump .b { color: var(--ink); }
+
+  /* decode callout */
+  .callout {
+    margin: 2.4rem 0;
+    padding: 1.3rem 1.4rem;
+    background: var(--accent-soft);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+  }
+  .callout .c-eq {
+    font-family: "SFMono-Regular","SF Mono","Consolas",monospace;
+    font-size: clamp(0.95rem, 3vw, 1.15rem); letter-spacing: 0.01em;
+    color: var(--ink); font-variant-numeric: tabular-nums;
+  }
+  .callout .c-eq b { color: var(--accent); font-weight: 600; }
+  .callout .c-note {
+    font-size: 0.9rem; color: var(--ink-dim); margin: 0.6rem 0 0; font-family: var(--sans);
+  }
+
+  /* divider */
+  .rule-mark {
+    display: flex; align-items: center; gap: 1rem; margin: 3.2rem 0 0.4rem; color: var(--ink-faint);
+  }
+  .rule-mark::before, .rule-mark::after { content: ""; height: 1px; background: var(--rule); flex: 1; }
+  .rule-mark span { font-size: 0.7rem; }
+
+  /* footer */
+  footer {
+    border-top: 1px solid var(--rule);
+    margin-top: 3.5rem;
+    padding: 2.4rem 0 3.5rem;
+    font-family: "SFMono-Regular","SF Mono","Consolas",monospace;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--ink-dim);
+    letter-spacing: 0.02em;
+  }
+  footer a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  footer a:hover { border-bottom-color: var(--accent); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 480px) {
+    body { font-size: 17px; }
+    .readout { grid-template-columns: 1fr 1fr; }
+    .drop::first-letter { font-size: 3rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { scroll-behavior: auto; }
+  }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+
+<header class="hero">
+  <div class="col">
+    <div class="hexstrip" aria-hidden="true">cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576dc6ad1996428d85 7372c5273650850550541c49e651c74cfd10153b56ab9c50fe7692456ac47c33 7aff19c0c749a96ca44fcdb172902e528e3ac9c1ad1c6f41d3dcc631ec543823 de96482253e520ce7a3f1fda0eb82073498fc5f736ab23b82aed56360d14a3c1</div>
+    <p class="eyebrow">Cryptanalysis&nbsp;·&nbsp;Dispatch</p>
+    <h1>The Object in the Data Files</h1>
+    <p class="deck">Six AI campaigns declared the hardest puzzle on the internet a closed case. The one thing none of them had ever looked at was sitting in their own repository the whole time.</p>
+    <div class="meta">
+      <span>Campaigns&nbsp;VII–VIII</span>
+      <span class="dot">·</span>
+      <span>Liber&nbsp;Primus&nbsp;/&nbsp;LP2</span>
+      <span class="dot">·</span>
+      <span>~13&nbsp;min&nbsp;read</span>
+    </div>
+  </div>
+</header>
+
+<main class="article">
+  <div class="col">
+
+    <p class="drop">There is a particular kind of failure that only happens to people who are very thorough. You build the machine. You run it, and run it again, and run it a hundred different ways. You write down everything it rules out, so carefully that the list of dead ends becomes its own achievement. And somewhere in all that rigor, you stop noticing the thing you never fed into the machine at all — because it was never on the list of things to rule out. It was just <em>there</em>, in the folder, waiting.</p>
+
+    <p>That is the story of what happened when a swarm of AI agents spent six campaigns trying to break the last unsolved section of Cicada 3301's Liber Primus — and then, on the seventh, discovered that the one object nobody had ever loaded had been living in the project's own data files the entire time.</p>
+
+    <p>It is a story with two halves, and neither is the one you'd expect. The technical half is not "AI solved Cicada." It's subtler and, honestly, more interesting: AI-agent swarms methodically exhausted every hypothesis humans had proposed for cracking this thing, proved <em>why</em> the popular approaches must fail — and very nearly walked past the single un-analyzed piece of the puzzle in the process. The human half is a manhunt that comes back empty in a way that tells you something real about how the mystery was built.</p>
+
+    <p>Let's take them in order.</p>
+
+    <p class="kicker">Orientation</p>
+    <h2>For the uninitiated</h2>
+
+    <p>Cicada 3301 was a series of ferociously difficult puzzles that appeared on the internet starting in January 2012, signed by an anonymous entity using military-grade cryptography and a private PGP key. The puzzles blended steganography, classical ciphers, number theory, and a heavy dose of esoteric philosophy — privacy, enlightenment, "the primes are sacred." They were widely assumed to be a recruiting tool for <em>something</em>, though nobody outside the group has ever credibly said what.</p>
+
+    <p>The final artifact Cicada left behind is the <strong>Liber Primus</strong> — a book written in runes, most of which remains undeciphered to this day. Call the unsolved runic section LP2. It has resisted a decade of the best amateur and professional cryptanalysis the internet can throw at it.</p>
+
+    <p>The project at the center of this story is a home-built cryptanalysis rig — a system of orchestrated AI agents, each "campaign" a coordinated fan-out of dozens of agents attacking the problem from different angles, with every result committed to a repository and every dead end documented so the next campaign wouldn't waste effort re-running it. Over four campaigns, that rig reached a hard and honest verdict: <strong>LP2's runic pages are statistically indistinguishable from a one-time pad.</strong> To understand why that verdict was both correct and incomplete, you need to understand one number.</p>
+
+    <p class="kicker">The core insight</p>
+    <h2>The doublet deficit, in plain language</h2>
+
+    <p>Here is the single most important thing the rig ever found, and you don't need any math to get it.</p>
+
+    <p>In normal written language, letters repeat next to themselves all the time. "Bookkeeper," "coffee," "hello" — double letters are everywhere. If you take any long English text and look at how often two identical letters sit side by side, you land around 3.4% of the time.</p>
+
+    <p>That's true of the <em>plaintext</em>. But here's the thing cryptographers rely on: it's <em>also</em> true of most ciphers built from a running key. If you encrypt a message by adding a stream of key symbols to it — an English book used as a key, a stream of prime numbers, digits of pi, anything that doesn't itself know what the message says — the encryption process injects roughly that same 3.4% rate of side-by-side repeats into the output. It's a statistical fingerprint. Nearly every "add a key stream to the text" cipher leaves it behind.</p>
+
+    <p><strong>LP2 doesn't have it.</strong></p>
+
+    <figure class="reveal">
+      <div class="fig-head"><span>Bigram frequency · 29 × 29 runes</span><span><b>diagonal suppressed</b></span></div>
+      <div class="figbody">
+        <canvas id="doublet" width="800" height="800" role="img" aria-label="A 29 by 29 grid of rune-pair frequencies. Off-diagonal cells form a uniform random field. The diagonal — where a rune would repeat itself — is almost entirely empty, showing the doublet deficit."></canvas>
+      </div>
+      <figcaption>Every cell is a rune-pair. Off the diagonal, the field is <b>indistinguishable from perfect randomness</b> — no forbidden pairs, no periodicity, no structure. The diagonal, where a rune would repeat itself, is nearly empty: a measured doublet rate of <b>0.66%</b> against the <b>~3.45%</b> any running key would inject. The only structure in the entire cipher is this one engineered hole.</figcaption>
+    </figure>
+
+    <p>When the rig measured how often LP2's runes repeat next to themselves, it found a rate of about <strong>0.66%</strong> — against the ~3.45% you'd expect. Roughly four out of five of the expected doublets are simply <em>gone</em>. And they're gone in a very specific way: uniformly, across all 29 runes, with no periodicity, no pattern in <em>where</em> the missing repeats fall, and — crucially — no other structure anywhere else in the text. Off the diagonal, the cipher looks like perfect randomness. The only fingerprint in the entire stream is this one engineered hole where the double letters should be.</p>
+
+    <p>This is the key insight, and it reframes the entire decade of failed attempts. For years, solvers assumed LP2 was encrypted with some <em>running key</em> — some specific book, or poem, or number sequence — and that cracking it was a matter of guessing the right one. People tried hundreds of candidate texts. They all failed, and everyone assumed they just hadn't found the <em>right</em> one yet.</p>
+
+    <p>The doublet deficit says they were looking for the wrong <em>thing</em>, not the wrong text. <strong>Any</strong> plaintext-independent key stream — English, non-English, primes, raw numeric pads — would have injected that ~3.45% of doublets. They're absent. So the entire class of "guess the running key" attacks isn't unlucky; it's mechanistically impossible.</p>
+
+    <div class="pull">
+      <p>Wrong mechanism, not wrong text. It converts dozens of failures from "we didn't find it" into "this cannot be how it works."</p>
+    </div>
+
+    <p>What's left, statistically, is a text that behaves like a one-time pad — a cipher whose key is as long as the message, used once, held externally, and never published. Against a true one-time pad, the ciphertext alone tells you nothing. There is no internal purchase. You cannot win from the inside.</p>
+
+    <p>Four campaigns reached that verdict. It was correct. And it quietly closed the case on the runic pages — which is exactly where the trouble started.</p>
+
+    <p class="kicker">The blind spot</p>
+    <h2>The pages the machine never ate</h2>
+
+    <p>Here is the sentence that reopened everything, and it came from an independent review by a separate model looking over the project's own conclusions:</p>
+
+    <p><em>Every "LP2 is a closed one-time pad" verdict was only ever proven about the <strong>runic</strong> pages.</em></p>
+
+    <p>Because three of the unsolved pages — 49, 50, and 51 — are not runic prose at all.</p>
+
+    <p>Page 49 has a few lines of runes and then a 10-by-8 grid of two-character tokens. Page 50 has no runes whatsoever — it's a 13-by-8 grid, pure table. Page 51 is a 9-by-8 grid plus four lines of runes. These aren't sentences. They're a <em>table of tokens</em>. And no campaign had ever loaded them, characterized them, or attacked them — because the rig's data loader only ingested the runic stream. The tables fell on the floor. Every statistical result, every "it's a one-time pad" conclusion, every carefully documented dead end — none of it had ever included these three pages, because the machine had never been fed them.</p>
+
+    <p>The pages weren't missing. They weren't hidden in some dead Tor onion or a deleted archive. The transcriptions were sitting in the repository's own data files — <code>p49.jpg</code>, <code>p50.jpg</code>, <code>p51.jpg</code>, and community token tables — the entire time. Six campaigns of exhaustive, documented, adversarially-verified cryptanalysis had walked past them because they weren't shaped like the thing the machine ate.</p>
+
+    <p>Count the tokens.</p>
+
+    <figure class="reveal">
+      <div class="fig-head"><span>pp49–51 token count</span><span><b>= one key length</b></span></div>
+      <div class="figbody">
+        <div class="structbar" role="img" aria-label="A bar split into three segments: page 49 is 80 tokens, page 50 is 104 tokens, page 51 is 72 tokens, summing to 256.">
+          <span class="seg-a">80</span>
+          <span class="seg-b">104</span>
+          <span class="seg-c">72</span>
+        </div>
+        <div class="struct-legend"><span>p49 · 10×8</span><span>p50 · 13×8</span><span>p51 · 9×8</span></div>
+        <div class="struct-sum">80 + 104 + 72 = <b>256 tokens</b> = 256 bytes = <b>2048 bits</b></div>
+      </div>
+      <figcaption>That number is not an accident. In the world Cicada lives in, <b>2048 bits</b> is a canonical cryptographic key length. Suddenly the three "leftover" pages look less like leftovers and more like the point.</figcaption>
+    </figure>
+
+    <p class="kicker">Campaign VII</p>
+    <h2>Reading three JPEGs</h2>
+
+    <p>The seventh campaign did the unglamorous work the previous six had skipped. It's worth walking through, because the honesty of the result is the whole point.</p>
+
+    <p><strong>First, canonicalize.</strong> Each two-character token turns out to be a base-60 number — a numbering system with sixty symbols, using the digits <code>0–9</code>, then the uppercase letters <code>A–Z</code>, then lowercase <code>a–x</code>. Sixty symbols exactly. A token like <code>3N</code> means 3&nbsp;×&nbsp;60&nbsp;+&nbsp;23&nbsp;=&nbsp;<strong>203</strong>. The rig verified its decoding against a solver's independent decimal transcription: <code>3N&nbsp;→&nbsp;203</code>, <code>3p&nbsp;→&nbsp;231</code>, <code>2l&nbsp;→&nbsp;167</code> — all matching. To build the canonical byte stream, the campaign cross-checked three independent witnesses cell by cell and adjudicated disagreements by majority vote. Of 256 bytes, 11 witnesses disagreed; 5 resolved cleanly, and <strong>6 remain genuinely contested</strong> and flagged as an open item — because settling them needs an OCR trained on Latin characters, and the project's 99%-accurate glyph classifier was trained on <em>runes</em> and can't read them. That honesty matters: those six bytes are marked unsolved, not papered over.</p>
+
+    <p>There's a lovely detail buried in the encoding. The lowercase letter <code>f</code> — value 41 in this base-60 alphabet — is a perfectly legal symbol that <strong>never once appears</strong> in the data. That's the same "F-skip" convention Cicada uses in its own rune-to-number Gematria system elsewhere in the Liber Primus. It's a small signature that says: yes, base-60 was intended; you're reading this right. <span class="mono" style="font-size:0.9em;color:var(--ink-faint)">(A note for the careful: the community's looser version — that the alphabet <span class="refuted">skips f, y, z</span> — is imprecise. <code>y</code> and <code>z</code> are simply out of range in a 60-symbol alphabet by construction. The one in-range symbol that never occurs is <code>f</code>.)</span></p>
+
+    <div class="hexdump reveal">
+      <div class="hx-title">canon_256.bin — the first documented byte stream</div>
+      <pre><span class="off">0x00</span>  <span class="b">cbe7a7ba61ed7eb7 5cf99cdef704b7d4 79ca0f2166893b57 6dc6ad1996428d85</span>
+<span class="off">0x20</span>  <span class="b">7372c52736508505 50541c49e651c74c fd10153b56ab9c50 fe7692456ac47c33</span>
+<span class="off">0x40</span>  <span class="b">7aff19c0c749a96c a44fcdb172902e52 8e3ac9c1ad1c6f41 d3dcc631ec543823</span>
+<span class="off">0x60</span>  <span class="b">de96482253e520ce 7a3f1fda0eb82073 498fc5f736ab23b8 2aed56360d14a3c1</span>
+<span class="off">0x80</span>  <span class="b">c9b35678a98d48ab 0a81e90df52ea098 7dd25cadf6ae99bd e7210e7034fbf9f8</span>
+<span class="off">0xA0</span>  <span class="b">e9d9c0526912faf8 f0e4fe369475d112 eb83a6af9028a751 809c135126c0aa21</span>
+<span class="off">0xC0</span>  <span class="b">009b9f59b073692f 6e4ad144c24c7f15 39af063d4696fb54 8edb943b3a343397</span>
+<span class="off">0xE0</span>  <span class="b">443449f9900075af 6aeac479ee2081ad 908d2ad61638e0c0 719eace6b424bd50</span></pre>
+    </div>
+
+    <p>The canonical 256-byte stream this produced <strong>did not previously exist</strong> in the solver community. It is, itself, a new primary source — the first documented byte-level rendering of pp49–51, with a full provenance and conflict table attached.</p>
+
+    <p><strong>Second, characterize.</strong> What kind of object is this 2,048-bit stream? The Liber Primus refrain is <em>"the primes are sacred,"</em> and the obvious romantic hypothesis is that this is a hidden 2048-bit prime, or an RSA key. The campaign tested every interpretation.</p>
+
+    <div class="readout reveal">
+      <div class="tile">
+        <div class="label">Shannon entropy</div>
+        <div class="val">7.17<small> /8 bits</small></div>
+        <div class="sub">near-random · 161 of 256 values used</div>
+      </div>
+      <div class="tile">
+        <div class="label">Printable ASCII</div>
+        <div class="val">40<small>%</small></div>
+        <div class="sub">longest run = 5 · not text</div>
+      </div>
+      <div class="tile null">
+        <div class="label">A 2048-bit prime?</div>
+        <div class="val">NO</div>
+        <div class="sub">composite in every interpretation</div>
+      </div>
+      <div class="tile null">
+        <div class="label">An RSA modulus?</div>
+        <div class="val">NO</div>
+        <div class="sub">even — ends 0x50 — has small factors</div>
+      </div>
+    </div>
+
+    <p>So the romantic hypotheses die here, cleanly. Its <strong>entropy is 7.17 bits per byte</strong> — genuinely high, near-random; 161 of 256 possible values appear, 95 never do. Only 40% is printable ASCII and the longest printable run is five bytes, so <strong>it is not text</strong>. Read as a big-endian integer, as little-endian, reversed, and split into two 1024-bit halves, it is <strong>composite in every single interpretation</strong> — and it isn't even odd: the number ends in <code>0x50</code>. A prime it is not, and an RSA modulus (which must be odd) it cannot be.</p>
+
+    <p>What it <em>is</em> consistent with is a <strong>pad, a key stream, or a ciphertext</strong> — high-entropy binary material that means nothing on its own and requires an external key to unlock. Which is to say: it belongs to exactly the same class the doublet analysis assigned to the runic pages. The one object six campaigns missed points at the same locked door as everything else.</p>
+
+    <p><strong>Third, attack it anyway.</strong> Maybe the table is itself the key to the runes — especially the short runic lines on its own pages, where the doublet statistic doesn't bite. The campaign tried it exhaustively, then ran the last two catalogued numeric keys anyone had ever proposed through the same harness for completeness.</p>
+
+    <div class="readout reveal">
+      <div class="tile">
+        <div class="label">Configs tested</div>
+        <div class="val">414,304</div>
+        <div class="sub">337,944 payload + 76,360 numeric keys</div>
+      </div>
+      <div class="tile">
+        <div class="label">Best score</div>
+        <div class="val">−6.39</div>
+        <div class="sub">noise floor −7.49 · English −4.01</div>
+      </div>
+      <div class="tile null">
+        <div class="label">Above threshold</div>
+        <div class="val">0</div>
+        <div class="sub">threshold −5.2 · clean null</div>
+      </div>
+      <div class="tile null">
+        <div class="label">Onion-hex XOR lead</div>
+        <div class="val">DEAD</div>
+        <div class="sub">the "hex" is just a JPEG dump</div>
+      </div>
+    </div>
+
+    <p>Both canonical variants of the byte stream, forward and reversed, added and subtracted, run as Vigenère, Beaufort, and Atbash keys, swept across every unsolved page and the whole corpus — the best of 337,944 attempts landed at <strong>−6.385</strong>, squarely in the noise, with <strong>zero</strong> configurations worth even a human glance. The 2012 "Mayan rotation key" and a long digit string from an end-of-puzzle postscript added another 76,360 configs and another clean null. And the once-tantalizing idea of XOR-ing these pages against the 2014 Tor onion trail's hex? Dead on inspection — that "hex" is just a JPEG file dump, an embedded image, not free key material.</p>
+
+    <p>So the net result of Campaign VII is not a solution. It's something more durable: <strong>the one un-analyzed object in the entire corpus is now fully characterized</strong> — provably not a prime, not an RSA key, not text, not a simple key over the runes — and every sourceable numeric lead anyone ever proposed has now been executed and documented as null. The residual mystery is honest and specific: pp49–51 is high-entropy material that would require an externally-held key to interpret, which is the same wall the runes hit. The rig didn't break Cicada. It did something a solver can actually build on: it drew the exact shape of what's left.</p>
+
+    <div class="rule-mark" aria-hidden="true"><span>◆</span></div>
+
+    <p class="kicker">Campaign VIII</p>
+    <h2>The manhunt that comes back empty</h2>
+
+    <p>If you can't break the cipher, you can try to find the person. That was the eighth campaign — a targeted OSINT sweep aimed at the single most likely candidate pool: the cypherpunks.</p>
+
+    <p>This is not a random guess. Cicada's DNA is cypherpunk to the core. PGP-first operational security. Tor infrastructure. The sacralization of prime numbers. An ethos of privacy and enlightenment that reads like it was lifted straight from the 1990s cypherpunk mailing list. A peer-reviewed paper in a Gnostic-studies journal places Cicada's philosophy squarely "within the libertarian concerns of freedom of information and privacy" and situates it in the lineage of Eric Hughes, Timothy May, and John Gilmore — the founding cypherpunks. If Cicada came from anywhere, it came from that world.</p>
+
+    <p>So the campaign — 99 agents, 17 sources fetched, 70 claims extracted, 25 of them adversarially verified by a three-vote panel where two of three votes to refute killed the claim — went looking for a falsifiable thread connecting the ideology to a <em>person</em>. It checked four lenses. All four came back negative.</p>
+
+    <p><strong>Priority-of-knowledge leaks — the smoking gun.</strong> Did any candidate ever reference a Cicada-specific fact — the runic book, the totient method, the "AN END" hash, the base-60 encoding — <em>before</em> it was publicly known? That would be a genuine tell. The answer was zero confirmed leaks. But — and this is the honest caveat that makes the whole result meaningful — this is absence of evidence, not evidence of absence. The relevant Tor v2 onions are permanently dead. The 2012–2014 IRC logs where such a leak would live are largely deleted. The 4chan threads are only partly archived. The highest-weight lens isn't <em>cleared</em>; it's <em>unresolved</em>, because the records that might have held the answer no longer exist.</p>
+
+    <p><strong>Technical fingerprints.</strong> The campaign nailed down the anchors — the signing key <code>7A35090F</code>, RSA-4096, created January 3, 2012 — but found no attribution path. No web-of-trust links to other keys. No reused-key trail. A third-party "Cicada-3301" GitHub repo turned out to hold an unrelated key, a red herring. The community's own verification tool checks new messages against that single oldest key precisely <em>because</em> no trustworthy signing links to anyone else exist.</p>
+
+    <div class="callout">
+      <div class="c-eq">UID <b>845145127</b> = <b>503</b> × <b>509</b> × <b>3301</b></div>
+      <p class="c-note">The signing key's user ID factors into three primes — and 509 × 503 are the exact pixel dimensions of the very first Cicada image. The number-mysticism runs all the way down into the metadata. It's a beautiful fingerprint. It is also not a person.</p>
+    </div>
+
+    <p><strong>Stylometry.</strong> No verified comparison of Cicada's prose to any named candidate exists at any confidence level. Stylometry is never proof anyway — but here it didn't even produce a suggestive hit.</p>
+
+    <p><strong>Thematic alignment.</strong> Well-supported, and explicitly non-attributive. Cypherpunk ideology is all over Cicada. But as one security podcast put it plainly when it raised the cypherpunk link: <em>"Can we be sure that a member of the Cypherpunks movement is behind Cicada? Of course not."</em></p>
+
+    <p>The verdict, delivered honestly, is <strong>"consistent-with, not evidence-of."</strong> Cypherpunk <em>influence</em> is well-supported. Cypherpunk <em>authorship by any named person</em> is unproven — not because nobody looked, but because the falsifiable evidence doesn't exist in the surviving record.</p>
+
+    <p>One last thread, noted honestly and not oversold: Niels Provos — the author of OutGuess, the <em>exact</em> steganography tool Cicada used to hide data in its images — surfaced in the research as the toolchain's source. There is nothing tying him to Cicada beyond that. It's a coincidence of provenance, not a lead. But it's the kind of coincidence that keeps a mystery warm.</p>
+
+    <p class="kicker">What it means</p>
+    <h2>A puzzle built to survive looking</h2>
+
+    <p>Put the two halves together and you get the real shape of this thing.</p>
+
+    <p>On the technical side, a swarm of AI agents did something genuinely useful and genuinely humbling. It exhausted the human-proposed hypothesis space for LP2 and proved, mechanistically, <em>why</em> the popular attacks must fail — the doublet deficit rules out the entire running-key family, and the newly-characterized pp49–51 payload turns out to be one more locked box that needs an external key. That's real progress: it tells future solvers exactly where <em>not</em> to dig, and it produces a new primary source in the process. But the same swarm, for six campaigns, walked past the one object it hadn't been fed — a reminder that thoroughness and completeness are not the same thing, and that the most dangerous blind spot is the one that isn't shaped like the things you already know how to check.</p>
+
+    <p>On the human side, the manhunt comes back empty in a way that isn't a failure at all. Cicada's author left a cryptographic trail so clean it has no web of trust, an ideology so legible it reads like a cypherpunk manifesto, and an operational discipline so complete that a decade later — after a targeted, adversarially-verified sweep of exactly the community they came from — not one falsifiable thread connects the philosophy to a person.</p>
+
+    <div class="pull">
+      <p>The mystery survives not because no one has looked hard enough. It survives because it was built to survive looking.</p>
+    </div>
+
+    <p>And because the parts of the record that might have betrayed the author — the dead onions, the deleted IRC logs, the un-archived threads — are simply gone.</p>
+
+    <p>The cipher may hold forever; a true one-time pad gives up nothing without its key. But the more durable lesson is the one about the object in the data files. The answer to the hardest question wasn't hidden in a place too clever to find. It was sitting in plain sight, in a shape nobody's machine had been taught to read — which, when you think about it, is the most Cicada thing of all.</p>
+
+  </div>
+
+  <footer>
+    <div class="col">
+      The full technical record — the canonical 256-byte stream, the characterization and key-test scripts, the doublet analysis, and the attribution sweep — is committed at <a href="https://github.com/Dukotah/cicada3301">github.com/Dukotah/cicada3301</a>, branch <span class="mono">findings-2026</span>. Every figure here is reproducible from the standard-library Python in <span class="mono">liber-primus/analysis/pp49_51/</span>.<br><br>
+      Confidence is reported honestly throughout: "statistically indistinguishable from a one-time pad under all tested cipher classes" is not "provably unbreakable," and "no leak found in a partly-destroyed record" is not "proven absent." Stylometry is never proof. A valid signature from key 7A35090F proves keyholder continuity — not authorship, and not identity.
+    </div>
+  </footer>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- reveal on scroll ---- */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  if (reduce || !("IntersectionObserver" in window)) {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---- doublet bigram grid ---- */
+  var canvas = document.getElementById("doublet");
+  if (!canvas) return;
+  var ctx = canvas.getContext("2d");
+  var N = 29;
+
+  function cssVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+  // parse "#rrggbb" -> [r,g,b]
+  function hex2rgb(h) {
+    h = h.replace("#", "");
+    if (h.length === 3) h = h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+    return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)];
+  }
+
+  // deterministic pseudo-random so the field is stable across redraws
+  function rand(i, j) {
+    var x = Math.sin((i * 127.1 + j * 311.7 + 13.0)) * 43758.5453;
+    return x - Math.floor(x);
+  }
+
+  var progress = 0; // 0..1 animation of off-diagonal fade-in
+  var started = false;
+
+  function draw() {
+    var W = canvas.clientWidth || 800;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(W * dpr);
+    canvas.style.height = W + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    var accent = hex2rgb(cssVar("--accent") || "#58c0a0");
+    var ember = hex2rgb(cssVar("--ember") || "#d98a5a");
+    var surface = cssVar("--surface") || "#121815";
+
+    ctx.clearRect(0, 0, W, W);
+    ctx.fillStyle = surface;
+    ctx.fillRect(0, 0, W, W);
+
+    var pad = 2;
+    var cell = (W - pad * 2) / N;
+    var gap = Math.max(0.5, cell * 0.06);
+
+    for (var i = 0; i < N; i++) {
+      for (var j = 0; j < N; j++) {
+        var x = pad + j * cell;
+        var y = pad + i * cell;
+        var isDiag = (i === j);
+        var r = rand(i, j);
+        if (isDiag) {
+          // the deficit: mostly empty, a rare faint ember mark (the ~0.66% that survive)
+          var survive = r > 0.86;
+          ctx.fillStyle = "rgba(" + ember[0] + "," + ember[1] + "," + ember[2] + "," + (survive ? 0.34 : 0.05) + ")";
+          ctx.fillRect(x + gap, y + gap, cell - gap * 2, cell - gap * 2);
+        } else {
+          // uniform-ish random field, faded in by progress
+          var a = (0.10 + r * 0.55) * progress;
+          ctx.fillStyle = "rgba(" + accent[0] + "," + accent[1] + "," + accent[2] + "," + a.toFixed(3) + ")";
+          ctx.fillRect(x + gap, y + gap, cell - gap * 2, cell - gap * 2);
+        }
+      }
+    }
+  }
+
+  function animate() {
+    progress += 0.03;
+    if (progress > 1) progress = 1;
+    draw();
+    if (progress < 1) requestAnimationFrame(animate);
+  }
+
+  function start() {
+    if (started) return;
+    started = true;
+    if (reduce) { progress = 1; draw(); }
+    else requestAnimationFrame(animate);
+  }
+
+  // start when the figure scrolls into view
+  if ("IntersectionObserver" in window && !reduce) {
+    var fio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { start(); fio.disconnect(); } });
+    }, { threshold: 0.25 });
+    fio.observe(canvas);
+  } else {
+    start();
+  }
+
+  // redraw on resize and on theme change (keeps colors correct in both themes)
+  var rt;
+  window.addEventListener("resize", function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { if (progress < 1) progress = 1; draw(); }, 120);
+  });
+  if (window.matchMedia) {
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    (mq.addEventListener ? mq.addEventListener.bind(mq, "change") : mq.addListener.bind(mq))(function () { draw(); });
+  }
+  new MutationObserver(function () { draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>
