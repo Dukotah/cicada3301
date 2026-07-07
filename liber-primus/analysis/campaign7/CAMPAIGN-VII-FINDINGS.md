@@ -17,8 +17,9 @@ and not, per-page + whole-book). Bar: `score_norm > -5.2` = hit (real English
 | **B2** | token pad **XOR the 2014 onion-trail hex** (2nd/3rd/4th onion) — the op nobody ran | **−6.597** | **null**; XOR stays high-entropy (no payload) |
 | **token-as-ciphertext** | token bytes as their own cipher (256 single-byte XOR, keyword XOR, prime/totient/prime-1/fib streams mod 256) | printable 0.452 | **null** — no readable ASCII decode |
 | **B4** | page-56 512-bit hash as key: raw bytes, hex-digits, SHAKE-256, SHA-512 & BLAKE2b chains | **−6.679** | **null** across all expansions |
+| **C1** | **doublet-avoiding running key** (beam search over skip trajectory) vs Tao Te Ching / Gospel of Thomas / PGP prose | **−6.086** | **null** — no readable-English break |
 
-Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad,a2_altbase,b2_onion_xor,token_as_ciphertext,b4_hash_kdf}.py`
+Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad,a2_altbase,b2_onion_xor,token_as_ciphertext,b4_hash_kdf,c1_skipkey}.py`
 (writes `*_results.json` beside each script).
 
 None of the confirmed-Cicada numeric artifacts decrypt the runic pages as an additive
@@ -90,6 +91,41 @@ last genuinely "different data type" in LP2 yields nothing in any recoverable pa
 What could still change it: a **corrected p50 transcription** (scream314 flags its own
 p50 base-60 read "wrong!!!"), or the pad pairing with a page/scan we don't have. Both
 require new *external* input, not more computation.
+
+## C1 — the one novel mechanism, tested
+
+Finding #2 killed natural-language running keys because a real key *injects* ~3.3%
+doublets while LP2 shows 0.68%. The escape hatch: a running key where the encoder
+**skips a key char whenever the raw output would create an adjacent ciphertext
+doublet** — this both reproduces the fingerprint and is *not* on the do-not-redo list
+(which covered plain running keys and short-key collision-skip, not a long key with
+insertions). Implemented as a beam search over the key-pointer trajectory (advance ∈
+{1,2}), decrypting with quadgram-guided pruning, over Tao Te Ching / Gospel of Thomas /
+Cicada PGP prose × a coarse offset sweep × the 6 longest pages.
+
+**Result: null (−6.086).** The mild lift above pure noise (−7.4) is just beam-search
+bias — the search cherry-picks English-looking fragments from *any* ciphertext, so
+−6.0 is the floor here, not signal. No page crosses the −5.0 break. This is a bounded
+mechanism test (3 texts, 6 pages, 3 offsets), not an exhaustive one, but it exercises
+the single best-motivated uncovered mechanism and it does not light up.
+
+## Data-provenance caveat surfaced by the token discovery
+
+Verifying the token-page finding exposed a numbering mismatch worth recording:
+`run_stats.load_pages()` returns **57 all-runic pages** (krisyotam `%`-split order), and
+our page 49/50/51 hold **66/92/263 runes** — but scream314's **relikd** images 49/50/51
+are the **80/104/72-token tables**. So **our per-page indices are krisyotam-order, not
+relikd image numbers.** Consequences:
+
+- When cross-referencing any community claim that uses relikd/scream314 numbering
+  (e.g. "pp49-51 are token tables"), **translate the index first** — our "page 49" is
+  not relikd image 49.
+- **The cryptanalysis negatives are unaffected:** every Campaign VII (and prior) probe
+  swept *all* pages *and* the whole-book concatenation, so coverage is label-independent
+  — no page was skipped, only labels differ.
+- A full krisyotam↔relikd page-map (anchored on the solved pages) is the clean fix and
+  is now the remaining piece of roadmap A1. The token tables live in the relikd/scream314
+  image set (vendored), not in the krisyotam rune corpus our rig loads.
 
 ## Standing status
 

@@ -230,8 +230,11 @@ Cheapest-and-highest-leverage first; each writes to `liber-primus/analysis/campa
 token pad behaves as true OTP/random data. What's left needs new *external* input or
 heavier machinery:
 
-1. **C1 — filtered-keystream inversion** — the one *mechanism* attack matched to the
-   real doublet fingerprint; the highest-value remaining *computational* lead. Higher effort.
+1. ✅ **C1 — doublet-avoiding running key** — RUN (bounded), null (−6.086). Beam search
+   over the key-skip trajectory vs 3 major texts; answers finding #2's objection but does
+   not break. The best-motivated computational mechanism is now tested and negative.
+   *(Remaining C1 surface: more candidate texts — but finding #2 argues no natural text
+   works, and the 3 tested are null.)*
 2. **Corrected p50 transcription** — scream314 flags its own p50 base-60 read "wrong!!!";
    a re-read of the p50 token glyphs from the image could change 104 of the 256 pad bytes.
    Needs the page image + careful transcription (external input).
