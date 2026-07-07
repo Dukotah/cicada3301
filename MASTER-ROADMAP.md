@@ -159,21 +159,21 @@ interrupter rule, per-page and whole-book.
 - **B1 — 2012 Mayan rotation key** `10 2 14 7 19 6 18 12 7 8 17 0 19`. ✅ **RUN → null
   (−6.895).** Confirmed Cicada key; forward/reversed × sign × atbash × interrupter,
   per-page + whole-book, all noise. CLOSED. (Campaign VI lead #3.)
-- **B2 — XOR pp49–51 token data ⊕ 2014 onion-trail hex.** A wiki author explicitly
-  proposed XORing the leftover pp49–51 data against the unused hex strings from the
-  2nd/3rd/4th 2014 onion pages and never did it ("I don't know how to XOR things").
-  Known data + named target + an operation literally nobody ran. Depends on A1/A2.
-  (Campaign VI lead #2 — highest-novelty operation.)
+- **B2 — XOR pp49–51 token data ⊕ 2014 onion-trail hex.** ✅ **RUN → null (−6.597).**
+  Both sides sourced and vendored (token pad + 2nd/3rd/4th onion hex, each exactly 256
+  bytes → clean full-length XOR). The op a wiki author proposed and nobody ran is now
+  run: the XOR stays random (entropy ~7.1, no payload) and is null as a key. CLOSED.
+  (Campaign VI lead #2 — was the highest-novelty operation.)
 - **B3 — `HINTS-NEVER-USED.md` numerics as Gematria keys.** ✅ **RUN → null (−6.757).**
   P.S. digit string (3 readings: digits / 2-digit groups / big-int base-29), telnet
   missing-primes + first-difference gaps, all four trailing-space sequences. Every
   stream in noise. CLOSED. Data vendored at
   [`sources/community/krisyotam_HINTS-NEVER-USED.md`](sources/community/krisyotam_HINTS-NEVER-USED.md).
   (Campaign VI lead #4.)
-- **B4 — page-56 512-bit hash as key seed.**
-  `36367763ab73783c…132c2a8b4` (128 hex, preceded by "WITHIN THE DEEP WEB THERE EXISTS
-  A PAGE THAT HASHES TO…"). A pointer, weak as a direct key, but concrete structured
-  data — test XOR / KDF-expansion (SHAKE/HKDF) into a mod-29 keystream. (Campaign VI lead #5.)
+- **B4 — page-56 512-bit hash as key seed.** ✅ **RUN → null (−6.679).**
+  `36367763ab73783c…132c2a8b4` expanded 5 ways (raw bytes, hex-digits, SHAKE-256,
+  SHA-512 chain, BLAKE2b chain) → mod-29 keystream, full sweep. All noise. CLOSED.
+  (Campaign VI lead #5.)
 
 - **Resolved when:** each artifact has a committed result JSON under
   `analysis/campaign7/` with best score and a one-line verdict; readable English
@@ -222,15 +222,21 @@ Cheapest-and-highest-leverage first; each writes to `liber-primus/analysis/campa
 - ✅ **B3 (HINTS numerics)** — RUN, null (−6.757).
 - ⚠️ **A2 (token pad as direct key)** — RUN, null (−6.72); refined forms still open.
 
-**Next up:**
-1. **A2 refined — token pages as their own ciphertext** + **byte-domain XOR** vs runes
-   (not mod-29). The token pad is the live frontier; the naive key pairing is dead.
-2. **B2 — token ⊕ 2014 onion-trail hex.** Blocked only on sourcing the exact 2nd/3rd/4th
-   onion-page hex (not in our vendored corpus yet) — fetch it, then run.
-3. **B4 (page-56 hash as KDF seed)** — mechanical, once the artifact→keystream harness is reused.
-4. **C1 (filtered-keystream inversion)** — the one *mechanism* attack matched to the
-   real fingerprint; higher effort.
-5. **C2, D1, D2** — long-shots; background/opportunistic.
+- ✅ **B2 (token ⊕ onion hex)** — RUN, null (−6.597); XOR stays random, no payload.
+- ✅ **A2 refined (token as its own ciphertext)** — RUN, null; no readable ASCII decode.
+- ✅ **B4 (page-56 hash as KDF)** — RUN, null (−6.679).
+
+**All cheap self-contained key artifacts are now exhausted (every one null).** The
+token pad behaves as true OTP/random data. What's left needs new *external* input or
+heavier machinery:
+
+1. **C1 — filtered-keystream inversion** — the one *mechanism* attack matched to the
+   real doublet fingerprint; the highest-value remaining *computational* lead. Higher effort.
+2. **Corrected p50 transcription** — scream314 flags its own p50 base-60 read "wrong!!!";
+   a re-read of the p50 token glyphs from the image could change 104 of the 256 pad bytes.
+   Needs the page image + careful transcription (external input).
+3. **C2 (per-thematic-set keying), D1 (CT-logs hash brute), D2 (fresh-scan hunt)** —
+   long-shots; background/opportunistic.
 
 **Guardrail:** before running anything, check it against §3. Every run commits a
 result JSON + a one-line verdict so this ledger stays the source of truth. Any score

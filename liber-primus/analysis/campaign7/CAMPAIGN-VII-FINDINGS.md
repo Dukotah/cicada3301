@@ -14,8 +14,11 @@ and not, per-page + whole-book). Bar: `score_norm > -5.2` = hit (real English
 | **B3** | HINTS-NEVER-USED numerics (P.S. digits ×3 readings, telnet missing-primes + gaps, trailing-space seqs 2012/13/14/15) | **−6.757** | **null** — every stream in noise |
 | **A2/B2** | pp49-51 base-60 **token pad** (256 bytes) as key + XOR combos | **−6.720** | **null** as a direct mod-29 key |
 | **A2-altbase** | token pad re-decoded under base-59/60/62/64, each as key | **−6.745** | **null** across all viable bases |
+| **B2** | token pad **XOR the 2014 onion-trail hex** (2nd/3rd/4th onion) — the op nobody ran | **−6.597** | **null**; XOR stays high-entropy (no payload) |
+| **token-as-ciphertext** | token bytes as their own cipher (256 single-byte XOR, keyword XOR, prime/totient/prime-1/fib streams mod 256) | printable 0.452 | **null** — no readable ASCII decode |
+| **B4** | page-56 512-bit hash as key: raw bytes, hex-digits, SHAKE-256, SHA-512 & BLAKE2b chains | **−6.679** | **null** across all expansions |
 
-Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad,a2_altbase}.py`
+Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad,a2_altbase,b2_onion_xor,token_as_ciphertext,b4_hash_kdf}.py`
 (writes `*_results.json` beside each script).
 
 None of the confirmed-Cicada numeric artifacts decrypt the runic pages as an additive
@@ -66,6 +69,27 @@ these are untested:
    is the one operation a wiki author explicitly proposed and nobody ran; **still open.**
 4. **p50 base-60 re-read.** scream314 flags its own p50 decode as wrong; a corrected
    transcription of the p50 token glyphs could change that page's 104 bytes.
+
+## The token pages are OTP-like — avenue closed in every self-contained form
+
+Follow-up on the discovery. Having pinned the pp49-51 token pad as the concrete
+frontier, it was attacked from every angle that needs no external data:
+
+- **As a key over the runes** (mod-29 additive, all bases, XOR combos): null.
+- **XOR the 2014 onion-trail hex** — both sides now vendored (each exactly 256 bytes,
+  clean full-length alignment). The XOR result stays **entropy ~7.1 bits, printable
+  ~0.38, distinct ~160** — indistinguishable from random; **no payload emerges** — and
+  as a key it is null (−6.597). This is the operation a wiki author explicitly proposed
+  and never ran; **now run, and negative.** (The 2nd/3rd/4th onion hex is vendored at
+  `sources/community/scream314_2014.md`.)
+- **As its own ASCII ciphertext** (byte-domain, mod 256): 0/many decodes reach even 0.85
+  printable; best 0.452 (random ≈ 0.37). Not enciphered ASCII text.
+
+**Conclusion:** the token pad behaves as **true one-time-pad / random data** — the
+last genuinely "different data type" in LP2 yields nothing in any recoverable pairing.
+What could still change it: a **corrected p50 transcription** (scream314 flags its own
+p50 base-60 read "wrong!!!"), or the pad pairing with a page/scan we don't have. Both
+require new *external* input, not more computation.
 
 ## Standing status
 

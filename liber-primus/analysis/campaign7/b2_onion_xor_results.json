@@ -1,0 +1,57 @@
+{
+  "campaign": "VII",
+  "track": "B2",
+  "operation": "pp49-51 token pad XOR 2014 onion-trail hex (never run)",
+  "xor_forensics": {
+    "token_pad": {
+      "entropy_bits": 7.165,
+      "printable_ratio": 0.395,
+      "head_hex": "cbe7a7ba61ed7eb7",
+      "distinct": 161
+    },
+    "token^onion2": {
+      "entropy_bits": 7.113,
+      "printable_ratio": 0.383,
+      "head_hex": "a8a5350028134dd9",
+      "distinct": 157
+    },
+    "token^onion3": {
+      "entropy_bits": 7.331,
+      "printable_ratio": 0.391,
+      "head_hex": "4c39fcc5c387c6ea",
+      "distinct": 177
+    },
+    "token^onion4": {
+      "entropy_bits": 7.176,
+      "printable_ratio": 0.316,
+      "head_hex": "74faf2ceabdb9162",
+      "distinct": 164
+    },
+    "onion2^3^4": {
+      "entropy_bits": 7.16,
+      "printable_ratio": 0.371,
+      "head_hex": "5b819cb121a264e6",
+      "distinct": 162
+    }
+  },
+  "threshold": -5.2,
+  "best_score": -6.597,
+  "best": {
+    "key": "token^onion2",
+    "target": "p49",
+    "method": "sign-1 atb1 INT",
+    "plaintext": "WMOEFHAEARRETDEANGTHUCNGPSIAAEMHHSAMESTHRPFOOSTHIAISIAIAOELOXXGOERTOETHREONLHRGA"
+  },
+  "per_key_best": {
+    "token^onion2": -6.597,
+    "onion2": -7.055,
+    "token^onion3": -7.005,
+    "onion3": -6.979,
+    "token^onion4": -6.735,
+    "onion4": -6.914,
+    "onion2^3^4": -7.034,
+    "token^onion2^3^4": -7.019
+  },
+  "n_hits": 0,
+  "hits": []
+}
