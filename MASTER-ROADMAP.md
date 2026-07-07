@@ -16,6 +16,10 @@ hammering. If you are picking this up cold, read this file first, then
 
 ---
 
+> **📕 Companion:** [`NEGATIVE-RESULTS.md`](NEGATIVE-RESULTS.md) is the citable failure
+> archive — every candidate solution Claude Opus 4.8 ran and eliminated, with scores +
+> reproduction. This roadmap is the *forward* view; that is the *record*.
+
 ## 0. How to read this map
 
 - **§1 The wall** — the honest verdict and why ciphertext-only is a dead end.

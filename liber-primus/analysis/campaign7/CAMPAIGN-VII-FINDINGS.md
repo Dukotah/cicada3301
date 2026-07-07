@@ -18,8 +18,10 @@ and not, per-page + whole-book). Bar: `score_norm > -5.2` = hit (real English
 | **token-as-ciphertext** | token bytes as their own cipher (256 single-byte XOR, keyword XOR, prime/totient/prime-1/fib streams mod 256) | printable 0.452 | **null** — no readable ASCII decode |
 | **B4** | page-56 512-bit hash as key: raw bytes, hex-digits, SHAKE-256, SHA-512 & BLAKE2b chains | **−6.679** | **null** across all expansions |
 | **C1** | **doublet-avoiding running key** (beam search over skip trajectory) vs Tao Te Ching / Gospel of Thomas / PGP prose | **−6.086** | **null** — no readable-English break |
+| **token-as-index** | token bytes as a book-cipher index into the runes (abs / gaps / per-page) + as a self gematria message | **−7.339** | **null** — worse than noise (reordering destroys structure) |
+| **C2** | cuneiform / base-60 numerals (17 13 55 1; 1033; 3301) as explicit keys | **−6.725** | **null** — confirms subsumption by exhaustive Vigenère |
 
-Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad,a2_altbase,b2_onion_xor,token_as_ciphertext,b4_hash_kdf,c1_skipkey}.py`
+Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad,a2_altbase,b2_onion_xor,token_as_ciphertext,b4_hash_kdf,c1_skipkey,token_as_index,c2_cuneiform}.py`
 (writes `*_results.json` beside each script).
 
 None of the confirmed-Cicada numeric artifacts decrypt the runic pages as an additive
