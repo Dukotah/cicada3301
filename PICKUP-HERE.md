@@ -1,7 +1,29 @@
-# PICKUP-HERE — where we left off (updated 2026-06-20)
+# PICKUP-HERE — where we left off (updated 2026-07-07)
 
 Resume point for the Cicada 3301 / Liber Primus work. Repo is public at
 https://github.com/Dukotah/cicada3301 (default branch `master`).
+
+## 👉 START HERE: `liber-primus/ELIMINATION-LEDGER.md`
+The single, complete, reproducible record of **everything tried and why it's
+eliminated**, current through Campaign XI (2026-07-07). Read it first — it
+supersedes the scattered "ruled-out" tables in the older docs below.
+
+## What happened since the 2026-06-20 snapshot (Campaigns VII–XI)
+The four "avenues" below were the state as of June 20; work then continued:
+- **Campaign X (positive result):** simulated the community's decade-old
+  autokey/autoclave hypothesis and **excluded it** — all autokey variants sit at
+  the ~3.4% random doublet band; the observed 0.66% deficit is reproduced only by an
+  OTP with an active no-repeat filter. `liber-primus/analysis/CAMPAIGN-X-FINDINGS.md`
+- **Campaign XI:** quantified that filter — **soft, ~83% suppression** (sharpest
+  description yet of the one engineered feature); alt-base (59/61/62/64) readings of
+  the pp49–51 digits used as key over the runes = null.
+  `liber-primus/analysis/CAMPAIGN-XI-FINDINGS.md`
+- **Campaigns VII/IX:** fully characterized the non-runic **pp49–51 base-60 payload**
+  (2048-bit high-entropy blob — not prime/RSA/key/text; structural leads all null).
+- **Campaigns III–VI, VIII:** transcription verified 3 ways (glyph classifier 99.2%);
+  no public external key exists; no named author attributable.
+- **Net:** still no break (expected for OTP-class), but the mechanism is now described
+  to a parameter and appears ahead of the published community state of the art.
 
 ## 📄 Community deliverable
 **`liber-primus/SOLVERS-DOSSIER.md`** = the consolidated solver-facing contribution
