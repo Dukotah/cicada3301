@@ -13,8 +13,9 @@ and not, per-page + whole-book). Bar: `score_norm > -5.2` = hit (real English
 | **B1** | 2012 Mayan rotation key `10 2 14 7 19 6 18 12 7 8 17 0 19` | **−6.895** | **null** — deep noise, no page |
 | **B3** | HINTS-NEVER-USED numerics (P.S. digits ×3 readings, telnet missing-primes + gaps, trailing-space seqs 2012/13/14/15) | **−6.757** | **null** — every stream in noise |
 | **A2/B2** | pp49-51 base-60 **token pad** (256 bytes) as key + XOR combos | **−6.720** | **null** as a direct mod-29 key |
+| **A2-altbase** | token pad re-decoded under base-59/60/62/64, each as key | **−6.745** | **null** across all viable bases |
 
-Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad}.py`
+Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad,a2_altbase}.py`
 (writes `*_results.json` beside each script).
 
 None of the confirmed-Cicada numeric artifacts decrypt the runic pages as an additive
@@ -55,6 +56,9 @@ these are untested:
 
 1. **Token pages as their own ciphertext.** 256 high-entropy bytes could be an encrypted
    payload (the "key" delivered enciphered), not a plaintext key. Needs its own attack.
+   *(Note on the base: contrary to the community claim that base-59 is uniquely valid,
+   both base-59 (max 251) and base-60 (max exactly 255) keep every value in 0-255;
+   base-62/64 overflow. Both viable readings tested as keys → null.)*
 2. **Byte-domain XOR against the runes**, not mod-29 — map runes→bytes (e.g. via the
    Gematria prime or index) and XOR the pad in byte space.
 3. **XOR against the 2014 onion-trail hex** (the proper Track B2). The exact 2nd/3rd/4th
