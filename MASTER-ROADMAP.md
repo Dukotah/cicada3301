@@ -109,9 +109,19 @@ it escapes §1's two proofs before spending compute.
 Ranked by expected value. Each lead is something **no one in this project (and, per
 OSINT, likely no one publicly) has actually run.** All are cheap relative to a solve.
 
+> **▶ Campaign VII progress (2026-07-07).** Executed B1, B3, and the direct-key form of
+> A2 — **all null** (best −6.72). But A1 is **resolved with a real discovery**: relikd
+> pages 49–51 are base-60 **token tables (256 bytes) that our rig excluded** and had
+> never tested as a key. That's now the concrete frontier. Full writeup:
+> [`analysis/campaign7/CAMPAIGN-VII-FINDINGS.md`](liber-primus/analysis/campaign7/CAMPAIGN-VII-FINDINGS.md).
+
 ### Track A — Page-numbering reconciliation (PREREQUISITE, do first)
 
-**Lead A1 — Resolve community page numbers → relikd image indices.**
+**Lead A1 — Resolve community page numbers → relikd image indices.** ✅ **RESOLVED
+(2026-07-07).** scream314's catalog is the Rosetta Stone (scream314 jpg = relikd index
++ 17). Key result: **relikd pages 49/50/51 are the base-60 token tables** — and our
+rig's `%`-split page set *excluded* them (non-runic), so they were never attacked. See
+Campaign VII findings. The reconciliation below stands as context:
 Campaign VI's single strongest lead is a community claim that "**pages 49–51 are not
 runic prose but a ~250-element table of two-char base-59/60 tokens**" — a *different
 data type* than the OTP-runic model. **But verified 2026-07-07:** in our rig (relikd
@@ -130,14 +140,14 @@ numbering diverges from relikd image-numbering past ~p34.
 - **Resolved when:** every community page number has a relikd index or an explicit
   "not in our set," and the token-table page(s) are pinned. **Blocks A2, B2.**
 
-**Lead A2 — Classify the token-table page(s) as base-59/60 numeric data.**
-Once A1 pins the page(s): confirm the ~250 two-char tokens are drawn from exactly 59
-distinct chars (all digits + upper/lower minus `f y z`), and decode under base-59
-(alphabet `0-9 A-Z a-x`, the only permutation whose values all fall 0–255) → a byte
-stream. This byte stream is a **candidate key/pad** the runic campaigns never had.
-
-- **Resolved when:** the token stream is transcribed, decoded to bytes, and either
-  (a) used as a keystream against adjacent runic pages, or (b) shown to be prose/other.
+**Lead A2 — The pp49-51 token pad as key/pad.** ⚠️ **PARTIALLY RUN (2026-07-07).**
+The token bytes are already decoded (scream314): 256 bytes total, 161 distinct (**not a
+permutation/S-box**). Tested as a **direct mod-29 additive keystream** (each page, concat,
+XOR combos, both orders) against every runic page + whole book → **null, best −6.72.**
+Still **OPEN** in these untested forms (Campaign VII findings §"what this does NOT rule
+out"): (1) token pages as their *own* ciphertext; (2) **byte-domain** XOR against runes
+(not mod-29); (3) XOR against the 2014 onion hex (Lead B2); (4) corrected p50 re-read
+(scream314 flags its p50 decode "wrong!!!").
 
 ### Track B — Untested external key artifacts (run against the runic pages)
 
@@ -146,19 +156,19 @@ All of these are concrete, Cicada-authored or Cicada-adjacent numeric data that 
 polyalphabetic shift **and** as an XOR/mod-29 additive keystream, with and without the
 interrupter rule, per-page and whole-book.
 
-- **B1 — 2012 Mayan rotation key** `10 2 14 7 19 6 18 12 7 8 17 0 19`. A confirmed
-  Cicada numeric key (decoded the 2012 Reddit posts). Never applied to LP runes.
-  *Cheapest first run.* (Campaign VI lead #3.)
+- **B1 — 2012 Mayan rotation key** `10 2 14 7 19 6 18 12 7 8 17 0 19`. ✅ **RUN → null
+  (−6.895).** Confirmed Cicada key; forward/reversed × sign × atbash × interrupter,
+  per-page + whole-book, all noise. CLOSED. (Campaign VI lead #3.)
 - **B2 — XOR pp49–51 token data ⊕ 2014 onion-trail hex.** A wiki author explicitly
   proposed XORing the leftover pp49–51 data against the unused hex strings from the
   2nd/3rd/4th 2014 onion pages and never did it ("I don't know how to XOR things").
   Known data + named target + an operation literally nobody ran. Depends on A1/A2.
   (Campaign VI lead #2 — highest-novelty operation.)
-- **B3 — `HINTS-NEVER-USED.md` numerics as Gematria keys.** Three untested streams:
-  the 2012 end-message **P.S. digit string**
-  (`1041279065891998535982789873959431895640…`), the **telnet missing-prime gaps**
-  (between 71 and 1229), and the **trailing-space prime encodings**. Cataloged upstream
-  (`krisyotam/cicada3301`); the cookie hashes there were tested, these were not.
+- **B3 — `HINTS-NEVER-USED.md` numerics as Gematria keys.** ✅ **RUN → null (−6.757).**
+  P.S. digit string (3 readings: digits / 2-digit groups / big-int base-29), telnet
+  missing-primes + first-difference gaps, all four trailing-space sequences. Every
+  stream in noise. CLOSED. Data vendored at
+  [`sources/community/krisyotam_HINTS-NEVER-USED.md`](sources/community/krisyotam_HINTS-NEVER-USED.md).
   (Campaign VI lead #4.)
 - **B4 — page-56 512-bit hash as key seed.**
   `36367763ab73783c…132c2a8b4` (128 hex, preceded by "WITHIN THE DEEP WEB THERE EXISTS
@@ -207,13 +217,20 @@ assuming a plain running key.
 
 Cheapest-and-highest-leverage first; each writes to `liber-primus/analysis/campaign7/`.
 
-1. **B1 (Mayan key)** — one afternoon, zero dependencies, confirmed Cicada key. Run it.
-2. **A1 (page-map)** — unblocks the whole "wrong data type" thesis; pure archival work.
-3. **A2 → B2 (token table → XOR onion hex)** — the highest-novelty operation, gated on A1.
-4. **B3, B4** — mechanical key sweeps once the rig has a clean "artifact → keystream" harness.
-5. **C1 (filtered-keystream inversion)** — the one *mechanism* attack matched to the
-   real fingerprint; higher effort, do after the cheap key sweeps.
-6. **C2, D1, D2** — long-shots; run as background/opportunistic.
+- ✅ **B1 (Mayan key)** — RUN, null (−6.895).
+- ✅ **A1 (page-map)** — RESOLVED; discovered relikd 49–51 = token tables excluded from rig.
+- ✅ **B3 (HINTS numerics)** — RUN, null (−6.757).
+- ⚠️ **A2 (token pad as direct key)** — RUN, null (−6.72); refined forms still open.
+
+**Next up:**
+1. **A2 refined — token pages as their own ciphertext** + **byte-domain XOR** vs runes
+   (not mod-29). The token pad is the live frontier; the naive key pairing is dead.
+2. **B2 — token ⊕ 2014 onion-trail hex.** Blocked only on sourcing the exact 2nd/3rd/4th
+   onion-page hex (not in our vendored corpus yet) — fetch it, then run.
+3. **B4 (page-56 hash as KDF seed)** — mechanical, once the artifact→keystream harness is reused.
+4. **C1 (filtered-keystream inversion)** — the one *mechanism* attack matched to the
+   real fingerprint; higher effort.
+5. **C2, D1, D2** — long-shots; background/opportunistic.
 
 **Guardrail:** before running anything, check it against §3. Every run commits a
 result JSON + a one-line verdict so this ledger stays the source of truth. Any score
