@@ -3,6 +3,15 @@
 Resume point for the Cicada 3301 / Liber Primus work. Repo is public at
 https://github.com/Dukotah/cicada3301 (default branch `master`).
 
+> **🗺️ Read [`MASTER-ROADMAP.md`](MASTER-ROADMAP.md) first** — it is now the top-level
+> map (dig ledger + open surface). The external field is consolidated in
+> [`sources/COMMUNITY-RESEARCH.md`](sources/COMMUNITY-RESEARCH.md).
+>
+> **Update (2026-07-07):** the "all 4 avenues closed" framing below is superseded.
+> **Campaign VI (OSINT) reopened a concrete surface** — a handful of *untested external
+> key artifacts* and a *page-numbering reconciliation* that may mean some pages were
+> never modeled as the right data type. Those are **Campaign VII** in the roadmap §4.
+
 ## 📄 Community deliverable
 **`liber-primus/SOLVERS-DOSSIER.md`** = the consolidated solver-facing contribution
 (verified provenance, full ruled-out map, verified-positives, open threads, tools).

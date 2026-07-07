@@ -2,6 +2,15 @@
 
 A research repository documenting the **Cicada 3301** internet mystery: its puzzles (2012, 2013, 2014), the cryptographic and steganographic techniques used, every credible theory about *who* was behind it, and the current state of the still-unsolved **Liber Primus**.
 
+> **🗺️ Start here — the master map:**
+> - **[`MASTER-ROADMAP.md`](MASTER-ROADMAP.md)** — where we are, **everything we've
+>   already dug** (Campaign I–VI ledger + do-not-redo wall), and the ranked **still-open
+>   surface** to keep hammering (Campaign VII). Read this first.
+> - **[`sources/COMMUNITY-RESEARCH.md`](sources/COMMUNITY-RESEARCH.md)** — the whole
+>   external field in one place: every solver/repo/wiki/tool, what they contributed, and
+>   locally-vendored copies so you never re-research the same ground.
+> - **[`PICKUP-HERE.md`](PICKUP-HERE.md)** — resume notes / current pause point.
+>
 > **📄 For solvers:** the consolidated, reproducible findings on the *unsolved*
 > pages — verified image provenance, the full map of ruled-out attacks, what's
 > verified correct, and the genuinely open threads — are in
