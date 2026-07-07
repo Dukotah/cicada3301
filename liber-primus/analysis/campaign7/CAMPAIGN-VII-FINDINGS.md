@@ -20,8 +20,16 @@ and not, per-page + whole-book). Bar: `score_norm > -5.2` = hit (real English
 | **C1** | **doublet-avoiding running key** (beam search over skip trajectory) vs Tao Te Ching / Gospel of Thomas / PGP prose | **−6.086** | **null** — no readable-English break |
 | **token-as-index** | token bytes as a book-cipher index into the runes (abs / gaps / per-page) + as a self gematria message | **−7.339** | **null** — worse than noise (reordering destroys structure) |
 | **C2** | cuneiform / base-60 numerals (17 13 55 1; 1033; 3301) as explicit keys | **−6.725** | **null** — confirms subsumption by exhaustive Vigenère |
+| **false-holes** | community "untried" ideas: spaces-advance-keystream, first-rune shift, segment key-reset, OutGuess-relocation | **−6.847** (unsolved) | **null** — see below; FH3 re-solves known AN END but nothing new |
 
-Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad,a2_altbase,b2_onion_xor,token_as_ciphertext,b4_hash_kdf,c1_skipkey,token_as_index,c2_cuneiform}.py`
+Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad,a2_altbase,b2_onion_xor,token_as_ciphertext,b4_hash_kdf,c1_skipkey,token_as_index,c2_cuneiform,false_holes}.py`
+
+**Community "false holes"** (`false_holes.py`) — the wiki's own untried ideas, run so
+the record is explicit: FH1 spaces-advance-keystream (−6.904), FH2 first-rune gematria
+shift (−6.847), FH3 segment key-reset (−7.008 on unsolved; it *does* re-solve the known
+AN END page at −5.28, proving the technique works but unlocks nothing new), FH4
+OutGuess-relocation (not runnable — premise false; Campaign VII stego proved no payload
+on the rune pages). All null on unsolved pages.
 (writes `*_results.json` beside each script).
 
 None of the confirmed-Cicada numeric artifacts decrypt the runic pages as an additive

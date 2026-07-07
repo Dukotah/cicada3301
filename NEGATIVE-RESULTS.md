@@ -87,6 +87,21 @@ The OSINT sweep (Campaign VI) reopened concrete leads. All were then run:
 
 Full narrative: [`liber-primus/analysis/campaign7/CAMPAIGN-VII-FINDINGS.md`](liber-primus/analysis/campaign7/CAMPAIGN-VII-FINDINGS.md).
 
+### Community "false holes" — the wiki's own untried ideas, tested
+The Uncovering-Cicada *"Ideas and Suggestions"* wiki and solver repos list methods
+"never tried." We ran them (`campaign7/false_holes.py`) so the record is explicit:
+
+| Idea (as proposed by the community) | Best (unsolved) | Verdict |
+|---|---:|---|
+| **FH1 — "count spaces as runes":** word/clause/line separators *advance* the keystream instead of being ignored | −6.904 | **false hole** — null at every separator-set × keystream |
+| **FH2 — section-split + shift by the first rune's gematria** | −6.847 | **false hole** — null (subsumed by the per-page shift sweep) |
+| **FH3 — segment key-reset Vigenère** (r4nd0mD3v3l0p3r's `splitBy=segment`): key restarts at each boundary | −7.008 | **null on unsolved** — but it *correctly re-solves the known AN END page* (−5.28), so the technique is real and already accounted for; it just unlocks nothing new |
+| **FH4 — "use OutGuess data to relocate the runes before shifting"** | — | **false premise, not runnable** — our Campaign VII stego (real OutGuess 0.4) proved the LP rune pages carry **no** payload; the tabs/spaces OutGuess data belongs to the 2012/2014 *clue* images, not the rune pages. There is no relocation data to apply. |
+
+FH3 is the instructive one: a proposed method that *works* (it re-derives a solved
+page) yet still produces no new plaintext — the clearest possible evidence that the
+wall is the missing key, not a missing technique.
+
 ---
 
 ## Part B — Two mechanistic impossibility results (the strongest findings)
