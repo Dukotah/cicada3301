@@ -57,6 +57,7 @@ Grouped by attack family. "Where" = the deeper writeup + the reproduce command.
 | Every **periodic key**, length 1–40 (Friedman/column-freq, both directions, +Atbash) | ❌ dead | Best score −5.8 = gibberish; validated to recover a known 7-symbol key from synthetic ct | `attack.py vigauto` |
 | **Running keys** from the referenced texts (Mabinogion, Self-Reliance, King in Yellow, Book of the Law, Agrippa) + solved-page plaintext | ❌ dead | All offsets, both directions, +Atbash → nothing | `attack.py runningkey` |
 | **Cicada-thematic esoterica** as running keys (Mathers/Kabbalah Unveiled, alchemical/Gnostic sources) | ❌ dead | Best −6.049, near-random band | Campaign III `analysis/foundation/` |
+| **Expanded thematic corpus** (15 verified texts: Tao Te Ching, Bhagavad Gita, Meditations, Zarathustra, I Ching, Beowulf, Poe/Gold-Bug, Gilgamesh, Dhammapada, Walden, Whitman, Rubáiyát, Gibran, Augustine, Sun Tzu) | ❌ dead | Content-verified; all offsets/signs/Atbash; best −6.048, 0 over threshold | Campaign XII `analysis/CAMPAIGN-XII-FINDINGS.md` |
 | **Cicada's own PGP prose** as key material | ❌ dead | nothing readable | ARMADA-20 `analysis/ARMADA-20-FINDINGS.md` |
 | **Number-theoretic keystreams** (primes, φ, iterated φ, prime gaps, cumsums, page-seeded, all Fibonacci-mod-29 seeds) | ❌ dead | nothing | `attack.py keystream`, `analysis/doublet_probe.py` |
 | **PRNG keystreams** (BBS / LCG / Mersenne Twister seeded) | ❌ dead | nothing | ARMADA-20 |
@@ -99,6 +100,10 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | Payload = plaintext text | ❌ no | 40% ASCII-printable, longest printable run 5 bytes | Campaign VII |
 | Payload structural leads (4×64 = hash digests? relation to AN END 512-bit hash? XOR with P.S. digits?) | ❌ null | Worked, measured, reproducible — all honest nulls | Campaign IX `analysis/pp49_51/` |
 | **Alt-base** readings (59/61/62/64) of the same glyph-digits used as key over the runes | ❌ null | All deep in noise (best −6.06 vs −5.2 threshold) | Campaign XI `analysis/CAMPAIGN-XI-FINDINGS.md` |
+| Payload = **container/format** (PGP/gzip/zip/PNG/DER/base64…) | ❌ no | Magic-byte sniff fwd/rev/decpref clean (lone PGP flag = false positive); base64→noise | Campaign XII `analysis/campaign12/payload_forensics.py` |
+| Payload = **32-byte-block hash** preimage (SHA-256/SHA3-256/blake2s) | ❌ null | 37-string Cicada dict × 3 algos × 16 blocks → 0 hits (IX did 64-byte only) | Campaign XII |
+| Payload = short **repeating-key XOR** | ❌ dead | ks=12 Hamming "dip" falsified — columns at entropy ceiling, ~53% printable = random | Campaign XII |
+| Payload = hidden **image / QR** | ❌ null | 2D bit-matrix autocorrelation ≈0.50 at every raster width; no periodic structure | Campaign XII |
 
 ### F. Attribution / external OSINT (where a key might physically exist)
 | Attack | Verdict | Why | Where |
@@ -125,6 +130,7 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | IX | pp49–51 structural leads | 4×64 / AN-END-hash / XOR leads all worked → null | `analysis/pp49_51/` |
 | X | **Autokey excluded** | Simulated the community's leading hypothesis and disproved it (positive result) | `analysis/CAMPAIGN-X-FINDINGS.md` |
 | XI | Mechanism quantified | No-repeat filter = **soft, ~83% suppression**; alt-base-as-key null | `analysis/CAMPAIGN-XI-FINDINGS.md` |
+| XII | Burn-down | Payload: no format/32-byte-preimage/repeating-XOR/image; +15 verified thematic keytexts null (best −6.048) | `analysis/CAMPAIGN-XII-FINDINGS.md` |
 
 ---
 
@@ -136,9 +142,12 @@ close them:
 1. **An untried already-public keytext** Cicada expected solvers to *recognize*. A
    running-key search over a real text is **falsifiable** (the right text at the right
    alignment would decrypt to readable, high-scoring English), so this is the one
-   productive avenue left. We tested the *named/referenced* texts and a first pass of
-   thematic esoterica (Campaign III) — but the space of conceivable primary sources is
-   not exhausted. **This is why we can't say "100%."**
+   productive avenue left. We tested the *named/referenced* texts, a first pass of
+   thematic esoterica (Campaign III), and 15 further verified thematic texts
+   (Campaign XII) — but the space of conceivable primary sources is not exhausted, and
+   5 candidates failed on transient network errors. **This is why we can't say "100%."**
+   Trivially extendable: add a slug/ID to `analysis/campaign12/fetch_keytexts.py` and
+   re-run `run_sweep.py`.
 2. **The "AN END" deep-web page** — the only place a key might physically exist.
    Cold trail (Tor v2 dead). One documented long-shot: CT-log brute force of the hash.
 
