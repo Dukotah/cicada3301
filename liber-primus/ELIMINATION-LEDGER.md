@@ -58,6 +58,7 @@ Grouped by attack family. "Where" = the deeper writeup + the reproduce command.
 | **Running keys** from the referenced texts (Mabinogion, Self-Reliance, King in Yellow, Book of the Law, Agrippa) + solved-page plaintext | ❌ dead | All offsets, both directions, +Atbash → nothing | `attack.py runningkey` |
 | **Cicada-thematic esoterica** as running keys (Mathers/Kabbalah Unveiled, alchemical/Gnostic sources) | ❌ dead | Best −6.049, near-random band | Campaign III `analysis/foundation/` |
 | **Expanded thematic corpus** (15 verified texts: Tao Te Ching, Bhagavad Gita, Meditations, Zarathustra, I Ching, Beowulf, Poe/Gold-Bug, Gilgamesh, Dhammapada, Walden, Whitman, Rubáiyát, Gibran, Augustine, Sun Tzu) | ❌ dead | Content-verified; all offsets/signs/Atbash; best −6.048, 0 over threshold | Campaign XII `analysis/CAMPAIGN-XII-FINDINGS.md` |
+| **Armada corpus — 82 more never-tested texts** across 10 lanes (Hermetica/alchemy, occult/magick, Kabbalah/Gnostic, world scripture, Norse/runic, English canon, philosophy, math/science, cypherpunk, mysticism/poetry: Corpus Hermeticum, Kybalion, full Crowley Liber set, Enochian Calls, Book of Enoch, Zohar, Koran, Eddas, Paradise Lost, Euclid, Principia, manifestos, Rumi…) | ❌ dead | 13-agent Workflow; verified sources; best −5.809, 0 over threshold, verify phase found nothing | Campaign XIII `analysis/CAMPAIGN-XIII-FINDINGS.md` |
 | **Cicada's own PGP prose** as key material | ❌ dead | nothing readable | ARMADA-20 `analysis/ARMADA-20-FINDINGS.md` |
 | **Number-theoretic keystreams** (primes, φ, iterated φ, prime gaps, cumsums, page-seeded, all Fibonacci-mod-29 seeds) | ❌ dead | nothing | `attack.py keystream`, `analysis/doublet_probe.py` |
 | **PRNG keystreams** (BBS / LCG / Mersenne Twister seeded) | ❌ dead | nothing | ARMADA-20 |
@@ -112,6 +113,10 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | Any **publicly-published external key** ever existed | ❌ none found | AN END page / onion7 / international communities all dry; every solved page is self-contained | Campaigns V, VI |
 | **Named author** attribution (cypherpunk lineage) | ❌ unproven | "Consistent-with, not evidence-of"; zero priority-of-knowledge leaks | Campaign VIII `analysis/attribution/` |
 | **"AN END" deep-web page** (hash `36367763…c2a8b4`) recovery | ⚠️ cold | Never confirmed found; likely lost to Tor v2 deprecation (Oct 2021) | `analysis/DEEPWEB-HASH-OSINT.md` |
+| **CT-log brute** for the AN END hash (was a documented long-shot) | ❌ non-viable | CT logs hold CA-issued cert domains, not page contents/v2 onions → no relevant candidates exist | Campaign XIII |
+| "AN END hash = v2-onion payload" theory (monokro.me 2024) | ❌ debunked | Standard first-80-bit base32 = `gy3hoy5lon4dy6xs` ≠ theory's cherry-picked address | Campaign XIII |
+| "AN END hash = ed25519/v3 onion" theory | ❌ debunked | Anachronistic — v3 onions didn't exist until 2017; AN END is 2014 | Campaign XIII |
+| **Current solve state** (any page solved / key published since 2017?) | ✅ confirmed none | Independent 2022–26 sources: LP2 still unsolved, no key ever published, no authenticated 3301 activity since Apr-2017 PGP msg; Schoenberger 2023 self-claim fails the PGP gate | Campaign XIII |
 
 ---
 
@@ -131,6 +136,7 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | X | **Autokey excluded** | Simulated the community's leading hypothesis and disproved it (positive result) | `analysis/CAMPAIGN-X-FINDINGS.md` |
 | XI | Mechanism quantified | No-repeat filter = **soft, ~83% suppression**; alt-base-as-key null | `analysis/CAMPAIGN-XI-FINDINGS.md` |
 | XII | Burn-down | Payload: no format/32-byte-preimage/repeating-XOR/image; +15 verified thematic keytexts null (best −6.048) | `analysis/CAMPAIGN-XII-FINDINGS.md` |
+| XIII | Armada | +82 never-tested keytexts across 10 lanes null (best −5.809); fresh OSINT confirms still-unsolved-2026, closes CT-log avenue, debunks 2 AN END onion theories; surfaces ~75-page transcription gap | `analysis/CAMPAIGN-XIII-FINDINGS.md` |
 
 ---
 
@@ -142,14 +148,20 @@ close them:
 1. **An untried already-public keytext** Cicada expected solvers to *recognize*. A
    running-key search over a real text is **falsifiable** (the right text at the right
    alignment would decrypt to readable, high-scoring English), so this is the one
-   productive avenue left. We tested the *named/referenced* texts, a first pass of
-   thematic esoterica (Campaign III), and 15 further verified thematic texts
-   (Campaign XII) — but the space of conceivable primary sources is not exhausted, and
-   5 candidates failed on transient network errors. **This is why we can't say "100%."**
-   Trivially extendable: add a slug/ID to `analysis/campaign12/fetch_keytexts.py` and
-   re-run `run_sweep.py`.
+   productive avenue left. We tested the *named/referenced* texts, thematic esoterica
+   (Campaign III), 15 verified thematic texts (Campaign XII), and **82 more across 10
+   lanes (Campaign XIII)** — 112+ named texts eliminated total — but the space of
+   conceivable primary sources is not exhausted. **This is why we can't say "100%,"**
+   though the frontier is now much narrower. Trivially extendable: add a slug/ID to
+   `analysis/campaign12/fetch_keytexts.py` and re-run `run_sweep.py`.
 2. **The "AN END" deep-web page** — the only place a key might physically exist.
-   Cold trail (Tor v2 dead). One documented long-shot: CT-log brute force of the hash.
+   Cold trail (Tor v2 dead). CT-log brute is now **ruled out as non-viable** (Campaign
+   XIII); the only tractable-but-low-prior path left is a finite lookup of archived
+   v2-onion corpora.
+3. **Transcription coverage gap (new, Campaign XIII):** the community runic corpus has
+   grown to **~75 pages** since this project ingested pages 0–55 (~4 more transcribed
+   by late 2024). Not a solve path, but any future statistics/attack should run over the
+   *complete* current page set — verify + ingest the additional pages first.
 
 ## Do NOT re-run (proven dead — reasons recorded above)
 More keywords • more short/periodic keys • more number-theoretic or PRNG keystreams •
