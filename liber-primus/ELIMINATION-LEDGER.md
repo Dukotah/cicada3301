@@ -70,6 +70,8 @@ Grouped by attack family. "Where" = the deeper writeup + the reproduce command.
 | **Plaintext & ciphertext autokey** (the community's decade-old leading hypothesis) | ❌ **excluded** | Simulated directly: all 4 autokey variants sit at 3.3–4.2% doublets (random band). Autokey does **not** suppress doublets. | Campaign X `analysis/CAMPAIGN-X-FINDINGS.md` |
 | **First-difference / integral** inversion | ❌ dead | Integrating normalizes doublets to ~3.55% but the underlying stream stays flat-random. Deficit IS a differencing artifact; no plaintext. | `analysis/armada/FOLLOWUP-TESTS.md` |
 | **Page-on-page key reuse / in-depth** | ❌ dead | No two pages show a shared-keystream difference signal | ARMADA reports |
+| **Corpus-wide periodicity / key reuse** (any lag 1–6478, period 41–2000) | ❌ dead | Prior test was per-page/no-skip only; now scanned book-wide: 0 coincidence peaks >5σ, column IoC flat (max 1.087) | Campaign XIV `analysis/campaign14/probes.py` P1–P2 |
+| **Generalized-combiner feedback / many-to-few homophonic** | ❌ dead | Beyond additive autokey & bijective substitution: off-diagonal bigram χ² vs filtered null = +0.81σ (flat), no second-order structure | Campaign XIV P4 |
 | **Unfiltered one-time pad** | ❌ dead | Plain pads sit at ~3.45% doublets too — the deficit needs **active** suppression | Campaign X |
 
 ### C. Different cipher classes
@@ -137,6 +139,7 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | XI | Mechanism quantified | No-repeat filter = **soft, ~83% suppression**; alt-base-as-key null | `analysis/CAMPAIGN-XI-FINDINGS.md` |
 | XII | Burn-down | Payload: no format/32-byte-preimage/repeating-XOR/image; +15 verified thematic keytexts null (best −6.048) | `analysis/CAMPAIGN-XII-FINDINGS.md` |
 | XIII | Armada | +82 never-tested keytexts across 10 lanes null (best −5.809); fresh OSINT confirms still-unsolved-2026, closes CT-log avenue, debunks 2 AN END onion theories; surfaces ~75-page transcription gap | `analysis/CAMPAIGN-XIII-FINDINGS.md` |
+| XIV | Fable 5 red-team + probes | Fresh-eyes review caught 4 over-claims → all closed by measurement (corpus-wide periodicity P1–P2, combiner/homophonic P4); word boundaries English-like (P5); continuous stream in book order (P3); ~75-page "gap" = solved pages, no new unsolved material | `analysis/CAMPAIGN-XIV-FINDINGS.md` |
 
 ---
 
@@ -158,10 +161,20 @@ close them:
    Cold trail (Tor v2 dead). CT-log brute is now **ruled out as non-viable** (Campaign
    XIII); the only tractable-but-low-prior path left is a finite lookup of archived
    v2-onion corpora.
-3. **Transcription coverage gap (new, Campaign XIII):** the community runic corpus has
-   grown to **~75 pages** since this project ingested pages 0–55 (~4 more transcribed
-   by late 2024). Not a solve path, but any future statistics/attack should run over the
-   *complete* current page set — verify + ingest the additional pages first.
+2b. **Word-length skeleton match (best fresh avenue, Campaign XIV / Fable red-team):** an
+   OTP hides symbol values but not word boundaries, which are preserved and — measured —
+   English-shaped (P5). Slide each page's rune-word-length sequence over the 112+
+   already-fetched corpora treated as **plaintext** (not key); a match beyond the
+   shuffled-control FPR yields plaintext directly. Full proposal in
+   `analysis/campaign14/REDTEAM-PROPOSALS.md`.
+2c. **Skip-tolerant / filter-aware re-decode (soundness patch):** all keytext/keystream
+   nulls assumed *rigid* key alignment; a doublet filter perturbing key consumption could
+   make them unsound. A filter-aware beam decoder + Old-English/Latin re-scoring over the
+   existing corpus would discharge the last conditional-null worries.
+3. ~~Transcription coverage gap~~ — **RESOLVED (Campaign XIV):** the community's ~75-page
+   figure is 72 rune-pages including the **already-solved** intro/koan pages (elevated
+   IoC, normal doublets). There is **no new *unsolved* material**; pages 0–55 are the
+   complete unsolved corpus.
 
 ## Do NOT re-run (proven dead — reasons recorded above)
 More keywords • more short/periodic keys • more number-theoretic or PRNG keystreams •

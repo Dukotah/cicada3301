@@ -1,0 +1,40 @@
+======================================================================
+CAMPAIGN XIV probes -- 55 unsolved pages, 12956 runes
+======================================================================
+
+P1  CORPUS-WIDE SELF-COINCIDENCE (kappa) scan, lags 1..6478
+  baseline expected coincidence = 3.448%  (random)
+  lags with coincidence > 5 sigma above random: 0
+    NONE -> no corpus-wide key reuse / periodicity at ANY lag 1..6478. OTP verdict holds.
+
+P2  LONG-PERIOD COLUMN IoC.N, periods 41..2000  (never scanned before)
+  English IoC.N ~ 1.73; random/OTP ~ 1.00. A periodic key of length P spikes at P.
+  top 5 periods by column IoC.N: P=1905 (1.087), P=1941 (1.080), P=1870 (1.069), P=1333 (1.068), P=1338 (1.064)
+  max 1.087 at P=1905  -> FLAT (no periodic key)
+
+P3  PAGE-BOUNDARY doublet continuity
+  boundaries: 54 | doublets at boundary: 0 | expected if unsuppressed: 1.86
+  -> suppression CONTINUES across page breaks (one continuous stream in book order)
+
+P4  BIGRAM structure beyond monograms (independence model + MC filtered null)
+  off-diagonal chi2 (independence) real = 816   df ~ 783
+  filtered-uniform MC null: 787 +- 36  (200 samples)
+  real vs null: +0.81 sigma  -> FLAT: no second-order structure beyond the known doublet filter (kills combiner-feedback & many-to-few homophonic)
+
+P5  WORD-LENGTH channel (OTP cannot hide word boundaries)
+  unsolved: 3316 words, mean len 3.91
+  solved Cicada ref (AN END/PARABLE): 51 words, mean len 3.53
+  unsolved dist : 0.10 0.19 0.24 0.17 0.11 0.07 0.05 0.04 0.02 0.01 0.01 0.00
+  solved   dist : 0.12 0.27 0.18 0.20 0.08 0.08 0.04 0.02 0.00 0.00 0.00 0.02
+  random   dist : 0.26 0.19 0.15 0.08 0.08 0.06 0.05 0.03 0.02 0.02 0.01 0.04
+  total-variation distance:  unsolved->solved = 0.157   unsolved->random = 0.224
+  key tell: 1-rune words  unsolved 0.10 / solved 0.12 / random 0.26  (language suppresses 1-letter words; random doesn't)
+  -> boundaries are ENGLISH-LIKE (closer to solved Cicada than to random segmentation)  [directional: solved ref is only 51 words]
+
+P6  pp49-51 payload as a 0..55 permutation window
+  mod-56 permutation-of-0..55 window: NONE
+  -> payload is NOT an encoded page-order permutation / offset table  (rank-order 'permutations' are trivial for any distinct window, so not tested)
+
+======================================================================
+Campaign XIV probes complete.
+======================================================================
