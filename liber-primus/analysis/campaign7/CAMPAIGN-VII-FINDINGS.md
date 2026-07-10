@@ -21,6 +21,8 @@ and not, per-page + whole-book). Bar: `score_norm > -5.2` = hit (real English
 | **token-as-index** | token bytes as a book-cipher index into the runes (abs / gaps / per-page) + as a self gematria message | **−7.339** | **null** — worse than noise (reordering destroys structure) |
 | **C2** | cuneiform / base-60 numerals (17 13 55 1; 1033; 3301) as explicit keys | **−6.725** | **null** — confirms subsumption by exhaustive Vigenère |
 | **false-holes** | community "untried" ideas: spaces-advance-keystream, first-rune shift, segment key-reset, OutGuess-relocation | **−6.847** (unsolved) | **null** — see below; FH3 re-solves known AN END but nothing new |
+| **hill5-magic** | the book's OWN three matrices (5×5 trace-1033, 5×5 trace-3301, 4×4) + φ-variants as Hill keys: M, Mᵀ, M⁻¹, (Mᵀ)⁻¹ | **−6.873** | **null** — all six invertible mod 29, all transforms noise |
+| **wordsum-selfkey** | 2016 hint "their numbers are the direction": word gematria-sums drive next-word shift (5 variants) | **−6.897** | **null** — word-granular self-keying is not the mechanism |
 
 Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad,a2_altbase,b2_onion_xor,token_as_ciphertext,b4_hash_kdf,c1_skipkey,token_as_index,c2_cuneiform,false_holes}.py`
 

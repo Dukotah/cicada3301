@@ -3,7 +3,8 @@
 **What a frontier AI model eliminated, so the next researcher doesn't repeat it.**
 
 _Analysis engine: **Claude Opus 4.8** (Anthropic), driven via Claude Code as a
-multi-agent "armada." Work performed 2026-06 → 2026-07 on
+multi-agent "armada"; the final hint-derived probes (hill5-magic, wordsum-selfkey)
+ran under **Claude Fable 5**. Work performed 2026-06 → 2026-07 on
 [github.com/Dukotah/cicada3301](https://github.com/Dukotah/cicada3301). Every entry
 below is a **run, recorded, reproducible negative** — an approach that was tried
 against the unsolved Liber Primus (LP2) pages and did **not** yield the answer._
@@ -101,6 +102,33 @@ The Uncovering-Cicada *"Ideas and Suggestions"* wiki and solver repos list metho
 FH3 is the instructive one: a proposed method that *works* (it re-derives a solved
 page) yet still produces no new plaintext — the clearest possible evidence that the
 wall is the missing key, not a missing technique.
+
+### "Cicada told us the approach" — the hint-derived methods, tested
+The strongest meta-hypothesis (Cicada's puzzles are self-teaching, so the verified
+hints encode the method) was audited systematically: every primary-source hint was
+mapped to its operational method classes and each class checked against the record
+([`liber-primus/analysis/campaign7/HINT-DERIVED-METHODS.md`](liber-primus/analysis/campaign7/HINT-DERIVED-METHODS.md)).
+Three results a future researcher should know:
+
+1. **The "find the right keyword" genre is mechanically dead.** Per-page exhaustive
+   Vigenère L1–4 + interrupter beam and hill-climb L4–12 already covered **every
+   possible keyword** of those lengths — so even if a hint names the key
+   (SACRED, INSTAR, EMERGENCE, …), it was already tried. No keyword ≤ ~12 runes solves
+   any unsolved page. Stop keyword-hunting.
+2. **The book's own matrices are not the key** (`hill5_magic.py`): the three matrices
+   Cicada printed (5×5 trace-1033 from SOME WISDOM, 5×5 trace-3301, 4×4 trace-10673) +
+   φ-substituted variants, as Hill ciphers mod 29 — all six **are invertible** (fair
+   test), all transforms (M, Mᵀ, M⁻¹, (Mᵀ)⁻¹), per page + whole book → best −6.873, null.
+   First rigorously scored, recorded run of these matrices.
+3. **"Their numbers are the direction" (verified 2016 hint) does not cash out as
+   word-sum self-keying** (`wordsum_selfkey.py`): gematria-prime-sums of words driving
+   the next word's shift (cipher-fed, plain-fed, cumulative, φ-of-sum, rune-prime
+   autokey) → best −6.897, null.
+
+The structural counter-argument (HINT-DERIVED-METHODS.md §4) explains why: any
+deterministic scheme derived from *public* material is a fixed keystream, but the
+doublet fingerprint is that of a **random filtered stream**. The hints most plausibly
+describe how to use a key that was never published — not how to derive one.
 
 ---
 
