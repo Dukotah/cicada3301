@@ -53,3 +53,35 @@ three deviations — all now investigated (`analysis/campaign7/build_pagemap.py`
    page image: does relikd image 56 begin with an ᚠ?** (Impact if real: shifts
    non-interrupter keystream alignment by one on this page; interrupter-aware attacks
    are unaffected since a leading ᚠ is skipped.)
+
+## Image adjudications (2026-07-10) — vision on targeted regions
+
+Fetched the original page images (scream314 assets = onion7-lineage) and read the
+disputed regions directly. Results:
+
+1. **The AN END leading-ᚠ question is CLOSED — scream314 was right.** The page
+   (scream 73.jpg) physically begins with a **giant red illuminated ᚠ** (drop-cap,
+   manuscript style). The canonical lineage (krisyotam/relikd/rtkd) omits it; the
+   omission is *editorial* and benign for the solve (ᚠ is the interrupter rune —
+   skipped by the keystream — and the φ(p)−1 solve reproduces cleanly either way).
+   scream314 transcribes the page faithfully. Since scream matches canon exactly on
+   every unsolved page (this map's exact-match result), **no unsolved page hides an
+   omitted initial** — keystream alignments in all prior attacks stand.
+2. **First independent verification of the token-page transcriptions.** Re-read
+   relikd 49 & 50 (scream 66/67.jpg) from the images: **glyph-for-glyph match** with
+   scream's published tokens (13×8=104 on p50; 10×8=80 on p49). The "wrong!!!" flag
+   on p50 reflects the font's inherent ambiguity classes **{I,l}** and **{0,O}** —
+   visually identical/near-identical glyphs with different base-59/60 values — not a
+   transcription failure.
+3. **New structural fact:** relikd 49 (scream 66.jpg) carries BOTH the final runic
+   paragraph (= canon segment 49: 3 lines, 66 runes, verified word-for-word) ending
+   with the **red end-marker block**, AND the first token table directly below it.
+   The token data is an *appendix that begins where the runic book explicitly ends.*
+   Also: relikd-repo file p55 = canon segment 54 = the cicada-emblem final page —
+   the repo's file numbering diverges from scream's relikd column at the tail (the
+   repo does not host the AN END/parable images).
+4. **Robustness upgrade for the token-pad negatives:** the {I,l}/{0,O} ambiguity
+   affects at most ~10 of 256 pad bytes. A correct key/XOR hypothesis would still
+   show ~96% signal under that corruption (near-English scores, entropy collapse);
+   every test showed pure noise. **The Campaign VII token-pad negatives therefore
+   hold across the entire transcription-ambiguity space.**

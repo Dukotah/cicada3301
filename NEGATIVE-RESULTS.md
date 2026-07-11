@@ -174,10 +174,14 @@ Detail: [`liber-primus/analysis/osint/CAMPAIGN-VI-OSINT-FINDINGS.md`](liber-prim
 Not everything is closed — these are untried or need external input. If you pick this
 up, **start here**, not at Part A:
 
-1. **A corrected pp49-51 (p50) transcription** from the page image. scream314 flags its
-   own p50 base-60 read "wrong!!!"; a clean re-read could change 104 of the 256 token-pad
-   bytes and reopen the token-as-key tests. (AI vision failed on these dense pages; needs
-   a human or a per-glyph pipeline.)
+1. ~~A corrected pp49-51 (p50) transcription~~ **DONE (2026-07-10): re-read from the
+   images.** The token transcriptions are corroborated glyph-for-glyph; the "wrong!!!"
+   flag reflects the font's inherent {I,l}/{0,O} ambiguity (≤~10 of 256 bytes), and the
+   token-pad negatives are robust across that entire ambiguity space (a correct
+   hypothesis would still show ~96% signal; all tests showed pure noise). Also
+   image-adjudicated: AN END physically begins with an illuminated ᚠ that canon omits
+   editorially (benign — interrupter-skipped); no unsolved page hides an omitted
+   initial. See PAGE-MAP.md §Image adjudications.
 2. **The unfound deep-web page** that page-56 hashes to (`36367763…c2a8b4`) — the only
    place a key might physically persist. Tor v2 host is dead; a CT-log / archive hunt is
    the low-odds tail.
