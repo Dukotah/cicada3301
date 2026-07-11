@@ -26,7 +26,7 @@ and not, per-page + whole-book). Bar: `score_norm > -5.2` = hit (real English
 | **reading-direction** | direction hint read literally: reversed / boustrophedon / column-major reading orders × solved-page cipher suite | **−6.717** (unsolved) | **null** — control correctly re-reads known parable at −4.42 |
 | **page-map** | build the 3-scheme numbering Rosetta Stone (PAGE-MAP.md) | — | ✅ artifact; rediscovered known p24 divergence at exact position; adjudicated 2 scream314 typos; surfaced the relikd-56 leading-  open question |
 
-Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad,a2_altbase,b2_onion_xor,token_as_ciphertext,b4_hash_kdf,c1_skipkey,token_as_index,c2_cuneiform,false_holes}.py`
+Reproduce: `python3 analysis/campaign7/{b1_mayan,b3_hints,a2_tokenpad,a2_altbase,b2_onion_xor,token_as_ciphertext,b4_hash_kdf,c1_skipkey,token_as_index,c2_cuneiform,false_holes,hill5_magic,wordsum_selfkey,reading_direction,build_pagemap}.py`
 
 **Community "false holes"** (`false_holes.py`) — the wiki's own untried ideas, run so
 the record is explicit: FH1 spaces-advance-keystream (−6.904), FH2 first-rune gematria
