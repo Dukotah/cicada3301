@@ -81,6 +81,36 @@ This sharpens rather than contradicts the prior attribution sweep's "stylometry
 empty" note: it was empty because the corpus is quantifiably below the floor, and
 that appears to be by design.
 
+## Follow-up: could a *small candidate pool* rescue it? (calibration + rejection)
+
+A fair objection: the people who could have built Cicada — cypherpunks with the
+exact stack (crypto + stego + number theory + esoterica + opsec) active c.2012 —
+are a *small, enumerable* pool (~dozens), and closed-set attribution needs far
+less text than open-set. We tested this properly instead of assuming.
+
+- **Raw power at 359 words is real.** Burrows's Delta, leave-one-work-out on
+  known authors (Carroll, Blake) vs a 9-author pool (chance 11%): 76% correct at
+  359 words, collapsing only below ~200w (`calibration_power.py`). So length is
+  *not* the fundamental blocker for a small pool — the user's intuition was right.
+- **But the naming gate fails.** A matcher always returns a nearest name, even
+  when the true author is absent. `calibration_reject.py`: at 359w the
+  correct-match Delta (median 150.7) and the *forced-wrong* impostor Delta
+  (median 157.3) overlap almost entirely — a threshold accepting 80% of true
+  matches also accepts **62% of impostors**. You cannot tell "found them" from
+  "accused an innocent."
+- **Demonstrated live.** Running Cicada's actual 365 words against 8 candidates
+  (`cicada_rank.py`), the confident "top match" is **Richard Stallman** — over
+  Hughes by **1.44 Delta**, inside a **6.61** noise band, with the top six tied.
+  It is naming the wrong person with a straight face. That is the whole point:
+  the 76% closed-set accuracy is a *lie for attribution purposes* because it
+  assumes the author is already in the lineup. Drop that assumption and confident
+  matches are wrong most of the time.
+
+**So: identification is not possible here, but not for the reason I first gave.**
+The blocker isn't only sample length — it's that the open-set problem (is the
+author even in our pool?) is unsolvable at this length, so any name the method
+emits is a lead-shaped artifact, never an identification.
+
 ## Honest limits
 
 Profiling on ~359 words is directional, not probative. The register observation
