@@ -140,13 +140,25 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | XII | Burn-down | Payload: no format/32-byte-preimage/repeating-XOR/image; +15 verified thematic keytexts null (best −6.048) | `analysis/CAMPAIGN-XII-FINDINGS.md` |
 | XIII | Armada | +82 never-tested keytexts across 10 lanes null (best −5.809); fresh OSINT confirms still-unsolved-2026, closes CT-log avenue, debunks 2 AN END onion theories; surfaces ~75-page transcription gap | `analysis/CAMPAIGN-XIII-FINDINGS.md` |
 | XIV | Fable 5 red-team + probes | Fresh-eyes review caught 4 over-claims → all closed by measurement (corpus-wide periodicity P1–P2, combiner/homophonic P4); word boundaries English-like (P5); continuous stream in book order (P3); ~75-page "gap" = solved pages, no new unsolved material | `analysis/CAMPAIGN-XIV-FINDINGS.md` |
+| XV | **Label-free transcription audit** | Clustered glyphs by shape with canon never shown; canon = the natural visual partition (ARI 0.75, homogeneity→0.98). First confirmation independent of the labels; only fragile locus = ᚩ/ᚪ/ᚫ (10.7%, crypto-inert) | `analysis/independent-read/` |
+| XVI | Stylometry + attribution power | Cicada's connected prose = 359 words (floor ~500–1000/doc) → un-attributable; closed-set naming gate fails at 359w (62% impostor acceptance); live demo mis-names "Stallman" inside the noise band | `analysis/stylometry/` |
+| XVII | **Red-team the assumption stack** | 8 fronts attacked, all sealed: page-56-hash-preimage-of-internal-object, interrupter-masked running key, plaintext-feedback autokey, crib-drag fixed-function autokey, serialization (reversed/boustrophedon), selection/acrostic, 1-bit channel, **Latin plaintext** (language-independent exclusions), **book cipher** (KJV/Mabinogion/Milton word-salad) | `analysis/CAMPAIGN-XVII-FINDINGS.md`, `analysis/red_team.py`, `analysis/latin/`, `analysis/bookcipher/` |
 
 ---
 
 ## Still genuinely open (the honest frontier)
 
-Only two things remain, and both are **external** — nothing in the ciphertext can
-close them:
+**Update (Campaign XVII — assumption-stack red-team):** the eight load-bearing
+premises the whole effort rested on have now each been attacked directly and hold —
+key, reading order, hidden subsequence/acrostic, 1-bit channel, transcription,
+fixed-function autokey, **plaintext language** (Latin sealed; the load-bearing
+exclusions are language-independent), and **book cipher** (pointer schemes into
+Cicada's known books yield only word-salad). What survives is therefore only the
+**unbounded** (multi-rune-history feedback; a book outside Cicada's known references)
+or the **external** items below. The internal attack surface is closed.
+
+Only two productive things remain, and both are **external** — nothing in the
+ciphertext can close them:
 
 1. **An untried already-public keytext** Cicada expected solvers to *recognize*. A
    running-key search over a real text is **falsifiable** (the right text at the right
