@@ -143,6 +143,7 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | XV | **Label-free transcription audit** | Clustered glyphs by shape with canon never shown; canon = the natural visual partition (ARI 0.75, homogeneity→0.98). First confirmation independent of the labels; only fragile locus = ᚩ/ᚪ/ᚫ (10.7%, crypto-inert) | `analysis/independent-read/` |
 | XVI | Stylometry + attribution power | Cicada's connected prose = 359 words (floor ~500–1000/doc) → un-attributable; closed-set naming gate fails at 359w (62% impostor acceptance); live demo mis-names "Stallman" inside the noise band | `analysis/stylometry/` |
 | XVII | **Red-team the assumption stack** | 8 fronts attacked, all sealed: page-56-hash-preimage-of-internal-object, interrupter-masked running key, plaintext-feedback autokey, crib-drag fixed-function autokey, serialization (reversed/boustrophedon), selection/acrostic, 1-bit channel, **Latin plaintext** (language-independent exclusions), **book cipher** (KJV/Mabinogion/Milton word-salad) | `analysis/CAMPAIGN-XVII-FINDINGS.md`, `analysis/red_team.py`, `analysis/latin/`, `analysis/bookcipher/` |
+| XVIII | **Skip-tolerant re-decode (item 2c executed)** | Built + validated a key-skip decoder that tracks the desync the ~83% doublet filter induces (rigid misses the correct key at −7.24/8.5%, beam recovers it at −4.15/100%; FP ceiling −6.82; recall 7/8). Referenced texts re-decoded under corrected alignment → **clean null** (best −5.88). Prior referenced-text nulls now **unconditional**. Full 122-text corpus in progress. | `analysis/campaign18_skip/` |
 
 ---
 
@@ -179,10 +180,17 @@ ciphertext can close them:
    already-fetched corpora treated as **plaintext** (not key); a match beyond the
    shuffled-control FPR yields plaintext directly. Full proposal in
    `analysis/campaign14/REDTEAM-PROPOSALS.md`.
-2c. **Skip-tolerant / filter-aware re-decode (soundness patch):** all keytext/keystream
-   nulls assumed *rigid* key alignment; a doublet filter perturbing key consumption could
-   make them unsound. A filter-aware beam decoder + Old-English/Latin re-scoring over the
-   existing corpus would discharge the last conditional-null worries.
+2c. ~~**Skip-tolerant / filter-aware re-decode (soundness patch)**~~ — **EXECUTED
+   (Campaign XVIII).** Built and validated a key-skip encipher model + a skip-tolerant
+   beam decoder that tracks the key/plaintext desync the ~83% doublet filter induces.
+   Validation is decisive: a correct key with only 6 skips scores **−7.24 (noise)** under
+   the rigid test every prior campaign used but **−4.15 / 100% recovery** under the beam;
+   false-positive ceiling over 400 wrong (key,offset) trials is **−6.82** vs genuine
+   English −4.3 (wide margin); planted-key pipeline recall **7/8** per page. Re-ran the
+   **9 directly-referenced texts** through it across all 55 pages → **clean null** (best
+   −5.88, median −6.21). The referenced-text nulls are now **unconditional**, not
+   conditional on rigid alignment. Full 122-text corpus re-decode in progress. See
+   `analysis/campaign18_skip/CAMPAIGN-XVIII-FINDINGS.md`.
 3. ~~Transcription coverage gap~~ — **RESOLVED (Campaign XIV):** the community's ~75-page
    figure is 72 rune-pages including the **already-solved** intro/koan pages (elevated
    IoC, normal doublets). There is **no new *unsolved* material**; pages 0–55 are the
