@@ -174,12 +174,16 @@ ciphertext can close them:
    Cold trail (Tor v2 dead). CT-log brute is now **ruled out as non-viable** (Campaign
    XIII); the only tractable-but-low-prior path left is a finite lookup of archived
    v2-onion corpora.
-2b. **Word-length skeleton match (best fresh avenue, Campaign XIV / Fable red-team):** an
-   OTP hides symbol values but not word boundaries, which are preserved and — measured —
-   English-shaped (P5). Slide each page's rune-word-length sequence over the 112+
-   already-fetched corpora treated as **plaintext** (not key); a match beyond the
-   shuffled-control FPR yields plaintext directly. Full proposal in
-   `analysis/campaign14/REDTEAM-PROPOSALS.md`.
+2b. ~~**Word-length skeleton match**~~ — **EXECUTED (Campaign XVIII), null on high-prior
+   corpus.** An OTP hides symbol values but not word boundaries (transcription keeps `-`
+   separators). Slid each page's rune-count-per-word sequence over 11 high-prior texts as
+   **plaintext**, scored by the high-power statistic (longest consecutive exact-length run,
+   chance ≈ 0.4^R) vs an 8-shuffle control. **Strong null:** every page's real longest run
+   (7–10) is at or *below* the shuffled-control ceiling (8–12) — controls often beat the
+   real sequence, i.e. zero signal. Cipher-model-independent, so this holds no matter the
+   keystream. Extendable to the full 122-text corpus by widening the `REF` list in
+   `analysis/campaign18_skip/word_skeleton.py`. Original proposal: `analysis/campaign14/
+   REDTEAM-PROPOSALS.md`.
 2c. ~~**Skip-tolerant / filter-aware re-decode (soundness patch)**~~ — **EXECUTED
    (Campaign XVIII).** Built and validated a key-skip encipher model + a skip-tolerant
    beam decoder that tracks the key/plaintext desync the ~83% doublet filter induces.

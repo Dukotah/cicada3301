@@ -129,6 +129,40 @@ deep-web page) remains the genuine frontier, untouched by any internal method. A
 skip-model, while the best-fitting additive construction, is a *model*; a fundamentally
 non-additive feedback cipher is still formally unbounded (see ledger §B).
 
+## Follow-on leads run this session (all closed)
+
+Three orthogonal leads, chased to keep the frontier honest:
+
+**Lead 1 — pp49-51 payload as a keystream, skip-aware (`payload_skip.py`, `RUN-payload-skip.log`).**
+Campaign VII tested the 256-byte pp49-51 payload as a polyalphabetic key *rigidly*
+(337k configs, null) — but that is the *same* soundness hole this campaign exposed. Re-ran
+it through the skip-tolerant beam: both canonical byte variants (majority / decimal-pref),
+forward + reversed, bytes mod 29, over each page at offset 0 (repeated to cover the page),
+both signs, both atbash. **Null** — best −6.76, at the noise floor. The payload is not a
+skip-aware key over any page either. This connects the repo's two flagship objects (the
+pp49-51 binary and the skip decoder) and closes the payload-as-key thread under the
+corrected model.
+
+**Lead 2 — word-length skeleton match (`word_skeleton.py`, `RUN-word-skeleton.log`; ledger 2b).**
+An OTP hides symbol values but not word boundaries, which the transcription preserves
+(`-` separators). If the plaintext were a known text, a page's rune-count-per-word sequence
+would contain a long contiguous run matching that text's word-lengths. Using the
+high-power statistic (**longest consecutive exact-length run**, chance ≈ 0.4^R) across 11
+high-prior texts vs an 8-shuffle control: **strong null** — every page's real longest run
+(7–10) is at or *below* the shuffled-control ceiling (8–12); controls frequently beat the
+real sequence. The plaintext is not any of these texts by word-skeleton, and this holds
+*regardless of the cipher model*.
+
+**Lead 3 — "bump" doublet-filter variant (closed by argument, no run needed).**
+The doublet filter could instead alter the output *in place* on collision (a deterministic
+"bump") rather than skipping the key. But a bump keeps the key **1:1-aligned**, so a rigid
+decode of the correct key yields plaintext with only ~3% corruption — which scores ≈ −4.5,
+far above threshold. The existing rigid referenced-text nulls (−5.8 to −6.4) therefore
+*already exclude* it. **Key-skip is the only doublet-filter mechanism that defeats a rigid
+test, because it is the only one that desynchronises the key** — which is exactly why the
+Campaign XVIII skip-tolerant re-test was both necessary and sufficient to discharge the
+filter-mechanism soundness worry.
+
 ## Artifacts
 - `skipdecode.py` — encipher models + beam decoder + mechanism gate
 - `robustness.py` — recovery robustness + false-positive ceiling
@@ -136,3 +170,5 @@ non-additive feedback cipher is still formally unbounded (see ledger §B).
 - `sweep_selftest.py` — planted-key pipeline recall gate
 - `RUN-referenced.log` — the referenced-text null (complete)
 - `RUN-fullcorpus.log` — the 122-text re-decode (in progress)
+- `payload_skip.py` / `RUN-payload-skip.log` — Lead 1: pp49-51 payload as skip-aware key (null)
+- `word_skeleton.py` / `RUN-word-skeleton.log` — Lead 2: word-length skeleton match (null)
