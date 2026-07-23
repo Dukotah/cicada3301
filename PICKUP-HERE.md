@@ -1,12 +1,35 @@
-# PICKUP-HERE — where we left off (updated 2026-07-07)
+# PICKUP-HERE — where we left off (updated 2026-07-23)
 
 Resume point for the Cicada 3301 / Liber Primus work. Repo is public at
 https://github.com/Dukotah/cicada3301 (default branch `master`).
 
 ## 👉 START HERE: `liber-primus/ELIMINATION-LEDGER.md`
 The single, complete, reproducible record of **everything tried and why it's
-eliminated**, current through Campaign XI (2026-07-07). Read it first — it
+eliminated**, current through **Campaign XV (2026-07-23)**. Read it first — it
 supersedes the scattered "ruled-out" tables in the older docs below.
+
+## Latest: Campaign XV — frontier armada (2026-07-23)
+A 9-probe armada burned down the standing red-team agenda. **No break (expected for
+OTP-class), but the two biggest soundness caveats are now discharged and 5 new families
+closed.** See `liber-primus/analysis/CAMPAIGN-XV-FINDINGS.md`; scripts in `analysis/campaign15/`.
+- **Rigid-alignment caveat DISCHARGED (P1):** a skip-tolerant filter-aware beam decoder
+  (validated: recovers a plant at −4.28/97.4%, and shows the *correct* key decoded rigidly
+  through a skip filter collapses to −7.47) ran 2,876 skip-aware decodes over the attested
+  generators + 21 cached keytexts → 0 clear −5.2. The ~112 prior keystream/keytext nulls are
+  now sound against filter-perturbed alignment.
+- **Hand-generated-pad loophole CLOSED (P5):** generator fingerprinting = full conformance to a
+  memoryless machine rejection-sampler (max |z|=1.51; the suite catches a shuffle-bag at ≈−23σ).
+- **OTP MODEL-CLASS-VERIFIED (P8):** LP2 sits inside a 1,000-member filtered-uniform control band
+  on every compression/context predictor; English fires at the 0th percentile. No structure
+  survives the two constraints.
+- **New named nulls:** payload-as-PRF-seed (P2), payload-as-RSA under Cicada's *real* 4096-bit
+  moduli (P9, `analysis/campaign15/cicada_pubkey.asc` now in-repo), surjective 29→k homophonic
+  (P6), LP2-as-pad inversion (P7), doublet side-channel (P4), word-length skeleton over the
+  on-disk corpus (P3).
+- **Frontier now:** essentially ONE external avenue — an untried already-public keytext over the
+  **full** 112-text corpus (needs a box with open outbound HTTPS to re-fetch; this session's proxy
+  blocks gutenberg/archive/wikisource), then re-run through the P1 skip-beam + P3 skeleton matcher.
+  Plus the cold "AN END" deep-web page. Everything ciphertext-internal is closed to model-class.
 
 ## What happened since the 2026-06-20 snapshot (Campaigns VII–XI)
 The four "avenues" below were the state as of June 20; work then continued:

@@ -28,8 +28,13 @@ AI" — the math says otherwise.
 **What this project can honestly claim:** every attack *we could concretely construct*
 has been run and falsified, and the cipher's mechanism is now described to a
 parameter — which appears to be *ahead* of the published community state of the art
-(which still stops at "autokey/custom"). **What it cannot claim:** that the space of
-*all conceivable* external keytexts is exhausted. See "Still genuinely open" below.
+(which still stops at "autokey/custom"). As of **Campaign XV** the ciphertext is
+**model-class-verified** OTP (no computable structure beyond the two constraints — P8),
+the pad is a **memoryless machine sampler** (the hand-generated-pad loophole is closed — P5),
+and the **rigid-alignment caveat** that shadowed every prior keystream/keytext null is
+**discharged** (a skip-tolerant beam decoder found nothing — P1). **What it cannot claim:**
+that the space of *all conceivable* external keytexts is exhausted. See "Still genuinely
+open" below.
 
 ---
 
@@ -68,11 +73,13 @@ Grouped by attack family. "Where" = the deeper writeup + the reproduce command.
 | Attack | Verdict | Why | Where |
 |---|---|---|---|
 | **Plaintext & ciphertext autokey** (the community's decade-old leading hypothesis) | ❌ **excluded** | Simulated directly: all 4 autokey variants sit at 3.3–4.2% doublets (random band). Autokey does **not** suppress doublets. | Campaign X `analysis/CAMPAIGN-X-FINDINGS.md` |
+| **Skip-tolerant / filter-aware keystream decode** (the soundness patch: did the doublet filter perturb key alignment enough to void the ~112 rigid nulls?) | ✅ **caveat discharged** | Confirmed the risk is real (correct φ(prime) key decoded *rigidly* through a skip filter = −7.47, pure noise), built + validated a skip-aware DP/beam decoder (recovers plant −4.28/97.4%, separation 2.96), then ran 2,876 skip-aware decodes over the attested generator family + 21 cached keytexts → 0 clear −5.2 (best −6.44). Rigid-alignment caveat closed. | Campaign XV `analysis/campaign15/P1-skip-beam.py` |
 | **First-difference / integral** inversion | ❌ dead | Integrating normalizes doublets to ~3.55% but the underlying stream stays flat-random. Deficit IS a differencing artifact; no plaintext. | `analysis/armada/FOLLOWUP-TESTS.md` |
 | **Page-on-page key reuse / in-depth** | ❌ dead | No two pages show a shared-keystream difference signal | ARMADA reports |
 | **Corpus-wide periodicity / key reuse** (any lag 1–6478, period 41–2000) | ❌ dead | Prior test was per-page/no-skip only; now scanned book-wide: 0 coincidence peaks >5σ, column IoC flat (max 1.087) | Campaign XIV `analysis/campaign14/probes.py` P1–P2 |
 | **Generalized-combiner feedback / many-to-few homophonic** | ❌ dead | Beyond additive autokey & bijective substitution: off-diagonal bigram χ² vs filtered null = +0.81σ (flat), no second-order structure | Campaign XIV P4 |
 | **Unfiltered one-time pad** | ❌ dead | Plain pads sit at ~3.45% doublets too — the deficit needs **active** suppression | Campaign X |
+| **LP2-as-pad inversion** (the pages ARE the keystream; the message lives in another Cicada object enciphered under them) | ❌ dead | LP2 stream as running key (fwd/rev, ±, ±Atbash, all offsets) vs 7 counterparts (pp49–51 payload ×2, AN END 512-bit hash, 2 onions, PGP/RSA bodies): 0/7 beat their shuffled-key null (canon_256 −6.970 vs null −6.934; onion −4.968 beaten by random keys −4.411). Planted control recovered −4.25 → detector works; LP2 gives zero lift over a random key. | Campaign XV `analysis/campaign15/P7-pad-inversion.py` |
 
 ### C. Different cipher classes
 | Attack | Verdict | Why | Where |
@@ -80,6 +87,7 @@ Grouped by attack family. "Where" = the deeper writeup + the reproduce command.
 | **Fractionation** (bifid / Polybius) | ❌ dead | Every period gives doublet 3.6–4.6% and IoC·N 1.39–1.55 — can't reach flat 1.00 or the deficit | `analysis/OPEN-AVENUES.md` |
 | **Substitution / homophonic** | ❌ dead | Preserves IoC; can't turn flat (1.00) into English (1.78) | `analysis/crypto_rigor.py` |
 | **Multiplicative / prime gematria** substitution | ❌ excluded | Mechanistically ruled out, not merely unobserved | Campaign V `analysis/stones/` |
+| **Homophonic-downward / optimized surjective 29→k** (the class that flattens IoC to 1.000 by design — ledger only had the *bijective* 29→29 case) | ❌ null-closed | SA over surjective maps k=5..26 (English + Old-English) + all natural partitions (aetts, vowel/consonant, mod-k, prime-residue); searcher validated (recovers planted maps 57–62% vs 6–8% chance); on LP2 nothing beats its shuffle-search control AND generalizes (best cell EN k=20 z=3.73 fails held-out z=−0.95). Power-calibrated: at IoC·N=1.0 even a genuine decode gives z≤1.69 → channel near-degenerate. | Campaign XV `analysis/campaign15/P6-homophonic.py` |
 | **Transposition-only** | ❌ dead | Doublet-transparent; falsified by the *suppressed* doublet rate | `analysis/crypto_rigor.py` |
 | **Block / permutation / Lehmer decode** (F-delimited) | ❌ dead | F-run lengths have no peak (modal share 0.055) | `analysis/crypto_rigor.py` A |
 | **No-repeat / collision-inversion** decodes (delta≠0 family) | ❌ dead | IoC stays flat (≤1.04) | `analysis/crypto_rigor.py` C |
@@ -90,8 +98,12 @@ Grouped by attack family. "Where" = the deeper writeup + the reproduce command.
 |---|---|---|---|
 | **Transcription correctness** (is canon a mis-read?) | ✅ verified correct | 3 independent lineages rune-for-rune identical (13136/13136); trained glyph classifier 99.2% corroborates canon; spot-audited vs authentic images | Campaign V; `analysis/transcription/TRANSCRIPTION-VERDICT.md` |
 | **Independent AI-vision re-transcription** | ⚠️ not viable | Vision can't read dense ~250-rune pages (mean alignment 0.145 = noise); template matcher 69.5% < 90% gate | `analysis/vision/AVENUE-1-VISION-VERDICT.md` |
+| **Word-length skeleton match** (page rune-word-length sequences slid over corpora as *plaintext* — the channel an OTP can't hide) | ❌ dead (bounded) | Matcher validated (recovers embedded truth + a real solved passage; exact-hit FPR 0/1000); 0 exact & 0 ±1 matches for all 55 pages vs 11,919 corpus words; real skeletons no better than shuffles. **Scope:** the 8 on-disk corpora only (proxy blocks the full 112-text set) — strong null, re-run when fetchable. | Campaign XV `analysis/campaign15/P3-wordlen-skeleton.py` |
 | **Image provenance** | ✅ verified authentic | 56/56 SHA1 match the archived onion7 dump; 400-DPI Artifex renders | `analysis/stego/provenance.json` |
 | **Image steganography** (appended/EXIF/LSB/carve/color/OutGuess) | ❌ none | Built real OutGuess 0.4 from source (recovers known payloads) → LP2 pages carry no stego | `analysis/stego/STEGO-VERDICT.md` |
+| **Doublet survivors as fingerprint / side-channel** (the ~86 tolerated doublets) | ❌ dead | 86 survivors are i.i.d. accidents: positions uniform (KS p=0.24), gaps textbook-geometric (KS p=0.67, χ² p=0.96), values uniform (χ² p=0.58), no word/line/F-rune/prime enrichment; all decodes ≤ −6.45 (< random floor). Pins the filter as **memoryless rejection-sampling** (refines Campaign XI). | Campaign XV `analysis/campaign15/P4-doublet-forensics.py` |
+| **Generator fingerprint** (was the pad machine- or hand-generated?) | ✅ hand-pad loophole closed | Conditional next-rune χ², windowed dispersion, doublet-gap law, book-order drift vs a 200-sample filtered-uniform control: max \|z\|=1.51 (full conformance). Suite has power — a shuffle-bag pad is caught at ≈−23σ. LP2 is a memoryless machine sampler; the by-hand human-bias attack surface is ruled out. | Campaign XV `analysis/campaign15/P5-generator-fingerprint.py` |
+| **Total-structure closure** (any computable structure beyond IoC·N=1.000 + doublet 0.66%?) | ✅ model-class-verified | Cross-validated context models (order 1–8) + LZMA bits/rune + dispersion/drift vs 1,000 matched filtered-uniform controls: LP2 inside the band on every predictor (41–79 %ile); same predictors put English at 0 %ile. Upgrades "OTP-class" from low-order- to **model-class-verified**. | Campaign XV `analysis/campaign15/P8-total-structure.py` |
 
 ### E. The pp49–51 base-60 payload (the non-runic object)
 Pages 49–51 aren't runic prose — they're a table of two-character tokens decoding to a
@@ -107,6 +119,8 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | Payload = **32-byte-block hash** preimage (SHA-256/SHA3-256/blake2s) | ❌ null | 37-string Cicada dict × 3 algos × 16 blocks → 0 hits (IX did 64-byte only) | Campaign XII |
 | Payload = short **repeating-key XOR** | ❌ dead | ks=12 Hamming "dip" falsified — columns at entropy ceiling, ~53% printable = random | Campaign XII |
 | Payload = hidden **image / QR** | ❌ null | 2D bit-matrix autocorrelation ≈0.50 at every raster width; no periodic structure | Campaign XII |
+| Payload = **PRF / stream-cipher SEED** (expanded, not used directly) | ❌ dead | RC4 / AES-128&256-CTR / SHA-256&SHA-1&MD5 counter+chain / HMAC-DRBG expansion → mod-29 keystream (3 reductions) → decrypt all 55 pages (±sign, per-page/continuous, fwd/rev, ±Atbash) = 480 configs; best −7.44, IoC·N 1.002 (gates −5.2 / 1.3). Synthetic RC4-seed plant recovered (−4.18/1.76) proves detection power. | Campaign XV `analysis/campaign15/P2-payload-prf.py` |
+| Payload = **RSA signature/ciphertext** under Cicada's real public keys | ❌ dead | Fetched Cicada's actual key (`cicada_pubkey.asc`, keyid `0x181F01E57A35090F`); both authentic 4096-bit moduli, e∈{65537,3,17}, both endian → 0/12 show PKCS#1 v1.5 / PSS structure. Structural clincher: the 2048-bit payload is *exactly half* a 4096-bit block, so it cannot be a genuine RSA block under the only known key. | Campaign XV `analysis/campaign15/P9-rsa-rescore.py` |
 
 ### F. Attribution / external OSINT (where a key might physically exist)
 | Attack | Verdict | Why | Where |
@@ -140,37 +154,37 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | XII | Burn-down | Payload: no format/32-byte-preimage/repeating-XOR/image; +15 verified thematic keytexts null (best −6.048) | `analysis/CAMPAIGN-XII-FINDINGS.md` |
 | XIII | Armada | +82 never-tested keytexts across 10 lanes null (best −5.809); fresh OSINT confirms still-unsolved-2026, closes CT-log avenue, debunks 2 AN END onion theories; surfaces ~75-page transcription gap | `analysis/CAMPAIGN-XIII-FINDINGS.md` |
 | XIV | Fable 5 red-team + probes | Fresh-eyes review caught 4 over-claims → all closed by measurement (corpus-wide periodicity P1–P2, combiner/homophonic P4); word boundaries English-like (P5); continuous stream in book order (P3); ~75-page "gap" = solved pages, no new unsolved material | `analysis/CAMPAIGN-XIV-FINDINGS.md` |
+| XV | Frontier armada (9 probes) | Burned down the standing agenda: **rigid-alignment caveat discharged** (P1 skip-beam, 0/2876), **hand-pad loophole closed** (P5, max\|z\|=1.51), **OTP model-class-verified** (P8, inside 1000-control band); 5 new named nulls — payload-as-PRF-seed (P2), payload-as-RSA under real moduli (P9), surjective 29→k homophonic (P6), LP2-as-pad inversion (P7), doublet side-channel (P4); word-length skeleton null over on-disk corpus (P3) | `analysis/CAMPAIGN-XV-FINDINGS.md` |
 
 ---
 
 ## Still genuinely open (the honest frontier)
 
-Only two things remain, and both are **external** — nothing in the ciphertext can
-close them:
+After Campaign XV, everything **ciphertext-internal** is closed to model-class (P8), the pad is a
+memoryless machine sampler (P5), and no skip-filter can be hiding a keystream/keytext break (P1).
+Essentially **one external avenue** remains, plus its cold physical sibling:
 
-1. **An untried already-public keytext** Cicada expected solvers to *recognize*. A
-   running-key search over a real text is **falsifiable** (the right text at the right
-   alignment would decrypt to readable, high-scoring English), so this is the one
-   productive avenue left. We tested the *named/referenced* texts, thematic esoterica
-   (Campaign III), 15 verified thematic texts (Campaign XII), and **82 more across 10
-   lanes (Campaign XIII)** — 112+ named texts eliminated total — but the space of
-   conceivable primary sources is not exhausted. **This is why we can't say "100%,"**
-   though the frontier is now much narrower. Trivially extendable: add a slug/ID to
-   `analysis/campaign12/fetch_keytexts.py` and re-run `run_sweep.py`.
-2. **The "AN END" deep-web page** — the only place a key might physically exist.
-   Cold trail (Tor v2 dead). CT-log brute is now **ruled out as non-viable** (Campaign
-   XIII); the only tractable-but-low-prior path left is a finite lookup of archived
-   v2-onion corpora.
-2b. **Word-length skeleton match (best fresh avenue, Campaign XIV / Fable red-team):** an
-   OTP hides symbol values but not word boundaries, which are preserved and — measured —
-   English-shaped (P5). Slide each page's rune-word-length sequence over the 112+
-   already-fetched corpora treated as **plaintext** (not key); a match beyond the
-   shuffled-control FPR yields plaintext directly. Full proposal in
-   `analysis/campaign14/REDTEAM-PROPOSALS.md`.
-2c. **Skip-tolerant / filter-aware re-decode (soundness patch):** all keytext/keystream
-   nulls assumed *rigid* key alignment; a doublet filter perturbing key consumption could
-   make them unsound. A filter-aware beam decoder + Old-English/Latin re-scoring over the
-   existing corpus would discharge the last conditional-null worries.
+1. **An untried already-public keytext** Cicada expected solvers to *recognize*, tested over the
+   **full** corpus of candidate primary sources. A running-key search over a real text is
+   **falsifiable** (the right text at the right alignment decrypts to readable English), so this is
+   the one productive avenue left. Eliminated so far: named/referenced texts, thematic esoterica
+   (III), 15 verified thematic (XII), 82 across 10 lanes (XIII) — **112+ named texts** — and, in
+   Campaign XV, the **attested numeric generators skip-aware** (P1) and the **on-disk corpus** both
+   as running keys (P1) and as **plaintext via word-length skeleton** (P3). The space of conceivable
+   primary sources is still not exhausted — **this is why we can't say "100%."** Extending it needs
+   the ~112-text corpus re-fetched on a box with open outbound HTTPS (this session's proxy blocks
+   gutenberg/archive/wikisource), then `analysis/campaign12/fetch_keytexts.py` + `run_sweep.py`, now
+   also run through the P1 skip-beam and P3 skeleton matcher.
+2. **The "AN END" deep-web page** — the only place a key might physically exist. Cold trail (Tor v2
+   dead). CT-log brute ruled out as non-viable (XIII); the only tractable-but-low-prior path left is
+   a finite lookup of archived v2-onion corpora.
+
+**Discharged in Campaign XV (no longer open):**
+- ~~2b. Word-length skeleton match~~ → **run (P3)**, null over the 8 on-disk corpora (matcher
+  validated at FPR 0/1000); still worth re-running over the full 112-text set when it can be fetched.
+- ~~2c. Skip-tolerant / filter-aware re-decode~~ → **run (P1)**, clean null over the attested
+  generators + cached keytexts; the rigid-alignment caveat on the ~112 prior nulls is **discharged**.
+  Old-English/Latin re-scoring (P9) likewise found no missed hit.
 3. ~~Transcription coverage gap~~ — **RESOLVED (Campaign XIV):** the community's ~75-page
    figure is 72 rune-pages including the **already-solved** intro/koan pages (elevated
    IoC, normal doublets). There is **no new *unsolved* material**; pages 0–55 are the
@@ -179,8 +193,10 @@ close them:
 ## Do NOT re-run (proven dead — reasons recorded above)
 More keywords • more short/periodic keys • more number-theoretic or PRNG keystreams •
 autokey/autoclave • differencing/integration • page-on-page keying • transposition-only •
-fractionation • substitution/homophonic • image stego • AI-vision re-transcription •
-treating pp49–51 as a runic key. All eliminated with the reason and a reproduce pointer.
+fractionation • substitution/homophonic (bijective **and** surjective 29→k) • image stego •
+AI-vision re-transcription • treating pp49–51 as a runic key, PRF/stream seed, or RSA block •
+LP2-as-pad inversion • skip-tolerant re-decode over attested generators • doublet side-channel •
+generator/hand-pad fingerprinting. All eliminated with the reason and a reproduce pointer.
 
 ---
 

@@ -1,0 +1,296 @@
+{
+  "probe_id": "P9-rsa-rescore",
+  "A_rsa": {
+    "payload_bytes": 256,
+    "payload_bits": 2048,
+    "moduli": [
+      {
+        "keyid": "181F01E57A35090F",
+        "fpr": "6D854CD7933322A601C3286D181F01E57A35090F",
+        "n_bits": 4096,
+        "e": 65537
+      },
+      {
+        "keyid": "4D390ECF671DDEB1",
+        "fpr": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+        "n_bits": 4096,
+        "e": 65537
+      }
+    ],
+    "matches": [],
+    "tests_run": 12,
+    "structural_note": "payload is 256 bytes = 2048 bits; the only known Cicada keys are 4096-bit (512-byte blocks). Payload is exactly half a block, so it cannot be a genuine 4096-bit RSA signature/ciphertext; pow() is still computed for every (n,e,endian) as a falsifiable test.",
+    "signal_fired": false
+  },
+  "B_rescore": {
+    "model_train_sizes": {
+      "OE": 2517,
+      "LAT": 311449,
+      "EN": 8977
+    },
+    "calibration": {
+      "OE_text": {
+        "OE": -5.487,
+        "LAT": -5.755,
+        "EN": -5.828
+      },
+      "LAT_text": {
+        "OE": -5.827,
+        "LAT": -4.597,
+        "EN": -5.817
+      },
+      "EN_text": {
+        "OE": -5.851,
+        "LAT": -5.845,
+        "EN": -5.544
+      }
+    },
+    "noise_band": {
+      "OE": {
+        "rand_mean": -5.85,
+        "rand_std": 0.001,
+        "threshold_4sig": -5.845
+      },
+      "LAT": {
+        "rand_mean": -5.98,
+        "rand_std": 0.014,
+        "threshold_4sig": -5.924
+      },
+      "EN": {
+        "rand_mean": -5.852,
+        "rand_std": 0.003,
+        "threshold_4sig": -5.842
+      }
+    },
+    "rescored": [
+      {
+        "key": "enoch_key.txt",
+        "key_len": 12000,
+        "iocn_max": 1.394,
+        "iocn_max_full": 1.156,
+        "OE": {
+          "best_score": -5.829,
+          "iocn_at_best": 0.921,
+          "plain": "AEEAJWOTHFDIPGCYBEOAERUTWBEOCTEWANTTHTHHGOEOEOEOYIAENXNGPEAPSUPMIADYNGSYJHEOHIAO"
+        },
+        "LAT": {
+          "best_score": -5.797,
+          "iocn_at_best": 1.082,
+          "plain": "NNGNJLEOIOCONFUFSNGOEDUPSNULLUOEXNGWXTMJXNGIAOEXNGYEOIANGHOEWPGTCIREANGTHOERIAAR"
+        },
+        "EN": {
+          "best_score": -5.814,
+          "iocn_at_best": 0.946,
+          "plain": "ANWCMMSNGFDEDFEODBGPEASTHIAEOBELBNYAMUSIWSNAEGNTIATHOEHHMFFFCAMXAEGSBEAEAYOETEAE"
+        }
+      },
+      {
+        "key": "hermes_vol1_key.txt",
+        "key_len": 12000,
+        "iocn_max": 1.474,
+        "iocn_max_full": 1.264,
+        "OE": {
+          "best_score": -5.823,
+          "iocn_at_best": 1.16,
+          "plain": "EOLDURBGEHGOEEORCCSUAMDWJOEOETHRBFXIDBOOEFGHMAETELLOBHEOLBLOENGBMDEALWOEBNGLEOJN"
+        },
+        "LAT": {
+          "best_score": -5.786,
+          "iocn_at_best": 0.946,
+          "plain": "NGNHFNGONTDOSTRHBXDAELFMIBIPEABAEEAHBSUEPRSDWCUAEEALTISAEAUOEUWXXJFCENGTEONU"
+        },
+        "EN": {
+          "best_score": -5.803,
+          "iocn_at_best": 1.122,
+          "plain": "IGECJAENNGFIDOEGPAEOEDCDBFBOYGBTHOEIAOELOADWTSUFAJTHENGOBNGTHOGYAOBMGSEEAUGOUEIA"
+        }
+      },
+      {
+        "key": "monas_clean_key.txt",
+        "key_len": 12000,
+        "iocn_max": 1.541,
+        "iocn_max_full": 1.13,
+        "OE": {
+          "best_score": -5.823,
+          "iocn_at_best": 0.921,
+          "plain": "LTHELINGIUEACNRGEABCEOMHDYLDPNXXIAAEAGOEAIACIUYEXEOGEODMBWEOPEOGLTHFERIHTCUMIAIE"
+        },
+        "LAT": {
+          "best_score": -5.809,
+          "iocn_at_best": 0.96,
+          "plain": "WNGIANGIBLTHUYEOESEOTHCMIRHEAEAEOWBTUWOEOHONGOENLDIHCAPIANWFAOEUCITRINERHJOENTLI"
+        },
+        "EN": {
+          "best_score": -5.8,
+          "iocn_at_best": 1.257,
+          "plain": "CEAOBBHEAPGRBTHMBHPOEHRMNGOEWLBAWFOENGOEEAFSHMATPWAAPOEUEAOEJIDDEDFBCGTHWYEANGMR"
+        }
+      },
+      {
+        "key": "rosicrucian_fama_confessio_key.txt",
+        "key_len": 12000,
+        "iocn_max": 1.46,
+        "iocn_max_full": 1.157,
+        "OE": {
+          "best_score": -5.826,
+          "iocn_at_best": 1.039,
+          "plain": "LUATHEOEALIUFUUSRTHTTJXNGMOOECAENEAGSTHEAFNGTGTHISTHOHWYLCMPTHOBCWSPSHSXDFHMUJPI"
+        },
+        "LAT": {
+          "best_score": -5.809,
+          "iocn_at_best": 0.946,
+          "plain": "EOIAXMJIAUJHOUEAIEAWYHPTISBUSEXUYHTADRJSAMDITCIJIACCCHECLEJOENGWRMCTHEOOEOGNL"
+        },
+        "EN": {
+          "best_score": -5.82,
+          "iocn_at_best": 1.018,
+          "plain": "THYGEUMEAABCDACLRDBTHIAEAUAGGNDDYNGNGOBUDBJOADSWAEBIATHTMEIAEPOJUTOEMEBOETREAAEE"
+        }
+      },
+      {
+        "key": "sephir_yetzirah_westcott_key.txt",
+        "key_len": 12000,
+        "iocn_max": 1.46,
+        "iocn_max_full": 1.156,
+        "OE": {
+          "best_score": -5.826,
+          "iocn_at_best": 1.079,
+          "plain": "YJNXEDOJEDIAWNGAESHLEOPGSLHEASAERRNIEAIIAGIAREMESJWIIADJNYDDGRMRAAYNDTOHEOPLPCPI"
+        },
+        "LAT": {
+          "best_score": -5.798,
+          "iocn_at_best": 1.241,
+          "plain": "DNGACASFFIAYAJNDNGSTXSEGUIAIAEXUNGJTAEAEADCOTTEAEBXPNAEORXEBCJEANTISCEOSDNGSILEC"
+        },
+        "EN": {
+          "best_score": -5.809,
+          "iocn_at_best": 1.041,
+          "plain": "AXGFENGWBAEBAGEOFNGHEANOGNGEOFISUWSJXIABOEEACIAUXMXUIAGPBNEAMEAOEBEANGPOJIAIGNBC"
+        }
+      },
+      {
+        "key": "solved_plaintext.txt",
+        "key_len": 8977,
+        "iocn_max": 1.852,
+        "iocn_max_full": 1.177,
+        "OE": {
+          "best_score": -5.819,
+          "iocn_at_best": 0.919,
+          "plain": "FYUDWBHTIABEOMCOEOELATHSGGOXLRGAYIAEACSPPFNXHDLDJOECDXGEHWAOGRRUOFYLIAWPUM"
+        },
+        "LAT": {
+          "best_score": -5.767,
+          "iocn_at_best": 0.933,
+          "plain": "SDCALINISSGMHSPFMEAPIAEOORXIPTHCLPTDOCASUMWREMCAEOTHXBDTHUEANJMOEIAJFXTJEOJWEO"
+        },
+        "EN": {
+          "best_score": -5.807,
+          "iocn_at_best": 1.018,
+          "plain": "DAERCXIACPHAEEOCHLAIAAELGHEOTIAOXDBROEPESEOTHOTHOTTHAEFTBBHIWOEICIAOERWINEANTLAG"
+        }
+      },
+      {
+        "key": "runepoem_oe.txt",
+        "key_len": 2517,
+        "iocn_max": 1.582,
+        "iocn_max_full": 1.166,
+        "OE": {
+          "best_score": -5.826,
+          "iocn_at_best": 0.956,
+          "plain": "EOWAEIEAOEXSYWYCHPAEIAEONEEOCXWCNGJGIFSDEOBTHOETJHJETOEGTETHONSTAEHEAXIEAIEAIANI"
+        },
+        "LAT": {
+          "best_score": -5.782,
+          "iocn_at_best": 1.095,
+          "plain": "CUEOCYXAEEHGTGGEAGTHIATEOYNGNEADTHOXNRGYXNRUAJHMIAINETERTUNTJSYJXWIFMNTEFAJNG"
+        },
+        "EN": {
+          "best_score": -5.787,
+          "iocn_at_best": 0.96,
+          "plain": "EOLNGOEMYIAXPNGWGPXEXMECTEABRTHLBACUEOOIDSYIAIALIIAMOEOENATUREBJLLOMIAYIXDEOPUAA"
+        }
+      },
+      {
+        "key": "latin_caesar.txt",
+        "key_len": 12000,
+        "iocn_max": 1.465,
+        "iocn_max_full": 1.16,
+        "OE": {
+          "best_score": -5.819,
+          "iocn_at_best": 1.089,
+          "plain": "BLJFGYSRRTHNAEXSWAEXFUEEOOAEAXPISXXMAECESBINGEMETUMHIOAPFCMROGTCYEEAHGSRUSSOEAEM"
+        },
+        "LAT": {
+          "best_score": -5.806,
+          "iocn_at_best": 0.973,
+          "plain": "SNGXCSTHRIETMEHMLSEXHSRHMEDFBFFGLCYRHOEOEJHXOOUBOEYXCIUITHAEEOIIAOUMINUJPDN"
+        },
+        "EN": {
+          "best_score": -5.803,
+          "iocn_at_best": 0.973,
+          "plain": "SNGXCSTHRIETMEHMLSEXHSRHMEDFBFFGLCYRHOEOEJHXOOUBOEYXCIUITHAEEOIIAOUMINUJPDN"
+        }
+      }
+    ],
+    "best_per_model": {
+      "OE": {
+        "score": -5.819,
+        "key": "solved_plaintext.txt",
+        "plain": "FYUDWBHTIABEOMCOEOELATHSGGOXLRGAYIAEACSPPFNXHDLDJOECDXGEHWAOGRRUOFYLIAWPUM"
+      },
+      "LAT": {
+        "score": -5.767,
+        "key": "solved_plaintext.txt",
+        "plain": "SDCALINISSGMHSPFMEAPIAEOORXIPTHCLPTDOCASUMWREMCAEOTHXBDTHUEANJMOEIAJFXTJEOJWEO"
+      },
+      "EN": {
+        "score": -5.787,
+        "key": "runepoem_oe.txt",
+        "plain": "EOLNGOEMYIAXPNGWGPXEXMECTEABRTHLBACUEOOIDSYIAIALIIAMOEOENATUREBJLLOMIAYIXDEOPUAA"
+      }
+    },
+    "iocn_max_seen": 1.8522144522144521,
+    "n_unsolved_pages": 55,
+    "n_unsolved_runes": 12956,
+    "iocn_max_full_seen": 1.2635637309550354,
+    "control_random_key": {
+      "best_per_model": {
+        "OE": -5.816,
+        "LAT": -5.719,
+        "EN": -5.805
+      },
+      "iocn_max": 1.676,
+      "iocn_max_full": 1.207
+    },
+    "gate_detail": {
+      "OE": {
+        "real_best": -5.819,
+        "ctrl_best": -5.816,
+        "self_cal": -5.487,
+        "halfway_gate": -5.651,
+        "beats_ctrl": false,
+        "looks_language": false
+      },
+      "LAT": {
+        "real_best": -5.767,
+        "ctrl_best": -5.719,
+        "self_cal": -4.597,
+        "halfway_gate": -5.158,
+        "beats_ctrl": false,
+        "looks_language": false
+      }
+    },
+    "gate_detail_iocn": {
+      "real_iocn_max_shortpage": 1.852,
+      "ctrl_iocn_max_shortpage": 1.676,
+      "real_iocn_max_fullpage": 1.264,
+      "ctrl_iocn_max_fullpage": 1.207,
+      "gate": "fullpage L>=200, >1.3 and >1.05x control",
+      "fired": false
+    },
+    "signal_fired": false,
+    "reasons": [
+      "no gate fired: all decrypt scores at random floor, IoC*N within control band"
+    ]
+  }
+}
