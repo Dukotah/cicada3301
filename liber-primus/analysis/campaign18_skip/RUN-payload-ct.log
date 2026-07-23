@@ -1,0 +1,81 @@
+========================================================================
+CAMPAIGN XVIII  — PAYLOAD-AS-CIPHERTEXT  (payload_ciphertext.py)
+========================================================================
+payload:  256 bytes | entropy 7.170 b/byte | printable 102/256
+CT1 (mod 29): 256 rune indices
+
+------------------------------------------------------------------------
+§1  SKIP-AWARE BEAM DECODE  of payload mod-29 as ciphertext
+    Keys: Cicada number-theory streams + thematic keywords + page-56 hash
+------------------------------------------------------------------------
+Tested 12 keys x 2 ciphertext variants x 2 signs x 2 atbash
+BEST  score=-6.855  [maj-byte] key=anend_hash  sign=-1 atb=1
+  -> ORORNGAXBBUUEANGOEWEACEBERTEAMEJBHREADANGNTHOEIAEATHLOEPYDIA
+Hits above -5.5: 0
+  -> NULL: payload-mod-29 is not a skip-aware OTP message under any tested key.
+
+------------------------------------------------------------------------
+§2  BYTE-LEVEL TRANSFORMS  (XOR / subtract) + structure sniff
+------------------------------------------------------------------------
+Tested 54 byte-transform combos.  Baseline P1 entropy=7.170
+Top 10 by lowest entropy (text/compression candidate):
+  P1 SUB ps_digits  ent=6.587  print=41%  run=4
+  P2 SUB ps_digits  ent=6.607  print=41%  run=4
+  P1 XOR ps_digits  ent=6.628  print=43%  run=3
+  P1 ADD ps_digits  ent=6.628  print=44%  run=4
+  P2 XOR ps_digits  ent=6.642  print=43%  run=3
+  P2 ADD ps_digits  ent=6.642  print=44%  run=4
+  P2 XOR sha512iter_ae  ent=7.111  print=37%  run=5
+  P2 SUB anend_tiled  ent=7.113  print=37%  run=7
+  P1 XOR sha512iter_ae  ent=7.119  print=37%  run=5
+  P1 ADD sha512iter_p1  ent=7.124  print=36%  run=5
+
+Top 5 by longest printable run:
+  P2 SUB anend_tiled  ent=7.113  print=37%  run=7  sample: b'\x95\xb10W\xb6z\x06{\xe2\x07\x18\x9a\x8b\xabqi-\xf4\xbc\xfe'
+  P1 SUB anend_tiled  ent=7.127  print=36%  run=7  sample: b'\x95\xb10W\xb6z\x06{\xe2\x07\x18\x9a\x8b\xabqi-\xf4\xbc\xfe'
+  P1 XOR 3301_le  ent=7.142  print=40%  run=7  sample: b'.\xebB\xb6\x84\xe1\x9b\xbb\xb9\xf5y\xd2\x12\x08R\xd8\x9c\xc6\xea-'
+  P2 XOR 3301_le  ent=7.144  print=39%  run=7  sample: b'.\xebB\xb6\x84\xe1\x9b\xbb\xb9\xf5y\xd2\x12\x08R\xd8\x9c\xc6\xea-'
+  P1 SUB sha512iter_ae  ent=7.162  print=34%  run=6  sample: b'4\xed\xa3\xcbsZ&\xd2\x8b\xde[X6sw}\xc8\x95\xda\xbf'
+
+------------------------------------------------------------------------
+§3  COMPRESSION PROBES  on raw payload and byte variants
+------------------------------------------------------------------------
+  P1_nibble_swap: ent=7.170 print=89/256 run=6  [no decomp]
+  P1_xor_anend: ent=5.875 print=20/256 run=3  [no decomp]
+  (if no lines above: all raw variants are opaque binary, no decompression hit)
+
+------------------------------------------------------------------------
+§4  4×64 = FOUR BLOCKS  — cross-block differencing & mod-29 stacking
+------------------------------------------------------------------------
+[4a] adjacent-block XOR / subtract:
+  block0 XOR block1: ent=5.719 print=14/64 run=3  sample=b118be7aa6a4d7dbf8b6516f
+  block0 SUB block1: ent=5.844 print=21/64 run=3  sample=51e88efa9aa4d54bb8aacf2d
+  block0 XOR block2: ent=5.750 print=22/64 run=3  sample=0254f1c2c860361c567875d3
+  block0 SUB block2: ent=5.781 print=20/64 run=3  sample=02345142b860360c5278b3d1
+  block0 XOR block3: ent=5.781 print=25/64 run=2  sample=cb7c38e3d19e179832b34d9a
+  block0 SUB block3: ent=5.769 print=25/64 run=4  sample=cb4c0861b17a1588eeafcb9a
+  block1 XOR block2: ent=5.906 print=20/64 run=4  sample=b34c4fb86ec4e1c7aece24bc
+  block1 SUB block2: ent=5.781 print=25/64 run=5  sample=b14cc3481ebc61c19acee4a4
+  block1 XOR block3: ent=5.938 print=18/64 run=3  sample=7a648699773ac043ca051cf5
+  block1 SUB block3: ent=5.707 print=30/64 run=4  sample=7a647a6717d6403d3605fc6d
+  block2 XOR block3: ent=5.738 print=26/64 run=5  sample=c928c92119fe218464cb3849
+  block2 SUB block3: ent=5.644 print=27/64 run=5  sample=c918b71ff91adf7c9c3718c9
+
+[4b] four 64-rune segments decoded as ciphertext under page-56 hash key (mod 29):
+
+[4c] block-pair mod-29 subtraction -> English sniff:
+
+[4d] hash preimage / partial match (ANEND target):
+
+========================================================================
+SUMMARY  — payload_ciphertext.py
+========================================================================
+§1 skip-aware beam (mod-29 ciphertext, 12 keys):  best=-6.855  hits=0
+   English -4.0 / confirm -5.5 / noise-max -6.82
+§2 byte transforms (54 combos): best entropy=6.587 (P1 SUB ps_digits)
+   decompression hits: 0
+§3 raw-payload compression probes: (reported inline above — no output = all binary / no hits)
+
+All §§ null.  Payload is not a compressed or skip-OTP-enciphered message
+under any tested key from the Cicada key-discipline space.
+Consistent with: either a true OTP (key unknown) or public-key/hash material.
