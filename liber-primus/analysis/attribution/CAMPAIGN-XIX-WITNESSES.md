@@ -72,11 +72,14 @@ page from solved page 56.
    representatives — when, what, any that could postdate 2013 and touch the LP era;
    (b) provenance of his "small chat group over Tor" hearsay (who told him, when — is it
    independent of Rolling Stone?).
-2. **Locate Wanner's current public channel** — no 2026 channel survived verification, so
-   locating one (professional profile, GitHub, talks) is itself the first task. Then three
-   narrow questions: does the CAKES git repo still exist; did the 3301-hosted wiki content
-   travel with it; did any brood member (Sage, Tekk, or the ~18 others) snapshot the
-   forum.
+2. **Wanner outreach — LOCATED (2026-07-27, by Duke)**: LinkedIn
+   `/in/marcus-wanner-a03133379`, now running a biotech company. Identity consistent with
+   the documented trajectory (VT Magazine: he worked at the Virginia Bioinformatics
+   Institute as an undergrad — bioinformatics → biotech founder is a straight line);
+   LinkedIn blocks automated verification (HTTP 999), so final confirmation happens on
+   contact. Three narrow questions: does the CAKES git repo still exist; did the
+   3301-hosted wiki content travel with it; did any brood member (Sage, Tekk, or the ~18
+   others) snapshot the forum.
 3. **AN END hash-hunt in archived onion corpora**: has anyone systematically hashed
    candidate pages from 2012–2014 Tor crawls / academic snapshots / onion-index archives
    against the page-56 SHA-512? This is the prime external-key candidate and it is a
