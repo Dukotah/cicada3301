@@ -119,6 +119,7 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | "AN END hash = v2-onion payload" theory (monokro.me 2024) | ❌ debunked | Standard first-80-bit base32 = `gy3hoy5lon4dy6xs` ≠ theory's cherry-picked address | Campaign XIII |
 | "AN END hash = ed25519/v3 onion" theory | ❌ debunked | Anachronistic — v3 onions didn't exist until 2017; AN END is 2014 | Campaign XIII |
 | **Current solve state** (any page solved / key published since 2017?) | ✅ confirmed none | Independent 2022–26 sources: LP2 still unsolved, no key ever published, no authenticated 3301 activity since Apr-2017 PGP msg; Schoenberger 2023 self-claim fails the PGP gate | Campaign XIII |
+| **External-artifact sweep** — pull the un-held onion images/HTML from community mirrors and re-extract | ⚠️ no new key | 2026-07-27 OSINT sweep. Downloaded the mirror set (iBotPeaches `/onions/`, archive.org per-onion, scream314, krisyotam) and re-ran extraction. **T1 onion3 5×5-rune JPG → known 2013 RSA message; T5 4gq25.jpg → known 2016 message** (both already-known payloads reproduced, not new). Broadened 60-key OutGuess sweep = null (default-key keystream artifact). **T2/T3 = unidentified high-entropy blobs, still open (low prior).** | `analysis/OSINT-SWEEP-2026-07-27.md`, `analysis/armada_osint/` |
 
 ---
 
@@ -143,6 +144,7 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | XV | **Label-free transcription audit** | Clustered glyphs by shape with canon never shown; canon = the natural visual partition (ARI 0.75, homogeneity→0.98). First confirmation independent of the labels; only fragile locus = ᚩ/ᚪ/ᚫ (10.7%, crypto-inert) | `analysis/independent-read/` |
 | XVI | Stylometry + attribution power | Cicada's connected prose = 359 words (floor ~500–1000/doc) → un-attributable; closed-set naming gate fails at 359w (62% impostor acceptance); live demo mis-names "Stallman" inside the noise band | `analysis/stylometry/` |
 | XVII | **Red-team the assumption stack** | 8 fronts attacked, all sealed: page-56-hash-preimage-of-internal-object, interrupter-masked running key, plaintext-feedback autokey, crib-drag fixed-function autokey, serialization (reversed/boustrophedon), selection/acrostic, 1-bit channel, **Latin plaintext** (language-independent exclusions), **book cipher** (KJV/Mabinogion/Milton word-salad) | `analysis/CAMPAIGN-XVII-FINDINGS.md`, `analysis/red_team.py`, `analysis/latin/`, `analysis/bookcipher/` |
+| OSINT-2026-07-27 | **External-artifact sweep** | Pulled the onion images/HTML we never held from community mirrors + re-extracted. No new break: T1 (onion3 5×5-rune) and T5 (4gq25) decode to already-known 2013/2016 messages; 60-key OutGuess sweep null; T2/T3 remain unidentified high-entropy blobs. Confirms the "provable hidden data" onion-image lead resolves to standard payloads. | `analysis/OSINT-SWEEP-2026-07-27.md` |
 | XVIII | **Skip-tolerant re-decode (item 2c executed) + coverage armada** | Built + validated a key-skip decoder that tracks the desync the ~83% doublet filter induces (rigid misses the correct key at −7.24/8.5%, beam recovers it at −4.15/100%; FP ceiling −6.82; recall 7/8). Then re-ran **every alignment-sensitive family** under it: referenced texts (best −5.88), full 122-text corpus (best −5.808), armada18+19 literary sweeps (88 more texts, best −5.786/−5.754), **autokey under skip** (community's #1 hypothesis — 45 primers, best −6.627), ~620 Vigenère keywords (−6.021), extended numeric (−5.745), self-referential families (first-diff/integral/self-key/ct-feedback) — **all 0 hits**. Prior keytext nulls now **unconditional**; family-by-family accounting in `armada2/COVERAGE-MATRIX.md`. | `analysis/campaign18_skip/` |
 
 ---
@@ -175,7 +177,14 @@ ciphertext can close them:
 2. **The "AN END" deep-web page** — the only place a key might physically exist.
    Cold trail (Tor v2 dead). CT-log brute is now **ruled out as non-viable** (Campaign
    XIII); the only tractable-but-low-prior path left is a finite lookup of archived
-   v2-onion corpora.
+   v2-onion corpora. **Partly executed (OSINT sweep 2026-07-27):** the archived onion
+   image/HTML corpora (iBotPeaches/archive.org/scream314/krisyotam) were pulled and
+   re-extracted — the AN END page itself is not among them, and the recovered onion
+   images decode to already-known messages. What remains genuinely un-examined from that
+   sweep is narrow and low-prior: two unidentified high-entropy blobs (`2.jpg`/`.htaccess`
+   class → T2/T3), the per-onion HTTP/port anomalies, a full-corpus whitespace re-audit at
+   scale, the unconfirmed 2012 "7 images" endpoint, and the missing 2013 Columbus GA
+   Shamir-share onion. See `analysis/OSINT-SWEEP-2026-07-27.md`.
 2b. ~~**Word-length skeleton match**~~ — **EXECUTED (Campaign XVIII), null on high-prior
    corpus.** An OTP hides symbol values but not word boundaries (transcription keeps `-`
    separators). Slid each page's rune-count-per-word sequence over 11 high-prior texts as

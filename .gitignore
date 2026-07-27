@@ -48,6 +48,12 @@ liber-primus/analysis/stego/**/carved/
 # transcription: fetched third-party source copies (refetch via crossdiff.py URLs)
 liber-primus/data/sources/
 
+# OSINT sweep (2026-07-27): commit scripts + text results + README + verdict,
+# gitignore the ~79 MB of re-downloadable raw dumps and extracted binaries.
+# Reproduce via the mirror URLs in analysis/OSINT-SWEEP-2026-07-27.md.
+liber-primus/analysis/armada_osint/artifacts/
+liber-primus/analysis/armada_osint/extracts/*.bin
+
 # Python build artifacts
 *.egg-info/
 build/

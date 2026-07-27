@@ -79,10 +79,19 @@ plaintext a valid structureless key exists (`analysis/SOLVE-ATTEMPT-FINAL.md`).
 They are not "hard"; absent the key they are unsolvable by ciphertext-only analysis.
 
 ## 6. Genuinely open (where help is worth it)
+> **Update 2026-07-27 (OSINT sweep):** the archived onion image/HTML corpora were
+> pulled from community mirrors and re-extracted — no new key. Recovered onion images
+> (incl. the onion3 5×5-rune JPG long flagged as "provable hidden data") decode to
+> **already-known 2013/2016 Cicada messages**, and a broadened 60-key OutGuess sweep is
+> null. Full results: `analysis/OSINT-SWEEP-2026-07-27.md`. This narrows items 1 and 3
+> below; two unidentified high-entropy blobs (`2.jpg`/`.htaccess`-class) are the only
+> new low-prior loose ends.
+
 1. **The AN END deep-web page** (hash `36367763…c2a8b4`) — the one place a key may
    physically exist. Never found; "hash-as-ed25519-onion" tested and FAILED; Tor v2
-   deprecated Oct 2021. Status + leads: `analysis/DEEPWEB-HASH-OSINT.md`,
-   `analysis/KEY-HINT-RESEARCH.md`.
+   deprecated Oct 2021. The archived v2-onion corpora were swept 2026-07-27 (above) —
+   the AN END page is not among them. Status + leads: `analysis/DEEPWEB-HASH-OSINT.md`,
+   `analysis/KEY-HINT-RESEARCH.md`, `analysis/OSINT-SWEEP-2026-07-27.md`.
 2. **A from-scratch independent re-transcription.** All machine-readable
    transcriptions descend from the one 2017 root; AI vision can't produce an
    independent one. A careful human re-read from the authentic images is the only
@@ -90,7 +99,10 @@ They are not "hard"; absent the key they are unsolvable by ciphertext-only analy
    the solved-page decryptions).
 3. **OutGuess control run** (Linux): confirm the LP2 OutGuess "garbage" blobs
    (shared 1417-byte prefix) are a default-key/blank-margin artifact, not a
-   passphrase-locked payload. See `analysis/stego/STEGO-VERDICT.md`.
+   passphrase-locked payload. The 2026-07-27 sweep re-ran a broadened 60-key OutGuess
+   pass over the onion images (gematria words, LP phrases, primes) → still the uniform
+   default-key keystream, no passphrase-locked payload surfaced. See
+   `analysis/stego/STEGO-VERDICT.md`, `analysis/OSINT-SWEEP-2026-07-27.md`.
 
 ## 6b. The keystream is one continuous stream over the whole book
 The no-repeat suppression holds across **every** boundary — word, clause, line,

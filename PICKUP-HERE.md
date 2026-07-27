@@ -1,14 +1,37 @@
-# PICKUP-HERE — where we left off (updated 2026-07-07)
+# PICKUP-HERE — where we left off (updated 2026-07-27)
 
 Resume point for the Cicada 3301 / Liber Primus work. Repo is public at
 https://github.com/Dukotah/cicada3301 (default branch `master`).
 
 ## 👉 START HERE: `liber-primus/ELIMINATION-LEDGER.md`
 The single, complete, reproducible record of **everything tried and why it's
-eliminated**, current through Campaign XI (2026-07-07). Read it first — it
-supersedes the scattered "ruled-out" tables in the older docs below.
+eliminated**, current through **Campaign XVIII + the 2026-07-27 OSINT sweep**. Read it
+first — it supersedes the scattered "ruled-out" tables in the older docs below.
 
-## What happened since the 2026-06-20 snapshot (Campaigns VII–XI)
+## Current state (2026-07-27, one paragraph)
+LP2 (unsolved runic pages 0–55) is **OTP-class**: a full-length keystream filtered to
+avoid consecutive-equal runes (~83% suppression, Campaign XI) → information-theoretically
+unsolvable **without the external key**. Transcription is verified three ways and is not
+the blocker. Since the July-7 snapshot: **Campaign XVII** attacked and sealed the whole
+8-premise assumption stack (key, reading order, acrostic, 1-bit channel, transcription,
+autokey, Latin plaintext, book cipher); **Campaign XVIII** built a skip-tolerant decoder
+that tracks the desync the doublet filter induces, then re-ran *every* alignment-sensitive
+keytext family under it (~200 named texts + autokey + ~620 Vigenère keywords) — all
+unconditionally null; **the 2026-07-27 OSINT sweep** pulled the onion images/HTML we never
+held from community mirrors and re-extracted them → **no new key** (recovered images decode
+to already-known 2013/2016 messages; two unidentified high-entropy blobs remain, low prior).
+The internal attack surface is closed; only narrow **external** loose ends remain.
+
+## Latest session — 2026-07-27 OSINT / external-artifact sweep
+- **What:** find + pull EXTERNAL material never held locally (raw onion HTML/images), since
+  the OTP verdict means the key is external by construction. Writeup +
+  results table: `liber-primus/analysis/OSINT-SWEEP-2026-07-27.md`; rig + scripts:
+  `liber-primus/analysis/armada_osint/` (raw ~79 MB dumps gitignored, reproducible).
+- **Result:** no new break. T1 (onion3 5×5-rune JPG) → known 2013 RSA message; T5
+  (4gq25.jpg) → known 2016 message; 60-key OutGuess sweep null; T2/T3 = unidentified
+  high-entropy blobs (still open, low prior). Folded into the ledger (§F + campaign index).
+
+## What happened in the 2026-06-20 snapshot (Campaigns VII–XI)
 The four "avenues" below were the state as of June 20; work then continued:
 - **Campaign X (positive result):** simulated the community's decade-old
   autokey/autoclave hypothesis and **excluded it** — all autokey variants sit at
