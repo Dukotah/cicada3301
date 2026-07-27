@@ -1,0 +1,56 @@
+====================================================================
+SELF-REFERENTIAL FAMILY -- synthetic validation gates
+====================================================================
+--------------------------------------------------------------------
+GATE (a) first-difference / integral transform round-trip + skip decode
+  firstdiff->integral round-trips exactly: True
+  after integral, BEAM score=-4.14 match=100%  RIGID score=-6.85
+  GATE (a): PASS  (transform invertible; skip-beam recovers, rigid misses)
+--------------------------------------------------------------------
+GATE (b) page-on-page self-keying (one page's plaintext as another's key)
+  skip selfkey best score=-4.11 @ (-1, 0)   rigid score=-6.71
+  GATE (b): PASS  (skip-beam recovers self-key; rigid degrades with desync)
+--------------------------------------------------------------------
+GATE (b') shared-keystream detection via crib-drag on ciphertext difference
+  mechanism: diff + P_a == P_b exactly (shared key, no skip): True
+  shared-key: crib=-2.62 IoC=0.977 | different-key: crib=-3.03 IoC=0.956
+  (IoC ~flat both ways -> IoC is VACUOUS; crib-drag is the sound test)
+  GATE (b'): PASS  (mechanism exact + crib-drag leans toward shared key; WEAK separator)
+--------------------------------------------------------------------
+GATE (c) short-history ciphertext-feedback (k=1..3) skip-aware
+  k=1: feedback-aware score=-4.36 match=98% | ignore-feedback score=-6.99 match=3%  ok
+  k=2: feedback-aware score=-4.39 match=95% | ignore-feedback score=-7.25 match=8%  ok
+  k=3: feedback-aware score=-4.69 match=95% | ignore-feedback score=-7.55 match=6%  ok
+  GATE (c): PASS
+
+====================================================================
+GATES: (a)transform=True  (b)selfkey=True  (b')shared=True  (c)feedback=True
+====================================================================
+====================================================================
+SMOKE over first 3 unsolved pages
+====================================================================
+keys: 9 referenced + 8 numeric = 17
+
+-- page 0  (262 runes) --
+   (a) firstdiff best=-6.40 ('solved_plaintext.txt', 1, 7054) | integral best=-6.08 ('king_in_yellow.txt', -1, 166925)
+   (c) ct-feedback best=-7.22 ('mabinogion.txt', 3)
+
+-- page 1  (266 runes) --
+   (a) firstdiff best=-6.25 ('king_in_yellow.txt', -1, 19440) | integral best=-6.19 ('king_in_yellow.txt', 1, 172408)
+   (c) ct-feedback best=-7.06 ('primes', 3)
+
+-- page 2  (201 runes) --
+   (a) firstdiff best=-6.17 ('prime_gaps', -1, 268) | integral best=-6.15 ('agrippa.txt', 1, 35)
+   (c) ct-feedback best=-7.08 ('mabinogion.txt', 3)
+
+-- (b) page-on-page over pages [0, 1, 2] --
+   selfkey best=-6.50 (1, 0, (1, 36)) | shared-diff best=-2.80 (0, 1, np.float64(1.002))
+
+====================================================================
+SMOKE SUMMARY (best score_norm per family; confirm thr -5.5, null-max -6.82)
+  firstdiff    best=-6.17
+  integral     best=-6.08
+  selfkey      best=-6.50
+  shared       best=-2.80
+  feedback     best=-7.06
+====================================================================

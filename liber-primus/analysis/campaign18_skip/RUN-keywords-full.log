@@ -1,0 +1,91 @@
+==========================================================================
+GATE -- repeating-keyword skip beam must recover what rigid misses
+==========================================================================
+
+plaintext runes  : 212
+keyword          : 'CIRCUMFERENCE'  (13 idx symbols)
+total key-skips  : 9
+ct doublet rate  : 0.47%  (random 3.45%; target <1%)
+
+TRUTH  : THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOULDBEENCRYPTEDCNOWTHI
+
+[RIGID  correct key+offset]  score_norm = -7.017  match = 20.8%
+  THEPRIMESARESACREDANDTHETOTIENTFUNCTHADCDTHLEGFWRPGCOEGCTHLTHRYNRGROFUBPEIMMRHWW
+
+[BEAM   correct key+offset]  score_norm = -4.154  match = 100.0%
+  THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOULDBEENCRYPTEDCNOWTHI
+
+[BEAM   WRONG keyword ctrl]  score_norm = -7.363
+
+--------------------------------------------------------------------------
+GATE RESULT: PASS -- skip beam recovers repeating keyword; rigid is noise
+  scale: English ~-4.3 | confirm threshold -5.5 | null-max -6.82 | noise -7.5
+  rigid -7.017 (need <-6.0)  beam -4.154 (need >-5.0)  ctrl -7.363 (need <-6.0)  match 100.0% (need >95%)
+
+Gate passed (rigid=-7.017 beam=-4.154 ctrl=-7.363 match=100.0%)
+
+==========================================================================
+FULL KEYWORD/VIGENERE SKIP SWEEP -- all 55 unsolved LP2 pages
+==========================================================================
+keywords: 623 | pages: 55
+page  0 (len 262)  best_screen=-6.157  via ('EIH', -1, True, 0)  [26s]
+page  1 (len 266)  best_screen=-6.162  via ('EMERGENCE', 1, False, 7)  [53s]
+page  2 (len 201)  best_screen=-6.356  via ('TOTIENT', 1, False, 0)  [81s]
+page  3 (len 217)  best_screen=-6.323  via ('LATE', 1, False, 0)  [109s]
+page  4 (len 261)  best_screen=-6.422  via ('THINE', 1, False, 3)  [135s]
+page  5 (len 263)  best_screen=-6.335  via ('TIWAZ', 1, False, 0)  [161s]
+page  6 (len 196)  best_screen=-6.365  via ('FIRST', 1, True, 4)  [188s]
+page  7 (len 208)  best_screen=-6.244  via ('OUTERCIRCLE', 1, True, 0)  [215s]
+page  8 (len 255)  best_screen=-6.280  via ('OPEN', -1, False, 2)  [235s]
+page  9 (len 268)  best_screen=-6.329  via ('PATTERN', 1, False, 5)  [254s]
+page 10 (len 263)  best_screen=-6.021  via ('EVEN', 1, False, 3)  [284s]
+page 11 (len 273)  best_screen=-6.195  via ('BEING', -1, False, 2)  [310s]
+page 12 (len 261)  best_screen=-6.231  via ('TREE', -1, False, 0)  [336s]
+page 13 (len 272)  best_screen=-6.323  via ('THOUGHT', 1, True, 5)  [364s]
+page 14 (len 137)  best_screen=-6.254  via ('UNDER', 1, True, 4)  [391s]
+page 15 (len 159)  best_screen=-6.211  via ('FERMAT', 1, True, 5)  [418s]
+page 16 (len 267)  best_screen=-6.352  via ('INNERCIRCLE', 1, True, 3)  [445s]
+page 17 (len 273)  best_screen=-6.286  via ('ENLIGHTENMENT', -1, False, 4)  [472s]
+page 18 (len 260)  best_screen=-6.338  via ('CIRCUMFERENCE', -1, False, 8)  [497s]
+page 19 (len 271)  best_screen=-6.442  via ('FUNCTION', -1, False, 7)  [526s]
+page 20 (len 269)  best_screen=-6.393  via ('THREETHREEOHONE', 1, False, 5)  [553s]
+page 21 (len 273)  best_screen=-6.343  via ('ENVY', 1, True, 3)  [581s]
+page 22 (len 131)  best_screen=-6.221  via ('DEATH', 1, False, 0)  [614s]
+page 23 (len 213)  best_screen=-6.231  via ('FIBONACI', 1, True, 5)  [640s]
+page 24 (len 270)  best_screen=-6.156  via ('TORRENT', -1, False, 1)  [679s]
+page 25 (len 273)  best_screen=-6.289  via ('DO', -1, False, 0)  [706s]
+page 26 (len 265)  best_screen=-6.399  via ('CHAPTER', -1, True, 0)  [737s]
+page 27 (len 234)  best_screen=-6.040  via ('ME', 1, False, 1)  [764s]
+page 28 (len 269)  best_screen=-6.211  via ('BETWEEN', 1, False, 2)  [793s]
+page 29 (len 277)  best_screen=-6.286  via ('MORTAL', -1, True, 1)  [823s]
+page 30 (len 263)  best_screen=-6.272  via ('OUTERCIRCLE', 1, False, 6)  [850s]
+page 31 (len 269)  best_screen=-6.424  via ('STRUCTURE', 1, False, 5)  [881s]
+page 32 (len 121)  best_screen=-6.243  via ('MOON', -1, False, 2)  [909s]
+page 33 (len 214)  best_screen=-6.344  via ('UNI', 1, True, 1)  [934s]
+page 34 (len 261)  best_screen=-6.225  via ('SQUARE', 1, True, 5)  [959s]
+page 35 (len 271)  best_screen=-6.308  via ('CRYSTAL', 1, True, 6)  [986s]
+page 36 (len 238)  best_screen=-6.227  via ('FIRST', -1, True, 3)  [1011s]
+page 37 (len 228)  best_screen=-6.329  via ('MOKSHA', 1, True, 2)  [1038s]
+page 38 (len 228)  best_screen=-6.235  via ('OWL', -1, False, 2)  [1065s]
+page 39 (len 240)  best_screen=-6.191  via ('ERATOSTHENES', 1, True, 3)  [1092s]
+page 40 (len 231)  best_screen=-6.334  via ('SEVEN', 1, True, 2)  [1117s]
+page 41 (len 273)  best_screen=-6.369  via ('WHO', -1, False, 0)  [1141s]
+page 42 (len 272)  best_screen=-6.230  via ('EMERGENCE', -1, False, 2)  [1168s]
+page 43 (len 274)  best_screen=-6.219  via ('RAIDO', -1, False, 4)  [1196s]
+page 44 (len 273)  best_screen=-6.427  via ('AGAPE', -1, False, 2)  [1222s]
+page 45 (len 270)  best_screen=-6.428  via ('HENCEFORTH', -1, True, 6)  [1248s]
+page 46 (len 270)  best_screen=-6.371  via ('HAG', -1, True, 1)  [1274s]
+page 47 (len 274)  best_screen=-6.273  via ('FIRST', -1, False, 4)  [1299s]
+page 48 (len 271)  best_screen=-6.247  via ('THY', -1, True, 0)  [1325s]
+page 49 (len  66)  best_screen=-6.124  via ('ONETHREETHREEOHONE', 1, False, 0)  [1338s]
+page 50 (len  92)  best_screen=-6.269  via ('ZERO', 1, True, 3)  [1364s]
+page 51 (len 263)  best_screen=-6.287  via ('BOOK', 1, False, 1)  [1390s]
+page 52 (len 179)  best_screen=-6.258  via ('DARKWEB', 1, True, 5)  [1416s]
+page 53 (len 232)  best_screen=-6.213  via ('BECOMING', -1, True, 4)  [1448s]
+page 54 (len  76)  best_screen=-6.214  via ('EYES', 1, True, 1)  [1465s]
+
+==========================================================================
+FULL RUN DONE in 1465s
+best score seen : -6.021  via ('EVEN', 1, False, 3)
+total hits above conf_thr=-5.5: 0
+NULL RESULT: no keyword-Vigenere key clears the noise floor.

@@ -151,9 +151,13 @@ if __name__=="__main__":
     if args.texts=="referenced":
         files=[os.path.join(ROOT,"data","keys",f) for f in REFERENCED]
         files=[f for f in files if os.path.exists(f)]
-    else:
+    elif args.texts=="all":
         files=sorted(glob.glob(os.path.join(ROOT,"data","keys","**","*.txt"),recursive=True)+
                      glob.glob(os.path.join(ROOT,"data","keys","**","*.html"),recursive=True))
+    else:  # treat as a subdir name under data/keys (e.g. armada18)
+        d=os.path.join(ROOT,"data","keys",args.texts)
+        files=sorted(glob.glob(os.path.join(d,"**","*.txt"),recursive=True)+
+                     glob.glob(os.path.join(d,"**","*.html"),recursive=True))
     texts=[(os.path.basename(f),load_text(f)) for f in files]
     texts=[(n,k) for n,k in texts if len(k)>300]
     print(f"loaded {len(texts)} texts; screen_thr={SCREEN_THR} conf_thr={CONF_THR} null-max=-6.82")

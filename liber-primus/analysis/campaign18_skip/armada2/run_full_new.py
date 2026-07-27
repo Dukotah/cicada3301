@@ -49,6 +49,7 @@ def run_interrupter():
         if os.path.exists(fp): corp.append((os.path.basename(extra),load_text(fp)))
     best=(-99,None); hits=0; t0=time.time()
     for pno,ct in enumerate(pages):
+        if PAGE_RANGE and not (PAGE_RANGE[0]<=pno<=PAGE_RANGE[1]): continue
         ctn=np.array(ct,dtype=np.int64); pb=(-99,None)
         for nm,K in corp:
             for sign in (-1,1):
@@ -65,6 +66,10 @@ def run_interrupter():
     print(f"\nDONE interrupter+skip. GLOBAL best={best[0]:.3f} via {best[1]}  hits>{CONF}: {hits}")
     print("NULL." if hits==0 else "CANDIDATES FOUND — escalate.")
 
+PAGE_RANGE=None
 if __name__=="__main__":
-    ap=argparse.ArgumentParser(); ap.add_argument("--mode",required=True); a=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument("--mode",required=True)
+    ap.add_argument("--pages",default=None,help="a-b inclusive page range")
+    a=ap.parse_args()
+    if a.pages: lo,hi=a.pages.split("-"); PAGE_RANGE=(int(lo),int(hi))
     (run_autokey if a.mode=="autokey" else run_interrupter)()

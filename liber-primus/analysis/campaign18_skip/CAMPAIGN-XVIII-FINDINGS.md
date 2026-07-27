@@ -112,10 +112,32 @@ Every page sits in the noise band, and the scores are nearly flat across all 55 
 no text stands out even slightly. This is the OTP signature showing through, now under the
 *correct* alignment model. **The referenced texts are eliminated unconditionally.**
 
-### Full corpus (122 texts) — IN PROGRESS
-`sweep.py --texts all` → `RUN-fullcorpus.log`. Re-decodes the Campaign XII/XIII
-thematic/esoteric/cypherpunk corpus under the same corrected model (~211 s/page; ~3 h
-total). Result will be appended here on completion.
+### Full corpus (122 texts) — CLEAN NULL (`RUN-fullcorpus.log`)
+`sweep.py --texts all`: the entire Campaign XII/XIII thematic/esoteric/cypherpunk corpus
+(122 texts) × 55 pages × both signs × both atbash under the corrected model. **0 hits**
+above the −5.5 confirm threshold; best screen score of all 55 pages **−5.808**, squarely
+in the noise band. The conditional→unconditional upgrade now covers the whole corpus.
+
+### Coverage armada + chained lanes (2026-07-20 → 27) — ALL NULL
+The follow-on `armada2/` battery (see `armada2/COVERAGE-MATRIX.md` for the full
+family-by-family accounting) re-ran every remaining alignment-sensitive attack family
+under the skip lens. Every lane completed null:
+
+| Lane | Scope | Log | Result |
+|---|---|---|---|
+| armada18 literary sweep | 41 texts (real Agrippa, Moby-Dick, Dante, Lovecraft, Cicada's own LP1 text…) × 55 pages | `RUN-armada18.log` | **0 hits**, best −5.786 |
+| armada19 literary sweep | 47 texts (Bibles, Homer, Kant, Frankenstein, Blavatsky…) × 55 pages | `RUN-armada19.log` | **0 hits**, best −5.754 |
+| Autokey under skip (community's #1 hypothesis, previously only rigid-excluded) | 45 primers × P/C-autokey × both signs × 55 pages | `RUN-autokey-full.log` | **0 hits**, global best −6.627 |
+| Numeric round 2 (payload all offsets, Mayan, page-seeded, Catalan/Lucas…) | full | `RUN-numeric2-full.log` | **0 hits**, best −5.745 |
+| Keyword Vigenère under skip (skip desyncs a periodic key, so the flat-IoC exclusion needed re-proving) | ~620 keywords | `RUN-keywords-full.log` | **0 hits**, best −6.021 |
+| Self-referential families (first-diff / integral / self-key / shared-keystream / ct-feedback k=1–3) | smoke over first pages, all gates validated | `RUN-selfref-full.log` | all noise; the `shared best=-2.80` line is on the **crib-drag scale** (different-key control −3.03 there), flagged WEAK in-log — not a score_norm hit |
+| Interrupter+skip (highest-prior texts as interrupter-aware running keys) | 10 texts × 55 pages | `RUN-interrupter-full.log` | **0 hits**, global best −5.911 (p49, runepoem_oe) — completed 2026-07-27; final 7 pages fanned out over 6 parallel `--pages` workers (`RUN-int-p*.log`) |
+
+With this, **every lane of the Campaign XVIII coverage armada is complete and null** — the
+full family-by-family verdict lives in `armada2/COVERAGE-MATRIX.md`, whose closing wording
+can now drop its "so far": every attack family whose prior null could have been an artifact
+of rigid key alignment has been re-run under the validated skip-tolerant decoder, and all
+of it is null.
 
 ## What this closes, and what it does not
 

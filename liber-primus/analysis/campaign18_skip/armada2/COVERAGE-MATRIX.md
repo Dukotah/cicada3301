@@ -23,21 +23,21 @@ ceiling −6.82 · noise floor ≈ −7.5. Every "null" below sits in the −5.9
 | Attack | Historical verdict | Skip-lens status | Evidence |
 |---|---|---|---|
 | Referenced texts as running keys (Mabinogion, Self-Reliance, King in Yellow, Agrippa, Book of the Law, rune poems, solved plaintext) | ❌ rigid null | **DONE-NULL** | `RUN-referenced.log` (best −5.88); + `RUN-armada18` re-tests the *real* Cornelius Agrippa (old file was Gibson's poem) |
-| Thematic esoterica + 15 verified + 82-text armada (Campaigns III/XII/XIII) | ❌ rigid null | **RUNNING** | `RUN-fullcorpus.log` (122 texts, ~½ done, all noise) |
-| **Literary running keys generally** — *the community barely tested these on the runic pages* (they were early-puzzle coordinate lookups, not keystreams) | mostly **untested** | **RUNNING** | `RUN-armada18` (42 texts) + `RUN-armada19` (47 texts: Bibles, Homer, Dante, Blavatsky, Aristotle…) |
-| Cicada's OWN text as running key (LP1 plaintext fwd/rev, LP1 runes, PGP bodies, koans) | untested | **DONE-NULL / RUNNING** | in `armada18`; also fed to interrupter driver |
+| Thematic esoterica + 15 verified + 82-text armada (Campaigns III/XII/XIII) | ❌ rigid null | **DONE-NULL** | `RUN-fullcorpus.log` (122 texts × 55 pages, **0 hits**, best −5.808) |
+| **Literary running keys generally** — *the community barely tested these on the runic pages* (they were early-puzzle coordinate lookups, not keystreams) | mostly **untested** | **DONE-NULL** | `RUN-armada18.log` (41 texts, 0 hits, best −5.786) + `RUN-armada19.log` (47 texts: Bibles, Homer, Dante, Blavatsky, Aristotle… — 0 hits, best −5.754) |
+| Cicada's OWN text as running key (LP1 plaintext fwd/rev, LP1 runes, PGP bodies, koans) | untested | **DONE-NULL** | null in `RUN-armada18.log`; also in the interrupter driver corpus |
 | Number-theoretic keystreams (primes, φ, totient, gaps, Fibonacci, π/e/φ digits) | ❌ rigid null | **DONE-NULL** | `RUN-rosetta.log`, `RUN-numeric.log` (874 streams, best −5.57) |
 | PRNG keystreams (LCG/BBS/MT, Cicada seeds) | ❌ rigid null | **DONE-NULL** | `RUN-numeric.log` |
-| Extended numeric (payload-as-key all offsets, Mayan key, onion hex, page-seeded, Catalan/Lucas…) | partial | **VALIDATED+RUNNING** | `armada2/numeric2_skip.py` (gate ok, smoke −6.11) → `RUN-numeric2-full.log` |
-| Short / periodic Vigenère keywords | ❌ rigid null (flat IoC) | **VALIDATED+RUNNING** | `armada2/keywords_skip.py` — skip desyncs a periodic key, so the IoC exclusion may not bind; ~620 keywords, gate ok, smoke −6.16 → `RUN-keywords-full.log` |
+| Extended numeric (payload-as-key all offsets, Mayan key, onion hex, page-seeded, Catalan/Lucas…) | partial | **DONE-NULL** | `RUN-numeric2-full.log` (**0 hits**, best −5.745) |
+| Short / periodic Vigenère keywords | ❌ rigid null (flat IoC) | **DONE-NULL** | `RUN-keywords-full.log` — ~620 keywords full run, **0 hits**, best −6.021; the flat-IoC exclusion survives the skip lens |
 
 ## B. Self-referential / stream ciphers
 | Attack | Historical verdict | Skip-lens status | Evidence |
 |---|---|---|---|
-| **Plaintext & ciphertext autokey** — *the community's #1 hypothesis* | ❌ excluded **RIGID only** (Campaign X) | **VALIDATED+RUNNING** | `armada2/autokey_skip.py` — autokey UNDER the doublet-skip filter, never tested. Gate: rigid −7.60/5% vs beam −4.15/**100%**; smoke −6.65 → `RUN-autokey-full.log` |
-| First-difference / integral inversion | ❌ rigid null | **VALIDATED+RUNNING** | `armada2/selfref_skip.py` → `RUN-selfref-full.log` |
-| Page-on-page key reuse / in-depth | ❌ rigid null | **VALIDATED+RUNNING** | `selfref_skip.py` (self-keying + shared-keystream pair tests) |
-| Short-history ciphertext-feedback (k=1–3) | untested | **VALIDATED+RUNNING** | `selfref_skip.py` |
+| **Plaintext & ciphertext autokey** — *the community's #1 hypothesis* | ❌ excluded **RIGID only** (Campaign X) | **DONE-NULL** | `RUN-autokey-full.log` — 45 primers × P/C-autokey × both signs × 55 pages, **0 hits**, global best −6.627. The gate (rigid −7.60/5% vs beam −4.15/**100%**) makes this null load-bearing: a skip-filtered autokey would have been found |
+| First-difference / integral inversion | ❌ rigid null | **DONE-NULL** | `RUN-selfref-full.log` (firstdiff best −6.17, integral best −6.08) |
+| Page-on-page key reuse / in-depth | ❌ rigid null | **DONE-NULL** | `RUN-selfref-full.log` — selfkey best −6.50; NB the `shared best=-2.80` line is on the **crib-drag scale** (different-key control scores −3.03 there, flagged WEAK in-log), not a score_norm hit |
+| Short-history ciphertext-feedback (k=1–3) | untested | **DONE-NULL** | `RUN-selfref-full.log` (best −7.06, at the floor) |
 | Corpus-wide periodicity / key reuse | ❌ null | **DONE** | Campaign XIV; skip does not create periodicity where autocorrelation shows none |
 
 ## C. Different cipher classes — skip lens does NOT apply
@@ -84,15 +84,17 @@ calibrated to *those*, not to "we invented skips."
 
 ## Verdict — can we say "everything re-tested with the new lens"?
 **Yes, with this precise wording:** *Every LP2 attack family whose prior null could have been an
-artifact of rigid key alignment now has a **validated** skip-tolerant decoder and has been (or is
-being) re-run under it — all null so far. The families still marked excluded are excluded by
+artifact of rigid key alignment now has a **validated** skip-tolerant decoder and has been
+re-run under it — **all null, 0 hits** (all lanes complete as of 2026-07-27). The families
+still marked excluded are excluded by
 alignment-independent statistics (IoC / doublet deficit / provenance) that a key-skip cannot
 change, and the only lane the skip lens cannot reach is an **external** key that was never in any
 corpus (the lost AN END page).*
 
-**Open, honestly:** (1) the VALIDATED+RUNNING full sweeps (autokey, interrupter, selfref, keywords,
-numeric2, armada19) are executing now — statuses flip to DONE-NULL on completion; (2) the
-interrupter+skip full run is bounded to the **highest-prior** texts (referenced + Cicada-own),
-not the entire 122-corpus × offset space — marginal, since the interrupter-blind skip-corpus
-sweep is already null; (3) Hill/digraphic ciphers are outside the skip lens by nature and rest on
-their prior exhaustive null.
+**Open, honestly:** (1) ~~running sweeps~~ — **ALL lanes have now completed, all null, 0 hits**,
+including the interrupter+skip full run (2026-07-27: `RUN-interrupter-full.log`, global best
+−5.911, final 7 pages via 6 parallel `--pages` workers); (2) the interrupter+skip full run is
+bounded to the **highest-prior** texts (referenced + Cicada-own), not the entire 122-corpus ×
+offset space — marginal, since the interrupter-blind skip-corpus sweep is already null; (3)
+Hill/digraphic ciphers are outside the skip lens by nature and rest on their prior exhaustive
+null.

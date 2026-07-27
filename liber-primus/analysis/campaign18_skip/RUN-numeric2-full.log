@@ -1,0 +1,36 @@
+========================================================================
+NUMERIC2 EXTENDED KEYSTREAM sweep (Campaign XVIII / numeric2_skip.py)
+========================================================================
+Screen: len=50 bw=60 thr=-6.5  |  Confirm: bw=300 thr=-5.5
+Null-max=-6.82  |  English solve ~-4.0 to -4.35  |  MAXSKIP=3
+
+Pages: 0..54  (55 pages)  |  max_len=277  |  ks_len=1172
+
+[A] Building fixed-length keystream catalog ...
+    21 keystreams.  Offsets: [0, 1, 2, 3, 4]
+
+  [  0] anend_bytes                       screen_best= -6.236     1.9s
+  [  6] ps_single                         screen_best= -5.745    13.1s  <== NOTABLE
+  [ 10] magic_sq_digits                   screen_best= -6.185    19.8s
+  [ 20] partition_rev                     screen_best= -6.231    34.4s
+
+  [A] done in 34.4s.  Best so far: -5.745 via 'ps_single'
+
+[B] Payload (pp49-51) at ALL offsets (sliding window) ...
+    4 variants: ['payload_majority', 'payload_majority_rev', 'payload_decpref', 'payload_decpref_rev']
+  [B] done in 26.3s.  Best screen: -5.833
+
+[C] Page-number-seeded keys (prime/totient/3301xor per page) ...
+  [C] done in 0.9s.  Best screen: -6.320
+
+========================================================================
+SUMMARY
+========================================================================
+Parts A+B+C elapsed       : 61.8s
+Best screen score seen    : -5.745  via 'ps_single'
+Hits above CONFIRM_THR    : 0
+Scale: English ~-4.0 | CONFIRM -5.5 | null-max -6.82
+
+NO hits above confirm threshold.
+  Best -5.745 is in the noise band (-7.5 floor, null-max -6.82, no signal).
+  Result: NULL -- consistent with OTP-class / skip-decoder confirms no signal.

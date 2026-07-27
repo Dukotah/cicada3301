@@ -143,7 +143,7 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | XV | **Label-free transcription audit** | Clustered glyphs by shape with canon never shown; canon = the natural visual partition (ARI 0.75, homogeneity→0.98). First confirmation independent of the labels; only fragile locus = ᚩ/ᚪ/ᚫ (10.7%, crypto-inert) | `analysis/independent-read/` |
 | XVI | Stylometry + attribution power | Cicada's connected prose = 359 words (floor ~500–1000/doc) → un-attributable; closed-set naming gate fails at 359w (62% impostor acceptance); live demo mis-names "Stallman" inside the noise band | `analysis/stylometry/` |
 | XVII | **Red-team the assumption stack** | 8 fronts attacked, all sealed: page-56-hash-preimage-of-internal-object, interrupter-masked running key, plaintext-feedback autokey, crib-drag fixed-function autokey, serialization (reversed/boustrophedon), selection/acrostic, 1-bit channel, **Latin plaintext** (language-independent exclusions), **book cipher** (KJV/Mabinogion/Milton word-salad) | `analysis/CAMPAIGN-XVII-FINDINGS.md`, `analysis/red_team.py`, `analysis/latin/`, `analysis/bookcipher/` |
-| XVIII | **Skip-tolerant re-decode (item 2c executed)** | Built + validated a key-skip decoder that tracks the desync the ~83% doublet filter induces (rigid misses the correct key at −7.24/8.5%, beam recovers it at −4.15/100%; FP ceiling −6.82; recall 7/8). Referenced texts re-decoded under corrected alignment → **clean null** (best −5.88). Prior referenced-text nulls now **unconditional**. Full 122-text corpus in progress. | `analysis/campaign18_skip/` |
+| XVIII | **Skip-tolerant re-decode (item 2c executed) + coverage armada** | Built + validated a key-skip decoder that tracks the desync the ~83% doublet filter induces (rigid misses the correct key at −7.24/8.5%, beam recovers it at −4.15/100%; FP ceiling −6.82; recall 7/8). Then re-ran **every alignment-sensitive family** under it: referenced texts (best −5.88), full 122-text corpus (best −5.808), armada18+19 literary sweeps (88 more texts, best −5.786/−5.754), **autokey under skip** (community's #1 hypothesis — 45 primers, best −6.627), ~620 Vigenère keywords (−6.021), extended numeric (−5.745), self-referential families (first-diff/integral/self-key/ct-feedback) — **all 0 hits**. Prior keytext nulls now **unconditional**; family-by-family accounting in `armada2/COVERAGE-MATRIX.md`. | `analysis/campaign18_skip/` |
 
 ---
 
@@ -165,9 +165,11 @@ ciphertext can close them:
    running-key search over a real text is **falsifiable** (the right text at the right
    alignment would decrypt to readable, high-scoring English), so this is the one
    productive avenue left. We tested the *named/referenced* texts, thematic esoterica
-   (Campaign III), 15 verified thematic texts (Campaign XII), and **82 more across 10
-   lanes (Campaign XIII)** — 112+ named texts eliminated total — but the space of
-   conceivable primary sources is not exhausted. **This is why we can't say "100%,"**
+   (Campaign III), 15 verified thematic texts (Campaign XII), **82 more across 10
+   lanes (Campaign XIII)**, and **88 more literary texts skip-aware (Campaign XVIII
+   armada18/19)** — ~200 named texts eliminated total, all now re-tested (or newly
+   tested) under the corrected skip-alignment model — but the space of conceivable
+   primary sources is not exhausted. **This is why we can't say "100%,"**
    though the frontier is now much narrower. Trivially extendable: add a slug/ID to
    `analysis/campaign12/fetch_keytexts.py` and re-run `run_sweep.py`.
 2. **The "AN END" deep-web page** — the only place a key might physically exist.
@@ -192,9 +194,11 @@ ciphertext can close them:
    false-positive ceiling over 400 wrong (key,offset) trials is **−6.82** vs genuine
    English −4.3 (wide margin); planted-key pipeline recall **7/8** per page. Re-ran the
    **9 directly-referenced texts** through it across all 55 pages → **clean null** (best
-   −5.88, median −6.21). The referenced-text nulls are now **unconditional**, not
-   conditional on rigid alignment. Full 122-text corpus re-decode in progress. See
-   `analysis/campaign18_skip/CAMPAIGN-XVIII-FINDINGS.md`.
+   −5.88, median −6.21). Then the **full 122-text corpus** (0 hits, best −5.808) and the
+   armada18/19 literary sweeps (88 additional texts, 0 hits) completed under the same
+   corrected model. The keytext nulls are now **unconditional**, not conditional on rigid
+   alignment. See `analysis/campaign18_skip/CAMPAIGN-XVIII-FINDINGS.md` and
+   `analysis/campaign18_skip/armada2/COVERAGE-MATRIX.md`.
 3. ~~Transcription coverage gap~~ — **RESOLVED (Campaign XIV):** the community's ~75-page
    figure is 72 rune-pages including the **already-solved** intro/koan pages (elevated
    IoC, normal doublets). There is **no new *unsolved* material**; pages 0–55 are the
