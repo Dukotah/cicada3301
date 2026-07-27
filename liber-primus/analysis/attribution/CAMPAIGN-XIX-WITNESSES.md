@@ -108,3 +108,7 @@ This campaign re-examined both men as *witnesses* to key distribution — a diff
 Its net effect on the standing verdict: **strengthens** the external-key thesis (the only
 insider space is timeline-eliminated), and converts "talk to the insiders" from a vague
 hope into two concrete, scoped outreach actions plus one finite archive-search program.
+
+## Outreach log
+
+- 2026-07-27: Duke emailed Wanner (channel from his startup site) and plans one follow-up call to the company number. Questions per lead list. Status: awaiting response.
