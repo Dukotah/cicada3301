@@ -92,3 +92,26 @@ re-chases these as open.
 | key sweep | 60 broadened OutGuess passwords (gematria words, LP phrases, primes — `keys.txt`) vs the onion images | Every key → capacity-length entropy-≈8 garbage or empty (`keytest_results.txt`); seed scan shows the uniform OutGuess **default-key keystream** (`seed_scan.txt`), i.e. the known false-positive artifact | **Null** — password-protected-OutGuess hypothesis unsupported at these keys |
 
 **Still genuinely open after this session** (candidate *external* material only — none overturns the OTP verdict on the runes): the two unidentified high-entropy blobs T2/T3, the ranked items 6–9 in the sweep (per-onion HTTP/port anomalies, full-corpus whitespace re-audit at scale, the unconfirmed 2012 "7 images" endpoint, the missing 2013 Columbus GA Shamir-share onion). These are documentation/OSINT loose ends, not cryptographic openings.
+
+---
+
+## Red-rune (color-layer) follow-up — the T1 residue, closed (`armada_osint/t1_chroma/` + `armada_osint/redrune/`)
+
+The armada's T1 "visible RGB modification, key never found" was chased to a conclusion.
+
+- **It is genuine saturated RED ink** (~#C80000, RGB ≈ 187,2,3), verified not a JPEG artifact
+  (signal on the ink strokes not high-gradient edges; red channel offset while G≈B). Corrected the
+  armada mis-framing: the three files (107/167/229) are full **LP2 pages** (drop-cap ᚠ + shrouded-figure
+  art), not magic-square cells, and 167 also carries red (a central ornament) → **not** a clean control.
+- **It is a KNOWN LP feature already in our corpus** — 24 relikd pages carry real red. So this is not a
+  discovery of hidden pixels. The genuinely-untested angle: our rig reads a **colorblind** transliteration,
+  so the red runes as a *selection* were never fed to cryptanalysis in 18 campaigns.
+- **Extracted + tested** (`redrune/extract.py`, reusing the verified `analysis/stones/` alignment —
+  relikd line-order == krisyotam line-order, 594 identical lines): **187 red runes across 14/55 pages**.
+  **Verdict = DECORATION, cryptographically null.** 12/14 red pages are contiguous opening/section-initial
+  runs = the page's own literal opening word (e.g. canon p0 opens S·HEOGMIAF·SYENGC → red = HEOGMIAFSYENGC,
+  leading S = the height-excluded drop-cap). Keytest: best −7.13 vs English baseline −4.0 / threshold −5.2 /
+  noise floor −7.49; direct −7.76, atbash −7.65, red-as-key-over-black −7.47; 0/~30 configs beat threshold.
+
+**Net:** the color channel — the last un-analyzed representation of the canonical ciphertext — is now
+extracted and null. An honest, novel negative that *tightens* the OTP verdict rather than a loose end.
