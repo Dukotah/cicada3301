@@ -101,6 +101,57 @@ page from solved page 56.
   distributed via the 2014 winner cohort", "the repo's wiki/IRC archive would contain
   witness statements") — recorded in the workflow output; do not reuse them.
 
+## Roster sweep (2026-07-27, deep-research workflow wf_cf045169-3a3, 104 agents, 21 confirmed / 4 refuted)
+
+Full enumeration of every identifiable Cicada winner/insider across 2012–2014, split by
+evidentiary status. **Bottom line: the confirmed insider roster is tiny, real-name-anchored,
+and NONE of it contains an LP page, an AN END page, or OTP keying material.** The sweep
+also surfaced Wanner's live GitHub and his 2014 key-escrow repo.
+
+### CONFIRMED insiders
+| Person | Handle | Round / role | Reachable? | Evidence |
+|---|---|---|---|---|
+| **Marcus Wanner** | marcusw / @cryptonomaly | 2012 winner, private forum, CAKES lead, self-ID "3301 librarian" | **YES** — GitHub `marcuswanner` (active TODAY, AeroSpace pushed 2026-07-27), `marcus@wanners.net`, IRC oftc.net/marcusw | Rolling Stone/Kushner (reproduces PGP emails, real name), VT Magazine, his own site — triple-sourced, real-name |
+| **"Tekk"** | Tekk | 2012 co-solver, same IRC group + private forum, "faded away" | NO — anonymous by choice | Rolling Stone (Kushner interviewed him in person); single-journalist source |
+| **"Sage"** | Sage | 2012/2013 insider; sent the March 2013 "We've been laid off" message that killed the forum | NO — went dark | Kushner, via Wanner's first-person account only |
+
+### PUBLIC-STAGE-ONLY (not insiders)
+| Person | Handle | Note |
+|---|---|---|
+| **Joel Eriksson** | owarida | Solved 2012 PUBLIC puzzle solo, MISSED the Tor email window, never entered insider track. Highly reachable (Keybase/GitHub/X owarida, clevcode.org, BlackHat/DefCon/RSA speaker) but holds no forum artifacts by his own account. Note: two claims sourced to his blog about INSIDER-stage entry mechanics were REFUTED 1-2 — treat his account of the insider stage as second-hand. |
+
+### CLAIMED / unverified (treat with caution)
+| Persona | Channel | Status |
+|---|---|---|
+| **"Nox Populi"** | X @NoxPopuli3301, YouTube, DEF CON 26 (2018) talk "Cicada: What we can learn from the puzzles" | Self-claims to be a **2013 winner** — real public presence + real talk, but winner status NOT independently corroborated. Reachable; worth a low-priority contact as a possible 2013-cohort artifact-holder, claim held as unverified. |
+| **crashdemons** | (on Wanner's site) | Drew up the "cicada bounty" wager with Wanner; community collaborator, not attested as an insider. |
+| Schoenberger et al. | — | Known HOAX lineage; keep firmly on the fabricated-lore side. |
+
+### Top artifact found — `github.com/marcuswanner/futorcap` (MIRRORED)
+"Cryptographic Time-delay Engine" — a delay-based **key-escrow** system (Python, 19 commits,
+**2014-02-13 → 2014-03-24**), the same escrow primitive as the CAKES project he built inside
+the forum. **Mirrored locally** to `papers-archive/futorcap-repo/` (full git history).
+Honest read for the key-hunt: it **predates the Liber Primus (May 2, 2014) by ~5–6 weeks**,
+never names CAKES/Cicada/LP, and its "key" is a time-released escrow keypair, NOT OTP
+material for the runes. It is the closest surviving insider artifact and a good talking
+point with Wanner, but it is **not the LP key**. Adjacent repo of mild interest:
+`nameless-ircd` (anonymous IRC daemon, Feb 2013 — the forum-death window).
+
+### Site confirmed + archived
+`marcus.wanners.net` was unreachable live (ECONNREFUSED) but captured via Wayback to
+`papers-archive/marcus-wanners-net-wayback.txt`: confirms the "3301 librarians" self-ID,
+the signing-key fingerprint `…7A35090F` (a SIGNING key, not an encryption/OTP key —
+relevance to the actual LP key is limited), and durable contact = `marcus@wanners.net` +
+GitHub (Twitter @cryptonomaly is now locked/renamed — weak vector).
+
+### What the roster does NOT change
+The external-key thesis stands and is **strengthened**: the only confirmed insider space
+(2012 forum) is timeline-eliminated, and the fully-enumerated confirmed roster holds zero
+LP/AN-END/key material. Open threads worth noting: (1) was there a SEPARATE 2013/2014
+winner forum, post-CAKES and closer to the LP, whose membership is publicly identifiable?
+The confirmed record only documents the 2012 forum's death. (2) Nox Populi's 2013-winner
+claim, if real, would be the first insider on the LP side of the timeline.
+
 ## Relation to prior campaigns
 
 Campaign VIII profiled Eriksson as an authorship *suspect* (cleared: solver, not author).
