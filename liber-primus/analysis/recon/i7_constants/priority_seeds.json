@@ -1,0 +1,28 @@
+{
+  "purpose": "Priority seed list for the plaintext-BLIND doubling-ratio-restoration oracle on LP pages 0-54.",
+  "oracle_target": {"english_band": 0.147, "iter6_measured_stream": 0.19, "random_pad_null": 1.0},
+  "generator_families": {
+    "G1_prime_stream": "consecutive primes mod 29",
+    "G2_prime_totient_stream": "(prime_i - 1) mod 29  [SANCTIFIED: 'the totient function is sacred']",
+    "G3_totient_stream": "totient(consecutive integers) mod 29 (near-miss variant)",
+    "G4_keyword_vigenere": "themed Latin word -> GP indices, cycled",
+    "G5_keyword_xor_totient": "G4 composed with G2, both signs (two-layer)"
+  },
+  "family_priority": ["G2", "G1", "G4", "G5", "G3"],
+  "start_offset_seeds": [0, 1, 2, 3, 29, 109, 3301, 3300, 1480, 809, 12956, "per_page_rune_count"],
+  "keyword_seeds": ["DIVINITY","CIRCUMFERENCE","INSTAR","PARABLE","TOTIENT","PRIMES","SACRED","WISDOM","PILGRIM","TRUTH","WITHIN","EMERGE","KOAN","THEEND","ANINSTAR"],
+  "cipher_knobs": {"sign": [-1, 1], "atbash": [false, true], "interrupter_null": [false, true]},
+  "deprioritised": ["golden_ratio_fibonacci", "external_OTP_or_hash_preimage", "english_scored_additive_keytext"],
+  "exposed_constants_provenance": {
+    "3301": "signature, prime (verified)",
+    "3300": "totient(3301)",
+    "1480": "sum of the 29 Gematria-Primus primes",
+    "109": "29th prime, largest GP value",
+    "29": "modulus / alphabet size",
+    "809": "center of KNOW-THIS 5x5 magic square (magic constant 3301)",
+    "12956": "unsolved-rune count pages 0-54 (i6_mdl)",
+    "13136": "total runes across 57 %-segments in transcription",
+    "per_page_rune_counts": [262,266,201,217,261,263,196,208,255,268,263,273,261,272,137,159,267,273,260,271,269,273,131,213,270,273,265,234,269,277,263,269,121,214,261,271,238,228,228,240,231,273,272,274,273,270,270,274,271,66,92,263,179,232,76,85,95]
+  },
+  "validation_requirement": "Oracle MUST first recover the known AN-END doubling ratio from known-ciphertext-minus-known-keystream before any 0-54 hit is trusted. A family counts as a restoration signal only if it beats the 40-control null band AND moves residual doubling toward ~0.147."
+}

@@ -424,3 +424,44 @@ Imported unrelated-field methods (fields the cipher lanes never used) to pages 0
   build crib-dragging on it.
 - **Surviving positive:** anti-doubling fingerprint (English present, but it constrains the PAD, not
   the message). Feeds iter-7's plaintext-blind pad-restoration oracle.
+- **iter-7 pad-restoration oracle (game-theorist) — NULL, and it CORRECTS the anti-doubling claim
+  above.** Built a plaintext-BLIND oracle (doubling ratio D + PARABLE-learned bigram plausibility P)
+  and VALIDATED it: on synthetic English-in-runes enciphered with the KNOWN AN-END phi(prime)
+  generator, subtracting the correct keystream recovers English on both metrics (D=0.699==English,
+  P=0.398) while every wrong/random keystream fails the P channel (~0.09 floor) — the oracle
+  discriminates a correct pad from a wrong one with no language model. SWEEP of the demonstrated
+  generator family {prime(n), totient(n), phi(prime)=AN-END re-seeded, Fibonacci, golden} × add/sub/
+  Beaufort × strides{1,2,3} × offsets{0..39} = 1800 configs subtracted from real 0-54: **ZERO
+  residuals land in the English band**; every generator RAISES D from 0.19 toward the random-control
+  band (0.83–1.25), i.e. injects doublets rather than restoring English. CORRECTION: the prior
+  "PARABLE English doubling = 0.147 ≈ 0-54's 0.19 → English survives" is small-sample noise (PARABLE
+  is 95 runes / 1 doublet → D=0.309; a large-N quadgram English-in-runes reference has D=0.699). The
+  0-54 baseline D=0.19 is BELOW the English band and its bigram plausibility P=0.095 sits at the
+  RANDOM floor — the low doubling is doublet-SUPPRESSION intrinsic to the cipher mechanism (matches
+  Campaign IV's diagonal doublet deficit), NOT surviving English phonotactics. The
+  self-contained-deterministic-generator restoration hypothesis is FALSIFIED for the demonstrated
+  family. See `analysis/recon/i7_oracle/` (sweep.py, RESULTS.txt).
+
+## Game-theorist: plaintext-blind pad-restoration oracle (iter 7, 2026-07-29) — NULL + a CORRECTION
+Hypothesis (from Cicada's recruiter payoff structure): 0-54's pad is a self-contained DETERMINISTIC
+generator seeded by a taught constant (not a true OTP). Tested with a plaintext-BLIND oracle: subtract
+candidate keystream, measure residual doubling-ratio D + rune-bigram-plausibility P (no language model).
+- **Oracle VALIDATED:** on synthetic English-in-runes enciphered with the known AN-END phi(prime)
+  generator, subtracting the CORRECT keystream recovered English on the P channel (P=0.398) while every
+  wrong/random keystream collapsed to the P~0.08-0.10 floor. D alone is insufficient (prime(n)
+  coincidentally hits D=0.699); P carries the decision. Model-free discrimination confirmed.
+- **Sweep NULL:** 0 of 1800 continuous configs + 0 of 16 per-segment-reset cells (reset at %/./ '/')
+  land a residual in the English band. Every deterministic generator {prime, totient, phi(prime),
+  Fibonacci, golden} x {add,sub,Beaufort} x strides x offsets pushes D the WRONG way — UP from raw 0.19
+  toward the random band (0.83-1.25), INJECTING doublets rather than restoring English. The
+  constant-derived-generator hypothesis is FALSIFIED for the sanctified/demonstrated family.
+- **CORRECTION to iter-6:** the "anti-doubling = English phonotactics survive" positive is FALSIFIED.
+  PARABLE's 0.147 was 95-rune sample noise; large-N English-in-runes has D~0.699 (English DOUBLES).
+  0-54's D=0.19 is BELOW the English band and its bigram-plausibility P=0.095 is at the RANDOM floor.
+  So the low doubling is intrinsic cipher doublet-SUPPRESSION (Campaign IV diagonal deficit ~0.66% vs
+  3.45%), NOT surviving English. Message-existence is back to UNDECIDABLE (iter-2 stands).
+- **Surviving structural handle:** the correct model must REPRODUCE the 0.66%-vs-3.45% doublet deficit
+  as an OUTPUT statistic while yielding bigram-plausible plaintext — a no-repeat/doublet-avoiding output
+  constraint over the (sealed) additive core. Constant audit: only prime-stream + (prime-1)-stream are
+  ever the actual deterministic pad on solved pages; no solved key is external. (Repro analysis/recon/
+  i7_oracle/, i7_oracle_reset/, i7_constants/.)

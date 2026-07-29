@@ -1,0 +1,138 @@
+{
+  "raw_ct_doubling_ratio": 0.1921,
+  "raw_ct_bigram_H_bits": 4.7854,
+  "english_target_ratio": 0.15,
+  "english_band": [
+    0.1,
+    0.4
+  ],
+  "random_control_band": {
+    "mean": 0.9997,
+    "p5": 0.9211,
+    "p95": 1.0753,
+    "min": 0.8688
+  },
+  "cells": [
+    {
+      "boundary": "none",
+      "generator": "totient(prime-1)",
+      "doubling_ratio": 0.9424,
+      "bigram_H_bits": 4.8085,
+      "n": 12956
+    },
+    {
+      "boundary": "none",
+      "generator": "totient(int)",
+      "doubling_ratio": 1.0321,
+      "bigram_H_bits": 4.8157,
+      "n": 12956
+    },
+    {
+      "boundary": "none",
+      "generator": "prime",
+      "doubling_ratio": 0.9424,
+      "bigram_H_bits": 4.8085,
+      "n": 12956
+    },
+    {
+      "boundary": "none",
+      "generator": "fibonacci",
+      "doubling_ratio": 0.9849,
+      "bigram_H_bits": 4.8089,
+      "n": 12956
+    },
+    {
+      "boundary": "/",
+      "generator": "totient(prime-1)",
+      "doubling_ratio": 1.0032,
+      "bigram_H_bits": 4.8086,
+      "n": 12956
+    },
+    {
+      "boundary": "/",
+      "generator": "totient(int)",
+      "doubling_ratio": 0.9715,
+      "bigram_H_bits": 4.8132,
+      "n": 12956
+    },
+    {
+      "boundary": "/",
+      "generator": "prime",
+      "doubling_ratio": 1.0032,
+      "bigram_H_bits": 4.8086,
+      "n": 12956
+    },
+    {
+      "boundary": "/",
+      "generator": "fibonacci",
+      "doubling_ratio": 0.8914,
+      "bigram_H_bits": 4.8109,
+      "n": 12956
+    },
+    {
+      "boundary": ".",
+      "generator": "totient(prime-1)",
+      "doubling_ratio": 0.9473,
+      "bigram_H_bits": 4.8088,
+      "n": 12956
+    },
+    {
+      "boundary": ".",
+      "generator": "totient(int)",
+      "doubling_ratio": 1.0234,
+      "bigram_H_bits": 4.8113,
+      "n": 12956
+    },
+    {
+      "boundary": ".",
+      "generator": "prime",
+      "doubling_ratio": 0.9473,
+      "bigram_H_bits": 4.8088,
+      "n": 12956
+    },
+    {
+      "boundary": ".",
+      "generator": "fibonacci",
+      "doubling_ratio": 0.9919,
+      "bigram_H_bits": 4.8121,
+      "n": 12956
+    },
+    {
+      "boundary": "%_page",
+      "generator": "totient(prime-1)",
+      "doubling_ratio": 0.9424,
+      "bigram_H_bits": 4.8085,
+      "n": 12956
+    },
+    {
+      "boundary": "%_page",
+      "generator": "totient(int)",
+      "doubling_ratio": 1.0321,
+      "bigram_H_bits": 4.8157,
+      "n": 12956
+    },
+    {
+      "boundary": "%_page",
+      "generator": "prime",
+      "doubling_ratio": 0.9424,
+      "bigram_H_bits": 4.8085,
+      "n": 12956
+    },
+    {
+      "boundary": "%_page",
+      "generator": "fibonacci",
+      "doubling_ratio": 0.9849,
+      "bigram_H_bits": 4.8089,
+      "n": 12956
+    }
+  ],
+  "best_cell": {
+    "boundary": "/",
+    "generator": "fibonacci",
+    "doubling_ratio": 0.8914,
+    "bigram_H_bits": 4.8109,
+    "n": 12956
+  },
+  "best_beats_raw": false,
+  "note": "raw ct already at 0.192 which is INSIDE the english band; any decrypt must be judged vs whether it moves TOWARD 0.15 AND out of the random band, not merely low."
+}

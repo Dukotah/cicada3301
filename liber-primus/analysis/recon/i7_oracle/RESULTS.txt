@@ -1,0 +1,71 @@
+======================================================================
+VALIDATION: synthetic English-in-runes, known keystream, oracle recovery
+======================================================================
+synthetic English-in-runes: 5518 runes  D=0.699  P=0.398
+enciphered CT (P+phi):        D=0.836  P=0.096
+
+  subtract keystream -> residual doubling ratio (English band ~0.5-0.7):
+    CORRECT phi(prime)   D=0.699  P=0.398  <- should match English
+    WRONG prime(n)       D=0.699  P=0.080
+    WRONG totient(n)     D=1.099  P=0.092
+    WRONG fibonacci      D=1.025  P=0.096
+    WRONG golden         D=1.246  P=0.093
+    WRONG random         D=0.925  P=0.088
+
+  correct recovery: D=0.699~English(0.699) P=0.398
+  wrong-keystream P values: [0.08, 0.092, 0.096, 0.093, 0.088] (all <0.15 = fail)
+  ORACLE_VALIDATED = True  (correct recovers English D AND P; every wrong keystream fails P)
+
+======================================================================
+SWEEP: Cicada generator family vs REAL pages 0-54 ciphertext
+======================================================================
+REAL 0-54 raw ciphertext:     D=0.193  P=0.095  (baseline)
+English target band:          D~0.699 (quadgram)  / 0.31 (PARABLE)
+Random-keystream control band D~1.0
+
+random-keystream control residual D: mean=1.007 [0.920..1.068] over 30 seeds
+
+--- lowest residual doubling ratios (most doublet-suppressed) ---
+  D=0.828  fibonacci          add  stride=2 off=8
+  D=0.828  fibonacci          add  stride=2 off=22
+  D=0.828  fibonacci          add  stride=2 off=36
+  D=0.835  fibonacci          beau  stride=2 off=4
+  D=0.835  fibonacci          beau  stride=2 off=18
+  D=0.835  fibonacci          beau  stride=2 off=32
+  D=0.835  fibonacci          sub  stride=2 off=4
+  D=0.835  fibonacci          sub  stride=2 off=18
+
+residuals in English band (0.25-0.75): 0 of 1800 configs
+
+RESTORATION_SIGNAL = False
+no generator landed a residual in the English band below the random-control floor
+ORACLE_VALIDATED   = True
+================================================================
+INTERPRETATION (i7 game-theorist / pad-restoration oracle)
+================================================================
+1. ORACLE VALIDATED (not fabricated): on synthetic English-in-runes enciphered
+   with the KNOWN AN-END phi(prime) generator, subtracting the CORRECT keystream
+   recovers English on BOTH blind metrics (doubling D=0.699 == English 0.699;
+   bigram-plausibility P=0.398), while EVERY wrong generator/random keystream
+   fails the P test (all ~0.08-0.10, the random floor). The oracle discriminates
+   a correct pad from a wrong one with NO language model. The D metric alone is
+   insufficient (prime(n) coincided at 0.699); P is the discriminating channel.
+
+2. NULL SWEEP: across 1800 configs (5 Cicada generators x 3 directions x 3
+   strides x 40 offsets) subtracted from the REAL 0-54 ciphertext, ZERO residuals
+   land in the English band (0.25-0.75). Every generator RAISES the residual
+   doubling ratio from the raw 0.193 toward the random-keystream control band
+   (0.83-1.25), i.e. every deterministic generator INJECTS doublets rather than
+   restoring English phonotactics.
+
+3. CORRECTION TO PRIOR-ITER MEMO: the memo's "English PARABLE doubling = 0.147"
+   is small-sample noise (PARABLE is 95 runes, 1 doublet -> D=0.309). A large-N
+   English-in-runes reference (quadgram-Markov, 5518 runes) has D=0.699. So the
+   0-54 baseline D=0.193 is NOT in the English band -- it is well BELOW it, and
+   its bigram plausibility P=0.095 sits at the RANDOM floor, not English. The
+   low doubling is doublet-SUPPRESSION intrinsic to the cipher mechanism
+   (consistent with Campaign IV's diagonal doublet deficit), not surviving
+   English structure. The "restoration" hypothesis is therefore falsified for the
+   demonstrated deterministic generator family: 0-54's pad is not any of
+   {prime(n), totient(n), phi(prime)=AN-END re-seeded, Fibonacci, golden} under
+   add/sub/Beaufort over cheap offset/stride re-seeds.
