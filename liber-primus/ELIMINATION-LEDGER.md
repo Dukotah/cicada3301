@@ -333,3 +333,45 @@ Stopped interrogating the runes (message-existence undecidable) and reconstructe
   released (silent since April 2017). Decisive gate: whole-file SHA-512 of every held open blob
   (T2.bin, 2.jpg, T3==folly==wisdom 3368B) vs the AN-END target = clean NULL -> the page must be
   RECOVERED as an archived object, not computed. Pivots the frontier to a pure archival problem.
+
+## HISTORIAN/ARCHIVIST: Tor-v2 crawl-corpora sweep for AN-END page (iter 4, 2026-07-29) — NULL (sourced)
+New primary-source class checked = archival crawl corpora (distinct from the 4 community mirrors + iBotPeaches GitHub).
+- **Internet Archive `.onion` items**: IA hosts items for 5 of 8 Cicada onions (auqgnxjtvdbll3pv, cu343l33nqaekrnw,
+  fv7lyucmeozzd5j4, avowyfgl5lkzfj3n, ky2khlqdf7qdznac). Verified they are 2020 COMMUNITY RE-UPLOADS, not new
+  captures: IA avowy `3301` blob un-hexed == repo `rsahex_avowy_3301.bin` byte-identical; IA onion7 `index.html`
+  (title "133", div "331") lists only 0-57.jpg with NO next-page pointer. SHA-512 of IA index.html and of the
+  256B RSA blob (raw + hex forms) vs AN-END target 36367763...c2a8b4 = all NULL.
+- **onion.link/onion.city IA WARC collection** (real 2014-15 Tor2web crawls): only 4 items total, ZERO Cicada
+  onions. Not a comprehensive v2 crawl; AN-END page could not survive there. Exhausted.
+- **gwern Darknet Market Archives 2013-2015**: scoped to 89 markets + 37 forums ONLY (non-market Cicada page
+  out of scope by construction). Excluded.
+- **Public preimage status**: web sweep through 2025 confirms NO published discovery of a page hashing to the
+  target. Two recent solver artifacts are unverified/irrelevant: Zenodo 18199474 ("Bruno Becker", unsigned,
+  fails the 7A35090F gate) and Tumbleson Part-4 (Dec 2024, "progress slowed massively, no clear path" — no
+  archival recovery). AN-END page remains UNRECOVERED; archival frontier for these corpus classes = closed.
+
+## Historian/archivist: AN-END page recovery + era endpoints (iter 4, 2026-07-29) — NULL
+Frontier is now purely archival (0-54 pad never planted internally). Chased primary sources.
+- **Tor-v2 crawl corpora:** AN-END page (SHA-512 36367763...c2a8b4) NOT in any archival corpus.
+  Internet Archive holds .onion items for 5/8 Cicada onions but they are 2020 COMMUNITY RE-UPLOADS
+  proven byte-identical to held content (IA avowy '3301' un-hexed == repo rsahex_avowy_3301.bin;
+  IA onion7 index lists only 0-57.jpg, no pointer); SHA-512 of both vs target = null. onion.link
+  WARC has 0 Cicada; gwern DNM archive out of scope. **AN-END likely LOST to Oct-2021 Tor-v2
+  deprecation, never mirrored.** Only residual untried class = Tor2web-proxy (onion.to/tor2web.org)
+  Wayback CDX captures — longshot (address unknown).
+- **Onion7 continuation pointer:** NULL — onion7 (ky2khlqdf7qdznac, the LP2 deliverer) terminates
+  CLEANLY, byte-structurally identical across 2 independent captures (iBotPeaches + IA-2020):
+  <title>133</title>, <div id="331">, exactly 58 images 0-57.jpg, ZERO comments/address/hash/email/
+  PGP/form. Contrasts with onions 2/3/4 (each embed <!--761/1033/3301--> + 256B RSA hex) and onion6
+  (PGP gate + /cgi-bin/squares form). onion7 is a pure terminal book-delivery index; chain ends here
+  by design. Confirms the ONE outward pointer is AN-END's hash, absent from onion7 HTML.
+- **2013 Columbus-GA Shamir 7th share DEBUNKED as key source:** threshold is 5-of-10; we already hold
+  6 valid 22-byte shares → the degree-4 polynomial is over-determined, secret already known, the
+  missing 7th share is deterministically REDUNDANT (just re-encodes the known Questions onion), zero
+  independent information. 2012 terminus went private per-solver (individual RSA modulus) past the
+  email gate; no public "7 final images" terminal page exists in primary sources.
+- **AN-END hash->address derivation:** author left it UNSPECIFIED. Exact text = "WITHIN THE DEEP WEB
+  THERE EXISTS A PAGE THAT HASHES TO [512-bit digest] IT IS THE DUTY OF EUERY PILGRIM TO SEEK OUT
+  THIS PAGE" — a PREIMAGE/content-address instruction (find the page whose SHA-512 = x), NOT a
+  derivation. No base-encoding/char-count rule anywhere in authentic Cicada text. gy3hoy5...base32 =
+  debunked modern fabrication (already ledger:119 / CAMPAIGN-XIII).
