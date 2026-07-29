@@ -1,0 +1,397 @@
+================================================================================
+LP2 STRUCTURAL RECON DOSSIER — the unsolved runic section (pages 0-54)
+================================================================================
+Author: reconnaissance agent (structural recon only; ciphers are CLOSED/OTP-class,
+        not re-attacked here). Branch findings-2026.
+Date:   2026-07-28
+Scope:  A definitive STRUCTURAL map of the unsolved section + a hunt for any
+        solved<->unsolved BRIDGE not yet exploited. NO solve is claimed or implied.
+
+All numbers below were recomputed directly from the canonical data in this run:
+  - data/krisyotam_runes.txt  (single-file canon; page break '%', line '/',
+    title mark '.', word '-')  -- 57 segments (0..56)
+  - data/relikd/p*.txt         (per-page-range transcription; the ONLY source
+    that carries the pp49-51 numeric TABLE and the red-ink layer)
+  - analysis/armada_osint/redrune/result.json  (per-page red-rubrication map)
+
+--------------------------------------------------------------------------------
+0. THE NUMBERING PROBLEM — settled (this is load-bearing; get it right first)
+--------------------------------------------------------------------------------
+There are TWO page-numbering schemes in the repo and they diverge. Prior campaign
+docs (esp. Campaign VII) used "relikd p49/50/51" for the table while other docs
+say "krisyotam page 50 = table"; both are locally correct but refer to different
+objects. Reconciliation, verified by rune-count sequence alignment this run:
+
+  * krisyotam canon = 57 segments, 0..56.
+      - segments 0..54  = the UNSOLVED runic corpus (this dossier's target).
+      - segment 55      = "AN END" (SOLVED; phi(prime)/prime-1 keystream; raw
+                          translit is gibberish -> confirmed keystream page).
+      - segment 56      = "PARABLE" (SOLVED; plaintext transliteration; raw
+                          translit reads "PARABLE LIKE THE INSTAR TUNNELING TO
+                          THE SURFACE WE MUST SHED OUR OWN CIRCUMFERENCES...").
+    => In krisyotam indexing the unsolved set is EXACTLY 0..54 (55 pages).
+
+  * relikd = per-page transcription, physical pages p0..p55, and it is the
+    onion7 master (byte-identical to the raw images -- Campaign IV/V). relikd
+    ALSO transcribes the pp49-51 base-60 TABLE as 3 discrete blocks that
+    krisyotam OMITS entirely.
+
+  * THE SHIFT / DIVERGENCE. The two schemes are NOT a clean global "-1". They
+    agree page-for-page early, then relikd splits a few long pages into two
+    physical leaves and (critically) inserts the 3 table pages that krisyotam
+    drops, so past the table relikd numbers run ahead of krisyotam by +3:
+       - krisyotam seg 49 (66 runes)  == relikd p49 (66 runes, "3 rune lines
+         + first table")
+       - relikd p50/p51/p52          == the pure TABLE pages (80/104/72 tokens)
+                                        -- NOT present as segments in krisyotam
+       - krisyotam seg 50 (92 runes)  == relikd p53 (92 runes, "table + 4 rune
+         lines")
+     So for the table region: krisyotam merges the surrounding rune lines and
+     silently deletes the numeric grid; relikd keeps the grid as its own pages.
+     (Campaign V independently noted "relikd p54 = krisyotam page 53" -- same
+     divergence, same cause.)
+
+  ACTION ITEM for any future solver: state which scheme you mean. Rune-cipher
+  work uses krisyotam 0..54. The base-60 payload lives in relikd p49-p51 (a.k.a.
+  "pp49-51"), which is INSIDE krisyotam's seg-49/50 gap. The two never collide
+  because krisyotam has no table segments.
+
+--------------------------------------------------------------------------------
+1. PAGE MAP — the 55 unsolved pages (krisyotam indexing 0..54)
+--------------------------------------------------------------------------------
+Columns:
+  seg   = krisyotam segment index (the canonical cipher-analysis index)
+  runes = rune count (recomputed this run)
+  lines = physical text lines on the page ('/' count in canon)
+  titles= in-page title/clause marks ('.' in canon) -- weak proxy for internal
+          section/heading punctuation, NOT reliable as a boundary marker
+  RED   = red-ink rubrication present? (from redrune/result.json; the physical
+          "section opener" signal -- see sec.2)
+  type  = prose-runes | TABLE-adjacent (carries part of the base-60 grid)
+
+ seg | runes | lines | titles | RED         | type / note
+-----+-------+-------+--------+-------------+-------------------------------------
+  0  |  262  |  12   |   2    | prefix(12)  | prose; BOOK OPENER (red section head)
+  1  |  266  |  12   |   5    |    -        | prose
+  2  |  201  |   9   |   2    |    -        | prose
+  3  |  217  |  11   |   3    | scattered(17)| prose; red section head (align-blur)
+  4  |  261  |  12   |   4    |    -        | prose
+  5  |  263  |  12   |   3    |    -        | prose
+  6  |  196  |  10   |   3    | contig(10)  | prose; red section head
+  7  |  208  |  10   |   5    | contig(14)  | prose; red section head
+  8  |  255  |  12   |   4    | prefix(11)  | prose; red section head
+  9  |  268  |  12   |   2    |    -        | prose
+ 10  |  263  |  12   |   4    |    -        | prose
+ 11  |  273  |  12   |   6    |    -        | prose
+ 12  |  261  |  12   |   6    |    -        | prose
+ 13  |  272  |  12   |   2    |    -        | prose
+ 14  |  137  |   7   |   4    |    -        | prose  (SHORT)
+ 15  |  159  |   8   |   2    | prefix(10)  | prose; red section head (SHORT)
+ 16  |  267  |  12   |   3    |    -        | prose
+ 17  |  273  |  12   |   5    |    -        | prose
+ 18  |  260  |  12   |   2    |    -        | prose
+ 19  |  271  |  12   |   3    |    -        | prose
+ 20  |  269  |  12   |   1    |    -        | prose
+ 21  |  273  |  12   |   1    |    -        | prose
+ 22  |  131  |   6   |   4    |    -        | prose  (SHORT)
+ 23  |  213  |  10   |   1    | prefix(15)  | prose; red section head
+ 24  |  270  |  12   |   3    |    -        | prose  (has the resolved 24:172=AE)
+ 25  |  273  |  12   |   2    |    -        | prose
+ 26  |  265  |  12   |   3    |    -        | prose
+ 27  |  234  |  11   |   3    | prefix(18)  | prose; red section head
+ 28  |  269  |  12   |   3    |    -        | prose
+ 29  |  277  |  12   |   4    |    -        | prose  (longest page)
+ 30  |  263  |  12   |   5    |    -        | prose
+ 31  |  269  |  12   |   6    |    -        | prose
+ 32  |  121  |   6   |   2    |    -        | prose  (SHORT)
+ 33  |  214  |  11   |   3    | scattered(15)| prose; red section head (align-blur)
+ 34  |  261  |  12   |   5    |    -        | prose
+ 35  |  271  |  12   |   2    |    -        | prose
+ 36  |  238  |  11   |   2    |    -        | prose
+ 37  |  228  |  11   |   2    | contig(1)   | prose; faint red (1 rune; near-noise)
+ 38  |  228  |  11   |   4    |    -        | prose
+ 39  |  240  |  12   |   4    | contig(2)   | prose; faint red (2 runes; near-noise)
+ 40  |  231  |  11   |   6    | prefix(7)   | prose; red section head
+ 41  |  273  |  12   |   3    |    -        | prose
+ 42  |  272  |  12   |   3    |    -        | prose
+ 43  |  274  |  12   |   5    |    -        | prose
+ 44  |  273  |  12   |   2    |    -        | prose
+ 45  |  270  |  12   |   3    |    -        | prose
+ 46  |  270  |  12   |   3    |    -        | prose
+ 47  |  274  |  12   |   4    |    -        | prose
+ 48  |  271  |  12   |   7    |    -        | prose  (7 title marks -- most in corpus)
+ 49  |   66  |   3   |   1    |    -        | *** TABLE-adjacent: 3 rune lines +
+     |       |       |        |             |   start of the base-60 grid.
+     |       |       |        |             |   (relikd p49; grid continues p50-52)
+ 50  |   92  |   4   |   0    |    -        | *** TABLE-adjacent: end of grid +
+     |       |       |        |             |   4 rune lines. (relikd p53.)
+     |       |       |        |             |   The ONLY page with 0 title marks.
+ 51  |  263  |  12   |   3    |    -        | prose (relikd p54)
+ 52  |  179  |   9   |   3    |    -        | prose (relikd p55)  (SHORT)
+ 53  |  232  |  11   |   1    | contig(47)  | prose; BIG red block (47 runes) --
+     |       |       |        |             |   strongest section-opener in corpus
+ 54  |   76  |   4   |   1    | prefix(8)   | prose; red section head (SHORT; last
+     |       |       |        |             |   unsolved page before AN END)
+-----+-------+-------+--------+-------------+-------------------------------------
+Totals: 55 unsolved pages; 12,764-12,956 runes depending on count convention
+        (the project's canonical figure is 12,956 unsolved runes over pages 0-54;
+        the redrune extractor aligned 12,764 segmented glyphs).
+
+THE BASE-60 TABLE (relikd p49-51 == inside krisyotam seg 49/50 gap):
+  - 10x8 (80 tokens) + 13x8 (104) + 9x8 (72) = 256 two-char base-60 tokens
+    => 256 bytes = 2048 bits.
+  - Digit map 0-9->0-9, A-Z->10-35, a-x->36-59 (60 symbols); lowercase 'f'(=41)
+    never appears -- the "F-skip" fingerprint that mirrors Cicada's own F-skip.
+  - Characterized (Campaign VII): 7.17 bits/byte entropy, composite in every
+    interpretation, even big-endian => not a prime/RSA modulus; 40% printable,
+    longest run 5 => not text. Verdict: a pad/keystream/ciphertext needing an
+    external key. Canonical hex is in analysis/pp49_51/canon_256.hex (6 of 256
+    bytes contested -- Latin/digit OCR needed, not the rune classifier).
+
+Drop-caps / rubrication / margin art (physical, from Campaign IV/V + redrune):
+  - EVERY prose page opens with an oversized ornamental DROP-CAP initial rune
+    (height ~500px, excluded by the segmenter). These are structural, not
+    cipher-bearing (height-excluded from canon).
+  - RED INK ("rubrication") on 14 of 55 pages -- see sec.2. It re-states each
+    page's OWN opening word(s); tested as a cipher selection => NULL (best -7.13
+    vs -5.2 threshold). But as a SECTION MAP it is real signal (sec.2/4).
+  - Margin/illustration art is grouped by PAGE-SET, not per page (Campaign V):
+      * Babylonian sexagesimal glyphs on pages 34-39
+      * mayfly / "ephemeral" motif on 24-26, plus 14 and 57(PARABLE)
+      * dendrite/branching motif on 8-14, 32, and 55(AN END)
+    These suggest per-set cipher VARIATION (consistent with no-global-period),
+    and the mayfly/ephemeral motif thematically echoes a one-time (ephemeral) pad.
+
+--------------------------------------------------------------------------------
+2. SECTION STRUCTURE — is it monolithic or partitioned?
+--------------------------------------------------------------------------------
+FINDING: the unsolved corpus is NOT a single undifferentiated block. Two
+independent physical signals partition it, but they do NOT partition the CIPHER.
+
+  (A) The RED-RUBRICATION section heads (the strong, verified signal).
+      Red text-runes fall on canon pages:
+        0, 3, 6, 7, 8, 15, 23, 27, 33, 37, 39, 40, 53, 54
+      and on 12 of those 14 they are exactly the page's CONTIGUOUS OPENING word(s)
+      (7 "prefix", 5 "contig-run"; pages 3 & 33 "scattered" = the same thing
+      blurred by +-1 glyph segmentation drift + the relikd/krisyotam offset;
+      pages 37 & 39 carry only 1-2 red runes = near-noise). This is classic
+      manuscript rubrication: a scribe reddening SECTION-INITIAL words. It gives
+      a candidate partition of pages 0-54 into ~10-12 sections whose first pages
+      are the reddened ones. This is the best physical section signal in the book.
+
+  (B) The base-60 TABLE cluster is a hard internal discontinuity.
+      relikd p49-51 (inside krisyotam's seg-49/50 gap) is a completely different
+      DATA TYPE (a numeric grid) sitting mid-book, immediately after a long run of
+      full 270-rune prose pages (41-48) and before the tail prose run (51-54 in
+      krisyotam). It is unambiguously a structural boundary object.
+
+  (C) The "AN END" terminal (krisyotam seg 55) is the book's literal terminus --
+      but it is a SOLVED page and sits OUTSIDE the unsolved 0-54 block. It is
+      preceded by the last unsolved page (seg 54), which is itself a red
+      section-head. So the unsolved block ends on a section opener, then the
+      solved AN END/PARABLE close the book.
+
+CRITICAL CAVEAT (why a per-section key model is NOT free): Campaign IV/
+STRUCTURE-FINDINGS proved the keystream is CONTINUOUS across the whole book --
+the no-adjacent-repeat suppression holds even across PAGE JOINS (last rune of a
+page never equals first rune of next; doublet rate at '%' boundaries = 0.0000).
+There is NO measured keystream reset at any page, line, clause, or word boundary.
+So the sections in (A)/(B) are TEXTUAL/EDITORIAL sections, and there is real
+evidence they are NOT cipher-key boundaries. A naive "each red section has its
+own key, reset at the red page" model is therefore already in tension with the
+continuity finding -- but see sec.5 for the one variant that survives.
+
+--------------------------------------------------------------------------------
+3. THE SOLVED <-> UNSOLVED BRIDGE — every adjacency and reference
+--------------------------------------------------------------------------------
+The entire solved corpus is LP1 (an earlier book) + exactly TWO LP2 pages
+(AN END, PARABLE). There is NO solved instruction page sitting *inside* the
+unsolved 0-54 run. The transitions:
+
+  BRIDGE 1 (the only in-book solved/unsolved adjacency in LP2):
+     ...seg 54 (UNSOLVED, red section-head, 76 runes)
+        -> seg 55  "AN END"  (SOLVED, keystream)
+        -> seg 56  "PARABLE" (SOLVED, plaintext).
+     So the unsolved block runs 0..54 and then hands directly to the two solved
+     closing pages. The unsolved section is BOOK-INITIAL and BOOK-MEDIAL; the
+     solved pages are strictly BOOK-TERMINAL. Nothing solved gates the START of
+     the unsolved run.
+
+  BRIDGE 2 (cross-book instruction gate -- LP1 -> LP2):
+     LP1's solved plaintext IS a preface/instruction set for the whole journey:
+        - "A WARNING: BELIEVE NOTHING FROM THIS BOOK" (Atbash)
+        - "WELCOME PILGRIM TO THE GREAT JOURNEY..." (Vigenere key DIVINITY)
+        - "SOME WISDOM: THE PRIMES ARE SACRED... / consciousness is..." (plaintext)
+        - the KOANs (Atbash+shift; Vigenere key FIRFUMFERENFE=CIRCUMFERENCE)
+     These solved pages are the instructional PREFACE that precedes the unsolved
+     LP2 block. They establish: (a) the interrupter rule (only F is ever a null;
+     not every F is), (b) the cipher FAMILY (Atbash, shift, Vigenere-with-key),
+     (c) the theme vocabulary the community mined for keys. BUT: they name no key
+     for LP2, and every key they *do* name (DIVINITY, CIRCUMFERENCE, primes,
+     totient) has been tested against 0-54 and failed. So LP1 gates the READER
+     but does NOT gate the LP2 CIPHER with any recoverable key.
+
+  BRIDGE 3 (the AN END hash -- a solved page that POINTS past the ciphertext):
+     AN END (seg 55, solved) contains a 512-bit SHA-512 that pointed at a
+     deep-web (Tor v2) page. That page -- never recovered, now dead -- is the one
+     place an external LP2 key might have lived. AN END is DOWNSTREAM of 0-54
+     (it decrypts on its own prime-1 keystream, independent of the unsolved
+     block), so it is not a key FOR 0-54; it is a POINTER to where a key might be.
+     The AN-END hash has been tested as an internal preimage of every held object
+     (solved pages, koans, PGP prose, the 256-byte payload + quarters) under
+     SHA-2/3, BLAKE2, and original BLAKE-512/256 -- all NULL (AUDITOR-LOOP
+     2026-07-28). It hashes no object we hold.
+
+NET on the bridge: there is NO unexploited solved->unsolved key handoff. The
+solved pages preface, instruct, and (via AN END) point OUTWARD, but none carries
+a usable key into 0-54. Every key they suggest is tested and dead. The one live
+external thread is the dead Tor-v2 AN END page (out of scope for compute).
+
+--------------------------------------------------------------------------------
+4. UNEXPLOITED STRUCTURAL FACTS — regularities a decrypt model has NOT used
+--------------------------------------------------------------------------------
+For each: what it is, and whether the ledger already covers it.
+
+ 4.1 RED SECTION-HEAD PAGES AS A PARTITION (pages 0,3,6,7,8,15,23,27,33,37,39,
+     40,53,54).
+     - LEDGER STATUS: the red runes were extracted and tested only as a CIPHER
+       SELECTION (redrune/, OSINT-SWEEP) -> NULL. They were NEVER used as a
+       SECTION-BOUNDARY MAP to segment the ciphertext for a per-section attack.
+     - This is the single cleanest UN-USED structural handle. (Tension: sec.2
+       continuity finding says no key reset at page joins -- but the red pages
+       are a much sparser partition than "every page," and continuity was tested
+       at ALL page joins uniformly, not specifically at the ~11 red-section
+       boundaries. A red-boundary-only in-depth test is genuinely un-run.)
+
+ 4.2 THE pp49-51 TABLE'S POSITION relative to the prose.
+     - It sits at ~90% through the unsolved block (relikd p49-51), immediately
+       after the densest, most-uniform prose run (41-48, all ~270 runes) and
+       before the short tail (52,54 = 179,76). Its position -- a 256-byte binary
+       object embedded mid-late in a runic book -- has been characterized as an
+       OBJECT (Campaign VII/IX/XI/XII) but its POSITIONAL/INDEXING role relative
+       to the 55 pages has NOT been modeled.
+     - LEDGER STATUS: table AS a runic key -> tested, null (337,944 configs). Table
+       AS prime/RSA/text/format/hash-preimage/XOR/image -> all tested null.
+       Table AS a PER-SECTION INDEX / offset table into the pages -> NOT tested.
+       256 tokens vs 55 pages: 256 is NOT 55, but 256 ~= 4x64 or could index
+       lines (594 canon lines) or words. This mapping is un-modeled.
+
+ 4.3 PAGE RUNE-COUNT SEQUENCE.
+     count stream (seg 0..54):
+       262,266,201,217,261,263,196,208,255,268,263,273,261,272,137,159,267,273,
+       260,271,269,273,131,213,270,273,265,234,269,277,263,269,121,214,261,271,
+       238,228,228,240,231,273,272,274,273,270,270,274,271,66,92,263,179,232,76
+     - The SHORT pages (runes < ~200): 14,15,22,32,49,50,52,54. Notably 49 & 50
+       are the table-adjacent pages. The others (14,15,22,32,52,54) are candidate
+       section TERMINATORS (short pages often end a section). Several short pages
+       sit adjacent to red section-heads (15 is itself red; 54 is red; 22->23red;
+       32->33red). This alternation (short page then red opener) reinforces the
+       section partition in 4.1.
+     - LEDGER STATUS: "runes-per-line count stream" and "per-page IoC" tested
+       flat/null (Campaign V, STRUCTURE-FINDINGS #3: no outlier page). But the
+       PAGE-LENGTH sequence as a partition/section-length signal (not as a
+       keystream) was NOT tested. F-count-per-page tested (not primes/Fibonacci).
+
+ 4.4 IN-PAGE TITLE-MARK COUNT ('.').
+     - seg 48 has 7 (the most); seg 50 has 0 (the only zero, and it's table-
+       adjacent). Title marks are candidate internal headings.
+     - LEDGER STATUS: not analyzed as a section signal anywhere. Low prior (canon
+       '.' is clause/title punctuation, likely just sentence structure), but
+       un-examined.
+
+ 4.5 MARGIN-ART PAGE-SETS (sexagesimal 34-39; mayfly 24-26,14; dendrite 8-14,32).
+     - LEDGER STATUS: noted (Campaign V) as suggesting per-set cipher VARIATION;
+       flagged as "faint open thread, low EV." The art sets do NOT line up with
+       the red section-heads (e.g. sexagesimal 34-39 has NO red page; the mayfly
+       set 24-26 has red only at 23/27 edges). So there are TWO independent,
+       NON-coincident physical partitions (art-sets vs red-heads) -- neither has
+       been cross-referenced against the other or used to segment a cipher attack.
+     - The sexagesimal (base-60) margin art on 34-39 is thematically the SAME
+       base-60 system as the pp49-51 TABLE. This art->table thematic link has
+       NOT been drawn or exploited (see sec.5).
+
+--------------------------------------------------------------------------------
+5. STRONGEST STRUCTURAL HYPOTHESIS (falsifiable, NOT in the ledger) + cheap test
+--------------------------------------------------------------------------------
+HYPOTHESIS H1 (primary):
+  "The base-60 TABLE (relikd p49-51, 256 tokens) is a PER-SECTION INDEX/OFFSET
+   table keyed to the red-rubricated section structure -- and the sexagesimal
+   margin art on pages 34-39 is the in-band instruction that the reader must
+   interpret the corpus in base-60."
+
+  Motivation (all three are un-connected in the ledger):
+   (a) The table is base-60 and the margin art on 34-39 is Babylonian
+       SEXAGESIMAL (base-60). Two base-60 objects in one book, never linked.
+   (b) The red rubrication gives ~11 section heads; the table has 256 tokens =
+       plausibly an index (256 could address lines/words/offsets, or 4x64 could
+       be one 64-token block per book-quarter).
+   (c) The table was proven NOT a runic key and NOT a self-contained number --
+       consistent with it being an INDEX/pointer structure rather than a pad.
+
+  WHY IT MIGHT SURVIVE THE CONTINUITY FINDING: an index/offset table does not
+  require a keystream RESET at section boundaries -- it selects a starting offset
+  or a per-section parameter into ONE continuous stream. So H1 is NOT refuted by
+  "keystream is continuous across page joins" (that only kills per-page RESET).
+
+  CHEAP FALSIFIABLE TESTS (hours, on data already in-repo):
+   T1. Decode the 256 table bytes as candidate INDICES and check whether they
+       land on the 14 red-section-head pages / their line or word offsets:
+         - as page indices mod 55 -> do they cluster on {0,3,6,7,8,15,23,27,33,
+           37,39,40,53,54}? (chance ~25%; a real hit would be a spike.)
+         - as cumulative offsets into the 594-line / word stream -> do successive
+           table values land at section-opener line positions?
+       PASS = the table's values are non-randomly concentrated at the red
+       boundaries; FAIL (expected null) = uniform. Uses canon_256.bin +
+       redrune per-page boundaries + stones/alignment.json. No new data needed.
+   T2. Read the table in base-60 as (section, offset) PAIRS (128 pairs) and test
+       whether the 'section' fields span exactly the red-section count and the
+       'offset' fields stay within each section's rune length. This is a pure
+       structural consistency check -- cheap, and it either fits the red-section
+       geometry or it doesn't.
+   T3. Cross-plot the sexagesimal-art pages (34-39) against the table: is the
+       table's row/column count (10/13/9 x 8) encoded or referenced by anything
+       on pages 34-39? (Read-only inspection of relikd p34-39 vs table dims.)
+
+  EXPECTED OUTCOME (honest prior): given how thoroughly the table has been
+  characterized as high-entropy (7.17 bits/byte) with no printable/index-like
+  structure, T1/T2 will most likely NULL -- high-entropy bytes rarely behave as
+  a clean index. BUT: (i) this exact indexing/section-map framing is genuinely
+  absent from the ledger (which tested the table only as key/number/text/format/
+  preimage/XOR/image, never as a section index), and (ii) the tests are cheap and
+  falsifiable on in-repo data. It is the one structural idea that ties the THREE
+  strongest un-linked physical facts (red section heads + base-60 table + base-60
+  margin art) into a single testable claim. That makes it the correct next
+  structural probe even though the base rate of success is low.
+
+SECONDARY HYPOTHESIS H2 (if H1 nulls):
+  "Run the Campaign-IV continuity/in-depth test AGAIN but ONLY at the ~11 red
+   section boundaries." The published continuity test averaged over ALL page
+   joins and found no reset. It never isolated the sparse red-section joins. If
+   the cipher parameter (offset/key-phase) changes only at red heads, a
+   uniform all-joins test would dilute that signal below detection. Cheap:
+   restrict the existing doublet-at-boundary / cross-boundary difference test to
+   the 14 red-page joins vs the ~41 non-red joins and compare. Falsifiable, uses
+   only canon + the red-page list, and is NOT in the ledger as a red-specific test.
+
+--------------------------------------------------------------------------------
+6. HONEST BOTTOM LINE
+--------------------------------------------------------------------------------
+- The unsolved section is 55 pages (krisyotam 0-54). It is NOT monolithic: it has
+  (i) a verified red-rubrication section-head partition (~11 sections), (ii) a
+  hard mid-late base-60 TABLE discontinuity (relikd p49-51 == 256-byte payload),
+  and (iii) two independent margin-art page-sets. But the CIPHER stream is
+  measured CONTINUOUS across all page joins -- so these are editorial/textual
+  sections with no proven per-section key reset.
+- The solved<->unsolved bridge is fully mapped and carries NO usable key into
+  0-54: LP1 is an instructional preface, the two solved LP2 pages are strictly
+  terminal, and AN END points OUTWARD to a dead Tor-v2 page. No unexploited key
+  handoff exists inside the book.
+- The genuinely UN-USED structural handles are: the red section-heads used as a
+  SEGMENTATION MAP (not a cipher selection), the base-60 table's INDEXING/section
+  role (not as a key), and the base-60 margin-art <-> base-60 table thematic link.
+- One falsifiable, not-in-ledger structural hypothesis (H1) unifies those three
+  and is cheaply testable on in-repo data (T1-T3), with a secondary red-boundary-
+  only continuity test (H2). Prior of success is LOW (the table is high-entropy),
+  but the framing is new and the test is cheap -- so it is the correct next
+  structural move. No solve is claimed.
+================================================================================

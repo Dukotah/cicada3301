@@ -1,0 +1,247 @@
+================================================================================
+LP1 METHODOLOGY RECON DOSSIER
+Reverse-engineering the Cicada 3301 author's key-construction method from the
+SOLVED Liber Primus pages, to constrain how the UNSOLVED (LP2) key is built.
+================================================================================
+Agent: reconnaissance (intelligence-gathering, not brute-force).
+Ground truth: tests/validate.py (re-derives every solved page; run 2026-07-28,
+ALL VALIDATIONS PASSED), src/lp/{gematria,ciphers}.py, solved_plaintext.txt,
+SOLVED-PAGES-AND-INTERRUPTERS.md, KEY-HINT-RESEARCH.md, ELIMINATION-LEDGER.md.
+All arithmetic below reproduced live against the rig.
+
+Gematria Primus recap (index | rune | translit | prime): 29-symbol futhorc.
+Index 0 = ᚠ = F = prime 2. This F rune is the ONLY interrupter/null in the book.
+Cipher operates on INDICES 0..28; decrypt = (C + sign*K) mod 29.
+
+--------------------------------------------------------------------------------
+1. PER-SOLVED-PAGE TABLE
+--------------------------------------------------------------------------------
+Cols: page | plaintext (short) | cipher family | EXACT key | key TYPE | interrupter rule
+
+00 "LIBER PRIMUS" (cover)
+   | plaintext transliteration | key: NONE | type: none | interrupters: n/a
+
+01 "A WARNING - BELIEVE NOTHING FROM THIS BOOK EXCEPT WHAT YOU KNOW TO BE TRUE..."
+   | ATBASH (index i -> 28-i), no shift | key: NONE (fixed involution)
+   | type: keyless transform | interrupters: none used
+   (validate: "atbash+shift+0", 4/4 words, score -4.48)
+
+02 "INTUS" | plaintext transliteration | key: NONE | type: none | interrupters: n/a
+
+03-04 "WELCOME, PILGRIM, TO THE GREAT JOURNEY TOWARD THE END OF ALL THINGS..."
+   | VIGENERE, shift DOWN (sign=-1, C-K) | key: DIVINITY
+   | type: RUNIC ENGLISH WORD -- and specifically an LP-THEMATIC word (the book's
+     central concept; cf. page 10-13 title "THE LOSS OF DIVINITY")
+   | interrupters: +7 null ᚠ on the page (found by beam search)
+   (validate: vigenere DIVINITY, 4/4 words, score -4.34)
+   DIVINITY -> indices [23,10,1,10,9,10,16,26], length 8.
+
+05 "SOME WISDOM. THE PRIMES ARE SACRED. THE TOTIENT FUNCTION IS SACRED.
+    ALL THINGS SHOULD BE ENCRYPTED. KNOW THIS." | plaintext transliteration
+   | key: NONE | type: none | interrupters: n/a
+   *** This page is the author's own STATED cipher-primitive manifesto. ***
+
+06-09 "A KOAN: A MAN DECIDED TO GO AND STUDY WITH A MASTER... DO FOUR UNREASONABLE
+    THINGS..." | ATBASH then CAESAR shift +3 (atbash first, then +3 mod 29)
+   | key: shift constant 3 | type: SMALL INTEGER (Caesar) layered on the keyless
+     Atbash | interrupters: none used
+   (validate: "atbash+shift+3", 3/3 words, score -4.13)
+
+10-13 "THE LOSS OF DIVINITY..." | plaintext transliteration | key: NONE
+
+14-15 "A KOAN: DURING A LESSON THE MASTER EXPLAINED THE I: 'THE I IS THE VOICE OF
+    THE CIRCUMFERENCE'..." | VIGENERE, shift DOWN | key: FIRFUMFERENFE
+   | type: RUNIC RENDERING OF THE LP-THEMATIC WORD "CIRCUMFERENCE". Every C
+     (index 5) in CIRCUMFERENCE is written as F (index 0): positions [0,3,11]
+     differ, all C->F. This is the Cicada rune-spelling convention.
+   | interrupters: +2 null ᚠ (beam search)
+   (validate: vigenere FIRFUMFERENFE, 4/4 words, score -4.24)
+   *** The key is literally a word from the page's OWN plaintext message. ***
+
+16 (short) | plaintext transliteration | key: NONE
+
+--- The only two SOLVED pages that live in the LP2 range ---
+73 / LP2 p56 "AN END. WITHIN THE DEEP WEB THERE EXISTS A PAGE THAT HASHES TO
+    36367763...c2a8b4. IT IS THE DUTY OF EVERY PILGRIM TO SEEK OUT THIS PAGE."
+   | keystream = running TOTIENT of consecutive primes: phi(p_i) = (p_i - 1) mod 29,
+     shift DOWN | key: NUMBER-THEORETIC KEYSTREAM (no word)
+   | type: derived stream, exactly the primitive NAMED on page 05
+     ("THE PRIMES ARE SACRED / THE TOTIENT FUNCTION IS SACRED")
+   | interrupters: F-null subset used.
+   (implemented as ciphers.prime_totient_stream)
+
+74 / LP2 p57 "PARABLE: like the instar tunneling to the surface. We must shed our
+    own circumferences. Find the divinity within and emerge."
+   | plaintext transliteration | key: NONE
+
+Everything from LP2 page 0 to 55 (files 17.jpg-72.jpg) is UNSOLVED.
+
+--------------------------------------------------------------------------------
+2. KEY-GENERATION PATTERN ANALYSIS
+--------------------------------------------------------------------------------
+Cipher-family progression across the book is a deliberate DIFFICULTY RAMP:
+  plaintext -> keyless Atbash -> Atbash+Caesar(3) -> Vigenere(themed word)
+  -> number-theoretic totient keystream.
+Each new page teaches the next primitive. Page 05 explicitly *names* the two
+primitives that then appear (primes, totient) and is a plaintext "manifesto."
+
+KEY-SELECTION RULE (the load-bearing finding): every keyed page whose key is a
+WORD uses a key that is a THEMATIC word drawn from the Liber Primus's own
+vocabulary, and in both solved cases the word is present in / titles the
+surrounding plaintext:
+  - Page 03-04 key = DIVINITY  (the book's core concept; titles page 10-13).
+  - Page 14-15 key = CIRCUMFERENCE (appears verbatim in that page's own koan:
+    "THE VOICE OF THE CIRCUMFERENCE"), rune-spelled as FIRFUMFERENFE.
+The keyword is NOT arbitrary and NOT an external text -- it is the page's own
+theme word, encoded in the Gematria Primus (with the C->F spelling convention).
+
+RUNE-SPELLING CONVENTION (quantified): the C->F substitution is systematic.
+CIRCUMFERENCE idx = [5,10,4,5,1,19,0,18,4,18,9,5,18]; FIRFUMFERENFE idx =
+[0,10,4,0,1,19,0,18,4,18,9,0,18]. The three differing positions are exactly the
+three C's, each replaced by F (index 0 = the interrupter rune). So the author's
+KEY WORDS are spelled in the same F-heavy runic orthography as the interrupter.
+
+GEMATRIA/TOTIENT PROPERTY OF THE KEYWORDS -- TESTED, NEGATIVE:
+  Prime-value (Gematria) sums:
+    DIVINITY=376 (not prime), CIRCUMFERENCE=398 (not prime),
+    FIRFUMFERENFE=365 (not prime), WELCOME=317 (PRIME).
+  Across 24 thematic words only 5 have prime Gematria sums (WELCOME, PILGRIM,
+  EMERGENCE, PARABLE, JOURNEY) = 21%, indistinguishable from the base rate of
+  primes in that magnitude band. => Keywords are chosen SEMANTICALLY (by theme),
+  NOT by any Gematria/prime/totient numeric property. (Honest null; do not build
+  a "keyword must be prime-gematria" hypothesis on this.)
+  NOTE: solved_plaintext.txt DOES annotate WELCOME=317, WELCOME PILGRIM...=2113,
+  etc. -- these are the author's own Gematria sums of the PLAINTEXT LINES, a
+  self-consistency Easter egg, not a key-derivation rule.
+
+PAGE-TO-PAGE DERIVATION (key of N from key of N-1) -- NOT OBSERVED. DIVINITY and
+CIRCUMFERENCE are independent theme words, not a chained progression. No key is
+derived from a prior page's key or plaintext.
+
+INTERRUPTER RULE (uniform across ALL keyed pages):
+  - Only ᚠ (F, index 0, prime 2) is ever a null.
+  - Not every ᚠ is null; a per-page subset is (7 on p03, 2 on p14).
+  - A null ᚠ is removed from readable plaintext and does NOT advance the
+    keystream (no key letter / prime / totient step consumed).
+  - A non-null ᚠ is enciphered normally and advances the key.
+  This F-skip is the SAME mechanism on the Vigenere pages and the totient page --
+  a single consistent rule the author reuses everywhere.
+
+--------------------------------------------------------------------------------
+3. POINTER HUNT (does any solved plaintext point at the unsolved section?)
+--------------------------------------------------------------------------------
+Candidates found, verbatim, ranked by pointer-strength:
+
+[STRONG - explicit hunt instruction] Page 56 "AN END":
+  "WITHIN THE DEEP WEB THERE EXISTS A PAGE THAT HASHES TO
+   36367763ab73783c7af284446c59466b4cd653239a311cb7116d4618dee09a8425893
+   dc7500b464fdaf1672d7bef5e891c6e2274568926a49fb4f45132c2a8b4
+   IT IS THE DUTY OF EVERY PILGRIM TO SEEK OUT THIS PAGE"
+  -> 512-bit hash (128 hex). Explicitly sends the solver to an EXTERNAL deep-web
+     page (candidate location of the LP2 key). Algorithm unconfirmed (SHA-512 /
+     BLAKE-512 / BLAKE2b). This is the single strongest pointer in the whole
+     book, but it points OUTWARD, not to an in-book key construction. Status per
+     ledger: cold trail (Tor v2 dead), "hash = ed25519 onion key" community test
+     FAILED, OSINT mirror sweeps found no preimage.
+
+[MEDIUM - primitive manifesto] Page 05 "SOME WISDOM":
+  "THE PRIMES ARE SACRED / THE TOTIENT FUNCTION IS SACRED /
+   ALL THINGS SHOULD BE ENCRYPTED / KNOW THIS"
+  -> Names the cipher primitives. Corroborated by Cicada's own @3301actual
+     tweet. This is a METHOD hint (primes + totient keystreams) but names the
+     SOLVED-page primitives; totient keystreams over LP2 are already exhausted.
+
+[WEAK - thematic self-reference, NOT a pointer] Page 57 "PARABLE":
+  "like the instar tunneling to the surface. We must shed our own circumferences.
+   Find the divinity within and emerge."
+  -> Names both solved Vigenere keywords (CIRCUMFERENCES, DIVINITY) plus INSTAR /
+     EMERGE. Reads as a thematic keyword-vocabulary list, not a procedural key
+     pointer. Worth noting the exact words the author flags as central.
+
+[NOT A POINTER - signature] KOAN "KNOW THIS" 5x5 magic square
+  (434 1311 312 278 966 / 204 812 934 280 1071 / 626 620 809 620 626 / ...):
+  every row sums to 3301, point-symmetric (Mobius theme). This is a Cicada
+  signature / self-consistency object, not a pointer to LP2.
+
+Net: the ONLY plaintext that points at the unsolved corpus is page 56's external
+deep-web hash. No solved page contains an in-book instruction, key word, page
+reference, or numeric seed that constructs the LP2 key.
+
+--------------------------------------------------------------------------------
+4. THE HYPOTHESIS (single strongest, falsifiable, NOT-in-the-ledger)
+--------------------------------------------------------------------------------
+Demonstrated method, distilled: the author's KEYED pages use a Vigenere-class
+shift keyed by a THEMATIC ENGLISH WORD spelled in Gematria-Primus runes using
+the F-heavy orthography (C->F), with the F-skip interrupter rule. The two data
+points are DIVINITY and CIRCUMFERENCE(=FIRFUMFERENFE). The ledger has exhaustively
+killed: ~620 Vigenere keywords, all periodic keys len 1-40, additive/OTP running
+keys over ~200 named texts (skip-aware), number-theoretic/totient keystreams,
+autokey, and the additive family in general (killed on principle by the 0.66%
+doublet deficit vs 3.3% that any additive-over-English key forces).
+
+THE KEY CONSTRAINT: any surviving hypothesis must (a) NOT be an additive/Vigenere
+keystream over English plaintext (doublet deficit forbids it), and (b) not repeat
+a tried keyword list. The methodology's keyword-Vigenere form is therefore
+mechanically excluded for LP2 no matter the word. So a naive "try more theme
+words" is dead. The honest reconciliation of the author's method with the
+statistics is that LP2 escalates the SAME "themed-word key" idea into a
+NON-ADDITIVE combiner that preserves the F-orthography key but suppresses
+doublets.
+
+STRONGEST NOT-IN-LEDGER HYPOTHESIS -- "themed-runic-word key under a
+DOUBLET-SUPPRESSING (non-additive) combiner":
+  The LP2 key is still a Gematria-Primus themed WORD/PHRASE (the demonstrated
+  key TYPE), but combined with the ciphertext by a MINUS-EXCLUDING modular
+  combiner rather than plain addition -- specifically a combiner that maps
+  (C,K) -> a rune != C (i.e. drops the c-c'=0 output), which is exactly the
+  ~83% no-repeat suppression the ledger measured. Concretely: for each position,
+  P = (C - K) mod 29 computed on the REDUCED 28-symbol alphabet that excludes the
+  previous output rune (a "shift within the deranged remaining alphabet"), so the
+  same rune is structurally forbidden twice in a row -- reproducing doublet ~0.66%
+  AND IoC~1.000 -- while the key is still a short themed word.
+
+WHY IT'S NOT IN THE LEDGER: the ledger's Vigenere/keyword sweeps are all PLAIN
+ADDITIVE (repeat_key + apply_stream_to_indices, add/sub only). It killed the
+combiner family only as "generalized-combiner feedback / homophonic" tested for
+SECOND-ORDER bigram structure (Campaign XIV P4) and as autokey -- NOT as a
+short-periodic themed-word key run through a previous-output-excluding alphabet.
+That specific pairing (periodic themed key + no-repeat alphabet reduction) is the
+gap: it's periodic (so autokey exclusion doesn't touch it) and non-additive (so
+the doublet-deficit exclusion doesn't touch it).
+
+THE EXACT CHEAP TEST (falsifiable, <1 CPU-min):
+  1. Implement decrypt_noreepeat(ct, key): maintain prev_out; at each step build
+     the ordered 28-rune alphabet = all runes except prev_out; compute
+     P = alphabet[(rank(C) - K) mod 28] (and the +K sign, and Atbash-pre variant).
+     Advance key; honor F-skip.
+  2. Run it over the DIVINITY and CIRCUMFERENCE SOLVED pages first as a
+     VALIDATION GATE: a correct no-repeat combiner must still recover readable
+     English on pages that we KNOW use those keys (the solved pages have normal
+     doublets, so if the combiner is right the recovery should degrade
+     gracefully, not to noise). If it cannot reproduce a known page under ANY
+     sign/atbash setting, the combiner is wrong -> hypothesis REFUTED immediately,
+     cheaply, before touching LP2.
+  3. If it survives the gate, sweep the ~40-word thematic.txt vocabulary
+     (DIVINITY, CIRCUMFERENCE, INSTAR, EMERGENCE, MOBIUS, SACRIFICE, PILGRIM,
+     PARABLE, plus the PARABLE-page words) x both signs x atbash x F-skip beam,
+     over LP2 pages 0-55. CONFIRM = any page crosses the -5.2 English threshold
+     with a themed word; REFUTE = best stays in the -5.8..-6.0 noise band (the
+     same null every other keyword sweep hit), which would show even the
+     non-additive-combiner escape route is closed for short themed keys.
+
+Predicted most-informative single page to test first: page 0 or the pages
+adjacent to the PARABLE (57) / CIRCUMFERENCE koan, since the author placed the
+themed-keyword pages next to plaintext that names the theme word.
+
+--------------------------------------------------------------------------------
+HONEST CAVEAT
+--------------------------------------------------------------------------------
+This hypothesis is a genuine gap in the ledger's coverage (periodic-themed-key x
+no-repeat-combiner is untested as a decrypt), but the prior is modest: the ledger
+already showed the doublet deficit needs ACTIVE suppression and that no periodic
+additive key works. If step 2's validation gate fails, or step 3 returns the
+usual noise band, the correct recon conclusion is that the author's demonstrated
+"themed-runic-word key" method simply does NOT extend to LP2 -- i.e. LP2's key is
+external (the AN END deep-web page), which is exactly where the strongest pointer
+already points. That would be a clean, valid negative recon result, not a failure.
+================================================================================

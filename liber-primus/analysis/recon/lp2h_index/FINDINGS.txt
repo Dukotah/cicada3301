@@ -1,0 +1,110 @@
+================================================================================
+LP2H_INDEX — H1 (table-as-section-index) + H2 (red-join continuity)  VERDICTS
+================================================================================
+Agent:  verification agent (findings-2026). Date: 2026-07-28.
+Scope:  implement + run the two cheap falsifiable hypotheses from
+        analysis/recon/LP2-STRUCTURE.txt sec.5. Signal-or-null, honestly.
+        NO solve claimed or implied. Both hypotheses NULL out.
+
+Scripts (self-contained, in-repo data only):
+  h1_index.py     - H1 tests T1-T3
+  h2_redjoins.py  - H2 red-boundary continuity
+Reproduce:  python3 analysis/recon/lp2h_index/h1_index.py
+            python3 analysis/recon/lp2h_index/h2_redjoins.py
+
+--------------------------------------------------------------------------------
+SANITY / VALIDATION GATE  (all PASS -- results trusted)
+--------------------------------------------------------------------------------
+- Canon: 57 segments, per-page rune counts reproduce the dossier's page map
+  EXACTLY; 12,956 unsolved runes over pages 0-54; 594 lines. PASS.
+- Table: analysis/pp49_51/canon_256.bin = 256 bytes. PASS.
+- Red heads: [0,3,6,7,8,15,23,27,33,37,39,40,53,54] (14). PASS.
+- Scorer: English samples score_norm ~ -4.0 to -4.4 (WELCOME PILGRIM -4.41,
+  PARABLE -3.98, THE PRIMES ARE SACRED -4.18); raw unsolved seg0 -7.49;
+  random -8.39. Matches the project baseline -4.0 / threshold -5.2. PASS.
+- H2 reproduces the PUBLISHED continuity fact: last-rune==first-rune doublets
+  over all 54 joins = 0/54 (published 0.0000). PASS.
+
+--------------------------------------------------------------------------------
+H1 -- "the base-60 table is a per-section INDEX/OFFSET table keyed to the red
+       section heads; sexagesimal margin art (34-39) is the base-60 instruction"
+--------------------------------------------------------------------------------
+VERDICT: CLEAN NULL (sealed).
+
+T1  Do the 256 table values concentrate on the red boundaries?
+    T1a byte % 55 as page index -> red hits 64/256, expected 65.2, p=0.596 NULL
+    T1b cumulative offset into 594 lines -> red line-starts 5/256, exp 6.0, p=0.72 NULL
+    T1c byte-as-line (b<594) -> red-line hits 10, exp 6.0, p=0.081  (not sig)
+    T1d byte->rune-offset near red page-starts (+-2) -> 4/256, exp 1.4, p=0.048 (not sig)
+    The only two sub-0.1 p-values (T1c 0.081, T1d 0.048) are tiny-count Poisson
+    noise (4 hits vs 1.4 expected), do NOT clear 0.01, and evaporate under the
+    Bonferroni correction for the ~4 index tests + many decode models run. No
+    concentration.
+
+T1e Does any index/offset decode yield English? (11 decode models)
+    BEST = -7.200 (E2: gather runes at scaled table indices).
+    Every model -- per-section constant shift, per-section table-key, table as
+    repeating key, per-section prime-keystream offset selector, and 3 gather /
+    cumulative-offset book-cipher-into-self variants, both signs -- lands
+    -7.20 .. -7.61. That is ~3.2 below the -4.0 English baseline and ~2.0
+    below the -5.2 threshold: indistinguishable from noise. NULL.
+
+T2  (section, offset) pair structural consistency:
+    - First base-60 digit d0 of each token ranges only 0..4 -> CANNOT index the
+      13-14 red sections. FAIL by geometry.
+    - Byte-pair (sec,off): offsets-within-section 113/128 vs 116 expected under
+      random -> consistent with random, no structure.
+
+T3  Sexagesimal margin-art pages 34-39 vs table dims {8,9,10,13,72,80,104,256}:
+    none of the pages' rune/line counts match any table dimension; line counts
+    34-39 = [12,12,11,11,11,12] (sum 69, unrelated to table rows 10+13+9=32).
+    No encoding of the table geometry on the art pages. NULL.
+
+WHY: consistent with the prior. The table is 7.17 bits/byte high-entropy; high-
+entropy bytes do not behave as a clean index, and they don't here. The
+index/section-map framing was genuinely un-run in the ledger (the ledger tested
+the table only as key/number/text/format/preimage/XOR/image, and tested "book
+cipher" only as RUNES-as-pointers into EXTERNAL text, never table-BYTES-as-
+pointers into the corpus itself). Now tested. Null.
+
+--------------------------------------------------------------------------------
+H2 -- "re-run continuity restricted to the ~11-14 red section joins"
+--------------------------------------------------------------------------------
+VERDICT: CLEAN NULL (sealed).
+
+Exact boundary (last rune of page p == first rune of page p+1):
+    red-section joins (p+1 is a red head): n=13, adjacent-equal rate = 0.00000
+    non-red joins:                          n=41, adjacent-equal rate = 0.00000
+    interior within-page adjacent-equal rate: 0.00667  (the filter's own floor)
+    Permutation test P(red-join equals >= observed 0 | H0) = 1.0000.
+    Independent-draw collision reference (sum p_i^2) = 0.03455.
+
+Robustness (3x3 window: last 3 runes of p vs first 3 of p+1):
+    red joins  : 3/117 = 0.0256   (expect-independent 0.0346)
+    non-red    : 12/369 = 0.0325
+    -> both windows sit AT the independent-draw rate, and red is if anything
+       LOWER than non-red -- the OPPOSITE of the elevated-collision signature a
+       per-section key RESET would produce.
+
+The no-adjacent-repeat suppression is a strictly-adjacent effect and it holds
+IDENTICALLY across red and non-red boundaries. There is no red-specific reset.
+The all-joins continuity finding was NOT diluting a sparse red-boundary signal;
+there is simply no signal at the red boundaries. H2 does not rescue a per-
+section key model.
+
+--------------------------------------------------------------------------------
+BOTTOM LINE
+--------------------------------------------------------------------------------
+Both hypotheses SEALED as clean nulls. The three previously-unlinked physical
+facts (red section heads + base-60 table + base-60 margin art) do NOT unify into
+a working section-index scheme, and the sparse red boundaries carry no continuity
+signal distinct from the interior. No escalation warranted. No solve claimed.
+
+Recommend the ledger record:
+  - "pp49-51 table as PER-SECTION INDEX/OFFSET into the corpus (not as a runic
+    key): tested T1-T3, best English -7.20 vs -5.2 thresh, index concentration
+    p>=0.048 (noise). NULL. analysis/recon/lp2h_index/"
+  - "Red-boundary-only continuity (doublet at red joins vs interior): red-join
+    adjacent-equal rate 0.0 == non-red 0.0; 3x3 window red 0.0256 < non-red
+    0.0325 ~ independent 0.0346; no reset. NULL. same dir."
+================================================================================

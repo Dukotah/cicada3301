@@ -243,3 +243,40 @@ been tested as ENGLISH (Guest translation). Tested the MIDDLE-WELSH ORIGINAL as 
   both texts × all 57 pages = 912 decodes. Best overall **−6.623**, median −7.57 (noise
   floor). **0 readable English.** Reproduce: `/tmp/bookcipher.py` (self-contained).
 - **Verdict:** Welsh-original hypothesis CLOSED in both additive and book-cipher forms.
+
+## Themed-word key × no-repeat (doublet-suppressing) combiner (recon LP1-H, 2026-07-28) — NULL
+LP1 recon showed every *word*-keyed solved page uses an LP-thematic word from its OWN
+plaintext, spelled in Gematria-Primus runes with C→F. Hypothesis: LP2 uses the same themed
+word but through a NON-ADDITIVE combiner forbidden from emitting a rune equal to the previous
+ciphertext rune (a 29→28 no-repeat reduction that would itself PRODUCE the ~0.66% doublet
+deficit) — dodging both the additive exclusion AND the doublet exclusion. Prior ledger entry
+(crypto_rigor probe C) only measured IoC of a *keyless* rank-in-allowed(28) transform; never
+swept a periodic themed key with English scoring → genuinely un-run.
+- **Validation gate PASS:** combiner recovers its own planted key 100% (vs 16.5% wrong-key),
+  emits 0 ciphertext doublets, recovers planted English to −4.750 vs −7.355 wrong-key; scorer
+  orders known solves (p03 DIVINITY −4.10, p14 CIRCUMFERENCE −4.08, noise −8.86).
+- **LP2 sweep NULL:** 58 themed keys (C→F + plain) × both signs × no-repeat over all 13
+  scorable unsolved pages. Best on any ≥100-rune page **−6.88** (noise band; baseline −4.0,
+  thresh −5.2, floor −7.49). Lone nominal −5.272 was a 9-rune fragment (length artifact).
+- **Intrinsic nail:** the combiner is lossy (~4.4% ≈ 1/28 of English positions un-encipherable)
+  → inconsistent with the author's clean, fully-recoverable solved ciphers.
+- **Verdict:** CLOSED. Repro: `analysis/recon/lp1h_norepeat/lp1h_norepeat.py`.
+
+## pp49-51 table as per-section INDEX + red-join continuity (recon LP2-H1/H2, 2026-07-28) — NULL
+H1: the base-60 256-token table (canon_256) read as a per-section index/offset keyed to the
+14 red-section-head pages [0,3,6,7,8,15,23,27,33,37,39,40,53,54], with the base-60 margin art
+(pp34-39) as the "read in base-60" instruction. Ledger had tested the table as
+key/number/text/format/preimage/XOR/image but NEVER as a section index; red heads never used
+as a segmentation map (only as null cipher-selection). An index needs no keystream reset, so
+NOT refuted by the cross-page continuity finding.
+- **Validation gate PASS:** page map (57 seg, 12,956 unsolved runes, 594 lines), 256-token
+  table, red-head list, and scorer all reproduce.
+- **H1 NULL:** T1 index-concentration on red boundaries p=0.60/0.72/0.08/0.05 (sub-0.1 = tiny
+  Poisson noise, fail Bonferroni). 11 decode models (per-section shift / table-key / repeating
+  key / prime-offset selector / 3 gather-into-self book variants, both signs) best **−7.200**
+  (~2.0 below thresh). T2 fails geometrically (base-60 first digit 0-4 can't index 13-14
+  sections); T3 no pp34-39 count matches any table dimension.
+- **H2 NULL:** adjacent-equal rate at 13 red joins = 0.0 vs 41 non-red = 0.0 (perm p=1.0); 3×3
+  window red 0.0256 vs non-red 0.0325 — red LOWER (opposite of a reset). All-joins test was not
+  diluting a sparse signal; no red-boundary reset exists.
+- **Verdict:** both CLOSED. Repro: `analysis/recon/lp2h_index/h1_index.py`, `h2_redjoins.py`.

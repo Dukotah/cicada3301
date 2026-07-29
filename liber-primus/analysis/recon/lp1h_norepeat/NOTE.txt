@@ -1,0 +1,123 @@
+================================================================================
+LP1-H VERIFICATION RESULT -- themed-runic-word key x NO-REPEAT combiner
+================================================================================
+Agent: verification (one cheap, falsifiable hypothesis, hard validation gate).
+Date: 2026-07-28. Branch: findings-2026.
+Harness: analysis/recon/lp1h_norepeat/lp1h_norepeat.py  (run: PYTHONUTF8=1
+         PYTHONPATH=src python3 analysis/recon/lp1h_norepeat/lp1h_norepeat.py)
+
+--------------------------------------------------------------------------------
+HYPOTHESIS (LP1-H, from LP1-METHODOLOGY.txt deliverable 4)
+--------------------------------------------------------------------------------
+The LP2 key is still a short PERIODIC LP-thematic runic WORD (the demonstrated
+key TYPE: DIVINITY, CIRCUMFERENCE), but combined with the ciphertext by a
+NON-ADDITIVE, doublet-suppressing combiner: a 28-symbol "no-repeat" reduction in
+which the combiner is forbidden from emitting a rune equal to the PREVIOUS
+CIPHERTEXT rune. That structural no-repeat would itself PRODUCE the observed
+~0.66% doublet deficit, dodging BOTH sealed exclusions (plain-additive keyword
+sweeps killed by the doublet deficit; combiner tests done only as bigram/autokey,
+never as periodic-themed-key x no-repeat alphabet reduction).
+
+LEDGER GAP CONFIRMED: the closest prior entry is crypto_rigor.py probe C
+("No-repeat / collision-inversion, delta!=0 family", ledger line 85, "dead"). But
+probe C1 only measured the IoC of the KEYLESS rank-in-allowed(28) transform of the
+pooled ciphertext -- it never swept a periodic themed WORD as a key over the
+reduced-alphabet decode, and never scored the runes-back English quadgram fitness.
+So the specific pairing (periodic themed key x prev-ciphertext-excluding 28-set,
+scored in English) is genuinely NOT what the ledger ran. Hypothesis was worth a
+falsification pass.
+
+--------------------------------------------------------------------------------
+STEP 1 -- VALIDATION GATE  (result: PASSED, with one honest caveat)
+--------------------------------------------------------------------------------
+Combiner implemented (FORM A): at each position both plaintext and ciphertext
+ranks live in the 28-symbol set that EXCLUDES the previous ciphertext rune;
+C = reduced[(rank_P + K) mod 28]; decode inverts it. F-skip interrupter rule
+honored.
+
+  * PLANTED-KEY RECOVERY: enciphered a constraint-respecting planted plaintext
+    (L=200) with key DIVINITY under the no-repeat combiner ->
+      exact_recovery = TRUE, ciphertext doublets = 0 (mechanism does suppress
+      doublets as claimed), right key recovers 100% vs wrong key (MOBIUS) 16.5%.
+    => the harness + this mechanism CAN recover its own planted key. Test valid.
+
+  * PLANTED-ENGLISH RECOVERY: enciphered real LP-register English, decoded ->
+      score = -4.750 (English band) vs wrong-key = -7.355 (noise). Clean
+      separation. Scorer reproduces the correct ordering on the KNOWN solved
+      pages: p03 DIVINITY plaintext = -4.10, p14 CIRCUMFERENCE plaintext = -4.08,
+      random noise = -8.86.
+
+  HONEST CAVEAT (an intrinsic finding about the mechanism, not a bug): the
+  combiner as LITERALLY specified ("output != previous CIPHERTEXT rune") is a
+  29->28 map per step and is therefore INTRINSICALLY LOSSY: at every position
+  where the plaintext rune equals the preceding ciphertext rune (P[i]==C[i-1],
+  ~4.4% of real-English positions, i.e. ~1/28) the plaintext symbol is NOT
+  representable and information is destroyed. A real Cicada encipherer could only
+  use this cleanly by NEVER letting plaintext coincide with prev-ciphertext (or by
+  spending an F-interrupter there) -- a strong, un-evidenced extra constraint.
+  This lossiness lowers the prior but does not by itself refute; the gate still
+  proves recovery is possible, so the LP2 sweep is a valid test.
+
+--------------------------------------------------------------------------------
+STEP 2-3 -- SWEEP OVER THE 13 UNSOLVED LP2 PAGES (key='?')
+--------------------------------------------------------------------------------
+Key set: 58 candidates = the LP thematic lexicon (DIVINITY, CIRCUMFERENCE,
+FIRFUMFERENFE, MOBIUS, INSTAR, EMERGENCE, KOAN, PILGRIM, SACRED, PRIMES, TOTIENT,
+WISDOM, WELCOME, PARABLE, CONSUMPTION, PRESERVATION, ADHERENCE, SACRIFICE, ...
++ the PARABLE-page words SHED/SURFACE/TUNNELING/WITHIN/EMERGE) each in BOTH the
+C->F orthography ([cf]) and plain spelling. x both signs (+1/-1). x no-repeat
+combiner. F-skip = null-set baseline (beam not needed to reach a verdict; the
+noise gap is enormous, see below).
+
+Best English score per page (score_norm; real English ~ -2.2..-4.0):
+
+  page                              runes   best     key
+  17.jpg-19.jpg  (0-2)              729    -7.308   SACRED
+  20.jpg         (3-5)              119    -6.880   MOBIUS[cf]
+  23-24.jpg      (6-7)              333    -6.997   SELF[cf]
+  25-31.jpg      (8-14)            1729    -7.358   CONSUME
+  32.jpg         (15)                 9    -5.272*  SURFACE[cf]  (*length artifact, 9 runes)
+  32-39.jpg      (15-22)           1894    -7.369   PARABLE[cf]
+  40-43.jpg      (23-26)           1021    -7.336   CABAL
+  44-49.jpg      (27-32)           1433    -7.342   INSTAR[cf]
+  50.jpg         (33)                91    -6.952   AWARENESS[cf]
+  50-55.jpg      (33-38)           1468    -7.352   ADHERENCE
+  56.jpg         (39)               121    -6.947   TRUTH[cf]
+  57.jpg         (40)              3008    -7.391   MASTER[cf]
+  71.jpg         (54)               308    -7.017   CONSUME[cf]
+
+  BEST over pages with >=100 runes (reliable scoring) = -6.88 (MOBIUS on p20).
+  The lone nominal "-5.272" is the 9-rune fragment 32/15.jpg ("STHAMLEATNAE",
+  not English) -- too short to score; excluded, it is not a signal.
+
+Thresholds: real-English baseline -4.0 | signal threshold -5.2 | noise floor
+-7.49. Every substantive page sits at -6.9..-7.4 -- squarely in the noise band,
+the SAME null every prior keyword sweep hit.
+
+--------------------------------------------------------------------------------
+VERDICT: CLEAN NULL  (mechanism sealed; do NOT escalate)
+--------------------------------------------------------------------------------
+The validation gate PASSED (combiner recovers its own planted key + planted
+English; scorer orders the solved pages correctly), so the LP2 result is a valid
+falsification, not a broken harness. No themed word x no-repeat-combiner x sign
+crosses the -5.2 threshold on any reliably-scorable unsolved page; the best is
+-6.88, deep in noise. The non-additive-combiner escape route is CLOSED for short
+periodic themed keys.
+
+Additional nail in the coffin surfaced by the gate: the "output != prev
+ciphertext" combiner is intrinsically LOSSY (~1/28 of English positions are
+un-encipherable), so even in principle it is a poor fit for a book whose author
+demonstrably built clean, fully-recoverable ciphers on every solved page.
+
+This closes the strongest not-in-ledger extension of the author's demonstrated
+"themed-runic-word key" method. Consistent with LP1-METHODOLOGY's own honest
+caveat: the demonstrated in-book themed-word method does NOT extend to LP2 --
+pointing back to LP2's key being EXTERNAL (the "AN END" deep-web page), where the
+single strongest pointer already points.
+
+RECOMMENDED LEDGER LINE (section C, cipher classes):
+  | Themed periodic word x no-repeat (prev-ciphertext-excluding 28-set) combiner,
+    English-scored | dead | gate-valid (recovers planted key/English); best on
+    13 unsolved LP2 pages = -6.88 vs -5.2 threshold; combiner also intrinsically
+    lossy (~1/28) | analysis/recon/lp1h_norepeat/ |
+================================================================================
