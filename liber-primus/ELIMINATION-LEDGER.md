@@ -310,3 +310,26 @@ attached unrelated Westlaw prison-grievance reprint). The Mar-2023 "Founder's St
 does not claim authorship of the 2012 runic puzzles and never mentions 7A35090F. Nothing ties him to
 the key or pre-2014 authorship. Consistent with post-2014 brand "gamejacking." Original-creator
 verdict intact.
+
+## Author-empathy: intended-path + doublet-intent discriminator (iter 3, 2026-07-29)
+Stopped interrogating the runes (message-existence undecidable) and reconstructed the author's design.
+- **Doublet author-intent discriminator (NEW FINDING):** solved-page PRE-encryption PLAINTEXT doublet
+  rate = 3.52% (35/995 runes) = natural English rate (~3.45%); the author's own plaintext FREELY
+  repeats glyphs (LL, EE, SS...). Unsolved 0-55 = 0.675% (88/13041) = ~5x suppression. Since neither
+  the plaintext NOR any solved ciphertext (2.4-3.6%) suppresses doublets, the no-repeat property is a
+  GENERATOR/HARDENING SIGNATURE present ONLY in the unsolved output — NOT a runic-typographic
+  convention. Rules out the innocent "scribes avoid repeats" explanation; leans weak-moderate toward
+  pad/deliberate-anti-statistics-hardening. Load-bearing measurement = the 995-rune LP1 plaintext.
+- **Retrieval-chain reconstruction:** Cicada's authored grammar = each solved artifact's plaintext
+  hands the seeker the ADDRESS of the next (2012 image->phone->book->image; 2014 onion1->RSA->
+  onion2..onion7; onion7 = the 58-image index that DELIVERED pages 0-57 as a finished corpus). Thus
+  pages 0-54 were the terminal DELIVERABLE of onion7 with NO accompanying key; nothing solved gates
+  the START of 0-54 (LP2-STRUCTURE BRIDGE 1/3: AN END + PARABLE are book-terminal, own keystreams).
+  AN END's plaintext ("WITHIN THE DEEP WEB THERE EXISTS A PAGE THAT HASHES TO 36367763...c2a8b4 / IT
+  IS THE DUTY OF EUERY PILGRIM TO SEEK OUT THIS PAGE") is the ONE outward pointer, but it is
+  DOWNSTREAM of 0-54 = reward/continuation, NOT the key TO 0-54. PARABLE/KOANs point INWARD (self).
+- **Conclusion:** by the author's own grammar the 0-54 pad was NEVER planted in a retrievable prior
+  artifact -> consistent with an OTP whose pad was scheduled for a FUTURE chain step Cicada never
+  released (silent since April 2017). Decisive gate: whole-file SHA-512 of every held open blob
+  (T2.bin, 2.jpg, T3==folly==wisdom 3368B) vs the AN-END target = clean NULL -> the page must be
+  RECOVERED as an archived object, not computed. Pivots the frontier to a pure archival problem.
