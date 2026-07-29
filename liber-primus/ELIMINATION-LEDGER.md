@@ -280,3 +280,33 @@ NOT refuted by the cross-page continuity finding.
   window red 0.0256 vs non-red 0.0325 — red LOWER (opposite of a reset). All-joins test was not
   diluting a sparse signal; no red-boundary reset exists.
 - **Verdict:** both CLOSED. Repro: `analysis/recon/lp2h_index/h1_index.py`, `h2_redjoins.py`.
+
+## Non-cipher framings of LP2 (rotating-loop iter 2, naive-outsider, 2026-07-29) — NULL
+The whole ledger above assumes LP2 is a SUBSTITUTION cipher of an English message. Iteration 2
+challenged that premise itself with three orthogonal non-cipher lenses. All NULL; artifacts in
+`analysis/recon/i2_image/`, `i2_signal/`, `i2_message/`.
+- **LP2-as-image (raw stream plotted, not decrypted):** every rendering (index/prime/parity/isF/
+  delta at widths 29/41/79/82/113/158 + line-length shape) is pure salt-and-pepper noise. Row/col
+  structure z-scores all NEGATIVE (−1.67…−0.67 = LESS structure than random shuffles), 1D
+  autocorrelation zero peaks |r|>0.05 over lags 1-299, marginal chi2=26.4 (uniform). No glyph, QR
+  finder pattern, or symmetry. **CLOSED.**
+- **LP2-as-signal / DSP:** spectral-entropy ratio 0.9535 ≈ random control 0.9520 (whiter than real
+  plaintext PARABLE 0.9005 = white noise over 29 symbols). Top peak p=0.971 (shuffles beat it 97%),
+  period-29 (natural Vigenère carrier) power=1.05 = noise. No carrier/periodicity a generator would
+  leave. **CLOSED.**
+- **LP2 message-vs-filler UNDECIDABLE:** LP2 sits INSIDE both the English-plaintext-under-true-pad
+  band AND the uniform-filler-under-pad band on all 10 statistics; the two bands OVERLAP on every
+  statistic post-filter. No residual a true pad would lack (off-diagonal bigram chi2 z~0.8, no
+  positional regularity surviving multiple-comparison correction). **The existence of a plaintext
+  is undecidable from the ciphertext — a message is an ASSUMPTION, not a finding.**
+- **Ledger correction:** prior "the only path is external: the key" phrasing silently presupposes a
+  plaintext exists. Accurate statement: even the existence of plaintext is undecidable from these runes.
+
+## Schoenberger founder-claim (attribution, iter 2, 2026-07-29) — NULL (self-asserted, unsigned)
+Verified against PRIMARY court docs: consolidation order Dec 4 2025 (Hon. Redford, Court of Claims;
+cases 25-000045-MM + 25-000186-MZ; plaintiff "Cicada 3301 Metaverse LLC," a Utah LLC). Order text has
+ZERO occurrences of 7a35/090f/PGP/runic/Liber Primus (the author/creator/2012 hits are from an
+attached unrelated Westlaw prison-grievance reprint). The Mar-2023 "Founder's Statement" CAREFULLY
+does not claim authorship of the 2012 runic puzzles and never mentions 7A35090F. Nothing ties him to
+the key or pre-2014 authorship. Consistent with post-2014 brand "gamejacking." Original-creator
+verdict intact.
