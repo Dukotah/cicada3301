@@ -225,3 +225,21 @@ _Sibling docs: `SOLVERS-DOSSIER.md` (community writeup) · `FINDINGS-FOR-SOLVERS
 (short form) · `analysis/OPEN-AVENUES.md` (ranked avenues) · `../PICKUP-HERE.md`
 (resume point). This ledger supersedes their scattered "ruled-out" tables as the
 single complete index._
+
+## Welsh-original Mabinogion / Taliesin (novel_cipher lane, 2026-07-28) — NULL
+The anagram convention fingerprints a Welsh-myth author; the Mabinogion had only ever
+been tested as ENGLISH (Guest translation). Tested the MIDDLE-WELSH ORIGINAL as keytext.
+- **Source:** archive.org `pedeirkeincymabi00will_djvu.txt` (Ifor Williams, Middle Welsh,
+  769KB) + maryjones.us Llyfr Taliesin Welsh. Normalized 2 ways (Welsh W→U vowel, and
+  W-kept), digraphs DD/LL/FF/RH/CH/PH/NG mapped into the 29-rune Futhorc transliteration.
+  ~411K letters each. Installed at `data/keys/welsh/`.
+- **Additive skip-aware running key** (validated beam gate PASS; both signs, both atbash,
+  all offsets, skip-tolerant): every unsolved page 0–54 best score −5.99…−6.44, **0 hits**
+  above conf −5.5. In the null regime (null-max −6.82, English −4.3, thresh −5.2).
+  Confirms the additive/OTP exclusion is language-independent (as predicted).
+- **Book cipher** (runes as pointers into the Welsh text — the form NOT excluded by the
+  additive proof): 4 pointer schemes (per-rune word-advance, cumulative-sum word pointer,
+  cumulative-sum letter pointer, first-letter-stream pointer) × idx/prime rune values ×
+  both texts × all 57 pages = 912 decodes. Best overall **−6.623**, median −7.57 (noise
+  floor). **0 readable English.** Reproduce: `/tmp/bookcipher.py` (self-contained).
+- **Verdict:** Welsh-original hypothesis CLOSED in both additive and book-cipher forms.

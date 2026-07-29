@@ -98,3 +98,14 @@ bounded to the **highest-prior** texts (referenced + Cicada-own), not the entire
 offset space — marginal, since the interrupter-blind skip-corpus sweep is already null; (3)
 Hill/digraphic ciphers are outside the skip lens by nature and rest on their prior exhaustive
 null.
+
+## Non-additive ct-feedback: mod-29 COEFFICIENT SWEEP (2026-07-28, novel_cipher lane)
+Prior selfref_skip.decode_ctfeedback fixed coeffs=[1,1,1] (unit feedback) -> -7.06..-7.22.
+The uncovered corner = the mod-29 linear coefficient space:
+  key[i] = seed[i] + sum_{t=1..k} a_t*C[i-t] mod 29,  a_t in {0..28}, k=1..3, both signs,
+  seeds = {const0, const1 (autonomous/seed-free), mabinogion}.
+Script: analysis/campaign18_skip/ctfeedback_coeffs.py  (gate PASSES: plants a1=7 autonomous
+feedback, sweep recovers -4.13/100%, unit-coeff decode misses -7.51/7%).
+Result on p0/p5/p20: best = -6.86 / -6.91 / -6.89. All plaintexts gibberish.
+VERDICT: NULL (noise floor). Order-2/3 ciphertext-feedback with linear mod-29 coeffs shows
+NO signal above -5.2. This closes the last additive-adjacent corner the OTP proof did not exclude.

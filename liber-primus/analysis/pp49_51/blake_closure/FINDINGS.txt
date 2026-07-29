@@ -1,0 +1,54 @@
+AN END 512-bit hash — original-BLAKE closure (VALIDATED NULL)
+Date: 2026-07-28 · Branch: findings-2026
+
+LEAD CLOSED
+The "AN END" (page-56) 512-bit hash is Cicada's one external-key pointer. Prior
+agents tested it as SHA-2 / SHA-3 / BLAKE2 preimage of every object we hold — all
+NULL. The ONE hash function never tried: ORIGINAL BLAKE (SHA-3 finalist, NOT
+BLAKE2, NOT hashlib.blake2b). This lane tests it and seals the surface.
+
+TARGET HASH (exact, from ../anend_preimage_broad.py; cross-ref ELIMINATION-LEDGER.md,
+DEEPWEB-HASH-OSINT.md — same target the SHA battery used):
+  36367763ab73783c7af284446c59466b4cd653239a311cb7116d4618dee09a84
+  25893dc7500b464fdaf1672d7bef5e891c6e2274568926a49fb4f45132c2a8b4
+(128 hex = 512 bits)
+
+BLAKE IMPLEMENTATION VALIDATED BEFORE USE (blake_ref.py, pure Python, original
+BLAKE-256/512). Reproduces the official BLAKE SHA-3-submission known-answer
+vectors; asserted as a hard gate before any candidate is hashed:
+  BLAKE-512(1 x 0x00)   PASS: 97961587f6d970faba6d2478045de6d1fabd09b61ae50932054d52bc29d31be4
+                              ff9102b9f69e2bbdb83be13d4b9c06091e5fa0b48bd081b634058be0ec49beb3
+  BLAKE-512(144 x 0x00) PASS: 313717d608e9cf758dcb1eb0f0c3cf9fc150b2d500fb33f51c52afc99d358a2f
+                              1374b8a38bba7974e7f6ef79cab16f22ce1e649d6e01ad9589c213045d545dde
+  BLAKE-256(1 x 0x00)   PASS: 0ce8d4ef4dd7cd8d62dfded9d4edb0a774ae6a41929a74da23109e8f11139c87
+  BLAKE-256(72 x 0x00)  PASS: d419bad32d504fb7d44d460c42c5593fe544fa4c135dec31e21bd9abdcc22d41
+All 4 official vectors pass -> null result is real, not a buggy-impl artifact.
+
+CANDIDATE BATTERY (identical object set to the SHA search; reuses the exact
+candidate-gathering code from ../anend_preimage_broad.py):
+  - solved-page plaintexts (solved-English corpus, AN END page substring, parable)
+  - data/keys/solved_plaintext.txt (2014 PGP hash block)
+  - every Cicada PGP prose block (individual + concatenated)
+  - koans / riddle phrases (each + concat)
+  - canon_256.bin + canon_256_decpref.bin + 4x64B quarters + 2 halves
+  - variants: raw/strip/strip+nl/nospace/upper/lower/reversed/translit(Futhorc)/
+    translit+nl; binaries also rev/+nl/hex/HEX/hex+nl
+  Base objects: 78 text + 14 binary.
+  Algorithms: original BLAKE-512 (primary) + BLAKE-256 (secondary).
+
+RESULT
+  Total tested: 1572 (candidate-variant x BLAKE-algorithm) combinations.
+  clean NULL — no full-512 match, no 32-hex-prefix near-match.
+
+WHAT THIS SEALS
+Original BLAKE was the last untested member of the hash-family attack surface
+against the AN END pointer. With prior SHA-2/SHA-3/BLAKE2 nulls, the INTERNAL
+preimage attack surface for the AN END hash is now COMPLETE and NEGATIVE: the
+pointer is not the hash of any published object we hold. It points at external,
+now-lost content (the Tor-v2 "AN END" deep-web page), per DEEPWEB-HASH-OSINT.md.
+No further internal preimage lane remains.
+
+ARTIFACTS (this dir)
+  blake_ref.py     — validated pure-Python original BLAKE-256/512 (run to see vectors PASS)
+  blake_closure.py — the preimage battery (run to reproduce the 1572-combo NULL)
+  FINDINGS.txt     — this note

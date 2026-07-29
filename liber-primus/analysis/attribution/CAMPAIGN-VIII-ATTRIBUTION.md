@@ -101,3 +101,44 @@ across exactly that community, not one falsifiable thread (a pre-disclosure leak
 web-of-trust link, a stylometric match) connects the ideology to a person.** The mystery
 survives not because no one looked, but because the author built it to survive looking — and
 because the parts of the record that might have betrayed them are now gone.
+
+---
+
+## Addendum (2026-07-28) — Technical-fingerprint lane, closed
+
+Targeted re-attack of the four "configuration choice" fingerprints (OutGuess 0.2, PGP impl,
+509x503, base-60 f-absent) + a hard Provos ruling. **Result: NULL. No attribution path; the
+"config choices" are not personal fingerprints.**
+
+- **"OutGuess 0.2" is NOT a distinguishing choice.** Verified (Wikipedia OutGuess + solver
+  wiki): 0.2 was released Feb-2001 and is the *terminal Provos release* — the only real
+  OutGuess in existence, and the Debian/apt `outguess` package, from 2001 until the 2013
+  "OutGuess Rebirth" (OGR) fork. Anyone doing JPEG-coefficient stego in 2012 uses 0.2 *by
+  default*. This is a floor, not a signature — it excludes no one and implicates no one. The
+  "up to 0.13" figure is StegDetect's internal detection namespace within the 0.2 series, not
+  a separate program.
+- **509x503 / 845145127 are public puzzle mechanics, not private author habits.** They live
+  in the key UID *because* the puzzle used them (509·503 = image dims, ·3301 = the .com hop).
+  Visible to every solver; zero attribution value.
+- **base-60 `0-9 A-Z a-x`, f-absent: reaffirmed non-cross-linkable** (Campaign VIII stands) —
+  a property of the puzzle's own encoding, not a habit any named person displays elsewhere.
+- **Niels Provos — RULED OUT as more than a toolchain source**, three independent grounds:
+  (1) *Timeline*: last OutGuess release 2004, never returned; 11 yr gap to LP2. (2) *Opsec
+  profile is the inverse of Cicada's*: Provos is a fully-doxxed public figure — Google
+  Distinguished Engineer (security) 2003-2018, PhD Michigan, real-name conference presence,
+  public EDM hobby ("Activ8te"), swordsmithing. Cicada is defined by anonymity. (3) *No
+  falsifiable link*: no pre-disclosure leak, no WoT tie, no stylometric hit. Authoring the
+  tool a decade earlier is the weakest possible circumstantial thread; it is "used-his-tool,"
+  which is true of every OutGuess user. Note honestly, do not oversell — matches Campaign
+  VIII's own caveat.
+- **Smoking-gun (pre-disclosure knowledge): still EMPTY.** No documented instance of any named
+  person referencing a Cicada-specific fact before its disclosure date. The original 4chan
+  poster ("3301", Jan-2012) was never IP-traced or identified. Archives that could hold such a
+  leak (dead Tor v2 onions, deleted 2012-14 IRC, partial 4chan) remain the only place it could
+  survive — unresolved, not cleared.
+
+**Net:** the technical-fingerprint lane produces no named creator. The four "configuration
+choices" are either forced defaults (OutGuess 0.2), public mechanics (509x503), or
+puzzle-internal (f-absent). Provos is out. The lane is closed as NULL; the only live
+attribution thread remains the archive-based pre-disclosure smoking gun (Campaign VIII open
+thread #1), which is an archive-recovery problem, not a fingerprint problem.
