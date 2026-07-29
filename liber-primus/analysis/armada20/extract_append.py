@@ -1,5 +1,8 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import collections, math, hashlib, re
-p="/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/0_wisdom.jpg"
+p=_REPO + "/liber-primus/data/relikd/0_wisdom.jpg"
 d=open(p,'rb').read()
 EOI=336351  # from marker parse, real EOI position
 app=d[EOI+2:]

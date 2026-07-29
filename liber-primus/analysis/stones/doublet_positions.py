@@ -1,6 +1,9 @@
 """Where do surviving doublets occur? Test for non-random structure."""
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, collections, math, random
-sys.path.insert(0,'/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/stones')
+sys.path.insert(0,_REPO + "/liber-primus/analysis/stones")
 from doublet_analysis import build, RUNE_TO_IDX, IDX_TO_TRANS, RUNES, N, F_IDX
 
 pages = build()

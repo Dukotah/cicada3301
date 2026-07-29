@@ -1,3 +1,6 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import glob
 def realeoi_trail(p):
     d=open(p,'rb').read()
@@ -18,7 +21,7 @@ def realeoi_trail(p):
         i+=2+L
     return -1
 bad=[]
-for p in sorted(glob.glob("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/*.jpg")):
+for p in sorted(glob.glob(_REPO + "/liber-primus/data/relikd/*.jpg")):
     t=realeoi_trail(p)
     if t>32: bad.append((p.split('/')[-1],t))
 print("relikd files with >32B trailing after real EOI:", bad if bad else "NONE")

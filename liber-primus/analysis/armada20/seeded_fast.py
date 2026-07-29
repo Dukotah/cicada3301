@@ -1,3 +1,6 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import glob, hashlib, re
 import numpy as np
 from PIL import Image
@@ -10,8 +13,8 @@ def seeded(flat, seed, nbits=2048*8):
     bits=(flat[idx]&1).astype(np.uint8); m=(len(bits)//8)*8
     return np.packbits(bits[:m].reshape(-1,8),axis=1).reshape(-1).tobytes()
 seeds=[b'DIVINITY',b'SACRED',b'PRIMES',b'CICADA',b'3301',b'WISDOM',b'INSTAR',b'WELCOME',b'CIRCUMFERENCE',b'A WARNING']
-files=sorted(glob.glob("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/p*.jpg"))
-files+=sorted(glob.glob("/mnt/c/Users/dukot/projects/cicada3301/puzzles/2014/images/liber_primus_pages/*.jpg"))
+files=sorted(glob.glob(_REPO + "/liber-primus/data/relikd/p*.jpg"))
+files+=sorted(glob.glob(_REPO + "/puzzles/2014/images/liber_primus_pages/*.jpg"))
 # also sequential LSB head (no seed)
 hits=0
 for p in files:

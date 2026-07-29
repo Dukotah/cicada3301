@@ -127,7 +127,7 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 
 | # | Focus | One-line result | File |
 |---|---|---|---|
-| I–II | Rig + statistical baseline | IoC·N 1.000, doublet deficit found; rig validated on solved pages | `FINDINGS.md`, `analysis/STATS.md` |
+| I–II | Rig + statistical baseline | IoC·N 1.000, doublet deficit found; rig validated on solved pages | `docs/FINDINGS.md`, `analysis/STATS.md` |
 | Armada / 20-front | Exhaustive key/keystream assault (36+ agents) | 0 breaks; eliminated the memoryless-keystream family, differencing, page-keying, stego | `analysis/ARMADA-20-FINDINGS.md` |
 | III | Transcription integrity + esoteric keys | All public transcriptions trace to one origin (rtkd/iddqd); esoterica keys null | `analysis/foundation/` |
 | IV | Structure / mechanism | Doublet deficit = uniform soft no-repeat rule; **mechanistically rules out English running keys** | `analysis/structure/` |
@@ -221,7 +221,7 @@ treating pp49–51 as a runic key. All eliminated with the reason and a reproduc
 
 ---
 
-_Sibling docs: `SOLVERS-DOSSIER.md` (community writeup) · `FINDINGS-FOR-SOLVERS.md`
+_Sibling docs: `SOLVERS-DOSSIER.md` (community writeup) · `docs/FINDINGS-FOR-SOLVERS.md`
 (short form) · `analysis/OPEN-AVENUES.md` (ranked avenues) · `../PICKUP-HERE.md`
 (resume point). This ledger supersedes their scattered "ruled-out" tables as the
 single complete index._
@@ -554,4 +554,4 @@ Last substantive pass before wind-down. Nothing survived.
   pointers (mayfly/ephemeral=OTP, koan 'seek within'=gated-not-published) confirm. LP2 is
   unsolvable-BY-DESIGN, not unsolved-by-effort.
 - **LOOP TERMINUS:** both frontiers exhausted; further rotation re-derives these conclusions. Wind down
-  to synthesis (see FINAL-SYNTHESIS-2026-07-29.md).
+  to synthesis (see FINAL-SYNTHESIS.md).

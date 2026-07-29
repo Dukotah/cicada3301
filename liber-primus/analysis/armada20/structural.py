@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # Properly parse JPEG by walking SEGMENT structure (respect length fields, skip scan data)
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 def parse_jpeg(path):
     with open(path,"rb") as f:
         d=f.read()
@@ -34,8 +37,8 @@ def parse_jpeg(path):
         i+=2+seglen
     return ("no EOI found", None, d)
 
-for p in ["/mnt/c/Users/dukot/projects/cicada3301/puzzles/2014/images/liber_primus_pages/lp_page_05.jpg",
-          "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/0_wisdom.jpg"]:
+for p in [_REPO + "/puzzles/2014/images/liber_primus_pages/lp_page_05.jpg",
+          _REPO + "/liber-primus/data/relikd/0_wisdom.jpg"]:
     status, end, d = parse_jpeg(p)
     print(p)
     print(f"  status={status} EOI_end={end} filesize={len(d)} trailing_after_real_EOI={len(d)-end if end else 'N/A'}")

@@ -2,9 +2,12 @@
 """T6 PGP trailing-whitespace channel audit.
 Extract per-signed-message trailing whitespace patterns and decode candidates.
 """
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import re, os, glob, sys
 
-RAW = "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada_osint/artifacts/raw"
+RAW = _REPO + "/liber-primus/analysis/armada_osint/artifacts/raw"
 
 # Known catalogued whitespace/prime channels (community wiki)
 KNOWN = {
@@ -146,7 +149,7 @@ def main():
     for y,bi,seq in unaccounted:
         print(f"  {y} block#{bi}: {seq}")
     # dump numeric streams
-    with open("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada_osint/extracts/T6.txt","w") as out:
+    with open(_REPO + "/liber-primus/analysis/armada_osint/extracts/T6.txt","w") as out:
         for (y,bi,seq,m) in all_seqs:
             out.write(f"# {y} block#{bi} known={m}\n")
             out.write(",".join(map(str,seq))+"\n")

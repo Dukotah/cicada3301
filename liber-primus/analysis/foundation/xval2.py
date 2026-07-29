@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import json, os, difflib
 from collections import Counter
 
-FOUND = "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/foundation"
+FOUND = _REPO + "/liber-primus/analysis/foundation"
 streams = json.load(open(os.path.join(FOUND,"_streams.json")))
 canon = streams["canon"]
 

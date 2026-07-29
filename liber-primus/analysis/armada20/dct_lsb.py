@@ -1,4 +1,7 @@
 # Minimal baseline-JPEG entropy decoder -> quantized DCT coefficient LSB stream (OutGuess-class)
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import glob, re, struct, sys
 import numpy as np
 
@@ -141,8 +144,8 @@ def lsb_all(coeffs):
     m=(len(bits)//8)*8
     return np.packbits(bits[:m].reshape(-1,8),axis=1).reshape(-1).tobytes()
 
-files=sorted(glob.glob("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/p*.jpg"))
-files+=sorted(glob.glob("/mnt/c/Users/dukot/projects/cicada3301/puzzles/2014/images/liber_primus_pages/*.jpg"))
+files=sorted(glob.glob(_REPO + "/liber-primus/data/relikd/p*.jpg"))
+files+=sorted(glob.glob(_REPO + "/puzzles/2014/images/liber_primus_pages/*.jpg"))
 print(f"# {len(files)} files for DCT-coeff LSB")
 hits=0; ok=0; prog=0; fail=0
 for p in files:

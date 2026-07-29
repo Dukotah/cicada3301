@@ -1,6 +1,9 @@
 """3x3 multi-restart hill-climb, several pages. id=16."""
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, time, random
-sys.path.insert(0,'/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20')
+sys.path.insert(0,_REPO + "/liber-primus/analysis/armada20")
 from hill3 import rand_inv3, hill_dec3, score_idx, invertible3, load_pages, MOD
 from lp.gematria import indices_to_translit
 

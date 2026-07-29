@@ -61,10 +61,21 @@ Rebuild: `python dataset/build_dataset.py`.
 ## Layout
 - `src/lp/` — core library: `gematria`, `ciphers`, `stats`, `score`, `solve`
 - `tests/` — `validate.py` (reproduces solved pages) + `test_rig.py` (pytest gate)
-- `analysis/` — statistical, structural, vision, stego, and transcription probes
+- [`analysis/`](analysis/README.md) — 183 scripts across 22 campaigns; the folder's
+  README maps each one to the campaign and finding it produced
 - `data/` — committed: transcription + quadgram model; `fetch_sources.py` pulls the
   gitignored third-party transcriptions on demand
 - `dataset/` — the canonical JSON corpus
+- [`docs/`](docs/README.md) — reference material + superseded snapshots
+- [`outreach/`](outreach/README.md) — community post drafts
 - `attack.py` — vigenere/runningkey/keystream attack CLI (`selftest` re-finds DIVINITY)
 
-See `research/06-liber-primus-status.md` for the long-form status writeup.
+## The three canonical docs
+| Doc | What it holds |
+|---|---|
+| [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md) | Everything tried and why it's eliminated — read this before attacking LP2 |
+| [`FINAL-SYNTHESIS.md`](FINAL-SYNTHESIS.md) | The terminal verdict on both goals: the solve and the attribution |
+| [`SOLVERS-DOSSIER.md`](SOLVERS-DOSSIER.md) | The community-facing writeup, with a reproduce command per claim |
+
+See [`../research/06-liber-primus-status.md`](../research/06-liber-primus-status.md) for
+the long-form status writeup.

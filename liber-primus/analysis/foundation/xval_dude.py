@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import json, os, difflib
 
-FOUND = "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/foundation"
-DUDE = "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/transcriptions/dude123124144_OCR__transcriptions.rne"
+FOUND = _REPO + "/liber-primus/analysis/foundation"
+DUDE = _REPO + "/liber-primus/data/transcriptions/dude123124144_OCR__transcriptions.rne"
 streams = json.load(open(os.path.join(FOUND,"_streams.json")))
 canon = streams["canon"]
 

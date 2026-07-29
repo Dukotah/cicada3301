@@ -1,8 +1,11 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, itertools, json
-sys.path.insert(0, '/mnt/c/Users/dukot/projects/cicada3301/liber-primus')
+sys.path.insert(0, _REPO + "/liber-primus")
 import src.lp.gematria as g, src.lp.score as sc
 scorer = sc.default()
-raw = open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt', encoding='utf-8').read()
+raw = open(_REPO + "/liber-primus/data/krisyotam_runes.txt", encoding='utf-8').read()
 pages = raw.split('%')
 N=29
 TR = g.IDX_TO_TRANS  # index -> latin translit string
@@ -35,6 +38,6 @@ for pg in range(0,14):
     best[pg]=(bscore,bkey,btext)
     print('page %d L1-3 best: %.3f key=%s'%(pg,bscore,bkey), btext[:40])
 
-with open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/structure/phase3_vig123.json','w') as f:
+with open(_REPO + "/liber-primus/analysis/structure/phase3_vig123.json",'w') as f:
     json.dump({str(k):[round(v[0],4),list(v[1]),v[2][:120]] for k,v in best.items()},f,indent=1)
 print("VIG L1-3 DONE")

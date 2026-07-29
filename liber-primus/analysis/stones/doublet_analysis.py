@@ -3,11 +3,14 @@
 Records each rune with positional metadata, then analyzes the ~20% of
 doublets (adjacent identical runes) that survive the anti-repeat rule.
 """
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, collections, math
-sys.path.insert(0, '/mnt/c/Users/dukot/projects/cicada3301/liber-primus/src')
+sys.path.insert(0, _REPO + "/liber-primus/src")
 from lp.gematria import RUNE_TO_IDX, IDX_TO_TRANS, RUNES, N
 
-RAW = open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt', encoding='utf-8').read()
+RAW = open(_REPO + "/liber-primus/data/krisyotam_runes.txt", encoding='utf-8').read()
 F_IDX = RUNE_TO_IDX['ᚠ']  # interrupter rune index 0
 
 # Token model: walk char by char, tracking page, line, position-in-stream.

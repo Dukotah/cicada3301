@@ -1,5 +1,6 @@
 #!/bin/bash
-cd /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/campaign18_skip
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && git rev-parse --show-toplevel)"
+cd "$REPO"/liber-primus/analysis/campaign18_skip
 export PYTHONUTF8=1
 echo "[chain] start $(date)"
 echo "[chain] 1/6 armada19 corpus"; python3 -u sweep.py --texts armada19 > RUN-armada19.log 2>&1 || echo "armada19 FAILED"

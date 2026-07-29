@@ -27,7 +27,7 @@ never-before-tested through the skip decoder.
 
 **Command:**
 ```
-cd /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/campaign18_skip && \
+cd liber-primus/analysis/campaign18_skip && \
 PYTHONUTF8=1 python3 sweep.py --texts armada18 --pages "" 2>&1 | tee RUN-armada18-fullcorpus.log
 ```
 Consumes: all 37 armada18 texts x 55 unsolved pages, both signs, both atbash, offset scan.
@@ -45,7 +45,7 @@ bet — the LP1 F-skip interrupter is the same mechanic class as the LP2 doublet
 
 **Command:**
 ```
-cd /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/campaign18_skip && \
+cd liber-primus/analysis/campaign18_skip && \
 PYTHONUTF8=1 python3 armada/rosetta_keys.py --texts armada18 --pages "" 2>&1 | tee RUN-rosetta.log
 ```
 (rosetta_keys.py exposes KEYSTREAMS/build_registry/high_prior; the sweep driver in the file
@@ -65,7 +65,7 @@ noise). Full run extends to all 55 pages.
 
 **Command:**
 ```
-cd /mnt/c/Users/dukot/projects/cicada3301/liber-primus && \
+cd liber-primus && \
 python3 analysis/campaign18_skip/armada/numeric_skip.py --full 2>&1 | tee analysis/campaign18_skip/RUN-numeric.log
 ```
 Consumes: 874 generated keystreams x 55 pages.
@@ -84,7 +84,7 @@ collapse P1-SUB-ps_digits ent=6.587 (still high, no plaintext). Already effectiv
 
 **Command:**
 ```
-cd /mnt/c/Users/dukot/projects/cicada3301/liber-primus && \
+cd liber-primus && \
 python3 analysis/campaign18_skip/armada/payload_ciphertext.py 2>&1 | tee analysis/campaign18_skip/RUN-payload-ct.log
 ```
 Consumes: the outguess payload bytes (both variants).
@@ -101,7 +101,7 @@ heavy sweep to launch — the deliverable of this lane is the validation itself.
 
 **Command (re-verify only, cheap):**
 ```
-cd /mnt/c/Users/dukot/projects/cicada3301/liber-primus && \
+cd liber-primus && \
 PYTHONUTF8=1 python3 analysis/campaign18_skip/armada/skipvariants.py 2>&1 | tee analysis/campaign18_skip/RUN-skipvariants.log
 ```
 Hope: N/A for solving — this de-risks RANK 1/2 by confirming the decoder's skip model is the

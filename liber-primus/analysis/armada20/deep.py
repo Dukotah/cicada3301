@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import struct
 
 def jpeg_walk(path):
@@ -31,7 +34,7 @@ def jpeg_walk(path):
     # Is there a second JPEG (SOI) embedded? Check structure: maybe EXIF thumbnail
     return data, eois, sois
 
-for p in ["/mnt/c/Users/dukot/projects/cicada3301/puzzles/2014/images/liber_primus_pages/lp_page_05.jpg",
-          "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/0_wisdom.jpg"]:
+for p in [_REPO + "/puzzles/2014/images/liber_primus_pages/lp_page_05.jpg",
+          _REPO + "/liber-primus/data/relikd/0_wisdom.jpg"]:
     data,eois,sois=jpeg_walk(p)
     print()

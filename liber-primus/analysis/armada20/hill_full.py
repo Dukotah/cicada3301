@@ -1,6 +1,9 @@
 """Full 2x2 across pages + offsets, and bounded 3x3 sample. id=16."""
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, time, random
-sys.path.insert(0, '/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20')
+sys.path.insert(0, _REPO + "/liber-primus/analysis/armada20")
 import hill
 from lp.gematria import indices_to_translit
 

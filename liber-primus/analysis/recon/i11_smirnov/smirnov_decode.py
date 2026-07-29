@@ -27,8 +27,8 @@ does not. Abort the real sweep unless the gate passes.
 """
 import os, sys, random, json, itertools
 HERE = os.path.dirname(__file__)
-ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
-LP = os.path.join(ROOT, "liber-primus")
+LP = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
+ROOT = os.path.dirname(LP)
 sys.path.insert(0, os.path.join(LP, "src"))
 from lp import gematria as gp
 

@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import binascii, hashlib
 
-tail=open("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20/page05_tail.bin","rb").read()
+tail=open(_REPO + "/liber-primus/analysis/armada20/page05_tail.bin","rb").read()
 
 # The leading ascii is hex chars. Strip the leading \n\n
 h=tail.lstrip(b"\n")
@@ -32,8 +35,8 @@ print("odd tail:",repr(odd[-20:]))
 
 # whole file analysis: is the page05 file == 0_wisdom?
 import os
-a=open("/mnt/c/Users/dukot/projects/cicada3301/puzzles/2014/images/liber_primus_pages/lp_page_05.jpg","rb").read()
-b=open("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/0_wisdom.jpg","rb").read()
+a=open(_REPO + "/puzzles/2014/images/liber_primus_pages/lp_page_05.jpg","rb").read()
+b=open(_REPO + "/liber-primus/data/relikd/0_wisdom.jpg","rb").read()
 print("\nlp_page_05 sha:",hashlib.sha256(a).hexdigest()[:16])
 print("0_wisdom   sha:",hashlib.sha256(b).hexdigest()[:16])
 print("identical:",a==b)

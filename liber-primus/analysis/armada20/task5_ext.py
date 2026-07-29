@@ -1,6 +1,9 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, json
-sys.path.insert(0, "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/src")
-sys.path.insert(0, "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis")
+sys.path.insert(0, _REPO + "/liber-primus/src")
+sys.path.insert(0, _REPO + "/liber-primus/analysis")
 from lp import gematria as gp
 from lp import score as _score
 from run_stats import load_pages

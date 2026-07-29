@@ -1,9 +1,12 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, json, time, itertools
 import numpy as np
-sys.path.insert(0,'/mnt/c/Users/dukot/projects/cicada3301/liber-primus')
+sys.path.insert(0,_REPO + "/liber-primus")
 import src.lp.gematria as g, src.lp.score as sc
 scorer=sc.default()
-raw=open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt',encoding='utf-8').read()
+raw=open(_REPO + "/liber-primus/data/krisyotam_runes.txt",encoding='utf-8').read()
 pages=raw.split('%')
 N=29
 # Map each rune index -> a single letter code 0..25 for fast quadgram.
@@ -49,6 +52,6 @@ for pg in range(0,14):
     best[pg]=(round(scorer.score_norm(t),4),list(bkey),t[:120])
     print('page %d L4 best fast=%.3f true=%.3f key=%s elapsed=%.0fs'%(pg,bscore,best[pg][0],bkey,time.time()-t0),t[:30])
     sys.stdout.flush()
-with open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/structure/phase3_vig4.json','w') as f:
+with open(_REPO + "/liber-primus/analysis/structure/phase3_vig4.json",'w') as f:
     json.dump({str(k):v for k,v in best.items()},f,indent=1)
 print("VIG L4 DONE")

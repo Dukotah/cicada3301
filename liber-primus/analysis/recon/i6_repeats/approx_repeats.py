@@ -29,12 +29,10 @@ stream so the pair set is small.
 """
 import sys, os, random, collections
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "..",
-                                "liber-primus", "src"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "..", "src"))
 from lp import gematria as gp
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..",
-                                    "liber-primus"))
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 
 # ------------------------------------------------------------------ load stream
 data = open(os.path.join(ROOT, "data/krisyotam_runes.txt"), encoding="utf-8").read()

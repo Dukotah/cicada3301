@@ -5,10 +5,13 @@ Finding: all sources are ONE origin (rtkd/iddqd master). dude OCR is byte-identi
 to canon after J-norm. So consensus == canon. Only scream314 (same lineage, re-presented)
 shows 3 tail edits, of which only page-24 idx172 is in-scope (0-55). We record it as a
 FLAGGED ambiguity, not a majority override (single-origin tie -> keep canon)."""
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import json, os
 
-FOUND = "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/foundation"
-CANON = "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt"
+FOUND = _REPO + "/liber-primus/analysis/foundation"
+CANON = _REPO + "/liber-primus/data/krisyotam_runes.txt"
 RUNES = set("ᚠᚢᚦᚩᚱᚳᚷᚹᚻᚾᛁᛄᛇᛈᛉᛋᛏᛒᛖᛗᛚᛝᛟᛞᚪᚫᚣᛡᛠ")
 def runes_only(s): return "".join(ch for ch in s.replace("ᛂ","ᛄ") if ch in RUNES)
 

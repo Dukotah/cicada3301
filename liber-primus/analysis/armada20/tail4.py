@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import io
 from PIL import Image
 
-tail=open("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20/page05_tail.bin","rb").read()
+tail=open(_REPO + "/liber-primus/analysis/armada20/page05_tail.bin","rb").read()
 
 # Try word-swap starting at each offset 0 and 1 to align
 for start in (0,1):
@@ -19,11 +22,11 @@ for start in (0,1):
         try:
             im=Image.open(io.BytesIO(blob)); im.load()
             print("  OPENS",im.format,im.size,im.mode)
-            im.save("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20/tail_recovered.png")
+            im.save(_REPO + "/liber-primus/analysis/armada20/tail_recovered.png")
         except Exception as e:
             print("  fail",str(e)[:80])
 
 # Also: maybe the WHOLE FILE is word-swapped and contains 2 images. Compare to main image size
 from PIL import Image as I2
-m=I2.open("/mnt/c/Users/dukot/projects/cicada3301/puzzles/2014/images/liber_primus_pages/lp_page_05.jpg")
+m=I2.open(_REPO + "/puzzles/2014/images/liber_primus_pages/lp_page_05.jpg")
 print("main image:",m.format,m.size,m.mode)

@@ -1,6 +1,9 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, re
-sys.path.insert(0, '/mnt/c/Users/dukot/projects/cicada3301/liber-primus')
-sys.path.insert(0, '/mnt/c/Users/dukot/projects/cicada3301/liber-primus/src')
+sys.path.insert(0, _REPO + "/liber-primus")
+sys.path.insert(0, _REPO + "/liber-primus/src")
 import numpy as np
 from src.lp import gematria as gp, score as _score, solve
 import attack

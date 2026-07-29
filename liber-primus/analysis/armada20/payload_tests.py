@@ -1,5 +1,8 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import re, zlib, bz2, lzma, itertools
-p="/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/0_wisdom.jpg"
+p=_REPO + "/liber-primus/data/relikd/0_wisdom.jpg"
 d=open(p,'rb').read()
 app=d[336353:]
 

@@ -9,7 +9,8 @@ export const meta = {
   ],
 }
 
-const REPO = '/mnt/c/Users/dukot/projects/cicada3301/liber-primus'
+// Point this at your checkout of the repo (the liber-primus/ folder).
+const REPO = process.env.CICADA_REPO || process.cwd() + '/liber-primus'
 const WORK = REPO + '/analysis/armada_osint'
 const OG = '/tmp/outguess'
 const KEYS = WORK + '/keys.txt'

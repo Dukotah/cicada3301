@@ -1,5 +1,8 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import json
-base='/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/structure/'
+base=_REPO + "/liber-primus/analysis/structure/"
 files={
  'simple/keystream/autokey':'phase3_p1.json',
  'vigenere L1-3':'phase3_vig123.json',

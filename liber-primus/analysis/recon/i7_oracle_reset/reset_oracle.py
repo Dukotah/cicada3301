@@ -13,7 +13,7 @@ The doubling ratio = observed adjacent-equal / expected-under-unigram. English
 ~0.15, random pad ~0.85-1.0.
 """
 import sys, os, json, random
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', '..', 'liber-primus', 'src'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', '..', 'src'))
 from lp import ciphers, gematria as gp
 from collections import Counter
 
@@ -96,7 +96,7 @@ GENERATORS = {
 # ------------------------------------------------------------- segmentation
 def load_pages():
     raw = open(os.path.join(os.path.dirname(__file__), '..', '..', '..',
-               'liber-primus', 'data', 'krisyotam_runes.txt'),
+               'data', 'krisyotam_runes.txt'),
                encoding='utf-8').read()
     return raw.split('%')
 

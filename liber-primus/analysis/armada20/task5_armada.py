@@ -7,9 +7,12 @@
 
 Scored with the rig's quadgram scorer. Baseline to beat: -6.23.
 """
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, json
-sys.path.insert(0, "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/src")
-sys.path.insert(0, "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis")
+sys.path.insert(0, _REPO + "/liber-primus/src")
+sys.path.insert(0, _REPO + "/liber-primus/analysis")
 from lp import gematria as gp
 from lp import score as _score
 from run_stats import load_pages
@@ -150,5 +153,5 @@ if __name__ == "__main__":
     for r in rb[:5]: print("  ", json.dumps(r))
     out = {"part_a_best": ba, "part_b_best": bb,
            "part_a_top": ra[:10], "part_b_top": rb[:10]}
-    json.dump(out, open("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20/task5_armada_results.json", "w"), indent=2)
+    json.dump(out, open(_REPO + "/liber-primus/analysis/armada20/task5_armada_results.json", "w"), indent=2)
     print("baseline=-6.23 OVERALL_BEST=", round(max(ba["score"], bb["score"]), 4))

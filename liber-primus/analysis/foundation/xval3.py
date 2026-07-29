@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import json, os, difflib
 
-FOUND = "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/foundation"
+FOUND = _REPO + "/liber-primus/analysis/foundation"
 streams = json.load(open(os.path.join(FOUND,"_streams.json")))
 canon = streams["canon"]
 
@@ -24,7 +27,7 @@ for k in ["cicadasolvers","r4nd0mD3v3l0p3r","relikd","uncovering_wiki"]:
 
 # Now build per-page mapping for scream's disagreements
 # Need canon page boundaries
-CANON = "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt"
+CANON = _REPO + "/liber-primus/data/krisyotam_runes.txt"
 def runes_only(s): return "".join(ch for ch in s.replace("ᛂ","ᛄ") if ch in RUNES)
 canon_raw = open(CANON, encoding="utf-8").read()
 canon_pages = [runes_only(p) for p in canon_raw.split("%")]

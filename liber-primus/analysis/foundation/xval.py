@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import re, sys, os, difflib
 from collections import Counter
 
-FOUND = "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/foundation"
-CANON = "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt"
+FOUND = _REPO + "/liber-primus/analysis/foundation"
+CANON = _REPO + "/liber-primus/data/krisyotam_runes.txt"
 
 # 29-rune Gematria Primus set
 RUNES = set("ᚠᚢᚦᚩᚱᚳᚷᚹᚻᚾᛁᛄᛇᛈᛉᛋᛏᛒᛖᛗᛚᛝᛟᛞᚪᚫᚣᛡᛠ")

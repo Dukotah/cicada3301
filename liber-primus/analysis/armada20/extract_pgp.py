@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Extract clean English prose from Cicada's PGP-signed message bodies.
 Build keyfiles for running-key attack (id=3, kind=keytext)."""
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import os, re, glob
 
-PGP = "/mnt/c/Users/dukot/projects/cicada3301/identity/pgp"
-OUT = "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20"
+PGP = _REPO + "/identity/pgp"
+OUT = _REPO + "/liber-primus/analysis/armada20"
 
 def body(path):
     """Return text between SIGNED MESSAGE header and SIGNATURE block."""

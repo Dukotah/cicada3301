@@ -1,3 +1,6 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import glob, hashlib, re, sys
 import numpy as np
 from PIL import Image
@@ -19,8 +22,8 @@ seeds=[b'DIVINITY',b'SACRED',b'PRIMES',b'PRIME',b'CICADA',b'3301',b'WISDOM',b'CI
        b'INSTAR',b'WELCOME',b'A WARNING',b'PARABLE',b'THE LOSS OF DIVINITY',b'an end',
        b'the primes are sacred', b'AN INSTRUCTION']
 
-files=sorted(glob.glob("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/p*.jpg"))
-files+=sorted(glob.glob("/mnt/c/Users/dukot/projects/cicada3301/puzzles/2014/images/liber_primus_pages/*.jpg"))
+files=sorted(glob.glob(_REPO + "/liber-primus/data/relikd/p*.jpg"))
+files+=sorted(glob.glob(_REPO + "/puzzles/2014/images/liber_primus_pages/*.jpg"))
 print(f"# {len(files)} clean page files, {len(seeds)} seeds")
 hits=0
 for p in files:

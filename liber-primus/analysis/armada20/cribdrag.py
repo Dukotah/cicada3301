@@ -1,5 +1,8 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, os, glob
-sys.path.insert(0, '/mnt/c/Users/dukot/projects/cicada3301/liber-primus/src')
+sys.path.insert(0, _REPO + "/liber-primus/src")
 from lp import gematria as gp
 from lp.score import default
 
@@ -9,12 +12,12 @@ CRIBS = ["INSTAR","EMERGENCE","DIVINITY","WISDOM","THEPRIMES","PARABLE",
          "SACRED","TOTIENT","CIRCUMFERENCE"]
 
 # Load ciphertext pages (0..55 per task; chunk 56 ignored but harmless)
-pages_raw = open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt').read().split('%')
+pages_raw = open(_REPO + "/liber-primus/data/krisyotam_runes.txt").read().split('%')
 PAGES = [gp.runes_to_indices(p) for p in pages_raw]
 
 # Build reference text index streams from data/ for matching implied key
 ref_texts = {}
-datadir = '/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data'
+datadir = _REPO + "/liber-primus/data"
 for f in glob.glob(datadir+'/keys/*.txt') + [datadir+'/kjv.txt', datadir+'/moby.txt',
                                              datadir+'/pride.txt', datadir+'/war.txt']:
     try:

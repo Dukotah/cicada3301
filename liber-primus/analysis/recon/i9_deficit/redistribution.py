@@ -17,11 +17,14 @@ Constructions and their off-diagonal signature on the adjacency matrix M[a,b]:
     -> each DIAGONAL of the matrix (constant b-a) is CONSTANT = a plaintext freq.
     This is the DECISIVE test: is M constant along lines of constant (b-a)?
 """
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", "..", ".."))
+
 import sys, collections, itertools, random, statistics
-sys.path.insert(0,'/mnt/c/Users/dukot/projects/cicada3301/liber-primus/src')
+sys.path.insert(0,_REPO + "/liber-primus/src")
 from lp.gematria import RUNE_TO_IDX, IDX_TO_TRANS, N
 
-RAW=open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt',encoding='utf-8').read()
+RAW=open(_REPO + "/liber-primus/data/krisyotam_runes.txt",encoding='utf-8').read()
 WORD_SEP=set('-'); LINE_SEP=set(['\n','/']); SENT_SEP=set('.')
 def build():
     out=[]

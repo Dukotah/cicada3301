@@ -1,73 +1,84 @@
-# PICKUP-HERE — where we left off (updated 2026-07-27)
+# PICKUP-HERE — where the work left off
 
-Resume point for the Cicada 3301 / Liber Primus work. Repo is public at
-https://github.com/Dukotah/cicada3301 (default branch `master`).
+_Updated **2026-07-29**. Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
 
-## 👉 START HERE: `liber-primus/ELIMINATION-LEDGER.md`
-The single, complete, reproducible record of **everything tried and why it's
-eliminated**, current through **Campaign XVIII + the 2026-07-27 OSINT sweep**. Read it
-first — it supersedes the scattered "ruled-out" tables in the older docs below.
+## 👉 Start with the three canonical docs
+| Doc | What it holds |
+|---|---|
+| [`liber-primus/FINAL-SYNTHESIS.md`](liber-primus/FINAL-SYNTHESIS.md) | The terminal verdict on both goals — solve and attribution |
+| [`liber-primus/ELIMINATION-LEDGER.md`](liber-primus/ELIMINATION-LEDGER.md) | Everything tried and why it's eliminated — supersedes every scattered "ruled-out" table |
+| [`liber-primus/analysis/README.md`](liber-primus/analysis/README.md) | Map of all 183 analysis scripts → campaign → finding |
 
-## Current state (2026-07-27, one paragraph)
-LP2 (unsolved runic pages 0–55) is **OTP-class**: a full-length keystream filtered to
-avoid consecutive-equal runes (~83% suppression, Campaign XI) → information-theoretically
-unsolvable **without the external key**. Transcription is verified three ways and is not
-the blocker. Since the July-7 snapshot: **Campaign XVII** attacked and sealed the whole
-8-premise assumption stack (key, reading order, acrostic, 1-bit channel, transcription,
-autokey, Latin plaintext, book cipher); **Campaign XVIII** built a skip-tolerant decoder
-that tracks the desync the doublet filter induces, then re-ran *every* alignment-sensitive
-keytext family under it (~200 named texts + autokey + ~620 Vigenère keywords) — all
-unconditionally null; **the 2026-07-27 OSINT sweep** pulled the onion images/HTML we never
-held from community mirrors and re-extracted them → **no new key** (recovered images decode
-to already-known 2013/2016 messages; two unidentified high-entropy blobs remain, low prior).
-The internal attack surface is closed; only narrow **external** loose ends remain.
+## State in one paragraph
 
-## Latest session — 2026-07-27 OSINT / external-artifact sweep
-- **What:** find + pull EXTERNAL material never held locally (raw onion HTML/images), since
-  the OTP verdict means the key is external by construction. Writeup +
-  results table: `liber-primus/analysis/OSINT-SWEEP-2026-07-27.md`; rig + scripts:
-  `liber-primus/analysis/armada_osint/` (raw ~79 MB dumps gitignored, reproducible).
-- **Result:** no new break. T1 (onion3 5×5-rune JPG) → known 2013 RSA message; T5
-  (4gq25.jpg) → known 2016 message; 60-key OutGuess sweep null; T2/T3 = unidentified
-  high-entropy blobs (still open, low prior). Folded into the ledger (§F + campaign index).
+LP2 (unsolved segments 0–54) is **OTP-class**: a full-length keystream filtered to avoid
+consecutive-equal runes (soft, ~83% suppression) against an external one-time pad →
+information-theoretically unsolvable **without the pad**. The transcription is verified three
+independent ways and is **not** the blocker. As of the 2026-07-28/29 auditor loop the internal
+attack surface is **closed**, and the verdict has hardened from *unsolved-by-effort* to
+**unsolvable-by-design**: the pad appears unpublished by design, since pages 0–54 were the
+terminal onion7 deliverable with no accompanying key. On attribution, there is **no falsifiable
+name** — stylometry is *provably* impossible at 359 words of authentic connected prose — but the
+loop produced the tightest honest **profile** yet, anchored on a technique fingerprint
+(Smirnov/Carlitz anti-repeat hardening = a combinatorialist's reflex, applied by hand).
 
-## What happened in the 2026-06-20 snapshot (Campaigns VII–XI)
-The four "avenues" below were the state as of June 20; work then continued:
-- **Campaign X (positive result):** simulated the community's decade-old
-  autokey/autoclave hypothesis and **excluded it** — all autokey variants sit at
-  the ~3.4% random doublet band; the observed 0.66% deficit is reproduced only by an
-  OTP with an active no-repeat filter. `liber-primus/analysis/CAMPAIGN-X-FINDINGS.md`
-- **Campaign XI:** quantified that filter — **soft, ~83% suppression** (sharpest
-  description yet of the one engineered feature); alt-base (59/61/62/64) readings of
-  the pp49–51 digits used as key over the runes = null.
-  `liber-primus/analysis/CAMPAIGN-XI-FINDINGS.md`
-- **Campaigns VII/IX:** fully characterized the non-runic **pp49–51 base-60 payload**
-  (2048-bit high-entropy blob — not prime/RSA/key/text; structural leads all null).
-- **Campaigns III–VI, VIII:** transcription verified 3 ways (glyph classifier 99.2%);
-  no public external key exists; no named author attributable.
-- **Net:** still no break (expected for OTP-class), but the mechanism is now described
-  to a parameter and appears ahead of the published community state of the art.
+## What the last three sessions did
 
-## 📄 Community deliverable
-**`liber-primus/SOLVERS-DOSSIER.md`** = the consolidated solver-facing contribution
-(verified provenance, full ruled-out map, verified-positives, open threads, tools).
-Final crypto-rigor probes: `liber-primus/analysis/crypto_rigor.py` + `analysis/CRYPTO-RIGOR.md`
-(F-run histogram, transposition-validity, no-repeat decodes — all closed).
+- **2026-07-27 — OSINT / external-artifact sweep.** Pulled the onion images and HTML never held
+  locally from community mirrors (iBotPeaches, archive.org, scream314, krisyotam) and re-extracted.
+  **No new key**: T1 and T5 decode to already-known 2013/2016 messages; a 60-key OutGuess sweep was
+  null; T2/T3 remain unidentified high-entropy blobs (low prior).
+  → `liber-primus/analysis/OSINT-SWEEP-2026-07-27.md`, `analysis/armada_osint/`
+- **2026-07-28 — LP1/LP2 recon + Campaign XIX.** Method dossier for the solved section (key
+  selection is **semantic, not numeric**), structure dossier for the unsolved one (editorial
+  sections exist; the cipher does **not** reset at them), and the full winner/insider roster —
+  none of whom holds LP or key material.
+  → `analysis/recon/RECON-SUMMARY-2026-07-28.md`, `analysis/attribution/CAMPAIGN-XIX-WITNESSES.md`
+- **2026-07-29 — the 11-iteration auditor loop.** A rotating-critic loop (contrarian → naïve
+  outsider → author-empathy → historian → data-provenance → lateral-field → game-theorist →
+  devil's-advocate believer) that sealed the remaining lanes, **positively refuted autokey**, and
+  self-corrected three of its own false positives.
+  → `liber-primus/FINAL-SYNTHESIS.md`, `analysis/recon/`, `analysis/attribution/TECHNIQUE-FINGERPRINT-2026-07-29.md`
 
-## TL;DR state
-- The **solvable** Cicada puzzles (2012, 2013, early Liber Primus pages) are
-  reconstructed and the cryptanalysis rig is validated (`liber-primus/tests/validate.py`).
-- The **unsolved** LP2 pages (0–55) are proven one-time-pad-class: exhaustively
-  attacked and ruled out (see `liber-primus/FINDINGS-FOR-SOLVERS.md`).
-- All **4 "move-the-needle" avenues are now CLOSED.** (#1 was the last open one;
-  closed 2026-06-20 — see below.)
+## If you're picking this up cold
+
+```bash
+cd liber-primus
+python tests/validate.py     # trust anchor — reproduces every known solved page
+pytest -m "not network"      # fast regression gate
+```
+
+Then read the ledger. **Do not re-run** anything in its "Do NOT re-run" list — more keywords,
+short/periodic keys, number-theoretic keystreams, autokey, differencing/integration, page-on-page
+keying, transposition-only, fractionation, substitution/homophonic, image stego, AI-vision
+re-transcription, or pp49–51 as a runic key. Every one is eliminated with a reason and a
+reproduce pointer.
+
+## What is actually still open
+
+Two things, both **external** — nothing in the ciphertext can close either:
+1. **An untried already-public keytext** Cicada expected solvers to recognize. Falsifiable, and
+   therefore the one productive avenue left (~200 named texts already eliminated, skip-aware).
+   Extend by adding a slug to `analysis/campaign12/fetch_keytexts.py` and re-running `run_sweep.py`.
+2. **The "AN END" deep-web page** — the only place the pad might physically exist. Cold trail
+   (Tor v2 dead); what remains un-examined is narrow and low-prior.
+
+**What would reopen the case:** a new 7A35090F-signed Cicada release, a CicadaSolvers-accepted
+reproducible page solve, or the private pad surfacing.
+
+---
+
+# Historical detail
+
+_Kept for provenance. The avenue log below is from the 2026-06-20 snapshot; where it disagrees
+with the ledger, the ledger wins._
 
 ## The 4 avenues
 | # | Avenue | Status |
 |---|---|---|
 | 1 | Independent **vision re-transcription** of the 56 page images | ✅ **closed 2026-06-20** — not viable; canonical verified — `liber-primus/analysis/vision/AVENUE-1-VISION-VERDICT.md` |
 | 2 | Doublet-avoidant / fractionation attacks | ✅ closed (ruled out) — `analysis/OPEN-AVENUES.md` |
-| 3 | Contribute findings to community | ✅ shipped — `FINDINGS-FOR-SOLVERS.md`, repo public |
+| 3 | Contribute findings to community | ✅ shipped — `liber-primus/docs/FINDINGS-FOR-SOLVERS.md`, repo public |
 | 4 | OSINT for the lost deep-web hash page | ✅ done — `analysis/DEEPWEB-HASH-OSINT.md` (trail cold) |
 
 ## ✅ AVENUE #1 — what happened (closed)
@@ -131,7 +142,7 @@ Limit: not a from-scratch independent re-read (none exists; vision can't deliver
   Low odds; documented in `analysis/DEEPWEB-HASH-OSINT.md`.
 
 ## Key files
-- `liber-primus/FINDINGS-FOR-SOLVERS.md` — what's eliminated + why (start here)
+- `liber-primus/docs/FINDINGS-FOR-SOLVERS.md` — what's eliminated + why (start here)
 - `liber-primus/analysis/OPEN-AVENUES.md` — ranked remaining avenues
 - `liber-primus/attack.py` — validated attack CLI (`selftest` re-finds DIVINITY)
 - `liber-primus/tests/validate.py` — proves the rig on all solved pages

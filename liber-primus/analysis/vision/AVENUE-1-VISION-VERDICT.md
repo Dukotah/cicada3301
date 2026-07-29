@@ -63,5 +63,5 @@ The original avenue note had only ever calibrated vision on the short phrase
 
 All four "move-the-needle" avenues are now closed. The unsolved LP2 pages
 (0–55) remain one-time-pad-class with no recoverable key, consistent with
-`FINDINGS-FOR-SOLVERS.md`. The honest verdict is unchanged: unsolvable from
+`../../docs/FINDINGS-FOR-SOLVERS.md`. The honest verdict is unchanged: unsolvable from
 ciphertext alone without the unpublished key.

@@ -1,10 +1,13 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import glob, re
 import numpy as np
 from PIL import Image
 KW=re.compile(rb'(BEGIN PGP|PGP|cipher|gematria|primus|divinit|sacred|prime|onion|3301|cicada|instar|circumf|magic|William|Blake|welcome|wisdom|key)',re.I)
 WORDY=re.compile(rb'(the |and |key |cipher|prime|cicada|liber| is | of )',re.I)
 def runs(b,n=8): return re.findall(rb'[ -~]{%d,}'%n,b)
-pngs=glob.glob("/mnt/c/Users/dukot/projects/cicada3301/puzzles/**/*.png",recursive=True)
+pngs=glob.glob(_REPO + "/puzzles/**/*.png",recursive=True)
 print(f"# {len(pngs)} PNGs")
 for p in pngs:
     # appended after IEND

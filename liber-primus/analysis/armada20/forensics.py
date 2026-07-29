@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import os, sys, struct, glob, json, re
 
 ROOTS = [
-    "/mnt/c/Users/dukot/projects/cicada3301/puzzles/2012",
-    "/mnt/c/Users/dukot/projects/cicada3301/puzzles/2013",
-    "/mnt/c/Users/dukot/projects/cicada3301/puzzles/2014",
-    "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd",
+    _REPO + "/puzzles/2012",
+    _REPO + "/puzzles/2013",
+    _REPO + "/puzzles/2014",
+    _REPO + "/liber-primus/data/relikd",
 ]
 
 MAGICS = {
@@ -115,7 +118,7 @@ def main():
             out.append(r)
             if r.get("trailing_len",0) > 2 or r.get("embedded_magics"):
                 flagged.append(r)
-    with open("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20/forensics_full.json","w") as f:
+    with open(_REPO + "/liber-primus/analysis/armada20/forensics_full.json","w") as f:
         json.dump(out, f, indent=1)
     print(f"Scanned {len(out)} image files")
     print(f"FLAGGED (trailing data or embedded magic): {len(flagged)}")

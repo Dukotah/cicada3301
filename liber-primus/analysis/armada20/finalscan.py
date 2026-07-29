@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import os, glob, re
 
-ROOTS=["/mnt/c/Users/dukot/projects/cicada3301/puzzles/2012",
-       "/mnt/c/Users/dukot/projects/cicada3301/puzzles/2013",
-       "/mnt/c/Users/dukot/projects/cicada3301/puzzles/2014",
-       "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd"]
+ROOTS=[_REPO + "/puzzles/2012",
+       _REPO + "/puzzles/2013",
+       _REPO + "/puzzles/2014",
+       _REPO + "/liber-primus/data/relikd"]
 
 def jpeg_eoi_end(d):
     if d[:2]!=b"\xff\xd8": return None

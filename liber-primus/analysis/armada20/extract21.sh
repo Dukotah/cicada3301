@@ -1,14 +1,15 @@
 #!/bin/bash
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && git rev-parse --show-toplevel)"
 # OutGuess + steghide extraction sweep, id=21
 OG=/tmp/outguess/src/outguess
-OUT=/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20/og_out
+OUT="$REPO"/liber-primus/analysis/armada20/og_out
 mkdir -p "$OUT"
 KEYS=("" "DIVINITY" "divinity" "SACRED" "sacred" "PRIMES" "primes" "CIRCUMFERENCE" "circumference" "WELCOME" "welcome" "3301" "INSTAR" "instar")
 
 # Image sets
 declare -a IMGS
-for f in /mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/*.jpg; do IMGS+=("$f"); done
-while IFS= read -r f; do IMGS+=("$f"); done < <(find /mnt/c/Users/dukot/projects/cicada3301/puzzles -iname '*.jpg' | sort)
+for f in "$REPO"/liber-primus/data/relikd/*.jpg; do IMGS+=("$f"); done
+while IFS= read -r f; do IMGS+=("$f"); done < <(find "$REPO"/puzzles -iname '*.jpg' | sort)
 
 echo "Total images: ${#IMGS[@]}"
 HITS=0

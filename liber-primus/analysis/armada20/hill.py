@@ -1,6 +1,9 @@
 """Hill cipher attack over 29-rune alphabet (mod 29). id=16."""
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, itertools, time
-sys.path.insert(0, '/mnt/c/Users/dukot/projects/cicada3301/liber-primus/src')
+sys.path.insert(0, _REPO + "/liber-primus/src")
 from lp.gematria import runes_to_indices, indices_to_translit
 from lp.score import default
 
@@ -40,7 +43,7 @@ def hill_decrypt2(idx, kinv):
     return out
 
 def load_pages():
-    t = open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt').read()
+    t = open(_REPO + "/liber-primus/data/krisyotam_runes.txt").read()
     return [runes_to_indices(p) for p in t.split('%')]
 
 def score_idx(idx):

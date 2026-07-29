@@ -1,9 +1,12 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", "..", ".."))
+
 import sys, math
-sys.path.insert(0,'/mnt/c/Users/dukot/projects/cicada3301/liber-primus/src')
+sys.path.insert(0,_REPO + "/liber-primus/src")
 from lp.gematria import RUNES, RUNE_TO_IDX, RUNE_TO_TRANS, IDX_TO_RUNE
 
 RSET=set(RUNES)
-raw=open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt',encoding='utf-8').read()
+raw=open(_REPO + "/liber-primus/data/krisyotam_runes.txt",encoding='utf-8').read()
 parts=raw.split('%')
 # keep only parts that have runes; record their index
 pages=[]

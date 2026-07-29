@@ -1,10 +1,13 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, itertools
-sys.path.insert(0, '/mnt/c/Users/dukot/projects/cicada3301/liber-primus')
+sys.path.insert(0, _REPO + "/liber-primus")
 import src.lp.ciphers as ci, src.lp.gematria as g, src.lp.score as sc, src.lp.solve as solve
 import src.lp.autokey as ak
 
 scorer = sc.default()
-raw = open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt', encoding='utf-8').read()
+raw = open(_REPO + "/liber-primus/data/krisyotam_runes.txt", encoding='utf-8').read()
 pages = raw.split('%')
 N = 29
 
@@ -77,6 +80,6 @@ for pg in range(0,14):
 
 # Save phase1 results
 import json
-with open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/structure/phase3_p1.json','w') as f:
+with open(_REPO + "/liber-primus/analysis/structure/phase3_p1.json",'w') as f:
     json.dump({str(k):[round(v[0],4),v[1],v[2][:120]] for k,v in results.items()}, f, indent=1)
 print("PHASE1 DONE")

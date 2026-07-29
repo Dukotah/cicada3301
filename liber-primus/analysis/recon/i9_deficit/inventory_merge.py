@@ -26,11 +26,14 @@ TEST (forward, model-free, NOT key-search):
   A merge that EXPLAINS the deficit must (i) add many doublets and (ii) the
   AB/BA cross rate must be at least the independence expectation (not suppressed).
 """
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", "..", ".."))
+
 import sys, collections, itertools, math, random
-sys.path.insert(0, '/mnt/c/Users/dukot/projects/cicada3301/liber-primus/src')
+sys.path.insert(0, _REPO + "/liber-primus/src")
 from lp.gematria import RUNE_TO_IDX, IDX_TO_TRANS, RUNES, N
 
-RAW = open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt', encoding='utf-8').read()
+RAW = open(_REPO + "/liber-primus/data/krisyotam_runes.txt", encoding='utf-8').read()
 WORD_SEP=set('-'); SENT_SEP=set('.'); LINE_SEP=set(['\n','/'])
 
 def build_pages():

@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import io
 from PIL import Image
 
-tail=open("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20/page05_tail.bin","rb").read()
+tail=open(_REPO + "/liber-primus/analysis/armada20/page05_tail.bin","rb").read()
 
 # byte-swap (swap adjacent bytes)
 sw=bytearray(len(tail))
@@ -17,7 +20,7 @@ for name,blob in [("swapped",sw),("raw",tail)]:
         im=Image.open(io.BytesIO(blob))
         im.load()
         print(name,"OPENS as",im.format,im.size,im.mode)
-        im.save(f"/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20/extracted_{name}.png")
+        im.save(f"{_REPO}/liber-primus/analysis/armada20/extracted_{name}.png")
     except Exception as e:
         print(name,"fail:",str(e)[:80])
 

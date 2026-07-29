@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import json, zlib, gzip, io
 
-data = json.load(open("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20/forensics_full.json"))
+data = json.load(open(_REPO + "/liber-primus/analysis/armada20/forensics_full.json"))
 
 # 1) Real trailing data (post-EOI / post-IEND) with length > 2
 print("=== TRAILING DATA (len>2) ===")

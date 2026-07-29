@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import os, sys, glob, struct, math, hashlib, re
 from collections import Counter
 import numpy as np
 from PIL import Image
 
-OUT = "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/armada20"
+OUT = _REPO + "/liber-primus/analysis/armada20"
 
 def gather():
     files = []
-    files += glob.glob("/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/*.jpg")
+    files += glob.glob(_REPO + "/liber-primus/data/relikd/*.jpg")
     for ext in ("jpg","jpeg","png"):
-        files += glob.glob(f"/mnt/c/Users/dukot/projects/cicada3301/puzzles/**/*.{ext}", recursive=True)
+        files += glob.glob(f"{_REPO}/puzzles/**/*.{ext}", recursive=True)
     return sorted(set(files))
 
 PRINTABLE = set(range(32,127)) | {9,10,13}

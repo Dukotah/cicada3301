@@ -1,8 +1,11 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, json
-sys.path.insert(0,'/mnt/c/Users/dukot/projects/cicada3301/liber-primus')
+sys.path.insert(0,_REPO + "/liber-primus")
 import src.lp.gematria as g, src.lp.score as sc, src.lp.solve as solve, src.lp.ciphers as ci
 scorer=sc.default()
-raw=open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt',encoding='utf-8').read()
+raw=open(_REPO + "/liber-primus/data/krisyotam_runes.txt",encoding='utf-8').read()
 pages=raw.split('%')
 N=29
 # Interrupter beam search over keystreams that solved known pages, per page.
@@ -33,6 +36,6 @@ for pg in range(0,14):
     res[pg]=(bscore,binfo,btext)
     print('page %d interrupt best: %.3f %s'%(pg,bscore,binfo),btext[:40])
     sys.stdout.flush()
-with open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/structure/phase3_interrupt.json','w') as f:
+with open(_REPO + "/liber-primus/analysis/structure/phase3_interrupt.json",'w') as f:
     json.dump({str(k):[round(v[0],4),v[1],v[2][:120]] for k,v in res.items()},f,indent=1)
 print("INTERRUPT DONE")

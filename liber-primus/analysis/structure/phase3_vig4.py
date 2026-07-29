@@ -1,8 +1,11 @@
+import os as _os
+_REPO = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), "..", "..", ".."))
+
 import sys, itertools, json, time
-sys.path.insert(0, '/mnt/c/Users/dukot/projects/cicada3301/liber-primus')
+sys.path.insert(0, _REPO + "/liber-primus")
 import src.lp.gematria as g, src.lp.score as sc
 scorer = sc.default()
-raw = open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/krisyotam_runes.txt', encoding='utf-8').read()
+raw = open(_REPO + "/liber-primus/data/krisyotam_runes.txt", encoding='utf-8').read()
 pages = raw.split('%')
 N=29
 # Build single-char translit for fast scoring. Many translits are multichar (TH, NG, EO, IA, OE, AE, EA).
@@ -34,6 +37,6 @@ for pg in range(0,14):
     print('page %d L4 best: %.3f key=%s elapsed=%.0fs'%(pg,bscore,bkey,time.time()-t0))
     sys.stdout.flush()
 
-with open('/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/structure/phase3_vig4.json','w') as f:
+with open(_REPO + "/liber-primus/analysis/structure/phase3_vig4.json",'w') as f:
     json.dump({str(k):[round(v[0],4),list(v[1]),v[2][:120]] for k,v in best.items()},f,indent=1)
 print("VIG L4 DONE")
