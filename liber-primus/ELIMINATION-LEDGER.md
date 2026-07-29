@@ -512,3 +512,25 @@ Assumed LP2 IS solvable; attacked the never-audited ARTIFACT premises (not seale
   detectable by the alphabet-ORDER attack, and the exact fingerprint that would create the doublet
   deficit); pixel-level OCR re-derivation from the 57 relikd JPGs (catches a common-origin READING
   error both Unicode witnesses share); the doublet deficit used as a FORWARD distributional constraint.
+
+## Contrarian restart: 29-rune inventory + doublet-deficit forward-constraint (iter 9, 2026-07-29)
+Tested whether the doublet deficit is a rune-inventory MISCOUNT (two glyphs = one symbol → doublets
+miscounted). REFUTED three independent ways + produced two positive results.
+- **Inventory cardinality = 29 CORRECT (premise b' eliminated):** every confusable-pair MERGE lands in
+  the random-merge control band (0.85-0.98% doublet, P at floor); closes only ~10% of the 0.66→3.45 gap
+  (pure 29→28 arithmetic). Cross-adjacency ratios at chance for all 7 confusable pairs (a real scribal
+  variant would spike ONE pair >>1). The deficit is UNIFORM across all 29 runes (per-glyph error would
+  suppress ONE, leaving 28 at ~1.0x). No off-diagonal pair absorbs hidden doublets. OCR self-control
+  passed; p0 line-diff = ZERO disagreements; runes are a consistent digital font (no scribal variation).
+- **AUTOKEY POSITIVELY REFUTED (upgrade from conditional null):** profiling by difference d=(b-a) mod 29,
+  only d=0 is an outlier (0.180x, z=-17.25 vs shuffle); the 28 nonzero diagonals are FLAT (cv=0.061,
+  chi 35.4<40). Under ciphertext-autokey each diagonal would equal a distinct plaintext-rune frequency
+  (lumpy, cv~1.0). The flatness POSITIVELY excludes autokey — stronger than prior "matches rate, fails
+  to decrypt."
+- **CONSTRUCTION CLASS PINNED:** forward simulation — only a SOFT ANTI-REPEAT REWRITE (p_keep~0.18) over
+  a MEMORYLESS base reproduces the observed 0.622% (memoryless OTP 3.43%, autokey 3.37%, first-diff
+  3.52%, hard anti-repeat 0.00%). Residual 60 survivors uniform over value + positionally flat.
+  Repro: analysis/recon/i9_inventory/, i9_deficit/, i9_ocr/.
+- **CRITIC VERDICT: internal solve frontier EXHAUSTED — diminishing-returns hardening, not solve paths.**
+  Loop pivots to goal 2 (creator attribution); the soft-anti-repeat-over-memoryless construction is now
+  a candidate TECHNIQUE fingerprint for attribution.

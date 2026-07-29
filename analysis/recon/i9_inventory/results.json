@@ -1,0 +1,161 @@
+{
+  "baseline": {
+    "doublet_pct": 0.6666,
+    "oracle_P": 0.0955,
+    "random_doublet_pct": 3.4483,
+    "parable_doublet_pct": 1.0638,
+    "parable_P": 1.0,
+    "n_runes": 12956
+  },
+  "confusable_merges": [
+    {
+      "pair": "os/ac (O ~ A)",
+      "keep": 3,
+      "drop": 24,
+      "doublet_pct": 0.9457,
+      "oracle_P": 0.1098,
+      "d_delta_vs_base": 0.279,
+      "P_delta_vs_base": 0.0143,
+      "d_control_percentile": 80.0,
+      "P_control_percentile": 80.0
+    },
+    {
+      "pair": "eoh/ior (EO ~ IA)",
+      "keep": 12,
+      "drop": 27,
+      "doublet_pct": 0.8914,
+      "oracle_P": 0.0955,
+      "d_delta_vs_base": 0.2248,
+      "P_delta_vs_base": 0.0,
+      "d_control_percentile": 20.0,
+      "P_control_percentile": 5.0
+    },
+    {
+      "pair": "ior/ear (IA ~ EA)",
+      "keep": 27,
+      "drop": 28,
+      "doublet_pct": 0.9224,
+      "oracle_P": 0.0955,
+      "d_delta_vs_base": 0.2558,
+      "P_delta_vs_base": 0.0,
+      "d_control_percentile": 50.0,
+      "P_control_percentile": 5.0
+    },
+    {
+      "pair": "wynn/peordh (W ~ P)",
+      "keep": 7,
+      "drop": 13,
+      "doublet_pct": 0.8914,
+      "oracle_P": 0.1037,
+      "d_delta_vs_base": 0.2248,
+      "P_delta_vs_base": 0.0082,
+      "d_control_percentile": 20.0,
+      "P_control_percentile": 45.0
+    },
+    {
+      "pair": "is/eoh (I ~ EO)",
+      "keep": 10,
+      "drop": 12,
+      "doublet_pct": 0.9844,
+      "oracle_P": 0.113,
+      "d_delta_vs_base": 0.3178,
+      "P_delta_vs_base": 0.0175,
+      "d_control_percentile": 100.0,
+      "P_control_percentile": 95.0
+    },
+    {
+      "pair": "ing/daeg (NG ~ D)",
+      "keep": 21,
+      "drop": 23,
+      "doublet_pct": 0.9689,
+      "oracle_P": 0.1043,
+      "d_delta_vs_base": 0.3023,
+      "P_delta_vs_base": 0.0088,
+      "d_control_percentile": 90.0,
+      "P_control_percentile": 55.0
+    },
+    {
+      "pair": "ac/aesc (A ~ AE)",
+      "keep": 24,
+      "drop": 25,
+      "doublet_pct": 0.9534,
+      "oracle_P": 0.106,
+      "d_delta_vs_base": 0.2868,
+      "P_delta_vs_base": 0.0105,
+      "d_control_percentile": 80.0,
+      "P_control_percentile": 55.0
+    }
+  ],
+  "splits": [
+    {
+      "target": 22,
+      "trans": "OE",
+      "method": "parity",
+      "doublet_pct": 0.6356,
+      "oracle_P": 0.0955,
+      "d_delta_vs_base": -0.031
+    },
+    {
+      "target": 22,
+      "trans": "OE",
+      "method": "prevclass",
+      "doublet_pct": 0.6511,
+      "oracle_P": 0.0955,
+      "d_delta_vs_base": -0.0155
+    },
+    {
+      "target": 24,
+      "trans": "A",
+      "method": "parity",
+      "doublet_pct": 0.6589,
+      "oracle_P": 0.0881,
+      "d_delta_vs_base": -0.0078
+    },
+    {
+      "target": 24,
+      "trans": "A",
+      "method": "prevclass",
+      "doublet_pct": 0.6666,
+      "oracle_P": 0.0898,
+      "d_delta_vs_base": 0.0
+    },
+    {
+      "target": 10,
+      "trans": "I",
+      "method": "parity",
+      "doublet_pct": 0.6511,
+      "oracle_P": 0.0859,
+      "d_delta_vs_base": -0.0155
+    },
+    {
+      "target": 10,
+      "trans": "I",
+      "method": "prevclass",
+      "doublet_pct": 0.6589,
+      "oracle_P": 0.0861,
+      "d_delta_vs_base": -0.0078
+    }
+  ],
+  "controls": {
+    "random_merge": {
+      "d_mean": 0.917,
+      "d_min": 0.8526,
+      "d_max": 0.9767,
+      "d_p95": 0.9767,
+      "P_mean": 0.1046,
+      "P_max": 0.1208
+    },
+    "random_split": {
+      "d_mean": 0.6565,
+      "d_min": 0.6434,
+      "d_max": 0.6666
+    }
+  },
+  "verdict": {
+    "d_control_max": 0.9767,
+    "P_control_max": 0.1208,
+    "hits": [],
+    "deficit_explained": false,
+    "note": "A single confusable merge that beats the random-merge control band would identify a scribal-variant inventory error AS the doublet deficit. No such merge = 29-inventory is correct and the deficit is intrinsic."
+  }
+}

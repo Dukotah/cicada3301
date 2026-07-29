@@ -1,0 +1,36 @@
+i9 CONTRARIAN-SKEPTIC — inventory-cardinality attack on the doublet deficit
+2026-07-29. Tool: inventory_attack.py  (blind i7 oracle P + doublet rate)
+
+PREMISE (b'): the 29-rune inventory cardinality was never tested; the alphabet-
+ORDER attack cannot detect a wrong cardinality. If two confusable ciphertext
+glyphs are ONE underlying symbol (scribal variant), their true doublets get
+miscounted as non-doublets -> would produce the 0.66% deficit.
+
+BASELINE (pages 0-54, n=12956): doublet=0.667%  P=0.0955
+  random floor doublet=3.448%   PARABLE(English) doublet=1.06% P=1.0
+
+CONFUSABLE MERGES (7 pairs: O/A, EO/IA, IA/EA, W/P, I/EO, NG/D, A/AE):
+  doublet lands 0.85-0.98%  ;  P stays 0.09-0.11 (floor)
+RANDOM-MERGE CONTROL (20 merges): doublet 0.85-0.98% mean 0.92 ; P max 0.121
+  => EVERY confusable merge is INSIDE the random-merge band. The +0.22..0.32%
+     lift is pure arithmetic (28-symbol collapse manufactures some XY->XX). No
+     pair beats control. Best (I/EO 0.984%) is +0.007 over control max = noise,
+     and closes only ~10% of the 0.66->3.45 gap. No merge lifts P off the floor.
+
+CROSS-ADJACENCY TEST (observed XY+YX / expected under independence):
+  O/A 1.06  EO/IA 1.01  IA/EA 0.99  W/P 1.06  I/EO 1.42  NG/D 1.27  A/AE 1.12
+  A genuine scribal-variant pair would appear adjacent FAR ABOVE chance (true XX
+  mis-split into XY). All are at/near chance; none shows the avoidance-or-excess
+  signature. The mild I/EO=1.42 does not lift P and is 1-of-7 within noise.
+
+SPLITS (top-3 freq runes OE/A/I by position-parity & preceding-class):
+  all move doublet DOWN (0.635-0.667%), P never lifts. Inside random-split band
+  (0.643-0.667%). Null.
+
+VERDICT: deficit_explained = FALSE. structural_signal = FALSE.
+  The 29-rune inventory is CORRECT. Merging confusable glyphs cannot normalize
+  the deficit past its random-operation control, and no pair carries the
+  anomalous adjacency a real scribal-variant would. The doublet deficit is
+  INTRINSIC to the cipher, not an artifact of a mis-sized alphabet. Premise (b')
+  is now TESTED and ELIMINATED. Consistent with DOUBLET-INVESTIGATION.md: a
+  construction that deliberately suppresses adjacent-equal runes.
