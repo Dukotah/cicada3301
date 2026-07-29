@@ -1,0 +1,12 @@
+=== i6 v3 Monte-Carlo: is cipher's English-fit reproducible by filler? ===
+cipher n=3316 mean=3.907; English ref n=120000 mean=4.205
+cipher KS-to-English = 0.0582
+
+null family      | KS-to-English of cipher | MC p(null KS <= cipher KS)
+ geometric      | 0.0582                  | p=0.0000 (best null mean 3.91)
+ poisson        | 0.0582                  | p=0.0000 (best null mean 3.91)
+ negbin         | 0.0582                  | p=0.1795 (best null mean 4.10)
+
+Interpretation: p is the chance a MATCHED memoryless filler fits English
+as well as the cipher does. p<<0.05 across all null families => the cipher's
+word-length profile carries English-specific structure a filter/OTP would not.

@@ -1,0 +1,28 @@
+=== i6 v4 language discrimination (futhorc word-length KS to cipher) ===
+cipher n=3316 mean=3.907
+  ENGLISH  ref n=100000 mean=4.223  KS(cipher,ENGLISH)=0.0584
+  LATIN    ref n=100000 mean=5.233  KS(cipher,LATIN)=0.2232
+  WELSH    ref n=100000 mean=3.466  KS(cipher,WELSH)=0.1565
+  --> closest natural language: ENGLISH
+
+  [language separation] KS(ENG,LAT)=0.1866 KS(ENG,WEL)=0.1954 KS(LAT,WEL)=0.2312
+
+=== TEST 2 positional length structure (NL has clause-edge effects) ===
+ clause-FIRST word mean len = 3.539 (n=731)
+ clause-LAST  word mean len = 3.583 (n=731)
+ clause-INTERIOR word mean  = 4.177 (n=1904)
+ all words mean             = 3.907
+
+ [English futhorc positional ref, from sentence structure]
+   clause-first: 3.619
+   clause-last: 5.460
+   interior: 4.081
+
+ perm-test clause-first vs interior: diff=-0.638 p=0.0000
+ perm-test clause-last  vs interior: diff=-0.594 p=0.0000
+
+Interpretation:
+ - If cipher's closest language is ENGLISH (and all NL beat random), the
+   length channel carries language-specific structure => NL plaintext exists.
+ - Significant clause-edge length effect (p<0.05) = NL positional structure
+   that an OTP/filler cannot produce.

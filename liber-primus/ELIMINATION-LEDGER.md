@@ -399,3 +399,28 @@ Attacked the DATA behind every null (is the ciphertext/hash/corpus faithful to p
   unsound for the wider 512-bit space. FIX = run the whole-file preimage gate under those 3 digests
   (KAT-validated) vs every held blob + candidate object; a hit means the AN-END page is a HELD object
   and the archival-loss verdict collapses. Scheduled into loop iter 6 as the mechanical prerequisite.
+
+## Lateral-field transplant (iter 6, 2026-07-29) — hash gap CLOSED; 3 fields harden OTP
+Imported unrelated-field methods (fields the cipher lanes never used) to pages 0-54.
+- **Reopened preimage gate CLOSED:** Skein-512-512 + Whirlpool + Streebog-512, each KAT-validated
+  (Whirlpool 5/5 ISO 10118-3, Skein 2/2 v1.3, Streebog RFC6986), whole-file over every held blob +
+  internal candidate set, 2658 byte/digest-orientation combos = CLEAN NULL. The AN-END target
+  36367763...c2a8b4 is now unsourced to any held object across SHA-2/SHA-3/BLAKE/BLAKE2/shake +
+  Skein/Whirlpool/Streebog. The iter-5 scope gap is closed; archival-loss verdict hardened.
+- **MDL / compression-distance (info-theory) NULL:** 0-54 packs to 7868B = Shannon floor 7867.5B
+  (exactly incompressible) → NOT an algorithmically-generated pad (hash-chain/PRNG would compress).
+  The lone order-1 entropy dip (z=-14.6) decomposes to ONE cause: doubled-rune suppression ratio
+  0.19, which MATCHES known-plaintext PARABLE (0.147) and NOT a pad (~1.0) → an English-phonotactic
+  fingerprint, independent re-confirmation that English plaintext exists under 0-54.
+- **Bioinformatics approximate-repeat finder (BLAST seed-and-extend, k<=3 mismatch, g<=2 indel)
+  NULL:** one 6-mer repeat, zero at w>=7, longest gapped approx repeat only 7 runes — at/below the
+  random 29-ary floor (sensitivity validated on a planted length-14 repeat). FALSIFIES the
+  filter-induced gapped-keystream-desync hypothesis (campaign-14 flagged blind spot).
+- **Word-length typology — FALSE POSITIVE, retracted:** an agent claimed an English clause-position
+  length signature (z=-8); the critic reproduced z=-7.94 but disqualified it: the effect is driven by
+  the '/' LINE-WRAP separator (edge-int -0.748) not the grammatical '.' clause boundary (-0.234), and
+  its SIGN is OPPOSITE to English (English clause-last words LONG +0.476; cipher clause-last SHORT
+  3.58). It is line-typography, NOT recoverable plaintext. Does NOT reopen message-existence; do not
+  build crib-dragging on it.
+- **Surviving positive:** anti-doubling fingerprint (English present, but it constrains the PAD, not
+  the message). Feeds iter-7's plaintext-blind pad-restoration oracle.

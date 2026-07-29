@@ -1,0 +1,44 @@
+=== i6 v2 word-length typology (cleartext length channel, pages 0-54) ===
+(A) cipher 0-54         : n=3316  mean=3.907  H=2.991
+(B) English->futhorc    : n=120000 mean=4.140 H=3.003
+(C1) geometric filler   : n=3316 mean=3.986 H=3.233
+(C2) poisson filler     : n=3316 mean=3.897 H=2.762
+
+[compression] English mean LETTERS/word = 4.329, mean RUNES/word = 4.140, ratio = 1.046
+[compression] cipher mean RUNES/word = 3.907 -> if English, implied LETTERS/word ~ 4.09 (English prose ~4.4-4.6)
+
+--- length distribution P(len) 1..12 ---
+len | cipher  English  geoFill  poiFill
+  1 | 0.0959  0.0448   0.2443  0.0591
+  2 | 0.1873  0.2237   0.1821  0.1553
+  3 | 0.2379  0.2380   0.1466  0.2328
+  4 | 0.1677  0.1568   0.1086  0.2156
+  5 | 0.1062  0.0896   0.0790  0.1701
+  6 | 0.0739  0.0871   0.0660  0.0956
+  7 | 0.0528  0.0598   0.0446  0.0446
+  8 | 0.0386  0.0421   0.0308  0.0172
+  9 | 0.0160  0.0279   0.0253  0.0054
+ 10 | 0.0121  0.0154   0.0202  0.0036
+ 11 | 0.0072  0.0064   0.0148  0.0003
+ 12 | 0.0036  0.0056   0.0093  0.0003
+
+--- KS distance to cipher (smaller=more similar) ---
+ cipher vs English      KS = 0.0511
+ cipher vs geoFiller    KS = 0.1484
+ cipher vs poiFiller    KS = 0.0739
+
+--- bootstrap KS 95% CI (cipher resampled) ---
+ cipher~English  KS median 0.0508  95%CI [0.0418,0.0608]
+ cipher~geoFill  KS median 0.1490  95%CI [0.1390,0.1610]
+
+--- function-word mass (NL packs mass at short lengths) ---
+       P(len=1)   P(len<=2)  P(len<=3)
+ cipher   0.0959    0.2832    0.5211
+ English  0.0448    0.2685    0.5065
+ geoFill  0.2443    0.4264    0.5730
+ poiFill  0.0591    0.2144    0.4472
+
+=== VERDICT ===
+ - length dist: KS(English)=0.0511 vs KS(geoFill)=0.1484 vs KS(poiFill)=0.0739 -> ENGLISH is the closest hypothesis
+ - cipher mode at len=3, English mode at len=3, cipher P(len=1)=0.0959 (English 0.0448, geoFill 0.2443)
+ - implied English letters/word for cipher = 4.09 (prose norm ~4.4-4.6)
