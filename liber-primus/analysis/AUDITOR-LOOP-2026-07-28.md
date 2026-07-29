@@ -26,7 +26,7 @@ produced closures and one reframing, not a solve.
 | Expanded book-cipher corpus (Rune Poem, Liber AL, Kybalion, Gnostic tractates, Blake MHH, Welsh Triads) | **NULL** | `bookcipher/bookcipher_expand.py` |
 | `pp49_51/canon_256.bin` as a **ciphertext partner** (XOR vs runic slices for entropy collapse; 4×64B quarter relations) | **excluded, NULL** | `pp49_51/campaign20_extcipher.py`, `CAMPAIGN-XX-EXTCIPHER.md` |
 | **AN-END 512-bit hash internal-preimage** vs every held object (solved pages, koans, PGP prose, canon_256 + quarters/variants) under SHA-2 / SHA-3 / BLAKE2, broadened 10× | **NULL** | `pp49_51/anend_preimage_broad.py` |
-| **AN-END preimage under original BLAKE-512/256** (impl validated against all 4 official BLAKE known-answer vectors before use; 1572 candidate×algo combos) — the last untested hash family | **NULL → AN-END internal preimage surface COMPLETE + negative** | `pp49_51/blake_closure/` |
+| **AN-END preimage under original BLAKE-512/256** (impl validated against all 4 official BLAKE known-answer vectors before use; 1572 candidate×algo combos) — last untested hash family *within the SHA-3-finalist worldview* | **NULL** [SCOPE CORRECTION 2026-07-29 (iter5 provenance): the AN-END page names NO algorithm — "SHA-512" was a community default. Skein-512-512 / Whirlpool / Streebog-512 were NOT covered; "COMPLETE" retracted until those run. See FRESHNESS/loop iter5-6 + ELIMINATION-LEDGER.] | `pp49_51/blake_closure/` |
 
 Net: the AN-END pointer hashes **no published object we hold** under any hash family — it points at
 external, now-lost Tor-v2 content, consistent with `DEEPWEB-HASH-OSINT.md`. The internal cipher

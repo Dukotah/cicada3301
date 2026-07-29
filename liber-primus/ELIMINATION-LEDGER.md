@@ -375,3 +375,27 @@ Frontier is now purely archival (0-54 pad never planted internally). Chased prim
   THIS PAGE" — a PREIMAGE/content-address instruction (find the page whose SHA-512 = x), NOT a
   derivation. No base-encoding/char-count rule anywhere in authentic Cicada text. gy3hoy5...base32 =
   debunked modern fabrication (already ledger:119 / CAMPAIGN-XIII).
+
+## Data-provenance red-team (iter 5, 2026-07-29) — DATA CLEAN, one SCOPE gap reopened
+Attacked the DATA behind every null (is the ciphertext/hash/corpus faithful to primary source?).
+- **AN-END digest = clean bill-of-health:** the 128-hex `36367763...c2a8b4` is nibble-identical
+  across 5+ independent witnesses (primary image 56.jpg, solved_plaintext.txt, scream314,
+  tweqx/3301-hash-alarm, Boxentriq); 0 divergent nibbles. Verified it is printed LITERAL Latin hex
+  on the page (never a cipher output) → all 1572+ preimage nulls ran against the CORRECT target.
+- **Runic ciphertext 0-54 = clean:** 4-witness char-level diff (krisyotam vs remlong vs scream314 vs
+  relikd). All 13 rune substitutions + 8 length mismatches trace to the REMLONG witness's errors, NONE
+  to ours; the lone 2-2 tiebreak (p24 idx172 aesc-vs-ac) decided FOR krisyotam by direct relikd
+  p24.jpg read. Correction to a prior note: os/ac/aesc (7/97/101) are NOT equal-value so a swap WOULD
+  matter — but no such swap is in our text.
+- **Solved corpus = provenance-tagged:** the 2013 hash blocks + 2014 magic-square posts are
+  PGP-SIGNED under key 0x181F01E57A35090F (self-authenticating, not solver output); LP1/AN-END/PARABLE
+  English is community-deciphered but the AN-END hash appears as literal transcribed hex. Retrieval-
+  chain grammar traces to held primary captures, not wiki narrative.
+- **REOPENED (scope-of-null, not data):** the AN-END hash ALGORITHM is UNSOURCED. The page says only
+  "HASHES TO x"; primary source (Uncovering-Cicada PAGE_56) states verbatim "algorithm not known,
+  candidates SHA-512 / BLAKE-512 / BLAKE2b." The preimage battery covered SHA-2/SHA-3/BLAKE2/original-
+  BLAKE but NEVER **Skein-512-512** (itself a SHA-3 finalist), **Whirlpool**, or **Streebog-512**
+  (GOST R 34.11-2012). The blake_closure "last untested hash family / COMPLETE" verdict is therefore
+  unsound for the wider 512-bit space. FIX = run the whole-file preimage gate under those 3 digests
+  (KAT-validated) vs every held blob + candidate object; a hit means the AN-END page is a HELD object
+  and the archival-loss verdict collapses. Scheduled into loop iter 6 as the mechanical prerequisite.
