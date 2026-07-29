@@ -534,3 +534,24 @@ miscounted). REFUTED three independent ways + produced two positive results.
 - **CRITIC VERDICT: internal solve frontier EXHAUSTED — diminishing-returns hardening, not solve paths.**
   Loop pivots to goal 2 (creator attribution); the soft-anti-repeat-over-memoryless construction is now
   a candidate TECHNIQUE fingerprint for attribution.
+
+## Final pass: T2/T3 blobs, Smirnov-rewrite, key-location (iter 11, 2026-07-29) — ALL NULL
+Last substantive pass before wind-down. Nothing survived.
+- **T2/T3 opaque blobs — no author-side crypto artifact:** both statistically uniform-random
+  (T2 entropy 7.978 chi2 226; T3 7.938 chi2 278; T3==folly==wisdom md5 0c7d18e8). NO OpenPGP (T2 byte0
+  0x40 bit7-clear = not a packet header; T3 byte0 0xbf = invalid packet chain), NO RSA modulus / DER /
+  ASCII-armor, NOT compressed/base-N/container. OTP-fit fails (7524B/3368B = 59.4%/26.6% of 12670 runes,
+  mod-29 chi2 41.8/24.5 n.s.). T2 = OutGuess wrong-seed keystream artifact. The last physical hiding
+  place for an author identity artifact is EMPTY.
+- **Smirnov-rewrite decode RETIRED:** gate-validated (un-bump restored a synthetic Smirnov-rewritten
+  sample P 0.202->1.000; wrong ordering 0.106), real sweep clean null — best of 116 orderings P=0.107 ==
+  random-Smirnov control MAX (mean 0.098/p95 0.103). Un-bumping the real ciphertext pushes doubling D
+  0.19->~1.05 (destroys structure into randomness). The 'deterministic Smirnov rewrite over a linear
+  ordering' sub-hypothesis is dead; anti-repeat = SOFT REJECTION-SAMPLING over an EXTERNAL pad.
+- **Key-location = UNPUBLISHED-BY-DESIGN:** author-intent enumeration — the pad's most-consistent home is
+  private delivery to vetted 2014 winners (privacy-ideological collective, OTP chosen so brute force is
+  pointless), NOT a public page. Pages 0-54 were onion7's terminal deliverable with no key; thematic
+  pointers (mayfly/ephemeral=OTP, koan 'seek within'=gated-not-published) confirm. LP2 is
+  unsolvable-BY-DESIGN, not unsolved-by-effort.
+- **LOOP TERMINUS:** both frontiers exhausted; further rotation re-derives these conclusions. Wind down
+  to synthesis (see FINAL-SYNTHESIS-2026-07-29.md).

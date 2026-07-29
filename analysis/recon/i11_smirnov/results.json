@@ -1,0 +1,81 @@
+{
+  "gate_passed": true,
+  "gate": {
+    "p_base": 1.0,
+    "p_enc": 0.2021,
+    "p_right": 1.0,
+    "p_wrong": 0.1064,
+    "exact_restore": true,
+    "enc_adj_reps": 0
+  },
+  "sweep": {
+    "raw_ct_P": 0.0955,
+    "raw_ct_D": 0.1925,
+    "control_band": {
+      "mean": 0.0984,
+      "p95": 0.1027,
+      "max": 0.1065
+    },
+    "english_ref_PARABLE_P": 1.0,
+    "n_orderings": 116,
+    "best": [
+      {
+        "ordering": "identity+shift13",
+        "P": 0.107,
+        "D": 1.1327
+      },
+      {
+        "ordering": "prime_order+shift13",
+        "P": 0.107,
+        "D": 1.1327
+      },
+      {
+        "ordering": "identity+shift0",
+        "P": 0.105,
+        "D": 1.0476
+      },
+      {
+        "ordering": "prime_order+shift0",
+        "P": 0.105,
+        "D": 1.0476
+      },
+      {
+        "ordering": "identity+shift20",
+        "P": 0.1047,
+        "D": 1.0834
+      },
+      {
+        "ordering": "prime_order+shift20",
+        "P": 0.1047,
+        "D": 1.0834
+      },
+      {
+        "ordering": "identity+shift27",
+        "P": 0.1044,
+        "D": 1.0633
+      },
+      {
+        "ordering": "prime_order+shift27",
+        "P": 0.1044,
+        "D": 1.0633
+      }
+    ],
+    "worst": [
+      {
+        "ordering": "prime_order+shift7",
+        "P": 0.0938,
+        "D": 1.0946
+      },
+      {
+        "ordering": "identity+shift17",
+        "P": 0.0915,
+        "D": 1.0924
+      },
+      {
+        "ordering": "prime_order+shift17",
+        "P": 0.0915,
+        "D": 1.0924
+      }
+    ]
+  }
+}
