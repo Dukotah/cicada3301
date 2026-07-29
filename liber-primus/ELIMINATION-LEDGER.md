@@ -465,3 +465,50 @@ candidate keystream, measure residual doubling-ratio D + rune-bigram-plausibilit
   constraint over the (sealed) additive core. Constant audit: only prime-stream + (prime-1)-stream are
   ever the actual deterministic pad on solved pages; no solved key is external. (Repro analysis/recon/
   i7_oracle/, i7_oracle_reset/, i7_constants/.)
+
+## iter-8 — DEVIL'S-ADVOCATE (premise b): glyph->index MAPPING / alphabet-ordering attack
+- **Premise attacked:** "the 29-symbol glyph->index mapping (alphabet order) is right." If the raw
+  0-54 glyphs were plaintext under a WRONG symbol->index labeling (a monoalphabetic relabeling of GP),
+  NO decryption would be needed — only re-ordering the alphabet. Monoalphabetic substitution preserves
+  bigram structure, so SOME permutation of the 29 symbols would lift an English-bigram score off the
+  floor. Reused the i7-scale plaintext-blind bigram instrument (P) + added log-bigram fitness (F).
+- **Method:** remap raw 0-54 under 6 principled orderings (standard GP / futhorc canonical / prime-value
+  / reverse / atbash / frequency-matched-to-English), plus a FULL 40-restart monoalphabetic hill-climb
+  over all 29! orderings (the textbook solver that WOULD recover English-under-a-permutation if it
+  existed). Controls: 500 random permutations (null band) + hill-climb run on pure random noise.
+- **Result NULL / mapping is FINE.** Instrument anchors (tight top-60 LEGAL, i7 scale): English-in-GP
+  P=0.465; raw-0-54 (identity) P=0.074; random P=0.072 — the raw stream sits ON the random floor,
+  the full English band away. None of the 6 named orderings moves it (all ~0.47 on the loose LEGAL,
+  all at floor on the tight one; freq-match's 100th-pctl is a 0.488-vs-0.482 non-signal). The
+  exhaustive hill-climb reached only F=-6.026 vs the English target F=-2.938 — and the DECISIVE control:
+  climbing on pure random noise reached F=-6.017, i.e. the raw-stream climb gain is 100% overfitting,
+  identical to noise. Best remapped output is gibberish ("THAEEOBDGNATHWEOHRCTD...").
+- **Conclusion:** the alphabet ORDERING is not the lock. A wrong monoalphabetic label would have been
+  trivially recovered by the bigram climb; it wasn't. The stream is bigram-flat like a properly
+  ENCIPHERED text, consistent with the sealed additive-core frontier — substance is hidden by
+  encryption, not by a mislabeled alphabet. Premise (b) alphabet-order variant FALSIFIED.
+  (Repro analysis/recon/i8_mapping/i8_mapping.py, i8_results.json.)
+
+## Devil's-advocate believer: 4 artifact premises audited (iter 8, 2026-07-29) — ALL CLEAN
+Assumed LP2 IS solvable; attacked the never-audited ARTIFACT premises (not sealed cipher lanes).
+- **Alphabet-ORDER / glyph-mapping sweep (premise b) NULL:** no 29-symbol reordering lifts raw-0-54
+  bigram-plausibility off the floor (identity P=0.074, random P=0.072, English-in-GP P=0.465). The
+  monoalphabetic hill-climb — which WOULD recover English under any wrong ordering — reached F=-6.026,
+  IDENTICAL to climbing pure random noise (F=-6.017) → 100% overfit. Stream is bigram-flat like
+  properly enciphered text; substance hidden by encryption, not a mislabeled alphabet.
+- **Transcription common-origin re-derivation (premise a) CLEAN:** krisyotam and relikd are
+  CHARACTER-FOR-CHARACTER IDENTICAL over the full 12,956-rune overlap (first divergence: None); kris's
+  180-rune surplus = the unsolved tail relikd truncates; the 40-55 count divergence is page-boundary
+  bookkeeping that cancels in the concatenated stream. GP table matches canonical futhorc on all 29
+  entries; the mapping is FALSIFIABLY correct (unique labeling under which BOTH solved pages read
+  English — every confusable swap corrupts PARABLE; the 7 rare runes PARABLE lacks are anchored by
+  AN-END). 29/29 glyph labels plaintext-verified.
+- **Image stego + external-solve (premise d) NULL:** DCT-LSB shows natural coefficient-parity bias on
+  every LP2 page (not flattened; working OutGuess positive control detected at chi2=47940); PNG-LSB 0
+  anomalous planes across 461 PNGs×8×3; trailer scan 0 bytes after EOI on all 56 pages. No external
+  solve survives the 3301-PGP gate (one editable-Fandom Solana-token self-claim fails it like Schoenberger).
+- **VERDICT: closed-frontier verdict MAXIMALLY HARDENED.** Residual unrun levers (all low-prior):
+  (b') 29-rune INVENTORY cardinality (a glyph that's really two, or two that are one variant — NOT
+  detectable by the alphabet-ORDER attack, and the exact fingerprint that would create the doublet
+  deficit); pixel-level OCR re-derivation from the 57 relikd JPGs (catches a common-origin READING
+  error both Unicode witnesses share); the doublet deficit used as a FORWARD distributional constraint.

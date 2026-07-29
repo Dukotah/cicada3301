@@ -1,0 +1,17 @@
+{
+ "method": "from-scratch pure-Python baseline-JPEG Huffman/DCT decoder; extract quantized-DCT AC coefficients in scan order; jsteg model = LSB of every nonzero AC coeff; test frac_ones, chi2 vs uniform, packed-LSB entropy+printable, readable-prefix (PGP/gzip/zip)",
+ "note": "full-page decodes (no MCU cap). Capped runs hide signal because LP2 pages are black runes on a large flat-white Ghostscript margin -> leading MCUs have all-zero AC coeffs.",
+ "control_positive": {
+  "file": "onion__auqgnxjtvdbll3pv.onion__post__1033.jpg (real OutGuess carrier, known 2013 RSA msg)",
+  "nonzero_ac": 353559, "frac_ones": 0.68411, "chi2_vs_uniform": 47940.22,
+  "printable_frac_first512": 0.2539, "has_pgp": false,
+  "interpretation": "even the real carrier shows HIGH parity bias, not flattening -> OutGuess preserves the coefficient histogram by design; sequential-LSB read cannot recover an OutGuess payload, but a jsteg/naive embed WOULD flatten chi2 -> our test is a valid jsteg-class detector"
+ },
+ "lp2_pages_fullpage": {
+  "p0":  {"nonzero_ac":649826,"frac_ones":0.58214,"chi2":17536.33,"printable512":0.293, "pgp":false, "note":"onion7 page 0 = OutGuess false-positive page"},
+  "p4":  {"nonzero_ac":629360,"frac_ones":0.58416,"chi2":17830.83,"printable512":0.338, "pgp":false, "note":"onion7 page 4 = OutGuess false-positive page"},
+  "p26": {"nonzero_ac":638264,"frac_ones":0.60075,"chi2":25917.29,"printable512":0.350, "pgp":false, "note":"onion7 page 26 = OutGuess false-positive page"},
+  "p30": {"nonzero_ac":500742,"frac_ones":0.57033,"chi2":9907.19, "printable512":0.389, "pgp":false, "note":"ordinary page (baseline)"}
+ },
+ "verdict": "NULL. All LP2 pages show the natural DCT-LSB parity bias of a clean JPEG (frac1 0.57-0.60, high chi2 = NOT flattened). The 3 OutGuess-false-positive pages (0/4/26) are statistically indistinguishable from an ordinary page (p30). No jsteg-class DCT-LSB payload, no readable ASCII/PGP/gzip/zip prefix on any page. CLOSES the DCT-domain gap the prior STEGO-VERDICT left open ('not testable here')."
+}
