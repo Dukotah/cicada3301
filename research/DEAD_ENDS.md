@@ -96,6 +96,49 @@ sections.
 
 ---
 
+## Round 3 — 2026-07-30
+
+### KILLED (Gate #1, pre-execution) — R3-H1 "Anchored keyed-collision-skip DP/Viterbi decode"
+**Mechanism:** c[i]=p[i]+k[i] mod 29 with a forward collision-skip (advance key an extra step if c[i]
+would equal c[i-1]) and a short period-2–12 skip-key; inverse = n-gram-scored Viterbi DP enforcing the
+skip constraint, co-searching the short key; anchored by recovering WELCOME/AN END.
+**Why dead (three independent fatal failures):**
+1. UN-ANCHORABLE. No solved page carries the sub-chance doublet deficit (WELCOME 3.56%, koan 2.83%,
+   A WARNING 2.73%, AN END 2.38% — all normal). The decoder's defining constraint c[i]≠c[i-1] is FALSE
+   on every solved ciphertext, so the novel mechanism cannot be validated on any known solve; only its
+   degenerate plain-Vigenère mode anchors, and periodic keys 1–40 are already dead. → keyspace search.
+2. DEGENERATE NULL. First-difference entropy near-maximal (4.831/4.858 bits); a no-repeat-preserving
+   surrogate matches the only non-flat statistic → the surrogate null is unbeatable by construction.
+3. ALREADY KILLED. This IS Round-1 H3 (the doublet-triggered key stall), whose revive-bar it does not
+   clear; CRYPTO-RIGOR §C already ran the no-repeat-inversion family (IoC_norm 1.037, no language);
+   PICKUP-HERE lists it "Do NOT re-run."
+**Do not revive.** The sub-chance deficit is un-anchorable in principle (no solved page has it) and the
+no-repeat-preserving null is degenerate. This is a permanent structural barrier, not a tooling gap.
+
+### KILLED (Gate #1, pre-execution) — R3-H2 "Interrupter-position-marginalized collision-skip decode"
+**Mechanism:** as R3-H1 but ᚠ/stall positions marginalized as latent Viterbi lattice states instead of
+combinatorially searched.
+**Why dead:** identical un-anchorable + degenerate-null failures as R3-H1. Its sole differentiator —
+latent-state marginalization — is a direct attempt to clear Round-1 H3's revive-bar (b) "invertible
+without a position search," but marginalizing the position search IS the position search summed over the
+lattice; it does not eliminate it. Fails the bar it targets.
+**Do not revive** for the same structural reason as R3-H1.
+
+---
+
+## PROGRAM STATUS — CIPHERTEXT-ONLY ATTACK COMPLETE (2026-07-30)
+
+After ~20 pre-ledger attack families + 3 rigorous ledger rounds (all NEGATIVE or Gate-#1 KILL), the
+ciphertext-only program is **exhausted**. Unsolved LP2 is **OTP-class**: full-length keystream + a
+deliberate no-repeat rule, **information-theoretically unsolvable from ciphertext alone without an
+externally-held key**. No ciphertext-only test can move this verdict. Remaining rational moves are
+EXTERNAL only: (a) obtain the key/seed (unpublished; may not exist publicly), or (b) independent
+from-scratch re-transcription (already attempted 3 ways, negative-for-errors). **Do not open new
+ciphertext-only attack rounds without a genuinely new external input** (a key, a seed text, or a
+transcription discrepancy) — absent that, every round will and should end NEGATIVE/KILL by construction.
+
+---
+
 ### Cross-round note: ideas foreclosed by ESTABLISHED findings (do not propose)
 - **Superimposition / page-on-page differencing** to cancel a shared keystream: DEAD ON ARRIVAL — the
   keystream is established CONTINUOUS across pages with no per-page reset, so different pages are

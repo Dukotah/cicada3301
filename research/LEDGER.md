@@ -124,3 +124,52 @@ autocorrelation** (A_max ≤ 0.028, below its own tight length-matched null and 
 in any of 3 coordinate sub-streams across 3 grid packings — upgrading the trifid/Polybius exclusion
 from an IoC-ceiling *inference* to a direct coordinate-level *measurement*, consistent with the
 sub-1.39 IoC·N.
+
+---
+
+## Round 3 — 2026-07-30 — R3-H1/H2 "Doublet-avoidant constrained Viterbi/DP decode" → KILLED at Gate #1 (nothing executed)
+
+**Branch:** `research/round-3-dp-decode-killed`
+
+**Target:** the repo's own #1-ranked untested avenue per completeness-critic §A / FINAL-VERDICT §5.1 —
+a doublet-avoidant constrained Viterbi/DP decode (max-likelihood plaintext subject to c[i]≠c[i-1],
+co-searching a short skip-key period 2–12), "the only hypothesis that predicts the delta=0 hole."
+
+**Outcome: BOTH candidates KILLED at Critic gate #1. No test executed this round.** The critic verified
+three fatal objections against the repo's own files:
+1. **UN-ANCHORABLE (decisive).** The sub-chance doublet deficit is the ONE property separating unsolved
+   from solved pages. Verified solved-page doublet rates (DOUBLET-INVESTIGATION §1): WELCOME 3.56%,
+   koan 2.83%, A WARNING 2.73%, AN END 2.38% — all NORMAL, none sub-chance. A decoder whose novel
+   mechanism inverts the deficit therefore cannot be validated on ANY known solve; it can only anchor
+   its degenerate plain-keyed-Vigenère mode, which is already dead (all periodic keys 1–40). Per the
+   loop's hard rule, an un-anchorable method is a keyspace search, not a method.
+2. **DEGENERATE NULL.** First-difference entropy is near-maximal (4.831/4.858 bits; DOUBLET-INVESTIGATION
+   §4). A surrogate preserving the unigram multiset AND the no-adjacent-repeat structure preserves the
+   only non-flat statistic the corpus has → the surrogate null is unbeatable by construction (Δ>0 can
+   only be multiple-comparisons noise). Same defect class as R1's degenerate deᚠ arm.
+3. **ALREADY DONE / REVIVAL OF A DEAD END.** R3-H1's forward rule is character-for-character Round 1's
+   H3 ("if c[i] would equal c[i-1], advance the key one extra step") — killed at Gate #1 with a standing
+   revive-bar it did not clear. CRYPTO-RIGOR §C already ran the no-repeat/collision-inversion family
+   (IoC_norm 1.037, no language); PICKUP-HERE lists it under "Do NOT re-run." R3-H2's latent-state
+   marginalization does not clear H3's revive-bar (b) — marginalizing the stall-position search IS the
+   position search, summed over. Note: completeness-critic §A / FINAL-VERDICT §5.1's #1 ranking is a
+   STALE doc, superseded by CRYPTO-RIGOR §C + PICKUP-HERE + the Round-1 kills.
+
+**Researcher (redundancy):** confirmed the specific constrained-DP-with-no-repeat technique appears in
+no public solver (jbo, relikd, r4nd0mD3v3l0p3r, scream314, mortlach all do keystream/key search +
+distributional scoring) and no 2023–2026 credible solve exists (DEF CON 31 talk confirms candidate keys
+from solved pages do NOT unlock the rest). So the technique is publicly un-run — but "un-run publicly"
+does not rescue "un-anchorable + degenerate + already-killed-here."
+
+**PROGRAM-LEVEL CONCLUSION (declared this round):** The ciphertext-only attack program is **COMPLETE /
+EXHAUSTED.** Across the pre-ledger ~20 families and 3 ledger rounds, the memoryless-keystream,
+running-key, number-theoretic-keystream, autokey, fractionation (bifid + trifid/Polybius coordinate),
+transposition, first-difference/integral, no-repeat-inversion, interrupter-channel, and stego families
+are all eliminated with recorded reasons. The unsolved LP2 pages are **OTP-class**: a full-length
+keystream with a deliberate no-repeat rule, information-theoretically **unsolvable from ciphertext alone
+without an externally-held key**. The remaining rational moves are EXTERNAL, not cryptanalytic:
+(a) obtain the key/seed (never published; may not exist publicly), or (b) an independent from-scratch
+re-transcription — already attempted 3 ways (krisyotam/relikd/rtkd rune-identical; vision re-read failed
+at alignment 0.145; SHA1 provenance 56/56). No ciphertext-only test can move this verdict.
+
+**Also killed this round (Gate #1):** R3-H1, R3-H2. See `DEAD_ENDS.md`.
