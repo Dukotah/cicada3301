@@ -126,6 +126,41 @@ lattice; it does not eliminate it. Fails the bar it targets.
 
 ---
 
+## Round 4 — 2026-07-30 (EXTERNAL leads)
+
+### KILLED (Gate #1) — "External cribs as LP2 additive key" (2012 P.S. number, 2013 onion hashes, missing-primes)
+**Mechanism:** apply each catalogued "never-used" string (P.S. 130-digit number; two 256-bit 2013
+onion-cookie hashes; missing-primes set 73–1223) as a repeating/seed additive keystream to the 55
+unsolved pages, quadgram-score vs surrogate null.
+**Why dead:** (1) **Empirically pre-refuted, not merely inferred** — DOUBLET-INVESTIGATION §2 already
+measured the additive family's doublet output on THIS ciphertext (prime 2.88%, totient 2.88%,
+running-key 3.32%, Vigenère 3.44%) vs the 0.66% deficit (z≈−16.9). Any additive key, including these,
+must land in the already-measured normal band; the Round-2 inference→measurement escape hatch does not
+apply (dimension already measured). (2) **Un-anchorable** — none of the three equals/generates a known
+solved-page key; direct comparison, no experiment. (3) Missing-primes is a number-theoretic keystream,
+already dead. Provenance caveat: speculative cribs, none signed as the LP2 key.
+**Do not revive** as an additive key without a SIGNED indication a string IS the LP2 key.
+
+### KILLED (Gate #2, OSINT pointer chase R4-OSINT-1) — the three cribs as external POINTERS
+**Why dead:** chase came back COLD. 2012 P.S. number = a factored RSA-130 semiprime (p, q, e=65537)
+from the signed 2012 Valēte! message — points nowhere, "never used despite factorization"; the
+rotate-90°/matrix reading is UNVERIFIED speculation. 2013 cookies = opaque, unexplained by any source,
+no match to any onion/file/CT-log/AN END trail (761/167 are the Instar-Emergence audio id + reverse, an
+internal cross-link). Missing-primes = a clean contiguous interval indexing nothing. **Do not revive**
+without a new archival/signed referent.
+
+### CLOSED — external LP2 key as a released artifact
+The only external pointer (AN END hash → `gy3hoy2zizvuzvdb.onion`, Tor v2) is **verifiably dead**
+(v2 deprecated Oct 2021; never archived). No credible externally-distributed LP2 key exists.
+
+### AUTHORSHIP — no verifiable identity (do not state a named creator as fact)
+Only verifiable anchor: PGP key `7A35090F` (fp `6D85 4CD7 9333 22A6 01C3 286D 181F 01E5 7A35 090F`),
+never controlled by any identified party, last signed April 2017. Best inference: a cypherpunk/privacy
+collective (LOW–MODERATE, inferential). Schoenberger = rumor-tier (no key control). Do not launder
+named-individual claims into fact.
+
+---
+
 ## PROGRAM STATUS — CIPHERTEXT-ONLY ATTACK COMPLETE (2026-07-30)
 
 After ~20 pre-ledger attack families + 3 rigorous ledger rounds (all NEGATIVE or Gate-#1 KILL), the

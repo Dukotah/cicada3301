@@ -8,7 +8,10 @@ across the full ledger, not per-round.
 
 ## Multiple-comparisons running tally
 
-- Executed statistical tests logged in THIS ledger: **2**
+- Executed statistical tests logged in THIS ledger: **2** (Rounds 1–2; Rounds 3–4 executed no
+  cryptanalytic test — all candidates killed at Gate #1)
+- Loop re-pointed after Round 3 from ciphertext-only attacks to EXTERNAL leads (key/seed hunt +
+  authorship evidence). Round 4 = external round.
 - Prior attack families (pre-ledger, from FINDINGS/SOLVE-ATTEMPT-FINAL/CRYPTO-RIGOR): ~20 families,
   hundreds–thousands of parameterized runs. Treat the effective prior test count as large; a new
   result at p < 0.01 is expected by chance somewhere in the accumulated search and is worth ~nothing
@@ -173,3 +176,64 @@ re-transcription — already attempted 3 ways (krisyotam/relikd/rtkd rune-identi
 at alignment 0.145; SHA1 provenance 56/56). No ciphertext-only test can move this verdict.
 
 **Also killed this round (Gate #1):** R3-H1, R3-H2. See `DEAD_ENDS.md`.
+
+---
+
+## Round 4 — 2026-07-30 — EXTERNAL leads (key/seed hunt + authorship) → 0 cryptanalytic tests; OSINT cold
+
+**Branch:** `research/round-4-external-leads`
+
+**Re-point rationale:** Round 3 proved the ciphertext-only program complete; the loop's own conclusion
+named EXTERNAL material as the only live avenue. This round hunted for (a) an external LP2 key/seed and
+(b) verifiable authorship evidence, keeping the auditor gates.
+
+**External Key/Seed Hunter (web):** The one real external pointer — AN END's hash →
+`gy3hoy2zizvuzvdb.onion` (Tor v2) — is **verifiably dead** (v2 deprecated Oct 2021; never archived
+anywhere; monokro.me confirms "the trail goes cold at a door that no longer exists"). No credible
+externally-distributed LP2 key exists; post-2021 community consensus leans "OTP / key withheld." The
+only concrete candidate material: three primary-sourced strings the community logs as *never applied to
+LP2* — the 2012 P.S. number (130 digits), two 2013 onion-cookie hashes (256-bit), and the missing-primes
+set (73–1223). Source: krisyotam/cicada3301 `HINTS-NEVER-USED.md`.
+
+**Fresh-Surface Cryptanalyst:** verdict **NO QUALIFYING SURFACE** — structural. No solved-page-anchored
+method can produce the doublet deficit (every solved page has normal doublets), and any deficit-
+consistent construction is un-anchorable; everything else is measured flat. The only open door is
+Criterion 3's external branch, unsatisfiable without a real external key.
+
+**Critic gate #1: 0 cryptanalytic tests approved.** The three external strings applied as an additive
+key are not merely *inferred* dead but **empirically pre-measured** dead — DOUBLET-INVESTIGATION §2
+already measured the additive family's doublet output on this ciphertext (prime 2.88%, totient 2.88%,
+running-key 3.32%, Vigenère 3.44%) vs the 0.66% deficit (z≈−16.9); any additive key must land in that
+already-measured normal band. So the Round-2 "inference→measurement" escape hatch does NOT apply (the
+dimension is already measured). Anchor check: none of the three equals/generates a known solved-page key
+(Atbash/Caesar/DIVINITY/FIRFUMFERENCE/totient) — settled by direct comparison, no experiment. Missing-
+primes is a number-theoretic keystream, already dead. Auditor routed the strings to a non-cipher OSINT
+pointer-chase (R4-OSINT-1) instead.
+
+**Executed (OSINT only, no cipher/keyspace): R4-OSINT-1 pointer chase.** Result **COLD on all three:**
+- 2012 P.S. number → RESOLVED as an artifact (a factored **RSA-130 semiprime**: p, q, exponent 65537,
+  from the PGP-signed 2012 "Valēte!" message) but points nowhere; community records it "never used
+  despite factorization." The "rotate 90° = 3301 / matrix" reading is UNVERIFIED speculation.
+- 2013 cookies → opaque, provenance-verified to the final onion `p7amjopgric7dfdi.onion`, but explained
+  by no source; no match to any onion/file/CT-log/AN END trail. (761/167 are just the Instar-Emergence
+  audio id and its reverse — an internal cross-link, not an external referent.)
+- Missing-primes → a clean contiguous prime interval (73–1223), indexes nothing per community analysis.
+
+**Authorship Evidence Auditor (web):** The only VERIFIABLE identity anchor is PGP key `7A35090F`
+(fp `6D85 4CD7 9333 22A6 01C3 286D 181F 01E5 7A35 090F`), which **has never been controlled by any
+identified party**, never rotated/compromised, last signed April 2017. No named individual — Schoenberger
+included (controls no key; his own 2025 litigation filings retreat to "collective contributor") — is
+verified as creator. Best evidence-supported inference: a small English-speaking, Western-esoterica-
+literate, cryptographically sophisticated **cypherpunk/privacy collective** (2012–2017), held at
+**LOW–MODERATE confidence, explicitly inferential**. 2024 "Cicada3301" ransomware and 2026 Zenodo "IA
+Gemini translation" are unrelated / NOISE.
+
+**Verdict: NEGATIVE (external leads cold).** No cryptanalytic test was rigorously runnable; the OSINT
+chase found no live referent; authorship has no verifiable identity. This is the honest outcome, not a
+process failure.
+
+**ESTABLISHED (assumed → measured/closed):** The three high-profile "never-used" external cribs are now
+definitively closed — as LP2 keys (additive application empirically pre-refuted by the deficit;
+un-anchorable) AND as pointers (OSINT chase cold). The only external door (AN END onion) is verifiably
+gone. Authorship: no verifiable identity exists; the creator is the anonymous, never-unmasked holder of
+key 7A35090F.
