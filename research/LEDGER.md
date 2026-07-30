@@ -8,7 +8,7 @@ across the full ledger, not per-round.
 
 ## Multiple-comparisons running tally
 
-- Executed statistical tests logged in THIS ledger: **1**
+- Executed statistical tests logged in THIS ledger: **2**
 - Prior attack families (pre-ledger, from FINDINGS/SOLVE-ATTEMPT-FINAL/CRYPTO-RIGOR): ~20 families,
   hundreds–thousands of parameterized runs. Treat the effective prior test count as large; a new
   result at p < 0.01 is expected by chance somewhere in the accumulated search and is worth ~nothing
@@ -65,3 +65,62 @@ suppression as intrinsic to the enciphered stream, NOT as an interrupter-inserti
 
 **Also killed this round (pre-execution, Gate #1):** H2 (self-avoiding-LCG keystream) and H3
 (doublet-triggered key stall). See `DEAD_ENDS.md`.
+
+---
+
+## Round 2 — 2026-07-30 — R2-H1 "Fractionation coordinate-plane dispersion signature"
+
+**Branch:** `research/round-2-fractionation-signature` (stacked on round-1 branch for ledger continuity)
+
+**Question:** Round 1 established the doublet deficit is intrinsic to the ciphertext body, which
+points at body-level mechanisms. The Archivist found only *bifid* was ever run; trifid/Polybius were
+closed only by the aggregate IoC-ceiling argument (fractionation tops out IoC·N≈1.4–1.5, can't reach
+observed 1.00). Does the unsolved body carry a **period-locked autocorrelation signature inside a
+decomposed coordinate sub-stream** — a dimension the aggregate IoC ceiling never measures — that a
+trifid/Polybius fractionation would impose and a flat OTP-class keystream would not?
+
+**Why this wasn't redundant (Gate #1):** the IoC ceiling bounds the *marginal* whole-stream
+coincidence rate; it says nothing about periodicity *within* a coordinate axis. Non-decrypting
+structural discriminator (no key search). Gate #1 killed two alternatives: the transposition-delta
+re-measure (already answered by CRYPTO-RIGOR §B: columnar restores doublets toward random, file order
+is the unique minimum; jbo already ran a spiral route) and the alternative-index-ordering battery
+(anchor-refuted — five solved pages incl. LP2's AN END decrypt ONLY in canonical GP order).
+
+**Pre-registration (fixed before code):**
+- Statistic: `A_max` = max normalized autocorrelation over lags 2–40, over all coordinate sub-streams,
+  across 3 grid packings (P = Polybius 6×5; T = trifid 3×3×3 layer-major; T2 = trifid col-major).
+- Anchors: (1) synthetic trifid with a KNOWN injected period must surface as a super-threshold peak
+  (harness sensitivity); (2) real solved LP2 page AN END must show no period peak; (3) aggregate
+  IoC·N below the 1.39 bifid floor.
+- Null: 10,000 order-matched surrogates (permute exact rune multiset through the same decomposition,
+  seed 3301).
+- Threshold: CONFIRM iff `A_max(real) > surrogate 99.9th pct AND ≥ 0.05 abs AND peak lag reproduces
+  ±1 across ≥2 of 3 grid variants`; else REFUTE.
+
+**Execution:** `liber-primus/analysis/r2_fractionation_signature.py` (seed 3301; ~13 min for the null).
+Output: `liber-primus/analysis/r2_frac_out.txt`.
+
+**Anchors:** (1) synthetic period-13 → peak at lag 39 (=3×13 harmonic, in-spec), A_max 0.0787 >
+surrogate 99.9th 0.0384 → PASS. (2) AN END (85 runes) A_max 0.386 < its wide surrogate 99.9th 0.562 →
+no peak → PASS (note: short page, provisional-quality control; decision weight sits on the
+length-matched synthetic + the real corpus's own tight null). (3) IoC·N 0.9999 < 1.39 → coherent.
+
+**Results (12,956 runes, 10,000 surrogates):**
+| variant | A_max (sub, lag) | null mean | null p99 | null p99.9 | > p99.9? | ≥0.05? |
+|---|---|---|---|---|---|---|
+| P  | 0.0246 (col, 26) | 0.0211 | 0.0320 | 0.0376 | no | no |
+| T  | 0.0284 (row, 18) | 0.0224 | 0.0330 | 0.0386 | no | no |
+| T2 | 0.0284 (row, 18) | 0.0224 | 0.0330 | 0.0386 | no | no |
+
+Real A_max (0.025–0.028) sits ≈ null-mean + 1.6 sd — inside the null bulk, below even the 99th pct.
+
+**Gate #2 verdict: NEGATIVE (R2-H1 refuted, decision-grade).** No goalpost move, order-matched null,
+harness validated by Anchor 1, robust to the cumulative multiple-comparisons correction (signal
+doesn't clear the 99th pct, let alone 99.9th). Soft spot: the AN END control is underpowered at 85
+runes, but the verdict does not lean on it.
+
+**ESTABLISHED (assumed → measured):** Unsolved LP2 carries **no detectable period-locked fractionation
+autocorrelation** (A_max ≤ 0.028, below its own tight length-matched null and far below the 0.05 floor)
+in any of 3 coordinate sub-streams across 3 grid packings — upgrading the trifid/Polybius exclusion
+from an IoC-ceiling *inference* to a direct coordinate-level *measurement*, consistent with the
+sub-1.39 IoC·N.

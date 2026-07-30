@@ -57,6 +57,45 @@ stall rule is invertible from ciphertext without a position search.
 
 ---
 
+## Round 2 — 2026-07-30
+
+### KILLED (Gate #2, executed then refuted) — R2-H1 "Fractionation coordinate-plane dispersion signature"
+**Mechanism:** trifid/Polybius-class fractionation would leave a period-locked autocorrelation peak
+inside a decomposed coordinate sub-stream (a dimension the aggregate IoC-ceiling argument never
+measures).
+**Why dead:** REFUTED by test (see LEDGER Round 2). Across 3 grid packings (Polybius 6×5; trifid
+layer-major; trifid col-major) and all coordinate sub-streams, max autocorrelation A_max ≤ 0.028 over
+lags 2–40 — below the length-matched surrogate 99th percentile (~0.032) and far below the 0.05 floor.
+Harness validated (synthetic period-13 trifid surfaced at its harmonic lag). This upgrades the prior
+IoC-ceiling *inference* against fractionation to a direct coordinate-level *null measurement*.
+**Do not revive** trifid/Polybius/coordinate fractionation without a NEW statistic that isn't
+period-autocorrelation and isn't bounded by the IoC≤1.39 ceiling.
+
+### KILLED (Gate #1, pre-execution) — "delta=0 hole re-measured under route/rail transposition"
+**Why dead:** Redundant. CRYPTO-RIGOR §B already de-transposed at every columnar width 2–40: file
+order is the unique global doublet minimum (0.0067) and every width RESTORES doublets toward random —
+so "does a transposition refill the hole?" is already answered (yes, for columnar) and the proposed
+CONFIRM condition would even mis-fire on that known result. jbo/cicada_tools already ran a spiral
+(route) transposition, no solve. The untested residue (rail/boustrophedon) is a marginal slice with
+no mechanism to behave opposite to the 39 columnar widths.
+**Do not revive** without a specific mechanism predicting a non-columnar order would LOWER d=0 when all
+columnar widths raise it.
+
+### KILLED (Gate #1, pre-execution) — "Alternative rune-index-ordering battery"
+**Mechanism:** re-run difference/keystream/no-repeat-decode/IoC battery under permuted rune→0..28
+orderings (prime-order, Gematria-value, alphabetical) on the theory that "differences are structureless"
+was measured in the wrong basis.
+**Why dead:** ANCHOR-REFUTED. Five solved pages — Atbash (p01), Caesar −3 (pp06–09), Vigenère
+DIVINITY (03–04), Vigenère FIRFUMFERENCE (14–15), and the **LP2 page AN END** (totient shift) — all
+reproduce known plaintext ONLY under mod-29 arithmetic in canonical GP order. The cipher's native
+basis is therefore *proven* to be canonical order, including into LP2. The only surviving version ("the
+unsolved section uses a different ordering than the solved sections") has zero supporting evidence and
+is unfalsifiable speculation; scoring alternative orderings for "language" is also a keyspace search.
+**Do not revive** without positive evidence of an ordering discontinuity between solved and unsolved
+sections.
+
+---
+
 ### Cross-round note: ideas foreclosed by ESTABLISHED findings (do not propose)
 - **Superimposition / page-on-page differencing** to cancel a shared keystream: DEAD ON ARRIVAL — the
   keystream is established CONTINUOUS across pages with no per-page reset, so different pages are
