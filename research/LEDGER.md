@@ -8,10 +8,11 @@ across the full ledger, not per-round.
 
 ## Multiple-comparisons running tally
 
-- Executed statistical tests logged in THIS ledger: **2** (Rounds 1–2; Rounds 3–4 executed no
+- Executed statistical tests logged in THIS ledger: **3** (Rounds 1, 2, 5; Rounds 3–4 executed no
   cryptanalytic test — all candidates killed at Gate #1)
-- Loop re-pointed after Round 3 from ciphertext-only attacks to EXTERNAL leads (key/seed hunt +
-  authorship evidence). Round 4 = external round.
+- Loop re-pointed after Round 3 from ciphertext-only attacks to EXTERNAL leads (Round 4). Round 5
+  added a standing SUPERVISING STRATEGIST role that generates genuinely-new attack surfaces each
+  round, so the exhaustion trail keeps advancing for future researchers.
 - Prior attack families (pre-ledger, from FINDINGS/SOLVE-ATTEMPT-FINAL/CRYPTO-RIGOR): ~20 families,
   hundreds–thousands of parameterized runs. Treat the effective prior test count as large; a new
   result at p < 0.01 is expected by chance somewhere in the accumulated search and is worth ~nothing
@@ -237,3 +238,53 @@ definitively closed — as LP2 keys (additive application empirically pre-refute
 un-anchorable) AND as pointers (OSINT chase cold). The only external door (AN END onion) is verifiably
 gone. Authorship: no verifiable identity exists; the creator is the anonymous, never-unmasked holder of
 key 7A35090F.
+
+---
+
+## Round 5 — 2026-07-30 — NEW strategist slate → R5-COMBINED residual-doublet anatomy → NEGATIVE
+
+**Branch:** `research/round-5-doublet-anatomy`
+
+**New role:** a SUPERVISING STRATEGIST generated 5 genuinely-untested surfaces and verified via
+`analysis/armada/recon-novel-attacks.md` that Playfair/digraphic, doublet position-parity, residual-
+doublet anatomy, and lag-k≥2 spectrum appear in NO prior doc. Gate #1 killed #3 ROSETTA (non-English
+plaintext) and #5 DELVE (placeholder-rune), approved ONE combined structural test folding #1 SEAHORSE
+(Playfair parity) + #2 TIDELINE (residual anatomy) + #4 HALFTIDE (lag spectrum) — sharing one
+order-matched null with a family-wide correction, in the Round-1&2 mold.
+
+**Pre-registration:** non-decrypting structural test on the 86 residual doublets. Anchors: synthetic
+Playfair-class positive must surface Δ_parity beyond surrogate 99.9th + within-pair hard-zero; solved
+pages WELCOME & AN END must be clean. Statistics: S1 parity split (both phases), S2 digraph-vs-monograph
+IoC, S3 doubled-rune identity χ², S4 inter-doublet gap KS vs geometric, S5 lag-k spectrum k=1..6. Null:
+10,000 surrogates fixing exact multiset AND doublet count D=86 (seed 3301), reused across sub-stats.
+Mandatory degenerate-null guard (R1 lesson). CONFIRM iff any non-degenerate statistic clears surrogate
+99.9th pct (family-corrected).
+
+**Execution:** `liber-primus/analysis/r5_doublet_anatomy.py`; output `r5_out.txt`. Surrogates realized
+EXACT D=86 at 100%. Anchor 1 PASS (synthetic Playfair Δ_parity −0.027 at ~13σ, within-pair rate 0.000).
+Anchor 2 PASS (WELCOME & AN END clean). S2 monograph arm correctly disclosed degenerate (sd=0) and
+excluded.
+
+**Results (12,956 runes, 86 residual doublets):**
+| stat | observed | surrogate 99.9th | verdict |
+|---|---|---|---|
+| S1 parity Δ (both phases) | ±0.00185 (1.3σ; 37 within / 49 across) | ±0.00432 | REFUTE |
+| S2 digraph IoC·N | 1.0306 | 1.0444 | REFUTE |
+| S3 identity χ² | 27.79 (p=0.48; no dominant rune) | 56.57 | REFUTE |
+| S4 gap KS vs geometric | 0.0765 (p=0.69) | 0.1600 | REFUTE |
+| S5 lag-1 / lag-2..6 | 0.0066 / all ≈0.034 (chance) | 0.0395 | REFUTE |
+
+**Gate #2 verdict: NEGATIVE (decision-grade).** Both anchors fired (sensitivity ~13σ, specificity on
+two solved pages); no non-degenerate statistic cleared the family-corrected 99.9th; the S1 lean is
+1.3σ noise that sign-flips between phases. Not INCONCLUSIVE (well-powered), not INVALID (no goalpost
+move, real null, degeneracy handled).
+
+**ESTABLISHED (assumed → measured):** LP2's 86 residual doublets carry NO Playfair-class digraphic-parity
+signature (within-pair hard-zero absent), NO autokey/substitution fingerprint (χ² p=0.48, no dominant
+doubled rune; digraph IoC below tail), GEOMETRIC/memoryless inter-doublet spacing (KS p=0.69), and a
+no-repeat rule that is provably PURELY lag-1 with zero higher-order (lag-2..6) suppression. This closes
+the polygraphic-cipher, two-track-interleave, and structured-doublet-placement families as explanations,
+and sharpens the OTP-class verdict: the residuals look exactly like a pure lag-1 no-repeat rule over
+otherwise-random text.
+
+**Also killed this round (Gate #1):** #3 ROSETTA, #5 DELVE. See `DEAD_ENDS.md`.

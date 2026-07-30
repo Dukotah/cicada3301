@@ -161,6 +161,37 @@ named-individual claims into fact.
 
 ---
 
+## Round 5 — 2026-07-30 (new strategist slate)
+
+### KILLED (Gate #2, executed then refuted) — R5-COMBINED "residual-doublet structural anatomy"
+Folded three new strategies into one anchored structural test (both anchors passed; degeneracy guard
+applied). All refuted:
+- **#1 SEAHORSE (Playfair-class digraphic parity):** the 86 residual doublets show NO position-parity
+  split (Δ_parity 1.3σ, sign-flips between phases; within-pair hard-zero absent) and NO digraph-IoC
+  inflation (1.031 < 1.044 threshold). LP2 is not a Playfair-family polygraphic cipher.
+- **#2 TIDELINE (residual-doublet anatomy):** doubled-rune identity χ² p=0.48 (no dominant value → not a
+  fixed-shift ciphertext-autokey); inter-doublet gaps geometric (KS p=0.69 → memoryless placement).
+- **#4 HALFTIDE (two-track interleave):** lag-k spectrum shows suppression PURELY at lag-1 (0.66%); lags
+  2–6 are all at chance (≈3.4%) → no interleave periodicity; the no-repeat rule is adjacent-only.
+**Do not revive** the polygraphic, autokey-fingerprint, or interleave families — each is now
+measured-closed, not merely inferred.
+
+### KILLED (Gate #1, pre-execution) — #3 ROSETTA "non-English / numeric plaintext rescoring"
+**Why dead:** the flat IoC·N≈1.00 is a SCORER-INDEPENDENT measurement — Latin/Old-English/gematria
+plaintext would raise IoC·N toward 1.7–1.9 regardless of which n-gram model scores it. Re-scoring under
+a different language model cannot rescue a stream already at the OTP coincidence floor; the numeric arm
+reduces to scoring readings for meaning (a soft-signal keyspace search).
+**Do not revive** without a mechanism that changes the measured IoC, not just the scorer.
+
+### KILLED (Gate #1, pre-execution) — #5 DELVE "non-ᚠ placeholder rune marks suppressed doublets"
+**Why dead:** foreclosed by Round 1's established result — within-word pairs with NO intervening marker
+are equally suppressed (0.636%); a placeholder-rune channel requires a marker at suppressed sites, which
+the marker-free within-word suppression refutes. Revival of the interrupter-channel family (R1 H1)
+without new justification.
+**Do not revive** without evidence of a marker channel that survives marker-free contexts.
+
+---
+
 ## PROGRAM STATUS — CIPHERTEXT-ONLY ATTACK COMPLETE (2026-07-30)
 
 After ~20 pre-ledger attack families + 3 rigorous ledger rounds (all NEGATIVE or Gate-#1 KILL), the
