@@ -67,8 +67,13 @@ The Archivist reconciles both before any hypothesis is approved, so no closed fi
    uninterpretable at LP's corpus size, do not revive below ~2,000 solved-prose words. [orig:] Burrows' Delta / nearest-neighbour of
    the ~359–800-word solved LP prose vs public-domain reference sets. Exclusion ("LP does NOT cluster
    with X") is defensible at small N even though positive attribution is not. Label EXPLORATORY.
-3. **(EXTERNAL, deferred) Re-run the external-input scout** only when a *new* PGP-signed artifact/key
-   surfaces. Do NOT reopen ciphertext attacks absent that. Last verified 3301 signature: April 2017.
+3. **(EXTERNAL) External-input status — COMPREHENSIVELY SWEPT 2026-08-06** (Round 12; see
+   `research/EXTERNAL-STATUS-2026-08.md`). Nothing clears the reopener bar; last verified 3301 signature still
+   April 2017. Do NOT re-run a full sweep until a *new dated artifact* appears. Residual live threads to MONITOR
+   (not runnable internally): **(a) unvetted GitHub transcription corrections — the single most plausible
+   reopener** (a community-accepted corrected transcription of the unsolved pages would legitimately reopen the
+   cipher); (b) AN END / LP2 v2-onion archival gap; (c) Schoenberger litigation discovery (defamation/brand —
+   cannot adjudicate authorship regardless).
 4. **(PROVENANCE) Original-artifact forensics vs. relikd re-encode** — is there any file-level evidence
    surviving in the *original* 3301-distributed images (not the local relikd JPGs) that fingerprints
    generation tooling / operator error? Requires sourcing originals; state the provenance layer.

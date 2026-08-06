@@ -525,3 +525,40 @@ says nothing about the plaintext, and nothing could make it cipher-relevant (it 
 **Counts:** cumulative cryptanalytic tests unchanged (3); forensic executed now 3 (R8-S1, R8-S2, R11). The
 R8-S2 INCONCLUSIVE is DISCHARGED (resolved SURVIVES-benign). First SURVIVES of the loop — and it carries zero
 epistemic weight beyond "benign production forensic," exactly as the loop's SURVIVES definition intends.
+
+---
+
+## Round 12 — 2026-08-06 — Comprehensive external-input sweep → NEGATIVE (reopener bar not cleared); status archived
+
+**Branch:** `research/round-12-external-status-sweep` (stacked on round-11). Owner-directed: the first
+*comprehensive* internet deep-dive (prior scouts R4/R7/R8 were lean) for any new external input that could
+legitimately reopen the closed cipher. Runs NO cryptanalytic test.
+
+**Method:** deep-research harness — 5 search angles → 18 sources fetched → 62 claims → 25 adversarially
+verified (3-vote) → 23 confirmed, 2 refuted. Full cited snapshot archived at
+`research/EXTERNAL-STATUS-2026-08.md` (rated sources + URLs).
+
+**Result: NEGATIVE, decision-grade.** Nothing clears the reopener bar.
+- **Last verified PGP-signed 3301 message remains April 2017** (key 7A35090F) — confirmed current via
+  Wikipedia (edited 2026-08-03), krisyotam, CicadaSolvers, Boing Boing (2026-06-11), and the `isitcicada`
+  verifier. No released key/seed/pad. No vetted transcription correction.
+- **Public cipher consensus is "autokey/autoclave"** — which this repo POSITIVELY REFUTED (diff-diagonal
+  z=−17.25) before establishing OTP-class. i.e. the external frontier is BEHIND this repo; there is nothing in
+  the public cipher analysis to import that advances ours. (Useful confirmation we are at/beyond the frontier.)
+- **Schoenberger litigation** (26-000013-MZ; E.D. Mich. 2:2025cv12937) is defamation/brand with Schoenberger as
+  PLAINTIFF — adjudicates NOTHING about cipher authorship (primary court records).
+- **Quarantined [noise]:** 53cr37-layer Solana-token "solve"; Zenodo Becker/OFFELLIA AI translation; 4chan
+  fake-signature threads.
+- **REFUTED (0-3):** a ResearchGate "SHA-1 forgery of 3301 signatures" paper — logged so it is not mistaken for
+  a real signature-scheme compromise.
+
+**Residual open external threads (not runnable internally):** (1) unvetted GitHub transcription corrections —
+the single most plausible live reopener; (2) AN END / LP2 v2-onion archival gap; (3) litigation discovery
+(monitor only). Pinned in `OPEN_QUESTIONS.md`.
+
+**Most useful thing learned:** a thorough, adversarially-verified sweep converts the prior lean-scout
+"probably nothing" into a trustworthy, dated, cited "nothing external reopens the cipher, and the public
+frontier is behind us." The external avenue is now documented-closed as of 2026-08, not merely unsearched.
+
+**Counts:** cumulative cryptanalytic tests unchanged (3); forensic executed 3 (R8-S1/S2, R11); external scouts
+now comprehensive. Multiple-comparisons tally unchanged.

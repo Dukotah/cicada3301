@@ -42,6 +42,13 @@ hash-preimage families (2,658 combos); external cribs/onion/hashes. See `DEAD_EN
 `liber-primus/ELIMINATION-LEDGER.md` (canonical, complete).
 
 ## Latest round
+**Round 12 (2026-08-06) — comprehensive external-input sweep → NEGATIVE; status archived.** First *thorough*
+internet deep-dive (adversarially verified) for any new external input that could reopen the cipher. Result:
+nothing clears the bar — last verified PGP-signed 3301 message is still **April 2017** (key 7A35090F), no
+released key/seed/pad, no vetted transcription correction. Bonus finding: the public community's best cipher
+guess is still "autokey/autoclave," which **this repo already refuted** — the external frontier is *behind* us.
+Full cited snapshot: `research/EXTERNAL-STATUS-2026-08.md`. Write-up: `LEDGER.md` Round 12.
+
 **Round 11 (2026-08-06) — DQT-matrix disambiguation → SURVIVES (benign); resolves R8-S2.** Ran the
 pre-specified resolving measurement for the R8-S2 INCONCLUSIVE. The two JPEG quantization-table groups have
 *identical* luma tables (Annex-K Q=92) — the split is a **grayscale-vs-color encode difference** (23 pages
