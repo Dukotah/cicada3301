@@ -253,6 +253,29 @@ re-skins.
 
 ---
 
+## Round 10 — 2026-08-06 (corrected stylometry exclusion)
+
+### CLOSED (Gate #2, executed then NEGATIVE) — Negative-space stylometric EXCLUSION of LP prose
+**Mechanism:** Burrows'/Cosine Delta exclusion — declare "LP prose does NOT cluster with author X" when LP's
+Delta to X exceeds the 99.5th-pct (Holm-Bonferroni) of X's within-author spread. This was the ONE small-N
+stylometry use flagged as defensible in the R7 positive-attribution closure.
+**Why dead:** measured (`research/experiments/r10-01-exclusion-power-corrected/`). At the LP solved-prose
+corpus size (N_q≈424–729 words) the exclusion rule has **true-exclusion power of only 0.20–0.27** (Wilson
+lower 0.18–0.26 ≪ 0.80; aggregate impostor false-inclusion 74–80%; ~2,700 impostor trials/cell), and NO
+percentile threshold jointly achieves acceptable false-exclusion AND acceptable impostor-rejection. A
+threshold conservative enough to avoid false-excluding genuine same-author text cannot reliably exclude
+known-different authors → any LP exclusion is uninterpretable. Extends the sibling campaign's 62%
+impostor-acceptance result (`liber-primus/analysis/stylometry/calibration_reject.py`) to LP prose.
+**Note:** the earlier R9 attempt was ruled INVALID (its gate measured same-author false-exclusion, a
+near-tautology); R10 fixed the gate (cross-author true-exclusion power) and produced this decision-grade
+NEGATIVE. The "Cyphernomicon/Timothy May nearest / lowest-FIR" figures from R9/R10 are **pool-composition
+artifacts (register outlier among ten corpora), NOT leads** about authorship.
+**Do not revive** either stylometry half (positive attribution OR negative-space exclusion) unless the solved
+English corpus grows past **~2,000 words** (i.e. many more LP2 pages get solved) — the same trigger as the
+positive-attribution closure. Below that floor, stylometry is information-poor, now by MEASUREMENT not citation.
+
+---
+
 ## PROGRAM STATUS — CIPHERTEXT-ONLY ATTACK COMPLETE (2026-07-30)
 
 After ~20 pre-ledger attack families + 3 rigorous ledger rounds (all NEGATIVE or Gate-#1 KILL), the

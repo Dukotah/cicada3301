@@ -42,6 +42,15 @@ hash-preimage families (2,658 combos); external cribs/onion/hashes. See `DEAD_EN
 `liber-primus/ELIMINATION-LEDGER.md` (canonical, complete).
 
 ## Latest round
+**Round 10 (2026-08-06) — CORRECTED stylometric exclusion → NEGATIVE; stylometry lane CLOSED.** Re-ran R9
+with the fix Gate #2 mandated: an honest **true-exclusion-power** gate (does the rule reject genuinely-different
+authors?) instead of the tautological same-author rate. Result is a decisive, well-powered NEGATIVE — at LP's
+solved-prose size (N_q≈424–729) true-exclusion power is only **0.20–0.27** (CI far below the 0.80 bar) and no
+threshold jointly controls false-exclusion and impostor-rejection, so LP exclusions are uninterpretable. The LP
+comparison never ran; no attribution exists; "Cyphernomicon nearest/lowest-FIR" is a pool artifact. This closes
+the stylometry lane in **both** halves (positive attribution + negative-space exclusion) until the solved corpus
+exceeds ~2,000 words. Write-up: `LEDGER.md` Round 10; `experiments/r10-01-*/`.
+
 **Round 9 (2026-08-06) — Burrows'-Delta stylometric EXCLUSION (EXPLORATORY) → INVALID.** Owner-directed test
 of the one small-N stylometry use flagged as defensible. Gate #1 surfaced an already-executed stylometry
 campaign the R8 Archivist missed (`liber-primus/analysis/stylometry/`, 2026-07-13: 76% closed-set power but

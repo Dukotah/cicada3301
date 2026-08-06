@@ -442,3 +442,48 @@ measured on LP prose). Pinned in `OPEN_QUESTIONS.md`.
 
 > **PROCESS STOP:** Per the loop's hard rules, an INVALID on a process violation is a mandatory
 > stop-and-escalate to the owner. Escalated 2026-08-06. The corrected test is queued, not auto-run.
+
+---
+
+## Round 10 — 2026-08-06 — CORRECTED stylometric exclusion → NEGATIVE (valid, well-powered); stylometry lane CLOSED
+
+**Branch:** `research/round-10-exclusion-power-corrected` (stacked on round-9). Owner-directed re-run of R9
+with the single fix Gate #2 mandated. EXPLORATORY, non-decision-grade; no positive attribution emittable.
+
+**The fix:** R9 was INVALID because its operative gate (same-author FER) was near-tautological and never
+tested whether genuinely-different authors get excluded. R10 adds **Control C — impostor false-inclusion /
+true-exclusion power**: for every author pair (A,X), apply the exact exclusion rule to each impostor chunk of
+A against X's own centroid+99.5th-pct threshold; power = 1 − (fraction of impostors wrongly NOT excluded).
+Gate #1 APPROVED the corrected design (measures the right quantity, two-sided decision, no post-hoc threshold
+selection). Gate #2 traced the implementation line-by-line and confirmed it is honest (X's centroid/threshold
+from X's own chunks; impostor excluded from z-score; same operating point as the LP step).
+
+**Executed** (`research/experiments/r10-01-exclusion-power-corrected/`, seed 3301, reused R9 corpora/machinery,
+both arms, K∈{50,100,150}):
+- **Control B (FER):** PASS (Wilson-upper 0.019–0.030 ≤ 10%) — near-tautologically low, as expected.
+- **Control C (true-exclusion power — the operative gate):** **FAIL, decisively.** Power 0.196–0.271 (Wilson
+  **lower** 0.18–0.26, ≪ 0.80); aggregate impostor false-inclusion **74–80%**; n≈2,637–2,700 impostor trials
+  per cell (over-powered to detect the breach).
+- **ROC (descriptive):** NO percentile threshold (50th–99.9th) jointly achieves FER-upper≤10% AND
+  power-lower≥80% at N_q=424–729 — the two constraints are not jointly satisfiable at this corpus size.
+- **Decision branch:** `NEGATIVE_POWER_GATE`, uniform across both arms × all K. The LP exclusion step was
+  **not run**; `lp_exclusion: null`; no exclusion table emitted.
+
+**Gate #2 verdict: NEGATIVE (valid, well-powered, decision-grade).** Not INVALID (fix implemented faithfully,
+binding quantity now measured), not INCONCLUSIVE (the entire power CI sits far below the gate; decisive).
+
+**ESTABLISHED (assumed → measured):** at LP's solved-prose corpus size (N_q≈424–729 words), **negative-space
+stylometric EXCLUSION is uninterpretable** — a threshold conservative enough to keep same-author false-
+exclusions ≤10% cannot reliably exclude genuinely-different authors (true-exclusion power ~0.2–0.27). This
+turns the previously *cited* small-N barrier into a *measured* one on LP prose specifically, and extends the
+sibling campaign's 62% impostor-acceptance result (which was on the PGP-message corpus). **The TimothyMay/
+Cyphernomicon lowest-FIR stat is a pool-composition artifact — the register outlier among ten corpora — NOT a
+lead about LP authorship.**
+
+**Lane closure:** the stylometry lane is now CLOSED in BOTH halves — positive attribution (already closed by
+corpus size, ~800 words < ~2,000-word floor) AND negative-space exclusion (measured uninterpretable here). The
+only re-opener is a material corpus increase (many more LP2 pages solved, pushing solved English past ~2,000
+words) — the same trigger already set for the positive lane. Marked in `DEAD_ENDS.md`.
+
+**Counts:** cumulative cryptanalytic tests unchanged (3); R10 is a valid EXPLORATORY negative that converts
+R9's INVALID into a measured closure. R9's owed corrected-test is now DISCHARGED.
