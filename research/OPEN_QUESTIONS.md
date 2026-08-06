@@ -64,6 +64,18 @@ The Archivist reconciles both before any hypothesis is approved, so no closed fi
    stock-Ghostscript-sRGB render, no operator metadata; only S2's encoder-layer artifact remains, and it is
    downstream of any glyph/cipher content). Genuinely-untested ground is now scarce; most future rounds will
    correctly end NEGATIVE absent a new external input.
+1b. **★ PINNED (Round 9, owed) — CORRECTED stylometric-exclusion test.** R9 executed but was ruled INVALID:
+   its "operative gate" (false-exclusion rate) measured a near-tautological quantity and never tested whether
+   genuinely-different authors are correctly excluded. The corrected run must add an **impostor false-inclusion
+   / true-exclusion-power control** (hold out chunks of author A, apply the exclusion rule against every OTHER
+   author B, measure the fraction of true-different-author chunks the rule FAILS to exclude; Wilson-bounded)
+   and gate the LP step on THAT rate, mirroring the sibling campaign's 62%-impostor axis — NOT on same-author
+   FER. Reuse `research/experiments/r9-01-*/run_experiment.py` + the assembled corpora. **Predicted outcome
+   (consistent with the sibling `liber-primus/analysis/stylometry/calibration_reject.py`): it FAILS → the
+   honest NEGATIVE the R9 pre-registration originally forecast** (measured small-N exclusion floor on LP
+   prose). EXPLORATORY, non-decision-grade; no positive attribution regardless. Also note: an already-executed
+   stylometry campaign exists at `liber-primus/analysis/stylometry/` (2026-07-13) — the Archivist missed it in
+   R8; future rounds must consult it.
 2. **(EXPLORATORY only) Negative-space stylometric exclusion** — Burrows' Delta / nearest-neighbour of
    the ~359–800-word solved LP prose vs public-domain reference sets. Exclusion ("LP does NOT cluster
    with X") is defensible at small N even though positive attribution is not. Label EXPLORATORY.

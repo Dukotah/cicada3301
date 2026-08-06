@@ -391,3 +391,54 @@ reopen the closed program.
   the JPEG-encoder layer, downstream of any glyph/cipher content. Attacking "the system, not the cipher"
   did not find an operator slip in the bytes we hold; it confirmed the toolchain and produced one
   benign-until-disambiguated encoder artifact.
+
+---
+
+## Round 9 — 2026-08-06 — Burrows'-Delta stylometric EXCLUSION (EXPLORATORY) → INVALID (gate tested the wrong quantity)
+
+**Branch:** `research/round-9-stylometry-exclusion` (stacked on the round-8 branch).
+**Owner-directed:** run the one small-N stylometry use flagged as defensible-but-unexecuted (negative-space
+EXCLUSION), gated behind a discrimination-power control. Non-decision-grade by construction; no positive
+attribution emittable.
+
+**Reconciliation correction (Gate #1 finding):** the Archivist missed an already-executed stylometry campaign
+at `liber-primus/analysis/stylometry/` (2026-07-13): Burrows' Delta on the ~359-word PGP-message corpus with a
+closed-set power control (**76% LOO acc, 9 authors, chance 11%**) AND an open-set rejection control
+(`calibration_reject.py`: **62% impostor false-inclusion at 359w** → exclusion boundary unreliable). Gate #1
+ruled REVISE (non-redundant only via LP-prose query + a formal false-exclusion control) and hardened the
+pre-registration; this sibling campaign is now on record.
+
+**Executed** (`research/experiments/r9-01-burrows-delta-exclusion/`, seed 3301, reused sibling corpora +
+in-repo PD sets + fetched Cyphernomicon): Query = de-contaminated authored LP prose,
+`lp1_english_forward.txt`, arm1 (koans excluded) N_q=424 / fw-density 0.498, arm2 (all) N_q=729 / 0.501
+(verified clean; density genuinely higher than the sibling's 0.36 because it spans narrative, not just
+aphorisms). 10 PD reference authors, MFW/K from reference intersection (LP excluded), K∈{50,100,150}.
+- **Control A (closed-set LOO):** PASS (acc 0.69–0.83 vs chance 0.10, both arms, all K).
+- **Control B (FER, the pre-registered OPERATIVE gate):** PASS (FER 0.3–1.0%, Wilson upper ≤3%). The
+  exclusion step therefore ran and produced a K-unstable exclusion table; TimothyMay/Cyphernomicon was
+  consistently NEAREST (Δ≈0.88–1.00) yet also EXCLUDED in several cells.
+
+**Gate #2 verdict: INVALID** (process/implementation defect — see `GATE2-VERDICT.md`). Control B measured a
+**near-tautological** quantity: FER = fraction of genuine chunks exceeding the *99.5th percentile of their own
+within-author spread* (~0.5% by definition; confirmed pinned at 3/300 flat across K). It NEVER measured the
+binding quantity — impostor false-INCLUSION / true-exclusion power (the sibling's 62%). So the gate passed
+spuriously and let the exclusion step run; the exclusion outputs are **voided** (treated as non-produced). The
+K-instability (nearest-neighbour tool contradicting the exclusion tool in-cell) is the empirical noise
+signature confirming function-word signal is too weak at N_q=424–729.
+
+**KILLED over-read:** "Cyphernomicon/Timothy May is nearest" is a pool-composition artifact, NOT attribution
+and NOT a lead — the same tool excludes it, and at this N a confident nearest match names the wrong entity
+most of the time (sibling 62% impostor acceptance). No named attribution. (HIGH confidence.)
+
+**Counts:** cumulative rigorous cryptanalytic tests unchanged (3); forensic executed now 2 (R8). R9 is an
+INVALID exploratory run — it contributes a **corrected owed test**, not a result. Multiple-comparisons tally
+unchanged.
+
+**Most useful thing learned / owed fix:** exclusion validity requires measuring **true-exclusion power
+(cross-author impostor false-inclusion)**, NOT same-author FER; the R9 gate tested the wrong side. A future
+run must gate the LP step on the impostor rate (mirroring the sibling's 62% axis). Predicted, consistent with
+the sibling: it fails → the honest NEGATIVE the pre-registration originally forecast (small-N exclusion floor,
+measured on LP prose). Pinned in `OPEN_QUESTIONS.md`.
+
+> **PROCESS STOP:** Per the loop's hard rules, an INVALID on a process violation is a mandatory
+> stop-and-escalate to the owner. Escalated 2026-08-06. The corrected test is queued, not auto-run.

@@ -42,6 +42,16 @@ hash-preimage families (2,658 combos); external cribs/onion/hashes. See `DEAD_EN
 `liber-primus/ELIMINATION-LEDGER.md` (canonical, complete).
 
 ## Latest round
+**Round 9 (2026-08-06) — Burrows'-Delta stylometric EXCLUSION (EXPLORATORY) → INVALID.** Owner-directed test
+of the one small-N stylometry use flagged as defensible. Gate #1 surfaced an already-executed stylometry
+campaign the R8 Archivist missed (`liber-primus/analysis/stylometry/`, 2026-07-13: 76% closed-set power but
+**62% impostor false-inclusion** at 359w). R9 ran on de-contaminated LP prose; both pre-registered controls
+"passed" and the exclusion step produced a tempting "Cyphernomicon nearest" pattern — **but Gate #2 ruled
+INVALID**: the operative gate (false-exclusion rate) measured a *near-tautological* quantity and never tested
+true-exclusion power, so the exclusion table is voided. "Timothy May nearest" is a pool-composition artifact,
+**not attribution**. A corrected test (impostor false-inclusion control) is owed and predicted NEGATIVE. Full
+write-up: `LEDGER.md` Round 9; `experiments/r9-01-*/GATE2-VERDICT.md`.
+
 **Round 8 (2026-08-06) — security/forensics lane.** Reconciled onto `origin/master`. Gate #1 killed all
 cipher/structure proposals (re-skins of executed work) and the cryptanalyst's own honest null; forwarded
 two genuinely-novel **forensic** tests. **S1** (first structured parse of the embedded ICC profile) →
