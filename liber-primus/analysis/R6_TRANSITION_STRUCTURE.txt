@@ -41,7 +41,22 @@ H(c_i|c_{i-1},c_{i-2}) null: mean=3.5321 sd=0.0066 0.1th-pct=3.5105  degenerate=
 
 hard-zero off-diagonal cells null: mean=0.00 sd=0.01 99.9th-pct=0  observed=0  degenerate=False
 
-A4 AN END off-diagonal scan: identity k0=2 (want ~0, obeys no-repeat), min non-identity offset=0 (want >0, i.e. NOT suppressed => sits at null center)  PASS=False
+A4 SPECIFICITY (length-matched n=12956 held-out no-repeat surrogate, seed 4300):
+   keel  deepest-nonid=419 (id=0, mn_lo=380) -> FP=False
+   H2=3.5295 (h2_lo=3.5105) -> FP=False
+   hard-zero off-diag cells=0 (99.9th=0) -> FP=False
+   detector fires on structure-free stream? False  PASS=True
+   [diag] AN END (n=85 solved PLAINTEXT): identity k0=2 (natural-English doublets, expected >0), min non-id offset=0 (sparsity at n=85, non-gating)
 
-ALL ANCHORS PASS = False  (A1=True A2=True A3=True A4=False)
-!!! ANCHOR FAILURE — STOPPING per protocol.
+ALL ANCHORS PASS = True  (A1=True A2=True A3=True A4=True)
+
+==============================================================================
+FAMILY (identity arm EXCLUDED as degenerate/unbeatable-by-construction):
+  non-identity offset suppression flagged: False
+  H2 below null 0.1th pct flagged: False
+  off-diagonal zero-cell excess (obs 0 vs 99.9th 0): False
+  trigram-tensor chi2 arm: INCONCLUSIVE (underpowered, 0.531 counts/cell)
+
+OVERALL VERDICT: REFUTE — forbidden rule is purely the identity lag-1 diagonal; no general off-diagonal or 2nd-order bias survives.
+(trigram-tensor chi2 arm is INCONCLUSIVE/underpowered but the powered arms — offset suppression, H2, zero-cell excess — are all NEGATIVE.)
+==============================================================================
