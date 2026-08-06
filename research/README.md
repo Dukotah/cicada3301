@@ -42,6 +42,15 @@ hash-preimage families (2,658 combos); external cribs/onion/hashes. See `DEAD_EN
 `liber-primus/ELIMINATION-LEDGER.md` (canonical, complete).
 
 ## Latest round
+**Round 11 (2026-08-06) — DQT-matrix disambiguation → SURVIVES (benign); resolves R8-S2.** Ran the
+pre-specified resolving measurement for the R8-S2 INCONCLUSIVE. The two JPEG quantization-table groups have
+*identical* luma tables (Annex-K Q=92) — the split is a **grayscale-vs-color encode difference** (23 pages
+1-component grayscale, 33 pages 3-component color). A direct ink-coverage complexity proxy is indistinguishable
+between groups (p=0.338), so it's **not content-driven** → SURVIVES in the strict "null-rejected" sense: a real,
+positional, benign production-pipeline signal with **zero ciphertext bearing** (it's image-container metadata,
+downstream of all glyph content). Framing that kills any over-read: *some pages were saved grayscale, others
+color, at the same quality — a per-page encoder setting, not cipher.* Write-up: `LEDGER.md` Round 11.
+
 **Round 10 (2026-08-06) — CORRECTED stylometric exclusion → NEGATIVE; stylometry lane CLOSED.** Re-ran R9
 with the fix Gate #2 mandated: an honest **true-exclusion-power** gate (does the rule reject genuinely-different
 authors?) instead of the tautological same-author rate. Result is a decisive, well-powered NEGATIVE — at LP's

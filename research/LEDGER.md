@@ -487,3 +487,41 @@ words) — the same trigger already set for the positive lane. Marked in `DEAD_E
 
 **Counts:** cumulative cryptanalytic tests unchanged (3); R10 is a valid EXPLORATORY negative that converts
 R9's INVALID into a measured closure. R9's owed corrected-test is now DISCHARGED.
+
+---
+
+## Round 11 — 2026-08-06 — DQT-matrix disambiguation → SURVIVES (benign production signal); resolves R8-S2
+
+**Branch:** `research/round-11-dqt-matrix-disambiguation` (stacked on round-10). Owner-directed. Runs the
+resolving measurement PRE-SPECIFIED by R8 Gate #2 (design already critic-approved; no fresh Gate #1). **ZERO
+ciphertext bearing** — production-pipeline forensics only.
+
+**Executed** (`research/experiments/r11-01-dqt-matrix-disambiguation/`, deterministic):
+- **Part A — dumped the two 64-coefficient DQT matrices.** The two groups have **byte-identical luma tables
+  (Annex-K Q=92, rms 0)** — the split is NOT luma quality. The real difference (confirmed via SOF component
+  counts on all 56 pages): group `32386501afff` (33 pp) = **3-component COLOR** JPEG (luma+chroma DQT); group
+  `a3a96add050f` (23 pp) = **1-component GRAYSCALE** JPEG (luma-only DQT). The R8-S2 positional split =
+  a per-page **grayscale-vs-color encode mode** difference. (Script label `two_quality_settings` and the g1
+  `chroma_Q=95` fallback were imprecise; corrected in `EXECUTION-NOTE.md`, raw data untouched.)
+- **Part B — direct content-complexity proxy** (ink coverage, replacing the weak R8 byte-size proxy): groups
+  are **INDISTINGUISHABLE** (MW U=322, p=0.338; byte-size p=0.091). The split is NOT content/complexity-driven.
+
+**Gate #2 verdict: SURVIVES** — strictly in the loop sense ("pre-registered null rejected + confound didn't
+kill it"), NOT a breakthrough. The content-driven null is rejected (ink p=0.338) and the mechanism is
+positively identified as an encoder color-mode toggle at constant quality — a real, positional, non-content
+production signal. Verified independently across all 56 pages.
+
+**ESTABLISHED (assumed → measured):** 23 of the 56 relikd pages were emitted as grayscale JPEGs and 33 as
+color JPEGs, at identical luma quality Q=92 — a per-page rendering-configuration difference. For near-grayscale
+rune scans the color/grayscale choice is content-independent (which is why ink coverage is indistinguishable).
+The grayscale/color blocks align with NO known section head, solve boundary, or LP1/LP2 edge (relikd files are
+LP2 numbering, p0–p55 all unsolved; transitions at 16,22,24,26,28,32,41,49,50,53 are blocky/alternating, not
+two batches) — any page-boundary correlation is coincidental.
+
+**Anti-over-read (mandatory framing, per Gate #2):** *Some pages were saved as grayscale JPEGs and others as
+color JPEGs at the same luma quality — a per-page encoder container setting, not content and not cipher; it
+says nothing about the plaintext, and nothing could make it cipher-relevant (it is image-container metadata).*
+
+**Counts:** cumulative cryptanalytic tests unchanged (3); forensic executed now 3 (R8-S1, R8-S2, R11). The
+R8-S2 INCONCLUSIVE is DISCHARGED (resolved SURVIVES-benign). First SURVIVES of the loop — and it carries zero
+epistemic weight beyond "benign production forensic," exactly as the loop's SURVIVES definition intends.

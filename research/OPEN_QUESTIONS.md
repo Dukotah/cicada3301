@@ -48,17 +48,11 @@ Two prior research lineages exist and are being reconciled on this branch:
 
 The Archivist reconciles both before any hypothesis is approved, so no closed finding is re-derived.
 
-0. **★ PINNED (Round 8, owed) — resolve the S2 DQT anomaly: production-batch vs content-driven.**
-   S2 found the two JPEG DQT quantization-table fingerprints are **strongly non-random w.r.t. page order**
-   (runs R=11 vs E≈28.1, z=−4.77, MC p≈0) but the batch-vs-content question is INCONCLUSIVE because the
-   file-size confound proxy is too weak (MW p=0.091) and the pattern is blocky/**alternating** (~11 blocks),
-   not two contiguous batches. **Resolving measurement (pre-specified by Critic Gate #2):** (a) dump the two
-   actual 64-coefficient DQT matrices (`32386501afff` vs `a3a96add050f`) — if they are two Ghostscript
-   quality-ladder tables that's a tool/quality switch; if structurally distinct, two pipelines; (b) replace
-   byte-size with a DIRECT complexity proxy (per-page non-blank DCT energy / rune-region ink area) and re-run
-   the Mann–Whitney at adequate power. Upgrade to SURVIVES only if groups are complexity-indistinguishable
-   under a real proxy; else NEGATIVE. **Note: ZERO ciphertext bearing regardless — this is production-pipeline
-   forensics, not a solve path.** Low priority; cheap; runnable now.
+0. **DISCHARGED (Round 11) — S2 DQT anomaly resolved.** The two DQT fingerprints = a **grayscale-vs-color
+   encode difference** (23 pages 1-component grayscale, 33 pages 3-component color; identical luma Annex-K
+   Q=92). Direct ink-coverage complexity proxy: groups INDISTINGUISHABLE (MW p=0.338) → not content-driven →
+   **Gate #2 SURVIVES** (benign, positional production signal). **ZERO ciphertext bearing**; aligns with no
+   section/solve boundary. See `experiments/r11-01-*/` + `LEDGER.md` Round 11. Nothing further owed here.
 1. **(META, standing) Which attack surfaces has NEITHER lineage actually executed?** Round 8 diffed both
    kill-logs; the file-metadata forensic layer is now near-exhausted on the LOCAL artifacts (images are the
    stock-Ghostscript-sRGB render, no operator metadata; only S2's encoder-layer artifact remains, and it is
