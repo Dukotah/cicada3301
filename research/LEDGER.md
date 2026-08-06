@@ -8,8 +8,9 @@ across the full ledger, not per-round.
 
 ## Multiple-comparisons running tally
 
-- Executed statistical tests logged in THIS ledger: **3** (Rounds 1, 2, 5; Rounds 3–4 executed no
-  cryptanalytic test — all candidates killed at Gate #1)
+- Executed statistical tests logged in THIS ledger: **5** (Rounds 1, 2, 5, and Round 6's two tests
+  SIEVE-W + TRANSITION-STRUCTURE; Rounds 3–4 and Round 7 executed no cryptanalytic test — all
+  candidates killed at Gate #1)
 - Loop re-pointed after Round 3 from ciphertext-only attacks to EXTERNAL leads (Round 4). Round 5
   added a standing SUPERVISING STRATEGIST role that generates genuinely-new attack surfaces each
   round, so the exhaustion trail keeps advancing for future researchers.
@@ -288,3 +289,105 @@ and sharpens the OTP-class verdict: the residuals look exactly like a pure lag-1
 otherwise-random text.
 
 **Also killed this round (Gate #1):** #3 ROSETTA, #5 DELVE. See `DEAD_ENDS.md`.
+
+---
+
+## Round 6 — 2026-07-30 (executed) / anchor-corrected 2026-08-06 — misfiled-plaintext windows + transition-lattice → NEGATIVE
+
+**Branch:** `research/round-6-window-transition-structure` (stacked for ledger continuity)
+
+**Strategist slate:** two non-decrypting structural tests on the fixed ciphertext, each pre-registered
+with sensitivity + specificity anchors and an order-matched null (seed 3301).
+
+### TEST 1 — SIEVE-W (windowed misfiled-plaintext detector)
+**Question:** does any unsolved page or sub-page window contain misfiled/partial *readable* runic
+plaintext that the whole-corpus flat-IoC measurement would average away?
+**Statistic:** per-window bigram log-likelihood ratio (LLR) vs an English-in-runes model, plus a
+separate IoC·N arm, over a sliding window battery (sizes 30/60, all pages).
+**Anchors:** A1–A3 (synthetic planted-plaintext window must surface; solved pages score high; noise
+low) — all PASS. **Result:** best real unsolved window LLR = 0.074 ≪ PLAINTEXT_CUT 0.4808 and below
+the family threshold; **0 windows** flagged (LLR > family cut AND > plaintext cut); IoC arm flat
+(≤1.80 on 30-rune windows = small-sample variance, no structured signal). Output
+`liber-primus/analysis/R6_SIEVE_WINDOWS.txt`.
+**Verdict: REFUTE.** No unsolved page or sub-page window is misfiled or partial plaintext.
+
+### TEST 2 — TRANSITION-STRUCTURE (keel + lattice)
+**Question:** beyond the known lag-1 no-repeat rule, does the enciphered stream carry any *second*
+forbidden-offset ("keel"), hard-zero off-diagonal transition cell, or 2nd-order (trigram) bias that a
+structured combiner would impose and a flat OTP-class keystream would not?
+**Statistics:** (S1) deepest NON-identity offset count `(c_i−c_{i-1}) mod 29`, family stat over 28
+offsets; (S2) H(c_i | c_{i-1}, c_{i-2}); (S3) count of hard-zero off-diagonal transition cells with
+nonzero marginals; (S4) trigram-tensor χ² (disclosed underpowered). **Null:** 10,000 multiset+
+no-repeat surrogates realizing the exact no-repeat constraint (seed 3301).
+
+**Anchor correction (2026-08-06):** the original run **halted at protocol** because specificity anchor
+A4 was **mis-specified** — it used the 85-rune solved page AN END as a "null-center" control, but
+AN END is decrypted *plaintext* (natural English → 2 real doublets, so it cannot "obey no-repeat")
+and far too short (an empty non-identity offset over 85 runes is pure sparsity, not suppression). It
+falsely tripped the STOP while the powered statistics all read NEGATIVE. A4 was replaced with the
+correct control: a **length-matched (n=12,956) held-out no-repeat surrogate** (seed disjoint from the
+null pool) pushed through the *exact* three decision predicates — the detector must classify it
+NEGATIVE (no false keel / no H2 suppression / no hard-zero cells). This changes **no goalpost**: the
+verdict direction is unchanged (NEGATIVE either way); it only fixes a broken anchor so the round
+reaches a decision instead of an invalid halt. AN END retained as a non-gating diagnostic.
+
+**Results (12,956 runes, 10,000 surrogates; ALL ANCHORS A1–A4 PASS):**
+| statistic | observed | null reference | verdict |
+|---|---|---|---|
+| S1 deepest non-identity offset | 404 (k=17), z=−2.78 | mean 420.0 sd 9.6, 0.1th-pct 380 | not suppressed → REFUTE |
+| S2 H(c_i\|c_{i-1},c_{i-2}) | 3.5228 bits | mean 3.5321, 0.1th-pct 3.5105 | not below → REFUTE |
+| S3 hard-zero off-diagonal cells | 0 | mean 0.00, 99.9th-pct 0 | none → REFUTE |
+| S4 trigram-tensor χ² | 0.531 counts/cell | — | **INCONCLUSIVE (underpowered, disclosed)** |
+| A4 specificity (held-out surrogate) | all 3 FP=False | detector does not fire | PASS |
+
+**Verdict: REFUTE (decision-grade on the powered arms).** The single deepest offset (k=17, z=−2.78)
+does not clear the family-corrected 0.1th percentile; no keel, no hard-zero cell, no 2nd-order bias.
+Output `liber-primus/analysis/R6_TRANSITION_STRUCTURE.txt`.
+
+**ESTABLISHED (assumed → measured):** The forbidden rule in unsolved LP2 is **purely the identity
+lag-1 diagonal** — there is no *second* forbidden offset ("keel"), no hard-zero off-diagonal
+transition cell, and no detectable trigram/2nd-order transition bias (the trigram-tensor χ² arm is
+underpowered and cannot rule the finest structure in or out). This closes the structured-combiner /
+keel / transition-lattice family and corroborates Round 5's "pure lag-1 no-repeat over otherwise-
+random text." No misfiled-plaintext window exists (TEST 1).
+
+---
+
+## Round 7 — 2026-08-06 — external-input hunt (strategist armada) → GATE-#1 KILL, 0 of 15 candidates survived
+
+**Branch:** `research/round-7-external-input-exhaustion`
+
+**Method:** a 5-lens strategist fan-out (keytext-hunter / external-artifact / cryptanalyst-skeptic /
+author-empathy / lateral-contrarian) proposed 15 candidates; each was put through an independent,
+refute-by-default Gate #1 critic that verified novelty claims against `DEAD_ENDS.md`, `LEDGER.md`, and
+`ELIMINATION-LEDGER.md`. **Every candidate drew a KILL. No test executed.** (21 agents, adversarial.)
+
+**Why each family died:**
+- **New-keytext (8):** several carried a genuinely-new external input — the *real* Cornelius Agrippa
+  *Three Books of Occult Philosophy* (the prior "Agrippa" in the corpus is **William Gibson's poem**),
+  the Welsh-*source* Mabinogion, and Blake's long prophetic books are all verified-absent — so they
+  clear Rule 2 (novelty). But each is welded to one of two already-dead mechanisms: the **rigid**
+  running-key arm is foreclosed by the doublet deficit (any full-length natural-language key injects
+  ~3.3% doublets vs observed 0.66%, z=−16.9), and the **skip-aware** arm is un-anchorable (its
+  defining constraint c[i]≠c[i-1] is FALSE on all five solved pages, so it validates only on synthetic
+  self-plants = a keyspace search, killed as R1-H3/R3-H1/R3-H2). **New text ≠ new mechanism.**
+- **External-artifact / hash-preimage (2):** degenerate-null-by-corpus-mismatch (proposed corpora are
+  darknet-market crawls, topically disjoint from a Cicada key page) / not-runnable (parasitic on an
+  absent corpus). Both are the R4-OSINT hash-hunt already closed COLD; revive-bar not cleared.
+- **New ciphertext statistic (3):** re-parameterize the Round-6 transition dimension already closed,
+  or are Round-1 H3 read backwards; none supplies an external input or an anchorable non-deficit stat.
+- **Ledger-integrity (2):** external_input=NONE, run no cryptanalytic test.
+
+**ESTABLISHED (this round's real payoff, not just a null):** the **"untried already-public keytext"
+avenue** — which `PICKUP-HERE.md` listed as the #1 still-open thread — is **mechanistically foreclosed
+independent of text choice.** The limiting factor was never *which* text; it is that *both* ways to
+apply any keytext (rigid additive, skip-aware) are independently dead. Verified-absent candidate texts
+do not rescue it. The genuinely-open threads narrow to two, both external and low-prior: (a) a
+signed/archival indication that a specific text **is** the LP2 key (clears the Round-4 external-key
+revive-bar), or (b) a correctly-targeted, locally-held archived corpus that could plausibly contain
+the lost AN END page (clears the R4-OSINT revive-bar). Round 7 reaffirms the ciphertext-only-COMPLETE
+/ external-input-only verdict — a clean, intended negative when no qualifying external input is on the
+table. **Also surfaced (maintenance, not a test):** Campaign XVIII's skip-aware program ran to NULL
+but was never logged here or in `DEAD_ENDS.md` — recorded now (see `DEAD_ENDS.md` Round 7 note).
+
+**Killed this round (Gate #1):** all 15 (R7-KT1..3, R7-EA1..3, R7-A1..A3 ×3 lenses). See `DEAD_ENDS.md`.

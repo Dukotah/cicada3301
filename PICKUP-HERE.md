@@ -1,7 +1,18 @@
-# PICKUP-HERE — where we left off (updated 2026-06-20)
+# PICKUP-HERE — where we left off (updated 2026-06-20; rounds appended 2026-08-06)
 
 Resume point for the Cicada 3301 / Liber Primus work. Repo is public at
 https://github.com/Dukotah/cicada3301 (default branch `master`).
+
+> **Latest rounds (2026-08-06) — see `research/LEDGER.md` + `research/DEAD_ENDS.md`.**
+> The rigorous pre-registered attack loop reached **Round 7**. **Round 6** (NEGATIVE) closed the
+> misfiled-plaintext-window and transition-lattice/keel families — the no-repeat rule is provably a
+> *pure lag-1 identity* with no second-order structure. **Round 7** (unanimous Gate-#1 KILL, 0/15)
+> hunted new external inputs and additionally **closed the "untried public keytext" avenue by
+> mechanism**: any keytext is dead both rigidly (doublet-excluded) and skip-aware (un-anchorable),
+> independent of which text — so a new text alone is no longer a lead. The two remaining threads are
+> external + low-prior: (a) a *signed/archival pointer* that a specific text IS the key, or (b) a
+> *correctly-targeted, locally-held* archive that could hold the lost AN END page. Ciphertext-only
+> program COMPLETE, hardened. _(Maintenance: Campaign XVIII's skip-aware NULL run is now logged.)_
 
 ## 📄 Community deliverable
 **`liber-primus/SOLVERS-DOSSIER.md`** = the consolidated solver-facing contribution

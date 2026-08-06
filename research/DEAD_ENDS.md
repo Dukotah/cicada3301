@@ -212,3 +212,62 @@ transcription discrepancy) — absent that, every round will and should end NEGA
   nothing.
 - **Any running-key / full-length natural-language keystream:** ruled out by the doublet deficit
   (z ≈ −16.9); such keystreams reproduce a normal ~2.9–3.4% doublet rate.
+
+## Round 6 — 2026-07-30 / anchor-corrected 2026-08-06
+### KILLED (Gate #2, executed then refuted) — TEST 1 SIEVE-W "misfiled-plaintext window"
+**Mechanism:** a sliding bigram-LLR + IoC window detector to catch any unsolved page/sub-page window
+that is actually readable (mis-filed) plaintext. **Why dead:** REFUTED — 0 windows cleared the family
++ plaintext cut; best real window LLR 0.074 ≪ 0.4808. See LEDGER Round 6.
+**Do not revive** without a new plaintext model that lifts a real window above the solved-page floor.
+### KILLED (Gate #2, executed then refuted) — TEST 2 TRANSITION-STRUCTURE "keel + lattice"
+**Mechanism:** a second forbidden offset ("keel"), hard-zero off-diagonal transition cell, or 2nd-order
+(trigram) bias beyond the known lag-1 no-repeat rule. **Why dead:** REFUTED — deepest non-identity
+offset k=17 z=−2.78 (not below family 0.1th pct), H2 3.5228 at null center, 0 hard-zero off-diagonal
+cells. Trigram-tensor χ² arm INCONCLUSIVE (underpowered, 0.531 counts/cell) and cannot rule the finest
+structure in or out. **Anchor-integrity note:** the original run halted on a mis-specified specificity
+anchor (A4 used the 85-rune solved *plaintext* page AN END as a null-center control — wrong object,
+wrong length); corrected 2026-08-06 to a length-matched held-out no-repeat surrogate through the exact
+decision predicates. Verdict direction unchanged (NEGATIVE), no goalpost move.
+**Do not revive** the keel/transition-lattice family without a NEW anchorable statistic, nor the
+trigram arm without ~10× more data per cell (structurally unavailable at n≈13k).
+
+## Round 7 — 2026-08-06 (external-input hunt) — GATE-#1 KILL, 0/15
+### KILLED (Gate #1) — new-keytext under the skip-aware or rigid decoder (8 candidates)
+**Included genuinely-absent texts** (real Cornelius Agrippa *De Occulta Philosophia*; Welsh-*source*
+Mabinogion; Blake's *Jerusalem/Milton/The Four Zoas*; the author's own solved plaintext; Havamal/
+Voluspa/Corpus Hermeticum/OE Rune Poem). **Why dead:** the **rigid** running-key arm is foreclosed by
+the doublet deficit (any full-length natural-language key → ~3.3% doublets vs 0.66%, z=−16.9); the
+**skip-aware** arm is un-anchorable (c[i]≠c[i-1] is FALSE on all 5 solved pages → validates only on
+synthetic self-plants; already killed R1-H3/R3-H1/R3-H2). New text ≠ new mechanism. Two were also
+already-executed (Blake-complete-additive; author's-own-plaintext via Campaign XVIII rosetta key).
+**Do not revive** any keytext (skip-aware or rigid) as a novel avenue — the avenue is foreclosed by
+MECHANISM, not by text coverage. Corrects the `PICKUP-HERE` "untried keytext = #1 open avenue" framing:
+that avenue is closed.
+### KILLED (Gate #1) — AN END hash-preimage vs new onion/WARC corpora (2 candidates)
+**Why dead:** degenerate-null-by-corpus-mismatch (darknet-market/gateway crawls are topically disjoint
+from a deliberately-unlinked Cicada key page) and not-runnable (parasitic on an absent corpus). Same
+avenue as R4-OSINT-1 (cold). **Do not revive** without a CORRECTLY-TARGETED, locally-held archive that
+could plausibly contain the AN END page.
+### KILLED (Gate #1) — new ciphertext-only statistics (3) + ledger-integrity "tests" (2)
+**Why dead:** the statistics re-parameterize the already-closed Round-6 transition dimension or are
+Round-1 H3 read backwards; the ledger-integrity items run no cryptanalytic test (external_input=NONE).
+
+### MAINTENANCE NOTE (not a test) — Campaign XVIII skip-aware program is an UNLOGGED NULL
+The `liber-primus/analysis/campaign18_skip/` skip-tolerant/collision-skip program was executed and
+returned **NULL** across its families (keyword / numeric / self-referential / autokey / interrupter /
+payload running keys, plus the cleaned LP1-English "running_solved" key), but was never logged in this
+file or `LEDGER.md`, and now survives only as orphaned Python-3.12 `.pyc` bytecode (source deleted;
+does not import under the system's newer Python). **Recorded for provenance:** (a) the skip-aware /
+collision-skip family is ALREADY KILLED under R1-H3 / R3-H1 / R3-H2 — future rounds must not re-propose
+it as novel; (b) Campaign XVIII ran it to null. **Do NOT** decompile-and-backfill its unauditable run
+counts into the multiple-comparisons denominator (unvalidated-harness runs inflate the correction with
+noise). This is bookkeeping, not a new measurement.
+
+## PROGRAM STATUS — UPDATED 2026-08-06 (Rounds 6–7)
+Round 6 closed the last structured-combiner / keel / transition-lattice family (NEGATIVE) and confirmed
+no misfiled-plaintext window. Round 7 (external-input hunt, 15 candidates) was a **unanimous Gate-#1
+KILL** and additionally **closed the "untried public keytext" avenue by mechanism** (both rigid and
+skip-aware application of ANY keytext are independently dead). The two remaining live threads are
+external and low-prior: (a) a signed/archival indication a specific text IS the key, or (b) a
+correctly-targeted locally-held archive that could contain the lost AN END page. The
+ciphertext-only-COMPLETE / external-input-only verdict stands, hardened.
