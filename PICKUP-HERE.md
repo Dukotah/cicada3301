@@ -13,6 +13,15 @@ https://github.com/Dukotah/cicada3301 (default branch `master`).
 > external + low-prior: (a) a *signed/archival pointer* that a specific text IS the key, or (b) a
 > *correctly-targeted, locally-held* archive that could hold the lost AN END page. Ciphertext-only
 > program COMPLETE, hardened. _(Maintenance: Campaign XVIII's skip-aware NULL run is now logged.)_
+>
+> **AN-END hunt CLOSED (2026-08) — see `analysis/anend_hunt/FINDINGS.md`.** Thread (b) was pursued
+> with a fresh, correctly-targeted hunt and is now **closeable**: the page is
+> **unreachable-by-construction** (its address is gated behind solving OTP-class LP2 0–54; the 2014
+> chain grammar is "each onion's solved content yields the next address"; `gy3hoy2…onion` is a
+> debunked hallucination), no genuinely-retrievable in-scope Tor-v2 corpus exists, the held corpus
+> hashes null across representations (2,706 tests), and the 2026 community status is a sourced negative
+> (still unfound; `Cicada-DWH-HashcatAttempts` 0 matches @2025-10-29; no 7A35090F msg since 2017). The
+> **only remaining door is solving LP2 0–54 (cryptanalysis, not OSINT)**; residual = passive monitoring.
 
 ## 📄 Community deliverable
 **`liber-primus/SOLVERS-DOSSIER.md`** = the consolidated solver-facing contribution
@@ -34,7 +43,7 @@ Final crypto-rigor probes: `liber-primus/analysis/crypto_rigor.py` + `analysis/C
 | 1 | Independent **vision re-transcription** of the 56 page images | ✅ **closed 2026-06-20** — not viable; canonical verified — `liber-primus/analysis/vision/AVENUE-1-VISION-VERDICT.md` |
 | 2 | Doublet-avoidant / fractionation attacks | ✅ closed (ruled out) — `analysis/OPEN-AVENUES.md` |
 | 3 | Contribute findings to community | ✅ shipped — `FINDINGS-FOR-SOLVERS.md`, repo public |
-| 4 | OSINT for the lost deep-web hash page | ✅ done — `analysis/DEEPWEB-HASH-OSINT.md` (trail cold) |
+| 4 | OSINT for the lost deep-web hash page | ✅ **closed 2026-08** — unreachable-by-construction; `analysis/anend_hunt/FINDINGS.md` |
 
 ## ✅ AVENUE #1 — what happened (closed)
 

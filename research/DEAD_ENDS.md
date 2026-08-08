@@ -271,3 +271,26 @@ skip-aware application of ANY keytext are independently dead). The two remaining
 external and low-prior: (a) a signed/archival indication a specific text IS the key, or (b) a
 correctly-targeted locally-held archive that could contain the lost AN END page. The
 ciphertext-only-COMPLETE / external-input-only verdict stands, hardened.
+
+## External avenue — AN-END deep-web page CLOSED 2026-08 (full writeup: `liber-primus/analysis/anend_hunt/FINDINGS.md`)
+Round 7's live external thread (b) — the lost AN-END deep-web page (hashes to `36367763…c2a8b4`) —
+was pursued with a fresh, correctly-targeted hunt (reachability analysis + address-free hash-scan +
+4-lens adversarial OSINT armada, all live-checked 2026-08). **CLOSEABLE.**
+- **Unreachable-by-construction:** the 2014 chain's grammar is "each onion's SOLVED content yields the
+  next address"; the AN-END target's address is therefore gated behind solving LP2 0-54 (OTP,
+  unsolved). No independent address exists in onion7 / AN-END / PARABLE / the 2017 message. The
+  `gy3hoy2zizvuzvdb.onion` "lead" is a search-summary hallucination — **do not revive it.**
+- **No retrievable in-scope corpus:** Wayback tor2web CDX is empty-of-content even for the KNOWN
+  onion7 host and rejects blind (wildcard) queries; DUTA/DUTA-10K, DARPA Memex CDR, LIGHTS, and
+  historical Ahmia are each out-of-scope or not publicly downloadable. **Do not re-chase drug-market
+  crawls** (topically disjoint — the prior OSINT's mistake).
+- **Held corpus is not the pre-image:** representation-axis hash-scan (raw/text/normalized ×
+  sha512/sha3_512/blake2b512) over the iBotPeaches onion1-7 chain + the *original* micheloosterhof
+  anomalous captures (server-status, index.html.2) = 2,706 tests, CLEAN NULL.
+- **Community 2026 (live):** still unfound — CicadaSolvers official "the referenced hash has never
+  been found"; `cicada-solvers/Cicada-DWH-HashcatAttempts` 0 matches as of 2025-10-29;
+  `tweqx/3301-hash-alarm` never hit; no 7A35090F-signed message since April 2017.
+**Do not re-open** as an OSINT/retrieval problem. Residual is passive-monitoring only (watch the two
+repo commit feeds + a new 7A35090F message). One record correction: *original* raw 2014 onion captures
+DO survive on GitHub (micheloosterhof/cicada-2014, krisyotam cijhho) — "IA copies = re-uploads" was
+true of Internet Archive specifically, not the GitHub mirrors; both hash null.
