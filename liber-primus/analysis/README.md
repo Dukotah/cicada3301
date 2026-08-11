@@ -1,13 +1,25 @@
 # Analysis — map of the work
 
-Every attack, probe and sweep run against the Liber Primus lives here: **183 scripts**
-across 22 investigation folders, each paired with the findings doc it produced. Nothing in
+Every attack, probe and sweep run against the Liber Primus lives here: **210 scripts**
+across 26 investigation folders, each paired with the findings doc it produced. Nothing in
 this tree is a sketch — every negative result below was produced by code you can re-run.
 
 > **Looking for the answer, not the archive?**
 > → [`../ELIMINATION-LEDGER.md`](../ELIMINATION-LEDGER.md) — everything tried and why it's dead.
 > → [`../FINAL-SYNTHESIS.md`](../FINAL-SYNTHESIS.md) — the terminal verdict.
 > This file is the **navigational map**: which folder holds which campaign.
+
+**Two eras of work live in this tree**, and they are organised differently:
+
+| Era | Naming | Where the writeup lives |
+|---|---|---|
+| **Campaigns III–XX** (through 2026-07) | folder per topic, Roman-numeral campaign | a `CAMPAIGN-*-FINDINGS.md` beside the scripts |
+| **Rounds 1–8** (2026-08) | folder per *axis*, pre-registered round | [`../../research/LEDGER.md`](../../research/LEDGER.md) + [`../../research/DEAD_ENDS.md`](../../research/DEAD_ENDS.md) |
+
+The difference matters when reading a negative result: campaign-era findings are "we ran this
+and it failed", round-era findings are "we wrote the pass/fail threshold down *first*, then ran
+it and it failed" — which is why the later rounds could close whole families by mechanism
+rather than one text at a time.
 
 ---
 
@@ -34,6 +46,10 @@ this tree is a sketch — every negative result below was produced by code you c
 | [`stego/`](stego/) | — | Image-stego verdict + the provenance table proving the circulating images are byte-identical to the onion7 release. [`STEGO-VERDICT.md`](stego/STEGO-VERDICT.md) · [`provenance.json`](stego/provenance.json) |
 | [`transcription/`](transcription/) | — | Cross-diff of every transcription lineage: rune-identical. [`TRANSCRIPTION-VERDICT.md`](transcription/TRANSCRIPTION-VERDICT.md) |
 | [`vision/`](vision/), [`vision-rerun/`](vision-rerun/) | — | AI-vision re-transcription tried as an independent read; verdict unchanged. [`AVENUE-1-VISION-VERDICT.md`](vision/AVENUE-1-VISION-VERDICT.md) |
+| [`seed_sweep/`](seed_sweep/) | **Round 8 — SEED** | Is the pad a *seeded PRNG*? 10 generators validated against the real libraries × both directions × every unix-second seed 2011–2015 = **2.52×10⁹ decodes, 0 hits** (best −13.13 = the null max). A full 32-bit sweep extends it: [`run_full32.sh`](seed_sweep/run_full32.sh) |
+| [`geometry/`](geometry/) | **Round 8 — GEOMETRY** | The pages are 400-DPI renders of a *typeset* document, and only FILE-level stego had ever been swept. Glyph-shape substitution is dead (median nearest-neighbour Hamming distance **0.0000**); micro-spacing 1.86σ unimodal; baseline jitter fails BIC. |
+| [`skeleton/`](skeleton/) | **Round 8 — SKELETON** | Word length is a cleartext invariant no pad touches, so a known text could be identified as the *plaintext* without a key. FFT scan of every offset, 51 texts / 8.2M words: 20.0% vs a 19.8% shuffled control. Also closes the word-length excess ([`length_anomaly.py`](skeleton/length_anomaly.py) — register variance, not nulls). |
+| [`anend_hunt/`](anend_hunt/) | **AN-END hunt 2026-08** | The lost deep-web page is **unreachable by construction** — its address is gated behind solving LP2 0–54. Corpus hashes null across 2,706 tests. [`FINDINGS.md`](anend_hunt/FINDINGS.md) |
 
 ## The 2026-07-28/29 auditor loop (`recon/`)
 
@@ -55,6 +71,31 @@ The loop **self-corrected three of its own false positives** (a word-length "lan
 that turned out to be line-wrap typography; a "surviving English phonotactics" claim that was
 95-rune sample noise; several claimed hits killed at the verify stage). That is the signal it
 was doing real work rather than accumulating motion.
+
+## The 2026-08 pre-registered loop — Rounds 1–8
+
+Where the auditor loop rotated *perspectives*, this loop rotated *axes*, and wrote each
+round's pass/fail threshold down before running it. Full detail in
+[`../../research/LEDGER.md`](../../research/LEDGER.md); kill reasons in
+[`../../research/DEAD_ENDS.md`](../../research/DEAD_ENDS.md).
+
+| Round | Axis | Scripts | Result |
+|---|---|---|---|
+| 1 | Is the doublet deficit an interrupter artifact? | [`h1_interrupter_strip.py`](h1_interrupter_strip.py) | NEGATIVE — intrinsic |
+| 2 | Period-locked fractionation signature | [`r2_fractionation_signature.py`](r2_fractionation_signature.py) | NEGATIVE |
+| 3 | Can a differencing/DP decode be anchored? | — | **KILL at Gate #1** — un-anchorable; the ciphertext-only program is COMPLETE here |
+| 4 | External key/seed, or a verifiable identity | — | NEGATIVE — cold |
+| 5 | Digraphic/autokey/interleave structure in residual doublets | [`r5_doublet_anatomy.py`](r5_doublet_anatomy.py) | NEGATIVE |
+| 6 | Misfiled plaintext windows; transition lattice | [`r6_sieve_windows.py`](r6_sieve_windows.py), [`r6_transition_structure.py`](r6_transition_structure.py) | NEGATIVE — the no-repeat rule is a *pure lag-1 identity* |
+| 7 | Is some untried public keytext the key? | — | **KILL, 0/15 unanimous** — any keytext dies both rigidly and skip-aware, *independent of which text*. [`../../research/ROUND-7-GATE1-SYNTHESIS.md`](../../research/ROUND-7-GATE1-SYNTHESIS.md) |
+| 8 | SEED · GEOMETRY · PAYLOAD · SKELETON · POINTERS | [`seed_sweep/`](seed_sweep/), [`geometry/`](geometry/), [`skeleton/`](skeleton/) | NEGATIVE ×5. [`../../research/ROUND-8-RESULTS.md`](../../research/ROUND-8-RESULTS.md) |
+
+**Why Round 8 mattered.** The program had generalised "ciphertext-only complete" to *all* axes.
+Round 8 tested the axes that were never ciphertext-only attacks at all — the pad's **entropy**
+(not just its structure), the **page geometry** as a typeset artifact, a **compressed/binary**
+plaintext, the **word-length skeleton** as a key-free plaintext identifier, and the residual
+doublets as **book-cipher pointers**. All five closed. The OTP characterisation now rests on a
+measurement of key entropy, not only on the absence of key structure.
 
 ## Standalone probes (this folder)
 

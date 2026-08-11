@@ -15,7 +15,8 @@ that first proves it can find the answers we already know.
 > project produced instead is a **sharpened boundary**: the unsolved pages are
 > **one-time-pad-class**, and the evidence now says they are *unsolvable-by-design*
 > rather than *unsolved-by-effort*. That is a result, not a consolation — and it is
-> backed by ~20 campaigns of falsified attacks, each with a reproduce command.
+> backed by ~20 campaigns plus 8 pre-registered rounds of falsified attacks, each
+> with a reproduce command.
 
 ---
 
@@ -57,7 +58,8 @@ human calligrapher following a "never write the same rune twice" rule by hand. S
 | **The verdict** on both goals — solve and attribution | [`liber-primus/FINAL-SYNTHESIS.md`](liber-primus/FINAL-SYNTHESIS.md) |
 | **Everything tried and why it's dead** — the complete index | [`liber-primus/ELIMINATION-LEDGER.md`](liber-primus/ELIMINATION-LEDGER.md) |
 | **To attack LP2 yourself** — verified facts + reproduce commands | [`liber-primus/SOLVERS-DOSSIER.md`](liber-primus/SOLVERS-DOSSIER.md) |
-| **The map of all 183 analysis scripts** | [`liber-primus/analysis/README.md`](liber-primus/analysis/README.md) |
+| **The map of all 210 analysis scripts** | [`liber-primus/analysis/README.md`](liber-primus/analysis/README.md) |
+| **The 2026-08 attack loop** — Rounds 1–8, pre-registered | [`research/LEDGER.md`](research/LEDGER.md) · [`research/DEAD_ENDS.md`](research/DEAD_ENDS.md) |
 | **Background on the puzzles themselves** | [`research/00-overview.md`](research/00-overview.md) |
 | **Where the work left off** | [`PICKUP-HERE.md`](PICKUP-HERE.md) |
 
@@ -81,6 +83,9 @@ downloaded onion dumps are gitignored and re-fetched on demand.
 ```
 cicada3301/
 ├── research/            cited deep-research reports — origins, each puzzle, identity, techniques
+│   ├── 00-overview.md … 06-*.md   the background reports
+│   ├── LEDGER.md                  the 2026-08 pre-registered loop, Rounds 1–8
+│   └── DEAD_ENDS.md               every closed avenue + the reason it closed
 ├── puzzles/             step-by-step reconstructed solution chains (2012, 2013, 2014)
 ├── ciphers/             technique reference: the ciphers and stego 3301 actually used
 ├── identity/            theories weighed against evidence + the verification ledger
@@ -91,11 +96,24 @@ cicada3301/
     ├── SOLVERS-DOSSIER.md      community-facing writeup with reproduce commands
     ├── src/lp/                 core library: gematria, ciphers, scoring, stats
     ├── data/                   transcriptions + provenance-verified page images
-    ├── analysis/               183 scripts across 22 campaigns  (see analysis/README.md)
+    ├── analysis/               210 scripts across 26 folders  (see analysis/README.md)
     ├── tests/                  the validation gate (11 tests, CI-enforced)
     ├── docs/                   reference + superseded snapshots
     └── outreach/               community post drafts
 ```
+
+**Reading order for a newcomer.** The repo answers three different questions and they live in
+different places — start with whichever you actually have:
+
+1. *"What is Cicada 3301?"* → [`research/00-overview.md`](research/00-overview.md), then the
+   per-puzzle reports.
+2. *"What did this project find?"* → [`liber-primus/FINAL-SYNTHESIS.md`](liber-primus/FINAL-SYNTHESIS.md)
+   (the verdict), then [`liber-primus/ELIMINATION-LEDGER.md`](liber-primus/ELIMINATION-LEDGER.md)
+   (everything ruled out).
+3. *"I want to attack it myself"* → [`liber-primus/SOLVERS-DOSSIER.md`](liber-primus/SOLVERS-DOSSIER.md)
+   for verified facts and reproduce commands, then
+   [`liber-primus/analysis/README.md`](liber-primus/analysis/README.md) for which folder holds
+   which attack, and [`PICKUP-HERE.md`](PICKUP-HERE.md) for what is still open.
 
 ## What this project can and cannot claim
 
@@ -107,9 +125,13 @@ partition); the source images are byte-identical to the original onion release
 (56/56 SHA1); autokey — the community's decade-old leading hypothesis — is **positively
 refuted**, not merely "failed to decrypt."
 
-**Cannot claim:** that the space of *all conceivable* external keytexts is exhausted. One
-untried already-public keytext remains the single falsifiable avenue, which is exactly why
-this repo says "no solve" instead of "unsolvable, full stop."
+**Cannot claim:** a solve, or a name. What the 2026-08 rounds changed is *why* — the
+falsifiable avenue this section used to name ("one untried already-public keytext") was
+itself closed in Round 7, **by mechanism rather than by exhaustion**: any keytext is dead
+both rigidly (doublet-excluded) and skip-aware (un-anchorable), independent of *which* text
+it is. So a new candidate text is no longer a lead on its own. What would still count is
+evidence from **outside** the ciphertext — a signed or archival pointer that a specific text
+*is* the key.
 
 **Deliberately does not claim:** a name. The identity of Cicada 3301's creators is
 unknown and unconfirmed. This repo catalogs and weighs theories — a field heavily polluted
@@ -131,5 +153,5 @@ self-corrections are recorded rather than quietly dropped.
 
 ---
 
-*Status current as of 2026-07-29. What would reopen the case: a new 7A35090F-signed Cicada
+*Status current as of 2026-08-11. What would reopen the case: a new 7A35090F-signed Cicada
 release, a CicadaSolvers-accepted reproducible page solve, or the private pad surfacing.*

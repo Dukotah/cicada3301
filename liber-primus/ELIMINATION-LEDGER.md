@@ -28,8 +28,15 @@ AI" — the math says otherwise.
 **What this project can honestly claim:** every attack *we could concretely construct*
 has been run and falsified, and the cipher's mechanism is now described to a
 parameter — which appears to be *ahead* of the published community state of the art
-(which still stops at "autokey/custom"). **What it cannot claim:** that the space of
-*all conceivable* external keytexts is exhausted. See "Still genuinely open" below.
+(which still stops at "autokey/custom"). **What it cannot claim:** a solve, or a name.
+
+> **Update 2026-08 (Rounds 1–8).** This section used to end "…cannot claim that the space
+> of all conceivable external keytexts is exhausted." **Round 7 closed that by mechanism
+> rather than by exhaustion**: any keytext is dead both rigidly (doublet-excluded) and
+> skip-aware (un-anchorable), *independent of which text it is* — so the argument no
+> longer depends on how many texts were tried. **Round 8** then measured the pad's
+> **entropy** (2.52×10⁹ seeded-PRNG decodes, 0 hits) rather than only observing the
+> absence of key structure. See the Rounds index below.
 
 ---
 
@@ -149,7 +156,50 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 
 ---
 
+## The 2026-08 pre-registered rounds (index)
+
+Where the campaigns above ran an attack and reported the outcome, each round below had its
+**hypothesis and pass/fail threshold written down before the run** — which is what let the
+later rounds close whole families by mechanism instead of one candidate at a time. Full
+detail: `../research/LEDGER.md`; kill reasons: `../research/DEAD_ENDS.md`.
+
+| Round | Hypothesis | Result | Where |
+|---|---|---|---|
+| 1 | The doublet deficit is an artifact of the interrupters | **NEGATIVE** — intrinsic | `analysis/h1_interrupter_strip.py` |
+| 2 | A period-locked fractionation signature exists in LP2 | **NEGATIVE** | `analysis/r2_fractionation_signature.py` |
+| 3 | A differencing/DP decode can be anchored | **KILL at Gate #1** — un-anchorable; the ciphertext-only program is COMPLETE | `../research/LEDGER.md` |
+| 4 | An external key/seed lead, or a verifiable author identity, exists | **NEGATIVE** — cold | `../research/LEDGER.md` |
+| 5 | Residual doublets carry digraphic/autokey/interleave structure | **NEGATIVE** | `analysis/r5_doublet_anatomy.py` |
+| 6 | Misfiled plaintext windows; transition-lattice/keel structure | **NEGATIVE** — the no-repeat rule is a *pure lag-1 identity*, no second-order structure | `analysis/r6_sieve_windows.py`, `r6_transition_structure.py` |
+| 7 | Some untried already-public keytext is the key | **KILL, 0/15 unanimous** — dead rigidly *and* skip-aware, independent of which text | `../research/ROUND-7-GATE1-SYNTHESIS.md` |
+| 8 | Five axes that were never ciphertext-only attacks (below) | **NEGATIVE ×5** | `../research/ROUND-8-RESULTS.md` |
+
+**Round 8's five axes**, each previously uncovered by "ciphertext-only complete":
+
+| Axis | Question it asked | Result |
+|---|---|---|
+| **SEED** | Is the pad a seeded PRNG? Structure was measured; entropy never was. | 10 generators validated against the real libraries × both directions × every unix-second seed 2011–2015 = **2.52×10⁹ decodes, 0 hits**, best −13.13 (= the null max); +15,408 lore/string/date seeds, 0 hits. `analysis/seed_sweep/` |
+| **GEOMETRY** | The pages are 400-DPI renders of a *typeset* document — only FILE-level stego had been swept. | Glyph-shape substitution dead (median nearest-neighbour Hamming distance **0.0000**); micro-spacing 1.86σ unimodal; baseline jitter fails BIC. `analysis/geometry/` |
+| **PAYLOAD** | "Flat IoC" is blind to a *compressed or binary* plaintext. | 166 representations scanned for magics/armor/inflate: nothing. Byte histogram exactly uniform (χ² 246.7 / 255 df). |
+| **SKELETON** | Word length is a cleartext invariant no pad touches — a known text could be identified as the **plaintext**, no key needed. | FFT scan of every offset, 51 texts / 8.2M words: 20.0% vs a 19.8% shuffled control. Negative *for that corpus*; the tool extends. `analysis/skeleton/` |
+| **POINTERS** | The 86 residual doublets as a book-cipher index. | Every reading inside the random null. |
+
+**AN-END hunt closed (2026-08).** The lost deep-web page is **unreachable by construction**:
+its address is gated behind solving OTP-class LP2 0–54 (the 2014 chain grammar is "each
+onion's solved content yields the next address"), `gy3hoy2…onion` is a debunked
+hallucination, no genuinely-retrievable in-scope Tor-v2 corpus exists, the held corpus hashes
+null across representations (2,706 tests), and the 2026 community status is a sourced
+negative. `analysis/anend_hunt/FINDINGS.md`.
+
+---
+
 ## Still genuinely open (the honest frontier)
+
+> **⚠️ Superseded 2026-08.** Both numbered items below were closed after this section was
+> written — **#1 by Round 7** (keytexts dead by mechanism, not by exhaustion) and **#2 by the
+> AN-END hunt** (unreachable by construction). They are kept here unedited because the
+> reasoning that *narrowed* them is still the useful record. For what is actually open now,
+> see `../PICKUP-HERE.md` § "What is actually still open" — all of it external and low-prior.
 
 **Update (Campaign XVII — assumption-stack red-team):** the eight load-bearing
 premises the whole effort rested on have now each been attacked directly and hold —
@@ -218,6 +268,14 @@ More keywords • more short/periodic keys • more number-theoretic or PRNG key
 autokey/autoclave • differencing/integration • page-on-page keying • transposition-only •
 fractionation • substitution/homophonic • image stego • AI-vision re-transcription •
 treating pp49–51 as a runic key. All eliminated with the reason and a reproduce pointer.
+
+**Added by Rounds 1–8 (2026-08):** **another keytext** (dead by mechanism, independent of
+which text — Round 7) • **seeded-PRNG pads** (2.52×10⁹ decodes, 0 hits — Round 8 SEED) •
+**glyph-shape / micro-spacing / baseline stego** in the page renders (Round 8 GEOMETRY) •
+**compressed or binary plaintext** (Round 8 PAYLOAD) • **residual doublets as book-cipher
+pointers** (Round 8 POINTERS) • **the interrupter-artifact explanation** of the doublet
+deficit (Round 1) • **second-order structure in the no-repeat rule** — it is a pure lag-1
+identity (Round 6).
 
 ---
 
