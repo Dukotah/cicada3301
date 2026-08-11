@@ -1,0 +1,60 @@
+LP2 unsolved: 2928 words, 12956 runes, 458 interrupters
+length histogram: [0, 99, 465, 726, 514, 318, 252, 214, 159, 77, 51, 28, 18]
+transliterating corpus ...
+corpus: 51 texts, 8205104 words
+
+=== window 2928 words ===
+ slack 0 | corpus 8205104 words across 51 texts
+   best real: 581/2928 matches (19.8%) in kjv.txt @word 232038
+   shuffled-control best across same texts: mean 532 max 586
+   z of real vs shuffled-control distribution: 2.07
+     kjv.txt                              581 (19.8%)
+     gutenberg/kjv_bible.txt              581 (19.8%)
+     gutenberg/chaucer_canterbury.txt     573 (19.6%)
+     keys/mabinogion.txt                  571 (19.5%)
+ slack 1 | corpus 8205104 words across 51 texts
+   best real: 1441/2928 matches (49.2%) in kjv.txt @word 658605
+   shuffled-control best across same texts: mean 1348 max 1438
+   z of real vs shuffled-control distribution: 2.03
+     kjv.txt                             1441 (49.2%)
+     gutenberg/kjv_bible.txt             1441 (49.2%)
+     keys/mabinogion.txt                 1420 (48.5%)
+     gutenberg/homer_odyssey.txt         1416 (48.4%)
+
+=== window 400 words ===
+ slack 0 | corpus 8205104 words across 51 texts
+   best real: 98/400 matches (24.5%) in kjv.txt @word 112086
+   shuffled-control best across same texts: mean 89 max 98
+   z of real vs shuffled-control distribution: 1.16
+     kjv.txt                               98 (24.5%)
+     gutenberg/twain_huck.txt              98 (24.5%)
+     gutenberg/kjv_bible.txt               98 (24.5%)
+     war.txt                               97 (24.2%)
+ slack 1 | corpus 8205104 words across 51 texts
+   best real: 213/400 matches (53.2%) in kjv.txt @word 201063
+   shuffled-control best across same texts: mean 202 max 216
+   z of real vs shuffled-control distribution: 0.88
+     kjv.txt                              213 (53.2%)
+     gutenberg/kjv_bible.txt              213 (53.2%)
+     gutenberg/poetic_edda.txt            212 (53.0%)
+     gutenberg/corpus_hermeticum_pymander.txt   212 (53.0%)
+
+=== window 120 words ===
+ slack 0 | corpus 8205104 words across 51 texts
+   best real: 40/120 matches (33.3%) in kjv.txt @word 372632
+   shuffled-control best across same texts: mean 36 max 43
+   z of real vs shuffled-control distribution: 1.05
+     kjv.txt                               40 (33.3%)
+     gutenberg/shakespeare_complete.txt    40 (33.3%)
+     gutenberg/poetic_edda.txt             40 (33.3%)
+     gutenberg/nietzsche_zarathustra.txt    40 (33.3%)
+ slack 1 | corpus 8205104 words across 51 texts
+   best real: 78/120 matches (65.0%) in kjv.txt @word 146409
+   shuffled-control best across same texts: mean 72 max 77
+   z of real vs shuffled-control distribution: 1.40
+     kjv.txt                               78 (65.0%)
+     gutenberg/kjv_bible.txt               78 (65.0%)
+     gutenberg/elder_edda.txt              77 (64.2%)
+     war.txt                               76 (63.3%)
+
+wrote wordlen_results.json

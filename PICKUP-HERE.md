@@ -23,6 +23,30 @@ https://github.com/Dukotah/cicada3301 (default branch `master`).
 > (still unfound; `Cicada-DWH-HashcatAttempts` 0 matches @2025-10-29; no 7A35090F msg since 2017). The
 > **only remaining door is solving LP2 0–54 (cryptanalysis, not OSINT)**; residual = passive monitoring.
 
+> **ROUND 8 (2026-08-11) — five unexamined dimensions, all NEGATIVE.**
+> See `research/ROUND-8-RESULTS.md` + the Round-8 block in `research/DEAD_ENDS.md`.
+> The program had generalised "ciphertext-only complete" to all axes; Round 8 tested the
+> axes that were never ciphertext-only attacks at all, and closed them:
+> **SEED** — the pad may be a seeded PRNG (structure was measured, entropy never was).
+> 10 validated generators (glibc/MSVC/MT19937/CPython/Java, reproduced exactly against the
+> real libraries) x both directions x every unix-second seed 2011-2015 = 2.52e9 decodes,
+> **0 hits, best -13.13** (= the null max); + 15,408 lore/string/date-seed decodes, 0 hits.
+> A full 32-bit sweep is running into `analysis/seed_sweep/results_full32.txt`.
+> **GEOMETRY** — these are 400-DPI renders of a *typeset* document and only FILE-level stego
+> had ever been swept. Glyph-shape substitution is dead (median nearest-neighbour Hamming
+> distance **0.0000**: the median glyph has a pixel-identical twin); micro-spacing is
+> 1.86-sigma unimodal; baseline jitter fails BIC. `analysis/geometry/`.
+> **PAYLOAD** — "flat IoC" is blind to a compressed/binary plaintext. 166 representations
+> scanned for magics/armor/inflate: nothing; byte histogram exactly uniform (chi2 246.7/255 df).
+> **SKELETON** — word length is a cleartext invariant no pad touches, so a known text could
+> be identified as the PLAINTEXT without a key. FFT scan of every offset in 51 texts /
+> 8.2M words: best 20.0% vs a shuffled control's 19.8%. Negative for that corpus; the tool
+> is built to extend (`analysis/skeleton/`).
+> **POINTERS** — the 86 residual doublets as a book-cipher index: every reading inside the
+> random null.
+> _Net: the OTP characterisation is now backed by a measurement of key ENTROPY, not only by
+> the absence of key structure._
+
 ## 📄 Community deliverable
 **`liber-primus/SOLVERS-DOSSIER.md`** = the consolidated solver-facing contribution
 (verified provenance, full ruled-out map, verified-positives, open threads, tools).

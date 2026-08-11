@@ -294,3 +294,148 @@ was pursued with a fresh, correctly-targeted hunt (reachability analysis + addre
 repo commit feeds + a new 7A35090F message). One record correction: *original* raw 2014 onion captures
 DO survive on GitHub (micheloosterhof/cicada-2014, krisyotam cijhho) — "IA copies = re-uploads" was
 true of Internet Archive specifically, not the GitHub mirrors; both hash null.
+
+## Round 8 — 2026-08-11 (unexamined-dimension hunt) — 5 tracks, all NEGATIVE
+Full writeup + reproduction: `research/ROUND-8-RESULTS.md`; code in
+`liber-primus/analysis/{seed_sweep,geometry,skeleton}/`. These tracks are neither
+ciphertext-only attacks nor external inputs — they are dimensions of artifacts already in
+hand that the program had never measured (keystream ENTROPY, image GEOMETRY, the cleartext
+SKELETON, byte-level payload structure).
+
+### KILLED (Gate #2, executed then refuted) — R8-SEED "the pad is a seeded PRNG"
+**Mechanism:** every prior round measured keystream *structure* (none) and none measured
+keystream *entropy*. A seeded PRNG is indistinguishable from a pad by every test in this
+repo yet carries only 31–48 bits of key. Attack = replay the encoder forward from each
+candidate seed and score the decrypt.
+**Why the earlier Gate-#1 kills do not reach it:** R1-H2's decisive objection (an OTP-class
+object admits a valid key for ANY plaintext) is true for unconstrained 29^n keys and FALSE
+for a key that is a deterministic function of a ≤2^32 seed — 12,956 runes carry ~32,000
+bits of English redundancy against ≤32 bits of key, so the expected number of spurious
+English-scoring decrypts is ~0. R1-H3 / R3-H1 / R3-H2 ("collision-skip is un-invertible")
+concern decoding WITHOUT the key; with a seed you never decode, you replay the encoder, so
+the rejection rule is free (swept as gen 2).
+**Harness validated:** glibc random() reproduced EXACTLY against libc (5 seeds x 2000
+draws); MT19937, CPython random.seed(int)+randrange/random, and Java Random.nextInt
+reproduced exactly against independent implementations. Self-plant recovered 10/10
+generator variants (true −11.24 vs wrong-seed −15.8…−16.9), with the documented interrupter
+rule honoured by branching over F decisions.
+**Why dead:** REFUTED. 10 generator/reduction variants x both directions over unix-second
+seeds 2011-01-01..2015-01-01 = **2.52e9 decodes; 0 hits; best score −13.13**, which is the
+maximum of the null and 1.5 units below the English 0.1th percentile. Plus 15,408 decodes
+over 1,284 lore/string/date seeds x 6 draw methods (CPython hashes str seeds through
+SHA-512, so these are unreachable from the integer sweep): **best −14.69, 0 hits**. A full
+32-bit sweep of all ten generators appends to `analysis/seed_sweep/results_full32.txt`.
+**Do not revive** these generators over these ranges. Genuinely untested residue, stated so
+nobody claims more than was done: seeds beyond 2^32 (Java's full 48-bit space, urandom,
+multi-word init_by_array), other generators (PHP mt_rand, .NET subtractive, xorshift, RC4),
+and a keystream OFFSET other than 0 (the sweep assumes key index 0 = first rune of page 0).
+Extend `sweep.c`, do not rewrite it.
+
+### KILLED (Gate #2, executed then refuted) — R8-GEOMETRY "typeset-document stego"
+**Mechanism:** STEGO-VERDICT swept FILE-level channels only (appended bytes, EXIF, carve,
+LSB, DQT, OutGuess). Its own provenance finding — 400-DPI Ghostscript renders of a PDF —
+means these are a TYPESET DOCUMENT, whose canonical covert channels are geometric:
+glyph-shape substitution, inter-glyph advance, baseline jitter. Never measured here; the
+vision armada tried to READ glyphs, never to COMPARE them.
+**Why dead:** REFUTED on all three, on images re-verified 56/56 SHA1 authentic.
+- **Shape:** for each of 13,121 full-height glyphs, exact pixel Hamming distance to its
+  nearest neighbour among same-(h,w)±1 glyphs. **Median 0.0000 — the median glyph has a
+  pixel-identical twin; p90 = 0.0000.** The 82 (0.625%) exceeding 25% of their ink are
+  segmentation artifacts (broken strokes / merged blobs), adjudicated by eye in
+  `shape_outliers3.png`. Glyph-substitution stego is dead.
+- **Advance:** separator-free inter-glyph gaps (n=11,035) — dominant component mean 4.43
+  sd 1.63 carrying 89% of mass; two-component separation only **1.86 sigma**, below what a
+  1-bit channel needs to be readable. Pitch residual (advance minus the class median,
+  removing glyph shape) likewise unimodal.
+- **Baseline:** within-class offset sd 4.15 px; a 2-component GMM is **rejected by BIC**
+  (delta −22…−25 favouring 1 component).
+**Do not revive** typographic micro-spacing, baseline or glyph-substitution stego.
+**Traps recorded so they are not re-fallen-into:** an absolute ink-projection threshold
+merges a page into 2–3 line bands (ascenders/descenders overlap) — threshold at ~45% of the
+median peak; raw ink gaps look strongly bimodal ONLY because word-separator dots were
+filtered out of the glyph sequence; comparing a glyph to its size-group modal mask blends
+several different runes sharing a bounding box; and uint8 mask subtraction underflows.
+**Left open (inventory, not a verdict):** 47 non-text bands across 23 pages are catalogued
+in `geometry/geometry_report.json`. Most are mis-segmented text lines; the short ones
+(1/3/4/8/16 glyphs) are the only real ornament candidates and nobody has read them.
+
+### KILLED (Gate #2, executed then refuted) — R8-PAYLOAD "the plaintext is binary, not prose"
+**Mechanism:** every "no language" verdict here (IoC_norm, quadgrams, CRYPTO-RIGOR §C, R5
+ROSETTA) is blind to a COMPRESSED or BINARY plaintext — gzip output has flat IoC by
+construction, which is exactly the observed profile. "Flat IoC" had been read as "still
+encrypted" when it is equally consistent with "already decoded, but not prose". R5 ROSETTA
+was killed because non-English *language* would raise IoC; that argument does not touch a
+binary payload.
+**Why dead:** REFUTED. The key-free decodes (raw / first-difference / rank-in-28 /
+collision-unbump, each also reversed and Atbash-mapped) packed to bytes across base-29 and
+base-28 bignum in both digit orders and 5-bit packing in both bit orders at all 8 phases =
+**166 representations**, scanned for 40 file magics, PGP/PEM armor, zlib/deflate/gzip
+inflation at every offset in the first 4 KB, letter-runs, entropy and chi-square.
+**Nothing.** Byte histogram is exactly uniform: entropy 7.977/8.000, **chi2 = 246.7 on 255
+df (p ≈ 0.5)**. (Single-byte "magic" hits occur at 1/256 per representation and are noise.)
+**Do not revive** container/compression/keyfile readings of the rune stream. Net effect:
+"flat IoC" is now backed by a byte-level uniformity measurement, not only by a language
+model's silence.
+
+### KILLED (Gate #2, executed then refuted) — R8-POINTERS "residual doublets as an index list"
+**Mechanism:** R5 tested the 86 surviving doublets as cipher STRUCTURE (digraphic parity,
+doubled-rune identity, gap distribution) and killed all three. An 86-element position list
+is also the shape of a book-cipher index, which was never tested.
+**Why dead:** REFUTED. Readings tested — doubled rune values as a message; gaps as letters
+(mod 26/29, offset −1); gaps and cumulative gaps as word indices into the solved LP1 English
+(0- and 1-based); positions as word indices into LP2's own cleartext skeleton; the runes
+before and after each doublet; gaps vs primes and Fibonacci. **Best score −16.34 against a
+null of mean −16.69 sd 0.244 (2,000 random position sets of the same size); English-class
+is ~−12.** Every reading is inside the null.
+**Recorded so it is not re-reported as a signal:** doublet positions that are prime = 3/86
+vs ~10 expected (p ≈ 0.007 one-sided) — not significant across the ~15 readings tested and
+with no mechanism behind it.
+
+### KILLED (Gate #2, executed then refuted) — R8-SKELETON "identify the PLAINTEXT via the cleartext channel"
+**Mechanism:** word/clause/line/page boundaries are NOT enciphered, so word length in runes
+is a plaintext invariant under any per-rune substitution or additive keystream, INCLUDING a
+one-time pad. The information-theoretic wall applies to rune VALUES only. Every keytext
+entry in this log concerns a text used as a KEY; this asks whether a known text is the
+PLAINTEXT, which needs no key — and a hit would hand over the keystream by subtraction.
+**Why dead:** REFUTED for the corpus tested. FFT cross-correlation of LP2's 2,928-word
+rune-length sequence against **every** alignment offset in **51 texts / 8,205,104 words**
+(the repo's key texts plus 39 canon-relevant works and controls), slack 0 and 1, windows
+2928/400/120. **Best real match 19.8% (slack 0) / 49.2% (slack 1) — BELOW the shuffled-LP2
+control's own maximum on the same texts (20.0% / 49.1%).** The leaderboard is an ordering
+by text length (KJV, Chaucer, Mabinogion, Homer = most offsets = highest max), i.e. the
+maximum-of-many effect. A true identification would score near 100%.
+**Do not revive** for these 51 texts. DO extend it — the method is cheap and correct; drop
+more texts into `analysis/skeleton/corpus/` and re-run `wordlen_search.py`. This eliminates
+a corpus, not "all known texts".
+
+### PARSING BUG found and fixed mid-round — affects any word-length work in this repo
+`/` in the krisyotam transcription is a **LINE WRAP, not a word separator**: **458 of the
+604 line breaks fall MID-WORD**. Treating `/` as a word terminator shatters 458 words into
+fragments, yields 3,316 "words" instead of **2,928**, mean length 3.91 instead of **4.425**,
+and manufactures a spurious 2x excess of one-rune words. The first pass of this track had
+that bug; every number now recorded is from the corrected parse. Anyone reusing the word
+skeleton must split on `-` and `.` only.
+
+### LEFT OPEN (the one live thread Round 8 produced rather than closed) — the LP2 word-length excess
+LP2's mean rune-word length is **4.425**. English-in-futhorc is 4.10–4.15; Cicada's own
+solved LP1 prose is ~4.0. A null interrupter adds one rune to its word, but all 458 F runes
+supply only **+0.156 runes/word** against a gap of **+0.32**. Simulating English with
+Poisson F-insertion at the full 458 rate still leaves KS 0.039–0.047 vs a 0.025 critical
+value. Latin (Caesar, mean 5.72) is far too long and Welsh / KJV / Mabinogion (3.76–3.82)
+too short, so the obvious language substitutions do not resolve it. A **separator audit
+against the page images** — never done before; all prior transcription checks compared rune
+streams only — finds **151/170 rune-exact lines agree exactly (88.8%), mean difference
+−0.03 ± 1.10, no systematic bias**, so missing word separators do not explain it either
+(`analysis/geometry/separator_audit.py`, 19 candidate lines listed for re-read).
+Surviving explanations, none tested: more nulls than the 458 F runes (which would
+contradict the documented "only ᚠ is ever a null" rule); a plaintext register with longer
+words than narrative prose; a non-English language other than Latin/Welsh; or a
+word-boundary convention that differs from the one assumed. This anomaly lives in a channel
+no cipher touches, so it is attackable without a key.
+
+## PROGRAM STATUS — UPDATED 2026-08-11 (Round 8)
+The ciphertext-only-COMPLETE verdict stands for rune-value cryptanalysis. Round 8 closes
+four dimensions that were never ciphertext-only attacks at all — keystream entropy, page
+geometry, byte-level payload structure, and the cleartext skeleton — plus the doublet-pointer
+reading. The one-time-pad characterisation is now supported by a *measurement of key
+entropy* over 2.5e9 candidate seeds rather than only by the absence of key structure.

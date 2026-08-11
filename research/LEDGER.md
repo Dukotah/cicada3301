@@ -391,3 +391,71 @@ table. **Also surfaced (maintenance, not a test):** Campaign XVIII's skip-aware 
 but was never logged here or in `DEAD_ENDS.md` — recorded now (see `DEAD_ENDS.md` Round 7 note).
 
 **Killed this round (Gate #1):** all 15 (R7-KT1..3, R7-EA1..3, R7-A1..A3 ×3 lenses). See `DEAD_ENDS.md`.
+
+---
+
+# Round 8 — 2026-08-11 — UNEXAMINED-DIMENSION HUNT (5 tracks executed, all NEGATIVE)
+
+**Premise.** Rounds 1–7 established "ciphertext-only COMPLETE / external-input-only". That
+verdict is correct for **rune-value cryptanalysis** and is not disputed. Round 8 challenges
+only its *generalisation*: the program measured one axis to exhaustion and then treated the
+conclusion as covering all axes. Three of these five tracks are neither ciphertext-only
+attacks nor external inputs — they are dimensions of artifacts already in hand that had
+never been measured at all. External input for the round: **NONE required**, by design.
+
+**Tracks, statistic, kill condition, result.**
+
+| track | pre-registered statistic | kill condition | result |
+|---|---|---|---|
+| SEED | 4-gram score of the decrypt at each candidate seed | no seed exceeds −12.5 | NEGATIVE |
+| GEOMETRY | glyph NN-Hamming; advance/baseline GMM BIC | no outlier class; 1-comp preferred | NEGATIVE |
+| PAYLOAD | file magic / inflate / byte χ² over 166 representations | no container, χ² ≈ uniform | NEGATIVE |
+| POINTERS | 4-gram score of doublet-index readings vs null | inside the null | NEGATIVE |
+| SKELETON | FFT word-length match vs shuffled control | best ≤ control max | NEGATIVE |
+
+**SEED — the round's real contribution.** Every prior round measured keystream *structure*;
+none measured keystream *entropy*. A seeded PRNG is indistinguishable from a pad by every
+test in this repo yet carries ≤32 bits of key, and unicity distance (12,956 runes ≈ 32,000
+bits of English redundancy vs ≤32 bits of key) means a hit cannot be manufactured by search
+— which is precisely why R1-H2's "an OTP admits a key for any plaintext" objection does not
+reach a bounded-entropy key family. Harness reproduces glibc `random()` bit-exact against
+libc and MT19937 / CPython / Java against the real implementations; self-plant recovers
+10/10 generator variants. **2.52·10⁹ decodes** over 10 generator × reduction variants × both
+directions × every unix second 2011–2015: **0 hits, best −13.13 (= the null maximum)**. Plus
+15,408 decodes over 1,284 lore/string/date seeds × 6 draw methods: best −14.69, 0 hits. A
+full 32-bit sweep runs into `analysis/seed_sweep/results_full32.txt`.
+**ESTABLISHED:** the one-time-pad characterisation now rests on a *measurement of key
+entropy*, not only on the absence of key structure. That is a materially stronger claim than
+the repo could previously make.
+
+**GEOMETRY.** These pages are 400-DPI renders of a *typeset* document and only FILE-level
+stego had ever been swept. Glyph-substitution is dead by the sharpest available test: for
+13,121 full-height glyphs the **median nearest-neighbour pixel Hamming distance is 0.0000**
+(p90 also 0.0000) — the median glyph has a pixel-identical twin, so no glyph in the book
+fails to repeat. Micro-spacing separates at only 1.86 σ; baseline jitter fails BIC.
+
+**PAYLOAD.** "Flat IoC" was being read as "still encrypted" when it is equally consistent
+with "already decoded, but not prose" — every language test in this repo is blind to a
+compressed or binary plaintext. 166 representations scanned: no magic, no armor, no
+inflatable region; byte histogram **exactly uniform (χ² 246.7 on 255 df)**.
+
+**SKELETON — and a self-inflicted error worth logging.** The first pass treated `/` as a
+word separator; it is a **line wrap**, and **458 of the 604 line breaks fall mid-word**, so
+that pass shattered 458 words into fragments (3,316 fake "words" vs the true 2,928) and
+produced a spurious 2× excess of one-rune words which was briefly mistaken for a signal.
+Corrected and re-run. Corrected verdict is unchanged: over 51 texts / 8.2 M words, the best
+alignment scores 19.8%, *below* the shuffled control's own maximum.
+
+**LEFT OPEN — the one thread this round produced rather than closed.** LP2's mean rune-word
+length is **4.425** against 4.10–4.15 for English-in-futhorc and ~4.0 for Cicada's own
+solved prose. All 458 interrupters supply only +0.156 runes/word against a +0.32 gap;
+simulating English with F-insertion at the full rate still leaves KS 0.039–0.047 vs a 0.025
+critical value. Latin is far too long (5.72), Welsh/KJV/Mabinogion too short. A **separator
+audit against the page images** — the first time anything other than the rune stream has
+been checked against the originals — finds 88.8% exact per-line agreement with no systematic
+bias, so missing separators do not explain it. The excess sits in a channel no cipher
+touches and is therefore attackable without a key. See `DEAD_ENDS.md` Round 8 and
+`research/ROUND-8-RESULTS.md` §SKELETON.
+
+**Killed this round (Gate #2, executed then refuted):** R8-SEED, R8-GEOMETRY, R8-PAYLOAD,
+R8-POINTERS, R8-SKELETON. See `DEAD_ENDS.md`.
