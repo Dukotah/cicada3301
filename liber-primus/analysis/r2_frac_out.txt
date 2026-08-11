@@ -1,0 +1,46 @@
+========================================================================
+R2-H1  Fractionation coordinate-plane dispersion signature
+seed=3301  N=29  lags=[2,40]  surrogates=10000  abs_floor=0.05
+unsolved runes=12956  AN END runes=85
+========================================================================
+
+[ANCHOR 1] SYNTHETIC POSITIVE (known trifid, injected period)
+  injected period            : 13
+  variant P  A_max=+0.0787  (sub=row, lag=39)
+  variant T  A_max=+0.0703  (sub=layer, lag=39)
+  variant T2 A_max=+0.0703  (sub=col, lag=39)
+  best variant=P  A_max=+0.0787 at lag=39 (sub=row)
+  surrogate 99.9th (best var): 0.0384
+  peak recovers injected period (lag == k*13 +-1): True
+  ANCHOR 1 => PASS
+
+[ANCHOR 2] REAL-PAGE NEGATIVE CONTROL — AN END (totient keystream)
+  variant P  A_max=+0.2214  (sub=col, lag=27)  surr99.9=0.5389
+  variant T  A_max=+0.3861  (sub=row, lag=16)  surr99.9=0.5619
+  variant T2 A_max=+0.3861  (sub=row, lag=16)  surr99.9=0.5619
+  best variant=T  A_max=+0.3861  surr99.9=0.5619  abs_floor=0.05
+  NO period peak (below threshold OR below abs floor): True
+  ANCHOR 2 => PASS
+
+[ANCHOR 3] AGGREGATE-IoC COHERENCE
+  observed unsolved IoC*N    : 0.9999  (random ~ 1.00)
+  bifid fractionation floor  : 1.39  (repo-measured)
+  IoC*N below fractionation floor 1.39: True
+
+[REAL LP2 UNSOLVED]  computing 10000 surrogates per variant (seed 3304) ...
+
+[REAL LP2 UNSOLVED — RESULTS]
+  variant P : A_max=+0.0246  (sub=col, lag=26)
+            surrogate null: mean=0.0211 sd=0.0039 p99=0.0320 p99.9=0.0376
+            A_max > surr p99.9? False   A_max >= 0.05? False
+  variant T : A_max=+0.0284  (sub=row, lag=18)
+            surrogate null: mean=0.0224 sd=0.0037 p99=0.0330 p99.9=0.0386
+            A_max > surr p99.9? False   A_max >= 0.05? False
+  variant T2: A_max=+0.0284  (sub=row, lag=18)
+            surrogate null: mean=0.0224 sd=0.0037 p99=0.0330 p99.9=0.0386
+            A_max > surr p99.9? False   A_max >= 0.05? False
+
+[VERDICT]
+  any variant A_max>surr_p99.9 AND >=0.05 : False
+  peak lag reproduces +-1 across >=2 vars : True (lags P=26, T=18, T2=18)
+  ==> REFUTE fractionation-signature

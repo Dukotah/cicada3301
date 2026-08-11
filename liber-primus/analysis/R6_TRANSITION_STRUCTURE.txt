@@ -1,0 +1,62 @@
+==============================================================================
+R6 TEST 2 — TRANSITION-STRUCTURE (LATTICE + KEEL)
+==============================================================================
+seed=3301  surrogates=10000
+unsolved concatenated stream n=12956  AN END n=85
+
+--- KEEL: offset (c_i - c_{i-1}) mod 29 counts ---
+identity diagonal k=0 count = 86  (0.6638% of 12955 pairs; uniform-expect 446.7)
+deepest NON-identity offset: k=17 count=404 (3.1185%)
+all offsets k: count  (k=0 is identity):
+  0:86  1:459  2:504  3:440  4:438  5:446  6:430  7:470  8:426  9:510  10:497  11:455  12:449  13:504  14:474  15:470  16:449  17:404  18:434  19:474  20:467  21:463  22:421  23:486  24:468  25:467  26:457  27:476  28:431
+
+--- KEEL: cell scan (29x29) ---
+identity cells (a==b) that are zero: 1/29
+OFF-diagonal cells that are hard-zero (with nonzero marginals): 0/812
+
+--- LATTICE: conditional entropy ---
+H(c_i|c_{i-1}) = 4.7854 bits   H(c_i|c_{i-1},c_{i-2}) = 3.5228 bits  (max = log2 29 = 4.8580)
+trigram tensor: 12954 trigrams / 24389 cells = 0.5311 counts/cell  -> UNDERPOWERED (INCONCLUSIVE arm)
+
+--- ANCHORS ---
+A1 forbid-offset k=7 synthetic: offset7 count=0 (want 0), identity k0 count=294 (want ~normal 276)  PASS=True
+A2 pure identity-no-repeat synthetic: k0 count=0 (want 0), min non-identity offset count=263 (want ~normal, >0)  PASS=True
+A3 order-2 Markov synthetic: H1=4.6204 H2=0.6653 bits (H2 markedly below H1)  PASS=True
+
+--- NULL: 10,000 multiset+no-repeat surrogates (seed 3301) ---
+surrogate identity k0 count: mean=0.072 sd=0.269 (no-repeat constraint => should be 0; degenerate arm)
+   observed identity k0 = 86. DEGENERACY: identity arm is unbeatable-by-construction (excluded from family test).
+
+NON-IDENTITY min-offset count (family stat over 28 offsets):
+   surrogate mean=420.035 sd=9.626 0.1th-pct=380  degenerate=False
+   OBSERVED deepest non-identity offset count = 404 (k=17)
+   non-identity suppressed to <= identity depth (86) AND below 0.1th pct? False
+
+per-offset real-vs-null (k: obs | null_mean | z):
+  1:459|463|-0.18  2:504|463|+1.93  3:440|463|-1.07  4:438|462|-1.15  5:446|463|-0.79  6:430|463|-1.54  7:470|463|+0.34  8:426|463|-1.74  9:510|462|+2.25  10:497|463|+1.63  11:455|463|-0.35  12:449|463|-0.64  13:504|462|+1.98  14:474|463|+0.54  15:470|462|+0.38  16:449|463|-0.65  17:404|463|-2.78  18:434|463|-1.37  19:474|463|+0.53  20:467|462|+0.23  21:463|463|+0.01  22:421|463|-1.96  23:486|463|+1.12  24:468|463|+0.24  25:467|463|+0.20  26:457|463|-0.27  27:476|463|+0.62  28:431|463|-1.51
+
+H(c_i|c_{i-1},c_{i-2}) null: mean=3.5321 sd=0.0066 0.1th-pct=3.5105  degenerate=False
+   OBSERVED H2 = 3.5228 bits
+   H2 below null 0.1th pct? False
+
+hard-zero off-diagonal cells null: mean=0.00 sd=0.01 99.9th-pct=0  observed=0  degenerate=False
+
+A4 SPECIFICITY (length-matched n=12956 held-out no-repeat surrogate, seed 4300):
+   keel  deepest-nonid=419 (id=0, mn_lo=380) -> FP=False
+   H2=3.5295 (h2_lo=3.5105) -> FP=False
+   hard-zero off-diag cells=0 (99.9th=0) -> FP=False
+   detector fires on structure-free stream? False  PASS=True
+   [diag] AN END (n=85 solved PLAINTEXT): identity k0=2 (natural-English doublets, expected >0), min non-id offset=0 (sparsity at n=85, non-gating)
+
+ALL ANCHORS PASS = True  (A1=True A2=True A3=True A4=True)
+
+==============================================================================
+FAMILY (identity arm EXCLUDED as degenerate/unbeatable-by-construction):
+  non-identity offset suppression flagged: False
+  H2 below null 0.1th pct flagged: False
+  off-diagonal zero-cell excess (obs 0 vs 99.9th 0): False
+  trigram-tensor chi2 arm: INCONCLUSIVE (underpowered, 0.531 counts/cell)
+
+OVERALL VERDICT: REFUTE — forbidden rule is purely the identity lag-1 diagonal; no general off-diagonal or 2nd-order bias survives.
+(trigram-tensor chi2 arm is INCONCLUSIVE/underpowered but the powered arms — offset suppression, H2, zero-cell excess — are all NEGATIVE.)
+==============================================================================

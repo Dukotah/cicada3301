@@ -1,13 +1,14 @@
 # PICKUP-HERE — where the work left off
 
-_Updated **2026-07-29**. Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
+_Updated **2026-08-11**. Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
 
-## 👉 Start with the three canonical docs
+## 👉 Start with the canonical docs
 | Doc | What it holds |
 |---|---|
 | [`liber-primus/FINAL-SYNTHESIS.md`](liber-primus/FINAL-SYNTHESIS.md) | The terminal verdict on both goals — solve and attribution |
 | [`liber-primus/ELIMINATION-LEDGER.md`](liber-primus/ELIMINATION-LEDGER.md) | Everything tried and why it's eliminated — supersedes every scattered "ruled-out" table |
 | [`liber-primus/analysis/README.md`](liber-primus/analysis/README.md) | Map of all 183 analysis scripts → campaign → finding |
+| [`research/LEDGER.md`](research/LEDGER.md) + [`research/DEAD_ENDS.md`](research/DEAD_ENDS.md) | The 2026-08 pre-registered attack loop — Rounds 1–8, each with its kill reason |
 
 ## State in one paragraph
 
@@ -22,7 +23,57 @@ name** — stylometry is *provably* impossible at 359 words of authentic connect
 loop produced the tightest honest **profile** yet, anchored on a technique fingerprint
 (Smirnov/Carlitz anti-repeat hardening = a combinatorialist's reflex, applied by hand).
 
-## What the last three sessions did
+**Since then (2026-08), an eight-round pre-registered attack loop closed the last lanes** —
+including the two threads this doc previously listed as open. The OTP characterisation is now
+backed by a direct measurement of key **entropy**, not just by the absence of key structure.
+
+## The 2026-08 attack loop — Rounds 1–8
+
+Each round was **pre-registered** (hypothesis + pass/fail threshold written before the run) so a
+negative result means something. Full detail: [`research/LEDGER.md`](research/LEDGER.md),
+kill reasons in [`research/DEAD_ENDS.md`](research/DEAD_ENDS.md).
+
+| Round | Hypothesis tested | Verdict |
+|---|---|---|
+| 1 | The doublet deficit is an interrupter artifact | **NEGATIVE** — it is intrinsic |
+| 2 | A period-locked fractionation signature exists | **NEGATIVE** |
+| 3 | Differencing/DP decode can be anchored | **KILL at Gate #1** — un-anchorable; ciphertext-only program COMPLETE |
+| 4 | An external key/seed or a verifiable author identity exists | **NEGATIVE** — cold |
+| 5 | Residual doublets carry digraphic/autokey/interleave structure | **NEGATIVE** |
+| 6 | Misfiled plaintext windows / transition-lattice structure | **NEGATIVE** — the no-repeat rule is a *pure lag-1 identity*, no second-order structure |
+| 7 | Some untried public keytext is the key | **KILL, 0/15 unanimous** — any keytext dies both rigidly (doublet-excluded) and skip-aware (un-anchorable), *independent of which text* |
+| 8 | Five never-tested axes (below) | **NEGATIVE ×5** |
+
+**Round 8 in detail** ([`research/ROUND-8-RESULTS.md`](research/ROUND-8-RESULTS.md)) — these were
+the axes that were never ciphertext-only attacks at all, so "ciphertext-only complete" had never
+actually covered them:
+
+- **SEED** — is the pad a seeded PRNG? 10 validated generators (glibc/MSVC/MT19937/CPython/Java,
+  each reproduced exactly against the real library) × both directions × every unix-second seed
+  2011–2015 = **2.52 × 10⁹ decodes, 0 hits**, best −13.13 (= the null max); plus 15,408
+  lore/string/date-seed decodes, 0 hits. → `analysis/seed_sweep/`
+- **GEOMETRY** — these are 400-DPI renders of a *typeset* document and only FILE-level stego had
+  ever been swept. Glyph-shape substitution is dead (median nearest-neighbour Hamming distance
+  **0.0000** — the median glyph has a pixel-identical twin); micro-spacing is 1.86σ unimodal;
+  baseline jitter fails BIC. → `analysis/geometry/`
+- **PAYLOAD** — "flat IoC" is blind to a compressed/binary plaintext. 166 representations scanned
+  for magics/armor/inflate: nothing; byte histogram exactly uniform (χ² 246.7 / 255 df).
+- **SKELETON** — word length is a cleartext invariant no pad touches, so a known text could be
+  identified as the *plaintext* without a key. FFT scan of every offset across 51 texts / 8.2M
+  words: best 20.0% vs a shuffled control's 19.8%. Negative **for that corpus**; the tool is built
+  to extend. → `analysis/skeleton/`
+- **POINTERS** — the 86 residual doublets read as a book-cipher index: every reading sits inside
+  the random null.
+
+**AN-END hunt CLOSED (2026-08)** ([`liber-primus/analysis/anend_hunt/FINDINGS.md`](liber-primus/analysis/anend_hunt/FINDINGS.md)) —
+the lost deep-web page is **unreachable by construction**: its address is gated behind solving
+OTP-class LP2 0–54 (the 2014 chain grammar is "each onion's solved content yields the next
+address"), `gy3hoy2…onion` is a debunked hallucination, no genuinely-retrievable in-scope Tor-v2
+corpus exists, the held corpus hashes null across representations (2,706 tests), and the 2026
+community status is a sourced negative. **The only remaining door is solving LP2 0–54 —
+cryptanalysis, not OSINT.**
+
+## What the 2026-07 sessions did
 
 - **2026-07-27 — OSINT / external-artifact sweep.** Pulled the onion images and HTML never held
   locally from community mirrors (iBotPeaches, archive.org, scream314, krisyotam) and re-extracted.
@@ -56,12 +107,21 @@ reproduce pointer.
 
 ## What is actually still open
 
-Two things, both **external** — nothing in the ciphertext can close either:
-1. **An untried already-public keytext** Cicada expected solvers to recognize. Falsifiable, and
-   therefore the one productive avenue left (~200 named texts already eliminated, skip-aware).
-   Extend by adding a slug to `analysis/campaign12/fetch_keytexts.py` and re-running `run_sweep.py`.
-2. **The "AN END" deep-web page** — the only place the pad might physically exist. Cold trail
-   (Tor v2 dead); what remains un-examined is narrow and low-prior.
+_Superseded 2026-08. The two threads this section used to list — "an untried public keytext" and
+"the AN END page" — were **both closed by mechanism** in Rounds 7–8. A new keytext is no longer a
+lead on its own (any keytext is dead independent of which text it is), and the AN END page is
+unreachable by construction._
+
+What is left is **external and low-prior**. Nothing in the ciphertext can close any of it:
+
+1. **A signed or archival pointer** that a specific text *is* the key — i.e. evidence from outside
+   the ciphertext, not another text to try.
+2. **A correctly-targeted, locally-held archive** that could contain the lost AN END page.
+   (Residual activity here = passive monitoring only; the active hunt is closed.)
+3. **The full 32-bit seed sweep**, still running into `analysis/seed_sweep/results_full32.txt` —
+   the one loose end from Round 8. Re-run with `analysis/seed_sweep/run_full32.sh`.
+4. **The SKELETON corpus extension** — Round 8's word-length attack was negative *for its 51-text
+   corpus*, not in principle. The tool is built to take more texts (`analysis/skeleton/`).
 
 **What would reopen the case:** a new 7A35090F-signed Cicada release, a CicadaSolvers-accepted
 reproducible page solve, or the private pad surfacing.
@@ -79,7 +139,7 @@ with the ledger, the ledger wins._
 | 1 | Independent **vision re-transcription** of the 56 page images | ✅ **closed 2026-06-20** — not viable; canonical verified — `liber-primus/analysis/vision/AVENUE-1-VISION-VERDICT.md` |
 | 2 | Doublet-avoidant / fractionation attacks | ✅ closed (ruled out) — `analysis/OPEN-AVENUES.md` |
 | 3 | Contribute findings to community | ✅ shipped — `liber-primus/docs/FINDINGS-FOR-SOLVERS.md`, repo public |
-| 4 | OSINT for the lost deep-web hash page | ✅ done — `analysis/DEEPWEB-HASH-OSINT.md` (trail cold) |
+| 4 | OSINT for the lost deep-web hash page | ✅ **closed 2026-08** — unreachable-by-construction; `analysis/anend_hunt/FINDINGS.md` |
 
 ## ✅ AVENUE #1 — what happened (closed)
 

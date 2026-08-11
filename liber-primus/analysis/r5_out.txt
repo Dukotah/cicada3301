@@ -1,0 +1,75 @@
+==========================================================================
+R5-COMBINED  Residual-doublet structural anatomy + polygraphic parity
+seed=3301  N=29  surrogates(main S1-S4)=10000
+unsolved runes=12956  F(ᚠ) count=458  residual doublets D=86
+neg-control: WELCOME n=394 (dbl=14)  AN END n=85 (dbl=2)
+==========================================================================
+
+[ANCHOR 1] SYNTHETIC POSITIVE — Playfair-class over 29 runes
+  synth doublets D=175  (within-pair phase0 doublets=0)
+  within-pair (even->odd) rate phase0 = 0.000000  (hard-zero expected)
+  Delta_parity phase0 = -0.027019   surrogate mean=-0.000122 sd=0.002072 0.1pct=-0.006332
+  (a) Delta beyond surrogate extreme tail: True
+  (b) within-pair doublet rate hard-zero : True
+  ANCHOR 1 => PASS
+
+[ANCHOR 2] NEGATIVE CONTROL — real solved pages WELCOME & AN END
+  WELCOME: D=14  parity-split super-thr=False  identity-chi2 super-thr=False  lag-anom=False  => clean
+  AN END: D=2  parity-split super-thr=False  identity-chi2 super-thr=False  lag-anom=False  => clean
+  ANCHOR 2 => PASS
+
+[REAL LP2 UNSOLVED] building 10000 fixed-multiset fixed-doublet-count (D=86) surrogates (seed 3304) ...
+  surrogates realizing EXACT D=86: 100.00%  (realized D mean=86.00)
+
+[S1 PARITY SPLIT]  Delta = within(even->odd) - across(odd->even)
+  phase0: within_rate=0.00571 (d=37/6478)  across_rate=0.00757 (d=49/6477)
+           Delta=-0.001854  surr mean=+0.000026 sd=0.001413 p99.9=+0.004322 p0.1=-0.004324  degenerate=False  CONFIRM=False
+  phase1: within_rate=0.00757 (d=49/6477)  across_rate=0.00571 (d=37/6478)
+           Delta=+0.001854  surr mean=-0.000026 sd=0.001413 p99.9=+0.004324 p0.1=-0.004322  degenerate=False  CONFIRM=False
+
+[S2 DIGRAPH vs MONOGRAPH IoC]
+  digraph IoC*N^2-space = 1.03057  surr mean=1.02320 sd=0.00641 p99.9=1.04436  degenerate=False
+  monograph IoC*N       = 0.99987  surr mean=0.99987 sd=0.00000 (monograph is multiset-fixed)
+  CONFIRM (digraph>surr p99.9) = False
+
+[S3 IDENTITY MULTISET chi2]  doubled-rune value distribution
+  observed chi2=27.786 (df=28, analytic p=0.476)  surr mean=27.896 sd=7.413 p99.9=56.566  degenerate=False
+  dominant doubled rune = idx 25 'AE' count=7 (unigram-expected=2.94; surr top-count mean=7.00 p99.9=12.00)
+  CONFIRM (chi2>surr p99.9) = False
+
+[S4 GAP DISTRIBUTION]  KS of inter-doublet gaps vs geometric null
+  n_gaps=85  mean_gap=150.788  KS_stat=0.07651  analytic KS_p=0.685
+  surr KS mean=0.07804 sd=0.02093 p99.9=0.15996  degenerate=False
+  CONFIRM (KS>surr p99.9) = False
+
+[S5 LAG-k SPECTRUM]  r_k = P(c[i]==c[i-k]); surrogate=multiset shuffle
+  k=1: r_k=0.006638  surr mean=0.034476 sd=0.001606 p99.9=0.039521  degenerate=False  CONFIRM(peak)=False
+  k=2: r_k=0.034044  surr mean=0.034485 sd=0.001598 p99.9=0.039293  degenerate=False  CONFIRM(peak)=False
+  k=3: r_k=0.033892  surr mean=0.034455 sd=0.001603 p99.9=0.039528  degenerate=False  CONFIRM(peak)=False
+  k=4: r_k=0.035439  surr mean=0.034453 sd=0.001597 p99.9=0.039376  degenerate=False  CONFIRM(peak)=False
+  k=5: r_k=0.036986  surr mean=0.034448 sd=0.001596 p99.9=0.039611  degenerate=False  CONFIRM(peak)=False
+  k=6: r_k=0.035135  surr mean=0.034473 sd=0.001619 p99.9=0.039382  degenerate=False  CONFIRM(peak)=False
+
+[DEGENERACY GUARD]
+
+[PER-STATISTIC VERDICT] (family = all non-degenerate sub-stats; CONFIRM iff clears surrogate 99.9th pct)
+  S1 phase0 Delta : REFUTE
+  S1 phase1 Delta : REFUTE
+  S2 digraph IoC  : REFUTE
+  S3 identity chi2: REFUTE
+  S4 gap KS       : REFUTE
+  S5 lag-1        : REFUTE
+  S5 lag-2        : REFUTE
+  S5 lag-3        : REFUTE
+  S5 lag-4        : REFUTE
+  S5 lag-5        : REFUTE
+  S5 lag-6        : REFUTE
+
+[POLYGRAPHIC (Playfair-class) HYPOTHESIS]
+  some S1 phase Delta clears extreme tail: False
+  min within-pair rate=0.00571 consistent with hard-zero+noise (<= (1/29)/4=0.00862): True
+  => polygraphic CONFIRM = False
+
+[OVERALL VERDICT]
+  any non-degenerate statistic clears surrogate 99.9th pct: False
+  ==> OVERALL REFUTE directional structure in the residual doublets

@@ -1,0 +1,48 @@
+==============================================================================
+R6 TEST 1 — SIEVE-W (windowed misfiled-plaintext detector)
+==============================================================================
+seed=3301  surrogates/page=10000  window sizes=(30, 60, 90) stride=15
+plaintext bigram model pages (readable runic plaintext): 05.jpg(n=157), 10.jpg(n=629), 13.jpg(n=125), 16.jpg(n=89), 74.jpg(n=95)
+total model runes = 1095  (add-1 smoothed)
+unsolved pages = 55  AN END n=85  PARABLE n=95
+
+--- ANCHORS ---
+A1 PARABLE plaintext: LLR windows min=0.5657 mean=0.7230  IoC*N mean=1.7728  -> PLAINTEXT_CUT=0.4808
+   PASS=True (require min-LLR>cut and IoC*N mean>1.5, expect ~1.8)
+A2 WELCOME max-window LLR=-0.1144  AN END max-window LLR=-0.3413  AN END IoC*N mean=1.0250
+   PASS=True (both max-window LLR < PLAINTEXT_CUT; AN END is flat-IoC)
+A3 SYNTHETIC localization: spliced 90 PARABLE runes at offset 3000; best overlapping-window LLR=0.7384 (cut=0.4808)  PASS=True
+
+--- NULL (10,000 order-matched surrogates per page, seed 3301) ---
+total real unsolved windows across pages = 2035
+surrogate page-max LLR pool: n=550000 mean=-0.0768 sd=0.0852  99.9th pct=0.2364
+degeneracy flag (sd<=0): False
+FAMILY THRESHOLD = max(surrogate 99.9th, PLAINTEXT_CUT) = 0.4808
+
+--- REAL UNSOLVED WINDOW SCAN ---
+top-10 unsolved windows by bigram-LLR (LLR | page | size | start | IoC*N | dbl):
+  LLR= 0.0744  page=40  size=30  start=  75  IoC*N=0.733  dbl=0.0000
+  LLR= 0.0727  page=25  size=30  start=  90  IoC*N=1.000  dbl=0.0345
+  LLR= 0.0633  page=53  size=30  start= 195  IoC*N=0.800  dbl=0.0000
+  LLR= 0.0618  page= 7  size=30  start= 165  IoC*N=1.000  dbl=0.0000
+  LLR= 0.0614  page= 8  size=30  start=  15  IoC*N=0.733  dbl=0.0000
+  LLR= 0.0551  page=40  size=30  start=  15  IoC*N=0.800  dbl=0.0000
+  LLR= 0.0415  page=25  size=60  start=  90  IoC*N=1.032  dbl=0.0169
+  LLR= 0.0388  page=13  size=30  start=  60  IoC*N=0.867  dbl=0.0000
+  LLR= 0.0385  page=46  size=30  start= 180  IoC*N=1.067  dbl=0.0000
+  LLR= 0.0357  page=25  size=30  start= 120  IoC*N=1.000  dbl=0.0000
+
+IoC ARM (reported separately; STRUCTURE-FINDINGS §3 says flat ~0.97):
+  IoC*N=1.800  page=48  size=30  start= 210  LLR=0.0133
+  IoC*N=1.800  page=26  size=30  start= 165  LLR=-0.1564
+  IoC*N=1.800  page=39  size=30  start=  75  LLR=-0.3817
+  IoC*N=1.667  page=15  size=30  start=   0  LLR=-0.0809
+  IoC*N=1.667  page=39  size=30  start= 165  LLR=-0.2443
+
+FLAGGED unsolved windows (LLR>family cut AND >plaintext cut): 0
+
+==============================================================================
+BIGRAM-LLR ARM VERDICT: REFUTE
+IoC ARM: flat (max IoC*N window shown above; consistent with §3, no new signal)
+OVERALL VERDICT: REFUTE — no unsolved page or sub-page window is misfiled/partial plaintext.
+==============================================================================
