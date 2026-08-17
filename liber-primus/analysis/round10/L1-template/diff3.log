@@ -1,0 +1,43 @@
+baseline filter: dropped 275 of 13381 components (TOL=5)
+image lines 591 (13381 comps) | canon lines 594 (12956 runes)
+line pairs matched 587 | count-exact lines 379 (64.6%)
+
+class->rune bijection over 29 classes; agreement on count-exact lines 8322/8371 = 99.415%
+N1 label-permutation null: mean 0.0348  sd 0.0365  max 0.1666   -> z = 26.3
+
+NW over matched lines: 13093 comps vs 12908 runes
+  substitutions 86  (0.666% of runes)
+  insertions    306  (image has a component canon has no rune for)
+  deletions     121  (canon has a rune the image read has no component for)
+
+top substitutions (image -> canon):
+   S    -> B        9   (0.070% of runes)
+   S    -> TH       6   (0.046% of runes)
+   S    -> A        5   (0.039% of runes)
+   T    -> E        5   (0.039% of runes)
+   EO   -> D        4   (0.031% of runes)
+   S    -> OE       4   (0.031% of runes)
+   S    -> H        4   (0.031% of runes)
+   S    -> W        4   (0.031% of runes)
+   S    -> AE       3   (0.023% of runes)
+   EO   -> Y        3   (0.023% of runes)
+   EO   -> P        3   (0.023% of runes)
+   EO   -> E        2   (0.015% of runes)
+   S    -> F        2   (0.015% of runes)
+   S    -> R        2   (0.015% of runes)
+   S    -> O        2   (0.015% of runes)
+
+substitution d1 (match distance) distribution:
+   median 853.6  frac exact(d1<=0.01) 0.070  frac d1>200 0.872
+insertion d1: median 300.6  frac d1>200 0.748
+
+N2 shuffled-canon null: agreement 0.0321 (expected ~0.0345)
+
+T3 DOUBLET (count-exact lines, mapping-free):
+   image-read adjacent-equal classes 56 / 7992 = 0.701%
+   canon      adjacent-equal runes   56 / 7992 = 0.701%
+   image-read over ALL matched lines 105 / 12506 = 0.840%
+   N3 shuffled-image null doublet 3.484% +/- 0.151%
+   N4 planted (1 per 200) -> 1.482% (expect ~1.340%)
+
+wrote diff2_report.json

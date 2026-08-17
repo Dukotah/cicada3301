@@ -1,0 +1,39 @@
+C3 sacred-valuation keyword sweep | words=40 maps=5 signs=2 phases<=12 skip-beam maxskip=3
+maps: index, prime, phi_prime, atbash, cumprime
+Thresholds (PREREG-C3): BREAK>=-5.2 CONFIRM>=-5.5 POSITIVE also needs null-margin >= 0.5
+
+==============================================================================
+PC-B  planted SACRED-VALUATION key (phi_prime of CIRCUMFERENCE)
+==============================================================================
+  planted ct: n=141 doublet=0.00% (random 3.45%)
+  RIGID decode w/ CORRECT key: -6.670 (must be < -6.0)
+    tier1 (rigid prefix): 3190 configs  [truth (word,map) rank 1]
+    tier2 (skip beam 30): kept 2000  [truth rank 1]
+    [PC-B] best -4.173  <- CIRCUMFERENCE/phi_prime(+1) phase=0   (top3: -4.18/CIRCUMFERENCE/phi_prime, -5.09/CIRCUMFERENCE/phi_prime, -5.48/CIRCUMFERENCE/phi_prime)
+       THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOULDBEENCRYPTEDCNOWTHISTHATTHEINSTAREMERGENCEISATHAN
+  -> PASS
+
+==============================================================================
+REAL LP2 PAGES
+==============================================================================
+  page 54  n=76
+    tier1 (rigid prefix): 3190 configs
+    tier2 (skip beam 30): kept 2000
+    [real p54] best -6.302  <- CONSUMPTION/cumprime(-1) phase=7   (top3: -6.30/CONSUMPTION/cumprime, -6.39/CONSCIOUSNESS/cumprime, -6.48/WITHIN/index)
+       RGOEPDAYEAUPAEERCEATWRTHTEALTIATHOUMEASTJNGRUSOETHOWIAJSNGASSNGSIAMLAEREAUAESCEIAATROEOOEFHBILITHFH
+
+==============================================================================
+NULL CONTROL -- length-matched shuffles
+==============================================================================
+  shuffled page 54  n=76
+    tier1 (rigid prefix): 3190 configs
+    tier2 (skip beam 30): kept 2000
+    [null p54] best -6.139  <- CONSCIOUSNESS/atbash(-1) phase=8   (top3: -6.14/CONSCIOUSNESS/atbash, -6.20/CONSCIOUSNESS/atbash, -6.34/DIVINITY/index)
+       THFULYWBAERDETHOEESEAFTHCAEREATHTEOTIAAANGANGEAGIAYELIFETNGNGEAREPEONUOEEABIUTGEOGPEDCLTHEATMEORCTIFG
+
+==============================================================================
+VERDICT
+==============================================================================
+  best REAL -6.302 | best NULL -6.139 | margin -0.163
+  => NEGATIVE: sacred-valuation keyword keys show no signal
+elapsed 9.6s

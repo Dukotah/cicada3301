@@ -1,0 +1,31 @@
+### gen 10 — Perl  srand(S); int(rand(29))     reference: /usr/bin/perl
+  seed 1  OK (2000 draws)
+  seed 12345  OK (2000 draws)
+  seed 1399079190  OK (2000 draws)
+  seed 2147483647  OK (2000 draws)
+  seed 3141592653  OK (2000 draws)
+### gen 11 — POSIX srand48(S); lrand48()%29    reference: glibc
+  seed 1  OK (2000 draws)
+  seed 12345  OK (2000 draws)
+  seed 1399079190  OK (2000 draws)
+  seed 2147483647  OK (2000 draws)
+  seed 3141592653  OK (2000 draws)
+### gen 12 — Ruby  srand(S); rand(29)          reference: ruby 3.3.8
+  seed 1  OK (2000 draws)
+  seed 12345  OK (2000 draws)
+  seed 1399079190  OK (2000 draws)
+  seed 2147483647  OK (2000 draws)
+  seed 3141592653  OK (2000 draws)
+### gen 13 — xorshift32 (13,17,5) % 29
+  NOTE: xorshift32 has no canonical library binding. The reference here is an
+  INDEPENDENT re-implementation of Marsaglia's published recurrence in Python,
+  not a second vendor implementation. Validation basis is weaker than 10-12.
+  seed 1  OK (2000 draws)
+  seed 12345  OK (2000 draws)
+  seed 1399079190  OK (2000 draws)
+  seed 2147483647  OK (2000 draws)
+  seed 3141592653  OK (2000 draws)
+### regression: generators 0-9 must be byte-identical to Round 8's sweep.c
+selftest: 14/14 generators recovered
+
+HARNESS GATE: PASS

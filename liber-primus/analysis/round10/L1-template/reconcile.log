@@ -1,0 +1,33 @@
+=== T2 COUNT RECONCILIATION ===
+all connected components in the 56 page images       18461
+  h<100  (dots, dotted separator columns, specks)     4579
+  h>126  (ornaments, drop caps, margin figures)         419
+  w>130 or w<4                                           82
+rune-candidate components                             13381
+   of which drop-cap-sized (h 200-500), excluded          55  on 6 pages
+baseline filter (canon-free) drops                       275
+read stream after filters                             13106
+canon runes, segments 0-54 (= the imaged pages)       12956
+surplus                                                +150
+
+NW alignment over matched lines: 13093 comps vs 12908 runes
+  insertions 306  (74.8% have match distance >200 = not rune ink)
+  deletions  121
+  substitutions 86 = 0.666% of runes
+
+=== per-page substitutions (image != canon on an aligned position) ===
+page: n_sub (n with EXACT template match, d1<=0.01)
+  p1:4(0)  p2:2(0)  p3:2(0)  p5:4(1)  p6:2(0)  p7:1(0)  p8:1(0)  p11:7(1)  p12:3(0)  p13:1(0)  p15:1(0)  p16:2(0)  p17:3(0)  p18:2(0)  p19:1(0)  p20:2(0)  p21:2(0)  p23:1(0)  p24:2(0)  p25:2(0)  p26:1(0)  p27:2(0)  p28:1(0)  p29:3(0)  p30:2(0)  p31:2(0)  p33:1(0)  p34:1(0)  p35:2(0)  p37:2(0)  p38:2(0)  p40:4(1)  p41:3(0)  p44:1(0)  p46:1(0)  p47:1(0)  p48:2(0)  p51:1(0)  p52:1(0)  p53:2(0)  p55:6(3)
+
+=== the 6 substitutions with an EXACT (d1=0.00) template match ===
+  p55  line 2  x=738   w=52   image=D   canon=S    runnerup dist 161.6
+  p55  line 2  x=797   w=45   image=J   canon=EO   runnerup dist 139.0
+  p55  line 2  x=921   w=34   image=B   canon=TH   runnerup dist 111.8
+  p40  line 6  x=1728  w=52   image=M   canon=C    runnerup dist 91.5
+  p11  line 4  x=1707  w=52   image=D   canon=OE   runnerup dist 161.6
+  p5   line 11 x=601   w=50   image=NG  canon=C    runnerup dist 387.8
+
+=== excluding page 55 (hairline render, instrument fails) ===
+exact-match substitutions off p55: 3
+all substitutions off p55: 80 = 0.620% of runes
+deletions on p55: 41 of 121

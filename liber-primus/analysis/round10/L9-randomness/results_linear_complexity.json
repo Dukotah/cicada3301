@@ -1,0 +1,171 @@
+{
+  "gate": {
+    "lfsr_gf29_deg10": {
+      "true_degree": 10,
+      "bm_lc": 10,
+      "pass": true
+    },
+    "lfsr_gf29_deg40": {
+      "true_degree": 40,
+      "bm_lc": 40,
+      "pass": true
+    },
+    "lfsr_gf29_deg120": {
+      "true_degree": 120,
+      "bm_lc": 120,
+      "pass": true
+    },
+    "lcg_mod29": {
+      "bm_lc": 6478,
+      "n_over_2": 6478
+    },
+    "lfsr40_antirepeat": {
+      "bm_lc": 6478,
+      "doublet": 0.00663836356619066
+    },
+    "lfsr_gf2_deg16": {
+      "true_degree": 16,
+      "bm_lc": 16,
+      "pass": true
+    },
+    "lfsr_gf2_deg64": {
+      "true_degree": 64,
+      "bm_lc": 63,
+      "pass": true
+    },
+    "gate_pass": true
+  },
+  "t2": {
+    "n": 12956,
+    "n_over_2": 6478.0,
+    "n_rep": 20,
+    "gf29": {
+      "REAL": {
+        "lc": 6478,
+        "jumps": 6262
+      },
+      "SHUF": {
+        "lc_mean": 6478.05,
+        "lc_sd": 0.22360679774997894,
+        "lc_min": 6478,
+        "lc_max": 6479,
+        "lc_all": [
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6479,
+          6478,
+          6478
+        ],
+        "jumps_mean": 6256.85
+      },
+      "URAND": {
+        "lc_mean": 6478.05,
+        "lc_sd": 0.39403446282620613,
+        "lc_min": 6477,
+        "lc_max": 6479,
+        "lc_all": [
+          6479,
+          6478,
+          6478,
+          6479,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6477,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478
+        ],
+        "jumps_mean": 6253.1
+      },
+      "ARFILT": {
+        "lc_mean": 6478.05,
+        "lc_sd": 0.22360679774997894,
+        "lc_min": 6478,
+        "lc_max": 6479,
+        "lc_all": [
+          6478,
+          6478,
+          6478,
+          6478,
+          6479,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478,
+          6478
+        ],
+        "jumps_mean": 6258.65
+      },
+      "decision": {
+        "z_vs_arfilt": -0.22360679775079248,
+        "in_arfilt_range": true,
+        "threshold_045n": 5830.2,
+        "HIT": false
+      }
+    },
+    "gf2": {
+      "M1": {
+        "nbits": 62940,
+        "lc_real": 31470,
+        "lc_ctrl_mean": 31471.0,
+        "lc_ctrl_min": 31470,
+        "lc_ctrl_max": 31474,
+        "n_over_2": 31470.0,
+        "HIT": false
+      },
+      "M2": {
+        "nbits": 28176,
+        "lc_real": 14088,
+        "lc_ctrl_mean": 14089.0,
+        "lc_ctrl_min": 14088,
+        "lc_ctrl_max": 14091,
+        "n_over_2": 14088.0,
+        "HIT": false
+      },
+      "M3": {
+        "nbits": 64780,
+        "lc_real": 32390,
+        "lc_ctrl_mean": 32389.6,
+        "lc_ctrl_min": 32388,
+        "lc_ctrl_max": 32391,
+        "n_over_2": 32390.0,
+        "HIT": false
+      }
+    }
+  }
+}

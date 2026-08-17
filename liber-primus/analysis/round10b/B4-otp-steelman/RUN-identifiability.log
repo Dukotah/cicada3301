@@ -1,0 +1,146 @@
+==============================================================================
+B4 — GATE G1: independent re-derivation of the load-bearing statistics
+==============================================================================
+        ioc_norm = 0.9998735380706649
+     doublet_pct = 0.663836356619066
+         entropy = 4.85650361370827
+    chi2_uniform = 26.361685705464648
+      diag_cv_nz = 0.056705395534733034
+    offdiag_chi2 = 841.2373144766493
+               n = 12956
+        doublets = 86
+  published: n=12956 IoC.N=1.000 doublet=0.664% H=4.8565
+  G1 PASS — published numbers reproduce
+
+==============================================================================
+NULL CONTROL — shuffled LP2 (200 seeded shuffles)
+==============================================================================
+        ioc_norm  mean       0.9999  sd    0.0000   REAL       0.9999   z=   +nan
+     doublet_pct  mean       3.4206  sd    0.1485   REAL       0.6638   z= -18.56
+         entropy  mean       4.8565  sd    0.0000   REAL       4.8565   z=   +nan
+    chi2_uniform  mean      26.3617  sd    0.0000   REAL      26.3617   z=   +nan
+      diag_cv_nz  mean       0.0462  sd    0.0066   REAL       0.0567   z=  +1.59
+    offdiag_chi2  mean     806.4739  sd   42.0366   REAL     841.2373   z=  +0.83
+
+==============================================================================
+GATE G2 — THE IoC KEYSTONE: what key period does flat IoC actually exclude?
+==============================================================================
+  Claim under test: 'perfectly flat IoC is only reachable by a FULL-LENGTH keystream'.
+  Method: encipher real English-in-futhorc with a random periodic key of period k,
+          measure ciphertext IoC.N at N=12956, 200 trials per k.
+          Detection = IoC.N above the flat-null 95th percentile (>= mean+1.645sd).
+
+  English-in-futhorc baseline: IoC.N = 1.8147  doublet = 2.856%
+  flat null (uniform, N=12956): IoC.N mean 1.00000 sd 0.00056 -> 95th pct threshold 1.00093
+
+   period k  mean IoC.N       sd  %trials detected
+  --------------------------------------------------
+          1     1.81471  0.00000            100.0%
+          2     1.41958  0.14866            100.0%
+          5     1.16251  0.05433            100.0%
+         10     1.07838  0.03524            100.0%
+         20     1.03703  0.01725            100.0%
+         30     1.03018  0.01557            100.0%
+         40     1.02199  0.01109            100.0%
+         60     1.01303  0.00634            100.0%
+         80     1.01091  0.00570            100.0%
+        120     1.00648  0.00347            100.0%
+        200     1.00381  0.00191             98.3%
+        400     1.00215  0.00165             76.7%
+       1000     1.00089  0.00082             45.0%
+       3000     1.00025  0.00063             16.7%
+      12956     0.99994  0.00059              6.7%
+
+  p* (smallest period NOT reliably detected by IoC at N=12956) = 400
+  Theory check: IoC.N(k) ~= 1 + (IoC.N_english - 1)/k = 1 + 0.8147/k
+  G2 CONFIRMED — flat IoC bounds period from below at ~400, NOT at 12956
+
+==============================================================================
+GATE G3 — THE DOUBLET BOUND (a theorem, not a simulation)
+==============================================================================
+  For additive c = p + k (mod 29) with k statistically INDEPENDENT of p:
+     P(c_i = c_{i-1}) = P(Dp + Dk = 0) = sum_d Pdp(d) * Pdk(-d)  >=  min_d Pdp(d)
+  This class contains: every external one-time pad, every PRNG/hash keystream,
+  every raw keytext, every TRANSFORMED keytext, every long derived key.
+  If min_d Pdp(d) > 0.664%, the observed rate refutes the WHOLE class.
+
+      corpus        n    IoC.N    dbl%   min_d Pdp(d) %  argmin d
+  ----------------------------------------------------------------
+         kjv   200000    1.734   2.912           1.5025         4
+        moby   200000    1.692   3.565           1.8155         7
+       pride   200000    1.718   3.409           1.7705        18
+         war   200000    1.715   3.678           1.8095        18
+   LP-solved      180    1.224   1.676           1.1173        17   (small n — reported, not relied on)
+
+  Least favourable large corpus: min_d Pdp(d) = 1.5025%   vs OBSERVED 0.664%
+  G3 CONFIRMED — observed doublet rate is BELOW the theoretical floor of the entire
+     plaintext-independent-key class (external pads included).
+
+  POSITIVE CONTROL for G3 (is the bound real and tight?):
+    (a) English + TRUE RANDOM PAD          -> doublet 3.597%   (predicted 100/29 = 3.448%)
+    (b) English + adversarial arithmetic key k_i = 25*i mod 29
+        -> doublet 1.497%   (predicted min_d Pdp(d) = 1.503%)   IoC.N = 1.0001
+        This is the BEST any independent key can do, and it is still 2.3x the observed rate.
+
+==============================================================================
+GATE G4/G5 — IDENTIFIABILITY: which generative models does the battery separate?
+==============================================================================
+
+  40 realisations per model, N=12956.  Battery = 6 statistics.
+  Reference band = mean +/- 1.96 sd of model A (the repo's pinned construction).
+
+  model                                       ioc_norm   doublet_pct       entropy  chi2_uniform    diag_cv_nz  offdiag_chi2
+  --------------------------------------------------------------------------------------------------------------------------
+  A_extpad+filter (REPO'S PINNED MODEL)         0.9998        0.6951        4.8566       24.9573        0.0448      797.9944
+  B_derived-SHA-key+filter                      0.9998        0.6781        4.8566       25.1859        0.0453      811.6227
+  C_period-40 key+filter                        1.0155        0.7020        4.8452      228.6114        0.0865     2512.8517
+  D_CAESAR over flat non-English pt             1.0000        0.6785        4.8564       28.4943        0.0443      809.9724
+  E_ct-autokey over flat non-English pt         0.9998        0.6712        4.8566       25.5948        0.0460      804.0406
+  F_UNFILTERED external pad (null hyp)          0.9998        3.4541        4.8565       25.8722        0.0465      802.5324
+  >> REAL LP2 <<                                0.9999        0.6638        4.8565       26.3617        0.0567      841.2373
+
+  Does each rival fall inside model A's 95% band on ALL six statistics?
+    A_extpad+filter (REPO'S PINNED MODEL)    PASS
+    B_derived-SHA-key+filter                 PASS
+    C_period-40 key+filter                   FAIL on ioc_norm,entropy,chi2_uniform,diag_cv_nz,offdiag_chi2
+    D_CAESAR over flat non-English pt        PASS
+    E_ct-autokey over flat non-English pt    PASS
+    F_UNFILTERED external pad (null hyp)     FAIL on doublet_pct
+
+  And does each model match the REAL LP2 on all six (real inside model band)?
+    A_extpad+filter (REPO'S PINNED MODEL)    differs: diag_cv_nz(z=2.0)
+    B_derived-SHA-key+filter                 MATCHES LP2
+    C_period-40 key+filter                   differs: ioc_norm(z=-2.7), entropy(z=2.7), chi2_uniform(z=-2.7), diag_cv_nz(z=-2.6), offdiag_chi2(z=-9.2)
+    D_CAESAR over flat non-English pt        differs: diag_cv_nz(z=2.4)
+    E_ct-autokey over flat non-English pt    MATCHES LP2
+    F_UNFILTERED external pad (null hyp)     differs: doublet_pct(z=-17.7)
+
+==============================================================================
+GATE G5 — THE DECISIVE QUESTION: external pad vs long DERIVED key
+==============================================================================
+  Two-sample comparison of model A (true random pad) against model B (SHA-256
+  counter-mode key from a short seed), on every battery statistic.
+  Bonferroni over 6 statistics: separation requires |z| > 2.93 (alpha=0.01/6).
+
+          ioc_norm  A=      0.9998  B=      0.9998  z=  -0.18  indistinguishable
+       doublet_pct  A=      0.6951  B=      0.6781  z=  +1.06  indistinguishable
+           entropy  A=      4.8566  B=      4.8566  z=  +0.16  indistinguishable
+      chi2_uniform  A=     24.9573  B=     25.1859  z=  -0.18  indistinguishable
+        diag_cv_nz  A=      0.0448  B=      0.0453  z=  -0.33  indistinguishable
+      offdiag_chi2  A=    797.9944  B=    811.6227  z=  -1.60  indistinguishable
+
+  G5 answer: NO separating statistic — the two are indistinguishable
+
+==============================================================================
+POSITIVE CONTROL — can the IoC instrument see a PLANTED periodic key?
+==============================================================================
+    planted period     1 -> detected in 100.0% of trials  (mean IoC.N 1.81471)
+    planted period     5 -> detected in 100.0% of trials  (mean IoC.N 1.16251)
+    planted period    20 -> detected in 100.0% of trials  (mean IoC.N 1.03703)
+    planted period    40 -> detected in 100.0% of trials  (mean IoC.N 1.02199)
+    planted period   400 -> detected in  76.7% of trials  (mean IoC.N 1.00215)
+    planted period  1000 -> detected in  45.0% of trials  (mean IoC.N 1.00089)
+  Instrument sensitivity is therefore bounded: it PROVES absence of short periods,
+  and proves NOTHING about periods above p*.
+
+wrote b4_results.json

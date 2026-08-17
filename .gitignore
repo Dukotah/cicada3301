@@ -124,3 +124,22 @@ liber-primus/analysis/anend_hunt/fetched/
 
 # Test/tooling caches
 .pytest_cache/
+__pycache__/
+*.tmp.*
+
+# Round 9/10 multi-lens armada (2026-08, liber-primus/analysis/round10, round10b,
+# retranscribe) — commit scripts + PREREG/RESULTS/verdict docs + result JSON + small
+# logs only. Everything below re-derives from committed code (see each lens PREREG.md).
+#   L6-archives/fetched/  = re-fetchable community corpora (Reddit/Discord/GitHub mirrors)
+#   *.bin bitstreams / *.npy / *.npz = derived arrays and ciphertext binaries
+#   L1 *.png = rendered glyph crops; sweep32/sweep32x = compiled C, rebuild from *.c
+liber-primus/analysis/round10/L6-archives/fetched/
+liber-primus/analysis/round10/**/*.png
+liber-primus/analysis/round10/**/*.npy
+liber-primus/analysis/round10/**/*.bin
+liber-primus/analysis/round10/L5-seed32/sweep32
+liber-primus/analysis/round10/L5-seed32/sweep32x
+liber-primus/analysis/round10b/**/*.npy
+liber-primus/analysis/round10b/**/*.bin
+liber-primus/analysis/retranscribe/*.npz
+liber-primus/analysis/retranscribe/*.png

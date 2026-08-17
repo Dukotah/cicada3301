@@ -1,0 +1,57 @@
+--- POSITIVE CONTROL: campaign18 keyword skip-beam gate ---
+==========================================================================
+GATE -- repeating-keyword skip beam must recover what rigid misses
+==========================================================================
+
+plaintext runes  : 212
+keyword          : 'CIRCUMFERENCE'  (13 idx symbols)
+total key-skips  : 9
+ct doublet rate  : 0.47%  (random 3.45%; target <1%)
+
+TRUTH  : THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOULDBEENCRYPTEDCNOWTHI
+
+[RIGID  correct key+offset]  score_norm = -7.017  match = 20.8%
+  THEPRIMESARESACREDANDTHETOTIENTFUNCTHADCDTHLEGFWRPGCOEGCTHLTHRYNRGROFUBPEIMMRHWW
+
+[BEAM   correct key+offset]  score_norm = -4.154  match = 100.0%
+  THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOULDBEENCRYPTEDCNOWTHI
+
+[BEAM   WRONG keyword ctrl]  score_norm = -7.363
+
+--------------------------------------------------------------------------
+GATE RESULT: PASS -- skip beam recovers repeating keyword; rigid is noise
+  scale: English ~-4.3 | confirm threshold -5.5 | null-max -6.82 | noise -7.5
+  rigid -7.017 (need <-6.0)  beam -4.154 (need >-5.0)  ctrl -7.363 (need <-6.0)  match 100.0% (need >95%)
+GATE: PASS  {'rigid': -7.0170222608465185, 'beam': -4.154151750699885, 'ctrl': -7.363285903810408, 'match': 1.0}
+B1 artifact keywords into the skip beam: 112
+pages swept (scaled): [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  p0   best=-6.443 key=SIGNATURE  (14s)
+  p1   best=-6.347 key=AVOWYFGLLKZFJN  (29s)
+  p2   best=-6.244 key=ERWFFSDVXPMRSK  (43s)
+  p3   best=-6.397 key=ERWFFSDVXPMRSK  (57s)
+  p4   best=-6.307 key=FVLYUCMEOZZDJ  (70s)
+  p5   best=-6.364 key=RESPONSE  (84s)
+  p6   best=-6.408 key=THEREISNOTRUTH  (114s)
+  p7   best=-6.305 key=JOINUSAT  (160s)
+  p8   best=-6.329 key=DESTROY  (194s)
+  p9   best=-6.364 key=QWMHFHZVUQFMF  (246s)
+  p10  best=-6.375 key=ENCRYPTED  (296s)
+  p11  best=-6.422 key=ADDRESS  (319s)
+  p12  best=-6.312 key=RESPONSE  (344s)
+  p13  best=-6.411 key=CICADA  (364s)
+  p14  best=-6.425 key=CICADA  (387s)
+  p15  best=-6.500 key=MEANINGLESS  (409s)
+  p16  best=-6.354 key=CICADA  (427s)
+  p17  best=-6.209 key=FOLLYWISDOM  (446s)
+  p18  best=-6.383 key=GBYHZNMCEZSMR  (462s)
+  p19  best=-6.344 key=ILLUSION  (479s)
+  p20  best=-6.259 key=CAESAR  (496s)
+  p21  best=-6.164 key=ERWFFSDVXPMRSK  (510s)
+  p22  best=-6.412 key=CICADA  (524s)
+  p23  best=-6.414 key=ALLAROUNDYOU  (535s)
+  p24  best=-6.406 key=CAGETHROTTLEUS  (549s)
+  p25  best=-6.448 key=JDYFCRLMPXGH  (563s)
+  p26  best=-6.378 key=SELFREFERENTIAL  (575s)
+  p27  best=-6.318 key=UNKNOWN  (586s)
+  p28  best=-6.318 key=GAMERULE  (598s)
+  p29  best=-6.363 key=CAGETHROTTLEUS  (610s)

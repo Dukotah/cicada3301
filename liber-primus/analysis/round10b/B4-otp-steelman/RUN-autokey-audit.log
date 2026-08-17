@@ -1,0 +1,34 @@
+==============================================================================
+A. What does the difference diagonal MEASURE under ct-autokey?
+==============================================================================
+  English-in-futhorc monogram: cv over ALL 29 = 0.857   cv over nonzero 28 = 0.863
+  -> ct-autokey over ENGLISH would show diagonal cv ~ 0.86. The repo's 'cv~1.0' figure is CORRECT for English plaintext.
+
+  REAL LP2 difference diagonals: P(d=0) = 0.664%  (uniform would be 3.448%)   cv over nonzero 28 = 0.0567
+
+  Now: ct-autokey where the PLAINTEXT is a flat, near-doublet-free stream
+  (i.e. NOT English -- a key block, base-29 digits, compressed/enciphered data):
+    plaintext P(rune 0)=0.00664: diagonal cv_nz = 0.0443 +/- 0.0053   P(d=0) = 0.676%
+    REAL LP2:                    diagonal cv_nz = 0.0567                       P(d=0) = 0.664%
+
+  VERDICT on the autokey refutation: the test is SOUND but CONDITIONAL.
+  It refutes ciphertext-autokey-over-ENGLISH-plaintext. It does not touch
+  ciphertext-autokey over a flat non-English plaintext, which reproduces the
+  observed diagonal EXACTLY -- because under ct-autokey the diagonal IS the
+  plaintext monogram, so a flat diagonal is a statement about the PLAINTEXT.
+
+==============================================================================
+B. Significance of the real diagonal's residual lumpiness (proper null)
+==============================================================================
+  shuffled-LP2 null: cv_nz 0.0461 +/- 0.0065    REAL 0.0567   z = +1.64
+  chi2 of the 28 nonzero diagonals vs uniform = 41.4 on 27 df (critical 40.1 at p=0.05) -> non-flat
+  z of the d=0 hole: observed 86 vs expected 446.7, z = -17.37
+
+==============================================================================
+C. Hand-off to lane B6 — the ct-autokey implied plaintext
+==============================================================================
+  first-difference stream, n=12955. This is the plaintext IF the cipher is
+  ciphertext autokey. The repo computed it (ELIMINATION-LEDGER 'first-difference /
+  integral inversion') and killed it as 'flat-random; no plaintext' -- a judgement
+  made with an ENGLISH scorer. Written out for a language-agnostic reader.
+  wrote implied_pt_ct_autokey.json

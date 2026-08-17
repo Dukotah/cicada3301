@@ -1,0 +1,115 @@
+{
+ "S1": {
+  "observed_doublets": 86,
+  "n": 12955,
+  "uniform_pad_pct": 3.4482758620689653,
+  "observed_pct": 0.663836356619066,
+  "z": -17.36902649966344,
+  "log10_p": -98.63714264693718,
+  "selection_pads_needed_log10": 98.63714264693718
+ },
+ "S2": [
+  {
+   "class": "English prose (KJV)",
+   "n": 200000,
+   "min_pdp_pct": 1.5025075125375627,
+   "argmin": 4,
+   "can_reach": false
+  },
+  {
+   "class": "author's own LP plaintext",
+   "n": 180,
+   "min_pdp_pct": 1.1173184357541899,
+   "argmin": 17,
+   "can_reach": false
+  },
+  {
+   "class": "uniform random over 29",
+   "n": 200000,
+   "min_pdp_pct": 3.38201691008455,
+   "argmin": 0,
+   "can_reach": false
+  },
+  {
+   "class": "restricted alphabet 20",
+   "n": 200000,
+   "min_pdp_pct": 2.636513182565913,
+   "argmin": 17,
+   "can_reach": false
+  },
+  {
+   "class": "restricted alphabet 16 (hex)",
+   "n": 200000,
+   "min_pdp_pct": 1.1265056325281626,
+   "argmin": 14,
+   "can_reach": false
+  },
+  {
+   "class": "digit string 0-9 (coords)",
+   "n": 200000,
+   "min_pdp_pct": 0.0,
+   "argmin": 10,
+   "can_reach": true
+  },
+  {
+   "class": "prior-stage ciphertext",
+   "n": 200000,
+   "min_pdp_pct": 0.6865034325171626,
+   "argmin": 0,
+   "can_reach": false
+  },
+  {
+   "class": "REAL LP2 ITSELF",
+   "n": 12956,
+   "min_pdp_pct": 0.663836356619066,
+   "argmin": 0,
+   "can_reach": true
+  }
+ ],
+ "S3": {
+  "gaps_mean": 150.78823529411764,
+  "gaps_sd": 142.44653024640073,
+  "fano": [
+   {
+    "nbins": 10,
+    "real_fano": 1.3767441860465117,
+    "null_mean": 0.8956976744186047,
+    "null_sd": 0.41862000940818206,
+    "z": 1.1491245062747466
+   },
+   {
+    "nbins": 26,
+    "real_fano": 1.0411449016100178,
+    "null_mean": 0.9592495527728087,
+    "null_sd": 0.2641409412752233,
+    "z": 0.310044131901074
+   },
+   {
+    "nbins": 50,
+    "real_fano": 0.838139534883721,
+    "null_mean": 0.9754069767441861,
+    "null_sd": 0.1919696570889107,
+    "z": -0.7150475962817903
+   },
+   {
+    "nbins": 100,
+    "real_fano": 0.953953488372093,
+    "null_mean": 0.9839302325581396,
+    "null_sd": 0.14091273012814967,
+    "z": -0.21273269035938017
+   }
+  ],
+  "ks": 0.07665484985937214,
+  "ks_crit": 0.14751271131668622,
+  "geometric_ok": true
+ },
+ "S4": {
+  "searched": {
+   "integer-seeded library PRNGs (glibc/MSVC/MT19937/CPython/Java), unix-second seeds 2011-2015": "2.52e9 decodes \u2014 DONE (Round 8 SEED)",
+   "lore/string/date seeds over the same PRNGs": "15,408 decodes \u2014 DONE (Round 8 SEED)",
+   "hash counter/chain-mode keystreams (MD5/SHA-1/SHA-256/SHA-512), HMAC-DRBG": "NOT RUN (queued twice in campaign14/REDTEAM-PROPOSALS.md)",
+   "stream ciphers (RC4/ARC4, AES-CTR)": "NOT RUN (Round 8's own residue paragraph names RC4 as untested)",
+   "pp49-51 payload EXPANDED as a PRF seed (RC4/AES-CTR/SHA-CTR/HMAC-DRBG)": "NOT RUN (all payload lanes used it DIRECTLY as key material)"
+  }
+ }
+}

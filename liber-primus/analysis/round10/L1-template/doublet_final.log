@@ -1,0 +1,27 @@
+A. IMAGE-ONLY (no canon at all, all bands p0-p54): 108 / 12484 = 0.865%
+B. CANON per-line doublets, segs 0-54:                82 / 12362 = 0.663%
+   canon as one continuous stream:                  86 / 12955 = 0.664%
+
+C. per-line (image_len - canon_len) on pages whose line count matches:
+   delta -21 :    1 lines   image doublets   0 /     0 = 0.000%
+   delta -14 :    1 lines   image doublets   0 /     7 = 0.000%
+   delta  -6 :    1 lines   image doublets   1 /     1 = 100.000%
+   delta  -2 :    7 lines   image doublets   1 /   117 = 0.855%
+   delta  -1 :   48 lines   image doublets   9 /   959 = 0.938%
+   delta  +0 :  328 lines   image doublets  49 /  6916 = 0.709%
+   delta  +1 :   44 lines   image doublets   8 /   988 = 0.810%
+   delta  +2 :   60 lines   image doublets  12 /  1368 = 0.877%
+   delta  +3 :    7 lines   image doublets   5 /   169 = 2.959%
+   delta  +4 :   16 lines   image doublets   5 /   393 = 1.272%
+   delta  +5 :    1 lines   image doublets   2 /    25 = 8.000%
+   delta  +6 :    1 lines   image doublets   2 /    26 = 7.692%
+   delta  +7 :    1 lines   image doublets   1 /    23 = 4.348%
+
+   >>> if canon merged doublets (haplography), delta=+1 lines would be
+       ENRICHED in image doublets. base rate = 0.865%
+
+D. NULL (shuffled image class stream): 3.454% +/- 0.175%
+   z of image vs null = -14.8
+
+E. image doublet 0.865% +/- 0.083% (1se);  95% CI [0.703%, 1.028%]
+   canon 0.663% lies OUTSIDE the CI

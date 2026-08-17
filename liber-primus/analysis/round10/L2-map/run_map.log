@@ -1,0 +1,72 @@
+G0 parse gate: {"words": 2928, "runes": 12956, "segments": 55, "lines": 594, "matches_ct_bin": true, "mean_word_len": 4.4249, "PASS": true}
+
+G1 word/line/page-boundary FORCING detector
+   word-initial  n= 2928  chi2/uni=  23.50 p=   0.707 | chi2/unigram=  18.23 p=    0.92  null_mean=  20.75  z=-0.84
+   word-final    n= 2928  chi2/uni=  31.56 p=   0.293 | chi2/unigram=  26.00 p=   0.573  null_mean=  22.43  z=+0.52
+   line-initial  n=  594  chi2/uni=  81.40 p=4.13e-07 | chi2/unigram=  78.66 p=1.06e-06  null_mean=  27.61  z=+6.35
+   line-final    n=  594  chi2/uni=  26.62 p=   0.539 | chi2/unigram=  24.22 p=    0.67  null_mean=  25.48  z=-0.19
+   page-initial  n=   55  chi2/uni=  28.84 p=   0.421 | chi2/unigram=  29.25 p=     0.4  null_mean=  26.25  z=+0.48
+   HIT = True
+
+M1 word-initial/final acrostics (464 readings pooled + 12760 per-segment)
+   pooled  best -16.5116  (first-of-word/noF atbash/rev/+28)   null -16.5842+-0.0105 max -16.5621  z=+6.94
+   segment best -14.4302  (page22 first-of-word atbash/fwd/+23)   null max -14.4244  z=+1.38
+   HIT = False
+
+M2 word NUMBERS (gematria sums / lengths) reduced to symbols
+   rune   best -15.5616 (len mod29 id +0)  null -15.5576 max -15.4856  z=-0.12
+   letter best  -7.5962 (len mod26 +11)  null -7.6226 max -7.5962  z=+0.90
+   HIT = False
+
+M3 word-length BIT channel -> ASCII / Baconian
+   ascii  best  -7.4229 (prime ascii/lsb/off2) printable=0.323  null_max -7.3049  z=+1.19
+   bacon  best  -7.9935 (even_inv bacon/lsb/off3)  null -7.9450 max -7.8792  z=-1.03
+   HIT = False
+
+M4 Liber Primus as its OWN book cipher (752 solved English words)
+   len base0           -4.0535  distinct-pointers=  14
+   len base1           -4.1329  distinct-pointers=  14
+   len-1 base0         -4.1329  distinct-pointers=  14
+   cumSprime base1     -4.2001  distinct-pointers= 741
+   idx+Sprime base0    -4.2092  distinct-pointers= 732
+   Sidx base0          -4.2102  distinct-pointers= 193
+   cumSidx base0       -4.2168  distinct-pointers= 736
+   idx+Sidx base0      -4.2185  distinct-pointers= 738
+   cumSidx base1       -4.2263  distinct-pointers= 736
+   idx+Sidx base1      -4.2265  distinct-pointers= 738
+   Sprime base1        -4.2273  distinct-pointers= 582
+   idx+Sprime base1    -4.2283  distinct-pointers= 732
+   Sidx base1          -4.2306  distinct-pointers= 193
+   Sprime base0        -4.2349  distinct-pointers= 582
+   cumSprime base0     -4.2356  distinct-pointers= 741
+   len-1 base1         -4.2446  distinct-pointers=  14
+   best  -4.0535 (len base0)  nullA_max -4.0535 nullB_max -4.0518  z=+0.59
+   sample: WHAT THIS FROM NOTHING NOTHING TO THIS FROM NOTHING NOTHING FROM NOTHING BOOK TO ...
+   HIT = False
+
+M5 WORD-level walk (Round-9 DIRECTION instrument, word granularity)
+   best -15.4896 (Sprime29/cum/-1/start1911/initials)  null -15.4804+-0.3009 max -15.1782  z=-0.03
+   HIT = False
+
+M6 structural counts as a message
+   words-per-line      n= 594  letters -7.3407 (null_max -7.2435 z=+1.14)  runes -14.7820 (null_max -14.5833 z=0.39)
+   words-per-page      n=  55  letters -7.6099 (null_max -7.2758 z=+0.78)  runes -15.7259 (null_max -15.028 z=0.69)
+   words-per-sentence  n= 175  letters -8.0718 (null_max -7.8004 z=-0.66)  runes -16.3221 (null_max -16.0036 z=-0.36)
+   runes-per-line      n= 594  letters -7.6144 (null_max -7.4497 z=+0.15)  runes -15.1372 (null_max -14.9994 z=0.61)
+   runes-per-page      n=  55  letters -7.7419 (null_max -6.9851 z=-0.37)  runes -15.5835 (null_max -15.2795 z=1.42)
+   HIT = False
+
+M7 word-level transposition of plaintext (analytic)
+   IoC*N = 0.9999  -> EXCLUDED (IoC*N < 1.10)
+
+M8 LP's own solved English as the LP2 plaintext skeleton
+   pattern 752 words, corpus 2928 words
+   real longest exact-length run = 7 ; controls [8, 8, 8, 7, 7, 7, 8, 8] (max 8)
+   HIT = False
+
+M9 word numbers as direct ADDRESSES into the book (self-indexing map)
+   best -16.3235 (Sidx->word-initial +24)  null -16.3440+-0.0637 max -16.2209  z=+0.32
+   HIT = False
+
+wrote C:\Users\dukot\projects\cicada3301\liber-primus\analysis\round10\L2-map\results.json
+ANY HIT: True

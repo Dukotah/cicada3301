@@ -1,0 +1,50 @@
+crib positions: 219  (pagestart 55, ornament 7, sentence 157)
+title key variants: 88   lengths [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+readouts to score: 38544
+
+== T1 POSITIVE CONTROL (solved pages, run blind) ==
+  03.jpg: best readout  -5.067 title=THELOSS -> UMEABOS
+        true key DIUINIT: rank 53/176 (top 30.11%), score -7.000, via title 'WELCOME' spelled WELCOME
+  14.jpg: best readout  -4.887 title=WARNING -> BLOSE
+        true key FIRFU: rank 5/176 (top 2.84%), score -6.288, via title 'AKOAN' spelled ACOAN
+  POSITIVE CONTROL: WEAK
+
+
+REAL best readout score: -3.252
+   -3.252 seg7   off194  ornament  title=WARNING              spelled=WARNNG             sign+1  KEYREADOUT=THEWI
+   -3.427 seg45  off0    pagestart title=THELOSS              spelled=THELOSS            sign+1  KEYREADOUT=EDTHTHEYS
+   -3.518 seg27  off144  sentence  title=AKOAN                spelled=ACOAN              sign-1  KEYREADOUT=THENTHR
+   -3.558 seg19  off0    pagestart title=AKOAN                spelled=ACOAN              sign-1  KEYREADOUT=STHISN
+   -3.703 seg36  off0    pagestart title=WARNING              spelled=WARNING            sign-1  KEYREADOUT=ISOTHEP
+   -3.725 seg41  off13   sentence  title=THEINSTAR            spelled=THEINSTAR          sign-1  KEYREADOUT=EANDEINGOF
+   -3.780 seg25  off194  sentence  title=WARNING              spelled=WARNNG             sign-1  KEYREADOUT=ETHORTH
+   -3.875 seg14  off21   sentence  title=WISDOM               spelled=WISDOM             sign-1  KEYREADOUT=ATHEEAMI
+   -3.903 seg3   off0    pagestart title=WARNING              spelled=WARNNG             sign+1  KEYREADOUT=PTHEAF
+   -3.983 seg5   off87   sentence  title=THELOSS              spelled=THELOSS            sign-1  KEYREADOUT=NGSSTHET
+   -4.011 seg17  off64   sentence  title=THELOSS              spelled=THELOSS            sign-1  KEYREADOUT=HATHHEADB
+   -4.022 seg5   off110  sentence  title=WARNING              spelled=WARNNG             sign-1  KEYREADOUT=DYSTHEA
+   -4.025 seg47  off0    pagestart title=THELOSS              spelled=THELOSS            sign-1  KEYREADOUT=OHESTA
+   -4.054 seg47  off0    pagestart title=WELCOME              spelled=WELCOME            sign-1  KEYREADOUT=HHEBREAT
+   -4.108 seg48  off52   sentence  title=THELOSS              spelled=THELOSS            sign-1  KEYREADOUT=EATTEARSO
+
+REAL                     n=37696    max=-3.252 mean=-7.518 sd=0.812 p99=-5.298
+
+NULL-A pseudo-titles     n=37734    max=-3.541 mean=-7.520 sd=0.827 p99=-5.131
+
+NULL-B shuffled ct       n=37696    max=-3.412 mean=-7.514 sd=0.816 p99=-5.230
+
+real_best - null_max = -3.252 - -3.412 = +0.161   (PREREG PASS needs >= +1.000)
+
+== promotion: top-25 readouts used as a repeating key on their own page ==
+  page-decode  -6.672  seg48  title=THELOSS              key=EATTEARSO
+  page-decode  -6.711  seg5   title=THELOSS              key=NGSSTHET
+  page-decode  -6.717  seg45  title=WELCOME              key=RREANINN
+  page-decode  -6.730  seg11  title=AWARNING             key=YEASTHYC
+  page-decode  -6.742  seg41  title=THEINSTAR            key=EANDEINGOF
+  page-decode  -6.829  seg25  title=WARNING              key=ETHORTH
+  page-decode  -6.856  seg31  title=WARNING              key=CEOFLI
+  page-decode  -6.873  seg17  title=THELOSS              key=HATHHEADB
+  page-decode  -6.885  seg27  title=AKOAN                key=THENTHR
+  page-decode  -6.895  seg37  title=AWARNING             key=EADEOFHO
+
+best page decode from any title readout: -6.672 (PREREG PASS needs > -5.200)

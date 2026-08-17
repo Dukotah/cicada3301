@@ -1,0 +1,30 @@
+=== agreement vs match-distance (the instrument confidence curve) ===
+  d1 in [0       ,0.01    ): n=  5515  agreement 0.9947
+  d1 in [0.01    ,5       ): n=   230  agreement 1.0000
+  d1 in [5       ,50      ): n=    20  agreement 0.9500
+  d1 in [50      ,200     ): n=     3  agreement 0.0000
+  d1 in [200     ,1e+09   ): n=    14  agreement 0.0714
+
+=== substitutions with an EXACT template match (d1<=0.01) -- the only genuine divergence candidates ===
+count: 9
+   seg54  page p55  line 1  x=1439  w=34  h=114  image=TH  canon=C    d1=0.00 d2=99.88
+   seg54  page p55  line 2  x=655   w=65  h=114  image=X   canon=E    d1=0.00 d2=139.88
+   seg54  page p55  line 2  x=738   w=52  h=114  image=D   canon=S    d1=0.00 d2=161.62
+   seg54  page p55  line 2  x=797   w=45  h=114  image=J   canon=EO   d1=0.00 d2=139.00
+   seg54  page p55  line 2  x=921   w=34  h=112  image=B   canon=TH   d1=0.00 d2=111.75
+   seg54  page p55  line 2  x=1019  w=10  h=114  image=I   canon=OE   d1=0.00 d2=53.19
+   seg40  page p40  line 6  x=1728  w=52  h=113  image=M   canon=C    d1=0.00 d2=91.50
+   seg11  page p11  line 4  x=1707  w=52  h=114  image=D   canon=C    d1=0.00 d2=161.62
+   seg5   page p5   line 11 x=601   w=50  h=115  image=NG  canon=C    d1=0.00 d2=387.81
+
+=== substitutions by page ===
+[(1, 4), (2, 2), (3, 3), (5, 4), (6, 3), (7, 1), (8, 2), (11, 7), (12, 3), (13, 1), (15, 1), (16, 2), (17, 3), (18, 2), (19, 1), (20, 2), (21, 2), (23, 1), (24, 2), (25, 2), (26, 1), (27, 2), (28, 1), (29, 3), (30, 2), (31, 2), (33, 2), (34, 1), (35, 2), (37, 2), (38, 2), (40, 4), (41, 3), (44, 1), (46, 1), (47, 1), (48, 2), (51, 1), (52, 1), (53, 4), (55, 9)]
+
+=== insertions: d1 distribution and geometry ===
+  n=400  d1<=0.01: 3   d1>200: 303
+  exact-match insertions (d1<=0.01) w/h: [((41, 114), 1), ((10, 115), 1), ((9, 115), 1)]
+  insertions per page: [(10, 18), (11, 22), (12, 23), (13, 23), (14, 10), (25, 2), (33, 3), (39, 6), (40, 22), (41, 20), (42, 18), (43, 34), (44, 26), (45, 26), (46, 26), (47, 26), (48, 26), (49, 2), (52, 26), (53, 18), (54, 23)]
+
+=== deletions per page (canon rune with no component) ===
+[(0, 1), (1, 4), (2, 2), (3, 1), (5, 1), (7, 1), (11, 4), (12, 3), (13, 1), (16, 2), (17, 4), (18, 2), (19, 1), (20, 2), (21, 2), (24, 2), (25, 2), (26, 2), (27, 4), (28, 1), (29, 3), (30, 2), (31, 2), (33, 2), (34, 1), (35, 2), (37, 2), (38, 2), (40, 2), (41, 3), (44, 1), (45, 1), (46, 1), (47, 1), (48, 2), (51, 1), (52, 2), (54, 1), (55, 36)]
+  n deletions 109

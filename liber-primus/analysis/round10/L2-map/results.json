@@ -1,0 +1,334 @@
+{
+ "G0": {
+  "words": 2928,
+  "runes": 12956,
+  "segments": 55,
+  "lines": 594,
+  "matches_ct_bin": true,
+  "mean_word_len": 4.4249,
+  "PASS": true
+ },
+ "G1": {
+  "rows": [
+   {
+    "position": "word-initial",
+    "n": 2928,
+    "chi2_vs_uniform": 23.5,
+    "p_vs_uniform": 0.707,
+    "chi2_vs_unigram": 18.23,
+    "p_vs_unigram": 0.92,
+    "null_chi2_mean": 20.75,
+    "null_chi2_max": 25.69,
+    "z_vs_null": -0.84
+   },
+   {
+    "position": "word-final",
+    "n": 2928,
+    "chi2_vs_uniform": 31.56,
+    "p_vs_uniform": 0.293,
+    "chi2_vs_unigram": 26.0,
+    "p_vs_unigram": 0.573,
+    "null_chi2_mean": 22.43,
+    "null_chi2_max": 35.89,
+    "z_vs_null": 0.52
+   },
+   {
+    "position": "line-initial",
+    "n": 594,
+    "chi2_vs_uniform": 81.4,
+    "p_vs_uniform": 4.13e-07,
+    "chi2_vs_unigram": 78.66,
+    "p_vs_unigram": 1.06e-06,
+    "null_chi2_mean": 27.61,
+    "null_chi2_max": 45.41,
+    "z_vs_null": 6.35
+   },
+   {
+    "position": "line-final",
+    "n": 594,
+    "chi2_vs_uniform": 26.62,
+    "p_vs_uniform": 0.539,
+    "chi2_vs_unigram": 24.22,
+    "p_vs_unigram": 0.67,
+    "null_chi2_mean": 25.48,
+    "null_chi2_max": 40.07,
+    "z_vs_null": -0.19
+   },
+   {
+    "position": "page-initial",
+    "n": 55,
+    "chi2_vs_uniform": 28.84,
+    "p_vs_uniform": 0.421,
+    "chi2_vs_unigram": 29.25,
+    "p_vs_unigram": 0.4,
+    "null_chi2_mean": 26.25,
+    "null_chi2_max": 37.11,
+    "z_vs_null": 0.48
+   }
+  ],
+  "threshold": "p < 1e-4 (Bonferroni 0.001/10)",
+  "HIT": true
+ },
+ "M1": {
+  "pooled": {
+   "best": -16.5116,
+   "reading": "first-of-word/noF atbash/rev/+28",
+   "null_mean": -16.5842,
+   "null_sd": 0.0105,
+   "null_max": -16.5621,
+   "z": 6.94
+  },
+  "per_segment": {
+   "best": -14.4302,
+   "reading": "page22 first-of-word atbash/fwd/+23",
+   "null_mean": -14.7854,
+   "null_max": -14.4244,
+   "z": 1.38
+  },
+  "threshold": "ng >= -13.5 and z >= +5",
+  "HIT": false
+ },
+ "M2": {
+  "rune": {
+   "best": -15.5616,
+   "reading": "len mod29 id +0",
+   "null_mean": -15.5576,
+   "null_max": -15.4856,
+   "z": -0.12,
+   "threshold": ">= -13.5 and z>=+5"
+  },
+  "letter": {
+   "best": -7.5962,
+   "reading": "len mod26 +11",
+   "null_mean": -7.6226,
+   "null_max": -7.5962,
+   "z": 0.9,
+   "threshold": ">= -6.0 and z>=+5"
+  },
+  "HIT": false
+ },
+ "M3": {
+  "ascii": {
+   "best": -7.4229,
+   "reading": "prime ascii/lsb/off2",
+   "printable": 0.3233,
+   "null_max": -7.3049,
+   "z": 1.19,
+   "threshold": "printable>=0.90 and score_norm>=-6.0"
+  },
+  "baconian": {
+   "best": -7.9935,
+   "reading": "even_inv bacon/lsb/off3",
+   "null_mean": -7.945,
+   "null_max": -7.8792,
+   "z": -1.03,
+   "threshold": ">=-6.0 and z>=+5"
+  },
+  "HIT": false
+ },
+ "M4": {
+  "best": -4.0535,
+  "reading": "len base0",
+  "sample": "WHAT THIS FROM NOTHING NOTHING TO THIS FROM NOTHING NOTHING FROM NOTHING BOOK TO",
+  "book_words": 752,
+  "per_family": {
+   "len base0": {
+    "score": -4.0535,
+    "distinct_pointers": 14,
+    "sample": "WHAT THIS FROM NOTHING NOTHING TO THIS FROM NOTHING NOTHING FROM NOTHING BOOK TO"
+   },
+   "len base1": {
+    "score": -4.1329,
+    "distinct_pointers": 14,
+    "sample": "EXCEPT FROM NOTHING BELIEVE BELIEVE KNOW FROM NOTHING BELIEVE BELIEVE NOTHING BELIEVE THIS KNOW"
+   },
+   "len-1 base0": {
+    "score": -4.1329,
+    "distinct_pointers": 14,
+    "sample": "EXCEPT FROM NOTHING BELIEVE BELIEVE KNOW FROM NOTHING BELIEVE BELIEVE NOTHING BELIEVE THIS KNOW"
+   },
+   "len-1 base1": {
+    "score": -4.2446,
+    "distinct_pointers": 14,
+    "sample": "BOOK NOTHING BELIEVE WARNING WARNING YOU NOTHING BELIEVE WARNING WARNING BELIEVE WARNING FROM YOU"
+   },
+   "Sprime base0": {
+    "score": -4.2349,
+    "distinct_pointers": 582,
+    "sample": "A BEING LIVES AND FOR HAVE BE HE THROUGH AN ARE TO THE THE"
+   },
+   "Sprime base1": {
+    "score": -4.2273,
+    "distinct_pointers": 582,
+    "sample": "AM HUMAN THAT WITHIN NUMBERS THAT SHOULD MASTER ONLY FIND WHO TUNNELING TOLD OF"
+   },
+   "Sidx base0": {
+    "score": -4.2102,
+    "distinct_pointers": 193,
+    "sample": "AND TO SACRED CONTAINED TEST HOLY TOWARD AN THEIR EDIT TO THE FOR OWN"
+   },
+   "Sidx base1": {
+    "score": -4.2306,
+    "distinct_pointers": 193,
+    "sample": "CERTAINTY END IS MESSAGE TRUE IS JOURNEY NOT OR NOT END TOWARD BUT YOUR"
+   },
+   "cumSprime base0": {
+    "score": -4.2356,
+    "distinct_pointers": 741,
+    "sample": "A THE WAY TUNNELING TO SACRED MASTER WE TO MASTER THE DIVINITY JUST BELONG"
+   },
+   "cumSprime base1": {
+    "score": -4.2001,
+    "distinct_pointers": 741,
+    "sample": "AM MASTER THEIR INSTAR WISHES IS THE ONE ATTACHED THE ASKED OF THAT CAN"
+   },
+   "cumSidx base0": {
+    "score": -4.2168,
+    "distinct_pointers": 736,
+    "sample": "AND THINGS OF CALLED THOUGHT LOSS THINGS RIGHT TO A INSTRUCTION OUR ALL THE"
+   },
+   "cumSidx base1": {
+    "score": -4.2263,
+    "distinct_pointers": 736,
+    "sample": "CERTAINTY ALL DOOR ARE MAN THE MOST BE ATTACHED DURING AN SHED OF TO"
+   },
+   "idx+Sidx base0": {
+    "score": -4.2185,
+    "distinct_pointers": 738,
+    "sample": "AND ALL WELCOME THE YOUR IS IT FIND PILGRIM WITHIN CERTAINTY BUT ALONG ALL"
+   },
+   "idx+Sidx base1": {
+    "score": -4.2265,
+    "distinct_pointers": 738,
+    "sample": "CERTAINTY TO WELCOME EITHER FIND LIVES THINGS WHO WELCOME CONTAINED YOUR TRIP ONE SACRED"
+   },
+   "idx+Sprime base0": {
+    "score": -4.2092,
+    "distinct_pointers": 732,
+    "sample": "A THAT HOLY ARRIVE WELCOME AND LIKE MASTER YOU YOUR AGAIN DIVINITY ONLY MEANT"
+   },
+   "idx+Sprime base1": {
+    "score": -4.2283,
+    "distinct_pointers": 732,
+    "sample": "AM BEING IS WILL SACRED PRIMALITY EMERGENCE THE WISDOM INNOCENCE MASTER THE IS THAT"
+   }
+  },
+  "null_A_max": -4.0535,
+  "null_B_max": -4.0518,
+  "null_mean": -4.0548,
+  "null_max": -4.0518,
+  "z": 0.59,
+  "threshold": "score_norm >= -5.5 and z >= +5",
+  "HIT": false
+ },
+ "M5": {
+  "best": -15.4896,
+  "reading": "Sprime29/cum/-1/start1911/initials",
+  "null_mean": -15.4804,
+  "null_sd": 0.3009,
+  "null_max": -15.1782,
+  "z": -0.03,
+  "threshold": "ng >= -13.5 and z >= +5",
+  "HIT": false
+ },
+ "M6": {
+  "rows": [
+   {
+    "seq": "words-per-line",
+    "n": 594,
+    "letter_best": -7.3407,
+    "letter_reading": "mod26 +25",
+    "letter_null_max": -7.2435,
+    "letter_z": 1.14,
+    "rune_best": -14.782,
+    "rune_reading": "mod29 atbash +9",
+    "rune_null_max": -14.5833,
+    "rune_z": 0.39
+   },
+   {
+    "seq": "words-per-page",
+    "n": 55,
+    "letter_best": -7.6099,
+    "letter_reading": "mod26 +5",
+    "letter_null_max": -7.2758,
+    "letter_z": 0.78,
+    "rune_best": -15.7259,
+    "rune_reading": "mod29 id +15",
+    "rune_null_max": -15.028,
+    "rune_z": 0.69
+   },
+   {
+    "seq": "words-per-sentence",
+    "n": 175,
+    "letter_best": -8.0718,
+    "letter_reading": "mod26 +12",
+    "letter_null_max": -7.8004,
+    "letter_z": -0.66,
+    "rune_best": -16.3221,
+    "rune_reading": "mod29 id +0",
+    "rune_null_max": -16.0036,
+    "rune_z": -0.36
+   },
+   {
+    "seq": "runes-per-line",
+    "n": 594,
+    "letter_best": -7.6144,
+    "letter_reading": "mod26 +22",
+    "letter_null_max": -7.4497,
+    "letter_z": 0.15,
+    "rune_best": -15.1372,
+    "rune_reading": "mod29 id +25",
+    "rune_null_max": -14.9994,
+    "rune_z": 0.61
+   },
+   {
+    "seq": "runes-per-page",
+    "n": 55,
+    "letter_best": -7.7419,
+    "letter_reading": "mod26 +5",
+    "letter_null_max": -6.9851,
+    "letter_z": -0.37,
+    "rune_best": -15.5835,
+    "rune_reading": "mod29 id +24",
+    "rune_null_max": -15.2795,
+    "rune_z": 1.42
+   }
+  ],
+  "HIT": false,
+  "threshold": "letters >=-6.0 z>=+5 ; runes >=-13.5 z>=+5"
+ },
+ "M7": {
+  "ioc_times_N": 0.9999,
+  "english_in_futhorc_band": "1.7-1.8",
+  "rule": "word permutation preserves the rune multiset, hence IoC",
+  "decision": "EXCLUDED (IoC*N < 1.10)"
+ },
+ "M8": {
+  "real_longest_run": 7,
+  "n_pattern": 752,
+  "n_corpus": 2928,
+  "null_runs": [
+   8,
+   8,
+   8,
+   7,
+   7,
+   7,
+   8,
+   8
+  ],
+  "null_max": 8,
+  "threshold": "real > max(controls) and real >= 12",
+  "HIT": false
+ },
+ "M9": {
+  "best": -16.3235,
+  "reading": "Sidx->word-initial +24",
+  "null_mean": -16.344,
+  "null_sd": 0.0637,
+  "null_max": -16.2209,
+  "z": 0.32,
+  "threshold": "ng >= -13.5 and z >= +5",
+  "HIT": false
+ }
+}

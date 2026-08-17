@@ -1,0 +1,96 @@
+Lane B5 composed-key sweep | words=44 gens=3 coefs=8 goffs=64 maxskip=3
+Thresholds: BREAK>=-5.2  CONFIRM>=-5.5  English -4.1..-5.0  historical skip null-max -6.82
+
+==============================================================================
+PC-A  re-find the known solved keys from the same word list
+==============================================================================
+  03.jpg: top = DIVINITY @ -4.344   (truth DIVINITY)  runner-up SHADOWS @ -7.017   -> PASS
+  14.jpg: top = FIRFUMFERENFE @ -4.243   (truth FIRFUMFERENFE)  runner-up CIRCUMFERENCE @ -6.031   -> PASS
+==============================================================================
+PC-B  planted COMPOSED key + doublet key-skip filter
+==============================================================================
+  planted ct: n=207 doublet=0.49% (target <1%, random 3.45%)
+  RIGID decode w/ CORRECT key : -7.603  (must be < -6.0)
+    tier1 (rigid bigram prefix, W=26): 289344 configs  [truth-family rank 593]
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120  [truth-family rank 1]
+    [PC-B] best -4.176  <- DIVINITY(+1) + phi_prime(+1) wphase=1 goff=18   (screen top3: -4.22/DIVINITY+phi_prime, -4.74/DIVINITY+phi_prime, -6.41/SELFRELIANCE+phi_prime)
+       APPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOULDBEENCRYPTEDCNOWTHISTHATTHEINSTAREMERGENCEISATHAND
+  -> PASS
+
+==============================================================================
+REAL LP2 PAGES
+==============================================================================
+  page 0  n=262
+    tier1 (rigid bigram prefix, W=26): 289344 configs
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120
+    [real p0] best -6.387  <- WITHIN(+1) + totient(+1) wphase=3 goff=20   (screen top3: -6.39/WITHIN+totient, -6.53/INSTAREMERGENCE+prime, -6.56/WITHIN+phi_prime)
+       GIRRLEMGEDESITEARIAYASAEWWRTOHAELIASGPEBOOXPAIANLTHFTHBAEWEGEDFIAJTHAENGEHTUNGWHEBBHTNOTUYOENGTHENGTHYAFUTHELH
+  page 1  n=266
+    tier1 (rigid bigram prefix, W=26): 289344 configs
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120
+    [real p1] best -6.247  <- SHADOWS(-1) + phi_prime(-1) wphase=6 goff=62   (screen top3: -6.25/SHADOWS+phi_prime, -6.33/ENCRYPTED+prime, -6.43/LIBERPRIMUS+totient)
+       OEREDRABEJETHTHDIIALMEBAEXOESTMEEIAGTHEACSIADNAOURSREANGHEOAEAETHASHNGPAEOEYTXLGBAWARNGMAYNCJTHTUHLMUBESAEHIAN
+  page 2  n=201
+    tier1 (rigid bigram prefix, W=26): 289344 configs
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120
+    [real p2] best -6.252  <- PRESERVATION(-1) + totient(+1) wphase=11 goff=24   (screen top3: -6.25/PRESERVATION+totient, -6.33/PILGRIMAGE+totient, -6.34/PRESERVATION+phi_prime)
+       AEIAJUEAFTHEOTHINGEAITIGOREORPFUETHEEGUNCJDINTHFOPTHEABTHAEAEAMTHPEEOBEXFEYNGAECCEAGJBRNGOHHNOEPFFNGGSYEAPJGEO
+  page 5  n=263
+    tier1 (rigid bigram prefix, W=26): 289344 configs
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120
+    [real p5] best -6.326  <- CIRCUMFERENCE(+1) + prime(-1) wphase=10 goff=34   (screen top3: -6.33/CIRCUMFERENCE+prime, -6.40/MOBIUS+phi_prime, -6.41/PRIMUS+totient)
+       NALAEAUMXTHSFREATHANEBRTHXTERINHCNGEARLPWWIEOJOEAODEASTIAONGOETULFJNDMIAGEANFOUACTEXAINTHNIATAETHAPETHAYMMTHIA
+  page 20  n=269
+    tier1 (rigid bigram prefix, W=26): 289344 configs
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120
+    [real p20] best -6.446  <- ENLIGHTENMENT(-1) + phi_prime(+1) wphase=6 goff=9   (screen top3: -6.45/ENLIGHTENMENT+phi_prime, -6.49/SACRIFICE+totient, -6.54/CIRCUMFERENCE+phi_prime)
+       AEDEANUEMAWXSUXTHTEAEATHOANGTHEOEONJEOXDFEIACOJOYWEALLYTHAETHREOXJWIGHSEOOEMGONGEASBMLIIAIAEOABYHRTHSBEEAUTHDC
+  page 54  n=76
+    tier1 (rigid bigram prefix, W=26): 289344 configs
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120
+    [real p54] best -6.164  <- WELCOME(-1) + phi_prime(-1) wphase=4 goff=39   (screen top3: -6.16/WELCOME+phi_prime, -6.17/ENLIGHTENMENT+totient, -6.22/ANINSTAR+phi_prime)
+       LTHATFTHBRIONBYERSHIMEAGEOEOEOUEYDEAPTTHNEOLHASYSLEOFDYATXTHMOESOEAIAHOWSAJFNGHIALWATHLFANOLIA
+
+==============================================================================
+NULL CONTROL -- same sweep on length-matched SHUFFLES
+==============================================================================
+  shuffled page 0  n=262
+    tier1 (rigid bigram prefix, W=26): 289344 configs
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120
+    [null p0] best -6.410  <- FIRFUMFERENFE(-1) + totient(+1) wphase=6 goff=45   (screen top3: -6.41/FIRFUMFERENFE+totient, -6.51/TRUTH+totient, -6.51/SACRED+prime)
+       UPRSELFYDITUPNGESSUEASEONGHEYCATITDUPTERBOEMRHFINMEOXDXDLRNTOECOJJSAEEOECHSWLYOELOEOOEASEDCIYRAAEAMFCPEAREOTHR
+  shuffled page 1  n=266
+    tier1 (rigid bigram prefix, W=26): 289344 configs
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120
+    [null p1] best -6.403  <- ENCRYPTED(+1) + phi_prime(-1) wphase=5 goff=12   (screen top3: -6.40/ENCRYPTED+phi_prime, -6.45/JOURNEY+phi_prime, -6.46/PRESERVATION+totient)
+       IEJTIFALDOENGORMHTUNGINJLILERNOTHEOTHAEUWBDOOEDEOMNGEAUSSOEFEOTHIBNRCPEADTAITHEOEDEEAMCASANNFYGIOESJEAEACREOAB
+  shuffled page 2  n=201
+    tier1 (rigid bigram prefix, W=26): 289344 configs
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120
+    [null p2] best -6.228  <- TRUTH(+1) + totient(-1) wphase=2 goff=3   (screen top3: -6.23/TRUTH+totient, -6.41/ILLUSION+totient, -6.44/ADHERE+totient)
+       PONGEENMEAGGERLDSYTHSWEASATOMJAEBAFOUOUEPCDTHDEANONGSPAEDXNGIAEACIATSUREATTHSWXHNOACCOEIATHFIEATRABDOXREHEOFAT
+  shuffled page 5  n=263
+    tier1 (rigid bigram prefix, W=26): 289344 configs
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120
+    [null p5] best -6.334  <- FIRFUMFERENFE(-1) + phi_prime(-1) wphase=0 goff=38   (screen top3: -6.33/FIRFUMFERENFE+phi_prime, -6.38/SELFRELIANCE+prime, -6.42/CONSUMPTION+totient)
+       MCALNAEUTENTYSHMEAONWEANGTHEUSEOYOEANGWOEEHGEACCAESNTUREAYPNXFONGEOAOGWEACHOEAOOEYOENGSDCCHDEOETFDGJTHEOUTHRRL
+  shuffled page 20  n=269
+    tier1 (rigid bigram prefix, W=26): 289344 configs
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120
+    [null p20] best -6.353  <- SELFRELIANCE(-1) + totient(-1) wphase=10 goff=23   (screen top3: -6.35/SELFRELIANCE+totient, -6.41/INSTAR+prime, -6.42/FIRFUMFERENFE+totient)
+       ATEOWEATSMYGLTPROMHCRRGATEMEEOTHUROSTHYEAGLUCUNGWCIIOEAWAIFIAFDPAEEOGNGEOOEAETHTIALIALETOGONXRILTHEATHCAPOEODA
+  shuffled page 54  n=76
+    tier1 (rigid bigram prefix, W=26): 289344 configs
+    tier2 (skip beam, 30 runes): kept 2500; promoting 120
+    [null p54] best -6.352  <- PILGRIM(-1) + prime(+1) wphase=6 goff=46   (screen top3: -6.35/PILGRIM+prime, -6.36/DIVINITY+totient, -6.39/PILGRIMAGE+phi_prime)
+       DSTHENBBIOESONTHRITHGMGRMEBYLIAFTHBEANMGYBOEXHTCEOMMAEEORFTHIATHPEALBAENNATHTWOETHBSRDIAEHIAMTIF
+
+==============================================================================
+VERDICT
+==============================================================================
+  best REAL      : -6.164
+  best NULL(shuf): -6.228
+  margin         : +0.064   (POSITIVE needs >= +0.50 and >= -5.5)
+  => NEGATIVE: composed keyword-x-sacred-generator family shows no signal
+
+elapsed 114.9s

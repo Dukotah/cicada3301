@@ -1,0 +1,109 @@
+==============================================================================
+S1 — THE UNCONDITIONAL PAD THEOREM (no English assumption anywhere)
+==============================================================================
+  Theorem. k i.i.d. uniform on Z_29, independent of p  =>  Dk uniform
+  =>  Dc = Dp + Dk uniform for ANY p  =>  P(c_i = c_{i-1}) = 1/29 exactly.
+  The plaintext CANNOT affect this. English, Klingon, coordinates, base-29
+  digits, a key block, random filler -- all give 3.448%.
+
+  observed doublets           : 86 / 12955  = 0.6638%
+  uniform-pad prediction      : 446.7 = 3.4483%   (sd 20.8)
+  z                           : -17.37
+  P(Binom(n=12955, 1/29) <= 86) = exp(-227.1) = 10^-98.6
+
+  => AN UNFILTERED ONE-TIME PAD IS REFUTED UNCONDITIONALLY. This is a theorem,
+     not an inference, and it needs no assumption about the plaintext at all.
+
+  ESCAPE HATCH: could the author have SELECTED a lucky pad instead of
+  constructing a filter?  Expected number of pads that must be drawn:
+    1 / P = 10^98.6 pads.
+    At 10^9 pads/second since the Big Bang (4.4e17 s) one could draw 10^26.
+    Selection is infeasible by ~73 orders of magnitude.
+  => the doublet suppression was CONSTRUCTED at encryption time by a rule that
+     looked at the output. The key is therefore NOT independent of the message.
+     'External pad' (a document applied blindly) is excluded; what remains is an
+     ALGORITHM with a feedback rule. That is a mechanism, not a pad.
+
+==============================================================================
+S2 — POSITIVE CONSTRAINT ON THE PLAINTEXT
+==============================================================================
+  For ANY key independent of the plaintext (pad, PRNG, hash, raw or TRANSFORMED
+  keytext, any long derived key):   P(dbl) >= min_d P_Dp(d).
+  So a plaintext-independent key can only reach 0.664% if the PLAINTEXT's
+  first-difference distribution already has a hole at or below 0.664%.
+  Which plaintexts have such a hole?
+
+  plaintext class                        n   min_d P_Dp(d)  argmin    can reach 0.664% w/ indep key?
+  ------------------------------------------------------------------------------------------------
+  English prose (KJV)               200000         1.5025%       4                                NO
+  author's own LP plaintext            180         1.1173%      17                                NO
+  uniform random over 29            200000         3.3820%       0                                NO
+  restricted alphabet 20            200000         2.6365%      17                                NO
+  restricted alphabet 16 (hex)      200000         1.1265%      14                                NO
+  digit string 0-9 (coords)         200000         0.0000%      10                               YES
+  prior-stage ciphertext            200000         0.6865%       0                                NO
+  REAL LP2 ITSELF                    12956         0.6638%       0                               YES
+
+  READING: every natural-language and every full-alphabet plaintext is EXCLUDED
+  from the plaintext-independent-key class. Only RESTRICTED-ALPHABET plaintexts
+  (digit strings, coordinates, hex, base-N payloads) leave the door open -- and
+  they leave it open trivially, because the unused runes give exact zeros.
+  This is a falsifiable, positive prediction, not an absence of evidence:
+     IF the key is plaintext-independent, THEN the plaintext uses a restricted
+     alphabet -- which is exactly what every English-scoring attack in this repo
+     is constructed to be blind to. -> hand-off to lane B6.
+
+==============================================================================
+S3 — IS THE 86-DOUBLET RESIDUE A STOCHASTIC THINNING? (the filter's own signature)
+==============================================================================
+  Repo's pinned model: soft rejection sampling, i.i.d. p_keep~0.18. Then the
+  surviving doublets are a Bernoulli(p) thinning of a Bernoulli(1/29) process:
+  gaps geometric, index of dispersion (Fano factor) ~= 1 on any binning.
+  A rule-based or human pass would leave a NON-stochastic residue.
+
+  86 doublets, 85 gaps. mean gap 150.8 (geometric prediction 150.6), sd 142.4
+  geometric sd prediction = sqrt(1-p)/p with p=0.00664 -> 150.1
+
+    bins   Fano (real)   null mean   null sd       z
+  ----------------------------------------------------
+      10        1.3767      0.8957    0.4186   +1.15
+      26        1.0411      0.9592    0.2641   +0.31
+      50        0.8381      0.9754    0.1920   -0.72
+     100        0.9540      0.9839    0.1409   -0.21
+
+  KS(gaps vs Geometric(p=0.00664)) = 0.0767   critical(0.05) = 0.1475  -> consistent with geometric
+
+  READING: a stochastic residue is consistent with the repo's soft-filter model
+  AND with any ciphertext-feedback rule that fires probabilistically. It does NOT
+  discriminate pad-plus-filter from feedback-cipher. The filter leaves no
+  recoverable fingerprint -- which is itself the reason the two cannot be told
+  apart from the ciphertext.
+
+==============================================================================
+S4 — WHAT IS ACTUALLY FALSIFIABLE, AND HOW MUCH OF IT HAS BEEN SEARCHED
+==============================================================================
+  G5 established: no ciphertext-only STATISTIC separates a true pad from a
+  long key derived from a short seed. That is PRG indistinguishability, and it
+  is a theorem, so no future statistic will do it either.
+  The only discriminator is ENUMERATION of the seed space. That makes the
+  derived-key hypothesis falsifiable and the true-pad hypothesis NOT falsifiable.
+  Asymmetry: you can only ever kill derived-key families one at a time; you can
+  never confirm 'true pad'. 'Unfalsifiable' and 'proven' are opposite conditions.
+
+    [x] integer-seeded library PRNGs (glibc/MSVC/MT19937/CPython/Java), unix-second seeds 2011-2015
+        2.52e9 decodes — DONE (Round 8 SEED)
+    [x] lore/string/date seeds over the same PRNGs
+        15,408 decodes — DONE (Round 8 SEED)
+    [ ] hash counter/chain-mode keystreams (MD5/SHA-1/SHA-256/SHA-512), HMAC-DRBG
+        NOT RUN (queued twice in campaign14/REDTEAM-PROPOSALS.md)
+    [ ] stream ciphers (RC4/ARC4, AES-CTR)
+        NOT RUN (Round 8's own residue paragraph names RC4 as untested)
+    [ ] pp49-51 payload EXPANDED as a PRF seed (RC4/AES-CTR/SHA-CTR/HMAC-DRBG)
+        NOT RUN (all payload lanes used it DIRECTLY as key material)
+
+  The repo's own strongest claim ('the pad has no structure') is supported by an
+  enumeration of exactly ONE generator family. The families a 2014 author with a
+  laptop would most plausibly reach for -- openssl rand, RC4, a SHA-256 counter --
+  are the ones not enumerated.
+
+wrote b4_supplement_results.json

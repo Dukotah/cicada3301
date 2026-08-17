@@ -1,0 +1,21 @@
+expanded candidate keys: 283
+
+== GATE-1  key search re-finds ground truth ==
+  03.jpg: rank1 = DIVINITY spelled DIUINITY  sign-1 atbFalse score -4.344  words ['WELCOME', 'PILGRIM']
+        plaintext: WELCOMEWELCOMEPILGRIMTOTHEGREATJOURNEYTOWARDTHEENDOALLTHNGSITISNOTANEASYTRIPBUTORTHOSEWHOI
+        -> PASS
+        first DIVINITY variant at rank 0: DIUINITY -4.344
+  14.jpg: rank1 = CIRCUMFERENCE spelled FIRFUMFERENFE  sign-1 atbFalse score -4.243  words ['KOAN', 'LESSON']
+        plaintext: ACOANDURNGALESSONTHEMASTEREXPLAINEDTHEITHEIISTHEUOICEOTHECIRCUMERENCEHESAIDWHENASCEDBYASTU
+        -> PASS
+        first CIRCUMFERENCE variant at rank 0: FIRFUMFERENFE -4.243
+
+== GATE-2  crib instrument reads out the key ==
+  03.jpg crib 'WELCOME' sign-1 -> GMEAMLMP
+  03.jpg crib 'WELCOME' sign+1 -> DIUINIT
+        want 'DIUINIT' -> PASS
+  14.jpg crib 'AKOAN' sign-1 -> FMAEFEA
+  14.jpg crib 'AKOAN' sign+1 -> FIRFU
+        want 'FIRFU' -> PASS
+
+GATE OVERALL: PASS
