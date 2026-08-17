@@ -613,3 +613,53 @@ Last substantive pass before wind-down. Nothing survived.
   unsolvable-BY-DESIGN, not unsolved-by-effort.
 - **LOOP TERMINUS:** both frontiers exhausted; further rotation re-derives these conclusions. Wind down
   to synthesis (see FINAL-SYNTHESIS.md).
+
+## Round 9/10 — multi-lens armada (2026-08-11 → 17)
+
+A 22-lens wide re-attack, pre-registered per lens (positive control + size-matched null).
+**Zero hits.** Full synthesis: `analysis/round10/SYNTHESIS.md`. New eliminations:
+
+- **Plaintext/word channel — NULL.** "words are the map" (L2, 9 readings), "meaning is the road"
+  (L3, gematria-sum T1–T5), "numbers are the direction" (R9-DIRECTION, 2,670 positional reads,
+  real z=−0.40), and contiguous-passage-in-extended-corpus (L4-skeleton, 224 texts / 22.6M words,
+  best 22.7% match z=−1.03 vs a ≥60%/z≥10 bar) all sit inside their nulls. The 2016 hint's three
+  clauses are now each tested and dead.
+- **Keystream/pad channel — NULL.** 32-bit PRNG seed (L5, 0 hits on covered space; threshold
+  proven invalid at full scale → parked, not "unfinished"); finite-state generator / reuse
+  (L9-randomness, linear complexity = n/2 exactly, inside anti-repeat control range); short-key
+  hand-Vigenère k=4–12 (B2, S1-FAIL — survives only k≥64, out of scope); page-local semantic keys
+  (B3, 0 hits / 168k crib readouts); composed key W⊕G (B5, margin +0.064 vs +0.50); artifact-string
+  keys under the hand toolkit (B1, doublet z=−14.4 vs the author's OWN output).
+- **Non-English / machine plaintext — NULL (B6).** Language-agnostic detectors real z=+1.35 vs a
+  +3.0 bar; note the v2-onion base32 body is information-theoretically undetectable (random in
+  random) — a permanent, principled blind spot, not a lead.
+- **External / provenance — NULL.** SOTA watch (L7, 25 web ops, last verified 3301 msg still
+  2017-04-04); community-archive key claims (L6, 0/109,917 Discord msgs clear the "3301 gave
+  insiders CIPHER MATERIAL" bar — the 2 "insider" hits are the *public* Gematria Primus); sourced
+  primary statement about the pad (L8, 0 of {liber primus, key, pad, gematria, 7A35090F} in ~264k
+  chars of Schoenberger court filings — court-records source class clean-negative).
+- **Transcription — canon reconfirmed a 4th, independent way (R9-TEMPLATE).** Label-free glyph
+  clustering (NOT canon-trained) → 96.93% agreement, clean 29→29 bijection, **no reopener**.
+  Bounded: 38.4% of lines glyph-diffable; the OTP pages are where the read is weakest.
+
+**Two prior claims CORRECTED (supersede, per below):**
+- *"Flat IoC forces a full-length key"* → **false** (B4/G2): smallest IoC-invisible period at
+  N=12,956 is p*≈400. The OTP conclusion rests on the DOUBLET argument, not IoC.
+- *"LP2 is an external one-time pad"* → **OTP-class**, one member of a ciphertext-indistinguishability
+  class (B4/G4–G5): a SHA-256 counter-mode derived key + filter and ciphertext-autokey over flat
+  non-English plaintext both pass the full battery inside the pad model's band (no statistic
+  separates them at |z|>2.93).
+
+**Doublet-deficit discriminating power PINNED (B4/G3 + B1 vs RECON-B/B-16):** the deficit (0.664%,
+floor 1.50%) excludes *rigid* plaintext-independent keys; it carries NO discrimination once the soft
+anti-repeat rewrite is the mechanism (the filter sets the rate) — which is exactly why the
+skip/anti-repeat-aware decoders (Campaign XVIII + every B-lane) are the ones that exclude the rest,
+to the audited limit of their power.
+
+**Genuinely-new untested INPUT (PA-3), do-not-mistake-for-a-lead-strength:** the author's own ~4 MB
+binary pads from the 2013 CicadaOS (`DATA/_560.*`, `761.mp3`⊕`twitter.txt`) — never fed under the
+skip-aware decoder. Not held in-repo; needs fetching. Highest-prior remaining input, low absolute prior.
+
+**Instrument caveats (PA-2), carry forward:** R9-DIRECTION lacked a positive control; Campaign XVIII's
+FP ceiling was computed at ~400 trials vs 1e7–1e9-trial sweeps (realistic confirm-margin ~0.25, not
+~1.3) — any new lane scoring near threshold MUST recompute its FP ceiling at its own N.

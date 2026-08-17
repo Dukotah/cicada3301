@@ -15,8 +15,12 @@ that first proves it can find the answers we already know.
 > project produced instead is a **sharpened boundary**: the unsolved pages are
 > **one-time-pad-class**, and the evidence now says they are *unsolvable-by-design*
 > rather than *unsolved-by-effort*. That is a result, not a consolation — and it is
-> backed by ~20 campaigns plus 8 pre-registered rounds of falsified attacks, each
-> with a reproduce command.
+> backed by ~20 campaigns, 8 pre-registered rounds, and a 22-lens multi-lens armada
+> of falsified attacks, each with a reproduce command. The armada also *corrected* two
+> of our own earlier claims: flat IoC does **not** force a full-length key (a period ≈400
+> key is IoC-invisible), and "one-time pad" is more precisely an **OTP-class**
+> ciphertext-indistinguishability set. See
+> [`liber-primus/analysis/round10/SYNTHESIS.md`](liber-primus/analysis/round10/SYNTHESIS.md).
 
 ---
 

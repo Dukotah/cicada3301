@@ -1,6 +1,6 @@
 # PICKUP-HERE — where the work left off
 
-_Updated **2026-08-11**. Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
+_Updated **2026-08-17**. Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
 
 ## 👉 Start with the canonical docs
 | Doc | What it holds |
@@ -73,6 +73,40 @@ corpus exists, the held corpus hashes null across representations (2,706 tests),
 community status is a sourced negative. **The only remaining door is solving LP2 0–54 —
 cryptanalysis, not OSINT.**
 
+## Round 9/10 — multi-lens armada (2026-08-11 → 17)
+
+A fresh, wide 22-lens re-attack (distinct from the `research/round-1…8` sequence), run
+across the plaintext/word, keystream/pad, and external/provenance fronts — each lens
+pre-registered with a positive control and a size-matched null. The window crashed
+mid-run; it was recovered, finished, and synthesized on 2026-08-17.
+Full detail: [`liber-primus/analysis/round10/SYNTHESIS.md`](liber-primus/analysis/round10/SYNTHESIS.md).
+
+**Zero hits across all lenses — the OTP / unsolvable-by-design verdict holds and is
+hardened.** The value is three things, not another null:
+
+1. **Two prior claims corrected** (marked as superseding in the synthesis):
+   - *"Flat IoC forces a full-length key"* is **false** — the smallest IoC-invisible period at
+     N=12,956 is **p\*≈400**, not 12,956. The OTP conclusion rests on the **doublet** argument,
+     not IoC.
+   - *"OTP"* is really **one member of a ciphertext-indistinguishability class**: a SHA-256
+     counter-mode derived key + filter, and ciphertext-autokey over flat non-English plaintext,
+     both pass the full statistics battery inside the external-pad model's band (no statistic
+     separates them at |z|>2.93). State it as OTP-*class*, not a unique external pad.
+2. **The transcription got a 4th, genuinely-independent audit** (label-free glyph clustering,
+   not canon-trained): 96.93% agreement, clean 29→29 bijection, **no reopener** — every
+   disagreement is a DP artifact or a misread on an already-*solved* page. Bounded: only 38.4%
+   of lines were glyph-diffable, and the OTP pages are where the read is weakest.
+3. **The doublet-deficit argument was stress-tested from both sides** (B4/G3 hardens it — the
+   plaintext-independent floor is 1.50% > observed 0.664%; RECON-B/B-16 objects that the soft
+   anti-repeat filter, not the key, sets the rate) and **reconciled**: the deficit excludes
+   *rigid* plaintext-independent keys; the anti-repeat-aware decoders exclude the rest to the
+   audited limit of their power.
+
+**One genuinely-new untested input surfaced (PA-3):** the author's own ~4 MB binary pads from
+the 2013 CicadaOS (`DATA/_560.*`, `761.mp3`⊕`twitter.txt`) — period-correct key material she
+demonstrably used — have **never been fed under the skip-aware decoder**. Not held in-repo;
+would need fetching. It is the highest-prior remaining input, though still low absolute prior.
+
 ## What the 2026-07 sessions did
 
 - **2026-07-27 — OSINT / external-artifact sweep.** Pulled the onion images and HTML never held
@@ -118,10 +152,18 @@ What is left is **external and low-prior**. Nothing in the ciphertext can close 
    the ciphertext, not another text to try.
 2. **A correctly-targeted, locally-held archive** that could contain the lost AN END page.
    (Residual activity here = passive monitoring only; the active hunt is closed.)
-3. **The full 32-bit seed sweep**, still running into `analysis/seed_sweep/results_full32.txt` —
-   the one loose end from Round 8. Re-run with `analysis/seed_sweep/run_full32.sh`.
-4. **The SKELETON corpus extension** — Round 8's word-length attack was negative *for its 51-text
-   corpus*, not in principle. The tool is built to take more texts (`analysis/skeleton/`).
+3. **The author's own binary pads (PA-3, 2026-08)** — the 2013 CicadaOS `DATA/_560.*` files and
+   the `761.mp3`⊕`twitter.txt` pair, period-correct key material Cicada demonstrably used, never
+   fed under the skip-aware decoder. Not held in-repo; needs fetching. Highest-prior *input*
+   remaining (still low absolute prior). → `analysis/round10b/PA-3/ARTIFACT-INVENTORY.md`
+4. **RECON-C** — a pre-registered, resumable community-archive fetch (cijhho insider tree, Reddit)
+   deliberately deferred, not a crash. Cheap to run. → `analysis/round10/RECON-C/`
+
+_Superseded by Round 9/10:_ the **32-bit seed sweep** (Round 8 loose end) is now **parked with
+cause** — L5-seed32 proved the pre-registered threshold is statistically invalid at full-32 scale,
+so completing it is a "completeness ritual" (do not resume without a scale-corrected threshold from
+`nullcurve.py`). The **SKELETON corpus extension** ran as L4 against 224 texts / 22.6M words:
+**negative** (best 22.7% match, z=−1.03, inside the null band).
 
 **What would reopen the case:** a new 7A35090F-signed Cicada release, a CicadaSolvers-accepted
 reproducible page solve, or the private pad surfacing.
