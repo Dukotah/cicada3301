@@ -663,3 +663,38 @@ skip-aware decoder. Not held in-repo; needs fetching. Highest-prior remaining in
 **Instrument caveats (PA-2), carry forward:** R9-DIRECTION lacked a positive control; Campaign XVIII's
 FP ceiling was computed at ~400 trials vs 1e7–1e9-trial sweeps (realistic confirm-margin ~0.25, not
 ~1.3) — any new lane scoring near threshold MUST recompute its FP ceiling at its own N.
+
+## Round 11 — the NUMBER CHANNEL armada (2026-08-17)
+
+Followed the signed hints literally ("the primes are sacred", "either the words or their
+numbers", "their numbers are the direction"): every prior exclusion lived on the mod-29 LETTER
+stream, so this round attacked the VALUE channel (arithmetic on raw prime magnitudes, in Z,
+outside the group where everything was proven) + the two physical channels never transcribed.
+Instrument `analysis/round11/lib_numchannel.py`, gated PASS. **7 lenses, ALL NEGATIVE, ALL
+positive controls PASSED, 0 hits** (true negatives, not blind scans). Full: `analysis/round11/SYNTHESIS.md`.
+
+- **N1 cumulative-gematria FEEDBACK autokey** (the class the verdict called "open, unbounded")
+  — NULL. 48 configs (PT/CT feedback x f{mod29,totient,digitsum} x sign x direction x
+  reset/continuous), best -7.438 vs null_max -7.446. Controls recovered PT- and CT-feedback
+  plants exactly. First control-validated null on this class.
+- **N2 prime-gap / prime-index as data** — NULL, best -6.951 vs -6.901. (prime_gap has only 5
+  distinct values = low-entropy; printable-ratio 1.0 is a mapping artifact.)
+- **N3 whole-book / segments as number-theoretic objects** — NULL and ANTI-special: 0 primes,
+  0 perfect powers, 0 Mersenne-ish, 0 notable bit-lengths across 55 segments; real structure
+  total 0 vs null mean 0.125 (LESS coincidence than random). Whole-book prime-concat = 86,084
+  bits, no landmark, byte-printable 0.367 = random baseline. Control 11/11 (Mersenne/RSA/perfect-power).
+  Kills the "sacred prime" intuition at book scale (already dead at pp49-51 scale).
+- **N4 digit-plane separation** (bases 3/5/7/10) — NULL, best -5.728 vs -5.722.
+- **N5 totient-ladder escalation** (phi(phi(p)), Carmichael lambda, totient-of-running-sum) —
+  NULL, best -6.667 vs -6.722. Control reproduced AN END via phi(prime).
+- **S1 interrupter-position channel** (458 F-runes / 457 gaps) — NULL, best -5.994 vs -5.997;
+  control recovered a planted gap-message (sep 2.26).
+- **S2 separator/ornament channel** — NULL, and RESOLVES the RECON-A "ornaments never read"
+  flag: the separators are TYPOGRAPHY (mean run before '/'=2.39 line-wrap, '.'=4.13 sentence,
+  '-'=3.96 word; var ratio 0.307), not a hidden payload. Controls (ternary+binary) recovered plants.
+
+NET: the hint-literal number channel — the most-cited "surely they meant the primes" intuition
+in the whole mystery — is now a measured, control-validated NEGATIVE. Verdict tightened, not
+reopened. Only roadmap residue left is external/low-prior (PA-3 binary pads under skip-aware
+decode; dense-OTP re-segmentation) — inputs/imaging, not more transforms of the held stream.
+Do NOT re-run any Round-11 lens.

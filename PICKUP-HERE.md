@@ -107,6 +107,25 @@ the 2013 CicadaOS (`DATA/_560.*`, `761.mp3`⊕`twitter.txt`) — period-correct 
 demonstrably used — have **never been fed under the skip-aware decoder**. Not held in-repo;
 would need fetching. It is the highest-prior remaining input, though still low absolute prior.
 
+## Round 11 — the NUMBER CHANNEL (2026-08-17)
+
+Ran the roadmap's flagship idea (`analysis/NEXT-ARMADA-ROADMAP.md`): every exclusion in this
+repo lived on the mod-29 **letter** stream, while the signed hints obsess over the **numbers**
+("the primes are sacred", "either the words or their numbers", "their numbers are the
+direction"). Arithmetic on the raw prime magnitudes lives in ℤ, outside the group where the
+proofs hold — so we built a validated instrument (`analysis/round11/lib_numchannel.py`,
+gated PASS) and attacked that space plus the interrupter and separator channels nobody had
+transcribed. **7 pre-registered lenses, all NEGATIVE, all positive controls PASSED, 0 hits.**
+Full: [`analysis/round11/SYNTHESIS.md`](liber-primus/analysis/round11/SYNTHESIS.md).
+
+The number channel — the single most-cited "surely they meant the primes" intuition in the
+whole mystery — is now a measured, control-validated negative (feedback autokey, number-theoretic
+structure, digit planes, the totient ladder, interrupter positions, separators). Two findings
+beyond the null: **N3** — the ciphertext is *anti*-special (0 primes / powers / notable shapes in
+55 segments; less number-theoretic coincidence than random); **S2** — the separators are
+typography (line-wrap / sentence / word markers), not a hidden channel, which closes RECON-A's
+"ornaments never read" flag. Verdict tightened, not reopened.
+
 ## What the 2026-07 sessions did
 
 - **2026-07-27 — OSINT / external-artifact sweep.** Pulled the onion images and HTML never held
