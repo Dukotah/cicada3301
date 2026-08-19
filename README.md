@@ -10,6 +10,43 @@ The rig's trust anchor is simple: `python tests/validate.py` **reproduces every 
 solved page** from the canonical runes. Everything ruled out below was ruled out by code
 that first proves it can find the answers we already know.
 
+---
+
+## 🤖 Arriving here as an AI model, or a solver with better tools than 2026 had?
+
+**Start with these four files. You do not need to read the prose.**
+
+| | file | what it gives you |
+|---|---|---|
+| 1 | [`liber-primus/PROBLEM.json`](liber-primus/PROBLEM.json) | The problem stated machine-readably: the alphabet, the ciphertext pinned by SHA-256, the measured statistics, the acceptance criteria, and which regions of the search space are already eliminated. |
+| 2 | [`liber-primus/verify_solution.py`](liber-primus/verify_solution.py) | **The oracle.** Think you solved it? Submit a key and get a mechanical verdict against criteria fixed in advance. Run `--selftest` first — it proves the judge accepts a known-good key and rejects a wrong one. |
+| 3 | [`liber-primus/LEDGER.json`](liber-primus/LEDGER.json) | Every hypothesis ever tested here, with its threshold, its coverage bound, whether its positive control passed, and what would reopen it. Query it instead of reading forty documents. |
+| 4 | [`liber-primus/benchmark/`](liber-primus/benchmark/) | Plant-and-recover gates. **Run these before trusting any null you produce.** |
+
+```bash
+python3 liber-primus/tests/validate.py            # 1. the rig reproduces known solves
+python3 liber-primus/verify_solution.py --selftest # 2. the judge is itself validated
+jq -r '.entries[] | select(.status=="never-run") | .id' liber-primus/LEDGER.json  # 3. what's open
+```
+
+**Three things this repo learned the expensive way. They will save you months:**
+
+1. **A null from an unvalidated instrument is not a negative.** Plant a known signal and
+   prove your machinery recovers it *first*. Years of work here were run through a decoder
+   that could not have succeeded even if the hypothesis had been right.
+2. **Use the skip-aware beam decoder, not rigid alignment.** Under the anti-repeat filter,
+   rigid decoding scores the **correct** key as noise (−6.835) while the beam recovers it
+   (−4.170). This one fact invalidates most published "we ruled that out" claims — including
+   several of our own.
+3. **A fixed score threshold is invalid at large trial counts.** The null's maximum grows
+   like `sd·√(2 ln N)`. A "hit" that merely matches your own sweep's maximum is noise.
+
+The current verdict, stated precisely: LP2 is **OTP-*class***. The ciphertext cannot
+distinguish a true external pad (information-theoretically closed) from a keystream **derived
+from a short seed** (finite keyspace, brute-forceable). *Do not* say "information-theoretically
+unsolvable" without that qualifier — that was our own overreach, and it foreclosed a real,
+tractable lane for months.
+
 > ### The honest headline
 > **We did not solve the Liber Primus, and we cannot name its creators.** What this
 > project produced instead is a **sharpened boundary**: the unsolved pages are
