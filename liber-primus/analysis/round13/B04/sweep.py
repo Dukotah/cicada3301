@@ -24,6 +24,9 @@ import harness as H
 import seeds as S
 import ks
 
+sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "..", "campaign18_skip")))
+import skipdecode as sk          # used by stage_d's exact-config escalation
+
 OUT = HERE
 BAR = -5.5                      # PREREG s5, the -5.5 floor binds at L=120 and L=100
 TOPK = 300
@@ -201,13 +204,22 @@ def stage_c(core, nproc):
 
 
 def stage_d(prior, nproc):
-    """PREREG s5 escalation: re-decode the top configs on page 0 full, then the
-    whole 12,956-rune stream. Nothing here is a hit unless it survives both."""
+    """PREREG s5 escalation: re-decode the top configs on page 0 full, then the whole
+    12,956-rune stream. Nothing is a hit unless it survives both.
+
+    NOTE (2026-08-19, corrected): the first implementation of this stage passed the
+    escalation set's unique SEEDS back into run_stage, which re-expanded the full
+    generator x reduction x sign x atbash x direction cross product on top of them --
+    88,960 full-stream decodes instead of the ~150 SPECIFIC tuples PREREG s3.6 asks for.
+    At ~1.4 decodes/s on the 12,956-rune stream that is ~18 hours of compute to answer a
+    question that 150 decodes answers. It now escalates the exact tuples.
+    """
     log("\n=== STAGE D — deepen survivors ===")
     rows = []
     for st in prior:
         rows.extend(st.get("top50", []))
     rows.sort(key=lambda d: -d["score"])
+
     seen, picks = set(), []
     for d in rows:
         k = (d.get("seed_hex"), d.get("gen"), d.get("red"), d.get("sign"),
@@ -218,15 +230,50 @@ def stage_d(prior, nproc):
         picks.append(d)
         if len(picks) >= 300:
             break
-    log(f"escalating {len(picks)} distinct configs")
+
+    over = [d for d in rows if d["score"] >= BAR]
+    log(f"escalating {len(picks)} distinct CONFIGS "
+        f"({len(over)} of them cleared the {BAR} bar in A/B/C)")
+    if not over:
+        log("NOTE: PREREG s5 escalates configs scoring >= "
+            f"{BAR}. None did, so this stage is completeness only -- it cannot change "
+            "the verdict, and its result is reported as such.")
+
     out = []
     for seg_name, seg in (("page0_full", H.full_page0()),
                           ("unsolved_full", H.full_unsolved())):
-        rr = H.run_stage([seg], _entries_from(picks), nproc=nproc, topk=50,
-                         label=f"D:{seg_name}")
-        s = stage_summary(f"D_{seg_name}", rr)
-        log(f"  {seg_name}: best={s['best_score']} bar={BAR} hit={s['hit']}")
-        out.append(s)
+        sname, C0, C1 = seg
+        res = []
+        t0 = time.time()
+        for i, d in enumerate(picks, 1):
+            # Size the keystream for the segment PLUS this config's offset. Stage B
+            # offsets run to 3301, so len(C)+512 is not enough on the full stream.
+            need = len(C0) + int(d.get("offset", 0) or 0) + 512
+            K = ks.make_ks(d["gen"], d["red"], bytes.fromhex(d["seed_hex"]), need)
+            if d["dir"] == "rev":
+                K = K[::-1]
+            C = C0 if d["atbash"] == 0 else C1
+            bd = sk.beam_decode(C, K, sign=d["sign"], o=d.get("offset", 0),
+                                beam_w=H.BEAM_W, max_skip=H.MAX_SKIP)
+            res.append({**{k: d[k] for k in ("seed", "seed_hex", "gen", "red", "sign",
+                                             "atbash", "dir", "offset")},
+                        "head_score": d["score"], "score": bd["score"],
+                        "text": bd["translit"][:96]})
+            if i % 50 == 0 or i == len(picks):
+                log(f"    [D:{seg_name}] {i}/{len(picks)}  {time.time()-t0:.0f}s  "
+                    f"best={max(r['score'] for r in res):.3f}")
+        res.sort(key=lambda r: -r["score"])
+        best = res[0]["score"] if res else None
+        hit = bool(best is not None and best >= BAR)
+        improved = [r for r in res if r["score"] > r["head_score"]]
+        log(f"  {seg_name}: best={best} bar={BAR} hit={hit}  "
+            f"({len(improved)}/{len(res)} improved over their head score)")
+        out.append({"stage": f"D_{seg_name}", "n_decodes": len(res),
+                    "elapsed_s": round(time.time() - t0, 1),
+                    "best_score": best, "bar": BAR, "hit": hit,
+                    "over_bar": [r for r in res if r["score"] >= BAR],
+                    "n_improved_on_longer_text": len(improved),
+                    "top50": res[:50]})
     return out
 
 
@@ -289,8 +336,26 @@ def main():
         s = stage_b(core, a.nproc); done.append(s); save("B", s)
     if "C" in want:
         s = stage_c(core, a.nproc); done.append(s); save("C", s)
-    if "D" in want and done:
-        d = stage_d(done, a.nproc); save("D", d); done.extend(d)
+    if "D" in want:
+        # Stage D can be run standalone (--stages D) after A/B/C have already been
+        # checkpointed. Load their results from disk rather than silently escalating
+        # nothing, which is what the first version did.
+        prior = list(done)
+        if not prior:
+            for st in ("A", "B", "C"):
+                fp = os.path.join(OUT, f"results_{st}.json")
+                if os.path.exists(fp):
+                    prior.append(json.load(open(fp, encoding="utf-8")))
+            if prior:
+                log(f"loaded {len(prior)} checkpointed stage(s) from disk for escalation")
+            else:
+                log("!! Stage D requested but no A/B/C results found - nothing to "
+                    "escalate. Run A/B/C first.")
+        if prior:
+            d = stage_d(prior, a.nproc)
+            save("D", d)
+            done.extend(prior if not done else [])
+            done.extend(d)
 
     best = max([s["best_score"] for s in done if s.get("best_score") is not None],
                default=None)
@@ -305,7 +370,9 @@ def main():
                             "best_score", "hit")} for s in done],
                "total_decodes": sum(s.get("n_decodes", 0) for s in done),
                "elapsed_s": round(time.time() - t0, 1)}
-    save("summary", summary)
+    summary["stages_run_this_invocation"] = want
+    save("summary" if set(want) >= {"A", "B", "C"} else f"summary_{'-'.join(want)}",
+         summary)
     log("\n" + "=" * 78)
     log(f"VERDICT: {verdict}   best={best} vs bar={BAR}   "
         f"decodes={summary['total_decodes']:,}   "
