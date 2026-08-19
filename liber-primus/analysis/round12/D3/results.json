@@ -1,0 +1,46 @@
+{
+  "front": "D3",
+  "verdict": "FOUND-ERROR",
+  "trust_anchor": "PASS",
+  "positive_control": {
+    "name": "SHA-256 counter-mode derived keystream (B-04/G5 family) + pinned soft anti-repeat filter, recovered by Campaign XVIII skip-aware beam",
+    "english_target": -4.170,
+    "beam_correct_seed": -4.170,
+    "rigid_correct_seed": -6.835,
+    "beam_wrong_seed": -7.349,
+    "null_max_N200": -6.044,
+    "ct_doublet_rate": 0.0,
+    "char_recovery": 0.989,
+    "gate": "PASS"
+  },
+  "closures_audited": [
+    {
+      "closure": "information-theoretically unsolvable / no compute recovers it / unsolvable-by-design",
+      "claim_locations": ["ELIMINATION-LEDGER.md:21", "round12/CAMPAIGN-PLAN.md:12-13", "round11/SYNTHESIS.md:52", "README.md:16", "PICKUP-HERE.md:17"],
+      "actual_evidence": "B4/G5 (round10b/b4_results.json): SHA-256-counter derived key from a SHORT seed is ciphertext-indistinguishable from a pad (separated=false, max|z|=1.60). OTP-CLASS, not a point identification.",
+      "overreach": "one member (true OTP, info-theoretically closed) promoted to a property of the whole indistinguishability class, which also contains finite/brute-forceable derived keys",
+      "live_lane": "RECON-A B-04/B-05 (never-run): SHA/AES/HMAC-counter derived-key dictionary + pp49-51-payload-as-PRF-seed, mod 29, under the filter-aware beam",
+      "cheapest_test": "dictionary of ~1e2-1e4 Cicada strings x {SHA256,SHA512,HMAC-DRBG,AES-CTR,RC4} counter-mode x sign/atbash/offset, mod 29, through the EXISTING Campaign XVIII beam with the plant-recover gate (minutes-hours)"
+    },
+    {
+      "closure": "seeded-PRNG pads -- do not re-run (Round 8 SEED, 2.52e9 decodes)",
+      "claim_locations": ["ELIMINATION-LEDGER.md:272-273"],
+      "actual_evidence": "L5-seed32/CENSUS.md: 10 integer-seeded generators over ~3% of each seed space; UNCOVERED = PHP mt_rand (highest prior), .NET System.Random, BBS as real seed space, ISAAC, LFSR, >2^32/ms/offset seeds",
+      "overreach": "'10 generators, 3% each, hobbyist PRNGs only' written up as 'seeded-PRNG pads closed'",
+      "prior_flag": "RECON-B/B-21 (Round 10) flagged 'SEED residue dropped by every nav doc' -- never actioned",
+      "cheapest_test": "add PHP mt_rand (validated vs php binary) and sweep its 32-bit space -- census-named highest-prior gap"
+    },
+    {
+      "closure": "keytexts dead BY MECHANISM, independent of which text (Round 7)",
+      "claim_locations": ["ELIMINATION-LEDGER.md:34", "ELIMINATION-LEDGER.md:174", "ELIMINATION-LEDGER.md:272"],
+      "actual_evidence": "RECON-B/B-16 + G3/B-16: under the repo's OWN soft-rewrite construction the deficit is set by the filter not the key, so 'doublet-excluded rigidly' does no work; real coverage is ~200-text EXHAUSTION under an unverified robustness assumption. Campaign XVIII gate covers key-SKIP not value-REWRITE; COVERAGE-MATRIX.md has 0 rewrite rows (verified).",
+      "overreach": "'closed by exhaustion under unverified assumption' stated as 'closed by mechanism, independent of text'",
+      "prior_flag": "RECON-B/B-16 (Round 10) -- never actioned; ledger still reads 'by mechanism'",
+      "cheapest_test": "B-16 afternoon test: plant key, encipher English, apply VALUE-REWRITE filter at p_keep=0.18 (distinct from key-skip), run existing beam; reword or re-run per outcome"
+    }
+  ],
+  "secondary": "ELIMINATION-LEDGER.md:211 'internal attack surface is closed' papers over 16 never-run RECON-A items (highest: A-03 haplography count-audit, D-01 generator-fingerprint, F-01 LP2-as-pad inversion)",
+  "hit": false,
+  "control_passed": true,
+  "key_numbers": "Closure1: claim 'no compute recovers it' vs actual B4/G5 separated=false (max|z|=1.60) + B-04 dictionary NEVER-RUN. Closure2: claim 'seeded-PRNG closed' vs actual 10 gens/3% seedspace, PHP mt_rand+.NET+BBS+ISAAC uncovered. Closure3: claim 'keytexts dead by mechanism' vs actual ~200-text exhaustion, 0 rewrite rows in COVERAGE-MATRIX. PC: beam -4.170 (English) vs rigid -6.835 vs wrong-seed -7.349 vs null_max -6.044, 98.9% recovery."
+}

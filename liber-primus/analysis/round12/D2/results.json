@@ -1,0 +1,37 @@
+{
+  "front": "D2",
+  "verdict": "NO-ERROR-FOUND",
+  "trust_anchor_validate_py": "PASS",
+  "positive_control": {
+    "planted_english_score": -4.341,
+    "shuffled_noise_score": -6.602,
+    "jump": 2.261,
+    "control_ok": true
+  },
+  "recomputation": {
+    "n_unsolved": {"claimed": 12956, "recomputed": 12956, "match": true},
+    "doublet_pct_flattened": {"claimed": 0.664, "recomputed": 0.664, "match": true},
+    "doublet_count": {"recomputed": 86},
+    "doublet_pct_per_page_no_joins": 0.667,
+    "doublet_pct_strip_interrupters": 0.755,
+    "cross_page_join_pairs": 54,
+    "cross_page_join_doublets": 0,
+    "ioc_norm": {"claimed": 1.000, "recomputed": 0.9999, "match": true},
+    "ioc_norm_strip_interrupters": 1.0356,
+    "entropy_bits": {"claimed": 4.857, "recomputed": 4.8565, "match": true},
+    "interrupter_F_count": 458,
+    "interrupter_F_pct": 3.54,
+    "p_star_period_bound": {"claimed": 400, "recomputed": 400, "match": true},
+    "g3_doublet_floor_min_pdp_pct": {"kjv": 1.38, "moby": 1.79, "pride": 1.78, "war": 1.83, "observed": 0.664}
+  },
+  "miscount_hypotheses": {
+    "page_joins_double_count": "REFUTED - joins add 0 doublets; per-page 0.667% vs flat 0.664%",
+    "interrupters_wrongly_included": "REFUTED - stripping raises rate to 0.755%, anomaly intrinsic",
+    "solved_pages_leaking": "REFUTED - all pages 0-54 flat IoC.N ~1.0; only PARABLE(1.819)/AN END excluded, correctly",
+    "p_star_wrong_or_misused": "REFUTED - correct detection floor, used to RETRACT overclaim not assert one",
+    "g3_floor_direction_normalisation": "REFUTED - floor = min_d Pdp(d) exact, 1.38% > observed 0.664%"
+  },
+  "reopened_class": null,
+  "hit": false,
+  "control_passed": true
+}

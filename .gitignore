@@ -143,3 +143,15 @@ liber-primus/analysis/round10b/**/*.npy
 liber-primus/analysis/round10b/**/*.bin
 liber-primus/analysis/retranscribe/*.npz
 liber-primus/analysis/retranscribe/*.png
+
+# Round 12 "honest best shot" campaign (liber-primus/analysis/round12) — commit scripts +
+# CAMPAIGN-PLAN/RESULTS docs + result JSON only. Everything below re-fetches from committed
+# code (A1/RESULTS.md names each pad's source; C2/fetch.sh rebuilds the corpus).
+#   A1/pads/   = the author's CicadaOS binary pads (~3.6 MB), fetched from mirrors
+#   C2/texts/  = fresh esoteric Gutenberg corpus (~12 MB), rebuild with C2/fetch.sh
+#   frontB *.png/*.npy = rendered line crops and template arrays
+liber-primus/analysis/round12/A1/pads/
+liber-primus/analysis/round12/C2/texts/
+liber-primus/analysis/round12/**/*.png
+liber-primus/analysis/round12/**/*.npy
+liber-primus/analysis/round12/**/*.npz

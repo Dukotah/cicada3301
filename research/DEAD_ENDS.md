@@ -439,3 +439,51 @@ four dimensions that were never ciphertext-only attacks at all — keystream ent
 geometry, byte-level payload structure, and the cleartext skeleton — plus the doublet-pointer
 reading. The one-time-pad characterisation is now supported by a *measurement of key
 entropy* over 2.5e9 candidate seeds rather than only by the absence of key structure.
+
+## Round 9 — 2026-08-11 (Round-8 follow-ups + the signed "numbers" clue)
+Full writeup: `research/ROUND-9-RESULTS.md`. Code: `liber-primus/analysis/{skeleton,direction,retranscribe}/`.
+
+### CLOSED (was Round 8's only open thread) — R9-LENGTH "the LP2 word-length excess"
+**What it was:** LP2's mean rune-word length 4.425 vs 4.10–4.15 for English-in-futhorc, with the
+458 interrupters supplying only +0.156 of the +0.32 gap. It sat in the cleartext channel, so it
+was attackable without a key.
+**Encoder verified first:** the solved LP2 page PARABLE is *unenciphered plaintext*, and the
+repo's greedy-multigraph encoder reproduces **all 20 of its word lengths exactly** (THE=2 via the
+TH rune, TUNNELING=7 via ING, CIRCUMFERENCES=14, DIVINITY=8 with U for V, LIKE=4 with C for K).
+The excess is therefore not a transliteration artifact.
+**Why dead:** the comparison was the error, not the data. Round 8's KS tests measured a
+2,928-word passage against 20,000–200,000-word AGGREGATES; an aggregate has almost no sampling
+error, so *any* real passage of *any* text tests as significantly different. Comparing like with
+like — sliding a 2,928-word window across every corpus text — **44 of 47 texts contain a passage
+reaching LP2's lower bound of 4.268**; Dracula 95.8% of passages, Dhammapada 64.9%, Blake 34.6%,
+Elder Edda 26.7%, Upanishads 21.4%, Emerson 19.5%. Cicada's own solved LP2 pages bracket it on
+both sides (AN END 3.40, PARABLE 4.75), and the aphoristic/formal registers the Liber Primus
+actually resembles run longer than novels.
+**Do not re-open the word-length excess.** Anyone repeating it must compare like-sized passages,
+never a passage against a corpus.
+
+### KILLED (Gate #2, executed then refuted) — R9-DIRECTION "their numbers are the direction"
+**Mechanism, and note it is licensed by a SIGNED 3301 statement rather than by speculation** — the
+2016-01-01 message (OpenPGP 7A35090F): *"Liber Primus is the way. Its words are the map, their
+meaning is the road, and their numbers are the direction."* The repo had attacked the numbers as a
+KEYSTREAM (prime/totient/Fibonacci — dead by mechanism) and as history-dependent prime transforms
+(`seek_primes.py`), never as what "direction" literally says: a rule for WHERE TO GO NEXT. That is
+a different mechanism, not another key: it supposes the pages are largely filler and the message
+sits at COMPUTED POSITIONS, unenciphered. Nothing previously measured excluded it — flat IoC is
+what filler gives, it needs no key so the OTP verdict does not apply, and **Round 6's SIEVE-W
+searched only CONTIGUOUS windows with a sliding detector, so non-contiguous position-computed
+plaintext was invisible to it.**
+**Why dead:** REFUTED. Four families — self-indexing walk `p ← p ± f(c[p])` over 7 step functions
+× 64 starts × both directions × interrupters kept/skipped; cumulative walk; sign walk over 11
+strides; and numeric sieves (prime / Fibonacci / square / every-k-th for k ∈ {3,7,11,29,33,133,331,
+3301 mod L} / cumulative-gematria hits) = **2,670 readings**, scored with the seed-sweep 4-gram
+model against the identical families run on six shuffles of the same ciphertext.
+**REAL best −16.08; null mean −15.97 sd 0.28 max −15.67; z = −0.40** — the real ciphertext scores
+*worse than its own shuffles*, and English-class at this length is ≈ −11 to −12.
+**Do not revive** walk / cumulative-walk / sign-walk / numeric-sieve readings. Honest scope: 2,670
+readings across four families, not every conceivable reading of "direction"; a revival needs a
+SPECIFIC rule with a reason beyond "the numbers mean something", and should be run through
+`analysis/direction/direction.py`, which takes new step functions.
+**Worth keeping:** the 2016 message is the **only signed methodological hint 3301 ever gave**, and
+this repo had not been treating it as a first-class object. Its other two clauses — "its words are
+the map" and "their meaning is the road" — remain uninterpreted.

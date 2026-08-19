@@ -1,0 +1,9 @@
+gen=3 MSVC rand()%29                 seeds=0..4294967296  best=-12.8472 @2073222361  hits>-12.5=0  3013.3s
+gen=5 mt19937 init_genrand %29       seeds=0..4294967296  best=-12.7947 @2509067894  hits>-12.5=0  6520.7s
+gen=7 py3 seed(int) randrange(29)    seeds=0..4294967296  best=-12.7374 @3909749431  hits>-12.5=0  11131.1s
+gen=9 java Random.nextInt(29)        seeds=0..4294967296  best=-12.8540 @2456400707  hits>-12.5=0  2909.0s
+gen=1 glibc random() scaled          seeds=0..4294967296  best=-12.6432 @3472178943  hits>-12.5=0  6813.7s
+gen=4 MSVC rand() scaled             seeds=0..4294967296  best=-12.9618 @844478165  hits>-12.5=0  2921.7s
+gen=6 mt19937 init_genrand double    seeds=0..4294967296  best=-12.9238 @3599770222  hits>-12.5=0  6918.5s
+gen=8 py3 seed(int) int(random()*29) seeds=0..4294967296  best=-12.9764 @2404693608  hits>-12.5=0  6765.3s
+gen=2 glibc random()%29 +norepeat    seeds=0..4294967296  best=-13.0274 @3120682377  hits>-12.5=0  2752.8s

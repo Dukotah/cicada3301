@@ -1,0 +1,35 @@
+{
+  "front": "D1 red-team (circularity hunt)",
+  "verdict": "NO-ERROR-FOUND",
+  "trust_anchor_validate_py": "PASS",
+  "control_passed": true,
+  "hit": false,
+  "audited_assumptions": {
+    "doublet_floor_argument": {
+      "circularity_hypothesis": "1.5% English doublet floor computed on canon (circular)",
+      "finding": "floor measured on generic English (self_reliance PT x unrelated keys = 3.28-4.18% rigid; KJV 1.50% low end), never canon; observed 0.66% below all; text-independent",
+      "circular": false
+    },
+    "skip_decoder_covers_pinned_mechanism_B16": {
+      "circularity_hypothesis": "beam decoder validated on KEY-SKIP but Campaign X/XI pin a REWRITE mechanism; keytext nulls may not cover rewrite -> lane reopens",
+      "test": "rewrite_gate.py, positive-control-gated",
+      "skip_arm_control_min_score": -4.319,
+      "rewrite_arm_beam_best": -4.451,
+      "rewrite_arm_rigid_best": -4.451,
+      "rewrite_arm_long_english_worst": -5.162,
+      "real_cipher_implied_rewrite_fraction_pct": 2.79,
+      "sweep_best_real_scores": [-5.75, -5.88],
+      "finding": "correct key under rewrite recovers to English band (~-4.5, 95-98% match), far above sweep noise best -5.8; nulls DO cover rewrite; B-16 closed as wording fix not reopener",
+      "circular": false
+    },
+    "fp_ceiling_confirm_threshold": {
+      "circularity_hypothesis": "confirm threshold is artifact of underpowered FP estimate (PA-2 flag)",
+      "wrong_key_fp_ceiling_N975": -6.767,
+      "finding": "sweep best reals -5.75..-5.88 are best-of-millions order statistics, still below -5.5 confirm bar; correctly null; thin margin already disclosed in PA-2; not circular",
+      "circular": false
+    }
+  },
+  "reopener_found": false,
+  "recommended_doc_fix": "add REWRITE row to armada2/COVERAGE-MATRIX.md citing rewrite_gate.py; reword keytext closure from 'by mechanism, independent of text' to 'by exhaustion over ~200 texts, verified robust to skip AND rewrite constructions'",
+  "key_numbers": "doublet floor 1.5-4.2% English vs observed 0.66%; rewrite corrupts 2.79% of positions; correct-key rewrite recovery -4.45..-5.16 vs sweep noise best -5.8; skip control -4.32/100%; FP ceiling -6.77"
+}
