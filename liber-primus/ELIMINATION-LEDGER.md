@@ -15,15 +15,33 @@ this file first**, then go to the deeper doc each row points to.
 
 ## The one-paragraph honest verdict
 
-From the **ciphertext alone**, the unsolved runic pages are **one-time-pad-class**:
-a full-length keystream whose output was deliberately filtered to avoid writing the
-same rune twice in a row (~83% suppression — Campaign XI). That is *not* "a hard
-cipher" — it is information-theoretically unsolvable **without the external key**,
-because for any chosen plaintext a valid structureless key exists. The transcription
-is **not** the blocker (verified three independent ways). The only realistic path to
-a solve is **external**: the key itself, most plausibly via the never-recovered
-"AN END" deep-web page. Nobody should claim LP2 is "solvable with more compute / more
-AI" — the math says otherwise.
+From the **ciphertext alone**, the unsolved runic pages are **OTP-class**: a full-length
+keystream whose output was deliberately filtered to avoid writing the same rune twice in a
+row (~83% suppression — Campaign XI). "OTP-class" is a precise claim and it is weaker than
+"one-time pad": the ciphertext is **indistinguishable between a true external pad
+(information-theoretically closed) and a short-seed *derived* keystream (finite keyspace,
+brute-forceable)**. The derived-key dictionary lane is untested; only running it settles
+which. The transcription is **not** the blocker (verified three independent ways). If the
+keystream is a true external pad, the only path to a solve is **external** — the key itself,
+most plausibly via the never-recovered "AN END" deep-web page — because for any chosen
+plaintext a valid structureless key exists. If instead it is derived from a short seed, the
+keyspace is enumerable and compute *does* apply.
+
+> **⚠️ Superseded 2026-08-17 (Round 12, front D3 — FOUND-ERROR).** This paragraph previously
+> ended: *"it is information-theoretically unsolvable **without the external key** … Nobody
+> should claim LP2 is 'solvable with more compute / more AI' — the math says otherwise."*
+> That promoted **one member** of an indistinguishability class (a true external pad) into a
+> property of the whole class. `analysis/round10b/B4-otp-steelman/b4_results.json` (G5) shows
+> the ciphertext cannot separate an external pad from a SHA-256 counter-mode keystream derived
+> from a short seed — `"separated": false`, max |z| = 1.60 across the 6-statistic battery — and
+> a short-seed-derived keystream has a finite, enumerable keyspace. D3's positive control
+> planted such a keystream (seed `CICADA3301`) under the repo's own pinned soft anti-repeat
+> filter and **recovered it** through the project's own beam decoder (−4.170, 98.9%
+> char-recovery, vs −7.349 on a wrong seed), so "no compute recovers it" is demonstrably false
+> over that lane. Round 10's `SYNTHESIS.md` already stated the correction ("OTP-*class*, not a
+> unique external pad"); it had never reached this headline. The reasoning is kept; the claim is
+> narrowed, not withdrawn. See `analysis/round12/D3/RESULTS.md`. The settling test is
+> **RECON-A item B-04** (derived-key dictionary), in flight as Round 13.
 
 **What this project can honestly claim:** every attack *we could concretely construct*
 has been run and falsified, and the cipher's mechanism is now described to a
@@ -31,12 +49,26 @@ parameter — which appears to be *ahead* of the published community state of th
 (which still stops at "autokey/custom"). **What it cannot claim:** a solve, or a name.
 
 > **Update 2026-08 (Rounds 1–8).** This section used to end "…cannot claim that the space
-> of all conceivable external keytexts is exhausted." **Round 7 closed that by mechanism
-> rather than by exhaustion**: any keytext is dead both rigidly (doublet-excluded) and
-> skip-aware (un-anchorable), *independent of which text it is* — so the argument no
-> longer depends on how many texts were tried. **Round 8** then measured the pad's
-> **entropy** (2.52×10⁹ seeded-PRNG decodes, 0 hits) rather than only observing the
-> absence of key structure. See the Rounds index below.
+> of all conceivable external keytexts is exhausted." Round 7 closed that — **by exhaustion
+> over ~200 texts, now verified robust to both the skip and the rewrite construction** — and
+> **Round 8** then measured the pad's **entropy** (2.52×10⁹ seeded-PRNG decodes, 0 hits)
+> rather than only observing the absence of key structure. See the Rounds index below.
+>
+> > **⚠️ Corrected 2026-08-17 (Round 12, fronts D1 and D3).** This update used to read "*Round 7
+> > closed that **by mechanism** rather than by exhaustion: any keytext is dead both rigidly
+> > (doublet-excluded) and skip-aware (un-anchorable), independent of which text it is.*" Round
+> > 10's RECON-B/B-16 showed the mechanism half is unsound under the repo's *own* pinned
+> > construction: a soft anti-repeat **rewrite** of the output sets the doublet rate, so the
+> > deficit carries no discriminating power over key *type* and "dead rigidly
+> > (doublet-excluded)" does no work. Round 12's D1 ran the decisive test
+> > (`analysis/round12/D1_redteam/rewrite_gate.py`): under the rewrite mechanism the correct
+> > running key still decodes to **−4.45…−4.70 (95–98% rune match)**, versus the **−5.75…−5.88**
+> > the real ~200-text sweeps actually produced — so the sweeps *do* cover the rewrite model and
+> > no real keytext was hiding at ~−4.5. **The conclusion survives; the argument for it changes**
+> > from "by mechanism, independent of text" to "by exhaustion over ~200 texts, verified robust
+> > to skip and rewrite." A genuinely new candidate text is therefore a weak lead, not a dead
+> > one. Three verified-absent texts (Blake's *Jerusalem* / *Milton* / *The Four Zoas*) were
+> > killed at Round 7's Gate #1 on the mechanism argument alone and were never run.
 
 ---
 
@@ -69,7 +101,18 @@ Grouped by attack family. "Where" = the deeper writeup + the reproduce command.
 | **Cicada's own PGP prose** as key material | ❌ dead | nothing readable | ARMADA-20 `analysis/ARMADA-20-FINDINGS.md` |
 | **Number-theoretic keystreams** (primes, φ, iterated φ, prime gaps, cumsums, page-seeded, all Fibonacci-mod-29 seeds) | ❌ dead | nothing | `attack.py keystream`, `analysis/doublet_probe.py` |
 | **PRNG keystreams** (BBS / LCG / Mersenne Twister seeded) | ❌ dead | nothing | ARMADA-20 |
-| **Mechanistic reason keytext-hunting was doomed** | ⚠️ insight | *Any* natural-English running key injects ~3.3% doublets — which are **absent**. Wrong *mechanism*, not wrong *text*. | Campaign IV `analysis/structure/` |
+| **Mechanistic reason keytext-hunting was doomed** | ⚠️ ~~insight~~ **superseded** | *Any* natural-English running key injects ~3.3% doublets — which are **absent**. Wrong *mechanism*, not wrong *text*. **This argument is void** — see the note below. | Campaign IV `analysis/structure/` |
+
+> **⚠️ Superseded 2026-08-12/17 (Round 10 RECON-B/B-16, closed by Round 12 D1).** The last row
+> above is kept for its reasoning but no longer carries weight. The repo's own pinned
+> construction is a **soft anti-repeat rewrite of the output** (p_keep≈0.18, `FINAL-SYNTHESIS.md`),
+> which erases exactly the ~3.3% doublets a natural-English running key injects. Under that model
+> the deficit is set by the filter, not by the key, so it cannot discriminate key *type* at all.
+> What actually closes the keytext family is the **~200-text exhaustion sweep** (best −5.75…−5.88
+> against an English band of −4.0…−4.35), and Round 12's `D1_redteam/rewrite_gate.py` verified
+> that sweep is robust to *both* constructions: under key-**skip** the correct key recovers at
+> −4.27…−4.32 (95–100% match, the positive control) and under value-**rewrite** at −4.45…−4.70
+> (95–98% match). Cite this family as *closed by exhaustion, verified robust to skip and rewrite*.
 
 ### B. Self-referential / stream ciphers
 | Attack | Verdict | Why | Where |
@@ -171,7 +214,7 @@ detail: `../research/LEDGER.md`; kill reasons: `../research/DEAD_ENDS.md`.
 | 4 | An external key/seed lead, or a verifiable author identity, exists | **NEGATIVE** — cold | `../research/LEDGER.md` |
 | 5 | Residual doublets carry digraphic/autokey/interleave structure | **NEGATIVE** | `analysis/r5_doublet_anatomy.py` |
 | 6 | Misfiled plaintext windows; transition-lattice/keel structure | **NEGATIVE** — the no-repeat rule is a *pure lag-1 identity*, no second-order structure | `analysis/r6_sieve_windows.py`, `r6_transition_structure.py` |
-| 7 | Some untried already-public keytext is the key | **KILL, 0/15 unanimous** — dead rigidly *and* skip-aware, independent of which text | `../research/ROUND-7-GATE1-SYNTHESIS.md` |
+| 7 | Some untried already-public keytext is the key | **KILL, 0/15 unanimous** — ~~dead rigidly *and* skip-aware, independent of which text~~ → **dead by exhaustion over ~200 texts, verified robust to skip *and* rewrite** (Round 12 D1; the "independent of which text" mechanism argument is void — see §A note) | `../research/ROUND-7-GATE1-SYNTHESIS.md`, `analysis/round12/D1_redteam/RESULTS.md` |
 | 8 | Five axes that were never ciphertext-only attacks (below) | **NEGATIVE ×5** | `../research/ROUND-8-RESULTS.md` |
 
 **Round 8's five axes**, each previously uncovered by "ciphertext-only complete":
@@ -208,7 +251,23 @@ fixed-function autokey, **plaintext language** (Latin sealed; the load-bearing
 exclusions are language-independent), and **book cipher** (pointer schemes into
 Cicada's known books yield only word-salad). What survives is therefore only the
 **unbounded** (multi-rune-history feedback; a book outside Cicada's known references)
-or the **external** items below. The internal attack surface is closed.
+or the **external** items below. ~~The internal attack surface is closed.~~
+
+> **⚠️ Corrected 2026-08-17 (Round 12, front D3).** "The internal attack surface is closed" is
+> the wrong word for the actual state. `analysis/round10/RECON-A/REGISTER.md` registers **30
+> leads, of which 16 are still marked `never-run`** (A-03, A-04, A-06, B-04, B-05, C-02, D-01,
+> E-01, E-02, F-01, G-01, G-02, H-01, H-03, I-01, I-03). The honest statement is: **the internal
+> attack surface is heavily swept and every family we could concretely construct has been
+> falsified — but it is not closed.** The highest-prior un-run internal items are **B-04/B-05**
+> (cryptographic derived-key keystreams from a Cicada seed dictionary — the lane the OTP-class
+> correction above turns on, in flight as Round 13), **A-03** (haplography count-audit of the 86
+> doublet sites — the cheap falsifier of the whole engineered-filter edifice; ~20 confirmed
+> merges would put autokey back on the table, in flight as Round 14), **D-01** (the
+> generator-fingerprint suite Campaign IV skipped) and **F-01** (LP2-as-pad inversion against
+> other Cicada objects). Since this line was written, Round 11 additionally closed the
+> "unbounded" *feedback* class it names (N1, control-validated) and Round 12's C1 bounded and
+> falsified k-history feedback for k=2..6 — so the unbounded half is now smaller, and the
+> `never-run` half is what remains.
 
 Only two productive things remain, and both are **external** — nothing in the
 ciphertext can close them:
@@ -269,13 +328,47 @@ autokey/autoclave • differencing/integration • page-on-page keying • trans
 fractionation • substitution/homophonic • image stego • AI-vision re-transcription •
 treating pp49–51 as a runic key. All eliminated with the reason and a reproduce pointer.
 
-**Added by Rounds 1–8 (2026-08):** **another keytext** (dead by mechanism, independent of
-which text — Round 7) • **seeded-PRNG pads** (2.52×10⁹ decodes, 0 hits — Round 8 SEED) •
-**glyph-shape / micro-spacing / baseline stego** in the page renders (Round 8 GEOMETRY) •
-**compressed or binary plaintext** (Round 8 PAYLOAD) • **residual doublets as book-cipher
-pointers** (Round 8 POINTERS) • **the interrupter-artifact explanation** of the doublet
-deficit (Round 1) • **second-order structure in the no-repeat rule** — it is a pure lag-1
-identity (Round 6).
+**Added by Rounds 1–8 (2026-08):** **another keytext** (dead by exhaustion over ~200 texts,
+verified robust to skip and rewrite — Round 7 + Round 12 D1) • **integer-seeded PRNG pads over
+the swept generators** (2.52×10⁹ decodes, 0 hits — Round 8 SEED; **bounded — read the correction
+below**) • **glyph-shape / micro-spacing / baseline stego** in the page renders (Round 8
+GEOMETRY) • **compressed or binary plaintext** (Round 8 PAYLOAD) • **residual doublets as
+book-cipher pointers** (Round 8 POINTERS) • **the interrupter-artifact explanation** of the
+doublet deficit (Round 1) • **second-order structure in the no-repeat rule** — it is a pure
+lag-1 identity (Round 6).
+
+**Added by Rounds 9–12 (2026-08):** the **number/value channel** in every form Round 11 tested
+(feedback autokey, prime-gap/index, number-theoretic structure, digit planes, totient ladder,
+interrupter positions, separators — 7 lenses, all controls PASSED) • **k-history feedback
+autokey, k=2..6** over 7 combiners, both signs, both orientations (Round 12 C1, 23,520 configs,
+control PASSED) • **the author's own recoverable binary pads** under the skip-aware beam
+(Round 12 A1 — except `DATA/560.13`, still unfetched) • **rigid-alignment re-runs of anything in
+`campaign18_skip/armada2/COVERAGE-MATRIX.md`.**
+
+> **⚠️ Corrected 2026-08-17 (Round 12, front D3; first flagged 2026-08-12 as RECON-B item B-21
+> and never actioned until now).** The line above used to read a flat "**seeded-PRNG pads**
+> (2.52×10⁹ decodes, 0 hits — Round 8 SEED)", i.e. the whole family closed. What Round 8
+> actually covered, per its own census `analysis/round10/L5-seed32/CENSUS.md`, is **10
+> generators over ~3% of each one's seed space** (2 of them fully at 32 bits; L5 later added 4
+> validated generators — Perl/drand48, `lrand48`, Ruby MT, xorshift32 — and extended generator 0).
+> The census names as **UNCOVERED and plausible**: PHP `mt_rand` (**the single highest-prior open
+> generator** — PHP's MT deviates from reference MT19937 and is unreachable from generator 5),
+> PHP `rand()` (partly covered), .NET `System.Random` (Knuth subtractive), **Blum–Blum–Shub as a
+> real seed space** (ARMADA-20 tested 2,080 Cicada-constant configs, which is a keyword probe,
+> not a sweep), **ISAAC**, **LFSR / Geffe / Gollmann** stream ciphers, KISS/MWC/WELL/lagged
+> Fibonacci — plus seed spaces wider than 2³² (Java's full 48-bit `setSeed`, millisecond
+> timestamps, `init_by_array` multi-word keys) and **keystream offset ≠ 0** (RECON-A/B-02), which
+> multiplies *every* generator. So the honest wording is: **integer-seeded PRNG pads are excluded
+> over the generators and seed ranges actually swept — a real but partial bound, not a closed
+> family.** Two caveats keep it from being a live lead anyway: (a) PCG, xoroshiro and xorshift128+
+> are **excluded by date** (published after LP2 was posted in Jan 2014), and (b) the *modal*
+> behaviour for anyone building "a one-time pad" — `/dev/urandom`, a hardware RNG, random.org,
+> dice — leaves **no seed at all** and no sweep can ever reach it. The census's own arithmetic:
+> finishing the last 8 generators at full 32 bits multiplies total coverage by ~1.3×; adding PHP
+> `mt_rand` multiplies it by ~1.1× and closes the highest-prior named gap. Note this is a
+> *different lane* from the **cryptographic** keystreams (SHA/HMAC-DRBG/AES-CTR/RC4 from a seed
+> **dictionary**) — those are RECON-A **B-04/B-05**, never-run, and the census marks them "out of
+> scope for a seed sweep, by construction."
 
 ---
 

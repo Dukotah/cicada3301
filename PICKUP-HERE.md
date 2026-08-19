@@ -1,6 +1,6 @@
 # PICKUP-HERE — where the work left off
 
-_Updated **2026-08-17**. Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
+_Updated **2026-08-19**. Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
 
 ## 👉 Start with the canonical docs
 | Doc | What it holds |
@@ -9,19 +9,34 @@ _Updated **2026-08-17**. Repo: https://github.com/Dukotah/cicada3301 (default br
 | [`liber-primus/ELIMINATION-LEDGER.md`](liber-primus/ELIMINATION-LEDGER.md) | Everything tried and why it's eliminated — supersedes every scattered "ruled-out" table |
 | [`liber-primus/analysis/README.md`](liber-primus/analysis/README.md) | Map of all 183 analysis scripts → campaign → finding |
 | [`research/LEDGER.md`](research/LEDGER.md) + [`research/DEAD_ENDS.md`](research/DEAD_ENDS.md) | The 2026-08 pre-registered attack loop — Rounds 1–8, each with its kill reason |
+| [`liber-primus/LEDGER.json`](liber-primus/LEDGER.json) | **The machine-readable index** — every hypothesis, its threshold, whether its positive control passed, and what would reopen it. Query this instead of reading the prose docs. |
+| [`liber-primus/handoff/FOR-FUTURE-SOLVERS.md`](liber-primus/handoff/FOR-FUTURE-SOLVERS.md) | The entry point for someone arriving cold, incl. what is parked pending better tooling |
+| [`liber-primus/benchmark/`](liber-primus/benchmark/) | The plant-and-recover gates — **run these before trusting any null you produce** |
 
 ## State in one paragraph
 
 LP2 (unsolved segments 0–54) is **OTP-class**: a full-length keystream filtered to avoid
-consecutive-equal runes (soft, ~83% suppression) against an external one-time pad →
-information-theoretically unsolvable **without the pad**. The transcription is verified three
-independent ways and is **not** the blocker. As of the 2026-07-28/29 auditor loop the internal
-attack surface is **closed**, and the verdict has hardened from *unsolved-by-effort* to
-**unsolvable-by-design**: the pad appears unpublished by design, since pages 0–54 were the
-terminal onion7 deliverable with no accompanying key. On attribution, there is **no falsifiable
+consecutive-equal runes (soft, ~83% suppression). "OTP-class" is precise and it is *weaker*
+than "one-time pad" — the ciphertext is **indistinguishable between a true external pad
+(information-theoretically closed) and a short-seed *derived* keystream (finite keyspace,
+brute-forceable)**. The derived-key dictionary lane is untested; only running it settles which.
+The transcription is verified four independent ways and is **not** the blocker. On attribution,
+there is **no falsifiable
 name** — stylometry is *provably* impossible at 359 words of authentic connected prose — but the
 loop produced the tightest honest **profile** yet, anchored on a technique fingerprint
 (Smirnov/Carlitz anti-repeat hardening = a combinatorialist's reflex, applied by hand).
+
+> **⚠️ Superseded 2026-08-17 (Round 12, front D3 — FOUND-ERROR).** This paragraph used to state
+> the verdict as "*information-theoretically unsolvable **without the pad***" and "*the internal
+> attack surface is **closed**… hardened from unsolved-by-effort to **unsolvable-by-design***".
+> Both overstate the evidence. `analysis/round10b/B4-otp-steelman/b4_results.json` (G5) shows the
+> ciphertext cannot separate an external pad from a SHA-256 counter-mode keystream derived from a
+> short seed (`"separated": false`, max |z| = 1.60), and D3's positive control planted exactly
+> such a keystream and **recovered it** through this project's own beam decoder (−4.170, 98.9%
+> char-recovery, vs −7.349 on a wrong seed). "No compute recovers it" is therefore false over
+> that lane. "Closed" is also the wrong word for a surface with **16 items still marked
+> `never-run`** in `liber-primus/analysis/round10/RECON-A/REGISTER.md`. The reasoning is kept;
+> the claim is narrowed. See `liber-primus/analysis/round12/D3/RESULTS.md`.
 
 **Since then (2026-08), an eight-round pre-registered attack loop closed the last lanes** —
 including the two threads this doc previously listed as open. The OTP characterisation is now
@@ -158,6 +173,80 @@ keying, transposition-only, fractionation, substitution/homophonic, image stego,
 re-transcription, or pp49–51 as a runic key. Every one is eliminated with a reason and a
 reproduce pointer.
 
+## Round 12 — the "honest best shot" campaign (2026-08-17, committed 2026-08-19 at `06003eb`)
+
+Six fronts ran; the campaign plan is `liber-primus/analysis/round12/CAMPAIGN-PLAN.md`.
+
+| Front | Tested | Verdict |
+|---|---|---|
+| **A1** | The author's own CicadaOS binary pads (`_560.00`/`.17`, `prime_echo`, `folly`/`wisdom`, `761.mp3`) fed under the skip-aware beam for the first time — the "highest-prior untested input" from PA-3 | **NEGATIVE** (best −6.517 vs a −5.5 bar) |
+| **C1** | Unbounded k-history feedback / autokey | **NEGATIVE** (21/21 positive controls recovered at 100%) |
+| **C2** | 29-text fresh esoteric corpus | **UNFINISHED** — texts fetched, sweep never run |
+| **D1** | Red-team: is the OTP verdict circular? | **NO-ERROR-FOUND** — B-16 (decoder validated on key-*skip*, never value-*rewrite*) tested via `rewrite_gate.py` and **closed** |
+| **D2** | Independent recomputation of every load-bearing statistic | **NO-ERROR-FOUND** — all 7 reproduce exactly |
+| **frontB** | Forced re-segmentation of dense pages 45–54 | **NO-ERROR-FOUND** — but honest: the forced instrument fails its own control (12.9%), so it certifies nothing; the validated R9 template DP reproduces 98.0% and upholds canon |
+| **D3** | Red-team: scope overreach | **FOUND-ERROR** — see below |
+
+**D3 is the live one.** Three load-bearing closures each state more than their evidence supports,
+and the biggest hides a tractable, control-detectable, **never-run** lane:
+
+1. *"Information-theoretically unsolvable / no compute recovers it"* → really **OTP-class**; a
+   short-seed-derived keystream is statistically inseparable but has a finite keyspace.
+   D3's `pc_derivedkey.py` plants one and the existing beam **recovers it at 98.9%**.
+   ⇒ **RECON-A B-04, the derived-key dictionary, is real, powered and never-run.**
+2. *"Seeded-PRNG pads — do not re-run"* → really 10 generators over ~3% of each seed space.
+   `round10/L5-seed32/CENSUS.md` names PHP `mt_rand` as the highest-prior open generator.
+3. *"Keytexts dead by mechanism"* → really dead **by exhaustion** (D1 independently agrees).
+
+Also: `round10/RECON-A/REGISTER.md` holds **16 items still marked `never-run`**, which the line
+"the internal attack surface is closed" papers over.
+
+## Rounds 13 / 14 — in flight (started 2026-08-19)
+
+| Lane | What | Status |
+|---|---|---|
+| **B-04** | The derived-key dictionary: 2,165 Cicada seeds × 16 hash/stream generators × 5 mod-29 reductions × sign × Atbash × direction × offsets, ≈6.2M decodes through the skip-aware beam | **running** — gates **G1 PASS** (D3 replicated: beam −4.170, rigid −6.835, 98.9%) and **G2 PASS** (a planted dictionary-resident seed ranks **#1 at −4.186**, reading `THEPRIMESARESACRED…` in clear, vs runner-up noise −6.62). Pre-registration: `analysis/round13/B04/PREREG.md` |
+| **B-05** | The pp49–51 payload expanded as a PRF seed into a runic keystream | **running** — control PASSES on all 4 generators (98.9% recovery) |
+| **PRNG** | PHP `mt_rand`, .NET `System.Random`, ISAAC, BBS, LFSR/Geffe/Gollmann | queued |
+| **A-03** | Haplography count-audit of the 86 doublet sites — the cheap falsifier of the whole doublet-deficit edifice | queued |
+| **zeroFP** | E-01 RSA/PKCS#1, E-02 meta-parameters, H-03 micro-crosses, H-01 onion HTTP anomalies | queued |
+| **provenance** | D-01 generator fingerprint, A-06 the 47 unread ornament bands, C-02 forcing detector, G-01 source/font provenance, G-02 OutGuess blank control | queued |
+
+**RECOVERED AND VERIFIED 2026-08-19 — `DATA/560.13`.** Round 12 A1 recorded this pad
+(118,818,811 B, sha256 `db79072c…`) as unrecoverable: in both the cicada-solvers and krisyotam
+mirrors it is a 134-byte Git-LFS pointer, and the LFS batch API answers `404 Object does not
+exist` on both remotes. A1/RESULTS.md named archive.org's `3301.iso` as "the one remaining A1
+lever" and did not attempt it.
+
+The item exposes the ISO's **inner files** directly —
+`https://archive.org/download/3301.iso/3301.iso/DATA%2F560.13` returns HTTP 200 — and the
+download verifies **byte-exact** against the LFS pointer's own digest: 118,818,811 bytes,
+sha256 `db79072ce580efa54acf5f31f3ef0eb00aef867871a051d04e27ee5e7fbc112f`.
+
+A1's declared gap is therefore closed by measurement rather than left open. Verdict:
+**NEGATIVE** — 160 configs, best −6.965 against a −5.5 bar and a null max of −7.037, i.e. 0.07
+above pure noise.
+
+**And a second, UNDECLARED gap surfaced the same day.** Building the provenance capsule revealed
+that A1 swept a **truncated** `_560.00`: the cicada-solvers mirror copy is 2,412,544 B, while the
+`3301.iso` copy is 3,992,970 B, and the mirror copy is an **exact byte prefix** of it — so A1
+covered 60.4% of that blob and **1,580,426 bytes were never decoded**. (`560.17` from the same
+mirror is byte-perfect, so the defect is file-specific.) A1's positive control and null ceiling
+remain **sound** — they plant and recover under the same keystream, so truncation changes which
+keystream, not whether the instrument works — but the coverage claim does not. The completion
+sweep is `analysis/round12/A1/sweep_560_00_full.py`, which re-proves the prefix relation on every
+run and tags results that fall in the newly-recovered tail.
+
+Both gaps had one shape: **a file accepted as what it claimed to be, without its size or digest
+checked against an independent source.** `handoff/capsule/MANIFEST.json` now records a measured
+SHA-256 and length for every input, and `verify_capsule.py` reports **DRIFT** separately from
+absence — a mirror serving *different* bytes is more dangerous than one serving none. Verify
+against the manifest before sweeping. The completion run
+is `analysis/round12/A1/sweep_560_13.py`, which reuses A1's own builders, beam settings, null
+and HIT bar unchanged (so the result is directly comparable), extending only the offset ladder —
+this pad is ~100× longer than the others, so it supports offsets to 5×10⁷ that A1 could not
+sweep. Verdict in `analysis/round12/A1/results_560_13.json`.
+
 ## What is actually still open
 
 _Superseded 2026-08. The two threads this section used to list — "an untried public keytext" and
@@ -165,7 +254,12 @@ _Superseded 2026-08. The two threads this section used to list — "an untried p
 lead on its own (any keytext is dead independent of which text it is), and the AN END page is
 unreachable by construction._
 
-What is left is **external and low-prior**. Nothing in the ciphertext can close any of it:
+_Further superseded 2026-08-17 by Round 12 D3: the framing below ("nothing in the ciphertext can
+close any of it") is exactly the overreach D3 caught. The **derived-key dictionary is internal,
+tractable and never-run** — it needs no external input at all. Items 1–4 below remain accurate as
+the list of *external* leads._
+
+What is left externally is **low-prior**:
 
 1. **A signed or archival pointer** that a specific text *is* the key — i.e. evidence from outside
    the ciphertext, not another text to try.

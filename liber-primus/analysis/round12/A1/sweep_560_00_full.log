@@ -1,0 +1,42 @@
+==========================================================================
+FRONT A1 completion 2 — authoritative DATA/_560.00 (A1 swept a 60.4% truncation)
+==========================================================================
+truncated (mirror, swept by A1): 2,412,544 bytes  sha256 a9ba66e3fc874ce429948b1ee52b48a00f230698ac7174ed9aefb7d82ba62b59
+authoritative (3301.iso)       : 3,992,970 bytes  sha256 a24051a87f0eb25ca21accbd3158fdf7b4911243e5ee1b9778b81182f0d36573
+mirror is an exact byte PREFIX of iso: True
+A1 coverage of this pad: 60.4%  (1,580,426 bytes never decoded)
+  mod29: cum 22 configs, 4s
+  prime_to_idx: cum 44 configs, 6s
+  hi_nibble: cum 66 configs, 7s
+  lo_nibble: cum 88 configs, 9s
+  byte_scaled: cum 110 configs, 11s
+  mod29_rev: cum 132 configs, 13s
+  prime_to_idx_rev: cum 154 configs, 15s
+  hi_nibble_rev: cum 176 configs, 16s
+  lo_nibble_rev: cum 198 configs, 18s
+  byte_scaled_rev: cum 220 configs, 20s
+
+=== TOP 15 head configs ===
+-6.918  prime_to_idx_rev s+1 o3500000   [TAIL] DPNOTHMUEOOELAEWDNGLOTHIALDDAENNGCTWUTJTHPTOETHR
+-6.993  hi_nibble_rev    s-1 o1000000   JAEONGHEOTSTJEIADIAALAEGNGMRYWEIAJLFNGTHTHPYADRA
+-7.009  prime_to_idx     s+1 o1000000   AEORDSWIBBFDRGITIADEYBDUTSFJTHBAEOEGWYHOEACCILRN
+-7.018  lo_nibble        s-1 o1000      CAEBOOEONGEPPEOPCFEAOEBMOPEATHAETHSOETHBRPCANDIA
+-7.036  prime_to_idx     s-1 o1000      MTCUCMFAELBFWCDWEADAEDPARDUCEONGHWHBBEGOLTEATHUT
+-7.049  hi_nibble_rev    s+1 o3500000   [TAIL] SHOEPEOANPAEOFOEEOEOEYGOETHWJWANGPNGYAEYEAAENPCT
+-7.065  hi_nibble        s+1 o2000000   IAEOOLDCJNGJEARMCEOWONTEANEXOEDEOOOEYAEDEAUXJWDJ
+-7.074  byte_scaled      s-1 o500000    HIAYESINLJAEHBAYNGOYNWBNIANBRHDNLOOOJMPMOEEOUDAY
+-7.088  mod29_rev        s-1 o0         THBIAONOFLCYRERSIBUGUEASLHLYIATHAEEOLDXONGDWITEO
+-7.091  byte_scaled_rev  s+1 o1000000   DOERTHJAEASSTHIAMBGYGWLAIAEOOAEUSTIARHYBECXDNAEA
+-7.094  hi_nibble        s+1 o0         EDRGHAORAFDYNSTEFTHXFGXGJAPBUAOEEIGGXWPLTHHDINEA
+-7.095  lo_nibble_rev    s+1 o0         EANUTIRTHGMWAEWSPOEBJNMAWPOELWFHETHPLCCNTHNGPSTI
+-7.099  lo_nibble_rev    s+1 o1000000   OEMMEONCTHEOEYNGTHLISPGTHPYPEOIJEAWTHNEAWESDTHDO
+-7.106  mod29_rev        s-1 o20000     EABSTGESTOEUIFTHGMARAEEGLLWNXINGPPEPSAEIIIEAJIOE
+-7.116  hi_nibble_rev    s-1 o3500000   [TAIL] SHXOEFXTTGJWINGNGIDADFPEAWYDSUPOECEGIAWYUNGYFEAA
+
+null(HEAD=400, n=200): mean=-7.291 max=-6.995
+HIT bar: score >= -5.500
+
+best overall      = -6.918 -> below bar (NEGATIVE)
+best in the 40% A1 never saw = -6.918 (prime_to_idx_rev o3500000)
+
+VERDICT: NEGATIVE   wrote results_560_00_full.json (41s)

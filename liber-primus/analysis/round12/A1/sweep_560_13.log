@@ -1,0 +1,41 @@
+==========================================================================
+FRONT A1 completion — DATA/560.13 (recovered from archive.org 3301.iso)
+==========================================================================
+pad: 118,818,811 bytes  sha256 db79072ce580efa54acf5f31f3ef0eb00aef867871a051d04e27ee5e7fbc112f
+     expected 118,818,811 / db79072ce580efa54acf5f31f3ef0eb00aef867871a051d04e27ee5e7fbc112f  -> MATCH
+unsolved runes: 12956
+loaded 118,818,811 bytes -> building 10 keystream variants
+  mod29: cum 16 configs, 83s
+  prime_to_idx: cum 32 configs, 85s
+  hi_nibble: cum 48 configs, 87s
+  lo_nibble: cum 64 configs, 88s
+  byte_scaled: cum 80 configs, 91s
+  mod29_rev: cum 96 configs, 92s
+  prime_to_idx_rev: cum 112 configs, 94s
+  hi_nibble_rev: cum 128 configs, 96s
+  lo_nibble_rev: cum 144 configs, 98s
+  byte_scaled_rev: cum 160 configs, 99s
+
+=== TOP 15 head configs ===
+-6.965  prime_to_idx_rev s-1 o1000      AEWOEOSIMOCNGEANGTHYEHDUPAPWDTHAJAEUWNSOETHDDWIA
+-6.971  prime_to_idx_rev s-1 o100000    MPEDXMUMAOCPGUNNGNGIAJOEDUTASIBHFMNGJMBUUAESEBAN
+-6.982  byte_scaled      s-1 o10000000  WJEOBOIBIAAEAWMAMOEHDEOEAHGGHFEOOEYTEODXBAWXEANA
+-6.994  hi_nibble        s-1 o50000000  OAWNGIASENGEOOETPTHUYOOEDIHAEHYATAOPRPOAEYGEAEHE
+-7.054  lo_nibble        s-1 o1000      CCOFCTELPDEEOFEAAEYOEYFEOOEGLEABFTHSTHEONAELDODE
+-7.075  byte_scaled_rev  s+1 o1000000   IBEOEASOEAGWUNGBUTHBOEBUNGIAFIRLLSAEHERMSYNPWRIA
+-7.079  lo_nibble        s+1 o0         NGOETHEHYHPFIARNGCOEONGEARMIAPNGOJMOEUTHNGFATIAN
+-7.079  prime_to_idx_rev s-1 o0         MLTHIAMAYEAEITHJIAOEDOGAESEOSXTETHJFTDREANWWEOBE
+-7.089  byte_scaled_rev  s-1 o50000000  XCOAEPUTHFBMEAMTHBAEITRHEAMCLJNJCHFSOELALXIUPIAE
+-7.090  prime_to_idx     s+1 o50000000  PAECCMAEHAEBTFMNABYSSIXNSYSEAYMPTHINGNGIEAIATINE
+-7.090  mod29_rev        s-1 o0         MLTHIAMAYNGAEITHJIAOEDOGAEYEOSEAWETHJFTDREANWWEO
+-7.097  mod29            s+1 o50000000  PAECCMAEHAEBTFMNABYSSIXNYYSEAYMPTHINGNGIEAETINEI
+-7.105  mod29_rev        s-1 o100000    MPEDXMUIAFOCPEOUNNGNGIAJOEDUTTSICHFMNGJMARJYBNGR
+-7.114  byte_scaled_rev  s+1 o100000    JLTHPEAODODNGEOBJULMNYUIAOEUMUBMEOLHUIAEACAEWEDT
+-7.116  lo_nibble_rev    s-1 o100000    JOEXOOSOEXGEORSNGDJRBTRSAEAYANAONGWEONEATMFMOETH
+
+null(HEAD=400, n=200): mean=-7.291 max=-7.037
+HIT bar: score >= -5.500   (A1's bar: >= -5.5 AND >= null_max + 0.5)
+
+best head score = -6.965 -> below bar (NEGATIVE)
+
+VERDICT: NEGATIVE   wrote results_560_13.json  (130s)

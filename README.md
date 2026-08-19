@@ -13,14 +13,26 @@ that first proves it can find the answers we already know.
 > ### The honest headline
 > **We did not solve the Liber Primus, and we cannot name its creators.** What this
 > project produced instead is a **sharpened boundary**: the unsolved pages are
-> **one-time-pad-class**, and the evidence now says they are *unsolvable-by-design*
-> rather than *unsolved-by-effort*. That is a result, not a consolation — and it is
-> backed by ~20 campaigns, 8 pre-registered rounds, and a 22-lens multi-lens armada
-> of falsified attacks, each with a reproduce command. The armada also *corrected* two
-> of our own earlier claims: flat IoC does **not** force a full-length key (a period ≈400
-> key is IoC-invisible), and "one-time pad" is more precisely an **OTP-class**
+> **OTP-class** — the ciphertext is indistinguishable between a true external pad
+> (information-theoretically closed) and a short-seed **derived** keystream (finite
+> keyspace, brute-forceable). The derived-key dictionary lane is untested; only running
+> it settles which. That is a result, not a consolation — and it is backed by ~20
+> campaigns, 12 pre-registered rounds, and a 22-lens multi-lens armada of falsified
+> attacks, each with a reproduce command. The armada also *corrected* two of our own
+> earlier claims: flat IoC does **not** force a full-length key (a period ≈400 key is
+> IoC-invisible), and "one-time pad" is more precisely an **OTP-class**
 > ciphertext-indistinguishability set. See
 > [`liber-primus/analysis/round10/SYNTHESIS.md`](liber-primus/analysis/round10/SYNTHESIS.md).
+>
+> **Superseded 2026-08-17 (Round 12, front D3).** This headline previously read
+> "*the evidence now says they are unsolvable-by-design rather than unsolved-by-effort*."
+> That promoted one member of the indistinguishability class (a true external pad) into a
+> property of the whole class. `round10b/B4-otp-steelman/b4_results.json` (G5) shows the
+> ciphertext cannot separate an external pad from a SHA-256 counter-mode keystream derived
+> from a short seed (`separated: false`, max |z| = 1.60), and a short-seed-derived keystream
+> has a finite, enumerable keyspace. Round 10's SYNTHESIS already stated the correction;
+> it had not propagated to this line. The reasoning is kept, the claim is narrowed. See
+> [`liber-primus/analysis/round12/D3/RESULTS.md`](liber-primus/analysis/round12/D3/RESULTS.md).
 
 ---
 
@@ -37,14 +49,30 @@ every measure but one:
 
 That single ~5× doublet *deficit* is the only real structure in the entire corpus, and the
 project pinned what produces it: a **soft rejection-sampling / anti-repeat filter
-(≈83% suppression, p_keep≈0.18) over a memoryless base, against an external one-time pad.**
-Information-theoretically, no public solver recovers the plaintext without that pad —
-for any chosen plaintext, a valid structureless key exists.
+(≈83% suppression, p_keep≈0.18) over a memoryless base, against a full-length keystream.**
+
+**What that does and does not close.** *If* the keystream is a true external pad, no solver
+recovers the plaintext without it — for any chosen plaintext, a valid structureless key
+exists. But the ciphertext cannot tell that case apart from a keystream **derived** from a
+short seed: B4/G5 ran a 6-statistic battery against a SHA-256 counter-mode derived key under
+the same filter and found `separated: false`, max |z| = 1.60. A derived keystream has a
+**finite, enumerable keyspace and is brute-forceable**. So the honest statement is
+**OTP-class**, and the question of which member is settled only by running the derived-key
+dictionary — a lane that is marked `never-run` in
+[`round10/RECON-A/REGISTER.md`](liber-primus/analysis/round10/RECON-A/REGISTER.md) as items
+B-04/B-05, and is in flight as Round 13.
 
 **The pad appears unpublished by design.** Pages 0–54 were the terminal deliverable of the
 7th hidden service with no accompanying key; the thematic pointers (mayfly/ephemeral; the
-koan "seek within") read as *gated, not published*. Nobody should claim LP2 is solvable
-with more compute or more AI — the math says otherwise.
+koan "seek within") read as *gated, not published*.
+
+> **Superseded 2026-08-17 (Round 12, front D3).** This section used to end "*Nobody should
+> claim LP2 is solvable with more compute or more AI — the math says otherwise.*" That is
+> true only for the external-pad member of the class. Front D3's positive control planted a
+> SHA-256 counter-mode keystream from the seed `CICADA3301` under the repo's own pinned
+> filter and **recovered it** through the project's own beam decoder (−4.170, 98.9%
+> char-recovery, vs −7.349 on a wrong seed) — so "no compute recovers it" is demonstrably
+> false over the derived-key lane. The claim is narrowed, not withdrawn.
 
 **The creator.** Every name-first path is dead — and one of them is dead *provably*:
 Cicada's entire corpus of authentic connected prose is **359 words**, far below any
@@ -62,8 +90,10 @@ human calligrapher following a "never write the same rune twice" rule by hand. S
 | **The verdict** on both goals — solve and attribution | [`liber-primus/FINAL-SYNTHESIS.md`](liber-primus/FINAL-SYNTHESIS.md) |
 | **Everything tried and why it's dead** — the complete index | [`liber-primus/ELIMINATION-LEDGER.md`](liber-primus/ELIMINATION-LEDGER.md) |
 | **To attack LP2 yourself** — verified facts + reproduce commands | [`liber-primus/SOLVERS-DOSSIER.md`](liber-primus/SOLVERS-DOSSIER.md) |
-| **The map of all 210 analysis scripts** | [`liber-primus/analysis/README.md`](liber-primus/analysis/README.md) |
+| **The map of all analysis scripts** | [`liber-primus/analysis/README.md`](liber-primus/analysis/README.md) |
+| **The machine-readable falsification ledger** — every lane, status, control, coverage bound, as JSON | [`liber-primus/LEDGER.json`](liber-primus/LEDGER.json) · [`liber-primus/analysis/handoff/LEDGER-README.md`](liber-primus/analysis/handoff/LEDGER-README.md) |
 | **The 2026-08 attack loop** — Rounds 1–8, pre-registered | [`research/LEDGER.md`](research/LEDGER.md) · [`research/DEAD_ENDS.md`](research/DEAD_ENDS.md) |
+| **Rounds 9–12** — multi-lens armada, number channel, red-team | [`liber-primus/analysis/round10/SYNTHESIS.md`](liber-primus/analysis/round10/SYNTHESIS.md) · [`liber-primus/analysis/round11/SYNTHESIS.md`](liber-primus/analysis/round11/SYNTHESIS.md) · [`liber-primus/analysis/round12/`](liber-primus/analysis/round12/) |
 | **Background on the puzzles themselves** | [`research/00-overview.md`](research/00-overview.md) |
 | **Where the work left off** | [`PICKUP-HERE.md`](PICKUP-HERE.md) |
 
@@ -130,12 +160,21 @@ partition); the source images are byte-identical to the original onion release
 refuted**, not merely "failed to decrypt."
 
 **Cannot claim:** a solve, or a name. What the 2026-08 rounds changed is *why* — the
-falsifiable avenue this section used to name ("one untried already-public keytext") was
-itself closed in Round 7, **by mechanism rather than by exhaustion**: any keytext is dead
-both rigidly (doublet-excluded) and skip-aware (un-anchorable), independent of *which* text
-it is. So a new candidate text is no longer a lead on its own. What would still count is
-evidence from **outside** the ciphertext — a signed or archival pointer that a specific text
-*is* the key.
+falsifiable avenue this section used to name ("one untried already-public keytext") is
+closed **by exhaustion over ~200 texts, now verified robust to both the skip and the rewrite
+construction**. So a new candidate text is a very weak lead on its own. What would still
+count is evidence from **outside** the ciphertext — a signed or archival pointer that a
+specific text *is* the key.
+
+> **Superseded 2026-08-17 (Round 12, fronts D1 and D3).** This paragraph used to say the
+> keytext class was closed "*by mechanism rather than by exhaustion* … independent of *which*
+> text it is." Round 10's RECON-B/B-16 showed the mechanism argument is unsound under the
+> repo's own pinned construction: a soft anti-repeat **rewrite** of the output sets the
+> doublet rate, so the deficit has no discriminating power over key *type*. Round 12's D1 ran
+> the decisive test (`round12/D1_redteam/rewrite_gate.py`): under the rewrite mechanism the
+> correct running key still decodes to −4.45…−4.70 (95–98% rune match), versus the −5.75…−5.88
+> the real ~200-text sweeps produced. **The conclusion survives; the argument for it changes**
+> from "by mechanism" to "by exhaustion, verified robust to skip and rewrite."
 
 **Deliberately does not claim:** a name. The identity of Cicada 3301's creators is
 unknown and unconfirmed. This repo catalogs and weighs theories — a field heavily polluted

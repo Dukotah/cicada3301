@@ -1,0 +1,94 @@
+{
+  "plaintext_len": 174,
+  "plaintext_eng_norm": -4.1700003814005715,
+  "null_mean": -6.477617125471395,
+  "null_max": -6.043960170959304,
+  "hit_bar": -5.5,
+  "cases": [
+    {
+      "gen": "sha256_ctr",
+      "red": "mod",
+      "skips": 9,
+      "ct_doublet_rate": 0.005780346820809248,
+      "rigid_correct": -7.204782270495769,
+      "beam_correct": -4.1700003814005715,
+      "beam_wrong": -7.331664477439733,
+      "beam_one_contested_byte_flipped": -7.376686718721174,
+      "char_recovery": 0.9894736842105263,
+      "recovered_head": "THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOULDBE"
+    },
+    {
+      "gen": "rc4",
+      "red": "mod",
+      "skips": 6,
+      "ct_doublet_rate": 0.0,
+      "rigid_correct": -6.683813910519342,
+      "beam_correct": -4.1700003814005715,
+      "beam_wrong": -7.32045092217499,
+      "beam_one_contested_byte_flipped": -7.554123674822423,
+      "char_recovery": 0.9894736842105263,
+      "recovered_head": "THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOULDBE"
+    },
+    {
+      "gen": "hmac_drbg_sha256",
+      "red": "reject",
+      "skips": 5,
+      "ct_doublet_rate": 0.0,
+      "rigid_correct": -7.4832191933321965,
+      "beam_correct": -4.1700003814005715,
+      "beam_wrong": -6.947043141047671,
+      "beam_one_contested_byte_flipped": -7.266016981809556,
+      "char_recovery": 0.9894736842105263,
+      "recovered_head": "THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOULDBE"
+    },
+    {
+      "gen": "aes256_ctr_k",
+      "red": "mod",
+      "skips": 8,
+      "ct_doublet_rate": 0.005780346820809248,
+      "rigid_correct": -7.190883071728822,
+      "beam_correct": -4.1700003814005715,
+      "beam_wrong": -6.97500076799492,
+      "beam_one_contested_byte_flipped": -7.2599316417310185,
+      "char_recovery": 0.9894736842105263,
+      "recovered_head": "THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOULDBE"
+    }
+  ],
+  "gates": [
+    {
+      "gen": "sha256_ctr",
+      "g1_beam_beats_bar": true,
+      "g2_beam_beats_rigid": true,
+      "g3_beam_beats_wrong": true,
+      "g4_char_recovery": true,
+      "PASS": true
+    },
+    {
+      "gen": "rc4",
+      "g1_beam_beats_bar": true,
+      "g2_beam_beats_rigid": true,
+      "g3_beam_beats_wrong": true,
+      "g4_char_recovery": true,
+      "PASS": true
+    },
+    {
+      "gen": "hmac_drbg_sha256",
+      "g1_beam_beats_bar": true,
+      "g2_beam_beats_rigid": true,
+      "g3_beam_beats_wrong": true,
+      "g4_char_recovery": true,
+      "PASS": true
+    },
+    {
+      "gen": "aes256_ctr_k",
+      "g1_beam_beats_bar": true,
+      "g2_beam_beats_rigid": true,
+      "g3_beam_beats_wrong": true,
+      "g4_char_recovery": true,
+      "PASS": true
+    }
+  ],
+  "overall_pass": true,
+  "avalanche_drop_min": 3.089931260330447,
+  "avalanche_drop_max": 3.384123293421852
+}

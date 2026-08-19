@@ -1,0 +1,52 @@
+==============================================================================
+ROUND 13 / B-04 — derived-key dictionary sweep
+stages=['G1', 'G2', 'A', 'B', 'C', 'D'] nproc=6 bar=-5.5 beam_w=400 max_skip=3
+==============================================================================
+dictionary: 2165 seeds (504 core), 16 generators, 5 reductions
+
+=== G1 — replicate round12/D3/pc_derivedkey.py ===
+plaintext runes: 174  skips injected: 5  ct doublet rate: 0.0000
+
+English plaintext eng_norm target : -4.170
+RIGID decode, CORRECT seed        : -6.835   (prior tests used this)
+BEAM  decode, CORRECT seed        : -4.170   -> THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOU
+BEAM  decode, WRONG seed          : -7.349   -> NIIAUFLNAENGIANGHBJAEJXBBFBRTEAMSFUIAPATEODYMEOSTNGBTLSHWCCE
+
+null (shuffled P, N=200): mean -6.478  max -6.044
+char-recovery of planted plaintext: 0.989
+
+GATE (beam recovers correct seed, jumps noise->English, beats wrong seed & null): PASS
+
+G1 beam(correct)=None rigid(correct)=None beam(wrong)=-7.349 recovery=0.989  -> FAIL
+  -> wrote results_gates.json
+
+=== G2 — plant-recover through this harness at Stage-A settings ===
+G2 plant: seed='THE PRIMES ARE SACRED' gen=sha256_ctr red=mod29 sign=-1 atbash=0 dir=fwd len=120 doublet_rate=0.0
+
+=== G1 — replicate round12/D3/pc_derivedkey.py ===
+plaintext runes: 174  skips injected: 5  ct doublet rate: 0.0000
+
+English plaintext eng_norm target : -4.170
+RIGID decode, CORRECT seed        : -6.835   (prior tests used this)
+BEAM  decode, CORRECT seed        : -4.170   -> THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOU
+BEAM  decode, WRONG seed          : -7.349   -> NIIAUFLNAENGIANGHBJAEJXBBFBRTEAMSFUIAPATEODYMEOSTNGBTLSHWCCE
+
+null (shuffled P, N=200): mean -6.478  max -6.044
+char-recovery of planted plaintext: 0.989
+
+GATE (beam recovers correct seed, jumps noise->English, beats wrong seed & null): PASS
+
+G1 beam(correct)=-4.17 rigid(correct)=-6.835 beam(wrong)=-7.349 recovery=0.989  -> PASS
+G2 rank#1: score=-4.185689309037688 seed=None gen=sha256_ctr red=mod29
+G2 planted config ranked #1 = True; clears bar = True  -> PASS
+  -> wrote results_gates.json
+
+*** A GATE FAILED — every stage below is INCONCLUSIVE, not NEGATIVE (PREREG s4). Running anyway so the numbers exist, but they may not be reported as a negative result. ***
+
+=== STAGE A — broad screen (PREREG s3.6) ===
+  -> wrote results_A.json
+
+=== STAGE B — keystream offsets ===
+  -> wrote results_B.json
+
+=== STAGE C — per-page keystream restarts ===

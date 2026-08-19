@@ -155,3 +155,32 @@ liber-primus/analysis/round12/C2/texts/
 liber-primus/analysis/round12/**/*.png
 liber-primus/analysis/round12/**/*.npy
 liber-primus/analysis/round12/**/*.npz
+
+# handoff capsule (agent H-3): the capsule's VALUE is MANIFEST.json (hashes + provenance +
+# mirrors), not the bytes. Anything the capsule fetches to verify a hash is re-fetchable from
+# the mirrors recorded per item in liber-primus/handoff/capsule/MANIFEST.json, and is deleted
+# again after hashing. Reproduce: python3 liber-primus/handoff/capsule/verify_capsule.py --net --fetch
+# The one exception kept in-tree is capsule/recovered/*.sha256 — tiny hash receipts, committed
+# on purpose so a future clone knows a recovery succeeded without re-downloading 118 MB.
+liber-primus/handoff/capsule/fetched/
+liber-primus/handoff/capsule/recovered/*.bin
+liber-primus/handoff/capsule/recovered/*.iso
+liber-primus/handoff/capsule/recovered/DATA_560.13
+liber-primus/handoff/capsule/*.iso
+
+# Round 12 A1 completion + Round 13/14 (2026-08-19) — commit scripts, PREREG/RESULTS docs,
+# result JSON and small logs only. Regenerate the rest from committed code:
+#   DATA_560.13.recovered = 118 MB pad, re-fetch per analysis/round12/A1/sweep_560_13.py
+#   handoff/capsule fetched artifacts = re-fetch via handoff/capsule/verify_capsule.py
+liber-primus/analysis/round12/A1/pads/DATA_560.13.recovered
+liber-primus/analysis/round13/**/*.npy
+liber-primus/analysis/round13/**/*.bin
+liber-primus/analysis/round14/**/*.png
+liber-primus/analysis/round14/**/*.npy
+liber-primus/handoff/capsule/fetched/
+
+# Round 12 A1: recovered CicadaOS pads (large, re-fetchable from the archive.org 3301.iso item).
+# Hashes + fetch routes: liber-primus/handoff/capsule/MANIFEST.json and RECOVERY-560.13.md.
+# Reproduce: python3 liber-primus/handoff/capsule/iso_extract.py 3301.iso --extract DATA/560.13
+liber-primus/analysis/round12/A1/pads/DATA_560.13
+liber-primus/analysis/round12/A1/pads/DATA__560.00.iso-authoritative

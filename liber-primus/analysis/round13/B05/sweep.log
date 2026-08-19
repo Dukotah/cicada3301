@@ -1,0 +1,16 @@
+==============================================================================
+ROUND 13 / B-05 -- pp49-51 payload as a PRF SEED expanded into a runic keystream
+==============================================================================
+unsolved runes: 12956   HEAD=400  beam_w=120  max_skip=3
+
+null (shuffled ciphertext HEAD, n=200): mean -7.302  max -7.001
+HIT bar: score >= -5.5 AND score > null_max  ->  bar = -5.500
+
+--- PART 1: pinned grid ---
+  [part1] dec.bitrev8      md5_ctr            cum=   224     10s  best=-7.031
+  [part1] dec.bitrev8      sha1_ctr           cum=   448     20s  best=-6.883
+  [part1] dec.bitrev8      sha256_ctr         cum=   672     30s  best=-6.883
+  [part1] dec.bitrev8      sha512_ctr         cum=   896     40s  best=-6.883
+  [part1] dec.bitrev8      sha256_ctr_le      cum=  1120     51s  best=-6.883
+  [part1] dec.bitrev8      sha256_chain       cum=  1344     61s  best=-6.883
+  [part1] dec.bitrev8      sha512_chain       cum=  1568     71s  best=-6.771

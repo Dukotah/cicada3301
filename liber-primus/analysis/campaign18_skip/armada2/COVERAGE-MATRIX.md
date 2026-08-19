@@ -14,6 +14,35 @@ desyncs the key. This matrix records, for **every** historical attack family in
   change → the skip lens does not apply; the prior null stands
 - `EXTERNAL` — not a compute lane (the key would have to physically exist off-corpus)
 
+---
+
+## 0. FILTER-MECHANISM coverage (added 2026-08-19, Round 12 front D1)
+
+RECON-B item **B-16** (Round 10) flagged a real gap in this matrix: Campaign XVIII built and
+validated its beam decoder against the **key-SKIP** mechanism (when a doublet would occur the
+key index ADVANCES, so the key DESYNCS), whereas Campaigns X/XI actually PIN the mechanism as a
+soft anti-repeat **value-REWRITE of the output** (`campaign10.soft_norepeat_pad` /
+`campaign11.soft_pad`: the ciphertext rune is RESAMPLED in place and the key stays SYNCED).
+This matrix had **no rewrite row**, so every "DONE-NULL" below rested on an unverified
+robustness assumption. Round 12 D1 ran the decisive test.
+
+| Mechanism | Meaning | Decoder validated against it? | Evidence |
+|---|---|---|---|
+| **Key-SKIP** (desync) | doublet ⇒ advance the key index | ✅ **VALIDATED** — planted key recovered −4.27…−4.32, 95–100% rune match | `campaign18_skip/skipdecode.py` gate; `round12/D1_redteam/rewrite_gate.py` ARM 1 |
+| **Value-REWRITE** (in-place) | doublet ⇒ resample the ciphertext rune, key stays synced | ✅ **VALIDATED 2026-08-19** — planted key recovered **−4.45…−4.70 (95–98% match)** at page length, −4.80…−5.16 on 250 runes at up to 7% corruption | `round12/D1_redteam/rewrite_gate.py` ARM 2 |
+
+**Consequence.** The rewrite mechanism corrupts only ~2.8% of positions on the real cipher
+((3.45−0.66)/3.45 × 3.45%), and it does **not** desync the key, so even plain rigid decode
+recovers a correct key under it. A correct keytext under the pinned rewrite mechanism would
+therefore have scored **~−4.5**, against the **−5.75…−5.88** the actual ~200-text sweeps
+produced. **The nulls below DO cover the rewrite mechanism**; no real keytext was hiding at
+~−4.5 and being mis-scored as noise. B-16 is closed, not confirmed.
+
+**Wording fix this forces (D1 + D3 agree).** The keytext closure should be cited as
+*"by exhaustion over ~200 texts, verified robust to both the skip and rewrite constructions"* —
+**not** *"by mechanism, independent of which text."* The conclusion survives; the argument for
+it changes.
+
 **Scale (this project):** English solve ≈ −4.0…−4.35 · confirm threshold −5.5 · false-positive
 ceiling −6.82 · noise floor ≈ −7.5. Every "null" below sits in the −5.9…−6.9 noise band.
 
