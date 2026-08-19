@@ -9,9 +9,27 @@ on:
     paths:
       - "liber-primus/**"
       - ".github/workflows/ci.yml"
+      # The root entry points are what an arriving agent reads first. They were
+      # invisible to CI until 2026-08-19, so a drifted AGENTS.md or KNOWLEDGE.json
+      # could not fail a build.
+      - "AGENTS.md"
+      - "README.md"
+      - "KNOWLEDGE.json"
+      - "INDEX.json"
+      - "PICKUP-HERE.md"
+      - "llms.txt"
+      - "docs/**"
+      - "research/**"
   pull_request:
     paths:
       - "liber-primus/**"
+      - "AGENTS.md"
+      - "README.md"
+      - "KNOWLEDGE.json"
+      - "INDEX.json"
+      - "llms.txt"
+      - "docs/**"
+      - "research/**"
   workflow_dispatch:
 
 jobs:
@@ -42,3 +60,30 @@ jobs:
           python analysis/crypto_rigor.py
           python analysis/structure_analysis.py
           python analysis/transcription/crossdiff.py
+
+      # ---- The claims the front doors make must actually hold. AGENTS.md tells a
+      # ---- stranger to run these and to distrust the repo if they fail; CI runs the
+      # ---- same commands so that instruction stays true between commits, not just at
+      # ---- the moment someone checked by hand.
+      - name: "Front-door claim: the rig reproduces every known solved page"
+        run: python tests/validate.py
+
+      - name: "Front-door claim: the solution oracle accepts a good key, rejects a bad one"
+        run: python verify_solution.py --selftest
+
+      - name: "Front-door claim: instrument gates recover planted signals (both directions)"
+        run: python -m pytest benchmark/ -q
+
+      - name: "Front-door claim: no unsound negatives in the ledger"
+        run: python analysis/handoff/validate_ledger.py
+
+      - name: "Regenerate the machine-readable entry points and fail on drift"
+        run: |
+          python analysis/handoff/build_index.py
+          python analysis/handoff/build_problem.py
+          python analysis/handoff/build_knowledge.py
+          python analysis/handoff/build_solved_pages.py
+          cd .. && git diff --exit-code -- INDEX.json KNOWLEDGE.json             liber-primus/PROBLEM.json liber-primus/SOLVED-PAGES.json             || (echo "::error::A generated entry point is stale. Re-run the build_*.py                 scripts in liber-primus/analysis/handoff/ and commit the result." && exit 1)
+
+      - name: "Cross-document consistency (the repo's historical failure mode)"
+        run: python analysis/handoff/check_consistency.py
