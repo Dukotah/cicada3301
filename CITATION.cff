@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+title: "Cicada 3301 Research Archive and Liber Primus Cryptanalysis"
+message: >-
+  If you use this repository's results, please cite the specific round or lane
+  and its verdict file rather than the repository as a whole, so a reader can
+  check the individual claim. Example:
+  "Round 12 front D3, liber-primus/analysis/round12/D3/RESULTS.md".
+type: software
+authors:
+  - alias: Dukotah
+    website: "https://github.com/Dukotah"
+repository-code: "https://github.com/Dukotah/cicada3301"
+abstract: >-
+  A documented, falsifiable investigation of the Cicada 3301 puzzles and a
+  validated pure-Python cryptanalysis rig aimed at the unsolved Liber Primus
+  pages (LP2 0-54, 12,956 runes).
+
+  The central result is a negative with a precisely stated scope: the unsolved
+  pages are OTP-class, meaning the ciphertext cannot be distinguished between a
+  true external one-time pad (information-theoretically closed) and a keystream
+  derived from a short seed (a finite, brute-forceable keyspace). Which of those
+  it is remains unsettled and is the subject of ongoing work.
+
+  The repository's methodological contribution is a discipline for producing
+  negative results that are worth something: every attack is pre-registered with
+  its threshold fixed in advance, every instrument must first recover a planted
+  signal before its silence is trusted, and every null is size-matched and
+  corrected for the number of trials actually run. It ships that discipline as a
+  reusable benchmark, a machine-readable falsification ledger, and an oracle that
+  adjudicates candidate solutions against criteria committed to in advance.
+
+  It also records its own corrections, including an overstated headline verdict,
+  three closures that were not as closed as claimed, a silently truncated input
+  file, and two measurement errors in its own instruments.
+keywords:
+  - cryptanalysis
+  - cicada-3301
+  - liber-primus
+  - classical-ciphers
+  - one-time-pad
+  - reproducible-research
+  - pre-registration
+  - negative-results
+license: MIT

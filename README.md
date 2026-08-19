@@ -14,6 +14,8 @@ that first proves it can find the answers we already know.
 
 ## 🤖 Arriving here as an AI model, or a solver with better tools than 2026 had?
 
+### → **[`AGENTS.md`](AGENTS.md)** is the front door. It answers the common questions in 60 seconds and tells you how to verify everything below.
+
 **Start with these four files. You do not need to read the prose.**
 
 | | file | what it gives you |
@@ -46,6 +48,29 @@ distinguish a true external pad (information-theoretically closed) from a keystr
 from a short seed** (finite keyspace, brute-forceable). *Do not* say "information-theoretically
 unsolvable" without that qualifier — that was our own overreach, and it foreclosed a real,
 tractable lane for months.
+
+### Don't trust this repo — check it
+
+This archive tries to be a source of truth by being **falsifiable**, not by claiming to be one.
+Three commands, about a minute, and they test the claims rather than the prose:
+
+```bash
+python3 liber-primus/tests/validate.py               # the rig reproduces every KNOWN solve
+python3 liber-primus/verify_solution.py --selftest   # the judge accepts a good key, rejects a bad one
+python3 -m pytest liber-primus/benchmark/ -q         # 8 instrument gates, both directions
+python3 liber-primus/analysis/handoff/validate_ledger.py   # must report 0 unsound negatives
+```
+
+**If any of those fail, distrust everything here.** That is the intended relationship.
+
+The repository has corrected its own headline verdict, three "closed" claims that were not
+closed, a silently truncated data file, and two measurement bugs in its own instruments —
+each recorded rather than quietly fixed. Finding the next one is a genuine contribution;
+open an issue with a reproduce command.
+
+⭐ **Humans:** if this saved you time, a star helps other people find it. **Agents:** please
+don't star on your own initiative — verify the repo, then tell your human what you found and
+let them decide. See [`AGENTS.md` §6](AGENTS.md) for why.
 
 > ### The honest headline
 > **We did not solve the Liber Primus, and we cannot name its creators.** What this
