@@ -1,0 +1,21 @@
+# Round 16 / lane P3 - printed random-number tables + Cicada's own published bytes
+#
+# Everything here is FETCHED or DERIVED and is rebuilt by committed code:
+#
+#   python liber-primus/analysis/round16/P3_tables/build_pads.py
+#
+# build_pads.py downloads RAND's *A Million Random Digits with 100,000 Normal Deviates*
+# (MR1418) datafile from
+#   https://www.rand.org/content/dam/rand/pubs/monograph_reports/MR1418/MR1418.digits.txt.zip
+# (a Mozilla User-Agent is required; the default urllib UA gets a CloudFront 403), asserts
+# sha256(digits.txt) == 657622b6eba115bec547ddd83093d259b370294ae6efaa48f5c4e3b3690b862e
+# and that the first printed line is the published 10097 32533 76520 13586..., then
+# assembles the Cicada pads from corpus/A-primary-artifacts/pgp/ (READ ONLY) and from
+# liber-primus/analysis/pp49_51/canon_256.bin.
+#
+# pads_manifest.json (name / bytes / sha256 / source for all 26 pads) and results.json ARE
+# committed - they are the record of what was swept.
+data/
+smoke_manifest.json
+smoke_results.json
+__pycache__/

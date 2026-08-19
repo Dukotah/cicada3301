@@ -365,7 +365,9 @@ def main():
     summary = {"verdict": verdict, "gates": gates, "gates_passed": gated,
                "best_score": best, "bar": BAR, "n_over_bar": len(hits),
                "over_bar": hits[:50],
-               "stages": [{k: s[k] for k in
+               # .get, not [] -- stage_d's rows legitimately lack rate_per_s, and indexing it
+        # crashed the summary AFTER every result was already computed and checkpointed.
+        "stages": [{k: s.get(k) for k in
                            ("stage", "n_decodes", "elapsed_s", "rate_per_s",
                             "best_score", "hit")} for s in done],
                "total_decodes": sum(s.get("n_decodes", 0) for s in done),

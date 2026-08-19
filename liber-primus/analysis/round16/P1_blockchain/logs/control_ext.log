@@ -1,0 +1,60 @@
+beam recovery, 60 plants each:
+  blockchain hash_display n=60  recovered@0.95=0.650  @0.75=0.833  median match=1.000
+  PREREG synthetic pad   n=60  recovered@0.95=1.000  @0.75=1.000  median match=1.000
+beam recovery at beam_w=1500 (power check on the real pad):
+  blockchain, beam_w=1500 n=60  recovered@0.95=0.650  @0.75=0.833  median match=1.000
+dense prefilter survival on the real pad:
+    dense trial 0 o=9604135 rank=None
+    dense trial 1 o=675919 rank=None
+    dense trial 2 o=9035319 rank=0
+    dense trial 3 o=3244459 rank=None
+    dense trial 4 o=8280666 rank=0
+    dense trial 5 o=4453637 rank=None
+    dense trial 6 o=2532621 rank=None
+    dense trial 7 o=93809 rank=0
+    dense trial 8 o=1985021 rank=0
+    dense trial 9 o=7032249 rank=0
+    dense trial 10 o=716927 rank=0
+    dense trial 11 o=4551761 rank=None
+    dense trial 12 o=1612684 rank=0
+    dense trial 13 o=3381035 rank=0
+    dense trial 14 o=4011061 rank=0
+    dense trial 15 o=882292 rank=None
+    dense trial 16 o=3734930 rank=None
+    dense trial 17 o=5766030 rank=None
+    dense trial 18 o=8492479 rank=0
+    dense trial 19 o=4002162 rank=None
+    dense trial 20 o=4011463 rank=0
+    dense trial 21 o=500087 rank=0
+    dense trial 22 o=5486500 rank=170
+    dense trial 23 o=2655227 rank=0
+  blockchain hash_display dense survival = 14/24 = 0.583
+{
+  "recover_real": {
+    "label": "blockchain hash_display",
+    "n": 60,
+    "rate_0.95": 0.65,
+    "rate_0.75": 0.8333333333333334,
+    "median_match": 1.0
+  },
+  "recover_synth": {
+    "label": "PREREG synthetic pad",
+    "n": 60,
+    "rate_0.95": 1.0,
+    "rate_0.75": 1.0,
+    "median_match": 1.0
+  },
+  "recover_real_w1500": {
+    "label": "blockchain, beam_w=1500",
+    "n": 60,
+    "rate_0.95": 0.65,
+    "rate_0.75": 0.8333333333333334,
+    "median_match": 1.0
+  },
+  "dense_real": {
+    "label": "blockchain hash_display",
+    "n": 24,
+    "found": 14,
+    "survival_rate": 0.5833333333333334
+  }
+}

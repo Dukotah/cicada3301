@@ -1,0 +1,203 @@
+{
+ "generated_by": "P3_tables/build_pads.py",
+ "n_pads": 28,
+ "note": "a pad shorter than 12,956 keystream symbols cannot key the whole unsolved stream; those are swept against the head window only",
+ "pads": [
+  {
+   "name": "canon_256",
+   "bytes": 256,
+   "sha256": "4c8dc85531d256793a6d0d318b8845869b4983e672077b094ed955bde92226d5",
+   "source": "liber-primus/analysis/pp49_51/canon_256.bin",
+   "keys_full_stream": false
+  },
+  {
+   "name": "cicada_all_pub",
+   "bytes": 6841185,
+   "sha256": "c314d7ad099cc032437c1d51aede24d2925de272a1f1e68d97044ab6ff0de632",
+   "source": "sigs + keys + hash block + hex dumps + onions + canon_256, publication order",
+   "keys_full_stream": true
+  },
+  {
+   "name": "cicada_all_rev",
+   "bytes": 6841185,
+   "sha256": "6e84bf8bffeb2c1fa5d923a13319b5b0398ade9b15199aefbe6c8cbc3178fbee",
+   "source": "the same seven components in reverse order",
+   "keys_full_stream": true
+  },
+  {
+   "name": "cicada_hexdumps_bytes_pub",
+   "bytes": 6695048,
+   "sha256": "708c98a9a0e6276c399307730917c1b9f63708919e495878860076bfea7f413c",
+   "source": "all long hex lines published inside signed 3301 messages (2012-01-end-of-puzzle.asc, 2014-01-let-the-text-guide-you.asc, 2014-01-liber-primus-hash-block-outguess-01.asc, 2014-01-liber-primus-hash-block-outguess-02.asc, 2014-01-liber-primus-hash-block.asc, 2014-01-onion5-liber-primus.asc, 2014-01-rsa-oaep-challenge.asc, corpus_2014-01-interconnectedness-hex.asc, ky_2012-01-end-of-puzzle.asc, ky_2012-01-final-message.asc, ky_2014-01-liber-primus-hash-block.asc, ky_2014-01-onion5-liber-primus.asc), publication order",
+   "keys_full_stream": true
+  },
+  {
+   "name": "cicada_hexdumps_bytes_rev",
+   "bytes": 6695048,
+   "sha256": "ac66b64ef88c641e70fbc238acdf4e32fd55ede647e5a94c7dc3e011e9b02370",
+   "source": "all long hex lines published inside signed 3301 messages (2012-01-end-of-puzzle.asc, 2014-01-let-the-text-guide-you.asc, 2014-01-liber-primus-hash-block-outguess-01.asc, 2014-01-liber-primus-hash-block-outguess-02.asc, 2014-01-liber-primus-hash-block.asc, 2014-01-onion5-liber-primus.asc, 2014-01-rsa-oaep-challenge.asc, corpus_2014-01-interconnectedness-hex.asc, ky_2012-01-end-of-puzzle.asc, ky_2012-01-final-message.asc, ky_2014-01-liber-primus-hash-block.asc, ky_2014-01-onion5-liber-primus.asc), reverse order",
+   "keys_full_stream": true
+  },
+  {
+   "name": "cicada_hexdumps_text_pub",
+   "bytes": 13390097,
+   "sha256": "ce876ab3f8febfadea1b02c7b26f36b8d55310137a77b680599b4b76daa7d929",
+   "source": "all long hex lines published inside signed 3301 messages (2012-01-end-of-puzzle.asc, 2014-01-let-the-text-guide-you.asc, 2014-01-liber-primus-hash-block-outguess-01.asc, 2014-01-liber-primus-hash-block-outguess-02.asc, 2014-01-liber-primus-hash-block.asc, 2014-01-onion5-liber-primus.asc, 2014-01-rsa-oaep-challenge.asc, corpus_2014-01-interconnectedness-hex.asc, ky_2012-01-end-of-puzzle.asc, ky_2012-01-final-message.asc, ky_2014-01-liber-primus-hash-block.asc, ky_2014-01-onion5-liber-primus.asc), publication order",
+   "keys_full_stream": true
+  },
+  {
+   "name": "cicada_key_local_b64",
+   "bytes": 2932,
+   "sha256": "35a094c79c84584eba4b6a51790e5c7f880f553fb3dcc601217189fa81f2e8be",
+   "source": "3301 public key ASCII armor text from key-local-jaxonkuipers.asc",
+   "keys_full_stream": false
+  },
+  {
+   "name": "cicada_key_local_bin",
+   "bytes": 2198,
+   "sha256": "61349fb47a6c78f232efa4785f2e5cf9ec0ed13dcf1a50fe74ed55f0d2607bef",
+   "source": "3301 public key packet bytes from key-local-jaxonkuipers.asc",
+   "keys_full_stream": false
+  },
+  {
+   "name": "cicada_key_openpgp_b64",
+   "bytes": 2168,
+   "sha256": "0686944b98ef6e84bdb27019fd6035ba085c8711fb84047fc0801d03cdcb9e5e",
+   "source": "3301 public key ASCII armor text from cicada-3301-pubkey.keys.openpgp.org.asc",
+   "keys_full_stream": false
+  },
+  {
+   "name": "cicada_key_openpgp_bin",
+   "bytes": 1625,
+   "sha256": "6309f43854e965811f97960f92eed2b8ae75197cfb43d023c0cba1a212812842",
+   "source": "3301 public key packet bytes from cicada-3301-pubkey.keys.openpgp.org.asc",
+   "keys_full_stream": false
+  },
+  {
+   "name": "cicada_key_ubuntu_b64",
+   "bytes": 149500,
+   "sha256": "8973329ffd4cfcf844676187c31274e6edeca51b3be93fcd5e7c322b95675f83",
+   "source": "3301 public key ASCII armor text from cicada-3301-pubkey.keyserver.ubuntu.com.asc",
+   "keys_full_stream": true
+  },
+  {
+   "name": "cicada_key_ubuntu_bin",
+   "bytes": 112125,
+   "sha256": "627de18327718150a3fe6d1373b11bd5ed21e51021c3ca67afd0dcbe0e278a9f",
+   "source": "3301 public key packet bytes from cicada-3301-pubkey.keyserver.ubuntu.com.asc",
+   "keys_full_stream": true
+  },
+  {
+   "name": "cicada_sigs_b64_pub",
+   "bytes": 41268,
+   "sha256": "0372060b21d547593c6c7c0711f19e5eb769516e0d98e3df80b853126f85f384",
+   "source": "57 PGP signature packets from 57 signed 3301 messages, publication (chronological filename) order - base64 armor text",
+   "keys_full_stream": true
+  },
+  {
+   "name": "cicada_sigs_b64_rev",
+   "bytes": 41268,
+   "sha256": "b4d871728ef93faaeffeedacbb2ceeb27597fa0a27ea3ba308289f2cd86fd69e",
+   "source": "57 PGP signature packets from 57 signed 3301 messages, reverse publication order - base64 armor text",
+   "keys_full_stream": true
+  },
+  {
+   "name": "cicada_sigs_bin_pub",
+   "bytes": 30951,
+   "sha256": "97b2df808180575cd4ee35897a0f26c1fb7136912157f386b1d3693e389b0dd2",
+   "source": "57 PGP signature packets from 57 signed 3301 messages, publication (chronological filename) order - de-armoured binary",
+   "keys_full_stream": true
+  },
+  {
+   "name": "cicada_sigs_bin_rev",
+   "bytes": 30951,
+   "sha256": "8cb76c22bd10abadd035ecc33018ee8281cd4af0c7de262c5249cfcb6b1d75c8",
+   "source": "57 PGP signature packets from 57 signed 3301 messages, reverse publication order - de-armoured binary",
+   "keys_full_stream": true
+  },
+  {
+   "name": "lp_hashblock_bytes",
+   "bytes": 990,
+   "sha256": "52c71a53c52c1d177afd57292f8570d32ec9fa807051ac54bc0fbce1ce376ac3",
+   "source": "2014-01 signed hash block, hex decoded to bytes",
+   "keys_full_stream": false
+  },
+  {
+   "name": "lp_hashblock_hextext",
+   "bytes": 1980,
+   "sha256": "e694ffc4a60f4f73153da1fce4a580e12e2f9b1d5373025d3a94f52a1106da14",
+   "source": "2014-01 signed hash block, hex characters as published",
+   "keys_full_stream": false
+  },
+  {
+   "name": "lp_pages_jpeg_pub",
+   "bytes": 34654341,
+   "sha256": "a89e689fed4ee2df084d75e5b677108e7e80d558a46965516b6eade132177005",
+   "source": "56 onion7 LP2 page JPEGs (capsule images.onion7.p00-p55), page order",
+   "keys_full_stream": true
+  },
+  {
+   "name": "lp_pages_jpeg_rev",
+   "bytes": 34654341,
+   "sha256": "85c9e2a725d2bedb5eedae3ef7f29f0520d8f8ed1009cde3ae359b8a19af8cd6",
+   "source": "the same 56 page JPEGs, reverse page order",
+   "keys_full_stream": true
+  },
+  {
+   "name": "onions_ext_bin",
+   "bytes": 250,
+   "sha256": "5017ad1d408e5401477f3810e28d6f0980636d3ece916686be18215478fdc1ac",
+   "source": "25 3301 .onion addresses, base32-decoded, ext",
+   "keys_full_stream": false
+  },
+  {
+   "name": "onions_ext_text",
+   "bytes": 400,
+   "sha256": "f5680a993f06c18e55353c34fa6521f90f5e86c35119f573705f4070d83a169e",
+   "source": "25 3301 .onion addresses, base32 text, ext",
+   "keys_full_stream": false
+  },
+  {
+   "name": "onions_pub_bin",
+   "bytes": 190,
+   "sha256": "cc934f716360c1e89c99616002ed7252bfa29040641284d17bef2253afa0882e",
+   "source": "19 3301 .onion addresses, base32-decoded, pub",
+   "keys_full_stream": false
+  },
+  {
+   "name": "onions_pub_text",
+   "bytes": 304,
+   "sha256": "b450c91e1673e3d936ef32bae455bcb1ef4a6bb36341266ee280bd0f3926cc3a",
+   "source": "19 3301 .onion addresses, base32 text, pub",
+   "keys_full_stream": false
+  },
+  {
+   "name": "onions_rev_bin",
+   "bytes": 190,
+   "sha256": "07fe04f4efb1f08979cd2700f17501bd51fb0cdffae17744f7ea36b1fe950e05",
+   "source": "19 3301 .onion addresses, base32-decoded, rev",
+   "keys_full_stream": false
+  },
+  {
+   "name": "onions_rev_text",
+   "bytes": 304,
+   "sha256": "b0f4cb11f0e45b349b9b5b03a95310b24c5d8d10f35a29b4b60434ef48a39ea6",
+   "source": "19 3301 .onion addresses, base32 text, rev",
+   "keys_full_stream": false
+  },
+  {
+   "name": "rand_digits",
+   "bytes": 1000000,
+   "sha256": "8bafa9f9febef238048144203166ea616112610a21bda2c6069d4568c987de49",
+   "source": "RAND MR1418 A Million Random Digits (1955), the 1,000,000 random digits with printed line numbers stripped; first line cross-checked against Wikipedia/independent source",
+   "keys_full_stream": true
+  },
+  {
+   "name": "rand_digits_raw_file",
+   "bytes": 1440000,
+   "sha256": "657622b6eba115bec547ddd83093d259b370294ae6efaa48f5c4e3b3690b862e",
+   "source": "the RAND datafile verbatim, line numbers and layout included - what a copy-paste actually yields",
+   "keys_full_stream": true
+  }
+ ]
+}

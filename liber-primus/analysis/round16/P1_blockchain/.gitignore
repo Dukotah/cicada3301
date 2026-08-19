@@ -1,0 +1,8 @@
+# Round 16 lane P1 -- Bitcoin blockchain pad candidates.
+# Fetched corpus: blockchair daily block dumps 2009-01-03..2014-06-01 plus the derived
+# pad binaries (block hashes / merkle roots / nonces / timestamps in height order).
+# Regenerate with:
+#   python liber-primus/analysis/round16/P1_blockchain/fetch.py
+# It re-downloads, re-verifies (contiguity + 5 known block hashes) and re-emits every
+# file below, and writes data/MANIFEST.json with the SHA-256 of each pad.
+data/

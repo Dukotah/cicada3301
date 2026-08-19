@@ -173,7 +173,7 @@ HAND = [
                   "Cicada-flavoured seed (MD5/SHA-1/SHA-256/SHA-512 chain or counter, HMAC "
                   "counter-KDF, HMAC-DRBG, AES-CTR, RC4, ChaCha20), reduced mod 29 and applied "
                   "under the pinned soft anti-repeat filter.",
-    "status": "in-flight",
+    "status": "negative",
     "round": "13",
     "date": "2026-08-19",
     "threshold": "HIT iff score_norm >= max(-5.5, null_max + 0.5). Measured null at L=120 "
@@ -189,7 +189,14 @@ HAND = [
               "'THEPRIMESARESACREDANDTHETOTIENTFUNCTIONI...' in clear, against a runner-up of "
               "-6.621. PASS.",
     },
-    "result": None,
+    "result": "NEGATIVE. 6,224,300 decodes across stages A/B/C/D, 0 over the -5.5 bar. "
+              "Stage bests: A -6.185, B -6.129, C -5.885, D -6.654 (page 0) / -7.239 (full "
+              "stream). Stage A's own distribution: mean -7.344, sd 0.231, p99.999 -6.35 -- "
+              "the campaign maximum sits exactly where the best-of-N order statistic of a "
+              "null belongs. DECISIVE CHECK: escalating the top 150 configs onto longer "
+              "text, 0/150 improved on page 0 and 0/150 improved on the full 12,956-rune "
+              "stream (best decayed -6.654 -> -7.239). A correct key improves with more "
+              "text; a lucky one decays. Every survivor decayed.",
     "coverage": "2,165 seeds x 16 generators x 5 mod-29 reductions x 2 signs x 2 Atbash x 2 "
                 "directions, offset 0 (Stage A); 504 core seeds x 10 offsets (Stage B); 504 "
                 "core seeds x 55 per-page restarts (Stage C); top-300 escalated to page 0 full "

@@ -1,0 +1,105 @@
+==========================================================================
+ROUND 16 / P0 - DENSE offset re-sweep of the CicadaOS pads
+pads=['_560.00_auth', '_560.00_trunc', '560.17', 'prime_echo', 'tmp_folly', 'tmp_wisdom']  builders=['mod29', 'hi_nibble', 'lo_nibble', 'byte_scaled', 'prime_to_idx', 'hexchars']  signs=(-1,+1)  fwd+rev
+beam_w=120 max_skip=3 head=400 prefilter_len=24
+==========================================================================
+window-equivalence check ...
+  OK: windowed beam/null are bit-identical to lib_padsweep's
+unsolved runes: 12956
+
+==========================================================================
+PAD _560.00_auth  3,992,970 B  sha256 a24051a87f0eb25ca21accbd3158fdf7b4911243e5ee1b9778b81182f0d36573
+  mod29            |K|=  3,992,970  off/sign=  3,992,946  null_max=-6.995 bar=-5.500  best=-6.938  [19s]
+  mod29_rev        |K|=  3,992,970  off/sign=  3,992,946  null_max=-6.894 bar=-5.500  best=-6.974  [20s]
+  hi_nibble        |K|=  3,992,970  off/sign=  3,992,946  null_max=-6.998 bar=-5.500  best=-6.944  [19s]
+  hi_nibble_rev    |K|=  3,992,970  off/sign=  3,992,946  null_max=-7.017 bar=-5.500  best=-6.814  [19s]
+  lo_nibble        |K|=  3,992,970  off/sign=  3,992,946  null_max=-6.935 bar=-5.500  best=-6.995  [20s]
+  lo_nibble_rev    |K|=  3,992,970  off/sign=  3,992,946  null_max=-6.992 bar=-5.500  best=-6.894  [20s]
+  byte_scaled      |K|=  3,992,970  off/sign=  3,992,946  null_max=-6.939 bar=-5.500  best=-6.908  [21s]
+  byte_scaled_rev  |K|=  3,992,970  off/sign=  3,992,946  null_max=-6.969 bar=-5.500  best=-6.905  [20s]
+  prime_to_idx     |K|=  3,992,970  off/sign=  3,992,946  null_max=-6.999 bar=-5.500  best=-6.816  [19s]
+  prime_to_idx_rev |K|=  3,992,970  off/sign=  3,992,946  null_max=-7.009 bar=-5.500  best=-6.979  [19s]
+  hexchars         |K|=  2,936,706  off/sign=  2,936,682  null_max=-6.936 bar=-5.500  best=-6.907  [32s]
+  hexchars_rev     |K|=  2,936,628  off/sign=  2,936,604  null_max=-6.976 bar=-5.500  best=-6.950  [32s]
+
+==========================================================================
+PAD _560.00_trunc  2,412,544 B  sha256 a9ba66e3fc874ce429948b1ee52b48a00f230698ac7174ed9aefb7d82ba62b59
+  mod29            |K|=  2,412,544  off/sign=  2,412,520  null_max=-6.995 bar=-5.500  best=-6.836  [21s]
+  mod29_rev        |K|=  2,412,544  off/sign=  2,412,520  null_max=-6.900 bar=-5.500  best=-7.043  [21s]
+  hi_nibble        |K|=  2,412,544  off/sign=  2,412,520  null_max=-6.998 bar=-5.500  best=-6.904  [23s]
+  hi_nibble_rev    |K|=  2,412,544  off/sign=  2,412,520  null_max=-6.849 bar=-5.500  best=-6.978  [24s]
+  lo_nibble        |K|=  2,412,544  off/sign=  2,412,520  null_max=-6.935 bar=-5.500  best=-6.963  [21s]
+  lo_nibble_rev    |K|=  2,412,544  off/sign=  2,412,520  null_max=-7.003 bar=-5.500  best=-6.921  [25s]
+  byte_scaled      |K|=  2,412,544  off/sign=  2,412,520  null_max=-6.939 bar=-5.500  best=-6.908  [38s]
+  byte_scaled_rev  |K|=  2,412,544  off/sign=  2,412,520  null_max=-6.886 bar=-5.500  best=-6.905  [38s]
+  prime_to_idx     |K|=  2,412,544  off/sign=  2,412,520  null_max=-6.999 bar=-5.500  best=-6.816  [91s]
+  prime_to_idx_rev |K|=  2,412,544  off/sign=  2,412,520  null_max=-6.917 bar=-5.500  best=-6.979  [44s]
+  hexchars         |K|=  1,774,621  off/sign=  1,774,597  null_max=-6.936 bar=-5.500  best=-6.907  [68s]
+  hexchars_rev     |K|=  1,774,655  off/sign=  1,774,631  null_max=-7.016 bar=-5.500  best=-6.950  [28s]
+
+==========================================================================
+PAD 560.17  1,183,811 B  sha256 d5676b1e01fd371cb13415b59b2eca4336e96f7bb05e789198b8d6baab580c19
+  mod29            |K|=  1,183,811  off/sign=  1,183,787  null_max=-7.009 bar=-5.500  best=-6.892  [22s]
+  mod29_rev        |K|=  1,183,811  off/sign=  1,183,787  null_max=-6.956 bar=-5.500  best=-6.938  [20s]
+  hi_nibble        |K|=  1,183,811  off/sign=  1,183,787  null_max=-6.974 bar=-5.500  best=-6.901  [21s]
+  hi_nibble_rev    |K|=  1,183,811  off/sign=  1,183,787  null_max=-7.022 bar=-5.500  best=-6.983  [21s]
+  lo_nibble        |K|=  1,183,811  off/sign=  1,183,787  null_max=-6.943 bar=-5.500  best=-6.807  [17s]
+  lo_nibble_rev    |K|=  1,183,811  off/sign=  1,183,787  null_max=-6.972 bar=-5.500  best=-6.873  [17s]
+  byte_scaled      |K|=  1,183,811  off/sign=  1,183,787  null_max=-6.955 bar=-5.500  best=-7.003  [16s]
+  byte_scaled_rev  |K|=  1,183,811  off/sign=  1,183,787  null_max=-6.974 bar=-5.500  best=-6.988  [60s]
+  prime_to_idx     |K|=  1,183,811  off/sign=  1,183,787  null_max=-6.979 bar=-5.500  best=-6.986  [90s]
+  prime_to_idx_rev |K|=  1,183,811  off/sign=  1,183,787  null_max=-6.943 bar=-5.500  best=-6.843  [96s]
+  hexchars         |K|=    869,558  off/sign=    869,534  null_max=-6.840 bar=-5.500  best=-6.987  [39s]
+  hexchars_rev     |K|=    869,648  off/sign=    869,624  null_max=-6.974 bar=-5.500  best=-7.018  [25s]
+
+==========================================================================
+PAD prime_echo  12,248 B  sha256 1ab3a8f4520a3d93784aea137847e0c7f77d9fff4df02d481b62d13280753350
+  mod29            |K|=     12,248  off/sign=     12,224  null_max=-6.983 bar=-5.500  best=-6.959  [22s]
+  mod29_rev        |K|=     12,248  off/sign=     12,224  null_max=-6.909 bar=-5.500  best=-7.131  [17s]
+  hi_nibble        |K|=     12,248  off/sign=     12,224  null_max=-6.937 bar=-5.500  best=-7.007  [17s]
+  hi_nibble_rev    |K|=     12,248  off/sign=     12,224  null_max=-6.957 bar=-5.500  best=-7.172  [31s]
+  lo_nibble        |K|=     12,248  off/sign=     12,224  null_max=-6.875 bar=-5.500  best=-7.036  [18s]
+  lo_nibble_rev    |K|=     12,248  off/sign=     12,224  null_max=-7.031 bar=-5.500  best=-7.130  [15s]
+  byte_scaled      |K|=     12,248  off/sign=     12,224  null_max=-6.986 bar=-5.500  best=-6.978  [21s]
+  byte_scaled_rev  |K|=     12,248  off/sign=     12,224  null_max=-6.952 bar=-5.500  best=-7.019  [17s]
+  prime_to_idx     |K|=     12,248  off/sign=     12,224  null_max=-6.961 bar=-5.500  best=-7.061  [16s]
+  prime_to_idx_rev |K|=     12,248  off/sign=     12,224  null_max=-6.993 bar=-5.500  best=-7.102  [22s]
+  hexchars         |K|=      3,159  off/sign=      3,135  null_max=-7.060 bar=-5.500  best=-7.175  [17s]
+  hexchars_rev     |K|=      3,159  off/sign=      3,135  null_max=-7.000 bar=-5.500  best=-7.043  [16s]
+
+==========================================================================
+PAD tmp_folly  3,368 B  sha256 7e5ec097728197f5c0dba0729980565658fba486965809ffa25e3910a31c385a
+  mod29            |K|=      3,368  off/sign=      3,344  null_max=-6.973 bar=-5.500  best=-7.042  [21s]
+  mod29_rev        |K|=      3,368  off/sign=      3,344  null_max=-6.867 bar=-5.500  best=-7.032  [20s]
+  hi_nibble        |K|=      3,368  off/sign=      3,344  null_max=-6.937 bar=-5.500  best=-7.044  [14s]
+  hi_nibble_rev    |K|=      3,368  off/sign=      3,344  null_max=-6.933 bar=-5.500  best=-6.923  [13s]
+  lo_nibble        |K|=      3,368  off/sign=      3,344  null_max=-6.971 bar=-5.500  best=-6.970  [13s]
+  lo_nibble_rev    |K|=      3,368  off/sign=      3,344  null_max=-7.024 bar=-5.500  best=-7.017  [19s]
+  byte_scaled      |K|=      3,368  off/sign=      3,344  null_max=-6.954 bar=-5.500  best=-7.033  [20s]
+  byte_scaled_rev  |K|=      3,368  off/sign=      3,344  null_max=-6.965 bar=-5.500  best=-7.037  [16s]
+  prime_to_idx     |K|=      3,368  off/sign=      3,344  null_max=-6.986 bar=-5.500  best=-6.935  [14s]
+  prime_to_idx_rev |K|=      3,368  off/sign=      3,344  null_max=-6.936 bar=-5.500  best=-6.989  [14s]
+  hexchars         |K|=      2,467  off/sign=      2,443  null_max=-6.917 bar=-5.500  best=-7.061  [16s]
+  hexchars_rev     |K|=      2,474  off/sign=      2,450  null_max=-6.995 bar=-5.500  best=-7.075  [17s]
+
+==========================================================================
+PAD tmp_wisdom  3,368 B  sha256 7e5ec097728197f5c0dba0729980565658fba486965809ffa25e3910a31c385a
+  mod29            |K|=      3,368  off/sign=      3,344  null_max=-6.973 bar=-5.500  best=-7.042  [14s]
+  mod29_rev        |K|=      3,368  off/sign=      3,344  null_max=-6.867 bar=-5.500  best=-7.032  [14s]
+  hi_nibble        |K|=      3,368  off/sign=      3,344  null_max=-6.937 bar=-5.500  best=-7.044  [16s]
+  hi_nibble_rev    |K|=      3,368  off/sign=      3,344  null_max=-6.933 bar=-5.500  best=-6.923  [17s]
+  lo_nibble        |K|=      3,368  off/sign=      3,344  null_max=-6.971 bar=-5.500  best=-6.970  [16s]
+  lo_nibble_rev    |K|=      3,368  off/sign=      3,344  null_max=-7.024 bar=-5.500  best=-7.017  [21s]
+  byte_scaled      |K|=      3,368  off/sign=      3,344  null_max=-6.954 bar=-5.500  best=-7.033  [35s]
+  byte_scaled_rev  |K|=      3,368  off/sign=      3,344  null_max=-6.965 bar=-5.500  best=-7.037  [40s]
+  prime_to_idx     |K|=      3,368  off/sign=      3,344  null_max=-6.986 bar=-5.500  best=-6.935  [35s]
+  prime_to_idx_rev |K|=      3,368  off/sign=      3,344  null_max=-6.936 bar=-5.500  best=-6.989  [38s]
+  hexchars         |K|=      2,467  off/sign=      2,443  null_max=-6.917 bar=-5.500  best=-7.061  [36s]
+  hexchars_rev     |K|=      2,474  off/sign=      2,450  null_max=-6.995 bar=-5.500  best=-7.075  [39s]
+
+==========================================================================
+TOTAL coverage: 144 configs, 174,518,756 offsets scanned = 109,074,222 effective (x0.625 survival); 4,594 beam escalations
+A1 for comparison: 8 offsets per variant.
+best score_norm = -6.8072  (560.17 lo_nibble s+1 o=493780)  bar=-5.500
+threshold_for(n=174,518,756) = -5.5000   threshold_for(n=4,594) = -5.5000
+VERDICT: NEGATIVE   -> C:\Users\dukot\projects\cicada3301\liber-primus\analysis\round16\P0_dense\results_small.json   (1896s)
