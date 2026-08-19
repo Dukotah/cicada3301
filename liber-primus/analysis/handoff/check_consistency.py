@@ -114,13 +114,25 @@ def check_retracted_claim_not_asserted():
     appear only where it is being quoted, corrected or marked superseded -- never as an
     assertion. This is the exact regression the repo already suffered once.
     """
-    pat = re.compile(r"information[- ]theoretically (un)?solvable", re.I)
+    # All the ways this repo has phrased the SAME retracted claim. The first version of
+    # this check caught only the "information-theoretically" wording and missed four
+    # variants sitting in ELIMINATION-LEDGER and FINAL-SYNTHESIS -- a checker is only as
+    # good as its list of synonyms, so new phrasings belong here.
+    pat = re.compile(
+        r"information[- ]theoretically (un)?solvable"
+        r"|unsolvable[- ]by[- ]design"
+        r"|(internal (solve )?frontier|both frontiers) exhausted"
+        r"|LOOP TERMINUS"
+        r"|brute force is pointless"
+        r"|no compute recovers", re.I)
     # markers that indicate the phrase is being discussed rather than asserted
     context_ok = re.compile(
         r"(supersed|corrected|retract|overreach|overstat|do not (say|state|write)|"
         r"previously|used to|was wrong|not proven|without that qualif|"
         r"misconception|claim\"|\"claim|error|too strong|narrowed|caught|"
-        r"OTP[- ]class|not ['\"]?information[- ]theoretically)", re.I)
+        r"OTP[- ]class|not ['\"]?information[- ]theoretically|"
+        r"demonstrably false|is false|was false|no longer holds|"
+        r"distrust|do not trust|terminal verdict|mood)", re.I)
     scanned = ["README.md", "AGENTS.md", "KNOWLEDGE.json", "INDEX.json",
                "liber-primus/PROBLEM.json", "PICKUP-HERE.md",
                "liber-primus/handoff/FOR-FUTURE-SOLVERS.md",
@@ -252,8 +264,37 @@ def check_no_scratch_text():
                 err(f"{rel} contains LLM scratch commentary in published prose")
 
 
+def check_no_terminal_instructions():
+    """Flag instructions that tell a reader the work is OVER.
+
+    A coverage bound ("swept X, best -6.1, bar -5.5") prevents wasted overlap and is
+    exactly what this repo should publish. A terminal verdict ("wind down", "frontier
+    exhausted") forecloses inquiry instead, and every such line here was written before
+    Round 12 D3 showed a tractable internal lane had never been run. Keep the bounds;
+    supersede the terminals.
+    """
+    pat = re.compile(r"(wind down to synthesis|further rotation re-derives|"
+                     r"nothing left to try|the work is (over|finished|complete))", re.I)
+    ctx = re.compile(r"(supersed|corrected|retract|overtaken|no longer|was written before|"
+                     r"⚠)", re.I)
+    for doc in ("README.md", "AGENTS.md", "PICKUP-HERE.md",
+                "liber-primus/ELIMINATION-LEDGER.md", "liber-primus/FINAL-SYNTHESIS.md",
+                "liber-primus/handoff/FOR-FUTURE-SOLVERS.md"):
+        t = read(doc)
+        if t is None:
+            continue
+        for m in pat.finditer(t):
+            window = t[max(0, m.start() - 600):m.end() + 600]
+            if not ctx.search(window):
+                line = t[:m.start()].count("\n") + 1
+                err(f"{doc}:{line} carries a TERMINAL instruction "
+                    f"('{m.group(0)}') with no superseding note. It tells a fresh reader "
+                    f"the work is over; state a coverage bound instead.")
+
+
 CHECKS = [
     ("ciphertext identity agrees everywhere", check_rune_count_and_hash),
+    ("no terminal 'work is over' instructions", check_no_terminal_instructions),
     ("retracted claim is not asserted", check_retracted_claim_not_asserted),
     ("corrected verdict is present in every front door", check_verdict_wording_present),
     ("acceptance thresholds agree", check_thresholds_agree),

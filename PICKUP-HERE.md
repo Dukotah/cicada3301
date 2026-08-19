@@ -167,6 +167,34 @@ python tests/validate.py     # trust anchor — reproduces every known solved pa
 pytest -m "not network"      # fast regression gate
 ```
 
+### How to start a fresh armada without repeating one
+
+The two goals — **stay optimistic** and **don't overlap** — are not in tension, but only if you
+keep two things apart that this repo has repeatedly conflated:
+
+| | what it is | how to treat it |
+|---|---|---|
+| **A coverage bound** | *"swept 2,165 seeds × 16 generators × 5 reductions, best −6.185 against a −5.5 bar, control passed"* | **Trust it.** This is a measured fact and it saves you from redoing a sweep. Check `LEDGER.json` → `coverage` and `not_covered`. |
+| **A terminal verdict** | *"exhausted"*, *"wind down"*, *"unsolvable by design"* | **Distrust it — including ours.** This repo has been wrong with that mood twice, and both times it foreclosed a lane that was later run and turned out to be tractable. |
+
+**The practical test before you start:** for the lane you have in mind, open `LEDGER.json` and
+read its `coverage` and `not_covered` fields, not its `status`. A `status: eliminated` with a
+coverage bound of *"10 generators at ~3% of each seed space"* is an **open** lane wearing a
+closed label — that is exactly how PHP `mt_rand` stayed untested for months.
+
+**Three lanes were found this way, each inside something previously called closed:**
+
+- **B-04** — declared dead by *"internal solve frontier EXHAUSTED"* (2026-07-29), was in fact
+  marked `never-run` in the repo's own register, and ran for the first time in Round 13.
+- **PHP `mt_rand`** — inside *"seeded-PRNG pads, do not re-run"*, whose real coverage was ~3%.
+- **KDF / key stretching** — inside B-04's own `not_covered` declaration, and arguably a
+  *higher* prior than the bare-hash family B-04 swept.
+
+So: be optimistic about **finding the gap inside a closure**, and disciplined about **not
+re-running the measured part**. Those are the same skill.
+
+---
+
 Then read the ledger. **Do not re-run** anything in its "Do NOT re-run" list — more keywords,
 short/periodic keys, number-theoretic keystreams, autokey, differencing/integration, page-on-page
 keying, transposition-only, fractionation, substitution/homophonic, image stego, AI-vision

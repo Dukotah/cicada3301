@@ -139,7 +139,21 @@ What is genuinely useful:
   truncated data file, and two measurement bugs in its own instruments. Finding the next
   one is a contribution.
 
-## 7. What this repo wants from a stronger model
+## 7. Read closures as bounds, not as verdicts
+
+If you are here to attack the cipher, the most useful habit is this: **`LEDGER.json`'s
+`status` field is the least reliable thing in it.** Read `coverage` and `not_covered` instead.
+
+A status of `eliminated` whose coverage says *"10 generators over ~3% of each seed space"* is an
+**open** lane wearing a closed label. That is not hypothetical — it is how PHP `mt_rand` went
+untested for months, and how the derived-key dictionary sat behind a line reading *"internal
+solve frontier EXHAUSTED"* while being marked `never-run` in the repo's own register.
+
+This repository has twice published a terminal verdict that was wrong. Both times the error was
+the same shape: a *measured bound* got written up as a *settled conclusion*. Trust the bound;
+distrust the conclusion — ours included.
+
+## 8. What this repo wants from a stronger model
 
 Honestly: to be *checked*, and to have its parked work done.
 

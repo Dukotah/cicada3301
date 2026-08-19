@@ -11,7 +11,16 @@ no solve and no name — and that conclusion is now the well-earned, evidence-ba
 
 ---
 
-## GOAL 1 — Solve LP2: **unsolvable-by-design, not unsolved-by-effort**
+## GOAL 1 — Solve LP2: **OTP-class — the branch is not settled**
+
+> ### ⚠️ This heading previously read *"unsolvable-by-design, not unsolved-by-effort"* (superseded 2026-08-19)
+>
+> That is a **retracted** claim. Round 12 front D3 showed the ciphertext cannot distinguish a
+> *true external pad* (information-theoretically closed) from a keystream *derived from a short
+> seed* (finite keyspace, brute-forceable) — and D3's control planted such a keystream and
+> **recovered it** through this project's own decoder at 98.9% accuracy. So "by design" names one
+> branch of a two-branch question that the evidence does not decide. The reasoning below stands;
+> the conclusion is narrowed to **OTP-class**. See `analysis/round12/D3/RESULTS.md`.
 
 The unsolved runic pages 0–54 carry exactly **one** real, independently reproducible structural
 signature: an adjacent-equal (doubling) rate of **0.68%**, ~5× below random (3.45%) and below even plain

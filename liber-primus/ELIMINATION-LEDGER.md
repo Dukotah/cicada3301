@@ -683,6 +683,9 @@ miscounted). REFUTED three independent ways + produced two positive results.
   3.52%, hard anti-repeat 0.00%). Residual 60 survivors uniform over value + positionally flat.
   Repro: analysis/recon/i9_inventory/, i9_deficit/, i9_ocr/.
 - **CRITIC VERDICT: internal solve frontier EXHAUSTED — diminishing-returns hardening, not solve paths.**
+  ⚠️ **Superseded 2026-08-19 — this was false when written.** RECON-A item **B-04** (the derived-key
+  dictionary) was an *internal, ciphertext-only* lane marked `never-run`, and 16 further RECON-A items
+  were `never-run` at the same date. See the correction block at the end of this section.
   Loop pivots to goal 2 (creator attribution); the soft-anti-repeat-over-memoryless construction is now
   a candidate TECHNIQUE fingerprint for attribution.
 
@@ -706,6 +709,23 @@ Last substantive pass before wind-down. Nothing survived.
   unsolvable-BY-DESIGN, not unsolved-by-effort.
 - **LOOP TERMINUS:** both frontiers exhausted; further rotation re-derives these conclusions. Wind down
   to synthesis (see FINAL-SYNTHESIS.md).
+
+> ### ⚠️ SUPERSEDED 2026-08-19 — this whole iter-11 block reads more finally than the evidence allows
+>
+> Three statements above were written on **2026-07-29** and are now known to be wrong or overstated.
+> They are kept because the reasoning that produced them is still worth reading, but **do not treat
+> them as instructions**:
+>
+> | line | said | actually |
+> |---|---|---|
+> | *"internal solve frontier EXHAUSTED"* | no internal lane remained | **False.** RECON-A item **B-04** (the derived-key dictionary) was an *internal, ciphertext-only* lane, was marked `never-run`, and was not run until Round 13 — three weeks after this line was written. 16 further RECON-A items were `never-run` at the time. |
+> | *"LP2 is unsolvable-BY-DESIGN, not unsolved-by-effort"* | settled | **Retracted.** Round 12 D3: the ciphertext cannot separate a true external pad from a short-seed *derived* keystream, which is finite and brute-forceable. The supported claim is **OTP-class**. |
+> | *"LOOP TERMINUS … further rotation re-derives these conclusions. Wind down"* | stop | **Wrong as an instruction.** Rounds 12–15 each opened lanes this block asserted did not exist, and Round 12's D3 found the error above precisely *by* rotating again. |
+>
+> **The distinction that matters for anyone starting fresh work here:** a *coverage bound* ("swept
+> 2,165 seeds × 16 generators, best −6.185 against a −5.5 bar") is a fact that saves you from
+> repeating a sweep. A *terminal verdict* ("exhausted", "wind down") is a mood, and this repository
+> has now been wrong with that mood twice. **Publish bounds; distrust terminals — including these.**
 
 ## Round 9/10 — multi-lens armada (2026-08-11 → 17)
 
