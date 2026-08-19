@@ -1,0 +1,20 @@
+==============================================================================
+ROUND 15 / KDF — key-stretching keystreams (B-04's declared not-covered region)
+stages=['K2'] nproc=2 beam_w=400 max_skip=3 bar=-5.5
+==============================================================================
+*** SMOKE RUN: secret list capped to 11. Not a valid negative. ***
+secrets: 11   KDFs: 27   salts(A): ['empty', '3301', 'self']   unsolved runes: 12956
+null(L=120, n=200): mean=-7.399 max=-6.773  -> HIT bar -5.500
+
+=== K2 — plant-and-recover through this harness ===
+K2 plant: kdf=pbkdf2_sha256_10000 salt=3301 red=mod29 len=120 doublet_rate=0.0000 (LP2 is 0.0066)
+[K2] secrets=11 kdfs=27 salts=3 reds=2 -> 14,256 decodes on 2 procs
+    [K2] 3/3 chunks  14,256 decodes  53s  (269/s)  best=-4.186
+K2 rank#1: -4.186 secret='THE PRIMES ARE SACRED' kdf=pbkdf2_sha256_10000 salt=3301 red=mod29
+K2 planted config ranked #1 = True; clears bar = True -> PASS
+  -> wrote results_gates.json
+  -> wrote results_summary.json
+
+==============================================================================
+VERDICT: NEGATIVE   best=None vs bar=-5.500   decodes=0   elapsed=0.9 min
+==============================================================================
