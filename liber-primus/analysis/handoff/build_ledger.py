@@ -221,7 +221,7 @@ HAND = [
     "lane": "keystream",
     "hypothesis": "The pp49-51 256-byte payload is a PRF seed expanded into a runic keystream "
                   "(RC4/AES-CTR/SHA-counter/HMAC-DRBG), rather than key material used directly.",
-    "status": "in-flight",
+    "status": "negative",
     "round": "13",
     "date": "2026-08-19",
     "threshold": "HIT iff score >= -5.5 AND score > null_max. Null (shuffled HEAD, n=200): "
@@ -233,7 +233,12 @@ HAND = [
                           "-4.170 at 98.9% char-recovery vs beam(wrong) ~-7.33 and "
                           "rigid(correct) -6.68..-7.48. Flipping ONE contested byte destroys "
                           "recovery (-7.38), confirming avalanche sensitivity."},
-    "result": None,
+    "result": "NEGATIVE. 70,680 beam decodes, 0 hits. Best -6.745 (Part 2b) vs a -5.5 bar "
+              "and a null max of -7.001 - 1.25 below the bar, 0.26 above noise. Rigid "
+              "control channel peaked at -7.096. Escalation is the informative part: the "
+              "top-5 head configs all got WORSE on the full page (-7.22..-7.33 from heads "
+              "of -6.77..-6.86), which is the signature of an order statistic, not a "
+              "signal - a real key improves with more text, a lucky one degrades.",
     "coverage": "Payload representations (raw, reversed, bit-reversed, dec-prefix) x "
                 "{SHA-256/512 ctr+chain, MD5/SHA-1 ctr, HMAC-DRBG, AES-CTR, RC4, ChaCha20} x "
                 "{mod29, rejection} x sign x direction x offsets; plus the 6 contested bytes "
@@ -242,11 +247,16 @@ HAND = [
                  "liber-primus/analysis/round13/B05/sweep.py",
                  "liber-primus/analysis/round13/B05/control_results.json"],
     "reproduce": "cd liber-primus/analysis/round13/B05 && python3 sweep.py",
-    "reopens_if": "The 6 contested bytes (indices 25, 175, 182, 199, 215, 237) are unresolved "
-                  "and a PRF seed is avalanche-sensitive, so an unresolved byte can hide a hit. "
-                  "Resolving them (RECON-A A-04, needs Latin/digit OCR) could reopen this.",
+    "reopens_if": "JOINT corruption of two or more contested bytes (only single-position "
+                  "sweeps and the 64 all-combination masks were run); key stretching applied "
+                  "to the payload (that is round15/KDF, not this lane); salted expansion; "
+                  "expanders outside the tested set.",
     "notes": "Campaign XX applied AES/RC4/ChaCha to the payload as CIPHERTEXT; nobody had "
-             "expanded it into a keystream over the runes.",
+             "expanded it into a keystream over the runes. The control measured avalanche "
+             "sensitivity directly: flipping ONE contested byte drops recovery from -4.170 "
+             "to -7.38, i.e. perfect to noise - which is why Part 2b swept all 256 values "
+             "at each of the 6 contested positions rather than assuming them. That "
+             "materially weakens RECON-A A-04 as a blocker for THIS lane.",
   },
   # ---- the two other corrected closures ------------------------------------
   {

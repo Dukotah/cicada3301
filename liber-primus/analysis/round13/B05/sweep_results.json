@@ -1,0 +1,1740 @@
+{
+  "unsolved_len": 12956,
+  "head": 400,
+  "beam_w": 120,
+  "max_skip": 3,
+  "null_mean": -7.302389700894449,
+  "null_max": -7.001321900235663,
+  "hit_bar": -5.5,
+  "null_n": 200,
+  "grid": {
+    "reps": [
+      "dec.bitrev8",
+      "dec.bitrevall",
+      "dec.byterev",
+      "dec.hexascii",
+      "dec.raw",
+      "dec.swap32",
+      "maj.bitrev8",
+      "maj.bitrevall",
+      "maj.byterev",
+      "maj.hexascii",
+      "maj.raw",
+      "maj.swap32"
+    ],
+    "gens": [
+      "md5_ctr",
+      "sha1_ctr",
+      "sha256_ctr",
+      "sha512_ctr",
+      "sha256_ctr_le",
+      "sha256_chain",
+      "sha512_chain",
+      "hmac_drbg_sha256",
+      "aes256_ctr_k",
+      "aes256_ctr_kiv",
+      "aes128_ctr_k",
+      "rc4",
+      "chacha20_k",
+      "chacha20_kn",
+      "shake256"
+    ],
+    "reductions": [
+      "mod",
+      "reject"
+    ],
+    "signs": [
+      -1,
+      1
+    ],
+    "dirs": [
+      "fwd",
+      "rev"
+    ],
+    "atbash": [
+      false,
+      true
+    ],
+    "offsets": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      8,
+      13,
+      29,
+      64,
+      128,
+      256,
+      512,
+      1024,
+      3301
+    ]
+  },
+  "part1": {
+    "n": 40320,
+    "best": {
+      "part": 1,
+      "rep": "dec.bitrev8",
+      "gen": "sha512_chain",
+      "red": "mod",
+      "dir": "fwd",
+      "atbash": true,
+      "sign": -1,
+      "o": 29,
+      "score": -6.770530995360567,
+      "head": "YTHSUTHRSGOELOILEAEYIASNGDRATHODARFOENLEABHTHEAF"
+    },
+    "top20": [
+      {
+        "part": 1,
+        "rep": "dec.bitrev8",
+        "gen": "sha512_chain",
+        "red": "mod",
+        "dir": "fwd",
+        "atbash": true,
+        "sign": -1,
+        "o": 29,
+        "score": -6.770530995360567,
+        "head": "YTHSUTHRSGOELOILEAEYIASNGDRATHODARFOENLEABHTHEAF"
+      },
+      {
+        "part": 1,
+        "rep": "maj.raw",
+        "gen": "sha512_chain",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": true,
+        "sign": -1,
+        "o": 128,
+        "score": -6.838883372037342,
+        "head": "YAELPEONTHOEAHOEOTGOEYRYSAIACYOGNGXEASWPJBYCEDGG"
+      },
+      {
+        "part": 1,
+        "rep": "maj.bitrev8",
+        "gen": "sha512_ctr",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": false,
+        "sign": 1,
+        "o": 13,
+        "score": -6.843808420628094,
+        "head": "FMNGTNXMBIMAENGRYEARPLRAMWEOTHIAHAEMRANTIOTHEABI"
+      },
+      {
+        "part": 1,
+        "rep": "dec.swap32",
+        "gen": "rc4",
+        "red": "reject",
+        "dir": "rev",
+        "atbash": true,
+        "sign": -1,
+        "o": 3301,
+        "score": -6.8496974081150315,
+        "head": "THEAXSIAIAIEAAETHCJJERANGEOOLBJUOEALTHYAGEAUUMIO"
+      },
+      {
+        "part": 1,
+        "rep": "dec.raw",
+        "gen": "md5_ctr",
+        "red": "reject",
+        "dir": "fwd",
+        "atbash": true,
+        "sign": -1,
+        "o": 5,
+        "score": -6.862893647674674,
+        "head": "RMTHTNDIABGWLFDTOEPOJYPOTHUUTSWISJEDIIANGEOUNTHE"
+      },
+      {
+        "part": 1,
+        "rep": "dec.byterev",
+        "gen": "rc4",
+        "red": "reject",
+        "dir": "fwd",
+        "atbash": false,
+        "sign": 1,
+        "o": 1024,
+        "score": -6.864031143554649,
+        "head": "HFJNGECAEXFIAIAXEORTHNGSDYBMTOETHOAPHFWIAEAINGRH"
+      },
+      {
+        "part": 1,
+        "rep": "dec.swap32",
+        "gen": "sha512_ctr",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": true,
+        "sign": -1,
+        "o": 3,
+        "score": -6.87396616108387,
+        "head": "OBPBIATHAEAEHILHEOEITHEOXRSPDEAONGUWUIAJIJREEOTH"
+      },
+      {
+        "part": 1,
+        "rep": "maj.raw",
+        "gen": "chacha20_kn",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": true,
+        "sign": -1,
+        "o": 29,
+        "score": -6.875293646578407,
+        "head": "YAEADIAOGJEOBSGNGSEOCNXEOEGFBOHNGTPFFYPYSRCYFBWB"
+      },
+      {
+        "part": 1,
+        "rep": "dec.hexascii",
+        "gen": "rc4",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": true,
+        "sign": 1,
+        "o": 5,
+        "score": -6.875991684803499,
+        "head": "IYREAOEYEOMYGGNEGEABNGLWEAEAEONESAERAELMOEDHBWEN"
+      },
+      {
+        "part": 1,
+        "rep": "maj.swap32",
+        "gen": "aes256_ctr_kiv",
+        "red": "reject",
+        "dir": "rev",
+        "atbash": true,
+        "sign": -1,
+        "o": 29,
+        "score": -6.877381433672701,
+        "head": "DGIIEONGSOFEAAETEOJLPYWBSIEEDWNGCNGINMHXTHXFTNUL"
+      },
+      {
+        "part": 1,
+        "rep": "maj.swap32",
+        "gen": "sha256_ctr",
+        "red": "reject",
+        "dir": "fwd",
+        "atbash": false,
+        "sign": -1,
+        "o": 29,
+        "score": -6.878081424302316,
+        "head": "AELSREARWMWGIAOECOEEAPSUWNGDJXNPHWMRWYGNGASXYEAO"
+      },
+      {
+        "part": 1,
+        "rep": "maj.swap32",
+        "gen": "hmac_drbg_sha256",
+        "red": "reject",
+        "dir": "fwd",
+        "atbash": true,
+        "sign": -1,
+        "o": 3301,
+        "score": -6.88268137815316,
+        "head": "EODOEAWFWOEEAUXOPCOSBFMBDDNRJRGOTHDSCWIAPSTHYEOI"
+      },
+      {
+        "part": 1,
+        "rep": "dec.bitrev8",
+        "gen": "sha1_ctr",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": false,
+        "sign": -1,
+        "o": 8,
+        "score": -6.882869508631401,
+        "head": "SBCAETHGTJMEWNGSYHEOXTSEMFREAFCIXNEAGGIORIAMNGIA"
+      },
+      {
+        "part": 1,
+        "rep": "dec.swap32",
+        "gen": "chacha20_k",
+        "red": "mod",
+        "dir": "fwd",
+        "atbash": true,
+        "sign": 1,
+        "o": 256,
+        "score": -6.885601497039709,
+        "head": "EPLEOUMYDFNTOEIANGEOHYFWGHMCEOBTSEFCGDIALEONAEAL"
+      },
+      {
+        "part": 1,
+        "rep": "dec.swap32",
+        "gen": "sha512_ctr",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": true,
+        "sign": -1,
+        "o": 1,
+        "score": -6.887331077499635,
+        "head": "JRGIALJIAEHILHEOEITHEOXRSPDEAONGUWUIAJIJREEOTHEO"
+      },
+      {
+        "part": 1,
+        "rep": "dec.bitrevall",
+        "gen": "shake256",
+        "red": "reject",
+        "dir": "rev",
+        "atbash": false,
+        "sign": -1,
+        "o": 64,
+        "score": -6.888131382821893,
+        "head": "THYMOETMTHRSNGTUBTLOTINGLHCSTHIAOEPHATLPXFCWHUJI"
+      },
+      {
+        "part": 1,
+        "rep": "maj.swap32",
+        "gen": "sha512_chain",
+        "red": "reject",
+        "dir": "fwd",
+        "atbash": false,
+        "sign": 1,
+        "o": 512,
+        "score": -6.888423204164255,
+        "head": "NDTLTHYCDXREEOPMEAAGWIHLOECLATUOECIATEESTWAEAADG"
+      },
+      {
+        "part": 1,
+        "rep": "maj.bitrev8",
+        "gen": "rc4",
+        "red": "mod",
+        "dir": "fwd",
+        "atbash": false,
+        "sign": 1,
+        "o": 64,
+        "score": -6.888820921018663,
+        "head": "HTANGITHWDTHUGATIOTFIATEPPEAEEOBHAEDYXAIARJEABLO"
+      },
+      {
+        "part": 1,
+        "rep": "dec.hexascii",
+        "gen": "rc4",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": true,
+        "sign": 1,
+        "o": 2,
+        "score": -6.890069325623202,
+        "head": "UIAJIANGSXWFTFUOEMSDWAETHEEAEONESAERAELMOEDHBWEN"
+      },
+      {
+        "part": 1,
+        "rep": "maj.byterev",
+        "gen": "aes256_ctr_k",
+        "red": "reject",
+        "dir": "fwd",
+        "atbash": false,
+        "sign": 1,
+        "o": 64,
+        "score": -6.894752392733755,
+        "head": "YLEOIAMAFNFOEOEUNASSEONGOEHPRBEOLYEIAWITITHHCRIA"
+      }
+    ],
+    "hits": [],
+    "best_per_generator": {
+      "md5_ctr": {
+        "part": 1,
+        "rep": "dec.raw",
+        "gen": "md5_ctr",
+        "red": "reject",
+        "dir": "fwd",
+        "atbash": true,
+        "sign": -1,
+        "o": 5,
+        "score": -6.862893647674674,
+        "head": "RMTHTNDIABGWLFDTOEPOJYPOTHUUTSWISJEDIIANGEOUNTHE"
+      },
+      "sha1_ctr": {
+        "part": 1,
+        "rep": "dec.bitrev8",
+        "gen": "sha1_ctr",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": false,
+        "sign": -1,
+        "o": 8,
+        "score": -6.882869508631401,
+        "head": "SBCAETHGTJMEWNGSYHEOXTSEMFREAFCIXNEAGGIORIAMNGIA"
+      },
+      "sha256_ctr": {
+        "part": 1,
+        "rep": "maj.swap32",
+        "gen": "sha256_ctr",
+        "red": "reject",
+        "dir": "fwd",
+        "atbash": false,
+        "sign": -1,
+        "o": 29,
+        "score": -6.878081424302316,
+        "head": "AELSREARWMWGIAOECOEEAPSUWNGDJXNPHWMRWYGNGASXYEAO"
+      },
+      "sha512_ctr": {
+        "part": 1,
+        "rep": "maj.bitrev8",
+        "gen": "sha512_ctr",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": false,
+        "sign": 1,
+        "o": 13,
+        "score": -6.843808420628094,
+        "head": "FMNGTNXMBIMAENGRYEARPLRAMWEOTHIAHAEMRANTIOTHEABI"
+      },
+      "sha256_ctr_le": {
+        "part": 1,
+        "rep": "maj.raw",
+        "gen": "sha256_ctr_le",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": true,
+        "sign": -1,
+        "o": 13,
+        "score": -6.915014484133635,
+        "head": "GECRURJEOWMMYEALBNGPUSIOSBAIAGEAEOEDIDIATHPUOEAH"
+      },
+      "sha256_chain": {
+        "part": 1,
+        "rep": "dec.bitrev8",
+        "gen": "sha256_chain",
+        "red": "reject",
+        "dir": "fwd",
+        "atbash": true,
+        "sign": -1,
+        "o": 64,
+        "score": -6.914879271387335,
+        "head": "IFPJOEWAEEAEWBNJRRTHIAEGEEANTJNWOEEABAMWHAEFXLAC"
+      },
+      "sha512_chain": {
+        "part": 1,
+        "rep": "dec.bitrev8",
+        "gen": "sha512_chain",
+        "red": "mod",
+        "dir": "fwd",
+        "atbash": true,
+        "sign": -1,
+        "o": 29,
+        "score": -6.770530995360567,
+        "head": "YTHSUTHRSGOELOILEAEYIASNGDRATHODARFOENLEABHTHEAF"
+      },
+      "hmac_drbg_sha256": {
+        "part": 1,
+        "rep": "maj.swap32",
+        "gen": "hmac_drbg_sha256",
+        "red": "reject",
+        "dir": "fwd",
+        "atbash": true,
+        "sign": -1,
+        "o": 3301,
+        "score": -6.88268137815316,
+        "head": "EODOEAWFWOEEAUXOPCOSBFMBDDNRJRGOTHDSCWIAPSTHYEOI"
+      },
+      "aes256_ctr_k": {
+        "part": 1,
+        "rep": "maj.byterev",
+        "gen": "aes256_ctr_k",
+        "red": "reject",
+        "dir": "fwd",
+        "atbash": false,
+        "sign": 1,
+        "o": 64,
+        "score": -6.894752392733755,
+        "head": "YLEOIAMAFNFOEOEUNASSEONGOEHPRBEOLYEIAWITITHHCRIA"
+      },
+      "aes256_ctr_kiv": {
+        "part": 1,
+        "rep": "maj.swap32",
+        "gen": "aes256_ctr_kiv",
+        "red": "reject",
+        "dir": "rev",
+        "atbash": true,
+        "sign": -1,
+        "o": 29,
+        "score": -6.877381433672701,
+        "head": "DGIIEONGSOFEAAETEOJLPYWBSIEEDWNGCNGINMHXTHXFTNUL"
+      },
+      "aes128_ctr_k": {
+        "part": 1,
+        "rep": "dec.hexascii",
+        "gen": "aes128_ctr_k",
+        "red": "mod",
+        "dir": "fwd",
+        "atbash": true,
+        "sign": -1,
+        "o": 29,
+        "score": -6.960634579459047,
+        "head": "WLREALBICYORBFWAOETIUJUBEOAEPGOEYIOLFGNGIANGCINN"
+      },
+      "rc4": {
+        "part": 1,
+        "rep": "dec.swap32",
+        "gen": "rc4",
+        "red": "reject",
+        "dir": "rev",
+        "atbash": true,
+        "sign": -1,
+        "o": 3301,
+        "score": -6.8496974081150315,
+        "head": "THEAXSIAIAIEAAETHCJJERANGEOOLBJUOEALTHYAGEAUUMIO"
+      },
+      "chacha20_k": {
+        "part": 1,
+        "rep": "dec.swap32",
+        "gen": "chacha20_k",
+        "red": "mod",
+        "dir": "fwd",
+        "atbash": true,
+        "sign": 1,
+        "o": 256,
+        "score": -6.885601497039709,
+        "head": "EPLEOUMYDFNTOEIANGEOHYFWGHMCEOBTSEFCGDIALEONAEAL"
+      },
+      "chacha20_kn": {
+        "part": 1,
+        "rep": "maj.raw",
+        "gen": "chacha20_kn",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": true,
+        "sign": -1,
+        "o": 29,
+        "score": -6.875293646578407,
+        "head": "YAEADIAOGJEOBSGNGSEOCNXEOEGFBOHNGTPFFYPYSRCYFBWB"
+      },
+      "shake256": {
+        "part": 1,
+        "rep": "dec.bitrevall",
+        "gen": "shake256",
+        "red": "reject",
+        "dir": "rev",
+        "atbash": false,
+        "sign": -1,
+        "o": 64,
+        "score": -6.888131382821893,
+        "head": "THYMOETMTHRSNGTUBTLOTINGLHCSTHIAOEPHATLPXFCWHUJI"
+      }
+    },
+    "seconds": 4522.646897792816
+  },
+  "part1_shift": {
+    "n": 3480,
+    "best": {
+      "part": "1shift",
+      "rep": "dec.raw",
+      "gen": "chacha20_k",
+      "red": "reject",
+      "shift": 20,
+      "sign": 1,
+      "score": -6.88960425860846
+    },
+    "top10": [
+      {
+        "part": "1shift",
+        "rep": "dec.raw",
+        "gen": "chacha20_k",
+        "red": "reject",
+        "shift": 20,
+        "sign": 1,
+        "score": -6.88960425860846
+      },
+      {
+        "part": "1shift",
+        "rep": "dec.raw",
+        "gen": "md5_ctr",
+        "red": "reject",
+        "shift": 24,
+        "sign": -1,
+        "score": -6.893639118677559
+      },
+      {
+        "part": "1shift",
+        "rep": "maj.raw",
+        "gen": "chacha20_k",
+        "red": "mod",
+        "shift": 16,
+        "sign": 1,
+        "score": -6.91323058593505
+      },
+      {
+        "part": "1shift",
+        "rep": "dec.raw",
+        "gen": "sha256_ctr",
+        "red": "mod",
+        "shift": 4,
+        "sign": -1,
+        "score": -6.917830419322867
+      },
+      {
+        "part": "1shift",
+        "rep": "maj.raw",
+        "gen": "sha1_ctr",
+        "red": "mod",
+        "shift": 11,
+        "sign": 1,
+        "score": -6.922792327721098
+      },
+      {
+        "part": "1shift",
+        "rep": "dec.raw",
+        "gen": "md5_ctr",
+        "red": "reject",
+        "shift": 8,
+        "sign": -1,
+        "score": -6.923506277757074
+      },
+      {
+        "part": "1shift",
+        "rep": "dec.raw",
+        "gen": "shake256",
+        "red": "mod",
+        "shift": 23,
+        "sign": -1,
+        "score": -6.931664879692242
+      },
+      {
+        "part": "1shift",
+        "rep": "maj.raw",
+        "gen": "sha256_ctr_le",
+        "red": "reject",
+        "shift": 5,
+        "sign": 1,
+        "score": -6.9337092256828585
+      },
+      {
+        "part": "1shift",
+        "rep": "dec.raw",
+        "gen": "sha256_chain",
+        "red": "mod",
+        "shift": 7,
+        "sign": 1,
+        "score": -6.934751652369234
+      },
+      {
+        "part": "1shift",
+        "rep": "maj.raw",
+        "gen": "shake256",
+        "red": "mod",
+        "shift": 17,
+        "sign": 1,
+        "score": -6.93479695616451
+      }
+    ],
+    "hits": [],
+    "seconds": 372.8110466003418
+  },
+  "part2a": {
+    "n": 3840,
+    "best": {
+      "part": "2a",
+      "mask": 13,
+      "gen": "sha256_ctr",
+      "red": "reject",
+      "sign": 1,
+      "score": -6.872099481114331,
+      "head": "LOHENINDIADOEGEGEOIEOEACOTHGIAJUEOSMXAEN"
+    },
+    "top20": [
+      {
+        "part": "2a",
+        "mask": 13,
+        "gen": "sha256_ctr",
+        "red": "reject",
+        "sign": 1,
+        "score": -6.872099481114331,
+        "head": "LOHENINDIADOEGEGEOIEOEACOTHGIAJUEOSMXAEN"
+      },
+      {
+        "part": "2a",
+        "mask": 49,
+        "gen": "shake256",
+        "red": "mod",
+        "sign": 1,
+        "score": -6.916759195819033,
+        "head": "JEABEORFBYFJYWEADTHUEGMPHEASCTHNGUIAEXFD"
+      },
+      {
+        "part": "2a",
+        "mask": 58,
+        "gen": "sha256_ctr_le",
+        "red": "reject",
+        "sign": 1,
+        "score": -6.925892357228345,
+        "head": "OIAPEACEROEJEOEOERBJIADFOUCHEOTHEOUOEUUI"
+      },
+      {
+        "part": "2a",
+        "mask": 6,
+        "gen": "sha512_chain",
+        "red": "reject",
+        "sign": 1,
+        "score": -6.934035297544389,
+        "head": "SNGYDTGMNEOFYCIACUBSIBAYOSMDRFEUAOONAEOE"
+      },
+      {
+        "part": "2a",
+        "mask": 36,
+        "gen": "rc4",
+        "red": "mod",
+        "sign": 1,
+        "score": -6.940607971695433,
+        "head": "CUMEAYHGITHIAMAIEANGEAETGUTEAAEHUWAYSCSO"
+      },
+      {
+        "part": "2a",
+        "mask": 0,
+        "gen": "sha1_ctr",
+        "red": "mod",
+        "sign": -1,
+        "score": -6.953405573730895,
+        "head": "AEEAENTHIMIARBGHIESTHFRWCJCIXFATHMGIAEOO"
+      },
+      {
+        "part": "2a",
+        "mask": 25,
+        "gen": "sha256_ctr",
+        "red": "mod",
+        "sign": 1,
+        "score": -6.970475564144386,
+        "head": "JEOIARDLXEATHYOGOINGLETOENNBTHEOIAXETSTH"
+      },
+      {
+        "part": "2a",
+        "mask": 51,
+        "gen": "sha512_ctr",
+        "red": "reject",
+        "sign": -1,
+        "score": -6.975521618955228,
+        "head": "EORFSADOURBTGAIAJTHNGJMOETHOEIAFWIARAEOW"
+      },
+      {
+        "part": "2a",
+        "mask": 58,
+        "gen": "shake256",
+        "red": "mod",
+        "sign": 1,
+        "score": -6.9853027495059115,
+        "head": "BHSBSTUWUOIGHHEAEOTJLNGELSREAMRJMXSXTLNE"
+      },
+      {
+        "part": "2a",
+        "mask": 33,
+        "gen": "rc4",
+        "red": "mod",
+        "sign": -1,
+        "score": -6.989947200900577,
+        "head": "TIAJBIALFYOSOTROFICIEOWJIAETHLUIATHUFSSA"
+      },
+      {
+        "part": "2a",
+        "mask": 3,
+        "gen": "rc4",
+        "red": "mod",
+        "sign": -1,
+        "score": -6.989978754658754,
+        "head": "UBUFYBFWLMIAEBOEBTOTHMEOGEANGDAMMCYYOWNG"
+      },
+      {
+        "part": "2a",
+        "mask": 35,
+        "gen": "md5_ctr",
+        "red": "reject",
+        "sign": -1,
+        "score": -6.992576053830833,
+        "head": "FNIYNGTHNEAENGDAENGAUNGTEOGTHOOENGPAECNG"
+      },
+      {
+        "part": "2a",
+        "mask": 21,
+        "gen": "sha512_ctr",
+        "red": "reject",
+        "sign": -1,
+        "score": -6.993685337947418,
+        "head": "THATHLWNGTHNTEOEFGCNGSTAEEGMDYGNUGCHNGTH"
+      },
+      {
+        "part": "2a",
+        "mask": 17,
+        "gen": "rc4",
+        "red": "mod",
+        "sign": 1,
+        "score": -6.9954342477275695,
+        "head": "SEEANEANAEPWYIEAIAHEAUTHTHAXEAETHWTIAEAD"
+      },
+      {
+        "part": "2a",
+        "mask": 43,
+        "gen": "sha256_ctr_le",
+        "red": "mod",
+        "sign": 1,
+        "score": -6.9994628251641755,
+        "head": "XSNHCTHXMEORIAIATHIADMIACAENMUIAJNTTWOEA"
+      },
+      {
+        "part": "2a",
+        "mask": 54,
+        "gen": "sha256_ctr_le",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.00047291595773,
+        "head": "NUMEOTBMEIIAGPNAASMXGFUNOTGIDPXTDEAFDIAS"
+      },
+      {
+        "part": "2a",
+        "mask": 36,
+        "gen": "hmac_drbg_sha256",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.003054108910674,
+        "head": "YJIBNODLDDUIRTJOYHFCWMWGPDEOEAYFEHHNJEOO"
+      },
+      {
+        "part": "2a",
+        "mask": 48,
+        "gen": "sha256_ctr",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.004014813303032,
+        "head": "ONGBOELEOETHEOOELLGAEREDWISBAEOSFRTEAAYD"
+      },
+      {
+        "part": "2a",
+        "mask": 52,
+        "gen": "sha512_chain",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.005440713175693,
+        "head": "FTHEGJAENDLEOPHISNTHBOEARJNATINOESDASJEO"
+      },
+      {
+        "part": "2a",
+        "mask": 2,
+        "gen": "sha512_ctr",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.007567247454271,
+        "head": "UDXWEOUDTXFIRMNGIAAWIAIEAOEBJJFMONGRNEDO"
+      }
+    ],
+    "hits": [],
+    "seconds": 248.4445924758911,
+    "best_per_mask": {
+      "0": {
+        "part": "2a",
+        "mask": 0,
+        "gen": "sha1_ctr",
+        "red": "mod",
+        "sign": -1,
+        "score": -6.953405573730895,
+        "head": "AEEAENTHIMIARBGHIESTHFRWCJCIXFATHMGIAEOO"
+      },
+      "1": {
+        "part": "2a",
+        "mask": 1,
+        "gen": "hmac_drbg_sha256",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.019477416247187,
+        "head": "AEIATNYBYIATFTHRCOETHXTLEARUREARSTEOYTHJ"
+      },
+      "2": {
+        "part": "2a",
+        "mask": 2,
+        "gen": "sha512_ctr",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.007567247454271,
+        "head": "UDXWEOUDTXFIRMNGIAAWIAIEAOEBJJFMONGRNEDO"
+      },
+      "3": {
+        "part": "2a",
+        "mask": 3,
+        "gen": "rc4",
+        "red": "mod",
+        "sign": -1,
+        "score": -6.989978754658754,
+        "head": "UBUFYBFWLMIAEBOEBTOTHMEOGEANGDAMMCYYOWNG"
+      },
+      "4": {
+        "part": "2a",
+        "mask": 4,
+        "gen": "sha512_ctr",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.01045432972584,
+        "head": "OEEORIAMXEAFIATPLSDDTUBEAOOEONEOOEWSAIET"
+      },
+      "5": {
+        "part": "2a",
+        "mask": 5,
+        "gen": "sha1_ctr",
+        "red": "reject",
+        "sign": -1,
+        "score": -7.017106362994348,
+        "head": "IAAENTHAGMLFFJAECTWBNGIALSGMEAWEALMSBHES"
+      },
+      "6": {
+        "part": "2a",
+        "mask": 6,
+        "gen": "sha512_chain",
+        "red": "reject",
+        "sign": 1,
+        "score": -6.934035297544389,
+        "head": "SNGYDTGMNEOFYCIACUBSIBAYOSMDRFEUAOONAEOE"
+      },
+      "7": {
+        "part": "2a",
+        "mask": 7,
+        "gen": "rc4",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.041118664814324,
+        "head": "CEAEATLTHEAEANGGHEOIEJIGBRYEAIAWUSMDAIAD"
+      },
+      "8": {
+        "part": "2a",
+        "mask": 8,
+        "gen": "sha512_ctr",
+        "red": "reject",
+        "sign": -1,
+        "score": -7.0946697799022145,
+        "head": "OYEOAXTNYJYESWNGEAEOLEXRTHREAIACYROEMWIA"
+      },
+      "9": {
+        "part": "2a",
+        "mask": 9,
+        "gen": "sha512_ctr",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.10097031740314,
+        "head": "SHHTHLEOGAJRIAPNGPSEOPGENGHUDFIANXETWPDC"
+      },
+      "10": {
+        "part": "2a",
+        "mask": 10,
+        "gen": "sha512_ctr",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.024781410863318,
+        "head": "WTNGICEOTHOEIDCGESPEREOOOTGOXNGFOOENRWDO"
+      },
+      "11": {
+        "part": "2a",
+        "mask": 11,
+        "gen": "sha256_ctr_le",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.032509715744615,
+        "head": "CEARLJMEAUWERIYSOOETTTNGOETHFDGEAJAEFTTH"
+      },
+      "12": {
+        "part": "2a",
+        "mask": 12,
+        "gen": "sha512_ctr",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.059450402319012,
+        "head": "YMUBFNJGBMNGJOEGFNOTHCNGEAHTIANGDLXNGIMI"
+      },
+      "13": {
+        "part": "2a",
+        "mask": 13,
+        "gen": "sha256_ctr",
+        "red": "reject",
+        "sign": 1,
+        "score": -6.872099481114331,
+        "head": "LOHENINDIADOEGEGEOIEOEACOTHGIAJUEOSMXAEN"
+      },
+      "14": {
+        "part": "2a",
+        "mask": 14,
+        "gen": "sha1_ctr",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.070778022016021,
+        "head": "JAEEAUCNGIAITHLNGLEAIASAAEAETJUJAESTHBEI"
+      },
+      "15": {
+        "part": "2a",
+        "mask": 15,
+        "gen": "sha256_ctr",
+        "red": "reject",
+        "sign": -1,
+        "score": -7.030882290406748,
+        "head": "SXTHAEBERAEADAUNGFMYYTHIAHFEIASSGNGMTCMH"
+      },
+      "16": {
+        "part": "2a",
+        "mask": 16,
+        "gen": "sha512_chain",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.058140595362713,
+        "head": "UACFOEIAMBIATIUDOESJUWLHIAOEANCYTOEDEATE"
+      },
+      "17": {
+        "part": "2a",
+        "mask": 17,
+        "gen": "rc4",
+        "red": "mod",
+        "sign": 1,
+        "score": -6.9954342477275695,
+        "head": "SEEANEANAEPWYIEAIAHEAUTHTHAXEAETHWTIAEAD"
+      },
+      "18": {
+        "part": "2a",
+        "mask": 18,
+        "gen": "aes256_ctr_k",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.104663076919251,
+        "head": "DNRFNGTHTGEGNWOHOPAEUUNBUNGTHHYHGPUAELLI"
+      },
+      "19": {
+        "part": "2a",
+        "mask": 19,
+        "gen": "aes256_ctr_kiv",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.1043666902045395,
+        "head": "TWNGLBXSYNGOANGUAENCWOINGEDAEOOTHEOWWLTH"
+      },
+      "20": {
+        "part": "2a",
+        "mask": 20,
+        "gen": "sha256_chain",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.013037019389573,
+        "head": "OEMONNBASBUAYAGUTHDLEIXTHNGUEATHTHAEAHOX"
+      },
+      "21": {
+        "part": "2a",
+        "mask": 21,
+        "gen": "sha512_ctr",
+        "red": "reject",
+        "sign": -1,
+        "score": -6.993685337947418,
+        "head": "THATHLWNGTHNTEOEFGCNGSTAEEGMDYGNUGCHNGTH"
+      },
+      "22": {
+        "part": "2a",
+        "mask": 22,
+        "gen": "hmac_drbg_sha256",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.042543387008603,
+        "head": "BIADEAWRIAAUHNAEIALJTIAEOEYEINGYJMOETWNG"
+      },
+      "23": {
+        "part": "2a",
+        "mask": 23,
+        "gen": "rc4",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.072624612535854,
+        "head": "WHEOIGHEAIAAEAETHCEOYCSPCSTENIJIAMRXDXOW"
+      },
+      "24": {
+        "part": "2a",
+        "mask": 24,
+        "gen": "aes256_ctr_k",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.104663076919251,
+        "head": "DNRFNGTHTGEGNWOHOPAEUUNBUNGTHHYHGPUAELLI"
+      },
+      "25": {
+        "part": "2a",
+        "mask": 25,
+        "gen": "sha256_ctr",
+        "red": "mod",
+        "sign": 1,
+        "score": -6.970475564144386,
+        "head": "JEOIARDLXEATHYOGOINGLETOENNBTHEOIAXETSTH"
+      },
+      "26": {
+        "part": "2a",
+        "mask": 26,
+        "gen": "sha512_ctr",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.033876173304831,
+        "head": "UPEADLNBAJCROEAAEJXTBAEEYAENGNOEJIWDGIAT"
+      },
+      "27": {
+        "part": "2a",
+        "mask": 27,
+        "gen": "sha512_chain",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.077460308157258,
+        "head": "NGXGANAIYYFPRIAPGSMJNGITHEAJBLSFHPUJCATS"
+      },
+      "28": {
+        "part": "2a",
+        "mask": 28,
+        "gen": "md5_ctr",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.0195142666416785,
+        "head": "SMGLAEIACNAREOXGGHXCSUEAEAOEURFSNGTHTOLT"
+      },
+      "29": {
+        "part": "2a",
+        "mask": 29,
+        "gen": "hmac_drbg_sha256",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.0883227642645865,
+        "head": "AIGCPLAEBXSIAEARINTHANTHEAIAPHOEOTCGCGEC"
+      },
+      "30": {
+        "part": "2a",
+        "mask": 30,
+        "gen": "sha256_ctr",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.079283958506439,
+        "head": "EIAYIDIUXOENGIIOCFGCNCYLTAAWOBUIFOELBEAB"
+      },
+      "31": {
+        "part": "2a",
+        "mask": 31,
+        "gen": "sha1_ctr",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.02649955588138,
+        "head": "HUNTHEOXISPEOLSIIMNECTHHBTCOGOEATXLEFGFE"
+      },
+      "32": {
+        "part": "2a",
+        "mask": 32,
+        "gen": "sha1_ctr",
+        "red": "reject",
+        "sign": -1,
+        "score": -7.021278372326115,
+        "head": "YFRNGDGEOLHABTHCBEOMNGJEAEYBEAIAGOELIADI"
+      },
+      "33": {
+        "part": "2a",
+        "mask": 33,
+        "gen": "rc4",
+        "red": "mod",
+        "sign": -1,
+        "score": -6.989947200900577,
+        "head": "TIAJBIALFYOSOTROFICIEOWJIAETHLUIATHUFSSA"
+      },
+      "34": {
+        "part": "2a",
+        "mask": 34,
+        "gen": "md5_ctr",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.082767034185925,
+        "head": "RWUAOENGUHLUECNGEAGDEATHEOUSWNAEHOEIANIA"
+      },
+      "35": {
+        "part": "2a",
+        "mask": 35,
+        "gen": "md5_ctr",
+        "red": "reject",
+        "sign": -1,
+        "score": -6.992576053830833,
+        "head": "FNIYNGTHNEAENGDAENGAUNGTEOGTHOOENGPAECNG"
+      },
+      "36": {
+        "part": "2a",
+        "mask": 36,
+        "gen": "rc4",
+        "red": "mod",
+        "sign": 1,
+        "score": -6.940607971695433,
+        "head": "CUMEAYHGITHIAMAIEANGEAETGUTEAAEHUWAYSCSO"
+      },
+      "37": {
+        "part": "2a",
+        "mask": 37,
+        "gen": "sha1_ctr",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.053664331460136,
+        "head": "XXCTHOEAMEOIIAWSAYXTHCWEEAFDYOELOALOYBAC"
+      },
+      "38": {
+        "part": "2a",
+        "mask": 38,
+        "gen": "aes256_ctr_k",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.104663076919251,
+        "head": "DNRFNGTHTGEGNWOHOPAEUUNBUNGTHHYHGPUAELLI"
+      },
+      "39": {
+        "part": "2a",
+        "mask": 39,
+        "gen": "sha256_ctr",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.0363008349306515,
+        "head": "BEXYTHBONJFTWGLTHAEAGGAEPOPYTHTEAOCOYJXD"
+      },
+      "40": {
+        "part": "2a",
+        "mask": 40,
+        "gen": "hmac_drbg_sha256",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.019035603155938,
+        "head": "EAEAAEBOEEAWRNGTGRATHUGTHFTHNIAMOOAEDGFF"
+      },
+      "41": {
+        "part": "2a",
+        "mask": 41,
+        "gen": "hmac_drbg_sha256",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.047041458618068,
+        "head": "JEIFOFNSJUDOOOEEAPFPAEWIAHOEDCTLTIANGUPN"
+      },
+      "42": {
+        "part": "2a",
+        "mask": 42,
+        "gen": "sha256_ctr_le",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.090586091176924,
+        "head": "ISIALWJJPAEJOEAJMMBTHEOFEATHTYPOXPRCUSTH"
+      },
+      "43": {
+        "part": "2a",
+        "mask": 43,
+        "gen": "sha256_ctr_le",
+        "red": "mod",
+        "sign": 1,
+        "score": -6.9994628251641755,
+        "head": "XSNHCTHXMEORIAIATHIADMIACAENMUIAJNTTWOEA"
+      },
+      "44": {
+        "part": "2a",
+        "mask": 44,
+        "gen": "sha256_ctr_le",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.0131538565210585,
+        "head": "NHEOTHINGSLTAEIOTOOEMRRNGOEDDEIAPNGAEWNE"
+      },
+      "45": {
+        "part": "2a",
+        "mask": 45,
+        "gen": "hmac_drbg_sha256",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.0231446938408455,
+        "head": "IAHUTHRLBRBAEOEMAMNGPRJPLSAELEOFSLOYGJDE"
+      },
+      "46": {
+        "part": "2a",
+        "mask": 46,
+        "gen": "sha1_ctr",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.013271942493431,
+        "head": "LNJCIALIATJTHOEEAEOHUWWJHHILCTHGOEOOECXN"
+      },
+      "47": {
+        "part": "2a",
+        "mask": 47,
+        "gen": "sha256_ctr_le",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.076413320788865,
+        "head": "AEAECNGIALDFAEDNGOEIAOEEOJUPAETWNLNOTLNG"
+      },
+      "48": {
+        "part": "2a",
+        "mask": 48,
+        "gen": "sha256_ctr",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.004014813303032,
+        "head": "ONGBOELEOETHEOOELLGAEREDWISBAEOSFRTEAAYD"
+      },
+      "49": {
+        "part": "2a",
+        "mask": 49,
+        "gen": "shake256",
+        "red": "mod",
+        "sign": 1,
+        "score": -6.916759195819033,
+        "head": "JEABEORFBYFJYWEADTHUEGMPHEASCTHNGUIAEXFD"
+      },
+      "50": {
+        "part": "2a",
+        "mask": 50,
+        "gen": "aes256_ctr_k",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.104663076919251,
+        "head": "DNRFNGTHTGEGNWOHOPAEUUNBUNGTHHYHGPUAELLI"
+      },
+      "51": {
+        "part": "2a",
+        "mask": 51,
+        "gen": "sha512_ctr",
+        "red": "reject",
+        "sign": -1,
+        "score": -6.975521618955228,
+        "head": "EORFSADOURBTGAIAJTHNGJMOETHOEIAFWIARAEOW"
+      },
+      "52": {
+        "part": "2a",
+        "mask": 52,
+        "gen": "sha512_chain",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.005440713175693,
+        "head": "FTHEGJAENDLEOPHISNTHBOEARJNATINOESDASJEO"
+      },
+      "53": {
+        "part": "2a",
+        "mask": 53,
+        "gen": "sha1_ctr",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.028593572321328,
+        "head": "TAOWJOEDUNUTHNAIAMINDOEXOIASDGFBEAWEATDA"
+      },
+      "54": {
+        "part": "2a",
+        "mask": 54,
+        "gen": "sha256_ctr_le",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.00047291595773,
+        "head": "NUMEOTBMEIIAGPNAASMXGFUNOTGIDPXTDEAFDIAS"
+      },
+      "55": {
+        "part": "2a",
+        "mask": 55,
+        "gen": "shake256",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.02784839141514,
+        "head": "UFSDYMWJPUBYTHYOEEARDEAAEAOBSGEBAIAXGITH"
+      },
+      "56": {
+        "part": "2a",
+        "mask": 56,
+        "gen": "sha512_ctr",
+        "red": "mod",
+        "sign": 1,
+        "score": -7.037141558057381,
+        "head": "THIAYXNGECAEPEEOEOUGIIAIATHWCLTMAGIEANGI"
+      },
+      "57": {
+        "part": "2a",
+        "mask": 57,
+        "gen": "aes256_ctr_kiv",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.1043666902045395,
+        "head": "TWNGLBXSYNGOANGUAENCWOINGEDAEOOTHEOWWLTH"
+      },
+      "58": {
+        "part": "2a",
+        "mask": 58,
+        "gen": "sha256_ctr_le",
+        "red": "reject",
+        "sign": 1,
+        "score": -6.925892357228345,
+        "head": "OIAPEACEROEJEOEOERBJIADFOUCHEOTHEOUOEUUI"
+      },
+      "59": {
+        "part": "2a",
+        "mask": 59,
+        "gen": "aes256_ctr_kiv",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.1043666902045395,
+        "head": "TWNGLBXSYNGOANGUAENCWOINGEDAEOOTHEOWWLTH"
+      },
+      "60": {
+        "part": "2a",
+        "mask": 60,
+        "gen": "sha256_ctr_le",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.0424021291704575,
+        "head": "CBTHCJGTENGIURAEJOIANAEHRBOETJAEAIEEAIUY"
+      },
+      "61": {
+        "part": "2a",
+        "mask": 61,
+        "gen": "aes256_ctr_kiv",
+        "red": "mod",
+        "sign": -1,
+        "score": -7.1043666902045395,
+        "head": "TWNGLBXSYNGOANGUAENCWOINGEDAEOOTHEOWWLTH"
+      },
+      "62": {
+        "part": "2a",
+        "mask": 62,
+        "gen": "sha512_chain",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.08577474937344,
+        "head": "EOSWSBMREOSTHOOETPSGYMRFEATTHTHURAEGLDDA"
+      },
+      "63": {
+        "part": "2a",
+        "mask": 63,
+        "gen": "md5_ctr",
+        "red": "reject",
+        "sign": 1,
+        "score": -7.017369253248233,
+        "head": "ADXXSWHEOIAEANGLNGNGLWOBAONSEODHGNOEGMME"
+      }
+    }
+  },
+  "part2b": {
+    "n": 23040,
+    "best": {
+      "part": "2b",
+      "idx": 215,
+      "val": 105,
+      "gen": "rc4",
+      "score": -6.7448750663567765
+    },
+    "top20": [
+      {
+        "part": "2b",
+        "idx": 215,
+        "val": 105,
+        "gen": "rc4",
+        "score": -6.7448750663567765
+      },
+      {
+        "part": "2b",
+        "idx": 182,
+        "val": 205,
+        "gen": "sha256_ctr_le",
+        "score": -6.828916457688004
+      },
+      {
+        "part": "2b",
+        "idx": 25,
+        "val": 227,
+        "gen": "chacha20_k",
+        "score": -6.844626986753694
+      },
+      {
+        "part": "2b",
+        "idx": 215,
+        "val": 171,
+        "gen": "sha1_ctr",
+        "score": -6.851920325897282
+      },
+      {
+        "part": "2b",
+        "idx": 215,
+        "val": 40,
+        "gen": "sha256_ctr_le",
+        "score": -6.868631975332966
+      },
+      {
+        "part": "2b",
+        "idx": 237,
+        "val": 104,
+        "gen": "sha256_chain",
+        "score": -6.874781754748708
+      },
+      {
+        "part": "2b",
+        "idx": 237,
+        "val": 255,
+        "gen": "md5_ctr",
+        "score": -6.8787026489421725
+      },
+      {
+        "part": "2b",
+        "idx": 175,
+        "val": 145,
+        "gen": "sha256_ctr",
+        "score": -6.885507425959419
+      },
+      {
+        "part": "2b",
+        "idx": 182,
+        "val": 223,
+        "gen": "sha256_chain",
+        "score": -6.885725152050308
+      },
+      {
+        "part": "2b",
+        "idx": 175,
+        "val": 66,
+        "gen": "sha512_ctr",
+        "score": -6.8867706905650845
+      },
+      {
+        "part": "2b",
+        "idx": 199,
+        "val": 91,
+        "gen": "sha512_chain",
+        "score": -6.892610861202244
+      },
+      {
+        "part": "2b",
+        "idx": 237,
+        "val": 229,
+        "gen": "rc4",
+        "score": -6.892665266935955
+      },
+      {
+        "part": "2b",
+        "idx": 182,
+        "val": 36,
+        "gen": "sha256_ctr",
+        "score": -6.893155978011434
+      },
+      {
+        "part": "2b",
+        "idx": 25,
+        "val": 50,
+        "gen": "hmac_drbg_sha256",
+        "score": -6.909546703652545
+      },
+      {
+        "part": "2b",
+        "idx": 25,
+        "val": 252,
+        "gen": "md5_ctr",
+        "score": -6.911598265091994
+      },
+      {
+        "part": "2b",
+        "idx": 182,
+        "val": 102,
+        "gen": "sha1_ctr",
+        "score": -6.915190951175167
+      },
+      {
+        "part": "2b",
+        "idx": 199,
+        "val": 200,
+        "gen": "sha1_ctr",
+        "score": -6.915336253861499
+      },
+      {
+        "part": "2b",
+        "idx": 215,
+        "val": 44,
+        "gen": "sha512_ctr",
+        "score": -6.916060281485511
+      },
+      {
+        "part": "2b",
+        "idx": 175,
+        "val": 151,
+        "gen": "shake256",
+        "score": -6.918100795074078
+      },
+      {
+        "part": "2b",
+        "idx": 25,
+        "val": 46,
+        "gen": "shake256",
+        "score": -6.919215236414817
+      }
+    ],
+    "hits": [],
+    "seconds": 1540.5777850151062,
+    "best_per_idx": {
+      "25": {
+        "part": "2b",
+        "idx": 25,
+        "val": 227,
+        "gen": "chacha20_k",
+        "score": -6.844626986753694
+      },
+      "175": {
+        "part": "2b",
+        "idx": 175,
+        "val": 145,
+        "gen": "sha256_ctr",
+        "score": -6.885507425959419
+      },
+      "182": {
+        "part": "2b",
+        "idx": 182,
+        "val": 205,
+        "gen": "sha256_ctr_le",
+        "score": -6.828916457688004
+      },
+      "199": {
+        "part": "2b",
+        "idx": 199,
+        "val": 91,
+        "gen": "sha512_chain",
+        "score": -6.892610861202244
+      },
+      "215": {
+        "part": "2b",
+        "idx": 215,
+        "val": 105,
+        "gen": "rc4",
+        "score": -6.7448750663567765
+      },
+      "237": {
+        "part": "2b",
+        "idx": 237,
+        "val": 104,
+        "gen": "sha256_chain",
+        "score": -6.874781754748708
+      }
+    }
+  },
+  "rigid_channel": {
+    "n": 180,
+    "best": {
+      "rep": "dec.swap32",
+      "gen": "chacha20_k",
+      "score": -7.09604303557191
+    },
+    "top10": [
+      {
+        "rep": "dec.swap32",
+        "gen": "chacha20_k",
+        "score": -7.09604303557191
+      },
+      {
+        "rep": "maj.bitrevall",
+        "gen": "hmac_drbg_sha256",
+        "score": -7.1839632008886
+      },
+      {
+        "rep": "maj.swap32",
+        "gen": "rc4",
+        "score": -7.220915331966204
+      },
+      {
+        "rep": "dec.hexascii",
+        "gen": "sha1_ctr",
+        "score": -7.273033311178405
+      },
+      {
+        "rep": "maj.hexascii",
+        "gen": "md5_ctr",
+        "score": -7.28535164516953
+      },
+      {
+        "rep": "dec.raw",
+        "gen": "rc4",
+        "score": -7.294533496214789
+      },
+      {
+        "rep": "dec.swap32",
+        "gen": "sha512_chain",
+        "score": -7.304605392134792
+      },
+      {
+        "rep": "dec.hexascii",
+        "gen": "rc4",
+        "score": -7.305561399374536
+      },
+      {
+        "rep": "maj.raw",
+        "gen": "md5_ctr",
+        "score": -7.3166494112416816
+      },
+      {
+        "rep": "dec.raw",
+        "gen": "sha256_ctr_le",
+        "score": -7.319530696888536
+      }
+    ]
+  },
+  "full_page_top5": [
+    {
+      "config": {
+        "part": 1,
+        "rep": "dec.bitrev8",
+        "gen": "sha512_chain",
+        "red": "mod",
+        "dir": "fwd",
+        "atbash": true,
+        "sign": -1,
+        "o": 29,
+        "score": -6.770530995360567,
+        "head": "YTHSUTHRSGOELOILEAEYIASNGDRATHODARFOENLEABHTHEAF"
+      },
+      "full_score": -7.284428685489047,
+      "head": "YTHSUTHRSGOELOILEAEYIASNGDRATHODARFOENLEABHTHEAFWCHYXOTHIAWCWEFTHPATHAEYTXEOJOEEAUSTHEAFTANGLSNGINGBOAELPXEANGTHTEOEXBRE"
+    },
+    {
+      "config": {
+        "part": 1,
+        "rep": "maj.raw",
+        "gen": "sha512_chain",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": true,
+        "sign": -1,
+        "o": 128,
+        "score": -6.838883372037342,
+        "head": "YAELPEONTHOEAHOEOTGOEYRYSAIACYOGNGXEASWPJBYCEDGG"
+      },
+      "full_score": -7.2225383157648215,
+      "head": "YAELPEONTHOEAHOEOTGOEYRYSAIACYOGNGXEASWPJBYCEDGGHGOEJPCNGEASLATEOTHSHIEOEANOHTJMEADJTHTHUOENAEOONGINGUIAIAORINXJOAEDBDSE"
+    },
+    {
+      "config": {
+        "part": 1,
+        "rep": "maj.bitrev8",
+        "gen": "sha512_ctr",
+        "red": "mod",
+        "dir": "rev",
+        "atbash": false,
+        "sign": 1,
+        "o": 13,
+        "score": -6.843808420628094,
+        "head": "FMNGTNXMBIMAENGRYEARPLRAMWEOTHIAHAEMRANTIOTHEABI"
+      },
+      "full_score": -7.260494423025334,
+      "head": "FMNGTNXMBIMAENGRYEARPLRAMWEOTHIAHAEMRANTIOTHEABIAITHAEAFEYAEFYAWMXANGMMSOEDNGOENEAULPTWEALCNGBLTHDESTHUBICNEOOBTHTTHEJNG"
+    },
+    {
+      "config": {
+        "part": 1,
+        "rep": "dec.swap32",
+        "gen": "rc4",
+        "red": "reject",
+        "dir": "rev",
+        "atbash": true,
+        "sign": -1,
+        "o": 3301,
+        "score": -6.8496974081150315,
+        "head": "THEAXSIAIAIEAAETHCJJERANGEOOLBJUOEALTHYAGEAUUMIO"
+      },
+      "full_score": -7.332706214981512,
+      "head": "THEAXSIAIAIEAAETHCJJERANGEOOLBJUOEALTHYAGEAUUMIOYNALLYEATDFAIASNEEAEXTHHPJEAIINGJXXHJTHEASFNPMEAEARLMFXEADIEOCNGODELINGY"
+    },
+    {
+      "config": {
+        "part": 1,
+        "rep": "dec.raw",
+        "gen": "md5_ctr",
+        "red": "reject",
+        "dir": "fwd",
+        "atbash": true,
+        "sign": -1,
+        "o": 5,
+        "score": -6.862893647674674,
+        "head": "RMTHTNDIABGWLFDTOEPOJYPOTHUUTSWISJEDIIANGEOUNTHE"
+      },
+      "full_score": -7.250588638173164,
+      "head": "RMTHTNDIABGWLFDTOEPOJYPOTHUUTSWISJEDIIANGEOUNTHEOMSSIOITUEOYITCAPIAOEENFLBYFNYLMLJCIAIATHEAMOSPMFSETHTUWTNGCASFTUEANGYAE"
+    }
+  ],
+  "total_decodes": 70680,
+  "n_hits": 0,
+  "verdict": "NEGATIVE",
+  "elapsed_s": 7386.108700990677
+}
