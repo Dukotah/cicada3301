@@ -1,7 +1,3 @@
-I have enough cross-verified material. Note the WebFetch on Grantland appears to have hallucinated some content (the "We have now found the individuals" message is actually well-attested elsewhere), so I'll attribute that line carefully to the multiple sources that quote it and flag the endgame as disputed. Here is the report.
-
----
-
 # Cicada 3301: Origins and the Complete 2012 Puzzle Chain
 
 ## Origins

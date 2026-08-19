@@ -1,7 +1,3 @@
-I have enough verified, sourced material to compile the technical reference. Compiling now.
-
----
-
 # Cicada 3301: A Technical Catalog of Cryptographic & Steganographic Techniques
 
 A working reference for someone attempting the puzzles. Each entry says what the technique is, how it appeared in the puzzles, and where it sits on the documented-vs-speculated spectrum.

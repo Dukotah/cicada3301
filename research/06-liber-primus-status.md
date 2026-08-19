@@ -1,5 +1,3 @@
-I have everything needed. The frequency analysis page 403'd but the earlier search snippet gave me the key numbers. I have enough to write the report.
-
 # The Current State of the Liber Primus (Cicada 3301)
 
 ## Executive summary

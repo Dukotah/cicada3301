@@ -1,7 +1,3 @@
-I now have thorough, well-sourced material covering all requested points. Compiling the report.
-
----
-
 # Cicada 3301: The 2014 Puzzle and Its Transition into the LIBER PRIMUS
 
 ## Overview

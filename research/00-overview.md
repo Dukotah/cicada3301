@@ -2,8 +2,6 @@
 
 > Synthesized from the multi-agent research run (2026-06-17). Cited throughout.
 
-# Cicada 3301: An Executive Overview
-
 ## What it was
 
 Cicada 3301 was a series of cryptographic puzzles posted online under the PGP-signed name "3301," beginning in January 2012. The stated purpose, repeated each year, was to recruit "highly intelligent individuals." The puzzles were extraordinary in scope: they chained together steganography, classical and polyalphabetic ciphers, number theory, literary book codes, Tor hidden services, and — most strikingly — physical paper posters bearing QR codes taped to walls and poles in cities on multiple continents. Solving required real cryptographic skill, programming, operational security, and people on the ground in the real world. The recurring values embedded in the artifacts were consistent: privacy, anonymity, free information, anti-censorship, and a strand of mystical "self-overcoming" symbolism (the cicada "emergence" metaphor). ([Wikipedia](https://en.wikipedia.org/wiki/Cicada_3301); [Rolling Stone](https://www.rollingstone.com/culture/culture-news/cicada-solving-the-webs-deepest-mystery-84394/))

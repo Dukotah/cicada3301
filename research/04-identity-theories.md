@@ -1,5 +1,3 @@
-I now have enough to write a careful, attributed report.
-
 # WHO Created Cicada 3301 — Credible Theories and the Evidence
 
 **Bottom line up front:** As of the last verified Cicada 3301 communication (an OpenPGP-signed message in **April 2017**), the identity of the creator(s) of Cicada 3301 is **unknown and unproven**. No individual or organization has ever produced cryptographic proof of authorship (i.e., control of the canonical 3301 PGP private key) and simultaneously been independently corroborated. Everything below is therefore a hypothesis of varying credibility, and the field is, as you noted, heavily polluted with self-promotion, hoaxes, and litigation. ([Wikipedia](https://en.wikipedia.org/wiki/Cicada_3301))

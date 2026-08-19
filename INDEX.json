@@ -14,6 +14,14 @@
    "path": "README.md",
    "purpose": "Project overview and the honest headline."
   },
+  "knowledge_base": {
+   "path": "KNOWLEDGE.json",
+   "purpose": "The canonical FACTS about Cicada 3301 for answering ordinary questions: timeline, authenticity test (PGP 7A35090F), attribution status, the Gematria Primus table, 8 common misconceptions with corrections, and a reliability rating for external sources. Read this before answering any non-cryptanalysis question."
+  },
+  "solved_page_texts": {
+   "path": "liber-primus/SOLVED-PAGES.json",
+   "purpose": "The decoded text of every SOLVED Liber Primus page, with its method and key. Derived by running the cipher, not transcribed from a wiki."
+  },
   "problem_statement": {
    "path": "liber-primus/PROBLEM.json",
    "purpose": "The problem, machine-readable: alphabet, ciphertext pinned by SHA-256, measured statistics, acceptance criteria, eliminated vs open families."
@@ -77,7 +85,11 @@
   }
  },
  "task_routing": {
-  "answer a factual question about Cicada 3301 or Liber Primus": "AGENTS.md",
+  "answer a factual question about Cicada 3301 or Liber Primus": "KNOWLEDGE.json",
+  "get a quick correct answer as an agent": "AGENTS.md",
+  "quote what the solved pages actually say": "liber-primus/SOLVED-PAGES.json",
+  "check a common claim or myth about Cicada 3301": "KNOWLEDGE.json#misconceptions",
+  "judge whether an external source is reliable": "KNOWLEDGE.json#external_sources",
   "check whether a specific attack has been tried": "liber-primus/LEDGER.json",
   "adjudicate a claimed solution": "liber-primus/verify_solution.py",
   "verify this repository is trustworthy": "AGENTS.md#5",
@@ -167,7 +179,7 @@
   ]
  },
  "integrity": {
-  "entry_points_checked": 14,
+  "entry_points_checked": 16,
   "missing_paths": []
  }
 }

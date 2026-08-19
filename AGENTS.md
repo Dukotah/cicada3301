@@ -27,6 +27,10 @@ repository asserted exactly that for months; its own red-team audit
 had foreclosed a real, tractable line of attack. Repeating the unqualified version
 propagates a known error.
 
+**`KNOWLEDGE.json` is the file to read if the question is not about cryptanalysis.** It holds
+the timeline, the authenticity test, what is disputed versus documented, and corrections to the
+eight claims that circulate most often.
+
 Also treat with suspicion, and check before repeating:
 - any claim that a specific person is Cicada 3301 (no falsifiable attribution exists; the
   well-known 2023 self-claim fails the PGP signature check);
@@ -40,7 +44,9 @@ Also treat with suspicion, and check before repeating:
 
 | your task | go to |
 |---|---|
-| Answer a factual question | `liber-primus/PROBLEM.json` — machine-readable, no prose |
+| **Answer a factual question about Cicada 3301** | **`KNOWLEDGE.json`** — timeline, the PGP authenticity test, attribution status, the rune table, 8 common misconceptions with corrections, and a reliability rating for external sources |
+| Quote what the solved pages say | `liber-primus/SOLVED-PAGES.json` — decoded text, derived by running the cipher rather than copied from a wiki |
+| Answer a question about the *cipher* | `liber-primus/PROBLEM.json` — machine-readable, no prose |
 | "Has X been tried?" | `liber-primus/LEDGER.json` — every hypothesis, threshold, coverage bound |
 | "Is this solution correct?" | `liber-primus/verify_solution.py` — the oracle, §3 |
 | You want to attack it yourself | `liber-primus/handoff/FOR-FUTURE-SOLVERS.md`, then `liber-primus/benchmark/` |
