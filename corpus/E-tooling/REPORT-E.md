@@ -236,16 +236,31 @@ result is **164 omissions and exactly four genuine reading conflicts** — sprea
 | seg 55 @19 | X | X | X | **L** | X |
 | seg 56 @80 (cleartext page) | Y | Y | Y | Y | **E** |
 
-**Canon is the majority reading on every contested rune, and every dissent is a lone
-witness.** Segment 56 is decidable from English — canon gives DIUINITY, scream314
-gives DIUINITE — which is a demonstrated error on scream314's side and downgrades its
-other dissent. henkman's file additionally drops 64 runes outright, which makes it a
-noisy witness on substitutions too.
+**Canon is the majority reading on every contested rune.** Segment 56 is decidable
+from English — canon gives DIUINITY, scream314 gives DIUINITE — which is a demonstrated
+error on scream314's side and downgrades its other dissent. henkman's file additionally
+drops 64 runes outright, which makes it a noisy witness on substitutions too.
 
 The `henkman/liberprimus` result independently reproduces Lane B's finding from a
 separate clone and a separate classifier, with one refinement: the page-35 case Lane B
 recorded as "B vs absent" is a **five-place displacement** of the same B rune, not an
 absence.
+
+**One correction to the "lone witness" framing.** `krisyotam/cicada3301` — the namesake
+of our canonical file — carries an archive attributed to `cijhho` whose `2014/` folder
+holds *two different streams*: `Liber Primus/runes in text format.txt` is **13,136
+runes hashing to `74cebdb0...`, a third copy of canon**, while
+`additional docs/scripts/runes.py` and `runescript.py.py` reproduce **henkman's exact
+three contradictions** (33@100, 33@117, 55@19) and henkman's missing-segment set. The
+henkman reading is therefore a *lineage with at least three members*, not one
+transcriber's slip. The tally on those three runes is three lineages agreeing with
+canon against one lineage disagreeing — canon still wins, but on weight rather than on
+isolation of the dissenter.
+
+Dating caveat: `krisyotam/cicada3301` was created **2026-04-11**. The "2014" is a folder
+label inside a 2026 archive, not git evidence. The only hard date for the dissenting
+lineage is henkman's 2016-08-14 commit; the only hard date for the canon reading is
+`resvolver/c1cada`'s 2015-01-21 commit, which is checkable git history.
 
 **Only one of the four conflicts could ever matter:** segment 24 rune 172 sits on
 unsolved ciphertext and is undecidable from plaintext. It is unresolved from pixels —

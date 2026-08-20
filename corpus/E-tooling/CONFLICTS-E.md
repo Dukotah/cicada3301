@@ -213,10 +213,46 @@ dissenting witness corroborates the other. On every one of the four contested ru
 | seg 55 @19 | `ᛉ` | `ᛉ` | `ᛉ` | **`ᛚ`** | `ᛉ` |
 | seg 56 @80 | `ᚣ` | `ᚣ` | `ᚣ` | `ᚣ` | **`ᛖ`** |
 
-**Canon is the majority reading on every contested rune, and each dissent is a
-lone witness.** henkman's dissents are additionally discounted by the fact that the
-same file drops 64 runes outright — a transcription with that many omissions is a
-noisy witness on substitutions too.
+**Canon is the majority reading on every contested rune.** henkman's dissents are
+additionally discounted by the fact that the same file drops 64 runes outright — a
+transcription with that many omissions is a noisy witness on substitutions too.
+
+### C-E-03b — the henkman reading is a *lineage*, not a slip
+
+`krisyotam/cicada3301` (`76d3ee8c762f60025822c8c05edbf31351636469`) carries an archive
+attributed to `cijhho`, and inside its `2014/` folder there are **two different rune
+streams**:
+
+| file | n runes | index SHA-256 | agrees with |
+|---|---:|---|---|
+| `archives/cijhho/2014/Liber Primus/runes in text format.txt` | **13,136** | **`74cebdb0…`** | **canon, exactly — a third copy of our stream** |
+| `archives/cijhho/2014/additional docs/scripts/runes.py` | 13,092 | `0762d8ff…` | **the henkman lineage** |
+| `archives/cijhho/2014/additional docs/scripts/runescript.py.py` | 13,101 | `3d395ee6…` | **the henkman lineage** |
+
+Both script files miss the same segment set as henkman — `[0, 3, 6, 19, 26, 33, 35,
+39, 55]` plus 36 — and carry **exactly henkman's three contradictions**: segment 33
+@100 `ᛒ`→`ᚹ`, segment 33 @117 `ᛒ`→`ᚹ`, segment 55 @19 `ᛉ`→`ᛚ`. That is not
+coincidence; it is one transcription copied twice.
+
+So the corpus holds **two** competing lineages for those three runes, not one witness
+and one slip. The count on 33/55 is therefore *three lineages* (canon /
+`resvolver` 2015 / `iddqd` 2017 / `scream314` 2018 — the last three agreeing with us)
+against *one lineage with at least three members* (the cijhho scripts and
+`henkman/liberprimus`). Canon still wins, but by weight of independent lineages rather
+than by isolation of the dissenter.
+
+**Dating caveat, stated because it matters.** `krisyotam/cicada3301` was created
+**2026-04-11** — the "2014" is a *folder label inside a 2026 archive*, not git evidence.
+Nothing here dates the cijhho scripts to 2014. The only hard date evidence for this
+lineage is henkman's 2016-08-14 commit. By contrast `resvolver/c1cada`'s
+2015-01-21 date is git history and is checkable.
+
+Two further notes on these files:
+- `runes.py`'s segment-0 "contradiction" is an **artefact**: the file embeds the
+  Gematria Primus alphabet table inline as a rune string, and the classifier's anchor
+  lands on it. `runescript.py.py` labels the same segment INDEL. Discount segment 0.
+- The presence of *both* readings inside one archive folder is itself the useful fact:
+  whoever assembled it had both, and kept both.
 
 *(Neither `ᛒ`/`ᚹ` nor `ᛉ`/`ᛚ` is a Gematria-Primus-adjacent pair, unlike `ᚪ`/`ᚫ` in
 C-E-01. They are, however, visually confusable futhorc glyphs — `ᛒ` vs `ᚹ` differ by

@@ -211,14 +211,17 @@ chain are faithful, and the corpus can be trusted where it agrees.
 
 ### The one that disagrees is the one that matters
 
-`1CcV1.jpg` is the opening image of the entire puzzle. Two byte-streams exist:
+`1CcV1.jpg` is the opening image of the entire puzzle. Three byte-streams exist:
 
 - **29,279 bytes** in both community mirrors,
   `870353b8fbe4d1dd83fdbfc61b07d80213bab035526d3e5fd6a43f7d77db1ead`
+- **29,261 bytes** on the Fandom wiki as `Final.jpg_2012.jpg`,
+  `a381daf635bc78d8a5b5ddbc25b55d459bc823fb2e02d0012627870ee1240573` — the mirror stream
+  minus its 18-byte JFIF APP0 header and nothing else, **payload intact**
 - **27,517 bytes** in every Wayback capture of `i.imgur.com/1CcV1.jpg` from 2013 to 2024,
-  `72a1fd406da308cd61935fb116f2d73ea5cc008122518a23c9725f6ae1537029`
+  `72a1fd406da308cd61935fb116f2d73ea5cc008122518a23c9725f6ae1537029` — **payload absent**
 
-Both decode to pixel-identical 509x503 images. The archive copy has optimised Huffman tables;
+All three decode to pixel-identical 509x503 images. The archive copy has optimised Huffman tables;
 the mirror copy has the standard ones. And the mirror copy has **61 bytes after the JPEG EOI
 marker** that the archive copy does not:
 
@@ -233,9 +236,17 @@ artifact.
 > **For Cicada material, "the Internet Archive has it" does not mean "the bytes that mattered
 > survived."**
 
-Which stream, if either, is what 4chan served on 2012-01-04 is **not** resolved here: a
-solver appending their own decoded note is equally consistent with the evidence. See
-`CONFLICTS-A.md` C-02 and `GAPS-A.md` A-01.
+The Fandom copy was found by the structural scan below rather than looked for, and it matters:
+**two archives that are not each other hold the payload-bearing stream, and only imgur's does
+not.** That rules out "one archivist appended the line and everything descends from that
+file." It does not establish a chain of custody back to 4chan. Which stream, if any, is what
+4chan served on 2012-01-04 is **not** resolved here. See `CONFLICTS-A.md` C-02 and
+`GAPS-A.md` A-01.
+
+The same diff also explains an unrelated finding: the Fandom copy differs from the mirror copy
+by exactly the 18-byte APP0/JFIF segment, which is precisely the constant 18-byte deficit seen
+across 288 Fandom JPEGs (`CONFLICTS-A.md` C-05). Two findings that arrived separately turned
+out to be the same mechanism.
 
 ### That finding generalised into a scan
 
@@ -243,20 +254,26 @@ Because trailing data turned out to be load-bearing, every JPEG and PNG in the c
 parsed structurally — walking markers, handling `FF00` byte-stuffing and restart markers — to
 find the true end of the image and measure what lies past it. Output: **`TRAILING-DATA.json`**.
 
-**Eight files carry data after their real EOI/IEND**, and six of them are not the 2012 image:
+Of **1,208 images scanned, 13 carry data after their real EOI/IEND**, and ten of them are not
+the 2012 image:
 
 | trailing bytes | file | trailer begins |
 |---|---|---|
 | 3,486,295 | `cijhho123/2014/Websites/onion 6/onion6.jpg` | a complete second JPEG (`FFD8FFE0 ... JFIF`) |
 | 3,486,295 | `cijhho123/2014/Liber Primus/liber primus images full/10.jpg` | same |
+| 1,651,773 | `wiki-uncovering-cicada/images/ONION_2_JPG.jpg` | a complete second JPEG |
 | 336,713 | `.../liber primus images full/05.jpg` | ASCII, and **ends with a byte-reversed JPEG header** |
-| 175,159 | `.../additional images/Liber primus pages/Huh2.jpg` | binary |
-| 10,923 | `signed-payloads/2014-01-onion5-liber-primus.jpg` | a second JPEG, **and this file bytes are attested by a verified 3301 signature** |
+| 175,159 | `.../Liber primus pages/Huh2.jpg` **and** `wiki-uncovering-cicada/images/Huh2.jpg` | binary; two independent holdings agree |
+| 13,592 | `wiki-uncovering-cicada/images/Outt.png` | after IEND; a short repeating byte pattern |
+| 10,923 | `signed-payloads/2014-01-onion5-liber-primus.jpg` | a second JPEG, **and this file's bytes are attested by a verified 3301 signature** |
 | 424 | `wiki-uncovering-cicada/images/-016477-.jpg` | mostly printable; contains an `upload.wikimedia.org` URL |
-| 61 (x2) | `1CcV1.jpg` in both mirrors | the `TIBERIVS` line |
+| 61 (x3) | `1CcV1.jpg` in both mirrors, `Final.jpg_2012.jpg` on Fandom | the `TIBERIVS` line |
+| 3 | a Blake plate from the wiki | three bytes; almost certainly noise |
 
-A further **7 files do not parse as well-formed JPEG/PNG at all** and are listed under
+A further **9 files do not parse as well-formed JPEG/PNG at all** and are listed under
 `unparseable` in the same file — malformed structure is itself a signal worth a second look.
+The scanner is committed as `_tools/trailing_scan.py` and is cheap to re-run as the corpus
+grows.
 
 The `signed-payloads/2014-01-onion5-liber-primus.jpg` row deserves emphasis: those bytes were
 carried *inside* a clearsigned message that verifies against the Cicada key, so unlike
@@ -298,10 +315,17 @@ down.
 ## 6. State handed over
 
 **Closed.** G-02 in full. G-09 for message signatures. G-01 substantially: the 2012 chain,
-the 2012 and 2013 poster photographs, the `845145127.com` saves, the 2013 candidate entry
-images, the 2016 oak-tree image (`cijhho123/2016/2016/additional images/4gq25.jpg`, visually
-confirmed: *"The path lies empty; epiphany seeks the devoted"*), the Liber Primus scans and
-the 2017 material.
+the 2012 and 2013 poster photographs, the `845145127.com` saves, the Liber Primus scans, the
+2017 material, and **all three later entry images, each visually confirmed**:
+
+| year | file | opening line |
+|---|---|---|
+| 2013 | `cijhho123/2013/additional images/1357366592898.jpg` | *"Hello again. Our search for intelligent individuals now continues."* |
+| 2014 | `cijhho123/2014/additional images/zN4h51m.jpg` | *"Hello. Epiphany is upon you. Your pilgrimage has begun."* |
+| 2016 | `cijhho123/2016/2016/additional images/4gq25.jpg` | *"The path lies empty; epiphany seeks the devoted"* (faint tree behind the text) |
+
+None of the three has yet been cross-hashed against a second independent holding — the check
+that turned `1CcV1.jpg` into C-02 — so that trap is still open for them (`GAPS-A.md` A-05).
 
 **Finished this session.** The Fandom image pull completed at **829/829, 0 failures,
 345 MB**; `cijhho123` completed at **447/447, 192 MB**. Nothing is left running.

@@ -1,6 +1,6 @@
 {
  "$comment": "Lane E catalogue of third-party Cicada 3301 / Liber Primus tooling. Every row is a repository cloned into corpus/E-tooling/vendor/ (the vendor tree itself is gitignored; clone_sha makes each row reproducible). Judgement fields (decoder_type, null_trustworthy, what_it_tried, what_it_concluded) are hand-authored from reading the code; decoder_evidence names the file and line the judgement rests on. Rows marked decoder_type 'unknown' were NOT read - do not treat them as rigid.",
- "generated_utc": "2026-08-20T05:49:55Z",
+ "generated_utc": "2026-08-20T06:52:48Z",
  "decoder_type_vocabulary": {
   "rigid": "Key/keystream pointer advances once per ciphertext rune, unconditionally. Cannot express a skip at all.",
   "skip-capable": "The decode primitive holds the key pointer if HANDED a set of interrupter positions or an interrupter character, but the tool performs no search over unknown skip patterns. Default call is rigid.",
@@ -23,20 +23,20 @@
   "scream314_15938_index_sha256": "67a41c67b6a8e8678944d26e9c6af547ef0a07a21eb47e3fd483790ba48e81d7"
  },
  "summary": {
-  "n_tools": 91,
+  "n_tools": 103,
   "by_decoder_type": {
-   "skip-aware-search": 7,
-   "skip-capable": 12,
+   "skip-aware-search": 8,
+   "skip-capable": 13,
    "rigid": 10,
-   "unknown": 28,
-   "no-decoder": 34
+   "unknown": 35,
+   "no-decoder": 37
   },
   "by_null_trustworthy": {
-   "partial": 16,
+   "partial": 18,
    "True": 3,
    "False": 10,
-   "unknown": 28,
-   "n/a": 34
+   "unknown": 35,
+   "n/a": 37
   }
  },
  "tools": [
@@ -223,15 +223,68 @@
    "decoder_type": "skip-aware-search",
    "decoder_evidence": "enc/DecryptModel.py:485 `get_all_interrupter_position_lists()` returns `get_all_sublists()` = every `combinations()` subset of the positions where the interrupter rune occurs; the decrypt loop at line 383 holds key_index at those positions. It adds a self-consistency filter: if a decrypted rune IS the interrupter rune, the candidate is rejected (line 399). The search is bounded by `crop_ct_to_keylen_with_interrupter()` - only the first key_length runes (plus enough extra to cover interrupters) are searched.",
    "null_trustworthy": "partial",
-   "divergences_vs_canon": [
-    {
-     "path": "lp_data/lp_section_data.py",
-     "verdicts": [
-      "MATCHES_WITH_ALIGNMENT"
-     ]
-    }
-   ],
+   "divergences_vs_canon": null,
    "notes": "Its lp_data/lp_section_data.py encodes J as U+16C2, not U+16C4 - see CONFLICTS-E.md. Downstream consumers must handle the alias."
+  },
+  {
+   "name": "cicada-solvers/LiberPrayground",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__LiberPrayground",
+   "url": "https://github.com/cicada-solvers/LiberPrayground",
+   "clone_sha": "513aeff9e5f561784b186730cca3382b8e923607",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 28,
+    "HTML": 25,
+    "JavaScript": 1
+   },
+   "loc": 4194,
+   "first_commit_date": "2021-01-14T00:28:11+01:00",
+   "last_commit_date": "2021-03-04T22:07:33+01:00",
+   "n_commits": 34,
+   "authors": [
+    "oleg@relikd.de"
+   ],
+   "cipher_families_referenced": {
+    "ngram_scoring": 108,
+    "totient_prime": 57,
+    "caesar_shift": 30,
+    "affine": 25,
+    "vigenere": 13,
+    "autokey": 12,
+    "running_key": 10,
+    "gematria": 4,
+    "hash_bruteforce": 4,
+    "substitution_search": 2
+   },
+   "what_it_tried": "See relikd/LiberPrayground.",
+   "what_it_concluded": "See relikd/LiberPrayground.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "data/dictionary_all-rune.txt",
+    "n_runes": 3315687,
+    "file_sha256": "f7ed99ce1c16eabfaf797df96702125c3147bc35dc50ddc725aaa448240f6ab6",
+    "sha256_indices": "a56e9f010a90845411f7c65de512d31f4bff00d8ce99e6c43abd21eb8a82582a",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "data/baseline-rune-words.txt",
+     "data/baseline-rune-stream.txt",
+     "data/p-5gram.txt",
+     "data/dictionary_9.txt",
+     "data/dictionary_10.txt",
+     "data/dictionary_8.txt",
+     "data/dictionary_11.txt",
+     "data/p-no-e-5gram.txt"
+    ]
+   },
+   "transcription_sha256": "f7ed99ce1c16eabfaf797df96702125c3147bc35dc50ddc725aaa448240f6ab6",
+   "decoder_type": "skip-aware-search",
+   "decoder_evidence": "Org mirror of relikd/LiberPrayground.",
+   "null_trustworthy": true,
+   "divergences_vs_canon": null,
+   "notes": null
   },
   {
    "name": "relikd/LiberPrayground",
@@ -339,6 +392,49 @@
    "notes": null
   },
   {
+   "name": "yo-yo-yo-jbo/cicada_tools",
+   "vendor_dir": "corpus/E-tooling/vendor/yo-yo-yo-jbo__cicada_tools",
+   "url": "https://github.com/yo-yo-yo-jbo/cicada_tools",
+   "clone_sha": "717625c5c742a706149a4aedd4e5e7d4d92fdd71",
+   "shallow_clone": true,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 11
+   },
+   "loc": 3856,
+   "first_commit_date": "2024-10-06T17:01:26-07:00",
+   "last_commit_date": "2024-10-16T12:54:05-07:00",
+   "n_commits": 50,
+   "authors": [
+    "30564634+yo-yo-yo-jbo@users.noreply.github.com",
+    "jbo@jbo"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 330,
+    "autokey": 83,
+    "ngram_scoring": 40,
+    "llm_ml": 36,
+    "vigenere": 27,
+    "caesar_shift": 11,
+    "atbash": 8,
+    "running_key": 7,
+    "hill_cipher": 6,
+    "substitution_search": 2
+   },
+   "what_it_tried": "See cicada-solvers/JBO-cicada_tools.",
+   "what_it_concluded": "See cicada-solvers/JBO-cicada_tools.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "skip-aware-search",
+   "decoder_evidence": "Upstream of cicada-solvers/JBO-cicada_tools; same research_utils.py:iterate_potential_interrupter_indices() exhaustive 2**k subset enumerator and same KeystreamTransformer key hold, with consider_interrupters defaulting to False.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
    "name": "jens-wedin/liber-primus",
    "vendor_dir": "corpus/E-tooling/vendor/jens-wedin__liber-primus",
    "url": "https://github.com/jens-wedin/liber-primus",
@@ -392,55 +488,6 @@
     }
    ],
    "notes": "NOT AN INDEPENDENT WITNESS. All 8 commits are authored Claude <noreply@anthropic.com>, first commit 2026-08-18T16:51:25Z - one day before this operation. Its agreement with this project's conclusions is sibling agreement, not replication. Flagged prominently in CONFLICTS-E.md."
-  },
-  {
-   "name": "cicada-solvers/LiberPrayground",
-   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__LiberPrayground",
-   "url": "https://github.com/cicada-solvers/LiberPrayground",
-   "clone_sha": "513aeff9e5f561784b186730cca3382b8e923607",
-   "shallow_clone": false,
-   "license": "NOT-STATED",
-   "license_files": [],
-   "language": "Python",
-   "languages": {
-    "Python": 28,
-    "HTML": 25,
-    "JavaScript": 1
-   },
-   "loc": null,
-   "first_commit_date": "2021-01-14T00:28:11+01:00",
-   "last_commit_date": "2021-03-04T22:07:33+01:00",
-   "n_commits": 34,
-   "authors": [
-    "oleg@relikd.de"
-   ],
-   "cipher_families_referenced": {},
-   "what_it_tried": "See relikd/LiberPrayground.",
-   "what_it_concluded": "See relikd/LiberPrayground.",
-   "has_transcription": true,
-   "transcription": {
-    "path": "data/dictionary_all-rune.txt",
-    "n_runes": 3315687,
-    "file_sha256": "f7ed99ce1c16eabfaf797df96702125c3147bc35dc50ddc725aaa448240f6ab6",
-    "sha256_indices": "a56e9f010a90845411f7c65de512d31f4bff00d8ce99e6c43abd21eb8a82582a",
-    "lineage": "unclassified",
-    "other_rune_files": [
-     "data/baseline-rune-words.txt",
-     "data/baseline-rune-stream.txt",
-     "data/p-5gram.txt",
-     "data/dictionary_9.txt",
-     "data/dictionary_10.txt",
-     "data/dictionary_8.txt",
-     "data/dictionary_11.txt",
-     "data/p-no-e-5gram.txt"
-    ]
-   },
-   "transcription_sha256": "f7ed99ce1c16eabfaf797df96702125c3147bc35dc50ddc725aaa448240f6ab6",
-   "decoder_type": "skip-aware-search",
-   "decoder_evidence": "Org mirror of relikd/LiberPrayground.",
-   "null_trustworthy": true,
-   "divergences_vs_canon": null,
-   "notes": null
   },
   {
    "name": "Skyro7777777/LiberPrimusDecoded",
@@ -534,7 +581,6 @@
     {
      "path": "tool-results/read_1786524975012_e54737a8512a.txt",
      "verdicts": [
-      "MATCHES_WITH_ALIGNMENT",
       "OMISSION"
      ]
     },
@@ -792,6 +838,50 @@
    "null_trustworthy": "partial",
    "divergences_vs_canon": null,
    "notes": null
+  },
+  {
+   "name": "henkman/liberprimus",
+   "vendor_dir": "corpus/E-tooling/vendor/henkman__liberprimus",
+   "url": "https://github.com/henkman/liberprimus",
+   "clone_sha": "2212f631714711a2d51c858c47dfb6f89ae9ee44",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Go",
+   "languages": {
+    "Go": 7
+   },
+   "loc": 1114,
+   "first_commit_date": "2016-08-14T17:58:11+02:00",
+   "last_commit_date": "2020-06-28T19:54:58+02:00",
+   "n_commits": 7,
+   "authors": [
+    "henkman@github.com",
+    "henkman@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 40,
+    "gematria": 15
+   },
+   "what_it_tried": "Reproduces the solved pages; prime-generator keystreams (commit addc306 '56 use primegenerator'); page-by-page solution scripts.",
+   "what_it_concluded": "A solutions archive rather than a negative-results archive.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "liberprimus.go",
+    "n_runes": 13072,
+    "file_sha256": "e02f4d2e39f982c91ec74db02f43d4746cce3cecec178866d9979eb189007013",
+    "sha256_indices": "e9d9ed39f31eb2ff542308eb52b78ce43395de45dedeb837e444f753cbdea77e",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "liberprimus.txt"
+    ]
+   },
+   "transcription_sha256": "e02f4d2e39f982c91ec74db02f43d4746cce3cecec178866d9979eb189007013",
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "Go solver (liberprimus.go) with per-page solution scripts under solutions/. Its transcription liberprimus.txt was added in the INITIAL commit 8cc9665 (2016-08-14T18:01:14+02:00) and `git log -- liberprimus.txt` shows that one commit only - the file has never been edited.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": "PRE-2017 WITNESS. 13,072 runes (64 short of canon's 13,136); reproduces 48 of 57 canon segments verbatim. Six segments differ by OMISSION, one (35) by a five-place DISPLACEMENT of a B rune, and three positions are genuine CONTRADICTIONS: segment 33 @100 and @117 canon B vs henkman W, and segment 55 @19 canon X vs henkman L. This independently reproduces Lane B's finding. See CONFLICTS-E.md C-E-03."
   },
   {
    "name": "Taiiwo/cicada",
@@ -1651,6 +1741,92 @@
    "notes": "First commit 2026-08-14; sibling repo Pitchfork-and-Torch/liber-research 2026-08-18. Very recent, provenance unverified."
   },
   {
+   "name": "mortlach/Liber-Primus-Rune-Decrypting",
+   "vendor_dir": "corpus/E-tooling/vendor/mortlach__Liber-Primus-Rune-Decrypting",
+   "url": "https://github.com/mortlach/Liber-Primus-Rune-Decrypting",
+   "clone_sha": "765a0260e88617194a2e2c255a34e519f653a90c",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 14
+   },
+   "loc": 2166,
+   "first_commit_date": "2024-01-21T20:57:57Z",
+   "last_commit_date": "2024-01-21T21:07:00Z",
+   "n_commits": 3,
+   "authors": [
+    "mortlachmortlach@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 119,
+    "transposition": 63,
+    "caesar_shift": 42,
+    "totient_prime": 23,
+    "ngram_scoring": 16,
+    "atbash": 8
+   },
+   "what_it_tried": "mortlach's rune-decrypting work; clone is broken on disk (see GAPS-E.md).",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "key-generator/raw_scoring_data/ngChar4LogProb.csv",
+    "n_runes": 1857984,
+    "file_sha256": "8cbf758cb737be3d126e53bc00ca8314cedebac0076510875d46ca916a39dbe6",
+    "sha256_indices": "20315d88c48e14b7ea5b39bd7677af35a2f7f6d596de41b6ef157d195fc15808",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "key-generator/raw_scoring_data/ngRB2LogProb.csv",
+     "key-generator/raw_scoring_data/ngGNG2LogProb.csv",
+     "key-generator/raw_scoring_data/ngChar3LogProb.csv",
+     "key-generator/raw_scoring_data/ngChar2LogProb.csv"
+    ]
+   },
+   "transcription_sha256": "8cbf758cb737be3d126e53bc00ca8314cedebac0076510875d46ca916a39dbe6",
+   "decoder_type": "unknown",
+   "decoder_evidence": "mortlach's rune-decrypting work; clone is broken on disk (see GAPS-E.md).",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/optimisticninja_cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__optimisticninja_cicada3301",
+   "url": "https://github.com/cicada-solvers/optimisticninja_cicada3301",
+   "clone_sha": "c895e6b3b43d06dd2071fdab12694f73c2805c12",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "HTML",
+   "languages": {
+    "HTML": 4,
+    "Python": 3,
+    "JavaScript": 1,
+    "Shell": 1
+   },
+   "loc": 1085,
+   "first_commit_date": "2022-12-09T09:42:32+01:00",
+   "last_commit_date": "2022-12-09T09:42:32+01:00",
+   "n_commits": 1,
+   "authors": [
+    "tweqx"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 1
+   },
+   "what_it_tried": null,
+   "what_it_concluded": null,
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": null,
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
    "name": "Fafison4k/cicada-3301-page32",
    "vendor_dir": "corpus/E-tooling/vendor/Fafison4k__cicada-3301-page32",
    "url": "https://github.com/Fafison4k/cicada-3301-page32",
@@ -1930,6 +2106,53 @@
    "notes": null
   },
   {
+   "name": "mortlach/runeglish-lm",
+   "vendor_dir": "corpus/E-tooling/vendor/mortlach__runeglish-lm",
+   "url": "https://github.com/mortlach/runeglish-language-model-transition-probabilty-matrices",
+   "clone_sha": "e1acc56b85ea0dc2283c62a46d8ad4a09fca6cab",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 253,
+   "first_commit_date": "2023-03-05T15:29:55Z",
+   "last_commit_date": "2023-03-05T21:37:25Z",
+   "n_commits": 4,
+   "authors": [
+    "mortlachmortlach@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "ngram_scoring": 12
+   },
+   "what_it_tried": null,
+   "what_it_concluded": null,
+   "has_transcription": true,
+   "transcription": {
+    "path": "data/wli_rune_4-grams-from-gng2.csv",
+    "n_runes": 7428637,
+    "file_sha256": "643e11eb2f515b37c438dd00adf13fe20c14848273a72cd4eb2775446b898049",
+    "sha256_indices": "06e384f78f4847227a04b6416c224aded7f97eb47d4934c9d61a00e7a17797be",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "data/rune_4-grams-from-gng2.csv",
+     "data/wli_rune_3-grams-from-gng2.csv",
+     "data/wli_rune_2-grams-from-gng2.csv",
+     "data/rune_3-grams-from-gng2.csv",
+     "data/wli_rune_1-grams-from-gng2.csv",
+     "language_model.py"
+    ]
+   },
+   "transcription_sha256": "643e11eb2f515b37c438dd00adf13fe20c14848273a72cd4eb2775446b898049",
+   "decoder_type": "unknown",
+   "decoder_evidence": null,
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
    "name": "Eternalth/Liber-Primus",
    "vendor_dir": "corpus/E-tooling/vendor/Eternalth__Liber-Primus",
    "url": "https://github.com/Eternalth/Liber-Primus",
@@ -1992,6 +2215,37 @@
    "transcription_sha256": null,
    "decoder_type": "unknown",
    "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "rtkd/idclip",
+   "vendor_dir": "corpus/E-tooling/vendor/rtkd__idclip",
+   "url": "https://github.com/rtkd/idclip",
+   "clone_sha": "e999046a3f03ebb15a34cc64797babb8342d988a",
+   "shallow_clone": true,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 1
+   },
+   "loc": 148,
+   "first_commit_date": "2018-02-02T14:29:43+01:00",
+   "last_commit_date": "2018-02-16T21:16:43+01:00",
+   "n_commits": 50,
+   "authors": [
+    "null@no.tld"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": null,
+   "what_it_concluded": null,
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": null,
    "null_trustworthy": "unknown",
    "divergences_vs_canon": null,
    "notes": null
@@ -2533,6 +2787,87 @@
    "notes": null
   },
   {
+   "name": "cicada-solvers/gutenberg-txt",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__gutenberg-txt",
+   "url": null,
+   "clone_sha": null,
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": null,
+   "languages": {},
+   "loc": 0,
+   "first_commit_date": null,
+   "last_commit_date": null,
+   "n_commits": null,
+   "authors": [],
+   "cipher_families_referenced": {},
+   "what_it_tried": "Plaintext corpus for running-key candidate keys.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Plaintext corpus for running-key candidate keys.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/neuroretransmit-cicada",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__neuroretransmit-cicada",
+   "url": "https://github.com/cicada-solvers/neuroretransmit-cicada",
+   "clone_sha": "HEAD",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": null,
+   "languages": {},
+   "loc": 0,
+   "first_commit_date": null,
+   "last_commit_date": null,
+   "n_commits": null,
+   "authors": [],
+   "cipher_families_referenced": {},
+   "what_it_tried": "Org mirror of neuroretransmit/cicada; clone is broken on disk (see GAPS-E.md).",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Org mirror of neuroretransmit/cicada; clone is broken on disk (see GAPS-E.md).",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/project-runeberg",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__project-runeberg",
+   "url": "https://github.com/cicada-solvers/project-runeberg",
+   "clone_sha": "HEAD",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": null,
+   "languages": {},
+   "loc": 0,
+   "first_commit_date": null,
+   "last_commit_date": null,
+   "n_commits": null,
+   "authors": [],
+   "cipher_families_referenced": {},
+   "what_it_tried": null,
+   "what_it_concluded": null,
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": null,
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
    "name": "cicada-solvers/GPPrimeView",
    "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__GPPrimeView",
    "url": "https://github.com/cicada-solvers/GPPrimeView",
@@ -2712,6 +3047,120 @@
    "transcription_sha256": null,
    "decoder_type": "no-decoder",
    "decoder_evidence": "Onion-address / ed25519 key-grinding work on the deep-web hash. Not a rune decoder.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "krisyotam/cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/krisyotam__cicada3301",
+   "url": "https://github.com/krisyotam/cicada3301",
+   "clone_sha": "76d3ee8c762f60025822c8c05edbf31351636469",
+   "shallow_clone": false,
+   "license": "GPL-3.0",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "GPL-3.0"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 65,
+    "HTML": 47,
+    "C": 3,
+    "Shell": 2
+   },
+   "loc": 11010,
+   "first_commit_date": "2026-04-11T00:27:35-05:00",
+   "last_commit_date": "2026-08-14T02:56:14-05:00",
+   "n_commits": 6,
+   "authors": [
+    "75515498+krisyotam@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 198,
+    "totient_prime": 150,
+    "caesar_shift": 126,
+    "hash_bruteforce": 52,
+    "ngram_scoring": 47,
+    "affine": 21,
+    "atbash": 16,
+    "vigenere": 12,
+    "autokey": 11,
+    "running_key": 10
+   },
+   "what_it_tried": "Documentation and material archive, not a solver.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "tools/solvers/LiberPrayground/data/dictionary_all-rune.txt",
+    "n_runes": 3315687,
+    "file_sha256": "f7ed99ce1c16eabfaf797df96702125c3147bc35dc50ddc725aaa448240f6ab6",
+    "sha256_indices": "a56e9f010a90845411f7c65de512d31f4bff00d8ce99e6c43abd21eb8a82582a",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "tools/solvers/LiberPrayground/data/baseline-rune-words.txt",
+     "tools/solvers/LiberPrayground/data/baseline-rune-stream.txt",
+     "tools/solvers/LiberPrayground/data/p-5gram.txt",
+     "tools/solvers/LiberPrayground/data/dictionary_9.txt",
+     "tools/solvers/LiberPrayground/data/dictionary_10.txt",
+     "tools/solvers/LiberPrayground/data/dictionary_8.txt",
+     "tools/solvers/LiberPrayground/data/dictionary_11.txt",
+     "tools/solvers/LiberPrayground/data/p-no-e-5gram.txt"
+    ]
+   },
+   "transcription_sha256": "f7ed99ce1c16eabfaf797df96702125c3147bc35dc50ddc725aaa448240f6ab6",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Archive repository, HEAD 76d3ee8c762f60025822c8c05edbf31351636469, created 2026-04-11. Holds archives/cijhho/{2012,2014,2016,...} of puzzle material.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": "Namesake of this project's canonical file krisyotam_runes.txt, and it settles where that file came from. Its archives/cijhho/2014/ folder holds TWO rune streams: 'Liber Primus/runes in text format.txt' is 13,136 runes hashing to 74cebdb0... - a third copy of our canon - while 'additional docs/scripts/runes.py' (13,092) and 'runescript.py.py' (13,101) reproduce henkman's exact three contradictions (seg 33 @100 and @117 B->W, seg 55 @19 X->L) and henkman's missing-segment set. So the dissenting reading is a LINEAGE, not a slip. Dating caveat: the '2014' is a folder label inside a 2026 archive, not git evidence. See CONFLICTS-E.md C-E-03b."
+  },
+  {
+   "name": "cicada-solvers/cmbsolverwp",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__cmbsolverwp",
+   "url": "https://github.com/cicada-solvers/cmbsolverwp",
+   "clone_sha": "ad63a628fbf4d47c36184377265515416df250e0",
+   "shallow_clone": true,
+   "license": "Apache-2.0",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "Apache-2.0"
+    }
+   ],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 22,
+    "PHP": 8,
+    "Shell": 1
+   },
+   "loc": 7055,
+   "first_commit_date": "2025-05-18T14:34:36-05:00",
+   "last_commit_date": "2025-11-24T02:05:57Z",
+   "n_commits": 62,
+   "authors": [
+    "167648603+cmbsolver@users.noreply.github.com",
+    "action@github.com",
+    "cmbsolver@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 219,
+    "hash_bruteforce": 60,
+    "caesar_shift": 46,
+    "transposition": 18,
+    "gematria": 11,
+    "ngram_scoring": 10,
+    "atbash": 6
+   },
+   "what_it_tried": "WordPress-side presentation of cmbsolver's data; no decode loop.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "WordPress-side presentation of cmbsolver's data; no decode loop.",
    "null_trustworthy": "n/a",
    "divergences_vs_canon": null,
    "notes": null
@@ -2970,6 +3419,58 @@
    "transcription_sha256": null,
    "decoder_type": "no-decoder",
    "decoder_evidence": "Puzzle notes and scripts; no keyed rune decode loop found.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/cadrypt",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__cadrypt",
+   "url": "https://github.com/cicada-solvers/cadrypt",
+   "clone_sha": "9faefccf3d2ba90002835813f8a5a6953d5cfd84",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "C++",
+   "languages": {
+    "C++": 9,
+    "Kotlin": 2
+   },
+   "loc": 877,
+   "first_commit_date": "2021-01-19T13:53:23-07:00",
+   "last_commit_date": "2021-11-06T20:54:52-05:00",
+   "n_commits": 30,
+   "authors": [
+    "3233238+crashdemons@users.noreply.github.com",
+    "77656682+localavaster@users.noreply.github.com",
+    "crashdemons@users.noreply.github.com",
+    "localavastergithub@gmail.com",
+    "notarealemail@aol.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "C++ utility; no keyed rune decode loop found.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "liberprimus_pages/all0.txt",
+    "n_runes": 12956,
+    "file_sha256": "868436bbbd81ad102ae9ca5b3bd5ee5681516aa5d93f6ac84a02710f2bc79fe6",
+    "sha256_indices": "023312066df471005264b9cbe7997cb77d2a9a6a2dc9b3316d22674023af1585",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "dumped_liberprimus_pages/spiralbranchchapter55.txt",
+     "dumped_liberprimus_pages/spiralbranchchapter_no_numbers55.txt",
+     "dumped_liberprimus_pages/mobiuschapter22.txt",
+     "dumped_liberprimus_pages/mobiuschapter_no_numbers22.txt",
+     "dumped_liberprimus_pages/branchchapter14.txt",
+     "dumped_liberprimus_pages/cuneiformchapter39.txt",
+     "liberprimus_pages/spiralbranch_and_hollow_chapter55.txt",
+     "liberprimus_pages/spiralbranchchapter55.txt"
+    ]
+   },
+   "transcription_sha256": "868436bbbd81ad102ae9ca5b3bd5ee5681516aa5d93f6ac84a02710f2bc79fe6",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "C++ utility; no keyed rune decode loop found.",
    "null_trustworthy": "n/a",
    "divergences_vs_canon": null,
    "notes": null
@@ -3329,6 +3830,57 @@
    "notes": null
   },
   {
+   "name": "cicada-solvers/documenting-cicada3301-scream314",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__documenting-cicada3301-scream314",
+   "url": "https://github.com/cicada-solvers/documenting-cicada3301-scream314",
+   "clone_sha": "53e4282d89229b98212ef4f2349310fab6c43532",
+   "shallow_clone": true,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "HTML",
+   "languages": {
+    "HTML": 9,
+    "Shell": 1,
+    "C": 1,
+    "Python": 1
+   },
+   "loc": 196,
+   "first_commit_date": "2018-01-24T09:46:22+01:00",
+   "last_commit_date": "2023-09-04T00:50:11+02:00",
+   "n_commits": 30,
+   "authors": [
+    "29614762+tweqx@users.noreply.github.com",
+    "3233238+crashdemons@users.noreply.github.com",
+    "47955724+taivlam@users.noreply.github.com",
+    "59793489+95111@users.noreply.github.com",
+    "oleg@relikd.de",
+    "scream314@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 7,
+    "transposition": 1
+   },
+   "what_it_tried": "Org mirror of the scream314 documentation.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "liber_primus.md",
+    "n_runes": 15938,
+    "file_sha256": "0cad54f3e2db013730b949b7641f5a4c32fbc2a3b2e4addf7ef9b42125f178f4",
+    "sha256_indices": "67a41c67b6a8e8678944d26e9c6af547ef0a07a21eb47e3fd483790ba48e81d7",
+    "lineage": "scream314 15,938 lineage - carries C-E-01 and C-E-02",
+    "other_rune_files": [
+     "pages_and_ciphers.md"
+    ]
+   },
+   "transcription_sha256": "0cad54f3e2db013730b949b7641f5a4c32fbc2a3b2e4addf7ef9b42125f178f4",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Org mirror of the scream314 documentation.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
    "name": "scream314/cicada3301",
    "vendor_dir": "corpus/E-tooling/vendor/scream314__cicada3301",
    "url": "https://github.com/scream314/cicada3301",
@@ -3616,58 +4168,6 @@
    "notes": null
   },
   {
-   "name": "cicada-solvers/cadrypt",
-   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__cadrypt",
-   "url": "https://github.com/cicada-solvers/cadrypt",
-   "clone_sha": "9faefccf3d2ba90002835813f8a5a6953d5cfd84",
-   "shallow_clone": false,
-   "license": "NOT-STATED",
-   "license_files": [],
-   "language": "C++",
-   "languages": {
-    "C++": 9,
-    "Kotlin": 2
-   },
-   "loc": null,
-   "first_commit_date": "2021-01-19T13:53:23-07:00",
-   "last_commit_date": "2021-11-06T20:54:52-05:00",
-   "n_commits": 30,
-   "authors": [
-    "3233238+crashdemons@users.noreply.github.com",
-    "77656682+localavaster@users.noreply.github.com",
-    "crashdemons@users.noreply.github.com",
-    "localavastergithub@gmail.com",
-    "notarealemail@aol.com"
-   ],
-   "cipher_families_referenced": {},
-   "what_it_tried": "C++ utility; no keyed rune decode loop found.",
-   "what_it_concluded": "n/a",
-   "has_transcription": true,
-   "transcription": {
-    "path": "liberprimus_pages/all0.txt",
-    "n_runes": 12956,
-    "file_sha256": "868436bbbd81ad102ae9ca5b3bd5ee5681516aa5d93f6ac84a02710f2bc79fe6",
-    "sha256_indices": "023312066df471005264b9cbe7997cb77d2a9a6a2dc9b3316d22674023af1585",
-    "lineage": "unclassified",
-    "other_rune_files": [
-     "dumped_liberprimus_pages/spiralbranchchapter55.txt",
-     "dumped_liberprimus_pages/spiralbranchchapter_no_numbers55.txt",
-     "dumped_liberprimus_pages/mobiuschapter22.txt",
-     "dumped_liberprimus_pages/mobiuschapter_no_numbers22.txt",
-     "dumped_liberprimus_pages/branchchapter14.txt",
-     "dumped_liberprimus_pages/cuneiformchapter39.txt",
-     "liberprimus_pages/spiralbranch_and_hollow_chapter55.txt",
-     "liberprimus_pages/spiralbranchchapter55.txt"
-    ]
-   },
-   "transcription_sha256": "868436bbbd81ad102ae9ca5b3bd5ee5681516aa5d93f6ac84a02710f2bc79fe6",
-   "decoder_type": "no-decoder",
-   "decoder_evidence": "C++ utility; no keyed rune decode loop found.",
-   "null_trustworthy": "n/a",
-   "divergences_vs_canon": null,
-   "notes": null
-  },
-  {
    "name": "cicada-solvers/cicada-runes-2014-transcriber",
    "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__cicada-runes-2014-transcriber",
    "url": "https://github.com/cicada-solvers/cicada-runes-2014-transcriber",
@@ -3699,68 +4199,49 @@
    "notes": null
   },
   {
-   "name": "cicada-solvers/cmbsolverwp",
-   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__cmbsolverwp",
-   "url": "https://github.com/cicada-solvers/cmbsolverwp",
-   "clone_sha": "ad63a628fbf4d47c36184377265515416df250e0",
-   "shallow_clone": true,
-   "license": "Apache-2.0",
-   "license_files": [
-    {
-     "path": "LICENSE",
-     "detected": "Apache-2.0"
-    }
-   ],
-   "language": "JavaScript",
-   "languages": {
-    "JavaScript": 22,
-    "PHP": 8,
-    "Shell": 1
-   },
-   "loc": null,
-   "first_commit_date": "2025-05-18T14:34:36-05:00",
-   "last_commit_date": "2025-11-24T02:05:57Z",
-   "n_commits": 62,
-   "authors": [
-    "167648603+cmbsolver@users.noreply.github.com",
-    "action@github.com",
-    "cmbsolver@gmail.com"
-   ],
-   "cipher_families_referenced": {},
-   "what_it_tried": "WordPress-side presentation of cmbsolver's data; no decode loop.",
-   "what_it_concluded": "n/a",
-   "has_transcription": false,
-   "transcription": null,
-   "transcription_sha256": null,
-   "decoder_type": "no-decoder",
-   "decoder_evidence": "WordPress-side presentation of cmbsolver's data; no decode loop.",
-   "null_trustworthy": "n/a",
-   "divergences_vs_canon": null,
-   "notes": null
-  },
-  {
-   "name": "cicada-solvers/documenting-cicada3301-scream314",
-   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__documenting-cicada3301-scream314",
-   "url": "https://github.com/cicada-solvers/documenting-cicada3301-scream314",
-   "clone_sha": "HEAD",
+   "name": "cicada-solvers/iddqd",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__iddqd",
+   "url": "https://github.com/cicada-solvers/iddqd",
+   "clone_sha": "0e3789ad2949c62ea7fb9e3e00ded93df3b3ce07",
    "shallow_clone": false,
    "license": "NOT-STATED",
    "license_files": [],
    "language": null,
    "languages": {},
-   "loc": null,
-   "first_commit_date": null,
-   "last_commit_date": null,
-   "n_commits": null,
-   "authors": [],
+   "loc": 0,
+   "first_commit_date": "2017-01-04T15:18:22+01:00",
+   "last_commit_date": "2024-10-12T22:28:00+01:00",
+   "n_commits": 63,
+   "authors": [
+    "3233238+crashdemons@users.noreply.github.com",
+    "lurker69@mail.com",
+    "null@no.tld",
+    "root@DESKTOP-BSJE3MQ.localdomain",
+    "rtkd@no.tld",
+    "rtkd@users.noreply.github.com",
+    "sayhi@janberents.com",
+    "taiiwo@llort.gq",
+    "thezeus18@gmail.com",
+    "tylerzacc@gmail.com"
+   ],
    "cipher_families_referenced": {},
-   "what_it_tried": "Org mirror of the scream314 documentation.",
+   "what_it_tried": "See rtkd/iddqd.",
    "what_it_concluded": "n/a",
-   "has_transcription": false,
-   "transcription": null,
-   "transcription_sha256": null,
+   "has_transcription": true,
+   "transcription": {
+    "path": "liber-primus__transcription--master/liber-primus__transcription--master.txt",
+    "n_runes": 15933,
+    "file_sha256": "105f1c68cecde03df1e66982d3021ab31d7f49ee975ca109d1a1924cbcafc99c",
+    "sha256_indices": "c3eb607844a190915ef3436c148603973ae6bb07e98b3569164d9b7c3e9214e5",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "liber-primus__transcription--sentences/liber-primus__transcription--sentences.txt",
+     "liber-primus__translation/liber-primus__known-plain-text.txt"
+    ]
+   },
+   "transcription_sha256": "105f1c68cecde03df1e66982d3021ab31d7f49ee975ca109d1a1924cbcafc99c",
    "decoder_type": "no-decoder",
-   "decoder_evidence": "Org mirror of the scream314 documentation.",
+   "decoder_evidence": "Org mirror of rtkd/iddqd.",
    "null_trustworthy": "n/a",
    "divergences_vs_canon": null,
    "notes": null
@@ -3853,6 +4334,50 @@
    "null_trustworthy": "n/a",
    "divergences_vs_canon": null,
    "notes": null
+  },
+  {
+   "name": "rtkd/iddqd",
+   "vendor_dir": "corpus/E-tooling/vendor/rtkd__iddqd",
+   "url": "https://github.com/rtkd/iddqd",
+   "clone_sha": "f2267b0c2f1e1d2662806b90b9c3a2953b3a7023",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": null,
+   "languages": {},
+   "loc": 0,
+   "first_commit_date": "2017-01-04T15:18:22+01:00",
+   "last_commit_date": "2019-06-17T23:22:13+02:00",
+   "n_commits": 59,
+   "authors": [
+    "lurker69@mail.com",
+    "null@no.tld",
+    "root@DESKTOP-BSJE3MQ.localdomain",
+    "rtkd@no.tld",
+    "rtkd@users.noreply.github.com",
+    "sayhi@janberents.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "Holds liber-primus__transcription--master.txt, the file the community treats as the root transcription, plus page images, keys and indices.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "liber-primus__transcription--master/liber-primus__transcription--master.txt",
+    "n_runes": 15933,
+    "file_sha256": "cbaf7eb29e636d4bb06e79de2b412bd3bdd58cc80d0582a09ce52f5993f31385",
+    "sha256_indices": "c3eb607844a190915ef3436c148603973ae6bb07e98b3569164d9b7c3e9214e5",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "liber-primus__transcription--sentences/liber-primus__transcription--sentences.txt",
+     "liber-primus__translation/liber-primus__known-plain-text.txt"
+    ]
+   },
+   "transcription_sha256": "cbaf7eb29e636d4bb06e79de2b412bd3bdd58cc80d0582a09ce52f5993f31385",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Transcription and image repository. HEAD f2267b0c2f1e1d2662806b90b9c3a2953b3a7023, 59 commits.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": "The rune stream changed exactly once after creation: 218ed88 (2017-03-01, 15,935 runes) -> ed95eb7 (2017-05-21, 15,933) replaced two W+S pairs with the EA ligature at rune offsets 998 and 1135, inside the SOLVED 'A Koan' page. 3089b65 (2019-06-17) changed segment offsets but not a single rune. All three revisions contain all 57 canon segments verbatim."
   }
  ]
 }

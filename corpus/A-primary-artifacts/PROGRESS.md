@@ -63,16 +63,27 @@ Resume from the first unchecked box. Everything below is on disk.
       photographs and the `845145127.com` site save are on disk from two mirrors, and 7 of
       8 imgur-hosted chain images are **byte-identical** to the Internet Archive's own
       independent capture. See `REPORT-A.md` §3.
-- [x] **`1CcV1.jpg` — the 2012 opening image — has two byte-streams, and the archive's is
-      the degraded one.** The community copy carries 61 plaintext bytes after EOI; imgur's
-      re-encode dropped them. `CONFLICTS-A.md` C-02. This is the most important
-      methodological finding of the session.
-- [x] **`TRAILING-DATA.json`** — every JPEG/PNG in the corpus parsed structurally (markers
-      walked, `FF00` stuffing and RST markers handled) to find the true end of the image and
-      measure what lies past it. **8 files carry data after their real EOI/IEND**, 7 files do
-      not parse as well-formed images at all. Includes a 3.49 MB second JPEG appended to
-      `onion6.jpg`, a 336 KB trailer on Liber Primus page 05 that ends in a byte-reversed
-      JPEG header, and a 10.9 KB trailer on a **signature-attested** file.
+- [x] **`1CcV1.jpg` — the 2012 opening image — has three byte-streams, and the archive's is
+      the degraded one.** The community copy and the Fandom copy each carry 61 plaintext bytes
+      after EOI; imgur's re-encode dropped them. `CONFLICTS-A.md` C-02. This is the most
+      important methodological finding of the session.
+- [x] **`TRAILING-DATA.json`** (`_tools/trailing_scan.py`) — all 1,208 JPEG/PNG files parsed
+      structurally (markers walked, `FF00` stuffing and RST markers handled) to find the true
+      end of the image and measure what lies past it. **13 carry data after their real
+      EOI/IEND; 9 do not parse as well-formed images at all.** Includes a 3.49 MB second JPEG
+      appended to `onion6.jpg`, a 1.65 MB one on `ONION_2_JPG.jpg`, a 336 KB trailer on Liber
+      Primus page 05 that ends in a byte-reversed JPEG header, and a 10.9 KB trailer on a
+      **signature-attested** file. Cheap to re-run; do so whenever the corpus grows.
+- [x] **A third byte-stream of the 2012 opening image found by that scan.** Fandom's
+      `Final.jpg_2012.jpg` (29,261 B) is the community-mirror `1CcV1.jpg` (29,279 B) minus
+      exactly its 18-byte APP0/JFIF header — payload intact. So two independent archives hold
+      the payload-bearing stream and only imgur's lacks it; and the mysterious constant
+      18-byte Fandom deficit (288 files) is identified as APP0 stripping. `CONFLICTS-A.md`
+      C-02 and C-05.
+- [x] **All three later entry images visually confirmed on disk**: 2013
+      `cijhho123/2013/additional images/1357366592898.jpg`, 2014
+      `cijhho123/2014/additional images/zN4h51m.jpg`, 2016
+      `cijhho123/2016/2016/additional images/4gq25.jpg`. None cross-hashed yet — GAPS-A A-05.
 - [x] `_tools/grab.py` resume bug fixed: it skipped any path already in MANIFEST.json even
       when the file was absent from disk, so every resumed batch was a no-op.
 - [x] `GAPS-A.md`, `CONFLICTS-A.md`, `REPORT-A.md` written.

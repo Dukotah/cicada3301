@@ -83,15 +83,29 @@ web form somewhere in its history. Not investigated.
 
 ---
 
-## C-02 — Two byte-streams claim to be the 2012 opening image, and the archive's copy is the degraded one ★★★★★
+## C-02 — Three byte-streams claim to be the 2012 opening image, and the archive's copy is the degraded one ★★★★★
 
 `1CcV1.jpg` is the 2012-01-04 opening image (509×503, black, "Hello. We are looking for
-highly intelligent individuals…"). Lane A holds **two distinct byte-streams** for it:
+highly intelligent individuals…"). Lane A holds **three distinct byte-streams** for it:
 
 | copy | bytes | sha256 | provenance |
 |---|---|---|---|
 | community mirrors | 29,279 | `870353b8fbe4d1dd83fdbfc61b07d80213bab035526d3e5fd6a43f7d77db1ead` | `cijhho123/2012/additional media/images/1CcV1.jpg` and `krisyotam/puzzles/2012/images/1CcV1.jpg` — byte-identical to each other |
+| Fandom wiki | 29,261 | `a381daf635bc78d8a5b5ddbc25b55d459bc823fb2e02d0012627870ee1240573` | `wiki-uncovering-cicada/images/Final.jpg_2012.jpg` — **the mirror stream minus its 18-byte JFIF APP0 segment, nothing else**, and it still carries the payload |
 | Internet Archive | 27,517 | `72a1fd406da308cd61935fb116f2d73ea5cc008122518a23c9725f6ae1537029` | `2012/wayback/20131229091245_1CcV1.jpg`, Wayback raw (`id_`) capture of `http://i.imgur.com/1CcV1.jpg`, 2013-12-29 |
+
+The Fandom copy was found by the structural trailing-data scan (`TRAILING-DATA.json`) rather
+than by looking for it, and it changes the balance of the argument below: **two independent
+archives that are not each other now hold the payload-bearing stream, and only imgur's does
+not.** Diffed byte for byte, the Fandom copy shares a 3-byte prefix and a 29,258-byte suffix
+with the mirror copy; the entire difference is the removal of
+
+```
+FF E0 00 10  "JFIF" 00 01 01 00 00 01 00 01 00 00      (18 bytes, the APP0/JFIF header)
+```
+
+which is also the exact 18-byte deficit seen across 288 Fandom JPEGs in **C-05**. The two
+findings explain each other.
 
 Wayback's CDX index lists that same digest (`SYTRWGOSHT3PKVDFNPXRJAK3INJU3J62`) for every
 successful capture of that exact-case URL from **2013-12-29 through 2024-02-05**, and a second
@@ -132,10 +146,19 @@ right about that file and wrong about the artifact.
 
 ### What is *not* resolved
 
-Which stream, if either, is the bytes 4chan actually served on 2012-01-04. Both are copies:
-one via imgur's pipeline, one via a community archive of unknown chain of custody. It is
-equally consistent with the evidence that a solver appended the decoded line to their own
-copy as a note. **Recorded, not resolved.** The 4chan original is A-01 in `GAPS-A.md`.
+Which stream, if any, is the bytes 4chan actually served on 2012-01-04. All three are
+copies: one via imgur's pipeline, one via Fandom's, one via a community archive of unknown
+chain of custody. **Recorded, not resolved.** The 4chan original is A-01 in `GAPS-A.md`.
+
+### What the third stream does and does not settle
+
+It rules out one hypothesis: that a single community archivist appended the `TIBERIVS` line
+to their own copy and every other mirror descends from that one file. Fandom's copy carries
+the payload and is demonstrably *not* a copy of the mirror file (it is missing the APP0
+header, which no manual edit would remove while leaving a trailer intact — it is what
+Fandom's pipeline does to every JPEG it serves). It does **not** establish a chain of custody
+back to 4chan, which remains A-01. Both remaining possibilities — 3301 appended the line, or
+an early solver did and both later archives inherited it — are still open.
 
 ### Contrast: the rest of the chain agrees
 
@@ -212,15 +235,37 @@ The mismatch is not random:
 - **424 of the 486 mismatches are JPEGs.** 267 of the 343 matches are PNGs.
 - **288 of the 486 mismatches are short by exactly 18 bytes.**
 
-A constant 18-byte deficit concentrated in JPEGs is the signature of a delivery-side
-transformation stripping a fixed-size trailer or metadata segment, not of corrupt storage.
-In light of **C-02** — where 61 trailing bytes were the entire puzzle — an 18-byte deficit in
-288 files is not a rounding error. It is 288 files that may have been silently trimmed in
-precisely the region where Cicada put payloads.
+### The 18 bytes are now identified
 
-**Not resolved.** Settling it needs a fetch path that bypasses the image pipeline (a Fandom
-image dump, or the pre-Fandom `uncovering-cicada.wikia.com` originals via Wayback) and a
-byte-level diff against these copies. Recorded as A-06 in `GAPS-A.md`.
+`C-02` produced the control case. `wiki-uncovering-cicada/images/Final.jpg_2012.jpg` and the
+community mirrors' `1CcV1.jpg` are the same file, and a byte-level diff shows the Fandom copy
+is the mirror copy with **exactly one thing removed**:
+
+```
+FF E0 00 10  "JFIF" 00 01 01 00 00 01 00 01 00 00      (18 bytes, the APP0/JFIF header)
+```
+
+Everything else — including the 61-byte payload after EOI — survives byte for byte. So the
+constant 18-byte deficit across 288 files is **Fandom's delivery pipeline stripping the APP0
+segment**, not truncation and not loss of appended data.
+
+That is reassuring and it is not a licence to treat Fandom copies as originals:
+
+- **Every SHA-1 in the wiki's own API is unreachable through the delivery URL.** A hash-based
+  integrity check against Fandom cannot pass for these 424 JPEGs, so nothing fetched this way
+  can be cited as byte-exact.
+- **The other 198 mismatches are not 18 bytes.** Deficits of 37, 425, 632, 751 and 818 bytes
+  also appear, and those have not been characterised. A different transformation is acting on
+  those files.
+- **APP0 removal is only demonstrably harmless where a control copy exists.** For the wiki
+  images with no second holding — the majority — there is no way to show that APP0 was the
+  only thing dropped.
+
+**Partly resolved, and left recorded.** The 18-byte case is explained above. The remaining
+198 mismatches are not, and no Fandom-delivered file can be treated as byte-exact regardless.
+Closing it properly needs a fetch path that bypasses the image pipeline (a Fandom image dump,
+or the pre-Fandom `uncovering-cicada.wikia.com` originals via Wayback) and a byte-level diff
+against these copies. Recorded as A-06 in `GAPS-A.md`.
 
 Per-file evidence: `_logs/fandom_manifest.json` carries `wiki_declared_sha1`,
 `wiki_declared_bytes`, `sha1`, `bytes` and `sha1_matches_wiki` for all 829 rows.
@@ -269,9 +314,9 @@ distinguish *this file is not a signature* from *this signature does not verify*
 | id | conflict | severity | resolvable now? |
 |---|---|---|---|
 | C-01 | BADSIG caused by mirror armor damage, not forgery | ★★★★★ | cause demonstrated; upstream origin open |
-| C-02 | Two byte-streams for `1CcV1.jpg`; archive copy lacks the payload | ★★★★★ | no — needs the 4chan original (A-01) |
+| C-02 | Three byte-streams for `1CcV1.jpg`; the archive copy lacks the payload | ★★★★★ | no — needs the 4chan original (A-01) |
 | C-03 | Key snapshots disagree on third-party certifications | ★★★★☆ | no — needs keyserver history |
 | C-04 | Key file named with a non-matching fingerprint | ★★☆☆☆ | yes — filename defect, content canonical |
-| C-05 | Fandom bytes vs Fandom's declared SHA-1; 288 files short by 18 bytes | ★★★☆☆ | no — needs a non-pipeline fetch path |
+| C-05 | Fandom bytes vs Fandom's declared SHA-1; 288 files short by exactly the 18-byte APP0 header | ★★★☆☆ | cause identified for 288 of 486; the other 198 uncharacterised |
 | C-06 | outguess payload→image mapping vs the usual 2012 chain | ★★☆☆☆ | no — needs an outguess run (Lane G) |
 | C-07 | 17 held `.asc` files were HTTP 429 error pages | ★★★☆☆ | yes — refetched |

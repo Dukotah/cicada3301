@@ -539,13 +539,20 @@ add("rtkd__iddqd",
 add("cicada-solvers__iddqd", decoder_type="no-decoder", null_trustworthy="n/a",
     evidence="Org mirror of rtkd/iddqd.", what_it_tried="See rtkd/iddqd.",
     what_it_concluded="n/a")
-add("krisyotam__cicada3301", decoder_type="unknown", null_trustworthy="unknown",
-    evidence="Recovered late; an archive repository (LICENSE, README, archives/). Not "
-             "read in this lane.",
-    what_it_tried="Not assessed.", what_it_concluded="Not assessed.",
-    notes="Namesake of this project's canonical file liber-primus/data/krisyotam_runes.txt. "
-          "Should be checked for the 13,136-rune / 74cebdb0... stream and for its own "
-          "provenance note - see GAPS-E.md.")
+add("krisyotam__cicada3301", decoder_type="no-decoder", null_trustworthy="n/a",
+    evidence="Archive repository, HEAD 76d3ee8c762f60025822c8c05edbf31351636469, created "
+             "2026-04-11. Holds archives/cijhho/{2012,2014,2016,...} of puzzle material.",
+    what_it_tried="Documentation and material archive, not a solver.",
+    what_it_concluded="n/a",
+    notes="Namesake of this project's canonical file krisyotam_runes.txt, and it settles "
+          "where that file came from. Its archives/cijhho/2014/ folder holds TWO rune "
+          "streams: 'Liber Primus/runes in text format.txt' is 13,136 runes hashing to "
+          "74cebdb0... - a third copy of our canon - while 'additional docs/scripts/"
+          "runes.py' (13,092) and 'runescript.py.py' (13,101) reproduce henkman's exact "
+          "three contradictions (seg 33 @100 and @117 B->W, seg 55 @19 X->L) and "
+          "henkman's missing-segment set. So the dissenting reading is a LINEAGE, not a "
+          "slip. Dating caveat: the '2014' is a folder label inside a 2026 archive, not "
+          "git evidence. See CONFLICTS-E.md C-E-03b.")
 for n, why in [
     ("cicada-solvers__gutenberg-txt", "Plaintext corpus for running-key candidate keys."),
     ("cicada-solvers__neuroretransmit-cicada",
@@ -555,3 +562,12 @@ for n, why in [
 ]:
     add(n, decoder_type="unknown", null_trustworthy="unknown", evidence=why,
         what_it_tried=why, what_it_concluded="Not assessed.")
+
+add("yo-yo-yo-jbo__cicada_tools",
+    decoder_type="skip-aware-search", null_trustworthy="partial",
+    evidence="Upstream of cicada-solvers/JBO-cicada_tools; same "
+             "research_utils.py:iterate_potential_interrupter_indices() exhaustive "
+             "2**k subset enumerator and same KeystreamTransformer key hold, with "
+             "consider_interrupters defaulting to False.",
+    what_it_tried="See cicada-solvers/JBO-cicada_tools.",
+    what_it_concluded="See cicada-solvers/JBO-cicada_tools.")

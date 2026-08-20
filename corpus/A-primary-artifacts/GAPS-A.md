@@ -114,7 +114,7 @@ does with these files.
 
 ---
 
-## A-05 — The 2013, 2014 and 2016 entry images ★★★☆☆
+## A-05 — The 2013, 2014 and 2016 entry images: held, but never cross-checked ★★★☆☆
 
 **Status: largely closed this session.**
 
@@ -137,16 +137,18 @@ oak-tree-with-runes image — **visually confirmed**, faint tree behind the text
 lies empty; epiphany seeks the devoted … Beware false paths. Verify OpenPGP 7A35090F."*
 Also not yet cross-hashed against a second holding.
 
-**Still open:** the **2014 entry image** has not been identified by eye in the recovered
-trees. `cijhho123/2014/additional images/` holds 57 files, none of which has been visually
-checked against the 2014 opening message. And none of the 2013/2014/2016 entry images has a
-second independent holding on disk, so none of them has had the check that produced
-`CONFLICTS-A.md` C-02.
+**Confirmed held for 2014:** `cijhho123/2014/additional images/zN4h51m.jpg` — **visually
+confirmed**, *"Hello. Epiphany is upon you. Your pilgrimage has begun. Enlightenment awaits."*
 
-**What would close it:** (a) open the 2014 image set and identify the entry image by eye,
-the way 2013 and 2016 were identified here; (b) re-run the cross-mirror hash comparison used
-for the 2012 chain (`REPORT-A.md` §4) over all three entry images, which needs at least one
-more mirror pulled (A-08).
+**Still open:** none of the 2013, 2014 or 2016 entry images has a **second independent
+holding** on disk, so none has had the check that produced `CONFLICTS-A.md` C-02 — and C-02
+is the reason to care: the one 2012 image that turned out to have three different byte-streams
+was the one nobody had cross-checked. Two of the three streams were found only because the
+scan was run.
+
+**What would close it:** re-run the cross-mirror hash comparison used for the 2012 chain
+(`REPORT-A.md` §4) over all three entry images. That needs at least one more mirror pulled
+(A-08) plus the Fandom copies, which are now on disk.
 
 ---
 
@@ -248,7 +250,7 @@ run `gpg --clearsign`*, which is a narrower claim than it will be tempting to ma
 | 1 | **A-07** — get an outguess build in front of the files already on disk | unblocks C-02, C-06 and A-06 at once; artifacts are already here |
 | 2 | **A-04** — decode the poster QR codes | one afternoon, converts pixels into searchable text |
 | 3 | **A-09** — mine the 315 key certifications | a complete unmined dataset already in hand |
-| 4 | **A-05** — finish and hash-verify the 2013/2014/2016 entry images | the pull is already running; only the verification is owed |
+| 4 | **A-05** — cross-hash the 2013/2014/2016 entry images against a second holding | all three are on disk and visually confirmed; only the byte check is owed, and C-02 shows what it catches |
 | 5 | **A-06** — chase the pre-Fandom wikia originals through Wayback | the CDX walk already exists, unmined |
 | 6 | **A-03** — match poster photos to the signed coordinate list | turns "roughly eight missing" into a specific list |
 | 7 | **A-08** — pull the remaining mirrors for cross-hashing | cheap corroboration; C-02 proves the method earns its keep |
