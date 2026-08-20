@@ -1,0 +1,1275 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="en">
+  <siteinfo>
+    <sitename>Uncovering Cicada Wiki</sitename>
+    <dbname>uncoveringcicada</dbname>
+    <base>https://uncovering-cicada.fandom.com/wiki/Uncovering_Cicada_Wiki</base>
+    <generator>MediaWiki 1.43.9</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Uncovering Cicada Wiki</namespace>
+      <namespace key="5" case="first-letter">Uncovering Cicada Wiki talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="110" case="first-letter">Forum</namespace>
+      <namespace key="111" case="first-letter">Forum talk</namespace>
+      <namespace key="420" case="first-letter">GeoJson</namespace>
+      <namespace key="421" case="first-letter">GeoJson talk</namespace>
+      <namespace key="500" case="first-letter">User blog</namespace>
+      <namespace key="501" case="first-letter">User blog comment</namespace>
+      <namespace key="502" case="first-letter">Blog</namespace>
+      <namespace key="503" case="first-letter">Blog talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1200" case="first-letter">Message Wall</namespace>
+      <namespace key="1201" case="first-letter">Thread</namespace>
+      <namespace key="1202" case="first-letter">Message Wall Greeting</namespace>
+      <namespace key="1203" case="first-letter">Message Wall Greeting Talk</namespace>
+      <namespace key="2900" case="first-letter">Map</namespace>
+      <namespace key="2901" case="first-letter">Map talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Template:Infobox/doc</title>
+    <ns>10</ns>
+    <id>1938</id>
+    <revision>
+      <id>3953</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision</comment>
+      <origin>3953</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="2158" sha1="qse7z9xfngpb7hnjrehq01zt9cvl7fo" xml:space="preserve">==Description==
+This template is a sample infobox, to aid in the creation of new infoboxes.
+
+Recommended usage: copy the template code to a new template page, and edit it there.
+
+===Infobox and template background===
+See [[Help:Templates]], [[Help:Infobox]] and [[Help:Tables]] for some background on how templates and infoboxes work.
+
+===Building blocks===
+The infobox is made of the following basic building blocks:
+
+* Overall table class: &lt;code&gt;class="wikia-infobox"&lt;/code&gt;
+* Table heading cell class: &lt;code&gt;class="wikia-infobox-header"&lt;/code&gt;
+* Use row header marks ("&lt;code&gt;!&lt;/code&gt;") for row title cells ''(and "&lt;code&gt;|&lt;/code&gt;" for normal cells)''
+* Section separator line: give the header below it a wrapping &lt;code&gt;div&lt;/code&gt; with &lt;code&gt;class="wikia-infobox-section-header"&lt;/code&gt;
+* Image cell class: &lt;code&gt;class="wikia-infobox-image"&lt;/code&gt;
+* Image caption cell class: &lt;code&gt;class="wikia-infobox-caption"&lt;/code&gt;
+
+===Other notes===
+* The Title, First, Second, and Third rows show ''"Unknown"'' if their values are not specified.
+* The Image, Imagecaption, Fourth, Fifth, and Sixth rows won't show up if their values are not specified: they are each completely enclosed in an 'if' statement.
+
+==Syntax==
+&lt;pre&gt;
+{{infobox
+ | title         = 
+ | image         = [e.g. "Example.jpg"]
+ | imagewidth    = [e.g. "150"] [default: 210 pixels]
+ | imagecaption  = 
+ | first         =
+ | second        =
+ | third         =
+ | fourth        =
+ | fifth         =
+ | sixth         =
+}}
+&lt;/pre&gt;
+
+==Samples==
+&lt;pre&gt;
+{{infobox
+ | title         = A pretty flower
+ | image         = Example.jpg
+ | imagewidth    = 100
+ | imagecaption  = Floweris flowerum
+ | first         = Pink and green
+ | second        = Outdoors
+ | fourth        = Annual
+}}
+&lt;/pre&gt;
+
+Results in...
+
+{{infobox
+ | title         = A pretty flower
+ | image         = Example.jpg
+ | imagewidth    = 100
+ | imagecaption  = Floweris flowerum
+ | first         = Pink and green
+ | second        = Outdoors
+ | fourth        = Annual
+}}
+
+&lt;includeonly&gt;[[Category:General wiki templates|{{PAGENAME}}]][[Category:Infobox templates| ]]&lt;/includeonly&gt;&lt;noinclude&gt;[[Category:Template documentation|{{PAGENAME}}]]&lt;/noinclude&gt;</text>
+      <sha1>qse7z9xfngpb7hnjrehq01zt9cvl7fo</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Infobox event/doc</title>
+    <ns>10</ns>
+    <id>1965</id>
+    <revision>
+      <id>3963</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision</comment>
+      <origin>3963</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="868" sha1="ow92atmv1j6hxqocyksqz6qgyqf7uhp" xml:space="preserve">==Description==
+To use this template, copy the following code and fill in the appropriate fields.
+
+==Syntax==
+&lt;pre&gt;
+{{infobox event
+ | title         = 
+ | image         = [e.g. "Example.jpg"]
+ | imagewidth    = [e.g. "150"] [default: 210 pixels]
+ | imagecaption  = 
+ | participants  = 
+ | date          = 
+ | location      = 
+}}
+&lt;/pre&gt;
+
+==Samples==
+&lt;pre&gt;
+{{infobox event
+ | title         = Flower du Jour
+ | image         = Example.jpg
+ | participants  = Everyone
+ | date          = All the time
+ | location      = Everywhere
+}}
+&lt;/pre&gt;
+
+Results in...
+
+{{infobox event
+ | title         = Flower du Jour
+ | image         = Example.jpg
+ | participants  = Everyone
+ | date          = All the time
+ | location      = Everywhere
+}}
+
+&lt;includeonly&gt;[[Category:Infobox templates|{{PAGENAME}}]]&lt;/includeonly&gt;&lt;noinclude&gt;[[Category:Template documentation|{{PAGENAME}}]]&lt;/noinclude&gt;</text>
+      <sha1>ow92atmv1j6hxqocyksqz6qgyqf7uhp</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Infobox item</title>
+    <ns>10</ns>
+    <id>1959</id>
+    <revision>
+      <id>3947</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision</comment>
+      <origin>3947</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="847" sha1="pxre543y6hf3junixc8b1ci2gdrckhh" xml:space="preserve">&lt;onlyinclude&gt;{| class="wikia-infobox"
+
+|-
+! class="wikia-infobox-header" colspan="2" | {{{title|''Unknown''}}}
+
+|-
+{{#if: {{{image|}}} |
+{{!}} class="wikia-infobox-image" colspan="2" {{!}} [[File:{{{image}}}|{{{imagewidth|210}}}px|{{{imagecaption|}}}]]
+| }}
+
+|-
+{{#if: {{{imagecaption|}}} |
+{{!}} class="wikia-infobox-caption" colspan="2" {{!}} {{{imagecaption}}}
+| }}
+
+|-
+! colspan="2" | &lt;div class="wikia-infobox-section-header"&gt;Vital statistics&lt;/div&gt;
+
+|-
+! Type
+| {{{type|''Unknown''}}}
+
+|-
+! Effects
+| {{{effects|''Unknown''}}}
+
+|-
+! Source
+| {{{source|''Unknown''}}}
+
+|-
+! Cost to buy
+| {{{buy|''Unknown''}}}
+
+|-
+! Cost to sell
+| {{{sell|''Unknown''}}}
+
+|- style="font-size:0; line-height:0;"
+! style="width:50%; padding:0" |
+! style="width:50%; padding:0" |
+
+|}&lt;/onlyinclude&gt;&lt;noinclude&gt;&lt;br style="clear:both;"/&gt;
+{{documentation}}&lt;/noinclude&gt;</text>
+      <sha1>pxre543y6hf3junixc8b1ci2gdrckhh</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Infobox item/doc</title>
+    <ns>10</ns>
+    <id>1966</id>
+    <revision>
+      <id>3965</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision</comment>
+      <origin>3965</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="963" sha1="4on2d5q6yektxr517vle3nxwkrfjjkb" xml:space="preserve">==Description==
+To use this template, copy the following code and fill in the appropriate fields.
+
+==Syntax==
+&lt;pre&gt;
+{{infobox item
+ | title         = 
+ | image         = [e.g. "Example.jpg"]
+ | imagewidth    = [e.g. "150"] [default: 210 pixels]
+ | imagecaption  = 
+ | type          = 
+ | effects       = 
+ | source        = 
+ | buy           = 
+ | sell          = 
+}}
+&lt;/pre&gt;
+
+==Samples==
+&lt;pre&gt;
+{{infobox item
+ | title         = Power Flower
+ | image         = Example.jpg
+ | type          = Food
+ | effects       = +1 Fire
+ | source        = Vendor
+ | buy           = 5g
+ | sell          = 1g
+}}
+&lt;/pre&gt;
+
+Results in...
+
+{{infobox item
+ | title         = Power Flower
+ | image         = Example.jpg
+ | type          = Food
+ | effects       = +1 Fire
+ | source        = Vendor
+ | buy           = 5g
+ | sell          = 1g
+}}
+
+&lt;includeonly&gt;[[Category:Infobox templates|{{PAGENAME}}]]&lt;/includeonly&gt;&lt;noinclude&gt;[[Category:Template documentation|{{PAGENAME}}]]&lt;/noinclude&gt;</text>
+      <sha1>4on2d5q6yektxr517vle3nxwkrfjjkb</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Infobox location</title>
+    <ns>10</ns>
+    <id>1960</id>
+    <revision>
+      <id>3949</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision</comment>
+      <origin>3949</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1059" sha1="449w84hvgj721hgs36aj1i7ry1vif80" xml:space="preserve">&lt;onlyinclude&gt;{| class="wikia-infobox"
+
+|-
+! class="wikia-infobox-header" colspan="2" | {{{title|''Unknown''}}}
+
+|-
+{{#if: {{{image|}}} |
+{{!}} class="wikia-infobox-image" colspan="2" {{!}} [[File:{{{image}}}|{{{imagewidth|210}}}px|{{{imagecaption|}}}]]
+| }}
+
+|-
+{{#if: {{{imagecaption|}}} |
+{{!}} class="wikia-infobox-caption" colspan="2" {{!}} {{{imagecaption}}}
+| }}
+
+|-
+{{#if: {{{map|}}} |
+{{!}} class="wikia-infobox-image" colspan="2" {{!}} [[File:{{{image}}}|{{{mapwidth|210}}}px|{{{mapcaption|}}}]]
+| }}
+
+|-
+{{#if: {{{mapcaption|}}} |
+{{!}} class="wikia-infobox-caption" colspan="2" {{!}} {{{mapcaption}}}
+| }}
+
+|-
+! colspan="2" | &lt;div class="wikia-infobox-section-header"&gt;Vital statistics&lt;/div&gt;
+
+|-
+! Type
+| {{{type|''Unknown''}}}
+
+|-
+! Level
+| {{{level|''Unknown''}}}
+
+|-
+! Location
+| {{{location|''Unknown''}}}
+
+|-
+! Inhabitants
+| {{{inhabitants|''Unknown''}}}
+
+|- style="font-size:0; line-height:0;"
+! style="width:50%; padding:0" |
+! style="width:50%; padding:0" |
+
+|}&lt;/onlyinclude&gt;&lt;noinclude&gt;&lt;br style="clear:both;"/&gt;
+{{documentation}}&lt;/noinclude&gt;</text>
+      <sha1>449w84hvgj721hgs36aj1i7ry1vif80</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Infobox location/doc</title>
+    <ns>10</ns>
+    <id>1967</id>
+    <revision>
+      <id>3967</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision</comment>
+      <origin>3967</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1251" sha1="2y0iiwg2iaixuel5iazrv5m7fpzyjv5" xml:space="preserve">==Description==
+To use this template, copy the following code and fill in the appropriate fields.
+
+==Syntax==
+&lt;pre&gt;
+{{infobox location
+ | title         = 
+ | image         = [e.g. "Example.jpg"]
+ | imagewidth    = [e.g. "150"] [default: 210 pixels]
+ | imagecaption  = 
+ | map           = [e.g. "Example.jpg"]
+ | mapwidth      = [e.g. "150"] [default: 210 pixels]
+ | mapcaption    = 
+ | type          = 
+ | level         = 
+ | location      = 
+ | inhabitants   = 
+}}
+&lt;/pre&gt;
+
+==Samples==
+&lt;pre&gt;
+{{infobox location
+ | title         = Flora Island
+ | image         = Example.jpg
+ | imagecaption  = The island
+ | map           = Example.jpg
+ | mapcaption    = Zone map
+ | type          = Contested
+ | level         = 1-5
+ | location      = Earth
+ | inhabitants   = Stompy Humans, Drinky Bees
+}}
+&lt;/pre&gt;
+
+Results in...
+
+{{infobox location
+ | title         = Flora Island
+ | image         = Example.jpg
+ | imagecaption  = The island
+ | map           = Example.jpg
+ | mapcaption    = Zone map
+ | type          = Contested
+ | level         = 1-5
+ | location      = Earth
+ | inhabitants   = Stompy Humans, Drinky Bees
+}}
+
+&lt;includeonly&gt;[[Category:Infobox templates|{{PAGENAME}}]]&lt;/includeonly&gt;&lt;noinclude&gt;[[Category:Template documentation|{{PAGENAME}}]]&lt;/noinclude&gt;</text>
+      <sha1>2y0iiwg2iaixuel5iazrv5m7fpzyjv5</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Infobox quest</title>
+    <ns>10</ns>
+    <id>1961</id>
+    <revision>
+      <id>3951</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision</comment>
+      <origin>3951</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1095" sha1="a628x4pcipewli8dyomhz2l7vt8pqav" xml:space="preserve">&lt;onlyinclude&gt;{| class="wikia-infobox"
+
+|-
+! class="wikia-infobox-header" colspan="2" | {{{title|''Unknown''}}}
+
+|-
+{{#if: {{{image|}}} |
+{{!}} class="wikia-infobox-image" colspan="2" {{!}} [[File:{{{image}}}|{{{imagewidth|210}}}px|{{{imagecaption|}}}]]
+| }}
+
+|-
+{{#if: {{{imagecaption|}}} |
+{{!}} class="wikia-infobox-caption" colspan="2" {{!}} {{{imagecaption}}}
+| }}
+
+|-
+! colspan="2" | &lt;div class="wikia-infobox-section-header"&gt;Vital statistics&lt;/div&gt;
+
+|-
+! Start
+| {{{start|''Unknown''}}}
+
+|-
+! End
+| {{{end|''Unknown''}}}
+
+|-
+! Prerequisites
+| {{{prerequisites|''Unknown''}}}
+
+|-
+! Level
+| {{{level|''Unknown''}}}
+
+|-
+! Location
+| {{{location|''Unknown''}}}
+
+|-
+! Rewards
+| {{{rewards|''Unknown''}}}
+
+|-
+! colspan="2" | &lt;div class="wikia-infobox-section-header"&gt;Quest progression&lt;/div&gt;
+
+|-
+! Previous
+| '''Next'''
+
+|-
+! style="font-weight:normal;" | {{{previous|''Unknown''}}}
+| {{{next|''Unknown''}}}
+
+|- style="font-size:0; line-height:0;"
+! style="width:50%; padding:0" |
+! style="width:50%; padding:0" |
+
+|}&lt;/onlyinclude&gt;&lt;noinclude&gt;&lt;br style="clear:both;"/&gt;
+{{documentation}}&lt;/noinclude&gt;</text>
+      <sha1>a628x4pcipewli8dyomhz2l7vt8pqav</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Infobox quest/doc</title>
+    <ns>10</ns>
+    <id>1968</id>
+    <revision>
+      <id>3969</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision</comment>
+      <origin>3969</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1205" sha1="7r3vzlqpdlxiucpf8q7cse1kpr92tb2" xml:space="preserve">==Description==
+To use this template, copy the following code and fill in the appropriate fields.
+
+==Syntax==
+&lt;pre&gt;
+{{infobox quest
+ | title         = 
+ | image         = [e.g. "Example.jpg"]
+ | imagewidth    = [e.g. "150"] [default: 210 pixels]
+ | imagecaption  = 
+ | start         = 
+ | end           = 
+ | prerequisites = 
+ | level         = 
+ | location      = 
+ | rewards       = 
+ | previous      =
+ | next          =
+}}
+&lt;/pre&gt;
+
+==Samples==
+&lt;pre&gt;q
+{{infobox quest
+ | title         = Flowers of Justice!
+ | image         = Example.jpg
+ | start         = Chrys
+ | end           = Geran
+ | prerequisites = None
+ | level         = 5
+ | location      = Earth
+ | rewards       = Justice-Wrought Petals
+ | previous      = A
+ | next          = C
+}}
+&lt;/pre&gt;
+
+Results in...
+
+{{infobox quest
+ | title         = Flowers of Justice!
+ | image         = Example.jpg
+ | start         = Chrys
+ | end           = Geran
+ | prerequisites = None
+ | level         = 5
+ | location      = Earth
+ | rewards       = Justice-Wrought Petals
+ | previous      = A
+ | next          = C
+}}
+
+&lt;includeonly&gt;[[Category:Infobox templates|{{PAGENAME}}]]&lt;/includeonly&gt;&lt;noinclude&gt;[[Category:Template documentation|{{PAGENAME}}]]&lt;/noinclude&gt;</text>
+      <sha1>7r3vzlqpdlxiucpf8q7cse1kpr92tb2</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Investigations</title>
+    <ns>10</ns>
+    <id>28092</id>
+    <revision>
+      <id>43903</id>
+      <parentid>43889</parentid>
+      <timestamp>2023-07-07T07:37:22Z</timestamp>
+      <contributor>
+        <username>Tweqx</username>
+        <id>48666715</id>
+      </contributor>
+      <minor/>
+      <comment>Re-order the "Other" section</comment>
+      <origin>43903</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1931" sha1="6e5n4p7nd4zhyd4jvjv4mrloziq5j8s" xml:space="preserve">&lt;includeonly&gt;{{NavboxEx
+|name=Investigations
+|title=[[:Category:Investigations|Investigations]]&lt;!-- &amp;nbsp; &lt;small&gt;&amp;#91;[[:Category:Investigations|c]]&amp;#93;&lt;/small&gt;--&gt;
+|bodyclass = mw-collapsible
+|state={{#if:{{{sub|}}}|mw-collapsed|mw-uncollapsed}}
+|liststyle = white-space:nowrap;
+|titlestyle = background:#303030;
+|groupstyle = background:#202020; text-align:center; white-space:nowrap;
+|belowstyle = background:#202020; text-align:right; margin:0; padding:0;
+|group1 = What Happened
+|list1={{flatlist | 
+* [[What_Happened_(2012)|2012 - Main]]
+* [[The second chance (2012)|2012 - The Second Chance]]
+}}{{flatlist | 
+* [[What_Happened_Part_1_(2013)|2013 - Part 1]]
+* [[What_Happened_Part_2_(2013)|2013 - Part 2]]
+}}
+{{flatlist | 
+* [[What_Happened_Part_1_(2014)|2014]]
+* [[What_Happened_Liber_Primus_(Post_2014)|Post-2014]]
+}}
+|group2 = [[Liber Primus]]
+|list2={{flatlist | 
+* [[Liber Primus Unsolved Pages]]
+* [[How the solved pages of the Liber Primus were solved]]
+* [[Possible hints never used]]
+* [[Frequency Analysis Unsolved Pages]]
+}}{{flatlist | 
+* [[PAGE 56]]
+* [[PAGE 57]]
+}}{{flatlist | 
+* [[Onion 7: numbers on page 15]]
+}}
+|group3 = Other
+|list3 = {{flatlist | 
+* [[Necrome_cyberterrorism_refutation|The Necrome Cyberterrorism Refutation (2012)]]
+* [[The Leaked Email|The Leaked Email (2012, 2013)]] 
+}}{{flatlist | 
+* [[Cicada_Breaks_the_Silence:_2015_Twitter_Message|2015 Message]]
+* [[2016 Puzzle|2016 Message]]
+* [[PGP Signed Message April 2017]]
+}}
+|below={{#if:{{{sub|yes}}}|| Placeholder }}
+}}{{#if:{{{sub|}}}||{{#if:{{{1|}}}|[[Category:{{{1}}}]]|[[Category:Investigations]]}}}}&lt;/includeonly&gt;&lt;noinclude&gt;
+
+=Examples=
+{{Investigations}}
+&lt;pre&gt;{{Investigations}}&lt;/pre&gt;
+==Subcategory==
+Specify a parameter to explicitly set an override category (for subcats)
+{{Investigations|Example subcategory}}
+&lt;pre&gt;{{Investigations|Example subcategory}}&lt;/pre&gt;
+
+
+&lt;/noinclude&gt;&lt;noinclude&gt;
+[[Category:Investigations|*]]&lt;/noinclude&gt;</text>
+      <sha1>6e5n4p7nd4zhyd4jvjv4mrloziq5j8s</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Main</title>
+    <ns>10</ns>
+    <id>1820</id>
+    <revision>
+      <id>3302</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision</comment>
+      <origin>3302</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="71" sha1="e5ls99grbmf7nstk9lzjqfnryrbnhf2" xml:space="preserve">:''Main article: [[{{{1}}}]]''&lt;noinclude&gt;
+{{documentation}}&lt;/noinclude&gt;</text>
+      <sha1>e5ls99grbmf7nstk9lzjqfnryrbnhf2</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Main/doc</title>
+    <ns>10</ns>
+    <id>1930</id>
+    <revision>
+      <id>3409</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>4 revisions</comment>
+      <origin>3409</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="405" sha1="mgou0bvbzc0501rfrlriw926dv19ich" xml:space="preserve">;Description
+:This template is used at the start of a section to link to the main article on that subject. 
+;Syntax
+:Type &lt;code&gt;{{t|main|page name}}&lt;/code&gt;
+;Sample output
+:&lt;code&gt;&lt;nowiki&gt;{{main|Help:Contents}}&lt;/nowiki&gt;&lt;/code&gt; gives...
+:{{main|Help:Contents}}
+
+&lt;includeonly&gt;[[Category:General wiki templates|{{PAGENAME}}]]&lt;/includeonly&gt;&lt;noinclude&gt;[[Category:Template documentation|{{PAGENAME}}]]&lt;/noinclude&gt;</text>
+      <sha1>mgou0bvbzc0501rfrlriw926dv19ich</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Menu</title>
+    <ns>10</ns>
+    <id>6511</id>
+    <revision>
+      <id>29073</id>
+      <parentid>21950</parentid>
+      <timestamp>2016-01-10T21:54:57Z</timestamp>
+      <contributor>
+        <username>CrAzYPiLoT</username>
+        <id>24976600</id>
+      </contributor>
+      <comment>/* Cicada 3301 2014 Main articles and Subpages */</comment>
+      <origin>29073</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="3772" sha1="dz3kliac9kq84g0n9rnj72eg942ljgp" xml:space="preserve">==Cicada 3301 2014 Main articles and Subpages==
+
+&lt;div style="text-align:center;font-size:20px;line-height:23px;"&gt;
+'''Main articles:'''
+*'''[[2016 Puzzle|2016 PUZZLE; POSSIBLE BACKREFERENCE TO 2014 PUZZLE]] &gt;NEWEST CLUES&lt;'''
+*'''[[CICADA_3301_2014_PUZZLE_FACTS_PART_9|MAIN CICADA 3301 2014 PAGE PART 9]]  &gt;NEW DISCOVERIES&lt;'''
+*'''[[CICADA_3301_2014_PUZZLE_FACTS_PART_8|MAIN CICADA 3301 2014 PAGE PART 8]]  DISCONTINUED'''
+*'''[[CICADA_3301_2014_PUZZLE_FACTS_PART_7|MAIN CICADA 3301 2014 PAGE PART 7]]  DISCONTINUED'''
+*'''[[CICADA_3301_2014_PUZZLE_FACTS_PART_6|MAIN CICADA 3301 2014 PAGE PART 6]]  DISCONTINUED'''
+*'''[[CICADA_3301_2014_PUZZLE_FACTS_PART_5|MAIN CICADA 3301 2014 PAGE PART 5]]  DISCONTINUED'''
+*'''[[CICADA_3301_2014_PUZZLE_FACTS_PART_4|MAIN CICADA 3301 2014 PAGE PART 4]]  DISCONTINUED'''
+*'''[http://uncovering-cicada.wikia.com/wiki/CICADA_3301_2014_PUZZLE_FACTS_PART_3#CICADA_3301_2014_PUZZLE_FACTS_PART_3 MAIN CICADA 3301 2014 PAGE PART 3]    DISCONTINUED'''
+*'''[[ONION_2_with_3_JPGs,_3_outguesses,_RUNES_and_PGP_signed_CIPHERTEXT_IN_5_GRAMS|MAIN CICADA 3301 2014 PAGE PART 2 ]]''' '''DISCONTINUED'''
+*'''[[CICADA 3301 2014 PUZZLE|MAIN CICADA 3301 2014 PAGE PART 1]]''' '''ACTIVE'''
+&lt;/div&gt;
+&lt;div style="text-align:center;color: #70b8ff;"&gt;Subpages, tools, splinter groups, other sources...&lt;/div&gt;
+&lt;div class="toccolours mw-collapsible mw-collapsed" style="width:55%"&gt;
+&lt;div class="mw-collapsible-content"&gt;
+'''Subpages:'''
+'''Hot Links:'''
+*[[Special:RecentChanges|'''Recent Wikia Changes''']]
+*[[Usefull online tools|Useful online tools, Runes decoder added]]
+*[[Did_Cicada_started_on_Berkeley|We found traces of some Cicada Crypto group from 90s]]
+*[[Outguess_detection_visaul_analysis|Outguess visual analysis, or do we have outguess on page 4 and 6?]] &lt;&lt;&lt; table and RAR of all images files from Cicada 3301 2012-2014.
+'''Warm Links:'''
+*[[Loose ends]] (all things we never used)
+*[[PRIMES MENTIONED IN 2014 PUZZLE|List of all Words, phrases and Primes mentioned in 2014 puzzle]] &lt;&lt;&lt; all dictionaries
+*[[Runes_Transcriptions|Runes Transcription]]
+*[[2014_THINGS_THAT_HAD_BEEN_XORED|2014 THINGS THAT HAD BEEN XORED]] (please put in things you tried)
+*[[XOR_2014_TIPS|XOR 2014 tips]]
+*[[Loose_ends#HOW_TO_OUTGUESS|Outguess tutorial]]
+*[[suomynona's_Fibbonachi_and_Runic_information|suomynona's Fibbonachi and Runic information]]
+*[[D_Synapse_Golden_Cicada_Journey|D_Synapse's Golden Cicada&amp;Journey to the West]]
+*[[User_blog:BrotherBox/Adopting_the_wiki|Wikia community discusion]]
+*[[Wind|Who is Wind, wind, or wind_ and why so many people are talking about her?]]
+*[http://uncovering-cicada.wikia.com/wiki/%2812_hours_after_finding_n,_8_hours_of_factorizing%29 Few logs and details about factorizing operation]
+*[[Gnu_Privacy_Guard|GPG Gnu Privacy Guard]]
+'''/dev/random'''
+*[[Post_of_the_Day|Post of the day]]
+*[[CICADA_3301_2014_PUZZLE_FACTS_THE_END_JOKES|CICADA 3301 2014 PUZZLE FACTS THE END JOKES]]
+*[[Good luck 3301 background and custom CSS]]
+*[[Puzzles_we_found_in_2014_and_doesnt_look_legit_PART_2#FURTHER_INVESTIGATION_http:.2F.2Fwww.3301.eu.2F|www.3301.eu is fake]]
+*[https://en.wikipedia.org/wiki/Cicada_3301 Wikipedia Cicada 3301 article]
+'''Some other groups and pages''
+*[https://plus.google.com/communities/116998958335668307586 Team Cicada Google+]
+*[http://piratepad.net/ep/pad/view/ro.XxSraWHDYOj/latest Team PiratePad]
+*[https://gist.github.com/numinit/4cd82eba206a8af9561c Numinit gist page]
+*[http://www.henrikfalk.se/2014/01/cicada-3301-2014.html Henrik Falk blog with quick no junk explanation]
+*[https://www.facebook.com/groups/193058194235343/ Facebook group]
+*[http://www.hackforums.net/showthread.php?tid=4001361&amp;page=2&amp;highlight=cicada+3301 Hack Forums]
+''If you want to add your link on this menu PM Lurker69''
+&lt;/div&gt;
+&lt;/div&gt;</text>
+      <sha1>dz3kliac9kq84g0n9rnj72eg942ljgp</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Navbar</title>
+    <ns>10</ns>
+    <id>28084</id>
+    <revision>
+      <id>37878</id>
+      <parentid>37877</parentid>
+      <timestamp>2018-01-13T02:30:42Z</timestamp>
+      <contributor>
+        <username>Crashdemons</username>
+        <id>26565518</id>
+      </contributor>
+      <minor/>
+      <comment>Crashdemons moved page [[Navbar]] to [[Template:Navbar]] without leaving a redirect: wrong namespace</comment>
+      <origin>37878</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1358" sha1="nomsksgcvp1t3o238jl75ws4czki4sy" xml:space="preserve">&lt;span class="noprint plainlinks navbar" style="{{{style|}}}"&gt;&lt;small&gt;&lt;!--
+
+--&gt;{{#if:{{{mini|}}}{{{plain|}}}|&lt;!--nothing--&gt;|&lt;!--else:
+--&gt;&lt;span style="{{{fontstyle|}}}"&gt;{{{text|This box:}}} &lt;/span&gt;}}&lt;!--
+
+--&gt;{{#if:{{{brackets|}}}|&lt;span style="{{{fontstyle|}}}"&gt;&amp;#91;&lt;/span&gt;}}&lt;!--
+
+--&gt;&lt;span style="white-space:nowrap;word-spacing:-.12em;"&gt;&lt;!--
+--&gt;[[{{ns:10}}:{{{1}}}|&lt;span style="{{{fontstyle|}}}" title="View this template"&gt;&lt;!--
+--&gt;{{#if:{{{mini|}}}|v|view}}&lt;/span&gt;]]&lt;!--
+
+--&gt;&lt;span style="{{{fontstyle|}}}"&gt;&amp;#32;&lt;b&gt;&amp;middot;&lt;/b&gt;&amp;#32;&lt;/span&gt;&lt;!--
+--&gt;[[{{ns:11}}:{{{1}}}|&lt;span style="{{{fontstyle|}}}" title="Discuss this template"&gt;&lt;!--
+--&gt;{{#if:{{{mini|}}}|d|talk}}&lt;/span&gt;]]&lt;!--
+
+--&gt;&lt;span style="{{{fontstyle|}}}"&gt;&amp;#32;&lt;b&gt;&amp;middot;&lt;/b&gt;&amp;#32;&lt;/span&gt;&lt;!--
+--&gt;[{{fullurl:{{ns:10}}:{{{1}}}|action=purge}} &lt;span style="{{{fontstyle|}}}" title="Refresh this template"&gt;&lt;!--
+--&gt;{{#if:{{{mini|}}}|r|purge}}&lt;/span&gt;]&lt;!--
+
+--&gt;{{#if:{{{noedit|}}}|&lt;!--nothing--&gt;|&lt;!--else:
+--&gt;&lt;span style="{{{fontstyle|}}}"&gt;&amp;#32;&lt;b&gt;&amp;middot;&lt;/b&gt;&amp;#32;&lt;/span&gt;&lt;!--
+--&gt;[{{fullurl:{{ns:10}}:{{{1}}}|action=edit}} &lt;span style="{{{fontstyle|}}}" title="Edit this template"&gt;&lt;!--
+--&gt;{{#if:{{{mini|}}}|e|edit}}&lt;/span&gt;]}}&lt;!--
+--&gt;&lt;/span&gt;&lt;!--
+
+--&gt;{{#if:{{{brackets|}}}|&lt;span style="{{{fontstyle|}}}"&gt;&amp;#93;&lt;/span&gt;}}&lt;!--
+
+--&gt;&lt;/small&gt;&lt;/span&gt;
+&lt;noinclude&gt;See http://www.mediawiki.org/wiki/Template:Navbar &lt;/noinclude&gt;</text>
+      <sha1>nomsksgcvp1t3o238jl75ws4czki4sy</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Navbox</title>
+    <ns>10</ns>
+    <id>1907</id>
+    <revision>
+      <id>3335</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>4 revisions</comment>
+      <origin>3335</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="292" sha1="tsoqn5n1z78sv0c715ghxwenmilqbbm" xml:space="preserve">{| style="width:100%; margin-top:1em; border:1px solid #999; font-size:90%; text-align:center;"
+|-
+! style="background-color:#3366CC; color:#FFFFFF; padding:0.2em 0.5em;" nowrap="nowrap" | {{{header}}}
+|-
+| style="padding:0.2em 0.5em;" | {{{body}}}
+|}&lt;noinclude&gt;
+{{documentation}}&lt;/noinclude&gt;</text>
+      <sha1>tsoqn5n1z78sv0c715ghxwenmilqbbm</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Navbox/doc</title>
+    <ns>10</ns>
+    <id>1942</id>
+    <revision>
+      <id>3470</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>4 revisions</comment>
+      <origin>3470</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="569" sha1="tu4ixu1p30ry5i79izpbbmj276uj92j" xml:space="preserve">;Description
+:This template is used to create a basic [[Help:Navbox|navbox]].
+;Syntax
+:Type &lt;code&gt;{{t|navbox|...}}&lt;/code&gt; somewhere, with parameters as shown below.
+;Sample output
+
+&lt;pre&gt;{{navbox
+|header=Land of Bob
+|body=This &lt;nowiki&gt;[[place]]&lt;/nowiki&gt; and that &lt;nowiki&gt;[[place]]&lt;/nowiki&gt;.
+}}&lt;/pre&gt;
+
+Results in...
+
+{{navbox
+|header=Land of Bob
+|body=This &lt;nowiki&gt;[[place]]&lt;/nowiki&gt; and that &lt;nowiki&gt;[[place]]&lt;/nowiki&gt;.
+}}
+
+&lt;includeonly&gt;[[Category:General wiki templates|{{PAGENAME}}]]&lt;/includeonly&gt;&lt;noinclude&gt;[[Category:Template documentation|{{PAGENAME}}]]&lt;/noinclude&gt;</text>
+      <sha1>tu4ixu1p30ry5i79izpbbmj276uj92j</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:NavboxEx</title>
+    <ns>10</ns>
+    <id>28085</id>
+    <revision>
+      <id>37882</id>
+      <parentid>37880</parentid>
+      <timestamp>2018-01-13T02:37:31Z</timestamp>
+      <contributor>
+        <username>Crashdemons</username>
+        <id>26565518</id>
+      </contributor>
+      <minor/>
+      <origin>37882</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="16614" sha1="bccdrpappkjpzdey3kutz0fv1ggjez2" xml:space="preserve">&lt;includeonly&gt;{{#switch:{{{border|{{{1|}}}}}}|subgroup|child=|none=|#default=&lt;nowiki/&gt;
+{{{!}} class="navbox" cellspacing="0" style="{{{bodystyle|}}};{{{style|}}};border: 1px solid black;width:100%;"
+{{!}}-
+{{!}} style="padding:2px;" {{!}} }}
+{{{!}} cellspacing="0" class="nowraplinks {{#if:{{{title|}}}|{{#switch:{{{state|}}}|plain|off=|#default=mw-collapsible {{#if:{{{state|}}}|{{{state|}}}|autocollapse}}}}}} {{#switch:{{{border|{{{1|}}}}}}|subgroup|child|none=navbox-subgroup" style="width:100%;{{{bodystyle|}}};{{{style|}}}|#default=" style="width:100%;background:transparent;color:inherit}};{{{innerstyle|}}};" &lt;!--
+ 
+
+---Title and Navbar---
+--&gt;{{#if:{{{title|}}}|&lt;nowiki/&gt;
+{{!}}- {{#if:{{{titlegroup|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{titlegroupstyle|}}}" {{!}} {{{titlegroup|}}}
+! style="border-left:2px solid #020202;width:100%;|&lt;nowiki/&gt;
+! style="}}{{{basestyle|}}};{{{titlestyle|}}}" colspan={{#expr:2{{#if:{{{imageleft|}}}|+1}}{{#if:{{{image|}}}|+1}}{{#if:{{{titlegroup|}}}|-1}}}} class="navbox-title" {{!}} {{#if:{{#switch:{{{navbar|}}}|plain|off=1}} {{#if:{{{name|}}}||{{#switch:{{{border|{{{1|}}}}}}|subgroup|child|none=1}}}}| {{#ifeq:{{{navbar|}}}|off|{{#ifeq:{{{state|}}}|plain|&lt;div style="float:right;width:6em;"&gt;&amp;nbsp;&lt;/div&gt;}}| {{#ifeq:{{{state|}}}|plain||&lt;div style="float:left; width:6em;text-align:left;"&gt;&amp;nbsp;&lt;/div&gt;}}}}| &lt;div style="float:left; width:6em;text-align:left;"&gt; {{Navbar|{{{name}}}|fontstyle={{{basestyle|}}};{{{titlestyle|}}};border:none;|mini=1}} &lt;/div&gt;{{#ifeq:{{{state|}}}|plain|&lt;div style="float:right;width:6em;"&gt;&amp;nbsp;&lt;/div&gt;}}}} &lt;span style="font-size:{{#switch:{{{border|{{{1|}}}}}}|subgroup|child|none=100|#default=110}}%;"&gt; {{{title}}}&lt;/span&gt; }}&lt;!--
+
+
+---Above---
+--&gt;{{#if:{{{above|}}}| {{#if:{{{title|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px;"
+{{!}} }}
+{{!}}-
+{{!}} class="navbox-abovebelow" style="{{{basestyle|}}};{{{abovestyle|}}}" colspan="{{#expr:2{{#if:{{{imageleft|}}}|+1}}{{#if:{{{image|}}}|+1}}}}" {{!}} {{{above}}} }}&lt;!--
+
+
+
+---Body---
+
+---First group/list and images---
+--&gt;{{#if:{{{list1|}}}|{{#if:{{{title|}}}{{{above|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px;"
+{{!}} }}
+{{!}}-&lt;!--
+
+--&gt;{{#if:{{{imageleft|}}}|&lt;nowiki/&gt;
+{{!}} style="width:0%;padding:0px 2px 0px 0px;{{{imageleftstyle|}}}" rowspan={{#expr:1{{#if:{{{list2|}}}|+2}}{{#if:{{{list3|}}}|+2}}{{#if:{{{list4|}}}|+2}}{{#if:{{{list5|}}}|+2}}{{#if:{{{list6|}}}|+2}}{{#if:{{{list7|}}}|+2}}{{#if:{{{list8|}}}|+2}}{{#if:{{{list9|}}}|+2}}{{#if:{{{list10|}}}|+2}}{{#if:{{{list11|}}}|+2}}{{#if:{{{list12|}}}|+2}}{{#if:{{{list13|}}}|+2}}{{#if:{{{list14|}}}|+2}}{{#if:{{{list15|}}}|+2}}{{#if:{{{list16|}}}|+2}}{{#if:{{{list17|}}}|+2}}{{#if:{{{list18|}}}|+2}}{{#if:{{{list19|}}}|+2}}{{#if:{{{list20|}}}|+2}}}} {{!}} {{{imageleft|}}} }}&lt;!--
+
+ --&gt;{{#if:{{{group1|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group1style|}}}" {{!}} {{{group1}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{oddstyle|}}};{{{list1style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|even|{{{evenodd|odd}}}}}" {{!}} &lt;div style="padding:{{{list1padding|{{{listpadding|0em 0.25em}}}}}}"&gt;{{{list1|}}}&lt;/div&gt;&lt;!--
+
+--&gt;{{#if:{{{image|}}}|&lt;nowiki/&gt;
+{{!}} style="width:0%;padding:0px 0px 0px 2px;{{{imagestyle|}}}" rowspan={{#expr:1{{#if:{{{list2|}}}|+2}}{{#if:{{{list3|}}}|+2}}{{#if:{{{list4|}}}|+2}}{{#if:{{{list5|}}}|+2}}{{#if:{{{list6|}}}|+2}}{{#if:{{{list7|}}}|+2}}{{#if:{{{list8|}}}|+2}}{{#if:{{{list9|}}}|+2}}{{#if:{{{list10|}}}|+2}}{{#if:{{{list11|}}}|+2}}{{#if:{{{list12|}}}|+2}}{{#if:{{{list13|}}}|+2}}{{#if:{{{list14|}}}|+2}}{{#if:{{{list15|}}}|+2}}{{#if:{{{list16|}}}|+2}}{{#if:{{{list17|}}}|+2}}{{#if:{{{list18|}}}|+2}}{{#if:{{{list19|}}}|+2}}{{#if:{{{list20|}}}|+2}}}} {{!}} {{{image|}}} }} }}&lt;!--
+
+
+---Remaining groups/lists---
+
+--&gt;{{#if:{{{list2|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list1|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group2|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group2style|}}}" {{!}} {{{group2}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list2style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|odd|{{{evenodd|even}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list2|}}}&lt;/div&gt;}}&lt;!--
+
+--&gt;{{#if:{{{list3|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list2|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group3|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group3style|}}}" {{!}} {{{group3}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list3style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|even|{{{evenodd|odd}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list3|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list4|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list3|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group4|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group4style|}}}" {{!}} {{{group4}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list4style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|odd|{{{evenodd|even}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list4|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list5|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list4|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group5|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group5style|}}}" {{!}} {{{group5}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list5style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|even|{{{evenodd|odd}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list5|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list6|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list5|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group6|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group6style|}}}" {{!}} {{{group6}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list6style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|odd|{{{evenodd|even}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list6|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list7|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list6|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group7|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group7style|}}}" {{!}} {{{group7}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list7style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|even|{{{evenodd|odd}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list7|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list8|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list7|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group8|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group8style|}}}" {{!}} {{{group8}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list8style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|odd|{{{evenodd|even}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list8|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list9|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list8|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group9|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group9style|}}}" {{!}} {{{group9}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list9style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|even|{{{evenodd|odd}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list9|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list10|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list9|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group10|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group10style|}}}" {{!}} {{{group10}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list10style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|odd|{{{evenodd|even}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list10|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list11|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list10|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group11|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group11style|}}}" {{!}} {{{group11}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list11style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|even|{{{evenodd|odd}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list11|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list12|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list11|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group12|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group12style|}}}" {{!}} {{{group12}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list12style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|odd|{{{evenodd|even}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list12|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list13|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list12|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group13|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group13style|}}}" {{!}} {{{group13}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list13style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|even|{{{evenodd|odd}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list13|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list14|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list13|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group14|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group14style|}}}" {{!}} {{{group14}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list14style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|odd|{{{evenodd|even}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list14|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list15|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list14|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group15|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group15style|}}}" {{!}} {{{group15}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list15style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|even|{{{evenodd|odd}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list15|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list16|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list15|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group16|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group16style|}}}" {{!}} {{{group16}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list16style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|odd|{{{evenodd|even}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list16|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list17|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list16|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group17|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group17style|}}}" {{!}} {{{group17}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list17style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|even|{{{evenodd|odd}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list17|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list18|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list17|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group18|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group18style|}}}" {{!}} {{{group18}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list18style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|odd|{{{evenodd|even}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list18|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list19|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list18|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group19|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group19style|}}}" {{!}} {{{group19}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list19style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|even|{{{evenodd|odd}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list19|}}}&lt;/div&gt; }}&lt;!--
+
+--&gt;{{#if:{{{list20|}}}| {{#if:{{{title|}}}{{{above|}}}{{{list19|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px"
+{{!}} }}
+{{!}}- {{#if:{{{group20|}}}|&lt;nowiki/&gt;
+{{!}} class="navbox-group" style="{{{basestyle|}}};{{{groupstyle|}}};{{{group20style|}}}" {{!}} {{{group20}}}
+{{!}} style="text-align:left;border-left:2px solid #020202;|&lt;nowiki/&gt;
+{{!}} colspan=2 style="}} width:100%;padding:0px;{{{liststyle|}}};{{{evenstyle|}}};{{{list20style|}}}" class="navbox-list navbox-{{#ifeq:{{{evenodd|}}}|swap|odd|{{{evenodd|even}}}}}" {{!}} &lt;div style="padding:{{{listpadding|0em 0.25em}}}"&gt;{{{list20|}}}&lt;/div&gt; }}&lt;!--
+
+---Below---
+--&gt;{{#if:{{{below|}}}|&lt;!--
+ --&gt;{{#if:{{{title|}}}{{{above|}}}{{{list1|}}}{{{list2|}}}{{{list3|}}}|&lt;nowiki/&gt;
+{{!}}- style="height:2px;"
+{{!}} }}
+{{!}}-
+{{!}} class="navbox-abovebelow" style="{{{basestyle|}}};{{{belowstyle|}}}" colspan="{{#expr:2{{#if:{{{imageleft|}}}|+1}}{{#if:{{{image|}}}|+1}}}}" {{!}} {{{below}}} }}
+{{!}}}{{#switch:{{{border|{{{1|}}}}}}|subgroup|child=|none=|#default=&lt;nowiki/&gt;
+{{!}}} }}&lt;/includeonly&gt;&lt;noinclude&gt;
+
+
+Example Without liststyle (for testing):
+
+{{NavboxEx
+|name = NavboxEx
+|state = uncollapsed
+|title = {{{title}}}
+|group1 = {{{group1}}}
+|list1 = {{{list1}}}
+|group2 = {{{group2}}}
+|list2 = {{{list2}}}
+|list3 = {{{list3}}} ''without {{{group3}}}''
+|group4 = {{{group4}}}
+|list4 = {{{list4}}}
+}}
+
+Example:
+{{NavboxEx
+|name = NavboxEx
+|state = uncollapsed
+|liststyle = background:silver;
+|title = {{{title}}}
+|group1 = {{{group1}}}
+|list1 = {{{list1}}}
+|group2 = {{{group2}}}
+|list2 = {{{list2}}}
+|list3 = {{{list3}}} ''without {{{group3}}}''
+|group4 = {{{group4}}}
+|list4 = {{{list4}}}
+}}
+Example Source:
+&lt;pre&gt;{{NavboxEx
+|name = NavboxEx
+|state = uncollapsed
+|liststyle = background:silver;
+|title = {{{title}}}
+|group1 = {{{group1}}}
+|list1 = {{{list1}}}
+|group2 = {{{group2}}}
+|list2 = {{{list2}}}
+|list3 = {{{list3}}} ''without {{{group3}}}''
+|group4 = {{{group4}}}
+|list4 = {{{list4}}}
+}}
+&lt;/pre&gt;
+
+
+Stolen from the Wikipedia Transwiki project
+&lt;/noinclude&gt;</text>
+      <sha1>bccdrpappkjpzdey3kutz0fv1ggjez2</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Newpages</title>
+    <ns>10</ns>
+    <id>1991</id>
+    <revision>
+      <id>3808</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <comment>NewPages widget has got limit=5 hardcoded</comment>
+      <origin>3808</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="195" sha1="lfywr2c8fbvb7a83jmum3w5yaqwy4og" xml:space="preserve">&lt;div style="float:right; clear:right; margin:12px 5px"&gt;&lt;big&gt;'''New pages'''&lt;/big&gt;&lt;widget style="width:305px"&gt;NewPages&lt;/widget&gt;__NOTOC__&lt;/div&gt;&lt;noinclude&gt;[[Category:Templates|Newpages]]&lt;/noinclude&gt;</text>
+      <sha1>lfywr2c8fbvb7a83jmum3w5yaqwy4og</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:No license</title>
+    <ns>10</ns>
+    <id>1637</id>
+    <revision>
+      <id>3504</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision</comment>
+      <origin>3504</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="265" sha1="42l3d3ggd47lgkzdq3122rvcpu9jur2" xml:space="preserve">&lt;div class="boilerplate" id="c-fairuse" style="width:90%; margin:0 auto; padding:10px; border:1px solid #A8ACA8; background:#FFFFCC; color:#000;"&gt;
+'''''This file does not have information on its copyright status.'''''
+&lt;/div&gt;&lt;noinclude&gt;
+{{documentation}}&lt;/noinclude&gt;</text>
+      <sha1>42l3d3ggd47lgkzdq3122rvcpu9jur2</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:No license/doc</title>
+    <ns>10</ns>
+    <id>1956</id>
+    <revision>
+      <id>3523</id>
+      <timestamp>2013-01-05T09:56:03Z</timestamp>
+      <contributor>
+        <username>Default</username>
+        <id>49312</id>
+      </contributor>
+      <minor/>
+      <comment>1 revision</comment>
+      <origin>3523</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="298" sha1="qoc0qrmvrle75jsd3qtqsu26vzi9fzt" xml:space="preserve">;Description
+:This template is used to mark images as missing copyright info.
+;Syntax
+:Type &lt;code&gt;{{t|no license}}&lt;/code&gt; on the image information page.
+
+&lt;includeonly&gt;[[Category:Image wiki templates|{{PAGENAME}}]]&lt;/includeonly&gt;&lt;noinclude&gt;[[Category:Template documentation|{{PAGENAME}}]]&lt;/noinclude&gt;</text>
+      <sha1>qoc0qrmvrle75jsd3qtqsu26vzi9fzt</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Template:Notice</title>
+    <ns>10</ns>
+    <id>31514</id>
+    <revision>
+      <id>43078</id>
+      <parentid>43076</parentid>
+      <timestamp>2022-02-11T08:15:23Z</timestamp>
+      <contributor>
+        <username>Ctvrty</username>
+        <id>33928066</id>
+      </contributor>
+      <origin>43078</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="615" sha1="hsbdlxsnmpod4g6rzpjx2tc4e0fuhni" xml:space="preserve">&lt;noinclude&gt;&lt;div style="width:100%;"&gt;&lt;/noinclude&gt;&lt;div class="layout-mainpanel-{{season}}"&gt;
+{{Headingmain|NOTICE}}
+&lt;div style="padding:0.2em 0.2em; text-align: center; background: #333333"&gt;
+From time to time, you may see an infotomb link on the wikia! Sadly, we no longer have access to these files. Most of the time, you'll be able to find another source of the file on the wikia or in the discord. However, at this current point in time, we will not be removing the links from the wikia as it is possible in the (very far away) future to retrieve them.&lt;/div&gt;&lt;/div&gt;
+&lt;noinclude&gt;[[Category:Home templates]]&lt;/noinclude&gt;</text>
+      <sha1>hsbdlxsnmpod4g6rzpjx2tc4e0fuhni</sha1>
+    </revision>
+  </page>
+</mediawiki>

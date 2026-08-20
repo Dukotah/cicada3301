@@ -184,3 +184,26 @@ liber-primus/handoff/capsule/fetched/
 # Reproduce: python3 liber-primus/handoff/capsule/iso_extract.py 3301.iso --extract DATA/560.13
 liber-primus/analysis/round12/A1/pads/DATA_560.13
 liber-primus/analysis/round12/A1/pads/DATA__560.00.iso-authoritative
+
+# ---- corpus sweep (2026-08-19). Commit MANIFESTS, findings, reports and small
+# structured data. Ignore bulk fetched/vendored payloads: every one is re-fetchable
+# from its MANIFEST row (path + sha256 + source_url + retrieved_utc), which is the
+# whole point of recording provenance.
+corpus/E-tooling/vendor/
+corpus/A-primary-artifacts/wiki-uncovering-cicada/
+corpus/A-primary-artifacts/cijhho123/
+corpus/A-primary-artifacts/krisyotam/
+corpus/A-primary-artifacts/Hadyn_cicada/
+corpus/F-press-academic/papers/
+corpus/D-archives/captures/
+corpus/G-forensics/raw/
+corpus/**/*.pdf
+corpus/**/*.jpg
+corpus/**/*.jpeg
+corpus/**/*.png
+corpus/**/*.mp3
+corpus/**/*.iso
+corpus/**/*.warc*
+# G-forensics RESULTS.jsonl is 48 MB of tool output; keep it out of git but keep the
+# report and the per-test summary. Regenerate with corpus/G-forensics/ scripts.
+corpus/G-forensics/RESULTS.jsonl

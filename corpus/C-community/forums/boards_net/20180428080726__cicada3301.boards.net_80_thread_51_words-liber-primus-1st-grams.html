@@ -1,0 +1,479 @@
+<!DOCTYPE HTML>
+	<!--[if IE 7]><html class="ie7"><![endif]--><!--[if IE 8]><html class="ie8"><![endif]--><!--[if IE 9]><html class="ie9"><![endif]--><!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>The Words of the Liber Primus 3: 1st use of the N-grams | Cicada3301</title>
+		<script>
+        var pbtp = {fc: 4,fi: 6433989};
+        var pbrp = {m:false};
+        window._BidFilter = window._BidFilter || {site_id: 1, custom: {forum_id: 6433989}};
+        </script>
+        <script src="https://cdn.bidfilter.com/bidfilter.js" async></script>
+        <script src="http://ads.proboards.com/logger/combined2.js?602" async></script>
+<link rel="canonical" href="http://cicada3301.boards.net/thread/51/words-liber-primus-1st-grams" />
+<link rel="alternate" type="application/rss+xml" href="http://cicada3301.boards.net/rss/public" />
+<link rel="shortcut icon" type="image/x-icon" href="//storage.proboards.com/forum/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="//storage.proboards.com/forum/images/favicon.ico" />
+<meta property="og:url"         content="http://cicada3301.boards.net/thread/51/words-liber-primus-1st-grams" />
+<meta property="og:title"       content="The Words of the Liber Primus 3: 1st use of the N-grams | Cicada3301" />
+<meta property="og:description" content="Introduction  Here, we will recap the principal motivation, ideas and goals of this study. Then, we will show a simple yet effective application of the n-gram database that allows us to focus in on" />
+<meta property="og:type"        content="website" />
+<meta name="twitter:card"               content="summary" />
+<meta name="twitter:site"               content="@proboards" />
+<meta name="twitter:app:id:iphone"      content="307880732" />
+<meta name="twitter:app:url:iphone"     content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=51&amp;perpage=15&amp;page=1" />
+<meta name="twitter:app:id:ipad"        content="307880732" />
+<meta name="twitter:app:url:ipad"       content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=51&amp;perpage=15&amp;page=1" />
+<meta name="twitter:app:id:googleplay"  content="com.quoord.tapatalkpro.activity" />
+<meta name="twitter:app:url:googleplay" content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=51&amp;perpage=15&amp;page=1" />
+<meta property="al:ios:url" content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=51&amp;perpage=15&amp;page=1" />
+<meta property="al:ios:app_store_id" content="307880732" />
+<meta property="al:ios:app_name" content="Tapatalk" />
+<meta property="al:android:package" content="com.quoord.tapatalkpro.activity" />
+<meta property="al:android:url" content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=51&amp;perpage=15&amp;page=1" />
+<meta property="al:android:app_name" content="Tapatalk" />
+<link href="android-app://com.quoord.tapatalkpro.activity/tapatalk/cicada3301.boards.net?fid=19&amp;location=topic&amp;tid=51&amp;perpage=15&amp;page=1" rel="alternate" />
+<link href="ios-app://307880732/tapatalk/cicada3301.boards.net?fid=19&amp;location=topic&amp;tid=51&amp;perpage=15&amp;page=1" rel="alternate" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/forum/css/0/forum_base_602.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/6433989/css/w8taoZpniIqJS0joSHjj.css" id="forum_style" />
+<link rel="stylesheet" type="text/css" media="print" href="//storage.proboards.com/forum/css/0/print_602.css" />
+<script>translatePo = { language: 'en_US' };</script>
+<script type="text/javascript" src="//storage.proboards.com/forum/js/proboards.combined_602.js"></script>
+
+        <script>
+            var tortoise = undefined;
+            function tortLoad() {
+                var hatch = function() {
+                    $(document.body).append('<img src="//tortoise.proboards.com/tortoise.pl?field=amount_guest&forum_id=6433989&mobile=0&rand=0.95379368983572" alt="" />');
+                }
+                if(typeof Tortoise === 'undefined') {
+                    $(document).ready(function() {
+                        hatch();
+                    });
+                } else {
+                    tortoise.on(true, hatch);
+                }
+            }
+        </script>
+<script src="//storage.proboards.com/forum/js/tortoise.min.js" integrity="sha384-5Xarr7yZbNCR8IIsrcy80rZVH1nqdJ6D8ixzKAbaYWX3eBInhvQ38L3EVv87QH32" crossorigin="anonymous" onload="tortLoad()" onerror="tortLoad()" async></script>
+<script type="text/javascript" src="https://funcaptcha.com/fc/api/?onload=loadFunCaptcha"></script>
+
+		<!-- Google Analytics Start -->
+		<script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-3734504-3', 'auto' , {"sampleRate":5});ga('set', 'anonymizeIp', true);
+		</script>
+		<!-- Google Analytics End -->
+	
+
+        <script type="text/javascript">
+            var vglnk;
+            $(document).ready(function() {
+                $('a').each(function() {
+                    if($(this).prop('href').indexOf('login.proboards.com') !== -1) {
+                        $(this).addClass('norewrite');
+                    }
+                });
+
+                vglnk = {
+                    api_url: '//api.viglink.com/api', key: 'bbb516d91daee20498798694a42dd559'
+                };
+                var vglnkSrc = ('https:' == document.location.protocol ? vglnk.api_url : '//cdn.viglink.com/api') + '/vglnk.js';
+
+                // VigLink ProBoards Convert Code (using above key)
+                var s = document.createElement('script');
+                s.type = 'text/javascript'; s.async = true; s.src = vglnkSrc;
+                document.body.appendChild(s);
+
+                var retry = 0;
+                var reV = function() {
+                    if (typeof vglnk !== 'function' && retry++ < 5) {
+                        setTimeout(reV, 500);
+                    }
+                    else if (typeof vglnk !== 'function') {
+                        $('a').not('.norewrite').each(function() {
+                            var url = $(this).prop('href');
+                            if (url.indexOf('http') === 0 && url.indexOf(document.domain) === -1) {
+                                $(this).prop('href', 'http://redirect.viglink.com?key=bbb516d91daee20498798694a42dd559&u=' + escape(url));
+                            }
+                        });
+                    }
+                };
+                reV();
+            });
+        </script>
+    
+<script>
+            window.runAntiAdBlock = 1;
+        </script>
+<script>proboards.data([['forum_url',"cicada3301.boards.net"],['ad_free',0],['locale_settings',{"amcharts_date_format":"MM/DD/YYYY","input_date_placeholder":"mm/dd/yyyy","input_time_placeholder":"hh:mm pp","input_date_regex":"^(\\d{2})/(\\d{2})/(\\d{4})$","input_date_format":"%m/%d/%Y","input_time_format":12,"thousands_separator":null}],['image_path',"//storage.proboards.com/forum/images"],['time_style',0],['military_time',0],['timezone',"guest"],['serverDate',1524902846000],['search-query-min',3],['search-query-max',50],['is_current_user_guest',"1"],['plugin_max_key_length',4000],['plugin_max_super_forum_key_length',32000],['login_url',"https://login.proboards.com/login/6433989/1"],['register_url',"https://login.proboards.com/register/6433989"],['page_url',""],['range_string',"This event begins <img src=\"//storage.proboards.com/forum/images/icons/event.png\" alt=\"- \" title=\"Event\" />&nbsp;<abbr data-timestamp=\"0000\" title=\"Apr 28, 2018 8:07:26 GMT\" class=\"o-timestamp time\">Apr 28, 2018 8:07:26 GMT</abbr>"],['captcha_init',{"key":"C0F5B1D6-CFF5-1D52-0F76-87F4E9F50EC0","no_validations":0,"mobile":0,"captcha_container_id":"captcha-container","captcha_error_origin":null,"tos":{"name":"ProBoards Terms of Service","url":"http://www.proboards.com/tos"},"errors":0,"captcha_id":"captcha_init","attempts":0,"no_popup":0,"captcha_errors":0,"adfree":"","form_id":"form_0dnv1oEE"}],['quick_reply',1],['forum_id',"6433989"],['thread_id',"51"],['thread_subject',"The Words of the Liber Primus 3: 1st use of the N-grams"],['labels_applied',[]],['accessible_label_ids_applied',[]],['board_id',"19"],['search_filter_img_src',"//storage.proboards.com/forum/images/icon-search-filters.png"],['options_img_src',"//storage.proboards.com/forum/images/icon-options.png"],['options_img_alt',"Post Options"],['options_img_title',"Post Options"],['lm_total',"1"],['lm_limit',15],['lm_page',1],['lm_data',{"thread_id":"51"}],['lm_id',"yjDA7mMqrRrGSzTeUoCu"],['lm_thread_next',"/thread/next/51"],['lm_thread_prev',"/thread/previous/51"],['sharing_options',{"email_enabled":1,"reddit_enabled":1,"facebook_enabled":1,"twitter_card_site":"","enabled":1,"linkedin_enabled":1,"twitter_enabled":1,"pinterest_enabled":1,"myspace_enabled":1,"google_enabled":1,"tumblr_enabled":1}],['page_cache',".lm-content-yjDA7mMqrRrGSzTeUoCu"],['labels_accessible',[]],['labels_viewable',[]],['_google_analytics_events',[{"hitType":"pageview"}]],['pop_menu_structure',{"menuStructure":{"_root":{"title":"Categories","items":[{"text":"Home","addSeparator":1,"href":"/forum"},{"text":"Rune Solving","addSeparator":null,"submenu":"1-3","href":"/#category-3"},{"href":"/#category-1","text":"General","addSeparator":null,"submenu":"1-1"}]},"1-1":{"title":"General","items":[{"addSeparator":null,"text":"Philosopy","href":"http://cicada3301.boards.net/board/20/philosopy"},{"href":"http://cicada3301.boards.net/board/1/general-discussion","addSeparator":null,"text":"General Discussion"}]},"1-3":{"items":[{"href":"http://cicada3301.boards.net/board/19/tools","addSeparator":null,"text":"Tools"},{"href":"http://cicada3301.boards.net/board/18/theories","text":"Theories","addSeparator":null},{"href":"http://cicada3301.boards.net/board/17/cross","addSeparator":null,"text":"Cross"},{"href":"http://cicada3301.boards.net/board/16/spirals","text":"Spirals","addSeparator":null},{"href":"http://cicada3301.boards.net/board/15/branches","addSeparator":null,"text":"Branches"},{"href":"http://cicada3301.boards.net/board/14/mobius","text":"Mobius","addSeparator":null},{"addSeparator":null,"text":"Mayfly","href":"http://cicada3301.boards.net/board/13/mayfly"},{"href":"http://cicada3301.boards.net/board/12/tree","text":"Tree","addSeparator":null},{"href":"http://cicada3301.boards.net/board/11/cuneiform","addSeparator":null,"text":"Cuneiform"},{"text":"Spiral Branches","addSeparator":null,"href":"http://cicada3301.boards.net/board/10/spiral-branches"},{"text":"56","addSeparator":null,"href":"http://cicada3301.boards.net/board/9/56"},{"href":"http://cicada3301.boards.net/board/8/57","addSeparator":null,"text":"57"}],"title":"Rune Solving"}},"placement":"bottom left","positionAgainstSelector":".o-breadcrumbs","positionOffsetY":10,"startingMenu":"_root","opensOn":"click","addMenuClass":"c-pop-menu"}],['screen_breakpoints',{"sm":768,"md":992,"xs":0,"lg":1200}],['user',{"name":"Guest","time_format":"12hr","date_format":"m/d/y","is_staff":0,"is_logged_in":0,"requires_gdpr_notice":0,"id":0,"theme_id":1}],['page',{"category":{"id":3,"name":"Rune Solving"},"thread":{"first_post_id":91,"last_post_time":1496337285,"subject":"The Words of the Liber Primus 3: 1st use of the N-grams","is_announcement":0,"id":51,"last_post_id":91,"is_falling":0,"url":"/thread/51/words-liber-primus-1st-grams","is_locked":0,"board_id":19,"is_bookmarked":0,"is_poll":0,"is_sticky":0,"is_new":0,"created_by":3,"created_on":1496337285},"board":{"description":"","display_name":"Tools","show_announcements":"1","id":19,"disable_posting":"0","disable_post_counts":"0","url":"/board/19/tools","threads":12,"hidden":"0","name":"Tools","posts":18}}],['default_avatar',"//storage.proboards.com/forum/images/defaultavatar.png"],['route',{"params":{"thread_id":"51"},"name":"thread"}],['search_system',1],['insite_path',""],['maintenance_mode',0],['proboards.thread',{"51":{"created_on":1496337285,"created_by":3,"is_new":0,"is_sticky":0,"is_poll":0,"is_bookmarked":0,"board_id":19,"is_locked":0,"is_falling":0,"url":"/thread/51/words-liber-primus-1st-grams","last_post_id":91,"is_announcement":0,"id":51,"subject":"The Words of the Liber Primus 3: 1st use of the N-grams","last_post_time":1496337285,"first_post_id":91}}],['proboards.post',{"91":{"created_by":3,"url":"http://cicada3301.boards.net/post/91","liked":0,"created_on":1496337285,"thread_id":51,"id":91}}]]);</script>
+<script>if (typeof(standard_thread_show) == 'function') standard_thread_show();
+if (typeof(standard_post_base) == 'function') standard_post_base();</script>
+
+	</head>
+	<body>
+		
+		<div id="wrapper">
+			<header>
+				<div id="banner-container" role="banner">
+					<h2 id="banner">
+						<a id="logo" href="/">Cicada3301</a>
+					</h2>
+				</div>
+				<a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+				<a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+				<div id="navigation-menu" class="ui-helper-clearfix">
+					<ul role="navigation">
+						
+							<li>
+								<a href="/">
+									Home
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/help">
+									Help
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/search">
+									Search
+									
+								</a>
+							</li>
+						
+					</ul>
+					<p id="welcome">
+						
+							Welcome Guest.  
+							
+								Please <a href="https://login.proboards.com/login/6433989/1">Login</a> or <a href="https://login.proboards.com/register/6433989">Register</a>.
+							
+						
+					</p>
+				</div>
+			</header>
+			
+			
+			
+			
+				<div id="navigation-tree">
+					<div class="nav-tree-wrapper"><ul id="nav-tree" class="ui-helper-clearfix" role="navigation"><li id="nav-tree-branch-0" class="nav-tree-branch ui-helper-clearfix has-menu"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title">Cicada3301</span></a></div><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-1" class="nav-tree-branch ui-helper-clearfix"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/board/19/tools" itemprop="url"><span itemprop="title">Tools</span></a></div><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-2" class="nav-tree-branch ui-helper-clearfix"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/thread/51/words-liber-primus-1st-grams" itemprop="url"><span itemprop="title">The Words of the Liber Primus 3: 1st use of the N-grams</span></a></div><span class="menu_arrow"><span></span></span></li></ul></div><div class="popup_html">
+<ul id="nav-tree-menu-0" role="navigation">
+<li class="nav-tree-cat-3"><a href="/#category-3"><span class="item-text">Rune Solving</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-19"><a href="http://cicada3301.boards.net/board/19/tools"><span class="item-text">Tools</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-18"><a href="http://cicada3301.boards.net/board/18/theories"><span class="item-text">Theories</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-17"><a href="http://cicada3301.boards.net/board/17/cross"><span class="item-text">Cross</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-16"><a href="http://cicada3301.boards.net/board/16/spirals"><span class="item-text">Spirals</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-15"><a href="http://cicada3301.boards.net/board/15/branches"><span class="item-text">Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-14"><a href="http://cicada3301.boards.net/board/14/mobius"><span class="item-text">Mobius</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-13"><a href="http://cicada3301.boards.net/board/13/mayfly"><span class="item-text">Mayfly</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-12"><a href="http://cicada3301.boards.net/board/12/tree"><span class="item-text">Tree</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-11"><a href="http://cicada3301.boards.net/board/11/cuneiform"><span class="item-text">Cuneiform</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-10"><a href="http://cicada3301.boards.net/board/10/spiral-branches"><span class="item-text">Spiral Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-9"><a href="http://cicada3301.boards.net/board/9/56"><span class="item-text">56</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-8"><a href="http://cicada3301.boards.net/board/8/57"><span class="item-text">57</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-1"><a href="/#category-1"><span class="item-text">General</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-20"><a href="http://cicada3301.boards.net/board/20/philosopy"><span class="item-text">Philosopy</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-1"><a href="http://cicada3301.boards.net/board/1/general-discussion"><span class="item-text">General Discussion</span><div class="clear"></div></a></li>
+</ul>
+</li>
+</ul></div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+		var reposition   = false;
+		var showOn       = 'hover';
+		var offset       = reposition
+			? '-13 6'
+			: ($.browser.msie && parseInt($.browser.version) == 8)
+				? '3 -1'
+				: '3 0';
+		var showCallback = function(e) {
+			var self = $(this);
+			
+			// Make sure all other menus are closed
+			$('.popup_html > ul').not(self).menu('hide');
+			
+			// Hide the navigation if they leave it.
+			setTimeout(function() {
+				$(document).on('mousemove.nav', function(e) {
+					var elem = $(e.target);
+					if (
+						elem.parents('#nav-tree, .popup_html').length == 0
+						&& !elem.is('#nav-tree, .popup_html')
+						&& !self.data('hotkey-open')
+					) {
+						self.menu('hide');
+						$(document).off('.nav');
+					}
+				});
+			}, 1000);
+		}
+	
+				$('#nav-tree-menu-0')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-0'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-0'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-1')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-1'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-1'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-2')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-2'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-2'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				$('.nav-tree-cat-3').addClass('state-selected');$('.nav-tree-board-19').addClass('state-selected');
+			});
+		</script>
+	
+				</div>
+			
+			
+			
+        <iframe id="ad1" data-id="pb-top-ad" style="display: block; margin: 0 auto 10px;"></iframe>
+        <script>pbjs=pbjs||{que:[]};pbjs.que.push(function() {topAd.init(document.getElementById('ad1'));});</script>
+    
+			
+			<div id="content" role="main">
+				
+				<div class="container posts">
+	<div class="title-bar">
+		
+			<ul class="controls"><li><a href="/post/new/51" class="reply-button">Reply</a></li></ul>
+		
+		<h1>The Words of the Liber Primus 3: 1st use of the N-grams</h1>
+	</div>
+	<div class="control-bar ui-helper-clearfix scrollable-yjDA7mMqrRrGSzTeUoCu">
+		<div class="lm-search-yjDA7mMqrRrGSzTeUoCu ui-search"></div>
+		<div class="controls">
+			<ul class="select_menu_list ui-menu ui-selectMenu hide actions lm-actions-yjDA7mMqrRrGSzTeUoCu" data-status="Actions"><li class="sharing ui-menu-has-sub-menu"><a><span class="icon pbi-share"></span>Share Thread</a><ul><li class="facebook-share"><a><span class="icon"></span>Facebook</a></li><li class="twitter-share"><a><span class="icon"></span>Twitter</a></li><li class="gplus-share"><a><span class="icon"></span>Google+</a></li><li class="tumblr-share"><a><span class="icon"></span>Tumblr</a></li><li class="linkedin-share"><a><span class="icon"></span>LinkedIn</a></li><li class="pinterest-share"><a><span class="icon"></span>Pinterest</a></li><li class="myspace-share"><a><span class="icon"></span>MySpace</a></li><li class="email-share"><a><span class="icon"></span>Email</a></li></ul></li><li class="view ui-menu-has-sub-menu"><a><span class="icon"></span>Go to</a><ul><li class="view_prev"><a rel="nofollow"><span class="icon"></span>Previous Thread</a></li><li class="view_next"><a rel="nofollow"><span class="icon"></span>Next Thread</a></li></ul></li><li class="default-menu-option"><a>Please make a selection first</a></li></ul>
+		</div>
+		<div class="float-left"><span class="control-icons lm-icons-yjDA7mMqrRrGSzTeUoCu"><span class="new-icon"><a href="/threads/recent/51">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" alt="Bookmark" title="Bookmark" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" alt="Locked" title="This thread is locked" /></span><span class="falling_icon hide"><img title="This thread is falling" alt="Falling" src="//storage.proboards.com/forum/images/icons/falling.png" /></span></span></div>
+		<ul class="ui-pagination lm-pagination-yjDA7mMqrRrGSzTeUoCu"><li class="prev state-disabled"><a>&laquo; Prev</a></li><li class="state-selected"><a>1</a></li><li class="next state-disabled"><a>Next &raquo;</a></li></ul>
+	</div>
+	<div class="content cap-bottom">
+		<span class="no-labels js-no-labels"></span>
+		
+		<table class="list" role="presentation">
+			<tbody class="lm-content-yjDA7mMqrRrGSzTeUoCu">
+				
+	<tr id="post-91" class="item post first last">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile">
+	<a data-id="3" class="o-user-link js-user-link user-link user-3 group-0" href="/user/3" title="@mortlach">mortlach</a><br />
+	
+	
+	
+		Neophyte<br />
+		
+			<img alt="*" src="//storage.proboards.com/forum/images/stars/star_lightblue.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_lightblue.png" /><br />
+		
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar-3" title="mortlach"><img src="//storage.proboards.com/6433989/avatar/JSCXVO5DB5iXjb7oFsk8.jpg" alt="mortlach Avatar" /></div></div><br />
+	
+	
+	
+		<div class="info">
+			Posts: 25
+			
+			
+		</div><br />
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a class="js-thread__title-link thread-link thread-51 board-19" href="/thread/51/words-liber-primus-1st-grams">The Words of the Liber Primus 3: 1st use of the N-grams</a>
+									<span class="date"><abbr class="o-timestamp time" title="Jun 1, 2017 17:14:45 GMT" data-timestamp="1496337285000">Jun 1, 2017 17:14:45 GMT</abbr></span>
+									
+									<span class="likes"> </span>
+								</div>
+								<div class="controls">
+									<a href="/post/91/quote/51" class="button quote-button ">Quote</a>
+									
+									
+									<ul class=" options_menu post-91 user-3 hide"><li class="91-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="91-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="91-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="91-member ui-menu-has-sub-menu "><a><span class="icon pbi-user-icon"></span>Member</a><ul class=""><li class="91-giveGift"><a href="/user/3/gift"><span class="icon pbi-birthday"></span>Give Gift</a></li></ul></li><li class="91-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-91-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-91-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by mortlach on <abbr class="o-timestamp time" title="Jun 1, 2017 17:14:45 GMT" data-timestamp="1496337285000">Jun 1, 2017 17:14:45 GMT</abbr></h3>
+							<div class="message"><font face="arial"><b><font color="#e61919">Introduction<br /></font></b><br />Here, we will recap the principal motivation, ideas and goals of this study. Then, we will show a simple yet effective application of the n-gram database that allows us to focus in on specific parts of the LP. <br /><br /><br /><b><font color="#e61919">Motivation: </font></b>When trying to decrypt the runes there are 3 main areas to consider: <br /><br /><br /><br />    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>1. What is the encryption algorithm?<br /><br />    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>2. What is the key?<br /><br />    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>3. What are the words that have been encrypted?<br /><br /><br />Finding out information on any of these three things can help us reduce the huge parameter space we are exploring. If we can find some likely phrases the runes decrypt to then we can then concentrate on items 1 and 2 We try and help seed our search by creating a corpus of real, existing data of actual English phrases which we  use as a starting point. <br /><br /><br /><b><font color="#e61919">Assumptions: </font></b>We try to be mindful of our assumptions. The main assumptions for the work described below are: <br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>1.	There is a 1:1 correspondence between the cipher-runes and the message-runes<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>2.	The word and sentence delimiters are a single dot and four dots <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>3.	The text is written in English converted to runes, i.e. Runeglish. <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>4.	The rules of the Gematria Primus are strictly followed<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>5.	Most (if not all) of the LP word-n-grams will be common enough to exist in our corpus <br /><br /><br />For an attack on the LP - this is a relatively small set of robust assumptions. This is one reason why this method may result in some worthwhile conclusions. <br /><br /><b><font color="#e61919">A Warning:</font></b> It is still going to involve long and boring trawls through many, many words. <br /><br /><br /><font color="#e61919"><b>The n-gram Data-Set <br /><br /></b></font><a rel="norewrite" href="http://cicada3301.boards.net/thread/48/words-liber-primus-ii-grams" target="_blank">Previously,</a> we created a corpus of words that the community thought was most likely to be in the Liber Primus (LP). Then we started trawling though the google word-n-gram data to find n-grams that have the same rune-word-lengths as the n-grams of the LP. Many of those n-grams include ‘Parts of Speech Tags’ (POS) and were tagged by us as if all the words were in_master_words or not_in_master_words and with their runeglish rune-count. To be clear we will explain what we mean by the <br /><br /><b><font color="#e61919">Runeglish-rune-count: </font></b> is the number of runes in each word in the phrase.  For example:<br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>Patience is a virtue = ᛈᚪᛏᛁᛖᚾᚳᛖ ᛁᛋ ᚪ ᚢᛁᚱᛏᚢᛖ<br /><br /><br />Is a word-4-gram with rune-counts (8,2,1,6) <br /><br />The word-3-gram rune-counts of this phrase are: (8,2,1), (2,1,6)<br /><br />The word-2-gram rune-counts of this phrase are: (8,2), (2,1) (1,6)<br /><br />The word-1-gram rune-counts of this phrase are: (8), (2), (1), (6)<br /><br /><br />At this stage we have kept every match from the Google data, no matter what words are in the n-gram. If their Runeglish equivalent had a pattern of rune-counts in the LP it was kept. We anticipate cutting the data further as we start to find ways of implementing it. As well as the 5-grams shared here we also have 1,2, and 4 -grams from the equivalent Google data (available on request). 3-grams are being worked on but they are at least an order of magnitude larger in size and are not ready to be shared yet. <br />As an indication of the size of the data set here are some numbers for unique entries (without including  POS tags or letter –cases) for the master and not_master words:<br /><br /><div style="text-align:left;"><br /></div><table style="text-align:left;"><tbody><tr><td style="padding:3px;"></td><td style="padding:3px;">Entries </td><td style="padding:3px;">counts<br /></td></tr><tr><td style="padding:3px;">2-grams</td><td style="padding:3px;">81973727</td><td style="padding:3px;">1335658428365</td></tr><tr><td style="padding:3px;">4-grams</td><td style="padding:3px;">197058154</td><td style="padding:3px;">139681716982</td></tr><tr><td style="padding:3px;">5-grams</td><td style="padding:3px;">43324217</td><td style="padding:3px;">18255827748</td></tr></tbody></table><div style="text-align:center;"><br /></div>The number of n-grams is large. Having the complete set of google-data as our starting point is deliberate. It enables us to make different cuts to the data as we learn more about how to use and apply it. For example, one way to cut the data would be to make a subset with just n-grams for a particular section, page, or even sentence of the LP. <br /><br /><b><font color="#e61919">A First Application of the Data<br /></font></b><br />Before we look at the actual words in the data set we can use the counts for each n-gram gathered by Runeglish-rune-count to guide us. Some n-gram rune-counts are more common than others. This means we can use the frequency of each n-gram-rune-count in the data set to estimate how peculiar it is. We have started calling these uncommon n-grams hub-phrases. They should be a good place to start looking for possible words as they have the fewest possibilities from our corpus.  <br /><br /><b><font color="#e61919">Worked Example  <br /></font></b><br />The first sentence after the red runes on 0.jpg is: <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚦᛂᚷᚫ, ᚠᛂᛟ, ᚩᚾᚦ, ᚾᛖᚹᛒᚪᛋᛟᛇᛁᛝᚢ, ᚾᚫᚷᛁᚦ, ᚻᛒᚾᛡ, ᛈᛒᚾ, ᛇᛂᚦ, ᚪᛝᚣᛉ, ᛒᛞᛈ, ᛖᛡᚠᛉᚷᚠ, ᛋᛈᛏᚠᛈᚢᛝᚣᛝᛉᛡ, ᚣᚻ, ᛒᚢ, ᚷᚩᛈ, ᛝᚫᚦ, ᛁᚫᚻᛉᚦᛈᚷ, ᚣᚠᛝᚳᛂ, ᚦᚪᛗᛁᛝᛁᛡᚣ, ᚻᛇ, ᛏᚻᚫᛡ, ᛉᚣ, ᛖᚢᛝ, ᚳᚠᚾ, ᛇᚦᛂᛁᚦ, ᚦᛈ, ᚣᛝᛠ, ᚣᚾᛖᚣ, ᛞᛉᛝᚹ, ᛒᚳᛉᛞᛒᚠ, ᛗᛏᚾᛖ, ᛠᛂᚾᛚᚷᛒ, ᛉᚷᚦ<br /><br /><br />It has these rune-counts: 4, 3, 3, 11, 5, 4, 3, 3, 4, 3, 6, 11, 2, 2, 3, 3, 7, 5, 8, 2, 4, 2, 3, 3, 5, 2, 3, 4, 4, 6, 4, 6, 3 <br /><br /><br />These  5-gram-rune-counts: (4, 3, 3, 11, 5), (3, 3, 11, 5, 4), (3, 11, 5, 4, 3), (11, 5, 4, 3, 3), (5, 4, 3, 3, 4), (4, 3, 3, 4, 3), (3, 3, 4, 3, 6), (3, 4, 3, 6, 11), (4, 3, 6, 11, 2), (3, 6, 11, 2, 2), (6, 11, 2, 2, 3), (11, 2, 2, 3, 3), (2, 2, 3, 3, 7), (2, 3, 3, 7, 5), (3, 3, 7, 5, 8), (3, 7, 5, 8, 2), (7, 5, 8, 2, 4), (5, 8, 2, 4, 2), (8, 2, 4, 2, 3), (2, 4, 2, 3, 3), (4, 2, 3, 3, 5), (2, 3, 3, 5, 2), (3, 3, 5, 2, 3), (3, 5, 2, 3, 4), (5, 2, 3, 4, 4), (2, 3, 4, 4, 6), (3, 4, 4, 6, 4), (4, 4, 6, 4, 6), (4, 6, 4, 6, 3)<br /><br /><br />And similar for the 4,2 –gram-rune-counts.<br /><br /><br />We now use our n-gram data and find the total number of n-grams with rune-count  (4, 3, 3, 11, 5), and (3, 3, 11, 5, 4), etc. Here are the first few: <br /><br /><table><tbody><tr><td style="padding:3px;">5-gram</td><td style="padding:3px;">(4, 3, 3, 11, 5)</td><td style="padding:3px;">(3, 3, 11, 5, 4)</td><td style="padding:3px;">(3, 11, 5, 4, 3)</td><td style="padding:3px;">(11, 5, 4, 3, 3)</td><td style="padding:3px;"> (5, 4, 3, 3, 4)</td></tr><tr><td style="padding:3px;">Unique Entries</td><td style="padding:3px;">551</td><td style="padding:3px;">589</td><td style="padding:3px;">435</td><td style="padding:3px;">291</td><td style="padding:3px;">23306<br /></td></tr><tr><td style="padding:3px;">Counts </td><td style="padding:3px;">154086</td><td style="padding:3px;">106203</td><td style="padding:3px;">83199</td><td style="padding:3px;">50310</td><td style="padding:3px;">6443072<br /></td></tr></tbody></table><br />This table tells us that an 5-gram with rune-counts  (4, 3, 3, 11, 5), is a factor 42 less probable than one with rune-counts  (5, 4, 3, 3, 4).  This is useful information and gives us hope that we can guess the start of the sentence (or at least reduce the number of possibilities to something manageable).  <br /><br /><br /><b><font color="#e61919">Results &amp; Summary<br /><br /></font></b><br /><br /><a target="_blank" href="https://docs.google.com/spreadsheets/d/1gx813kuYC6wvH8fa6rms00MH42C3B5DK-MViDRmUpl4/edit?usp=sharing" rel="nofollow">Here is a spreadsheet with data for all the red runes and the first sentence after red runes</a><br /><br />This analysis suggest that the easiest sections to guess the words will be the red runes and first few words on: 0.jpg, 3.jpg, 15.jpg, and 33.jpg<br />We have devised a method to estimate how easy it might be to guess the phrases of the LP. Of course, these estimates are statistical, they are not a guarantee of success, but they are valid as an estimate.    <br /></font><br /></div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+							<div class="edited_by"><span class="italic">Last Edit:</span> <abbr class="o-timestamp time" title="Jun 1, 2017 17:21:41 GMT" data-timestamp="1496337701000">Jun 1, 2017 17:21:41 GMT</abbr> by <a data-id="3" class="o-user-link js-user-link user-link user-3 group-0" href="/user/3" title="@mortlach">mortlach</a></div>
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+<div class="container quick-reply">
+	<div class="title-bar">
+		<ul class="controls"><li><a href="/post/new/51" class="reply-button">Reply</a></li></ul>
+		<h2>Quick Reply</h2>
+	</div>
+	<div class="content cap-bottom">
+		<form id="form_0dnv1oEE" class="form_post_quick_reply js-form-post-quick-reply" role="form" action="/post/create/51" method="post">
+<input type="hidden" id="form_0dnv1oEE_captcha_id_input" name="captcha_id" value="captcha_init" />
+<input type="hidden" id="form_0dnv1oEE_message_mode_input" name="message_mode" value="bbcode" />
+<input type="hidden" id="form_0dnv1oEE_ga_client_id_input" name="ga_client_id" />
+<input type="hidden" id="form_0dnv1oEE_reply_mode_input" name="reply_mode" value="quick_reply" /><noscript><ul class="noscript-form-error"></ul></noscript>
+			
+			<div class="guest_name">
+				<label>Guest Name:</label>
+				<input type="text" id="form_0dnv1oEE_created_by_guest_name_input" name="created_by_guest_name" maxlength="30" class="full-width" />
+			</div>
+			
+			<div class="message">
+				<textarea id="form_0dnv1oEE_message_input" name="message" accesskey="q"></textarea>
+			</div>
+			
+            <div id="captcha-container">
+                <div style="width: 308px; height: auto;">
+                <div id="fun-captcha-container"></div>
+                </div>
+                <noscript>
+                    
+                    
+        <iframe src="https://funcaptcha.com/fc/api/nojs/?pkey=C0F5B1D6-CFF5-1D52-0F76-87F4E9F50EC0" frameborder="0" scrolling="no" style="width: 308px; height: auto; border-style: none;"></iframe>
+        <div style="width: 306px;height: 60px;border-style: none;bottom: 12px;left: 25px;margin: 5px 0 0 0;padding: 0px;right: 25px;background: #ffffff;border: 1px solid #f7f7f7;border-radius: 5px;">
+            <input type="text" id="fc-token" name="fc-token" placeholder="Copy verification code into here" style="width: 270px;height: 24px;border: 1px solid #f7f7f7;border-radius: 5px;padding: 10px;margin: 7px;resize: none;font-size: 11px;-webkit-font-smoothing: antialiased;color: #212121;background: #f7f7f7;text-align: center;">
+        </div>
+    
+                    <div style="margin: 20px 0 15px 0;"><input type="checkbox" name="tos" style="margin-right: 15px; vertical-align: middle; position: relative; bottom: 1px;" />I agree to the <a href="http://www.proboards.com/tos" target="_blank">ProBoards Terms of Service</a>.</div>
+                    <style>#captcha-container { display: block; text-align: left !important; padding-left: 10px; }</style>
+                </noscript>
+            </div>
+        
+			<input id="form_0dnv1oEE_post_button" name="post" class="ui-button" type="submit" value="Post Quick Reply" />
+		</form>
+		<script>
+		$(document).ready(function() {
+			
+
+			$('#form_0dnv1oEE').form({
+				create: function(e) {var pbCaptchaOpts = proboards.data("captcha_init");if (pbCaptchaOpts) { proboards.captcha.init(pbCaptchaOpts); }},
+				submit: function(e) {proboards.autosave.clear();},
+				beforeSubmit: function(e) {proboards.data('submitting', 1);
+
+				try {
+					$('#form_0dnv1oEE_ga_client_id_input').val(
+						proboards.analytics.google.getClientId()
+					);
+				} catch(e) {}
+			},
+				validations: [{"message":"You must provide a message.","opts":{"fields":["message_mode"]},"field":"message","name":"exists"},{"message":"You must provide a guest name.","opts":{},"field":"created_by_guest_name","name":"exists"}],
+				errors: {},
+				positionError: null
+			});
+		});
+		</script>
+	</div>
+</div>
+
+				
+			</div>
+			
+			
+        <div style="display: flex; width: 700px; max-width: 100%;min-height: 250px; margin: 0 auto 10px; text-align: center; justify-content: space-around;flex-wrap: wrap">
+            <iframe id="ad2" data-id="pb-bottom-left-ad" style="margin-bottom: 10px"></iframe>
+            <script>pbjs=pbjs||{que:[]};pbjs.que.push(function() {bottomLeftAd.init(document.getElementById('ad2'));});</script>
+
+            <iframe id="ad3" data-id="pb-bottom-right-ad" style="margin-bottom: 10px"></iframe>
+            <script>pbjs.que.push(function() {bottomRightAd.init(document.getElementById('ad3'));});</script>
+        </div>
+    
+            <footer class="c-footer" role="contentinfo">
+                <div class="c-footer__text o-wrapper u-text-center">
+                    <div id="remove_ads_link"><a href="https://www.proboards.com/store/add_cart/ad_free/50000/cicada3301.boards.net/1">Click here to remove banner ads from this forum.</a></div>This Forum Is Hosted For FREE By <a href="http://www.proboards.com" target="_blank">ProBoards</a><br />Get Your Own <a href="https://www.proboards.com/create-free-forum" target="_blank">Free Forum</a>!
+                </div>
+                <div class="c-footer__links o-wrapper u-text-center">
+                    <a href="http://www.proboards.com/tos" accesskey="8">Terms of Service</a> |
+                    <a href="http://www.proboards.com/privacy">Privacy Policy</a> |
+                    <a href="http://www.proboards.com/privacy#enhanced">Notice</a> |
+                    <a href="http://www.viglink.com/policies/ftc" target="_blank">FTC Disclosure</a> |
+                    <a href="http://www.proboards.com/report-abuse" accesskey="7">Report Abuse</a>
+                     | <a href="#" class="js-report-ad" title="Report Ad">Report Ad</a>
+                     | <a href="http://www.proboards.com/ads"><b>Advertise Here</b></a>
+                </div>
+            </footer>
+
+		</div>
+		
+	</body>
+</html>

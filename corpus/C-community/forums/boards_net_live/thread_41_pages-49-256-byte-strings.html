@@ -1,0 +1,1023 @@
+<!DOCTYPE HTML>
+	<!--[if IE 7]><html class="ie7"><![endif]--><!--[if IE 8]><html class="ie8"><![endif]--><!--[if IE 9]><html class="ie9"><![endif]--><!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+	<head>
+		<meta charset="UTF-8">
+		<title>Pages 49 to 51 and 256 Byte Strings | Cicada3301</title>
+		<script type="text/javascript" src="https://storage.googleapis.com/vs-scripts/intentiq/vsintentiq.js" async></script>
+<script async src="//c.amazon-adsystem.com/aax2/apstag.js"></script>
+<script>!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={unLoaded:1,init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},dpa:function(){q("di",arguments)},rpa:function(){q("ri",arguments)},upa:function(){q("ui",arguments)},_Q:[]};}("apstag",window);</script>
+<script async src="https://config.htplayground.com/load-vs-cmp.js"></script>
+<script async src="https://config.htplayground.com/config/proboards.com"></script>
+<script async src="https://config.htplayground.com/libs"></script>
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+  window.deployads = window.deployads || [];
+  window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+
+    //Size Mapping
+    var topMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([728, 200], [[728, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([0, 0], [[300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150]])
+    .build();
+    var bottomMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[970, 90], [728, 90], [300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .addSize([728, 200], [[728, 90], [300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .addSize([0, 0], [[300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .build();
+    var adhesionMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([728, 200], [[728, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([0, 0], [[320, 50], [300, 50], [234, 60]])
+    .build();
+    //Size Mapping end
+
+    googletag.defineSlot('/1030735/Boards_net_Top', [[250, 250], [336, 280], [300, 250], [728, 90], [320, 50], [468, 60], [970, 90], [234, 60], [180, 150], [200, 200], [480, 75], [300, 50]], 'Boards_net_Top').defineSizeMapping(topMapping).addService(googletag.pubads());
+    googletag.defineSlot('/1030735/Boards_net_Bottom', [[125, 125], [250, 250], [320, 50], [970, 90], [200, 200], [300, 250], [728, 90], [234, 60], [336, 280], [180, 150], [300, 50]], 'Boards_net_Bottom').defineSizeMapping(bottomMapping).addService(googletag.pubads());
+    googletag.defineSlot('/1030735/Boards_net_Adhesion', [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]], 'Boards_net_Adhesion').defineSizeMapping(adhesionMapping).addService(googletag.pubads());
+    
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().setTargeting("sitename", "Proboards.com");
+    googletag.pubads().setTargeting("folder2", "pb-"+location.hostname);
+    googletag.pubads().setTargeting("proboardsforumid", "6433989");
+    googletag.pubads().setTargeting("forum_id", "10");
+    googletag.pubads().setTargeting("vertical", "");
+    googletag.pubads().setCentering(true);
+    if (typeof(proboards) !== 'undefined' && typeof(proboards.data) !== 'undefined' ) {
+if (proboards.data('board_id') == null) {
+	googletag.pubads().setTargeting("PageID", "forumlist");
+} else if (proboards.data('thread_id') == null) {
+	googletag.pubads().setTargeting("PageID", "threadlist");
+} else {
+	googletag.pubads().setTargeting("PageID", "thread");
+	if (proboards.data('lm_total') > proboards.data('lm_limit')) {
+		if (proboards.data('lm_page') == 1 || proboards.data('lm_page') < proboards.data('lm_total') / proboards.data('lm_limit')) {
+			googletag.pubads().setTargeting("Folder1", proboards.data('lm_limit').toString());
+		} else {
+			googletag.pubads().setTargeting("Folder1", (proboards.data('lm_total') - (proboards.data('lm_limit') * (proboards.data('lm_page') - 1))).toString());
+		}
+	} else {
+		googletag.pubads().setTargeting("Folder1", proboards.data('proboards.thread')[Object.keys(proboards.data('proboards.thread'))[0]]['posts'].toString());
+	}
+}
+    }
+    if("0" === "0") {
+        googletag.pubads().setTargeting("registered", "false");
+    } else {
+        googletag.pubads().setTargeting("registered", "true");
+    }
+    deployads.push(function () { deployads.gpt.enableServices() });
+
+    if("0" === "0") {
+      function onDomLoadAdhesion() {
+            document.body.classList.add("vsFooterDiv");
+            let footeradcontainer = document.createElement('div');
+            footeradcontainer.classList.add('desktop-adhesion-ad__footer-ad-container');
+    
+            let desktopadhesion = document.createElement('div');
+            desktopadhesion.id = 'desktop-adhesion-ad__container';
+            desktopadhesion.classList.add('desktop-adhesion-ad__footer-ad');
+    
+            let innercontainer = document.createElement('div');
+            innercontainer.id = 'desktop-adhesion-ad__inner-container';
+    
+            let closebutton = document.createElement('button');
+            closebutton.classList.add('overlay-titleCloser');
+            closebutton.id = 'desktop-adhesion-ad__close-button';
+            closebutton.onclick = function() {
+                var vsAdhesion;
+                googletag.pubads().getSlots().forEach(function(i){
+                    if(i.getSlotElementId() === "Boards_net_Adhesion") {
+                        vsAdhesion = i;
+                    }
+                });
+                googletag.destroySlots([vsAdhesion]);
+                document.body.classList.remove("vsFooterDiv");
+            }
+    
+            let proboardsadhesion = document.createElement('div');
+            proboardsadhesion.id = 'Boards_net_Adhesion';
+    
+            footeradcontainer.appendChild(desktopadhesion);
+            desktopadhesion.appendChild(innercontainer);
+            innercontainer.appendChild(closebutton);
+            innercontainer.appendChild(proboardsadhesion);
+            document.body.appendChild(footeradcontainer);
+        
+            googletag.cmd.push(function() {
+                if (window.deployads) {
+                deployads.push(function() {
+                    deployads.gpt.display('Boards_net_Adhesion');
+                });
+                } else {
+                    googletag.display('Boards_net_Adhesion'); 
+                }
+            });
+        }
+        document.readyState === "loading"
+        ? document.addEventListener('DOMContentLoaded', onDomLoadAdhesion)
+        : onDomLoadAdhesion();
+    }
+  });
+</script>
+<script src="https://storage.googleapis.com/vs-scripts/proboards/config.js"></script>
+<script>
+/**
+ * Sets a cookie
+ *
+ * @param name cookie name
+ * @param value cookie value
+ * @param expiration expiration in minutes
+ * @param domain [optional] domain
+ */
+ function vsExpSetCookie( name, value, expiration, domain = '' ) {
+    if( !name || !value || !expiration ) {
+        return;
+    }
+    let d = new Date();
+    d.setTime( d.getTime() + (expiration * 60 * 1000) );
+    let cName = name + '=' + value,
+        expires = ';expires=' + d.toUTCString();
+    document.cookie = cName + expires + ';path=/' + ';';
+}
+/**
+ * Gets cookie value
+ *
+ * @param name
+ * @returns string|null cookie value or null
+ */
+function vsExpGetCookie( name ) {
+    var nameEQ = name + '=';
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+// DiceRoll functions
+function isExperiment() {
+    // Set a diceroll for Experimentation
+    // Test in browser by adding '?vsexp-dice=exp' or '?vsexp-dice=control' to url.
+    const expire = 30; // 30 minutes
+    let expWinPercentage = window.vsPrimisExpData.weight ?? 50;
+    const checkParam = () => {
+        let urlParam = location.search.match( /[?&]vsexp-dice=([^&]+)/ );
+        return urlParam && urlParam.length === 2 ? urlParam[ 1 ] : null;
+    };
+    const experimentDiceRoll = () => {
+        const diceResult = Math.random() < expWinPercentage / 100;
+        return diceResult ? 'exp' : 'control';
+    };
+    let winner = checkParam();
+    let cookieName = window.vsPrimisExpData.cookieName ?? 'vsexp_pct';
+    if( winner ) {
+        vsExpSetCookie( cookieName, winner, expire );
+    } else {
+        winner = vsExpGetCookie( cookieName );
+        if( !winner ) {
+            winner = experimentDiceRoll();
+            vsExpSetCookie( cookieName, winner, expire );
+        }
+    }
+    window.vsRunPrimis = ( winner === 'exp' );
+}
+//Check if this is allowlisted before checking experiment group
+if (window.vsPrimisExpData?.runExp && window.vsPrimisExpData?.weight != 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+    isExperiment();
+    let vsKV = '';
+    if (window.vsRunPrimis && window.vsPrimisExpData?.weight != 100) {
+        vsKV = window.vsPrimisExpData?.variantName ?? 'pb_primis_exp';
+    } else {
+        vsKV = window.vsPrimisExpData?.controlName ?? 'pb_primis_ctrl';
+    }
+    if (window.vsPrimisExpData?.weight != 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+            googletag.pubads().setTargeting('experiment', vsKV);
+        });
+        window.adsJSON = {
+            pageKeyValues: {'revenueExp': ['experiment'],'experiment': vsKV},
+        };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'experiment': vsKV
+        });
+    }
+}
+if (window.vsPrimisExpData?.weight === 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+        window.vsRunPrimis = true;
+}
+if (window.vsExpData?.runExp ) {
+    window.vsexp = true;
+}
+</script>
+<style>
+.desktop-adhesion-ad__footer-ad-container .desktop-adhesion-ad__footer-ad {
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
+	width: 100%;
+	color: #fff;
+	background-color: transparent;
+	position: fixed;
+	bottom: 0;
+	z-index: 400;
+	font-size: 26px;
+	-webkit-overflow-scrolling: touch;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translate3d(0,0,0);
+	pointer-events: none;
+}
+#desktop-adhesion-ad__inner-container {
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+#desktop-adhesion-ad__inner-container #desktop-adhesion-ad__close-button.overlay-titleCloser {
+	border: 1px solid #c9cdcf;
+	width: 24px;
+	height: 24px;
+	background: #fff;
+	font-size: large;
+	padding: unset;
+	border-radius: 3px;
+	color: #686c6e;
+	pointer-events: auto;
+}
+#Desktop_Adhesion {
+	pointer-events: auto;
+}
+#desktop-adhesion-ad__close-button.overlay-titleCloser {
+	margin: unset;
+	opacity: 1;
+	position: absolute;
+	line-height: 50%;
+}
+.overlay-titleCloser {
+	float: right;
+	cursor: pointer;
+	text-decoration: none;
+}
+.overlay-titleCloser:after {
+	font-family: 'font awesome 5 pro';
+	font-size: inherit;
+	font-style: normal;
+	font-weight: 100;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: "X";
+}
+#desktop-adhesion-ad__close-button.overlay-titleCloser {
+    right: -33px;
+}
+#desktop-adhesion-ad__inner-container {
+    max-width: 728px;
+    pointer-events: auto;
+}
+body.vsFooterDiv {
+    margin-bottom:90px;
+}
+</style>
+<script type="text/javascript">
+            window.partial = "thread/show";
+            document.registerElement = false;
+            window._pbdata = [];
+            window.pb = {
+                data: {
+                    set: function(a) {
+                        window._pbdata.push(a)
+                    }
+                }
+            }
+        </script>
+
+        <!-- Google Tag Manager -->
+            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-M6QVNSC');</script>
+        <!-- End Google Tag Manager -->
+    
+<link rel="canonical" href="https://cicada3301.boards.net/thread/41/pages-49-256-byte-strings" />
+<link rel="alternate" type="application/rss+xml" href="http://cicada3301.boards.net/rss/public" />
+<link rel="shortcut icon" type="image/x-icon" href="https://storage.proboards.com/forum/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="https://storage.proboards.com/forum/images/favicon.ico" />
+<meta property="og:url" content="https://cicada3301.boards.net/thread/41/pages-49-256-byte-strings">
+<meta property="og:title" content="Pages 49 to 51 and 256 Byte Strings | Cicada3301">
+<meta property="og:description" content="Pages 49 to 51 and 256 Byte Strings  Pages 49 to 51 contain the alpha-numeric string given at the bottom of this post.  In the string there are 256 pairs.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@proboards">
+
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/forum/css/0/forum_base_1144.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/6433989/css/w8taoZpniIqJS0joSHjj.css" id="forum_style" />
+<link rel="stylesheet" type="text/css" media="print" href="//storage.proboards.com/forum/css/0/print_1144.css" />
+<script> translatePo = { language: 'en_US' };</script>
+<script type="text/javascript" src="//storage.proboards.com/forum/js/proboards.combined_1144.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//www.google.com/recaptcha/api.js?render=explicit&hl=en"></script>
+
+		<!-- Google Analytics Start -->
+		<script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-30657-154', 'auto' );ga('set', 'anonymizeIp', true);
+		</script>
+		<!-- Google Analytics End -->
+	
+
+        <script type="module">
+            var vglnk;
+            $(document).ready(function() {
+                $('a').each(function() {
+                    if($(this).prop('href').indexOf('login.proboards.com') !== -1) {
+                        $(this).addClass('norewrite');
+                    }
+                });
+
+                vglnk = {
+                    api_url: '//api.viglink.com/api', key: '71fe2139a887ad501313cd8cce3053c5', subId: '6433989'
+                };
+                var vglnkSrc = ('https:' == document.location.protocol ? vglnk.api_url : '//cdn.viglink.com/api') + '/vglnk.js';
+
+                // VigLink ProBoards Convert Code (using above key)
+                var s = document.createElement('script');
+                s.type = 'text/javascript'; s.async = true; s.src = vglnkSrc;
+                document.body.appendChild(s);
+
+                var retry = 0;
+                var reV = function() {
+                    if (typeof vglnk !== 'function' && retry++ < 5) {
+                        setTimeout(reV, 500);
+                    }
+                    else if (typeof vglnk !== 'function') {
+                        $('a').not('.norewrite').each(function() {
+                            var url = $(this).prop('href');
+                            if (url.indexOf('http') === 0 && url.indexOf(document.domain) === -1) {
+                                $(this).prop('href', 'http://redirect.viglink.com?key=71fe2139a887ad501313cd8cce3053c5&subId=6433989&u=' + escape(url));
+                            }
+                        });
+                    }
+                };
+                reV();
+            });
+        </script>
+    
+<script>
+            window.runAntiAdBlock = 1;
+        </script>
+<script>  proboards.data([['forum_url',"cicada3301.boards.net"],['ad_free',0],['locale_settings',{"amcharts_date_format":"MM/DD/YYYY","input_date_placeholder":"mm/dd/yyyy","input_date_regex":"^(\\d{2})/(\\d{2})/(\\d{4})$","input_time_placeholder":"hh:mm pp","input_date_format":"%m/%d/%Y","thousands_separator":",","input_time_format":12}],['image_path',"//storage.proboards.com/forum/images"],['time_style',0],['military_time',0],['timezone',"guest"],['serverDate',1787177637000],['search-query-min',3],['search-query-max',50],['is_current_user_guest',"1"],['plugin_max_key_length',4000],['plugin_max_super_forum_key_length',32000],['login_url',"https://login.proboards.com/login/6433989/1"],['register_url',"https://login.proboards.com/register/6433989"],['page_url',""],['captcha_init',{"tos":{"url":"http://www.proboards.com/tos","name":"ProBoards Terms of Service"},"adfree":"","no_popup":0,"captcha_container_id":"captcha-container","captcha_id":"captcha_init","no_validations":0,"attempts":0,"mobile":0,"captcha_errors":0,"key":"6LeLlQkTAAAAACrV4OiakEuq7INhMhWWUCZ-XpoZ","errors":0,"captcha_error_origin":null,"form_id":"form_binA7R8p"}],['quick_reply',1],['forum_id',"6433989"],['thread_id',"41"],['thread_subject',"Pages 49 to 51 and 256 Byte Strings"],['labels_applied',[]],['accessible_label_ids_applied',[]],['board_id',"10"],['search_filter_img_src',"//storage.proboards.com/forum/images/icon-search-filters.png"],['options_img_src',"//storage.proboards.com/forum/images/icon-options.png"],['options_img_alt',"Post Options"],['options_img_title',"Post Options"],['lm_total',"3"],['lm_limit',15],['lm_page',1],['lm_data',{"thread_id":"41"}],['lm_id',"50bdOX45fzlFaQtUmdOW"],['lm_type',"post"],['lm_thread_next',"/thread/next/41"],['lm_thread_prev',"/thread/previous/41"],['sharing_options',{"email_enabled":1,"pinterest_enabled":1,"enabled":1,"myspace_enabled":1,"facebook_enabled":1,"twitter_enabled":1,"linkedin_enabled":1,"tumblr_enabled":1,"twitter_card_site":"","reddit_enabled":1}],['page_cache',".lm-content-50bdOX45fzlFaQtUmdOW"],['labels_accessible',[]],['labels_viewable',[]],['_google_analytics_events',[{"hitType":"pageview"}]],['proboards.badge',{}],['pop_menu_structure',{"placement":"bottom left","positionOffsetY":10,"positionAgainstSelector":".o-breadcrumbs","opensOn":"click","addMenuClass":"c-pop-menu","startingMenu":"_root","menuStructure":{"1-4":{"title":"Welcome","items":[{"addSeparator":1,"text":"Go to Welcome","href":"/#category-4"},{"addSeparator":null,"text":"Welcome","href":"https://cicada3301.boards.net/board/21/welcome"}]},"1-1":{"items":[{"text":"Go to General","addSeparator":1,"href":"/#category-1"},{"addSeparator":null,"text":"Philosopy","href":"https://cicada3301.boards.net/board/20/philosopy"},{"addSeparator":null,"text":"General Discussion","href":"https://cicada3301.boards.net/board/1/general-discussion"}],"title":"General"},"1-3":{"title":"Rune Solving","items":[{"href":"/#category-3","text":"Go to Rune Solving","addSeparator":1},{"text":"Tools","addSeparator":null,"href":"https://cicada3301.boards.net/board/19/tools"},{"addSeparator":null,"text":"Theories","href":"https://cicada3301.boards.net/board/18/theories"},{"addSeparator":null,"text":"Cross","href":"https://cicada3301.boards.net/board/17/cross"},{"href":"https://cicada3301.boards.net/board/16/spirals","text":"Spirals","addSeparator":null},{"addSeparator":null,"text":"Branches","href":"https://cicada3301.boards.net/board/15/branches"},{"addSeparator":null,"text":"Mobius","href":"https://cicada3301.boards.net/board/14/mobius"},{"href":"https://cicada3301.boards.net/board/13/mayfly","text":"Mayfly","addSeparator":null},{"text":"Tree","addSeparator":null,"href":"https://cicada3301.boards.net/board/12/tree"},{"href":"https://cicada3301.boards.net/board/11/cuneiform","addSeparator":null,"text":"Cuneiform"},{"text":"Spiral Branches","addSeparator":null,"href":"https://cicada3301.boards.net/board/10/spiral-branches"},{"addSeparator":null,"text":"56","href":"https://cicada3301.boards.net/board/9/56"},{"text":"57","addSeparator":null,"href":"https://cicada3301.boards.net/board/8/57"}]},"_root":{"title":"Categories","items":[{"addSeparator":1,"text":"Home","href":"/forum"},{"text":"Welcome","addSeparator":null,"submenu":"1-4"},{"addSeparator":null,"text":"Rune Solving","submenu":"1-3"},{"text":"General","addSeparator":null,"submenu":"1-1"}]}}}],['screen_breakpoints',{"sm":768,"xs":0,"md":992,"lg":1200}],['user',{"time_format":"12hr","id":0,"is_logged_in":0,"theme_id":1,"name":"Guest","is_staff":0,"date_format":"m/d/y"}],['page',{"category":{"id":3,"name":"Rune Solving","name_unescaped":"Rune Solving"},"thread":{"last_post_id":72,"subject":"Pages 49 to 51 and 256 Byte Strings","is_new":0,"is_poll":0,"posts":"3","created_by":3,"is_bookmarked":0,"created_on":1481207915,"subject_unescaped":"Pages 49 to 51 and 256 Byte Strings","is_locked":0,"url":"https://cicada3301.boards.net/thread/41/pages-49-256-byte-strings","first_post_id":64,"is_sticky":0,"views":"3,481","id":41,"is_muted":0,"board_id":10,"is_falling":0,"is_announcement":0,"last_post_time":1484176686},"board":{"posts":7,"id":10,"show_announcements":"1","name_unescaped":"Spiral Branches","display_name":"Spiral Branches [40-55]","description":"","disable_post_counts":"0","disable_posting":"0","url":"/board/10/spiral-branches","hidden":"0","name":"Spiral Branches","threads":2}}],['default_avatar',"//storage.proboards.com/forum/images/defaultavatar.png"],['route',{"params":{"thread_id":"41"},"name":"thread"}],['search_system',1],['insite_path',""],['maintenance_mode',0],['proboards.thread',{"41":{"id":41,"views":"3,481","is_announcement":0,"is_falling":0,"last_post_time":1484176686,"is_muted":0,"board_id":10,"url":"https://cicada3301.boards.net/thread/41/pages-49-256-byte-strings","is_locked":0,"subject_unescaped":"Pages 49 to 51 and 256 Byte Strings","is_sticky":0,"first_post_id":64,"created_by":3,"posts":"3","created_on":1481207915,"is_bookmarked":0,"is_poll":0,"last_post_id":72,"subject":"Pages 49 to 51 and 256 Byte Strings","is_new":0}}],['proboards.post',{"68":{"created_by":0,"id":68,"url":"https://cicada3301.boards.net/post/68","created_on":1481528010,"liked":0,"thread_id":41},"64":{"thread_id":41,"liked":0,"created_on":1481207915,"url":"https://cicada3301.boards.net/post/64","id":64,"created_by":3},"72":{"id":72,"url":"https://cicada3301.boards.net/post/72","created_by":0,"created_on":1484176686,"thread_id":41,"liked":0}}]]);</script>
+<script> if (typeof(standard_thread_show) == 'function') standard_thread_show();</script>
+<script> if (typeof(standard_post_base) == 'function') standard_post_base();</script>
+
+	</head>
+	<body>
+        <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6QVNSC"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+		
+		<div id="wrapper">
+			<header>
+				<div id="banner-container" role="banner">
+					<h2 id="banner">
+						<a id="logo" href="/">Cicada3301</a>
+					</h2>
+				</div>
+				<a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+				<a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+				<div id="navigation-menu" class="ui-helper-clearfix">
+					<ul role="navigation">
+						
+							<li>
+								<a href="/">
+									Home
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/help">
+									Help
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/search">
+									Search
+									
+								</a>
+							</li>
+						
+					</ul>
+					<p id="welcome">
+						
+							Welcome Guest.
+							
+								Please <a href="https://login.proboards.com/login/6433989/1">Login</a> or <a href="https://login.proboards.com/register/6433989">Register</a>.
+							
+						
+					</p>
+				</div>
+			</header>
+
+			
+
+			
+				<div id="navigation-tree">
+					<div class="nav-tree-wrapper"><ul id="nav-tree" class="ui-helper-clearfix" role="navigation" itemscope itemtype="https://schema.org/BreadcrumbList"><li id="nav-tree-branch-0" class="nav-tree-branch ui-helper-clearfix has-menu" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/" itemprop="item"><span itemprop="name">Cicada3301</span></a></div><meta itemprop="position" content="1"><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-1" class="nav-tree-branch ui-helper-clearfix" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/board/10/spiral-branches" itemprop="item"><span itemprop="name">Spiral Branches</span></a></div><meta itemprop="position" content="2"><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-2" class="nav-tree-branch ui-helper-clearfix" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/thread/41/pages-49-256-byte-strings" itemprop="item"><span itemprop="name">Pages 49 to 51 and 256 Byte Strings</span></a></div><meta itemprop="position" content="3"><span class="menu_arrow"><span></span></span></li></ul></div><div class="popup_html">
+<ul id="nav-tree-menu-0" role="navigation">
+<li class="nav-tree-cat-4"><a href="/#category-4"><span class="item-text">Welcome</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-21"><a href="https://cicada3301.boards.net/board/21/welcome"><span class="item-text">Welcome</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-3"><a href="/#category-3"><span class="item-text">Rune Solving</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-19"><a href="https://cicada3301.boards.net/board/19/tools"><span class="item-text">Tools</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-18"><a href="https://cicada3301.boards.net/board/18/theories"><span class="item-text">Theories</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-17"><a href="https://cicada3301.boards.net/board/17/cross"><span class="item-text">Cross</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-16"><a href="https://cicada3301.boards.net/board/16/spirals"><span class="item-text">Spirals</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-15"><a href="https://cicada3301.boards.net/board/15/branches"><span class="item-text">Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-14"><a href="https://cicada3301.boards.net/board/14/mobius"><span class="item-text">Mobius</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-13"><a href="https://cicada3301.boards.net/board/13/mayfly"><span class="item-text">Mayfly</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-12"><a href="https://cicada3301.boards.net/board/12/tree"><span class="item-text">Tree</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-11"><a href="https://cicada3301.boards.net/board/11/cuneiform"><span class="item-text">Cuneiform</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-10"><a href="https://cicada3301.boards.net/board/10/spiral-branches"><span class="item-text">Spiral Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-9"><a href="https://cicada3301.boards.net/board/9/56"><span class="item-text">56</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-8"><a href="https://cicada3301.boards.net/board/8/57"><span class="item-text">57</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-1"><a href="/#category-1"><span class="item-text">General</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-20"><a href="https://cicada3301.boards.net/board/20/philosopy"><span class="item-text">Philosopy</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-1"><a href="https://cicada3301.boards.net/board/1/general-discussion"><span class="item-text">General Discussion</span><div class="clear"></div></a></li>
+</ul>
+</li>
+</ul></div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+		var reposition   = false;
+		var showOn       = 'hover';
+		var offset       = reposition
+			? '-13 6'
+			: ($.browser.msie && parseInt($.browser.version) == 8)
+				? '3 -1'
+				: '3 0';
+		var showCallback = function(e) {
+			var self = $(this);
+
+			// Make sure all other menus are closed
+			$('.popup_html > ul').not(self).menu('hide');
+
+			// Hide the navigation if they leave it.
+			setTimeout(function() {
+				$(document).on('mousemove.nav', function(e) {
+					var elem = $(e.target);
+					if (
+						elem.parents('#nav-tree, .popup_html').length == 0
+						&& !elem.is('#nav-tree, .popup_html')
+						&& !self.data('hotkey-open')
+					) {
+						self.menu('hide');
+						$(document).off('.nav');
+					}
+				});
+			}, 1000);
+		}
+	
+				$('#nav-tree-menu-0')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-0'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-0'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-1')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-1'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-1'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-2')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-2'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-2'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				$('.nav-tree-cat-3').addClass('state-selected');$('.nav-tree-board-10').addClass('state-selected');
+			});
+		</script>
+	
+				</div>
+			
+
+			<div id="ad1"><div style="max-width: 970px; margin: 0 auto 10px; text-align: center;"><div id="Boards_net_Top" style="min-height:90px;">
+    <script type="text/javascript">
+        googletag.cmd.push(function() {
+            deployads.push(function() { deployads.gpt.display("Boards_net_Top"); });
+        });
+    </script>
+</div></div></div>
+
+			<div id="content" role="main">
+				
+				<div class="container posts">
+	<div class="title-bar">
+		
+			<ul class="controls"><li><a class="reply-button" role="button" href="/post/new/41">Reply</a></li></ul>
+		
+		<h1>Pages 49 to 51 and 256 Byte Strings</h1>
+	</div>
+	<div class="control-bar ui-helper-clearfix scrollable-50bdOX45fzlFaQtUmdOW">
+		<div class="lm-search-50bdOX45fzlFaQtUmdOW ui-search"></div>
+		<div class="controls">
+			<ul class="select_menu_list ui-menu ui-selectMenu hide actions lm-actions-50bdOX45fzlFaQtUmdOW" data-status="Actions"><li class="sharing ui-menu-has-sub-menu"><a><span class="icon pbi-share"></span>Share Thread</a><ul><li class="facebook-share"><a><span class="icon"></span>Facebook</a></li><li class="twitter-share"><a><span class="icon"></span>Twitter</a></li><li class="tumblr-share"><a><span class="icon"></span>Tumblr</a></li><li class="linkedin-share"><a><span class="icon"></span>LinkedIn</a></li><li class="myspace-share"><a><span class="icon"></span>MySpace</a></li><li class="email-share"><a><span class="icon"></span>Email</a></li></ul></li><li class="view ui-menu-has-sub-menu"><a><span class="icon"></span>Go to</a><ul><li class="view_prev"><a rel="nofollow"><span class="icon"></span>Previous Thread</a></li><li class="view_next"><a rel="nofollow"><span class="icon"></span>Next Thread</a></li></ul></li><li class="default-menu-option"><a>Please make a selection first</a></li></ul>
+		</div>
+		<div class="float-left"><span class="control-icons lm-icons-50bdOX45fzlFaQtUmdOW"><span class="new-icon"><a href="/threads/recent/41">new</a></span><span class="bookmark_icon hide"><img title="Bookmark" alt="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img alt="Locked" title="This thread is locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" title="This thread is falling" alt="Falling" /></span></span></div>
+		<ul class="ui-pagination lm-pagination-50bdOX45fzlFaQtUmdOW"><li class="prev state-disabled"><a>&laquo; Prev</a></li><li class="state-selected"><a>1</a></li><li class="next state-disabled"><a>Next &raquo;</a></li></ul>
+	</div>
+	<div class="content cap-bottom">
+		<span class="no-labels js-no-labels"></span>
+		
+		<table class="list" role="presentation">
+			<tbody class="lm-content-50bdOX45fzlFaQtUmdOW">
+				
+	<tr id="post-64" class="item post js-post first">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile">
+	<a class="o-user-link js-user-link user-link user-3 group-1" data-id="3" title="@mortlach" href="/user/3">mortlach</a><br />
+	
+	
+	
+		Administrator<br /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><br />
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar-3" title="mortlach"><img src="//storage.proboards.com/6433989/avatar/JSCXVO5DB5iXjb7oFsk8.jpg" alt="mortlach Avatar" /></div></div><br />
+	
+	
+	
+		<div class="info">
+			Posts: 38
+			
+			
+		</div><br />
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a href="/thread/41/pages-49-256-byte-strings" class="js-thread__link thread-link thread-41 board-10">Pages 49 to 51 and 256 Byte Strings</a>
+									<span class="date"><abbr title="Dec 8, 2016 14:38:35 GMT" class="o-timestamp time" data-timestamp="1481207915000">Dec 8, 2016 14:38:35 GMT</abbr></span>
+									
+									<span class="likes">&nbsp;</span>
+								</div>
+								<div class="controls">
+									<a class="button quote-button" href="/post/64/quote/41">Quote</a>
+									
+									
+									<ul class=" options_menu post-64 user-3 hide"><li class="64-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="64-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="64-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="64-member ui-menu-has-sub-menu "><a><span class="icon pbi-user-icon"></span>Member</a><ul class=""><li class="64-giveGift"><a href="/user/3/gift"><span class="icon pbi-birthday"></span>Give Gift</a></li></ul></li><li class="64-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-64-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-64-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by mortlach on <abbr title="Dec 8, 2016 14:38:35 GMT" class="o-timestamp time" data-timestamp="1481207915000">Dec 8, 2016 14:38:35 GMT</abbr></h3>
+							<div class="message"><font color="#e61919"><b>Pages 49 to 51 and 256 Byte Strings<br /></b></font><br />Pages 49 to 51 contain the alpha-numeric string given at the bottom of this post. <br />In the string there are 256 pairs. The first character of each pair is always a 0,1,2,3 or 4, and the second is one of 59 (prime) unique characters, the digits 0 to 9, 26 upper case letters and 23 lower case letters: <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,a,b,c,d,e,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x<br /><b><br /><font color="#e61919">Another Skipped f</font></b><br /><br />It’s interesting to note that 'f' has been skipped, something similar is found when solving the earlier pages (in the pages that have a decryption key each letter f in the message&nbsp;<b>is not encrypted</b>, f is used as an <i><a href="http://cicada3301.boards.net/thread/38/decrypt-runes-vigen-re-cipher" rel="norewrite" class="norewrite" target="_blank">interrupter</a>,&nbsp;</i>pages that are just <i>encoded</i>&nbsp;do not skip 'f'). <br /><br /><font color="#e61919"><b>Interpreting The String</b>&nbsp;<br /></font><br />One way to interpret this string is that it is a representation of numbers in Base64, Base 60, Base 59, or something else?<br /><br />Typical <a target="_blank" href="https://en.wikipedia.org/wiki/Base64" rel="nofollow">Base64 encoding </a>&nbsp;starts with capital letters, then lower case letters, then numbers: <br /><span><br />&nbsp; &nbsp;&nbsp;</span>A = 0, B = 1, C = 2,  … <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>a = 26, b = 27, c = 28 … <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>0 = 52, 1 = 53, 2 = 54 …&nbsp;<br /><br />After some discussion on solvers we decided to try the Base 59 mapping of characters to numbers. We chose to start with the numbers, then the 26 Upper case letters and then the 23 lower case letters, giving <a target="_blank" rel="nofollow" href="http://pastebin.com/KH4sH6Se">this map from each possible base 59 pair to decimal</a>. There are other choices but this seems reasonable (and gives us an interesting result). <br /><br /><b><font color="#e61919">A 256 Byte String</font></b><br /><br />Using the Base 59 assumption <a rel="nofollow" href="http://pastebin.com/b2D5fAxJ)" target="_blank"></a><a target="_blank" rel="nofollow" href="http://pastebin.com/b2D5fAxJ">we get a decimal number for each pair</a>.&nbsp; All the decimal numbers are in the range 0 to 255, an unsigned 8 bit (1 byte) number, (“unsigned char” in c). What makes this more interesting is that in the 2014 we found three 256 byte numbers that were never used: <br /><br /><a href="http://pastebin.com/raw/qePehdKM" rel="nofollow" target="_blank">pastebin.com/raw/qePehdKM</a> <br /> <a href="http://uncovering-cicada.wikia.com/wiki/CICADA_3301_2014_PUZZLE_FACTS_PART_5" rel="nofollow" target="_blank">uncovering-cicada.wikia.com/wiki/CICADA_3301_2014_PUZZLE_FACTS_PART_5</a> <br /><br /><b><font color="#e61919">Four 256 Byte Strings</font></b><br /><br />We now have four 256 byte strings. At first glance the 4 strings look random, perhaps they can be combined in someway, or they are encrypted, or they are a key or a passphrase that will help us make progress? <br /><br />*Comments, questions, suggestions, omissions etc ? please try <a target="_blank" href="http://webchat.freenode.net/?channels=cicadasolvers" rel="nofollow">#cicadasolvers</a><br /><br />MSGA <br /><br /><b><font color="#e61919">Page 49 to 51 String:&nbsp;</font></b><br /><br /><br />3N 3p 2l 36 1b 3v 26 33<br /><br />1W 49 2a 3g 47 04 33 3W<br /><br />21 3M 0F 0X 1g 2H 0x 1R<br /><br />1n 3I 2r 0P 2U 16 2L 2D<br /><br />1t 1s 3H 0d 0s 1K 2D 05<br /><br />1K 1O 0S 1D 3o 1l 3J 1G<br /><br />4D 0G 0l 0x 1Q 2p 2a 1K<br /><br />4E 1w 2Q 19 1k 3G 24 0p<br /><br />22 4F 0P 3C 3J 1D 2n 1m<br /><br />2i 1J 3P 2v 1s 2O 0k 1M<br /><br />2M 0w 3L 3D 2r 0S 1p 15<br /><br />3V 3e 3I 0n 3u 1O 0u 0Z<br /><br />3g 2U 1C 0Y 1N 3n 0W 3Q<br /><br />22 13 0V 3c 0E 34 0W 1t<br /><br />1D 2N 3H 47 0s 2p 0Z 34<br /><br />0g 3v 1Q 0s 0D 0K 2h 3D<br /><br />3L 2x 1Q 20 2n 2L 1C 2p<br /><br />0A 29 3r 0D 45 0k 2e 2W<br /><br />25 3U 1W 2r 46 2s 2X 39<br /><br />3p 0X 0E 1q 0q 4B 49 48<br /><br />3r 3b 3C 1M 1j 0I 4A 48<br /><br />40 3m 4E 0s 2S 1v 3T 0I<br /><br />3t 2B 2k 2t 2O 0e 2l 1L<br /><br />28 2a 0J 1L 0c 3C 2o 0X<br /><br />00 2Z 2d 1T 2u 1t 1j 0l<br /><br />1o 1E 3T 18 3E 1G 27 0L<br /><br />0v 2t 06 11 1A 2U 4B 1O<br /><br />2M 3d 2S 0x 0w 0q 0p 2V<br /><br />18 0q 1D 49 2O 00 1v 2t<br /><br />1k 3s 3G 21 3w 0W 29 2r<br /><br />2O 2L 0g 3Y 0M 0u 3I 3C<br /><br />1r 2c 2q 3o 30 0a 39 1K<br /><br /><br /><br /><br /><br /></div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+							<div class="edited_by"><span class="italic">Last Edit:</span> <abbr data-timestamp="1481368374000" class="o-timestamp time" title="Dec 10, 2016 11:12:54 GMT">Dec 10, 2016 11:12:54 GMT</abbr> by <a class="o-user-link js-user-link user-link user-3 group-1" data-id="3" title="@mortlach" href="/user/3">mortlach</a></div>
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+	<tr id="post-68" class="item post js-post even">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile guest-mini-profile">
+	<span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">onecool</span></span><br />
+	Guest<br />
+	
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar--68" title="Guest"><img src="//storage.proboards.com/forum/images/defaultavatar.png" alt="Guest Avatar" /></div></div><br />
+	
+	
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a href="/thread/41/pages-49-256-byte-strings" class="js-thread__link thread-link thread-41 board-10">Pages 49 to 51 and 256 Byte Strings</a>
+									<span class="date"><abbr data-timestamp="1481528010000" title="Dec 12, 2016 7:33:30 GMT" class="o-timestamp time">Dec 12, 2016 7:33:30 GMT</abbr></span>
+									
+									<span class="likes">&nbsp;</span>
+								</div>
+								<div class="controls">
+									<a class="button quote-button" href="/post/68/quote/41">Quote</a>
+									
+									
+									<ul class=" options_menu post-68 user-0 hide"><li class="68-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="68-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="68-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="68-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-68-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-68-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by onecool on <abbr data-timestamp="1481528010000" title="Dec 12, 2016 7:33:30 GMT" class="o-timestamp time">Dec 12, 2016 7:33:30 GMT</abbr></h3>
+							<div class="message">200,227,164,183,96,233,124,180,91,245,154,218,243,4,180,209,119,199,15,33,100,135,58,86,107,195,170,25,148,65,139,131,113,112,194,39,53,79,131,5,79,83,28,72,226,105,196,75,249,16,46,58,85,168,154,79,250,116,144,68,104,193,122,50,120,251,25,189,196,72,166,106,161,78,202,174,112,142,45,81,140,57,198,190,170,28,109,64,208,217,195,48,232,83,55,35,218,148,71,34,82,225,32,203,120,62,31,215,14,181,32,113,72,141,194,243,53,168,35,181,41,233,85,53,13,20,160,190,198,176,85,118,166,139,71,168,10,127,229,13,241,45,158,150,123,207,91,170,242,171,151,186,227,33,14,110,51,247,245,244,229,214,189,81,103,18,246,244,236,224,250,53,146,115,206,18,231,129,163,172,142,40,164,80,126,154,19,80,38,189,167,33,0,153,157,88,173,113,103,46,108,73,206,67,191,75,125,21,56,172,6,60,69,148,247,83,140,216,146,58,57,51,50,149,67,51,72,245,142,0,115,172,104,230,193,119,234,32,127,170,142,139,41,211,22,55,195,189,111,156,169,226,177,36,186,79<br /><br />as comma separated list of decimals ^</div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+	<tr id="post-72" class="item post js-post last">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile guest-mini-profile">
+	<span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">Lurker69</span></span><br />
+	Guest<br />
+	
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar--72" title="Guest"><img src="//storage.proboards.com/forum/images/defaultavatar.png" alt="Guest Avatar" /></div></div><br />
+	
+	
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a href="/thread/41/pages-49-256-byte-strings" class="js-thread__link thread-link thread-41 board-10">Pages 49 to 51 and 256 Byte Strings</a>
+									<span class="date"><abbr class="o-timestamp time" title="Jan 11, 2017 23:18:06 GMT" data-timestamp="1484176686000">Jan 11, 2017 23:18:06 GMT</abbr></span>
+									
+									<span class="likes">&nbsp;</span>
+								</div>
+								<div class="controls">
+									<a class="button quote-button" href="/post/72/quote/41">Quote</a>
+									
+									
+									<ul class=" options_menu post-72 user-0 hide"><li class="72-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="72-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="72-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="72-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-72-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-72-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by Lurker69 on <abbr class="o-timestamp time" title="Jan 11, 2017 23:18:06 GMT" data-timestamp="1484176686000">Jan 11, 2017 23:18:06 GMT</abbr></h3>
+							<div class="message">I am not completely sure which one is correct so I am posting both version of 4th string:<br /><br />V1<br />CBE7A7BA61ED7EB75CF99CDEF704B7D479CA0F2166893B576DC6AD1996428D857372C5273650850550541C49E66BC74CFD102F3B56AB9C50FE7692456AC47C337AFF19C0C749A96CA44FCDB172902E528E3AC9C1AD1C6F41D3DCC631EC543823DE96482253E520CE7A3F1FDA0EB82073498FC5F736AB23B82AED56360D14A3C1C9B35678A98D48AB0A81E90DF52EA0987DD25CADF6AE99BDE7210E7034FBF9F8E9D9C0526912FAF8F0E4FE369475D112EB83A6AF9028A751809C135126C0AA21009B9F59B073692F6E4AD144C24C7F1539AF063D4696FB548EDB943B3A343397443449F9900075AF6AEAC479EE2081AD908D2AD61638C6C0719EACE6B424BD50<br /><br />V2<br />C8E3A4B760E97CB45BF59ADAF304B4D177C70F2164873A566BC3AA1994418B837170C227354F83054F531C48E269C44BF9102E3A55A89A4FFA74904468C17A3278FB19BDC448A66AA14ECAAE708E2D518C39C6BEAA1C6D40D0D9C330E8533723DA94472252E120CB783E1FD70EB52071488DC2F335A823B529E955350D14A0BEC6B05576A68B47A80A7FE50DF12D9E967BCF5BAAF2AB97BAE3210E6E33F7F5F4E5D6BD516712F6F4ECE0FA359273CE12E781A3AC8E28A4507E9A135026BDA72100999D58AD71672E6C49CE43BF4B7D1538AC063C4594F7538CD8923A39333295433348F58E0073AC68E6C177EA207FAA8E8B29D31637C3BD6F9CA9E2B124BA4F<br /><br /><br /><a href="http://pastebin.com/kmn59PAi" rel="nofollow" target="_blank">pastebin.com/kmn59PAi</a><br /><a href="https://github.com/rtkd/iddqd/blob/master/byte-strings/byte-strings" rel="nofollow" target="_blank">github.com/rtkd/iddqd/blob/master/byte-strings/byte-strings</a><br /><br />&lt;crashdemons&gt; <a href="http://pastebin.com/miEZxYE1" rel="nofollow" target="_blank">pastebin.com/miEZxYE1</a><br />&lt;crashdemons&gt; I think that's the right one<br />&lt;crashdemons&gt; for base59 and base61 conversions<br />&lt;crashdemons&gt; base62 was fail: one of the "bytes" had a value over FF<br />&lt;crashdemons&gt; for anyone interested in reproducing it,  Radix-N (arbitary) to base 10 (decimal) is done by   sum( Vn*B^Pn ) for n=0 to the word length across the Base-B digits where B is the base, Vn is the decimal digit value (position in the alphabet of the Base), and Pn is the 0-based position in the 'word'<br />&lt;crashdemons&gt; so Pos('3')*59^1 + Pos('N')*59^0  etc<br />&lt;crashdemons&gt; *n=1 to the word length    or  n=0 to length-1 (correction)</div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+<div class="container quick-reply">
+	<div class="title-bar">
+		<ul class="controls"><li><a class="reply-button" role="button" href="/post/new/41">Reply</a></li></ul>
+		<h2>Quick Reply</h2>
+	</div>
+	<div class="content cap-bottom">
+		<form id="form_binA7R8p" class="form_post_quick_reply js-form-post-quick-reply" role="form" action="/post/create/41" method="post">
+<input type="hidden" id="form_binA7R8p_message_mode_input" name="message_mode" value="bbcode" />
+<input type="hidden" id="form_binA7R8p_reply_mode_input" name="reply_mode" value="quick_reply" />
+<input type="hidden" id="form_binA7R8p_captcha_id_input" name="captcha_id" value="captcha_init" />
+<input type="hidden" id="form_binA7R8p_ga_client_id_input" name="ga_client_id" /><noscript><ul class="noscript-form-error"></ul></noscript>
+			
+			<div class="guest_name">
+				<label>Guest Name:</label>
+				<input type="text" id="form_binA7R8p_created_by_guest_name_input" name="created_by_guest_name" maxlength="30" class="full-width" />
+			</div>
+			
+			<div class="message">
+				<textarea id="form_binA7R8p_message_input" name="message" accesskey="q"></textarea>
+			</div>
+			
+			<style>
+                #captcha-container.grepulse { animation: grepulse 0.3s 6 alternate; }
+                @keyframes grepulse {
+                    from { background-color: #fee; }
+                    to   { background-color: #fcc; }
+                }
+            </style>
+			<div id="captcha-container">
+				<div id="gre-captcha-container"></div>
+				<noscript>
+					
+					
+		<div style="width: 302px; height: 493px;">
+			<div style="width: 302px; height: 493px; position: relative;">
+				<div style="width: 302px; height: 493px; position: absolute;">
+					<iframe src="https://www.google.com/recaptcha/api/fallback?k=6LeLlQkTAAAAACrV4OiakEuq7INhMhWWUCZ-XpoZ" frameborder="0" scrolling="no"
+							style="width: 302px; height: 423px; border-style: none;">
+					</iframe>
+				</div>
+				<div style="width: 300px; height: 60px; border-style: none;
+						bottom: 0; left: 0; margin: 0px; padding: 0px;
+						background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px; position: absolute;">
+					<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response"
+							style="width: 250px; height: 40px; border: 1px solid #c1c1c1;
+								margin: 10px 25px; padding: 0px; resize: none;" ></textarea>
+				</div>
+			</div>
+		</div>
+	
+					<div style="margin: 20px 0 15px 0;"><input type="checkbox" name="tos" style="margin-right: 15px; vertical-align: middle; position: relative; bottom: 1px;" />I agree to the <a href="http://www.proboards.com/tos" target="_blank">ProBoards Terms of Service</a>.</div>
+					<style>#captcha-container { display: block; text-align: left !important; padding-left: 10px; }</style>
+				</noscript>
+			</div>
+		
+			<input id="form_binA7R8p_post_button" name="post" value="Post Quick Reply" type="submit" class="ui-button" />
+		</form>
+		<script>
+		$(document).ready(function() {
+			
+
+			$('#form_binA7R8p').form({
+				create: function(e) {var pbCaptchaOpts = proboards.data("captcha_init");if (pbCaptchaOpts) { proboards.captcha.init(pbCaptchaOpts); }},
+				submit: function(e) {proboards.autosave.clear();},
+				beforeSubmit: function(e) {proboards.data('submitting', 1);
+
+				try {
+					$('#form_binA7R8p_ga_client_id_input').val(
+						proboards.analytics.google.getClientId()
+					);
+				} catch(e) {}
+			},
+				validations: [{"name":"exists","opts":{"fields":["message_mode"]},"field":"message","message":"You must provide a message."},{"opts":{},"field":"created_by_guest_name","name":"exists","message":"You must provide a guest name."}],
+				errors: {},
+				positionError: null
+			});
+		});
+		  </script>
+	</div>
+</div>
+
+				
+			</div>
+
+			<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "6036030" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = "https://sb.scorecardresearch.com/cs/6036030/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=6036030&amp;cv=3.6.0&amp;cj=1">
+</noscript><div style="display: flex; max-width: 970px; max-width: 100%; margin: 0 auto 10px; text-align: center; justify-content: space-around;flex-wrap: wrap"><div id="Boards_net_Bottom">
+    <script type="text/javascript">
+        googletag.cmd.push(function() {
+            deployads.push(function() { deployads.gpt.display("Boards_net_Bottom"); });
+        });
+    </script>
+</div>
+<script>
+function insertDesktopAd(adUnitPath, suffix) {
+    googletag.cmd.push(function() {
+        googletag.defineSlot('/1030735/'+adUnitPath, [728, 90], adUnitPath+"_"+suffix).addService(googletag.pubads());
+        deployads.push(function() { deployads.gpt.display(adUnitPath+"_"+suffix); });
+    });
+}
+function createVSThreadWrapper(wrapperID = '') {
+    let threadPos = document.createElement('div');
+    threadPos.id = wrapperID;
+    threadPos.style = 'min-height: 90px; padding: 9px 0;';
+    return threadPos;
+}
+// Not in View Code
+function hidePrimisSlider() {
+    document.querySelector('#primisSlider #primis_container_div div').style.right = '-400px';
+}
+function initializeSliderBehaviour(discoveryContainer, sliderPlacement) {
+    window.addEventListener('primisPlayerInit', function (e) {
+        if (e.detail.playerApiId == sliderPlacement) {
+            let primisPlayer = e.detail;
+            let threshold = 0.1;
+            document.querySelector('#primisSlider #primis_container_div div').style.transition = 'right 0.5s';
+            let obs = new IntersectionObserver(function(i) {
+            if (i[0].intersectionRatio > threshold) {
+                primisPlayer.pause();
+                hidePrimisSlider()
+            } else {
+                primisPlayer.play();
+            }
+            }, {threshold: threshold});
+            obs.observe(discoveryContainer);
+            // Handle edge case for discovery player floating for users on desktop and mobile resolution
+            function checkPrimisFloat() {
+                let primisFloatDiv = document.querySelector('.primis-wrapper [id^=primis_player]');
+                if (primisFloatDiv && primisFloatDiv.style.position == "fixed") {
+                    primisPlayer.pause();
+                    hidePrimisSlider();
+                }
+            }
+            document.addEventListener('scroll', checkPrimisFloat, true)
+            primisPlayer.addEventListener('adStarted',checkPrimisFloat);
+            document.addEventListener('DOMContentLoaded', checkPrimisFloat, true);
+            primisPlayer.addEventListener('adSkip', function (e) {
+                dataLayer.push({
+                    event: "adSkipPrimisSlider"
+                });
+            });
+        }
+    });
+}
+function createPrimisSrc(primisPlacement) {
+    let primis = document.createElement('script');
+    primis.id = 'primis';
+    primis.type = 'text/javascript';
+    primis.language = 'javascript';
+    primis.src = "https://live.primis.tech/live/liveView.php?s="+primisPlacement+"&kv_3=proboards.com&playerApiId="+primisPlacement;
+    primis.async = true;
+    return primis;
+}
+function insertPrimisPlacement() {
+    let proboardsWrapper = createVSThreadWrapper();
+    let primisDiscovery = document.createElement('div');
+    primisDiscovery.id = "primisContainer";
+    primisDiscoveryScript = createPrimisSrc(118308);
+    primisDiscovery.style.maxWidth = '842px';
+    primisDiscovery.style.margin = 'auto';
+    primisDiscovery.style.minHeight = '413px';
+    primisDiscovery.appendChild(primisDiscoveryScript);
+    let primisSlider = document.createElement('div');
+    primisSlider.id = "primisSlider";
+    primisSliderScript = createPrimisSrc(118242);
+    primisSlider.appendChild(primisSliderScript);
+    let primisInsertionDiv = proboardsWrapper;
+    primisInsertionDiv.style.minHeight = '';
+    primisInsertionDiv.appendChild(primisDiscovery);
+    primisInsertionDiv.appendChild(primisSlider);
+    return proboardsWrapper;
+}
+function experimentLayout() {
+    if(window.location.pathname.indexOf("/thread") === 0) {
+        let elgiblePositions = document.querySelectorAll('.post');
+        let firstPost = document.querySelector('.post.first');
+        let adUnitPath = 'Boards_net_InThread';
+        let threadWrapper = createVSThreadWrapper(adUnitPath+"_First");
+        let dynamicStart = 1;
+        // Guest users see Primis after First Post, and a display ad for 2nd post
+        if (window.vsRunPrimis && ("0" === "0")) {
+            let secondPost = document.querySelector('.post:not(.first)');
+            secondPost.after(threadWrapper);
+            let primisInsertion = insertPrimisPlacement();
+            firstPost.after(primisInsertion);
+            let discoveryContainer = document.querySelector('#primisContainer');
+            initializeSliderBehaviour(discoveryContainer, 118242);
+            dynamicStart = 2;
+        // Members will only see a display after first post and no player
+        } else {
+            firstPost.after(threadWrapper);
+        }
+        insertDesktopAd(adUnitPath, "First");
+        let inThreadCount = 0;
+        adUnitPath = 'Boards_net_InThreadLower';
+        const vh = document.documentElement.clientHeight;
+        let lastAdY = window.pageYOffset + elgiblePositions[dynamicStart - 1].getBoundingClientRect().top;
+        for(i=dynamicStart;i<elgiblePositions.length;i++) {
+            let elY = window.pageYOffset + elgiblePositions[i].getBoundingClientRect().top;
+            if (elY >= lastAdY + vh || i == elgiblePositions.length-1) {
+                let threadWrapper = createVSThreadWrapper(adUnitPath+"_"+inThreadCount);
+                elgiblePositions[i].after(threadWrapper);
+                insertDesktopAd(adUnitPath, inThreadCount);
+                lastAdY = elY;
+                inThreadCount++;
+                if (inThreadCount >= 9) {
+                    break;
+                }
+            }
+        }
+    } else {
+        let elgiblePositions = document.querySelectorAll('.board.item,.thread.item');
+        for(i=0;i<elgiblePositions.length;i++) {
+            if (window.pageYOffset + elgiblePositions[i].getBoundingClientRect().top > (document.documentElement.clientHeight - 120) || i == elgiblePositions.length-1) {
+                if (document.querySelector('.board')) {
+                    adUnitPath = 'Boards_net_ForumListInContent';
+                } else {
+                    adUnitPath = 'Boards_net_ForumViewInContent';
+                }
+                let threadWrapper = document.createElement('tr');
+                let threadCell = document.createElement('td');
+                threadCell.style = 'padding: 9px 0;';
+                threadCell.colSpan = 20;
+                let threadPos = document.createElement('div');
+                threadPos.style = 'min-height:90px;';
+                threadWrapper.appendChild(threadCell);
+                threadCell.appendChild(threadPos);
+                threadPos.id = adUnitPath+"_"+i;
+                elgiblePositions[i].after(threadWrapper);
+                insertDesktopAd(adUnitPath, i);
+                break;
+            }
+        }
+    }
+}
+if (window.vsexp) {
+    experimentLayout();
+}
+</script></div>
+        <footer class="c-footer" role="contentinfo">
+            <div id="remove_ads_link" style="display:block!important;"><a href="https://www.proboards.com/store/add_cart/ad_free/50000/cicada3301.boards.net/1">Click here to remove banner ads from this forum.</a></div>
+            <div id="hosted_by_link" style="display:block!important;">This Forum Is Hosted For FREE By <a href="https://www.proboards.com" target="_blank">ProBoards</a><br />Get Your Own <a href="https://www.proboards.com/create-free-forum" target="_blank">Free Forum</a>!</div>
+            <div class="c-footer__link-wrapper"><a href="https://www.proboards.com/tos" accesskey="8">Terms of Service</a> &nbsp; <a href="https://www.proboards.com/privacy" title="Privacy">Privacy</a> &nbsp; <a href="https://www.proboards.com/privacy#cookies" title="Cookies">Cookies</a> &nbsp; <a href="javascript:alert('VerticalScope may earn an affiliate commission when you click on links on this website.')">FTC Disclosure</a> &nbsp; <a href="https://www.proboards.com/report-abuse" accesskey="7">Report Abuse</a> &nbsp; <a class="qc-ccpa-persistent-link" title="Your Privacy Choices"><img src="https://storage.googleapis.com/vs-cmp/privacyoptions123x59.png" style="padding-right:5px; height:16px;" alt="California Consumer Privacy Act (CCPA) Opt-Out Icon">Your Privacy Choices &nbsp;</a></div>
+        </footer>
+    
+
+		</div>
+		
+	</body>
+</html>

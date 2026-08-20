@@ -1,0 +1,466 @@
+<!DOCTYPE HTML>
+	<!--[if IE 7]><html class="ie7"><![endif]--><!--[if IE 8]><html class="ie8"><![endif]--><!--[if IE 9]><html class="ie9"><![endif]--><!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>fibonacci mod[29] | Cicada3301</title>
+		<script>
+        var pbtp = {fc: 4,fi: 6433989,isEU: 0,adSlots: ['TOP','BOTTOM','BOTTOM2']};
+        var pbrp = {m:false};
+        window._BidFilter = window._BidFilter || {site_id: 1, custom: {forum_id: 6433989}};
+        </script>
+        <script src="https://cdn.bidfilter.com/bidfilter.js" async></script>
+        <script>var pbq=[];pbq.init=function() {pbq.push=function(cb){cb()};var fns=pbq.splice(0);var fnsLen=fns.length;for (var i=0;i<fnsLen;i++) {fns[i]()}};</script><script src="//ads.proboards.com/prebid.js?924" async onload="pbq.init()"></script>
+<link rel="canonical" href="http://cicada3301.boards.net/thread/26/fibonacci-mod-29" />
+<link rel="alternate" type="application/rss+xml" href="http://cicada3301.boards.net/rss/public" />
+<link rel="shortcut icon" type="image/x-icon" href="//storage.proboards.com/forum/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="//storage.proboards.com/forum/images/favicon.ico" />
+<meta property="og:url" content="http://cicada3301.boards.net/thread/26/fibonacci-mod-29" />
+<meta property="og:title" content="fibonacci mod[29] | Cicada3301" />
+<meta property="og:description" content="Tried mod[29] on the fibonacci in different modifications on page 8 as key, which didnt lead to an result.  mod n on fibonacci creates periodic sequences, in my oppinion predestined as a keyword" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@proboards" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/forum/css/0/forum_base_924.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/6433989/css/w8taoZpniIqJS0joSHjj.css" id="forum_style" />
+<link rel="stylesheet" type="text/css" media="print" href="//storage.proboards.com/forum/css/0/print_924.css" />
+<script>translatePo = { language: 'en_US' };</script>
+<script type="text/javascript" src="//storage.proboards.com/forum/js/proboards.combined_924.js" crossorigin="anonymous"></script>
+
+        <script>
+            var tortoise = undefined;
+            function tortLoad() {
+                var hatch = function() {
+                    $(document.body).append('<img src="//tortoise.proboards.com/tortoise.pl?rand=0.116135433095767&mobile=0&field=amount_guest&forum_id=6433989" alt="" />');
+                }
+                if(typeof Tortoise === 'undefined') {
+                    $(document).ready(function() {
+                        hatch();
+                    });
+                } else {
+                    tortoise.on(true, hatch);
+                }
+            }
+        </script>
+<script src="//storage.proboards.com/forum/js/tortoise.min.js" integrity="sha384-5Xarr7yZbNCR8IIsrcy80rZVH1nqdJ6D8ixzKAbaYWX3eBInhvQ38L3EVv87QH32" crossorigin="anonymous" onload="tortLoad()" onerror="tortLoad()" async></script>
+<script type="text/javascript" src="//www.google.com/recaptcha/api.js?render=explicit&hl=en"></script>
+
+		<!-- Google Analytics Start -->
+		<script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-3734504-3', 'auto' , {"sampleRate":5});ga('set', 'anonymizeIp', true);
+		</script>
+		<!-- Google Analytics End -->
+	
+
+        <script type="text/javascript">
+            var vglnk;
+            $(document).ready(function() {
+                $('a').each(function() {
+                    if($(this).prop('href').indexOf('login.proboards.com') !== -1) {
+                        $(this).addClass('norewrite');
+                    }
+                });
+
+                vglnk = {
+                    api_url: '//api.viglink.com/api', key: '71fe2139a887ad501313cd8cce3053c5', subId: '6433989'
+                };
+                var vglnkSrc = ('https:' == document.location.protocol ? vglnk.api_url : '//cdn.viglink.com/api') + '/vglnk.js';
+
+                // VigLink ProBoards Convert Code (using above key)
+                var s = document.createElement('script');
+                s.type = 'text/javascript'; s.async = true; s.src = vglnkSrc;
+                document.body.appendChild(s);
+
+                var retry = 0;
+                var reV = function() {
+                    if (typeof vglnk !== 'function' && retry++ < 5) {
+                        setTimeout(reV, 500);
+                    }
+                    else if (typeof vglnk !== 'function') {
+                        $('a').not('.norewrite').each(function() {
+                            var url = $(this).prop('href');
+                            if (url.indexOf('http') === 0 && url.indexOf(document.domain) === -1) {
+                                $(this).prop('href', 'http://redirect.viglink.com?key=71fe2139a887ad501313cd8cce3053c5&subId=6433989&u=' + escape(url));
+                            }
+                        });
+                    }
+                };
+                reV();
+            });
+        </script>
+    
+<script>
+            window.runAntiAdBlock = 1;
+        </script>
+<script>proboards.data([['forum_url',"cicada3301.boards.net"],['ad_free',0],['locale_settings',{"thousands_separator":",","amcharts_date_format":"MM/DD/YYYY","input_date_format":"%m/%d/%Y","input_time_placeholder":"hh:mm pp","input_time_format":12,"input_date_placeholder":"mm/dd/yyyy","input_date_regex":"^(\\d{2})/(\\d{2})/(\\d{4})$"}],['image_path',"//storage.proboards.com/forum/images"],['time_style',0],['military_time',0],['timezone',"guest"],['serverDate',1566759091000],['search-query-min',3],['search-query-max',50],['is_current_user_guest',"1"],['plugin_max_key_length',4000],['plugin_max_super_forum_key_length',32000],['login_url',"https://login.proboards.com/login/6433989/1"],['register_url',"https://login.proboards.com/register/6433989"],['page_url',""],['range_string',"This event begins <img src=\"//storage.proboards.com/forum/images/icons/event.png\" alt=\"- \" title=\"Event\" />&nbsp;<abbr title=\"Aug 25, 2019 18:51:31 GMT\" data-timestamp=\"0000\" class=\"o-timestamp time\">Aug 25, 2019 18:51:31 GMT</abbr>"],['captcha_init',{"captcha_errors":0,"form_id":"form_1qhGAaHu","captcha_error_origin":null,"attempts":0,"no_validations":0,"adfree":"","tos":{"url":"http://www.proboards.com/tos","name":"ProBoards Terms of Service"},"errors":0,"no_popup":0,"mobile":0,"captcha_container_id":"captcha-container","key":"6LeLlQkTAAAAACrV4OiakEuq7INhMhWWUCZ-XpoZ","captcha_id":"captcha_init"}],['quick_reply',1],['forum_id',"6433989"],['thread_id',"26"],['thread_subject',"fibonacci mod[29]"],['labels_applied',[]],['accessible_label_ids_applied',[]],['board_id',"15"],['search_filter_img_src',"//storage.proboards.com/forum/images/icon-search-filters.png"],['options_img_src',"//storage.proboards.com/forum/images/icon-options.png"],['options_img_alt',"Post Options"],['options_img_title',"Post Options"],['lm_total',"1"],['lm_limit',15],['lm_page',1],['lm_data',{"thread_id":"26"}],['lm_id',"g6WADgGjLhia7tTTSY2d"],['lm_thread_next',"/thread/next/26"],['lm_thread_prev',"/thread/previous/26"],['sharing_options',{"pinterest_enabled":1,"twitter_enabled":1,"reddit_enabled":1,"google_enabled":1,"myspace_enabled":1,"twitter_card_site":"","email_enabled":1,"linkedin_enabled":1,"tumblr_enabled":1,"facebook_enabled":1,"enabled":1}],['page_cache',".lm-content-g6WADgGjLhia7tTTSY2d"],['labels_accessible',[]],['labels_viewable',[]],['_google_analytics_events',[{"hitType":"pageview"}]],['pop_menu_structure',{"placement":"bottom left","startingMenu":"_root","addMenuClass":"c-pop-menu","positionOffsetY":10,"positionAgainstSelector":".o-breadcrumbs","menuStructure":{"1-3":{"title":"Rune Solving","items":[{"href":"http://cicada3301.boards.net/board/19/tools","addSeparator":null,"text":"Tools"},{"text":"Theories","addSeparator":null,"href":"http://cicada3301.boards.net/board/18/theories"},{"addSeparator":null,"text":"Cross","href":"http://cicada3301.boards.net/board/17/cross"},{"text":"Spirals","addSeparator":null,"href":"http://cicada3301.boards.net/board/16/spirals"},{"href":"http://cicada3301.boards.net/board/15/branches","text":"Branches","addSeparator":null},{"addSeparator":null,"text":"Mobius","href":"http://cicada3301.boards.net/board/14/mobius"},{"href":"http://cicada3301.boards.net/board/13/mayfly","text":"Mayfly","addSeparator":null},{"text":"Tree","addSeparator":null,"href":"http://cicada3301.boards.net/board/12/tree"},{"addSeparator":null,"text":"Cuneiform","href":"http://cicada3301.boards.net/board/11/cuneiform"},{"addSeparator":null,"text":"Spiral Branches","href":"http://cicada3301.boards.net/board/10/spiral-branches"},{"text":"56","addSeparator":null,"href":"http://cicada3301.boards.net/board/9/56"},{"href":"http://cicada3301.boards.net/board/8/57","addSeparator":null,"text":"57"}]},"_root":{"items":[{"href":"/forum","addSeparator":1,"text":"Home"},{"text":"Welcome","addSeparator":null,"href":"/#category-4","submenu":"1-4"},{"href":"/#category-3","submenu":"1-3","text":"Rune Solving","addSeparator":null},{"href":"/#category-1","submenu":"1-1","text":"General","addSeparator":null}],"title":"Categories"},"1-1":{"title":"General","items":[{"href":"http://cicada3301.boards.net/board/20/philosopy","addSeparator":null,"text":"Philosopy"},{"text":"General Discussion","addSeparator":null,"href":"http://cicada3301.boards.net/board/1/general-discussion"}]},"1-4":{"title":"Welcome","items":[{"text":"Welcome","addSeparator":null,"href":"http://cicada3301.boards.net/board/21/welcome"}]}},"opensOn":"click"}],['screen_breakpoints',{"sm":768,"lg":1200,"xs":0,"md":992}],['user',{"date_format":"m/d/y","is_staff":0,"name":"Guest","id":0,"time_format":"12hr","theme_id":1,"is_logged_in":0}],['page',{"board":{"id":15,"threads":1,"hidden":"0","show_announcements":"1","url":"/board/15/branches","display_name":"Branches [8-14]","posts":1,"name":"Branches","disable_posting":"0","description":"","name_unescaped":"Branches","disable_post_counts":"0"},"category":{"id":3,"name":"Rune Solving"},"thread":{"last_post_id":41,"last_post_time":1461090916,"created_on":1461090916,"id":26,"is_muted":0,"is_sticky":0,"is_new":0,"url":"http://cicada3301.boards.net/thread/26/fibonacci-mod-29","is_announcement":0,"is_poll":0,"subject_unescaped":"fibonacci mod[29]","first_post_id":41,"is_locked":0,"views":"446","is_falling":0,"subject":"fibonacci mod[29]","board_id":15,"created_by":21,"posts":"1","is_bookmarked":0}}],['default_avatar',"//storage.proboards.com/forum/images/defaultavatar.png"],['route',{"name":"thread","params":{"thread_id":"26"}}],['search_system',1],['insite_path',""],['maintenance_mode',0],['proboards.thread',{"26":{"url":"http://cicada3301.boards.net/thread/26/fibonacci-mod-29","is_announcement":0,"is_poll":0,"is_muted":0,"is_sticky":0,"is_new":0,"last_post_time":1461090916,"created_on":1461090916,"id":26,"last_post_id":41,"is_bookmarked":0,"posts":"1","board_id":15,"created_by":21,"views":"446","is_falling":0,"subject":"fibonacci mod[29]","subject_unescaped":"fibonacci mod[29]","first_post_id":41,"is_locked":0}}],['proboards.post',{"41":{"liked":0,"created_by":21,"created_on":1461090916,"id":41,"url":"http://cicada3301.boards.net/post/41","thread_id":26}}]]);</script>
+<script>if (typeof(standard_thread_show) == 'function') standard_thread_show();
+if (typeof(standard_post_base) == 'function') standard_post_base();</script>
+
+	</head>
+	<body>
+		
+		<div id="wrapper">
+			<header>
+				<div id="banner-container" role="banner">
+					<h2 id="banner">
+						<a id="logo" href="/">Cicada3301</a>
+					</h2>
+				</div>
+				<a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+				<a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+				<div id="navigation-menu" class="ui-helper-clearfix">
+					<ul role="navigation">
+						
+							<li>
+								<a href="/">
+									Home
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/help">
+									Help
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/search">
+									Search
+									
+								</a>
+							</li>
+						
+					</ul>
+					<p id="welcome">
+						
+							Welcome Guest.
+							
+								Please <a href="https://login.proboards.com/login/6433989/1">Login</a> or <a href="https://login.proboards.com/register/6433989">Register</a>.
+							
+						
+					</p>
+				</div>
+			</header>
+
+			
+
+			
+				<div id="navigation-tree">
+					<div class="nav-tree-wrapper"><ul id="nav-tree" class="ui-helper-clearfix" role="navigation"><li id="nav-tree-branch-0" class="nav-tree-branch ui-helper-clearfix has-menu"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title">Cicada3301</span></a></div><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-1" class="nav-tree-branch ui-helper-clearfix"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/board/15/branches" itemprop="url"><span itemprop="title">Branches</span></a></div><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-2" class="nav-tree-branch ui-helper-clearfix"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/thread/26/fibonacci-mod-29" itemprop="url"><span itemprop="title">fibonacci mod[29]</span></a></div><span class="menu_arrow"><span></span></span></li></ul></div><div class="popup_html">
+<ul id="nav-tree-menu-0" role="navigation">
+<li class="nav-tree-cat-4"><a href="/#category-4"><span class="item-text">Welcome</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-21"><a href="http://cicada3301.boards.net/board/21/welcome"><span class="item-text">Welcome</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-3"><a href="/#category-3"><span class="item-text">Rune Solving</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-19"><a href="http://cicada3301.boards.net/board/19/tools"><span class="item-text">Tools</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-18"><a href="http://cicada3301.boards.net/board/18/theories"><span class="item-text">Theories</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-17"><a href="http://cicada3301.boards.net/board/17/cross"><span class="item-text">Cross</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-16"><a href="http://cicada3301.boards.net/board/16/spirals"><span class="item-text">Spirals</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-15"><a href="http://cicada3301.boards.net/board/15/branches"><span class="item-text">Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-14"><a href="http://cicada3301.boards.net/board/14/mobius"><span class="item-text">Mobius</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-13"><a href="http://cicada3301.boards.net/board/13/mayfly"><span class="item-text">Mayfly</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-12"><a href="http://cicada3301.boards.net/board/12/tree"><span class="item-text">Tree</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-11"><a href="http://cicada3301.boards.net/board/11/cuneiform"><span class="item-text">Cuneiform</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-10"><a href="http://cicada3301.boards.net/board/10/spiral-branches"><span class="item-text">Spiral Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-9"><a href="http://cicada3301.boards.net/board/9/56"><span class="item-text">56</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-8"><a href="http://cicada3301.boards.net/board/8/57"><span class="item-text">57</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-1"><a href="/#category-1"><span class="item-text">General</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-20"><a href="http://cicada3301.boards.net/board/20/philosopy"><span class="item-text">Philosopy</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-1"><a href="http://cicada3301.boards.net/board/1/general-discussion"><span class="item-text">General Discussion</span><div class="clear"></div></a></li>
+</ul>
+</li>
+</ul></div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+		var reposition   = false;
+		var showOn       = 'hover';
+		var offset       = reposition
+			? '-13 6'
+			: ($.browser.msie && parseInt($.browser.version) == 8)
+				? '3 -1'
+				: '3 0';
+		var showCallback = function(e) {
+			var self = $(this);
+			
+			// Make sure all other menus are closed
+			$('.popup_html > ul').not(self).menu('hide');
+			
+			// Hide the navigation if they leave it.
+			setTimeout(function() {
+				$(document).on('mousemove.nav', function(e) {
+					var elem = $(e.target);
+					if (
+						elem.parents('#nav-tree, .popup_html').length == 0
+						&& !elem.is('#nav-tree, .popup_html')
+						&& !self.data('hotkey-open')
+					) {
+						self.menu('hide');
+						$(document).off('.nav');
+					}
+				});
+			}, 1000);
+		}
+	
+				$('#nav-tree-menu-0')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-0'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-0'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-1')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-1'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-1'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-2')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-2'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-2'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				$('.nav-tree-cat-3').addClass('state-selected');$('.nav-tree-board-15').addClass('state-selected');
+			});
+		</script>
+	
+				</div>
+			
+
+			<div id="ad1"><iframe id="ad-desktop-top" data-id="ad-desktop-top" style="display: block; margin: 0 auto 10px;" height="90"></iframe><script>var pbjs=pbjs||{que:[]};pbjs.que.push(function(){pbq.push(function(){window['AD_UNIT_ad-desktop-top'].init(document.getElementById('ad-desktop-top'));});});</script></div>
+
+			<div id="content" role="main">
+				
+				<div class="container posts">
+	<div class="title-bar">
+		
+			<ul class="controls"><li><a href="/post/new/26" class="reply-button">Reply</a></li></ul>
+		
+		<h1>fibonacci mod[29]</h1>
+	</div>
+	<div class="control-bar ui-helper-clearfix scrollable-g6WADgGjLhia7tTTSY2d">
+		<div class="lm-search-g6WADgGjLhia7tTTSY2d ui-search"></div>
+		<div class="controls">
+			<ul class="select_menu_list ui-menu ui-selectMenu hide actions lm-actions-g6WADgGjLhia7tTTSY2d" data-status="Actions"><li class="sharing ui-menu-has-sub-menu"><a><span class="icon pbi-share"></span>Share Thread</a><ul><li class="facebook-share"><a><span class="icon"></span>Facebook</a></li><li class="twitter-share"><a><span class="icon"></span>Twitter</a></li><li class="gplus-share"><a><span class="icon"></span>Google+</a></li><li class="tumblr-share"><a><span class="icon"></span>Tumblr</a></li><li class="linkedin-share"><a><span class="icon"></span>LinkedIn</a></li><li class="pinterest-share"><a><span class="icon"></span>Pinterest</a></li><li class="myspace-share"><a><span class="icon"></span>MySpace</a></li><li class="email-share"><a><span class="icon"></span>Email</a></li></ul></li><li class="view ui-menu-has-sub-menu"><a><span class="icon"></span>Go to</a><ul><li class="view_prev"><a rel="nofollow"><span class="icon"></span>Previous Thread</a></li><li class="view_next"><a rel="nofollow"><span class="icon"></span>Next Thread</a></li></ul></li><li class="default-menu-option"><a>Please make a selection first</a></li></ul>
+		</div>
+		<div class="float-left"><span class="control-icons lm-icons-g6WADgGjLhia7tTTSY2d"><span class="new-icon"><a href="/threads/recent/26">new</a></span><span class="bookmark_icon hide"><img alt="Bookmark" title="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img title="This thread is locked" alt="Locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img title="This thread is falling" alt="Falling" src="//storage.proboards.com/forum/images/icons/falling.png" /></span></span></div>
+		<ul class="ui-pagination lm-pagination-g6WADgGjLhia7tTTSY2d"><li class="prev state-disabled"><a>&laquo; Prev</a></li><li class="state-selected"><a>1</a></li><li class="next state-disabled"><a>Next &raquo;</a></li></ul>
+	</div>
+	<div class="content cap-bottom">
+		<span class="no-labels js-no-labels"></span>
+		
+		<table class="list" role="presentation">
+			<tbody class="lm-content-g6WADgGjLhia7tTTSY2d">
+				
+	<tr id="post-41" class="item post first last">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile">
+	<a class="o-user-link js-user-link user-link user-21 group-0" data-id="21" href="/user/21" title="@phyt">phyt</a><br />
+	
+	
+	
+		New Member<br />
+		
+			<img src="//storage.proboards.com/forum/images/stars/star.png" alt="*" /><br />
+		
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar-21" title="phyt"><img src="//storage.proboards.com/forum/images/defaultavatar.png" alt="phyt Avatar" /></div></div><br />
+	
+	
+	
+		<div class="info">
+			Posts: 5<span class="float-right"><img title="Male" alt="Male" src="//storage.proboards.com/forum/images/icons/male.png" /></span>
+			
+			
+		</div><br />
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a href="/thread/26/fibonacci-mod-29" class="js-thread__title-link thread-link thread-26 board-15">fibonacci mod[29]</a>
+									<span class="date"><abbr title="Apr 19, 2016 18:35:16 GMT" class="o-timestamp time" data-timestamp="1461090916000">Apr 19, 2016 18:35:16 GMT</abbr></span>
+									
+									<span class="likes">&nbsp;</span>
+								</div>
+								<div class="controls">
+									<a href="/post/41/quote/26" class="button quote-button ">Quote</a>
+									
+									
+									<ul class=" options_menu post-41 user-21 hide"><li class="41-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="41-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="41-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="41-member ui-menu-has-sub-menu "><a><span class="icon pbi-user-icon"></span>Member</a><ul class=""><li class="41-giveGift"><a href="/user/21/gift"><span class="icon pbi-birthday"></span>Give Gift</a></li></ul></li><li class="41-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-41-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-41-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by phyt on <abbr title="Apr 19, 2016 18:35:16 GMT" class="o-timestamp time" data-timestamp="1461090916000">Apr 19, 2016 18:35:16 GMT</abbr></h3>
+							<div class="message">Tried mod[29] on the fibonacci in different modifications on page 8 as key, which didnt lead to an result.<br /><br />mod n on fibonacci creates periodic sequences, in my oppinion predestined as a keyword...<br /><br />heres mod 29 as example...<br /><br />1<br /><br />2<br /><br />3<br /><br />5<br /><br />8<br /><br />13<br /><br />21<br /><br />34=5<br /><br />55=26<br /><br />89= 2<br /><br />144= 28<br /><br />233= 1<br /><br />377= 0<br /><br />610=1<br /><br />987=1<br /><br />1597=2<br /><br />2584=3<br /><br />4181=5<br /><br />6765=8<br /><br />10946=13<br /><br />17711=21<br /><br />28657=5<br /><br />46368=26<br /><br />75025=2<br /><br />121393=28<br /><br />196418=1<br /><br />317811=0<br /><br />514229=1<br /><br />832040=1<br /><br />1346269=2<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+<div class="container quick-reply">
+	<div class="title-bar">
+		<ul class="controls"><li><a href="/post/new/26" class="reply-button">Reply</a></li></ul>
+		<h2>Quick Reply</h2>
+	</div>
+	<div class="content cap-bottom">
+		<form id="form_1qhGAaHu" class="form_post_quick_reply js-form-post-quick-reply" role="form" action="/post/create/26" method="post">
+<input type="hidden" id="form_1qhGAaHu_captcha_id_input" name="captcha_id" value="captcha_init" />
+<input type="hidden" id="form_1qhGAaHu_reply_mode_input" name="reply_mode" value="quick_reply" />
+<input type="hidden" id="form_1qhGAaHu_message_mode_input" name="message_mode" value="bbcode" />
+<input type="hidden" id="form_1qhGAaHu_ga_client_id_input" name="ga_client_id" /><noscript><ul class="noscript-form-error"></ul></noscript>
+			
+			<div class="guest_name">
+				<label>Guest Name:</label>
+				<input type="text" id="form_1qhGAaHu_created_by_guest_name_input" name="created_by_guest_name" class="full-width" maxlength="30" />
+			</div>
+			
+			<div class="message">
+				<textarea id="form_1qhGAaHu_message_input" name="message" accesskey="q"></textarea>
+			</div>
+			
+			<style>
+                #captcha-container.grepulse { animation: grepulse 0.3s 6 alternate; }
+                @keyframes grepulse {
+                    from { background-color: #fee; }
+                    to   { background-color: #fcc; }
+                }
+            </style>
+			<div id="captcha-container">
+				<div id="gre-captcha-container"></div>
+				<noscript>
+					
+					
+		<div style="width: 302px; height: 493px;">
+			<div style="width: 302px; height: 493px; position: relative;">
+				<div style="width: 302px; height: 493px; position: absolute;">
+					<iframe src="https://www.google.com/recaptcha/api/fallback?k=6LeLlQkTAAAAACrV4OiakEuq7INhMhWWUCZ-XpoZ" frameborder="0" scrolling="no"
+							style="width: 302px; height: 423px; border-style: none;">
+					</iframe>
+				</div>
+				<div style="width: 300px; height: 60px; border-style: none;
+						bottom: 0; left: 0; margin: 0px; padding: 0px;
+						background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px; position: absolute;">
+					<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response"
+							style="width: 250px; height: 40px; border: 1px solid #c1c1c1;
+								margin: 10px 25px; padding: 0px; resize: none;" ></textarea>
+				</div>
+			</div>
+		</div>
+	
+					<div style="margin: 20px 0 15px 0;"><input type="checkbox" name="tos" style="margin-right: 15px; vertical-align: middle; position: relative; bottom: 1px;" />I agree to the <a href="http://www.proboards.com/tos" target="_blank">ProBoards Terms of Service</a>.</div>
+					<style>#captcha-container { display: block; text-align: left !important; padding-left: 10px; }</style>
+				</noscript>
+			</div>
+		
+			<input id="form_1qhGAaHu_post_button" name="post" value="Post Quick Reply" type="submit" class="ui-button" />
+		</form>
+		<script>
+		$(document).ready(function() {
+			
+
+			$('#form_1qhGAaHu').form({
+				create: function(e) {var pbCaptchaOpts = proboards.data("captcha_init");if (pbCaptchaOpts) { proboards.captcha.init(pbCaptchaOpts); }},
+				submit: function(e) {proboards.autosave.clear();},
+				beforeSubmit: function(e) {proboards.data('submitting', 1);
+
+				try {
+					$('#form_1qhGAaHu_ga_client_id_input').val(
+						proboards.analytics.google.getClientId()
+					);
+				} catch(e) {}
+			},
+				validations: [{"field":"message","opts":{"fields":["message_mode"]},"name":"exists","message":"You must provide a message."},{"field":"created_by_guest_name","name":"exists","opts":{},"message":"You must provide a guest name."}],
+				errors: {},
+				positionError: null
+			});
+		});
+		</script>
+	</div>
+</div>
+
+				
+			</div>
+
+			<div style="display: flex; width: 700px; max-width: 100%; margin: 0 auto 10px; text-align: center; justify-content: space-around;flex-wrap: wrap"><iframe id="ad-desktop-bottom" data-id="ad-desktop-bottom" style="margin-bottom: 10px" height="250"></iframe><script>var pbjs=pbjs||{que:[]};pbjs.que.push(function(){pbq.push(function(){window['AD_UNIT_ad-desktop-bottom'].init(document.getElementById('ad-desktop-bottom'));});});</script><iframe id="ad-desktop-bottom2" data-id="ad-desktop-bottom2" style="margin-bottom: 10px" height="250"></iframe><script>var pbjs=pbjs||{que:[]};pbjs.que.push(function(){pbq.push(function(){window['AD_UNIT_ad-desktop-bottom2'].init(document.getElementById('ad-desktop-bottom2'));});});</script></div>
+        <footer class="c-footer" role="contentinfo">
+            <div id="remove_ads_link" style="display:block!important;"><a href="https://www.proboards.com/store/add_cart/ad_free/50000/cicada3301.boards.net/1">Click here to remove banner ads from this forum.</a></div>
+            <div id="hosted_by_link" style="display:block!important;">This Forum Is Hosted For FREE By <a href="https://www.proboards.com" target="_blank">ProBoards</a><br />Get Your Own <a href="https://www.proboards.com/create-free-forum" target="_blank">Free Forum</a>!</div>
+            <div class="c-footer__link-wrapper"><a href="https://www.proboards.com/tos" accesskey="8">Terms of Service</a> | <a href="https://www.proboards.com/privacy" title="Privacy">Privacy</a> | <a href="https://www.proboards.com/privacy#cookies" title="Cookies">Cookies</a> | <a href="http://www.viglink.com/policies/ftc" target="_blank">FTC Disclosure</a> | <a href="https://www.proboards.com/report-abuse" accesskey="7">Report Abuse</a> | <a href="#" class="js-report-ad" title="Report Ad">Report Ad</a></div>
+        </footer>
+    
+
+		</div>
+		
+	</body>
+</html>

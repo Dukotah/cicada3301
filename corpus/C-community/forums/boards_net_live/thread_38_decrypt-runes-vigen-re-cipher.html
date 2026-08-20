@@ -1,0 +1,969 @@
+<!DOCTYPE HTML>
+	<!--[if IE 7]><html class="ie7"><![endif]--><!--[if IE 8]><html class="ie8"><![endif]--><!--[if IE 9]><html class="ie9"><![endif]--><!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+	<head>
+		<meta charset="UTF-8">
+		<title>How To Decrypt the Runes 3: The Vigenère cipher | Cicada3301</title>
+		<script type="text/javascript" src="https://storage.googleapis.com/vs-scripts/intentiq/vsintentiq.js" async></script>
+<script async src="//c.amazon-adsystem.com/aax2/apstag.js"></script>
+<script>!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={unLoaded:1,init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},dpa:function(){q("di",arguments)},rpa:function(){q("ri",arguments)},upa:function(){q("ui",arguments)},_Q:[]};}("apstag",window);</script>
+<script async src="https://config.htplayground.com/load-vs-cmp.js"></script>
+<script async src="https://config.htplayground.com/config/proboards.com"></script>
+<script async src="https://config.htplayground.com/libs"></script>
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+  window.deployads = window.deployads || [];
+  window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+
+    //Size Mapping
+    var topMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([728, 200], [[728, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([0, 0], [[300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150]])
+    .build();
+    var bottomMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[970, 90], [728, 90], [300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .addSize([728, 200], [[728, 90], [300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .addSize([0, 0], [[300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .build();
+    var adhesionMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([728, 200], [[728, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([0, 0], [[320, 50], [300, 50], [234, 60]])
+    .build();
+    //Size Mapping end
+
+    googletag.defineSlot('/1030735/Boards_net_Top', [[250, 250], [336, 280], [300, 250], [728, 90], [320, 50], [468, 60], [970, 90], [234, 60], [180, 150], [200, 200], [480, 75], [300, 50]], 'Boards_net_Top').defineSizeMapping(topMapping).addService(googletag.pubads());
+    googletag.defineSlot('/1030735/Boards_net_Bottom', [[125, 125], [250, 250], [320, 50], [970, 90], [200, 200], [300, 250], [728, 90], [234, 60], [336, 280], [180, 150], [300, 50]], 'Boards_net_Bottom').defineSizeMapping(bottomMapping).addService(googletag.pubads());
+    googletag.defineSlot('/1030735/Boards_net_Adhesion', [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]], 'Boards_net_Adhesion').defineSizeMapping(adhesionMapping).addService(googletag.pubads());
+    
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().setTargeting("sitename", "Proboards.com");
+    googletag.pubads().setTargeting("folder2", "pb-"+location.hostname);
+    googletag.pubads().setTargeting("proboardsforumid", "6433989");
+    googletag.pubads().setTargeting("forum_id", "19");
+    googletag.pubads().setTargeting("vertical", "");
+    googletag.pubads().setCentering(true);
+    if (typeof(proboards) !== 'undefined' && typeof(proboards.data) !== 'undefined' ) {
+if (proboards.data('board_id') == null) {
+	googletag.pubads().setTargeting("PageID", "forumlist");
+} else if (proboards.data('thread_id') == null) {
+	googletag.pubads().setTargeting("PageID", "threadlist");
+} else {
+	googletag.pubads().setTargeting("PageID", "thread");
+	if (proboards.data('lm_total') > proboards.data('lm_limit')) {
+		if (proboards.data('lm_page') == 1 || proboards.data('lm_page') < proboards.data('lm_total') / proboards.data('lm_limit')) {
+			googletag.pubads().setTargeting("Folder1", proboards.data('lm_limit').toString());
+		} else {
+			googletag.pubads().setTargeting("Folder1", (proboards.data('lm_total') - (proboards.data('lm_limit') * (proboards.data('lm_page') - 1))).toString());
+		}
+	} else {
+		googletag.pubads().setTargeting("Folder1", proboards.data('proboards.thread')[Object.keys(proboards.data('proboards.thread'))[0]]['posts'].toString());
+	}
+}
+    }
+    if("0" === "0") {
+        googletag.pubads().setTargeting("registered", "false");
+    } else {
+        googletag.pubads().setTargeting("registered", "true");
+    }
+    deployads.push(function () { deployads.gpt.enableServices() });
+
+    if("0" === "0") {
+      function onDomLoadAdhesion() {
+            document.body.classList.add("vsFooterDiv");
+            let footeradcontainer = document.createElement('div');
+            footeradcontainer.classList.add('desktop-adhesion-ad__footer-ad-container');
+    
+            let desktopadhesion = document.createElement('div');
+            desktopadhesion.id = 'desktop-adhesion-ad__container';
+            desktopadhesion.classList.add('desktop-adhesion-ad__footer-ad');
+    
+            let innercontainer = document.createElement('div');
+            innercontainer.id = 'desktop-adhesion-ad__inner-container';
+    
+            let closebutton = document.createElement('button');
+            closebutton.classList.add('overlay-titleCloser');
+            closebutton.id = 'desktop-adhesion-ad__close-button';
+            closebutton.onclick = function() {
+                var vsAdhesion;
+                googletag.pubads().getSlots().forEach(function(i){
+                    if(i.getSlotElementId() === "Boards_net_Adhesion") {
+                        vsAdhesion = i;
+                    }
+                });
+                googletag.destroySlots([vsAdhesion]);
+                document.body.classList.remove("vsFooterDiv");
+            }
+    
+            let proboardsadhesion = document.createElement('div');
+            proboardsadhesion.id = 'Boards_net_Adhesion';
+    
+            footeradcontainer.appendChild(desktopadhesion);
+            desktopadhesion.appendChild(innercontainer);
+            innercontainer.appendChild(closebutton);
+            innercontainer.appendChild(proboardsadhesion);
+            document.body.appendChild(footeradcontainer);
+        
+            googletag.cmd.push(function() {
+                if (window.deployads) {
+                deployads.push(function() {
+                    deployads.gpt.display('Boards_net_Adhesion');
+                });
+                } else {
+                    googletag.display('Boards_net_Adhesion'); 
+                }
+            });
+        }
+        document.readyState === "loading"
+        ? document.addEventListener('DOMContentLoaded', onDomLoadAdhesion)
+        : onDomLoadAdhesion();
+    }
+  });
+</script>
+<script src="https://storage.googleapis.com/vs-scripts/proboards/config.js"></script>
+<script>
+/**
+ * Sets a cookie
+ *
+ * @param name cookie name
+ * @param value cookie value
+ * @param expiration expiration in minutes
+ * @param domain [optional] domain
+ */
+ function vsExpSetCookie( name, value, expiration, domain = '' ) {
+    if( !name || !value || !expiration ) {
+        return;
+    }
+    let d = new Date();
+    d.setTime( d.getTime() + (expiration * 60 * 1000) );
+    let cName = name + '=' + value,
+        expires = ';expires=' + d.toUTCString();
+    document.cookie = cName + expires + ';path=/' + ';';
+}
+/**
+ * Gets cookie value
+ *
+ * @param name
+ * @returns string|null cookie value or null
+ */
+function vsExpGetCookie( name ) {
+    var nameEQ = name + '=';
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+// DiceRoll functions
+function isExperiment() {
+    // Set a diceroll for Experimentation
+    // Test in browser by adding '?vsexp-dice=exp' or '?vsexp-dice=control' to url.
+    const expire = 30; // 30 minutes
+    let expWinPercentage = window.vsPrimisExpData.weight ?? 50;
+    const checkParam = () => {
+        let urlParam = location.search.match( /[?&]vsexp-dice=([^&]+)/ );
+        return urlParam && urlParam.length === 2 ? urlParam[ 1 ] : null;
+    };
+    const experimentDiceRoll = () => {
+        const diceResult = Math.random() < expWinPercentage / 100;
+        return diceResult ? 'exp' : 'control';
+    };
+    let winner = checkParam();
+    let cookieName = window.vsPrimisExpData.cookieName ?? 'vsexp_pct';
+    if( winner ) {
+        vsExpSetCookie( cookieName, winner, expire );
+    } else {
+        winner = vsExpGetCookie( cookieName );
+        if( !winner ) {
+            winner = experimentDiceRoll();
+            vsExpSetCookie( cookieName, winner, expire );
+        }
+    }
+    window.vsRunPrimis = ( winner === 'exp' );
+}
+//Check if this is allowlisted before checking experiment group
+if (window.vsPrimisExpData?.runExp && window.vsPrimisExpData?.weight != 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+    isExperiment();
+    let vsKV = '';
+    if (window.vsRunPrimis && window.vsPrimisExpData?.weight != 100) {
+        vsKV = window.vsPrimisExpData?.variantName ?? 'pb_primis_exp';
+    } else {
+        vsKV = window.vsPrimisExpData?.controlName ?? 'pb_primis_ctrl';
+    }
+    if (window.vsPrimisExpData?.weight != 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+            googletag.pubads().setTargeting('experiment', vsKV);
+        });
+        window.adsJSON = {
+            pageKeyValues: {'revenueExp': ['experiment'],'experiment': vsKV},
+        };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'experiment': vsKV
+        });
+    }
+}
+if (window.vsPrimisExpData?.weight === 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+        window.vsRunPrimis = true;
+}
+if (window.vsExpData?.runExp ) {
+    window.vsexp = true;
+}
+</script>
+<style>
+.desktop-adhesion-ad__footer-ad-container .desktop-adhesion-ad__footer-ad {
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
+	width: 100%;
+	color: #fff;
+	background-color: transparent;
+	position: fixed;
+	bottom: 0;
+	z-index: 400;
+	font-size: 26px;
+	-webkit-overflow-scrolling: touch;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translate3d(0,0,0);
+	pointer-events: none;
+}
+#desktop-adhesion-ad__inner-container {
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+#desktop-adhesion-ad__inner-container #desktop-adhesion-ad__close-button.overlay-titleCloser {
+	border: 1px solid #c9cdcf;
+	width: 24px;
+	height: 24px;
+	background: #fff;
+	font-size: large;
+	padding: unset;
+	border-radius: 3px;
+	color: #686c6e;
+	pointer-events: auto;
+}
+#Desktop_Adhesion {
+	pointer-events: auto;
+}
+#desktop-adhesion-ad__close-button.overlay-titleCloser {
+	margin: unset;
+	opacity: 1;
+	position: absolute;
+	line-height: 50%;
+}
+.overlay-titleCloser {
+	float: right;
+	cursor: pointer;
+	text-decoration: none;
+}
+.overlay-titleCloser:after {
+	font-family: 'font awesome 5 pro';
+	font-size: inherit;
+	font-style: normal;
+	font-weight: 100;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: "X";
+}
+#desktop-adhesion-ad__close-button.overlay-titleCloser {
+    right: -33px;
+}
+#desktop-adhesion-ad__inner-container {
+    max-width: 728px;
+    pointer-events: auto;
+}
+body.vsFooterDiv {
+    margin-bottom:90px;
+}
+</style>
+<script type="text/javascript">
+            window.partial = "thread/show";
+            document.registerElement = false;
+            window._pbdata = [];
+            window.pb = {
+                data: {
+                    set: function(a) {
+                        window._pbdata.push(a)
+                    }
+                }
+            }
+        </script>
+
+        <!-- Google Tag Manager -->
+            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-M6QVNSC');</script>
+        <!-- End Google Tag Manager -->
+    
+<link rel="canonical" href="https://cicada3301.boards.net/thread/38/decrypt-runes-vigen-re-cipher" />
+<link rel="alternate" type="application/rss+xml" href="http://cicada3301.boards.net/rss/public" />
+<link rel="shortcut icon" type="image/x-icon" href="https://storage.proboards.com/forum/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="https://storage.proboards.com/forum/images/favicon.ico" />
+<meta property="og:url" content="https://cicada3301.boards.net/thread/38/decrypt-runes-vigen-re-cipher">
+<meta property="og:title" content="How To Decrypt the Runes 3: The Vigenère cipher | Cicada3301">
+<meta property="og:description" content="Introduction    This is another long post, we have many interesting things to cover. It&nbsp;follows on from">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@proboards">
+
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/forum/css/0/forum_base_1144.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/6433989/css/w8taoZpniIqJS0joSHjj.css" id="forum_style" />
+<link rel="stylesheet" type="text/css" media="print" href="//storage.proboards.com/forum/css/0/print_1144.css" />
+<script> translatePo = { language: 'en_US' };</script>
+<script type="text/javascript" src="//storage.proboards.com/forum/js/proboards.combined_1144.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//www.google.com/recaptcha/api.js?render=explicit&hl=en"></script>
+
+		<!-- Google Analytics Start -->
+		<script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-30657-154', 'auto' );ga('set', 'anonymizeIp', true);
+		</script>
+		<!-- Google Analytics End -->
+	
+
+        <script type="module">
+            var vglnk;
+            $(document).ready(function() {
+                $('a').each(function() {
+                    if($(this).prop('href').indexOf('login.proboards.com') !== -1) {
+                        $(this).addClass('norewrite');
+                    }
+                });
+
+                vglnk = {
+                    api_url: '//api.viglink.com/api', key: '71fe2139a887ad501313cd8cce3053c5', subId: '6433989'
+                };
+                var vglnkSrc = ('https:' == document.location.protocol ? vglnk.api_url : '//cdn.viglink.com/api') + '/vglnk.js';
+
+                // VigLink ProBoards Convert Code (using above key)
+                var s = document.createElement('script');
+                s.type = 'text/javascript'; s.async = true; s.src = vglnkSrc;
+                document.body.appendChild(s);
+
+                var retry = 0;
+                var reV = function() {
+                    if (typeof vglnk !== 'function' && retry++ < 5) {
+                        setTimeout(reV, 500);
+                    }
+                    else if (typeof vglnk !== 'function') {
+                        $('a').not('.norewrite').each(function() {
+                            var url = $(this).prop('href');
+                            if (url.indexOf('http') === 0 && url.indexOf(document.domain) === -1) {
+                                $(this).prop('href', 'http://redirect.viglink.com?key=71fe2139a887ad501313cd8cce3053c5&subId=6433989&u=' + escape(url));
+                            }
+                        });
+                    }
+                };
+                reV();
+            });
+        </script>
+    
+<script>
+            window.runAntiAdBlock = 1;
+        </script>
+<script>  proboards.data([['forum_url',"cicada3301.boards.net"],['ad_free',0],['locale_settings',{"amcharts_date_format":"MM/DD/YYYY","input_time_format":12,"input_date_placeholder":"mm/dd/yyyy","input_time_placeholder":"hh:mm pp","input_date_regex":"^(\\d{2})/(\\d{2})/(\\d{4})$","input_date_format":"%m/%d/%Y","thousands_separator":","}],['image_path',"//storage.proboards.com/forum/images"],['time_style',0],['military_time',0],['timezone',"guest"],['serverDate',1787177630000],['search-query-min',3],['search-query-max',50],['is_current_user_guest',"1"],['plugin_max_key_length',4000],['plugin_max_super_forum_key_length',32000],['login_url',"https://login.proboards.com/login/6433989/1"],['register_url',"https://login.proboards.com/register/6433989"],['page_url',""],['captcha_init',{"tos":{"name":"ProBoards Terms of Service","url":"http://www.proboards.com/tos"},"adfree":"","form_id":"form_xkN7DQvG","mobile":0,"no_popup":0,"captcha_errors":0,"attempts":0,"captcha_error_origin":null,"captcha_id":"captcha_init","key":"6LeLlQkTAAAAACrV4OiakEuq7INhMhWWUCZ-XpoZ","no_validations":0,"errors":0,"captcha_container_id":"captcha-container"}],['quick_reply',1],['forum_id',"6433989"],['thread_id',"38"],['thread_subject',"How To Decrypt the Runes 3: The Vigenère cipher"],['labels_applied',[]],['accessible_label_ids_applied',[]],['board_id',"19"],['search_filter_img_src',"//storage.proboards.com/forum/images/icon-search-filters.png"],['options_img_src',"//storage.proboards.com/forum/images/icon-options.png"],['options_img_alt',"Post Options"],['options_img_title',"Post Options"],['lm_total',"2"],['lm_limit',15],['lm_page',1],['lm_data',{"thread_id":"38"}],['lm_id',"jOho4VP4IvWtM8Wcx8Up"],['lm_type',"post"],['lm_thread_next',"/thread/next/38"],['lm_thread_prev',"/thread/previous/38"],['sharing_options',{"twitter_enabled":1,"reddit_enabled":1,"myspace_enabled":1,"email_enabled":1,"facebook_enabled":1,"enabled":1,"tumblr_enabled":1,"twitter_card_site":"","linkedin_enabled":1,"pinterest_enabled":1}],['page_cache',".lm-content-jOho4VP4IvWtM8Wcx8Up"],['labels_accessible',[]],['labels_viewable',[]],['_google_analytics_events',[{"hitType":"pageview"}]],['proboards.badge',{}],['pop_menu_structure',{"positionAgainstSelector":".o-breadcrumbs","menuStructure":{"1-1":{"title":"General","items":[{"text":"Go to General","href":"/#category-1","addSeparator":1},{"addSeparator":null,"text":"Philosopy","href":"https://cicada3301.boards.net/board/20/philosopy"},{"addSeparator":null,"text":"General Discussion","href":"https://cicada3301.boards.net/board/1/general-discussion"}]},"1-4":{"items":[{"text":"Go to Welcome","href":"/#category-4","addSeparator":1},{"addSeparator":null,"text":"Welcome","href":"https://cicada3301.boards.net/board/21/welcome"}],"title":"Welcome"},"_root":{"title":"Categories","items":[{"addSeparator":1,"href":"/forum","text":"Home"},{"addSeparator":null,"submenu":"1-4","text":"Welcome"},{"addSeparator":null,"text":"Rune Solving","submenu":"1-3"},{"addSeparator":null,"submenu":"1-1","text":"General"}]},"1-3":{"items":[{"href":"/#category-3","text":"Go to Rune Solving","addSeparator":1},{"addSeparator":null,"text":"Tools","href":"https://cicada3301.boards.net/board/19/tools"},{"addSeparator":null,"href":"https://cicada3301.boards.net/board/18/theories","text":"Theories"},{"text":"Cross","href":"https://cicada3301.boards.net/board/17/cross","addSeparator":null},{"addSeparator":null,"text":"Spirals","href":"https://cicada3301.boards.net/board/16/spirals"},{"addSeparator":null,"text":"Branches","href":"https://cicada3301.boards.net/board/15/branches"},{"text":"Mobius","href":"https://cicada3301.boards.net/board/14/mobius","addSeparator":null},{"href":"https://cicada3301.boards.net/board/13/mayfly","text":"Mayfly","addSeparator":null},{"addSeparator":null,"text":"Tree","href":"https://cicada3301.boards.net/board/12/tree"},{"text":"Cuneiform","href":"https://cicada3301.boards.net/board/11/cuneiform","addSeparator":null},{"addSeparator":null,"href":"https://cicada3301.boards.net/board/10/spiral-branches","text":"Spiral Branches"},{"href":"https://cicada3301.boards.net/board/9/56","text":"56","addSeparator":null},{"addSeparator":null,"text":"57","href":"https://cicada3301.boards.net/board/8/57"}],"title":"Rune Solving"}},"positionOffsetY":10,"addMenuClass":"c-pop-menu","placement":"bottom left","opensOn":"click","startingMenu":"_root"}],['screen_breakpoints',{"sm":768,"xs":0,"md":992,"lg":1200}],['user',{"is_staff":0,"id":0,"name":"Guest","theme_id":1,"is_logged_in":0,"date_format":"m/d/y","time_format":"12hr"}],['page',{"board":{"show_announcements":"1","disable_post_counts":"0","posts":41,"hidden":"0","url":"/board/19/tools","id":19,"description":"","name_unescaped":"Tools","threads":14,"display_name":"Tools","disable_posting":"0","name":"Tools"},"category":{"name_unescaped":"Rune Solving","id":3,"name":"Rune Solving"},"thread":{"id":38,"is_bookmarked":0,"is_muted":0,"is_poll":0,"last_post_time":1514502115,"subject":"How To Decrypt the Runes 3: The Vigenère cipher","created_on":1477142699,"board_id":19,"subject_unescaped":"How To Decrypt the Runes 3: The Vigenère cipher","is_announcement":0,"last_post_id":103,"url":"https://cicada3301.boards.net/thread/38/decrypt-runes-vigen-re-cipher","is_sticky":0,"created_by":3,"is_locked":0,"is_new":0,"first_post_id":61,"posts":"2","is_falling":0,"views":"5,271"}}],['default_avatar',"//storage.proboards.com/forum/images/defaultavatar.png"],['route',{"name":"thread","params":{"thread_id":"38"}}],['search_system',1],['insite_path',""],['maintenance_mode',0],['proboards.thread',{"38":{"is_poll":0,"subject":"How To Decrypt the Runes 3: The Vigenère cipher","last_post_time":1514502115,"is_muted":0,"id":38,"is_bookmarked":0,"last_post_id":103,"is_announcement":0,"url":"https://cicada3301.boards.net/thread/38/decrypt-runes-vigen-re-cipher","board_id":19,"created_on":1477142699,"subject_unescaped":"How To Decrypt the Runes 3: The Vigenère cipher","is_locked":0,"created_by":3,"is_sticky":0,"first_post_id":61,"is_new":0,"views":"5,271","posts":"2","is_falling":0}}],['proboards.post',{"61":{"url":"https://cicada3301.boards.net/post/61","created_by":3,"liked":0,"thread_id":38,"created_on":1477142699,"id":61},"103":{"liked":0,"created_on":1514502115,"id":103,"thread_id":38,"url":"https://cicada3301.boards.net/post/103","created_by":0}}]]);</script>
+<script> if (typeof(standard_thread_show) == 'function') standard_thread_show();</script>
+<script> if (typeof(standard_post_base) == 'function') standard_post_base();</script>
+
+	</head>
+	<body>
+        <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6QVNSC"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+		
+		<div id="wrapper">
+			<header>
+				<div id="banner-container" role="banner">
+					<h2 id="banner">
+						<a id="logo" href="/">Cicada3301</a>
+					</h2>
+				</div>
+				<a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+				<a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+				<div id="navigation-menu" class="ui-helper-clearfix">
+					<ul role="navigation">
+						
+							<li>
+								<a href="/">
+									Home
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/help">
+									Help
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/search">
+									Search
+									
+								</a>
+							</li>
+						
+					</ul>
+					<p id="welcome">
+						
+							Welcome Guest.
+							
+								Please <a href="https://login.proboards.com/login/6433989/1">Login</a> or <a href="https://login.proboards.com/register/6433989">Register</a>.
+							
+						
+					</p>
+				</div>
+			</header>
+
+			
+
+			
+				<div id="navigation-tree">
+					<div class="nav-tree-wrapper"><ul id="nav-tree" class="ui-helper-clearfix" role="navigation" itemscope itemtype="https://schema.org/BreadcrumbList"><li id="nav-tree-branch-0" class="nav-tree-branch ui-helper-clearfix has-menu" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/" itemprop="item"><span itemprop="name">Cicada3301</span></a></div><meta itemprop="position" content="1"><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-1" class="nav-tree-branch ui-helper-clearfix" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/board/19/tools" itemprop="item"><span itemprop="name">Tools</span></a></div><meta itemprop="position" content="2"><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-2" class="nav-tree-branch ui-helper-clearfix" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/thread/38/decrypt-runes-vigen-re-cipher" itemprop="item"><span itemprop="name">How To Decrypt the Runes 3: The Vigenère cipher</span></a></div><meta itemprop="position" content="3"><span class="menu_arrow"><span></span></span></li></ul></div><div class="popup_html">
+<ul id="nav-tree-menu-0" role="navigation">
+<li class="nav-tree-cat-4"><a href="/#category-4"><span class="item-text">Welcome</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-21"><a href="https://cicada3301.boards.net/board/21/welcome"><span class="item-text">Welcome</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-3"><a href="/#category-3"><span class="item-text">Rune Solving</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-19"><a href="https://cicada3301.boards.net/board/19/tools"><span class="item-text">Tools</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-18"><a href="https://cicada3301.boards.net/board/18/theories"><span class="item-text">Theories</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-17"><a href="https://cicada3301.boards.net/board/17/cross"><span class="item-text">Cross</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-16"><a href="https://cicada3301.boards.net/board/16/spirals"><span class="item-text">Spirals</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-15"><a href="https://cicada3301.boards.net/board/15/branches"><span class="item-text">Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-14"><a href="https://cicada3301.boards.net/board/14/mobius"><span class="item-text">Mobius</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-13"><a href="https://cicada3301.boards.net/board/13/mayfly"><span class="item-text">Mayfly</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-12"><a href="https://cicada3301.boards.net/board/12/tree"><span class="item-text">Tree</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-11"><a href="https://cicada3301.boards.net/board/11/cuneiform"><span class="item-text">Cuneiform</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-10"><a href="https://cicada3301.boards.net/board/10/spiral-branches"><span class="item-text">Spiral Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-9"><a href="https://cicada3301.boards.net/board/9/56"><span class="item-text">56</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-8"><a href="https://cicada3301.boards.net/board/8/57"><span class="item-text">57</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-1"><a href="/#category-1"><span class="item-text">General</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-20"><a href="https://cicada3301.boards.net/board/20/philosopy"><span class="item-text">Philosopy</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-1"><a href="https://cicada3301.boards.net/board/1/general-discussion"><span class="item-text">General Discussion</span><div class="clear"></div></a></li>
+</ul>
+</li>
+</ul></div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+		var reposition   = false;
+		var showOn       = 'hover';
+		var offset       = reposition
+			? '-13 6'
+			: ($.browser.msie && parseInt($.browser.version) == 8)
+				? '3 -1'
+				: '3 0';
+		var showCallback = function(e) {
+			var self = $(this);
+
+			// Make sure all other menus are closed
+			$('.popup_html > ul').not(self).menu('hide');
+
+			// Hide the navigation if they leave it.
+			setTimeout(function() {
+				$(document).on('mousemove.nav', function(e) {
+					var elem = $(e.target);
+					if (
+						elem.parents('#nav-tree, .popup_html').length == 0
+						&& !elem.is('#nav-tree, .popup_html')
+						&& !self.data('hotkey-open')
+					) {
+						self.menu('hide');
+						$(document).off('.nav');
+					}
+				});
+			}, 1000);
+		}
+	
+				$('#nav-tree-menu-0')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-0'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-0'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-1')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-1'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-1'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-2')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-2'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-2'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				$('.nav-tree-cat-3').addClass('state-selected');$('.nav-tree-board-19').addClass('state-selected');
+			});
+		</script>
+	
+				</div>
+			
+
+			<div id="ad1"><div style="max-width: 970px; margin: 0 auto 10px; text-align: center;"><div id="Boards_net_Top" style="min-height:90px;">
+    <script type="text/javascript">
+        googletag.cmd.push(function() {
+            deployads.push(function() { deployads.gpt.display("Boards_net_Top"); });
+        });
+    </script>
+</div></div></div>
+
+			<div id="content" role="main">
+				
+				<div class="container posts">
+	<div class="title-bar">
+		
+			<ul class="controls"><li><a class="reply-button" role="button" href="/post/new/38">Reply</a></li></ul>
+		
+		<h1>How To Decrypt the Runes 3: The Vigenère cipher</h1>
+	</div>
+	<div class="control-bar ui-helper-clearfix scrollable-jOho4VP4IvWtM8Wcx8Up">
+		<div class="lm-search-jOho4VP4IvWtM8Wcx8Up ui-search"></div>
+		<div class="controls">
+			<ul class="select_menu_list ui-menu ui-selectMenu hide actions lm-actions-jOho4VP4IvWtM8Wcx8Up" data-status="Actions"><li class="sharing ui-menu-has-sub-menu"><a><span class="icon pbi-share"></span>Share Thread</a><ul><li class="facebook-share"><a><span class="icon"></span>Facebook</a></li><li class="twitter-share"><a><span class="icon"></span>Twitter</a></li><li class="tumblr-share"><a><span class="icon"></span>Tumblr</a></li><li class="linkedin-share"><a><span class="icon"></span>LinkedIn</a></li><li class="myspace-share"><a><span class="icon"></span>MySpace</a></li><li class="email-share"><a><span class="icon"></span>Email</a></li></ul></li><li class="view ui-menu-has-sub-menu"><a><span class="icon"></span>Go to</a><ul><li class="view_prev"><a rel="nofollow"><span class="icon"></span>Previous Thread</a></li><li class="view_next"><a rel="nofollow"><span class="icon"></span>Next Thread</a></li></ul></li><li class="default-menu-option"><a>Please make a selection first</a></li></ul>
+		</div>
+		<div class="float-left"><span class="control-icons lm-icons-jOho4VP4IvWtM8Wcx8Up"><span class="new-icon"><a href="/threads/recent/38">new</a></span><span class="bookmark_icon hide"><img alt="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" title="Bookmark" /></span><span class="lock_icon hide"><img title="This thread is locked" src="//storage.proboards.com/forum/images/icons/lock.png" alt="Locked" /></span><span class="falling_icon hide"><img alt="Falling" title="This thread is falling" src="//storage.proboards.com/forum/images/icons/falling.png" /></span></span></div>
+		<ul class="ui-pagination lm-pagination-jOho4VP4IvWtM8Wcx8Up"><li class="prev state-disabled"><a>&laquo; Prev</a></li><li class="state-selected"><a>1</a></li><li class="next state-disabled"><a>Next &raquo;</a></li></ul>
+	</div>
+	<div class="content cap-bottom">
+		<span class="no-labels js-no-labels"></span>
+		
+		<table class="list" role="presentation">
+			<tbody class="lm-content-jOho4VP4IvWtM8Wcx8Up">
+				
+	<tr id="post-61" class="item post js-post first">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile">
+	<a href="/user/3" data-id="3" class="o-user-link js-user-link user-link user-3 group-1" title="@mortlach">mortlach</a><br />
+	
+	
+	
+		Administrator<br /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><br />
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar-3" title="mortlach"><img src="//storage.proboards.com/6433989/avatar/JSCXVO5DB5iXjb7oFsk8.jpg" alt="mortlach Avatar" /></div></div><br />
+	
+	
+	
+		<div class="info">
+			Posts: 38
+			
+			
+		</div><br />
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a href="/thread/38/decrypt-runes-vigen-re-cipher" class="js-thread__link thread-link thread-38 board-19">How To Decrypt the Runes 3: The Vigenère cipher</a>
+									<span class="date"><abbr class="o-timestamp time" title="Oct 22, 2016 13:24:59 GMT" data-timestamp="1477142699000">Oct 22, 2016 13:24:59 GMT</abbr></span>
+									
+									<span class="likes">&nbsp;</span>
+								</div>
+								<div class="controls">
+									<a href="/post/61/quote/38" class="button quote-button">Quote</a>
+									
+									
+									<ul class=" options_menu post-61 user-3 hide"><li class="61-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="61-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="61-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="61-member ui-menu-has-sub-menu "><a><span class="icon pbi-user-icon"></span>Member</a><ul class=""><li class="61-giveGift"><a href="/user/3/gift"><span class="icon pbi-birthday"></span>Give Gift</a></li></ul></li><li class="61-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-61-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-61-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by mortlach on <abbr class="o-timestamp time" title="Oct 22, 2016 13:24:59 GMT" data-timestamp="1477142699000">Oct 22, 2016 13:24:59 GMT</abbr></h3>
+							<div class="message"><b><font color="#e61919">Introduction <br /></font></b><br /><br />This is another long post, we have many interesting things to cover. It&nbsp;follows on from <a class="norewrite" target="_blank" rel="norewrite" href="http://cicada3301.boards.net/thread/36/decrypt-runes-1-basic-tools">part 1 </a>and <a class="norewrite" href="http://cicada3301.boards.net/thread/37/decrypt-runes-first-pages-solved" rel="norewrite" target="_blank">part 2</a>, where we developed some useful tools and a general method for solving pages based on: looking for patterns, forming a hypothesis and scoring many possibilities. In this post we will solve Pages 3-4 and Pages 14-16 (using the page numbering from this <a target="_blank" href="https://github.com/rtkd/idkfa" rel="nofollow">github</a>). Last time we noticed they had lower 1-gram and 2-gram IoC values than true Runeglish:<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1-gram IoC &nbsp; &nbsp; 2-gram IoC<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br />War &amp; Peace &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.77 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		4.97<br /><br />Pages 3-4 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	1.17&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.59<br /><br />Pages 14-16 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	1.11 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.89<br /><br /><br />These numbers suggest that trying a simple substitution cipher won’t be useful, and that is what we find. Therefore, we must try and find a different pattern. There are many different ways to solve these pages, here we will discuss techniques that use our pre-built tools and try and exploit information that we use when trying to decrypt the unsolved pages. In particular we will use the rune-word lengths. Before we do that we should discuss another way of thinking about substitution ciphers. <br /><br /><br /><b><font color="#e61919">Rune Addition <br /></font></b><br />The substitution cipher and shifting the runes using the <a target="_blank" rel="nofollow" href="http://imgur.com/a/D5eBa">cipher discs</a>&nbsp;are related to the arithmetic of addition. This is because we can represent the shifts with numbers. For example, consider the following:<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;ᚠ [0th rune in Gematria] &nbsp;= &nbsp;F <br />&nbsp; &nbsp;&nbsp;ᚢ [1st rune in Gematria] &nbsp;= &nbsp;U<br />&nbsp; &nbsp;&nbsp;ᚦ [2nd rune in Gematria] &nbsp;= TH … <br /><br />The number of runes from ᚠ to ᚢ is 1 so:<br /><br />&nbsp; &nbsp;&nbsp;ᚠ + 1 [0th rune + 1]  =  ᚢ = U <br />&nbsp;&nbsp;&nbsp;&nbsp;ᚠ + 2 [0th rune + 2]  =  ᚦ = TH …<br /><br />(In a very real sense) we have defined what it means to add a number to rune, with the result being another rune. In general, shifting a cipher disc N steps is similar to adding N to a rune to give a new rune. The cipher disc also gives us a visual way of showing what happens when we add numbers greater than the number of runes, the disc spins back round to the start and we keep counting, just like a clock. For example:<br /><br /><br />&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ᚠ + 29 [0th rune + 29]  = ᚠ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		ᚠ + 30[0th rune + 30]  = ᚢ, ...<br /><br />Of course, we don’t need to use numbers, they’re just symbols, we could use the runes themselves to represent the numbers, or the Gematria Letters, (or anything, as long as we are consistent). In general, we can seamlessly switch between using numbers, runes or letters, and from now on we will. <br /><br /><b><font color="#e61919">Encryption with Rune Addition <br /><br /></font></b><br />We can use rune-addition to encrypt a message, if we add the same number to each rune this is the same substitution cipher discussed last time:<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Message Text (MT)&nbsp;= ᚠ,&nbsp; ᚩ,&nbsp;&nbsp;&nbsp;ᚱ,&nbsp; &nbsp;ᚪ,&nbsp; &nbsp; ᛚ,&nbsp; &nbsp;&nbsp; ᛚ,&nbsp; &nbsp; &nbsp;ᛁ,&nbsp;&nbsp;&nbsp;&nbsp;ᛋ, &nbsp; &nbsp;ᛋ,&nbsp; &nbsp; &nbsp;ᚪ,&nbsp;&nbsp;&nbsp;ᚳ,&nbsp; &nbsp;ᚱ,&nbsp; &nbsp;ᛖ,&nbsp;&nbsp;&nbsp;ᛞ<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;MT(Letters) &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;= F,&nbsp; O,&nbsp; &nbsp;R,&nbsp;&nbsp;A,&nbsp; &nbsp;L,&nbsp;&nbsp;&nbsp;&nbsp;L,&nbsp;&nbsp;&nbsp;&nbsp;I, &nbsp; &nbsp;S, &nbsp; S,&nbsp; &nbsp;&nbsp;A,&nbsp;&nbsp;&nbsp;C,&nbsp;&nbsp;R,&nbsp;&nbsp;E,&nbsp;&nbsp;&nbsp;D<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;MT(numbers)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 0,&nbsp;&nbsp;&nbsp;3,&nbsp; &nbsp;4,&nbsp;&nbsp;24,&nbsp; 20,&nbsp;&nbsp;20,&nbsp; 10,&nbsp;15, 15,&nbsp;&nbsp;24,&nbsp; 5,&nbsp;&nbsp;4,&nbsp;&nbsp;18,&nbsp; 23<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;MT(numbers)+1 &nbsp; &nbsp; &nbsp;= 1,&nbsp;&nbsp;&nbsp;4,&nbsp; &nbsp;5,&nbsp; 25,&nbsp; 21,&nbsp; 21,&nbsp;&nbsp;11,&nbsp;16, 16,&nbsp;&nbsp;25,&nbsp; 6,&nbsp;&nbsp;5,&nbsp;&nbsp;19,&nbsp; 24<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;CipherText(CT) &nbsp; &nbsp; &nbsp; =&nbsp;U,&nbsp; &nbsp;R,&nbsp;&nbsp;C,&nbsp;&nbsp;AE,&nbsp;NG,&nbsp;NG,&nbsp;J,&nbsp;&nbsp;&nbsp;T,&nbsp;&nbsp;&nbsp;&nbsp;T,&nbsp;&nbsp;&nbsp;AE,&nbsp;G,&nbsp;&nbsp;C,&nbsp;&nbsp;M,&nbsp; A<br /><br /><br />There is no reason to add the same number to each part of MT, we could add a series of numbers, defined by a Key (in the above example we could say the key was 1). For example with a key = 0,1,2,3,4,5 = F, U, TH, O, R, C = ᚠ, ᚢ, ᚦ, ᚩ, ᚱ, ᚳ) :<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;MT (numbers) = 0, &nbsp; &nbsp; 3, &nbsp; &nbsp; &nbsp;4, &nbsp; &nbsp; &nbsp; 24, &nbsp; &nbsp; &nbsp; 20, &nbsp; &nbsp; &nbsp;20, <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>10, 15, 15, 24, 5, 4, 18, 23<br />&nbsp; &nbsp; Key &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 0, &nbsp; &nbsp; &nbsp;1, &nbsp; &nbsp; &nbsp;2, &nbsp; &nbsp; &nbsp;3, &nbsp; &nbsp; &nbsp; &nbsp; 4,&nbsp;&nbsp;&nbsp;<span>&nbsp; &nbsp; &nbsp;</span>&nbsp;5, &nbsp;&nbsp;&nbsp;<span>&nbsp; &nbsp;</span><br />&nbsp; &nbsp; CT (numbers) = 0+0, &nbsp;3+1, &nbsp;4+2, &nbsp;24+3, &nbsp; 20+4,&nbsp;&nbsp;20+5, … <br /><br /><br />When we have run out of Key numbers we can try repeating the Key, giving: <br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;CT (numbers) = 0, 4, 6, 27, 24, 25, 10, 16, 17, 27, 9, 9, 18, 24<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;CT (runes) = ᚠ, ᚱ, ᚷ, ᛡ, ᚪ, ᚫ, ᛁ, ᛏ, ᛒ, ᛡ, ᚾ, ᚾ, ᛖ, ᚪ<br /><br /><br />This type of encryption is often known the Vigenère cipher. <br /><br /><br /><font color="#e61919"><b>Spotting the Pattern in the Vigenère Cipher<br /></b></font><br /><br />The above Key had 6 runes and then repeated. This means that every 7th MT rune was encrypted using the same key rune (+0 starting from the first rune), <br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<b><i>and </i></b>every 7th MT rune starting from the 2nd rune was encrypted with +1, <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<b><i>and </i></b>every 7th MT rune starting from the 3nd rune was encrypted with +2. <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<b><i>and </i></b>every 7th MT rune starting from the 4th rune was encrypted with +3…<br /><br />&nbsp; &nbsp; ...&nbsp;<br /><br />Another way of thinking about this is every 7th rune in the MT (no matter which rune you start with) is encrypted with the same substitution cipher.  We know that the Index of Coincidence (IoC) is invariant (doesn’t change) for simple substitution ciphers and so there should be a pattern in the IoC that shows the MT leaking through into the CT. The pattern is found by trying to guess the key length. <br /><br /><br /><font color="#e61919"><b>Guessing the Key Length of the Vigenère Cipher<br /><br /></b></font><br />We take every Nth CT rune, where N is our guess of the key length, starting from the first rune, the 2nd rune, the 3rd rune … up to the Nth rune. This gives us N sets of CT runes, and we calculate  the IoC for each set and then take an average. If we have guessed the correct N then we expect the IoC will be the same as Runeglish. In effect, we have ‘sliced’ out the different substitution ciphers. For example, taking the start of Pages 14-16: <br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;N = 1, &nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;sliced CT part 1  = ᚪ, ᛋ, ᚹ, ᚪ, ᛁ, ᛈ, ᚢ, ᛟ, ᚫ, ᛈ, ᚠ, ᛖ, ᚱ, ᛋ, ᛈ, ᛈ … <br /> &nbsp;&nbsp; <b>&nbsp;</b><b>sliced IoC part 1   = 1.130</b><br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;N = 2<br />&nbsp;&nbsp;&nbsp;&nbsp;Sliced CT part 1 =  ᚪ, ᚹ, ᛁ, ᚢ, ᚫ, ᚠ, ᚱ, ᛈ, ᚦ, ᚾ, ᚱ, ᚹ … <br />&nbsp;&nbsp;&nbsp;&nbsp;Sliced CT part 2 = ᛋ, ᚪ, ᛈ, ᛟ, ᛈ, ᛖ, ᛋ, ᛈ, ᛗ, ᚪ, ᛚ, ᛈ, … <br />&nbsp; &nbsp;&nbsp;sliced IoC part 1  = 1.154, &nbsp;sliced IoC part 2  = 1.078, <br /><b>&nbsp; &nbsp;&nbsp;mean IoC  = 1.116</b><br /><br /><br />&nbsp; &nbsp;&nbsp;N = 3<br />&nbsp; &nbsp;&nbsp;Sliced CT part 1 =  ᚪ, ᚪ, ᚢ, ᛈ, ᚱ, ᛈ, ᚾ, ᛚ, ᛖ, ᚢ, ᛁ … <br />&nbsp;&nbsp;&nbsp;&nbsp;Sliced CT part 2 = ᛋ, ᛁ, ᛟ, ᚠ, ᛋ, ᚦ, ᚪ, ᚹ, ᚩ, ᛠ, ᚻ… <br />&nbsp;&nbsp;&nbsp;&nbsp;Sliced CT part 3 = ᚹ, ᛈ, ᚫ, ᛖ, ᛈ, ᛗ, ᚱ, ᛈ, ᛈ, ᛁ, ᛞ … <br /><span>&nbsp; &nbsp;&nbsp;</span>sliced part 1  IoC = 1.079, &nbsp;&nbsp;sliced part 2 IoC = 0.928, &nbsp;sliced CT part 3 IoC  = 1.282<br /><b>&nbsp; &nbsp;&nbsp;mean IoC  = 1.096 … </b><br /><br />We keep doing this for increasing N {N, mean IoC of slices}: <br /><br />{1, 1.13036}, {2, 1.1159}, {3, 1.09617}, {4, 1.10191}, {5,1.09158}, {6, 1.0742}, {7, 1.08002}, {8, 1.13691}, {9,1.05091}, {10, 1.05788}, {11, 1.04545}, {12, 0.988974}, <font color="#e61919"><b>{13, 1.91911}</b></font>, {14, 1.08386}, {15, 0.923983}, {16, 1.1193}, {17,1.04865}, {18, 0.958243}, {19, 0.976393}, {20, 1.13065} <br /><br />We have found a pattern: for N = 13 the IoC values match what we might expect from Runeglish. This is very good evidence a repeating key of length 13 has been used, and so we can now try and solve the pages.<br /><br /><b><font color="#e61919">Solving a Repeating  Key Vigenère Cipher Using the word lengths as clues<br /><br /></font></b>We have to solve 13 different substitution ciphers. There are many ways to do this, here we will outline  a brute-force method that uses our n-gram log probability tables. <br />A very quick way to solve the repeating key Vigenère that works very well with the runes uses the fact that we know how long each word is. Knowing (or, more correctly, assuming we know) the number of characters in each word is unusual for puzzles of this type and is one of the biggest clues we have to work with for the unsolved pages. We take a short sample of CT, preserving the word lengths:<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ᚪ, ᛋᚹᚪᛁ, ᛈᚢᛟᚫ, ᛈ, ᚠᛖᚱᛋᛈᛈ, ᚦᛗ, ᚾᚪᚱᛚᚹᛈ, ᛖᚩᛈᚢᛠᛁᛁᚻᛞ, ᛚᛟ, ᛠ, ᛂᛖ, ᛠ, ᛁᚫ, ᚷᛖ, ᚦᛟᛁᛞᛟ<br /><br />We will apply partial keys spaced by 13 runes and try all possible 2-grams of the key. After we have applied the key we calculate the 2-gram log-probability score based on the position of the 2-gram in the word. For example (where DT is Decrypted Text):<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = F,F,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_  <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = {A}, {S, _, _, _}, {_, _, _, _}, {_}, {_, _,  _, S, P, _}, {_, _}, {_, _, _, _, _, _}, {_, _, P, U, _, _, _, _, _}, {_, _}, {_}, {_, _}, {_}, {I, AE}, {_, _}, {_, _,  _, _, _}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = F,U,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_  <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = {A}, {X, _, _, _}, {_, _, _, _}, {_}, {_, _,  _, S, EO, _}, {_, _}, {_, _, _, _, _,   _}, {_, _, P, F, _, _, _, _, _}, {_, _}, {_}, {_, _}, {_}, {I, A}, {_, _}, {_, _,   _, _, _}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = F,TH,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_  <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = {A}, {P, _, _, _}, {_, _, _, _}, {_}, {_, _,  _, S, J, _}, {_, _}, {_, _, _, _, _, _}, {_, _, P, EA, _, _, _, _, _}, {_,_}, {_}, {_, _}, {_}, {I, D}, {_, _}, {_, _, _, _, _}<br />&nbsp; &nbsp;&nbsp;… <br /><br />We then try the 2nd, 3rd, 4th etc. &nbsp;bi-gram of the key:<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = _,F,F,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_   <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = {_}, {S, W, _, _}, {_, _, _, _}, {_}, {_, _, _, _, P, P}, {_, _}, {_, _, _, _, _, _}, {_, _, _, U, EA, _, _, _, _}, {_,_}, {_}, {_, _}, {_}, {_, AE}, {G, _}, {_, _,  _, _, _} <br /><br />&nbsp; &nbsp; ...&nbsp;The final iteration will be ... &nbsp;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = _,_, _ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,EA,EA   <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp;= {_}, {_, _, _, _}, {_, _, _, _}, {_}, {_, E, R, _, _, _}, {_, _}, {_, _, _, _, _, _}, {E, O, _, _, _, _, _, _, _}, {_,_}, {_}, {_, E}, {EA}, {_, _}, {_, _}, {_, _, _, _, _}<br /><br /><br />We have 12 bigrams in the key and have tried each possibility from a set of 29^2 = 841 giving 10,092 different DT. We then look up the log-probability scores for the DT bigrams, where we know their position in the words (as indicated by the {} above). We choose the key values that give the highest scores to give:<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = F, I, R, F, U, O, S, E, R, E, N, S, O<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = A, COAN, ISR(I)NG, A, LOUSON, THE, GNSTER, OFPLAINCH, THE, I, THO, AE, IS, THE, UMACE <br /><br />Not exactly the right answer, but close enough to fill in the gaps by hand. Perhaps more interesting is that we have (basically) found the solution in a few seconds using a very short sample of the CT. A few tweaks gives:<br /><br />&nbsp; &nbsp;&nbsp;Key = F, I, R, F, U, M, F, E, R, E, N, F, E&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />DT = A, COAN, DUR(I)NG, A, LESSON, THE, MASTER, EXPLAINED, THE, I, THE, I, IS, THE, UOICE, OL, JF, DFINFUFMFERDN, HY, JCPR, HNXN, MRAEETH, PW, IO, AEBTHMERC, WO, YIDDCJI, OHMC, OEAA, SNEOY, OM, SAICNR, DLLY, LB, JJ, A, AE(I)NGUCY, GMELAM, OEOAEOE, EAEATH, G, RGMB, NLUP, P, (I)NGOEUEA, PM, LIO, REAE, LDUXRY, CEA, TBYDPIOW, ABM, E(I)NG, XAEJJEE, YUS, TLMY, YR, BXLS, LN, MOJY(I)NGX, OM, SAICNR, DEOPTDMA, IOE, IC(I)NGDYCY, IOMA, TLIE, LN, UJGS(I)NG, EOAEB, WUIC, GAEM, WGJ, NAEYE, R(I)NG, (I)NGOEUEA, PM, IORYR, OBX, ID, IOEA, P, CIA, IOE, IC(I)NGDYCYE, BMCX, ERNUGTEOEAEOEAA<br /><br />Something has gone wrong, around the text UOICE, OL, JF, DFINFUFMFERDN clearly we have more solving to do. We must find some more clues, and this problem requires some lateral thinking. <br /><font color="#e61919"><b><br />The Interrupter<br /></b></font><br />What has happened is that the letter F in the plaintext message has not been encrypted, it has been used as an interrupter. An interrupter is a well-known technique in classical ciphers, for example, they are discussed in <a target="_blank" href="http://www.umich.edu/~umich/fm-34-40-2/" rel="nofollow">this classic text:</a> <br /><br /><br />The interrupter causes the encryption algorithm to be skipped (or interrupted) when the algorithm sees that character. Here F is used, so each F in the plaintext is not encrypted and the algorithm passes over the F and encrypts the next letter. When we try F as in interrupter we can use the positions of F in the CT as possible places of F in the plaintext. The result can now be found, either by intelligent guessing, or by brute-forcing every possibility:<br /><br />  Interrupter positions =  49, 56 <br />A, COAN, DUR(I)NG, A, LESSON, THE, MASTER, EXPLAINED, THE, I, THE, I, IS, THE, UOICE, OF, THE, CIRCUMFERENCE, HE, SAID, WHEN, ASCED, BY, A, STUDENT, TO, EXPLAIN, WHAT, THAT, MEANT, THE, MASTER, SAID, IT, IS, A, UOICE, INSIDE, YOUR, HEAD, I, DONT, HAUE, A, UOICE, IN, MY, HEAD, THOUGHT, THE, STUDENT, AND, HE, RAISED, HIS, HAND, TO, TELL, THE, MASTER, THE, MASTER, STOPPED, THE, STUDENT, AND, SAID, THE, UOICE, THAT, JUST, SAID, YOU, HAUE, NO, UOICE, IN, YOUR, HEAD, IS, THE, I, AND, THE, STUDENTS, WERE, ENLIGHTENED<br /><br />Interestingly, we note that page 16 is not encrypted, even though it has the same images as the previous pages :<br /><br />AN, INSTRUCTION, CWESTION, ALL, TH(I)NGS, DISCOUER, TRUTH, INSIDE, YOURSELF, FOLLOW, YOUR, TRUTH, IMPOSE, NOTH(I)NG, ON, OTHERS, CNOW, THIS<br /><br /><font color="#e61919"><b>Solving Pages 3-4<br /></b></font><br />Exactly the same procedure can be used to solve the remaining pages. Again, F is an interrupter, and the number of F’s in the plaintext make things a little more tricky, for example, guessing the key length using the above method is not as clear, but the signature is still there. Exploiting the word lengths and brute-forcing 2-grams is also useful, giving us a great start in a matter of seconds: <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = J, S, U, I, N, I, T, Y<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = MPLCOME, WUSCOME, PIOURIM, TO, THU, UREAT, JOUTREY, TOWATE, THE, END<br /><br />Some good guessing (or trying every possibility for the interrupter F) helps us arrive at:<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = D, I, V, I, N, I, T, Y&nbsp; &nbsp;&nbsp; &nbsp; Interrupter positions = 48, 74, 84, 132, 159, 160, 250, 421, 443, 465, 514<br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = WELCOME, WELCOME, PILGRIM, TO, THE, GREAT, JOURNEY, TOWARD, THE, END, OF, ALL, TH(I)NGS, IT, IS, NOT, AN, EASY, TRIP, BUT, FOR, THOSE, WHO, FIND, THEIR, WAY, HERE, IT, IS, A, NECESSARY, ONE, ALO(I)NG, THE, WAY, YOU, WILL, FIND, AN, END, TO, ALL, STRUGGLE, AND, SUFFER(I)NG, YOUR, INNOCENCE, YOUR, ILLUSIONS, YOUR, CERTAINTY, AND, YOUR, REALITY, ULTIMATELY, YOU, WILL, DISCOUER, AN, END, TO, SELF, IT, IS, THROUGH, THIS, PILGRIMAGE, THAT, WE, SHAPE, OURSELUES, AND, OUR, REALITIES, JOURNEY, DEEP, WITHIN, AND, YOU, WILL, ARRIUE, OUTSIDE, LICE, THE, INSTAR, IT, IS, ONLY, THROUGH, GO(I)NG, WITHIN, THAT, WE, MAY, EMERGE, WIDSOM, YOU, ARE, A, BE(I)NG, UNTO, YOURSELF, YOU, ARE, A, LAW, UNTO, YOURSELF, EACH, INTELLIGENCE, IS, HOLY, FOR, ALL, THAT, LIUES, IS, HOLY, AN, INSTRUCTION, COMMAND, YOUR, OWN, SELF<br /><br /><b><font color="#e61919">Conclusions<br /></font></b><br />We have covered much in this post. Again, the general method is based on looking for patterns, brute-forcing different possibilities and choosing results with high scores to investigate further. <br /><br /><ul style="list-style-type: disc;"><li>We have introduced the concept of addition with runes, based on our understanding of shifting runes with the cipher disc <br /></li><li>Rune addition can be expressed in terms of numbers, runes, or letters (it doesn’t really matter they are just symbols representing how many shifts you apply to the cipher disc) <br /></li><li>Each separate rune in MT can be encrypted with a different shift, resulting in the Vigenère Cipher<br /></li><li>A key is used to represent the different shifts <br /></li><li>If the key repeats then information on the key length leaks through to the CT and can be found with the IoC <br /></li><li>Assuming we know the word lengths of the CT gives us a very strong start to decrypting with little effort <br /></li><li>The letter F has been used by the puzzle makers as an interrupter. These can be bruteforced, because we know a CT F may be a plaintext F, or we can use some intelligence</li></ul><br /><br /><br /><br />*Comments, questions, suggestions, omissions etc ? please try <a target="_blank" rel="nofollow" href="http://webchat.freenode.net/?channels=cicadasolvers">#cicadasolvers</a><br /><br />MSGA <br /><br /><br /></div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+							<div class="edited_by"><span class="italic">Last Edit:</span> <abbr data-timestamp="1481369663000" title="Dec 10, 2016 11:34:23 GMT" class="o-timestamp time">Dec 10, 2016 11:34:23 GMT</abbr> by <a href="/user/3" data-id="3" class="o-user-link js-user-link user-link user-3 group-1" title="@mortlach">mortlach</a></div>
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+	<tr id="post-103" class="item post js-post last even">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile guest-mini-profile">
+	<span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">Yui</span></span><br />
+	Guest<br />
+	
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar--103" title="Guest"><img src="//storage.proboards.com/forum/images/defaultavatar.png" alt="Guest Avatar" /></div></div><br />
+	
+	
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a href="/thread/38/decrypt-runes-vigen-re-cipher" class="js-thread__link thread-link thread-38 board-19">How To Decrypt the Runes 3: The Vigenère cipher</a>
+									<span class="date"><abbr class="o-timestamp time" title="Dec 28, 2017 23:01:55 GMT" data-timestamp="1514502115000">Dec 28, 2017 23:01:55 GMT</abbr></span>
+									
+									<span class="likes">&nbsp;</span>
+								</div>
+								<div class="controls">
+									<a class="button quote-button" href="/post/103/quote/38">Quote</a>
+									
+									
+									<ul class=" options_menu post-103 user-0 hide"><li class="103-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="103-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="103-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="103-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-103-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-103-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by Yui on <abbr class="o-timestamp time" title="Dec 28, 2017 23:01:55 GMT" data-timestamp="1514502115000">Dec 28, 2017 23:01:55 GMT</abbr></h3>
+							<div class="message">Perfect post !</div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+<div class="container quick-reply">
+	<div class="title-bar">
+		<ul class="controls"><li><a class="reply-button" role="button" href="/post/new/38">Reply</a></li></ul>
+		<h2>Quick Reply</h2>
+	</div>
+	<div class="content cap-bottom">
+		<form id="form_xkN7DQvG" class="form_post_quick_reply js-form-post-quick-reply" role="form" action="/post/create/38" method="post">
+<input type="hidden" id="form_xkN7DQvG_message_mode_input" name="message_mode" value="bbcode" />
+<input type="hidden" id="form_xkN7DQvG_ga_client_id_input" name="ga_client_id" />
+<input type="hidden" id="form_xkN7DQvG_captcha_id_input" name="captcha_id" value="captcha_init" />
+<input type="hidden" id="form_xkN7DQvG_reply_mode_input" name="reply_mode" value="quick_reply" /><noscript><ul class="noscript-form-error"></ul></noscript>
+			
+			<div class="guest_name">
+				<label>Guest Name:</label>
+				<input type="text" id="form_xkN7DQvG_created_by_guest_name_input" name="created_by_guest_name" class="full-width" maxlength="30" />
+			</div>
+			
+			<div class="message">
+				<textarea id="form_xkN7DQvG_message_input" name="message" accesskey="q"></textarea>
+			</div>
+			
+			<style>
+                #captcha-container.grepulse { animation: grepulse 0.3s 6 alternate; }
+                @keyframes grepulse {
+                    from { background-color: #fee; }
+                    to   { background-color: #fcc; }
+                }
+            </style>
+			<div id="captcha-container">
+				<div id="gre-captcha-container"></div>
+				<noscript>
+					
+					
+		<div style="width: 302px; height: 493px;">
+			<div style="width: 302px; height: 493px; position: relative;">
+				<div style="width: 302px; height: 493px; position: absolute;">
+					<iframe src="https://www.google.com/recaptcha/api/fallback?k=6LeLlQkTAAAAACrV4OiakEuq7INhMhWWUCZ-XpoZ" frameborder="0" scrolling="no"
+							style="width: 302px; height: 423px; border-style: none;">
+					</iframe>
+				</div>
+				<div style="width: 300px; height: 60px; border-style: none;
+						bottom: 0; left: 0; margin: 0px; padding: 0px;
+						background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px; position: absolute;">
+					<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response"
+							style="width: 250px; height: 40px; border: 1px solid #c1c1c1;
+								margin: 10px 25px; padding: 0px; resize: none;" ></textarea>
+				</div>
+			</div>
+		</div>
+	
+					<div style="margin: 20px 0 15px 0;"><input type="checkbox" name="tos" style="margin-right: 15px; vertical-align: middle; position: relative; bottom: 1px;" />I agree to the <a href="http://www.proboards.com/tos" target="_blank">ProBoards Terms of Service</a>.</div>
+					<style>#captcha-container { display: block; text-align: left !important; padding-left: 10px; }</style>
+				</noscript>
+			</div>
+		
+			<input id="form_xkN7DQvG_post_button" name="post" type="submit" class="ui-button" value="Post Quick Reply" />
+		</form>
+		<script>
+		$(document).ready(function() {
+			
+
+			$('#form_xkN7DQvG').form({
+				create: function(e) {var pbCaptchaOpts = proboards.data("captcha_init");if (pbCaptchaOpts) { proboards.captcha.init(pbCaptchaOpts); }},
+				submit: function(e) {proboards.autosave.clear();},
+				beforeSubmit: function(e) {proboards.data('submitting', 1);
+
+				try {
+					$('#form_xkN7DQvG_ga_client_id_input').val(
+						proboards.analytics.google.getClientId()
+					);
+				} catch(e) {}
+			},
+				validations: [{"message":"You must provide a message.","opts":{"fields":["message_mode"]},"field":"message","name":"exists"},{"field":"created_by_guest_name","name":"exists","message":"You must provide a guest name.","opts":{}}],
+				errors: {},
+				positionError: null
+			});
+		});
+		  </script>
+	</div>
+</div>
+
+				
+			</div>
+
+			<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "6036030" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = "https://sb.scorecardresearch.com/cs/6036030/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=6036030&amp;cv=3.6.0&amp;cj=1">
+</noscript><div style="display: flex; max-width: 970px; max-width: 100%; margin: 0 auto 10px; text-align: center; justify-content: space-around;flex-wrap: wrap"><div id="Boards_net_Bottom">
+    <script type="text/javascript">
+        googletag.cmd.push(function() {
+            deployads.push(function() { deployads.gpt.display("Boards_net_Bottom"); });
+        });
+    </script>
+</div>
+<script>
+function insertDesktopAd(adUnitPath, suffix) {
+    googletag.cmd.push(function() {
+        googletag.defineSlot('/1030735/'+adUnitPath, [728, 90], adUnitPath+"_"+suffix).addService(googletag.pubads());
+        deployads.push(function() { deployads.gpt.display(adUnitPath+"_"+suffix); });
+    });
+}
+function createVSThreadWrapper(wrapperID = '') {
+    let threadPos = document.createElement('div');
+    threadPos.id = wrapperID;
+    threadPos.style = 'min-height: 90px; padding: 9px 0;';
+    return threadPos;
+}
+// Not in View Code
+function hidePrimisSlider() {
+    document.querySelector('#primisSlider #primis_container_div div').style.right = '-400px';
+}
+function initializeSliderBehaviour(discoveryContainer, sliderPlacement) {
+    window.addEventListener('primisPlayerInit', function (e) {
+        if (e.detail.playerApiId == sliderPlacement) {
+            let primisPlayer = e.detail;
+            let threshold = 0.1;
+            document.querySelector('#primisSlider #primis_container_div div').style.transition = 'right 0.5s';
+            let obs = new IntersectionObserver(function(i) {
+            if (i[0].intersectionRatio > threshold) {
+                primisPlayer.pause();
+                hidePrimisSlider()
+            } else {
+                primisPlayer.play();
+            }
+            }, {threshold: threshold});
+            obs.observe(discoveryContainer);
+            // Handle edge case for discovery player floating for users on desktop and mobile resolution
+            function checkPrimisFloat() {
+                let primisFloatDiv = document.querySelector('.primis-wrapper [id^=primis_player]');
+                if (primisFloatDiv && primisFloatDiv.style.position == "fixed") {
+                    primisPlayer.pause();
+                    hidePrimisSlider();
+                }
+            }
+            document.addEventListener('scroll', checkPrimisFloat, true)
+            primisPlayer.addEventListener('adStarted',checkPrimisFloat);
+            document.addEventListener('DOMContentLoaded', checkPrimisFloat, true);
+            primisPlayer.addEventListener('adSkip', function (e) {
+                dataLayer.push({
+                    event: "adSkipPrimisSlider"
+                });
+            });
+        }
+    });
+}
+function createPrimisSrc(primisPlacement) {
+    let primis = document.createElement('script');
+    primis.id = 'primis';
+    primis.type = 'text/javascript';
+    primis.language = 'javascript';
+    primis.src = "https://live.primis.tech/live/liveView.php?s="+primisPlacement+"&kv_3=proboards.com&playerApiId="+primisPlacement;
+    primis.async = true;
+    return primis;
+}
+function insertPrimisPlacement() {
+    let proboardsWrapper = createVSThreadWrapper();
+    let primisDiscovery = document.createElement('div');
+    primisDiscovery.id = "primisContainer";
+    primisDiscoveryScript = createPrimisSrc(118308);
+    primisDiscovery.style.maxWidth = '842px';
+    primisDiscovery.style.margin = 'auto';
+    primisDiscovery.style.minHeight = '413px';
+    primisDiscovery.appendChild(primisDiscoveryScript);
+    let primisSlider = document.createElement('div');
+    primisSlider.id = "primisSlider";
+    primisSliderScript = createPrimisSrc(118242);
+    primisSlider.appendChild(primisSliderScript);
+    let primisInsertionDiv = proboardsWrapper;
+    primisInsertionDiv.style.minHeight = '';
+    primisInsertionDiv.appendChild(primisDiscovery);
+    primisInsertionDiv.appendChild(primisSlider);
+    return proboardsWrapper;
+}
+function experimentLayout() {
+    if(window.location.pathname.indexOf("/thread") === 0) {
+        let elgiblePositions = document.querySelectorAll('.post');
+        let firstPost = document.querySelector('.post.first');
+        let adUnitPath = 'Boards_net_InThread';
+        let threadWrapper = createVSThreadWrapper(adUnitPath+"_First");
+        let dynamicStart = 1;
+        // Guest users see Primis after First Post, and a display ad for 2nd post
+        if (window.vsRunPrimis && ("0" === "0")) {
+            let secondPost = document.querySelector('.post:not(.first)');
+            secondPost.after(threadWrapper);
+            let primisInsertion = insertPrimisPlacement();
+            firstPost.after(primisInsertion);
+            let discoveryContainer = document.querySelector('#primisContainer');
+            initializeSliderBehaviour(discoveryContainer, 118242);
+            dynamicStart = 2;
+        // Members will only see a display after first post and no player
+        } else {
+            firstPost.after(threadWrapper);
+        }
+        insertDesktopAd(adUnitPath, "First");
+        let inThreadCount = 0;
+        adUnitPath = 'Boards_net_InThreadLower';
+        const vh = document.documentElement.clientHeight;
+        let lastAdY = window.pageYOffset + elgiblePositions[dynamicStart - 1].getBoundingClientRect().top;
+        for(i=dynamicStart;i<elgiblePositions.length;i++) {
+            let elY = window.pageYOffset + elgiblePositions[i].getBoundingClientRect().top;
+            if (elY >= lastAdY + vh || i == elgiblePositions.length-1) {
+                let threadWrapper = createVSThreadWrapper(adUnitPath+"_"+inThreadCount);
+                elgiblePositions[i].after(threadWrapper);
+                insertDesktopAd(adUnitPath, inThreadCount);
+                lastAdY = elY;
+                inThreadCount++;
+                if (inThreadCount >= 9) {
+                    break;
+                }
+            }
+        }
+    } else {
+        let elgiblePositions = document.querySelectorAll('.board.item,.thread.item');
+        for(i=0;i<elgiblePositions.length;i++) {
+            if (window.pageYOffset + elgiblePositions[i].getBoundingClientRect().top > (document.documentElement.clientHeight - 120) || i == elgiblePositions.length-1) {
+                if (document.querySelector('.board')) {
+                    adUnitPath = 'Boards_net_ForumListInContent';
+                } else {
+                    adUnitPath = 'Boards_net_ForumViewInContent';
+                }
+                let threadWrapper = document.createElement('tr');
+                let threadCell = document.createElement('td');
+                threadCell.style = 'padding: 9px 0;';
+                threadCell.colSpan = 20;
+                let threadPos = document.createElement('div');
+                threadPos.style = 'min-height:90px;';
+                threadWrapper.appendChild(threadCell);
+                threadCell.appendChild(threadPos);
+                threadPos.id = adUnitPath+"_"+i;
+                elgiblePositions[i].after(threadWrapper);
+                insertDesktopAd(adUnitPath, i);
+                break;
+            }
+        }
+    }
+}
+if (window.vsexp) {
+    experimentLayout();
+}
+</script></div>
+        <footer class="c-footer" role="contentinfo">
+            <div id="remove_ads_link" style="display:block!important;"><a href="https://www.proboards.com/store/add_cart/ad_free/50000/cicada3301.boards.net/1">Click here to remove banner ads from this forum.</a></div>
+            <div id="hosted_by_link" style="display:block!important;">This Forum Is Hosted For FREE By <a href="https://www.proboards.com" target="_blank">ProBoards</a><br />Get Your Own <a href="https://www.proboards.com/create-free-forum" target="_blank">Free Forum</a>!</div>
+            <div class="c-footer__link-wrapper"><a href="https://www.proboards.com/tos" accesskey="8">Terms of Service</a> &nbsp; <a href="https://www.proboards.com/privacy" title="Privacy">Privacy</a> &nbsp; <a href="https://www.proboards.com/privacy#cookies" title="Cookies">Cookies</a> &nbsp; <a href="javascript:alert('VerticalScope may earn an affiliate commission when you click on links on this website.')">FTC Disclosure</a> &nbsp; <a href="https://www.proboards.com/report-abuse" accesskey="7">Report Abuse</a> &nbsp; <a class="qc-ccpa-persistent-link" title="Your Privacy Choices"><img src="https://storage.googleapis.com/vs-cmp/privacyoptions123x59.png" style="padding-right:5px; height:16px;" alt="California Consumer Privacy Act (CCPA) Opt-Out Icon">Your Privacy Choices &nbsp;</a></div>
+        </footer>
+    
+
+		</div>
+		
+	</body>
+</html>

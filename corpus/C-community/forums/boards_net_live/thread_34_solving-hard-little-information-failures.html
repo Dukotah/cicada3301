@@ -1,0 +1,969 @@
+<!DOCTYPE HTML>
+	<!--[if IE 7]><html class="ie7"><![endif]--><!--[if IE 8]><html class="ie8"><![endif]--><!--[if IE 9]><html class="ie9"><![endif]--><!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+	<head>
+		<meta charset="UTF-8">
+		<title>Why is solving hard? Why so little information on failures? | Cicada3301</title>
+		<script type="text/javascript" src="https://storage.googleapis.com/vs-scripts/intentiq/vsintentiq.js" async></script>
+<script async src="//c.amazon-adsystem.com/aax2/apstag.js"></script>
+<script>!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={unLoaded:1,init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},dpa:function(){q("di",arguments)},rpa:function(){q("ri",arguments)},upa:function(){q("ui",arguments)},_Q:[]};}("apstag",window);</script>
+<script async src="https://config.htplayground.com/load-vs-cmp.js"></script>
+<script async src="https://config.htplayground.com/config/proboards.com"></script>
+<script async src="https://config.htplayground.com/libs"></script>
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+  window.deployads = window.deployads || [];
+  window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+
+    //Size Mapping
+    var topMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([728, 200], [[728, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([0, 0], [[300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150]])
+    .build();
+    var bottomMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[970, 90], [728, 90], [300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .addSize([728, 200], [[728, 90], [300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .addSize([0, 0], [[300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .build();
+    var adhesionMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([728, 200], [[728, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([0, 0], [[320, 50], [300, 50], [234, 60]])
+    .build();
+    //Size Mapping end
+
+    googletag.defineSlot('/1030735/Boards_net_Top', [[250, 250], [336, 280], [300, 250], [728, 90], [320, 50], [468, 60], [970, 90], [234, 60], [180, 150], [200, 200], [480, 75], [300, 50]], 'Boards_net_Top').defineSizeMapping(topMapping).addService(googletag.pubads());
+    googletag.defineSlot('/1030735/Boards_net_Bottom', [[125, 125], [250, 250], [320, 50], [970, 90], [200, 200], [300, 250], [728, 90], [234, 60], [336, 280], [180, 150], [300, 50]], 'Boards_net_Bottom').defineSizeMapping(bottomMapping).addService(googletag.pubads());
+    googletag.defineSlot('/1030735/Boards_net_Adhesion', [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]], 'Boards_net_Adhesion').defineSizeMapping(adhesionMapping).addService(googletag.pubads());
+    
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().setTargeting("sitename", "Proboards.com");
+    googletag.pubads().setTargeting("folder2", "pb-"+location.hostname);
+    googletag.pubads().setTargeting("proboardsforumid", "6433989");
+    googletag.pubads().setTargeting("forum_id", "1");
+    googletag.pubads().setTargeting("vertical", "");
+    googletag.pubads().setCentering(true);
+    if (typeof(proboards) !== 'undefined' && typeof(proboards.data) !== 'undefined' ) {
+if (proboards.data('board_id') == null) {
+	googletag.pubads().setTargeting("PageID", "forumlist");
+} else if (proboards.data('thread_id') == null) {
+	googletag.pubads().setTargeting("PageID", "threadlist");
+} else {
+	googletag.pubads().setTargeting("PageID", "thread");
+	if (proboards.data('lm_total') > proboards.data('lm_limit')) {
+		if (proboards.data('lm_page') == 1 || proboards.data('lm_page') < proboards.data('lm_total') / proboards.data('lm_limit')) {
+			googletag.pubads().setTargeting("Folder1", proboards.data('lm_limit').toString());
+		} else {
+			googletag.pubads().setTargeting("Folder1", (proboards.data('lm_total') - (proboards.data('lm_limit') * (proboards.data('lm_page') - 1))).toString());
+		}
+	} else {
+		googletag.pubads().setTargeting("Folder1", proboards.data('proboards.thread')[Object.keys(proboards.data('proboards.thread'))[0]]['posts'].toString());
+	}
+}
+    }
+    if("0" === "0") {
+        googletag.pubads().setTargeting("registered", "false");
+    } else {
+        googletag.pubads().setTargeting("registered", "true");
+    }
+    deployads.push(function () { deployads.gpt.enableServices() });
+
+    if("0" === "0") {
+      function onDomLoadAdhesion() {
+            document.body.classList.add("vsFooterDiv");
+            let footeradcontainer = document.createElement('div');
+            footeradcontainer.classList.add('desktop-adhesion-ad__footer-ad-container');
+    
+            let desktopadhesion = document.createElement('div');
+            desktopadhesion.id = 'desktop-adhesion-ad__container';
+            desktopadhesion.classList.add('desktop-adhesion-ad__footer-ad');
+    
+            let innercontainer = document.createElement('div');
+            innercontainer.id = 'desktop-adhesion-ad__inner-container';
+    
+            let closebutton = document.createElement('button');
+            closebutton.classList.add('overlay-titleCloser');
+            closebutton.id = 'desktop-adhesion-ad__close-button';
+            closebutton.onclick = function() {
+                var vsAdhesion;
+                googletag.pubads().getSlots().forEach(function(i){
+                    if(i.getSlotElementId() === "Boards_net_Adhesion") {
+                        vsAdhesion = i;
+                    }
+                });
+                googletag.destroySlots([vsAdhesion]);
+                document.body.classList.remove("vsFooterDiv");
+            }
+    
+            let proboardsadhesion = document.createElement('div');
+            proboardsadhesion.id = 'Boards_net_Adhesion';
+    
+            footeradcontainer.appendChild(desktopadhesion);
+            desktopadhesion.appendChild(innercontainer);
+            innercontainer.appendChild(closebutton);
+            innercontainer.appendChild(proboardsadhesion);
+            document.body.appendChild(footeradcontainer);
+        
+            googletag.cmd.push(function() {
+                if (window.deployads) {
+                deployads.push(function() {
+                    deployads.gpt.display('Boards_net_Adhesion');
+                });
+                } else {
+                    googletag.display('Boards_net_Adhesion'); 
+                }
+            });
+        }
+        document.readyState === "loading"
+        ? document.addEventListener('DOMContentLoaded', onDomLoadAdhesion)
+        : onDomLoadAdhesion();
+    }
+  });
+</script>
+<script src="https://storage.googleapis.com/vs-scripts/proboards/config.js"></script>
+<script>
+/**
+ * Sets a cookie
+ *
+ * @param name cookie name
+ * @param value cookie value
+ * @param expiration expiration in minutes
+ * @param domain [optional] domain
+ */
+ function vsExpSetCookie( name, value, expiration, domain = '' ) {
+    if( !name || !value || !expiration ) {
+        return;
+    }
+    let d = new Date();
+    d.setTime( d.getTime() + (expiration * 60 * 1000) );
+    let cName = name + '=' + value,
+        expires = ';expires=' + d.toUTCString();
+    document.cookie = cName + expires + ';path=/' + ';';
+}
+/**
+ * Gets cookie value
+ *
+ * @param name
+ * @returns string|null cookie value or null
+ */
+function vsExpGetCookie( name ) {
+    var nameEQ = name + '=';
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+// DiceRoll functions
+function isExperiment() {
+    // Set a diceroll for Experimentation
+    // Test in browser by adding '?vsexp-dice=exp' or '?vsexp-dice=control' to url.
+    const expire = 30; // 30 minutes
+    let expWinPercentage = window.vsPrimisExpData.weight ?? 50;
+    const checkParam = () => {
+        let urlParam = location.search.match( /[?&]vsexp-dice=([^&]+)/ );
+        return urlParam && urlParam.length === 2 ? urlParam[ 1 ] : null;
+    };
+    const experimentDiceRoll = () => {
+        const diceResult = Math.random() < expWinPercentage / 100;
+        return diceResult ? 'exp' : 'control';
+    };
+    let winner = checkParam();
+    let cookieName = window.vsPrimisExpData.cookieName ?? 'vsexp_pct';
+    if( winner ) {
+        vsExpSetCookie( cookieName, winner, expire );
+    } else {
+        winner = vsExpGetCookie( cookieName );
+        if( !winner ) {
+            winner = experimentDiceRoll();
+            vsExpSetCookie( cookieName, winner, expire );
+        }
+    }
+    window.vsRunPrimis = ( winner === 'exp' );
+}
+//Check if this is allowlisted before checking experiment group
+if (window.vsPrimisExpData?.runExp && window.vsPrimisExpData?.weight != 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+    isExperiment();
+    let vsKV = '';
+    if (window.vsRunPrimis && window.vsPrimisExpData?.weight != 100) {
+        vsKV = window.vsPrimisExpData?.variantName ?? 'pb_primis_exp';
+    } else {
+        vsKV = window.vsPrimisExpData?.controlName ?? 'pb_primis_ctrl';
+    }
+    if (window.vsPrimisExpData?.weight != 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+            googletag.pubads().setTargeting('experiment', vsKV);
+        });
+        window.adsJSON = {
+            pageKeyValues: {'revenueExp': ['experiment'],'experiment': vsKV},
+        };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'experiment': vsKV
+        });
+    }
+}
+if (window.vsPrimisExpData?.weight === 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+        window.vsRunPrimis = true;
+}
+if (window.vsExpData?.runExp ) {
+    window.vsexp = true;
+}
+</script>
+<style>
+.desktop-adhesion-ad__footer-ad-container .desktop-adhesion-ad__footer-ad {
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
+	width: 100%;
+	color: #fff;
+	background-color: transparent;
+	position: fixed;
+	bottom: 0;
+	z-index: 400;
+	font-size: 26px;
+	-webkit-overflow-scrolling: touch;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translate3d(0,0,0);
+	pointer-events: none;
+}
+#desktop-adhesion-ad__inner-container {
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+#desktop-adhesion-ad__inner-container #desktop-adhesion-ad__close-button.overlay-titleCloser {
+	border: 1px solid #c9cdcf;
+	width: 24px;
+	height: 24px;
+	background: #fff;
+	font-size: large;
+	padding: unset;
+	border-radius: 3px;
+	color: #686c6e;
+	pointer-events: auto;
+}
+#Desktop_Adhesion {
+	pointer-events: auto;
+}
+#desktop-adhesion-ad__close-button.overlay-titleCloser {
+	margin: unset;
+	opacity: 1;
+	position: absolute;
+	line-height: 50%;
+}
+.overlay-titleCloser {
+	float: right;
+	cursor: pointer;
+	text-decoration: none;
+}
+.overlay-titleCloser:after {
+	font-family: 'font awesome 5 pro';
+	font-size: inherit;
+	font-style: normal;
+	font-weight: 100;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: "X";
+}
+#desktop-adhesion-ad__close-button.overlay-titleCloser {
+    right: -33px;
+}
+#desktop-adhesion-ad__inner-container {
+    max-width: 728px;
+    pointer-events: auto;
+}
+body.vsFooterDiv {
+    margin-bottom:90px;
+}
+</style>
+<script type="text/javascript">
+            window.partial = "thread/show";
+            document.registerElement = false;
+            window._pbdata = [];
+            window.pb = {
+                data: {
+                    set: function(a) {
+                        window._pbdata.push(a)
+                    }
+                }
+            }
+        </script>
+
+        <!-- Google Tag Manager -->
+            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-M6QVNSC');</script>
+        <!-- End Google Tag Manager -->
+    
+<link rel="canonical" href="https://cicada3301.boards.net/thread/34/solving-hard-little-information-failures" />
+<link rel="alternate" type="application/rss+xml" href="http://cicada3301.boards.net/rss/public" />
+<link rel="shortcut icon" type="image/x-icon" href="https://storage.proboards.com/forum/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="https://storage.proboards.com/forum/images/favicon.ico" />
+<meta property="og:url" content="https://cicada3301.boards.net/thread/34/solving-hard-little-information-failures">
+<meta property="og:title" content="Why is solving hard? Why so little information on failures? | Cicada3301">
+<meta property="og:description" content="Introduction&nbsp;  Apologies for the long post (it could have been much longer!) An aim is to make things understandable by all, with something for everyone interes">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@proboards">
+
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/forum/css/0/forum_base_1144.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/6433989/css/w8taoZpniIqJS0joSHjj.css" id="forum_style" />
+<link rel="stylesheet" type="text/css" media="print" href="//storage.proboards.com/forum/css/0/print_1144.css" />
+<script> translatePo = { language: 'en_US' };</script>
+<script type="text/javascript" src="//storage.proboards.com/forum/js/proboards.combined_1144.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//www.google.com/recaptcha/api.js?render=explicit&hl=en"></script>
+
+		<!-- Google Analytics Start -->
+		<script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-30657-154', 'auto' );ga('set', 'anonymizeIp', true);
+		</script>
+		<!-- Google Analytics End -->
+	
+
+        <script type="module">
+            var vglnk;
+            $(document).ready(function() {
+                $('a').each(function() {
+                    if($(this).prop('href').indexOf('login.proboards.com') !== -1) {
+                        $(this).addClass('norewrite');
+                    }
+                });
+
+                vglnk = {
+                    api_url: '//api.viglink.com/api', key: '71fe2139a887ad501313cd8cce3053c5', subId: '6433989'
+                };
+                var vglnkSrc = ('https:' == document.location.protocol ? vglnk.api_url : '//cdn.viglink.com/api') + '/vglnk.js';
+
+                // VigLink ProBoards Convert Code (using above key)
+                var s = document.createElement('script');
+                s.type = 'text/javascript'; s.async = true; s.src = vglnkSrc;
+                document.body.appendChild(s);
+
+                var retry = 0;
+                var reV = function() {
+                    if (typeof vglnk !== 'function' && retry++ < 5) {
+                        setTimeout(reV, 500);
+                    }
+                    else if (typeof vglnk !== 'function') {
+                        $('a').not('.norewrite').each(function() {
+                            var url = $(this).prop('href');
+                            if (url.indexOf('http') === 0 && url.indexOf(document.domain) === -1) {
+                                $(this).prop('href', 'http://redirect.viglink.com?key=71fe2139a887ad501313cd8cce3053c5&subId=6433989&u=' + escape(url));
+                            }
+                        });
+                    }
+                };
+                reV();
+            });
+        </script>
+    
+<script>
+            window.runAntiAdBlock = 1;
+        </script>
+<script>  proboards.data([['forum_url',"cicada3301.boards.net"],['ad_free',0],['locale_settings',{"input_date_regex":"^(\\d{2})/(\\d{2})/(\\d{4})$","thousands_separator":",","input_time_placeholder":"hh:mm pp","input_date_format":"%m/%d/%Y","input_time_format":12,"input_date_placeholder":"mm/dd/yyyy","amcharts_date_format":"MM/DD/YYYY"}],['image_path',"//storage.proboards.com/forum/images"],['time_style',0],['military_time',0],['timezone',"guest"],['serverDate',1787177619000],['search-query-min',3],['search-query-max',50],['is_current_user_guest',"1"],['plugin_max_key_length',4000],['plugin_max_super_forum_key_length',32000],['login_url',"https://login.proboards.com/login/6433989/1"],['register_url',"https://login.proboards.com/register/6433989"],['page_url',""],['captcha_init',{"captcha_container_id":"captcha-container","attempts":0,"adfree":"","form_id":"form_UwXGYBmp","captcha_errors":0,"key":"6LeLlQkTAAAAACrV4OiakEuq7INhMhWWUCZ-XpoZ","tos":{"name":"ProBoards Terms of Service","url":"http://www.proboards.com/tos"},"captcha_error_origin":null,"no_popup":0,"errors":0,"no_validations":0,"captcha_id":"captcha_init","mobile":0}],['quick_reply',1],['forum_id',"6433989"],['thread_id',"34"],['thread_subject',"Why is solving hard? Why so little information on failures?"],['labels_applied',[]],['accessible_label_ids_applied',[]],['board_id',"1"],['search_filter_img_src',"//storage.proboards.com/forum/images/icon-search-filters.png"],['options_img_src',"//storage.proboards.com/forum/images/icon-options.png"],['options_img_alt',"Post Options"],['options_img_title',"Post Options"],['lm_total',"2"],['lm_limit',15],['lm_page',1],['lm_data',{"thread_id":"34"}],['lm_id',"WqhKE7deYIAvJpUN2iqj"],['lm_type',"post"],['lm_thread_next',"/thread/next/34"],['lm_thread_prev',"/thread/previous/34"],['sharing_options',{"reddit_enabled":1,"linkedin_enabled":1,"pinterest_enabled":1,"facebook_enabled":1,"twitter_card_site":"","email_enabled":1,"enabled":1,"myspace_enabled":1,"tumblr_enabled":1,"twitter_enabled":1}],['page_cache',".lm-content-WqhKE7deYIAvJpUN2iqj"],['labels_accessible',[]],['labels_viewable',[]],['_google_analytics_events',[{"hitType":"pageview"}]],['proboards.badge',{}],['pop_menu_structure',{"positionAgainstSelector":".o-breadcrumbs","addMenuClass":"c-pop-menu","startingMenu":"_root","opensOn":"click","positionOffsetY":10,"menuStructure":{"_root":{"title":"Categories","items":[{"href":"/forum","addSeparator":1,"text":"Home"},{"addSeparator":null,"submenu":"1-4","text":"Welcome"},{"text":"Rune Solving","addSeparator":null,"submenu":"1-3"},{"text":"General","submenu":"1-1","addSeparator":null}]},"1-1":{"title":"General","items":[{"href":"/#category-1","addSeparator":1,"text":"Go to General"},{"addSeparator":null,"href":"https://cicada3301.boards.net/board/20/philosopy","text":"Philosopy"},{"href":"https://cicada3301.boards.net/board/1/general-discussion","addSeparator":null,"text":"General Discussion"}]},"1-3":{"title":"Rune Solving","items":[{"text":"Go to Rune Solving","addSeparator":1,"href":"/#category-3"},{"text":"Tools","addSeparator":null,"href":"https://cicada3301.boards.net/board/19/tools"},{"href":"https://cicada3301.boards.net/board/18/theories","addSeparator":null,"text":"Theories"},{"addSeparator":null,"href":"https://cicada3301.boards.net/board/17/cross","text":"Cross"},{"href":"https://cicada3301.boards.net/board/16/spirals","addSeparator":null,"text":"Spirals"},{"href":"https://cicada3301.boards.net/board/15/branches","addSeparator":null,"text":"Branches"},{"text":"Mobius","addSeparator":null,"href":"https://cicada3301.boards.net/board/14/mobius"},{"href":"https://cicada3301.boards.net/board/13/mayfly","addSeparator":null,"text":"Mayfly"},{"addSeparator":null,"href":"https://cicada3301.boards.net/board/12/tree","text":"Tree"},{"addSeparator":null,"href":"https://cicada3301.boards.net/board/11/cuneiform","text":"Cuneiform"},{"text":"Spiral Branches","addSeparator":null,"href":"https://cicada3301.boards.net/board/10/spiral-branches"},{"href":"https://cicada3301.boards.net/board/9/56","addSeparator":null,"text":"56"},{"href":"https://cicada3301.boards.net/board/8/57","addSeparator":null,"text":"57"}]},"1-4":{"items":[{"text":"Go to Welcome","addSeparator":1,"href":"/#category-4"},{"text":"Welcome","addSeparator":null,"href":"https://cicada3301.boards.net/board/21/welcome"}],"title":"Welcome"}},"placement":"bottom left"}],['screen_breakpoints',{"md":992,"sm":768,"lg":1200,"xs":0}],['user',{"is_logged_in":0,"time_format":"12hr","is_staff":0,"id":0,"theme_id":1,"name":"Guest","date_format":"m/d/y"}],['page',{"board":{"threads":13,"show_announcements":"1","description":"You can talk about anything here.","name":"General Discussion","url":"/board/1/general-discussion","name_unescaped":"General Discussion","hidden":"0","display_name":"General Discussion","disable_posting":"0","disable_post_counts":"0","posts":23,"id":1},"category":{"name":"General","id":1,"name_unescaped":"General"},"thread":{"last_post_id":362,"views":"3,543","last_post_time":1715046265,"is_muted":0,"is_falling":0,"is_bookmarked":0,"is_announcement":0,"first_post_id":55,"subject_unescaped":"Why is solving hard? Why so little information on failures?","subject":"Why is solving hard? Why so little information on failures?","board_id":1,"id":34,"posts":"2","is_locked":0,"is_poll":0,"created_on":1474805306,"is_new":0,"created_by":3,"is_sticky":0,"url":"https://cicada3301.boards.net/thread/34/solving-hard-little-information-failures"}}],['default_avatar',"//storage.proboards.com/forum/images/defaultavatar.png"],['route',{"name":"thread","params":{"thread_id":"34"}}],['search_system',1],['insite_path',""],['maintenance_mode',0],['proboards.thread',{"34":{"is_locked":0,"is_poll":0,"created_on":1474805306,"is_new":0,"created_by":3,"url":"https://cicada3301.boards.net/thread/34/solving-hard-little-information-failures","is_sticky":0,"views":"3,543","last_post_id":362,"last_post_time":1715046265,"is_muted":0,"is_falling":0,"is_bookmarked":0,"is_announcement":0,"first_post_id":55,"subject_unescaped":"Why is solving hard? Why so little information on failures?","subject":"Why is solving hard? Why so little information on failures?","board_id":1,"id":34,"posts":"2"}}],['proboards.post',{"362":{"thread_id":34,"created_on":1715046265,"liked":0,"id":362,"created_by":0,"url":"https://cicada3301.boards.net/post/362"},"55":{"thread_id":34,"created_by":3,"created_on":1474805306,"liked":0,"id":55,"url":"https://cicada3301.boards.net/post/55"}}]]);</script>
+<script> if (typeof(standard_thread_show) == 'function') standard_thread_show();</script>
+<script> if (typeof(standard_post_base) == 'function') standard_post_base();</script>
+
+	</head>
+	<body>
+        <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6QVNSC"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+		
+		<div id="wrapper">
+			<header>
+				<div id="banner-container" role="banner">
+					<h2 id="banner">
+						<a id="logo" href="/">Cicada3301</a>
+					</h2>
+				</div>
+				<a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+				<a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+				<div id="navigation-menu" class="ui-helper-clearfix">
+					<ul role="navigation">
+						
+							<li>
+								<a href="/">
+									Home
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/help">
+									Help
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/search">
+									Search
+									
+								</a>
+							</li>
+						
+					</ul>
+					<p id="welcome">
+						
+							Welcome Guest.
+							
+								Please <a href="https://login.proboards.com/login/6433989/1">Login</a> or <a href="https://login.proboards.com/register/6433989">Register</a>.
+							
+						
+					</p>
+				</div>
+			</header>
+
+			
+
+			
+				<div id="navigation-tree">
+					<div class="nav-tree-wrapper"><ul id="nav-tree" class="ui-helper-clearfix" role="navigation" itemscope itemtype="https://schema.org/BreadcrumbList"><li id="nav-tree-branch-0" class="nav-tree-branch ui-helper-clearfix has-menu" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/" itemprop="item"><span itemprop="name">Cicada3301</span></a></div><meta itemprop="position" content="1"><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-1" class="nav-tree-branch ui-helper-clearfix" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/board/1/general-discussion" itemprop="item"><span itemprop="name">General Discussion</span></a></div><meta itemprop="position" content="2"><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-2" class="nav-tree-branch ui-helper-clearfix" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/thread/34/solving-hard-little-information-failures" itemprop="item"><span itemprop="name">Why is solving hard? Why so little information on failures?</span></a></div><meta itemprop="position" content="3"><span class="menu_arrow"><span></span></span></li></ul></div><div class="popup_html">
+<ul id="nav-tree-menu-0" role="navigation">
+<li class="nav-tree-cat-4"><a href="/#category-4"><span class="item-text">Welcome</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-21"><a href="https://cicada3301.boards.net/board/21/welcome"><span class="item-text">Welcome</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-3"><a href="/#category-3"><span class="item-text">Rune Solving</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-19"><a href="https://cicada3301.boards.net/board/19/tools"><span class="item-text">Tools</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-18"><a href="https://cicada3301.boards.net/board/18/theories"><span class="item-text">Theories</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-17"><a href="https://cicada3301.boards.net/board/17/cross"><span class="item-text">Cross</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-16"><a href="https://cicada3301.boards.net/board/16/spirals"><span class="item-text">Spirals</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-15"><a href="https://cicada3301.boards.net/board/15/branches"><span class="item-text">Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-14"><a href="https://cicada3301.boards.net/board/14/mobius"><span class="item-text">Mobius</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-13"><a href="https://cicada3301.boards.net/board/13/mayfly"><span class="item-text">Mayfly</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-12"><a href="https://cicada3301.boards.net/board/12/tree"><span class="item-text">Tree</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-11"><a href="https://cicada3301.boards.net/board/11/cuneiform"><span class="item-text">Cuneiform</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-10"><a href="https://cicada3301.boards.net/board/10/spiral-branches"><span class="item-text">Spiral Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-9"><a href="https://cicada3301.boards.net/board/9/56"><span class="item-text">56</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-8"><a href="https://cicada3301.boards.net/board/8/57"><span class="item-text">57</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-1"><a href="/#category-1"><span class="item-text">General</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-20"><a href="https://cicada3301.boards.net/board/20/philosopy"><span class="item-text">Philosopy</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-1"><a href="https://cicada3301.boards.net/board/1/general-discussion"><span class="item-text">General Discussion</span><div class="clear"></div></a></li>
+</ul>
+</li>
+</ul></div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+		var reposition   = false;
+		var showOn       = 'hover';
+		var offset       = reposition
+			? '-13 6'
+			: ($.browser.msie && parseInt($.browser.version) == 8)
+				? '3 -1'
+				: '3 0';
+		var showCallback = function(e) {
+			var self = $(this);
+
+			// Make sure all other menus are closed
+			$('.popup_html > ul').not(self).menu('hide');
+
+			// Hide the navigation if they leave it.
+			setTimeout(function() {
+				$(document).on('mousemove.nav', function(e) {
+					var elem = $(e.target);
+					if (
+						elem.parents('#nav-tree, .popup_html').length == 0
+						&& !elem.is('#nav-tree, .popup_html')
+						&& !self.data('hotkey-open')
+					) {
+						self.menu('hide');
+						$(document).off('.nav');
+					}
+				});
+			}, 1000);
+		}
+	
+				$('#nav-tree-menu-0')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-0'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-0'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-1')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-1'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-1'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-2')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-2'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-2'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				$('.nav-tree-cat-1').addClass('state-selected');$('.nav-tree-board-1').addClass('state-selected');
+			});
+		</script>
+	
+				</div>
+			
+
+			<div id="ad1"><div style="max-width: 970px; margin: 0 auto 10px; text-align: center;"><div id="Boards_net_Top" style="min-height:90px;">
+    <script type="text/javascript">
+        googletag.cmd.push(function() {
+            deployads.push(function() { deployads.gpt.display("Boards_net_Top"); });
+        });
+    </script>
+</div></div></div>
+
+			<div id="content" role="main">
+				
+				<div class="container posts">
+	<div class="title-bar">
+		
+			<ul class="controls"><li><a href="/post/new/34" class="reply-button" role="button">Reply</a></li></ul>
+		
+		<h1>Why is solving hard? Why so little information on failures?</h1>
+	</div>
+	<div class="control-bar ui-helper-clearfix scrollable-WqhKE7deYIAvJpUN2iqj">
+		<div class="lm-search-WqhKE7deYIAvJpUN2iqj ui-search"></div>
+		<div class="controls">
+			<ul class="select_menu_list ui-menu ui-selectMenu hide actions lm-actions-WqhKE7deYIAvJpUN2iqj" data-status="Actions"><li class="sharing ui-menu-has-sub-menu"><a><span class="icon pbi-share"></span>Share Thread</a><ul><li class="facebook-share"><a><span class="icon"></span>Facebook</a></li><li class="twitter-share"><a><span class="icon"></span>Twitter</a></li><li class="tumblr-share"><a><span class="icon"></span>Tumblr</a></li><li class="linkedin-share"><a><span class="icon"></span>LinkedIn</a></li><li class="myspace-share"><a><span class="icon"></span>MySpace</a></li><li class="email-share"><a><span class="icon"></span>Email</a></li></ul></li><li class="view ui-menu-has-sub-menu"><a><span class="icon"></span>Go to</a><ul><li class="view_prev"><a rel="nofollow"><span class="icon"></span>Previous Thread</a></li><li class="view_next"><a rel="nofollow"><span class="icon"></span>Next Thread</a></li></ul></li><li class="default-menu-option"><a>Please make a selection first</a></li></ul>
+		</div>
+		<div class="float-left"><span class="control-icons lm-icons-WqhKE7deYIAvJpUN2iqj"><span class="new-icon"><a href="/threads/recent/34">new</a></span><span class="bookmark_icon hide"><img alt="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" title="Bookmark" /></span><span class="lock_icon hide"><img alt="Locked" src="//storage.proboards.com/forum/images/icons/lock.png" title="This thread is locked" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" title="This thread is falling" alt="Falling" /></span></span></div>
+		<ul class="ui-pagination lm-pagination-WqhKE7deYIAvJpUN2iqj"><li class="prev state-disabled"><a>&laquo; Prev</a></li><li class="state-selected"><a>1</a></li><li class="next state-disabled"><a>Next &raquo;</a></li></ul>
+	</div>
+	<div class="content cap-bottom">
+		<span class="no-labels js-no-labels"></span>
+		
+		<table class="list" role="presentation">
+			<tbody class="lm-content-WqhKE7deYIAvJpUN2iqj">
+				
+	<tr id="post-55" class="item post js-post first">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile">
+	<a href="/user/3" class="o-user-link js-user-link user-link user-3 group-1" title="@mortlach" data-id="3">mortlach</a><br />
+	
+	
+	
+		Administrator<br /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><br />
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar-3" title="mortlach"><img src="//storage.proboards.com/6433989/avatar/JSCXVO5DB5iXjb7oFsk8.jpg" alt="mortlach Avatar" /></div></div><br />
+	
+	
+	
+		<div class="info">
+			Posts: 38
+			
+			
+		</div><br />
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a href="/thread/34/solving-hard-little-information-failures" class="js-thread__link thread-link thread-34 board-1">Why is solving hard? Why so little information on failures?</a>
+									<span class="date"><abbr class="o-timestamp time" title="Sept 25, 2016 12:08:26 GMT" data-timestamp="1474805306000">Sept 25, 2016 12:08:26 GMT</abbr></span>
+									
+									<span class="likes">&nbsp;</span>
+								</div>
+								<div class="controls">
+									<a href="/post/55/quote/34" class="button quote-button">Quote</a>
+									
+									
+									<ul class=" options_menu post-55 user-3 hide"><li class="55-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="55-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="55-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="55-member ui-menu-has-sub-menu "><a><span class="icon pbi-user-icon"></span>Member</a><ul class=""><li class="55-giveGift"><a href="/user/3/gift"><span class="icon pbi-birthday"></span>Give Gift</a></li></ul></li><li class="55-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-55-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-55-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by mortlach on <abbr class="o-timestamp time" title="Sept 25, 2016 12:08:26 GMT" data-timestamp="1474805306000">Sept 25, 2016 12:08:26 GMT</abbr></h3>
+							<div class="message"><font color="#e61919">Introduction&nbsp;<br /><br /></font>Apologies for the long post (it could have been much longer!) An aim is to make things understandable by all, with something for everyone interested, often this means omitting things, or explaining more simple concepts.<br /><br /><br /><font color="#1979e6">TL;DR ? </font>The puzzle is difficult, so difficult even knowing you’re wrong is difficult  <img src="//storage.proboards.com/forum/images/smiley/smiley.png" alt=":)" class="smile">       . High transactional costs prohibit collaboration and so individuals must <i><font color="#e61919">Believe nothing [from this book] except what you know to be true. Test the Knowledge. Discover your truth….</font></i>&nbsp;This is all probably deliberate by the puzzle makers. <br /><br /><br />It is often asked about this puzzle: Why isn’t there a list of everything that has been tried? The attitude is often exasperation and frustration: How can so many supposedly smart people have spent so much time trying so many things and not reached (m)any firm conclusions? These are excellent questions and understandable sentiments. We will try and present some reasons why even though it is simple to ask such questions it is not so simple to adequately reply. Particularly, we will try and give an overview of why it is hard and why there is not so much information on failed decrypting attempts. The first reason is: The puzzle is difficult, in many ways. We don’t actually know what we’re supposed to do except in vague terms, we have 3 possible starting points:<br /><span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span>A We have to find the deep web page<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>B We have to decrypt the runes<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>C We have missed something    <br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://cicada3301.boards.net/thread/32/3-ways-progress-liber-primus" rel="norewrite" target="_blank">cicada3301.boards.net/thread/32/3-ways-progress-liber-primus</a><br /><br /><br />Just from that simple starting point the number of possible things to try grows fast. This post will focus on B – but think about C: if it is true then there are practically an unlimited number of things that are in the set of missed things.    <br /><br /><br /><font color="#e61919">Decrypting the Runes<br /></font><br /><br />There are many possible methods to encrypt a message and hence decrypt a message. Therefore, it would seem reasonable that we could just list possible methods then starting with Method 1, try all possibilities, if we don’t find ‘The Answer’, cross Method 1 of our list and then try all possibilities for Method 2, then if we still fail cross Method 2 off our list and try Method 3…etc. Although this is reasonable what we actually find it it’s very difficult to “try all possibilities” which then makes it even more difficult to “cross Method X off.”  By now, you may be shouting “obviously trying all possibilities is such a huge space you won’t manage it, but surely you can make reasonable cuts to that space and try those, smaller sets of possibilities.” Well, sure, but what we hope to explain is why that is still difficult. Throughout the following the assumptions that have been made that can be reasonably questioned are highlighted, to help show how many assumptions we generally make (the first one being <i><b><font color="#1937e6">we can decrypt the runes...</font></b></i>) &nbsp;<br /><br /><br /><font color="#e61919">General Overview of Encrypting / Decrypting <br /><br /></font><br />First let’s try and explain encryption in general terms. We have a message-text, MT, which can be written in a list as: <br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>MT  = F, O, R, A, L, L, I, S, S, A, C, R, E, D<br /><br /><br />This message can be represented by numbers, for example the position, or value of the letters in the Gematria. There are also many other common ways to encode letters as numbers, generally we assume the Gematria is our starting to point, <b><i><font color="#1937e6">but there is no reason this must be the case. <br /></font><br /></i></b><br /><font color="#e61919">Encoding a Message as Numbers from the Gematria<br /></font><br /><br /><b>The ordering principle:<i> <font color="#1937e6">w</font></i></b><font color="#1937e6"><i>e will assume from the title of the Gematria that the order of the runes is important and should be preserved.</i></font> From previous pages we know that the runes have been ordered in ascending (Forward) or descending (Reverse) rune-prime-value. Applying the ordering principle reduces the sets of possible numbers for the runes to 59 distinct cases (a prime and also the same number of characters in the non-rune text on pages 49 to 51). The trivial case is the rune-prime-values given in the Gematria and the other 58 are their Forward or Reverse position starting from ᚠ=0 for the 1st  set, then shifting so we start with ᚢ=0 for the 2nd set, then shifting so we start with ᚦ=0 for the 3rd set etc. We will call these shifts the ordered shifts, or simple shifts. All shifts can be represented by adding 0 to 28 to either the Forward or Reverse position of the rune being considered and can be easily represented by ‘cipher-discs’ such as these (where we can rotate the rune-disc and read off the number from the other discs):<br /><br /> <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://imgur.com/a/XdK82" rel="nofollow" target="_blank">imgur.com/a/XdK82</a><br /><br /><font color="#e61919">General Encryption<br /></font><br /><br />After we encode a message to numbers it should be encrypted. We apply some function F() to MT, to generate a cipher-text (CT):<br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>CT =   F( MT )<br /><br /><br />Similar to encoding our message as numbers there are limitless possibilities for F() and things can get even more complicated:  F might be a function that takes more than one variable, we might have to combine MT with a key, K:  <br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>CT =   F( MT, K )<br /><br /><br />Or F() might actually be two functions, G() and H() with two different keys, K1 and K2:<br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>CT =   F( MT, K1, K2  ) =  H( G( MT, K1 ) , K2 ) <br /><br /><br />and so on. One of our methods for generating rune distributions as observed is basically of this type, where K2 is the previous cipher text rune and H is an addition operator:<br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://cicada3301.boards.net/thread/30/general-approach-solving-liber-primus" rel="norewrite" target="_blank">cicada3301.boards.net/thread/30/general-approach-solving-liber-primus</a>  <br /><br /><br /><font color="#e61919">The Parameter Space Grows and Grows<br /><br /></font><br />As an example of how large the parameter space grows we shall count the number of different CT that can be produced under the following conditions: <br /><br /><span><br /></span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>1.	F() will be simple arithmetic operations: Addition, Subtraction, Multiplication, and Division. Page 56 was decrypted with a key of the primes and the addition operator. Tables showing visually how to combine two runes with these operators can be found here: <br /><span><br />&nbsp; &nbsp;&nbsp;</span><a href="http://cicada3301.boards.net/thread/31/combining-runes-1-visual-representation" rel="norewrite" target="_blank">cicada3301.boards.net/thread/31/combining-runes-1-visual-representation</a> <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;<br /></span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>2.	The key, K, will be the primes. <br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>3.	4 simple arrangements of the MT and K will be considered: reading left-to-right or reading right-to-left, (many other reasonable transpositions could be applied). Our 2 keys and 2 MT are:  <br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>a.	MT  = F, O, R, A, L, L, I, S, S, A, C, R, E, D<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>b.	MT_reverse = D, E, R, C, A, S, S, I, L, L, A, R, O, F<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>c.	K = 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>d.	K_reverse = 43, 41, 37, 31, 29, 23, 19, 17, 13, 11, 7, 5, 3, 2<br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>4.	Consider all possible Gematria Positions (obeying the ordering principle) <br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>5.	Iterate over all possible ordered shifts. In the following Iterators, indicated by i,j,k will all be assumed to encapsulate a loop where they take the value 0, 1, 2,3,4 etc. This enables us to write compact statements for all the possibilities of applying ordered shifts. <br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>6.	As all the pages are expressed in runes each CT must be a list of numbers modulo 29 (% 29).<br /><br /><br /><font color="#e61919">For Addition we have this many different CT:<br /></font><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>CT = ( MT + i ) + ( K + j ) + k % 29 <br /><br /><br />However, most of the CT are equivalent to another example, (this is easy to see, i=0, j=0 and k=1 will be the same as i=0,j=1,k=0 etc). For this operator there are 116 unique CT. <br /><br /><br /><font color="#e61919">For Subtract there are 290 unique CT from:<br /></font><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>CT =  ( (MT + i ) - ( K + j ) ) + k % 29    and    ( ( K + j ) - ( MT + i ) ) + k % 29<br /><br /><br />We must check the two orders of MT and K subtraction is not associative, ( 5 – 3 != 3 – 5 ). <br /><br /><br /><font color="#e61919">For Multiplication we have 3364 different CT from: <br /></font><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>CT =  ( (MT + i ) * ( K + j ) ) + k  % 29  <br /><br /><br /><font color="#e61919">For Division (which is also not associative) we have 195112 different CT from: <br /></font><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>CT =  ( (MT + i ) / ( K + j )  ) + k % 29  and  ( ( K + j ) / ( MT + i ) ) + k  % 29<br /><br /><br />For the simplest operators and the simplest way of encoding the runes and the two simplest transpositions there are 195,348 different CT.<br /><br /><br /><font color="#e61919">Decrypting: the Growth of the Growth of the Parameter Space <br /><br /></font><br />The above is just for encrypting, when decrypting things grow even more. We don’t know MT and we don’t know K. This means that a “dumb” brute-force approach would have to check every possible word combination and every possible Key. <b><i><font color="#1979e6">We assume we know: the CT rune is in the same position for the MT, the word lengths and sentence lengths.</font></i></b> As we assume we know the word lengths from the rune spacing that gives us: CT word lengths = 3, 3, 2, 5. A dictionary of rune-words has 85, 885, 6853 words of length 2, 3 and 5 giving a total number of combinations as 456,232,478,625. Given the size of this number it is easy to see why even crossing off Addition and K = primes is not so simple. <br /><br /><br />If we assume that K is not the primes then things become even worse, because then K could be a combination of dictionary words OR any other reasonable integer sequence you can think of, such as the entire On-Line Encyclopedia of Integer Sequences (OEIS)&nbsp;catalog, with millions and millions of numbers, the runes, the first letter from page 17 of the last 50 Wednesday editions of the New York Times…  Even checking if a shifted key comes from the prime sequence is not trivial, and then how would you effectively check it’s not ‘every other prime’ or any of the above possibilities?<br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://cicada3301.boards.net/thread/19/checking-key-sequences-practical-guide" rel="norewrite" target="_blank">cicada3301.boards.net/thread/19/checking-key-sequences-practical-guide</a><br /><br /><font color="#e61919">But we can be smart… Can’t we?  <br /><br /></font><br />Of course we can, and clearly we must be (maybe the smart thing to do is to find the deep-web-page?). We’ve tried to show that many educated guesses and assumptions must be made, however, as soon as you try and be smart you will be cutting the parameter space (something we are tacitly doing all the time). But, by cutting the space you are increasing the chances of a) making a mistake and b) missing the answer - this partly explains why it is nearly impossible to rule out a particular encryption method. We can tell you that we don’t think the pages are encrypted with a simple operator and key from an OEIS sequence or dictionary words – but we can’t prove it.  <br /><br /><br /><font color="#e61919">Final Thoughts <br /><br /></font><br />We have seen how the parameters space just grows and grows with even the most simple of assumptions. The size of the parameter space also makes collaboration more difficult, because the ‘transactional costs’ of collaboration. Clearly, it is theoretically possible to collaborate and narrow the search space by testing ideas, but the practical implications are too great for what are effectively a loose federation of independent solvers. These transactional costs include:   <br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>•	Potential collaborators are from disparate parts of the world, speaking different languages, both natively and in terms of computer language, with different skills and knowledge. <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>•	The problem parameter space is so vast that reasonable cuts to the parameter space must be made which means reaching an agreement on what to test, independently searching, or agreeing on methods and cross-checking results. <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>•	Real life gets in the way <br /><br /><br />It seems that all the above is very deliberate and planned by the puzzle makes: this 2013 message may or may not be genuine, but it seems to contain much truth: <br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://pastebin.com/VvtLxbsb" rel="nofollow" target="_blank">pastebin.com/VvtLxbsb</a><br /><br /><br /><b>Therefore: </b>Try things yourself <font color="#e61919"><i>Believe nothing [from this book] except what you know to be true. Test the Knowledge. Discover your truth….</i></font>&nbsp;<br />But please, also, come and join us in #cicadasolvers to share your ideas, thoughts and observations, and remember&nbsp;<font color="#e61919"><i>Patience is aVirtue</i></font>&nbsp;the channel is not active every second of every day. <br /><br /></div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+							<div class="edited_by"><span class="italic">Last Edit:</span> <abbr class="o-timestamp time" data-timestamp="1474878905000" title="Sept 26, 2016 8:35:05 GMT">Sept 26, 2016 8:35:05 GMT</abbr> by <a href="/user/3" class="o-user-link js-user-link user-link user-3 group-1" title="@mortlach" data-id="3">mortlach</a></div>
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+	<tr id="post-362" class="item post js-post last even">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile guest-mini-profile">
+	<span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">name</span></span><br />
+	Guest<br />
+	
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar--362" title="Guest"><img src="//storage.proboards.com/forum/images/defaultavatar.png" alt="Guest Avatar" /></div></div><br />
+	
+	
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a href="/thread/34/solving-hard-little-information-failures" class="js-thread__link thread-link thread-34 board-1">Why is solving hard? Why so little information on failures?</a>
+									<span class="date"><abbr title="May 7, 2024 1:44:25 GMT" data-timestamp="1715046265000" class="o-timestamp time">May 7, 2024 1:44:25 GMT</abbr></span>
+									
+									<span class="likes">&nbsp;</span>
+								</div>
+								<div class="controls">
+									<a class="button quote-button" href="/post/362/quote/34">Quote</a>
+									
+									
+									<ul class=" options_menu post-362 user-0 hide"><li class="362-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="362-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="362-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="362-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-362-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-362-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by name on <abbr title="May 7, 2024 1:44:25 GMT" data-timestamp="1715046265000" class="o-timestamp time">May 7, 2024 1:44:25 GMT</abbr></h3>
+							<div class="message">what?</div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+<div class="container quick-reply">
+	<div class="title-bar">
+		<ul class="controls"><li><a href="/post/new/34" class="reply-button" role="button">Reply</a></li></ul>
+		<h2>Quick Reply</h2>
+	</div>
+	<div class="content cap-bottom">
+		<form id="form_UwXGYBmp" class="form_post_quick_reply js-form-post-quick-reply" role="form" action="/post/create/34" method="post">
+<input type="hidden" id="form_UwXGYBmp_message_mode_input" name="message_mode" value="bbcode" />
+<input type="hidden" id="form_UwXGYBmp_captcha_id_input" name="captcha_id" value="captcha_init" />
+<input type="hidden" id="form_UwXGYBmp_reply_mode_input" name="reply_mode" value="quick_reply" />
+<input type="hidden" id="form_UwXGYBmp_ga_client_id_input" name="ga_client_id" /><noscript><ul class="noscript-form-error"></ul></noscript>
+			
+			<div class="guest_name">
+				<label>Guest Name:</label>
+				<input type="text" id="form_UwXGYBmp_created_by_guest_name_input" name="created_by_guest_name" maxlength="30" class="full-width" />
+			</div>
+			
+			<div class="message">
+				<textarea id="form_UwXGYBmp_message_input" name="message" accesskey="q"></textarea>
+			</div>
+			
+			<style>
+                #captcha-container.grepulse { animation: grepulse 0.3s 6 alternate; }
+                @keyframes grepulse {
+                    from { background-color: #fee; }
+                    to   { background-color: #fcc; }
+                }
+            </style>
+			<div id="captcha-container">
+				<div id="gre-captcha-container"></div>
+				<noscript>
+					
+					
+		<div style="width: 302px; height: 493px;">
+			<div style="width: 302px; height: 493px; position: relative;">
+				<div style="width: 302px; height: 493px; position: absolute;">
+					<iframe src="https://www.google.com/recaptcha/api/fallback?k=6LeLlQkTAAAAACrV4OiakEuq7INhMhWWUCZ-XpoZ" frameborder="0" scrolling="no"
+							style="width: 302px; height: 423px; border-style: none;">
+					</iframe>
+				</div>
+				<div style="width: 300px; height: 60px; border-style: none;
+						bottom: 0; left: 0; margin: 0px; padding: 0px;
+						background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px; position: absolute;">
+					<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response"
+							style="width: 250px; height: 40px; border: 1px solid #c1c1c1;
+								margin: 10px 25px; padding: 0px; resize: none;" ></textarea>
+				</div>
+			</div>
+		</div>
+	
+					<div style="margin: 20px 0 15px 0;"><input type="checkbox" name="tos" style="margin-right: 15px; vertical-align: middle; position: relative; bottom: 1px;" />I agree to the <a href="http://www.proboards.com/tos" target="_blank">ProBoards Terms of Service</a>.</div>
+					<style>#captcha-container { display: block; text-align: left !important; padding-left: 10px; }</style>
+				</noscript>
+			</div>
+		
+			<input id="form_UwXGYBmp_post_button" name="post" class="ui-button" value="Post Quick Reply" type="submit" />
+		</form>
+		<script>
+		$(document).ready(function() {
+			
+
+			$('#form_UwXGYBmp').form({
+				create: function(e) {var pbCaptchaOpts = proboards.data("captcha_init");if (pbCaptchaOpts) { proboards.captcha.init(pbCaptchaOpts); }},
+				submit: function(e) {proboards.autosave.clear();},
+				beforeSubmit: function(e) {proboards.data('submitting', 1);
+
+				try {
+					$('#form_UwXGYBmp_ga_client_id_input').val(
+						proboards.analytics.google.getClientId()
+					);
+				} catch(e) {}
+			},
+				validations: [{"message":"You must provide a message.","field":"message","opts":{"fields":["message_mode"]},"name":"exists"},{"message":"You must provide a guest name.","field":"created_by_guest_name","opts":{},"name":"exists"}],
+				errors: {},
+				positionError: null
+			});
+		});
+		  </script>
+	</div>
+</div>
+
+				
+			</div>
+
+			<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "6036030" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = "https://sb.scorecardresearch.com/cs/6036030/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=6036030&amp;cv=3.6.0&amp;cj=1">
+</noscript><div style="display: flex; max-width: 970px; max-width: 100%; margin: 0 auto 10px; text-align: center; justify-content: space-around;flex-wrap: wrap"><div id="Boards_net_Bottom">
+    <script type="text/javascript">
+        googletag.cmd.push(function() {
+            deployads.push(function() { deployads.gpt.display("Boards_net_Bottom"); });
+        });
+    </script>
+</div>
+<script>
+function insertDesktopAd(adUnitPath, suffix) {
+    googletag.cmd.push(function() {
+        googletag.defineSlot('/1030735/'+adUnitPath, [728, 90], adUnitPath+"_"+suffix).addService(googletag.pubads());
+        deployads.push(function() { deployads.gpt.display(adUnitPath+"_"+suffix); });
+    });
+}
+function createVSThreadWrapper(wrapperID = '') {
+    let threadPos = document.createElement('div');
+    threadPos.id = wrapperID;
+    threadPos.style = 'min-height: 90px; padding: 9px 0;';
+    return threadPos;
+}
+// Not in View Code
+function hidePrimisSlider() {
+    document.querySelector('#primisSlider #primis_container_div div').style.right = '-400px';
+}
+function initializeSliderBehaviour(discoveryContainer, sliderPlacement) {
+    window.addEventListener('primisPlayerInit', function (e) {
+        if (e.detail.playerApiId == sliderPlacement) {
+            let primisPlayer = e.detail;
+            let threshold = 0.1;
+            document.querySelector('#primisSlider #primis_container_div div').style.transition = 'right 0.5s';
+            let obs = new IntersectionObserver(function(i) {
+            if (i[0].intersectionRatio > threshold) {
+                primisPlayer.pause();
+                hidePrimisSlider()
+            } else {
+                primisPlayer.play();
+            }
+            }, {threshold: threshold});
+            obs.observe(discoveryContainer);
+            // Handle edge case for discovery player floating for users on desktop and mobile resolution
+            function checkPrimisFloat() {
+                let primisFloatDiv = document.querySelector('.primis-wrapper [id^=primis_player]');
+                if (primisFloatDiv && primisFloatDiv.style.position == "fixed") {
+                    primisPlayer.pause();
+                    hidePrimisSlider();
+                }
+            }
+            document.addEventListener('scroll', checkPrimisFloat, true)
+            primisPlayer.addEventListener('adStarted',checkPrimisFloat);
+            document.addEventListener('DOMContentLoaded', checkPrimisFloat, true);
+            primisPlayer.addEventListener('adSkip', function (e) {
+                dataLayer.push({
+                    event: "adSkipPrimisSlider"
+                });
+            });
+        }
+    });
+}
+function createPrimisSrc(primisPlacement) {
+    let primis = document.createElement('script');
+    primis.id = 'primis';
+    primis.type = 'text/javascript';
+    primis.language = 'javascript';
+    primis.src = "https://live.primis.tech/live/liveView.php?s="+primisPlacement+"&kv_3=proboards.com&playerApiId="+primisPlacement;
+    primis.async = true;
+    return primis;
+}
+function insertPrimisPlacement() {
+    let proboardsWrapper = createVSThreadWrapper();
+    let primisDiscovery = document.createElement('div');
+    primisDiscovery.id = "primisContainer";
+    primisDiscoveryScript = createPrimisSrc(118308);
+    primisDiscovery.style.maxWidth = '842px';
+    primisDiscovery.style.margin = 'auto';
+    primisDiscovery.style.minHeight = '413px';
+    primisDiscovery.appendChild(primisDiscoveryScript);
+    let primisSlider = document.createElement('div');
+    primisSlider.id = "primisSlider";
+    primisSliderScript = createPrimisSrc(118242);
+    primisSlider.appendChild(primisSliderScript);
+    let primisInsertionDiv = proboardsWrapper;
+    primisInsertionDiv.style.minHeight = '';
+    primisInsertionDiv.appendChild(primisDiscovery);
+    primisInsertionDiv.appendChild(primisSlider);
+    return proboardsWrapper;
+}
+function experimentLayout() {
+    if(window.location.pathname.indexOf("/thread") === 0) {
+        let elgiblePositions = document.querySelectorAll('.post');
+        let firstPost = document.querySelector('.post.first');
+        let adUnitPath = 'Boards_net_InThread';
+        let threadWrapper = createVSThreadWrapper(adUnitPath+"_First");
+        let dynamicStart = 1;
+        // Guest users see Primis after First Post, and a display ad for 2nd post
+        if (window.vsRunPrimis && ("0" === "0")) {
+            let secondPost = document.querySelector('.post:not(.first)');
+            secondPost.after(threadWrapper);
+            let primisInsertion = insertPrimisPlacement();
+            firstPost.after(primisInsertion);
+            let discoveryContainer = document.querySelector('#primisContainer');
+            initializeSliderBehaviour(discoveryContainer, 118242);
+            dynamicStart = 2;
+        // Members will only see a display after first post and no player
+        } else {
+            firstPost.after(threadWrapper);
+        }
+        insertDesktopAd(adUnitPath, "First");
+        let inThreadCount = 0;
+        adUnitPath = 'Boards_net_InThreadLower';
+        const vh = document.documentElement.clientHeight;
+        let lastAdY = window.pageYOffset + elgiblePositions[dynamicStart - 1].getBoundingClientRect().top;
+        for(i=dynamicStart;i<elgiblePositions.length;i++) {
+            let elY = window.pageYOffset + elgiblePositions[i].getBoundingClientRect().top;
+            if (elY >= lastAdY + vh || i == elgiblePositions.length-1) {
+                let threadWrapper = createVSThreadWrapper(adUnitPath+"_"+inThreadCount);
+                elgiblePositions[i].after(threadWrapper);
+                insertDesktopAd(adUnitPath, inThreadCount);
+                lastAdY = elY;
+                inThreadCount++;
+                if (inThreadCount >= 9) {
+                    break;
+                }
+            }
+        }
+    } else {
+        let elgiblePositions = document.querySelectorAll('.board.item,.thread.item');
+        for(i=0;i<elgiblePositions.length;i++) {
+            if (window.pageYOffset + elgiblePositions[i].getBoundingClientRect().top > (document.documentElement.clientHeight - 120) || i == elgiblePositions.length-1) {
+                if (document.querySelector('.board')) {
+                    adUnitPath = 'Boards_net_ForumListInContent';
+                } else {
+                    adUnitPath = 'Boards_net_ForumViewInContent';
+                }
+                let threadWrapper = document.createElement('tr');
+                let threadCell = document.createElement('td');
+                threadCell.style = 'padding: 9px 0;';
+                threadCell.colSpan = 20;
+                let threadPos = document.createElement('div');
+                threadPos.style = 'min-height:90px;';
+                threadWrapper.appendChild(threadCell);
+                threadCell.appendChild(threadPos);
+                threadPos.id = adUnitPath+"_"+i;
+                elgiblePositions[i].after(threadWrapper);
+                insertDesktopAd(adUnitPath, i);
+                break;
+            }
+        }
+    }
+}
+if (window.vsexp) {
+    experimentLayout();
+}
+</script></div>
+        <footer class="c-footer" role="contentinfo">
+            <div id="remove_ads_link" style="display:block!important;"><a href="https://www.proboards.com/store/add_cart/ad_free/50000/cicada3301.boards.net/1">Click here to remove banner ads from this forum.</a></div>
+            <div id="hosted_by_link" style="display:block!important;">This Forum Is Hosted For FREE By <a href="https://www.proboards.com" target="_blank">ProBoards</a><br />Get Your Own <a href="https://www.proboards.com/create-free-forum" target="_blank">Free Forum</a>!</div>
+            <div class="c-footer__link-wrapper"><a href="https://www.proboards.com/tos" accesskey="8">Terms of Service</a> &nbsp; <a href="https://www.proboards.com/privacy" title="Privacy">Privacy</a> &nbsp; <a href="https://www.proboards.com/privacy#cookies" title="Cookies">Cookies</a> &nbsp; <a href="javascript:alert('VerticalScope may earn an affiliate commission when you click on links on this website.')">FTC Disclosure</a> &nbsp; <a href="https://www.proboards.com/report-abuse" accesskey="7">Report Abuse</a> &nbsp; <a class="qc-ccpa-persistent-link" title="Your Privacy Choices"><img src="https://storage.googleapis.com/vs-cmp/privacyoptions123x59.png" style="padding-right:5px; height:16px;" alt="California Consumer Privacy Act (CCPA) Opt-Out Icon">Your Privacy Choices &nbsp;</a></div>
+        </footer>
+    
+
+		</div>
+		
+	</body>
+</html>

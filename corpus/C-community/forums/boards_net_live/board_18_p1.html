@@ -1,0 +1,1378 @@
+<!DOCTYPE HTML>
+	<!--[if IE 7]><html class="ie7"><![endif]--><!--[if IE 8]><html class="ie8"><![endif]--><!--[if IE 9]><html class="ie9"><![endif]--><!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+	<head>
+		<meta charset="UTF-8">
+		<title>Theories | Cicada3301</title>
+		<script type="text/javascript" src="https://storage.googleapis.com/vs-scripts/intentiq/vsintentiq.js" async></script>
+<script async src="//c.amazon-adsystem.com/aax2/apstag.js"></script>
+<script>!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={unLoaded:1,init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},dpa:function(){q("di",arguments)},rpa:function(){q("ri",arguments)},upa:function(){q("ui",arguments)},_Q:[]};}("apstag",window);</script>
+<script async src="https://config.htplayground.com/load-vs-cmp.js"></script>
+<script async src="https://config.htplayground.com/config/proboards.com"></script>
+<script async src="https://config.htplayground.com/libs"></script>
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+  window.deployads = window.deployads || [];
+  window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+
+    //Size Mapping
+    var topMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([728, 200], [[728, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([0, 0], [[300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150]])
+    .build();
+    var bottomMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[970, 90], [728, 90], [300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .addSize([728, 200], [[728, 90], [300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .addSize([0, 0], [[300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .build();
+    var adhesionMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([728, 200], [[728, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([0, 0], [[320, 50], [300, 50], [234, 60]])
+    .build();
+    //Size Mapping end
+
+    googletag.defineSlot('/1030735/Boards_net_Top', [[250, 250], [336, 280], [300, 250], [728, 90], [320, 50], [468, 60], [970, 90], [234, 60], [180, 150], [200, 200], [480, 75], [300, 50]], 'Boards_net_Top').defineSizeMapping(topMapping).addService(googletag.pubads());
+    googletag.defineSlot('/1030735/Boards_net_Bottom', [[125, 125], [250, 250], [320, 50], [970, 90], [200, 200], [300, 250], [728, 90], [234, 60], [336, 280], [180, 150], [300, 50]], 'Boards_net_Bottom').defineSizeMapping(bottomMapping).addService(googletag.pubads());
+    googletag.defineSlot('/1030735/Boards_net_Adhesion', [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]], 'Boards_net_Adhesion').defineSizeMapping(adhesionMapping).addService(googletag.pubads());
+    
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().setTargeting("sitename", "Proboards.com");
+    googletag.pubads().setTargeting("folder2", "pb-"+location.hostname);
+    googletag.pubads().setTargeting("proboardsforumid", "6433989");
+    googletag.pubads().setTargeting("forum_id", "18");
+    googletag.pubads().setTargeting("vertical", "");
+    googletag.pubads().setCentering(true);
+    if (typeof(proboards) !== 'undefined' && typeof(proboards.data) !== 'undefined' ) {
+if (proboards.data('board_id') == null) {
+	googletag.pubads().setTargeting("PageID", "forumlist");
+} else if (proboards.data('thread_id') == null) {
+	googletag.pubads().setTargeting("PageID", "threadlist");
+} else {
+	googletag.pubads().setTargeting("PageID", "thread");
+	if (proboards.data('lm_total') > proboards.data('lm_limit')) {
+		if (proboards.data('lm_page') == 1 || proboards.data('lm_page') < proboards.data('lm_total') / proboards.data('lm_limit')) {
+			googletag.pubads().setTargeting("Folder1", proboards.data('lm_limit').toString());
+		} else {
+			googletag.pubads().setTargeting("Folder1", (proboards.data('lm_total') - (proboards.data('lm_limit') * (proboards.data('lm_page') - 1))).toString());
+		}
+	} else {
+		googletag.pubads().setTargeting("Folder1", proboards.data('proboards.thread')[Object.keys(proboards.data('proboards.thread'))[0]]['posts'].toString());
+	}
+}
+    }
+    if("0" === "0") {
+        googletag.pubads().setTargeting("registered", "false");
+    } else {
+        googletag.pubads().setTargeting("registered", "true");
+    }
+    deployads.push(function () { deployads.gpt.enableServices() });
+
+    if("0" === "0") {
+      function onDomLoadAdhesion() {
+            document.body.classList.add("vsFooterDiv");
+            let footeradcontainer = document.createElement('div');
+            footeradcontainer.classList.add('desktop-adhesion-ad__footer-ad-container');
+    
+            let desktopadhesion = document.createElement('div');
+            desktopadhesion.id = 'desktop-adhesion-ad__container';
+            desktopadhesion.classList.add('desktop-adhesion-ad__footer-ad');
+    
+            let innercontainer = document.createElement('div');
+            innercontainer.id = 'desktop-adhesion-ad__inner-container';
+    
+            let closebutton = document.createElement('button');
+            closebutton.classList.add('overlay-titleCloser');
+            closebutton.id = 'desktop-adhesion-ad__close-button';
+            closebutton.onclick = function() {
+                var vsAdhesion;
+                googletag.pubads().getSlots().forEach(function(i){
+                    if(i.getSlotElementId() === "Boards_net_Adhesion") {
+                        vsAdhesion = i;
+                    }
+                });
+                googletag.destroySlots([vsAdhesion]);
+                document.body.classList.remove("vsFooterDiv");
+            }
+    
+            let proboardsadhesion = document.createElement('div');
+            proboardsadhesion.id = 'Boards_net_Adhesion';
+    
+            footeradcontainer.appendChild(desktopadhesion);
+            desktopadhesion.appendChild(innercontainer);
+            innercontainer.appendChild(closebutton);
+            innercontainer.appendChild(proboardsadhesion);
+            document.body.appendChild(footeradcontainer);
+        
+            googletag.cmd.push(function() {
+                if (window.deployads) {
+                deployads.push(function() {
+                    deployads.gpt.display('Boards_net_Adhesion');
+                });
+                } else {
+                    googletag.display('Boards_net_Adhesion'); 
+                }
+            });
+        }
+        document.readyState === "loading"
+        ? document.addEventListener('DOMContentLoaded', onDomLoadAdhesion)
+        : onDomLoadAdhesion();
+    }
+  });
+</script>
+<script src="https://storage.googleapis.com/vs-scripts/proboards/config.js"></script>
+<script>
+/**
+ * Sets a cookie
+ *
+ * @param name cookie name
+ * @param value cookie value
+ * @param expiration expiration in minutes
+ * @param domain [optional] domain
+ */
+ function vsExpSetCookie( name, value, expiration, domain = '' ) {
+    if( !name || !value || !expiration ) {
+        return;
+    }
+    let d = new Date();
+    d.setTime( d.getTime() + (expiration * 60 * 1000) );
+    let cName = name + '=' + value,
+        expires = ';expires=' + d.toUTCString();
+    document.cookie = cName + expires + ';path=/' + ';';
+}
+/**
+ * Gets cookie value
+ *
+ * @param name
+ * @returns string|null cookie value or null
+ */
+function vsExpGetCookie( name ) {
+    var nameEQ = name + '=';
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+// DiceRoll functions
+function isExperiment() {
+    // Set a diceroll for Experimentation
+    // Test in browser by adding '?vsexp-dice=exp' or '?vsexp-dice=control' to url.
+    const expire = 30; // 30 minutes
+    let expWinPercentage = window.vsPrimisExpData.weight ?? 50;
+    const checkParam = () => {
+        let urlParam = location.search.match( /[?&]vsexp-dice=([^&]+)/ );
+        return urlParam && urlParam.length === 2 ? urlParam[ 1 ] : null;
+    };
+    const experimentDiceRoll = () => {
+        const diceResult = Math.random() < expWinPercentage / 100;
+        return diceResult ? 'exp' : 'control';
+    };
+    let winner = checkParam();
+    let cookieName = window.vsPrimisExpData.cookieName ?? 'vsexp_pct';
+    if( winner ) {
+        vsExpSetCookie( cookieName, winner, expire );
+    } else {
+        winner = vsExpGetCookie( cookieName );
+        if( !winner ) {
+            winner = experimentDiceRoll();
+            vsExpSetCookie( cookieName, winner, expire );
+        }
+    }
+    window.vsRunPrimis = ( winner === 'exp' );
+}
+//Check if this is allowlisted before checking experiment group
+if (window.vsPrimisExpData?.runExp && window.vsPrimisExpData?.weight != 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+    isExperiment();
+    let vsKV = '';
+    if (window.vsRunPrimis && window.vsPrimisExpData?.weight != 100) {
+        vsKV = window.vsPrimisExpData?.variantName ?? 'pb_primis_exp';
+    } else {
+        vsKV = window.vsPrimisExpData?.controlName ?? 'pb_primis_ctrl';
+    }
+    if (window.vsPrimisExpData?.weight != 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+            googletag.pubads().setTargeting('experiment', vsKV);
+        });
+        window.adsJSON = {
+            pageKeyValues: {'revenueExp': ['experiment'],'experiment': vsKV},
+        };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'experiment': vsKV
+        });
+    }
+}
+if (window.vsPrimisExpData?.weight === 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+        window.vsRunPrimis = true;
+}
+if (window.vsExpData?.runExp ) {
+    window.vsexp = true;
+}
+</script>
+<style>
+.desktop-adhesion-ad__footer-ad-container .desktop-adhesion-ad__footer-ad {
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
+	width: 100%;
+	color: #fff;
+	background-color: transparent;
+	position: fixed;
+	bottom: 0;
+	z-index: 400;
+	font-size: 26px;
+	-webkit-overflow-scrolling: touch;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translate3d(0,0,0);
+	pointer-events: none;
+}
+#desktop-adhesion-ad__inner-container {
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+#desktop-adhesion-ad__inner-container #desktop-adhesion-ad__close-button.overlay-titleCloser {
+	border: 1px solid #c9cdcf;
+	width: 24px;
+	height: 24px;
+	background: #fff;
+	font-size: large;
+	padding: unset;
+	border-radius: 3px;
+	color: #686c6e;
+	pointer-events: auto;
+}
+#Desktop_Adhesion {
+	pointer-events: auto;
+}
+#desktop-adhesion-ad__close-button.overlay-titleCloser {
+	margin: unset;
+	opacity: 1;
+	position: absolute;
+	line-height: 50%;
+}
+.overlay-titleCloser {
+	float: right;
+	cursor: pointer;
+	text-decoration: none;
+}
+.overlay-titleCloser:after {
+	font-family: 'font awesome 5 pro';
+	font-size: inherit;
+	font-style: normal;
+	font-weight: 100;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: "X";
+}
+#desktop-adhesion-ad__close-button.overlay-titleCloser {
+    right: -33px;
+}
+#desktop-adhesion-ad__inner-container {
+    max-width: 728px;
+    pointer-events: auto;
+}
+body.vsFooterDiv {
+    margin-bottom:90px;
+}
+</style>
+<script type="text/javascript">
+            window.partial = "board/show";
+            document.registerElement = false;
+            window._pbdata = [];
+            window.pb = {
+                data: {
+                    set: function(a) {
+                        window._pbdata.push(a)
+                    }
+                }
+            }
+        </script>
+
+        <!-- Google Tag Manager -->
+            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-M6QVNSC');</script>
+        <!-- End Google Tag Manager -->
+    
+<link rel="canonical" href="https://cicada3301.boards.net/board/18/x/recent/1" />
+<link rel="alternate" type="application/rss+xml" href="http://cicada3301.boards.net/rss/public" />
+<link rel="shortcut icon" type="image/x-icon" href="https://storage.proboards.com/forum/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="https://storage.proboards.com/forum/images/favicon.ico" />
+<meta property="og:url" content="https://cicada3301.boards.net/board/18/x/recent/1">
+<meta property="og:title" content="Theories | Cicada3301">
+<meta property="og:description" content="Visit our forum at: cicada3301.boards.net">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@proboards">
+
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/forum/css/0/forum_base_1144.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/6433989/css/w8taoZpniIqJS0joSHjj.css" id="forum_style" />
+<link rel="stylesheet" type="text/css" media="print" href="//storage.proboards.com/forum/css/0/print_1144.css" />
+<script> translatePo = { language: 'en_US' };</script>
+<script type="text/javascript" src="//storage.proboards.com/forum/js/proboards.combined_1144.js" crossorigin="anonymous"></script>
+
+		<!-- Google Analytics Start -->
+		<script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-30657-154', 'auto' );ga('set', 'anonymizeIp', true);
+		</script>
+		<!-- Google Analytics End -->
+	
+
+        <script type="module">
+            var vglnk;
+            $(document).ready(function() {
+                $('a').each(function() {
+                    if($(this).prop('href').indexOf('login.proboards.com') !== -1) {
+                        $(this).addClass('norewrite');
+                    }
+                });
+
+                vglnk = {
+                    api_url: '//api.viglink.com/api', key: '71fe2139a887ad501313cd8cce3053c5', subId: '6433989'
+                };
+                var vglnkSrc = ('https:' == document.location.protocol ? vglnk.api_url : '//cdn.viglink.com/api') + '/vglnk.js';
+
+                // VigLink ProBoards Convert Code (using above key)
+                var s = document.createElement('script');
+                s.type = 'text/javascript'; s.async = true; s.src = vglnkSrc;
+                document.body.appendChild(s);
+
+                var retry = 0;
+                var reV = function() {
+                    if (typeof vglnk !== 'function' && retry++ < 5) {
+                        setTimeout(reV, 500);
+                    }
+                    else if (typeof vglnk !== 'function') {
+                        $('a').not('.norewrite').each(function() {
+                            var url = $(this).prop('href');
+                            if (url.indexOf('http') === 0 && url.indexOf(document.domain) === -1) {
+                                $(this).prop('href', 'http://redirect.viglink.com?key=71fe2139a887ad501313cd8cce3053c5&subId=6433989&u=' + escape(url));
+                            }
+                        });
+                    }
+                };
+                reV();
+            });
+        </script>
+    
+<script>
+            window.runAntiAdBlock = 1;
+        </script>
+<script>  proboards.data([['forum_url',"cicada3301.boards.net"],['ad_free',0],['locale_settings',{"input_date_format":"%m/%d/%Y","input_time_placeholder":"hh:mm pp","input_date_placeholder":"mm/dd/yyyy","input_date_regex":"^(\\d{2})/(\\d{2})/(\\d{4})$","amcharts_date_format":"MM/DD/YYYY","input_time_format":12,"thousands_separator":","}],['image_path',"//storage.proboards.com/forum/images"],['time_style',0],['military_time',0],['timezone',"guest"],['serverDate',1787177424000],['search-query-min',3],['search-query-max',50],['is_current_user_guest',"1"],['plugin_max_key_length',4000],['plugin_max_super_forum_key_length',32000],['login_url',"https://login.proboards.com/login/6433989/1"],['register_url',"https://login.proboards.com/register/6433989"],['forum_id',"6433989"],['labels_viewable',[]],['labels_accessible',[]],['search_filter_img_src',"//storage.proboards.com/forum/images/icon-search-filters.png"],['lm_thread_count',23],['lm_limit',"30"],['lm_page',1],['board_id',"18"],['lm_id',"XfKidnwjeSpgupu9pE0S"],['page_cache',".lm-content-XfKidnwjeSpgupu9pE0S"],['_google_analytics_events',[{"hitType":"pageview"}]],['pop_menu_structure',{"opensOn":"click","placement":"bottom left","positionOffsetY":10,"addMenuClass":"c-pop-menu","startingMenu":"_root","positionAgainstSelector":".o-breadcrumbs","menuStructure":{"1-4":{"items":[{"text":"Go to Welcome","addSeparator":1,"href":"/#category-4"},{"href":"https://cicada3301.boards.net/board/21/welcome","addSeparator":null,"text":"Welcome"}],"title":"Welcome"},"1-1":{"items":[{"href":"/#category-1","text":"Go to General","addSeparator":1},{"href":"https://cicada3301.boards.net/board/20/philosopy","addSeparator":null,"text":"Philosopy"},{"href":"https://cicada3301.boards.net/board/1/general-discussion","text":"General Discussion","addSeparator":null}],"title":"General"},"1-3":{"title":"Rune Solving","items":[{"addSeparator":1,"text":"Go to Rune Solving","href":"/#category-3"},{"text":"Tools","addSeparator":null,"href":"https://cicada3301.boards.net/board/19/tools"},{"href":"https://cicada3301.boards.net/board/18/theories","addSeparator":null,"text":"Theories"},{"href":"https://cicada3301.boards.net/board/17/cross","addSeparator":null,"text":"Cross"},{"addSeparator":null,"text":"Spirals","href":"https://cicada3301.boards.net/board/16/spirals"},{"href":"https://cicada3301.boards.net/board/15/branches","addSeparator":null,"text":"Branches"},{"href":"https://cicada3301.boards.net/board/14/mobius","addSeparator":null,"text":"Mobius"},{"href":"https://cicada3301.boards.net/board/13/mayfly","addSeparator":null,"text":"Mayfly"},{"addSeparator":null,"text":"Tree","href":"https://cicada3301.boards.net/board/12/tree"},{"href":"https://cicada3301.boards.net/board/11/cuneiform","text":"Cuneiform","addSeparator":null},{"href":"https://cicada3301.boards.net/board/10/spiral-branches","text":"Spiral Branches","addSeparator":null},{"addSeparator":null,"text":"56","href":"https://cicada3301.boards.net/board/9/56"},{"addSeparator":null,"text":"57","href":"https://cicada3301.boards.net/board/8/57"}]},"_root":{"items":[{"href":"/forum","addSeparator":1,"text":"Home"},{"submenu":"1-4","addSeparator":null,"text":"Welcome"},{"submenu":"1-3","text":"Rune Solving","addSeparator":null},{"submenu":"1-1","text":"General","addSeparator":null}],"title":"Categories"}}}],['screen_breakpoints',{"lg":1200,"xs":0,"md":992,"sm":768}],['user',{"id":0,"name":"Guest","time_format":"12hr","date_format":"m/d/y","is_staff":0,"theme_id":1,"is_logged_in":0}],['page',{"board":{"url":"/board/18/theories","description":"","id":18,"hidden":"0","threads":23,"show_announcements":"1","display_name":"Theories","name":"Theories","name_unescaped":"Theories","posts":52,"disable_posting":"0","disable_post_counts":"0"},"category":{"id":3,"name":"Rune Solving","name_unescaped":"Rune Solving"}}],['default_avatar',"//storage.proboards.com/forum/images/defaultavatar.png"],['route',{"name":"board","params":{"board_id":"18","x":"recent"}}],['search_system',1],['insite_path',""],['maintenance_mode',0],['proboards.thread',{"75":{"posts":"2","views":"1,576","last_post_id":274,"is_announcement":0,"url":"https://cicada3301.boards.net/thread/75/page-4-ut3qtzbrvs7dtvzp-onion","is_locked":0,"is_muted":0,"subject":"Page 4 in ut3qtzbrvs7dtvzp.onion","board_id":18,"is_falling":0,"is_bookmarked":0,"created_by":142,"created_on":1570569989,"subject_unescaped":"Page 4 in ut3qtzbrvs7dtvzp.onion","last_post_time":1601980943,"is_poll":0,"first_post_id":207,"is_sticky":0,"id":75,"is_new":0},"47":{"is_new":0,"id":47,"is_sticky":0,"first_post_id":84,"is_poll":0,"last_post_time":1491944881,"created_on":1491944881,"subject_unescaped":"Is Liber Al  Legis the key?","is_bookmarked":0,"is_falling":0,"created_by":0,"board_id":18,"is_muted":0,"subject":"Is Liber Al  Legis the key?","is_locked":0,"url":"https://cicada3301.boards.net/thread/47/liber-al-legis-key","is_announcement":0,"last_post_id":84,"views":"1,452","posts":"1"},"70":{"is_announcement":0,"last_post_id":260,"views":"1,585","posts":"9","is_bookmarked":0,"is_falling":0,"created_by":125,"board_id":18,"is_locked":0,"subject":"Newbie with possibly a really stupid suggestion","is_muted":0,"url":"https://cicada3301.boards.net/thread/70/newbie-possibly-stupid-suggestion","first_post_id":179,"is_sticky":0,"is_poll":0,"subject_unescaped":"Newbie with possibly a really stupid suggestion","created_on":1566162653,"last_post_time":1596544250,"is_new":0,"id":70},"8":{"is_new":0,"id":8,"first_post_id":9,"is_sticky":0,"is_poll":0,"last_post_time":1453203560,"created_on":1453203560,"subject_unescaped":"Some wisdom","is_bookmarked":0,"is_falling":0,"created_by":4,"board_id":18,"subject":"Some wisdom","is_muted":0,"is_locked":0,"url":"https://cicada3301.boards.net/thread/8/wisdom","is_announcement":0,"last_post_id":9,"views":"1,862","posts":"1"},"54":{"url":"https://cicada3301.boards.net/thread/54/liber-primus-warning-speculations-properties","is_muted":0,"subject":"LIBER PRIMUS 1 - A WARNING PAGE Speculations and properties","is_locked":0,"board_id":18,"is_bookmarked":0,"is_falling":0,"created_by":0,"posts":"3","views":"3,874","last_post_id":273,"is_announcement":0,"id":54,"is_new":0,"last_post_time":1601980736,"subject_unescaped":"LIBER PRIMUS 1 - A WARNING PAGE Speculations and properties","created_on":1509486541,"is_poll":0,"first_post_id":101,"is_sticky":0},"20":{"is_poll":0,"is_sticky":0,"first_post_id":25,"subject_unescaped":"You can’t see the forest when you’re looking at the trees.","created_on":1458821007,"last_post_time":1459733103,"is_new":0,"id":20,"last_post_id":29,"is_announcement":0,"posts":"2","views":"1,967","board_id":18,"is_bookmarked":0,"is_falling":0,"created_by":15,"url":"https://cicada3301.boards.net/thread/20/forest-when-re-looking-trees","is_locked":0,"is_muted":0,"subject":"You can’t see the forest when you’re looking at the trees."},"74":{"created_on":1569784719,"subject_unescaped":"QR codes","last_post_time":1702403356,"first_post_id":202,"is_sticky":0,"is_poll":0,"id":74,"is_new":0,"views":"1,481","posts":"2","last_post_id":356,"is_announcement":0,"is_locked":0,"is_muted":0,"subject":"QR codes","url":"https://cicada3301.boards.net/thread/74/qr-codes","is_falling":0,"is_bookmarked":0,"created_by":141,"board_id":18},"10":{"first_post_id":11,"is_sticky":0,"is_poll":0,"last_post_time":1453203678,"created_on":1453203678,"subject_unescaped":"Frequencies Odds of  rune given precending rune.","is_new":0,"id":10,"last_post_id":11,"is_announcement":0,"views":"1,125","posts":"1","created_by":4,"is_bookmarked":0,"is_falling":0,"board_id":18,"subject":"Frequencies Odds of  rune given precending rune.","is_muted":0,"is_locked":0,"url":"https://cicada3301.boards.net/thread/10/frequencies-odds-rune-given-precending"},"30":{"last_post_id":116,"is_announcement":0,"views":"4,380","posts":"4","is_bookmarked":0,"is_falling":0,"created_by":3,"board_id":18,"is_locked":0,"is_muted":0,"subject":"A general approach to solving the Liber Primus ? ","url":"https://cicada3301.boards.net/thread/30/general-approach-solving-liber-primus","is_sticky":0,"first_post_id":51,"is_poll":0,"created_on":1470829303,"subject_unescaped":"A general approach to solving the Liber Primus ? ","last_post_time":1546534324,"is_new":0,"id":30},"73":{"is_sticky":0,"first_post_id":187,"is_poll":0,"subject_unescaped":"Translating Runes","created_on":1566724625,"last_post_time":1566912264,"is_new":0,"id":73,"last_post_id":188,"is_announcement":0,"views":"738","posts":"2","created_by":0,"is_bookmarked":0,"is_falling":0,"board_id":18,"is_locked":0,"is_muted":0,"subject":"Translating Runes","url":"https://cicada3301.boards.net/thread/73/translating-runes"},"58":{"is_new":0,"id":58,"is_poll":0,"first_post_id":107,"is_sticky":0,"created_on":1535232543,"subject_unescaped":"OTP","last_post_time":1535232543,"board_id":18,"is_falling":0,"is_bookmarked":0,"created_by":97,"url":"https://cicada3301.boards.net/thread/58/otp","is_locked":0,"is_muted":0,"subject":"OTP","is_announcement":0,"last_post_id":107,"posts":"1","views":"1,025"},"5":{"id":5,"is_new":0,"created_on":1453202987,"subject_unescaped":"Clue 2015  5,3,1?,2,5,7","last_post_time":1453202987,"is_sticky":0,"first_post_id":5,"is_poll":0,"is_locked":0,"is_muted":0,"subject":"Clue 2015  5,3,1?,2,5,7","url":"https://cicada3301.boards.net/thread/5/clue-2015-5-3-1","is_bookmarked":0,"is_falling":0,"created_by":4,"board_id":18,"views":"2,132","posts":"1","is_announcement":0,"last_post_id":5},"32":{"is_new":0,"id":32,"is_sticky":0,"first_post_id":53,"is_poll":0,"last_post_time":1472923710,"subject_unescaped":"3 ways to progress the Liber Primus. ","created_on":1472923710,"is_falling":0,"is_bookmarked":0,"created_by":3,"board_id":18,"subject":"3 ways to progress the Liber Primus. ","is_muted":0,"is_locked":0,"url":"https://cicada3301.boards.net/thread/32/3-ways-progress-liber-primus","last_post_id":53,"is_announcement":0,"views":"3,316","posts":"1"},"57":{"url":"https://cicada3301.boards.net/thread/57/xoring-pages","is_muted":0,"subject":"XORing Pages","is_locked":0,"board_id":18,"is_bookmarked":0,"is_falling":0,"created_by":97,"posts":"1","views":"1,191","is_announcement":0,"last_post_id":106,"id":57,"is_new":0,"last_post_time":1535134668,"subject_unescaped":"XORing Pages","created_on":1535134668,"is_poll":0,"first_post_id":106,"is_sticky":0},"9":{"is_announcement":0,"last_post_id":44,"posts":"4","views":"2,902","board_id":18,"is_bookmarked":0,"is_falling":0,"created_by":4,"url":"https://cicada3301.boards.net/thread/9/magic-squares","is_locked":0,"is_muted":0,"subject":"Magic Squares","is_poll":0,"is_sticky":0,"first_post_id":10,"subject_unescaped":"Magic Squares","created_on":1453203590,"last_post_time":1461777774,"is_new":0,"id":9},"33":{"views":"2,606","posts":"1","last_post_id":54,"is_announcement":0,"is_locked":0,"is_muted":0,"subject":"Modular Exponentiation Ciphers With Runes ","url":"https://cicada3301.boards.net/thread/33/modular-exponentiation-ciphers-runes","is_falling":0,"is_bookmarked":0,"created_by":3,"board_id":18,"created_on":1474212830,"subject_unescaped":"Modular Exponentiation Ciphers With Runes ","last_post_time":1474212830,"first_post_id":54,"is_sticky":0,"is_poll":0,"id":33,"is_new":0},"29":{"is_bookmarked":0,"created_by":31,"is_falling":0,"board_id":18,"subject":"Enochian Keys","is_muted":0,"is_locked":0,"url":"https://cicada3301.boards.net/thread/29/enochian-keys","last_post_id":50,"is_announcement":0,"views":"2,483","posts":"1","is_new":0,"id":29,"first_post_id":50,"is_sticky":0,"is_poll":0,"last_post_time":1470609060,"subject_unescaped":"Enochian Keys","created_on":1470609060},"42":{"posts":"4","views":"2,730","last_post_id":178,"is_announcement":0,"url":"https://cicada3301.boards.net/thread/42/cicada-3301-clever-arg","is_muted":0,"subject":"Cicada 3301 is just an clever ARG.","is_locked":0,"board_id":18,"is_falling":0,"is_bookmarked":0,"created_by":39,"last_post_time":1566161482,"created_on":1481501273,"subject_unescaped":"Cicada 3301 is just an clever ARG.","is_poll":0,"first_post_id":65,"is_sticky":0,"id":42,"is_new":0},"4":{"subject_unescaped":"Clues pgp 2014 2,3,5?,7,11,13,17,23,29,31,37 Missing 19?","created_on":1453202832,"last_post_time":1491946398,"is_poll":0,"first_post_id":4,"is_sticky":0,"id":4,"is_new":0,"posts":"4","views":"2,983","is_announcement":0,"last_post_id":85,"url":"https://cicada3301.boards.net/thread/4/clues-pgp-2014-11-missing","is_locked":0,"is_muted":0,"subject":"Clues pgp 2014 2,3,5?,7,11,13,17,23,29,31,37 Missing 19?","board_id":18,"is_bookmarked":0,"is_falling":0,"created_by":4},"59":{"last_post_time":1540310880,"subject_unescaped":"12th October 2018","created_on":1539351694,"is_sticky":0,"first_post_id":108,"is_poll":0,"id":59,"is_new":0,"views":"1,294","posts":"4","is_announcement":0,"last_post_id":111,"is_muted":0,"subject":"12th October 2018","is_locked":0,"url":"https://cicada3301.boards.net/thread/59/12th-october-2018","is_bookmarked":0,"is_falling":0,"created_by":102,"board_id":18},"6":{"is_new":0,"id":6,"first_post_id":6,"is_sticky":0,"is_poll":0,"last_post_time":1463453760,"subject_unescaped":"Clue 2016 No silly Spaces this time.","created_on":1453203125,"is_bookmarked":0,"is_falling":0,"created_by":4,"board_id":18,"is_muted":0,"subject":"Clue 2016 No silly Spaces this time.","is_locked":0,"url":"https://cicada3301.boards.net/thread/6/clue-2016-silly-spaces-time","is_announcement":0,"last_post_id":45,"views":"1,971","posts":"3"},"14":{"is_new":0,"id":14,"is_poll":0,"is_sticky":0,"first_post_id":18,"last_post_time":1454159645,"created_on":1454159645,"subject_unescaped":"Some ideas about the new clue and the Liber Primus","board_id":18,"created_by":12,"is_bookmarked":0,"is_falling":0,"url":"https://cicada3301.boards.net/thread/14/ideas-new-clue-liber-primus","is_muted":0,"subject":"Some ideas about the new clue and the Liber Primus","is_locked":0,"is_announcement":0,"last_post_id":18,"posts":"1","views":"1,369"},"56":{"url":"https://cicada3301.boards.net/thread/56/symmetry-theory","is_muted":0,"subject":"Symmetry Theory","is_locked":0,"board_id":18,"is_bookmarked":0,"created_by":97,"is_falling":0,"posts":"1","views":"1,138","last_post_id":105,"is_announcement":0,"id":56,"is_new":0,"last_post_time":1534680647,"subject_unescaped":"Symmetry Theory","created_on":1534680647,"is_poll":0,"is_sticky":0,"first_post_id":105}}]]);</script>
+<script> if (typeof(standard_board) == 'function') standard_board();</script>
+<script> if (typeof(standard_board_show) == 'function') standard_board_show();</script>
+
+	</head>
+	<body>
+        <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6QVNSC"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+		
+		<div id="wrapper">
+			<header>
+				<div id="banner-container" role="banner">
+					<h2 id="banner">
+						<a id="logo" href="/">Cicada3301</a>
+					</h2>
+				</div>
+				<a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+				<a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+				<div id="navigation-menu" class="ui-helper-clearfix">
+					<ul role="navigation">
+						
+							<li>
+								<a href="/">
+									Home
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/help">
+									Help
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/search">
+									Search
+									
+								</a>
+							</li>
+						
+					</ul>
+					<p id="welcome">
+						
+							Welcome Guest.
+							
+								Please <a href="https://login.proboards.com/login/6433989/1">Login</a> or <a href="https://login.proboards.com/register/6433989">Register</a>.
+							
+						
+					</p>
+				</div>
+			</header>
+
+			
+
+			
+				<div id="navigation-tree">
+					<div class="nav-tree-wrapper"><ul id="nav-tree" class="ui-helper-clearfix" role="navigation" itemscope itemtype="https://schema.org/BreadcrumbList"><li id="nav-tree-branch-0" class="nav-tree-branch ui-helper-clearfix has-menu" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/" itemprop="item"><span itemprop="name">Cicada3301</span></a></div><meta itemprop="position" content="1"><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-1" class="nav-tree-branch ui-helper-clearfix has-menu" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/#category-3" itemprop="item"><span itemprop="name">Rune Solving</span></a></div><meta itemprop="position" content="2"><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-2" class="nav-tree-branch ui-helper-clearfix" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/board/18/theories" itemprop="item"><span itemprop="name">Theories</span></a></div><meta itemprop="position" content="3"><span class="menu_arrow"><span></span></span></li></ul></div><div class="popup_html">
+<ul id="nav-tree-menu-0" role="navigation">
+<li class="nav-tree-cat-4"><a href="/#category-4"><span class="item-text">Welcome</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-21"><a href="https://cicada3301.boards.net/board/21/welcome"><span class="item-text">Welcome</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-3"><a href="/#category-3"><span class="item-text">Rune Solving</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-19"><a href="https://cicada3301.boards.net/board/19/tools"><span class="item-text">Tools</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-18"><a href="https://cicada3301.boards.net/board/18/theories"><span class="item-text">Theories</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-17"><a href="https://cicada3301.boards.net/board/17/cross"><span class="item-text">Cross</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-16"><a href="https://cicada3301.boards.net/board/16/spirals"><span class="item-text">Spirals</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-15"><a href="https://cicada3301.boards.net/board/15/branches"><span class="item-text">Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-14"><a href="https://cicada3301.boards.net/board/14/mobius"><span class="item-text">Mobius</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-13"><a href="https://cicada3301.boards.net/board/13/mayfly"><span class="item-text">Mayfly</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-12"><a href="https://cicada3301.boards.net/board/12/tree"><span class="item-text">Tree</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-11"><a href="https://cicada3301.boards.net/board/11/cuneiform"><span class="item-text">Cuneiform</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-10"><a href="https://cicada3301.boards.net/board/10/spiral-branches"><span class="item-text">Spiral Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-9"><a href="https://cicada3301.boards.net/board/9/56"><span class="item-text">56</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-8"><a href="https://cicada3301.boards.net/board/8/57"><span class="item-text">57</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-1"><a href="/#category-1"><span class="item-text">General</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-20"><a href="https://cicada3301.boards.net/board/20/philosopy"><span class="item-text">Philosopy</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-1"><a href="https://cicada3301.boards.net/board/1/general-discussion"><span class="item-text">General Discussion</span><div class="clear"></div></a></li>
+</ul>
+</li>
+</ul>
+<ul id="nav-tree-menu-1" role="navigation">
+<li class="nav-tree-board-19"><a href="https://cicada3301.boards.net/board/19/tools"><span class="item-text">Tools</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-18"><a href="https://cicada3301.boards.net/board/18/theories"><span class="item-text">Theories</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-17"><a href="https://cicada3301.boards.net/board/17/cross"><span class="item-text">Cross</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-16"><a href="https://cicada3301.boards.net/board/16/spirals"><span class="item-text">Spirals</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-15"><a href="https://cicada3301.boards.net/board/15/branches"><span class="item-text">Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-14"><a href="https://cicada3301.boards.net/board/14/mobius"><span class="item-text">Mobius</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-13"><a href="https://cicada3301.boards.net/board/13/mayfly"><span class="item-text">Mayfly</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-12"><a href="https://cicada3301.boards.net/board/12/tree"><span class="item-text">Tree</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-11"><a href="https://cicada3301.boards.net/board/11/cuneiform"><span class="item-text">Cuneiform</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-10"><a href="https://cicada3301.boards.net/board/10/spiral-branches"><span class="item-text">Spiral Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-9"><a href="https://cicada3301.boards.net/board/9/56"><span class="item-text">56</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-8"><a href="https://cicada3301.boards.net/board/8/57"><span class="item-text">57</span><div class="clear"></div></a></li>
+</ul></div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+		var reposition   = false;
+		var showOn       = 'hover';
+		var offset       = reposition
+			? '-13 6'
+			: ($.browser.msie && parseInt($.browser.version) == 8)
+				? '3 -1'
+				: '3 0';
+		var showCallback = function(e) {
+			var self = $(this);
+
+			// Make sure all other menus are closed
+			$('.popup_html > ul').not(self).menu('hide');
+
+			// Hide the navigation if they leave it.
+			setTimeout(function() {
+				$(document).on('mousemove.nav', function(e) {
+					var elem = $(e.target);
+					if (
+						elem.parents('#nav-tree, .popup_html').length == 0
+						&& !elem.is('#nav-tree, .popup_html')
+						&& !self.data('hotkey-open')
+					) {
+						self.menu('hide');
+						$(document).off('.nav');
+					}
+				});
+			}, 1000);
+		}
+	
+				$('#nav-tree-menu-0')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-0'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-0'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-1')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-1'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-1'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-2')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-2'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-2'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				$('.nav-tree-cat-3').addClass('state-selected');$('.nav-tree-board-18').addClass('state-selected');
+			});
+		</script>
+	
+				</div>
+			
+
+			<div id="ad1"><div style="max-width: 970px; margin: 0 auto 10px; text-align: center;"><div id="Boards_net_Top" style="min-height:90px;">
+    <script type="text/javascript">
+        googletag.cmd.push(function() {
+            deployads.push(function() { deployads.gpt.display("Boards_net_Top"); });
+        });
+    </script>
+</div></div></div>
+
+			<div id="content" role="main">
+				
+				
+
+	<div class="container threads">
+		<div class="title-bar">
+			
+				<ul class="controls"><li><a role="button" href="/thread/new/18">Create Thread</a></li></ul>
+			
+			<h1>Theories</h1>
+		</div>
+		<div class="control-bar ui-helper-clearfix scrollable-XfKidnwjeSpgupu9pE0S">
+			<div class="lm-search-XfKidnwjeSpgupu9pE0S ui-search"></div>
+			<div class="controls">
+				<ul class="select_menu_list ui-menu ui-selectMenu hide selections lm-selection-XfKidnwjeSpgupu9pE0S"><li class="All"><a><span class="icon pbi-checkbox-checked"></span>All</a></li><li class="None"><a><span class="icon pbi-checkbox"></span>None</a></li></ul>
+				
+			</div>
+			<ul class="ui-pagination lm-pagination-XfKidnwjeSpgupu9pE0S"><li class="prev state-disabled"><a>&laquo; Prev</a></li><li class="state-selected"><a>1</a></li><li class="next state-disabled"><a>Next &raquo;</a></li></ul>
+		</div>
+		<div class="content cap-bottom">
+			<table class="list">
+				<thead>
+					<tr class="head">
+						<th class="icon"><span class="aria-hidden">Status</span>&nbsp;</th>
+						<th class="checkbox">&nbsp;</th>
+						<th class="main">Subject</th>
+						<th class="created-by">Created By</th>
+						<th class="replies">Replies</th>
+						<th class="views">Views</th>
+						<th class="latest last">Last Post</th>
+					</tr>
+				</thead>
+				<tbody class="lm-content-XfKidnwjeSpgupu9pE0S">
+					
+	<tr id="thread-74" class="item thread first">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" alt="Thread" title="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="I&apos;ve removed my ramblings ;) ok so what I was trying to say was if you apply error correction filter in GIMP on different pages on LP and scan the image with QR code reader on your phone you will com">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/74">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" alt="Bookmark" title="Bookmark" /></span><span class="lock_icon hide"><img alt="Locked" title="This thread is locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" title="This thread is falling" alt="Falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/74/qr-codes" class="js-thread__link thread-link thread-74 board-18">QR codes</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a title="@kenkreig" class="o-user-link js-user-link user-link user-141 group-0" data-id="141" href="/user/141">kenkreig</a></td>
+		<td class="replies clickable"><a class="thread-participants" title="View Participants" href="#">1</a></td>
+		<td class="views">1,481</td>
+		<td class="latest last">by <span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">seandraven</span></span><br /><abbr data-timestamp="1702403356000" class="o-timestamp time" title="Dec 12, 2023 17:49:16 GMT">Dec 12, 2023 17:49:16 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-75" class="item thread">
+		<td class="icon"><img title="Thread" alt="Thread" src="//storage.proboards.com/forum/images/icons/thread.png" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="Hi,&#013;&#013;I&apos;m new to Cicada 3301, but I&apos;ll try my best to uncover oddities &#013;&#013;There">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/75">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" title="Bookmark" alt="Bookmark" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" alt="Locked" title="This thread is locked" /></span><span class="falling_icon hide"><img title="This thread is falling" alt="Falling" src="//storage.proboards.com/forum/images/icons/falling.png" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a class="js-thread__link thread-link thread-75 board-18" href="/thread/75/page-4-ut3qtzbrvs7dtvzp-onion">Page 4 in ut3qtzbrvs7dtvzp.onion</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a class="o-user-link js-user-link user-link user-142 group-0" title="@silentwater" href="/user/142" data-id="142">silentwater</a></td>
+		<td class="replies clickable"><a title="View Participants" class="thread-participants" href="#">1</a></td>
+		<td class="views">1,576</td>
+		<td class="latest last">by <a title="@liberprimus" class="o-user-link js-user-link user-link user-162 group-0" data-id="162" href="/user/162">liberprimus</a><br /><abbr title="Oct 6, 2020 10:42:23 GMT" class="o-timestamp time" data-timestamp="1601980943000">Oct 6, 2020 10:42:23 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-54" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" alt="Thread" title="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="#Premise&#013;&#013;&#013;I will format it and add more info progressively. You can find the pastebin here:&nbsp;https://pastebin.com/QXQXA3Va&#013;Find me at #cicadasolvers&#013; &#013;&#013;&quot;Its">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/54">new</a></span><span class="bookmark_icon hide"><img alt="Bookmark" title="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img alt="Locked" title="This thread is locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img alt="Falling" title="This thread is falling" src="//storage.proboards.com/forum/images/icons/falling.png" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/54/liber-primus-warning-speculations-properties" class="js-thread__link thread-link thread-54 board-18">LIBER PRIMUS 1 - A WARNING PAGE Speculations and properties</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">Third Lateral Eye</span></span></td>
+		<td class="replies clickable"><a class="thread-participants" title="View Participants" href="#">2</a></td>
+		<td class="views">3,874</td>
+		<td class="latest last">by <a title="@liberprimus" class="o-user-link js-user-link user-link user-162 group-0" data-id="162" href="/user/162">liberprimus</a><br /><abbr data-timestamp="1601980736000" class="o-timestamp time" title="Oct 6, 2020 10:38:56 GMT">Oct 6, 2020 10:38:56 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-70" class="item thread">
+		<td class="icon"><img title="Thread" alt="Thread" src="//storage.proboards.com/forum/images/icons/thread.png" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="By all means, if anyone is still active here, ridicule me all you wish. Im oin my fifties, and while i had heard of cicada 3301, i never bothered getting into it until ths weekend. I am not even">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/70">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" title="Bookmark" alt="Bookmark" /></span><span class="lock_icon hide"><img title="This thread is locked" alt="Locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" title="This thread is falling" alt="Falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a class="js-thread__link thread-link thread-70 board-18" href="/thread/70/newbie-possibly-stupid-suggestion">Newbie with possibly a really stupid suggestion</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a data-id="125" href="/user/125" title="@crunchyfrog555" class="o-user-link js-user-link user-link user-125 group-0">crunchyfrog555</a></td>
+		<td class="replies clickable"><a title="View Participants" class="thread-participants" href="#">8</a></td>
+		<td class="views">1,585</td>
+		<td class="latest last">by <a data-id="3" href="/user/3" title="@mortlach" class="o-user-link js-user-link user-link user-3 group-1">mortlach</a><br /><abbr data-timestamp="1596544250000" class="o-timestamp time" title="Aug 4, 2020 12:30:50 GMT">Aug 4, 2020 12:30:50 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-73" class="item thread">
+		<td class="icon"><img title="Thread" alt="Thread" src="//storage.proboards.com/forum/images/icons/thread.png" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="Has anyone tried finding a similar or the same rune alphabet with a different translation and use that to decode the pages. On page 56 of Liber Primus we know it says there is a page on the deep web">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/73">new</a></span><span class="bookmark_icon hide"><img alt="Bookmark" title="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img alt="Locked" title="This thread is locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" alt="Falling" title="This thread is falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/73/translating-runes" class="js-thread__link thread-link thread-73 board-18">Translating Runes</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">Mango8</span></span></td>
+		<td class="replies clickable"><a class="thread-participants" title="View Participants" href="#">1</a></td>
+		<td class="views">738</td>
+		<td class="latest last">by <a data-id="3" href="/user/3" title="@mortlach" class="o-user-link js-user-link user-link user-3 group-1">mortlach</a><br /><abbr title="Aug 27, 2019 13:24:24 GMT" data-timestamp="1566912264000" class="o-timestamp time">Aug 27, 2019 13:24:24 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-42" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" title="Thread" alt="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="I think it&apos;s already proven that cicada is just an clever ARG.&#013;&#013;1st. If cicada was real, why there isn&apos;t any members, or ex-members or something, so logically cicada dont">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/42">new</a></span><span class="bookmark_icon hide"><img title="Bookmark" alt="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img title="This thread is locked" alt="Locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img alt="Falling" title="This thread is falling" src="//storage.proboards.com/forum/images/icons/falling.png" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a class="js-thread__link thread-link thread-42 board-18" href="/thread/42/cicada-3301-clever-arg">Cicada 3301 is just an clever ARG.</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a data-id="39" href="/user/39" title="@mrenigma" class="o-user-link js-user-link user-link user-39 group-0">mrenigma</a></td>
+		<td class="replies clickable"><a href="#" title="View Participants" class="thread-participants">3</a></td>
+		<td class="views">2,730</td>
+		<td class="latest last">by <a data-id="125" href="/user/125" title="@crunchyfrog555" class="o-user-link js-user-link user-link user-125 group-0">crunchyfrog555</a><br /><abbr class="o-timestamp time" data-timestamp="1566161482000" title="Aug 18, 2019 20:51:22 GMT">Aug 18, 2019 20:51:22 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-30" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" title="Thread" alt="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="We know The Single Anomalous Fact About The Runes that we have found is there is an Astronomically low number of double (Identical Twin) runes- i.e. an FF, or a BB, etc. For example see:&#013;&#013;">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/30">new</a></span><span class="bookmark_icon hide"><img alt="Bookmark" title="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img title="This thread is locked" alt="Locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" title="This thread is falling" alt="Falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/30/general-approach-solving-liber-primus" class="js-thread__link thread-link thread-30 board-18">A general approach to solving the Liber Primus ? </a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a data-id="3" href="/user/3" title="@mortlach" class="o-user-link js-user-link user-link user-3 group-1">mortlach</a></td>
+		<td class="replies clickable"><a href="#" class="thread-participants" title="View Participants">3</a></td>
+		<td class="views">4,380</td>
+		<td class="latest last">by <a data-id="3" href="/user/3" title="@mortlach" class="o-user-link js-user-link user-link user-3 group-1">mortlach</a><br /><abbr class="o-timestamp time" data-timestamp="1546534324000" title="Jan 3, 2019 16:52:04 GMT">Jan 3, 2019 16:52:04 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-59" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" alt="Thread" title="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="Hello, I&apos;ve noticed that the forum has been pretty dead lately but I&apos;d like to see who&apos;s still active as Cicada3301 is a great interest of mine. It has inspired me to learn about cryptography as">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/59">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" alt="Bookmark" title="Bookmark" /></span><span class="lock_icon hide"><img alt="Locked" title="This thread is locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img title="This thread is falling" alt="Falling" src="//storage.proboards.com/forum/images/icons/falling.png" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a class="js-thread__link thread-link thread-59 board-18" href="/thread/59/12th-october-2018">12th October 2018</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a title="@firewhite835" class="o-user-link js-user-link user-link user-102 group-0" data-id="102" href="/user/102">firewhite835</a></td>
+		<td class="replies clickable"><a title="View Participants" class="thread-participants" href="#">3</a></td>
+		<td class="views">1,294</td>
+		<td class="latest last">by <span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">Jeebus</span></span><br /><abbr data-timestamp="1540310880000" class="o-timestamp time" title="Oct 23, 2018 16:08:00 GMT">Oct 23, 2018 16:08:00 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-58" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" title="Thread" alt="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="New theory...&#013;Since bruteforcing hasn’t been successfull do you think OTP is possible? What would be a good file to use as OTP? Something that cicada had previously given us on one of the">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/58">new</a></span><span class="bookmark_icon hide"><img alt="Bookmark" title="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img alt="Locked" title="This thread is locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img title="This thread is falling" alt="Falling" src="//storage.proboards.com/forum/images/icons/falling.png" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a class="js-thread__link thread-link thread-58 board-18" href="/thread/58/otp">OTP</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a href="/user/97" data-id="97" class="o-user-link js-user-link user-link user-97 group-0" title="@dbranco78">dbranco78</a></td>
+		<td class="replies clickable"><a href="#" title="View Participants" class="thread-participants">0</a></td>
+		<td class="views">1,025</td>
+		<td class="latest last">by <a href="/user/97" data-id="97" class="o-user-link js-user-link user-link user-97 group-0" title="@dbranco78">dbranco78</a><br /><abbr title="Aug 25, 2018 21:29:03 GMT" data-timestamp="1535232543000" class="o-timestamp time">Aug 25, 2018 21:29:03 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-57" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" title="Thread" alt="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="As anyone tried XOR some of the pages? Against the _560.00 file?? If I recall it was the only one that wasn’t used for anything? I was thinking about doing that. Does anyone think cicada used a OTP">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/57">new</a></span><span class="bookmark_icon hide"><img title="Bookmark" alt="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" title="This thread is locked" alt="Locked" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" alt="Falling" title="This thread is falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a class="js-thread__link thread-link thread-57 board-18" href="/thread/57/xoring-pages">XORing Pages</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a href="/user/97" data-id="97" class="o-user-link js-user-link user-link user-97 group-0" title="@dbranco78">dbranco78</a></td>
+		<td class="replies clickable"><a class="thread-participants" title="View Participants" href="#">0</a></td>
+		<td class="views">1,191</td>
+		<td class="latest last">by <a href="/user/97" data-id="97" class="o-user-link js-user-link user-link user-97 group-0" title="@dbranco78">dbranco78</a><br /><abbr title="Aug 24, 2018 18:17:48 GMT" class="o-timestamp time" data-timestamp="1535134668000">Aug 24, 2018 18:17:48 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-56" class="item thread">
+		<td class="icon"><img alt="Thread" title="Thread" src="//storage.proboards.com/forum/images/icons/thread.png" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="Hello everyone&#013;&#013;If someone else has already suggested this forgive me :)&#013;&#013;Looking at the LP drawings and the clues so far I can&apos;t help to notice that 3301 is all about symmetry:">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/56">new</a></span><span class="bookmark_icon hide"><img title="Bookmark" alt="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" alt="Locked" title="This thread is locked" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" title="This thread is falling" alt="Falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a class="js-thread__link thread-link thread-56 board-18" href="/thread/56/symmetry-theory">Symmetry Theory</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a href="/user/97" data-id="97" class="o-user-link js-user-link user-link user-97 group-0" title="@dbranco78">dbranco78</a></td>
+		<td class="replies clickable"><a title="View Participants" class="thread-participants" href="#">0</a></td>
+		<td class="views">1,138</td>
+		<td class="latest last">by <a href="/user/97" data-id="97" class="o-user-link js-user-link user-link user-97 group-0" title="@dbranco78">dbranco78</a><br /><abbr title="Aug 19, 2018 12:10:47 GMT" data-timestamp="1534680647000" class="o-timestamp time">Aug 19, 2018 12:10:47 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-4" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" title="Thread" alt="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="-----BEGIN PGP SIGNED MESSAGE-----&#013;Hash: SHA1&#013;&#013;Hello.  Your enlightenment awaits you.&#013;&#013;     ky2khlqdf7qdznac.onion&#013;&#013;We look forward to hearing from you">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/4">new</a></span><span class="bookmark_icon hide"><img title="Bookmark" alt="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" alt="Locked" title="This thread is locked" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" alt="Falling" title="This thread is falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a class="js-thread__link thread-link thread-4 board-18" href="/thread/4/clues-pgp-2014-11-missing">Clues pgp 2014 2,3,5?,7,11,13,17,23,29,31,37 Missing 19?</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a href="/user/4" data-id="4" class="o-user-link js-user-link user-link user-4 group-0" title="@wetsand">wetsand</a></td>
+		<td class="replies clickable"><a href="#" title="View Participants" class="thread-participants">3</a></td>
+		<td class="views">2,983</td>
+		<td class="latest last">by <span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">Oxymoran</span></span><br /><abbr title="Apr 11, 2017 21:33:18 GMT" class="o-timestamp time" data-timestamp="1491946398000">Apr 11, 2017 21:33:18 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-47" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" title="Thread" alt="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="So one of the main points of Liber Al Legis is that &quot;Every man and every woman is a star&quot;. From this Crowley derives the main law of Thelema, Do as thou wilt shall be the whole of the law. I think">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/47">new</a></span><span class="bookmark_icon hide"><img alt="Bookmark" title="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img alt="Locked" title="This thread is locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img alt="Falling" title="This thread is falling" src="//storage.proboards.com/forum/images/icons/falling.png" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a class="js-thread__link thread-link thread-47 board-18" href="/thread/47/liber-al-legis-key">Is Liber Al  Legis the key?</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">Oxymoran</span></span></td>
+		<td class="replies clickable"><a class="thread-participants" title="View Participants" href="#">0</a></td>
+		<td class="views">1,452</td>
+		<td class="latest last">by <span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">Oxymoran</span></span><br /><abbr title="Apr 11, 2017 21:08:01 GMT" class="o-timestamp time" data-timestamp="1491944881000">Apr 11, 2017 21:08:01 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-33" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" title="Thread" alt="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="Modular Exponentiation Ciphers With Runes &#013;&#013;A method to encrypt runes using exponentiation ciphers is demonstrated. These types of ciphers have many deep conn">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/33">new</a></span><span class="bookmark_icon hide"><img alt="Bookmark" title="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" alt="Locked" title="This thread is locked" /></span><span class="falling_icon hide"><img alt="Falling" title="This thread is falling" src="//storage.proboards.com/forum/images/icons/falling.png" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/33/modular-exponentiation-ciphers-runes" class="js-thread__link thread-link thread-33 board-18">Modular Exponentiation Ciphers With Runes </a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a data-id="3" href="/user/3" title="@mortlach" class="o-user-link js-user-link user-link user-3 group-1">mortlach</a></td>
+		<td class="replies clickable"><a title="View Participants" class="thread-participants" href="#">0</a></td>
+		<td class="views">2,606</td>
+		<td class="latest last">by <a data-id="3" href="/user/3" title="@mortlach" class="o-user-link js-user-link user-link user-3 group-1">mortlach</a><br /><abbr title="Sept 18, 2016 15:33:50 GMT" class="o-timestamp time" data-timestamp="1474212830000">Sept 18, 2016 15:33:50 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-32" class="item thread">
+		<td class="icon"><img alt="Thread" title="Thread" src="//storage.proboards.com/forum/images/icons/thread.png" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="I really am in 3 minds about what to do with this puzzle and my interpretation of the Jan 2016 message. &#013;&#013;&#013;1.	You must find the deep web page – until you do all decrypti">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/32">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" title="Bookmark" alt="Bookmark" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" alt="Locked" title="This thread is locked" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" title="This thread is falling" alt="Falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/32/3-ways-progress-liber-primus" class="js-thread__link thread-link thread-32 board-18">3 ways to progress the Liber Primus. </a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a data-id="3" href="/user/3" title="@mortlach" class="o-user-link js-user-link user-link user-3 group-1">mortlach</a></td>
+		<td class="replies clickable"><a class="thread-participants" title="View Participants" href="#">0</a></td>
+		<td class="views">3,316</td>
+		<td class="latest last">by <a data-id="3" href="/user/3" title="@mortlach" class="o-user-link js-user-link user-link user-3 group-1">mortlach</a><br /><abbr data-timestamp="1472923710000" class="o-timestamp time" title="Sept 3, 2016 17:28:30 GMT">Sept 3, 2016 17:28:30 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-29" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" title="Thread" alt="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="Since I first saw the LP, I was fascinated by the magic squares it contains. Surely those should be as important as the runes themselves! Then I saw a rough transliteration of the runes using the">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/29">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" title="Bookmark" alt="Bookmark" /></span><span class="lock_icon hide"><img title="This thread is locked" alt="Locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" title="This thread is falling" alt="Falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a class="js-thread__link thread-link thread-29 board-18" href="/thread/29/enochian-keys">Enochian Keys</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a title="@kitter" class="o-user-link js-user-link user-link user-31 group-0" data-id="31" href="/user/31">kitter</a></td>
+		<td class="replies clickable"><a href="#" class="thread-participants" title="View Participants">0</a></td>
+		<td class="views">2,483</td>
+		<td class="latest last">by <a title="@kitter" class="o-user-link js-user-link user-link user-31 group-0" data-id="31" href="/user/31">kitter</a><br /><abbr class="o-timestamp time" data-timestamp="1470609060000" title="Aug 7, 2016 22:31:00 GMT">Aug 7, 2016 22:31:00 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-6" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" title="Thread" alt="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="-----BEGIN PGP SIGNED MESSAGE-----&#013;Hash: SHA1&#013;&#013;Hello.&#013;&#013;The path lies empty; epiphany seeks the devoted.&#013;&#013;Liber Primus is the way.  Its words are the map,">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/6">new</a></span><span class="bookmark_icon hide"><img alt="Bookmark" title="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img alt="Locked" title="This thread is locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" alt="Falling" title="This thread is falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/6/clue-2016-silly-spaces-time" class="js-thread__link thread-link thread-6 board-18">Clue 2016 No silly Spaces this time.</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a href="/user/4" data-id="4" class="o-user-link js-user-link user-link user-4 group-0" title="@wetsand">wetsand</a></td>
+		<td class="replies clickable"><a href="#" title="View Participants" class="thread-participants">2</a></td>
+		<td class="views">1,971</td>
+		<td class="latest last">by <span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">Praevolo</span></span><br /><abbr title="May 17, 2016 2:56:00 GMT" class="o-timestamp time" data-timestamp="1463453760000">May 17, 2016 2:56:00 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-9" class="item thread">
+		<td class="icon"><img title="Thread" alt="Thread" src="//storage.proboards.com/forum/images/icons/thread.png" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="I want to somehow use this a Key?&#013;&#013;&#013;434     1311    312     278     966&#013;204     812     934     280     1071&#013;626     620     809     620     626&#013;1071    280     934    ">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/9">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" alt="Bookmark" title="Bookmark" /></span><span class="lock_icon hide"><img alt="Locked" title="This thread is locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img alt="Falling" title="This thread is falling" src="//storage.proboards.com/forum/images/icons/falling.png" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/9/magic-squares" class="js-thread__link thread-link thread-9 board-18">Magic Squares</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a href="/user/4" data-id="4" class="o-user-link js-user-link user-link user-4 group-0" title="@wetsand">wetsand</a></td>
+		<td class="replies clickable"><a href="#" class="thread-participants" title="View Participants">3</a></td>
+		<td class="views">2,902</td>
+		<td class="latest last">by <span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">ThirdLateralEye</span></span><br /><abbr title="Apr 27, 2016 17:22:54 GMT" class="o-timestamp time" data-timestamp="1461777774000">Apr 27, 2016 17:22:54 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-20" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" title="Thread" alt="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="Here is the entire Cicada Playbook:&#013;&#013;&#013;Steganography:&nbsp;Outguess-able images. Steganographic methods involving audio files and boot-sectors&#013;Classic ciph">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/20">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" alt="Bookmark" title="Bookmark" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" title="This thread is locked" alt="Locked" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" alt="Falling" title="This thread is falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/20/forest-when-re-looking-trees" class="js-thread__link thread-link thread-20 board-18">You can’t see the forest when you’re looking at the trees.</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a href="/user/15" data-id="15" class="o-user-link js-user-link user-link user-15 group-0" title="@ok">ok</a></td>
+		<td class="replies clickable"><a href="#" class="thread-participants" title="View Participants">1</a></td>
+		<td class="views">1,967</td>
+		<td class="latest last">by <span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">Slim</span></span><br /><abbr title="Apr 4, 2016 1:25:03 GMT" class="o-timestamp time" data-timestamp="1459733103000">Apr 4, 2016 1:25:03 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-14" class="item thread">
+		<td class="icon"><img src="//storage.proboards.com/forum/images/icons/thread.png" alt="Thread" title="Thread" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="Hello all,&#013;&#013;Had a few ideas about the Liber Primus. Mentioned them in the #cicadasolvers freenode chat, but thought I&apos;d post them here.&#013;&#013;The two images featuring triangles are">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/14">new</a></span><span class="bookmark_icon hide"><img title="Bookmark" alt="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" title="This thread is locked" alt="Locked" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" alt="Falling" title="This thread is falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/14/ideas-new-clue-liber-primus" class="js-thread__link thread-link thread-14 board-18">Some ideas about the new clue and the Liber Primus</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a class="o-user-link js-user-link user-link user-12 group-0" title="@silentseraph" href="/user/12" data-id="12">silentseraph</a></td>
+		<td class="replies clickable"><a href="#" title="View Participants" class="thread-participants">0</a></td>
+		<td class="views">1,369</td>
+		<td class="latest last">by <a class="o-user-link js-user-link user-link user-12 group-0" title="@silentseraph" href="/user/12" data-id="12">silentseraph</a><br /><abbr data-timestamp="1454159645000" class="o-timestamp time" title="Jan 30, 2016 13:14:05 GMT">Jan 30, 2016 13:14:05 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-10" class="item thread">
+		<td class="icon"><img title="Thread" alt="Thread" src="//storage.proboards.com/forum/images/icons/thread.png" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="Trying ᚠ ᚠ04,ᚢ17,ᚣ19,ᚦ16,ᚩ17,ᚪ26,ᚫ16,ᚱ14,ᚳ17,ᚷ10,ᚹ08,ᚻ10,ᚾ19,ᛁ18,ᛂ19,ᛇ13,ᛈ17,ᛉ19,ᛋ18,ᛏ16,ᛒ20,ᛖ13,ᛗ21,ᛚ18,ᛝ15,ᛞ18,ᛟ12,ᛠ13,ᛡ15,&#013;Trying ᚢ ᚠ08,ᚢ02,ᚣ18,ᚦ18,ᚩ15,ᚪ15,ᚫ11,ᚱ15,ᚳ13,ᚷ18,ᚹ16,ᚻ16,ᚾ17,ᛁ19,ᛂ16">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/10">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" alt="Bookmark" title="Bookmark" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" title="This thread is locked" alt="Locked" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" title="This thread is falling" alt="Falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/10/frequencies-odds-rune-given-precending" class="js-thread__link thread-link thread-10 board-18">Frequencies Odds of  rune given precending rune.</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a href="/user/4" data-id="4" class="o-user-link js-user-link user-link user-4 group-0" title="@wetsand">wetsand</a></td>
+		<td class="replies clickable"><a href="#" title="View Participants" class="thread-participants">0</a></td>
+		<td class="views">1,125</td>
+		<td class="latest last">by <a href="/user/4" data-id="4" class="o-user-link js-user-link user-link user-4 group-0" title="@wetsand">wetsand</a><br /><abbr title="Jan 19, 2016 11:41:18 GMT" data-timestamp="1453203678000" class="o-timestamp time">Jan 19, 2016 11:41:18 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-8" class="item thread">
+		<td class="icon"><img alt="Thread" title="Thread" src="//storage.proboards.com/forum/images/icons/thread.png" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="Some Wisdom&#013;&#013;The primes are sacred. The totient function is sacred. All things should be encrypted.&#013;&#013;&#013;This feels like a clue to page 56, but it also can just be 3301 talking">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/8">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" alt="Bookmark" title="Bookmark" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" alt="Locked" title="This thread is locked" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" title="This thread is falling" alt="Falling" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/8/wisdom" class="js-thread__link thread-link thread-8 board-18">Some wisdom</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a href="/user/4" data-id="4" class="o-user-link js-user-link user-link user-4 group-0" title="@wetsand">wetsand</a></td>
+		<td class="replies clickable"><a href="#" title="View Participants" class="thread-participants">0</a></td>
+		<td class="views">1,862</td>
+		<td class="latest last">by <a href="/user/4" data-id="4" class="o-user-link js-user-link user-link user-4 group-0" title="@wetsand">wetsand</a><br /><abbr class="o-timestamp time" data-timestamp="1453203560000" title="Jan 19, 2016 11:39:20 GMT">Jan 19, 2016 11:39:20 GMT</abbr></td>
+	</tr>
+
+	<tr id="thread-5" class="item thread last">
+		<td class="icon"><img alt="Thread" title="Thread" src="//storage.proboards.com/forum/images/icons/thread.png" /></td>
+		<td class="checkbox clickable">&nbsp;</td>
+		<td class="main clickable" title="I have tried, matching letter 5, first letter of word 5, letters within the GPG sig, (Because you can add the spaces AFTER generating the SIG)&#013;&#013;&#013;&#013;-----BEGIN PGP SIGNED">
+			<table>
+				<tr>
+					<td><span class="control-icons lm-icons-"><span class="new-icon"><a href="/threads/recent/5">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" alt="Bookmark" title="Bookmark" /></span><span class="lock_icon hide"><img alt="Locked" title="This thread is locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img alt="Falling" title="This thread is falling" src="//storage.proboards.com/forum/images/icons/falling.png" /></span></span></td>
+					<td>
+						<span class="no-labels js-no-labels"></span>
+						<span class="link target"><a href="/thread/5/clue-2015-5-3-1" class="js-thread__link thread-link thread-5 board-18">Clue 2015  5,3,1?,2,5,7</a></span>
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td class="created-by clickable"><a href="/user/4" data-id="4" class="o-user-link js-user-link user-link user-4 group-0" title="@wetsand">wetsand</a></td>
+		<td class="replies clickable"><a class="thread-participants" title="View Participants" href="#">0</a></td>
+		<td class="views">2,132</td>
+		<td class="latest last">by <a href="/user/4" data-id="4" class="o-user-link js-user-link user-link user-4 group-0" title="@wetsand">wetsand</a><br /><abbr title="Jan 19, 2016 11:29:47 GMT" class="o-timestamp time" data-timestamp="1453202987000">Jan 19, 2016 11:29:47 GMT</abbr></td>
+	</tr>
+
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+	
+		<div class="container legend">
+			<div class="title-bar"><h2>Legend</h2></div>
+			<div class="content">
+				<table>
+					<tr>
+						
+							<td><img src="//storage.proboards.com/forum/images/icons/thread.png" title="" alt="" /> <span>Thread</span></td>
+						
+							<td><img alt="" title="" src="//storage.proboards.com/forum/images/icons/thread-announcement.png" /> <span>Announcement</span></td>
+						
+							<td><img title="" alt="" src="//storage.proboards.com/forum/images/icons/thread-sticky.png" /> <span>Sticky</span></td>
+						
+							<td><img src="//storage.proboards.com/forum/images/icons/thread-locked.png" alt="" title="" /> <span>Locked</span></td>
+						
+							<td><span class="new-icon">new</span> <span>New</span></td>
+						
+							<td><img src="//storage.proboards.com/forum/images/icons/poll.png" title="" alt="" /> <span>Poll</span></td>
+						
+							<td><img alt="" title="" src="//storage.proboards.com/forum/images/icons/bookmark.png" /> <span>Bookmark</span></td>
+						
+					</tr>
+				</table>
+			</div>
+		</div>
+	
+
+
+
+	<div class="container stats">
+		<div class="title-bar"><h2>Board Information &amp; Statistics</h2></div>
+		<div class="content">
+			<table>
+				<tbody>
+					
+					<tr>
+						<td>
+							<table>
+								<tr>
+									<td class="icon"><img title="Board Statistics" alt="Board Statistics" src="//storage.proboards.com/forum/images/info/stats.png" /></td>
+									<td class="info">
+										<table>
+											<tbody>
+												<tr><th colspan="2">Threads and Posts</th></tr>
+												<tr><td>Total Threads:</td><td>23</td></tr>
+												<tr><td>Total Posts:</td><td>52</td></tr>
+												
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td>
+							<table>
+								<tr>
+									<td class="icon"><img title="Members" alt="Members" src="//storage.proboards.com/forum/images/info/members.png" /></td>
+									<td class="info last">
+										<table>
+											<tbody>
+												<tr><th colspan="1">On This Board</th></tr>
+												<tr><td>You <strong>can</strong> create threads.</td></tr>
+												<tr><td>You <strong>can</strong> reply to threads.</td></tr>
+												<tr><td>You <strong>can</strong> create polls.</td></tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					
+						<tr class="last">
+							<td colspan="2">
+								<table>
+									<tr>
+										<td class="icon"><img src="//storage.proboards.com/forum/images/info/online.png" alt="Members Online" title="Members Online" /></td>
+										<td class="info last">
+											<table>
+												<tbody>
+													<tr><th>Users Viewing</th></tr>
+													<tr><td>0 Staff, 0 Members, 1 Guest.</td></tr>
+													<tr><td><tr><td>
+														
+														
+													</td></tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+				
+			</div>
+
+			<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "6036030" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = "https://sb.scorecardresearch.com/cs/6036030/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=6036030&amp;cv=3.6.0&amp;cj=1">
+</noscript><div style="display: flex; max-width: 970px; max-width: 100%; margin: 0 auto 10px; text-align: center; justify-content: space-around;flex-wrap: wrap"><div id="Boards_net_Bottom">
+    <script type="text/javascript">
+        googletag.cmd.push(function() {
+            deployads.push(function() { deployads.gpt.display("Boards_net_Bottom"); });
+        });
+    </script>
+</div>
+<script>
+function insertDesktopAd(adUnitPath, suffix) {
+    googletag.cmd.push(function() {
+        googletag.defineSlot('/1030735/'+adUnitPath, [728, 90], adUnitPath+"_"+suffix).addService(googletag.pubads());
+        deployads.push(function() { deployads.gpt.display(adUnitPath+"_"+suffix); });
+    });
+}
+function createVSThreadWrapper(wrapperID = '') {
+    let threadPos = document.createElement('div');
+    threadPos.id = wrapperID;
+    threadPos.style = 'min-height: 90px; padding: 9px 0;';
+    return threadPos;
+}
+// Not in View Code
+function hidePrimisSlider() {
+    document.querySelector('#primisSlider #primis_container_div div').style.right = '-400px';
+}
+function initializeSliderBehaviour(discoveryContainer, sliderPlacement) {
+    window.addEventListener('primisPlayerInit', function (e) {
+        if (e.detail.playerApiId == sliderPlacement) {
+            let primisPlayer = e.detail;
+            let threshold = 0.1;
+            document.querySelector('#primisSlider #primis_container_div div').style.transition = 'right 0.5s';
+            let obs = new IntersectionObserver(function(i) {
+            if (i[0].intersectionRatio > threshold) {
+                primisPlayer.pause();
+                hidePrimisSlider()
+            } else {
+                primisPlayer.play();
+            }
+            }, {threshold: threshold});
+            obs.observe(discoveryContainer);
+            // Handle edge case for discovery player floating for users on desktop and mobile resolution
+            function checkPrimisFloat() {
+                let primisFloatDiv = document.querySelector('.primis-wrapper [id^=primis_player]');
+                if (primisFloatDiv && primisFloatDiv.style.position == "fixed") {
+                    primisPlayer.pause();
+                    hidePrimisSlider();
+                }
+            }
+            document.addEventListener('scroll', checkPrimisFloat, true)
+            primisPlayer.addEventListener('adStarted',checkPrimisFloat);
+            document.addEventListener('DOMContentLoaded', checkPrimisFloat, true);
+            primisPlayer.addEventListener('adSkip', function (e) {
+                dataLayer.push({
+                    event: "adSkipPrimisSlider"
+                });
+            });
+        }
+    });
+}
+function createPrimisSrc(primisPlacement) {
+    let primis = document.createElement('script');
+    primis.id = 'primis';
+    primis.type = 'text/javascript';
+    primis.language = 'javascript';
+    primis.src = "https://live.primis.tech/live/liveView.php?s="+primisPlacement+"&kv_3=proboards.com&playerApiId="+primisPlacement;
+    primis.async = true;
+    return primis;
+}
+function insertPrimisPlacement() {
+    let proboardsWrapper = createVSThreadWrapper();
+    let primisDiscovery = document.createElement('div');
+    primisDiscovery.id = "primisContainer";
+    primisDiscoveryScript = createPrimisSrc(118308);
+    primisDiscovery.style.maxWidth = '842px';
+    primisDiscovery.style.margin = 'auto';
+    primisDiscovery.style.minHeight = '413px';
+    primisDiscovery.appendChild(primisDiscoveryScript);
+    let primisSlider = document.createElement('div');
+    primisSlider.id = "primisSlider";
+    primisSliderScript = createPrimisSrc(118242);
+    primisSlider.appendChild(primisSliderScript);
+    let primisInsertionDiv = proboardsWrapper;
+    primisInsertionDiv.style.minHeight = '';
+    primisInsertionDiv.appendChild(primisDiscovery);
+    primisInsertionDiv.appendChild(primisSlider);
+    return proboardsWrapper;
+}
+function experimentLayout() {
+    if(window.location.pathname.indexOf("/thread") === 0) {
+        let elgiblePositions = document.querySelectorAll('.post');
+        let firstPost = document.querySelector('.post.first');
+        let adUnitPath = 'Boards_net_InThread';
+        let threadWrapper = createVSThreadWrapper(adUnitPath+"_First");
+        let dynamicStart = 1;
+        // Guest users see Primis after First Post, and a display ad for 2nd post
+        if (window.vsRunPrimis && ("0" === "0")) {
+            let secondPost = document.querySelector('.post:not(.first)');
+            secondPost.after(threadWrapper);
+            let primisInsertion = insertPrimisPlacement();
+            firstPost.after(primisInsertion);
+            let discoveryContainer = document.querySelector('#primisContainer');
+            initializeSliderBehaviour(discoveryContainer, 118242);
+            dynamicStart = 2;
+        // Members will only see a display after first post and no player
+        } else {
+            firstPost.after(threadWrapper);
+        }
+        insertDesktopAd(adUnitPath, "First");
+        let inThreadCount = 0;
+        adUnitPath = 'Boards_net_InThreadLower';
+        const vh = document.documentElement.clientHeight;
+        let lastAdY = window.pageYOffset + elgiblePositions[dynamicStart - 1].getBoundingClientRect().top;
+        for(i=dynamicStart;i<elgiblePositions.length;i++) {
+            let elY = window.pageYOffset + elgiblePositions[i].getBoundingClientRect().top;
+            if (elY >= lastAdY + vh || i == elgiblePositions.length-1) {
+                let threadWrapper = createVSThreadWrapper(adUnitPath+"_"+inThreadCount);
+                elgiblePositions[i].after(threadWrapper);
+                insertDesktopAd(adUnitPath, inThreadCount);
+                lastAdY = elY;
+                inThreadCount++;
+                if (inThreadCount >= 9) {
+                    break;
+                }
+            }
+        }
+    } else {
+        let elgiblePositions = document.querySelectorAll('.board.item,.thread.item');
+        for(i=0;i<elgiblePositions.length;i++) {
+            if (window.pageYOffset + elgiblePositions[i].getBoundingClientRect().top > (document.documentElement.clientHeight - 120) || i == elgiblePositions.length-1) {
+                if (document.querySelector('.board')) {
+                    adUnitPath = 'Boards_net_ForumListInContent';
+                } else {
+                    adUnitPath = 'Boards_net_ForumViewInContent';
+                }
+                let threadWrapper = document.createElement('tr');
+                let threadCell = document.createElement('td');
+                threadCell.style = 'padding: 9px 0;';
+                threadCell.colSpan = 20;
+                let threadPos = document.createElement('div');
+                threadPos.style = 'min-height:90px;';
+                threadWrapper.appendChild(threadCell);
+                threadCell.appendChild(threadPos);
+                threadPos.id = adUnitPath+"_"+i;
+                elgiblePositions[i].after(threadWrapper);
+                insertDesktopAd(adUnitPath, i);
+                break;
+            }
+        }
+    }
+}
+if (window.vsexp) {
+    experimentLayout();
+}
+</script></div>
+        <footer class="c-footer" role="contentinfo">
+            <div id="remove_ads_link" style="display:block!important;"><a href="https://www.proboards.com/store/add_cart/ad_free/50000/cicada3301.boards.net/1">Click here to remove banner ads from this forum.</a></div>
+            <div id="hosted_by_link" style="display:block!important;">This Forum Is Hosted For FREE By <a href="https://www.proboards.com" target="_blank">ProBoards</a><br />Get Your Own <a href="https://www.proboards.com/create-free-forum" target="_blank">Free Forum</a>!</div>
+            <div class="c-footer__link-wrapper"><a href="https://www.proboards.com/tos" accesskey="8">Terms of Service</a> &nbsp; <a href="https://www.proboards.com/privacy" title="Privacy">Privacy</a> &nbsp; <a href="https://www.proboards.com/privacy#cookies" title="Cookies">Cookies</a> &nbsp; <a href="javascript:alert('VerticalScope may earn an affiliate commission when you click on links on this website.')">FTC Disclosure</a> &nbsp; <a href="https://www.proboards.com/report-abuse" accesskey="7">Report Abuse</a> &nbsp; <a class="qc-ccpa-persistent-link" title="Your Privacy Choices"><img src="https://storage.googleapis.com/vs-cmp/privacyoptions123x59.png" style="padding-right:5px; height:16px;" alt="California Consumer Privacy Act (CCPA) Opt-Out Icon">Your Privacy Choices &nbsp;</a></div>
+        </footer>
+    
+
+		</div>
+		
+	</body>
+</html>

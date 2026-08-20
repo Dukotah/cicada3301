@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+	<!--[if IE 7]><html class="ie7"><![endif]--><!--[if IE 8]><html class="ie8"><![endif]--><!--[if IE 9]><html class="ie9"><![endif]--><!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>Modular Exponentiation Ciphers With Runes  | Cicada3301</title>
+		<link rel="canonical" href="http://cicada3301.boards.net/thread/33/modular-exponentiation-ciphers-runes" />
+<link rel="alternate" type="application/rss+xml" href="http://cicada3301.boards.net/rss/public" />
+<link rel="shortcut icon" type="image/x-icon" href="//storage.proboards.com/forum/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="//storage.proboards.com/forum/images/favicon.ico" />
+<meta property="og:url"         content="http://cicada3301.boards.net/thread/33/modular-exponentiation-ciphers-runes" />
+<meta property="og:title"       content="Modular Exponentiation Ciphers With Runes  | Cicada3301" />
+<meta property="og:description" content="Modular Exponentiation Ciphers With Runes   A method to encrypt runes using exponentiation ciphers is demonstrated. These types of ciphers have many deep connections with the mathematics and computer" />
+<meta property="og:type"        content="website" />
+<meta name="twitter:card"               content="summary" />
+<meta name="twitter:site"               content="@proboards" />
+<meta name="twitter:app:id:iphone"      content="307880732" />
+<meta name="twitter:app:url:iphone"     content="tapatalk://cicada3301.boards.net/?fid=18&amp;location=topic&amp;tid=33&amp;perpage=15&amp;page=1" />
+<meta name="twitter:app:id:ipad"        content="307880732" />
+<meta name="twitter:app:url:ipad"       content="tapatalk://cicada3301.boards.net/?fid=18&amp;location=topic&amp;tid=33&amp;perpage=15&amp;page=1" />
+<meta name="twitter:app:id:googleplay"  content="com.quoord.tapatalkpro.activity" />
+<meta name="twitter:app:url:googleplay" content="tapatalk://cicada3301.boards.net/?fid=18&amp;location=topic&amp;tid=33&amp;perpage=15&amp;page=1" />
+<meta property="al:ios:url" content="tapatalk://cicada3301.boards.net/?fid=18&amp;location=topic&amp;tid=33&amp;perpage=15&amp;page=1" />
+<meta property="al:ios:app_store_id" content="307880732" />
+<meta property="al:ios:app_name" content="Tapatalk" />
+<meta property="al:android:package" content="com.quoord.tapatalkpro.activity" />
+<meta property="al:android:url" content="tapatalk://cicada3301.boards.net/?fid=18&amp;location=topic&amp;tid=33&amp;perpage=15&amp;page=1" />
+<meta property="al:android:app_name" content="Tapatalk" />
+<link href="android-app://com.quoord.tapatalkpro.activity/tapatalk/cicada3301.boards.net?fid=18&amp;location=topic&amp;tid=33&amp;perpage=15&amp;page=1" rel="alternate" />
+<link href="ios-app://307880732/tapatalk/cicada3301.boards.net?fid=18&amp;location=topic&amp;tid=33&amp;perpage=15&amp;page=1" rel="alternate" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/forum/css/0/forum_base_411.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/6433989/css/w8taoZpniIqJS0joSHjj.css" id="forum_style" />
+<link rel="stylesheet" type="text/css" media="print" href="//storage.proboards.com/forum/css/0/print_411.css" />
+<script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en-US"></script>
+<script>translatePo = { language: 'en_US' };</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>var tortoise = undefined;</script>
+<script src="//storage.proboards.com/forum/js/tortoise.min.js" integrity="sha384-5Xarr7yZbNCR8IIsrcy80rZVH1nqdJ6D8ixzKAbaYWX3eBInhvQ38L3EVv87QH32" crossorigin="anonymous"></script>
+
+		<script>
+			var hatch = function() {
+				$(document.body).append('<img src="//tortoise.proboards.com/tortoise.pl?forum_id=6433989&mobile=0&rand=0.170499908620542&field=amount_guest" alt="" />');
+			}
+			if(typeof Tortoise === 'undefined') {
+				$(document).ready(function() {
+					hatch();
+				});
+			} else {
+				tortoise.on(true, hatch);
+			}
+		</script>
+<script type="text/javascript" src="//storage.proboards.com/forum/js/proboards.combined_411.js"></script>
+<script type="text/javascript" src="https://funcaptcha.com/fc/api/?onload=loadFunCaptcha"></script>
+
+		<!-- Google Analytics Start -->
+		<script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-3734504-3', 'auto' , {"sampleRate":5});
+		</script>
+		<!-- Google Analytics End -->
+	
+
+		<script type="text/javascript">
+			var vglnk;
+			$(document).ready(function() {
+				$('a').each(function() {
+					if($(this).prop('href').indexOf('login.proboards.com') !== -1) {
+						$(this).addClass('norewrite');
+					}
+				});
+
+				vglnk = { 
+					api_url: '//api.viglink.com/api', key: 'bbb516d91daee20498798694a42dd559'
+				};
+				var vglnkSrc = ('https:' == document.location.protocol ? vglnk.api_url : '//cdn.viglink.com/api') + '/vglnk.js';
+				
+				// VigLink ProBoards Convert Code (using above key)
+				var s = document.createElement('script');
+				s.type = 'text/javascript'; s.async = true; s.src = vglnkSrc;
+				document.body.appendChild(s);
+
+				var retry = 0;
+				var reV = function() {
+					if (typeof vglnk !== 'function' && retry++ < 5) {
+						setTimeout(reV, 500);
+					}
+					else if (typeof vglnk !== 'function') {
+						$('a').not('.norewrite').each(function() {
+							var url = $(this).prop('href');
+							if (url.indexOf('http') === 0 && url.indexOf(document.domain) === -1) {
+								$(this).prop('href', 'http://redirect.viglink.com?key=bbb516d91daee20498798694a42dd559&u=' + escape(url));
+							}
+						});
+					}
+				};
+				reV();
+			});
+		</script>
+	
+<script>proboards.data([['forum_url',"cicada3301.boards.net"],['ad_free',0],['locale_settings',{"input_date_placeholder":"mm/dd/yyyy","thousands_separator":null,"amcharts_date_format":"MM/DD/YYYY","input_time_format":12,"input_date_format":"%m/%d/%Y","input_date_regex":"^(\\d{2})/(\\d{2})/(\\d{4})$","input_time_placeholder":"hh:mm pp"}],['image_path',"//storage.proboards.com/forum/images"],['time_style',0],['military_time',0],['timezone',"guest"],['serverDate',1499959732000],['search-query-min',3],['search-query-max',50],['is_current_user_guest',"1"],['plugin_max_key_length',4000],['plugin_max_super_forum_key_length',32000],['login_url',"https://login.proboards.com/login/6433989/1"],['register_url',"https://login.proboards.com/register/6433989"],['page_url',""],['range_string',"This event begins <img src=\"//storage.proboards.com/forum/images/icons/event.png\" alt=\"- \" title=\"Event\" />&nbsp;<abbr data-timestamp=\"0000\" class=\"o-timestamp time\" title=\"Jul 13, 2017 15:28:52 GMT\">Jul 13, 2017 15:28:52 GMT</abbr>"],['captcha_init',{"captcha_container_id":"captcha-container","errors":0,"no_validations":0,"mobile":0,"no_popup":0,"recaptcha_version":null,"attempts":0,"adfree":"","form_id":"form_S1amIRII","captcha_errors":0,"captcha_error_origin":null,"key":"C0F5B1D6-CFF5-1D52-0F76-87F4E9F50EC0","tos":{"url":"http://www.proboards.com/tos","name":"ProBoards Terms of Service"},"captcha_id":"captcha_init"}],['quick_reply',1],['forum_id',"6433989"],['thread_id',"33"],['thread_subject',"Modular Exponentiation Ciphers With Runes "],['labels_applied',[]],['board_id',"18"],['search_filter_img_src',"//storage.proboards.com/forum/images/icon-search-filters.png"],['options_img_src',"//storage.proboards.com/forum/images/icon-options.png"],['options_img_alt',"Post Options"],['options_img_title',"Post Options"],['lm_total',"1"],['lm_limit',15],['lm_page',1],['lm_data',{"thread_id":"33"}],['lm_id',"KJYdd6BSeIhiAXzvwsTu"],['lm_thread_next',"/thread/next/33"],['lm_thread_prev',"/thread/previous/33"],['sharing_options',{"enabled":1,"pinterest_enabled":1,"reddit_enabled":1,"twitter_card_site":"","twitter_enabled":1,"tumblr_enabled":1,"linkedin_enabled":1,"facebook_enabled":1,"myspace_enabled":1,"google_enabled":1,"email_enabled":1}],['page_cache',".lm-content-KJYdd6BSeIhiAXzvwsTu"],['labels_accessible',[]],['labels_viewable',[]],['_google_analytics_events',[{"hitType":"pageview"}]],['pop_menu_structure',{"positionAgainstSelector":".o-breadcrumbs","startingMenu":"_root","opensOn":"click","addMenuClass":"c-pop-menu","positionOffsetY":10,"menuStructure":{"1-1":{"title":"General","items":[{"text":"Philosopy","href":"http://cicada3301.boards.net/board/20/philosopy"},{"href":"http://cicada3301.boards.net/board/1/general-discussion","text":"General Discussion"}]},"1-3":{"items":[{"href":"http://cicada3301.boards.net/board/19/tools","text":"Tools"},{"text":"Theories","href":"http://cicada3301.boards.net/board/18/theories"},{"text":"Cross","href":"http://cicada3301.boards.net/board/17/cross"},{"text":"Spirals","href":"http://cicada3301.boards.net/board/16/spirals"},{"href":"http://cicada3301.boards.net/board/15/branches","text":"Branches"},{"href":"http://cicada3301.boards.net/board/14/mobius","text":"Mobius"},{"text":"Mayfly","href":"http://cicada3301.boards.net/board/13/mayfly"},{"href":"http://cicada3301.boards.net/board/12/tree","text":"Tree"},{"text":"Cuneiform","href":"http://cicada3301.boards.net/board/11/cuneiform"},{"href":"http://cicada3301.boards.net/board/10/spiral-branches","text":"Spiral Branches"},{"text":"56","href":"http://cicada3301.boards.net/board/9/56"},{"href":"http://cicada3301.boards.net/board/8/57","text":"57"}],"title":"Rune Solving"},"_root":{"title":"Categories","items":[{"href":"/#category-3","text":"Rune Solving","submenu":"1-3"},{"submenu":"1-1","href":"/#category-1","text":"General"}]}},"placement":"bottom left"}],['screen_breakpoints',{"md":992,"sm":768,"lg":1200,"xs":0}],['user',{"is_logged_in":0,"theme_id":1,"is_staff":0,"date_format":"m/d/y","id":0,"name":"Guest","time_format":"12hr"}],['page',{"category":{"id":3,"name":"Rune Solving"},"board":{"hidden":"0","disable_post_counts":"0","description":"","id":18,"name":"Theories","threads":15,"url":"/board/18/theories","disable_posting":"0","posts":27,"display_name":"Theories","show_announcements":"1"},"thread":{"is_announcement":0,"created_by":3,"last_post_time":1474212830,"id":33,"board_id":18,"subject":"Modular Exponentiation Ciphers With Runes ","is_falling":0,"created_on":1474212830,"url":"/thread/33/modular-exponentiation-ciphers-runes","is_poll":0,"is_bookmarked":0,"is_locked":0,"is_sticky":0,"last_post_id":54,"first_post_id":54,"is_new":0}}],['default_avatar',"//storage.proboards.com/forum/images/defaultavatar.png"],['route',{"name":"thread","params":{"thread_id":"33"}}],['search_system',1],['insite_path',""],['maintenance_mode',0],['proboards.thread',{"33":{"is_poll":0,"is_bookmarked":0,"last_post_id":54,"first_post_id":54,"is_new":0,"is_sticky":0,"is_locked":0,"last_post_time":1474212830,"id":33,"board_id":18,"is_announcement":0,"created_by":3,"is_falling":0,"created_on":1474212830,"url":"/thread/33/modular-exponentiation-ciphers-runes","subject":"Modular Exponentiation Ciphers With Runes "}}],['proboards.post',{"54":{"created_on":1474212830,"liked":0,"id":54,"url":"http://cicada3301.boards.net/post/54","thread_id":33,"created_by":3}}]]);</script>
+<script>if (typeof(standard_thread_show) == 'function') standard_thread_show();
+if (typeof(standard_post_base) == 'function') standard_post_base();</script>
+
+	</head>
+	<body>
+		
+		<div id="wrapper">
+			<header>
+				<div id="banner-container" role="banner">
+					<h2 id="banner">
+						<a id="logo" href="/">Cicada3301</a>
+					</h2>
+				</div>
+				<a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+				<a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+				<div id="navigation-menu" class="ui-helper-clearfix">
+					<ul role="navigation">
+						
+							<li>
+								<a href="/">
+									Home
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/help">
+									Help
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/search">
+									Search
+									
+								</a>
+							</li>
+						
+					</ul>
+					<p id="welcome">
+						
+							Welcome Guest.  
+							
+								Please <a href="https://login.proboards.com/login/6433989/1">Login</a> or <a href="https://login.proboards.com/register/6433989">Register</a>.
+							
+						
+					</p>
+				</div>
+			</header>
+			
+			
+			
+			
+				<div id="navigation-tree">
+					<div class="nav-tree-wrapper"><ul id="nav-tree" class="ui-helper-clearfix" role="navigation"><li id="nav-tree-branch-0" class="nav-tree-branch ui-helper-clearfix has-menu"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title">Cicada3301</span></a></div><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-1" class="nav-tree-branch ui-helper-clearfix"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/board/18/theories" itemprop="url"><span itemprop="title">Theories</span></a></div><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-2" class="nav-tree-branch ui-helper-clearfix"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/thread/33/modular-exponentiation-ciphers-runes" itemprop="url"><span itemprop="title">Modular Exponentiation Ciphers With Runes </span></a></div><span class="menu_arrow"><span></span></span></li></ul></div><div class="popup_html">
+<ul id="nav-tree-menu-0" role="navigation">
+<li class="nav-tree-cat-3"><a href="/#category-3"><span class="item-text">Rune Solving</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-19"><a href="http://cicada3301.boards.net/board/19/tools"><span class="item-text">Tools</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-18"><a href="http://cicada3301.boards.net/board/18/theories"><span class="item-text">Theories</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-17"><a href="http://cicada3301.boards.net/board/17/cross"><span class="item-text">Cross</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-16"><a href="http://cicada3301.boards.net/board/16/spirals"><span class="item-text">Spirals</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-15"><a href="http://cicada3301.boards.net/board/15/branches"><span class="item-text">Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-14"><a href="http://cicada3301.boards.net/board/14/mobius"><span class="item-text">Mobius</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-13"><a href="http://cicada3301.boards.net/board/13/mayfly"><span class="item-text">Mayfly</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-12"><a href="http://cicada3301.boards.net/board/12/tree"><span class="item-text">Tree</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-11"><a href="http://cicada3301.boards.net/board/11/cuneiform"><span class="item-text">Cuneiform</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-10"><a href="http://cicada3301.boards.net/board/10/spiral-branches"><span class="item-text">Spiral Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-9"><a href="http://cicada3301.boards.net/board/9/56"><span class="item-text">56</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-8"><a href="http://cicada3301.boards.net/board/8/57"><span class="item-text">57</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-1"><a href="/#category-1"><span class="item-text">General</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-20"><a href="http://cicada3301.boards.net/board/20/philosopy"><span class="item-text">Philosopy</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-1"><a href="http://cicada3301.boards.net/board/1/general-discussion"><span class="item-text">General Discussion</span><div class="clear"></div></a></li>
+</ul>
+</li>
+</ul></div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+		var reposition   = false;
+		var showOn       = 'hover';
+		var offset       = reposition
+			? '-13 6'
+			: ($.browser.msie && parseInt($.browser.version) == 8)
+				? '3 -1'
+				: '3 0';
+		var showCallback = function(e) {
+			var self = $(this);
+			
+			// Make sure all other menus are closed
+			$('.popup_html > ul').not(self).menu('hide');
+			
+			// Hide the navigation if they leave it.
+			setTimeout(function() {
+				$(document).on('mousemove.nav', function(e) {
+					var elem = $(e.target);
+					if (
+						elem.parents('#nav-tree, .popup_html').length == 0
+						&& !elem.is('#nav-tree, .popup_html')
+						&& !self.data('hotkey-open')
+					) {
+						self.menu('hide');
+						$(document).off('.nav');
+					}
+				});
+			}, 1000);
+		}
+	
+				$('#nav-tree-menu-0')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-0'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-0'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-1')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-1'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-1'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-2')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-2'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-2'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				$('.nav-tree-cat-3').addClass('state-selected');$('.nav-tree-board-18').addClass('state-selected');
+			});
+		</script>
+	
+				</div>
+			
+			
+			
+			<div id="top-ad-banner" style="height: 90px; width: 728px; margin: 0 auto 10px; text-align: center;">
+				
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var s = $('#top-ad-banner');
+	
+				s.append('<iframe class="pb-ads" width="728" height="90" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" style=""></iframe>');
+			
+				var f = $('#top-ad-banner iframe');
+				var u = ["http://ads.proboards.com/ad.pl?as=728x90&ap=ATF&f=6433989&s=0&fc=4&d=cicada3301.boards.net&g=&a=&cb=0.054200669494314&uid=0&name=desktop_top_0"];
+	
+				f.each(function(i) {
+					$(this).attr('src', u[i]);
+				});
+			});
+		</script>
+	
+			</div>
+		<script type="text/javascript">
+	$(window).load(function() {
+		var topAd = $('#top-ad-banner');
+		if (topAd.prop('scrollHeight') < 90) {
+			var elemText = '<div id="support-message"><b>Please consider supporting this website by disabling your ad-blocker.<br />' +
+			               'This website does not use audio ads, popups, or other annoyances. Thank you!</b></div>'
+			var newElem  = $(elemText);
+			newElem.insertAfter(topAd);
+
+			var css = '<style type="text/css">#support-message { display: block !important; height: auto !important; width: 728px !important;' +
+			          'text-align: center !important; margin: 0 auto 10px !important;}</style>';
+			$("head").append(css);
+		}
+	});
+</script>
+			
+			<div id="content" role="main">
+				
+				<div class="container posts">
+	<div class="title-bar">
+		
+			<ul class="controls"><li><a class="reply-button" href="/post/new/33">Reply</a></li></ul>
+		
+		<h1>Modular Exponentiation Ciphers With Runes </h1>
+	</div>
+	<div class="control-bar ui-helper-clearfix scrollable-KJYdd6BSeIhiAXzvwsTu">
+		<div class="lm-search-KJYdd6BSeIhiAXzvwsTu ui-search"></div>
+		<div class="controls">
+			<ul class="select_menu_list ui-menu ui-selectMenu hide actions lm-actions-KJYdd6BSeIhiAXzvwsTu" data-status="Actions"><li class="sharing ui-menu-has-sub-menu"><a><span class="icon pbi-share"></span>Share Thread</a><ul><li class="facebook-share"><a><span class="icon"></span>Facebook</a></li><li class="twitter-share"><a><span class="icon"></span>Twitter</a></li><li class="gplus-share"><a><span class="icon"></span>Google+</a></li><li class="tumblr-share"><a><span class="icon"></span>Tumblr</a></li><li class="linkedin-share"><a><span class="icon"></span>LinkedIn</a></li><li class="pinterest-share"><a><span class="icon"></span>Pinterest</a></li><li class="myspace-share"><a><span class="icon"></span>MySpace</a></li><li class="email-share"><a><span class="icon"></span>Email</a></li></ul></li><li class="view ui-menu-has-sub-menu"><a><span class="icon"></span>Go to</a><ul><li class="view_prev"><a rel="nofollow"><span class="icon"></span>Previous Thread</a></li><li class="view_next"><a rel="nofollow"><span class="icon"></span>Next Thread</a></li></ul></li><li class="default-menu-option"><a>Please make a selection first</a></li></ul>
+		</div>
+		<div class="float-left"><span class="control-icons lm-icons-KJYdd6BSeIhiAXzvwsTu"><span class="new-icon"><a href="/threads/recent/33">new</a></span><span class="bookmark_icon hide"><img title="Bookmark" alt="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img title="This thread is locked" alt="Locked" src="//storage.proboards.com/forum/images/icons/lock.png" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" title="This thread is falling" alt="Falling" /></span></span></div>
+		<ul class="ui-pagination lm-pagination-KJYdd6BSeIhiAXzvwsTu"><li class="prev state-disabled"><a>&laquo; Prev</a></li><li class="state-selected"><a>1</a></li><li class="next state-disabled"><a>Next &raquo;</a></li></ul>
+	</div>
+	<div class="content cap-bottom">
+		<span class="no-labels js-no-labels"></span>
+		
+		<table class="list" role="presentation">
+			<tbody class="lm-content-KJYdd6BSeIhiAXzvwsTu">
+				
+	<tr id="post-54" class="item post first last">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile">
+	<a href="/user/3" class="o-user-link js-user-link user-link user-3 group-0" data-id="3" title="@mortlach">mortlach</a><br />
+	
+	
+	
+		Neophyte<br />
+		
+			<img src="//storage.proboards.com/forum/images/stars/star_lightblue.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_lightblue.png" alt="*" /><br />
+		
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar-3" title="mortlach"><img src="//storage.proboards.com/6433989/avatar/JSCXVO5DB5iXjb7oFsk8.jpg" alt="mortlach Avatar" /></div></div><br />
+	
+	
+	
+		<div class="info">
+			Posts: 25
+			
+			
+		</div><br />
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a class="js-thread__title-link thread-link thread-33 board-18" href="/thread/33/modular-exponentiation-ciphers-runes">Modular Exponentiation Ciphers With Runes </a>
+									<span class="date"><abbr title="Sept 18, 2016 15:33:50 GMT" data-timestamp="1474212830000" class="o-timestamp time">Sept 18, 2016 15:33:50 GMT</abbr></span>
+									
+									<span class="likes"> </span>
+								</div>
+								<div class="controls">
+									<a class="button quote-button " href="/post/54/quote/33">Quote</a>
+									
+									
+									<ul class=" options_menu post-54 user-3 hide"><li class="54-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="54-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="54-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="54-member ui-menu-has-sub-menu "><a><span class="icon pbi-user-icon"></span>Member</a><ul class=""><li class="54-giveGift"><a href="/user/3/gift"><span class="icon pbi-birthday"></span>Give Gift</a></li></ul></li><li class="54-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-54-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-54-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by mortlach on <abbr title="Sept 18, 2016 15:33:50 GMT" data-timestamp="1474212830000" class="o-timestamp time">Sept 18, 2016 15:33:50 GMT</abbr></h3>
+							<div class="message"><font color="#e61919"><b>Modular Exponentiation Ciphers With Runes <br /></b></font><br />A method to encrypt runes using exponentiation ciphers is demonstrated. These types of ciphers have many deep connections with the mathematics and computer science behind modern cryptography. The number of connected topics is huge, and ranges from the theory of integers, primes and congruences to multiplicative functions (such as Euler’s Totient Function) to the number of bitwise operations required to perform calculations on a computer and digital security. I cannot rightfully claim that The Liber Primus is a puzzle based on such concepts: it has not been solved yet! All I can say is there are many clues to this area of investigation in previous puzzles, and all public attempts at decrypting have so far been unsuccessful. <br /><br />First a simple scheme that does not work properly for runes will be explained, then a fix that makes it workable for runes is added and developed.<br /><br /><b><font color="#e61919">Example 1: <br /></font></b><br />Choose an odd prime, P, and an integer e such the greatest common divisor (gcd) of the two is 1:	<br /><br /><div style="text-align:center;"><span style="font-size:10pt;">gcd( P, e ) = 1 &nbsp;</span></div><br />The gcd of two numbers is the largest positive integer that divides the numbers without a remainder. For example gcd(8,12) is 4. (If P and e are both primes then gcd(P,e)=1 is guaranteed.)  We will chose P = 3301 and e = 29. Translate the runes in your message-text (MT) to numbers, (e.g. use their forward position in the Gematria): <br /><br /><div style="text-align:center;"><span style="font-size:10pt;">MT = A,N,I,N,S,T,R,U,C,T,IO,N,C,O,M,M,A,N,D,Y,O,U,R,O,W,N,S,E,L,F,F,O,R,A,L,L,I,S,S,A,C,R,E,D&nbsp;</span></div><div style="text-align:center;"><span style="font-size:10pt;">= 24,9,10,9,15,16,4,1,5,16,27,9,5,3,19,19,24,9,23,26,3,1,4,3,7,9,15,18,20,0,0,3,4,24,20,20,10,15,15,24,5,4,18,23&nbsp;</span></div><div style="text-align:center;"><br /></div>Element i of the cipher-text (CT) is calculated using the following formula:<br /><br /><div style="text-align:center;"><span style="font-size:10pt;">CT(i) = ( MT (i)^ 29 ) % 3301 &nbsp;</span></div>    giving:<br /><br />CT = 2120, 1686, 1892, 1686, 1035, 1595, 774, 1, 2624, 1595, 1055, 1686,2624, 1471, 2192, 2192, 2120, 1686, 756, 93, 1471, 1, 774, 1471, 2943, 1686, 1035, 2997, 861, 0, 0, 1471, 774, 2120, 861, 861, 1892, 1035, 1035, 2120, 2624, 774, 2997, 756 <br /><br />(It is interesting to note the 0,0 where message has F,F) To decipher CT we need to know the deciphering key which is an integer, d where: <br /><br /><div style="text-align:center;"><span style="font-size:10pt;">d * e = 1 % (P-1) d is an inverse of e % (P -1) &nbsp;&nbsp;</span></div><br />By ensuring gcd( P, e ) = 1 we ensure such a d exists. We can use d = 569 as 569 * 29 = 16501 = 1 % 3300&nbsp;Next we raise CT to the d’th power modulo P and recover the message:<br /><br /><br /><div style="text-align:center;"><span style="font-size:10pt;">( CT(i) ^ 569 ) % 3301 == MT(i) is true &nbsp;</span></div><br />This works well, however, in the Liber Primus we do not have CT numbers such as 2120, 1686, 1892, etc. we have runes, symbols in base 29. If we take CT modulo 29 and try the same procedure it does not work: <br /><br /><div style="text-align:center;"><span style="font-size:10pt;">CT % 29 = 3, 4, 7, 4, 20, 0, 20, 1, 14, 0, 11, 4, 14, 21, 17, 17, 3, 4, 2, 6,21, 1, 20, 21, 14, 4, 20, 10, 20, 0, 0, 21, 20, 3, 20, 20, 7, 20, 20,3, 14, 20, 10, 2&nbsp;</span></div><div style="text-align:center;"><br /></div><div style="text-align:center;"><span style="font-size:10pt;">(CT % 29) ^ 569 ) % 3301 = 1931, 1870, 1818, 1870, 2432, 0, 2432, 1, 2547, 0, 1278, 1870, 2547, 1595, 1363, 1363, 1931, 1870, 1848, 107, 1595, 1, 2432, 1595, 2547, 1870, 2432, 1316, 2432, 0, 0, 1595, 2432, 1931, 2432, 2432, 1818, 2432, 2432, 1931, 2547, 2432, 1316, 1848 (and blatantly != MT)&nbsp;</span></div><div style="text-align:center;"><br /></div><font color="#e61919"><b>Example 2:<br /></b></font><br />One way to recover from the problems in Example 1 is to choose P = 29. Then everything works fine, let:<br /><br /><div style="text-align:center;"><span style="font-size:10pt;">P = 29, e = 3301, d = 9 (as 9 * 3301 = 29709 = 1 % 28 ) &nbsp;&nbsp;</span></div><span>&nbsp; &nbsp;&nbsp;</span>giving:<br /><div style="text-align:center;"><span style="font-size:10pt;">CT(i) = ( MT (i)^ 3301 ) % 29 = 16, 22, 27, 22, 8, 25, 5, 1, 13, 25, 18, 22, 13, 14, 2, 2, 16, 22, &nbsp;</span></div><div style="text-align:center;"><span style="font-size:10pt;">20, 15, 14, 1, 5, 14, 23, 22, 8, 10, 7, 0, 0, 14, 5, 16, 7, 7, 27, 8, 8, 16, 13, 5, 10, 20 &nbsp;</span></div><br /><div style="text-align:center;"><span style="font-size:10pt;">CT(i) ^ 9 % 29 == MT(i) is true &nbsp;</span></div><b><font color="#e61919"><br />Adjustments to Match Frequency Distribution of the Liber Primus<br /></font></b><br />There is one more adjustment that needs to be made. CT using the above method does not match the <a href="http://imgur.com/D7wpFZG" target="_blank" rel="nofollow">frequency analysis of the Liber Primus</a> CT and <a href="" rel="nofollow" target="_blank"></a><a href="" target="_blank" rel="nofollow">here</a>.&nbsp;<br /><br />There are two simple ways to fix this, the first is to find encryption keys, e, that when used to encrypt naturally give a low number of repeats and relatively uniform index of coincidence, (for example e could be a list of suitably chosen primes…). <a href="" target="_blank" rel="nofollow">This method has been shown to work for other encryption algorithms</a> <br /><br />We will not show a suitable e here, but assume one can be found. <br /><br />Another method is to modify the algorithm as <a href="" rel="nofollow" target="_blank">discussed elsewhere</a>: <br /><br /><br />First choose a shift of the Gematria such that a low frequency rune in the message has a value of 0, then when encrypting add the previous CT rune, giving the resultant CT a “memory” and naturally low numbers of repeated runes: <br /><br />    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>If i == 0<br /><span>&nbsp; &nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>CT [ 0 ] = MT[0] ^ e[0] ) % 29<br /><span>&nbsp; &nbsp;&nbsp;</span>else<br /><span>&nbsp; &nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>CT(i) = (  MT(i) ^ e(i) + CT( i-1 )  ) % 29<br /><b><font color="#e61919"><br />Comments<br /></font></b><br />I have tried to outline a simple implementation of a workable, rune-based, modular, exponentiation cipher. As with all methods there are many different and interesting variations. For example, using the rune-prime-equivalents for e gives a (mostly) workable solution, with just a few collisions. When a collision happens there is more than 1 rune that can encrypt to the same CT, these can generally be spotted by eye and are easy to correct as ~95 % of the message is generally readable. <br />Types of e that could be used are the rune-prime-equivalents of the message, the cipher text, a keyphrase, etc. etc. etc. <br /><br />*Comments, questions, suggestions, omissions etc ? please try <a href="http://webchat.freenode.net/?channels=cicadasolvers" rel="nofollow" target="_blank">#cicadasolvers</a><br /><br />MSGA <br /><br /><br /></div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+							<div class="edited_by"><span class="italic">Last Edit:</span> <abbr class="o-timestamp time" data-timestamp="1481369011000" title="Dec 10, 2016 11:23:31 GMT">Dec 10, 2016 11:23:31 GMT</abbr> by <a href="/user/3" class="o-user-link js-user-link user-link user-3 group-0" data-id="3" title="@mortlach">mortlach</a></div>
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+<div class="container quick-reply">
+	<div class="title-bar">
+		<ul class="controls"><li><a class="reply-button" href="/post/new/33">Reply</a></li></ul>
+		<h2>Quick Reply</h2>
+	</div>
+	<div class="content cap-bottom">
+		<form id="form_S1amIRII" class="form_post_quick_reply js-form-post-quick-reply" role="form" action="/post/create/33" method="post">
+<input type="hidden" id="form_S1amIRII_ga_client_id_input" name="ga_client_id" />
+<input type="hidden" id="form_S1amIRII_message_mode_input" name="message_mode" value="bbcode" />
+<input type="hidden" id="form_S1amIRII_captcha_id_input" name="captcha_id" value="captcha_init" />
+<input type="hidden" id="form_S1amIRII_reply_mode_input" name="reply_mode" value="quick_reply" /><noscript><ul class="noscript-form-error"></ul></noscript>
+			
+			<div class="guest_name">
+				<label>Guest Name:</label>
+				<input type="text" id="form_S1amIRII_created_by_guest_name_input" name="created_by_guest_name" class="full-width" maxlength="30" />
+			</div>
+			
+			<div class="message">
+				<textarea id="form_S1amIRII_message_input" name="message" accesskey="q"></textarea>
+			</div>
+			
+            <div id="captcha-container">
+                <div style="width: 308px; height: auto;">
+                <div id="fun-captcha-container"></div>
+                </div>
+                <noscript>
+                    
+                    
+        <iframe src="https://funcaptcha.com/fc/api/nojs/?pkey=C0F5B1D6-CFF5-1D52-0F76-87F4E9F50EC0" frameborder="0" scrolling="no" style="width: 308px; height: auto; border-style: none;"></iframe>
+        <div style="width: 306px;height: 60px;border-style: none;bottom: 12px;left: 25px;margin: 5px 0 0 0;padding: 0px;right: 25px;background: #ffffff;border: 1px solid #f7f7f7;border-radius: 5px;">
+            <input type="text" id="fc-token" name="fc-token" placeholder="Copy verification code into here" style="width: 270px;height: 24px;border: 1px solid #f7f7f7;border-radius: 5px;padding: 10px;margin: 7px;resize: none;font-size: 11px;-webkit-font-smoothing: antialiased;color: #212121;background: #f7f7f7;text-align: center;">
+        </div>
+    
+                    <div style="margin: 20px 0 15px 0;"><input type="checkbox" name="tos" style="margin-right: 15px; vertical-align: middle; position: relative; bottom: 1px;" />I agree to the <a href="http://www.proboards.com/tos" target="_blank">ProBoards Terms of Service</a>.</div>
+                    <style>#captcha-container { display: block; text-align: left !important; padding-left: 10px; }</style>
+                </noscript>
+            </div>
+        
+			<input id="form_S1amIRII_post_button" name="post" value="Post Quick Reply" type="submit" class="ui-button" />
+		</form>
+		<script>
+		$(document).ready(function() {
+			
+			
+			$('#form_S1amIRII').form({
+				create: function(e) {var pbCaptchaOpts = proboards.data("captcha_init");if (pbCaptchaOpts) { proboards.captcha.init(pbCaptchaOpts); }},
+				submit: function(e) {proboards.autosave.clear();},
+				beforeSubmit: function(e) {proboards.data('submitting', 1);
+
+				try {
+					$('#form_S1amIRII_ga_client_id_input').val(
+						proboards.analytics.google.getClientId()
+					);
+				} catch(e) {}
+			},
+				validations: [{"message":"You must provide a message.","field":"message","name":"exists","opts":{"fields":["message_mode"]}},{"field":"created_by_guest_name","message":"You must provide a guest name.","opts":{},"name":"exists"}],
+				errors: {},
+				positionError: null
+			});
+		});
+		</script>
+	</div>
+</div>
+
+				
+			</div>
+			
+			<script type="text/javascript" src="http://ads.pro-market.net/ads/scripts/site-131222.js"></script>
+			<div id="bottom-ad-banner" style="display: flex; width: 700px; max-width: 100%;min-height: 250px; margin: 0 auto 10px; text-align: center; justify-content: space-around;flex-wrap: wrap">
+				
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var s = $('#bottom-ad-banner');
+	
+				s.append('<iframe class="pb-ads" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" style="margin-bottom: 10px;"></iframe>');
+			
+				s.append('<iframe class="pb-ads" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" style="margin-bottom: 10px;"></iframe>');
+			
+				var f = $('#bottom-ad-banner iframe');
+				var u = ["http://ads.proboards.com/ad.pl?as=300x250&ap=BTF&f=6433989&s=0&fc=4&d=cicada3301.boards.net&g=&a=&cb=0.536200822269567&uid=0&name=desktop_bot_0","http://ads.proboards.com/ad.pl?as=300x250&ap=BTF&f=6433989&s=0&fc=4&d=cicada3301.boards.net&g=&a=&cb=0.743528608409321&uid=0&name=desktop_bot_1"];
+	
+				f.each(function(i) {
+					$(this).attr('src', u[i]);
+				});
+			});
+		</script>
+	
+			</div>
+		
+			<footer class="c-footer" role="contentinfo">
+				<div class="c-footer__text o-wrapper u-text-center">
+					<div id="remove_ads_link"><a href="https://www.proboards.com/store/add_cart/ad_free/50000/cicada3301.boards.net/1">Click here to remove banner ads from this forum.</a></div>This Forum Is Hosted For FREE By <a href="http://www.proboards.com" target="_blank">ProBoards</a><br />Get Your Own <a href="https://www.proboards.com/create-free-forum" target="_blank">Free Forum</a>!
+				</div>
+				<div class="c-footer__links o-wrapper u-text-center">
+					<a href="http://www.proboards.com/tos" accesskey="8">Terms of Service</a> | 
+					<a href="http://www.proboards.com/privacy">Privacy Policy</a> | 
+					<a href="http://www.proboards.com/privacy#enhanced">Notice</a> | 
+					<a href="http://www.viglink.com/policies/ftc" target="_blank">FTC Disclosure</a> | 
+					<a href="http://www.proboards.com/report-abuse" accesskey="7">Report Abuse</a>
+					 | <a href="http://ads.proboards.com/ad-report.html" title="Report Ad">Report Ad</a>
+					 | <a href="http://www.proboards.com/ads"><b>Advertise Here</b></a>
+				</div>
+			</footer>
+
+		</div>
+		
+	</body>
+</html>

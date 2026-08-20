@@ -1,0 +1,533 @@
+<!DOCTYPE HTML>
+	<!--[if IE 7]><html class="ie7"><![endif]--><!--[if IE 8]><html class="ie8"><![endif]--><!--[if IE 9]><html class="ie9"><![endif]--><!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>How To Decrypt the Runes 3: The Vigenère cipher | Cicada3301</title>
+		<script>
+        var pbtp = {fc: 4,fi: 6433989};
+        var pbrp = {m:false};
+        var _ARS_ = _ARS_ || {};
+        _ARS_.customReport = { forum_id: 6433989, user_id: 0 };
+        </script>
+        <script src="http://ads.proboards.com/logger/combined.js?508"></script>
+<link rel="canonical" href="http://cicada3301.boards.net/thread/38/decrypt-runes-vigen-re-cipher" />
+<link rel="alternate" type="application/rss+xml" href="http://cicada3301.boards.net/rss/public" />
+<link rel="shortcut icon" type="image/x-icon" href="//storage.proboards.com/forum/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="//storage.proboards.com/forum/images/favicon.ico" />
+<meta property="og:url"         content="http://cicada3301.boards.net/thread/38/decrypt-runes-vigen-re-cipher" />
+<meta property="og:title"       content="How To Decrypt the Runes 3: The Vigenère cipher | Cicada3301" />
+<meta property="og:description" content="Introduction    This is another long post, we have many interesting things to cover. It&nbsp;follows on from part 1 and part 2, where we developed some useful tools and a general method for solving" />
+<meta property="og:type"        content="website" />
+<meta name="twitter:card"               content="summary" />
+<meta name="twitter:site"               content="@proboards" />
+<meta name="twitter:app:id:iphone"      content="307880732" />
+<meta name="twitter:app:url:iphone"     content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=38&amp;perpage=15&amp;page=1" />
+<meta name="twitter:app:id:ipad"        content="307880732" />
+<meta name="twitter:app:url:ipad"       content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=38&amp;perpage=15&amp;page=1" />
+<meta name="twitter:app:id:googleplay"  content="com.quoord.tapatalkpro.activity" />
+<meta name="twitter:app:url:googleplay" content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=38&amp;perpage=15&amp;page=1" />
+<meta property="al:ios:url" content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=38&amp;perpage=15&amp;page=1" />
+<meta property="al:ios:app_store_id" content="307880732" />
+<meta property="al:ios:app_name" content="Tapatalk" />
+<meta property="al:android:package" content="com.quoord.tapatalkpro.activity" />
+<meta property="al:android:url" content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=38&amp;perpage=15&amp;page=1" />
+<meta property="al:android:app_name" content="Tapatalk" />
+<link href="android-app://com.quoord.tapatalkpro.activity/tapatalk/cicada3301.boards.net?fid=19&amp;location=topic&amp;tid=38&amp;perpage=15&amp;page=1" rel="alternate" />
+<link href="ios-app://307880732/tapatalk/cicada3301.boards.net?fid=19&amp;location=topic&amp;tid=38&amp;perpage=15&amp;page=1" rel="alternate" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/forum/css/0/forum_base_508.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/6433989/css/w8taoZpniIqJS0joSHjj.css" id="forum_style" />
+<link rel="stylesheet" type="text/css" media="print" href="//storage.proboards.com/forum/css/0/print_508.css" />
+<script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en-US"></script>
+<script>translatePo = { language: 'en_US' };</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>var tortoise = undefined;</script>
+<script src="//storage.proboards.com/forum/js/tortoise.min.js" integrity="sha384-5Xarr7yZbNCR8IIsrcy80rZVH1nqdJ6D8ixzKAbaYWX3eBInhvQ38L3EVv87QH32" crossorigin="anonymous"></script>
+
+		<script>
+			var hatch = function() {
+				$(document.body).append('<img src="//tortoise.proboards.com/tortoise.pl?forum_id=6433989&mobile=0&rand=0.583634093766896&field=amount_guest" alt="" />');
+			}
+			if(typeof Tortoise === 'undefined') {
+				$(document).ready(function() {
+					hatch();
+				});
+			} else {
+				tortoise.on(true, hatch);
+			}
+		</script>
+<script type="text/javascript" src="//storage.proboards.com/forum/js/proboards.combined_508.js"></script>
+<script type="text/javascript" src="https://funcaptcha.com/fc/api/?onload=loadFunCaptcha"></script>
+
+		<!-- Google Analytics Start -->
+		<script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-3734504-3', 'auto' , {"sampleRate":5});
+		</script>
+		<!-- Google Analytics End -->
+	
+
+		<script type="text/javascript">
+			var vglnk;
+			$(document).ready(function() {
+				$('a').each(function() {
+					if($(this).prop('href').indexOf('login.proboards.com') !== -1) {
+						$(this).addClass('norewrite');
+					}
+				});
+
+				vglnk = {
+					api_url: '//api.viglink.com/api', key: 'bbb516d91daee20498798694a42dd559'
+				};
+				var vglnkSrc = ('https:' == document.location.protocol ? vglnk.api_url : '//cdn.viglink.com/api') + '/vglnk.js';
+
+				// VigLink ProBoards Convert Code (using above key)
+				var s = document.createElement('script');
+				s.type = 'text/javascript'; s.async = true; s.src = vglnkSrc;
+				document.body.appendChild(s);
+
+				var retry = 0;
+				var reV = function() {
+					if (typeof vglnk !== 'function' && retry++ < 5) {
+						setTimeout(reV, 500);
+					}
+					else if (typeof vglnk !== 'function') {
+						$('a').not('.norewrite').each(function() {
+							var url = $(this).prop('href');
+							if (url.indexOf('http') === 0 && url.indexOf(document.domain) === -1) {
+								$(this).prop('href', 'http://redirect.viglink.com?key=bbb516d91daee20498798694a42dd559&u=' + escape(url));
+							}
+						});
+					}
+				};
+				reV();
+			});
+		</script>
+	
+<script>
+            window.runAntiAdBlock = 1;
+        </script>
+<script>proboards.data([['forum_url',"cicada3301.boards.net"],['ad_free',0],['locale_settings',{"input_time_format":12,"thousands_separator":null,"input_date_regex":"^(\\d{2})/(\\d{2})/(\\d{4})$","input_date_format":"%m/%d/%Y","amcharts_date_format":"MM/DD/YYYY","input_time_placeholder":"hh:mm pp","input_date_placeholder":"mm/dd/yyyy"}],['image_path',"//storage.proboards.com/forum/images"],['time_style',0],['military_time',0],['timezone',"guest"],['serverDate',1517223301000],['search-query-min',3],['search-query-max',50],['is_current_user_guest',"1"],['plugin_max_key_length',4000],['plugin_max_super_forum_key_length',32000],['login_url',"https://login.proboards.com/login/6433989/1"],['register_url',"https://login.proboards.com/register/6433989"],['page_url',""],['range_string',"This event begins <img src=\"//storage.proboards.com/forum/images/icons/event.png\" alt=\"- \" title=\"Event\" />&nbsp;<abbr title=\"Jan 29, 2018 10:55:01 GMT\" data-timestamp=\"0000\" class=\"o-timestamp time\">Jan 29, 2018 10:55:01 GMT</abbr>"],['captcha_init',{"captcha_errors":0,"captcha_id":"captcha_init","no_validations":0,"tos":{"name":"ProBoards Terms of Service","url":"http://www.proboards.com/tos"},"attempts":0,"adfree":"","mobile":0,"errors":0,"captcha_container_id":"captcha-container","no_popup":0,"recaptcha_version":null,"captcha_error_origin":null,"form_id":"form_bdREBeEs","key":"C0F5B1D6-CFF5-1D52-0F76-87F4E9F50EC0"}],['quick_reply',1],['forum_id',"6433989"],['thread_id',"38"],['thread_subject',"How To Decrypt the Runes 3: The Vigenère cipher"],['labels_applied',[]],['accessible_label_ids_applied',[]],['board_id',"19"],['search_filter_img_src',"//storage.proboards.com/forum/images/icon-search-filters.png"],['options_img_src',"//storage.proboards.com/forum/images/icon-options.png"],['options_img_alt',"Post Options"],['options_img_title',"Post Options"],['lm_total',"2"],['lm_limit',15],['lm_page',1],['lm_data',{"thread_id":"38"}],['lm_id',"kUahL81azjzF0hSJHSCN"],['lm_thread_next',"/thread/next/38"],['lm_thread_prev',"/thread/previous/38"],['sharing_options',{"tumblr_enabled":1,"linkedin_enabled":1,"email_enabled":1,"enabled":1,"reddit_enabled":1,"pinterest_enabled":1,"facebook_enabled":1,"myspace_enabled":1,"twitter_card_site":"","google_enabled":1,"twitter_enabled":1}],['page_cache',".lm-content-kUahL81azjzF0hSJHSCN"],['labels_accessible',[]],['labels_viewable',[]],['_google_analytics_events',[{"hitType":"pageview"}]],['pop_menu_structure',{"startingMenu":"_root","menuStructure":{"1-1":{"title":"General","items":[{"href":"http://cicada3301.boards.net/board/20/philosopy","text":"Philosopy","addSeparator":null},{"href":"http://cicada3301.boards.net/board/1/general-discussion","text":"General Discussion","addSeparator":null}]},"_root":{"title":"Categories","items":[{"addSeparator":1,"text":"Home","href":"/forum"},{"submenu":"1-3","text":"Rune Solving","addSeparator":null,"href":"/#category-3"},{"submenu":"1-1","href":"/#category-1","addSeparator":null,"text":"General"}]},"1-3":{"items":[{"href":"http://cicada3301.boards.net/board/19/tools","addSeparator":null,"text":"Tools"},{"href":"http://cicada3301.boards.net/board/18/theories","addSeparator":null,"text":"Theories"},{"text":"Cross","addSeparator":null,"href":"http://cicada3301.boards.net/board/17/cross"},{"href":"http://cicada3301.boards.net/board/16/spirals","addSeparator":null,"text":"Spirals"},{"href":"http://cicada3301.boards.net/board/15/branches","addSeparator":null,"text":"Branches"},{"text":"Mobius","addSeparator":null,"href":"http://cicada3301.boards.net/board/14/mobius"},{"addSeparator":null,"text":"Mayfly","href":"http://cicada3301.boards.net/board/13/mayfly"},{"text":"Tree","addSeparator":null,"href":"http://cicada3301.boards.net/board/12/tree"},{"href":"http://cicada3301.boards.net/board/11/cuneiform","text":"Cuneiform","addSeparator":null},{"href":"http://cicada3301.boards.net/board/10/spiral-branches","addSeparator":null,"text":"Spiral Branches"},{"text":"56","addSeparator":null,"href":"http://cicada3301.boards.net/board/9/56"},{"text":"57","addSeparator":null,"href":"http://cicada3301.boards.net/board/8/57"}],"title":"Rune Solving"}},"positionOffsetY":10,"positionAgainstSelector":".o-breadcrumbs","placement":"bottom left","addMenuClass":"c-pop-menu","opensOn":"click"}],['screen_breakpoints',{"lg":1200,"sm":768,"md":992,"xs":0}],['user',{"id":0,"is_logged_in":0,"time_format":"12hr","theme_id":1,"is_staff":0,"date_format":"m/d/y","name":"Guest"}],['page',{"thread":{"created_on":1477142699,"is_poll":0,"id":38,"is_bookmarked":0,"created_by":3,"last_post_time":1514502115,"board_id":19,"is_sticky":0,"first_post_id":61,"is_new":0,"url":"/thread/38/decrypt-runes-vigen-re-cipher","subject":"How To Decrypt the Runes 3: The Vigenère cipher","is_falling":0,"last_post_id":103,"is_announcement":0,"is_locked":0},"category":{"id":3,"name":"Rune Solving"},"board":{"disable_posting":"0","disable_post_counts":"0","name":"Tools","display_name":"Tools","id":19,"posts":18,"url":"/board/19/tools","show_announcements":"1","hidden":"0","threads":12,"description":""}}],['default_avatar',"//storage.proboards.com/forum/images/defaultavatar.png"],['route',{"params":{"thread_id":"38"},"name":"thread"}],['search_system',1],['insite_path',""],['maintenance_mode',0],['proboards.thread',{"38":{"created_by":3,"id":38,"is_bookmarked":0,"is_poll":0,"created_on":1477142699,"board_id":19,"is_sticky":0,"last_post_time":1514502115,"subject":"How To Decrypt the Runes 3: The Vigenère cipher","url":"/thread/38/decrypt-runes-vigen-re-cipher","is_new":0,"first_post_id":61,"is_locked":0,"last_post_id":103,"is_announcement":0,"is_falling":0}}],['proboards.post',{"103":{"thread_id":38,"id":103,"url":"http://cicada3301.boards.net/post/103","liked":0,"created_by":0,"created_on":1514502115},"61":{"created_by":3,"liked":0,"url":"http://cicada3301.boards.net/post/61","thread_id":38,"id":61,"created_on":1477142699}}]]);</script>
+<script>if (typeof(standard_thread_show) == 'function') standard_thread_show();
+if (typeof(standard_post_base) == 'function') standard_post_base();</script>
+
+	</head>
+	<body>
+		
+		<div id="wrapper">
+			<header>
+				<div id="banner-container" role="banner">
+					<h2 id="banner">
+						<a id="logo" href="/">Cicada3301</a>
+					</h2>
+				</div>
+				<a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+				<a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+				<div id="navigation-menu" class="ui-helper-clearfix">
+					<ul role="navigation">
+						
+							<li>
+								<a href="/">
+									Home
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/help">
+									Help
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/search">
+									Search
+									
+								</a>
+							</li>
+						
+					</ul>
+					<p id="welcome">
+						
+							Welcome Guest.  
+							
+								Please <a href="https://login.proboards.com/login/6433989/1">Login</a> or <a href="https://login.proboards.com/register/6433989">Register</a>.
+							
+						
+					</p>
+				</div>
+			</header>
+			
+			
+			
+			
+				<div id="navigation-tree">
+					<div class="nav-tree-wrapper"><ul id="nav-tree" class="ui-helper-clearfix" role="navigation"><li id="nav-tree-branch-0" class="nav-tree-branch ui-helper-clearfix has-menu"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title">Cicada3301</span></a></div><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-1" class="nav-tree-branch ui-helper-clearfix"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/board/19/tools" itemprop="url"><span itemprop="title">Tools</span></a></div><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-2" class="nav-tree-branch ui-helper-clearfix"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/thread/38/decrypt-runes-vigen-re-cipher" itemprop="url"><span itemprop="title">How To Decrypt the Runes 3: The Vigenère cipher</span></a></div><span class="menu_arrow"><span></span></span></li></ul></div><div class="popup_html">
+<ul id="nav-tree-menu-0" role="navigation">
+<li class="nav-tree-cat-3"><a href="/#category-3"><span class="item-text">Rune Solving</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-19"><a href="http://cicada3301.boards.net/board/19/tools"><span class="item-text">Tools</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-18"><a href="http://cicada3301.boards.net/board/18/theories"><span class="item-text">Theories</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-17"><a href="http://cicada3301.boards.net/board/17/cross"><span class="item-text">Cross</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-16"><a href="http://cicada3301.boards.net/board/16/spirals"><span class="item-text">Spirals</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-15"><a href="http://cicada3301.boards.net/board/15/branches"><span class="item-text">Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-14"><a href="http://cicada3301.boards.net/board/14/mobius"><span class="item-text">Mobius</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-13"><a href="http://cicada3301.boards.net/board/13/mayfly"><span class="item-text">Mayfly</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-12"><a href="http://cicada3301.boards.net/board/12/tree"><span class="item-text">Tree</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-11"><a href="http://cicada3301.boards.net/board/11/cuneiform"><span class="item-text">Cuneiform</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-10"><a href="http://cicada3301.boards.net/board/10/spiral-branches"><span class="item-text">Spiral Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-9"><a href="http://cicada3301.boards.net/board/9/56"><span class="item-text">56</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-8"><a href="http://cicada3301.boards.net/board/8/57"><span class="item-text">57</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-1"><a href="/#category-1"><span class="item-text">General</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-20"><a href="http://cicada3301.boards.net/board/20/philosopy"><span class="item-text">Philosopy</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-1"><a href="http://cicada3301.boards.net/board/1/general-discussion"><span class="item-text">General Discussion</span><div class="clear"></div></a></li>
+</ul>
+</li>
+</ul></div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+		var reposition   = false;
+		var showOn       = 'hover';
+		var offset       = reposition
+			? '-13 6'
+			: ($.browser.msie && parseInt($.browser.version) == 8)
+				? '3 -1'
+				: '3 0';
+		var showCallback = function(e) {
+			var self = $(this);
+			
+			// Make sure all other menus are closed
+			$('.popup_html > ul').not(self).menu('hide');
+			
+			// Hide the navigation if they leave it.
+			setTimeout(function() {
+				$(document).on('mousemove.nav', function(e) {
+					var elem = $(e.target);
+					if (
+						elem.parents('#nav-tree, .popup_html').length == 0
+						&& !elem.is('#nav-tree, .popup_html')
+						&& !self.data('hotkey-open')
+					) {
+						self.menu('hide');
+						$(document).off('.nav');
+					}
+				});
+			}, 1000);
+		}
+	
+				$('#nav-tree-menu-0')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-0'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-0'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-1')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-1'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-1'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-2')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-2'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-2'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				$('.nav-tree-cat-3').addClass('state-selected');$('.nav-tree-board-19').addClass('state-selected');
+			});
+		</script>
+	
+				</div>
+			
+			
+			
+        <iframe id="ad1" data-id="pb-top-ad" style="display: block; margin: 0 auto 10px;"></iframe>
+        <script>pbjs=pbjs||{que:[]};pbjs.que.push(function() {topAd.init(document.getElementById('ad1'));});</script>
+    
+			
+			<div id="content" role="main">
+				
+				<div class="container posts">
+	<div class="title-bar">
+		
+			<ul class="controls"><li><a href="/post/new/38" class="reply-button">Reply</a></li></ul>
+		
+		<h1>How To Decrypt the Runes 3: The Vigenère cipher</h1>
+	</div>
+	<div class="control-bar ui-helper-clearfix scrollable-kUahL81azjzF0hSJHSCN">
+		<div class="lm-search-kUahL81azjzF0hSJHSCN ui-search"></div>
+		<div class="controls">
+			<ul class="select_menu_list ui-menu ui-selectMenu hide actions lm-actions-kUahL81azjzF0hSJHSCN" data-status="Actions"><li class="sharing ui-menu-has-sub-menu"><a><span class="icon pbi-share"></span>Share Thread</a><ul><li class="facebook-share"><a><span class="icon"></span>Facebook</a></li><li class="twitter-share"><a><span class="icon"></span>Twitter</a></li><li class="gplus-share"><a><span class="icon"></span>Google+</a></li><li class="tumblr-share"><a><span class="icon"></span>Tumblr</a></li><li class="linkedin-share"><a><span class="icon"></span>LinkedIn</a></li><li class="pinterest-share"><a><span class="icon"></span>Pinterest</a></li><li class="myspace-share"><a><span class="icon"></span>MySpace</a></li><li class="email-share"><a><span class="icon"></span>Email</a></li></ul></li><li class="view ui-menu-has-sub-menu"><a><span class="icon"></span>Go to</a><ul><li class="view_prev"><a rel="nofollow"><span class="icon"></span>Previous Thread</a></li><li class="view_next"><a rel="nofollow"><span class="icon"></span>Next Thread</a></li></ul></li><li class="default-menu-option"><a>Please make a selection first</a></li></ul>
+		</div>
+		<div class="float-left"><span class="control-icons lm-icons-kUahL81azjzF0hSJHSCN"><span class="new-icon"><a href="/threads/recent/38">new</a></span><span class="bookmark_icon hide"><img alt="Bookmark" title="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" alt="Locked" title="This thread is locked" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" alt="Falling" title="This thread is falling" /></span></span></div>
+		<ul class="ui-pagination lm-pagination-kUahL81azjzF0hSJHSCN"><li class="prev state-disabled"><a>&laquo; Prev</a></li><li class="state-selected"><a>1</a></li><li class="next state-disabled"><a>Next &raquo;</a></li></ul>
+	</div>
+	<div class="content cap-bottom">
+		<span class="no-labels js-no-labels"></span>
+		
+		<table class="list" role="presentation">
+			<tbody class="lm-content-kUahL81azjzF0hSJHSCN">
+				
+	<tr id="post-61" class="item post first">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile">
+	<a title="@mortlach" class="o-user-link js-user-link user-link user-3 group-0" data-id="3" href="/user/3">mortlach</a><br />
+	
+	
+	
+		Neophyte<br />
+		
+			<img alt="*" src="//storage.proboards.com/forum/images/stars/star_lightblue.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_lightblue.png" /><br />
+		
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar-3" title="mortlach"><img src="//storage.proboards.com/6433989/avatar/JSCXVO5DB5iXjb7oFsk8.jpg" alt="mortlach Avatar" /></div></div><br />
+	
+	
+	
+		<div class="info">
+			Posts: 25
+			
+			
+		</div><br />
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a class="js-thread__title-link thread-link thread-38 board-19" href="/thread/38/decrypt-runes-vigen-re-cipher">How To Decrypt the Runes 3: The Vigenère cipher</a>
+									<span class="date"><abbr class="o-timestamp time" data-timestamp="1477142699000" title="Oct 22, 2016 13:24:59 GMT">Oct 22, 2016 13:24:59 GMT</abbr></span>
+									
+									<span class="likes"> </span>
+								</div>
+								<div class="controls">
+									<a href="/post/61/quote/38" class="button quote-button ">Quote</a>
+									
+									
+									<ul class=" options_menu post-61 user-3 hide"><li class="61-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="61-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="61-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="61-member ui-menu-has-sub-menu "><a><span class="icon pbi-user-icon"></span>Member</a><ul class=""><li class="61-giveGift"><a href="/user/3/gift"><span class="icon pbi-birthday"></span>Give Gift</a></li></ul></li><li class="61-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-61-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-61-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by mortlach on <abbr class="o-timestamp time" data-timestamp="1477142699000" title="Oct 22, 2016 13:24:59 GMT">Oct 22, 2016 13:24:59 GMT</abbr></h3>
+							<div class="message"><b><font color="#e61919">Introduction <br /></font></b><br /><br />This is another long post, we have many interesting things to cover. It&nbsp;follows on from <a rel="norewrite" target="_blank" href="http://cicada3301.boards.net/thread/36/decrypt-runes-1-basic-tools">part 1 </a>and <a rel="norewrite" target="_blank" href="http://cicada3301.boards.net/thread/37/decrypt-runes-first-pages-solved">part 2</a>, where we developed some useful tools and a general method for solving pages based on: looking for patterns, forming a hypothesis and scoring many possibilities. In this post we will solve Pages 3-4 and Pages 14-16 (using the page numbering from this <a href="https://github.com/rtkd/idkfa" target="_blank" rel="nofollow">github</a>). Last time we noticed they had lower 1-gram and 2-gram IoC values than true Runeglish:<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1-gram IoC &nbsp; &nbsp; 2-gram IoC<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br />War &amp; Peace &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.77 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		4.97<br /><br />Pages 3-4 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	1.17&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.59<br /><br />Pages 14-16 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	1.11 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.89<br /><br /><br />These numbers suggest that trying a simple substitution cipher won’t be useful, and that is what we find. Therefore, we must try and find a different pattern. There are many different ways to solve these pages, here we will discuss techniques that use our pre-built tools and try and exploit information that we use when trying to decrypt the unsolved pages. In particular we will use the rune-word lengths. Before we do that we should discuss another way of thinking about substitution ciphers. <br /><br /><br /><b><font color="#e61919">Rune Addition <br /></font></b><br />The substitution cipher and shifting the runes using the <a rel="nofollow" target="_blank" href="http://imgur.com/a/D5eBa">cipher discs</a>&nbsp;are related to the arithmetic of addition. This is because we can represent the shifts with numbers. For example, consider the following:<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;ᚠ [0th rune in Gematria] &nbsp;= &nbsp;F <br />&nbsp; &nbsp;&nbsp;ᚢ [1st rune in Gematria] &nbsp;= &nbsp;U<br />&nbsp; &nbsp;&nbsp;ᚦ [2nd rune in Gematria] &nbsp;= TH … <br /><br />The number of runes from ᚠ to ᚢ is 1 so:<br /><br />&nbsp; &nbsp;&nbsp;ᚠ + 1 [0th rune + 1]  =  ᚢ = U <br />&nbsp;&nbsp;&nbsp;&nbsp;ᚠ + 2 [0th rune + 2]  =  ᚦ = TH …<br /><br />(In a very real sense) we have defined what it means to add a number to rune, with the result being another rune. In general, shifting a cipher disc N steps is similar to adding N to a rune to give a new rune. The cipher disc also gives us a visual way of showing what happens when we add numbers greater than the number of runes, the disc spins back round to the start and we keep counting, just like a clock. For example:<br /><br /><br />&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ᚠ + 29 [0th rune + 29]  = ᚠ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		ᚠ + 30[0th rune + 30]  = ᚢ, ...<br /><br />Of course, we don’t need to use numbers, they’re just symbols, we could use the runes themselves to represent the numbers, or the Gematria Letters, (or anything, as long as we are consistent). In general, we can seamlessly switch between using numbers, runes or letters, and from now on we will. <br /><br /><b><font color="#e61919">Encryption with Rune Addition <br /><br /></font></b><br />We can use rune-addition to encrypt a message, if we add the same number to each rune this is the same substitution cipher discussed last time:<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Message Text (MT)&nbsp;= ᚠ,&nbsp; ᚩ,&nbsp;&nbsp;&nbsp;ᚱ,&nbsp; &nbsp;ᚪ,&nbsp; &nbsp; ᛚ,&nbsp; &nbsp;&nbsp; ᛚ,&nbsp; &nbsp; &nbsp;ᛁ,&nbsp;&nbsp;&nbsp;&nbsp;ᛋ, &nbsp; &nbsp;ᛋ,&nbsp; &nbsp; &nbsp;ᚪ,&nbsp;&nbsp;&nbsp;ᚳ,&nbsp; &nbsp;ᚱ,&nbsp; &nbsp;ᛖ,&nbsp;&nbsp;&nbsp;ᛞ<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;MT(Letters) &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;= F,&nbsp; O,&nbsp; &nbsp;R,&nbsp;&nbsp;A,&nbsp; &nbsp;L,&nbsp;&nbsp;&nbsp;&nbsp;L,&nbsp;&nbsp;&nbsp;&nbsp;I, &nbsp; &nbsp;S, &nbsp; S,&nbsp; &nbsp;&nbsp;A,&nbsp;&nbsp;&nbsp;C,&nbsp;&nbsp;R,&nbsp;&nbsp;E,&nbsp;&nbsp;&nbsp;D<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;MT(numbers)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 0,&nbsp;&nbsp;&nbsp;3,&nbsp; &nbsp;4,&nbsp;&nbsp;24,&nbsp; 20,&nbsp;&nbsp;20,&nbsp; 10,&nbsp;15, 15,&nbsp;&nbsp;24,&nbsp; 5,&nbsp;&nbsp;4,&nbsp;&nbsp;18,&nbsp; 23<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;MT(numbers)+1 &nbsp; &nbsp; &nbsp;= 1,&nbsp;&nbsp;&nbsp;4,&nbsp; &nbsp;5,&nbsp; 25,&nbsp; 21,&nbsp; 21,&nbsp;&nbsp;11,&nbsp;16, 16,&nbsp;&nbsp;25,&nbsp; 6,&nbsp;&nbsp;5,&nbsp;&nbsp;19,&nbsp; 24<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;CipherText(CT) &nbsp; &nbsp; &nbsp; =&nbsp;U,&nbsp; &nbsp;R,&nbsp;&nbsp;C,&nbsp;&nbsp;AE,&nbsp;NG,&nbsp;NG,&nbsp;J,&nbsp;&nbsp;&nbsp;T,&nbsp;&nbsp;&nbsp;&nbsp;T,&nbsp;&nbsp;&nbsp;AE,&nbsp;G,&nbsp;&nbsp;C,&nbsp;&nbsp;M,&nbsp; A<br /><br /><br />There is no reason to add the same number to each part of MT, we could add a series of numbers, defined by a Key (in the above example we could say the key was 1). For example with a key = 0,1,2,3,4,5 = F, U, TH, O, R, C = ᚠ, ᚢ, ᚦ, ᚩ, ᚱ, ᚳ) :<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;MT (numbers) = 0, &nbsp; &nbsp; 3, &nbsp; &nbsp; &nbsp;4, &nbsp; &nbsp; &nbsp; 24, &nbsp; &nbsp; &nbsp; 20, &nbsp; &nbsp; &nbsp;20, <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>10, 15, 15, 24, 5, 4, 18, 23<br />&nbsp; &nbsp; Key &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 0, &nbsp; &nbsp; &nbsp;1, &nbsp; &nbsp; &nbsp;2, &nbsp; &nbsp; &nbsp;3, &nbsp; &nbsp; &nbsp; &nbsp; 4,&nbsp;&nbsp;&nbsp;<span>&nbsp; &nbsp; &nbsp;</span>&nbsp;5, &nbsp;&nbsp;&nbsp;<span>&nbsp; &nbsp;</span><br />&nbsp; &nbsp; CT (numbers) = 0+0, &nbsp;3+1, &nbsp;4+2, &nbsp;24+3, &nbsp; 20+4,&nbsp;&nbsp;20+5, … <br /><br /><br />When we have run out of Key numbers we can try repeating the Key, giving: <br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;CT (numbers) = 0, 4, 6, 27, 24, 25, 10, 16, 17, 27, 9, 9, 18, 24<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;CT (runes) = ᚠ, ᚱ, ᚷ, ᛡ, ᚪ, ᚫ, ᛁ, ᛏ, ᛒ, ᛡ, ᚾ, ᚾ, ᛖ, ᚪ<br /><br /><br />This type of encryption is often known the Vigenère cipher. <br /><br /><br /><font color="#e61919"><b>Spotting the Pattern in the Vigenère Cipher<br /></b></font><br /><br />The above Key had 6 runes and then repeated. This means that every 7th MT rune was encrypted using the same key rune (+0 starting from the first rune), <br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<b><i>and </i></b>every 7th MT rune starting from the 2nd rune was encrypted with +1, <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<b><i>and </i></b>every 7th MT rune starting from the 3nd rune was encrypted with +2. <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<b><i>and </i></b>every 7th MT rune starting from the 4th rune was encrypted with +3…<br /><br />&nbsp; &nbsp; ...&nbsp;<br /><br />Another way of thinking about this is every 7th rune in the MT (no matter which rune you start with) is encrypted with the same substitution cipher.  We know that the Index of Coincidence (IoC) is invariant (doesn’t change) for simple substitution ciphers and so there should be a pattern in the IoC that shows the MT leaking through into the CT. The pattern is found by trying to guess the key length. <br /><br /><br /><font color="#e61919"><b>Guessing the Key Length of the Vigenère Cipher<br /><br /></b></font><br />We take every Nth CT rune, where N is our guess of the key length, starting from the first rune, the 2nd rune, the 3rd rune … up to the Nth rune. This gives us N sets of CT runes, and we calculate  the IoC for each set and then take an average. If we have guessed the correct N then we expect the IoC will be the same as Runeglish. In effect, we have ‘sliced’ out the different substitution ciphers. For example, taking the start of Pages 14-16: <br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;N = 1, &nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;sliced CT part 1  = ᚪ, ᛋ, ᚹ, ᚪ, ᛁ, ᛈ, ᚢ, ᛟ, ᚫ, ᛈ, ᚠ, ᛖ, ᚱ, ᛋ, ᛈ, ᛈ … <br /> &nbsp;&nbsp; <b>&nbsp;</b><b>sliced IoC part 1   = 1.130</b><br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;N = 2<br />&nbsp;&nbsp;&nbsp;&nbsp;Sliced CT part 1 =  ᚪ, ᚹ, ᛁ, ᚢ, ᚫ, ᚠ, ᚱ, ᛈ, ᚦ, ᚾ, ᚱ, ᚹ … <br />&nbsp;&nbsp;&nbsp;&nbsp;Sliced CT part 2 = ᛋ, ᚪ, ᛈ, ᛟ, ᛈ, ᛖ, ᛋ, ᛈ, ᛗ, ᚪ, ᛚ, ᛈ, … <br />&nbsp; &nbsp;&nbsp;sliced IoC part 1  = 1.154, &nbsp;sliced IoC part 2  = 1.078, <br /><b>&nbsp; &nbsp;&nbsp;mean IoC  = 1.116</b><br /><br /><br />&nbsp; &nbsp;&nbsp;N = 3<br />&nbsp; &nbsp;&nbsp;Sliced CT part 1 =  ᚪ, ᚪ, ᚢ, ᛈ, ᚱ, ᛈ, ᚾ, ᛚ, ᛖ, ᚢ, ᛁ … <br />&nbsp;&nbsp;&nbsp;&nbsp;Sliced CT part 2 = ᛋ, ᛁ, ᛟ, ᚠ, ᛋ, ᚦ, ᚪ, ᚹ, ᚩ, ᛠ, ᚻ… <br />&nbsp;&nbsp;&nbsp;&nbsp;Sliced CT part 3 = ᚹ, ᛈ, ᚫ, ᛖ, ᛈ, ᛗ, ᚱ, ᛈ, ᛈ, ᛁ, ᛞ … <br /><span>&nbsp; &nbsp;&nbsp;</span>sliced part 1  IoC = 1.079, &nbsp;&nbsp;sliced part 2 IoC = 0.928, &nbsp;sliced CT part 3 IoC  = 1.282<br /><b>&nbsp; &nbsp;&nbsp;mean IoC  = 1.096 … </b><br /><br />We keep doing this for increasing N {N, mean IoC of slices}: <br /><br />{1, 1.13036}, {2, 1.1159}, {3, 1.09617}, {4, 1.10191}, {5,1.09158}, {6, 1.0742}, {7, 1.08002}, {8, 1.13691}, {9,1.05091}, {10, 1.05788}, {11, 1.04545}, {12, 0.988974}, <font color="#e61919"><b>{13, 1.91911}</b></font>, {14, 1.08386}, {15, 0.923983}, {16, 1.1193}, {17,1.04865}, {18, 0.958243}, {19, 0.976393}, {20, 1.13065} <br /><br />We have found a pattern: for N = 13 the IoC values match what we might expect from Runeglish. This is very good evidence a repeating key of length 13 has been used, and so we can now try and solve the pages.<br /><br /><b><font color="#e61919">Solving a Repeating  Key Vigenère Cipher Using the word lengths as clues<br /><br /></font></b>We have to solve 13 different substitution ciphers. There are many ways to do this, here we will outline  a brute-force method that uses our n-gram log probability tables. <br />A very quick way to solve the repeating key Vigenère that works very well with the runes uses the fact that we know how long each word is. Knowing (or, more correctly, assuming we know) the number of characters in each word is unusual for puzzles of this type and is one of the biggest clues we have to work with for the unsolved pages. We take a short sample of CT, preserving the word lengths:<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ᚪ, ᛋᚹᚪᛁ, ᛈᚢᛟᚫ, ᛈ, ᚠᛖᚱᛋᛈᛈ, ᚦᛗ, ᚾᚪᚱᛚᚹᛈ, ᛖᚩᛈᚢᛠᛁᛁᚻᛞ, ᛚᛟ, ᛠ, ᛂᛖ, ᛠ, ᛁᚫ, ᚷᛖ, ᚦᛟᛁᛞᛟ<br /><br />We will apply partial keys spaced by 13 runes and try all possible 2-grams of the key. After we have applied the key we calculate the 2-gram log-probability score based on the position of the 2-gram in the word. For example (where DT is Decrypted Text):<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = F,F,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_  <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = {A}, {S, _, _, _}, {_, _, _, _}, {_}, {_, _,  _, S, P, _}, {_, _}, {_, _, _, _, _, _}, {_, _, P, U, _, _, _, _, _}, {_, _}, {_}, {_, _}, {_}, {I, AE}, {_, _}, {_, _,  _, _, _}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = F,U,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_  <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = {A}, {X, _, _, _}, {_, _, _, _}, {_}, {_, _,  _, S, EO, _}, {_, _}, {_, _, _, _, _,   _}, {_, _, P, F, _, _, _, _, _}, {_, _}, {_}, {_, _}, {_}, {I, A}, {_, _}, {_, _,   _, _, _}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = F,TH,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_  <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = {A}, {P, _, _, _}, {_, _, _, _}, {_}, {_, _,  _, S, J, _}, {_, _}, {_, _, _, _, _, _}, {_, _, P, EA, _, _, _, _, _}, {_,_}, {_}, {_, _}, {_}, {I, D}, {_, _}, {_, _, _, _, _}<br />&nbsp; &nbsp;&nbsp;… <br /><br />We then try the 2nd, 3rd, 4th etc. &nbsp;bi-gram of the key:<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = _,F,F,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_   <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = {_}, {S, W, _, _}, {_, _, _, _}, {_}, {_, _, _, _, P, P}, {_, _}, {_, _, _, _, _, _}, {_, _, _, U, EA, _, _, _, _}, {_,_}, {_}, {_, _}, {_}, {_, AE}, {G, _}, {_, _,  _, _, _} <br /><br />&nbsp; &nbsp; ...&nbsp;The final iteration will be ... &nbsp;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = _,_, _ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,_ ,EA,EA   <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp;= {_}, {_, _, _, _}, {_, _, _, _}, {_}, {_, E, R, _, _, _}, {_, _}, {_, _, _, _, _, _}, {E, O, _, _, _, _, _, _, _}, {_,_}, {_}, {_, E}, {EA}, {_, _}, {_, _}, {_, _, _, _, _}<br /><br /><br />We have 12 bigrams in the key and have tried each possibility from a set of 29^2 = 841 giving 10,092 different DT. We then look up the log-probability scores for the DT bigrams, where we know their position in the words (as indicated by the {} above). We choose the key values that give the highest scores to give:<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = F, I, R, F, U, O, S, E, R, E, N, S, O<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = A, COAN, ISR(I)NG, A, LOUSON, THE, GNSTER, OFPLAINCH, THE, I, THO, AE, IS, THE, UMACE <br /><br />Not exactly the right answer, but close enough to fill in the gaps by hand. Perhaps more interesting is that we have (basically) found the solution in a few seconds using a very short sample of the CT. A few tweaks gives:<br /><br />&nbsp; &nbsp;&nbsp;Key = F, I, R, F, U, M, F, E, R, E, N, F, E&nbsp; &nbsp;&nbsp;&nbsp;<br /><br />DT = A, COAN, DUR(I)NG, A, LESSON, THE, MASTER, EXPLAINED, THE, I, THE, I, IS, THE, UOICE, OL, JF, DFINFUFMFERDN, HY, JCPR, HNXN, MRAEETH, PW, IO, AEBTHMERC, WO, YIDDCJI, OHMC, OEAA, SNEOY, OM, SAICNR, DLLY, LB, JJ, A, AE(I)NGUCY, GMELAM, OEOAEOE, EAEATH, G, RGMB, NLUP, P, (I)NGOEUEA, PM, LIO, REAE, LDUXRY, CEA, TBYDPIOW, ABM, E(I)NG, XAEJJEE, YUS, TLMY, YR, BXLS, LN, MOJY(I)NGX, OM, SAICNR, DEOPTDMA, IOE, IC(I)NGDYCY, IOMA, TLIE, LN, UJGS(I)NG, EOAEB, WUIC, GAEM, WGJ, NAEYE, R(I)NG, (I)NGOEUEA, PM, IORYR, OBX, ID, IOEA, P, CIA, IOE, IC(I)NGDYCYE, BMCX, ERNUGTEOEAEOEAA<br /><br />Something has gone wrong, around the text UOICE, OL, JF, DFINFUFMFERDN clearly we have more solving to do. We must find some more clues, and this problem requires some lateral thinking. <br /><font color="#e61919"><b><br />The Interrupter<br /></b></font><br />What has happened is that the letter F in the plaintext message has not been encrypted, it has been used as an interrupter. An interrupter is a well-known technique in classical ciphers, for example, they are discussed in <a rel="nofollow" target="_blank" href="http://www.umich.edu/~umich/fm-34-40-2/">this classic text:</a> <br /><br /><br />The interrupter causes the encryption algorithm to be skipped (or interrupted) when the algorithm sees that character. Here F is used, so each F in the plaintext is not encrypted and the algorithm passes over the F and encrypts the next letter. When we try F as in interrupter we can use the positions of F in the CT as possible places of F in the plaintext. The result can now be found, either by intelligent guessing, or by brute-forcing every possibility:<br /><br />  Interrupter positions =  49, 56 <br />A, COAN, DUR(I)NG, A, LESSON, THE, MASTER, EXPLAINED, THE, I, THE, I, IS, THE, UOICE, OF, THE, CIRCUMFERENCE, HE, SAID, WHEN, ASCED, BY, A, STUDENT, TO, EXPLAIN, WHAT, THAT, MEANT, THE, MASTER, SAID, IT, IS, A, UOICE, INSIDE, YOUR, HEAD, I, DONT, HAUE, A, UOICE, IN, MY, HEAD, THOUGHT, THE, STUDENT, AND, HE, RAISED, HIS, HAND, TO, TELL, THE, MASTER, THE, MASTER, STOPPED, THE, STUDENT, AND, SAID, THE, UOICE, THAT, JUST, SAID, YOU, HAUE, NO, UOICE, IN, YOUR, HEAD, IS, THE, I, AND, THE, STUDENTS, WERE, ENLIGHTENED<br /><br />Interestingly, we note that page 16 is not encrypted, even though it has the same images as the previous pages :<br /><br />AN, INSTRUCTION, CWESTION, ALL, TH(I)NGS, DISCOUER, TRUTH, INSIDE, YOURSELF, FOLLOW, YOUR, TRUTH, IMPOSE, NOTH(I)NG, ON, OTHERS, CNOW, THIS<br /><br /><font color="#e61919"><b>Solving Pages 3-4<br /></b></font><br />Exactly the same procedure can be used to solve the remaining pages. Again, F is an interrupter, and the number of F’s in the plaintext make things a little more tricky, for example, guessing the key length using the above method is not as clear, but the signature is still there. Exploiting the word lengths and brute-forcing 2-grams is also useful, giving us a great start in a matter of seconds: <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = J, S, U, I, N, I, T, Y<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = MPLCOME, WUSCOME, PIOURIM, TO, THU, UREAT, JOUTREY, TOWATE, THE, END<br /><br />Some good guessing (or trying every possibility for the interrupter F) helps us arrive at:<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Key = D, I, V, I, N, I, T, Y&nbsp; &nbsp;&nbsp; &nbsp; Interrupter positions = 48, 74, 84, 132, 159, 160, 250, 421, 443, 465, 514<br />&nbsp;&nbsp;&nbsp;&nbsp;DT &nbsp; = WELCOME, WELCOME, PILGRIM, TO, THE, GREAT, JOURNEY, TOWARD, THE, END, OF, ALL, TH(I)NGS, IT, IS, NOT, AN, EASY, TRIP, BUT, FOR, THOSE, WHO, FIND, THEIR, WAY, HERE, IT, IS, A, NECESSARY, ONE, ALO(I)NG, THE, WAY, YOU, WILL, FIND, AN, END, TO, ALL, STRUGGLE, AND, SUFFER(I)NG, YOUR, INNOCENCE, YOUR, ILLUSIONS, YOUR, CERTAINTY, AND, YOUR, REALITY, ULTIMATELY, YOU, WILL, DISCOUER, AN, END, TO, SELF, IT, IS, THROUGH, THIS, PILGRIMAGE, THAT, WE, SHAPE, OURSELUES, AND, OUR, REALITIES, JOURNEY, DEEP, WITHIN, AND, YOU, WILL, ARRIUE, OUTSIDE, LICE, THE, INSTAR, IT, IS, ONLY, THROUGH, GO(I)NG, WITHIN, THAT, WE, MAY, EMERGE, WIDSOM, YOU, ARE, A, BE(I)NG, UNTO, YOURSELF, YOU, ARE, A, LAW, UNTO, YOURSELF, EACH, INTELLIGENCE, IS, HOLY, FOR, ALL, THAT, LIUES, IS, HOLY, AN, INSTRUCTION, COMMAND, YOUR, OWN, SELF<br /><br /><b><font color="#e61919">Conclusions<br /></font></b><br />We have covered much in this post. Again, the general method is based on looking for patterns, brute-forcing different possibilities and choosing results with high scores to investigate further. <br /><br /><ul style="list-style-type: disc;"><li>We have introduced the concept of addition with runes, based on our understanding of shifting runes with the cipher disc <br /></li><li>Rune addition can be expressed in terms of numbers, runes, or letters (it doesn’t really matter they are just symbols representing how many shifts you apply to the cipher disc) <br /></li><li>Each separate rune in MT can be encrypted with a different shift, resulting in the Vigenère Cipher<br /></li><li>A key is used to represent the different shifts <br /></li><li>If the key repeats then information on the key length leaks through to the CT and can be found with the IoC <br /></li><li>Assuming we know the word lengths of the CT gives us a very strong start to decrypting with little effort <br /></li><li>The letter F has been used by the puzzle makers as an interrupter. These can be bruteforced, because we know a CT F may be a plaintext F, or we can use some intelligence</li></ul><br /><br /><br /><br />*Comments, questions, suggestions, omissions etc ? please try <a target="_blank" href="http://webchat.freenode.net/?channels=cicadasolvers" rel="nofollow">#cicadasolvers</a><br /><br />MSGA <br /><br /><br /></div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+							<div class="edited_by"><span class="italic">Last Edit:</span> <abbr class="o-timestamp time" title="Dec 10, 2016 11:34:23 GMT" data-timestamp="1481369663000">Dec 10, 2016 11:34:23 GMT</abbr> by <a title="@mortlach" class="o-user-link js-user-link user-link user-3 group-0" data-id="3" href="/user/3">mortlach</a></div>
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+	<tr id="post-103" class="item post last even">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile guest-mini-profile">
+	<span itemscope itemtype="http://schema.org/Person"><span class="user-guest" itemprop="name">Yui</span></span><br />
+	Guest<br />
+	
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar--103" title="Guest"><img src="//storage.proboards.com/forum/images/defaultavatar.png" alt="Guest Avatar" /></div></div><br />
+	
+	
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a class="js-thread__title-link thread-link thread-38 board-19" href="/thread/38/decrypt-runes-vigen-re-cipher">How To Decrypt the Runes 3: The Vigenère cipher</a>
+									<span class="date"><abbr data-timestamp="1514502115000" title="Dec 28, 2017 23:01:55 GMT" class="o-timestamp time">Dec 28, 2017 23:01:55 GMT</abbr></span>
+									
+									<span class="likes"> </span>
+								</div>
+								<div class="controls">
+									<a href="/post/103/quote/38" class="button quote-button ">Quote</a>
+									
+									
+									<ul class=" options_menu post-103 user-0 hide"><li class="103-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="103-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="103-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="103-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-103-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-103-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by  on <abbr data-timestamp="1514502115000" title="Dec 28, 2017 23:01:55 GMT" class="o-timestamp time">Dec 28, 2017 23:01:55 GMT</abbr></h3>
+							<div class="message">Perfect post !</div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+<div class="container quick-reply">
+	<div class="title-bar">
+		<ul class="controls"><li><a href="/post/new/38" class="reply-button">Reply</a></li></ul>
+		<h2>Quick Reply</h2>
+	</div>
+	<div class="content cap-bottom">
+		<form id="form_bdREBeEs" class="form_post_quick_reply js-form-post-quick-reply" role="form" action="/post/create/38" method="post">
+<input type="hidden" id="form_bdREBeEs_reply_mode_input" name="reply_mode" value="quick_reply" />
+<input type="hidden" id="form_bdREBeEs_captcha_id_input" name="captcha_id" value="captcha_init" />
+<input type="hidden" id="form_bdREBeEs_ga_client_id_input" name="ga_client_id" />
+<input type="hidden" id="form_bdREBeEs_message_mode_input" name="message_mode" value="bbcode" /><noscript><ul class="noscript-form-error"></ul></noscript>
+			
+			<div class="guest_name">
+				<label>Guest Name:</label>
+				<input type="text" id="form_bdREBeEs_created_by_guest_name_input" name="created_by_guest_name" class="full-width" maxlength="30" />
+			</div>
+			
+			<div class="message">
+				<textarea id="form_bdREBeEs_message_input" name="message" accesskey="q"></textarea>
+			</div>
+			
+            <div id="captcha-container">
+                <div style="width: 308px; height: auto;">
+                <div id="fun-captcha-container"></div>
+                </div>
+                <noscript>
+                    
+                    
+        <iframe src="https://funcaptcha.com/fc/api/nojs/?pkey=C0F5B1D6-CFF5-1D52-0F76-87F4E9F50EC0" frameborder="0" scrolling="no" style="width: 308px; height: auto; border-style: none;"></iframe>
+        <div style="width: 306px;height: 60px;border-style: none;bottom: 12px;left: 25px;margin: 5px 0 0 0;padding: 0px;right: 25px;background: #ffffff;border: 1px solid #f7f7f7;border-radius: 5px;">
+            <input type="text" id="fc-token" name="fc-token" placeholder="Copy verification code into here" style="width: 270px;height: 24px;border: 1px solid #f7f7f7;border-radius: 5px;padding: 10px;margin: 7px;resize: none;font-size: 11px;-webkit-font-smoothing: antialiased;color: #212121;background: #f7f7f7;text-align: center;">
+        </div>
+    
+                    <div style="margin: 20px 0 15px 0;"><input type="checkbox" name="tos" style="margin-right: 15px; vertical-align: middle; position: relative; bottom: 1px;" />I agree to the <a href="http://www.proboards.com/tos" target="_blank">ProBoards Terms of Service</a>.</div>
+                    <style>#captcha-container { display: block; text-align: left !important; padding-left: 10px; }</style>
+                </noscript>
+            </div>
+        
+			<input id="form_bdREBeEs_post_button" name="post" value="Post Quick Reply" class="ui-button" type="submit" />
+		</form>
+		<script>
+		$(document).ready(function() {
+			
+
+			$('#form_bdREBeEs').form({
+				create: function(e) {var pbCaptchaOpts = proboards.data("captcha_init");if (pbCaptchaOpts) { proboards.captcha.init(pbCaptchaOpts); }},
+				submit: function(e) {proboards.autosave.clear();},
+				beforeSubmit: function(e) {proboards.data('submitting', 1);
+
+				try {
+					$('#form_bdREBeEs_ga_client_id_input').val(
+						proboards.analytics.google.getClientId()
+					);
+				} catch(e) {}
+			},
+				validations: [{"opts":{"fields":["message_mode"]},"message":"You must provide a message.","field":"message","name":"exists"},{"opts":{},"name":"exists","field":"created_by_guest_name","message":"You must provide a guest name."}],
+				errors: {},
+				positionError: null
+			});
+		});
+		</script>
+	</div>
+</div>
+
+				
+			</div>
+			
+			<script type="text/javascript" src="http://ads.pro-market.net/ads/scripts/site-131222.js"></script>
+        <div style="display: flex; width: 700px; max-width: 100%;min-height: 250px; margin: 0 auto 10px; text-align: center; justify-content: space-around;flex-wrap: wrap">
+            <iframe id="ad2" data-id="pb-bottom-left-ad" style="margin-bottom: 10px"></iframe>
+            <script>pbjs=pbjs||{que:[]};pbjs.que.push(function() {bottomLeftAd.init(document.getElementById('ad2'));});</script>
+
+            <iframe id="ad3" data-id="pb-bottom-right-ad" style="margin-bottom: 10px"></iframe>
+            <script>pbjs.que.push(function() {bottomRightAd.init(document.getElementById('ad3'));});</script>
+        </div>
+    
+			<footer class="c-footer" role="contentinfo">
+				<div class="c-footer__text o-wrapper u-text-center">
+					<div id="remove_ads_link"><a href="https://www.proboards.com/store/add_cart/ad_free/50000/cicada3301.boards.net/1">Click here to remove banner ads from this forum.</a></div>This Forum Is Hosted For FREE By <a href="http://www.proboards.com" target="_blank">ProBoards</a><br />Get Your Own <a href="https://www.proboards.com/create-free-forum" target="_blank">Free Forum</a>!
+				</div>
+				<div class="c-footer__links o-wrapper u-text-center">
+					<a href="http://www.proboards.com/tos" accesskey="8">Terms of Service</a> |
+					<a href="http://www.proboards.com/privacy">Privacy Policy</a> |
+					<a href="http://www.proboards.com/privacy#enhanced">Notice</a> |
+					<a href="http://www.viglink.com/policies/ftc" target="_blank">FTC Disclosure</a> |
+					<a href="http://www.proboards.com/report-abuse" accesskey="7">Report Abuse</a>
+					 | <a href="#" class="js-report-ad" title="Report Ad">Report Ad</a>
+					 | <a href="http://www.proboards.com/ads"><b>Advertise Here</b></a>
+				</div>
+			</footer>
+
+		</div>
+		
+	</body>
+</html>

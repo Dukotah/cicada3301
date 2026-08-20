@@ -1,0 +1,1039 @@
+<!DOCTYPE HTML>
+	<!--[if IE 7]><html class="ie7"><![endif]--><!--[if IE 8]><html class="ie8"><![endif]--><!--[if IE 9]><html class="ie9"><![endif]--><!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+	<head>
+		<meta charset="UTF-8">
+		<title>The Words Of The Liber Primus II: 5-grams | Cicada3301</title>
+		<script type="text/javascript" src="https://storage.googleapis.com/vs-scripts/intentiq/vsintentiq.js" async></script>
+<script async src="//c.amazon-adsystem.com/aax2/apstag.js"></script>
+<script>!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={unLoaded:1,init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},dpa:function(){q("di",arguments)},rpa:function(){q("ri",arguments)},upa:function(){q("ui",arguments)},_Q:[]};}("apstag",window);</script>
+<script async src="https://config.htplayground.com/load-vs-cmp.js"></script>
+<script async src="https://config.htplayground.com/config/proboards.com"></script>
+<script async src="https://config.htplayground.com/libs"></script>
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+  window.deployads = window.deployads || [];
+  window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+
+    //Size Mapping
+    var topMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([728, 200], [[728, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([0, 0], [[300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150]])
+    .build();
+    var bottomMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[970, 90], [728, 90], [300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .addSize([728, 200], [[728, 90], [300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .addSize([0, 0], [[300, 250], [336, 280], [320, 50], [300, 50], [250, 250], [234, 60], [200, 200], [180, 150], [125, 125]])
+    .build();
+    var adhesionMapping = googletag.sizeMapping()
+    .addSize([970, 200], [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([728, 200], [[728, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]])
+    .addSize([0, 0], [[320, 50], [300, 50], [234, 60]])
+    .build();
+    //Size Mapping end
+
+    googletag.defineSlot('/1030735/Boards_net_Top', [[250, 250], [336, 280], [300, 250], [728, 90], [320, 50], [468, 60], [970, 90], [234, 60], [180, 150], [200, 200], [480, 75], [300, 50]], 'Boards_net_Top').defineSizeMapping(topMapping).addService(googletag.pubads());
+    googletag.defineSlot('/1030735/Boards_net_Bottom', [[125, 125], [250, 250], [320, 50], [970, 90], [200, 200], [300, 250], [728, 90], [234, 60], [336, 280], [180, 150], [300, 50]], 'Boards_net_Bottom').defineSizeMapping(bottomMapping).addService(googletag.pubads());
+    googletag.defineSlot('/1030735/Boards_net_Adhesion', [[728, 90], [970, 90], [468, 60], [480, 75], [320, 50], [300, 50], [234, 60]], 'Boards_net_Adhesion').defineSizeMapping(adhesionMapping).addService(googletag.pubads());
+    
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().setTargeting("sitename", "Proboards.com");
+    googletag.pubads().setTargeting("folder2", "pb-"+location.hostname);
+    googletag.pubads().setTargeting("proboardsforumid", "6433989");
+    googletag.pubads().setTargeting("forum_id", "19");
+    googletag.pubads().setTargeting("vertical", "");
+    googletag.pubads().setCentering(true);
+    if (typeof(proboards) !== 'undefined' && typeof(proboards.data) !== 'undefined' ) {
+if (proboards.data('board_id') == null) {
+	googletag.pubads().setTargeting("PageID", "forumlist");
+} else if (proboards.data('thread_id') == null) {
+	googletag.pubads().setTargeting("PageID", "threadlist");
+} else {
+	googletag.pubads().setTargeting("PageID", "thread");
+	if (proboards.data('lm_total') > proboards.data('lm_limit')) {
+		if (proboards.data('lm_page') == 1 || proboards.data('lm_page') < proboards.data('lm_total') / proboards.data('lm_limit')) {
+			googletag.pubads().setTargeting("Folder1", proboards.data('lm_limit').toString());
+		} else {
+			googletag.pubads().setTargeting("Folder1", (proboards.data('lm_total') - (proboards.data('lm_limit') * (proboards.data('lm_page') - 1))).toString());
+		}
+	} else {
+		googletag.pubads().setTargeting("Folder1", proboards.data('proboards.thread')[Object.keys(proboards.data('proboards.thread'))[0]]['posts'].toString());
+	}
+}
+    }
+    if("0" === "0") {
+        googletag.pubads().setTargeting("registered", "false");
+    } else {
+        googletag.pubads().setTargeting("registered", "true");
+    }
+    deployads.push(function () { deployads.gpt.enableServices() });
+
+    if("0" === "0") {
+      function onDomLoadAdhesion() {
+            document.body.classList.add("vsFooterDiv");
+            let footeradcontainer = document.createElement('div');
+            footeradcontainer.classList.add('desktop-adhesion-ad__footer-ad-container');
+    
+            let desktopadhesion = document.createElement('div');
+            desktopadhesion.id = 'desktop-adhesion-ad__container';
+            desktopadhesion.classList.add('desktop-adhesion-ad__footer-ad');
+    
+            let innercontainer = document.createElement('div');
+            innercontainer.id = 'desktop-adhesion-ad__inner-container';
+    
+            let closebutton = document.createElement('button');
+            closebutton.classList.add('overlay-titleCloser');
+            closebutton.id = 'desktop-adhesion-ad__close-button';
+            closebutton.onclick = function() {
+                var vsAdhesion;
+                googletag.pubads().getSlots().forEach(function(i){
+                    if(i.getSlotElementId() === "Boards_net_Adhesion") {
+                        vsAdhesion = i;
+                    }
+                });
+                googletag.destroySlots([vsAdhesion]);
+                document.body.classList.remove("vsFooterDiv");
+            }
+    
+            let proboardsadhesion = document.createElement('div');
+            proboardsadhesion.id = 'Boards_net_Adhesion';
+    
+            footeradcontainer.appendChild(desktopadhesion);
+            desktopadhesion.appendChild(innercontainer);
+            innercontainer.appendChild(closebutton);
+            innercontainer.appendChild(proboardsadhesion);
+            document.body.appendChild(footeradcontainer);
+        
+            googletag.cmd.push(function() {
+                if (window.deployads) {
+                deployads.push(function() {
+                    deployads.gpt.display('Boards_net_Adhesion');
+                });
+                } else {
+                    googletag.display('Boards_net_Adhesion'); 
+                }
+            });
+        }
+        document.readyState === "loading"
+        ? document.addEventListener('DOMContentLoaded', onDomLoadAdhesion)
+        : onDomLoadAdhesion();
+    }
+  });
+</script>
+<script src="https://storage.googleapis.com/vs-scripts/proboards/config.js"></script>
+<script>
+/**
+ * Sets a cookie
+ *
+ * @param name cookie name
+ * @param value cookie value
+ * @param expiration expiration in minutes
+ * @param domain [optional] domain
+ */
+ function vsExpSetCookie( name, value, expiration, domain = '' ) {
+    if( !name || !value || !expiration ) {
+        return;
+    }
+    let d = new Date();
+    d.setTime( d.getTime() + (expiration * 60 * 1000) );
+    let cName = name + '=' + value,
+        expires = ';expires=' + d.toUTCString();
+    document.cookie = cName + expires + ';path=/' + ';';
+}
+/**
+ * Gets cookie value
+ *
+ * @param name
+ * @returns string|null cookie value or null
+ */
+function vsExpGetCookie( name ) {
+    var nameEQ = name + '=';
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+// DiceRoll functions
+function isExperiment() {
+    // Set a diceroll for Experimentation
+    // Test in browser by adding '?vsexp-dice=exp' or '?vsexp-dice=control' to url.
+    const expire = 30; // 30 minutes
+    let expWinPercentage = window.vsPrimisExpData.weight ?? 50;
+    const checkParam = () => {
+        let urlParam = location.search.match( /[?&]vsexp-dice=([^&]+)/ );
+        return urlParam && urlParam.length === 2 ? urlParam[ 1 ] : null;
+    };
+    const experimentDiceRoll = () => {
+        const diceResult = Math.random() < expWinPercentage / 100;
+        return diceResult ? 'exp' : 'control';
+    };
+    let winner = checkParam();
+    let cookieName = window.vsPrimisExpData.cookieName ?? 'vsexp_pct';
+    if( winner ) {
+        vsExpSetCookie( cookieName, winner, expire );
+    } else {
+        winner = vsExpGetCookie( cookieName );
+        if( !winner ) {
+            winner = experimentDiceRoll();
+            vsExpSetCookie( cookieName, winner, expire );
+        }
+    }
+    window.vsRunPrimis = ( winner === 'exp' );
+}
+//Check if this is allowlisted before checking experiment group
+if (window.vsPrimisExpData?.runExp && window.vsPrimisExpData?.weight != 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+    isExperiment();
+    let vsKV = '';
+    if (window.vsRunPrimis && window.vsPrimisExpData?.weight != 100) {
+        vsKV = window.vsPrimisExpData?.variantName ?? 'pb_primis_exp';
+    } else {
+        vsKV = window.vsPrimisExpData?.controlName ?? 'pb_primis_ctrl';
+    }
+    if (window.vsPrimisExpData?.weight != 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+            googletag.pubads().setTargeting('experiment', vsKV);
+        });
+        window.adsJSON = {
+            pageKeyValues: {'revenueExp': ['experiment'],'experiment': vsKV},
+        };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'experiment': vsKV
+        });
+    }
+}
+if (window.vsPrimisExpData?.weight === 100 && "0" === "0" && window.location.pathname.indexOf("/thread") === 0) {
+        window.vsRunPrimis = true;
+}
+if (window.vsExpData?.runExp ) {
+    window.vsexp = true;
+}
+</script>
+<style>
+.desktop-adhesion-ad__footer-ad-container .desktop-adhesion-ad__footer-ad {
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
+	width: 100%;
+	color: #fff;
+	background-color: transparent;
+	position: fixed;
+	bottom: 0;
+	z-index: 400;
+	font-size: 26px;
+	-webkit-overflow-scrolling: touch;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translate3d(0,0,0);
+	pointer-events: none;
+}
+#desktop-adhesion-ad__inner-container {
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+#desktop-adhesion-ad__inner-container #desktop-adhesion-ad__close-button.overlay-titleCloser {
+	border: 1px solid #c9cdcf;
+	width: 24px;
+	height: 24px;
+	background: #fff;
+	font-size: large;
+	padding: unset;
+	border-radius: 3px;
+	color: #686c6e;
+	pointer-events: auto;
+}
+#Desktop_Adhesion {
+	pointer-events: auto;
+}
+#desktop-adhesion-ad__close-button.overlay-titleCloser {
+	margin: unset;
+	opacity: 1;
+	position: absolute;
+	line-height: 50%;
+}
+.overlay-titleCloser {
+	float: right;
+	cursor: pointer;
+	text-decoration: none;
+}
+.overlay-titleCloser:after {
+	font-family: 'font awesome 5 pro';
+	font-size: inherit;
+	font-style: normal;
+	font-weight: 100;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: "X";
+}
+#desktop-adhesion-ad__close-button.overlay-titleCloser {
+    right: -33px;
+}
+#desktop-adhesion-ad__inner-container {
+    max-width: 728px;
+    pointer-events: auto;
+}
+body.vsFooterDiv {
+    margin-bottom:90px;
+}
+</style>
+<script type="text/javascript">
+            window.partial = "thread/show";
+            document.registerElement = false;
+            window._pbdata = [];
+            window.pb = {
+                data: {
+                    set: function(a) {
+                        window._pbdata.push(a)
+                    }
+                }
+            }
+        </script>
+
+        <!-- Google Tag Manager -->
+            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-M6QVNSC');</script>
+        <!-- End Google Tag Manager -->
+    
+<link rel="canonical" href="https://cicada3301.boards.net/thread/48/words-liber-primus-ii-grams" />
+<link rel="alternate" type="application/rss+xml" href="http://cicada3301.boards.net/rss/public" />
+<link rel="shortcut icon" type="image/x-icon" href="https://storage.proboards.com/forum/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="https://storage.proboards.com/forum/images/favicon.ico" />
+<meta property="og:url" content="https://cicada3301.boards.net/thread/48/words-liber-primus-ii-grams">
+<meta property="og:title" content="The Words Of The Liber Primus II: 5-grams | Cicada3301">
+<meta property="og:description" content="The Words Of The Liber Primus II: 5-grams   Previously, we discussed">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@proboards">
+
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/forum/css/0/forum_base_1144.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/6433989/css/w8taoZpniIqJS0joSHjj.css" id="forum_style" />
+<link rel="stylesheet" type="text/css" media="print" href="//storage.proboards.com/forum/css/0/print_1144.css" />
+<script> translatePo = { language: 'en_US' };</script>
+<script type="text/javascript" src="//storage.proboards.com/forum/js/proboards.combined_1144.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//www.google.com/recaptcha/api.js?render=explicit&hl=en"></script>
+
+		<!-- Google Analytics Start -->
+		<script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-30657-154', 'auto' );ga('set', 'anonymizeIp', true);
+		</script>
+		<!-- Google Analytics End -->
+	
+
+        <script type="module">
+            var vglnk;
+            $(document).ready(function() {
+                $('a').each(function() {
+                    if($(this).prop('href').indexOf('login.proboards.com') !== -1) {
+                        $(this).addClass('norewrite');
+                    }
+                });
+
+                vglnk = {
+                    api_url: '//api.viglink.com/api', key: '71fe2139a887ad501313cd8cce3053c5', subId: '6433989'
+                };
+                var vglnkSrc = ('https:' == document.location.protocol ? vglnk.api_url : '//cdn.viglink.com/api') + '/vglnk.js';
+
+                // VigLink ProBoards Convert Code (using above key)
+                var s = document.createElement('script');
+                s.type = 'text/javascript'; s.async = true; s.src = vglnkSrc;
+                document.body.appendChild(s);
+
+                var retry = 0;
+                var reV = function() {
+                    if (typeof vglnk !== 'function' && retry++ < 5) {
+                        setTimeout(reV, 500);
+                    }
+                    else if (typeof vglnk !== 'function') {
+                        $('a').not('.norewrite').each(function() {
+                            var url = $(this).prop('href');
+                            if (url.indexOf('http') === 0 && url.indexOf(document.domain) === -1) {
+                                $(this).prop('href', 'http://redirect.viglink.com?key=71fe2139a887ad501313cd8cce3053c5&subId=6433989&u=' + escape(url));
+                            }
+                        });
+                    }
+                };
+                reV();
+            });
+        </script>
+    
+<script>
+            window.runAntiAdBlock = 1;
+        </script>
+<script>  proboards.data([['forum_url',"cicada3301.boards.net"],['ad_free',0],['locale_settings',{"input_date_placeholder":"mm/dd/yyyy","amcharts_date_format":"MM/DD/YYYY","input_time_placeholder":"hh:mm pp","input_date_format":"%m/%d/%Y","input_time_format":12,"input_date_regex":"^(\\d{2})/(\\d{2})/(\\d{4})$","thousands_separator":","}],['image_path',"//storage.proboards.com/forum/images"],['time_style',0],['military_time',0],['timezone',"guest"],['serverDate',1787177665000],['search-query-min',3],['search-query-max',50],['is_current_user_guest',"1"],['plugin_max_key_length',4000],['plugin_max_super_forum_key_length',32000],['login_url',"https://login.proboards.com/login/6433989/1"],['register_url',"https://login.proboards.com/register/6433989"],['page_url',""],['captcha_init',{"attempts":0,"mobile":0,"captcha_id":"captcha_init","captcha_errors":0,"errors":0,"captcha_container_id":"captcha-container","key":"6LeLlQkTAAAAACrV4OiakEuq7INhMhWWUCZ-XpoZ","tos":{"url":"http://www.proboards.com/tos","name":"ProBoards Terms of Service"},"captcha_error_origin":null,"form_id":"form_aJVa0NSk","adfree":"","no_validations":0,"no_popup":0}],['quick_reply',1],['forum_id',"6433989"],['thread_id',"48"],['thread_subject',"The Words Of The Liber Primus II: 5-grams"],['labels_applied',[]],['accessible_label_ids_applied',[]],['board_id',"19"],['search_filter_img_src',"//storage.proboards.com/forum/images/icon-search-filters.png"],['options_img_src',"//storage.proboards.com/forum/images/icon-options.png"],['options_img_alt',"Post Options"],['options_img_title',"Post Options"],['lm_total',"3"],['lm_limit',15],['lm_page',1],['lm_data',{"thread_id":"48"}],['lm_id',"pww6MONCmCaW9bjxAdZV"],['lm_type',"post"],['lm_thread_next',"/thread/next/48"],['lm_thread_prev',"/thread/previous/48"],['sharing_options',{"email_enabled":1,"pinterest_enabled":1,"reddit_enabled":1,"linkedin_enabled":1,"facebook_enabled":1,"myspace_enabled":1,"tumblr_enabled":1,"enabled":1,"twitter_card_site":"","twitter_enabled":1}],['page_cache',".lm-content-pww6MONCmCaW9bjxAdZV"],['labels_accessible',[]],['labels_viewable',[]],['_google_analytics_events',[{"hitType":"pageview"}]],['proboards.badge',{}],['pop_menu_structure',{"menuStructure":{"_root":{"title":"Categories","items":[{"addSeparator":1,"href":"/forum","text":"Home"},{"text":"Welcome","addSeparator":null,"submenu":"1-4"},{"addSeparator":null,"text":"Rune Solving","submenu":"1-3"},{"text":"General","addSeparator":null,"submenu":"1-1"}]},"1-4":{"items":[{"text":"Go to Welcome","href":"/#category-4","addSeparator":1},{"text":"Welcome","href":"https://cicada3301.boards.net/board/21/welcome","addSeparator":null}],"title":"Welcome"},"1-1":{"title":"General","items":[{"href":"/#category-1","text":"Go to General","addSeparator":1},{"addSeparator":null,"href":"https://cicada3301.boards.net/board/20/philosopy","text":"Philosopy"},{"addSeparator":null,"text":"General Discussion","href":"https://cicada3301.boards.net/board/1/general-discussion"}]},"1-3":{"title":"Rune Solving","items":[{"href":"/#category-3","text":"Go to Rune Solving","addSeparator":1},{"addSeparator":null,"href":"https://cicada3301.boards.net/board/19/tools","text":"Tools"},{"addSeparator":null,"href":"https://cicada3301.boards.net/board/18/theories","text":"Theories"},{"addSeparator":null,"text":"Cross","href":"https://cicada3301.boards.net/board/17/cross"},{"addSeparator":null,"href":"https://cicada3301.boards.net/board/16/spirals","text":"Spirals"},{"addSeparator":null,"text":"Branches","href":"https://cicada3301.boards.net/board/15/branches"},{"addSeparator":null,"href":"https://cicada3301.boards.net/board/14/mobius","text":"Mobius"},{"addSeparator":null,"href":"https://cicada3301.boards.net/board/13/mayfly","text":"Mayfly"},{"addSeparator":null,"text":"Tree","href":"https://cicada3301.boards.net/board/12/tree"},{"text":"Cuneiform","href":"https://cicada3301.boards.net/board/11/cuneiform","addSeparator":null},{"text":"Spiral Branches","href":"https://cicada3301.boards.net/board/10/spiral-branches","addSeparator":null},{"text":"56","href":"https://cicada3301.boards.net/board/9/56","addSeparator":null},{"addSeparator":null,"text":"57","href":"https://cicada3301.boards.net/board/8/57"}]}},"positionOffsetY":10,"positionAgainstSelector":".o-breadcrumbs","startingMenu":"_root","addMenuClass":"c-pop-menu","opensOn":"click","placement":"bottom left"}],['screen_breakpoints',{"md":992,"lg":1200,"xs":0,"sm":768}],['user',{"is_staff":0,"theme_id":1,"time_format":"12hr","id":0,"name":"Guest","is_logged_in":0,"date_format":"m/d/y"}],['page',{"category":{"id":3,"name_unescaped":"Rune Solving","name":"Rune Solving"},"board":{"posts":41,"name":"Tools","hidden":"0","id":19,"disable_post_counts":"0","show_announcements":"1","threads":14,"url":"/board/19/tools","disable_posting":"0","description":"","display_name":"Tools","name_unescaped":"Tools"},"thread":{"board_id":19,"created_by":3,"url":"https://cicada3301.boards.net/thread/48/words-liber-primus-ii-grams","is_muted":0,"id":48,"is_bookmarked":0,"created_on":1494087455,"is_poll":0,"is_new":0,"subject_unescaped":"The Words Of The Liber Primus II: 5-grams","posts":"3","views":"1,749","last_post_id":88,"is_locked":0,"is_announcement":0,"last_post_time":1495114409,"subject":"The Words Of The Liber Primus II: 5-grams","is_falling":0,"first_post_id":86,"is_sticky":0}}],['default_avatar',"//storage.proboards.com/forum/images/defaultavatar.png"],['route',{"params":{"thread_id":"48"},"name":"thread"}],['search_system',1],['insite_path',""],['maintenance_mode',0],['proboards.thread',{"48":{"is_bookmarked":0,"created_on":1494087455,"is_poll":0,"is_new":0,"subject_unescaped":"The Words Of The Liber Primus II: 5-grams","posts":"3","board_id":19,"created_by":3,"url":"https://cicada3301.boards.net/thread/48/words-liber-primus-ii-grams","is_muted":0,"id":48,"subject":"The Words Of The Liber Primus II: 5-grams","is_falling":0,"first_post_id":86,"is_sticky":0,"views":"1,749","last_post_id":88,"is_locked":0,"is_announcement":0,"last_post_time":1495114409}}],['proboards.post',{"88":{"created_by":3,"created_on":1495114409,"url":"https://cicada3301.boards.net/post/88","thread_id":48,"liked":0,"id":88},"87":{"created_on":1494665154,"created_by":3,"url":"https://cicada3301.boards.net/post/87","id":87,"liked":0,"thread_id":48},"86":{"id":86,"liked":0,"thread_id":48,"url":"https://cicada3301.boards.net/post/86","created_by":3,"created_on":1494087455}}]]);</script>
+<script> if (typeof(standard_thread_show) == 'function') standard_thread_show();</script>
+<script> if (typeof(standard_post_base) == 'function') standard_post_base();</script>
+
+	</head>
+	<body>
+        <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6QVNSC"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+		
+		<div id="wrapper">
+			<header>
+				<div id="banner-container" role="banner">
+					<h2 id="banner">
+						<a id="logo" href="/">Cicada3301</a>
+					</h2>
+				</div>
+				<a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+				<a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+				<div id="navigation-menu" class="ui-helper-clearfix">
+					<ul role="navigation">
+						
+							<li>
+								<a href="/">
+									Home
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/help">
+									Help
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/search">
+									Search
+									
+								</a>
+							</li>
+						
+					</ul>
+					<p id="welcome">
+						
+							Welcome Guest.
+							
+								Please <a href="https://login.proboards.com/login/6433989/1">Login</a> or <a href="https://login.proboards.com/register/6433989">Register</a>.
+							
+						
+					</p>
+				</div>
+			</header>
+
+			
+
+			
+				<div id="navigation-tree">
+					<div class="nav-tree-wrapper"><ul id="nav-tree" class="ui-helper-clearfix" role="navigation" itemscope itemtype="https://schema.org/BreadcrumbList"><li id="nav-tree-branch-0" class="nav-tree-branch ui-helper-clearfix has-menu" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/" itemprop="item"><span itemprop="name">Cicada3301</span></a></div><meta itemprop="position" content="1"><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-1" class="nav-tree-branch ui-helper-clearfix" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/board/19/tools" itemprop="item"><span itemprop="name">Tools</span></a></div><meta itemprop="position" content="2"><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-2" class="nav-tree-branch ui-helper-clearfix" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><div><a href="/thread/48/words-liber-primus-ii-grams" itemprop="item"><span itemprop="name">The Words Of The Liber Primus II: 5-grams</span></a></div><meta itemprop="position" content="3"><span class="menu_arrow"><span></span></span></li></ul></div><div class="popup_html">
+<ul id="nav-tree-menu-0" role="navigation">
+<li class="nav-tree-cat-4"><a href="/#category-4"><span class="item-text">Welcome</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-21"><a href="https://cicada3301.boards.net/board/21/welcome"><span class="item-text">Welcome</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-3"><a href="/#category-3"><span class="item-text">Rune Solving</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-19"><a href="https://cicada3301.boards.net/board/19/tools"><span class="item-text">Tools</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-18"><a href="https://cicada3301.boards.net/board/18/theories"><span class="item-text">Theories</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-17"><a href="https://cicada3301.boards.net/board/17/cross"><span class="item-text">Cross</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-16"><a href="https://cicada3301.boards.net/board/16/spirals"><span class="item-text">Spirals</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-15"><a href="https://cicada3301.boards.net/board/15/branches"><span class="item-text">Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-14"><a href="https://cicada3301.boards.net/board/14/mobius"><span class="item-text">Mobius</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-13"><a href="https://cicada3301.boards.net/board/13/mayfly"><span class="item-text">Mayfly</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-12"><a href="https://cicada3301.boards.net/board/12/tree"><span class="item-text">Tree</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-11"><a href="https://cicada3301.boards.net/board/11/cuneiform"><span class="item-text">Cuneiform</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-10"><a href="https://cicada3301.boards.net/board/10/spiral-branches"><span class="item-text">Spiral Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-9"><a href="https://cicada3301.boards.net/board/9/56"><span class="item-text">56</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-8"><a href="https://cicada3301.boards.net/board/8/57"><span class="item-text">57</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-1"><a href="/#category-1"><span class="item-text">General</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-20"><a href="https://cicada3301.boards.net/board/20/philosopy"><span class="item-text">Philosopy</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-1"><a href="https://cicada3301.boards.net/board/1/general-discussion"><span class="item-text">General Discussion</span><div class="clear"></div></a></li>
+</ul>
+</li>
+</ul></div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+		var reposition   = false;
+		var showOn       = 'hover';
+		var offset       = reposition
+			? '-13 6'
+			: ($.browser.msie && parseInt($.browser.version) == 8)
+				? '3 -1'
+				: '3 0';
+		var showCallback = function(e) {
+			var self = $(this);
+
+			// Make sure all other menus are closed
+			$('.popup_html > ul').not(self).menu('hide');
+
+			// Hide the navigation if they leave it.
+			setTimeout(function() {
+				$(document).on('mousemove.nav', function(e) {
+					var elem = $(e.target);
+					if (
+						elem.parents('#nav-tree, .popup_html').length == 0
+						&& !elem.is('#nav-tree, .popup_html')
+						&& !self.data('hotkey-open')
+					) {
+						self.menu('hide');
+						$(document).off('.nav');
+					}
+				});
+			}, 1000);
+		}
+	
+				$('#nav-tree-menu-0')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-0'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-0'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-1')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-1'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-1'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-2')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-2'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-2'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				$('.nav-tree-cat-3').addClass('state-selected');$('.nav-tree-board-19').addClass('state-selected');
+			});
+		</script>
+	
+				</div>
+			
+
+			<div id="ad1"><div style="max-width: 970px; margin: 0 auto 10px; text-align: center;"><div id="Boards_net_Top" style="min-height:90px;">
+    <script type="text/javascript">
+        googletag.cmd.push(function() {
+            deployads.push(function() { deployads.gpt.display("Boards_net_Top"); });
+        });
+    </script>
+</div></div></div>
+
+			<div id="content" role="main">
+				
+				<div class="container posts">
+	<div class="title-bar">
+		
+			<ul class="controls"><li><a role="button" href="/post/new/48" class="reply-button">Reply</a></li></ul>
+		
+		<h1>The Words Of The Liber Primus II: 5-grams</h1>
+	</div>
+	<div class="control-bar ui-helper-clearfix scrollable-pww6MONCmCaW9bjxAdZV">
+		<div class="lm-search-pww6MONCmCaW9bjxAdZV ui-search"></div>
+		<div class="controls">
+			<ul class="select_menu_list ui-menu ui-selectMenu hide actions lm-actions-pww6MONCmCaW9bjxAdZV" data-status="Actions"><li class="sharing ui-menu-has-sub-menu"><a><span class="icon pbi-share"></span>Share Thread</a><ul><li class="facebook-share"><a><span class="icon"></span>Facebook</a></li><li class="twitter-share"><a><span class="icon"></span>Twitter</a></li><li class="tumblr-share"><a><span class="icon"></span>Tumblr</a></li><li class="linkedin-share"><a><span class="icon"></span>LinkedIn</a></li><li class="myspace-share"><a><span class="icon"></span>MySpace</a></li><li class="email-share"><a><span class="icon"></span>Email</a></li></ul></li><li class="view ui-menu-has-sub-menu"><a><span class="icon"></span>Go to</a><ul><li class="view_prev"><a rel="nofollow"><span class="icon"></span>Previous Thread</a></li><li class="view_next"><a rel="nofollow"><span class="icon"></span>Next Thread</a></li></ul></li><li class="default-menu-option"><a>Please make a selection first</a></li></ul>
+		</div>
+		<div class="float-left"><span class="control-icons lm-icons-pww6MONCmCaW9bjxAdZV"><span class="new-icon"><a href="/threads/recent/48">new</a></span><span class="bookmark_icon hide"><img alt="Bookmark" title="Bookmark" src="//storage.proboards.com/forum/images/icons/bookmark.png" /></span><span class="lock_icon hide"><img alt="Locked" src="//storage.proboards.com/forum/images/icons/lock.png" title="This thread is locked" /></span><span class="falling_icon hide"><img title="This thread is falling" src="//storage.proboards.com/forum/images/icons/falling.png" alt="Falling" /></span></span></div>
+		<ul class="ui-pagination lm-pagination-pww6MONCmCaW9bjxAdZV"><li class="prev state-disabled"><a>&laquo; Prev</a></li><li class="state-selected"><a>1</a></li><li class="next state-disabled"><a>Next &raquo;</a></li></ul>
+	</div>
+	<div class="content cap-bottom">
+		<span class="no-labels js-no-labels"></span>
+		
+		<table class="list" role="presentation">
+			<tbody class="lm-content-pww6MONCmCaW9bjxAdZV">
+				
+	<tr id="post-86" class="item post js-post first">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile">
+	<a data-id="3" class="o-user-link js-user-link user-link user-3 group-1" title="@mortlach" href="/user/3">mortlach</a><br />
+	
+	
+	
+		Administrator<br /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><br />
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar-3" title="mortlach"><img src="//storage.proboards.com/6433989/avatar/JSCXVO5DB5iXjb7oFsk8.jpg" alt="mortlach Avatar" /></div></div><br />
+	
+	
+	
+		<div class="info">
+			Posts: 38
+			
+			
+		</div><br />
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a href="/thread/48/words-liber-primus-ii-grams" class="js-thread__link thread-link thread-48 board-19">The Words Of The Liber Primus II: 5-grams</a>
+									<span class="date"><abbr class="o-timestamp time" title="May 6, 2017 16:17:35 GMT" data-timestamp="1494087455000">May 6, 2017 16:17:35 GMT</abbr></span>
+									
+									<span class="likes">&nbsp;</span>
+								</div>
+								<div class="controls">
+									<a href="/post/86/quote/48" class="button quote-button">Quote</a>
+									
+									
+									<ul class=" options_menu post-86 user-3 hide"><li class="86-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="86-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="86-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="86-member ui-menu-has-sub-menu "><a><span class="icon pbi-user-icon"></span>Member</a><ul class=""><li class="86-giveGift"><a href="/user/3/gift"><span class="icon pbi-birthday"></span>Give Gift</a></li></ul></li><li class="86-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-86-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-86-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by mortlach on <abbr class="o-timestamp time" title="May 6, 2017 16:17:35 GMT" data-timestamp="1494087455000">May 6, 2017 16:17:35 GMT</abbr></h3>
+							<div class="message"><font face="arial"><font color="#e6191c"><b>The Words Of The Liber Primus II: 5-grams<br /></b></font><br /><br /><a class="norewrite" rel="norewrite" target="_blank" href="http://cicada3301.boards.net/thread/46/words-liber-primus">Previously, we discussed creating a list of words that are probably in the Liber Primus (LP).</a><br /><br />Eventually, with help from #cicadasolvers we decided on a long list of about 10,000 ‘master words.’ <a rel="nofollow" href="https://pastebin.com/2tpcEwTs" target="_blank">The chosen words can be found here.</a> <br /><br /><br /><font color="#e6191c">N-grams<br /></font><br /><br />Once we have the individual words we must group them together into phrases, or n-grams. For this study we have considered 5-grams, phrases with 5 words (or punctuation). <a target="_blank" href="http://storage.googleapis.com/books/ngrams/books/datasetsv2.html" rel="nofollow">Google has vast amounts of publicaly available n-grams taken from books.</a> <br />We can use this data to find possible n-grams that match the rune-word lengths in the LP using the procedure highlighted below. First, we need to find what are the word-lengths for each 5-gram in the LP. <br /><br /><br /><font color="#e6191c"><b>The 5–grams of the LP <br /></b></font><br /><br />This is how we calculated the 5-grams in the LP:<br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>1)	The LP has been split into sections by red runes and the 5-grams for each section calculated separately. 5-grams that cross into the next red-rune section are not included.<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>2)	We have included 5-grams with and without punctuation <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>a.	Without punctuation, simply strip all punctuation before finding 5-grams <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>b.	With punctuation see Punctuation and “Page Oddities” <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>3)	Create a list of all the unique n-grams (with and without punctuation) <br /><br /><br /><font color="#e6191c"><b>Punctuation and “Page Oddities” <br /></b></font><br /><br />At the end is a summary of some of the odd typesetting found in the LP. The meaning of punctuation marks ” and ‘ are obvious. Four dots is an end of sentence marker, so likely a . ? or ! and three dots …  Well, we assume these could be a , ; or :  (or something else?). In the LP quotation marks do not have an accompanying three-dots (such as a comma), typically when writing in general a comma would be used and so 5–grams with and without commas have been added as that is what is mostly found in the google data. British and American conventions for comma placement have been included. The spurious “7” has not been included and the weird run-on word through the red character 3 on 37.jpg line 5 has been assumed to be a typo (if it is not this is one small difference in thousands of 5-grams)<br /><br /><br /><font color="#e6191c"><b>Google Data Parsing Procedure</b></font> <br /><br /><br />We have:<br /><br /><span><br />&nbsp; &nbsp;&nbsp;</span>LP_5-gram_lengths  = A list of the word lengths of all possible 5-grams in the LP <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>master_words = A list of our preferred words<br /><br /><br />We iterate through each n-gram in the google data and test to see if it could be in the LP and if it contains words in master_words. For example:<br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>For each n-gram in google_data:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>Convert n-gram to runes <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>word_lengths  = number of runes for each word in n-gram<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>If word_lengths is in LP_5-gram_lengths:<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>Keep n-gram<br /><br />		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span>If the words in n-gram are in master_words:<br /><br />			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span>Add flag is_in_masterwords<br /><br /><br /><a rel="nofollow" href="https://pastebin.com/LtpsTAq6" target="_blank">Here are some python hints and tips of processing the data in this manner.</a>&nbsp;On a reasonable desktop PC with a few 100 MB/s disk read/write speed we have found a single process can parse ~5 GB per hour. Faster implementations are certainly possible.<br /><br /><font color="#e6191c"><b>Results <br /></b></font><br />From hundreds of GB of Google data we have managed to cut it down to about 4GB, 3Gb of phrases that are in master_words and 1 GB of other words. <br /><br /><a rel="nofollow" href="https://www.dropbox.com/s/dhr0dp5c9blvsg2/5_grams.7z?dl=0" target="_blank">LINK TO compressed archive</a>&nbsp;<br /><br />Much of the data has '<i>Parts Of Speech</i>' tags  (tags indicating nouns, verbs, determiners etc.). The data also included letter case (upper and lower) so the start of sentences can be identified with capital letters. End of sentences can be found by looking for the punctuation marks. <a rel="nofollow" href="https://pastebin.com/FXNi9NDp" target="_blank">Here is the readme for this data.</a> <br /><br />There may be duplication of some n-grams, for example with and without '<i>Parts Of Speech'</i> tags. This can be further processed later.  <br /><br /><font color="#e6191c"><b>Further Studies<br /></b></font><br />Now we have this raw data we can look into:<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>•	Finding ways to search it., maybe a database, etc. create search functions <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>•	Sophisticated searching with added cuts (e.g. word1 is “The”, word 3 IS NOT (a list of words to ignore) <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>•	With this corpus we can implement ways of combining phrases to find higher length n-grams (say 10-grams). This can be done in a number of methods based on natural language processing techniques to be investigated.    <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>•	Start trying to find good cribs for the first sentence of each section. Maybe we will find sections that have very few plausible phrases. Having a good guess of the words should help focus the decrypting efforts. (Assuming we can decrypt before finding the deep-web-page… )  <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>•	There are 2,3 and 4 grams to add  <img src="//storage.proboards.com/forum/images/smiley/smiley.png" alt=":)" class="smile"> &nbsp;These can be fond from the -gram data &nbsp; &nbsp;&nbsp;<br /><br />*Comments, questions, suggestions, omissions etc ? please try <a rel="nofollow" href="https://webchat.freenode.net/?channels=#cicadasolvers" target="_blank">#cicadasolvers</a><br /><br /><font color="#e6191c"><b>Page Oddities</b></font>&nbsp;<br /><br />Where + is a four dots, and :. Is a thee-dots <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>4.jpg line 8, apostrophe: <br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᛉᛂᛚ.ᚱᛚᚱᛒᚪᛈᛏᛉᛚᛏ.ᛗᛉᛁ'ᚹ+ᛂᛋᛟᛗᚾᚱ <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>5.jpg lines 5-6, 4 dots split to 3 then 1, separated by line break:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚳᚢ.ᚣᛠᚾᛏᚷᚳᚪ.ᛉᛡᛇ.ᚦᛂᚣᛂᛚᛟᛖᛚ.ᚣ:.<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>.ᛈᛡ.ᛖᚹᛟ.ᛇᚾᚪ.ᚻᛞᛇᛋ.ᚦᚣᛇᚦᛂᚦᚱᚢ.ᚳᛠ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>6.jpg line 10, (open) double quotes: <br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚢᚻ.ᛈᚹᛂᛚᚷᛒ.ᛗᚢᛂᛗ.ᛇᚾᛇ+" ᚫᛚᚪᛚᚷᚪ.ᛋ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>7.jpg line 1, (close) double quotes: <br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚻᛝ.ᛚᚦᛒ.ᛋᚳᚢᚳᚩᛡ".ᛚᚳᛂ.ᛉᚪᚾᛇᛉ+ᛠ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>10.jpg line 8 non-rune character 7:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᛉᚩ.ᛇᛁᛡᚠᛟᛒᚦᚠ.ᛋᛒ.ᚠᛞᛇ.ᚩᚦᛏ.7.ᚷ.ᛚᛂᛖᚫ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>11.jpg lines 11-12, split 4 dots, 3 then 1, separated by line break:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᛋᚢᛚᚪᛈᚢᚳᛖᚠᛞᛉ.ᚦᛠᛇᛝᚻ.ᚣᚱᛗ.ᛟᚾᛚ:.<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>.ᛈᚹᛞᚱᛂ.ᚪᛝᛞ.ᛁᚦᛏᚷᚢᚹᚳᚻᛖᚩᚪᛖ.ᛉᚪᚢ.<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>20.jpg lines 6-7, split 4 dots, 1 then 3, separated by line break:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᛗ.ᛝᚦ.ᚣᛈᚠ.ᚪᛞᛚᚪᛖᛚᚩ.ᚱᚷ.ᛚᚳᛇᛏᚷᚣᛟᛗ.<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>:.ᚪᛁ.ᚷᛂᛒᛡᛗ.ᛞᛈᚪᚳᛠᚷᛋ.ᛏᛈ.ᚩᛋᛏᛗᚱᚣ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>21.jpg line 2, apostrophe:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᛈ.ᚻᚢᚻᚾᛏᚫᛒᛇᚩᛁᛈ.ᚫᚩ'ᚣ.ᛡᚣᛗᚷ.ᚠᚱᛡᛚ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>22.jpg line 4, (open) double quotes: <br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚪᚹᛒ.ᚹᛒᛗᚱᚾᛗᚻᛗᛁᚾᚪᛞ."ᛡᛖᚩ.ᚾᚹᛡ.ᚢᛂ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>22.jpg line 5, (close) double quotes:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚦᛠ.ᛚᚳᚷᛚᛇ.ᛟᛠᛠᚪ."+ᛇᛉᚣᚪ.ᚷᛏᚩ.ᛖ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>35.jpg line 4, apostrophe:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚦᛚᚫ.ᚳᛋᚪᚩᚷᚹᛚ+ᛈᛖ'ᛏ.ᛂᛉᛝᛚ.ᛏᛉᚩᚣᛝ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>36.jpg line 6, red character 1:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>1 ᛚᚦᛇᛟ.ᚪᚫᛠ.ᛗᛉᚻᚳᛉᚪᛏᚦ.ᚫᛉ.ᚩᛋᚳᛞ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>37.jpg line 1, red character 2:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>2 ᚾᚣᛖᛉ.ᚾᚢᛉᛁ.ᛝᛏᛈᚹᛋᚣ.ᛏᛠᛈᛉ.ᚪᛁ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>37.jpg line 5, red character 3 (especially odd, no punctuation before):<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>.ᚠᛋᛝᛞ.ᚳᚪᚱᛒ.ᚹᛈ.ᚾᚩᚦᚳᚦᚾᛗᚩᛖ.ᚣᛇᚾ.ᚠᛒ<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>3 ᛞᚢᛈ.ᚹᚾᛖᚪ.ᚱᛚᛁᚹ.ᚫᛉ.ᛝᚠᛞᚪᚠ.ᛒᛂᛉ.ᛞ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>37.jpg line 10, red character 4:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>4 ᛝᛂᛋᛂᛗᚱᛗ.ᚾᛒᛋᛗᛉᛞᚻᛉᛁ.ᚣᛡᚻᚣ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>38.jpg line 2, 3 dots:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚫᚢᛠᚢᚪ:.ᚾᛝᚳ.ᛖᛈᚹᛉ.ᚢᛉᚫ.ᚾᛈᚳᚻᚱᚣ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>38.jpg line 4, red character 5:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>4 ᛝᛂᛋᛂᛗᚱᛗ.ᚾᛒᛋᛗᛉᛞᚻᛉᛁ.ᚣᛡᚻᚣ	<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>40.jpg line 4, (open) double quotes: <br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚣᛗᚢᛠ.ᚱᛁᚢᛟᛂᛁ.ᛗᛖᚫ.ᚱᛋᛉᛝ+"ᛠᛈᛚ.<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>40.jpg line 5, (close) double quotes:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᛞᚩᛚᛁᛉᛠᛝᛖᚱ".ᚾᛈᛖᚹᛡ.ᚾᛂᛏᚣ+ᛋᚩᛋ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>40.jpg line 9, (open) double quotes:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚾᛏ."ᚠᛞᚱᛠᚷ.ᛈᚩᛇᚩᛗᛠᛒ.ᛂᛡ.ᛋᛗᚠ.ᛏ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>40.jpg line 11, (close) double quotes:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚠᛉᚠᛏ.ᚳᛋᛉᛟ.ᚷᚠᛉᚾᛞ.ᛒᛏᛠᛡ"+ᛈᛡ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>41.jpg line 10, apostrophe:	<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>.ᛇᚣᛡ.ᚩᛉ.ᚪᛋᚣᛁᛝ.ᛉᛚᛂ'ᚳ.ᛖᚣᚢᛝᚦᛇᚱ.<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>42.jpg line 3, (open) double quotes:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚢᚳᚷ.ᛚᛏᛂᚹᛈ.ᚫᛗᛚ.ᛉᛚᛗᛏᛞᚠᛈᛁ+"ᚠᚳᚦ	<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>42.jpg line 6, (close) double quotes and (open) double quotes:	<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚣᛁᛉᛇᚻᚩᛠ.ᚫᚻᛡᛝᛠᚦ.ᚾᚣ.ᚾᚠᛁᛝ"+"ᛏ	<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>43.jpg line 1, (close) double quotes:		<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚻᛂ.ᛁᛖᛏᛡ.ᚷᛁᚩᚾ.ᚳᚢᚫᛗᛈᛋᚪᛡ.ᚷᛚᚣᚹᛟ".	<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>46.jpg line 5, 3 dots:<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᚩᚳᛞᛒ.ᛟᚩᛠᚾᚠᚪ:.ᛚᛗᛖᛁᚦᚫᚪᛡᛂᛁᚪᚱ.ᚦᚱᛖ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>53.jpg line 3, (open) double quotes:	<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᛁᚢᛂ.ᚣᛡᛚᚢ.ᛂᛟ+"ᛠᛉᚣᛇᚱ.ᚩᛈᛋᚳᚫᛗ<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>53.jpg line 6, (close) double quotes:		<br /><br />	<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>ᛞᛖᛏ.ᚹᛉᛞᛚ.ᚩᚫᛂ.ᛇᚢᛒ".ᛗᛏ.ᛞᛗᛖ+ᛏ<br /></font><br /></div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+							<div class="edited_by"><span class="italic">Last Edit:</span> <abbr data-timestamp="1494665126000" title="May 13, 2017 8:45:26 GMT" class="o-timestamp time">May 13, 2017 8:45:26 GMT</abbr> by <a data-id="3" class="o-user-link js-user-link user-link user-3 group-1" title="@mortlach" href="/user/3">mortlach</a></div>
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+	<tr id="post-87" class="item post js-post even">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile">
+	<a data-id="3" class="o-user-link js-user-link user-link user-3 group-1" title="@mortlach" href="/user/3">mortlach</a><br />
+	
+	
+	
+		Administrator<br /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_red.png" alt="*" /><br />
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar-3" title="mortlach"><img src="//storage.proboards.com/6433989/avatar/JSCXVO5DB5iXjb7oFsk8.jpg" alt="mortlach Avatar" /></div></div><br />
+	
+	
+	
+		<div class="info">
+			Posts: 38
+			
+			
+		</div><br />
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a href="/thread/48/words-liber-primus-ii-grams" class="js-thread__link thread-link thread-48 board-19">The Words Of The Liber Primus II: 5-grams</a>
+									<span class="date"><abbr class="o-timestamp time" title="May 13, 2017 8:45:54 GMT" data-timestamp="1494665154000">May 13, 2017 8:45:54 GMT</abbr></span>
+									
+									<span class="likes">&nbsp;</span>
+								</div>
+								<div class="controls">
+									<a class="button quote-button" href="/post/87/quote/48">Quote</a>
+									
+									
+									<ul class=" options_menu post-87 user-3 hide"><li class="87-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="87-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="87-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="87-member ui-menu-has-sub-menu "><a><span class="icon pbi-user-icon"></span>Member</a><ul class=""><li class="87-giveGift"><a href="/user/3/gift"><span class="icon pbi-birthday"></span>Give Gift</a></li></ul></li><li class="87-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-87-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-87-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by mortlach on <abbr class="o-timestamp time" title="May 13, 2017 8:45:54 GMT" data-timestamp="1494665154000">May 13, 2017 8:45:54 GMT</abbr></h3>
+							<div class="message">Lectures on n-grams and Language Modelling:<br /><br /><a href="https://www.youtube.com/playlist?list=PLaRKlIqjjguC-20Glu7XVAXm6Bd6Gs7Qi" rel="nofollow" target="_blank">www.youtube.com/playlist?list=PLaRKlIqjjguC-20Glu7XVAXm6Bd6Gs7Qi</a></div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+	<tr id="post-88" class="item post js-post last">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile">
+	<a data-id="3" class="o-user-link js-user-link user-link user-3 group-1" title="@mortlach" href="/user/3">mortlach</a><br />
+	
+	
+	
+		Administrator<br /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><img alt="*" src="//storage.proboards.com/forum/images/stars/star_red.png" /><br />
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar-3" title="mortlach"><img src="//storage.proboards.com/6433989/avatar/JSCXVO5DB5iXjb7oFsk8.jpg" alt="mortlach Avatar" /></div></div><br />
+	
+	
+	
+		<div class="info">
+			Posts: 38
+			
+			
+		</div><br />
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a href="/thread/48/words-liber-primus-ii-grams" class="js-thread__link thread-link thread-48 board-19">The Words Of The Liber Primus II: 5-grams</a>
+									<span class="date"><abbr class="o-timestamp time" data-timestamp="1495114409000" title="May 18, 2017 13:33:29 GMT">May 18, 2017 13:33:29 GMT</abbr></span>
+									
+									<span class="likes">&nbsp;</span>
+								</div>
+								<div class="controls">
+									<a href="/post/88/quote/48" class="button quote-button">Quote</a>
+									
+									
+									<ul class=" options_menu post-88 user-3 hide"><li class="88-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="88-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="88-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="88-member ui-menu-has-sub-menu "><a><span class="icon pbi-user-icon"></span>Member</a><ul class=""><li class="88-giveGift"><a href="/user/3/gift"><span class="icon pbi-birthday"></span>Give Gift</a></li></ul></li><li class="88-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-88-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-88-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by mortlach on <abbr class="o-timestamp time" data-timestamp="1495114409000" title="May 18, 2017 13:33:29 GMT">May 18, 2017 13:33:29 GMT</abbr></h3>
+							<div class="message">1,2,3 and 4 grams from this data <br /><br /><a href="https://www.dropbox.com/s/080eb30iauu5qdx/1234.7z?dl=0" rel="nofollow" target="_blank">www.dropbox.com/s/080eb30iauu5qdx/1234.7z?dl=0</a></div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+<div class="container quick-reply">
+	<div class="title-bar">
+		<ul class="controls"><li><a role="button" href="/post/new/48" class="reply-button">Reply</a></li></ul>
+		<h2>Quick Reply</h2>
+	</div>
+	<div class="content cap-bottom">
+		<form id="form_aJVa0NSk" class="form_post_quick_reply js-form-post-quick-reply" role="form" action="/post/create/48" method="post">
+<input type="hidden" id="form_aJVa0NSk_message_mode_input" name="message_mode" value="bbcode" />
+<input type="hidden" id="form_aJVa0NSk_ga_client_id_input" name="ga_client_id" />
+<input type="hidden" id="form_aJVa0NSk_captcha_id_input" name="captcha_id" value="captcha_init" />
+<input type="hidden" id="form_aJVa0NSk_reply_mode_input" name="reply_mode" value="quick_reply" /><noscript><ul class="noscript-form-error"></ul></noscript>
+			
+			<div class="guest_name">
+				<label>Guest Name:</label>
+				<input type="text" id="form_aJVa0NSk_created_by_guest_name_input" name="created_by_guest_name" maxlength="30" class="full-width" />
+			</div>
+			
+			<div class="message">
+				<textarea id="form_aJVa0NSk_message_input" name="message" accesskey="q"></textarea>
+			</div>
+			
+			<style>
+                #captcha-container.grepulse { animation: grepulse 0.3s 6 alternate; }
+                @keyframes grepulse {
+                    from { background-color: #fee; }
+                    to   { background-color: #fcc; }
+                }
+            </style>
+			<div id="captcha-container">
+				<div id="gre-captcha-container"></div>
+				<noscript>
+					
+					
+		<div style="width: 302px; height: 493px;">
+			<div style="width: 302px; height: 493px; position: relative;">
+				<div style="width: 302px; height: 493px; position: absolute;">
+					<iframe src="https://www.google.com/recaptcha/api/fallback?k=6LeLlQkTAAAAACrV4OiakEuq7INhMhWWUCZ-XpoZ" frameborder="0" scrolling="no"
+							style="width: 302px; height: 423px; border-style: none;">
+					</iframe>
+				</div>
+				<div style="width: 300px; height: 60px; border-style: none;
+						bottom: 0; left: 0; margin: 0px; padding: 0px;
+						background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px; position: absolute;">
+					<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response"
+							style="width: 250px; height: 40px; border: 1px solid #c1c1c1;
+								margin: 10px 25px; padding: 0px; resize: none;" ></textarea>
+				</div>
+			</div>
+		</div>
+	
+					<div style="margin: 20px 0 15px 0;"><input type="checkbox" name="tos" style="margin-right: 15px; vertical-align: middle; position: relative; bottom: 1px;" />I agree to the <a href="http://www.proboards.com/tos" target="_blank">ProBoards Terms of Service</a>.</div>
+					<style>#captcha-container { display: block; text-align: left !important; padding-left: 10px; }</style>
+				</noscript>
+			</div>
+		
+			<input id="form_aJVa0NSk_post_button" name="post" type="submit" class="ui-button" value="Post Quick Reply" />
+		</form>
+		<script>
+		$(document).ready(function() {
+			
+
+			$('#form_aJVa0NSk').form({
+				create: function(e) {var pbCaptchaOpts = proboards.data("captcha_init");if (pbCaptchaOpts) { proboards.captcha.init(pbCaptchaOpts); }},
+				submit: function(e) {proboards.autosave.clear();},
+				beforeSubmit: function(e) {proboards.data('submitting', 1);
+
+				try {
+					$('#form_aJVa0NSk_ga_client_id_input').val(
+						proboards.analytics.google.getClientId()
+					);
+				} catch(e) {}
+			},
+				validations: [{"name":"exists","opts":{"fields":["message_mode"]},"message":"You must provide a message.","field":"message"},{"field":"created_by_guest_name","message":"You must provide a guest name.","opts":{},"name":"exists"}],
+				errors: {},
+				positionError: null
+			});
+		});
+		  </script>
+	</div>
+</div>
+
+				
+			</div>
+
+			<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "6036030" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = "https://sb.scorecardresearch.com/cs/6036030/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=6036030&amp;cv=3.6.0&amp;cj=1">
+</noscript><div style="display: flex; max-width: 970px; max-width: 100%; margin: 0 auto 10px; text-align: center; justify-content: space-around;flex-wrap: wrap"><div id="Boards_net_Bottom">
+    <script type="text/javascript">
+        googletag.cmd.push(function() {
+            deployads.push(function() { deployads.gpt.display("Boards_net_Bottom"); });
+        });
+    </script>
+</div>
+<script>
+function insertDesktopAd(adUnitPath, suffix) {
+    googletag.cmd.push(function() {
+        googletag.defineSlot('/1030735/'+adUnitPath, [728, 90], adUnitPath+"_"+suffix).addService(googletag.pubads());
+        deployads.push(function() { deployads.gpt.display(adUnitPath+"_"+suffix); });
+    });
+}
+function createVSThreadWrapper(wrapperID = '') {
+    let threadPos = document.createElement('div');
+    threadPos.id = wrapperID;
+    threadPos.style = 'min-height: 90px; padding: 9px 0;';
+    return threadPos;
+}
+// Not in View Code
+function hidePrimisSlider() {
+    document.querySelector('#primisSlider #primis_container_div div').style.right = '-400px';
+}
+function initializeSliderBehaviour(discoveryContainer, sliderPlacement) {
+    window.addEventListener('primisPlayerInit', function (e) {
+        if (e.detail.playerApiId == sliderPlacement) {
+            let primisPlayer = e.detail;
+            let threshold = 0.1;
+            document.querySelector('#primisSlider #primis_container_div div').style.transition = 'right 0.5s';
+            let obs = new IntersectionObserver(function(i) {
+            if (i[0].intersectionRatio > threshold) {
+                primisPlayer.pause();
+                hidePrimisSlider()
+            } else {
+                primisPlayer.play();
+            }
+            }, {threshold: threshold});
+            obs.observe(discoveryContainer);
+            // Handle edge case for discovery player floating for users on desktop and mobile resolution
+            function checkPrimisFloat() {
+                let primisFloatDiv = document.querySelector('.primis-wrapper [id^=primis_player]');
+                if (primisFloatDiv && primisFloatDiv.style.position == "fixed") {
+                    primisPlayer.pause();
+                    hidePrimisSlider();
+                }
+            }
+            document.addEventListener('scroll', checkPrimisFloat, true)
+            primisPlayer.addEventListener('adStarted',checkPrimisFloat);
+            document.addEventListener('DOMContentLoaded', checkPrimisFloat, true);
+            primisPlayer.addEventListener('adSkip', function (e) {
+                dataLayer.push({
+                    event: "adSkipPrimisSlider"
+                });
+            });
+        }
+    });
+}
+function createPrimisSrc(primisPlacement) {
+    let primis = document.createElement('script');
+    primis.id = 'primis';
+    primis.type = 'text/javascript';
+    primis.language = 'javascript';
+    primis.src = "https://live.primis.tech/live/liveView.php?s="+primisPlacement+"&kv_3=proboards.com&playerApiId="+primisPlacement;
+    primis.async = true;
+    return primis;
+}
+function insertPrimisPlacement() {
+    let proboardsWrapper = createVSThreadWrapper();
+    let primisDiscovery = document.createElement('div');
+    primisDiscovery.id = "primisContainer";
+    primisDiscoveryScript = createPrimisSrc(118308);
+    primisDiscovery.style.maxWidth = '842px';
+    primisDiscovery.style.margin = 'auto';
+    primisDiscovery.style.minHeight = '413px';
+    primisDiscovery.appendChild(primisDiscoveryScript);
+    let primisSlider = document.createElement('div');
+    primisSlider.id = "primisSlider";
+    primisSliderScript = createPrimisSrc(118242);
+    primisSlider.appendChild(primisSliderScript);
+    let primisInsertionDiv = proboardsWrapper;
+    primisInsertionDiv.style.minHeight = '';
+    primisInsertionDiv.appendChild(primisDiscovery);
+    primisInsertionDiv.appendChild(primisSlider);
+    return proboardsWrapper;
+}
+function experimentLayout() {
+    if(window.location.pathname.indexOf("/thread") === 0) {
+        let elgiblePositions = document.querySelectorAll('.post');
+        let firstPost = document.querySelector('.post.first');
+        let adUnitPath = 'Boards_net_InThread';
+        let threadWrapper = createVSThreadWrapper(adUnitPath+"_First");
+        let dynamicStart = 1;
+        // Guest users see Primis after First Post, and a display ad for 2nd post
+        if (window.vsRunPrimis && ("0" === "0")) {
+            let secondPost = document.querySelector('.post:not(.first)');
+            secondPost.after(threadWrapper);
+            let primisInsertion = insertPrimisPlacement();
+            firstPost.after(primisInsertion);
+            let discoveryContainer = document.querySelector('#primisContainer');
+            initializeSliderBehaviour(discoveryContainer, 118242);
+            dynamicStart = 2;
+        // Members will only see a display after first post and no player
+        } else {
+            firstPost.after(threadWrapper);
+        }
+        insertDesktopAd(adUnitPath, "First");
+        let inThreadCount = 0;
+        adUnitPath = 'Boards_net_InThreadLower';
+        const vh = document.documentElement.clientHeight;
+        let lastAdY = window.pageYOffset + elgiblePositions[dynamicStart - 1].getBoundingClientRect().top;
+        for(i=dynamicStart;i<elgiblePositions.length;i++) {
+            let elY = window.pageYOffset + elgiblePositions[i].getBoundingClientRect().top;
+            if (elY >= lastAdY + vh || i == elgiblePositions.length-1) {
+                let threadWrapper = createVSThreadWrapper(adUnitPath+"_"+inThreadCount);
+                elgiblePositions[i].after(threadWrapper);
+                insertDesktopAd(adUnitPath, inThreadCount);
+                lastAdY = elY;
+                inThreadCount++;
+                if (inThreadCount >= 9) {
+                    break;
+                }
+            }
+        }
+    } else {
+        let elgiblePositions = document.querySelectorAll('.board.item,.thread.item');
+        for(i=0;i<elgiblePositions.length;i++) {
+            if (window.pageYOffset + elgiblePositions[i].getBoundingClientRect().top > (document.documentElement.clientHeight - 120) || i == elgiblePositions.length-1) {
+                if (document.querySelector('.board')) {
+                    adUnitPath = 'Boards_net_ForumListInContent';
+                } else {
+                    adUnitPath = 'Boards_net_ForumViewInContent';
+                }
+                let threadWrapper = document.createElement('tr');
+                let threadCell = document.createElement('td');
+                threadCell.style = 'padding: 9px 0;';
+                threadCell.colSpan = 20;
+                let threadPos = document.createElement('div');
+                threadPos.style = 'min-height:90px;';
+                threadWrapper.appendChild(threadCell);
+                threadCell.appendChild(threadPos);
+                threadPos.id = adUnitPath+"_"+i;
+                elgiblePositions[i].after(threadWrapper);
+                insertDesktopAd(adUnitPath, i);
+                break;
+            }
+        }
+    }
+}
+if (window.vsexp) {
+    experimentLayout();
+}
+</script></div>
+        <footer class="c-footer" role="contentinfo">
+            <div id="remove_ads_link" style="display:block!important;"><a href="https://www.proboards.com/store/add_cart/ad_free/50000/cicada3301.boards.net/1">Click here to remove banner ads from this forum.</a></div>
+            <div id="hosted_by_link" style="display:block!important;">This Forum Is Hosted For FREE By <a href="https://www.proboards.com" target="_blank">ProBoards</a><br />Get Your Own <a href="https://www.proboards.com/create-free-forum" target="_blank">Free Forum</a>!</div>
+            <div class="c-footer__link-wrapper"><a href="https://www.proboards.com/tos" accesskey="8">Terms of Service</a> &nbsp; <a href="https://www.proboards.com/privacy" title="Privacy">Privacy</a> &nbsp; <a href="https://www.proboards.com/privacy#cookies" title="Cookies">Cookies</a> &nbsp; <a href="javascript:alert('VerticalScope may earn an affiliate commission when you click on links on this website.')">FTC Disclosure</a> &nbsp; <a href="https://www.proboards.com/report-abuse" accesskey="7">Report Abuse</a> &nbsp; <a class="qc-ccpa-persistent-link" title="Your Privacy Choices"><img src="https://storage.googleapis.com/vs-cmp/privacyoptions123x59.png" style="padding-right:5px; height:16px;" alt="California Consumer Privacy Act (CCPA) Opt-Out Icon">Your Privacy Choices &nbsp;</a></div>
+        </footer>
+    
+
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,411 @@
+
+> I also think there's a blur in messaging from IM into email. Once you go from simple texting to multi-media attachments, to having subject lines, to wanting to file things into folders, and then you wake up and you have email again. And that's the way forward to get secure messaging.
+
+
+What Jon said.
+
+iang
+
+
+From davehowe.pentesting at gmail.com  Wed Nov 27 04:35:35 2013
+From: davehowe.pentesting at gmail.com (Dave Howe)
+Date: Wed, 27 Nov 2013 09:35:35 +0000
+Subject: [Cryptography] Microsoft announces new email encryption
+	misfeature?
+In-Reply-To: <201311270403.rAR43JoW028360@new.toad.com>
+References: <201311270403.rAR43JoW028360@new.toad.com>
+Message-ID: <5295BCE7.6020306@gmail.com>
+
+On 27/11/2013 04:03, John Gilmore wrote:
+>   "Messages are 2048-bit encrypted using SHA-256 with the private key
+>   of the Office 365 tenant domain. Recipients have no knowledge of
+>   this key, so when they receive the message, they'll see that it
+>   contains an encrypted attachment together with some instructions as
+>   to how to view the content.  ...
+  This sounds very similar indeed to how cisco/ironport's CRES solution
+works. The mail body is encrypted and sent hidden in a series of "image"
+files stored as mime multipart/related, along with some javascript that
+interacts with a web service to provide login, key download and
+localized decryption etc etc.
+
+  All the key material is held on a server controlled by cisco, in US
+jurisdiction, and the *only* security review cisco were willing to share
+with a UK dot-gov security auditor was on the *physical* security of the
+non-cisco-owned hosting site. (!)
+
+  Needless to say, they weren't too impressed and recommended the
+dot-gov went with a similar, but on-premise system from PGP instead.
+
+
+
+From leichter at lrw.com  Wed Nov 27 07:11:54 2013
+From: leichter at lrw.com (Jerry Leichter)
+Date: Wed, 27 Nov 2013 07:11:54 -0500
+Subject: [Cryptography] Microsoft announces new email encryption
+	misfeature?
+In-Reply-To: <201311270403.rAR43JoW028360@new.toad.com>
+References: <201311270403.rAR43JoW028360@new.toad.com>
+Message-ID: <5D6ABEF7-8153-460B-AFB4-75196220872B@lrw.com>
+
+I read the description and couldn't figure it out.  But then you can almost never figure out the details of a Microsoft product from their marketing literature.  (They aren't alone in this, but they are certainly masters of the style.)
+
+However... what *seems* to be involved here is a variation of the approach I described earlier, where certain businesses - particularly financial and medical - use a third party to implement a closed "secure email" facility for communication between their customers and the business.  To access your "secure email", you have to create an account with that third-party provider (who, indeed, as in MS's product can add their own branding to the service) and then log in to it.  Generally, you'll get ordinary email that contains a link to your account on the "secure email" service.
+
+MS has used its ubiquitous email products and services to extend the model in two ways.  First, from the user's side, they've tried to hide the separate nature of the "secure" messages by making the link to the browser as transparent as possible, and, it seems, making the message you see appear to be within the mail program, rather than in a separate Web session.  (It's at this point that the marketing descriptions get the most complicated and difficult to follow.)  Second, from the corporate user's point of view, they've removed both the ability and the need to choose whether to send some mail to a customer as a traditional message or a "secure" message.  Rather, the corporate user sends the message just as any other, and then some management-configured rules decide how to route it.
+
+One can look at this in many ways.  The security provided is certainly not air-tight, but it's a hell of a lot better than the complete insecurity of traditional email.  Yes, it's all controlled by management at the sending company, but they owned and controlled the infrastructure (or contracted it out to Microsoft) *anyway* - nothing gained but nothing lost.  Given that they don't control all the clients on the receiving side, some kind of overlay mechanism is needed, and a web link is hardly new.  (The battle to get people not to click on links or open attachments is long lost.  There was a time I could usefully surf the Web with Javascript disabled; that time is long gone, too.  The fight we have to win now is making those two activities safe - a fight I really, really wish we could have avoided, but there it is.)
+
+Does this give Microsoft access to the "secure" mail between my doctor and me?  Maybe - it's impossible to tell from the description who actually has access to the decrypted material.  It seems likely, but then this is a product aimed at those using Microsoft's hosted mail services, which means they already have access to any cleartext mail.
+
+Is this a land grab by Microsoft to get people to create Microsoft ID's?  I'm sure their view is "it couldn't hurt".  After all, they are in a race with Google (the most aggressive - just try using an Android tablet without creating a Google account) and Apple (which apparently has the largest collection of user credit cards, but is in some ways the easiest to avoid:  When you configure a new device, they strongly suggest you create an account, but right on the screen they offer to do it "later", and almost everything will work if "later" is in the 22nd century), not to mention Facebook and Disqus and everyone else.  So far, it's trivial to just create multiple accounts limited to very specific purposes, which has been my response.
+
+Looking at the overall picture, the existence and spread of these services - and with Microsoft in the game, they will become much more common and visible - has a very important salutary effect:  It will lead people "in the large" to understand that "ordinary" email is *not* secure, something they've never focused on in the past.  Perhaps this will create an opportunity for other, better secure mail services, more suited to the all-to-all nature of email than the hub-and-spoke communications the Microsoft service and others like it aim at.  But someone - "one" writ large - will have to find a way to seize the opportunity when it emerges.  The window will likely be small.
+
+                                                        -- Jerry
+
+
+From eugen at leitl.org  Wed Nov 27 09:08:08 2013
+From: eugen at leitl.org (Eugen Leitl)
+Date: Wed, 27 Nov 2013 15:08:08 +0100
+Subject: [Cryptography] [Doctrinezero]
+ http://www.telegraph.co.uk/technology/internet/10468112/The-internet-mystery-that-has-the-world-baffled.html
+Message-ID: <20131127140808.GC10793@leitl.org>
+
+----- Forwarded message from WAVE movement <info at wavism.net> -----
+
+Date: Wed, 27 Nov 2013 13:33:55 +0000
+From: WAVE movement <info at wavism.net>
+To: "doctrinezero at zerostate.is" <doctrinezero at zerostate.is>, "zs-media at zerostate.is" <zs-media at zerostate.is>
+Subject: [Doctrinezero] http://www.telegraph.co.uk/technology/internet/10468112/The-internet-mystery-that-has-the-world-baffled.html
+Message-ID: <CAAoBNdWMp-QYsFLHVKxGHHVkM=X3yR92EAZ8NVdNOu=fryhJSQ at mail.gmail.com>
+Reply-To: doctrinezero at zerostate.is
+
+http://www.telegraph.co.uk/technology/internet/10468112/The-internet-mystery-that-has-the-world-baffled.html
+
+The internet mystery that has the world baffled For the past two years, a
+mysterious online organisation has been setting the world's finest
+code-breakers a series of seemingly unsolveable problems. But to what end?
+
+Welcome to the world of Cicada 3301
+  [image: cicada 3301]
+
+By Chris Bell
+
+11:00AM GMT 25 Nov 2013
+
+[image: Comments]865
+Comments<http://www.telegraph.co.uk/technology/internet/10468112/The-internet-mystery-that-has-the-world-baffled.html#disqus_thread>
+
+One evening in January last year, Joel Eriksson, a 34-year-old computer
+analyst from Uppsala in Sweden, was trawling the web, looking for
+distraction, when he came across a message on an internet forum. The
+message was in stark white type, against a black background.
+
+?Hello,? it said. ?We are looking for highly intelligent individuals. To
+find them, we have devised a test. There is a message hidden in this image.
+Find it, and it will lead you on the road to finding us. We look forward to
+meeting the few that will make it all the way through. Good luck.?
+
+The message was signed: "3301?.
+
+A self-confessed IT security "freak? and a skilled cryptographer,
+Eriksson?s interest was immediately piqued. This was ? he knew ? an example
+of digital steganography: the concealment of secret information within a
+digital file. Most often seen in conjunction with image files, a recipient
+who can work out the code ? for example, to alter the colour of every 100th
+pixel ? can retrieve an entirely different image from the randomised
+background "noise?.
+
+It?s a technique more commonly associated with nefarious ends, such as
+concealing child pornography. In 2002 it was suggested that al-Qaeda
+operatives had planned the September 11 attacks via the auction site eBay, *by
+encrypting messages inside digital photographs
+
+  Sleepily ? it was late, and he had work in the morning ? Eriksson thought
+he?d try his luck decoding the message from "3301?. After only a few
+minutes work he?d got somewhere: a reference to "Tiberius Claudius Caesar?
+and a line of meaningless letters. Joel deduced it might be an embedded
+"Caesar cipher? ? an encryption technique named after Julius Caesar, who
+used it in private correspondence. It replaces characters by a letter a
+certain number of positions down the alphabet. As Claudius was the fourth
+emperor, it suggested "four? might be important ? and lo, within minutes,
+Eriksson found another web address buried in the image?s code.
+
+Feeling satisfied, he clicked the link.
+
+It was a picture of a duck with the message: "Woops! Just decoys this way.
+Looks like you can?t guess how to get the message out.?
+
+"If something is too easy or too routine, I quickly lose interest,? says
+Eriksson. "But it seemed like the challenge was a bit harder than a Caesar
+cipher after all. I was hooked.?
+
+Eriksson didn?t realise it then, but he was embarking on one of the
+internet?s most enduring puzzles; a scavenger hunt that has led thousands
+of competitors across the web, down telephone lines, out to several
+physical locations around the globe, and into unchartered areas of the
+"darknet?. So far, the hunt has required a knowledge of number theory,
+philosophy and classical music. An interest in both cyberpunk literature
+and the Victorian occult has also come in handy as has an understanding of
+Mayan numerology.
+
+It has also featured a poem, a tuneless guitar ditty, a femme fatale called
+"Wind? who may, or may not, exist in real life, and a clue on a lamp post
+in Hawaii. Only one thing is certain: as it stands, no one is entirely sure
+what the challenge ? known as Cicada 3301 ? is all about or who is behind
+it. Depending on who you listen to, it?s either a mysterious secret
+society, a statement by a new political think tank, or an arcane
+recruitment drive by some quasi-military body. Which means, of course,
+everyone thinks it?s the CIA.
+
+For some, it?s just a fun game, like a more complicated Sudoku; for others,
+it has become an obsession. Almost two years on, Eriksson is still trying
+to work out what it means for him. "It is, ultimately, a battle of the
+brains,? he says. "And I have always had a hard time resisting a
+challenge.?
+
+On the night of January 5 2012, after reading the "decoy? message from the
+duck, Eriksson began to tinker with other variables.
+
+ Taking the duck?s mockery as a literal clue, Eriksson decided to run it
+through a decryption program called OutGuess. Success: another hidden
+message, this time linking to another messageboard on the massively popular
+news forum *Reddit <http://www.reddit.com/>*. Here, encrypted lines from a
+book were being posted every few hours. But there were also strange symbols
+comprising of several lines and dots ? Mayan numbers, Eriksson realised.
+And duly translated, they led to another cipher.
+
+Up until now, Eriksson would admit, none of the puzzles had really required
+any advanced skills, or suggested anything other than a single anonymous
+riddle-poser having some fun. "But then it all changed,? says Eriksson.
+"And things started getting interesting.?
+
+Suddenly, the encryption techniques jumped up a gear. And the puzzles
+themselves mutated in several different directions: hexadecimal characters,
+reverse-engineering, prime numbers. Pictures of the cicada insect ?
+reminiscent of the moth imagery in Thomas Harris?s The Silence of the Lambs
+? became a common motif.
+
+"I knew cicadas only emerge every prime number of years ? 13, or 17 ? to
+avoid synchronising with the life cycles of their predators,? says
+Eriksson. "It was all starting to fit together.? The references became more
+arcane too. The book, for example, turned out to be "The Lady of the
+Fountain?, a poem about King Arthur taken from* The Mabinogion
+<http://en.wikipedia.org/wiki/Mabinogion>*, a collection of pre-Christian
+medieval Welsh manuscripts.
+
+Later, the puzzle would lead him to the cyberpunk writer William Gibson ?
+specifically his 1992 poem "Agrippa? (a book of the dead), infamous for the
+fact that it was only published on a 3.5in floppy disk, and *was programmed
+to erase itself after being read once <http://agrippa.english.ucsb.edu/>*.
+But as word spread across the web, thousands of amateur codebreakers joined
+the hunt for clues. Armies of users of* 4chan <http://www.4chan.org/>*, the
+anarchic internet forum where the first Cicada message is thought to have
+appeared, pooled their collective intelligence ? and endless free time ? to
+crack the puzzles.
+
+Within hours they?d decoded "The Lady of the Fountain?. The new message,
+however, was another surprise: "Call us,? it read, "at telephone number
+214-390-9608?. By this point, only a few days after the original image was
+posted, Eriksson had taken time off work to join the pursuit full time.
+
+"This was definitely an unexpected turn,? he recalls. "And the first hint
+that this might not just be the work of a random internet troll.? Although
+now disconnected, the phone line was based in Texas, and led to an
+answering machine. There, a robotic voice told them to find the prime
+numbers in the original image. By multiplying them together, the solvers
+found a new prime and a new website: 845145127.com. A countdown clock and a
+huge picture of a cicada confirmed they were on the right path.
+
+"It was thrilling, breathtaking by now,? says Eriksson. "This shared
+feeling of discovery was immense. But the plot was about to thicken even
+more.? Once the countdown reached zero, at 5pm GMT on January 9, it showed
+14 GPS coordinates around the world: locations in Warsaw, Paris, Seattle,
+Seoul, Arizona, California, New Orleans, Miami, Hawaii and Sydney. Sat in
+Sweden, Eriksson waited as, around the globe, amateur solvers left their
+apartments to investigate. And, one by one reported what they?d found: a
+poster, attached to a lamp post, bearing the cicada image and a QR code
+(the black-and-white bar code often seen on adverts these days and designed
+to take you to a website via your smartphone).
+
+"It was exhilarating,? said Eriksson. "I was suddenly aware of how much
+effort they must have been putting into creating this kind of challenge.?
+For the growing Cicada community, it was explosive ? proof this wasn?t
+merely some clever neckbeard in a basement winding people up, but actually
+a global organisation of talented people. But who?
+
+Speculation had been rife since the image first appeared. Some thought
+Cicada might merely be a PR stunt; a particularly labyrinthine Alternate
+Reality Game (ARG) built by a corporation to ultimately ? and
+disappointingly ? promote a new movie or car.
+
+Microsoft, for example, had enjoyed huge success with their critically
+acclaimed "I Love Bees? ARG campaign. Designed to promote the Xbox game
+Halo 2 in 2004, it used random payphones worldwide to broadcast a War of
+the Worlds-style radio drama that players would have to solve.
+
+ But there were complicating factors to Cicada. For one, the organisers
+were actively working against the participants. One "solver?, a female
+known only as Wind from Michigan, contributed to the quest on several
+messageboards before the community spotted she was deliberately
+disseminating false clues. Other interference was more pointed. One long,
+cautionary diatribe, left anonymously on the website Pastebin, claimed to
+be from an ex-Cicada member ? a non-English military officer recruited to
+the organisation "by a superior?. Cicada, he said, "was a Left-Hand Path
+religion disguised as a progressive scientific organisation? ? comprising
+of "military officers, diplomats, and academics who were dissatisfied with
+the direction of the world?. Their plan, the writer claimed, was to
+transform humanity into the Nietzschen ?bermensch.
+
+"This is a dangerous organisation,? he concluded, "their ways are
+nefarious.? With no other clues, it was also asssumed by many to be a
+recruitment drive by the CIA, MI6 or America?s National Security Agency
+(NSA), as part of a search for highly talented cryptologists. It wouldn?t
+have been the first time such tactics had been used.
+
+Back in 2010, for example, Air Force Cyber Command ? the United States?
+hacking defence force, based at Fort Meade in Maryland ? secretly embedded
+a complex hexadecimal code in their new logo. Cybercom head Lt Gen Keith
+Alexander then challenged the world?s amateur analysts to crack it (*it
+took them three hours
+<http://www.computerworld.com/s/article/9179004/Researcher_cracks_secret_code_in_U.S._Cyber_Command_logo>*).
+And in September this year, *GCHQ launched the "Can You Find It??
+initiative
+<http://www.telegraph.co.uk/news/uknews/defence/10301435/Can-you-crack-the-code-GCHQ-unveils-fiendish-puzzle-for-new-recruits.html>*?
+a series of cryptic codes designed to root out the best British
+cryptographers. As GCHQ?s head of resourcing Jane Jones said at the time,
+"It?s a puzzle but it?s also a serious test ? the jobs on offer here are
+vital to protecting national security.?
+
+ GCHQ's 'Can You Find It?' puzzle
+
+Dr Jim Gillogly, former president of the American Cryptogram Association,
+has been cracking similar codes for years and says it?s a tried and tested
+recruitment tactic.
+
+"During the Second World War, the top-secret Government Code and Cypher
+School used crossword puzzles printed in The Daily Telegraph to identify
+good candidates for Bletchley Park,? he says. "But I?m not sure the CIA or
+NSA is behind Cicada. Both are careful with security, the recent Snowden
+case notwithstanding. And starting the puzzle on [the anarchic internet
+forum] 4chan might attract people with less respect for authority than they
+would want working inside.?
+
+But that doesn?t rule out other organisations. "Computer and data security
+is more important than ever today,? says Dr Gillogly. The proliferation of
+wireless devices, mobile telephones, e-commerce websites like Amazon and
+chip-and-pin machines, means the demand for cryptologists has never been
+higher. (Something the UK government acknowledged last year when it
+announced it was setting up* 11 academic "centres of excellence? in cyber
+security research
+<http://www.epsrc.ac.uk/research/centres/Pages/acecybersecurity.aspx>*.)
+
+"One of the more important components of security systems is the efficacy
+of the cryptography being used,? says Dr Gillogly. "Which means
+cryptanalysts are in higher demand than ever before - no longer just with
+the intelligence services. It could just as easily be a bank or software
+company [behind Cicada].?
+
+Eriksson himself agrees. As a regular speaker at Black Hat Briefings ? the
+secretive computer security conferences where government agencies and
+corporations get advice from hackers ? he knows certain organisations
+occasionally go "fishing? for new recruits like this. But to him the signs
+point to a recruitment drive by a hacker group like Anonymous.
+
+"I can?t help but notice,? he says, "that the locations in question are all
+places with some of the most talented hackers and IT security researchers
+in the world.? Either way, their identity would prove irrelevant. When the
+QR codes left on the lamp posts were decoded, a hidden message pointed the
+solvers towards a TOR address. TOR, short for The Onion Router, is an
+obscure routing network that allows anonymous access to the "darknet? ? the
+vast, murky portion of the internet that cannot be indexed by standard
+search engines.* Estimated to be 5,000 times larger that the "surface" web
+<http://www.telegraph.co.uk/news/uknews/crime/10456108/David-Cameron-wins-FBI-support-for-dark-web-war-on-paedophiles.html>,*it?s
+in these recesses where you?ll find human-trafficking rings, black
+market drug markets and terrorist networks. And it?s here where the Cicada
+path ended.
+
+After a designated number of solvers visited the address, the website shut
+down with a terse message: "We want the best, not the followers." The
+chosen few received personal emails ? detailing what, none have said,
+although one solver heard they were now being asked to solve puzzles in
+private. Eriksson, however, was not among them. "It was my biggest
+anticlimax ? when I was too late to register my email at the TOR hidden
+service," he says. "If my sleep-wake cycle had been different, I believe I
+would have been among the first." Regardless, a few weeks later, a new
+message from Cicada was posted on Reddit. It read: "Hello. We have now
+found the individuals we sought. Thus our month-long journey ends. For
+now." All too abruptly for thousands of intrigued solvers, it had gone
+quiet.
+
+Except no. On January 4 this year, something new. A fresh image, with a new
+message in the same white text: "Hello again. Our search for intelligent
+individuals now continues." Analysis of the image would reveal another poem
+? this time from the book* Liber Al Vel Legis
+<http://en.wikipedia.org/wiki/The_Book_of_the_Law>*, a religious doctrine
+by the English occultist and magician Aleister Crowley. From there, the
+solvers downloaded a 130Mb file containing thousands of prime numbers. And
+also an MP3 file: a song called The Instar Emergence by the artist 3301,
+which begins with the sound of ? guess what ? cicadas.
+
+Analysis of that has since led to a Twitter account pumping out random
+numbers, which in turn produced a "gematria": an ancient Hebrew code table,
+but this time based on Anglo-Saxon runes. This pointed the solvers back
+into the darknet, where they found seven new physical locations, from
+Dallas to Moscow to Okinawa, and more clues. But that?s where, once again,
+the trail has gone cold. Another select group of "first solvers" have been
+accepted into a new "private" puzzle ? this time, say reports, a kind of
+Myers-Briggs multiple-choice personality test.
+
+But still, we are no closer to knowing the source, or fundamental purpose,
+of Cicada 3301. "That?s the beauty of it though," says Eriksson. "It is
+impossible to know for sure until you have solved it all." That is why for
+him, and thousands of other hooked enthusiasts, January 4 2014 is so
+important: that?s when the next set of riddles is due to begin again.
+"Maybe all will be revealed then," he grins. "But somehow, I doubt it."
+
+
+-- 
+Amon Kalkin
+WAVE: Positive Social Change Through Technology
+http://wavism.net
+
+_______________________________________________
+Doctrinezero mailing list
+Doctrinezero at zerostate.is
+Unsubscribe: https://lists.zerostate.is/mailman/listinfo/doctrinezero
+
+
+----- End forwarded message -----
+
+From warnersaklad at gmail.com  Wed Nov 27 09:47:23 2013
+From: warnersaklad at gmail.com (don warner saklad)
+Date: Wed, 27 Nov 2013 09:47:23 -0500
+Subject: [Cryptography] For hard of hearing,
+ any pointers about how to get decrypted free the .sgstn StenoGraph
+ StenoNote Stenographic Record of Public Meetings of Boston City Council?...
+ only .sgstn is available, not plain English text !
+Message-ID: <CANjcPzoF_ju19+1_9w5MNLoCdHjuLRk+9cKvhRXugdOox6H0JQ@mail.gmail.com>
+
+For hard of hearing, any ideas, hints, tips, pointers about how to get
+decrypted free the .sgstn StenoGraph StenoNote Stenographic Record of
+Public Meetings of Boston City Council?... only .sgstn is available,
+not plain English text !
+
+
+_ _ _ _ _ EXAMPLE _ _ _ _ _
+
+https://www.muckrock.com/foi/boston-3/full-plain-english-stenograph-record-last-city-council-public-meeting-6955/
+
+Pursuant to the Massachusetts Public Records Law, M.G.L. c.66, ?10, I
+hereby request the following records for hard of hearing:
+
+Full plain English text Stenographic Record for hard of hearing of the
+last Public Meeting and 16 October 2013 to date Public Meetings of
+Boston City Council http://www.cityofboston.gov/contact/?id=138
+including any and all accompanying materials, documents, files,
+computer files for example files with the following extensions
+.sgcap
+.ptf
+.rtf
+.xmptf

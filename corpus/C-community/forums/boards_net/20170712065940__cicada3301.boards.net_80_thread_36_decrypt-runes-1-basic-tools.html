@@ -1,0 +1,577 @@
+<!DOCTYPE HTML>
+	<!--[if IE 7]><html class="ie7"><![endif]--><!--[if IE 8]><html class="ie8"><![endif]--><!--[if IE 9]><html class="ie9"><![endif]--><!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>How to Decrypt the Runes 1: Basic Tools  | Cicada3301</title>
+		<link rel="canonical" href="http://cicada3301.boards.net/thread/36/decrypt-runes-1-basic-tools" />
+<link rel="alternate" type="application/rss+xml" href="http://cicada3301.boards.net/rss/public" />
+<link rel="shortcut icon" type="image/x-icon" href="//storage.proboards.com/forum/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="//storage.proboards.com/forum/images/favicon.ico" />
+<meta property="og:url"         content="http://cicada3301.boards.net/thread/36/decrypt-runes-1-basic-tools" />
+<meta property="og:title"       content="How to Decrypt the Runes 1: Basic Tools  | Cicada3301" />
+<meta property="og:description" content="Introduction  This will be part of a series of posts aiming to walkthrough some methods and techniques for rune decryption.  This first post will outline some useful basic tools. Where possible we" />
+<meta property="og:type"        content="website" />
+<meta name="twitter:card"               content="summary" />
+<meta name="twitter:site"               content="@proboards" />
+<meta name="twitter:app:id:iphone"      content="307880732" />
+<meta name="twitter:app:url:iphone"     content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=36&amp;perpage=15&amp;page=1" />
+<meta name="twitter:app:id:ipad"        content="307880732" />
+<meta name="twitter:app:url:ipad"       content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=36&amp;perpage=15&amp;page=1" />
+<meta name="twitter:app:id:googleplay"  content="com.quoord.tapatalkpro.activity" />
+<meta name="twitter:app:url:googleplay" content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=36&amp;perpage=15&amp;page=1" />
+<meta property="al:ios:url" content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=36&amp;perpage=15&amp;page=1" />
+<meta property="al:ios:app_store_id" content="307880732" />
+<meta property="al:ios:app_name" content="Tapatalk" />
+<meta property="al:android:package" content="com.quoord.tapatalkpro.activity" />
+<meta property="al:android:url" content="tapatalk://cicada3301.boards.net/?fid=19&amp;location=topic&amp;tid=36&amp;perpage=15&amp;page=1" />
+<meta property="al:android:app_name" content="Tapatalk" />
+<link href="android-app://com.quoord.tapatalkpro.activity/tapatalk/cicada3301.boards.net?fid=19&amp;location=topic&amp;tid=36&amp;perpage=15&amp;page=1" rel="alternate" />
+<link href="ios-app://307880732/tapatalk/cicada3301.boards.net?fid=19&amp;location=topic&amp;tid=36&amp;perpage=15&amp;page=1" rel="alternate" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/forum/css/0/forum_base_411.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="//storage.proboards.com/6433989/css/w8taoZpniIqJS0joSHjj.css" id="forum_style" />
+<link rel="stylesheet" type="text/css" media="print" href="//storage.proboards.com/forum/css/0/print_411.css" />
+<script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en-US"></script>
+<script>translatePo = { language: 'en_US' };</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>var tortoise = undefined;</script>
+<script src="//storage.proboards.com/forum/js/tortoise.min.js" integrity="sha384-5Xarr7yZbNCR8IIsrcy80rZVH1nqdJ6D8ixzKAbaYWX3eBInhvQ38L3EVv87QH32" crossorigin="anonymous"></script>
+
+		<script>
+			var hatch = function() {
+				$(document.body).append('<img src="//tortoise.proboards.com/tortoise.pl?forum_id=6433989&mobile=0&field=amount_guest&rand=0.628239642395144" alt="" />');
+			}
+			if(typeof Tortoise === 'undefined') {
+				$(document).ready(function() {
+					hatch();
+				});
+			} else {
+				tortoise.on(true, hatch);
+			}
+		</script>
+<script type="text/javascript" src="//storage.proboards.com/forum/js/proboards.combined_411.js"></script>
+<script type="text/javascript" src="https://funcaptcha.com/fc/api/?onload=loadFunCaptcha"></script>
+
+		<!-- Google Analytics Start -->
+		<script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-3734504-3', 'auto' , {"sampleRate":5});
+		</script>
+		<!-- Google Analytics End -->
+	
+
+		<script type="text/javascript">
+			var vglnk;
+			$(document).ready(function() {
+				$('a').each(function() {
+					if($(this).prop('href').indexOf('login.proboards.com') !== -1) {
+						$(this).addClass('norewrite');
+					}
+				});
+
+				vglnk = { 
+					api_url: '//api.viglink.com/api', key: 'bbb516d91daee20498798694a42dd559'
+				};
+				var vglnkSrc = ('https:' == document.location.protocol ? vglnk.api_url : '//cdn.viglink.com/api') + '/vglnk.js';
+				
+				// VigLink ProBoards Convert Code (using above key)
+				var s = document.createElement('script');
+				s.type = 'text/javascript'; s.async = true; s.src = vglnkSrc;
+				document.body.appendChild(s);
+
+				var retry = 0;
+				var reV = function() {
+					if (typeof vglnk !== 'function' && retry++ < 5) {
+						setTimeout(reV, 500);
+					}
+					else if (typeof vglnk !== 'function') {
+						$('a').not('.norewrite').each(function() {
+							var url = $(this).prop('href');
+							if (url.indexOf('http') === 0 && url.indexOf(document.domain) === -1) {
+								$(this).prop('href', 'http://redirect.viglink.com?key=bbb516d91daee20498798694a42dd559&u=' + escape(url));
+							}
+						});
+					}
+				};
+				reV();
+			});
+		</script>
+	
+<script>proboards.data([['forum_url',"cicada3301.boards.net"],['ad_free',0],['locale_settings',{"input_time_format":12,"input_time_placeholder":"hh:mm pp","input_date_format":"%m/%d/%Y","amcharts_date_format":"MM/DD/YYYY","input_date_placeholder":"mm/dd/yyyy","thousands_separator":null,"input_date_regex":"^(\\d{2})/(\\d{2})/(\\d{4})$"}],['image_path',"//storage.proboards.com/forum/images"],['time_style',0],['military_time',0],['timezone',"guest"],['serverDate',1499842780000],['search-query-min',3],['search-query-max',50],['is_current_user_guest',"1"],['plugin_max_key_length',4000],['plugin_max_super_forum_key_length',32000],['login_url',"https://login.proboards.com/login/6433989/1"],['register_url',"https://login.proboards.com/register/6433989"],['page_url',""],['range_string',"This event begins <img src=\"//storage.proboards.com/forum/images/icons/event.png\" alt=\"- \" title=\"Event\" />&nbsp;<abbr class=\"o-timestamp time\" data-timestamp=\"0000\" title=\"Jul 12, 2017 6:59:40 GMT\">Jul 12, 2017 6:59:40 GMT</abbr>"],['captcha_init',{"adfree":"","recaptcha_version":null,"captcha_id":"captcha_init","no_popup":0,"captcha_container_id":"captcha-container","form_id":"form_0Ryh8539","captcha_errors":0,"no_validations":0,"mobile":0,"errors":0,"attempts":0,"captcha_error_origin":null,"key":"C0F5B1D6-CFF5-1D52-0F76-87F4E9F50EC0","tos":{"name":"ProBoards Terms of Service","url":"http://www.proboards.com/tos"}}],['quick_reply',1],['forum_id',"6433989"],['thread_id',"36"],['thread_subject',"How to Decrypt the Runes 1: Basic Tools "],['labels_applied',[]],['board_id',"19"],['search_filter_img_src',"//storage.proboards.com/forum/images/icon-search-filters.png"],['options_img_src',"//storage.proboards.com/forum/images/icon-options.png"],['options_img_alt',"Post Options"],['options_img_title',"Post Options"],['lm_total',"2"],['lm_limit',15],['lm_page',1],['lm_data',{"thread_id":"36"}],['lm_id',"SiPQmerrJlsTKvB6kGHv"],['lm_thread_next',"/thread/next/36"],['lm_thread_prev',"/thread/previous/36"],['sharing_options',{"twitter_enabled":1,"facebook_enabled":1,"email_enabled":1,"twitter_card_site":"","reddit_enabled":1,"pinterest_enabled":1,"enabled":1,"myspace_enabled":1,"google_enabled":1,"linkedin_enabled":1,"tumblr_enabled":1}],['page_cache',".lm-content-SiPQmerrJlsTKvB6kGHv"],['labels_accessible',[]],['labels_viewable',[]],['_google_analytics_events',[{"hitType":"pageview"}]],['pop_menu_structure',{"opensOn":"click","positionOffsetY":10,"menuStructure":{"_root":{"items":[{"href":"/#category-3","submenu":"1-3","text":"Rune Solving"},{"href":"/#category-1","submenu":"1-1","text":"General"}],"title":"Categories"},"1-3":{"title":"Rune Solving","items":[{"text":"Tools","href":"http://cicada3301.boards.net/board/19/tools"},{"href":"http://cicada3301.boards.net/board/18/theories","text":"Theories"},{"text":"Cross","href":"http://cicada3301.boards.net/board/17/cross"},{"text":"Spirals","href":"http://cicada3301.boards.net/board/16/spirals"},{"text":"Branches","href":"http://cicada3301.boards.net/board/15/branches"},{"text":"Mobius","href":"http://cicada3301.boards.net/board/14/mobius"},{"text":"Mayfly","href":"http://cicada3301.boards.net/board/13/mayfly"},{"text":"Tree","href":"http://cicada3301.boards.net/board/12/tree"},{"href":"http://cicada3301.boards.net/board/11/cuneiform","text":"Cuneiform"},{"href":"http://cicada3301.boards.net/board/10/spiral-branches","text":"Spiral Branches"},{"text":"56","href":"http://cicada3301.boards.net/board/9/56"},{"href":"http://cicada3301.boards.net/board/8/57","text":"57"}]},"1-1":{"title":"General","items":[{"text":"Philosopy","href":"http://cicada3301.boards.net/board/20/philosopy"},{"text":"General Discussion","href":"http://cicada3301.boards.net/board/1/general-discussion"}]}},"addMenuClass":"c-pop-menu","positionAgainstSelector":".o-breadcrumbs","startingMenu":"_root","placement":"bottom left"}],['screen_breakpoints',{"md":992,"xs":0,"sm":768,"lg":1200}],['user',{"time_format":"12hr","name":"Guest","theme_id":1,"date_format":"m/d/y","is_staff":0,"is_logged_in":0,"id":0}],['page',{"board":{"disable_post_counts":"0","show_announcements":"1","display_name":"Tools","description":"","id":19,"threads":12,"posts":17,"name":"Tools","disable_posting":"0","hidden":"0","url":"/board/19/tools"},"thread":{"first_post_id":58,"last_post_id":59,"is_locked":0,"is_bookmarked":0,"is_poll":0,"last_post_time":1475668330,"created_on":1475431476,"subject":"How to Decrypt the Runes 1: Basic Tools ","is_sticky":0,"created_by":3,"id":36,"is_new":0,"is_announcement":0,"is_falling":0,"board_id":19,"url":"/thread/36/decrypt-runes-1-basic-tools"},"category":{"name":"Rune Solving","id":3}}],['default_avatar',"//storage.proboards.com/forum/images/defaultavatar.png"],['route',{"params":{"thread_id":"36"},"name":"thread"}],['search_system',1],['insite_path',""],['maintenance_mode',0],['proboards.thread',{"36":{"url":"/thread/36/decrypt-runes-1-basic-tools","board_id":19,"is_falling":0,"is_announcement":0,"is_new":0,"id":36,"created_by":3,"is_sticky":0,"subject":"How to Decrypt the Runes 1: Basic Tools ","created_on":1475431476,"last_post_time":1475668330,"is_poll":0,"is_bookmarked":0,"is_locked":0,"last_post_id":59,"first_post_id":58}}],['proboards.post',{"58":{"url":"http://cicada3301.boards.net/post/58","thread_id":36,"created_on":1475431476,"id":58,"liked":0,"created_by":3},"59":{"created_on":1475668330,"liked":0,"id":59,"created_by":34,"url":"http://cicada3301.boards.net/post/59","thread_id":36}}]]);</script>
+<script>if (typeof(standard_thread_show) == 'function') standard_thread_show();
+if (typeof(standard_post_base) == 'function') standard_post_base();</script>
+
+	</head>
+	<body>
+		
+		<div id="wrapper">
+			<header>
+				<div id="banner-container" role="banner">
+					<h2 id="banner">
+						<a id="logo" href="/">Cicada3301</a>
+					</h2>
+				</div>
+				<a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+				<a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+				<div id="navigation-menu" class="ui-helper-clearfix">
+					<ul role="navigation">
+						
+							<li>
+								<a href="/">
+									Home
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/help">
+									Help
+									
+								</a>
+							</li>
+						
+							<li>
+								<a href="/search">
+									Search
+									
+								</a>
+							</li>
+						
+					</ul>
+					<p id="welcome">
+						
+							Welcome Guest.  
+							
+								Please <a href="https://login.proboards.com/login/6433989/1">Login</a> or <a href="https://login.proboards.com/register/6433989">Register</a>.
+							
+						
+					</p>
+				</div>
+			</header>
+			
+			
+			
+			
+				<div id="navigation-tree">
+					<div class="nav-tree-wrapper"><ul id="nav-tree" class="ui-helper-clearfix" role="navigation"><li id="nav-tree-branch-0" class="nav-tree-branch ui-helper-clearfix has-menu"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title">Cicada3301</span></a></div><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-1" class="nav-tree-branch ui-helper-clearfix"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/board/19/tools" itemprop="url"><span itemprop="title">Tools</span></a></div><span class="menu_arrow"><span></span></span></li><li id="nav-tree-branch-2" class="nav-tree-branch ui-helper-clearfix"><div itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/thread/36/decrypt-runes-1-basic-tools" itemprop="url"><span itemprop="title">How to Decrypt the Runes 1: Basic Tools </span></a></div><span class="menu_arrow"><span></span></span></li></ul></div><div class="popup_html">
+<ul id="nav-tree-menu-0" role="navigation">
+<li class="nav-tree-cat-3"><a href="/#category-3"><span class="item-text">Rune Solving</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-19"><a href="http://cicada3301.boards.net/board/19/tools"><span class="item-text">Tools</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-18"><a href="http://cicada3301.boards.net/board/18/theories"><span class="item-text">Theories</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-17"><a href="http://cicada3301.boards.net/board/17/cross"><span class="item-text">Cross</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-16"><a href="http://cicada3301.boards.net/board/16/spirals"><span class="item-text">Spirals</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-15"><a href="http://cicada3301.boards.net/board/15/branches"><span class="item-text">Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-14"><a href="http://cicada3301.boards.net/board/14/mobius"><span class="item-text">Mobius</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-13"><a href="http://cicada3301.boards.net/board/13/mayfly"><span class="item-text">Mayfly</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-12"><a href="http://cicada3301.boards.net/board/12/tree"><span class="item-text">Tree</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-11"><a href="http://cicada3301.boards.net/board/11/cuneiform"><span class="item-text">Cuneiform</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-10"><a href="http://cicada3301.boards.net/board/10/spiral-branches"><span class="item-text">Spiral Branches</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-9"><a href="http://cicada3301.boards.net/board/9/56"><span class="item-text">56</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-8"><a href="http://cicada3301.boards.net/board/8/57"><span class="item-text">57</span><div class="clear"></div></a></li>
+</ul>
+</li>
+<li class="nav-tree-cat-1"><a href="/#category-1"><span class="item-text">General</span><div class="clear"></div></a>
+<ul role="navigation">
+<li class="nav-tree-board-20"><a href="http://cicada3301.boards.net/board/20/philosopy"><span class="item-text">Philosopy</span><div class="clear"></div></a></li>
+<li class="nav-tree-board-1"><a href="http://cicada3301.boards.net/board/1/general-discussion"><span class="item-text">General Discussion</span><div class="clear"></div></a></li>
+</ul>
+</li>
+</ul></div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+		var reposition   = false;
+		var showOn       = 'hover';
+		var offset       = reposition
+			? '-13 6'
+			: ($.browser.msie && parseInt($.browser.version) == 8)
+				? '3 -1'
+				: '3 0';
+		var showCallback = function(e) {
+			var self = $(this);
+			
+			// Make sure all other menus are closed
+			$('.popup_html > ul').not(self).menu('hide');
+			
+			// Hide the navigation if they leave it.
+			setTimeout(function() {
+				$(document).on('mousemove.nav', function(e) {
+					var elem = $(e.target);
+					if (
+						elem.parents('#nav-tree, .popup_html').length == 0
+						&& !elem.is('#nav-tree, .popup_html')
+						&& !self.data('hotkey-open')
+					) {
+						self.menu('hide');
+						$(document).off('.nav');
+					}
+				});
+			}, 1000);
+		}
+	
+				$('#nav-tree-menu-0')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-0'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-0'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-1')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-1'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-1'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				
+				$('#nav-tree-menu-2')
+					.addClass('nav-tree-menu')
+					.menu({
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							offset: offset,
+							of: $('#nav-tree-branch-2'),
+							collision: 'flipfit'
+						},
+						button: $('#nav-tree-branch-2'),
+						showDelay: 400,
+						showOn: showOn,
+						beforeShow: function() {},
+						show: showCallback
+					});
+				$('.nav-tree-cat-3').addClass('state-selected');$('.nav-tree-board-19').addClass('state-selected');
+			});
+		</script>
+	
+				</div>
+			
+			
+			
+			<div id="top-ad-banner" style="height: 90px; width: 728px; margin: 0 auto 10px; text-align: center;">
+				
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var s = $('#top-ad-banner');
+	
+				s.append('<iframe class="pb-ads" width="728" height="90" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" style=""></iframe>');
+			
+				var f = $('#top-ad-banner iframe');
+				var u = ["http://ads.proboards.com/ad.pl?as=728x90&ap=ATF&f=6433989&s=0&fc=4&d=cicada3301.boards.net&g=&a=&cb=0.639929266553629&uid=0&name=desktop_top_0"];
+	
+				f.each(function(i) {
+					$(this).attr('src', u[i]);
+				});
+			});
+		</script>
+	
+			</div>
+		<script type="text/javascript">
+	$(window).load(function() {
+		var topAd = $('#top-ad-banner');
+		if (topAd.prop('scrollHeight') < 90) {
+			var elemText = '<div id="support-message"><b>Please consider supporting this website by disabling your ad-blocker.<br />' +
+			               'This website does not use audio ads, popups, or other annoyances. Thank you!</b></div>'
+			var newElem  = $(elemText);
+			newElem.insertAfter(topAd);
+
+			var css = '<style type="text/css">#support-message { display: block !important; height: auto !important; width: 728px !important;' +
+			          'text-align: center !important; margin: 0 auto 10px !important;}</style>';
+			$("head").append(css);
+		}
+	});
+</script>
+			
+			<div id="content" role="main">
+				
+				<div class="container posts">
+	<div class="title-bar">
+		
+			<ul class="controls"><li><a href="/post/new/36" class="reply-button">Reply</a></li></ul>
+		
+		<h1>How to Decrypt the Runes 1: Basic Tools </h1>
+	</div>
+	<div class="control-bar ui-helper-clearfix scrollable-SiPQmerrJlsTKvB6kGHv">
+		<div class="lm-search-SiPQmerrJlsTKvB6kGHv ui-search"></div>
+		<div class="controls">
+			<ul class="select_menu_list ui-menu ui-selectMenu hide actions lm-actions-SiPQmerrJlsTKvB6kGHv" data-status="Actions"><li class="sharing ui-menu-has-sub-menu"><a><span class="icon pbi-share"></span>Share Thread</a><ul><li class="facebook-share"><a><span class="icon"></span>Facebook</a></li><li class="twitter-share"><a><span class="icon"></span>Twitter</a></li><li class="gplus-share"><a><span class="icon"></span>Google+</a></li><li class="tumblr-share"><a><span class="icon"></span>Tumblr</a></li><li class="linkedin-share"><a><span class="icon"></span>LinkedIn</a></li><li class="pinterest-share"><a><span class="icon"></span>Pinterest</a></li><li class="myspace-share"><a><span class="icon"></span>MySpace</a></li><li class="email-share"><a><span class="icon"></span>Email</a></li></ul></li><li class="view ui-menu-has-sub-menu"><a><span class="icon"></span>Go to</a><ul><li class="view_prev"><a rel="nofollow"><span class="icon"></span>Previous Thread</a></li><li class="view_next"><a rel="nofollow"><span class="icon"></span>Next Thread</a></li></ul></li><li class="default-menu-option"><a>Please make a selection first</a></li></ul>
+		</div>
+		<div class="float-left"><span class="control-icons lm-icons-SiPQmerrJlsTKvB6kGHv"><span class="new-icon"><a href="/threads/recent/36">new</a></span><span class="bookmark_icon hide"><img src="//storage.proboards.com/forum/images/icons/bookmark.png" alt="Bookmark" title="Bookmark" /></span><span class="lock_icon hide"><img src="//storage.proboards.com/forum/images/icons/lock.png" alt="Locked" title="This thread is locked" /></span><span class="falling_icon hide"><img src="//storage.proboards.com/forum/images/icons/falling.png" alt="Falling" title="This thread is falling" /></span></span></div>
+		<ul class="ui-pagination lm-pagination-SiPQmerrJlsTKvB6kGHv"><li class="prev state-disabled"><a>&laquo; Prev</a></li><li class="state-selected"><a>1</a></li><li class="next state-disabled"><a>Next &raquo;</a></li></ul>
+	</div>
+	<div class="content cap-bottom">
+		<span class="no-labels js-no-labels"></span>
+		
+		<table class="list" role="presentation">
+			<tbody class="lm-content-SiPQmerrJlsTKvB6kGHv">
+				
+	<tr id="post-58" class="item post first">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile">
+	<a href="/user/3" title="@mortlach" data-id="3" class="o-user-link js-user-link user-link user-3 group-0">mortlach</a><br />
+	
+	
+	
+		Neophyte<br />
+		
+			<img src="//storage.proboards.com/forum/images/stars/star_lightblue.png" alt="*" /><img src="//storage.proboards.com/forum/images/stars/star_lightblue.png" alt="*" /><br />
+		
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar-3" title="mortlach"><img src="//storage.proboards.com/6433989/avatar/JSCXVO5DB5iXjb7oFsk8.jpg" alt="mortlach Avatar" /></div></div><br />
+	
+	
+	
+		<div class="info">
+			Posts: 25
+			
+			
+		</div><br />
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a class="js-thread__title-link thread-link thread-36 board-19" href="/thread/36/decrypt-runes-1-basic-tools">How to Decrypt the Runes 1: Basic Tools </a>
+									<span class="date"><abbr title="Oct 2, 2016 18:04:36 GMT" data-timestamp="1475431476000" class="o-timestamp time">Oct 2, 2016 18:04:36 GMT</abbr></span>
+									
+									<span class="likes"> </span>
+								</div>
+								<div class="controls">
+									<a class="button quote-button " href="/post/58/quote/36">Quote</a>
+									
+									
+									<ul class=" options_menu post-58 user-3 hide"><li class="58-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="58-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="58-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="58-member ui-menu-has-sub-menu "><a><span class="icon pbi-user-icon"></span>Member</a><ul class=""><li class="58-giveGift"><a href="/user/3/gift"><span class="icon pbi-birthday"></span>Give Gift</a></li></ul></li><li class="58-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-58-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-58-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by mortlach on <abbr title="Oct 2, 2016 18:04:36 GMT" data-timestamp="1475431476000" class="o-timestamp time">Oct 2, 2016 18:04:36 GMT</abbr></h3>
+							<div class="message"><font color="#e61919"><b>Introduction<br /><br /></b></font>This will be part of a series of posts aiming to walkthrough some methods and techniques for rune decryption.  This first post will outline some useful basic tools. Where possible we will share data, but advise writing your own functions to implement these techniques (and even generating your own data). There are many resources on the web that explain the following ideas in more detail, we will try and give an overview of them within the context of the runes. <br /><br /><br /><b><font color="#e61919">Rune Transcriptions<br /><br /></font></b><br />There are numerous transcriptions of the pages of the Liber Primus. Here are some recommended ones (these should be accurate, but…it is very easy to make a mistake transcribing runes):<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;<br /><div style="text-align:center;"><span style="font-size:10pt;"><a href="https://github.com/rtkd/idkfa" rel="nofollow" target="_blank">github.com/rtkd/idkfa</a>	</span><span style="font-size:10pt;">&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;</span><span style="font-size:10pt;">			<a href="http://pastebin.com/vGMK330j" rel="nofollow" target="_blank">pastebin.com/vGMK330j</a> &nbsp;</span></div></span><br /><b><font color="#e61919">World Lists <br /><br /></font></b><br />It is essential to have good lists of Runeglish words. By Runeglish we mean the language the already-decrypted pages of the Liber Primus are written in:<br /><br /><br /><div style="text-align:center;"><span style="font-size:10pt;"><a href="http://cicada3301.boards.net/thread/13/runeglish-complete-beginners-introduction" rel="norewrite" target="_blank">cicada3301.boards.net/thread/13/runeglish-complete-beginners-introduction</a> &nbsp;</span></div><br />Here are links for Runeglish words up to a length of 14 runes (the longest length word in the Liber Primus): <br /><br />	<br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>Length 1 to 7 words <span>&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href="http://pastebin.com/uDJTW9Xe" rel="nofollow" target="_blank">pastebin.com/uDJTW9Xe</a> <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>Length 8 words &nbsp; &nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href="http://pastebin.com/G0UpRFQQ" rel="nofollow" target="_blank">pastebin.com/G0UpRFQQ</a> <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>Length 9 and  10 &nbsp; &nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://pastebin.com/Eqb1mhWn" rel="nofollow" target="_blank">pastebin.com/Eqb1mhWn</a> <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>Length 11 to  14 <span>&nbsp; &nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://pastebin.com/iERLcY8B" rel="nofollow" target="_blank">pastebin.com/iERLcY8B</a> <br /><br /><b><font color="#e61919"><br />Text Analysis<br /></font></b><br /><br />Often we want to apply a decryption function to the cipher text and see if the resulting message is written in Runeglish. Checking decrypted text by eye is time consuming and it is more efficient if we automate the process. We do this by finding ways to compare decrypted texts to a statistical model. The comparisons we shall cover here score N-grams relative to random distributions, using the Index of Coincidence or relative to Runeglish distributions using log probabilities. <br /><br /><br /><b><font color="#e61919">N-grams <br /><br /></font></b><br />An n-gram is a contiguous sequence of n items from a given sequence of text. The items could all be characters or words. This is a list of character-1-grams:<br /><br /><span><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>A,N,  I,N,S,T,R,U,C,T,IO,N,  C,O,M,M,A,N,D,  Y,O,U,R,  O,W,N,  S,E,L,F<br /><br /><br />We could also have character-2-grams, word-1-grams, word-2-grams, etc: <br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt;text-align:center;">(A,N),(N,I),(I,N),(N,S),(S,T),(T,R),(R,U),(U,C),(C,T),(T,IO),(IO,N),(N,C),(C,O),(O,M),(M,M),<br /></span><span style="font-size:10pt;text-align:center;"><span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>(M,A),(A,N),(N,D),(D,Y),(Y,O),(O,U),(U,R),(R,O),(O,W),(W,N),(N,S),(S,E),(E,L),(L,F)&nbsp;</span><span style="font-size:10pt;text-align:center;"><br /></span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>AN,  INSTRUCTION,  COMMAND, YOUR, OWN, SELF<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>(AN,INSTRUCTION), (INSTRUCTION,COMMAND), (COMMAND,YOUR), (YOUR,OWN), (OWN,SELF)<br /><br /><br />When comparing n-grams in a decryption to Runeglish, we need a sample of Runeglish text. There are many sample texts we could use, as an example here are the 1-gram and 2–gram counts from War and Peace (translated to Runeglish):<br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://imgur.com/Vg0xewQ" rel="nofollow" target="_blank">imgur.com/Vg0xewQ</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span> 	<a href="http://imgur.com/dsEF1L0" rel="nofollow" target="_blank">imgur.com/dsEF1L0</a> <br /><br /><br /><b><font color="#e61919">Comparison with Flat Distribution: Index of Coincidence (IoC)<br />&nbsp;</font></b><a href="https://en.wikipedia.org/wiki/Index_of_coincidence" rel="nofollow" target="_blank">en.wikipedia.org/wiki/Index_of_coincidence</a> <br /><br /><br />The IoC compares the N-grams in a message to a uniform, flat distribution, where each item has an equal probability of occuring. The IoC provides a measure of how likely it is to draw two matching N-grams when randomly selecting from a given text and can be defined as: <br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>IoC=(Actual coincidences)/(Expected coincidences)<br /><br /><br />For example, a truly random text will give a matching coincidence 1 in 29 times. For 2-grams the coincidence will be 1 in 29^2 times, etc. It is important to remember that the IoC can be used for more than just 1-grams, in principal it can be used for any set of “things”. The result of the IoC calculation can be normalized with respect to a flat distribution, this normalization factor can vary, for example, we can define that a flat distribution should give an IoC of exactly 1, then the normalization factor will change ensuring that the IoC will be 1 for 1-grams, 2-grams, 3 –grams etc. The Wikipedia article has a nice introduction that explains how to derive the expression for IoC. The 'Normalized' IoC for War and Peace for different n-grams are:<br /><br /><span><div style="text-align:center;"><span style="font-size:10pt;"><br />1-gram IoC = 1.77, <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>2-gram IoC &nbsp;= 4.97, <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>3-gram IoC = 20.9, <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>4-gram IoC &nbsp;= 125&nbsp;</span></div></span><br />These numbers are telling us that the 4-grams are very different to random, much more so than lower n-grams. This makes complete sense, groups of 4 letters are much more expressive than groups of 1 letter. We use this fact when scoring a text based on its similarity to ‘true’ Runeglish text, explained next. <br /><br /><br /><b><font color="#e61919">Comparison with Runeglish Distribution: <br /><br /></font></b><br />Continuing our War and Peace example: if we compare the n-grams in a trial decryption to the n-grams in War and Peace we can quantify how similar to War and Peace our trial is. Trials that get high scores will be more similar to War and Peace (which we assume is similar to true Runeglish) and so worth investigating further.<br /><br /><br /><b><font color="#e61919">n-gram frequency<br /><br /></font></b><br />We use the frequency of n-grams in a decrypted text compared to the frequency of n-grams in a sample to measure how similar they are by giving them a score. For example: The Runeglish 2-gram (E,E) occurs much more frequently than (AE,IO) if our trial decryption contains many uncommon n-grams then it would get a low score indicating it is likely to be nonsense and should be ignored. We score the n-grams by using our n-gram counts from a sample text. From these counts the probability for an n-gram is the count divided by the total number of n-grams in the text. The total probability for a trial text, Mt, comprising of i n-grams ,N1, N2,…Ni is found by multiplying the probability of each N together: <br /><br /><br /><div style="text-align:center;"><span style="font-size:10pt;">P( Mt ) = P( N1 ) × P( N2 ) × P( N3 ) × ….× P( Ni )&nbsp;</span></div><br />Practically, dealing with the small probabilities of some N-grams can cause problems and so often the base-10-logarithm (log_10)&nbsp;of the probability is used. When using log probabilities the total probability is found by summing log probabilities: <br /><br /><br /><div style="text-align:center;"><span style="font-size:10pt;">log_10 P( Mt ) = log_10 P( N1 ) + log_10 P( N2 ) + log_10 P( N3 ) + … + log_10 P( Ni )&nbsp;</span></div><br />Text that has a higher log probability is more similar to Runeglish. Here are the log probabilities of each character from War and Peace:<br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>{E, -0.901198}, &nbsp;{A, -1.10037}, <span>&nbsp; &nbsp; &nbsp; &nbsp;</span>{O, -1.11452},<span>&nbsp; &nbsp; &nbsp;</span> {S, -1.15951},<span>&nbsp;&nbsp;&nbsp;&nbsp;</span> {N, -1.17584}, <br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>{T, -1.1941},<span>&nbsp; &nbsp; &nbsp;</span> {R, -1.20621}, <span>&nbsp; &nbsp; &nbsp; &nbsp;</span>{I, -1.22264}, &nbsp;<span>&nbsp; &nbsp; &nbsp;</span>{D, -1.30479}, <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>{L, -1.39308}, <br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>{H, -1.40623}, &nbsp; &nbsp;{U, -1.42257}, <span>&nbsp; &nbsp; &nbsp; &nbsp;</span>{C, -1.45147}, <span>&nbsp; &nbsp; &nbsp;</span>{TH, -1.50994}, &nbsp;{M, -1.58784}, <br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>{W, -1.5886},<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp; {F, -1.63819}, <span>&nbsp; &nbsp; &nbsp;&nbsp;</span>{Y, -1.71246}, <span>&nbsp; &nbsp; &nbsp;</span>{P, -1.71942},<span>&nbsp;&nbsp;&nbsp;&nbsp;</span> {B, -1.83791},<span>&nbsp;&nbsp;&nbsp;&nbsp;</span> <br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>{G, -1.95718},<span>&nbsp;&nbsp;</span>&nbsp; {(I)NG, -1.97996}, {EA, -2.2527},<span>&nbsp; &nbsp; &nbsp;</span> {IO, -2.36287},<span>&nbsp;&nbsp;&nbsp;&nbsp;</span> {X, -2.73586}, <br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>{J, -2.96712},<span>&nbsp;&nbsp;&nbsp;&nbsp;</span> {EO, -3.16848}, &nbsp; &nbsp; {OE, -3.67616}, &nbsp; {AE, -4.15242}<br /><br /><br />To convert back to the actual probability calculate 10^( Log probability value). E has a probability of 10^(-0.901198) = 0.125546, meaning about 12.5% of all runes in War and Peace are E. The log probability for all 2-grams can be found here:<br /><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://pastebin.com/be4sNiw9" rel="nofollow" target="_blank">pastebin.com/be4sNiw9</a> <br /><br /><br />The 4-gram log probabilities are in this file: <a href="http://www.filedropper.com/4gramlogprobability" rel="nofollow" target="_blank">www.filedropper.com/4gramlogprobability</a><br /><br /><br /><b><font color="#e61919">Extending this to include position in words<br /></font></b><br /><br />We can assume that the word spacing in the Liber Primus is known and exploit this extra information. Therefore, N-grams can be calculated using the concatenated runes, or by using the word delimited&nbsp;information. E.g. consider the 4-grams from the start of War and Peace:<br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>WELL, PRINCE, SO, GENOA, AND, LUCCA, ARE, NOW, JUST<br /><br /><br /><b>Concatenated 4-grams:</b><br /><br />{W, E, L, L}, {E, L, L, P}, {L, L, P, R}, {L, P, R, I}, {P, R, I, N}, {R, I, N, C}, {I, N, C, E}, {N, C, E, S}, {C, E, S, O}, {E, S, O, G}, {S, O, G, E}, {O, G, E, N}, {G, E, N, O}, {E, N, O, A}, {N, O, A, A}, {O, A, A, N}, {A, A, N, D}, {A, N, D, L}, {N, D, L, U}, {D, L, U, C}, {L, U, C, C}, {U, C, C, A}, {C, C, A, A}, {C, A, A, R}, {A, A, R, E}, {A, R, E, N}, {R, E, N, O}, {E, N, O, W}, {N, O, W, J}, {O, W, J, U}, {W, J, U, S}, {J, U, S, T}<br /><br /><b><br />Word delimited &nbsp;4-grams: </b><br /><br />{W, E, L, L},{P, R, I, N}, {R, I, N, C}, {I, N, C, E},{G, E, N, O}, {E, N, O, A}, {L, U, C, C}, {U, C, C, A},{J, U, S, T}<br /><br /><br />An advantage of using the concatenated text is that there are lots more N-grams, so you can get better statistics. The advantage of using the N-grams knowing the word spacing is they include the extra information about word spacing. This could be further extended by including the word length and the position of the starting character.<br /> We don't share any data for these lists as it is a little too complicated to share in simple way.&nbsp;<br /><br /><b><font color="#e61919">An optimizer</font></b><br /><br />Another general tool that can be useful is an optimizer. For example: we may want to optimize some values in a key and we use the IoC and/or log probability score of the decrypted text to choose ‘optimum’ values for the key. There are many choices for optimization algorithms, from hill climbers and downhill-simplexes, stochastic methods like Simulated Annealing and Genetic algorithms and many more. As these are general problems not specific to the runes we have not covered them in more detail, but can do in future if necessary. <br /><br /><br /><font color="#e61919"><b>Summary<br /><br /></b></font><br />We have given an overview of some of the basic tools that can be used to decrypt text, and provided accompanying Runeglish data. These include word lists and the transcriptions of the runes. Basic tools for text analysis have also been introduced: The IoC and the n-gram log probability with example data. Other useful methods for analyzing text exist, for example the Hamming distance of a word compared to words in the word list.&nbsp;In the next posts we will use these tools to decrypt some of the pages of the Liber Primus and also discuss how to use the tools when attempting to solve the unfinished pages.<br /><br /><br />*Comments, questions, suggestions, omissions etc ? please try <a href="http://webchat.freenode.net/?channels=cicadasolvers" rel="nofollow" target="_blank">#cicadasolvers</a><br /><br />MSGA <br /><br /><br /></div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+							<div class="edited_by"><span class="italic">Last Edit:</span> <abbr title="May 6, 2017 16:11:24 GMT" data-timestamp="1494087084000" class="o-timestamp time">May 6, 2017 16:11:24 GMT</abbr> by <a href="/user/3" title="@mortlach" data-id="3" class="o-user-link js-user-link user-link user-3 group-0">mortlach</a></div>
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+	<tr id="post-59" class="item post last even">
+		<td class="unblocked">
+			<table role="grid">
+				<tr>
+					<td class="left-panel" rowspan="2">
+						<div class="mini-profile">
+	<a title="@gonflynn" data-id="34" class="o-user-link js-user-link user-link user-34 group-0" href="/user/34">gonflynn</a><br />
+	
+	
+	
+		New Member<br />
+		
+			<img alt="*" src="//storage.proboards.com/forum/images/stars/star.png" /><br />
+		
+	
+	
+	
+	<br />
+	
+		<div class="avatar"><div class="avatar-wrapper avatar_size_default avatar-34" title="gonflynn"><img src="//storage.proboards.com/forum/images/defaultavatar.png" alt="gonflynn Avatar" /></div></div><br />
+	
+	
+	
+		<div class="info">
+			Posts: 1
+			
+			
+		</div><br />
+	
+	
+</div>
+
+					</td>
+					<td class="content">
+						<article>
+							<div class="content-head ui-helper-clearfix">
+								<div class="info">
+									<a class="js-thread__title-link thread-link thread-36 board-19" href="/thread/36/decrypt-runes-1-basic-tools">How to Decrypt the Runes 1: Basic Tools </a>
+									<span class="date"><abbr class="o-timestamp time" data-timestamp="1475668330000" title="Oct 5, 2016 11:52:10 GMT">Oct 5, 2016 11:52:10 GMT</abbr></span>
+									
+									<span class="likes"> </span>
+								</div>
+								<div class="controls">
+									<a href="/post/59/quote/36" class="button quote-button ">Quote</a>
+									
+									
+									<ul class=" options_menu post-59 user-34 hide"><li class="59-selectPost"><a><span class="icon pbi-checkbox-checked"></span>Select Post</a></li><li class="59-deselectPost"><a><span class="icon pbi-checkbox"></span>Deselect Post</a></li><li class="59-postLink"><a><span class="icon pbi-link"></span>Link to Post</a></li><li class="59-member ui-menu-has-sub-menu "><a><span class="icon pbi-user-icon"></span>Member</a><ul class=""><li class="59-giveGift"><a href="/user/34/gift"><span class="icon pbi-birthday"></span>Give Gift</a></li></ul></li><li class="59-toTop"><a><span class="icon pbi-fab-chevron-up"></span>Back to Top</a></li></ul><div id="post-59-options" class="post-options button" role="button"></div><span class="checkbox post-options-checkbox post-59-checkbox"><input type="checkbox" class="ui-manager-checkbox" /></span>
+								</div>
+							</div>
+							<h3 class="title aria-hidden">Post by gonflynn on <abbr class="o-timestamp time" data-timestamp="1475668330000" title="Oct 5, 2016 11:52:10 GMT">Oct 5, 2016 11:52:10 GMT</abbr></h3>
+							<div class="message">Wow, this is great. Thank you so much mortlach, this will be very helpful to a lot of people and great information source. Please keep up the posts. <br />Cheers. </div>
+						</article>
+					</td>
+				</tr>
+				<tr>
+					<td class="foot">
+						
+						
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+	</tr>
+
+
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+<div class="container quick-reply">
+	<div class="title-bar">
+		<ul class="controls"><li><a href="/post/new/36" class="reply-button">Reply</a></li></ul>
+		<h2>Quick Reply</h2>
+	</div>
+	<div class="content cap-bottom">
+		<form id="form_0Ryh8539" class="form_post_quick_reply js-form-post-quick-reply" role="form" action="/post/create/36" method="post">
+<input type="hidden" id="form_0Ryh8539_reply_mode_input" name="reply_mode" value="quick_reply" />
+<input type="hidden" id="form_0Ryh8539_captcha_id_input" name="captcha_id" value="captcha_init" />
+<input type="hidden" id="form_0Ryh8539_ga_client_id_input" name="ga_client_id" />
+<input type="hidden" id="form_0Ryh8539_message_mode_input" name="message_mode" value="bbcode" /><noscript><ul class="noscript-form-error"></ul></noscript>
+			
+			<div class="guest_name">
+				<label>Guest Name:</label>
+				<input type="text" id="form_0Ryh8539_created_by_guest_name_input" name="created_by_guest_name" class="full-width" maxlength="30" />
+			</div>
+			
+			<div class="message">
+				<textarea id="form_0Ryh8539_message_input" name="message" accesskey="q"></textarea>
+			</div>
+			
+            <div id="captcha-container">
+                <div style="width: 308px; height: auto;">
+                <div id="fun-captcha-container"></div>
+                </div>
+                <noscript>
+                    
+                    
+        <iframe src="https://funcaptcha.com/fc/api/nojs/?pkey=C0F5B1D6-CFF5-1D52-0F76-87F4E9F50EC0" frameborder="0" scrolling="no" style="width: 308px; height: auto; border-style: none;"></iframe>
+        <div style="width: 306px;height: 60px;border-style: none;bottom: 12px;left: 25px;margin: 5px 0 0 0;padding: 0px;right: 25px;background: #ffffff;border: 1px solid #f7f7f7;border-radius: 5px;">
+            <input type="text" id="fc-token" name="fc-token" placeholder="Copy verification code into here" style="width: 270px;height: 24px;border: 1px solid #f7f7f7;border-radius: 5px;padding: 10px;margin: 7px;resize: none;font-size: 11px;-webkit-font-smoothing: antialiased;color: #212121;background: #f7f7f7;text-align: center;">
+        </div>
+    
+                    <div style="margin: 20px 0 15px 0;"><input type="checkbox" name="tos" style="margin-right: 15px; vertical-align: middle; position: relative; bottom: 1px;" />I agree to the <a href="http://www.proboards.com/tos" target="_blank">ProBoards Terms of Service</a>.</div>
+                    <style>#captcha-container { display: block; text-align: left !important; padding-left: 10px; }</style>
+                </noscript>
+            </div>
+        
+			<input id="form_0Ryh8539_post_button" name="post" type="submit" value="Post Quick Reply" class="ui-button" />
+		</form>
+		<script>
+		$(document).ready(function() {
+			
+			
+			$('#form_0Ryh8539').form({
+				create: function(e) {var pbCaptchaOpts = proboards.data("captcha_init");if (pbCaptchaOpts) { proboards.captcha.init(pbCaptchaOpts); }},
+				submit: function(e) {proboards.autosave.clear();},
+				beforeSubmit: function(e) {proboards.data('submitting', 1);
+
+				try {
+					$('#form_0Ryh8539_ga_client_id_input').val(
+						proboards.analytics.google.getClientId()
+					);
+				} catch(e) {}
+			},
+				validations: [{"field":"message","message":"You must provide a message.","opts":{"fields":["message_mode"]},"name":"exists"},{"name":"exists","opts":{},"message":"You must provide a guest name.","field":"created_by_guest_name"}],
+				errors: {},
+				positionError: null
+			});
+		});
+		</script>
+	</div>
+</div>
+
+				
+			</div>
+			
+			<script type="text/javascript" src="http://ads.pro-market.net/ads/scripts/site-131222.js"></script>
+			<div id="bottom-ad-banner" style="display: flex; width: 700px; max-width: 100%;min-height: 250px; margin: 0 auto 10px; text-align: center; justify-content: space-around;flex-wrap: wrap">
+				
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var s = $('#bottom-ad-banner');
+	
+				s.append('<iframe class="pb-ads" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" style="margin-bottom: 10px;"></iframe>');
+			
+				s.append('<iframe class="pb-ads" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" style="margin-bottom: 10px;"></iframe>');
+			
+				var f = $('#bottom-ad-banner iframe');
+				var u = ["http://ads.proboards.com/ad.pl?as=300x250&ap=BTF&f=6433989&s=0&fc=4&d=cicada3301.boards.net&g=&a=&cb=0.826046069517606&uid=0&name=desktop_bot_0","http://ads.proboards.com/ad.pl?as=300x250&ap=BTF&f=6433989&s=0&fc=4&d=cicada3301.boards.net&g=&a=&cb=0.901931021093716&uid=0&name=desktop_bot_1"];
+	
+				f.each(function(i) {
+					$(this).attr('src', u[i]);
+				});
+			});
+		</script>
+	
+			</div>
+		
+			<footer class="c-footer" role="contentinfo">
+				<div class="c-footer__text o-wrapper u-text-center">
+					<div id="remove_ads_link"><a href="https://www.proboards.com/store/add_cart/ad_free/50000/cicada3301.boards.net/1">Click here to remove banner ads from this forum.</a></div>This Forum Is Hosted For FREE By <a href="http://www.proboards.com" target="_blank">ProBoards</a><br />Get Your Own <a href="https://www.proboards.com/create-free-forum" target="_blank">Free Forum</a>!
+				</div>
+				<div class="c-footer__links o-wrapper u-text-center">
+					<a href="http://www.proboards.com/tos" accesskey="8">Terms of Service</a> | 
+					<a href="http://www.proboards.com/privacy">Privacy Policy</a> | 
+					<a href="http://www.proboards.com/privacy#enhanced">Notice</a> | 
+					<a href="http://www.viglink.com/policies/ftc" target="_blank">FTC Disclosure</a> | 
+					<a href="http://www.proboards.com/report-abuse" accesskey="7">Report Abuse</a>
+					 | <a href="http://ads.proboards.com/ad-report.html" title="Report Ad">Report Ad</a>
+					 | <a href="http://www.proboards.com/ads"><b>Advertise Here</b></a>
+				</div>
+			</footer>
+
+		</div>
+		
+	</body>
+</html>
