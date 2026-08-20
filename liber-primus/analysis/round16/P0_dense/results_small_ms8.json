@@ -1,0 +1,1638 @@
+{
+  "lane": "round16/P0_dense",
+  "date": "2026-08-19",
+  "instrument": "round16/lib_padsweep.py dense_scan + A1 beam (w=120, skip<=3, head=400)",
+  "control": {
+    "source": "lib_padsweep.control()",
+    "PASS": true,
+    "dense_found": 5,
+    "beam_recovered": 8,
+    "n_trials": 8,
+    "survival_rate": 0.625,
+    "note": "re-run on this box 2026-08-19, reproduces PREREG.md exactly"
+  },
+  "max_skip": 8,
+  "hit_bar_rule": "score_norm >= -5.5 AND >= null_max + 0.5 (pre-registered, A1's)",
+  "coverage_total": {
+    "pads": 6,
+    "configs": 92,
+    "offsets_scanned": 174352884,
+    "survival_rate": 0.625,
+    "effective_offsets": 108970552,
+    "beam_escalations": 3389,
+    "A1_offsets_per_variant_for_comparison": 8
+  },
+  "extreme_value_check": {
+    "note": "AGENTS.md lesson 3: a fixed bar is invalid at large N. benchmark/null.threshold_for() at this lane's trial counts.",
+    "threshold_for_offsets_scanned": -5.5,
+    "threshold_for_beam_escalations": -5.5,
+    "raw_best": -6.807223683948372
+  },
+  "best": {
+    "pad": "560.17",
+    "variant": "lo_nibble",
+    "sign": 1,
+    "offset": 493780,
+    "pre": -1.4121676683425903,
+    "score": -6.807223683948372,
+    "head": "AEDYETFIRBJEWCIMWGODOESABLTHWIAYBATSTHNETHTAETHIMEOGAOEMPBJYUNOE",
+    "null_max": -6.943278650156607,
+    "bar": -5.5
+  },
+  "n_hits": 0,
+  "hits": [],
+  "top20": [
+    {
+      "pad": "560.17",
+      "variant": "lo_nibble",
+      "sign": 1,
+      "offset": 493780,
+      "pre": -1.4121676683425903,
+      "score": -6.807223683948372,
+      "head": "AEDYETFIRBJEWCIMWGODOESABLTHWIAYBATSTHNETHTAETHIMEOGAOEMPBJYUNOE",
+      "null_max": -6.943278650156607,
+      "bar": -5.5
+    },
+    {
+      "pad": "_560.00_auth",
+      "variant": "hi_nibble_rev",
+      "sign": 1,
+      "offset": 725377,
+      "pre": -1.3564636707305908,
+      "score": -6.813746718599231,
+      "head": "AESYOBYEAHAFLANTHEIUILHEANAYBBNMTHAELEAJEHMNGWBTHEOGIAUAAECANGFT",
+      "null_max": -7.016989048103926,
+      "bar": -5.5
+    },
+    {
+      "pad": "_560.00_auth",
+      "variant": "prime_to_idx",
+      "sign": -1,
+      "offset": 972806,
+      "pre": -1.366303563117981,
+      "score": -6.816400125392829,
+      "head": "OEHJYHENDEEFIGNTHERIPEDUTHLPOTTOAEUEOOSFOEIAROYEEASOEXODFEAWHODD",
+      "null_max": -6.9990939069092155,
+      "bar": -5.5
+    },
+    {
+      "pad": "_560.00_trunc",
+      "variant": "prime_to_idx",
+      "sign": -1,
+      "offset": 972806,
+      "pre": -1.366303563117981,
+      "score": -6.816400125392829,
+      "head": "OEHJYHENDEEFIGNTHERIPEDUTHLPOTTOAEUEOOSFOEIAROYEEASOEXODFEAWHODD",
+      "null_max": -6.9990939069092155,
+      "bar": -5.5
+    },
+    {
+      "pad": "_560.00_trunc",
+      "variant": "mod29",
+      "sign": -1,
+      "offset": 972806,
+      "pre": -1.4422433376312256,
+      "score": -6.83556687155809,
+      "head": "OEHJYHENDEEFIGNTHORILEDUTHLPOTTOAEUEOOSFOEIAROYEWSOEXODFEAWHODDT",
+      "null_max": -6.995405944815296,
+      "bar": -5.5
+    },
+    {
+      "pad": "560.17",
+      "variant": "prime_to_idx_rev",
+      "sign": -1,
+      "offset": 138558,
+      "pre": -1.413604974746704,
+      "score": -6.843281018534071,
+      "head": "MJURTHALOCTUFAGYBEGOLLBYDXAERYMUOOAAYIAHHGBEAGEAJDHEOWTBIDCOAELD",
+      "null_max": -6.943115468079248,
+      "bar": -5.5
+    },
+    {
+      "pad": "560.17",
+      "variant": "prime_to_idx_rev",
+      "sign": -1,
+      "offset": 1046946,
+      "pre": -1.4577713012695312,
+      "score": -6.864695724554277,
+      "head": "THMIWBIAHEPTTHERGNGIOANIAPBYRSTALRSBEOEOMJLRSOTHWHEAPSDOENGWJPHB",
+      "null_max": -6.943115468079248,
+      "bar": -5.5
+    },
+    {
+      "pad": "_560.00_auth",
+      "variant": "prime_to_idx",
+      "sign": -1,
+      "offset": 1653285,
+      "pre": -1.435489296913147,
+      "score": -6.871128943951599,
+      "head": "OIAEAOELNGEAEANBPXXIEUIDEDSLYATGNTMDSIARSALMCHSIEAWEAHPDYIITEATH",
+      "null_max": -6.9990939069092155,
+      "bar": -5.5
+    },
+    {
+      "pad": "_560.00_trunc",
+      "variant": "prime_to_idx",
+      "sign": -1,
+      "offset": 1653285,
+      "pre": -1.435489296913147,
+      "score": -6.871128943951599,
+      "head": "OIAEAOELNGEAEANBPXXIEUIDEDSLYATGNTMDSIARSALMCHSIEAWEAHPDYIITEATH",
+      "null_max": -6.9990939069092155,
+      "bar": -5.5
+    },
+    {
+      "pad": "560.17",
+      "variant": "prime_to_idx_rev",
+      "sign": 1,
+      "offset": 400139,
+      "pre": -1.3807752132415771,
+      "score": -6.871671503291386,
+      "head": "ARETHSSGCGBEARINGBETEARDENTOCBGEOGNCBLDIARECLOOEFPMNGOEOEHFLONIE",
+      "null_max": -6.943115468079248,
+      "bar": -5.5
+    },
+    {
+      "pad": "560.17",
+      "variant": "lo_nibble_rev",
+      "sign": -1,
+      "offset": 1150170,
+      "pre": -1.4439963102340698,
+      "score": -6.872652459231966,
+      "head": "THEABULIMAOBENMACRIEWBODATHINGINPBWFBLRNGOEGAEHEOTHACRAIAJEABNEO",
+      "null_max": -6.972083963931101,
+      "bar": -5.5
+    },
+    {
+      "pad": "560.17",
+      "variant": "mod29",
+      "sign": 1,
+      "offset": 1043411,
+      "pre": -1.4174848794937134,
+      "score": -6.891837997921567,
+      "head": "MAEPEAGUTDABLUEJANATDOETHELMATHNGNREJSIAWWIAEOEYHRPFBITMEANIARCM",
+      "null_max": -7.008998714162106,
+      "bar": -5.5
+    },
+    {
+      "pad": "_560.00_auth",
+      "variant": "lo_nibble_rev",
+      "sign": 1,
+      "offset": 616433,
+      "pre": -1.3956246376037598,
+      "score": -6.89408759404773,
+      "head": "DXUITAEWEOSEOTHUNOTHYHAUSENNOEBORFRIAEDTHTFLSJEOUDIASIAAPSJIDHNG",
+      "null_max": -6.9915736180720085,
+      "bar": -5.5
+    },
+    {
+      "pad": "560.17",
+      "variant": "hi_nibble",
+      "sign": 1,
+      "offset": 217119,
+      "pre": -1.3426694869995117,
+      "score": -6.901248567043038,
+      "head": "IASFIMRGCOETHERSHEBOOTGINGTHEYBEHSCPBEATHEOTHXAEEOPNGPCIALISYJHA",
+      "null_max": -6.973835580293714,
+      "bar": -5.5
+    },
+    {
+      "pad": "_560.00_auth",
+      "variant": "hexchars",
+      "sign": -1,
+      "offset": 1987956,
+      "pre": -1.3616217374801636,
+      "score": -6.902500986615361,
+      "head": "YXESEUNCLOFYITHGETHADBORPLUWDFIAREOERULTHEOIHMFNGOEAEEOLDJHUONGY",
+      "null_max": -6.936046304379154,
+      "bar": -5.5
+    },
+    {
+      "pad": "_560.00_trunc",
+      "variant": "hi_nibble",
+      "sign": 1,
+      "offset": 831757,
+      "pre": -1.4343653917312622,
+      "score": -6.904302754979118,
+      "head": "OEOELWERCUSHEADBOAEGWPDATSIDRXAEAETWDDNGHEYWLOEOENTHAEULAOECEAIA",
+      "null_max": -6.9980799612537,
+      "bar": -5.5
+    },
+    {
+      "pad": "560.17",
+      "variant": "mod29",
+      "sign": -1,
+      "offset": 767075,
+      "pre": -1.4702526330947876,
+      "score": -6.904864144463317,
+      "head": "NDODSTTHTSDFWUWYATWAEWEOAEDAPLPGEAYAUNOEGPAEFTHAGNNGOHOELLMBIAEO",
+      "null_max": -7.008998714162106,
+      "bar": -5.5
+    },
+    {
+      "pad": "_560.00_auth",
+      "variant": "byte_scaled_rev",
+      "sign": 1,
+      "offset": 2397115,
+      "pre": -1.414800763130188,
+      "score": -6.904869812225545,
+      "head": "BMWJSFIDENMEREOUSATTHEANEONGOSOEUOEYGREOOYEWEAYEASTNGIFLXAPRXHIF",
+      "null_max": -6.968769343357883,
+      "bar": -5.5
+    },
+    {
+      "pad": "_560.00_trunc",
+      "variant": "byte_scaled_rev",
+      "sign": 1,
+      "offset": 816689,
+      "pre": -1.414800763130188,
+      "score": -6.904869812225545,
+      "head": "BMWJSFIDENMEREOUSATTHEANEONGOSOEUOEYGREOOYEWEAYEASTNGIFLXAPRXHIF",
+      "null_max": -6.886371883262297,
+      "bar": -5.5
+    },
+    {
+      "pad": "_560.00_auth",
+      "variant": "hexchars",
+      "sign": 1,
+      "offset": 597008,
+      "pre": -1.4244815111160278,
+      "score": -6.907121424495424,
+      "head": "LHEYDANGCINGDIDTHFULETTLOTHREAECFLJGEASEXLJIAEYBXTUGIAFJWETXNCBE",
+      "null_max": -6.936046304379154,
+      "bar": -5.5
+    }
+  ],
+  "pads": [
+    {
+      "pad": "_560.00_auth",
+      "file": "DATA__560.00.iso-authoritative",
+      "bytes": 3992970,
+      "sha256": "a24051a87f0eb25ca21accbd3158fdf7b4911243e5ee1b9778b81182f0d36573",
+      "builders": [
+        "mod29",
+        "hi_nibble",
+        "lo_nibble",
+        "byte_scaled",
+        "prime_to_idx",
+        "hexchars"
+      ],
+      "signs": [
+        -1,
+        1
+      ],
+      "directions": [
+        "fwd",
+        "rev"
+      ],
+      "coverage": {
+        "configs": 24,
+        "offsets_scanned": 91605492,
+        "survival_rate": 0.625,
+        "effective_offsets": 57253432,
+        "beam_escalations": 960
+      },
+      "nulls": {
+        "mod29": {
+          "mean": -7.290676646759238,
+          "max": -6.995405944815296,
+          "bar": -5.5
+        },
+        "mod29_rev": {
+          "mean": -7.2946556299453365,
+          "max": -6.894149958613057,
+          "bar": -5.5
+        },
+        "hi_nibble": {
+          "mean": -7.3072153262307715,
+          "max": -6.9980799612537,
+          "bar": -5.5
+        },
+        "hi_nibble_rev": {
+          "mean": -7.291722898474079,
+          "max": -7.016989048103926,
+          "bar": -5.5
+        },
+        "lo_nibble": {
+          "mean": -7.288414077252423,
+          "max": -6.935057804938364,
+          "bar": -5.5
+        },
+        "lo_nibble_rev": {
+          "mean": -7.305196361039561,
+          "max": -6.9915736180720085,
+          "bar": -5.5
+        },
+        "byte_scaled": {
+          "mean": -7.282021618200613,
+          "max": -6.938618489430183,
+          "bar": -5.5
+        },
+        "byte_scaled_rev": {
+          "mean": -7.3108563095483285,
+          "max": -6.968769343357883,
+          "bar": -5.5
+        },
+        "prime_to_idx": {
+          "mean": -7.296831720683567,
+          "max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        "prime_to_idx_rev": {
+          "mean": -7.309754586499944,
+          "max": -7.009324757714241,
+          "bar": -5.5
+        },
+        "hexchars": {
+          "mean": -7.274886138181577,
+          "max": -6.936046304379154,
+          "bar": -5.5
+        },
+        "hexchars_rev": {
+          "mean": -7.2607709978743715,
+          "max": -6.976079009288646,
+          "bar": -5.5
+        }
+      },
+      "best": {
+        "pad": "_560.00_auth",
+        "variant": "hi_nibble_rev",
+        "sign": 1,
+        "offset": 725377,
+        "pre": -1.3564636707305908,
+        "score": -6.813746718599231,
+        "head": "AESYOBYEAHAFLANTHEIUILHEANAYBBNMTHAELEAJEHMNGWBTHEOGIAUAAECANGFT",
+        "null_max": -7.016989048103926,
+        "bar": -5.5
+      },
+      "n_hits": 0,
+      "hits": [],
+      "top": [
+        {
+          "pad": "_560.00_auth",
+          "variant": "hi_nibble_rev",
+          "sign": 1,
+          "offset": 725377,
+          "pre": -1.3564636707305908,
+          "score": -6.813746718599231,
+          "head": "AESYOBYEAHAFLANTHEIUILHEANAYBBNMTHAELEAJEHMNGWBTHEOGIAUAAECANGFT",
+          "null_max": -7.016989048103926,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "prime_to_idx",
+          "sign": -1,
+          "offset": 972806,
+          "pre": -1.366303563117981,
+          "score": -6.816400125392829,
+          "head": "OEHJYHENDEEFIGNTHERIPEDUTHLPOTTOAEUEOOSFOEIAROYEEASOEXODFEAWHODD",
+          "null_max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "prime_to_idx",
+          "sign": -1,
+          "offset": 1653285,
+          "pre": -1.435489296913147,
+          "score": -6.871128943951599,
+          "head": "OIAEAOELNGEAEANBPXXIEUIDEDSLYATGNTMDSIARSALMCHSIEAWEAHPDYIITEATH",
+          "null_max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "lo_nibble_rev",
+          "sign": 1,
+          "offset": 616433,
+          "pre": -1.3956246376037598,
+          "score": -6.89408759404773,
+          "head": "DXUITAEWEOSEOTHUNOTHYHAUSENNOEBORFRIAEDTHTFLSJEOUDIASIAAPSJIDHNG",
+          "null_max": -6.9915736180720085,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "hexchars",
+          "sign": -1,
+          "offset": 1987956,
+          "pre": -1.3616217374801636,
+          "score": -6.902500986615361,
+          "head": "YXESEUNCLOFYITHGETHADBORPLUWDFIAREOERULTHEOIHMFNGOEAEEOLDJHUONGY",
+          "null_max": -6.936046304379154,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "byte_scaled_rev",
+          "sign": 1,
+          "offset": 2397115,
+          "pre": -1.414800763130188,
+          "score": -6.904869812225545,
+          "head": "BMWJSFIDENMEREOUSATTHEANEONGOSOEUOEYGREOOYEWEAYEASTNGIFLXAPRXHIF",
+          "null_max": -6.968769343357883,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "hexchars",
+          "sign": 1,
+          "offset": 597008,
+          "pre": -1.4244815111160278,
+          "score": -6.907121424495424,
+          "head": "LHEYDANGCINGDIDTHFULETTLOTHREAECFLJGEASEXLJIAEYBXTUGIAFJWETXNCBE",
+          "null_max": -6.936046304379154,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "byte_scaled",
+          "sign": -1,
+          "offset": 330301,
+          "pre": -1.3924113512039185,
+          "score": -6.907736854642095,
+          "head": "EOSHOWERDSEAISERONGBJSLENGEACMWANGGAEXAENWOYJEONGSLLFRANTHOEEAAE",
+          "null_max": -6.938618489430183,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "prime_to_idx",
+          "sign": -1,
+          "offset": 407685,
+          "pre": -1.4285788536071777,
+          "score": -6.919641028082605,
+          "head": "THSITCHDIATMARERREAFTEDAIFONACXJYYNGDCEAOFIARLHMBEAFXCPFMEATHBRC",
+          "null_max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "lo_nibble_rev",
+          "sign": -1,
+          "offset": 2268309,
+          "pre": -1.3659452199935913,
+          "score": -6.920699997558122,
+          "head": "IRSETHSAEOEJMSNYAWASEARTOFDOBTHXNNOEGUSLFICHOECGATNGIAEOFUEOBEHI",
+          "null_max": -6.9915736180720085,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "byte_scaled_rev",
+          "sign": -1,
+          "offset": 1523716,
+          "pre": -1.4003968238830566,
+          "score": -6.927593324548454,
+          "head": "MOEANGROMIAAIASPICEAFFARBRARGAEOEELRAEDEONGREAEAPGCEIOAENGEATHEA",
+          "null_max": -6.968769343357883,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "prime_to_idx",
+          "sign": 1,
+          "offset": 2564716,
+          "pre": -1.3936439752578735,
+          "score": -6.929953218627587,
+          "head": "GEOEASOTHWITHENTLEANURSHEAYENMEOGDAREAOEBIABEALLBTBTHIOECEAPEOJO",
+          "null_max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 1670512,
+          "pre": -1.4264740943908691,
+          "score": -6.937536563510014,
+          "head": "AEAIACOSTEALMBBEWNINGDOGSAITHCAUCPNYAIAFAEHCTSTREADJIAOEDITHEOIL",
+          "null_max": -6.995405944815296,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "prime_to_idx",
+          "sign": 1,
+          "offset": 2784486,
+          "pre": -1.3925983905792236,
+          "score": -6.939256458597395,
+          "head": "IAUSANDLOGOFTHUDOETAEIYHOMTHEEMMBAEOOEJANANOEXATHSNSENGOGUAEHMDM",
+          "null_max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "hexchars",
+          "sign": -1,
+          "offset": 2142616,
+          "pre": -1.4363389015197754,
+          "score": -6.942665031946811,
+          "head": "IAHEHUANALOANGCYBELABBSLORATHEOMSEAATREORHUOEPOBNNXEOSABGGIAYYBE",
+          "null_max": -6.936046304379154,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 2426276,
+          "pre": -1.3643091917037964,
+          "score": -6.944386599668218,
+          "head": "YNGRIEDUTHEHUCTWAHRINGHENJATHNLITOEEDAEHOERIMJEOEATFAEAXOEOFCIAN",
+          "null_max": -6.9980799612537,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "lo_nibble_rev",
+          "sign": -1,
+          "offset": 3206762,
+          "pre": -1.4268125295639038,
+          "score": -6.947211067740319,
+          "head": "UUEDGMETTHAGGOEEAEAETIANIMULTHNIABSEONRIAIMUAOETHYHPTHDUTYOFTHTE",
+          "null_max": -6.9915736180720085,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "prime_to_idx",
+          "sign": -1,
+          "offset": 1292061,
+          "pre": -1.3608542680740356,
+          "score": -6.948987951548221,
+          "head": "IAHGAITHJJBNGLERYMOWSPONAWEWPRCEAONTHEAATHOEAAELXGRNGHTYCAIAXIAT",
+          "null_max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "hexchars_rev",
+          "sign": 1,
+          "offset": 2571926,
+          "pre": -1.4177149534225464,
+          "score": -6.949841153667946,
+          "head": "STHEYAPSAITHGIRWEAFXBEABONLYEEOCFLBGIATAYAEAIAAEYOENSEJYWEAMAISO",
+          "null_max": -6.976079009288646,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_auth",
+          "variant": "byte_scaled_rev",
+          "sign": -1,
+          "offset": 3038136,
+          "pre": -1.3088655471801758,
+          "score": -6.952595859431404,
+          "head": "FOEXAEFACSASSEIFTOBCIPACETJBNTHGXRTHPEAHXOTIALGFOFILXEONGOUFNGBE",
+          "null_max": -6.968769343357883,
+          "bar": -5.5
+        }
+      ],
+      "verdict": "NEGATIVE"
+    },
+    {
+      "pad": "_560.00_trunc",
+      "file": "DATA__560.00",
+      "bytes": 2412544,
+      "sha256": "a9ba66e3fc874ce429948b1ee52b48a00f230698ac7174ed9aefb7d82ba62b59",
+      "builders": [
+        "mod29",
+        "hi_nibble",
+        "lo_nibble",
+        "byte_scaled",
+        "prime_to_idx",
+        "hexchars"
+      ],
+      "signs": [
+        -1,
+        1
+      ],
+      "directions": [
+        "fwd",
+        "rev"
+      ],
+      "coverage": {
+        "configs": 24,
+        "offsets_scanned": 55348856,
+        "survival_rate": 0.625,
+        "effective_offsets": 34593035,
+        "beam_escalations": 959
+      },
+      "nulls": {
+        "mod29": {
+          "mean": -7.290676646759238,
+          "max": -6.995405944815296,
+          "bar": -5.5
+        },
+        "mod29_rev": {
+          "mean": -7.284663291352906,
+          "max": -6.900336448972416,
+          "bar": -5.5
+        },
+        "hi_nibble": {
+          "mean": -7.3072153262307715,
+          "max": -6.9980799612537,
+          "bar": -5.5
+        },
+        "hi_nibble_rev": {
+          "mean": -7.304786836216948,
+          "max": -6.849498677668642,
+          "bar": -5.5
+        },
+        "lo_nibble": {
+          "mean": -7.288414077252423,
+          "max": -6.935057804938364,
+          "bar": -5.5
+        },
+        "lo_nibble_rev": {
+          "mean": -7.298263308186069,
+          "max": -7.002986265492964,
+          "bar": -5.5
+        },
+        "byte_scaled": {
+          "mean": -7.282021618200613,
+          "max": -6.938618489430183,
+          "bar": -5.5
+        },
+        "byte_scaled_rev": {
+          "mean": -7.29946599849098,
+          "max": -6.886371883262297,
+          "bar": -5.5
+        },
+        "prime_to_idx": {
+          "mean": -7.296831720683567,
+          "max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        "prime_to_idx_rev": {
+          "mean": -7.29274753805918,
+          "max": -6.916806400943446,
+          "bar": -5.5
+        },
+        "hexchars": {
+          "mean": -7.274886138181577,
+          "max": -6.936046304379154,
+          "bar": -5.5
+        },
+        "hexchars_rev": {
+          "mean": -7.264498396674198,
+          "max": -6.973097819340599,
+          "bar": -5.5
+        }
+      },
+      "best": {
+        "pad": "_560.00_trunc",
+        "variant": "prime_to_idx",
+        "sign": -1,
+        "offset": 972806,
+        "pre": -1.366303563117981,
+        "score": -6.816400125392829,
+        "head": "OEHJYHENDEEFIGNTHERIPEDUTHLPOTTOAEUEOOSFOEIAROYEEASOEXODFEAWHODD",
+        "null_max": -6.9990939069092155,
+        "bar": -5.5
+      },
+      "n_hits": 0,
+      "hits": [],
+      "top": [
+        {
+          "pad": "_560.00_trunc",
+          "variant": "prime_to_idx",
+          "sign": -1,
+          "offset": 972806,
+          "pre": -1.366303563117981,
+          "score": -6.816400125392829,
+          "head": "OEHJYHENDEEFIGNTHERIPEDUTHLPOTTOAEUEOOSFOEIAROYEEASOEXODFEAWHODD",
+          "null_max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 972806,
+          "pre": -1.4422433376312256,
+          "score": -6.83556687155809,
+          "head": "OEHJYHENDEEFIGNTHORILEDUTHLPOTTOAEUEOOSFOEIAROYEWSOEXODFEAWHODDT",
+          "null_max": -6.995405944815296,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "prime_to_idx",
+          "sign": -1,
+          "offset": 1653285,
+          "pre": -1.435489296913147,
+          "score": -6.871128943951599,
+          "head": "OIAEAOELNGEAEANBPXXIEUIDEDSLYATGNTMDSIARSALMCHSIEAWEAHPDYIITEATH",
+          "null_max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 831757,
+          "pre": -1.4343653917312622,
+          "score": -6.904302754979118,
+          "head": "OEOELWERCUSHEADBOAEGWPDATSIDRXAEAETWDDNGHEYWLOEOENTHAEULAOECEAIA",
+          "null_max": -6.9980799612537,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "byte_scaled_rev",
+          "sign": 1,
+          "offset": 816689,
+          "pre": -1.414800763130188,
+          "score": -6.904869812225545,
+          "head": "BMWJSFIDENMEREOUSATTHEANEONGOSOEUOEYGREOOYEWEAYEASTNGIFLXAPRXHIF",
+          "null_max": -6.886371883262297,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "hexchars",
+          "sign": 1,
+          "offset": 597008,
+          "pre": -1.4244815111160278,
+          "score": -6.907121424495424,
+          "head": "LHEYDANGCINGDIDTHFULETTLOTHREAECFLJGEASEXLJIAEYBXTUGIAFJWETXNCBE",
+          "null_max": -6.936046304379154,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "prime_to_idx",
+          "sign": -1,
+          "offset": 803271,
+          "pre": -1.4547206163406372,
+          "score": -6.907547501244758,
+          "head": "EAXEOLOOBOTTEHEARILTHAEHPEALANEANGNNIIANGWRNEWTHYYCJTHLNJFOEOEAE",
+          "null_max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "byte_scaled",
+          "sign": -1,
+          "offset": 330301,
+          "pre": -1.3924113512039185,
+          "score": -6.907736854642095,
+          "head": "EOSHOWERDSEAISERONGBJSLENGEACMWANGGAEXAENWOYJEONGSLLFRANTHOEEAAE",
+          "null_max": -6.938618489430183,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "prime_to_idx",
+          "sign": -1,
+          "offset": 407685,
+          "pre": -1.4285788536071777,
+          "score": -6.919641028082605,
+          "head": "THSITCHDIATMARERREAFTEDAIFONACXJYYNGDCEAOFIARLHMBEAFXCPFMEATHBRC",
+          "null_max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "lo_nibble_rev",
+          "sign": -1,
+          "offset": 687883,
+          "pre": -1.3659452199935913,
+          "score": -6.920699997558122,
+          "head": "IRSETHSAEOEJMSNYAWASEARTOFDOBTHXNNOEGUSLFICHOECGATNGIAEOFUEOBEHI",
+          "null_max": -7.002986265492964,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 294540,
+          "pre": -1.4311527013778687,
+          "score": -6.923119615542226,
+          "head": "EOBFAEAELEETTLORBETHECHAEXSYNOEMIATPBLBYEBOEMEOMAWRNGEOEAUGOEOXI",
+          "null_max": -6.938618489430183,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 1670512,
+          "pre": -1.4264740943908691,
+          "score": -6.937536563510014,
+          "head": "AEAIACOSTEALMBBEWNINGDOGSAITHCAUCPNYAIAFAEHCTSTREADJIAOEDITHEOIL",
+          "null_max": -6.995405944815296,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "lo_nibble_rev",
+          "sign": -1,
+          "offset": 1626336,
+          "pre": -1.4268125295639038,
+          "score": -6.947211067740319,
+          "head": "UUEDGMETTHAGGOEEAEAETIANIMULTHNIABSEONRIAIMUAOETHYHPTHDUTYOFTHTE",
+          "null_max": -7.002986265492964,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "prime_to_idx",
+          "sign": -1,
+          "offset": 1292061,
+          "pre": -1.3608542680740356,
+          "score": -6.948987951548221,
+          "head": "IAHGAITHJJBNGLERYMOWSPONAWEWPRCEAONTHEAATHOEAAELXGRNGHTYCAIAXIAT",
+          "null_max": -6.9990939069092155,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "hexchars_rev",
+          "sign": 1,
+          "offset": 1409953,
+          "pre": -1.4177149534225464,
+          "score": -6.949841153667946,
+          "head": "STHEYAPSAITHGIRWEAFXBEABONLYEEOCFLBGIATAYAEAIAAEYOENSEJYWEAMAISO",
+          "null_max": -6.973097819340599,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "byte_scaled_rev",
+          "sign": -1,
+          "offset": 1457710,
+          "pre": -1.3088655471801758,
+          "score": -6.952595859431404,
+          "head": "FOEXAEFACSASSEIFTOBCIPACETJBNTHGXRTHPEAHXOTIALGFOFILXEONGOUFNGBE",
+          "null_max": -6.886371883262297,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "hexchars_rev",
+          "sign": 1,
+          "offset": 724426,
+          "pre": -1.4670783281326294,
+          "score": -6.961580515358955,
+          "head": "OYWOUATENLENCLEAGLBEAIHOMRPUCELBEORYENUACYPJIAIAWCXFGAEFNTHOBEPE",
+          "null_max": -6.973097819340599,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "lo_nibble",
+          "sign": -1,
+          "offset": 1737040,
+          "pre": -1.450273036956787,
+          "score": -6.96309929883409,
+          "head": "WWOUDITACSESMUAEEAMSUEOFUAXUSDTHWIATHPAUIURMAPOMOPHIHEAASYCEOMNE",
+          "null_max": -6.935057804938364,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "hexchars_rev",
+          "sign": -1,
+          "offset": 371670,
+          "pre": -1.45305335521698,
+          "score": -6.9631510289081575,
+          "head": "NGLFHUTHOFLOURCYGEOTHATCOLYLFWEAMYIABTNGWRWUIPHDNOEHBNGADXWONGYE",
+          "null_max": -6.973097819340599,
+          "bar": -5.5
+        },
+        {
+          "pad": "_560.00_trunc",
+          "variant": "lo_nibble_rev",
+          "sign": 1,
+          "offset": 690934,
+          "pre": -1.4301822185516357,
+          "score": -6.971652453508774,
+          "head": "LTESHFRIMEAYONWETOODOOEXALEEANBGIAIIAEOOETHNGXJHFEOWALASAHOGEASN",
+          "null_max": -7.002986265492964,
+          "bar": -5.5
+        }
+      ],
+      "verdict": "NEGATIVE"
+    },
+    {
+      "pad": "560.17",
+      "file": "DATA_560.17",
+      "bytes": 1183811,
+      "sha256": "d5676b1e01fd371cb13415b59b2eca4336e96f7bb05e789198b8d6baab580c19",
+      "builders": [
+        "mod29",
+        "hi_nibble",
+        "lo_nibble",
+        "byte_scaled",
+        "prime_to_idx",
+        "hexchars"
+      ],
+      "signs": [
+        -1,
+        1
+      ],
+      "directions": [
+        "fwd",
+        "rev"
+      ],
+      "coverage": {
+        "configs": 24,
+        "offsets_scanned": 27154056,
+        "survival_rate": 0.625,
+        "effective_offsets": 16971285,
+        "beam_escalations": 959
+      },
+      "nulls": {
+        "mod29": {
+          "mean": -7.297678411952967,
+          "max": -7.008998714162106,
+          "bar": -5.5
+        },
+        "mod29_rev": {
+          "mean": -7.286316346747399,
+          "max": -6.9562833184631145,
+          "bar": -5.5
+        },
+        "hi_nibble": {
+          "mean": -7.315526202082476,
+          "max": -6.973835580293714,
+          "bar": -5.5
+        },
+        "hi_nibble_rev": {
+          "mean": -7.3077212116058465,
+          "max": -7.022457378247656,
+          "bar": -5.5
+        },
+        "lo_nibble": {
+          "mean": -7.309166000972564,
+          "max": -6.943278650156607,
+          "bar": -5.5
+        },
+        "lo_nibble_rev": {
+          "mean": -7.290754422999105,
+          "max": -6.972083963931101,
+          "bar": -5.5
+        },
+        "byte_scaled": {
+          "mean": -7.281698959846263,
+          "max": -6.954502620937147,
+          "bar": -5.5
+        },
+        "byte_scaled_rev": {
+          "mean": -7.279447454558129,
+          "max": -6.97401229729181,
+          "bar": -5.5
+        },
+        "prime_to_idx": {
+          "mean": -7.302376935618047,
+          "max": -6.9785080481442785,
+          "bar": -5.5
+        },
+        "prime_to_idx_rev": {
+          "mean": -7.298703564040266,
+          "max": -6.943115468079248,
+          "bar": -5.5
+        },
+        "hexchars": {
+          "mean": -7.257268239887142,
+          "max": -6.839607157808311,
+          "bar": -5.5
+        },
+        "hexchars_rev": {
+          "mean": -7.26666653219872,
+          "max": -6.973721074489154,
+          "bar": -5.5
+        }
+      },
+      "best": {
+        "pad": "560.17",
+        "variant": "lo_nibble",
+        "sign": 1,
+        "offset": 493780,
+        "pre": -1.4121676683425903,
+        "score": -6.807223683948372,
+        "head": "AEDYETFIRBJEWCIMWGODOESABLTHWIAYBATSTHNETHTAETHIMEOGAOEMPBJYUNOE",
+        "null_max": -6.943278650156607,
+        "bar": -5.5
+      },
+      "n_hits": 0,
+      "hits": [],
+      "top": [
+        {
+          "pad": "560.17",
+          "variant": "lo_nibble",
+          "sign": 1,
+          "offset": 493780,
+          "pre": -1.4121676683425903,
+          "score": -6.807223683948372,
+          "head": "AEDYETFIRBJEWCIMWGODOESABLTHWIAYBATSTHNETHTAETHIMEOGAOEMPBJYUNOE",
+          "null_max": -6.943278650156607,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "prime_to_idx_rev",
+          "sign": -1,
+          "offset": 138558,
+          "pre": -1.413604974746704,
+          "score": -6.843281018534071,
+          "head": "MJURTHALOCTUFAGYBEGOLLBYDXAERYMUOOAAYIAHHGBEAGEAJDHEOWTBIDCOAELD",
+          "null_max": -6.943115468079248,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "prime_to_idx_rev",
+          "sign": -1,
+          "offset": 1046946,
+          "pre": -1.4577713012695312,
+          "score": -6.864695724554277,
+          "head": "THMIWBIAHEPTTHERGNGIOANIAPBYRSTALRSBEOEOMJLRSOTHWHEAPSDOENGWJPHB",
+          "null_max": -6.943115468079248,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "prime_to_idx_rev",
+          "sign": 1,
+          "offset": 400139,
+          "pre": -1.3807752132415771,
+          "score": -6.871671503291386,
+          "head": "ARETHSSGCGBEARINGBETEARDENTOCBGEOGNCBLDIARECLOOEFPMNGOEOEHFLONIE",
+          "null_max": -6.943115468079248,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "lo_nibble_rev",
+          "sign": -1,
+          "offset": 1150170,
+          "pre": -1.4439963102340698,
+          "score": -6.872652459231966,
+          "head": "THEABULIMAOBENMACRIEWBODATHINGINPBWFBLRNGOEGAEHEOTHACRAIAJEABNEO",
+          "null_max": -6.972083963931101,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "mod29",
+          "sign": 1,
+          "offset": 1043411,
+          "pre": -1.4174848794937134,
+          "score": -6.891837997921567,
+          "head": "MAEPEAGUTDABLUEJANATDOETHELMATHNGNREJSIAWWIAEOEYHRPFBITMEANIARCM",
+          "null_max": -7.008998714162106,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 217119,
+          "pre": -1.3426694869995117,
+          "score": -6.901248567043038,
+          "head": "IASFIMRGCOETHERSHEBOOTGINGTHEYBEHSCPBEATHEOTHXAEEOPNGPCIALISYJHA",
+          "null_max": -6.973835580293714,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 767075,
+          "pre": -1.4702526330947876,
+          "score": -6.904864144463317,
+          "head": "NDODSTTHTSDFWUWYATWAEWEOAEDAPLPGEAYAUNOEGPAEFTHAGNNGOHOELLMBIAEO",
+          "null_max": -7.008998714162106,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "mod29",
+          "sign": 1,
+          "offset": 767651,
+          "pre": -1.4152899980545044,
+          "score": -6.909856282124523,
+          "head": "IEOBUNABHAFAEIOEDSUPOFANATENOEIBTYTEANBYNGEORPUCPHLPNMCPYRUNGSET",
+          "null_max": -7.008998714162106,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 651053,
+          "pre": -1.412497639656067,
+          "score": -6.919702794411981,
+          "head": "THWDAUALIUNTSAUIANGEMENLYEXCEAHTHTNLBEILOOREOJCLWYBOXADCWOESWRCO",
+          "null_max": -7.008998714162106,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "mod29_rev",
+          "sign": 1,
+          "offset": 440479,
+          "pre": -1.4623814821243286,
+          "score": -6.937501149926781,
+          "head": "IRSOJAWCOJAWCLOODOLATUEATIDYEUREOJGNGSCPYWYHAEMICEALEPAEDCOEWONG",
+          "null_max": -6.9562833184631145,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "lo_nibble_rev",
+          "sign": 1,
+          "offset": 467830,
+          "pre": -1.4335905313491821,
+          "score": -6.946093022621924,
+          "head": "SLUBTAERRETHAATCANHUTABBISLPEAFFFAEENGTHDUWLWEEPNIAABSATWEARIANG",
+          "null_max": -6.972083963931101,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "mod29_rev",
+          "sign": 1,
+          "offset": 1170923,
+          "pre": -1.4501744508743286,
+          "score": -6.946348702048269,
+          "head": "AEAEWLIFELIANAGIAEJRNGOEMREEYGRTATHSEEOXGWDRRYGAENAEAJTEEOMGAETR",
+          "null_max": -6.9562833184631145,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 747177,
+          "pre": -1.3863167762756348,
+          "score": -6.9712090260583865,
+          "head": "IABSCUANOTTHISTHOEFBEAHDIHESTANGCOERMEATANGOIAEOSJROELTHTHEJALMG",
+          "null_max": -7.008998714162106,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "prime_to_idx_rev",
+          "sign": -1,
+          "offset": 1006885,
+          "pre": -1.2800211906433105,
+          "score": -6.97184733687438,
+          "head": "YAENGABESSUSEUEAIAPFHOLUANDETPSEAUOASYEOELGORIIAWDUNLXTHGYWYLAEN",
+          "null_max": -6.943115468079248,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "lo_nibble",
+          "sign": -1,
+          "offset": 676862,
+          "pre": -1.4644192457199097,
+          "score": -6.9737865415604405,
+          "head": "WEARYTHEPEIBEERUCLITCOEOEYAEATIAGDIOEWEAHEEAPAUDEANGPOTHGGITHOES",
+          "null_max": -6.943278650156607,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "mod29_rev",
+          "sign": 1,
+          "offset": 780270,
+          "pre": -1.4282286167144775,
+          "score": -6.974484758833497,
+          "head": "SMLYSABJCEASINGTREDCUALMULPHSHUIRWXDXHOLEAMSANGAINULDIEAEARFLWDA",
+          "null_max": -6.9562833184631145,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "hi_nibble",
+          "sign": -1,
+          "offset": 321398,
+          "pre": -1.4783947467803955,
+          "score": -6.9763233569724274,
+          "head": "JDHEAUTMBHERECAIREDFMECTTHEOUTLPNGCIANAIASLOUEAXAOEHTHYTHWOEOELO",
+          "null_max": -6.973835580293714,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "lo_nibble",
+          "sign": -1,
+          "offset": 1088945,
+          "pre": -1.4269276857376099,
+          "score": -6.978145541905859,
+          "head": "THTHIDLEMEANPISLYIOEEOXHWAYEARNOBXWEOEAMEACOERFTIACTHYIHEAYWTHSP",
+          "null_max": -6.943278650156607,
+          "bar": -5.5
+        },
+        {
+          "pad": "560.17",
+          "variant": "hi_nibble_rev",
+          "sign": 1,
+          "offset": 675021,
+          "pre": -1.4521679878234863,
+          "score": -6.983238113512371,
+          "head": "YIFWELONFIADABOXMYWERNEROEAEXMIBDDAEAUEYTPBLATWIADDMAICWYMORTDWE",
+          "null_max": -7.022457378247656,
+          "bar": -5.5
+        }
+      ],
+      "verdict": "NEGATIVE"
+    },
+    {
+      "pad": "prime_echo",
+      "file": "usr_local_bin_prime_echo",
+      "bytes": 12248,
+      "sha256": "1ab3a8f4520a3d93784aea137847e0c7f77d9fff4df02d481b62d13280753350",
+      "builders": [
+        "mod29",
+        "hi_nibble",
+        "lo_nibble",
+        "byte_scaled",
+        "prime_to_idx",
+        "hexchars"
+      ],
+      "signs": [
+        -1,
+        1
+      ],
+      "directions": [
+        "fwd",
+        "rev"
+      ],
+      "coverage": {
+        "configs": 20,
+        "offsets_scanned": 244480,
+        "survival_rate": 0.625,
+        "effective_offsets": 152800,
+        "beam_escalations": 511
+      },
+      "nulls": {
+        "mod29": {
+          "mean": -7.307166612895214,
+          "max": -6.982671692913567,
+          "bar": -5.5
+        },
+        "mod29_rev": {
+          "mean": -7.3076632387431,
+          "max": -6.909153880814158,
+          "bar": -5.5
+        },
+        "hi_nibble": {
+          "mean": -7.240429299807812,
+          "max": -6.9478960890933825,
+          "bar": -5.5
+        },
+        "hi_nibble_rev": {
+          "mean": -7.242753179639705,
+          "max": -6.9573735419151435,
+          "bar": -5.5
+        },
+        "lo_nibble": {
+          "mean": -7.3116063411306325,
+          "max": -6.8751025873255305,
+          "bar": -5.5
+        },
+        "lo_nibble_rev": {
+          "mean": -7.296121034905927,
+          "max": -7.031209551903263,
+          "bar": -5.5
+        },
+        "byte_scaled": {
+          "mean": -7.24916859611854,
+          "max": -6.986242529481796,
+          "bar": -5.5
+        },
+        "byte_scaled_rev": {
+          "mean": -7.236679420350315,
+          "max": -6.9516912310959,
+          "bar": -5.5
+        },
+        "prime_to_idx": {
+          "mean": -7.311532188181685,
+          "max": -6.960636316613259,
+          "bar": -5.5
+        },
+        "prime_to_idx_rev": {
+          "mean": -7.303032646917237,
+          "max": -6.993419733728594,
+          "bar": -5.5
+        }
+      },
+      "best": {
+        "pad": "prime_echo",
+        "variant": "mod29",
+        "sign": -1,
+        "offset": 8383,
+        "pre": -1.37526535987854,
+        "score": -6.9588464206884195,
+        "head": "UEOSSTABSONDEEHHURNETHDRUGMSOIMMALYLAPESEANGXRGOELFWIEAOWEOEXGDD",
+        "null_max": -6.982671692913567,
+        "bar": -5.5
+      },
+      "n_hits": 0,
+      "hits": [],
+      "top": [
+        {
+          "pad": "prime_echo",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 8383,
+          "pre": -1.37526535987854,
+          "score": -6.9588464206884195,
+          "head": "UEOSSTABSONDEEHHURNETHDRUGMSOIMMALYLAPESEANGXRGOELFWIEAOWEOEXGDD",
+          "null_max": -6.982671692913567,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 1950,
+          "pre": -1.7996283769607544,
+          "score": -6.978070451151121,
+          "head": "ELNGGJAERUEONGCBPOEEEACTEARLPLUIOEWEAEBTIATHEOTHNDXMEANGUEOESPOE",
+          "null_max": -6.986242529481796,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 8063,
+          "pre": -1.3514927625656128,
+          "score": -6.9839329909413355,
+          "head": "UEOSSTABSONDEEHHURIEDDRUGMSOIMMALYLAPESEACEOBHEAFWIEAOWEOEXGDDBS",
+          "null_max": -6.982671692913567,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 1434,
+          "pre": -1.7996283769607544,
+          "score": -7.004643807864285,
+          "head": "ELNGGJAERUEONGCBPOEEEACTEARLPLUIOEWEAEBTYTHEOTHNDXMEANGUEOESPOEP",
+          "null_max": -6.986242529481796,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 5279,
+          "pre": -1.865440845489502,
+          "score": -7.0066153744887325,
+          "head": "EJENEOAERTHBOLDHCXNAETHXAISHSAENMIAEOEETIAWJIAEOEORJLEOUPMEOXEHU",
+          "null_max": -6.9478960890933825,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 7691,
+          "pre": -1.865440845489502,
+          "score": -7.0066153744887325,
+          "head": "EJENEOAERTHBOLDHCXNAETHXAISHSAENMIAEOEETIAWJIAEOEORJLEOUPMEOXEHU",
+          "null_max": -6.9478960890933825,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 7423,
+          "pre": -1.865440845489502,
+          "score": -7.0066153744887325,
+          "head": "EJENEOAERTHBOLDHCXNAETHXAISHSAENMIAEOEETIAWJIAEOEORJLEOUPMEOXEHU",
+          "null_max": -6.9478960890933825,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 4475,
+          "pre": -1.8418853282928467,
+          "score": -7.011189986806157,
+          "head": "BJENEOAERTHBOLDHCXNAETHXAISHSAENMIAEOEETIAWJIAEOEORJLEOUPMEOXEHU",
+          "null_max": -6.9478960890933825,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 310,
+          "pre": -1.7850486040115356,
+          "score": -7.013120140953719,
+          "head": "IAJDSNOEOCTFAAEXOEBHOTIANIPLFMLFIAAESSYTHEOTHNDXMEANGUEOESPOEPGR",
+          "null_max": -6.986242529481796,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 260,
+          "pre": -1.7850486040115356,
+          "score": -7.014292447300903,
+          "head": "IAJDSNOEOCTFAAEXOEBHOTIANIPLFMLFIAAESSIATHEOTHNDXMEANGUEOESPOEPG",
+          "null_max": -6.986242529481796,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 1356,
+          "pre": -1.7773411273956299,
+          "score": -7.031311104686473,
+          "head": "ELNGGJAEOUEONGCBPOEEEACTEARLPLUIOEWEAEBTIATHEOTHNDXMEANGUEOESPOE",
+          "null_max": -6.986242529481796,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "lo_nibble",
+          "sign": -1,
+          "offset": 1977,
+          "pre": -1.7376751899719238,
+          "score": -7.035825407013635,
+          "head": "THDEUOILLPSEEOEYGGAESJBOEREADEDOAPEEONEOMNOEDCYHBAIAHWRNOTANGAIB",
+          "null_max": -6.8751025873255305,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "byte_scaled_rev",
+          "sign": 1,
+          "offset": 4975,
+          "pre": -1.8097279071807861,
+          "score": -7.040922646221864,
+          "head": "IAPNGSBUNUNGTHDABPOEENOBAERSHSDILFECDNGOTHSUJPXMEANGJTDEOPBHUYFB",
+          "null_max": -6.9516912310959,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 1072,
+          "pre": -1.7773411273956299,
+          "score": -7.041339637436483,
+          "head": "ELNGGJAEOUEONGCBPOEEEACTEARLPLUIOEWEAEBTYTHEOTHNDXMEANGUEOESPOEP",
+          "null_max": -6.986242529481796,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 5194,
+          "pre": -1.4469658136367798,
+          "score": -7.047618407046827,
+          "head": "UEOSSTABSONDEEHHUCHETHDRUGMSOIMMALYLAPESEANGXRWNGLFWIEAOWEOEXGDD",
+          "null_max": -6.982671692913567,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 5734,
+          "pre": -1.865440845489502,
+          "score": -7.050310699023257,
+          "head": "EJENEOAERTHBOLDHCXNAETHXAISHSAENMIAEOEETIAWJIAEOEORJLEOUPMEOXEHU",
+          "null_max": -6.9478960890933825,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "byte_scaled_rev",
+          "sign": 1,
+          "offset": 2027,
+          "pre": -1.8097279071807861,
+          "score": -7.0545424067402625,
+          "head": "IAPNGSBUNUNGTHDABPOEENOBAERSHSDILFECDNGOTHSUJPXMEANGJTDEOPTHUYFB",
+          "null_max": -6.9516912310959,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 8518,
+          "pre": -1.4795185327529907,
+          "score": -7.056516268226801,
+          "head": "UEOSSTABSONDEEHHURNSTHDRUGMSOIMMALYLAPESEANGDGOENGYEOPTHYDEIAOEO",
+          "null_max": -6.982671692913567,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "prime_to_idx",
+          "sign": 1,
+          "offset": 357,
+          "pre": -1.8044078350067139,
+          "score": -7.060904613121064,
+          "head": "JLGIANGNGOLLSUIEXCBAEWEGYNGAEAOFEOIAEEARAGAESSEJTUDNPEOFUBCBNTHE",
+          "null_max": -6.960636316613259,
+          "bar": -5.5
+        },
+        {
+          "pad": "prime_echo",
+          "variant": "prime_to_idx",
+          "sign": 1,
+          "offset": 2463,
+          "pre": -1.7794188261032104,
+          "score": -7.06533826885139,
+          "head": "IAAEPGOEPUCUTBUIEXCBAEWEGYNGAEAOFEOIAEEARAGABYMWALHMNPCSEANGITHO",
+          "null_max": -6.960636316613259,
+          "bar": -5.5
+        }
+      ],
+      "verdict": "NEGATIVE"
+    },
+    {
+      "pad": "tmp_folly",
+      "file": "tmp_folly",
+      "bytes": 3368,
+      "sha256": "7e5ec097728197f5c0dba0729980565658fba486965809ffa25e3910a31c385a",
+      "builders": [
+        "mod29",
+        "hi_nibble",
+        "lo_nibble",
+        "byte_scaled",
+        "prime_to_idx",
+        "hexchars"
+      ],
+      "signs": [
+        -1,
+        1
+      ],
+      "directions": [
+        "fwd",
+        "rev"
+      ],
+      "coverage": {
+        "configs": 0,
+        "offsets_scanned": 0,
+        "survival_rate": 0.625,
+        "effective_offsets": 0,
+        "beam_escalations": 0
+      },
+      "nulls": {},
+      "best": null,
+      "n_hits": 0,
+      "hits": [],
+      "top": [],
+      "verdict": "NEGATIVE"
+    },
+    {
+      "pad": "tmp_wisdom",
+      "file": "tmp_wisdom",
+      "bytes": 3368,
+      "sha256": "7e5ec097728197f5c0dba0729980565658fba486965809ffa25e3910a31c385a",
+      "builders": [
+        "mod29",
+        "hi_nibble",
+        "lo_nibble",
+        "byte_scaled",
+        "prime_to_idx",
+        "hexchars"
+      ],
+      "signs": [
+        -1,
+        1
+      ],
+      "directions": [
+        "fwd",
+        "rev"
+      ],
+      "coverage": {
+        "configs": 0,
+        "offsets_scanned": 0,
+        "survival_rate": 0.625,
+        "effective_offsets": 0,
+        "beam_escalations": 0
+      },
+      "nulls": {},
+      "best": null,
+      "n_hits": 0,
+      "hits": [],
+      "top": [],
+      "verdict": "NEGATIVE"
+    }
+  ],
+  "verdict": "NEGATIVE",
+  "elapsed_s": 3597.0
+}

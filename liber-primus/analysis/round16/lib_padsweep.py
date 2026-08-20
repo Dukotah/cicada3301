@@ -84,8 +84,29 @@ def ks_hexchars(b):
 
     A 2013 author copy-pasting a block hash or a beacon value off a web page is handling
     the hex text, not the bytes. Byte-level builders cannot see that keystream at all.
+
+    **KNOWN LIMITATION, found by lane P1 (2026-08-19).** `eng_to_idx` drops any character
+    that is not a mappable letter, so it silently DISCARDS the digits 0-9: on a 19.4M-char
+    hex string it kept 5.7M chars. This builder is therefore the **A-F subsequence** of the
+    hex reading, not the hex reading. It is kept as-is because published lane results were
+    measured with it, and it is a legitimate (if odd) keystream in its own right. For the
+    actual hex-text reading use `ks_nibbles`.
     """
     return np.array(sk.eng_to_idx(b.hex().upper()), dtype=np.int16)
+
+
+def ks_nibbles(b):
+    """The true hex-text reading: each hex character as its value 0-15, in order.
+
+    Added by lane P1 after `ks_hexchars` was found to drop digits. Not in `BUILDERS` —
+    opt in explicitly — so that lane results measured against the original builder set
+    stay comparable.
+    """
+    a = _u8(b).astype(np.int16)
+    out = np.empty(a.size * 2, dtype=np.int16)
+    out[0::2] = a >> 4
+    out[1::2] = a & 0xF
+    return out
 
 
 BUILDERS = {

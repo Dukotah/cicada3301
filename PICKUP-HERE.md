@@ -275,6 +275,56 @@ and HIT bar unchanged (so the result is directly comparable), extending only the
 this pad is ~100× longer than the others, so it supports offsets to 5×10⁷ that A1 could not
 sweep. Verdict in `analysis/round12/A1/results_560_13.json`.
 
+## Round 16 — THE PUBLIC PAD (2026-08-19/20)
+
+Full: [`liber-primus/analysis/round16/SYNTHESIS.md`](liber-primus/analysis/round16/SYNTHESIS.md).
+Pre-registered: [`round16/PREREG.md`](liber-primus/analysis/round16/PREREG.md).
+
+**The gap.** The keystream taxonomy had exactly two branches — short-seed **derived** (finite,
+being swept) and **private pad** (closed) — and the seed census folded everything else into the
+second with one sentence, repeated verbatim in three load-bearing places: *"`/dev/urandom`, a
+hardware RNG, **random.org**, or physical dice … nothing in the seed sweep touches it, **and
+nothing can**."* That merges two different properties. **Dice and `/dev/urandom` leave no seed
+AND no record. random.org, NIST's Randomness Beacon, a blockchain and a printed random-number
+table leave no seed but a permanent PUBLIC RECORD** — a third branch, enumerable today, never
+swept. Same failure shape D3 caught twice: a measured bound written up as a settled conclusion.
+
+**Second gap:** every external-pad sweep here walked an **8-offset ladder** (A1's). On the 118 MB
+`560.13` pad that is 7e-8 of the offset space. `round16/lib_padsweep.py` scores **every** offset.
+
+| Lane | Pad family | Offsets | Best (bar −5.5) | Verdict |
+|---|---|---|---|---|
+| **P0** | A1's CicadaOS blobs, re-swept densely | 3,911,819,734 | −6.769 | NEGATIVE |
+| **P1** | Bitcoin, heights 0–303,726 (both byte orders, merkle/nonce/time) | 1,389,182,016 | −6.802 | NEGATIVE |
+| **P2** | NIST Beacon v1 + RANDOM.ORG daily archives | 3,464,597,548 | −6.811 | NEGATIVE |
+| **P3** | RAND's million digits + 3301's own published bytes | 5,757,316,748 | −5.679 | NEGATIVE |
+| **P4** | Filter fingerprint (register item **D-01**) | — | — | **MACHINE** |
+
+≈**14.5 × 10⁹ offsets** (≈8.4 × 10⁹ effective), **0 hits**, every control recovered at 100 % of
+runes, and `threshold_for()` at each lane's true trial count is *stricter* than the fixed bar in
+all four sweeps. The value is the three corrections:
+
+1. **"Nothing can touch it" is refuted for random.org — by download.** It has published a 1 MiB
+   true-random file **every day since 2006-03-11**; P2 pulled **153 files (2013-09 → 2014-01),
+   153/153 MD5-verified**. NIST Beacon v1's legacy endpoint still serves 2013 (v2 cannot — it
+   clamps to 2018). ANU QRNG and HotBits *are* unreachable, with cause. The output is a measured
+   source table, not an assertion. **Live and unswept: the Marsaglia Random Number CDROM (1995)**,
+   634 MB with published SHA-256s — the cheapest remaining item in this branch.
+2. **The anti-repeat filter is MACHINE, not hand-applied** — refuting `FINAL-SYNTHESIS.md:73-76`,
+   which asserted a human calligrapher applying the rule by hand and used it as the attribution
+   profile's anchor. Human-randomness models excluded at **≥0.99 power**; lag-2..8 bleed z = +0.65
+   (zero, sign wrong for a human); no per-line scope (power 1.000). **Bound: lag-1 suppression
+   80.75 %, any lag-2..8 suppression > 1.70 % excluded at 95 %.** Honest residue, reported as
+   UNDERPOWERED (0.110): a human eye applying *only* that rule to a machine pad is not separable,
+   and cannot be in principle. ⇒ Do **not** build a human-key-prior joint decode; the pad came out
+   of a program or a file.
+3. **Two instrument defects, found by lanes auditing each other** — `max_skip=3` is underpowered on
+   pads with constant byte runs (P1's control *failed on its real pad*, 6/8; fixed at ms=8, 60/60),
+   though P0 and P2 then measured that it does **not** bite on high-entropy pads and explained why;
+   and `ks_hexchars` silently dropped digits, sweeping the A–F subsequence of hex text rather than
+   hex text. Also: the flat ×0.625 survival discount is **not a constant** (0.375–0.875, non-monotone
+   in size) — every lane restated its coverage downward from its own measurement.
+
 ## What is actually still open
 
 _Superseded 2026-08. The two threads this section used to list — "an untried public keytext" and

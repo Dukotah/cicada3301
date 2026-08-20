@@ -277,6 +277,15 @@ adding all remaining generators multiplies total coverage by ~1.3×; PHP alone b
 > seed sweep's value is that it cheaply excludes the *lazy* implementations. It was never able to
 > exclude the competent one. Do not read a completed sweep as more than that.
 
+**⚠️ Partly superseded 2026-08-20 (Round 16, lane P2).** "No seed" and "no record" are different
+properties, and this passage merges them. `/dev/urandom` and dice have both. **random.org does
+not**: it has published a 1 MiB true-random file every day since 2006-03-11, and P2 fetched 153
+of them (2013-09 → 2014-01), **153/153 MD5-verified**. NIST's Beacon (live 2013-09-05), the
+blockchain and printed tables are the same shape — seedless, full-entropy, and permanently
+public. Round 16 swept that branch (≈14.5 × 10⁹ offsets, all NEGATIVE) and left one named live
+item: the **Marsaglia Random Number CDROM (1995)**, 634,124,288 bytes with published SHA-256s,
+found but not swept. See `analysis/round16/SYNTHESIS.md`.
+
 ---
 
 ## P-5 — The "AN END" deep-web page · prior: **very low** · closed by construction; passive only

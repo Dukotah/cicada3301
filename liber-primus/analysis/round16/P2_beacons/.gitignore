@@ -1,7 +1,17 @@
-# Round 16 lane P2 - public randomness archives fetched as candidate one-time pads.
-# Everything here is re-derivable by running the committed fetcher:
-#   python fetch.py --start 2013-09-05 --end 2014-01-06 --workers 48
-# (NIST Randomness Beacon v1, legacy endpoint https://beacon.nist.gov/rest/record/<unix>)
+# Round 16 lane P2 — public randomness archives fetched as candidate one-time pads.
+#
+# Everything ignored here is re-derivable by running the committed scripts. What is NOT
+# ignored — results.json, parts/*.json, RESULTS.md — is the record of what was tried.
+#
+#   python fetch.py beacon      --start 2013-09-05 --end 2013-11-14 --workers 32
+#   python fetch.py beaconcheck --start 2013-09-05 --end 2013-11-14 --n 300
+#   python fetch.py randomorg   --months 2013-09,2013-10,2013-11,2013-12,2014-01
+#   python sweep.py --pad <pad>.bin [--builder <b> --rev 0|1 --sign -1|1 --max-skip N]
+#   python control_pad.py --pad <pad>.bin --builder mod29
+#   python merge.py
+#
+# data/  ~180 MB of pads plus 123 days of beacon JSONL, and ~160 MB of random.org daily
+#        files pulled over BitTorrent. Provenance (hashes, MD5 tables, chain-verification
+#        counts) is copied into results.json, so the record survives without the bytes.
 data/
-logs/
 __pycache__/

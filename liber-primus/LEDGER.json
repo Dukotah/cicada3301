@@ -19,14 +19,14 @@
   "in-flight"
  ],
  "counts": {
-  "total": 57,
+  "total": 59,
   "by_status": {
    "open": 18,
-   "superseded": 1,
-   "negative": 4,
+   "superseded": 2,
+   "negative": 6,
    "partially-run": 10,
    "eliminated": 2,
-   "never-run": 21,
+   "never-run": 20,
    "inconclusive": 1
   }
  },
@@ -385,6 +385,113 @@
    "evidence_missing": []
   },
   {
+   "id": "R16-PUBLIC-PAD",
+   "lane": "keystream",
+   "hypothesis": "The pad is FULL-ENTROPY and SEEDLESS but PUBLIC: a blockchain, a randomness beacon, a published random-number archive, or a printed random-number table. This is a third branch the taxonomy had no name for - the seed census filed these with dice and /dev/urandom under 'nothing can touch it', merging 'leaves no seed' with 'leaves no record'.",
+   "status": "negative",
+   "round": "16/P0-P3",
+   "date": "2026-08-20",
+   "threshold": "score_norm >= -5.5 AND >= null_max + 0.5, per lane, fixed in PREREG.md before any sweep. threshold_for(n_trials) reported alongside; it was STRICTER than the fixed bar in all four lanes.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": {
+    "round_gate": "8/8 planted external pads recovered at 100% of runes (-4.212); dense prefilter retained the true offset 5/8",
+    "per_lane": "each lane planted in ITS OWN real pads and reported a measured survival rate rather than inheriting the constant"
+   },
+   "result": {
+    "hits": 0,
+    "offsets_scored": 14522916046,
+    "offsets_effective": 8380000000,
+    "best_by_lane": {
+     "P0_cicadaos_dense": -6.769,
+     "P1_bitcoin": -6.802,
+     "P2_beacon_randomorg": -6.811,
+     "P3_rand_and_3301_bytes": -5.679
+    },
+    "bar": -5.5
+   },
+   "coverage": "P0: 6 distinct CicadaOS blobs, 196 configs, full cross product on 560.13 plus nibbles and ms=8 passes, INCLUDING the 1,580,426-byte tail of _560.00 that A1 never held. P1: Bitcoin heights 0-303,726 verified contiguous - hashes and merkle roots in BOTH byte orders, nonces, timestamps. P2: NIST Beacon v1 2013-09-05 to 2013-11-13 and RANDOM.ORG 2013-09-01 to 2014-01-31, 153 daily files, 153/153 MD5-verified. P3: 28 pads / 112.6 MB swept twice (ms=3, then ms=8 with nibbles) - RAND's million digits plus 3301's own published bytes.",
+   "not_covered": "The Marsaglia Random Number CDROM (1995), 634,124,288 B with published SHA-256s - FOUND, NOT SWEPT, and the cheapest live item in this branch. Also: non-contiguous blockchain selections (every-Nth, retarget blocks), other chains, txids, coinbase scriptSigs, chainwork; the beacon beyond 2013-11-13; keystream builders outside the seven tested; 13 of P3's pads are shorter than ~13k symbols and were swept against the head window only. The dense prefilter's measured survival is 0.375-0.875 (non-monotone in pad size), so roughly 45-60% of offsets on large pads are a POWER blind spot - beam recovery was 100% on every plant, so this is power, not soundness.",
+   "evidence": [
+    "liber-primus/analysis/round16/SYNTHESIS.md",
+    "liber-primus/analysis/round16/PREREG.md",
+    "liber-primus/analysis/round16/P0_dense/RESULTS.md",
+    "liber-primus/analysis/round16/P1_blockchain/RESULTS.md",
+    "liber-primus/analysis/round16/P2_beacons/RESULTS.md",
+    "liber-primus/analysis/round16/P3_tables/RESULTS.md"
+   ],
+   "reproduce": "python3 liber-primus/analysis/round16/lib_padsweep.py  # instrument gate, then each lane's sweep.py",
+   "reopens_if": "The Marsaglia CDROM sweep, or any dated public randomness archive from before 2014-01 that is not in P2's source table, returns a score at or above its own null_max + 0.5.",
+   "notes": "Also corrects the offset-coverage of every PRIOR external-pad sweep in the repo: they walked an 8-offset ladder (A1's), which on the 118 MB 560.13 pad is 7e-8 of the offset space. Round 16 scores every offset.",
+   "null": null,
+   "supersedes": null,
+   "superseded_by": null,
+   "priority": null,
+   "source_register": null,
+   "raw_status": null,
+   "evidence_missing": []
+  },
+  {
+   "id": "R16-P2-CENSUS-CORRECTION",
+   "lane": "record-integrity",
+   "hypothesis": "The seed census's closing argument - that a random.org / hardware-RNG / dice pad leaves no compressible key and therefore 'nothing can touch it' - is sound as written.",
+   "status": "superseded",
+   "round": "16/P2",
+   "date": "2026-08-20",
+   "threshold": "Refuted if any source named in that sentence turns out to have a retrievable, verifiable pre-2014 public archive.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a",
+   "result": "REFUTED for random.org. It has published a 1 MiB true-random file every day since 2006-03-11 (7,395 files). 153 files covering 2013-09 to 2014-01 were downloaded and verified 153/153 against the published MD5s. NIST Beacon v1 also still serves the 2013 era via its legacy endpoint (the v2 API cannot - it clamps to chain 1 pulse 1, 2018-07-23). ANU QRNG and HotBits ARE unreachable, with cause: ANU's only pre-generated bundle died with CloudStor 2023-12-15, HotBits keeps no records by design.",
+   "coverage": "A measured source table replaces the assertion. See P2's RESULTS.md.",
+   "not_covered": "Dice and /dev/urandom remain genuinely closed - they leave no seed AND no record. The correction is that the census merged those two properties.",
+   "evidence": [
+    "liber-primus/analysis/round16/P2_beacons/RESULTS.md",
+    "liber-primus/analysis/round10/L5-seed32/CENSUS.md"
+   ],
+   "reproduce": "python3 liber-primus/analysis/round16/P2_beacons/fetch.py",
+   "supersedes": [],
+   "reopens_if": "n/a - this is a record-integrity correction, not an attack lane.",
+   "notes": "Third instance of this repo's characteristic failure: a measured bound written up as a settled conclusion. See also VERDICT-UNSOLVABLE-BY-DESIGN and the Round 12 D3 findings.",
+   "control_detail": null,
+   "null": null,
+   "superseded_by": null,
+   "priority": null,
+   "source_register": null,
+   "raw_status": null,
+   "evidence_missing": []
+  },
+  {
+   "id": "D-01",
+   "lane": "recon-a",
+   "hypothesis": "The anti-repeat hardening was applied BY HAND by a human calligrapher (asserted as fact in FINAL-SYNTHESIS.md:73-76 and load-bearing for the attribution profile), rather than by a machine.",
+   "status": "negative",
+   "round": "16/P4",
+   "date": "2026-08-20",
+   "threshold": "Pre-registered per test, with matched controls: a machine-filtered stream, a human-like stream (lag-1..3 avoidance, alternation excess, window rebalancing) and an unfiltered uniform stream, all bisection-calibrated to the real 0.6638% doublet rate so lag-1 carries no information. Every claim reports its measured power.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": {
+    "gate": "uniform vs machine on lag1_z, power 1.000"
+   },
+   "result": "MACHINE. Every human-randomness model with any signature beyond the bare immediate-repeat rule is excluded at >=0.99 power. Pooled lag-2..8 bleed is z = +0.65 (zero bleed, and the sign is wrong for a human). The filter had NO per-line scope (power 1.000): 4/86 residual doublets cross a line boundary, 4.65% against a 4.58% base, where a line-scoped filter leaves 22.9%. BOUND: lag-1 suppression is 80.75%, and any lag-2..8 suppression above 1.70% is excluded at 95% (2.87% at 99%).",
+   "coverage": "Discriminates the SOURCE of the randomness. Reported as UNDERPOWERED (0.110) for the separate question of whether a human eye applied ONLY that one rule to a machine-generated pad - which is unfixable in principle, since such a stream IS the coded filter's output. Tests of drift, fatigue, per-page rate constancy and off-diagonal bigram structure are underpowered at n=12,956 (0.075-0.195) and are reported as such, not as evidence.",
+   "not_covered": "'A person did the writing' is untouched; only 'a person supplied the randomness' is excluded.",
+   "evidence": [
+    "liber-primus/analysis/round16/P4_filter/RESULTS.md",
+    "liber-primus/analysis/round16/P4_filter/fingerprint.py"
+   ],
+   "reproduce": "python3 liber-primus/analysis/round16/P4_filter/fingerprint.py",
+   "reopens_if": "Register item A-03 (the haplography count-audit of the 86 doublet sites) finding ~20 transcription merges would change the doublet count and move this result's sections 3 and 6.",
+   "notes": "Register item D-01, marked never-run since 2026-08-12, now run. Consequences for the search: the pad's bytes came from a program or a file, so imported-byte-source lanes are the right target and a human-key-prior joint decode should NOT be built. Independently confirms the skip-aware beam's cipher model against the real data for the first time (flat, unscoped, single-lag, supp ~ 0.813).",
+   "raw_status": "never-run",
+   "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
+   "null": null,
+   "supersedes": null,
+   "superseded_by": null,
+   "priority": null,
+   "evidence_missing": []
+  },
+  {
    "id": "A-01",
    "lane": "recon-a",
    "hypothesis": "Round 9 Track TEMPLATE, the only genuinely from-scratch re-transcription, stopped at stage 2. `read_lines.json` holds 16,245 image-read glyphs across 646 lines; `diff.py` (stage 3: recover the class→rune permutation, diff vs canon) has no output artifact on disk and no verdict was ever appended.",
@@ -682,34 +789,6 @@
    "id": "C-02",
    "lane": "recon-a",
    "hypothesis": "Line-initial / word-initial / page-initial ciphertext-rune uniformity test — the detector for forcing (an acrostic or layout constraint imposed in ciphertext). Proposed with a hard gate (p<0.001); no script and no result anywhere.",
-   "status": "never-run",
-   "raw_status": "never-run",
-   "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
-   "evidence": [
-    "liber-primus/analysis/campaign14/REDTEAM-PROPOSALS.md"
-   ],
-   "round": null,
-   "date": null,
-   "threshold": null,
-   "threshold_fixed_in_advance": null,
-   "positive_control": null,
-   "control_detail": null,
-   "null": null,
-   "result": null,
-   "coverage": null,
-   "not_covered": null,
-   "reproduce": null,
-   "supersedes": null,
-   "superseded_by": null,
-   "reopens_if": null,
-   "priority": null,
-   "notes": null,
-   "evidence_missing": []
-  },
-  {
-   "id": "D-01",
-   "lane": "recon-a",
-   "hypothesis": "Generator-fingerprint suite items (1)+(2): conditional next-rune distribution after each rune value, and a windowed χ² under-dispersion sweep, plus monogram frequency drift across the book (fatigue signature). The proposal names these as the two provenance sub-tests Campaign IV skipped. Never run. Discriminates a machine sampler from a human drawing a pad by hand — which is exactly the load-bearing claim in FINAL-SYNTHESIS' technique fingerprint.",
    "status": "never-run",
    "raw_status": "never-run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",

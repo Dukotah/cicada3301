@@ -44,6 +44,12 @@ OUT = os.path.join(HERE, "results.json")
 PARTIAL = os.path.join(HERE, "data", "partial")
 SURVIVAL = 0.625            # measured dense-prefilter survival, lib_padsweep.control()
 TEXTCHARS_MAX = 2_000_000   # eng_to_idx is pure python; skipped above this pad size
+HEXCHARS_MAX = 8_000_000    # lib_padsweep.ks_hexchars models "hex copy-pasted off a web
+#                             page" (a block hash, a beacon value).  Above this size that
+#                             is not a thing a person did, and eng_to_idx over 2x N chars
+#                             costs hours.  Pads above the cap are swept under the other
+#                             11 builders; 3301's hex dumps that WERE published as text
+#                             are covered in full by cicada_hexdumps_text_pub.
 
 
 # ------------------------------------------------------------- extra builders
@@ -119,10 +125,12 @@ def dig2_rej26(b):
     return (v[(v >= 1) & (v <= 26)] - 1).astype(np.int16)
 
 
-def _charval(b, alphabet):
+def _charval(b, alphabet, fold_case=False):
     lut = np.full(256, -1, dtype=np.int16)
     for i, c in enumerate(alphabet):
         lut[ord(c)] = i
+        if fold_case:                      # base32/hex are case-insensitive alphabets;
+            lut[ord(c.swapcase())] = i     # base64 is NOT, so it never folds
     a = np.frombuffer(b, dtype=np.uint8)
     v = lut[a]
     return (v[v >= 0] % N).astype(np.int16)
@@ -133,11 +141,11 @@ def charval_b64(b):
 
 
 def charval_hex(b):
-    return _charval(b, HEXAL)
+    return _charval(b, HEXAL, fold_case=True)
 
 
 def charval_b32(b):
-    return _charval(b, B32AL)
+    return _charval(b, B32AL, fold_case=True)
 
 
 def textchars(b):
@@ -178,9 +186,14 @@ def classify(b):
     return ex, {"frac_digit": round(frac_dig, 4), "frac_printable": round(frac_pr, 4)}
 
 
-def all_keystreams(b):
-    ks = L.build_keystreams(b)                    # 6 byte builders x {fwd, rev}
+def all_keystreams(b, drop=frozenset()):
+    core = [k for k in L.BUILDERS if k not in drop]
+    if len(b) > HEXCHARS_MAX and "hexchars" in core:
+        core.remove("hexchars")
+    core = None if (not drop and len(core) == len(L.BUILDERS)) else core
+    ks = L.build_keystreams(b, only=core)         # 6 byte builders x {fwd, rev}
     extra, meta = classify(b)
+    meta["core_builders"] = core if core is not None else list(L.BUILDERS)
     for name, fn in extra.items():
         try:
             ks[name] = fn(b)

@@ -1,0 +1,2337 @@
+{
+  "lane": "round16/P2_beacons",
+  "title": "Public randomness services as one-time pads",
+  "date": "2026-08-19",
+  "merged_from": [
+    "results_beacon_2013-09-05_2013-10-12.json",
+    "results_randomorg_2013-09_2013-11.json",
+    "results_randomorg_2013-12_2014-01.json",
+    "parts/ pad_outputValue_2013-09-05_2013-11-14.bin (+4 configs)",
+    "parts/ pad_seedValue_2013-09-05_2013-11-14.bin (+4 configs)"
+  ],
+  "instrument": "round16/lib_padsweep.py dense_scan + A1 beam (beam_w=120, max_skip<=3, head=400), A1 score_norm scale",
+  "control": {
+    "source": "lib_padsweep.control() - PREREG.md gate",
+    "PASS": true,
+    "n_trials": 8,
+    "beam_recovered": 8,
+    "dense_found": 5,
+    "survival_rate": 0.625,
+    "window_equivalence": "sweep.py::_assert_window_equiv() re-proved the windowed beam/null bit-identical to lib_padsweep's before every run"
+  },
+  "hit_bar_rule": "score_norm >= -5.5 AND >= null_max + 0.5 (pre-registered, round16/PREREG.md, = A1's)",
+  "provenance": {
+    "nist_beacon_v1": {
+      "source": "NIST Randomness Beacon v1 (legacy https://beacon.nist.gov/rest/record/<unix>)",
+      "window_utc": [
+        "2013-09-05",
+        "2013-11-14"
+      ],
+      "window_note": "end exclusive; 2013-11-14 is the first day the API would no longer serve completely (1206/1440), so the pad stops at the last fully fetched day rather than carrying fetch holes into the keystream",
+      "fetched_utc": "2026-08-20T06:13:08.368120+00:00",
+      "first_ts": 1378395540,
+      "last_ts": 1384387140,
+      "first_utc": "2013-09-05T15:39:00Z",
+      "last_utc": "2013-11-13T23:59:00Z",
+      "verify": {
+        "n_records": 99861,
+        "adjacent_linked": 99855,
+        "adjacent_broken": 0,
+        "minute_gaps": 5,
+        "link_rate": 1.0,
+        "genesis_zero_prev": true,
+        "first_break_ts": []
+      },
+      "pads": {
+        "outputValue": {
+          "file": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "bytes": 6391104,
+          "sha256": "80c416ce93df6dbbd28183fac6fcfba96aaad6a53ee2b3e4b4678a8a56c613e9"
+        },
+        "seedValue": {
+          "file": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "bytes": 6391104,
+          "sha256": "c6548ce8b5165a953c51cf11de40ddc1ba8c779efca31315e011de24d40a1553"
+        }
+      }
+    },
+    "randomorg_archive": {
+      "source": "RANDOM.ORG Pregenerated File Archive - binary, one 1 MiB file of true random data per day, published daily since 2006-03-11",
+      "listing": "https://archive.random.org/binary  (7,395 daily .bin files, 245 monthly .torrent, 246 monthly .md5, measured 2026-08-19)",
+      "retrieval_measured_2026-08-19": {
+        "direct_http_2013_file": "https://archive.random.org/download?file=2013-12-01.bin -> HTTP 403 (subscription; only the newest day is free)",
+        "newest_day_free": "https://archive.random.org/download?file=<today>.bin -> HTTP 200, 1,048,576 B",
+        "monthly_torrent_free": "https://archive.random.org/download?file=2013-09-bin.torrent -> HTTP 200, 20,938 B",
+        "monthly_md5_free": "https://archive.random.org/download?file=2013-09-bin.md5 -> HTTP 200",
+        "tracker": "http://tracker.random.org:6969/announce (private flag set; seeded by random.org)",
+        "how_this_lane_got_the_bytes": "libtorrent 2.1.1 against random.org's own tracker, then every daily file checked against random.org's published MD5"
+      },
+      "months": [
+        "2013-09",
+        "2013-10",
+        "2013-11",
+        "2013-12",
+        "2014-01"
+      ],
+      "md5_verification": {
+        "2013-09": {
+          "md5_ok": 30,
+          "md5_bad": 0,
+          "missing": 0,
+          "listed": 30
+        },
+        "2013-10": {
+          "md5_ok": 31,
+          "md5_bad": 0,
+          "missing": 0,
+          "listed": 31
+        },
+        "2013-11": {
+          "md5_ok": 30,
+          "md5_bad": 0,
+          "missing": 0,
+          "listed": 30
+        },
+        "2013-12": {
+          "md5_ok": 31,
+          "md5_bad": 0,
+          "missing": 0,
+          "listed": 31
+        },
+        "2014-01": {
+          "md5_ok": 31,
+          "md5_bad": 0,
+          "missing": 0,
+          "listed": 31
+        }
+      },
+      "pads": {
+        "pad_randomorg_2013-09_2013-11.bin": {
+          "bytes": 95420416,
+          "sha256": "7e267471b27e9cfc5d62c42e627fea9ebebef9062c5f1bca388d8f07712bc334",
+          "months": [
+            "2013-09",
+            "2013-10",
+            "2013-11"
+          ],
+          "daily_files": 91,
+          "first": "2013-09-01.bin",
+          "last": "2013-11-30.bin"
+        },
+        "pad_randomorg_2013-12_2014-01.bin": {
+          "bytes": 65011712,
+          "sha256": "03de9a638e80168b03364980219f0b30bf2f329ee0cb82b669aeb5896d065458",
+          "months": [
+            "2013-12",
+            "2014-01"
+          ],
+          "daily_files": 62,
+          "first": "2013-12-01.bin",
+          "last": "2014-01-31.bin"
+        }
+      }
+    },
+    "nist_beacon_signature_spotcheck": {
+      "sampled": 300,
+      "sig_invariant_ok": 300,
+      "bad": 0,
+      "fetch_errors": 0,
+      "invariant": "outputValue == SHA-512(signatureValue)  (NIST Beacon v1 spec)"
+    }
+  },
+  "coverage_total": {
+    "pads": 6,
+    "configs": 96,
+    "bytes_swept": 179913984,
+    "offsets_scanned": 3464597548,
+    "survival_rate": 0.625,
+    "effective_offsets": 2165373468,
+    "beam_escalations": 3839,
+    "A1_offsets_per_variant_for_comparison": 8
+  },
+  "extreme_value_check": {
+    "note": "AGENTS.md lesson 3 - a fixed bar is invalid at large N.",
+    "threshold_for_offsets_scanned": -5.3256641632154516,
+    "threshold_for_beam_escalations": -5.5,
+    "raw_best": -6.810640700106527
+  },
+  "max_skip_robustness": {
+    "why": "lane P1 found A1's max_skip=3 underpowered on pads with constant byte runs (its control fell to 6/8 at ms=3, 60/60 at ms=8). This lane's pads were MEASURED for that structure (data/pad_run_structure.json) and are indistinguishable from iid; these re-runs confirm it empirically. Each re-scores offsets already counted above, at ms=8 with its own ms=8 null, so they add no coverage and are reported separately.",
+    "configs": [
+      {
+        "pad": "pad_randomorg_2013-09_2013-11.bin",
+        "variant": "mod29",
+        "sign": 1,
+        "max_skip": 8,
+        "best": -6.963390302771034,
+        "null_max": -6.996435085411327,
+        "bar": -5.5,
+        "verdict": "NEGATIVE"
+      },
+      {
+        "pad": "pad_randomorg_2013-09_2013-11.bin",
+        "variant": "mod29",
+        "sign": -1,
+        "max_skip": 8,
+        "best": -6.954880505675185,
+        "null_max": -6.996435085411327,
+        "bar": -5.5,
+        "verdict": "NEGATIVE"
+      },
+      {
+        "pad": "pad_randomorg_2013-09_2013-11.bin",
+        "variant": "mod29_rev",
+        "sign": 1,
+        "max_skip": 8,
+        "best": -6.881070275124376,
+        "null_max": -6.957645542687917,
+        "bar": -5.5,
+        "verdict": "NEGATIVE"
+      },
+      {
+        "pad": "pad_randomorg_2013-09_2013-11.bin",
+        "variant": "mod29_rev",
+        "sign": -1,
+        "max_skip": 8,
+        "best": -6.810640700106527,
+        "null_max": -6.957645542687917,
+        "bar": -5.5,
+        "verdict": "NEGATIVE"
+      },
+      {
+        "pad": "pad_randomorg_2013-12_2014-01.bin",
+        "variant": "mod29",
+        "sign": 1,
+        "max_skip": 8,
+        "best": -6.985561833918612,
+        "null_max": -6.952942460909906,
+        "bar": -5.5,
+        "verdict": "NEGATIVE"
+      },
+      {
+        "pad": "pad_randomorg_2013-12_2014-01.bin",
+        "variant": "mod29",
+        "sign": -1,
+        "max_skip": 8,
+        "best": -6.878539093186185,
+        "null_max": -6.952942460909906,
+        "bar": -5.5,
+        "verdict": "NEGATIVE"
+      },
+      {
+        "pad": "pad_randomorg_2013-12_2014-01.bin",
+        "variant": "mod29_rev",
+        "sign": 1,
+        "max_skip": 8,
+        "best": -6.950670089085818,
+        "null_max": -6.9509415988994805,
+        "bar": -5.5,
+        "verdict": "NEGATIVE"
+      },
+      {
+        "pad": "pad_randomorg_2013-12_2014-01.bin",
+        "variant": "mod29_rev",
+        "sign": -1,
+        "max_skip": 8,
+        "best": -6.910951599048231,
+        "null_max": -6.9509415988994805,
+        "bar": -5.5,
+        "verdict": "NEGATIVE"
+      }
+    ]
+  },
+  "lane_controls_on_real_pads": [
+    {
+      "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+      "builder": "nibbles",
+      "trials": 8,
+      "dense_found": 7,
+      "dense_survival_rate": 0.875,
+      "beam_recovered_ms3": 8,
+      "mean_match_ms3": 1.0,
+      "beam_recovered_ms8": 8,
+      "mean_match_ms8": 1.0,
+      "PASS_ms3": true,
+      "seconds": 1322.3
+    },
+    {
+      "pad": "pad_randomorg_2013-09_2013-11.bin",
+      "builder": "mod29",
+      "trials": 8,
+      "dense_found": 4,
+      "dense_survival_rate": 0.5,
+      "beam_recovered_ms3": 8,
+      "mean_match_ms3": 1.0,
+      "beam_recovered_ms8": 8,
+      "mean_match_ms8": 1.0,
+      "PASS_ms3": true,
+      "seconds": 1661.2
+    }
+  ],
+  "best": {
+    "pad": "pad_randomorg_2013-09_2013-11.bin",
+    "variant": "mod29_rev",
+    "sign": -1,
+    "offset": 68875671,
+    "pre": -1.2518295049667358,
+    "score": -6.810640700106527,
+    "head": "EONGEADARTSOLAMALROSTISHHOFNTHEOIABMOEPATHAEJEAEATWWEEAAEODIAPNG",
+    "null_max": -6.957645542687917,
+    "bar": -5.5
+  },
+  "n_hits": 0,
+  "hits": [],
+  "top20": [
+    {
+      "pad": "pad_randomorg_2013-09_2013-11.bin",
+      "variant": "mod29_rev",
+      "sign": -1,
+      "offset": 68875671,
+      "pre": -1.2518295049667358,
+      "score": -6.810640700106527,
+      "head": "EONGEADARTSOLAMALROSTISHHOFNTHEOIABMOEPATHAEJEAEATWWEEAAEODIAPNG",
+      "null_max": -6.957645542687917,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+      "variant": "byte_scaled",
+      "sign": 1,
+      "offset": 1982843,
+      "pre": -1.419373869895935,
+      "score": -6.827275750991879,
+      "head": "AEJBHULMOFAECNGXIAINANBANDWHWGSTHYSIANGERWOOEJEAAOEIDYEADSPYOTER",
+      "null_max": -6.9605845732865195,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_randomorg_2013-12_2014-01.bin",
+      "variant": "byte_scaled_rev",
+      "sign": 1,
+      "offset": 28669483,
+      "pre": -1.2972135543823242,
+      "score": -6.829969463985132,
+      "head": "UOEOELEIUCHIMIRRESHNEOUSAMEAIATHNOESEOEATHPDAFFOWTHOTJPLEYTHTHTH",
+      "null_max": -6.932766806444661,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+      "variant": "prime_to_idx_rev",
+      "sign": 1,
+      "offset": 382059,
+      "pre": -1.3789896965026855,
+      "score": -6.844980373262418,
+      "head": "JOLICHTHOUEBTHEATCOODFOEXCURHSTEOAEALRMLHCDTHOENGEHDODYRMOEGTJAE",
+      "null_max": -6.954545176482542,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+      "variant": "hexchars_rev",
+      "sign": -1,
+      "offset": 1284501,
+      "pre": -1.4274452924728394,
+      "score": -6.846890987861222,
+      "head": "LHAHBMICINARCYTUWATBORPSEPOEMNGYEOIRUSLJTYLEOSOEMDSEJWUTOLBEAHER",
+      "null_max": -7.006911564499339,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_randomorg_2013-09_2013-11.bin",
+      "variant": "mod29_rev",
+      "sign": -1,
+      "offset": 23638891,
+      "pre": -1.2601428031921387,
+      "score": -6.850203803928198,
+      "head": "OTSCAMARYSENREATSOSOETILDMUANUIWMMGIRYPEONCAETIAEAOEGEAYTEALBAWO",
+      "null_max": -6.957645542687917,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+      "variant": "lo_nibble",
+      "sign": 1,
+      "offset": 158390,
+      "pre": -1.42188560962677,
+      "score": -6.850586779098216,
+      "head": "NGSANHAPODUOEALTHABRIDOODHITHXTHGLEAYLGOMTHWSPSESTHMENGTDGWRJMAE",
+      "null_max": -6.865312956867732,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+      "variant": "nibbles",
+      "sign": 1,
+      "offset": 3313003,
+      "pre": -1.365695595741272,
+      "score": -6.852822121452882,
+      "head": "APEEOTCONAUOEAEPREWORTANITSATTHEAAEANGPFTHLTHPEONXAEBIAMDNGEACAE",
+      "null_max": -7.020450860297709,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_randomorg_2013-09_2013-11.bin",
+      "variant": "lo_nibble_rev",
+      "sign": 1,
+      "offset": 78955639,
+      "pre": -1.2845466136932373,
+      "score": -6.862412294749375,
+      "head": "NGXUCHFOUSGREALPSLUCEYRISNDIYFAERPEOFEOSRIINSMPWAAEMSDREAFEANGFO",
+      "null_max": -7.004188457638457,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+      "variant": "nibbles",
+      "sign": -1,
+      "offset": 7561392,
+      "pre": -1.372278094291687,
+      "score": -6.863850192608921,
+      "head": "ODRAUSEYSANIIAAEJFXAREENDAWCGDRMEAIASAEOAEAUYTHOIAMEAEOOCCADEEOF",
+      "null_max": -7.020450860297709,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+      "variant": "hi_nibble_rev",
+      "sign": -1,
+      "offset": 1734200,
+      "pre": -1.318195104598999,
+      "score": -6.869042509233208,
+      "head": "FEAGORTYANDWINGEHOABOLEAFENTTHGNGOHCHPNGEAJFCEAFITHYPEOGFFEANHPO",
+      "null_max": -6.96298560648568,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_randomorg_2013-12_2014-01.bin",
+      "variant": "hi_nibble_rev",
+      "sign": -1,
+      "offset": 26072284,
+      "pre": -1.3286079168319702,
+      "score": -6.869481118196837,
+      "head": "UOILAGEBOLEOLONGOYEMOLONTOHAPAONGEOWLUNIFEALIACIAEIAGACIANGBJPXP",
+      "null_max": -7.0234923166940275,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_randomorg_2013-12_2014-01.bin",
+      "variant": "byte_scaled_rev",
+      "sign": 1,
+      "offset": 34931352,
+      "pre": -1.223577618598938,
+      "score": -6.878377116965699,
+      "head": "ONLINHEAWHAPIEFERYSTASTHNLBFWOEWSSXTEIAILAFHTHNGUEOEEALNGJNLHBRM",
+      "null_max": -6.932766806444661,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_randomorg_2013-12_2014-01.bin",
+      "variant": "mod29",
+      "sign": -1,
+      "offset": 5768773,
+      "pre": -1.325200080871582,
+      "score": -6.878539093186185,
+      "head": "YOEEOTHEABHINGGITESAUSAPONCNONGUEARTHNGDHANPEAEYEANJOEPRIAEESIAE",
+      "null_max": -6.952942460909906,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+      "variant": "prime_to_idx_rev",
+      "sign": -1,
+      "offset": 519451,
+      "pre": -1.351536750793457,
+      "score": -6.8785451010570915,
+      "head": "AEEALOFARIALEUTPLYORDAYCEMEEEAMSUAPDNFEAEANTHJDOECOEJLLWICEAHOSG",
+      "null_max": -6.954545176482542,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_randomorg_2013-09_2013-11.bin",
+      "variant": "mod29_rev",
+      "sign": 1,
+      "offset": 80240950,
+      "pre": -1.2291970252990723,
+      "score": -6.881070275124376,
+      "head": "OEFROLENTNETHSMOTWATTHYLAITTHBUERPEANIHAEOEJSJEARSJIANJCMBSEXIDN",
+      "null_max": -6.957645542687917,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+      "variant": "hi_nibble_rev",
+      "sign": 1,
+      "offset": 2391355,
+      "pre": -1.3820589780807495,
+      "score": -6.881547816370679,
+      "head": "TMORWUPTHEFATHETALROPOERNGNAFEOMGDAEEOJEATBOPMPOEASRSOEOTERHWRIA",
+      "null_max": -6.96298560648568,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+      "variant": "nibbles_rev",
+      "sign": 1,
+      "offset": 4568003,
+      "pre": -1.3630009889602661,
+      "score": -6.886298375185933,
+      "head": "BLONSDIHEGETHENDMRITTHINGWDAMFUSAIAEOAUDNMEOOOEYSGNGBETBCFCEODOE",
+      "null_max": -6.760353832502805,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_randomorg_2013-09_2013-11.bin",
+      "variant": "mod29_rev",
+      "sign": -1,
+      "offset": 89419001,
+      "pre": -1.2776869535446167,
+      "score": -6.888768358631462,
+      "head": "UGHTETHNORTHSFHINGAPULTENSBLOTATUBIJIJUENTHIASFEOANAENYTTHSJGAEL",
+      "null_max": -6.957645542687917,
+      "bar": -5.5
+    },
+    {
+      "pad": "pad_randomorg_2013-12_2014-01.bin",
+      "variant": "prime_to_idx_rev",
+      "sign": -1,
+      "offset": 57622389,
+      "pre": -1.3143463134765625,
+      "score": -6.890570119673195,
+      "head": "NGEDLEALEIAFSWILLMEOFSIXINEDPCBSIIATHTTHMNGFPOENGMEOBCEAWYAEFOEA",
+      "null_max": -6.911547267228567,
+      "bar": -5.5
+    }
+  ],
+  "pads": [
+    {
+      "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+      "bytes": 3349824,
+      "sha256": "b79d874ae19cac380df472401d5b25b33d89e83061a6fa4dad5225450a58f538",
+      "builders": [
+        "mod29",
+        "hi_nibble",
+        "lo_nibble",
+        "byte_scaled",
+        "prime_to_idx",
+        "hexchars"
+      ],
+      "signs": [
+        -1,
+        1
+      ],
+      "directions": [
+        "fwd",
+        "rev"
+      ],
+      "coverage": {
+        "configs": 24,
+        "offsets_scanned": 76850772,
+        "survival_rate": 0.625,
+        "effective_offsets": 48031732,
+        "beam_escalations": 959
+      },
+      "nulls": {
+        "mod29": {
+          "mean": -7.3046096664149305,
+          "max": -6.960492408074449,
+          "bar": -5.5
+        },
+        "mod29_rev": {
+          "mean": -7.274250361027132,
+          "max": -6.794609389426558,
+          "bar": -5.5
+        },
+        "hi_nibble": {
+          "mean": -7.294781596275336,
+          "max": -6.931336584418468,
+          "bar": -5.5
+        },
+        "hi_nibble_rev": {
+          "mean": -7.297023170965002,
+          "max": -6.875831024456566,
+          "bar": -5.5
+        },
+        "lo_nibble": {
+          "mean": -7.311881292634488,
+          "max": -6.865312956867732,
+          "bar": -5.5
+        },
+        "lo_nibble_rev": {
+          "mean": -7.309149246706834,
+          "max": -6.940766645687036,
+          "bar": -5.5
+        },
+        "byte_scaled": {
+          "mean": -7.295703191852367,
+          "max": -6.9605845732865195,
+          "bar": -5.5
+        },
+        "byte_scaled_rev": {
+          "mean": -7.292729242665641,
+          "max": -7.02725166666165,
+          "bar": -5.5
+        },
+        "prime_to_idx": {
+          "mean": -7.31075082427735,
+          "max": -6.905509092647009,
+          "bar": -5.5
+        },
+        "prime_to_idx_rev": {
+          "mean": -7.29113831212051,
+          "max": -6.954545176482542,
+          "bar": -5.5
+        },
+        "hexchars": {
+          "mean": -7.277422164536762,
+          "max": -6.877536670021619,
+          "bar": -5.5
+        },
+        "hexchars_rev": {
+          "mean": -7.265056622756795,
+          "max": -7.006911564499339,
+          "bar": -5.5
+        }
+      },
+      "best": {
+        "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+        "variant": "byte_scaled",
+        "sign": 1,
+        "offset": 1982843,
+        "pre": -1.419373869895935,
+        "score": -6.827275750991879,
+        "head": "AEJBHULMOFAECNGXIAINANBANDWHWGSTHYSIANGERWOOEJEAAOEIDYEADSPYOTER",
+        "null_max": -6.9605845732865195,
+        "bar": -5.5
+      },
+      "n_hits": 0,
+      "hits": [],
+      "top": [
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 1982843,
+          "pre": -1.419373869895935,
+          "score": -6.827275750991879,
+          "head": "AEJBHULMOFAECNGXIAINANBANDWHWGSTHYSIANGERWOOEJEAAOEIDYEADSPYOTER",
+          "null_max": -6.9605845732865195,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "prime_to_idx_rev",
+          "sign": 1,
+          "offset": 382059,
+          "pre": -1.3789896965026855,
+          "score": -6.844980373262418,
+          "head": "JOLICHTHOUEBTHEATCOODFOEXCURHSTEOAEALRMLHCDTHOENGEHDODYRMOEGTJAE",
+          "null_max": -6.954545176482542,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "hexchars_rev",
+          "sign": -1,
+          "offset": 1284501,
+          "pre": -1.4274452924728394,
+          "score": -6.846890987861222,
+          "head": "LHAHBMICINARCYTUWATBORPSEPOEMNGYEOIRUSLJTYLEOSOEMDSEJWUTOLBEAHER",
+          "null_max": -7.006911564499339,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "lo_nibble",
+          "sign": 1,
+          "offset": 158390,
+          "pre": -1.42188560962677,
+          "score": -6.850586779098216,
+          "head": "NGSANHAPODUOEALTHABRIDOODHITHXTHGLEAYLGOMTHWSPSESTHMENGTDGWRJMAE",
+          "null_max": -6.865312956867732,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "prime_to_idx_rev",
+          "sign": -1,
+          "offset": 519451,
+          "pre": -1.351536750793457,
+          "score": -6.8785451010570915,
+          "head": "AEEALOFARIALEUTPLYORDAYCEMEEEAMSUAPDNFEAEANTHJDOECOEJLLWICEAHOSG",
+          "null_max": -6.954545176482542,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 3310691,
+          "pre": -1.408502221107483,
+          "score": -6.903304537273087,
+          "head": "AIMPRWINNATHIMSHITASEBIASLNWAENGNJAECHMDMBHIAGFCTFEEOUYHIIAEONGB",
+          "null_max": -6.9605845732865195,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "prime_to_idx",
+          "sign": 1,
+          "offset": 2073145,
+          "pre": -1.4234858751296997,
+          "score": -6.924450100027021,
+          "head": "CSTOGWETHBWUSWOFBASGLESOUIACNTUCPNGGNTHEOYXEORHNGOESTHUDNGHPEOUO",
+          "null_max": -6.905509092647009,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "prime_to_idx_rev",
+          "sign": -1,
+          "offset": 1439096,
+          "pre": -1.4162157773971558,
+          "score": -6.925172735710421,
+          "head": "MOEOEEAERLDIAEALORIDLENTERTHOMOFTTHFPJDASHTHCNOETHNGOETIAHSJTAOE",
+          "null_max": -6.954545176482542,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "lo_nibble",
+          "sign": -1,
+          "offset": 2943739,
+          "pre": -1.3445155620574951,
+          "score": -6.926888114315232,
+          "head": "PONAAEMAEAOMSELLINGAFFLAHURHCRMEOMCYEDEAAEUNOEFIWEONBYNNEAOEEBFT",
+          "null_max": -6.865312956867732,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "hexchars",
+          "sign": -1,
+          "offset": 145845,
+          "pre": -1.4211100339889526,
+          "score": -6.928348936460405,
+          "head": "IALANEMIACINGDOIHBETHATBONTHNGAEOOEUIARANGOWNGLGTPODROPEASEOGPWT",
+          "null_max": -6.877536670021619,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "lo_nibble",
+          "sign": -1,
+          "offset": 2816200,
+          "pre": -1.393027424812317,
+          "score": -6.93063593236053,
+          "head": "CIAHARRABROEOILEIAMSWILAEFAEEORCDJLTHCHLEALIAOEARNCIAWOHIAGESSAE",
+          "null_max": -6.865312956867732,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "hexchars",
+          "sign": -1,
+          "offset": 1351111,
+          "pre": -1.395593523979187,
+          "score": -6.941487227758538,
+          "head": "IAXENEUIEOIATHEYCHBEFFDEANLYRPTHOEFYOEEOCTAELUUSHOBLIAHOELBBYARO",
+          "null_max": -6.877536670021619,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 2251761,
+          "pre": -1.3843172788619995,
+          "score": -6.948792068860627,
+          "head": "NGINGTIUPILGREAHSMPCWOEHITEOIDWEARSODDUHTFNMPOETHPEASLAPOEOGCJYA",
+          "null_max": -6.931336584418468,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "mod29_rev",
+          "sign": 1,
+          "offset": 1035084,
+          "pre": -1.433247447013855,
+          "score": -6.949600765780592,
+          "head": "FXLMYPRORNOFSABCEALCLEPMNMIDXRAESAEYWXWSOESIMRTYLXYWSHIATHNELPEO",
+          "null_max": -6.794609389426558,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "byte_scaled",
+          "sign": -1,
+          "offset": 1522554,
+          "pre": -1.3989425897598267,
+          "score": -6.957255599673312,
+          "head": "EOOEJJTHEATTHEESBEMEHAEDXEDMYMWSNOJOHTHNGOEHTMFWCEOBFUGWPXECJMMI",
+          "null_max": -6.9605845732865195,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 1399528,
+          "pre": -1.4011934995651245,
+          "score": -6.958481406688327,
+          "head": "FMORTTHISFILDTOJERGSOEBLGIIAOELEAAUSPRXSIANTCTAJTHLAEEOSDEOFOEOE",
+          "null_max": -6.931336584418468,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "lo_nibble_rev",
+          "sign": -1,
+          "offset": 1115724,
+          "pre": -1.434778094291687,
+          "score": -6.959243866754815,
+          "head": "JCTERGBLUXILATIOLLCTBOTONWHAHEOTHEAXLUEOLODIAGFLONWFYAEXTANTHSCG",
+          "null_max": -6.940766645687036,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 1381765,
+          "pre": -1.4078487157821655,
+          "score": -6.9706301569270686,
+          "head": "XJHEFALWAHNCETUMINIJAASTRTHTHOUAECAWRNHIAOEXHREAOTHHEANMRNGWXHHP",
+          "null_max": -6.960492408074449,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "prime_to_idx",
+          "sign": -1,
+          "offset": 436964,
+          "pre": -1.423014760017395,
+          "score": -6.972520821611064,
+          "head": "OWALEGSOEUIAMADDYESOAMANGULIWEOMOETHIAIAYDNEOJOTHLCTGYRMWPXTEAEE",
+          "null_max": -6.905509092647009,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-10-12.bin",
+          "variant": "hi_nibble_rev",
+          "sign": 1,
+          "offset": 1150513,
+          "pre": -1.3024585247039795,
+          "score": -6.973041809900037,
+          "head": "NGERELORINGEAEAUERJLJOYUCTISMSETHBDAMOETHDFHAETHNGULFXMIPMBNAEGA",
+          "null_max": -6.875831024456566,
+          "bar": -5.5
+        }
+      ],
+      "verdict": "NEGATIVE"
+    },
+    {
+      "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+      "bytes": 3349824,
+      "sha256": "112e88e7e351a7936456e6d4aae003e601e145b9111e27947ae9912b49388be1",
+      "builders": [
+        "mod29",
+        "hi_nibble",
+        "lo_nibble",
+        "byte_scaled",
+        "prime_to_idx",
+        "hexchars"
+      ],
+      "signs": [
+        -1,
+        1
+      ],
+      "directions": [
+        "fwd",
+        "rev"
+      ],
+      "coverage": {
+        "configs": 24,
+        "offsets_scanned": 76847704,
+        "survival_rate": 0.625,
+        "effective_offsets": 48029815,
+        "beam_escalations": 960
+      },
+      "nulls": {
+        "mod29": {
+          "mean": -7.294794071259041,
+          "max": -7.027457385476473,
+          "bar": -5.5
+        },
+        "mod29_rev": {
+          "mean": -7.281766139602472,
+          "max": -6.9978522654584046,
+          "bar": -5.5
+        },
+        "hi_nibble": {
+          "mean": -7.303492951149196,
+          "max": -7.03253745792308,
+          "bar": -5.5
+        },
+        "hi_nibble_rev": {
+          "mean": -7.3140377058246,
+          "max": -6.96298560648568,
+          "bar": -5.5
+        },
+        "lo_nibble": {
+          "mean": -7.320322843667253,
+          "max": -7.013598617989223,
+          "bar": -5.5
+        },
+        "lo_nibble_rev": {
+          "mean": -7.299650327992003,
+          "max": -6.95305885538373,
+          "bar": -5.5
+        },
+        "byte_scaled": {
+          "mean": -7.3064180444575895,
+          "max": -7.031690861528235,
+          "bar": -5.5
+        },
+        "byte_scaled_rev": {
+          "mean": -7.298714162128879,
+          "max": -6.968526463760001,
+          "bar": -5.5
+        },
+        "prime_to_idx": {
+          "mean": -7.285232326899097,
+          "max": -6.9509083635541105,
+          "bar": -5.5
+        },
+        "prime_to_idx_rev": {
+          "mean": -7.288197113591411,
+          "max": -6.944904427804488,
+          "bar": -5.5
+        },
+        "hexchars": {
+          "mean": -7.281720920897492,
+          "max": -6.963994660528224,
+          "bar": -5.5
+        },
+        "hexchars_rev": {
+          "mean": -7.2776847786380605,
+          "max": -6.928318733208906,
+          "bar": -5.5
+        }
+      },
+      "best": {
+        "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+        "variant": "hi_nibble_rev",
+        "sign": -1,
+        "offset": 1734200,
+        "pre": -1.318195104598999,
+        "score": -6.869042509233208,
+        "head": "FEAGORTYANDWINGEHOABOLEAFENTTHGNGOHCHPNGEAJFCEAFITHYPEOGFFEANHPO",
+        "null_max": -6.96298560648568,
+        "bar": -5.5
+      },
+      "n_hits": 0,
+      "hits": [],
+      "top": [
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "hi_nibble_rev",
+          "sign": -1,
+          "offset": 1734200,
+          "pre": -1.318195104598999,
+          "score": -6.869042509233208,
+          "head": "FEAGORTYANDWINGEHOABOLEAFENTTHGNGOHCHPNGEAJFCEAFITHYPEOGFFEANHPO",
+          "null_max": -6.96298560648568,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "hi_nibble_rev",
+          "sign": 1,
+          "offset": 2391355,
+          "pre": -1.3820589780807495,
+          "score": -6.881547816370679,
+          "head": "TMORWUPTHEFATHETALROPOERNGNAFEOMGDAEEOJEATBOPMPOEASRSOEOTERHWRIA",
+          "null_max": -6.96298560648568,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "lo_nibble_rev",
+          "sign": 1,
+          "offset": 2244386,
+          "pre": -1.3297561407089233,
+          "score": -6.891080812373687,
+          "head": "UEOLOWOOTHEHORWNTLOOBGODIDOHTHFEANGAEUTDYNBOSESILEAPDBIORCMFOMDE",
+          "null_max": -6.95305885538373,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 3298254,
+          "pre": -1.3513870239257812,
+          "score": -6.897869431471437,
+          "head": "YPRILOWHEGEAOEEEOAEIRTHPEARTBMRNGAEIABAETMATHEOFWTBEOYITHOEYPEOS",
+          "null_max": -7.03253745792308,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 3298101,
+          "pre": -1.4115986824035645,
+          "score": -6.9206632921409215,
+          "head": "EAILEDHAPEHOTSJUOEEAFSFINTOBIAYOEWHSLPSSOETOETHIAUEAYMYIACNGWNET",
+          "null_max": -7.031690861528235,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "mod29_rev",
+          "sign": -1,
+          "offset": 3251163,
+          "pre": -1.4305862188339233,
+          "score": -6.9310551403794145,
+          "head": "XSJAHOTJERISSTOSEAEAEOSAEEFUNNIAMNEDUFFAUSMOEHCOLFNGDYTEAITRBFST",
+          "null_max": -6.9978522654584046,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "byte_scaled_rev",
+          "sign": 1,
+          "offset": 3179211,
+          "pre": -1.4157885313034058,
+          "score": -6.952588998489092,
+          "head": "LOCOMSTRAGAEAWAMSNOIMLEOLNIOETHFONJRANCUPNUGLIAIFNUUMATHMDJJOSAJ",
+          "null_max": -6.968526463760001,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "mod29",
+          "sign": 1,
+          "offset": 2364636,
+          "pre": -1.374752163887024,
+          "score": -6.958533673222689,
+          "head": "ABESLARTJEBENGEXAMITEWEATHIINGJPJSMBTSITGXAEOERGFCTGLFAEEOBXCWPE",
+          "null_max": -7.027457385476473,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 2411553,
+          "pre": -1.4177573919296265,
+          "score": -6.9707387749775735,
+          "head": "AEIYHIMWIDOTHIAJGEOITHINGTHEARSEEBAEYOEADCEGNTJDATEAMYIAJBUOEHXL",
+          "null_max": -7.03253745792308,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "mod29_rev",
+          "sign": -1,
+          "offset": 1700381,
+          "pre": -1.3537732362747192,
+          "score": -6.971450162368884,
+          "head": "EAEAAEBPIEWCOULLUTHGSTAIDLYAIAXNEOAJAEIAUTEDGEEATJEAOGRLMIAUNGPP",
+          "null_max": -6.9978522654584046,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "hi_nibble",
+          "sign": -1,
+          "offset": 3270977,
+          "pre": -1.4266057014465332,
+          "score": -6.97188360701369,
+          "head": "PROMFEYEGSWILDCAPTHPIAHTHOPUNLUTIAIABTWNGOIAAARYTUIYGRAENXUCLEOP",
+          "null_max": -7.03253745792308,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "mod29_rev",
+          "sign": -1,
+          "offset": 205031,
+          "pre": -1.4087411165237427,
+          "score": -6.975578232546272,
+          "head": "NWHASULTHYNALFETEALRYWRAGORRPWEAEUOEACTOEXIAJFTOGIAHCHAEMDSRYNGS",
+          "null_max": -6.9978522654584046,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "mod29_rev",
+          "sign": 1,
+          "offset": 1457737,
+          "pre": -1.4200321435928345,
+          "score": -6.977167908466717,
+          "head": "EYSOFOREARAIMHEAWDOTURIDEBEAYEOUGTUXFIAIAPFEIEAANONGHCWYSNUIARNM",
+          "null_max": -6.9978522654584046,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 2924370,
+          "pre": -1.4372656345367432,
+          "score": -6.978546482254052,
+          "head": "ORETARSCOMILIAJAEUDEROWWUWGTHWUGTHFNGDSAEIATMPYAPTEATHEARBOEMGPY",
+          "null_max": -7.031690861528235,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 1367909,
+          "pre": -1.4106146097183228,
+          "score": -6.979811360002039,
+          "head": "ANTUODSEALOULLACHOREORLONUNGIBDIAEPCAEEOFTHBNGHRSXIABTTHAESNGOEA",
+          "null_max": -7.027457385476473,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "lo_nibble_rev",
+          "sign": 1,
+          "offset": 3041011,
+          "pre": -1.405571460723877,
+          "score": -6.980342313814529,
+          "head": "EABESTFOFAULGESBINTHEFPEOTHIUNFTHAYTXTHCAGPMJDMAPPAEXTPCNTHIAFOE",
+          "null_max": -6.95305885538373,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "lo_nibble_rev",
+          "sign": 1,
+          "offset": 713391,
+          "pre": -1.3320603370666504,
+          "score": -6.9824444322085615,
+          "head": "LPRONGAENOUURFISBERCSWHITHETHPNGTHYAETJOETTYIJNEOAENCMEATYETHICR",
+          "null_max": -6.95305885538373,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 2805875,
+          "pre": -1.386751651763916,
+          "score": -6.982770501561804,
+          "head": "LIDSILIAJEAORAHOLINFLOREINGUSFIAEWXAEIATLIANJRMASHAEAEOENGEOIROE",
+          "null_max": -7.03253745792308,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "hi_nibble_rev",
+          "sign": -1,
+          "offset": 999354,
+          "pre": -1.3891867399215698,
+          "score": -6.98358570022599,
+          "head": "IEARATHEBYFASHOUNLAMNBYGEAUXTHGOERBNFPAEDEAENURIEASNIEARTHEANGIM",
+          "null_max": -6.96298560648568,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-10-12.bin",
+          "variant": "prime_to_idx",
+          "sign": 1,
+          "offset": 3138565,
+          "pre": -1.4159533977508545,
+          "score": -6.983852817810934,
+          "head": "WTIAIXMINSTAEDEDLINSTJESTSGIEBAECJUGWNGIEACAOETMEADRWIFEEAAEAUWC",
+          "null_max": -6.9509083635541105,
+          "bar": -5.5
+        }
+      ],
+      "verdict": "NEGATIVE"
+    },
+    {
+      "pad": "pad_randomorg_2013-09_2013-11.bin",
+      "bytes": 95420416,
+      "sha256": "7e267471b27e9cfc5d62c42e627fea9ebebef9062c5f1bca388d8f07712bc334",
+      "builders": [
+        "mod29",
+        "hi_nibble",
+        "lo_nibble",
+        "byte_scaled",
+        "prime_to_idx"
+      ],
+      "signs": [
+        -1,
+        1
+      ],
+      "directions": [
+        "fwd",
+        "rev"
+      ],
+      "coverage": {
+        "configs": 20,
+        "offsets_scanned": 1908407840,
+        "survival_rate": 0.625,
+        "effective_offsets": 1192754900,
+        "beam_escalations": 800
+      },
+      "nulls": {
+        "mod29": {
+          "mean": -7.306702493907617,
+          "max": -6.996435085411327,
+          "bar": -5.5
+        },
+        "mod29_rev": {
+          "mean": -7.290455700180119,
+          "max": -6.957645542687917,
+          "bar": -5.5
+        },
+        "hi_nibble": {
+          "mean": -7.298720013826191,
+          "max": -7.029508754421113,
+          "bar": -5.5
+        },
+        "hi_nibble_rev": {
+          "mean": -7.322335581254131,
+          "max": -7.039867959674142,
+          "bar": -5.5
+        },
+        "lo_nibble": {
+          "mean": -7.3114241147201,
+          "max": -6.996438882753162,
+          "bar": -5.5
+        },
+        "lo_nibble_rev": {
+          "mean": -7.296737028181463,
+          "max": -7.004188457638457,
+          "bar": -5.5
+        },
+        "byte_scaled": {
+          "mean": -7.285198207355552,
+          "max": -6.988557212188171,
+          "bar": -5.5
+        },
+        "byte_scaled_rev": {
+          "mean": -7.296904142025392,
+          "max": -6.9872224306910296,
+          "bar": -5.5
+        },
+        "prime_to_idx": {
+          "mean": -7.301703926846005,
+          "max": -6.98926453740097,
+          "bar": -5.5
+        },
+        "prime_to_idx_rev": {
+          "mean": -7.295940896000502,
+          "max": -6.96911857770039,
+          "bar": -5.5
+        }
+      },
+      "best": {
+        "pad": "pad_randomorg_2013-09_2013-11.bin",
+        "variant": "mod29_rev",
+        "sign": -1,
+        "offset": 68875671,
+        "pre": -1.2518295049667358,
+        "score": -6.810640700106527,
+        "head": "EONGEADARTSOLAMALROSTISHHOFNTHEOIABMOEPATHAEJEAEATWWEEAAEODIAPNG",
+        "null_max": -6.957645542687917,
+        "bar": -5.5
+      },
+      "n_hits": 0,
+      "hits": [],
+      "top": [
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "mod29_rev",
+          "sign": -1,
+          "offset": 68875671,
+          "pre": -1.2518295049667358,
+          "score": -6.810640700106527,
+          "head": "EONGEADARTSOLAMALROSTISHHOFNTHEOIABMOEPATHAEJEAEATWWEEAAEODIAPNG",
+          "null_max": -6.957645542687917,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "mod29_rev",
+          "sign": -1,
+          "offset": 23638891,
+          "pre": -1.2601428031921387,
+          "score": -6.850203803928198,
+          "head": "OTSCAMARYSENREATSOSOETILDMUANUIWMMGIRYPEONCAETIAEAOEGEAYTEALBAWO",
+          "null_max": -6.957645542687917,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "lo_nibble_rev",
+          "sign": 1,
+          "offset": 78955639,
+          "pre": -1.2845466136932373,
+          "score": -6.862412294749375,
+          "head": "NGXUCHFOUSGREALPSLUCEYRISNDIYFAERPEOFEOSRIINSMPWAAEMSDREAFEANGFO",
+          "null_max": -7.004188457638457,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "mod29_rev",
+          "sign": 1,
+          "offset": 80240950,
+          "pre": -1.2291970252990723,
+          "score": -6.881070275124376,
+          "head": "OEFROLENTNETHSMOTWATTHYLAITTHBUERPEANIHAEOEJSJEARSJIANJCMBSEXIDN",
+          "null_max": -6.957645542687917,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "mod29_rev",
+          "sign": -1,
+          "offset": 89419001,
+          "pre": -1.2776869535446167,
+          "score": -6.888768358631462,
+          "head": "UGHTETHNORTHSFHINGAPULTENSBLOTATUBIJIJUENTHIASFEOANAENYTTHSJGAEL",
+          "null_max": -6.957645542687917,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "byte_scaled_rev",
+          "sign": -1,
+          "offset": 23696917,
+          "pre": -1.297942876815796,
+          "score": -6.901439522265821,
+          "head": "LREATBECLEAPIAFORSTHBITCHYSWILTHEABFFBBLANAEPNGDRFAHEAGDUTHFEOPG",
+          "null_max": -6.9872224306910296,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "byte_scaled_rev",
+          "sign": -1,
+          "offset": 78813713,
+          "pre": -1.2483553886413574,
+          "score": -6.90686927920679,
+          "head": "LTMUNDTHYBANNELLTIFAPOTSHOETHCSLNNGBAEAIAEOFTHPIEANGXTHAMEIAEINI",
+          "null_max": -6.9872224306910296,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "prime_to_idx_rev",
+          "sign": -1,
+          "offset": 26059287,
+          "pre": -1.1567472219467163,
+          "score": -6.911278605513563,
+          "head": "NWENWEALLETRETHTOLDWOMANGONGAEMIABEOEFRGAEAEAEOTHYXUIAUNCTHMORJT",
+          "null_max": -6.96911857770039,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 93892452,
+          "pre": -1.1824910640716553,
+          "score": -6.926590805706582,
+          "head": "LJANSLISANDUENTSHINGGEONSDNGIIATHFFIALCXEIXPBHEADJAOEBIASTIATHNL",
+          "null_max": -7.029508754421113,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "byte_scaled_rev",
+          "sign": -1,
+          "offset": 28243178,
+          "pre": -1.2897814512252808,
+          "score": -6.926947680459328,
+          "head": "NGNGPSOUTHEYABSNOWERNUNOCOLBEAPRBTATNCSOEUNGRUOEGBXADEASGEOOEDUN",
+          "null_max": -6.9872224306910296,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 26213790,
+          "pre": -1.2906737327575684,
+          "score": -6.928853511152515,
+          "head": "OEOEFINLINEWRAWNSWORNGCOMILMNEASHNGIUIXAENGEXLIADOPEANGYAEXTHDRS",
+          "null_max": -7.029508754421113,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 38154883,
+          "pre": -1.2754889726638794,
+          "score": -6.931002184816875,
+          "head": "TOEEOAEIYAETAGANDYSEYROOCWHOLATHYAEHPEATAINIATHMMUIANDDIOEYEOMGI",
+          "null_max": -6.988557212188171,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "lo_nibble",
+          "sign": 1,
+          "offset": 82551953,
+          "pre": -1.2815806865692139,
+          "score": -6.9367606704926,
+          "head": "BHOSENGINUNOTHERYIFOLCWEXTDMEAYSEAMEONGPNGHTISTEAAHLYEOELHTHAEWO",
+          "null_max": -6.996438882753162,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "prime_to_idx",
+          "sign": -1,
+          "offset": 89384872,
+          "pre": -1.3014527559280396,
+          "score": -6.94098628664744,
+          "head": "IARLEADEMEWTOARIUILDRENWIAPEOBTHEASCYDXEAANHNEOTHUIPYAETEOAEMREO",
+          "null_max": -6.98926453740097,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 10626345,
+          "pre": -1.2562495470046997,
+          "score": -6.954880505675185,
+          "head": "AOFMHEITHATNOFSTEARULSTARIIAAEAENGIAHPDEAEOSEAXBYDEOTHBOEADIIAOU",
+          "null_max": -6.996435085411327,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "prime_to_idx_rev",
+          "sign": -1,
+          "offset": 38797214,
+          "pre": -1.2889423370361328,
+          "score": -6.955707180689864,
+          "head": "CRORTCANDSETHGLAGAUOUTHUAOIDOXWOCLSABWPLIASHAESMTHCEAEAAUEAYRADL",
+          "null_max": -6.96911857770039,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "lo_nibble_rev",
+          "sign": -1,
+          "offset": 65906018,
+          "pre": -1.3037453889846802,
+          "score": -6.956952419556011,
+          "head": "OTHPOLIMMISHIFTYADSONEOTHABUNOEWMEOFPBUEAOLIAHFLFTYIAHEAMHMHITHE",
+          "null_max": -7.004188457638457,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "byte_scaled_rev",
+          "sign": 1,
+          "offset": 63250803,
+          "pre": -1.2879477739334106,
+          "score": -6.959299438849326,
+          "head": "PXEXCIWINGBRAHWERYLESSIAOETSLORTCAEYGHUIABEOBNATHEOIAAOERNAESROB",
+          "null_max": -6.9872224306910296,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "mod29_rev",
+          "sign": 1,
+          "offset": 16354799,
+          "pre": -1.292480230331421,
+          "score": -6.959703841118416,
+          "head": "IAEOXNALISESCEOEONATOSTSALCOXFRRYWOEDHEPDOBMNOAEOEANGERNGONGCGUE",
+          "null_max": -6.957645542687917,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-09_2013-11.bin",
+          "variant": "mod29",
+          "sign": 1,
+          "offset": 3657942,
+          "pre": -1.306183934211731,
+          "score": -6.963390302771034,
+          "head": "ISINNOEANIAPUYTOEYOEFSEAHAAEHBYIMERTWOPRAEEANRISESMFEAPTHPTHROEI",
+          "null_max": -6.996435085411327,
+          "bar": -5.5
+        }
+      ],
+      "verdict": "NEGATIVE"
+    },
+    {
+      "pad": "pad_randomorg_2013-12_2014-01.bin",
+      "bytes": 65011712,
+      "sha256": "03de9a638e80168b03364980219f0b30bf2f329ee0cb82b669aeb5896d065458",
+      "builders": [
+        "mod29",
+        "hi_nibble",
+        "lo_nibble",
+        "byte_scaled",
+        "prime_to_idx"
+      ],
+      "signs": [
+        -1,
+        1
+      ],
+      "directions": [
+        "fwd",
+        "rev"
+      ],
+      "coverage": {
+        "configs": 20,
+        "offsets_scanned": 1300233760,
+        "survival_rate": 0.625,
+        "effective_offsets": 812646100,
+        "beam_escalations": 800
+      },
+      "nulls": {
+        "mod29": {
+          "mean": -7.295385711591926,
+          "max": -6.952942460909906,
+          "bar": -5.5
+        },
+        "mod29_rev": {
+          "mean": -7.287192326641,
+          "max": -6.9509415988994805,
+          "bar": -5.5
+        },
+        "hi_nibble": {
+          "mean": -7.300391968387238,
+          "max": -6.9725841318992545,
+          "bar": -5.5
+        },
+        "hi_nibble_rev": {
+          "mean": -7.299625911619361,
+          "max": -7.0234923166940275,
+          "bar": -5.5
+        },
+        "lo_nibble": {
+          "mean": -7.319839285240148,
+          "max": -6.973205267543068,
+          "bar": -5.5
+        },
+        "lo_nibble_rev": {
+          "mean": -7.302623805503567,
+          "max": -7.011977240014156,
+          "bar": -5.5
+        },
+        "byte_scaled": {
+          "mean": -7.301759779210522,
+          "max": -7.011859999072191,
+          "bar": -5.5
+        },
+        "byte_scaled_rev": {
+          "mean": -7.297944281475775,
+          "max": -6.932766806444661,
+          "bar": -5.5
+        },
+        "prime_to_idx": {
+          "mean": -7.279196826695565,
+          "max": -6.973856803820747,
+          "bar": -5.5
+        },
+        "prime_to_idx_rev": {
+          "mean": -7.285485600057812,
+          "max": -6.911547267228567,
+          "bar": -5.5
+        }
+      },
+      "best": {
+        "pad": "pad_randomorg_2013-12_2014-01.bin",
+        "variant": "byte_scaled_rev",
+        "sign": 1,
+        "offset": 28669483,
+        "pre": -1.2972135543823242,
+        "score": -6.829969463985132,
+        "head": "UOEOELEIUCHIMIRRESHNEOUSAMEAIATHNOESEOEATHPDAFFOWTHOTJPLEYTHTHTH",
+        "null_max": -6.932766806444661,
+        "bar": -5.5
+      },
+      "n_hits": 0,
+      "hits": [],
+      "top": [
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "byte_scaled_rev",
+          "sign": 1,
+          "offset": 28669483,
+          "pre": -1.2972135543823242,
+          "score": -6.829969463985132,
+          "head": "UOEOELEIUCHIMIRRESHNEOUSAMEAIATHNOESEOEATHPDAFFOWTHOTJPLEYTHTHTH",
+          "null_max": -6.932766806444661,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "hi_nibble_rev",
+          "sign": -1,
+          "offset": 26072284,
+          "pre": -1.3286079168319702,
+          "score": -6.869481118196837,
+          "head": "UOILAGEBOLEOLONGOYEMOLONTOHAPAONGEOWLUNIFEALIACIAEIAGACIANGBJPXP",
+          "null_max": -7.0234923166940275,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "byte_scaled_rev",
+          "sign": 1,
+          "offset": 34931352,
+          "pre": -1.223577618598938,
+          "score": -6.878377116965699,
+          "head": "ONLINHEAWHAPIEFERYSTASTHNLBFWOEWSSXTEIAILAFHTHNGUEOEEALNGJNLHBRM",
+          "null_max": -6.932766806444661,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 5768773,
+          "pre": -1.325200080871582,
+          "score": -6.878539093186185,
+          "head": "YOEEOTHEABHINGGITESAUSAPONCNONGUEARTHNGDHANPEAEYEANJOEPRIAEESIAE",
+          "null_max": -6.952942460909906,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "prime_to_idx_rev",
+          "sign": -1,
+          "offset": 57622389,
+          "pre": -1.3143463134765625,
+          "score": -6.890570119673195,
+          "head": "NGEDLEALEIAFSWILLMEOFSIXINEDPCBSIIATHTTHMNGFPOENGMEOBCEAWYAEFOEA",
+          "null_max": -6.911547267228567,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "prime_to_idx_rev",
+          "sign": -1,
+          "offset": 10738679,
+          "pre": -1.3042824268341064,
+          "score": -6.899039782985022,
+          "head": "PYSATWOECOEXIMAFEGREMBEEAGCEOLEAHEAGSWGIASLGUTOROEOEDOENNDTLOOEE",
+          "null_max": -6.911547267228567,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "mod29_rev",
+          "sign": -1,
+          "offset": 51660215,
+          "pre": -1.2276182174682617,
+          "score": -6.910951599048231,
+          "head": "AEERINGLERXDHEOTHOSETHERWASWOPDLYMWMRGTXCSNAJOPTGIATCEROSTJMLEOD",
+          "null_max": -6.9509415988994805,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "lo_nibble_rev",
+          "sign": 1,
+          "offset": 33497592,
+          "pre": -1.2790600061416626,
+          "score": -6.914315017444969,
+          "head": "MSETILICANEACNSOESTHINGTHEMITAEPONAYABEAHIRJDTHNOEPGSLPYOEGCRCSA",
+          "null_max": -7.011977240014156,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "lo_nibble",
+          "sign": -1,
+          "offset": 35659354,
+          "pre": -1.3132327795028687,
+          "score": -6.916106336037648,
+          "head": "REACARPANGTHATBRUIAJERINGTHEGITHJMWBWUBURDAEAIAOETHNEOCCAEYCESTP",
+          "null_max": -6.973205267543068,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 61169276,
+          "pre": -1.3105605840682983,
+          "score": -6.93648466603754,
+          "head": "XYITHIPOUTHECTAENOEJUDEEUNTBEORXEOGMCXNGPGGIOETHBRIHJUFYDEAEOLLA",
+          "null_max": -6.952942460909906,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 36870523,
+          "pre": -1.2543212175369263,
+          "score": -6.949011277926077,
+          "head": "AEWAEJJNGEOOEOETSMEWORENBEGIREOTNSEAGOIDDWOEXMNGXLXCUNTHIAEOCEYF",
+          "null_max": -6.952942460909906,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "mod29_rev",
+          "sign": 1,
+          "offset": 40836900,
+          "pre": -1.3080880641937256,
+          "score": -6.950670089085818,
+          "head": "ITJOSTSPATHANYSUMTHEOULANIAILAEXJRBSPMJMFRXFTNTHHDNRLOIEANIUCNER",
+          "null_max": -6.9509415988994805,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "prime_to_idx_rev",
+          "sign": -1,
+          "offset": 63579869,
+          "pre": -1.3190476894378662,
+          "score": -6.9541547567164095,
+          "head": "FIAOOEXAEIDONADOULWETHWARROSEOPTSBEASONGDMJEABTHYJACOUPNGUWEANGA",
+          "null_max": -6.911547267228567,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "prime_to_idx_rev",
+          "sign": -1,
+          "offset": 17210594,
+          "pre": -1.2895302772521973,
+          "score": -6.959326090532453,
+          "head": "MUPONTTATJOLYATUDRIPPEALLBIGXXMGEOBSBLDOTYRNGTHYALIAAFIAYBXJEAND",
+          "null_max": -6.911547267228567,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "byte_scaled",
+          "sign": 1,
+          "offset": 45272915,
+          "pre": -1.2426573038101196,
+          "score": -6.96273816717143,
+          "head": "UMEPUMOWEGADOTHEENTOHEARDOYTAEGLEOCRIEOAEMLHFIANGJXDGTABIDNTHCOE",
+          "null_max": -7.011859999072191,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "mod29",
+          "sign": -1,
+          "offset": 40356634,
+          "pre": -1.3070272207260132,
+          "score": -6.963526494506468,
+          "head": "HOEARLOFLEEOUDGIRBGIUESTTHOSTIAIEOENLOEABNGITHTELWSSUWEIAGEARAWL",
+          "null_max": -6.952942460909906,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "hi_nibble_rev",
+          "sign": 1,
+          "offset": 52127339,
+          "pre": -1.3109818696975708,
+          "score": -6.967239989199979,
+          "head": "FEMITURSLEARIAWHEHURTIANAIDFTYOLEADTEACTONGEIJAEEOFMIAEENGCIRWNG",
+          "null_max": -7.0234923166940275,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "lo_nibble",
+          "sign": 1,
+          "offset": 14771416,
+          "pre": -1.2880547046661377,
+          "score": -6.968537776622977,
+          "head": "TNEBERPOLGODENPINCEUNJGNDWBTHBTHTACPXIANMRNGANOOEOMIAPXIAGOELEAA",
+          "null_max": -6.973205267543068,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "hi_nibble",
+          "sign": 1,
+          "offset": 47870912,
+          "pre": -1.2308340072631836,
+          "score": -6.973555397981073,
+          "head": "AEJOESSONOLFORNOLENCSEASTIEELAEAEAIAIEATHPONSIEODEOTHDYXAATITHEA",
+          "null_max": -6.9725841318992545,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_randomorg_2013-12_2014-01.bin",
+          "variant": "prime_to_idx_rev",
+          "sign": -1,
+          "offset": 59209501,
+          "pre": -1.3210808038711548,
+          "score": -6.9754561157739525,
+          "head": "GHOIACTSNONERSFOLEAFAGROPEOEOEMLAETBIANAUBAERTUEALWOEOEEOEAUHEOS",
+          "null_max": -6.911547267228567,
+          "bar": -5.5
+        }
+      ],
+      "verdict": "NEGATIVE"
+    },
+    {
+      "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+      "bytes": 6391104,
+      "sha256": "80c416ce93df6dbbd28183fac6fcfba96aaad6a53ee2b3e4b4678a8a56c613e9",
+      "partial_pad": false,
+      "builders": [
+        "nibbles"
+      ],
+      "signs": [
+        1,
+        -1
+      ],
+      "directions": [
+        "fwd",
+        "rev"
+      ],
+      "nulls": {
+        "nibbles": {
+          "mean": -7.308478002587995,
+          "max": -7.020450860297709,
+          "bar": -5.5
+        },
+        "nibbles_rev": {
+          "mean": -7.308798870815142,
+          "max": -6.760353832502805,
+          "bar": -5.5
+        }
+      },
+      "top": [
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 3313003,
+          "pre": -1.365695595741272,
+          "score": -6.852822121452882,
+          "head": "APEEOTCONAUOEAEPREWORTANITSATTHEAAEANGPFTHLTHPEONXAEBIAMDNGEACAE",
+          "null_max": -7.020450860297709,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": -1,
+          "offset": 7561392,
+          "pre": -1.372278094291687,
+          "score": -6.863850192608921,
+          "head": "ODRAUSEYSANIIAAEJFXAREENDAWCGDRMEAIASAEOAEAUYTHOIAMEAEOOCCADEEOF",
+          "null_max": -7.020450860297709,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": 1,
+          "offset": 4568003,
+          "pre": -1.3630009889602661,
+          "score": -6.886298375185933,
+          "head": "BLONSDIHEGETHENDMRITTHINGWDAMFUSAIAEOAUDNMEOOOEYSGNGBETBCFCEODOE",
+          "null_max": -6.760353832502805,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": -1,
+          "offset": 7408883,
+          "pre": -1.284345030784607,
+          "score": -6.909209728444359,
+          "head": "EORHEARSPEASATICYHODYITLYAGCDEOPNNFIHBNEIAYDDXRAFEODFOOEJJSUGTFW",
+          "null_max": -6.760353832502805,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": -1,
+          "offset": 6398681,
+          "pre": -1.3653889894485474,
+          "score": -6.949765511788807,
+          "head": "JEASETHEMARDPELUNTHESNOEMAEUREUJNGJPIAEAIAEUXAEIAUOEWYTWEOYOFUBW",
+          "null_max": -7.020450860297709,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 4150387,
+          "pre": -1.350136160850525,
+          "score": -6.9595471462451775,
+          "head": "IAMEPECHREINGGIRATUNLYPOEXEORMIAOIAROETAEOXONISBYSODAEOXBHWYFMON",
+          "null_max": -7.020450860297709,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": 1,
+          "offset": 6543307,
+          "pre": -1.2188868522644043,
+          "score": -6.994978541018158,
+          "head": "TXAEPHYHISUARESASJOLDEENJUOETHAEEAAEXDOSIETEOLDPEANGIAOEBYXTHAYB",
+          "null_max": -6.760353832502805,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": -1,
+          "offset": 8448241,
+          "pre": -1.3735852241516113,
+          "score": -6.998878700983918,
+          "head": "XIARFAMELUESPMAENTHESUBARYRWDNNGENEATBIAAELFTHOSGBIAEOTHTHHEMLEW",
+          "null_max": -7.020450860297709,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": -1,
+          "offset": 6329588,
+          "pre": -1.3352786302566528,
+          "score": -7.000068519900281,
+          "head": "OTHEMTHINGTOLREMYHUABOXMULFJWTHSPITHNMUAEPRAMFIUYUEOGTHEAAXLAECS",
+          "null_max": -6.760353832502805,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 9161955,
+          "pre": -1.3620811700820923,
+          "score": -7.006530502132493,
+          "head": "BNYOMYCOMFOOTWAININGDHEPNGEAXLCFHLETHUSNNEXXOEXEAANGXLSXTHFEAYEA",
+          "null_max": -7.020450860297709,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": -1,
+          "offset": 11377748,
+          "pre": -1.33792245388031,
+          "score": -7.012498863415169,
+          "head": "IAEEOMOESNGIAPDITTHENDITWITHTHAEIAWTHBEOEOPJFBDTHEGIAUEOIATITHUW",
+          "null_max": -7.020450860297709,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": 1,
+          "offset": 5593111,
+          "pre": -1.3322936296463013,
+          "score": -7.0374526097954435,
+          "head": "DOEFXNGAEIAIYGRAWIDNONSORTTHAEAPEUBOEYXASEOGJBPBYMHOEDTPERCWHFOE",
+          "null_max": -6.760353832502805,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 6774801,
+          "pre": -1.3637311458587646,
+          "score": -7.037474103074266,
+          "head": "SIMGLORSUGNGUNTSSIPLIARIBEDJAEWSADNGIATBEABARSESHIAUOELEOJEADFTO",
+          "null_max": -7.020450860297709,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 7084103,
+          "pre": -1.3620988130569458,
+          "score": -7.055395711112242,
+          "head": "EANGNGXNYCNECRYGTEENIMANINEDJDFNGIAIALDNBUEOBNHUNGHLMOEIATWIOEWE",
+          "null_max": -7.020450860297709,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 10339423,
+          "pre": -1.3391778469085693,
+          "score": -7.058950738331027,
+          "head": "OEXAEJNGAETHPLEADTHITEMINJTHWINEIAHOEIAEAFOEOEIAHLNHOEHIELFBEAPX",
+          "null_max": -7.020450860297709,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": 1,
+          "offset": 1807948,
+          "pre": -1.3724160194396973,
+          "score": -7.065467455525396,
+          "head": "EAITHEWOOCMREAANSTMYUEYWITBYHMEAOEAPTGGOETHLBJNYBHAEDOETOEWUNGOE",
+          "null_max": -6.760353832502805,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": -1,
+          "offset": 12780176,
+          "pre": -1.3849222660064697,
+          "score": -7.073087423551687,
+          "head": "UAENAECSAYSSTLOMOABERNEUDHNIAIMRJONPNGAEGAEADSGIAFRTHEAOOEDEOYHT",
+          "null_max": -6.760353832502805,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 354643,
+          "pre": -1.3609367609024048,
+          "score": -7.0789573683432625,
+          "head": "IASURTAFFLEAUOECTALOSEANBRPLNDODOEXBDNBHEEOGLEAMEADOITETHIAGOXFT",
+          "null_max": -7.020450860297709,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 12182681,
+          "pre": -1.3568594455718994,
+          "score": -7.081561542608494,
+          "head": "BJEATELEASTRDOESOMPEASECHEWEYHOUMGBDDUPWNGETHBMNGOPOELYBCUNGGMTH",
+          "null_max": -7.020450860297709,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": -1,
+          "offset": 12393203,
+          "pre": -1.3867465257644653,
+          "score": -7.086801660263435,
+          "head": "UYEACELTPERLFTFALMUTOHDUPOXJCNUFTBEAXOEATUTHCSEOXURAENGBWJTHOIWR",
+          "null_max": -6.760353832502805,
+          "bar": -5.5
+        }
+      ],
+      "hits": [],
+      "coverage": {
+        "configs": 4,
+        "offsets_scanned": 51128736,
+        "survival_rate": 0.625,
+        "effective_offsets": 31955460,
+        "beam_escalations": 160
+      },
+      "assembled_from_parts": 4,
+      "best": {
+        "pad": "pad_outputValue_2013-09-05_2013-11-14.bin",
+        "variant": "nibbles",
+        "sign": 1,
+        "offset": 3313003,
+        "pre": -1.365695595741272,
+        "score": -6.852822121452882,
+        "head": "APEEOTCONAUOEAEPREWORTANITSATTHEAAEANGPFTHLTHPEONXAEBIAMDNGEACAE",
+        "null_max": -7.020450860297709,
+        "bar": -5.5
+      },
+      "n_hits": 0,
+      "verdict": "NEGATIVE"
+    },
+    {
+      "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+      "bytes": 6391104,
+      "sha256": "c6548ce8b5165a953c51cf11de40ddc1ba8c779efca31315e011de24d40a1553",
+      "partial_pad": false,
+      "builders": [
+        "nibbles"
+      ],
+      "signs": [
+        1,
+        -1
+      ],
+      "directions": [
+        "fwd",
+        "rev"
+      ],
+      "nulls": {
+        "nibbles": {
+          "mean": -7.306905081477209,
+          "max": -6.962133714638655,
+          "bar": -5.5
+        },
+        "nibbles_rev": {
+          "mean": -7.295384123820247,
+          "max": -6.930635373231737,
+          "bar": -5.5
+        }
+      },
+      "top": [
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": 1,
+          "offset": 1025395,
+          "pre": -1.34360933303833,
+          "score": -6.926435807548852,
+          "head": "YJUXWURCLEATHOSTYSHISURNILUHTHFSUEONGCXIOMSTBEAPPSELSEONRIAWNGEA",
+          "null_max": -6.930635373231737,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 4419655,
+          "pre": -1.3074582815170288,
+          "score": -6.953922389482001,
+          "head": "YLEANWRINDREOLHABEASBUSITIEATAEUBDPSGSIYESXMYARBYABYOCDCEAUHSONW",
+          "null_max": -6.962133714638655,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 3673499,
+          "pre": -1.2485110759735107,
+          "score": -6.977891709422709,
+          "head": "EANGEAXBOEIARYFADENTLICEDSINPEAILWBDLEOPMYBAXOEFPTHAELBTJEOYFGDU",
+          "null_max": -6.962133714638655,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": 1,
+          "offset": 8744306,
+          "pre": -1.3101645708084106,
+          "score": -6.979528673099227,
+          "head": "TOEAEOXNGEAGERMEATNELFSEYBEGNETETHYFBEAWTJNGLOEOBPEAXNGTELJHFEON",
+          "null_max": -6.930635373231737,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 3062308,
+          "pre": -1.2887380123138428,
+          "score": -6.99552351169693,
+          "head": "UNGNGINAGILREACEBYLIANTOPEOODTHBLIAUASEODONUMXWIUIGYEAMBTTHAEDFA",
+          "null_max": -6.962133714638655,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": 1,
+          "offset": 9206236,
+          "pre": -1.3231594562530518,
+          "score": -6.996087729603515,
+          "head": "MOEDNEFURSHYUNILSOUDONTOSEWEHFFNGLORBYIEONTFDEABAETPPTGGTHOELOPF",
+          "null_max": -6.930635373231737,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 1982068,
+          "pre": -1.3029698133468628,
+          "score": -7.0198511562781905,
+          "head": "YNAWHOGSEATHYTHISTSCULANEBEREOFCSDLXDSEIANXPJMXCDFAMNGXAOEYLDHAY",
+          "null_max": -6.962133714638655,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": -1,
+          "offset": 5029720,
+          "pre": -1.3017990589141846,
+          "score": -7.020907658599675,
+          "head": "PAEGDURAYPASTOAGRADOLEFEOHWJNREOEOIEOLEABUAYWOHSEAGEAGWNGMLJHWTI",
+          "null_max": -6.962133714638655,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": -1,
+          "offset": 136444,
+          "pre": -1.385325312614441,
+          "score": -7.023715705149313,
+          "head": "NGEFUGLOERSISRAEJOSEHMANDTHWIARSPTEATHBLWSLRFRHOSGTHRNMEOGYRPNGR",
+          "null_max": -6.930635373231737,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": 1,
+          "offset": 5719876,
+          "pre": -1.2708255052566528,
+          "score": -7.02604888660471,
+          "head": "USORHUROUHEAUERYMOSTWGATHNOPYRFOOEXFGJTHMTSJOEEOWLEASIAOECRWJLIA",
+          "null_max": -6.930635373231737,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": -1,
+          "offset": 3721731,
+          "pre": -1.2422035932540894,
+          "score": -7.028212980925653,
+          "head": "IUEDFITSTHERETHATHATMRSOAEEANBAENJTHTEATHSSEAICCEARCXNOWOFFEIERC",
+          "null_max": -6.930635373231737,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": -1,
+          "offset": 1227236,
+          "pre": -1.3739749193191528,
+          "score": -7.030125184152,
+          "head": "THAEIAEEAJETUAHWAFORDAWJANBUHTHOPFWFITYAEJIAFEATHNUENEOIAYINGSHE",
+          "null_max": -6.930635373231737,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 9223725,
+          "pre": -1.3281891345977783,
+          "score": -7.035619761829206,
+          "head": "LNGEEOWFORAOROSINGGORAYBERMUPTHFBTHLPAXANEAETHTFJCAEDNDTIAUEONGB",
+          "null_max": -6.962133714638655,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": 1,
+          "offset": 8823017,
+          "pre": -1.3260418176651,
+          "score": -7.036433937874375,
+          "head": "EOELJEFIUEOLUBTMEOTHEDWICNIALEAEFRSBOOLNJDWMLXPTIAEIAPPHOCFOEFLA",
+          "null_max": -6.930635373231737,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": 1,
+          "offset": 2820801,
+          "pre": -1.2970010042190552,
+          "score": -7.039043017968336,
+          "head": "SIEWTATHUTCEACINDTGSYDISNEAEMEOMEAYMTHUPFGMGIOTNTAILEOTHWRWNGLOY",
+          "null_max": -6.930635373231737,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": 1,
+          "offset": 11138326,
+          "pre": -1.2936022281646729,
+          "score": -7.04337537384661,
+          "head": "AEEOEAGLAEOHLIEUNCSGOISWINGSEMEOMTHNGTHPNGWUMNEAETMTHMRNGOENTNGT",
+          "null_max": -6.930635373231737,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": 1,
+          "offset": 4803125,
+          "pre": -1.348279356956482,
+          "score": -7.044137770555067,
+          "head": "NGHOPPROTHSCEDNOAWJRARENTAAEIEAHSAIAEOAEEONGUIENEOOAFPBSYEHODIAD",
+          "null_max": -6.962133714638655,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": 1,
+          "offset": 8301055,
+          "pre": -1.3209434747695923,
+          "score": -7.048210074735573,
+          "head": "EAMACWDINATHECISAIHISOONBERTFIUAEBNGOXNHHMHDFAHSDEYOEORREAFEAUTO",
+          "null_max": -6.930635373231737,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles_rev",
+          "sign": -1,
+          "offset": 1779086,
+          "pre": -1.3606297969818115,
+          "score": -7.04985291106584,
+          "head": "UUEOAMSEFPINDEAOFJACHDRARTDEOJISEARTMOOERGLUWIAMGREAFIAELMOEXWNT",
+          "null_max": -6.930635373231737,
+          "bar": -5.5
+        },
+        {
+          "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+          "variant": "nibbles",
+          "sign": -1,
+          "offset": 11968395,
+          "pre": -1.3751565217971802,
+          "score": -7.050695867703573,
+          "head": "XFELASSMODSTTHEAGAELYREBTHEAGCIPJSIIASNGEATDYAEEATHXREOUYITHBGJE",
+          "null_max": -6.962133714638655,
+          "bar": -5.5
+        }
+      ],
+      "hits": [],
+      "coverage": {
+        "configs": 4,
+        "offsets_scanned": 51128736,
+        "survival_rate": 0.625,
+        "effective_offsets": 31955460,
+        "beam_escalations": 160
+      },
+      "assembled_from_parts": 4,
+      "best": {
+        "pad": "pad_seedValue_2013-09-05_2013-11-14.bin",
+        "variant": "nibbles_rev",
+        "sign": 1,
+        "offset": 1025395,
+        "pre": -1.34360933303833,
+        "score": -6.926435807548852,
+        "head": "YJUXWURCLEATHOSTYSHISURNILUHTHFSUEONGCXIOMSTBEAPPSELSEONRIAWNGEA",
+        "null_max": -6.930635373231737,
+        "bar": -5.5
+      },
+      "n_hits": 0,
+      "verdict": "NEGATIVE"
+    }
+  ],
+  "verdict": "NEGATIVE"
+}

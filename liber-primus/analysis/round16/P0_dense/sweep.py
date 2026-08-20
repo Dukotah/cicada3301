@@ -44,10 +44,24 @@ from lib_padsweep import nc, sk                      # noqa: E402
 sys.path.insert(0, os.path.join(L.ROOT, "benchmark"))
 import null as NULLMOD                               # noqa: E402
 
-HEAD, BEAM_W, MAX_SKIP = L.HEAD, L.BEAM_W, L.MAX_SKIP
+HEAD, BEAM_W = L.HEAD, L.BEAM_W
+MAX_SKIP = L.MAX_SKIP                                # A1's 3; --max-skip overrides
 PLEN = L.PREFILTER_LEN
 WIN = HEAD * (MAX_SKIP + 1) + 8                      # key symbols one beam_decode reads
 PADDIR = os.path.join(L.ROOT, "analysis", "round12", "A1", "pads")
+CKDIR = "ckpt"                                       # per-variant checkpoints
+REUSE = None                                         # dir of ms=3 ckpts to re-escalate
+
+
+def set_max_skip(ms):
+    """A1 ran max_skip=3. Lane P1 showed 3 is underpowered on pads with long constant byte
+    runs (a constant key symbol makes a forced skip a no-op, so the filter burns several in
+    a row). This lane reports BOTH: ms=3 for comparability with A1, ms=8 as the powered
+    number. Everything downstream - the beam window, the escalation and the null - has to
+    move together, which is what this does."""
+    global MAX_SKIP, WIN
+    MAX_SKIP = ms
+    WIN = HEAD * (MAX_SKIP + 1) + 8
 
 # label -> (filename, note)
 PADS = {
@@ -142,10 +156,25 @@ def sweep_pad(label, path, C, builders, fh, keep=400, top=40):
 
     rows, cov = [], {"offsets": 0, "configs": 0, "beams": 0}
     nulls = {}
+    ckdir = os.path.join(HERE, CKDIR)
+    os.makedirs(ckdir, exist_ok=True)
     for bname in builders:
         for rev in (False, True):
             vname = bname + ("_rev" if rev else "")
             t0 = time.time()
+            # ---- per-variant checkpoint: a 118 MB pad takes ~4 min per variant, and an
+            # interrupted run must not throw away the variants it already finished.
+            ck = os.path.join(ckdir, "%s__%s.json" % (label, vname))
+            if os.path.exists(ck):
+                d = json.load(open(ck))
+                rows.extend(d["rows"])
+                nulls[vname] = d["null"]
+                cov["offsets"] += d["offsets"]
+                cov["configs"] += d["configs"]
+                cov["beams"] += d["beams"]
+                log("  %-16s [checkpoint reused]  null_max=%.3f best=%.3f"
+                    % (vname, d["null"]["max"], d["best"]), fh)
+                continue
             try:
                 K = L.BUILDERS[bname](blob[::-1] if rev else blob)
             except MemoryError:
@@ -159,19 +188,43 @@ def sweep_pad(label, path, C, builders, fh, keep=400, top=40):
             bar = L.hit_bar(nmax)
             nulls[vname] = {"mean": nmean, "max": nmax, "bar": bar}
             n_off = max(0, len(K) - PLEN)
+            vrows, vbeams = [], 0
+            # `dense_scan` is a RIGID trigram prefilter: it has no max_skip parameter, so
+            # its survivor set is bit-identical at any skip budget. When re-running a pad at
+            # a different max_skip we therefore reuse the offsets an earlier pass already
+            # found instead of paying ~4 min/variant to recompute the same list.
+            reuse = None
+            if REUSE:
+                rp = os.path.join(HERE, REUSE, "%s__%s.json" % (label, vname))
+                if os.path.exists(rp):
+                    d0 = json.load(open(rp))
+                    reuse = {}
+                    for r in d0["rows"]:
+                        reuse.setdefault(r["sign"], []).append((r["pre"], r["offset"]))
+                    for s in reuse:
+                        reuse[s].sort(key=lambda x: -x[0])
             for sign in (-1, +1):
-                hits = L.dense_scan(K, C, sign=sign, keep=keep)
+                if reuse is not None:
+                    hits = reuse.get(sign, [])
+                else:
+                    hits = L.dense_scan(K, C, sign=sign, keep=keep)
                 esc = escalate_win(hits, K, C, sign, top=top)
                 cov["offsets"] += n_off
                 cov["configs"] += 1
                 cov["beams"] += len(esc)
+                vbeams += len(esc)
                 for r in esc:
-                    rows.append({"pad": label, "variant": vname, "sign": sign,
-                                 "offset": r["offset"], "pre": r["pre"],
-                                 "score": r["score"], "head": r["head"],
-                                 "null_max": nmax, "bar": bar})
-            best = max((r["score"] for r in rows if r["variant"] == vname),
-                       default=float("nan"))
+                    vrows.append({"pad": label, "variant": vname, "sign": sign,
+                                  "offset": r["offset"], "pre": r["pre"],
+                                  "score": r["score"], "head": r["head"],
+                                  "null_max": nmax, "bar": bar})
+            rows.extend(vrows)
+            best = max((r["score"] for r in vrows), default=float("nan"))
+            json.dump({"pad": label, "variant": vname, "ks_len": len(K),
+                       "offsets": n_off * 2, "configs": 2, "beams": vbeams,
+                       "null": nulls[vname], "best": best,
+                       "rows": sorted(vrows, key=lambda r: r["score"], reverse=True)[:40]},
+                      open(ck, "w"), indent=1)
             log("  %-16s |K|=%11s  off/sign=%11s  null_max=%.3f bar=%.3f  best=%.3f  [%.0fs]"
                 % (vname, format(len(K), ","), format(n_off, ","), nmax, bar, best,
                    time.time() - t0), fh)
@@ -201,20 +254,49 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--pads", default="all", choices=["all", "small", "big"])
     ap.add_argument("--no-hex", action="store_true", help="skip the hexchars builder")
+    ap.add_argument("--builders", default=None,
+                    help="comma-separated builder order; controls PRIORITY when the box is "
+                         "contended and the run may not finish the full cross product")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--max-skip", type=int, default=L.MAX_SKIP,
+                    help="beam skip budget. 3 = A1's, for comparability. 8 = P1's powered "
+                         "setting. Moves the beam window, escalation and null together.")
+    ap.add_argument("--ckpt", default=None, help="checkpoint dir (default ckpt / ckpt_ms<N>)")
+    ap.add_argument("--reuse-offsets", default=None,
+                    help="checkpoint dir of a previous pass whose dense-scan survivor "
+                         "offsets should be re-escalated instead of rescanning")
+    ap.add_argument("--tag", default=None, help="suffix for log/results filenames")
     a = ap.parse_args()
 
+    global CKDIR, REUSE
+    set_max_skip(a.max_skip)
+    CKDIR = a.ckpt or ("ckpt" if a.max_skip == 3 else "ckpt_ms%d" % a.max_skip)
+    REUSE = a.reuse_offsets
+    tag = a.tag if a.tag is not None else ("" if a.max_skip == 3 else "_ms%d" % a.max_skip)
+
     labels = {"all": SMALL + BIG, "small": SMALL, "big": BIG}[a.pads]
-    builders = [b for b in L.BUILDERS if not (a.no_hex and b == "hexchars")]
-    out_json = a.out or os.path.join(HERE, "results_%s.json" % a.pads)
-    logf = open(os.path.join(HERE, "sweep_%s.log" % a.pads), "a", encoding="utf-8")
+    # `ks_nibbles` is deliberately NOT in L.BUILDERS (lane P1 added it after finding that
+    # `ks_hexchars` silently drops the digits of the hex text, making it the A-F
+    # subsequence rather than the hex reading). Opt in explicitly.
+    if a.builders and "nibbles" in a.builders:
+        L.BUILDERS["nibbles"] = L.ks_nibbles
+    if a.builders:
+        builders = [b.strip() for b in a.builders.split(",") if b.strip()]
+        bad = [b for b in builders if b not in L.BUILDERS]
+        if bad:
+            sys.exit("unknown builders: %s" % bad)
+    else:
+        builders = list(L.BUILDERS)
+    builders = [b for b in builders if not (a.no_hex and b == "hexchars")]
+    out_json = a.out or os.path.join(HERE, "results_%s%s.json" % (a.pads, tag))
+    logf = open(os.path.join(HERE, "sweep_%s%s.log" % (a.pads, tag)), "a", encoding="utf-8")
 
     t0 = time.time()
     log("=" * 74, logf)
     log("ROUND 16 / P0 - DENSE offset re-sweep of the CicadaOS pads", logf)
     log("pads=%s  builders=%s  signs=(-1,+1)  fwd+rev" % (labels, builders), logf)
-    log("beam_w=%d max_skip=%d head=%d prefilter_len=%d" % (BEAM_W, MAX_SKIP, HEAD, PLEN),
-        logf)
+    log("beam_w=%d max_skip=%d head=%d prefilter_len=%d win=%d" % (BEAM_W, MAX_SKIP, HEAD, PLEN, WIN), logf)
+    log("ckpt=%s  reuse_offsets=%s" % (CKDIR, REUSE), logf)
     log("=" * 74, logf)
 
     log("window-equivalence check ...", logf)
@@ -253,6 +335,7 @@ def main():
                     "dense_found": 5, "beam_recovered": 8, "n_trials": 8,
                     "survival_rate": 0.625,
                     "note": "re-run on this box 2026-08-19, reproduces PREREG.md exactly"},
+        "max_skip": MAX_SKIP,
         "hit_bar_rule": "score_norm >= -5.5 AND >= null_max + 0.5 (pre-registered, A1's)",
         "coverage_total": {
             "pads": len(pads),

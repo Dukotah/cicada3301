@@ -59,6 +59,27 @@ MAX_SKIPS = (3, 8)          # A1-comparable, and power-restored (see module docs
 TOP_ESCALATE = 40
 NULL_N = 200
 
+# ------------------------------------------------------- lane-local extra builders
+# `lib_padsweep.ks_hexchars` reads a blob as its hex TEXT through `eng_to_idx`, which is
+# *lenient*: it DROPS every character it cannot map, and digits are unmappable.  So
+# `hexchars` over a hash pad is really "the A-F subsequence of the hex text" -- it sees
+# 5.7 M of the 19.4 M hex characters of `hash_display.bin`.  That is a legitimate reading
+# (a letters-only running key) but it is not the reading the lane brief asked for.
+#
+# The faithful arithmetic reading of hex text is the NIBBLE stream: each hex character is
+# a value 0..15, hi then lo for every byte.  That is NOT covered by `hi_nibble` or
+# `lo_nibble`, which each take every OTHER nibble.  So it gets its own builder and its own
+# pass over every pad.
+def ks_nibbles(b):
+    a = np.frombuffer(b, dtype=np.uint8)
+    out = np.empty(a.size * 2, dtype=np.int16)
+    out[0::2] = a >> 4
+    out[1::2] = a & 0xF
+    return out
+
+
+EXTRA_BUILDERS = {"nibbles": ks_nibbles}
+
 PADS = [
     "hash_display.bin", "hash_internal.bin",
     "merkle_display.bin", "merkle_internal.bin",
@@ -125,20 +146,23 @@ def null_ceiling_ms(Kl, max_skip, seq_len=L.HEAD, n=NULL_N, seed0=3301):
 
 
 # ------------------------------------------------------------------ the sweep
-def sweep_pad(pad, signs=SIGNS, keep=400, verbose=True):
+def sweep_pad(pad, signs=SIGNS, keep=400, verbose=True,
+              builders=None, tag=""):
     p = os.path.join(DATA, pad)
     blob = open(p, "rb").read()
     sha = hashlib.sha256(blob).hexdigest()
     rec = {"pad": pad, "bytes": len(blob), "sha256": sha, "variants": {},
            "n_offsets_total": 0, "max_skips": list(MAX_SKIPS),
            "started": time.strftime("%Y-%m-%dT%H:%M:%S")}
-    print("== %s  %d B  sha256=%s" % (pad, len(blob), sha[:16]), flush=True)
+    builders = builders or L.BUILDERS
+    rec["builders"] = sorted(builders)
+    print("== %s%s  %d B  sha256=%s" % (pad, tag, len(blob), sha[:16]), flush=True)
     best = {"score": -99.0}
-    for bname in L.BUILDERS:
+    for bname in builders:
         for rev in (False, True):
             vname = bname + ("_rev" if rev else "")
             t0 = time.time()
-            ks = L.BUILDERS[bname](blob[::-1] if rev else blob)
+            ks = builders[bname](blob[::-1] if rev else blob)
             Kl = [int(x) for x in ks]
             v = {"len": int(len(ks)), "null": {}, "bar": {}, "signs": {}}
             for ms in MAX_SKIPS:
@@ -182,7 +206,8 @@ def sweep_pad(pad, signs=SIGNS, keep=400, verbose=True):
         b["hits"] for v in rec["variants"].values() for sd in v["signs"].values()
         for b in sd["by_max_skip"].values())
     rec["finished"] = time.strftime("%Y-%m-%dT%H:%M:%S")
-    out = os.path.join(HERE, "results_%s.json" % pad.replace(".bin", ""))
+    out = os.path.join(HERE, "results_%s%s.json"
+                       % (tag, pad.replace(".bin", "")))
     with open(out, "w") as f:
         json.dump(rec, f, indent=1)
     print("   -> %s   best %.3f (%s sign%+d ms%d off=%d) bar %.3f  HIT=%s"
@@ -229,6 +254,10 @@ def merge():
         cx = json.load(open(os.path.join(HERE, "control_ext.json")))
         ctlx = {k: {kk: vv for kk, vv in v.items() if kk not in ("rows", "ranks")}
                 for k, v in cx.items()}
+    cpass = None
+    if os.path.exists(os.path.join(HERE, "control_pass.json")):
+        cp = json.load(open(os.path.join(HERE, "control_pass.json")))
+        cpass = {k: {kk: vv for kk, vv in v.items() if kk != "rows"} for k, v in cp.items()}
     if os.path.exists(os.path.join(HERE, "control_ms.json")):
         ctlx = ctlx or {}
         ctlx["max_skip_sweep"] = json.load(open(os.path.join(HERE, "control_ms.json")))
@@ -242,8 +271,25 @@ def merge():
                       "(A1 settings; escalation run at max_skip 3 and 8)",
         "control": ctl,
         "control_ext": ctlx,
+        "control_pass_ms8": cpass,
+        "lane_control_status": (
+            "PASS at max_skip=8 (the setting the headline numbers use). The strict gate at "
+            "A1's max_skip=3 returns PASS=False on the zero-run block-hash pad -- that is a "
+            "skip-budget limit of the decoder, diagnosed in control_ext/control_ms and fixed "
+            "by escalating at max_skip=8, where both a zero-run pad and a full-entropy pad "
+            "recover 12/12. See RESULTS.md."
+            if (cpass and all(v.get("PASS") for v in cpass.values()))
+            else "INCOMPLETE -- control_pass.json missing or failing"),
+        "dense_survival_pooled_this_lane": 66 / 104,
+        "survival_rate_applied": 0.625,
+        "n_offsets_effective_at_0.625": None,
         "pads": [{"pad": r["pad"], "bytes": r["bytes"], "sha256": r["sha256"],
                   "n_offsets_total": r["n_offsets_total"],
+                  "builders": r.get("builders", sorted(L.BUILDERS)),
+                  "builders_label": ("nibbles (hex text)"
+                                     if r.get("builders") == ["nibbles"]
+                                     else "6 lib_padsweep builders"),
+                  "extra": r.get("builders") == ["nibbles"],
                   "best": r["best"], "any_hit": r["any_hit"]} for r in recs],
         "n_offsets_total": n_off,
         "fixed_bar": -5.5,
@@ -257,6 +303,7 @@ def merge():
         "verdict": ("HIT" if any(r["any_hit"] for r in recs) else "NEGATIVE"),
         "top20": allrows[:20],
     }
+    out["n_offsets_effective_at_0.625"] = int(n_off * 0.625)
     with open(os.path.join(HERE, "results.json"), "w") as f:
         json.dump(out, f, indent=1)
     print(json.dumps({k: v for k, v in out.items()
@@ -276,13 +323,18 @@ if __name__ == "__main__":
     ap.add_argument("--control", action="store_true")
     ap.add_argument("--merge", action="store_true")
     ap.add_argument("--subsets", action="store_true")
+    ap.add_argument("--extra", action="store_true",
+                    help="run only EXTRA_BUILDERS (the faithful hex-text/nibble reading)")
     a = ap.parse_args()
     if a.subsets:
         build_subsets()
     if a.control:
         control_on_real_pad()
     if a.pad:
-        sweep_pad(a.pad)
+        if a.extra:
+            sweep_pad(a.pad, builders=EXTRA_BUILDERS, tag="extra_")
+        else:
+            sweep_pad(a.pad)
     if a.all:
         build_subsets()
         for p in PADS:

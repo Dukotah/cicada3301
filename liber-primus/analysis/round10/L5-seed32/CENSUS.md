@@ -93,6 +93,19 @@ build "a one-time pad", and it is the majority of the prior mass. Nothing in the
 that it cheaply excludes the *lazy* implementations; it was never able to exclude the
 competent one.
 
+> **⚠️ Partly superseded 2026-08-20 (Round 16, lane P2).** The paragraph is right that these
+> leave **no seed**, and wrong to conclude that nothing can reach them. It merges two
+> independent properties: *no seed* and *no record*. `/dev/urandom` and dice have both.
+> **`random.org` does not** — it has published a 1 MiB file of true random bytes every day
+> since 2006-03-11 (7,395 files), and lane P2 **downloaded 153 of them covering 2013-09 →
+> 2014-01 and verified 153/153 against the published MD5s**. Same for NIST's Randomness
+> Beacon (live 2013-09-05, four months before LP2, legacy endpoint still serving), the
+> Bitcoin blockchain, and printed random-number tables. That is a **third branch** the
+> two-branch taxonomy had no name for: a full-entropy, seedless pad with a permanent public
+> record, and it is enumerable. All four were swept in Round 16 (≈14.5 × 10⁹ offsets,
+> NEGATIVE), so the branch is now *narrowed by measurement* rather than closed by assertion.
+> Read `analysis/round16/SYNTHESIS.md` and P2's source table before repeating "nothing can".
+
 ---
 
 ## The one-line reading

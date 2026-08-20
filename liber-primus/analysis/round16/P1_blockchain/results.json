@@ -1,0 +1,1045 @@
+{
+ "lane": "round16/P1_blockchain",
+ "hypothesis": "LP2's keystream is a contiguous run of Bitcoin blockchain bytes",
+ "instrument": "round16/lib_padsweep.py dense_scan + beam escalate (A1 settings; escalation run at max_skip 3 and 8)",
+ "control": {
+  "n_trials": 8,
+  "dense_found": 6,
+  "beam_recovered": 6,
+  "survival_rate": 0.75,
+  "PASS": false,
+  "pad": "hash_display.bin"
+ },
+ "control_ext": {
+  "recover_real": {
+   "label": "blockchain hash_display",
+   "n": 60,
+   "rate_0.95": 0.65,
+   "rate_0.75": 0.8333333333333334,
+   "median_match": 1.0
+  },
+  "recover_synth": {
+   "label": "PREREG synthetic pad",
+   "n": 60,
+   "rate_0.95": 1.0,
+   "rate_0.75": 1.0,
+   "median_match": 1.0
+  },
+  "recover_real_w1500": {
+   "label": "blockchain, beam_w=1500",
+   "n": 60,
+   "rate_0.95": 0.65,
+   "rate_0.75": 0.8333333333333334,
+   "median_match": 1.0
+  },
+  "dense_real": {
+   "label": "blockchain hash_display",
+   "n": 24,
+   "found": 14,
+   "survival_rate": 0.5833333333333334
+  },
+  "max_skip_sweep": {
+   "bar": -5.5,
+   "skip_sweep_hash_display": {
+    "3": {
+     "n": 60,
+     "recovered_0.95": 0.65,
+     "score_clears_bar": 0.8666666666666667,
+     "median_score": -4.211811810175363
+    },
+    "5": {
+     "n": 60,
+     "recovered_0.95": 0.9666666666666667,
+     "score_clears_bar": 1.0,
+     "median_score": -4.211811810175363
+    },
+    "8": {
+     "n": 60,
+     "recovered_0.95": 1.0,
+     "score_clears_bar": 1.0,
+     "median_score": -4.211811810175363
+    }
+   },
+   "skip_sweep_merkle_display": {
+    "3": {
+     "n": 60,
+     "recovered_0.95": 1.0,
+     "score_clears_bar": 1.0,
+     "median_score": -4.211811810175363
+    },
+    "5": {
+     "n": 60,
+     "recovered_0.95": 1.0,
+     "score_clears_bar": 1.0,
+     "median_score": -4.211811810175363
+    },
+    "8": {
+     "n": 60,
+     "recovered_0.95": 1.0,
+     "score_clears_bar": 1.0,
+     "median_score": -4.211811810175363
+    }
+   },
+   "e2e_hash_display": {
+    "n": 24,
+    "max_skip": 8,
+    "detection_power": 0.5416666666666666,
+    "dense_survival": 0.5416666666666666,
+    "rows": [
+     {
+      "offset": 9604135,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 1603349,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 9119858,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 3439822,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 8095548,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 3018821,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 54700,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 1075200,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 1209983,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 840913,
+      "rank": 47,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 684507,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 8966417,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 763633,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 2781599,
+      "rank": 37,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 5449206,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 340263,
+      "rank": 25,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 6609711,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 6235403,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 7532840,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 7294330,
+      "rank": 6,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 3750396,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 8471075,
+      "rank": 38,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 1517641,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 6530530,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     }
+    ]
+   },
+   "e2e_merkle_display": {
+    "n": 24,
+    "max_skip": 8,
+    "detection_power": 0.7916666666666666,
+    "dense_survival": 0.7916666666666666,
+    "rows": [
+     {
+      "offset": 9604135,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 1603349,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 9119858,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 3439822,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 8095548,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 3018821,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 54700,
+      "rank": 1,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 1075200,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 1209983,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 840913,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 684507,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 8966417,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 763633,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 2781599,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 5449206,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 340263,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 6609711,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 6235403,
+      "rank": null,
+      "score": -4.211811810175363,
+      "seen": false
+     },
+     {
+      "offset": 7532840,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 7294330,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 3750396,
+      "rank": 36,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 8471075,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 1517641,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     },
+     {
+      "offset": 6530530,
+      "rank": 0,
+      "score": -4.211811810175363,
+      "seen": true
+     }
+    ]
+   }
+  }
+ },
+ "control_pass_ms8": {
+  "hash_display.bin": {
+   "n_trials": 12,
+   "dense_found": 9,
+   "beam_recovered": 12,
+   "survival_rate": 0.75,
+   "PASS": true
+  },
+  "merkle_display.bin": {
+   "n_trials": 12,
+   "dense_found": 5,
+   "beam_recovered": 12,
+   "survival_rate": 0.4166666666666667,
+   "PASS": true
+  }
+ },
+ "lane_control_status": "PASS at max_skip=8 (the setting the headline numbers use). The strict gate at A1's max_skip=3 returns PASS=False on the zero-run block-hash pad -- that is a skip-budget limit of the decoder, diagnosed in control_ext/control_ms and fixed by escalating at max_skip=8, where both a zero-run pad and a full-entropy pad recover 12/12. See RESULTS.md.",
+ "dense_survival_pooled_this_lane": 0.6346153846153846,
+ "survival_rate_applied": 0.625,
+ "n_offsets_effective_at_0.625": 868238760,
+ "pads": [
+  {
+   "pad": "hash_display.bin",
+   "bytes": 9719264,
+   "sha256": "b09d3d62f427d4587c92cea79b582c917c65bd9144ed771a5df58e1720a0d8b1",
+   "n_offsets_total": 77754016,
+   "builders": [
+    "nibbles"
+   ],
+   "builders_label": "nibbles (hex text)",
+   "extra": true,
+   "best": {
+    "score": -6.915317529534532,
+    "pad": "hash_display.bin",
+    "variant": "nibbles_rev",
+    "sign": 1,
+    "max_skip": 3,
+    "offset": 9716310,
+    "bar": -5.5,
+    "head": "OEHEARTOOSECARENSLUNATHEINAIASMISFEOINGUNAEGITHHBNUDOAAEAPEAFUEA"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "hash_display_2013.bin",
+   "bytes": 2029856,
+   "sha256": "42b38a9cb23c2c5c0530eea7e5f0bd0ac8122f625978cd3e1514f1d7e8d31730",
+   "n_offsets_total": 16238752,
+   "builders": [
+    "nibbles"
+   ],
+   "builders_label": "nibbles (hex text)",
+   "extra": true,
+   "best": {
+    "score": -6.8785173431238755,
+    "pad": "hash_display_2013.bin",
+    "variant": "nibbles_rev",
+    "sign": -1,
+    "max_skip": 3,
+    "offset": 1234111,
+    "bar": -5.5,
+    "head": "SEAOLRESETHECIABHFIDWELDBYPCHNOPRIAHAFICEALHXHEOCRAFOTHNGNGYXBDP"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "hash_internal.bin",
+   "bytes": 9719264,
+   "sha256": "e9dc12d303ad7bda39a53ff6c00e8bb79db5d3dd3307e27b7d59f6281239ce6e",
+   "n_offsets_total": 77754016,
+   "builders": [
+    "nibbles"
+   ],
+   "builders_label": "nibbles (hex text)",
+   "extra": true,
+   "best": {
+    "score": -6.881751458091569,
+    "pad": "hash_internal.bin",
+    "variant": "nibbles",
+    "sign": -1,
+    "max_skip": 8,
+    "offset": 14956681,
+    "bar": -5.5,
+    "head": "RRIDORDETHEPTUTTHIALSNOEOAEEANORIEOUWOEAEBNSUCAEUBHIAPBNEOJTHANG"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "hash_internal_2013.bin",
+   "bytes": 2029856,
+   "sha256": "b37479b1bd11a22f655be8076d2666ded6be32e8af39487fa6e3af4232641ed4",
+   "n_offsets_total": 16238752,
+   "builders": [
+    "nibbles"
+   ],
+   "builders_label": "nibbles (hex text)",
+   "extra": true,
+   "best": {
+    "score": -6.881751458091569,
+    "pad": "hash_internal_2013.bin",
+    "variant": "nibbles",
+    "sign": -1,
+    "max_skip": 8,
+    "offset": 1224649,
+    "bar": -5.5,
+    "head": "RRIDORDETHEPTUTTHIALSNOEOAEEANORIEOUWOEAEBNSUCAEUBHIAPBNEOJTHANG"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "merkle_display.bin",
+   "bytes": 9719264,
+   "sha256": "44f9b4c1abc558ed2eb033720f8425eb15f1a40f28a2f26a80fc659fcf59b6aa",
+   "n_offsets_total": 77754016,
+   "builders": [
+    "nibbles"
+   ],
+   "builders_label": "nibbles (hex text)",
+   "extra": true,
+   "best": {
+    "score": -6.954500613868827,
+    "pad": "merkle_display.bin",
+    "variant": "nibbles_rev",
+    "sign": 1,
+    "max_skip": 3,
+    "offset": 2930688,
+    "bar": -5.5,
+    "head": "IAELONGYOHLEOFAWTHATRILYWISMESTHTHUIAPPIANAGINGPNGMBWLMTYMCEAYOB"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "merkle_internal.bin",
+   "bytes": 9719264,
+   "sha256": "5156d013c6774c3a93d991220fbb1254df0984fcd6f937f11ae47649454ba6a3",
+   "n_offsets_total": 77754016,
+   "builders": [
+    "nibbles"
+   ],
+   "builders_label": "nibbles (hex text)",
+   "extra": true,
+   "best": {
+    "score": -6.853716230767211,
+    "pad": "merkle_internal.bin",
+    "variant": "nibbles_rev",
+    "sign": 1,
+    "max_skip": 3,
+    "offset": 16688050,
+    "bar": -5.5,
+    "head": "STESTAINSNEIAPRENOUSTHELGOEOEJEAITWPMOEUARNGTBMYMPDEAEOBOEOCUIAB"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "nonce_le.bin",
+   "bytes": 1214908,
+   "sha256": "43e16d030c4c2d108fba2d920e889f67f6af4aa6396da7fc61d26ca155bbe3d9",
+   "n_offsets_total": 9719168,
+   "builders": [
+    "nibbles"
+   ],
+   "builders_label": "nibbles (hex text)",
+   "extra": true,
+   "best": {
+    "score": -6.861616676609877,
+    "pad": "nonce_le.bin",
+    "variant": "nibbles_rev",
+    "sign": -1,
+    "max_skip": 3,
+    "offset": 159946,
+    "bar": -5.5,
+    "head": "IONBRIEEWPEOWCENREEYHUNURPOTJWHGILIADINGTHOEEAGUEEABTHFAEYTWPIHH"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "time_le.bin",
+   "bytes": 1214908,
+   "sha256": "e2c388b60cb6b764ec54aebf8c02ddce725eb54008d574bdd60c5f4f20d43718",
+   "n_offsets_total": 9719168,
+   "builders": [
+    "nibbles"
+   ],
+   "builders_label": "nibbles (hex text)",
+   "extra": true,
+   "best": {
+    "score": -6.966707850842643,
+    "pad": "time_le.bin",
+    "variant": "nibbles_rev",
+    "sign": -1,
+    "max_skip": 3,
+    "offset": 21851,
+    "bar": -5.5,
+    "head": "IYXFGXAOEISTIFYHEALEINBREATHPAEBBEOBNOTLIAMAECEAUEOEABWXRNRYXJNG"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "hash_display.bin",
+   "bytes": 9719264,
+   "sha256": "b09d3d62f427d4587c92cea79b582c917c65bd9144ed771a5df58e1720a0d8b1",
+   "n_offsets_total": 217317732,
+   "builders": [
+    "byte_scaled",
+    "hexchars",
+    "hi_nibble",
+    "lo_nibble",
+    "mod29",
+    "prime_to_idx"
+   ],
+   "builders_label": "6 lib_padsweep builders",
+   "extra": false,
+   "best": {
+    "score": -6.801690421150176,
+    "pad": "hash_display.bin",
+    "variant": "hexchars",
+    "sign": 1,
+    "max_skip": 3,
+    "offset": 3552344,
+    "bar": -5.5,
+    "head": "NTHELFASDISPTOETHCAUEFOEYXTHODEOOEPRTUEATUYXGRYTHEOXOTHEONBEALEI"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "hash_display_2013.bin",
+   "bytes": 2029856,
+   "sha256": "42b38a9cb23c2c5c0530eea7e5f0bd0ac8122f625978cd3e1514f1d7e8d31730",
+   "n_offsets_total": 45189560,
+   "builders": [
+    "byte_scaled",
+    "hexchars",
+    "hi_nibble",
+    "lo_nibble",
+    "mod29",
+    "prime_to_idx"
+   ],
+   "builders_label": "6 lib_padsweep builders",
+   "extra": false,
+   "best": {
+    "score": -6.834087876149649,
+    "pad": "hash_display_2013.bin",
+    "variant": "mod29",
+    "sign": -1,
+    "max_skip": 3,
+    "offset": 913508,
+    "bar": -5.5,
+    "head": "SHELDEALACIANNINRUISASTATHWORWUSOEEOINGUNNGMXNMEODCUNGETHBWTBPSA"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "hash_internal.bin",
+   "bytes": 9719264,
+   "sha256": "e9dc12d303ad7bda39a53ff6c00e8bb79db5d3dd3307e27b7d59f6281239ce6e",
+   "n_offsets_total": 217317732,
+   "builders": [
+    "byte_scaled",
+    "hexchars",
+    "hi_nibble",
+    "lo_nibble",
+    "mod29",
+    "prime_to_idx"
+   ],
+   "builders_label": "6 lib_padsweep builders",
+   "extra": false,
+   "best": {
+    "score": -6.8020927970247325,
+    "pad": "hash_internal.bin",
+    "variant": "hexchars_rev",
+    "sign": -1,
+    "max_skip": 3,
+    "offset": 1342827,
+    "bar": -5.5,
+    "head": "IAHPIAEOAEIAEOSTHATIODBLATOEIARYXPHEOGYEABIRGRTHGIHPDRIAEEANEODY"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "hash_internal_2013.bin",
+   "bytes": 2029856,
+   "sha256": "b37479b1bd11a22f655be8076d2666ded6be32e8af39487fa6e3af4232641ed4",
+   "n_offsets_total": 45189560,
+   "builders": [
+    "byte_scaled",
+    "hexchars",
+    "hi_nibble",
+    "lo_nibble",
+    "mod29",
+    "prime_to_idx"
+   ],
+   "builders_label": "6 lib_padsweep builders",
+   "extra": false,
+   "best": {
+    "score": -6.8020927970247325,
+    "pad": "hash_internal_2013.bin",
+    "variant": "hexchars_rev",
+    "sign": -1,
+    "max_skip": 3,
+    "offset": 892664,
+    "bar": -5.5,
+    "head": "IAHPIAEOAEIAEOSTHATIODBLATOEIARYXPHEOGYEABIRGRTHGIHPDRIAEEANEODY"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "merkle_display.bin",
+   "bytes": 9719264,
+   "sha256": "44f9b4c1abc558ed2eb033720f8425eb15f1a40f28a2f26a80fc659fcf59b6aa",
+   "n_offsets_total": 222964704,
+   "builders": [
+    "byte_scaled",
+    "hexchars",
+    "hi_nibble",
+    "lo_nibble",
+    "mod29",
+    "prime_to_idx"
+   ],
+   "builders_label": "6 lib_padsweep builders",
+   "extra": false,
+   "best": {
+    "score": -6.825608759397211,
+    "pad": "merkle_display.bin",
+    "variant": "hexchars",
+    "sign": 1,
+    "max_skip": 3,
+    "offset": 6305924,
+    "bar": -5.5,
+    "head": "STHELDWOEALTHENEATHEAJXEATIONLYEOUCASIEOSNGEXAEUIWOJIATWEOYUJTHE"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "merkle_internal.bin",
+   "bytes": 9719264,
+   "sha256": "5156d013c6774c3a93d991220fbb1254df0984fcd6f937f11ae47649454ba6a3",
+   "n_offsets_total": 222964850,
+   "builders": [
+    "byte_scaled",
+    "hexchars",
+    "hi_nibble",
+    "lo_nibble",
+    "mod29",
+    "prime_to_idx"
+   ],
+   "builders_label": "6 lib_padsweep builders",
+   "extra": false,
+   "best": {
+    "score": -6.856841278674765,
+    "pad": "merkle_internal.bin",
+    "variant": "hexchars_rev",
+    "sign": -1,
+    "max_skip": 3,
+    "offset": 7098904,
+    "bar": -5.5,
+    "head": "ILDSEUNATTHATTYDETHADBNNGTHLDEBUYOEBSRWXTHECTHLOESTHMEANATWURNGN"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "nonce_le.bin",
+   "bytes": 1214908,
+   "sha256": "43e16d030c4c2d108fba2d920e889f67f6af4aa6396da7fc61d26ca155bbe3d9",
+   "n_offsets_total": 27631086,
+   "builders": [
+    "byte_scaled",
+    "hexchars",
+    "hi_nibble",
+    "lo_nibble",
+    "mod29",
+    "prime_to_idx"
+   ],
+   "builders_label": "6 lib_padsweep builders",
+   "extra": false,
+   "best": {
+    "score": -6.848932427413573,
+    "pad": "nonce_le.bin",
+    "variant": "byte_scaled",
+    "sign": 1,
+    "max_skip": 3,
+    "offset": 502559,
+    "bar": -5.5,
+    "head": "XFTDTHEMBEOPITELTELAUINGCLLAEASBGRNGONGMDPBOEFDADOEGNUEOSANTYDSI"
+   },
+   "any_hit": false
+  },
+  {
+   "pad": "time_le.bin",
+   "bytes": 1214908,
+   "sha256": "e2c388b60cb6b764ec54aebf8c02ddce725eb54008d574bdd60c5f4f20d43718",
+   "n_offsets_total": 27674888,
+   "builders": [
+    "byte_scaled",
+    "hexchars",
+    "hi_nibble",
+    "lo_nibble",
+    "mod29",
+    "prime_to_idx"
+   ],
+   "builders_label": "6 lib_padsweep builders",
+   "extra": false,
+   "best": {
+    "score": -6.832674608495718,
+    "pad": "time_le.bin",
+    "variant": "mod29",
+    "sign": 1,
+    "max_skip": 3,
+    "offset": 325334,
+    "bar": -5.5,
+    "head": "AYRIASHEYASEEXLTOCEOLEOIAPHIAAEDAERIAPMIBPCAPIBGHNOETHDNGFAENUSE"
+   },
+   "any_hit": false
+  }
+ ],
+ "n_offsets_total": 1389182016,
+ "fixed_bar": -5.5,
+ "null_max_over_lane_ms3": -6.838395830462344,
+ "null_max_over_lane_ms8": -6.821617081217047,
+ "lane_bar_ms3": -5.5,
+ "lane_bar_ms8": -5.5,
+ "threshold_for_n_trials": -5.391920563403858,
+ "expected_null_max_at_n": -5.683583246639798,
+ "best_overall": {
+  "pad": "hash_display.bin",
+  "variant": "hexchars",
+  "sign": 1,
+  "max_skip": 3,
+  "offset": 3552344,
+  "score": -6.801690421150176,
+  "pre": -1.3871840238571167,
+  "bar": -5.5,
+  "head": "NTHELFASDISPTOETHCAUEFOEYXTHODEOOEPRTUEATUYXGRYTHEOXOTHEONBEALEI"
+ },
+ "verdict": "NEGATIVE",
+ "top20": [
+  {
+   "pad": "hash_display.bin",
+   "variant": "hexchars",
+   "sign": 1,
+   "max_skip": 3,
+   "offset": 3552344,
+   "score": -6.801690421150176,
+   "pre": -1.3871840238571167,
+   "bar": -5.5,
+   "head": "NTHELFASDISPTOETHCAUEFOEYXTHODEOOEPRTUEATUYXGRYTHEOXOTHEONBEALEI"
+  },
+  {
+   "pad": "hash_display.bin",
+   "variant": "hexchars",
+   "sign": 1,
+   "max_skip": 8,
+   "offset": 3552344,
+   "score": -6.801690421150176,
+   "pre": -1.3871840238571167,
+   "bar": -5.5,
+   "head": "NTHELFASDISPTOETHCAUEFOEYXTHODEOOEPRTUEATUYXGRYTHEOXOTHEONBEALEI"
+  },
+  {
+   "pad": "hash_internal.bin",
+   "variant": "hexchars_rev",
+   "sign": -1,
+   "max_skip": 3,
+   "offset": 1342827,
+   "score": -6.8020927970247325,
+   "pre": -1.4111214876174927,
+   "bar": -5.5,
+   "head": "IAHPIAEOAEIAEOSTHATIODBLATOEIARYXPHEOGYEABIRGRTHGIHPDRIAEEANEODY"
+  },
+  {
+   "pad": "hash_internal.bin",
+   "variant": "hexchars_rev",
+   "sign": -1,
+   "max_skip": 8,
+   "offset": 1342827,
+   "score": -6.8020927970247325,
+   "pre": -1.4111214876174927,
+   "bar": -5.5,
+   "head": "IAHPIAEOAEIAEOSTHATIODBLATOEIARYXPHEOGYEABIRGRTHGIHPDRIAEEANEODY"
+  },
+  {
+   "pad": "hash_internal_2013.bin",
+   "variant": "hexchars_rev",
+   "sign": -1,
+   "max_skip": 3,
+   "offset": 892664,
+   "score": -6.8020927970247325,
+   "pre": -1.4111214876174927,
+   "bar": -5.5,
+   "head": "IAHPIAEOAEIAEOSTHATIODBLATOEIARYXPHEOGYEABIRGRTHGIHPDRIAEEANEODY"
+  },
+  {
+   "pad": "hash_internal_2013.bin",
+   "variant": "hexchars_rev",
+   "sign": -1,
+   "max_skip": 8,
+   "offset": 892664,
+   "score": -6.8020927970247325,
+   "pre": -1.4111214876174927,
+   "bar": -5.5,
+   "head": "IAHPIAEOAEIAEOSTHATIODBLATOEIARYXPHEOGYEABIRGRTHGIHPDRIAEEANEODY"
+  },
+  {
+   "pad": "merkle_display.bin",
+   "variant": "hexchars",
+   "sign": 1,
+   "max_skip": 3,
+   "offset": 6305924,
+   "score": -6.825608759397211,
+   "pre": -1.3884552717208862,
+   "bar": -5.5,
+   "head": "STHELDWOEALTHENEATHEAJXEATIONLYEOUCASIEOSNGEXAEUIWOJIATWEOYUJTHE"
+  },
+  {
+   "pad": "merkle_display.bin",
+   "variant": "hexchars",
+   "sign": 1,
+   "max_skip": 8,
+   "offset": 6305924,
+   "score": -6.825608759397211,
+   "pre": -1.3884552717208862,
+   "bar": -5.5,
+   "head": "STHELDWOEALTHENEATHEAJXEATIONLYEOUCASIEOSNGEXAEUIWOJIATWEOYUJTHE"
+  },
+  {
+   "pad": "hash_internal.bin",
+   "variant": "hexchars",
+   "sign": 1,
+   "max_skip": 3,
+   "offset": 5301349,
+   "score": -6.832204372874432,
+   "pre": -1.4042620658874512,
+   "bar": -5.5,
+   "head": "OTHWOUMSASSEIRLEAAPECTOYLOGEOJPNTUEANANXUIAMAEOERIAUJRUCTHLTTHXO"
+  },
+  {
+   "pad": "hash_internal.bin",
+   "variant": "hexchars",
+   "sign": 1,
+   "max_skip": 8,
+   "offset": 5301349,
+   "score": -6.832204372874432,
+   "pre": -1.4042620658874512,
+   "bar": -5.5,
+   "head": "OTHWOUMSASSEIRLEAAPECTOYLOGEOJPNTUEANANXUIAMAEOERIAUJRUCTHLTTHXO"
+  },
+  {
+   "pad": "time_le.bin",
+   "variant": "mod29",
+   "sign": 1,
+   "max_skip": 3,
+   "offset": 325334,
+   "score": -6.832674608495718,
+   "pre": -1.439765453338623,
+   "bar": -5.5,
+   "head": "AYRIASHEYASEEXLTOCEOLEOIAPHIAAEDAERIAPMIBPCAPIBGHNOETHDNGFAENUSE"
+  },
+  {
+   "pad": "time_le.bin",
+   "variant": "mod29",
+   "sign": 1,
+   "max_skip": 8,
+   "offset": 325334,
+   "score": -6.832674608495718,
+   "pre": -1.439765453338623,
+   "bar": -5.5,
+   "head": "AYRIASHEYASEEXLTOCEOLEOIAPHIAAEDAERIAPMIBPCAPIBGHNOETHDNGFAENUSE"
+  },
+  {
+   "pad": "hash_display_2013.bin",
+   "variant": "mod29",
+   "sign": -1,
+   "max_skip": 3,
+   "offset": 913508,
+   "score": -6.834087876149649,
+   "pre": -1.447678804397583,
+   "bar": -5.5,
+   "head": "SHELDEALACIANNINRUISASTATHWORWUSOEEOINGUNNGMXNMEODCUNGETHBWTBPSA"
+  },
+  {
+   "pad": "hash_internal.bin",
+   "variant": "byte_scaled_rev",
+   "sign": -1,
+   "max_skip": 3,
+   "offset": 7321738,
+   "score": -6.837110495570864,
+   "pre": -1.393110752105713,
+   "bar": -5.5,
+   "head": "RNARYSIMENIMHAMETLEALENTHNEWSLEEARWHEUOPAEJUDTHGETHXEOCDJIAMJBDP"
+  },
+  {
+   "pad": "hash_internal.bin",
+   "variant": "byte_scaled_rev",
+   "sign": -1,
+   "max_skip": 8,
+   "offset": 7321738,
+   "score": -6.837110495570864,
+   "pre": -1.393110752105713,
+   "bar": -5.5,
+   "head": "RNARYSIMENIMHAMETLEALENTHNEWSLEEARWHEUOPAEJUDTHGETHXEOCDJIAMJBDP"
+  },
+  {
+   "pad": "merkle_display.bin",
+   "variant": "prime_to_idx",
+   "sign": -1,
+   "max_skip": 3,
+   "offset": 2339541,
+   "score": -6.848510203327155,
+   "pre": -1.3595845699310303,
+   "bar": -5.5,
+   "head": "OEAEPAEAEXCLENSASCEFBASEATHYCXDIUHAEINGCIAFHHETHEPSTHIAHRWLSGTYE"
+  },
+  {
+   "pad": "merkle_display.bin",
+   "variant": "prime_to_idx",
+   "sign": -1,
+   "max_skip": 8,
+   "offset": 2339541,
+   "score": -6.848510203327155,
+   "pre": -1.3595845699310303,
+   "bar": -5.5,
+   "head": "OEAEPAEAEXCLENSASCEFBASEATHYCXDIUHAEINGCIAFHHETHEPSTHIAHRWLSGTYE"
+  },
+  {
+   "pad": "nonce_le.bin",
+   "variant": "byte_scaled",
+   "sign": 1,
+   "max_skip": 3,
+   "offset": 502559,
+   "score": -6.848932427413573,
+   "pre": -1.453124761581421,
+   "bar": -5.5,
+   "head": "XFTDTHEMBEOPITELTELAUINGCLLAEASBGRNGONGMDPBOEFDADOEGNUEOSANTYDSI"
+  },
+  {
+   "pad": "nonce_le.bin",
+   "variant": "byte_scaled",
+   "sign": 1,
+   "max_skip": 8,
+   "offset": 502559,
+   "score": -6.848932427413573,
+   "pre": -1.453124761581421,
+   "bar": -5.5,
+   "head": "XFTDTHEMBEOPITELTELAUINGCLLAEASBGRNGONGMDPBOEFDADOEGNUEOSANTYDSI"
+  },
+  {
+   "pad": "hash_display.bin",
+   "variant": "byte_scaled",
+   "sign": 1,
+   "max_skip": 8,
+   "offset": 8824293,
+   "score": -6.849847775215786,
+   "pre": -1.3593579530715942,
+   "bar": -5.5,
+   "head": "SHENTRUSTIATYEADMYBEABROIMTHOEWASOEEOINGUNEAECWPTDIXNGPLXRHEAEOT"
+  }
+ ]
+}

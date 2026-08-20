@@ -811,3 +811,78 @@ in the whole mystery — is now a measured, control-validated NEGATIVE. Verdict 
 reopened. Only roadmap residue left is external/low-prior (PA-3 binary pads under skip-aware
 decode; dense-OTP re-segmentation) — inputs/imaging, not more transforms of the held stream.
 Do NOT re-run any Round-11 lens.
+
+---
+
+## Round 16 — THE PUBLIC PAD (2026-08-19/20)
+
+Full synthesis: `analysis/round16/SYNTHESIS.md`. Pre-registration: `analysis/round16/PREREG.md`.
+Five lanes, **zero hits**, ≈**14.5 × 10⁹ offsets scored** (≈8.4 × 10⁹ effective after each lane's
+own measured prefilter-survival discount). Every lane's planted control recovered at 100% of
+runes; every best score sits inside or below its own null band; `threshold_for()` at each lane's
+true trial count is **stricter** than the fixed −5.5 bar in all four sweeps, so no verdict here
+depends on which bar is used.
+
+**The gap it attacked.** The keystream taxonomy had two branches — short-seed *derived* (being
+swept) and *private pad* (closed) — and the seed census folded everything else into the second
+with one sentence repeated in three places: *"`/dev/urandom`, a hardware RNG, **random.org**, or
+physical dice … nothing can touch it."* That merges **no seed** with **no record**. Dice and
+`/dev/urandom` have both; random.org, NIST's Beacon, a blockchain and a printed random-number
+table are seedless **and permanently public** — a third branch, enumerable, never swept.
+
+| Lane | Pad family | Offsets | Best | Bar | Result |
+|---|---|---|---|---|---|
+| **P0** | A1's CicadaOS blobs, re-swept densely (A1 walked 8 offsets per variant) | 3,911,819,734 | −6.769 | −5.500 | **NEGATIVE** |
+| **P1** | Bitcoin block hashes / merkle roots / nonces / timestamps, heights 0–303,726, both byte orders | 1,389,182,016 | −6.802 | −5.500 | **NEGATIVE** |
+| **P2** | NIST Randomness Beacon v1 (2013-09-05 →) + RANDOM.ORG daily archives | 3,464,597,548 | −6.811 | −5.500 | **NEGATIVE** |
+| **P3** | RAND *A Million Random Digits* + 3301's own published bytes (PGP signature packets, keys, hash blocks, onion addresses, page JPEGs) | 5,757,316,748 | −5.679 | −5.500 | **NEGATIVE** |
+| **P4** | Filter fingerprint — register item **D-01**, machine vs hand | — | — | — | **MACHINE** |
+
+### Three corrections, which are the actual output of this round
+
+1. **`CENSUS.md:87-94` / `PARKED.md:273-278` / this ledger's `random.org` line are partly wrong.**
+   random.org has published a 1 MiB true-random file **every day since 2006-03-11** (7,395 files).
+   Lane P2 fetched **153 of them (2013-09 → 2014-01) and verified 153/153 against the published
+   MD5s**. NIST Beacon v1 still serves the 2013 era via its legacy endpoint (v2 cannot — it clamps
+   to 2018-07-23). ANU QRNG and HotBits *are* genuinely unreachable, with cause. "Nothing can touch
+   it" is now a **measured source table**, not an assertion. **Live and unswept: the Marsaglia
+   Random Number CDROM (1995)** — 634,124,288 B, published SHA-256s, range-GET-able.
+2. **`FINAL-SYNTHESIS.md:73-76` is refuted as stated** — the anti-repeat hardening was **not**
+   applied by hand. Human-randomness models are excluded at **≥0.99 power**; pooled lag-2..8 bleed
+   is **z = +0.65** (zero bleed, sign wrong for a human); the filter had **no per-line scope**
+   (power 1.000 — 4/86 doublets cross a line, 4.65% vs a 4.58% base, where a calligrapher would
+   leave ~22.9%). **Bound:** lag-1 suppression 80.75%, any lag-2..8 suppression above **1.70%**
+   excluded at 95%. Honest residue, reported as UNDERPOWERED (0.110): a human eye applying *only*
+   that rule to a machine pad is not separable, and cannot be in principle.
+   ⇒ The pad came out of a **program or a file**, not a person. A human-key-prior joint decode
+   should **not** be built. First independent confirmation of the beam's cipher model on real data.
+3. **Two instrument defects, found by lanes auditing each other.** (a) `max_skip=3` is underpowered
+   on pads with **constant byte runs** — P1's control failed on its real pad (6/8 plants; display-order
+   block hashes are 18.4% zero bytes), fixed at ms=8 (60/60). P0 and P2 then *measured* that it does
+   **not** bite on high-entropy pads (P0: 91/91 rows bit-identical, max |Δ| = 0.000000) and explained
+   why — the beam's skip *validity* test binds, not the budget. (b) `ks_hexchars` silently dropped
+   the digits 0–9, so it swept the **A–F subsequence** (36.8%) of hex text, not hex text; `ks_nibbles`
+   added and every affected pad re-swept. Also: the round's flat ×0.625 survival discount is **not a
+   constant** (measured 0.375–0.875, non-monotone in size) — every lane restated its effective
+   coverage downward from its own measurement.
+
+### Coverage bounds — read these, not the word NEGATIVE
+
+- **P0** — 6 distinct blobs (`tmp_folly` ≡ `tmp_wisdom`), 196 configs, full cross product on
+  `560.13`, plus `nibbles` and ms=8 passes. **Includes the 1,580,426-byte tail of `_560.00` that
+  A1 provably never held** (four tail offsets reached the top 20, all in the −6.93/−6.96 noise
+  band). A1's shuffle nulls reproduced exactly (−6.995, −7.037) ⇒ instrument comparable.
+- **P1** — heights 0–303,726 verified contiguous (LP2 posted at height ~277,000), verified four
+  ways including reassembling 80-byte headers and double-SHA256-ing back to the stored hash.
+  **Not excluded:** non-contiguous selections (every-Nth, retarget blocks), other chains, txids,
+  coinbase scriptSigs, chainwork.
+- **P2** — 6 pads / 179,913,984 B / 96 configs; Beacon 2013-09-05 → 2013-11-13, RANDOM.ORG
+  2013-09-01 → 2014-01-31.
+- **P3** — 28 pads / 112.6 MB swept twice. **13 pads are shorter than ~13k keystream symbols** and
+  were swept against the head window only — their negative means only "does not key the first
+  25–400 runes". Only RAND was reachable for printed tables; no machine-readable Tippett /
+  Kendall / Fisher–Yates exists.
+
+**Do NOT re-run:** the four pad families above at the stated bounds. **Do run:** the Marsaglia
+CDROM; register item **A-03** (haplography audit of the 86 doublet sites), which is now the
+cheapest falsifier of P4's *positive* result — ~20 merged doublet neighbourhoods would move it.

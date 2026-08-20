@@ -128,6 +128,20 @@ B-04/B-05, and is in flight as Round 13.
 7th hidden service with no accompanying key; the thematic pointers (mayfly/ephemeral; the
 koan "seek within") read as *gated, not published*.
 
+> **Narrowed 2026-08-20 (Round 16 — "the public pad").** The two-branch framing above
+> (derived-from-a-seed vs an unpublished private pad) left out a third possibility: a pad that
+> is **seedless and full-entropy yet permanently public** — a blockchain, a randomness beacon,
+> a published random-number archive, a printed table. The seed census had filed those under
+> *"nothing can touch it"* alongside dice and `/dev/urandom`, merging "leaves no seed" with
+> "leaves no record". Round 16 swept that branch — Bitcoin heights 0–303,726, NIST's Beacon
+> from 2013-09-05, RANDOM.ORG's daily archives (**153 files fetched, 153/153 MD5-verified**),
+> RAND's million digits, 3301's own published bytes, and every offset rather than the 8-offset
+> ladder prior sweeps used: **≈14.5 × 10⁹ offsets, 0 hits.** The branch is narrowed by
+> measurement, not closed — the Marsaglia Random Number CDROM (1995) is named, found and
+> unswept. Round 16 also established, against this repo's own prior claim, that the anti-repeat
+> filter was applied by a **machine, not by hand** (≥0.99 power).
+> → [`analysis/round16/SYNTHESIS.md`](liber-primus/analysis/round16/SYNTHESIS.md)
+
 > **Superseded 2026-08-17 (Round 12, front D3).** This section used to end "*Nobody should
 > claim LP2 is solvable with more compute or more AI — the math says otherwise.*" That is
 > true only for the external-pad member of the class. Front D3's positive control planted a

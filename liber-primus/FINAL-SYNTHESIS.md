@@ -75,6 +75,22 @@ while adding little security) — it *is* a **Smirnov word / Carlitz composition
 combinatorics. That is a *mathematician's* reflex, and its softness points to a **human calligrapher
 applying a "don't write the same rune twice" rule by hand while inscribing the book.**
 
+> **⚠️ Superseded 2026-08-20 (Round 16, lane P4 — register item D-01, run for the first time).**
+> The last clause is **refuted as stated**. The pad's randomness is not human-produced: every
+> human-randomness model with any signature beyond the bare immediate-repeat rule is excluded at
+> **≥0.99 power**, and pooled lag-2..8 bleed is **z = +0.65** — zero bleed, and the sign is wrong
+> for a human. The filter also had **no per-line scope** (power 1.000): 4/86 residual doublets
+> cross a line boundary, 4.65 % against a 4.58 % base, where a calligrapher checking "the rune I
+> just wrote" would leave ~22.9 %. **The bound:** lag-1 suppression is 80.75 % and any lag-2..8
+> suppression above **1.70 %** is excluded at 95 %.
+>
+> One honest residue, reported as **UNDERPOWERED (0.110)**: a human eye applying *only* that one
+> rule to a machine-generated pad cannot be separated from the coded filter — and cannot be in
+> principle, since such a stream *is* the coded filter's output. So "a person did the writing" is
+> untouched; "a person supplied the randomness" is excluded. The technique-fingerprint reasoning
+> above stands; the inference to a *hand-applied* filter does not.
+> → `analysis/round16/P4_filter/RESULTS.md`
+
 **Profile:** a non-commercial cypherpunk/privacy-movement maker, most likely a **small collective (~3–8)
 around one dominant polymath architect**, born ~1965–1985, whose rare, load-bearing skill *intersection*
 is itself the fingerprint:

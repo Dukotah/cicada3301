@@ -1,0 +1,24 @@
+# Round 16 — THE PUBLIC PAD. Per-lane .gitignore files cover each lane's fetched corpora
+# (P1 blockchair dumps, P2 beacon/random.org archives, P3 RAND + Cicada pads); this block
+# covers the shared instrument and lane P0, which fetches nothing.
+#
+# REGENERATION
+#   trigram_idx.npy      — the rune-index trigram model, rebuilt automatically on first
+#                          call to lib_padsweep.trigram_model() from liber-primus/data/
+#                          {kjv,moby,pride,war}.txt. Deleting it costs one rebuild.
+#   P0_dense/ckpt*/      — per-config sweep checkpoints, one JSON per (pad, builder, sign).
+#                          Rebuild:  python P0_dense/sweep.py     (resumable — it skips any
+#                          config that already has a checkpoint), then P0_dense/merge.py
+#                          re-collects them into results*.json.
+#   *.log / *.out / *.err — raw stdout of long sweeps. The numbers that matter are copied
+#                          into results*.json and RESULTS.md.
+#
+# COMMITTED (the record of what was tried, self-sufficient without any of the above):
+#   lib_padsweep.py, PREREG.md, SYNTHESIS.md, each lane's scripts, results*.json, RESULTS.md
+trigram_idx.npy
+__pycache__/
+P0_dense/ckpt/
+P0_dense/ckpt_ms8/
+*.log
+*.out
+*.err

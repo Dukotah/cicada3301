@@ -51,15 +51,29 @@ FIELDS = ("timeStamp", "seedValue", "previousOutputValue", "outputValue", "statu
 _loc = threading.local()
 
 
+_SESSION = None
+
+
 def _sess():
-    s = getattr(_loc, "s", None)
-    if s is None:
+    """ONE shared Session for the whole process.
+
+    This was originally thread-local. `fetch_day` builds and tears down a ThreadPoolExecutor
+    per day, so a thread-local Session is created afresh for every (day x worker) pair and
+    never closed - 32 workers x 120 days leaks ~4,000 Sessions and their TLS sockets, and the
+    fetcher degrades into a CPU spin that makes no progress (observed twice here: 885 s and
+    801 s of CPU with the day counter frozen). requests.Session is safe for concurrent GETs
+    as long as the connection pool is big enough, so: one Session, one pool, sized to the
+    worker count."""
+    global _SESSION
+    if _SESSION is None:
         s = requests.Session()
         s.headers.update(UA)
-        a = requests.adapters.HTTPAdapter(pool_connections=4, pool_maxsize=4, max_retries=0)
+        a = requests.adapters.HTTPAdapter(pool_connections=8, pool_maxsize=128,
+                                          max_retries=0)
         s.mount("https://", a)
-        _loc.s = s
-    return s
+        s.mount("http://", a)
+        _SESSION = s
+    return _SESSION
 
 
 def parse_record(xml):
@@ -313,23 +327,45 @@ def rdo_verify(months):
 
 
 def rdo_assemble(months, out_name):
-    """Concatenate the verified daily files in date order into one pad."""
+    """Concatenate the daily files in date order into one pad.
+
+    HARD RULE: a daily file is included only if its MD5 matches random.org's own published
+    `<month>-bin.md5`. A partially-downloaded torrent leaves zero-filled or truncated files
+    on disk that look fine to `os.path.getsize`; silently concatenating those would put
+    non-random bytes into the pad and quietly destroy the sweep. This repo has twice been
+    burned by a file accepted as what it claimed to be, so the checksum gate is not optional.
+    Unverified files are EXCLUDED and reported.
+    """
     import hashlib
-    parts = []
+    parts, rejected = [], []
     for m in months:
         d = os.path.join(RDODIR, f"random.org-pregenerated-{m}-bin")
+        md5f = os.path.join(RDODIR, f"{m}-bin.md5")
+        want = {}
+        if os.path.exists(md5f):
+            for line in open(md5f, encoding="utf-8", errors="ignore"):
+                q = line.split()
+                if len(q) == 2:
+                    want[q[1].lstrip("*")] = q[0].lower()
         if not os.path.isdir(d):
             continue
         for fn in sorted(os.listdir(d)):
-            if fn.endswith(".bin"):
-                parts.append(os.path.join(d, fn))
-    blob = b"".join(open(p, "rb").read() for p in parts)
+            if not fn.endswith(".bin"):
+                continue
+            p_ = os.path.join(d, fn)
+            h = hashlib.md5(open(p_, "rb").read()).hexdigest()
+            if want.get(fn) == h:
+                parts.append(p_)
+            else:
+                rejected.append(fn)
+    blob = b"".join(open(p_, "rb").read() for p_ in parts)
     dest = os.path.join(DATA, out_name)
     with open(dest, "wb") as f:
         f.write(blob)
-    print(f"  wrote {out_name} {len(blob):,} B from {len(parts)} daily files "
+    print(f"  wrote {out_name} {len(blob):,} B from {len(parts)} MD5-VERIFIED daily files "
+          f"(rejected {len(rejected)} unverified) "
           f"sha256={hashlib.sha256(blob).hexdigest()[:16]}", flush=True)
-    return dest, len(blob), [os.path.basename(p) for p in parts]
+    return dest, len(blob), [os.path.basename(p_) for p_ in parts], rejected
 
 
 def main_randomorg(a):
@@ -337,16 +373,59 @@ def main_randomorg(a):
     if not a.verify:
         rdo_fetch_months(months, a.minutes)
     v = rdo_verify(months)
-    dest, n, files = rdo_assemble(months, a.out or ("pad_randomorg_%s_%s.bin" %
-                                                    (months[0], months[-1])))
+    dest, n, files, rejected = rdo_assemble(
+        months, a.out or ("pad_randomorg_%s_%s.bin" % (months[0], months[-1])))
     meta = {"source": "RANDOM.ORG Pregenerated File Archive (binary, 1 MiB/day)",
             "months": months, "retrieval": "free monthly BitTorrent + free published MD5",
-            "verify": v, "pad": {"file": os.path.basename(dest), "bytes": n,
-                                 "daily_files": len(files),
-                                 "first": files[0] if files else None,
-                                 "last": files[-1] if files else None}}
+            "verify": v,
+            "pad": {"file": os.path.basename(dest), "bytes": n,
+                    "daily_files_md5_verified": len(files),
+                    "daily_files_rejected_unverified": rejected,
+                    "first": files[0] if files else None,
+                    "last": files[-1] if files else None,
+                    "note": "only MD5-verified daily files are concatenated"}}
     with open(os.path.join(DATA, "fetch_meta_randomorg.json"), "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=2)
+
+
+def beacon_spotcheck(start, end, n=300, seed=3301):
+    """Independent per-record check of the v1 spec invariant  outputValue = SHA-512(sig).
+
+    The corpus already proves itself two ways offline: the hash chain
+    (record[n].previousOutputValue == record[n-1].outputValue) over every adjacent pair, and
+    a genesis whose previousOutputValue is 128 zeros. This adds the third, which needs the
+    signature field we do not store: re-pull a random sample of records live and require
+    SHA-512(signatureValue) == outputValue. Verified 3/3 by hand on 2026-08-19 before being
+    wired in here.
+    """
+    import hashlib, random as _r
+    recs = load_window(dt.date.fromisoformat(start), dt.date.fromisoformat(end))
+    rng = _r.Random(seed)
+    sample = rng.sample(recs, min(n, len(recs)))
+    ok = bad = err = 0
+    for rec in sample:
+        try:
+            x = _sess().get(BASE + str(rec["timeStamp"]), timeout=30).text
+            live = parse_record(x)
+            m = re.search(r"<signatureValue>(.*?)</signatureValue>", x, re.S)
+            if not live or not m:
+                err += 1
+                continue
+            sig = bytes.fromhex(m.group(1).strip())
+            if (hashlib.sha512(sig).hexdigest().upper() == live["outputValue"].upper()
+                    and live["outputValue"].upper() == rec["outputValue"].upper()
+                    and live["seedValue"].upper() == rec["seedValue"].upper()):
+                ok += 1
+            else:
+                bad += 1
+        except Exception:
+            err += 1
+    res = {"sampled": len(sample), "sig_invariant_ok": ok, "bad": bad, "fetch_errors": err,
+           "invariant": "outputValue == SHA-512(signatureValue)  (NIST Beacon v1 spec)"}
+    print(json.dumps(res, indent=2))
+    with open(os.path.join(DATA, "beacon_spotcheck.json"), "w", encoding="utf-8") as f:
+        json.dump(res, f, indent=2)
+    return res
 
 
 if __name__ == "__main__":
@@ -362,9 +441,15 @@ if __name__ == "__main__":
     r.add_argument("--minutes", type=int, default=45, help="patience per month")
     r.add_argument("--out", default=None)
     r.add_argument("--verify", action="store_true")
+    c = sub.add_parser("beaconcheck")
+    c.add_argument("--start", default="2013-09-05")
+    c.add_argument("--end", default="2014-01-06")
+    c.add_argument("--n", type=int, default=300)
     args, extra = top.parse_known_args()
     if args.cmd == "randomorg":
         main_randomorg(args)
+    elif args.cmd == "beaconcheck":
+        beacon_spotcheck(args.start, args.end, args.n)
     else:
         sys.argv = [sys.argv[0]] + [x for x in sys.argv[1:] if x != "beacon"]
         main()

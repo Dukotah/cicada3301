@@ -1,0 +1,129 @@
+{
+  "what": "Independent reproduction of one pad through two different code paths.",
+  "path_a": "sweep.py whole-pad mode, ONE process, lib_padsweep.dense_scan (the round's reference scanner) -> results_randomorg_2013-09_2013-11.json",
+  "path_b": "sweep.py --builder per-config mode, TEN processes, fast_dense_scan (the layout-optimised scanner, itself proved bit-identical by _assert_scan_equiv) -> parts/*.json",
+  "pad": "pad_randomorg_2013-09_2013-11.bin",
+  "configs_compared": 13,
+  "score_mismatches": 0,
+  "nulls_compared": 10,
+  "null_mismatches": 0,
+  "detail": [
+    {
+      "config": "byte_scaled_rev|-1",
+      "whole_pad": -6.901439522265821,
+      "parts": -6.901439522265821
+    },
+    {
+      "config": "byte_scaled_rev|1",
+      "whole_pad": -6.959299438849326,
+      "parts": -6.959299438849326
+    },
+    {
+      "config": "byte_scaled|1",
+      "whole_pad": -6.931002184816875,
+      "parts": -6.931002184816875
+    },
+    {
+      "config": "hi_nibble|1",
+      "whole_pad": -6.926590805706582,
+      "parts": -6.926590805706582
+    },
+    {
+      "config": "lo_nibble_rev|-1",
+      "whole_pad": -6.956952419556011,
+      "parts": -6.956952419556011
+    },
+    {
+      "config": "lo_nibble_rev|1",
+      "whole_pad": -6.862412294749375,
+      "parts": -6.862412294749375
+    },
+    {
+      "config": "lo_nibble|1",
+      "whole_pad": -6.9367606704926,
+      "parts": -6.9367606704926
+    },
+    {
+      "config": "mod29_rev|-1",
+      "whole_pad": -6.810640700106527,
+      "parts": -6.810640700106527
+    },
+    {
+      "config": "mod29_rev|1",
+      "whole_pad": -6.881070275124376,
+      "parts": -6.881070275124376
+    },
+    {
+      "config": "mod29|-1",
+      "whole_pad": -6.954880505675185,
+      "parts": -6.954880505675185
+    },
+    {
+      "config": "mod29|1",
+      "whole_pad": -6.963390302771034,
+      "parts": -6.963390302771034
+    },
+    {
+      "config": "prime_to_idx_rev|-1",
+      "whole_pad": -6.911278605513563,
+      "parts": -6.911278605513563
+    },
+    {
+      "config": "prime_to_idx|-1",
+      "whole_pad": -6.94098628664744,
+      "parts": -6.94098628664744
+    }
+  ],
+  "null_detail": [
+    {
+      "variant": "mod29",
+      "whole_pad": -6.996435085411327,
+      "parts": -6.996435085411327
+    },
+    {
+      "variant": "mod29_rev",
+      "whole_pad": -6.957645542687917,
+      "parts": -6.957645542687917
+    },
+    {
+      "variant": "hi_nibble",
+      "whole_pad": -7.029508754421113,
+      "parts": -7.029508754421113
+    },
+    {
+      "variant": "hi_nibble_rev",
+      "whole_pad": -7.039867959674142,
+      "parts": -7.039867959674142
+    },
+    {
+      "variant": "lo_nibble",
+      "whole_pad": -6.996438882753162,
+      "parts": -6.996438882753162
+    },
+    {
+      "variant": "lo_nibble_rev",
+      "whole_pad": -7.004188457638457,
+      "parts": -7.004188457638457
+    },
+    {
+      "variant": "byte_scaled",
+      "whole_pad": -6.988557212188171,
+      "parts": -6.988557212188171
+    },
+    {
+      "variant": "byte_scaled_rev",
+      "whole_pad": -6.9872224306910296,
+      "parts": -6.9872224306910296
+    },
+    {
+      "variant": "prime_to_idx",
+      "whole_pad": -6.98926453740097,
+      "parts": -6.98926453740097
+    },
+    {
+      "variant": "prime_to_idx_rev",
+      "whole_pad": -6.96911857770039,
+      "parts": -6.96911857770039
+    }
+  ]
+}
