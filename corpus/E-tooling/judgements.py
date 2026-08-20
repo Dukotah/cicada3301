@@ -659,3 +659,10 @@ for n, why, note in [
     add(n, decoder_type=kind, null_trustworthy=("n/a" if kind == "no-decoder" else "unknown"),
         evidence=why, what_it_tried=why,
         what_it_concluded=("n/a" if kind == "no-decoder" else "Not assessed."), notes=note)
+
+add("cicada-solvers__optimisticninja_cicada3301",
+    decoder_type="no-decoder", null_trustworthy="n/a",
+    evidence="Puzzle archive organised by year (2012/, 2013/, 2014/) plus mdfiles/, "
+             "tools/ and CI. First commit 2022-12-09.",
+    what_it_tried="Archival and documentation of the 2012-2014 puzzles.",
+    what_it_concluded="n/a")

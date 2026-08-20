@@ -1,6 +1,6 @@
 {
  "$comment": "Lane E catalogue of third-party Cicada 3301 / Liber Primus tooling. Every row is a repository cloned into corpus/E-tooling/vendor/ (the vendor tree itself is gitignored; clone_sha makes each row reproducible). Judgement fields (decoder_type, null_trustworthy, what_it_tried, what_it_concluded) are hand-authored from reading the code; decoder_evidence names the file and line the judgement rests on. Rows marked decoder_type 'unknown' were NOT read - do not treat them as rigid.",
- "generated_utc": "2026-08-20T07:04:31Z",
+ "generated_utc": "2026-08-20T07:12:02Z",
  "decoder_type_vocabulary": {
   "rigid": "Key/keystream pointer advances once per ciphertext rune, unconditionally. Cannot express a skip at all.",
   "skip-capable": "The decode primitive holds the key pointer if HANDED a set of interrupter positions or an interrupter character, but the tool performs no search over unknown skip patterns. Default call is rigid.",
@@ -23,19 +23,19 @@
   "scream314_15938_index_sha256": "67a41c67b6a8e8678944d26e9c6af547ef0a07a21eb47e3fd483790ba48e81d7"
  },
  "summary": {
-  "n_tools": 108,
+  "n_tools": 105,
   "by_decoder_type": {
    "skip-aware-search": 9,
    "skip-capable": 13,
    "rigid": 10,
-   "unknown": 34,
+   "unknown": 31,
    "no-decoder": 42
   },
   "by_null_trustworthy": {
    "partial": 19,
    "True": 3,
    "False": 10,
-   "unknown": 34,
+   "unknown": 31,
    "n/a": 42
   }
  },
@@ -1969,42 +1969,6 @@
    "notes": null
   },
   {
-   "name": "cicada-solvers/optimisticninja_cicada3301",
-   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__optimisticninja_cicada3301",
-   "url": "https://github.com/cicada-solvers/optimisticninja_cicada3301",
-   "clone_sha": "c895e6b3b43d06dd2071fdab12694f73c2805c12",
-   "shallow_clone": false,
-   "license": "NOT-STATED",
-   "license_files": [],
-   "language": "HTML",
-   "languages": {
-    "HTML": 4,
-    "Python": 3,
-    "JavaScript": 1,
-    "Shell": 1
-   },
-   "loc": 1085,
-   "first_commit_date": "2022-12-09T09:42:32+01:00",
-   "last_commit_date": "2022-12-09T09:42:32+01:00",
-   "n_commits": 1,
-   "authors": [
-    "tweqx"
-   ],
-   "cipher_families_referenced": {
-    "caesar_shift": 1
-   },
-   "what_it_tried": null,
-   "what_it_concluded": null,
-   "has_transcription": false,
-   "transcription": null,
-   "transcription_sha256": null,
-   "decoder_type": "unknown",
-   "decoder_evidence": null,
-   "null_trustworthy": "unknown",
-   "divergences_vs_canon": null,
-   "notes": null
-  },
-  {
    "name": "localavaster/cadrypt",
    "vendor_dir": "corpus/E-tooling/vendor/localavaster__cadrypt",
    "url": "https://github.com/localavaster/cadrypt",
@@ -2942,33 +2906,6 @@
    "notes": null
   },
   {
-   "name": "cijhho123/cicada3301",
-   "vendor_dir": "corpus/E-tooling/vendor/cijhho123__cicada3301",
-   "url": null,
-   "clone_sha": null,
-   "shallow_clone": false,
-   "license": "NOT-STATED",
-   "license_files": [],
-   "language": null,
-   "languages": {},
-   "loc": 0,
-   "first_commit_date": null,
-   "last_commit_date": null,
-   "n_commits": null,
-   "authors": [],
-   "cipher_families_referenced": {},
-   "what_it_tried": "Clone landed with a broken checkout. Not assessed.",
-   "what_it_concluded": "Not assessed.",
-   "has_transcription": false,
-   "transcription": null,
-   "transcription_sha256": null,
-   "decoder_type": "unknown",
-   "decoder_evidence": "Clone landed with a broken checkout. Not assessed.",
-   "null_trustworthy": "unknown",
-   "divergences_vs_canon": null,
-   "notes": null
-  },
-  {
    "name": "iBotPeaches/cicada_3301",
    "vendor_dir": "corpus/E-tooling/vendor/iBotPeaches__cicada_3301",
    "url": "https://github.com/iBotPeaches/cicada_3301",
@@ -2993,33 +2930,6 @@
    "transcription_sha256": null,
    "decoder_type": "unknown",
    "decoder_evidence": "2025-03 to 2026-08; clone contains no working-tree files at HEAD in this checkout. Not assessed.",
-   "null_trustworthy": "unknown",
-   "divergences_vs_canon": null,
-   "notes": null
-  },
-  {
-   "name": "neuroretransmit/cicada",
-   "vendor_dir": "corpus/E-tooling/vendor/neuroretransmit__cicada",
-   "url": null,
-   "clone_sha": null,
-   "shallow_clone": false,
-   "license": "NOT-STATED",
-   "license_files": [],
-   "language": null,
-   "languages": {},
-   "loc": 0,
-   "first_commit_date": null,
-   "last_commit_date": null,
-   "n_commits": null,
-   "authors": [],
-   "cipher_families_referenced": {},
-   "what_it_tried": "Clone landed empty. Not assessed.",
-   "what_it_concluded": "Not assessed.",
-   "has_transcription": false,
-   "transcription": null,
-   "transcription_sha256": null,
-   "decoder_type": "unknown",
-   "decoder_evidence": "Clone landed empty. Not assessed.",
    "null_trustworthy": "unknown",
    "divergences_vs_canon": null,
    "notes": null
@@ -3656,6 +3566,42 @@
    "transcription_sha256": null,
    "decoder_type": "no-decoder",
    "decoder_evidence": "Puzzle notes and scripts; no keyed rune decode loop found.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/optimisticninja_cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__optimisticninja_cicada3301",
+   "url": "https://github.com/cicada-solvers/optimisticninja_cicada3301",
+   "clone_sha": "c895e6b3b43d06dd2071fdab12694f73c2805c12",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "HTML",
+   "languages": {
+    "HTML": 4,
+    "Python": 3,
+    "JavaScript": 1,
+    "Shell": 1
+   },
+   "loc": 1085,
+   "first_commit_date": "2022-12-09T09:42:32+01:00",
+   "last_commit_date": "2022-12-09T09:42:32+01:00",
+   "n_commits": 1,
+   "authors": [
+    "tweqx"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 1
+   },
+   "what_it_tried": "Archival and documentation of the 2012-2014 puzzles.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Puzzle archive organised by year (2012/, 2013/, 2014/) plus mdfiles/, tools/ and CI. First commit 2022-12-09.",
    "null_trustworthy": "n/a",
    "divergences_vs_canon": null,
    "notes": null
@@ -4761,33 +4707,6 @@
    "transcription_sha256": null,
    "decoder_type": "no-decoder",
    "decoder_evidence": "2016-01-06. One image plus its outguess payload from the 2016 puzzle. No decoder.",
-   "null_trustworthy": "n/a",
-   "divergences_vs_canon": null,
-   "notes": null
-  },
-  {
-   "name": "mortlach/Liber-Primus-Crib-Assist",
-   "vendor_dir": "corpus/E-tooling/vendor/mortlach__Liber-Primus-Crib-Assist",
-   "url": null,
-   "clone_sha": null,
-   "shallow_clone": false,
-   "license": "NOT-STATED",
-   "license_files": [],
-   "language": null,
-   "languages": {},
-   "loc": 0,
-   "first_commit_date": null,
-   "last_commit_date": null,
-   "n_commits": null,
-   "authors": [],
-   "cipher_families_referenced": {},
-   "what_it_tried": "Crib generation.",
-   "what_it_concluded": "Not assessed.",
-   "has_transcription": false,
-   "transcription": null,
-   "transcription_sha256": null,
-   "decoder_type": "no-decoder",
-   "decoder_evidence": "Crib-list generator feeding mortlach/Liber-Primus-Rune-Decrypting; the clone did not complete in this lane (see GAPS-E.md).",
    "null_trustworthy": "n/a",
    "divergences_vs_canon": null,
    "notes": null

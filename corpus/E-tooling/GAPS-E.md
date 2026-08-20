@@ -65,7 +65,7 @@ their absence from `TOOLS.json` says nothing about what they contain.
 
 ## 3. Decoder assessments not made
 
-`TOOLS.json` carries `decoder_type: "unknown"` for **34 of 108** rows. That value means
+`TOOLS.json` carries `decoder_type: "unknown"` for **31 of 105** rows. That value means
 exactly one thing: *the decisive key-advance loop was not read in this lane*. It does
 **not** mean the tool is rigid, and no count in `REPORT-E.md` treats it as such.
 

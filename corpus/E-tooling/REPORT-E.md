@@ -1,10 +1,10 @@
 # REPORT-E — Third-party Cicada 3301 / Liber Primus tooling: what exists, what it could have found, and what its silence is worth
 
 Lane E of the corpus sweep. Working directory `corpus/E-tooling/`.
-Machine-readable companion: **`TOOLS.json`** (108 rows, one per repository).
+Machine-readable companion: **`TOOLS.json`** (105 rows, one per repository).
 Transcription conflicts: **`CONFLICTS-E.md`**. Holes: **`GAPS-E.md`**.
 
-The `vendor/` tree (108 clones, ~9 GB of third-party code) is gitignored. Every row
+The `vendor/` tree (105 clones, ~9 GB of third-party code) is gitignored. Every row
 in `TOOLS.json` carries `url` + `clone_sha`, so any row can be reconstituted exactly.
 
 ---
@@ -49,7 +49,7 @@ finds them.
 
 ## 3. The catalogue
 
-108 repositories, sorted by tier. `null_trustworthy` is the answer to "is a published
+105 repositories, sorted by tier. `null_trustworthy` is the answer to "is a published
 negative from this tool a real negative?". `decoder_evidence` in `TOOLS.json` names
 the file and line every judgement rests on.
 
@@ -127,7 +127,16 @@ Quagmire-style keyed alphabets. **That negative should be treated as real.**
 | `ztlw30813/cicada3301` | Python | 2024-05-20 | NOT-STATED | `decryptor.py:161` and `:358` — `key_idx += 1` unconditionally, **and over the 26-letter Latin alphabet mod 26**, not the 29-rune Gematria Primus. It cannot decode LP runes at all. | 2.6k |
 | `Wra1th/Nebuchadnezzar` | Python | 2023-06-22 | NOT-STATED | key and ciphertext zipped position-for-position; no hold. | 0.2k |
 
-### 3.4 no-decoder (42 rows) and unknown (34 rows)
+### 3.4 Licences
+
+Recorded, not assigned — nothing in `vendor/` has been relicensed. Detection is by
+pattern match over `LICENSE`/`COPYING` files present in each clone:
+**NOT-STATED 73, GPL-3.0 13, MIT 8, Apache-2.0 5, ISC 4, Unlicense 1, CC0-1.0 1.**
+`NOT-STATED` means no licence file was found in the clone. It does **not** mean the
+work is public domain, and any reuse of a `NOT-STATED` repository needs the author's
+permission.
+
+### 3.5 no-decoder (42 rows) and unknown (31 rows)
 
 `no-decoder` covers transcriptions, gematria tables, hash/steganography work, page
 archives, and UI shells — `resvolver/c1cada`, `scream314/cicada3301`, `rtkd/iddqd`,
@@ -136,7 +145,7 @@ archives, and UI shells — `resvolver/c1cada`, `scream314/cicada3301`, `rtkd/id
 in `TOOLS.json`.
 
 **`unknown` means the decisive loop was not read in this lane. It does not mean rigid,
-and none of the counts below treat it as such.** The 34 unknowns are listed with
+and none of the counts below treat it as such.** The 31 unknowns are listed with
 reading priorities in `GAPS-E.md` section 3.
 
 ---
@@ -171,7 +180,7 @@ under an unknown interrupter pattern.** That is the finding.
 This is a reasoned assessment from reading 32 decode loops, not a verdict on the field.
 Four things bound it:
 
-1. **34 repositories were not read.** Some of them may search skips. The 31/41/28 split
+1. **31 repositories were not read.** Some of them may search skips. The 31/41/28 split
    describes the *read* subset and would move if the rest were read.
 2. **"Rigid" is a statement about the code, not about the author.** Most of these
    repositories make no negative claim at all. `rtkd/idkfa` ships as a tool;
@@ -189,7 +198,7 @@ Four things bound it:
    key-length crib window, `JBO` to a first sentence with the flag off by default,
    `aldegonde` to period 5 and deterministic phase rules, `mortlach` to what a crib
    window can constrain. **No tool in this corpus searches skips over a running key.**
-   The intersection of "skip-aware" and "running-key" is empty across 108 repositories.
+   The intersection of "skip-aware" and "running-key" is empty across 105 repositories.
 
 ### 4.3 The three patterns worth naming
 
@@ -413,7 +422,7 @@ transcription.
    settle C-E-01 — the one contested rune that sits on unsolved ciphertext — with a
    third, pixel-derived reading rather than another copy of someone else's text file.
 
-2. **Nobody has searched skips over a running key.** Across 108 repositories, the
+2. **Nobody has searched skips over a running key.** Across 105 repositories, the
    intersection of "skip-aware search" and "running key" is **empty**.
    `relikd/LiberPrayground` searches interrupters but only over periodic key lengths;
    `jens-wedin/attack_keyskip.py` searches key-skip but only over prime/totient

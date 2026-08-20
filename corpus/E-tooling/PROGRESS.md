@@ -118,12 +118,12 @@ and must not be counted as third-party corroboration.
 
 ## 2026-08-20 — LANE COMPLETE
 
-All five deliverables written: `TOOLS.json` (108 rows), `CONFLICTS-E.md`, `GAPS-E.md`,
+All five deliverables written: `TOOLS.json` (105 rows), `CONFLICTS-E.md`, `GAPS-E.md`,
 `REPORT-E.md`, this file.
 
 Final decoder tiering over the 32 repositories whose decode loop was actually read:
 **10 rigid, 13 skip-capable-but-no-search, 9 skip-aware-search.**
-Null trustworthiness: **10 false, 19 partial, 3 true.** 34 rows are `unknown` — meaning
+Null trustworthiness: **10 false, 19 partial, 3 true.** 31 rows are `unknown` — meaning
 the decisive loop was not read, NOT that the tool is rigid.
 
 Transcription: `164 omissions, 4 genuine contradictions`, across two dissenting
