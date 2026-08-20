@@ -51,13 +51,18 @@ def main():
     total = sum(len(s) for s in segs)
     print(f"canon: {len(segs)} segments, {total} runes, file={CANON_FILE}")
 
-    scan = json.load(open(os.path.join(E, "vendor_scan.json"), encoding="utf-8"))
+    facts = json.load(open(os.path.join(E, "tools_facts.json"), encoding="utf-8"))
+    scan = {"repos": list(facts["repos"].values())}
     seg_strs = [to_str(s) for s in segs]
 
     results = []
     for repo in scan["repos"]:
         for f in (repo.get("rune_files") or []):
-            if f["n_runes_gp29"] < 5000:
+            _n = f.get("n_runes", f.get("n_runes_gp29", 0))
+            # A Liber Primus transcription is 12,000-27,000 runes. Anything larger is a
+            # dictionary, an n-gram table or a corpus, not a transcription; comparing it
+            # produces a meaningless "all 57 missing".
+            if _n < 5000 or _n > 30000:
                 continue
             p = os.path.join(E, "vendor", repo["dir"], f["path"])
             try:
@@ -73,7 +78,7 @@ def main():
                 "repo": repo["dir"],
                 "path": f["path"],
                 "clone_sha": repo.get("clone_sha"),
-                "n_runes_in_file": f["n_runes_gp29"],
+                "n_runes_in_file": f.get("n_runes", f.get("n_runes_gp29")),
                 "file_sha256": f["file_sha256"],
                 "sha256_indices": f["sha256_indices"],
                 "canon_segments_total": len(segs),
@@ -84,7 +89,8 @@ def main():
             }
             results.append(rec)
             status = "ALL 57 PRESENT" if not missing else f"MISSING {len(missing)}: {missing}"
-            print(f"  {repo['dir']:52s} {f['path'][:44]:44s} n={f['n_runes_gp29']:6d}  {status}")
+            nr = f.get("n_runes", f.get("n_runes_gp29"))
+            print(f"  {repo['dir'][:52]:52s} {f['path'][:44]:44s} n={nr:6d}  {status}")
 
     out = {
         "generated_utc": datetime.datetime.now(datetime.timezone.utc)

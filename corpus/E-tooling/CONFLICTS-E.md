@@ -95,9 +95,22 @@ both could descend from one community transcription posted in January 2015. What
 does establish is that the 13,136-rune stream is the long-standing reading and not an
 artefact of the 2017-era tooling.
 
+**And in fact the same repository shows the reading being arrived at.** `c1cada` also
+holds an *earlier and different* stream, `transcriptions.rne` (13,053 runes on
+2015-01-16, 13,072 on 2015-01-23), which carries the competing reading discussed under
+C-E-03b — and the same transcriber's later repository replaces it, under the same
+filename, with our 13,136 stream. See C-E-03b for the full commit-by-commit chain.
+
 ---
 
-## Headline 2 — exactly one lineage disagrees, and it is one witness sampled four times
+## Headline 2 — two lineages disagree with canon, in different places, and canon wins both
+
+*(This heading previously read "exactly one lineage disagrees". That was written before
+`henkman/liberprimus` and the cijhho archive were recovered. There are two dissenting
+lineages, they contradict canon at different runes, and they do not corroborate each
+other. See C-E-03 and C-E-03b.)*
+
+### Lineage A — `scream314` (15,938 runes): contradicts at segments 24 and 56
 
 | Vendored file | n runes | index SHA-256 | 57 canon segments verbatim? |
 |---|---:|---|---|
@@ -217,7 +230,91 @@ dissenting witness corroborates the other. On every one of the four contested ru
 additionally discounted by the fact that the same file drops 64 runes outright — a
 transcription with that many omissions is a noisy witness on substitutions too.
 
-### C-E-03b — the henkman reading is a *lineage*, not a slip
+### C-E-03b — both readings are dated to the first three weeks of January 2015, and canon is the corrected one
+
+The full dated chain, assembled from three repositories' git histories:
+
+| date (commit) | repo / file | n runes | index SHA-256 | reading |
+|---|---|---:|---|---|
+| **2015-01-09T23:39:25Z** `52e5c7e4` | `thomasandfriends/Cicada3301Runes` `data/runes.rune.old` (also `.rune~`, `.rune.old~`) | 13,072 | **`a38c30ca109919b8ec55d28f924e7544307e93422bda8c5ed2b22f2e69180d0f`** | **W / W / L** |
+| 2015-01-09 (same commit) | `thomasandfriends/…` `data/runes.rune` | 13,063 | `ae9e6c12…` | **W / W / L** |
+| 2015-01-16 `42d3394` | `resvolver/c1cada` `transcriptions.rne` | 13,053 | `3a2a1f8f…` | (same family) |
+| 2015-01-20 `f75c1de` | `resvolver/c1cada` `perl/page.*.txt` | 13,377 | `ec3d102a…` | draft, garbled page 27-32 |
+| **2015-01-21T16:34:18+01:00** `fe9b2255` | `resvolver/c1cada` `perl/page.*.txt` | **13,136** | **`74cebdb0…`** | **B / B / X — canon** |
+| 2015-01-23 `420a2f4` | `resvolver/c1cada` `transcriptions.rne` | 13,072 | `a38c30ca…` (identical to the 2015-01-09 file) | W / W / L |
+| **2015-01-23** `420a2f4` | `resvolver/c1cada` `translation/liber_primus.rne` | **13,136** | **`74cebdb0…`** | **canon** |
+| 2016-08-14 `8cc9665` | `henkman/liberprimus` `liberprimus.txt` | 13,072 | `e9d9ed39…` | W / W / L |
+| 2017-03-01 `218ed88` | `rtkd/iddqd` `…transcription--master.txt` | 15,935 | — | canon-compatible (all 57 segments) |
+| **2017-05-10** `9d9faa7` | `dude123124144/Liber-Primus-Runes-OCR` `misc_scripts/transcriptions.rne` | **13,136** | **`74cebdb0…`** | **canon** |
+
+Three things follow, and they should be stated in this order.
+
+**1. The W/W/L reading is the OLDER one.** The earliest dated rune stream anywhere in
+this corpus is `thomasandfriends/Cicada3301Runes`, a single commit by Misha Wagner on
+**2015-01-09**, six days after the Liber Primus was published — and it reads `ᚹ` at
+segment 33 @100 and @117 and `ᛚ` at segment 55 @19. Our reading is not the original; it
+is a **correction made twelve days later**.
+
+**2. The correction is the right way round.** The 13,136 stream is not a divergent
+branch of the 13,072 one — it is *longer by 64 runes*, and those 64 runes are exactly
+the omissions that make segments 0, 3, 6, 19, 26, 35, 36 and 39 fail to match in the
+older file. A transcription that gains 64 previously-missed runes and simultaneously
+changes three glyphs is a transcription being **re-checked against the images**, which
+is the only process that produces that combination. A drifting copy loses runes; it
+does not gain them.
+
+**3. The transcriber who produced the older reading adopted the newer one.**
+`resvolver/c1cada` carries both side by side on 2015-01-23, and `dude123124144`'s own
+later repository re-publishes `transcriptions.rne` — the same filename that held the
+13,072 stream — as the **13,136 stream** in 2017. He replaced his own reading.
+
+That is the strongest statement this lane can make about the canon: it is the
+corrected successor of the community's first attempt, adopted by the person who made
+the first attempt, and it is what every later mainstream lineage carries.
+
+The W/W/L reading survives downstream in `henkman/liberprimus` (2016) and in the
+cijhho script archive, which is why it keeps resurfacing as an apparent conflict.
+
+#### The cijhho archive holds both readings too
+
+**The whole provenance question resolves inside one repository.** `resvolver/c1cada`
+holds *both* readings, in files whose git history is dated and checkable, and all of
+them are committed by the same transcriber, `dude123124144`:
+
+| commit | date | file | n runes | index SHA-256 |
+|---|---|---|---:|---|
+| `42d3394` | 2015-01-16T03:04:24-05:00 | `transcriptions.rne` | 13,053 | `3a2a1f8f2c6e52f835df487c3ac06478ba3cdfdee697f129b14519b6fd523de9` |
+| `f75c1de` | 2015-01-20T22:36:59+01:00 | `perl/page.*.txt` (11 files) | 13,377 | `ec3d102ac6d4e03aa2d10ab15565b043f89f49a66faaed4345a909b7ba1d7d36` |
+| **`fe9b2255`** | **2015-01-21T16:34:18+01:00** | `perl/page.*.txt` | **13,136** | **`74cebdb0…` — canon** |
+| `420a2f4` | 2015-01-23T12:56:18-05:00 | `transcriptions.rne` | 13,072 | `a38c30ca109919b8ec55d28f924e7544307e93422bda8c5ed2b22f2e69180d0f` |
+| **`420a2f4`** | **2015-01-23T12:56:18-05:00** | `translation/liber_primus.rne` | **13,136** | **`74cebdb0…` — canon** |
+
+The 13,072 file at `a38c30ca…` reproduces **exactly the C-E-03 contradictions**:
+segment 33 @100 `ᛒ`→`ᚹ`, segment 33 @117 `ᛒ`→`ᚹ`, segment 55 @19 `ᛉ`→`ᛚ`, with the
+missing-segment set `[0, 3, 6, 19, 26, 33, 35, 36, 39, 55]` — henkman's set plus 36.
+It is 13,072 runes, the same length as henkman's file, though the two index hashes
+differ slightly, so they are near neighbours rather than copies.
+
+**And the transcriber corrected himself.** The same author's later repository,
+`dude123124144/Liber-Primus-Runes-OCR`, carries a file with the *same name*,
+`misc_scripts/transcriptions.rne`, committed `9d9faa7` on **2017-05-10** — and it is
+**13,136 runes hashing to `74cebdb0…`**. So does `misc_scripts/liber_primus_words.rne`
+in the same directory. The person who produced the 13,072 reading in January 2015
+replaced it, under the same filename, with our reading.
+
+That is the strongest statement this lane can make about the canon:
+
+> Both readings existed in January 2015, in one repository, by one transcriber. The
+> 13,072 reading is the earlier and lossier of the two; the 13,136 reading is the one
+> he corrected to within a week, published again in `translation/liber_primus.rne`,
+> and still carried under the same filename two years later. The 13,072 reading
+> survives downstream in `henkman/liberprimus` (2016) and in the cijhho script
+> archive; the 13,136 reading is what `rtkd/iddqd` (2017), `scream314` (2018),
+> `micheloosterhof/aldegonde` (`data/page0-58.txt`),
+> `r4nd0mD3v3l0p3r/LiberPrimusSolver` (`data/unsolved.txt`),
+> `cicada-solvers/libergo` (`cmd/runesub/runesub.sh`) and this project all carry.
+
+#### The cijhho archive holds both readings too
 
 `krisyotam/cicada3301` (`76d3ee8c762f60025822c8c05edbf31351636469`) carries an archive
 attributed to `cijhho`, and inside its `2014/` folder there are **two different rune

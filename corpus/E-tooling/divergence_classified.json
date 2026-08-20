@@ -1,8 +1,88 @@
 {
- "generated_utc": "2026-08-20T06:52:48Z",
+ "generated_utc": "2026-08-20T07:04:31Z",
  "canon_file": "liber-primus/data/krisyotam_runes.txt",
  "canon_sha256_indices": "74cebdb074898f4c2742733a421e6d1717068a4f4cf2802d2b50923285aad329",
  "results": [
+  {
+   "repo": "0x676f64__Cicada-3301",
+   "path": "iddqd/liber-primus__transcription--sentences/liber-primus__transcription--sentences.txt",
+   "clone_sha": "81ef8805cd049f1b982091f20dd60d0211e97999",
+   "n_runes_in_file": 15856,
+   "findings": [
+    {
+     "canon_segment": 20,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 133,
+       "canon_runes": "ᛗ",
+       "canon_translit": "M",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛖᛚᚩᚱᚷᛚᚳᛇᛏᚷᚣᛟ >ᛗ< ᚪᛁᚷᛄᛒᛡᛗᛞᛈᚪᚳᛠ",
+       "file_context": "ᛖᛚᚩᚱᚷᛚᚳᛇᛏᚷᚣᛟ >< ᚪᛁᚷᛄᛒᛡᛗᛞᛈᚪᚳᛠ"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "0x676f64__Cicada-3301",
+   "path": "iddqd/liber-primus__translation/liber-primus__known-plain-text.txt",
+   "clone_sha": "81ef8805cd049f1b982091f20dd60d0211e97999",
+   "n_runes_in_file": 12955,
+   "findings": [
+    {
+     "canon_segment": 20,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 133,
+       "canon_runes": "ᛗ",
+       "canon_translit": "M",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛖᛚᚩᚱᚷᛚᚳᛇᛏᚷᚣᛟ >ᛗ< ᚪᛁᚷᛄᛒᛡᛗᛞᛈᚪᚳᛠ",
+       "file_context": "ᛖᛚᚩᚱᚷᛚᚳᛇᛏᚷᚣᛟ >< ᚪᛁᚷᛄᛒᛡᛗᛞᛈᚪᚳᛠ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
   {
    "repo": "Skyro7777777__LiberPrimusDecoded",
    "path": "cicada3301-research/decoder/all_pages.json",
@@ -591,7 +671,7 @@
    "repo": "Skyro7777777__LiberPrimusDecoded",
    "path": "tool-results/read_1786524975012_e54737a8512a.txt",
    "clone_sha": "538c639e8dac3ebdc8de57916991632a818347f0",
-   "n_runes_in_file": 8531,
+   "n_runes_in_file": 8827,
    "findings": [
     {
      "canon_segment": 36,
@@ -837,19 +917,19 @@
    ]
   },
   {
-   "repo": "Skyro7777777__LiberPrimusDecoded",
-   "path": "cicada3301-research/decoder/wave5_prng_results.json",
-   "clone_sha": "538c639e8dac3ebdc8de57916991632a818347f0",
-   "n_runes_in_file": 6960,
+   "repo": "cicada-solvers__aldegonde",
+   "path": "experiments/repeat_attack_results_20251229_021220.txt",
+   "clone_sha": "782d2000dd01f9a07e863d65d4387d4015c3d999",
+   "n_runes_in_file": 13246,
    "findings": [
     {
      "canon_segment": 0,
      "segment_len": 262,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/262 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0115
+      "reason": "segment does not appear in file (longest common run 4/262 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
      },
      "diffs": []
     },
@@ -858,9 +938,9 @@
      "segment_len": 266,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/266 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0113
+      "reason": "segment does not appear in file (longest common run 4/266 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.015
      },
      "diffs": []
     },
@@ -869,9 +949,9 @@
      "segment_len": 201,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/201 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0149
+      "reason": "segment does not appear in file (longest common run 4/201 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0199
      },
      "diffs": []
     },
@@ -880,9 +960,9 @@
      "segment_len": 217,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/217 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0138
+      "reason": "segment does not appear in file (longest common run 4/217 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0184
      },
      "diffs": []
     },
@@ -913,9 +993,9 @@
      "segment_len": 196,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/196 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0153
+      "reason": "segment does not appear in file (longest common run 4/196 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0204
      },
      "diffs": []
     },
@@ -924,9 +1004,9 @@
      "segment_len": 208,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/208 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0144
+      "reason": "segment does not appear in file (longest common run 4/208 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0192
      },
      "diffs": []
     },
@@ -946,9 +1026,9 @@
      "segment_len": 268,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/268 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0112
+      "reason": "segment does not appear in file (longest common run 5/268 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0187
      },
      "diffs": []
     },
@@ -957,9 +1037,9 @@
      "segment_len": 263,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/263 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0114
+      "reason": "segment does not appear in file (longest common run 4/263 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0152
      },
      "diffs": []
     },
@@ -968,9 +1048,9 @@
      "segment_len": 273,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/273 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.011
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
      },
      "diffs": []
     },
@@ -1001,9 +1081,9 @@
      "segment_len": 137,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 4/137 runes)",
-      "longest_common_run": 4,
-      "coverage": 0.0292
+      "reason": "segment does not appear in file (longest common run 3/137 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0219
      },
      "diffs": []
     },
@@ -1012,9 +1092,9 @@
      "segment_len": 159,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/159 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0189
+      "reason": "segment does not appear in file (longest common run 4/159 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0252
      },
      "diffs": []
     },
@@ -1034,9 +1114,9 @@
      "segment_len": 273,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/273 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.011
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
      },
      "diffs": []
     },
@@ -1045,9 +1125,9 @@
      "segment_len": 260,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/260 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0115
+      "reason": "segment does not appear in file (longest common run 4/260 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0154
      },
      "diffs": []
     },
@@ -1078,9 +1158,9 @@
      "segment_len": 273,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/273 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.011
+      "reason": "segment does not appear in file (longest common run 5/273 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0183
      },
      "diffs": []
     },
@@ -1089,9 +1169,9 @@
      "segment_len": 131,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 5/131 runes)",
-      "longest_common_run": 5,
-      "coverage": 0.0382
+      "reason": "segment does not appear in file (longest common run 3/131 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0229
      },
      "diffs": []
     },
@@ -1111,9 +1191,9 @@
      "segment_len": 270,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/270 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0111
+      "reason": "segment does not appear in file (longest common run 4/270 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
      },
      "diffs": []
     },
@@ -1122,9 +1202,9 @@
      "segment_len": 273,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/273 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.011
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
      },
      "diffs": []
     },
@@ -1133,9 +1213,9 @@
      "segment_len": 265,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/265 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0113
+      "reason": "segment does not appear in file (longest common run 4/265 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0151
      },
      "diffs": []
     },
@@ -1188,9 +1268,9 @@
      "segment_len": 269,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/269 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0112
+      "reason": "segment does not appear in file (longest common run 4/269 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0149
      },
      "diffs": []
     },
@@ -1276,9 +1356,9 @@
      "segment_len": 240,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 4/240 runes)",
-      "longest_common_run": 4,
-      "coverage": 0.0167
+      "reason": "segment does not appear in file (longest common run 5/240 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0208
      },
      "diffs": []
     },
@@ -1287,9 +1367,9 @@
      "segment_len": 231,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/231 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.013
+      "reason": "segment does not appear in file (longest common run 4/231 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0173
      },
      "diffs": []
     },
@@ -1309,9 +1389,9 @@
      "segment_len": 272,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 5/272 runes)",
-      "longest_common_run": 5,
-      "coverage": 0.0184
+      "reason": "segment does not appear in file (longest common run 4/272 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
      },
      "diffs": []
     },
@@ -1320,9 +1400,9 @@
      "segment_len": 274,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 5/274 runes)",
-      "longest_common_run": 5,
-      "coverage": 0.0182
+      "reason": "segment does not appear in file (longest common run 4/274 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0146
      },
      "diffs": []
     },
@@ -1331,9 +1411,9 @@
      "segment_len": 273,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/273 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.011
+      "reason": "segment does not appear in file (longest common run 5/273 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0183
      },
      "diffs": []
     },
@@ -1353,9 +1433,9 @@
      "segment_len": 270,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/270 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0111
+      "reason": "segment does not appear in file (longest common run 4/270 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
      },
      "diffs": []
     },
@@ -1375,9 +1455,9 @@
      "segment_len": 271,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/271 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0111
+      "reason": "segment does not appear in file (longest common run 4/271 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
      },
      "diffs": []
     },
@@ -1386,9 +1466,9 @@
      "segment_len": 66,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/66 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0455
+      "reason": "segment does not appear in file (longest common run 4/66 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0606
      },
      "diffs": []
     },
@@ -1397,9 +1477,9 @@
      "segment_len": 92,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/92 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0326
+      "reason": "segment does not appear in file (longest common run 4/92 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0435
      },
      "diffs": []
     },
@@ -1408,9 +1488,9 @@
      "segment_len": 263,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/263 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0114
+      "reason": "segment does not appear in file (longest common run 5/263 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.019
      },
      "diffs": []
     },
@@ -1419,9 +1499,9 @@
      "segment_len": 179,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/179 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0168
+      "reason": "segment does not appear in file (longest common run 4/179 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0223
      },
      "diffs": []
     },
@@ -1430,9 +1510,9 @@
      "segment_len": 232,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 4/232 runes)",
-      "longest_common_run": 4,
-      "coverage": 0.0172
+      "reason": "segment does not appear in file (longest common run 5/232 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0216
      },
      "diffs": []
     },
@@ -1441,12 +1521,42 @@
      "segment_len": 76,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/76 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0395
+      "reason": "segment does not appear in file (longest common run 4/76 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0526
      },
      "diffs": []
     },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/85 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0471
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/95 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0526
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__aldegonde",
+   "path": "data/page0-56.txt",
+   "clone_sha": "782d2000dd01f9a07e863d65d4387d4015c3d999",
+   "n_runes_in_file": 12956,
+   "findings": [
     {
      "canon_segment": 55,
      "segment_len": 85,
@@ -1463,28 +1573,58 @@
      "segment_len": 95,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/95 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0316
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
      },
      "diffs": []
     }
    ]
   },
   {
-   "repo": "Skyro7777777__LiberPrimusDecoded",
-   "path": "cicada3301-research/decoder/d4_runs/d4_results.json",
-   "clone_sha": "538c639e8dac3ebdc8de57916991632a818347f0",
-   "n_runes_in_file": 6471,
+   "repo": "cicada-solvers__cadrypt",
+   "path": "liberprimus_pages/all0.txt",
+   "clone_sha": "9faefccf3d2ba90002835813f8a5a6953d5cfd84",
+   "n_runes_in_file": 12956,
+   "findings": [
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__cadrypt",
+   "path": "dumped_liberprimus_pages/spiralbranchchapter55.txt",
+   "clone_sha": "9faefccf3d2ba90002835813f8a5a6953d5cfd84",
+   "n_runes_in_file": 6088,
    "findings": [
     {
      "canon_segment": 0,
      "segment_len": 262,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/262 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0115
+      "reason": "segment does not appear in file (longest common run 4/262 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
      },
      "diffs": []
     },
@@ -1493,9 +1633,9 @@
      "segment_len": 266,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 4/266 runes)",
-      "longest_common_run": 4,
-      "coverage": 0.015
+      "reason": "segment does not appear in file (longest common run 3/266 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0113
      },
      "diffs": []
     },
@@ -1504,9 +1644,9 @@
      "segment_len": 201,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/201 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0149
+      "reason": "segment does not appear in file (longest common run 4/201 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0199
      },
      "diffs": []
     },
@@ -1515,9 +1655,9 @@
      "segment_len": 217,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/217 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0138
+      "reason": "segment does not appear in file (longest common run 4/217 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0184
      },
      "diffs": []
     },
@@ -1526,9 +1666,9 @@
      "segment_len": 261,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/261 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0115
+      "reason": "segment does not appear in file (longest common run 4/261 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
      },
      "diffs": []
     },
@@ -1548,9 +1688,9 @@
      "segment_len": 196,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/196 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0153
+      "reason": "segment does not appear in file (longest common run 4/196 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0204
      },
      "diffs": []
     },
@@ -1581,9 +1721,9 @@
      "segment_len": 268,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/268 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0112
+      "reason": "segment does not appear in file (longest common run 4/268 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0149
      },
      "diffs": []
     },
@@ -1592,9 +1732,9 @@
      "segment_len": 263,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/263 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0114
+      "reason": "segment does not appear in file (longest common run 4/263 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0152
      },
      "diffs": []
     },
@@ -1603,9 +1743,9 @@
      "segment_len": 273,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/273 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.011
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
      },
      "diffs": []
     },
@@ -1625,9 +1765,9 @@
      "segment_len": 272,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/272 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.011
+      "reason": "segment does not appear in file (longest common run 4/272 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
      },
      "diffs": []
     },
@@ -1647,9 +1787,9 @@
      "segment_len": 159,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/159 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0189
+      "reason": "segment does not appear in file (longest common run 4/159 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0252
      },
      "diffs": []
     },
@@ -1658,9 +1798,9 @@
      "segment_len": 267,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 4/267 runes)",
-      "longest_common_run": 4,
-      "coverage": 0.015
+      "reason": "segment does not appear in file (longest common run 3/267 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0112
      },
      "diffs": []
     },
@@ -1691,9 +1831,9 @@
      "segment_len": 271,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/271 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0111
+      "reason": "segment does not appear in file (longest common run 4/271 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
      },
      "diffs": []
     },
@@ -1702,9 +1842,9 @@
      "segment_len": 269,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 4/269 runes)",
-      "longest_common_run": 4,
-      "coverage": 0.0149
+      "reason": "segment does not appear in file (longest common run 3/269 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0112
      },
      "diffs": []
     },
@@ -1724,9 +1864,9 @@
      "segment_len": 131,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/131 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0229
+      "reason": "segment does not appear in file (longest common run 5/131 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0382
      },
      "diffs": []
     },
@@ -1735,9 +1875,9 @@
      "segment_len": 213,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/213 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0141
+      "reason": "segment does not appear in file (longest common run 4/213 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0188
      },
      "diffs": []
     },
@@ -1746,9 +1886,9 @@
      "segment_len": 270,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/270 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0111
+      "reason": "segment does not appear in file (longest common run 4/270 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
      },
      "diffs": []
     },
@@ -1757,9 +1897,9 @@
      "segment_len": 273,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/273 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.011
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
      },
      "diffs": []
     },
@@ -1768,9 +1908,9 @@
      "segment_len": 265,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 4/265 runes)",
-      "longest_common_run": 4,
-      "coverage": 0.0151
+      "reason": "segment does not appear in file (longest common run 3/265 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0113
      },
      "diffs": []
     },
@@ -1779,9 +1919,9 @@
      "segment_len": 234,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/234 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0128
+      "reason": "segment does not appear in file (longest common run 4/234 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0171
      },
      "diffs": []
     },
@@ -1790,9 +1930,9 @@
      "segment_len": 269,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/269 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0112
+      "reason": "segment does not appear in file (longest common run 4/269 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0149
      },
      "diffs": []
     },
@@ -1801,9 +1941,9 @@
      "segment_len": 277,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 4/277 runes)",
-      "longest_common_run": 4,
-      "coverage": 0.0144
+      "reason": "segment does not appear in file (longest common run 3/277 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0108
      },
      "diffs": []
     },
@@ -1812,9 +1952,9 @@
      "segment_len": 263,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 4/263 runes)",
-      "longest_common_run": 4,
-      "coverage": 0.0152
+      "reason": "segment does not appear in file (longest common run 5/263 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.019
      },
      "diffs": []
     },
@@ -1834,9 +1974,9 @@
      "segment_len": 121,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 2/121 runes)",
-      "longest_common_run": 2,
-      "coverage": 0.0165
+      "reason": "segment does not appear in file (longest common run 4/121 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0331
      },
      "diffs": []
     },
@@ -1867,9 +2007,9 @@
      "segment_len": 271,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/271 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0111
+      "reason": "segment does not appear in file (longest common run 4/271 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
      },
      "diffs": []
     },
@@ -1911,135 +2051,121 @@
      "segment_len": 240,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/240 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0125
-     },
-     "diffs": []
-    },
-    {
-     "canon_segment": 40,
-     "segment_len": 231,
-     "verdict": "OMISSION",
-     "why": {
-      "reason": "segment does not appear in file (longest common run 4/231 runes)",
+      "reason": "segment does not appear in file (longest common run 4/240 runes)",
       "longest_common_run": 4,
-      "coverage": 0.0173
+      "coverage": 0.0167
      },
      "diffs": []
     },
     {
-     "canon_segment": 41,
-     "segment_len": 273,
+     "canon_segment": 53,
+     "segment_len": 232,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/273 runes)",
+      "reason": "segment does not appear in file (longest common run 5/232 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0216
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 54,
+     "segment_len": 76,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/76 runes)",
       "longest_common_run": 3,
-      "coverage": 0.011
+      "coverage": 0.0395
      },
      "diffs": []
     },
     {
-     "canon_segment": 42,
-     "segment_len": 272,
+     "canon_segment": 55,
+     "segment_len": 85,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/272 runes)",
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
       "longest_common_run": 3,
-      "coverage": 0.011
+      "coverage": 0.0353
      },
      "diffs": []
     },
     {
-     "canon_segment": 43,
-     "segment_len": 274,
+     "canon_segment": 56,
+     "segment_len": 95,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/274 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0109
-     },
-     "diffs": []
-    },
-    {
-     "canon_segment": 44,
-     "segment_len": 273,
-     "verdict": "OMISSION",
-     "why": {
-      "reason": "segment does not appear in file (longest common run 3/273 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.011
-     },
-     "diffs": []
-    },
-    {
-     "canon_segment": 45,
-     "segment_len": 270,
-     "verdict": "OMISSION",
-     "why": {
-      "reason": "segment does not appear in file (longest common run 4/270 runes)",
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
       "longest_common_run": 4,
-      "coverage": 0.0148
+      "coverage": 0.0421
      },
      "diffs": []
-    },
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__cadrypt",
+   "path": "dumped_liberprimus_pages/spiralbranchchapter_no_numbers55.txt",
+   "clone_sha": "9faefccf3d2ba90002835813f8a5a6953d5cfd84",
+   "n_runes_in_file": 6088,
+   "findings": [
     {
-     "canon_segment": 46,
-     "segment_len": 270,
+     "canon_segment": 0,
+     "segment_len": 262,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/270 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0111
+      "reason": "segment does not appear in file (longest common run 4/262 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
      },
      "diffs": []
     },
     {
-     "canon_segment": 47,
-     "segment_len": 274,
+     "canon_segment": 1,
+     "segment_len": 266,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/274 runes)",
+      "reason": "segment does not appear in file (longest common run 3/266 runes)",
       "longest_common_run": 3,
-      "coverage": 0.0109
+      "coverage": 0.0113
      },
      "diffs": []
     },
     {
-     "canon_segment": 48,
-     "segment_len": 271,
+     "canon_segment": 2,
+     "segment_len": 201,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/271 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0111
+      "reason": "segment does not appear in file (longest common run 4/201 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0199
      },
      "diffs": []
     },
     {
-     "canon_segment": 49,
-     "segment_len": 66,
+     "canon_segment": 3,
+     "segment_len": 217,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/66 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0455
+      "reason": "segment does not appear in file (longest common run 4/217 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0184
      },
      "diffs": []
     },
     {
-     "canon_segment": 50,
-     "segment_len": 92,
+     "canon_segment": 4,
+     "segment_len": 261,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/92 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0326
+      "reason": "segment does not appear in file (longest common run 4/261 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
      },
      "diffs": []
     },
     {
-     "canon_segment": 51,
+     "canon_segment": 5,
      "segment_len": 263,
      "verdict": "OMISSION",
      "why": {
@@ -2050,13 +2176,376 @@
      "diffs": []
     },
     {
-     "canon_segment": 52,
-     "segment_len": 179,
+     "canon_segment": 6,
+     "segment_len": 196,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/179 runes)",
+      "reason": "segment does not appear in file (longest common run 4/196 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0204
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 7,
+     "segment_len": 208,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/208 runes)",
       "longest_common_run": 3,
-      "coverage": 0.0168
+      "coverage": 0.0144
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 8,
+     "segment_len": 255,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/255 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0157
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 9,
+     "segment_len": 268,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/268 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0149
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 10,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/263 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0152
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 11,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 12,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/261 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0115
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 13,
+     "segment_len": 272,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/272 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 14,
+     "segment_len": 137,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/137 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0219
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 15,
+     "segment_len": 159,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/159 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0252
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 16,
+     "segment_len": 267,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/267 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0112
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 17,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/273 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.011
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 18,
+     "segment_len": 260,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/260 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0115
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 19,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/271 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 20,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/269 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0112
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 21,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 22,
+     "segment_len": 131,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/131 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0382
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 23,
+     "segment_len": 213,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/213 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0188
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 24,
+     "segment_len": 270,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/270 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 25,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 26,
+     "segment_len": 265,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/265 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0113
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 27,
+     "segment_len": 234,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/234 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0171
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 28,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/269 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0149
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 29,
+     "segment_len": 277,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/277 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0108
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 30,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/263 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.019
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 31,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/269 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0112
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 32,
+     "segment_len": 121,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/121 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0331
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 33,
+     "segment_len": 214,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/214 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.014
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 34,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/261 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0115
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/271 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 36,
+     "segment_len": 238,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/238 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0126
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 37,
+     "segment_len": 228,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/228 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0132
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 38,
+     "segment_len": 228,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/228 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0132
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 39,
+     "segment_len": 240,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/240 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0167
      },
      "diffs": []
     },
@@ -2065,9 +2554,9 @@
      "segment_len": 232,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 4/232 runes)",
-      "longest_common_run": 4,
-      "coverage": 0.0172
+      "reason": "segment does not appear in file (longest common run 5/232 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0216
      },
      "diffs": []
     },
@@ -2076,9 +2565,9 @@
      "segment_len": 76,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 2/76 runes)",
-      "longest_common_run": 2,
-      "coverage": 0.0263
+      "reason": "segment does not appear in file (longest common run 3/76 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0395
      },
      "diffs": []
     },
@@ -2087,9 +2576,9 @@
      "segment_len": 85,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 2/85 runes)",
-      "longest_common_run": 2,
-      "coverage": 0.0235
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
      },
      "diffs": []
     },
@@ -2098,11 +2587,1052 @@
      "segment_len": 95,
      "verdict": "OMISSION",
      "why": {
-      "reason": "segment does not appear in file (longest common run 3/95 runes)",
-      "longest_common_run": 3,
-      "coverage": 0.0316
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
      },
      "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__documenting-cicada3301-scream314",
+   "path": "liber_primus.md",
+   "clone_sha": "53e4282d89229b98212ef4f2349310fab6c43532",
+   "n_runes_in_file": 15938,
+   "findings": [
+    {
+     "canon_segment": 24,
+     "segment_len": 270,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 172,
+       "canon_runes": "ᚫ",
+       "canon_translit": "AE",
+       "file_runes": "ᚪ",
+       "file_translit": "A",
+       "canon_context": "ᛝᚠᚪᛋᛡᛁᚻᛒᚱᚪᚢᚣ >ᚫ< ᚢᛟᛠᚪᚣᛖᛟᚫᛖᛈᚠᛒ",
+       "file_context": "ᛝᚠᚪᛋᛡᛁᚻᛒᚱᚪᚢᚣ >ᚪ< ᚢᛟᛠᚪᚣᛖᛟᚫᛖᛈᚠᛒ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 80,
+       "canon_runes": "ᚣ",
+       "canon_translit": "Y",
+       "file_runes": "ᛖ",
+       "file_translit": "E",
+       "canon_context": "ᛁᚾᛞᚦᛖᛞᛁᚢᛁᚾᛁᛏ >ᚣ< ᚹᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱ",
+       "file_context": "ᛁᚾᛞᚦᛖᛞᛁᚢᛁᚾᛁᛏ >ᛖ< ᚹᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱ"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__documenting-cicada3301-scream314",
+   "path": "pages_and_ciphers.md",
+   "clone_sha": "53e4282d89229b98212ef4f2349310fab6c43532",
+   "n_runes_in_file": 15810,
+   "findings": [
+    {
+     "canon_segment": 24,
+     "segment_len": 270,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 172,
+       "canon_runes": "ᚫ",
+       "canon_translit": "AE",
+       "file_runes": "ᚪ",
+       "file_translit": "A",
+       "canon_context": "ᛝᚠᚪᛋᛡᛁᚻᛒᚱᚪᚢᚣ >ᚫ< ᚢᛟᛠᚪᚣᛖᛟᚫᛖᛈᚠᛒ",
+       "file_context": "ᛝᚠᚪᛋᛡᛁᚻᛒᚱᚪᚢᚣ >ᚪ< ᚢᛟᛠᚪᚣᛖᛟᚫᛖᛈᚠᛒ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 19,
+       "canon_runes": "ᛉ",
+       "canon_translit": "X",
+       "file_runes": "ᛚ",
+       "file_translit": "L",
+       "canon_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛉ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ",
+       "file_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛚ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚣ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 31,
+       "canon_runes": "ᚾ",
+       "canon_translit": "N",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛉᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞ >ᚾ< ᚣᛄᚳᚠᛡᚫᛏᛈᛇᚪᚦᚳ",
+       "file_context": "ᛚᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞ >< ᚣᛄᚳᚠᛡᚫᛏᛈᛇᚪᚦᚳ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 80,
+       "canon_runes": "ᚣ",
+       "canon_translit": "Y",
+       "file_runes": "ᛖ",
+       "file_translit": "E",
+       "canon_context": "ᛁᚾᛞᚦᛖᛞᛁᚢᛁᚾᛁᛏ >ᚣ< ᚹᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱ",
+       "file_context": "ᛁᚾᛞᚦᛖᛞᛁᚢᛁᚾᛁᛏ >ᛖ< ᚹᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 94,
+       "canon_runes": "ᛖ",
+       "canon_translit": "E",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱᚷ >ᛖ< ",
+       "file_context": "ᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱᚷ >< "
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__iddqd",
+   "path": "liber-primus__transcription--sentences/liber-primus__transcription--sentences.txt",
+   "clone_sha": "0e3789ad2949c62ea7fb9e3e00ded93df3b3ce07",
+   "n_runes_in_file": 15856,
+   "findings": [
+    {
+     "canon_segment": 20,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 133,
+       "canon_runes": "ᛗ",
+       "canon_translit": "M",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛖᛚᚩᚱᚷᛚᚳᛇᛏᚷᚣᛟ >ᛗ< ᚪᛁᚷᛄᛒᛡᛗᛞᛈᚪᚳᛠ",
+       "file_context": "ᛖᛚᚩᚱᚷᛚᚳᛇᛏᚷᚣᛟ >< ᚪᛁᚷᛄᛒᛡᛗᛞᛈᚪᚳᛠ"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__iddqd",
+   "path": "liber-primus__translation/liber-primus__known-plain-text.txt",
+   "clone_sha": "0e3789ad2949c62ea7fb9e3e00ded93df3b3ce07",
+   "n_runes_in_file": 12955,
+   "findings": [
+    {
+     "canon_segment": 20,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 133,
+       "canon_runes": "ᛗ",
+       "canon_translit": "M",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛖᛚᚩᚱᚷᛚᚳᛇᛏᚷᚣᛟ >ᛗ< ᚪᛁᚷᛄᛒᛡᛗᛞᛈᚪᚳᛠ",
+       "file_context": "ᛖᛚᚩᚱᚷᛚᚳᛇᛏᚷᚣᛟ >< ᚪᛁᚷᛄᛒᛡᛗᛞᛈᚪᚳᛠ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__libergo",
+   "path": "cmd/winchafftext/processtextpull.sh",
+   "clone_sha": "07d40fe91a9d2633594b51147938cfa596efe2c2",
+   "n_runes_in_file": 26506,
+   "findings": [
+    {
+     "canon_segment": 15,
+     "segment_len": 159,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 9,
+       "canon_runes": "ᛚᚢᛝᚾᚳᚢᛒᚾᛏᚠᛝ",
+       "canon_translit": "LUNGNCUBNTFNG",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚠᚢᛚᛗᚪᛠᚣᛟᚪ >ᛚᚢᛝᚾᚳᚢᛒᚾᛏᚠᛝ< ᛁᚢᛁᚢᛟᚫᛄᚠᚫᚢᚷᛉ",
+       "file_context": "ᚪᛈᚻᚠᚢᛚᛗᚪᛠᚣᛟᚪ >< ᛁᚢᛁᚢᛟᚫᛄᚠᚫᚢᚷᛉ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__libergo",
+   "path": "cmd/detangle/test.sh",
+   "clone_sha": "07d40fe91a9d2633594b51147938cfa596efe2c2",
+   "n_runes_in_file": 13260,
+   "findings": [
+    {
+     "canon_segment": 4,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 164,
+       "canon_runes": "ᚹ",
+       "canon_translit": "W",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛚᚱᛒᚪᛈᛏᛉᛚᛏᛗᛉᛁ >ᚹ< ᛄᛋᛟᛗᚾᚱᛖᛒᛋᚳᛏᛚ",
+       "file_context": "ᛚᚱᛒᚪᛈᛏᛉᛚᛏᛗᛉᛁ >< ᛄᛋᛟᛗᚾᚱᛖᛒᛋᚳᛏᛚ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 21,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 36,
+       "canon_runes": "ᚣ",
+       "canon_translit": "Y",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚢᚻᚾᛏᚫᛒᛇᚩᛁᛈᚫᚩ >ᚣ< ᛡᚣᛗᚷᚠᚱᛡᛚᛏᛖᛟᚩ",
+       "file_context": "ᚢᚻᚾᛏᚫᛒᛇᚩᛁᛈᚫᚩ >< ᛡᚣᛗᚷᚠᚱᛡᛚᛏᛖᛟᚩ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 80,
+       "canon_runes": "ᛏ",
+       "canon_translit": "T",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛚᚫᚳᛋᚪᚩᚷᚹᛚᛈᛖ >ᛏ< ᛄᛉᛝᛚᛏᛉᚩᚣᛝᚠᚩᚣ",
+       "file_context": "ᚦᛚᚫᚳᛋᚪᚩᚷᚹᛚᛈᛖ >< ᛄᛉᛝᛚᛏᛉᚩᚣᛝᚠᚩᚣ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 41,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 218,
+       "canon_runes": "ᚳ",
+       "canon_translit": "C",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚣᛡᚩᛉᚪᛋᚣᛁᛝᛉᛚᛄ >ᚳ< ᛖᚣᚢᛝᚦᛇᚱᛠᛁᚫᚦᚠ",
+       "file_context": "ᚣᛡᚩᛉᚪᛋᚣᛁᛝᛉᛚᛄ >< ᛖᚣᚢᛝᚦᛇᚱᛠᛁᚫᚦᚠ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__libergo",
+   "path": "cmd/winchafftext/processtext.sh",
+   "clone_sha": "07d40fe91a9d2633594b51147938cfa596efe2c2",
+   "n_runes_in_file": 13253,
+   "findings": [
+    {
+     "canon_segment": 15,
+     "segment_len": 159,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 9,
+       "canon_runes": "ᛚᚢᛝᚾᚳᚢᛒᚾᛏᚠᛝ",
+       "canon_translit": "LUNGNCUBNTFNG",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚠᚢᛚᛗᚪᛠᚣᛟᚪ >ᛚᚢᛝᚾᚳᚢᛒᚾᛏᚠᛝ< ᛁᚢᛁᚢᛟᚫᛄᚠᚫᚢᚷᛉ",
+       "file_context": "ᚪᛈᚻᚠᚢᛚᛗᚪᛠᚣᛟᚪ >< ᛁᚢᛁᚢᛟᚫᛄᚠᚫᚢᚷᛉ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__libergo",
+   "path": "cmd/winchafftext/processtextone.sh",
+   "clone_sha": "07d40fe91a9d2633594b51147938cfa596efe2c2",
+   "n_runes_in_file": 13253,
+   "findings": [
+    {
+     "canon_segment": 15,
+     "segment_len": 159,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 9,
+       "canon_runes": "ᛚᚢᛝᚾᚳᚢᛒᚾᛏᚠᛝ",
+       "canon_translit": "LUNGNCUBNTFNG",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚠᚢᛚᛗᚪᛠᚣᛟᚪ >ᛚᚢᛝᚾᚳᚢᛒᚾᛏᚠᛝ< ᛁᚢᛁᚢᛟᚫᛄᚠᚫᚢᚷᛉ",
+       "file_context": "ᚪᛈᚻᚠᚢᛚᛗᚪᛠᚣᛟᚪ >< ᛁᚢᛁᚢᛟᚫᛄᚠᚫᚢᚷᛉ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__libergo",
+   "path": "cmd/quoteomatic/quotomatic.sh",
+   "clone_sha": "07d40fe91a9d2633594b51147938cfa596efe2c2",
+   "n_runes_in_file": 12956,
+   "findings": [
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "cicada-solvers__libergo",
+   "path": "cmd/runedonkey/godonkeygo.sh",
+   "clone_sha": "07d40fe91a9d2633594b51147938cfa596efe2c2",
+   "n_runes_in_file": 12956,
+   "findings": [
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "cmbsolver__cmbcidada3301",
+   "path": "LiberPrimusAnalysisTool/LiberPrimusAnalysisTool.Application.Tests/TransposeLatinToRuneTests.cs",
+   "clone_sha": "5d72bfb713083a8d31a1a4173eb4648cb6943daf",
+   "n_runes_in_file": 12903,
+   "findings": [
+    {
+     "canon_segment": 0,
+     "segment_len": 262,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/262 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "henkman__liberprimus",
+   "path": "liberprimus.go",
+   "clone_sha": "2212f631714711a2d51c858c47dfb6f89ae9ee44",
+   "n_runes_in_file": 13072,
+   "findings": [
+    {
+     "canon_segment": 0,
+     "segment_len": 262,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 3
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛇᚦᛄᛁ",
+       "canon_translit": "EOTHJI",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >ᛇᚦᛄᛁ< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ",
+       "file_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 134,
+       "canon_runes": "ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ",
+       "canon_translit": "WBCXDBFMTNEEAJNLGBXGTHYIDANGGMJROLEOYTPITHDJOEHLEAFXAEPGX",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ< ᚠᛚᚹᛇᛏᚫᚠᚷᚾᛗᛇᛚ",
+       "file_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >< ᚠᛚᚹᛇᛏᚠᚷᚾᛗᛇᛚᚾ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 188,
+       "canon_runes": "ᚫ",
+       "canon_translit": "AE",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛠᚠᛉᚫᛈᚷᛉᚠᛚᚹᛇᛏ >ᚫ< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ",
+       "file_context": "ᚣᚾᛖᚣᛞᛉᛝᚠᛚᚹᛇᛏ >< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 3,
+     "segment_len": 217,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 55,
+       "canon_runes": "ᛒᚹᚾᚻᛗ",
+       "canon_translit": "BWNHM",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >ᛒᚹᚾᚻᛗ< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ",
+       "file_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 6,
+     "segment_len": 196,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 2,
+       "canon_runes": "ᛏ",
+       "canon_translit": "T",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛉᚳ >ᛏ< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ",
+       "file_context": "ᛏᚳᛈᚳᚩᛇᛟᚫᛈᛏᛉᚳ >< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 19,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 82,
+       "canon_runes": "ᚪᛡ",
+       "canon_translit": "AIA",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >ᚪᛡ< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ",
+       "file_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 26,
+     "segment_len": 265,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 262,
+       "canon_runes": "ᛝ",
+       "canon_translit": "NG",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >ᛝ< ᛄᛝ",
+       "file_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >< ᛄᛝᛗᛈᚣᛚᛋᚩᚪᚫᚻᛚ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 33,
+     "segment_len": 214,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 100,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᛒ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ",
+       "file_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᚹ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ"
+      },
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᛒ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ",
+       "file_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᚹ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "insert",
+       "canon_pos_in_segment": 155,
+       "canon_runes": "",
+       "canon_translit": "",
+       "file_runes": "ᛒ",
+       "file_translit": "B",
+       "canon_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >< ᚣᛏᛝᛡᚩᛒᛏᚦᚳᛉᚳᛋ",
+       "file_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >ᛒ< ᚣᛏᛝᛡᚩᛏᚦᚳᛉᚳᛋᚪ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 160,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛄᚱᛡᚱᛖᚦᚣᛏᛝᛡᚩ >ᛒ< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ",
+       "file_context": "ᛄᚱᛡᚱᛖᚦᛒᚣᛏᛝᛡᚩ >< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 39,
+     "segment_len": 240,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 36,
+       "canon_runes": "ᚾ",
+       "canon_translit": "N",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >ᚾ< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ",
+       "file_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 19,
+       "canon_runes": "ᛉ",
+       "canon_translit": "X",
+       "file_runes": "ᛚ",
+       "file_translit": "L",
+       "canon_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛉ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ",
+       "file_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛚ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "henkman__liberprimus",
+   "path": "liberprimus.txt",
+   "clone_sha": "2212f631714711a2d51c858c47dfb6f89ae9ee44",
+   "n_runes_in_file": 13072,
+   "findings": [
+    {
+     "canon_segment": 0,
+     "segment_len": 262,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 3
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛇᚦᛄᛁ",
+       "canon_translit": "EOTHJI",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >ᛇᚦᛄᛁ< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ",
+       "file_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 134,
+       "canon_runes": "ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ",
+       "canon_translit": "WBCXDBFMTNEEAJNLGBXGTHYIDANGGMJROLEOYTPITHDJOEHLEAFXAEPGX",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ< ᚠᛚᚹᛇᛏᚫᚠᚷᚾᛗᛇᛚ",
+       "file_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >< ᚠᛚᚹᛇᛏᚠᚷᚾᛗᛇᛚᚾ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 188,
+       "canon_runes": "ᚫ",
+       "canon_translit": "AE",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛠᚠᛉᚫᛈᚷᛉᚠᛚᚹᛇᛏ >ᚫ< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ",
+       "file_context": "ᚣᚾᛖᚣᛞᛉᛝᚠᛚᚹᛇᛏ >< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 3,
+     "segment_len": 217,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 55,
+       "canon_runes": "ᛒᚹᚾᚻᛗ",
+       "canon_translit": "BWNHM",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >ᛒᚹᚾᚻᛗ< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ",
+       "file_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 6,
+     "segment_len": 196,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 2,
+       "canon_runes": "ᛏ",
+       "canon_translit": "T",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛉᚳ >ᛏ< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ",
+       "file_context": "ᛏᚳᛈᚳᚩᛇᛟᚫᛈᛏᛉᚳ >< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 19,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 82,
+       "canon_runes": "ᚪᛡ",
+       "canon_translit": "AIA",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >ᚪᛡ< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ",
+       "file_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 26,
+     "segment_len": 265,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 262,
+       "canon_runes": "ᛝ",
+       "canon_translit": "NG",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >ᛝ< ᛄᛝ",
+       "file_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >< ᛄᛝᛗᛈᚣᛚᛋᚩᚪᚫᚻᛚ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 33,
+     "segment_len": 214,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 100,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᛒ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ",
+       "file_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᚹ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ"
+      },
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᛒ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ",
+       "file_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᚹ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "insert",
+       "canon_pos_in_segment": 155,
+       "canon_runes": "",
+       "canon_translit": "",
+       "file_runes": "ᛒ",
+       "file_translit": "B",
+       "canon_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >< ᚣᛏᛝᛡᚩᛒᛏᚦᚳᛉᚳᛋ",
+       "file_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >ᛒ< ᚣᛏᛝᛡᚩᛏᚦᚳᛉᚳᛋᚪ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 160,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛄᚱᛡᚱᛖᚦᚣᛏᛝᛡᚩ >ᛒ< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ",
+       "file_context": "ᛄᚱᛡᚱᛖᚦᛒᚣᛏᛝᛡᚩ >< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 39,
+     "segment_len": 240,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 36,
+       "canon_runes": "ᚾ",
+       "canon_translit": "N",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >ᚾ< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ",
+       "file_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 19,
+       "canon_runes": "ᛉ",
+       "canon_translit": "X",
+       "file_runes": "ᛚ",
+       "file_translit": "L",
+       "canon_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛉ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ",
+       "file_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛚ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ"
+      }
+     ]
     }
    ]
   },
@@ -2151,6 +3681,3841 @@
        "file_translit": "E",
        "canon_context": "ᛁᚾᛞᚦᛖᛞᛁᚢᛁᚾᛁᛏ >ᚣ< ᚹᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱ",
        "file_context": "ᛁᚾᛞᚦᛖᛞᛁᚢᛁᚾᛁᛏ >ᛖ< ᚹᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱ"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "localavaster__cadrypt",
+   "path": "liberprimus_pages/all0.txt",
+   "clone_sha": "2a6c1032df87021cc23ff367ae7785ebaa55942e",
+   "n_runes_in_file": 12956,
+   "findings": [
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "localavaster__cadrypt",
+   "path": "dumped_liberprimus_pages/spiralbranchchapter55.txt",
+   "clone_sha": "2a6c1032df87021cc23ff367ae7785ebaa55942e",
+   "n_runes_in_file": 6088,
+   "findings": [
+    {
+     "canon_segment": 0,
+     "segment_len": 262,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/262 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 1,
+     "segment_len": 266,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/266 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0113
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 2,
+     "segment_len": 201,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/201 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0199
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 3,
+     "segment_len": 217,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/217 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0184
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 4,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/261 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 5,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/263 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0114
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 6,
+     "segment_len": 196,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/196 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0204
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 7,
+     "segment_len": 208,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/208 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0144
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 8,
+     "segment_len": 255,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/255 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0157
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 9,
+     "segment_len": 268,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/268 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0149
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 10,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/263 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0152
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 11,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 12,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/261 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0115
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 13,
+     "segment_len": 272,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/272 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 14,
+     "segment_len": 137,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/137 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0219
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 15,
+     "segment_len": 159,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/159 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0252
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 16,
+     "segment_len": 267,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/267 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0112
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 17,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/273 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.011
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 18,
+     "segment_len": 260,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/260 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0115
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 19,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/271 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 20,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/269 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0112
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 21,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 22,
+     "segment_len": 131,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/131 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0382
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 23,
+     "segment_len": 213,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/213 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0188
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 24,
+     "segment_len": 270,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/270 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 25,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 26,
+     "segment_len": 265,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/265 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0113
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 27,
+     "segment_len": 234,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/234 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0171
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 28,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/269 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0149
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 29,
+     "segment_len": 277,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/277 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0108
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 30,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/263 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.019
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 31,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/269 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0112
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 32,
+     "segment_len": 121,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/121 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0331
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 33,
+     "segment_len": 214,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/214 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.014
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 34,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/261 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0115
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/271 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 36,
+     "segment_len": 238,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/238 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0126
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 37,
+     "segment_len": 228,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/228 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0132
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 38,
+     "segment_len": 228,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/228 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0132
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 39,
+     "segment_len": 240,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/240 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0167
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 53,
+     "segment_len": 232,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/232 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0216
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 54,
+     "segment_len": 76,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/76 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0395
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "localavaster__cadrypt",
+   "path": "dumped_liberprimus_pages/spiralbranchchapter_no_numbers55.txt",
+   "clone_sha": "2a6c1032df87021cc23ff367ae7785ebaa55942e",
+   "n_runes_in_file": 6088,
+   "findings": [
+    {
+     "canon_segment": 0,
+     "segment_len": 262,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/262 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 1,
+     "segment_len": 266,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/266 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0113
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 2,
+     "segment_len": 201,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/201 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0199
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 3,
+     "segment_len": 217,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/217 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0184
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 4,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/261 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 5,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/263 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0114
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 6,
+     "segment_len": 196,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/196 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0204
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 7,
+     "segment_len": 208,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/208 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0144
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 8,
+     "segment_len": 255,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/255 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0157
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 9,
+     "segment_len": 268,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/268 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0149
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 10,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/263 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0152
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 11,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 12,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/261 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0115
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 13,
+     "segment_len": 272,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/272 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 14,
+     "segment_len": 137,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/137 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0219
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 15,
+     "segment_len": 159,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/159 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0252
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 16,
+     "segment_len": 267,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/267 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0112
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 17,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/273 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.011
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 18,
+     "segment_len": 260,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/260 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0115
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 19,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/271 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 20,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/269 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0112
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 21,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 22,
+     "segment_len": 131,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/131 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0382
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 23,
+     "segment_len": 213,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/213 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0188
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 24,
+     "segment_len": 270,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/270 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 25,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 26,
+     "segment_len": 265,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/265 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0113
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 27,
+     "segment_len": 234,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/234 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0171
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 28,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/269 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0149
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 29,
+     "segment_len": 277,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/277 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0108
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 30,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/263 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.019
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 31,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/269 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0112
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 32,
+     "segment_len": 121,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/121 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0331
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 33,
+     "segment_len": 214,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/214 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.014
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 34,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/261 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0115
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/271 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 36,
+     "segment_len": 238,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/238 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0126
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 37,
+     "segment_len": 228,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/228 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0132
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 38,
+     "segment_len": 228,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/228 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0132
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 39,
+     "segment_len": 240,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/240 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0167
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 53,
+     "segment_len": 232,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/232 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0216
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 54,
+     "segment_len": 76,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/76 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0395
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "micheloosterhof__aldegonde",
+   "path": "experiments/repeat_attack_results_20251229_021220.txt",
+   "clone_sha": "d1a3c3a50e6ee5643d99f36c2e11bb60ee1ebc62",
+   "n_runes_in_file": 13246,
+   "findings": [
+    {
+     "canon_segment": 0,
+     "segment_len": 262,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/262 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 1,
+     "segment_len": 266,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/266 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.015
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 2,
+     "segment_len": 201,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/201 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0199
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 3,
+     "segment_len": 217,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/217 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0184
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 4,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/261 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 5,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/263 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0152
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 6,
+     "segment_len": 196,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/196 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0204
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 7,
+     "segment_len": 208,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/208 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0192
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 8,
+     "segment_len": 255,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/255 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0157
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 9,
+     "segment_len": 268,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/268 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0187
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 10,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/263 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0152
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 11,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 12,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/261 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 13,
+     "segment_len": 272,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/272 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 14,
+     "segment_len": 137,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/137 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0219
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 15,
+     "segment_len": 159,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/159 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0252
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 16,
+     "segment_len": 267,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/267 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.015
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 17,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 18,
+     "segment_len": 260,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/260 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0154
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 19,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/271 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 20,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/269 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0149
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 21,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/273 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0183
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 22,
+     "segment_len": 131,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/131 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0229
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 23,
+     "segment_len": 213,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/213 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0188
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 24,
+     "segment_len": 270,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/270 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 25,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 26,
+     "segment_len": 265,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/265 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0151
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 27,
+     "segment_len": 234,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/234 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0171
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 28,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/269 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0149
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 29,
+     "segment_len": 277,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/277 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0144
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 30,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/263 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0152
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 31,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/269 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0149
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 32,
+     "segment_len": 121,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/121 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0331
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 33,
+     "segment_len": 214,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/214 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0187
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 34,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/261 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0153
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/271 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 36,
+     "segment_len": 238,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/238 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0168
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 37,
+     "segment_len": 228,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/228 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0175
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 38,
+     "segment_len": 228,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/228 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0175
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 39,
+     "segment_len": 240,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/240 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0208
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 40,
+     "segment_len": 231,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/231 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0173
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 41,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/273 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 42,
+     "segment_len": 272,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/272 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0147
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 43,
+     "segment_len": 274,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/274 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0146
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 44,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/273 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0183
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 45,
+     "segment_len": 270,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/270 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 46,
+     "segment_len": 270,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/270 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 47,
+     "segment_len": 274,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/274 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0146
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 48,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/271 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0148
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 49,
+     "segment_len": 66,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/66 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0606
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 50,
+     "segment_len": 92,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/92 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0435
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 51,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/263 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.019
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 52,
+     "segment_len": 179,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/179 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0223
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 53,
+     "segment_len": 232,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/232 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0216
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 54,
+     "segment_len": 76,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/76 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0526
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/85 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0471
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/95 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0526
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "micheloosterhof__aldegonde",
+   "path": "data/page0-56.txt",
+   "clone_sha": "d1a3c3a50e6ee5643d99f36c2e11bb60ee1ebc62",
+   "n_runes_in_file": 12956,
+   "findings": [
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "resvolver__c1cada",
+   "path": "transcriptions.rne",
+   "clone_sha": "00e73d84d9ab4e9b780d77c7316a8915bda42f52",
+   "n_runes_in_file": 13072,
+   "findings": [
+    {
+     "canon_segment": 0,
+     "segment_len": 262,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 3
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛇᚦᛄᛁ",
+       "canon_translit": "EOTHJI",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >ᛇᚦᛄᛁ< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ",
+       "file_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 134,
+       "canon_runes": "ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ",
+       "canon_translit": "WBCXDBFMTNEEAJNLGBXGTHYIDANGGMJROLEOYTPITHDJOEHLEAFXAEPGX",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ< ᚠᛚᚹᛇᛏᚫᚠᚷᚾᛗᛇᛚ",
+       "file_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >< ᚠᛚᚹᛇᛏᚠᚷᚾᛗᛇᛚᚾ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 188,
+       "canon_runes": "ᚫ",
+       "canon_translit": "AE",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛠᚠᛉᚫᛈᚷᛉᚠᛚᚹᛇᛏ >ᚫ< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ",
+       "file_context": "ᚣᚾᛖᚣᛞᛉᛝᚠᛚᚹᛇᛏ >< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 3,
+     "segment_len": 217,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 55,
+       "canon_runes": "ᛒᚹᚾᚻᛗ",
+       "canon_translit": "BWNHM",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >ᛒᚹᚾᚻᛗ< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ",
+       "file_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 6,
+     "segment_len": 196,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 2,
+       "canon_runes": "ᛏ",
+       "canon_translit": "T",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛉᚳ >ᛏ< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ",
+       "file_context": "ᛏᚳᛈᚳᚩᛇᛟᚫᛈᛏᛉᚳ >< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 19,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 82,
+       "canon_runes": "ᚪᛡ",
+       "canon_translit": "AIA",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >ᚪᛡ< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ",
+       "file_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 26,
+     "segment_len": 265,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 262,
+       "canon_runes": "ᛝ",
+       "canon_translit": "NG",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >ᛝ< ᛄᛝ",
+       "file_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >< ᛄᛝᛗᛈᚣᛚᛋᚩᚪᚫᚻᛚ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 33,
+     "segment_len": 214,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 100,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᛒ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ",
+       "file_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᚹ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ"
+      },
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᛒ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ",
+       "file_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᚹ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "insert",
+       "canon_pos_in_segment": 155,
+       "canon_runes": "",
+       "canon_translit": "",
+       "file_runes": "ᛒ",
+       "file_translit": "B",
+       "canon_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >< ᚣᛏᛝᛡᚩᛒᛏᚦᚳᛉᚳᛋ",
+       "file_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >ᛒ< ᚣᛏᛝᛡᚩᛏᚦᚳᛉᚳᛋᚪ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 160,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛄᚱᛡᚱᛖᚦᚣᛏᛝᛡᚩ >ᛒ< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ",
+       "file_context": "ᛄᚱᛡᚱᛖᚦᛒᚣᛏᛝᛡᚩ >< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 36,
+     "segment_len": 238,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "insert",
+       "canon_pos_in_segment": 1,
+       "canon_runes": "",
+       "canon_translit": "",
+       "file_runes": "ᛚᛁᛗᛒᚢᛚᚱᛏᛁᚢᚷᚳᚠᛇᛚᛇᚣᛏᛏᚫᚢᚫᛠᛇᛖ",
+       "file_translit": "LIMBULRTIUGCFEOLEOYTTAEUAEEAEOE",
+       "canon_context": "ᚣ >< ᚾᚢᚹᛝᚻᚷᚣᚱᚩᛁᛚᚾ",
+       "file_context": "ᚱᚷᚹᛞᚢᚣ >ᛚᛁᛗᛒᚢᛚᚱᛏᛁᚢᚷᚳᚠᛇᛚᛇᚣᛏᛏᚫᚢᚫᛠᛇᛖ< ᚾᚢᚹᛝᚻᚷᚣᚱᚩᛁᛚᚾ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 39,
+     "segment_len": 240,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 36,
+       "canon_runes": "ᚾ",
+       "canon_translit": "N",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >ᚾ< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ",
+       "file_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 19,
+       "canon_runes": "ᛉ",
+       "canon_translit": "X",
+       "file_runes": "ᛚ",
+       "file_translit": "L",
+       "canon_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛉ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ",
+       "file_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛚ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "resvolver__c1cada",
+   "path": "liber_primus_words.rne",
+   "clone_sha": "00e73d84d9ab4e9b780d77c7316a8915bda42f52",
+   "n_runes_in_file": 12699,
+   "findings": [
+    {
+     "canon_segment": 0,
+     "segment_len": 262,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 14/262 runes)",
+      "longest_common_run": 14,
+      "coverage": 0.0534
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 1,
+     "segment_len": 266,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 18/266 runes)",
+      "longest_common_run": 18,
+      "coverage": 0.0677
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 2,
+     "segment_len": 201,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 16/201 runes)",
+      "longest_common_run": 16,
+      "coverage": 0.0796
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 3,
+     "segment_len": 217,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 21/217 runes)",
+      "longest_common_run": 21,
+      "coverage": 0.0968
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 4,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 12/261 runes)",
+      "longest_common_run": 12,
+      "coverage": 0.046
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 5,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 11/263 runes)",
+      "longest_common_run": 11,
+      "coverage": 0.0418
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 6,
+     "segment_len": 196,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 16/196 runes)",
+      "longest_common_run": 16,
+      "coverage": 0.0816
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 7,
+     "segment_len": 208,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 12/208 runes)",
+      "longest_common_run": 12,
+      "coverage": 0.0577
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 8,
+     "segment_len": 255,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 14/255 runes)",
+      "longest_common_run": 14,
+      "coverage": 0.0549
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 9,
+     "segment_len": 268,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 14/268 runes)",
+      "longest_common_run": 14,
+      "coverage": 0.0522
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 10,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 12/263 runes)",
+      "longest_common_run": 12,
+      "coverage": 0.0456
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 11,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 18/273 runes)",
+      "longest_common_run": 18,
+      "coverage": 0.0659
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 12,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 18/261 runes)",
+      "longest_common_run": 18,
+      "coverage": 0.069
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 13,
+     "segment_len": 272,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 25/272 runes)",
+      "longest_common_run": 25,
+      "coverage": 0.0919
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 14,
+     "segment_len": 137,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 10/137 runes)",
+      "longest_common_run": 10,
+      "coverage": 0.073
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 15,
+     "segment_len": 159,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 9/159 runes)",
+      "longest_common_run": 9,
+      "coverage": 0.0566
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 16,
+     "segment_len": 267,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 16/267 runes)",
+      "longest_common_run": 16,
+      "coverage": 0.0599
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 17,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 8/273 runes)",
+      "longest_common_run": 8,
+      "coverage": 0.0293
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 18,
+     "segment_len": 260,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 11/260 runes)",
+      "longest_common_run": 11,
+      "coverage": 0.0423
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 19,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 16/271 runes)",
+      "longest_common_run": 16,
+      "coverage": 0.059
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 20,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 16/269 runes)",
+      "longest_common_run": 16,
+      "coverage": 0.0595
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 21,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 22/273 runes)",
+      "longest_common_run": 22,
+      "coverage": 0.0806
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 22,
+     "segment_len": 131,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 12/131 runes)",
+      "longest_common_run": 12,
+      "coverage": 0.0916
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 23,
+     "segment_len": 213,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 12/213 runes)",
+      "longest_common_run": 12,
+      "coverage": 0.0563
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 24,
+     "segment_len": 270,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 16/270 runes)",
+      "longest_common_run": 16,
+      "coverage": 0.0593
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 25,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 14/273 runes)",
+      "longest_common_run": 14,
+      "coverage": 0.0513
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 26,
+     "segment_len": 265,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 11/265 runes)",
+      "longest_common_run": 11,
+      "coverage": 0.0415
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 27,
+     "segment_len": 234,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 20/234 runes)",
+      "longest_common_run": 20,
+      "coverage": 0.0855
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 28,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 15/269 runes)",
+      "longest_common_run": 15,
+      "coverage": 0.0558
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 29,
+     "segment_len": 277,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 16/277 runes)",
+      "longest_common_run": 16,
+      "coverage": 0.0578
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 30,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 14/263 runes)",
+      "longest_common_run": 14,
+      "coverage": 0.0532
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 31,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 10/269 runes)",
+      "longest_common_run": 10,
+      "coverage": 0.0372
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 32,
+     "segment_len": 121,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 11/121 runes)",
+      "longest_common_run": 11,
+      "coverage": 0.0909
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 33,
+     "segment_len": 214,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 10/214 runes)",
+      "longest_common_run": 10,
+      "coverage": 0.0467
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 34,
+     "segment_len": 261,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 13/261 runes)",
+      "longest_common_run": 13,
+      "coverage": 0.0498
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 11/271 runes)",
+      "longest_common_run": 11,
+      "coverage": 0.0406
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 36,
+     "segment_len": 238,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 11/238 runes)",
+      "longest_common_run": 11,
+      "coverage": 0.0462
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 37,
+     "segment_len": 228,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 10/228 runes)",
+      "longest_common_run": 10,
+      "coverage": 0.0439
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 38,
+     "segment_len": 228,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 12/228 runes)",
+      "longest_common_run": 12,
+      "coverage": 0.0526
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 39,
+     "segment_len": 240,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 10/240 runes)",
+      "longest_common_run": 10,
+      "coverage": 0.0417
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 40,
+     "segment_len": 231,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 12/231 runes)",
+      "longest_common_run": 12,
+      "coverage": 0.0519
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 41,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 14/273 runes)",
+      "longest_common_run": 14,
+      "coverage": 0.0513
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 42,
+     "segment_len": 272,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 16/272 runes)",
+      "longest_common_run": 16,
+      "coverage": 0.0588
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 43,
+     "segment_len": 274,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 14/274 runes)",
+      "longest_common_run": 14,
+      "coverage": 0.0511
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 44,
+     "segment_len": 273,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 18/273 runes)",
+      "longest_common_run": 18,
+      "coverage": 0.0659
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 45,
+     "segment_len": 270,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 11/270 runes)",
+      "longest_common_run": 11,
+      "coverage": 0.0407
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 46,
+     "segment_len": 270,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 12/270 runes)",
+      "longest_common_run": 12,
+      "coverage": 0.0444
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 47,
+     "segment_len": 274,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 16/274 runes)",
+      "longest_common_run": 16,
+      "coverage": 0.0584
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 48,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 10/271 runes)",
+      "longest_common_run": 10,
+      "coverage": 0.0369
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 49,
+     "segment_len": 66,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 6/66 runes)",
+      "longest_common_run": 6,
+      "coverage": 0.0909
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 50,
+     "segment_len": 92,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 10/92 runes)",
+      "longest_common_run": 10,
+      "coverage": 0.1087
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 51,
+     "segment_len": 263,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 13/263 runes)",
+      "longest_common_run": 13,
+      "coverage": 0.0494
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 52,
+     "segment_len": 179,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 12/179 runes)",
+      "longest_common_run": 12,
+      "coverage": 0.067
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 53,
+     "segment_len": 232,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 16/232 runes)",
+      "longest_common_run": 16,
+      "coverage": 0.069
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 54,
+     "segment_len": 76,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 14/76 runes)",
+      "longest_common_run": 14,
+      "coverage": 0.1842
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 7/85 runes)",
+      "longest_common_run": 7,
+      "coverage": 0.0824
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 5/95 runes)",
+      "longest_common_run": 5,
+      "coverage": 0.0526
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "rtkd__iddqd",
+   "path": "liber-primus__transcription--sentences/liber-primus__transcription--sentences.txt",
+   "clone_sha": "f2267b0c2f1e1d2662806b90b9c3a2953b3a7023",
+   "n_runes_in_file": 15856,
+   "findings": [
+    {
+     "canon_segment": 20,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 133,
+       "canon_runes": "ᛗ",
+       "canon_translit": "M",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛖᛚᚩᚱᚷᛚᚳᛇᛏᚷᚣᛟ >ᛗ< ᚪᛁᚷᛄᛒᛡᛗᛞᛈᚪᚳᛠ",
+       "file_context": "ᛖᛚᚩᚱᚷᛚᚳᛇᛏᚷᚣᛟ >< ᚪᛁᚷᛄᛒᛡᛗᛞᛈᚪᚳᛠ"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "rtkd__iddqd",
+   "path": "liber-primus__translation/liber-primus__known-plain-text.txt",
+   "clone_sha": "f2267b0c2f1e1d2662806b90b9c3a2953b3a7023",
+   "n_runes_in_file": 12955,
+   "findings": [
+    {
+     "canon_segment": 20,
+     "segment_len": 269,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 133,
+       "canon_runes": "ᛗ",
+       "canon_translit": "M",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛖᛚᚩᚱᚷᛚᚳᛇᛏᚷᚣᛟ >ᛗ< ᚪᛁᚷᛄᛒᛡᛗᛞᛈᚪᚳᛠ",
+       "file_context": "ᛖᛚᚩᚱᚷᛚᚳᛇᛏᚷᚣᛟ >< ᚪᛁᚷᛄᛒᛡᛗᛞᛈᚪᚳᛠ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 3/85 runes)",
+      "longest_common_run": 3,
+      "coverage": 0.0353
+     },
+     "diffs": []
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "segment does not appear in file (longest common run 4/95 runes)",
+      "longest_common_run": 4,
+      "coverage": 0.0421
+     },
+     "diffs": []
+    }
+   ]
+  },
+  {
+   "repo": "scream314__cicada3301",
+   "path": "liber_primus.md",
+   "clone_sha": "10733feb487bb8beb9966d534727ee5897aa54fc",
+   "n_runes_in_file": 15938,
+   "findings": [
+    {
+     "canon_segment": 24,
+     "segment_len": 270,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 172,
+       "canon_runes": "ᚫ",
+       "canon_translit": "AE",
+       "file_runes": "ᚪ",
+       "file_translit": "A",
+       "canon_context": "ᛝᚠᚪᛋᛡᛁᚻᛒᚱᚪᚢᚣ >ᚫ< ᚢᛟᛠᚪᚣᛖᛟᚫᛖᛈᚠᛒ",
+       "file_context": "ᛝᚠᚪᛋᛡᛁᚻᛒᚱᚪᚢᚣ >ᚪ< ᚢᛟᛠᚪᚣᛖᛟᚫᛖᛈᚠᛒ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 80,
+       "canon_runes": "ᚣ",
+       "canon_translit": "Y",
+       "file_runes": "ᛖ",
+       "file_translit": "E",
+       "canon_context": "ᛁᚾᛞᚦᛖᛞᛁᚢᛁᚾᛁᛏ >ᚣ< ᚹᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱ",
+       "file_context": "ᛁᚾᛞᚦᛖᛞᛁᚢᛁᚾᛁᛏ >ᛖ< ᚹᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱ"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "scream314__cicada3301",
+   "path": "pages_and_ciphers.md",
+   "clone_sha": "10733feb487bb8beb9966d534727ee5897aa54fc",
+   "n_runes_in_file": 15810,
+   "findings": [
+    {
+     "canon_segment": 24,
+     "segment_len": 270,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 172,
+       "canon_runes": "ᚫ",
+       "canon_translit": "AE",
+       "file_runes": "ᚪ",
+       "file_translit": "A",
+       "canon_context": "ᛝᚠᚪᛋᛡᛁᚻᛒᚱᚪᚢᚣ >ᚫ< ᚢᛟᛠᚪᚣᛖᛟᚫᛖᛈᚠᛒ",
+       "file_context": "ᛝᚠᚪᛋᛡᛁᚻᛒᚱᚪᚢᚣ >ᚪ< ᚢᛟᛠᚪᚣᛖᛟᚫᛖᛈᚠᛒ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 19,
+       "canon_runes": "ᛉ",
+       "canon_translit": "X",
+       "file_runes": "ᛚ",
+       "file_translit": "L",
+       "canon_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛉ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ",
+       "file_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛚ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚣ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 31,
+       "canon_runes": "ᚾ",
+       "canon_translit": "N",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛉᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞ >ᚾ< ᚣᛄᚳᚠᛡᚫᛏᛈᛇᚪᚦᚳ",
+       "file_context": "ᛚᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞ >< ᚣᛄᚳᚠᛡᚫᛏᛈᛇᚪᚦᚳ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 56,
+     "segment_len": 95,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 80,
+       "canon_runes": "ᚣ",
+       "canon_translit": "Y",
+       "file_runes": "ᛖ",
+       "file_translit": "E",
+       "canon_context": "ᛁᚾᛞᚦᛖᛞᛁᚢᛁᚾᛁᛏ >ᚣ< ᚹᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱ",
+       "file_context": "ᛁᚾᛞᚦᛖᛞᛁᚢᛁᚾᛁᛏ >ᛖ< ᚹᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 94,
+       "canon_runes": "ᛖ",
+       "canon_translit": "E",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱᚷ >ᛖ< ",
+       "file_context": "ᛁᚦᛁᚾᚪᚾᛞᛖᛗᛖᚱᚷ >< "
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "thomasandfriends__Cicada3301Runes",
+   "path": "data/runes.rune.old",
+   "clone_sha": "52e5c7e4827d81ffc705ef61ac0217c9bdd6ff35",
+   "n_runes_in_file": 13072,
+   "findings": [
+    {
+     "canon_segment": 0,
+     "segment_len": 262,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 3
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛇᚦᛄᛁ",
+       "canon_translit": "EOTHJI",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >ᛇᚦᛄᛁ< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ",
+       "file_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 134,
+       "canon_runes": "ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ",
+       "canon_translit": "WBCXDBFMTNEEAJNLGBXGTHYIDANGGMJROLEOYTPITHDJOEHLEAFXAEPGX",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ< ᚠᛚᚹᛇᛏᚫᚠᚷᚾᛗᛇᛚ",
+       "file_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >< ᚠᛚᚹᛇᛏᚠᚷᚾᛗᛇᛚᚾ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 188,
+       "canon_runes": "ᚫ",
+       "canon_translit": "AE",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛠᚠᛉᚫᛈᚷᛉᚠᛚᚹᛇᛏ >ᚫ< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ",
+       "file_context": "ᚣᚾᛖᚣᛞᛉᛝᚠᛚᚹᛇᛏ >< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 3,
+     "segment_len": 217,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 55,
+       "canon_runes": "ᛒᚹᚾᚻᛗ",
+       "canon_translit": "BWNHM",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >ᛒᚹᚾᚻᛗ< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ",
+       "file_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 6,
+     "segment_len": 196,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 2,
+       "canon_runes": "ᛏ",
+       "canon_translit": "T",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛉᚳ >ᛏ< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ",
+       "file_context": "ᛏᚳᛈᚳᚩᛇᛟᚫᛈᛏᛉᚳ >< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 19,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 82,
+       "canon_runes": "ᚪᛡ",
+       "canon_translit": "AIA",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >ᚪᛡ< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ",
+       "file_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 26,
+     "segment_len": 265,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 262,
+       "canon_runes": "ᛝ",
+       "canon_translit": "NG",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >ᛝ< ᛄᛝ",
+       "file_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >< ᛄᛝᛗᛈᚣᛚᛋᚩᚪᚫᚻᛚ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 33,
+     "segment_len": 214,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 100,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᛒ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ",
+       "file_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᚹ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ"
+      },
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᛒ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ",
+       "file_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᚹ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "insert",
+       "canon_pos_in_segment": 155,
+       "canon_runes": "",
+       "canon_translit": "",
+       "file_runes": "ᛒ",
+       "file_translit": "B",
+       "canon_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >< ᚣᛏᛝᛡᚩᛒᛏᚦᚳᛉᚳᛋ",
+       "file_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >ᛒ< ᚣᛏᛝᛡᚩᛏᚦᚳᛉᚳᛋᚪ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 160,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛄᚱᛡᚱᛖᚦᚣᛏᛝᛡᚩ >ᛒ< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ",
+       "file_context": "ᛄᚱᛡᚱᛖᚦᛒᚣᛏᛝᛡᚩ >< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 36,
+     "segment_len": 238,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "insert",
+       "canon_pos_in_segment": 1,
+       "canon_runes": "",
+       "canon_translit": "",
+       "file_runes": "ᛚᛁᛗᛒᚢᛚᚱᛏᛁᚢᚷᚳᚠᛇᛚᛇᚣᛏᛏᚫᚢᚫᛠᛇᛖ",
+       "file_translit": "LIMBULRTIUGCFEOLEOYTTAEUAEEAEOE",
+       "canon_context": "ᚣ >< ᚾᚢᚹᛝᚻᚷᚣᚱᚩᛁᛚᚾ",
+       "file_context": "ᚱᚷᚹᛞᚢᚣ >ᛚᛁᛗᛒᚢᛚᚱᛏᛁᚢᚷᚳᚠᛇᛚᛇᚣᛏᛏᚫᚢᚫᛠᛇᛖ< ᚾᚢᚹᛝᚻᚷᚣᚱᚩᛁᛚᚾ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 39,
+     "segment_len": 240,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 36,
+       "canon_runes": "ᚾ",
+       "canon_translit": "N",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >ᚾ< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ",
+       "file_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 19,
+       "canon_runes": "ᛉ",
+       "canon_translit": "X",
+       "file_runes": "ᛚ",
+       "file_translit": "L",
+       "canon_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛉ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ",
+       "file_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛚ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "thomasandfriends__Cicada3301Runes",
+   "path": "data/runes.rune.old~",
+   "clone_sha": "52e5c7e4827d81ffc705ef61ac0217c9bdd6ff35",
+   "n_runes_in_file": 13072,
+   "findings": [
+    {
+     "canon_segment": 0,
+     "segment_len": 262,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 3
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛇᚦᛄᛁ",
+       "canon_translit": "EOTHJI",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >ᛇᚦᛄᛁ< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ",
+       "file_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 134,
+       "canon_runes": "ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ",
+       "canon_translit": "WBCXDBFMTNEEAJNLGBXGTHYIDANGGMJROLEOYTPITHDJOEHLEAFXAEPGX",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ< ᚠᛚᚹᛇᛏᚫᚠᚷᚾᛗᛇᛚ",
+       "file_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >< ᚠᛚᚹᛇᛏᚠᚷᚾᛗᛇᛚᚾ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 188,
+       "canon_runes": "ᚫ",
+       "canon_translit": "AE",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛠᚠᛉᚫᛈᚷᛉᚠᛚᚹᛇᛏ >ᚫ< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ",
+       "file_context": "ᚣᚾᛖᚣᛞᛉᛝᚠᛚᚹᛇᛏ >< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 3,
+     "segment_len": 217,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 55,
+       "canon_runes": "ᛒᚹᚾᚻᛗ",
+       "canon_translit": "BWNHM",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >ᛒᚹᚾᚻᛗ< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ",
+       "file_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 6,
+     "segment_len": 196,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 2,
+       "canon_runes": "ᛏ",
+       "canon_translit": "T",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛉᚳ >ᛏ< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ",
+       "file_context": "ᛏᚳᛈᚳᚩᛇᛟᚫᛈᛏᛉᚳ >< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 19,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 82,
+       "canon_runes": "ᚪᛡ",
+       "canon_translit": "AIA",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >ᚪᛡ< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ",
+       "file_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 26,
+     "segment_len": 265,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 262,
+       "canon_runes": "ᛝ",
+       "canon_translit": "NG",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >ᛝ< ᛄᛝ",
+       "file_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >< ᛄᛝᛗᛈᚣᛚᛋᚩᚪᚫᚻᛚ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 33,
+     "segment_len": 214,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 100,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᛒ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ",
+       "file_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᚹ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ"
+      },
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᛒ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ",
+       "file_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᚹ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "insert",
+       "canon_pos_in_segment": 155,
+       "canon_runes": "",
+       "canon_translit": "",
+       "file_runes": "ᛒ",
+       "file_translit": "B",
+       "canon_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >< ᚣᛏᛝᛡᚩᛒᛏᚦᚳᛉᚳᛋ",
+       "file_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >ᛒ< ᚣᛏᛝᛡᚩᛏᚦᚳᛉᚳᛋᚪ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 160,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛄᚱᛡᚱᛖᚦᚣᛏᛝᛡᚩ >ᛒ< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ",
+       "file_context": "ᛄᚱᛡᚱᛖᚦᛒᚣᛏᛝᛡᚩ >< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 36,
+     "segment_len": 238,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "insert",
+       "canon_pos_in_segment": 1,
+       "canon_runes": "",
+       "canon_translit": "",
+       "file_runes": "ᛚᛁᛗᛒᚢᛚᚱᛏᛁᚢᚷᚳᚠᛇᛚᛇᚣᛏᛏᚫᚢᚫᛠᛇᛖ",
+       "file_translit": "LIMBULRTIUGCFEOLEOYTTAEUAEEAEOE",
+       "canon_context": "ᚣ >< ᚾᚢᚹᛝᚻᚷᚣᚱᚩᛁᛚᚾ",
+       "file_context": "ᚱᚷᚹᛞᚢᚣ >ᛚᛁᛗᛒᚢᛚᚱᛏᛁᚢᚷᚳᚠᛇᛚᛇᚣᛏᛏᚫᚢᚫᛠᛇᛖ< ᚾᚢᚹᛝᚻᚷᚣᚱᚩᛁᛚᚾ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 39,
+     "segment_len": 240,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 36,
+       "canon_runes": "ᚾ",
+       "canon_translit": "N",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >ᚾ< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ",
+       "file_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 19,
+       "canon_runes": "ᛉ",
+       "canon_translit": "X",
+       "file_runes": "ᛚ",
+       "file_translit": "L",
+       "canon_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛉ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ",
+       "file_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛚ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "thomasandfriends__Cicada3301Runes",
+   "path": "data/runes.rune~",
+   "clone_sha": "52e5c7e4827d81ffc705ef61ac0217c9bdd6ff35",
+   "n_runes_in_file": 13072,
+   "findings": [
+    {
+     "canon_segment": 0,
+     "segment_len": 262,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 3
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛇᚦᛄᛁ",
+       "canon_translit": "EOTHJI",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >ᛇᚦᛄᛁ< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ",
+       "file_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 134,
+       "canon_runes": "ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ",
+       "canon_translit": "WBCXDBFMTNEEAJNLGBXGTHYIDANGGMJROLEOYTPITHDJOEHLEAFXAEPGX",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ< ᚠᛚᚹᛇᛏᚫᚠᚷᚾᛗᛇᛚ",
+       "file_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >< ᚠᛚᚹᛇᛏᚠᚷᚾᛗᛇᛚᚾ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 188,
+       "canon_runes": "ᚫ",
+       "canon_translit": "AE",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛠᚠᛉᚫᛈᚷᛉᚠᛚᚹᛇᛏ >ᚫ< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ",
+       "file_context": "ᚣᚾᛖᚣᛞᛉᛝᚠᛚᚹᛇᛏ >< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 3,
+     "segment_len": 217,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 55,
+       "canon_runes": "ᛒᚹᚾᚻᛗ",
+       "canon_translit": "BWNHM",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >ᛒᚹᚾᚻᛗ< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ",
+       "file_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 6,
+     "segment_len": 196,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 2,
+       "canon_runes": "ᛏ",
+       "canon_translit": "T",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛉᚳ >ᛏ< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ",
+       "file_context": "ᛏᚳᛈᚳᚩᛇᛟᚫᛈᛏᛉᚳ >< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 19,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 82,
+       "canon_runes": "ᚪᛡ",
+       "canon_translit": "AIA",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >ᚪᛡ< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ",
+       "file_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 26,
+     "segment_len": 265,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 262,
+       "canon_runes": "ᛝ",
+       "canon_translit": "NG",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >ᛝ< ᛄᛝ",
+       "file_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >< ᛄᛝᛗᛈᚣᛚᛋᚩᚪᚫᚻᛚ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 33,
+     "segment_len": 214,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 100,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᛒ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ",
+       "file_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᚹ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ"
+      },
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᛒ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ",
+       "file_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᚹ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "insert",
+       "canon_pos_in_segment": 155,
+       "canon_runes": "",
+       "canon_translit": "",
+       "file_runes": "ᛒ",
+       "file_translit": "B",
+       "canon_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >< ᚣᛏᛝᛡᚩᛒᛏᚦᚳᛉᚳᛋ",
+       "file_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >ᛒ< ᚣᛏᛝᛡᚩᛏᚦᚳᛉᚳᛋᚪ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 160,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛄᚱᛡᚱᛖᚦᚣᛏᛝᛡᚩ >ᛒ< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ",
+       "file_context": "ᛄᚱᛡᚱᛖᚦᛒᚣᛏᛝᛡᚩ >< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 36,
+     "segment_len": 238,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "insert",
+       "canon_pos_in_segment": 1,
+       "canon_runes": "",
+       "canon_translit": "",
+       "file_runes": "ᛚᛁᛗᛒᚢᛚᚱᛏᛁᚢᚷᚳᚠᛇᛚᛇᚣᛏᛏᚫᚢᚫᛠᛇᛖ",
+       "file_translit": "LIMBULRTIUGCFEOLEOYTTAEUAEEAEOE",
+       "canon_context": "ᚣ >< ᚾᚢᚹᛝᚻᚷᚣᚱᚩᛁᛚᚾ",
+       "file_context": "ᚱᚷᚹᛞᚢᚣ >ᛚᛁᛗᛒᚢᛚᚱᛏᛁᚢᚷᚳᚠᛇᛚᛇᚣᛏᛏᚫᚢᚫᛠᛇᛖ< ᚾᚢᚹᛝᚻᚷᚣᚱᚩᛁᛚᚾ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 39,
+     "segment_len": 240,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 36,
+       "canon_runes": "ᚾ",
+       "canon_translit": "N",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >ᚾ< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ",
+       "file_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 19,
+       "canon_runes": "ᛉ",
+       "canon_translit": "X",
+       "file_runes": "ᛚ",
+       "file_translit": "L",
+       "canon_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛉ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ",
+       "file_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛚ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "repo": "thomasandfriends__Cicada3301Runes",
+   "path": "data/runes.rune",
+   "clone_sha": "52e5c7e4827d81ffc705ef61ac0217c9bdd6ff35",
+   "n_runes_in_file": 13063,
+   "findings": [
+    {
+     "canon_segment": 0,
+     "segment_len": 262,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 4
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 0,
+       "canon_runes": "ᛋᚻᛖᚩᚷᛗᛡᚠᛋ",
+       "canon_translit": "SHEOGMIAFS",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": " >ᛋᚻᛖᚩᚷᛗᛡᚠᛋ< ᚣᛖᛝᚳᚦᛄᚷᚫᚠᛄᛟᚩ",
+       "file_context": " >< ᚣᛖᛝᚳᚦᛄᚷᚫᚠᛄᛟᚩ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛇᚦᛄᛁ",
+       "canon_translit": "EOTHJI",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >ᛇᚦᛄᛁ< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ",
+       "file_context": "ᛏᚻᚫᛡᛉᚣᛖᚢᛝᚳᚠᚾ >< ᚦᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 134,
+       "canon_runes": "ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ",
+       "canon_translit": "WBCXDBFMTNEEAJNLGBXGTHYIDANGGMJROLEOYTPITHDJOEHLEAFXAEPGX",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >ᚹᛒᚳᛉᛞᛒᚠᛗᛏᚾᛖᛠᛄᚾᛚᚷᛒᛉᚷᚦᚣᛁᛞᚪᛝᚷᛗᛄᚱᚩᛚᛇᚣᛏᛈᛁᚦᛞᛄᛟᚻᛚᛠᚠᛉᚫᛈᚷᛉ< ᚠᛚᚹᛇᛏᚫᚠᚷᚾᛗᛇᛚ",
+       "file_context": "ᚦᛈᚣᛝᛠᚣᚾᛖᚣᛞᛉᛝ >< ᚠᛚᚹᛇᛏᚠᚷᚾᛗᛇᛚᚾ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 188,
+       "canon_runes": "ᚫ",
+       "canon_translit": "AE",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛠᚠᛉᚫᛈᚷᛉᚠᛚᚹᛇᛏ >ᚫ< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ",
+       "file_context": "ᚣᚾᛖᚣᛞᛉᛝᚠᛚᚹᛇᛏ >< ᚠᚷᚾᛗᛇᛚᚾᛝᛗᚠᚱᛡ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 3,
+     "segment_len": 217,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 55,
+       "canon_runes": "ᛒᚹᚾᚻᛗ",
+       "canon_translit": "BWNHM",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >ᛒᚹᚾᚻᛗ< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ",
+       "file_context": "ᛡᛁᚩᛒᚱᚾᛚᛠᚱᛚᛚᛖ >< ᚠᛟᛒᛝᚱᚪᛡᚷᛟᛇᛏᛗ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 6,
+     "segment_len": 196,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 2,
+       "canon_runes": "ᛏ",
+       "canon_translit": "T",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᛉᚳ >ᛏ< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ",
+       "file_context": "ᛏᚳᛈᚳᚩᛇᛟᚫᛈᛏᛉᚳ >< ᚻᛞᛇᛉᛒᛠᚫᚾᛄᛠᚪᛒ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 19,
+     "segment_len": 271,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 82,
+       "canon_runes": "ᚪᛡ",
+       "canon_translit": "AIA",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >ᚪᛡ< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ",
+       "file_context": "ᚪᚹᚫᚻᚩᛄᚢᚱᚩᚣᛏᚫ >< ᚷᛄᛚᛄᛝᛏᛖᛒᛚᛉᚻᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 26,
+     "segment_len": 265,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 262,
+       "canon_runes": "ᛝ",
+       "canon_translit": "NG",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >ᛝ< ᛄᛝ",
+       "file_context": "ᚩᛝᚢᚻᛝᛟᛏᛚᚠᛄᚷᛏ >< ᛄᛝᛗᛈᚣᛚᛋᚩᚪᚫᚻᛚ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 33,
+     "segment_len": 214,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 100,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᛒ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ",
+       "file_context": "ᚷᛄᛚᛝᚦᛇᛁᚠᚳᛟᛇᛞ >ᚹ< ᚣᛡᚣᚢᚣᚾᚦᚱᛖᛗᛁᛇ"
+      },
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 117,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "ᚹ",
+       "file_translit": "W",
+       "canon_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᛒ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ",
+       "file_context": "ᚣᚾᚦᚱᛖᛗᛁᛇᛞᚱᚹᛉ >ᚹ< ᚻᚳᛄᛡᚪᚾᚹᚾᛗᚠᛇᛁ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 35,
+     "segment_len": 271,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 2
+     },
+     "diffs": [
+      {
+       "op": "insert",
+       "canon_pos_in_segment": 155,
+       "canon_runes": "",
+       "canon_translit": "",
+       "file_runes": "ᛒ",
+       "file_translit": "B",
+       "canon_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >< ᚣᛏᛝᛡᚩᛒᛏᚦᚳᛉᚳᛋ",
+       "file_context": "ᛟᚢᛁᚫᛟᚦᛄᚱᛡᚱᛖᚦ >ᛒ< ᚣᛏᛝᛡᚩᛏᚦᚳᛉᚳᛋᚪ"
+      },
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 160,
+       "canon_runes": "ᛒ",
+       "canon_translit": "B",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚦᛄᚱᛡᚱᛖᚦᚣᛏᛝᛡᚩ >ᛒ< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ",
+       "file_context": "ᛄᚱᛡᚱᛖᚦᛒᚣᛏᛝᛡᚩ >< ᛏᚦᚳᛉᚳᛋᚪᚫᛗᚠᛄᚱ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 36,
+     "segment_len": 238,
+     "verdict": "INDEL",
+     "why": {
+      "reason": "insertion/deletion of rune(s) inside an otherwise matching segment",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "insert",
+       "canon_pos_in_segment": 1,
+       "canon_runes": "",
+       "canon_translit": "",
+       "file_runes": "ᛚᛁᛗᛒᚢᛚᚱᛏᛁᚢᚷᚳᚠᛇᛚᛇᚣᛏᛏᚫᚢᚫᛠᛇᛖ",
+       "file_translit": "LIMBULRTIUGCFEOLEOYTTAEUAEEAEOE",
+       "canon_context": "ᚣ >< ᚾᚢᚹᛝᚻᚷᚣᚱᚩᛁᛚᚾ",
+       "file_context": "ᚱᚷᚹᛞᚢᚣ >ᛚᛁᛗᛒᚢᛚᚱᛏᛁᚢᚷᚳᚠᛇᛚᛇᚣᛏᛏᚫᚢᚫᛠᛇᛖ< ᚾᚢᚹᛝᚻᚷᚣᚱᚩᛁᛚᚾ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 39,
+     "segment_len": 240,
+     "verdict": "OMISSION",
+     "why": {
+      "reason": "file omits the segment head",
+      "n_runes_missing": 0
+     },
+     "diffs": [
+      {
+       "op": "delete",
+       "canon_pos_in_segment": 36,
+       "canon_runes": "ᚾ",
+       "canon_translit": "N",
+       "file_runes": "",
+       "file_translit": "",
+       "canon_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >ᚾ< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ",
+       "file_context": "ᚫᛇᚫᚣᚪᛋᚣᛝᛡᛗᚷᛇ >< ᛈᛠᚳᚻᛝᛚᚠᚷᛡᛁᛡᚪ"
+      }
+     ]
+    },
+    {
+     "canon_segment": 55,
+     "segment_len": 85,
+     "verdict": "CONTRADICTION",
+     "why": {
+      "reason": "different rune(s) at the same aligned position",
+      "n_ops": 1
+     },
+     "diffs": [
+      {
+       "op": "replace",
+       "canon_pos_in_segment": 19,
+       "canon_runes": "ᛉ",
+       "canon_translit": "X",
+       "file_runes": "ᛚ",
+       "file_translit": "L",
+       "canon_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛉ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ",
+       "file_context": "ᛚᚩᚻᚩᚫᚳᚦᚷᚹᚹᛚᚫ >ᛚ< ᚩᚪᛈᛗᛞᛞᚢᚷᚹᛚᛞᚾ"
       }
      ]
     }

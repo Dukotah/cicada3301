@@ -37,3 +37,25 @@ Started 2026-08-19 UTC. Lane F = press/documentary/podcast/interview + **cipher-
   non-lexical rune stones paper (runic ciphers-or-nonsense) and Lost in Transcription.
 - [t6] Next: theses (SJSU ScholarWorks / OATD), IACR ePrint, non-English, then press half extension
   (documentaries/podcasts/interviews/attribution claims + PGP 7A35090F signature status).
+
+## RESUMED 2026-08-19/20 UTC after network outage (ENOTFOUND)
+
+- [x] Re-derived the PRESS half per-file provenance (`press_reprov.py` ->
+      `meta/press_provenance.json`, poppler-utils installed in WSL). 134 files / 126 PDFs:
+      **88 yield both a source URL and a capture date**, 102 a URL, 103 a date.
+      **87 of 88 dates are dd.mm.yyyy (German locale)**, clustering 2021-01 (19),
+      2021-02 (51), 2021-03 (17). The earlier run reported 102/126 but its output was
+      never written to disk -> recorded as an unresolved conflict (`CONFLICTS-F.md` F-C-01).
+- [x] Resolved the PAYWALLED citations properly: DBLP search API -> Crossref verification.
+      `meta/dblp_paywalled_queries.json`, `meta/paywalled_citations.json`. 8 Cryptologia
+      DOIs confirmed (3 running-key, 2 runic, 3 autokey). **Crossref deposits no abstracts
+      for any of them**, so `GAPS-F.md` records that fact rather than paraphrasing. No
+      paywall bypassed; no citation or DOI invented.
+- [x] `BIBLIOGRAPHY.md` written with the two halves kept apart, plus
+      `BIBLIOGRAPHY-GENERATED.md` (`mkbib.py`) so no citation is hand-transcribed:
+      40 academic items by open question, 88 press files with URL+date, and the
+      24/23 that yield neither listed individually.
+- [x] `GAPS-F.md`, `CONFLICTS-F.md`, `REPORT-F.md`, `MANIFEST.json` written.
+- [ ] Still open: autokey and book-cipher literature at zero; IACR ePrint downloaded
+      nothing; 9 open-access theses blocked on a Digital Commons referer; press-half
+      extension (documentaries/podcasts/interviews/7A35090F) never ran.

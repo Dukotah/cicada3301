@@ -5,7 +5,7 @@ the owner can retrieve it manually. Per the brief: **this is a deliverable, not 
 report.** Every entry names the source, the obstacle, what is behind it, and the concrete
 route in.
 
-Lane state at close: **463 files / 30.6 MB** under `corpus/C-community/` (`MANIFEST.json`).
+Lane state at close: **465 files / 31.0 MB** under `corpus/C-community/` (`MANIFEST.json`).
 Branch `corpus-sweep`.
 
 ---

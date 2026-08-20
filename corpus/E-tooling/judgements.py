@@ -571,3 +571,91 @@ add("yo-yo-yo-jbo__cicada_tools",
              "consider_interrupters defaulting to False.",
     what_it_tried="See cicada-solvers/JBO-cicada_tools.",
     what_it_concluded="See cicada-solvers/JBO-cicada_tools.")
+
+add("mortlach__Liber-Primus-Rune-Decrypting",
+    decoder_type="skip-aware-search", null_trustworthy="partial",
+    evidence="key-generator/key_generator.py:56 `getInterrupterPositions(ct, pt)` derives "
+             "candidate interrupters from the interrupter's DEFINING property rather than "
+             "by blind enumeration: a rune qualifies only if every position where it "
+             "appears in the plaintext also carries that same rune in the ciphertext "
+             "(`set(pt_pos).issubset(ct_pos)`) - i.e. it was emitted literally. "
+             "`getInterrupterData()` then strips those positions from both ct and pt and "
+             "derives the key from the remainder, so the key pointer effectively holds "
+             "there. The candidate set is per-rune ('every occurrence of R interrupts'), "
+             "not an arbitrary subset. README: \"'All' keys means considering: all "
+             "possible interrupters, gematria rotations and defined plaintext rune "
+             "transpositions.\"",
+    what_it_tried="Crib-driven key DERIVATION for any two-variable cipher function "
+                  "f(plaintext, key) - arithmetic and XOR mod 29 are supplied, the "
+                  "pattern is extensible - across all candidate interrupters, both "
+                  "gematria directions for ct and pt, 28 gematria rotations per variable, "
+                  "and L2R / R2L transpositions. Scoring uses its own runeglish n-gram "
+                  "probability tables (raw_scoring_data/reProbChar2-4, reProbGNG2-3, "
+                  "reProbRB2-3).",
+    what_it_concluded="No solve. Importantly it ships a POSITIVE CONTROL: "
+                      "test_functions_of_2_variables.py randomly encrypts text and checks "
+                      "that each solve method recovers the exact key or fails loudly, and "
+                      "it re-solves page 56 and the 'A Koan: During' page.",
+    notes="One of only two tools in the corpus that pairs a skip-aware search with a "
+          "self-test positive control (the other is micheloosterhof/aldegonde). Its "
+          "approach is also the most economical: it uses the ct==pt constraint to derive "
+          "interrupters instead of enumerating 2**k subsets.")
+add("mortlach__runeglish-lm",
+    decoder_type="no-decoder", null_trustworthy="n/a",
+    evidence="Data repository: Markov transition-probability matrices P(A|B) over "
+             "runeglish character n-grams (2-, 3- and 4-grams, plain and word-length-"
+             "indexed), plus a worked phrase-probability example showing how scores "
+             "degrade as 1% transcription error is injected.",
+    what_it_tried="Building a runeglish language model rather than attacking the cipher.",
+    what_it_concluded="n/a",
+    notes="Directly relevant to this project's scorer problem "
+          "(analysis/round15/SCORER/FINDING.md): a scorer trained on raw English is "
+          "scoring a different distribution than a 29-rune decoder emits, and these are "
+          "matrices trained on runeglish itself. Its README alphabet also spells J as "
+          "U+16C2, a fourth repo carrying that alias.")
+add("mortlach__Liber-Primus-Crib-Assist",
+    decoder_type="no-decoder", null_trustworthy="n/a",
+    evidence="Crib-list generator feeding mortlach/Liber-Primus-Rune-Decrypting; the "
+             "clone did not complete in this lane (see GAPS-E.md).",
+    what_it_tried="Crib generation.", what_it_concluded="Not assessed.")
+
+# ------------------------------------------------- final batch of late clones
+for n, why, note in [
+ ("thomasandfriends__Cicada3301Runes",
+  "Single commit 52e5c7e4827d81ffc705ef61ac0217c9bdd6ff35, 2015-01-09T23:39:25Z, "
+  "Misha Wagner. Rune data plus brute/parse scripts, outguess payloads and onion "
+  "captures. Scripts are 2015-era analysis, not a keyed rune decoder.",
+  "THE EARLIEST DATED RUNE STREAM IN THIS CORPUS. data/runes.rune.old is 13,072 runes "
+  "with index SHA-256 a38c30ca109919b8ec55d28f924e7544307e93422bda8c5ed2b22f2e69180d0f "
+  "- byte-identical to resvolver/c1cada's 2015-01-23 transcriptions.rne, and carrying "
+  "the W/W/L readings that reach henkman/liberprimus in 2016. data/runes.rune is a "
+  "13,063-rune variant with the same three contradictions. See CONFLICTS-E.md C-E-03b: "
+  "this file shows our reading is the CORRECTION, not the original."),
+ ("cicada-solvers__solving-3301-code-2013",
+  "First commit 2014-01-23T09:04:50-07:00, last 2017-05-02. Crib-dragging scripts, "
+  "dictionaries, a C bit-flipper, an IRC bot and onion alerting - 2013/2014-puzzle "
+  "tooling, before the Liber Primus.",
+  "OLDEST REPOSITORY IN THIS CORPUS (2014-01-23). Predates the Liber Primus itself, so "
+  "it holds no LP transcription, but it is the right place to look for the community's "
+  "earliest conventions."),
+ ("rtkd__idclip", "Small JS finder (find.js) by the author of idkfa and iddqd; "
+  "2018-02-02 to 2018-02-16. Not a rune decoder.", None),
+ ("cmbsolver__cmbcidada3301",
+  "Large C# solution (LiberPrimusAnalysisTool.*, 2024-12-31 to 2026-07-10) by "
+  "cmbsolver, who also maintains cicada-solvers/lp-decrypter and libergo. Decode loop "
+  "not read in this lane.", "High-priority unknown: same author as the corpus's most "
+  "thorough interrupter-subset enumerator, so its decoder tier is worth establishing."),
+ ("localavaster__cadrypt", "Flutter/Dart application (2021-01-19 to 2023-04-13) "
+  "presenting the Cicada messages. Decode loop not read in this lane.", None),
+ ("sgroveman__cicada3301_lp", "Solving attempts and 3D models (2024-01). Not read.", None),
+ ("iBotPeaches__cicada_3301", "2025-03 to 2026-08; clone contains no working-tree files "
+  "at HEAD in this checkout. Not assessed.", None),
+ ("cijhho123__cicada3301", "Clone landed with a broken checkout. Not assessed.", None),
+ ("neuroretransmit__cicada", "Clone landed empty. Not assessed.", None),
+]:
+    kind = "no-decoder" if n in ("thomasandfriends__Cicada3301Runes",
+                                 "cicada-solvers__solving-3301-code-2013",
+                                 "rtkd__idclip") else "unknown"
+    add(n, decoder_type=kind, null_trustworthy=("n/a" if kind == "no-decoder" else "unknown"),
+        evidence=why, what_it_tried=why,
+        what_it_concluded=("n/a" if kind == "no-decoder" else "Not assessed."), notes=note)

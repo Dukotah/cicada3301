@@ -115,3 +115,26 @@ Every one of its 8 commits is authored `Claude <noreply@anthropic.com>`, first c
 called it an independent replication of this project's doublet / lag-1 / running-key
 conclusions. **That was wrong and is retracted.** It is a same-week AI-authored repo
 and must not be counted as third-party corroboration.
+
+## 2026-08-20 — LANE COMPLETE
+
+All five deliverables written: `TOOLS.json` (108 rows), `CONFLICTS-E.md`, `GAPS-E.md`,
+`REPORT-E.md`, this file.
+
+Final decoder tiering over the 32 repositories whose decode loop was actually read:
+**10 rigid, 13 skip-capable-but-no-search, 9 skip-aware-search.**
+Null trustworthiness: **10 false, 19 partial, 3 true.** 34 rows are `unknown` — meaning
+the decisive loop was not read, NOT that the tool is rigid.
+
+Transcription: `164 omissions, 4 genuine contradictions`, across two dissenting
+lineages that do not corroborate each other. The provenance question is closed —
+see `CONFLICTS-E.md` C-E-03b for the commit-by-commit chain from 2015-01-09 to
+2017-05-10. Headline: our reading is the CORRECTION of the community's first
+transcription, made 12 days after it, by the same people, and adopted by them.
+
+Two retractions recorded in this session:
+1. `jens-wedin/liber-primus` is Claude-authored, 2026-08-18 — not an independent
+   replication of this project's conclusions.
+2. The earlier "lp-decrypter contradicts canon in 56 segments" and "Skyro all_pages.json
+   contradicts at segments 6 and 39" reports were extraction artefacts (a U+16C2 J
+   codepoint alias, and a JSON that stores runes twice). Both withdrawn.

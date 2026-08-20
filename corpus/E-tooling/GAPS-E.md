@@ -20,7 +20,9 @@ procedure.
 | `cicada-solvers/gutenberg-txt` | https://github.com/cicada-solvers/gutenberg-txt | R2-FAIL — running-key candidate corpus, large |
 | `cicada-solvers/csrkd` | https://github.com/cicada-solvers/csrkd | R2-FAIL |
 | `cicada-solvers/project-runeberg` | https://github.com/cicada-solvers/project-runeberg | not retried after the outage |
-| `cicada-solvers/solving-3301-code-2013` | https://github.com/cicada-solvers/solving-3301-code-2013 | **pre-2015 name — high priority** |
+| ~~`cicada-solvers/solving-3301-code-2013`~~ | | **RETRIEVED** `addb2e64...` — first commit **2014-01-23**, the oldest repository in the corpus; 2013/2014-puzzle tooling, no LP transcription |
+| ~~`thomasandfriends/Cicada3301Runes`~~ | | **RETRIEVED** `52e5c7e4...` — single commit **2015-01-09**, the earliest dated rune stream found; see CONFLICTS-E.md C-E-03b |
+| ~~`cmbsolver/cmbcidada3301`, `iBotPeaches/cicada_3301`, `sgroveman/cicada3301_lp`, `rtkd/idclip`, `localavaster/cadrypt`, `cijhho123/cicada3301`~~ | | **RETRIEVED** (clone_sha for each is in TOOLS.json) |
 | `cmbsolver/cmbcidada3301` | https://github.com/cmbsolver/cmbcidada3301 | queued in `clone3.sh` |
 | `iBotPeaches/cicada_3301` | https://github.com/iBotPeaches/cicada_3301 | queued |
 | `sgroveman/cicada3301_lp` | https://github.com/sgroveman/cicada3301_lp | queued |
@@ -29,9 +31,14 @@ procedure.
 | `thomasandfriends/Cicada3301Runes` | https://github.com/thomasandfriends/Cicada3301Runes | queued |
 | `cijhho123/cicada3301` | https://github.com/cijhho123/cicada3301 | queued |
 | `neuroretransmit/cicada` | https://github.com/neuroretransmit/cicada | queued (the sibling `neuroretransmit/liberprimus-tool` was obtained) |
-| `mortlach/*` (4 repos) | https://github.com/mortlach | in flight at session end — `Liber-Primus-Crib-Assist`, `Liber-Primus-Rune-Decrypting`, `runeglish-language-model-transition-probabilty-matrices`; mortlach is a named LP researcher and co-author of `cicada-solvers/lp-decrypter`, so these are the highest-value outstanding clones |
-| `yo-yo-yo-jbo/cicada_tools` | https://github.com/yo-yo-yo-jbo/cicada_tools | upstream of the obtained `cicada-solvers/JBO-cicada_tools`; the org mirror was analysed instead |
-| `krisyotam/cicada3301` | https://github.com/krisyotam/cicada3301 | clone landed but the checkout is broken (`fatal: your current branch appears to be broken`); **must be re-cloned** — this is the namesake of our canonical file `krisyotam_runes.txt` and should be checked for the 13,136-rune stream |
+| `mortlach/Liber-Primus-Crib-Assist` | https://github.com/mortlach/Liber-Primus-Crib-Assist | **still missing** — clone failed with `early EOF` / `invalid index-pack output`, twice. It generates the crib lists that drive `mortlach/Liber-Primus-Rune-Decrypting`, which WAS retrieved and is one of only two skip-aware tools in the corpus with a positive control. Retry with `--depth 1` or a tarball download. |
+| ~~`mortlach/Liber-Primus-Rune-Decrypting`~~ | | **RETRIEVED** `765a0260e88617194a2e2c255a34e519f653a90c` |
+| ~~`mortlach/runeglish-lm`~~ | | **RETRIEVED** |
+| ~~`henkman/liberprimus`~~ | | **RETRIEVED** `2212f631714711a2d51c858c47dfb6f89ae9ee44` — see CONFLICTS-E.md C-E-03 |
+| ~~`yo-yo-yo-jbo/cicada_tools`~~ | | **RETRIEVED** `717625c5...` |
+| ~~`krisyotam/cicada3301`~~ | | **RETRIEVED** on the second attempt, `76d3ee8c762f60025822c8c05edbf31351636469` — see CONFLICTS-E.md C-E-03b |
+
+| `cicada-solvers/neuroretransmit-cicada` | https://github.com/cicada-solvers/neuroretransmit-cicada | cloned into a broken checkout, directory removed |
 
 ## 2. Sources not searched at all
 
@@ -58,7 +65,7 @@ their absence from `TOOLS.json` says nothing about what they contain.
 
 ## 3. Decoder assessments not made
 
-`TOOLS.json` carries `decoder_type: "unknown"` for **28 of 91** rows. That value means
+`TOOLS.json` carries `decoder_type: "unknown"` for **34 of 108** rows. That value means
 exactly one thing: *the decisive key-advance loop was not read in this lane*. It does
 **not** mean the tool is rigid, and no count in `REPORT-E.md` treats it as such.
 
@@ -73,6 +80,11 @@ The unknowns worth reading first, by size and by likely relevance:
 4. `cicada-solvers/cadrypt` and `cicada-solvers/cmbsolverwp` — both carry 12 rune
    files each; the rune files were hashed but the code was not read.
 5. `krcdavis/cicada-tools` — 12 rune files, code not read.
+6. `cmbsolver/cmbcidada3301` (C#, 2024-12 to 2026-07) — same author as
+   `cicada-solvers/lp-decrypter` and `libergo`, i.e. the person who wrote the corpus's
+   most thorough interrupter-subset enumeration. Establishing its tier is worth more
+   than any other single unknown.
+7. `localavaster/cadrypt` (Flutter/Dart, 2021-2023) and `sgroveman/cicada3301_lp`.
 
 ## 4. Transcription questions left open
 
@@ -87,10 +99,13 @@ The unknowns worth reading first, by size and by likely relevance:
 - **The 15,857-rune `rtkd/idkfa/data/liber` file** was confirmed to contain all 57
   canon segments but its relationship to the 15,933/15,935 iddqd lineage (78 runes
   fewer) was not characterised.
-- **Provenance of the 2015 `resvolver/c1cada` transcription is unknown.** It matches
-  canon bit-for-bit, but whether the two are independent readings or two copies of one
-  January-2015 community post was not established. The repo's commit
-  `2015-01-20 dude123124144 "added rune transcriptions"` is the thread to pull.
+- **RESOLVED during the session; recorded here so the old question is not re-asked.**
+  The provenance of the canon stream is now walked commit by commit across three
+  repositories (`thomasandfriends/Cicada3301Runes` 2015-01-09, `resvolver/c1cada`
+  2015-01-16 to 2015-01-23, `dude123124144/Liber-Primus-Runes-OCR` 2017-05-10). See
+  `CONFLICTS-E.md` C-E-03b. What remains open is only whether the 2015-01-21 correction
+  was made against the page images or against another person's post — not answerable
+  from git alone.
 - **Files under 1,000 runes were not segment-tested** — alphabet tables, single pages,
   key lists, README samples. A single-page transcription that contradicted canon would
   be missed by the current filter.

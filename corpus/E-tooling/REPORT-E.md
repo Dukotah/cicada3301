@@ -1,10 +1,10 @@
 # REPORT-E — Third-party Cicada 3301 / Liber Primus tooling: what exists, what it could have found, and what its silence is worth
 
 Lane E of the corpus sweep. Working directory `corpus/E-tooling/`.
-Machine-readable companion: **`TOOLS.json`** (91 rows, one per repository).
+Machine-readable companion: **`TOOLS.json`** (108 rows, one per repository).
 Transcription conflicts: **`CONFLICTS-E.md`**. Holes: **`GAPS-E.md`**.
 
-The `vendor/` tree (99 clones, ~1.3 GB of third-party code) is gitignored. Every row
+The `vendor/` tree (108 clones, ~9 GB of third-party code) is gitignored. Every row
 in `TOOLS.json` carries `url` + `clone_sha`, so any row can be reconstituted exactly.
 
 ---
@@ -49,11 +49,11 @@ finds them.
 
 ## 3. The catalogue
 
-91 repositories, sorted by tier. `null_trustworthy` is the answer to "is a published
+108 repositories, sorted by tier. `null_trustworthy` is the answer to "is a published
 negative from this tool a real negative?". `decoder_evidence` in `TOOLS.json` names
 the file and line every judgement rests on.
 
-### 3.1 Tier 3 — skip-aware search (7 rows, 5 distinct codebases)
+### 3.1 Tier 3 — skip-aware search (9 rows, 7 distinct codebases)
 
 | tool | lang | first commit | licence | null trustworthy | what the search actually covers |
 |---|---|---|---|---|---|
@@ -61,7 +61,20 @@ the file and line every judgement rests on.
 | `micheloosterhof/aldegonde` (= `cicada-solvers/aldegonde`) | Python | 2021-10-12 | ISC | partial | `examples/lp_lag5_attack.py` runs four **deterministic** phase rules — `skip:R`, `reset:R`, `word`, `sent` — over additive and reflective shift families, solving each coset by chi-square. It cannot express an *irregular* interrupter subset, only "every R interrupts". |
 | `cicada-solvers/lp-decrypter` | Python | 2020-09-12 | NOT-STATED | partial | `get_all_interrupter_position_lists()` returns **every `combinations()` subset** of interrupter positions, and the decode loop holds `key_index` at those positions — but only over a ciphertext **cropped to key length**. Adds a self-consistency filter: a candidate is rejected if a decrypted rune *is* the interrupter rune. |
 | `cicada-solvers/JBO-cicada_tools` | Python | 2023-08-13 | NOT-STATED | partial | `research_utils.py:179` yields **all 2^k subsets** of interrupter positions. But it is applied to the **first sentence only**, and `consider_interrupters` defaults to **False** — so the default run is rigid. |
+| `mortlach/Liber-Primus-Rune-Decrypting` | Python | 2021 | NOT-STATED | partial | `key_generator.py:56` `getInterrupterPositions(ct, pt)` derives interrupters from their *defining property* rather than by blind enumeration: a rune qualifies only if every plaintext position carrying it also carries that same rune in the ciphertext (`set(pt_pos).issubset(ct_pos)`) — i.e. it was emitted literally. Those positions are then stripped from both streams before key derivation. Candidate sets are per-rune, not arbitrary subsets. |
+| `yo-yo-yo-jbo/cicada_tools` | Python | 2023-08-13 | NOT-STATED | partial | upstream of the `cicada-solvers` mirror; same enumerator, same default-off flag. |
 | `jens-wedin/liber-primus` | Python | **2026-08-18** | NOT-STATED | **yes** | `attack_keyskip.py` beam search with a `--selftest` recovering 96-98% of a planted key-skip key. **See section 6: this is not an independent witness.** |
+
+**Two tools, and only two, pair a skip-aware search with a self-test positive control.**
+`micheloosterhof/aldegonde` is described below. The other is
+`mortlach/Liber-Primus-Rune-Decrypting`, whose
+`test_functions_of_2_variables.py` randomly encrypts text and checks that each solve
+method recovers the *exact* key or fails loudly, then re-solves page 56 and the
+"A Koan: During" page as live controls. Its README is explicit that "'All' keys means
+considering: all possible interrupters, gematria rotations and defined plaintext rune
+transpositions." Its interrupter derivation is also the most economical idea in the
+corpus — it uses the ciphertext-equals-plaintext constraint at a literal position to
+*derive* candidate interrupters instead of enumerating 2^k subsets.
 
 **`micheloosterhof/aldegonde` produces the only properly instrumented negative in the
 entire corpus.** It has both halves that everything else lacks:
@@ -114,7 +127,7 @@ Quagmire-style keyed alphabets. **That negative should be treated as real.**
 | `ztlw30813/cicada3301` | Python | 2024-05-20 | NOT-STATED | `decryptor.py:161` and `:358` — `key_idx += 1` unconditionally, **and over the 26-letter Latin alphabet mod 26**, not the 29-rune Gematria Primus. It cannot decode LP runes at all. | 2.6k |
 | `Wra1th/Nebuchadnezzar` | Python | 2023-06-22 | NOT-STATED | key and ciphertext zipped position-for-position; no hold. | 0.2k |
 
-### 3.4 no-decoder (34 rows) and unknown (28 rows)
+### 3.4 no-decoder (42 rows) and unknown (34 rows)
 
 `no-decoder` covers transcriptions, gematria tables, hash/steganography work, page
 archives, and UI shells — `resvolver/c1cada`, `scream314/cicada3301`, `rtkd/iddqd`,
@@ -123,7 +136,7 @@ archives, and UI shells — `resvolver/c1cada`, `scream314/cicada3301`, `rtkd/id
 in `TOOLS.json`.
 
 **`unknown` means the decisive loop was not read in this lane. It does not mean rigid,
-and none of the counts below treat it as such.** The 28 unknowns are listed with
+and none of the counts below treat it as such.** The 34 unknowns are listed with
 reading priorities in `GAPS-E.md` section 3.
 
 ---
@@ -132,14 +145,14 @@ reading priorities in `GAPS-E.md` section 3.
 
 ### 4.1 The headline count
 
-Of the **29 repositories in this corpus that contain a polyalphabetic rune decoder and
+Of the **32 repositories in this corpus that contain a polyalphabetic rune decoder and
 were actually read**:
 
 | tier | count | share of read decoders |
 |---|---:|---:|
-| rigid | 10 | **34%** |
-| skip-capable, no search | 12 | **41%** |
-| skip-aware search | 7 rows / 5 distinct codebases | **24%** |
+| rigid | 10 | **31%** |
+| skip-capable, no search | 13 | **41%** |
+| skip-aware search | 9 rows / 7 distinct codebases | **28%** |
 
 And on the question that matters — **can this tool's published negative be trusted as a
 negative?**
@@ -147,7 +160,7 @@ negative?**
 | verdict | count |
 |---|---:|
 | `false` — the decoder could not have succeeded even if its hypothesis were right | **10** |
-| `partial` — trustworthy only for "no interrupters" / "every X interrupts" | **16** |
+| `partial` — trustworthy only for "no interrupters" / "every X interrupts" | **19** |
 | `true` — searched a space it could actually have succeeded in | **3** (2 distinct codebases, one of them same-week AI work) |
 
 **Roughly three quarters of the read decoders in the public corpus cannot recover a key
@@ -155,10 +168,10 @@ under an unknown interrupter pattern.** That is the finding.
 
 ### 4.2 Stated as an assessment, with its limits
 
-This is a reasoned assessment from reading 29 decode loops, not a verdict on the field.
+This is a reasoned assessment from reading 32 decode loops, not a verdict on the field.
 Four things bound it:
 
-1. **28 repositories were not read.** Some of them may search skips. The 34/41/24 split
+1. **34 repositories were not read.** Some of them may search skips. The 31/41/28 split
    describes the *read* subset and would move if the rest were read.
 2. **"Rigid" is a statement about the code, not about the author.** Most of these
    repositories make no negative claim at all. `rtkd/idkfa` ships as a tool;
@@ -174,9 +187,9 @@ Four things bound it:
 4. **Skip-awareness is necessary, not sufficient.** Every tier-3 tool is bounded
    somewhere else instead: `relikd` to periodic key lengths, `lp-decrypter` to a
    key-length crib window, `JBO` to a first sentence with the flag off by default,
-   `aldegonde` to period 5 and deterministic phase rules. **No tool in this corpus
-   searches skips over a running key.** The intersection of "skip-aware" and
-   "running-key" is empty across 99 repositories.
+   `aldegonde` to period 5 and deterministic phase rules, `mortlach` to what a crib
+   window can constrain. **No tool in this corpus searches skips over a running key.**
+   The intersection of "skip-aware" and "running-key" is empty across 108 repositories.
 
 ### 4.3 The three patterns worth naming
 
@@ -216,10 +229,65 @@ Walked commit by commit, the file set reaches that hash at **`fe9b2255`,
 modified since. That is **25.5 months before** the `rtkd/iddqd` root commit `218ed88`
 of 2017-03-01. **Our canon does not sit downstream of iddqd.**
 
-Caveat stated plainly: an exact match does not prove two *independent* readings. Both
-could descend from one community transcription posted in January 2015. What it does
-establish is that the 13,136-rune stream is the long-standing reading and not an
-artefact of 2017-era tooling.
+**And the same repository shows the reading being arrived at.** `c1cada` also holds an
+*earlier and different* stream, `transcriptions.rne`, and everything is committed by
+one transcriber, `dude123124144`:
+
+| commit | date | file | n runes | index SHA-256 |
+|---|---|---|---:|---|
+| `42d3394` | 2015-01-16 | `transcriptions.rne` | 13,053 | `3a2a1f8f...` |
+| `f75c1de` | 2015-01-20 | `perl/page.*.txt` | 13,377 | `ec3d102a...` |
+| **`fe9b2255`** | **2015-01-21** | `perl/page.*.txt` | **13,136** | **`74cebdb0...` canon** |
+| `420a2f4` | 2015-01-23 | `transcriptions.rne` | 13,072 | `a38c30ca...` |
+| **`420a2f4`** | **2015-01-23** | `translation/liber_primus.rne` | **13,136** | **`74cebdb0...` canon** |
+
+The 13,072 file carries **exactly the contradictions that `henkman/liberprimus` (2016)
+carries** — segment 33 @100 and @117 B→W, segment 55 @19 X→L — and nearly the same
+missing-segment set. So the *dissenting* reading is a dated January-2015 lineage too.
+
+**The transcriber then corrected himself.** His later repository,
+`dude123124144/Liber-Primus-Runes-OCR`, carries a file of the *same name*,
+`misc_scripts/transcriptions.rne`, committed 2017-05-10 — and it is **13,136 runes
+hashing to `74cebdb0...`**, as is `misc_scripts/liber_primus_words.rne` beside it. The
+person who produced the 13,072 reading in January 2015 replaced it, under the same
+filename, with ours.
+
+**And a third repository dates the competing reading earlier still.**
+`thomasandfriends/Cicada3301Runes` is a single commit by Misha Wagner,
+`52e5c7e4827d81ffc705ef61ac0217c9bdd6ff35`, **2015-01-09T23:39:25Z** — six days after
+the Liber Primus was published, the earliest dated rune stream anywhere in this corpus.
+Its `data/runes.rune.old` is 13,072 runes hashing to **`a38c30ca...`**, byte-identical
+to resvolver's 2015-01-23 `transcriptions.rne`, and it carries exactly the W / W / L
+readings.
+
+So the order is the opposite of what one would assume:
+
+- **2015-01-09** — the community's first transcription reads `ᚹ` at segment 33 @100 and
+  @117 and `ᛚ` at segment 55 @19. **Our reading is not the original.**
+- **2015-01-21** — twelve days later, a corrected stream appears: 13,136 runes,
+  `74cebdb0...`, reading `ᛒ` / `ᛒ` / `ᛉ`. **This is canon.**
+- **2015-01-23** — both sit side by side in `resvolver/c1cada`.
+- **2017-05-10** — the transcriber re-publishes `transcriptions.rne`, the very filename
+  that held the older stream, as the **13,136** stream. He replaced his own reading.
+
+The correction is the right way round, and that is the load-bearing point: the 13,136
+stream is **longer by 64 runes**, and those 64 runes are precisely the omissions that
+make segments 0, 3, 6, 19, 26, 35, 36 and 39 fail to match in the older file. A
+transcription that *gains* 64 previously-missed runes while changing three glyphs is
+one being re-checked against the images — the only process that produces that
+combination. A drifting copy loses runes; it does not gain them.
+
+Downstream, the older reading survives in `henkman/liberprimus` (2016) and the cijhho
+script archive, which is why it keeps resurfacing as an apparent conflict. The
+corrected reading is what `rtkd/iddqd` (2017), `scream314` (2018),
+`micheloosterhof/aldegonde` (`data/page0-58.txt`),
+`r4nd0mD3v3l0p3r/LiberPrimusSolver` (`data/unsolved.txt`),
+`cicada-solvers/libergo` (`cmd/runesub/runesub.sh`) and this project all carry.
+
+Caveat stated plainly: an exact hash match still does not prove two *independent*
+readings. What the commit chain establishes is stronger and different — that the
+community produced one reading, corrected it against the images within a fortnight, and
+that our file is the correction.
 
 ### 5.2 Omission versus contradiction, across every vendored transcription
 
@@ -228,13 +296,18 @@ file, then labels every `difflib` opcode. Across all rune-bearing vendored files
 result is **164 omissions and exactly four genuine reading conflicts** — spread over
 **two** dissenting witnesses that **do not agree with each other**:
 
-| contested rune | canon | resvolver 2015 | iddqd (4 revs) | henkman 2016 | scream314 |
+| contested rune | canon (= resvolver 2015-01-21) | iddqd 2017 (4 revs) | scream314 2018 | thomasandfriends 2015-01-09 | henkman 2016 |
 |---|---|---|---|---|---|
-| seg 24 @172 (unsolved page 24) | AE | AE | AE | AE | **A** |
-| seg 33 @100 | B | B | B | **W** | B |
-| seg 33 @117 | B | B | B | **W** | B |
-| seg 55 @19 | X | X | X | **L** | X |
-| seg 56 @80 (cleartext page) | Y | Y | Y | Y | **E** |
+| seg 24 @172 (unsolved page 24) | AE | AE | **A** | AE | AE |
+| seg 33 @100 | B | B | B | **W** | **W** |
+| seg 33 @117 | B | B | B | **W** | **W** |
+| seg 55 @19 | X | X | X | **L** | **L** |
+| seg 56 @80 (cleartext page) | Y | Y | **E** | Y | Y |
+
+The last two columns are **one lineage**, not two witnesses: `thomasandfriends`'
+`data/runes.rune.old` (2015-01-09) and `resvolver`'s `transcriptions.rne` (2015-01-23)
+are byte-identical at `a38c30ca...`, and `henkman/liberprimus` (2016-08-14) is the same
+13,072-rune reading.
 
 **Canon is the majority reading on every contested rune.** Segment 56 is decidable
 from English — canon gives DIUINITY, scream314 gives DIUINITE — which is a demonstrated
@@ -340,7 +413,7 @@ transcription.
    settle C-E-01 — the one contested rune that sits on unsolved ciphertext — with a
    third, pixel-derived reading rather than another copy of someone else's text file.
 
-2. **Nobody has searched skips over a running key.** Across 99 repositories, the
+2. **Nobody has searched skips over a running key.** Across 108 repositories, the
    intersection of "skip-aware search" and "running key" is **empty**.
    `relikd/LiberPrayground` searches interrupters but only over periodic key lengths;
    `jens-wedin/attack_keyskip.py` searches key-skip but only over prime/totient
@@ -364,14 +437,16 @@ transcription.
    should be adopted as the standard any future negative in this project is held to.
    `examples/lp_lag5_attack.py` is roughly 400 lines and directly reusable.
 
-5. **Retrieve the four `mortlach/*` repositories.** mortlach is a named Liber Primus
-   researcher and a co-author of `cicada-solvers/lp-decrypter`, the tool with the most
-   thorough interrupter-subset enumeration in the corpus. `Liber-Primus-Crib-Assist`,
-   `Liber-Primus-Rune-Decrypting` and the runeglish transition-probability matrices
-   were all in flight when this session ended. Given the quality of the lp-decrypter
-   search, these are the highest-expected-value outstanding clones — and the runeglish
-   language-model matrices in particular bear directly on the scorer problem this
-   project already documented in `analysis/round15/SCORER/FINDING.md`.
+5. **Use `mortlach/runeglish-lm` on the scorer problem.** It was retrieved late and not
+   exploited here. It holds Markov transition-probability matrices P(A|B) over
+   *runeglish* character n-grams — 2-, 3- and 4-grams, both plain and indexed by word
+   length and position-in-word — together with a worked example showing how phrase
+   scores degrade as 1% transcription error is injected. This project has already
+   documented that a scorer trained on raw English is scoring a different distribution
+   than a 29-rune decoder emits (`analysis/round15/SCORER/FINDING.md`). These matrices
+   are trained on the right distribution. `mortlach/Liber-Primus-Crib-Assist` is still
+   unretrieved and feeds the crib lists that drive
+   `mortlach/Liber-Primus-Rune-Decrypting`.
 
 ---
 
