@@ -1,0 +1,3858 @@
+{
+ "$comment": "Lane E catalogue of third-party Cicada 3301 / Liber Primus tooling. Every row is a repository cloned into corpus/E-tooling/vendor/ (the vendor tree itself is gitignored; clone_sha makes each row reproducible). Judgement fields (decoder_type, null_trustworthy, what_it_tried, what_it_concluded) are hand-authored from reading the code; decoder_evidence names the file and line the judgement rests on. Rows marked decoder_type 'unknown' were NOT read - do not treat them as rigid.",
+ "generated_utc": "2026-08-20T05:49:55Z",
+ "decoder_type_vocabulary": {
+  "rigid": "Key/keystream pointer advances once per ciphertext rune, unconditionally. Cannot express a skip at all.",
+  "skip-capable": "The decode primitive holds the key pointer if HANDED a set of interrupter positions or an interrupter character, but the tool performs no search over unknown skip patterns. Default call is rigid.",
+  "skip-aware-search": "The tool searches over which positions interrupt (subset enumeration, beam, hill-climb, annealing) and can therefore recover a key when the interrupter pattern is unknown.",
+  "no-decoder": "Transcription, data, gematria table, hash or steganography work; no polyalphabetic decode loop to classify.",
+  "unknown": "Code present but the decisive loop was not read in this lane."
+ },
+ "null_trustworthy_vocabulary": {
+  "true": "The tool searched a space in which it could actually have succeeded, so a null from it is a real negative for that space.",
+  "partial": "Trustworthy for the hypotheses it can express - usually 'no interrupters' and 'every occurrence of X interrupts' - and not for an unknown or irregular interrupter pattern.",
+  "false": "The decoder could not have succeeded even if its hypothesis were right; its null carries no information about that hypothesis.",
+  "unknown": "Not assessed.",
+  "n/a": "No decoder, so no null."
+ },
+ "why_this_matters": "Under this project's anti-repeat filter, rigid decoding scores the CORRECT key as noise (-6.835) while a skip-aware beam decoder recovers it (-4.170). A null produced by a rigid decoder is therefore not evidence against a key-skip hypothesis - it is evidence that the instrument could not see it.",
+ "canonical_hashes": {
+  "full_13136_index_sha256": "74cebdb074898f4c2742733a421e6d1717068a4f4cf2802d2b50923285aad329",
+  "unsolved_12956_index_sha256": "023312066df471005264b9cbe7997cb77d2a9a6a2dc9b3316d22674023af1585",
+  "note": "Two different objects, not a conflict. See CONFLICTS-E.md.",
+  "scream314_15938_index_sha256": "67a41c67b6a8e8678944d26e9c6af547ef0a07a21eb47e3fd483790ba48e81d7"
+ },
+ "summary": {
+  "n_tools": 91,
+  "by_decoder_type": {
+   "skip-aware-search": 7,
+   "skip-capable": 12,
+   "rigid": 10,
+   "unknown": 28,
+   "no-decoder": 34
+  },
+  "by_null_trustworthy": {
+   "partial": 16,
+   "True": 3,
+   "False": 10,
+   "unknown": 28,
+   "n/a": 34
+  }
+ },
+ "tools": [
+  {
+   "name": "micheloosterhof/aldegonde",
+   "vendor_dir": "corpus/E-tooling/vendor/micheloosterhof__aldegonde",
+   "url": "https://github.com/micheloosterhof/aldegonde",
+   "clone_sha": "d1a3c3a50e6ee5643d99f36c2e11bb60ee1ebc62",
+   "shallow_clone": false,
+   "license": "ISC",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "ISC"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 327,
+    "Jupyter": 2
+   },
+   "loc": 63312,
+   "first_commit_date": "2021-10-12T21:46:25+08:00",
+   "last_commit_date": "2026-08-16T20:14:13+08:00",
+   "n_commits": 1585,
+   "authors": [
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "michel@MacBook-Pro.local",
+    "michel@oosterhof.net",
+    "micheloosterhof@users.noreply.github.com",
+    "moosterhof@hashicorp.com",
+    "noreply@anthropic.com"
+   ],
+   "cipher_families_referenced": {
+    "ngram_scoring": 1290,
+    "totient_prime": 966,
+    "autokey": 434,
+    "beaufort": 212,
+    "vigenere": 159,
+    "caesar_shift": 134,
+    "transposition": 70,
+    "affine": 60,
+    "substitution_search": 44,
+    "atbash": 37
+   },
+   "what_it_tried": "A general classical-cryptanalysis library (1,585 commits) plus an LP-specific programme: period-5 interruptor attack over additive and reflective shift families under all four phase rules, and a coset-IoC sweep that detects ANY period-5 polyalphabetic substitution (including Quagmire-style keyed alphabets) without solving it.",
+   "what_it_concluded": "EXCLUDES the period-5 key-schedule-with-interruptor hypothesis for the shift family, and by detection for general period-5 polyalphabetic substitution: real pages top out at z ~ +3 over 6,710 attack runs, no rule clears the multiple-testing threshold.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "src/aldegonde/data/ngrams/runeglish/quadgrams.txt",
+    "n_runes": 1857984,
+    "file_sha256": "0a7598607c63578351ddd6de82cd46dfb0f03fbdd5ee0f1b3500fdfd1ef45681",
+    "sha256_indices": "20315d88c48e14b7ea5b39bd7677af35a2f7f6d596de41b6ef157d195fc15808",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "src/aldegonde/data/ngrams/runeglish/trigrams.txt",
+     "lp_section_data.py",
+     "src/lp_section_data.py",
+     "data/liber-primus__transcription--master.txt",
+     "experiments/repeat_attack_results_20251229_021220.txt",
+     "data/page0-58.txt",
+     "data/page0-56.txt",
+     "hypotheses/transcription-verification.md"
+    ]
+   },
+   "transcription_sha256": "0a7598607c63578351ddd6de82cd46dfb0f03fbdd5ee0f1b3500fdfd1ef45681",
+   "decoder_type": "skip-aware-search",
+   "decoder_evidence": "examples/lp_lag5_attack.py `phase_sequence()` implements four DETERMINISTIC phase rules - `skip:R` (rune R is an interrupter, emitted literally, key does not advance), `reset:R`, `word`, `sent` - and solves each coset by chi-square, then scores with runeglish trigrams. Its calibration is the best in the corpus: a doublet-preserving null (shuffle the lag-1 delta stream and rebuild the walk) because 'against a naive shuffle null every real page scores high simply because the corpus lacks adjacent doublets, which is exactly how this attack produced plausible-looking false positives before the null was fixed'; and a POSITIVE CONTROL - page-57 plaintext encrypted with a random 5-shift key plus an interrupter - which it cracks exactly at 95 runes, z ~ +7. Elsewhere: examples/crack_masc.py hill-climb, gorod_krovi_cipher12.py hill_climb_autokey(5000 iters, 30 restarts).",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": "This is the one negative in the corpus that is properly instrumented - it has a positive control and a null that respects the corpus's own doublet anomaly. It is 'partial' rather than true only because its interrupter model is deterministic (every occurrence of R interrupts); an irregular subset is outside its hypothesis space. Note the repo carries a CLAUDE.md, so the LP-specific example scripts may be recent AI-assisted work even though the library itself dates from 2021."
+  },
+  {
+   "name": "cicada-solvers/aldegonde",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__aldegonde",
+   "url": "https://github.com/cicada-solvers/aldegonde",
+   "clone_sha": "782d2000dd01f9a07e863d65d4387d4015c3d999",
+   "shallow_clone": false,
+   "license": "ISC",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "ISC"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 281,
+    "Jupyter": 2
+   },
+   "loc": 54940,
+   "first_commit_date": "2021-10-12T21:46:25+08:00",
+   "last_commit_date": "2026-08-10T18:19:39+08:00",
+   "n_commits": 1497,
+   "authors": [
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "michel@MacBook-Pro.local",
+    "michel@oosterhof.net",
+    "micheloosterhof@users.noreply.github.com",
+    "moosterhof@hashicorp.com",
+    "noreply@anthropic.com"
+   ],
+   "cipher_families_referenced": {
+    "ngram_scoring": 1109,
+    "totient_prime": 943,
+    "autokey": 400,
+    "beaufort": 211,
+    "vigenere": 156,
+    "caesar_shift": 133,
+    "transposition": 58,
+    "affine": 55,
+    "substitution_search": 44,
+    "atbash": 34
+   },
+   "what_it_tried": "See micheloosterhof/aldegonde.",
+   "what_it_concluded": "See micheloosterhof/aldegonde.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "src/aldegonde/data/ngrams/runeglish/quadgrams.txt",
+    "n_runes": 1857984,
+    "file_sha256": "0a7598607c63578351ddd6de82cd46dfb0f03fbdd5ee0f1b3500fdfd1ef45681",
+    "sha256_indices": "20315d88c48e14b7ea5b39bd7677af35a2f7f6d596de41b6ef157d195fc15808",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "src/aldegonde/data/ngrams/runeglish/trigrams.txt",
+     "lp_section_data.py",
+     "src/lp_section_data.py",
+     "data/liber-primus__transcription--master.txt",
+     "experiments/repeat_attack_results_20251229_021220.txt",
+     "data/page0-58.txt",
+     "data/page0-56.txt",
+     "hypotheses/transcription-verification.md"
+    ]
+   },
+   "transcription_sha256": "0a7598607c63578351ddd6de82cd46dfb0f03fbdd5ee0f1b3500fdfd1ef45681",
+   "decoder_type": "skip-aware-search",
+   "decoder_evidence": "Org fork of micheloosterhof/aldegonde at an earlier point (1,497 vs 1,585 commits). Same engine.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/lp-decrypter",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__lp-decrypter",
+   "url": "https://github.com/cicada-solvers/lp-decrypter",
+   "clone_sha": "9dd0c419828bc6b1ca9febb358bf89580396ea8a",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 25
+   },
+   "loc": 8158,
+   "first_commit_date": "2020-09-12T00:39:30+01:00",
+   "last_commit_date": "2025-10-31T20:15:00-05:00",
+   "n_commits": 9,
+   "authors": [
+    "167648603+cmbsolver@users.noreply.github.com",
+    "mortlachmortlach@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 481,
+    "totient_prime": 63,
+    "caesar_shift": 40,
+    "ngram_scoring": 21
+   },
+   "what_it_tried": "Key-recovery over a cropped ciphertext window: itertools.product over ciphertext-derived and runeglish keys, gematria rotations, key and ciphertext shifts, and the full interrupter-subset enumeration.",
+   "what_it_concluded": "No solve. Trustworthy as a negative for SHORT keys recoverable from the first key-length window; silent about long or running keys.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "4gram_probability/4GramProbability.py",
+    "n_runes": 2829124,
+    "file_sha256": "7df9412692c9b23f6a593730ee768145c4f470ebf414a34e06def29979e57e98",
+    "sha256_indices": "440e9f0951b3b519d46a61a1760bae9c4a5f61b5d9e8a554d73048b406d4738d",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "4gram_probability/4GramProbabilityData.csv",
+     "lp_data/lp_section_data.py",
+     "lp_data/liber-primus__transcription--master.txt"
+    ]
+   },
+   "transcription_sha256": "7df9412692c9b23f6a593730ee768145c4f470ebf414a34e06def29979e57e98",
+   "decoder_type": "skip-aware-search",
+   "decoder_evidence": "enc/DecryptModel.py:485 `get_all_interrupter_position_lists()` returns `get_all_sublists()` = every `combinations()` subset of the positions where the interrupter rune occurs; the decrypt loop at line 383 holds key_index at those positions. It adds a self-consistency filter: if a decrypted rune IS the interrupter rune, the candidate is rejected (line 399). The search is bounded by `crop_ct_to_keylen_with_interrupter()` - only the first key_length runes (plus enough extra to cover interrupters) are searched.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": [
+    {
+     "path": "lp_data/lp_section_data.py",
+     "verdicts": [
+      "MATCHES_WITH_ALIGNMENT"
+     ]
+    }
+   ],
+   "notes": "Its lp_data/lp_section_data.py encodes J as U+16C2, not U+16C4 - see CONFLICTS-E.md. Downstream consumers must handle the alias."
+  },
+  {
+   "name": "relikd/LiberPrayground",
+   "vendor_dir": "corpus/E-tooling/vendor/relikd__LiberPrayground",
+   "url": "https://github.com/relikd/LiberPrayground",
+   "clone_sha": "719380ebee0523ad7f2fbf389c6f960d51bea5a4",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 28,
+    "HTML": 25,
+    "JavaScript": 1
+   },
+   "loc": 4194,
+   "first_commit_date": "2021-01-14T00:28:11+01:00",
+   "last_commit_date": "2022-03-15T11:15:03+01:00",
+   "n_commits": 35,
+   "authors": [
+    "info@relikd.de"
+   ],
+   "cipher_families_referenced": {
+    "ngram_scoring": 108,
+    "totient_prime": 57,
+    "caesar_shift": 30,
+    "affine": 25,
+    "vigenere": 13,
+    "autokey": 12,
+    "running_key": 10,
+    "gematria": 4,
+    "hash_bruteforce": 4,
+    "substitution_search": 2
+   },
+   "what_it_tried": "Joint search over key length, interrupter positions and key, with an IoC objective; OEIS sequence keystreams (oeis.py) with interrupt insertion.",
+   "what_it_concluded": "No solve found. Because the instrument can express and search an irregular interrupter pattern, its null IS a real negative - but only over PERIODIC/Vigenere key lengths. It does not cover running keys, so it says nothing about the running-key hypothesis.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "data/dictionary_all-rune.txt",
+    "n_runes": 3315687,
+    "file_sha256": "f7ed99ce1c16eabfaf797df96702125c3147bc35dc50ddc725aaa448240f6ab6",
+    "sha256_indices": "a56e9f010a90845411f7c65de512d31f4bff00d8ce99e6c43abd21eb8a82582a",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "data/baseline-rune-words.txt",
+     "data/baseline-rune-stream.txt",
+     "data/p-5gram.txt",
+     "data/dictionary_9.txt",
+     "data/dictionary_10.txt",
+     "data/dictionary_8.txt",
+     "data/dictionary_11.txt",
+     "data/p-no-e-5gram.txt"
+    ]
+   },
+   "transcription_sha256": "f7ed99ce1c16eabfaf797df96702125c3147bc35dc50ddc725aaa448240f6ab6",
+   "decoder_type": "skip-aware-search",
+   "decoder_evidence": "LP/InterruptSearch.py: `all()` enumerates EVERY subset of candidate interrupter positions; `sequential()` is a bounded hill-climb over the first maxdepth=9 interrupts per step, scored by a caller-supplied score_fn. playground.py:245 sets SOLVER.INTERRUPT_POS from the search; probability.py loads a precomputed InterruptDB ('db_norm'/'db_high') and 'perform[s] heuristic search on the keylength, interrupts, and key' jointly.",
+   "null_trustworthy": true,
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/JBO-cicada_tools",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__JBO-cicada_tools",
+   "url": "https://github.com/cicada-solvers/JBO-cicada_tools",
+   "clone_sha": "dc3b586573da2b167e6cb7527e0c879f3b142809",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 11
+   },
+   "loc": 3856,
+   "first_commit_date": "2023-08-13T21:37:33-07:00",
+   "last_commit_date": "2025-10-31T19:42:01-05:00",
+   "n_commits": 273,
+   "authors": [
+    "167648603+cmbsolver@users.noreply.github.com",
+    "30564634+yo-yo-yo-jbo@users.noreply.github.com",
+    "jbo@McJbo.local",
+    "jbo@jbo"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 330,
+    "autokey": 83,
+    "ngram_scoring": 40,
+    "llm_ml": 36,
+    "vigenere": 27,
+    "caesar_shift": 11,
+    "atbash": 8,
+    "running_key": 7,
+    "hill_cipher": 6,
+    "substitution_search": 2
+   },
+   "what_it_tried": "Broad experiment suite (273 commits): sentence cribbing against prime/emirp keystreams with skip and start-value limits, primes-indexed-by-totient keystreams, autokey, Hill cipher, page-15 abs(3301-p) function, and hash work.",
+   "what_it_concluded": "No solve. Its skip search is real but is a short-crib search, and it is off unless the caller turns it on - so most published runs from this tool are rigid runs.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "skip-aware-search",
+   "decoder_evidence": "research_utils.py:179 `iterate_potential_interrupter_indices()` yields ALL 2**k subsets of the positions where the interrupter rune occurs - a genuine exhaustive skip search. transformers.py:609 KeystreamTransformer.transform() holds the keystream at any index in interrupt_indices. BUT: (a) the generator is applied to `header_pt`, the first SENTENCE only, so k stays small; (b) `consider_interrupters` defaults to **False** in experiments.py:99 and 1050, and with `interrupt_indices=set()` the transform advances on every rune - i.e. the DEFAULT run is rigid.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "jens-wedin/liber-primus",
+   "vendor_dir": "corpus/E-tooling/vendor/jens-wedin__liber-primus",
+   "url": "https://github.com/jens-wedin/liber-primus",
+   "clone_sha": "6232570e1a1b0831a222decf18b0632a30de4b32",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 13
+   },
+   "loc": 1830,
+   "first_commit_date": "2026-08-18T16:51:25Z",
+   "last_commit_date": "2026-08-18T23:42:32Z",
+   "n_commits": 8,
+   "authors": [
+    "noreply@anthropic.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 93,
+    "ngram_scoring": 55,
+    "autokey": 24,
+    "vigenere": 21,
+    "gematria": 21,
+    "running_key": 21,
+    "caesar_shift": 18,
+    "atbash": 12,
+    "substitution_search": 7
+   },
+   "what_it_tried": "Full toolkit: solved-page validation by forward re-encryption, IoC and doublet statistics, autokey brute force, crib dragging with the literal-F rule, key-skip beam search over prime/totient streams, key-text-free running-key attack, no-repeat mechanism modelling, and an n-gram model over rune indices with Stupid Backoff.",
+   "what_it_concluded": "Rules out prime-family key-skip; characterises the lag-1 anomaly (86 doublets / 0.66%, differencing restores 3.37%); declares its own running-key test underpowered.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "data/liber_primus.md",
+    "n_runes": 15938,
+    "file_sha256": "0cad54f3e2db013730b949b7641f5a4c32fbc2a3b2e4addf7ef9b42125f178f4",
+    "sha256_indices": "67a41c67b6a8e8678944d26e9c6af547ef0a07a21eb47e3fd483790ba48e81d7",
+    "lineage": "scream314 15,938 lineage - carries C-E-01 and C-E-02",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "0cad54f3e2db013730b949b7641f5a4c32fbc2a3b2e4addf7ef9b42125f178f4",
+   "decoder_type": "skip-aware-search",
+   "decoder_evidence": "attack_keyskip.py is a beam search over key-skip hypotheses with a `--selftest` that recovers 96-98% of a planted key-skip key - i.e. it is a VALIDATED instrument. attack_runningkey.py self-calibrates and declares itself UNDERPOWERED rather than reporting a null.",
+   "null_trustworthy": true,
+   "divergences_vs_canon": [
+    {
+     "path": "data/liber_primus.md",
+     "verdicts": [
+      "CONTRADICTION"
+     ]
+    }
+   ],
+   "notes": "NOT AN INDEPENDENT WITNESS. All 8 commits are authored Claude <noreply@anthropic.com>, first commit 2026-08-18T16:51:25Z - one day before this operation. Its agreement with this project's conclusions is sibling agreement, not replication. Flagged prominently in CONFLICTS-E.md."
+  },
+  {
+   "name": "cicada-solvers/LiberPrayground",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__LiberPrayground",
+   "url": "https://github.com/cicada-solvers/LiberPrayground",
+   "clone_sha": "513aeff9e5f561784b186730cca3382b8e923607",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 28,
+    "HTML": 25,
+    "JavaScript": 1
+   },
+   "loc": null,
+   "first_commit_date": "2021-01-14T00:28:11+01:00",
+   "last_commit_date": "2021-03-04T22:07:33+01:00",
+   "n_commits": 34,
+   "authors": [
+    "oleg@relikd.de"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "See relikd/LiberPrayground.",
+   "what_it_concluded": "See relikd/LiberPrayground.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "data/dictionary_all-rune.txt",
+    "n_runes": 3315687,
+    "file_sha256": "f7ed99ce1c16eabfaf797df96702125c3147bc35dc50ddc725aaa448240f6ab6",
+    "sha256_indices": "a56e9f010a90845411f7c65de512d31f4bff00d8ce99e6c43abd21eb8a82582a",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "data/baseline-rune-words.txt",
+     "data/baseline-rune-stream.txt",
+     "data/p-5gram.txt",
+     "data/dictionary_9.txt",
+     "data/dictionary_10.txt",
+     "data/dictionary_8.txt",
+     "data/dictionary_11.txt",
+     "data/p-no-e-5gram.txt"
+    ]
+   },
+   "transcription_sha256": "f7ed99ce1c16eabfaf797df96702125c3147bc35dc50ddc725aaa448240f6ab6",
+   "decoder_type": "skip-aware-search",
+   "decoder_evidence": "Org mirror of relikd/LiberPrayground.",
+   "null_trustworthy": true,
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "Skyro7777777/LiberPrimusDecoded",
+   "vendor_dir": "corpus/E-tooling/vendor/Skyro7777777__LiberPrimusDecoded",
+   "url": "https://github.com/Skyro7777777/LiberPrimusDecoded",
+   "clone_sha": "538c639e8dac3ebdc8de57916991632a818347f0",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 46,
+    "Shell": 13,
+    "TypeScript": 8
+   },
+   "loc": 17980,
+   "first_commit_date": "2026-08-11T17:25:23Z",
+   "last_commit_date": "2026-08-15T09:39:23Z",
+   "n_commits": 25,
+   "authors": [
+    "z@container"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 1277,
+    "ngram_scoring": 320,
+    "autokey": 261,
+    "vigenere": 229,
+    "caesar_shift": 136,
+    "atbash": 114,
+    "gematria": 113,
+    "transposition": 66,
+    "playfair": 65,
+    "running_key": 40
+   },
+   "what_it_tried": "Digraph/Hill-cipher attack over Z_29, magic-square derived sub-blocks, autokey, Beaufort, atbash, plus a large scraped research corpus.",
+   "what_it_concluded": "No solve reported.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "cicada3301-research/decoder/all_pages.json",
+    "n_runes": 21272,
+    "file_sha256": "2a2441270f0512674fd9e5414aecf7abab92ea0e93234996699d3f4cac282cd5",
+    "sha256_indices": "70e2aad070c0a06f1183e2b9edd6df3e748a478e15f80b19e19de192038aee16",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "cicada3301-research/decoder/unsolved_pages.json",
+     "cicada3301-research/raw/primary/primary_how_solved.json",
+     "cicada3301-research/raw/primary/primary_how_solved.txt",
+     "cicada3301-research/raw/wiki_how_solved.json",
+     "cicada3301-research/raw/wiki_how_solved.txt",
+     "cicada3301-research/raw/liber_primus.txt",
+     "cicada3301-research/raw/liber_primus_raw.json",
+     "cicada3301-research/raw/primary/primary_translit.json"
+    ]
+   },
+   "transcription_sha256": "2a2441270f0512674fd9e5414aecf7abab92ea0e93234996699d3f4cac282cd5",
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "decoder/digraph_attack.py runs brute force and hill climbing over 2x2 Hill matrices mod 29 (50 starts x 500 iters) and magic-square sub-blocks. The search is over the CIPHER, not over interrupter positions.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": [
+    {
+     "path": "cicada3301-research/decoder/all_pages.json",
+     "verdicts": [
+      "CONTRADICTION"
+     ]
+    },
+    {
+     "path": "cicada3301-research/decoder/unsolved_pages.json",
+     "verdicts": [
+      "CONTRADICTION",
+      "OMISSION"
+     ]
+    },
+    {
+     "path": "cicada3301-research/raw/liber_primus.txt",
+     "verdicts": [
+      "CONTRADICTION"
+     ]
+    },
+    {
+     "path": "cicada3301-research/raw/liber_primus_raw.json",
+     "verdicts": [
+      "CONTRADICTION"
+     ]
+    },
+    {
+     "path": "cicada3301-research/decoder/translit_pages_with_delims.json",
+     "verdicts": [
+      "OMISSION"
+     ]
+    },
+    {
+     "path": "tool-results/read_1786524975012_e54737a8512a.txt",
+     "verdicts": [
+      "MATCHES_WITH_ALIGNMENT",
+      "OMISSION"
+     ]
+    },
+    {
+     "path": "cicada3301-research/decoder/wave5_prng_results.json",
+     "verdicts": [
+      "OMISSION"
+     ]
+    },
+    {
+     "path": "cicada3301-research/decoder/d4_runs/d4_results.json",
+     "verdicts": [
+      "OMISSION"
+     ]
+    }
+   ],
+   "notes": "First commit 2026-08-11, sole author 'z@container' - likely container-run agent work; treat as non-independent. Its raw/liber_primus.txt is the scream314 15,938-rune lineage (see CONFLICTS-E.md), and its decoder/*.json store runes and raw text in the same file, which breaks naive rune extraction."
+  },
+  {
+   "name": "Taiiwo/TaiiwoBot",
+   "vendor_dir": "corpus/E-tooling/vendor/Taiiwo__TaiiwoBot",
+   "url": "https://github.com/Taiiwo/TaiiwoBot",
+   "clone_sha": "1d71ef038e838e140d9e9ccb332356999c353f1d",
+   "shallow_clone": true,
+   "license": "GPL-3.0",
+   "license_files": [
+    {
+     "path": "lib/cicada/LICENSE",
+     "detected": "GPL-3.0"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 46
+   },
+   "loc": 6143,
+   "first_commit_date": "2022-04-16T12:36:48+01:00",
+   "last_commit_date": "2026-02-16T11:14:14Z",
+   "n_commits": 23,
+   "authors": [
+    "198982749+Copilot@users.noreply.github.com",
+    "Taiiwo@Llort.gq",
+    "tylerzacc@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 34,
+    "caesar_shift": 30,
+    "totient_prime": 30,
+    "atbash": 12,
+    "vigenere": 9,
+    "hash_bruteforce": 3,
+    "ngram_scoring": 2,
+    "substitution_search": 1
+   },
+   "what_it_tried": "IRC/Discord bot front-end over Taiiwo/cicada.",
+   "what_it_concluded": "No published negative.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "lib/cicada/cicada/liber_primus.txt",
+    "n_runes": 15933,
+    "file_sha256": "e2d266454e320b4a44b8117a2d0500ce8bdc69dd1852ebbeddd3818a38181fdc",
+    "sha256_indices": "c3eb607844a190915ef3436c148603973ae6bb07e98b3569164d9b7c3e9214e5",
+    "lineage": "unclassified",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "e2d266454e320b4a44b8117a2d0500ce8bdc69dd1852ebbeddd3818a38181fdc",
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "Vendors cicada/gematria.py verbatim. plugins/Gematria.py:125-126 parses `interrupts` and `skip_indices` from a chat command string - a human types them. No search.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "Protheme-777/Liber-Primus-decoder",
+   "vendor_dir": "corpus/E-tooling/vendor/Protheme-777__Liber-Primus-decoder",
+   "url": "https://github.com/Protheme-777/Liber-Primus-decoder",
+   "clone_sha": "6e6a3b6c520c2b1fa02617e04634238a8bc0113e",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 1666,
+   "first_commit_date": "2026-03-20T14:03:30+01:00",
+   "last_commit_date": "2026-03-20T14:23:09+01:00",
+   "n_commits": 7,
+   "authors": [
+    "eviantoebes@icloud.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 85,
+    "atbash": 44,
+    "caesar_shift": 31,
+    "ngram_scoring": 31,
+    "vigenere": 21,
+    "gematria": 13,
+    "affine": 11,
+    "autokey": 6,
+    "substitution_search": 6,
+    "beaufort": 5
+   },
+   "what_it_tried": "Single-file 1,666-line kitchen sink: Vigenere, Beaufort, affine, atbash, autokey, prime/totient/prime-gap streams, plus hill-climbing (4,000 iters x 3 restarts) and simulated annealing (T0=10, cooling 0.995) over monoalphabetic maps.",
+   "what_it_concluded": "Reports no solve. The hill-climb and annealing search the SUBSTITUTION map, not the interrupter pattern, so a null from it does not bear on the key-skip hypothesis.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "liber_primus_decoder_v5.py:753 `_apply_key(idx, key, fn, skip_f=False)`: `if skip_f and i == 0: result.append(0); continue` - the key holds, but skip_f is an ALL-OR-NOTHING boolean, so the only two hypotheses it can express are 'no F interrupts' and 'every F interrupts'. It cannot express an irregular subset, which is the behaviour actually observed on the solved pages. `beaufort()` does not even take skip_f, so Beaufort runs rigid.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "lipeeeee/gematria",
+   "vendor_dir": "corpus/E-tooling/vendor/lipeeeee__gematria",
+   "url": "https://github.com/lipeeeee/gematria",
+   "clone_sha": "c807a486e9eeaf5e8d80438173083196397e7e04",
+   "shallow_clone": false,
+   "license": "MIT",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "MIT"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 11
+   },
+   "loc": 1477,
+   "first_commit_date": "2023-05-23T00:37:00+01:00",
+   "last_commit_date": "2023-06-14T11:45:23+01:00",
+   "n_commits": 46,
+   "authors": [
+    "62669782+lipeeeee@users.noreply.github.com",
+    "fgoncalves@generixgroup.com",
+    "filipe.pereirafga@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 62,
+    "totient_prime": 39,
+    "hash_bruteforce": 24,
+    "caesar_shift": 12,
+    "atbash": 8,
+    "vigenere": 2
+   },
+   "what_it_tried": "Re-packaging of the Taiiwo gematria library with extra CLI/utility layers and hash work.",
+   "what_it_concluded": "No published negative.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "lib/gematria.py:180 `running_shift(key, interrupts='', skip_indices=[])` is Taiiwo/cicada's function verbatim - correct key hold on both an interrupter character and a positional list. No search over either.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "neuroretransmit/liberprimus-tool",
+   "vendor_dir": "corpus/E-tooling/vendor/neuroretransmit__liberprimus-tool",
+   "url": "https://github.com/neuroretransmit/liberprimus-tool",
+   "clone_sha": "3104d997ac3bc4cf8922c1e0b4ed74c03d41dcd3",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 17,
+    "Shell": 3
+   },
+   "loc": 1340,
+   "first_commit_date": "2024-04-26T22:01:54-07:00",
+   "last_commit_date": "2024-05-04T10:26:25-07:00",
+   "n_commits": 86,
+   "authors": [
+    "139714828+d4v1-sudo@users.noreply.github.com",
+    "null@null",
+    "optimisticninja@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 32,
+    "atbash": 16,
+    "totient_prime": 10,
+    "vigenere": 9,
+    "gematria": 8,
+    "running_key": 6,
+    "ngram_scoring": 1
+   },
+   "what_it_tried": "Vigenere / running-key / totient over rune indices, with a genetic algorithm (ga/ga.py) seeded from a SOLUTIONS pool.",
+   "what_it_concluded": "No solve. The most explicit admission in the corpus that the skip search is the missing piece: it is literally a NotImplementedError in the shipped code.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "data/transcription.txt",
+    "n_runes": 15933,
+    "file_sha256": "d19e3c127c2fd5afdf5c5a8b886a2c0b018347fa43666a60264df431b57576ca",
+    "sha256_indices": "c3eb607844a190915ef3436c148603973ae6bb07e98b3569164d9b7c3e9214e5",
+    "lineage": "unclassified",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "d19e3c127c2fd5afdf5c5a8b886a2c0b018347fa43666a60264df431b57576ca",
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "crypto/running_key.py: a `skips` dict holds the key at chosen occurrences, then `key_index += 1` on the normal path. Crucially both this file and crypto/vigenere.py raise `NotImplementedError(\"Permutations mode not implemented yet\")` on the non-`fast` branch - i.e. the author identified that the skip PERMUTATIONS need enumerating and left it unwritten.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/LPDecrypter",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__LPDecrypter",
+   "url": "https://github.com/cicada-solvers/LPDecrypter",
+   "clone_sha": "cbb034b8f180c9e206664154dc74268486f6d700",
+   "shallow_clone": false,
+   "license": "MIT",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "MIT"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 27
+   },
+   "loc": 1300,
+   "first_commit_date": "2020-11-27T09:19:53Z",
+   "last_commit_date": "2020-12-06T14:47:29Z",
+   "n_commits": 13,
+   "authors": [
+    "ekarndam@autistici.org"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 45,
+    "gematria": 24,
+    "vigenere": 13,
+    "substitution_search": 3
+   },
+   "what_it_tried": "Clean library of Vigenere-with-interrupters, totient and substitution ciphers over mod 29.",
+   "what_it_concluded": "No published negative.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "data/4GramProbabilityData.csv",
+    "n_runes": 2015012,
+    "file_sha256": "25688bd456640d4f150fad81a19f90dc8583f92174b94b4f53fdbf82d7930806",
+    "sha256_indices": "22fa965b150a84c4c4e9a42e683a92bcd76021838644a406fe931bb1c6c100e3",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "lpdecrypter/liberprimus/lp_section_data.py"
+    ]
+   },
+   "transcription_sha256": "25688bd456640d4f150fad81a19f90dc8583f92174b94b4f53fdbf82d7930806",
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "lpdecrypter/ciphers/vigenere_cipher.py:50 `VigenereWithInterruptersCipher`: `if i in self.interrupters: ...` else `key_index += 1`. Correct hold semantics. But examples/solve_vigenere.py:38 passes a literal `[48, 74, 84]` - a hand-written list. No search exists.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "Taiiwo/cicada",
+   "vendor_dir": "corpus/E-tooling/vendor/Taiiwo__cicada",
+   "url": "https://github.com/Taiiwo/cicada",
+   "clone_sha": "8e44135491ecb65ef047ae58ae720444a697214f",
+   "shallow_clone": false,
+   "license": "GPL-3.0",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "GPL-3.0"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 9
+   },
+   "loc": 678,
+   "first_commit_date": "2019-08-29T18:05:19+01:00",
+   "last_commit_date": "2025-06-14T22:41:24+01:00",
+   "n_commits": 80,
+   "authors": [
+    "Taiiwo@Llort.gq",
+    "romla@sfr.fr",
+    "taiiwo@llort.gq",
+    "tettigarc@protonmail.com",
+    "tylerzacc@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 17,
+    "caesar_shift": 11,
+    "totient_prime": 11,
+    "atbash": 2,
+    "vigenere": 1,
+    "ngram_scoring": 1
+   },
+   "what_it_tried": "The most-reused community library: gematria table, rune/latin transliteration, running shift, Vigenere, totient stream, IoC, and a validator over the solved pages.",
+   "what_it_concluded": "A library, not a claim. Its primitive is sound; every negative built on it inherits the caller's search, not Taiiwo's.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "cicada/liber_primus.txt",
+    "n_runes": 15933,
+    "file_sha256": "e2d266454e320b4a44b8117a2d0500ce8bdc69dd1852ebbeddd3818a38181fdc",
+    "sha256_indices": "c3eb607844a190915ef3436c148603973ae6bb07e98b3569164d9b7c3e9214e5",
+    "lineage": "unclassified",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "e2d266454e320b4a44b8117a2d0500ce8bdc69dd1852ebbeddd3818a38181fdc",
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "cicada/gematria.py:142 `running_shift(key, interrupts='', skip_indices=[])`: on `c in interrupts` or `i in skip_indices` it emits the char and does NOT call `next(key)` - correct hold semantics, and both a character rule and a positional list are supported. But nothing in the package searches either; `vigenere()` and `totient_stream()` just forward the caller's arguments.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "Locyyx64/lp-cribbs",
+   "vendor_dir": "corpus/E-tooling/vendor/Locyyx64__lp-cribbs",
+   "url": "https://github.com/Locyyx64/lp-cribbs",
+   "clone_sha": "fb3875b89d8189af42d3bd248cd40b5603cfde0d",
+   "shallow_clone": false,
+   "license": "GPL-3.0",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "GPL-3.0"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 8
+   },
+   "loc": 584,
+   "first_commit_date": "2024-01-03T09:41:42+01:00",
+   "last_commit_date": "2024-01-04T10:02:18+01:00",
+   "n_commits": 4,
+   "authors": [
+    "96910880+Locyyx64@users.noreply.github.com",
+    "norahChalke912aC@protonmail.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 31,
+    "atbash": 15,
+    "caesar_shift": 9,
+    "vigenere": 4,
+    "affine": 3,
+    "gematria": 3,
+    "beaufort": 2,
+    "playfair": 2,
+    "substitution_search": 1
+   },
+   "what_it_tried": "Crib-dragging and key-derivation over the futhorc runeset with Caesar, atbash and Vigenere/Beaufort variants.",
+   "what_it_concluded": "No published negative.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "lib/libcrib.py works in DIFFERENTIAL space: `vkeygetf_diff()` reads a Vigenere key straight off the crib-minus-ciphertext differential, and `vkeygetf_diff_err()` emits three keys at absolute error +/-1 to absorb off-by-one alignment. crib_base.py:53 lists Beaufort, Quagmire, Bifid, Playfair, Nihilist and affine as not-yet-implemented. Differential crib-dragging does not itself advance a key pointer, so the rigid/skip distinction enters only through where the crib is placed - and the +/-1 error keys are an explicit, if crude, tolerance for a one-position key desynchronisation.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": "The +/-1 differential tolerance is the closest thing in the small-tool tier to acknowledging key desynchronisation, though it tolerates only a single one-step slip, not an accumulating skip."
+  },
+  {
+   "name": "thecornerspore-dev/rune_swiss",
+   "vendor_dir": "corpus/E-tooling/vendor/thecornerspore-dev__rune_swiss",
+   "url": "https://github.com/thecornerspore-dev/rune_swiss",
+   "clone_sha": "6d2501586ae25889af294d45efe90aaae0bd2b8d",
+   "shallow_clone": false,
+   "license": "MIT",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "MIT"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 549,
+   "first_commit_date": "2024-03-10T07:37:49-04:00",
+   "last_commit_date": "2024-03-13T06:41:38-04:00",
+   "n_commits": 20,
+   "authors": [
+    "71096603+sasha-thecornerspore-dev@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 54,
+    "totient_prime": 34,
+    "playfair": 33,
+    "atbash": 28,
+    "vigenere": 22
+   },
+   "what_it_tried": "Swiss-army CLI: Vigenere, Caesar, atbash, Playfair, totient streams.",
+   "what_it_concluded": "No published negative.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "rune_swiss.py:194 `decrypt_vigenere(ciphertext, key, skip_indices)` - the key holds at any index in skip_indices, but skip_indices is a caller argument and nothing in the repo searches it.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/lphelper",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__lphelper",
+   "url": "https://github.com/cicada-solvers/lphelper",
+   "clone_sha": "b136d5b062fe6025c273ea1cbd415f1453cd0997",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 11,
+    "Jupyter": 1
+   },
+   "loc": 535,
+   "first_commit_date": "2021-03-01T20:31:14+03:00",
+   "last_commit_date": "2025-10-31T20:08:45-05:00",
+   "n_commits": 6,
+   "authors": [
+    "167648603+cmbsolver@users.noreply.github.com",
+    "mavicmed@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 33,
+    "totient_prime": 6,
+    "vigenere": 3,
+    "atbash": 3,
+    "ngram_scoring": 1
+   },
+   "what_it_tried": "Page-oriented helper: load a page, apply a sequence/atbash/Vigenere key with a supplied interrupter list, print runes/gematria/English.",
+   "what_it_concluded": "No published negative.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "core.py:147 `decription(self, key, missing_f=[], cipher_type=...)`: for the 'sequence', 'atbash' and 'vigenere' branches, positions listed in `missing_f` are emitted unchanged and `key_cursor` does NOT advance. The parameter name is literally the missing-F (interrupter) positions. page_loader.py:37 and :64 pass a caller-chosen list; nothing searches it.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "LiberPrimus/primus.py",
+   "vendor_dir": "corpus/E-tooling/vendor/LiberPrimus__primus.py",
+   "url": "https://github.com/LiberPrimus/primus.py",
+   "clone_sha": "7920029e40f63703bd152cbb810e6aac4ee0acec",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 3,
+    "Shell": 1
+   },
+   "loc": 382,
+   "first_commit_date": "2021-08-13T17:38:12+02:00",
+   "last_commit_date": "2021-08-20T10:43:47+02:00",
+   "n_commits": 10,
+   "authors": [
+    "tettigarc@protonmail.com"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 22,
+    "totient_prime": 19,
+    "gematria": 14,
+    "atbash": 10,
+    "vigenere": 9
+   },
+   "what_it_tried": "CLI wrapper: chained Vigenere / atbash / shift / totient over the Taiiwo library.",
+   "what_it_concluded": "Sibling repo LiberPrimus/Failed-Attempts records the negatives.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "primus.py:62 calls `Runes(text).vigenere(key, [], True)` - the Taiiwo gematria API, with an EMPTY interrupts list hard-coded at the call site. The primitive can hold the key; this caller never asks it to.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "naliferopoulos/3301",
+   "vendor_dir": "corpus/E-tooling/vendor/naliferopoulos__3301",
+   "url": "https://github.com/naliferopoulos/3301",
+   "clone_sha": "362a3c0c7cdd62f15aa9e8cf9f2ce323dd92529b",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 5
+   },
+   "loc": 319,
+   "first_commit_date": "2021-03-17T12:29:12+02:00",
+   "last_commit_date": "2021-03-30T17:01:19+03:00",
+   "n_commits": 2,
+   "authors": [
+    "aliferopoulos@icloud.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 26,
+    "vigenere": 7,
+    "atbash": 7,
+    "gematria": 2
+   },
+   "what_it_tried": "Small utility set: Vigenere, atbash, totient/cototient streams.",
+   "what_it_concluded": "No published negative.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "skip-capable",
+   "decoder_evidence": "lputils/crypto.py:56 `vigenere(arr, key, skip_list=[])`; on a skip it `continue`s - which HOLDS the key but also DROPS the rune from the output rather than emitting it literally. skip_list is never searched.",
+   "null_trustworthy": "partial",
+   "divergences_vs_canon": null,
+   "notes": "The drop-instead-of-emit behaviour means any skip-mode output is shorter than the input and misaligned against the page; treat its skip results as unsound."
+  },
+  {
+   "name": "NoxxGames/LiberPrimus-GPU",
+   "vendor_dir": "corpus/E-tooling/vendor/NoxxGames__LiberPrimus-GPU",
+   "url": "https://github.com/NoxxGames/LiberPrimus-GPU",
+   "clone_sha": "d35dec4ccd47a1a3fb117b8304dd665d68ea2828",
+   "shallow_clone": false,
+   "license": "GPL-3.0",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "GPL-3.0"
+    },
+    {
+     "path": "data/locks/reference-repos/lipeeeee-gematria/LICENSE.metadata.json",
+     "detected": "UNRECOGNISED"
+    },
+    {
+     "path": "data/locks/reference-repos/lipeeeee-gematria/LICENSE.sha256",
+     "detected": "UNRECOGNISED"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 2851,
+    "C++": 23,
+    "Shell": 17,
+    "CUDA": 4
+   },
+   "loc": 307006,
+   "first_commit_date": "2026-05-15T00:58:44+01:00",
+   "last_commit_date": "2026-06-18T15:36:50+01:00",
+   "n_commits": 229,
+   "authors": [
+    "39532205+NoxxGames@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 3760,
+    "gpu": 3708,
+    "gematria": 2391,
+    "vigenere": 562,
+    "caesar_shift": 314,
+    "ngram_scoring": 279,
+    "atbash": 265,
+    "affine": 191,
+    "transposition": 117,
+    "hash_bruteforce": 83
+   },
+   "what_it_tried": "The largest recent effort in the corpus: 229 commits, ~307k LOC, a GPU/CPU bounded-execution rig sweeping Vigenere key packs, prime-minus-one / prime-mod-29 / prime-gap / Mersenne keystreams, with reset-and-advance ablations, fixture hashes and CI locks.",
+   "what_it_concluded": "Publishes bounded negative sweeps with reproducibility locks. Those negatives are rigorous WITHIN the rigid family and say nothing about key-skip hypotheses.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "rigid",
+   "decoder_evidence": "python/libreprimus/bounded_execution/reset_advance.py: the render loop does `state_position += 1` for EVERY transformable token, unconditionally. Its two ADVANCE_MODES are {runes_only, token_break_preserving} - that is word-separator handling, not a key skip - and its RESET_MODES {none, word, clause, line} restart the key at punctuation. CUDA kernels (cuda/kernels/gematria_shift_score_kernel.cu) apply a flat shift under a `transformable_mask` that is fixed per run, not searched. The string 'interrupt' appears only in two docs/research/*.md backlog files - there is no interrupter code path in the engine at all.",
+   "null_trustworthy": false,
+   "divergences_vs_canon": null,
+   "notes": "First commit 2026-05-15; repo carries a .codex/agents directory, so at least partly agent-authored. Engineering quality is high and the artefacts are hash-pinned, which makes it the single most useful rigid baseline here."
+  },
+  {
+   "name": "cicada-solvers/idkfa-web",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__idkfa-web",
+   "url": "https://github.com/cicada-solvers/idkfa-web",
+   "clone_sha": "3498221b0128b513ae65f7492327e15f1cd4e540",
+   "shallow_clone": false,
+   "license": "ISC",
+   "license_files": [
+    {
+     "path": "license",
+     "detected": "ISC"
+    }
+   ],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 22,
+    "HTML": 2,
+    "Shell": 1
+   },
+   "loc": 27086,
+   "first_commit_date": "2018-05-09T22:41:15+02:00",
+   "last_commit_date": "2021-05-11T20:21:36-05:00",
+   "n_commits": 80,
+   "authors": [
+    "3233238+crashdemons@users.noreply.github.com",
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "crashenator+gh@gmail.com",
+    "crashenator@gmail.com",
+    "null@no.tld"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 121,
+    "gematria": 81,
+    "caesar_shift": 34,
+    "ngram_scoring": 4
+   },
+   "what_it_tried": "Browser UI over idkfa's shift engine.",
+   "what_it_concluded": "No published negative.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "data/liber",
+    "n_runes": 15857,
+    "file_sha256": "79a5688a85ec45e771a14683a337ac7b408288d3671706f98c6a402b8647d9ea",
+    "sha256_indices": "763891f20bb5636b08dbad9e9c12863c8cabe6ec7cf7ecc1117f6277c129886e",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "dist-old/data/liber"
+    ]
+   },
+   "transcription_sha256": "79a5688a85ec45e771a14683a337ac7b408288d3671706f98c6a402b8647d9ea",
+   "decoder_type": "rigid",
+   "decoder_evidence": "lib/shift.js is byte-identical to rtkd/idkfa's; same unconditional `keyOffset ++`. A web front-end over the same rigid core.",
+   "null_trustworthy": false,
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/libergo",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__libergo",
+   "url": "https://github.com/cicada-solvers/libergo",
+   "clone_sha": "07d40fe91a9d2633594b51147938cfa596efe2c2",
+   "shallow_clone": true,
+   "license": "Apache-2.0",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "Apache-2.0"
+    }
+   ],
+   "language": "Go",
+   "languages": {
+    "Go": 145,
+    "Shell": 22
+   },
+   "loc": 18435,
+   "first_commit_date": "2025-09-19T21:56:14-05:00",
+   "last_commit_date": "2025-12-23T01:40:39Z",
+   "n_commits": 59,
+   "authors": [
+    "167648603+cmbsolver@users.noreply.github.com",
+    "action@github.com",
+    "cmbsolver@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 383,
+    "transposition": 55,
+    "caesar_shift": 47,
+    "ngram_scoring": 21,
+    "gematria": 16,
+    "atbash": 15,
+    "affine": 15,
+    "hash_bruteforce": 12,
+    "autokey": 12,
+    "vigenere": 11
+   },
+   "what_it_tried": "Large Go toolkit (cmbsolver): Vigenere, autokey, atbash, affine, rune substitution reports, a linguistic n-gram database builder, and DB-backed candidate storage.",
+   "what_it_concluded": "Infrastructure; no single published negative.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "cmd/winchafftext/processtextpull.sh",
+    "n_runes": 26506,
+    "file_sha256": "40acfabb1018669dec4cfb9ea5204d0fe11cfeee0c3ef70e7f6bfecc526c269d",
+    "sha256_indices": "6d0c9228201482a8582ad0cb0394b44a0c3fbd3f81de66cb4ce85d7b5da8ee02",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "cmd/detangle/test.sh",
+     "cmd/winchafftext/processtext.sh",
+     "cmd/winchafftext/processtextone.sh",
+     "cmd/runesub/runesub.sh",
+     "cmd/quoteomatic/quotomatic.sh",
+     "cmd/runedonkey/godonkeygo.sh",
+     "documentation/LP-Combined-Sections/40-55-spiral-branches.txt",
+     "cmd/cipherval/cipherval-run.sh"
+    ]
+   },
+   "transcription_sha256": "40acfabb1018669dec4cfb9ea5204d0fe11cfeee0c3ef70e7f6bfecc526c269d",
+   "decoder_type": "rigid",
+   "decoder_evidence": "pkg/utility/cipher/vigenere.go: `keyIndex = (keyIndex + 1) % len(cleanKey)` runs for every rune. The only hold is for characters outside the alphabet ('do not advance key' comment at line 101), which is punctuation handling, not an interrupter.",
+   "null_trustworthy": false,
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "ale64bit/cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/ale64bit__cicada3301",
+   "url": "https://github.com/ale64bit/cicada3301",
+   "clone_sha": "4e2b439ce4838b7be6782920e1d4003137f52056",
+   "shallow_clone": false,
+   "license": "MIT",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "MIT"
+    }
+   ],
+   "language": "Go",
+   "languages": {
+    "Go": 20
+   },
+   "loc": 12696,
+   "first_commit_date": "2020-07-10T15:29:57+03:00",
+   "last_commit_date": "2020-07-15T00:21:51+03:00",
+   "n_commits": 5,
+   "authors": [
+    "ale64bit@gmail.com",
+    "ale64bit@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 79,
+    "totient_prime": 68,
+    "caesar_shift": 35,
+    "vigenere": 17,
+    "affine": 17,
+    "atbash": 4,
+    "ngram_scoring": 3,
+    "substitution_search": 2
+   },
+   "what_it_tried": "A wide stateless/stateful transform search (bin/search/main.go): reversed gematria, mu and phi of rune index and rune value, prime-indexed modular inverse, and running XOR/affine state machines with multipliers 10, 29, 60, 1033, 3301, scored by n-grams.",
+   "what_it_concluded": "Exploratory; no explicit negative claim in the repo.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "data/data.go",
+    "n_runes": 17613,
+    "file_sha256": "d4ceaf1319800f3f9e9b47144c2ccca1002ebc67e0c054bdc0afbcf1daa65c34",
+    "sha256_indices": "013cc95562405e9a79a06e9d78586c000d11f833ae74926a0fcd59df6e269d2e",
+    "lineage": "unclassified",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "d4ceaf1319800f3f9e9b47144c2ccca1002ebc67e0c054bdc0afbcf1daa65c34",
+   "decoder_type": "rigid",
+   "decoder_evidence": "cipher/vigenere/vigenere.go Decode(): `defer func(){ index++ }()` inside the per-rune closure - unconditional advance. Same pattern in cipher/prime, cipher/totient, cipher/affine.",
+   "null_trustworthy": false,
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "ztlw30813/cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/ztlw30813__cicada3301",
+   "url": "https://github.com/ztlw30813/cicada3301",
+   "clone_sha": "144526c80af9bc6d67cde20a0ccd4d94ca23b9e8",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 4
+   },
+   "loc": 2647,
+   "first_commit_date": "2024-05-20T18:35:50-04:00",
+   "last_commit_date": "2026-07-16T02:11:48-04:00",
+   "n_commits": 11,
+   "authors": [
+    "tracelanewoodyard@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 116,
+    "caesar_shift": 96,
+    "vigenere": 47,
+    "ngram_scoring": 38,
+    "gematria": 36,
+    "atbash": 21,
+    "beaufort": 20,
+    "playfair": 20,
+    "transposition": 20,
+    "autokey": 14
+   },
+   "what_it_tried": "General Cicada text decryptor over a fixed list of guessed keys (PSYOP, ENLIGHTENMENT, CICADA, WELCOME, ...), plus an RSA cracker.",
+   "what_it_concluded": "No LP-relevant negative; wrong alphabet for the problem.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "LiberPrimus3301",
+    "n_runes": 15755,
+    "file_sha256": "4da3e47d30cfadf9642b74d823fa6db377d106b9e10ea5b9075ecee5009ab66f",
+    "sha256_indices": "be5ccb43c4993b57294acd56ddb4396a8f7b388c37f8d381d71df8e3a2206f93",
+    "lineage": "unclassified",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "4da3e47d30cfadf9642b74d823fa6db377d106b9e10ea5b9075ecee5009ab66f",
+   "decoder_type": "rigid",
+   "decoder_evidence": "decryptor.py:161 `vigenere_decrypt` and :358 `beaufort_decrypt` both do `key_idx += 1` on every alphabetic character with no branch. More important: both operate on the **26-letter Latin alphabet** (`ord(char) - ord('A')`, `% 26`), not on the 29-rune Gematria Primus. It cannot decode LP runes at all.",
+   "null_trustworthy": false,
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "rtkd/idkfa",
+   "vendor_dir": "corpus/E-tooling/vendor/rtkd__idkfa",
+   "url": "https://github.com/rtkd/idkfa",
+   "clone_sha": "d622f79392d3b46267081108372fb946d052684f",
+   "shallow_clone": false,
+   "license": "ISC",
+   "license_files": [
+    {
+     "path": "license",
+     "detected": "ISC"
+    }
+   ],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 17
+   },
+   "loc": 2239,
+   "first_commit_date": "2018-05-09T22:41:15+02:00",
+   "last_commit_date": "2018-07-06T00:29:12+02:00",
+   "n_commits": 30,
+   "authors": [
+    "null@no.tld"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 107,
+    "gematria": 73,
+    "caesar_shift": 3,
+    "ngram_scoring": 2
+   },
+   "what_it_tried": "The reference community decoder. Gematria Primus shift/Vigenere over a key list, with invertible futhark/latin/offset/prime axes and atbash; reproduces the known solved pages via its patch table.",
+   "what_it_concluded": "Ships as a tool, not as a negative result; the repo makes no 'unsolved pages are unbreakable' claim.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "data/liber",
+    "n_runes": 15857,
+    "file_sha256": "79a5688a85ec45e771a14683a337ac7b408288d3671706f98c6a402b8647d9ea",
+    "sha256_indices": "763891f20bb5636b08dbad9e9c12863c8cabe6ec7cf7ecc1117f6277c129886e",
+    "lineage": "unclassified",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "79a5688a85ec45e771a14683a337ac7b408288d3671706f98c6a402b8647d9ea",
+   "decoder_type": "rigid",
+   "decoder_evidence": "lib/shift.js:79 `arrKeyData[i][keyOffset ++]` inside `recursiveMap` - the key pointer is post-incremented for EVERY futhark char, with no branch. Interrupters exist only as `Config.patch` in config.js: a hard-coded table of literal positions for pages already solved. Never searched.",
+   "null_trustworthy": false,
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/LiberPrimusSolver",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__LiberPrimusSolver",
+   "url": "https://github.com/cicada-solvers/LiberPrimusSolver",
+   "clone_sha": "c3652213b5ddcd6b3aa84c53d7c45c09496f4929",
+   "shallow_clone": false,
+   "license": "GPL-3.0",
+   "license_files": [
+    {
+     "path": "COPYING",
+     "detected": "GPL-3.0"
+    }
+   ],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 29
+   },
+   "loc": 1036,
+   "first_commit_date": "2019-09-30T19:05:27+02:00",
+   "last_commit_date": "2025-10-31T20:12:19-05:00",
+   "n_commits": 25,
+   "authors": [
+    "167648603+cmbsolver@users.noreply.github.com",
+    "44893887+r4nd0mD3v3l0p3r@users.noreply.github.com",
+    "lorenzo.chiovini@hotmail.it"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 90,
+    "caesar_shift": 33,
+    "atbash": 21,
+    "hill_cipher": 17,
+    "vigenere": 16,
+    "affine": 8
+   },
+   "what_it_tried": "Task-runner brute force over Vigenere / affine / Hill / atbash / shift with a partition splitter and a word-list scorer.",
+   "what_it_concluded": "No published negative; its positive control is the WELCOME page with key DIUINITY, which contains no interrupters, so the control never exercises a skip.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "data/unsolved.txt",
+    "n_runes": 13136,
+    "file_sha256": "59caff6938fa50db0506376d78a37f3729e3b4c62b0112063da71ebfcd38e2d4",
+    "sha256_indices": "74cebdb074898f4c2742733a421e6d1717068a4f4cf2802d2b50923285aad329",
+    "lineage": "IDENTICAL to canon (13,136 / 74cebdb0...)",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "59caff6938fa50db0506376d78a37f3729e3b4c62b0112063da71ebfcd38e2d4",
+   "decoder_type": "rigid",
+   "decoder_evidence": "src/ciphers/vigenere.js `decrypt()` calls `this.key.next()` on a CircularArray for every rune that passes `isRune()`; no skip branch anywhere in src/. decoder_type_scan skiphits = 0 for the whole repo.",
+   "null_trustworthy": false,
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "r4nd0mD3v3l0p3r/LiberPrimusSolver",
+   "vendor_dir": "corpus/E-tooling/vendor/r4nd0mD3v3l0p3r__LiberPrimusSolver",
+   "url": "https://github.com/r4nd0mD3v3l0p3r/LiberPrimusSolver",
+   "clone_sha": "2334d21ac16bfb1c9a12d0136b74c7cf03120f2f",
+   "shallow_clone": false,
+   "license": "GPL-3.0",
+   "license_files": [
+    {
+     "path": "COPYING",
+     "detected": "GPL-3.0"
+    }
+   ],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 29
+   },
+   "loc": 1036,
+   "first_commit_date": "2019-09-30T19:05:27+02:00",
+   "last_commit_date": "2019-10-14T21:42:46+02:00",
+   "n_commits": 24,
+   "authors": [
+    "44893887+r4nd0mD3v3l0p3r@users.noreply.github.com",
+    "lorenzo.chiovini@hotmail.it"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 90,
+    "caesar_shift": 33,
+    "atbash": 21,
+    "hill_cipher": 17,
+    "vigenere": 16,
+    "affine": 8
+   },
+   "what_it_tried": "As above.",
+   "what_it_concluded": "No published negative. NOTE: its data/unsolved.txt is 13,136 runes and hashes to 74cebdb0... - identical to our canon.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "data/unsolved.txt",
+    "n_runes": 13136,
+    "file_sha256": "59caff6938fa50db0506376d78a37f3729e3b4c62b0112063da71ebfcd38e2d4",
+    "sha256_indices": "74cebdb074898f4c2742733a421e6d1717068a4f4cf2802d2b50923285aad329",
+    "lineage": "IDENTICAL to canon (13,136 / 74cebdb0...)",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "59caff6938fa50db0506376d78a37f3729e3b4c62b0112063da71ebfcd38e2d4",
+   "decoder_type": "rigid",
+   "decoder_evidence": "Upstream of cicada-solvers/LiberPrimusSolver; same vigenere.js.",
+   "null_trustworthy": false,
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "bobby-bobby-bobby-bobby/Libre-Primus-Cicada-3301-Solver-Demo",
+   "vendor_dir": "corpus/E-tooling/vendor/bobby-bobby-bobby-bobby__Libre-Primus-Cicada-3301-Solver-Demo",
+   "url": "https://github.com/bobby-bobby-bobby-bobby/Libre-Primus-Cicada-3301-Solver-Demo",
+   "clone_sha": "5313708bde38654e9662171eb4c8833360624a4d",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 12
+   },
+   "loc": 951,
+   "first_commit_date": "2026-04-23T19:43:51-07:00",
+   "last_commit_date": "2026-04-23T20:04:34-07:00",
+   "n_commits": 6,
+   "authors": [
+    "198982749+Copilot@users.noreply.github.com",
+    "caleb1313b@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "llm_ml": 25,
+    "transposition": 15,
+    "vigenere": 14,
+    "ngram_scoring": 10,
+    "affine": 10,
+    "substitution_search": 8,
+    "atbash": 6,
+    "totient_prime": 4,
+    "gematria": 3,
+    "gpu": 2
+   },
+   "what_it_tried": "Distributed multiprocess beam/genetic key search with a torch tensor scorer.",
+   "what_it_concluded": "Named a 'Demo'; makes no negative claim.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "rigid",
+   "decoder_evidence": "lp_solver/config.py:28 strategy='beam', beam_width=256 and distributed.py's genetic pool search over KEYS. Nothing in lp_solver mentions interrupters or a key hold; the beam explores the key space with a rigid decode underneath.",
+   "null_trustworthy": false,
+   "divergences_vs_canon": null,
+   "notes": "First commit 2026-04-23; one of the authors is 198982749+Copilot@users.noreply.github.com, so partly AI-authored."
+  },
+  {
+   "name": "Wra1th/Nebuchadnezzar",
+   "vendor_dir": "corpus/E-tooling/vendor/Wra1th__Nebuchadnezzar",
+   "url": "https://github.com/Wra1th/Nebuchadnezzar",
+   "clone_sha": "1729b0709b750f2845b57cdb9043776e922cbb76",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 201,
+   "first_commit_date": "2023-06-22T10:25:25-05:00",
+   "last_commit_date": "2023-09-16T22:58:15-05:00",
+   "n_commits": 25,
+   "authors": [
+    "V1cWra1th@yahoo.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 24,
+    "caesar_shift": 15,
+    "gematria": 1
+   },
+   "what_it_tried": "Iterated shift/Vigenere printouts over a rune alphabet with a totient keystream option.",
+   "what_it_concluded": "No published negative.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "rigid",
+   "decoder_evidence": "Key character and ciphertext character are zipped position-for-position and combined with `% len(alphabet_list)`; no hold, no interrupter concept.",
+   "null_trustworthy": false,
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "AegisTrustCore/Liber-Primus-HMS-Run-Time",
+   "vendor_dir": "corpus/E-tooling/vendor/AegisTrustCore__Liber-Primus-HMS-Run-Time",
+   "url": "https://github.com/AegisTrustCore/Liber-Primus-HMS-Run-Time",
+   "clone_sha": "fc47036cd80fee43f03f1d8e15f2dd0e73eff8e2",
+   "shallow_clone": false,
+   "license": "Apache-2.0",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "Apache-2.0"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 54,
+    "HTML": 35,
+    "C": 2
+   },
+   "loc": 8736,
+   "first_commit_date": "2026-08-12T20:50:52-05:00",
+   "last_commit_date": "2026-08-17T19:04:21-05:00",
+   "n_commits": 40,
+   "authors": [
+    "316352804+AegisTrustCore@users.noreply.github.com",
+    "coreystilwell3@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 68,
+    "gematria": 7,
+    "transposition": 6,
+    "caesar_shift": 5,
+    "beaufort": 2
+   },
+   "what_it_tried": "Route/transposition enumeration over single pages with a governance and reproducibility wrapper (GOVERNANCE.md, protected branch, validate status check).",
+   "what_it_concluded": "Self-corrects an earlier Page-73 prime/totient interpretation.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "hms_tools/gp29.py carries a GP table; research/runs/RUN-0009 reports 640 observed routes over the 267-rune page 33 stream with add/subtract/Beaufort operations at continuous and word-reset scopes. CORRECTIONS.md walks back an earlier prime/totient claim. The decisive key-advance loop was not located in this lane.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": "First commit 2026-08-12. 'HMS Endeavour' branding, heavy process scaffolding, very recent - treat claims with caution and verify independently."
+  },
+  {
+   "name": "Pitchfork-and-Torch/instar",
+   "vendor_dir": "corpus/E-tooling/vendor/Pitchfork-and-Torch__instar",
+   "url": "https://github.com/Pitchfork-and-Torch/instar",
+   "clone_sha": "74be7364f3ea6cb031a404e887f0e86ac8af80a9",
+   "shallow_clone": false,
+   "license": "MIT",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "MIT"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 19,
+    "HTML": 13,
+    "JavaScript": 11
+   },
+   "loc": 4639,
+   "first_commit_date": "2026-08-14T00:49:01-04:00",
+   "last_commit_date": "2026-08-14T20:06:13-04:00",
+   "n_commits": 20,
+   "authors": [
+    "297513015+Pitchfork-and-Torch@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 34,
+    "caesar_shift": 27,
+    "atbash": 16,
+    "vigenere": 15,
+    "gematria": 1,
+    "hash_bruteforce": 1
+   },
+   "what_it_tried": "Atbash, shift, totient, Vigenere utilities plus hash work.",
+   "what_it_concluded": "No published negative located.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "scripts/build_payloads.py:49 uses `key[ki % len(key)]` over LATIN (ord - 65), not over runes - this is payload construction, not an LP decode loop.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": "First commit 2026-08-14; sibling repo Pitchfork-and-Torch/liber-research 2026-08-18. Very recent, provenance unverified."
+  },
+  {
+   "name": "Fafison4k/cicada-3301-page32",
+   "vendor_dir": "corpus/E-tooling/vendor/Fafison4k__cicada-3301-page32",
+   "url": "https://github.com/Fafison4k/cicada-3301-page32",
+   "clone_sha": "7fc140d2c7a2c7767339303759cd8dc8923f4223",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 5,
+    "Rust": 2
+   },
+   "loc": 854,
+   "first_commit_date": "2026-05-10T02:43:42+07:00",
+   "last_commit_date": "2026-05-10T02:52:47+07:00",
+   "n_commits": 2,
+   "authors": [
+    "fafis0682@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 39,
+    "caesar_shift": 29,
+    "vigenere": 11,
+    "ngram_scoring": 2,
+    "totient_prime": 1
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "greenie-neuko/arg-skills",
+   "vendor_dir": "corpus/E-tooling/vendor/greenie-neuko__arg-skills",
+   "url": "https://github.com/greenie-neuko/arg-skills",
+   "clone_sha": "b2d20863d61482dc0d9f588f671a790164e4daea",
+   "shallow_clone": false,
+   "license": "MIT",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "MIT"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 4
+   },
+   "loc": 738,
+   "first_commit_date": "2026-02-02T21:51:12-05:00",
+   "last_commit_date": "2026-02-03T03:07:12Z",
+   "n_commits": 3,
+   "authors": [
+    "greenie@neuko.ai"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 18,
+    "vigenere": 10,
+    "transposition": 8,
+    "atbash": 6
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "ralphatobe/cicada-3301",
+   "vendor_dir": "corpus/E-tooling/vendor/ralphatobe__cicada-3301",
+   "url": "https://github.com/ralphatobe/cicada-3301",
+   "clone_sha": "39954e62da807033af1a8b15e8d520b30c3cd615",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 6
+   },
+   "loc": 545,
+   "first_commit_date": "2018-07-22T07:49:17-07:00",
+   "last_commit_date": "2018-08-10T14:43:13-07:00",
+   "n_commits": 75,
+   "authors": [
+    "ralphatobe@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 1
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "Taters79/LiberPrimus_CLI_Tool-Zig",
+   "vendor_dir": "corpus/E-tooling/vendor/Taters79__LiberPrimus_CLI_Tool-Zig",
+   "url": "https://github.com/Taters79/LiberPrimus_CLI_Tool-Zig",
+   "clone_sha": "97ff8e096a7ec21f3062c70c8a9b97355d486241",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Zig",
+   "languages": {
+    "Zig": 8
+   },
+   "loc": 361,
+   "first_commit_date": "2025-08-11T13:13:33-04:00",
+   "last_commit_date": "2025-08-13T22:22:07-04:00",
+   "n_commits": 3,
+   "authors": [
+    "Taters79@protonmail.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 1
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "AABaderko/cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/AABaderko__cicada3301",
+   "url": "https://github.com/AABaderko/cicada3301",
+   "clone_sha": "e98cf53df1f501e4206f4f82252d1a654c2215d0",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 4
+   },
+   "loc": 330,
+   "first_commit_date": "2024-11-10T14:47:33+07:00",
+   "last_commit_date": "2024-11-12T09:23:08+07:00",
+   "n_commits": 3,
+   "authors": [
+    "baderko.02@mail.ru"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/LiberPrTools",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__LiberPrTools",
+   "url": "https://github.com/cicada-solvers/LiberPrTools",
+   "clone_sha": "21a0dc53d037ecc70b5cc2787aa21334e966889f",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "C++",
+   "languages": {
+    "C++": 2
+   },
+   "loc": 322,
+   "first_commit_date": "2021-03-16T15:11:15-03:00",
+   "last_commit_date": "2021-03-17T16:28:04-03:00",
+   "n_commits": 2,
+   "authors": [
+    "80782638+beautifulevilflower@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 8,
+    "vigenere": 6,
+    "gematria": 6
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "Taters79/liber_primus",
+   "vendor_dir": "corpus/E-tooling/vendor/Taters79__liber_primus",
+   "url": "https://github.com/Taters79/liber_primus",
+   "clone_sha": "cc728582761defe11e1cb104cc5353a4cf378202",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Rust",
+   "languages": {
+    "Rust": 1
+   },
+   "loc": 296,
+   "first_commit_date": "2024-12-09T15:13:28-05:00",
+   "last_commit_date": "2024-12-11T12:59:21-05:00",
+   "n_commits": 3,
+   "authors": [
+    "Taters79@protonmail.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 6
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "N1-rt/lp-runes-translator",
+   "vendor_dir": "corpus/E-tooling/vendor/N1-rt__lp-runes-translator",
+   "url": "https://github.com/N1-rt/lp-runes-translator",
+   "clone_sha": "13fcf6f994dbec8ec9cbd2d0f58f884ccca91d2d",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 2
+   },
+   "loc": 255,
+   "first_commit_date": "2025-04-25T19:57:18-03:00",
+   "last_commit_date": "2025-05-03T14:38:24-03:00",
+   "n_commits": 9,
+   "authors": [
+    "n1rtottu5@proton.me"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 20,
+    "atbash": 11,
+    "gematria": 5
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "Eternalth/Liber-Primus",
+   "vendor_dir": "corpus/E-tooling/vendor/Eternalth__Liber-Primus",
+   "url": "https://github.com/Eternalth/Liber-Primus",
+   "clone_sha": "a662136a916435767a74e6198f0549d5878b1d0a",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "C++",
+   "languages": {
+    "C++": 3
+   },
+   "loc": 214,
+   "first_commit_date": "2019-04-17T01:35:49+04:00",
+   "last_commit_date": "2025-06-05T04:23:21+04:00",
+   "n_commits": 4,
+   "authors": [
+    "containcontain@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "ngram_scoring": 1
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/miteo-3301tools",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__miteo-3301tools",
+   "url": "https://github.com/cicada-solvers/miteo-3301tools",
+   "clone_sha": "dbf3d674a433db06db1a498aaa4283aff059e3a1",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 5
+   },
+   "loc": 197,
+   "first_commit_date": "2020-06-13T14:53:27Z",
+   "last_commit_date": "2025-10-31T20:10:39-05:00",
+   "n_commits": 14,
+   "authors": [
+    "167648603+cmbsolver@users.noreply.github.com",
+    "65238148+miteo761@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 8
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "hugvig/liber-primus-research",
+   "vendor_dir": "corpus/E-tooling/vendor/hugvig__liber-primus-research",
+   "url": "https://github.com/hugvig/liber-primus-research",
+   "clone_sha": "7eb7f685c70621a4c3506e6822676edd94c1749a",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 147,
+   "first_commit_date": "2026-08-09T21:41:41-04:00",
+   "last_commit_date": "2026-08-09T21:41:41-04:00",
+   "n_commits": 1,
+   "authors": [
+    "loollervides@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 5,
+    "atbash": 3
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "chipper1999/liber-primus-solutions",
+   "vendor_dir": "corpus/E-tooling/vendor/chipper1999__liber-primus-solutions",
+   "url": "https://github.com/chipper1999/liber-primus-solutions",
+   "clone_sha": "4400217c285f030fdd63049481eb23dab4c9ba7b",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 2
+   },
+   "loc": 114,
+   "first_commit_date": "2026-08-07T12:20:48-05:00",
+   "last_commit_date": "2026-08-07T12:20:48-05:00",
+   "n_commits": 1,
+   "authors": [
+    "chipperstatum3@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 5,
+    "hash_bruteforce": 1
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "wtf-jik/cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/wtf-jik__cicada3301",
+   "url": "https://github.com/wtf-jik/cicada3301",
+   "clone_sha": "cdd59468bdf2a5a4ea28daaaecbb85c3514638ee",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 107,
+   "first_commit_date": "2020-04-27T20:01:13-07:00",
+   "last_commit_date": "2020-04-27T20:05:43-07:00",
+   "n_commits": 2,
+   "authors": [
+    "23410235+jackmcasey@users.noreply.github.com",
+    "jackmcasey@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "atbash": 1
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "O4N4c/gematria-primus",
+   "vendor_dir": "corpus/E-tooling/vendor/O4N4c__gematria-primus",
+   "url": "https://github.com/O4N4c/gematria-primus",
+   "clone_sha": "ac040bdd8856e4d9d82b71e6e8c7b38b9cdfd4f8",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 89,
+   "first_commit_date": "2024-10-15T19:42:06+02:00",
+   "last_commit_date": "2024-10-15T19:42:06+02:00",
+   "n_commits": 1,
+   "authors": [
+    "camarasoana@gmail.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "ProfessorJ17/Cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/ProfessorJ17__Cicada3301",
+   "url": "https://github.com/ProfessorJ17/Cicada3301",
+   "clone_sha": "847cfd8bd4326b80a2596a0fb95cdf0cf6f7b023",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 85,
+   "first_commit_date": "2024-05-12T12:06:37-05:00",
+   "last_commit_date": "2025-04-12T00:18:04-05:00",
+   "n_commits": 16,
+   "authors": [
+    "162835589+ProfessorJ17@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "seeker-it/3301-gematria",
+   "vendor_dir": "corpus/E-tooling/vendor/seeker-it__3301-gematria",
+   "url": "https://github.com/seeker-it/3301-gematria",
+   "clone_sha": "14bb91d138f952cbb7748399bae929e34dc7346f",
+   "shallow_clone": false,
+   "license": "Unlicense",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "Unlicense"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 81,
+   "first_commit_date": "2025-02-16T04:39:45+01:00",
+   "last_commit_date": "2025-02-18T01:08:48+01:00",
+   "n_commits": 6,
+   "authors": [
+    "38f6370c53d3b29eeefbf6fbe4835f@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 16,
+    "ngram_scoring": 4,
+    "gematria": 1
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/WPCH-3301",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__WPCH-3301",
+   "url": "https://github.com/cicada-solvers/WPCH-3301",
+   "clone_sha": "9fc9a13db3ebf18b96992be99d8e27af839c4a4d",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 2
+   },
+   "loc": 60,
+   "first_commit_date": "2021-03-04T22:29:53Z",
+   "last_commit_date": "2025-10-31T20:04:53-05:00",
+   "n_commits": 9,
+   "authors": [
+    "167648603+cmbsolver@users.noreply.github.com",
+    "80073431+defalt-x@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "hash_bruteforce": 7
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "Locyyx64/liber-primus-analysis",
+   "vendor_dir": "corpus/E-tooling/vendor/Locyyx64__liber-primus-analysis",
+   "url": "https://github.com/Locyyx64/liber-primus-analysis",
+   "clone_sha": "11c32f0193dc98eb1e9625991014a0ee16606d7d",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 48,
+   "first_commit_date": "2023-08-30T13:49:47Z",
+   "last_commit_date": "2023-08-30T13:51:12Z",
+   "n_commits": 2,
+   "authors": [
+    "96910880+Locyyx64@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "chipper1999/Liber-Primus-Solver",
+   "vendor_dir": "corpus/E-tooling/vendor/chipper1999__Liber-Primus-Solver",
+   "url": "https://github.com/chipper1999/Liber-Primus-Solver",
+   "clone_sha": "5937e0a0909d0485b0df6c8c69f3731a36858a39",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 41,
+   "first_commit_date": "2026-08-07T19:16:20-05:00",
+   "last_commit_date": "2026-08-07T19:16:20-05:00",
+   "n_commits": 1,
+   "authors": [
+    "chipperstatum3@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 6,
+    "gematria": 2
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "MuthuRanjanA/cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/MuthuRanjanA__cicada3301",
+   "url": "https://github.com/MuthuRanjanA/cicada3301",
+   "clone_sha": "0339fa612b4750dd6d7dac8025b5ba417e7038ee",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 38,
+   "first_commit_date": "2024-04-06T15:31:36+05:30",
+   "last_commit_date": "2024-04-15T23:51:01+05:30",
+   "n_commits": 9,
+   "authors": [
+    "139042338+MuthuRanjanA@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 1
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "harry-sar/3301-gematria-primus-solver",
+   "vendor_dir": "corpus/E-tooling/vendor/harry-sar__3301-gematria-primus-solver",
+   "url": "https://github.com/harry-sar/3301-gematria-primus-solver",
+   "clone_sha": "3ca00ba8d55f49c13ef92230b13dcb15169c7fe0",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 28,
+   "first_commit_date": "2022-02-07T17:57:06Z",
+   "last_commit_date": "2022-02-07T17:57:06Z",
+   "n_commits": 1,
+   "authors": [
+    "mail@harrysar.dev"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "Viusthas/Liber_Primus",
+   "vendor_dir": "corpus/E-tooling/vendor/Viusthas__Liber_Primus",
+   "url": "https://github.com/Viusthas/Liber_Primus",
+   "clone_sha": "f0b12f6203e0096b274cced3204db24469715629",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Java",
+   "languages": {
+    "Java": 1
+   },
+   "loc": 4,
+   "first_commit_date": "2023-01-02T17:21:55+01:00",
+   "last_commit_date": "2023-01-02T17:21:55+01:00",
+   "n_commits": 1,
+   "authors": [
+    "viusthas@gmail.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "aadishgoel/Cicada-3301",
+   "vendor_dir": "corpus/E-tooling/vendor/aadishgoel__Cicada-3301",
+   "url": "https://github.com/aadishgoel/Cicada-3301",
+   "clone_sha": "c2e26d9bf21038119a6de7b7be2bd954736765dc",
+   "shallow_clone": false,
+   "license": "MIT",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "MIT"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 3,
+   "first_commit_date": "2018-08-06T01:49:57+05:30",
+   "last_commit_date": "2018-08-06T10:49:53+05:30",
+   "n_commits": 9,
+   "authors": [
+    "aadishgoel2013@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 2
+   },
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "0x676f64/Cicada-3301",
+   "vendor_dir": "corpus/E-tooling/vendor/0x676f64__Cicada-3301",
+   "url": "https://github.com/0x676f64/Cicada-3301",
+   "clone_sha": "81ef8805cd049f1b982091f20dd60d0211e97999",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": null,
+   "languages": {},
+   "loc": 0,
+   "first_commit_date": "2022-02-27T21:47:54Z",
+   "last_commit_date": "2022-02-27T22:40:05Z",
+   "n_commits": 54,
+   "authors": [
+    "oscardiggz@protonmail.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": true,
+   "transcription": {
+    "path": "iddqd/liber-primus__transcription--master/liber-primus__transcription--master.txt",
+    "n_runes": 15933,
+    "file_sha256": "cbaf7eb29e636d4bb06e79de2b412bd3bdd58cc80d0582a09ce52f5993f31385",
+    "sha256_indices": "c3eb607844a190915ef3436c148603973ae6bb07e98b3569164d9b7c3e9214e5",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "iddqd/liber-primus__transcription--sentences/liber-primus__transcription--sentences.txt",
+     "iddqd/liber-primus__translation/liber-primus__known-plain-text.txt"
+    ]
+   },
+   "transcription_sha256": "cbaf7eb29e636d4bb06e79de2b412bd3bdd58cc80d0582a09ce52f5993f31385",
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "Pitchfork-and-Torch/liber-research",
+   "vendor_dir": "corpus/E-tooling/vendor/Pitchfork-and-Torch__liber-research",
+   "url": "https://github.com/Pitchfork-and-Torch/liber-research",
+   "clone_sha": "579b40016fd6d5f37011e584bd9f44924134ef72",
+   "shallow_clone": false,
+   "license": "MIT",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "MIT"
+    }
+   ],
+   "language": null,
+   "languages": {},
+   "loc": 0,
+   "first_commit_date": "2026-08-18T19:36:06-04:00",
+   "last_commit_date": "2026-08-18T19:51:55-04:00",
+   "n_commits": 17,
+   "authors": [
+    "297513015+Pitchfork-and-Torch@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "artistofreap-byte/liber-primus-matrix-attack",
+   "vendor_dir": "corpus/E-tooling/vendor/artistofreap-byte__liber-primus-matrix-attack",
+   "url": "https://github.com/artistofreap-byte/liber-primus-matrix-attack",
+   "clone_sha": "HEAD",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": null,
+   "languages": {},
+   "loc": 0,
+   "first_commit_date": null,
+   "last_commit_date": null,
+   "n_commits": null,
+   "authors": [],
+   "cipher_families_referenced": {},
+   "what_it_tried": "See decoder_type_scan.json 'ciphers' counts and the repo README.",
+   "what_it_concluded": "Not assessed.",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "unknown",
+   "decoder_evidence": "Decisive key-advance loop not read in this lane. Keyword scan results are in decoder_type_scan.json under this repo's skip_evidence / advance_lines.",
+   "null_trustworthy": "unknown",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/GPPrimeView",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__GPPrimeView",
+   "url": "https://github.com/cicada-solvers/GPPrimeView",
+   "clone_sha": "b49e341d404f10582ce5b7fe2a70e48bb1089241",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 6,
+    "HTML": 1
+   },
+   "loc": 171306,
+   "first_commit_date": "2021-11-19T21:18:08-06:00",
+   "last_commit_date": "2021-11-27T23:23:15-06:00",
+   "n_commits": 22,
+   "authors": [
+    "crashenator@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 159,
+    "gematria": 56,
+    "ngram_scoring": 10,
+    "llm_ml": 10,
+    "transposition": 4,
+    "caesar_shift": 2,
+    "running_key": 1,
+    "affine": 1,
+    "substitution_search": 1
+   },
+   "what_it_tried": "Gematria/prime viewer plus a bundled English word list.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Gematria/prime viewer plus a bundled English word list.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/3301chef",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__3301chef",
+   "url": "https://github.com/cicada-solvers/3301chef",
+   "clone_sha": "a27ed815175d74215c7f113af2b327dd20a05d89",
+   "shallow_clone": false,
+   "license": "Apache-2.0",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "Apache-2.0"
+    }
+   ],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 97,
+    "HTML": 3
+   },
+   "loc": 55793,
+   "first_commit_date": "2021-03-09T04:49:01-06:00",
+   "last_commit_date": "2021-03-09T04:58:25-06:00",
+   "n_commits": 2,
+   "authors": [
+    "crashenator@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 109,
+    "gematria": 72,
+    "caesar_shift": 34,
+    "affine": 21,
+    "vigenere": 14,
+    "hash_bruteforce": 14,
+    "substitution_search": 8,
+    "atbash": 6,
+    "running_key": 2
+   },
+   "what_it_tried": "A CyberChef fork with 3301 recipes. Generic crypto UI.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "A CyberChef fork with 3301 recipes. Generic crypto UI.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/isitcicada",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__isitcicada",
+   "url": "https://github.com/cicada-solvers/isitcicada",
+   "clone_sha": "fe59cae1f1a39026d626be32f14bc51a14ec3f81",
+   "shallow_clone": false,
+   "license": "GPL-3.0",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "GPL-3.0"
+    }
+   ],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 12,
+    "HTML": 3
+   },
+   "loc": 22706,
+   "first_commit_date": "2018-04-04T14:02:32-05:00",
+   "last_commit_date": "2023-07-07T01:02:33+02:00",
+   "n_commits": 97,
+   "authors": [
+    "3233238+crashdemons@users.noreply.github.com",
+    "crashdemons@users.noreply.github.com",
+    "crashenator+gh@gmail.com",
+    "crashenator@gmail.com",
+    "hadyn.richard@gmail.com",
+    "romla@sfr.fr",
+    "tweqx"
+   ],
+   "cipher_families_referenced": {
+    "hash_bruteforce": 45,
+    "totient_prime": 36,
+    "caesar_shift": 33
+   },
+   "what_it_tried": "Authenticity checker for claimed 3301 messages (PGP).",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Authenticity checker for claimed 3301 messages (PGP).",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/deep-web-hash-as-ed25519",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__deep-web-hash-as-ed25519",
+   "url": "https://github.com/cicada-solvers/deep-web-hash-as-ed25519",
+   "clone_sha": "54c8b1198251cd62286eeb1446d015eac11b67cd",
+   "shallow_clone": false,
+   "license": "CC0-1.0",
+   "license_files": [
+    {
+     "path": "COPYING.txt",
+     "detected": "CC0-1.0"
+    }
+   ],
+   "language": "C",
+   "languages": {
+    "C": 132,
+    "Python": 5,
+    "Shell": 2
+   },
+   "loc": 20511,
+   "first_commit_date": "2017-09-24T22:13:16+03:00",
+   "last_commit_date": "2021-03-23T22:54:01+01:00",
+   "n_commits": 226,
+   "authors": [
+    "bmintz@protonmail.com",
+    "cathugger@cock.li",
+    "foobar@onion2web.com",
+    "heios@protonmail.com",
+    "one@eins.li",
+    "romla@sfr.fr",
+    "sstefin@bk.ru",
+    "yhaupenthal@posteo.de"
+   ],
+   "cipher_families_referenced": {
+    "hash_bruteforce": 80,
+    "caesar_shift": 35
+   },
+   "what_it_tried": "Onion-address / ed25519 key-grinding work on the deep-web hash. Not a rune decoder.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Onion-address / ed25519 key-grinding work on the deep-web hash. Not a rune decoder.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "VzGarnet/Liber-Primus",
+   "vendor_dir": "corpus/E-tooling/vendor/VzGarnet__Liber-Primus",
+   "url": "https://github.com/VzGarnet/Liber-Primus",
+   "clone_sha": "b2ebe4786cd040bc4b61253a7dabb1b9ca3606d4",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "PHP",
+   "languages": {
+    "PHP": 116,
+    "JavaScript": 5
+   },
+   "loc": 5655,
+   "first_commit_date": "2023-10-16T22:58:47+07:00",
+   "last_commit_date": "2023-12-19T16:01:10+07:00",
+   "n_commits": 88,
+   "authors": [
+    "karenagustine28@gmail.com",
+    "kevindedy123@gmail.com",
+    "marionursalim93@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "ngram_scoring": 1
+   },
+   "what_it_tried": "PHP site/notes; no keyed per-rune decode loop found (grep for key_index / key_pos / % len(key) over *.php returns nothing).",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "PHP site/notes; no keyed per-rune decode loop found (grep for key_index / key_pos / % len(key) over *.php returns nothing).",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "Pv3/Cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/Pv3__Cicada3301",
+   "url": "https://github.com/Pv3/Cicada3301",
+   "clone_sha": "943bfd3d459de94ebc7a9ef66bf1390162995e64",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 5475,
+   "first_commit_date": "2016-03-13T22:06:21+03:00",
+   "last_commit_date": "2016-03-13T22:12:58+03:00",
+   "n_commits": 4,
+   "authors": [
+    "ushakov@mail.ru"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 85,
+    "gematria": 54,
+    "totient_prime": 25,
+    "vigenere": 1
+   },
+   "what_it_tried": "2016 derivative of CICADA2K16 with word/OEIS probability work; no keyed per-rune decode loop.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "RSm.py",
+    "n_runes": 37134,
+    "file_sha256": "5b1e284ece572c425eacc5556d780045bb333988a50be96dd894e19c635eba9e",
+    "sha256_indices": "d798dd51d36bcfc079c144236d9d80d0d8553942b9277f5d02ab1a29af57c594",
+    "lineage": "unclassified",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "5b1e284ece572c425eacc5556d780045bb333988a50be96dd894e19c635eba9e",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "2016 derivative of CICADA2K16 with word/OEIS probability work; no keyed per-rune decode loop.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": "2016-03-13. Source begins '# CICADA2K16' - a derivative of cicada-solvers/CICADA2K16-solving-tool, carrying the same U+16C2 J alias."
+  },
+  {
+   "name": "cicada-solvers/3301-hash-alarm",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__3301-hash-alarm",
+   "url": "https://github.com/cicada-solvers/3301-hash-alarm",
+   "clone_sha": "50aa8953d2d3db6f16b773425205f856d43412a9",
+   "shallow_clone": false,
+   "license": "GPL-3.0",
+   "license_files": [
+    {
+     "path": "COPYING",
+     "detected": "GPL-3.0"
+    }
+   ],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 21,
+    "HTML": 2
+   },
+   "loc": 3789,
+   "first_commit_date": "2021-02-21T17:35:55+01:00",
+   "last_commit_date": "2021-04-14T13:09:03+02:00",
+   "n_commits": 67,
+   "authors": [
+    "crashdemons@users.noreply.github.com",
+    "crashenator@gmail.com",
+    "oleg@relikd.de",
+    "romla@sfr.fr"
+   ],
+   "cipher_families_referenced": {
+    "hash_bruteforce": 62,
+    "caesar_shift": 46
+   },
+   "what_it_tried": "Monitors for new 3301 artefacts. No decoder.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Monitors for new 3301 artefacts. No decoder.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "crackalamoo/futhorc",
+   "vendor_dir": "corpus/E-tooling/vendor/crackalamoo__futhorc",
+   "url": "https://github.com/crackalamoo/futhorc",
+   "clone_sha": "64a8f0007167210956a24b9d932afa7c66b12b98",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Rust",
+   "languages": {
+    "Rust": 3,
+    "HTML": 1,
+    "JavaScript": 1
+   },
+   "loc": 1536,
+   "first_commit_date": "2021-02-12T23:00:27-05:00",
+   "last_commit_date": "2026-07-06T22:46:51-07:00",
+   "n_commits": 49,
+   "authors": [
+    "37599247+crackalamoo@users.noreply.github.com",
+    "dcampbell24@gmail.com",
+    "harysdalvi@gmail.com",
+    "originalcrackalamoo@gmail.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "General Anglo-Saxon futhorc package (33 runes, incl. STAN and CWEORTH). Not an LP tool; excluded from transcription comparison.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "General Anglo-Saxon futhorc package (33 runes, incl. STAN and CWEORTH). Not an LP tool; excluded from transcription comparison.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "rtkd/iddt",
+   "vendor_dir": "corpus/E-tooling/vendor/rtkd__iddt",
+   "url": "https://github.com/rtkd/iddt",
+   "clone_sha": "c6ac4486332a2c89ff9d652462c3a8d119c8f6e4",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 20,
+    "Shell": 2
+   },
+   "loc": 1316,
+   "first_commit_date": "2017-11-27T18:00:57+01:00",
+   "last_commit_date": "2019-01-23T06:00:22+01:00",
+   "n_commits": 13,
+   "authors": [
+    "null@no.tld"
+   ],
+   "cipher_families_referenced": {
+    "hash_bruteforce": 2
+   },
+   "what_it_tried": "Deep-web/hash tooling from the same author. No rune decoder.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Deep-web/hash tooling from the same author. No rune decoder.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "nexon33/cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/nexon33__cicada3301",
+   "url": "https://github.com/nexon33/cicada3301",
+   "clone_sha": "3df9203da3d69825ae62241f6f2d06a2ae02d6d7",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 5
+   },
+   "loc": 1276,
+   "first_commit_date": "2025-10-28T17:24:32+01:00",
+   "last_commit_date": "2025-10-28T20:10:58+01:00",
+   "n_commits": 2,
+   "authors": [
+    "adrian.belmans@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 1
+   },
+   "what_it_tried": "Utility scripts; no keyed rune decode loop found.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Utility scripts; no keyed rune decode loop found.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "taraweling/Cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/taraweling__Cicada3301",
+   "url": "https://github.com/taraweling/Cicada3301",
+   "clone_sha": "6fd6ba5cef509234ebd7cc39a1adbd4fb57170dd",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 7
+   },
+   "loc": 1142,
+   "first_commit_date": "2022-11-29T20:31:18-08:00",
+   "last_commit_date": "2022-12-16T05:28:09-08:00",
+   "n_commits": 40,
+   "authors": [
+    "119453636+taraweling@users.noreply.github.com",
+    "61175133+ggggggrv15@users.noreply.github.com",
+    "ggggggrv15@gmail.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "Puzzle notes and scripts; no keyed rune decode loop found.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Puzzle notes and scripts; no keyed rune decode loop found.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/cicada-library",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__cicada-library",
+   "url": "https://github.com/cicada-solvers/cicada-library",
+   "clone_sha": "897459424d89c49ba3438ff015e705a2204f0586",
+   "shallow_clone": false,
+   "license": "GPL-3.0",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "GPL-3.0"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 6
+   },
+   "loc": 585,
+   "first_commit_date": "2019-08-29T18:05:19+01:00",
+   "last_commit_date": "2021-11-06T20:52:59-05:00",
+   "n_commits": 66,
+   "authors": [
+    "3233238+crashdemons@users.noreply.github.com",
+    "Taiiwo@Llort.gq",
+    "crashdemons@users.noreply.github.com",
+    "taiiwo@llort.gq",
+    "tettigarc@protonmail.com",
+    "tylerzacc@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 15,
+    "caesar_shift": 11,
+    "totient_prime": 11,
+    "atbash": 2,
+    "vigenere": 1
+   },
+   "what_it_tried": "Packaging of Taiiwo/cicada for the org.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "cicada/liber_primus.txt",
+    "n_runes": 15933,
+    "file_sha256": "e2d266454e320b4a44b8117a2d0500ce8bdc69dd1852ebbeddd3818a38181fdc",
+    "sha256_indices": "c3eb607844a190915ef3436c148603973ae6bb07e98b3569164d9b7c3e9214e5",
+    "lineage": "unclassified",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "e2d266454e320b4a44b8117a2d0500ce8bdc69dd1852ebbeddd3818a38181fdc",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Packaging of Taiiwo/cicada for the org.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "krcdavis/cicada-tools",
+   "vendor_dir": "corpus/E-tooling/vendor/krcdavis__cicada-tools",
+   "url": "https://github.com/krcdavis/cicada-tools",
+   "clone_sha": "ab42cda1574d443d50d550840e206c43667affc3",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 8
+   },
+   "loc": 567,
+   "first_commit_date": "2024-05-02T18:27:21-07:00",
+   "last_commit_date": "2024-05-09T16:19:48-07:00",
+   "n_commits": 4,
+   "authors": [
+    "32370620+krcdavis@users.noreply.github.com",
+    "denryuu@protonmail.com",
+    "test@test.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 11,
+    "caesar_shift": 2,
+    "atbash": 2
+   },
+   "what_it_tried": "Gematria/transliteration utilities and page data; no keyed decode loop found.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Gematria/transliteration utilities and page data; no keyed decode loop found.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "dude123124144/Liber-Primus-Runes-OCR",
+   "vendor_dir": "corpus/E-tooling/vendor/dude123124144__Liber-Primus-Runes-OCR",
+   "url": "https://github.com/dude123124144/Liber-Primus-Runes-OCR",
+   "clone_sha": "2259c42e494aead0d1368353451adf8b1e805ce2",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 3
+   },
+   "loc": 522,
+   "first_commit_date": "2017-03-12T21:26:53+13:00",
+   "last_commit_date": "2017-05-10T15:46:08+13:00",
+   "n_commits": 4,
+   "authors": [
+    "dude123124144@mail2tor.com"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 3,
+    "substitution_search": 1
+   },
+   "what_it_tried": "2017-03-12. Per-rune template bitmaps plus an OCR script - an INDEPENDENT reading path from pixels rather than from another text file. Same author as resvolver/c1cada. The most promising unexploited lead for settling C-E-01 from the scans.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "misc_scripts/liber_primus_words.rne",
+    "n_runes": 13136,
+    "file_sha256": "f2316c424aefb30745f199a159ab6ff13532bcb34ca3a311a70a3efbe72e796b",
+    "sha256_indices": "74cebdb074898f4c2742733a421e6d1717068a4f4cf2802d2b50923285aad329",
+    "lineage": "IDENTICAL to canon (13,136 / 74cebdb0...)",
+    "other_rune_files": [
+     "misc_scripts/transcriptions.rne"
+    ]
+   },
+   "transcription_sha256": "f2316c424aefb30745f199a159ab6ff13532bcb34ca3a311a70a3efbe72e796b",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "2017-03-12. Per-rune template bitmaps plus an OCR script - an INDEPENDENT reading path from pixels rather than from another text file. Same author as resvolver/c1cada. The most promising unexploited lead for settling C-E-01 from the scans.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": "Highest-value unexploited lead in this lane: an OCR path from the page images, by the same author as the 2015 resvolver/c1cada transcription. Running it against the page-24 scan is the concrete way to settle C-E-01."
+  },
+  {
+   "name": "cicada-solvers/CICADA2K16-solving-tool",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__CICADA2K16-solving-tool",
+   "url": "https://github.com/cicada-solvers/CICADA2K16-solving-tool",
+   "clone_sha": "7529449a8252d681604e81e3d3b52128ce01a0f2",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 468,
+   "first_commit_date": "2016-01-14T21:47:17Z",
+   "last_commit_date": "2016-02-10T20:01:35Z",
+   "n_commits": 5,
+   "authors": [
+    "besharam@tuta.io"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 41,
+    "gematria": 37,
+    "totient_prime": 5
+   },
+   "what_it_tried": "2016 rune/gematria frequency tool: builds the Runeset table and counts, no keyed decode loop. Historically important for the U+16C2 J alias, not as a decoder.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "RuneSolver.py",
+    "n_runes": 20315,
+    "file_sha256": "6ad1e1db09ac5357033ff68a5a57b00215bb86ffa125e62d74d8303f85cd7f66",
+    "sha256_indices": "b34791634a31249403325a2184a2e7d109435769bcd4d568aa2de527bc40a527",
+    "lineage": "unclassified",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "6ad1e1db09ac5357033ff68a5a57b00215bb86ffa125e62d74d8303f85cd7f66",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "2016 rune/gematria frequency tool: builds the Runeset table and counts, no keyed decode loop. Historically important for the U+16C2 J alias, not as a decoder.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": "2016-01-14, pre-dates the iddqd root. Its Gematria table defines J = u'\\u16c2' (RUNIC LETTER E), which is the J-codepoint alias documented in CONFLICTS-E.md; the alias is older still, since resvolver/c1cada uses it in January 2015."
+  },
+  {
+   "name": "resvolver/c1cada",
+   "vendor_dir": "corpus/E-tooling/vendor/resvolver__c1cada",
+   "url": "https://github.com/resvolver/c1cada",
+   "clone_sha": "00e73d84d9ab4e9b780d77c7316a8915bda42f52",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Perl",
+   "languages": {
+    "Perl": 2,
+    "Python": 1,
+    "R": 1,
+    "Shell": 1
+   },
+   "loc": 410,
+   "first_commit_date": "2015-01-05T07:52:55-06:00",
+   "last_commit_date": "2016-01-15T16:35:30+01:00",
+   "n_commits": 37,
+   "authors": [
+    "3301@test.co.uk",
+    "dude123124144@mail2tor.com",
+    "lilburro@yahoo.com",
+    "phillip@creativeliveagency.com",
+    "root@ovh"
+   ],
+   "cipher_families_referenced": {
+    "caesar_shift": 59,
+    "ngram_scoring": 13,
+    "totient_prime": 10,
+    "gematria": 1,
+    "transposition": 1
+   },
+   "what_it_tried": "2015 research dump: Perl frequency scripts, XOR/steg experiments, key-phrase files and - the important part - an eleven-file rune transcription that is bit-identical to our canon. See CONFLICTS-E.md Headline 1.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "translation/liber_primus.rne",
+    "n_runes": 13136,
+    "file_sha256": "dc03af8cf5bdee768c82d6b9db11f947fc3eef90d464d8e55e6fbd23168db4c5",
+    "sha256_indices": "74cebdb074898f4c2742733a421e6d1717068a4f4cf2802d2b50923285aad329",
+    "lineage": "IDENTICAL to canon (13,136 / 74cebdb0...)",
+    "other_rune_files": [
+     "transcriptions.rne",
+     "liber_primus_words.rne",
+     "perl/page.40-53.txt",
+     "perl/page.15-22.txt",
+     "perl/page.8-14.txt",
+     "perl/page.33-39.txt",
+     "perl/page.27-32.txt",
+     "perl/page.3-7.txt"
+    ]
+   },
+   "transcription_sha256": "dc03af8cf5bdee768c82d6b9db11f947fc3eef90d464d8e55e6fbd23168db4c5",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "2015 research dump: Perl frequency scripts, XOR/steg experiments, key-phrase files and - the important part - an eleven-file rune transcription that is bit-identical to our canon. See CONFLICTS-E.md Headline 1.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "ctvrty-rozmer/bruh",
+   "vendor_dir": "corpus/E-tooling/vendor/ctvrty-rozmer__bruh",
+   "url": "https://github.com/ctvrty-rozmer/bruh",
+   "clone_sha": "5822310b56958375eb7b2f3cd067213726766e19",
+   "shallow_clone": false,
+   "license": "GPL-3.0",
+   "license_files": [
+    {
+     "path": "cicada-master/LICENSE",
+     "detected": "GPL-3.0"
+    }
+   ],
+   "language": "Python",
+   "languages": {
+    "Python": 4,
+    "Perl": 1
+   },
+   "loc": 322,
+   "first_commit_date": "2021-05-08T13:52:36-05:00",
+   "last_commit_date": "2021-05-08T13:52:36-05:00",
+   "n_commits": 1,
+   "authors": [
+    "26877329+ctvrty-rozmer@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "gematria": 11,
+    "caesar_shift": 7,
+    "atbash": 1,
+    "substitution_search": 1
+   },
+   "what_it_tried": "Vendored copy of the Taiiwo cicada package plus notes; the decode primitive is Taiiwo's - see that row.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "cicada-master/cicada/liber_primus.txt",
+    "n_runes": 15933,
+    "file_sha256": "3c976bdaeea1b9352ef0190d4bd1d03ee39228210072811b8d5dd2e6e0c041f4",
+    "sha256_indices": "c3eb607844a190915ef3436c148603973ae6bb07e98b3569164d9b7c3e9214e5",
+    "lineage": "unclassified",
+    "other_rune_files": []
+   },
+   "transcription_sha256": "3c976bdaeea1b9352ef0190d4bd1d03ee39228210072811b8d5dd2e6e0c041f4",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Vendored copy of the Taiiwo cicada package plus notes; the decode primitive is Taiiwo's - see that row.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/3301_assist",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__3301_assist",
+   "url": "https://github.com/cicada-solvers/3301_assist",
+   "clone_sha": "860cea0aa11302cb1c5c2a03fa6aeb70b52774cf",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 6
+   },
+   "loc": 287,
+   "first_commit_date": "2023-08-11T15:20:47+02:00",
+   "last_commit_date": "2023-08-13T09:26:16+02:00",
+   "n_commits": 8,
+   "authors": [
+    "62934678+HelixPiano@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {
+    "ngram_scoring": 27,
+    "gematria": 12,
+    "caesar_shift": 1
+   },
+   "what_it_tried": "Assistive UI and page data; no keyed decode loop found.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Assistive UI and page data; no keyed decode loop found.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/GematriaPrimusTool",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__GematriaPrimusTool",
+   "url": "https://github.com/cicada-solvers/GematriaPrimusTool",
+   "clone_sha": "22b6f05e2984d36146365a69e054d05a4e6f6674",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 1,
+    "HTML": 1
+   },
+   "loc": 281,
+   "first_commit_date": "2015-02-10T21:49:19-06:00",
+   "last_commit_date": "2021-11-06T21:23:51-05:00",
+   "n_commits": 9,
+   "authors": [
+    "3233238+crashdemons@users.noreply.github.com",
+    "crashdemons@users.noreply.github.com",
+    "crashenator+gh@gmail.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "2015-02-10. Gematria Primus transliteration widget (gematria.js). No decoder.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "2015-02-10. Gematria Primus transliteration widget (gematria.js). No decoder.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "scream314/cicada3301",
+   "vendor_dir": "corpus/E-tooling/vendor/scream314__cicada3301",
+   "url": "https://github.com/scream314/cicada3301",
+   "clone_sha": "10733feb487bb8beb9966d534727ee5897aa54fc",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "HTML",
+   "languages": {
+    "HTML": 9,
+    "Shell": 1,
+    "C": 1,
+    "Python": 1
+   },
+   "loc": 196,
+   "first_commit_date": "2018-01-24T09:46:22+01:00",
+   "last_commit_date": "2023-06-02T11:28:48+02:00",
+   "n_commits": 34,
+   "authors": [
+    "47955724+taivlam@users.noreply.github.com",
+    "59793489+95111@users.noreply.github.com",
+    "oleg@relikd.de",
+    "romla@sfr.fr",
+    "scream314@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "totient_prime": 7,
+    "transposition": 1
+   },
+   "what_it_tried": "Documentation site plus liber_primus.md, the 15,938-rune transcription lineage that carries the only two reading conflicts in the corpus. See CONFLICTS-E.md.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "liber_primus.md",
+    "n_runes": 15938,
+    "file_sha256": "0cad54f3e2db013730b949b7641f5a4c32fbc2a3b2e4addf7ef9b42125f178f4",
+    "sha256_indices": "67a41c67b6a8e8678944d26e9c6af547ef0a07a21eb47e3fd483790ba48e81d7",
+    "lineage": "scream314 15,938 lineage - carries C-E-01 and C-E-02",
+    "other_rune_files": [
+     "pages_and_ciphers.md"
+    ]
+   },
+   "transcription_sha256": "0cad54f3e2db013730b949b7641f5a4c32fbc2a3b2e4addf7ef9b42125f178f4",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Documentation site plus liber_primus.md, the 15,938-rune transcription lineage that carries the only two reading conflicts in the corpus. See CONFLICTS-E.md.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/monokuma-ConvolutionKernels",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__monokuma-ConvolutionKernels",
+   "url": "https://github.com/cicada-solvers/monokuma-ConvolutionKernels",
+   "clone_sha": "c4fda2f4426d822d1b1372512e85b2bbffab6d69",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 1
+   },
+   "loc": 87,
+   "first_commit_date": "2023-07-30T12:56:39-07:00",
+   "last_commit_date": "2025-10-31T19:44:09-05:00",
+   "n_commits": 6,
+   "authors": [
+    "167648603+cmbsolver@users.noreply.github.com",
+    "monokumaBear@protonmail.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "Convolution kernels over page images.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Convolution kernels over page images.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "tweqx/dwh-check",
+   "vendor_dir": "corpus/E-tooling/vendor/tweqx__dwh-check",
+   "url": "https://github.com/tweqx/dwh-check",
+   "clone_sha": "73762e27a34b3d69cea4e1eb1c70d630eb44b8d3",
+   "shallow_clone": false,
+   "license": "GPL-3.0",
+   "license_files": [
+    {
+     "path": "COPYING",
+     "detected": "GPL-3.0"
+    }
+   ],
+   "language": "Shell",
+   "languages": {
+    "Shell": 1,
+    "C": 1
+   },
+   "loc": 75,
+   "first_commit_date": "2021-04-21T18:25:19+02:00",
+   "last_commit_date": "2022-03-25T21:39:49+01:00",
+   "n_commits": 3,
+   "authors": [
+    "romla@sfr.fr"
+   ],
+   "cipher_families_referenced": {
+    "hash_bruteforce": 4
+   },
+   "what_it_tried": "Shell check of the deep-web hash.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Shell check of the deep-web hash.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/Cicada-DWH-HashcatAttempts",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__Cicada-DWH-HashcatAttempts",
+   "url": "https://github.com/cicada-solvers/Cicada-DWH-HashcatAttempts",
+   "clone_sha": "cf79ffd8a3b9ba27d5b8005472f20cccb8fa9104",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Python",
+   "languages": {
+    "Python": 2
+   },
+   "loc": 63,
+   "first_commit_date": "2020-12-14T12:38:54-06:00",
+   "last_commit_date": "2025-10-29T18:06:59-05:00",
+   "n_commits": 21,
+   "authors": [
+    "26877329+ctvrty-rozmer@users.noreply.github.com",
+    "crashdemons@users.noreply.github.com",
+    "crashenator@gmail.com"
+   ],
+   "cipher_families_referenced": {
+    "hash_bruteforce": 6
+   },
+   "what_it_tried": "Hashcat rulesets against the deep-web hash.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Hashcat rulesets against the deep-web hash.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "rtkd/kerry",
+   "vendor_dir": "corpus/E-tooling/vendor/rtkd__kerry",
+   "url": "https://github.com/rtkd/kerry",
+   "clone_sha": "bb975ed09ae75cf141dc2b39e703c08faaf46834",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 1
+   },
+   "loc": 34,
+   "first_commit_date": "2018-02-09T04:40:23+01:00",
+   "last_commit_date": "2018-02-09T07:12:21+01:00",
+   "n_commits": 7,
+   "authors": [
+    "null@no.tld"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "34 LOC helper.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "34 LOC helper.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "LiberPrimus/Failed-Attempts",
+   "vendor_dir": "corpus/E-tooling/vendor/LiberPrimus__Failed-Attempts",
+   "url": "https://github.com/LiberPrimus/Failed-Attempts",
+   "clone_sha": "d219a8099f8d24e52496e9ee3456ed9980893884",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "Shell",
+   "languages": {
+    "Shell": 1
+   },
+   "loc": 0,
+   "first_commit_date": "2021-08-04T13:45:04+02:00",
+   "last_commit_date": "2021-08-07T17:05:48+02:00",
+   "n_commits": 4,
+   "authors": [
+    "69124274+LiberPrimus@users.noreply.github.com",
+    "tettigarc@protonmail.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "Explicit archive of failed brute-force attempts (2*pi*R, Vigenere, deep-web hash). Useful as a negative-results record.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Explicit archive of failed brute-force attempts (2*pi*R, Vigenere, deep-web hash). Useful as a negative-results record.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/Rain-3301",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__Rain-3301",
+   "url": "https://github.com/cicada-solvers/Rain-3301",
+   "clone_sha": "46549e961d4dc28027423766571f1bd385bdd27c",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": null,
+   "languages": {},
+   "loc": 0,
+   "first_commit_date": "2021-12-27T19:53:29Z",
+   "last_commit_date": "2025-10-31T19:49:39-05:00",
+   "n_commits": 6,
+   "authors": [
+    "167648603+cmbsolver@users.noreply.github.com",
+    "96747188+1595277641@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "Data/notes.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "Liber Primus 74.txt",
+    "n_runes": 15933,
+    "file_sha256": "db7c5dc4d0035da5754bcbfa041e735839af7949ea028fd030b6dc0d44c23634",
+    "sha256_indices": "f25b8af80c14de26b100573811c5c619a21655b169cc621cb0edaa4c9d9efc75",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "Liber Primus 57.txt"
+    ]
+   },
+   "transcription_sha256": "db7c5dc4d0035da5754bcbfa041e735839af7949ea028fd030b6dc0d44c23634",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Data/notes.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/Red_Rune_Cribs",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__Red_Rune_Cribs",
+   "url": "https://github.com/cicada-solvers/Red_Rune_Cribs",
+   "clone_sha": "885af1d518769b35c9f11fe48e973b979d966bbf",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": null,
+   "languages": {},
+   "loc": 0,
+   "first_commit_date": "2020-12-14T20:25:52Z",
+   "last_commit_date": "2020-12-14T20:30:42Z",
+   "n_commits": 2,
+   "authors": [
+    "mortlachmortlach@gmail.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "Crib list for the red runes.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Crib list for the red runes.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/cadrypt",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__cadrypt",
+   "url": "https://github.com/cicada-solvers/cadrypt",
+   "clone_sha": "9faefccf3d2ba90002835813f8a5a6953d5cfd84",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "C++",
+   "languages": {
+    "C++": 9,
+    "Kotlin": 2
+   },
+   "loc": null,
+   "first_commit_date": "2021-01-19T13:53:23-07:00",
+   "last_commit_date": "2021-11-06T20:54:52-05:00",
+   "n_commits": 30,
+   "authors": [
+    "3233238+crashdemons@users.noreply.github.com",
+    "77656682+localavaster@users.noreply.github.com",
+    "crashdemons@users.noreply.github.com",
+    "localavastergithub@gmail.com",
+    "notarealemail@aol.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "C++ utility; no keyed rune decode loop found.",
+   "what_it_concluded": "n/a",
+   "has_transcription": true,
+   "transcription": {
+    "path": "liberprimus_pages/all0.txt",
+    "n_runes": 12956,
+    "file_sha256": "868436bbbd81ad102ae9ca5b3bd5ee5681516aa5d93f6ac84a02710f2bc79fe6",
+    "sha256_indices": "023312066df471005264b9cbe7997cb77d2a9a6a2dc9b3316d22674023af1585",
+    "lineage": "unclassified",
+    "other_rune_files": [
+     "dumped_liberprimus_pages/spiralbranchchapter55.txt",
+     "dumped_liberprimus_pages/spiralbranchchapter_no_numbers55.txt",
+     "dumped_liberprimus_pages/mobiuschapter22.txt",
+     "dumped_liberprimus_pages/mobiuschapter_no_numbers22.txt",
+     "dumped_liberprimus_pages/branchchapter14.txt",
+     "dumped_liberprimus_pages/cuneiformchapter39.txt",
+     "liberprimus_pages/spiralbranch_and_hollow_chapter55.txt",
+     "liberprimus_pages/spiralbranchchapter55.txt"
+    ]
+   },
+   "transcription_sha256": "868436bbbd81ad102ae9ca5b3bd5ee5681516aa5d93f6ac84a02710f2bc79fe6",
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "C++ utility; no keyed rune decode loop found.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/cicada-runes-2014-transcriber",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__cicada-runes-2014-transcriber",
+   "url": "https://github.com/cicada-solvers/cicada-runes-2014-transcriber",
+   "clone_sha": "f54e4b0dbcb837b9bc770e56b7b70eac6e7af06a",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": "HTML",
+   "languages": {
+    "HTML": 1
+   },
+   "loc": 0,
+   "first_commit_date": "2015-01-10T15:05:07-02:00",
+   "last_commit_date": "2015-01-11T17:13:12-02:00",
+   "n_commits": 11,
+   "authors": [
+    "remotelongitude@gmail.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "2015-01-10. Browser transcriber for the 2014 runes: index.html, runes.txt, primes.txt. Pre-dates the 2017 iddqd root.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "2015-01-10. Browser transcriber for the 2014 runes: index.html, runes.txt, primes.txt. Pre-dates the 2017 iddqd root.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/cmbsolverwp",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__cmbsolverwp",
+   "url": "https://github.com/cicada-solvers/cmbsolverwp",
+   "clone_sha": "ad63a628fbf4d47c36184377265515416df250e0",
+   "shallow_clone": true,
+   "license": "Apache-2.0",
+   "license_files": [
+    {
+     "path": "LICENSE",
+     "detected": "Apache-2.0"
+    }
+   ],
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 22,
+    "PHP": 8,
+    "Shell": 1
+   },
+   "loc": null,
+   "first_commit_date": "2025-05-18T14:34:36-05:00",
+   "last_commit_date": "2025-11-24T02:05:57Z",
+   "n_commits": 62,
+   "authors": [
+    "167648603+cmbsolver@users.noreply.github.com",
+    "action@github.com",
+    "cmbsolver@gmail.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "WordPress-side presentation of cmbsolver's data; no decode loop.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "WordPress-side presentation of cmbsolver's data; no decode loop.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/documenting-cicada3301-scream314",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__documenting-cicada3301-scream314",
+   "url": "https://github.com/cicada-solvers/documenting-cicada3301-scream314",
+   "clone_sha": "HEAD",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": null,
+   "languages": {},
+   "loc": null,
+   "first_commit_date": null,
+   "last_commit_date": null,
+   "n_commits": null,
+   "authors": [],
+   "cipher_families_referenced": {},
+   "what_it_tried": "Org mirror of the scream314 documentation.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Org mirror of the scream314 documentation.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "cicada-solvers/liber_primus_finds",
+   "vendor_dir": "corpus/E-tooling/vendor/cicada-solvers__liber_primus_finds",
+   "url": "https://github.com/cicada-solvers/liber_primus_finds",
+   "clone_sha": "2243abdfc0cbcac4479f5e8d1093663f467608cb",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": null,
+   "languages": {},
+   "loc": 0,
+   "first_commit_date": "2021-03-14T17:37:24-06:00",
+   "last_commit_date": "2025-10-31T20:03:47-05:00",
+   "n_commits": 2,
+   "authors": [
+    "167648603+cmbsolver@users.noreply.github.com",
+    "localavastergithub@gmail.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "Notes/finds only.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Notes/finds only.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "geomatria/CicaData",
+   "vendor_dir": "corpus/E-tooling/vendor/geomatria__CicaData",
+   "url": "https://github.com/geomatria/CicaData",
+   "clone_sha": "2e124342160c42d150613809baad4752c980b396",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": null,
+   "languages": {},
+   "loc": 0,
+   "first_commit_date": "2020-09-08T23:03:21+10:00",
+   "last_commit_date": "2020-09-16T12:36:20+10:00",
+   "n_commits": 26,
+   "authors": [
+    "132714271033@protonmail.com",
+    "68109648+geomatria@users.noreply.github.com"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "Data collection.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "Data collection.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  },
+  {
+   "name": "micheloosterhof/cicada-2016",
+   "vendor_dir": "corpus/E-tooling/vendor/micheloosterhof__cicada-2016",
+   "url": "https://github.com/micheloosterhof/cicada-2016",
+   "clone_sha": "187ae28d21a7e42a14637bf95b77286a2193a1b8",
+   "shallow_clone": false,
+   "license": "NOT-STATED",
+   "license_files": [],
+   "language": null,
+   "languages": {},
+   "loc": 0,
+   "first_commit_date": "2016-01-06T09:11:40+04:00",
+   "last_commit_date": "2016-01-06T05:19:05Z",
+   "n_commits": 3,
+   "authors": [
+    "michel@oosterhof.net"
+   ],
+   "cipher_families_referenced": {},
+   "what_it_tried": "2016-01-06. One image plus its outguess payload from the 2016 puzzle. No decoder.",
+   "what_it_concluded": "n/a",
+   "has_transcription": false,
+   "transcription": null,
+   "transcription_sha256": null,
+   "decoder_type": "no-decoder",
+   "decoder_evidence": "2016-01-06. One image plus its outguess payload from the 2016 puzzle. No decoder.",
+   "null_trustworthy": "n/a",
+   "divergences_vs_canon": null,
+   "notes": null
+  }
+ ]
+}

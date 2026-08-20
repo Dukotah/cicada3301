@@ -1,0 +1,2732 @@
+{
+  "generated_utc": "2026-08-20T05:59:05Z",
+  "what_this_is": "Every PGP signature-packet creation timestamp held in Lane A, sorted chronologically. Timestamps come from the signature packets themselves (gpg --list-packets), not from any narrative. Timestamps are UTC as stored in the packet; the signer's local timezone is not recorded by OpenPGP.",
+  "counts": {
+    "timestamp_rows": 139,
+    "distinct_signatures": 56,
+    "earliest_utc": "2012-01-05T03:46:03Z",
+    "latest_utc": "2017-04-04T23:23:28Z",
+    "span_days": 1916
+  },
+  "dedupe_rule": "One entry per OpenPGP SIG_ID. gpg emits no SIG_ID for a signature that fails to verify, so such a row is folded into the bucket with the same (packet timestamp, key id); if no such bucket exists it stands alone under its file hash.",
+  "distributions": {
+    "by_year_utc": {
+      "2012": 14,
+      "2013": 24,
+      "2014": 15,
+      "2015": 1,
+      "2016": 1,
+      "2017": 1
+    },
+    "by_utc_hour": {
+      "00": 2,
+      "01": 2,
+      "02": 0,
+      "03": 7,
+      "04": 2,
+      "05": 6,
+      "06": 1,
+      "07": 9,
+      "08": 4,
+      "09": 1,
+      "10": 1,
+      "11": 0,
+      "12": 1,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 3,
+      "18": 0,
+      "19": 1,
+      "20": 8,
+      "21": 0,
+      "22": 5,
+      "23": 3
+    },
+    "by_utc_weekday": {
+      "Thu": 6,
+      "Fri": 7,
+      "Sat": 13,
+      "Sun": 13,
+      "Wed": 4,
+      "Mon": 4,
+      "Tue": 9
+    }
+  },
+  "distinct_signatures": [
+    {
+      "sig_id": "zeEc40PRgzY50sFSYkpdBDk6Nhs",
+      "signature_timestamp_utc": "2012-01-05T03:46:03Z",
+      "signature_timestamp_unix": 1325735163,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/from-here-on-out.asc",
+        "krisyotam/pgp/messages/2012-01-key-announcement.asc",
+        "pgp/messages/2012-01-key-announcement.asc",
+        "pgp/messages/ky_2012-01-key-announcement.asc"
+      ]
+    },
+    {
+      "sig_id": "steKj/MRwbQxhmLSdv8XEf3Y/MY",
+      "signature_timestamp_utc": "2012-01-06T20:28:30Z",
+      "signature_timestamp_unix": 1325881710,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/in-twenty-nine-volumes.asc",
+        "pgp/messages/2012-01-mabinogion-book-code.asc"
+      ]
+    },
+    {
+      "sig_id": "o/vnkKjLZHSqLKS8tnJnKLYqKHw",
+      "signature_timestamp_utc": "2012-01-07T07:53:10Z",
+      "signature_timestamp_unix": 1325922790,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/a-poem-of-fading-death.asc",
+        "krisyotam/pgp/messages/2012-01-book-code-poem.asc",
+        "pgp/messages/2012-01-book-code-poem.asc",
+        "pgp/messages/ky_2012-01-book-code-poem.asc"
+      ]
+    },
+    {
+      "sig_id": "dPLLdYQ8w7WgvyATLL8nm0yL53c",
+      "signature_timestamp_utc": "2012-01-07T10:07:51Z",
+      "signature_timestamp_unix": 1325930871,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/the-key-has-always-been.asc",
+        "krisyotam/pgp/messages/2012-01-key-in-front-of-you.asc",
+        "pgp/messages/2012-01-key-in-front-of-you.asc",
+        "pgp/messages/ky_2012-01-key-in-front-of-you.asc"
+      ]
+    },
+    {
+      "sig_id": "xPbCW2h9ypk2qaMIHkFz5OHHUE0",
+      "signature_timestamp_utc": "2012-01-07T19:45:24Z",
+      "signature_timestamp_unix": 1325965524,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/you-have-done-well.asc",
+        "pgp/messages/2012-01-patience-check-back.asc"
+      ]
+    },
+    {
+      "sig_id": "Y3yx8f0rWu40wGW+y7kbUwwLyi4",
+      "signature_timestamp_utc": "2012-01-08T22:34:35Z",
+      "signature_timestamp_unix": 1326062075,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/52.216802.asc",
+        "krisyotam/pgp/messages/2012-01-coordinates.asc",
+        "pgp/messages/2012-01-coordinates.asc",
+        "pgp/messages/ky_2012-01-coordinates.asc"
+      ]
+    },
+    {
+      "sig_id": "hEa2pc7LpyF62iJrm+fRiV6FJCc",
+      "signature_timestamp_utc": "2012-01-08T23:39:04Z",
+      "signature_timestamp_unix": 1326065944,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/congratulations.asc",
+        "pgp/messages/2012-01-anonymous-email-enrollment.asc"
+      ]
+    },
+    {
+      "sig_id": "KKaWi5iZNaFWeFBH2jVUSipFp6k",
+      "signature_timestamp_utc": "2012-01-11T05:07:59Z",
+      "signature_timestamp_unix": 1326258479,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/162667212858.asc",
+        "pgp/messages/2012-01-location-numbers.asc"
+      ]
+    },
+    {
+      "sig_id": "aP4fFyfYb/O/uWVIb5jtFN7P/dE",
+      "signature_timestamp_utc": "2012-01-11T07:22:18Z",
+      "signature_timestamp_unix": 1326266538,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/miss-round-1.asc",
+        "krisyotam/pgp/messages/2012-01-second-chance.asc",
+        "pgp/messages/2012-01-second-chance.asc",
+        "pgp/messages/ky_2012-01-second-chance.asc"
+      ]
+    },
+    {
+      "sig_id": "ZcgTDrcxpMjvJWrTM7PemmS7jzg",
+      "signature_timestamp_utc": "2012-01-15T01:39:42Z",
+      "signature_timestamp_unix": 1326591582,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/this-message-will-only-be-displayed.asc"
+      ]
+    },
+    {
+      "sig_id": "DU/81XrkEQdZZB20Voj0H0ZKoDs",
+      "signature_timestamp_utc": "2012-01-15T12:16:52Z",
+      "signature_timestamp_unix": 1326629812,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/hello-you-have-shared.asc",
+        "pgp/messages/2012-01-sharing-disqualification.asc"
+      ]
+    },
+    {
+      "sig_id": "qPfFWIV6nLdZIf3A8TGUkJF3jY4",
+      "signature_timestamp_utc": "2012-01-20T03:57:40Z",
+      "signature_timestamp_unix": 1327031860,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/the-song-is-your-own-path.asc"
+      ]
+    },
+    {
+      "sig_id": "j9sStP78+zIGrry9uQdCA1lybl0",
+      "signature_timestamp_utc": "2012-02-06T22:59:40Z",
+      "signature_timestamp_unix": 1328569180,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/hello-we-have-now.asc",
+        "krisyotam/pgp/messages/2012-01-end-of-puzzle.asc",
+        "krisyotam/pgp/messages/2012-01-final-message.asc",
+        "pgp/messages/2012-01-end-of-puzzle.asc",
+        "pgp/messages/ky_2012-01-end-of-puzzle.asc",
+        "pgp/messages/ky_2012-01-final-message.asc"
+      ]
+    },
+    {
+      "sig_id": "TzAfpIqcFaiTgV1tmueX+RrhpHQ",
+      "signature_timestamp_utc": "2012-04-18T17:41:42Z",
+      "signature_timestamp_unix": 1334770902,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2012/some-news-organizations.asc",
+        "pgp/messages/2012-01-necrome-denial.asc"
+      ]
+    },
+    {
+      "sig_id": "0CeSdBFKkA5D2t1yOJymeux30VA",
+      "signature_timestamp_utc": "2013-01-03T00:08:11Z",
+      "signature_timestamp_unix": 1357171691,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "cijhho123/2013/additional files/Cicada OS/cicados/usr_local_bin/message.txt.asc",
+        "ibotpeaches/messages/2013/the-key-is-all-around-you.asc",
+        "krisyotam/pgp/messages/2013-01-cicada-os-message.asc",
+        "krisyotam/pgp/messages/2013-cicada-os-message.asc",
+        "krisyotam/puzzles/2013/cicada-os/usr_local_bin/message.txt.asc",
+        "pgp/messages/2013-cicada-os-message.asc",
+        "pgp/messages/ky_2013-01-cicada-os-message.asc",
+        "pgp/messages/ky_2013-cicada-os-message.asc"
+      ]
+    },
+    {
+      "sig_id": "B4/S2U0VepM5G4Idm4YLjSo2aNs",
+      "signature_timestamp_utc": "2013-01-03T04:33:29Z",
+      "signature_timestamp_unix": 1357187609,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/welcome-again.asc",
+        "krisyotam/pgp/messages/2013-01-opening-book-code.asc",
+        "pgp/messages/2013-01-opening-book-code.asc",
+        "pgp/messages/ky_2013-01-opening-book-code.asc",
+        "pgp/repaired/ky_2013-01-opening-book-code.repaired.asc"
+      ]
+    },
+    {
+      "sig_id": "FGf13GZWNR2TD/7rNybKb1OATUo",
+      "signature_timestamp_utc": "2013-01-04T03:47:31Z",
+      "signature_timestamp_unix": 1357271251,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/_space_.asc",
+        "krisyotam/pgp/messages/2013-01-rune-table-morse.asc",
+        "pgp/messages/2013-01-rune-table-morse.asc",
+        "pgp/messages/ky_2013-01-rune-table-morse.asc"
+      ]
+    },
+    {
+      "sig_id": "NP1DOUXdGrHHV8huvxd2bjj9Jxk",
+      "signature_timestamp_utc": "2013-01-06T07:38:19Z",
+      "signature_timestamp_unix": 1357457899,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/you-cant-see-the-forest.asc"
+      ]
+    },
+    {
+      "sig_id": "meSKQ8Cae76GXZWqsj5a6Lw2Duo",
+      "signature_timestamp_utc": "2013-01-06T07:51:35Z",
+      "signature_timestamp_unix": 1357458695,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/very-good.asc",
+        "krisyotam/pgp/messages/2013-01-telnet-hello.asc",
+        "pgp/messages/2013-01-telnet-hello.asc",
+        "pgp/messages/ky_2013-01-telnet-hello.asc"
+      ]
+    },
+    {
+      "sig_id": "iboKy5k6ViKDKWv/Rxw97CkK/dY",
+      "signature_timestamp_utc": "2013-01-10T17:07:15Z",
+      "signature_timestamp_unix": 1357837635,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/well-done-you-have-come-far.asc",
+        "pgp/messages/2013-01-onion-pointer.asc"
+      ]
+    },
+    {
+      "sig_id": "/FN8r22lzHvU4oAW5yRRxQZ06GA",
+      "signature_timestamp_utc": "2013-01-11T23:20:28Z",
+      "signature_timestamp_unix": 1357946428,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/standby-for-coords.asc"
+      ]
+    },
+    {
+      "sig_id": "nwvmuaFZtNJHISVk5Nxw92jcZUs",
+      "signature_timestamp_utc": "2013-01-12T08:41:05Z",
+      "signature_timestamp_unix": 1357980065,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/33.092817.asc"
+      ]
+    },
+    {
+      "sig_id": "WUYZVYy/q5JpvvYz5q5FWV5npFo",
+      "signature_timestamp_utc": "2013-01-12T20:39:51Z",
+      "signature_timestamp_unix": 1358023191,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/26.41968.asc"
+      ]
+    },
+    {
+      "sig_id": "N7Dfo0+PTgTtGWsE2ovxmsSoYds",
+      "signature_timestamp_utc": "2013-01-12T20:46:39Z",
+      "signature_timestamp_unix": 1358023599,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/38.977845.asc"
+      ]
+    },
+    {
+      "sig_id": "ohvbViylASTGRu2Y2YxJhfLyYYs",
+      "signature_timestamp_utc": "2013-01-14T05:31:07Z",
+      "signature_timestamp_unix": 1358141467,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/you-already-have-everything.asc",
+        "pgp/messages/2013-01-knock-on-the-sky.asc"
+      ]
+    },
+    {
+      "sig_id": "/Vk0LR1Z7o8NhROLFLFDg+JTA2E",
+      "signature_timestamp_utc": "2013-01-15T20:05:42Z",
+      "signature_timestamp_unix": 1358280342,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/ssss-03.asc"
+      ]
+    },
+    {
+      "sig_id": "WlOGBJqbnlvYz8A1GZOI05fQHdw",
+      "signature_timestamp_utc": "2013-01-15T20:05:42Z",
+      "signature_timestamp_unix": 1358280342,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/ssss-10.asc"
+      ]
+    },
+    {
+      "sig_id": "lpyRGDQ6bNZIgJDbzQwFK+KHV1s",
+      "signature_timestamp_utc": "2013-01-15T20:05:44Z",
+      "signature_timestamp_unix": 1358280344,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/ssss-09.asc"
+      ]
+    },
+    {
+      "sig_id": "X1hNl8CFe/AD7C5mg41zsB18n9U",
+      "signature_timestamp_utc": "2013-01-17T20:28:43Z",
+      "signature_timestamp_unix": 1358454523,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/32.478944.asc"
+      ]
+    },
+    {
+      "sig_id": "HVE5HpFZZhc3It2ultiuNOOwslE",
+      "signature_timestamp_utc": "2013-01-18T17:15:18Z",
+      "signature_timestamp_unix": 1358529318,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/welcome-and-congratulations.asc"
+      ]
+    },
+    {
+      "sig_id": "tt9xO+nX55NIMeICqZuo1ogAhYk",
+      "signature_timestamp_utc": "2013-01-19T22:15:59Z",
+      "signature_timestamp_unix": 1358633759,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/55.793765.asc"
+      ]
+    },
+    {
+      "sig_id": "mU5NRS74f+6EmGbPPoJrUQ7Po10",
+      "signature_timestamp_utc": "2013-01-19T22:16:44Z",
+      "signature_timestamp_unix": 1358633804,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/37.182685.asc"
+      ]
+    },
+    {
+      "sig_id": "FkVPsQ2/QBFCmjDCxJ02zSe1UmA",
+      "signature_timestamp_utc": "2013-01-19T22:17:48Z",
+      "signature_timestamp_unix": 1358633868,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/34.7477910.asc"
+      ]
+    },
+    {
+      "sig_id": "gfTLegjau+BeVXHzCy6uxb+92fg",
+      "signature_timestamp_utc": "2013-01-26T09:16:23Z",
+      "signature_timestamp_unix": 1359191783,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/tcp-server.asc"
+      ]
+    },
+    {
+      "sig_id": "+ZD8Ai1O9g8GQaAw5BE0eoXhs9E",
+      "signature_timestamp_utc": "2013-01-26T20:26:21Z",
+      "signature_timestamp_unix": 1359231981,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/if-you-followed.asc"
+      ]
+    },
+    {
+      "sig_id": "9260725rvigsROsx13SFTr1Fi6M",
+      "signature_timestamp_utc": "2013-01-31T08:08:24Z",
+      "signature_timestamp_unix": 1359619704,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/no-more-testing.asc"
+      ]
+    },
+    {
+      "sig_id": "VCI/gm0W7bSuBVg+TzuUd4psXM4",
+      "signature_timestamp_utc": "2013-03-03T05:32:58Z",
+      "signature_timestamp_unix": 1362288778,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/do-not-share-this-information.asc"
+      ]
+    },
+    {
+      "sig_id": "nxHaFaLu8oRg58znlpzzIY4rF9w",
+      "signature_timestamp_utc": "2013-03-03T05:33:01Z",
+      "signature_timestamp_unix": 1362288781,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2013/do-not-share-this-information-2.asc"
+      ]
+    },
+    {
+      "sig_id": "SyvqR5vwCNGds2E0b+KA3L4DU0A",
+      "signature_timestamp_utc": "2014-01-06T04:59:26Z",
+      "signature_timestamp_unix": 1388984366,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/the-work-of-a-private-man.asc",
+        "krisyotam/pgp/messages/2014-01-opening-book-code.asc",
+        "pgp/messages/2014-01-opening-book-code.asc",
+        "pgp/messages/ky_2014-01-opening-book-code.asc"
+      ]
+    },
+    {
+      "sig_id": "iJ24IU67I4CADRp0IR0Wwm5+nZk",
+      "signature_timestamp_utc": "2014-01-06T07:35:27Z",
+      "signature_timestamp_unix": 1388993727,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/welcome.asc",
+        "pgp/messages/2014-01-rsa-oaep-challenge.asc"
+      ]
+    },
+    {
+      "sig_id": "p/l3aGEsAEoN4ZzuFGh7gW90zD4",
+      "signature_timestamp_utc": "2014-01-07T03:00:31Z",
+      "signature_timestamp_unix": 1389063631,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/idgtk-umloo.asc",
+        "pgp/messages/2014-01-signed-ciphertext.asc"
+      ]
+    },
+    {
+      "sig_id": "Orr/HCKq7KKBL525fFgQU5cXoss",
+      "signature_timestamp_utc": "2014-01-07T03:16:41Z",
+      "signature_timestamp_unix": 1389064601,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/liber_primus/00.jpg.asc",
+        "krisyotam/pgp/messages/2014-01-liber-primus-hash-block.asc",
+        "pgp/messages/2014-01-liber-primus-hash-block.asc",
+        "pgp/messages/ky_2014-01-liber-primus-hash-block.asc"
+      ]
+    },
+    {
+      "sig_id": "fT2iIUR9FoXEV1Hc8xwst1WOA3M",
+      "signature_timestamp_utc": "2014-01-07T03:16:44Z",
+      "signature_timestamp_unix": 1389064604,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/liber_primus/02.jpg.asc",
+        "pgp/messages/2014-01-liber-primus-hash-block-outguess-02.asc"
+      ]
+    },
+    {
+      "sig_id": "r0Scjw5suJUsuqVmXsoI+Zar+34",
+      "signature_timestamp_utc": "2014-01-07T03:16:48Z",
+      "signature_timestamp_unix": 1389064608,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/liber_primus/01.jpg.asc",
+        "pgp/messages/2014-01-liber-primus-hash-block-outguess-01.asc"
+      ]
+    },
+    {
+      "sig_id": "tV8pYExYLuHeoVZUVUZ2lU1d/WM",
+      "signature_timestamp_utc": "2014-01-10T05:42:54Z",
+      "signature_timestamp_unix": 1389332574,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/let-the-text-guide-you.asc",
+        "ibotpeaches/messages/2014/liber_primus/03.jpg.asc",
+        "pgp/messages/2014-01-let-the-text-guide-you.asc"
+      ]
+    },
+    {
+      "sig_id": "HsWkBVtES/0TUFG9K14sj5d/dOw",
+      "signature_timestamp_utc": "2014-01-18T01:03:57Z",
+      "signature_timestamp_unix": 1390007037,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/_data-blob_.asc",
+        "pgp/messages/corpus_2014-01-interconnectedness-hex.asc"
+      ]
+    },
+    {
+      "sig_id": "vDiYC83Y8uBr0BJ6eGbdJOtpeTk",
+      "signature_timestamp_utc": "2014-01-19T06:28:06Z",
+      "signature_timestamp_unix": 1390112886,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/very-good-you-have-done-well.asc",
+        "krisyotam/pgp/messages/2014-01-onion5-liber-primus.asc",
+        "pgp/messages/2014-01-onion5-liber-primus.asc",
+        "pgp/messages/ky_2014-01-onion5-liber-primus.asc"
+      ]
+    },
+    {
+      "sig_id": "PxBW8To/8sh2VNKnCFAE0ZwKzBI",
+      "signature_timestamp_utc": "2014-01-19T07:39:32Z",
+      "signature_timestamp_unix": 1390117172,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/liber_primus/10.jpg.asc",
+        "pgp/messages/2014-01-magic-square-upload-outguess-10.asc"
+      ]
+    },
+    {
+      "sig_id": "uK48MHsB0c8/8uGSxDxeu8kJKmE",
+      "signature_timestamp_utc": "2014-01-19T07:39:42Z",
+      "signature_timestamp_unix": 1390117182,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/liber_primus/11.jpg.asc",
+        "pgp/messages/2014-01-magic-square-upload-outguess-11.asc"
+      ]
+    },
+    {
+      "sig_id": "FfESnCDxLQIuLZrqZk0iCv7WCf4",
+      "signature_timestamp_utc": "2014-01-19T07:39:50Z",
+      "signature_timestamp_unix": 1390117190,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/liber_primus/12.jpg.asc",
+        "pgp/messages/2014-01-magic-square-upload-outguess-12.asc"
+      ]
+    },
+    {
+      "sig_id": "qz513DJ0ioE/42TiJxIbDymD98E",
+      "signature_timestamp_utc": "2014-01-19T07:39:57Z",
+      "signature_timestamp_unix": 1390117197,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/liber_primus/13.jpg.asc",
+        "pgp/messages/2014-01-magic-square-upload-outguess-13.asc"
+      ]
+    },
+    {
+      "sig_id": "K9IGj2g73eIXtAYQlEKfRPB5c7o",
+      "signature_timestamp_utc": "2014-01-25T08:26:57Z",
+      "signature_timestamp_unix": 1390638417,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2014/hello-you-have-done-well.asc",
+        "pgp/messages/2014-01-upload-instructions.asc"
+      ]
+    },
+    {
+      "sig_id": "FPjtqb5zyNAgftimJVfvuUF8wMU",
+      "signature_timestamp_utc": "2014-04-02T08:49:51Z",
+      "signature_timestamp_unix": 1396428591,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "cijhho123/2014/Liber Primus/A drop box of all unmodified files/2014onion7/message.txt.asc",
+        "ibotpeaches/messages/2014/hello-your-enlightenment.asc",
+        "krisyotam/pgp/messages/2014-01-final-message.asc",
+        "krisyotam/pgp/messages/2014-01-onion-welcome.asc",
+        "krisyotam/pgp/messages/2014-05-liber-primus-release.asc",
+        "pgp/messages/2014-01-onion-welcome.asc",
+        "pgp/messages/ky_2014-01-final-message.asc",
+        "pgp/messages/ky_2014-01-onion-welcome.asc",
+        "pgp/messages/ky_2014-05-liber-primus-release.asc"
+      ]
+    },
+    {
+      "sig_id": "m1KphpQRaQCMCcif/4EOi70LalQ",
+      "signature_timestamp_utc": "2015-07-28T05:12:39Z",
+      "signature_timestamp_unix": 1438060359,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2015/some-news-organizations.asc",
+        "krisyotam/pgp/messages/2015-07-planned-parenthood-denial.asc",
+        "pgp/messages/2015-07-planned-parenthood-denial.asc",
+        "pgp/messages/ky_2015-07-planned-parenthood-denial.asc"
+      ]
+    },
+    {
+      "sig_id": "5uL1mG1p99+UvjayNXKifkJecZg",
+      "signature_timestamp_utc": "2016-01-01T00:01:07Z",
+      "signature_timestamp_unix": 1451606467,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2016/hello-the-path-lies-empty.asc",
+        "pgp/messages/2016-01-liber-primus.asc"
+      ]
+    },
+    {
+      "sig_id": "ryg/RFKhKGIMa0DwTMvpYcDOWco",
+      "signature_timestamp_utc": "2017-04-04T23:23:28Z",
+      "signature_timestamp_unix": 1491348208,
+      "signing_key_id": "181F01E57A35090F",
+      "carried_by_files": [
+        "ibotpeaches/messages/2017/beware-false-paths.asc",
+        "krisyotam/pgp/messages/2017-04-final-message.asc",
+        "krisyotam/pgp/messages/2017-04-final-warning.asc",
+        "pgp/messages/2017-04-final-warning.asc",
+        "pgp/messages/ky_2017-04-final-message.asc",
+        "pgp/messages/ky_2017-04-final-warning.asc"
+      ]
+    }
+  ],
+  "inter_signature_gaps": [
+    {
+      "from_utc": "2012-01-05T03:46:03Z",
+      "to_utc": "2012-01-06T20:28:30Z",
+      "delta_seconds": 146547
+    },
+    {
+      "from_utc": "2012-01-06T20:28:30Z",
+      "to_utc": "2012-01-07T07:53:10Z",
+      "delta_seconds": 41080
+    },
+    {
+      "from_utc": "2012-01-07T07:53:10Z",
+      "to_utc": "2012-01-07T10:07:51Z",
+      "delta_seconds": 8081
+    },
+    {
+      "from_utc": "2012-01-07T10:07:51Z",
+      "to_utc": "2012-01-07T19:45:24Z",
+      "delta_seconds": 34653
+    },
+    {
+      "from_utc": "2012-01-07T19:45:24Z",
+      "to_utc": "2012-01-08T22:34:35Z",
+      "delta_seconds": 96551
+    },
+    {
+      "from_utc": "2012-01-08T22:34:35Z",
+      "to_utc": "2012-01-08T23:39:04Z",
+      "delta_seconds": 3869
+    },
+    {
+      "from_utc": "2012-01-08T23:39:04Z",
+      "to_utc": "2012-01-11T05:07:59Z",
+      "delta_seconds": 192535
+    },
+    {
+      "from_utc": "2012-01-11T05:07:59Z",
+      "to_utc": "2012-01-11T07:22:18Z",
+      "delta_seconds": 8059
+    },
+    {
+      "from_utc": "2012-01-11T07:22:18Z",
+      "to_utc": "2012-01-15T01:39:42Z",
+      "delta_seconds": 325044
+    },
+    {
+      "from_utc": "2012-01-15T01:39:42Z",
+      "to_utc": "2012-01-15T12:16:52Z",
+      "delta_seconds": 38230
+    },
+    {
+      "from_utc": "2012-01-15T12:16:52Z",
+      "to_utc": "2012-01-20T03:57:40Z",
+      "delta_seconds": 402048
+    },
+    {
+      "from_utc": "2012-01-20T03:57:40Z",
+      "to_utc": "2012-02-06T22:59:40Z",
+      "delta_seconds": 1537320
+    },
+    {
+      "from_utc": "2012-02-06T22:59:40Z",
+      "to_utc": "2012-04-18T17:41:42Z",
+      "delta_seconds": 6201722
+    },
+    {
+      "from_utc": "2012-04-18T17:41:42Z",
+      "to_utc": "2013-01-03T00:08:11Z",
+      "delta_seconds": 22400789
+    },
+    {
+      "from_utc": "2013-01-03T00:08:11Z",
+      "to_utc": "2013-01-03T04:33:29Z",
+      "delta_seconds": 15918
+    },
+    {
+      "from_utc": "2013-01-03T04:33:29Z",
+      "to_utc": "2013-01-04T03:47:31Z",
+      "delta_seconds": 83642
+    },
+    {
+      "from_utc": "2013-01-04T03:47:31Z",
+      "to_utc": "2013-01-06T07:38:19Z",
+      "delta_seconds": 186648
+    },
+    {
+      "from_utc": "2013-01-06T07:38:19Z",
+      "to_utc": "2013-01-06T07:51:35Z",
+      "delta_seconds": 796
+    },
+    {
+      "from_utc": "2013-01-06T07:51:35Z",
+      "to_utc": "2013-01-10T17:07:15Z",
+      "delta_seconds": 378940
+    },
+    {
+      "from_utc": "2013-01-10T17:07:15Z",
+      "to_utc": "2013-01-11T23:20:28Z",
+      "delta_seconds": 108793
+    },
+    {
+      "from_utc": "2013-01-11T23:20:28Z",
+      "to_utc": "2013-01-12T08:41:05Z",
+      "delta_seconds": 33637
+    },
+    {
+      "from_utc": "2013-01-12T08:41:05Z",
+      "to_utc": "2013-01-12T20:39:51Z",
+      "delta_seconds": 43126
+    },
+    {
+      "from_utc": "2013-01-12T20:39:51Z",
+      "to_utc": "2013-01-12T20:46:39Z",
+      "delta_seconds": 408
+    },
+    {
+      "from_utc": "2013-01-12T20:46:39Z",
+      "to_utc": "2013-01-14T05:31:07Z",
+      "delta_seconds": 117868
+    },
+    {
+      "from_utc": "2013-01-14T05:31:07Z",
+      "to_utc": "2013-01-15T20:05:42Z",
+      "delta_seconds": 138875
+    },
+    {
+      "from_utc": "2013-01-15T20:05:42Z",
+      "to_utc": "2013-01-15T20:05:42Z",
+      "delta_seconds": 0
+    },
+    {
+      "from_utc": "2013-01-15T20:05:42Z",
+      "to_utc": "2013-01-15T20:05:44Z",
+      "delta_seconds": 2
+    },
+    {
+      "from_utc": "2013-01-15T20:05:44Z",
+      "to_utc": "2013-01-17T20:28:43Z",
+      "delta_seconds": 174179
+    },
+    {
+      "from_utc": "2013-01-17T20:28:43Z",
+      "to_utc": "2013-01-18T17:15:18Z",
+      "delta_seconds": 74795
+    },
+    {
+      "from_utc": "2013-01-18T17:15:18Z",
+      "to_utc": "2013-01-19T22:15:59Z",
+      "delta_seconds": 104441
+    },
+    {
+      "from_utc": "2013-01-19T22:15:59Z",
+      "to_utc": "2013-01-19T22:16:44Z",
+      "delta_seconds": 45
+    },
+    {
+      "from_utc": "2013-01-19T22:16:44Z",
+      "to_utc": "2013-01-19T22:17:48Z",
+      "delta_seconds": 64
+    },
+    {
+      "from_utc": "2013-01-19T22:17:48Z",
+      "to_utc": "2013-01-26T09:16:23Z",
+      "delta_seconds": 557915
+    },
+    {
+      "from_utc": "2013-01-26T09:16:23Z",
+      "to_utc": "2013-01-26T20:26:21Z",
+      "delta_seconds": 40198
+    },
+    {
+      "from_utc": "2013-01-26T20:26:21Z",
+      "to_utc": "2013-01-31T08:08:24Z",
+      "delta_seconds": 387723
+    },
+    {
+      "from_utc": "2013-01-31T08:08:24Z",
+      "to_utc": "2013-03-03T05:32:58Z",
+      "delta_seconds": 2669074
+    },
+    {
+      "from_utc": "2013-03-03T05:32:58Z",
+      "to_utc": "2013-03-03T05:33:01Z",
+      "delta_seconds": 3
+    },
+    {
+      "from_utc": "2013-03-03T05:33:01Z",
+      "to_utc": "2014-01-06T04:59:26Z",
+      "delta_seconds": 26695585
+    },
+    {
+      "from_utc": "2014-01-06T04:59:26Z",
+      "to_utc": "2014-01-06T07:35:27Z",
+      "delta_seconds": 9361
+    },
+    {
+      "from_utc": "2014-01-06T07:35:27Z",
+      "to_utc": "2014-01-07T03:00:31Z",
+      "delta_seconds": 69904
+    },
+    {
+      "from_utc": "2014-01-07T03:00:31Z",
+      "to_utc": "2014-01-07T03:16:41Z",
+      "delta_seconds": 970
+    },
+    {
+      "from_utc": "2014-01-07T03:16:41Z",
+      "to_utc": "2014-01-07T03:16:44Z",
+      "delta_seconds": 3
+    },
+    {
+      "from_utc": "2014-01-07T03:16:44Z",
+      "to_utc": "2014-01-07T03:16:48Z",
+      "delta_seconds": 4
+    },
+    {
+      "from_utc": "2014-01-07T03:16:48Z",
+      "to_utc": "2014-01-10T05:42:54Z",
+      "delta_seconds": 267966
+    },
+    {
+      "from_utc": "2014-01-10T05:42:54Z",
+      "to_utc": "2014-01-18T01:03:57Z",
+      "delta_seconds": 674463
+    },
+    {
+      "from_utc": "2014-01-18T01:03:57Z",
+      "to_utc": "2014-01-19T06:28:06Z",
+      "delta_seconds": 105849
+    },
+    {
+      "from_utc": "2014-01-19T06:28:06Z",
+      "to_utc": "2014-01-19T07:39:32Z",
+      "delta_seconds": 4286
+    },
+    {
+      "from_utc": "2014-01-19T07:39:32Z",
+      "to_utc": "2014-01-19T07:39:42Z",
+      "delta_seconds": 10
+    },
+    {
+      "from_utc": "2014-01-19T07:39:42Z",
+      "to_utc": "2014-01-19T07:39:50Z",
+      "delta_seconds": 8
+    },
+    {
+      "from_utc": "2014-01-19T07:39:50Z",
+      "to_utc": "2014-01-19T07:39:57Z",
+      "delta_seconds": 7
+    },
+    {
+      "from_utc": "2014-01-19T07:39:57Z",
+      "to_utc": "2014-01-25T08:26:57Z",
+      "delta_seconds": 521220
+    },
+    {
+      "from_utc": "2014-01-25T08:26:57Z",
+      "to_utc": "2014-04-02T08:49:51Z",
+      "delta_seconds": 5790174
+    },
+    {
+      "from_utc": "2014-04-02T08:49:51Z",
+      "to_utc": "2015-07-28T05:12:39Z",
+      "delta_seconds": 41631768
+    },
+    {
+      "from_utc": "2015-07-28T05:12:39Z",
+      "to_utc": "2016-01-01T00:01:07Z",
+      "delta_seconds": 13546108
+    },
+    {
+      "from_utc": "2016-01-01T00:01:07Z",
+      "to_utc": "2017-04-04T23:23:28Z",
+      "delta_seconds": 39741741
+    }
+  ],
+  "all_rows": [
+    {
+      "signature_timestamp_utc": "2012-01-05T03:46:03Z",
+      "signature_timestamp_unix": 1325735163,
+      "sig_id": "zeEc40PRgzY50sFSYkpdBDk6Nhs",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/from-here-on-out.asc",
+      "sha256": "ce6c44a4c3daf6d5b3691f8894ddb59b10ab58514ce1a2e692caf9b86af7142a",
+      "duplicate_of": "pgp/messages/2012-01-key-announcement.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/from-here-on-out.asc",
+      "retrieved_utc": "2026-08-20T03:41:39Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-05T03:46:03Z",
+      "signature_timestamp_unix": 1325735163,
+      "sig_id": "zeEc40PRgzY50sFSYkpdBDk6Nhs",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2012-01-key-announcement.asc",
+      "sha256": "ce6c44a4c3daf6d5b3691f8894ddb59b10ab58514ce1a2e692caf9b86af7142a",
+      "duplicate_of": "pgp/messages/2012-01-key-announcement.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-key-announcement.asc",
+      "retrieved_utc": "2026-08-19T23:02:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-05T03:46:03Z",
+      "signature_timestamp_unix": 1325735163,
+      "sig_id": "zeEc40PRgzY50sFSYkpdBDk6Nhs",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2012-01-key-announcement.asc",
+      "sha256": "ce6c44a4c3daf6d5b3691f8894ddb59b10ab58514ce1a2e692caf9b86af7142a",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2012-01-key-announcement.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-05T03:46:03Z",
+      "signature_timestamp_unix": 1325735163,
+      "sig_id": "zeEc40PRgzY50sFSYkpdBDk6Nhs",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2012-01-key-announcement.asc",
+      "sha256": "ce6c44a4c3daf6d5b3691f8894ddb59b10ab58514ce1a2e692caf9b86af7142a",
+      "duplicate_of": "pgp/messages/2012-01-key-announcement.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-key-announcement.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-06T20:28:30Z",
+      "signature_timestamp_unix": 1325881710,
+      "sig_id": "steKj/MRwbQxhmLSdv8XEf3Y/MY",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/in-twenty-nine-volumes.asc",
+      "sha256": "83c50d7a2981b3b3daa9cd33c7c4b0a4f7f61716ae0443186ced0c5d8c7abd17",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/in-twenty-nine-volumes.asc",
+      "retrieved_utc": "2026-08-20T03:41:44Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-06T20:28:30Z",
+      "signature_timestamp_unix": 1325881710,
+      "sig_id": "steKj/MRwbQxhmLSdv8XEf3Y/MY",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2012-01-mabinogion-book-code.asc",
+      "sha256": "41ddfada04e66f38073e7f3e1e5b5aa862fd49089cc22abfd2efef9568d3a3d3",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2012-01-mabinogion-book-code.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-07T07:53:10Z",
+      "signature_timestamp_unix": 1325922790,
+      "sig_id": "o/vnkKjLZHSqLKS8tnJnKLYqKHw",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/a-poem-of-fading-death.asc",
+      "sha256": "a6b6fc01c69b80a1ab0ab95422ad3403d4f6c9bf5581a882372c6a1e40f30b50",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/a-poem-of-fading-death.asc",
+      "retrieved_utc": "2026-08-20T03:41:36Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-07T07:53:10Z",
+      "signature_timestamp_unix": 1325922790,
+      "sig_id": "o/vnkKjLZHSqLKS8tnJnKLYqKHw",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2012-01-book-code-poem.asc",
+      "sha256": "737127ccf950ef84c213026cbe39bad5a3ef0081114fee16959254f2ae02b906",
+      "duplicate_of": "pgp/messages/ky_2012-01-book-code-poem.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-book-code-poem.asc",
+      "retrieved_utc": "2026-08-19T23:02:49Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-07T07:53:10Z",
+      "signature_timestamp_unix": 1325922790,
+      "sig_id": "o/vnkKjLZHSqLKS8tnJnKLYqKHw",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2012-01-book-code-poem.asc",
+      "sha256": "26d24c91bc3543ecc003553a3c93ea6a68bf2df8cede3bdb6acc509a4dc494d5",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2012-01-book-code-poem.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-07T07:53:10Z",
+      "signature_timestamp_unix": 1325922790,
+      "sig_id": "o/vnkKjLZHSqLKS8tnJnKLYqKHw",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2012-01-book-code-poem.asc",
+      "sha256": "737127ccf950ef84c213026cbe39bad5a3ef0081114fee16959254f2ae02b906",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-book-code-poem.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-07T10:07:51Z",
+      "signature_timestamp_unix": 1325930871,
+      "sig_id": "dPLLdYQ8w7WgvyATLL8nm0yL53c",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/the-key-has-always-been.asc",
+      "sha256": "b66e5f736afaa686c6a21317951e11dbe65b5d29f5d1b470c65054b5ed2143b3",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/the-key-has-always-been.asc",
+      "retrieved_utc": "2026-08-20T03:41:48Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-07T10:07:51Z",
+      "signature_timestamp_unix": 1325930871,
+      "sig_id": "dPLLdYQ8w7WgvyATLL8nm0yL53c",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2012-01-key-in-front-of-you.asc",
+      "sha256": "f7d8e962db5f34a3e2300312c5ed150216974cae3b398fbc867b9dae727e1dab",
+      "duplicate_of": "pgp/messages/2012-01-key-in-front-of-you.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-key-in-front-of-you.asc",
+      "retrieved_utc": "2026-08-19T23:03:01Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-07T10:07:51Z",
+      "signature_timestamp_unix": 1325930871,
+      "sig_id": "dPLLdYQ8w7WgvyATLL8nm0yL53c",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2012-01-key-in-front-of-you.asc",
+      "sha256": "f7d8e962db5f34a3e2300312c5ed150216974cae3b398fbc867b9dae727e1dab",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2012-01-key-in-front-of-you.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-07T10:07:51Z",
+      "signature_timestamp_unix": 1325930871,
+      "sig_id": "dPLLdYQ8w7WgvyATLL8nm0yL53c",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2012-01-key-in-front-of-you.asc",
+      "sha256": "f7d8e962db5f34a3e2300312c5ed150216974cae3b398fbc867b9dae727e1dab",
+      "duplicate_of": "pgp/messages/2012-01-key-in-front-of-you.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-key-in-front-of-you.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-07T19:45:24Z",
+      "signature_timestamp_unix": 1325965524,
+      "sig_id": "xPbCW2h9ypk2qaMIHkFz5OHHUE0",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/you-have-done-well.asc",
+      "sha256": "22f34abaf67e3abd39f1b9be83df0a5ce0c59595e2e7864f68c8b9b33cac9094",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/you-have-done-well.asc",
+      "retrieved_utc": "2026-08-20T03:41:53Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-07T19:45:24Z",
+      "signature_timestamp_unix": 1325965524,
+      "sig_id": "xPbCW2h9ypk2qaMIHkFz5OHHUE0",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2012-01-patience-check-back.asc",
+      "sha256": "35e678bb833ec8c1d1d6c8ce307b860474c48f377d4e538daa5e2dffec7658f9",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2012-01-patience-check-back.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-08T22:34:35Z",
+      "signature_timestamp_unix": 1326062075,
+      "sig_id": "Y3yx8f0rWu40wGW+y7kbUwwLyi4",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/52.216802.asc",
+      "sha256": "9e1a0c990f1166c8ca33c27514e4c5afa2adda170099c284cfb00e346ee21644",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/52.216802.asc",
+      "retrieved_utc": "2026-08-20T03:41:35Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-08T22:34:35Z",
+      "signature_timestamp_unix": 1326062075,
+      "sig_id": "Y3yx8f0rWu40wGW+y7kbUwwLyi4",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2012-01-coordinates.asc",
+      "sha256": "56013e89d00c5dc8a755f06da8c860c2cf20486ab1e02a5d58f134baa540f69e",
+      "duplicate_of": "pgp/messages/2012-01-coordinates.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-coordinates.asc",
+      "retrieved_utc": "2026-08-19T23:02:51Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-08T22:34:35Z",
+      "signature_timestamp_unix": 1326062075,
+      "sig_id": "Y3yx8f0rWu40wGW+y7kbUwwLyi4",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2012-01-coordinates.asc",
+      "sha256": "56013e89d00c5dc8a755f06da8c860c2cf20486ab1e02a5d58f134baa540f69e",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2012-01-coordinates.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-08T22:34:35Z",
+      "signature_timestamp_unix": 1326062075,
+      "sig_id": "Y3yx8f0rWu40wGW+y7kbUwwLyi4",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2012-01-coordinates.asc",
+      "sha256": "56013e89d00c5dc8a755f06da8c860c2cf20486ab1e02a5d58f134baa540f69e",
+      "duplicate_of": "pgp/messages/2012-01-coordinates.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-coordinates.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-08T23:39:04Z",
+      "signature_timestamp_unix": 1326065944,
+      "sig_id": "hEa2pc7LpyF62iJrm+fRiV6FJCc",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/congratulations.asc",
+      "sha256": "b6df5c0f89cf210cdab670e23b30857139999f0ea488d1cb46d5781486975406",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/congratulations.asc",
+      "retrieved_utc": "2026-08-20T03:41:38Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-08T23:39:04Z",
+      "signature_timestamp_unix": 1326065944,
+      "sig_id": "hEa2pc7LpyF62iJrm+fRiV6FJCc",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2012-01-anonymous-email-enrollment.asc",
+      "sha256": "6a5bd59b91d51c3edb6f59386cde583a2a87197c7ea0b942dcf986fa43bc41ba",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2012-01-anonymous-email-enrollment.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-11T05:07:59Z",
+      "signature_timestamp_unix": 1326258479,
+      "sig_id": "KKaWi5iZNaFWeFBH2jVUSipFp6k",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/162667212858.asc",
+      "sha256": "fc38333933f211fb968d124a9f285ae85d554918e48de4824c3d127ff3bd0889",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/162667212858.asc",
+      "retrieved_utc": "2026-08-20T03:41:35Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-11T05:07:59Z",
+      "signature_timestamp_unix": 1326258479,
+      "sig_id": "KKaWi5iZNaFWeFBH2jVUSipFp6k",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2012-01-location-numbers.asc",
+      "sha256": "f0fd04273a57624059bc43c695e000d3c90dcede05dcc0cec4ec21c91ebf72db",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2012-01-location-numbers.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-11T07:22:18Z",
+      "signature_timestamp_unix": 1326266538,
+      "sig_id": "aP4fFyfYb/O/uWVIb5jtFN7P/dE",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/miss-round-1.asc",
+      "sha256": "db30504d0e7ac49c9052ddad6bde64a007e644059447e684ae7424bc7c469827",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/miss-round-1.asc",
+      "retrieved_utc": "2026-08-20T03:41:45Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-11T07:22:18Z",
+      "signature_timestamp_unix": 1326266538,
+      "sig_id": "aP4fFyfYb/O/uWVIb5jtFN7P/dE",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2012-01-second-chance.asc",
+      "sha256": "82b49ba4fe46ac32a80382ccd49d49f29371b787bc84409378ff25e2d45729cc",
+      "duplicate_of": "pgp/messages/2012-01-second-chance.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-second-chance.asc",
+      "retrieved_utc": "2026-08-19T23:03:04Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-11T07:22:18Z",
+      "signature_timestamp_unix": 1326266538,
+      "sig_id": "aP4fFyfYb/O/uWVIb5jtFN7P/dE",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2012-01-second-chance.asc",
+      "sha256": "82b49ba4fe46ac32a80382ccd49d49f29371b787bc84409378ff25e2d45729cc",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2012-01-second-chance.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-11T07:22:18Z",
+      "signature_timestamp_unix": 1326266538,
+      "sig_id": "aP4fFyfYb/O/uWVIb5jtFN7P/dE",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2012-01-second-chance.asc",
+      "sha256": "82b49ba4fe46ac32a80382ccd49d49f29371b787bc84409378ff25e2d45729cc",
+      "duplicate_of": "pgp/messages/2012-01-second-chance.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-second-chance.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-15T01:39:42Z",
+      "signature_timestamp_unix": 1326591582,
+      "sig_id": "ZcgTDrcxpMjvJWrTM7PemmS7jzg",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/this-message-will-only-be-displayed.asc",
+      "sha256": "0b8b2da10b4944da726ca64fad672e8efb3f65d8096943501e2e14e2276ab7cc",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/this-message-will-only-be-displayed.asc",
+      "retrieved_utc": "2026-08-20T03:41:52Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-15T12:16:52Z",
+      "signature_timestamp_unix": 1326629812,
+      "sig_id": "DU/81XrkEQdZZB20Voj0H0ZKoDs",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/hello-you-have-shared.asc",
+      "sha256": "31f5fdfe71d9de987b66a08052c016d324a05ff17e791c9a8bb227c1e64e3759",
+      "duplicate_of": "pgp/messages/2012-01-sharing-disqualification.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/hello-you-have-shared.asc",
+      "retrieved_utc": "2026-08-20T03:41:42Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-15T12:16:52Z",
+      "signature_timestamp_unix": 1326629812,
+      "sig_id": "DU/81XrkEQdZZB20Voj0H0ZKoDs",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2012-01-sharing-disqualification.asc",
+      "sha256": "31f5fdfe71d9de987b66a08052c016d324a05ff17e791c9a8bb227c1e64e3759",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2012-01-sharing-disqualification.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-01-20T03:57:40Z",
+      "signature_timestamp_unix": 1327031860,
+      "sig_id": "qPfFWIV6nLdZIf3A8TGUkJF3jY4",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/the-song-is-your-own-path.asc",
+      "sha256": "f8ff4987d27da1ccd3476130679ec128da0a2ffb2c5386e06dff8e1081c0d7e2",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/the-song-is-your-own-path.asc",
+      "retrieved_utc": "2026-08-20T03:41:50Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-02-06T22:59:40Z",
+      "signature_timestamp_unix": 1328569180,
+      "sig_id": "j9sStP78+zIGrry9uQdCA1lybl0",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/hello-we-have-now.asc",
+      "sha256": "9580bf80f70b304d8bf0fc16a519839661d85ce436fa56ab888ea579149dc564",
+      "duplicate_of": "pgp/messages/ky_2012-01-final-message.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/hello-we-have-now.asc",
+      "retrieved_utc": "2026-08-20T03:41:41Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-02-06T22:59:40Z",
+      "signature_timestamp_unix": 1328569180,
+      "sig_id": "j9sStP78+zIGrry9uQdCA1lybl0",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2012-01-end-of-puzzle.asc",
+      "sha256": "db68f6e38d5f8eab3f13cd3296465a5b562c84d581cc1121dda6ef9da9a8cb6b",
+      "duplicate_of": "pgp/messages/2012-01-end-of-puzzle.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-end-of-puzzle.asc",
+      "retrieved_utc": "2026-08-19T23:02:53Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-02-06T22:59:40Z",
+      "signature_timestamp_unix": 1328569180,
+      "sig_id": "j9sStP78+zIGrry9uQdCA1lybl0",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2012-01-final-message.asc",
+      "sha256": "9580bf80f70b304d8bf0fc16a519839661d85ce436fa56ab888ea579149dc564",
+      "duplicate_of": "pgp/messages/ky_2012-01-final-message.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-final-message.asc",
+      "retrieved_utc": "2026-08-19T23:02:55Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-02-06T22:59:40Z",
+      "signature_timestamp_unix": 1328569180,
+      "sig_id": "j9sStP78+zIGrry9uQdCA1lybl0",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2012-01-end-of-puzzle.asc",
+      "sha256": "db68f6e38d5f8eab3f13cd3296465a5b562c84d581cc1121dda6ef9da9a8cb6b",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2012-01-end-of-puzzle.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-02-06T22:59:40Z",
+      "signature_timestamp_unix": 1328569180,
+      "sig_id": "j9sStP78+zIGrry9uQdCA1lybl0",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2012-01-end-of-puzzle.asc",
+      "sha256": "db68f6e38d5f8eab3f13cd3296465a5b562c84d581cc1121dda6ef9da9a8cb6b",
+      "duplicate_of": "pgp/messages/2012-01-end-of-puzzle.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-end-of-puzzle.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-02-06T22:59:40Z",
+      "signature_timestamp_unix": 1328569180,
+      "sig_id": "j9sStP78+zIGrry9uQdCA1lybl0",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2012-01-final-message.asc",
+      "sha256": "9580bf80f70b304d8bf0fc16a519839661d85ce436fa56ab888ea579149dc564",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2012-01-final-message.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-04-18T17:41:42Z",
+      "signature_timestamp_unix": 1334770902,
+      "sig_id": "TzAfpIqcFaiTgV1tmueX+RrhpHQ",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2012/some-news-organizations.asc",
+      "sha256": "4ee4e1971f7d3edbb3ccb499ac929ffe92835483c5522473f9f8ccc48dda6541",
+      "duplicate_of": "pgp/messages/2012-01-necrome-denial.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2012/some-news-organizations.asc",
+      "retrieved_utc": "2026-08-20T03:41:46Z"
+    },
+    {
+      "signature_timestamp_utc": "2012-04-18T17:41:42Z",
+      "signature_timestamp_unix": 1334770902,
+      "sig_id": "TzAfpIqcFaiTgV1tmueX+RrhpHQ",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2012-01-necrome-denial.asc",
+      "sha256": "4ee4e1971f7d3edbb3ccb499ac929ffe92835483c5522473f9f8ccc48dda6541",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2012-01-necrome-denial.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T00:08:11Z",
+      "signature_timestamp_unix": 1357171691,
+      "sig_id": "0CeSdBFKkA5D2t1yOJymeux30VA",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "cijhho123/2013/additional files/Cicada OS/cicados/usr_local_bin/message.txt.asc",
+      "sha256": "4401b6536f99d9716e91b10bf99777d4a75dce58fe50533cb847238af17eaf6e",
+      "duplicate_of": "pgp/messages/2013-cicada-os-message.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/cijhho123/cicada3301/main/2013/additional%20files/Cicada%20OS/cicados/usr_local_bin/message.txt.asc",
+      "retrieved_utc": "2026-08-19T22:45:14Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T00:08:11Z",
+      "signature_timestamp_unix": 1357171691,
+      "sig_id": "0CeSdBFKkA5D2t1yOJymeux30VA",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/the-key-is-all-around-you.asc",
+      "sha256": "750b0f66e0da52f2b9671d47d2aaf1d57ae10d240ee9e857897c861c9dab61ed",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/the-key-is-all-around-you.asc",
+      "retrieved_utc": "2026-08-20T03:42:15Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T00:08:11Z",
+      "signature_timestamp_unix": 1357171691,
+      "sig_id": "0CeSdBFKkA5D2t1yOJymeux30VA",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2013-01-cicada-os-message.asc",
+      "sha256": "4401b6536f99d9716e91b10bf99777d4a75dce58fe50533cb847238af17eaf6e",
+      "duplicate_of": "pgp/messages/2013-cicada-os-message.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2013-01-cicada-os-message.asc",
+      "retrieved_utc": "2026-08-19T23:03:06Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T00:08:11Z",
+      "signature_timestamp_unix": 1357171691,
+      "sig_id": "0CeSdBFKkA5D2t1yOJymeux30VA",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2013-cicada-os-message.asc",
+      "sha256": "4401b6536f99d9716e91b10bf99777d4a75dce58fe50533cb847238af17eaf6e",
+      "duplicate_of": "pgp/messages/2013-cicada-os-message.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2013-cicada-os-message.asc",
+      "retrieved_utc": "2026-08-19T23:03:18Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T00:08:11Z",
+      "signature_timestamp_unix": 1357171691,
+      "sig_id": "0CeSdBFKkA5D2t1yOJymeux30VA",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/puzzles/2013/cicada-os/usr_local_bin/message.txt.asc",
+      "sha256": "4401b6536f99d9716e91b10bf99777d4a75dce58fe50533cb847238af17eaf6e",
+      "duplicate_of": "pgp/messages/2013-cicada-os-message.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/puzzles/2013/cicada-os/usr_local_bin/message.txt.asc",
+      "retrieved_utc": "2026-08-19T23:15:20Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T00:08:11Z",
+      "signature_timestamp_unix": 1357171691,
+      "sig_id": "0CeSdBFKkA5D2t1yOJymeux30VA",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2013-cicada-os-message.asc",
+      "sha256": "4401b6536f99d9716e91b10bf99777d4a75dce58fe50533cb847238af17eaf6e",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2013-cicada-os-message.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T00:08:11Z",
+      "signature_timestamp_unix": 1357171691,
+      "sig_id": "0CeSdBFKkA5D2t1yOJymeux30VA",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2013-01-cicada-os-message.asc",
+      "sha256": "4401b6536f99d9716e91b10bf99777d4a75dce58fe50533cb847238af17eaf6e",
+      "duplicate_of": "pgp/messages/2013-cicada-os-message.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2013-01-cicada-os-message.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T00:08:11Z",
+      "signature_timestamp_unix": 1357171691,
+      "sig_id": "0CeSdBFKkA5D2t1yOJymeux30VA",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2013-cicada-os-message.asc",
+      "sha256": "4401b6536f99d9716e91b10bf99777d4a75dce58fe50533cb847238af17eaf6e",
+      "duplicate_of": "pgp/messages/2013-cicada-os-message.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2013-cicada-os-message.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T04:33:29Z",
+      "signature_timestamp_unix": 1357187609,
+      "sig_id": "B4/S2U0VepM5G4Idm4YLjSo2aNs",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/welcome-again.asc",
+      "sha256": "4c6ecff3eeabc05adb4eabe0a79596bedf74f831b062c587341b9f6052715c7c",
+      "duplicate_of": "pgp/messages/2013-01-opening-book-code.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/welcome-again.asc",
+      "retrieved_utc": "2026-08-20T03:42:17Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T04:33:29Z",
+      "signature_timestamp_unix": 1357187609,
+      "sig_id": null,
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "INVALID",
+      "file": "krisyotam/pgp/messages/2013-01-opening-book-code.asc",
+      "sha256": "cbc0abbea8f36fdf30433806a3418b30ad06f21f60eeee212b1692e2d5c9811b",
+      "duplicate_of": "pgp/messages/ky_2013-01-opening-book-code.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2013-01-opening-book-code.asc",
+      "retrieved_utc": "2026-08-19T23:03:12Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T04:33:29Z",
+      "signature_timestamp_unix": 1357187609,
+      "sig_id": "B4/S2U0VepM5G4Idm4YLjSo2aNs",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2013-01-opening-book-code.asc",
+      "sha256": "4c6ecff3eeabc05adb4eabe0a79596bedf74f831b062c587341b9f6052715c7c",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2013-01-opening-book-code.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T04:33:29Z",
+      "signature_timestamp_unix": 1357187609,
+      "sig_id": null,
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "INVALID",
+      "file": "pgp/messages/ky_2013-01-opening-book-code.asc",
+      "sha256": "cbc0abbea8f36fdf30433806a3418b30ad06f21f60eeee212b1692e2d5c9811b",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2013-01-opening-book-code.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-03T04:33:29Z",
+      "signature_timestamp_unix": 1357187609,
+      "sig_id": "B4/S2U0VepM5G4Idm4YLjSo2aNs",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/repaired/ky_2013-01-opening-book-code.repaired.asc",
+      "sha256": "bd6be7123f455d950177d465d5d6fdf02fcc46ae920971fe55daa4ba6adf5f5d",
+      "duplicate_of": null,
+      "is_derived": true,
+      "source_url": "derived (not retrieved) - see pgp/repaired/README.md",
+      "retrieved_utc": "n/a - derived from a retrieved file, not fetched"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-04T03:47:31Z",
+      "signature_timestamp_unix": 1357271251,
+      "sig_id": "FGf13GZWNR2TD/7rNybKb1OATUo",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/_space_.asc",
+      "sha256": "404e6cf299154f2522863bd31afabb04031b1bb9879440191e34d36bee1eecc4",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/%3Cspace%3E.asc",
+      "retrieved_utc": "2026-08-20T03:44:06Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-04T03:47:31Z",
+      "signature_timestamp_unix": 1357271251,
+      "sig_id": "FGf13GZWNR2TD/7rNybKb1OATUo",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2013-01-rune-table-morse.asc",
+      "sha256": "685aeec4217b1c76bb1cf64ba8f1c537e05895f4971d5c31ab6ed42d4460bd8b",
+      "duplicate_of": "pgp/messages/ky_2013-01-rune-table-morse.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2013-01-rune-table-morse.asc",
+      "retrieved_utc": "2026-08-19T23:03:13Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-04T03:47:31Z",
+      "signature_timestamp_unix": 1357271251,
+      "sig_id": "FGf13GZWNR2TD/7rNybKb1OATUo",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2013-01-rune-table-morse.asc",
+      "sha256": "10f9a82ec9ef3a4c1a415f9507da88273e8f729907694d33708f9a8323802d58",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2013-01-rune-table-morse.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-04T03:47:31Z",
+      "signature_timestamp_unix": 1357271251,
+      "sig_id": "FGf13GZWNR2TD/7rNybKb1OATUo",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2013-01-rune-table-morse.asc",
+      "sha256": "685aeec4217b1c76bb1cf64ba8f1c537e05895f4971d5c31ab6ed42d4460bd8b",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2013-01-rune-table-morse.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-06T07:38:19Z",
+      "signature_timestamp_unix": 1357457899,
+      "sig_id": "NP1DOUXdGrHHV8huvxd2bjj9Jxk",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/you-cant-see-the-forest.asc",
+      "sha256": "b38ad21f30cf69ba0d0b9cf86a0c400f893fad97e72b68e2b64435de23e5a544",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/you-cant-see-the-forest.asc",
+      "retrieved_utc": "2026-08-20T03:42:22Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-06T07:51:35Z",
+      "signature_timestamp_unix": 1357458695,
+      "sig_id": "meSKQ8Cae76GXZWqsj5a6Lw2Duo",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/very-good.asc",
+      "sha256": "58dff034fdeb23b8f7da1fcdc8542bab6411d13c410146e09b861dc9253c0bcc",
+      "duplicate_of": "pgp/messages/2013-01-telnet-hello.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/very-good.asc",
+      "retrieved_utc": "2026-08-20T03:42:15Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-06T07:51:35Z",
+      "signature_timestamp_unix": 1357458695,
+      "sig_id": "meSKQ8Cae76GXZWqsj5a6Lw2Duo",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2013-01-telnet-hello.asc",
+      "sha256": "58dff034fdeb23b8f7da1fcdc8542bab6411d13c410146e09b861dc9253c0bcc",
+      "duplicate_of": "pgp/messages/2013-01-telnet-hello.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2013-01-telnet-hello.asc",
+      "retrieved_utc": "2026-08-19T23:03:15Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-06T07:51:35Z",
+      "signature_timestamp_unix": 1357458695,
+      "sig_id": "meSKQ8Cae76GXZWqsj5a6Lw2Duo",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2013-01-telnet-hello.asc",
+      "sha256": "58dff034fdeb23b8f7da1fcdc8542bab6411d13c410146e09b861dc9253c0bcc",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2013-01-telnet-hello.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-06T07:51:35Z",
+      "signature_timestamp_unix": 1357458695,
+      "sig_id": "meSKQ8Cae76GXZWqsj5a6Lw2Duo",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2013-01-telnet-hello.asc",
+      "sha256": "58dff034fdeb23b8f7da1fcdc8542bab6411d13c410146e09b861dc9253c0bcc",
+      "duplicate_of": "pgp/messages/2013-01-telnet-hello.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2013-01-telnet-hello.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-10T17:07:15Z",
+      "signature_timestamp_unix": 1357837635,
+      "sig_id": "iboKy5k6ViKDKWv/Rxw97CkK/dY",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/well-done-you-have-come-far.asc",
+      "sha256": "13645961e2642811500677f1a08d537e3c38f8c28764229b9d93480965c1c78c",
+      "duplicate_of": "pgp/messages/2013-01-onion-pointer.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/well-done-you-have-come-far.asc",
+      "retrieved_utc": "2026-08-20T03:42:20Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-10T17:07:15Z",
+      "signature_timestamp_unix": 1357837635,
+      "sig_id": "iboKy5k6ViKDKWv/Rxw97CkK/dY",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2013-01-onion-pointer.asc",
+      "sha256": "13645961e2642811500677f1a08d537e3c38f8c28764229b9d93480965c1c78c",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2013-01-onion-pointer.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-11T23:20:28Z",
+      "signature_timestamp_unix": 1357946428,
+      "sig_id": "/FN8r22lzHvU4oAW5yRRxQZ06GA",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/standby-for-coords.asc",
+      "sha256": "95b59055b288032af6062fb76071563bd294a9eb95fe2d2380925947ea423b05",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/standby-for-coords.asc",
+      "retrieved_utc": "2026-08-20T03:42:12Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-12T08:41:05Z",
+      "signature_timestamp_unix": 1357980065,
+      "sig_id": "nwvmuaFZtNJHISVk5Nxw92jcZUs",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/33.092817.asc",
+      "sha256": "a29ea24364ded816480db7735b5f3c8c82689a2b873b6914d4ea2530bbc2f800",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/33.092817.asc",
+      "retrieved_utc": "2026-08-20T03:41:57Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-12T20:39:51Z",
+      "signature_timestamp_unix": 1358023191,
+      "sig_id": "WUYZVYy/q5JpvvYz5q5FWV5npFo",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/26.41968.asc",
+      "sha256": "d68733ebe513ecdf4b548f645abf7b9d65fcda4145bc98fb0f14d285a828a5bf",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/26.41968.asc",
+      "retrieved_utc": "2026-08-20T03:41:54Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-12T20:46:39Z",
+      "signature_timestamp_unix": 1358023599,
+      "sig_id": "N7Dfo0+PTgTtGWsE2ovxmsSoYds",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/38.977845.asc",
+      "sha256": "841dccca17c2c38219180e72850e2ab061d0d1832e2f36ed72f80bcf16776c11",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/38.977845.asc",
+      "retrieved_utc": "2026-08-20T03:42:00Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-14T05:31:07Z",
+      "signature_timestamp_unix": 1358141467,
+      "sig_id": "ohvbViylASTGRu2Y2YxJhfLyYYs",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/you-already-have-everything.asc",
+      "sha256": "a617b66840fda5d2165be55101bb5be1d30122d968e375ee6608d3d2c533634c",
+      "duplicate_of": "pgp/messages/2013-01-knock-on-the-sky.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/you-already-have-everything.asc",
+      "retrieved_utc": "2026-08-20T03:42:21Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-14T05:31:07Z",
+      "signature_timestamp_unix": 1358141467,
+      "sig_id": "ohvbViylASTGRu2Y2YxJhfLyYYs",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2013-01-knock-on-the-sky.asc",
+      "sha256": "a617b66840fda5d2165be55101bb5be1d30122d968e375ee6608d3d2c533634c",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2013-01-knock-on-the-sky.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-15T20:05:42Z",
+      "signature_timestamp_unix": 1358280342,
+      "sig_id": "/Vk0LR1Z7o8NhROLFLFDg+JTA2E",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/ssss-03.asc",
+      "sha256": "408332e8c1a2b831a11e3e3cb2c09a2a3638e172126734d9fd60028d5c3211b6",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/ssss-03.asc",
+      "retrieved_utc": "2026-08-20T03:42:09Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-15T20:05:42Z",
+      "signature_timestamp_unix": 1358280342,
+      "sig_id": "WlOGBJqbnlvYz8A1GZOI05fQHdw",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/ssss-10.asc",
+      "sha256": "e2aeae90acc32730d99bf6af33650e75eabfedce31e1b8142b3c77ca393dab80",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/ssss-10.asc",
+      "retrieved_utc": "2026-08-20T03:42:11Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-15T20:05:44Z",
+      "signature_timestamp_unix": 1358280344,
+      "sig_id": "lpyRGDQ6bNZIgJDbzQwFK+KHV1s",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/ssss-09.asc",
+      "sha256": "f3798487b5da9f7d023b22f793ad1507d6638cd0dfc7f2f00e79c941d64ba7c1",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/ssss-09.asc",
+      "retrieved_utc": "2026-08-20T03:42:10Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-17T20:28:43Z",
+      "signature_timestamp_unix": 1358454523,
+      "sig_id": "X1hNl8CFe/AD7C5mg41zsB18n9U",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/32.478944.asc",
+      "sha256": "4ebc53f4fb99d563e25312b6a2479a9d81e5aeab675d09c1289faf5d0f5ac65b",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/32.478944.asc",
+      "retrieved_utc": "2026-08-20T03:41:56Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-18T17:15:18Z",
+      "signature_timestamp_unix": 1358529318,
+      "sig_id": "HVE5HpFZZhc3It2ultiuNOOwslE",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/welcome-and-congratulations.asc",
+      "sha256": "601a4e1bac2421f980df98487260bde1c390df7c875a9c7dfbfff0a85135a0c5",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/welcome-and-congratulations.asc",
+      "retrieved_utc": "2026-08-20T03:42:18Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-19T22:15:59Z",
+      "signature_timestamp_unix": 1358633759,
+      "sig_id": "tt9xO+nX55NIMeICqZuo1ogAhYk",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/55.793765.asc",
+      "sha256": "bd75b2affe43e7b8ab74f427811c6926520f475d34ee4feef0aa34ece3d9da85",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/55.793765.asc",
+      "retrieved_utc": "2026-08-20T03:42:02Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-19T22:16:44Z",
+      "signature_timestamp_unix": 1358633804,
+      "sig_id": "mU5NRS74f+6EmGbPPoJrUQ7Po10",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/37.182685.asc",
+      "sha256": "9e215653badb04a9863afa5f523cf177d71aebbadf61f821312d16c84e28f6d6",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/37.182685.asc",
+      "retrieved_utc": "2026-08-20T03:41:59Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-19T22:17:48Z",
+      "signature_timestamp_unix": 1358633868,
+      "sig_id": "FkVPsQ2/QBFCmjDCxJ02zSe1UmA",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/34.7477910.asc",
+      "sha256": "eb2609cfaadfd632459397e3adc7368b4c61bf64f4cb0556547dabc33f88fec0",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/34.7477910.asc",
+      "retrieved_utc": "2026-08-20T03:41:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-26T09:16:23Z",
+      "signature_timestamp_unix": 1359191783,
+      "sig_id": "gfTLegjau+BeVXHzCy6uxb+92fg",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/tcp-server.asc",
+      "sha256": "fdfe1208b49f75ce634224d2b0561e4c8b322f27dd74bd757f5d83ebcfbdb88c",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/tcp-server.asc",
+      "retrieved_utc": "2026-08-20T03:42:13Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-26T20:26:21Z",
+      "signature_timestamp_unix": 1359231981,
+      "sig_id": "+ZD8Ai1O9g8GQaAw5BE0eoXhs9E",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/if-you-followed.asc",
+      "sha256": "c97598ce1fa3ee47e71fa8cb2d2b9c88750a3c931407550c50aef7ac811e25b2",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/if-you-followed.asc",
+      "retrieved_utc": "2026-08-20T03:42:06Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-01-31T08:08:24Z",
+      "signature_timestamp_unix": 1359619704,
+      "sig_id": "9260725rvigsROsx13SFTr1Fi6M",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/no-more-testing.asc",
+      "sha256": "c1003ad6a7256b9d95d59e753d94348eaaf8ca91cd3e98311d33b892e7d128bf",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/no-more-testing.asc",
+      "retrieved_utc": "2026-08-20T03:42:07Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-03-03T05:32:58Z",
+      "signature_timestamp_unix": 1362288778,
+      "sig_id": "VCI/gm0W7bSuBVg+TzuUd4psXM4",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/do-not-share-this-information.asc",
+      "sha256": "3ffe85bf53315766b0f3172be9df795ced8813728767fb5ce02020a3b9bdfa0f",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/do-not-share-this-information.asc",
+      "retrieved_utc": "2026-08-20T03:42:05Z"
+    },
+    {
+      "signature_timestamp_utc": "2013-03-03T05:33:01Z",
+      "signature_timestamp_unix": 1362288781,
+      "sig_id": "nxHaFaLu8oRg58znlpzzIY4rF9w",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2013/do-not-share-this-information-2.asc",
+      "sha256": "062886c6063b5c9c3049cf67dd9837df75bdd54d8fa73cb1b5fe25d52d227e87",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2013/do-not-share-this-information-2.asc",
+      "retrieved_utc": "2026-08-20T03:42:04Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-06T04:59:26Z",
+      "signature_timestamp_unix": 1388984366,
+      "sig_id": "SyvqR5vwCNGds2E0b+KA3L4DU0A",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/the-work-of-a-private-man.asc",
+      "sha256": "cba64781bd461b17039316ef97426f912aae987fde131f62e883f7f9e9f0118e",
+      "duplicate_of": "pgp/messages/2014-01-opening-book-code.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/the-work-of-a-private-man.asc",
+      "retrieved_utc": "2026-08-20T03:42:40Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-06T04:59:26Z",
+      "signature_timestamp_unix": 1388984366,
+      "sig_id": "SyvqR5vwCNGds2E0b+KA3L4DU0A",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2014-01-opening-book-code.asc",
+      "sha256": "cba64781bd461b17039316ef97426f912aae987fde131f62e883f7f9e9f0118e",
+      "duplicate_of": "pgp/messages/2014-01-opening-book-code.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2014-01-opening-book-code.asc",
+      "retrieved_utc": "2026-08-19T23:03:25Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-06T04:59:26Z",
+      "signature_timestamp_unix": 1388984366,
+      "sig_id": "SyvqR5vwCNGds2E0b+KA3L4DU0A",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-opening-book-code.asc",
+      "sha256": "cba64781bd461b17039316ef97426f912aae987fde131f62e883f7f9e9f0118e",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-opening-book-code.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-06T04:59:26Z",
+      "signature_timestamp_unix": 1388984366,
+      "sig_id": "SyvqR5vwCNGds2E0b+KA3L4DU0A",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2014-01-opening-book-code.asc",
+      "sha256": "cba64781bd461b17039316ef97426f912aae987fde131f62e883f7f9e9f0118e",
+      "duplicate_of": "pgp/messages/2014-01-opening-book-code.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2014-01-opening-book-code.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-06T07:35:27Z",
+      "signature_timestamp_unix": 1388993727,
+      "sig_id": "iJ24IU67I4CADRp0IR0Wwm5+nZk",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/welcome.asc",
+      "sha256": "65ff60bfa019e424ce2ae23994f19af5692f7e12e6bc177830b42a154985defd",
+      "duplicate_of": "pgp/messages/2014-01-rsa-oaep-challenge.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/welcome.asc",
+      "retrieved_utc": "2026-08-20T03:42:42Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-06T07:35:27Z",
+      "signature_timestamp_unix": 1388993727,
+      "sig_id": "iJ24IU67I4CADRp0IR0Wwm5+nZk",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-rsa-oaep-challenge.asc",
+      "sha256": "65ff60bfa019e424ce2ae23994f19af5692f7e12e6bc177830b42a154985defd",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-rsa-oaep-challenge.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-07T03:00:31Z",
+      "signature_timestamp_unix": 1389063631,
+      "sig_id": "p/l3aGEsAEoN4ZzuFGh7gW90zD4",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/idgtk-umloo.asc",
+      "sha256": "9efec25e827a068dfcf1765c1f5d60f5f3f59bb2debf769dbdaa0e8ee2ee4b5d",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/idgtk-umloo.asc",
+      "retrieved_utc": "2026-08-20T03:42:28Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-07T03:00:31Z",
+      "signature_timestamp_unix": 1389063631,
+      "sig_id": "p/l3aGEsAEoN4ZzuFGh7gW90zD4",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-signed-ciphertext.asc",
+      "sha256": "81139c4d7e025878767fe79ad91024c6cf4b4ede6c763e6b5e500de43fd90866",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-signed-ciphertext.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-07T03:16:41Z",
+      "signature_timestamp_unix": 1389064601,
+      "sig_id": "Orr/HCKq7KKBL525fFgQU5cXoss",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/liber_primus/00.jpg.asc",
+      "sha256": "2efba5e2283fa16592bedb7c339223bf2db94f07cf2d42188684aa393c12d180",
+      "duplicate_of": "pgp/messages/2014-01-liber-primus-hash-block.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/liber_primus/00.jpg.asc",
+      "retrieved_utc": "2026-08-20T03:42:31Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-07T03:16:41Z",
+      "signature_timestamp_unix": 1389064601,
+      "sig_id": "Orr/HCKq7KKBL525fFgQU5cXoss",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2014-01-liber-primus-hash-block.asc",
+      "sha256": "2efba5e2283fa16592bedb7c339223bf2db94f07cf2d42188684aa393c12d180",
+      "duplicate_of": "pgp/messages/2014-01-liber-primus-hash-block.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2014-01-liber-primus-hash-block.asc",
+      "retrieved_utc": "2026-08-19T23:03:20Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-07T03:16:41Z",
+      "signature_timestamp_unix": 1389064601,
+      "sig_id": "Orr/HCKq7KKBL525fFgQU5cXoss",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-liber-primus-hash-block.asc",
+      "sha256": "2efba5e2283fa16592bedb7c339223bf2db94f07cf2d42188684aa393c12d180",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-liber-primus-hash-block.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-07T03:16:41Z",
+      "signature_timestamp_unix": 1389064601,
+      "sig_id": "Orr/HCKq7KKBL525fFgQU5cXoss",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2014-01-liber-primus-hash-block.asc",
+      "sha256": "2efba5e2283fa16592bedb7c339223bf2db94f07cf2d42188684aa393c12d180",
+      "duplicate_of": "pgp/messages/2014-01-liber-primus-hash-block.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2014-01-liber-primus-hash-block.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-07T03:16:44Z",
+      "signature_timestamp_unix": 1389064604,
+      "sig_id": "fT2iIUR9FoXEV1Hc8xwst1WOA3M",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/liber_primus/02.jpg.asc",
+      "sha256": "b1d1d69e32e6c5725dffbcd871c2acb482371889d48ce6734c17741816ad23a3",
+      "duplicate_of": "pgp/messages/2014-01-liber-primus-hash-block-outguess-02.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/liber_primus/02.jpg.asc",
+      "retrieved_utc": "2026-08-20T03:42:32Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-07T03:16:44Z",
+      "signature_timestamp_unix": 1389064604,
+      "sig_id": "fT2iIUR9FoXEV1Hc8xwst1WOA3M",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-liber-primus-hash-block-outguess-02.asc",
+      "sha256": "b1d1d69e32e6c5725dffbcd871c2acb482371889d48ce6734c17741816ad23a3",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-liber-primus-hash-block-outguess-02.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-07T03:16:48Z",
+      "signature_timestamp_unix": 1389064608,
+      "sig_id": "r0Scjw5suJUsuqVmXsoI+Zar+34",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/liber_primus/01.jpg.asc",
+      "sha256": "da4ad19d7e46a9df54fe800bb2477914fbb7b83d34e4ea748760ce2e0902e656",
+      "duplicate_of": "pgp/messages/2014-01-liber-primus-hash-block-outguess-01.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/liber_primus/01.jpg.asc",
+      "retrieved_utc": "2026-08-20T03:42:32Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-07T03:16:48Z",
+      "signature_timestamp_unix": 1389064608,
+      "sig_id": "r0Scjw5suJUsuqVmXsoI+Zar+34",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-liber-primus-hash-block-outguess-01.asc",
+      "sha256": "da4ad19d7e46a9df54fe800bb2477914fbb7b83d34e4ea748760ce2e0902e656",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-liber-primus-hash-block-outguess-01.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-10T05:42:54Z",
+      "signature_timestamp_unix": 1389332574,
+      "sig_id": "tV8pYExYLuHeoVZUVUZ2lU1d/WM",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/let-the-text-guide-you.asc",
+      "sha256": "a14c1e144760c361a39da41e4784a9a22a3ce490baf42d9eb99b37feab8a47c1",
+      "duplicate_of": "pgp/messages/2014-01-let-the-text-guide-you.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/let-the-text-guide-you.asc",
+      "retrieved_utc": "2026-08-20T03:42:29Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-10T05:42:54Z",
+      "signature_timestamp_unix": 1389332574,
+      "sig_id": "tV8pYExYLuHeoVZUVUZ2lU1d/WM",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/liber_primus/03.jpg.asc",
+      "sha256": "a14c1e144760c361a39da41e4784a9a22a3ce490baf42d9eb99b37feab8a47c1",
+      "duplicate_of": "pgp/messages/2014-01-let-the-text-guide-you.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/liber_primus/03.jpg.asc",
+      "retrieved_utc": "2026-08-20T03:42:34Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-10T05:42:54Z",
+      "signature_timestamp_unix": 1389332574,
+      "sig_id": "tV8pYExYLuHeoVZUVUZ2lU1d/WM",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-let-the-text-guide-you.asc",
+      "sha256": "a14c1e144760c361a39da41e4784a9a22a3ce490baf42d9eb99b37feab8a47c1",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-let-the-text-guide-you.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-18T01:03:57Z",
+      "signature_timestamp_unix": 1390007037,
+      "sig_id": "HsWkBVtES/0TUFG9K14sj5d/dOw",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/_data-blob_.asc",
+      "sha256": "aa11ab74ea83d68dc4e0bf76c96baca9e7f37909432917ff4d8d5e924d9a8189",
+      "duplicate_of": "pgp/messages/corpus_2014-01-interconnectedness-hex.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/%3Cdata-blob%3E.asc",
+      "retrieved_utc": "2026-08-20T03:44:12Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-18T01:03:57Z",
+      "signature_timestamp_unix": 1390007037,
+      "sig_id": "HsWkBVtES/0TUFG9K14sj5d/dOw",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/corpus_2014-01-interconnectedness-hex.asc",
+      "sha256": "aa11ab74ea83d68dc4e0bf76c96baca9e7f37909432917ff4d8d5e924d9a8189",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-interconnectedness-hex.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-19T06:28:06Z",
+      "signature_timestamp_unix": 1390112886,
+      "sig_id": "vDiYC83Y8uBr0BJ6eGbdJOtpeTk",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/very-good-you-have-done-well.asc",
+      "sha256": "5bab41e9d679fcdd412ce22f3537e0ce91ccc4f5148837f1424ae743570df6c9",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/very-good-you-have-done-well.asc",
+      "retrieved_utc": "2026-08-20T03:42:41Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-19T06:28:06Z",
+      "signature_timestamp_unix": 1390112886,
+      "sig_id": "vDiYC83Y8uBr0BJ6eGbdJOtpeTk",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2014-01-onion5-liber-primus.asc",
+      "sha256": "55904a90db0b3fb1af059097617ee5d411867c7a940a3f978bf56fe875e82d18",
+      "duplicate_of": "pgp/messages/ky_2014-01-onion5-liber-primus.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2014-01-onion5-liber-primus.asc",
+      "retrieved_utc": "2026-08-19T23:03:23Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-19T06:28:06Z",
+      "signature_timestamp_unix": 1390112886,
+      "sig_id": "vDiYC83Y8uBr0BJ6eGbdJOtpeTk",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-onion5-liber-primus.asc",
+      "sha256": "e9af4acb906299e6899a6d6c851ea45e913d3ec00c1f32de43ef55258a2bea7b",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-onion5-liber-primus.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-19T06:28:06Z",
+      "signature_timestamp_unix": 1390112886,
+      "sig_id": "vDiYC83Y8uBr0BJ6eGbdJOtpeTk",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2014-01-onion5-liber-primus.asc",
+      "sha256": "55904a90db0b3fb1af059097617ee5d411867c7a940a3f978bf56fe875e82d18",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2014-01-onion5-liber-primus.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-19T07:39:32Z",
+      "signature_timestamp_unix": 1390117172,
+      "sig_id": "PxBW8To/8sh2VNKnCFAE0ZwKzBI",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/liber_primus/10.jpg.asc",
+      "sha256": "56467e78411358a236479a867a073de1a6fe9be2572e19759be1128968b3feeb",
+      "duplicate_of": "pgp/messages/2014-01-magic-square-upload-outguess-10.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/liber_primus/10.jpg.asc",
+      "retrieved_utc": "2026-08-20T03:42:35Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-19T07:39:32Z",
+      "signature_timestamp_unix": 1390117172,
+      "sig_id": "PxBW8To/8sh2VNKnCFAE0ZwKzBI",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-magic-square-upload-outguess-10.asc",
+      "sha256": "56467e78411358a236479a867a073de1a6fe9be2572e19759be1128968b3feeb",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-magic-square-upload-outguess-10.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-19T07:39:42Z",
+      "signature_timestamp_unix": 1390117182,
+      "sig_id": "uK48MHsB0c8/8uGSxDxeu8kJKmE",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/liber_primus/11.jpg.asc",
+      "sha256": "6f2db751c9d6acd7f17c59679e4313632402a66e7295447781d0de5701894027",
+      "duplicate_of": "pgp/messages/2014-01-magic-square-upload-outguess-11.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/liber_primus/11.jpg.asc",
+      "retrieved_utc": "2026-08-20T03:42:36Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-19T07:39:42Z",
+      "signature_timestamp_unix": 1390117182,
+      "sig_id": "uK48MHsB0c8/8uGSxDxeu8kJKmE",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-magic-square-upload-outguess-11.asc",
+      "sha256": "6f2db751c9d6acd7f17c59679e4313632402a66e7295447781d0de5701894027",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-magic-square-upload-outguess-11.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-19T07:39:50Z",
+      "signature_timestamp_unix": 1390117190,
+      "sig_id": "FfESnCDxLQIuLZrqZk0iCv7WCf4",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/liber_primus/12.jpg.asc",
+      "sha256": "78581663e7a5ba77494d1840820098b122217edd13009661f1be2e497db88179",
+      "duplicate_of": "pgp/messages/2014-01-magic-square-upload-outguess-12.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/liber_primus/12.jpg.asc",
+      "retrieved_utc": "2026-08-20T03:42:37Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-19T07:39:50Z",
+      "signature_timestamp_unix": 1390117190,
+      "sig_id": "FfESnCDxLQIuLZrqZk0iCv7WCf4",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-magic-square-upload-outguess-12.asc",
+      "sha256": "78581663e7a5ba77494d1840820098b122217edd13009661f1be2e497db88179",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-magic-square-upload-outguess-12.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-19T07:39:57Z",
+      "signature_timestamp_unix": 1390117197,
+      "sig_id": "qz513DJ0ioE/42TiJxIbDymD98E",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/liber_primus/13.jpg.asc",
+      "sha256": "83835b0e148c1061d42693ea14a5035f54ad41fa45496b00b37311b8e96a2095",
+      "duplicate_of": "pgp/messages/2014-01-magic-square-upload-outguess-13.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/liber_primus/13.jpg.asc",
+      "retrieved_utc": "2026-08-20T03:42:38Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-19T07:39:57Z",
+      "signature_timestamp_unix": 1390117197,
+      "sig_id": "qz513DJ0ioE/42TiJxIbDymD98E",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-magic-square-upload-outguess-13.asc",
+      "sha256": "83835b0e148c1061d42693ea14a5035f54ad41fa45496b00b37311b8e96a2095",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-magic-square-upload-outguess-13.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-25T08:26:57Z",
+      "signature_timestamp_unix": 1390638417,
+      "sig_id": "K9IGj2g73eIXtAYQlEKfRPB5c7o",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/hello-you-have-done-well.asc",
+      "sha256": "361563f8faec12359c87646593a36eaff0de93e947992e5ae4462356030b95c8",
+      "duplicate_of": "pgp/messages/2014-01-upload-instructions.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/hello-you-have-done-well.asc",
+      "retrieved_utc": "2026-08-20T03:42:25Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-01-25T08:26:57Z",
+      "signature_timestamp_unix": 1390638417,
+      "sig_id": "K9IGj2g73eIXtAYQlEKfRPB5c7o",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-upload-instructions.asc",
+      "sha256": "361563f8faec12359c87646593a36eaff0de93e947992e5ae4462356030b95c8",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-upload-instructions.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-04-02T08:49:51Z",
+      "signature_timestamp_unix": 1396428591,
+      "sig_id": "FPjtqb5zyNAgftimJVfvuUF8wMU",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "cijhho123/2014/Liber Primus/A drop box of all unmodified files/2014onion7/message.txt.asc",
+      "sha256": "d5473236dee152c7744f561e5ace95908876ec01d43467c28af1b0c1aa14cc54",
+      "duplicate_of": "pgp/messages/2014-01-onion-welcome.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/cijhho123/cicada3301/main/2014/Liber%20Primus/A%20drop%20box%20of%20all%20unmodified%20files/2014onion7/message.txt.asc",
+      "retrieved_utc": "2026-08-19T23:01:00Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-04-02T08:49:51Z",
+      "signature_timestamp_unix": 1396428591,
+      "sig_id": "FPjtqb5zyNAgftimJVfvuUF8wMU",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2014/hello-your-enlightenment.asc",
+      "sha256": "967990fd9415a13d18830e4159d8228b4c3ef443b712c293d56f04a28415cb18",
+      "duplicate_of": "pgp/messages/ky_2014-05-liber-primus-release.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2014/hello-your-enlightenment.asc",
+      "retrieved_utc": "2026-08-20T03:42:27Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-04-02T08:49:51Z",
+      "signature_timestamp_unix": 1396428591,
+      "sig_id": "FPjtqb5zyNAgftimJVfvuUF8wMU",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2014-01-final-message.asc",
+      "sha256": "a48a4753cc12fd2d5110c50765a4b58294077a0af64f678c14bdd773451ef71e",
+      "duplicate_of": "pgp/messages/ky_2014-01-final-message.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2014-01-final-message.asc",
+      "retrieved_utc": "2026-08-19T23:03:18Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-04-02T08:49:51Z",
+      "signature_timestamp_unix": 1396428591,
+      "sig_id": "FPjtqb5zyNAgftimJVfvuUF8wMU",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2014-01-onion-welcome.asc",
+      "sha256": "d5473236dee152c7744f561e5ace95908876ec01d43467c28af1b0c1aa14cc54",
+      "duplicate_of": "pgp/messages/2014-01-onion-welcome.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2014-01-onion-welcome.asc",
+      "retrieved_utc": "2026-08-19T23:03:21Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-04-02T08:49:51Z",
+      "signature_timestamp_unix": 1396428591,
+      "sig_id": "FPjtqb5zyNAgftimJVfvuUF8wMU",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2014-05-liber-primus-release.asc",
+      "sha256": "967990fd9415a13d18830e4159d8228b4c3ef443b712c293d56f04a28415cb18",
+      "duplicate_of": "pgp/messages/ky_2014-05-liber-primus-release.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2014-05-liber-primus-release.asc",
+      "retrieved_utc": "2026-08-19T23:03:28Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-04-02T08:49:51Z",
+      "signature_timestamp_unix": 1396428591,
+      "sig_id": "FPjtqb5zyNAgftimJVfvuUF8wMU",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2014-01-onion-welcome.asc",
+      "sha256": "d5473236dee152c7744f561e5ace95908876ec01d43467c28af1b0c1aa14cc54",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2014-01-onion-welcome.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-04-02T08:49:51Z",
+      "signature_timestamp_unix": 1396428591,
+      "sig_id": "FPjtqb5zyNAgftimJVfvuUF8wMU",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2014-01-final-message.asc",
+      "sha256": "a48a4753cc12fd2d5110c50765a4b58294077a0af64f678c14bdd773451ef71e",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2014-01-final-message.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-04-02T08:49:51Z",
+      "signature_timestamp_unix": 1396428591,
+      "sig_id": "FPjtqb5zyNAgftimJVfvuUF8wMU",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2014-01-onion-welcome.asc",
+      "sha256": "d5473236dee152c7744f561e5ace95908876ec01d43467c28af1b0c1aa14cc54",
+      "duplicate_of": "pgp/messages/2014-01-onion-welcome.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2014-01-onion-welcome.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2014-04-02T08:49:51Z",
+      "signature_timestamp_unix": 1396428591,
+      "sig_id": "FPjtqb5zyNAgftimJVfvuUF8wMU",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2014-05-liber-primus-release.asc",
+      "sha256": "967990fd9415a13d18830e4159d8228b4c3ef443b712c293d56f04a28415cb18",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2014-05-liber-primus-release.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2015-07-28T05:12:39Z",
+      "signature_timestamp_unix": 1438060359,
+      "sig_id": "m1KphpQRaQCMCcif/4EOi70LalQ",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2015/some-news-organizations.asc",
+      "sha256": "3e9b0ddcfaed0b76f83f7fc491eece21052ebf8c26402f086a96c491ab9d0703",
+      "duplicate_of": "pgp/messages/2015-07-planned-parenthood-denial.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2015/some-news-organizations.asc",
+      "retrieved_utc": "2026-08-20T03:42:44Z"
+    },
+    {
+      "signature_timestamp_utc": "2015-07-28T05:12:39Z",
+      "signature_timestamp_unix": 1438060359,
+      "sig_id": "m1KphpQRaQCMCcif/4EOi70LalQ",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2015-07-planned-parenthood-denial.asc",
+      "sha256": "3e9b0ddcfaed0b76f83f7fc491eece21052ebf8c26402f086a96c491ab9d0703",
+      "duplicate_of": "pgp/messages/2015-07-planned-parenthood-denial.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2015-07-planned-parenthood-denial.asc",
+      "retrieved_utc": "2026-08-19T23:03:34Z"
+    },
+    {
+      "signature_timestamp_utc": "2015-07-28T05:12:39Z",
+      "signature_timestamp_unix": 1438060359,
+      "sig_id": "m1KphpQRaQCMCcif/4EOi70LalQ",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2015-07-planned-parenthood-denial.asc",
+      "sha256": "3e9b0ddcfaed0b76f83f7fc491eece21052ebf8c26402f086a96c491ab9d0703",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2015-07-planned-parenthood-denial.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2015-07-28T05:12:39Z",
+      "signature_timestamp_unix": 1438060359,
+      "sig_id": "m1KphpQRaQCMCcif/4EOi70LalQ",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2015-07-planned-parenthood-denial.asc",
+      "sha256": "3e9b0ddcfaed0b76f83f7fc491eece21052ebf8c26402f086a96c491ab9d0703",
+      "duplicate_of": "pgp/messages/2015-07-planned-parenthood-denial.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2015-07-planned-parenthood-denial.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2016-01-01T00:01:07Z",
+      "signature_timestamp_unix": 1451606467,
+      "sig_id": "5uL1mG1p99+UvjayNXKifkJecZg",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2016/hello-the-path-lies-empty.asc",
+      "sha256": "64ecef22f91bea9fba0742cec8d28c1da8daa1c8565bfbf5d640b506f06cf5ce",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2016/hello-the-path-lies-empty.asc",
+      "retrieved_utc": "2026-08-20T03:42:45Z"
+    },
+    {
+      "signature_timestamp_utc": "2016-01-01T00:01:07Z",
+      "signature_timestamp_unix": 1451606467,
+      "sig_id": "5uL1mG1p99+UvjayNXKifkJecZg",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2016-01-liber-primus.asc",
+      "sha256": "fe89e77519dfaca998a257ed39c2861303029de2a49183db00eea0fda3a28010",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2016-01-liber-primus.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2017-04-04T23:23:28Z",
+      "signature_timestamp_unix": 1491348208,
+      "sig_id": "ryg/RFKhKGIMa0DwTMvpYcDOWco",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "ibotpeaches/messages/2017/beware-false-paths.asc",
+      "sha256": "bb36c3c1c570ece6fb0db94c35a45d67f6a9b3a54675b6ced9aae2c8c5ee3990",
+      "duplicate_of": "pgp/messages/ky_2017-04-final-message.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/iBotPeaches/cicada_3301/master/messages/2017/beware-false-paths.asc",
+      "retrieved_utc": "2026-08-20T03:42:47Z"
+    },
+    {
+      "signature_timestamp_utc": "2017-04-04T23:23:28Z",
+      "signature_timestamp_unix": 1491348208,
+      "sig_id": "ryg/RFKhKGIMa0DwTMvpYcDOWco",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2017-04-final-message.asc",
+      "sha256": "bb36c3c1c570ece6fb0db94c35a45d67f6a9b3a54675b6ced9aae2c8c5ee3990",
+      "duplicate_of": "pgp/messages/ky_2017-04-final-message.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2017-04-final-message.asc",
+      "retrieved_utc": "2026-08-19T23:03:36Z"
+    },
+    {
+      "signature_timestamp_utc": "2017-04-04T23:23:28Z",
+      "signature_timestamp_unix": 1491348208,
+      "sig_id": "ryg/RFKhKGIMa0DwTMvpYcDOWco",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "krisyotam/pgp/messages/2017-04-final-warning.asc",
+      "sha256": "c0e4adbd8aab8e85e9976d6a06c889d415e83cf1e76a0f8b56cad10406eea800",
+      "duplicate_of": "pgp/messages/ky_2017-04-final-warning.asc",
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2017-04-final-warning.asc",
+      "retrieved_utc": "2026-08-19T23:03:39Z"
+    },
+    {
+      "signature_timestamp_utc": "2017-04-04T23:23:28Z",
+      "signature_timestamp_unix": 1491348208,
+      "sig_id": "ryg/RFKhKGIMa0DwTMvpYcDOWco",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/2017-04-final-warning.asc",
+      "sha256": "c9ae7b146f7db982984aa5dabfc39d976deedd878442728490ac6a30e75fe2c1",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/jaxonkuipers/cicada3301/main/corpus/communications/2017-04-final-warning.asc",
+      "retrieved_utc": "2026-08-19T22:09:58Z"
+    },
+    {
+      "signature_timestamp_utc": "2017-04-04T23:23:28Z",
+      "signature_timestamp_unix": 1491348208,
+      "sig_id": "ryg/RFKhKGIMa0DwTMvpYcDOWco",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2017-04-final-message.asc",
+      "sha256": "bb36c3c1c570ece6fb0db94c35a45d67f6a9b3a54675b6ced9aae2c8c5ee3990",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2017-04-final-message.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    },
+    {
+      "signature_timestamp_utc": "2017-04-04T23:23:28Z",
+      "signature_timestamp_unix": 1491348208,
+      "sig_id": "ryg/RFKhKGIMa0DwTMvpYcDOWco",
+      "signing_key_id": "181F01E57A35090F",
+      "signature_status": "VALID",
+      "file": "pgp/messages/ky_2017-04-final-warning.asc",
+      "sha256": "c0e4adbd8aab8e85e9976d6a06c889d415e83cf1e76a0f8b56cad10406eea800",
+      "duplicate_of": null,
+      "is_derived": false,
+      "source_url": "https://raw.githubusercontent.com/krisyotam/cicada3301/main/pgp/messages/2017-04-final-warning.asc",
+      "retrieved_utc": "2026-08-19T23:11:16Z"
+    }
+  ]
+}

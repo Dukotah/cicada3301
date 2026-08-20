@@ -12,6 +12,10 @@ V = os.path.join(E, "vendor")
 
 GP = "ᚠᚢᚦᚩᚱᚳᚷᚹᚻᚾᛁᛄᛇᛈᛉᛋᛏᛒᛖᛗᛚᛝᛟᛞᚪᚫᚣᛡᛠ"
 IDX = {r: i for i, r in enumerate(GP)}
+# Codepoint aliases seen in the wild: some transcriptions encode GP index 11 (J)
+# as U+16C2 RUNIC LETTER E rather than U+16C4 RUNIC LETTER GER. Same glyph slot,
+# different codepoint -- an ENCODING variant, not a reading difference.
+IDX["ᛂ"] = 11
 RUNE_LO, RUNE_HI = 0x16A0, 0x16F8
 
 SKIP_DIRS = {".git", "node_modules", "__pycache__", ".venv", "venv", "target", "build", "dist", ".idea"}

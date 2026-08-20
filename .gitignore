@@ -207,3 +207,12 @@ corpus/**/*.warc*
 # G-forensics RESULTS.jsonl is 48 MB of tool output; keep it out of git but keep the
 # report and the per-test summary. Regenerate with corpus/G-forensics/ scripts.
 corpus/G-forensics/RESULTS.jsonl
+
+# Lane B (corpus/B-liber-primus) - Liber Primus corpus sweep.
+# `corpus/**/*.png` above already covers crops/; named here so it is findable.
+# Regenerate:  python corpus/B-liber-primus/make_crops.py
+corpus/B-liber-primus/crops/
+# Third-party transcriptions and API dumps refetched by the hunt tools.
+# Regenerate:  python corpus/B-liber-primus/hunt_transcriptions.py <owner/repo> ...
+#              (hashes + URLs for every file are recorded in MANIFEST.json)
+corpus/B-liber-primus/fetched/

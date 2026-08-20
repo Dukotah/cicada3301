@@ -68,3 +68,56 @@ checkpoints `hunt_results.json` after every repo) and `align_henkman.py`.
 5. Codepoint conflict: three sources write the GER/J rune as **U+16C2 ᛂ**, canon uses
    **U+16C4 ᛄ**. A join trap; 453 runes affected.
 6. archive.org item `liber-primus` = a 9,086,651-byte ZIP of images. **No text layer.**
+
+---
+
+## RESUME 2 — 2026-08-19 (after mid-flight kill)
+
+- [x] **PRIORITY 1 DONE.** `ADJUDICATION-page56.md`. Page 56 rune index 19: canon ᛉ(X)
+      decodes to `…THE DEEP WEB **THERE** EXISTS A PAGE…` (the published plaintext,
+      attested outside this repo); henkman ᛚ(L) gives `…**HERE** EXISTS…`. Canon right.
+      Method: totient keystream (p_i−1) mod 29, no offset, 1 F-null recovered by beam
+      search. Runner: `corpus/B-liber-primus/adjudicate/adjudicate_page56.py`.
+- [x] **PRIORITY 2 DONE.** `ADJUDICATION-pages33-35-images.md` + `crops/` (rebuilt by
+      `make_crops.py`). All three unsolved-page conflicts read **canon** unambiguously on
+      the SHA-1-pinned 400-DPI onion7 renders. p33:100 = ᛒ, p33:117 = ᛒ (with a genuine
+      ᚹ two runes away in the same line for scale-matched contrast), p35:155 = ᚣ and
+      p35:160 = ᛒ. henkman is **0-for-4** on every checkable conflict.
+- [x] `validate_pages.py` — 14 hard gates on PAGES.json, ALL PASS. Note: the 12,956
+      figure is in SEGMENT coordinates (segments 0-54); in LP2 PAGE coordinates it is
+      pages 0-55, because page 50 is runeless.
+- [x] `analysis/reproduce/` re-run: **7/7 PASS**.
+
+### PRIORITY 4 — the hunt overturned the premise (2026-08-19)
+
+GitHub **code** search (7 rune-substring probes, not repo names) -> 31 repos, 2 pre-2017:
+
+- **`resvolver/c1cada`, created 2015-01-05.** `translation/liber_primus.rne`, committed
+  **2015-01-23** (`420a2f4d`), is **13,136 runes rune-for-rune IDENTICAL to canon**
+  (sha256 `ee1b43cf…c91ade`). **Canon is attested two years before rtkd/iddqd.**
+  The same commit's `transcriptions.rne` is the superseded 13,072-rune draft and carries
+  **all 14** divergences from canon — including all four adjudicated conflicts.
+- **`Be5haram/CICADA2K16`, 2016-01-14.** `RuneSolver.py` embeds canon contiguously.
+- **`henkman/liberprimus` = the resvolver 2015 draft with ONE rune changed** (index 8643).
+  Not an independent transcription. Its 64-rune shortfall is that draft's dropped lines.
+
+Consequence: the corpus has **one witness, copied** — not several that agree. Recorded in
+`LINEAGE-2015.json`, `REPORT-B.md` §3, `CONFLICTS-B.md` C-08, `GAPS-B.md` G-01.
+
+Discarded after checking: `latin-ocr/liberprimus*danagoog` (Google Books OCR of an
+unrelated *Latin* book), forks of henkman/r4nd0mD3v3l0p3r, `sradley/LiberPrimus`
+(deleted; SWH has only a partial 2020 visit, no snapshot).
+
+## DONE — all four priorities complete
+
+- [x] P1 page-56 adjudication (canon, against plaintext)
+- [x] P2 pages 33/35 image adjudication (canon, 3/3, unambiguous)
+- [x] P3 `GAPS-B.md`, `CONFLICTS-B.md`, `REPORT-B.md`, `analysis/reproduce/` 7/7 PASS,
+      `validate_pages.py` 14/14 PASS, `MANIFEST.json` 34 files / 0 unattributed,
+      `.gitignore` block added for `crops/` and `fetched/`
+- [x] P4 hunt — two pre-2017 witnesses found; the "2017 root" premise is overturned
+- [x] `liber-primus/tests/validate.py` re-run: ALL VALIDATIONS PASSED (nothing regressed)
+
+Nothing in `liber-primus/` was edited. C-02 (a wrong rune in `scream314_lp.md`, live in
+`SOLVED-PAGES.json`) and C-05 (`validate.py` asserts only a prefix of AN END) are recorded
+for the owner, not fixed.

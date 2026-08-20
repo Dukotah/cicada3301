@@ -87,7 +87,11 @@ def main():
             }
         if n % 5 == 0 or n == len(imgs) - 1:
             MAN.write_text(json.dumps(list(rows.values()), indent=1), encoding="utf-8")
-        print(f"{n+1}/{len(imgs)} {rows[rel].get('bytes',0):>9} {'OK ' if rows[rel].get('sha1_matches_wiki') else 'CHK'} {fn}", flush=True)
+        # stdout on this box is cp1252; a non-ASCII wiki filename raises
+        # UnicodeEncodeError and kills the whole run. Never print raw names.
+        line = (f"{n+1}/{len(imgs)} {rows[rel].get('bytes',0):>9} "
+                f"{'OK ' if rows[rel].get('sha1_matches_wiki') else 'CHK'} {fn}")
+        print(line.encode("ascii", "backslashreplace").decode("ascii"), flush=True)
 
     MAN.write_text(json.dumps(list(rows.values()), indent=1), encoding="utf-8")
     ok = sum(1 for r in rows.values() if r.get("sha1_matches_wiki"))

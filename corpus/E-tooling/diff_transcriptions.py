@@ -21,6 +21,10 @@ CANON_FILE = os.path.join(REPO, "liber-primus", "data", "krisyotam_runes.txt")
 
 GP = "ᚠᚢᚦᚩᚱᚳᚷᚹᚻᚾᛁᛄᛇᛈᛉᛋᛏᛒᛖᛗᛚᛝᛟᛞᚪᚫᚣᛡᛠ"
 IDX = {r: i for i, r in enumerate(GP)}
+# Codepoint aliases seen in the wild: some transcriptions encode GP index 11 (J)
+# as U+16C2 RUNIC LETTER E rather than U+16C4 RUNIC LETTER GER. Same glyph slot,
+# different codepoint -- an ENCODING variant, not a reading difference.
+IDX["ᛂ"] = 11
 
 
 def runes(text):

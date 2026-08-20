@@ -1,0 +1,1800 @@
+{
+ "generated_utc": "2026-08-20T05:30:08Z",
+ "repos": {
+  "0x676f64__Cicada-3301": {
+   "n_code_files": 0,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 0
+  },
+  "AABaderko__cicada3301": {
+   "n_code_files": 4,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 330
+  },
+  "AegisTrustCore__Liber-Primus-HMS-Run-Time": {
+   "n_code_files": 56,
+   "ciphers": {
+    "totient_prime": 68,
+    "gematria": 7,
+    "beaufort": 2,
+    "caesar_shift": 5,
+    "transposition": 6
+   },
+   "skip_evidence": [],
+   "advance_lines": [
+    "research/runs/RUN-0008/historical/source/e1058_extract_outguess_bitmap.c:38: for(int k=0;k<DCTSIZE2;k++){",
+    "research/runs/RUN-0008/historical/source/e1059_extract_coeffmeta.c:37: for(int k=0;k<DCTSIZE2;k++){"
+   ],
+   "loc": 8736
+  },
+  "Eternalth__Liber-Primus": {
+   "n_code_files": 3,
+   "ciphers": {
+    "ngram_scoring": 1
+   },
+   "skip_evidence": [],
+   "advance_lines": [
+    "Playfair.cpp:39: else m++; k++;",
+    "Playfair.cpp:103: k++;"
+   ],
+   "loc": 214
+  },
+  "Fafison4k__cicada-3301-page32": {
+   "n_code_files": 7,
+   "ciphers": {
+    "caesar_shift": 29,
+    "gematria": 39,
+    "vigenere": 11,
+    "totient_prime": 1,
+    "ngram_scoring": 2
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 854
+  },
+  "LiberPrimus__Failed-Attempts": {
+   "n_code_files": 0,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 0
+  },
+  "LiberPrimus__primus.py": {
+   "n_code_files": 3,
+   "ciphers": {
+    "vigenere": 9,
+    "atbash": 10,
+    "caesar_shift": 22,
+    "totient_prime": 19,
+    "gematria": 14
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 382
+  },
+  "Locyyx64__liber-primus-analysis": {
+   "n_code_files": 1,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 48
+  },
+  "Locyyx64__lp-cribbs": {
+   "n_code_files": 8,
+   "ciphers": {
+    "vigenere": 4,
+    "beaufort": 2,
+    "atbash": 15,
+    "caesar_shift": 9,
+    "affine": 3,
+    "playfair": 2,
+    "substitution_search": 1,
+    "gematria": 3,
+    "totient_prime": 31
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 584
+  },
+  "MuthuRanjanA__cicada3301": {
+   "n_code_files": 1,
+   "ciphers": {
+    "totient_prime": 1
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 38
+  },
+  "N1-rt__lp-runes-translator": {
+   "n_code_files": 2,
+   "ciphers": {
+    "atbash": 11,
+    "caesar_shift": 20,
+    "gematria": 5
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 255
+  },
+  "NoxxGames__LiberPrimus-GPU": {
+   "n_code_files": 2886,
+   "ciphers": {
+    "gpu": 3708,
+    "caesar_shift": 314,
+    "gematria": 2391,
+    "totient_prime": 3760,
+    "ngram_scoring": 279,
+    "affine": 191,
+    "vigenere": 562,
+    "atbash": 265,
+    "hash_bruteforce": 83,
+    "transposition": 117,
+    "substitution_search": 32,
+    "hill_cipher": 1,
+    "llm_ml": 2
+   },
+   "skip_evidence": [
+    "python/libreprimus/bounded_execution/reset_advance_ablation.py:483: key_index = key_indices[state_position % len(key_indices)]",
+    "python/libreprimus/bounded_execution/reset_advance_ablation.py:484: return (cipher_index - key_index) % MODULUS, {\"key_index\": key_index}",
+    "python/libreprimus/bounded_execution/vigenere_key_pack.py:221: warnings.extend(f\"{item.reason}:{item.key_text}:{item.reset_mode}:{item.advance_mode}\" for item in deferred)",
+    "python/libreprimus/bounded_execution/vigenere_key_pack.py:323: raise ValueError(\"Bounded Vigenere key-pack advance modes must be exactly [runes_only, token_break_preserving].\")",
+    "python/libreprimus/bounded_execution/vigenere_key_pack.py:324: expected = len(keys) * len(reset_modes) * len(advance_modes)",
+    "python/libreprimus/bounded_execution/vigenere_key_pack.py:508: key_position = 0",
+    "python/libreprimus/bounded_execution/vigenere_key_pack.py:515: key_position = 0",
+    "python/libreprimus/bounded_execution/vigenere_key_pack.py:520: key_index = key_indices[key_position % len(key_indices)]",
+    "python/libreprimus/bounded_execution/vigenere_key_pack.py:521: decoded_index = (raw_index - key_index) % MODULUS",
+    "python/libreprimus/bounded_execution/vigenere_key_pack.py:524: key_position += 1",
+    "python/libreprimus/bounded_execution/vigenere_key_pack.py:550: def _mode_warnings(input_data: KeyPackInput, reset_mode: str, advance_mode: str) -> list[str]:",
+    "python/libreprimus/bounded_experiments/policy_checker.py:129: \"Declared Vigenere key-pack count matches key * reset * advance count.\",",
+    "python/libreprimus/bounded_experiments/policy_checker.py:184: if not isinstance(keys, list) or not isinstance(reset_modes, list) or not isinstance(advance_modes, list):",
+    "python/libreprimus/bounded_experiments/policy_checker.py:186: return len(keys) * len(reset_modes) * len(advance_modes)",
+    "python/libreprimus/cpu_batch/parity_contract.py:19: \"Vigenere key advancement and skip rules must match solved_fixtures.vigenere.\",",
+    "python/libreprimus/cuda_candidate_batch_abi/key_schedule_contract.py:26: \"skip_policy\": \"separators_do_not_advance_key\",",
+    "python/libreprimus/cuda_candidate_batch_abi/key_schedule_contract.py:46: \"key_offset_field\": \"key_offset\",",
+    "python/libreprimus/cuda_candidate_batch_abi/key_schedule_contract.py:48: \"separator_policy\": \"separators_do_not_advance_key\",",
+    "python/libreprimus/cuda_candidate_batch_abi/transform_parameter_contract.py:68: \"parameter_layout\": [\"key_schedule_ref:uint32\", \"key_reset_policy:uint8\", \"key_advance_policy:uint8\"],",
+    "python/libreprimus/cuda_candidate_batch_abi/transform_parameter_contract.py:73: \"key_advance_policy\": \"declared enum\",",
+    "python/libreprimus/cuda_candidate_batch_abi/transform_parameter_contract.py:75: \"formula_policy\": \"Vigenere key tokens 0..28; skip/advance/reset must be explicit before execution\",",
+    "python/libreprimus/cuda_candidate_batch_abi/transform_parameter_contract.py:103: \"advance_policy_supported\": family_id in {\"vigenere_explicit_key\", \"prime_minus_one_stream\"},",
+    "python/libreprimus/cuda_solved_family_readiness/batch_abi_gaps.py:21: (\"key_schedule_buffer\", \"key schedules\", \"needs_key_schedule_abi\", True, \"Explicit-key Vigenere needs key-token buffers and advance rules.\"),",
+    "python/libreprimus/method_backlog/counts.py:12: return len(params.get(\"keys\", [])) * len(params.get(\"reset_modes\", [])) * len(params.get(\"advance_modes\", []))",
+    "python/libreprimus/method_backlog/support.py:26: return \"needs_executor\", \"reset_advance_key_pack_executor\"",
+    "python/libreprimus/native_candidate_batch_conformance/fixtures.py:162: \"key_advance_policy\": \"skip_separators_shape_declared\",",
+    "python/libreprimus/native_candidate_batch_conformance/schedule_conformance.py:25: \"policy\": \"key tokens and reset/advance policy fields validate, but Vigenere execution stays pending.\",",
+    "python/libreprimus/solved_fixtures/vigenere.py:111: key_position = 0",
+    "python/libreprimus/solved_fixtures/vigenere.py:124: key_index = key_indices[key_position % len(key_indices)]",
+    "python/libreprimus/solved_fixtures/vigenere.py:125: decoded_index = (raw_index - key_index) % 29",
+    "python/libreprimus/solved_fixtures/vigenere.py:126: key_position += 1",
+    "python/libreprimus/solved_fixtures/vigenere.py:162: \"decoded_index_formula\": \"decoded_index = (cipher_index - key_index[key_position]) mod 29\",",
+    "python/libreprimus/token_block/stage5do.py:70: \"sequence_of_runes.png\",",
+    "python/libreprimus/token_block/stage5do.py:167: \"no_f_rune_count_section_flow_candidate\": Path(",
+    "python/libreprimus/token_block/stage5do.py:224: \"no_f_rune_count_section_flow_candidate\",",
+    "python/libreprimus/token_block/stage5do.py:705: records[\"no_f_rune_count_section_flow_candidate\"] = _candidate(",
+    "python/libreprimus/token_block/stage5do.py:706: \"no_f_rune_count_section_flow_candidate\",",
+    "python/libreprimus/token_block/stage5do.py:707: \"no_f_rune_count_section_flow_candidate_v0\",",
+    "python/libreprimus/token_block/stage5do.py:710: records[\"no_f_rune_count_section_flow_candidate\"].update(",
+    "python/libreprimus/token_block/stage5do.py:1310: record = _read_record(\"no_f_rune_count_section_flow_candidate\")"
+   ],
+   "advance_lines": [
+    "python/libreprimus/bounded_execution/vigenere_key_pack.py:524: key_position += 1",
+    "python/libreprimus/solved_fixtures/vigenere.py:126: key_position += 1",
+    "python/libreprimus/token_block/pixel_coordinates.py:23: dark += 1",
+    "python/libreprimus/token_block/pixel_coordinates.py:62: dark += 1"
+   ],
+   "loc": 307006
+  },
+  "O4N4c__gematria-primus": {
+   "n_code_files": 1,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 89
+  },
+  "Pitchfork-and-Torch__instar": {
+   "n_code_files": 30,
+   "ciphers": {
+    "totient_prime": 34,
+    "vigenere": 15,
+    "atbash": 16,
+    "caesar_shift": 27,
+    "gematria": 1,
+    "hash_bruteforce": 1
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 4639
+  },
+  "Pitchfork-and-Torch__liber-research": {
+   "n_code_files": 0,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 0
+  },
+  "ProfessorJ17__Cicada3301": {
+   "n_code_files": 1,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 85
+  },
+  "Protheme-777__Liber-Primus-decoder": {
+   "n_code_files": 1,
+   "ciphers": {
+    "vigenere": 21,
+    "beaufort": 5,
+    "atbash": 44,
+    "caesar_shift": 31,
+    "affine": 11,
+    "autokey": 6,
+    "totient_prime": 85,
+    "substitution_search": 6,
+    "gematria": 13,
+    "ngram_scoring": 31
+   },
+   "skip_evidence": [
+    "liber_primus_decoder_v5.py:13: ║  ✓ Genetic algorithm, Hill-climbing, Simulated Annealing        ║",
+    "liber_primus_decoder_v5.py:30: - F-interrupt (rune index 0) skip logic is implemented.",
+    "liber_primus_decoder_v5.py:262: \"skip_index\": True,   # F-interrupt skip is active on this page",
+    "liber_primus_decoder_v5.py:754: \"\"\"Generic key-based cipher operation. skip_f = F-interrupt logic.\"\"\"",
+    "liber_primus_decoder_v5.py:998: # 10. GENETIC ALGORITHM",
+    "liber_primus_decoder_v5.py:1003: def genetic_algorithm(indices, pop_size=50, generations=150,",
+    "liber_primus_decoder_v5.py:1065: # 11. HILL-CLIMBING + SIMULATED ANNEALING",
+    "liber_primus_decoder_v5.py:1068: def hill_climb(indices, iterations=4000, restarts=3, verbose=True):",
+    "liber_primus_decoder_v5.py:1101: def simulated_annealing(indices, T0=10.0, cooling=0.995,",
+    "liber_primus_decoder_v5.py:1339: # ── Genetic algorithm ─────────────────────────────────────",
+    "liber_primus_decoder_v5.py:1344: print(f\"\\n  [GENETIC ALGORITHM] pop={ga_population} gen={ga_generations}...\")",
+    "liber_primus_decoder_v5.py:1345: ga_map, ga_score, ga_text = genetic_algorithm(",
+    "liber_primus_decoder_v5.py:1359: hc_map, hc_score, hc_text = hill_climb(idx, hc_iterations, 3, verbose=True)",
+    "liber_primus_decoder_v5.py:1365: # ── Simulated annealing ───────────────────────────────────",
+    "liber_primus_decoder_v5.py:1370: print(f\"\\n  [SIMULATED ANNEALING] {sa_steps} steps...\")",
+    "liber_primus_decoder_v5.py:1371: sa_map, sa_score, sa_text = simulated_annealing(idx, steps=sa_steps, verbose=True)",
+    "liber_primus_decoder_v5.py:1442: print(\"  Try a lower threshold or add new keys to EXTRA_KEYS.\")"
+   ],
+   "advance_lines": [],
+   "loc": 1666
+  },
+  "Pv3__Cicada3301": {
+   "n_code_files": 1,
+   "ciphers": {
+    "vigenere": 1,
+    "caesar_shift": 85,
+    "totient_prime": 25,
+    "gematria": 54
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 5475
+  },
+  "Skyro7777777__LiberPrimusDecoded": {
+   "n_code_files": 54,
+   "ciphers": {
+    "vigenere": 229,
+    "beaufort": 23,
+    "autokey": 261,
+    "totient_prime": 1277,
+    "gematria": 113,
+    "ngram_scoring": 320,
+    "atbash": 114,
+    "caesar_shift": 136,
+    "running_key": 40,
+    "hash_bruteforce": 30,
+    "playfair": 65,
+    "hill_cipher": 10,
+    "substitution_search": 34,
+    "transposition": 66
+   },
+   "skip_evidence": [
+    "cicada3301-research/decoder/delimiter_codebook_attack.py:10: Key advances only at delimiter positions; same key value used between delimiters.",
+    "cicada3301-research/decoder/delimiter_codebook_attack.py:12: V1 \"advance\": ki = (ki+1) % len(key) on each delimiter.",
+    "cicada3301-research/decoder/delimiter_codebook_attack.py:86: \"\"\"Variant 1: ki advances by 1 (mod len(key)) at each delimiter.\"\"\"",
+    "cicada3301-research/decoder/delimiter_codebook_attack.py:201: ki = (ki + 1) % L  # advance to next key only at delim",
+    "cicada3301-research/decoder/delimiter_codebook_attack.py:334: for variant, fn in [('v1_advance', delim_keystream_decrypt), ('v2_periodic', delim_keystream_decrypt_v2)]:",
+    "cicada3301-research/decoder/digraph_attack.py:9: PART C: Hill cipher (2x2 over Z_29) — magic-square sub-blocks + brute force + hill climbing.",
+    "cicada3301-research/decoder/digraph_attack.py:32: brute_force_hill, hill_climb_hill, magic_square_sub_blocks, MAGIC_SQUARE_16,",
+    "cicada3301-research/decoder/digraph_attack.py:158: hill_climb_starts: int = 50,",
+    "cicada3301-research/decoder/digraph_attack.py:159: hill_climb_iters: int = 500,",
+    "cicada3301-research/decoder/digraph_attack.py:210: # 3. Hill climbing (heuristic search)",
+    "cicada3301-research/decoder/digraph_attack.py:211: print(f\"  [Hill] Hill-climbing ({hill_climb_starts} starts, {hill_climb_iters} iters)...\")",
+    "cicada3301-research/decoder/digraph_attack.py:213: best_M, best_score, best_pt = hill_climb_hill(",
+    "cicada3301-research/decoder/digraph_attack.py:214: ct, n_starts=hill_climb_starts, n_iters=hill_climb_iters, seed=42)",
+    "cicada3301-research/decoder/digraph_attack.py:217: results[\"hill_climbing\"] = {",
+    "cicada3301-research/decoder/digraph_attack.py:218: \"n_starts\": hill_climb_starts,",
+    "cicada3301-research/decoder/digraph_attack.py:219: \"n_iters\": hill_climb_iters,",
+    "cicada3301-research/decoder/digraph_attack.py:288: hill_climb_starts=50,",
+    "cicada3301-research/decoder/digraph_attack.py:289: hill_climb_iters=500,",
+    "cicada3301-research/decoder/digraph_attack.py:299: f\"{hill_results['hill_climbing']['best_score']:.4f}\")",
+    "cicada3301-research/decoder/digraph_attack.py:340: best_hill_climb = hill_results[\"hill_climbing\"]",
+    "cicada3301-research/decoder/digraph_attack.py:351: print(f\"  Hill (hill-climbing):    matrix={best_hill_climb['best_matrix']}  \"",
+    "cicada3301-research/decoder/digraph_attack.py:352: f\"score={best_hill_climb['best_score']:.4f}\")",
+    "cicada3301-research/decoder/extended_cipher_variants.py:63: def hill_climb_variant1(ct_decs, max_iter=5000, restarts=10, label=\"V1\"):",
+    "cicada3301-research/decoder/extended_cipher_variants.py:128: def hill_climb_variant2(ct_decs, max_iter=5000, restarts=10, label=\"V2\"):",
+    "cicada3301-research/decoder/extended_cipher_variants.py:197: def hill_climb_known_answer(ct_decs, true_perm, true_primer, max_iter=5000, restarts=10, label=\"V3\"):",
+    "cicada3301-research/decoder/extended_cipher_variants.py:274: v1 = hill_climb_variant1(ct_decs_500, max_iter=5000, restarts=10, label=\"V1\")",
+    "cicada3301-research/decoder/extended_cipher_variants.py:283: v2 = hill_climb_variant2(ct_decs_500, max_iter=5000, restarts=10, label=\"V2\")",
+    "cicada3301-research/decoder/extended_cipher_variants.py:303: v3 = hill_climb_known_answer(ct, true_perm, true_primer, max_iter=5000, restarts=10, label=\"V3\")",
+    "cicada3301-research/decoder/first_diff_masc.py:104: def hill_climb_perm(ct_runes, max_iter=10000, restarts=30, use_quad=True):",
+    "cicada3301-research/decoder/first_diff_masc.py:227: best = hill_climb_perm(all_unsolved[:1000], max_iter=8000, restarts=20, use_quad=True)",
+    "cicada3301-research/decoder/first_diff_masc.py:240: best_page = hill_climb_perm(first_page[\"runes\"], max_iter=10000, restarts=25, use_quad=True)",
+    "cicada3301-research/decoder/gematria_primus.py:53: F_RUNE: str = \"ᚠ\"          # decimal 0 — special: F-skip rule",
+    "cicada3301-research/decoder/gematria_primus.py:161: the key does NOT advance for them.",
+    "cicada3301-research/decoder/gematria_primus.py:177: # Skip: leave rune unchanged, do not advance key",
+    "cicada3301-research/decoder/hill.py:22: - hill_climb_hill(ciphertext_runes, n_starts=20, n_iters=200) -> best matrix found",
+    "cicada3301-research/decoder/hill.py:203: def hill_climb_hill(ciphertext_runes: str, n_starts: int = 20,",
+    "cicada3301-research/decoder/hill.py:352: # Self-test 3: hill climbing",
+    "cicada3301-research/decoder/hill.py:354: best_M, best_score, best_pt = hill_climb_hill(ct, n_starts=20, n_iters=200, seed=42)",
+    "cicada3301-research/decoder/lag5_cribdrag.py:9: - Additive cipher with reset:N interrupter (exhaustive N)",
+    "cicada3301-research/decoder/lag5_cribdrag.py:251: f\"{m['cipher_letter']} → {m['plaintext']} ({m['method']}) key_pos_val={m['key_rune_at_pos']}\")"
+   ],
+   "advance_lines": [
+    "cicada3301-research/decoder/lag5_cribdrag.py:644: key_relations[cd_diff] += 1",
+    "cicada3301-research/decoder/lag5_cribdrag.py:650: key_relations[cd_diff] += 1"
+   ],
+   "loc": 17980
+  },
+  "Taiiwo__TaiiwoBot": {
+   "n_code_files": 46,
+   "ciphers": {
+    "atbash": 12,
+    "caesar_shift": 30,
+    "substitution_search": 1,
+    "gematria": 34,
+    "vigenere": 9,
+    "totient_prime": 30,
+    "hash_bruteforce": 3,
+    "ngram_scoring": 2
+   },
+   "skip_evidence": [
+    "lib/cicada/cicada/gematria.py:142: def running_shift(self, key, interrupts=\"\", skip_indices=[], decrypt=False):",
+    "lib/cicada/cicada/gematria.py:153: if type(interrupts) == list:",
+    "lib/cicada/cicada/gematria.py:154: interrupts = \"\".join(interrupts)",
+    "lib/cicada/cicada/gematria.py:159: if c not in self.alpha or c in interrupts.upper():",
+    "lib/cicada/cicada/gematria.py:179: def vigenere(self, key, interrupts=[], decrypt=False):",
+    "lib/cicada/cicada/gematria.py:181: return self.running_shift(key, interrupts=interrupts, decrypt=decrypt)",
+    "lib/cicada/cicada/gematria.py:183: def totient_stream(self, interrupts=\"\", skip_indices=[]):",
+    "lib/cicada/cicada/gematria.py:186: interrupts=interrupts,",
+    "plugins/Gematria.py:34: \"int interrupts Characters to interrupt shifts 1\",",
+    "plugins/Gematria.py:51: \"int interrupts Characters to interrupt shifts 1\",",
+    "plugins/Gematria.py:95: interrupts=None, skip_indices=None, decrypt=False, output=\"\"):",
+    "plugins/Gematria.py:125: interrupts = interrupts.split(\",\") if interrupts else \"\"",
+    "plugins/Gematria.py:136: running_shift, interrupts, skip_indices, decrypt)",
+    "plugins/Gematria.py:138: input = input.vigenere(vigenere, interrupts, decrypt)",
+    "plugins/Gematria.py:140: input = input.totient_stream(interrupts, skip_indices)"
+   ],
+   "advance_lines": [],
+   "loc": 6143
+  },
+  "Taiiwo__cicada": {
+   "n_code_files": 9,
+   "ciphers": {
+    "gematria": 17,
+    "vigenere": 1,
+    "atbash": 2,
+    "caesar_shift": 11,
+    "totient_prime": 11,
+    "ngram_scoring": 1
+   },
+   "skip_evidence": [
+    "cicada/gematria.py:142: def running_shift(self, key, interrupts=\"\", skip_indices=[], decrypt=True):",
+    "cicada/gematria.py:153: if type(interrupts) == list:",
+    "cicada/gematria.py:154: interrupts = \"\".join(interrupts)",
+    "cicada/gematria.py:159: if c not in self.alpha or c in interrupts.upper():",
+    "cicada/gematria.py:178: def vigenere(self, key, interrupts=[], skip_indices=[], decrypt=True):",
+    "cicada/gematria.py:180: return self.running_shift(key, interrupts=interrupts, skip_indices=skip_indices, decrypt=decrypt)",
+    "cicada/gematria.py:182: def totient_stream(self, interrupts=\"\", skip_indices=[], decrypt=True):",
+    "cicada/gematria.py:185: interrupts=interrupts,"
+   ],
+   "advance_lines": [],
+   "loc": 678
+  },
+  "Taters79__LiberPrimus_CLI_Tool-Zig": {
+   "n_code_files": 8,
+   "ciphers": {
+    "gematria": 1
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 361
+  },
+  "Taters79__liber_primus": {
+   "n_code_files": 1,
+   "ciphers": {
+    "totient_prime": 6
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 296
+  },
+  "Viusthas__Liber_Primus": {
+   "n_code_files": 1,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 4
+  },
+  "VzGarnet__Liber-Primus": {
+   "n_code_files": 121,
+   "ciphers": {
+    "ngram_scoring": 1
+   },
+   "skip_evidence": [
+    "config/database.php:116: | Redis is an open source, fast, and advanced key-value store that also"
+   ],
+   "advance_lines": [],
+   "loc": 5655
+  },
+  "Wra1th__Nebuchadnezzar": {
+   "n_code_files": 1,
+   "ciphers": {
+    "caesar_shift": 15,
+    "totient_prime": 24,
+    "gematria": 1
+   },
+   "skip_evidence": [
+    "GP_Tool.py:80: key_index = index_dict[key_char]",
+    "GP_Tool.py:81: decrypted_index = (encrypted_index + key_index) % len(alphabet_list)"
+   ],
+   "advance_lines": [],
+   "loc": 201
+  },
+  "_iddqd_tmp": {
+   "n_code_files": 0,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 0
+  },
+  "aadishgoel__Cicada-3301": {
+   "n_code_files": 1,
+   "ciphers": {
+    "caesar_shift": 2
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 3
+  },
+  "ale64bit__cicada3301": {
+   "n_code_files": 20,
+   "ciphers": {
+    "vigenere": 17,
+    "atbash": 4,
+    "caesar_shift": 35,
+    "totient_prime": 68,
+    "gematria": 79,
+    "ngram_scoring": 3,
+    "affine": 17,
+    "substitution_search": 2
+   },
+   "skip_evidence": [
+    "bin/freq/main.go:104: x := gematria.IndexOfRune(r)",
+    "bin/search/main.go:40: if id := gematria.IndexOfRune(r); id == k {",
+    "bin/search/main.go:64: experimental.NewStateless(\"rev\", func(i int, r rune) int { return 28 - gematria.IndexOfRune(r) }),",
+    "bin/search/main.go:65: experimental.NewStateless(\"IR\", func(_ int, r rune) int { return (z - gematria.IndexOfRune(r)) % m }),",
+    "bin/search/main.go:66: experimental.NewStateless(\"VR\", func(_ int, r rune) int { return (z - gematria.ValueOfRune(r)) % m }),",
+    "bin/search/main.go:69: experimental.NewStateless(\"muIR\", func(i int, r rune) int { return (z - mathutil.Mu(gematria.IndexOfRune(r))) % m }),",
+    "bin/search/main.go:70: experimental.NewStateless(\"muVR\", func(i int, r rune) int { return (z - mathutil.Mu(gematria.ValueOfRune(r))) % m }),",
+    "bin/search/main.go:72: experimental.NewStateless(\"phiIR\", func(i int, r rune) int { return (z - mathutil.Phi(gematria.IndexOfRune(r))) % m }),",
+    "bin/search/main.go:73: experimental.NewStateless(\"phiVR\", func(i int, r rune) int { return (z - mathutil.Phi(gematria.ValueOfRune(r))) % m }),",
+    "bin/search/main.go:75: return (gematria.IndexOfRune(r) * mathutil.ModPow(mathutil.PrimeAt(i), m-2, m)) % m",
+    "bin/search/main.go:77: experimental.New(\"st_ixor\", func(i int, r rune, state int) (int, int) { return state % m, (state ^ gematria.IndexOfRune(r)) % m }),",
+    "bin/search/main.go:78: experimental.New(\"st_vxor\", func(i int, r rune, state int) (int, int) { return state % m, (state ^ gematria.ValueOfRune(r)) % m }),",
+    "bin/search/main.go:80: return state % m, (z + state*10 - gematria.IndexOfRune(r)) % m",
+    "bin/search/main.go:83: return state % m, (z + state*29 - gematria.IndexOfRune(r)) % m",
+    "bin/search/main.go:86: return state % m, (z + state*60 - gematria.IndexOfRune(r)) % m",
+    "bin/search/main.go:89: return state % m, (z + state*1033 - gematria.IndexOfRune(r)) % m",
+    "bin/search/main.go:92: return state % m, (z + state*3301 - gematria.IndexOfRune(r)) % m",
+    "cipher/affine/affine.go:37: y := gematria.IndexOfRune(r)",
+    "cipher/prime/prime.go:26: y := gematria.IndexOfRune(r)",
+    "cipher/totient/totient.go:26: y := gematria.IndexOfRune(r)",
+    "cipher/vigenere/vigenere.go:31: x := gematria.IndexOfRune(r)",
+    "cipher/vigenere/vigenere.go:35: x -= gematria.IndexOfRune(runes[pos])",
+    "dict/dict.go:985: \"beam\":               true,",
+    "dict/dict.go:3918: \"genetics\":           true,",
+    "dict/dict.go:3919: \"genetic\":            true,",
+    "gematria/gematria.go:148: func LetterOfRune(r rune) string {",
+    "gematria/gematria.go:156: func ValueOfRune(r rune) int {",
+    "gematria/gematria.go:167: func IndexOfRune(r rune) int {",
+    "gematria/gematria.go:255: ret = append(ret, ValueOfRune(r))",
+    "gematria/gematria.go:265: ret = append(ret, IndexOfRune(r))"
+   ],
+   "advance_lines": [
+    "bin/search/main.go:33: for k := 0; k < 1; k++ {",
+    "bin/search/main.go:46: for mask := 0; mask < (1 << n); mask++ {",
+    "bin/search/main.go:96: for mask := 1; mask < (1 << len(base)); mask++ {",
+    "bin/search/main.go:197: for k := j + 1; k < len(keywords); k++ {"
+   ],
+   "loc": 12696
+  },
+  "artistofreap-byte__liber-primus-matrix-attack": {
+   "n_code_files": 0,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 0
+  },
+  "bobby-bobby-bobby-bobby__Libre-Primus-Cicada-3301-Solver-Demo": {
+   "n_code_files": 12,
+   "ciphers": {
+    "vigenere": 14,
+    "transposition": 15,
+    "totient_prime": 4,
+    "gematria": 3,
+    "atbash": 6,
+    "ngram_scoring": 10,
+    "affine": 10,
+    "substitution_search": 8,
+    "gpu": 2,
+    "llm_ml": 25
+   },
+   "skip_evidence": [
+    "lp_solver/config.py:28: strategy: str = \"beam\"",
+    "lp_solver/config.py:30: beam_width: int = 256",
+    "lp_solver/distributed.py:35: def run_batch(self, page_tensor, refs: List[Sequence[int]], strategy: str, beam_pool=None) -> List[CandidateResult]:",
+    "lp_solver/distributed.py:40: elif strategy == \"genetic\" and beam_pool:",
+    "lp_solver/distributed.py:41: key_iter = self._genetic_keys(beam_pool, n=self.config.batch_size)",
+    "lp_solver/distributed.py:72: def _genetic_keys(self, pool, n: int):",
+    "lp_solver/distributed.py:115: def run_worker_process(worker_id: int, config: RuntimeConfig, page_vals: List[int], ref_vals, strategy: str, out_q: mp.Queue, beam_pool):",
+    "lp_solver/distributed.py:118: res = wk.run_batch(page_tensor=page_tensor, refs=ref_vals, strategy=strategy, beam_pool=beam_pool)",
+    "lp_solver/distributed.py:134: beam_pool = []",
+    "lp_solver/distributed.py:135: beam_factory = KeyFactory(self.config.constraints, seed=self.config.random_seed + 10_000)",
+    "lp_solver/distributed.py:140: if strategy == \"beam\" and self.best:",
+    "lp_solver/distributed.py:141: strategy = \"genetic\"",
+    "lp_solver/distributed.py:145: args=(w, self.config, page_vals, ref_vals, strategy, q, beam_pool),",
+    "lp_solver/distributed.py:157: self.best = (self.best + collected)[: self.config.beam_width]",
+    "lp_solver/distributed.py:171: beam_pool = [",
+    "lp_solver/distributed.py:172: beam_factory.random_key(length=len(page_vals)) for _ in range(min(64, len(self.best) + 1))"
+   ],
+   "advance_lines": [],
+   "loc": 951
+  },
+  "chipper1999__Liber-Primus-Solver": {
+   "n_code_files": 1,
+   "ciphers": {
+    "totient_prime": 6,
+    "gematria": 2
+   },
+   "skip_evidence": [
+    "solution.py:33: if idx == 0: idx = val % 29"
+   ],
+   "advance_lines": [],
+   "loc": 41
+  },
+  "chipper1999__liber-primus-solutions": {
+   "n_code_files": 2,
+   "ciphers": {
+    "gematria": 5,
+    "hash_bruteforce": 1
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 114
+  },
+  "cicada-solvers__3301-hash-alarm": {
+   "n_code_files": 21,
+   "ciphers": {
+    "hash_bruteforce": 62,
+    "caesar_shift": 46
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 3789
+  },
+  "cicada-solvers__3301_assist": {
+   "n_code_files": 6,
+   "ciphers": {
+    "gematria": 12,
+    "ngram_scoring": 27,
+    "caesar_shift": 1
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 287
+  },
+  "cicada-solvers__3301chef": {
+   "n_code_files": 94,
+   "ciphers": {
+    "totient_prime": 109,
+    "gematria": 72,
+    "vigenere": 14,
+    "atbash": 6,
+    "caesar_shift": 34,
+    "affine": 21,
+    "hash_bruteforce": 14,
+    "running_key": 2,
+    "substitution_search": 8
+   },
+   "skip_evidence": [
+    "src/core/lib/uas_parser.js:20792: uaFamily: 'Beamrise',",
+    "src/core/lib/uas_parser.js:20793: uaUrl: 'http://www.beamrise.com/',",
+    "src/core/lib/uas_parser.js:20796: uaIcon: 'beamrise.png',",
+    "src/core/lib/uas_parser.js:20797: uaInfoUrl: '/list-of-ua/browser-detail?browser=Beamrise'",
+    "src/core/lib/uas_parser.js:23597: regexp: /^Mozilla[\\s\\S]*AppleWebKit[\\s\\S]*Chrome[\\s\\S]*Beamrise\\/([0-9\\.]+)/i,",
+    "src/core/lib/uas_parser.js:23601: regexp: /^Mozilla[\\s\\S]*AppleWebKit[\\s\\S]*Beamrise\\/([0-9\\.]+)[\\s\\S]*Chrome/i,",
+    "src/core/operations/Cipher.js:420: keyIndex,",
+    "src/core/operations/Cipher.js:433: keyIndex = alphabet.indexOf(chr);",
+    "src/core/operations/Cipher.js:438: output += alphabet[(keyIndex + msgIndex) % 26];",
+    "src/core/operations/Cipher.js:441: keyIndex = alphabet.indexOf(chr);",
+    "src/core/operations/Cipher.js:443: output += alphabet[(keyIndex + msgIndex) % 26].toUpperCase();",
+    "src/core/operations/Cipher.js:467: keyIndex,",
+    "src/core/operations/Cipher.js:477: keyIndex = alphabet.indexOf(chr);",
+    "src/core/operations/Cipher.js:481: output += alphabet[(msgIndex - keyIndex + alphabet.length) % 26];",
+    "src/core/operations/Cipher.js:484: keyIndex = alphabet.indexOf(chr);",
+    "src/core/operations/Cipher.js:486: output += alphabet[(msgIndex + alphabet.length - keyIndex) % 26].toUpperCase();",
+    "src/core/operations/LiberPrimus.js:356: let keyIndex = formattedKey[j];",
+    "src/core/operations/LiberPrimus.js:357: let validKeyIndex = !isNaN(parseFloat(keyIndex)) && isFinite(keyIndex);",
+    "src/core/operations/LiberPrimus.js:376: if (validKeyIndex === false){",
+    "src/core/operations/LiberPrimus.js:377: continue; //TODO: this is for when the key has characters like \\n , . \\ / etc. Whether this advances the input or not is up for debate",
+    "src/core/operations/LiberPrimus.js:382: indexTotal = LiberPrimus._add(parseInt(inputIndex), parseInt(keyIndex));",
+    "src/core/operations/LiberPrimus.js:384: indexTotal = LiberPrimus._sub(parseInt(inputIndex), parseInt(keyIndex));"
+   ],
+   "advance_lines": [
+    "src/core/lib/js-codepage/cputils.js:127: out[k++] = EE[j+1] || EE[j]; if(EE[j+1] > 0) out[k++] = EE[j];",
+    "src/core/lib/js-codepage/cputils.js:137: if(j<65536) { j*=2; out[k++] = EE[j+1] || EE[j]; if(EE[j+1] > 0) out[k++] = EE[j]; }",
+    "src/core/lib/js-codepage/cputils.js:139: j=2*(0xD800 + ((jj>>10)&1023)); out[k++] = EE[j+1] || EE[j]; if(EE[j+1] > 0) out[k++] = EE[j];",
+    "src/core/lib/js-codepage/cputils.js:140: j=2*(0xDC00 + (jj&1023)); out[k++] = EE[j+1] || EE[j]; if(EE[j+1] > 0) out[k++] = EE[j];",
+    "src/core/lib/js-codepage/cputils.js:147: out[k++] = EE[j+1] || EE[j]; if(EE[j+1] > 0) out[k++] = EE[j];",
+    "src/core/lib/js-codepage/cputils.js:171: out[k++] = DD[j]; out[k++] = DD[j+1];",
+    "src/core/lib/js-codepage/cputils.js:177: out[k++] = DD[j]; out[k++] = DD[j+1];",
+    "src/core/lib/js-codepage/cputils.js:183: out[k++] = DD[j]; out[k++] = DD[j+1];",
+    "src/core/lib/js-codepage/cputils.js:201: if(w < 65536) { mdb[k++] = w&255; mdb[k++] = w>>8; }",
+    "src/core/lib/js-codepage/cputils.js:204: mdb[k++] = ww&255; mdb[k++] = ww>>>8; mdb[k++] = w&255; mdb[k++] = (w>>>8)&255;",
+    "src/core/lib/js-codepage/cputils.js:409: out[k++] = s;",
+    "src/core/lib/js-codepage/cputils.js:421: if(w < 65536) { out[k++] = String.fromCharCode(w); }",
+    "src/core/lib/js-codepage/cputils.js:424: out[k++] = String.fromCharCode(ww); out[k++] = String.fromCharCode(w);",
+    "src/core/lib/js-codepage/cputils.js:437: out[k++] = String.fromCharCode((data[i+1]<<8) + data[i]);",
+    "src/core/lib/js-codepage/cputils.js:444: out[k++] = String.fromCharCode((data[i]<<8) + data[i+1]);",
+    "src/core/lib/js-codepage/cputils.js:454: out[k++] = String.fromCharCode(0xD800 + ((w >> 10) & 0x3FF));",
+    "src/core/lib/js-codepage/cputils.js:455: out[k++] = String.fromCharCode(0xDC00 + (w & 0x3FF));",
+    "src/core/lib/js-codepage/cputils.js:457: else out[k++] = String.fromCharCode(w);",
+    "src/core/lib/js-codepage/cputils.js:467: out[k++] = String.fromCharCode(0xD800 + ((w >> 10) & 0x3FF));",
+    "src/core/lib/js-codepage/cputils.js:468: out[k++] = String.fromCharCode(0xDC00 + (w & 0x3FF));",
+    "src/core/lib/js-codepage/cputils.js:470: else out[k++] = String.fromCharCode(w);",
+    "src/core/lib/js-codepage/cputils.js:479: if(data[i] !== 0x2b) { j=1; out[k++] = String.fromCharCode(data[i]); continue; }",
+    "src/core/lib/js-codepage/cputils.js:481: if(data[i+1] === 0x2d) { j = 2; out[k++] = \"+\"; continue; }",
+    "src/core/lib/js-codepage/cputils.js:504: for(l = 0; l < o64.length; ++l) out[k++] = o64.charAt(l);",
+    "src/core/operations/BitwiseOp.js:144: for (let key = 1, l = Math.pow(256, keyLength); key < l; key++) {"
+   ],
+   "loc": 55793
+  },
+  "cicada-solvers__CICADA2K16-solving-tool": {
+   "n_code_files": 1,
+   "ciphers": {
+    "caesar_shift": 41,
+    "totient_prime": 5,
+    "gematria": 37
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 468
+  },
+  "cicada-solvers__Cicada-DWH-HashcatAttempts": {
+   "n_code_files": 2,
+   "ciphers": {
+    "hash_bruteforce": 6
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 63
+  },
+  "cicada-solvers__GPPrimeView": {
+   "n_code_files": 6,
+   "ciphers": {
+    "totient_prime": 159,
+    "gematria": 56,
+    "running_key": 1,
+    "caesar_shift": 2,
+    "affine": 1,
+    "transposition": 4,
+    "substitution_search": 1,
+    "ngram_scoring": 10,
+    "llm_ml": 10
+   },
+   "skip_evidence": [
+    "LiberPrimus.js:354: let keyIndex = formattedKey[j];",
+    "LiberPrimus.js:355: let validKeyIndex = !isNaN(parseFloat(keyIndex)) && isFinite(keyIndex);",
+    "LiberPrimus.js:374: if (validKeyIndex === false){",
+    "LiberPrimus.js:375: continue; //TODO: this is for when the key has characters like \\n , . \\ / etc. Whether this advances the input or not is up for debate",
+    "LiberPrimus.js:380: indexTotal = LiberPrimus._add(parseInt(inputIndex), parseInt(keyIndex));",
+    "LiberPrimus.js:382: indexTotal = LiberPrimus._sub(parseInt(inputIndex), parseInt(keyIndex));",
+    "words.js:78: \"abeam\",",
+    "words.js:121: \"abiogenetic\",",
+    "words.js:2919: \"androgenetic\",",
+    "words.js:3155: \"anneal\",",
+    "words.js:3156: \"annealed\",",
+    "words.js:3157: \"annealing\",",
+    "words.js:3360: \"anthropogenetic\",",
+    "words.js:5314: \"autogenetic\",",
+    "words.js:6457: \"beam\",",
+    "words.js:6458: \"beam-ends\",",
+    "words.js:6459: \"beaming\",",
+    "words.js:6460: \"beamish\",",
+    "words.js:6461: \"beams\",",
+    "words.js:6462: \"beamy\",",
+    "words.js:7314: \"biogenetic\",",
+    "words.js:7610: \"blastogenetic\",",
+    "words.js:10981: \"cenogenetic\",",
+    "words.js:16351: \"cytogenetic\",",
+    "words.js:18298: \"digenetic\",",
+    "words.js:21341: \"endogenetic\",",
+    "words.js:22684: \"exogenetic\",",
+    "words.js:23016: \"eye-beaming\",",
+    "words.js:26242: \"genetic\",",
+    "words.js:26243: \"genetically\",",
+    "words.js:26244: \"geneticist\",",
+    "words.js:26245: \"genetics\",",
+    "words.js:29197: \"heterogenetic\",",
+    "words.js:29850: \"hornbeam\",",
+    "words.js:30548: \"i-beam\",",
+    "words.js:32812: \"interrupt\",",
+    "words.js:32813: \"interrupted\",",
+    "words.js:32814: \"interrupter\",",
+    "words.js:32815: \"interruption\",",
+    "words.js:36666: \"low-beam\","
+   ],
+   "advance_lines": [],
+   "loc": 171306
+  },
+  "cicada-solvers__GematriaPrimusTool": {
+   "n_code_files": 1,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 281
+  },
+  "cicada-solvers__JBO-cicada_tools": {
+   "n_code_files": 11,
+   "ciphers": {
+    "totient_prime": 330,
+    "ngram_scoring": 40,
+    "vigenere": 27,
+    "atbash": 8,
+    "caesar_shift": 11,
+    "autokey": 83,
+    "hill_cipher": 6,
+    "substitution_search": 2,
+    "hash_bruteforce": 1,
+    "llm_ml": 36,
+    "running_key": 7,
+    "transposition": 1
+   },
+   "skip_evidence": [
+    "core.py:220: def get_num_of_runes(self):",
+    "core.py:272: def get_gp_sum_of_runes(self):",
+    "experiments.py:99: def sentence_cribbing(skip_limit=31, start_val_limit=3301, consider_interrupters=False):",
+    "experiments.py:102: Assumes interrupters might occur. Also attempts to use emirps (Decimal-reversal of primes).",
+    "experiments.py:110: max_runes = max([ ProcessedText(section=section).get_num_of_runes() for section in unsolved_sections ])",
+    "experiments.py:130: section_runes_len = ProcessedText(section=section).get_num_of_runes()",
+    "experiments.py:147: # Take interrupters into account",
+    "experiments.py:148: gen = ResearchUtils.iterate_potential_interrupter_indices(header_pt) if consider_interrupters else [[]]",
+    "experiments.py:149: for interrupt_indices in gen:",
+    "experiments.py:156: KeystreamTransformer(keystream=iter(key), interrupt_indices=interrupt_indices).transform(pt)",
+    "experiments.py:162: KeystreamTransformer(keystream=iter(key_abs), interrupt_indices=interrupt_indices).transform(pt)",
+    "experiments.py:168: KeystreamTransformer(keystream=iter(key), interrupt_indices=interrupt_indices).transform(pt)",
+    "experiments.py:174: KeystreamTransformer(keystream=iter(key_abs), interrupt_indices=interrupt_indices).transform(pt)",
+    "experiments.py:180: KeystreamTransformer(keystream=iter(key), interrupt_indices=interrupt_indices).transform(pt)",
+    "experiments.py:673: streams.append(pt.get_gp_sum_of_runes())",
+    "experiments.py:694: streams.append(pt_no_titles.get_gp_sum_of_runes())",
+    "experiments.py:898: max_runes = max([ ProcessedText(section=section).get_num_of_runes() for section in unsolved_sections ])",
+    "experiments.py:1050: def primes_indexed_by_totient_keystream(consider_interrupters=False):",
+    "experiments.py:1064: while len(keystream) < pt.get_num_of_runes():",
+    "experiments.py:1073: # Consider interrupters",
+    "experiments.py:1075: gen = ResearchUtils.iterate_potential_interrupter_indices(pt) if consider_interrupters else [[]]",
+    "experiments.py:1076: for interrupt_indices in gen:",
+    "experiments.py:1082: KeystreamTransformer(add=add_option, keystream=iter(keystream), interrupt_indices=interrupt_indices).transform(pt)",
+    "experiments.py:1088: def fibonacci_sequence_keystream_bruteforce(consider_interrupters=False):",
+    "experiments.py:1104: # Consider interrupters",
+    "experiments.py:1106: gen = ResearchUtils.iterate_potential_interrupter_indices(pt) if consider_interrupters else [[]]",
+    "experiments.py:1107: for interrupt_indices in gen:",
+    "experiments.py:1113: FibonacciKeystreamTransformer(add=add_option, start_a=start_a, start_b=start_b, interrupt_indices=interrupt_indices).transform(pt)",
+    "experiments.py:1162: max_runes = max([ ProcessedText(section=section).get_num_of_runes() for section in unsolved_sections ])",
+    "experiments.py:1379: curr_key_index = 0",
+    "experiments.py:1387: new_rune = RuneUtils.rune_at((RuneUtils.get_rune_index(rune) - key_values[curr_key_index][key_indices[curr_key_index]]) % RuneUtils.size())",
+    "experiments.py:1391: curr_key_index = (curr_key_index + 1) % len(key_indices)",
+    "experiments.py:1392: new_rune = RuneUtils.rune_at((RuneUtils.get_rune_index(rune) - key_values[curr_key_index][key_indices[curr_key_index]]) % RuneUtils.size())",
+    "experiments.py:1395: key_indices[curr_key_index] = (key_indices[curr_key_index] + 1) % len(key_values[curr_key_index])",
+    "experiments.py:1455: max_runes = max([ ProcessedText(section=section).get_num_of_runes() for section in unsolved_sections ]) + 1",
+    "experiments.py:1486: gp_values = pt.get_gp_sum_of_runes()",
+    "gen_fibo_primes.py:17: except KeyboardInterrupt:",
+    "main.py:41: except (KeyboardInterrupt, EOFError):",
+    "research_utils.py:179: def iterate_potential_interrupter_indices(processed_text, interrupter_rune='ᚠ'):",
+    "research_utils.py:181: Iterates all the potential interrupter indices."
+   ],
+   "advance_lines": [
+    "transformers.py:298: key_index += 1",
+    "transformers.py:421: key_index = (key_index + 1) % len(self._key_indices)"
+   ],
+   "loc": 3856
+  },
+  "cicada-solvers__LPDecrypter": {
+   "n_code_files": 27,
+   "ciphers": {
+    "gematria": 24,
+    "vigenere": 13,
+    "totient_prime": 45,
+    "substitution_search": 3
+   },
+   "skip_evidence": [
+    "examples/solve_vigenere.py:31: from lpdecrypter.ciphers import VigenereWithInterruptersCipher",
+    "examples/solve_vigenere.py:38: vigenere = VigenereWithInterruptersCipher(key, [48, 74, 84], 29) # add all the interrupters",
+    "lpdecrypter/ciphers/vigenere_cipher.py:50: class VigenereWithInterruptersCipher(Cipher):",
+    "lpdecrypter/ciphers/vigenere_cipher.py:52: The Viginere cipher, with interrupters",
+    "lpdecrypter/ciphers/vigenere_cipher.py:54: def __init__(self, key, interrupters, modulo):",
+    "lpdecrypter/ciphers/vigenere_cipher.py:57: self.interrupters = interrupters",
+    "lpdecrypter/ciphers/vigenere_cipher.py:66: key_index = 0",
+    "lpdecrypter/ciphers/vigenere_cipher.py:68: if i in self.interrupters:",
+    "lpdecrypter/ciphers/vigenere_cipher.py:71: result.append(self.__encrypt_value(value, self.key[key_index % self.key_len]))",
+    "lpdecrypter/ciphers/vigenere_cipher.py:72: key_index += 1",
+    "lpdecrypter/ciphers/vigenere_cipher.py:78: key_index = 0",
+    "lpdecrypter/ciphers/vigenere_cipher.py:80: if i in self.interrupters:",
+    "lpdecrypter/ciphers/vigenere_cipher.py:83: result.append(self.__encrypt_value(value, -self.key[key_index % self.key_len]))",
+    "lpdecrypter/ciphers/vigenere_cipher.py:84: key_index += 1",
+    "lpdecrypter/ciphers/vigenere_cipher.py:90: key_index = 0",
+    "lpdecrypter/ciphers/vigenere_cipher.py:95: if i in self.interrupters:",
+    "lpdecrypter/ciphers/vigenere_cipher.py:98: encrypted.append(self.__encrypt_value(value, self.key[key_index % self.key_len]))",
+    "lpdecrypter/ciphers/vigenere_cipher.py:99: key_index += 1",
+    "lpdecrypter/ciphers/vigenere_cipher.py:107: key_index = 0",
+    "lpdecrypter/ciphers/vigenere_cipher.py:112: if i in self.interrupters:",
+    "lpdecrypter/ciphers/vigenere_cipher.py:115: decrypted.append(self.__encrypt_value(value, -self.key[key_index % self.key_len]))",
+    "lpdecrypter/ciphers/vigenere_cipher.py:116: key_index += 1"
+   ],
+   "advance_lines": [
+    "lpdecrypter/ciphers/vigenere_cipher.py:72: key_index += 1",
+    "lpdecrypter/ciphers/vigenere_cipher.py:84: key_index += 1",
+    "lpdecrypter/ciphers/vigenere_cipher.py:99: key_index += 1",
+    "lpdecrypter/ciphers/vigenere_cipher.py:116: key_index += 1"
+   ],
+   "loc": 1300
+  },
+  "cicada-solvers__LiberPrTools": {
+   "n_code_files": 2,
+   "ciphers": {
+    "vigenere": 6,
+    "totient_prime": 8,
+    "gematria": 6
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 322
+  },
+  "cicada-solvers__LiberPrimusSolver": {
+   "n_code_files": 29,
+   "ciphers": {
+    "affine": 8,
+    "atbash": 21,
+    "caesar_shift": 33,
+    "totient_prime": 90,
+    "hill_cipher": 17,
+    "vigenere": 16
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 1036
+  },
+  "cicada-solvers__Rain-3301": {
+   "n_code_files": 0,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 0
+  },
+  "cicada-solvers__Red_Rune_Cribs": {
+   "n_code_files": 0,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 0
+  },
+  "cicada-solvers__WPCH-3301": {
+   "n_code_files": 2,
+   "ciphers": {
+    "hash_bruteforce": 7
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 60
+  },
+  "cicada-solvers__aldegonde": {
+   "n_code_files": 281,
+   "ciphers": {
+    "vigenere": 156,
+    "beaufort": 211,
+    "autokey": 400,
+    "totient_prime": 943,
+    "ngram_scoring": 1109,
+    "caesar_shift": 133,
+    "affine": 55,
+    "substitution_search": 44,
+    "atbash": 34,
+    "transposition": 58,
+    "gematria": 31,
+    "running_key": 17,
+    "playfair": 29,
+    "hill_cipher": 1
+   },
+   "skip_evidence": [
+    "lp.py:178: # friedman.friedman_test_with_interrupter(seg, alphabet=c3301.CICADA_ALPHABET, maxperiod=34)",
+    "examples/crack_masc.py:3: # IDEAS: simmulated annealing",
+    "examples/crack_masc.py:107: \"\"\"Break ``ciphertext`` using hill climbing.",
+    "examples/crack_masc.py:112: you need to run, because the hill climbing will lead to the best answer faster.",
+    "examples/crack_masc.py:126: ntrials (int): The number of times to run the hill climbing algorithm",
+    "examples/crack_masc.py:155: # Outer climb reruns hill climb ntrials number of times each time at a different start location",
+    "examples/crack_masc.py:158: key, best_score, outputs = hill_climb(nswaps, node[:], next_node_inner_climb)",
+    "examples/crack_masc.py:166: _, _, decryptions = hill_climb(ntrials, starter_node, next_node_outer_climb)",
+    "examples/crack_masc.py:175: def hill_climb(",
+    "examples/crack_masc.py:178: \"\"\"Modular hill climbing algorithm.",
+    "examples/crack_masc.py:187: >>> final_node, best_score, outputs = hill_climb(10, \"ABC\", get_next_node)",
+    "examples/crack_shift.py:3: # IDEAS: simmulated annealing",
+    "examples/gorod_krovi_cipher12.py:317: def hill_climb_autokey(ct: str, iterations: int = 5000, restarts: int = 30) -> None:",
+    "examples/gorod_krovi_cipher12.py:483: hill_climb_autokey(ct, iterations=5000, restarts=30)",
+    "examples/lp_lag5_analysis.py:10: interruptors; the transcription has one extra rune around",
+    "examples/lp_lag5_attack.py:2: \"\"\"Liber Primus period-5 interruptor attack.",
+    "examples/lp_lag5_attack.py:6: irregular interruptors. This script attacks that hypothesis directly and",
+    "examples/lp_lag5_attack.py:18: * plain period-5 (no interruptor)",
+    "examples/lp_lag5_attack.py:19: * \"skip:R\"  -- ciphertext rune R is an interruptor: emitted literally,",
+    "examples/lp_lag5_attack.py:20: key does not advance (the rule used on solved LP pages)",
+    "examples/lp_lag5_attack.py:36: 5-shift key and an interruptor) is cracked exactly -- key and full",
+    "examples/lp_lag5_attack.py:134: \"\"\"Key phase per position and a mask of literal (interruptor) positions.\"\"\"",
+    "examples/simanneal_masc.py:9: from simanneal import Annealer",
+    "examples/simanneal_masc.py:69: class crack_with_simanneal(Annealer):",
+    "examples/simanneal_masc.py:71: local class that uses simanneal",
+    "examples/simanneal_masc.py:91: def solve_anneal(ciphertext: str) -> None:",
+    "examples/simanneal_masc.py:94: tsp = crack_with_simanneal(initial_state)",
+    "examples/simanneal_masc.py:104: out, score = tsp.anneal()",
+    "examples/simanneal_masc.py:112: solve_anneal(CT)",
+    "examples/simanneal_pasc.py:11: from simanneal import Annealer",
+    "examples/simanneal_pasc.py:43: class simple_vigenere_solver(Annealer):",
+    "examples/simanneal_pasc.py:65: class custom_vigenere_solver(Annealer):",
+    "examples/simanneal_pasc.py:139: out, score = tsp.anneal()",
+    "examples/simanneal_pasc.py:160: out, score = tsp.anneal()",
+    "examples/simanneal_pasc.py:167: def solve_anneal(ciphertext: str) -> None:",
+    "examples/simanneal_pasc.py:182: solve_anneal(CT)",
+    "examples/welcome.py:22: def beaufort_decrypt_interrupted(",
+    "examples/welcome.py:25: interruptors: list[int] = [],",
+    "examples/welcome.py:30: interruptors is list of positions where encryption (re)starts",
+    "examples/welcome.py:33: keypos = 0"
+   ],
+   "advance_lines": [
+    "examples/lp_lag5_attack.py:153: k += 1",
+    "examples/lp_lag5_attack.py:243: k += 1",
+    "examples/welcome.py:42: keypos = keypos + 1",
+    "examples/welcome.py:64: keypos = keypos + 1",
+    "experiments/alignment_scan.py:92: k += 1",
+    "experiments/alignment_scan.py:215: k += 1",
+    "experiments/deep_scan.py:67: k += 1",
+    "experiments/lp_cryptodiagnostics.py:589: k += 1",
+    "experiments/mark_forensics.py:217: per_block[int(b)] += 1",
+    "experiments/mechanism_fingerprint.py:346: nk += 1",
+    "experiments/mechanism_fingerprint.py:363: k = (k + 1 + random.randrange(MOD - 1)) % MOD",
+    "experiments/quagmire_runner.py:644: weak += 1",
+    "experiments/thirty_symbol_battery.py:128: k += 1",
+    "experiments/word_repeat_census.py:117: key[w] += 1",
+    "src/aldegonde/pasc.py:141: keyword_index = keyword_index + 1",
+    "src/aldegonde/pasc.py:210: keyword_index = keyword_index + 1",
+    "src/aldegonde/analysis/guballa.py:26: for ($key_idx = 0; $key_idx < $key_len; $key_idx++) {",
+    "src/aldegonde/analysis/guballa.py:28: for ($key_ch1 = 0; $key_ch1 < 26; $key_ch1++) {",
+    "src/aldegonde/analysis/guballa.py:29: for ($key_ch2 = 0; $key_ch2 < 26; $key_ch2++) {"
+   ],
+   "loc": 54940
+  },
+  "cicada-solvers__cicada-library": {
+   "n_code_files": 6,
+   "ciphers": {
+    "gematria": 15,
+    "vigenere": 1,
+    "atbash": 2,
+    "caesar_shift": 11,
+    "totient_prime": 11
+   },
+   "skip_evidence": [
+    "cicada/gematria.py:147: def running_shift(self, key, interrupts=\"\", skip_indices=[], decrypt=True):",
+    "cicada/gematria.py:158: if type(interrupts) == list:",
+    "cicada/gematria.py:159: interrupts = \"\".join(interrupts)",
+    "cicada/gematria.py:164: if c not in self.alpha or c in interrupts.upper():",
+    "cicada/gematria.py:183: def vigenere(self, key, interrupts=[], decrypt=True):",
+    "cicada/gematria.py:185: return self.running_shift(key, interrupts=interrupts, decrypt=decrypt)",
+    "cicada/gematria.py:187: def totient_stream(self, interrupts=\"\", skip_indices=[], decrypt=True):",
+    "cicada/gematria.py:190: interrupts=interrupts,"
+   ],
+   "advance_lines": [],
+   "loc": 585
+  },
+  "cicada-solvers__cicada-runes-2014-transcriber": {
+   "n_code_files": 0,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 0
+  },
+  "cicada-solvers__deep-web-hash-as-ed25519": {
+   "n_code_files": 244,
+   "ciphers": {
+    "hash_bruteforce": 80,
+    "caesar_shift": 35
+   },
+   "skip_evidence": [],
+   "advance_lines": [
+    "ed25519/ed25519-donna/modm-donna-32bit.h:364: for (k = j + b; k < soplen; k++) {",
+    "ed25519/ed25519-donna/modm-donna-64bit.h:270: for (k = j + b; k < soplen; k++) {"
+   ],
+   "loc": 20511
+  },
+  "cicada-solvers__idkfa-web": {
+   "n_code_files": 21,
+   "ciphers": {
+    "totient_prime": 121,
+    "gematria": 81,
+    "caesar_shift": 34,
+    "ngram_scoring": 4
+   },
+   "skip_evidence": [
+    "dist-old/browserfs.js:8387: this.stashOldValue(key, val);",
+    "dist-old/browserfs.js:8423: SimpleSyncRWTransaction.prototype.stashOldValue = function stashOldValue (key, value) {",
+    "lib/shift.js:72: let keyOffset = 0;",
+    "lib/shift.js:79: let charOffset = isReversedShift ? shiftDown(char, arrKeyData[i][keyOffset ++], arrInvertProperties) : shiftUp(char, arrKeyData[i][keyOffset ++], arrInvertProperties);"
+   ],
+   "advance_lines": [
+    "dist-old/browserfs.js:23716: for (var k = 0; k < 8; k++) {",
+    "lib/shift.js:79: let charOffset = isReversedShift ? shiftDown(char, arrKeyData[i][keyOffset ++], arrInvertProperties) : shiftUp(char, arrKeyData[i][keyOffset ++], arrInvertProperties);"
+   ],
+   "loc": 27086
+  },
+  "cicada-solvers__isitcicada": {
+   "n_code_files": 12,
+   "ciphers": {
+    "caesar_shift": 33,
+    "totient_prime": 36,
+    "hash_bruteforce": 45
+   },
+   "skip_evidence": [
+    "assets/js/lib/openpgp.js:6384: //OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)",
+    "assets/js/lib/openpgp.js:14550: var keyIndex = packetlist.indexOfTag(_enums2.default.packet.publicKey, _enums2.default.packet.secretKey);",
+    "assets/js/lib/openpgp.js:14551: if (keyIndex.length === 0) {",
+    "assets/js/lib/openpgp.js:14554: for (var i = 0; i < keyIndex.length; i++) {",
+    "assets/js/lib/openpgp.js:14555: var oneKeyList = packetlist.slice(keyIndex[i], keyIndex[i + 1]);",
+    "assets/js/lib/openpgp.js:17437: this.signingKeyId = null; // An eight-octet number holding the Key ID of the signing key.",
+    "assets/js/lib/openpgp.js:17461: // An eight-octet number holding the Key ID of the signing key.",
+    "assets/js/lib/openpgp.js:18282: * {@link http://tools.ietf.org/html/rfc4880#section-5.1|RFC4880 5.1}: A Public-Key Encrypted Session Key packet holds the session key",
+    "assets/js/lib/openpgp.js:19886: * {@link http://tools.ietf.org/html/rfc4880#section-5.1|RFC4880 5.1}: A Public-Key Encrypted Session Key packet holds the session key"
+   ],
+   "advance_lines": [
+    "assets/js/lib/openpgp.js:6542: result[k++] = left >>> 24;",
+    "assets/js/lib/openpgp.js:6543: result[k++] = left >>> 16 & 0xff;",
+    "assets/js/lib/openpgp.js:6544: result[k++] = left >>> 8 & 0xff;",
+    "assets/js/lib/openpgp.js:6545: result[k++] = left & 0xff;",
+    "assets/js/lib/openpgp.js:6546: result[k++] = right >>> 24;",
+    "assets/js/lib/openpgp.js:6547: result[k++] = right >>> 16 & 0xff;",
+    "assets/js/lib/openpgp.js:6548: result[k++] = right >>> 8 & 0xff;",
+    "assets/js/lib/openpgp.js:6549: result[k++] = right & 0xff;",
+    "assets/js/lib/openpgp.js:10946: if (p < this.DB && (d = this[i] >> p) != (this.s & this.DM) >> p) r[k++] = d | this.s << this.DB - p;",
+    "assets/js/lib/openpgp.js:10960: if (k > 0 || d != this.s) r[k++] = d;",
+    "assets/js/lib/openpgp.js:14013: for (var k = 0; k < primUser.length; k++) {"
+   ],
+   "loc": 22706
+  },
+  "cicada-solvers__liber_primus_finds": {
+   "n_code_files": 0,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 0
+  },
+  "cicada-solvers__libergo": {
+   "n_code_files": 145,
+   "ciphers": {
+    "totient_prime": 383,
+    "transposition": 55,
+    "ngram_scoring": 21,
+    "gematria": 16,
+    "hash_bruteforce": 12,
+    "vigenere": 11,
+    "atbash": 15,
+    "caesar_shift": 47,
+    "affine": 15,
+    "autokey": 12,
+    "substitution_search": 1
+   },
+   "skip_evidence": [
+    "cmd/buildlingdb/main.go:151: mapOfRunes := make(map[string]int64)",
+    "cmd/buildlingdb/main.go:200: _, keyExists := mapOfRunes[character]",
+    "cmd/buildlingdb/main.go:202: mapOfRunes[character]++",
+    "cmd/buildlingdb/main.go:204: mapOfRunes[character] = 1",
+    "cmd/buildlingdb/main.go:235: runeArray := make([]liberdatabase.DocumentCharacter, 0, len(mapOfRunes))",
+    "cmd/buildlingdb/main.go:236: for character, count := range mapOfRunes {",
+    "cmd/rdtext/main.go:151: if currentColIdx == 0 {",
+    "cmd/runesub/main.go:70: func writeMapToExcel(mapOfRunes map[string]int, outputFileName string, runeVal string, totalCount int) {",
+    "cmd/runesub/main.go:111: keys := make([]string, 0, len(mapOfRunes))",
+    "cmd/runesub/main.go:112: for k := range mapOfRunes {",
+    "cmd/runesub/main.go:123: if err := f.SetCellValue(sheetName, fmt.Sprintf(\"B%d\", row), mapOfRunes[k]); err != nil {",
+    "cmd/runesub/main.go:128: percentage := float64(mapOfRunes[k]) / float64(totalCount) * 100",
+    "pkg/utility/cipher/autokey.go:51: keyIndex := indexOf(alphabet, keyChar)",
+    "pkg/utility/cipher/autokey.go:54: plainIndex := (index - keyIndex + len(alphabet)) % len(alphabet)",
+    "pkg/utility/cipher/vigenere.go:78: keyIndex := 0",
+    "pkg/utility/cipher/vigenere.go:99: ki, okK := alphaIndex[cleanKey[keyIndex]]",
+    "pkg/utility/cipher/vigenere.go:101: // Character or key symbol not in alphabet: keep as-is and do not advance key",
+    "pkg/utility/cipher/vigenere.go:116: keyIndex = (keyIndex + 1) % len(cleanKey)"
+   ],
+   "advance_lines": [
+    "pkg/utility/cipher/vigenere.go:116: keyIndex = (keyIndex + 1) % len(cleanKey)",
+    "pkg/utility/hashinglib/lsh/lsh.go:138: for k := padIdx + 1; k < blockBytes; k++ {",
+    "pkg/utility/hashinglib/md6/md6.go:156: for k := 0; k < md6_c && len(data) < r; k++ {",
+    "pkg/utility/hashinglib/streebog/streebog512.go:122: for k := 0; k < 8; k++ {"
+   ],
+   "loc": 18435
+  },
+  "cicada-solvers__lp-decrypter": {
+   "n_code_files": 24,
+   "ciphers": {
+    "gematria": 481,
+    "caesar_shift": 40,
+    "ngram_scoring": 21,
+    "totient_prime": 63
+   },
+   "skip_evidence": [
+    "controller.py:155: print(\"interrupters = \", self.data[\"chosen_interrupters\"])",
+    "controller.py:156: #print(\"interrupters_p = \", self.gem.runes_to_pos(self.data[\"chosen_interrupters\"]))",
+    "controller.py:157: print(\"interrupters_p = \", self.gem.encode_as_position(self.data[\"chosen_interrupters\"],",
+    "controller.py:168: interrupters=self.data[\"chosen_interrupters\"],",
+    "controller.py:169: interrupters_p=self.gem.encode_as_position(",
+    "controller.py:170: self.data[\"chosen_interrupters\"],'forward',0),",
+    "data/data.py:24: data[\"chosen_interrupters\"] = None",
+    "data/data.py:34: data[\"test_interrupter\"] = None",
+    "data/data.py:76: data[\"test_interrupter\"] = None",
+    "data/data.py:109: print(\"test_interrupter = \", self.data[\"test_interrupter\"])",
+    "enc/DecryptModel.py:15: 'dec_map interrupters interrupters_p  '",
+    "enc/DecryptModel.py:27: EncryptionData = namedtuple('EncryptionData', 'method k_shift c_shift ciphertext key interrupter '",
+    "enc/DecryptModel.py:28: 'interrupter_pos_set ct_start_index')",
+    "enc/DecryptModel.py:38: different interrupters, geaatria order/rotations, key offsets in ct, ..",
+    "enc/DecryptModel.py:110: # #interrupters = dec_data.interrupters",
+    "enc/DecryptModel.py:111: # #interrupters_p = dec_data.interrupters_p  # TODO can calculate here",
+    "enc/DecryptModel.py:145: interrupter_counter = 0",
+    "enc/DecryptModel.py:146: interrupter_pos_set_counter = 0",
+    "enc/DecryptModel.py:187: WITH interrupters. Therefore we call this function to crop the CT",
+    "enc/DecryptModel.py:189: rot_crop_ct = self.crop_ct_to_keylen_with_interrupter(rotated_ct, key_length)",
+    "enc/DecryptModel.py:193: ''' CIPHER TEXT INTERRUPTERS, WORTH THINKING ABOUT '''",
+    "enc/DecryptModel.py:194: ''' Are interrupters always encoded as 'normal' forward unshifted gematria?",
+    "enc/DecryptModel.py:196: true, but need  it be? This definition of interrupters we'll call",
+    "enc/DecryptModel.py:198: find every possible combination of every interrupter Not all interrupter",
+    "enc/DecryptModel.py:199: runes in the CT ARE interrupters, they just could be, therefore,",
+    "enc/DecryptModel.py:200: we find all possible sets of each interrupter position in the CT'''",
+    "enc/DecryptModel.py:201: ''' stands for cannonical_interrupter_position_sets '''",
+    "enc/DecryptModel.py:203: # for i in interrupters_p:",
+    "enc/DecryptModel.py:205: #         i] = self.get_all_interrupter_position_lists(rot_crop_ct_p, i)",
+    "enc/DecryptModel.py:208: for interrupter in dec_data.interrupters_p:",
+    "enc/DecryptModel.py:209: interrupter_counter += 1",
+    "enc/DecryptModel.py:210: print(\"interrupter_counter = \", interrupter_counter)",
+    "enc/DecryptModel.py:211: print(\"interrupter = \", interrupter)",
+    "enc/DecryptModel.py:212: interrupter_r = self.gem.pos_to_rune(interrupter)",
+    "enc/DecryptModel.py:213: print(\"interrupter_r = \", interrupter_r)",
+    "enc/DecryptModel.py:214: interrupter_pos_sets = self.get_all_interrupter_position_lists(rot_crop_ct_p,",
+    "enc/DecryptModel.py:215: interrupter)",
+    "enc/DecryptModel.py:216: print(\"interrupter_pos_sets = \", interrupter_pos_sets)",
+    "enc/DecryptModel.py:217: for interrupter_pos_set in interrupter_pos_sets:  # #range(0,",
+    "enc/DecryptModel.py:218: interrupter_pos_set_counter += 1"
+   ],
+   "advance_lines": [
+    "enc/DecryptModel.py:154: ct_key_counter += 1",
+    "enc/DecryptModel.py:404: key_index += 1",
+    "view/gui.py:628: key_index += 1"
+   ],
+   "loc": 8158
+  },
+  "cicada-solvers__lphelper": {
+   "n_code_files": 11,
+   "ciphers": {
+    "vigenere": 3,
+    "atbash": 3,
+    "gematria": 33,
+    "totient_prime": 6,
+    "ngram_scoring": 1
+   },
+   "skip_evidence": [],
+   "advance_lines": [
+    "core.py:154: key_cursor+=1",
+    "core.py:161: key_cursor+=1",
+    "core.py:169: key_cursor+=1"
+   ],
+   "loc": 535
+  },
+  "cicada-solvers__miteo-3301tools": {
+   "n_code_files": 5,
+   "ciphers": {
+    "totient_prime": 8
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 197
+  },
+  "cicada-solvers__monokuma-ConvolutionKernels": {
+   "n_code_files": 1,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 87
+  },
+  "crackalamoo__futhorc": {
+   "n_code_files": 4,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 1536
+  },
+  "ctvrty-rozmer__bruh": {
+   "n_code_files": 5,
+   "ciphers": {
+    "atbash": 1,
+    "caesar_shift": 7,
+    "substitution_search": 1,
+    "gematria": 11
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 322
+  },
+  "dude123124144__Liber-Primus-Runes-OCR": {
+   "n_code_files": 3,
+   "ciphers": {
+    "caesar_shift": 3,
+    "substitution_search": 1
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 522
+  },
+  "geomatria__CicaData": {
+   "n_code_files": 0,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 0
+  },
+  "greenie-neuko__arg-skills": {
+   "n_code_files": 4,
+   "ciphers": {
+    "vigenere": 10,
+    "atbash": 6,
+    "caesar_shift": 18,
+    "transposition": 8
+   },
+   "skip_evidence": [
+    "arg-designer/scripts/cipher_tools.py:73: key_index = 0",
+    "arg-designer/scripts/cipher_tools.py:76: shift = ord(key[key_index % len(key)]) - ord('A')",
+    "arg-designer/scripts/cipher_tools.py:79: key_index += 1",
+    "arg-designer/scripts/cipher_tools.py:91: key_index = 0",
+    "arg-designer/scripts/cipher_tools.py:94: shift = ord(key[key_index % len(key)]) - ord('A')",
+    "arg-designer/scripts/cipher_tools.py:97: key_index += 1"
+   ],
+   "advance_lines": [
+    "arg-designer/scripts/cipher_tools.py:79: key_index += 1",
+    "arg-designer/scripts/cipher_tools.py:97: key_index += 1"
+   ],
+   "loc": 738
+  },
+  "harry-sar__3301-gematria-primus-solver": {
+   "n_code_files": 1,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 28
+  },
+  "hugvig__liber-primus-research": {
+   "n_code_files": 1,
+   "ciphers": {
+    "atbash": 3,
+    "caesar_shift": 5
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 147
+  },
+  "jens-wedin__liber-primus": {
+   "n_code_files": 13,
+   "ciphers": {
+    "vigenere": 21,
+    "atbash": 12,
+    "caesar_shift": 18,
+    "totient_prime": 93,
+    "substitution_search": 7,
+    "gematria": 21,
+    "ngram_scoring": 55,
+    "autokey": 24,
+    "running_key": 21
+   },
+   "skip_evidence": [
+    "analyze_unsolved.py:83: for interrupt in (frozenset(), frozenset({0})):",
+    "analyze_unsolved.py:84: tag = f\"{name}{'+' if sign > 0 else '-'}{'F-skip' if interrupt else ''}\"",
+    "analyze_unsolved.py:85: consider(tag, lambda ix, st=stream, sg=sign, itr=interrupt:",
+    "analyze_unsolved.py:86: c.keystream_decrypt(ix, st(), sign=sg, interrupt=itr))",
+    "attack_keycrib.py:8: Cicada has form for self-reference. Feed the key-skip beam decoder",
+    "attack_keycrib.py:12: beam recovers English.",
+    "attack_keycrib.py:40: def part_a(segs, model, head, beam, max_skip):",
+    "attack_keycrib.py:41: from attack_keyskip import beam_decode",
+    "attack_keycrib.py:67: sc, dec = beam_decode(ix, Kx, 0, sign, model, beam, max_skip)",
+    "attack_keycrib.py:159: ap.add_argument(\"--beam\", type=int, default=200)",
+    "attack_keycrib.py:167: part_a(segs, model, args.head, args.beam, args.max_skip)",
+    "attack_keyskip.py:1: \"\"\"Beam-search attack on the key-skip hypothesis.",
+    "attack_keyskip.py:7: hidden skip. But the skips are ~3% of positions, so a beam search over",
+    "attack_keyskip.py:12: interrupter\". A negative result rules that family out; a positive one breaks",
+    "attack_keyskip.py:15: Usage: python3 attack_keyskip.py [--beam 200] [--max-skip 2]",
+    "attack_keyskip.py:39: def beam_decode(cipher, K, start, sign, model, beam_width, max_skip):",
+    "attack_keyskip.py:46: beams = [(0.0, start, (), ())]",
+    "attack_keyskip.py:49: for score, j, hist, path in beams:",
+    "attack_keyskip.py:56: beams = nxt[:beam_width]",
+    "attack_keyskip.py:57: best = beams[0]",
+    "attack_keyskip.py:70: \"\"\"Encrypt known English with prime key-skip, then confirm the beam",
+    "attack_keyskip.py:78: _, dec = beam_decode(ct, K, 0, -1, model, beam_width=400, max_skip=2)",
+    "attack_keyskip.py:81: print(f\"selftest: prime key-skip round-trip, beam recovered {acc*100:.0f}% \"",
+    "attack_keyskip.py:88: ap.add_argument(\"--beam\", type=int, default=300)",
+    "attack_keyskip.py:130: sc, dec = beam_decode(ix, K, start, sign, model,",
+    "attack_keyskip.py:131: args.beam, args.max_skip)",
+    "attack_runningkey.py:5: look like English at once. We beam-search plaintext hypotheses p; each fixes",
+    "attack_runningkey.py:15: Usage: python3 attack_runningkey.py [--order 3] [--beam 800] [--head 120]",
+    "attack_runningkey.py:29: def beam_running_key(cipher, model, beam_width):",
+    "attack_runningkey.py:33: beams = [(0.0, (), (), ())]",
+    "attack_runningkey.py:36: for score, ph, kh, path in beams:",
+    "attack_runningkey.py:44: beams = nxt[:beam_width]",
+    "attack_runningkey.py:45: best = beams[0]",
+    "attack_runningkey.py:68: ap.add_argument(\"--beam\", type=int, default=800)",
+    "attack_runningkey.py:76: rk_score, rk_dec = beam_running_key(sample_ct, model, args.beam)",
+    "attack_runningkey.py:80: rand_score, _ = beam_running_key(rand_ct, model, args.beam)",
+    "attack_runningkey.py:84: print(f\"CALIBRATION (order-{args.order} model, beam {args.beam}, \"",
+    "attack_runningkey.py:109: sc, dec = beam_running_key(ix, model, args.beam)",
+    "attack_runningkey.py:129: print(\"Inconclusive: raise --order/--beam/--head, or crib a specific \"",
+    "ciphers.py:7: - Interrupters: in several solved pages, ciphertext ᚠ (index 0) is a literal"
+   ],
+   "advance_lines": [],
+   "loc": 1830
+  },
+  "krcdavis__cicada-tools": {
+   "n_code_files": 8,
+   "ciphers": {
+    "caesar_shift": 2,
+    "totient_prime": 11,
+    "atbash": 2
+   },
+   "skip_evidence": [],
+   "advance_lines": [
+    "brute.py:36: k = (k+1)%q",
+    "solved.py:37: k = (k+1)%8",
+    "solved.py:111: k = (k+1)%len(firf)",
+    "solved.py:145: k +=1"
+   ],
+   "loc": 567
+  },
+  "lipeeeee__gematria": {
+   "n_code_files": 11,
+   "ciphers": {
+    "gematria": 62,
+    "hash_bruteforce": 24,
+    "atbash": 8,
+    "totient_prime": 39,
+    "vigenere": 2,
+    "caesar_shift": 12
+   },
+   "skip_evidence": [
+    "lib/gematria.py:180: def running_shift(self, key, interrupts=\"\", skip_indices=[], decrypt=True):",
+    "lib/gematria.py:192: if type(interrupts) == list:",
+    "lib/gematria.py:193: interrupts = \"\".join(interrupts)",
+    "lib/gematria.py:198: if c not in self.alpha or c in interrupts.upper():",
+    "lib/gematria.py:217: def vigenere(self, key, interrupts=[], decrypt=True):",
+    "lib/gematria.py:220: return self.running_shift(key, interrupts=interrupts, decrypt=decrypt)",
+    "lib/gematria.py:222: def totient_stream(self, interrupts=\"\", skip_indices=[], decrypt=True):",
+    "lib/gematria.py:226: interrupts=interrupts,"
+   ],
+   "advance_lines": [],
+   "loc": 1477
+  },
+  "micheloosterhof__aldegonde": {
+   "n_code_files": 327,
+   "ciphers": {
+    "vigenere": 159,
+    "beaufort": 212,
+    "autokey": 434,
+    "totient_prime": 966,
+    "ngram_scoring": 1290,
+    "caesar_shift": 134,
+    "affine": 60,
+    "substitution_search": 44,
+    "atbash": 37,
+    "transposition": 70,
+    "gematria": 37,
+    "running_key": 20,
+    "playfair": 29,
+    "hill_cipher": 1
+   },
+   "skip_evidence": [
+    "lp.py:190: # friedman.friedman_test_with_interrupter(seg, alphabet=c3301.CICADA_ALPHABET, maxperiod=34)",
+    "examples/crack_masc.py:3: # IDEAS: simmulated annealing",
+    "examples/crack_masc.py:107: \"\"\"Break ``ciphertext`` using hill climbing.",
+    "examples/crack_masc.py:112: you need to run, because the hill climbing will lead to the best answer faster.",
+    "examples/crack_masc.py:126: ntrials (int): The number of times to run the hill climbing algorithm",
+    "examples/crack_masc.py:155: # Outer climb reruns hill climb ntrials number of times each time at a different start location",
+    "examples/crack_masc.py:158: key, best_score, outputs = hill_climb(nswaps, node[:], next_node_inner_climb)",
+    "examples/crack_masc.py:166: _, _, decryptions = hill_climb(ntrials, starter_node, next_node_outer_climb)",
+    "examples/crack_masc.py:175: def hill_climb(",
+    "examples/crack_masc.py:178: \"\"\"Modular hill climbing algorithm.",
+    "examples/crack_masc.py:187: >>> final_node, best_score, outputs = hill_climb(10, \"ABC\", get_next_node)",
+    "examples/crack_shift.py:3: # IDEAS: simmulated annealing",
+    "examples/gorod_krovi_cipher12.py:317: def hill_climb_autokey(ct: str, iterations: int = 5000, restarts: int = 30) -> None:",
+    "examples/gorod_krovi_cipher12.py:483: hill_climb_autokey(ct, iterations=5000, restarts=30)",
+    "examples/lp_lag5_analysis.py:10: interruptors; the transcription has one extra rune around",
+    "examples/lp_lag5_attack.py:2: \"\"\"Liber Primus period-5 interruptor attack.",
+    "examples/lp_lag5_attack.py:6: irregular interruptors. This script attacks that hypothesis directly and",
+    "examples/lp_lag5_attack.py:18: * plain period-5 (no interruptor)",
+    "examples/lp_lag5_attack.py:19: * \"skip:R\"  -- ciphertext rune R is an interruptor: emitted literally,",
+    "examples/lp_lag5_attack.py:20: key does not advance (the rule used on solved LP pages)",
+    "examples/lp_lag5_attack.py:36: 5-shift key and an interruptor) is cracked exactly -- key and full",
+    "examples/lp_lag5_attack.py:134: \"\"\"Key phase per position and a mask of literal (interruptor) positions.\"\"\"",
+    "examples/simanneal_masc.py:9: from simanneal import Annealer",
+    "examples/simanneal_masc.py:69: class crack_with_simanneal(Annealer):",
+    "examples/simanneal_masc.py:71: local class that uses simanneal",
+    "examples/simanneal_masc.py:91: def solve_anneal(ciphertext: str) -> None:",
+    "examples/simanneal_masc.py:94: tsp = crack_with_simanneal(initial_state)",
+    "examples/simanneal_masc.py:104: out, score = tsp.anneal()",
+    "examples/simanneal_masc.py:112: solve_anneal(CT)",
+    "examples/simanneal_pasc.py:11: from simanneal import Annealer",
+    "examples/simanneal_pasc.py:43: class simple_vigenere_solver(Annealer):",
+    "examples/simanneal_pasc.py:65: class custom_vigenere_solver(Annealer):",
+    "examples/simanneal_pasc.py:139: out, score = tsp.anneal()",
+    "examples/simanneal_pasc.py:160: out, score = tsp.anneal()",
+    "examples/simanneal_pasc.py:167: def solve_anneal(ciphertext: str) -> None:",
+    "examples/simanneal_pasc.py:182: solve_anneal(CT)",
+    "examples/welcome.py:22: def beaufort_decrypt_interrupted(",
+    "examples/welcome.py:25: interruptors: list[int] = [],",
+    "examples/welcome.py:30: interruptors is list of positions where encryption (re)starts",
+    "examples/welcome.py:33: keypos = 0"
+   ],
+   "advance_lines": [
+    "examples/lp_lag5_attack.py:153: k += 1",
+    "examples/lp_lag5_attack.py:243: k += 1",
+    "examples/welcome.py:42: keypos = keypos + 1",
+    "examples/welcome.py:64: keypos = keypos + 1",
+    "experiments/alignment_scan.py:188: k += 1",
+    "experiments/deep_scan.py:64: k += 1",
+    "experiments/lp_cryptodiagnostics.py:588: k += 1",
+    "experiments/mark_forensics.py:213: per_block[int(b)] += 1",
+    "experiments/mechanism_fingerprint.py:345: nk += 1",
+    "experiments/mechanism_fingerprint.py:362: k = (k + 1 + random.randrange(MOD - 1)) % MOD",
+    "experiments/quagmire_runner.py:643: weak += 1",
+    "experiments/thirty_symbol_battery.py:128: k += 1",
+    "experiments/word_repeat_census.py:116: key[w] += 1",
+    "src/aldegonde/pasc.py:141: keyword_index = keyword_index + 1",
+    "src/aldegonde/pasc.py:210: keyword_index = keyword_index + 1",
+    "src/aldegonde/analysis/guballa.py:26: for ($key_idx = 0; $key_idx < $key_len; $key_idx++) {",
+    "src/aldegonde/analysis/guballa.py:28: for ($key_ch1 = 0; $key_ch1 < 26; $key_ch1++) {",
+    "src/aldegonde/analysis/guballa.py:29: for ($key_ch2 = 0; $key_ch2 < 26; $key_ch2++) {"
+   ],
+   "loc": 63312
+  },
+  "micheloosterhof__cicada-2016": {
+   "n_code_files": 0,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 0
+  },
+  "naliferopoulos__3301": {
+   "n_code_files": 5,
+   "ciphers": {
+    "vigenere": 7,
+    "atbash": 7,
+    "totient_prime": 26,
+    "gematria": 2
+   },
+   "skip_evidence": [
+    "lputils/crypto.py:57: key_idx = lputils.conversions.english_to_index(key)",
+    "lputils/crypto.py:58: key_pos = 0",
+    "lputils/crypto.py:64: res.append((arr[i] - key_idx[key_pos % len(key)]) % 29)",
+    "lputils/crypto.py:65: key_pos = key_pos + 1",
+    "lputils/crypto.py:98: key_idx = lputils.conversions.english_to_index(kwargs['key'])"
+   ],
+   "advance_lines": [
+    "lputils/crypto.py:65: key_pos = key_pos + 1"
+   ],
+   "loc": 319
+  },
+  "neuroretransmit__liberprimus-tool": {
+   "n_code_files": 17,
+   "ciphers": {
+    "vigenere": 9,
+    "atbash": 16,
+    "caesar_shift": 32,
+    "running_key": 6,
+    "totient_prime": 10,
+    "gematria": 8,
+    "ngram_scoring": 1
+   },
+   "skip_evidence": [
+    "main.py:14: from ga.ga import GeneticAlgorithm",
+    "main.py:71: ga = GeneticAlgorithm(1.1, initial_pool=[SOLUTIONS[12], SOLUTIONS[1]])",
+    "specs.py:47: \"key_index\": lambda: random.randint(0, len(\"MUTATED\") - 1),",
+    "specs.py:106: key_index=0,",
+    "specs.py:116: @param key_index The index into the key to start at",
+    "specs.py:126: self.key_index = key_index",
+    "specs.py:180: # Used by ga.py (Genetic Algorithm)",
+    "specs.py:202: key_index=self.crypto.key_index,",
+    "crypto/running_key.py:7: key_index=0,",
+    "crypto/running_key.py:16: key_index = key_index",
+    "crypto/running_key.py:36: (lookup_keys.index(c) - key[key_index]) % len(lookup_keys)",
+    "crypto/running_key.py:39: key_index += 1",
+    "crypto/vigenere.py:13: key_index=0,",
+    "crypto/vigenere.py:17: key_index = key_index",
+    "crypto/vigenere.py:24: shift = shifts[key_index % len(shifts)]",
+    "crypto/vigenere.py:45: key_index += 1",
+    "crypto/vigenere.py:58: key_index += 1",
+    "db/db.py:53: key_index,",
+    "db/db.py:62: f\"\"\"INSERT INTO {self.TABLE_NAME} (section, nums, scheme, key, shift, key_index, max_confidence, max_confidence_lang, skips, excludes)",
+    "db/db.py:70: key_index,",
+    "db/db.py:81: def solution_exists(self, section, nums, scheme, key, shift, key_index, skips, excludes):",
+    "db/db.py:92: if key_index is None:",
+    "db/db.py:93: sql += \" AND key_index IS NULL\"",
+    "db/db.py:95: sql += \" AND key_index = %s\"",
+    "db/db.py:114: key_index,",
+    "ga/ga.py:8: class GeneticAlgorithm:",
+    "ga/ga.py:52: offspring.crypto.key_index,",
+    "ga/ga.py:73: offspring.crypto.key_index,"
+   ],
+   "advance_lines": [
+    "crypto/running_key.py:39: key_index += 1",
+    "crypto/vigenere.py:45: key_index += 1",
+    "crypto/vigenere.py:58: key_index += 1"
+   ],
+   "loc": 1340
+  },
+  "nexon33__cicada3301": {
+   "n_code_files": 5,
+   "ciphers": {
+    "caesar_shift": 1
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 1276
+  },
+  "r4nd0mD3v3l0p3r__LiberPrimusSolver": {
+   "n_code_files": 29,
+   "ciphers": {
+    "affine": 8,
+    "atbash": 21,
+    "caesar_shift": 33,
+    "totient_prime": 90,
+    "hill_cipher": 17,
+    "vigenere": 16
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 1036
+  },
+  "ralphatobe__cicada-3301": {
+   "n_code_files": 6,
+   "ciphers": {
+    "gematria": 1
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 545
+  },
+  "relikd__LiberPrayground": {
+   "n_code_files": 29,
+   "ciphers": {
+    "caesar_shift": 30,
+    "vigenere": 13,
+    "affine": 25,
+    "autokey": 12,
+    "totient_prime": 57,
+    "substitution_search": 2,
+    "gematria": 4,
+    "ngram_scoring": 108,
+    "running_key": 10,
+    "hash_bruteforce": 4
+   },
+   "skip_evidence": [
+    "oeis.py:95: vals.insert(z, -1)  # insert interrupts",
+    "playground.py:23: h : Highlight occurrences of interrupt jumps (hj or hj 28)",
+    "playground.py:203: irp_set = [x for x in SOLVER.INTERRUPT_POS if x <= len(res)]",
+    "playground.py:211: i += 1  # first occurrence of interrupt is index 1",
+    "playground.py:214: print(f'\\nInterrupt({LP.RUNES[irp]}): {bits}\\n{txt}')",
+    "playground.py:232: SOLVER.KEY_OFFSET = get_cmd_int(cmd, args, 'offset')",
+    "playground.py:234: SOLVER.KEY_POST_PAD = get_cmd_int(cmd, args, 'post padding')",
+    "playground.py:245: SOLVER.INTERRUPT_POS = pos",
+    "playground.py:246: print(f'set interrupt jumps: {SOLVER.INTERRUPT_POS}')",
+    "probability.py:10: db_i = LP.InterruptIndices()",
+    "probability.py:12: db = LP.InterruptDB.load('db_norm')",
+    "probability.py:15: db = LP.InterruptDB.load('db_high')",
+    "probability.py:20: #  Perform heuristic search on the keylength, interrupts, and key",
+    "probability.py:40: outfmt = 'IoC: {}, interrupt: {}, count: {}, solver: {}'",
+    "probability.py:64: slvr.INTERRUPT = LP.RUNES[irp]",
+    "probability.py:65: slvr.INTERRUPT_POS = skips",
+    "probability.py:75: if False:  # longest uninterrupted text",
+    "probability.py:76: pos, lg = LP.longest_no_interrupt(data, interrupt=0, irpmax=0)",
+    "solver.py:28: slvr.INTERRUPT = 'ᚠ'",
+    "solver.py:29: slvr.INTERRUPT_POS = [4, 5, 6, 7, 10, 11, 14, 18, 20, 21, 25]",
+    "solver.py:37: slvr.INTERRUPT = 'ᚠ'",
+    "solver.py:38: slvr.INTERRUPT_POS = [2, 3]",
+    "solver.py:42: slvr.INTERRUPT = 'ᚠ'",
+    "solver.py:43: slvr.INTERRUPT_POS = [4]",
+    "solver.py:83: # slvr.INTERRUPT = 'ᛝ'",
+    "solver.py:84: # slvr.INTERRUPT_POS = [1]",
+    "LP/FailedAttempts.py:31: def guess_single(self, data, interrupt_chr=None):",
+    "LP/FailedAttempts.py:35: all_interrupts = []",
+    "LP/FailedAttempts.py:36: if interrupt_chr:",
+    "LP/FailedAttempts.py:38: if x.rune == interrupt_chr:",
+    "LP/FailedAttempts.py:39: all_interrupts.append(i)",
+    "LP/FailedAttempts.py:46: if (i * self.gramsize + u) in all_interrupts:",
+    "LP/FailedAttempts.py:54: def guess(self, data, interrupt_chr=None):",
+    "LP/FailedAttempts.py:58: self.guess_single(data[i:], interrupt_chr)",
+    "LP/InterruptDB.py:4: from InterruptSearch import InterruptSearch",
+    "LP/InterruptDB.py:5: from InterruptIndices import InterruptIndices",
+    "LP/InterruptDB.py:13: #  InterruptDB  :  Perform heuristic search on best possible interrupts.",
+    "LP/InterruptDB.py:16: class InterruptDB(object):",
+    "LP/InterruptDB.py:17: def __init__(self, data, interrupt, irp_stops=None):",
+    "LP/InterruptDB.py:18: self.irp = interrupt"
+   ],
+   "advance_lines": [],
+   "loc": 4194
+  },
+  "resvolver__c1cada": {
+   "n_code_files": 3,
+   "ciphers": {
+    "caesar_shift": 59,
+    "totient_prime": 10,
+    "gematria": 1,
+    "ngram_scoring": 13,
+    "transposition": 1
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 410
+  },
+  "rtkd__iddt": {
+   "n_code_files": 20,
+   "ciphers": {
+    "hash_bruteforce": 2
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 1316
+  },
+  "rtkd__idkfa": {
+   "n_code_files": 17,
+   "ciphers": {
+    "totient_prime": 107,
+    "gematria": 73,
+    "caesar_shift": 3,
+    "ngram_scoring": 2
+   },
+   "skip_evidence": [
+    "lib/shift.js:72: let keyOffset = 0;",
+    "lib/shift.js:79: let charOffset = isReversedShift ? shiftDown(char, arrKeyData[i][keyOffset ++], arrInvertProperties) : shiftUp(char, arrKeyData[i][keyOffset ++], arrInvertProperties);"
+   ],
+   "advance_lines": [
+    "lib/shift.js:79: let charOffset = isReversedShift ? shiftDown(char, arrKeyData[i][keyOffset ++], arrInvertProperties) : shiftUp(char, arrKeyData[i][keyOffset ++], arrInvertProperties);"
+   ],
+   "loc": 2239
+  },
+  "rtkd__kerry": {
+   "n_code_files": 1,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [
+    "kerry.js:16: for (var k = 0, kk = kerriegationLength - kerryFactor.length; k < kk; k ++) kerryFactor.push(kerryFactor[k]);",
+    "kerry.js:18: for (var k = 0, kk = 0, kkk = kerriegationLength; k < kkk; k ++)",
+    "kerry.js:28: kk ++;"
+   ],
+   "loc": 34
+  },
+  "scream314__cicada3301": {
+   "n_code_files": 2,
+   "ciphers": {
+    "transposition": 1,
+    "totient_prime": 7
+   },
+   "skip_evidence": [],
+   "advance_lines": [
+    "assets/2014/stage03/col.c:143: curkey++;"
+   ],
+   "loc": 196
+  },
+  "seeker-it__3301-gematria": {
+   "n_code_files": 1,
+   "ciphers": {
+    "totient_prime": 16,
+    "gematria": 1,
+    "ngram_scoring": 4
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 81
+  },
+  "taraweling__Cicada3301": {
+   "n_code_files": 7,
+   "ciphers": {},
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 1142
+  },
+  "thecornerspore-dev__rune_swiss": {
+   "n_code_files": 1,
+   "ciphers": {
+    "vigenere": 22,
+    "atbash": 28,
+    "caesar_shift": 54,
+    "totient_prime": 34,
+    "playfair": 33
+   },
+   "skip_evidence": [
+    "rune_swiss.py:198: key_index = 0",
+    "rune_swiss.py:205: decrypted_value = (rune_to_decimal[rune] - key_decimal[key_index]) % 29",
+    "rune_swiss.py:207: key_index = (key_index + 1) % len(key_decimal)"
+   ],
+   "advance_lines": [
+    "rune_swiss.py:207: key_index = (key_index + 1) % len(key_decimal)"
+   ],
+   "loc": 549
+  },
+  "tweqx__dwh-check": {
+   "n_code_files": 1,
+   "ciphers": {
+    "hash_bruteforce": 4
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 75
+  },
+  "wtf-jik__cicada3301": {
+   "n_code_files": 1,
+   "ciphers": {
+    "atbash": 1
+   },
+   "skip_evidence": [],
+   "advance_lines": [],
+   "loc": 107
+  },
+  "ztlw30813__cicada3301": {
+   "n_code_files": 4,
+   "ciphers": {
+    "vigenere": 47,
+    "beaufort": 20,
+    "atbash": 21,
+    "caesar_shift": 96,
+    "autokey": 14,
+    "totient_prime": 116,
+    "playfair": 20,
+    "substitution_search": 4,
+    "gematria": 36,
+    "ngram_scoring": 38,
+    "affine": 10,
+    "running_key": 4,
+    "transposition": 20,
+    "hill_cipher": 6
+   },
+   "skip_evidence": [
+    "cicada_helper.py:516: except KeyboardInterrupt:",
+    "cicada_helper.py:561: except KeyboardInterrupt:",
+    "decryptor.py:164: key_idx = 0",
+    "decryptor.py:167: shift = ord(key[key_idx % len(key)]) - ord('A')",
+    "decryptor.py:170: key_idx += 1",
+    "decryptor.py:361: key_idx = 0",
+    "decryptor.py:364: key_char = ord(key[key_idx % len(key)]) - ord('A')",
+    "decryptor.py:368: key_idx += 1",
+    "decryptor.py:787: key_idx = 0",
+    "decryptor.py:790: if key_idx < len(key):",
+    "decryptor.py:791: shift = ord(key[key_idx].upper()) - ord('A')",
+    "decryptor.py:796: key_idx += 1",
+    "decryptor.py:809: key_idx = 0",
+    "decryptor.py:812: shift = key[key_idx % len(key)]",
+    "decryptor.py:815: key_idx += 1",
+    "rsa_cracker.py:767: except KeyboardInterrupt:"
+   ],
+   "advance_lines": [
+    "decryptor.py:170: key_idx += 1",
+    "decryptor.py:368: key_idx += 1",
+    "decryptor.py:796: key_idx += 1",
+    "decryptor.py:815: key_idx += 1"
+   ],
+   "loc": 2647
+  }
+ }
+}

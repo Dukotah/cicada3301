@@ -277,12 +277,22 @@ def conflicts_block():
             "reading_a": {"source": "canon (krisyotam / relikd / rtkd)"},
             "reading_b": {"source": "henkman/liberprimus, repo created 2016-08-14",
                           "n_runes_total": 13072},
-            "adjudication": ("Only page 56 (AN END) is solved and therefore adjudicable: canon's "
-                             "ᛉ (X) decrypts to THERE EXISTS A PAGE, henkman's ᛚ (L) to "
-                             "HERE EXISTS A PAGE. Canon is correct there. The other 8 pages are "
-                             "unsolved and CANNOT be adjudicated without the images."),
-            "detail": "corpus/B-liber-primus/CONFLICT-henkman-2016.json (full difflib edit script)",
-            "status": "recorded, mostly unadjudicated",
+            "adjudication": (
+                "ALL FOUR substantive glyph conflicts are now DECIDED, and all four go to canon. "
+                "(1) page 56 rune 19: canon ᛉ (X) decrypts to THERE EXISTS A PAGE, henkman ᛚ (L) "
+                "to HERE EXISTS A PAGE - the published plaintext is THERE. "
+                "(2) page 33 rune 100 and (3) page 33 rune 117: the SHA-1-pinned 400-DPI onion7 "
+                "render shows ᛒ (two stacked triangles), not ᚹ (one small triangle); page 33 "
+                "line 7 carries a genuine ᚹ two runes away for scale-matched contrast. "
+                "(4) page 35: both transcriptions have 271 runes, so it is a transposition, not "
+                "an insertion - the image line reads ᚣᛏᛝᛡᚩᛒ, i.e. canon. "
+                "The remaining 9 edit blocks are bulk deletes (canon has runs henkman lacks), the "
+                "signature of dropped lines. henkman is a copy of the resvolver/c1cada 2015-01-23 "
+                "draft with ONE rune changed, so it is not an independent witness at all - see "
+                "corpus/B-liber-primus/LINEAGE-2015.json."),
+            "detail": ("corpus/B-liber-primus/CONFLICT-henkman-2016.json (full difflib edit "
+                       "script); ADJUDICATION-page56.md; ADJUDICATION-pages33-35-images.md"),
+            "status": "recorded and fully adjudicated - canon 4/4",
         },
         {
             "id": "C-07",

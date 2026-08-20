@@ -36,6 +36,8 @@ EXPLICIT = {
         "https://zenodo.org/api/records/18199474/files/liber-primus__keys.txt/content",
     "zenodo_18199474/metodo.txt":
         "https://zenodo.org/api/records/18199474/files/metodo.txt/content",
+    "resvolver__c1cada/_history/transcriptions_42d33941_2015-01-16.rne":
+        "https://api.github.com/repos/resvolver/c1cada/contents/transcriptions.rne?ref=42d33941",
 }
 
 # Derived deliverables of this lane (in-repo, not fetched).
@@ -43,6 +45,9 @@ DERIVED = [
     ("corpus/B-liber-primus/PAGES.json", "built by corpus/B-liber-primus/build_pages.py"),
     ("corpus/B-liber-primus/hunt_results.json", "built by corpus/B-liber-primus/hunt_transcriptions.py"),
     ("corpus/B-liber-primus/CONFLICT-henkman-2016.json", "built by corpus/B-liber-primus/align_henkman.py"),
+    ("corpus/B-liber-primus/LINEAGE-2015.json", "built by corpus/B-liber-primus/lineage_2015.py"),
+    ("corpus/B-liber-primus/hunt2/code_hits.tsv", "GitHub code search, 7 rune-substring probes"),
+    ("corpus/B-liber-primus/hunt2/repo_dates.tsv", "GitHub API repos/<owner>/<repo> for every code-search hit"),
 ]
 
 

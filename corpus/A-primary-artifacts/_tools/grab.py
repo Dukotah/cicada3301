@@ -74,7 +74,11 @@ def grab(dest, url, note=""):
 
 def main():
     data = load()
-    seen = {i["path"] for i in data["items"]}
+    # A path counts as already-collected only if the manifest has a row for it AND
+    # the bytes are actually on disk. A manifest row whose file is missing (crashed
+    # run, failed fetch) must be retried, not skipped.
+    seen = {i["path"] for i in data["items"]
+            if (ROOT / i["path"]).exists() and (ROOT / i["path"]).stat().st_size > 0}
     jobs = []
     if sys.argv[1] == "--batch":
         for line in Path(sys.argv[2]).read_text(encoding="utf-8").splitlines():
