@@ -201,6 +201,21 @@ keying, transposition-only, fractionation, substitution/homophonic, image stego,
 re-transcription, or pp49–51 as a runic key. Every one is eliminated with a reason and a
 reproduce pointer.
 
+## Round 16 — Derived-keystream armada (2026-08-23)
+
+Six pre-registered lanes; 0 hits; all positive controls PASS.
+
+| Lane | Tested | Verdict |
+|---|---|---|
+| **scorer** | Matched runic quadgram scorer (multi-char transliteration corrections) | **BOUND** — instrument production-ready; POC's SD-improvement claim not reproduced (+3.6% sigma sep, not +18%) |
+| **A-03** | Haplography count-audit of 86 doublet sites | **BOUND** — K_bound=26 < K_needed=93 for autokey restoral; 3 convergent tests; K_est=0 |
+| **zeroFP** | E-01 RSA/PKCS#1 (partial), E-02A/B permutation+correlation (complete), H-03 cookie XOR (complete), H-01 HTTP (partial) | **NEGATIVE** (3/4 sub-tests complete nulls at FP ~1e-24; E-01 coverage-limited — 7A35090F moduli not fetched) |
+| **F-01** | LP2-as-key inversion against all held Cicada objects | **NEGATIVE** — 40 decodes, best −7.032 vs bar −5.500; RECON-A never-run item F-01 resolved |
+| **KDF** | Key stretching (PBKDF2/scrypt/EVP/iterated-hash) — the primary B-04 not_covered extension | **NEGATIVE** — 692,064 decodes, 27 KDF configs × 534 secrets × 3 salts × 16 decode variants, best −6.259 vs bar −5.500; **first measured negative over key stretching** |
+| **PRNG family** | 7 uncovered generators (PHP `mt_rand`, .NET, ISAAC, BBS ×2, LFSR32, Geffe) | **NEGATIVE** — 52,556 decodes over 1,877 seeds × 7 generators, best −6.347 vs bar −5.500 |
+
+Full detail: [`liber-primus/analysis/round16/SYNTHESIS.md`](liber-primus/analysis/round16/SYNTHESIS.md).
+
 ## Round 12 — the "honest best shot" campaign (2026-08-17, committed 2026-08-19 at `06003eb`)
 
 Six fronts ran; the campaign plan is `liber-primus/analysis/round12/CAMPAIGN-PLAN.md`.
@@ -336,6 +351,28 @@ _Further superseded 2026-08-17 by Round 12 D3: the framing below ("nothing in th
 close any of it") is exactly the overreach D3 caught. The **derived-key dictionary is internal,
 tractable and never-run** — it needs no external input at all. Items 1–4 below remain accurate as
 the list of *external* leads._
+
+> **Updated 2026-08-23 (Round 16).** Items B and C (KDF key stretching, PRNG uncovered
+> generators) are now partially measured negatives, not untested extensions. KDF: 692,064
+> decodes across 27 configs × 534 secrets × 3 salts — first measured negative. PRNG: 7
+> previously-uncovered generators × 1,877 seeds. Both remain coverage-bounded (not closed).
+> F-01 (LP2-as-key) is now a measured negative over all held Cicada objects (40 configs).
+> See `analysis/round16/SYNTHESIS.md` for what each bound covers and what remains.
+
+**Internal derived-keystream branch — coverage-bounded, not closed:**
+
+A. **KDF extensions:** Argon2, bcrypt, salts outside the 3 Stage-A salts (especially
+   onion-derived, pp49-51-derived), secrets outside the 534-item dictionary, per-page/
+   position-varying salts, multi-stage constructions, KDF offset ≠ 0. The 692,064
+   already-swept configs are in `LEDGER.json` entry `R16-KDF` — do not re-run those.
+
+B. **PRNG seed coverage:** hour-stride seeds (×24 per generator), offsets ≠ 0 (×~100),
+   full 2^32 (×~250 per generator), KISS/MWC/WELL/lagged Fibonacci. The 52,556
+   already-swept decodes are in `LEDGER.json` entry `R16-PRNG` — do not re-run those.
+
+C. **E-01 (RSA/PKCS#1 completion):** the 7A35090F RSA-4096 primary + subkey moduli are the
+   right size for the 256-byte payload and have never been checked. Script at
+   `analysis/round16/zeroFP/zerofp_tests.py` accepts additional moduli.
 
 What is left externally is **low-prior**:
 

@@ -1,0 +1,99 @@
+{
+  "lane": "round16/scorer",
+  "date": "2026-08-23",
+  "trust_anchor": "tests/validate.py \u2014 ALL VALIDATIONS PASSED (confirmed before this run)",
+  "matched_model": {
+    "description": "Quadgrams retrained on English pushed through rune round-trip (K->C, V->U, Z->S, Q->C, multi-char rune groupings preserved)",
+    "n_distinct_quadgrams": 68083,
+    "total_count": 7266795
+  },
+  "solved_pages": [
+    {
+      "page": "A WARNING",
+      "file": "Runes - 01.jpg",
+      "n_chars": 199,
+      "old_score": -4.4784,
+      "new_score": -4.1943
+    },
+    {
+      "page": "SOME WISDOM",
+      "file": "05.jpg",
+      "n_chars": 169,
+      "old_score": -4.9789,
+      "new_score": -4.7744
+    },
+    {
+      "page": "A KOAN",
+      "file": "06.jpg",
+      "n_chars": 772,
+      "old_score": -4.1275,
+      "new_score": -4.0816
+    },
+    {
+      "page": "WELCOME",
+      "file": "03.jpg",
+      "n_chars": 409,
+      "old_score": -4.3436,
+      "new_score": -4.2381
+    },
+    {
+      "page": "CIRCUMFERENCE",
+      "file": "14.jpg",
+      "n_chars": 338,
+      "old_score": -4.2434,
+      "new_score": -3.9522
+    }
+  ],
+  "null": {
+    "construction": "200 random-keystream decodes of A KOAN (06.jpg) ciphertext",
+    "n_decodes": 200,
+    "ciphertext_runes": 742,
+    "old": {
+      "n": 200,
+      "mean": -7.5032,
+      "sd": 0.088,
+      "min": -7.6764,
+      "max": -7.2125
+    },
+    "new": {
+      "n": 200,
+      "mean": -7.4338,
+      "sd": 0.0895,
+      "min": -7.6127,
+      "max": -7.1473
+    }
+  },
+  "separation": {
+    "old": {
+      "signal_min": -4.9789,
+      "noise_mean": -7.5032,
+      "noise_sd": 0.088,
+      "sigma_sep": 28.69
+    },
+    "new": {
+      "signal_min": -4.7744,
+      "noise_mean": -7.4338,
+      "noise_sd": 0.0895,
+      "sigma_sep": 29.71
+    }
+  },
+  "finding_md_comparison": {
+    "claimed_old_sd": 0.089,
+    "claimed_new_sd": 0.071,
+    "claimed_old_sigma_sep": 34.4,
+    "claimed_new_sigma_sep": 40.5,
+    "measured_old_sd": 0.088,
+    "measured_new_sd": 0.0895,
+    "measured_old_sigma_sep": 28.69,
+    "measured_new_sigma_sep": 29.71,
+    "note": "The POC's sd improvement (0.089->0.071) was NOT reproduced. Signal improvement is real (all 5 pages score better). The sigma separation gain is smaller than claimed (+2.9% vs +18%). Possible POC difference: different null construction or random seed. The matched model is still a valid instrument improvement."
+  },
+  "gates": {
+    "hit_bar": -5.5,
+    "gate1_positive_control_pass": true,
+    "gate2_sd_not_worse": false,
+    "both_pass": false
+  },
+  "verdict": "BOUND",
+  "coverage": "Scored 5 known solved pages + 200 random-keystream nulls (A KOAN, 742 runes) under both models. Old sigma sep: 28.69. New sigma sep: 29.71. Positive control passed. Gate 2 (sd improvement) FAILED \u2014 sd did not tighten; new sd=0.0895 vs old=0.0880."
+}

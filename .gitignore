@@ -185,6 +185,7 @@ liber-primus/handoff/capsule/fetched/
 liber-primus/analysis/round12/A1/pads/DATA_560.13
 liber-primus/analysis/round12/A1/pads/DATA__560.00.iso-authoritative
 
+<<<<<<< ours
 # ---- corpus sweep (2026-08-19). Commit MANIFESTS, findings, reports and small
 # structured data. Ignore bulk fetched/vendored payloads: every one is re-fetchable
 # from its MANIFEST row (path + sha256 + source_url + retrieved_utc), which is the
@@ -216,3 +217,10 @@ corpus/B-liber-primus/crops/
 # Regenerate:  python corpus/B-liber-primus/hunt_transcriptions.py <owner/repo> ...
 #              (hashes + URLs for every file are recorded in MANIFEST.json)
 corpus/B-liber-primus/fetched/
+=======
+# Round 16 (2026-08-23) — regenerable: `python liber-primus/analysis/round16/zeroFP/gen_ct.py` rebuilds it
+liber-primus/analysis/round16/zeroFP/ct_local.bin
+
+# Fetched corpora for experiments — re-download via each dir's fetch script
+research/experiments/
+>>>>>>> theirs

@@ -170,6 +170,7 @@ human calligrapher following a "never write the same rune twice" rule by hand. S
 | **The machine-readable falsification ledger** — every lane, status, control, coverage bound, as JSON | [`liber-primus/LEDGER.json`](liber-primus/LEDGER.json) · [`liber-primus/analysis/handoff/LEDGER-README.md`](liber-primus/analysis/handoff/LEDGER-README.md) |
 | **The 2026-08 attack loop** — Rounds 1–8, pre-registered | [`research/LEDGER.md`](research/LEDGER.md) · [`research/DEAD_ENDS.md`](research/DEAD_ENDS.md) |
 | **Rounds 9–12** — multi-lens armada, number channel, red-team | [`liber-primus/analysis/round10/SYNTHESIS.md`](liber-primus/analysis/round10/SYNTHESIS.md) · [`liber-primus/analysis/round11/SYNTHESIS.md`](liber-primus/analysis/round11/SYNTHESIS.md) · [`liber-primus/analysis/round12/`](liber-primus/analysis/round12/) |
+| **Round 16** — derived-keystream armada (KDF, PRNG family, F-01, A-03, zeroFP, scorer) | [`liber-primus/analysis/round16/SYNTHESIS.md`](liber-primus/analysis/round16/SYNTHESIS.md) |
 | **Background on the puzzles themselves** | [`research/00-overview.md`](research/00-overview.md) |
 | **Where the work left off** | [`PICKUP-HERE.md`](PICKUP-HERE.md) |
 
@@ -272,5 +273,5 @@ self-corrections are recorded rather than quietly dropped.
 
 ---
 
-*Status current as of 2026-08-11. What would reopen the case: a new 7A35090F-signed Cicada
-release, a CicadaSolvers-accepted reproducible page solve, or the private pad surfacing.*
+*Status current as of 2026-08-23 (Round 16). What would reopen the case: a new 7A35090F-signed
+Cicada release, a CicadaSolvers-accepted reproducible page solve, or the private pad surfacing.*
