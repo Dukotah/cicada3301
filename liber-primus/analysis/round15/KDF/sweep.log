@@ -18,3 +18,55 @@ K2 planted config ranked #1 = True; clears bar = True -> PASS
 ==============================================================================
 VERDICT: NEGATIVE   best=None vs bar=-5.500   decodes=0   elapsed=0.9 min
 ==============================================================================
+==============================================================================
+ROUND 15 / KDF — key-stretching keystreams (B-04's declared not-covered region)
+stages=['K1', 'K2', 'A'] nproc=11 beam_w=400 max_skip=3 bar=-5.5
+==============================================================================
+secrets: 534   KDFs: 27   salts(A): ['empty', '3301', 'self']   unsolved runes: 12956
+null(L=120, n=200): mean=-7.399 max=-6.773  -> HIT bar -5.500
+
+=== K1 — replicate round12/D3 expander control ===
+K1 beam=-4.17 rigid=-6.835 recovery=0.989 -> PASS
+  -> wrote results_gates.json
+
+=== K2 — plant-and-recover through this harness ===
+K2 plant: kdf=pbkdf2_sha256_10000 salt=3301 red=mod29 len=120 doublet_rate=0.0000 (LP2 is 0.0066)
+[K2] secrets=534 kdfs=27 salts=3 reds=2 -> 692,064 decodes on 11 procs
+    [K2] 10/134 chunks  51,840 decodes  66s  (784/s)  best=-4.186
+    [K2] 20/134 chunks  103,680 decodes  146s  (713/s)  best=-4.186
+    [K2] 30/134 chunks  155,520 decodes  229s  (680/s)  best=-4.186
+    [K2] 40/134 chunks  207,360 decodes  309s  (671/s)  best=-4.186
+    [K2] 50/134 chunks  259,200 decodes  394s  (658/s)  best=-4.186
+    [K2] 60/134 chunks  311,040 decodes  474s  (656/s)  best=-4.186
+    [K2] 70/134 chunks  362,880 decodes  553s  (656/s)  best=-4.186
+    [K2] 80/134 chunks  414,720 decodes  634s  (654/s)  best=-4.186
+    [K2] 90/134 chunks  466,560 decodes  713s  (654/s)  best=-4.186
+    [K2] 100/134 chunks  518,400 decodes  794s  (653/s)  best=-4.186
+    [K2] 110/134 chunks  570,240 decodes  806s  (707/s)  best=-4.186
+    [K2] 120/134 chunks  622,080 decodes  888s  (700/s)  best=-4.186
+    [K2] 130/134 chunks  673,920 decodes  967s  (697/s)  best=-4.186
+    [K2] 134/134 chunks  692,064 decodes  999s  (693/s)  best=-4.186
+K2 rank#1: -4.186 secret='THE PRIMES ARE SACRED' kdf=pbkdf2_sha256_10000 salt=3301 red=mod29
+K2 planted config ranked #1 = True; clears bar = True -> PASS
+  -> wrote results_gates.json
+[A] secrets=534 kdfs=27 salts=3 reds=2 -> 692,064 decodes on 11 procs
+    [A] 10/134 chunks  51,840 decodes  86s  (605/s)  best=-6.301
+    [A] 20/134 chunks  103,680 decodes  172s  (602/s)  best=-6.301
+    [A] 30/134 chunks  155,520 decodes  260s  (598/s)  best=-6.301
+    [A] 40/134 chunks  207,360 decodes  347s  (598/s)  best=-6.301
+    [A] 50/134 chunks  259,200 decodes  430s  (603/s)  best=-6.259
+    [A] 60/134 chunks  311,040 decodes  512s  (607/s)  best=-6.259
+    [A] 70/134 chunks  362,880 decodes  594s  (611/s)  best=-6.259
+    [A] 80/134 chunks  414,720 decodes  674s  (615/s)  best=-6.259
+    [A] 90/134 chunks  466,560 decodes  759s  (615/s)  best=-6.259
+    [A] 100/134 chunks  518,400 decodes  840s  (617/s)  best=-6.259
+    [A] 110/134 chunks  570,240 decodes  856s  (666/s)  best=-6.259
+    [A] 120/134 chunks  622,080 decodes  933s  (667/s)  best=-6.259
+    [A] 130/134 chunks  673,920 decodes  1014s  (665/s)  best=-6.259
+    [A] 134/134 chunks  692,064 decodes  1044s  (663/s)  best=-6.259
+  -> wrote results_A.json
+  -> wrote results_summary.json
+
+==============================================================================
+VERDICT: NEGATIVE   best=-6.259433075138837 vs bar=-5.500   decodes=692,064   elapsed=34.1 min
+==============================================================================

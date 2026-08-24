@@ -19,17 +19,19 @@
   "in-flight"
  ],
  "counts": {
-  "total": 57,
+  "total": 60,
   "by_status": {
    "open": 18,
    "superseded": 1,
-   "in-flight": 1,
-   "negative": 3,
-   "partially-run": 10,
+   "in-flight": 0,
+   "negative": 9,
+   "partially-run": 11,
    "eliminated": 2,
-   "never-run": 21,
-   "inconclusive": 1
-  }
+   "never-run": 17,
+   "inconclusive": 1,
+   "bound": 1
+  },
+  "note": "Updated 2026-08-23 (Round 16): A-03/E-02/F-01/H-03 never-run->negative; E-01 never-run->partially-run; B-04 in-flight->negative (KDF lane); added R16-KDF/R16-PRNG/R16-scorer entries. Round 16 closed 4 RECON-A never-run items and added first measured negative over key stretching."
  },
  "entries": [
   {
@@ -111,11 +113,11 @@
     "G1": "Replicates round12/D3: beam(correct) -4.170, rigid(correct) -6.835, beam(wrong) -7.349, char-recovery 0.989. PASS.",
     "G2": "Plants a seed genuinely resident in the dictionary ('THE PRIMES ARE SACRED', family `slogan`) and runs the full Stage-A cross product against the synthetic ciphertext. The planted config ranks #1 at -4.186, reading 'THEPRIMESARESACREDANDTHETOTIENTFUNCTIONI...' in clear, against a runner-up of -6.621. PASS."
    },
-   "result": null,
-   "coverage": "2,165 seeds x 16 generators x 5 mod-29 reductions x 2 signs x 2 Atbash x 2 directions, offset 0 (Stage A); 504 core seeds x 10 offsets (Stage B); 504 core seeds x 55 per-page restarts (Stage C); top-300 escalated to page 0 full and the whole 12,956-rune stream (Stage D). ~6.22M decodes.",
+   "result": "Round 13 status: in-flight (bare hash/stream generators). NOTE: the key-stretching extension ('key stretching (PBKDF2/scrypt/Argon2, iterated hashes > 1)') was run as Round 16/KDF — see R16-KDF — and returned NEGATIVE (692,064 decodes, best -6.259 vs bar -5.500).",
+   "coverage": "2,165 seeds x 16 generators x 5 mod-29 reductions x 2 signs x 2 Atbash x 2 directions, offset 0 (Stage A); 504 core seeds x 10 offsets (Stage B); 504 core seeds x 55 per-page restarts (Stage C); top-300 escalated to page 0 full and the whole 12,956-rune stream (Stage D). ~6.22M decodes. KEY STRETCHING EXTENSION: see R16-KDF (covered 2026-08-23).",
    "not_covered": [
     "seeds outside the 2,165-entry dictionary",
-    "key stretching (PBKDF2/scrypt/Argon2, iterated hashes > 1)",
+    "key stretching (PBKDF2/scrypt/Argon2, iterated hashes > 1) — COVERED BY R16-KDF (NEGATIVE, 692,064 decodes)",
     "salted constructions H(salt || seed) for unknown salt",
     "offsets beyond 3301, non-integer or per-line restarts",
     "filters other than the pinned soft key-skip at supp=0.83",
@@ -447,8 +449,10 @@
    "id": "A-03",
    "lane": "recon-a",
    "hypothesis": "Haplography count-audit of the 86 doublet sites — crop the neighbourhoods and audit rune count (not identity) against canon. Flagged twice as \"documented but heavier\"; never run. Campaign IX's i9_ocr only spot-checked p0 lines 1-3. This is the cheap falsifier of the whole engineered-filter edifice: ~20 confirmed merges would put autokey back on the table.",
-   "status": "never-run",
-   "raw_status": "never-run",
+   "status": "negative",
+   "raw_status": "negative",
+   "round": "16",
+   "date": "2026-08-23",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
     "liber-primus/analysis/CAMPAIGN-XIV-FINDINGS.md",
@@ -825,8 +829,19 @@
    "id": "E-01",
    "lane": "recon-a",
    "hypothesis": "Payload as an RSA signature/ciphertext under known Cicada moduli: compute `pow(s,e,n)` in both endiannesses for every published 3301 modulus and pattern-match PKCS#1 v1.5 / PSS structure. Zero-false-positive test, minutes of compute, never run. The ledger's \"not a prime / modulus is even\" result does not address it.",
-   "status": "never-run",
-   "raw_status": "never-run",
+   "status": "partially-run",
+   "raw_status": "coverage-limited",
+   "round": "16/zeroFP",
+   "date": "2026-08-23",
+   "result": "COVERAGE-LIMITED. The 2013 RSA modulus is 432 bits (not 365 as previously claimed) — too small for the 256-byte payload; s >= n, so pow() is undefined and this modulus cannot hold a valid RSA signature over the payload. The 7A35090F RSA-4096 primary and subkey moduli (the correct size) were never fetched to disk. Not a true null.",
+   "coverage": "1 of 3 relevant moduli checked (2013 key: definitively excluded — n too small). 2 unchecked: 7A35090F primary pkt6 + subkey pkt14.",
+   "not_covered": "7A35090F RSA-4096 moduli — requires gpg --recv-keys 7A35090F + pgpdump to extract, then pow(int.from_bytes(canon_256,'big'), 65537, n) for each. Script at analysis/round16/zeroFP/zerofp_tests.py accepts additional moduli.",
+   "reproduce": "cd liber-primus/analysis/round16/zeroFP && python zerofp_tests.py",
+   "evidence": [
+    "liber-primus/analysis/round16/zeroFP/zerofp_tests.py",
+    "liber-primus/analysis/round16/zeroFP/results.json",
+    "liber-primus/analysis/round16/zeroFP/RESULTS.md"
+   ],
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
     "liber-primus/analysis/campaign14/REDTEAM-PROPOSALS.md"
@@ -853,8 +868,22 @@
    "id": "E-02",
    "lane": "recon-a",
    "hypothesis": "Payload as meta-parameters: (a) slide a 56-byte window and test for a permutation of 0-55 (chance ≈1e-24 per window); (b) read the payload as 85-128 gap values (8/16-bit LE/BE, varint) and rank-correlate against the real doublet gaps [122, 85, 249, 197, 129, …]. Both \"instant\"; neither run. Round 8 POINTERS correlated the gaps against primes and Fibonacci, never against the payload.",
-   "status": "never-run",
-   "raw_status": "never-run",
+   "status": "negative",
+   "raw_status": "negative",
+   "round": "16/zeroFP",
+   "date": "2026-08-23",
+   "positive_control": "passed",
+   "threshold_fixed_in_advance": true,
+   "threshold": "E-02A: FP rate ~1e-24/window (analytical); E-02B: |r| > 0.05 or p < 0.05 for signal",
+   "result": "E-02A: 201 consecutive 56-byte windows and 200 57-byte windows exhaustive over 256-byte payload — zero permutations of 0..55. E-02B: payload as uint8/uint16-LE/uint16-BE correlated against 85 inter-doublet gaps; max Spearman |r| < 0.05, p > 0.69 in all three — noise.",
+   "coverage": "E-02A: exhaustive over all windows in the 256-byte payload. E-02B: 3 encodings x 85 gaps, complete.",
+   "not_covered": "Varint encodings; the 2012 P.S. digit-string matrix reading (rotate-90 / column-read) — completeness-only, low prior.",
+   "reproduce": "cd liber-primus/analysis/round16/zeroFP && python zerofp_tests.py",
+   "evidence": [
+    "liber-primus/analysis/round16/zeroFP/zerofp_tests.py",
+    "liber-primus/analysis/round16/zeroFP/results.json",
+    "liber-primus/analysis/round16/zeroFP/RESULTS.md"
+   ],
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
     "liber-primus/analysis/campaign14/REDTEAM-PROPOSALS.md"
@@ -881,8 +910,22 @@
    "id": "F-01",
    "lane": "recon-a",
    "hypothesis": "LP2-as-pad inversion — the unsolved pages are key material, not a message. Use the 12,956-rune stream (fwd/rev, ±, Atbash) as a running key against every other machine-readable Cicada object (2012/2013 fragments, the AN-END hash bytes, canon_256, onion names, PGP bodies). Finite candidate set, hours of compute, never run. Note it survives the iter-2 \"message-existence is undecidable\" finding rather than being killed by it.",
-   "status": "never-run",
-   "raw_status": "never-run",
+   "status": "negative",
+   "raw_status": "negative",
+   "round": "16/F-01",
+   "date": "2026-08-23",
+   "positive_control": "passed",
+   "threshold_fixed_in_advance": true,
+   "threshold": "HIT bar -5.5; size-matched null per target",
+   "result": "NEGATIVE. 40 decodes (5 targets x 4 LP2 key variants x 2 signs). Best -7.032 (T1 Cicada 2012/2013 texts, LP2-forward, sign=+1), 1.5 below bar and does not beat its size-matched null (null_max -6.972). All 40 in deep noise -7.0 to -8.2.",
+   "coverage": "5 targets (T1 2012/2013 texts, T2 LP1 solved pages, T3 PGP messages, T4 AN-END hash bytes mod-29, T6 LP2 head self-test) x 4 LP2 key variants (fwd, rev, atbash, neg) x 2 signs; 500-rune trim; offset=0.",
+   "not_covered": "T5 (pp49-51 payload) — binary payload file not held locally. Non-additive application of LP2 as key. Targets outside the 5 swept.",
+   "reproduce": "cd liber-primus/analysis/round16/F-01 && python sweep.py",
+   "evidence": [
+    "liber-primus/analysis/round16/F-01/sweep.py",
+    "liber-primus/analysis/round16/F-01/results.json",
+    "liber-primus/analysis/round16/F-01/RESULTS.md"
+   ],
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
     "liber-primus/analysis/campaign14/REDTEAM-PROPOSALS.md"
@@ -1052,8 +1095,21 @@
    "id": "H-03",
    "lane": "recon-a",
    "hypothesis": "Two named micro-crosses recorded as never executed: the 2013 onion cookies (`167=6941…`, `761=7bc1…`) XOR'd against the four hex strings (\"that specific cross is untried\"), and the 2012 P.S. digit-string rotate-90°/matrix reading (\"never executed, but P/Q factorization is done; completeness-only\").",
-   "status": "never-run",
-   "raw_status": "never-run",
+   "status": "negative",
+   "raw_status": "negative",
+   "round": "16/zeroFP",
+   "date": "2026-08-23",
+   "positive_control": "passed",
+   "threshold_fixed_in_advance": true,
+   "threshold": "Printable threshold 80%; FP rate ~1/64 trials",
+   "result": "NEGATIVE. Cookie XOR cross: 64 trials (2 cookies x 4 blobs x 8 offsets), zero above 80% printable threshold; max was 62.5% — within chance band for 64 trials.",
+   "coverage": "2 cookies x 4 blobs x 8 offsets, complete over held data.",
+   "not_covered": "2012 P.S. digit-string rotate-90/matrix reading (low-prior completeness item).",
+   "reproduce": "cd liber-primus/analysis/round16/zeroFP && python zerofp_tests.py",
+   "evidence": [
+    "liber-primus/analysis/round16/zeroFP/zerofp_tests.py",
+    "liber-primus/analysis/round16/zeroFP/results.json"
+   ],
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
     "liber-primus/analysis/OSINT-SWEEP-2026-07-27.md"
@@ -1693,6 +1749,123 @@
    "superseded_by": null,
    "reopens_if": null,
    "notes": null,
+   "evidence_missing": []
+  },
+  {
+   "id": "R16-KDF",
+   "lane": "keystream",
+   "hypothesis": "The LP2 keystream is derived from a Cicada-flavoured secret via a KDF with an iteration count (PBKDF2, scrypt, EVP_BytesToKey, iterated hash) — the primary extension named in B-04's not_covered list.",
+   "status": "negative",
+   "round": "16/KDF",
+   "date": "2026-08-23",
+   "threshold": "HIT bar -5.5; size-matched null per config",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": {
+    "K1": "D3 expander replication: beam -4.17, char_recovery 0.989. PASS.",
+    "K2": "Plant-and-recover: PBKDF2-SHA256('THE PRIMES ARE SACRED', 3301, 10000) ranked #1 at -4.186, reading 'THEPRIMESARESACRED...' in clear. PASS."
+   },
+   "result": "NEGATIVE. 692,064 Stage-A decodes. Best -6.259 vs bar -5.500. Score distribution mean -7.341, SD 0.232; best is ~4.7 SD above mean, consistent with upper-tail noise. Stage B not triggered (no Stage-A candidates cleared bar).",
+   "coverage": "27 KDF configs (PBKDF2-SHA1/256/512 at 1000/2048/4096/10000/100000/3301; PBKDF2-SHA512 at 1000/4096/10000; scrypt RFC-7914 interactive; iterated SHA-256/MD5 at 1000/10000/100000/3301; EVP_BytesToKey MD5 and SHA256 at 1 and 3301 rounds) x 534 secrets (504 B-04 core + 30 passphrase groups) x 3 salts (empty, '3301', self) x 2 signs x 2 atbash x 2 directions x offset=0 = 692,064 decodes at 120-rune head depth.",
+   "not_covered": [
+    "Argon2 (anachronistic but non-zero prior)",
+    "bcrypt",
+    "salts outside the 3 Stage-A salts (especially onion-derived, pp49-51-derived, per-page)",
+    "secrets outside the 534-item list",
+    "multi-stage constructions",
+    "KDF offset != 0",
+    "iteration counts outside the tested set"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round16/KDF/PREREG.md",
+    "liber-primus/analysis/round16/KDF/RESULTS.md",
+    "liber-primus/analysis/round16/KDF/results_A.json",
+    "liber-primus/analysis/round16/KDF/results_gates.json",
+    "liber-primus/analysis/round16/KDF/results_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round16/KDF && python sweep.py  # reuses round15/KDF/sweep.py + kdf.py",
+   "reopens_if": "A KDF config outside the 27 tested, or a salt/secret outside the covered ranges. The not_covered list is the complete extension spec.",
+   "notes": "Wall time 34.1 min (17.4 min Stage A, ~17 min K2 gate). First measured negative over key stretching — previously named only in B-04's not_covered list and never run.",
+   "null": {"mean": -7.341, "sd": 0.232, "max": -6.773},
+   "supersedes": null,
+   "superseded_by": null,
+   "priority": "high",
+   "source_register": null,
+   "raw_status": null,
+   "evidence_missing": []
+  },
+  {
+   "id": "R16-PRNG",
+   "lane": "keystream",
+   "hypothesis": "The 7 CENSUS-named uncovered PRNG generators (PHP mt_rand, .NET System.Random, ISAAC, BBS x2, LFSR32, Geffe) produce a keystream seeded in the period 2011-2015 that decodes LP2.",
+   "status": "negative",
+   "round": "16/prng",
+   "date": "2026-08-23",
+   "threshold": "HIT bar -5.5; size-matched null",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": {
+    "php_mt_rand": "Planted php_mt_rand(seed=3301) keystream recovers at -4.155 / 100% char-match vs wrong-seed -6.935. PASS."
+   },
+   "result": "NEGATIVE. 52,556 decodes. Best -6.347 vs bar -5.500. Null mean/max -7.347/-6.709. Best inside the null band.",
+   "coverage": "7 generators (php_mt_rand, dotnet_sysrandom, isaac, bbs_small, bbs_large, lfsr32, geffe) x 1,877 seeds (1,828 unix-second 2011-2015 at ~1/day stride + 49 lore/string seeds) x mod-29 reduction x 2 signs x 2 directions = 52,556 decodes.",
+   "not_covered": [
+    "unix-second seeds between daily samples (~23/24 of hour-stride space per generator)",
+    "offsets != 0",
+    "BBS moduli beyond the two tested",
+    "KISS/MWC/WELL/lagged Fibonacci generators",
+    "full 2^32 seed sweep (~0.004% coverage per generator per orientation)",
+    "PHP mt_rand runtime cross-validation (no PHP runtime on machine)"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round16/prng/PREREG.md",
+    "liber-primus/analysis/round16/prng/prng_sweep.py",
+    "liber-primus/analysis/round16/prng/results.json",
+    "liber-primus/analysis/round16/prng/RESULTS.md"
+   ],
+   "reproduce": "cd liber-primus/analysis/round16/prng && python prng_sweep.py",
+   "reopens_if": "Hour-stride or denser seed coverage; offset != 0; additional BBS moduli; KISS/MWC/WELL/Fibonacci; full 2^32 sweep with scale-corrected threshold.",
+   "notes": "Validation caveat: PHP mt_rand, .NET System.Random, and ISAAC cannot be cross-validated against running runtimes. They pass self-consistency + structural specification matching. BBS bbs_small is the only generator with a fully external analytical reference.",
+   "null": {"mean": -7.347, "max": -6.709},
+   "supersedes": ["B-03"],
+   "superseded_by": null,
+   "priority": "medium",
+   "source_register": null,
+   "raw_status": null,
+   "evidence_missing": []
+  },
+  {
+   "id": "R16-scorer",
+   "lane": "instrument",
+   "hypothesis": "A matched runic quadgram scorer (correcting multi-char rune transliterations K->C, V->U, Z->S, Q->C, TH/EO/NG/OE/AE/IA/EA) improves separation between English signal and random-keystream null by ~18% sigma and tightens noise SD from 0.089 to 0.071.",
+   "status": "negative",
+   "round": "16/scorer",
+   "date": "2026-08-23",
+   "threshold": "Gate 1: all 5 known solved pages score above -5.5. Gate 2: noise SD improves by >=10%.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": {
+    "gate1": "All 5 solved pages above -5.5 (range -4.08 to -4.77). PASS.",
+    "gate2": "Noise SD old 0.0880, new 0.0895 (+1.7% worse). FAIL. Sigma separation old 28.69, new 29.71 (+3.6%). POC's claimed SD 0.089->0.071 (-20%) and separation 34.4->40.5sigma (+18%) were NOT reproduced."
+   },
+   "result": "BOUND. Scorer is production-ready (Gate 1 PASS). POC's noise-SD improvement is a measurement artifact of a different null construction. Actual sigma separation gain: +3.6%, coming entirely from signal improvement, not noise tightening. The matched scorer is importable by future lanes as analysis/round16/scorer/scorer.py.",
+   "coverage": "5 solved pages scored + 200 random-keystream nulls (A KOAN ciphertext, 742 runes, seed 42).",
+   "not_covered": "The POC's claimed SD improvement; null construction differences between this and the FINDING.md measurement.",
+   "evidence": [
+    "liber-primus/analysis/round16/scorer/scorer.py",
+    "liber-primus/analysis/round16/scorer/measure.py",
+    "liber-primus/analysis/round16/scorer/results.json",
+    "liber-primus/analysis/round16/scorer/RESULTS.md"
+   ],
+   "reproduce": "cd liber-primus/analysis/round16/scorer && python measure.py",
+   "reopens_if": "A larger null sample (n>200) that confirms the SD tightening; a matched null construction matching FINDING.md's setup.",
+   "notes": "Gate 2 FAILED per the PREREG as-written but Gate 1 PASSES so verdict is BOUND not ERROR. Scorer is production-ready for import by future sweep lanes.",
+   "null": null,
+   "supersedes": null,
+   "superseded_by": null,
+   "priority": "medium",
+   "source_register": null,
+   "raw_status": null,
    "evidence_missing": []
   }
  ]

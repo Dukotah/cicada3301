@@ -196,6 +196,7 @@ Pages 49–51 aren't runic prose — they're a table of two-character tokens dec
 | XVII | **Red-team the assumption stack** | 8 fronts attacked, all sealed: page-56-hash-preimage-of-internal-object, interrupter-masked running key, plaintext-feedback autokey, crib-drag fixed-function autokey, serialization (reversed/boustrophedon), selection/acrostic, 1-bit channel, **Latin plaintext** (language-independent exclusions), **book cipher** (KJV/Mabinogion/Milton word-salad) | `analysis/CAMPAIGN-XVII-FINDINGS.md`, `analysis/red_team.py`, `analysis/latin/`, `analysis/bookcipher/` |
 | OSINT-2026-07-27 | **External-artifact sweep** | Pulled the onion images/HTML we never held from community mirrors + re-extracted. No new break: T1 (onion3 5×5-rune) and T5 (4gq25) decode to already-known 2013/2016 messages; 60-key OutGuess sweep null; T2/T3 remain unidentified high-entropy blobs. Confirms the "provable hidden data" onion-image lead resolves to standard payloads. | `analysis/OSINT-SWEEP-2026-07-27.md` |
 | XVIII | **Skip-tolerant re-decode (item 2c executed) + coverage armada** | Built + validated a key-skip decoder that tracks the desync the ~83% doublet filter induces (rigid misses the correct key at −7.24/8.5%, beam recovers it at −4.15/100%; FP ceiling −6.82; recall 7/8). Then re-ran **every alignment-sensitive family** under it: referenced texts (best −5.88), full 122-text corpus (best −5.808), armada18+19 literary sweeps (88 more texts, best −5.786/−5.754), **autokey under skip** (community's #1 hypothesis — 45 primers, best −6.627), ~620 Vigenère keywords (−6.021), extended numeric (−5.745), self-referential families (first-diff/integral/self-key/ct-feedback) — **all 0 hits**. Prior keytext nulls now **unconditional**; family-by-family accounting in `armada2/COVERAGE-MATRIX.md`. | `analysis/campaign18_skip/` |
+| **Round 16** | **Derived-keystream armada (6 lanes, 2026-08-23)** | 0 hits across all lanes; all positive controls PASS. **KDF (key stretching):** 692,064 decodes, 27 KDF configs × 534 secrets × 3 salts × 16 decode variants, best −6.259 vs bar −5.500 — **first measured negative over key stretching**. **PRNG family (7 uncovered generators):** 52,556 decodes over PHP `mt_rand`, .NET System.Random, ISAAC, BBS, LFSR32, Geffe, best −6.347. **F-01 (LP2-as-key inversion):** 40 configs (5 targets × 4 key variants × 2 signs), best −7.032 — RECON-A `never-run` item F-01 now closed. **A-03 (haplography bound):** K_bound=26 < K_needed=93 for autokey restoral — doublet deficit is structural to this confidence. **zeroFP (3 complete tests):** E-02A/B null at FP ~1e-24/window; H-03 64 XOR trials null. **Scorer:** matched runic quadgram scorer production-ready, controls pass; POC's SD-improvement claim not reproduced. | `analysis/round16/SYNTHESIS.md` |
 
 ---
 
@@ -216,6 +217,7 @@ detail: `../research/LEDGER.md`; kill reasons: `../research/DEAD_ENDS.md`.
 | 6 | Misfiled plaintext windows; transition-lattice/keel structure | **NEGATIVE** — the no-repeat rule is a *pure lag-1 identity*, no second-order structure | `analysis/r6_sieve_windows.py`, `r6_transition_structure.py` |
 | 7 | Some untried already-public keytext is the key | **KILL, 0/15 unanimous** — ~~dead rigidly *and* skip-aware, independent of which text~~ → **dead by exhaustion over ~200 texts, verified robust to skip *and* rewrite** (Round 12 D1; the "independent of which text" mechanism argument is void — see §A note) | `../research/ROUND-7-GATE1-SYNTHESIS.md`, `analysis/round12/D1_redteam/RESULTS.md` |
 | 8 | Five axes that were never ciphertext-only attacks (below) | **NEGATIVE ×5** | `../research/ROUND-8-RESULTS.md` |
+| **16** | **Derived-keystream armada: KDF (key stretching), 7 uncovered PRNG generators, LP2-as-key inversion (F-01), haplography bound (A-03), 3 zero-FP tests, matched scorer** | **NEGATIVE ×6 lanes, 0 hits, all controls PASS** — key stretching first measured negative (692,064 decodes); PRNG family covered (52,556 decodes); F-01 resolved; A-03 K_bound=26 < K_needed=93 | `analysis/round16/SYNTHESIS.md` |
 
 **Round 8's five axes**, each previously uncovered by "ciphertext-only complete":
 
@@ -344,6 +346,16 @@ autokey, k=2..6** over 7 combiners, both signs, both orientations (Round 12 C1, 
 control PASSED) • **the author's own recoverable binary pads** under the skip-aware beam
 (Round 12 A1 — except `DATA/560.13`, still unfetched) • **rigid-alignment re-runs of anything in
 `campaign18_skip/armada2/COVERAGE-MATRIX.md`.**
+
+**Added by Round 16 (2026-08-23):** **LP2-as-key inversion (F-01)** — the unsolved pages as
+running key against all held Cicada plaintext objects in all 40 (target × variant × sign) configs
+(best −7.032, all controls PASS) • **KDF-derived keystreams** over 27 KDF configs × 534 secrets ×
+3 salts × 16 decode variants, 692,064 decodes — key stretching first measured negative; **do not
+re-run the specific 27 KDFs × 534 secrets × 3 salts already swept** • **7 uncovered PRNG
+generators** (PHP `mt_rand`, .NET System.Random, ISAAC, BBS ×2, LFSR32, Geffe) over 1,877
+period-appropriate seeds × 2 signs × 2 directions, 52,556 decodes. **NOTE:** the KDF and PRNG
+negatives are coverage-bounded, not family-closed — see coverage fields in LEDGER.json for what
+remains open within each family.
 
 > **⚠️ Corrected 2026-08-17 (Round 12, front D3; first flagged 2026-08-12 as RECON-B item B-21
 > and never actioned until now).** The line above used to read a flat "**seeded-PRNG pads**

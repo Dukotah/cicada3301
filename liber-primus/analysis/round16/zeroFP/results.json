@@ -1,0 +1,107 @@
+{
+  "E-01": {
+    "test": "E-01",
+    "verdict": "NULL",
+    "moduli_tested": 1,
+    "pow_checks": 8,
+    "results": [
+      {
+        "payload": "canon_256",
+        "endian": "big",
+        "modulus": "2013_puzzle_365bit",
+        "e": 65537,
+        "skip": "s >= n (out of range for this modulus)",
+        "verdict": "SKIP"
+      },
+      {
+        "payload": "canon_256",
+        "endian": "little",
+        "modulus": "2013_puzzle_365bit",
+        "e": 65537,
+        "skip": "s >= n (out of range for this modulus)",
+        "verdict": "SKIP"
+      },
+      {
+        "payload": "decpref",
+        "endian": "big",
+        "modulus": "2013_puzzle_365bit",
+        "e": 65537,
+        "skip": "s >= n (out of range for this modulus)",
+        "verdict": "SKIP"
+      },
+      {
+        "payload": "decpref",
+        "endian": "little",
+        "modulus": "2013_puzzle_365bit",
+        "e": 65537,
+        "skip": "s >= n (out of range for this modulus)",
+        "verdict": "SKIP"
+      },
+      {
+        "payload": "canon_256",
+        "endian": "big",
+        "modulus": "2013_puzzle_365bit",
+        "e": 3,
+        "skip": "s >= n (out of range for this modulus)",
+        "verdict": "SKIP"
+      },
+      {
+        "payload": "canon_256",
+        "endian": "little",
+        "modulus": "2013_puzzle_365bit",
+        "e": 3,
+        "skip": "s >= n (out of range for this modulus)",
+        "verdict": "SKIP"
+      },
+      {
+        "payload": "decpref",
+        "endian": "big",
+        "modulus": "2013_puzzle_365bit",
+        "e": 3,
+        "skip": "s >= n (out of range for this modulus)",
+        "verdict": "SKIP"
+      },
+      {
+        "payload": "decpref",
+        "endian": "little",
+        "modulus": "2013_puzzle_365bit",
+        "e": 3,
+        "skip": "s >= n (out of range for this modulus)",
+        "verdict": "SKIP"
+      }
+    ],
+    "notes": "2013 365-bit modulus: payload (2048-bit) is larger than n (365-bit), so all pow checks skip (s >= n). The payload cannot be a signature under this small modulus. 7A35090F 4096-bit key not held locally. No PKCS#1 padding found."
+  },
+  "E-02": {
+    "test": "E-02",
+    "verdict": "NULL",
+    "E-02A_windows_checked": 201,
+    "E-02A_perm56_hits": [],
+    "E-02A_perm57_hits": [],
+    "doublet_gaps_n": 85,
+    "notes": "No 56-byte permutation window found in the 256-byte payload. Spearman correlations of payload-as-ints vs doublet gap sequence reported in stdout. See results JSON for details."
+  },
+  "H-03": {
+    "test": "H-03",
+    "verdict": "NULL",
+    "trials": 64,
+    "hits": [],
+    "max_printable": 0.625,
+    "notes": "32-byte cookies XOR'd against each 32-byte block of four 256-byte blobs. 0 hits above 80% printable threshold."
+  },
+  "H-01": {
+    "test": "H-01",
+    "verdict": "NULL",
+    "ports": [
+      5240,
+      5241,
+      5242,
+      5243
+    ],
+    "uptime_decode": 1033,
+    "uptime_is_known_constant": true,
+    "raw_html_held": false,
+    "head_malformation_unexecutable": true,
+    "notes": "All documented HTTP anomalies (ports 5240-5243 as sequential per-onion index, uptime->1033 as already-known constant, leaked Linode IP) resolve to known Cicada aesthetics. The <head> malformation claim exists in one document but the raw HTML is not held locally and the specific bit pattern is not documented. Channel closed on available data \u2014 not an information source."
+  }
+}
