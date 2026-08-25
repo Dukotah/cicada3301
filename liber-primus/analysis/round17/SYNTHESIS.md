@@ -1,4 +1,4 @@
-# Round 16 — THE PUBLIC PAD — synthesis
+# Round 17 — THE PUBLIC PAD — synthesis
 
 _Ran 2026-08-19/20. Five lanes, all pre-registered in [`PREREG.md`](PREREG.md) before any sweep.
 **Zero hits.** The value is not the null — it is three corrections to load-bearing claims, one

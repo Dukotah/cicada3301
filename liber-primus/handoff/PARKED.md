@@ -284,7 +284,7 @@ of them (2013-09 → 2014-01), **153/153 MD5-verified**. NIST's Beacon (live 201
 blockchain and printed tables are the same shape — seedless, full-entropy, and permanently
 public. Round 16 swept that branch (≈14.5 × 10⁹ offsets, all NEGATIVE) and left one named live
 item: the **Marsaglia Random Number CDROM (1995)**, 634,124,288 bytes with published SHA-256s,
-found but not swept. See `analysis/round16/SYNTHESIS.md`.
+found but not swept. See `analysis/round17/SYNTHESIS.md`.
 
 ---
 

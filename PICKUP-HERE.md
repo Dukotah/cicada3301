@@ -290,10 +290,10 @@ and HIT bar unchanged (so the result is directly comparable), extending only the
 this pad is ~100× longer than the others, so it supports offsets to 5×10⁷ that A1 could not
 sweep. Verdict in `analysis/round12/A1/results_560_13.json`.
 
-## Round 16 — THE PUBLIC PAD (2026-08-19/20)
+## Round 17 — THE PUBLIC PAD (2026-08-19/20)
 
-Full: [`liber-primus/analysis/round16/SYNTHESIS.md`](liber-primus/analysis/round16/SYNTHESIS.md).
-Pre-registered: [`round16/PREREG.md`](liber-primus/analysis/round16/PREREG.md).
+Full: [`liber-primus/analysis/round17/SYNTHESIS.md`](liber-primus/analysis/round17/SYNTHESIS.md).
+Pre-registered: [`round17/PREREG.md`](liber-primus/analysis/round17/PREREG.md).
 
 **The gap.** The keystream taxonomy had exactly two branches — short-seed **derived** (finite,
 being swept) and **private pad** (closed) — and the seed census folded everything else into the
@@ -305,7 +305,7 @@ table leave no seed but a permanent PUBLIC RECORD** — a third branch, enumerab
 swept. Same failure shape D3 caught twice: a measured bound written up as a settled conclusion.
 
 **Second gap:** every external-pad sweep here walked an **8-offset ladder** (A1's). On the 118 MB
-`560.13` pad that is 7e-8 of the offset space. `round16/lib_padsweep.py` scores **every** offset.
+`560.13` pad that is 7e-8 of the offset space. `round17/lib_padsweep.py` scores **every** offset.
 
 | Lane | Pad family | Offsets | Best (bar −5.5) | Verdict |
 |---|---|---|---|---|

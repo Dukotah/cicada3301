@@ -104,7 +104,7 @@ competent one.
 > two-branch taxonomy had no name for: a full-entropy, seedless pad with a permanent public
 > record, and it is enumerable. All four were swept in Round 16 (≈14.5 × 10⁹ offsets,
 > NEGATIVE), so the branch is now *narrowed by measurement* rather than closed by assertion.
-> Read `analysis/round16/SYNTHESIS.md` and P2's source table before repeating "nothing can".
+> Read `analysis/round17/SYNTHESIS.md` and P2's source table before repeating "nothing can".
 
 ---
 

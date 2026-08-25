@@ -826,9 +826,14 @@ Do NOT re-run any Round-11 lens.
 
 ---
 
-## Round 16 — THE PUBLIC PAD (2026-08-19/20)
+## Round 17 — THE PUBLIC PAD (2026-08-19/20)
 
-Full synthesis: `analysis/round16/SYNTHESIS.md`. Pre-registration: `analysis/round16/PREREG.md`.
+> _Renumbered 2026-08-25. This round was written as "Round 16" and so was the
+> derived-keystream armada of 2026-08-23 (indexed above), by two sessions working in
+> parallel. The armada published first and keeps the number; the public pad is Round 17
+> and its folder moved to `analysis/round17/`._
+
+Full synthesis: `analysis/round17/SYNTHESIS.md`. Pre-registration: `analysis/round17/PREREG.md`.
 Five lanes, **zero hits**, ≈**14.5 × 10⁹ offsets scored** (≈8.4 × 10⁹ effective after each lane's
 own measured prefilter-survival discount). Every lane's planted control recovered at 100% of
 runes; every best score sits inside or below its own null band; `threshold_for()` at each lane's

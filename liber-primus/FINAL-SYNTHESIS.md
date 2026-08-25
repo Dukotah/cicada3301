@@ -89,7 +89,7 @@ applying a "don't write the same rune twice" rule by hand while inscribing the b
 > principle, since such a stream *is* the coded filter's output. So "a person did the writing" is
 > untouched; "a person supplied the randomness" is excluded. The technique-fingerprint reasoning
 > above stands; the inference to a *hand-applied* filter does not.
-> → `analysis/round16/P4_filter/RESULTS.md`
+> → `analysis/round17/P4_filter/RESULTS.md`
 
 **Profile:** a non-commercial cypherpunk/privacy-movement maker, most likely a **small collective (~3–8)
 around one dominant polymath architect**, born ~1965–1985, whose rare, load-bearing skill *intersection*
