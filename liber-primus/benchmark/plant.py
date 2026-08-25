@@ -102,7 +102,21 @@ def idx_to_trans(idxs):
 
 
 def load_keytext(name):
-    return open(os.path.join(KEYDIR, name), encoding="utf-8", errors="ignore").read()
+    path = os.path.join(KEYDIR, name)
+    if not os.path.exists(path):
+        # A gate cannot plant a signal it has no key for, so this must fail loudly
+        # and say why. The usual cause is the keytext being gitignored: it is then
+        # present on the author's disk and absent on every fresh checkout, which is
+        # how CI ran red from 2026-08-19 to 2026-08-24 while local runs passed.
+        raise FileNotFoundError(
+            f"benchmark keytext {name!r} is missing from {KEYDIR}.\n"
+            f"  The plant-and-recover gates need it to construct the planted signal, so\n"
+            f"  every keytext benchmark/ opens must be COMMITTED, not fetched or ignored.\n"
+            f"  Check `git check-ignore -v liber-primus/data/keys/{name}` first — if that\n"
+            f"  prints a rule, delete the rule and commit the file. Do not make the gate\n"
+            f"  skip: a gate that cannot fail is decoration, and every null in this repo\n"
+            f"  rests on these gates passing.")
+    return open(path, encoding="utf-8", errors="ignore").read()
 
 
 def available_keytexts():

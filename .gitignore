@@ -22,9 +22,13 @@ liber-primus/data/moby.txt
 liber-primus/data/pride.txt
 liber-primus/data/war.txt
 
-# Fetched public-domain key texts (large) and scratch attack outputs
+# Fetched public-domain key texts (large) and scratch attack outputs.
+# NOTE: self_reliance.txt is deliberately NOT listed here. It is the keytext the
+# benchmark/ plant-and-recover gates plant with, so it is an input to the trust
+# anchor rather than a fetched corpus. Ignoring it made `pytest benchmark/` fail on
+# every fresh checkout from 2026-08-19 (when CI started running the gates) until
+# 2026-08-25. Anything benchmark/ opens must be committed.
 liber-primus/data/keys/mabinogion.txt
-liber-primus/data/keys/self_reliance.txt
 liber-primus/data/keys/king_in_yellow.txt
 liber-primus/data/keys/book_of_the_law.txt
 liber-primus/data/keys/agrippa.txt
