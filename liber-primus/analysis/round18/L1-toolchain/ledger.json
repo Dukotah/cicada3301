@@ -1,0 +1,107 @@
+[
+ {
+  "id": "G-01",
+  "lane": "recon-a",
+  "hypothesis": "PROVENANCE track never ran. FRESH-ANGLES proposed five parallel tracks; Round 8 executed SEED, GEOMETRY, PAYLOAD, POINTERS, SKELETON. Track 5 (source PDF + rune-font identification: Ghostscript build fingerprint from DQT+ICC+geometry, hunt circulating PDFs with a real text layer, re-read the on-disk archived `onion7_index.html` for non-`.jpg` assets, match glyph outlines against stock runic faces) was never executed and appears in no results doc.",
+  "status": "partially-run",
+  "raw_status": "partially-run",
+  "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
+  "round": "18/L1",
+  "date": "2026-08-26",
+  "threshold": "Pre-registered in round18/L1-toolchain/PREREG.md before any run. (a) EXACT IJG QUALITY asserted only if interval-arithmetic inversion over libjpeg's temp=(base*scale+50)/100 rule admits exactly one integer quality consistent with all 64 luma AND all 64 chroma coefficients, and PC1 recovers 6/6 planted qualities. (b) ENCODER NAMED only if a control pipeline reproduces byte-identical DQT tables + identical Huffman-table classification + identical subsampling + identical component-count behaviour; anything less is written as 'consistent with'. (c) YEAR BOUND asserted only from a dated artefact inside the file, quoted verbatim. (d) FONT IDENTIFIED only if best candidate's mean per-glyph distance falls inside the PC3 degraded-self-match band AND beats the runner-up by >=2 sigma over >=20 rune classes.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "PC1 (quality recovery): 6/6 planted IJG qualities {50,75,85,90,92,95} recovered exactly as singletons by `jpeg_fingerprint.py --selftest`. PC2 (pipeline discrimination): 18 control renders across 9 pipelines x 2 synthetic source PDFs; the fingerprint vector separates Ghostscript's jpeg device (IJG-standard Huffman tables) from ImageMagick (custom/optimised Huffman tables) with no overlap, so the instrument demonstrably can tell renderers apart. PC2b (chain reproduction): `gs -sDEVICE=jpeg -dJPEGQ=92 -r400` followed by ImageMagick at quality 92 reproduces the LP2 vector with BYTE-IDENTICAL DQT tables (luma sha1 c96e442f9ce9a1965c6084df936558fcc335a69f, chroma sha1 cd6e3767d9c4da25c4f8126038b332d0ac48f244), identical marker order for both the colour and the grayscale class, and identical JFIF block. Glyph extraction uses the VALIDATED R9 template-DP reader (96.93% agreement over 5,207 compared glyphs, analysis/retranscribe/diff_report.json), explicitly NOT round12/frontB/forceseg.py which fails its control at 12.9%.",
+  "null": "N1: encoder parameters are pipeline-generic (every control pipeline yields the same vector) => no identification possible, report the bound only. N2: best-matching font distance is not separated from the worst candidate beyond the PC3-calibrated band => no font identified. N3: no PDF with a text layer located in the corpus, on archive.org, or in circulation.",
+  "result": {
+   "encoder_chain": "Ghostscript jpeg device (400 dpi, 4:2:0, Artifex sRGB ICC) THEN ImageMagick re-encode at IJG quality 92 with optimised Huffman coding",
+   "ijg_quality": 92,
+   "quality_is_singleton": true,
+   "huffman_tables": "custom/optimised (optimize_coding = TRUE) on 58/58 files",
+   "geometry_px": [2400, 3600],
+   "geometry_inches_at_400dpi": [6.0, 9.0],
+   "jfif": {"version": "1.01", "units": 1, "density": [400, 400], "thumbnail": [0, 0]},
+   "icc": {
+    "len": 2576,
+    "md5": "e409cef13cd06f6b371f6cddc8e31fcf",
+    "sha256": "942e0f66212eb8ad252706559da5007d893d7350652704f8d115d5e6074479d0",
+    "desc": "Artifex Software sRGB ICC Profile",
+    "cprt": "Copyright Artifex Software 2011",
+    "byte_identical_across_files": "58/58"
+   },
+   "ghostscript_bound": "The LP2 profile's PCS-illuminant bytes (offset 68..79) are 0000f6d5 00010000 0000d32c. Measured against ghostpdl tags: gs9.18, gs9.19, gs9.20, gs9.21 carry the IDENTICAL profile (md5 e409cef13cd06f6b371f6cddc8e31fcf); ghostpdl-9.22, 9.26, 9.50, 9.53.3 and 10.06.0 carry a corrected profile (md5 27d2435a749ae91e9974bf7a109a03e5, illuminant 0000f6d6 00010000 0000d32d). The change landed at 9.22 (released 2017-10-04). So the renderer is a Ghostscript <= 9.21, which is every release in the 2011-2017 window and is consistent with the 2014 publication date; it also rules out the pages having been re-rendered with any post-2017 Ghostscript.",
+   "component_split": {
+    "grayscale_1comp": [16, 17, 18, 19, 20, 21, 24, 25, 28, 29, 30, 31, 41, 42, 43, 44, 45, 46, 47, 48, 50, 51, 52],
+    "n_grayscale": 23,
+    "n_colour": 35,
+    "note": "All 23 grayscale files carry the sRGB (not sGray) profile. Ghostscript's own jpeggray device writes 'Artifex Software sGray ICC Profile'; the observed combination is only produced by a downstream automatic gray detection that passes the source profile through, which is ImageMagick's behaviour."
+   },
+   "excluded_encoders": {
+    "ghostscript_jpeg_device_alone": "emits IJG-standard Huffman tables; LP2 has optimised tables",
+    "imagemagick_alone_from_pdf": "emits no Artifex ICC and forces 4:4:4 sampling at quality>=90; LP2 has an Artifex ICC and 4:2:0",
+    "python_pil": "keeps 3 components on grayscale content, so it cannot produce the 23-page grayscale class"
+   },
+   "no_metadata": "no EXIF, no XMP, no COM segment, no restart interval, 0 trailing bytes after EOI, on 58/58 files",
+   "onion7_index": "The archived onion7 index.html is 1,640 bytes, byte-identical in two independent copies (analysis/structure/origsearch/onion7_index.html and the cijhho123 2014onion7 dropbox). It contains exactly 58 <img> tags for 0.jpg..57.jpg, <title>133</title> and <div id=\"331\">. No CSS, no scripts, no alternative formats, no non-.jpg assets of any kind.",
+   "runes_are_typeset": "29/29 rune bitmaps recovered from the page images; uniform nominal height, constant stroke width, flat unserifed terminals, proportional widths 34-64 px. The runes are set from a font, not drawn.",
+   "platform_corroboration": "46 of 46 curated 3301 PGP-signed messages spanning 2012, 2013 and 2014 carry 'Version: GnuPG v1.4.11 (GNU/Linux)' - a single unchanged GNU/Linux signing environment across three years. GnuPG 1.4.11 was released 2010-10-18 and is the version packaged by Ubuntu 11.04 through 12.04 LTS (Debian wheezy shipped 1.4.12). This string is present in the raw archives but had never been analysed or turned into a finding.",
+   "source_document_existed": true,
+   "source_document_located": false
+  },
+  "coverage": "All 58 LP2 page JPEGs, every marker, full DQT/DHT/ICC/JFIF/geometry/trailing-byte vector, byte-level. Prior work (corpus/G-forensics) covered pages 0-55 and recorded DQT sha1s only; this lane adds pages 56-57, the exact IJG quality, the Huffman-table classification, the ICC internals and release bound, the marker order and the trailing-byte check. 18 control renders across 9 pipelines x 2 source documents, plus 20 two-stage chain runs. 29/29 rune glyph bitmaps via the validated 96.93% reader. Ghostscript srgb.icc compared byte-exactly across ghostpdl tags 9.18-9.53.3 plus 10.06.0. 46/46 curated 3301 PGP messages checked for signer version. The archived onion7 index.html re-read in full, both copies.",
+  "not_covered": "NC-1 the exact Ghostscript point release (the ICC bound is an interval <= 9.21, not a version; the pre-9.18 tags could not be fetched at the probed paths). NC-2 the exact ImageMagick version (only 'an ImageMagick that inherits input sampling factors and defaults to quality 92' is established). NC-3 whether stage 2 was `convert` or `mogrify`, one command or a loop. NC-4 Junicode and Everson Mono, two strong period candidate faces that no mirror tried would serve. NC-5 the allrunes Type-1 faces are in the bank but are custom-encoded, so matching them needs an unordered glyph-slot search rather than a codepoint lookup. NC-6 NO source PDF or PostScript document located; everything circulating is a community re-wrap of the 58 JPEGs. NC-7 the onion7 *page* is clean but the onion7 *server* was never enumerated (headers, 404 behaviour, sibling paths). NC-8 the generator prior emitted by this lane is a prior, not a result: it re-weights a search, it decodes nothing.",
+  "evidence": [
+   "liber-primus/analysis/round18/L1-toolchain/PREREG.md",
+   "liber-primus/analysis/round18/L1-toolchain/RESULTS.md",
+   "liber-primus/analysis/round18/L1-toolchain/pages_summary.json",
+   "liber-primus/analysis/round18/L1-toolchain/control_results.json",
+   "liber-primus/analysis/round18/L1-toolchain/chain_results.json",
+   "liber-primus/analysis/round18/L1-toolchain/icc_versions.json",
+   "liber-primus/analysis/round18/L1-toolchain/runes_observed_meta.json",
+   "liber-primus/analysis/round18/L1-toolchain/font_match_results.json"
+  ],
+  "reproduce": "python3 liber-primus/analysis/round18/L1-toolchain/jpeg_fingerprint.py --selftest && python3 liber-primus/analysis/round18/L1-toolchain/run_pages.py && python3 liber-primus/analysis/round18/L1-toolchain/pipeline_control.py && python3 liber-primus/analysis/round18/L1-toolchain/chain_control.py",
+  "supersedes": null,
+  "superseded_by": null,
+  "reopens_if": "Any of: (a) a Liber Primus PDF or PostScript source surfaces with an extractable text layer or an embedded font subset - a subset's /BaseFont name would identify the typesetting program and the rune face outright, and is the single highest-value unrecovered artifact in this puzzle after the ciphertext itself; (b) Junicode or Everson Mono is obtained and changes the font ranking; (c) the allrunes glyph-slot search identifies a LaTeX face, which would make a TeX-internal PRNG a first-rank prior rather than a fifth-rank one; (d) a fuller onion7 crawl (server headers, sibling paths) is recovered from an archive.",
+  "priority": "high",
+  "notes": "REFINEMENT THE REPO SHOULD ABSORB: AGENTS.md:39-41 and analysis/stego/STEGO-VERDICT.md:16-26 describe the pages as '400-DPI Ghostscript renders'. That is half the chain. Ghostscript rendered them; ImageMagick WROTE the JPEGs. The provenance claim (56/56 SHA-1 match) and the stego verdict are unaffected - a 4:2:0 quality-92 optimised-Huffman render of line art is if anything a worse OutGuess carrier - but the premise should be corrected. THE DELIVERABLE of this lane is the ranked generator/language prior in RESULTS.md section 6, which converts the toolchain into search weights for the derived-key dictionary: promote glibc C rand/random (x3), Python 2.7 random with Python-2 seed-string semantics (x3), Perl 5.14 rand (x2.5, never swept), bash $RANDOM and coreutils composites (x2, never swept, and the cheapest unrun item in the register), and LaTeX-internal generators such as pgfmath/lcg (x2, never swept and never even considered); demote Windows CRT rand (x0.15) and .NET System.Random (x0.05) on four independent facts."
+ },
+ {
+  "id": "B-11",
+  "lane": "recon-b",
+  "hypothesis": "Source PDF + rune-font identification (FRESH-ANGLES track 5)",
+  "status": "partially-run",
+  "raw_status": "partially-run",
+  "round": "18/L1",
+  "date": "2026-08-26",
+  "threshold": "See G-01 (same pre-registration, round18/L1-toolchain/PREREG.md). Font identified only if the best candidate's mean per-glyph distance falls inside the PC3 degraded-self-match band AND beats the runner-up by >=2 sigma over >=20 rune classes; font excluded only if its mean distance exceeds the PC3-calibrated cross-face band on >=20 classes.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "Glyph bitmaps extracted with the validated R9 template-DP reader (96.93% agreement over 5,207 compared glyphs), not the forced re-segmentation that fails at 12.9%. Font matcher control PC3 is a leave-one-in self-match over the candidate bank plus a degraded self-match through a simulated render/JPEG/downsample pipeline; see font_match_results.json.",
+  "null": "N2 (font) / N3 (source document) as stated in PREREG.md.",
+  "result": {
+   "source_document_existed": "PROVEN - the images are two-stage renders of a typeset 6.00 x 9.00 inch page (2400x3600 px at 400 dpi), so a PDF or PostScript source necessarily existed",
+   "source_document_located": false,
+   "runes_are_typeset_not_drawn": true,
+   "n_runes_extracted": 29,
+   "candidate_bank": ["FreeSerif", "FreeSans", "FreeMono", "NotoSansRunic", "SegoeUISymbol", "Quivira", "BabelStoneRunic", "BabelStoneRunicElderFuthark", "BabelStoneModern", "Unifont", "Symbola", "allrunes (Type-1, custom-encoded)"],
+   "not_in_bank": ["Junicode", "Everson Mono"],
+   "match": "see liber-primus/analysis/round18/L1-toolchain/font_match_results.json and RESULTS.md section 5"
+  },
+  "coverage": "29/29 rune glyph bitmaps recovered from the page images and compared against 11 Unicode-encoded runic faces with a 2012-2014 lineage. Existence of a typeset source document established from the render geometry and the two-stage encoder chain.",
+  "not_covered": "Junicode and Everson Mono (unfetchable from every mirror tried). The allrunes Type-1 family is on disk but needs an unordered glyph-slot search rather than a codepoint lookup. No source PDF located; every circulating 'Liber Primus PDF' checked is a re-wrap of the published JPEGs, not the original typesetting.",
+  "evidence": [
+   "liber-primus/analysis/round18/L1-toolchain/RESULTS.md",
+   "liber-primus/analysis/round18/L1-toolchain/runes_observed_meta.json",
+   "liber-primus/analysis/round18/L1-toolchain/runes_observed.png",
+   "liber-primus/analysis/round18/L1-toolchain/font_match_results.json"
+  ],
+  "reproduce": "python3 liber-primus/analysis/round18/L1-toolchain/glyph_extract.py && bash liber-primus/analysis/round18/L1-toolchain/get_fonts.sh && python3 liber-primus/analysis/round18/L1-toolchain/font_match.py",
+  "supersedes": null,
+  "superseded_by": null,
+  "reopens_if": "Junicode or Everson Mono is obtained; or the allrunes glyph-slot search is run; or any PDF with a text layer or an embedded font subset surfaces.",
+  "priority": "high",
+  "notes": "The font identity is worth more than it looks: an allrunes match would put a LaTeX document under the whole artifact and make TeX-internal PRNGs (pgfmath, the lcg package) a first-rank prior for the derived-key dictionary instead of a fifth-rank one."
+ }
+]

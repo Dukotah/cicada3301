@@ -1,0 +1,186 @@
+{
+ "$comment": "Round 18 lane L7 (INSTRUMENT RED-TEAM) ledger fragment. Entries whose id starts with RESTATE- do NOT change an existing entry's verdict; they narrow the stated SCOPE of an existing negative, in the sense of AGENTS.md section 7 (trust the bound, distrust the conclusion). Merge into liber-primus/LEDGER.json.",
+ "lane": "round18/L7-redteam",
+ "date": "2026-08-26",
+ "trust_anchor": "tests/validate.py ALL PASS (5/5 known solves); benchmark/gates.py 7/7",
+ "entries": [
+  {
+   "id": "L7-A-SCORER-ENGLISH-ONLY",
+   "lane": "round18/L7",
+   "round": "18",
+   "date": "2026-08-26",
+   "hypothesis": "Every adjudication in this repository is decided by lp.score.Quadgram.score_norm, a quadgram model trained on four modern-orthography English books, against a fixed English band (>= -5.5). If the LP2 plaintext is not modern or archaic English, the CORRECT key is scored as noise and every published negative is conditional in a way no ledger entry states.",
+   "status": "negative",
+   "verdict": "FOUND-ERROR",
+   "coverage": "Measured the correct-key beam score for 10 plaintext registers x 4 segment lengths (31/120/240/400) x 12 replicates, under the pinned soft anti-repeat filter with the sha256_ctr(CICADA3301) key family. Instrument unchanged from the repo. Recovery measured on rune indices.",
+   "not_covered": [
+    "languages not modelled (Greek, Hebrew, Norse, Enochian, constructed languages)",
+    "non-linguistic payloads (key blocks, hashes, base32) - B6 proved these undetectable in principle",
+    "the matched runic scorer of round16/scorer, which no lane has yet adopted",
+    "key families other than sha256_ctr (the effect is a property of the scorer, not the key, but only one family was measured)"
+   ],
+   "positive_control": "passed",
+   "threshold": "A register is INVISIBLE if its median correct-key score_norm < -5.5 (the repo-wide bar). Fixed in PREREG.md before running. FOUND-ERROR iff >= 1 plausible register is INVISIBLE at L=120 or L=400 and no ledger entry states the English conditionality.",
+   "result": {
+    "power_at_L120_to_detect_the_CORRECT_key": {
+     "LP1_REAL_solved_page_register": 1.0,
+     "EN_MODERN": 1.0,
+     "EN_KJV": 1.0,
+     "OE": 0.58,
+     "DE": 0.42,
+     "LATIN": 0.33,
+     "EN_HALFVOWEL": 0.33,
+     "CY": 0.0,
+     "EN_NOVOWEL": 0.0
+    },
+    "median_correct_key_score_L120": {
+     "LP1_REAL": -4.331, "EN_MODERN": -4.215, "EN_KJV": -4.113,
+     "OE": -5.393, "DE": -5.517, "LATIN": -5.583, "EN_HALFVOWEL": -5.623,
+     "CY": -6.581, "EN_NOVOWEL": -7.597, "RAND": -7.391
+    },
+    "median_rune_index_recovery_of_the_correct_key": "100% for LATIN, OE, DE, CY and EN_HALFVOWEL at every length. The DECODER recovers the plaintext exactly; only the ADJUDICATOR fails.",
+    "EN_NOVOWEL_is_anti_selected": "correct key -7.597 vs a deliberately wrong key -7.405: an abbreviated-English plaintext ranks the correct key BELOW a wrong one.",
+    "orthography_round_trip_cost": -0.139,
+    "word_boundary_free_is_a_non_issue": "the quadgram model is built with [^A-Z] stripped (data/BUILD-QUADGRAMS.md), so it is already matched to boundary-free rune output.",
+    "no_ledger_entry_states_the_condition": "the word 'English' appears in no coverage or not_covered field of the 62 LEDGER.json entries."
+   },
+   "reopens_if": "n/a - this is an instrument measurement, not an attack lane. It is superseded when a lane adopts a non-English or language-agnostic adjudicator and re-reports its power.",
+   "artifacts": ["a1_scorer_language.py", "out_a1.json"]
+  },
+  {
+   "id": "L7-A-ARCHIVE-RESCORE",
+   "lane": "round18/L7",
+   "round": "18",
+   "date": "2026-08-26",
+   "hypothesis": "campaign14/REDTEAM-PROPOSALS.md (~line 155), queued and never run for the post-B6 sweeps: language-agnostic and non-English re-scoring of all sweep bests. Any archived 'null' whose decrypt scores high under Old English / Latin, or shows an elevated decrypt IoC.N, is a missed hit.",
+   "status": "negative",
+   "verdict": "NEGATIVE (executed), with its power measured rather than assumed",
+   "coverage": "340 archived candidate decode strings - every top50/top20 'head' field in round13/B04 A-D, round16/KDF, round16/prng and round17 P0-P3 - re-scored under rune-space trigram LMs for EN/LA/OE/DE/CY/the real LP1 register plus decrypt-IoC.N.",
+   "not_covered": [
+    "every decode a sweep discarded, which is all but the English-argmax top-N; the archive is filtered by the metric being bypassed (B6 section 0)",
+    "Round 8's 2.52e9 decodes, which stored no candidate strings at all",
+    "registers whose correct key would not have entered a top-N in the first place (Welsh, vowel-dropped English) - see the power field"
+   ],
+   "positive_control": "passed (the exercise recovers B6's own end-to-end validation: an English LM flags real solved-page text among noise)",
+   "threshold": "B6's rule verbatim: z >= 4.0 against a length-matched 400-sample random-rune null AND above that null's maximum. Because every archived candidate is the ENGLISH argmax of its sweep, the selection-corrected statistic score_M - score_EN, standardised against the archive's own distribution, is reported as the operative one.",
+   "result": {
+    "n_candidates": 340,
+    "raw_flags": 44,
+    "raw_flags_are_selection_artifact": "English-correlated models (OE, DE) light up because the candidates were chosen as the English argmax",
+    "selection_corrected_max_z_contrast": {"LATIN": 2.71, "OE": 2.58, "DE": 2.23, "CY": 2.91, "LP1_REAL": 2.96},
+    "n_over_3_sigma": 0,
+    "measured_power": {
+     "LATIN": "correct key would rank 1 of 1,385,600 (z=+7.6) and WOULD be stored -> the negative extends to Latin",
+     "OE": "rank 1 (z=+8.5) -> extends",
+     "EN_HALFVOWEL": "rank 1 (z=+7.5) -> extends",
+     "CY": "expected rank 651 -> NOT stored, UNDERPOWERED",
+     "EN_NOVOWEL": "expected rank 1.2e6 of 1.39e6 (z=-1.10) -> ZERO power, permanent blind spot of the archive"
+    }
+   },
+   "reopens_if": "A sweep that persists a language-agnostic statistic at sweep time (B6's handoff requirement) produces a candidate whose non-English contrast exceeds 3 sigma.",
+   "artifacts": ["a2_rescore_archive.py", "out_a2.json"]
+  },
+  {
+   "id": "L7-A-HANDOFF-NONCOMPLIANCE",
+   "lane": "round18/L7",
+   "round": "18",
+   "date": "2026-08-26",
+   "hypothesis": "Round 10b lane B6 issued a binding handoff requirement - persist a language-agnostic statistic at sweep time, because retro-fitting is impossible once the decodes are thrown away. Later sweeps complied.",
+   "status": "eliminated",
+   "verdict": "FOUND-ERROR (the requirement was never actioned)",
+   "coverage": "All 15 post-B6 sweep result files checked mechanically for any per-candidate field matching ioc/lang/lm_/entropy/distinct/agnostic.",
+   "positive_control": "n/a (a file audit, not a scored test)",
+   "threshold": "A sweep complies iff at least one per-candidate language-agnostic field is persisted.",
+   "result": "0 of 15 comply. round13/B04 A-D, round16/KDF, round16/prng and round17 P0(x5)/P1/P2/P3(x2) all store only (parameters, English score, 64-char head). The 6,224,300 + 692,064 + 52,556 decodes and the ~14.5e9 offsets are adjudicated English-only and CANNOT be retro-fitted: only the argmax-by-English survivors still exist.",
+   "reopens_if": "n/a - discharged when a future harness persists decrypt IoC.N plus a best-non-English-LM score alongside every stored candidate.",
+   "artifacts": ["out_a2.json -> b6_handoff_compliance"]
+  },
+  {
+   "id": "L7-B-BEAM-ENVELOPE",
+   "lane": "round18/L7",
+   "round": "18",
+   "date": "2026-08-26",
+   "hypothesis": "skipdecode.beam_decode admits a key skip only if EVERY skipped key position would have reproduced the previous cipher rune. That validity test is exact for encipher_keyskip and for nothing else, so constructions that desynchronise the key for any other reason are excluded by the decoder's transition relation rather than merely being harder for it.",
+   "status": "negative",
+   "verdict": "FOUND-ERROR",
+   "coverage": "67 constructions x 7 seeds at L=240, English plaintext held fixed so the scorer is at full power. Axes: suppression 0.0-1.0; filter placement (key-skip / value-rewrite / key-side / plaintext-side); position-varying suppression (ramp, per-page blocks, burst); free key drift q=0-0.05; exactly n unrepresentable key advances n=0-10; rejection consuming two draws; low-entropy pads with constant runs r=1-32; max_skip 1-8; beam width 50-1000.",
+   "not_covered": [
+    "unknown key offset (that is lane L6/B-02)",
+    "constructions combining two or more of these axes",
+    "segment lengths other than 240",
+    "plaintext registers other than English (that is sub-attack A)"
+   ],
+   "positive_control": "passed - keyskip supp=0.83 max_skip=3 beam_w=400 recovers at -4.303, 100% rune recovery, reproducing the published gate",
+   "threshold": "A construction is MISSED iff the median correct-key score_norm over the seeds is < -5.5. FOUND-ERROR iff a MISSED construction also reproduces LP2's 0.664% doublet rate to within +-0.3pp and appears in no ledger not_covered field. Fixed in PREREG.md before running.",
+   "result": {
+    "missed": 11,
+    "of": 67,
+    "missed_and_LP2_doublet_consistent_and_unnamed": [
+     {"construction": "rejection consumes TWO draws (skip_by_two), supp=0.83", "score": -6.903, "recovery": 0.258, "ct_doublet_pct": 0.84, "max_skip_8_helps": false},
+     {"construction": "free key drift q=0.05", "score": -6.883, "recovery": 0.221, "ct_doublet_pct": 0.84, "max_skip_8_helps": false},
+     {"construction": "exactly 5 unrepresentable key advances per 240 runes", "score": -6.674, "recovery": 0.258, "ct_doublet_pct": 0.42, "max_skip_8_and_beam_1000_help": false}
+    ],
+    "cost_of_one_unrepresentable_key_advance_per_240_runes": {"delta_score": -0.296, "delta_recovery_pp": -5.0},
+    "breaking_point": "~1 unrepresentable key advance per 60 runes",
+    "budget_is_not_the_binding_constraint": "raising max_skip 3->8 and beam width 400->1000 changes these scores by exactly 0.000; the failure is in the transition relation, not the search depth",
+    "robust_axes": "suppression 0.0-1.0, position-varying suppression (all three shapes), beam width 50-1000 and max_skip 1-8 on a high-entropy pad: correct key recovered at -4.30 / 100% throughout",
+    "max_skip_correction_extends_round17": "R17 reported ms=3 underpowered on constant-byte runs and ms=8 as the fix. Measured here: at a hard filter (supp=1.0) ms=8 still FAILS at run length 16 (-6.503) and 32 (-7.054). The honest statement is 'ms=8 covers constant runs up to length 8'.",
+    "mechanism_placement_newly_excluded_by_the_data": "a key-side filter (doublet-free keystream, rigid encipherment) yields a 3.77% ciphertext doublet rate and a plaintext-side filter yields 3.80%, against LP2's 0.664%. Only output-side placements (key-skip 0.84%, value-rewrite 0.42%) reproduce the observed statistic, and the beam handles both. The repo asserted this; it is now measured."
+   },
+   "reopens_if": "n/a for the measurement. The constructions it names reopen the lanes that used the beam: any evidence that the 2013 rejection loop consumed more than one draw per rejection, or that an interrupter / line break / discarded draw advanced the key independently of the doublet rule, invalidates every beam-based negative in the repository.",
+   "artifacts": ["b1_power_envelope.py", "out_b1.json"]
+  },
+  {
+   "id": "RESTATE-B-04",
+   "lane": "round18/L7",
+   "round": "18",
+   "date": "2026-08-26",
+   "restates": "B-04",
+   "status": "negative",
+   "was": "NEGATIVE. 6,224,300 decodes across stages A/B/C/D, 0 over the -5.5 bar.",
+   "restated_coverage": "NEGATIVE for a modern-English, archaic-English or LP1-register plaintext, at measured power 1.00 (the register the Liber Primus has demonstrably used scores -4.33). Measured power of the same sweep against a Latin plaintext 0.33-0.50, against half-vowel-abbreviated English 0.25-0.33, against Welsh 0.00, against vowel-dropped English 0.00 (where the correct key scores BELOW a wrong key). Re-scoring the stored top-50 (L7-A-ARCHIVE-RESCORE) extends the negative to Latin, Old English and half-vowel English at rank-1 power; it does not extend it to Welsh or vowel-dropped English. Separately, the decoder covers only a rejection sampler that advances the key by exactly one symbol per rejection with no other source of drift (L7-B-BEAM-ENVELOPE).",
+   "additional_not_covered": [
+    "non-English plaintext registers, unstated until now",
+    "rejection samplers that consume more than one draw per rejection",
+    "any independent key-drift source above ~1 event per 60 runes"
+   ]
+  },
+  {
+   "id": "RESTATE-R16-KDF",
+   "lane": "round18/L7",
+   "round": "18",
+   "date": "2026-08-26",
+   "restates": "R16-KDF",
+   "status": "negative",
+   "was": "NEGATIVE. 692,064 Stage-A decodes. Best -6.259 vs bar -5.500.",
+   "restated_coverage": "Identical English-register conditionality and identical measured powers to RESTATE-B-04; the stored top-50 gives the same rank-1 extension to Latin, Old English and half-vowel English. Same beam-envelope limitation.",
+   "additional_not_covered": ["non-English plaintext registers", "rejection samplers consuming more than one draw per rejection"]
+  },
+  {
+   "id": "RESTATE-R16-PRNG",
+   "lane": "round18/L7",
+   "round": "18",
+   "date": "2026-08-26",
+   "restates": "R16-PRNG",
+   "status": "negative",
+   "was": "NEGATIVE. 52,556 decodes. Best -6.347 vs bar -5.500.",
+   "restated_coverage": "Identical English-register conditionality and identical measured powers to RESTATE-B-04; stored top-20 gives the same rank-1 extension. Same beam-envelope limitation.",
+   "additional_not_covered": ["non-English plaintext registers", "rejection samplers consuming more than one draw per rejection"]
+  },
+  {
+   "id": "RESTATE-R17-PUBLIC-PAD",
+   "lane": "round18/L7",
+   "round": "18",
+   "date": "2026-08-26",
+   "restates": "R17-PUBLIC-PAD",
+   "status": "negative",
+   "was": "NEGATIVE. 14,522,916,046 offsets scored, ~8.4e9 effective after each lane's measured prefilter survival.",
+   "restated_coverage": "NEGATIVE for an English plaintext. The offsets were SELECTED by an English rune-index trigram prefilter (lib_padsweep.trigram_model, trained on the same kjv/moby/pride/war corpus) over a 24-rune head, and only the top 40 per sign were beam-escalated and adjudicated by the English quadgram beam. The measured prefilter survival (0.375-0.875, non-monotone in pad size) was measured on ENGLISH plants only, so it is not a coverage discount for a non-English plaintext - that coverage is unmeasured, neither zero nor one. Additionally the ms=8 correction R17 published covers constant key runs up to length 8, not beyond (measured: ms=8 fails at run 16 and 32 under a hard filter).",
+   "additional_not_covered": [
+    "non-English plaintext registers, at BOTH the prefilter and the adjudication stage",
+    "constant key runs longer than 8 under a hard filter, even at max_skip=8",
+    "rejection samplers consuming more than one draw per rejection"
+   ]
+  }
+ ]
+}

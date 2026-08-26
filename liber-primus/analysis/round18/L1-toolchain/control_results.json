@@ -1,0 +1,881 @@
+{
+ "tool_versions": {
+  "gs": "10.06.0",
+  "imagemagick": "Version: ImageMagick 7.1.2-18 Q16 x86_64 23822 https://imagemagick.org",
+  "magick": "Version: ImageMagick 7.1.2-18 Q16 x86_64 23822 https://imagemagick.org",
+  "pdftoppm": "pdftoppm version 26.01.0",
+  "mutool": "/bin/sh: 1: mutool: not found",
+  "cjpeg": "/bin/sh: 1: cjpeg: not found",
+  "python-pillow": "12.1.1"
+ },
+ "runs": [
+  {
+   "content": "gray",
+   "pipeline": "gs-jpeg-default",
+   "cmd": "gs -q -dNOPAUSE -dBATCH -sDEVICE=jpeg -r400 -o /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__gs-jpeg-default.jpg /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_gray.pdf",
+   "rc": 0,
+   "vector": {
+    "ncomp": 3,
+    "subsampling": "22x11x11",
+    "progressive": false,
+    "dqt_sha1": [
+     "f21fc141e2c1cbeaa5996cc9b8155b268385de87",
+     "06482eb7a59279314a207e0d43151dc76d4dbd45"
+    ],
+    "ijg_q": [
+     [
+      75
+     ]
+    ],
+    "dht_class": [
+     "IJG-standard"
+    ],
+    "ndht": 4,
+    "dri": null,
+    "apps": [
+     "JFIF",
+     "ICC_PROFILE"
+    ],
+    "icc_sha256": "eddaf344b5edea13269e0d20055f335610e5e0b6e33e6e536f2701bc18c5f7d5",
+    "marker_order": "APP0,APP2,DQT,DQT,SOF0,DHT,DHT,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 1,
+     "xdensity": 400,
+     "ydensity": 400,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": "Artifex Software sRGB ICC Profile",
+   "icc_cprt": "Copyright Artifex Software 2011",
+   "icc_len": 2576,
+   "icc_sha256": "eddaf344b5edea13269e0d20055f335610e5e0b6e33e6e536f2701bc18c5f7d5"
+  },
+  {
+   "content": "gray",
+   "pipeline": "gs-jpeg-q92",
+   "cmd": "gs -q -dNOPAUSE -dBATCH -sDEVICE=jpeg -dJPEGQ=92 -r400 -o /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__gs-jpeg-q92.jpg /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_gray.pdf",
+   "rc": 0,
+   "vector": {
+    "ncomp": 3,
+    "subsampling": "22x11x11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f",
+     "cd6e3767d9c4da25c4f8126038b332d0ac48f244"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "IJG-standard"
+    ],
+    "ndht": 4,
+    "dri": null,
+    "apps": [
+     "JFIF",
+     "ICC_PROFILE"
+    ],
+    "icc_sha256": "eddaf344b5edea13269e0d20055f335610e5e0b6e33e6e536f2701bc18c5f7d5",
+    "marker_order": "APP0,APP2,DQT,DQT,SOF0,DHT,DHT,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 1,
+     "xdensity": 400,
+     "ydensity": 400,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": "Artifex Software sRGB ICC Profile",
+   "icc_cprt": "Copyright Artifex Software 2011",
+   "icc_len": 2576,
+   "icc_sha256": "eddaf344b5edea13269e0d20055f335610e5e0b6e33e6e536f2701bc18c5f7d5"
+  },
+  {
+   "content": "gray",
+   "pipeline": "gs-jpeggray-q92",
+   "cmd": "gs -q -dNOPAUSE -dBATCH -sDEVICE=jpeggray -dJPEGQ=92 -r400 -o /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__gs-jpeggray-q92.jpg /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_gray.pdf",
+   "rc": 0,
+   "vector": {
+    "ncomp": 1,
+    "subsampling": "11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "IJG-standard"
+    ],
+    "ndht": 2,
+    "dri": null,
+    "apps": [
+     "JFIF",
+     "ICC_PROFILE"
+    ],
+    "icc_sha256": "d3aaaa8ad45ec8a0108fd393a07488073ee24561fd5ed2d1f88c59771278cabd",
+    "marker_order": "APP0,APP2,DQT,SOF0,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 1,
+     "xdensity": 400,
+     "ydensity": 400,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": "Artifex Software sGray ICC Profile",
+   "icc_cprt": "Copyright Artifex Software 2018",
+   "icc_len": 2460,
+   "icc_sha256": "d3aaaa8ad45ec8a0108fd393a07488073ee24561fd5ed2d1f88c59771278cabd"
+  },
+  {
+   "content": "gray",
+   "pipeline": "im-convert-default",
+   "cmd": "convert -density 400 /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_gray.pdf /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__im-convert-default.jpg",
+   "rc": 0,
+   "vector": {
+    "ncomp": 1,
+    "subsampling": "11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "custom-optimised"
+    ],
+    "ndht": 2,
+    "dri": null,
+    "apps": [
+     "JFIF",
+     "http://ns.adobe.com/xap/1.0/"
+    ],
+    "icc_sha256": null,
+    "marker_order": "APP0,APP1,DQT,SOF0,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 0,
+     "xdensity": 400,
+     "ydensity": 400,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": null,
+   "icc_cprt": null,
+   "icc_len": null,
+   "icc_sha256": null
+  },
+  {
+   "content": "gray",
+   "pipeline": "im-convert-q92",
+   "cmd": "convert -density 400 -quality 92 /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_gray.pdf /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__im-convert-q92.jpg",
+   "rc": 0,
+   "vector": {
+    "ncomp": 1,
+    "subsampling": "11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "custom-optimised"
+    ],
+    "ndht": 2,
+    "dri": null,
+    "apps": [
+     "JFIF",
+     "http://ns.adobe.com/xap/1.0/"
+    ],
+    "icc_sha256": null,
+    "marker_order": "APP0,APP1,DQT,SOF0,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 0,
+     "xdensity": 400,
+     "ydensity": 400,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": null,
+   "icc_cprt": null,
+   "icc_len": null,
+   "icc_sha256": null
+  },
+  {
+   "content": "gray",
+   "pipeline": "im-convert-q92-420",
+   "cmd": "convert -density 400 -quality 92 -sampling-factor 2x2 /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_gray.pdf /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__im-convert-q92-420.jpg",
+   "rc": 0,
+   "vector": {
+    "ncomp": 1,
+    "subsampling": "22",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "custom-optimised"
+    ],
+    "ndht": 2,
+    "dri": null,
+    "apps": [
+     "JFIF",
+     "http://ns.adobe.com/xap/1.0/"
+    ],
+    "icc_sha256": null,
+    "marker_order": "APP0,APP1,DQT,SOF0,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 0,
+     "xdensity": 400,
+     "ydensity": 400,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": null,
+   "icc_cprt": null,
+   "icc_len": null,
+   "icc_sha256": null
+  },
+  {
+   "content": "gray",
+   "pipeline": "gs-png-then-im",
+   "cmd": "gs -q -dNOPAUSE -dBATCH -sDEVICE=png16m -r400 -o /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__gs-png-then-im.jpg.png /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_gray.pdf && convert /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__gs-png-then-im.jpg.png /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__gs-png-then-im.jpg",
+   "rc": 0,
+   "vector": {
+    "ncomp": 1,
+    "subsampling": "11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "custom-optimised"
+    ],
+    "ndht": 2,
+    "dri": null,
+    "apps": [
+     "JFIF"
+    ],
+    "icc_sha256": null,
+    "marker_order": "APP0,DQT,SOF0,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 2,
+     "xdensity": 157,
+     "ydensity": 157,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": null,
+   "icc_cprt": null,
+   "icc_len": null,
+   "icc_sha256": null
+  },
+  {
+   "content": "gray",
+   "pipeline": "gs-png-then-im-q92-420",
+   "cmd": "gs -q -dNOPAUSE -dBATCH -sDEVICE=png16m -r400 -o /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__gs-png-then-im-q92-420.jpg.png /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_gray.pdf && convert /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__gs-png-then-im-q92-420.jpg.png -quality 92 -sampling-factor 2x2 /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__gs-png-then-im-q92-420.jpg",
+   "rc": 0,
+   "vector": {
+    "ncomp": 1,
+    "subsampling": "22",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "custom-optimised"
+    ],
+    "ndht": 2,
+    "dri": null,
+    "apps": [
+     "JFIF"
+    ],
+    "icc_sha256": null,
+    "marker_order": "APP0,DQT,SOF0,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 2,
+     "xdensity": 157,
+     "ydensity": 157,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": null,
+   "icc_cprt": null,
+   "icc_len": null,
+   "icc_sha256": null
+  },
+  {
+   "content": "gray",
+   "pipeline": "pdftoppm-then-im",
+   "cmd": "pdftoppm -r 400 -png -singlefile /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_gray.pdf /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__pdftoppm-then-im.jpg_pp && convert /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__pdftoppm-then-im.jpg_pp.png /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/gray__pdftoppm-then-im.jpg",
+   "rc": 0,
+   "vector": {
+    "ncomp": 1,
+    "subsampling": "11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "custom-optimised"
+    ],
+    "ndht": 2,
+    "dri": null,
+    "apps": [
+     "JFIF"
+    ],
+    "icc_sha256": null,
+    "marker_order": "APP0,DQT,SOF0,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 2,
+     "xdensity": 157,
+     "ydensity": 157,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": null,
+   "icc_cprt": null,
+   "icc_len": null,
+   "icc_sha256": null
+  },
+  {
+   "content": "colour",
+   "pipeline": "gs-jpeg-default",
+   "cmd": "gs -q -dNOPAUSE -dBATCH -sDEVICE=jpeg -r400 -o /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__gs-jpeg-default.jpg /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_colour.pdf",
+   "rc": 0,
+   "vector": {
+    "ncomp": 3,
+    "subsampling": "22x11x11",
+    "progressive": false,
+    "dqt_sha1": [
+     "f21fc141e2c1cbeaa5996cc9b8155b268385de87",
+     "06482eb7a59279314a207e0d43151dc76d4dbd45"
+    ],
+    "ijg_q": [
+     [
+      75
+     ]
+    ],
+    "dht_class": [
+     "IJG-standard"
+    ],
+    "ndht": 4,
+    "dri": null,
+    "apps": [
+     "JFIF",
+     "ICC_PROFILE"
+    ],
+    "icc_sha256": "eddaf344b5edea13269e0d20055f335610e5e0b6e33e6e536f2701bc18c5f7d5",
+    "marker_order": "APP0,APP2,DQT,DQT,SOF0,DHT,DHT,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 1,
+     "xdensity": 400,
+     "ydensity": 400,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": "Artifex Software sRGB ICC Profile",
+   "icc_cprt": "Copyright Artifex Software 2011",
+   "icc_len": 2576,
+   "icc_sha256": "eddaf344b5edea13269e0d20055f335610e5e0b6e33e6e536f2701bc18c5f7d5"
+  },
+  {
+   "content": "colour",
+   "pipeline": "gs-jpeg-q92",
+   "cmd": "gs -q -dNOPAUSE -dBATCH -sDEVICE=jpeg -dJPEGQ=92 -r400 -o /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__gs-jpeg-q92.jpg /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_colour.pdf",
+   "rc": 0,
+   "vector": {
+    "ncomp": 3,
+    "subsampling": "22x11x11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f",
+     "cd6e3767d9c4da25c4f8126038b332d0ac48f244"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "IJG-standard"
+    ],
+    "ndht": 4,
+    "dri": null,
+    "apps": [
+     "JFIF",
+     "ICC_PROFILE"
+    ],
+    "icc_sha256": "eddaf344b5edea13269e0d20055f335610e5e0b6e33e6e536f2701bc18c5f7d5",
+    "marker_order": "APP0,APP2,DQT,DQT,SOF0,DHT,DHT,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 1,
+     "xdensity": 400,
+     "ydensity": 400,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": "Artifex Software sRGB ICC Profile",
+   "icc_cprt": "Copyright Artifex Software 2011",
+   "icc_len": 2576,
+   "icc_sha256": "eddaf344b5edea13269e0d20055f335610e5e0b6e33e6e536f2701bc18c5f7d5"
+  },
+  {
+   "content": "colour",
+   "pipeline": "gs-jpeggray-q92",
+   "cmd": "gs -q -dNOPAUSE -dBATCH -sDEVICE=jpeggray -dJPEGQ=92 -r400 -o /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__gs-jpeggray-q92.jpg /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_colour.pdf",
+   "rc": 0,
+   "vector": {
+    "ncomp": 1,
+    "subsampling": "11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "IJG-standard"
+    ],
+    "ndht": 2,
+    "dri": null,
+    "apps": [
+     "JFIF",
+     "ICC_PROFILE"
+    ],
+    "icc_sha256": "d3aaaa8ad45ec8a0108fd393a07488073ee24561fd5ed2d1f88c59771278cabd",
+    "marker_order": "APP0,APP2,DQT,SOF0,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 1,
+     "xdensity": 400,
+     "ydensity": 400,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": "Artifex Software sGray ICC Profile",
+   "icc_cprt": "Copyright Artifex Software 2018",
+   "icc_len": 2460,
+   "icc_sha256": "d3aaaa8ad45ec8a0108fd393a07488073ee24561fd5ed2d1f88c59771278cabd"
+  },
+  {
+   "content": "colour",
+   "pipeline": "im-convert-default",
+   "cmd": "convert -density 400 /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_colour.pdf /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__im-convert-default.jpg",
+   "rc": 0,
+   "vector": {
+    "ncomp": 3,
+    "subsampling": "11x11x11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f",
+     "cd6e3767d9c4da25c4f8126038b332d0ac48f244"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "custom-optimised"
+    ],
+    "ndht": 4,
+    "dri": null,
+    "apps": [
+     "JFIF",
+     "http://ns.adobe.com/xap/1.0/"
+    ],
+    "icc_sha256": null,
+    "marker_order": "APP0,APP1,DQT,DQT,SOF0,DHT,DHT,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 0,
+     "xdensity": 400,
+     "ydensity": 400,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": null,
+   "icc_cprt": null,
+   "icc_len": null,
+   "icc_sha256": null
+  },
+  {
+   "content": "colour",
+   "pipeline": "im-convert-q92",
+   "cmd": "convert -density 400 -quality 92 /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_colour.pdf /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__im-convert-q92.jpg",
+   "rc": 0,
+   "vector": {
+    "ncomp": 3,
+    "subsampling": "11x11x11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f",
+     "cd6e3767d9c4da25c4f8126038b332d0ac48f244"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "custom-optimised"
+    ],
+    "ndht": 4,
+    "dri": null,
+    "apps": [
+     "JFIF",
+     "http://ns.adobe.com/xap/1.0/"
+    ],
+    "icc_sha256": null,
+    "marker_order": "APP0,APP1,DQT,DQT,SOF0,DHT,DHT,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 0,
+     "xdensity": 400,
+     "ydensity": 400,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": null,
+   "icc_cprt": null,
+   "icc_len": null,
+   "icc_sha256": null
+  },
+  {
+   "content": "colour",
+   "pipeline": "im-convert-q92-420",
+   "cmd": "convert -density 400 -quality 92 -sampling-factor 2x2 /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_colour.pdf /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__im-convert-q92-420.jpg",
+   "rc": 0,
+   "vector": {
+    "ncomp": 3,
+    "subsampling": "22x11x11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f",
+     "cd6e3767d9c4da25c4f8126038b332d0ac48f244"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "custom-optimised"
+    ],
+    "ndht": 4,
+    "dri": null,
+    "apps": [
+     "JFIF",
+     "http://ns.adobe.com/xap/1.0/"
+    ],
+    "icc_sha256": null,
+    "marker_order": "APP0,APP1,DQT,DQT,SOF0,DHT,DHT,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 0,
+     "xdensity": 400,
+     "ydensity": 400,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": null,
+   "icc_cprt": null,
+   "icc_len": null,
+   "icc_sha256": null
+  },
+  {
+   "content": "colour",
+   "pipeline": "gs-png-then-im",
+   "cmd": "gs -q -dNOPAUSE -dBATCH -sDEVICE=png16m -r400 -o /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__gs-png-then-im.jpg.png /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_colour.pdf && convert /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__gs-png-then-im.jpg.png /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__gs-png-then-im.jpg",
+   "rc": 0,
+   "vector": {
+    "ncomp": 3,
+    "subsampling": "11x11x11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f",
+     "cd6e3767d9c4da25c4f8126038b332d0ac48f244"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "custom-optimised"
+    ],
+    "ndht": 4,
+    "dri": null,
+    "apps": [
+     "JFIF"
+    ],
+    "icc_sha256": null,
+    "marker_order": "APP0,DQT,DQT,SOF0,DHT,DHT,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 2,
+     "xdensity": 157,
+     "ydensity": 157,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": null,
+   "icc_cprt": null,
+   "icc_len": null,
+   "icc_sha256": null
+  },
+  {
+   "content": "colour",
+   "pipeline": "gs-png-then-im-q92-420",
+   "cmd": "gs -q -dNOPAUSE -dBATCH -sDEVICE=png16m -r400 -o /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__gs-png-then-im-q92-420.jpg.png /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_colour.pdf && convert /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__gs-png-then-im-q92-420.jpg.png -quality 92 -sampling-factor 2x2 /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__gs-png-then-im-q92-420.jpg",
+   "rc": 0,
+   "vector": {
+    "ncomp": 3,
+    "subsampling": "22x11x11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f",
+     "cd6e3767d9c4da25c4f8126038b332d0ac48f244"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "custom-optimised"
+    ],
+    "ndht": 4,
+    "dri": null,
+    "apps": [
+     "JFIF"
+    ],
+    "icc_sha256": null,
+    "marker_order": "APP0,DQT,DQT,SOF0,DHT,DHT,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 2,
+     "xdensity": 157,
+     "ydensity": 157,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": null,
+   "icc_cprt": null,
+   "icc_len": null,
+   "icc_sha256": null
+  },
+  {
+   "content": "colour",
+   "pipeline": "pdftoppm-then-im",
+   "cmd": "pdftoppm -r 400 -png -singlefile /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/ctl_colour.pdf /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__pdftoppm-then-im.jpg_pp && convert /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__pdftoppm-then-im.jpg_pp.png /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L1-toolchain/control_out/colour__pdftoppm-then-im.jpg",
+   "rc": 0,
+   "vector": {
+    "ncomp": 3,
+    "subsampling": "11x11x11",
+    "progressive": false,
+    "dqt_sha1": [
+     "c96e442f9ce9a1965c6084df936558fcc335a69f",
+     "cd6e3767d9c4da25c4f8126038b332d0ac48f244"
+    ],
+    "ijg_q": [
+     [
+      92
+     ]
+    ],
+    "dht_class": [
+     "custom-optimised"
+    ],
+    "ndht": 4,
+    "dri": null,
+    "apps": [
+     "JFIF"
+    ],
+    "icc_sha256": null,
+    "marker_order": "APP0,DQT,DQT,SOF0,DHT,DHT,DHT,DHT,SOS,EOI",
+    "geometry": [
+     3306,
+     4678
+    ],
+    "jfif": {
+     "ver": "1.01",
+     "units": 2,
+     "xdensity": 157,
+     "ydensity": 157,
+     "thumb": [
+      0,
+      0
+     ]
+    }
+   },
+   "icc_desc": null,
+   "icc_cprt": null,
+   "icc_len": null,
+   "icc_sha256": null
+  }
+ ]
+}

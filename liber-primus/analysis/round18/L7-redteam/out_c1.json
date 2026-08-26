@@ -1,0 +1,420 @@
+{
+ "C1_headline": {
+  "n_runes": 12956,
+  "n_doublets": 86,
+  "doublet_rate_pct": 0.663836356619066,
+  "published_doublet_rate_pct": 0.664,
+  "ioc_times_N": 0.999873538070665,
+  "published_ioc_times_N": 0.9999,
+  "entropy_bits": 4.85650361370827,
+  "published_entropy_bits": 4.8565,
+  "expected_doublet_rate_pct_under_own_histogram": 3.447839786450569,
+  "lag1_suppression_pct": 80.74631079936397,
+  "published_lag1_suppression_pct": 80.75,
+  "note": "Lag-1 suppression is 1 - observed/expected where expected is the stream's OWN unigram collision rate (= IoC), not 1/29. The two agree here only because IoC*N = 1.0000; on any stream with structure they differ.",
+  "reproduces": true
+ },
+ "C2_g3_floor": {
+  "published_claim": "min_d Pdp(d) = 1.38-1.83% over 4 English corpora; 'no natural-language plaintext' reaches 0.664%",
+  "published_corpora_recomputed": {
+   "kjv": {
+    "min_pct": 1.3861557113716574,
+    "argmin_diff": 4,
+    "second_min_pct": 1.5958958566427908,
+    "p_doublet_pct": 3.0647963937646376,
+    "n": 277963
+   },
+   "moby": {
+    "min_pct": 1.798421071264205,
+    "argmin_diff": 7,
+    "second_min_pct": 1.8862180054519067,
+    "p_doublet_pct": 3.5256841434488617,
+    "n": 282470
+   },
+   "pride": {
+    "min_pct": 1.7864431589466423,
+    "argmin_diff": 18,
+    "second_min_pct": 1.8976340272206504,
+    "p_doublet_pct": 3.39976635842869,
+    "n": 284196
+   },
+   "war": {
+    "min_pct": 1.8305261968009947,
+    "argmin_diff": 18,
+    "second_min_pct": 1.9873678856044765,
+    "p_doublet_pct": 3.6705900638670657,
+    "n": 283088
+   }
+  },
+  "extension_registers": {
+   "EN_MODERN": {
+    "min_pct": 1.4829833701117001,
+    "argmin_diff": 18,
+    "second_min_pct": 1.77133334849967,
+    "p_doublet_pct": 2.9673885842982917,
+    "n": 351656
+   },
+   "EN_KJV": {
+    "min_pct": 1.4357535893839735,
+    "argmin_diff": 4,
+    "second_min_pct": 1.7295043237608092,
+    "p_doublet_pct": 2.9327573318933298,
+    "n": 399999
+   },
+   "LP1_REAL": {
+    "min_pct": 1.5846066779852859,
+    "argmin_diff": 18,
+    "second_min_pct": 1.5846066779852859,
+    "p_doublet_pct": 2.77306168647425,
+    "n": 1767
+   },
+   "LATIN": {
+    "min_pct": 1.4245035612589032,
+    "argmin_diff": 4,
+    "second_min_pct": 1.9985049962624908,
+    "p_doublet_pct": 2.7517568793921985,
+    "n": 399999
+   },
+   "OE": {
+    "min_pct": 2.074493940467461,
+    "argmin_diff": 7,
+    "second_min_pct": 2.2536847395348456,
+    "p_doublet_pct": 2.9873371835325715,
+    "n": 242758
+   },
+   "DE": {
+    "min_pct": 0.9724738023053011,
+    "argmin_diff": 22,
+    "second_min_pct": 1.227123562790385,
+    "p_doublet_pct": 3.7198083880670163,
+    "n": 208129
+   },
+   "CY": {
+    "min_pct": 2.338565294062218,
+    "argmin_diff": 11,
+    "second_min_pct": 2.3422671530685046,
+    "p_doublet_pct": 2.887450024903415,
+    "n": 297148
+   },
+   "EN_NOVOWEL": {
+    "min_pct": 1.0835987566675622,
+    "argmin_diff": 9,
+    "second_min_pct": 1.834778771249856,
+    "p_doublet_pct": 5.851625158294639,
+    "n": 208472
+   },
+   "EN_HALFVOWEL": {
+    "min_pct": 1.6942325515078065,
+    "argmin_diff": 18,
+    "second_min_pct": 2.431025878662579,
+    "p_doublet_pct": 3.6675696870321524,
+    "n": 280540
+   }
+  },
+  "observed_LP2_doublet_pct": 0.6638,
+  "prereg_trigger_pct": 0.8,
+  "registers_at_or_below_trigger": {},
+  "verdict": "HOLDS across every register tested"
+ },
+ "C3_gumbel": {
+  "DEFAULT_MU": -7.2517,
+  "DEFAULT_BETA": 0.0725,
+  "two_point_solve_reproduces_constants": {
+   "beta_from_anchors": 0.07248403681653515,
+   "mu_from_anchors": -7.251882352568359,
+   "matches": true
+  },
+  "degrees_of_freedom": 0,
+  "note_on_the_fit": "Two anchors, two parameters: this is an exact solve, not a fit. It has no residual and therefore no internal check. Both anchors are also SINGLE OBSERVED MAXIMA, each of which is itself a Gumbel draw with sd = beta*pi/sqrt(6).",
+  "gumbel_sd_of_one_observed_max": 0.09298486268673514,
+  "se_beta_from_two_single_maxima": 0.014870021438977657,
+  "se_beta_relative_pct": 20.51037439858987,
+  "se_mu_approx": 0.1275914560064238,
+  "circularity": "both anchors come from B-04's own run, and threshold_for() was then used to adjudicate B-04",
+  "out_of_sample": [
+   {
+    "sweep": "B-04 stage A",
+    "n_trials": 1385600,
+    "observed_max": -6.185,
+    "predicted_E_max": -6.1845826875773415,
+    "residual": -0.0004173124226580782,
+    "residual_in_gumbel_sd": -0.004487960842228683,
+    "source": "round13/B04/results_A.json (FIT ANCHOR)",
+    "fails_3sd": false
+   },
+   {
+    "sweep": "B-04 stage B",
+    "n_trials": 1290240,
+    "observed_max": -6.129,
+    "predicted_E_max": -6.189752300892628,
+    "residual": 0.060752300892628064,
+    "residual_in_gumbel_sd": 0.6533568920492125,
+    "source": "round13/B04 (null.py's own out-of-sample check)",
+    "fails_3sd": false
+   },
+   {
+    "sweep": "B-04 stage C",
+    "n_trials": 3548160,
+    "observed_max": -5.885,
+    "predicted_E_max": -6.116411234795938,
+    "residual": 0.23141123479593784,
+    "residual_in_gumbel_sd": 2.488697924688661,
+    "source": "round13/B04",
+    "fails_3sd": false
+   },
+   {
+    "sweep": "R16-KDF stage A",
+    "n_trials": 692064,
+    "observed_max": -6.259,
+    "predicted_E_max": -6.234912919893889,
+    "residual": -0.024087080106111713,
+    "residual_in_gumbel_sd": -0.2590430249626844,
+    "source": "round16/KDF/results_A.json",
+    "fails_3sd": false
+   },
+   {
+    "sweep": "R16-PRNG",
+    "n_trials": 52556,
+    "observed_max": -6.347,
+    "predicted_E_max": -6.421803359654414,
+    "residual": 0.07480335965441398,
+    "residual_in_gumbel_sd": 0.8044681412976388,
+    "source": "round16/prng/results.json",
+    "fails_3sd": false
+   },
+   {
+    "sweep": "R17 P0 dense",
+    "n_trials": 3911819734,
+    "observed_max": -6.769,
+    "predicted_E_max": -5.608524897479762,
+    "residual": -1.1604751025202384,
+    "residual_in_gumbel_sd": -12.480258280639342,
+    "source": "round17/SYNTHESIS.md",
+    "fails_3sd": true
+   },
+   {
+    "sweep": "R17 P1 bitcoin",
+    "n_trials": 1389182016,
+    "observed_max": -6.802,
+    "predicted_E_max": -5.683583246639798,
+    "residual": -1.1184167533602016,
+    "residual_in_gumbel_sd": -12.027944345394518,
+    "source": "round17/SYNTHESIS.md",
+    "fails_3sd": true
+   },
+   {
+    "sweep": "R17 P2 beacons",
+    "n_trials": 3464597548,
+    "observed_max": -6.811,
+    "predicted_E_max": -5.617326846451393,
+    "residual": -1.1936731535486071,
+    "residual_in_gumbel_sd": -12.837284683315362,
+    "source": "round17/SYNTHESIS.md",
+    "fails_3sd": true
+   },
+   {
+    "sweep": "R17 P3 tables",
+    "n_trials": 5757316748,
+    "observed_max": -5.679,
+    "predicted_E_max": -5.580505905639913,
+    "residual": -0.09849409436008738,
+    "residual_in_gumbel_sd": -1.0592486939719723,
+    "source": "round17/SYNTHESIS.md (head window 31 runes)",
+    "fails_3sd": false
+   }
+  ],
+  "n_failing_3sd": 3
+ },
+ "C5_bar_audit": {
+  "N_at_which_the_-5.5_floor_stops_binding": 312862592.82394636,
+  "interpretation": "Below this N the historical -5.5 floor is the binding constraint and the scale correction is cosmetic. Above it the correction binds and a fixed bar is unsound.",
+  "sweeps": [
+   {
+    "sweep": "Round 8 SEED",
+    "n_trials": 2520000000,
+    "threshold_for_own_N": -5.348743637519641,
+    "floor_binds": false,
+    "bar_actually_used": "fixed bar (B-21 records the bar as statistically invalid at this scale)"
+   },
+   {
+    "sweep": "B-04",
+    "n_trials": 6224300,
+    "threshold_for_own_N": -5.5,
+    "floor_binds": true,
+    "bar_actually_used": "max(-5.5, null_max+0.5) with null_max measured at n=200, L=120"
+   },
+   {
+    "sweep": "B-05",
+    "n_trials": 70680,
+    "threshold_for_own_N": -5.5,
+    "floor_binds": true,
+    "bar_actually_used": "max(-5.5, null_max) with null at n=200"
+   },
+   {
+    "sweep": "R16-KDF",
+    "n_trials": 692064,
+    "threshold_for_own_N": -5.5,
+    "floor_binds": true,
+    "bar_actually_used": "-5.5 with a size-matched null per config"
+   },
+   {
+    "sweep": "R16-PRNG",
+    "n_trials": 52556,
+    "threshold_for_own_N": -5.5,
+    "floor_binds": true,
+    "bar_actually_used": "-5.5 with a size-matched null"
+   },
+   {
+    "sweep": "R17 P0",
+    "n_trials": 3911819734,
+    "threshold_for_own_N": -5.31686221424382,
+    "floor_binds": false,
+    "bar_actually_used": "-5.5 AND null_max+0.5; threshold_for(N) reported alongside"
+   },
+   {
+    "sweep": "R17 P1",
+    "n_trials": 1389182016,
+    "threshold_for_own_N": -5.391920563403858,
+    "floor_binds": false,
+    "bar_actually_used": "same"
+   },
+   {
+    "sweep": "R17 P2",
+    "n_trials": 3464597548,
+    "threshold_for_own_N": -5.3256641632154516,
+    "floor_binds": false,
+    "bar_actually_used": "same"
+   },
+   {
+    "sweep": "R17 P3",
+    "n_trials": 5757316748,
+    "threshold_for_own_N": -5.288843222403972,
+    "floor_binds": false,
+    "bar_actually_used": "same"
+   },
+   {
+    "sweep": "R12-A1",
+    "n_trials": 768,
+    "threshold_for_own_N": -5.5,
+    "floor_binds": true,
+    "bar_actually_used": "-5.5; per-page null n=200"
+   },
+   {
+    "sweep": "F-01",
+    "n_trials": 40,
+    "threshold_for_own_N": -5.5,
+    "floor_binds": true,
+    "bar_actually_used": "-5.5 AND null_max+0.5"
+   }
+  ],
+  "sweeps_above_Nstar": [
+   "Round 8 SEED",
+   "R17 P0",
+   "R17 P1",
+   "R17 P2",
+   "R17 P3"
+  ]
+ },
+ "C6_tally": {
+  "B-17_claim": "multiple-comparisons tally frozen at 5 across Rounds 8-9",
+  "recomputed": {
+   "level_1_preregistered_hypotheses": {
+    "count": 19,
+    "basis": "LEDGER.json entries carrying an explicit threshold field",
+    "bonferroni_alpha_at_0.01": 0.0005263157894736842,
+    "family_wise_bar": -5.5
+   },
+   "level_2_ledger_entries_total": {
+    "count": 62,
+    "family_wise_bar": -5.5
+   },
+   "level_3_decodes_and_offsets": {
+    "count": 17058157809,
+    "effective_after_R17_prefilter_discount": 10915241763,
+    "breakdown": {
+     "Round 8 SEED": 2520000000,
+     "Round 8 other tracks (GEOMETRY/PAYLOAD/POINTERS/SKELETON)": 8200000,
+     "campaign12+13 keytext exhaustion (~200 texts)": 200,
+     "R12-A1 CicadaOS pads": 768,
+     "R12-C1 feedback/autokey": 1155,
+     "B-04 derived-key dictionary": 6224300,
+     "B-05 payload-as-PRF-seed": 70680,
+     "R16-KDF": 692064,
+     "R16-PRNG": 52556,
+     "F-01 LP2-as-pad inversion": 40,
+     "R17 P0-P3 public pads (offsets scored)": 14522916046
+    },
+    "family_wise_bar": -5.21009683777503,
+    "family_wise_bar_effective": -5.242465797775958
+   }
+  },
+  "the_number_that_matters": "5 was never the right number at any level. The correct tally depends on which family you are controlling. Per-hypothesis it is now 19; per ledger entry 62; per decode 17,058,157,809 (10,915,241,763 effective).",
+  "consequence": "At the decode level the repo-wide family-wise bar is -5.210, i.e. STRICTER than the -5.5 floor every sweep used. No published verdict flips - every best score in the repo is below both bars - but the -5.5 floor is not the repo-wide bar and should not be quoted as one.",
+  "caveat": "These counts are NOT independent tests: the same 12,956 runes are re-decoded, so a Bonferroni/Gumbel correction over the union is conservative. It is reported as an upper bound on the correction, which is the honest direction for a negative."
+ },
+ "elapsed_s": 17.9,
+ "C4_transfer": {
+  "L31_bw120": {
+   "L": 31,
+   "beam_w": 120,
+   "n_null": 400,
+   "mean": -7.464412517754807,
+   "sd_bulk": 0.46605978474707094,
+   "max": -5.6812922058593305,
+   "pot_threshold": -6.8543392675069885,
+   "n_exceedances": 39,
+   "beta_tail": 0.24811510545064555,
+   "mu_implied": -7.3110809893336395,
+   "beta_ratio_vs_DEFAULT": 3.4222773165606286,
+   "threshold_for_1e9_local": -1.027959190427544,
+   "threshold_for_1e9_repo_constants": -5.415752407880083
+  },
+  "L120_bw400": {
+   "L": 120,
+   "beam_w": 400,
+   "n_null": 400,
+   "mean": -7.386241838569306,
+   "sd_bulk": 0.2201111833536199,
+   "max": -6.597174034198986,
+   "pot_threshold": -7.119853996458213,
+   "n_exceedances": 39,
+   "beta_tail": 0.12428582009592191,
+   "mu_implied": -7.413567841296443,
+   "beta_ratio_vs_DEFAULT": 1.7142871737368541,
+   "threshold_for_1e9_local": -4.266226432472209,
+   "threshold_for_1e9_repo_constants": -5.415752407880083
+  },
+  "L400_bw120": {
+   "L": 400,
+   "beam_w": 120,
+   "n_null": 400,
+   "mean": -7.304627984925093,
+   "sd_bulk": 0.11892586496742144,
+   "max": -6.935861801935366,
+   "pot_threshold": -7.145477516434953,
+   "n_exceedances": 39,
+   "beta_tail": 0.05224810268062013,
+   "mu_implied": -7.279062880128597,
+   "beta_ratio_vs_DEFAULT": 0.7206634852499328,
+   "threshold_for_1e9_local": -5.955962489655236,
+   "threshold_for_1e9_repo_constants": -5.415752407880083
+  },
+  "_verdict": "DOES NOT TRANSFER (pre-registered factor-1.5 trigger breached)",
+  "_sqrtL_law": {
+   "measured_ratio_beta31_over_beta120": 1.9963267350945915,
+   "predicted_by_1_over_sqrtL": 1.967477507351859,
+   "measured_ratio_beta400_over_beta120": 0.42038667516773703,
+   "predicted_by_1_over_sqrtL_400": 0.5477225575051661,
+   "note": "The ABSOLUTE POT estimates are biased high (null.py documents that any bulk-side estimate of beta overstates the true tail scale; at L=120 the POT value 0.1243 is 1.71x the repo tail-calibrated 0.0725). The RATIOS between segment lengths are the robust part, and they follow 1/sqrt(L) closely.",
+   "beta_implied_at_L400_from_repo_calibrated_L120": 0.03970988541912454,
+   "beta_implied_at_L31_from_repo_calibrated_L120": 0.14264211928300977
+  },
+  "_corrected_bars": {
+   "R17_used_mu_beta_calibrated_at_L120_bw400_for_lanes_run_at_L25_to_400_bw120": true,
+   "beta_error_factor_at_L400": 1.8257418583505536,
+   "bar_shift_at_N_1e9_from_beta_error": 0.8303576815185444,
+   "L31_shuffle_null_max_n400_measured": -5.6812922058593305,
+   "R17_P3_headline_best_at_head31": -5.679002000077624
+  }
+ }
+}

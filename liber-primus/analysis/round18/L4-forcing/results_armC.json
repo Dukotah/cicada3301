@@ -1,0 +1,301 @@
+{
+  "alpha_test": 4.761904761904762e-05,
+  "tests": {
+    "C1_doublet_rate_by_line_position": {
+      "buckets": [
+        "p=0 (crosses line break)",
+        "p=1",
+        "p=2..4",
+        "p>=5"
+      ],
+      "doublets": [
+        4.0,
+        7.0,
+        10.0,
+        65.0
+      ],
+      "transitions": [
+        539.0,
+        594.0,
+        1779.0,
+        9989.0
+      ],
+      "rate": [
+        0.0074211502782931356,
+        0.011784511784511785,
+        0.005621135469364812,
+        0.006507157873661027
+      ],
+      "expected_indep_rate": [
+        0.0349372334530034,
+        0.03357083744289132,
+        0.03469558186335427,
+        0.03457098433464517
+      ],
+      "suppression_s": [
+        0.7875862068965517,
+        0.648965808357957,
+        0.8379869952461614,
+        0.8117740064710883
+      ],
+      "rate_wilson95": [
+        [
+          0.0028895685352757893,
+          0.018924529721011128
+        ],
+        [
+          0.005719822865617249,
+          0.024123533635502778
+        ],
+        [
+          0.0030561255547828328,
+          0.010316683336371604
+        ],
+        [
+          0.005109015430576263,
+          0.008284732349834865
+        ]
+      ],
+      "statistic_G2": 2.473637056025532,
+      "p_empirical": 0.49950250248748757,
+      "verdict": "NEGATIVE"
+    },
+    "C2_doublet_rate_by_word_position": {
+      "buckets": [
+        "p=0 (crosses word break)",
+        "p=1",
+        "p>=2"
+      ],
+      "doublets": [
+        23.0,
+        12.0,
+        51.0
+      ],
+      "transitions": [
+        2873.0,
+        2829.0,
+        7199.0
+      ],
+      "rate": [
+        0.008005569091541943,
+        0.0042417815482502655,
+        0.007084317266286984
+      ],
+      "expected_indep_rate": [
+        0.034502610753963256,
+        0.03445466655321263,
+        0.0345610849742003
+      ],
+      "suppression_s": [
+        0.7679720775732208,
+        0.876888039485184,
+        0.795020403104376
+      ],
+      "statistic_G2": 3.7496049082533496,
+      "p_empirical": 0.1615641921790391,
+      "verdict": "NEGATIVE"
+    },
+    "C3_suppression_boundary_vs_interior": {
+      "line_boundary": {
+        "doublets": 4,
+        "transitions": 539,
+        "rate": 0.0074211502782931356,
+        "expected_indep": 0.0349372334530034,
+        "s": 0.7875862068965517,
+        "s_95ci": [
+          0.4583277537854311,
+          0.9172925772968613
+        ]
+      },
+      "interior": {
+        "doublets": 82,
+        "transitions": 12362,
+        "rate": 0.0066332308687914576,
+        "expected_indep": 0.03455009835030771,
+        "s": 0.8080112304880782
+      },
+      "round17_reference_s": 0.8075,
+      "note": "two-sided; excess OR deficit at the boundary is evidence. The boundary CI is the lane's power limit for Arm C.",
+      "detectable_band_alpha_prereg": {
+        "alpha": 4.761904761904762e-05,
+        "power": 0.8,
+        "detectable_if_s_at_or_below": -0.7119887695119231,
+        "detectable_if_s_at_or_above": null,
+        "interpretation": "Arm C at the line boundary can only see suppression outside [-0.7119887695119231, +inf]; inside that band it is blind, and the observed value sits inside it."
+      },
+      "detectable_band_alpha_0p05": {
+        "alpha": 0.05,
+        "power": 0.8,
+        "detectable_if_s_at_or_below": 0.15801123048807764,
+        "detectable_if_s_at_or_above": null,
+        "interpretation": "Arm C at the line boundary can only see suppression outside [0.15801123048807764, +inf]; inside that band it is blind, and the observed value sits inside it."
+      }
+    },
+    "C4_difference_channel_at_line_boundary": {
+      "n_boundary_transitions": 539,
+      "n_interior_transitions": 12362,
+      "chi2_homogeneity_27df_bins_1_28": 22.412131134425508,
+      "null_mean": 28.029159366946924,
+      "null_p95": 41.63065834893383,
+      "p_empirical": 0.759184816303674,
+      "nperm": 50000,
+      "verdict": "NEGATIVE"
+    },
+    "C5_MI_linefinal_to_next_lineinitial": {
+      "n_pairs": 539,
+      "MI_bits": 1.11634855058143,
+      "null_mean_bits": 1.1057293487672117,
+      "null_p95_bits": 1.1608766830924082,
+      "p_empirical": 0.3703862961370386,
+      "nperm": 100000,
+      "verdict": "NEGATIVE",
+      "note": "MI is positively biased at this n; the permutation null carries the same bias."
+    },
+    "C6_profile": [
+      {
+        "pos": 0,
+        "transitions": 539,
+        "doublets": 4,
+        "rate": 0.0074211502782931356
+      },
+      {
+        "pos": 1,
+        "transitions": 594,
+        "doublets": 7,
+        "rate": 0.011784511784511785
+      },
+      {
+        "pos": 2,
+        "transitions": 594,
+        "doublets": 3,
+        "rate": 0.005050505050505051
+      },
+      {
+        "pos": 3,
+        "transitions": 593,
+        "doublets": 3,
+        "rate": 0.00505902192242833
+      },
+      {
+        "pos": 4,
+        "transitions": 592,
+        "doublets": 4,
+        "rate": 0.006756756756756757
+      },
+      {
+        "pos": 5,
+        "transitions": 591,
+        "doublets": 3,
+        "rate": 0.005076142131979695
+      },
+      {
+        "pos": 6,
+        "transitions": 591,
+        "doublets": 4,
+        "rate": 0.00676818950930626
+      },
+      {
+        "pos": 7,
+        "transitions": 590,
+        "doublets": 1,
+        "rate": 0.001694915254237288
+      },
+      {
+        "pos": 8,
+        "transitions": 586,
+        "doublets": 1,
+        "rate": 0.0017064846416382253
+      },
+      {
+        "pos": 9,
+        "transitions": 585,
+        "doublets": 4,
+        "rate": 0.006837606837606838
+      },
+      {
+        "pos": 10,
+        "transitions": 585,
+        "doublets": 2,
+        "rate": 0.003418803418803419
+      },
+      {
+        "pos": 11,
+        "transitions": 585,
+        "doublets": 5,
+        "rate": 0.008547008547008548
+      },
+      {
+        "pos": 12,
+        "transitions": 585,
+        "doublets": 3,
+        "rate": 0.005128205128205128
+      },
+      {
+        "pos": 13,
+        "transitions": 584,
+        "doublets": 7,
+        "rate": 0.011986301369863013
+      },
+      {
+        "pos": 14,
+        "transitions": 582,
+        "doublets": 8,
+        "rate": 0.013745704467353952
+      },
+      {
+        "pos": 15,
+        "transitions": 582,
+        "doublets": 4,
+        "rate": 0.006872852233676976
+      },
+      {
+        "pos": 16,
+        "transitions": 579,
+        "doublets": 4,
+        "rate": 0.0069084628670120895
+      },
+      {
+        "pos": 17,
+        "transitions": 569,
+        "doublets": 2,
+        "rate": 0.0035149384885764497
+      },
+      {
+        "pos": 18,
+        "transitions": 558,
+        "doublets": 3,
+        "rate": 0.005376344086021506
+      },
+      {
+        "pos": 19,
+        "transitions": 542,
+        "doublets": 2,
+        "rate": 0.0036900369003690036
+      },
+      {
+        "pos": 20,
+        "transitions": 497,
+        "doublets": 5,
+        "rate": 0.01006036217303823
+      },
+      {
+        "pos": 21,
+        "transitions": 403,
+        "doublets": 3,
+        "rate": 0.007444168734491315
+      },
+      {
+        "pos": 22,
+        "transitions": 256,
+        "doublets": 3,
+        "rate": 0.01171875
+      },
+      {
+        "pos": 23,
+        "transitions": 111,
+        "doublets": 1,
+        "rate": 0.009009009009009009
+      }
+    ]
+  }
+}

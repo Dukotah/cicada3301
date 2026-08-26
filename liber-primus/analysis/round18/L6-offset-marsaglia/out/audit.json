@@ -1,0 +1,72 @@
+{
+ "checks": [
+  {
+   "check": "ks_hexchars drops digits (R17/P1 defect, re-derived)",
+   "PASS": true,
+   "detail": "hex string 8192 chars, ks_hexchars kept 2944 (35.9%), A-F count 3072, AE/EA digraph sites 128. SECOND, SMALLER DEFECT FOUND HERE and not recorded in R17: beyond dropping 0-9, eng_to_idx also COLLAPSES the runic digraphs AE and EA, so ks_hexchars keeps 128 fewer symbols than even the A-F subsequence (3072 A-F chars -> 2944 symbols). EXCLUDED from this lane: drops the digits 0-9 (eng_to_idx); it is the A-F subsequence of the hex string, not the hex reading. Replaced by `nibbles`. R17/P1 finding, re-derived in audit_builders.py."
+  },
+  {
+   "check": "ks_nibbles conserves length (the true hex reading)",
+   "PASS": true,
+   "detail": "8192 symbols for 8192 hex chars, range [0,15]"
+  },
+  {
+   "check": "builder `mod29` == lib_padsweep",
+   "PASS": true,
+   "detail": "4096 symbols"
+  },
+  {
+   "check": "builder `hi_nibble` == lib_padsweep",
+   "PASS": true,
+   "detail": "4096 symbols"
+  },
+  {
+   "check": "builder `lo_nibble` == lib_padsweep",
+   "PASS": true,
+   "detail": "4096 symbols"
+  },
+  {
+   "check": "builder `byte_scaled` == lib_padsweep",
+   "PASS": true,
+   "detail": "4096 symbols"
+  },
+  {
+   "check": "builder `prime_to_idx` == lib_padsweep",
+   "PASS": true,
+   "detail": "4096 symbols"
+  },
+  {
+   "check": "builder `nibbles` == lib_padsweep",
+   "PASS": true,
+   "detail": "8192 symbols"
+  },
+  {
+   "check": "sharded_scan reproduces whole-blob dense_scan top-50 (`mod29`)",
+   "PASS": true,
+   "detail": "50 top offsets checked, 0 mismatched; shard n_offsets=524,264 total_symbols=524,288"
+  },
+  {
+   "check": "sharded_scan reproduces whole-blob dense_scan top-50 (`nibbles`)",
+   "PASS": true,
+   "detail": "50 top offsets checked, 0 mismatched; shard n_offsets=1,048,552 total_symbols=1,048,576"
+  },
+  {
+   "check": "skip-aware beam recovers a planted key at ms=8",
+   "PASS": true,
+   "detail": "beam score -4.176, rune match 1.000, skips planted 3"
+  },
+  {
+   "check": "threshold_for is STRICTER than the habitual -5.5 at this lane's N",
+   "PASS": true,
+   "detail": "threshold_for(1.8e9) = -5.3731"
+  }
+ ],
+ "threshold_for_table": {
+  "200": -5.5,
+  "1,000,000": -5.5,
+  "1,800,000,000": -5.3731,
+  "18,000,000,000": -5.2062,
+  "15,000,000,000": -5.2194
+ },
+ "all_pass": true
+}

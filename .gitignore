@@ -226,3 +226,28 @@ liber-primus/analysis/round16/zeroFP/ct_local.bin
 
 # Fetched corpora for experiments — re-download via each dir's fetch script
 research/experiments/
+
+# ---- Round 18 (2026-08-25/26) — eight-lane armada. ----
+# Rule as everywhere else in this file: if a committed script can re-derive it, it stays out
+# of git. Scripts, PREREG/RESULTS docs, result JSON and the ledger fragments are all tracked.
+#
+# L1 — downloaded font files and Ghostscript control renders.
+# Regenerate:  python liber-primus/analysis/round18/L1-toolchain/chain_control.py
+#              (font sources + hashes are recorded in the lane's results)
+liber-primus/analysis/round18/L1-toolchain/fonts/
+liber-primus/analysis/round18/L1-toolchain/control_out/
+# L3 — per-band image crops cut from the 56 page renders (which are themselves gitignored).
+# Regenerate:  python liber-primus/analysis/round18/L3-ornaments/crop.py
+liber-primus/analysis/round18/L3-ornaments/crops/
+# L5 — payload cell crops.
+# Regenerate:  python liber-primus/analysis/round18/L5-payload/grid.py && .../montage.py
+liber-primus/analysis/round18/L5-payload/crops/
+# L6 — fetched pad material (Marsaglia CDROM etc). Large; hashes recorded in the lane's
+# results and in handoff/capsule/MANIFEST.json. Re-download via the lane's fetch script.
+liber-primus/analysis/round18/L6-offset-marsaglia/data/
+# Sweep logs and caches regenerate from the sweeps themselves.
+liber-primus/analysis/round18/**/__pycache__/
+liber-primus/analysis/round18/**/*.log
+# L8 — transient GnuPG home used for signature verification (keyrings rebuild from the
+# fetched keys). Regenerate: python liber-primus/analysis/round18/L8-provenance/verify_all_signatures.py
+liber-primus/analysis/round18/L8-provenance/work/gnupghome-l8/

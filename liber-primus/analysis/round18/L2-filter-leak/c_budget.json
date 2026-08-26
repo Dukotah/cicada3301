@@ -1,0 +1,123 @@
+{
+ "H_C": {
+  "unfiltered_bits": 62940.00177287282,
+  "row_entropy_bits": 4.8330155002297825,
+  "filtered_bits": 62616.573786471956,
+  "filter_information_injection_bits": 323.42798640086403,
+  "bits_per_symbol_removed": 0.024963567953138626
+ },
+ "H_P": {
+  "by_order": [
+   {
+    "order": 0,
+    "bits_per_rune": 4.29430634386182
+   },
+   {
+    "order": 1,
+    "bits_per_rune": 3.616181944593573
+   },
+   {
+    "order": 2,
+    "bits_per_rune": 2.9996531410117657
+   },
+   {
+    "order": 3,
+    "bits_per_rune": 2.5678814061545334
+   },
+   {
+    "order": 4,
+    "bits_per_rune": 2.591533549174979
+   },
+   {
+    "order": 5,
+    "bits_per_rune": 2.9078348435182915
+   }
+  ],
+  "bits_per_rune": 2.5678814061545334,
+  "best_order": 3,
+  "total_bits": 33269.47149813813
+ },
+ "acceptance_channel": {
+  "closed_form_residual_rate": 0.006637788208081003,
+  "observed_residual_rate": 0.00663836356619066,
+  "closed_form_matches_observed_to": 5.753581096565666e-07,
+  "mc_doublet_rate_constant_plaintext": 0.0067336683417085425,
+  "mc_doublet_rate_english_plaintext": 0.0063266331658291455,
+  "mc_symbol_law_chi2_28df": 28.163945521883818,
+  "mc_delta_law_chi2_28df": 24.54839059460605,
+  "mc_reps_per_arm": 1000,
+  "plaintext_information_bits": 0.0,
+  "verdict": "ZERO plaintext information: ciphertext law identical for maximally different plaintexts"
+ },
+ "rho": 0.028839433641630385,
+ "budgets": [
+  {
+   "hypothesis": "full-entropy pad (13,330 symbols)",
+   "H_K_bits": 64755.155777405686,
+   "H_P_bits": 33269.47149813813,
+   "H_C_bits": 62616.573786471956,
+   "deficit_bits": 35408.053489071855,
+   "determined": false
+  },
+  {
+   "hypothesis": "printed/public pad, offset only (2^40 offsets)",
+   "H_K_bits": 40.0,
+   "H_P_bits": 33269.47149813813,
+   "H_C_bits": 62616.573786471956,
+   "deficit_bits": -29307.102288333823,
+   "determined": true
+  },
+  {
+   "hypothesis": "derived keystream, 256-bit seed",
+   "H_K_bits": 256.0,
+   "H_P_bits": 33269.47149813813,
+   "H_C_bits": 62616.573786471956,
+   "deficit_bits": -29091.102288333823,
+   "determined": true
+  },
+  {
+   "hypothesis": "derived keystream, 64-bit seed (C-PC control)",
+   "H_K_bits": 64.0,
+   "H_P_bits": 33269.47149813813,
+   "H_C_bits": 62616.573786471956,
+   "deficit_bits": -29283.102288333823,
+   "determined": true
+  },
+  {
+   "hypothesis": "derived keystream, 32-bit seed",
+   "H_K_bits": 32.0,
+   "H_P_bits": 33269.47149813813,
+   "H_C_bits": 62616.573786471956,
+   "deficit_bits": -29315.102288333823,
+   "determined": true
+  }
+ ],
+ "max_H_K_for_determinacy_bits": 29347.102288333823,
+ "sensitivity_to_H_P": [
+  {
+   "bits_per_rune": 1.5,
+   "H_P_bits": 19434.0,
+   "max_H_K_for_determinacy_bits": 43182.573786471956,
+   "full_pad_deficit_bits": 21572.58199093373
+  },
+  {
+   "bits_per_rune": 2.0,
+   "H_P_bits": 25912.0,
+   "max_H_K_for_determinacy_bits": 36704.573786471956,
+   "full_pad_deficit_bits": 28050.58199093373
+  },
+  {
+   "bits_per_rune": 2.5678814061545334,
+   "H_P_bits": 33269.47149813813,
+   "max_H_K_for_determinacy_bits": 29347.102288333823,
+   "full_pad_deficit_bits": 35408.053489071855
+  },
+  {
+   "bits_per_rune": 3.0,
+   "H_P_bits": 38868.0,
+   "max_H_K_for_determinacy_bits": 23748.573786471956,
+   "full_pad_deficit_bits": 41006.58199093373
+  }
+ ],
+ "sat_bp_verdict": "UNDER-DETERMINED by 35408 bits under a full-entropy pad. The acceptance events contribute exactly 0 bits about the plaintext (see acceptance_channel_proof), so no constraint-propagation / SAT / belief-propagation formulation over the joint (P,K) variables can close the gap. The gap closes only by BOUNDING H(K) below 29347 bits, which is what the derived-key and public-pad lanes already do."
+}

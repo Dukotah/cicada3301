@@ -1,0 +1,464 @@
+{
+ "generated_utc": "2026-08-26T17:44:15Z",
+ "lane": "round18/L8-provenance",
+ "ledger_item": "I-01",
+ "prereg_threshold": "MATCH = identical ordered preference lists AND identical self-sig hash algo AND identical key-flag/feature bytes. MISMATCH = any ordered preference list differs. INDECISIVE = preferences agree but are the era-default of a common client.",
+ "verdict": "INDECISIVE",
+ "verdict_inputs": {
+  "preference_lists_identical": true,
+  "selfsig_hash_algo_identical": true,
+  "key_flags_identical": true,
+  "cicada_key_is_gnupg_factory_default": true,
+  "mruzuki_key_is_gnupg_factory_default": true,
+  "both_are_factory_default": true
+ },
+ "verdict_explanation": "Every field the two keys share is a field GnuPG fills in by itself. Read straight out of gnupg-1.4.16 g10/keygen.c, the compiled-in default preference set with no gpg.conf override is exactly S9 S8 S7 S3 S2 / H8 H2 H9 H10 H11 / Z2 Z3 Z1 with mdc=1 and modify=0 -- i.e. the identical values both keys carry. The agreement therefore carries no discriminating information: it says only that both keys were made by running `gpg --gen-key` on a 1.4/2.0 build and not editing the preference list. Every field a HUMAN chose -- key size, expiry policy, whether to revoke -- differs between them.",
+ "era_default_reference": {
+  "pref_sym": "9 8 7 3 2",
+  "pref_hash": "8 2 9 10 11",
+  "pref_zip": "2 3 1",
+  "features": "01",
+  "keyserver_prefs": "80",
+  "source_url": "https://raw.githubusercontent.com/gpg/gnupg/gnupg-1.4.16/g10/keygen.c",
+  "source_locus": "keygen_set_std_prefs(), the `if (!string || ... \"default\")` branch",
+  "retrieved_utc": "2026-08-26",
+  "applies_to": "GnuPG 1.4.x and 2.0.x (shared g10 keygen code) \u2014 the builds in general use in Jan 2012",
+  "confidence": "verified (read from the released source of the era)"
+ },
+ "comparison": [
+  {
+   "field": "key version",
+   "cicada_7A35090F": 4,
+   "mruzuki_FB8AFF75": 4,
+   "who_chose_it": "software",
+   "same": true
+  },
+  {
+   "field": "public-key algorithm",
+   "cicada_7A35090F": 1,
+   "mruzuki_FB8AFF75": 1,
+   "who_chose_it": "operator",
+   "same": true
+  },
+  {
+   "field": "primary key size (bits)",
+   "cicada_7A35090F": 4096,
+   "mruzuki_FB8AFF75": 2048,
+   "who_chose_it": "operator",
+   "same": false
+  },
+  {
+   "field": "subkey size (bits)",
+   "cicada_7A35090F": 4096,
+   "mruzuki_FB8AFF75": 2048,
+   "who_chose_it": "operator",
+   "same": false
+  },
+  {
+   "field": "key created (UTC)",
+   "cicada_7A35090F": "2012-01-05T03:39:43Z",
+   "mruzuki_FB8AFF75": "2012-01-12T22:43:32Z",
+   "who_chose_it": "clock",
+   "same": false
+  },
+  {
+   "field": "self-sig digest algo",
+   "cicada_7A35090F": 2,
+   "mruzuki_FB8AFF75": 2,
+   "who_chose_it": "software",
+   "same": true
+  },
+  {
+   "field": "key flags (primary)",
+   "cicada_7A35090F": "03",
+   "mruzuki_FB8AFF75": "03",
+   "who_chose_it": "software",
+   "same": true
+  },
+  {
+   "field": "expiry policy",
+   "cicada_7A35090F": "no expiry",
+   "mruzuki_FB8AFF75": "1d0h0m",
+   "who_chose_it": "operator",
+   "same": false
+  },
+  {
+   "field": "pref-sym-algos",
+   "cicada_7A35090F": "9 8 7 3 2",
+   "mruzuki_FB8AFF75": "9 8 7 3 2",
+   "who_chose_it": "software default",
+   "same": true
+  },
+  {
+   "field": "pref-hash-algos",
+   "cicada_7A35090F": "8 2 9 10 11",
+   "mruzuki_FB8AFF75": "8 2 9 10 11",
+   "who_chose_it": "software default",
+   "same": true
+  },
+  {
+   "field": "pref-zip-algos",
+   "cicada_7A35090F": "2 3 1",
+   "mruzuki_FB8AFF75": "2 3 1",
+   "who_chose_it": "software default",
+   "same": true
+  },
+  {
+   "field": "features (MDC)",
+   "cicada_7A35090F": "01",
+   "mruzuki_FB8AFF75": "01",
+   "who_chose_it": "software default",
+   "same": true
+  },
+  {
+   "field": "keyserver prefs",
+   "cicada_7A35090F": "80",
+   "mruzuki_FB8AFF75": "80",
+   "who_chose_it": "software default",
+   "same": true
+  },
+  {
+   "field": "revoked",
+   "cicada_7A35090F": "no",
+   "mruzuki_FB8AFF75": "2012-01-22T06:35:04Z",
+   "who_chose_it": "operator",
+   "same": false
+  },
+  {
+   "field": "revocation reason code",
+   "cicada_7A35090F": null,
+   "mruzuki_FB8AFF75": "03",
+   "who_chose_it": "operator",
+   "same": false
+  }
+ ],
+ "base_rate_control": [
+  {
+   "key": "bitcoin-core-laan",
+   "created_utc": "2015-06-24T11:27:19Z",
+   "pref_sym": "9 8 7 3",
+   "pref_hash": "10 9 8 11",
+   "pref_zip": "2 3 1 0",
+   "features": "01",
+   "matches_3301_triplet": false
+  },
+  {
+   "key": "gnupg-release-2011",
+   "created_utc": "2014-10-29T00:56:03Z",
+   "pref_sym": "7 8 9 3",
+   "pref_hash": "8 9 10",
+   "pref_zip": "2 3 1 0",
+   "features": "01",
+   "matches_3301_triplet": false
+  },
+  {
+   "key": "tails-2011",
+   "created_utc": "2010-09-27T18:39:28Z",
+   "pref_sym": "9 8 7 3",
+   "pref_hash": "10 9 8 11",
+   "pref_zip": "2 3 1 0",
+   "features": "01",
+   "matches_3301_triplet": false
+  },
+  {
+   "key": "tor-browser-developers",
+   "created_utc": "2014-12-15T09:54:02Z",
+   "pref_sym": "9 8 7 3",
+   "pref_hash": "10 9 8 11",
+   "pref_zip": "2 3 1 0",
+   "features": "01",
+   "matches_3301_triplet": false
+  }
+ ],
+ "base_rate_control_caveat": "UNDER-POWERED, and reported as such. Only 4 project keys were retrievable and none was created in Jan 2012 (2010, 2014, 2014, 2015). Worse, a live key's UID self-signature is REISSUED whenever the key is edited or extended, so a keyserver copy shows the preferences of the last edit rather than of key creation -- which is why the 2010 key here shows the GnuPG 2.1+ list. This sample cannot establish a 2012 base rate and was NOT used to decide the verdict; the GnuPG source default was. A properly matched control would need keys whose self-sigs are frozen in 2012 (abandoned or revoked keys), which this lane did not source.",
+ "keys": {
+  "cicada_3301_7A35090F": {
+   "primary": {
+    "version": 4,
+    "algo": 1,
+    "created_unix": 1325734783,
+    "expires_field": 0,
+    "bits": 4096,
+    "keyid": "181F01E57A35090F",
+    "created_utc": "2012-01-05T03:39:43Z"
+   },
+   "subkeys": [
+    {
+     "algo": 1,
+     "created_unix": 1325734783,
+     "bits": 4096,
+     "keyid": "4D390ECF671DDEB1",
+     "created_utc": "2012-01-05T03:39:43Z"
+    }
+   ],
+   "uid": "Cicada 3301 (845145127)",
+   "selfsig": {
+    "sigclass": "0x13",
+    "created_unix": 1325734783,
+    "digest_algo": 2,
+    "key_flags": "03",
+    "key_expires_after": null,
+    "pref_sym": "9 8 7 3 2",
+    "pref_hash": "8 2 9 10 11",
+    "pref_zip": "2 3 1",
+    "features": "01",
+    "keyserver_prefs": "80",
+    "revocation_reason": null,
+    "created_utc": "2012-01-05T03:39:43Z"
+   },
+   "revocation": null,
+   "_source": "held in repo; canonical key, fpr 6D854CD7933322A601C3286D181F01E57A35090F",
+   "_file": "/mnt/c/Users/dukot/projects/cicada3301/corpus/A-primary-artifacts/krisyotam/pgp/key/cicada-3301-public-key.asc"
+  },
+  "mruzuki_02BD208AFB8AFF75": {
+   "primary": {
+    "version": 4,
+    "algo": 1,
+    "created_unix": 1326408212,
+    "expires_field": 0,
+    "bits": 2048,
+    "keyid": "02BD208AFB8AFF75",
+    "created_utc": "2012-01-12T22:43:32Z"
+   },
+   "subkeys": [
+    {
+     "algo": 1,
+     "created_unix": 1326408212,
+     "bits": 2048,
+     "keyid": "29ABF8F076E7D95B",
+     "created_utc": "2012-01-12T22:43:32Z"
+    }
+   ],
+   "uid": "mruzuki (cicadeur) <mruzuki@gmail.com>",
+   "selfsig": {
+    "sigclass": "0x13",
+    "created_unix": 1326408212,
+    "digest_algo": 2,
+    "key_flags": "03",
+    "key_expires_after": "1d0h0m",
+    "pref_sym": "9 8 7 3 2",
+    "pref_hash": "8 2 9 10 11",
+    "pref_zip": "2 3 1",
+    "features": "01",
+    "keyserver_prefs": "80",
+    "revocation_reason": null,
+    "created_utc": "2012-01-12T22:43:32Z"
+   },
+   "revocation": {
+    "sigclass": "0x20",
+    "created_unix": 1327214104,
+    "digest_algo": 2,
+    "key_flags": null,
+    "key_expires_after": null,
+    "pref_sym": null,
+    "pref_hash": null,
+    "pref_zip": null,
+    "features": null,
+    "keyserver_prefs": null,
+    "revocation_reason": "03",
+    "created_utc": "2012-01-22T06:35:04Z"
+   },
+   "_source": "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x02BD208AFB8AFF75&options=mr",
+   "_file": "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L8-provenance/evidence/mruzuki.keyserver.ubuntu.com.asc"
+  },
+  "baserate:bitcoin-core-laan": {
+   "primary": {
+    "version": 4,
+    "algo": 1,
+    "created_unix": 1435145239,
+    "expires_field": 0,
+    "bits": 4096,
+    "keyid": "90C8019E36C2E964",
+    "created_utc": "2015-06-24T11:27:19Z"
+   },
+   "subkeys": [],
+   "uid": "Wladimir J. van der Laan (Bitcoin Core binary release signing key) <laanwj@gmail.com>",
+   "selfsig": {
+    "sigclass": "0x13",
+    "created_unix": 1644418391,
+    "digest_algo": 10,
+    "key_flags": "03",
+    "key_expires_after": "8y232d3h25m",
+    "pref_sym": "9 8 7 3",
+    "pref_hash": "10 9 8 11",
+    "pref_zip": "2 3 1 0",
+    "features": "01",
+    "keyserver_prefs": "80",
+    "revocation_reason": null,
+    "created_utc": "2022-02-09T14:53:11Z"
+   },
+   "revocation": {
+    "sigclass": "0x20",
+    "created_unix": 1676120567,
+    "digest_algo": 10,
+    "key_flags": null,
+    "key_expires_after": null,
+    "pref_sym": null,
+    "pref_hash": null,
+    "pref_zip": null,
+    "features": null,
+    "keyserver_prefs": null,
+    "revocation_reason": "03",
+    "created_utc": "2023-02-11T13:02:47Z"
+   },
+   "_source": "https://keyserver.ubuntu.com/pks/lookup?op=get (public project release key)",
+   "_file": "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L8-provenance/evidence/baserate/bitcoin-core-laan.asc"
+  },
+  "baserate:gnupg-release-2011": {
+   "primary": {
+    "version": 4,
+    "algo": 1,
+    "created_unix": 1414544163,
+    "expires_field": 0,
+    "bits": 2048,
+    "keyid": "2071B08A33BD3F06",
+    "created_utc": "2014-10-29T00:56:03Z"
+   },
+   "subkeys": [
+    {
+     "algo": 1,
+     "created_unix": 1414544163,
+     "bits": 2048,
+     "keyid": "3B99D2DE02AF196B",
+     "created_utc": "2014-10-29T00:56:03Z"
+    }
+   ],
+   "uid": "NIIBE Yutaka (GnuPG Release Key) <gniibe@fsij.org>",
+   "selfsig": {
+    "sigclass": "0x13",
+    "created_unix": 1477383257,
+    "digest_algo": 8,
+    "key_flags": "03",
+    "key_expires_after": "6y3d7h18m",
+    "pref_sym": "7 8 9 3",
+    "pref_hash": "8 9 10",
+    "pref_zip": "2 3 1 0",
+    "features": "01",
+    "keyserver_prefs": "80",
+    "revocation_reason": null,
+    "created_utc": "2016-10-25T08:14:17Z"
+   },
+   "revocation": null,
+   "_source": "https://keyserver.ubuntu.com/pks/lookup?op=get (public project release key)",
+   "_file": "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L8-provenance/evidence/baserate/gnupg-release-2011.asc"
+  },
+  "baserate:tails-2011": {
+   "primary": {
+    "version": 4,
+    "algo": 1,
+    "created_unix": 1285612768,
+    "expires_field": 0,
+    "bits": 4096,
+    "keyid": "8972F4DFDC6DC026",
+    "created_utc": "2010-09-27T18:39:28Z"
+   },
+   "subkeys": [
+    {
+     "algo": 1,
+     "created_unix": 1285612768,
+     "bits": 4096,
+     "keyid": "BB36CCEA650DE414",
+     "created_utc": "2010-09-27T18:39:28Z"
+    }
+   ],
+   "uid": "Kees Cook <kees@outflux.net>",
+   "selfsig": {
+    "sigclass": "0x13",
+    "created_unix": 1285614370,
+    "digest_algo": 10,
+    "key_flags": "03",
+    "key_expires_after": null,
+    "pref_sym": "9 8 7 3",
+    "pref_hash": "10 9 8 11",
+    "pref_zip": "2 3 1 0",
+    "features": "01",
+    "keyserver_prefs": "80",
+    "revocation_reason": null,
+    "created_utc": "2010-09-27T19:06:10Z"
+   },
+   "revocation": null,
+   "_source": "https://keyserver.ubuntu.com/pks/lookup?op=get (public project release key)",
+   "_file": "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L8-provenance/evidence/baserate/tails-2011.asc"
+  },
+  "baserate:tor-browser-developers": {
+   "primary": {
+    "version": 4,
+    "algo": 1,
+    "created_unix": 1418637242,
+    "expires_field": 0,
+    "bits": 4096,
+    "keyid": "4E2C6E8793298290",
+    "created_utc": "2014-12-15T09:54:02Z"
+   },
+   "subkeys": [
+    {
+     "algo": 1,
+     "created_unix": 1721041497,
+     "bits": 4096,
+     "keyid": "157432CF78A65729",
+     "created_utc": "2024-07-15T11:04:57Z"
+    },
+    {
+     "algo": 1,
+     "created_unix": 1418637398,
+     "bits": 4096,
+     "keyid": "2E1AC68ED40814E0",
+     "created_utc": "2014-12-15T09:56:38Z"
+    },
+    {
+     "algo": 1,
+     "created_unix": 1418637307,
+     "bits": 4096,
+     "keyid": "7017ADCEF65C2036",
+     "created_utc": "2014-12-15T09:55:07Z"
+    },
+    {
+     "algo": 1,
+     "created_unix": 1472037984,
+     "bits": 4096,
+     "keyid": "D1483FA6C3C07136",
+     "created_utc": "2016-08-24T11:26:24Z"
+    },
+    {
+     "algo": 1,
+     "created_unix": 1527369844,
+     "bits": 4096,
+     "keyid": "EB774491D9FF06E2",
+     "created_utc": "2018-05-26T21:24:04Z"
+    },
+    {
+     "algo": 1,
+     "created_unix": 1631879612,
+     "bits": 4096,
+     "keyid": "E53D989A9E2D47BF",
+     "created_utc": "2021-09-17T11:53:32Z"
+    },
+    {
+     "algo": 1,
+     "created_unix": 1418637546,
+     "bits": 4096,
+     "keyid": "2D000988589839A3",
+     "created_utc": "2014-12-15T09:59:06Z"
+    }
+   ],
+   "uid": "Tor Browser Developers (signing key) <torbrowser@torproject.org>",
+   "selfsig": {
+    "sigclass": "0x13",
+    "created_unix": 1721044772,
+    "digest_algo": 10,
+    "key_flags": "01",
+    "key_expires_after": "12y215d2h5m",
+    "pref_sym": "9 8 7 3",
+    "pref_hash": "10 9 8 11",
+    "pref_zip": "2 3 1 0",
+    "features": "01",
+    "keyserver_prefs": "80",
+    "revocation_reason": null,
+    "created_utc": "2024-07-15T11:59:32Z"
+   },
+   "revocation": null,
+   "_source": "https://keyserver.ubuntu.com/pks/lookup?op=get (public project release key)",
+   "_file": "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round18/L8-provenance/evidence/baserate/tor-browser-developers.asc"
+  }
+ }
+}

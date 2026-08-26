@@ -1,0 +1,52 @@
+{
+ "$comment": "Round 18 lane L3 (ORNAMENTS & LAYOUT) ledger fragment. Merge into liber-primus/LEDGER.json. Written by the lane, not the coordinator; do not git commit from the lane.",
+ "generated": "2026-08-25",
+ "entries": [
+  {
+   "id": "A-06",
+   "lane": "recon-a",
+   "hypothesis": "Ornament bands. Round 8 catalogued 47 non-text bands over 23 pages (`geometry/ornaments.json` holds 62 rows) and states this \"is inventory, not a result\"; the short bands (1/3/4/8/16 glyphs) \"are the only real ornament candidates and nobody has read them\".",
+   "status": "IN-PROGRESS",
+   "round": "18",
+   "date": "2026-08-25",
+   "threshold": "PENDING - see PREREG.md sections I-2 and 2.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "pending",
+   "result": "PENDING",
+   "coverage": "PENDING",
+   "not_covered": [],
+   "evidence": [
+    "liber-primus/analysis/round18/L3-ornaments/PREREG.md",
+    "liber-primus/analysis/round18/L3-ornaments/RESULTS.md"
+   ],
+   "reproduce": "cd liber-primus/analysis/round18/L3-ornaments && python3 inventory.py && python3 calibrate.py && python3 read_bands.py",
+   "reopens_if": "PENDING",
+   "priority": "medium",
+   "raw_status": "never-run",
+   "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md"
+  },
+  {
+   "id": "B-12",
+   "lane": "recon-b",
+   "hypothesis": "Line geometry + line-fill / per-page word counts as a covert data channel independent of the rune stream.",
+   "status": "IN-PROGRESS",
+   "round": "18",
+   "date": "2026-08-25",
+   "threshold": "PENDING - see PREREG.md section I-3.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "pending",
+   "result": "PENDING",
+   "coverage": "PENDING",
+   "not_covered": [],
+   "evidence": [
+    "liber-primus/analysis/round18/L3-ornaments/PREREG.md",
+    "liber-primus/analysis/round18/L3-ornaments/RESULTS.md"
+   ],
+   "reproduce": "cd liber-primus/analysis/round18/L3-ornaments && python3 linegeom.py",
+   "reopens_if": "PENDING",
+   "priority": "medium",
+   "raw_status": "never-run",
+   "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md"
+  }
+ ]
+}
