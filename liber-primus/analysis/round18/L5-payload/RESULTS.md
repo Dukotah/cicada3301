@@ -407,3 +407,52 @@ project came from auditing a closure, an instrument, an artifact or an input, an
 new key-space sweep. This lane is another data point: the byte corrections at 45/50/246 came
 from auditing an **input** — a transcription witness that had never been checked against the
 pixels — and they were only findable because the instrument was validated first.
+
+---
+
+## ADDENDUM — 2026-08-26, Round 19 lane C1
+
+_Appended, not overwritten. This file was already complete when C1 ran; C1 is the Round 19
+closeout lane for the same two items and re-derived everything here independently. Full
+write-up: [`../../round19/C1/RESULTS.md`](../../round19/C1/RESULTS.md)._
+
+**Everything above reproduced.** C1 re-derived §§1–3 from the on-disk artifacts rather than
+trusting the transcript: input integrity 5/5, grid 80/104/72 with `grid.json` **byte-identical**,
+the leave-one-out and render-determinism controls to the digit, the 11-cell adjudication to the
+same `sha256 3b9b07d9…b290`, and the witness table (scream tokens 11/11, relikd 6/11, decimal
+2/11). No number above was contradicted.
+
+**C1 added the control this file was missing.** Leave-one-out cannot test the five singleton
+classes (`I`, `R`, `h`, `i`, `l`), and `I`/`i`/`l` decide 8 of the 11 cells — including 4 of
+the 6 pre-registered. C1 measured that regime directly:
+
+- **single-template accuracy** (every class reduced to one exemplar): symbol **182/183 = 99.45 %**,
+  case-ambiguous subset **59/59 = 100 %**; digit **237/237 = 100 %**.
+- **global separation**, all 29,161 uncontested pairs: `max_between` **0.9085** (`l`/`I`) <
+  0.995 ≤ `min_within` **0.9954**. The "IoU ≥ 0.995 ⇒ same class" rule has zero counterexamples.
+- **label-swap closed by typography**: cell 2 (`l`) sits in the lowercase-ascender cluster
+  (`b` +0.096, `d` +0.087, `k` +0.094, `h` +0.088) and cell 90 (`I`) in the capital cluster
+  (`P`/`Y`/`H`/`X`/`Z` −0.015, `E` −0.021), so the two singletons' labels are correct
+  independently of any transcription.
+
+**§5's E-01 was correct but mis-specified.** R1 found — and C3's signature table confirms —
+that 3301 declared their scheme in **signed** text: `Scheme: Crypt::RSA::ES::OAEP`,
+`Version: 1.99`, in two messages that both PASS under `181F01E57A35090F` (2012-01-15 and
+2014-01-06). That is not PKCS#1 v1.5 or PSS. C1 recovered the 2013 key's prime factors from
+two corpus decrypt scripts (`p·q` equals the published 432-bit modulus **exactly**), decrypted
+3301's own ciphertext, and **measured** the wire layout: `emLen = k − 1`,
+`EM = maskedSeed(20) ‖ maskedDB`, MGF1-SHA-1, `DB[0:20] = SHA-1("")`. The matcher built on that
+160-bit predicate fires **3/3 on 3301's own blocks** with **0/10,000** false positives, and
+returns **NULL** on the payload. §5's verdict stands and is now specified against the right shape.
+
+**§4.4's B-05 re-run.** C1 ran the same 20,160-decode grid, then re-ran it under Round 19's
+repaired instrument, because the first pass stored only (parameters, English score, head) —
+doctrine **R3** requires the language-agnostic statistics at sweep time — and judged against
+**−5.5**, which I3 has since measured to be the wrong bar in **14 of 14** historical sweeps.
+The corrected pass persists a full `SWEEPROW/1` per decode and takes its bars from I3's
+calibrated contract. Verdict unchanged; the conditionals are now stateable.
+
+**Standing correction to this file's framing:** the negative in §4.4 does **not** cover
+`skip_by_two` — that decoder's transition relation is exact for `encipher_keyskip` and nothing
+else (L7-B). Any future re-scoring of this payload belongs to Round 19 lane **S2**, seeded from
+`payload_resolved.bin` rather than `canon_256.bin`.

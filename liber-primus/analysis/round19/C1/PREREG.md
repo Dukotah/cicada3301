@@ -269,3 +269,75 @@ Trust anchor run before this lane: `python3 liber-primus/tests/validate.py` →
 Both are re-run at the end and recorded in `RESULTS.md`.
 
 _No `git commit` from this lane (doctrine mechanic 7)._
+
+---
+
+## ADDENDUM 1 — 2026-08-26, added after lanes R1 and C3 reported, BEFORE the test below was run
+
+_Doctrine mechanic 1: thresholds are never edited after a result; new tests get dated
+addenda. Nothing above is altered. This addendum adds one NEW sub-test and its bars._
+
+### A1.1 Why
+
+R1 found 3301 naming their encryption library in a **signed** message; C3's re-derived
+`round19/C3/PGP-VERIFICATION-TABLE.json` confirms the signature. Two messages carry the
+library's own armour headers:
+
+```
+Version: 1.99
+Scheme: Crypt::RSA::ES::OAEP
+```
+
+- `corpus/A-primary-artifacts/ibotpeaches/messages/2012/this-message-will-only-be-displayed.asc`
+  — C3 verdict **PASS**, signed 2012-01-15T01:39:42Z by `181F01E57A35090F`
+- `corpus/A-primary-artifacts/pgp/messages/2014-01-rsa-oaep-challenge.asc`
+  (= `.../ibotpeaches/messages/2014/welcome.asc`, identical SHA-256 `c9053eb4…`)
+  — C3 verdict **PASS**, signed 2014-01-06T07:35:27Z by the same key
+
+So the encryption scheme is **named by the author in authenticated text**. §3 above tests
+OpenSSL-shaped PKCS#1 v1.5 and PSS. Neither is `ES::OAEP`, and OAEP was explicitly listed in
+§3.3 as *not covered*. Testing only the OpenSSL shapes would leave E-01 mis-specified against
+the one scheme the author actually declared — the "broken magnet" pattern this round exists to
+correct. It is therefore added as a first-class hypothesis.
+
+### A1.2 How the shape is obtained — measured, not reconstructed
+
+The corpus contains the 2013/2014 puzzle key's **prime factors**, hard-coded in two
+independent solver scripts:
+
+- `corpus/E-tooling/vendor/ctvrty-rozmer__bruh/perl-rsa-decrypt.pl`
+- `corpus/A-primary-artifacts/cijhho123/2014/additional docs/scripts/Program to decrypt RSA message in perl.txt`
+
+**Pre-registered check before anything is read from them:** `p * q` must equal the published
+432-bit modulus exactly, or the factors are rejected and this addendum is withdrawn.
+
+If it holds, 3301's own `ES::OAEP` ciphertext is decrypted here and the encoded-message
+layout is read directly off the wire. The layout is identified **without assuming it**: over
+(hash function × field order), accept only the combination for which the first `hLen` bytes
+of the unmasked DB are **identical across all three of 3301's ciphertext blocks** — the one
+property `lHash` must have whatever the label is. If more than one combination qualifies, or
+none does, the identification fails and the sub-test is reported as inconclusive rather than
+negative.
+
+### A1.3 New pre-registered bars
+
+- **Matcher:** HIT iff the MGF1-unmasked `DB[0:hLen]` equals the identified `lHash`. This is a
+  160-bit predicate (FP ≈ 2⁻¹⁶⁰); there is no tunable threshold.
+- **Positive control:** 3301's own ciphertext blocks. **PASS iff the matcher fires on 3/3**;
+  anything less is instrument failure and the sub-result is not a negative.
+- **Negative control:** **0** hits on 10,000 uniform-random blocks at *each* block length the
+  payload test uses. Any non-zero count ⇒ instrument failure.
+- **Coverage statement fixed in advance:** the test must state explicitly which RSA key
+  **sizes** it covers as a ciphertext hypothesis. A 256-byte payload is a whole number of
+  `Crypt::RSA` blocks only when `k | 256`, i.e. for 512-, 1024- and 2048-bit keys. The result
+  must say plainly whether 3301 published any key of those sizes rather than leaving it implied.
+
+### A1.4 Score bars elsewhere in this lane
+
+G2's finding that random data scores −4.51/−4.82 under I1's drift modes is noted. It does not
+apply to §4.2's B-05 re-run, which uses **B-05's own Round-13 decoder**, not I1's drift modes —
+but to avoid leaning on a historical constant, the re-run recomputes its shuffle null on this
+run and reports `max(−5.5, null_max)` together with the measured null, so the margin is
+readable against measurement rather than against the number −5.5. No I1/I2 drift-mode decode is
+scored in this lane, so I3's curve is not the operative calibration here; any future re-scoring
+of this payload under the repaired instrument belongs to S2 and must use I3's curve.

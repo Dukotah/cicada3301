@@ -1,0 +1,58 @@
+{
+ "lane": "round19/C1 -- B-05 propagation, re-adjudicated under I2 + I3",
+ "n_decodes": 20160,
+ "seconds": 1909.9800021648407,
+ "sweeprow_store": "out_b05_sweeprow.jsonl",
+ "threshold_contract": {
+  "pmax": {
+   "n_trials_adjudicated": 20160,
+   "segment_len": 120,
+   "register": "I19:vecbeam.keyskip1+I2",
+   "mode": "keyskip1",
+   "statistic": "pmax",
+   "panel_mode": null,
+   "escalate_alpha": 0.05,
+   "escalate_bar": 6.048528491239485,
+   "claim_alpha": 0.01,
+   "claim_bar": 6.515560721712147,
+   "cell": "I19:vecbeam.keyskip1+I2|pmax|L120",
+   "cell_status": "CALIBRATED",
+   "cell_n_null_decodes": 1000000,
+   "extrapolated": true
+  },
+  "en": {
+   "n_trials_adjudicated": 20160,
+   "segment_len": 120,
+   "register": "I19:vecbeam.keyskip1+I2",
+   "mode": "keyskip1",
+   "statistic": "en",
+   "panel_mode": null,
+   "escalate_alpha": 0.05,
+   "escalate_bar": -6.2090510938187915,
+   "claim_alpha": 0.01,
+   "claim_bar": -6.096999411995215,
+   "cell": "I19:vecbeam.keyskip1+I2|en|L120",
+   "cell_status": "CALIBRATED",
+   "cell_n_null_decodes": 1000000,
+   "extrapolated": true
+  }
+ },
+ "best_en_at_L120": {
+  "value": -6.378535527297772,
+  "kid": "res.swap32|sha256_ctr_le|reject|fwd|atb1|s+1|o1"
+ },
+ "best_legacy_en_at_L400": -6.827480075671261,
+ "best_pmax": {
+  "value": 5.202701395933493,
+  "kid": "res.raw|shake256|mod|fwd|atb1|s-1|o29",
+  "register": "LP1_REAL"
+ },
+ "n_escalations": 0,
+ "escalations": [],
+ "verdict": "NEGATIVE",
+ "conditionals": {
+  "key_space": "B-05's Round-13 pinned Part-1 grid, restricted to the 6 representations of the RESOLVED pp49-51 payload (sha256 3b9b07d9...b290; differs from canon_256.bin at indices [45, 50, 246]). 6 reps x 15 PRF generators x {mod,reject} x {fwd,rev} x {atbash,plain} x {+1,-1} x 14 offsets = 20160 decodes, exhaustive over that grid.",
+  "decoder_transition_model": "skipdecode.beam_decode, beam_w=120, max_skip=3, HEAD=400. The transition relation is EXACT for encipher_keyskip and NOTHING else (round18 L7-B); skip_by_two and free drift are not representable. I1's repaired decoder is deliberately not used: this sweep's purpose is comparability with Round 13.",
+  "adjudicator_register": "I2's 9-register panel (EN_MODERN, EN_KJV, LP1_REAL, LATIN, OE, DE, CY, EN_HALFVOWEL, EN_NOVOWEL) -- NOT English-only. pmax is the max standardised register score."
+ }
+}
