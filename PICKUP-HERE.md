@@ -243,27 +243,98 @@ Full: [`analysis/round18/CAMPAIGN-PLAN.md`](liber-primus/analysis/round18/CAMPAI
 | **L7** INSTRUMENT RED-TEAM | The repo's own instrument | **FOUND-ERROR ×2** — see the box at the top of this file. The most consequential result since D3 |
 | **L8** PROVENANCE | I-01/I-03 + G-02 | **UNFINISHED** (table built, no results) → Round 19 C3 |
 
-## Round 19 — "FIX THE MAGNET, THEN SWEEP THE SMALL HAYSTACK" (opened 2026-08-26)
+## Round 19 — "FIX THE MAGNET, THEN SWEEP THE SMALL HAYSTACK" (2026-08-26, COMPLETE)
 
-The first round built under [`ARMADA-DOCTRINE.md`](liber-primus/ARMADA-DOCTRINE.md). Thirteen
-lanes in four phases, with a **hard gate**: no sweep scores anything until the instrument's power
-envelope is measured. Plan:
-[`analysis/round19/CAMPAIGN-PLAN.md`](liber-primus/analysis/round19/CAMPAIGN-PLAN.md).
+The first round run under [`ARMADA-DOCTRINE.md`](liber-primus/ARMADA-DOCTRINE.md). 14 lanes.
+Plan: [`analysis/round19/CAMPAIGN-PLAN.md`](liber-primus/analysis/round19/CAMPAIGN-PLAN.md).
+**The sweep it was named for did not run** — the red-team lane showed it could not, and the round
+was redirected mid-flight. What it produced instead is a working instrument and a closed question.
 
-- **Phase 0 — instrument (blocking).** `I1` drift-tolerant decoder (fix L7-B: cover `skip_by_two`,
-  free drift, unrepresentable advances, without admitting wrong keys); `I2` multi-register
-  adjudicator (fix L7-A: a 9-register panel + the four mandatory language-agnostic statistics
-  behind one `adjudicate()` call and a `SWEEPROW` schema); `I3` per-register and per-mode null
-  recalibration, including the panel-max multiple-comparison correction.
-- **Phase 1 — generators (concurrent, validation only).** The four families L1's prior promotes
-  and the repo has never swept: `G1` bash `$RANDOM` + glibc, `G2` Perl 5.14, `G3` **Python 2.7**
-  `random.seed(<string>)` (Py2 and Py3 hash seed strings differently — a silent hole in every
-  MT19937 cell), `G4` TeX/LaTeX-internal LCGs (never swept, never *considered*; `\pgfmathrandom`
-  is fully enumerable). Each must reproduce the real library byte-exactly before it may sweep.
-- **Phase 2 — the sweep (gated).** `S1` enumerate G1–G4 through the repaired instrument;
-  `S2` re-adjudicate the highest-prior slice of already-swept space.
-- **Phase 3 — red-team + closeout.** `R1` attacks Round 19's own instrument (the obvious failure
-  mode: a permissive decoder finding English in noise); `C1`/`C2`/`C3` finish L5/L6/L3+L8.
+### The three headlines
+
+**1. THE INSTRUMENT IS REPAIRED.** Both Round 18 defects are fixed and measured.
+
+- **I1 (decoder).** `skip_by_two` — which reproduces LP2's doublet rate and which the old beam
+  missed at −6.90 / 25.8% — now recovers at **−4.285 / 100.0%**. 20/20 gate cells where the repo
+  decoder scores 0/20. Exact mode is **faster** than Round 18's `fastbeam` (0.87×) and
+  bit-identical. L7-B's constant-run failures turned out to be a *budget* setting, fixable at zero
+  cost. **Trap pinned: at lambda=0 the decoder scores −4.4…−4.9 at 12–51% recovery — validate on
+  RECOVERY, never on score.**
+- **I2 (adjudicator).** **27/27 registers at >=0.90 power** (min 0.92). Latin 0.33 -> **1.00**,
+  Welsh 0.00 -> **1.00**, vowel-dropped English 0.00 -> **1.00** (it had been *anti*-selected — the
+  correct key scored below a deliberately wrong one). G-SPEED **failed** at 4.79x and is reported
+  failed, with the finding that the gate was mis-specified.
+- **I3 (thresholds).** **−5.5 was the wrong bar in 14 of 14 historical sweeps**, twelve times
+  *too strict*: at R17's L=400 geometry the correct bar is about −6.6, which Latin/OE/DE/half-vowel
+  all clear. **No verdict flips.** And the correction that matters: **dropping the unjustified
+  floor alone, with no scorer change, takes Latin 0.75 -> 1.00 and German 0.67 -> 1.00 — so much of
+  what L7-A diagnosed as an English-only *scorer* was an English-only *bar*.** `threshold_for` was
+  fed offsets not decodes in 4/4 R17 lanes; L7-C.6's tally is inflated **6.7x**.
+
+**2. THE TRANSCRIPTION IS NOT THE BLOCKER — closed from three independent directions.**
+
+- **T1** built a per-rune reader scoring **100.0000% (180/180)** on the decryption-proven LP2
+  control pages — meeting `AGENTS.md` section 8's own unpark threshold — and adjudicated the 450
+  located O/A/AE disagreements: **450/450 AGREE with canon**, all six ordered O/A/AE pairwise
+  confusion rates **exactly 0** over 1,404 glyphs. It failed its LP1 gate at 95.09% and reported
+  95.09%.
+- **T2** bounded length errors: canon holds **at most 1 insertion and 1 deletion at 95%
+  confidence** over 13,121 positions. **A-01 is finally complete** (stalled at stage 2 since
+  Round 9): **0.9973** agreement, and **zero** of its 35 disagreements is a real rune-identity
+  error. Coverage **38.4% -> 99.89%**. Control **1.0000** vs frontB's 0.129.
+- **T3** measured the sensitivity nobody had asked for: even *adversarially* relabelling the entire
+  1,385-rune O/A/AE family reaches 1.4357%, below every English and Latin floor. Expected wrong
+  runes: **0**.
+- => **Canon is correct.** Two standing beliefs died: the dense pages 45–54 are **not** the weak
+  stratum (T1 99.80%, T2 1.0000), and the delta-spectrum statistic L2 recorded "so that a future
+  re-read can check whether it moves" **does not move**.
+
+**3. THE SPACES ARE SMALLER THAN THE REPO BELIEVED.** Four era-correct generator families validated
+**byte-exactly against real binaries** (a bash 4.2 compiled from GNU source, real perl and glibc,
+three real CPython 2.7 builds including Ubuntu 12.04's own and an i386 one, real `pdflatex`) — and
+every one collapsed a space called unbounded: **bash is one orbit, so seed IS offset**; **Perl's
+un-seeded `rand` takes four bytes of `/dev/urandom` into a U32**; **Python 2.7 on i386 folds any
+string seed to 2^32**; **TeX is a single cycle that absorbs the offset ladder outright**. pgf's real
+multiplier is **69621** — the obvious 16807 appears only in a comment, so a sensible
+reimplementation would have swept the wrong stream and reported a confident negative.
+
+### The rest
+
+| lane | verdict |
+|---|---|
+| **R1** red-team | **REDIRECT**, 11 FOUND-ERROR triggers. Three of four "enumerable" spaces cost **16–32 years** through the repaired instrument — the plan priced keystream *generation*, not *adjudication*. The missing lane is a **skip-aware multi-register prefilter**; G1 and G4 independently designed one (about 900x beam speed, giving 100% coverage of the top two families in about 3 days on 16 cores). |
+| **C1** payload | Six contested bytes **confirm** canon under a 100% / 59-of-59 control — but **three others are wrong: 45->107, 50->47, 246->198**. The old canonicalisation was tie-broken by its own *worst* witness (2/11). **B-05's negative was VOID** and is re-run clean: 20,160 decodes, 0 escalations, **the repo's first R3-compliant sweep** (prior: 0/15). **E-01** NULL against generic PKCS#1 *and* against 3301's own signed-and-declared `Crypt::RSA::ES::OAEP`, whose wire format was **measured by decrypting 3301's own ciphertext** using primes held in the corpus (`emLen = k-1`, not OpenSSL's shape). |
+| **C2** offset / Marsaglia | First measurement of what R17's 1.45e10 offsets actually bought, **by register**: composite power **0.77** English, 0.23 Latin, **0.00** Welsh, **0.000** vowel-dropped. Only **0.054%** of 2.5e9 derived-key decodes ever ran at a nonzero key offset. Marsaglia data verified 112 PASS / 0 DRIFT. |
+| **C3** ornaments / PGP | All **109** bands read (Round 18 stopped at 45): decoration and mis-grouped body text; both "passing" hypotheses die under new controls; **P-9 refuted at its premise** (its `n` field is a row-group count, not a glyph count). PGP corpus re-derived from scratch — verdicts and every sha256 identical. **Two signed, verified messages carry `Version: 1.99`, `Scheme: Crypt::RSA::ES::OAEP` and Perl `Data::Dumper` output**, so the Perl prior is the author's own signed declaration, not a distro inference. |
+
+### Errors found in this repo's own prior work
+
+**Six lanes independently found defects in Round 18's L1 prior** — its `46/46 GnuPG v1.4.11` is
+really 56 files / 54 messages / **three** version strings running to 2017; a **non-ImageMagick**
+chain reproduces all four discriminating JPEG fields; `$RANDOM` is **not** a glibc `rand()`
+derivative; and Perl was **not** "never swept", it was swept with a broken magnet. **Four lanes
+independently refused to judge a permissive decode against −5.5. Two independently found that a
+soft decoder scoring −4.4 at 12% recovery is hallucinating, not hitting.**
+
+**T1-02 is the one that propagates furthest:** the rune **Y is typeset as TWO disconnected
+components** — an outline identical to U plus a detached inner stroke. 54 of 55 sampled Y glyphs
+carry one; **no other rune has one at all.** Any segmentation filtering components by rune height
+discards that stroke and makes **every Y in the book pixel-identical to a U** (ink 2134 vs 2133 on
+the same box). `analysis/geometry/segment.py` and `analysis/stones/pipeline.py` both filter that
+way, which is very likely why `("U","Y",6)` is the top confusion in `retranscribe/diff_report.json`.
+
+### What Round 20 inherits
+
+1. **The sweep still has not run.** Use G1's and G4's screens, not direct enumeration. Gated on
+   I3 measuring each screen's power first (doctrine R1).
+2. **S2 must re-seed B-04, R16-KDF and R17 from `payload_resolved.bin`, not `canon_256.bin`.**
+   `canon_256.bin` is deliberately left in place — promoting the corrected payload to canonical is
+   an owner decision, not a lane's.
+3. **The beam still steers by English score** (I2's stated residual). A hit in a low-recovery
+   register arrives as a detection, not readable plaintext. A `pmax`-scored beam would likely
+   close it.
+4. **Still unbounded:** nothing covers a single key-pointer jump of J>=8 (I1), and I1's `drift`
+   preset **fails G-RECOVER on Old English**.
 
 ## Round 16 — Derived-keystream armada (2026-08-23)
 

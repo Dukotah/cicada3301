@@ -21,19 +21,18 @@
   "audit"
  ],
  "counts": {
-  "total": 83,
+  "total": 124,
   "by_status": {
-   "audit": 9,
-   "eliminated": 4,
-   "inconclusive": 2,
-   "measured": 6,
-   "negative": 23,
+   "open": 20,
+   "superseded": 2,
+   "negative": 25,
+   "partially-run": 11,
+   "eliminated": 5,
    "never-run": 5,
-   "open": 17,
-   "partially-run": 15,
-   "superseded": 2
+   "measured": 40,
+   "audit": 16
   },
-  "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF. Round 18 merged 2026-08-26: 8 lanes, 31 fragment entries. L7 restated the coverage of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD and B-21 -- every prior negative in this repo is an English-register negative, which no entry had stated. Original coverage text is preserved in each entry's `restated_from`. Two statuses were added in the Round 18 merge: `measured` (a definite non-null determination) and `audit` (a recomputation or coverage restatement, which has no null and no threshold). The positive-control gate still applies to `negative`/`eliminated` only, so it retains exactly its former force."
+  "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF. Round 18 merged 2026-08-26: 8 lanes, 31 fragment entries. L7 restated the coverage of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD and B-21 -- every prior negative in this repo is an English-register negative, which no entry had stated. Original coverage text is preserved in each entry's `restated_from`. Two statuses were added in the Round 18 merge: `measured` (a definite non-null determination) and `audit` (a recomputation or coverage restatement, which has no null and no threshold). The positive-control gate still applies to `negative`/`eliminated` only, so it retains exactly its former force. | Round 19 merged 2026-08-26: 41 new entries, 10 restated. Instrument repaired (I1 decoder, I2 adjudicator, I3 thresholds); the -5.5 bar was wrong in 14/14 historical sweeps, usually too strict, and no verdict flips. Transcription closed by T1/T2/T3 from three independent directions: canon is correct. Payload bytes 45/50/246 corrected by C1, voiding B-05, which was re-run clean."
  },
  "entries": [
   {
@@ -373,32 +372,37 @@
   },
   {
    "id": "R12-frontB",
-   "lane": "transcription",
+   "lane": "round19/T2",
    "hypothesis": "Canon mis-transcribes the dense OTP pages 45-54, where every prior audit was weakest.",
-   "status": "inconclusive",
-   "round": "12/frontB",
-   "date": "2026-08-17",
+   "status": "negative",
+   "round": 19,
+   "date": "2026-08-26",
    "threshold": "An instrument must pass its own control before it can confirm OR refute.",
    "threshold_fixed_in_advance": true,
-   "positive_control": "failed",
-   "result": "The FORCED per-line re-segmentation instrument scores 12.9% agreement on solved control pages against the ~98% the validated R9 raw-band decode reaches. By the campaign's own discipline it therefore certifies nothing. Separately, the VALIDATED R9 template DP reproduces 98.0% over 5,150 glyphs on 232 count-exact lines and finds no real localized rune error on 45-54.",
-   "coverage": "Pages 45-54 only.",
+   "positive_control": "passed",
+   "result": "SETTLED, and canon is upheld. Pages 45-54 read at 1.0000 over 1,992 slots: zero substitution disagreements (0 SEG, 0 CONF, 0 ID) and zero surviving insertion/deletion candidates. The two indel flags raised on the dense stratum both adjudicate to SEG - non-rune ink inside the band on lines whose rune-body component count matches canon exactly. Why this worked where frontB did not: frontB forced a NUMBER OF PIECES and let the cuts fall where they may; T2 forces the IDENTITY SEQUENCE and lets the ink choose the cuts, so the segmentation never has to be discovered. frontB's own reported segmentation gap (30-41 boxes per line on p45 against canon's 21-25) was an artifact of not applying its own measured height classes as a mask: with the mask, rune-component counts are exact on 530/604 lines (87.7%) against R9's 232/604 (38.4%), residual 83 glyphs over 13,136 = 0.63%.",
+   "coverage": "All 91 lines and all 1,992 rune slots of pages 45-54, under single-token substitution (complete, 29-way), single insertion, and single deletion.",
    "evidence": [
-    "liber-primus/analysis/round12/frontB/RESULTS.md",
-    "liber-primus/analysis/round12/frontB/forceseg.py"
+    "liber-primus/analysis/round19/T2/RESULTS.md",
+    "liber-primus/analysis/round19/T2/out_probe.json",
+    "liber-primus/analysis/round19/T2/out_indel_score.json",
+    "liber-primus/analysis/round19/T2/out_splice.json"
    ],
    "reproduce": "cd liber-primus/analysis/round12/frontB && python3 run_final.py",
-   "reopens_if": "A vision model good enough to pass the forced-segmentation control on dense pages. This is a PARKED item, not a closed one.",
+   "reopens_if": "The publisher's vector/font source becomes available and separates a split rune stroke from a typographic tick by construction, changing the adjudication of the 35-94 px mark class; or a second LP2-face page solved by decryption disagrees with the probe.",
    "notes": "A model entry for how to report a failed instrument: the forced front is recorded as INCONCLUSIVE, and only the control-passing instrument is allowed to carry the conclusion. Do not read this as 'pages 45-54 verified'.",
-   "control_detail": null,
+   "control_detail": "Round 19 T2 replaced frontB's instrument. Forced-alignment control = 1.0000 (178/178 slots on LP2 p56/p57, proven by decryption) vs frontB's own 0.129; second control, an ink-splice plant of 545 splices, recovered at 1.0000 on all three strata. Pages 45-54 read 1.0000 over 1,992 slots.",
    "null": null,
-   "not_covered": null,
+   "not_covered": "Multi-rune correlated errors, transpositions, whole-line omissions, overlapping/kerned glyph pairs and ligatures (the transition model cannot represent them). The adjudicator's register is pixel mismatch against the R9 template library at this render; its blind spot is the shape-confusable families (U/Y, O/A/AE, L/W, C/I), which were 0 at tau = 0.",
    "supersedes": null,
    "superseded_by": null,
    "priority": null,
    "source_register": null,
-   "raw_status": null,
-   "evidence_missing": []
+   "raw_status": "negative",
+   "evidence_missing": [],
+   "restated_from": "inconclusive",
+   "restated_by": "round19/analysis",
+   "restated_round": 19
   },
   {
    "id": "R17-PUBLIC-PAD",
@@ -528,32 +532,37 @@
   },
   {
    "id": "A-01",
-   "lane": "recon-a",
+   "lane": "round19/T2 (completion of Round 9 Track TEMPLATE)",
    "hypothesis": "Round 9 Track TEMPLATE, the only genuinely from-scratch re-transcription, stopped at stage 2. `read_lines.json` holds 16,245 image-read glyphs across 646 lines; `diff.py` (stage 3: recover the class→rune permutation, diff vs canon) has no output artifact on disk and no verdict was ever appended.",
-   "status": "partially-run",
-   "raw_status": "partially-run",
+   "status": "measured",
+   "raw_status": "run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
-    "research/ROUND-9-RESULTS.md",
-    "liber-primus/analysis/retranscribe/"
+    "liber-primus/analysis/round19/T2/RESULTS.md",
+    "liber-primus/analysis/round19/T2/out_a01.json",
+    "liber-primus/analysis/round19/T2/out_probe.json",
+    "liber-primus/analysis/round19/T2/out_splice.json"
    ],
-   "round": null,
-   "date": null,
+   "round": 19,
+   "date": "2026-08-26",
    "threshold": null,
    "threshold_fixed_in_advance": null,
    "positive_control": null,
    "control_detail": null,
    "null": null,
-   "result": null,
-   "coverage": null,
-   "not_covered": null,
+   "result": "A-01 COMPLETE. Independent per-slot agreement with canon 0.9973 over 13,121 slots on 604/604 lines (stage 2 stopped at 0.9693 over 5,207 glyphs on 232 lines). Per stratum: solved-LP2 1.0000 (178), dense pages 45-54 1.0000 (1,992), pages 0-44 0.9968 (10,951). Of 35 slot-level disagreements: 33 SEG, 0 CONF, 2 ID - and both ID cases coincide exactly with an insertion flag at the same position on a count-exact line, so both are SEG. ZERO disagreements in the corpus have the signature of a real rune-identity error in canon.",
+   "coverage": "13,121 / 13,136 rune slots = 99.89%, on 604/604 canon lines and 57/57 pages. This closes Round 10's stated bound of 38.4% of lines glyph-diffable.",
+   "not_covered": "15 slots, all NAMED: illuminated initials (oversized decorative first glyphs, h 497-608 px against a 113 px rune body, which no 108-120 px template can match). Also not covered: multi-rune correlated errors, transpositions, and whole-line omissions (the line map is driven by canon's line inventory, so a line canon omits entirely would not appear; the page-level count residual of 0.63% constrains but does not eliminate this).",
    "reproduce": null,
    "supersedes": null,
    "superseded_by": null,
-   "reopens_if": null,
+   "reopens_if": "A second LP2-face page is solved by decryption and T2's probe disagrees with it. The control rests on 180 runes - the only LP2-face text proven by decryption in existence - so the 1.0000 is exact but narrow.",
    "priority": null,
    "notes": null,
-   "evidence_missing": []
+   "evidence_missing": [],
+   "restated_from": "partially-run",
+   "restated_by": "round19/analysis",
+   "restated_round": 19
   },
   {
    "id": "A-02",
@@ -619,26 +628,29 @@
    "id": "A-04",
    "lane": "recon-a",
    "hypothesis": "pp49-51's 6 contested bytes (idx 25, 175, 182, 199, 215, 237) - flagged open in Campaign VII and repeated in Campaign IX; needs a Latin/digit OCR, which the rune classifier cannot do. Never done.",
-   "status": "measured",
-   "raw_status": "resolved",
+   "status": "eliminated",
+   "raw_status": "eliminated",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
     "liber-primus/analysis/round18/L5-payload/PREREG.md",
-    "liber-primus/analysis/round18/L5-payload/RESULTS.md",
-    "liber-primus/analysis/round18/L5-payload/payload_resolved.json",
-    "liber-primus/analysis/round18/L5-payload/payload_resolved.md",
-    "liber-primus/analysis/round18/L5-payload/payload_resolved.bin",
-    "liber-primus/analysis/round18/L5-payload/adjudication.json",
-    "liber-primus/analysis/round18/L5-payload/pixelmatch.json",
-    "liber-primus/analysis/round18/L5-payload/calibration.json",
-    "liber-primus/analysis/round18/L5-payload/glyphmatch.json",
-    "liber-primus/analysis/round18/L5-payload/pixelmatch.py",
-    "liber-primus/analysis/round18/L5-payload/adjudicate_all.py",
-    "liber-primus/analysis/round18/L5-payload/visualpass.py",
-    "liber-primus/analysis/round18/L5-payload/compare215.py",
-    "liber-primus/analysis/round18/L5-payload/propagation_results.json"
+    "liber-primus/analysis/round19/C1/PREREG.md",
+    "liber-primus/analysis/round19/C1/RESULTS.md",
+    "liber-primus/analysis/round19/C1/singletons.py",
+    "liber-primus/analysis/round19/C1/out_singletons.json",
+    "liber-primus/analysis/round19/C1/pixelmatch.json",
+    "liber-primus/analysis/round19/C1/adjudication.json",
+    "liber-primus/analysis/round19/C1/payload_resolved.json",
+    "liber-primus/analysis/round19/C1/payload_resolved.bin",
+    "liber-primus/analysis/round19/C1/b05_rerun.py",
+    "liber-primus/analysis/round19/C1/out_b05_rerun.json",
+    "liber-primus/analysis/round19/C1/b05_readjudicate.py",
+    "liber-primus/analysis/round19/C1/propagate.py",
+    "liber-primus/analysis/round19/C1/out_propagation.json",
+    "liber-primus/analysis/round19/C1/visualcheck.py",
+    "liber-primus/analysis/round19/C1/out_b05_readjudicated.json",
+    "liber-primus/analysis/round19/C1/out_b05_sweeprow.jsonl"
    ],
-   "round": "18/L5-payload",
+   "round": 19,
    "date": "2026-08-26",
    "threshold": "PREREG A.3 gate: >= 38/40 (95%) exact-token agreement on a blind, seeded sample of 40 uncontested cells, read without the canonical value in view, with case-ambiguous-class accuracy reported separately. PREREG A.4 decision rule: a cell is RESOLVED iff >= 3 independent passes (different crop padding, different upscale factor, differently-ordered presentation) return the same token AND the calibration gate passed; otherwise STILL-CONTESTED with a candidate shortlist.",
    "threshold_fixed_in_advance": true,
@@ -652,68 +664,75 @@
     "not_testable": "Classes I, R, h, i, l have exactly one uncontested exemplar each, so leave-one-out removes the class; 5 cells are untestable this way. Their reading rests on the measured render determinism instead."
    },
    "null": "H0 was that the glyphs are ambiguous at 400 DPI and every cell stays contested. Rejected: all 11 disagreeing cells resolved, each at three-pass visual concordance and nearest-exemplar IoU >= 0.9993 against a between-class ceiling of 0.908.",
-   "result": "RESOLVED. All 6 pre-registered contested cells adjudicated to a single token at 3-pass concordance, each confirming the majority-vote canon and refuting scream314's decimal column: idx 25 = '3I' = 198; 175 = '0I' = 18; 182 = '2l' = 167; 199 = '0l' = 47; 215 = '1O' = 84; 237 = '0W' = 32. ZERO of the six pre-registered bytes changes. The lane then extended the same validated instrument to the other 5 conflict cells (token-split cells where canonicalize.py had used that same decimal column as the tie-breaker) and found THREE byte errors in canon_256.bin: idx 45 '1L'=81 -> '1l'=107; idx 50 '0L'=21 -> '0l'=47; idx 246 '3i'=224 -> '3I'=198. Each was given the same three-pass visual treatment and each turns on a presence/absence of a stroke (45 and 50 have no foot, so 'l' not 'L'; 246 has no dot, so 'I' not 'i'). Corrected stream in analysis/round18/L5-payload/payload_resolved.bin, sha256 3b9b07d9a26e6d55c432d94d2661fdff3c2b348daed06821f2bdb23184a4b290, 3 bytes different from canon_256.bin (sha256 4c8dc855...) and 9 different from canon_256_decpref.bin. WITNESS SCORECARD over all 11 conflict cells: scream314 token table 11/11, relikd token table 6/11, scream314 decimal column 2/11 - the decimal column is a derived column and is the least reliable of the three, yet canonicalize.py used it as the tie-breaker.",
-   "coverage": "All 256 payload cells gridded by projection profiling; all 11 cells where the three witnesses disagree adjudicated by two independent instruments (three-pass max-zoom visual reading at scales 7/10/14 with paddings 4/16/24 and three different presentation orders; native-resolution nearest-exemplar bitmap matching over all 60 base-60 classes for BOTH glyph positions). Both glyphs adjudicated at idx 215, the only cell contested in both positions. Propagation to the resolved payload: structural characterization, 210 hash probes against the page-56 'AN END' 512-bit target, and round16 zeroFP E-02A/E-02B/H-03 re-run with round16's own code - all NULL.",
-   "not_covered": "Cells 186, 210 and 211 never segmented into exactly two glyphs, so the bitmap instrument has no reading for them (all three are 3-witness-agreed, so nothing is contested there). Single-exemplar classes I, R, h, i, l cannot be leave-one-out validated. The blindness of the 40-cell visual calibration rests on a procedure note and is not externally verifiable; the machine-checkable bitmap controls are what the conclusions lean on. B-05 propagation covers only B-05's pinned Part-1 grid on the resolved payload (20,160 beam decodes, checkpointed to b05_propagation.json); B-05's Part 1b, Parts 2a/2b and the rigid control channel are not re-run. All decode-based propagation inherits Round 18 L7's conditionals: English-only adjudicator, one rejection-loop transition model.",
+   "result": "RESOLVED. All 6 pre-registered contested cells read as the MAJORITY-VOTE value already in canon_256.bin: 25='3I'=198, 175='0I'=18, 182='2l'=167, 199='0l'=47, 215='1O'=84, 237='0W'=32. NONE of the six bytes changes. Every one of the six refutes scream314's derived decimal column, the only witness that dissented. Coverage extension: canonicalize.py finds ELEVEN disagreeing cells, not six; the other five were tie-broken by that same decimal column, so the validated instrument was turned on all 11. THREE bytes change: idx 45 (81 -> 107, '1L' -> '1l'), idx 50 (21 -> 47, '0L' -> '0l'), idx 246 (224 -> 198, '3i' -> '3I'). Witness accuracy over all 11 conflict cells against the image: scream314 token table 11/11, relikd token table 6/11, scream314 decimal column 2/11. The decimal column is a DERIVED column and should never have been canonicalize.py's tie-breaker. Resolved payload sha256 3b9b07d9a26e6d55c432d94d2661fdff3c2b348daed06821f2bdb23184a4b290 (canon_256.bin is 4c8dc85531d256793a6d0d318b8845869b4983e672077b094ed955bde92226d5); 3 bytes differ from canon_256.bin, 9 from canon_256_decpref.bin. Candidate variants remaining: 1 - the <=2^6 Cartesian product PREREG A.5 budgeted for is empty.",
+   "coverage": "All 11 cells that any witness disputes, both glyphs each, against every symbol class (59) and digit class (5) present in the payload, at native 400-DPI resolution with best-alignment over integer shifts in [-3,3]^2. Instrument accuracy measured at 99.45-100% in the single-template regime the deciding classes actually live in, and 99.58-100% under leave-one-out. Adjudication power against the specific confusions that matter (I/l/L/i, O/Q/0, W/w, S/s) is 100% on 59-108 known cells. PROPAGATION COVERAGE: B-05s pinned Part-1 grid re-run exhaustively on the resolved payload (20,160 decodes) and adjudicated through I2s 9-register panel at the calibrated length L=120, with bars from I3s contract.",
+   "not_covered": "(a) 3 of 256 cells - idx 186, 210, 211 - do not segment into exactly two glyphs under the column-gap split and were never adjudicated by the pixel instrument; none is a conflict cell and all three agree across all three witnesses, so they are unchallenged rather than verified. (b) idx 209 is objectively mis-segmented (best same-class IoU 0.117) and is the single miss in both Controls 2 and 3; it is an uncontested cell and its canon value stands unchallenged. (c) The class alphabet is closed to the 59 symbol classes that occur in the payload: a glyph belonging to none of them (e.g. the never-occurring 'f'=41) could not be recognised as such. (d) The 245 non-conflict cells were used as ground truth from canon_256.bin, so a shared error across ALL THREE witnesses at a cell nobody disputed is outside this lane by construction. (e) L5's three visual passes remain an unverifiable transcript; C1's second-reader pass is non-blind corroboration, not an independent blind read. (f) PROPAGATION: the B-05 re-run inherits B-05s decoder, whose transition relation is exact for encipher_keyskip and NOTHING else -- skip_by_two and free drift are not representable, and L7-B measured the correct key at -6.90/25.8% recovery under skip_by_two where I1s repaired decoder gets -4.285/100%. So this negative does NOT cover skip_by_two. (g) B-04, R16-KDF and R17 also consume the payload, are input-sensitive, and were deliberately NOT re-run: they are handed to S2, which must re-seed from payload_resolved.bin.",
    "reproduce": "cd liber-primus/analysis/round18/L5-payload && python3 grid.py && python3 calibrate.py && python3 pixelmatch.py && python3 adjudicate_all.py && python3 visualpass.py && python3 compare215.py && python3 propagate.py",
-   "supersedes": "The 'CONTESTED / never OCR'd' caveat on payload.canon_256 in handoff/capsule/MANIFEST.json and PARKED.md item P-07; and canonicalize.py's decimal-column tie-break at indices 45, 50 and 246.",
+   "supersedes": [],
    "superseded_by": null,
-   "reopens_if": "A higher-resolution or lossless source for pp49-51 appears (the current inputs are 400-DPI JPEGs; a PNG or PDF-native render would let the single-exemplar classes be cross-validated); OR a third independent transcription lineage disagrees with payload_resolved.bin at any of the 11 cells; OR any witness contests cells 186/210/211, for which this instrument has no reading.",
+   "reopens_if": "A higher-resolution or lossless master of pp49-51 becomes available (the current masters are 400-DPI JPEGs); or an independent BLIND transcription of the 11 conflict cells disagrees with this reading; or the three unsegmented cells 186/210/211 are segmented by a better splitter and disagree with canon_256.bin; or an exemplar of a class absent from the payload turns up in one of the contested positions. For the propagation specifically: re-running the same grid through I1s repaired drift-tolerant decoder (S2s job) reopens it, because this sweeps decoder cannot represent skip_by_two.",
    "priority": "high",
-   "notes": "Two findings beyond the pre-registered question. (1) The pp49-51 images are deterministic 400-DPI Ghostscript renders of typeset text, so same-character glyphs are pixel-identical (measured within-class IoU 0.9948 against a between-class ceiling of 0.908). That turns glyph identification from fuzzy scoring into lookup and is reusable on every other Latin/digit table in this corpus. (2) The relikd token table is 6/11 on the disputed cells and scream314's token table is 11/11. Any other transcription in this repo sourced from relikd carries a measurable error rate; re-adjudicating those pages with pixelmatch.py is a small job with a validated instrument already behind it. Note also that canon_256.bin is NOT overwritten by this lane - the corrected stream lives in payload_resolved.bin and the coordinator decides whether to promote it.",
+   "notes": "Two findings beyond the pre-registered question. (1) The pp49-51 images are deterministic 400-DPI Ghostscript renders of typeset text, so same-character glyphs are pixel-identical (measured within-class IoU 0.9948 against a between-class ceiling of 0.908). That turns glyph identification from fuzzy scoring into lookup and is reusable on every other Latin/digit table in this corpus. (2) The relikd token table is 6/11 on the disputed cells and scream314's token table is 11/11. Any other transcription in this repo sourced from relikd carries a measurable error rate; re-adjudicating those pages with pixelmatch.py is a small job with a validated instrument already behind it. Note also that canon_256.bin is NOT overwritten by this lane - the corrected stream lives in payload_resolved.bin and the coordinator decides whether to promote it. | supersedes: The 'CONTESTED / never OCR'd' caveat on payload.canon_256 in handoff/capsule/MANIFEST.json and PARKED.md item P-07; and canonicalize.py's decimal-column tie-break at indices 45, 50 and 246.",
    "evidence_missing": [
     "CAMPAIGN-IX-FINDINGS.md"
    ],
-   "status_before_normalisation": "resolved"
+   "status_before_normalisation": "resolved",
+   "restated_from": "measured",
+   "restated_by": "round19/analysis",
+   "restated_round": 19
   },
   {
    "id": "A-05",
-   "lane": "recon-a",
+   "lane": "round19/T2",
    "hypothesis": "Separator audit: 19 rune-count-exact lines disagreed on separator count; listed in `geometry/separator_audit.json` as \"the correct shortlist for a human or high-zoom re-read\". Never re-read.",
-   "status": "partially-run",
-   "raw_status": "partially-run",
+   "status": "negative",
+   "raw_status": "negative",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
-    "research/ROUND-8-RESULTS.md"
+    "liber-primus/analysis/round19/T2/RESULTS.md",
+    "liber-primus/analysis/round19/T2/out_sep19.json",
+    "liber-primus/analysis/round19/T2/out_separators.json"
    ],
-   "round": null,
-   "date": null,
+   "round": 19,
+   "date": "2026-08-26",
    "threshold": null,
    "threshold_fixed_in_advance": null,
-   "positive_control": null,
-   "control_detail": null,
+   "positive_control": "passed",
+   "control_detail": "Round 19 T2, control 10/10. Canon is correct on all 19 lines in count AND position; Round 8's diffs were its own dot extractor, which counted every sub-30px component as one dot when a '.' is a 24-60px lozenge fragmenting into up to 23 components. Coverage raised 170/604 -> 604/604.",
    "null": null,
-   "result": null,
-   "coverage": null,
-   "not_covered": null,
+   "result": "ALL 19 LINES READ. Canon is correct on every one, in count AND in position. The Round 8 diffs are its own instrument, in two distinct failure modes: 10/19 are a line-alignment slip (Round 8's dot count for the image row equals canon's separator count at a NEARBY canon line, d in -4..+4; its count-based DP aligned 599 of 604 lines where T2's mask-based map aligns 604/604), and 9/19 are a dot-extraction failure - four of them (glines 536, 538, 545, 550, all on dense pages 47-48) Round 8 measured at ZERO dots, where cropping gline 545 shows six separator dots plainly, exactly matching canon's six '-'. Root cause of the whole shortlist: Round 8 counted EVERY component with h < 30 as one separator dot, but the mark classes are cleanly bimodal - a word separator '-' is ONE dot spanning 9-10 px (2,767 of them) while a sentence mark '.' is a LOZENGE spanning 24-60 px that fragments into 3/4/10/13/23 components (187 of them). A single '.' therefore contributed up to 23 to Round 8's count. This independently confirms round18/L4's fitted advance widths ('.' 1.82 against '-' 0.32).",
+   "coverage": "All 19 shortlisted lines, and the whole-book audit behind them: 604/604 lines. Canon 2,764 '-' and 183 '.'; image 2,767 '-' and 187 '.'. Lines with exact separator counts 582/604 (96.36%); with exact separator POSITIONS 580/604 (96.03%).",
+   "not_covered": "24 lines carry a positional separator disagreement, of which 15 are at gap 0 and most of the rest within two gaps of the line end - line-boundary attribution, because canon breaks lines semantically and the image breaks them typographically. This lane did not attempt to re-attribute separators across line boundaries.",
    "reproduce": null,
    "supersedes": null,
    "superseded_by": null,
-   "reopens_if": null,
+   "reopens_if": "Nothing in this lane bears on whether separators carry a channel - Round 11's S2 already found they are typography (line-wrap / sentence / word markers). This entry establishes only that the COUNT and PLACEMENT are right.",
    "priority": null,
    "notes": null,
-   "evidence_missing": []
+   "evidence_missing": [],
+   "restated_from": "partially-run",
+   "restated_by": "round19/analysis",
+   "restated_round": 19
   },
   {
    "id": "A-06",
-   "lane": "recon-a",
+   "lane": "round19/C3 (closeout of round18/L3-ornaments)",
    "hypothesis": "Ornament bands. Round 8 catalogued 47 non-text bands over 23 pages (`geometry/ornaments.json` holds 62 rows) and recorded this as \"inventory, not a result -- the one item in Round 8 left as an open thread\"; the short bands (1/3/4/8/16 glyphs) \"are the only real ornament candidates and nobody has read them\".",
-   "status": "negative",
-   "raw_status": "never-run",
+   "status": "measured",
+   "raw_status": "run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
-    "liber-primus/analysis/round18/L3-ornaments/PREREG.md",
-    "liber-primus/analysis/round18/L3-ornaments/RESULTS.md",
-    "liber-primus/analysis/round18/L3-ornaments/bands.json",
-    "liber-primus/analysis/round18/L3-ornaments/inventory.json",
-    "liber-primus/analysis/round18/L3-ornaments/nonrunic.json",
-    "liber-primus/analysis/round18/L3-ornaments/hypotheses.json",
-    "liber-primus/analysis/round18/L3-ornaments/h1score.json",
-    "liber-primus/analysis/round18/L3-ornaments/controls.json",
-    "liber-primus/analysis/round18/L3-ornaments/calibration.json"
+    "liber-primus/analysis/round19/C3/RESULTS.md",
+    "liber-primus/analysis/round19/C3/l3/bands.json",
+    "liber-primus/analysis/round19/C3/l3/band_control.json",
+    "liber-primus/analysis/round19/C3/l3/control_strata.json",
+    "liber-primus/analysis/round19/C3/l3/hypotheses.json",
+    "liber-primus/analysis/round19/C3/l3/h7_control.json",
+    "liber-primus/analysis/round19/C3/l3/h78_controls.json",
+    "liber-primus/analysis/round19/C3/l3/hashes.json"
    ],
-   "round": "18",
-   "date": "2026-08-25",
+   "round": 19,
+   "date": "2026-08-26",
    "threshold": "H1: a band decodes to an English word or known Cicada string of length >= 8 under a cipher validated on the solved pages (run confusable-tolerant, see control_detail). H2: identical short-band content recurring at >= 3 sites. H3/H4/H5: >= 3 exact matches (page index / prime index / one of 12 checksum forms), family-wise p < 1.67e-4, Bonferroni 8.3e-5 within H5. H6: >= 8-char English via a pointer reading, or doublet-landing p < 0.001. H7: p < 0.001 that band lengths are drawn from {2^k}, against a SIZE-MATCHED null. H8: p < 0.001 non-uniform position or a >= 8-char decode. Plus a quadgram-vs-null test per band: score must exceed its own size-matched null MAX over 2,000 draws from the LP2 rune frequency distribution.",
    "threshold_fixed_in_advance": true,
    "positive_control": "passed",
@@ -724,22 +743,19 @@
     "G-B discriminator false positive (measured)": "The RUNIC call (median template cost <= 300, known-text median 128) has a measured false positive: band B098, the p51 alphanumeric line which contains no runes by construction, is called RUNIC at cost 251.5. No hypothesis was scored on a band call alone."
    },
    "null": "10,000-resample content null (band glyph sequences replaced by i.i.d. draws from the LP2 rune-frequency distribution, lengths held fixed); 2,000-draw per-band quadgram null; size-matched small-n null for band lengths; binomial null against the measured residual-doublet base rate for pointer landings.",
-   "result": "NEGATIVE on every hypothesis, and the inventory is now READ. All 109 catalogued band records were cropped from sha256-verified renders and read: 9,899 glyphs with per-glyph template match cost (bands.json). They decompose into four populations: 82 mis-grouped rune TEXT lines (medh 114, cost 55-175) that Round 8's heuristic rejected because a marginal vine ornament merged rows; 10 vine/hairline components whose reads are DEGENERATE (a single vertical stroke matched repeatedly by the narrow I template, degeneracy 0.89-1.00); 3 woodcut illustrations (cost 348-2003); and 5 bands of NON-RUNIC DATA. NO BAND CONTAINS A RUNIC MESSAGE. Verdicts: H1 0 hits / H1-quadgram 5 of 25 bands beat their null max but ALL FIVE are the flagged DEGENERATE vine-stroke reads and 0 non-degenerate bands beat their null / H2 0 / H3 1 exact (bar 3) / H4 0 / H5 best form 2 exact (bar 3) / H6 0 English and 0 of 12 pointers land on a residual doublet against a base rate 0.0068, binomial p = 1.0 / H7 the apparent 1-3-4-8-16 binary ladder is an ARTIFACT: naive p = 6.7e-10 against an all-bands base rate set by TEXT lines at n = 20-40, but size-matched to small bands it is 22/30 at 2^k against an empirical base rate of 0.531 over all n<=16 image bands, p = 0.019 / H8 passes the letter of its statistic (KS uniformity p = 8e-11) but the statistic is uninformative because a uniform-position null is physically impossible for marginal decoration; H8b shows the coordinates are a REPEATED PAGE TEMPLATE, not data: 109 bands occupy 58 distinct boxes and 45 distinct x-spans, 69 of 109 share an exact box with another band, and the x-span [28,2372] recurs 21 times. POSITIVE FINDING (not a hypothesis, a correction): Round 8's ornament bucket contains the book's NON-RUNIC DATA. The alphanumeric blocks on pages 49/50/51 were binned as ornament by `analysis/geometry/*` and have never entered any analysis in this repository. P-9's '16-glyph bands' B096/B098 are not 16 runes -- they are 16 CHARACTERS, eight two-character base-60 tokens ('2M 0w 3L 3D 2r 0S 1p 15' on p50, '28 2a 0J 1L 0c 3C 2o 0X' on p51), cross-checked byte-for-byte against two independent vendored community transcriptions. The full block is 32 lines x 8 tokens = 256 tokens spanning exactly 0..255 under value = 60*index(c0)+index(c1): 256 bytes, NOT a permutation (161 distinct against a uniform-iid expectation of 162.0). Transcribed with derivation in nonrunic.json.",
-   "coverage": "All 109 band records in the deduped union of `geometry/ornaments.json` (62 rows) and `geometry_report.json:ornaments` (47 rows), across 39 pages, with the y coordinate RESTORED (ornaments.json stores [page, x_lo, x_hi, n, median_height] and drops y, which is the mechanical reason nobody could crop these bands). 30 bands with n <= 16; 12 short AND called RUNIC. 9,899 glyphs read. 8 pre-registered hypotheses plus a per-band quadgram-vs-null test. Measured power: 93.8% glyph recovery on a message planted in the exact target shape (C-2); 81.7-86.5% whole-page on LP2-typeface solved pages.",
-   "not_covered": [
-    "band content below the reader's resolution -- sub-rune marks, or deliberate stroke modifications inside a vine, that the template DP cannot segment at all. Reopens if a per-rune reader reaches >= 99% on the solved control pages (P-1's unpark condition).",
-    "H1's register: 24 named English/Cicada strings plus an English quadgram model. A message in Latin, Old English or an abbreviated register is invisible to both -- the same English-only conditional Round 18 L7-A found on every negative in this repo.",
-    "the 256 base-60 bytes of pp.49-51 are TRANSCRIBED, not attacked. Testing them as a key, keystream, seed or payload is a different lane's work and was not done here.",
-    "only the bands Round 8 catalogued were read. Round 8's rejection rule (outside the text column OR median height > 240 px) is itself a filter; a from-scratch inventory of all non-body ink on all 56 pages would strictly extend this.",
-    "the 226 light-ink components located by the H9 addendum were measured but not separately transcribed and diffed against canon (three grey text rows on p53, and the grey heading lines)."
-   ],
+   "result": "NEGATIVE for content, with a refuted premise. H1 0 hits; H2 0; H3 1 exact (bar >=3); H4 0; H5 best form 2 exact (bar >=3); H6 0 of 12 pointers land on one of the 89 residual doublets (base rate 0.0068, binom p=1.0). H7 and H8 PASSED their registered bars and BOTH die under controls this lane added: H7's p=6.74e-10 is a reference-class artifact (a set of six integers drawn AT RANDOM scores p=1.7e-06 against the same null; set-randomisation over 20000 draws gives the binary ladder p=0.089); H8's KS p=8.2e-11 is not discriminating (the identical test on 616 ordinary text rows rejects uniformity at p=3.3e-112). No claim of a hit survives.",
+   "coverage": "All 109/109 band records read end to end (round18 stopped at 45). All 30 of P-9's nominated <=16 set re-measured. 256/256 base-60 tokens on pp.49-51. 64 control bands / 1198 glyphs for the band-shaped gate. 15 specificity probes. 20000 set-randomisation draws for H7. 18514 connected components for H9.",
+   "not_covered": "Ink outside the 109 boxes. Colour/chroma channels (only 8-bit luminance was read). Sub-30-px glyph systems. Any band content in a non-English register (H1 only). Whether a short band called NON-RUNIC is decoration or misread runes - at <=16 glyphs the call carries no information (sensitivity 0.50), so no band is asserted to be decoration on the strength of a failed read.",
    "reproduce": "cd liber-primus/analysis/round18/L3-ornaments && python3 inventory.py && python3 calibrate.py && python3 controls.py && python3 read_bands.py && python3 nonrunic.py && python3 hypotheses.py && python3 h1score.py",
    "supersedes": null,
    "superseded_by": null,
    "reopens_if": "(i) a per-rune reader reaches >= 99% on the solved control pages and finds runic content in any band this lane called VINE/WOODCUT; (ii) a multi-register (non-English) scorer finds language in a short band's read; (iii) anyone extends the inventory past Round 8's rejection rule.",
    "priority": "medium",
    "notes": "The lane also established a provenance fact not previously recorded anywhere in the repo: the vendored 2014 render set under corpus/E-tooling/vendor/cicada-solvers__documenting-cicada3301-scream314/assets/2014/liber-primus-complete/ is the SAME LINEAGE as data/relikd/ -- asset 17.jpg is byte-identical by sha256 (197e1e153958b9a2..., 695,525 B) to data/relikd/p0.jpg. That set supplies the cryptographically solved pages (73.jpg = LP2 p56, 74.jpg = LP2 p57, plus LP1 01/03/05/06/14) at the identical 2400x3600 render, and therefore a genuine solved-page control for any glyph reader. NO page in data/relikd/ is solved; relikd serves p0..p55 only and p56/p57 return 404.",
-   "evidence_missing": []
+   "evidence_missing": [],
+   "restated_from": "negative",
+   "restated_by": "round19/analysis",
+   "restated_round": 19
   },
   {
    "id": "B-01",
@@ -1044,14 +1060,19 @@
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
     "liber-primus/analysis/round18/L5-payload/PREREG.md",
-    "liber-primus/analysis/round18/L5-payload/RESULTS.md",
-    "liber-primus/analysis/round18/L5-payload/extract_moduli.py",
-    "liber-primus/analysis/round18/L5-payload/moduli.json",
-    "liber-primus/analysis/round18/L5-payload/e01_extended.py",
-    "liber-primus/analysis/round18/L5-payload/e01_results.json",
-    "liber-primus/analysis/round16/zeroFP/zerofp_tests.py"
+    "liber-primus/analysis/round19/C1/PREREG.md",
+    "liber-primus/analysis/round19/C1/RESULTS.md",
+    "liber-primus/analysis/round19/C1/e01_rsa.py",
+    "liber-primus/analysis/round19/C1/out_e01.json",
+    "liber-primus/analysis/round19/C1/moduli.json",
+    "liber-primus/analysis/round16/zeroFP/zerofp_tests.py",
+    "liber-primus/analysis/round19/C1/cryptrsa.py",
+    "liber-primus/analysis/round19/C1/out_cryptrsa.json",
+    "liber-primus/analysis/round19/C1/e01_cryptrsa.py",
+    "liber-primus/analysis/round19/C1/out_e01_cryptrsa.json",
+    "liber-primus/analysis/round19/C3/PGP-VERIFICATION-TABLE.json"
    ],
-   "round": "18/L5-payload",
+   "round": 19,
    "date": "2026-08-26",
    "threshold": "PREREG B.1/B.5: HIT iff a STRUCTURAL match - not a score, so there is no threshold to tune. PKCS#1 v1.5 signature: leading 00 01, >= 8 FF bytes, 00, then a DigestInfo DER prefix from round16's OID table (the 'strict' tier); padding-frame-only counts as 'loose' and does not qualify as a hit. EMSA-PSS: 0xBC trailer, MGF1-unmasked DB of the form 00*k || 01 || salt with k >= 8 ('strict'). Anything else is a null.",
    "threshold_fixed_in_advance": true,
@@ -1062,16 +1083,19 @@
     "key_verification": "Both 4096-bit moduli identified by computing the RFC 4880 12.2 v4 fingerprint from the OpenPGP packet bytes, not from filenames, and independently confirmed with `gpg --with-colons --import-options show-only --import`. Primary 6D854CD7933322A601C3286D181F01E57A35090F (key id 181F01E57A35090F), subkey DEC57731ACCBFD11EEBA13434D390ECF671DDEB1, both RSA-4096 e=65537, uid 'Cicada 3301 (845145127)', created 1325734783 = 2012-01-05."
    },
    "null": "H0 was no structure. Not rejected: 162/162 tuples produced no structural match while the matchers demonstrably fire on genuine signatures.",
-   "result": "NEGATIVE (trustworthy null). 162 (modulus, exponent, encoding, payload-variant) tuples evaluated across 3 moduli, 3 exponents, up to 4 encodings and 3 payload streams, with 3 structural matchers each. ZERO structural matches. The named Round 16 coverage gap is CLOSED: the 7A35090F RSA-4096 primary and subkey moduli were on disk all along, in corpus/, under ten independent witnesses including two keyserver pulls (keys.openpgp.org, keyserver.ubuntu.com) - no network fetch was needed. A sweep of every PGP public key block in corpus/ and the round10 L6 archive found no other 3301 RSA key (the other hits are a GitHub-Action test key whose uid says 'Not real', a revoked 2016 impostor key whose uid STRING is '7A35090F', and a community brainpool ECC key). Correction to the Round 16 record: zerofp_tests.py states that under a 4096-bit modulus pow(s,e,n) 'would trivially return s^e as-is (s << n), so PKCS1 padding is impossible'. That holds only for e = 1; for e in {3, 17, 65537} a 2048-bit s raised to e far exceeds 4096 bits, so the reduction is a full one and the test is meaningful. The gap was real; the reason recorded for it was not.",
-   "coverage": "Moduli: 7A35090F primary (RSA-4096, e=65537), 7A35090F subkey (RSA-4096, e=65537), 2013 puzzle modulus (432-bit, e=65537). Payload variants: canon_256.bin (majority), canon_256_decpref.bin (decimal-preferred), and L5's payload_resolved.bin. Encodings: big-endian, little-endian (byte-reversed), and for the 4096-bit moduli both left-aligned (zero-padded low) and right-aligned block placements. Exponents: 65537, 3, 17. Matchers: PKCS#1 v1.5 signature with DigestInfo for MD5 and SHA-1/224/256/384/512 (round16's matcher and OID table imported unchanged), PKCS#1 v1.5 type 2 encryption block, and EMSA-PSS under MGF1-SHA-1/256/384/512. 12 encodings skipped because s >= n makes the payload not a valid RSA element there: the 2048-bit payload exceeds the 432-bit 2013 modulus (6 tuples), and big-endian-left-aligned overflows both 4096-bit moduli because the payload's leading byte 0xcb exceeds their leading bytes 0xc1 and 0xbc (6 tuples).",
-   "not_covered": "Unpublished moduli - in particular the 2013 puzzle's implicit 2048-bit keys, whose public moduli were never released; 2048 bits is the only size for which the payload is a natural full-width RSA block, so this is the most consequential hole. Padding schemes other than PKCS#1 v1.5 (types 1 and 2) and EMSA-PSS: raw/textbook RSA, OAEP, ISO 9796-2, and non-RSA public-key structures are untested. Exponents outside {65537, 3, 17}. Encodings outside {big-endian, little-endian} x {left-, right-aligned}: bit-reversed, nibble-swapped and word-swapped block placements were not tested.",
+   "result": "NEGATIVE (structural null, with the named Round 16 coverage gap closed). Round 16 recorded E-01 as coverage-limited because 'the 7A35090F RSA-4096 moduli (the correct size) were not on disk and not fetched'. Re-running round16/zeroFP/zerofp_tests.py shows what that actually amounted to: 1 modulus, 8 pow() checks, ALL EIGHT SKIPPED for s>=n - Round 16 evaluated ZERO modular exponentiations for E-01. The moduli were on disk all along, under ten witnesses including two keyserver pulls, and no network fetch was needed. Round 16's stated justification for not fetching them - 'under a 4096-bit modulus, pow(s,e,n) would trivially return s^e as-is (s << n), so PKCS1 padding is impossible' - is arithmetically false for every e > 1 (s is 2048-bit; s^3 is ~6144-bit and s^65537 is ~1.3e8 bits, both of which reduce mod a 4096-bit n). C1 ran the test: for the 3301 moduli, 54 (modulus x endianness x block alignment x exponent x payload variant) tuples evaluated and 36 arithmetically excluded because s >= n, ZERO structural matches. Broadened to every RSA public key on disk (22 distinct keys from 3,716 key-shaped files), 594 tuples evaluated, 144 excluded, ZERO structural matches. One arithmetic exclusion is itself informative: the payload's leading byte 0xcb exceeds the leading bytes of both 3301 moduli (0xc1 primary, 0xbc subkey), so the 256-byte payload placed in the HIGH half of a 4096-bit block is already too large to be a valid signature representative under either key - that placement is excluded by arithmetic, not merely untested. Independently replicated in the same wall-clock window by the concurrent round18/L5-payload run (different matcher implementation, different encoding enumeration, same verdict NULL and same skip pattern). || SUB-RESULT B (Crypt::RSA::ES::OAEP, the authors own declared scheme, never tested by anyone before): NULL. R1 found 3301 naming the library in signed text and C3s PGP-VERIFICATION-TABLE.json confirms both carrier messages PASS under 181F01E57A35090F (this-message-will-only-be-displayed.asc 2012-01-15T01:39:42Z; 2014-01-rsa-oaep-challenge.asc = welcome.asc, same sha256 c9053eb4..., 2014-01-06T07:35:27Z), both carrying Version: 1.99 / Scheme: Crypt::RSA::ES::OAEP. 126 rows, 36 arithmetically excluded, ZERO hits, over three sub-tests: the payload read directly as an ES::OAEP encoded block (36 configurations), pow(s,e,n) read as an encoded block at emLen in {k-1,k}, and block-count arithmetic. KEY-SIZE COVERAGE, stated plainly: Crypt::RSA concatenates k-byte blocks, so a 256-byte payload is a whole ciphertext only when k divides 256 -- i.e. under a 512-bit (4 blocks), 1024-bit (2 blocks) or 2048-bit (1 block) key. 3301 published NO key of any of those sizes. The two 4096-bit moduli give k=512 and the 2013 key k=54; neither divides 256, so all three published moduli are excluded structurally, not merely untested. Two artifact findings: the Convert::ASCII::Armour container is len(name)NUL len(value)NUL name value with NO separator (the comma that looks like a delimiter is 0x2c, the ciphertexts own first byte; reading it as a delimiter makes the value one byte short of its declared length, and the armours MD5 matches the compressed blob exactly, so nothing was lost in transmission); and the recovered 39-byte message body is not ASCII and lacks the 0x01 delimiter PKCS#1 v2.1 predicts, recorded as an open observation rather than a claim.",
+   "coverage": "Moduli: 3301's 7A35090F primary (4096-bit, e=65537, fingerprint 6D854CD7933322A601C3286D181F01E57A35090F) and its subkey (4096-bit, DEC57731ACCBFD11EEBA13434D390ECF671DDEB1), both fingerprinted from the OpenPGP packet body rather than from a filename, plus the 432-bit 2013 puzzle modulus, plus 20 further RSA public keys found by scanning all 3,716 key-shaped files under corpus/ and liber-primus/ (none of them 3301's; they are Round 18 L8's base-rate keys - Tor Browser devs, Tails, GnuPG release, bitcoin-core - and two solver-tool keys). Payload variants: canon_256.bin, canon_256_decpref.bin, payload_resolved.bin. Encodings: big-endian, little-endian (byte-reversed), and for moduli wider than the payload both left-aligned (zero-padded low) and right-aligned (zero-padded high) block placements. Exponents: 65537, 3, 17. Matchers: PKCS#1 v1.5 type 1 with DigestInfo for MD5/SHA-1/224/256/384/512, PKCS#1 v1.5 type 2, EMSA-PSS under MGF1-SHA-1/256/384/512 at salt lengths {0,20,28,32,48,64,hLen}. 738 tuples enumerated in total. SUB-RESULT B additionally covers: Crypt::RSA::ES::OAEP 1.99 at emLen in {k-1, k}, MGF1-SHA-1, label P empty, against all three published moduli and all three payload variants in both endiannesses, plus the payload read directly as an encoded block at block sizes {256,128,64} and offsets {0,1}.",
+   "not_covered": "(a) RSA moduli 3301 never published - in particular the moduli behind the three 2014 onion RSA blobs, which are encrypted MESSAGES (ciphertexts), not public keys, so their n is not recoverable from what is on disk. (b) The 432-bit 2013 modulus as a signing key over a 54-byte WINDOW of the payload rather than the whole 256 bytes - all 18 of its tuples are excluded by s >= n and no windowing was pre-registered. (c) Blinded signatures, partially-known signatures, and any signature of which the payload is a fragment. (d) OAEP and raw unpadded RSA. (e) Any payload transform outside the four enumerated integer encodings (e.g. bit-reversed, hex-ASCII, or a re-ordered byte permutation). (f) e outside {65537, 3, 17}. (g) 512-, 1024- and 2048-bit RSA keys -- the ONLY sizes under which the 256-byte payload is a whole number of Crypt::RSA blocks; 3301 published none, so this is uncovered because the modulus does not exist in the record, not because it was skipped. (h) OAEP with a non-empty label P. (i) Crypt::RSA::SS::PSS and Crypt::RSA::ES::PKCS1v15 as SIGNATURE schemes -- only ES::OAEP could be measured from a held artifact.",
    "reproduce": "cd liber-primus/analysis/round18/L5-payload && python3 extract_moduli.py && python3 e01_extended.py",
-   "supersedes": "Round 16's partially-run / coverage-limited E-01, whose stated blocker was 'the 7A35090F RSA-4096 moduli were not on disk and not fetched'.",
+   "supersedes": [],
    "superseded_by": null,
-   "reopens_if": "A further 3301 RSA modulus is published or recovered - especially a 2048-bit one, the only size for which the payload is a natural full-width block; OR the payload is to be tested under OAEP, ISO 9796-2, or raw/textbook RSA structure; OR a candidate signature is proposed under a modulus reconstructed from a signature pair.",
+   "reopens_if": "A 3301 RSA modulus of 512, 1024 or 2048 bits is published or recovered (that is the size class under which the payload could be a whole Crypt::RSA ciphertext); or the moduli of the 2014 onion RSA message blobs are recovered; or a windowed reading against the 432-bit 2013 key is pre-registered and run; or a Crypt::RSA::SS::* signature artifact is found on disk from which its wire layout can be measured the way ES::OAEP was here.",
    "priority": "medium",
-   "notes": "PROVENANCE NIT worth recording separately: corpus/A-primary-artifacts/ibotpeaches/keys/67F363C61BA8FB6FDBA9C47D0670B0E57A35090F.asc is MISNAMED - its filename asserts a fingerprint that is not the key's. The file contains the canonical key 6D854CD7933322A601C3286D181F01E57A35090F; the two strings share only the 32-bit short id 7A35090F. Anyone verifying a 3301 key by filename would draw the wrong conclusion, and short-id collisions are a known attack on exactly this habit. e01_extended.py deliberately EXTENDS round16's instrument (importing zerofp_tests.pkcs1_v15_check and zerofp_tests.check_digest_info unchanged) rather than replacing it, so a hit here would have been a hit there.",
-   "evidence_missing": []
+   "notes": "PROVENANCE NIT worth recording separately: corpus/A-primary-artifacts/ibotpeaches/keys/67F363C61BA8FB6FDBA9C47D0670B0E57A35090F.asc is MISNAMED - its filename asserts a fingerprint that is not the key's. The file contains the canonical key 6D854CD7933322A601C3286D181F01E57A35090F; the two strings share only the 32-bit short id 7A35090F. Anyone verifying a 3301 key by filename would draw the wrong conclusion, and short-id collisions are a known attack on exactly this habit. e01_extended.py deliberately EXTENDS round16's instrument (importing zerofp_tests.pkcs1_v15_check and zerofp_tests.check_digest_info unchanged) rather than replacing it, so a hit here would have been a hit there. | supersedes: Round 16's partially-run / coverage-limited E-01, whose stated blocker was 'the 7A35090F RSA-4096 moduli were not on disk and not fetched'.",
+   "evidence_missing": [],
+   "restated_from": "negative",
+   "restated_by": "round19/analysis",
+   "restated_round": 19
   },
   {
    "id": "E-02",
@@ -1474,29 +1498,26 @@
   },
   {
    "id": "I-01",
-   "lane": "recon-a",
+   "lane": "round19/C3 (closeout of round18/L8-provenance)",
    "hypothesis": "REFRAMED to something falsifiable. The register's question ('who is mruzuki') is not testable from public sources and is out of scope. The testable question: was the `mruzuki` / `cicadeur` key (02BD208AFB8AFF75, mruzuki@gmail.com, created 2012-01-12, self-revoked 2012-01-22) produced by the SAME OpenPGP toolchain as 3301's 7A35090F? Same-toolchain is a real, checkable technical claim; a name is not.",
-   "status": "inconclusive",
+   "status": "measured",
    "raw_status": "run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
     "liber-primus/analysis/round18/L8-provenance/KEY-COMPARISON.json",
-    "liber-primus/analysis/round18/L8-provenance/compare_keys.py",
-    "liber-primus/analysis/round18/L8-provenance/evidence/mruzuki.keyserver.ubuntu.com.asc",
-    "liber-primus/analysis/round18/L8-provenance/evidence/mruzuki.index.ubuntu.txt",
-    "liber-primus/analysis/round18/L8-provenance/evidence/mruzuki.vindex.ubuntu.txt",
-    "liber-primus/analysis/AUDITOR-LOOP-2026-07-28.md"
+    "liber-primus/analysis/round18/L8-provenance/RESULTS.md",
+    "liber-primus/analysis/round19/C3/RESULTS.md#8-i-01--mruzuki--cicadeur"
    ],
-   "round": 18,
+   "round": 19,
    "date": "2026-08-26",
    "threshold": "Fixed in PREREG.md before retrieval. MATCH = identical ordered preference lists AND identical self-sig hash algorithm AND identical key-flag/feature bytes. MISMATCH = any ordered preference list differs. INDECISIVE = the preferences agree but are the era default of a common client, so the agreement carries no discriminating information. Declared in advance: a MATCH would be weak evidence at best and would NOT be reported as a link to a person.",
    "threshold_fixed_in_advance": true,
    "positive_control": "PASS",
    "control_detail": "The instrument (gpg --list-packets on keyserver exports) is the same reader validated in the G-02 run, where controls C1-C4 all passed. The DISCRIMINATION control — a base rate for the preference triplet among 2012-era keys — was attempted and is reported as UNDER-POWERED: only 4 public project release keys were retrievable (Tor Browser Developers, Bitcoin Core, GnuPG release, Tails), none created in Jan 2012 (2010/2014/2014/2015), and a live key's UID self-signature is REISSUED on every edit so a keyserver copy shows the preferences of the last edit rather than of creation — which is why the 2010-created key in the sample carries the modern GnuPG 2.1+ list. That sample was NOT used to decide the verdict. The verdict rests instead on GnuPG's own released source: gnupg-1.4.16 g10/keygen.c, keygen_set_std_prefs(), whose compiled-in default with no gpg.conf override is exactly S9 S8 S7 S3 S2 / H8 H2 H9 H10 H11 / Z2 Z3 Z1 with mdc=1 and modify=0 (https://raw.githubusercontent.com/gpg/gnupg/gnupg-1.4.16/g10/keygen.c, retrieved 2026-08-26).",
    "null": "H3 (same toolchain) is supported only if the shared fields carry discriminating information. If the shared values are the software's own factory default, the comparison is INDECISIVE by construction.",
-   "result": "VERDICT: INDECISIVE. Every field the two keys SHARE is a field GnuPG fills in by itself and both carry the untouched 1.4/2.0 factory default — pref-sym 9 8 7 3 2, pref-hash 8 2 9 10 11, pref-zip 2 3 1, features 01, keyserver-prefs 80, self-sig digest algo 2 (SHA-1), key flags 03. In January 2012 that describes most new OpenPGP keys in existence; it is not a link. Every field a HUMAN chose DIFFERS: 4096-bit vs 2048-bit (primary and subkey), no expiry vs a `key expires after 1d0h0m` self-signature, never revoked vs self-revoked. Where the software chose, they agree; where a human chose, they differ. NEW AND VERIFIED, and absent from the auditor's description: the mruzuki key was created with a ONE-DAY self-expiry (valid 2012-01-12T22:43:32Z to 2012-01-13T22:43:32Z, on both the UID self-sig and the subkey binding). It was not a key that happened to be abandoned — it was built to die within 24 hours on the day it was made; the 2012-01-22T06:35:04Z revocation (sigclass 0x20, reason subpacket 0x03 'key is no longer used') is a tidy-up of a key that had already expired eight days earlier. Zero web-of-trust edges: the only signature on the key is its own revocation. Full fingerprint 05A85948E01B4ACE3E4E14ED02BD208AFB8AFF75; subkey 6E5AB609A4890098D172DCAA29ABF8F076E7D95B; absent from keys.openpgp.org (HTTP 404). FACTUAL CORRECTION to AUDITOR-LOOP-2026-07-28.md and to the previous I-01 text: both say the key was 'self-revoked 2012-01-22 — seven days after the first 3301 image'. The first image is 2012-01-04, so the revocation is 18 days after it and the creation 8 days after it. Seven days is exactly the gap between 3301's KEY creation (2012-01-05) and mruzuki's key creation (2012-01-12) — the fact was attached to the wrong anchor and the wrong event on its way into the register.",
-   "coverage": "Public keyserver material only, retrieved 2026-08-26: full armored key from keyserver.ubuntu.com (op=get), machine-readable index (op=index&options=mr,json) and verbose index (op=vindex) giving the complete signature graph, plus a keys.openpgp.org lookup. Packet-level comparison against 7A35090F across 15 fields (version, algorithm, key sizes, creation times, self-sig digest algo, key flags, expiry policy, all three ordered preference lists, features, keyserver prefs, revocation and its reason code). Era-default question resolved from GnuPG's released source rather than asserted.",
-   "not_covered": "(a) IDENTITY. No attempt was made, and none is planned here, to resolve mruzuki@gmail.com to a person. Breach databases, people-search and paid lookup services were DECLINED IN ADVANCE in PREREG.md — a scope decision, not an untried lead. A name obtained that way would still not be evidence, because it would carry no cryptographic proof of key control. (b) Archived mailing-list / forum mentions of the handles `mruzuki` or `cicadeur` were not searched in this lane (adjacent to I-03; see that entry's coverage). (c) Other keyservers beyond keyserver.ubuntu.com and keys.openpgp.org (SKS successors, pgp.mit.edu) were not queried. (d) Keyserver UPLOAD-time logs, as distinct from packet creation times, are not exposed by the public HKP interface and were not obtained. (e) A properly matched base rate — keys whose self-signatures are frozen in 2012 — was not sourced; without it the INDECISIVE verdict rests on the source default rather than on a measured population.",
+   "result": "INDECISIVE - round18's verdict stands, and C3 confirms it is not disturbed by the new L1 cross-check. Where the SOFTWARE chose, the two keys agree; where a HUMAN chose, they differ: key size 4096 vs 2048, expiry policy none vs ONE DAY, revocation never vs 2012-01-22 (reason 0x03 'no longer used'). The matching preference lists S9 S8 S7 S3 S2 / H8 H2 H9 H10 H11 / Z2 Z3 Z1, features 01, keyserver-prefs 80 are EXACTLY GnuPG 1.4.x/2.0.x keygen_set_std_prefs() defaults, which in January 2012 describes most new OpenPGP keys on Earth.",
+   "coverage": "Every field of both keys' self-signature packets compared: version, pubkey algo, key size, creation, self-sig digest algo, key flags, expiry, all three ordered preference lists, features, keyserver prefs, revocation state and reason.",
+   "not_covered": "Any non-packet link. Breach-DB and people-search lookups on the key's email address were DECLINED IN ADVANCE and not run - a scope decision, not an untried lead. Resolving a private individual's identity from a puzzle handle is not a cryptanalytic result and would carry no cryptographic proof of key control.",
    "reproduce": "bash liber-primus/analysis/round18/L8-provenance/fetch_baserate.sh && wsl -d Ubuntu -- bash -lc \"cd /mnt/c/Users/dukot/projects/cicada3301 && python3 liber-primus/analysis/round18/L8-provenance/compare_keys.py\"",
    "supersedes": null,
    "superseded_by": null,
@@ -1504,7 +1525,10 @@
    "priority": null,
    "notes": "The connection to Cicada 3301 remains SPECULATED and this lane does not upgrade it: it rests on a handle containing 'cicadeur' and on temporal adjacency. There is no signature, no key-material relationship, no web-of-trust path, and — per the verdict — no toolchain discriminator. What the key does show is the same designed-anonymity profile the 2026-07-28 auditor identified as the strongest supportable conclusion in this case: self-expiring, WoT-isolated, deliberately short-lived key material.",
    "evidence_missing": [],
-   "status_before_normalisation": "run"
+   "status_before_normalisation": "run",
+   "restated_from": "inconclusive",
+   "restated_by": "round19/analysis",
+   "restated_round": 19
   },
   {
    "id": "I-02",
@@ -1536,31 +1560,26 @@
   },
   {
    "id": "I-03",
-   "lane": "recon-a",
+   "lane": "round19/C3 (closeout of round18/L8-provenance)",
    "hypothesis": "Pre-disclosure search of archived cypherpunks / metzdowd / bitcointalk posts 2011-2013 — Campaign VIII's own #1 open thread, 'unresolved only because the archives are thin, not because it was cleared'. Never executed as a search. A dated, archive-attested post referencing a Cicada-specific element BEFORE its public disclosure date would be the strongest external evidence in the whole case.",
-   "status": "partially-run",
-   "raw_status": "partially-run",
+   "status": "measured",
+   "raw_status": "run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
-    "liber-primus/analysis/round18/L8-provenance/RESULTS.md",
-    "liber-primus/analysis/round18/L8-provenance/evidence/archives/fetch-log.txt",
-    "liber-primus/analysis/round18/L8-provenance/evidence/archives/grep-results.txt",
-    "liber-primus/analysis/round18/L8-provenance/evidence/archives/wayback-cdx.txt",
-    "liber-primus/analysis/round18/L8-provenance/evidence/archives/supplementary-probes.txt",
-    "liber-primus/analysis/round18/L8-provenance/predisclosure_search.sh",
-    "liber-primus/analysis/round18/L8-provenance/grep_archives.sh",
-    "liber-primus/analysis/attribution/CAMPAIGN-VIII-ATTRIBUTION.md"
+    "liber-primus/analysis/round19/C3/l8/predisclosure_archives.json",
+    "liber-primus/analysis/round19/C3/l8/cpunks_export.json",
+    "liber-primus/analysis/round19/C3/RESULTS.md#7-i-03--the-pre-disclosure-search-and-why-round-18s-negative-covered-nothing"
    ],
-   "round": 18,
+   "round": 19,
    "date": "2026-08-26",
    "threshold": "Fixed in PREREG.md before searching. HIT = a dated, archive-attested post before its element's disclosure date, with a URL and a capture that carries the date. NEGATIVE = every named archive searched with every named term over the stated window, no hit — reported as a BOUND ('searched X, terms Y, window Z, nothing'), never as a clearance. A hit whose date cannot be independently established from the archive is NOT a hit. Anti-motivated-reasoning clause: 'someone mentioned cicadas' is not a hit; 'someone discussed runic ciphers' is not a hit.",
    "threshold_fixed_in_advance": true,
    "positive_control": "PARTIAL. The metzdowd half is searched against the REAL corpus (monthly mbox files downloaded and zgrep'd locally), so its silence is a measurable bound. The bitcointalk half rests on a search index rather than a local corpus and is therefore labelled 'reported', not 'verified' — that half has no control and its negative is correspondingly weaker.",
    "control_detail": "Term set and window were fixed in PREREG.md before any retrieval. The grep is demonstrably sensitive: it DOES fire on the post-disclosure material (19 'cicada' hits, plus '845145127', 'instar', 'highly intelligent individuals', 'mabinogion', 'outguess', 'gematria', 'anglo-saxon rune'), all of them inside metzdowd 2013-November — so a term-set or encoding failure is excluded. A search that finds the post-disclosure signal and not the pre-disclosure one is a real negative over the corpus it covers.",
    "null": "H4 (a pre-2012-01-04 archived post references a Cicada-specific element) is supported only by a dated, archive-attested capture. Absence over a searchable corpus is a bound on that corpus, not a clearance.",
-   "result": "NO HIT — and the coverage bound is the substantive finding. (1) METZDOWD (the cryptography list): the pipermail index offers, for 2010-2013, only 2010-March..2010-October, 2011-August, then nothing until 2013-June; 36 monthly fetches returned 8 HTTP 200s. 2011-August — the ONLY month inside the pre-disclosure window — is the list's RELAUNCH month (Perry Metzger's test posts of 7 Aug 2011) and contains zero hits for any term. Every Cicada hit in the whole retrieved corpus sits in 2013-November and is ONE message: Eugen Leitl forwarding the Telegraph article, Wed 27 Nov 2013 15:08:08 +0100, Message-ID <20131127140808.GC10793@leitl.org>. The list was DORMANT across almost the entire window — the archive is not thin from loss, there was no traffic. (2) CYPHERPUNKS: there is no public archive covering 2011-2012 to search. cpunks.org's pipermail begins at 2013-August (earliest monthly file and earliest message permalink 2013-August/000198.html); al-qaeda.net/pipermail/cypherpunks*, the host that carried the list in the window, has ZERO Wayback CDX rows and live-probes HTTP 403; cypherpunks.venona.com live-probes HTTP 522; and the principal public mirror states plainly that it covers 1992 to early 1999 and that archives for 2000-2013 are NOT AVAILABLE and are being actively sought (https://mailing-list-archive.cryptoanarchy.wiki/, retrieved 2026-08-26). (3) BITCOINTALK: earliest Cicada thread located is topic=347716 'What is Cicada 3301?', first post 2013-11-26 16:43:36, opening with a link to the same Telegraph article. CONVERGENCE WORTH RECORDING: bitcointalk's first mention (2013-11-26) and the cryptography list's first mention (2013-11-27) are one day apart and are the same newspaper article — two technical communities a Cicada-adjacent insider would plausibly inhabit noticed the puzzle only when a mainstream paper put it in front of them, ~23 months in. Also verified: 845145127.com has zero Wayback captures (CDX query completed, returned no rows).",
-   "coverage": "metzdowd cryptography list: ALL 8 monthly mbox archives that exist for 2011-2013 (~1.8 MB), 18 pre-registered terms, local case-insensitive zgrep, every URL logged with HTTP status and byte count. cypherpunks: existence and date coverage of every public mirror probed and recorded (cpunks.org, al-qaeda.net, venona, cryptoanarchy.wiki) rather than assumed. bitcointalk: earliest Cicada thread read directly from the forum. Wayback CDX probes for the archive hosts and for 845145127.com. Window 2011-01-01 -> 2012-01-04 hard, extended to 2013-12-31 for context.",
-   "not_covered": "(a) THE CYPHERPUNKS HALF IS UNSEARCHABLE, NOT SEARCHED. No public archive of the list covering 2011-2012 exists as of 2026-08-26. Do not record this half as searched-and-clear; it is a missing instrument, with a different reopening condition. (b) bitcointalk rests on a search index, not a local corpus — labelled 'reported'; a forum-side or dump-based search was not run. (c) 4chan /b/ and /x/ for 2011: not covered at all; no 2011 corpus was located (4plebs' /x/ coverage begins well after the window). (d) sci.crypt, the full-disclosure list, and 2011-2012 Freenode IRC logs: not covered. (e) Non-English technical forums: not covered (see corpus/GAPS.md G-05). (f) metzdowd months that do not exist cannot be searched — 2011-January..July and 2011-September..2012-December are absent from the index, so ~29 of the 36 months in the extended window have no corpus at all.",
+   "result": "FOUND-ERROR in the previous run, then a much weaker bound than round18 appeared to report. Round 18's predisclosure_search.sh hit a fixed pipermail URL for every month of 2011-2013 and treated a non-200 as 'searched, nothing'. Its own fetch log shows metzdowd returned 404 for 28 of 36 months and cypherpunks returned http=000 for ALL 36. http=000 is a transport failure, not a 404, and neither is a searched month. C3 re-probed both. metzdowd: the index lists 274 monthly archives and for 2011-2013 exactly EIGHT exist (2011-August, then nothing until 2013-June) - the list was dormant - so of the 13 months in the hard window 2011-01-01 -> 2012-01-04 the archive holds ONE. cypherpunks: two independent faults, neither of them absence - the host's TLS certificate has EXPIRED (so a verifying client fails before seeing an HTTP status) AND the list no longer runs pipermail at all (/pipermail/cypherpunks/ returns 404; the archive is served by HyperKitty at /archives/list/cypherpunks@lists.cpunks.org/). Round 18 was pointed at a dead endpoint behind a broken certificate and recorded the result as a negative.",
+   "coverage": "MAILING-LIST ARM: metzdowd cryptography 1 of 13 months of the hard window (2011-August only), 8 months / 1.9 MB downloaded and grepped for all 12 terms. cypherpunks @ cpunks.org 0 of 13 months - the archive holds ZERO messages before 2013; 2013 fetched in full (5.5 MB, 2645 messages) and grepped. mail-archive.com cypherpunks: search interface only, no mbox export, yields no coverage number.",
+   "not_covered": "Twelve of the thirteen months of the hard window are not held by either mailing-list archive and were NOT searched. bitcointalk, 4plebs /x/ and /b/, Wayback and indexed mirrors were dispatched to a separate open-web arm; see RESULTS.md 7.4 and 9. A search engine returning nothing is not coverage.",
    "reproduce": "wsl -d Ubuntu -- bash -lc \"cd /mnt/c/Users/dukot/projects/cicada3301 && bash liber-primus/analysis/round18/L8-provenance/predisclosure_search.sh && bash liber-primus/analysis/round18/L8-provenance/grep_archives.sh && bash liber-primus/analysis/round18/L8-provenance/wayback_probe.sh\"",
    "supersedes": null,
    "superseded_by": null,
@@ -1571,7 +1590,10 @@
     "public cypherpunks list archive covering 2011-2012",
     "local bitcointalk corpus for the 2011-2012 window",
     "4chan /b/ and /x/ archive covering 2011"
-   ]
+   ],
+   "restated_from": "partially-run",
+   "restated_by": "round19/analysis",
+   "restated_round": 19
   },
   {
    "id": "I-04",
@@ -1857,23 +1879,22 @@
   },
   {
    "id": "B-12",
-   "lane": "recon-b",
+   "lane": "round19/C3 (closeout of round18/L3-ornaments)",
    "hypothesis": "Line geometry + line-fill / per-page word counts as a data channel independent of the rune stream. Round 17 established the anti-repeat filter is machine-applied, so the program that produced the pad also typeset the book -- and typesetting decisions (line fill, margins, where a line breaks) are a place a designer can put data without touching the ciphertext.",
-   "status": "negative",
-   "raw_status": "never-run",
+   "status": "measured",
+   "raw_status": "run",
    "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md",
    "evidence": [
-    "liber-primus/analysis/round18/L3-ornaments/PREREG.md",
-    "liber-primus/analysis/round18/L3-ornaments/PREREG-ADDENDUM.md",
-    "liber-primus/analysis/round18/L3-ornaments/RESULTS.md",
-    "liber-primus/analysis/round18/L3-ornaments/linegeom.json",
-    "liber-primus/analysis/round18/L3-ornaments/linetests.json",
-    "liber-primus/analysis/round18/L3-ornaments/intensity.json",
-    "liber-primus/analysis/round18/L3-ornaments/greyglyphs.json"
+    "liber-primus/analysis/round19/C3/RESULTS.md",
+    "liber-primus/analysis/round19/C3/l3/linetests.json",
+    "liber-primus/analysis/round19/C3/l3/linegeom.json",
+    "liber-primus/analysis/round19/C3/l3/intensity2.json",
+    "liber-primus/analysis/round19/C3/l3/h9_verdict.json",
+    "liber-primus/analysis/round19/C3/l3/p15_second_render.json"
    ],
    "priority": "medium",
-   "round": "18",
-   "date": "2026-08-25",
+   "round": 19,
+   "date": "2026-08-26",
    "threshold": "Each of 11 channels tested three ways. (a) two-state screen: PASS iff GMM component separation >= 2.0 sigma AND dBIC > 10 for two components. (b) bit decode: median-threshold -> 8 packings (fwd/rev x 5-bit/8-bit) x 8 phases -> English 4-gram score; PASS iff p < 0.001 against a 2,000-draw size-matched shuffle null. (c) correlation: Spearman rho against per-line rune statistics, PASS iff p < 0.001 Bonferroni-corrected over the channel x statistic grid (3.7e-5).",
    "threshold_fixed_in_advance": true,
    "positive_control": "passed",
@@ -1882,21 +1903,18 @@
     "C-3a power ceiling": "Planting a 64-bit message in fill_ratio at k x the channel's own measured sd: the GMM screen sees a planted two-state channel from about 3 sd upward (2.26 sigma at 3 sd, 4.15 at 4 sd, 7.29 at 8 sd). Median-threshold bit recovery saturates at 0.859 because ASCII is not bit-balanced and a median threshold mis-assigns the minority bit -- a property of the pre-registered detector, reported rather than patched."
    },
    "null": "2,000-draw within-channel shuffle null for the bit decode; Bonferroni over the 24-test correlation grid; GMM BIC for the two-state screen.",
-   "result": "NEGATIVE. 616 text rows over 56 pages plus the canonical per-line rune/word statistics. (a) 5 of 11 channels clear the pre-registered two-state screen -- row_height 4.71 sigma / dBIC 2391, body_per_line 4.53 / 824, runes_per_line 2.89 / 394, words_per_page 2.62 / 22.8, lines_per_page 2.12 / 1433 -- but in every case the minority component is a FAT TAIL, not a second state: row_height is 92.8% at 114.5 px with sd 0.50 plus 7.2% at 131.6 px with sd 13.4, and lines_per_page is 61.4% at exactly 12.0 with sd 0.000 plus 38.6% at 8.36 with sd 2.76. Same shape Round 8 diagnosed for micro-spacing. Removing last rows and short pages does not kill it (row_height 4.71 -> 7.90 sigma), so it is glyph-repertoire driven, not paragraph-end driven. (b) ALL 8 channels FAIL the bit decode: every channel scores 0 English 4-grams where the null's own maximum is 1-3, p = 1.000 for all eight, against a decoder validated at p = 0.0005 on a planted message. (c) 1 of 24 correlations clears Bonferroni -- runes_per_line ~ mean_rune_idx, rho = -0.257, p = 1.5e-10 -- AND IT IS EXPLAINED: measuring mean glyph advance per rune class from the image itself gives runes_per_line ~ mean GLYPH WIDTH rho = -0.653 (p = 8.3e-75) and mean_rune_idx ~ mean GLYPH WIDTH rho = +0.367 (p = 9.5e-21), and the PARTIAL correlation of runes_per_line ~ mean_rune_idx controlling for width collapses to rho = -0.018, p = 0.66. The typesetter justified to a fixed column width, so a line packs more runes when its runes are narrower. Typographic justification, not a covert channel. ADDENDUM H9 (ink tone, pre-registered separately in PREREG-ADDENDUM.md, never measured anywhere in this repo before): the book uses a second, lighter ink tone. 226 components at 25 sites on 16 pages have minimum grey 44-51 and mean grey 57.4-57.6 at rune stroke weight (63.7-69.9 at thinner weight) where the book-wide median component minimum grey is 0.00. Most are section headings and drop-caps, plus three full grey text rows on p53 and single grey marks in the left margin of p36/p37/p38. ONE element is neither heading, drop-cap nor drawing: on page 15 the four digits of `3299` in the 4x4 numeric grid have minimum grey 47-51 and mean 68.1-69.1 while every other digit on that page has minimum grey 0.0 and mean 16-22 -- uniform across all four glyphs and all ~1,400 ink pixels of each, so not a JPEG artifact. 3299 is the prime immediately preceding 3301. The marking is absent from every transcription in this repository and from both vendored community transcriptions of that page, all of which record the digits and discard the tone. No interpretation is claimed.",
-   "coverage": "11 line/page geometry channels (fill ratio, left margin, right margin, row height, rune-body components per line, separator dots per line, mean inter-word gap, runes per line, words per line, words per page, lines per page) x 3 stages, over 616 image text rows on 56 pages and 604 canonical lines. Round 8's already-measured axes -- inter-glyph advance (1.86 sigma, unimodal) and baseline jitter (BIC-rejected) -- were deliberately NOT re-run. Ink tone measured over every connected component on all 56 sha256-verified renders. Measured power: the GMM screen detects a planted two-state line-fill channel from about 3 sd separation; the bit decoder recovers a planted ASCII message at p = 0.0005; the tone detector recovers a planted lightening of 2 grey levels at recall 1.00 with a robust (median/MAD) reference.",
-   "not_covered": [
-    "line-fill state separations below about 3 sd -- the measured ceiling of the pre-registered detector (C-3a).",
-    "inter-line leading (baseline-to-baseline distance) was not measured; it is a twelfth channel and is proposed, not tested.",
-    "the bit decode is English-4-gram adjudicated, so a non-English or binary payload in a geometry channel would be missed -- the same register conditional as A-06.",
-    "the p15 `3299` ink-tone marking is MEASURED, not interpreted: whether it points at 3301, at a prime index, at a cell coordinate, or at nothing is untested.",
-    "the grey text rows on p53 and the grey heading lines were located but not separately transcribed and diffed against canon."
-   ],
+   "result": "NEGATIVE with a stated power ceiling. Bimodality is REAL and survives its confound - row_height separates at 4.71 sigma overall and 7.90 sigma with last-lines and short pages removed, body_per_line at 3.93 sigma - so the book genuinely has two row-height states. It is NOT decodable: all 8 bit-decode channels score 0 against null means of 0.0-0.1, p=1.0000. Exactly 1 of 24 correlations clears Bonferroni (runes_per_line ~ mean_rune_idx, rho=-0.257, p=1.47e-10) and it is fully explained by typesetting: runes_per_line ~ mean GLYPH WIDTH is rho=-0.653 (p=8.3e-75) and the PARTIAL correlation controlling for width is rho=-0.018 (p=0.661). Wider runes, fewer runes per justified line. A typesetter, not a channel. H9: 1504 of 18514 components (8.12%) exceed 4 MAD-sigma and survive the stroke-and-height-matched re-test - far too dense to be a message and with no clause in the addendum covering it, so the discriminating question (registered before running) was whether flagging is predicted by render geometry: pooled AUC 0.709 (height), 0.707 (stroke width), 0.687 (area) against bars of >=0.80 render-artifact / <=0.60 unexplained -> PARTIALLY EXPLAINED, number reported, no claim made. H9 is now MEASURABLE for the first time; it is not a demonstrated channel.",
+   "coverage": "616/616 text rows, 11 geometric channels, 8 bit packings, 24 correlations, 7 planted separations. 18514/18514 components for H9 over all 56 renders, plus 5 planted control levels.",
+   "not_covered": "Non-binary encodings of the row-height bimodality. Colour/chroma. Whether the page-15 anomaly is in the document rather than in this JPEG. Inter-word separator SHAPE (only counts and gaps were measured).",
    "reproduce": "cd liber-primus/analysis/round18/L3-ornaments && python3 linegeom.py && python3 linetests.py && python3 greyglyphs.py",
    "supersedes": null,
    "superseded_by": null,
    "reopens_if": "(i) a planted-signal detector with sensitivity below 3 sd on line fill; (ii) inter-line leading, or any channel not among the eleven measured here, proposed WITH a positive control; (iii) any falsifiable interpretation of the p15 `3299` ink-tone marking; (iv) transcription of the p53 grey text rows showing a difference from canon.",
    "notes": "The first ink-tone detector (mean grey against a mean/sd reference) FAILED its own plant-and-recover control at recall 0.05-0.10, because a handful of genuinely lighter glyphs inflate the very dispersion they are tested against. Replacing the reference with median/MAD lifts recall to 1.00 at delta-L = 2 grey levels. The failure is recorded rather than hidden: it is exactly the failure mode this repository's discipline exists to catch, and the published result uses the repaired detector plus a near-confound-free statistic (component MINIMUM grey, which is insensitive to stroke width because a solid-black glyph reaches ~0 no matter how thin its strokes are).",
-   "evidence_missing": []
+   "evidence_missing": [],
+   "restated_from": "negative",
+   "restated_by": "round19/analysis",
+   "restated_round": 19
   },
   {
    "id": "B-13",
@@ -1928,31 +1946,36 @@
   },
   {
    "id": "B-23",
-   "lane": "recon-b",
+   "lane": "round19/T2",
    "hypothesis": "Separator audit covered 170 of 604 lines; 19 disagreements unread",
-   "status": "partially-run",
-   "raw_status": "partially-run",
+   "status": "negative",
+   "raw_status": "negative",
    "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md",
    "evidence": [
-    "research/ROUND-8-RESULTS.md"
+    "liber-primus/analysis/round19/T2/RESULTS.md",
+    "liber-primus/analysis/round19/T2/out_separators.json",
+    "liber-primus/analysis/round19/T2/out_sep19.json"
    ],
    "priority": "medium",
-   "round": null,
-   "date": null,
+   "round": 19,
+   "date": "2026-08-26",
    "threshold": null,
    "threshold_fixed_in_advance": null,
-   "positive_control": null,
-   "control_detail": null,
+   "positive_control": "passed",
+   "control_detail": "Round 19 T2, control 10/10. Canon is correct on all 19 lines in count AND position; Round 8's diffs were its own dot extractor, which counted every sub-30px component as one dot when a '.' is a 24-60px lozenge fragmenting into up to 23 components. Coverage raised 170/604 -> 604/604.",
    "null": null,
-   "result": null,
-   "coverage": null,
-   "not_covered": null,
+   "result": "Coverage raised from 170/604 to 604/604 lines, and the 19 unread disagreements are read and adjudicated - canon correct on all 19. See A-05 for the full adjudication and the mark-class measurement that explains the original diffs.",
+   "coverage": "604/604 lines, positional (per-gap) rather than per-line count comparison.",
+   "not_covered": "Same as A-05: 24 lines with line-boundary attribution disagreements, not re-attributed.",
    "reproduce": null,
    "supersedes": null,
    "superseded_by": null,
-   "reopens_if": null,
+   "reopens_if": "See A-05.",
    "notes": null,
-   "evidence_missing": []
+   "evidence_missing": [],
+   "restated_from": "partially-run",
+   "restated_by": "round19/analysis",
+   "restated_round": 19
   },
   {
    "id": "B-09",
@@ -3258,6 +3281,1487 @@
    "notes": "CONFOUND DECLARED BEFORE RUNNING (PREREG.md): an RFC 4880 signature creation time is a hashed subpacket taken from the signer's own clock and is therefore settable by the signer. AUDITOR-LOOP-2026-07-28.md used exactly this to REFUTE the timezone/working-hours biometric built on these timestamps (n=26, irreproducible), and that refutation stands — this entry does not reopen it. It also does not weaken this list, because the two uses differ: a spoofed timestamp is worthless as evidence ABOUT A PERSON, but it is still a number the author chose and typed, which is the property that makes it a plausible srand() argument. The distinction was recorded in advance so it could not be invented afterwards to rescue a result.",
    "evidence_missing": [],
    "status_before_normalisation": "run"
+  },
+  {
+   "id": "R19-C2-PREFILTER-REGISTER",
+   "hypothesis": "round17/lib_padsweep.dense_scan's English rune-index trigram prefilter — which selects which offsets ever reach the beam in EVERY dense pad sweep in this repository — retains a non-English true offset at a materially lower rate than an English one. round18/L7-redteam/RESULTS.md §A.7 names this quantity as never measured.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "instrument",
+   "date": "2026-08-26",
+   "coverage": "One builder (mod29), one pad family (the 63 hash-verified Marsaglia 10 MB pads), one plaintext length (L=120), one filter (supp=0.83), one sign, keep=1000, n=30 per register, 10 registers = 300 scans over 9,999,976 offsets each. Panels are round18/L7-redteam/a1_scorer_language.build_panels(), imported unchanged, so this composes directly with L7-A's adjudicator table.",
+   "not_covered": [
+    "other builders (hi_nibble, lo_nibble, byte_scaled, prime_to_idx, nibbles) and reversed byte order",
+    "other pad families — R17's CicadaOS blobs, Bitcoin, beacons and RAND tables were not re-measured, and R17's own English survival ranged 0.375-0.875 non-monotonically, so the ABSOLUTE survivals here do not transfer; the RATIOS between registers are the transferable quantity",
+    "plaintext lengths other than 120 (the cheapest extension is L=400, the length the sweeps actually adjudicate at)",
+    "the repaired I1 decoder — this measures the prefilter in front of the CURRENT beam",
+    "keep values other than 1000, and escalation depths (top-40 / top-12) below it"
+   ],
+   "reopens_if": "Any of the not_covered axes. Also: if Round 19's I2 replaces the prefilter, this table is the before-measurement it must be compared against.",
+   "result": "Survival of the TRUE offset in the prefilter's top-1000, n=30 per register, paired across the same 30 (pad, true-offset) pairs, plants of L=120 runes enciphered with encipher_keyskip(supp=0.83) into REAL hash-verified Marsaglia bytes, builder mod29, sign -1, N = 9,999,976 offsets per scan: EN_KJV 0.800, EN_MODERN 0.767, LP1_REAL 0.767, LATIN 0.700, DE 0.633, OE 0.600, CY 0.300, EN_HALFVOWEL 0.067, EN_NOVOWEL 0.000 (0/30), RAND 0.000 (0/30). Chance is 1.0e-4, so every non-zero entry is real retention and EN_NOVOWEL's 0.000 is a genuine blind spot rather than an unlucky draw.",
+   "evidence": [
+    "liber-primus/analysis/round19/C2/PREREG.md",
+    "liber-primus/analysis/round19/C2/RESULTS.md",
+    "liber-primus/analysis/round19/C2/out_prefilter_register_power.json",
+    "liber-primus/analysis/round19/C2/out_prefilter_union.json",
+    "liber-primus/analysis/round19/C2/scripts/prefilter_register_power.py"
+   ],
+   "raw_status": "FOUND-GAP"
+  },
+  {
+   "id": "R19-C2-B02-ACCOUNTING",
+   "hypothesis": "How much of the keystream OFFSET axis does this repository's published coverage actually touch? B-02 has carried status `open` / raw_status `scope-limited` since Round 10 with every field except `hypothesis` set to null.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "recon-a",
+   "date": "2026-08-26",
+   "coverage": "Every sweep in LEDGER.json whose per-offset detail is recoverable from a committed artefact: Round 8 SEED (both tracks), B-04 stages A/B/C/D, B-05, R16-KDF, R16-PRNG, round18/L6 A1 and A2, Round 12 A1, Round 17 P0-P3, round18/L6 sub-lane B. Offsets are read from each lane's own result JSON or from the line of its own sweep source that fixes them; nothing is taken from prose.",
+   "not_covered": [
+    "sweeps whose per-offset detail is not recoverable from a committed artefact — these are reported as UNRECOVERABLE, never as zero",
+    "the 2^20 denominator is a MECHANISM bound (round18/L6 PREREG §A.1), not a proof; a 2^32 sensitivity column is given",
+    "the accounting is over a FLAT offset prior; it deliberately does not attempt to weight offset 0's much larger prior mass, and states the coverage conditionally instead"
+   ],
+   "reopens_if": "Any new sweep along the offset axis; any argument for an axis larger than 2^20; and non-integer / per-line / per-page offset SCHEDULES, which nothing in this repository has ever tested.",
+   "result": "Of 2,531,663,008 published derived-key decodes, 2,530,301,788 were run at key offset 0 only and 1,355,871 (0.054%) at any nonzero offset. Sixteen distinct key offsets have ever been tested — {0,1,2,3,4,5,8,13,16,29,64,128,256,512,1024,3301} — largest 3,301, which is 1.53e-5 of the mechanism-bounded 2^20 axis and 3.7e-9 of a 2^32 one. Round 13 B-04 stage B (10 offsets) and Round 13 B-05 (14 offsets) are the ENTIRE nonzero-offset coverage of the branch; B-04 stage C's 55 'restarts' move the CIPHERTEXT start, not the key index, and are not offset coverage. Joint (config x offset) space at the 2^20 axis is 2.65e15; pre-Round-18 coverage is 9.5e-7 of it and round18/L6 stage A1 adds 8.7e-8. In the EXTERNAL-pad branch the axis is not the gap: Round 12 A1 walked an 8-point ladder (6.7e-8 of the 118,818,811-byte 560.13 pad) but Round 17 made every pad dense.",
+   "evidence": [
+    "liber-primus/analysis/round19/C2/out_offset_coverage.json",
+    "liber-primus/analysis/round19/C2/RESULTS.md",
+    "research/ROUND-8-RESULTS.md",
+    "liber-primus/analysis/round13/B04/sweep.py",
+    "liber-primus/analysis/round13/B05/sweep_results.json"
+   ],
+   "raw_status": "measured"
+  },
+  {
+   "id": "R19-C2-MARSAGLIA-GATE",
+   "hypothesis": "The 1.2 GB of Marsaglia CDROM material in round18/L6-offset-marsaglia/data/ is byte-identical to the published archive. (Round 12 was burned twice: a silent 60.4% prefix of _560.00, and a 134-byte Git-LFS pointer standing in for DATA/560.13.)",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "keystream",
+   "date": "2026-08-26",
+   "coverage": "Recomputed from the bytes on disk. Deliberately does NOT read the lane's own data/MANIFEST.json, which was written by the same process that fetched the bytes and is therefore not independent evidence about them.",
+   "not_covered": [
+    "the archive.org item's own provenance — this verifies that the local bytes match what archive.org publishes, not that archive.org's copy matches the 1995 pressing",
+    "the ISO's sha256 has no published counterpart to compare against; it is recorded so a future fetch can be compared to THIS one"
+   ],
+   "reopens_if": "The bytes are re-fetched, or any file fails on a later run.",
+   "result": "112 PASS, 0 DRIFT, 0 ABSENT. checksums.sha256.txt matches archive.org's md5 cc8cf878d7688dc0f2eaad42da444e85 / sha1 9b3b921a2068b9ed93690746ac003f9dbbcecf3f / size 11,247. MARSAGLIA_CDROM.iso matches md5 f127d50c2bd80e7c23f28184423a2d94 / sha1 ca116df4940eb4b7538942ea6fbe454556b1bac2 / size 634,124,288; its sha256 is 6d124080f942a88afade2d6cd2da4b9f092e0e376ee5a9d4af9f7224523f9d28 (recorded, not compared — archive.org publishes md5/sha1/crc32 for the item file, not sha256). All 110 inner files match their own published SHA-256 lines. 63 of them are 10,000,000-byte random-data pads (BITS.01-BITS.60, CALIF.BIT, CANADA.BIT, GERMANY.BIT) = 630,000,000 bytes. Wall 134 s.",
+   "evidence": [
+    "liber-primus/analysis/round19/C2/out_verify.json",
+    "liber-primus/analysis/round19/C2/scripts/verify_marsaglia_independent.py",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/data/checksums.sha256.txt",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/data/marsaglia-cdrom_files.xml"
+   ],
+   "raw_status": "verified"
+  },
+  {
+   "id": "R19-C2-MARSAGLIA-COST",
+   "hypothesis": "Round 17 called the Marsaglia CDROM 'the cheapest live item in this branch' without ever costing it. How big is its offset space and what does finishing it cost?",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "keystream",
+   "date": "2026-08-26",
+   "coverage": "Analytic count from the hash-verified manifest and round18/L6 lib_l6.BUILDERS symbols-per-byte table; hexchars excluded per L6 §2.1 and named rather than left silent.",
+   "not_covered": [
+    "builders outside L6's six",
+    "the whole-ISO view of the pad (its filesystem padding has a 32,768-byte constant run, which is exactly the regime R17/P1 found ms=3 fails in, so it is a separate set of units)",
+    "the 679 unrun units — HELD, not excluded; see reopens_if"
+   ],
+   "reopens_if": "Round 19's I1 and I2 gates PASS — at which point the 679 remaining units should be run under I2's SWEEPROW, not before. The sweep is checkpointed per (pad, builder, byte order) and never recomputes a finished unit.",
+   "result": "63 verified pads x 6 builders x 2 byte orders x 2 signs, every offset = 17,639,963,712 offsets in 756 work units — 1.21x the entire Round 17 public-pad round (14,522,916,046). The whole ISO as one pad adds 17,755,479,488 more. Realised throughput from the checkpoints actually written: 33.9 s wall per unit at nproc=3, i.e. ~100 CPU-s per unit, so ~21 CPU-HOURS to finish the 63 pads and ~43 including the whole-ISO view. At C2 collection time 77/756 units (10.2%, 1,539,996,304 offsets) were checkpointed: builder mod29 FORWARD complete on all 63 pads, mod29 reversed on 14. The other five builders have not been run on any pad.",
+   "evidence": [
+    "liber-primus/analysis/round19/C2/out_marsaglia_space.json",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/out/results_M.json"
+   ],
+   "raw_status": "measured"
+  },
+  {
+   "id": "B-02-C2-CORRECTION",
+   "hypothesis": "PROPOSED CORRECTION to a status field, not a new experiment. round18/L6-offset-marsaglia/ledger.json sets B-02 status = `negative`. B-02's own hypothesis text is an AXIS ('keystream offset != 0'), and an axis is not made negative by a dense sweep of 220 mined configs plus 508/3,024 units of a fresh grid.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a",
+   "source_register": "round19/analysis",
+   "status": "audit",
+   "round": 19,
+   "lane": "recon-a",
+   "date": "2026-08-26",
+   "coverage": "n/a — this entry proposes a wording change and cites the numbers behind it.",
+   "reopens_if": "Sub-lane A2 completes (3,024/3,024 units) AND the negative is re-established under I1 + I2 — at which point `negative for the swept configs, at stated power, out to 2^20` is defensible. The unqualified word is not.",
+   "result": "L6's B-02 coverage and not_covered fields are accurate and unusually complete — the objection is ONLY to the status word. Three reasons to narrow it to `partially-run` / `scope-limited`: (1) COVERAGE — 497,025,024 offsets is 8.7e-8 + 1.0e-7 of the 2.65e15 (config x offset) space at the 2^20 axis; sub-lane A2 is 508 of 3,024 units, i.e. the fresh grid the axis most needs is 17% run. (2) REGISTER — the negative is an English one at composite power 0.77 (R19-C2-PREFILTER-REGISTER), 0.23 for Latin and 0.00 for Welsh and vowel-dropped English. (3) CONSTRUCTION — the beam's transition relation is exact for encipher_keyskip and misses skip_by_two at -6.90 / 25.8% recovery (round18/L7-B). LEDGER.json's own read_this_first says status is the least reliable field in it and that several entries were written up as closed when their coverage field said otherwise; doctrine R7 says bounds, not verdicts.",
+   "evidence": [
+    "liber-primus/analysis/round18/L6-offset-marsaglia/ledger.json",
+    "liber-primus/analysis/round19/C2/out_offset_coverage.json",
+    "liber-primus/analysis/round19/C2/out_prefilter_register_power.json",
+    "liber-primus/analysis/round18/L7-redteam/RESULTS.md"
+   ],
+   "raw_status": "correction-proposed"
+  },
+  {
+   "id": "R17-PUBLIC-PAD-C2-RESTATEMENT",
+   "hypothesis": "PROPOSED RESTATEMENT of an existing entry's coverage line, following round18/L7-A.8's precedent. R17-PUBLIC-PAD reports 14,522,916,046 offsets scored and 8,380,000,000 effective after prefilter survival. That survival was measured on ENGLISH plants only (L7-A.7), and L7-A.8 could only say the non-English coverage was 'unmeasured, not zero and not one'.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a",
+   "source_register": "round19/analysis",
+   "status": "audit",
+   "round": 19,
+   "lane": "keystream",
+   "date": "2026-08-26",
+   "coverage": "The RATIOS between registers transfer; the ABSOLUTE survivals were measured on Marsaglia mod29 pads at L=120 and R17's pads, builders and lengths differ (its own English survival ranged 0.375-0.875, non-monotone in pad size). The effective counts above are order-of-magnitude and are labelled as such in RESULTS.md §4.4.",
+   "reopens_if": "The survival is re-measured on R17's own pads and builders — the cheapest way to turn the order-of-magnitude effective counts into exact ones.",
+   "result": "It is now measured, on a comparable high-entropy published pad. Multiplying R17's offsets by the composite power of R19-C2-PREFILTER-REGISTER: ~1.11e10 effective for an LP1-register or modern-English plaintext, ~3.4e9 for Latin, and ZERO for Welsh and for vowel-dropped English. The same multiplication applied to round18/L6 A1's 230,686,720 gives ~1.8e8 / ~5.3e7 / 0, and to L6 sub-lane B's 1,539,996,304 gives ~1.2e9 / ~3.6e8 / 0.",
+   "evidence": [
+    "liber-primus/analysis/round19/C2/out_prefilter_register_power.json",
+    "liber-primus/analysis/round18/L7-redteam/RESULTS.md",
+    "liber-primus/analysis/round17/SYNTHESIS.md"
+   ],
+   "raw_status": "restatement-proposed"
+  },
+  {
+   "id": "P-9",
+   "hypothesis": "PARKED item: the 30 catalogued bands with n <= 16 glyphs are 'the only real candidates' for hidden content.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "round19/C3 (closeout of round18/L3-ornaments)",
+   "date": "2026-08-26",
+   "coverage": "30/30 of the nominated set re-measured, component-by-component, and read.",
+   "not_covered": "Whether a differently-defined short-band set exists. A grouping rule that actually counts glyphs has never been run over these pages.",
+   "result": "REFUTED AT THE PREMISE. `n` in ornaments.json is a Round 8 row-group count, not a glyph count. Re-measuring the component count inside the same 30 boxes gives a range of 0 to 341. The set does not contain what P-9 believed it contained. The only members that really are ~16 short tokens are B096 (p50) and B098 (p51), the alphanumeric base-60 blocks, whose reads are already byte-for-byte confirmed by two independent community transcriptions vendored in this repo.",
+   "evidence": [
+    "liber-primus/analysis/round19/C3/RESULTS.md#21-p-9-is-refuted-and-by-a-field-definition-error",
+    "liber-primus/analysis/round19/C3/l3/bands.json"
+   ],
+   "raw_status": "run"
+  },
+  {
+   "id": "CORPUS-G-02",
+   "hypothesis": "Every message the community treats as canon verifies against key 7A35090F, and the corpus contains exactly one signing key.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "PASS (all four, in an INDEPENDENT re-run)",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "round19/C3 (closeout of round18/L8-provenance)",
+   "date": "2026-08-26",
+   "coverage": "238 .asc files enumerated repo-wide (121 distinct by sha256), deduplicating to 54 distinct signed messages spanning 2012-01-05T03:46:03Z to 2017-04-04T23:23:28Z (1916 days). All 238 verified. Round 18's table covered 228 of the same files.",
+   "not_covered": "Messages not mirrored into this repository. Signature formats gpg 2.4.8 cannot parse. Whether any signed message is a forgery by an actor who controlled the private key - a valid signature proves key control, not authorship.",
+   "result": "REPRODUCED EXACTLY. On the 228 files both runs saw, every verdict is identical file-for-file and so is every sha256: 192 PASS / 3 FAIL / 22 NO-SIG / 11 KEY, zero verdict changes, zero hash changes, zero files present in round18 and missing from C3. Deduplicated: 54 of 54 distinct messages verify. Distinct signing key IDs across every signed message in the repository: exactly ONE, 181F01E57A35090F, independently confirmed. The C3 run scanned 238 files rather than 228; the 10 extra are fully accounted for as L8's OWN evidence artifacts fetched AFTER its verification run (seven third-party project keys under evidence/baserate/, two mruzuki keyserver exports, one zero-byte .asc) and none is Cicada corpus. The 3 FAILs are ONE message - the 2013-01-03 'Welcome again.' book-code message mirrored into three 1536-byte copies whose armor lost the blank line separating the Hash: SHA1 header from the body (gpg: 'invalid armor header: Welcome again.'); four other files carry the identical normalised signed text and PASS, and a repaired 1538-byte copy in the tree PASSes with the identical signature packet. Under the pre-registered rule that is a transport defect, not a canon failure.",
+   "evidence": [
+    "liber-primus/analysis/round19/C3/PGP-VERIFICATION-TABLE.json",
+    "liber-primus/analysis/round19/C3/verify_all_signatures_rerun.py",
+    "liber-primus/analysis/round19/C3/verify_rerun.log",
+    "liber-primus/analysis/round19/C3/l8/crosscheck.json",
+    "liber-primus/analysis/round18/L8-provenance/PGP-VERIFICATION-TABLE.md",
+    "liber-primus/analysis/round18/L8-provenance/RESULTS.md"
+   ],
+   "raw_status": "run"
+  },
+  {
+   "id": "L1-F6-CORRECTION",
+   "hypothesis": "The denominator and the window are both wrong. That directory holds 56 PASSing files with 54 distinct signature timestamps spanning 2012-01-05 to 2017-04-04, not 46 files ending in 2014. Its signature-armor Version headers are 53 x 'GnuPG v1.4.11 (GNU/Linux)', 2 x 'GnuPG v1', 1 x 'CicadaPG v.3301'. ",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "round19/C3 (cross-check of round18/L1-toolchain)",
+   "date": "2026-08-26",
+   "coverage": "All 192 PASSing files and all 54 distinct messages, armor Version header parsed from the signature block of each.",
+   "not_covered": "Which exact GnuPG minor version emits the short 'GnuPG v1' form. C3 did not pin it to a release and does not assert one; the source check L8 3.2 performed for keygen_set_std_prefs() was not repeated for armor.c.",
+   "result": "The denominator and the window are both wrong. That directory holds 56 PASSing files with 54 distinct signature timestamps spanning 2012-01-05 to 2017-04-04, not 46 files ending in 2014. Its signature-armor Version headers are 53 x 'GnuPG v1.4.11 (GNU/Linux)', 2 x 'GnuPG v1', 1 x 'CicadaPG v.3301'. Repository-wide per DISTINCT MESSAGE: 54 x 'GnuPG v1.4.11 (GNU/Linux)' (2012-01-05 -> 2014-04-02), 2 x 'GnuPG v1' (2015-07-28, 2016-01-01), 1 x 'CicadaPG v.3301' (2017-04-04). The stated window truncates the span at exactly the point where the version string changes, so F6 is true INSIDE its window while the headline drawn from it - 'one environment, three years, no drift' - is contradicted by the same directory's own later files.",
+   "evidence": [
+    "liber-primus/analysis/round19/C3/l8/crosscheck.json",
+    "liber-primus/analysis/round19/C3/l8/crosscheck.log",
+    "liber-primus/analysis/round19/C3/RESULTS.md#65-cross-check-against-l1s-gnupg-v1411-finding--found-error"
+   ],
+   "raw_status": "run"
+  },
+  {
+   "id": "R19-G1",
+   "hypothesis": "bash $RANDOM and the glibc random()/rand()/*rand48 family -- ranked 4 (x2) and 1 (x3) by round18/L1-toolchain/RESULTS.md section 6.2 on physical-artifact evidence -- can be reproduced byte-exactly and enumerated as a bounded keystream space for LP2.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "keystream",
+   "date": "2026-08-26",
+   "coverage": "Generator VALIDATION coverage: 19 generators x 8 seeds x 2000 draws vs real libraries, all PASS. Space MEASURED: bash $RANDOM is one orbit per implementation variant (seed IS the state, brand() is a pure map), so seed and keystream-offset are the SAME AXIS for that family; bash4.2 LP64 cycle 2^31-2 (tail 13-72), bash4.2_i32 cycle 343,896 (tail 210k-500k); the auto-seeded path (sbrand(tv_sec ^ tv_usec ^ getpid), variables.c:537) reaches at most 74 * 2^20 = 77,594,624 seeds for a 2012-01..2014-06 run, i.e. 3.6% of 2^31, which is a PRIORITY ORDERING inside the full range. glibc seed space 2^32-1 with no orbit collapse (state 31x32 bits). Measured throughput: 166 beam decodes/s/core (I3 vecbeam), 55 end-to-end with I1+I2, 137,414 rows/s/core for a rigid L=31 9-register head-window screen.",
+   "not_covered": [
+    "NO KEYSTREAM WAS SCORED AGAINST LP2. Phase 0 hold, by design.",
+    "bash4.2_i32 has no L1 reference: gcc-multilib absent, so no real 32-bit bash 4.2 binary. The ILP32 model is the same source re-typed with uint32_t/int32_t (level L4).",
+    "shuf --random-source is validated against GNU coreutils 9.7, NOT the 8.13 of Ubuntu 12.04; randint_genmax byte-consumption may have changed. Ubuntu 26.04 also ships the Rust uutils shuf as /usr/bin/shuf; G1 prefers /usr/bin/gnushuf.",
+    "bash3.2 LP64 orbit is stated analytically, not measured: its map is a full-period LCG mod 2^64 (Hull-Dobell), so Brent would need 2^64 evaluations; the 15-bit output period is 2^31 by the bit-period argument, and the ILP32 sibling measures exactly 2^32 as predicted. Every other bash variant's orbit IS measured (see control_detail.G1-ORB).",
+    "bash 4.0/4.1 are only PARTIALLY enumerable: seedrand() re-seeds from gettimeofday^getpid when the state reaches 0, and state 0 IS reachable (RANDOM=2147483647 reaches it in one step). Only the deterministic prefix exists.",
+    "openssl enc -k overlaps LEDGER R16-KDF (692,064 configs); the overlap was not computed and S1 must de-duplicate.",
+    "lrand48 and Perl-drand48 are round10/L5-seed32/CENSUS.md section B generators 10 and 11, already covered over 2011-2015 unix-seconds; G1 re-implements them only for interface uniformity and S1 must NOT re-sweep that window.",
+    "/dev/urandom, bare shuf, `openssl rand`, and bash 5.1's $SRANDOM are UNREACHABLE -- no seed and no record. Not swept, and NO NULL IS REPORTED for them.",
+    "The auto-seeded 77.6M subset is an upper bound on the seed SET; the joint distribution of (tv_sec, tv_usec, pid) was not modelled, so the subset cannot yet be ordered by likelihood.",
+    "glibc bit-stability from 2.15 (Ubuntu 12.04) to 2.43 (the reference here) is CORROBORATED (the canonical srandom(1) sequence reproduces) but not PROVED. Reopen: diff stdlib/random_r.c across the two releases or run ref_glibc.c in an Ubuntu 12.04 container."
+   ],
+   "reopens_if": "This lane is not closed and never was: it is the INPUT to Phase 2. It is consumed when Round 19's I1/I2/I3 gates pass and S1 runs READY.md section 5. Independently, NC-1 (a real 32-bit bash 4.2 via gcc-multilib) upgrades bash4.2_i32 from L4 to L1, and NC-2 (a real coreutils 8.13 shuf) makes the shuf oracle era-correct.",
+   "result": "NO SWEEP RUN AND NO VERDICT DRAWN -- this lane held at Round 19's Phase-0 scoring boundary by design. Delivered: 19 byte-validated generators, a parameterised keystream interface (keystream.py) following round13/B04/PREREG.md section 3.3-3.5 conventions, a measured space statement, a plant, and a Phase-2 run specification (READY.md).",
+   "evidence": [
+    "liber-primus/analysis/round19/G1/PREREG.md",
+    "liber-primus/analysis/round19/G1/RESULTS.md",
+    "liber-primus/analysis/round19/G1/READY.md",
+    "liber-primus/analysis/round19/G1/validation.json",
+    "liber-primus/analysis/round19/G1/gen_bash.py",
+    "liber-primus/analysis/round19/G1/gen_glibc.py",
+    "liber-primus/analysis/round19/G1/gen_coreutils.py",
+    "liber-primus/analysis/round19/G1/keystream.py",
+    "liber-primus/analysis/round19/G1/reduce29.py",
+    "liber-primus/analysis/round19/G1/ref_bash.c",
+    "liber-primus/analysis/round19/G1/ref_glibc.c",
+    "liber-primus/analysis/round19/G1/orbit.c",
+    "liber-primus/analysis/round19/G1/plant.py",
+    "liber-primus/analysis/round19/G1/plant.json",
+    "liber-primus/analysis/round19/G1/pilot.json",
+    "liber-primus/analysis/round19/G1/fetch_bash_src.sh",
+    "liber-primus/analysis/round19/G1/orbit_measured.txt"
+   ],
+   "raw_status": "instrument-built"
+  },
+  {
+   "id": "R19-G2",
+   "hypothesis": "The LP2 keystream is the output of Perl 5.14 `rand` (glibc drand48), seeded explicitly or implicitly via `srand`, reduced to Z_29 by an era-idiomatic Perl form and applied under the pinned soft anti-repeat filter.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "artifact-built-not-yet-run",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "keystream/generator",
+   "date": "2026-08-26",
+   "coverage": "ZERO key-space coverage. This lane swept no seeds and excludes nothing. It delivers: a byte-exact validated generator (9 Perl-reachable reductions + 2 C-only shadow forms), a keystream interface (gen_perl.make_ks), a pre-registered positive-control artifact, a written space statement, and measured throughput. The 9,984 decodes in pilot.json are TIMING DATA, explicitly stamped is_result=false and scores_are_not_findings=true, run on a deliberately arbitrary seed block (base 700,000,000) so they cannot be mistaken for coverage of the high-prior band.",
+   "not_covered": [
+    "every seed -- no seed was scored",
+    "per-call or mid-stream re-seeding (srand called more than once)",
+    "a keystream offset by an unknown number of rand() draws consumed elsewhere in the same process -- a distinct UNBOUNDED axis, not the same as the sec.4.3 keystream offset",
+    "reductions outside the nine enumerated in RESULTS.md sec.2.4",
+    "CPAN PRNG modules (Math::Random::MT, Math::Random::Secure) -- a different family, not `rand`",
+    "Perl builds configured -Drandfunc=random or -Drandfunc=rand; Configure prefers drand48 on any host that has it, so an Ubuntu 12.04 stock package cannot be one of these, but a hand-built perl could",
+    "the 5.14 srand string-coercion column, which is derived from reading pp.c plus documented SvUV semantics and could NOT be executed (no 5.14 runtime available). Residual uncertainty is confined to non-integer srand ARGUMENTS and does not affect coverage, since every coerced value lands inside 0..2^32-1 either way."
+   ],
+   "reopens_if": "Not closed -- not even opened as a sweep. Phase 2 runs it when I1, I2 and I3 publish PASS and G2-GATE-Q1 is executed against plant.json. READY.md sec.4 is the run spec.",
+   "result": "NO SWEEP RUN -- HELD AT THE SCORING BOUNDARY per the Round 19 campaign plan's hard dependency (Phase 0 gates I1/I2/I3 have not published PASS). What WAS established: (1) VALIDATION PASS -- gen_perl.py reproduces the real perl binary byte-exactly, 186 checks / 0 failing across 3 gates: A = mine vs real perl (164 checks: raw Drand01 at %.17g, int(rand(M)) for M in {26,29,32,100,255,256,1000,2^32} at 13 seeds x 2000 draws, and all 9 reductions driven through real perl loops); B = real perl vs glibc srand48/drand48 from C, 13 seeds x 1024 draws identical to 17 significant digits; C = structural (seed folding, integer-fast-path exactness over 52,000 draws per M, srand() argument coercion). (2) THE ERA QUESTION IS RETIRED BY MEASUREMENT, not argument: this box runs perl 5.40.1, but the perl-5.14.2 tarball (md5 3306fbaf976dcebdcd49b2ac0be00eb9) shows Configure picks drand48 on any glibc host and config_h.SH defines Drand01()=drand48(), seedDrand01(x)=srand48((long)x), RANDBITS=48 -- so 5.14.2 on Ubuntu IS glibc drand48, and gate B measures that leg directly. (3) THE MAIN FINDING -- the space is 2^32 with NO residue, INCLUDING the un-seeded case: util.c Perl_seed() reads sizeof(U32) = FOUR BYTES from /dev/urandom, so `perl -e 'print chr(int(rand(29))) for 1..13000'` with no srand at all has a uniform 32-bit seed and is fully enumerable. (4) Real Phase-2 throughput measured end-to-end through I3 vecbeam + I2 adjudicate: 663 decodes/s/core at L=31, 106/s at L=120; 9,984 pilot decodes emitted 9,984 SWEEPROWs with 0 validate_row failures.",
+   "evidence": [
+    "liber-primus/analysis/round19/G2/PREREG.md",
+    "liber-primus/analysis/round19/G2/RESULTS.md",
+    "liber-primus/analysis/round19/G2/READY.md",
+    "liber-primus/analysis/round19/G2/gen_perl.py",
+    "liber-primus/analysis/round19/G2/validation.json",
+    "liber-primus/analysis/round19/G2/ref_perl.pl",
+    "liber-primus/analysis/round19/G2/ref_reduce.pl",
+    "liber-primus/analysis/round19/G2/ref_drand48.c",
+    "liber-primus/analysis/round19/G2/plant.json",
+    "liber-primus/analysis/round19/G2/pilot.json",
+    "liber-primus/analysis/round19/G2/budget.json",
+    "liber-primus/analysis/round19/G2/bench.json"
+   ],
+   "raw_status": "generator-validated-sweep-not-run"
+  },
+  {
+   "id": "R19-G2-CORRECTION",
+   "hypothesis": "AUDIT (doctrine R6) of this lane's own prior: round18/L1-toolchain/RESULTS.md sec.6.2 row 3 states that Perl 5.14 rand/srand has NEVER BEEN SWEPT.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a -- documentary audit",
+   "source_register": "round19/analysis",
+   "status": "audit",
+   "round": 19,
+   "lane": "red-team/prior-audit",
+   "date": "2026-08-26",
+   "coverage": "Documentary audit of round18/L1-toolchain/RESULTS.md sec.6.2 row 3 against round10/L5-seed32 (CENSUS.md, VALIDATION.txt, results_newgens.txt, sweep32x.c source). Not a re-run of any sweep.",
+   "not_covered": [
+    "the other 'never swept' claims in L1 sec.6.2 (rows 4 bash $RANDOM, 5 LaTeX LCGs, 8 PHP rand) -- G2 audited only its own row and makes no claim about those; lanes G1/G4 and R1 should check theirs the same way"
+   ],
+   "reopens_if": "n/a -- this is a correction to a claim, not a search. It stands until someone shows results_newgens.txt does not say what it says.",
+   "result": "FOUND-ERROR. L1 sec.6.2 row 3's 'never swept' is incorrect. round10/L5-seed32/CENSUS.md sec.B lists generator 10 as `Perl srand(S); int(rand(29))`, harness-validated against /usr/bin/perl in VALIDATION.txt (5 seeds x 2000 draws, PASS), and results_newgens.txt records the completed run: `gen=10 perl int(rand(29)) drand48  seeds=1293840000..1420070400  best=-13.4240 @1407171031  hits>-12.5=0  168.1s`. Generator 11 (POSIX lrand48()%29) was run on the same band. A slice HAS been swept. HOWEVER that slice is worth close to nothing on four independently-measured counts: (1) DECODER -- sweep32x.c decode_score() branches over F-nulls only and has no key-skip or drift model at all; it is rigid_decode with an interrupter fork, and round12/D3 measured rigid at -6.835 on the CORRECT key, i.e. noise. Coverage x power ~ coverage x 0. (2) ADJUDICATOR -- English 4-gram only; round18 L7-A measured power 0.33 Latin / 0.00 vowel-dropped English, and no doctrine-R3 language-agnostic statistics were persisted, so the rows are un-reinterpretable. (3) THRESHOLD -- a fixed -12.5 bar, which LEDGER entry B-21 itself calls 'STATISTICALLY INVALID at full-32 scale because the null max grows with trial count'; the reported best -13.42 sits below the bar by less than the null's own spread. (4) BREADTH -- 1 reduction of 9, ~2.9% of the seed space, offset 0 only, no atbash, no sign axis.",
+   "evidence": [
+    "liber-primus/analysis/round18/L1-toolchain/RESULTS.md",
+    "liber-primus/analysis/round10/L5-seed32/CENSUS.md",
+    "liber-primus/analysis/round10/L5-seed32/VALIDATION.txt",
+    "liber-primus/analysis/round10/L5-seed32/results_newgens.txt",
+    "liber-primus/analysis/round10/L5-seed32/sweep32x.c",
+    "liber-primus/analysis/round19/G2/RESULTS.md"
+   ],
+   "raw_status": "FOUND-ERROR"
+  },
+  {
+   "id": "R19-G3",
+   "hypothesis": "The LP2 keystream was produced by a short Python 2.7 script on the author's Ubuntu 11.04-12.04 box: random.seed(<a Cicada-flavoured string literal>) followed by an era-idiomatic reduction to a rune index, applied under the pinned soft anti-repeat filter. Python 2's str-seeding path is (unsigned long)hash(s) -> <=2 init_by_array words, which no prior sweep in this repository has ever exercised.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "keystream",
+   "date": "2026-08-26",
+   "coverage": "0 decodes of key space cleared. Validation coverage: 2,165 hash + 8,660 stream vectors vs real 2.7.3; the same corpus vs real 2.7.18; 400 hash + 1,600 stream vs real i386 2.7.3; 5 int + 5 float + 4 jumpahead vectors; 24-seed measurement of the randrange/randint/choice/int(random()*29) identity; 600 Py2-vs-Py3 comparisons; 17,320-config identity plant-and-recover. Plus a 10,112-decode labelled plumbing pilot (a 512-decode sizing probe + a 9,600-decode pilot), which is 112 over the pre-registered <=10,000 ceiling — declared in READY.md §0, not rounded down.",
+   "not_covered": [
+    "everything downstream of the generator — no key space is cleared (NC-1); reopens when S1 runs READY.md §3 through I1+I2 at I3's bar",
+    "the author's word size: the i386-first ordering rests on 2012 Ubuntu desktop-install population statistics, NOT on a 3301 artifact (NC-2)",
+    "the full 2^32 i386 enumeration — specified in READY.md §4, needs a C prefilter port, 166 days through the Python path (NC-3)",
+    "seeds outside the 2,165-entry B-04 dictionary on the amd64 branch (NC-4)",
+    "PYTHONHASHSEED / -R randomised-hash runs — argued away, NOT searched (NC-5)",
+    "Python 2.6 / 2.5 (Ubuntu 10.04's system Python is 2.6; randrange and the _randbelow boundary move across the 2.x line) (NC-6)",
+    "random.WichmannHill, 2.x's legacy generator, still importable in 2.7 (NC-7)",
+    "os.urandom-seeded and unseeded runs — no seed, no key (NC-8)",
+    "offsets beyond B-04's ten, per-page and per-line restarts, and filters other than the pinned soft key-skip (NC-9)",
+    "the jumpahead point release: the pre-/post-issue-14591 variants were measured output-identical outside a degenerate case, so 2.7.3 vs 2.7.4+ is not discriminated (NC-10)"
+   ],
+   "reopens_if": "This lane is open by construction. It closes only when S1 has run READY.md §3 through I1+I2 at I3's published threshold and reported all three conditionals. Any of NC-1..NC-10 landing extends it.",
+   "result": "NO SWEEP RUN — BY DESIGN. Round 19's hard dependency holds Phase 1 lanes at the scoring boundary until I1/I2/I3 pass. Delivered instead: (1) a Python-2.7 MT19937 keystream generator VALIDATED byte-exactly against three real CPython 2.7 interpreters (2.7.3 amd64, 2.7.3 i386, 2.7.18 amd64), 12,825 reference vectors, 0 failures; (2) the precise Py2-vs-Py3 seeding difference with CPython source citations; (3) the structural bound that on a 32-bit Python 2.7 the ENTIRE non-int seed space collapses to init_by_array([w]) for w in [0,2^32) — measured, 2,165/2,165 seeds satisfy low32(hash64)==hash32; (4) a correction to B-01/B-21/CENSUS (see R19-G3-CORRECTION); (5) a Phase-2 run spec (READY.md): ~1.22M decodes, ~62 min on 6 cores. Coverage x power = 0 x (unmeasured) = 0. This lane has excluded nothing and claims to have excluded nothing.",
+   "evidence": [
+    "liber-primus/analysis/round19/G3/PREREG.md",
+    "liber-primus/analysis/round19/G3/RESULTS.md",
+    "liber-primus/analysis/round19/G3/READY.md",
+    "liber-primus/analysis/round19/G3/gen_py27.py",
+    "liber-primus/analysis/round19/G3/validate_py27.py",
+    "liber-primus/analysis/round19/G3/validation.json",
+    "liber-primus/analysis/round19/G3/pilot.py",
+    "liber-primus/analysis/round19/G3/pilot.jsonl"
+   ],
+   "raw_status": "instrument-built-not-run"
+  },
+  {
+   "id": "R19-G3-CORRECTION",
+   "hypothesis": "Ledger entries B-01 and B-21 and round10/L5-seed32/CENSUS.md §A describe the integer-seed full-32 sweep accurately.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": null,
+   "source_register": "round19/analysis",
+   "status": "audit",
+   "round": 19,
+   "lane": "recon-audit",
+   "date": "2026-08-26",
+   "coverage": "Re-read on disk: analysis/seed_sweep/results_full32.txt (9 rows, mtime 2026-08-17), results_timeseed.txt (10 rows), results_newgens.txt (gens 10-13), sweep.c decode_score(), string_seeds.py in full, string_seed_results.json, round10/L5-seed32/{CENSUS.md,VALIDATION.txt}, LEDGER entries B-01/B-21/B-08/B-04/R16-PRNG.",
+   "not_covered": [
+    "gen=0 (glibc random()%29) over the full 0..2^32 — still absent, still the one open row",
+    "whether the seven post-B-01 rows were produced by a run that also completed gen=0 and lost the line — no DONE marker exists either way",
+    "the POWER of those nine full-32 negatives, which this correction does not re-measure; it only reports that sweep.c's decode_score() is a RIGID decoder (interrupter-null branching only, no key-skip transition) scored by mean English 4-grams against a fixed -12.5 bar, and that round12/D3 measured the correct key at -6.835 rigid vs -4.170 beam"
+   ],
+   "reopens_if": "gen=0 completes, a DONE marker appears, or the nine negatives are re-adjudicated through round19/I1+I2 (which is exactly S2's job — two of the nine, gen=7 and gen=8, are the CPython seed(int) cells that G3's random29 and grb5_rej reductions coincide with exactly).",
+   "result": "FOUND-ERROR (three stale claims, one of them material). Checked while verifying G3's own family before claiming new ground, following lane G2's Perl finding. As of 2026-08-26, analysis/seed_sweep/results_full32.txt contains NINE completed full-32 rows (gens 1,2,3,4,5,6,7,8,9 over seeds=0..4294967296), not two. (a) B-01 says 'the full 32-bit sweep is 2/10 complete' with evidence_missing ['run_full32.sh']: seven more generators finished after B-01 was filed on 2026-08-12 (the file's mtime is 2026-08-17), and run_full32.sh does exist at analysis/seed_sweep/run_full32.sh. B-01 is right that gen=0 (glibc random()%29) is still absent and that there is still no DONE line. (b) B-21 says '10 integer-seeded generators over ~3% of each seed space (only 2 swept fully)': it is 9 of 10 swept FULLY; the ~3% figure now describes gen=0 alone. (c) CENSUS.md §A's 'Seed space swept' column understates rows 1,2,4,6,7,8,9. SEPARATELY: analysis/seed_sweep/string_seeds.py's module docstring claims it 'also covers random.seed() with the same wordlist under Python 2 semantics (hash() of the string)'. No such code exists in the file — its only seeding call is r.seed(seedval) under Python 3, and its 'Python 2' candidates are w.encode(), i.e. bytes, which Python 3 routes through the same sha512 path as the str and are therefore exact duplicates. G3 measured 600/600 divergence between the two paths, so none of those 15,408 decodes touched Python 2 semantics.",
+   "evidence": [
+    "liber-primus/analysis/seed_sweep/results_full32.txt",
+    "liber-primus/analysis/seed_sweep/run_full32.sh",
+    "liber-primus/analysis/seed_sweep/sweep.c",
+    "liber-primus/analysis/seed_sweep/string_seeds.py",
+    "liber-primus/analysis/seed_sweep/string_seed_results.json",
+    "liber-primus/analysis/round10/L5-seed32/CENSUS.md",
+    "liber-primus/analysis/round19/G3/RESULTS.md"
+   ],
+   "raw_status": "FOUND-ERROR"
+  },
+  {
+   "id": "G4-TEX-RNG",
+   "hypothesis": "The LP2 0-54 keystream was generated INSIDE the typesetting document: by a TeX-side PRNG (pgf's \\pgfmathrandominteger, the lcg package's \\rand, random.tex's \\setrannum, or pdfTeX's \\pdfuniformdeviate) invoked from the LaTeX source that produced the 6.00x9.00-inch runic PDF, reduced to Z_29 by one of the idiomatic package calls.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "open",
+   "round": 19,
+   "lane": "round19/G4",
+   "date": "2026-08-26",
+   "coverage": "ZERO decodes of coverage. This is a Phase-1 generator lane: it delivers four byte-exact generators, a keystream interface, and an exact space statement, and it HOLDS at the scoring boundary because Round 19's Phase 0 (I1/I2/I3) had not been certified. A single labelled pilot of 10,000 decodes was run for plumbing and timing only, with `pilot: true, interpretable: false` in its SWEEPROW header; no score in it is interpreted and no candidate was escalated. Anyone citing this entry as coverage of the TeX family is citing it wrongly.",
+   "not_covered": "Everything. Specifically: (1) the whole 1.85e11-decode space; (2) the lcg package's DEFAULT seed, which depends on \\inputlineno and \\value{page} as well as the clock - samplable, not enumerable, and not sampled; (3) pdfTeX's DEFAULT seed, set from wall-clock microseconds - not enumerable at all; (4) per-page or per-line reseeding (an author calling \\pgfmathsetseed once per page - the B-04 stage-C shape); (5) any constant c not in {0,1} added to the reduced key, i.e. a general Caesar; (6) \\pgfmathrandomitem over a declared rune list, which is covered as a STREAM but whose list ordering would impose an unknown alphabet permutation; (7) LuaTeX math.random, which is glibc rand() and therefore G1's space, handed off with its Lua 5.1 scaling rather than re-swept; (8) XeTeX, which had no \\uniformdeviate in the TeX Live 2009 era.",
+   "reopens_if": "Phase 2 (S1) runs it. The gate is K2: a planted phase must survive a 1e-3 rigid prefilter cut in >= 50% of 200 trials. If it does, complete enumeration of the three Lehmer families is ~18 h of wall clock on this box (13 h of numpy prefilter + a beam stage sized by the cut, ~4.4 h at a 1e-6 band-max cut). If it does not, G4 restricts to Tier 1: pgf's 8,627 distinct default seeds (69,016 decodes, 2.0 h at the drift preset on 6 cores), random.tex's 3,214,080 date-init seeds, and 0..2^20 author-typed integers.",
+   "result": {
+    "generators_validated_byte_exact": 4,
+    "generators_attempted": 4,
+    "reference_elements_compared": 15808,
+    "reference_vectors": 247,
+    "pgf": {
+     "m": 2147483647,
+     "a": 69621,
+     "q": 30845,
+     "r": 23902,
+     "default_seed": "\\time * \\year",
+     "note": "the multiplier is 69621, NOT the 16807 the source comment lists as an alternative"
+    },
+    "lcg": {
+     "m": 2147483647,
+     "a": 16807,
+     "q": 127773,
+     "r": 2836,
+     "reduction": "rejection then first + z mod R",
+     "version": "1.3 (2013/08/09)"
+    },
+    "random_tex": {
+     "m": 2147483647,
+     "a": 16807,
+     "q": 127773,
+     "r": 2836,
+     "reduction": "v = (z-1) div (2147483645 div R), rejected unless v < R",
+     "default_seed": "((time*388+year)*31+day)*97+month, then THREE discarded warm-up draws",
+     "version": "0.2"
+    },
+    "pdftex": {
+     "algorithm": "Knuth 55-lag subtractive on 28-bit fractions (METAFONT init_randoms/new_randoms/unif_rand)",
+     "fraction_one": 268435456,
+     "effective_seed_space": 268435456,
+     "note": "init_randoms halves |seed| until < 2^28, which collapses the seed space to 2^28"
+    },
+    "era_correctness": "pgf 2.00 (TeX Live 2009 = Ubuntu 11.04/11.10/12.04) and pgf 2.10 have a byte-identical \\pgfmathgeneratepseudorandomnumber; reference vectors from vendored pgf 2.10 match installed pgf 3.1.11a on 76/76.",
+    "single_cycle": true,
+    "single_cycle_detail": "69621 and 16807 are both primitive roots mod 2^31-1 (verified against every prime factor of 2^31-2 = 2*3^2*7*11*31*151*331); each generator has ONE cycle of length 2147483646, so every seed and every offset is a phase of one master stream. B-04's offset ladder and B-02's key-index-0 assumption are ABSORBED for pgf/lcg/random.tex; they are NOT absorbed for pdfTeX, whose 55-word state gives disjoint trajectories.",
+    "space_full_enumeration_decodes": 185000000000.0,
+    "decodes_swept": 0,
+    "measured_costs": {
+     "master_cycle_build_s": 246,
+     "master_cycle_bytes": 2147483646,
+     "one_rigid_prefilter_pass_s": 1447,
+     "all_four_lehmer_families_prefilter_h": 13,
+     "I1_exact_s_per_decode": 0.003,
+     "I1_drift_s_per_decode": 0.679,
+     "drift_over_exact_ratio": 226,
+     "I2_adjudicate_s_per_decode": 0.0078,
+     "pipeline_exact_s_per_decode": 0.017,
+     "pipeline_pair_s_per_decode": 0.0155,
+     "pipeline_drift_s_per_decode": 0.619,
+     "pipeline_drift_over_exact_ratio": 36.5,
+     "pipeline_exact_decodes_per_s_6proc": 354,
+     "pipeline_drift_decodes_per_s_6proc": 9.7,
+     "_source": "beam-only and adjudicate-only from component timing; pipeline rates from pilot_results.json, 10,000 real decodes at L=120 on 6 cores/15GiB"
+    },
+    "pilot": {
+     "decodes": 10000,
+     "label": "PILOT - NOT A RESULT",
+     "store": "pilot_sweeprows.jsonl (SWEEPROW/1, header carries pilot:true interpretable:false)",
+     "store_validates_against_I2": true,
+     "interpretation": "none; no score interpreted, no candidate escalated, no bound established"
+    }
+   },
+   "evidence": [
+    "liber-primus/analysis/round19/G4/RESULTS.md",
+    "liber-primus/analysis/round19/G4/validation.json",
+    "liber-primus/analysis/round19/G4/control_results.json",
+    "liber-primus/analysis/round19/G4/bench_master.json",
+    "liber-primus/analysis/round19/G4/READY.md"
+   ],
+   "raw_status": "open"
+  },
+  {
+   "id": "G4-ALLRUNES-NC5",
+   "hypothesis": "round18/L1 NC-5: 'the allrunes Type-1 faces are custom-encoded (not Unicode-mapped), so matching them requires an unordered glyph-slot search rather than a codepoint lookup.'",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "open",
+   "round": 19,
+   "lane": "round19/G4 (side-deliverable for round18/L1)",
+   "date": "2026-08-26",
+   "coverage": "A SCREEN, not a verdict. It shows LP2's per-rune ink-width assignment matches the allrunes Anglo-Frisian family far better than a shuffle. It does NOT discriminate allrunes from any other CORRECT futhorc face - every correct face has a narrow I and a wide X, so the permutation control separates 'a real futhorc' from 'a shuffle', nothing more. The fitted scale factors (0.40-0.84) are an artefact of normalising by each face's median glyph height and are NOT evidence of a condensed face.",
+   "not_covered": "L1's own font_match.py distance under its PC3a/PC3b controls, with these 72 allrunes faces in the bank. That is the measurement that could name the face, and it is now a codepoint lookup rather than a slot search.",
+   "reopens_if": "L1's matcher is re-run with the allrunes bank included. If a specific allrunes shape variant separates from the field, it pins the LaTeX source and with it the plausible package set - which is exactly the prior G4-TEX-RNG runs on.",
+   "result": {
+    "nc5_verdict": "FOUND-ERROR. NC-5's stated blocker is false for the files L1 already holds: the 218 allrunes .pfb charstrings carry ordinary Adobe glyph names that ARE the transliteration letters (f u eth o r c g w h n i j p x s t b e m l eng oe d a ae y), so 26 of the 29 futhorc runes are a direct name lookup. Only EO / EA / IA lack an unambiguous name.",
+    "faces_with_all_26_named_runes": 72,
+    "faces_total": 218,
+    "best_face": "fruabr",
+    "best_rms_px": 6.643,
+    "permutation_null_min_rms_px": 10.113,
+    "permutation_null_median_rms_px": 15.296,
+    "p_value": 0.0
+   },
+   "evidence": [
+    "liber-primus/analysis/round19/G4/RESULTS.md#6",
+    "liber-primus/analysis/round19/G4/allrunes_probe.json"
+   ],
+   "raw_status": "open"
+  },
+  {
+   "id": "I1-01",
+   "hypothesis": "driftbeam.beam_decode(mode='keyskip1', max_free=0) is bit-identical to campaign18_skip.skipdecode.beam_decode",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "analysis",
+   "date": "2026-08-26",
+   "coverage": "the repo's transition relation, reproduced exactly and provably",
+   "not_covered": "nothing - this is an identity gate",
+   "result": "driftbeam.beam_decode(mode='keyskip1', max_free=0) is bit-identical to campaign18_skip.skipdecode.beam_decode",
+   "evidence": [
+    "analysis/round19/I1/out_eq.json",
+    "analysis/round19/I1/test_driftbeam.py"
+   ],
+   "raw_status": "VERIFIED"
+  },
+  {
+   "id": "I1-02",
+   "hypothesis": "The L7-B defect is repaired: with the correct key, a permissive transition relation recovers every construction in L7-B's failure table at score >= -5.5 and rune recovery >= 0.90",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "analysis",
+   "date": "2026-08-26",
+   "coverage": "any key advance of <= max_skip positions per rune of which <= 2 are not doublet-consistent; 12 named constructions measured, English plaintext, beam 400, L in {240, 400, 12956}",
+   "not_covered": "an advance > max_skip at one rune; a single key-pointer JUMP of J >= 8 positions at one rune (measured bound J <= 5, out_bound.json); a key pointer that RETREATS (the beam can insert draws, never remove them); a non-monotone pointer; a keystream whose values depend on the plaintext; ANY non-English plaintext register (the register axis is pinned at English throughout - see round18/L7-redteam A and round19/I2)",
+   "result": "The L7-B defect is repaired: with the correct key, a permissive transition relation recovers every construction in L7-B's failure table at score >= -5.5 and rune recovery >= 0.90",
+   "evidence": [
+    "analysis/round19/I1/out_fix.json",
+    "analysis/round19/I1/out_fix2.json",
+    "analysis/round19/I1/RESULTS.md"
+   ],
+   "raw_status": "POSITIVE"
+  },
+  {
+   "id": "I1-03",
+   "hypothesis": "Permissiveness lifts the wrong-key null by 0.58-0.92 and therefore invalidates the -5.5 floor for permissive-mode sweeps, but does NOT lift it into the English band at lam >= 8",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "analysis",
+   "date": "2026-08-26",
+   "coverage": "sha256_ctr wrong keys, L=240, beam 400, both nulls agree to within 0.01",
+   "not_covered": "other wrong-key families; other segment lengths (the null moves with L and must be recalibrated at the length actually swept)",
+   "result": "Permissiveness lifts the wrong-key null by 0.58-0.92 and therefore invalidates the -5.5 floor for permissive-mode sweeps, but does NOT lift it into the English band at lam >= 8",
+   "evidence": [
+    "analysis/round19/I1/out_fp_deep.json",
+    "analysis/round19/I1/out_fp_deep2.json",
+    "analysis/round19/I1/out_fp_curve.json",
+    "analysis/round19/I1/out_fp_tail.json"
+   ],
+   "raw_status": "MEASURED"
+  },
+  {
+   "id": "I1-04",
+   "hypothesis": "Extreme-value parameters of the wrong-key null, per decoder mode, for threshold recalibration",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "analysis",
+   "date": "2026-08-26",
+   "coverage": "L=240, beam 400, 13 decoder configurations",
+   "not_covered": "any other segment length",
+   "result": "Extreme-value parameters of the wrong-key null, per decoder mode, for threshold recalibration",
+   "evidence": [
+    "analysis/round19/I1/out_fp_tail.json",
+    "analysis/round19/I1/analyse_fp.py"
+   ],
+   "raw_status": "MEASURED"
+  },
+  {
+   "id": "I1-05",
+   "hypothesis": "CORRECTION to round18/L7-redteam B.4: the low-entropy-pad failures at constant-run r=16 and r=32 with supp=1.0 are a BUDGET failure, not a transition-relation failure",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "audit",
+   "round": 19,
+   "lane": "analysis",
+   "date": "2026-08-26",
+   "coverage": "constant-run pads r in {8,16,32}, supp in {0.83,1.0}",
+   "not_covered": "runs longer than the suggested max_skip; pads with structure other than constant runs",
+   "result": "CORRECTION to round18/L7-redteam B.4: the low-entropy-pad failures at constant-run r=16 and r=32 with supp=1.0 are a BUDGET failure, not a transition-relation failure",
+   "evidence": [
+    "analysis/round19/I1/out_fix.json"
+   ],
+   "raw_status": "SUPERSEDES"
+  },
+  {
+   "id": "I1-06",
+   "hypothesis": "An UNPENALISED drift-tolerant beam (lam=0) is a catastrophic instrument that looks like a success: it scores -4.4 to -4.9 (above the bar) while recovering only 12-51% of runes, and it lifts EVERY wrong key to -4.88",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "analysis",
+   "date": "2026-08-26",
+   "coverage": "the concrete quantification of the attack round19/R1 is tasked with",
+   "not_covered": "n/a",
+   "result": "An UNPENALISED drift-tolerant beam (lam=0) is a catastrophic instrument that looks like a success: it scores -4.4 to -4.9 (above the bar) while recovering only 12-51% of runes, and it lifts EVERY wrong key to -4.88",
+   "evidence": [
+    "analysis/round19/I1/out_base.json",
+    "analysis/round19/I1/out_fp_curve.json"
+   ],
+   "raw_status": "MEASURED / WARNING"
+  },
+  {
+   "id": "I1-07",
+   "hypothesis": "keyskip2 (exact for skip_by_two) is NOT a drop-in replacement: it breaks the baseline construction at -6.631/37.9%",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "analysis",
+   "date": "2026-08-26",
+   "coverage": "keyskip supp in {0.0,0.4,0.83,1.0} x L in {240,400}",
+   "not_covered": "n/a",
+   "result": "keyskip2 (exact for skip_by_two) is NOT a drop-in replacement: it breaks the baseline construction at -6.631/37.9%",
+   "evidence": [
+    "analysis/round19/I1/out_base.json"
+   ],
+   "raw_status": "MEASURED"
+  },
+  {
+   "id": "I1-08",
+   "hypothesis": "Full-book positive control at L=12,956 replicated under both the exact and the permissive relation",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "analysis",
+   "date": "2026-08-26",
+   "coverage": "L=12,956, encipher_keyskip supp=0.83, English plaintext",
+   "not_covered": "the real LP2 ciphertext has no known key, so this is a plant control only",
+   "result": "Full-book positive control at L=12,956 replicated under both the exact and the permissive relation",
+   "evidence": [
+    "analysis/round19/I1/out_book.json"
+   ],
+   "raw_status": "VERIFIED"
+  },
+  {
+   "id": "I1-09",
+   "hypothesis": "RECOMMENDATION to Phase 2: baseline channel = keyskip1 with adaptive max_skip (free strict improvement, unchanged null); drift channel = permissive max_free=2 lam=12 start_slack=2, adjudicated against mu=-6.602 beta=0.0648, NEVER against the -5.5 floor",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "open",
+   "round": 19,
+   "lane": "analysis",
+   "date": "2026-08-26",
+   "coverage": "n/a",
+   "not_covered": "the adjudicator register axis - I1 repairs the decoder only; L7-A's register hole is untouched and I2 is still required",
+   "result": "RECOMMENDATION to Phase 2: baseline channel = keyskip1 with adaptive max_skip (free strict improvement, unchanged null); drift channel = permissive max_free=2 lam=12 start_slack=2, adjudicated against mu=-6.602 beta=0.0648, NEVER against the -5.5 floor",
+   "evidence": [
+    "analysis/round19/I1/RESULTS.md",
+    "analysis/round19/I1/driftbeam.py",
+    "analysis/round19/I1/run_gates.py"
+   ],
+   "raw_status": "RECOMMENDATION"
+  },
+  {
+   "id": "I2-MULTI-REGISTER-ADJUDICATOR",
+   "hypothesis": "round18/L7-A measured that the repository's adjudicator (lp.score.Quadgram.score_norm against a fixed -5.5 English band) discards the CORRECT key for Latin, Old English, German, Welsh and abbreviated English even though the beam recovers 100 % of the runes, and that doctrine R3's four language-agnostic statistics had 0/15 compliance.  I2 asserts that a nine-register rune-space language-model panel plus those four statistics, behind one adjudicate() call and one SWEEPROW schema, restores power >= 0.90 for every register without raising the false-positive rate at matched trial count.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "round19/I2",
+   "date": "2026-08-26",
+   "coverage": "Nine plaintext registers (EN_MODERN, EN_KJV, LP1_REAL, LATIN, OE, DE, CY, EN_HALFVOWEL, EN_NOVOWEL) x three segment lengths (120/240/400) x 24 replicates, plant windows drawn from held-out corpus TEST halves (LP1_REAL: leave-one-page-out).  Protocol is L7-A's verbatim: plant sha256_ctr(CICADA3301), encipher_keyskip(supp=0.83), beam_decode(beam_w=400,max_skip=3) with the CORRECT key, adjudicate on rune indices.  Wrong-key null measured on the real 12,956-rune unsolved LP2 stream under uniform random keys through the same beam: n=8000 at L=120, n=20000 at L=240, n=8000 at L=400; plus 200000 uniform-random-rune draws per length and a 20,000-draw random-rune calibration at each of 14 grid lengths.",
+   "not_covered": [
+    "registers outside the nine modelled: Greek, Hebrew, Norse/Icelandic, Enochian, constructed languages",
+    "non-linguistic payloads (key blocks, hashes, base32) - round10b/B6 showed this class is undetectable in principle by any language model, and the four agnostic statistics are the only instrument that touches it",
+    "decoder transition models beyond the Round-18 baseline: this lane deliberately held encipher_keyskip -> beam_decode fixed so its numbers are comparable with L7-A, and therefore INHERITS L7-B's hole (skip_by_two, free drift). That is lane I1's scope; every power number here is conditional on the baseline construction",
+    "key families other than sha256_ctr(CICADA3301) - power is a property of the adjudicator rather than the key, but only one family was measured",
+    "the beam still chooses its skip path by ENGLISH score, so for a register whose recovery is < 100 % the adjudicator sees an English-argmax path. Measured here only for EN_NOVOWEL (recovery 0.8083333333333333); a panel-aware beam is an open item for I1",
+    "family-wise thresholds at real sweep scale - the gate is adjudicated at the pre-registered per-decode alpha_ref=1e-3; the far-tail extrapolation in out_gates.json is SUPPLEMENTARY and I3 owns the calibrated bar"
+   ],
+   "reopens_if": "a register outside the nine is proposed (add it to build_models.REGISTERS and re-measure), OR I1 changes the decoder's transition relation (every power number here is conditional on encipher_keyskip -> beam_decode(400,3)), OR I3's calibrated family-wise bar lands above the far-tail extrapolation in out_gates.json, in which case the power table must be recomputed at that bar from the stored per-replicate rows in out_power.json.",
+   "result": {
+    "gate_verdicts": {
+     "G-POWER": "PASSED",
+     "G-FP": "PASSED",
+     "G-LP1": "PASSED",
+     "G-SPEED": "FAILED"
+    },
+    "min_panel_power_over_all_27_cells": 0.9166666666666666,
+    "panel_power_at_L240": {
+     "EN_MODERN": 1.0,
+     "EN_KJV": 1.0,
+     "LP1_REAL": 1.0,
+     "LATIN": 1.0,
+     "OE": 1.0,
+     "DE": 1.0,
+     "CY": 1.0,
+     "EN_HALFVOWEL": 1.0,
+     "EN_NOVOWEL": 1.0
+    },
+    "legacy_scorer_power_at_L240_same_plants": {
+     "EN_MODERN": 1.0,
+     "EN_KJV": 1.0,
+     "LP1_REAL": 1.0,
+     "LATIN": 0.625,
+     "OE": 0.6666666666666666,
+     "DE": 0.6666666666666666,
+     "CY": 0.0,
+     "EN_HALFVOWEL": 0.3333333333333333,
+     "EN_NOVOWEL": 0.0
+    },
+    "median_panel_pmax_at_L240": {
+     "EN_MODERN": 27.073200225284236,
+     "EN_KJV": 28.916905088361407,
+     "LP1_REAL": 29.409753266404326,
+     "LATIN": 25.486147585137573,
+     "OE": 19.846823333709427,
+     "DE": 28.95935097166769,
+     "CY": 18.969939261279983,
+     "EN_HALFVOWEL": 19.474742355088775,
+     "EN_NOVOWEL": 18.483553118817905
+    },
+    "median_legacy_en_at_L240": {
+     "EN_MODERN": -4.27321086546344,
+     "EN_KJV": -4.064470804228393,
+     "LP1_REAL": -4.270939212994539,
+     "LATIN": -5.442873609729354,
+     "OE": -5.386486924703686,
+     "DE": -5.460266061077093,
+     "CY": -6.318029691478689,
+     "EN_HALFVOWEL": -5.67456231914884,
+     "EN_NOVOWEL": -7.61495965569126
+    },
+    "median_rune_recovery_at_L240": {
+     "EN_MODERN": 1.0,
+     "EN_KJV": 1.0,
+     "LP1_REAL": 1.0,
+     "LATIN": 1.0,
+     "OE": 1.0,
+     "DE": 1.0,
+     "CY": 1.0,
+     "EN_HALFVOWEL": 1.0,
+     "EN_NOVOWEL": 0.8083333333333333
+    },
+    "k_eff_effective_independent_tests": {
+     "120": 6.250000000000005,
+     "240": 9.523809523809533,
+     "400": 8.000000000000007
+    },
+    "beam_inflation_of_the_null": {
+     "120": {
+      "pmax_mean_wrongkey": 1.6735308225409329,
+      "pmax_mean_random_rune": 1.162820723638039,
+      "en_mean_wrongkey": -7.3402139436418965,
+      "en_mean_random_rune": -7.50683270780375
+     },
+     "240": {
+      "pmax_mean_wrongkey": 2.0201036748604926,
+      "pmax_mean_random_rune": 1.1698817347689743,
+      "en_mean_wrongkey": -7.309514622808709,
+      "en_mean_random_rune": -7.505847640727251
+     },
+     "400": {
+      "pmax_mean_wrongkey": 2.3959252007734433,
+      "pmax_mean_random_rune": 1.166259321171817,
+      "en_mean_wrongkey": -7.291892591957968,
+      "en_mean_random_rune": -7.505496645332792
+     }
+    },
+    "thresholds_at_alpha_ref_1e-3": {
+     "120": {
+      "t_en": -6.617622156983563,
+      "t_pmax": 4.277296190240552,
+      "t_pcon": 3.865970285021118,
+      "t_en_empirical": -6.639599614360208,
+      "t_en_gpd": -6.617622156983563,
+      "t_pmax_empirical": 4.277296190240552,
+      "t_pmax_gpd": 4.269353844243859,
+      "wrongkey_n": 8000,
+      "random_rune_n": 200000,
+      "k_eff": 6.250000000000005,
+      "k_eff_by_quantile": {
+       "0.99": {
+        "t": 3.0786669181065753,
+        "P_pmax_gt_t": 0.010000000000000009,
+        "P_zEN_gt_t": 0.001375,
+        "k_eff": 7.27272727272728
+       },
+       "0.999": {
+        "t": 3.8090391442621265,
+        "P_pmax_gt_t": 0.0010000000000000009,
+        "P_zEN_gt_t": 0.00016,
+        "k_eff": 6.250000000000005
+       },
+       "0.9999": {
+        "t": 4.508495310674055,
+        "P_pmax_gt_t": 9.999999999998899e-05,
+        "P_zEN_gt_t": 2.5e-05,
+        "k_eff": 3.9999999999995595
+       }
+      },
+      "k_eff_with_poisson_ci": {
+       "random_rune_n": 200000,
+       "0.99": {
+        "k_eff": 7.27272727272728,
+        "exceedances": 275,
+        "k_eff_ci95": [
+         6.504003216758304,
+         8.247522090958526
+        ],
+        "t": 3.0786669181065753
+       },
+       "0.999": {
+        "k_eff": 6.250000000000005,
+        "exceedances": 32,
+        "k_eff_ci95": [
+         4.641724510047392,
+         9.56362806680358
+        ],
+        "t": 3.8090391442621265
+       },
+       "0.9999": {
+        "k_eff": 3.9999999999995595,
+        "exceedances": 5,
+        "k_eff_ci95": [
+         2.1315841301807463,
+         32.39880261014693
+        ],
+        "t": 4.508495310674055
+       }
+      },
+      "legacy_bar_fp_rate_wrongkey": 0.0,
+      "beam_inflation_pmax_mean": 0.5107100989028939,
+      "beam_inflation_en_mean": 0.1666187641618535
+     },
+     "240": {
+      "t_en": -6.830081179587935,
+      "t_pmax": 4.671143661330486,
+      "t_pcon": 4.05439459832286,
+      "t_en_empirical": -6.830081179587935,
+      "t_en_gpd": -6.830512581190833,
+      "t_pmax_empirical": 4.639338864451086,
+      "t_pmax_gpd": 4.671143661330486,
+      "wrongkey_n": 20000,
+      "random_rune_n": 200000,
+      "k_eff": 9.523809523809533,
+      "k_eff_by_quantile": {
+       "0.99": {
+        "t": 3.071040070825268,
+        "P_pmax_gt_t": 0.010000000000000009,
+        "P_zEN_gt_t": 0.001395,
+        "k_eff": 7.1684587813620135
+       },
+       "0.999": {
+        "t": 3.756939218601412,
+        "P_pmax_gt_t": 0.0010000000000000009,
+        "P_zEN_gt_t": 0.000105,
+        "k_eff": 9.523809523809533
+       },
+       "0.9999": {
+        "t": 4.307188968549371,
+        "P_pmax_gt_t": 9.999999999998899e-05,
+        "P_zEN_gt_t": 1e-05,
+        "k_eff": 9.999999999998899
+       }
+      },
+      "k_eff_with_poisson_ci": {
+       "random_rune_n": 200000,
+       "0.99": {
+        "k_eff": 7.1684587813620135,
+        "exceedances": 279,
+        "k_eff_ci95": [
+         6.415634553351873,
+         8.121446633339152
+        ],
+        "t": 3.071040070825268
+       },
+       "0.999": {
+        "k_eff": 9.523809523809533,
+        "exceedances": 21,
+        "k_eff_ci95": [
+         6.670702806059487,
+         16.641494135380295
+        ],
+        "t": 3.756939218601412
+       },
+       "0.9999": {
+        "k_eff": 9.999999999998899,
+        "exceedances": 2,
+        "k_eff_ci95": [
+         4.191239043501202,
+         39.999999999995595
+        ],
+        "t": 4.307188968549371
+       }
+      },
+      "legacy_bar_fp_rate_wrongkey": 0.0,
+      "beam_inflation_pmax_mean": 0.8502219400915183,
+      "beam_inflation_en_mean": 0.1963330179185423
+     },
+     "400": {
+      "t_en": -6.915106145330577,
+      "t_pmax": 5.226150630036162,
+      "t_pcon": 4.075125182569442,
+      "t_en_empirical": -6.915106145330577,
+      "t_en_gpd": -6.921960916894494,
+      "t_pmax_empirical": 5.226150630036162,
+      "t_pmax_gpd": 5.130981083472855,
+      "wrongkey_n": 8000,
+      "random_rune_n": 200000,
+      "k_eff": 8.000000000000007,
+      "k_eff_by_quantile": {
+       "0.99": {
+        "t": 3.0455528394447318,
+        "P_pmax_gt_t": 0.010000000000000009,
+        "P_zEN_gt_t": 0.001335,
+        "k_eff": 7.490636704119857
+       },
+       "0.999": {
+        "t": 3.76468527196971,
+        "P_pmax_gt_t": 0.0010000000000000009,
+        "P_zEN_gt_t": 0.000125,
+        "k_eff": 8.000000000000007
+       },
+       "0.9999": {
+        "t": 4.381479944258676,
+        "P_pmax_gt_t": 9.999999999998899e-05,
+        "P_zEN_gt_t": 2e-05,
+        "k_eff": 4.999999999999449
+       }
+      },
+      "k_eff_with_poisson_ci": {
+       "random_rune_n": 200000,
+       "0.99": {
+        "k_eff": 7.490636704119857,
+        "exceedances": 267,
+        "k_eff_ci95": [
+         6.68836676293083,
+         8.511604053125216
+        ],
+        "t": 3.0455528394447318
+       },
+       "0.999": {
+        "k_eff": 8.000000000000007,
+        "exceedances": 25,
+        "k_eff_ci95": [
+         5.747126436781615,
+         13.157894736842119
+        ],
+        "t": 3.76468527196971
+       },
+       "0.9999": {
+        "k_eff": 4.999999999999449,
+        "exceedances": 4,
+        "k_eff_ci95": [
+         2.525252525252247,
+         39.999999999995595
+        ],
+        "t": 4.381479944258676
+       }
+      },
+      "legacy_bar_fp_rate_wrongkey": 0.0,
+      "beam_inflation_pmax_mean": 1.2296658796016262,
+      "beam_inflation_en_mean": 0.2136040533748238
+     }
+    },
+    "us_per_decode": {
+     "adjudicate_240": 164.31400799774565,
+     "score_norm_240": 34.333121991949156,
+     "ratio": 4.785874352943376,
+     "batch_panel_only_240": 10.194450190681437
+    },
+    "sweeprow_bytes_per_row": {
+     "jsonl": "~130",
+     "binary_ROW_DTYPE": 77
+    }
+   },
+   "evidence": [
+    "analysis/round19/I2/out_build.json",
+    "analysis/round19/I2/out_smoke.json",
+    "analysis/round19/I2/out_null.json",
+    "analysis/round19/I2/out_power.json",
+    "analysis/round19/I2/out_speed.json",
+    "analysis/round19/I2/out_gates.json"
+   ],
+   "raw_status": "mixed"
+  },
+  {
+   "id": "R19-I3-NULLS",
+   "hypothesis": "Extended null calibration: per-register, per-decoder-mode and panel-max thresholds for the Round-19 instrument",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "I3",
+   "date": "2026-08-26",
+   "coverage": "91 null cells, ~9.6e6 wrong-key beam decodes. 9 registers x segment lengths {31,120,240} at beam_w 400; 9 decoder transition relations (keyskip1, skip_by_two, drift1-3, union{2,4,6,8}) at L=120; 4 (L, beam_w=120) geometries {25,31,40,400} matching R17's actual escalation settings; 4 I1 presets x 13 I2 statistics; 2 panel-combination rules (max-z and min-p PIT); a shuffle-null control on the real ciphertext; 3 plants; 14 historical sweep stages of Rounds 13/16/17 re-derived at their own adjudicated decode counts.",
+   "not_covered": [
+    "M >= 1e6 for 71 of 91 cells. Those bars are PROVISIONAL: their false-positive rate is unverified at the pre-registered precision, not known to be wrong. Reasons and throughput in RESULTS.md 9.1; the exact re-run is in RESULTS.md 12.",
+    "Segment lengths outside {25,31,40,120,240,400}. L=100, 262 and 12,956 appear in the G-HONEST table as extrapolations along the fitted beta ~ L^-0.583 law and are flagged as such.",
+    "Beam widths other than 120 and 400.",
+    "Signs other than -1, and non-uniform / low-entropy key material (L7-B.1 shows the decoder behaves differently on constant-byte runs).",
+    "I1's n_skips statistic has NO null curve here and must not be thresholded until it does. It is language-independent and is this lane's top recommended addition.",
+    "I2's ioc, mds, h2, zl have no null curve here; only en, pmax, pmax_ne, pcon and the nine z's are calibrated.",
+    "Combinations of transition-relation axes; each mode was measured alone.",
+    "A decoder-output-standardised panel z (INTERFACE R-I2-2b). The BARS are on the decoder-output null and are correct; I2's internal z SCALE is not, and rule 7 of the contract says so."
+   ],
+   "reopens_if": "I1 changes any PRESETS entry (voids that preset's cells); I2 rebuilds models/panel.npz (voids every pmax/pcon/z cell); driftbeam.beam_decode starts returning the PENALISED score (voids every en cell); a Phase-2 lane needs a segment length or beam width outside the measured grid; or a keystream family whose null is not uniform-random-like. See INTERFACE.md section 4.",
+   "evidence": [
+    "PREREG.md",
+    "RESULTS.md",
+    "INTERFACE.md",
+    "ledger.json",
+    "calib19.json",
+    "nullcurve19.py",
+    "vecbeam.py",
+    "registers.py",
+    "run_calibration.py",
+    "run_i1i2.py",
+    "plants.py",
+    "ghonest.py",
+    "summary.py",
+    "test_i3.py",
+    "out_registers_L31.json",
+    "out_registers_L120.json",
+    "out_registers_L240.json",
+    "out_registers_L120_shuffle.json",
+    "out_modes.json",
+    "out_pit_L120.json",
+    "out_i2panel_L120.json",
+    "out_i2panel_L31.json",
+    "out_i1_drift_L120.json",
+    "out_i1_pair_L120.json",
+    "out_i1_exact_ms8_L120.json",
+    "out_r17_L25_bw120.json",
+    "out_r17_L31_bw120.json",
+    "out_r17_L40_bw120.json",
+    "out_r17_L400_bw120.json",
+    "out_geq.json",
+    "out_ghonest.json",
+    "out_plants.json",
+    "out_plants_p12.json",
+    "out_plants_L31.json",
+    "out_power_L31.json",
+    "out_summary.json"
+   ],
+   "raw_status": "INSTRUMENT-CALIBRATED"
+  },
+  {
+   "id": "R19-R1-A",
+   "hypothesis": "Permissiveness frontier of a drift-tolerant beam (I1's premise)",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "PC-A1 exact/ms3 keyskip -4.380 / recovery 1.000; PC-A2 reproduces L7-B's skip_by_two hole at -6.718 / 0.275 (L7-B measured -6.90 / 0.258); PC-A3 wrong-key null mean -7.323",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "R1",
+   "date": "2026-08-26",
+   "coverage": "22 transition configurations x {keyskip, skip_by_two, free-drift q=0.05} plants x 7 replicates, plus 200 uniform-random wrong keystreams against the real LP2 ciphertext per configuration, L=240, beam 400",
+   "not_covered": "structured wrong keys (near-miss seeds, offset-shifted correct keys, prefix-sharing keys) - the null here is uniform-random keystreams only; one key family (sha256_ctr); one register (held-out English) in the frontier; lambda bracketed 4-10 not optimised; beam width fixed at 400; constructions tested one axis at a time; I1 as shipped code (had not landed)",
+   "reopens_if": "a structured-wrong-key null shows separation collapsing at union2's branching, or I1 ships a transition relation outside the five families measured here",
+   "raw_status": "MEASURED"
+  },
+  {
+   "id": "R19-R1-B",
+   "hypothesis": "Multi-register panel: effective tests, false-positive inflation, selection-correction power, and the I1xI2 interaction",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "PC-B1 PASS 9/9 - every register scores its own text 1.09-3.07 nats above uniform runes",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "R1",
+   "date": "2026-08-26",
+   "coverage": "2000 uniform-rune strings for the correlation structure; 3000 calibration + 3000 test noise strings for the FPR; 1200 noise decodes -> top-120 English-argmax reference set for the selection correction; 7 replicates x 6 registers x 3 decoders for the interaction",
+   "not_covered": "order-3 rune trigram LMs only (round16/scorer's matched runic quadgram scorer still unadopted by any lane); the four doctrine-R3 language-agnostic statistics were implemented but not folded into a panel test; registers outside the 9; non-linguistic payloads (B6 proved undetectable in principle); I2 as shipped code",
+   "reopens_if": "I2 calibrates a direct null on the panel maximum rather than per-register bars; or the archive's own contrast spread is compared directly against L7's out_a2.json raw contrasts",
+   "raw_status": "MEASURED"
+  },
+  {
+   "id": "R19-R1-C",
+   "hypothesis": "Audit of the L1 toolchain prior (round18/L1 section 6), which Round 19 Phase 1 rests on",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "the alternative pipelines were RUN on this machine and their marker vectors measured, not argued for",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "R1",
+   "date": "2026-08-26",
+   "coverage": "LP2 page 0 vector re-measured independently; 5 pipeline variants run (gs stage 1, gs->PIL keep+optimize, gs->PIL gray q92, gs->ImageMagick default); all 56 PGP signature blocks in corpus/A-primary-artifacts/ibotpeaches parsed and payload-hashed; all 11 rows of L1 section 6.2 audited for derivation",
+   "not_covered": "jpegtran is not installed on this machine so the lossless-optimise arm is untested; C-i shows non-uniqueness, not a different answer (ImageMagick remains the best single fit on the automatic 23/35 grayscale split); openSUSE and the exact CentOS 6 gnupg-1 package version are unconfirmed; whether the curated PGP corpus was re-armored downstream is not excluded, only made implausible",
+   "reopens_if": "ImageMagick 6.x coders/jpeg.c is measured directly against the LP2 vector (L1 NC-2), a source PDF surfaces (L1 NC-6), or L1 section 6.2 restates the multipliers as an ordering",
+   "raw_status": "MEASURED"
+  },
+  {
+   "id": "R19-R1-D",
+   "hypothesis": "Round 19's own arithmetic: enumeration cost, the prefilter dilemma, S2's reach, and Phase 3's premise",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "R1",
+   "date": "2026-08-26",
+   "coverage": "3 decoders x 3 segment lengths for throughput; 5 named spaces priced; 275,708-candidate/s prefilter measured; 6 registers x 2 constructions x 30 replicates for prefilter survival; all stored top-N rows in round13/B04, round16/prng and round17 counted",
+   "not_covered": "throughput is one machine and CPython; a C or numpy-vectorised beam changes the absolute numbers but not the exact-vs-union2 ratio nor the nine orders of magnitude between generating and adjudicating a keystream; the prefilter survival measurement ranks the true offset against 400 wrong offsets, which does not directly extrapolate to a 1e-4 keep fraction",
+   "reopens_if": "a skip-aware multi-register prefilter is built and its per-register survival published; or a future sweep persists the doctrine-R3 statistics at sweep time so re-adjudication becomes possible at all",
+   "raw_status": "MEASURED"
+  },
+  {
+   "id": "R19-R1-VERDICT",
+   "hypothesis": "Is Round 19 correctly aimed?",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "audit",
+   "round": 19,
+   "lane": "R1",
+   "date": "2026-08-26",
+   "raw_status": "REPORTED"
+  },
+  {
+   "id": "T1-01",
+   "hypothesis": "Per-rune reader: G-READ-LP2 passes at 100% (180/180) on the solved LP2-typeface control pages",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "T1",
+   "date": "2026-08-26",
+   "coverage": "180 canon runes on the two solved LP2-typeface pages; leave-one-page-out (every crop on the page under test removed from the label consensus). Supported by 13,074 leave-one-page-out corpus positions at 99.99235% and 13,039 leave-one-bitmap-out positions at 99.9847%.",
+   "not_covered": "n=180 bounds true accuracy at >=98.34% (95%, rule of three) on the control set ALONE. LP1 typeface NOT covered: 94.60% recall, so the pooled gate G-READ-ALL FAILS at 1879/1976 = 95.09%. Illuminated initials are a weak sub-path (15/17, plus 50 corpus-wide false positives). One image lineage only (relikd masters + the byte-identical vendored set, 2400x3600).",
+   "reopens_if": "a per-image LP1 ground truth becomes available (the scream314 LP1 rune blocks are reflowed, which is what blocks LP1 scoring), or a higher-resolution master is obtained.",
+   "result": "A reader that segments by connected component and classifies each crop at NATIVE resolution by translation-minimised Hamming distance to an unsupervised exemplar bank reads the two decryption-validated LP2 control pages (73.jpg = p56 AN END, 74.jpg = p57 PARABLE) at 180/180 = 100.0000%, with zero missing and zero spurious glyphs, and a diagonal 29-class confusion matrix.",
+   "evidence": [
+    "analysis/round19/T1/out_gread_lp2.json",
+    "analysis/round19/T1/out_gread_lp1.json",
+    "analysis/round19/T1/RESULTS.md"
+   ],
+   "raw_status": "measured"
+  },
+  {
+   "id": "T1-02",
+   "hypothesis": "FOUND-ERROR in every height-filtered component segmentation in this repo: the rune Y is drawn as TWO components and collapses to U",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "audit",
+   "round": 19,
+   "lane": "T1",
+   "date": "2026-08-26",
+   "coverage": "measured on relikd p0-p5 (1,142 aligned glyph positions, per-rune inner-component census) and applied corpus-wide; the corpus-wide consequence is the purity/agreement jump.",
+   "not_covered": "the defect was not traced INTO analysis/geometry/segment.py or analysis/stones/pipeline.py's own outputs; both filter components by height in the same way and are therefore expected to carry it, but that was not re-measured here. Its contribution to the ('U','Y',6) top confusion in analysis/retranscribe/diff_report.json is inferred, not measured.",
+   "reopens_if": "someone re-runs geometry/segment.py or stones/pipeline.py with inner-component attachment and reports the delta.",
+   "result": "Of the 29 runes, exactly one -- Y (futhorc 'yr') -- is typeset as two disconnected components: an outline identical to U plus a detached inner stroke of median height 58 px. 54 of 55 sampled Y glyphs carry one; no other rune carries one at all. A segmentation that filters components by rune height therefore discards the stroke and makes every Y in the book pixel-identical to a U (measured ink 2134 vs 2133 on the same 114x53 box). Repairing it moved this lane's bitmap purity from 97.15% to 100.0000% and page agreement from 95.76% to 98.98% in one step.",
+   "evidence": [
+    "analysis/round19/T1/d9_ycomp.py",
+    "analysis/round19/T1/t1_reader.py",
+    "round19/T1/RESULTS.md#22"
+   ],
+   "raw_status": "found-error"
+  },
+  {
+   "id": "T1-03",
+   "hypothesis": "G-OAE PASSES: zero O/A/AE confusion in all six ordered directions over 1,404 family glyphs",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "T1",
+   "date": "2026-08-26",
+   "coverage": "1,404 O/A/AE crops = 10.77% of the LP2 corpus; whole-book leave-one-bitmap-out is 13,037/13,039 = 99.9847% crop-weighted, with the only two errors a single reciprocal U<->B bitmap pair.",
+   "not_covered": "LP2 typeface only. On LP1 the triple also shows 100% recall but on only 19/69/54 positions. The triple's behaviour on illuminated initials is not measured.",
+   "reopens_if": "a source at higher resolution than 400 dpi shows a within-class distinction this render does not preserve in ink.",
+   "result": "Under leave-one-bitmap-out classification (each distinct bitmap matched against a bank with itself removed), the {O, A, AE} triple shows recall 464/464, 482/482, 458/458 -- 100.0000% each -- and all six ordered pairwise confusion rates are exactly 0. Separation is a factor of five in raw pixels: class A's maximum distance to its own class is 38 against a minimum distance to any other class of 189; AE's are 110 against 244.",
+   "evidence": [
+    "analysis/round19/T1/out_loo.json",
+    "analysis/round19/T1/p_loo.py"
+   ],
+   "raw_status": "measured"
+  },
+  {
+   "id": "T1-04",
+   "hypothesis": "The 450 located O/A/AE disagreements are adjudicated: canon holds at 450/450",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "T1",
+   "date": "2026-08-26",
+   "coverage": "450/450 of the pre-registered target, all on unsolved pages 0-54, stream positions 27..12,897. Powered: planted substitutions are detected 100% of the time conditional on the position surviving alignment (0 reader-blind misses in 122 plants, P-1 and P-2), and the reader's own error rate on ordinary LP2 glyphs is 1/13,074 = 0.008%, two and a half orders of magnitude below the 3.07% disagreement rate being adjudicated.",
+   "not_covered": "SUBSTITUTION errors only: a canon insertion or deletion would surface among the 113 positions that did not align 1:1 (31 canon runes with no glyph, 82 glyphs with no canon rune, 50 of the latter being false illuminated-initial detections), and those 113 are UNADJUDICATED, not adjudicated in canon's favour. None of them is among the 450. The bitmap->rune assignment is canon-derived (mitigated by consensus over hundreds of occurrences, never the judged position, whole-page hold-out, and check B1 which reproduces 74.jpg from its English plaintext) so a GLOBAL relabel of a whole rune class that also permuted the solved pages' decryption is outside what this instrument can see.",
+   "reopens_if": "a human inspection of image page 27, canon position 93 (canon U, T1 B, margin 5 -- the smallest margin in the corpus) finds canon wrong there; or someone adjudicates the 113 unaligned positions.",
+   "result": "All 450 records of analysis/independent-read/oae_mismatch.json map into this lane's coordinates (canon rune matching at every one, 0 UNLOCATABLE), and the per-glyph reader AGREES WITH CANON at 450/450. Zero disagreements, zero undecidable. Margins are min 161 / p1 188 / median 195 against a control-derived decision cut of 5, so not one of the 450 is a close call. The direction breakdown (A->O 306, O->A 72, AE->A 70, A->AE 2) reproduces round19/T3's independently derived mapping exactly.",
+   "evidence": [
+    "analysis/round19/T1/adjudication.json",
+    "analysis/round19/T1/j2_adjudicate.py",
+    "analysis/round19/T1/out_summary.json"
+   ],
+   "raw_status": "measured"
+  },
+  {
+   "id": "T1-05",
+   "hypothesis": "The LP2 transcription reads at 99.6346% corpus-wide; T3's IoC and delta-spectrum channels do not move",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "T1",
+   "date": "2026-08-26",
+   "coverage": "13,136/13,136 canon positions attempted; 13,091 aligned 1:1 and adjudicated. Accuracy is flat in local page density (99.84% sparsest quartile to 99.51% densest), and the OTP dense block (image pages 45-55) reads at 99.7993% with ZERO 1:1 disagreements -- better than the rest of the book.",
+   "not_covered": "31 canon runes with no segmented glyph and 82 glyphs with no canon rune are unadjudicated. Illuminated initials read at 15/17 and produced 50 false positives corpus-wide. The near-blank image p50 has no canonical_pages.json entry, so canon entry k maps to image page k for k<=49 and k+1 thereafter -- a join any lane using both coordinate systems must apply.",
+   "reopens_if": "the 113 unaligned positions are adjudicated, or p27:93 resolves against canon.",
+   "result": "Independent per-glyph re-read of all 13,136 LP2 canon runes agrees with canon at 13,088 = 99.6346%; on ordinary glyphs and repaired merges alone, 13,073/13,074 = 99.99235%. Exactly ONE ordinary glyph in the book is read differently (p27 position 93, U->B, margin 5, the corpus minimum) and it is not an O/A/AE position and not one of the 450. Feeding W=0 on the 450 into round19/T3's section 8 lookup: IoC.N stays 0.99987 and does not leave the flatness band (T3 measured the band is left at k~167); delta-spectrum max|z| stays 2.641 against round18/L2's 3.57 bar rather than travelling 47% of the way to it; draw count stays 373.6. L2 section 2 recorded that statistic 'so that a future re-read can check whether it moves' -- it was checked and it does not move.",
+   "evidence": [
+    "analysis/round19/T1/out_corpus_lp2.json",
+    "analysis/round19/T1/out_density.json",
+    "analysis/round19/T1/out_segcheck.json"
+   ],
+   "raw_status": "measured"
+  },
+  {
+   "id": "T2-INDEL",
+   "hypothesis": "NEW ENTRY, closing T3's stated largest gap: 'every model here is substitution-only and preserves n=12,956. Insertions/deletions and segmentation errors are not bounded at all.' How many runes can canon have inserted or deleted?",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "negative",
+   "round": 19,
+   "lane": "round19/T2",
+   "date": "2026-08-26",
+   "coverage": "Every single-token insertion at all 13,725 gap positions and every single-token deletion at all 13,121 rune slots, over 604/604 lines.",
+   "not_covered": "Multi-indel and correlated length errors; transpositions; whole-line omissions. Raising the band mask to rune bodies only (h >= 95) removes 20 of the 26 flags - confirming the mechanism - but BREAKS the control (1.0000 -> 0.9775), because the same 35-94 px class also contains genuine split strokes of real runes. No single height threshold zeroes both; that is a real limit of component-height stripping at this render, and the operating point chosen is the one whose control is exact.",
+   "reopens_if": "The 35-94 px mark class (out_orphan.json, 487 marks) is shown to carry information - a separate question from transcription fidelity, which this lane did not test. Or a second LP2-face solved page disagrees.",
+   "result": "Canon can contain k <= 0.74 missing runes and k <= 0.93 extra runes at 95% confidence - i.e. k <= 1 of each - from ZERO surviving candidates over 13,121 tested positions at the measured localisation power (95% lower bounds 0.9822 and 0.9607). 26 lines raised a flag (1 extra-rune, 25 missing-rune; 0 on solved pages, 24 on pages 0-44, 2 on pages 45-54) and ALL 26 adjudicate to SEG. Crude ceiling charging every flag to canon without adjudication: <= 26 indels, all on the unsolved stream, none on a page proven by decryption. Mechanism, measured: both remaining substitution candidates and 21 of the 26 indel flags sit on a MID-SIZE MARK CLASS - ink 35-94 px tall, between a separator dot and a rune body, mostly thin vertical ticks (h ~ 50, w ~ 5-19). 487 of them across 349 of 604 lines. They appear on the decryption-proven pages too (3 on p56, 1 on p57), where canon omits them and the decrypt is correct, so the class is PROVEN NON-TEXTUAL BY DECRYPTION and canon is right not to transcribe it.",
+   "evidence": [
+    "liber-primus/analysis/round19/T2/RESULTS.md",
+    "liber-primus/analysis/round19/T2/out_indel.json",
+    "liber-primus/analysis/round19/T2/out_indel_score.json",
+    "liber-primus/analysis/round19/T2/out_indel_adj.json",
+    "liber-primus/analysis/round19/T2/out_orphan.json"
+   ],
+   "raw_status": "negative"
+  },
+  {
+   "id": "T3-PROPAGATION-MAP",
+   "hypothesis": "Every load-bearing statistic in this repo is computed from the pinned 12,956-rune stream, but nobody has measured how sensitive any of them is to the transcription. Perturb the stream by k runes and recompute, so that T1's and T2's re-read has a price.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "round19/T3",
+   "date": "2026-08-26",
+   "coverage": "62/62 ledger entries and 17 synthesis claims classified by stream-dependence channel, 0 UNKNOWN. 7 perturbation models x 9-14 k values x 400 trials on the summary channels (~20,000 perturbed streams, each SHA-256'd). The targeted arm enumerates its positions EXHAUSTIVELY (all 450 located, all 1,385 family) rather than sampling, and computes its worst case exactly. Decode channel: 3 segment lengths (120 / 400 / 12,956) x up to 14 k values x 60-120 replicates, with an in-lane wrong-key control in every cell.",
+   "not_covered": "INSERTIONS, DELETIONS and line-order / segmentation errors. Every model here is substitution-only and preserves n = 12,956; an indel re-indexes every downstream position and every S3 layout statistic and is strictly more damaging. Ledger items B-23 (separator audit, 170 of 604 lines, 19 disagreements unread) and H-02 (full-corpus whitespace re-audit) sit in exactly that class and this lane bounds neither. Also not covered: the decode arm uses encipher_keyskip -> fastbeam(max_skip=3), which per L7-B covers ONE rejection-loop implementation and not skip_by_two or free drift -- §5's derail curve should be re-measured under round19/I1's repaired driftbeam. Adjudicator is the English quadgram scorer on the LP1_REAL register only (L7-A power 1.00 there, as low as 0.00 elsewhere); the n_skips channel in §5.1 is the register-free one.",
+   "reopens_if": "T1 or T2 return a disagreement count with a NON-O/A/AE component (read the P-RAND row, not P-OAE450); any evidence of insertion/deletion errors, which this lane does not bound; a re-run of §5 under round19/I1's repaired decoder; or a resolution of the round18 L2-A vs L7-C.2 conflict recorded in §2.1, which decides whether the headline k measures a load-bearing step or a superseded one.",
+   "result": {
+    "baseline_sha256": "023312066df471005264b9cbe7997cb77d2a9a6a2dc9b3316d22674023af1585",
+    "sha_matches_problem_json_pin": true,
+    "dependency_map": {
+     "ledger_entries_classified": 62,
+     "synthesis_claims_classified": 17,
+     "stream_dependent": 53,
+     "unknown_provenance": 0,
+     "channels": {
+      "S0_not_stream_dependent": 30,
+      "S1_summary_statistic": 10,
+      "S2_decode_score": 27,
+      "S3_layout_counts": 4,
+      "S4_the_transcription_itself": 5,
+      "mixed": 5
+     },
+     "reproduce_paths_unresolved": [
+      "R16-KDF -> sweep.py (stale path; the entry's own note says it reuses round15/KDF/sweep.py)"
+     ]
+    },
+    "k_star_doublet_deficit": {
+     "binding_floor_pct": 0.972,
+     "binding_floor_source": "German, round18/L7 §C.2 (the published 1.50 % is stale; KJV is 1.386 %)",
+     "adversarial_bound": 20,
+     "uniform_random_median": 714,
+     "uniform_random_p95": 497,
+     "dense_pages_45_54_median": 893,
+     "located_450_OAE": "NEVER CROSSES (max 0.795 % at k=450)",
+     "whole_OAE_family_random": "NEVER CROSSES (max 0.857 % at k=800)",
+     "k_star_KJV_1386_adversarial": 47,
+     "k_star_KJV_1386_random_median": 1756,
+     "k_star_stale_1500_adversarial": 54,
+     "k_star_stale_1500_random_median": 2053
+    },
+    "targeted_all_450_flipped": {
+     "sha256_prefix": "35651be7ba831ce2",
+     "doublets": 103,
+     "doublet_rate_pct": 0.7951,
+     "ratio_below_binding_floor": 1.22,
+     "ioc_norm": 1.01382,
+     "ioc_crosses_flat_band_at_k": 167,
+     "lag1_suppression_pct": 77.26,
+     "s_star": 0.7756,
+     "extra_draws": 356.0,
+     "delta_max_abs_z": 3.137,
+     "delta_bonferroni_bar": 3.57,
+     "line_break_doublets": 4,
+     "line_initial_chi2": 82.14
+    },
+    "hard_bound_on_the_OAE_family": {
+     "all_450_adversarial_within_family_pct": 1.0884,
+     "all_1385_family_adversarial_within_family_pct": 1.4357,
+     "statement": "No O/A/AE confusion, however adversarially chosen, can carry the doublet rate above 1.4357 % -- below the stale 1.50 %, below held-out English 1.483 % and below Latin 1.425 %; it clears only KJV's 1.386 %."
+    },
+    "decode_channel_full_book": {
+     "K_REC_k": 450,
+     "K_SEP_k": 900,
+     "derail_fraction_at_k200": 0.17,
+     "derail_fraction_at_k450": 0.5,
+     "derail_fraction_at_k900": 1.0,
+     "recovery_median_at_k450": 0.862,
+     "graceful_ideal_at_k450": 0.965,
+     "mechanism": "max_skip lets the key run ahead only; once the beam takes a spurious skip at a corrupted rune it can never re-synchronise, so derailment compounds with length"
+    },
+    "n_skips_channel": {
+     "margin_retained_at_k450_pct": 98.39,
+     "exact_up_to_k": 100,
+     "statement": "I1's n_skips discriminator (418 correct vs 1537 wrong, margin 1119) loses only 1.6 % of its margin at k=450, where the English score has lost half its recovery. It is the transcription-robust ranking channel."
+    },
+    "expected_wrong_runes": {
+     "E_upper_R9": 398,
+     "E_upper_frontB": 259,
+     "E_located": 450,
+     "E_attributed_by_the_audits": 0,
+     "E_C3_corrected": 0,
+     "C3_reader_precision_pct": 95.56,
+     "argument": "round19/C3 measures an independent per-glyph reader at 95.56 % on the LP2 typeface (error 4.44 %). R9 disagrees with canon at 3.07 % and frontB at 2.00 % -- BOTH BELOW the reader's own error rate -- so under p_disagree ~= p_reader + p_canon the implied canon error rate is <= 0. The disagreements are fully explained by the instrument."
+    },
+    "verdict_by_channel": {
+     "doublet_deficit_vs_actual_OAE_process": "MARGIN HOLDS (never crosses)",
+     "doublet_deficit_vs_uniform_random_median": "MARGIN NARROW (R = 1.79)",
+     "doublet_deficit_adversarial_bound": "DOES NOT HOLD at k=20 -- a bound, not a forecast",
+     "flatness_IoC_vs_located_450": "DOES NOT HOLD (crosses at k=167); magnitude is 1.9 % of the distance from flat to English",
+     "delta_spectrum": "MARGIN HOLDS (2.641 -> 3.137 against a 3.57 bar)",
+     "full_book_correct_key_recovery": "MARGIN NARROW (R = 1.13)",
+     "n_skips": "MARGIN HOLDS",
+     "at_the_measured_E_W_of_zero": "MARGIN HOLDS on every channel"
+    }
+   },
+   "evidence": [
+    "liber-primus/analysis/round19/T3/RESULTS.md",
+    "liber-primus/analysis/round19/T3/out_summary.json",
+    "liber-primus/analysis/round19/T3/out_baseline.json",
+    "liber-primus/analysis/round19/T3/out_random.json",
+    "liber-primus/analysis/round19/T3/out_targeted.json",
+    "liber-primus/analysis/round19/T3/out_decode_L12956_KJV.json",
+    "liber-primus/analysis/round19/T3/dependency_map.json"
+   ],
+   "raw_status": "measured"
+  },
+  {
+   "id": "T3-OAE450-STREAM-POSITIONS",
+   "hypothesis": "The 450 located O/A/AE disagreements (RECON-A item A-02, RECON-B item B-13) can be placed in 12,956-rune stream coordinates, making them a directly testable finite object rather than a glyph-index list.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "round19/T3",
+   "date": "2026-08-26",
+   "coverage": "All 450 records in analysis/independent-read/oae_mismatch.json, exhaustively.",
+   "not_covered": "This locates the disagreements; it does not adjudicate any of them. Per-instance verdicts are lane T1's object. The map also inherits the Campaign-V segmentation geometry, so it cannot locate an error that is simultaneously a segmentation error and a label error.",
+   "reopens_if": "The Campaign-V segmentation or the krisyotam line parse changes, which would invalidate the offset table.",
+   "result": {
+    "n_mapped": 450,
+    "position_range": [
+     27,
+     12897
+    ],
+    "pages_touched": 55,
+    "confusion_set": {
+     "A->O": 306,
+     "O->A": 72,
+     "AE->A": 70,
+     "A->AE": 2
+    },
+    "family_size_in_unsolved_stream": 1385,
+    "family_pct_of_stream": 10.69,
+    "doublet_potential_of_the_located_set": {
+     "gain2": 1,
+     "gain1": 42,
+     "gain0": 403,
+     "destroys_a_doublet": 4,
+     "net_if_all_450_flipped": 40,
+     "have_an_OAE_neighbour": 74
+    }
+   },
+   "evidence": [
+    "liber-primus/analysis/round19/T3/t3_lib.py",
+    "liber-primus/analysis/round19/T3/out_baseline.json",
+    "liber-primus/analysis/round19/T3/out_targeted.json"
+   ],
+   "raw_status": "measured"
+  },
+  {
+   "id": "T3-S2-DECODE-FRAGILITY",
+   "hypothesis": "The repo's ~10^10 sweep negatives are properties of a DECODE of this exact ciphertext, not of a summary statistic, so they inherit a different and steeper transcription-sensitivity curve than the doublet rate does.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "source_register": "round19/analysis",
+   "status": "measured",
+   "round": 19,
+   "lane": "round19/T3",
+   "date": "2026-08-26",
+   "coverage": "3 segment lengths (120 / 400 / 12,956) x up to 14 whole-book-equivalent error counts x 60-120 replicates (6 at full book), LP1_REAL and EN_KJV registers, sha256_ctr key family.",
+   "not_covered": "One decoder transition model (encipher_keyskip -> fastbeam, max_skip=3), which per round18/L7-B covers exactly one rejection-loop implementation and misses skip_by_two and free drift. round19/I1 has since repaired the decoder; this curve should be re-measured under driftbeam's drift_rec preset, whose larger skip budget could absorb either a spurious advance (more robust) or a wrong one (less). One adjudicator register (English quadgram). One key family.",
+   "reopens_if": "Re-running under round19/I1's driftbeam; or T1/T2 returning a four-figure error count, at which point R18-L2-BEAM-LENGTH-POWER must be re-run before it is quoted again.",
+   "result": {
+    "full_book_L12956": {
+     "K_REC_k": 450,
+     "K_SEP_k": 900,
+     "rows": [
+      {
+       "k": 0,
+       "score_correct_med": -4.103,
+       "recovery": 1.0,
+       "derail": 0.0
+      },
+      {
+       "k": 100,
+       "score_correct_med": -4.217,
+       "recovery": 0.979,
+       "derail": 0.0
+      },
+      {
+       "k": 200,
+       "score_correct_med": -4.39,
+       "recovery": 0.937,
+       "derail": 0.17
+      },
+      {
+       "k": 450,
+       "score_correct_med": -4.719,
+       "recovery": 0.862,
+       "graceful_ideal": 0.965,
+       "derail": 0.5
+      },
+      {
+       "k": 900,
+       "score_correct_med": -6.841,
+       "recovery": 0.199,
+       "derail": 1.0
+      }
+     ]
+    },
+    "L400_K_REC": 900,
+    "L120_K_REC": 1800,
+    "mechanism": "max_skip lets the key pointer run AHEAD only. A corrupted cipher rune can induce a spurious skip, after which the beam can never re-synchronise, so derailment compounds with segment length -- the full-book number is the binding one and short-window measurements understate it.",
+    "consequence": "The negatives are not voided: at k=450 the correct key still scores -4.72 against a wrong key's -7.30, so a sweep that RANKS would still surface it. But every sweep in this repo THRESHOLDED, and round18/L2's landmark full-book positive control (-4.098 / recovery 0.9997) is a CLEAN-TRANSCRIPTION result."
+   },
+   "evidence": [
+    "liber-primus/analysis/round19/T3/out_decode_L12956_KJV.json",
+    "liber-primus/analysis/round19/T3/out_decode_L400_LP1.json",
+    "liber-primus/analysis/round19/T3/out_decode_L120_LP1.json",
+    "liber-primus/analysis/round19/T3/RESULTS.md"
+   ],
+   "raw_status": "measured"
   }
  ],
  "round18_merged": "2026-08-26"

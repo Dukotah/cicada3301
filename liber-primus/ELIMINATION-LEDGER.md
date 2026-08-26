@@ -777,7 +777,27 @@ A 22-lens wide re-attack, pre-registered per lens (positive control + size-match
   separates them at |z|>2.93).
 
 **Doublet-deficit discriminating power PINNED (B4/G3 + B1 vs RECON-B/B-16):** the deficit (0.664%,
-floor 1.50%) excludes *rigid* plaintext-independent keys; it carries NO discrimination once the soft
+floor ~~1.50%~~ **0.972%**) excludes *rigid* plaintext-independent keys;
+
+> **⚠️ Floor corrected 2026-08-26 (Round 19 T3; the 1.50% figure was already retired by Round 18
+> L7 §C.2 and never propagated here).** The plaintext-independent floor is **not** 1.50%. KJV
+> measures **1.386%**, and the *binding* — most permissive — register is **German at 0.972%**. So
+> the real margin over the observed 0.663836% is **1.46x, not 2.26x**. Nothing flips, but every
+> "how much headroom does the doublet argument have" claim computed from 1.50% is overstated by
+> roughly a third. `analysis/round19/T3/RESULTS.md`.
+>
+> **And the sensitivity is now measured rather than assumed** (T3, the first time this was asked).
+> Against the 0.972% floor the deficit survives **k = 714** uniform random transcription errors
+> (median), **k = 20** only under an adversary who gets 2 doublets per rune — and **never** under
+> the actual O/A/AE process: flipping all 450 located disagreements reaches 0.795%, and
+> adversarially relabelling the **entire 1,385-rune O/A/AE family** reaches only **1.4357%**,
+> below every English and Latin floor. **No O/A/AE confusion, however malicious, can carry this
+> ciphertext into the English band.**
+>
+> Round 19 T1 then read those 450 with an instrument scoring **100.0000% (180/180)** on the
+> decryption-proven control pages and found **450/450 agree with canon**, and T2 bounded length
+> errors at **<=1 insertion and <=1 deletion at 95% confidence** over 13,121 positions. The
+> transcription is **not** the blocker, from three independent directions. it carries NO discrimination once the soft
 anti-repeat rewrite is the mechanism (the filter sets the rate) — which is exactly why the
 skip/anti-repeat-aware decoders (Campaign XVIII + every B-lane) are the ones that exclude the rest,
 to the audited limit of their power.
