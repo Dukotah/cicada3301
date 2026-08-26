@@ -1,0 +1,94 @@
+[
+ {
+  "id": "R19-I3-NULLS",
+  "round": 19,
+  "lane": "I3",
+  "phase": 0,
+  "title": "Extended null calibration: per-register, per-decoder-mode and panel-max thresholds for the Round-19 instrument",
+  "status": "INSTRUMENT-CALIBRATED",
+  "date": "2026-08-26",
+  "hypothesis": "For each (register, decoder transition relation, segment length) cell, the maximum of N i.i.d. null score draws is Gumbel-distributed with cell-specific (mu, beta), so a family-wise bar can be stated for any N.",
+  "instrument": {
+   "null_generator": "wrong-key BEAM decodes: uniform random rune ciphertext x uniform random 29-ary keystream, decoded by the full skip-aware beam. NOT random rune strings. Control: histogram-preserving shuffle of the real 12,956-rune LP2 unsolved stream, agreeing in beta to 14.5% (EN_QUAD) and 4.8% (panel_max).",
+   "decoders": [
+    "campaign18_skip.beam_decode (beam_w=400, max_skip=3)",
+    "round19/I1/driftbeam.beam_decode PRESETS exact, exact_ms8, pair, drift",
+    "round19/I3/vecbeam.batch_decode (vectorised; reproduces the reference exactly)"
+   ],
+   "adjudicators": [
+    "lp.score.Quadgram.score_norm (legacy)",
+    "round19/I2/adjudicate.adjudicate -> en, pmax, pmax_ne, pcon, z[9]",
+    "9 rune-space trigram register LMs (this lane's own panel)"
+   ],
+   "fitters": "block-maxima Gumbel (MLE), GPD peaks-over-threshold, free-shape GEV, plus the repo's two-point order-statistic solve, reported side by side"
+  },
+  "coverage": "91 null cells, ~9.6e6 wrong-key beam decodes. 9 registers x segment lengths {31,120,240} at beam_w 400; 9 decoder transition relations (keyskip1, skip_by_two, drift1-3, union{2,4,6,8}) at L=120; 4 (L, beam_w=120) geometries {25,31,40,400} matching R17's actual escalation settings; 4 I1 presets x 13 I2 statistics; 2 panel-combination rules (max-z and min-p PIT); a shuffle-null control on the real ciphertext; 3 plants; 14 historical sweep stages of Rounds 13/16/17 re-derived at their own adjudicated decode counts.",
+  "not_covered": [
+   "M >= 1e6 for 71 of 91 cells. Those bars are PROVISIONAL: their false-positive rate is unverified at the pre-registered precision, not known to be wrong. Reasons and throughput in RESULTS.md 9.1; the exact re-run is in RESULTS.md 12.",
+   "Segment lengths outside {25,31,40,120,240,400}. L=100, 262 and 12,956 appear in the G-HONEST table as extrapolations along the fitted beta ~ L^-0.583 law and are flagged as such.",
+   "Beam widths other than 120 and 400.",
+   "Signs other than -1, and non-uniform / low-entropy key material (L7-B.1 shows the decoder behaves differently on constant-byte runs).",
+   "I1's n_skips statistic has NO null curve here and must not be thresholded until it does. It is language-independent and is this lane's top recommended addition.",
+   "I2's ioc, mds, h2, zl have no null curve here; only en, pmax, pmax_ne, pcon and the nine z's are calibrated.",
+   "Combinations of transition-relation axes; each mode was measured alone.",
+   "A decoder-output-standardised panel z (INTERFACE R-I2-2b). The BARS are on the decoder-output null and are correct; I2's internal z SCALE is not, and rule 7 of the contract says so."
+  ],
+  "gates": {
+   "G-CAL": "PARTIAL - 41/46 cells at M>=1e6 within 20% of nominal; 5 fail, EVERY failure conservative (worst 26% at alpha=0.01, 46% at alpha=0.05, all at the largest gating block size, the xi<0 signature). No published bar manufactures false positives.",
+   "G-CAL-X": "PASSED - 52/52 out-of-sample extrapolation checks within 1.0 Gumbel SD of the prediction from block sizes n<=1e3; worst residual -0.30 SD.",
+   "G-RECOVER": "PARTIAL - PASSED for exact/pair/exact_ms8 (the correction increases power: Latin 0.75->1.00, German 0.67->1.00, Welsh 0.08->1.00, vowel-dropped English 0.00->0.67, negative control 0.00). FAILED for I1's drift preset on Old English (median pmax 13.40 vs bar 13.84); tradeoff quantified in RESULTS.md 7.2.",
+   "G-BACKCOMPAT": "PASSED - threshold_for(n) and threshold_for(n, L) bit-identical to benchmark/null.py over 13 trial counts x 6 segment lengths x 4 alphas x 4 (mu,beta,floor) triples, 0 differences; 8 benchmark gates still pass; 15/15 lane tests pass. Independently cross-validated: I1's separate block-maxima fit (mu=-7.247, beta=0.0665) reproduces the published DEFAULT_MU=-7.2517 / BETA=0.0725.",
+   "G-HONEST": "PASSED - all 14 sweep stages of Rounds 13/16/17 tabulated with the bar each should have used at its own adjudicated decode count, segment length and beam width. 0/14 verdicts flip.",
+   "G-PANEL": "FAILED - the two pre-registered estimators disagree by 2.06-2.45x against a 1.5x criterion. This is a finding: no single effective-test count describes the panel. Estimates span 4.2-16.5 across lanes, lengths and tail depths. Resolution: adopt R1's recommendation and calibrate a direct null on the panel maximum, which this lane did.",
+   "PREREG-Q5-kill-condition": "NOT MET - the vectorised engine reproduces skipdecode.beam_decode's score to <=1.2e-14 on 600/600 random cases at L in {31,120,240}, and plain_idx identically on 600/600."
+  },
+  "key_findings": [
+   "The repo's own constants survive a 1e6-sample audit. Measured L=120 mu=-7.0890, beta=0.06814 against published -7.2517 / 0.0725; the resulting BAR differs by only 0.04-0.08 at every N, and the measured one is slightly stricter. L7-C.3's criticism of the METHOD (zero degrees of freedom, circular) was correct; the NUMBERS are right.",
+   "-5.5 is a valid alpha=0.01 family-wise bar over a range of N spanning TWELVE orders of magnitude depending on geometry: N<=37 at (L=25, bw=120), N<=208 at (L=31,bw=120), N<=1.35e8 at (L=120,bw=400), N<=1.1e14 at (L=400,bw=120).",
+   "Covering L7-B's skip_by_two hole is essentially FREE: the pair-constrained relation shifts the null by -0.002 (this lane's proxy) / +0.019 (I1's actual PRESETS['pair']). The single most consequential decoder gap Round 18 found costs about two hundredths of a score unit.",
+   "Unconstrained drift is ruinous and a PENALTY is far more efficient than a CAP: drift1 and union6 produce the same realised drift (0.500 vs 0.493) but shift the null +1.628 vs +0.699, a factor of 2.3.",
+   "The extreme-value tail is BOUNDED, not Gumbel: xi<0 in 46/46 cells with M>=1e6 (range -0.117..-0.004, mean -0.064), Gumbel rejected in 36/46. On a planted true Gumbel the same fitter returns xi=-0.009 with a CI containing zero, so this is data not estimator. Consequence: the Gumbel bar is CONSERVATIVE by 0.07-0.56 over N=1e4..1e10. PREREG 2 stated this direction backwards and the correction is published.",
+   "Dropping the unjustified -5.5 floor for the properly scale-corrected family-wise bar - changing nothing else, not the decoder and not the scorer - raises measured power at a VERIFIED alpha=0.01 over 1e6 decodes: Latin 0.75->1.00, German 0.67->1.00, Old English 0.67->0.92, half-vowel English 0.50->0.83. A large part of what L7-A diagnosed as an English-only SCORER was an English-only BAR.",
+   "Under I1's drift preset a WRONG key on random ciphertext reaches en=-5.351 in only 15,000 trials - it crosses the repo's historical -5.5 confirm bar - and pmax=9.33 against I2's random-rune null max of 1.163. Had Phase 2 adjudicated against anything like the nominal z scale, every decode would have been a hit.",
+   "L7-C.6's repo-wide decode tally is inflated 6.7x by the same offsets-vs-decodes error it identified in R17: the corrected adjudicated total is 2,535,325,467, not 17,058,157,809, and the repo-wide alpha=0.01 bar is -5.300, not -5.210. The qualitative claim (the repo-wide bar is stricter than -5.5) survives.",
+   "Independent cross-validation with I2: at L=120 the per-decode 1e-3 quantile of the wrong-key beam null agrees to 0.026 on en (-6.6133 vs -6.6396) and 0.080 on pmax (4.3496 vs 4.2773), across two null sources and a 125x difference in sample size."
+  ],
+  "g_honest_summary": {
+   "n_sweeps_audited": 14,
+   "n_verdicts_flipped": 0,
+   "too_strict": "12 of 14, by +0.12 to +1.19. At R17's own geometry (L=400) the correct bar is ~-6.6, and L7-A.1's correct-key medians for Latin (-5.55), OE (-5.45), DE (-5.48) and half-vowel English (-5.68) all clear it while all fail -5.5. Caveat: R17 also ran an English trigram prefilter whose non-English survival was never measured, so fixing the bar raises the ADJUDICATOR's power, not necessarily the lane's coverage.",
+   "too_loose": "2 of 14, both R17-P3, by -0.52 and -0.63. P3's headline -5.679 was scored on a 31-rune head; the correct alpha=0.01 bar at its own 25,080 adjudicated decodes is -4.872, so the '0.18 short of a hit' framing understates the gap 4.5x - it was 0.81 short. Across ~4,600 P3-ms8 decodes on 25-42 rune heads the expected number of null crossings of -5.5 is 0.2-1.2.",
+   "threshold_for_misuse": "confirmed in 4 of 4 R17 lanes that called it: the offset count was passed instead of the adjudicated decode count, an inflation of 1e5-1e6x per lane."
+  },
+  "threshold_contract": "RESULTS.md section 10. Two tiers: ESCALATE alpha=0.05 per lane, CLAIM alpha=0.01 round-wide over adjudicated decodes. Claim on pmax, never on en under a permissive preset. Headline cells at L=120, N=1e6, alpha=0.01: exact/en -5.829, exact/pmax 7.634, pair/pmax 7.384, drift/en -4.453, drift/pmax 13.842. L=31 cells for G1/G2 in section 10.0.",
+  "family_wise_error_target": {
+   "alpha_round19_claim": 0.01,
+   "alpha_escalate": 0.05,
+   "allocation": "union bound over the ROUND's total adjudicated decode count; every lane calls threshold_for at N_round, not N_lane. Conservative because decodes are not independent (the same 12,956 runes are re-decoded), which is the safe direction for a negative.",
+   "claim_statistic": "pmax, one statistic. en, pmax_ne, pcon, ioc, mds, h2, zl are persisted diagnostics. A lane claiming on k statistics splits alpha k ways.",
+   "defence": "alpha=0.001 was rejected on measured evidence, not taste: it raises the L=120 bar by 0.158 and costs Latin 1.00->0.83, OE 0.92->0.75, DE 1.00->0.92, half-vowel 0.83->0.67 at N=1e6, i.e. exactly the registers this round exists to recover, while leaving English and LP1 untouched. alpha=0.05 round-wide would mean a 1-in-20 chance that the round designed to fix false positives commits one."
+  },
+  "artifacts": [
+   "PREREG.md", "RESULTS.md", "INTERFACE.md", "ledger.json", "calib19.json",
+   "nullcurve19.py", "vecbeam.py", "registers.py", "run_calibration.py", "run_i1i2.py",
+   "plants.py", "ghonest.py", "summary.py", "test_i3.py",
+   "out_registers_L31.json", "out_registers_L120.json", "out_registers_L240.json",
+   "out_registers_L120_shuffle.json", "out_modes.json", "out_pit_L120.json",
+   "out_i2panel_L120.json", "out_i2panel_L31.json",
+   "out_i1_drift_L120.json", "out_i1_pair_L120.json", "out_i1_exact_ms8_L120.json",
+   "out_r17_L25_bw120.json", "out_r17_L31_bw120.json", "out_r17_L40_bw120.json",
+   "out_r17_L400_bw120.json", "out_geq.json", "out_ghonest.json", "out_plants.json",
+   "out_plants_p12.json", "out_plants_L31.json", "out_power_L31.json", "out_summary.json"
+  ],
+  "reopens_if": "I1 changes any PRESETS entry (voids that preset's cells); I2 rebuilds models/panel.npz (voids every pmax/pcon/z cell); driftbeam.beam_decode starts returning the PENALISED score (voids every en cell); a Phase-2 lane needs a segment length or beam width outside the measured grid; or a keystream family whose null is not uniform-random-like. See INTERFACE.md section 4.",
+  "trust_anchor": {
+   "before": "validate.py ALL VALIDATIONS PASSED (5/5); pytest benchmark/ 8 passed",
+   "after": "validate.py ALL VALIDATIONS PASSED (5/5); pytest benchmark/ 8 passed; pytest round19/I3/test_i3.py 15 passed"
+  },
+  "doctrine": {
+   "R1_power_measured": "yes - G-RECOVER measures correct-key power per register at the new bars for every preset",
+   "R2_coverage_x_power": "yes - every cell carries M, status and its G-CAL exceedance table",
+   "R7_bounds_not_verdicts": "yes - not_covered above names the re-run for every PROVISIONAL cell"
+  }
+ }
+]

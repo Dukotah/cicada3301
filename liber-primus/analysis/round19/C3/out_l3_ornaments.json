@@ -1,0 +1,227 @@
+{
+ "$schema_note": "C3 machine summary for item 1 (round18 L3-ornaments closeout). Human record: round19/C3/RESULTS.md. Ledger fragments: round19/C3/ledger.json.",
+ "lane": "round19/C3",
+ "item": "L3-ornaments",
+ "generated_utc": "2026-08-26",
+ "ledger_items": ["A-06", "B-12", "P-9"],
+ "trust_anchor": {"before": "ALL VALIDATIONS PASSED (5/5)", "after": "ALL VALIDATIONS PASSED (5/5)"},
+
+ "gate_G_A2_band_shaped_control": {
+  "registered_in": "round19/C3/PREREG.md#01",
+  "registered_before_scoring": true,
+  "bar_pct": 90.0,
+  "bar_inherited_from": "round18/L3-ornaments gate G-A",
+  "n_control_bands": 64,
+  "glyphs_read": 1198,
+  "matched": 1066,
+  "pooled_agreement_pct": 53.95,
+  "pooled_precision_pct": 88.98,
+  "gate_result": "FAIL",
+  "LP2_typeface_agreement_pct": 95.56,
+  "note_LP2": "LP2 is the typeface of all 56 target pages; templates.npz was clustered from LP2 renders, so LP1 is out of domain.",
+  "truth_attribution": "flat-stream: band reads concatenated in reading order and aligned once to the page's flat canonical rune stream, because the corpus breaks lines semantically and the image breaks them typographically. Per-line matching would measure the transcriber's paragraph breaks.",
+  "per_page": [
+   {"asset": "73.jpg", "page": "LP2 p56 (solved)", "era": "LP2", "bands": 5, "read": 85, "canon": 85, "matched": 83, "agreement_pct": 97.65},
+   {"asset": "74.jpg", "page": "LP2 p57 (solved)", "era": "LP2", "bands": 5, "read": 95, "canon": 95, "matched": 89, "agreement_pct": 93.68},
+   {"asset": "01.jpg", "page": "A WARNING", "era": "LP1", "bands": 11, "read": 212, "canon": 184, "matched": 173, "agreement_pct": 81.60},
+   {"asset": "03.jpg", "page": "WELCOME", "era": "LP1", "bands": 13, "read": 273, "canon": 394, "matched": 237, "agreement_pct": 60.15},
+   {"asset": "05.jpg", "page": "SOME WISDOM", "era": "LP1", "bands": 6, "read": 86, "canon": 157, "matched": 79, "agreement_pct": 50.32},
+   {"asset": "06.jpg", "page": "A KOAN", "era": "LP1", "bands": 13, "read": 215, "canon": 742, "matched": 186, "agreement_pct": 25.07},
+   {"asset": "14.jpg", "page": "A KOAN (circumference)", "era": "LP1", "bands": 11, "read": 232, "canon": 319, "matched": 219, "agreement_pct": 68.65}
+  ],
+  "stratified_by_reader_own_RUNIC_call": {
+   "disclosure": "The RUNIC rule (cost_median<=300, degeneracy<0.60) was fixed in round18 before any band was read. The decision to REPORT along this axis is post-hoc and is disclosed.",
+   "RUNIC": {"bands": 56, "glyphs": 1097, "precision_pct": 95.62},
+   "NON-RUNIC": {"bands": 8, "glyphs": 101, "precision_pct": 16.83},
+   "LP2_face": {"bands": 10, "glyphs": 180, "precision_pct": 95.56},
+   "short_le16_RUNIC": {"bands": 6, "glyphs": 54, "precision_pct": 100.00},
+   "short_le16_not_RUNIC": {"bands": 6, "glyphs": 40, "precision_pct": 5.00}
+  },
+  "specificity": {
+   "n_probes": 15,
+   "not_called_RUNIC": 13,
+   "specificity_pct": 86.7,
+   "probe_classes": {"blank_margin": {"n": 8, "not_RUNIC": 8}, "woodcut_interior": {"n": 7, "not_RUNIC": 5}},
+   "false_positives": [
+    {"page": 2, "kind": "woodcut", "glyphs": 7, "read": "AECGEOLSC"},
+    {"page": 14, "kind": "woodcut", "glyphs": 5, "read": "XTEO?I"}
+   ],
+   "note": "Both false positives are <=7 glyphs. Round 18 measured no specificity at all."
+  },
+  "confusion_le16_glyphs": {
+   "true_rune_called_RUNIC": 6,
+   "true_rune_called_other": 6,
+   "non_rune_called_RUNIC": 2,
+   "non_rune_called_other": 2,
+   "sensitivity": 0.50,
+   "specificity": 0.50,
+   "positive_predictive_value": 0.75,
+   "n": 16,
+   "bound": "At <=16 glyphs a RUNIC call is right about 3 times in 4 and its glyphs are then essentially verbatim; a NON-RUNIC call at that size carries NO information. No band is asserted to be decoration on the strength of a failed read."
+  },
+  "kill_condition": {"rule": ">=50% of known non-rune ink called RUNIC", "measured_pct": 13.3, "triggered": false}
+ },
+
+ "bands": {
+  "n_records": 109,
+  "n_pages": 39,
+  "round18_completed": 45,
+  "c3_completed": 109,
+  "by_call": {"RUNIC": 74, "NON-RUNIC": 27, "DEGENERATE": 8},
+  "by_ink_class": {"TEXT": 82, "DOT/HAIRLINE": 10, "MIXED": 6, "ALPHANUMERIC?": 5, "EMPTY": 3, "WOODCUT/DROPCAP": 2, "VINE/WOODCUT": 1}
+ },
+
+ "P_9_refutation": {
+  "claim_under_test": "the 30 catalogued bands with n<=16 GLYPHS are the only real candidates",
+  "verdict": "REFUTED AT THE PREMISE",
+  "reason": "`n` in ornaments.json is a Round 8 row-group count, not a glyph count.",
+  "component_count_range_in_those_30_boxes": [0, 341],
+  "examples": [
+   {"band": "B052", "page": 27, "n_reported": 3, "components_actual": 0},
+   {"band": "B055", "page": 33, "n_reported": 1, "components_actual": 0},
+   {"band": "B100", "page": 51, "n_reported": 8, "components_actual": 0},
+   {"band": "B025", "page": 8, "n_reported": 15, "components_actual": 251, "rows": 7, "box_h": 1565},
+   {"band": "B028", "page": 9, "n_reported": 16, "components_actual": 257, "rows": 7, "box_h": 1567},
+   {"band": "B106", "page": 54, "n_reported": 14, "components_actual": 292, "rows": 11, "box_h": 2034},
+   {"band": "B101", "page": 52, "n_reported": 13, "components_actual": 325, "rows": 11, "box_h": 2034},
+   {"band": "B058", "page": 40, "n_reported": 15, "components_actual": 326, "rows": 11, "box_h": 2167},
+   {"band": "B089", "page": 48, "n_reported": 14, "components_actual": 341, "rows": 11, "box_h": 2034}
+  ],
+  "genuinely_tiny_bands": "B001/B005/B009 (1 component, 42x21 px, read 'GI'/'G?' at degeneracy 0.50) and B048/B049 (1 component, 39x8 px) - single vine hairlines.",
+  "only_real_short_content": "B096 (p50) and B098 (p51), the alphanumeric base-60 token blocks: 16 CHARACTERS = eight two-character [0-4][0-9A-Za-z] tokens, reads confirmed byte-for-byte by two independent vendored community transcriptions.",
+  "defect_class": "Same class as the dropped y coordinate round18 found in the same file: the artifact's schema was never checked against what its consumers assumed it meant."
+ },
+
+ "hypotheses": {
+  "family_bar_p": 0.00016666666666666666,
+  "H1": {"verdict": "FAIL", "hits": 0, "n_short_runic_bands": 12, "register_conditional": "ENGLISH-ONLY. Recognizer is English + a known-Cicada-string list; per round18 L7-A that register scores 0.33 Latin, 0.00 vowel-dropped English."},
+  "H2": {"verdict": "FAIL", "recurring_sites": 0},
+  "H3": {"verdict": "FAIL", "exact": 1, "bar": ">=3 and p<1.67e-4"},
+  "H4": {"verdict": "FAIL", "exact": 0},
+  "H5": {"verdict": "FAIL", "best_form_exact": 2, "bar": ">=3, Bonferroni p<8.3e-5"},
+  "H6": {"verdict": "FAIL", "pointers": 12, "landing_on_residual_doublet": 0, "n_residual_doublets": 89, "base_rate": 0.006775, "binom_p": 1.0},
+  "H7": {
+   "raw_verdict": "PASS",
+   "raw_p": 6.74e-10,
+   "verdict_after_controls": "NEGATIVE",
+   "why": "reference-class artifact",
+   "decoy_panel": [
+    {"set": "binary_ladder", "hits": 29, "p": 6.74e-10},
+    {"set": "triangular", "hits": 27, "p": 8.88e-22},
+    {"set": "squares", "hits": 26, "p": 4.13e-07},
+    {"set": "fibonacci", "hits": 21, "p": 1.41e-15},
+    {"set": "random_six_from_1_32", "hits": 16, "p": 1.70e-06},
+    {"set": "multiples_of_3", "hits": 8, "p": 5.85e-04},
+    {"set": "primes", "hits": 6, "p": 1.27e-03}
+   ],
+   "decoy_conclusion": "a set of six integers drawn AT RANDOM clears the family bar by two orders of magnitude, so the null is invalid for every set including the ladder",
+   "set_randomisation": {"n_draws": 20000, "ladder_hits": 29, "random_mean": 17.66, "random_sd": 7.40, "random_median": 17, "random_p95": 31, "random_max": 52, "n_ge_ladder": 1782, "p": 0.089}
+  },
+  "H8": {
+   "raw_verdict": "PASS",
+   "raw_ks_x_p": 8.2e-11,
+   "raw_ks_y_p": 3.97e-05,
+   "verdict_after_controls": "NEGATIVE",
+   "why": "threshold not discriminating",
+   "ordinary_text_control": {"n_rows": 616, "ks_x_p": 3.32e-112, "ks_y_p": 3.58e-11, "note": "ordinary typeset text rejects uniformity ~100 orders of magnitude more strongly than the bands do; a page of text sits in a column"}
+  },
+  "summary": "No claim of a hit survives in the H1-H8 family."
+ },
+
+ "B_12_line_geometry": {
+  "n_text_rows": 616,
+  "n_pages": 56,
+  "bimodality_pass": ["row_height 4.71 sigma", "body_per_line 4.53", "runes_per_line 2.89", "words_per_page 2.62", "lines_per_page 2.12"],
+  "confound_test": {"row_height_all": 4.71, "row_height_last_lines_removed": 6.97, "row_height_last_and_short_removed": 7.90, "conclusion": "bimodality SURVIVES and strengthens; the book really has two row-height states"},
+  "bit_decode": {"channels_tested": 8, "passing": 0, "all_p": 1.0},
+  "correlations": {
+   "n_tests": 24,
+   "clearing_bonferroni": 1,
+   "the_one": "runes_per_line ~ mean_rune_idx rho=-0.257 p=1.47e-10",
+   "explained_by": "mean GLYPH WIDTH: runes_per_line~width rho=-0.653 p=8.26e-75; mean_rune_idx~width rho=+0.367 p=9.49e-21; PARTIAL runes_per_line~mean_rune_idx|width rho=-0.018 p=0.661",
+   "conclusion": "wider runes, fewer runes per justified line. A typesetter, not a channel."
+  },
+  "control_C3a_power_ceiling": {
+   "planted_separations_sd": [0.5, 1, 2, 3, 4, 6, 8],
+   "bit_recovery": [0.547, 0.703, 0.797, 0.859, 0.859, 0.859, 0.859],
+   "bar": 0.95,
+   "ceiling": 0.859,
+   "meaning": "the fill_ratio negative is bounded at an 85.9% power ceiling; recovery saturates and never reaches the bar at any separation up to 8 sd"
+  },
+  "control_C3b_decoder_validation": {"planted": "real ASCII, noise-free", "p": 0.0005, "verdict": "PASS", "meaning": "the 8/8 bit-decode failures are a property of the CHANNEL, not of the decoder"},
+  "verdict": "NEGATIVE with a stated power ceiling"
+ },
+
+ "H9_ink_intensity": {
+  "round18_control": {"dL": [2, 5, 10, 20, 40], "recall": [0.05, 0.025, 0.05, 0.0, 0.1], "bar": 0.9, "verdict": "FAIL at every level", "consequence": "round18's 1098 reported outliers were uninterpretable in BOTH directions"},
+  "diagnosis": "detect() estimated the page body mean and sd from a set that INCLUDED the planted components; lifting 40 of ~270 body components by 40 grey levels inflates sd from ~1.4 to ~15, so a planted component's z becomes 2.7, below the 4-sigma bar. The plant destroyed its own null.",
+  "repair": "addendum #2: the addendum's RULE is unchanged (>4 sigma above the page body-text distribution, stroke-width-and-height-matched re-test); only the ESTIMATOR changes, from mean/sd to median/1.4826*MAD (50% breakdown point). A repair to the instrument, not a relaxation of the bar.",
+  "repaired_control": {"dL": [2, 5, 10, 20, 40], "recall": [1.0, 1.0, 1.0, 1.0, 1.0], "false_pos": [22, 22, 22, 21, 22], "smallest_recoverable_dL_grey_levels": 2, "verdict": "PASS"},
+  "measurement": {"n_components": 18514, "candidates_gt_4sigma": 2039, "after_matched_retest": 1504, "flagged_fraction_pct": 8.12},
+  "discriminator": {
+   "question": "is being flagged predicted by render geometry?",
+   "bars_fixed_before_running": {"render_artifact_at_auc": 0.80, "unexplained_at_auc": 0.60},
+   "pooled_auc": {"height": 0.709, "stroke_width": 0.707, "area": 0.687, "width": 0.606, "aspect": 0.282},
+   "verdict": "PARTIALLY EXPLAINED - number reported, no claim made"
+  },
+  "status": "The channel is now MEASURABLE for the first time (that is the contribution). It is NOT a demonstrated channel."
+ },
+
+ "page15_anomaly": {
+  "what": "the `3299` grey observation that prompted addendum #1, now quantified",
+  "digit_components_on_page": 68,
+  "median_grey": 10.06,
+  "mad_sigma": 0.546,
+  "four_lightest": [
+   {"box": [913, 1016, 958, 1094], "size": "45x78", "mean_grey": 60.13, "z": 91.67},
+   {"box": [974, 1016, 1022, 1093], "size": "48x77", "mean_grey": 61.24, "z": 93.71},
+   {"box": [1035, 1016, 1086, 1094], "size": "51x78", "mean_grey": 60.38, "z": 92.13},
+   {"box": [1097, 1016, 1148, 1094], "size": "51x78", "mean_grey": 60.36, "z": 92.10}
+  ],
+  "next_lightest_digit_on_page": {"size": "21x76", "mean_grey": 17.20, "z": 13.08},
+  "delta_grey_levels": 51.18,
+  "why_not_a_confound": "the four are the same height and width as their neighbours, so the stroke-width-and-height-matched re-test cannot explain them; and the repaired detector recovers a planted 2-level lightening at recall 1.000, so a 51-level difference is 25x inside its power envelope",
+  "interpretation": "four adjacent glyphs on one row is the width of a four-digit number, consistent with the `3299` entry of the 4x4 grid",
+  "CRITICAL_LIMIT": "established as a property of THIS RENDER, NOT of the document",
+  "second_render_test": {
+   "candidate": "vendored 2014 asset 32.jpg",
+   "sha256_relikd_p15_prefix": "5543cfce96493b86",
+   "byte_identical": true,
+   "conclusion": "the same file, not a second encode - no independent render of page 15 exists in this repository"
+  },
+  "reopen_if": "obtain a second independent render of page 15 (a different mirror's JPEG, a PNG, or the original PDF) and re-measure the four component boxes above. Cheapest open item in the lane; either answer is worth having."
+ },
+
+ "coverage": {
+  "bands_read": "109/109",
+  "P9_set_remeasured": "30/30",
+  "base60_tokens": "256/256",
+  "text_rows": "616/616",
+  "components_for_H9": 18514,
+  "control_bands": 64,
+  "control_glyphs": 1198,
+  "specificity_probes": 15,
+  "set_randomisation_draws": 20000
+ },
+ "conditionals": {
+  "object_space": "the 109 records Round 8's grouping emitted; the rejection rule is now known to carry at least two schema defects (dropped y; an `n` that is not a glyph count), so its output is NOT a complete frame for the book's non-text ink",
+  "decoder_transition_model": "R9 template DP, 29-class bijection, templates clustered from LP2. LP1 measurably out of domain (42.6% vs 95.6%). Non-Futhorc systems, glyphs below ~30 px, and glyphs absent from templates.npz are outside the model entirely",
+  "adjudicator_register": "H1 is English + known-Cicada-string only (power 0.33 Latin / 0.00 vowel-dropped English per L7-A). H2-H8 and B-12 are register-free"
+ },
+ "not_covered": [
+  "ink outside the 109 boxes",
+  "colour/chroma channels (only 8-bit luminance read)",
+  "sub-30-px glyph systems",
+  "band content in a non-English register (H1 only)",
+  "whether the page-15 anomaly is in the document rather than in this JPEG",
+  "non-binary encodings of the row-height bimodality",
+  "whether a short band called NON-RUNIC is decoration or misread runes (sensitivity 0.50 at that size)"
+ ],
+ "reopen_conditions": [
+  "a second render of page 15 (cheapest open item in the lane)",
+  "re-run the ornament grouping with its rejection thresholds swept and read whatever new boxes appear",
+  "extend templates.npz with LP1-clustered templates and re-run G-A2; if LP1 rises to LP2's level the pooled gate may pass",
+  "re-adjudicate H1 through Round 19's I2 multi-register panel - its negative is English-only",
+  "improve the RUNIC/NON-RUNIC classifier at <=16 glyphs, which would make that whole size class readable"
+ ]
+}

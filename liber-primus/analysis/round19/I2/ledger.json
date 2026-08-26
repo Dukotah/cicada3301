@@ -1,0 +1,384 @@
+{
+ "$comment": "Round 19 lane I2 (MULTI-REGISTER ADJUDICATOR) ledger fragment. Merge into liber-primus/LEDGER.json. This entry records an INSTRUMENT measurement, not a key-space sweep: it states what the repaired adjudicator can and cannot see, which is the third of the three conditionals doctrine Q4 requires on every negative.",
+ "lane": "round19/I2",
+ "date": "2026-08-26",
+ "trust_anchor_before": "tests/validate.py ALL VALIDATIONS PASSED (5/5 known solves); pytest benchmark/ 8 passed",
+ "trust_anchor_after": "tests/validate.py ALL VALIDATIONS PASSED (5/5 known solves); pytest benchmark/ 8 passed; pytest round19/I2/test_adjudicate.py 16 passed",
+ "entries": [
+  {
+   "id": "I2-MULTI-REGISTER-ADJUDICATOR",
+   "lane": "round19/I2",
+   "round": "19",
+   "date": "2026-08-26",
+   "hypothesis": "round18/L7-A measured that the repository's adjudicator (lp.score.Quadgram.score_norm against a fixed -5.5 English band) discards the CORRECT key for Latin, Old English, German, Welsh and abbreviated English even though the beam recovers 100 % of the runes, and that doctrine R3's four language-agnostic statistics had 0/15 compliance.  I2 asserts that a nine-register rune-space language-model panel plus those four statistics, behind one adjudicate() call and one SWEEPROW schema, restores power >= 0.90 for every register without raising the false-positive rate at matched trial count.",
+   "status": "mixed",
+   "verdict": "INSTRUMENT-REPAIRED",
+   "gates": {
+    "G-POWER": "PASSED",
+    "G-FP": "PASSED",
+    "G-LP1": "PASSED",
+    "G-SPEED": "FAILED"
+   },
+   "coverage": "Nine plaintext registers (EN_MODERN, EN_KJV, LP1_REAL, LATIN, OE, DE, CY, EN_HALFVOWEL, EN_NOVOWEL) x three segment lengths (120/240/400) x 24 replicates, plant windows drawn from held-out corpus TEST halves (LP1_REAL: leave-one-page-out).  Protocol is L7-A's verbatim: plant sha256_ctr(CICADA3301), encipher_keyskip(supp=0.83), beam_decode(beam_w=400,max_skip=3) with the CORRECT key, adjudicate on rune indices.  Wrong-key null measured on the real 12,956-rune unsolved LP2 stream under uniform random keys through the same beam: n=8000 at L=120, n=20000 at L=240, n=8000 at L=400; plus 200000 uniform-random-rune draws per length and a 20,000-draw random-rune calibration at each of 14 grid lengths.",
+   "not_covered": [
+    "registers outside the nine modelled: Greek, Hebrew, Norse/Icelandic, Enochian, constructed languages",
+    "non-linguistic payloads (key blocks, hashes, base32) - round10b/B6 showed this class is undetectable in principle by any language model, and the four agnostic statistics are the only instrument that touches it",
+    "decoder transition models beyond the Round-18 baseline: this lane deliberately held encipher_keyskip -> beam_decode fixed so its numbers are comparable with L7-A, and therefore INHERITS L7-B's hole (skip_by_two, free drift). That is lane I1's scope; every power number here is conditional on the baseline construction",
+    "key families other than sha256_ctr(CICADA3301) - power is a property of the adjudicator rather than the key, but only one family was measured",
+    "the beam still chooses its skip path by ENGLISH score, so for a register whose recovery is < 100 % the adjudicator sees an English-argmax path. Measured here only for EN_NOVOWEL (recovery 0.8083333333333333); a panel-aware beam is an open item for I1",
+    "family-wise thresholds at real sweep scale - the gate is adjudicated at the pre-registered per-decode alpha_ref=1e-3; the far-tail extrapolation in out_gates.json is SUPPLEMENTARY and I3 owns the calibrated bar"
+   ],
+   "positive_control": "passed",
+   "threshold": "Pre-registered in PREREG.md s3 before any measurement.  G-POWER: measured power >= 0.90 for every register at every L in {120,240,400}, at the matched-FP bar t_pmax set from the wrong-key null at alpha_ref=1e-3.  G-FP: at matched per-decode FP, panel power >= single-scorer power for every register at every L.  G-LP1: LP1_REAL median legacy score_norm >= -4.5 with 100 % of replicates clearing -5.5.  G-SPEED: adjudicate(240 runes) <= 3x score_norm(240 runes).",
+   "result": {
+    "gate_verdicts": {
+     "G-POWER": "PASSED",
+     "G-FP": "PASSED",
+     "G-LP1": "PASSED",
+     "G-SPEED": "FAILED"
+    },
+    "min_panel_power_over_all_27_cells": 0.9166666666666666,
+    "panel_power_at_L240": {
+     "EN_MODERN": 1.0,
+     "EN_KJV": 1.0,
+     "LP1_REAL": 1.0,
+     "LATIN": 1.0,
+     "OE": 1.0,
+     "DE": 1.0,
+     "CY": 1.0,
+     "EN_HALFVOWEL": 1.0,
+     "EN_NOVOWEL": 1.0
+    },
+    "legacy_scorer_power_at_L240_same_plants": {
+     "EN_MODERN": 1.0,
+     "EN_KJV": 1.0,
+     "LP1_REAL": 1.0,
+     "LATIN": 0.625,
+     "OE": 0.6666666666666666,
+     "DE": 0.6666666666666666,
+     "CY": 0.0,
+     "EN_HALFVOWEL": 0.3333333333333333,
+     "EN_NOVOWEL": 0.0
+    },
+    "median_panel_pmax_at_L240": {
+     "EN_MODERN": 27.073200225284236,
+     "EN_KJV": 28.916905088361407,
+     "LP1_REAL": 29.409753266404326,
+     "LATIN": 25.486147585137573,
+     "OE": 19.846823333709427,
+     "DE": 28.95935097166769,
+     "CY": 18.969939261279983,
+     "EN_HALFVOWEL": 19.474742355088775,
+     "EN_NOVOWEL": 18.483553118817905
+    },
+    "median_legacy_en_at_L240": {
+     "EN_MODERN": -4.27321086546344,
+     "EN_KJV": -4.064470804228393,
+     "LP1_REAL": -4.270939212994539,
+     "LATIN": -5.442873609729354,
+     "OE": -5.386486924703686,
+     "DE": -5.460266061077093,
+     "CY": -6.318029691478689,
+     "EN_HALFVOWEL": -5.67456231914884,
+     "EN_NOVOWEL": -7.61495965569126
+    },
+    "median_rune_recovery_at_L240": {
+     "EN_MODERN": 1.0,
+     "EN_KJV": 1.0,
+     "LP1_REAL": 1.0,
+     "LATIN": 1.0,
+     "OE": 1.0,
+     "DE": 1.0,
+     "CY": 1.0,
+     "EN_HALFVOWEL": 1.0,
+     "EN_NOVOWEL": 0.8083333333333333
+    },
+    "k_eff_effective_independent_tests": {
+     "120": 6.250000000000005,
+     "240": 9.523809523809533,
+     "400": 8.000000000000007
+    },
+    "beam_inflation_of_the_null": {
+     "120": {
+      "pmax_mean_wrongkey": 1.6735308225409329,
+      "pmax_mean_random_rune": 1.162820723638039,
+      "en_mean_wrongkey": -7.3402139436418965,
+      "en_mean_random_rune": -7.50683270780375
+     },
+     "240": {
+      "pmax_mean_wrongkey": 2.0201036748604926,
+      "pmax_mean_random_rune": 1.1698817347689743,
+      "en_mean_wrongkey": -7.309514622808709,
+      "en_mean_random_rune": -7.505847640727251
+     },
+     "400": {
+      "pmax_mean_wrongkey": 2.3959252007734433,
+      "pmax_mean_random_rune": 1.166259321171817,
+      "en_mean_wrongkey": -7.291892591957968,
+      "en_mean_random_rune": -7.505496645332792
+     }
+    },
+    "thresholds_at_alpha_ref_1e-3": {
+     "120": {
+      "t_en": -6.617622156983563,
+      "t_pmax": 4.277296190240552,
+      "t_pcon": 3.865970285021118,
+      "t_en_empirical": -6.639599614360208,
+      "t_en_gpd": -6.617622156983563,
+      "t_pmax_empirical": 4.277296190240552,
+      "t_pmax_gpd": 4.269353844243859,
+      "wrongkey_n": 8000,
+      "random_rune_n": 200000,
+      "k_eff": 6.250000000000005,
+      "k_eff_by_quantile": {
+       "0.99": {
+        "t": 3.0786669181065753,
+        "P_pmax_gt_t": 0.010000000000000009,
+        "P_zEN_gt_t": 0.001375,
+        "k_eff": 7.27272727272728
+       },
+       "0.999": {
+        "t": 3.8090391442621265,
+        "P_pmax_gt_t": 0.0010000000000000009,
+        "P_zEN_gt_t": 0.00016,
+        "k_eff": 6.250000000000005
+       },
+       "0.9999": {
+        "t": 4.508495310674055,
+        "P_pmax_gt_t": 9.999999999998899e-05,
+        "P_zEN_gt_t": 2.5e-05,
+        "k_eff": 3.9999999999995595
+       }
+      },
+      "k_eff_with_poisson_ci": {
+       "random_rune_n": 200000,
+       "0.99": {
+        "k_eff": 7.27272727272728,
+        "exceedances": 275,
+        "k_eff_ci95": [
+         6.504003216758304,
+         8.247522090958526
+        ],
+        "t": 3.0786669181065753
+       },
+       "0.999": {
+        "k_eff": 6.250000000000005,
+        "exceedances": 32,
+        "k_eff_ci95": [
+         4.641724510047392,
+         9.56362806680358
+        ],
+        "t": 3.8090391442621265
+       },
+       "0.9999": {
+        "k_eff": 3.9999999999995595,
+        "exceedances": 5,
+        "k_eff_ci95": [
+         2.1315841301807463,
+         32.39880261014693
+        ],
+        "t": 4.508495310674055
+       }
+      },
+      "legacy_bar_fp_rate_wrongkey": 0.0,
+      "beam_inflation_pmax_mean": 0.5107100989028939,
+      "beam_inflation_en_mean": 0.1666187641618535
+     },
+     "240": {
+      "t_en": -6.830081179587935,
+      "t_pmax": 4.671143661330486,
+      "t_pcon": 4.05439459832286,
+      "t_en_empirical": -6.830081179587935,
+      "t_en_gpd": -6.830512581190833,
+      "t_pmax_empirical": 4.639338864451086,
+      "t_pmax_gpd": 4.671143661330486,
+      "wrongkey_n": 20000,
+      "random_rune_n": 200000,
+      "k_eff": 9.523809523809533,
+      "k_eff_by_quantile": {
+       "0.99": {
+        "t": 3.071040070825268,
+        "P_pmax_gt_t": 0.010000000000000009,
+        "P_zEN_gt_t": 0.001395,
+        "k_eff": 7.1684587813620135
+       },
+       "0.999": {
+        "t": 3.756939218601412,
+        "P_pmax_gt_t": 0.0010000000000000009,
+        "P_zEN_gt_t": 0.000105,
+        "k_eff": 9.523809523809533
+       },
+       "0.9999": {
+        "t": 4.307188968549371,
+        "P_pmax_gt_t": 9.999999999998899e-05,
+        "P_zEN_gt_t": 1e-05,
+        "k_eff": 9.999999999998899
+       }
+      },
+      "k_eff_with_poisson_ci": {
+       "random_rune_n": 200000,
+       "0.99": {
+        "k_eff": 7.1684587813620135,
+        "exceedances": 279,
+        "k_eff_ci95": [
+         6.415634553351873,
+         8.121446633339152
+        ],
+        "t": 3.071040070825268
+       },
+       "0.999": {
+        "k_eff": 9.523809523809533,
+        "exceedances": 21,
+        "k_eff_ci95": [
+         6.670702806059487,
+         16.641494135380295
+        ],
+        "t": 3.756939218601412
+       },
+       "0.9999": {
+        "k_eff": 9.999999999998899,
+        "exceedances": 2,
+        "k_eff_ci95": [
+         4.191239043501202,
+         39.999999999995595
+        ],
+        "t": 4.307188968549371
+       }
+      },
+      "legacy_bar_fp_rate_wrongkey": 0.0,
+      "beam_inflation_pmax_mean": 0.8502219400915183,
+      "beam_inflation_en_mean": 0.1963330179185423
+     },
+     "400": {
+      "t_en": -6.915106145330577,
+      "t_pmax": 5.226150630036162,
+      "t_pcon": 4.075125182569442,
+      "t_en_empirical": -6.915106145330577,
+      "t_en_gpd": -6.921960916894494,
+      "t_pmax_empirical": 5.226150630036162,
+      "t_pmax_gpd": 5.130981083472855,
+      "wrongkey_n": 8000,
+      "random_rune_n": 200000,
+      "k_eff": 8.000000000000007,
+      "k_eff_by_quantile": {
+       "0.99": {
+        "t": 3.0455528394447318,
+        "P_pmax_gt_t": 0.010000000000000009,
+        "P_zEN_gt_t": 0.001335,
+        "k_eff": 7.490636704119857
+       },
+       "0.999": {
+        "t": 3.76468527196971,
+        "P_pmax_gt_t": 0.0010000000000000009,
+        "P_zEN_gt_t": 0.000125,
+        "k_eff": 8.000000000000007
+       },
+       "0.9999": {
+        "t": 4.381479944258676,
+        "P_pmax_gt_t": 9.999999999998899e-05,
+        "P_zEN_gt_t": 2e-05,
+        "k_eff": 4.999999999999449
+       }
+      },
+      "k_eff_with_poisson_ci": {
+       "random_rune_n": 200000,
+       "0.99": {
+        "k_eff": 7.490636704119857,
+        "exceedances": 267,
+        "k_eff_ci95": [
+         6.68836676293083,
+         8.511604053125216
+        ],
+        "t": 3.0455528394447318
+       },
+       "0.999": {
+        "k_eff": 8.000000000000007,
+        "exceedances": 25,
+        "k_eff_ci95": [
+         5.747126436781615,
+         13.157894736842119
+        ],
+        "t": 3.76468527196971
+       },
+       "0.9999": {
+        "k_eff": 4.999999999999449,
+        "exceedances": 4,
+        "k_eff_ci95": [
+         2.525252525252247,
+         39.999999999995595
+        ],
+        "t": 4.381479944258676
+       }
+      },
+      "legacy_bar_fp_rate_wrongkey": 0.0,
+      "beam_inflation_pmax_mean": 1.2296658796016262,
+      "beam_inflation_en_mean": 0.2136040533748238
+     }
+    },
+    "us_per_decode": {
+     "adjudicate_240": 164.31400799774565,
+     "score_norm_240": 34.333121991949156,
+     "ratio": 4.785874352943376,
+     "batch_panel_only_240": 10.194450190681437
+    },
+    "sweeprow_bytes_per_row": {
+     "jsonl": "~130",
+     "binary_ROW_DTYPE": 77
+    }
+   },
+   "deliverables": {
+    "adjudicate(plain_idx, translit=None) -> dict": "round19/I2/adjudicate.py",
+    "SWEEPROW/1 schema + validator": "round19/I2/SWEEPROW.md, adjudicate.validate_row/validate_store",
+    "register panel + null calibration builder": "round19/I2/build_models.py",
+    "measurement harness": "round19/I2/power.py, speed.py, gates.py",
+    "tests": "round19/I2/test_adjudicate.py"
+   },
+   "corpora_sha256": {
+    "EN_MODERN": [
+     "b2f3dbd3866e0bec5ae41ac29df09b537c2ef18fa1b88678966587b824ca92f0",
+     "80dc6f0d8efc8398a2d1cc8cdf17237020c881cf4fbd2412dfa37ec8be19a5ed"
+    ],
+    "EN_KJV": [
+     "0f1a83cbcdc1d3fae6bcc3daaa496d4fa723fcce9526e84e20df12ae33fda986"
+    ],
+    "LP1_REAL": [
+     "855eed739c8d598044e16d9ace14cb1572e633db0b4137e281f1258f76099aac"
+    ],
+    "LATIN": [
+     "84ac8411841a4d8f5f4a49b6a2cd1f466917c6a5af72916d5e0b2b1ecb2f659c",
+     "cc3f9845acd902a26bb58e268499472da99c7c39d7825aa1a86ad8959450b2e8"
+    ],
+    "OE": [
+     "5190b80b0829da81b1b375a5494909dc751aa365de6a88a816b576c048c54839",
+     "01a5d48b64209823a8583afe2ad83f252b593a1b307e926253fb64cf21c13992"
+    ],
+    "DE": [
+     "fed2a58edd6910ee96d27ada614d34bcc41f03750d86541c41246bb74c564ff7",
+     "359d3f5983c812393f4bd7ee49a350ffffc7d476015e58d6b84b6c848dd2b0e9"
+    ],
+    "CY": [
+     "4b3fd9261e284a8aa653d2d84d5766aa67ab8f0f161f6102981cb0c0bbb1e237"
+    ],
+    "EN_HALFVOWEL": [
+     "b2f3dbd3866e0bec5ae41ac29df09b537c2ef18fa1b88678966587b824ca92f0",
+     "80dc6f0d8efc8398a2d1cc8cdf17237020c881cf4fbd2412dfa37ec8be19a5ed"
+    ],
+    "EN_NOVOWEL": [
+     "b2f3dbd3866e0bec5ae41ac29df09b537c2ef18fa1b88678966587b824ca92f0",
+     "80dc6f0d8efc8398a2d1cc8cdf17237020c881cf4fbd2412dfa37ec8be19a5ed"
+    ]
+   },
+   "trust_anchor_before": "tests/validate.py ALL VALIDATIONS PASSED (5/5 known solves); pytest benchmark/ 8 passed",
+   "trust_anchor_after": "tests/validate.py ALL VALIDATIONS PASSED (5/5 known solves); pytest benchmark/ 8 passed; pytest round19/I2/test_adjudicate.py 16 passed",
+   "reopens_if": "a register outside the nine is proposed (add it to build_models.REGISTERS and re-measure), OR I1 changes the decoder's transition relation (every power number here is conditional on encipher_keyskip -> beam_decode(400,3)), OR I3's calibrated family-wise bar lands above the far-tail extrapolation in out_gates.json, in which case the power table must be recomputed at that bar from the stored per-replicate rows in out_power.json.",
+   "artifacts": [
+    "round19/I2/out_build.json",
+    "round19/I2/out_smoke.json",
+    "round19/I2/out_null.json",
+    "round19/I2/out_power.json",
+    "round19/I2/out_speed.json",
+    "round19/I2/out_gates.json"
+   ]
+  }
+ ]
+}

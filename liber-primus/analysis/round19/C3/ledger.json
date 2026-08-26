@@ -1,0 +1,204 @@
+{
+ "$comment": "Round 19 lane C3 (closeout of round18 L3-ornaments and L8-provenance) - ledger-shaped entries for merge into liber-primus/LEDGER.json. Per AGENTS.md the load-bearing fields are `coverage` and `not_covered`, not `status`. Nothing here is committed by this lane; the coordinator merges.",
+ "generated_utc": "2026-08-26",
+ "lane": "round19/C3",
+ "prereg": "liber-primus/analysis/round19/C3/PREREG.md",
+ "results": "liber-primus/analysis/round19/C3/RESULTS.md",
+ "trust_anchor_before": "ALL VALIDATIONS PASSED (5/5)",
+ "trust_anchor_after": "ALL VALIDATIONS PASSED (5/5)",
+ "entries": [
+  {
+   "id": "A-06",
+   "lane": "round19/C3 (closeout of round18/L3-ornaments)",
+   "hypothesis": "The non-text bands Round 8 catalogued as ornament contain readable glyphs carrying information - runes forming a word, a token block, an index or a pointer.",
+   "status": "run",
+   "round": 19,
+   "date": "2026-08-26",
+   "objects": "109 catalogued band records over 39 pages (deduped union of geometry/ornaments.json 62 rows and geometry_report.json:ornaments 47 rows, with the y coordinate restored by round18 inventory.py)",
+   "threshold": "Inherited verbatim from round18/L3-ornaments/PREREG.md. H1: an English word or known-Cicada string of length >= 8 in a runic short band. H2-H8: family bar p < 0.001/6 = 1.67e-4 on any family headline statistic. Gate G-A: solved-page per-glyph agreement >= 90%.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "MIXED - see control_detail",
+   "control_detail": "Gate G-A2, registered in round19/C3/PREREG.md 0.1 before scoring: band-shaped boxes of KNOWN content (7 pages solved by decryption) pushed through the identical read_bands.py band path; truth attributed against each page's FLAT canonical rune stream because the corpus breaks lines semantically and the image breaks them typographically. 64 control bands / 1198 glyphs. POOLED per-glyph agreement 53.95% -> FAILS the inherited 90% bar. On the LP2 typeface (the face of all 56 target pages) 95.56% -> above the bar. Conditional on the reader's own RUNIC call: 95.62% precision (1049/1097 glyphs, 56 bands); on <=16-glyph bands called RUNIC, 100% (54/54, 6 bands). SPECIFICITY, which round18 never measured: 15 probes over known non-rune ink (blank margin, woodcut interiors, vine strokes) -> 13/15 not called RUNIC. For objects of <=16 glyphs the RUNIC call has sensitivity 0.50, specificity 0.50, PPV 0.75 (n=16) - a coin flip in exactly the size class P-9 nominated. H1-H8 controls: H7 decoy panel (6 alternative integer sets, one drawn at random, all clearing the family bar against the same null) and 20000-draw set randomisation; H8 identical KS test on 616 ordinary text rows.",
+   "coverage": "All 109/109 band records read end to end (round18 stopped at 45). All 30 of P-9's nominated <=16 set re-measured. 256/256 base-60 tokens on pp.49-51. 64 control bands / 1198 glyphs for the band-shaped gate. 15 specificity probes. 20000 set-randomisation draws for H7. 18514 connected components for H9.",
+   "power": "Band reads: 95.6% per-glyph precision on the LP2 face and conditional on the RUNIC call; 100% on <=16-glyph bands GIVEN a RUNIC call. But the RUNIC call at <=16 glyphs is sensitivity 0.50 / PPV 0.75. Pooled gate G-A2 FAILS the inherited 90% bar at 53.95%, dominated by LP1 recall loss (LP1 is outside the template domain: templates.npz was clustered from LP2 renders).",
+   "result": "NEGATIVE for content, with a refuted premise. H1 0 hits; H2 0; H3 1 exact (bar >=3); H4 0; H5 best form 2 exact (bar >=3); H6 0 of 12 pointers land on one of the 89 residual doublets (base rate 0.0068, binom p=1.0). H7 and H8 PASSED their registered bars and BOTH die under controls this lane added: H7's p=6.74e-10 is a reference-class artifact (a set of six integers drawn AT RANDOM scores p=1.7e-06 against the same null; set-randomisation over 20000 draws gives the binary ladder p=0.089); H8's KS p=8.2e-11 is not discriminating (the identical test on 616 ordinary text rows rejects uniformity at p=3.3e-112). No claim of a hit survives.",
+   "load_bearing_finding": "P-9's premise is REFUTED by a field-definition error. `n` in ornaments.json is NOT a glyph count. The 30 boxes it labels `n <= 16` contain between 0 and 341 connected components: three hold zero, six are whole multi-line text blocks 7-11 rows tall and up to 2167 px high holding 251-341 components (round18's class T - ordinary body text the ornament rule rejected because a marginal vine merged rows), and the genuinely tiny ones are single 42x21 px vine hairlines reading 2 glyphs at degeneracy 0.50. This is the same class of defect as the dropped y coordinate round18 found in the same file: the artifact's schema was never checked against what its consumers assumed it meant.",
+   "conditionals": {
+    "object_space": "The 109 records Round 8's grouping emitted. Non-text ink the ornament rejection rule never bounded is NOT covered, and that rule is now known to carry at least two schema defects (dropped y; an `n` that is not a glyph count), so its output cannot be treated as a complete frame.",
+    "decoder_transition_model": "R9 template DP with the stored 29-class bijection; templates clustered from LP2 renders. LP1's face is measurably out of domain (42.6% vs 95.6%). Non-Futhorc glyph systems, glyphs below ~30 px, and any glyph absent from templates.npz are outside the model entirely.",
+    "adjudicator_register": "H1's recognizer is English + a known-Cicada-string list. Per round18 L7-A that register scores 0.33 for Latin and 0.00 for vowel-dropped English, so H1's negative is an ENGLISH-REGISTER negative. H2-H8 are numeric/positional and register-free."
+   },
+   "not_covered": "Ink outside the 109 boxes. Colour/chroma channels (only 8-bit luminance was read). Sub-30-px glyph systems. Any band content in a non-English register (H1 only). Whether a short band called NON-RUNIC is decoration or misread runes - at <=16 glyphs the call carries no information (sensitivity 0.50), so no band is asserted to be decoration on the strength of a failed read.",
+   "reopen_if": "(a) The ornament grouping is re-run with its rejection thresholds swept and new boxes appear - the 109 are the output of a rule now known to be defective. (b) templates.npz is extended with LP1-clustered templates and G-A2 is re-run; if LP1 rises to LP2's level the pooled gate may pass. (c) H1 is re-adjudicated through Round 19's I2 multi-register panel - its negative is English-only. (d) The RUNIC/NON-RUNIC classifier is improved at <=16 glyphs, which would make that whole size class readable.",
+   "evidence": [
+    "liber-primus/analysis/round19/C3/RESULTS.md",
+    "liber-primus/analysis/round19/C3/l3/bands.json",
+    "liber-primus/analysis/round19/C3/l3/band_control.json",
+    "liber-primus/analysis/round19/C3/l3/control_strata.json",
+    "liber-primus/analysis/round19/C3/l3/hypotheses.json",
+    "liber-primus/analysis/round19/C3/l3/h7_control.json",
+    "liber-primus/analysis/round19/C3/l3/h78_controls.json",
+    "liber-primus/analysis/round19/C3/l3/hashes.json"
+   ]
+  },
+  {
+   "id": "P-9",
+   "lane": "round19/C3 (closeout of round18/L3-ornaments)",
+   "status": "run",
+   "round": 19,
+   "date": "2026-08-26",
+   "hypothesis": "PARKED item: the 30 catalogued bands with n <= 16 glyphs are 'the only real candidates' for hidden content.",
+   "result": "REFUTED AT THE PREMISE. `n` in ornaments.json is a Round 8 row-group count, not a glyph count. Re-measuring the component count inside the same 30 boxes gives a range of 0 to 341. The set does not contain what P-9 believed it contained. The only members that really are ~16 short tokens are B096 (p50) and B098 (p51), the alphanumeric base-60 blocks, whose reads are already byte-for-byte confirmed by two independent community transcriptions vendored in this repo.",
+   "coverage": "30/30 of the nominated set re-measured, component-by-component, and read.",
+   "not_covered": "Whether a differently-defined short-band set exists. A grouping rule that actually counts glyphs has never been run over these pages.",
+   "reopen_if": "Round 8's band grouping is re-run emitting a true glyph count, producing a genuinely short-band candidate set. That set would then need the <=16-glyph classifier problem (sensitivity 0.50) solved before it could be adjudicated.",
+   "evidence": [
+    "liber-primus/analysis/round19/C3/RESULTS.md#21-p-9-is-refuted-and-by-a-field-definition-error",
+    "liber-primus/analysis/round19/C3/l3/bands.json"
+   ]
+  },
+  {
+   "id": "B-12",
+   "lane": "round19/C3 (closeout of round18/L3-ornaments)",
+   "hypothesis": "Line geometry in the Liber Primus (row height, fill ratio, margins, runes/words per line, separators) carries a covert channel. Plus addendum #1 H9: per-glyph ink INTENSITY carries information.",
+   "status": "run",
+   "round": 19,
+   "date": "2026-08-26",
+   "objects": "616 text rows over 56 pages; 18514 connected components over the same 56 sha256-verified renders.",
+   "threshold": "Inherited verbatim. I-3a bimodality: separation >= 2.0 sigma AND dBIC > 10. Bit decode: p < 0.001 vs a size-matched shuffle null. Correlation: Bonferroni p < 3.7e-5 over 27 tests. C-3 positive control: >= 95% bit recovery on a planted 64-bit message, else report the power ceiling. H9 (addendum #1): outlier iff mean grey > 4 sigma above the page's own body-text distribution with a stroke-width-matched re-test; positive control >= 90% recovery of planted lightening; '< 10 outliers book-wide => annotated anomaly list, not a channel'.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "PASS (both, after a repair to H9's control that is disclosed as a repair)",
+   "control_detail": "B-12 C-3b DECODER VALIDATION: planting real ASCII in the bit channel noise-free is recovered at p=0.0005 -> PASS. So the 8/8 bit-decode failures are a property of the CHANNEL, not of the decoder. B-12 C-3a POWER CEILING: a planted 64-bit message in fill_ratio recovers 0.547 / 0.703 / 0.797 / 0.859 / 0.859 / 0.859 / 0.859 bits at 0.5 / 1 / 2 / 3 / 4 / 6 / 8 sd separation - it SATURATES at 0.859 and never reaches the 95% bar, so the negative is bounded at an 85.9% power ceiling. H9: the round18 detector FAILED its own plant at every level (recall 0.050 / 0.025 / 0.050 / 0.000 / 0.100 at dL = 2 / 5 / 10 / 20 / 40 grey levels). Diagnosed: detect() estimates the page body mean and sd from a set that INCLUDES the planted components, so lifting 40 of ~270 body components by 40 levels inflates sd from ~1.4 to ~15 and a planted component's z becomes 2.7, below the 4-sigma bar - the plant destroyed its own null. Repaired in round19/C3/l3/intensity2.py by replacing the mean/sd estimator with median/1.4826*MAD (50% breakdown point); the addendum's RULE is unchanged, only the estimator. Repaired recall: 1.000 at every dL from 2 to 40. Smallest recoverable dL = 2 grey levels.",
+   "coverage": "616/616 text rows, 11 geometric channels, 8 bit packings, 24 correlations, 7 planted separations. 18514/18514 components for H9 over all 56 renders, plus 5 planted control levels.",
+   "power": "Bit channel ceiling 0.859 (never reaches the 95% bar at any separation up to 8 sd). Decoder validated at p=0.0005. H9 detector recall 1.000 down to a 2-grey-level difference.",
+   "result": "NEGATIVE with a stated power ceiling. Bimodality is REAL and survives its confound - row_height separates at 4.71 sigma overall and 7.90 sigma with last-lines and short pages removed, body_per_line at 3.93 sigma - so the book genuinely has two row-height states. It is NOT decodable: all 8 bit-decode channels score 0 against null means of 0.0-0.1, p=1.0000. Exactly 1 of 24 correlations clears Bonferroni (runes_per_line ~ mean_rune_idx, rho=-0.257, p=1.47e-10) and it is fully explained by typesetting: runes_per_line ~ mean GLYPH WIDTH is rho=-0.653 (p=8.3e-75) and the PARTIAL correlation controlling for width is rho=-0.018 (p=0.661). Wider runes, fewer runes per justified line. A typesetter, not a channel. H9: 1504 of 18514 components (8.12%) exceed 4 MAD-sigma and survive the stroke-and-height-matched re-test - far too dense to be a message and with no clause in the addendum covering it, so the discriminating question (registered before running) was whether flagging is predicted by render geometry: pooled AUC 0.709 (height), 0.707 (stroke width), 0.687 (area) against bars of >=0.80 render-artifact / <=0.60 unexplained -> PARTIALLY EXPLAINED, number reported, no claim made. H9 is now MEASURABLE for the first time; it is not a demonstrated channel.",
+   "incidental_finding_page15": "The observation that prompted addendum #1 is now quantified. Page 15's 68 digit-height components have median grey 10.06 (MAD-sigma 0.546). FOUR ADJACENT components on one row (x 913-1148, y 1016-1094) sit at mean grey 60.1-61.2 - +51.2 grey levels, z ~ 92 - where every other digit on the page is at z <= 13. They are the same height and width as their neighbours so the matched re-test cannot explain them, and the repaired detector recovers a planted 2-level lightening at recall 1.000, so a 51-level difference is 25x inside its power envelope. Four adjacent glyphs is the width of a four-digit number, consistent with the `3299` entry of the 4x4 grid. CRITICALLY: this is established as a property of THIS RENDER, not of the document. The only other page-15 render in the repository (vendored 2014 asset 32.jpg) is BYTE-IDENTICAL by sha256 (5543cfce96493b86...) to data/relikd/p15.jpg - the same file, not a second encode.",
+   "conditionals": {
+    "object_space": "616 text rows and 18514 components on the 56 relikd renders. Pages not in that set, and any geometric channel not among the 11 measured, are not covered.",
+    "decoder_transition_model": "8 bit packings (median-threshold, 3 orderings x byte grouping) with a decoder validated at p=0.0005 on planted ASCII. Non-binary encodings of the two-state row-height structure - run lengths, base-n, positional - were NOT tested.",
+    "adjudicator_register": "The bit-decode recognizer scores English 4-grams and file magic. A non-English or non-textual payload in the bit channel would be missed. The correlation and bimodality tests are register-free."
+   },
+   "not_covered": "Non-binary encodings of the row-height bimodality. Colour/chroma. Whether the page-15 anomaly is in the document rather than in this JPEG. Inter-word separator SHAPE (only counts and gaps were measured).",
+   "reopen_if": "(a) A second independent render of page 15 - a different mirror's JPEG, a PNG, or the original PDF - is obtained and the four component boxes listed in RESULTS.md 3.5 are re-measured. This is the cheapest open item in the lane and either answer is worth having. (b) A non-binary decoding of the row-height two-state structure is proposed and tested against the same shuffle null. (c) A render-physics model reduces H9's 8.12% flag rate to something a message could inhabit.",
+   "evidence": [
+    "liber-primus/analysis/round19/C3/RESULTS.md",
+    "liber-primus/analysis/round19/C3/l3/linetests.json",
+    "liber-primus/analysis/round19/C3/l3/linegeom.json",
+    "liber-primus/analysis/round19/C3/l3/intensity2.json",
+    "liber-primus/analysis/round19/C3/l3/h9_verdict.json",
+    "liber-primus/analysis/round19/C3/l3/p15_second_render.json"
+   ]
+  },
+  {
+   "id": "CORPUS-G-02",
+   "lane": "round19/C3 (closeout of round18/L8-provenance)",
+   "$note_on_id": "corpus/GAPS.md G-02 and LEDGER.json G-02 are DIFFERENT items sharing an id - the LEDGER G-02 is an OutGuess blank-control experiment from the RECON-A register. This entry is the CORPUS gap. Filing as CORPUS-G-02 to resolve the collision, as round18/L8-provenance/ledger.json recommended.",
+   "hypothesis": "Every message the community treats as canon verifies against key 7A35090F, and the corpus contains exactly one signing key.",
+   "status": "run",
+   "round": 19,
+   "date": "2026-08-26",
+   "threshold": "PASS iff gpg emits GOODSIG + VALIDSIG for fingerprint 6D854CD7933322A601C3286D181F01E57A35090F. FAIL = a signature packet is present and does not verify. NO-SIG = no signature block. A FAIL counts as a finding about the MESSAGE only if the same normalised signed body has no PASSing copy elsewhere in the corpus; otherwise it is a transport defect. Inherited verbatim from round18/L8-provenance/PREREG.md.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "PASS (all four, in an INDEPENDENT re-run)",
+   "control_detail": "C1 untouched known-good file -> GOODSIG 181F01E57A35090F + VALIDSIG for the canonical fingerprint. C2 one character of the signed body flipped -> BADSIG, no GOODSIG. C3 message clear-signed by a freshly generated foreign RSA-2048 key -> NO_PUBKEY for the foreign keyid, no GOODSIG for 3301. C4 the signature-packet timestamp is still recovered from the C2-tampered file, unchanged. C2 and C3 are what make a FAIL in this table mean anything; without them 192 PASSes say only that gpg ran. Keyring isolation is enforced in code: a throwaway GNUPGHOME per run, importing only key blocks whose PRIMARY fingerprint is canonical, aborting if any other primary key is present.",
+   "coverage": "238 .asc files enumerated repo-wide (121 distinct by sha256), deduplicating to 54 distinct signed messages spanning 2012-01-05T03:46:03Z to 2017-04-04T23:23:28Z (1916 days). All 238 verified. Round 18's table covered 228 of the same files.",
+   "power": "Two-sided and measured: the instrument provably FAILS on a one-character body tamper and provably does not attribute a foreign key's signature to 3301. gpg 2.4.8.",
+   "result": "REPRODUCED EXACTLY. On the 228 files both runs saw, every verdict is identical file-for-file and so is every sha256: 192 PASS / 3 FAIL / 22 NO-SIG / 11 KEY, zero verdict changes, zero hash changes, zero files present in round18 and missing from C3. Deduplicated: 54 of 54 distinct messages verify. Distinct signing key IDs across every signed message in the repository: exactly ONE, 181F01E57A35090F, independently confirmed. The C3 run scanned 238 files rather than 228; the 10 extra are fully accounted for as L8's OWN evidence artifacts fetched AFTER its verification run (seven third-party project keys under evidence/baserate/, two mruzuki keyserver exports, one zero-byte .asc) and none is Cicada corpus. The 3 FAILs are ONE message - the 2013-01-03 'Welcome again.' book-code message mirrored into three 1536-byte copies whose armor lost the blank line separating the Hash: SHA1 header from the body (gpg: 'invalid armor header: Welcome again.'); four other files carry the identical normalised signed text and PASS, and a repaired 1538-byte copy in the tree PASSes with the identical signature packet. Under the pre-registered rule that is a transport defect, not a canon failure.",
+   "operational_warning": "A TWO-BYTE whitespace defect turns an authentic Cicada message into a BADSIG. Anyone running this repository's own declared authenticity test (KNOWLEDGE.json: authenticity_test) against a casually mirrored copy gets a FALSE NEGATIVE and may conclude a genuine message is a forgery. Three such files are in this tree right now. Separately, 19 of the NO-SIGs are 199-byte HTTP 429 error pages in round10/L6-archives/fetched/jaxonkuipers/comms/ named like communications; any tool that globs **/*.asc picks them up as Cicada messages.",
+   "prior_art_correction": "The PREREG claim that 'no PGP verification table exists anywhere' is NOT endorsed as written. corpus/A-primary-artifacts/SIGNATURES.json already verified 140 files on 2026-08-20, one day after GAPS.md was compiled, which is why G-02 does not mention it. The defensible and still-substantial claim: this is the first verification of the WHOLE tree (238 files, including the entire jaxonkuipers fetch that G-02 itself points at, every E-tooling/vendor mirror and H-branch-recovery), the first with published positive AND negative controls, the first grouped to distinct messages, and the first in human-readable form. The prior run left an 88-file gap and had no controls.",
+   "conditionals": {
+    "object_space": ".asc files mirrored into THIS repository. The corpus is a corpus of mirrors (see corpus/GAPS.md G-12); a message never mirrored here is not covered, and absence from the table is not evidence a message does not exist.",
+    "decoder_transition_model": "GnuPG 2.4.8's parser. A signature in a format this build cannot parse would be recorded as NO-SIG, not as FAIL.",
+    "adjudicator_register": "Not applicable - the adjudicator is a cryptographic signature check, not a language model."
+   },
+   "not_covered": "Messages not mirrored into this repository. Signature formats gpg 2.4.8 cannot parse. Whether any signed message is a forgery by an actor who controlled the private key - a valid signature proves key control, not authorship.",
+   "reopen_if": "A .asc claimed as a Cicada communication is found that is not in this tree, or a second signing key ID appears in any mirror. Either would change the single most load-bearing line in the table.",
+   "evidence": [
+    "liber-primus/analysis/round19/C3/PGP-VERIFICATION-TABLE.json",
+    "liber-primus/analysis/round19/C3/verify_all_signatures_rerun.py",
+    "liber-primus/analysis/round19/C3/verify_rerun.log",
+    "liber-primus/analysis/round19/C3/l8/crosscheck.json",
+    "liber-primus/analysis/round18/L8-provenance/PGP-VERIFICATION-TABLE.md",
+    "liber-primus/analysis/round18/L8-provenance/RESULTS.md"
+   ]
+  },
+  {
+   "id": "L1-F6-CORRECTION",
+   "lane": "round19/C3 (cross-check of round18/L1-toolchain)",
+   "verdict": "FOUND-ERROR",
+   "status": "run",
+   "round": 19,
+   "date": "2026-08-26",
+   "target_claim": "round18/L1-toolchain/RESULTS.md finding F6: '46/46 curated 3301 PGP messages, 2012->2014, are GnuPG v1.4.11 (GNU/Linux)', sourced to corpus/A-primary-artifacts/ibotpeaches/messages/, supporting 'the author's working machine is GNU/Linux, one environment, three years, no drift' and F7 'GnuPG 1.4.11 specifically'.",
+   "result": "The denominator and the window are both wrong. That directory holds 56 PASSing files with 54 distinct signature timestamps spanning 2012-01-05 to 2017-04-04, not 46 files ending in 2014. Its signature-armor Version headers are 53 x 'GnuPG v1.4.11 (GNU/Linux)', 2 x 'GnuPG v1', 1 x 'CicadaPG v.3301'. Repository-wide per DISTINCT MESSAGE: 54 x 'GnuPG v1.4.11 (GNU/Linux)' (2012-01-05 -> 2014-04-02), 2 x 'GnuPG v1' (2015-07-28, 2016-01-01), 1 x 'CicadaPG v.3301' (2017-04-04). The stated window truncates the span at exactly the point where the version string changes, so F6 is true INSIDE its window while the headline drawn from it - 'one environment, three years, no drift' - is contradicted by the same directory's own later files.",
+   "consequences": [
+    "The signing toolchain changed TWICE, not once. Round 18's L8 recorded one change from the digest algorithm (SHA-1 x53 -> SHA-512 x1 at 2017-04-04). The armor Version header shows an EARLIER, independent change between 2014-04-02 and 2015-07-28, from the long v1.4.11 (GNU/Linux) form to the short GnuPG v1 form. Two dated transitions from two independent fields, and the later one is corroborated by both.",
+    "'CicadaPG v.3301' is hand-set - no GnuPG build emits it. It is a deliberately customised armor version on the final 2017-04-04 message, which is also the only SHA-512 one. Two independent signals of a changed signing setup on the same message.",
+    "L1's CONCLUSION SURVIVES and the correction sharpens it: the 1.4.11 environment is now attested over 2012-01-05 to 2014-04-02, 818 days, covering the entire Liber Primus release window - precisely the period the Ubuntu 11.04-12.04 prior is about. Round 19's Phase-1 generator ranking (G1 $RANDOM, G2 Perl 5.14, G3 Python 2.7, G4 TeX LCGs) is NOT weakened; the era attribution is tighter than L1 stated because its end is now bounded."
+   ],
+   "recommended_action": "Correct F6/F7's numbers and window in round18/L1-toolchain/RESULTS.md 6 and its ledger entry, marking the old figures superseded rather than deleting them, per CLAUDE.md. NOT done by C3 - outside this lane's write scope.",
+   "coverage": "All 192 PASSing files and all 54 distinct messages, armor Version header parsed from the signature block of each.",
+   "not_covered": "Which exact GnuPG minor version emits the short 'GnuPG v1' form. C3 did not pin it to a release and does not assert one; the source check L8 3.2 performed for keygen_set_std_prefs() was not repeated for armor.c.",
+   "reopen_if": "The GnuPG source is checked to date the long-form -> short-form armor version change, which would narrow the 2014-04-02 .. 2015-07-28 transition window from the software side as well as the artifact side.",
+   "evidence": [
+    "liber-primus/analysis/round19/C3/l8/crosscheck.json",
+    "liber-primus/analysis/round19/C3/l8/crosscheck.log",
+    "liber-primus/analysis/round19/C3/RESULTS.md#65-cross-check-against-l1s-gnupg-v1411-finding--found-error"
+   ]
+  },
+  {
+   "id": "I-03",
+   "lane": "round19/C3 (closeout of round18/L8-provenance)",
+   "hypothesis": "A post predating 2012-01-04 (the first 3301 image) exists in a public archive referencing a Cicada-3301-specific element before its disclosure.",
+   "status": "run",
+   "round": 19,
+   "date": "2026-08-26",
+   "threshold": "Inherited verbatim. HIT = a dated, archive-attested post before its element's disclosure date, with a URL and a capture that carries the date. A hit whose date cannot be independently established from the archive is NOT a hit. 'Someone mentioned cicadas' is not a hit. NEGATIVE is reported as a BOUND - 'searched X, terms Y, window Z, nothing' - never as a clearance.",
+   "threshold_fixed_in_advance": true,
+   "terms": "The 12 terms fixed in round18/L8-provenance/PREREG.md, not extended: 3301, 845145127, cicada+puzzle/recruit, instar / instar emergence, 'looking for highly intelligent individuals', Liber Primus, runes+futhorc+cipher, Mabinogion+cipher, outguess+steganography+recruit, Anglo-Saxon rune+prime/gematria, a2e7j6ic78h0j and sibling onion strings, 'Cicada 3301'.",
+   "result": "FOUND-ERROR in the previous run, then a much weaker bound than round18 appeared to report. Round 18's predisclosure_search.sh hit a fixed pipermail URL for every month of 2011-2013 and treated a non-200 as 'searched, nothing'. Its own fetch log shows metzdowd returned 404 for 28 of 36 months and cypherpunks returned http=000 for ALL 36. http=000 is a transport failure, not a 404, and neither is a searched month. C3 re-probed both. metzdowd: the index lists 274 monthly archives and for 2011-2013 exactly EIGHT exist (2011-August, then nothing until 2013-June) - the list was dormant - so of the 13 months in the hard window 2011-01-01 -> 2012-01-04 the archive holds ONE. cypherpunks: two independent faults, neither of them absence - the host's TLS certificate has EXPIRED (so a verifying client fails before seeing an HTTP status) AND the list no longer runs pipermail at all (/pipermail/cypherpunks/ returns 404; the archive is served by HyperKitty at /archives/list/cypherpunks@lists.cpunks.org/). Round 18 was pointed at a dead endpoint behind a broken certificate and recorded the result as a negative.",
+   "coverage": "MAILING-LIST ARM: metzdowd cryptography 1 of 13 months of the hard window (2011-August only), 8 months / 1.9 MB downloaded and grepped for all 12 terms. cypherpunks @ cpunks.org 0 of 13 months - the archive holds ZERO messages before 2013; 2013 fetched in full (5.5 MB, 2645 messages) and grepped. mail-archive.com cypherpunks: search interface only, no mbox export, yields no coverage number.",
+   "power": "A regex grep over the actual mbox bytes; the denominator is the archive's own statement of what it holds, parsed from the pipermail index rather than assumed. Within a downloaded month, coverage is complete.",
+   "result_detail": "40 term hits in metzdowd, ALL post-disclosure context: a November 2013 forward of a Telegraph article about the puzzle (the source of the 845145127, instar emergence and Cicada 3301 hits) plus three 2013-09 hits on '3301' inside a Message-ID. ZERO hits in 2011-August, the only in-window month. ZERO hits across all 2645 cypherpunks messages of 2013. No candidate clears the pre-registered HIT bar.",
+   "not_covered": "Twelve of the thirteen months of the hard window are not held by either mailing-list archive and were NOT searched. bitcointalk, 4plebs /x/ and /b/, Wayback and indexed mirrors were dispatched to a separate open-web arm; see RESULTS.md 7.4 and 9. A search engine returning nothing is not coverage.",
+   "bound": "Searched 2011-August (metzdowd cryptography) with all 12 pre-registered terms - nothing. That is ONE month of a thirteen-month window. This is a 1/13 bound and it is a far weaker statement than round18's apparent 'searched 2011-2013, nothing'.",
+   "incidental": "The cypherpunks list never mentioned Cicada 3301 in 2013 - 2645 messages, 5.5 MB, zero hits on any of the twelve terms, in the year the puzzle was at its most public. A genuine if minor negative about where the puzzle was and was not discussed, properly bounded: the archive holds nothing earlier.",
+   "needs_owner_run_or_paid": [
+    "full-text search over 2011 4chan /x/ and /b/ - the archives largely postdate 2011, so this vector is structurally incapable of a hit rather than merely unsearched",
+    "paid newspaper / Usenet archive full-text search - would extend window coverage beyond 1/13",
+    "see round12/A2 for the standing paid-vector register"
+   ],
+   "reopen_if": "A 2011 archive of either list surfaces (a personal mbox, a Usenet gateway, an Internet Archive capture of a now-dead mirror), or a paid full-text archive covering the 2011-01 to 2012-01 window becomes available. The term list is fixed and must not be extended, or a future negative against it stops meaning anything.",
+   "evidence": [
+    "liber-primus/analysis/round19/C3/l8/predisclosure_archives.json",
+    "liber-primus/analysis/round19/C3/l8/cpunks_export.json",
+    "liber-primus/analysis/round19/C3/RESULTS.md#7-i-03--the-pre-disclosure-search-and-why-round-18s-negative-covered-nothing"
+   ]
+  },
+  {
+   "id": "I-01",
+   "lane": "round19/C3 (closeout of round18/L8-provenance)",
+   "hypothesis": "The mruzuki/cicadeur key 02BD208AFB8AFF75 (created 2012-01-12, self-revoked 2012-01-22) is toolchain-linked to 7A35090F.",
+   "status": "run",
+   "round": 19,
+   "date": "2026-08-26",
+   "threshold": "Inherited verbatim. MATCH = identical ordered preference lists AND identical self-sig hash algo AND identical key-flag/feature bytes. MISMATCH = any ordered preference list differs. INDECISIVE = preferences agree but are the era default of a common client, so the agreement carries no discriminating information.",
+   "threshold_fixed_in_advance": true,
+   "result": "INDECISIVE - round18's verdict stands, and C3 confirms it is not disturbed by the new L1 cross-check. Where the SOFTWARE chose, the two keys agree; where a HUMAN chose, they differ: key size 4096 vs 2048, expiry policy none vs ONE DAY, revocation never vs 2012-01-22 (reason 0x03 'no longer used'). The matching preference lists S9 S8 S7 S3 S2 / H8 H2 H9 H10 H11 / Z2 Z3 Z1, features 01, keyserver-prefs 80 are EXACTLY GnuPG 1.4.x/2.0.x keygen_set_std_prefs() defaults, which in January 2012 describes most new OpenPGP keys on Earth.",
+   "c3_notes": [
+    "The CicadaPG v.3301 armor header found in C3's L1 cross-check proves the author edited armor output in 2017. It does NOT weaken the INDECISIVE verdict, because that verdict rests on KEY PREFERENCE PACKETS set in January 2012 - five years earlier and a different part of the format. Recorded explicitly so the two findings are not later welded into a claim neither supports.",
+    "The base-rate control is still missing and still matters. Round 18's attempt used four live project keys, none created in January 2012, and a live key's UID self-signature is REISSUED on every edit, so a keyserver copy shows the preferences of the last edit rather than of creation. A properly matched control needs keys whose self-sigs are frozen in 2012 - abandoned or revoked keys. Not sourced by round18 and not by C3."
+   ],
+   "coverage": "Every field of both keys' self-signature packets compared: version, pubkey algo, key size, creation, self-sig digest algo, key flags, expiry, all three ordered preference lists, features, keyserver prefs, revocation state and reason.",
+   "power": "The comparison is exhaustive over the packet fields; its power to LINK is what is limited, and that limit is the verdict. The GnuPG source default was checked directly (gnupg-1.4.16 g10/keygen.c keygen_set_std_prefs) rather than inferred.",
+   "not_covered": "Any non-packet link. Breach-DB and people-search lookups on the key's email address were DECLINED IN ADVANCE and not run - a scope decision, not an untried lead. Resolving a private individual's identity from a puzzle handle is not a cryptanalytic result and would carry no cryptographic proof of key control.",
+   "reopen_if": "A 2012-frozen base-rate sample (abandoned or revoked keys whose self-sigs were never reissued) is assembled, making the preference-list agreement quantifiable rather than merely explicable. Or any packet-level or key-material link is found.",
+   "standing_constraint": "No person is named as Cicada 3301. Public lawful sources only.",
+   "evidence": [
+    "liber-primus/analysis/round18/L8-provenance/KEY-COMPARISON.json",
+    "liber-primus/analysis/round18/L8-provenance/RESULTS.md",
+    "liber-primus/analysis/round19/C3/RESULTS.md#8-i-01--mruzuki--cicadeur"
+   ]
+  }
+ ]
+}

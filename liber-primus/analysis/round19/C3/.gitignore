@@ -1,0 +1,20 @@
+# C3 — rebuildable binaries. Findings and hashes are committed; the bytes are not.
+#
+# Per CLAUDE.md: record hashes and findings, not binaries. Everything ignored here is
+# regenerable from the committed scripts, and the results that depend on it are already
+# recorded in RESULTS.md / out_*.json:
+#
+#   l8/archives/   ~7.1 MB of mailing-list mbox .gz fetched by predisclosure_archives.py
+#                  and cpunks_export.py. Coverage counts, term-hit counts and per-hit
+#                  context are in l8/predisclosure_archives.json and l8/cpunks_export.json.
+#   work/          throwaway GNUPGHOME keyrings + the C2/C3 control artifacts built fresh
+#                  by every run of verify_all_signatures_rerun.py. The control outcomes are
+#                  in verify_rerun.log and PGP-VERIFICATION-TABLE.json.
+#   crops/         band crops, if any are ever written. Rebuildable from the committed
+#                  scripts plus the render sha256s in l3/hashes.json.
+
+l8/archives/
+work/
+crops/
+__pycache__/
+*.pyc

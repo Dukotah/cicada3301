@@ -1,0 +1,159 @@
+{
+ "bytes_changed_vs_canon": [
+  45,
+  50,
+  246
+ ],
+ "sha256": {
+  "canon_256": "4c8dc85531d256793a6d0d318b8845869b4983e672077b094ed955bde92226d5",
+  "canon_256_decpref": "0a3aa3c813eddcf7f99ef9794c0e790f2a3fd86ea810a100d7113eb1beebacbd",
+  "payload_resolved": "3b9b07d9a26e6d55c432d94d2661fdff3c2b348daed06821f2bdb23184a4b290"
+ },
+ "characterize": {
+  "canon_256": {
+   "entropy_bits_per_byte": 7.1697,
+   "printable_ratio": 0.3984,
+   "distinct_bytes": 161,
+   "interpretations": {
+    "big-endian": {
+     "bits": 2048,
+     "smallest_factor_under_1e5": 2,
+     "probable_prime": false
+    },
+    "little-endian": {
+     "bits": 2047,
+     "smallest_factor_under_1e5": 5,
+     "probable_prime": false
+    },
+    "reversed-bytes": {
+     "bits": 2047,
+     "smallest_factor_under_1e5": 5,
+     "probable_prime": false
+    },
+    "high-1024": {
+     "bits": 1024,
+     "smallest_factor_under_1e5": 13,
+     "probable_prime": false
+    },
+    "low-1024": {
+     "bits": 1024,
+     "smallest_factor_under_1e5": 2,
+     "probable_prime": false
+    }
+   }
+  },
+  "payload_resolved": {
+   "entropy_bits_per_byte": 7.1697,
+   "printable_ratio": 0.4023,
+   "distinct_bytes": 161,
+   "interpretations": {
+    "big-endian": {
+     "bits": 2048,
+     "smallest_factor_under_1e5": 2,
+     "probable_prime": false
+    },
+    "little-endian": {
+     "bits": 2047,
+     "smallest_factor_under_1e5": 3,
+     "probable_prime": false
+    },
+    "reversed-bytes": {
+     "bits": 2047,
+     "smallest_factor_under_1e5": 3,
+     "probable_prime": false
+    },
+    "high-1024": {
+     "bits": 1024,
+     "smallest_factor_under_1e5": 5,
+     "probable_prime": false
+    },
+    "low-1024": {
+     "bits": 1024,
+     "smallest_factor_under_1e5": 2,
+     "probable_prime": false
+    }
+   }
+  }
+ },
+ "anend_control": {
+  "planted_target": "48622d5be257cd3f4a25f452436f42a2...",
+  "fires_on_planted": true,
+  "fires_FULL_on_planted": true,
+  "planted_hits": [
+   {
+    "rep": "ctrl:reversed",
+    "alg": "sha512",
+    "kind": "FULL"
+   }
+  ],
+  "fires_on_last_nibble_flipped": true,
+  "last_nibble_hit_kinds": [
+   "PARTIAL"
+  ],
+  "fires_on_first_nibble_flipped": false,
+  "false_positives_on_10000_random_targets": 0,
+  "verdict": "PASS"
+ },
+ "anend": {
+  "canon_256": {
+   "tested": 50,
+   "hits": []
+  },
+  "payload_resolved": {
+   "tested": 50,
+   "hits": []
+  }
+ },
+ "zerofp": {
+  "canon_256": {
+   "E-02": {
+    "test": "E-02",
+    "verdict": "NULL",
+    "E-02A_windows_checked": 201,
+    "E-02A_perm56_hits": [],
+    "E-02A_perm57_hits": [],
+    "doublet_gaps_n": 85,
+    "notes": "No 56-byte permutation window found in the 256-byte payload. Spearman correlations of payload-as-ints vs doublet gap sequence reported in stdout. See results JSON for details."
+   },
+   "H-03": {
+    "test": "H-03",
+    "verdict": "NULL",
+    "trials": 64,
+    "hits": [],
+    "max_printable": 0.625,
+    "notes": "32-byte cookies XOR'd against each 32-byte block of four 256-byte blobs. 0 hits above 80% printable threshold."
+   }
+  },
+  "payload_resolved": {
+   "E-02": {
+    "test": "E-02",
+    "verdict": "NULL",
+    "E-02A_windows_checked": 201,
+    "E-02A_perm56_hits": [],
+    "E-02A_perm57_hits": [],
+    "doublet_gaps_n": 85,
+    "notes": "No 56-byte permutation window found in the 256-byte payload. Spearman correlations of payload-as-ints vs doublet gap sequence reported in stdout. See results JSON for details."
+   },
+   "H-03": {
+    "test": "H-03",
+    "verdict": "NULL",
+    "trials": 64,
+    "hits": [],
+    "max_printable": 0.625,
+    "notes": "32-byte cookies XOR'd against each 32-byte block of four 256-byte blobs. 0 hits above 80% printable threshold."
+   }
+  }
+ },
+ "zerofp_verdict_comparison": {
+  "E-02": {
+   "canon": "NULL",
+   "resolved": "NULL",
+   "unchanged": true
+  },
+  "H-03": {
+   "canon": "NULL",
+   "resolved": "NULL",
+   "unchanged": true
+  }
+ }
+}

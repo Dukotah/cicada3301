@@ -37,8 +37,11 @@ Also treat with suspicion, and check before repeating:
 - any claim that an LLM solved a page (none has; see §4 for why the failure mode is
   systematic rather than accidental);
 - any "the key was hidden in the images" claim (the images are byte-authentic 400-DPI
-  Ghostscript renders with no recoverable steganography — 56/56 SHA-1s match the archived
-  onion7 dump).
+  renders with no recoverable steganography — 56/56 SHA-1s match the archived onion7 dump).
+  **Corrected 2026-08-26 (Round 18, L1):** they are not *Ghostscript* renders — they are a
+  **two-stage `gs` → ImageMagick** pipeline (IJG quality 92, optimised Huffman tables, an
+  Artifex ICC), which bounds Ghostscript to **9.04–9.14**. The stego and provenance
+  conclusions are unaffected; only the encoder attribution changes.
 
 ## 2. What to read, by what you were asked
 
@@ -91,7 +94,16 @@ These were learned expensively here. They generalise well beyond this puzzle.
    like `mu + beta·ln N`. A "hit" that merely matches your own sweep's maximum is noise.
    Use `benchmark/null.py: threshold_for(n_trials, segment_len)`.
 
-A fourth, more specific: measure decode recovery on **rune indices**, not on the
+A fourth, and it reaches every negative in this repository — **check what language your
+scorer can see.** Round 18 (L7) measured this project's own instrument against a *correct*
+key: it recovers 100% of rune indices over a Latin, Welsh or vowel-dropped-English plaintext
+and still scores it as noise, in the worst case **below a deliberately wrong key**. Every
+"NEGATIVE" here is therefore an *English-register* negative. That does not void them — the
+register the Liber Primus demonstrably uses scores −4.33 at power 1.00 — but a null from a
+scorer that cannot see your hypothesis is not evidence against it. Persist a
+language-agnostic statistic at sweep time; retro-fitting one is impossible.
+
+A fifth, more specific: measure decode recovery on **rune indices**, not on the
 transliteration string. Seven of 29 runes expand to two characters, so a single wrong rune
 shifts the alignment and makes a 98.6%-correct decode look 32% correct.
 

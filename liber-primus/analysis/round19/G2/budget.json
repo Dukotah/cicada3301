@@ -1,0 +1,142 @@
+{
+ "cores": 6,
+ "measured_python_per_s_per_core": {
+  "screen_L31_keyskip1": 662.9,
+  "esc_L120_keyskip1": 106.4,
+  "esc_L120_skip_by_two": 108.0,
+  "esc_L120_r29nodup": 160.3
+ },
+ "c_precedent": {
+  "source": "round10/L5-seed32/results_newgens.txt gen=10",
+  "seeds": 126230400,
+  "seconds": 168.1,
+  "threads": 32,
+  "decodes_per_s_per_core": 46933,
+  "caveat": "different box (32 threads), window 48, rigid+F-branch decoder, English 4-gram only. A Round-19 C screen must carry I1's relation and I2's panel, so this is an upper bound on what a faithful C screen achieves, and must be re-measured on this box."
+ },
+ "space": {
+  "seeds": 4294967296,
+  "reductions_perl_reachable": 9,
+  "orientations": 8,
+  "stage_A_decodes": 309237645312,
+  "stage_B_offset_ladder_multiplier": 10
+ },
+ "bands": {
+  "S0 authoring window 2013-01-01..2014-06-30": 47088000,
+  "S1 era band 2011-01-01..2015-01-01": 126230400,
+  "S2 small literals + pid + top of range": 131072,
+  "S4 remainder of 2**32": 4168605824
+ },
+ "cells": [
+  {
+   "cell": "full Stage A: 2**32 x 9 reductions x 8 orientations",
+   "decodes": 309237645312,
+   "python_hours_6core": 21596.86,
+   "c_hours_6core": 305.04
+  },
+  {
+   "cell": "2**32 x r29 x 8 orientations",
+   "decodes": 34359738368,
+   "python_hours_6core": 2399.65,
+   "c_hours_6core": 33.89
+  },
+  {
+   "cell": "2**32 x r29 x 1 canonical orientation",
+   "decodes": 4294967296,
+   "python_hours_6core": 299.96,
+   "c_hours_6core": 4.24
+  },
+  {
+   "cell": "2**32 x top-3 reductions x 8 orientations",
+   "decodes": 103079215104,
+   "python_hours_6core": 7198.95,
+   "c_hours_6core": 101.68
+  },
+  {
+   "cell": "S0 (47,088,000) x r29 x 8 orientations",
+   "decodes": 376704000,
+   "python_hours_6core": 26.31,
+   "c_hours_6core": 0.37
+  },
+  {
+   "cell": "S0 (47,088,000) x 9 reductions x 8 orientations",
+   "decodes": 3390336000,
+   "python_hours_6core": 236.78,
+   "c_hours_6core": 3.34
+  },
+  {
+   "cell": "S1 (126,230,400) x r29 x 8 orientations",
+   "decodes": 1009843200,
+   "python_hours_6core": 70.53,
+   "c_hours_6core": 1.0
+  },
+  {
+   "cell": "S1 (126,230,400) x 9 reductions x 8 orientations",
+   "decodes": 9088588800,
+   "python_hours_6core": 634.74,
+   "c_hours_6core": 8.97
+  },
+  {
+   "cell": "S2 (131,072) x r29 x 8 orientations",
+   "decodes": 1048576,
+   "python_hours_6core": 0.07,
+   "c_hours_6core": 0.0
+  },
+  {
+   "cell": "S2 (131,072) x 9 reductions x 8 orientations",
+   "decodes": 9437184,
+   "python_hours_6core": 0.66,
+   "c_hours_6core": 0.01
+  },
+  {
+   "cell": "S4 (4,168,605,824) x r29 x 8 orientations",
+   "decodes": 33348846592,
+   "python_hours_6core": 2329.05,
+   "c_hours_6core": 32.9
+  },
+  {
+   "cell": "S4 (4,168,605,824) x 9 reductions x 8 orientations",
+   "decodes": 300139619328,
+   "python_hours_6core": 20961.46,
+   "c_hours_6core": 296.07
+  }
+ ],
+ "wall_clock_buys_python": {
+  "12h": {
+   "decodes": 171823679,
+   "seeds_at_1_orientation_1_reduction": 171823679,
+   "frac_of_2**32": 0.04000581777654588,
+   "frac_of_stage_A": 0.0005556363580075817
+  },
+  "24h": {
+   "decodes": 343647359,
+   "seeds_at_1_orientation_1_reduction": 343647359,
+   "frac_of_2**32": 0.08001163578592241,
+   "frac_of_stage_A": 0.0011112727192489223
+  },
+  "48h": {
+   "decodes": 687294719,
+   "seeds_at_1_orientation_1_reduction": 687294719,
+   "frac_of_2**32": 0.16002327180467546,
+   "frac_of_stage_A": 0.002222545441731604
+  },
+  "72h": {
+   "decodes": 1030942080,
+   "seeds_at_1_orientation_1_reduction": 1030942080,
+   "frac_of_2**32": 0.24003490805625916,
+   "frac_of_stage_A": 0.003333818167448044
+  },
+  "168h": {
+   "decodes": 2405531520,
+   "seeds_at_1_orientation_1_reduction": 2405531520,
+   "frac_of_2**32": 0.5600814521312714,
+   "frac_of_stage_A": 0.007778909057378769
+  }
+ },
+ "escalation": {
+  "10000": 0.26,
+  "100000": 2.61,
+  "1000000": 26.11,
+  "10000000": 261.07
+ }
+}

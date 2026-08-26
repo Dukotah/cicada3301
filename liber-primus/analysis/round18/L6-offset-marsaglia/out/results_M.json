@@ -1,0 +1,653 @@
+{
+ "lane": "round18/L6 sub-lane B (MARSAGLIA CDROM 1995)",
+ "units_done": 77,
+ "units_total": 756,
+ "complete": false,
+ "builders": [
+  "mod29",
+  "hi_nibble",
+  "lo_nibble",
+  "byte_scaled",
+  "prime_to_idx",
+  "nibbles"
+ ],
+ "builders_excluded": {
+  "hexchars": "drops the digits 0-9 (eng_to_idx); it is the A-F subsequence of the hex string, not the hex reading. Replaced by `nibbles`. R17/P1 finding, re-derived in audit_builders.py."
+ },
+ "max_skip": 8,
+ "head": 400,
+ "beam_w": 120,
+ "keep": 1000,
+ "escalate_top": 40,
+ "n_offsets_scanned": 1539996304,
+ "threshold_for_at_this_N": -5.3844483566894406,
+ "per_pad": {
+  "BITS.01": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.02": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.11": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.03": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.04": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.05": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.06": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.07": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.08": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.09": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.10": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.12": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.13": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.15": {
+   "bytes": 10000000,
+   "units": 2,
+   "offsets": 39999904
+  },
+  "BITS.14": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.16": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.17": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.18": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.19": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.20": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.21": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.22": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.23": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.24": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.25": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.26": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.27": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.28": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.29": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.30": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.31": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.32": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.33": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.34": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.35": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.36": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.37": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.38": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.39": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.40": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.41": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.42": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.43": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.44": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.45": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.46": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.47": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.48": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.49": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.50": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.51": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.52": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.53": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.54": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.55": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.56": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.57": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.58": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.59": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "BITS.60": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "CALIF.BIT": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "CANADA.BIT": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  },
+  "GERMANY.BIT": {
+   "bytes": 10000000,
+   "units": 1,
+   "offsets": 19999952
+  }
+ },
+ "best": {
+  "offset": 7710875,
+  "sign": 1,
+  "pre": -1.2577084302902222,
+  "score": -6.738686108217992,
+  "head": "ETURIONLNGGETHYATGONDEDTHESIAYAARAPHTHEAIDBTOEGEACOPJERGSOEXTEAO",
+  "pad": "BITS.22",
+  "builder": "mod29",
+  "rev": false
+ },
+ "top30": [
+  {
+   "offset": 7710875,
+   "sign": 1,
+   "pre": -1.2577084302902222,
+   "score": -6.738686108217992,
+   "head": "ETURIONLNGGETHYATGONDEDTHESIAYAARAPHTHEAIDBTOEGEACOPJERGSOEXTEAO",
+   "pad": "BITS.22",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 8825836,
+   "sign": -1,
+   "pre": -1.3294838666915894,
+   "score": -6.740109576908457,
+   "head": "STOHESHSOTHTHEDIANYTHCLYLINYOTSJOEDANGHMAERETHHOSEWEOHTHFBGNGOIL",
+   "pad": "BITS.55",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 8101383,
+   "sign": 1,
+   "pre": -1.3667045831680298,
+   "score": -6.7527188996343455,
+   "head": "CPBOETRIOUUEDSOSELARGAUTHTHUNGTSTHYEAJIAHNIEOPTIAHJREORUYEOGTHRF",
+   "pad": "BITS.07",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 9161387,
+   "sign": -1,
+   "pre": -1.3927277326583862,
+   "score": -6.77976164929751,
+   "head": "EOEOOGYEARTEADSEATTATEARBYMETHRTGEABNETTIIIUEOYPEOTHGEAWEAREIOTH",
+   "pad": "BITS.15",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 4326572,
+   "sign": 1,
+   "pre": -1.3737237453460693,
+   "score": -6.84197221653305,
+   "head": "CGOITHOESEUMACREANRORDECTHOJLJHIAMNUSLUHIARETBNONGREAIASPYNOEEOU",
+   "pad": "BITS.04",
+   "builder": "mod29",
+   "rev": true
+  },
+  {
+   "offset": 9280673,
+   "sign": 1,
+   "pre": -1.2413461208343506,
+   "score": -6.859376514211741,
+   "head": "WXDLOTHETHYNINGIINTHEFADGMEGRAHTHTAEGEARBTHHGDNCMWIDIDGEODMFEOIN",
+   "pad": "BITS.35",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 285843,
+   "sign": 1,
+   "pre": -1.2848039865493774,
+   "score": -6.860454056649353,
+   "head": "AEEOEALUENOFFBOOUFFDRIENUTEROEAIOEMGGWEAXFXAEHCREANGTOCUTHOEJPBD",
+   "pad": "BITS.15",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 4840413,
+   "sign": 1,
+   "pre": -1.3773318529129028,
+   "score": -6.86195247603464,
+   "head": "IAOETHOLYSBADEEOATHEFLOWNAWNAOIJNNIISAEUTHAEXNGIARNWYTHXIARTJMPA",
+   "pad": "BITS.39",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 9827609,
+   "sign": -1,
+   "pre": -1.362565040588379,
+   "score": -6.870619117108354,
+   "head": "HELWHEEXATUISPSWHERINRDSBUHDOEIAPMOEBAEGOEMEARLAEUTESICCGPDEOOEG",
+   "pad": "BITS.38",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 7658510,
+   "sign": -1,
+   "pre": -1.3652933835983276,
+   "score": -6.8706795653079595,
+   "head": "EORGINTHEOFSNCHECIAAETHSHAUIYXFBBTHCFSEALSWOIYOTHYLEOLEONGNGDCMR",
+   "pad": "BITS.25",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 8296713,
+   "sign": -1,
+   "pre": -1.39423406124115,
+   "score": -6.875203235656154,
+   "head": "LYIMESWIISFINREADYRITLIEOLDISOESDTHEOCNGOXNPAEGANJTFNPAXIEANNSAR",
+   "pad": "BITS.15",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 4285075,
+   "sign": 1,
+   "pre": -1.3428210020065308,
+   "score": -6.87766670872098,
+   "head": "NNGOFJWUIBLYJODERSTILDAEOEISLITHEAREATRDAUWEOBFIAIGHLMRRMIDIOEFE",
+   "pad": "BITS.03",
+   "builder": "mod29",
+   "rev": true
+  },
+  {
+   "offset": 8345908,
+   "sign": -1,
+   "pre": -1.3745592832565308,
+   "score": -6.8796753272661,
+   "head": "JNGFENSROONWHODBLEWRDIDWOEOEAORMNGWHCAEMGMCNTYBFFREAPTEANOOTHFEO",
+   "pad": "BITS.37",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 10088,
+   "sign": 1,
+   "pre": -1.367095708847046,
+   "score": -6.881776152456213,
+   "head": "ONGETANANLIEUUSORLEPSCREATOIAFUHTWOENOEANGPRIMFSTEOLDEETHPSCTSIA",
+   "pad": "BITS.36",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 5450903,
+   "sign": 1,
+   "pre": -1.3575856685638428,
+   "score": -6.882971336218397,
+   "head": "IAFIAAEIEOIMARUGHSTHREMLORLETHAEPUEOMEOOLOTHBIATHABYALYIANGPPCNG",
+   "pad": "BITS.24",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 8407595,
+   "sign": -1,
+   "pre": -1.2707164287567139,
+   "score": -6.889428776946902,
+   "head": "CTHALOWSLETHLEASOTHLASOURGYPDWUTHSREODEONGNGAFNGAEAAEFLXFCSEEAMO",
+   "pad": "BITS.06",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 5808550,
+   "sign": -1,
+   "pre": -1.3800768852233887,
+   "score": -6.889883838591479,
+   "head": "WIAAEOFFEEWOTTHIBENUSEDRYOXIANTHANGEANAEEEDWDCSHMRDLOEGIOHREATHI",
+   "pad": "BITS.18",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 6113848,
+   "sign": -1,
+   "pre": -1.3951762914657593,
+   "score": -6.8927115475735325,
+   "head": "GYPISFRANGMILLOSCGXAEENUARCRTGCPPDENYPEPTMITABROEEGRBSOOLNGTHXHD",
+   "pad": "BITS.58",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 815395,
+   "sign": -1,
+   "pre": -1.3686347007751465,
+   "score": -6.893324306662322,
+   "head": "JHNGIUEYGOLEHDESTHODHEMHNYEAMNGCWILXSEREATHNXLSGOEGWOEAEOMAEOAJP",
+   "pad": "BITS.05",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 2868075,
+   "sign": -1,
+   "pre": -1.3605753183364868,
+   "score": -6.897272923240617,
+   "head": "LHUNCGXHOLDPIMSREASOMYBEUENGEOOEIOEIATYTSNGTHXMCSLSJBEADAEBORAYB",
+   "pad": "BITS.11",
+   "builder": "mod29",
+   "rev": true
+  },
+  {
+   "offset": 956938,
+   "sign": 1,
+   "pre": -1.3478760719299316,
+   "score": -6.898314523290295,
+   "head": "DXEOHINGBXNNENONUSAMSEDALTSFIADOEGJNGJSBTEPFTJTEODCBLMEAAOFFBHSI",
+   "pad": "BITS.30",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 2191902,
+   "sign": -1,
+   "pre": -1.307985544204712,
+   "score": -6.899030075686943,
+   "head": "NGHECOHATFREASTHREATJOSSSORSGAEEOSARDJYDIAFEAUTHBRUPEAODRMPAEORT",
+   "pad": "BITS.11",
+   "builder": "mod29",
+   "rev": true
+  },
+  {
+   "offset": 7121721,
+   "sign": -1,
+   "pre": -1.355275273323059,
+   "score": -6.900261551846585,
+   "head": "GROUNGSWEATHYGOWDAHISMITIAAEAWSRHRWCLTHEIAENYEASXPEOLMUIAGNIOWEO",
+   "pad": "BITS.25",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 305232,
+   "sign": 1,
+   "pre": -1.321873426437378,
+   "score": -6.9007243871150665,
+   "head": "THXOEIAEBTANDHFIDDSANDSTHINGABOEBYEOEAIANHEOXEAOEAJLTXOUXPRTSORI",
+   "pad": "BITS.25",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 8412338,
+   "sign": -1,
+   "pre": -1.350626826286316,
+   "score": -6.9035435363850715,
+   "head": "OTTHISIAEIOEITHALOSTIFTHOUSSBYOEIDILEOBMGMRXRAEOWNGIANGSMJHCGCCS",
+   "pad": "BITS.04",
+   "builder": "mod29",
+   "rev": true
+  },
+  {
+   "offset": 3727048,
+   "sign": -1,
+   "pre": -1.3753498792648315,
+   "score": -6.903887621865598,
+   "head": "THIAJOCSWEDFLYSPEROSSBEOEOTHBAMWTHCNNGEACEOGNEOAEGYYNDWBMHWWEUCL",
+   "pad": "BITS.26",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 3202615,
+   "sign": -1,
+   "pre": -1.3814667463302612,
+   "score": -6.90476349595127,
+   "head": "AEDUNJEGYAEAOMSWITHTHERROUDEHOORIATHOGNLCAEOEWRCLGNUCPIAYXHEEIMF",
+   "pad": "BITS.32",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 4163888,
+   "sign": 1,
+   "pre": -1.3479405641555786,
+   "score": -6.904904861486366,
+   "head": "AEEOTOEEOEAPCHHIDSTSOURHASYMMENTSEOOEOXYEYODWRTHHLIEAIAOEYLBEAHD",
+   "pad": "BITS.26",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 3521756,
+   "sign": 1,
+   "pre": -1.3544561862945557,
+   "score": -6.905358831278735,
+   "head": "CAENOEAELFTATODBACCETHCRENTFOEBMFRTSEIAMIIDMRXCUOENJNGNCLRMHIWIN",
+   "pad": "CALIF.BIT",
+   "builder": "mod29",
+   "rev": false
+  },
+  {
+   "offset": 2710363,
+   "sign": -1,
+   "pre": -1.3661530017852783,
+   "score": -6.906868870797247,
+   "head": "IOEAMRYJOINDAFFERSOATYPAENFNGTHITHEAEALUXAYBIAEANGOEISCWYEOPISEO",
+   "pad": "BITS.13",
+   "builder": "mod29",
+   "rev": false
+  }
+ ]
+}

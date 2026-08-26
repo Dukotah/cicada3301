@@ -1,0 +1,97 @@
+{
+ "P1": {
+  "truth": {
+   "mu": -7.25,
+   "beta": 0.0725
+  },
+  "M": 1000000,
+  "fitted_mu": -7.248256653780757,
+  "fitted_beta": 0.07254055567980243,
+  "d_mu": 0.0017433462192428806,
+  "rel_d_beta": 0.0005593886869301275,
+  "bulk_sd_beta": 0.07250637608535825,
+  "gev_xi": -0.009037988955408974,
+  "gev_xi_ci95": [
+   -0.05189587393021737,
+   0.03631824376939014
+  ],
+  "gcal_on_own_fit": {
+   "per_block": {
+    "10": {
+     "n_blocks": 100000,
+     "bar": -6.747528470514553,
+     "exceedances": 977,
+     "p_hat": 0.00977,
+     "nominal": 0.01,
+     "ratio": 0.9769999999999999,
+     "expected_exceedances": 1000.0,
+     "gating": true,
+     "within_20pct": true
+    },
+    "100": {
+     "n_blocks": 10000,
+     "bar": -6.580497668368736,
+     "exceedances": 105,
+     "p_hat": 0.0105,
+     "nominal": 0.01,
+     "ratio": 1.05,
+     "expected_exceedances": 100.0,
+     "gating": true,
+     "within_20pct": true
+    },
+    "1000": {
+     "n_blocks": 1000,
+     "bar": -6.413466866222918,
+     "exceedances": 10,
+     "p_hat": 0.01,
+     "nominal": 0.01,
+     "ratio": 1.0,
+     "expected_exceedances": 10.0,
+     "gating": false,
+     "within_20pct": true
+    },
+    "10000": {
+     "n_blocks": 100,
+     "bar": -6.2464360640771,
+     "exceedances": 1,
+     "p_hat": 0.01,
+     "nominal": 0.01,
+     "ratio": 1.0,
+     "expected_exceedances": 1.0,
+     "gating": false,
+     "within_20pct": true
+    }
+   },
+   "n_gating_blocks": 2,
+   "passed": true
+  },
+  "passed": true,
+  "why": "a fitter that cannot recover a distribution it was handed is not a fitter"
+ },
+ "P2": {
+  "cell": "EN_QUAD|keyskip1|L31",
+  "n_block_maxima": 2000,
+  "rows": {
+   "legacy_L120_constants_applied_at_L31": {
+    "mu": -7.2517,
+    "beta": 0.0725,
+    "bar_at_n100_a01": -6.584314342574561,
+    "empirical_exceedance": 0.9935,
+    "nominal": 0.01,
+    "ratio": 99.35000000000001,
+    "within_20pct": false
+   },
+   "this_lane_measured_cell": {
+    "mu": -6.916444387499277,
+    "beta": 0.1489308888217147,
+    "bar_at_n100_a01": -5.5454879854684505,
+    "empirical_exceedance": 0.009,
+    "nominal": 0.01,
+    "ratio": 0.8999999999999999,
+    "within_20pct": true
+   }
+  },
+  "passed": true,
+  "why": "G-CAL must reject a bar known to be wrong and accept the measured one; otherwise it is decoration"
+ }
+}

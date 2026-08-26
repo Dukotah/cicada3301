@@ -1,0 +1,87 @@
+{
+ "_comment": "Round 18 / Lane L5 - PAYLOAD CLOSURE. Ledger-shaped entries for merge into liber-primus/LEDGER.json (and into round18/LEDGER-ADDITIONS.json). Field names follow the existing LEDGER.json entry schema. No git commit from this lane (Round 18 Rule 8).",
+ "entries": [
+  {
+   "id": "A-04",
+   "lane": "recon-a",
+   "hypothesis": "pp49-51's 6 contested bytes (idx 25, 175, 182, 199, 215, 237) - flagged open in Campaign VII and repeated in Campaign IX; needs a Latin/digit OCR, which the rune classifier cannot do. Never done.",
+   "status": "resolved",
+   "raw_status": "resolved",
+   "round": "18/L5-payload",
+   "date": "2026-08-26",
+   "threshold": "PREREG A.3 gate: >= 38/40 (95%) exact-token agreement on a blind, seeded sample of 40 uncontested cells, read without the canonical value in view, with case-ambiguous-class accuracy reported separately. PREREG A.4 decision rule: a cell is RESOLVED iff >= 3 independent passes (different crop padding, different upscale factor, differently-ordered presentation) return the same token AND the calibration gate passed; otherwise STILL-CONTESTED with a candidate shortlist.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": {
+    "input_integrity": "p49/p50/p51.jpg, canon_256.bin and canon_256_decpref.bin all match handoff/capsule/MANIFEST.json SHA-256 exactly; the PREREG A.2.1 hard stop was cleared before any pixel was read.",
+    "grid_validation": "Projection-profile grid reproduces exactly 80/104/72 = 256 cells for p49/p50/p51, the pre-registered count. 253/256 cells segment into exactly two glyphs; 186, 210, 211 do not.",
+    "visual_calibration": "40/40 = 100.0% exact-token on the seeded blind sample (gate was >=38/40 -> PASS). Case-ambiguous-glyph subset 22/22 = 100.0%, reported separately per PREREG A.3; the seeded draw already contained 22 such cells so the top-up rule never fired.",
+    "render_determinism": "NEW control. Native-resolution pairwise IoU within each symbol class with >=2 uncontested exemplars (54 classes): mean 0.9948, worst pair excluding one mis-segmented 't' 0.995. Highest BETWEEN-class IoU among the deciding classes: l/I 0.908, O/Q 0.865, L/I 0.719. The render is deterministic, which is what licenses the three single-exemplar classes I, i, l.",
+    "leave_one_out": "NEW control. Nearest-exemplar classification of every uncontested cell with itself removed: trailing symbol 236/237 = 99.58% (the one miss, idx 209, is the mis-segmented 't' - an extraction failure, not a discrimination failure); leading digit 242/242 = 100%; case-ambiguous subset 74/74 = 100% (symbols) and 108/108 = 100% (digits).",
+    "not_testable": "Classes I, R, h, i, l have exactly one uncontested exemplar each, so leave-one-out removes the class; 5 cells are untestable this way. Their reading rests on the measured render determinism instead."
+   },
+   "null": "H0 was that the glyphs are ambiguous at 400 DPI and every cell stays contested. Rejected: all 11 disagreeing cells resolved, each at three-pass visual concordance and nearest-exemplar IoU >= 0.9993 against a between-class ceiling of 0.908.",
+   "result": "RESOLVED. All 6 pre-registered contested cells adjudicated to a single token at 3-pass concordance, each confirming the majority-vote canon and refuting scream314's decimal column: idx 25 = '3I' = 198; 175 = '0I' = 18; 182 = '2l' = 167; 199 = '0l' = 47; 215 = '1O' = 84; 237 = '0W' = 32. ZERO of the six pre-registered bytes changes. The lane then extended the same validated instrument to the other 5 conflict cells (token-split cells where canonicalize.py had used that same decimal column as the tie-breaker) and found THREE byte errors in canon_256.bin: idx 45 '1L'=81 -> '1l'=107; idx 50 '0L'=21 -> '0l'=47; idx 246 '3i'=224 -> '3I'=198. Each was given the same three-pass visual treatment and each turns on a presence/absence of a stroke (45 and 50 have no foot, so 'l' not 'L'; 246 has no dot, so 'I' not 'i'). Corrected stream in analysis/round18/L5-payload/payload_resolved.bin, sha256 3b9b07d9a26e6d55c432d94d2661fdff3c2b348daed06821f2bdb23184a4b290, 3 bytes different from canon_256.bin (sha256 4c8dc855...) and 9 different from canon_256_decpref.bin. WITNESS SCORECARD over all 11 conflict cells: scream314 token table 11/11, relikd token table 6/11, scream314 decimal column 2/11 - the decimal column is a derived column and is the least reliable of the three, yet canonicalize.py used it as the tie-breaker.",
+   "coverage": "All 256 payload cells gridded by projection profiling; all 11 cells where the three witnesses disagree adjudicated by two independent instruments (three-pass max-zoom visual reading at scales 7/10/14 with paddings 4/16/24 and three different presentation orders; native-resolution nearest-exemplar bitmap matching over all 60 base-60 classes for BOTH glyph positions). Both glyphs adjudicated at idx 215, the only cell contested in both positions. Propagation to the resolved payload: structural characterization, 210 hash probes against the page-56 'AN END' 512-bit target, and round16 zeroFP E-02A/E-02B/H-03 re-run with round16's own code - all NULL.",
+   "not_covered": "Cells 186, 210 and 211 never segmented into exactly two glyphs, so the bitmap instrument has no reading for them (all three are 3-witness-agreed, so nothing is contested there). Single-exemplar classes I, R, h, i, l cannot be leave-one-out validated. The blindness of the 40-cell visual calibration rests on a procedure note and is not externally verifiable; the machine-checkable bitmap controls are what the conclusions lean on. B-05 propagation covers only B-05's pinned Part-1 grid on the resolved payload (20,160 beam decodes, checkpointed to b05_propagation.json); B-05's Part 1b, Parts 2a/2b and the rigid control channel are not re-run. All decode-based propagation inherits Round 18 L7's conditionals: English-only adjudicator, one rejection-loop transition model.",
+   "reproduce": "cd liber-primus/analysis/round18/L5-payload && python3 grid.py && python3 calibrate.py && python3 pixelmatch.py && python3 adjudicate_all.py && python3 visualpass.py && python3 compare215.py && python3 propagate.py",
+   "evidence": [
+    "liber-primus/analysis/round18/L5-payload/PREREG.md",
+    "liber-primus/analysis/round18/L5-payload/RESULTS.md",
+    "liber-primus/analysis/round18/L5-payload/payload_resolved.json",
+    "liber-primus/analysis/round18/L5-payload/payload_resolved.md",
+    "liber-primus/analysis/round18/L5-payload/payload_resolved.bin",
+    "liber-primus/analysis/round18/L5-payload/adjudication.json",
+    "liber-primus/analysis/round18/L5-payload/pixelmatch.json",
+    "liber-primus/analysis/round18/L5-payload/calibration.json",
+    "liber-primus/analysis/round18/L5-payload/glyphmatch.json",
+    "liber-primus/analysis/round18/L5-payload/pixelmatch.py",
+    "liber-primus/analysis/round18/L5-payload/adjudicate_all.py",
+    "liber-primus/analysis/round18/L5-payload/visualpass.py",
+    "liber-primus/analysis/round18/L5-payload/compare215.py",
+    "liber-primus/analysis/round18/L5-payload/propagation_results.json"
+   ],
+   "supersedes": "The 'CONTESTED / never OCR'd' caveat on payload.canon_256 in handoff/capsule/MANIFEST.json and PARKED.md item P-07; and canonicalize.py's decimal-column tie-break at indices 45, 50 and 246.",
+   "superseded_by": null,
+   "reopens_if": "A higher-resolution or lossless source for pp49-51 appears (the current inputs are 400-DPI JPEGs; a PNG or PDF-native render would let the single-exemplar classes be cross-validated); OR a third independent transcription lineage disagrees with payload_resolved.bin at any of the 11 cells; OR any witness contests cells 186/210/211, for which this instrument has no reading.",
+   "priority": "high",
+   "notes": "Two findings beyond the pre-registered question. (1) The pp49-51 images are deterministic 400-DPI Ghostscript renders of typeset text, so same-character glyphs are pixel-identical (measured within-class IoU 0.9948 against a between-class ceiling of 0.908). That turns glyph identification from fuzzy scoring into lookup and is reusable on every other Latin/digit table in this corpus. (2) The relikd token table is 6/11 on the disputed cells and scream314's token table is 11/11. Any other transcription in this repo sourced from relikd carries a measurable error rate; re-adjudicating those pages with pixelmatch.py is a small job with a validated instrument already behind it. Note also that canon_256.bin is NOT overwritten by this lane - the corrected stream lives in payload_resolved.bin and the coordinator decides whether to promote it."
+  },
+  {
+   "id": "E-01",
+   "lane": "recon-a",
+   "hypothesis": "Payload as an RSA signature/ciphertext under known Cicada moduli: compute pow(s,e,n) in both endiannesses for every published 3301 modulus and pattern-match PKCS#1 v1.5 / PSS structure. Zero-false-positive test, minutes of compute.",
+   "status": "negative",
+   "raw_status": "negative",
+   "round": "18/L5-payload",
+   "date": "2026-08-26",
+   "threshold": "PREREG B.1/B.5: HIT iff a STRUCTURAL match - not a score, so there is no threshold to tune. PKCS#1 v1.5 signature: leading 00 01, >= 8 FF bytes, 00, then a DigestInfo DER prefix from round16's OID table (the 'strict' tier); padding-frame-only counts as 'loose' and does not qualify as a hit. EMSA-PSS: 0xBC trailer, MGF1-unmasked DB of the form 00*k || 01 || salt with k >= 8 ('strict'). Anything else is a null.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": {
+    "positive": "Locally generated RSA-2048 key, genuine signatures from the `cryptography` library. PKCS#1 v1.5 signature: matcher FIRES at the strict tier (202 FF bytes, then a real SHA-256 DigestInfo). EMSA-PSS (MGF1-SHA-256, salt 32): matcher FIRES at the strict tier (190 zero bytes, then 0x01, saltlen 32). PKCS#1 v1.5 type 2 encryption block: matcher FIRES (loose tier; type-2 blocks carry no DigestInfo, so no strict tier exists for them).",
+    "negative": "10,000 random 256-byte blocks: PKCS#1 v1.5 signature 0 strict / 0 loose; PKCS#1 v1.5 type 2 0 loose; EMSA-PSS 0 strict / 1 loose. The single loose PSS false positive (measured rate 1e-4) is exactly why the strict tier requires >= 8 zero bytes before the 0x01 delimiter; the strict tier fired zero times on noise.",
+    "key_verification": "Both 4096-bit moduli identified by computing the RFC 4880 12.2 v4 fingerprint from the OpenPGP packet bytes, not from filenames, and independently confirmed with `gpg --with-colons --import-options show-only --import`. Primary 6D854CD7933322A601C3286D181F01E57A35090F (key id 181F01E57A35090F), subkey DEC57731ACCBFD11EEBA13434D390ECF671DDEB1, both RSA-4096 e=65537, uid 'Cicada 3301 (845145127)', created 1325734783 = 2012-01-05."
+   },
+   "null": "H0 was no structure. Not rejected: 162/162 tuples produced no structural match while the matchers demonstrably fire on genuine signatures.",
+   "result": "NEGATIVE (trustworthy null). 162 (modulus, exponent, encoding, payload-variant) tuples evaluated across 3 moduli, 3 exponents, up to 4 encodings and 3 payload streams, with 3 structural matchers each. ZERO structural matches. The named Round 16 coverage gap is CLOSED: the 7A35090F RSA-4096 primary and subkey moduli were on disk all along, in corpus/, under ten independent witnesses including two keyserver pulls (keys.openpgp.org, keyserver.ubuntu.com) - no network fetch was needed. A sweep of every PGP public key block in corpus/ and the round10 L6 archive found no other 3301 RSA key (the other hits are a GitHub-Action test key whose uid says 'Not real', a revoked 2016 impostor key whose uid STRING is '7A35090F', and a community brainpool ECC key). Correction to the Round 16 record: zerofp_tests.py states that under a 4096-bit modulus pow(s,e,n) 'would trivially return s^e as-is (s << n), so PKCS1 padding is impossible'. That holds only for e = 1; for e in {3, 17, 65537} a 2048-bit s raised to e far exceeds 4096 bits, so the reduction is a full one and the test is meaningful. The gap was real; the reason recorded for it was not.",
+   "coverage": "Moduli: 7A35090F primary (RSA-4096, e=65537), 7A35090F subkey (RSA-4096, e=65537), 2013 puzzle modulus (432-bit, e=65537). Payload variants: canon_256.bin (majority), canon_256_decpref.bin (decimal-preferred), and L5's payload_resolved.bin. Encodings: big-endian, little-endian (byte-reversed), and for the 4096-bit moduli both left-aligned (zero-padded low) and right-aligned block placements. Exponents: 65537, 3, 17. Matchers: PKCS#1 v1.5 signature with DigestInfo for MD5 and SHA-1/224/256/384/512 (round16's matcher and OID table imported unchanged), PKCS#1 v1.5 type 2 encryption block, and EMSA-PSS under MGF1-SHA-1/256/384/512. 12 encodings skipped because s >= n makes the payload not a valid RSA element there: the 2048-bit payload exceeds the 432-bit 2013 modulus (6 tuples), and big-endian-left-aligned overflows both 4096-bit moduli because the payload's leading byte 0xcb exceeds their leading bytes 0xc1 and 0xbc (6 tuples).",
+   "not_covered": "Unpublished moduli - in particular the 2013 puzzle's implicit 2048-bit keys, whose public moduli were never released; 2048 bits is the only size for which the payload is a natural full-width RSA block, so this is the most consequential hole. Padding schemes other than PKCS#1 v1.5 (types 1 and 2) and EMSA-PSS: raw/textbook RSA, OAEP, ISO 9796-2, and non-RSA public-key structures are untested. Exponents outside {65537, 3, 17}. Encodings outside {big-endian, little-endian} x {left-, right-aligned}: bit-reversed, nibble-swapped and word-swapped block placements were not tested.",
+   "reproduce": "cd liber-primus/analysis/round18/L5-payload && python3 extract_moduli.py && python3 e01_extended.py",
+   "evidence": [
+    "liber-primus/analysis/round18/L5-payload/PREREG.md",
+    "liber-primus/analysis/round18/L5-payload/RESULTS.md",
+    "liber-primus/analysis/round18/L5-payload/extract_moduli.py",
+    "liber-primus/analysis/round18/L5-payload/moduli.json",
+    "liber-primus/analysis/round18/L5-payload/e01_extended.py",
+    "liber-primus/analysis/round18/L5-payload/e01_results.json",
+    "liber-primus/analysis/round16/zeroFP/zerofp_tests.py"
+   ],
+   "supersedes": "Round 16's partially-run / coverage-limited E-01, whose stated blocker was 'the 7A35090F RSA-4096 moduli were not on disk and not fetched'.",
+   "superseded_by": null,
+   "reopens_if": "A further 3301 RSA modulus is published or recovered - especially a 2048-bit one, the only size for which the payload is a natural full-width block; OR the payload is to be tested under OAEP, ISO 9796-2, or raw/textbook RSA structure; OR a candidate signature is proposed under a modulus reconstructed from a signature pair.",
+   "priority": "medium",
+   "notes": "PROVENANCE NIT worth recording separately: corpus/A-primary-artifacts/ibotpeaches/keys/67F363C61BA8FB6FDBA9C47D0670B0E57A35090F.asc is MISNAMED - its filename asserts a fingerprint that is not the key's. The file contains the canonical key 6D854CD7933322A601C3286D181F01E57A35090F; the two strings share only the 32-bit short id 7A35090F. Anyone verifying a 3301 key by filename would draw the wrong conclusion, and short-id collisions are a known attack on exactly this habit. e01_extended.py deliberately EXTENDS round16's instrument (importing zerofp_tests.pkcs1_v15_check and zerofp_tests.check_digest_info unchanged) rather than replacing it, so a hit here would have been a hit there."
+  }
+ ]
+}

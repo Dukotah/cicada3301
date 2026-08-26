@@ -28,7 +28,12 @@ def run(cmd, timeout=25):
 
 
 def main():
-    pdfs = sorted(glob.glob(os.path.join(ROOT, '**', '*.pdf'), recursive=True))
+    listfile = os.path.join(HERE, 'pdf_list.txt')
+    if os.path.exists(listfile):
+        pdfs = [os.path.normpath(os.path.join(ROOT, l.strip().lstrip('./')))
+                for l in open(listfile, encoding='utf8') if l.strip()]
+    else:
+        pdfs = sorted(glob.glob(os.path.join(ROOT, '**', '*.pdf'), recursive=True))
     done = set()
     if os.path.exists(OUT):
         for line in open(OUT, encoding='utf8'):

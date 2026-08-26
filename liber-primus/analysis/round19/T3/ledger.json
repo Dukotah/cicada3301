@@ -1,0 +1,255 @@
+{
+ "_note": "Round 19 lane T3 (THE PROPAGATION MAP). Three entries for merge into liber-primus/LEDGER.json entries[]. Keys match the LEDGER.json entry schema exactly. Trust anchor passed before and after; baseline sha256 023312066df471005264b9cbe7997cb77d2a9a6a2dc9b3316d22674023af1585 == PROBLEM.json pin.",
+ "lane": "round19/T3",
+ "date": "2026-08-26",
+ "entries": [
+  {
+   "id": "T3-PROPAGATION-MAP",
+   "lane": "round19/T3",
+   "hypothesis": "Every load-bearing statistic in this repo is computed from the pinned 12,956-rune stream, but nobody has measured how sensitive any of them is to the transcription. Perturb the stream by k runes and recompute, so that T1's and T2's re-read has a price.",
+   "status": "measured",
+   "round": "19/T3",
+   "date": "2026-08-26",
+   "threshold": "Pre-registered in PREREG.md \u00a72 before measurement: k*(floor) for 9 published doublet floors (binding = German 0.972 %, round18/L7 \u00a7C.2); IoC*N leaving the in-lane uniform-null p99; L2's Bonferroni |z| >= 3.57 on the Delta-spectrum; K-REC = median full-book recovery < 0.90 (L2's own B.3 gate); K-SEP = correct-key p05 below in-lane wrong-key p95. NO fixed score bar used anywhere.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "PC-3 equivalence: 13 of 13 published statistics reproduced on the unperturbed stream (doublets 86, rate 0.663836 %, IoC*N 0.999874, entropy 4.856504, lag-1 suppression 80.7463 %, s* 0.8128837, extra draws 373.636, delta chi2/df 1.53260, delta max|z| 2.6414 at D=17, line-break doublets 4, line-initial chi2 78.65603). PC-1 planted flip: the adversarial doublet-maximiser matches its closed form EXACTLY at every k in 1..1000. P-COLLAPSE reproduces independent-read/FINDINGS.md \u00a74 (IoC 0.9998->1.1370 vs published 1.00->1.14; doublet 0.6776 %->1.4617 % vs published 0.68 %->1.46 %). gate_F0 re-run in-lane: 20 cases, max score delta 8.88e-15, 0 path mismatches. Map gate: 450/450 located O/A/AE records map to stream positions with the canon rune matching at every one.",
+   "null": "400 trials per (model, k) on the summary channels, reported as median with a 5-95 % band; 60-120 replicates per k on the decode channel with an in-lane wrong-key comparison in the same cell; 2,000-draw uniform-rune null for the IoC*N flatness band.",
+   "result": {
+    "baseline_sha256": "023312066df471005264b9cbe7997cb77d2a9a6a2dc9b3316d22674023af1585",
+    "sha_matches_problem_json_pin": true,
+    "dependency_map": {
+     "ledger_entries_classified": 62,
+     "synthesis_claims_classified": 17,
+     "stream_dependent": 53,
+     "unknown_provenance": 0,
+     "channels": {
+      "S0_not_stream_dependent": 30,
+      "S1_summary_statistic": 10,
+      "S2_decode_score": 27,
+      "S3_layout_counts": 4,
+      "S4_the_transcription_itself": 5,
+      "mixed": 5
+     },
+     "reproduce_paths_unresolved": [
+      "R16-KDF -> sweep.py (stale path; the entry's own note says it reuses round15/KDF/sweep.py)"
+     ]
+    },
+    "k_star_doublet_deficit": {
+     "binding_floor_pct": 0.972,
+     "binding_floor_source": "German, round18/L7 \u00a7C.2 (the published 1.50 % is stale; KJV is 1.386 %)",
+     "adversarial_bound": 20,
+     "uniform_random_median": 714,
+     "uniform_random_p95": 497,
+     "dense_pages_45_54_median": 893,
+     "located_450_OAE": "NEVER CROSSES (max 0.795 % at k=450)",
+     "whole_OAE_family_random": "NEVER CROSSES (max 0.857 % at k=800)",
+     "k_star_KJV_1386_adversarial": 47,
+     "k_star_KJV_1386_random_median": 1756,
+     "k_star_stale_1500_adversarial": 54,
+     "k_star_stale_1500_random_median": 2053
+    },
+    "targeted_all_450_flipped": {
+     "sha256_prefix": "35651be7ba831ce2",
+     "doublets": 103,
+     "doublet_rate_pct": 0.7951,
+     "ratio_below_binding_floor": 1.22,
+     "ioc_norm": 1.01382,
+     "ioc_crosses_flat_band_at_k": 167,
+     "lag1_suppression_pct": 77.26,
+     "s_star": 0.7756,
+     "extra_draws": 356.0,
+     "delta_max_abs_z": 3.137,
+     "delta_bonferroni_bar": 3.57,
+     "line_break_doublets": 4,
+     "line_initial_chi2": 82.14
+    },
+    "hard_bound_on_the_OAE_family": {
+     "all_450_adversarial_within_family_pct": 1.0884,
+     "all_1385_family_adversarial_within_family_pct": 1.4357,
+     "statement": "No O/A/AE confusion, however adversarially chosen, can carry the doublet rate above 1.4357 % -- below the stale 1.50 %, below held-out English 1.483 % and below Latin 1.425 %; it clears only KJV's 1.386 %."
+    },
+    "decode_channel_full_book": {
+     "K_REC_k": 450,
+     "K_SEP_k": 900,
+     "derail_fraction_at_k200": 0.17,
+     "derail_fraction_at_k450": 0.5,
+     "derail_fraction_at_k900": 1.0,
+     "recovery_median_at_k450": 0.862,
+     "graceful_ideal_at_k450": 0.965,
+     "mechanism": "max_skip lets the key run ahead only; once the beam takes a spurious skip at a corrupted rune it can never re-synchronise, so derailment compounds with length"
+    },
+    "n_skips_channel": {
+     "margin_retained_at_k450_pct": 98.39,
+     "exact_up_to_k": 100,
+     "statement": "I1's n_skips discriminator (418 correct vs 1537 wrong, margin 1119) loses only 1.6 % of its margin at k=450, where the English score has lost half its recovery. It is the transcription-robust ranking channel."
+    },
+    "expected_wrong_runes": {
+     "E_upper_R9": 398,
+     "E_upper_frontB": 259,
+     "E_located": 450,
+     "E_attributed_by_the_audits": 0,
+     "E_C3_corrected": 0,
+     "C3_reader_precision_pct": 95.56,
+     "argument": "round19/C3 measures an independent per-glyph reader at 95.56 % on the LP2 typeface (error 4.44 %). R9 disagrees with canon at 3.07 % and frontB at 2.00 % -- BOTH BELOW the reader's own error rate -- so under p_disagree ~= p_reader + p_canon the implied canon error rate is <= 0. The disagreements are fully explained by the instrument."
+    },
+    "verdict_by_channel": {
+     "doublet_deficit_vs_actual_OAE_process": "MARGIN HOLDS (never crosses)",
+     "doublet_deficit_vs_uniform_random_median": "MARGIN NARROW (R = 1.79)",
+     "doublet_deficit_adversarial_bound": "DOES NOT HOLD at k=20 -- a bound, not a forecast",
+     "flatness_IoC_vs_located_450": "DOES NOT HOLD (crosses at k=167); magnitude is 1.9 % of the distance from flat to English",
+     "delta_spectrum": "MARGIN HOLDS (2.641 -> 3.137 against a 3.57 bar)",
+     "full_book_correct_key_recovery": "MARGIN NARROW (R = 1.13)",
+     "n_skips": "MARGIN HOLDS",
+     "at_the_measured_E_W_of_zero": "MARGIN HOLDS on every channel"
+    }
+   },
+   "coverage": "62/62 ledger entries and 17 synthesis claims classified by stream-dependence channel, 0 UNKNOWN. 7 perturbation models x 9-14 k values x 400 trials on the summary channels (~20,000 perturbed streams, each SHA-256'd). The targeted arm enumerates its positions EXHAUSTIVELY (all 450 located, all 1,385 family) rather than sampling, and computes its worst case exactly. Decode channel: 3 segment lengths (120 / 400 / 12,956) x up to 14 k values x 60-120 replicates, with an in-lane wrong-key control in every cell.",
+   "not_covered": "INSERTIONS, DELETIONS and line-order / segmentation errors. Every model here is substitution-only and preserves n = 12,956; an indel re-indexes every downstream position and every S3 layout statistic and is strictly more damaging. Ledger items B-23 (separator audit, 170 of 604 lines, 19 disagreements unread) and H-02 (full-corpus whitespace re-audit) sit in exactly that class and this lane bounds neither. Also not covered: the decode arm uses encipher_keyskip -> fastbeam(max_skip=3), which per L7-B covers ONE rejection-loop implementation and not skip_by_two or free drift -- \u00a75's derail curve should be re-measured under round19/I1's repaired driftbeam. Adjudicator is the English quadgram scorer on the LP1_REAL register only (L7-A power 1.00 there, as low as 0.00 elsewhere); the n_skips channel in \u00a75.1 is the register-free one.",
+   "evidence": [
+    "liber-primus/analysis/round19/T3/RESULTS.md",
+    "liber-primus/analysis/round19/T3/out_summary.json",
+    "liber-primus/analysis/round19/T3/out_baseline.json",
+    "liber-primus/analysis/round19/T3/out_random.json",
+    "liber-primus/analysis/round19/T3/out_targeted.json",
+    "liber-primus/analysis/round19/T3/out_decode_L12956_KJV.json",
+    "liber-primus/analysis/round19/T3/dependency_map.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round19/T3 && PYTHONUTF8=1 python3 t3_baseline.py && PYTHONUTF8=1 python3 t3_sensitivity.py && PYTHONUTF8=1 python3 t3_targeted.py && PYTHONUTF8=1 python3 t3_decode.py 400 60 LP1 && T3_KBOOK=0,50,100,200,450,900 PYTHONUTF8=1 python3 t3_decode.py 12956 6 KJV && PYTHONUTF8=1 python3 t3_depmap.py && PYTHONUTF8=1 python3 t3_summary.py",
+   "reopens_if": "T1 or T2 return a disagreement count with a NON-O/A/AE component (read the P-RAND row, not P-OAE450); any evidence of insertion/deletion errors, which this lane does not bound; a re-run of \u00a75 under round19/I1's repaired decoder; or a resolution of the round18 L2-A vs L7-C.2 conflict recorded in \u00a72.1, which decides whether the headline k measures a load-bearing step or a superseded one.",
+   "notes": "PREREQUISITE THAT BECAME A FINDING: the 450 located O/A/AE disagreements were stored in the segmented-glyph index space of analysis/stones/dataset.npz and had never been mapped into the 12,956-rune stream. The map is stream_pos = offset(global_line) + pos_in_line via stones/pipeline.global_lines(), whose 594 lines concatenate element-wise to lib_numchannel.unsolved(); 450/450 map with the canon rune matching at every one. Positions span 27..12,897 across all 55 pages; the confusion set is A->O 306, O->A 72, AE->A 70, A->AE 2; and the family is 1,385 of 12,956 runes (10.69 %). SECOND NOTE: 'the stream's own unigram collision rate' in L7-C.1 is the UNBIASED estimator (== lp.stats.ioc), not the plug-in sum p_i^2; only the unbiased one returns the published 3.4478 % / 80.746 %.",
+   "supersedes": [],
+   "superseded_by": null,
+   "priority": null,
+   "source_register": "round19 CAMPAIGN-PLAN, lane T3",
+   "raw_status": null,
+   "evidence_missing": []
+  },
+  {
+   "id": "T3-OAE450-STREAM-POSITIONS",
+   "lane": "round19/T3",
+   "hypothesis": "The 450 located O/A/AE disagreements (RECON-A item A-02, RECON-B item B-13) can be placed in 12,956-rune stream coordinates, making them a directly testable finite object rather than a glyph-index list.",
+   "status": "measured",
+   "round": "19/T3",
+   "date": "2026-08-26",
+   "threshold": "Pre-registered as a GATE in PREREG.md \u00a70.2: for all 450 records the canon rune at the mapped stream position must equal the record's own canon field, or the targeted arm does not run.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "450/450 records map; 450 distinct positions; canon rune matches at every one; 0 failures. The map is licensed by the fact that the 594 lines returned by analysis/stones/pipeline.global_lines() concatenate ELEMENT-WISE to lib_numchannel.unsolved() and hash to the PROBLEM.json pin 023312066df471005264b9cbe7997cb77d2a9a6a2dc9b3316d22674023af1585.",
+   "null": null,
+   "result": {
+    "n_mapped": 450,
+    "position_range": [
+     27,
+     12897
+    ],
+    "pages_touched": 55,
+    "confusion_set": {
+     "A->O": 306,
+     "O->A": 72,
+     "AE->A": 70,
+     "A->AE": 2
+    },
+    "family_size_in_unsolved_stream": 1385,
+    "family_pct_of_stream": 10.69,
+    "doublet_potential_of_the_located_set": {
+     "gain2": 1,
+     "gain1": 42,
+     "gain0": 403,
+     "destroys_a_doublet": 4,
+     "net_if_all_450_flipped": 40,
+     "have_an_OAE_neighbour": 74
+    }
+   },
+   "coverage": "All 450 records in analysis/independent-read/oae_mismatch.json, exhaustively.",
+   "not_covered": "This locates the disagreements; it does not adjudicate any of them. Per-instance verdicts are lane T1's object. The map also inherits the Campaign-V segmentation geometry, so it cannot locate an error that is simultaneously a segmentation error and a label error.",
+   "evidence": [
+    "liber-primus/analysis/round19/T3/t3_lib.py",
+    "liber-primus/analysis/round19/T3/out_baseline.json",
+    "liber-primus/analysis/round19/T3/out_targeted.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round19/T3 && PYTHONUTF8=1 python3 -c \"import t3_lib as T, json; print(json.dumps(T.oae450()[:5], indent=1)); print(len(T.oae450()))\"",
+   "reopens_if": "The Campaign-V segmentation or the krisyotam line parse changes, which would invalidate the offset table.",
+   "notes": "Closes the 'located but not usable' half of RECON-A A-02 / RECON-B B-13. crypto_exposure.py, the only script that had ever costed this family cryptographically, worked on the whole family in data/krisyotam_runes.txt and never used the located positions at all.",
+   "supersedes": [],
+   "superseded_by": null,
+   "priority": null,
+   "source_register": "round19 CAMPAIGN-PLAN, lane T3",
+   "raw_status": null,
+   "evidence_missing": []
+  },
+  {
+   "id": "T3-S2-DECODE-FRAGILITY",
+   "lane": "round19/T3",
+   "hypothesis": "The repo's ~10^10 sweep negatives are properties of a DECODE of this exact ciphertext, not of a summary statistic, so they inherit a different and steeper transcription-sensitivity curve than the doublet rate does.",
+   "status": "measured",
+   "round": "19/T3",
+   "date": "2026-08-26",
+   "threshold": "Pre-registered bar-free endpoints (PREREG \u00a72.6): K-REC = median rune recovery below 0.90 (round18/L2's own B.3 gate value); K-SEP = correct-key 5th percentile below the IN-LANE wrong-key 95th percentile in the same cell. No fixed score bar is used anywhere in this lane.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "gate_F0 re-run in-lane: fastbeam vs skipdecode.beam_decode, 20 cases at L in {120,400}, max |score delta| 8.88e-15, 0 path mismatches. At k=0 the full-book correct-key decode returns score -4.103 / recovery 1.0000 against a wrong key's -7.320, reproducing round18/L2's B.3 control. At eps=1.0 the correct key collapses into the wrong-key band (PC-2).",
+   "null": "In-lane wrong-key decode in every cell, same ciphertext, same corruption, 6-120 replicates depending on length.",
+   "result": {
+    "full_book_L12956": {
+     "K_REC_k": 450,
+     "K_SEP_k": 900,
+     "rows": [
+      {
+       "k": 0,
+       "score_correct_med": -4.103,
+       "recovery": 1.0,
+       "derail": 0.0
+      },
+      {
+       "k": 100,
+       "score_correct_med": -4.217,
+       "recovery": 0.979,
+       "derail": 0.0
+      },
+      {
+       "k": 200,
+       "score_correct_med": -4.39,
+       "recovery": 0.937,
+       "derail": 0.17
+      },
+      {
+       "k": 450,
+       "score_correct_med": -4.719,
+       "recovery": 0.862,
+       "graceful_ideal": 0.965,
+       "derail": 0.5
+      },
+      {
+       "k": 900,
+       "score_correct_med": -6.841,
+       "recovery": 0.199,
+       "derail": 1.0
+      }
+     ]
+    },
+    "L400_K_REC": 900,
+    "L120_K_REC": 1800,
+    "mechanism": "max_skip lets the key pointer run AHEAD only. A corrupted cipher rune can induce a spurious skip, after which the beam can never re-synchronise, so derailment compounds with segment length -- the full-book number is the binding one and short-window measurements understate it.",
+    "consequence": "The negatives are not voided: at k=450 the correct key still scores -4.72 against a wrong key's -7.30, so a sweep that RANKS would still surface it. But every sweep in this repo THRESHOLDED, and round18/L2's landmark full-book positive control (-4.098 / recovery 0.9997) is a CLEAN-TRANSCRIPTION result."
+   },
+   "coverage": "3 segment lengths (120 / 400 / 12,956) x up to 14 whole-book-equivalent error counts x 60-120 replicates (6 at full book), LP1_REAL and EN_KJV registers, sha256_ctr key family.",
+   "not_covered": "One decoder transition model (encipher_keyskip -> fastbeam, max_skip=3), which per round18/L7-B covers exactly one rejection-loop implementation and misses skip_by_two and free drift. round19/I1 has since repaired the decoder; this curve should be re-measured under driftbeam's drift_rec preset, whose larger skip budget could absorb either a spurious advance (more robust) or a wrong one (less). One adjudicator register (English quadgram). One key family.",
+   "evidence": [
+    "liber-primus/analysis/round19/T3/out_decode_L12956_KJV.json",
+    "liber-primus/analysis/round19/T3/out_decode_L400_LP1.json",
+    "liber-primus/analysis/round19/T3/out_decode_L120_LP1.json",
+    "liber-primus/analysis/round19/T3/RESULTS.md"
+   ],
+   "reproduce": "cd liber-primus/analysis/round19/T3 && T3_KBOOK=0,50,100,200,450,900 PYTHONUTF8=1 python3 t3_decode.py 12956 6 KJV",
+   "reopens_if": "Re-running under round19/I1's driftbeam; or T1/T2 returning a four-figure error count, at which point R18-L2-BEAM-LENGTH-POWER must be re-run before it is quoted again.",
+   "notes": "The companion finding is the good news: round19/I1's n_skips discriminator (correct key 418/418 exact, wrong key 1537, margin 1119) loses only 1.6 % of its margin at k=450 and is EXACT up to k=100. Where the English score has lost half its recovery, the language-independent channel has lost almost nothing. Phase 2 storing n_skips per SWEEPROW, as I1 recommends, makes the sweep robust to precisely the uncertainty T1 and T2 are resolving.",
+   "supersedes": [],
+   "superseded_by": null,
+   "priority": null,
+   "source_register": "round19 CAMPAIGN-PLAN, lane T3",
+   "raw_status": null,
+   "evidence_missing": []
+  }
+ ]
+}

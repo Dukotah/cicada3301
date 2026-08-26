@@ -1,0 +1,1934 @@
+{
+ "test": "E-01 (Round 18 L5 extension of round16/zeroFP)",
+ "verdict": "NULL",
+ "controls": {
+  "positive": {
+   "pkcs1_v15_signature": {
+    "fired": true,
+    "tier": "strict",
+    "detail": "PKCS#1 v1.5: 202 FF bytes, then 0x00, payload=3031300d060960864801650304020105 | DigestInfo SHA-256: digest=b3442c725f75b80ad6892c0e3522564d96c02bbe18aa9937450a3c79eff03e9d"
+   },
+   "emsa_pss": {
+    "fired": true,
+    "tier": "strict",
+    "detail": "EMSA-PSS SHA-256: 190 zero bytes then 0x01, saltlen=32"
+   },
+   "pkcs1_v15_encryption": {
+    "fired": true,
+    "tier": "loose",
+    "detail": "PKCS#1 v1.5 type 2: 248 pad bytes, msg=68656c6c6f"
+   }
+  },
+  "negative": {
+   "trials": 10000,
+   "block_len": 256,
+   "hits": {
+    "pkcs1_v15_signature": {
+     "strict": 0,
+     "loose": 0
+    },
+    "pkcs1_v15_encryption": {
+     "strict": 0,
+     "loose": 0
+    },
+    "emsa_pss": {
+     "strict": 0,
+     "loose": 1
+    }
+   }
+  }
+ },
+ "control_verdict": "PASS",
+ "moduli": [
+  {
+   "name": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096
+  },
+  {
+   "name": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096
+  },
+  {
+   "name": "2013_puzzle",
+   "fingerprint": null,
+   "bits": 432
+  }
+ ],
+ "payload_variants": [
+  "L5_resolved",
+  "canon_decimal_preferred",
+  "canon_majority"
+ ],
+ "exponents": [
+  65537,
+  3,
+  17
+ ],
+ "matchers": [
+  "pkcs1_v15_signature",
+  "pkcs1_v15_encryption",
+  "emsa_pss"
+ ],
+ "tuples_evaluated": 162,
+ "tuples_skipped": [
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "payload": "canon_majority",
+   "encoding": "big_endian_left_aligned",
+   "reason": "s >= n (payload does not fit this modulus)"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian_left_aligned",
+   "reason": "s >= n (payload does not fit this modulus)"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "payload": "L5_resolved",
+   "encoding": "big_endian_left_aligned",
+   "reason": "s >= n (payload does not fit this modulus)"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "payload": "canon_majority",
+   "encoding": "big_endian_left_aligned",
+   "reason": "s >= n (payload does not fit this modulus)"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian_left_aligned",
+   "reason": "s >= n (payload does not fit this modulus)"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "payload": "L5_resolved",
+   "encoding": "big_endian_left_aligned",
+   "reason": "s >= n (payload does not fit this modulus)"
+  },
+  {
+   "modulus": "2013_puzzle",
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "reason": "s >= n (payload does not fit this modulus)"
+  },
+  {
+   "modulus": "2013_puzzle",
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "reason": "s >= n (payload does not fit this modulus)"
+  },
+  {
+   "modulus": "2013_puzzle",
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "reason": "s >= n (payload does not fit this modulus)"
+  },
+  {
+   "modulus": "2013_puzzle",
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "reason": "s >= n (payload does not fit this modulus)"
+  },
+  {
+   "modulus": "2013_puzzle",
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "reason": "s >= n (payload does not fit this modulus)"
+  },
+  {
+   "modulus": "2013_puzzle",
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "reason": "s >= n (payload does not fit this modulus)"
+  }
+ ],
+ "hits": [],
+ "rows": [
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "af235861c0a82ab8"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "af235861c0a82ab8"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "af235861c0a82ab8"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "709506076868fa46"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "709506076868fa46"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "709506076868fa46"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "21cc73e0051f988b"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "21cc73e0051f988b"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "21cc73e0051f988b"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "6532c80fd591c38d"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "6532c80fd591c38d"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "6532c80fd591c38d"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "be5aa4b75e013185"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "be5aa4b75e013185"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "be5aa4b75e013185"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "0c09e2e0b3619980"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "0c09e2e0b3619980"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "0c09e2e0b3619980"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "65fc715259eca6c5"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "65fc715259eca6c5"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "65fc715259eca6c5"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "79d9f133d8a910fb"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "79d9f133d8a910fb"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "79d9f133d8a910fb"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "664aeb0ba9834055"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "664aeb0ba9834055"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "664aeb0ba9834055"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "9576c25c8e4185ea"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "9576c25c8e4185ea"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "9576c25c8e4185ea"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "8b41ce73cd365e23"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "8b41ce73cd365e23"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "8b41ce73cd365e23"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "8152297d40d7ce96"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "8152297d40d7ce96"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "8152297d40d7ce96"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "10247827af35b1d6"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "10247827af35b1d6"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "10247827af35b1d6"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "3873643b85eaefd0"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "3873643b85eaefd0"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "3873643b85eaefd0"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "46f4278de1478c2b"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "46f4278de1478c2b"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "46f4278de1478c2b"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "8c09f47f08a5693c"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "8c09f47f08a5693c"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "8c09f47f08a5693c"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "b85fb19a28ef9786"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "b85fb19a28ef9786"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "b85fb19a28ef9786"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "1b6dc6dfb369948e"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "1b6dc6dfb369948e"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "1b6dc6dfb369948e"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "38f13391b19e450a"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "38f13391b19e450a"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "38f13391b19e450a"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "7e13b83d80faef7c"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "7e13b83d80faef7c"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "7e13b83d80faef7c"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "b7e099d57916376e"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "b7e099d57916376e"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "b7e099d57916376e"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "5178322ade8101b5"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "5178322ade8101b5"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "5178322ade8101b5"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "bd6502443513b772"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "bd6502443513b772"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "bd6502443513b772"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "1fbb12ef2ec7b39e"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "1fbb12ef2ec7b39e"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "1fbb12ef2ec7b39e"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "9cfea28c6cb23fcb"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "9cfea28c6cb23fcb"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "9cfea28c6cb23fcb"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "4eca22c72c9217b8"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "4eca22c72c9217b8"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "4eca22c72c9217b8"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "413d9bd9b462cba6"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "413d9bd9b462cba6"
+  },
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "fingerprint": "6D854CD7933322A601C3286D181F01E57A35090F",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "413d9bd9b462cba6"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "6811f29c8f17b2cb"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "6811f29c8f17b2cb"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "6811f29c8f17b2cb"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "4f442148f52424aa"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "4f442148f52424aa"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "4f442148f52424aa"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "48686a03e8d237fc"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "48686a03e8d237fc"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "48686a03e8d237fc"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "b05d9e2b8d13cdb4"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "b05d9e2b8d13cdb4"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "b05d9e2b8d13cdb4"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "7186a5416978c3e9"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "7186a5416978c3e9"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "7186a5416978c3e9"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "abf2a2489467d71c"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "abf2a2489467d71c"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "abf2a2489467d71c"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "91dc7371cc672ae8"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "91dc7371cc672ae8"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "91dc7371cc672ae8"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "122706ef1c7782a8"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "122706ef1c7782a8"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "122706ef1c7782a8"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "6f3e2d99c1e05656"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "6f3e2d99c1e05656"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_majority",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "6f3e2d99c1e05656"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "7640d0616b2cee06"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "7640d0616b2cee06"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "7640d0616b2cee06"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "54d7ce49e1f825da"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "54d7ce49e1f825da"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "54d7ce49e1f825da"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "070a2787e40bb206"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "070a2787e40bb206"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "070a2787e40bb206"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "4a8fdc72b8cc315b"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "4a8fdc72b8cc315b"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "4a8fdc72b8cc315b"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "48ed5c914dc4b215"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "48ed5c914dc4b215"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "48ed5c914dc4b215"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "0a8491b9e5f2633e"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "0a8491b9e5f2633e"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "0a8491b9e5f2633e"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "1ef8ca6ea8dbdd41"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "1ef8ca6ea8dbdd41"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "1ef8ca6ea8dbdd41"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "6339b801a43de004"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "6339b801a43de004"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "6339b801a43de004"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "00150c488192b896"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "00150c488192b896"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "canon_decimal_preferred",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "00150c488192b896"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "311f728a92cf99c0"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "311f728a92cf99c0"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "311f728a92cf99c0"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "055cd9b267fead3b"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "055cd9b267fead3b"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "055cd9b267fead3b"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "379afb9af6932f5e"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "379afb9af6932f5e"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "big_endian",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "379afb9af6932f5e"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "0690b52fa0d8153d"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "0690b52fa0d8153d"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "0690b52fa0d8153d"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "a721cee31a1aba79"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "a721cee31a1aba79"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "a721cee31a1aba79"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "18b6871930d363ff"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "18b6871930d363ff"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "18b6871930d363ff"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "82087862f2da616f"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "82087862f2da616f"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 65537,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "82087862f2da616f"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "777003769b204165"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "777003769b204165"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 3,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "777003769b204165"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "pkcs1_v15_signature",
+   "tier": null,
+   "result_head": "5ebf9db4ac75dfca"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "pkcs1_v15_encryption",
+   "tier": null,
+   "result_head": "5ebf9db4ac75dfca"
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "fingerprint": "DEC57731ACCBFD11EEBA13434D390ECF671DDEB1",
+   "bits": 4096,
+   "payload": "L5_resolved",
+   "encoding": "little_endian_left_aligned",
+   "e": 17,
+   "matcher": "emsa_pss",
+   "tier": null,
+   "result_head": "5ebf9db4ac75dfca"
+  }
+ ]
+}

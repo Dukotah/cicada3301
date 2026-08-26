@@ -171,6 +171,8 @@ human calligrapher following a "never write the same rune twice" rule by hand. S
 | **The 2026-08 attack loop** — Rounds 1–8, pre-registered | [`research/LEDGER.md`](research/LEDGER.md) · [`research/DEAD_ENDS.md`](research/DEAD_ENDS.md) |
 | **Rounds 9–12** — multi-lens armada, number channel, red-team | [`liber-primus/analysis/round10/SYNTHESIS.md`](liber-primus/analysis/round10/SYNTHESIS.md) · [`liber-primus/analysis/round11/SYNTHESIS.md`](liber-primus/analysis/round11/SYNTHESIS.md) · [`liber-primus/analysis/round12/`](liber-primus/analysis/round12/) |
 | **Round 16** — derived-keystream armada (KDF, PRNG family, F-01, A-03, zeroFP, scorer) | [`liber-primus/analysis/round16/SYNTHESIS.md`](liber-primus/analysis/round16/SYNTHESIS.md) |
+| **Round 17** — the public pad (Bitcoin, NIST Beacon, RANDOM.ORG, RAND; dense offset scan) | [`liber-primus/analysis/round17/SYNTHESIS.md`](liber-primus/analysis/round17/SYNTHESIS.md) |
+| **Round 18** — aim at the instrument (8 lanes; **every negative here is an English-register negative**) | [`liber-primus/analysis/round18/SYNTHESIS.md`](liber-primus/analysis/round18/SYNTHESIS.md) · [`liber-primus/ARMADA-DOCTRINE.md`](liber-primus/ARMADA-DOCTRINE.md) |
 | **Background on the puzzles themselves** | [`research/00-overview.md`](research/00-overview.md) |
 | **Where the work left off** | [`PICKUP-HERE.md`](PICKUP-HERE.md) |
 
@@ -273,5 +275,16 @@ self-corrections are recorded rather than quietly dropped.
 
 ---
 
-*Status current as of 2026-08-23 (Round 16). What would reopen the case: a new 7A35090F-signed
+> **Read this before trusting any "NEGATIVE" below — added 2026-08-26 (Round 18, L7).**
+> Every negative in this repository is an **English-register** negative, and until now no ledger
+> entry said so. Handed a **correct key**, this project's own instrument recovers 100% of rune
+> indices over a Latin, Welsh or vowel-dropped-English plaintext and still scores it as noise —
+> in the worst case **below a deliberately wrong key**. This does **not** void the negatives: the
+> register the Liber Primus demonstrably uses scores −4.33 at power 1.00, and re-scoring the
+> archived candidates is negative and powered for Latin, Old English and half-vowel English. What
+> changed is the claim, not the result. Restated coverage now sits on `B-04`, `R16-KDF`,
+> `R16-PRNG`, `R17-PUBLIC-PAD` and `B-21`, each preserving its original text in `restated_from`.
+> → [`liber-primus/analysis/round18/SYNTHESIS.md`](liber-primus/analysis/round18/SYNTHESIS.md)
+
+*Status current as of 2026-08-26 (Round 18). What would reopen the case: a new 7A35090F-signed
 Cicada release, a CicadaSolvers-accepted reproducible page solve, or the private pad surfacing.*

@@ -1,0 +1,43 @@
+{
+ "lane": "round19/C2",
+ "item": "Marsaglia CDROM \u2014 exact offset space and measured cost",
+ "verified_pads": 63,
+ "pad_bytes_each": 10000000,
+ "random_data_bytes": 630000000,
+ "iso_bytes": 634124288,
+ "builders": [
+  "byte_scaled",
+  "hi_nibble",
+  "lo_nibble",
+  "mod29",
+  "nibbles",
+  "prime_to_idx"
+ ],
+ "builders_excluded": [
+  "hexchars (L6 \u00a72.1)"
+ ],
+ "byte_orders": 2,
+ "signs": 2,
+ "prefilter_window": 24,
+ "offsets_per_pad_full_cross_product": 279999424,
+ "offsets_all_63_pads": 17639963712,
+ "offsets_whole_iso_as_one_pad": 17755479488,
+ "offsets_pads_plus_iso": 35395443200,
+ "units_pads": 756,
+ "units_iso": 12,
+ "units_total_pads_only": 756,
+ "checkpointed_units": 77,
+ "checkpointed_offsets": 1539996304,
+ "fraction_of_pad_space_done": 0.08730155736955293,
+ "observed_wall_s_per_unit": 33.861339600462664,
+ "observed_nproc": 3,
+ "cpu_s_per_unit": 101.584018801388,
+ "est_cpu_hours_pads_only": 21.33264394829148,
+ "est_cpu_hours_with_iso": 42.800733254984806,
+ "resume": "cd liber-primus/analysis/round18/L6-offset-marsaglia/scripts && python3 sweep_marsaglia.py --nproc 6 --budget <seconds>   (checkpointed per (pad, builder, byte-order) in out/ckpt_M; never recomputes a finished unit)",
+ "comparison": {
+  "round17_offsets_scored": 14522916046,
+  "note": "The Marsaglia pads alone are ~1.2x the entire Round 17 public-pad round."
+ },
+ "generated": "2026-08-26 12:06:39"
+}

@@ -1,0 +1,290 @@
+{
+ "trust_anchor": "python3 liber-primus/tests/validate.py -> ALL VALIDATIONS PASSED (5/5)",
+ "baseline_sha256": "023312066df471005264b9cbe7997cb77d2a9a6a2dc9b3316d22674023af1585",
+ "baseline": {
+  "n": 12956,
+  "sha256": "023312066df471005264b9cbe7997cb77d2a9a6a2dc9b3316d22674023af1585",
+  "doublets": 86,
+  "doublet_rate_pct": 0.663836356619066,
+  "ioc_norm": 0.999873538070665,
+  "entropy_bits": 4.85650361370827,
+  "chi2_uniform": 26.361685705464648,
+  "unigram_collision_pct": 3.447839786450569,
+  "lag1_suppression_pct": 80.74631079936397,
+  "s_star": 0.8128836739451395,
+  "draws_extra": 373.63598169487784,
+  "rho": 0.028838837735016814,
+  "delta_chi2_over_df": 1.5326034714487586,
+  "delta_max_abs_z": 2.6414009521124377,
+  "delta_argmax_cell": 17,
+  "line_break_doublets": 4,
+  "line_initial_chi2": 78.6560332813793
+ },
+ "pc3_equivalence": [
+  {
+   "statistic": "n",
+   "published": 12956,
+   "recomputed": 12956,
+   "tolerance": 0,
+   "delta": 0,
+   "reproduces": true,
+   "source": "PROBLEM.json"
+  },
+  {
+   "statistic": "doublets",
+   "published": 86,
+   "recomputed": 86,
+   "tolerance": 0,
+   "delta": 0,
+   "reproduces": true,
+   "source": "PROBLEM.json / L7-C.1 / L4 \u00a70"
+  },
+  {
+   "statistic": "doublet_rate_pct",
+   "published": 0.66384,
+   "recomputed": 0.663836356619066,
+   "tolerance": 1e-05,
+   "delta": -3.64338093394867e-06,
+   "reproduces": true,
+   "source": "L7-C.1 (published 0.664 in PROBLEM.json)"
+  },
+  {
+   "statistic": "ioc_norm",
+   "published": 0.999874,
+   "recomputed": 0.999873538070665,
+   "tolerance": 1e-06,
+   "delta": -4.619293350049958e-07,
+   "reproduces": true,
+   "source": "L7-C.1 (published 0.9999)"
+  },
+  {
+   "statistic": "entropy_bits",
+   "published": 4.856504,
+   "recomputed": 4.85650361370827,
+   "tolerance": 1e-06,
+   "delta": -3.862917301589164e-07,
+   "reproduces": true,
+   "source": "L7-C.1 (published 4.8565)"
+  },
+  {
+   "statistic": "unigram_collision_pct",
+   "published": 3.4478,
+   "recomputed": 3.447839786450569,
+   "tolerance": 0.0001,
+   "delta": 3.978645056923469e-05,
+   "reproduces": true,
+   "source": "L7-C.1 (== the IoC, unbiased)"
+  },
+  {
+   "statistic": "lag1_suppression_pct",
+   "published": 80.746,
+   "recomputed": 80.74631079936397,
+   "tolerance": 0.001,
+   "delta": 0.00031079936397304664,
+   "reproduces": true,
+   "source": "L7-C.1 / round17 P4 (80.75)"
+  },
+  {
+   "statistic": "s_star",
+   "published": 0.81288,
+   "recomputed": 0.8128836739451395,
+   "tolerance": 1e-05,
+   "delta": 3.67394513944852e-06,
+   "reproduces": true,
+   "source": "round18 L2 \u00a71"
+  },
+  {
+   "statistic": "draws_extra",
+   "published": 373.6,
+   "recomputed": 373.63598169487784,
+   "tolerance": 0.1,
+   "delta": 0.03598169487781888,
+   "reproduces": true,
+   "source": "round18 L2 \u00a71 (373.6 +/- 19.6)"
+  },
+  {
+   "statistic": "delta_chi2_over_df",
+   "published": 1.533,
+   "recomputed": 1.5326034714487586,
+   "tolerance": 0.001,
+   "delta": -0.00039652855124128195,
+   "reproduces": true,
+   "source": "round18 L2 \u00a72"
+  },
+  {
+   "statistic": "delta_max_abs_z",
+   "published": 2.64,
+   "recomputed": 2.6414009521124377,
+   "tolerance": 0.005,
+   "delta": 0.0014009521124376256,
+   "reproduces": true,
+   "source": "round18 L2 \u00a72 (at D=17)"
+  },
+  {
+   "statistic": "line_break_doublets",
+   "published": 4,
+   "recomputed": 4,
+   "tolerance": 0,
+   "delta": 0,
+   "reproduces": true,
+   "source": "round18 L4 \u00a70 / round17"
+  },
+  {
+   "statistic": "line_initial_chi2",
+   "published": 78.656,
+   "recomputed": 78.6560332813793,
+   "tolerance": 0.001,
+   "delta": 3.3281379288041535e-05,
+   "reproduces": true,
+   "source": "round18 L4 Arm A1"
+  }
+ ],
+ "pc3_failures": [],
+ "pc3_pass": true,
+ "map_gate": {
+  "n_records": 450,
+  "n_mapped": 450,
+  "distinct_positions": 450,
+  "canon_matches": 450,
+  "min_pos": 27,
+  "max_pos": 12897,
+  "confusions": {
+   "A->O": 306,
+   "O->A": 72,
+   "AE->A": 70,
+   "A->AE": 2
+  },
+  "family_size_in_stream": 1385,
+  "family_pct_of_stream": 10.690027786353813
+ },
+ "pc1_planted_flip": [
+  {
+   "k": 1,
+   "doublets": 88,
+   "predicted": 88,
+   "n_gain2_used": 1,
+   "n_gain1_used": 0,
+   "exact": true,
+   "doublet_rate_pct": 0.6792744114241606
+  },
+  {
+   "k": 2,
+   "doublets": 90,
+   "predicted": 90,
+   "n_gain2_used": 2,
+   "n_gain1_used": 0,
+   "exact": true,
+   "doublet_rate_pct": 0.6947124662292551
+  },
+  {
+   "k": 5,
+   "doublets": 96,
+   "predicted": 96,
+   "n_gain2_used": 5,
+   "n_gain1_used": 0,
+   "exact": true,
+   "doublet_rate_pct": 0.7410266306445388
+  },
+  {
+   "k": 10,
+   "doublets": 106,
+   "predicted": 106,
+   "n_gain2_used": 10,
+   "n_gain1_used": 0,
+   "exact": true,
+   "doublet_rate_pct": 0.8182169046700115
+  },
+  {
+   "k": 20,
+   "doublets": 126,
+   "predicted": 126,
+   "n_gain2_used": 20,
+   "n_gain1_used": 0,
+   "exact": true,
+   "doublet_rate_pct": 0.9725974527209571
+  },
+  {
+   "k": 40,
+   "doublets": 166,
+   "predicted": 166,
+   "n_gain2_used": 40,
+   "n_gain1_used": 0,
+   "exact": true,
+   "doublet_rate_pct": 1.2813585488228483
+  },
+  {
+   "k": 50,
+   "doublets": 186,
+   "predicted": 186,
+   "n_gain2_used": 50,
+   "n_gain1_used": 0,
+   "exact": true,
+   "doublet_rate_pct": 1.4357390968737938
+  },
+  {
+   "k": 100,
+   "doublets": 286,
+   "predicted": 286,
+   "n_gain2_used": 100,
+   "n_gain1_used": 0,
+   "exact": true,
+   "doublet_rate_pct": 2.207641837128522
+  },
+  {
+   "k": 200,
+   "doublets": 486,
+   "predicted": 486,
+   "n_gain2_used": 200,
+   "n_gain1_used": 0,
+   "exact": true,
+   "doublet_rate_pct": 3.751447317637978
+  },
+  {
+   "k": 450,
+   "doublets": 965,
+   "predicted": 965,
+   "n_gain2_used": 429,
+   "n_gain1_used": 21,
+   "exact": true,
+   "doublet_rate_pct": 7.448861443458124
+  },
+  {
+   "k": 1000,
+   "doublets": 1515,
+   "predicted": 1515,
+   "n_gain2_used": 429,
+   "n_gain1_used": 571,
+   "exact": true,
+   "doublet_rate_pct": 11.694326514859128
+  }
+ ],
+ "pc1_pass": true,
+ "collapse_control_pinned_stream": {
+  "corpus": "pages 0-54 (12,956, the pinned stream)",
+  "ioc_norm_real": 0.999873538070665,
+  "ioc_norm_collapsed": 1.1365173149652732,
+  "doublet_pct_real": 0.663836356619066,
+  "doublet_pct_collapsed": 1.4434581242763411
+ },
+ "collapse_control_full_corpus": {
+  "corpus": "data/krisyotam_runes.txt (all pages)",
+  "n": 13136,
+  "family_n": 1406,
+  "family_pct": 10.70341047503045,
+  "ioc_real": 0.9998416611530129,
+  "ioc_collapsed": 1.137005886588584,
+  "doublet_pct_real": 0.6775789874381424,
+  "doublet_pct_collapsed": 1.4617434335744195,
+  "published_ioc": "1.00 -> 1.14",
+  "published_doublet": "0.68% -> 1.46%"
+ },
+ "ioc_uniform_null": {
+  "draws": 2000,
+  "mean": 1.0000136054352058,
+  "sd": 0.0005996007600221378,
+  "p01": 0.9989014863596158,
+  "p99": 1.0017188122039753,
+  "min": 0.9984913102554511,
+  "max": 1.002654925991829
+ }
+}

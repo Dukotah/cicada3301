@@ -1,0 +1,93 @@
+{
+ "_note": "Round 19 lane G2 ledger entries, for merge into liber-primus/LEDGER.json by the coordinator. Two entries: one new (R19-G2), one CORRECTION to an existing prior statement.",
+ "entries": [
+  {
+   "id": "R19-G2",
+   "lane": "keystream/generator",
+   "hypothesis": "The LP2 keystream is the output of Perl 5.14 `rand` (glibc drand48), seeded explicitly or implicitly via `srand`, reduced to Z_29 by an era-idiomatic Perl form and applied under the pinned soft anti-repeat filter.",
+   "status": "generator-validated-sweep-not-run",
+   "raw_status": "held-at-scoring-boundary",
+   "round": "19/G2",
+   "date": "2026-08-26",
+   "threshold": "DEFERRED BY DESIGN. The bar is I3's recalibrated threshold_for(n, statistic), not a fixed -5.5 (doctrine s4.4 forbids a fixed bar at N ~ 1e8+). No score in this lane was compared to any threshold.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "artifact-built-not-yet-run",
+   "control_detail": {
+    "artifact": "round19/G2/plant.json -- 5 registers (EN, LP1 orthography, Latin, half-vowel EN, no-vowel EN) x 3 constructions (nodrift, keyskip, skip_by_two) = 15 cells, each with plaintext, ciphertext, true keystream, foil keystream (adjacent seed) and skip trace.",
+    "locked_in_advance": "PREREG.md sec.Q1 fixed seed=1389657600, reduction=r29, sign=-1, atbash=off, direction=forward, offset=0 BEFORE the artifact was built.",
+    "realism": "6 desync events over 154 runes under keyskip (1 per 25.7); 4 events with final key drift 10 under skip_by_two.",
+    "outstanding": "G2-GATE-Q1 -- I1/I2/I3 must report score, rune-recovery fraction and true-minus-foil margin per cell. Cost: 15 decodes. Until then any G2 sweep output is INCONCLUSIVE, not NEGATIVE.",
+    "baselines_to_beat": "round18 L7-A power 0.33 Latin / 0.00 no-vowel EN; L7-B -6.90 at 25.8% recovery on skip_by_two."
+   },
+   "null": null,
+   "result": "NO SWEEP RUN -- HELD AT THE SCORING BOUNDARY per the Round 19 campaign plan's hard dependency (Phase 0 gates I1/I2/I3 have not published PASS). What WAS established: (1) VALIDATION PASS -- gen_perl.py reproduces the real perl binary byte-exactly, 186 checks / 0 failing across 3 gates: A = mine vs real perl (164 checks: raw Drand01 at %.17g, int(rand(M)) for M in {26,29,32,100,255,256,1000,2^32} at 13 seeds x 2000 draws, and all 9 reductions driven through real perl loops); B = real perl vs glibc srand48/drand48 from C, 13 seeds x 1024 draws identical to 17 significant digits; C = structural (seed folding, integer-fast-path exactness over 52,000 draws per M, srand() argument coercion). (2) THE ERA QUESTION IS RETIRED BY MEASUREMENT, not argument: this box runs perl 5.40.1, but the perl-5.14.2 tarball (md5 3306fbaf976dcebdcd49b2ac0be00eb9) shows Configure picks drand48 on any glibc host and config_h.SH defines Drand01()=drand48(), seedDrand01(x)=srand48((long)x), RANDBITS=48 -- so 5.14.2 on Ubuntu IS glibc drand48, and gate B measures that leg directly. (3) THE MAIN FINDING -- the space is 2^32 with NO residue, INCLUDING the un-seeded case: util.c Perl_seed() reads sizeof(U32) = FOUR BYTES from /dev/urandom, so `perl -e 'print chr(int(rand(29))) for 1..13000'` with no srand at all has a uniform 32-bit seed and is fully enumerable. (4) Real Phase-2 throughput measured end-to-end through I3 vecbeam + I2 adjudicate: 663 decodes/s/core at L=31, 106/s at L=120; 9,984 pilot decodes emitted 9,984 SWEEPROWs with 0 validate_row failures.",
+   "coverage": "ZERO key-space coverage. This lane swept no seeds and excludes nothing. It delivers: a byte-exact validated generator (9 Perl-reachable reductions + 2 C-only shadow forms), a keystream interface (gen_perl.make_ks), a pre-registered positive-control artifact, a written space statement, and measured throughput. The 9,984 decodes in pilot.json are TIMING DATA, explicitly stamped is_result=false and scores_are_not_findings=true, run on a deliberately arbitrary seed block (base 700,000,000) so they cannot be mistaken for coverage of the high-prior band.",
+   "not_covered": [
+    "every seed -- no seed was scored",
+    "per-call or mid-stream re-seeding (srand called more than once)",
+    "a keystream offset by an unknown number of rand() draws consumed elsewhere in the same process -- a distinct UNBOUNDED axis, not the same as the sec.4.3 keystream offset",
+    "reductions outside the nine enumerated in RESULTS.md sec.2.4",
+    "CPAN PRNG modules (Math::Random::MT, Math::Random::Secure) -- a different family, not `rand`",
+    "Perl builds configured -Drandfunc=random or -Drandfunc=rand; Configure prefers drand48 on any host that has it, so an Ubuntu 12.04 stock package cannot be one of these, but a hand-built perl could",
+    "the 5.14 srand string-coercion column, which is derived from reading pp.c plus documented SvUV semantics and could NOT be executed (no 5.14 runtime available). Residual uncertainty is confined to non-integer srand ARGUMENTS and does not affect coverage, since every coerced value lands inside 0..2^32-1 either way."
+   ],
+   "evidence": [
+    "liber-primus/analysis/round19/G2/PREREG.md",
+    "liber-primus/analysis/round19/G2/RESULTS.md",
+    "liber-primus/analysis/round19/G2/READY.md",
+    "liber-primus/analysis/round19/G2/gen_perl.py",
+    "liber-primus/analysis/round19/G2/validation.json",
+    "liber-primus/analysis/round19/G2/ref_perl.pl",
+    "liber-primus/analysis/round19/G2/ref_reduce.pl",
+    "liber-primus/analysis/round19/G2/ref_drand48.c",
+    "liber-primus/analysis/round19/G2/plant.json",
+    "liber-primus/analysis/round19/G2/pilot.json",
+    "liber-primus/analysis/round19/G2/budget.json",
+    "liber-primus/analysis/round19/G2/bench.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round19/G2 && python3 validate.py && python3 plant.py && python3 bench.py && python3 budget.py && python3 pilot.py",
+   "reopens_if": "Not closed -- not even opened as a sweep. Phase 2 runs it when I1, I2 and I3 publish PASS and G2-GATE-Q1 is executed against plant.json. READY.md sec.4 is the run spec.",
+   "notes": "SPACE: 2^32 seeds x 9 Perl-reachable reductions x 8 orientations (sign x atbash x direction) = 3.09e11 Stage-A decodes at offset 0; x10 for the B-04 offset ladder. ENUMERABILITY: complete in principle, and complete in practice ONLY IN C. At the measured Python rate (3,977 decodes/s on 6 cores at L=31) full Stage A is 21,597 hours; the in-repo C precedent (round10/L5-seed32 sweeping THIS SAME generator at 46,933 decodes/s/core) is 71x faster and turns 2^32 x r29 x 8 orientations into ~34 hours and full Stage A into ~305 hours. Building the C screen is the single highest-leverage Phase-2 item. CRITICAL DEPENDENCY: the L=31 screen tier exists only if I3's null curve leaves selectivity there -- vecbeam --bench already shows the null max over just 8,192 random trials at L=31 is -5.550, i.e. the legacy -5.5 bar is breached by noise at n=1e4, and drift3/union0_5 score RANDOM data at mean -4.510/-4.817. ERA-IDIOMATIC REDUCTION: int(rand(29)) is rank 1 and this is not a judgement call -- perlfunc's own worked example for rand is `$random = int(rand(10))`. It equals (29*x)>>48, a scaled truncation of the TOP bits, and is NOT the same object as reducing the raw 48-bit state mod 29 (which reads the LOW bits, is unreachable from Perl-level code, and diverges at the first symbol). A sweep that reduces the raw state mod 29 and calls it Perl has not tested Perl. NO STRING-SEED DICTIONARY: unlike Python (lane G3), Perl numifies its srand argument, so srand('CICADA3301') is not a distinct key -- it is seed 0 under 5.14 semantics. The 2,165-entry dictionary B-04 needed has no analogue here.",
+   "priority": "high",
+   "supersedes": null,
+   "superseded_by": null,
+   "source_register": "liber-primus/analysis/round19/CAMPAIGN-PLAN.md (Phase 1, lane G2)",
+   "evidence_missing": []
+  },
+  {
+   "id": "R19-G2-CORRECTION",
+   "lane": "red-team/prior-audit",
+   "hypothesis": "AUDIT (doctrine R6) of this lane's own prior: round18/L1-toolchain/RESULTS.md sec.6.2 row 3 states that Perl 5.14 rand/srand has NEVER BEEN SWEPT.",
+   "status": "FOUND-ERROR",
+   "raw_status": "correction",
+   "round": "19/G2",
+   "date": "2026-08-26",
+   "threshold": null,
+   "threshold_fixed_in_advance": null,
+   "positive_control": "n/a -- documentary audit",
+   "control_detail": null,
+   "null": null,
+   "result": "FOUND-ERROR. L1 sec.6.2 row 3's 'never swept' is incorrect. round10/L5-seed32/CENSUS.md sec.B lists generator 10 as `Perl srand(S); int(rand(29))`, harness-validated against /usr/bin/perl in VALIDATION.txt (5 seeds x 2000 draws, PASS), and results_newgens.txt records the completed run: `gen=10 perl int(rand(29)) drand48  seeds=1293840000..1420070400  best=-13.4240 @1407171031  hits>-12.5=0  168.1s`. Generator 11 (POSIX lrand48()%29) was run on the same band. A slice HAS been swept. HOWEVER that slice is worth close to nothing on four independently-measured counts: (1) DECODER -- sweep32x.c decode_score() branches over F-nulls only and has no key-skip or drift model at all; it is rigid_decode with an interrupter fork, and round12/D3 measured rigid at -6.835 on the CORRECT key, i.e. noise. Coverage x power ~ coverage x 0. (2) ADJUDICATOR -- English 4-gram only; round18 L7-A measured power 0.33 Latin / 0.00 vowel-dropped English, and no doctrine-R3 language-agnostic statistics were persisted, so the rows are un-reinterpretable. (3) THRESHOLD -- a fixed -12.5 bar, which LEDGER entry B-21 itself calls 'STATISTICALLY INVALID at full-32 scale because the null max grows with trial count'; the reported best -13.42 sits below the bar by less than the null's own spread. (4) BREADTH -- 1 reduction of 9, ~2.9% of the seed space, offset 0 only, no atbash, no sign axis.",
+   "coverage": "Documentary audit of round18/L1-toolchain/RESULTS.md sec.6.2 row 3 against round10/L5-seed32 (CENSUS.md, VALIDATION.txt, results_newgens.txt, sweep32x.c source). Not a re-run of any sweep.",
+   "not_covered": [
+    "the other 'never swept' claims in L1 sec.6.2 (rows 4 bash $RANDOM, 5 LaTeX LCGs, 8 PHP rand) -- G2 audited only its own row and makes no claim about those; lanes G1/G4 and R1 should check theirs the same way"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round18/L1-toolchain/RESULTS.md",
+    "liber-primus/analysis/round10/L5-seed32/CENSUS.md",
+    "liber-primus/analysis/round10/L5-seed32/VALIDATION.txt",
+    "liber-primus/analysis/round10/L5-seed32/results_newgens.txt",
+    "liber-primus/analysis/round10/L5-seed32/sweep32x.c",
+    "liber-primus/analysis/round19/G2/RESULTS.md"
+   ],
+   "reproduce": "Read round10/L5-seed32/results_newgens.txt (4 lines) and sweep32x.c: decode_score(). No computation required.",
+   "reopens_if": "n/a -- this is a correction to a claim, not a search. It stands until someone shows results_newgens.txt does not say what it says.",
+   "notes": "RECOMMENDED REPLACEMENT TEXT for L1 sec.6.2 row 3 and for the B-21 coverage field: 'Perl 5.14 rand/srand -- ranked 3rd (x2.5) on physical evidence (F6/F7). Swept at ~2.9% of the seed space, 1 of 9 reductions, offset 0, through a RIGID decoder and an English-only adjudicator against an invalid threshold (round10/L5-seed32). Coverage without power. Never swept through a drift-capable decoder or a multi-register adjudicator.' THE PRIOR ITSELF IS UNDAMAGED: F6 (46/46 curated 3301 PGP messages 2012-2014 all GnuPG v1.4.11 (GNU/Linux)) and F7 (1.4.11 is the Ubuntu 11.04-12.04 package) still put Perl 5.14.2 on the box as the system Perl. Only the 'never swept' clause was wrong, and correcting it STRENGTHENS the case for re-running: this is not virgin ground, it is ground swept with a broken magnet -- exactly the situation Round 19's lane S2 (RE-ADJUDICATE) exists to exploit. This entry also confirms, as a second-order point, that LEDGER's own read_this_first guidance is right: B-21's `coverage` field told the truth about Round 8 while its status did not, and L1 inherited the wrong summary rather than the coverage field.",
+   "priority": "medium",
+   "supersedes": null,
+   "superseded_by": null,
+   "source_register": "liber-primus/ARMADA-DOCTRINE.md R6 (every lane audits; report FOUND-ERROR / NO-ERROR-FOUND)",
+   "evidence_missing": []
+  }
+ ]
+}

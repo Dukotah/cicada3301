@@ -1,0 +1,125 @@
+{
+ "_note": "Round 19 lane G4. Append to liber-primus/LEDGER.json's `entries`. Read `coverage` and `not_covered`, never `status` (doctrine R7).",
+ "entries": [
+  {
+   "id": "G4-TEX-RNG",
+   "lane": "round19/G4",
+   "hypothesis": "The LP2 0-54 keystream was generated INSIDE the typesetting document: by a TeX-side PRNG (pgf's \\pgfmathrandominteger, the lcg package's \\rand, random.tex's \\setrannum, or pdfTeX's \\pdfuniformdeviate) invoked from the LaTeX source that produced the 6.00x9.00-inch runic PDF, reduced to Z_29 by one of the idiomatic package calls.",
+   "status": "open",
+   "round": "19/G4",
+   "date": "2026-08-26",
+   "prior_from": "round18/L1-toolchain/RESULTS.md \u00a76.2 rank 5, shift x2, 'never swept, never considered'. Facts F4 (400 dpi, 2400x3600 px = exactly 6.00x9.00 in), F5 (runes typeset from a proportional font, so character data before pixels), F10 (none of 11 stock Unicode runic faces; allrunes named as the live alternative), F2 (Ghostscript render => a PDF/PostScript source), F6/F7 (Ubuntu 11.04-12.04, GnuPG 1.4.11).",
+   "threshold": "V1 byte-exact equality against sequences emitted by the real TeX binaries, element for element; V2 >= 2 of 4 generators must pass; V3 pgf 2.10 == pgf 3.1.x; V4 both Lehmer multipliers primitive roots mod 2^31-1; V5/V5a ground-truth plant-and-recover.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "positive_control_detail": "V5 AS PRE-REGISTERED: FAIL. It asked for the planted phase to rank #1 at rigid rune agreement 1.00; the key-skip filter makes that unattainable by construction, because the rigid optimum is the planted phase ADVANCED by the number of key skips. That mis-aimed gate is recorded, not edited, and the replacement is in a dated PREREG addendum. V5a: PASS - planted phase rank #2 of 80,004 inside the 1+n_skips band, rigid argmax at phase+2 with 2 skips, wrong-phase null mean 0.0342 / max 0.0917 (1/29 = 0.0345), and the skip-aware beam at the planted phase recovers 1.0000 of the known plaintext at score -4.2247 (recorded, not a decision statistic). The planted pad was taken from a real pdflatex run, not from Python, so a Python-side bug could not cancel itself out.",
+   "result": {
+    "generators_validated_byte_exact": 4,
+    "generators_attempted": 4,
+    "reference_elements_compared": 15808,
+    "reference_vectors": 247,
+    "pgf": {
+     "m": 2147483647,
+     "a": 69621,
+     "q": 30845,
+     "r": 23902,
+     "default_seed": "\\time * \\year",
+     "note": "the multiplier is 69621, NOT the 16807 the source comment lists as an alternative"
+    },
+    "lcg": {
+     "m": 2147483647,
+     "a": 16807,
+     "q": 127773,
+     "r": 2836,
+     "reduction": "rejection then first + z mod R",
+     "version": "1.3 (2013/08/09)"
+    },
+    "random_tex": {
+     "m": 2147483647,
+     "a": 16807,
+     "q": 127773,
+     "r": 2836,
+     "reduction": "v = (z-1) div (2147483645 div R), rejected unless v < R",
+     "default_seed": "((time*388+year)*31+day)*97+month, then THREE discarded warm-up draws",
+     "version": "0.2"
+    },
+    "pdftex": {
+     "algorithm": "Knuth 55-lag subtractive on 28-bit fractions (METAFONT init_randoms/new_randoms/unif_rand)",
+     "fraction_one": 268435456,
+     "effective_seed_space": 268435456,
+     "note": "init_randoms halves |seed| until < 2^28, which collapses the seed space to 2^28"
+    },
+    "era_correctness": "pgf 2.00 (TeX Live 2009 = Ubuntu 11.04/11.10/12.04) and pgf 2.10 have a byte-identical \\pgfmathgeneratepseudorandomnumber; reference vectors from vendored pgf 2.10 match installed pgf 3.1.11a on 76/76.",
+    "single_cycle": true,
+    "single_cycle_detail": "69621 and 16807 are both primitive roots mod 2^31-1 (verified against every prime factor of 2^31-2 = 2*3^2*7*11*31*151*331); each generator has ONE cycle of length 2147483646, so every seed and every offset is a phase of one master stream. B-04's offset ladder and B-02's key-index-0 assumption are ABSORBED for pgf/lcg/random.tex; they are NOT absorbed for pdfTeX, whose 55-word state gives disjoint trajectories.",
+    "space_full_enumeration_decodes": 185000000000.0,
+    "decodes_swept": 0,
+    "measured_costs": {
+     "master_cycle_build_s": 246,
+     "master_cycle_bytes": 2147483646,
+     "one_rigid_prefilter_pass_s": 1447,
+     "all_four_lehmer_families_prefilter_h": 13,
+     "I1_exact_s_per_decode": 0.003,
+     "I1_drift_s_per_decode": 0.679,
+     "drift_over_exact_ratio": 226,
+     "I2_adjudicate_s_per_decode": 0.0078,
+     "pipeline_exact_s_per_decode": 0.017,
+     "pipeline_pair_s_per_decode": 0.0155,
+     "pipeline_drift_s_per_decode": 0.619,
+     "pipeline_drift_over_exact_ratio": 36.5,
+     "pipeline_exact_decodes_per_s_6proc": 354,
+     "pipeline_drift_decodes_per_s_6proc": 9.7,
+     "_source": "beam-only and adjudicate-only from component timing; pipeline rates from pilot_results.json, 10,000 real decodes at L=120 on 6 cores/15GiB"
+    },
+    "pilot": {
+     "decodes": 10000,
+     "label": "PILOT - NOT A RESULT",
+     "store": "pilot_sweeprows.jsonl (SWEEPROW/1, header carries pilot:true interpretable:false)",
+     "store_validates_against_I2": true,
+     "interpretation": "none; no score interpreted, no candidate escalated, no bound established"
+    }
+   },
+   "coverage": "ZERO decodes of coverage. This is a Phase-1 generator lane: it delivers four byte-exact generators, a keystream interface, and an exact space statement, and it HOLDS at the scoring boundary because Round 19's Phase 0 (I1/I2/I3) had not been certified. A single labelled pilot of 10,000 decodes was run for plumbing and timing only, with `pilot: true, interpretable: false` in its SWEEPROW header; no score in it is interpreted and no candidate was escalated. Anyone citing this entry as coverage of the TeX family is citing it wrongly.",
+   "not_covered": "Everything. Specifically: (1) the whole 1.85e11-decode space; (2) the lcg package's DEFAULT seed, which depends on \\inputlineno and \\value{page} as well as the clock - samplable, not enumerable, and not sampled; (3) pdfTeX's DEFAULT seed, set from wall-clock microseconds - not enumerable at all; (4) per-page or per-line reseeding (an author calling \\pgfmathsetseed once per page - the B-04 stage-C shape); (5) any constant c not in {0,1} added to the reduced key, i.e. a general Caesar; (6) \\pgfmathrandomitem over a declared rune list, which is covered as a STREAM but whose list ordering would impose an unknown alphabet permutation; (7) LuaTeX math.random, which is glibc rand() and therefore G1's space, handed off with its Lua 5.1 scaling rather than re-swept; (8) XeTeX, which had no \\uniformdeviate in the TeX Live 2009 era.",
+   "evidence": [
+    "liber-primus/analysis/round19/G4/RESULTS.md",
+    "liber-primus/analysis/round19/G4/validation.json",
+    "liber-primus/analysis/round19/G4/control_results.json",
+    "liber-primus/analysis/round19/G4/bench_master.json",
+    "liber-primus/analysis/round19/G4/READY.md"
+   ],
+   "reproduce": "bash liber-primus/analysis/round19/G4/fetch_sources.sh && bash liber-primus/analysis/round19/G4/make_vectors.sh && python3 liber-primus/analysis/round19/G4/gen_tex.py --validate && python3 liber-primus/analysis/round19/G4/control.py",
+   "reopens_if": "Phase 2 (S1) runs it. The gate is K2: a planted phase must survive a 1e-3 rigid prefilter cut in >= 50% of 200 trials. If it does, complete enumeration of the three Lehmer families is ~18 h of wall clock on this box (13 h of numpy prefilter + a beam stage sized by the cut, ~4.4 h at a 1e-6 band-max cut). If it does not, G4 restricts to Tier 1: pgf's 8,627 distinct default seeds (69,016 decodes, 2.0 h at the drift preset on 6 cores), random.tex's 3,214,080 date-init seeds, and 0..2^20 author-typed integers.",
+   "notes": "Nothing in liber-primus/LEDGER.json's 62 prior entries has a TeX-internal RNG as its hypothesis, in any status/coverage/not_covered field - confirmed by keyword scan for tex|latex|pgf|lcg|typeset|allrunes, which matched 15 entries in prose only. The most consequential number this lane measured is not a generator constant: I1's repaired `drift` preset costs 226x the repo's `exact` preset beam-only and 36.5x end-to-end, so on 6 cores the repaired instrument runs at ~9.7 decodes/s = ~5.9e6 decodes/week. Phase 2's budget is therefore a decision about WHICH ~1e6-1e7 decodes, not a coverage figure - and the Round-13-era 1,400 decodes/s figure no longer applies because it was measured without an adjudicator and with the unrepaired decoder."
+  },
+  {
+   "id": "G4-ALLRUNES-NC5",
+   "lane": "round19/G4 (side-deliverable for round18/L1)",
+   "hypothesis": "round18/L1 NC-5: 'the allrunes Type-1 faces are custom-encoded (not Unicode-mapped), so matching them requires an unordered glyph-slot search rather than a codepoint lookup.'",
+   "status": "open",
+   "round": "19/G4",
+   "date": "2026-08-26",
+   "threshold": "Order-destroying permutation control: 200 refits against shuffled observed width vectors; the real assignment must beat the null at p <= 0.05 or the screen is declared uninformative.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "result": {
+    "nc5_verdict": "FOUND-ERROR. NC-5's stated blocker is false for the files L1 already holds: the 218 allrunes .pfb charstrings carry ordinary Adobe glyph names that ARE the transliteration letters (f u eth o r c g w h n i j p x s t b e m l eng oe d a ae y), so 26 of the 29 futhorc runes are a direct name lookup. Only EO / EA / IA lack an unambiguous name.",
+    "faces_with_all_26_named_runes": 72,
+    "faces_total": 218,
+    "best_face": "fruabr",
+    "best_rms_px": 6.643,
+    "permutation_null_min_rms_px": 10.113,
+    "permutation_null_median_rms_px": 15.296,
+    "p_value": 0.0
+   },
+   "coverage": "A SCREEN, not a verdict. It shows LP2's per-rune ink-width assignment matches the allrunes Anglo-Frisian family far better than a shuffle. It does NOT discriminate allrunes from any other CORRECT futhorc face - every correct face has a narrow I and a wide X, so the permutation control separates 'a real futhorc' from 'a shuffle', nothing more. The fitted scale factors (0.40-0.84) are an artefact of normalising by each face's median glyph height and are NOT evidence of a condensed face.",
+   "not_covered": "L1's own font_match.py distance under its PC3a/PC3b controls, with these 72 allrunes faces in the bank. That is the measurement that could name the face, and it is now a codepoint lookup rather than a slot search.",
+   "evidence": [
+    "liber-primus/analysis/round19/G4/RESULTS.md#6",
+    "liber-primus/analysis/round19/G4/allrunes_probe.json"
+   ],
+   "reproduce": "python3 liber-primus/analysis/round19/G4/allrunes_probe.py",
+   "reopens_if": "L1's matcher is re-run with the allrunes bank included. If a specific allrunes shape variant separates from the field, it pins the LaTeX source and with it the plausible package set - which is exactly the prior G4-TEX-RNG runs on."
+  }
+ ]
+}

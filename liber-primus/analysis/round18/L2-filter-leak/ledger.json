@@ -120,6 +120,122 @@
    "reproduce": "cd liber-primus/analysis/round18/L2-filter-leak && PYTHONUTF8=1 python3 fastbeam.py && PYTHONUTF8=1 python3 b_drawcount.py",
    "reopens_if": "A pad family with long constant runs is swept at full length, where round17/P1 measured that max_skip=3 binds; or a value-rewrite plant at full length fails.",
    "notes": "The worry was real and specific - the beam ranks partial paths on a raw cumulative quadgram sum over transliterations of unequal character length, which is a length-selection bias with more room to act at 12,956 runes than at 120. It does not bite: spurious skip branches desynchronise the key and lose ~1.3 per character immediately, so they die within a few positions."
+  },
+  {
+   "id": "R18-L2-DRIFT-LADDER",
+   "hypothesis": "Under a single continuous keystream (which round17/P4's flat unscoped verdict implies) the correct key index at the first rune of page k is start_k + S_k with S_k of mean rho*start_k and sd sqrt(start_k*var). No campaign has ever tested a page at that offset: B-04 Stage A/B tested only the 120-rune head at offsets {0..3301}, Stage C tested each page at a RESTART (offset 0), Stage D tested the full stream for 150 configs. Re-score the published best candidates of B-04, R16-KDF and R16-PRNG on the drift-corrected per-page ladder.",
+   "lane": "keystream",
+   "status": "negative",
+   "round": "18/L2",
+   "date": "2026-08-26",
+   "threshold": "threshold_for(1371030, segment_len=100) = -5.500 (the historical floor binds at this trial count; the family-wise correction is looser). expected_max(1371030) = -6.185. The ladder may not report a negative unless positive control B4-PC passes.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "B4-PC: planted sha256_ctr(b'THE PRIMES ARE SACRED') mod 29 over 12,956 runes of archaic English under the pinned filter (368 skips), sliced pages 10 / 30 / 52 out of the synthetic ciphertext and ran them through the ladder against 20 decoy keystreams. In all three the true key index fell INSIDE the +/-4 sd ladder and ranked #1: page 10 score -4.086, page 30 -4.188, page 52 -3.949. The same three pages at the UNCORRECTED offset start_k scored -7.328 / -7.303 / -6.940 and at Stage-C restart 0 scored -7.805 / -7.359 / -7.522. Best decoy -6.602. So a correct key is noise without the drift correction and English with it - a 3.0 to 3.6 score-unit gap.",
+   "result": {
+    "n_candidates": 230,
+    "n_decodes": 1371030,
+    "elapsed_s": 1700,
+    "reconstruction_failures": 0,
+    "best_overall": -5.8853,
+    "best_overall_location": "page 52, offset 0 (a CONTROL point) - a bit-for-bit reproduction of B-04 Stage C's published best (anend / sha256_chain / rej29 / sign +1 / atbash / fwd, published -5.8852781), obtained through a different decoder implementation and an independently rebuilt keystream",
+    "best_in_new_drift_corrected_region": -6.0117,
+    "best_in_new_region_location": "page 49, offset 12320, R16KDF-A pbkdf2_sha256_3301",
+    "expected_null_max": -6.1853,
+    "bar": -5.5,
+    "n_over_bar": 0,
+    "best_per_candidate_mean": -6.311,
+    "best_per_candidate_sd": 0.125,
+    "draw_count_correction_moved_any_best_score": false
+   },
+   "coverage": "230 candidates mined from the published top lists of round13/B04 (results_A/B/C/D), round16/KDF (results_summary, results_A) and round16/prng (results.top20), deduplicated; all 55 unsolved pages, first 100 runes; ladder o_k +/- 4 sd at integer step 1 plus two control offsets per page (uncorrected start_k, and 0 = Stage-C restart); 5,961 offsets per candidate; 1,371,030 decodes. No sweep re-run - candidates were read off disk (CAMPAIGN-PLAN rule 7).",
+   "not_covered": [
+    "candidates outside the published top lists of those three campaigns - the underlying seed dictionaries are unchanged and were not re-swept",
+    "segments longer than the first 100 runes of each page",
+    "a global keystream start other than key index 0 at rune 0 (composing this ladder with a global offset ladder is the natural extension, and is lane L6's B-02)",
+    "the M2 value-rewrite locus, under which drift is zero and the uncorrected offset is the correct one - A-LOCUS shows the ciphertext cannot say which locus is in force"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round18/L2-filter-leak/b4_control.json",
+    "liber-primus/analysis/round18/L2-filter-leak/b4_ladder.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round18/L2-filter-leak && PYTHONUTF8=1 python3 b4_ladder.py --stage b4pc && PYTHONUTF8=1 python3 b4_ladder.py --stage ladder --cands 400 --nproc 6",
+   "reopens_if": "New candidates enter from any keystream campaign; the ladder is cheap (0.7 ms per 100-rune decode with fastbeam) and should be run as standard on any future candidate list.",
+   "notes": "The positive control is the finding. It is a measured demonstration that a genuinely correct key is undetectable at the offset every per-page test in this repository has used. The best score in the newly covered region (-6.0117) sits 0.17 above the expected null maximum for 1.37M trials, i.e. it is the order statistic, and it is BELOW the previously published best - so the draw-count correction opens a real region but does not move any existing best score. Incidental coverage correction for R16-KDF: three of its published top-50 secrets (1d00, 1d000000, 1d00000000000000) produce byte-identical keystreams, because in PBKDF2-HMAC the password IS the HMAC key and HMAC zero-pads a short key to the 64-byte block, so trailing zero bytes in a PBKDF2 password cannot change the output. Any seed dictionary that serialises integers at several byte widths has fewer distinct members than it counts; deduplicate on secret.rstrip(b'\\x00') before quoting a coverage number. This does not affect R16-KDF's negative."
+  },
+  {
+   "id": "R18-L2-SKIP-CHANNEL",
+   "hypothesis": "The rejection sampler's draw count is an ENGLISH-INDEPENDENT ranking statistic. The skip-aware beam already infers how many keystream draws a candidate implies, but the repo's decoder discards the number. Under a correct key it must track rho*L = 373.6 over the book; under a wrong key it need not.",
+   "lane": "instrument",
+   "status": "measured-usable-as-secondary-screen",
+   "round": "18/L2",
+   "date": "2026-08-26",
+   "threshold": "Reported as a measured separation, not a pass/fail: the channel is only claimed as an instrument if the true-vs-wrong separation is stated in sd together with its screen power at a 5% false-positive rate.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "Planted correct key at L = 12,956 inferred 362 skips against an actual 361 (and 383 against 383 on the B.3 plant). 40 wrong keys on the planted ciphertext: 296.3 +/- 21.4. 40 wrong keys on the REAL LP2 ciphertext: 297.8 +/- 19.8. The two nulls agree at z = 0.32, which is an independent decoder-level confirmation of the cipher model on the real stream.",
+   "result": {
+    "expected_skips_rho_L": 373.6,
+    "true_key_inferred_skips": 362,
+    "true_key_actual_skips": 361,
+    "wrong_keys_on_plant": {"n": 40, "mean": 296.3, "sd": 21.4},
+    "wrong_keys_on_real_ciphertext": {"n": 40, "mean": 297.8, "sd": 19.8},
+    "separation_sd": 3.08,
+    "screen_power_at_5pct_fpr": 0.924,
+    "real_vs_plant_null_agreement_z": 0.32
+   },
+   "coverage": "Full-book (12,956-rune) decodes at beam_w=400, max_skip=3. The statistic is orthogonal to the quadgram scorer, which is the gap lane L7-A identified: every negative in this repository is an English-only negative, and a candidate whose plaintext is not modern-English-quadgram-shaped is invisible to the scorer but still has to consume ~374 draws. n_skips is exposed by fastbeam.beam_decode and costs nothing to persist at sweep time.",
+   "not_covered": [
+    "the wrong-key null used a single generator family (sha256_ctr with varied seeds); a pad with long constant byte runs is the case round17/P1 found makes max_skip=3 bind and would shift this null, so the channel must be recalibrated per pad family before use as a screen",
+    "3.08 sd is not enough to be a primary discriminator over millions of candidates - it is a secondary screen",
+    "the candidate-ranking loop over the mined top list was cut short by the run wall-clock; two rows completed, both null (R16-KDF's gate seed 'THE PRIMES ARE SACRED' n_skips 277, z -1.05; B-04's best 'anend' n_skips 297, z -0.04)"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round18/L2-filter-leak/b5_skipchannel.json",
+    "liber-primus/analysis/round18/L2-filter-leak/fastbeam.py"
+   ],
+   "reproduce": "cd liber-primus/analysis/round18/L2-filter-leak && PYTHONUTF8=1 python3 b4_ladder.py --stage skipchannel",
+   "reopens_if": "Any future sweep persists n_skips alongside the English score; the channel then costs nothing and can rescue a candidate the English-only scorer cannot see.",
+   "notes": "This is the one place the 'filter as a leak' framing pays off constructively. The leak is on the KEY, not the plaintext (see R18-L2-INFO-BUDGET), and this measures its size."
+  },
+  {
+   "id": "R18-L2-INFO-BUDGET",
+   "hypothesis": "Each accepted position certifies that the rejection sampler did not have to re-roll there, so 12,956 acceptance events are unspent constraints on the joint (plaintext, keystream). If the constraint system is anywhere near determined, a constraint-propagation / SAT / belief-propagation solver over the joint variables with an English plaintext prior should be built.",
+   "lane": "theory",
+   "status": "resolved-negative",
+   "round": "18/L2",
+   "date": "2026-08-26",
+   "threshold": "Determined iff H(P) + H(K) - H(C) <= 0. Build the solver only if the deficit is <= 0 or within ~10^3 bits of zero under a stated extra assumption. Fixed in PREREG section 4 before the accounting was run.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "C-PC: the same accounting applied to a 64-bit-seed derived keystream returns DETERMINED (deficit -29,283 bits), which agrees with round12/D3's demonstrated practical recovery of a planted short seed (beam -4.170, 98.9% character recovery). An accounting that called a demonstrably recoverable case under-determined would be wrong. Separately, the exact result was verified numerically: 1,000 enciphers each of a constant plaintext and an English plaintext give ciphertext symbol-law homogeneity chi2 = 28.2 and Delta-law chi2 = 24.5, both on 28 df (p = 0.45, 0.65).",
+   "result": {
+    "H_C_unfiltered_bits": 62940.0,
+    "H_C_filtered_bits": 62616.6,
+    "filter_information_injection_bits": 323.4,
+    "H_P_bits_per_rune_heldout_order3": 2.568,
+    "H_P_total_bits": 33269,
+    "H_K_full_pad_bits": 64755,
+    "full_pad_deficit_bits": 35408,
+    "acceptance_event_contribution_to_plaintext_bits": 0.0,
+    "max_H_K_for_determinacy_bits": 29347,
+    "closed_form_residual_doublet_rate": 0.00663779,
+    "observed_residual_doublet_rate": 0.00663836,
+    "verdict": "UNDER-DETERMINED; do not build the SAT/BP solver"
+   },
+   "coverage": "Exact, not estimated. Under the surviving locus P(c_i | p_i, c_prev) = w/(N-s) with w = (1-s) if c_i == c_prev else 1: each rejected draw pins one key value out of N and costs one coin, and p_i does not appear because the plaintext symbol only relabels WHICH key value is pinned and a uniform keystream is invariant under relabelling. Hence P(C|P) is identical for every candidate plaintext, the likelihood over plaintexts is exactly flat, and the acceptance events carry 0 bits about the plaintext. The same line yields the residual doublet rate in closed form, (1-s)/(N-s) = 0.00663779 against an observed 0.00663836 - a third independent route to the filter constant. H(P) is a held-out cross-entropy (an upper bound), so the max-H(K) figure is stated conservatively; sensitivity from 1.5 to 3.0 bits/rune gives max H(K) between 43,183 and 23,749 bits.",
+   "not_covered": [
+    "the zero-information result is conditional on the keystream being uniform and independent of the plaintext; it does not hold if the pad is correlated with the message",
+    "the filter IS a leak on the KEY - conditioned on a candidate keystream the skip pattern is constrained at 1/29 per skipped symbol - and that channel is exactly what the beam's validity test already exploits; its size as a ranking channel is measured in R18-L2-SKIP-CHANNEL",
+    "the budget assumes the M1 locus; under M2 (value-rewrite) the sampler consumes no extra draws and H(K) drops by 373.6*log2(29) = 1,815 bits, which does not change any verdict"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round18/L2-filter-leak/c_budget.json",
+    "liber-primus/analysis/round18/L2-filter-leak/c_budget.py"
+   ],
+   "reproduce": "cd liber-primus/analysis/round18/L2-filter-leak && PYTHONUTF8=1 python3 c_budget.py",
+   "reopens_if": "A hypothesis is proposed that bounds H(K) below ~29,300 bits (~3,670 bytes) - every derived-key, public-pad and PRNG-seed family already does, which is precisely why those lanes are tractable and this one is not.",
+   "notes": "This lane set out to show the filter was unspent information and found the opposite, in closed form. It converges with round17/P4 section 9(3) from the other direction: P4 said a KEY prior buys nothing because the pad has no exploitable non-uniformity; this says an ACCEPTANCE prior buys nothing because the acceptance events are plaintext-independent by construction. The tractability of the derived-key and public-pad lanes comes entirely from the keyspace bound, not from the filter."
   }
  ]
 }

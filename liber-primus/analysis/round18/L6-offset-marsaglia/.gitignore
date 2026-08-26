@@ -1,0 +1,27 @@
+# Round 18 / L6 — OFFSET & MARSAGLIA
+#
+# REGENERATION (nothing ignored here is a result; every line is re-derivable by committed code)
+#   data/MARSAGLIA_CDROM.iso   634,124,288 B, archive.org item `marsaglia-cdrom`.
+#                              Rebuild: bash scripts/fetch_marsaglia.sh
+#                              Then:    python3 scripts/verify_marsaglia.py
+#                              The HASHES are committed in data/MANIFEST.json — that file is
+#                              the receipt and it is NOT ignored.
+#   data/iso/                  the 110 inner files, extracted by 7z from the ISO above.
+#   out/ckpt_A1/ ckpt_A2/ ckpt_M/   per-work-unit sweep checkpoints; the sweeps are resumable
+#                              and re-collect into out/results_*.json, which ARE committed.
+#   *.log                      raw stdout. Every number that matters is copied into out/*.json.
+#
+# COMMITTED (the record of what was tried, self-sufficient without any of the above):
+#   PREREG.md RESULTS.md ledger.json scripts/ data/MANIFEST.json data/checksums.sha256.txt
+#   out/audit.json out/nulls.json out/digest.json out/langagnostic.json out/tier2.json
+#   out/control_offset.json out/control_marsaglia.json out/results_A1.json out/results_A2.json
+#   out/results_M.json
+data/MARSAGLIA_CDROM.iso
+data/iso/
+data/marsaglia-cdrom_files.xml
+data/marsaglia-cdrom_meta.xml
+out/ckpt_A1/
+out/ckpt_A2/
+out/ckpt_M/
+*.log
+__pycache__/

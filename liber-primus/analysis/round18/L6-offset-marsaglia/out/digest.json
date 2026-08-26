@@ -1,0 +1,142 @@
+{
+ "instrument_audit_all_pass": true,
+ "audit_checks": [
+  "ks_hexchars drops digits (R17/P1 defect, re-derived) :: PASS",
+  "ks_nibbles conserves length (the true hex reading) :: PASS",
+  "builder `mod29` == lib_padsweep :: PASS",
+  "builder `hi_nibble` == lib_padsweep :: PASS",
+  "builder `lo_nibble` == lib_padsweep :: PASS",
+  "builder `byte_scaled` == lib_padsweep :: PASS",
+  "builder `prime_to_idx` == lib_padsweep :: PASS",
+  "builder `nibbles` == lib_padsweep :: PASS",
+  "sharded_scan reproduces whole-blob dense_scan top-50 (`mod29`) :: PASS",
+  "sharded_scan reproduces whole-blob dense_scan top-50 (`nibbles`) :: PASS",
+  "skip-aware beam recovers a planted key at ms=8 :: PASS",
+  "threshold_for is STRICTER than the habitual -5.5 at this lane's N :: PASS"
+ ],
+ "threshold_for_table": {
+  "200": -5.5,
+  "1,000,000": -5.5,
+  "1,800,000,000": -5.3731,
+  "18,000,000,000": -5.2062,
+  "15,000,000,000": -5.2194
+ },
+ "sub_lane_A": {
+  "n_offsets_scanned": 497025024,
+  "threshold_for": -5.4664,
+  "best": {
+   "offset": 253446,
+   "sign": 1,
+   "pre": -1.4657084941864014,
+   "score": -6.770228128591641,
+   "head": "XDDAEAYWOETGIMOULOODBINGMPAEOREOEBEODHINGBAOENTNOENGEADBURSSULYT",
+   "src": "A2-grid",
+   "kind": "b04",
+   "gen": "sha256_chain",
+   "red": "mod29",
+   "seed": "slogan",
+   "seed_hex": "4245574152452046414c5345205041544853",
+   "atbash": 0,
+   "dir": "fwd",
+   "stage": "A2"
+  },
+  "stages": {
+   "A1": {
+    "units_done": 220,
+    "units_total": 220,
+    "complete": true,
+    "off_max": 1048576,
+    "n_offsets_scanned": 230686720,
+    "escalate_top": 40,
+    "keep": 1000,
+    "threshold_for_at_this_N": -5.5
+   },
+   "A2": {
+    "units_done": 508,
+    "units_total": 3024,
+    "complete": false,
+    "off_max": 262144,
+    "n_offsets_scanned": 266338304,
+    "escalate_top": 12,
+    "keep": 1000,
+    "threshold_for_at_this_N": -5.5
+   }
+  },
+  "control": {
+   "recovery": 1.0,
+   "recovered": 40,
+   "n_trials": 40,
+   "survival_keep1000": 0.65,
+   "survival_at_top40": 0.525,
+   "survival_at_top12": 0.525,
+   "pipeline_first": 0.525,
+   "PASS": true
+  }
+ },
+ "sub_lane_B": {
+  "n_offsets_scanned": 1539996304,
+  "threshold_for": -5.3844,
+  "best": {
+   "offset": 7710875,
+   "sign": 1,
+   "pre": -1.2577084302902222,
+   "score": -6.738686108217992,
+   "head": "ETURIONLNGGETHYATGONDEDTHESIAYAARAPHTHEAIDBTOEGEACOPJERGSOEXTEAO",
+   "pad": "BITS.22",
+   "builder": "mod29",
+   "rev": false
+  },
+  "units": {
+   "done": 77,
+   "total": 756,
+   "complete": false
+  },
+  "per_pad_count": 63,
+  "control": {
+   "ms8_recovery": 1.0,
+   "ms8_survival_keep1000": 0.5625,
+   "ms8_survival_at_top40": 0.5625,
+   "ms3_recovery": 1.0,
+   "ms3_bites_here": false,
+   "n_trials": 16,
+   "PASS": true,
+   "pad_stats": {
+    "BITS.01": {
+     "bytes": 10000000,
+     "zero_byte_pct": 0.39022,
+     "longest_constant_run": 3,
+     "mean_run": 1.0039193009509124,
+     "distinct_bytes": 256
+    },
+    "CALIF.BIT": {
+     "bytes": 10000000,
+     "zero_byte_pct": 0.36321,
+     "longest_constant_run": 4,
+     "mean_run": 1.0039064005859601,
+     "distinct_bytes": 256
+    },
+    "BITS.30": {
+     "bytes": 10000000,
+     "zero_byte_pct": 0.38679,
+     "longest_constant_run": 4,
+     "mean_run": 1.0039124475907506,
+     "distinct_bytes": 256
+    },
+    "GERMANY.BIT": {
+     "bytes": 10000000,
+     "zero_byte_pct": 0.47797,
+     "longest_constant_run": 4,
+     "mean_run": 1.0051008870015328,
+     "distinct_bytes": 256
+    },
+    "MARSAGLIA_CDROM.iso[0:16MiB]": {
+     "bytes": 16777216,
+     "zero_byte_pct": 0.8033692836761475,
+     "longest_constant_run": 32768,
+     "mean_run": 1.0078408976294448,
+     "distinct_bytes": 256
+    }
+   }
+  }
+ }
+}

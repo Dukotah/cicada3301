@@ -1,0 +1,127 @@
+{
+ "lane": "round19/I2/speed",
+ "reps": 500,
+ "best_of": 15,
+ "machine": {
+  "python": "3.14.4",
+  "numpy": "2.4.6",
+  "loadavg_at_start": [
+   1.84033203125,
+   1.72705078125,
+   4.251953125
+  ],
+  "cpu_count": 6,
+  "loadavg_at_end": [
+   2.3505859375,
+   1.865234375,
+   4.21630859375
+  ]
+ },
+ "lengths": {
+  "120": {
+   "us_score_norm_only": 13.343383994651958,
+   "us_legacy_pipeline_incl_translit": 15.76098200166598,
+   "us_adjudicate_full": 94.81679397867993,
+   "us_adjudicate_translit_supplied": 107.3119999782648,
+   "us_adjudicate_batch_panel_only_per_row": 4.385654783334303,
+   "ratio_vs_score_norm": 7.1059031214782244,
+   "ratio_trials_sorted": [
+    6.545200533485854,
+    6.827924105844642,
+    7.1059031214782244,
+    7.700155874879976,
+    7.740227409346356
+   ],
+   "ratio_median_over_trials": 7.1059031214782244,
+   "ratio_min_over_trials": 6.545200533485854,
+   "n_trials": 5,
+   "ratio_vs_legacy_pipeline": 6.015919183757555,
+   "components_us": {
+    "panel_raw": 8.157762000337243,
+    "ioc": 2.3716220166534185,
+    "min_distinct": 12.08990000304766,
+    "h2": 16.455008008051664,
+    "zlib_ratio": 6.207455997355282,
+    "cal_lookup": 0.05251198308542371,
+    "idx_to_trans": 2.4175980070140213,
+    "score_norm": 13.343383994651958
+   },
+   "decodes_per_second_single": 10546.65484919112,
+   "decodes_per_second_batch_panel_only": 228016.122883189
+  },
+  "240": {
+   "us_score_norm_only": 34.333121991949156,
+   "us_legacy_pipeline_incl_translit": 38.57846197206527,
+   "us_adjudicate_full": 164.31400799774565,
+   "us_adjudicate_translit_supplied": 150.2233579813037,
+   "us_adjudicate_batch_panel_only_per_row": 10.194450190681437,
+   "ratio_vs_score_norm": 4.785874352943376,
+   "ratio_trials_sorted": [
+    4.746207314518815,
+    4.785874352943376,
+    4.818098191391553,
+    4.996521918761119,
+    5.0154924546880535
+   ],
+   "ratio_median_over_trials": 4.818098191391553,
+   "ratio_min_over_trials": 4.746207314518815,
+   "n_trials": 5,
+   "ratio_vs_legacy_pipeline": 4.25921614285001,
+   "components_us": {
+    "panel_raw": 12.456805998226628,
+    "ioc": 2.559706015745178,
+    "min_distinct": 19.116893992759287,
+    "h2": 20.429905998753384,
+    "zlib_ratio": 7.962103991303593,
+    "cal_lookup": 0.06134199793450535,
+    "idx_to_trans": 4.245339980116114,
+    "score_norm": 34.333121991949156
+   },
+   "decodes_per_second_single": 6085.908390803295,
+   "decodes_per_second_batch_panel_only": 98092.5877605525
+  },
+  "400": {
+   "us_score_norm_only": 60.75322997639887,
+   "us_legacy_pipeline_incl_translit": 67.36289997934364,
+   "us_adjudicate_full": 248.28057599370365,
+   "us_adjudicate_translit_supplied": 219.50053199543618,
+   "us_adjudicate_batch_panel_only_per_row": 16.87038427888865,
+   "ratio_vs_score_norm": 4.086705778279682,
+   "ratio_trials_sorted": [
+    3.283675546461381,
+    3.67546728075572,
+    3.8020222265093735,
+    4.032361582125727,
+    4.086705778279682
+   ],
+   "ratio_median_over_trials": 3.8020222265093735,
+   "ratio_min_over_trials": 3.283675546461381,
+   "n_trials": 5,
+   "ratio_vs_legacy_pipeline": 3.6857168570509455,
+   "components_us": {
+    "panel_raw": 19.198188005248085,
+    "ioc": 2.9797939932905138,
+    "min_distinct": 26.977781992172822,
+    "h2": 26.09943601419218,
+    "zlib_ratio": 10.071367985801771,
+    "cal_lookup": 0.06257800851017237,
+    "idx_to_trans": 6.6096700029447675,
+    "score_norm": 60.75322997639887
+   },
+   "decodes_per_second_single": 4027.701305257806,
+   "decodes_per_second_batch_panel_only": 59275.472536294576
+  }
+ },
+ "gate_G_SPEED": {
+  "rule": "adjudicate(240 runes) <= 3 x score_norm(240 runes)",
+  "us_adjudicate": 164.31400799774565,
+  "us_score_norm": 34.333121991949156,
+  "ratio": 4.785874352943376,
+  "ratio_min_over_trials": 4.746207314518815,
+  "ratio_median_over_trials": 4.818098191391553,
+  "us_adjudicate_minus_legacy": 125.73554602568038,
+  "context_us_beam_decode_240": 134300.0,
+  "context_note": "one beam_decode(beam_w=400, max_skip=3) at L=240 costs ~134,300 us on this machine, so the adjudicator is ~0.1 % of the decode it adjudicates. The gate compares against score_norm alone and is reported as pre-registered; see RESULTS.md s6 for why that comparison turns out to measure the wrong quantity.",
+  "verdict": "FAILED"
+ }
+}

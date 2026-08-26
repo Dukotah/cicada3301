@@ -354,6 +354,52 @@ and HIT bar unchanged (so the result is directly comparable), extending only the
 this pad is ~100× longer than the others, so it supports offsets to 5×10⁷ that A1 could not
 sweep. Verdict in `analysis/round12/A1/results_560_13.json`.
 
+## Round 18 — AIM AT THE INSTRUMENT (2026-08-25/26)
+
+Full: [`liber-primus/analysis/round18/SYNTHESIS.md`](liber-primus/analysis/round18/SYNTHESIS.md).
+Plan: [`round18/CAMPAIGN-PLAN.md`](liber-primus/analysis/round18/CAMPAIGN-PLAN.md).
+Doctrine written out of it: [`liber-primus/ARMADA-DOCTRINE.md`](liber-primus/ARMADA-DOCTRINE.md).
+
+Eight pre-registered lanes, every one with a positive control. **0 decodes over bar — and the
+round is still the most consequential since D3**, because four lanes found the *instruments*, not
+the search space, to be the limit.
+
+**The correction that reaches every other entry (L7).** The word "English" appears in no
+`coverage` field of the ledger's 62 entries — yet this project's own instrument, handed a
+**correct key**, recovers 100% of rune indices over a Latin, Welsh or vowel-dropped-English
+plaintext and still scores it as noise (worst case: **below a deliberately wrong key**). Every
+"NEGATIVE" here is an **English-register** negative. `B-04`, `R16-KDF`, `R16-PRNG`,
+`R17-PUBLIC-PAD` and `B-21` now carry restated coverage, with the original preserved in each
+entry's `restated_from`. **This does not void them** — the register LP2 demonstrably uses scores
+−4.33 at power 1.00.
+
+| Lane | Tested | Verdict |
+|---|---|---|
+| **L1** | Toolchain forensics → a generator prior (G-01/B-11, never-run) | **MEASURED** — two-stage `gs` → ImageMagick; `gs` **9.04–9.14**; ranked prior promotes glibc/Python 2.7/Perl/`$RANDOM`, demotes .NET to ×0.05 |
+| **L2** | The filter as a side channel (new) | **MEASURED** — the filter acts on the **ciphertext**; drift **373.6 ± 19.6** draws; SAT route proved dead; a **language-free key-side screen** at 3.08 sd |
+| **L3** | The 47 unread ornament bands (A-06/B-12, never-run) | **NEGATIVE** — 109 bands, 9,899 glyphs read; found **256 non-runic tokens the analysis tree never held** |
+| **L4** | The forcing/acrostic detector (C-02, never-run) | **NEGATIVE** — and C-02's *specified* detector has **FPR 0.490**; running it as written would likely have announced a false discovery |
+| **L5** | The 6 contested payload bytes + E-01 (A-04, never-run) | **MEASURED** — all six resolved at 100% calibrated accuracy, **none change**; **3 real errors found elsewhere** in `canon_256.bin`; E-01 null |
+| **L6** | Offset ≠ 0 + the Marsaglia CDROM (B-02/B-08) | **NEGATIVE** — **2.04 × 10⁹ offsets**, controls 40/40 and 16/16 on the real pad family; Marsaglia hash-verified and swept for the first time |
+| **L7** | Instrument red-team | **FOUND-ERROR ×3** — see above, plus the beam represents exactly one rejection-loop implementation, and `threshold_for()` was used outside its calibrated domain |
+| **L8** | PGP verification table + attribution (G-02/I-01/I-03) | **MEASURED** — 54/54 signatures verify under one key; **433 ranked seed candidates**; I-01 INDECISIVE; I-03 no hit |
+
+**Three things it found that nobody was looking for:** 256 non-runic base-60 tokens across
+pp. 49–51 that the geometry pipeline binned as "ornament" (transcribed, **not yet attacked**);
+three byte errors in `canon_256.bin` (canon left intact — `payload_resolved.bin` ships beside it);
+and the four digits of **`3299`** on page 15 set in a lighter ink tone than every other digit on
+that page, absent from every transcription here.
+
+**Where a correct key was invisible:** planted keys score **−3.949** drift-corrected versus
+**−6.94** at the offset every per-page test in this repo has used.
+
+**What to do next — not another flat-prior sweep.** L1's ranked generators × L8's 433 ranked
+seeds, judged by L2's language-free screen, at L2's drift correction. Cheapest untouched item:
+attack L3's 256 recovered tokens. `$RANDOM` is enumerable in minutes and has never been run, and
+any past sweep that called `random.seed("...")` under **Python 3 tested the wrong semantics**.
+
+Ledger: 62 → **83** entries; `never-run` **15 → 5**.
+
 ## Round 17 — THE PUBLIC PAD (2026-08-19/20)
 
 Full: [`liber-primus/analysis/round17/SYNTHESIS.md`](liber-primus/analysis/round17/SYNTHESIS.md).

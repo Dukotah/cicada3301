@@ -1,0 +1,87 @@
+{
+ "payloads": [
+  "L5_resolved",
+  "canon_decimal_preferred",
+  "canon_majority"
+ ],
+ "characterization": {
+  "canon_majority": {
+   "entropy_bits_per_byte": 7.1697,
+   "distinct_byte_values": 161,
+   "ascii_printable": 102,
+   "has_00": true,
+   "has_ff": true,
+   "sha256": "4c8dc85531d256793a6d0d318b8845869b4983e672077b094ed955bde92226d5",
+   "big_endian": {
+    "bits": 2048,
+    "is_probable_prime": false,
+    "smallest_factor_below_1e5": 2
+   },
+   "little_endian": {
+    "bits": 2047,
+    "is_probable_prime": false,
+    "smallest_factor_below_1e5": 5
+   }
+  },
+  "canon_decimal_preferred": {
+   "entropy_bits_per_byte": 7.1648,
+   "distinct_byte_values": 161,
+   "ascii_printable": 101,
+   "has_00": true,
+   "has_ff": true,
+   "sha256": "0a3aa3c813eddcf7f99ef9794c0e790f2a3fd86ea810a100d7113eb1beebacbd",
+   "big_endian": {
+    "bits": 2048,
+    "is_probable_prime": false,
+    "smallest_factor_below_1e5": 2
+   },
+   "little_endian": {
+    "bits": 2047,
+    "is_probable_prime": false,
+    "smallest_factor_below_1e5": 13
+   }
+  },
+  "L5_resolved": {
+   "entropy_bits_per_byte": 7.1697,
+   "distinct_byte_values": 161,
+   "ascii_printable": 103,
+   "has_00": true,
+   "has_ff": true,
+   "sha256": "3b9b07d9a26e6d55c432d94d2661fdff3c2b348daed06821f2bdb23184a4b290",
+   "big_endian": {
+    "bits": 2048,
+    "is_probable_prime": false,
+    "smallest_factor_below_1e5": 2
+   },
+   "little_endian": {
+    "bits": 2047,
+    "is_probable_prime": false,
+    "smallest_factor_below_1e5": 3
+   }
+  }
+ },
+ "hash_hunt": {
+  "hashes_computed": 210,
+  "target": "36367763ab73783c7af284446c59466b4cd653239a311cb7116d4618dee09a8425893dc7500b464fdaf1672d7bef5e891c6e2274568926a49fb4f45132c2a8b4",
+  "hits": []
+ },
+ "zerofp_on_resolved": {
+  "E-02": {
+   "test": "E-02",
+   "verdict": "NULL",
+   "E-02A_windows_checked": 201,
+   "E-02A_perm56_hits": [],
+   "E-02A_perm57_hits": [],
+   "doublet_gaps_n": 85,
+   "notes": "No 56-byte permutation window found in the 256-byte payload. Spearman correlations of payload-as-ints vs doublet gap sequence reported in stdout. See results JSON for details."
+  },
+  "H-03": {
+   "test": "H-03",
+   "verdict": "NULL",
+   "trials": 64,
+   "hits": [],
+   "max_printable": 0.625,
+   "notes": "32-byte cookies XOR'd against each 32-byte block of four 256-byte blobs. 0 hits above 80% printable threshold."
+  }
+ }
+}

@@ -22,7 +22,12 @@ Table: `analysis/stego/provenance.json`.
   the best achievable chain.)
 
 Implication: stego analysis on these files is **valid** — they are not re-renders.
-And because they are **Ghostscript renders at 400 DPI** (genuine OutGuess carriers
+> **Superseded in part 2026-08-26 (Round 18, L1).** The renders are **two-stage**:
+> `gs -sDEVICE=jpeg -r400` followed by an **ImageMagick** re-encode at IJG quality 92.
+> The argument below is unaffected — a re-encoded render is no more an OutGuess carrier
+> than a single-stage one — but the encoder attribution belongs to ImageMagick.
+
+And because they are **400-DPI renders** (genuine OutGuess carriers
 have JFIF density 1×1/unknown), the LP2 pages were **not produced as OutGuess
 carrier images** in the first place.
 

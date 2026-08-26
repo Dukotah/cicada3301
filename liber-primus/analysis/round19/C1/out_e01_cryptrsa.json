@@ -1,0 +1,1346 @@
+{
+ "control": {
+  "positive_source": "corpus/A-primary-artifacts/pgp/messages/2014-01-rsa-oaep-challenge.asc",
+  "blocks": 3,
+  "fired": 3,
+  "recovery": 1.0,
+  "false_positives_10k_at_53B": 0,
+  "false_positives_10k_at_511B": 0,
+  "verdict": "PASS"
+ },
+ "measured_layout": {
+  "source": "cryptrsa.py, on 3301's own 2013/2014 ES::OAEP ciphertext",
+  "emLen": "k-1",
+  "EM": "maskedSeed(20) || maskedDB(emLen-20)",
+  "MGF": "MGF1/SHA-1, 4-byte BE counter",
+  "hLen": 20,
+  "lHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+  "label_P": "\"\" (empty)"
+ },
+ "block_arithmetic": [
+  {
+   "modulus": "181F01E57A35090F/primary",
+   "bits": 4096,
+   "k_bytes": 512,
+   "payload_is_whole_number_of_blocks": false,
+   "blocks_if_so": null
+  },
+  {
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "bits": 4096,
+   "k_bytes": 512,
+   "payload_is_whole_number_of_blocks": false,
+   "blocks_if_so": null
+  },
+  {
+   "modulus": "2013_puzzle",
+   "bits": 432,
+   "k_bytes": 54,
+   "payload_is_whole_number_of_blocks": false,
+   "blocks_if_so": null
+  }
+ ],
+ "n_rows": 126,
+ "n_skipped": 36,
+ "n_hits": 0,
+ "verdict": "NULL",
+ "hits": [],
+ "rows": [
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256",
+   "endian": "big",
+   "block_size": 256,
+   "offset": 0,
+   "blocks": 1,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256",
+   "endian": "big",
+   "block_size": 256,
+   "offset": 1,
+   "blocks": 1,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256",
+   "endian": "big",
+   "block_size": 128,
+   "offset": 0,
+   "blocks": 2,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256",
+   "endian": "big",
+   "block_size": 128,
+   "offset": 1,
+   "blocks": 2,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256",
+   "endian": "big",
+   "block_size": 64,
+   "offset": 0,
+   "blocks": 4,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256",
+   "endian": "big",
+   "block_size": 64,
+   "offset": 1,
+   "blocks": 4,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256",
+   "endian": "little",
+   "block_size": 256,
+   "offset": 0,
+   "blocks": 1,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256",
+   "endian": "little",
+   "block_size": 256,
+   "offset": 1,
+   "blocks": 1,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256",
+   "endian": "little",
+   "block_size": 128,
+   "offset": 0,
+   "blocks": 2,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256",
+   "endian": "little",
+   "block_size": 128,
+   "offset": 1,
+   "blocks": 2,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256",
+   "endian": "little",
+   "block_size": 64,
+   "offset": 0,
+   "blocks": 4,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256",
+   "endian": "little",
+   "block_size": 64,
+   "offset": 1,
+   "blocks": 4,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "block_size": 256,
+   "offset": 0,
+   "blocks": 1,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "block_size": 256,
+   "offset": 1,
+   "blocks": 1,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "block_size": 128,
+   "offset": 0,
+   "blocks": 2,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "block_size": 128,
+   "offset": 1,
+   "blocks": 2,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "block_size": 64,
+   "offset": 0,
+   "blocks": 4,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "block_size": 64,
+   "offset": 1,
+   "blocks": 4,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "block_size": 256,
+   "offset": 0,
+   "blocks": 1,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "block_size": 256,
+   "offset": 1,
+   "blocks": 1,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "block_size": 128,
+   "offset": 0,
+   "blocks": 2,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "block_size": 128,
+   "offset": 1,
+   "blocks": 2,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "block_size": 64,
+   "offset": 0,
+   "blocks": 4,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "block_size": 64,
+   "offset": 1,
+   "blocks": 4,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "block_size": 256,
+   "offset": 0,
+   "blocks": 1,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "block_size": 256,
+   "offset": 1,
+   "blocks": 1,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "block_size": 128,
+   "offset": 0,
+   "blocks": 2,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "block_size": 128,
+   "offset": 1,
+   "blocks": 2,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "block_size": 64,
+   "offset": 0,
+   "blocks": 4,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "block_size": 64,
+   "offset": 1,
+   "blocks": 4,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "block_size": 256,
+   "offset": 0,
+   "blocks": 1,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "block_size": 256,
+   "offset": 1,
+   "blocks": 1,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "block_size": 128,
+   "offset": 0,
+   "blocks": 2,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "block_size": 128,
+   "offset": 1,
+   "blocks": 2,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "block_size": 64,
+   "offset": 0,
+   "blocks": 4,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B1_direct_block",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "block_size": 64,
+   "offset": 1,
+   "blocks": 4,
+   "fired": 0,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 3,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 17,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "big",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 65537,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 3,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 17,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256",
+   "endian": "little",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 65537,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 3,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 17,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "big",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 65537,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 3,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 17,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "canon_256_decpref",
+   "endian": "little",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 65537,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 3,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 17,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "big",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 65537,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "right",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "left",
+   "modulus": "181F01E57A35090F/primary",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "right",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 3,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 17,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "left",
+   "modulus": "4D390ECF671DDEB1/subkey",
+   "modulus_bits": 4096,
+   "e": 65537,
+   "verdict": "NULL"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 3,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 17,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  },
+  {
+   "test": "B2_pow_then_oaep",
+   "payload": "payload_resolved",
+   "endian": "little",
+   "align": "right",
+   "modulus": "2013_puzzle",
+   "modulus_bits": 432,
+   "e": 65537,
+   "verdict": "SKIP",
+   "why": "s >= n"
+  }
+ ]
+}

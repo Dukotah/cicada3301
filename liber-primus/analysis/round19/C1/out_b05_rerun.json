@@ -1,0 +1,288 @@
+{
+ "lane": "round19/C1 propagation of A-04 into B-05",
+ "resolved_payload_sha256": "3b9b07d9a26e6d55c432d94d2661fdff3c2b348daed06821f2bdb23184a4b290",
+ "bytes_changed_vs_canon": [
+  45,
+  50,
+  246
+ ],
+ "control": {
+  "cases": [
+   {
+    "gen": "sha256_ctr",
+    "red": "mod",
+    "skips": 11,
+    "beam_correct": -4.1700003814005715,
+    "beam_wrong": -7.272902699141472,
+    "beam_old_canon_seed": -7.511764677979125,
+    "rigid_correct": -7.444233746735885,
+    "char_recovery": 0.9894736842105263,
+    "head": "THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDA"
+   },
+   {
+    "gen": "rc4",
+    "red": "mod",
+    "skips": 4,
+    "beam_correct": -4.1700003814005715,
+    "beam_wrong": -7.39539519128098,
+    "beam_old_canon_seed": -7.050439562681732,
+    "rigid_correct": -6.658815978631153,
+    "char_recovery": 0.9894736842105263,
+    "head": "THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDA"
+   },
+   {
+    "gen": "hmac_drbg_sha256",
+    "red": "reject",
+    "skips": 6,
+    "beam_correct": -4.1700003814005715,
+    "beam_wrong": -7.5985463983672075,
+    "beam_old_canon_seed": -7.617138316529835,
+    "rigid_correct": -7.298559694956125,
+    "char_recovery": 0.9894736842105263,
+    "head": "THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDA"
+   },
+   {
+    "gen": "aes256_ctr_k",
+    "red": "mod",
+    "skips": 8,
+    "beam_correct": -4.1700003814005715,
+    "beam_wrong": -6.97500076799492,
+    "beam_old_canon_seed": -4.1700003814005715,
+    "rigid_correct": -7.190883071728822,
+    "char_recovery": 0.9894736842105263,
+    "head": "THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDA"
+   }
+  ],
+  "bar": "beam(correct resolved seed) >= -5.00 on all 4 generators",
+  "verdict": "PASS"
+ },
+ "null": {
+  "n": 200,
+  "mean": -7.295862494054138,
+  "max": -7.036556323382875
+ },
+ "bar": -5.5,
+ "part1": {
+  "decodes": 20160,
+  "seconds": 1086.6449587345123,
+  "hits": [],
+  "best": -6.827480075671261,
+  "top15": [
+   {
+    "rep": "res.raw",
+    "gen": "sha512_chain",
+    "red": "reject",
+    "dir": "fwd",
+    "atbash": false,
+    "sign": 1,
+    "o": 256,
+    "score": -6.827480075671261,
+    "head": "TNIALOEMRBWEOAEIAMUWHXGOYWIJATHEOCEOFIAWYYNGRISH"
+   },
+   {
+    "rep": "res.bitrevall",
+    "gen": "sha512_chain",
+    "red": "reject",
+    "dir": "rev",
+    "atbash": false,
+    "sign": 1,
+    "o": 512,
+    "score": -6.829734097317708,
+    "head": "OEARPGBEATHMRTHUTMIFIJBTHEAAEPOEDEOPWAELTIAHGUTH"
+   },
+   {
+    "rep": "res.bitrev8",
+    "gen": "md5_ctr",
+    "red": "mod",
+    "dir": "rev",
+    "atbash": false,
+    "sign": -1,
+    "o": 13,
+    "score": -6.835256972072662,
+    "head": "RWBOXEEAHNGRYTHWAOIETHIUMBYGEAGNABNGIAOEBAERTHBX"
+   },
+   {
+    "rep": "res.bitrev8",
+    "gen": "sha256_ctr",
+    "red": "reject",
+    "dir": "rev",
+    "atbash": true,
+    "sign": -1,
+    "o": 3301,
+    "score": -6.839163188776084,
+    "head": "GYYDOFDWAEEASTMAFTDFTJTHTHWPONGEOGTGNGYUACOIAMPF"
+   },
+   {
+    "rep": "res.byterev",
+    "gen": "sha512_ctr",
+    "red": "reject",
+    "dir": "rev",
+    "atbash": true,
+    "sign": -1,
+    "o": 3,
+    "score": -6.8423595415269745,
+    "head": "MOBEONEOGPWMEAEAOEMEOAELBEANGOEHHNTHXAEFYSREAUIA"
+   },
+   {
+    "rep": "res.hexascii",
+    "gen": "sha256_chain",
+    "red": "reject",
+    "dir": "fwd",
+    "atbash": false,
+    "sign": -1,
+    "o": 1024,
+    "score": -6.8449753475033095,
+    "head": "WYIAEEYEOESMYEOTHREAXREDCOYEAEEABNGHYCEATHBONTHF"
+   },
+   {
+    "rep": "res.byterev",
+    "gen": "sha512_ctr",
+    "red": "reject",
+    "dir": "rev",
+    "atbash": true,
+    "sign": -1,
+    "o": 2,
+    "score": -6.8646934791011365,
+    "head": "AEEOPTHSOELHEAEJNGNNGEOPNTWTHIACXFBYMDEANGSIAHAE"
+   },
+   {
+    "rep": "res.swap32",
+    "gen": "rc4",
+    "red": "reject",
+    "dir": "rev",
+    "atbash": true,
+    "sign": 1,
+    "o": 1024,
+    "score": -6.866281445476025,
+    "head": "EANGUYINGYCOLEIAAECAEPSGIAGAOEHICIADWAETHYWEOEMB"
+   },
+   {
+    "rep": "res.raw",
+    "gen": "chacha20_kn",
+    "red": "mod",
+    "dir": "fwd",
+    "atbash": false,
+    "sign": -1,
+    "o": 1024,
+    "score": -6.877090597320907,
+    "head": "TWDPTHSTHNHNPYIARUSNGOGGLFTHEAJACJCMEUNGOAEEOYCO"
+   },
+   {
+    "rep": "res.bitrevall",
+    "gen": "sha256_chain",
+    "red": "mod",
+    "dir": "rev",
+    "atbash": true,
+    "sign": 1,
+    "o": 5,
+    "score": -6.89454215378073,
+    "head": "FTHTAEAEWPMXGNGOTHREANSCSTCAEAOANGCFEOCDTHXYAMWH"
+   },
+   {
+    "rep": "res.bitrevall",
+    "gen": "aes256_ctr_kiv",
+    "red": "mod",
+    "dir": "rev",
+    "atbash": false,
+    "sign": 1,
+    "o": 5,
+    "score": -6.899737354812631,
+    "head": "GEAMTJOTHIFDIAJBARFOEREAXYODOEHEEOCWMRTHRYACNGEA"
+   },
+   {
+    "rep": "res.bitrevall",
+    "gen": "chacha20_k",
+    "red": "reject",
+    "dir": "rev",
+    "atbash": false,
+    "sign": 1,
+    "o": 128,
+    "score": -6.900561156949734,
+    "head": "BGEOWOEWEOEWNGMIEOTHEOLYHTHGIXNNOTHCRMCTIOETHXEA"
+   },
+   {
+    "rep": "res.bitrevall",
+    "gen": "sha256_chain",
+    "red": "mod",
+    "dir": "rev",
+    "atbash": true,
+    "sign": 1,
+    "o": 2,
+    "score": -6.901103563343495,
+    "head": "GOOYREOBBUTBUHPHHDOUIAWORASUDNOIANOEOOETHNGNGROG"
+   },
+   {
+    "rep": "res.swap32",
+    "gen": "sha256_ctr_le",
+    "red": "reject",
+    "dir": "fwd",
+    "atbash": true,
+    "sign": 1,
+    "o": 1,
+    "score": -6.902413779794314,
+    "head": "AMMORNGEONGPINGIOTJAOAEOAEEOMEATHTHCANGLOEOENGTH"
+   },
+   {
+    "rep": "res.swap32",
+    "gen": "md5_ctr",
+    "red": "reject",
+    "dir": "rev",
+    "atbash": false,
+    "sign": 1,
+    "o": 1024,
+    "score": -6.9035161785119,
+    "head": "EOYBTHJITLILLNJTHEONGJBANSTSRTJYEACDFMIADBEDIARH"
+   }
+  ]
+ },
+ "part1_shift": {
+  "decodes": 1740,
+  "seconds": 69.36720490455627,
+  "hits": [],
+  "best": -6.855272413916999,
+  "top5": [
+   {
+    "gen": "sha512_chain",
+    "red": "mod",
+    "shift": 10,
+    "sign": -1,
+    "score": -6.855272413916999
+   },
+   {
+    "gen": "chacha20_k",
+    "red": "mod",
+    "shift": 16,
+    "sign": 1,
+    "score": -6.91323058593505
+   },
+   {
+    "gen": "rc4",
+    "red": "reject",
+    "shift": 23,
+    "sign": -1,
+    "score": -6.937565277615887
+   },
+   {
+    "gen": "aes256_ctr_kiv",
+    "red": "mod",
+    "shift": 21,
+    "sign": -1,
+    "score": -6.95723697993435
+   },
+   {
+    "gen": "md5_ctr",
+    "red": "mod",
+    "shift": 2,
+    "sign": -1,
+    "score": -6.974932361033091
+   }
+  ]
+ },
+ "total_decodes": 22100,
+ "verdict": "NEGATIVE",
+ "conditionals": {
+  "key_space": "B-05's pinned Part-1 grid, restricted to the 6 resolved-payload representations (the 6 decpref representations are unchanged by C1 and stay covered by B-05 itself).",
+  "decoder_transition_model": "skipdecode.beam_decode, beam_w=120, max_skip=3 -- exact for encipher_keyskip and NOTHING else (round18 L7-B). skip_by_two is not represented.",
+  "adjudicator_register": "English quadgram only (round18 L7-A): measured power 0.33 Latin, 0.00 vowel-dropped English. This negative is an ENGLISH-ONLY negative."
+ }
+}

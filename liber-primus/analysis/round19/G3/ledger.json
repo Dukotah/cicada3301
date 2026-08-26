@@ -1,0 +1,110 @@
+{
+ "_comment": "Round 19 lane G3 — append to liber-primus/LEDGER.json. Two entries: the lane itself (R19-G3) and a correction to B-01 / B-21 / CENSUS.md found while checking prior coverage (doctrine mechanic 9, R6).",
+ "entries": [
+  {
+   "id": "R19-G3",
+   "lane": "keystream",
+   "hypothesis": "The LP2 keystream was produced by a short Python 2.7 script on the author's Ubuntu 11.04-12.04 box: random.seed(<a Cicada-flavoured string literal>) followed by an era-idiomatic reduction to a rune index, applied under the pinned soft anti-repeat filter. Python 2's str-seeding path is (unsigned long)hash(s) -> <=2 init_by_array words, which no prior sweep in this repository has ever exercised.",
+   "status": "instrument-built-not-run",
+   "round": "19",
+   "date": "2026-08-26",
+   "threshold": "NONE SET BY THIS LANE, deliberately. G3 held at the scoring boundary; the Phase-2 bar is round19/I3's published curve for the statistic and N actually used. Explicitly NOT -5.5 (invalid at large N; calibrated for the single-register English quadgram scorer; lane G2 measured pure random data at -4.51/-4.82 under I1 drift3/union0_5) and NOT -12.5 (Round 8's different scale and rigid decoder).",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": {
+    "V8_plant_and_recover_scorer_free": "Planted b'THE PRIMES ARE SACRED' (family `slogan`, resident in the B-04 dictionary), reduction grb5_rej, wordsize 64. Searched the full 2,165 x 4 reductions x 2 word sizes = 17,320-config cross product by keystream IDENTITY, using NO decoder and NO adjudicator. Exactly 1 exact match: the planted config. Recovery 1.000, uniqueness 1.000.",
+    "V2_generator_fidelity": "gen_py27.py reproduces real CPython 2.7.3 (Ubuntu 12.04 package python2.7_2.7.3-0ubuntu3.19_amd64, GCC 4.6.3) element-for-element: 2,165/2,165 hash() values and 8,660/8,660 rune streams (2,165 seeds x 4 reductions x 64 values). 0 failures.",
+    "V3_cross_build": "Real CPython 2.7.18 (GCC 11.4.0) reproduces the identical corpus: SHA-256 b6d0179750c175665eeaa7208e2635b4205a6c409df94135a20b3ffce2c7f9b7 on both builds, all 2,165 hash() values identical.",
+    "V7_i386": "Real 32-bit CPython 2.7.3 (python2.7_2.7.3-0ubuntu3.19_i386, sys.maxint 2147483647) obtained and executed: 400/400 hashes and 1,600/1,600 streams reproduced at wordsize=32. The 32-bit branch is VALIDATED, not provisional.",
+    "V6_kill_check": "600 dictionary seeds compared Py2.7 vs Py3 for the same literal: 600 different, 0 identical. The lane is not a duplicate of analysis/seed_sweep/string_seeds.py.",
+    "plumbing_pilot": "9,600 decodes end-to-end G3 -> round19/I1 driftbeam (mode=keyskip1, beam_w=400, max_skip=3, L=120) -> round19/I2 adjudicate -> SWEEPROW/1. adjudicate.validate_store PASS, 9,600/9,600 rows. LABELLED PLUMBING PILOT, timing only, NOT evidence and NOT coverage."
+   },
+   "result": "NO SWEEP RUN — BY DESIGN. Round 19's hard dependency holds Phase 1 lanes at the scoring boundary until I1/I2/I3 pass. Delivered instead: (1) a Python-2.7 MT19937 keystream generator VALIDATED byte-exactly against three real CPython 2.7 interpreters (2.7.3 amd64, 2.7.3 i386, 2.7.18 amd64), 12,825 reference vectors, 0 failures; (2) the precise Py2-vs-Py3 seeding difference with CPython source citations; (3) the structural bound that on a 32-bit Python 2.7 the ENTIRE non-int seed space collapses to init_by_array([w]) for w in [0,2^32) — measured, 2,165/2,165 seeds satisfy low32(hash64)==hash32; (4) a correction to B-01/B-21/CENSUS (see R19-G3-CORRECTION); (5) a Phase-2 run spec (READY.md): ~1.22M decodes, ~62 min on 6 cores. Coverage x power = 0 x (unmeasured) = 0. This lane has excluded nothing and claims to have excluded nothing.",
+   "coverage": "0 decodes of key space cleared. Validation coverage: 2,165 hash + 8,660 stream vectors vs real 2.7.3; the same corpus vs real 2.7.18; 400 hash + 1,600 stream vs real i386 2.7.3; 5 int + 5 float + 4 jumpahead vectors; 24-seed measurement of the randrange/randint/choice/int(random()*29) identity; 600 Py2-vs-Py3 comparisons; 17,320-config identity plant-and-recover. Plus a 10,112-decode labelled plumbing pilot (a 512-decode sizing probe + a 9,600-decode pilot), which is 112 over the pre-registered <=10,000 ceiling — declared in READY.md §0, not rounded down.",
+   "not_covered": [
+    "everything downstream of the generator — no key space is cleared (NC-1); reopens when S1 runs READY.md §3 through I1+I2 at I3's bar",
+    "the author's word size: the i386-first ordering rests on 2012 Ubuntu desktop-install population statistics, NOT on a 3301 artifact (NC-2)",
+    "the full 2^32 i386 enumeration — specified in READY.md §4, needs a C prefilter port, 166 days through the Python path (NC-3)",
+    "seeds outside the 2,165-entry B-04 dictionary on the amd64 branch (NC-4)",
+    "PYTHONHASHSEED / -R randomised-hash runs — argued away, NOT searched (NC-5)",
+    "Python 2.6 / 2.5 (Ubuntu 10.04's system Python is 2.6; randrange and the _randbelow boundary move across the 2.x line) (NC-6)",
+    "random.WichmannHill, 2.x's legacy generator, still importable in 2.7 (NC-7)",
+    "os.urandom-seeded and unseeded runs — no seed, no key (NC-8)",
+    "offsets beyond B-04's ten, per-page and per-line restarts, and filters other than the pinned soft key-skip (NC-9)",
+    "the jumpahead point release: the pre-/post-issue-14591 variants were measured output-identical outside a degenerate case, so 2.7.3 vs 2.7.4+ is not discriminated (NC-10)"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round19/G3/PREREG.md",
+    "liber-primus/analysis/round19/G3/RESULTS.md",
+    "liber-primus/analysis/round19/G3/READY.md",
+    "liber-primus/analysis/round19/G3/gen_py27.py",
+    "liber-primus/analysis/round19/G3/validate_py27.py",
+    "liber-primus/analysis/round19/G3/validation.json",
+    "liber-primus/analysis/round19/G3/pilot.py",
+    "liber-primus/analysis/round19/G3/pilot.jsonl"
+   ],
+   "reproduce": "wsl -d Ubuntu -- bash -lc \"cd /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round19/G3 && python3 validate_py27.py\"  (~2 min; writes validation.json). Interpreters are extracted, never installed, under ~/py27/ — package names in PREREG.md §7.",
+   "reopens_if": "This lane is open by construction. It closes only when S1 has run READY.md §3 through I1+I2 at I3's published threshold and reported all three conditionals. Any of NC-1..NC-10 landing extends it.",
+   "notes": "THE FINDING, stated once: Python 2.7 random.seed(<str>) is (unsigned long)PyObject_Hash(arg) split into 32-bit chunks fed to init_by_array (Modules/_randommodule.c random_seed; Lib/random.py 2.7 Random.seed has no `version` parameter and no digest step; Objects/stringobject.c string_hash). Python 3 is int.from_bytes(a.encode() + sha512(a.encode()).digest(),'big') -> >=18 init_by_array words, and Py3.3+ randomises hash() by default so the Py2 route is not even reachable there. Measured divergence: 600/600. SECOND FINDING: because string_hash uses only multiplication and XOR, the i386 (32-bit long) hash is exactly the low 32 bits of the amd64 hash — 2,165/2,165 dictionary seeds, 0 exceptions — so the whole 32-bit branch of this family is a fully enumerable 2^32 space regardless of the seed string. THIRD FINDING: in Python 2.7 randrange(29) == randint(0,28) == choice(pool29) == int(random()*29) (Lib/random.py uses _int(self.random()*istart) below width 2**53); in Python 3 those collapse onto getrandbits-with-rejection instead. Measured on real 2.7.3, not assumed. FOURTH: B-04 contains ZERO MT19937 generators — its 16 are all keyed hash / stream ciphers — so this lane duplicates none of B-04's 6,224,300 decodes on the generator axis, while reusing its 2,165-seed dictionary verbatim for comparability.",
+   "null": {
+    "pilot_en_mean": -7.3416,
+    "pilot_en_sd": 0.2292,
+    "pilot_en_max": -6.4955,
+    "pilot_pmax_mean": 1.6422,
+    "pilot_pmax_sd": 0.7943,
+    "pilot_pmax_max": 5.029,
+    "pilot_n": 9600,
+    "pilot_L": 120,
+    "_comment": "Pilot distribution over 9,600 presumed-wrong decodes. Handed to I3 as calibration input, NOT used as a bar by this lane. The `en` column reproduces B-04's L=120 null (mean -7.366, max -6.826); `pmax` reaching 5.03 in 9,600 noise decodes is the false-positive inflation I3 exists to calibrate."
+   },
+   "trust_anchor": {
+    "before": "python3 liber-primus/tests/validate.py -> ALL VALIDATIONS PASSED (5/5), 2026-08-26",
+    "after": "python3 liber-primus/tests/validate.py -> ALL VALIDATIONS PASSED (5/5); python3 -m pytest liber-primus/benchmark/ -q -> 8 passed in 11.37s, 2026-08-26"
+   },
+   "priority": "high",
+   "supersedes": null,
+   "superseded_by": null,
+   "source_register": "liber-primus/analysis/round18/L1-toolchain/RESULTS.md §6.2 rank 2 (x3) and §6.3 item 2",
+   "raw_status": null,
+   "evidence_missing": []
+  },
+  {
+   "id": "R19-G3-CORRECTION",
+   "lane": "recon-audit",
+   "hypothesis": "Ledger entries B-01 and B-21 and round10/L5-seed32/CENSUS.md §A describe the integer-seed full-32 sweep accurately.",
+   "status": "FOUND-ERROR",
+   "round": "19",
+   "date": "2026-08-26",
+   "result": "FOUND-ERROR (three stale claims, one of them material). Checked while verifying G3's own family before claiming new ground, following lane G2's Perl finding. As of 2026-08-26, analysis/seed_sweep/results_full32.txt contains NINE completed full-32 rows (gens 1,2,3,4,5,6,7,8,9 over seeds=0..4294967296), not two. (a) B-01 says 'the full 32-bit sweep is 2/10 complete' with evidence_missing ['run_full32.sh']: seven more generators finished after B-01 was filed on 2026-08-12 (the file's mtime is 2026-08-17), and run_full32.sh does exist at analysis/seed_sweep/run_full32.sh. B-01 is right that gen=0 (glibc random()%29) is still absent and that there is still no DONE line. (b) B-21 says '10 integer-seeded generators over ~3% of each seed space (only 2 swept fully)': it is 9 of 10 swept FULLY; the ~3% figure now describes gen=0 alone. (c) CENSUS.md §A's 'Seed space swept' column understates rows 1,2,4,6,7,8,9. SEPARATELY: analysis/seed_sweep/string_seeds.py's module docstring claims it 'also covers random.seed() with the same wordlist under Python 2 semantics (hash() of the string)'. No such code exists in the file — its only seeding call is r.seed(seedval) under Python 3, and its 'Python 2' candidates are w.encode(), i.e. bytes, which Python 3 routes through the same sha512 path as the str and are therefore exact duplicates. G3 measured 600/600 divergence between the two paths, so none of those 15,408 decodes touched Python 2 semantics.",
+   "coverage": "Re-read on disk: analysis/seed_sweep/results_full32.txt (9 rows, mtime 2026-08-17), results_timeseed.txt (10 rows), results_newgens.txt (gens 10-13), sweep.c decode_score(), string_seeds.py in full, string_seed_results.json, round10/L5-seed32/{CENSUS.md,VALIDATION.txt}, LEDGER entries B-01/B-21/B-08/B-04/R16-PRNG.",
+   "not_covered": [
+    "gen=0 (glibc random()%29) over the full 0..2^32 — still absent, still the one open row",
+    "whether the seven post-B-01 rows were produced by a run that also completed gen=0 and lost the line — no DONE marker exists either way",
+    "the POWER of those nine full-32 negatives, which this correction does not re-measure; it only reports that sweep.c's decode_score() is a RIGID decoder (interrupter-null branching only, no key-skip transition) scored by mean English 4-grams against a fixed -12.5 bar, and that round12/D3 measured the correct key at -6.835 rigid vs -4.170 beam"
+   ],
+   "evidence": [
+    "liber-primus/analysis/seed_sweep/results_full32.txt",
+    "liber-primus/analysis/seed_sweep/run_full32.sh",
+    "liber-primus/analysis/seed_sweep/sweep.c",
+    "liber-primus/analysis/seed_sweep/string_seeds.py",
+    "liber-primus/analysis/seed_sweep/string_seed_results.json",
+    "liber-primus/analysis/round10/L5-seed32/CENSUS.md",
+    "liber-primus/analysis/round19/G3/RESULTS.md"
+   ],
+   "reproduce": "cat liber-primus/analysis/seed_sweep/results_full32.txt   # 9 rows, no DONE, gen=0 absent\ngrep -n 'seed(' liber-primus/analysis/seed_sweep/string_seeds.py   # no Python-2 hash path",
+   "reopens_if": "gen=0 completes, a DONE marker appears, or the nine negatives are re-adjudicated through round19/I1+I2 (which is exactly S2's job — two of the nine, gen=7 and gen=8, are the CPython seed(int) cells that G3's random29 and grb5_rej reductions coincide with exactly).",
+   "notes": "Filed the way lane G2 filed its Perl correction: prior coverage exists, and it is coverage taken with a broken magnet. Consequence for G3: seed(<int>)+random29 duplicates Round 8 gen=8, and seed(<int>)+grb5_rej duplicates gen=7, both over the full 0..2^32 — measured exactly (py2 seed(int) is byte-identical to py3 seed(int)), so those two cells go to S2 RE-ADJUDICATION and must not be re-swept as new coverage. seed(<int>)+grb5_mod and seed(<int>)+shuffle29 are NOT in Round 8's ten and remain uncovered.",
+   "priority": "medium",
+   "threshold": null,
+   "threshold_fixed_in_advance": null,
+   "positive_control": null,
+   "control_detail": null,
+   "null": null,
+   "supersedes": null,
+   "superseded_by": null,
+   "source_register": null,
+   "raw_status": null,
+   "evidence_missing": []
+  }
+ ]
+}

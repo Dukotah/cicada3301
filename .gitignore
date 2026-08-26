@@ -251,3 +251,36 @@ liber-primus/analysis/round18/**/*.log
 # L8 — transient GnuPG home used for signature verification (keyrings rebuild from the
 # fetched keys). Regenerate: python liber-primus/analysis/round18/L8-provenance/verify_all_signatures.py
 liber-primus/analysis/round18/L8-provenance/work/gnupghome-l8/
+
+# L3 (cont.) — the C-2 control page render and the superseded first-pass intensity dump.
+# Regenerate:  python3 liber-primus/analysis/round18/L3-ornaments/controls.py
+#              python3 liber-primus/analysis/round18/L3-ornaments/intensity.py
+# The published tone result is greyglyphs.json, which IS committed.
+liber-primus/analysis/round18/L3-ornaments/ctrl_page.png
+liber-primus/analysis/round18/L3-ornaments/intensity.json
+
+# ---- Round 19 (2026-08-26) — instrument repair + the transcription redirect. ----
+# Same rule as everywhere: if a committed script re-derives it, it stays out of git.
+# Scripts, PREREG/RESULTS docs, result JSON and ledger fragments are tracked.
+#
+# G4 — vendored TeX Live sources and package tarballs. Regenerate: round19/G4/fetch_sources.sh
+liber-primus/analysis/round19/G4/vendor/
+liber-primus/analysis/round19/G4/work/
+# G3 — extracted CPython 2.7 trees (Ubuntu 12.04 + 20.04 + i386). Regenerate: round19/G3/validate_py27.py
+liber-primus/analysis/round19/G3/py27/
+# G1 — compiled bash/glibc reference binaries and fetched bash sources. Regenerate: round19/G1/*.sh
+liber-primus/analysis/round19/G1/ref/
+liber-primus/analysis/round19/G1/vendor/
+# T1/T2/C1/C3 — page crops and glyph banks cut from the gitignored 400-DPI renders.
+liber-primus/analysis/round19/*/crops/
+liber-primus/analysis/round19/*/work/*.npz
+liber-primus/analysis/round19/*/*.png
+# Bulk sweep stores and language-model binaries rebuild from their build scripts.
+liber-primus/analysis/round19/I2/models/
+liber-primus/analysis/round19/**/__pycache__/
+liber-primus/analysis/round19/**/*.log
+# Round 19 — bulk numeric arrays and pilot sweep stores (rebuildable by each lane's scripts;
+# the committed record is the summary JSON, the top-N stores and the thresholds).
+liber-primus/analysis/round19/**/*.npy
+liber-primus/analysis/round19/**/*.npz
+liber-primus/analysis/round19/**/pilot*.jsonl

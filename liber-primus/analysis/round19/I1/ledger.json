@@ -1,0 +1,98 @@
+{
+ "lane": "round19/I1",
+ "title": "DRIFT-TOLERANT DECODER - repair of the L7-B transition-relation defect",
+ "date": "2026-08-26",
+ "type": "instrument",
+ "entries": [
+  {
+   "id": "I1-01",
+   "claim": "driftbeam.beam_decode(mode='keyskip1', max_free=0) is bit-identical to campaign18_skip.skipdecode.beam_decode",
+   "status": "VERIFIED",
+   "evidence": "gate G-EQ: max |score delta| 1.066e-14 over 24 random (ciphertext, keystream) cases at L in {60,120,400}, both signs, 0 plaintext-path mismatches; and 0.000e+00 vs round18/L2 fastbeam over 12 more",
+   "artifacts": ["round19/I1/out_eq.json", "round19/I1/test_driftbeam.py"],
+   "coverage": "the repo's transition relation, reproduced exactly and provably",
+   "not_covered": "nothing - this is an identity gate"
+  },
+  {
+   "id": "I1-02",
+   "claim": "The L7-B defect is repaired: with the correct key, a permissive transition relation recovers every construction in L7-B's failure table at score >= -5.5 and rune recovery >= 0.90",
+   "status": "POSITIVE",
+   "evidence": "gate G-FIX: 20/20 cells (10 constructions x L in {240,400}, 7 seeds each) at lam in {4,6,8,12} and max_free in {1,2,3}. The repo decoder scores 0/20 on the same cells. skip_by_two supp=0.83: -6.903/25.8% (repo) -> -4.285/100.0% (drift_rec)",
+   "artifacts": ["round19/I1/out_fix.json", "round19/I1/out_fix2.json", "round19/I1/RESULTS.md"],
+   "coverage": "any key advance of <= max_skip positions per rune of which <= 2 are not doublet-consistent; 12 named constructions measured, English plaintext, beam 400, L in {240, 400, 12956}",
+   "not_covered": "an advance > max_skip at one rune; a single key-pointer JUMP of J >= 8 positions at one rune (measured bound J <= 5, out_bound.json); a key pointer that RETREATS (the beam can insert draws, never remove them); a non-monotone pointer; a keystream whose values depend on the plaintext; ANY non-English plaintext register (the register axis is pinned at English throughout - see round18/L7-redteam A and round19/I2)"
+  },
+  {
+   "id": "I1-03",
+   "claim": "Permissiveness lifts the wrong-key null by 0.58-0.92 and therefore invalidates the -5.5 floor for permissive-mode sweeps, but does NOT lift it into the English band at lam >= 8",
+   "status": "MEASURED",
+   "evidence": "gate G-FP, 34,000 wrong-key decodes over two nulls (synthetic keyskip plant, and real 12,956-rune LP2 segments), L=240, beam 400. lam=12: mean -6.73, p99 -6.28, max -6.07, 0/4000 over -5.5. lam=8: mean -6.39, max -5.67, 0/4000 over -5.5. lam=4: 11.25% of 2000 over -5.5 (FAIL). lam=0: 100% over -5.5 (FAIL). repo keyskip1: mean -7.31, max -6.72",
+   "artifacts": ["round19/I1/out_fp_deep.json", "round19/I1/out_fp_deep2.json", "round19/I1/out_fp_curve.json", "round19/I1/out_fp_tail.json"],
+   "coverage": "sha256_ctr wrong keys, L=240, beam 400, both nulls agree to within 0.01",
+   "not_covered": "other wrong-key families; other segment lengths (the null moves with L and must be recalibrated at the length actually swept)"
+  },
+  {
+   "id": "I1-04",
+   "claim": "Extreme-value parameters of the wrong-key null, per decoder mode, for threshold recalibration",
+   "status": "MEASURED",
+   "evidence": "block maxima at two block sizes inside each 2,000-key sample (benchmark/null.py's warning against bulk-sd fitting obeyed). N-real: keyskip1 mu=-7.247 beta=0.0665 (bar -5.562 at 1e9); drift_rec mu=-6.602 beta=0.0648 (bar -4.961 at 1e9). The keyskip1 fit independently reproduces benchmark/null.py's DEFAULT_MU=-7.2517 / DEFAULT_BETA=0.0725",
+   "artifacts": ["round19/I1/out_fp_tail.json", "round19/I1/analyse_fp.py"],
+   "coverage": "L=240, beam 400, 13 decoder configurations",
+   "not_covered": "any other segment length"
+  },
+  {
+   "id": "I1-05",
+   "claim": "CORRECTION to round18/L7-redteam B.4: the low-entropy-pad failures at constant-run r=16 and r=32 with supp=1.0 are a BUDGET failure, not a transition-relation failure",
+   "status": "SUPERSEDES",
+   "supersedes": "round18/L7-redteam B.4 ('ms=8 covers constant runs up to length 8')",
+   "evidence": "with max_skip raised to cross the run (max(40, 2*longest_run+8)), the UNCHANGED keyskip1 relation recovers r=16 and r=32 at -4.303/100.0% (L=240) and -4.332/100.0% (L=400). Inside a constant run every skipped position is doublet-consistent by construction. The histogram early-break makes a large max_skip free on a high-entropy pad, so this costs nothing and does not shift the null",
+   "artifacts": ["round19/I1/out_fix.json"],
+   "coverage": "constant-run pads r in {8,16,32}, supp in {0.83,1.0}",
+   "not_covered": "runs longer than the suggested max_skip; pads with structure other than constant runs"
+  },
+  {
+   "id": "I1-06",
+   "claim": "An UNPENALISED drift-tolerant beam (lam=0) is a catastrophic instrument that looks like a success: it scores -4.4 to -4.9 (above the bar) while recovering only 12-51% of runes, and it lifts EVERY wrong key to -4.88",
+   "status": "MEASURED / WARNING",
+   "evidence": "G-BASE and G-FP: at lam=0 the baseline construction with NO key skips at all (supp=0.0) decodes at -4.617/17.1%; 500/500 wrong keys clear -5.5 with mean -4.882. Pinned as test_unpenalised_permissive_is_a_known_failure",
+   "artifacts": ["round19/I1/out_base.json", "round19/I1/out_fp_curve.json"],
+   "coverage": "the concrete quantification of the attack round19/R1 is tasked with",
+   "not_covered": "n/a",
+   "note": "any future soft/permissive decoder in this project must be validated on RUNE RECOVERY, not on score"
+  },
+  {
+   "id": "I1-07",
+   "claim": "keyskip2 (exact for skip_by_two) is NOT a drop-in replacement: it breaks the baseline construction at -6.631/37.9%",
+   "status": "MEASURED",
+   "evidence": "G-BASE at supp=0.83, L=240. An odd number of skipped positions is unrepresentable in the pair relation. The permissive mode is the only single configuration that covers both keyskip1 and skip_by_two",
+   "artifacts": ["round19/I1/out_base.json"],
+   "coverage": "keyskip supp in {0.0,0.4,0.83,1.0} x L in {240,400}",
+   "not_covered": "n/a"
+  },
+  {
+   "id": "I1-08",
+   "claim": "Full-book positive control at L=12,956 replicated under both the exact and the permissive relation",
+   "status": "VERIFIED",
+   "evidence": "correct key: repo_ms3 -4.322/99.88%, drift_l8 -4.318/99.81% (3 seeds each). Wrong key: -7.278 and -6.615. Skip-count channel: correct key infers 418/418 exactly under BOTH modes; wrong key infers 302 (exact) and 1537 (permissive) against a true 418. Reference round18/L2 B.3: -4.098/0.9997",
+   "artifacts": ["round19/I1/out_book.json"],
+   "coverage": "L=12,956, encipher_keyskip supp=0.83, English plaintext",
+   "not_covered": "the real LP2 ciphertext has no known key, so this is a plant control only"
+  },
+  {
+   "id": "I1-09",
+   "claim": "RECOMMENDATION to Phase 2: baseline channel = keyskip1 with adaptive max_skip (free strict improvement, unchanged null); drift channel = permissive max_free=2 lam=12 start_slack=2, adjudicated against mu=-6.602 beta=0.0648, NEVER against the -5.5 floor",
+   "status": "RECOMMENDATION",
+   "evidence": "RESULTS.md section 9. G-COST on the baseline construction is 0.000 score and 0.0 pp recovery; the price is +0.60 on the family-wise bar at 1e9 and 3-9x decode time",
+   "artifacts": ["round19/I1/RESULTS.md", "round19/I1/driftbeam.py", "round19/I1/run_gates.py"],
+   "coverage": "n/a",
+   "not_covered": "the adjudicator register axis - I1 repairs the decoder only; L7-A's register hole is untouched and I2 is still required"
+  }
+ ],
+ "supersedes_note": "round18/L7-redteam B.4's statement that ms=8 is the ceiling for constant-run pads is superseded by I1-05. L7-B's core finding (the transition relation, not the search depth, is the defect) is confirmed and its numbers are replicated to the third decimal.",
+ "trust_anchor": {
+  "before": {"validate.py": "ALL VALIDATIONS PASSED (5/5)", "benchmark": "8 passed"},
+  "after": {"validate.py": "ALL VALIDATIONS PASSED (5/5)", "benchmark": "8 passed",
+            "test_driftbeam.py": "15 passed"}
+ },
+ "decodes": 37242
+}

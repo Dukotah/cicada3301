@@ -1,0 +1,309 @@
+{
+ "lane": "round19/G4",
+ "generators": {
+  "pgf": {
+   "reference_source": {
+    "PGFVERSION": "3.1.11a",
+    "SEEDACCEPT": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "29": "29",
+     "3301": "3301",
+     "16383": "16383",
+     "16384": "16384",
+     "65535": "65535",
+     "100000": "100000",
+     "1000000": "1000000",
+     "2000000": "2000000",
+     "2147483646": "2147483646",
+     "1033": "1033",
+     "761": "761",
+     "845145127": "845145127",
+     "1595277641": "1595277641",
+     "1386342": "1386342",
+     "2013": "2013",
+     "4026": "4026"
+    }
+   },
+   "checks": [
+    {
+     "check": "pgf/R029/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "pgf/R129/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "pgf/RAW/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "pgf/RND29/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "pgf/R029/seed=2",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "pgf/R129/seed=2",
+     "status": "PASS",
+     "n": 64
+    }
+   ],
+   "n_vectors": 76,
+   "n_elements": 4864,
+   "status": "PASS",
+   "n_fail": 0,
+   "checks_note": "only failures (or the first 6) are listed; counts above are complete"
+  },
+  "lcg": {
+   "reference_source": {
+    "LCGVERSION": "1.3"
+   },
+   "checks": [
+    {
+     "check": "lcg/R029/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "lcg/R129/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "lcg/RAW/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "lcg/R029/seed=2",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "lcg/R129/seed=2",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "lcg/RAW/seed=2",
+     "status": "PASS",
+     "n": 64
+    }
+   ],
+   "n_vectors": 57,
+   "n_elements": 3648,
+   "status": "PASS",
+   "n_fail": 0,
+   "checks_note": "only failures (or the first 6) are listed; counts above are complete"
+  },
+  "randomtex": {
+   "reference_source": {
+    "RANDOMTEXVERSION": "0.2",
+    "DEFAULT": [
+     721,
+     2026,
+     8,
+     26,
+     2101389952
+    ]
+   },
+   "checks": [
+    {
+     "check": "randomtex/R029/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "randomtex/R129/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "randomtex/RAW/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "randomtex/R029/seed=2",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "randomtex/R129/seed=2",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "randomtex/RAW/seed=2",
+     "status": "PASS",
+     "n": 64
+    }
+   ],
+   "n_vectors": 57,
+   "n_elements": 3648,
+   "status": "PASS",
+   "n_fail": 0,
+   "checks_note": "only failures (or the first 6) are listed; counts above are complete"
+  },
+  "pdftex": {
+   "reference_source": {
+    "PDFTEXVERSION": "14028"
+   },
+   "checks": [
+    {
+     "check": "pdftex/RAW28/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "pdftex/U256/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "pdftex/U29/seed=1",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "pdftex/RAW28/seed=2",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "pdftex/U256/seed=2",
+     "status": "PASS",
+     "n": 64
+    },
+    {
+     "check": "pdftex/U29/seed=2",
+     "status": "PASS",
+     "n": 64
+    }
+   ],
+   "n_vectors": 57,
+   "n_elements": 3648,
+   "status": "PASS",
+   "n_fail": 0,
+   "checks_note": "only failures (or the first 6) are listed; counts above are complete"
+  }
+ },
+ "gates": {
+  "V1_byte_exact_vs_real_tex": {
+   "per_generator": {
+    "pgf": "PASS",
+    "lcg": "PASS",
+    "randomtex": "PASS",
+    "pdftex": "PASS"
+   },
+   "status": "PASS"
+  },
+  "V2_at_least_two_generators": {
+   "n_passing": 4,
+   "required": 2,
+   "status": "PASS"
+  },
+  "V3_pgf_version_invariance": {
+   "pgf_installed": "3.1.11a",
+   "pgf_vendored": "2.10",
+   "n_compared": 76,
+   "n_differing": 0,
+   "status": "PASS"
+  },
+  "V6_randomtex_default_seed": {
+   "time": 721,
+   "year": 2026,
+   "month": 8,
+   "day": 26,
+   "seed_before_warmup": 847296948,
+   "predicted_after_4_steps": 2101389952,
+   "observed": 2101389952,
+   "status": "PASS"
+  },
+  "V4_single_cycle": {
+   "pgf": {
+    "multiplier": 69621,
+    "m_minus_1_factors": [
+     2,
+     3,
+     7,
+     11,
+     31,
+     151,
+     331
+    ],
+    "primitive_root": true,
+    "period": 2147483646,
+    "returns_to_seed_after_m_minus_1": true,
+    "not_earlier_at_half_period": true
+   },
+   "pm": {
+    "multiplier": 16807,
+    "m_minus_1_factors": [
+     2,
+     3,
+     7,
+     11,
+     31,
+     151,
+     331
+    ],
+    "primitive_root": true,
+    "period": 2147483646,
+    "returns_to_seed_after_m_minus_1": true,
+    "not_earlier_at_half_period": true
+   },
+   "status": "PASS",
+   "consequence": "single cycle of length 2^31-2 => every seed and every offset is a phase of one master stream; B-04's offset ladder and B-02's key-index-0 assumption are ABSORBED for pgf/lcg/random.tex"
+  }
+ },
+ "notes": [],
+ "space": {
+  "pgf": {
+   "phases": 2147483646,
+   "streams": [
+    "pgf_mod29(c=0,1)",
+    "pgf_rnd29"
+   ],
+   "offsets_absorbed": true
+  },
+  "lcg": {
+   "phases": 2147483646,
+   "streams": [
+    "lcg_mod29(c=0,1)"
+   ],
+   "offsets_absorbed": true
+  },
+  "randomtex": {
+   "phases": 2147483646,
+   "streams": [
+    "randomtex_div29(c=0,1)"
+   ],
+   "offsets_absorbed": true
+  },
+  "pdftex": {
+   "seeds": 268435456,
+   "streams": [
+    "pdftex_u29(c=0,1)"
+   ],
+   "offsets_absorbed": false,
+   "why": "55-word state; trajectories from distinct seeds are disjoint"
+  },
+  "default_seed_spaces": {
+   "pgf_time_x_year_2010_2015": 8627,
+   "randomtex_date_init_2010_2015": 3214080,
+   "lcg_default": "NOT ENUMERABLE in budget (depends on \\inputlineno and \\value{page})",
+   "pdftex_default": "NOT ENUMERABLE (wall-clock microseconds)"
+  }
+ }
+}

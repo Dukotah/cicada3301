@@ -1,0 +1,289 @@
+{
+ "schema_note": "ledger-shaped fragment for merge into liber-primus/LEDGER.json; read `coverage`/`not_covered`, not `status` (AGENTS.md s7)",
+ "lane": "round18/L6-offset-marsaglia",
+ "generated": "2026-08-26",
+ "entries": [
+  {
+   "id": "B-02",
+   "lane": "round18/L6-offset-marsaglia",
+   "hypothesis": "Keystream offset != 0. Round 8 states its sweep \"assumes key index 0 aligns with the first rune of LP2 page 0\"; B-04 covered 10 offsets, and R16-KDF and R16-PRNG covered offset 0 only. An author who enciphered LP1 first, skipped a file header, or started a generated pad mid-file is invisible to all of them. PARKED P-10 scores the omission at x8,192 for a modest range and notes it multiplies EVERY generator.",
+   "status": "negative",
+   "raw_status": "negative",
+   "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
+   "evidence": [
+    "liber-primus/analysis/round18/L6-offset-marsaglia/PREREG.md",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/RESULTS.md",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/out/results_A1.json",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/out/results_A2.json",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/out/control_offset.json",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/out/audit.json"
+   ],
+   "priority": "medium",
+   "round": 18,
+   "date": "2026-08-26",
+   "threshold": "score_norm >= max(threshold_for(N=497,025,024) = -5.4664, null_max + 0.5). threshold_for is evaluated at the TRUE trial count, not the habitual fixed -5.5 (AGENTS.md s4 lesson 3).",
+   "threshold_fixed_in_advance": true,
+   "positive_control": true,
+   "control_detail": "40/40 trials recovered >95% of RUNE INDICES (recovery 1.000) with Cicada-register English planted at a uniformly random offset in [1000, 2^20) inside a REAL derived keystream - a real B-04 dictionary seed, a real generator, a real reduction, 8 distinct configs - and pushed through the identical dense_scan -> beam pipeline at max_skip=8. Measured dense prefilter survival 0.650 at keep=1000, 0.525 at escalation depth 40, 0.525 at depth 12; reported as this lane's coverage discount. Round 17's flat x0.625 survival constant was NOT used - it was measured here.",
+   "null": "histogram-preserving shuffle null, n=200, measured at max_skip=8 on the same 400-rune window and the same keystream family",
+   "result": "best -6.7702 at offset 253446 (sha256_chain | mod29, seed slogan) vs bar -5.4664. No configuration reached the bar.",
+   "coverage": {
+    "n_offsets_scanned": 497025024,
+    "threshold_for": -5.4664,
+    "best": {
+     "offset": 253446,
+     "sign": 1,
+     "pre": -1.4657084941864014,
+     "score": -6.770228128591641,
+     "head": "XDDAEAYWOETGIMOULOODBINGMPAEOREOEBEODHINGBAOENTNOENGEADBURSSULYT",
+     "src": "A2-grid",
+     "kind": "b04",
+     "gen": "sha256_chain",
+     "red": "mod29",
+     "seed": "slogan",
+     "seed_hex": "4245574152452046414c5345205041544853",
+     "atbash": 0,
+     "dir": "fwd",
+     "stage": "A2"
+    },
+    "stages": {
+     "A1": {
+      "units_done": 220,
+      "units_total": 220,
+      "complete": true,
+      "off_max": 1048576,
+      "n_offsets_scanned": 230686720,
+      "escalate_top": 40,
+      "keep": 1000,
+      "threshold_for_at_this_N": -5.5
+     },
+     "A2": {
+      "units_done": 508,
+      "units_total": 3024,
+      "complete": false,
+      "off_max": 262144,
+      "n_offsets_scanned": 266338304,
+      "escalate_top": 12,
+      "keep": 1000,
+      "threshold_for_at_this_N": -5.5
+     }
+    },
+    "control": {
+     "recovery": 1.0,
+     "recovered": 40,
+     "n_trials": 40,
+     "survival_keep1000": 0.65,
+     "survival_at_top40": 0.525,
+     "survival_at_top12": 0.525,
+     "pipeline_first": 0.525,
+     "PASS": true
+    }
+   },
+   "not_covered": "Offsets beyond 2^20 (stage A1) / 2^18 (stage A2): a pad file larger than 1 MB, consumed past its first megabyte, is NOT covered. Non-integer, per-line and per-page offset SCHEDULES are not covered - only a single constant offset into one keystream. Seeds outside B-04's 2,165-entry dictionary (A1) and its 504-entry core (A2); generators outside the 16 in round13/B04/ks.py, the 27 KDF configs of R16-KDF and the 7 of R16-PRNG; reductions other than mod29 in stage A2; filters other than the pinned soft key-skip at supp=0.83; composite plaintext transforms. The dense prefilter's measured miss rate (1 - survival, reported per depth in `coverage.control`) is a POWER blind spot on offsets, not a soundness claim - beam recovery was 100% on every plant.",
+   "reproduce": "cd liber-primus/analysis/round18/L6-offset-marsaglia && python3 scripts/audit_builders.py && python3 scripts/control_offset.py && python3 scripts/sweep_offset.py --stage A1 && python3 scripts/sweep_offset.py --stage A2",
+   "supersedes": null,
+   "superseded_by": null,
+   "reopens_if": "A decode at or above its own null_max + 0.5 that ALSO improves under escalation to full page 0 and the full 12,956-rune stream; or a mechanism that generates a pad file larger than 1 MB (offsets > 2^20 are not covered); or a seed dictionary or generator outside the swept sets proposed TOGETHER with an offset sweep - the offset axis is now dense for the configs listed and should not be re-run for them.",
+   "notes": "Applies Round 17's dense-offset instrument (round17/lib_padsweep.dense_scan, which scores EVERY offset) to the DERIVED-key branch, which had never received it. No prior sweep was re-run (Round 18 rule 7): stage A1's configs were mined from the published results JSON of B-04 / R16-KDF / R16-PRNG and extended along the one axis all three fixed at 0.",
+   "evidence_missing": []
+  },
+  {
+   "id": "B-08",
+   "lane": "round18/L6-offset-marsaglia",
+   "hypothesis": "SEED residue - >2^32 seeds, other generators, nonzero keystream offset.",
+   "status": "partially-run",
+   "raw_status": "partially-run",
+   "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md",
+   "evidence": [
+    "liber-primus/analysis/round18/L6-offset-marsaglia/RESULTS.md",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/out/results_A1.json",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/out/results_A2.json"
+   ],
+   "priority": "medium",
+   "round": 18,
+   "date": "2026-08-26",
+   "threshold": "as B-02: score_norm >= max(threshold_for(N=497,025,024) = -5.4664, null_max + 0.5)",
+   "threshold_fixed_in_advance": true,
+   "positive_control": true,
+   "control_detail": "shared with B-02; see out/control_offset.json",
+   "null": "shared with B-02",
+   "result": "The THIRD clause of this entry - nonzero keystream offset - is now measured and is B-02's result above. The other two clauses (>2^32 seed spaces, generators outside the swept sets) are untouched by this lane and remain PARKED at P-10 / P-4.",
+   "coverage": {
+    "clause_covered": "nonzero keystream offset, densely, over the configs in B-02's coverage block",
+    "n_offsets_scanned": 497025024,
+    "threshold_for": -5.4664,
+    "best": {
+     "offset": 253446,
+     "sign": 1,
+     "pre": -1.4657084941864014,
+     "score": -6.770228128591641,
+     "head": "XDDAEAYWOETGIMOULOODBINGMPAEOREOEBEODHINGBAOENTNOENGEADBURSSULYT",
+     "src": "A2-grid",
+     "kind": "b04",
+     "gen": "sha256_chain",
+     "red": "mod29",
+     "seed": "slogan",
+     "seed_hex": "4245574152452046414c5345205041544853",
+     "atbash": 0,
+     "dir": "fwd",
+     "stage": "A2"
+    },
+    "stages": {
+     "A1": {
+      "units_done": 220,
+      "units_total": 220,
+      "complete": true,
+      "off_max": 1048576,
+      "n_offsets_scanned": 230686720,
+      "escalate_top": 40,
+      "keep": 1000,
+      "threshold_for_at_this_N": -5.5
+     },
+     "A2": {
+      "units_done": 508,
+      "units_total": 3024,
+      "complete": false,
+      "off_max": 262144,
+      "n_offsets_scanned": 266338304,
+      "escalate_top": 12,
+      "keep": 1000,
+      "threshold_for_at_this_N": -5.5
+     }
+    },
+    "control": {
+     "recovery": 1.0,
+     "recovered": 40,
+     "n_trials": 40,
+     "survival_keep1000": 0.65,
+     "survival_at_top40": 0.525,
+     "survival_at_top12": 0.525,
+     "pipeline_first": 0.525,
+     "PASS": true
+    }
+   },
+   "not_covered": "Clauses 1 and 2 of this entry: seed spaces wider than 2^32 (PARKED P-10, with a documented power ceiling near N=10^15) and generators outside those swept (PARKED P-4). Offsets beyond 2^20 (stage A1) / 2^18 (stage A2): a pad file larger than 1 MB, consumed past its first megabyte, is NOT covered. Non-integer, per-line and per-page offset SCHEDULES are not covered - only a single constant offset into one keystream. Seeds outside B-04's 2,165-entry dictionary (A1) and its 504-entry core (A2); generators outside the 16 in round13/B04/ks.py, the 27 KDF configs of R16-KDF and the 7 of R16-PRNG; reductions other than mod29 in stage A2; filters other than the pinned soft key-skip at supp=0.83; composite plaintext transforms. The dense prefilter's measured miss rate (1 - survival, reported per depth in `coverage.control`) is a POWER blind spot on offsets, not a soundness claim - beam recovery was 100% on every plant.",
+   "reproduce": "as B-02",
+   "supersedes": null,
+   "superseded_by": null,
+   "reopens_if": "Either remaining clause is attempted; or as B-02 for the offset clause.",
+   "notes": "This entry bundles three independent gaps. Splitting them matters: one is now measured and two are not, and a single status word cannot say that. Read this coverage block, not the status (AGENTS.md s7).",
+   "evidence_missing": []
+  },
+  {
+   "id": "B-13-MARSAGLIA",
+   "lane": "round18/L6-offset-marsaglia",
+   "hypothesis": "The LP2 keystream is a window of the Marsaglia Random Number CDROM (1995) - 634,124,288 bytes of published physical randomness with published SHA-256s. round17/SYNTHESIS.md named it the single live, reachable, unswept public-pad item and \"the cheapest live item in this branch\"; lane P2 found it, recorded its identifier and a verified HTTP 206, and left it unswept.",
+   "status": "partially-run",
+   "raw_status": "partially-run",
+   "source_register": "liber-primus/analysis/round17/SYNTHESIS.md",
+   "evidence": [
+    "liber-primus/analysis/round18/L6-offset-marsaglia/PREREG.md",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/RESULTS.md",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/data/MANIFEST.json",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/out/results_M.json",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/out/control_marsaglia.json"
+   ],
+   "priority": "medium",
+   "round": 18,
+   "date": "2026-08-26",
+   "threshold": "score_norm >= max(threshold_for(N=1,539,996,304) = -5.3844, null_max + 0.5)",
+   "threshold_fixed_in_advance": true,
+   "positive_control": true,
+   "control_detail": "Planted and recovered ON THE REAL, HASH-VERIFIED MARSAGLIA BYTES, not a synthetic pad: 16/16 trials recovered >95% of rune indices at max_skip=8. max_skip=3 diagnostic on the same pads: recovery 1.000 - the round-17/P1 constant-run defect does NOT bite here. Measured dense prefilter survival 0.562 at keep=1000 on 10 MB pads; reported as the coverage discount. No x0.625 constant was used.",
+   "null": "histogram-preserving shuffle null, n=200, max_skip=8, 400-rune window",
+   "result": "best -6.7387 (BITS.22 / mod29, sign 1, offset 7710875) vs bar -5.3844.",
+   "coverage": {
+    "n_offsets_scanned": 1539996304,
+    "threshold_for": -5.3844,
+    "best": {
+     "offset": 7710875,
+     "sign": 1,
+     "pre": -1.2577084302902222,
+     "score": -6.738686108217992,
+     "head": "ETURIONLNGGETHYATGONDEDTHESIAYAARAPHTHEAIDBTOEGEACOPJERGSOEXTEAO",
+     "pad": "BITS.22",
+     "builder": "mod29",
+     "rev": false
+    },
+    "units": {
+     "done": 77,
+     "total": 756,
+     "complete": false
+    },
+    "per_pad_count": 63,
+    "control": {
+     "ms8_recovery": 1.0,
+     "ms8_survival_keep1000": 0.5625,
+     "ms8_survival_at_top40": 0.5625,
+     "ms3_recovery": 1.0,
+     "ms3_bites_here": false,
+     "n_trials": 16,
+     "PASS": true,
+     "pad_stats": {
+      "BITS.01": {
+       "bytes": 10000000,
+       "zero_byte_pct": 0.39022,
+       "longest_constant_run": 3,
+       "mean_run": 1.0039193009509124,
+       "distinct_bytes": 256
+      },
+      "CALIF.BIT": {
+       "bytes": 10000000,
+       "zero_byte_pct": 0.36321,
+       "longest_constant_run": 4,
+       "mean_run": 1.0039064005859601,
+       "distinct_bytes": 256
+      },
+      "BITS.30": {
+       "bytes": 10000000,
+       "zero_byte_pct": 0.38679,
+       "longest_constant_run": 4,
+       "mean_run": 1.0039124475907506,
+       "distinct_bytes": 256
+      },
+      "GERMANY.BIT": {
+       "bytes": 10000000,
+       "zero_byte_pct": 0.47797,
+       "longest_constant_run": 4,
+       "mean_run": 1.0051008870015328,
+       "distinct_bytes": 256
+      },
+      "MARSAGLIA_CDROM.iso[0:16MiB]": {
+       "bytes": 16777216,
+       "zero_byte_pct": 0.8033692836761475,
+       "longest_constant_run": 32768,
+       "mean_run": 1.0078408976294448,
+       "distinct_bytes": 256
+      }
+     }
+    },
+    "hash_verification": "ISO size+md5+sha1 == archive.org published metadata: PASS; inner files verified against published SHA-256: PASS",
+    "iso_bytes": 634124288,
+    "iso_md5": "f127d50c2bd80e7c23f28184423a2d94",
+    "iso_sha1": "ca116df4940eb4b7538942ea6fbe454556b1bac2",
+    "iso_sha256": "6d124080f942a88afade2d6cd2da4b9f092e0e376ee5a9d4af9f7224523f9d28",
+    "checksums_file_sha256": "e0e4daa152c093fe6651ec63352b27a7a247a839af6a757cb62f26fb1fa7f82f",
+    "published_sha256_lines_matched": "110/110",
+    "random_data_bytes": 630000000,
+    "builders": [
+     "mod29",
+     "hi_nibble",
+     "lo_nibble",
+     "byte_scaled",
+     "prime_to_idx",
+     "nibbles"
+    ],
+    "builders_excluded": {
+     "hexchars": "drops the digits 0-9 (eng_to_idx); it is the A-F subsequence of the hex string, not the hex reading. Replaced by `nibbles`. R17/P1 finding, re-derived in audit_builders.py."
+    }
+   },
+   "not_covered": "Whatever units of the (pad x builder x byte-order) cross product this run did not complete - see coverage.units, and the builder-major job order means the shortfall is a whole builder rather than a ragged sample. The whole-ISO view (as opposed to the 63 verified random-data files) is swept only insofar as coverage.units says. Keystream constructions outside the six builders used; window lengths other than the 400-rune head; the Diehard suite's code/doc/PostScript members as pads in their own right. The dense prefilter's measured survival on 10 MB pads (reported in coverage.control) is the power bound: it is why a miss is possible and a SYSTEMATIC miss is not.",
+   "reproduce": "cd liber-primus/analysis/round18/L6-offset-marsaglia && bash scripts/fetch_marsaglia.sh && python3 scripts/verify_marsaglia.py && python3 scripts/control_marsaglia.py && python3 scripts/sweep_marsaglia.py",
+   "supersedes": null,
+   "superseded_by": null,
+   "reopens_if": "A byte order, reduction or window outside the six builders x two byte orders x two signs above; the units listed as not done in coverage.units; or any score at or above its own null_max + 0.5.",
+   "notes": "First sweep of this pad by anyone in this repository. All 110 published SHA-256s on the disc were verified before a single offset was scored - this repo has twice been burned by a mirror serving different bytes.",
+   "evidence_missing": []
+  }
+ ]
+}

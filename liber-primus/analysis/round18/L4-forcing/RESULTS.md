@@ -18,7 +18,9 @@ rune that straddles the right margin is length-biased into the next line's first
 inspection paradox — and once the null is made layout-aware the same statistic sits at
 **p = 0.177**. No forcing is required to produce it, and none is detectable once it is removed.
 
-**No forcing signature survives.** All other 20 pre-registered tests are negative. The lane's
+**No forcing signature survives.** All other 20 pre-registered tests are negative — including
+56,376 keyless Gematria-Primus reads of the positional subsets, every one of which scores *below*
+its own max-statistic null. The lane's
 durable outputs are (1) a measured, externally-validated **glyph-width table for the 29 runes**
 derived from the transcription itself, (2) the **layout-aware null** that any future acrostic or
 positional attack on LP2 must use instead of a flat one, and (3) an honest **power curve** saying
@@ -236,8 +238,59 @@ bins rather than only the 4 doublets) is the more powerful arm and is likewise f
 
 ## 4. Arm B — the subsets read as a message
 
-_Filled in below once the max-statistic nulls finish; the observed maxima and variant counts are
-already recorded._
+Arm A asks whether a subset is distributionally odd. Arm B asks the stronger question the original
+C-02 proposal never posed: **does the subset say anything.** Six families, each swept over 232
+Gematria-Primus variants per read — forward/reverse × identity/Atbash × 29 Caesar shifts ×
+keep/drop-F (the interrupter convention; the keyless analogue of the skip-aware beam, which is a
+*keyed* instrument and so not applicable to a keyless acrostic). Scoring is on rune indices mapped
+through the Gematria Primus, never on a re-parsed string (AGENTS.md §5).
+
+Multiplicity inside a family is handled exactly, by a **max-statistic null**: 400–1,000 replicates
+in which the identical variant sweep runs on size-matched draws from the ciphertext's own positions,
+taking the same maximum. The pre-registered gate is a three-part conjunction — beat every null
+replicate, beat the Gumbel bar fitted to them at α_test, and be reported against
+`benchmark/null.py: threshold_for(n_variants)`.
+
+### Positive control (instrument gate)
+
+A real English acrostic planted in a 594-rune line-initial sequence:
+
+| plant | best score | best variant | null max | bar | recovered |
+|---|---:|---|---:|---:|---|
+| plaintext, shift 0 | **−4.372** | fwd/id/keepF/+0 | −6.959 | −6.806 | **yes** |
+| plaintext, shift 7 | **−4.372** | fwd/id/keepF/+22 | −7.002 | −6.805 | **yes** |
+
+The pipeline recovers a planted message *and* the shift that hides it. Its silence is therefore
+meaningful.
+
+### Results
+
+| id | family | reads | variants | best score | best variant | null max | bar | verdict |
+|---|---|---:|---:|---:|---|---:|---:|---|
+| B1 | line-initial sequence (594) | 1 | 232 | −7.115 | rev/id/keepF/+10 | −6.968 | −6.806 | NEGATIVE |
+| B2 | per-page acrostic | 55 | 12,470 | −3.513 | rev/id/keepF/+19 | −2.448 | −0.953 | NEGATIVE |
+| B3 | diagonals (main + anti, per page) | 108 | 24,882 | −2.730 | rev/atb/keepF/+2 | −2.448 | −1.061 | NEGATIVE |
+| B4 | first rune of every N-th line, N = 2…12, all phases | 77 | 17,864 | −5.838 | rev/atb/dropF/+11 | −5.558 | −5.150 | NEGATIVE |
+| B5 | page-initial (55) and page-final (55) | 2 | 464 | −6.374 | fwd/id/dropF/+26 | −5.695 | −5.296 | NEGATIVE |
+| B6 | word-initial and word-final (2,928 each) | 2 | 464 | −7.260 | rev/id/dropF/+11 | −7.200 | −7.107 | NEGATIVE |
+
+**All six families NEGATIVE, and in every single one the observed maximum is BELOW its own null
+maximum.** Not "close but under the bar" — under the noise. 56,376 keyless reads of LP2's positional
+subsets, and not one of them is even as English-like as the best of a few hundred random draws of the
+same runes.
+
+**Read B2 and B3 carefully — they are the trap.** Their best reads score −3.51 and −2.73, which by
+the repo's historical −5.5 habit would look like screaming hits. They are not: those families read
+**very short strings** (a page has 4–13 lines, so a per-page acrostic is ~12 runes ≈ 15 letters ≈ 12
+quadgrams) across ~12,000–25,000 variants, and the *null for that same procedure* peaks at −2.448.
+The observed maxima are **below** their own nulls. This is AGENTS.md §4 lesson 3 in miniature — a
+fixed bar is invalid at large variant counts — and it is why every family here is adjudicated against
+its own max-statistic null rather than against a number.
+
+B1 is the family the whole lane is aimed at, and it is the flattest of all: the 594-rune line-initial
+sequence scores **−7.115**, *below* its own null max of −6.968 and barely above the null mean of
+−7.199. The line initials of LP2 are, as a message, indistinguishable from a random draw of 594 of
+its own runes.
 
 ---
 
@@ -400,3 +453,49 @@ python3 armC_rejection.py 200000      # Arm C
 python3 armB_message.py 1000          # Arm B (checkpoints per family)
 python3 control_power.py 200 2000     # positive control + power curve
 ```
+
+---
+
+## 7. Aiming Test (`liber-primus/ARMADA-DOCTRINE.md` §1)
+
+The doctrine was written 2026-08-26, after this round, and binds from Round 19. Answered here
+anyway, because it is the right shape for a results file and because two of its findings bear
+directly on this lane's limits.
+
+**Q1 — What would a hit look like, and would this instrument recognise it?** Answered by §5, not by
+argument. Forcing was planted in the shape believed — line initials, both plausible sampler
+resolutions — and the pipeline emits it at power 1.000 for f ≥ 0.60. The test also found the
+*opposite* failure the question is meant to catch: the literal C-02 detector recognises a hit
+49 % of the time when there is no hit at all.
+
+**Q2 — What measured fact raises this family's prior?** `round17/SYNTHESIS.md` §2 (item D-01): the
+anti-repeat filter is machine-applied at ≥0.99 power. That is a *measured* demonstration that the
+author wrote code enforcing a ciphertext-level predicate, which is what makes "did they enforce a
+second one" a real question rather than a completeness ritual.
+
+**Q3 — Is the space bounded?** Yes, and finite: 594 line initials, 55 page initials, 2,928 word
+initials, 219 sentence initials — every one enumerated, no sampling. This is a category-1 object
+under R5 (a finite, human-checkable object), and it needs no key hypothesis at all.
+
+**Q4 — The three conditionals this negative carries.**
+1. *Key space* — **none**. This lane is keyless; that is its whole point, and it is the one axis on
+   which this negative is unconditional.
+2. *Decoder transition model* — not applicable to Arms A and C, which read raw ciphertext symbols
+   and never decode. It **does** bind Arm B, whose 232 variants are substitution-class reads
+   (shift / Atbash / reversal / interrupter-drop) and nothing else.
+3. *Adjudicator register* — **English only**, via the quadgram scorer. Lane L7-A measured this
+   repo-wide: handed a correct key the adjudicator scores Latin at power 0.33 and vowel-dropped
+   English at 0.00. A forced acrostic in Latin, Old English or an abbreviated orthography would
+   have been missed by Arm B. Arms A and C are register-free and do not carry this conditional.
+
+**Q5 — Kill condition.** Declared as: if the positive control failed to recover planted forcing at
+f = 1.00, the lane reports no negative at all (`PREREG.md` §4). It did not fire — power at f = 1.00
+is 1.000 for both detectors and both mechanisms.
+
+**R2 (value = coverage × power).** Both reported: coverage in §6, power in §5. The lane's honest
+value statement is one sentence — *line-initial forcing of ≥ 60 % of lines is excluded at power
+1.000; below f ≈ 0.2 nothing is excluded.*
+
+**R3 (language-agnostic statistics).** Arms A and C are distribution- and register-agnostic by
+construction and their statistics are persisted in full in the results JSON. Arm B is English-only
+and is flagged as such in §6.

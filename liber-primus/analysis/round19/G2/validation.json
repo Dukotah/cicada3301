@@ -1,0 +1,5251 @@
+{
+ "lane": "round19/G2",
+ "purpose": "Byte-exact reproduction of Perl 5.14.2 rand/srand before any keystream is swept.",
+ "installed_perl": "5.40.1",
+ "installed_perl_config": {
+  "randfunc": "randfunc='Perl_drand48';",
+  "drand01": "drand01='Perl_drand48()';",
+  "randbits": "randbits='48';",
+  "nvtype": "nvtype='double';",
+  "nvsize": "nvsize='8';",
+  "ivsize": "ivsize='8';"
+ },
+ "era_target": "perl 5.14.2 as shipped by Ubuntu 12.04 LTS",
+ "era_source_evidence": {
+  "tarball": "https://www.cpan.org/src/5.0/perl-5.14.2.tar.gz",
+  "md5": "3306fbaf976dcebdcd49b2ac0be00eb9",
+  "Configure_L19280": "drand48 is the first choice whenever the libc exposes it; glibc does",
+  "config_h.SH_L2131": "#define Drand01() drand48()",
+  "config_h.SH_L2133": "#define seedDrand01(x) srand48((Rand_seed_t)x)  [Rand_seed_t=long, RANDBITS=48]",
+  "pp.c_pp_rand": "value = POPn (or 1.0); value *= Drand01();",
+  "pp.c_pp_srand": "const UV anum = (MAXARG < 1) ? seed() : POPu; seedDrand01((Rand_seed_t)anum);",
+  "util.c_Perl_seed": "reads sizeof(U32) bytes from /dev/urandom; fallback mixes gettimeofday/getpid/stack ptrs into a U32"
+ },
+ "seed_panel": [
+  0,
+  1,
+  42,
+  12345,
+  3301,
+  1033,
+  1399079190,
+  2147483647,
+  3141592653,
+  4294967295,
+  1293840000,
+  1420070400,
+  845145127
+ ],
+ "draws_per_seed": 2000,
+ "overall_pass": true,
+ "gate_A": {
+  "pass": true,
+  "rows": [
+   {
+    "gate": "A0",
+    "what": "Drand01() %.17g",
+    "seed": 0,
+    "n": 64,
+    "match": true,
+    "first3_perl": [
+     "0.17082803610628972",
+     "0.74990198048496381",
+     "0.09637165562356742"
+    ],
+    "first3_mine": [
+     "0.17082803610628972",
+     "0.74990198048496381",
+     "0.09637165562356742"
+    ]
+   },
+   {
+    "gate": "A0",
+    "what": "Drand01() %.17g",
+    "seed": 1,
+    "n": 64,
+    "match": true,
+    "first3_perl": [
+     "0.041630344771878214",
+     "0.45449244472862915",
+     "0.8348172181669149"
+    ],
+    "first3_mine": [
+     "0.041630344771878214",
+     "0.45449244472862915",
+     "0.8348172181669149"
+    ]
+   },
+   {
+    "gate": "A0",
+    "what": "Drand01() %.17g",
+    "seed": 42,
+    "n": 64,
+    "match": true,
+    "first3_perl": [
+     "0.74452500006100664",
+     "0.34270147871890799",
+     "0.11108528244416149"
+    ],
+    "first3_mine": [
+     "0.74452500006100664",
+     "0.34270147871890799",
+     "0.11108528244416149"
+    ]
+   },
+   {
+    "gate": "A0",
+    "what": "Drand01() %.17g",
+    "seed": 12345,
+    "n": 64,
+    "match": true,
+    "first3_perl": [
+     "0.22532851279629895",
+     "0.91918306853355602",
+     "0.20684125324818226"
+    ],
+    "first3_mine": [
+     "0.22532851279629895",
+     "0.91918306853355602",
+     "0.20684125324818226"
+    ]
+   },
+   {
+    "gate": "A0",
+    "what": "Drand01() %.17g",
+    "seed": 3301,
+    "n": 64,
+    "match": true,
+    "first3_perl": [
+     "0.689248941213922",
+     "0.60302444882424311",
+     "0.70517361121359201"
+    ],
+    "first3_mine": [
+     "0.689248941213922",
+     "0.60302444882424311",
+     "0.70517361121359201"
+    ]
+   },
+   {
+    "gate": "A0",
+    "what": "Drand01() %.17g",
+    "seed": 1033,
+    "n": 64,
+    "match": true,
+    "first3_perl": [
+     "0.70961288765920827",
+     "0.59185154419125752",
+     "0.9106377629015121"
+    ],
+    "first3_mine": [
+     "0.70961288765920827",
+     "0.59185154419125752",
+     "0.9106377629015121"
+    ]
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 0,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     4,
+     21,
+     2,
+     25,
+     16,
+     22,
+     20,
+     10
+    ],
+    "first8_mine": [
+     4,
+     21,
+     2,
+     25,
+     16,
+     22,
+     20,
+     10
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 1,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     1,
+     13,
+     24,
+     9,
+     16,
+     0,
+     5,
+     28
+    ],
+    "first8_mine": [
+     1,
+     13,
+     24,
+     9,
+     16,
+     0,
+     5,
+     28
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 42,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     21,
+     9,
+     3,
+     12,
+     2,
+     24,
+     14,
+     13
+    ],
+    "first8_mine": [
+     21,
+     9,
+     3,
+     12,
+     2,
+     24,
+     14,
+     13
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 12345,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     6,
+     26,
+     5,
+     21,
+     21,
+     26,
+     10,
+     24
+    ],
+    "first8_mine": [
+     6,
+     26,
+     5,
+     21,
+     21,
+     26,
+     10,
+     24
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 3301,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     19,
+     17,
+     20,
+     16,
+     16,
+     20,
+     28,
+     14
+    ],
+    "first8_mine": [
+     19,
+     17,
+     20,
+     16,
+     16,
+     20,
+     28,
+     14
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 1033,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     20,
+     17,
+     26,
+     21,
+     10,
+     25,
+     12,
+     15
+    ],
+    "first8_mine": [
+     20,
+     17,
+     26,
+     21,
+     10,
+     25,
+     12,
+     15
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 1399079190,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     24,
+     21,
+     17,
+     0,
+     17,
+     16,
+     18,
+     13
+    ],
+    "first8_mine": [
+     24,
+     21,
+     17,
+     0,
+     17,
+     16,
+     18,
+     13
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 2147483647,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     23,
+     15,
+     24,
+     26,
+     2,
+     2,
+     20,
+     7
+    ],
+    "first8_mine": [
+     23,
+     15,
+     24,
+     26,
+     2,
+     2,
+     20,
+     7
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 3141592653,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     8,
+     17,
+     0,
+     22,
+     19,
+     13,
+     3,
+     26
+    ],
+    "first8_mine": [
+     8,
+     17,
+     0,
+     22,
+     19,
+     13,
+     3,
+     26
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 4294967295,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     8,
+     1,
+     10,
+     11,
+     17,
+     16,
+     5,
+     21
+    ],
+    "first8_mine": [
+     8,
+     1,
+     10,
+     11,
+     17,
+     16,
+     5,
+     21
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 1293840000,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     6,
+     0,
+     21,
+     22,
+     7,
+     19,
+     24,
+     19
+    ],
+    "first8_mine": [
+     6,
+     0,
+     21,
+     22,
+     7,
+     19,
+     24,
+     19
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 1420070400,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     27,
+     4,
+     13,
+     27,
+     8,
+     27,
+     21,
+     0
+    ],
+    "first8_mine": [
+     27,
+     4,
+     13,
+     27,
+     8,
+     27,
+     21,
+     0
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(29))",
+    "seed": 845145127,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     26,
+     3,
+     24,
+     4,
+     23,
+     22,
+     3,
+     17
+    ],
+    "first8_mine": [
+     26,
+     3,
+     24,
+     4,
+     23,
+     22,
+     3,
+     17
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 0,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     5,
+     23,
+     3,
+     27,
+     18,
+     25,
+     22,
+     11
+    ],
+    "first8_mine": [
+     5,
+     23,
+     3,
+     27,
+     18,
+     25,
+     22,
+     11
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 1,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     1,
+     14,
+     26,
+     10,
+     18,
+     0,
+     6,
+     31
+    ],
+    "first8_mine": [
+     1,
+     14,
+     26,
+     10,
+     18,
+     0,
+     6,
+     31
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 42,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     23,
+     10,
+     3,
+     13,
+     2,
+     27,
+     15,
+     15
+    ],
+    "first8_mine": [
+     23,
+     10,
+     3,
+     13,
+     2,
+     27,
+     15,
+     15
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 12345,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     7,
+     29,
+     6,
+     23,
+     23,
+     29,
+     11,
+     27
+    ],
+    "first8_mine": [
+     7,
+     29,
+     6,
+     23,
+     23,
+     29,
+     11,
+     27
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 3301,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     22,
+     19,
+     22,
+     17,
+     18,
+     22,
+     31,
+     15
+    ],
+    "first8_mine": [
+     22,
+     19,
+     22,
+     17,
+     18,
+     22,
+     31,
+     15
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 1033,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     22,
+     18,
+     29,
+     24,
+     11,
+     28,
+     13,
+     17
+    ],
+    "first8_mine": [
+     22,
+     18,
+     29,
+     24,
+     11,
+     28,
+     13,
+     17
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 1399079190,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     26,
+     23,
+     19,
+     0,
+     19,
+     18,
+     20,
+     14
+    ],
+    "first8_mine": [
+     26,
+     23,
+     19,
+     0,
+     19,
+     18,
+     20,
+     14
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 2147483647,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     25,
+     17,
+     27,
+     28,
+     2,
+     2,
+     22,
+     7
+    ],
+    "first8_mine": [
+     25,
+     17,
+     27,
+     28,
+     2,
+     2,
+     22,
+     7
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 3141592653,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     9,
+     18,
+     0,
+     24,
+     21,
+     15,
+     3,
+     29
+    ],
+    "first8_mine": [
+     9,
+     18,
+     0,
+     24,
+     21,
+     15,
+     3,
+     29
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 4294967295,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     9,
+     1,
+     11,
+     12,
+     18,
+     18,
+     6,
+     23
+    ],
+    "first8_mine": [
+     9,
+     1,
+     11,
+     12,
+     18,
+     18,
+     6,
+     23
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 1293840000,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     6,
+     0,
+     23,
+     24,
+     8,
+     21,
+     27,
+     21
+    ],
+    "first8_mine": [
+     6,
+     0,
+     23,
+     24,
+     8,
+     21,
+     27,
+     21
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 1420070400,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     30,
+     4,
+     15,
+     30,
+     8,
+     30,
+     24,
+     0
+    ],
+    "first8_mine": [
+     30,
+     4,
+     15,
+     30,
+     8,
+     30,
+     24,
+     0
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(32))",
+    "seed": 845145127,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     29,
+     4,
+     26,
+     4,
+     25,
+     24,
+     4,
+     19
+    ],
+    "first8_mine": [
+     29,
+     4,
+     26,
+     4,
+     25,
+     24,
+     4,
+     19
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 0,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     43,
+     191,
+     24,
+     222,
+     147,
+     201,
+     177,
+     94
+    ],
+    "first8_mine": [
+     43,
+     191,
+     24,
+     222,
+     147,
+     201,
+     177,
+     94
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 1,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     10,
+     116,
+     213,
+     86,
+     144,
+     0,
+     48,
+     253
+    ],
+    "first8_mine": [
+     10,
+     116,
+     213,
+     86,
+     144,
+     0,
+     48,
+     253
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 42,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     190,
+     87,
+     28,
+     108,
+     20,
+     219,
+     127,
+     122
+    ],
+    "first8_mine": [
+     190,
+     87,
+     28,
+     108,
+     20,
+     219,
+     127,
+     122
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 12345,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     57,
+     235,
+     52,
+     185,
+     187,
+     232,
+     89,
+     219
+    ],
+    "first8_mine": [
+     57,
+     235,
+     52,
+     185,
+     187,
+     232,
+     89,
+     219
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 3301,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     176,
+     154,
+     180,
+     141,
+     148,
+     177,
+     254,
+     126
+    ],
+    "first8_mine": [
+     176,
+     154,
+     180,
+     141,
+     148,
+     177,
+     254,
+     126
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 1033,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     181,
+     151,
+     233,
+     192,
+     95,
+     225,
+     111,
+     141
+    ],
+    "first8_mine": [
+     181,
+     151,
+     233,
+     192,
+     95,
+     225,
+     111,
+     141
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 1399079190,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     212,
+     190,
+     153,
+     6,
+     153,
+     149,
+     165,
+     116
+    ],
+    "first8_mine": [
+     212,
+     190,
+     153,
+     6,
+     153,
+     149,
+     165,
+     116
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 2147483647,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     204,
+     139,
+     219,
+     231,
+     22,
+     17,
+     178,
+     63
+    ],
+    "first8_mine": [
+     204,
+     139,
+     219,
+     231,
+     22,
+     17,
+     178,
+     63
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 3141592653,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     74,
+     151,
+     5,
+     195,
+     171,
+     120,
+     31,
+     236
+    ],
+    "first8_mine": [
+     74,
+     151,
+     5,
+     195,
+     171,
+     120,
+     31,
+     236
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 4294967295,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     76,
+     11,
+     91,
+     103,
+     150,
+     145,
+     50,
+     191
+    ],
+    "first8_mine": [
+     76,
+     11,
+     91,
+     103,
+     150,
+     145,
+     50,
+     191
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 1293840000,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     54,
+     1,
+     188,
+     198,
+     65,
+     168,
+     219,
+     174
+    ],
+    "first8_mine": [
+     54,
+     1,
+     188,
+     198,
+     65,
+     168,
+     219,
+     174
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 1420070400,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     245,
+     37,
+     121,
+     246,
+     71,
+     243,
+     193,
+     1
+    ],
+    "first8_mine": [
+     245,
+     37,
+     121,
+     246,
+     71,
+     243,
+     193,
+     1
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(256))",
+    "seed": 845145127,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     235,
+     34,
+     213,
+     36,
+     205,
+     198,
+     32,
+     158
+    ],
+    "first8_mine": [
+     235,
+     34,
+     213,
+     36,
+     205,
+     198,
+     32,
+     158
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 0,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     43,
+     191,
+     24,
+     221,
+     147,
+     200,
+     176,
+     94
+    ],
+    "first8_mine": [
+     43,
+     191,
+     24,
+     221,
+     147,
+     200,
+     176,
+     94
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 1,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     10,
+     115,
+     212,
+     85,
+     144,
+     0,
+     47,
+     252
+    ],
+    "first8_mine": [
+     10,
+     115,
+     212,
+     85,
+     144,
+     0,
+     47,
+     252
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 42,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     189,
+     87,
+     28,
+     107,
+     20,
+     218,
+     127,
+     122
+    ],
+    "first8_mine": [
+     189,
+     87,
+     28,
+     107,
+     20,
+     218,
+     127,
+     122
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 12345,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     57,
+     234,
+     52,
+     184,
+     186,
+     231,
+     88,
+     218
+    ],
+    "first8_mine": [
+     57,
+     234,
+     52,
+     184,
+     186,
+     231,
+     88,
+     218
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 3301,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     175,
+     153,
+     179,
+     141,
+     147,
+     177,
+     253,
+     126
+    ],
+    "first8_mine": [
+     175,
+     153,
+     179,
+     141,
+     147,
+     177,
+     253,
+     126
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 1033,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     180,
+     150,
+     232,
+     192,
+     95,
+     224,
+     111,
+     140
+    ],
+    "first8_mine": [
+     180,
+     150,
+     232,
+     192,
+     95,
+     224,
+     111,
+     140
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 1399079190,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     211,
+     190,
+     152,
+     6,
+     153,
+     148,
+     164,
+     116
+    ],
+    "first8_mine": [
+     211,
+     190,
+     152,
+     6,
+     153,
+     148,
+     164,
+     116
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 2147483647,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     204,
+     139,
+     218,
+     230,
+     22,
+     17,
+     177,
+     63
+    ],
+    "first8_mine": [
+     204,
+     139,
+     218,
+     230,
+     22,
+     17,
+     177,
+     63
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 3141592653,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     73,
+     150,
+     5,
+     195,
+     171,
+     120,
+     31,
+     236
+    ],
+    "first8_mine": [
+     73,
+     150,
+     5,
+     195,
+     171,
+     120,
+     31,
+     236
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 4294967295,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     76,
+     11,
+     91,
+     103,
+     150,
+     145,
+     50,
+     190
+    ],
+    "first8_mine": [
+     76,
+     11,
+     91,
+     103,
+     150,
+     145,
+     50,
+     190
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 1293840000,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     54,
+     1,
+     188,
+     198,
+     65,
+     167,
+     218,
+     173
+    ],
+    "first8_mine": [
+     54,
+     1,
+     188,
+     198,
+     65,
+     167,
+     218,
+     173
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 1420070400,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     244,
+     36,
+     121,
+     245,
+     71,
+     242,
+     192,
+     1
+    ],
+    "first8_mine": [
+     244,
+     36,
+     121,
+     245,
+     71,
+     242,
+     192,
+     1
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(255))",
+    "seed": 845145127,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     234,
+     34,
+     212,
+     36,
+     204,
+     197,
+     32,
+     157
+    ],
+    "first8_mine": [
+     234,
+     34,
+     212,
+     36,
+     204,
+     197,
+     32,
+     157
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 0,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     17,
+     74,
+     9,
+     87,
+     57,
+     78,
+     69,
+     36
+    ],
+    "first8_mine": [
+     17,
+     74,
+     9,
+     87,
+     57,
+     78,
+     69,
+     36
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 1,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     4,
+     45,
+     83,
+     33,
+     56,
+     0,
+     18,
+     99
+    ],
+    "first8_mine": [
+     4,
+     45,
+     83,
+     33,
+     56,
+     0,
+     18,
+     99
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 42,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     74,
+     34,
+     11,
+     42,
+     8,
+     85,
+     49,
+     47
+    ],
+    "first8_mine": [
+     74,
+     34,
+     11,
+     42,
+     8,
+     85,
+     49,
+     47
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 12345,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     22,
+     91,
+     20,
+     72,
+     73,
+     90,
+     34,
+     85
+    ],
+    "first8_mine": [
+     22,
+     91,
+     20,
+     72,
+     73,
+     90,
+     34,
+     85
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 3301,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     68,
+     60,
+     70,
+     55,
+     57,
+     69,
+     99,
+     49
+    ],
+    "first8_mine": [
+     68,
+     60,
+     70,
+     55,
+     57,
+     69,
+     99,
+     49
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 1033,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     70,
+     59,
+     91,
+     75,
+     37,
+     88,
+     43,
+     55
+    ],
+    "first8_mine": [
+     70,
+     59,
+     91,
+     75,
+     37,
+     88,
+     43,
+     55
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 1399079190,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     82,
+     74,
+     59,
+     2,
+     60,
+     58,
+     64,
+     45
+    ],
+    "first8_mine": [
+     82,
+     74,
+     59,
+     2,
+     60,
+     58,
+     64,
+     45
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 2147483647,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     80,
+     54,
+     85,
+     90,
+     8,
+     6,
+     69,
+     24
+    ],
+    "first8_mine": [
+     80,
+     54,
+     85,
+     90,
+     8,
+     6,
+     69,
+     24
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 3141592653,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     29,
+     59,
+     2,
+     76,
+     67,
+     47,
+     12,
+     92
+    ],
+    "first8_mine": [
+     29,
+     59,
+     2,
+     76,
+     67,
+     47,
+     12,
+     92
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 4294967295,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     30,
+     4,
+     35,
+     40,
+     58,
+     56,
+     19,
+     74
+    ],
+    "first8_mine": [
+     30,
+     4,
+     35,
+     40,
+     58,
+     56,
+     19,
+     74
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 1293840000,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     21,
+     0,
+     73,
+     77,
+     25,
+     65,
+     85,
+     68
+    ],
+    "first8_mine": [
+     21,
+     0,
+     73,
+     77,
+     25,
+     65,
+     85,
+     68
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 1420070400,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     95,
+     14,
+     47,
+     96,
+     27,
+     95,
+     75,
+     0
+    ],
+    "first8_mine": [
+     95,
+     14,
+     47,
+     96,
+     27,
+     95,
+     75,
+     0
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(100))",
+    "seed": 845145127,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     91,
+     13,
+     83,
+     14,
+     80,
+     77,
+     12,
+     61
+    ],
+    "first8_mine": [
+     91,
+     13,
+     83,
+     14,
+     80,
+     77,
+     12,
+     61
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 0,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     170,
+     749,
+     96,
+     870,
+     577,
+     785,
+     692,
+     368
+    ],
+    "first8_mine": [
+     170,
+     749,
+     96,
+     870,
+     577,
+     785,
+     692,
+     368
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 1,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     41,
+     454,
+     834,
+     335,
+     565,
+     1,
+     187,
+     990
+    ],
+    "first8_mine": [
+     41,
+     454,
+     834,
+     335,
+     565,
+     1,
+     187,
+     990
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 42,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     744,
+     342,
+     111,
+     422,
+     81,
+     856,
+     498,
+     478
+    ],
+    "first8_mine": [
+     744,
+     342,
+     111,
+     422,
+     81,
+     856,
+     498,
+     478
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 12345,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     225,
+     919,
+     206,
+     724,
+     732,
+     906,
+     347,
+     857
+    ],
+    "first8_mine": [
+     225,
+     919,
+     206,
+     724,
+     732,
+     906,
+     347,
+     857
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 3301,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     689,
+     603,
+     705,
+     554,
+     578,
+     695,
+     992,
+     494
+    ],
+    "first8_mine": [
+     689,
+     603,
+     705,
+     554,
+     578,
+     695,
+     992,
+     494
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 1033,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     709,
+     591,
+     910,
+     753,
+     373,
+     880,
+     435,
+     551
+    ],
+    "first8_mine": [
+     709,
+     591,
+     910,
+     753,
+     373,
+     880,
+     435,
+     551
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 1399079190,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     828,
+     745,
+     598,
+     25,
+     601,
+     583,
+     645,
+     456
+    ],
+    "first8_mine": [
+     828,
+     745,
+     598,
+     25,
+     601,
+     583,
+     645,
+     456
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 2147483647,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     800,
+     545,
+     857,
+     904,
+     89,
+     69,
+     696,
+     247
+    ],
+    "first8_mine": [
+     800,
+     545,
+     857,
+     904,
+     89,
+     69,
+     696,
+     247
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 3141592653,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     290,
+     591,
+     23,
+     765,
+     671,
+     470,
+     123,
+     925
+    ],
+    "first8_mine": [
+     290,
+     591,
+     23,
+     765,
+     671,
+     470,
+     123,
+     925
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 4294967295,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     300,
+     45,
+     357,
+     404,
+     589,
+     569,
+     196,
+     747
+    ],
+    "first8_mine": [
+     300,
+     45,
+     357,
+     404,
+     589,
+     569,
+     196,
+     747
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 1293840000,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     214,
+     6,
+     737,
+     776,
+     255,
+     657,
+     856,
+     681
+    ],
+    "first8_mine": [
+     214,
+     6,
+     737,
+     776,
+     255,
+     657,
+     856,
+     681
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 1420070400,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     958,
+     144,
+     475,
+     962,
+     279,
+     952,
+     754,
+     7
+    ],
+    "first8_mine": [
+     958,
+     144,
+     475,
+     962,
+     279,
+     952,
+     754,
+     7
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(1000))",
+    "seed": 845145127,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     919,
+     136,
+     834,
+     142,
+     803,
+     774,
+     127,
+     617
+    ],
+    "first8_mine": [
+     919,
+     136,
+     834,
+     142,
+     803,
+     774,
+     127,
+     617
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 0,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     4,
+     19,
+     2,
+     22,
+     15,
+     20,
+     17,
+     9
+    ],
+    "first8_mine": [
+     4,
+     19,
+     2,
+     22,
+     15,
+     20,
+     17,
+     9
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 1,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     1,
+     11,
+     21,
+     8,
+     14,
+     0,
+     4,
+     25
+    ],
+    "first8_mine": [
+     1,
+     11,
+     21,
+     8,
+     14,
+     0,
+     4,
+     25
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 42,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     19,
+     8,
+     2,
+     10,
+     2,
+     22,
+     12,
+     12
+    ],
+    "first8_mine": [
+     19,
+     8,
+     2,
+     10,
+     2,
+     22,
+     12,
+     12
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 12345,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     5,
+     23,
+     5,
+     18,
+     19,
+     23,
+     9,
+     22
+    ],
+    "first8_mine": [
+     5,
+     23,
+     5,
+     18,
+     19,
+     23,
+     9,
+     22
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 3301,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     17,
+     15,
+     18,
+     14,
+     15,
+     18,
+     25,
+     12
+    ],
+    "first8_mine": [
+     17,
+     15,
+     18,
+     14,
+     15,
+     18,
+     25,
+     12
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 1033,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     18,
+     15,
+     23,
+     19,
+     9,
+     22,
+     11,
+     14
+    ],
+    "first8_mine": [
+     18,
+     15,
+     23,
+     19,
+     9,
+     22,
+     11,
+     14
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 1399079190,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     21,
+     19,
+     15,
+     0,
+     15,
+     15,
+     16,
+     11
+    ],
+    "first8_mine": [
+     21,
+     19,
+     15,
+     0,
+     15,
+     15,
+     16,
+     11
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 2147483647,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     20,
+     14,
+     22,
+     23,
+     2,
+     1,
+     18,
+     6
+    ],
+    "first8_mine": [
+     20,
+     14,
+     22,
+     23,
+     2,
+     1,
+     18,
+     6
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 3141592653,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     7,
+     15,
+     0,
+     19,
+     17,
+     12,
+     3,
+     24
+    ],
+    "first8_mine": [
+     7,
+     15,
+     0,
+     19,
+     17,
+     12,
+     3,
+     24
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 4294967295,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     7,
+     1,
+     9,
+     10,
+     15,
+     14,
+     5,
+     19
+    ],
+    "first8_mine": [
+     7,
+     1,
+     9,
+     10,
+     15,
+     14,
+     5,
+     19
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 1293840000,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     5,
+     0,
+     19,
+     20,
+     6,
+     17,
+     22,
+     17
+    ],
+    "first8_mine": [
+     5,
+     0,
+     19,
+     20,
+     6,
+     17,
+     22,
+     17
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 1420070400,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     24,
+     3,
+     12,
+     25,
+     7,
+     24,
+     19,
+     0
+    ],
+    "first8_mine": [
+     24,
+     3,
+     12,
+     25,
+     7,
+     24,
+     19,
+     0
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(26))",
+    "seed": 845145127,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     23,
+     3,
+     21,
+     3,
+     20,
+     20,
+     3,
+     16
+    ],
+    "first8_mine": [
+     23,
+     3,
+     21,
+     3,
+     20,
+     20,
+     3,
+     16
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 0,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     733700828,
+     3220804481,
+     413913109,
+     3738619682,
+     2479499681,
+     3374982117,
+     2972951251,
+     1583839069
+    ],
+    "first8_mine": [
+     733700828,
+     3220804481,
+     413913109,
+     3738619682,
+     2479499681,
+     3374982117,
+     2972951251,
+     1583839069
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 1,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     178800969,
+     1952030186,
+     3585512650,
+     1443049011,
+     2428758494,
+     7588830,
+     805690840,
+     4253881982
+    ],
+    "first8_mine": [
+     178800969,
+     1952030186,
+     3585512650,
+     1443049011,
+     2428758494,
+     7588830,
+     805690840,
+     4253881982
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 42,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     3197710526,
+     1471891643,
+     477107655,
+     1813932012,
+     348369827,
+     3678384831,
+     2142327205,
+     2056491719
+    ],
+    "first8_mine": [
+     3197710526,
+     1471891643,
+     477107655,
+     1813932012,
+     348369827,
+     3678384831,
+     2142327205,
+     2056491719
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 12345,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     967778593,
+     3947861218,
+     888376418,
+     3112905195,
+     3144771382,
+     3893312086,
+     1494464240,
+     3684570550
+    ],
+    "first8_mine": [
+     967778593,
+     3947861218,
+     888376418,
+     3112905195,
+     3144771382,
+     3893312086,
+     1494464240,
+     3684570550
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 3301,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     2960301661,
+     2589970286,
+     3028697598,
+     2382144855,
+     2486565938,
+     2985103778,
+     4261849676,
+     2122603490
+    ],
+    "first8_mine": [
+     2960301661,
+     2589970286,
+     3028697598,
+     2382144855,
+     2486565938,
+     2985103778,
+     4261849676,
+     2122603490
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 1033,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     3047764145,
+     2541983026,
+     3911159410,
+     3236063931,
+     1603461062,
+     3781226406,
+     1870907904,
+     2369164166
+    ],
+    "first8_mine": [
+     3047764145,
+     2541983026,
+     3911159410,
+     3236063931,
+     1603461062,
+     3781226406,
+     1870907904,
+     2369164166
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 1399079190,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     3559710010,
+     3202556295,
+     2571021475,
+     107891608,
+     2581867487,
+     2506673227,
+     2771712577,
+     1961788723
+    ],
+    "first8_mine": [
+     3559710010,
+     3202556295,
+     2571021475,
+     107891608,
+     2581867487,
+     2506673227,
+     2771712577,
+     1961788723
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 2147483647,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     3436084335,
+     2342095128,
+     3684764512,
+     3886706705,
+     382757220,
+     299924460,
+     2992728014,
+     1061279804
+    ],
+    "first8_mine": [
+     3436084335,
+     2342095128,
+     3684764512,
+     3886706705,
+     382757220,
+     299924460,
+     2992728014,
+     1061279804
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 3141592653,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     1245880229,
+     2541161238,
+     98801798,
+     3285757247,
+     2883570170,
+     2021351370,
+     532013396,
+     3975150154
+    ],
+    "first8_mine": [
+     1245880229,
+     2541161238,
+     98801798,
+     3285757247,
+     2883570170,
+     2021351370,
+     532013396,
+     3975150154
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 4294967295,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     1288600687,
+     194611480,
+     1537280864,
+     1739223057,
+     2530240868,
+     2447408108,
+     845244366,
+     3208763452
+    ],
+    "first8_mine": [
+     1288600687,
+     194611480,
+     1537280864,
+     1739223057,
+     2530240868,
+     2447408108,
+     845244366,
+     3208763452
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 1293840000,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     922185564,
+     29746689,
+     3167350933,
+     3336414626,
+     1097498145,
+     2824412773,
+     3678620499,
+     2926917085
+    ],
+    "first8_mine": [
+     922185564,
+     29746689,
+     3167350933,
+     3336414626,
+     1097498145,
+     2824412773,
+     3678620499,
+     2926917085
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 1420070400,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     4116699356,
+     621007233,
+     2042377749,
+     4134944034,
+     1199570849,
+     4091167205,
+     3240388819,
+     30393693
+    ],
+    "first8_mine": [
+     4116699356,
+     621007233,
+     2042377749,
+     4134944034,
+     1199570849,
+     4091167205,
+     3240388819,
+     30393693
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A1",
+    "what": "int(rand(4294967296))",
+    "seed": 845145127,
+    "n": 2000,
+    "match": true,
+    "first8_perl": [
+     3950940535,
+     584560000,
+     3584818088,
+     613641913,
+     3450849004,
+     3328409300,
+     547755158,
+     2652576100
+    ],
+    "first8_mine": [
+     3950940535,
+     584560000,
+     3584818088,
+     613641913,
+     3450849004,
+     3328409300,
+     547755158,
+     2652576100
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r29",
+    "seed": 0,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     4,
+     21,
+     2,
+     25,
+     16,
+     22,
+     20,
+     10
+    ],
+    "first8_mine": [
+     4,
+     21,
+     2,
+     25,
+     16,
+     22,
+     20,
+     10
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r29",
+    "seed": 1,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     1,
+     13,
+     24,
+     9,
+     16,
+     0,
+     5,
+     28
+    ],
+    "first8_mine": [
+     1,
+     13,
+     24,
+     9,
+     16,
+     0,
+     5,
+     28
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r29",
+    "seed": 42,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     21,
+     9,
+     3,
+     12,
+     2,
+     24,
+     14,
+     13
+    ],
+    "first8_mine": [
+     21,
+     9,
+     3,
+     12,
+     2,
+     24,
+     14,
+     13
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r29",
+    "seed": 12345,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     6,
+     26,
+     5,
+     21,
+     21,
+     26,
+     10,
+     24
+    ],
+    "first8_mine": [
+     6,
+     26,
+     5,
+     21,
+     21,
+     26,
+     10,
+     24
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r29",
+    "seed": 3301,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     19,
+     17,
+     20,
+     16,
+     16,
+     20,
+     28,
+     14
+    ],
+    "first8_mine": [
+     19,
+     17,
+     20,
+     16,
+     16,
+     20,
+     28,
+     14
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r29",
+    "seed": 1033,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     20,
+     17,
+     26,
+     21,
+     10,
+     25,
+     12,
+     15
+    ],
+    "first8_mine": [
+     20,
+     17,
+     26,
+     21,
+     10,
+     25,
+     12,
+     15
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r29_nodup",
+    "seed": 0,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     4,
+     21,
+     2,
+     25,
+     16,
+     22,
+     20,
+     10
+    ],
+    "first8_mine": [
+     4,
+     21,
+     2,
+     25,
+     16,
+     22,
+     20,
+     10
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r29_nodup",
+    "seed": 1,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     1,
+     13,
+     24,
+     9,
+     16,
+     0,
+     5,
+     28
+    ],
+    "first8_mine": [
+     1,
+     13,
+     24,
+     9,
+     16,
+     0,
+     5,
+     28
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r29_nodup",
+    "seed": 42,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     21,
+     9,
+     3,
+     12,
+     2,
+     24,
+     14,
+     13
+    ],
+    "first8_mine": [
+     21,
+     9,
+     3,
+     12,
+     2,
+     24,
+     14,
+     13
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r29_nodup",
+    "seed": 12345,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     6,
+     26,
+     5,
+     21,
+     26,
+     10,
+     24,
+     12
+    ],
+    "first8_mine": [
+     6,
+     26,
+     5,
+     21,
+     26,
+     10,
+     24,
+     12
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r29_nodup",
+    "seed": 3301,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     19,
+     17,
+     20,
+     16,
+     20,
+     28,
+     14,
+     7
+    ],
+    "first8_mine": [
+     19,
+     17,
+     20,
+     16,
+     20,
+     28,
+     14,
+     7
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r29_nodup",
+    "seed": 1033,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     20,
+     17,
+     26,
+     21,
+     10,
+     25,
+     12,
+     15
+    ],
+    "first8_mine": [
+     20,
+     17,
+     26,
+     21,
+     10,
+     25,
+     12,
+     15
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r32_rej",
+    "seed": 0,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     5,
+     23,
+     3,
+     27,
+     18,
+     25,
+     22,
+     11
+    ],
+    "first8_mine": [
+     5,
+     23,
+     3,
+     27,
+     18,
+     25,
+     22,
+     11
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r32_rej",
+    "seed": 1,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     1,
+     14,
+     26,
+     10,
+     18,
+     0,
+     6,
+     24
+    ],
+    "first8_mine": [
+     1,
+     14,
+     26,
+     10,
+     18,
+     0,
+     6,
+     24
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r32_rej",
+    "seed": 42,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     23,
+     10,
+     3,
+     13,
+     2,
+     27,
+     15,
+     15
+    ],
+    "first8_mine": [
+     23,
+     10,
+     3,
+     13,
+     2,
+     27,
+     15,
+     15
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r32_rej",
+    "seed": 12345,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     7,
+     6,
+     23,
+     23,
+     11,
+     27,
+     13,
+     6
+    ],
+    "first8_mine": [
+     7,
+     6,
+     23,
+     23,
+     11,
+     27,
+     13,
+     6
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r32_rej",
+    "seed": 3301,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     22,
+     19,
+     22,
+     17,
+     18,
+     22,
+     15,
+     16
+    ],
+    "first8_mine": [
+     22,
+     19,
+     22,
+     17,
+     18,
+     22,
+     15,
+     16
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r32_rej",
+    "seed": 1033,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     22,
+     18,
+     24,
+     11,
+     28,
+     13,
+     17,
+     12
+    ],
+    "first8_mine": [
+     22,
+     18,
+     24,
+     11,
+     28,
+     13,
+     17,
+     12
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r256_mod",
+    "seed": 0,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     14,
+     17,
+     24,
+     19,
+     2,
+     27,
+     3,
+     7
+    ],
+    "first8_mine": [
+     14,
+     17,
+     24,
+     19,
+     2,
+     27,
+     3,
+     7
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r256_mod",
+    "seed": 1,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     10,
+     0,
+     10,
+     28,
+     28,
+     0,
+     19,
+     21
+    ],
+    "first8_mine": [
+     10,
+     0,
+     10,
+     28,
+     28,
+     0,
+     19,
+     21
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r256_mod",
+    "seed": 42,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     16,
+     0,
+     28,
+     21,
+     20,
+     16,
+     11,
+     6
+    ],
+    "first8_mine": [
+     16,
+     0,
+     28,
+     21,
+     20,
+     16,
+     11,
+     6
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r256_mod",
+    "seed": 12345,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     28,
+     3,
+     23,
+     11,
+     13,
+     0,
+     2,
+     16
+    ],
+    "first8_mine": [
+     28,
+     3,
+     23,
+     11,
+     13,
+     0,
+     2,
+     16
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r256_mod",
+    "seed": 3301,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     2,
+     9,
+     6,
+     25,
+     3,
+     3,
+     22,
+     10
+    ],
+    "first8_mine": [
+     2,
+     9,
+     6,
+     25,
+     3,
+     3,
+     22,
+     10
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r256_mod",
+    "seed": 1033,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     7,
+     6,
+     1,
+     18,
+     8,
+     22,
+     24,
+     25
+    ],
+    "first8_mine": [
+     7,
+     6,
+     1,
+     18,
+     8,
+     22,
+     24,
+     25
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r2p32_mod",
+    "seed": 0,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     16,
+     14,
+     24,
+     2,
+     0,
+     20,
+     11,
+     9
+    ],
+    "first8_mine": [
+     16,
+     14,
+     24,
+     2,
+     0,
+     20,
+     11,
+     9
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r2p32_mod",
+    "seed": 1,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     19,
+     21,
+     7,
+     21,
+     26,
+     23,
+     22,
+     17
+    ],
+    "first8_mine": [
+     19,
+     21,
+     7,
+     21,
+     26,
+     23,
+     22,
+     17
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r2p32_mod",
+    "seed": 42,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     6,
+     7,
+     3,
+     21,
+     19,
+     7,
+     26,
+     16
+    ],
+    "first8_mine": [
+     6,
+     7,
+     3,
+     21,
+     19,
+     7,
+     26,
+     16
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r2p32_mod",
+    "seed": 12345,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     18,
+     13,
+     17,
+     13,
+     14,
+     26,
+     19,
+     26
+    ],
+    "first8_mine": [
+     18,
+     13,
+     17,
+     13,
+     14,
+     26,
+     19,
+     26
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r2p32_mod",
+    "seed": 3301,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     18,
+     6,
+     6,
+     1,
+     1,
+     1,
+     19,
+     23
+    ],
+    "first8_mine": [
+     18,
+     6,
+     6,
+     1,
+     1,
+     1,
+     19,
+     23
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r2p32_mod",
+    "seed": 1033,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     10,
+     3,
+     25,
+     12,
+     22,
+     13,
+     19,
+     2
+    ],
+    "first8_mine": [
+     10,
+     3,
+     25,
+     12,
+     22,
+     13,
+     19,
+     2
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r255_mod",
+    "seed": 0,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     14,
+     17,
+     24,
+     18,
+     2,
+     26,
+     2,
+     7
+    ],
+    "first8_mine": [
+     14,
+     17,
+     24,
+     18,
+     2,
+     26,
+     2,
+     7
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r255_mod",
+    "seed": 1,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     10,
+     28,
+     9,
+     27,
+     28,
+     0,
+     18,
+     20
+    ],
+    "first8_mine": [
+     10,
+     28,
+     9,
+     27,
+     28,
+     0,
+     18,
+     20
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r255_mod",
+    "seed": 42,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     15,
+     0,
+     28,
+     20,
+     20,
+     15,
+     11,
+     6
+    ],
+    "first8_mine": [
+     15,
+     0,
+     28,
+     20,
+     20,
+     15,
+     11,
+     6
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r255_mod",
+    "seed": 12345,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     28,
+     2,
+     23,
+     10,
+     12,
+     28,
+     1,
+     15
+    ],
+    "first8_mine": [
+     28,
+     2,
+     23,
+     10,
+     12,
+     28,
+     1,
+     15
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r255_mod",
+    "seed": 3301,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     1,
+     8,
+     5,
+     25,
+     2,
+     3,
+     21,
+     10
+    ],
+    "first8_mine": [
+     1,
+     8,
+     5,
+     25,
+     2,
+     3,
+     21,
+     10
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r255_mod",
+    "seed": 1033,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     6,
+     5,
+     0,
+     18,
+     8,
+     21,
+     24,
+     24
+    ],
+    "first8_mine": [
+     6,
+     5,
+     0,
+     18,
+     8,
+     21,
+     24,
+     24
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r100_mod",
+    "seed": 0,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     17,
+     16,
+     9,
+     0,
+     28,
+     20,
+     11,
+     7
+    ],
+    "first8_mine": [
+     17,
+     16,
+     9,
+     0,
+     28,
+     20,
+     11,
+     7
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r100_mod",
+    "seed": 1,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     4,
+     16,
+     25,
+     4,
+     27,
+     0,
+     18,
+     12
+    ],
+    "first8_mine": [
+     4,
+     16,
+     25,
+     4,
+     27,
+     0,
+     18,
+     12
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r100_mod",
+    "seed": 42,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     16,
+     5,
+     11,
+     13,
+     8,
+     27,
+     20,
+     18
+    ],
+    "first8_mine": [
+     16,
+     5,
+     11,
+     13,
+     8,
+     27,
+     20,
+     18
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r100_mod",
+    "seed": 12345,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     22,
+     4,
+     20,
+     14,
+     15,
+     3,
+     5,
+     27
+    ],
+    "first8_mine": [
+     22,
+     4,
+     20,
+     14,
+     15,
+     3,
+     5,
+     27
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r100_mod",
+    "seed": 3301,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     10,
+     2,
+     12,
+     26,
+     28,
+     11,
+     12,
+     20
+    ],
+    "first8_mine": [
+     10,
+     2,
+     12,
+     26,
+     28,
+     11,
+     12,
+     20
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r100_mod",
+    "seed": 1033,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     12,
+     1,
+     4,
+     17,
+     8,
+     1,
+     14,
+     26
+    ],
+    "first8_mine": [
+     12,
+     1,
+     4,
+     17,
+     8,
+     1,
+     14,
+     26
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r1000_mod",
+    "seed": 0,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     25,
+     24,
+     9,
+     0,
+     26,
+     2,
+     25,
+     20
+    ],
+    "first8_mine": [
+     25,
+     24,
+     9,
+     0,
+     26,
+     2,
+     25,
+     20
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r1000_mod",
+    "seed": 1,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     12,
+     19,
+     22,
+     16,
+     14,
+     1,
+     13,
+     4
+    ],
+    "first8_mine": [
+     12,
+     19,
+     22,
+     16,
+     14,
+     1,
+     13,
+     4
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r1000_mod",
+    "seed": 42,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     19,
+     23,
+     24,
+     16,
+     23,
+     15,
+     5,
+     14
+    ],
+    "first8_mine": [
+     19,
+     23,
+     24,
+     16,
+     23,
+     15,
+     5,
+     14
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r1000_mod",
+    "seed": 12345,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     22,
+     20,
+     3,
+     28,
+     7,
+     7,
+     28,
+     16
+    ],
+    "first8_mine": [
+     22,
+     20,
+     3,
+     28,
+     7,
+     7,
+     28,
+     16
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r1000_mod",
+    "seed": 3301,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     22,
+     23,
+     9,
+     3,
+     27,
+     28,
+     6,
+     1
+    ],
+    "first8_mine": [
+     22,
+     23,
+     9,
+     3,
+     27,
+     28,
+     6,
+     1
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r1000_mod",
+    "seed": 1033,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     13,
+     11,
+     11,
+     28,
+     25,
+     10,
+     0,
+     0
+    ],
+    "first8_mine": [
+     13,
+     11,
+     11,
+     28,
+     25,
+     10,
+     0,
+     0
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r26_lat",
+    "seed": 0,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     18,
+     16,
+     5,
+     7,
+     13,
+     1,
+     4,
+     11
+    ],
+    "first8_mine": [
+     18,
+     16,
+     5,
+     7,
+     13,
+     1,
+     4,
+     11
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r26_lat",
+    "seed": 1,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     17,
+     20,
+     1,
+     10,
+     3,
+     24,
+     18,
+     15
+    ],
+    "first8_mine": [
+     17,
+     20,
+     1,
+     10,
+     3,
+     24,
+     18,
+     15
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r26_lat",
+    "seed": 42,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     16,
+     10,
+     5,
+     5,
+     5,
+     7,
+     19,
+     19
+    ],
+    "first8_mine": [
+     16,
+     10,
+     5,
+     5,
+     5,
+     7,
+     19,
+     19
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r26_lat",
+    "seed": 12345,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     0,
+     14,
+     0,
+     15,
+     16,
+     14,
+     11,
+     7
+    ],
+    "first8_mine": [
+     0,
+     14,
+     0,
+     15,
+     16,
+     14,
+     11,
+     7
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r26_lat",
+    "seed": 3301,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     4,
+     13,
+     15,
+     3,
+     13,
+     15,
+     15,
+     19
+    ],
+    "first8_mine": [
+     4,
+     13,
+     15,
+     3,
+     13,
+     15,
+     15,
+     19
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "A2",
+    "what": "r26_lat",
+    "seed": 1033,
+    "n": 512,
+    "match": true,
+    "first8_perl": [
+     15,
+     13,
+     14,
+     16,
+     11,
+     7,
+     20,
+     3
+    ],
+    "first8_mine": [
+     15,
+     13,
+     14,
+     16,
+     11,
+     7,
+     20,
+     3
+    ],
+    "first_mismatch": null
+   }
+  ]
+ },
+ "gate_B": {
+  "pass": true,
+  "rows": [
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 0,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.17082803610628972",
+     "0.74990198048496381"
+    ],
+    "first2_perl": [
+     "0.17082803610628972",
+     "0.74990198048496381"
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 1,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.041630344771878214",
+     "0.45449244472862915"
+    ],
+    "first2_perl": [
+     "0.041630344771878214",
+     "0.45449244472862915"
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 42,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.74452500006100664",
+     "0.34270147871890799"
+    ],
+    "first2_perl": [
+     "0.74452500006100664",
+     "0.34270147871890799"
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 12345,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.22532851279629895",
+     "0.91918306853355602"
+    ],
+    "first2_perl": [
+     "0.22532851279629895",
+     "0.91918306853355602"
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 3301,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.689248941213922",
+     "0.60302444882424311"
+    ],
+    "first2_perl": [
+     "0.689248941213922",
+     "0.60302444882424311"
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 1033,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.70961288765920827",
+     "0.59185154419125752"
+    ],
+    "first2_perl": [
+     "0.70961288765920827",
+     "0.59185154419125752"
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 1399079190,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.82880957292309532",
+     "0.74565324359306828"
+    ],
+    "first2_perl": [
+     "0.82880957292309532",
+     "0.74565324359306828"
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 2147483647,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.80002572744070122",
+     "0.54531151624129848"
+    ],
+    "first2_perl": [
+     "0.80002572744070122",
+     "0.54531151624129848"
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 3141592653,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.29007909570737311",
+     "0.59166020676227049"
+    ],
+    "first2_perl": [
+     "0.29007909570737311",
+     "0.59166020676227049"
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 4294967295,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.30002572744070122",
+     "0.045311516241298477"
+    ],
+    "first2_perl": [
+     "0.30002572744070122",
+     "0.045311516241298477"
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 1293840000,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.21471305850809941",
+     "0.0069259408369077846"
+    ],
+    "first2_perl": [
+     "0.21471305850809941",
+     "0.0069259408369077846"
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 1420070400,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.95849376086062321",
+     "0.14458951386356489"
+    ],
+    "first2_perl": [
+     "0.95849376086062321",
+     "0.14458951386356489"
+    ],
+    "first_mismatch": null
+   },
+   {
+    "gate": "B",
+    "what": "perl rand() vs glibc drand48()",
+    "seed": 845145127,
+    "n": 1024,
+    "match": true,
+    "first2_glibc": [
+     "0.91990002787588665",
+     "0.13610348114477233"
+    ],
+    "first2_perl": [
+     "0.91990002787588665",
+     "0.13610348114477233"
+    ],
+    "first_mismatch": null
+   }
+  ]
+ },
+ "gate_C": {
+  "pass": true,
+  "rows": [
+   {
+    "gate": "C1",
+    "what": "srand(S) == srand(S+2**32) == srand(S+2**33)",
+    "seed": 1,
+    "match": true,
+    "first6": [
+     1,
+     13,
+     24,
+     9,
+     16,
+     0
+    ]
+   },
+   {
+    "gate": "C1",
+    "what": "srand(S) == srand(S+2**32) == srand(S+2**33)",
+    "seed": 3301,
+    "match": true,
+    "first6": [
+     19,
+     17,
+     20,
+     16,
+     16,
+     20
+    ]
+   },
+   {
+    "gate": "C1",
+    "what": "srand(S) == srand(S+2**32) == srand(S+2**33)",
+    "seed": 1293840000,
+    "match": true,
+    "first6": [
+     6,
+     0,
+     21,
+     22,
+     7,
+     19
+    ]
+   },
+   {
+    "gate": "C2",
+    "what": "(M*x)>>48 == int(M*(x/2**48)) for M=26",
+    "n": 52000,
+    "mismatches": 0,
+    "match": true
+   },
+   {
+    "gate": "C2",
+    "what": "(M*x)>>48 == int(M*(x/2**48)) for M=29",
+    "n": 52000,
+    "mismatches": 0,
+    "match": true
+   },
+   {
+    "gate": "C2",
+    "what": "(M*x)>>48 == int(M*(x/2**48)) for M=32",
+    "n": 52000,
+    "mismatches": 0,
+    "match": true
+   },
+   {
+    "gate": "C2",
+    "what": "(M*x)>>48 == int(M*(x/2**48)) for M=256",
+    "n": 52000,
+    "mismatches": 0,
+    "match": true
+   },
+   {
+    "gate": "C2",
+    "what": "(M*x)>>48 == int(M*(x/2**48)) for M=4294967296",
+    "n": 52000,
+    "mismatches": 0,
+    "match": true
+   },
+   {
+    "gate": "C3",
+    "what": "srand() argument coercion",
+    "match": true,
+    "detail": [
+     {
+      "arg": "3301",
+      "perl540_srand_ret": "3301",
+      "perl540_first8": [
+       19,
+       17,
+       20,
+       16,
+       16,
+       20,
+       28,
+       14
+      ],
+      "my_5.40_seed32": 3301,
+      "my_5.40_first8": [
+       19,
+       17,
+       20,
+       16,
+       16,
+       20,
+       28,
+       14
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 3301,
+      "my_5.14_uv": 3301,
+      "eras_diverge": false
+     },
+     {
+      "arg": "CICADA3301",
+      "perl540_srand_ret": "18446744073709551615",
+      "perl540_first8": [
+       8,
+       1,
+       10,
+       11,
+       17,
+       16,
+       5,
+       21
+      ],
+      "my_5.40_seed32": 4294967295,
+      "my_5.40_first8": [
+       8,
+       1,
+       10,
+       11,
+       17,
+       16,
+       5,
+       21
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 0,
+      "my_5.14_uv": 0,
+      "eras_diverge": true
+     },
+     {
+      "arg": "3301CICADA",
+      "perl540_srand_ret": "18446744073709551615",
+      "perl540_first8": [
+       8,
+       1,
+       10,
+       11,
+       17,
+       16,
+       5,
+       21
+      ],
+      "my_5.40_seed32": 4294967295,
+      "my_5.40_first8": [
+       8,
+       1,
+       10,
+       11,
+       17,
+       16,
+       5,
+       21
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 3301,
+      "my_5.14_uv": 3301,
+      "eras_diverge": true
+     },
+     {
+      "arg": "0x0CE5",
+      "perl540_srand_ret": "18446744073709551615",
+      "perl540_first8": [
+       8,
+       1,
+       10,
+       11,
+       17,
+       16,
+       5,
+       21
+      ],
+      "my_5.40_seed32": 4294967295,
+      "my_5.40_first8": [
+       8,
+       1,
+       10,
+       11,
+       17,
+       16,
+       5,
+       21
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 0,
+      "my_5.14_uv": 0,
+      "eras_diverge": true
+     },
+     {
+      "arg": "3.7",
+      "perl540_srand_ret": "3",
+      "perl540_first8": [
+       22,
+       25,
+       9,
+       7,
+       15,
+       12,
+       5,
+       6
+      ],
+      "my_5.40_seed32": 3,
+      "my_5.40_first8": [
+       22,
+       25,
+       9,
+       7,
+       15,
+       12,
+       5,
+       6
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 3,
+      "my_5.14_uv": 3,
+      "eras_diverge": false
+     },
+     {
+      "arg": "-1",
+      "perl540_srand_ret": "1",
+      "perl540_first8": [
+       1,
+       13,
+       24,
+       9,
+       16,
+       0,
+       5,
+       28
+      ],
+      "my_5.40_seed32": 1,
+      "my_5.40_first8": [
+       1,
+       13,
+       24,
+       9,
+       16,
+       0,
+       5,
+       28
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 4294967295,
+      "my_5.14_uv": 18446744073709551615,
+      "eras_diverge": true
+     },
+     {
+      "arg": "1e3",
+      "perl540_srand_ret": "18446744073709551615",
+      "perl540_first8": [
+       8,
+       1,
+       10,
+       11,
+       17,
+       16,
+       5,
+       21
+      ],
+      "my_5.40_seed32": 4294967295,
+      "my_5.40_first8": [
+       8,
+       1,
+       10,
+       11,
+       17,
+       16,
+       5,
+       21
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 1000,
+      "my_5.14_uv": 1000,
+      "eras_diverge": true
+     },
+     {
+      "arg": "4294967297",
+      "perl540_srand_ret": "4294967297",
+      "perl540_first8": [
+       1,
+       13,
+       24,
+       9,
+       16,
+       0,
+       5,
+       28
+      ],
+      "my_5.40_seed32": 1,
+      "my_5.40_first8": [
+       1,
+       13,
+       24,
+       9,
+       16,
+       0,
+       5,
+       28
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 1,
+      "my_5.14_uv": 4294967297,
+      "eras_diverge": false
+     },
+     {
+      "arg": "0",
+      "perl540_srand_ret": "0 but true",
+      "perl540_first8": [
+       4,
+       21,
+       2,
+       25,
+       16,
+       22,
+       20,
+       10
+      ],
+      "my_5.40_seed32": 0,
+      "my_5.40_first8": [
+       4,
+       21,
+       2,
+       25,
+       16,
+       22,
+       20,
+       10
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 0,
+      "my_5.14_uv": 0,
+      "eras_diverge": false
+     },
+     {
+      "arg": "",
+      "perl540_srand_ret": "18446744073709551615",
+      "perl540_first8": [
+       8,
+       1,
+       10,
+       11,
+       17,
+       16,
+       5,
+       21
+      ],
+      "my_5.40_seed32": 4294967295,
+      "my_5.40_first8": [
+       8,
+       1,
+       10,
+       11,
+       17,
+       16,
+       5,
+       21
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 0,
+      "my_5.14_uv": 0,
+      "eras_diverge": true
+     },
+     {
+      "arg": "3301.9",
+      "perl540_srand_ret": "3301",
+      "perl540_first8": [
+       19,
+       17,
+       20,
+       16,
+       16,
+       20,
+       28,
+       14
+      ],
+      "my_5.40_seed32": 3301,
+      "my_5.40_first8": [
+       19,
+       17,
+       20,
+       16,
+       16,
+       20,
+       28,
+       14
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 3301,
+      "my_5.14_uv": 3301,
+      "eras_diverge": false
+     },
+     {
+      "arg": " 42",
+      "perl540_srand_ret": "42",
+      "perl540_first8": [
+       21,
+       9,
+       3,
+       12,
+       2,
+       24,
+       14,
+       13
+      ],
+      "my_5.40_seed32": 42,
+      "my_5.40_first8": [
+       21,
+       9,
+       3,
+       12,
+       2,
+       24,
+       14,
+       13
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 42,
+      "my_5.14_uv": 42,
+      "eras_diverge": false
+     },
+     {
+      "arg": "+3301",
+      "perl540_srand_ret": "3301",
+      "perl540_first8": [
+       19,
+       17,
+       20,
+       16,
+       16,
+       20,
+       28,
+       14
+      ],
+      "my_5.40_seed32": 3301,
+      "my_5.40_first8": [
+       19,
+       17,
+       20,
+       16,
+       16,
+       20,
+       28,
+       14
+      ],
+      "model_matches_running_perl": true,
+      "my_5.14_seed32": 3301,
+      "my_5.14_uv": 3301,
+      "eras_diverge": false
+     }
+    ]
+   }
+  ]
+ }
+}

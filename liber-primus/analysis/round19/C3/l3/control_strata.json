@@ -1,0 +1,108 @@
+{
+ "by_call": {
+  "RUNIC": {
+   "n_bands": 56,
+   "glyphs_read": 1097,
+   "matched": 1049,
+   "precision_pct": 95.62
+  },
+  "NON-RUNIC": {
+   "n_bands": 8,
+   "glyphs_read": 101,
+   "matched": 17,
+   "precision_pct": 16.83
+  },
+  "DEGENERATE": {
+   "n_bands": 0,
+   "glyphs_read": 0,
+   "matched": 0,
+   "precision_pct": 0.0
+  }
+ },
+ "short_le16": {
+  "all": {
+   "n_bands": 12,
+   "glyphs_read": 94,
+   "matched": 56,
+   "precision_pct": 59.57
+  },
+  "RUNIC": {
+   "n_bands": 6,
+   "glyphs_read": 54,
+   "matched": 54,
+   "precision_pct": 100.0
+  },
+  "not_RUNIC": {
+   "n_bands": 6,
+   "glyphs_read": 40,
+   "matched": 2,
+   "precision_pct": 5.0
+  }
+ },
+ "short_confusion": {
+  "note": "rows = ground truth (known rune ink vs known non-rune ink), columns = the reader RUNIC call. Objects of <= 16 glyphs only.",
+  "true_rune_called_RUNIC": 6,
+  "true_rune_called_other": 6,
+  "non_rune_called_RUNIC": 2,
+  "non_rune_called_other": 2,
+  "sensitivity": 0.5,
+  "specificity": 0.5,
+  "positive_predictive_value": 0.75,
+  "n_non_rune_probes_le16": 4
+ },
+ "all_sizes_confusion": {
+  "true_rune_called_RUNIC": 56,
+  "true_rune_called_other": 8,
+  "non_rune_called_RUNIC": 2,
+  "non_rune_called_other": 13,
+  "sensitivity": 0.875,
+  "specificity": 0.867,
+  "positive_predictive_value": 0.966
+ },
+ "LP2_face": {
+  "all": {
+   "n_bands": 10,
+   "glyphs_read": 180,
+   "matched": 172,
+   "precision_pct": 95.56
+  },
+  "RUNIC": {
+   "n_bands": 10,
+   "glyphs_read": 180,
+   "matched": 172,
+   "precision_pct": 95.56
+  }
+ },
+ "false_positive_probes": [
+  {
+   "page": 2,
+   "kind": "woodcut",
+   "box": [
+    1853,
+    2343,
+    640,
+    1903
+   ],
+   "n_glyphs": 7,
+   "call": "RUNIC",
+   "degeneracy": 0.286,
+   "medcost": 155.0,
+   "read": "AECGEOLSC"
+  },
+  {
+   "page": 14,
+   "kind": "woodcut",
+   "box": [
+    43,
+    503,
+    1351,
+    2887
+   ],
+   "n_glyphs": 5,
+   "call": "RUNIC",
+   "degeneracy": 0.2,
+   "medcost": 85.7,
+   "read": "XTEO?I"
+  }
+ ]
+}

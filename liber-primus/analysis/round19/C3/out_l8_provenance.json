@@ -1,0 +1,226 @@
+{
+ "$schema_note": "C3 machine summary for item 2 (round18 L8-provenance closeout). Human record: round19/C3/RESULTS.md. Ledger fragments: round19/C3/ledger.json.",
+ "lane": "round19/C3",
+ "item": "L8-provenance",
+ "generated_utc": "2026-08-26",
+ "ledger_items": ["CORPUS-G-02", "I-01", "I-03", "L1-F6-CORRECTION"],
+ "gpg_version": "GnuPG 2.4.8",
+
+ "pgp_table_rederivation": {
+  "method": "verify_all_signatures.py re-run from scratch in a fresh isolated GNUPGHOME over the whole repository, then diffed file-by-file against round18's stored table. The stored JSON was not read as evidence.",
+  "disclosed_change": "round18's own control artifacts (work/control_C2_tampered.asc, work/control_C3_foreign.asc) are excluded from the enumerator so a deliberately tampered file and a foreign-key file cannot enter the corpus counts.",
+  "controls": {
+   "C1_untouched_good_file": {"required": "GOODSIG 181F01E57A35090F", "measured": "GOODSIG 181F01E57A35090F + VALIDSIG 6D854CD7933322A601C3286D181F01E57A35090F", "met": true},
+   "C2_body_tamper": {"required": "BADSIG, no GOODSIG", "measured": "BADSIG, no GOODSIG", "met": true},
+   "C3_foreign_key": {"required": "not GOODSIG for 3301", "measured": "NO_PUBKEY for the foreign keyid, no GOODSIG", "met": true},
+   "C4_timestamp_survives_tamper": {"required": "created unchanged", "measured": "unchanged", "met": true},
+   "all_met": true,
+   "why_C2_C3_matter": "Without them a table of 192 PASSes says only that gpg ran. They are what make a FAIL in this table a fact.",
+   "keyring_isolation": "enforced in code: throwaway GNUPGHOME per run, importing only key blocks whose PRIMARY fingerprint is canonical; the script aborts if any other primary key is present, so a PASS cannot be manufactured from ambient GnuPG state"
+  },
+  "counts": {
+   "c3_files_scanned": 238,
+   "round18_files_scanned": 228,
+   "shared_files": 228,
+   "c3_all": {"PASS": 192, "FAIL": 3, "NO-SIG": 27, "KEY": 16},
+   "round18_all": {"PASS": 192, "FAIL": 3, "NO-SIG": 22, "KEY": 11},
+   "c3_on_shared_files": {"PASS": 192, "FAIL": 3, "NO-SIG": 22, "KEY": 11},
+   "round18_on_shared_files": {"PASS": 192, "FAIL": 3, "NO-SIG": 22, "KEY": 11},
+   "agree_on_shared_files": true,
+   "verdict_changed_on_a_shared_file": 0,
+   "sha256_changed_on_a_shared_file": 0,
+   "files_only_in_round18": 0
+  },
+  "ten_extra_files_explained": {
+   "count": 10,
+   "what": "L8's OWN evidence artifacts, fetched AFTER its verification run",
+   "breakdown": "seven third-party project keys under evidence/baserate/ (Tor Browser, Bitcoin Core, GnuPG release, Tails, Apache, Debian archive, Linus Torvalds), the two mruzuki keyserver exports, and one zero-byte .asc",
+   "none_is_cicada_corpus": true,
+   "conclusion": "excluding them, the two runs are identical in every field"
+  },
+  "scope": {
+   "asc_files": 238,
+   "distinct_by_sha256": 121,
+   "distinct_signed_messages": 54,
+   "distinct_normalised_bodies": 55,
+   "date_range_utc": ["2012-01-05T03:46:03Z", "2017-04-04T23:23:28Z"],
+   "span_days": 1916,
+   "files_PASS": 192,
+   "messages_verifying_against_7A35090F": "54 of 54",
+   "files_FAIL": 3,
+   "distinct_signing_keyids": ["181F01E57A35090F"],
+   "n_distinct_signing_keyids": 1,
+   "timestamps_read_from": "the signature packet itself, not a filename or a webpage"
+  },
+  "the_three_fails": {
+   "they_are_one_message": true,
+   "message": "the 2013-01-03 'Welcome again.' book-code message",
+   "timestamp_utc": "2013-01-03T04:33:29Z",
+   "mirrored_into": 3,
+   "bytes_each": 1536,
+   "gpg_diagnosis": "invalid armor header: Welcome again.",
+   "cause": "the mirror dropped the blank line separating the `Hash: SHA1` armor header from the body, so the message's first line is parsed as a header and excluded from the hashed data",
+   "passing_copies_of_same_normalised_body": 4,
+   "repaired_copy_in_tree": "corpus/A-primary-artifacts/pgp/repaired/ky_2013-01-opening-book-code.repaired.asc (1538 bytes) PASSes with the identical signature packet",
+   "verdict_under_prereg_rule": "transport defect, not a canon failure",
+   "operational_warning": "A TWO-BYTE whitespace defect turns an authentic Cicada message into a BADSIG. Anyone running this repository's own declared authenticity test (KNOWLEDGE.json: authenticity_test) against a casually mirrored copy gets a FALSE NEGATIVE and may conclude a genuine message is a forgery. Three such files are in this tree right now."
+  },
+  "no_sig_hazard": {
+   "count": 22,
+   "of_which_http_429_error_pages": 19,
+   "bytes_each": 199,
+   "location": "liber-primus/analysis/round10/L6-archives/fetched/jaxonkuipers/comms/",
+   "hazard": "named like communications (e.g. 2012-01-book-code-poem.asc); any tool that globs **/*.asc picks them up as Cicada messages. In the tree since Round 10."
+  },
+  "prior_art_correction": {
+   "prereg_claim": "no PGP verification table exists anywhere for the 3301 corpus",
+   "c3_position": "NOT endorsed as written",
+   "prior_art": "corpus/A-primary-artifacts/SIGNATURES.json verified 140 files on 2026-08-20, one day AFTER GAPS.md was compiled, which is why G-02 does not mention it",
+   "defensible_claim": "first verification of the WHOLE tree (238 files, including the entire jaxonkuipers fetch that G-02 itself points at, every E-tooling/vendor mirror and H-branch-recovery); first with published positive AND negative controls; first grouped to distinct messages; first in human-readable form. The prior run left an 88-file gap and had no controls."
+  }
+ },
+
+ "L1_crosscheck": {
+  "verdict": "FOUND-ERROR",
+  "target": "round18/L1-toolchain/RESULTS.md finding F6: '46/46 curated 3301 PGP messages, 2012->2014, are GnuPG v1.4.11 (GNU/Linux)', supporting 'one environment, three years, no drift'",
+  "measured_in_same_directory": {
+   "directory": "corpus/A-primary-artifacts/ibotpeaches/messages/",
+   "PASSing_files": 56,
+   "distinct_timestamps": 54,
+   "actual_date_span": ["2012-01-05", "2017-04-04"],
+   "version_strings": {"GnuPG v1.4.11 (GNU/Linux)": 53, "GnuPG v1": 2, "CicadaPG v.3301": 1}
+  },
+  "repo_wide_per_distinct_message": {
+   "GnuPG v1.4.11 (GNU/Linux)": {"messages": 54, "dates": ["2012-01-05", "2014-04-02"]},
+   "GnuPG v1": {"messages": 2, "dates": ["2015-07-28", "2016-01-01"]},
+   "CicadaPG v.3301": {"messages": 1, "dates": ["2017-04-04"]}
+  },
+  "consequences": [
+   "F6's denominator (46) and window (2012->2014) are both wrong; the window truncates the span at exactly the point where the version string changes, so the claim is true INSIDE its window while the headline drawn from it - 'one environment, three years, no drift' - is contradicted by the same directory's own later files",
+   "The signing toolchain changed TWICE, not once. Round 18's L8 recorded one change from the digest algorithm (SHA-1 x53 -> SHA-512 x1 at 2017-04-04). The armor Version header shows an EARLIER, independent change between 2014-04-02 and 2015-07-28. Two dated transitions from two independent fields; the later one is corroborated by both.",
+   "'CicadaPG v.3301' is hand-set - no GnuPG build emits it. It is a deliberately customised armor version on the final 2017-04-04 message, which is also the only SHA-512 one.",
+   "L1's CONCLUSION SURVIVES and the correction sharpens it: the 1.4.11 environment is now attested over 2012-01-05 to 2014-04-02, 818 days, covering the entire Liber Primus release window. Round 19's Phase-1 generator ranking is NOT weakened; the era attribution is tighter than L1 stated because its end is now bounded."
+  ],
+  "independent_convergence": {
+   "lane": "round19/R1 (red-team)",
+   "what_R1_found": "a non-ImageMagick chain (Ghostscript -> PIL with quality='keep') reproduces all four of LP2's discriminating JPEG fields, and GnuPG 1.4.11 shipped in at least 6 OS generations including Ubuntu 12.10, outside L1's stated 11.04-12.04 bracket",
+   "significance": "two lanes reached the same defect in L1's prior from different directions - R1 from the render/packaging side, C3 from the signed-corpus side. Convergent, independent evidence is much stronger than either alone, and it matters because L1's prior is what justifies Round 19 Phase 1.",
+   "cite": "round19/R1/RESULTS.md section C"
+  },
+  "not_covered": "which exact GnuPG minor version emits the short 'GnuPG v1' form. C3 did not pin it to a release and does not assert one; the source check L8 3.2 performed for keygen_set_std_prefs() was not repeated for armor.c.",
+  "recommended_action": "correct F6/F7's numbers and window in round18/L1-toolchain/RESULTS.md section 6 and its ledger entry, marking the old figures superseded rather than deleting them. NOT done by C3 - outside this lane's write scope."
+ },
+
+ "crypt_rsa_finding": {
+  "headline": "3301's own cryptographically-signed messages name Perl, twice, two years apart - and both PASS signature verification",
+  "why_it_matters": "This is self-declared, signed, dated evidence for a Perl environment. It is far stronger support for Round 19's G2 (Perl 5.14 rand/srand) prior than any distro-version argument, and nobody in this repository has cited it as toolchain evidence.",
+  "messages": [
+   {
+    "date_utc": "2012-01-15T01:39:42Z",
+    "verdict": "PASS",
+    "signing_keyid": "181F01E57A35090F",
+    "path": "corpus/A-primary-artifacts/ibotpeaches/messages/2012/this-message-will-only-be-displayed.asc",
+    "prose_quote": "Here is a message that has been encrypted with RSA (the Crypt::RSA Perl module available in CPAN)",
+    "machine_artifacts": ["BEGIN COMPRESSED RSA ENCRYPTED MESSAGE", "Version: 1.99", "Scheme: Crypt::RSA::ES::OAEP"],
+    "data_dumper": "the message pastes `$VAR1 = bless( { 'e' => 65537, 'n' => '...', 'Version' => '1.99', 'Identity' => '...' }, 'Crypt::RSA::Key::Public' );` - that `$VAR1 = bless(...)` form is literally Perl's Data::Dumper default output, so the author ran a Perl script and dumped the key structure straight into a signed message",
+    "also_contains": "3301's OWN statement of the authenticity test: 'There are many fake messages out there. Only messages signed with public key ID 7A35090F are valid.' - which is the very test corpus G-02 exists to operationalise, stated by the keyholder, in a message that PASSes"
+   },
+   {
+    "date_utc": "2014-01-06T07:35:27Z",
+    "verdict": "PASS",
+    "signing_keyid": "181F01E57A35090F",
+    "mirrors": 3,
+    "paths": [
+     "corpus/A-primary-artifacts/ibotpeaches/messages/2014/welcome.asc",
+     "corpus/A-primary-artifacts/pgp/messages/2014-01-rsa-oaep-challenge.asc",
+     "liber-primus/analysis/round10/L6-archives/fetched/jaxonkuipers/comms/2014-01-rsa-oaep-challenge.asc"
+    ],
+    "machine_artifacts": ["BEGIN COMPRESSED RSA ENCRYPTED MESSAGE", "Version: 1.99", "Scheme: Crypt::RSA::ES::OAEP"]
+   }
+  ],
+  "n_files_in_table_mentioning_Crypt_RSA": 4,
+  "n_distinct_messages": 2,
+  "all_PASS": true,
+  "module_version_pinned": "Crypt::RSA 1.99 (the module's own armor Version field, emitted by the library, on both messages)",
+  "dating": "both fall inside the GnuPG 1.4.11 window this lane bounded (2012-01-05 to 2014-04-02)",
+  "what_this_is_not": "It does not establish that the Liber Primus keystream came from Perl. It establishes that the author had a working Perl + CPAN environment in January 2012 and still in January 2014, by their own signed statement and by the library's own machine-emitted armor.",
+  "lead_not_claim": "Crypt::RSA::ES::OAEP draws its padding randomness through Crypt::Random. Whether that dependency chain is a plausible source for any 3301 keystream is a question for a generator lane, not a claim made here."
+ },
+
+ "I_03_predisclosure": {
+  "decision": "NOT re-run in full. Reported as PARTIALLY COVERED, with the one gap the round18 lane itself named as reopening condition #2 now CLOSED.",
+  "rationale": "A concurrent Round-18 continuation completed L8's section 4 while C3 was down, using Wayback CDX, a direct read of bitcointalk topic 347716 and the cryptoanarchy.wiki mirror statement. It reached the same conclusions C3's archive work reached by different evidence. Re-running it would duplicate finished work; instead C3 added the two things it did not have.",
+  "c3_additions": {
+   "1_mailing_list_coverage_as_a_denominator": {
+    "metzdowd": {"months_in_hard_window": 13, "months_the_archive_holds": 1, "which": "2011-August", "downloaded": 8, "bytes": 1900000, "term_hits_in_window": 0},
+    "cypherpunks": {"months_in_hard_window": 13, "months_the_archive_holds": 0, "messages_before_2013": 0, "messages_2013": 2645, "bytes_2013": 5500000, "term_hits": 0},
+    "bound": "1/13 months of the hard window, not the 36-month sweep the round18 script appeared to report"
+   },
+   "2_transport_diagnosis": {
+    "round18_recorded": "http=000 for all 36 cypherpunks months",
+    "actual_causes": ["the host's TLS certificate has EXPIRED, so a verifying client fails before it sees an HTTP status", "the list no longer runs pipermail at all - /pipermail/cypherpunks/ returns 404 and the archive is served by HyperKitty at /archives/list/cypherpunks@lists.cpunks.org/"],
+    "why_it_matters": "http=000 is a transport failure, not a 404, and neither is a searched month. Round 18 was pointed at a dead endpoint behind a broken certificate and recorded the result as a negative.",
+    "c3_measurement": "fetched the live HyperKitty yearly mbox exports directly, confirming ZERO messages before 2013 from the archive's own export rather than from a Wayback inference, and grepping all 2645 messages of 2013 for all twelve terms - zero hits"
+   },
+   "3_bitcointalk_upgraded_from_reported_to_verified": {
+    "closes": "round18 L8 RESULTS.md section 4.6 reopening condition #2 - 'a local bitcointalk corpus replacing the search-engine layer'",
+    "instrument": "api.ninjastic.space, a third-party full-text index over bitcointalk posts with per-post ids, dates and authors",
+    "terms_run": 12,
+    "terms_unchanged_and_unextended": true,
+    "ceiling": "2012-01-04",
+    "results": [
+     {"term": "3301", "total": 999, "earliest": "2011-04-24", "pre_ceiling": 2, "adjudication": "NOT A HIT - both are the number 3301 inside MtGox order-book JSON on a trading thread"},
+     {"term": "845145127", "total": 0, "earliest": null, "pre_ceiling": 0, "adjudication": "ZERO occurrences in the entire index, ever"},
+     {"term": "cicada", "total": 622, "earliest": "2011-07-04", "pre_ceiling": 20, "adjudication": "NOT A HIT - all are a bitcointalk USERNAME posting in GPU-mining hardware threads (mining rigs, fan noise, PCI-E hash rate). The anti-motivated-reasoning clause covers this explicitly. Not pursued as an attribution lead, per standing policy."},
+     {"term": "instar", "total": 279, "earliest": "2011-05-17", "pre_ceiling": 3, "adjudication": "NOT A HIT - all French-language posts using 'a l'instar de' (substring match)"},
+     {"term": "instar emergence", "total": 1, "earliest": "2017-08-11", "pre_ceiling": 0, "adjudication": "no pre-ceiling match"},
+     {"term": "looking for highly intelligent", "total": 306, "earliest": "2011-05-31", "pre_ceiling": 3, "adjudication": "NOT A HIT - unrelated mining/gold/price threads; the API token-matches rather than phrase-matches, so this term was NOT tested as a phrase"},
+     {"term": "liber primus", "total": 4, "earliest": "2018-01-16", "pre_ceiling": 0, "adjudication": "no pre-ceiling match"},
+     {"term": "futhorc", "total": 0, "earliest": null, "pre_ceiling": 0, "adjudication": "ZERO occurrences in the entire index, ever"},
+     {"term": "mabinogion", "total": 4, "earliest": "2016-10-26", "pre_ceiling": 0, "adjudication": "no pre-ceiling match"},
+     {"term": "outguess", "total": 65, "earliest": "2011-01-11", "pre_ceiling": 1, "adjudication": "NOT A HIT - a 2011-01-11 thread 'steganography: Hiding your wallet in a JPEG image' discussing stegdetect. Generic Bitcoin stego tooling talk with no Cicada element and no recruitment element. The single most interesting near-miss, and explicitly rejected against the bar."},
+     {"term": "a2e7j6ic78h0j", "total": 0, "earliest": null, "pre_ceiling": 0, "adjudication": "ZERO occurrences in the entire index, ever"},
+     {"term": "cicada 3301", "total": 263, "earliest": "2014-03-15", "pre_ceiling": 0, "adjudication": "no pre-ceiling match"}
+    ],
+    "verdict": "NO HIT. All 29 pre-ceiling matches adjudicated by eye and rejected against the pre-registered bar: none is element-specific.",
+    "strongest_negatives": "845145127, futhorc and the onion string a2e7j6ic78h0j have ZERO occurrences in the entire bitcointalk index at any date.",
+    "instrument_caveats": [
+     "the API token-matches multi-word queries rather than phrase-matching, so the multi-word terms ('instar emergence', 'looking for highly intelligent', 'liber primus', 'cicada 3301') were NOT tested as phrases. Single-token terms are reliably tested.",
+     "ninjastic's earliest 'cicada 3301' is 2014-03-15 while the round18 lane read bitcointalk topic 347716 directly at 2013-11-26, so the index is not complete for that topic. The direct read is the better evidence. Recorded rather than reconciled - the index is a supplement, not a replacement."
+    ]
+   }
+  },
+  "hit_verdict": "NONE, across every arm. Every hit in every machine-searched corpus is post-disclosure and traceable to one 2013 newspaper article.",
+  "residual_coverage_gap": [
+   "12 of the 13 months of the hard window are not held by either mailing-list archive and were NOT searched - no public cypherpunks archive covering 2011-2012 exists as of 2026-08-26",
+   "multi-word pre-registered terms were not phrase-tested on bitcointalk",
+   "4chan /x/ and /b/ for 2011: the archives largely postdate 2011, so this vector is structurally incapable of a hit rather than merely unsearched",
+   "sci.crypt, Freenode IRC logs and full-disclosure were not searched"
+  ],
+  "needs_owner_run_or_paid": [
+   {"vector": "paid newspaper / Usenet archive full-text search", "buys": "window coverage beyond 1/13 months"},
+   {"vector": "a cypherpunks 2000-2013 archive surfacing (cryptoanarchy.wiki maintainers are actively seeking one)", "buys": "the single largest missing corpus; the term set is already fixed so a result would be immediately comparable"},
+   {"vector": "a bitcointalk database dump", "buys": "phrase-accurate search, closing the token-matching caveat"},
+   {"vector": "see round12/A2 for the standing paid-vector register", "buys": null}
+  ]
+ },
+
+ "I_01": {
+  "verdict": "INDECISIVE - round18's verdict stands, unchanged by C3",
+  "summary": "Where the SOFTWARE chose, the two keys agree; where a HUMAN chose, they differ. Key size 4096 vs 2048, expiry policy none vs ONE DAY, revocation never vs 2012-01-22 (reason 0x03 'no longer used'). The matching preference lists are exactly GnuPG 1.4.x/2.0.x keygen_set_std_prefs() defaults, which in January 2012 describes most new OpenPGP keys on Earth.",
+  "c3_note_1": "The CicadaPG v.3301 armor header found in C3's L1 cross-check proves the author edited armor output in 2017. It does NOT weaken the INDECISIVE verdict, because that verdict rests on KEY PREFERENCE PACKETS set in January 2012 - five years earlier and a different part of the format. Recorded explicitly so the two findings are not later welded into a claim neither supports.",
+  "c3_note_2": "The base-rate control is still missing and still matters. Round 18's attempt used four live project keys, none created in January 2012, and a live key's UID self-signature is REISSUED on every edit, so a keyserver copy shows the preferences of the last edit rather than of creation. A properly matched control needs keys whose self-sigs are frozen in 2012 - abandoned or revoked keys. Not sourced by round18 and not by C3.",
+  "arithmetic_correction_restated": "AUDITOR-LOOP-2026-07-28.md and LEDGER.json I-01 both say the key was revoked 'seven days after the first 3301 image'. The first image is 2012-01-04, so the revocation is 18 days after it and the creation 8. Seven days is the gap between 3301's key creation (2012-01-05) and mruzuki's (2012-01-12) - the right number attached to the wrong anchor.",
+  "standing_constraint": "No person is named as Cicada 3301. Public lawful sources only. Breach-DB and people-search lookups were declined in advance and not run."
+ },
+
+ "artifacts": [
+  "round19/C3/PGP-VERIFICATION-TABLE.json",
+  "round19/C3/verify_all_signatures_rerun.py",
+  "round19/C3/verify_rerun.log",
+  "round19/C3/l8/crosscheck.py + crosscheck.json + crosscheck.log",
+  "round19/C3/l8/predisclosure_archives.py + .json + .log",
+  "round19/C3/l8/cpunks_export.py + .json + .log",
+  "round19/C3/l8/bitcointalk_ninjastic.py + .json + .log"
+ ]
+}

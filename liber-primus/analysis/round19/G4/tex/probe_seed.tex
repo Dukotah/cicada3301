@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{pgf}
+\usepackage{pgfmath}
+\newwrite\out
+\begin{document}
+\immediate\openout\out=probe_seed.txt
+\def\try#1{%
+  \pgfmathsetseed{#1}%
+  \immediate\write\out{SETSEED #1 -> \pgfmath@rnd@z}%
+}
+\makeatletter
+\try{1}\try{29}\try{3301}\try{16383}\try{16384}\try{100000}\try{1000000}\try{2147483647}
+\immediate\write\out{TIME \the\time\space YEAR \the\year\space MONTH \the\month\space DAY \the\day}
+\makeatother
+\immediate\closeout\out
+x
+\end{document}

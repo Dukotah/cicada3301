@@ -1,0 +1,19 @@
+# Round 19 / G4 — TeX-internal generators.
+# Everything ignored here is rebuildable by a committed script:
+#   vendor/      <- bash fetch_sources.sh   (pgf 2.00, pgf 2.10, lcg.dtx, random.tex)
+#   tex/*.txt    <- bash make_vectors.sh    (reference vectors from the REAL TeX binaries)
+#   master_*.u8  <- python3 -c "import gen_tex; gen_tex.build_master(...)"  (~2 GiB each)
+#   pilot_*      <- python3 pilot.py   (a labelled PILOT, explicitly not a result and not
+#                   coverage, so doctrine R3's persist-every-SWEEPROW rule does not bind it;
+#                   pilot_results.json — the timings — IS committed)
+# A TeX Live install is also required; see make_vectors.sh's header for the apt line.
+vendor/
+tex/*.txt
+tex/*.log
+tex/*.aux
+tex/*.pdf
+tex/out210/
+master_*.u8
+pilot_sweeprows.jsonl
+pilot_keytable.json
+__pycache__/

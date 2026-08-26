@@ -1,0 +1,80 @@
+{
+ "box": "Duke",
+ "python": "3.14.4",
+ "params": {
+  "L": 120,
+  "beam_w": 400,
+  "max_skip": 3
+ },
+ "generation": {
+  "r29": {
+   "keystreams_per_sec": 1745.7,
+   "sym_per_sec": 893817
+  },
+  "r29_nodup": {
+   "keystreams_per_sec": 1827.6,
+   "sym_per_sec": 935727
+  },
+  "r32_rej": {
+   "keystreams_per_sec": 1920.4,
+   "sym_per_sec": 983269
+  },
+  "r256_mod": {
+   "keystreams_per_sec": 3285.4,
+   "sym_per_sec": 1682147
+  },
+  "r2p32_mod": {
+   "keystreams_per_sec": 2331.2,
+   "sym_per_sec": 1193568
+  },
+  "r255_mod": {
+   "keystreams_per_sec": 2281.6,
+   "sym_per_sec": 1168196
+  },
+  "r100_mod": {
+   "keystreams_per_sec": 2156.7,
+   "sym_per_sec": 1104208
+  },
+  "r1000_mod": {
+   "keystreams_per_sec": 1054.2,
+   "sym_per_sec": 539752
+  },
+  "r26_lat": {
+   "keystreams_per_sec": 1734.9,
+   "sym_per_sec": 888274
+  }
+ },
+ "decode": {
+  "beam_decodes_per_sec_per_core": 31.08,
+  "beam_ms_per_decode": 32.18,
+  "rigid_decodes_per_sec_per_core": 3307.4,
+  "beam_variants": {
+   "beam_w=100,max_skip=3": 27.77,
+   "beam_w=50,max_skip=2": 22.81,
+   "beam_w=25,max_skip=2": 35.84,
+   "beam_w=400,max_skip=8": 12.27
+  }
+ },
+ "cores_detected": 6,
+ "decode_budget": {
+  "1c x 1h": 111887,
+  "1c x 6h": 671324,
+  "1c x 24h": 2685299,
+  "1c x 72h": 8055899,
+  "4c x 1h": 447549,
+  "4c x 6h": 2685299,
+  "4c x 24h": 10741199,
+  "4c x 72h": 32223597,
+  "6c x 1h": 671324,
+  "6c x 6h": 4027949,
+  "6c x 24h": 16111798,
+  "6c x 72h": 48335396
+ },
+ "space": {
+  "seeds": 4294967296,
+  "reductions_perl_reachable": 9,
+  "sign_atbash_direction": 8,
+  "stageA_offset0_decodes": 309237645312,
+  "stageB_offset_ladder_multiplier": 10
+ }
+}

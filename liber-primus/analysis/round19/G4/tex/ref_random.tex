@@ -1,0 +1,52 @@
+% Round 19 / G4 — reference vectors for random.tex (Donald Arseneau v0.2).
+%   RND <seed> RAW  z1 ... zN     (\nextrandom, raw state in \randomi)
+%   RND <seed> R029 v1 ... vN     (\setrannum{\c}{0}{28})
+%   RND <seed> R129 v1 ... vN     (\setrannum{\c}{1}{29})
+%   RND DEFAULT <time> <year> <month> <day> <randomi-after-init>
+\documentclass{article}
+\input{random.tex}
+\makeatletter
+\newwrite\g@out
+\newcount\g@i
+\newcount\g@c
+\def\NDRAW{64}
+\def\seedlist{1,2,3,29,3301,16383,16384,65535,100000,1000000,2000000,2147483646,%
+1033,761,845145127,1595277641,1386342,2013,4026}
+\def\emitraw#1{%
+  \global\randomi=#1\relax
+  \edef\g@line{}%
+  \g@i=0
+  \loop\ifnum\g@i<\NDRAW\relax
+    \nextrandom%
+    \edef\g@line{\g@line\space\the\randomi}%
+    \advance\g@i by 1
+  \repeat
+  \immediate\write\g@out{RND #1 RAW\g@line}%
+}
+\def\emitmapped#1#2#3#4{% seed, lo, hi, label
+  \global\randomi=#1\relax
+  \edef\g@line{}%
+  \g@i=0
+  \loop\ifnum\g@i<\NDRAW\relax
+    \setrannum{\g@c}{#2}{#3}%
+    \edef\g@line{\g@line\space\the\g@c}%
+    \advance\g@i by 1
+  \repeat
+  \immediate\write\g@out{RND #1 #4\g@line}%
+}
+\begin{document}
+\immediate\openout\g@out=ref_random.txt
+\immediate\write\g@out{RANDOMTEXVERSION 0.2}
+% default (time/date) initialisation, with its three discarded warm-up draws
+\global\randomi=0
+\nextrandom
+\immediate\write\g@out{RND DEFAULT \the\time\space\the\year\space\the\month\space\the\day\space\the\randomi}
+\@for\g@s:=\seedlist\do{%
+  \expandafter\emitraw\expandafter{\g@s}%
+  \expandafter\emitmapped\expandafter{\g@s}{0}{28}{R029}%
+  \expandafter\emitmapped\expandafter{\g@s}{1}{29}{R129}%
+}
+\immediate\closeout\g@out
+\makeatother
+done
+\end{document}

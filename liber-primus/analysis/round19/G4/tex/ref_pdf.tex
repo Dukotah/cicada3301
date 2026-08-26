@@ -1,0 +1,34 @@
+% Round 19 / G4 — reference vectors for pdfTeX's \pdfuniformdeviate / \pdfsetrandomseed.
+% (Knuth's 55-lag subtractive generator, inherited from METAFONT/MetaPost.)
+%   PDF <seed> RAW28 r1 ... rN    (\pdfuniformdeviate{268435456} = the raw 28-bit fraction)
+%   PDF <seed> U29   v1 ... vN    (\pdfuniformdeviate{29})
+%   PDF <seed> U256  v1 ... vN    (\pdfuniformdeviate{256} - a second scale, to pin take_fraction)
+\documentclass{article}
+\makeatletter
+\newwrite\g@out
+\newcount\g@i
+\def\NDRAW{64}
+\def\seedlist{1,2,3,29,3301,16383,16384,65535,100000,1000000,2000000,2147483646,%
+1033,761,845145127,1595277641,1386342,2013,4026}
+\def\emit#1#2#3{% seed, modulus, label
+  \pdfsetrandomseed#1\relax
+  \edef\g@line{}%
+  \g@i=0
+  \loop\ifnum\g@i<\NDRAW\relax
+    \edef\g@line{\g@line\space\the\numexpr\pdfuniformdeviate#2\relax}%
+    \advance\g@i by 1
+  \repeat
+  \immediate\write\g@out{PDF #1 #3\g@line}%
+}
+\begin{document}
+\immediate\openout\g@out=ref_pdf.txt
+\immediate\write\g@out{PDFTEXVERSION \the\pdftexversion\pdftexrevision}
+\@for\g@s:=\seedlist\do{%
+  \expandafter\emit\expandafter{\g@s}{268435456}{RAW28}%
+  \expandafter\emit\expandafter{\g@s}{29}{U29}%
+  \expandafter\emit\expandafter{\g@s}{256}{U256}%
+}
+\immediate\closeout\g@out
+\makeatother
+done
+\end{document}

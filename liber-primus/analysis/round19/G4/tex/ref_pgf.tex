@@ -1,0 +1,64 @@
+% Round 19 / G4 — reference vectors for pgf's \pgfmathgeneratepseudorandomnumber
+% and \pgfmathrandominteger.  Emits, for each seed in \seedlist:
+%   PGF <seed> RAW  z1 z2 ... zN          (\pgfmathgeneratepseudorandomnumber)
+%   PGF <seed> R029 v1 v2 ... vN          (\pgfmathrandominteger{}{0}{28})
+%   PGF <seed> R129 v1 v2 ... vN          (\pgfmathrandominteger{}{1}{29})
+%   PGF <seed> SEEDACCEPT <what \pgfmathsetseed actually stored>
+% Compile with:  pdflatex -interaction=nonstopmode ref_pgf.tex
+\documentclass{article}
+\usepackage{pgf}
+\usepackage{pgfmath}
+\makeatletter
+\newwrite\g@out
+\newcount\g@i
+\newcount\g@n
+\def\NDRAW{64}
+\def\seedlist{1,2,3,29,3301,16383,16384,65535,100000,1000000,2000000,2147483646,%
+1033,761,845145127,1595277641,1386342,2013,4026}
+\def\emitraw#1#2{% #1 = seed, #2 = label
+  \pgfmathsetseed{#1}%
+  \immediate\write\g@out{PGF #1 SEEDACCEPT \pgfmath@rnd@z}%
+  \edef\g@line{}%
+  \g@i=0
+  \loop\ifnum\g@i<\NDRAW\relax
+    \pgfmathgeneratepseudorandomnumber%
+    \edef\g@line{\g@line\space\pgfmathresult}%
+    \advance\g@i by 1
+  \repeat
+  \immediate\write\g@out{PGF #1 RAW\g@line}%
+}
+\def\emitint#1#2#3#4{% seed, lo, hi, label
+  \pgfmathsetseed{#1}%
+  \edef\g@line{}%
+  \g@i=0
+  \loop\ifnum\g@i<\NDRAW\relax
+    \pgfmathrandominteger{\g@v}{#2}{#3}%
+    \edef\g@line{\g@line\space\g@v}%
+    \advance\g@i by 1
+  \repeat
+  \immediate\write\g@out{PGF #1 #4\g@line}%
+}
+\def\emitrnd#1{%
+  \pgfmathsetseed{#1}%
+  \edef\g@line{}%
+  \g@i=0
+  \loop\ifnum\g@i<\NDRAW\relax
+    \pgfmathparse{int(rnd*29)}%
+    \edef\g@line{\g@line\space\pgfmathresult}%
+    \advance\g@i by 1
+  \repeat
+  \immediate\write\g@out{PGF #1 RND29\g@line}%
+}
+\begin{document}
+\immediate\openout\g@out=ref_pgf.txt
+\immediate\write\g@out{PGFVERSION \pgfversion}
+\@for\g@s:=\seedlist\do{%
+  \expandafter\emitraw\expandafter{\g@s}{RAW}%
+  \expandafter\emitint\expandafter{\g@s}{0}{28}{R029}%
+  \expandafter\emitint\expandafter{\g@s}{1}{29}{R129}%
+  \expandafter\emitrnd\expandafter{\g@s}%
+}
+\immediate\closeout\g@out
+\makeatother
+done
+\end{document}

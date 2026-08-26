@@ -1,0 +1,173 @@
+{
+ "lane": "round19/C2",
+ "title": "CLOSEOUT of Round 18 lane L6 — OFFSET (B-02/B-08) & the MARSAGLIA CDROM",
+ "date": "2026-08-26",
+ "generated_by": "liber-primus/analysis/round19/C2/scripts/{offset_coverage,verify_marsaglia_independent,marsaglia_space,prefilter_register_power}.py",
+ "read_this_first": "This lane's primary product is an ACCOUNTING and an INSTRUMENT MEASUREMENT, not a sweep. Entry R19-C2-PREFILTER-REGISTER is the load-bearing one: it supplies the missing factor in every pad-sweep coverage claim in this repository. Entry B-02-C2-CORRECTION is a proposed narrowing of a status field written by round18/L6, not a new negative.",
+ "entries": [
+  {
+   "id": "R19-C2-PREFILTER-REGISTER",
+   "lane": "instrument",
+   "hypothesis": "round17/lib_padsweep.dense_scan's English rune-index trigram prefilter — which selects which offsets ever reach the beam in EVERY dense pad sweep in this repository — retains a non-English true offset at a materially lower rate than an English one. round18/L7-redteam/RESULTS.md §A.7 names this quantity as never measured.",
+   "status": "FOUND-GAP",
+   "round": "19/C2",
+   "date": "2026-08-26",
+   "threshold": "Pre-registered in round19/C2/PREREG.md §3 before any scan ran. FOUND-GAP iff some non-English register's trigram survival <= 0.20 while an English arm on the SAME 30 (pad, offset) pairs is >= 0.50. NO-GAP iff every register is inside the English arm's two-sided 95% binomial interval. INCONCLUSIVE if the English arm falls outside [0.47, 0.81], i.e. fails to reproduce round18/L6 Control A's measured 0.650.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": {
+    "instrument_identity": "--selftest proves the scan's trigram half is bit-identical to lib_padsweep.dense_scan: same 50 offsets in the same order, max |delta score| = 0.000e+00. The three language-agnostic screens are computed from the plaintext matrix dense_scan already materialises, so they change nothing about the trigram column.",
+    "panel_ceiling": "EN_KJV (inside the trigram model's own training corpus) is the highest arm at 0.800, as pre-registered.",
+    "panel_floor": "RAND (uniform rune indices — no register at all) is joint-lowest at 0.000, as pre-registered.",
+    "english_arm_reproduces_L6": "0.767-0.800 against round18/L6 Control A's 0.650 at n=40; inside the pre-registered [0.47, 0.81] window."
+   },
+   "null": {
+    "chance_survival": 0.000100000240000576,
+    "definition": "keep / N_offsets = 1000 / 9,999,976 — the rate at which an arbitrary offset lands in the top-1000 by luck"
+   },
+   "result": "Survival of the TRUE offset in the prefilter's top-1000, n=30 per register, paired across the same 30 (pad, true-offset) pairs, plants of L=120 runes enciphered with encipher_keyskip(supp=0.83) into REAL hash-verified Marsaglia bytes, builder mod29, sign -1, N = 9,999,976 offsets per scan: EN_KJV 0.800, EN_MODERN 0.767, LP1_REAL 0.767, LATIN 0.700, DE 0.633, OE 0.600, CY 0.300, EN_HALFVOWEL 0.067, EN_NOVOWEL 0.000 (0/30), RAND 0.000 (0/30). Chance is 1.0e-4, so every non-zero entry is real retention and EN_NOVOWEL's 0.000 is a genuine blind spot rather than an unlucky draw.",
+   "coverage": "One builder (mod29), one pad family (the 63 hash-verified Marsaglia 10 MB pads), one plaintext length (L=120), one filter (supp=0.83), one sign, keep=1000, n=30 per register, 10 registers = 300 scans over 9,999,976 offsets each. Panels are round18/L7-redteam/a1_scorer_language.build_panels(), imported unchanged, so this composes directly with L7-A's adjudicator table.",
+   "not_covered": [
+    "other builders (hi_nibble, lo_nibble, byte_scaled, prime_to_idx, nibbles) and reversed byte order",
+    "other pad families — R17's CicadaOS blobs, Bitcoin, beacons and RAND tables were not re-measured, and R17's own English survival ranged 0.375-0.875 non-monotonically, so the ABSOLUTE survivals here do not transfer; the RATIOS between registers are the transferable quantity",
+    "plaintext lengths other than 120 (the cheapest extension is L=400, the length the sweeps actually adjudicate at)",
+    "the repaired I1 decoder — this measures the prefilter in front of the CURRENT beam",
+    "keep values other than 1000, and escalation depths (top-40 / top-12) below it"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round19/C2/PREREG.md",
+    "liber-primus/analysis/round19/C2/RESULTS.md",
+    "liber-primus/analysis/round19/C2/out_prefilter_register_power.json",
+    "liber-primus/analysis/round19/C2/out_prefilter_union.json",
+    "liber-primus/analysis/round19/C2/scripts/prefilter_register_power.py"
+   ],
+   "reproduce": "python3 liber-primus/analysis/round19/C2/scripts/prefilter_register_power.py --selftest && python3 liber-primus/analysis/round19/C2/scripts/prefilter_register_power.py --nproc 6",
+   "reopens_if": "Any of the not_covered axes. Also: if Round 19's I2 replaces the prefilter, this table is the before-measurement it must be compared against.",
+   "notes": "THE CONSEQUENCE, and the reason this entry exists: composite pipeline power = prefilter survival x adjudicator power (L7-A, L=120). LP1_REAL/EN_MODERN 0.767 x 1.00 = 0.77. LATIN 0.700 x 0.33 = 0.23. OE/DE 0.600-0.633 x 0.42-0.83 = 0.25-0.53. CY 0.300 x 0.00 = 0.00. EN_HALFVOWEL 0.067 x 0.33 = 0.022 — one THIRTY-FIFTH of English, and 97.8% of that loss happens before the beam runs. EN_NOVOWEL 0.000 x 0.00 = 0.00. This is the first end-to-end power envelope for a pad sweep in this repository, and it splits the repair: CY is an adjudicator-only failure (I2 fixes it), EN_HALFVOWEL needs I2 AND a prefilter change. SECOND FINDING: in EN_NOVOWEL, where the trigram prefilter retains 0/30, a language-agnostic screen on the SAME 24-rune window retains 4/30 (distinct symbols) and 3/30 (IoC*N), union 0.133 = 1,300x chance. The screens are free — one np.bincount per chunk on a matrix dense_scan already builds — and they are the statistics doctrine R3 makes mandatory. Recommended to I2/S1: keep the union of top-K(trigram), top-K(IoC) and top-K(distinct), and persist all four statistics per retained offset."
+  },
+  {
+   "id": "R19-C2-B02-ACCOUNTING",
+   "lane": "recon-a",
+   "hypothesis": "How much of the keystream OFFSET axis does this repository's published coverage actually touch? B-02 has carried status `open` / raw_status `scope-limited` since Round 10 with every field except `hypothesis` set to null.",
+   "status": "measured",
+   "round": "19/C2",
+   "date": "2026-08-26",
+   "threshold": "Not applicable — this is arithmetic over committed artefacts, with no decoder, no scorer and no threshold. It cannot be a false negative and Round 19's Phase 0 cannot invalidate it.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a",
+   "result": "Of 2,531,663,008 published derived-key decodes, 2,530,301,788 were run at key offset 0 only and 1,355,871 (0.054%) at any nonzero offset. Sixteen distinct key offsets have ever been tested — {0,1,2,3,4,5,8,13,16,29,64,128,256,512,1024,3301} — largest 3,301, which is 1.53e-5 of the mechanism-bounded 2^20 axis and 3.7e-9 of a 2^32 one. Round 13 B-04 stage B (10 offsets) and Round 13 B-05 (14 offsets) are the ENTIRE nonzero-offset coverage of the branch; B-04 stage C's 55 'restarts' move the CIPHERTEXT start, not the key index, and are not offset coverage. Joint (config x offset) space at the 2^20 axis is 2.65e15; pre-Round-18 coverage is 9.5e-7 of it and round18/L6 stage A1 adds 8.7e-8. In the EXTERNAL-pad branch the axis is not the gap: Round 12 A1 walked an 8-point ladder (6.7e-8 of the 118,818,811-byte 560.13 pad) but Round 17 made every pad dense.",
+   "coverage": "Every sweep in LEDGER.json whose per-offset detail is recoverable from a committed artefact: Round 8 SEED (both tracks), B-04 stages A/B/C/D, B-05, R16-KDF, R16-PRNG, round18/L6 A1 and A2, Round 12 A1, Round 17 P0-P3, round18/L6 sub-lane B. Offsets are read from each lane's own result JSON or from the line of its own sweep source that fixes them; nothing is taken from prose.",
+   "not_covered": [
+    "sweeps whose per-offset detail is not recoverable from a committed artefact — these are reported as UNRECOVERABLE, never as zero",
+    "the 2^20 denominator is a MECHANISM bound (round18/L6 PREREG §A.1), not a proof; a 2^32 sensitivity column is given",
+    "the accounting is over a FLAT offset prior; it deliberately does not attempt to weight offset 0's much larger prior mass, and states the coverage conditionally instead"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round19/C2/out_offset_coverage.json",
+    "liber-primus/analysis/round19/C2/RESULTS.md",
+    "research/ROUND-8-RESULTS.md",
+    "liber-primus/analysis/round13/B04/sweep.py",
+    "liber-primus/analysis/round13/B05/sweep_results.json"
+   ],
+   "reproduce": "python3 liber-primus/analysis/round19/C2/scripts/offset_coverage.py",
+   "reopens_if": "Any new sweep along the offset axis; any argument for an axis larger than 2^20; and non-integer / per-line / per-page offset SCHEDULES, which nothing in this repository has ever tested.",
+   "notes": "Read in both directions. Against the published record: an author who started the keystream anywhere but index 0 defeats 99.95% of every derived-key decode run here, and PARKED P-10's 'x8,192 for a modest range' understates the axis by 128x. Against panic: offset 0 is not one point among 2^20 equally likely ones — generating a pad and using it from its first byte is the modal behaviour of the modal script — so the honest form is conditional: conditional on offset = 0 the published coverage stands as written; conditional on offset in (0, 2^20] the pre-Round-18 coverage is 15 points out of 1,048,575."
+  },
+  {
+   "id": "R19-C2-MARSAGLIA-GATE",
+   "lane": "keystream",
+   "hypothesis": "The 1.2 GB of Marsaglia CDROM material in round18/L6-offset-marsaglia/data/ is byte-identical to the published archive. (Round 12 was burned twice: a silent 60.4% prefix of _560.00, and a 134-byte Git-LFS pointer standing in for DATA/560.13.)",
+   "status": "verified",
+   "round": "19/C2",
+   "date": "2026-08-26",
+   "threshold": "PASS / DRIFT / ABSENT per file, DRIFT reported separately from ABSENT (the shape handoff/capsule/verify_capsule.py uses). No file that is not PASS may be swept, and any such file is listed in not_covered by name.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a",
+   "result": "112 PASS, 0 DRIFT, 0 ABSENT. checksums.sha256.txt matches archive.org's md5 cc8cf878d7688dc0f2eaad42da444e85 / sha1 9b3b921a2068b9ed93690746ac003f9dbbcecf3f / size 11,247. MARSAGLIA_CDROM.iso matches md5 f127d50c2bd80e7c23f28184423a2d94 / sha1 ca116df4940eb4b7538942ea6fbe454556b1bac2 / size 634,124,288; its sha256 is 6d124080f942a88afade2d6cd2da4b9f092e0e376ee5a9d4af9f7224523f9d28 (recorded, not compared — archive.org publishes md5/sha1/crc32 for the item file, not sha256). All 110 inner files match their own published SHA-256 lines. 63 of them are 10,000,000-byte random-data pads (BITS.01-BITS.60, CALIF.BIT, CANADA.BIT, GERMANY.BIT) = 630,000,000 bytes. Wall 134 s.",
+   "coverage": "Recomputed from the bytes on disk. Deliberately does NOT read the lane's own data/MANIFEST.json, which was written by the same process that fetched the bytes and is therefore not independent evidence about them.",
+   "not_covered": [
+    "the archive.org item's own provenance — this verifies that the local bytes match what archive.org publishes, not that archive.org's copy matches the 1995 pressing",
+    "the ISO's sha256 has no published counterpart to compare against; it is recorded so a future fetch can be compared to THIS one"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round19/C2/out_verify.json",
+    "liber-primus/analysis/round19/C2/scripts/verify_marsaglia_independent.py",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/data/checksums.sha256.txt",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/data/marsaglia-cdrom_files.xml"
+   ],
+   "reproduce": "python3 liber-primus/analysis/round19/C2/scripts/verify_marsaglia_independent.py",
+   "reopens_if": "The bytes are re-fetched, or any file fails on a later run.",
+   "notes": "The 1.2 GB stays gitignored — the hashes are the record, not the bytes."
+  },
+  {
+   "id": "R19-C2-MARSAGLIA-COST",
+   "lane": "keystream",
+   "hypothesis": "Round 17 called the Marsaglia CDROM 'the cheapest live item in this branch' without ever costing it. How big is its offset space and what does finishing it cost?",
+   "status": "measured",
+   "round": "19/C2",
+   "date": "2026-08-26",
+   "threshold": "n/a — enumeration plus realised throughput.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a",
+   "result": "63 verified pads x 6 builders x 2 byte orders x 2 signs, every offset = 17,639,963,712 offsets in 756 work units — 1.21x the entire Round 17 public-pad round (14,522,916,046). The whole ISO as one pad adds 17,755,479,488 more. Realised throughput from the checkpoints actually written: 33.9 s wall per unit at nproc=3, i.e. ~100 CPU-s per unit, so ~21 CPU-HOURS to finish the 63 pads and ~43 including the whole-ISO view. At C2 collection time 77/756 units (10.2%, 1,539,996,304 offsets) were checkpointed: builder mod29 FORWARD complete on all 63 pads, mod29 reversed on 14. The other five builders have not been run on any pad.",
+   "coverage": "Analytic count from the hash-verified manifest and round18/L6 lib_l6.BUILDERS symbols-per-byte table; hexchars excluded per L6 §2.1 and named rather than left silent.",
+   "not_covered": [
+    "builders outside L6's six",
+    "the whole-ISO view of the pad (its filesystem padding has a 32,768-byte constant run, which is exactly the regime R17/P1 found ms=3 fails in, so it is a separate set of units)",
+    "the 679 unrun units — HELD, not excluded; see reopens_if"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round19/C2/out_marsaglia_space.json",
+    "liber-primus/analysis/round18/L6-offset-marsaglia/out/results_M.json"
+   ],
+   "reproduce": "python3 liber-primus/analysis/round19/C2/scripts/marsaglia_space.py ; cd liber-primus/analysis/round18/L6-offset-marsaglia/scripts && python3 sweep_marsaglia.py --nproc 6 --budget <seconds>",
+   "reopens_if": "Round 19's I1 and I2 gates PASS — at which point the 679 remaining units should be run under I2's SWEEPROW, not before. The sweep is checkpointed per (pad, builder, byte order) and never recomputes a finished unit.",
+   "notes": "C2's PREREG §2 estimated ~10 CPU-hours before measuring. The measurement says 21, and the measurement is what is reported. The reason for the HOLD is not the cost: it is that the harness stores (offset, sign, pre, score, head) — (parameters, English score, 64-char head) — which is the exact shape that made 10^10 decodes permanently un-reinterpretable (doctrine R3; Round 10b's 0/15 compliance). Running these units now would not reduce Phase 2's work, it would duplicate it."
+  },
+  {
+   "id": "B-02-C2-CORRECTION",
+   "lane": "recon-a",
+   "hypothesis": "PROPOSED CORRECTION to a status field, not a new experiment. round18/L6-offset-marsaglia/ledger.json sets B-02 status = `negative`. B-02's own hypothesis text is an AXIS ('keystream offset != 0'), and an axis is not made negative by a dense sweep of 220 mined configs plus 508/3,024 units of a fresh grid.",
+   "status": "correction-proposed",
+   "round": "19/C2",
+   "date": "2026-08-26",
+   "threshold": "n/a",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a",
+   "result": "L6's B-02 coverage and not_covered fields are accurate and unusually complete — the objection is ONLY to the status word. Three reasons to narrow it to `partially-run` / `scope-limited`: (1) COVERAGE — 497,025,024 offsets is 8.7e-8 + 1.0e-7 of the 2.65e15 (config x offset) space at the 2^20 axis; sub-lane A2 is 508 of 3,024 units, i.e. the fresh grid the axis most needs is 17% run. (2) REGISTER — the negative is an English one at composite power 0.77 (R19-C2-PREFILTER-REGISTER), 0.23 for Latin and 0.00 for Welsh and vowel-dropped English. (3) CONSTRUCTION — the beam's transition relation is exact for encipher_keyskip and misses skip_by_two at -6.90 / 25.8% recovery (round18/L7-B). LEDGER.json's own read_this_first says status is the least reliable field in it and that several entries were written up as closed when their coverage field said otherwise; doctrine R7 says bounds, not verdicts.",
+   "coverage": "n/a — this entry proposes a wording change and cites the numbers behind it.",
+   "not_covered": null,
+   "evidence": [
+    "liber-primus/analysis/round18/L6-offset-marsaglia/ledger.json",
+    "liber-primus/analysis/round19/C2/out_offset_coverage.json",
+    "liber-primus/analysis/round19/C2/out_prefilter_register_power.json",
+    "liber-primus/analysis/round18/L7-redteam/RESULTS.md"
+   ],
+   "reproduce": "n/a",
+   "reopens_if": "Sub-lane A2 completes (3,024/3,024 units) AND the negative is re-established under I1 + I2 — at which point `negative for the swept configs, at stated power, out to 2^20` is defensible. The unqualified word is not.",
+   "notes": "Recorded rather than applied: editing another lane's ledger.json is outside C2's write scope. The coordinator merging these files should decide."
+  },
+  {
+   "id": "R17-PUBLIC-PAD-C2-RESTATEMENT",
+   "lane": "keystream",
+   "hypothesis": "PROPOSED RESTATEMENT of an existing entry's coverage line, following round18/L7-A.8's precedent. R17-PUBLIC-PAD reports 14,522,916,046 offsets scored and 8,380,000,000 effective after prefilter survival. That survival was measured on ENGLISH plants only (L7-A.7), and L7-A.8 could only say the non-English coverage was 'unmeasured, not zero and not one'.",
+   "status": "restatement-proposed",
+   "round": "19/C2",
+   "date": "2026-08-26",
+   "threshold": "n/a",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a",
+   "result": "It is now measured, on a comparable high-entropy published pad. Multiplying R17's offsets by the composite power of R19-C2-PREFILTER-REGISTER: ~1.11e10 effective for an LP1-register or modern-English plaintext, ~3.4e9 for Latin, and ZERO for Welsh and for vowel-dropped English. The same multiplication applied to round18/L6 A1's 230,686,720 gives ~1.8e8 / ~5.3e7 / 0, and to L6 sub-lane B's 1,539,996,304 gives ~1.2e9 / ~3.6e8 / 0.",
+   "coverage": "The RATIOS between registers transfer; the ABSOLUTE survivals were measured on Marsaglia mod29 pads at L=120 and R17's pads, builders and lengths differ (its own English survival ranged 0.375-0.875, non-monotone in pad size). The effective counts above are order-of-magnitude and are labelled as such in RESULTS.md §4.4.",
+   "not_covered": null,
+   "evidence": [
+    "liber-primus/analysis/round19/C2/out_prefilter_register_power.json",
+    "liber-primus/analysis/round18/L7-redteam/RESULTS.md",
+    "liber-primus/analysis/round17/SYNTHESIS.md"
+   ],
+   "reproduce": "python3 liber-primus/analysis/round19/C2/scripts/prefilter_register_power.py --nproc 6",
+   "reopens_if": "The survival is re-measured on R17's own pads and builders — the cheapest way to turn the order-of-magnitude effective counts into exact ones.",
+   "notes": "Doctrine R2 in one line: coverage x power, and for two of the nine registers on the panel the product is exactly zero no matter how many offsets are added."
+  }
+ ]
+}

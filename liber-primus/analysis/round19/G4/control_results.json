@@ -1,0 +1,73 @@
+{
+ "lane": "round19/G4",
+ "control": "V5 ground-truth plant-and-recover",
+ "statistic": "exact rune agreement with known plaintext (NOT an English score)",
+ "A_python_matches_real_binary": {
+  "n": 64,
+  "equal": true,
+  "status": "PASS"
+ },
+ "B_plant": {
+  "generator": "pgf_mod29",
+  "seed": 3301,
+  "L": 120,
+  "n_key_skips": 2,
+  "key_index_consumed": 122
+ },
+ "C_enumeration": {
+  "phases": 20001,
+  "decodes": 80004,
+  "rigid_top": [
+   {
+    "phase": 1469928791,
+    "phase_index": 2,
+    "sign": -1,
+    "atbash": 0,
+    "agreement": 0.3917
+   },
+   {
+    "phase": 3301,
+    "phase_index": 0,
+    "sign": -1,
+    "atbash": 0,
+    "agreement": 0.3833
+   }
+  ]
+ },
+ "C_rigid_rank1_is_planted": {
+  "status": "FAIL",
+  "top": {
+   "phase": 1469928791,
+   "phase_index": 2,
+   "sign": -1,
+   "atbash": 0,
+   "agreement": 0.3917
+  },
+  "planted_rank_of": 2,
+  "planted_rank": 2,
+  "n_key_skips": 2,
+  "note": "rigid agreement is < 1.00 by design: the key-skip filter desynchronises the key after the first skip, which is exactly the L7-B problem I1 exists to fix. As pre-registered this gate asked for rank 1 at agreement 1.00; see PREREG.md ADDENDUM 2026-08-26 for why that criterion is unattainable by construction and what V5a measures instead."
+ },
+ "C_V5a_planted_in_skip_band": {
+  "band": 3,
+  "planted_rank": 2,
+  "rigid_argmax_phase_index": 2,
+  "status": "PASS",
+  "mechanism": "encipher_keyskip consumed key index 0..121 for 120 plaintext runes, i.e. the key ran 2 ahead; the rigidly best-aligned phase is therefore the planted phase advanced by that many steps"
+ },
+ "D_beam_at_planted_seed": {
+  "char_recovery_vs_known_plaintext": 1.0,
+  "translit_head": "THEPRIMESARESACREDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOULDBEENCRYPTEDWI",
+  "score_recorded_not_interpreted": -4.2247,
+  "status": "PASS",
+  "note": "the score is recorded for the record and is NOT a decision statistic: doctrine forbids adjudicating with the Round-18 instrument (L7-A/L7-B)."
+ },
+ "E_wrong_phase_null": {
+  "n": 200,
+  "mean": 0.0342,
+  "max": 0.0917,
+  "expected_mean_1_over_29": 0.0345
+ },
+ "V5_status_as_prereg": "FAIL",
+ "V5a_status": "PASS"
+}

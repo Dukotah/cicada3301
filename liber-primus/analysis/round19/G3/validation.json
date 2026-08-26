@@ -1,0 +1,681 @@
+{
+ "lane": "round19/G3",
+ "generated": "2026-08-26T11:28:41",
+ "seed_dictionary": {
+  "source": "liber-primus/analysis/round13/B04/seeds.py (REUSED, not rebuilt)",
+  "n_entries_tested": 2165,
+  "n_entries_total": 2165,
+  "families": [
+   "anend_half",
+   "anend_hex",
+   "anend_raw",
+   "anend_raw_rev",
+   "canon256_decpref",
+   "canon256_head32",
+   "canon256_hex",
+   "canon256_raw",
+   "canon256_rev",
+   "canon256_tail32",
+   "lore",
+   "lore_file",
+   "lp_line",
+   "lp_word",
+   "num_be",
+   "num_dec",
+   "num_le",
+   "num_str",
+   "onion",
+   "pgp",
+   "pgp_raw",
+   "primes_bytes",
+   "primes_cat",
+   "primes_csv",
+   "slogan",
+   "solvedkey",
+   "thematic"
+  ],
+  "values_per_vector": 64,
+  "reductions": [
+   "random29",
+   "grb5_mod",
+   "grb5_rej",
+   "shuffle29"
+  ]
+ },
+ "interpreters": {
+  "2.7.3": {
+   "note": "Ubuntu 12.04 LTS system Python (python2.7_2.7.3-0ubuntu3.19, GCC 4.6.3)",
+   "path": "/home/dukotah/py27/root273/usr/bin/python2.7",
+   "ran": true,
+   "error": null,
+   "version": "2.7.3 (default, Oct  6 2020, 15:47:39) \n[GCC 4.6.3]",
+   "sizeof_long_bits": 64
+  },
+  "2.7.18": {
+   "note": "Ubuntu 20.04 python2.7_2.7.18-13ubuntu1.5 (independent second build)",
+   "path": "/home/dukotah/py27/root2718/usr/bin/python2.7",
+   "ran": true,
+   "error": null,
+   "version": "2.7.18 (default, Dec  9 2024, 18:47:23) \n[GCC 11.4.0]",
+   "sizeof_long_bits": 64
+  },
+  "2.7.3-i386": {
+   "note": "Ubuntu 12.04 LTS system Python, 32-bit build (python2.7_2.7.3-0ubuntu3.19_i386, GCC 4.6.3): sizeof(long) == 4, so hash() and therefore the whole seed image are 32-bit",
+   "ran": true,
+   "version": "2.7.3 (default, Oct  6 2020, 15:50:18) \n[GCC 4.6.3]",
+   "sizeof_long_bits": 32
+  }
+ },
+ "gates": {
+  "V1_real_python27_executes": {
+   "pass": true,
+   "detail": "builds that ran: 2.7.18, 2.7.3"
+  },
+  "V2_gen_matches_real_273": {
+   "pass": true,
+   "hash_vectors_ok": 2165,
+   "hash_vectors_failed": 0,
+   "stream_vectors_ok": 8660,
+   "stream_vectors_failed": 0,
+   "failures": [],
+   "detail": "2165 seeds x 4 reductions x 64 values, plus 2165 hash() values"
+  },
+  "V3_cross_build_agreement": {
+   "pass": true,
+   "sha256_2.7.3": "b6d0179750c175665eeaa7208e2635b4205a6c409df94135a20b3ffce2c7f9b7",
+   "sha256_2.7.18": "b6d0179750c175665eeaa7208e2635b4205a6c409df94135a20b3ffce2c7f9b7",
+   "hashes_identical": true,
+   "detail": "two independent real builds, 12 years and 2 compilers apart"
+  },
+  "V4_int_float_jumpahead": {
+   "pass": true,
+   "items": {
+    "int_3301": {
+     "kind": "int",
+     "jump": null,
+     "streams_ok": true
+    },
+    "int_0": {
+     "kind": "int",
+     "jump": null,
+     "streams_ok": true
+    },
+    "int_neg3301": {
+     "kind": "int",
+     "jump": null,
+     "streams_ok": true
+    },
+    "int_1387498126": {
+     "kind": "int",
+     "jump": null,
+     "streams_ok": true
+    },
+    "int_2p40p7": {
+     "kind": "int",
+     "jump": null,
+     "streams_ok": true
+    },
+    "float_3301": {
+     "kind": "float",
+     "jump": null,
+     "hash_ok": true,
+     "hash_real": 3301,
+     "hash_gen": 3301,
+     "streams_ok": true
+    },
+    "float_3p301": {
+     "kind": "float",
+     "jump": null,
+     "hash_ok": true,
+     "hash_real": 2871788224,
+     "hash_gen": 2871788224,
+     "streams_ok": true
+    },
+    "float_0p5": {
+     "kind": "float",
+     "jump": null,
+     "hash_ok": true,
+     "hash_real": 1073741824,
+     "hash_gen": 1073741824,
+     "streams_ok": true
+    },
+    "float_neg3p301": {
+     "kind": "float",
+     "jump": null,
+     "hash_ok": true,
+     "hash_real": -2871657152,
+     "hash_gen": -2871657152,
+     "streams_ok": true
+    },
+    "float_3301p5": {
+     "kind": "float",
+     "jump": null,
+     "hash_ok": true,
+     "hash_real": 1731330048,
+     "hash_gen": 1731330048,
+     "streams_ok": true
+    },
+    "jump_3301": {
+     "kind": "str",
+     "jump": 3301,
+     "streams_ok": true
+    },
+    "jump_29": {
+     "kind": "str",
+     "jump": 29,
+     "streams_ok": true
+    },
+    "jump_1": {
+     "kind": "str",
+     "jump": 1,
+     "streams_ok": true
+    },
+    "jump_845145127": {
+     "kind": "str",
+     "jump": 845145127,
+     "streams_ok": true
+    }
+   },
+   "jumpahead_variant_2.7.3": "issue14591_applied",
+   "jumpahead_variants_differ": false
+  },
+  "V5_reduction_identity_py27": {
+   "pass": true,
+   "measured": {
+    "all_identical": true,
+    "n_seeds": 24,
+    "per_pair": {
+     "randrange == int(random()*29)": true,
+     "randint == int(random()*29)": true,
+     "choice == int(random()*29)": true
+    }
+   },
+   "detail": "Python 2.7 Lib/random.py: randrange uses _int(self.random()*istart) for width < 2**53; randint delegates to randrange; choice is seq[int(random()*len(seq))]. Measured on real 2.7.3, not assumed."
+  },
+  "V6_py2_differs_from_py3": {
+   "pass": true,
+   "n_compared": 600,
+   "n_different": 600,
+   "n_identical": 0,
+   "identical_examples": [],
+   "detail": "Python 3 str/bytes seeding is int.from_bytes(b + sha512(b).digest(),'big') -> >=18 init_by_array words; Python 2.7 is (unsigned long)hash(s) -> <=2 words. This is the Q5 kill check: identical streams would make the lane a duplicate of analysis/seed_sweep/string_seeds.py."
+  },
+  "V7_i386_32bit_branch": {
+   "pass": true,
+   "status": "VALIDATED",
+   "interpreter": "2.7.3 (default, Oct  6 2020, 15:50:18) \n[GCC 4.6.3]",
+   "sizeof_long_bits": 32,
+   "hash_ok": 400,
+   "hash_failed": 0,
+   "stream_ok": 1600,
+   "stream_failed": 0
+  },
+  "V8_plant_and_recover_scorer_free": {
+   "pass": true,
+   "planted": {
+    "seed": "THE PRIMES ARE SACRED",
+    "mode": "grb5_rej",
+    "wordsize": 64,
+    "n": 96
+   },
+   "cross_product": 17320,
+   "n_exact_matches": 1,
+   "matches": [
+    {
+     "family": "slogan",
+     "seed": "THE PRIMES ARE SACRED",
+     "mode": "grb5_rej",
+     "wordsize": 64
+    }
+   ],
+   "seconds": 56.6,
+   "detail": "Identity recovery over the full 2,165 x 4 x 2 cross product. Uses NO decoder and NO adjudicator, so it is independent of Round 19 Phase 0."
+  }
+ },
+ "vectors": {
+  "pinned": {
+   "CICADA3301": {
+    "py2_hash_64": 8810433306790406628,
+    "py2_hash_32_gen": -1333581340,
+    "seed_key_words_64": [
+     2961385956,
+     2051338857
+    ],
+    "py27_random29_first16": [
+     0,
+     17,
+     2,
+     22,
+     9,
+     22,
+     27,
+     11,
+     10,
+     13,
+     27,
+     11,
+     28,
+     5,
+     26,
+     22
+    ],
+    "py27_grb5_rej_first16": [
+     1,
+     28,
+     18,
+     23,
+     2,
+     25,
+     24,
+     10,
+     10,
+     25,
+     2,
+     21,
+     12,
+     16,
+     11,
+     20
+    ],
+    "py3_random29_first16": [
+     24,
+     24,
+     26,
+     0,
+     21,
+     21,
+     20,
+     20,
+     6,
+     26,
+     26,
+     14,
+     24,
+     17,
+     25,
+     16
+    ]
+   },
+   "3301": {
+    "py2_hash_64": 8968602845119883935,
+    "py2_hash_32_gen": 451783327,
+    "seed_key_words_64": [
+     451783327,
+     2088165573
+    ],
+    "py27_random29_first16": [
+     15,
+     27,
+     17,
+     1,
+     24,
+     8,
+     12,
+     11,
+     25,
+     27,
+     13,
+     2,
+     28,
+     19,
+     14,
+     22
+    ],
+    "py27_grb5_rej_first16": [
+     17,
+     26,
+     16,
+     19,
+     26,
+     1,
+     11,
+     27,
+     3,
+     9,
+     14,
+     13,
+     0,
+     12,
+     8,
+     27
+    ],
+    "py3_random29_first16": [
+     27,
+     19,
+     26,
+     15,
+     2,
+     3,
+     7,
+     8,
+     1,
+     24,
+     26,
+     6,
+     21,
+     17,
+     24,
+     9
+    ]
+   },
+   "DIVINITY": {
+    "py2_hash_64": -7145123405064456284,
+    "py2_hash_32_gen": -1664239708,
+    "seed_key_words_64": [
+     2630727588,
+     2631363614
+    ],
+    "py27_random29_first16": [
+     8,
+     25,
+     16,
+     5,
+     22,
+     11,
+     8,
+     3,
+     3,
+     6,
+     5,
+     1,
+     8,
+     3,
+     16,
+     6
+    ],
+    "py27_grb5_rej_first16": [
+     9,
+     11,
+     28,
+     18,
+     18,
+     6,
+     28,
+     24,
+     6,
+     12,
+     9,
+     18,
+     4,
+     20,
+     3,
+     17
+    ],
+    "py3_random29_first16": [
+     24,
+     23,
+     22,
+     15,
+     22,
+     5,
+     7,
+     28,
+     8,
+     19,
+     28,
+     22,
+     25,
+     28,
+     7,
+     12
+    ]
+   },
+   "THE PRIMES ARE SACRED": {
+    "py2_hash_64": 1714174244820111314,
+    "py2_hash_32_gen": -1046458414,
+    "seed_key_words_64": [
+     3248508882,
+     399112292
+    ],
+    "py27_random29_first16": [
+     13,
+     8,
+     19,
+     27,
+     28,
+     24,
+     26,
+     25,
+     11,
+     21,
+     4,
+     17,
+     17,
+     27,
+     10,
+     14
+    ],
+    "py27_grb5_rej_first16": [
+     14,
+     5,
+     9,
+     1,
+     21,
+     24,
+     5,
+     6,
+     26,
+     10,
+     27,
+     28,
+     1,
+     12,
+     1,
+     23
+    ],
+    "py3_random29_first16": [
+     21,
+     19,
+     13,
+     13,
+     6,
+     20,
+     9,
+     15,
+     27,
+     6,
+     27,
+     17,
+     13,
+     19,
+     28,
+     7
+    ]
+   },
+   "cicada3301": {
+    "py2_hash_64": -7859697541640613596,
+    "py2_hash_32_gen": 1954550052,
+    "seed_key_words_64": [
+     1954550052,
+     2464988858
+    ],
+    "py27_random29_first16": [
+     3,
+     26,
+     27,
+     26,
+     5,
+     20,
+     0,
+     7,
+     16,
+     5,
+     22,
+     26,
+     14,
+     24,
+     4,
+     19
+    ],
+    "py27_grb5_rej_first16": [
+     3,
+     8,
+     28,
+     17,
+     28,
+     4,
+     6,
+     25,
+     22,
+     24,
+     1,
+     25,
+     8,
+     2,
+     18,
+     13
+    ],
+    "py3_random29_first16": [
+     11,
+     22,
+     24,
+     17,
+     2,
+     23,
+     2,
+     3,
+     28,
+     18,
+     15,
+     22,
+     0,
+     2,
+     23,
+     14
+    ]
+   },
+   "an end": {
+    "py2_hash_64": 5509784394221018712,
+    "py2_hash_32_gen": -427237800,
+    "seed_key_words_64": [
+     3867729496,
+     1282846646
+    ],
+    "py27_random29_first16": [
+     21,
+     1,
+     1,
+     9,
+     2,
+     10,
+     19,
+     18,
+     21,
+     0,
+     20,
+     21,
+     21,
+     6,
+     22,
+     1
+    ],
+    "py27_grb5_rej_first16": [
+     23,
+     6,
+     1,
+     26,
+     1,
+     13,
+     10,
+     3,
+     24,
+     11,
+     28,
+     21,
+     27,
+     20,
+     19,
+     23
+    ],
+    "py3_random29_first16": [
+     16,
+     9,
+     17,
+     26,
+     2,
+     28,
+     13,
+     25,
+     3,
+     0,
+     11,
+     21,
+     13,
+     25,
+     23,
+     8
+    ]
+   },
+   "ky2khlqdf7qdznac": {
+    "py2_hash_64": 2223585237685648400,
+    "py2_hash_32_gen": 470694928,
+    "seed_key_words_64": [
+     470694928,
+     517718782
+    ],
+    "py27_random29_first16": [
+     24,
+     9,
+     8,
+     28,
+     9,
+     3,
+     5,
+     10,
+     4,
+     19,
+     25,
+     10,
+     0,
+     20,
+     8,
+     24
+    ],
+    "py27_grb5_rej_first16": [
+     26,
+     10,
+     10,
+     0,
+     9,
+     15,
+     7,
+     10,
+     18,
+     4,
+     20,
+     5,
+     27,
+     11,
+     21,
+     5
+    ],
+    "py3_random29_first16": [
+     20,
+     15,
+     7,
+     28,
+     26,
+     11,
+     15,
+     13,
+     15,
+     0,
+     26,
+     3,
+     12,
+     12,
+     2,
+     12
+    ]
+   }
+  },
+  "explanation": "py2_hash_64 is the value real CPython 2.7.3 returned for hash(<str>). seed_key_words_64 is the init_by_array key array Python 2.7 builds from it. py3_random29_first16 is the Python-3 stream for the same literal, i.e. what analysis/seed_sweep/string_seeds.py actually swept."
+ },
+ "notes": [],
+ "verdict": {
+  "all_blocking_gates_pass": true,
+  "confidence_64bit": "VALIDATED against two real CPython 2.7 builds",
+  "confidence_32bit": "VALIDATED",
+  "elapsed_seconds": 118.0
+ }
+}

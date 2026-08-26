@@ -7,7 +7,7 @@ sub-attacks; verdicts are stated per sub-attack._
 |---|---|
 | **A — the English-only scorer** | **FOUND-ERROR** |
 | **B — beam power envelope** | **FOUND-ERROR** |
-| **C — the bars and the arithmetic** | _(§C below)_ |
+| **C — the bars and the arithmetic** | **FOUND-ERROR** (2 of 6 audits clean, 1 extends a bound, 3 find calibration errors) |
 
 **The single most consequential correction** is at the end of §A.
 
@@ -197,7 +197,7 @@ positive; what changes is the stated scope. Machine-readable in `ledger.json`.
   survival (0.375–0.875) was measured on English plants only. This lane's coverage of a
   non-English plaintext is **unmeasured**, not zero and not one."
 - **Round 8 SEED (B-21)**, **R12-A1**, **R12-C1**, **F-01**, and the ~200-text keytext
-  exhaustion — same English-only conditionality; all used `score_norm` against a fixed English
+  sweep — same English-only conditionality; all used `score_norm` against a fixed English
   band.
 
 ### A.9 Verdict A — **FOUND-ERROR**
@@ -279,7 +279,7 @@ beam handles both.
 ### B.4 Restated coverage bounds
 
 - **Every beam-based negative in this repository** — B-04, B-05, R16-KDF, R16-PRNG, R17 P0–P3,
-  R12-A1, R12-C1, F-01 and the ~200-text keytext exhaustion — covers the key-skip filter
+  R12-A1, R12-C1, F-01 and the ~200-text keytext sweep — covers the key-skip filter
   **in which rejection advances the key by exactly one symbol and nothing else ever advances
   it**. It does not cover a sampler that burns two draws per rejection, nor any construction
   with an independent source of key drift at more than ≈1 event per 60 runes.
@@ -298,11 +298,249 @@ version of the same hole with a measured breaking point at ≈1 unrepresentable 
 
 ---
 
-## C. THE BARS AND THE ARITHMETIC
+## C. THE BARS AND THE ARITHMETIC — **FOUND-ERROR**
 
-_(filled in below by `c1_bars.py`)_
+Script `c1_bars.py`, output `out_c1.json`. Six audits; two reproduce cleanly, one extends a
+published bound, three find calibration errors.
+
+### C.1 Headline statistics — reproduce exactly (NO-ERROR)
+
+Recomputed from the pinned runes with independent code:
+
+| statistic | recomputed | published |
+|---|---|---|
+| n runes | 12,956 | 12,956 |
+| doublets | 86 | 86 |
+| doublet rate | **0.66384 %** | 0.664 % |
+| IoC × N | **0.999874** | 0.9999 |
+| entropy | **4.856504 bits** | 4.8565 |
+| lag-1 suppression | **80.746 %** | 80.75 % |
+
+One methodological note, not an error: lag-1 suppression is `1 − observed/expected` where
+*expected* is the stream's **own** unigram collision rate (measured 3.4478 %), not `1/29`
+(3.4483 %). The two agree here only because IoC·N = 1.0000; on any stream with unigram
+structure they differ, and the 1/29 shortcut would be wrong.
+
+### C.2 The G3 doublet floor — holds, and is now measured beyond English (bound EXTENDED)
+
+The published floor (`min_d Pdp(d)`, the smallest doublet rate any plaintext-**independent** key
+can produce) is measured on four modern English corpora. Recomputed: KJV 1.386 %, Moby 1.798 %,
+Pride 1.786 %, War 1.831 % — reproducing D2's published 1.38–1.83 % exactly.
+
+Extended, for the first time, to registers the published floor never covered:
+
+| register | `min_d Pdp(d)` | ratio to observed 0.664 % |
+|---|---|---|
+| Old English | 2.074 % | 3.12× |
+| Welsh | 2.339 % | 3.52× |
+| LP1 solved-page register | 1.585 % | 2.39× |
+| Latin | 1.425 % | 2.15× |
+| held-out English | 1.483 % | 2.23× |
+| half-vowel English | 1.694 % | 2.55× |
+| vowel-dropped English | 1.084 % | 1.63× |
+| **German** | **0.972 %** | **1.46×** |
+
+**No register reaches the pre-registered 0.80 % trigger.** The G3 argument — "to reach 0.664 %
+via an independent key the plaintext must itself carry the anti-repeat structure; no natural
+language does" — **survives** extension from 4 English corpora to 9 registers across 5
+languages, including abbreviated forms. That is a genuine strengthening of a load-bearing step
+and it is reported as such.
+
+Two corrections of record, both minor: the floor's **margin** is narrower than published —
+the binding register is German at 1.46×, not "1.50 %" at 2.26×; and `ELIMINATION-LEDGER.md:779`
+and `round10/SYNTHESIS.md:74` still quote **"floor 1.50 % (KJV)"** when KJV's actual value is
+**1.386 %** and D2 already superseded the figure with 1.38–1.83 %. The stale number is quoted
+in the ledger's load-bearing line.
+
+### C.3 `threshold_for()`'s Gumbel constants — zero degrees of freedom, and circular
+
+`DEFAULT_MU = −7.2517`, `DEFAULT_BETA = 0.0725` are **not a fit**. They are the exact solution of
+two equations in two unknowns, anchored on two single observed maxima (n=200 → −6.826;
+N=1,385,600 → −6.185). Verified: solving those two anchors returns β = 0.072484,
+μ = −7.251882, i.e. the published constants to 6 significant figures. **Degrees of freedom: 0**,
+so there is no residual and no internal check.
+
+Each anchor is itself a single Gumbel draw with sd = βπ/√6 = **0.0930**. Propagating that
+through the two-point slope gives **SE(β) = 0.0149, i.e. 20.5 % relative**, and SE(μ) ≈ 0.128.
+Both anchors come from **B-04's own run**, and `threshold_for()` was then used to adjudicate
+B-04.
+
+Out-of-sample residuals against every recorded sweep maximum in the repository:
+
+| sweep | N | observed max | predicted E[max] | residual (Gumbel SD) |
+|---|---|---|---|---|
+| B-04 stage A | 1,385,600 | −6.185 | −6.185 | 0.00 _(anchor)_ |
+| B-04 stage B | 1,290,240 | −6.129 | −6.190 | +0.65 |
+| B-04 stage C | 3,548,160 | −5.885 | −6.116 | +2.49 |
+| R16-KDF | 692,064 | −6.259 | −6.235 | −0.26 |
+| R16-PRNG | 52,556 | −6.347 | −6.422 | +0.80 |
+| **R17 P0 dense** | 3,911,819,734 | −6.769 | −5.609 | **−12.48** |
+| **R17 P1 bitcoin** | 1,389,182,016 | −6.802 | −5.684 | **−12.03** |
+| **R17 P2 beacons** | 3,464,597,548 | −6.811 | −5.617 | **−12.84** |
+| R17 P3 tables | 5,757,316,748 | −5.679 | −5.581 | −1.06 |
+
+**3 of 9 breach the pre-registered 3-SD trigger, all of them Round 17.** The constants are
+well calibrated for the family they were derived from (B-04 / R16: −0.26 to +2.49 SD) and are
+**not applicable to R17's lanes**.
+
+The cause is not the constants — it is the **N**. R17 fed `threshold_for()` the number of
+*offsets scanned*, but the statistic being adjudicated is the maximum over the number of *beam
+decodes actually performed*: `lib_padsweep.escalate` beam-decodes only the **top 40 per (pad,
+builder, sign)** survivors of the trigram prefilter. For P3 that is 28 configs × ≤40 ≈ 10³ beam
+scores, not 3.3 × 10⁹. Inverting the model on the observed maxima gives an effective trial count
+of ≈ 4 × 10², which is exactly the right order.
+
+R17's own files contain the evidence and never reconciled it:
+`round17/P1_blockchain/results.json` records `expected_null_max_at_n = −5.684` next to
+`null_max_over_lane_ms8 = −6.822` — a 1.14 gap, 12 Gumbel SD, sitting unremarked in the result
+file.
+
+**Consequence.** R17/SYNTHESIS's claim that *"`threshold_for()` at each lane's true trial count
+is stricter than the fixed −5.5 bar in all four cases, so no verdict here depends on which bar
+you use"* rests on a trial count that is 6–7 orders of magnitude too large. No published verdict
+changes — every best score is below both bars — but the bar-independence argument does not hold
+as stated, and the reported bars (−5.29 to −5.39) were **0.11–0.21 stricter than the correct
+one**, which is the direction that could hide a marginal signal rather than manufacture one.
+
+### C.4 The constants do not transfer across segment length — measured
+
+`null.py` documents its constants as *"L~120 segments, skip-aware beam"* at `beam_w=400`.
+R17 ran its escalations at `beam_w=120` on head windows of **25–400 runes**. Measured directly
+(400-sample shuffle nulls, peaks-over-threshold tail scale):
+
+| (L, beam_w) | null mean | null max | tail β | β / `DEFAULT_BETA` |
+|---|---|---|---|---|
+| (31, 120) | −7.464 | **−5.681** | 0.2481 | **3.42×** |
+| (120, 400) | −7.386 | −6.597 | 0.1243 | 1.71× |
+| (400, 120) | −7.305 | −6.936 | 0.0522 | 0.72× |
+
+The pre-registered factor-1.5 trigger is breached at every length. **Verdict: DOES NOT TRANSFER.**
+
+The absolute POT values are biased high (at L=120 the estimator returns 1.71× the repo's
+tail-calibrated 0.0725 — exactly the bias `null.py` warns about), so the **ratios** are the
+robust part, and they follow a clean **1/√L law**: measured β(31)/β(120) = **2.00** against
+1/√L's prediction of **1.97**. Anchoring on the repo's own calibrated β at L=120 gives
+
+- β(L = 400) ≈ **0.0397** — R17 used 0.0725, **1.83× too large**, worth **0.83 of score** in the
+  bar at N = 10⁹;
+- β(L = 31) ≈ **0.143** — twice the default.
+
+**And the concrete consequence for R17's headline number.** P3's best of **−5.679 was scored on
+a 31-rune head window**. An order-destroying shuffle null at L = 31 reached **−5.681 in 400
+draws** in this lane's own measurement. R17/SYNTHESIS presents that best as "−5.679 vs a bar of
+−5.500", i.e. 0.18 short of a hit. At the window length it was actually measured on, a value
+indistinguishable from it is reachable by pure shuffling in a few hundred draws. **A fixed −5.5
+bar is not a bar at 31 runes.** (P3's own per-pad null was length-matched and correctly returned
+`null_max = −6.088` at n=200 for that pad's short 304-symbol keystream, so the lane's *verdict*
+is sound; what is wrong is the comparison of a 31-rune score to a bar calibrated on 120–400-rune
+segments, and the SYNTHESIS sentence built on it.)
+
+### C.5 Bar-at-own-N audit
+
+`threshold_for()` crosses the −5.5 floor at **N\* = 3.13 × 10⁸**. Below that the historical floor
+binds and the scale correction is cosmetic; above it a fixed bar is unsound.
+
+| sweep | N | `threshold_for(N)` | floor binds? | bar actually used |
+|---|---|---|---|---|
+| **Round 8 SEED** | 2.52 × 10⁹ | −5.349 | **no** | a fixed bar |
+| B-04 | 6,224,300 | −5.500 | yes | max(−5.5, null_max+0.5) |
+| B-05 | 70,680 | −5.500 | yes | max(−5.5, null_max) |
+| R16-KDF | 692,064 | −5.500 | yes | −5.5 + size-matched null |
+| R16-PRNG | 52,556 | −5.500 | yes | −5.5 + size-matched null |
+| R17 P0–P3 | 1.4–5.8 × 10⁹ | −5.29 … −5.39 | **no** | −5.5 AND null_max+0.5, with `threshold_for(N_offsets)` quoted |
+| R12-A1 | 768 | −5.500 | yes | −5.5 |
+| F-01 | 40 | −5.500 | yes | −5.5 AND null_max+0.5 |
+
+Round 8 is the one sweep that exceeded N\* **and** used a fixed bar with no correction —
+quantifying the flag B-21 has carried unactioned since Round 10. (Round 8's reported best of
+−13.13 is on a different score scale and is far below any of these bars, so the verdict itself is
+not in question; the *method* is.)
+
+### C.6 The multiple-comparisons tally — B-17's "frozen at 5", recomputed
+
+| level | count | family-wise bar it implies |
+|---|---|---|
+| pre-registered hypotheses (ledger entries carrying a `threshold`) | **19** | −5.500 (floor binds) |
+| ledger entries total | **62** | −5.500 (floor binds) |
+| decodes / offsets scored, all rounds | **17,058,157,809** | **−5.210** |
+| …after R17's own measured prefilter discount | 10,915,241,763 | −5.242 |
+
+Breakdown of the decode-level tally: Round 8 SEED 2.52 × 10⁹; Round 8 other tracks 8.2 × 10⁶;
+B-04 6,224,300; B-05 70,680; R16-KDF 692,064; R16-PRNG 52,556; R17 P0–P3 1.45 × 10¹⁰;
+plus the small lanes (R12-A1 768, R12-C1 1,155, F-01 40, ~200 keytexts).
+
+**5 was never the right number at any level.** Which number is right depends on which family is
+being controlled, and the repo has never said. At the decode level the repo-wide family-wise bar
+is **−5.210 — stricter than the −5.5 floor every sweep quoted**. No published verdict flips
+(every best score in the repo is below both), but **−5.5 is not the repo-wide bar and should not
+be quoted as one.** Honest caveat: these are not independent tests — the same 12,956 runes are
+re-decoded — so the union correction is conservative, which is the safe direction for a negative.
+
+### C.7 Verdict C — **FOUND-ERROR**
+
+Two of the six audits reproduce cleanly (C.1) or strengthen a published bound (C.2). Three find
+calibration errors, all in how `threshold_for()` was used rather than in the function itself:
+the constants are a zero-DOF, circular two-point solve with 20.5 % relative uncertainty on β
+(C.3); they were applied 12–13 Gumbel SD outside their calibrated domain by Round 17, with the
+mismatch visible and unremarked in R17's own result file (C.3); and they do not transfer across
+segment length, β following 1/√L, which makes R17's headline "−5.679 vs −5.500" near-miss a
+31-rune score compared against a 120–400-rune bar (C.4). B-17's tally of 5 is wrong at every
+level of granularity (C.6).
+
+### C.8 Restated coverage bounds from C
+
+- **R17-PUBLIC-PAD** — the `threshold_for()` figures quoted per lane are computed at
+  *offsets scanned*, not at the number of beam decodes adjudicated, and with constants
+  calibrated at a different segment length. Read each lane's **own length-matched shuffle null**
+  (which R17 did measure correctly, per pad) instead; the verdicts stand on those.
+- **B-21 / Round 8 SEED** — add the number: N = 2.52 × 10⁹ exceeds N\* = 3.13 × 10⁸, so the fixed
+  bar it used was outside the region where a fixed bar is valid.
+- **B-17** — the tally is 19 / 62 / 1.71 × 10¹⁰ depending on the family; the repo-wide
+  decode-level family-wise bar is −5.210.
+- **G3 floor** — extend the published bound from "4 English corpora" to "9 registers across 5
+  languages including abbreviated forms, minimum 0.972 % (German), margin 1.46× over the
+  observed rate"; and retire the stale "1.50 % (KJV)" figure in favour of D2's 1.38–1.83 %.
 
 ---
+
+## What this lane measured, and what it did NOT cover
+
+Per Round 18 rule 6. Nothing here is a verdict on the cipher; every result is a property of the
+*instrument*.
+
+**Covered:** 10 plaintext registers × 4 segment lengths × 12 replicates of correct-key scoring;
+340 archived candidates re-scored under 6 rune-space LMs plus decrypt-IoC·N; 67 decoder
+constructions × 7 seeds; 6 arithmetic audits including 1,200 fresh shuffle-null beam decodes at
+three (L, beam_w) settings.
+
+**Not covered:**
+
+- Registers outside the 10 tested — Greek, Hebrew, Norse, constructed languages, and any
+  non-linguistic payload (B6 proved the last class undetectable in principle).
+- Only one key family (`sha256_ctr`) was used for the scorer-language panels. The effect is a
+  property of the scorer, not of the key, but that was not verified across families.
+- The decoder constructions were tested one axis at a time at L = 240; combinations were not.
+- `round16/scorer`'s **matched runic quadgram scorer** exists, passed its gates and is
+  importable — and **no lane has adopted it**. Whether it changes any of the A.1 numbers is
+  untested here.
+- The C.4 tail-scale estimates are relative, not absolute; the absolute β values carry the
+  upward bias `null.py` documents, which is why only the ratios are used.
+
+**Follow-ups this lane generates, cheapest first:**
+
+1. **Add one field to every future harness.** Persist `decrypt IoC·N` and a best-non-English-LM
+   score alongside every stored candidate. B6 asked for this in Round 10b; 0 of 15 later sweeps
+   did it, and it cannot be retro-fitted. Cost: three lines in the sweep loop.
+2. **Give `threshold_for()` a `segment_len` argument that actually does something.** It already
+   accepts one and ignores it. β scales as 1/√L (measured); wiring that in fixes C.4 outright.
+3. **Have lanes pass the number of decodes adjudicated, not the number of offsets scanned.**
+   That single change removes the 12-SD residuals in C.3.
+4. **Re-run the B-04 / R16-KDF / R16-PRNG top-50 escalations against a Latin and an Old-English
+   quadgram model**, not just a trigram LM — cheap, and it would convert A.5's rank-1 power
+   argument into a direct measurement.
+5. **Bound the `skip_by_two` family.** If the 2013 rejection loop consumed two draws per
+   rejection, every beam-based negative in the repository is void. The cheapest discriminator is
+   not more sweeping but L2's territory: the filter's own draw-consumption signature.
 
 ## Reproduce
 

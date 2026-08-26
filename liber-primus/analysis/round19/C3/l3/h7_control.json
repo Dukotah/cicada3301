@@ -1,0 +1,128 @@
+{
+ "n_catalogued": 109,
+ "catalogued_length_min": 1,
+ "catalogued_length_max": 37,
+ "catalogued_length_median": 22.0,
+ "n_all_bands": 646,
+ "C_H7a": {
+  "ladder": {
+   "set": "binary_ladder",
+   "members": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+   ],
+   "hits": 29,
+   "base_rate_all_646": 0.0728,
+   "binom_p_vs_all_646": 6.738473584921117e-10
+  },
+  "decoys": [
+   {
+    "set": "squares",
+    "members": [
+     1,
+     4,
+     9,
+     16,
+     25,
+     36
+    ],
+    "hits": 26,
+    "base_rate_all_646": 0.0805,
+    "binom_p_vs_all_646": 4.1339534321330177e-07
+   },
+   {
+    "set": "triangular",
+    "members": [
+     1,
+     3,
+     6,
+     10,
+     15,
+     21
+    ],
+    "hits": 27,
+    "base_rate_all_646": 0.0201,
+    "binom_p_vs_all_646": 8.883892753836718e-22
+   },
+   {
+    "set": "primes",
+    "members": [
+     2,
+     3,
+     5,
+     7,
+     11,
+     13
+    ],
+    "hits": 6,
+    "base_rate_all_646": 0.0108,
+    "binom_p_vs_all_646": 0.0012666077996255725
+   },
+   {
+    "set": "fibonacci",
+    "members": [
+     1,
+     2,
+     3,
+     5,
+     8,
+     13
+    ],
+    "hits": 21,
+    "base_rate_all_646": 0.0186,
+    "binom_p_vs_all_646": 1.4067922136426507e-15
+   },
+   {
+    "set": "multiples_of_3",
+    "members": [
+     3,
+     6,
+     9,
+     12,
+     15,
+     18
+    ],
+    "hits": 8,
+    "base_rate_all_646": 0.017,
+    "binom_p_vs_all_646": 0.0005847908237277272
+   },
+   {
+    "set": "random_1_32",
+    "members": [
+     3,
+     5,
+     13,
+     14,
+     16,
+     22
+    ],
+    "hits": 16,
+    "base_rate_all_646": 0.0356,
+    "binom_p_vs_all_646": 1.704545511166611e-06
+   }
+  ],
+  "ladder_beats_every_decoy": true,
+  "n_decoys_scoring_at_least_as_high": 0
+ },
+ "C_H7b": {
+  "catalogued_range": [
+   1,
+   37
+  ],
+  "n_all_bands_in_range": 608,
+  "base_rate_matched_range": 0.0773,
+  "binom_p_matched_range": 2.6848818032313725e-09,
+  "catalogued_p90_length": 34.0,
+  "n_all_bands_le_p90": 565,
+  "base_rate_short_tail": 0.0832,
+  "binom_p_short_tail": 1.3824324923011603e-08,
+  "survives_matched_null": true,
+  "survives_short_tail_null": true
+ },
+ "H7_verdict_after_controls": "PASS",
+ "family_bar": 0.00016666666666666666
+}

@@ -1,0 +1,62 @@
+[
+ {
+  "id": "R19-G1",
+  "lane": "keystream",
+  "hypothesis": "bash $RANDOM and the glibc random()/rand()/*rand48 family -- ranked 4 (x2) and 1 (x3) by round18/L1-toolchain/RESULTS.md section 6.2 on physical-artifact evidence -- can be reproduced byte-exactly and enumerated as a bounded keystream space for LP2.",
+  "status": "instrument-built",
+  "raw_status": "generators-validated-no-sweep-run",
+  "round": "19/G1",
+  "date": "2026-08-26",
+  "threshold": null,
+  "threshold_fixed_in_advance": null,
+  "positive_control": "passed",
+  "control_detail": {
+   "G1-VAL": "19/19 generators reproduce the real library byte-for-byte over 8 pre-registered seeds x 2000 draws. bash4.2 validated at reference level L1 against a REAL 'GNU bash, version 4.2.0(2)-release' binary built from ftp.gnu.org/gnu/bash/bash-4.2.tar.gz; bash5.1 at L2 against the running system shell (bash 5.3.9); glibc_random/rand/lrand48/mrand48/drand48/initstate{8,32,64,256} at L3 against real glibc 2.43 via ref_glibc.c; openssl_enc_rc4_k at L3 against the real openssl binary; shuf_random_source at L3 as an oracle around real GNU shuf; bash3.2/3.2_i32/4.0/4.2_i32/5.0/5.1c50 at L4 against C compiled from the released bash sources. ZERO failures.",
+   "G1-ORB": "Brent cycle detection, orbit_measured.txt: bash4.2 (LP64) cycle 2147483646 tail 13-72 over 8 start states; bash4.2_i32 cycle 343896 tail 210014-499658 over 8; bash3.2_i32 cycle 4294967296 tail 0 over 3 (confirms the full-period LCG mod 2^32); bash5.0 cycle 2147483646 tail 0 over 3 (the textbook Lehmer generator mod 2^31-1; bash5.1 folds the output but shares the state map, so this covers both). Every measured cycle exceeds the 12956-rune unsolved stream, so kill condition K2 does not fire.",
+   "G1-WIN": "window(master_orbit, i, n) == raws(state_at_index_i, n) verified for bash4.2, bash4.2_i32, bash3.2, bash5.1 -- the identity that licenses an O(2^31 + L) sweep.",
+   "plant_pilot": "PILOT (labelled, not a sweep): 9,600 decodes through round19/I1/driftbeam.py (mode=keyskip1, w=400, max_skip=3) + round19/I2/adjudicate.py. Planted spec bash4.2|3301|mod29|-1|fwd|False|0 recovered at RANK #1 of 9,600 by BOTH English score (-4.356) and I2 pcon (+20.86); best genuinely-wrong-key English -6.214, separation 1.86. 55.2 decodes/s/core end-to-end."
+  },
+  "null": null,
+  "result": "NO SWEEP RUN AND NO VERDICT DRAWN -- this lane held at Round 19's Phase-0 scoring boundary by design. Delivered: 19 byte-validated generators, a parameterised keystream interface (keystream.py) following round13/B04/PREREG.md section 3.3-3.5 conventions, a measured space statement, a plant, and a Phase-2 run specification (READY.md).",
+  "coverage": "Generator VALIDATION coverage: 19 generators x 8 seeds x 2000 draws vs real libraries, all PASS. Space MEASURED: bash $RANDOM is one orbit per implementation variant (seed IS the state, brand() is a pure map), so seed and keystream-offset are the SAME AXIS for that family; bash4.2 LP64 cycle 2^31-2 (tail 13-72), bash4.2_i32 cycle 343,896 (tail 210k-500k); the auto-seeded path (sbrand(tv_sec ^ tv_usec ^ getpid), variables.c:537) reaches at most 74 * 2^20 = 77,594,624 seeds for a 2012-01..2014-06 run, i.e. 3.6% of 2^31, which is a PRIORITY ORDERING inside the full range. glibc seed space 2^32-1 with no orbit collapse (state 31x32 bits). Measured throughput: 166 beam decodes/s/core (I3 vecbeam), 55 end-to-end with I1+I2, 137,414 rows/s/core for a rigid L=31 9-register head-window screen.",
+  "not_covered": [
+   "NO KEYSTREAM WAS SCORED AGAINST LP2. Phase 0 hold, by design.",
+   "bash4.2_i32 has no L1 reference: gcc-multilib absent, so no real 32-bit bash 4.2 binary. The ILP32 model is the same source re-typed with uint32_t/int32_t (level L4).",
+   "shuf --random-source is validated against GNU coreutils 9.7, NOT the 8.13 of Ubuntu 12.04; randint_genmax byte-consumption may have changed. Ubuntu 26.04 also ships the Rust uutils shuf as /usr/bin/shuf; G1 prefers /usr/bin/gnushuf.",
+   "bash3.2 LP64 orbit is stated analytically, not measured: its map is a full-period LCG mod 2^64 (Hull-Dobell), so Brent would need 2^64 evaluations; the 15-bit output period is 2^31 by the bit-period argument, and the ILP32 sibling measures exactly 2^32 as predicted. Every other bash variant's orbit IS measured (see control_detail.G1-ORB).",
+   "bash 4.0/4.1 are only PARTIALLY enumerable: seedrand() re-seeds from gettimeofday^getpid when the state reaches 0, and state 0 IS reachable (RANDOM=2147483647 reaches it in one step). Only the deterministic prefix exists.",
+   "openssl enc -k overlaps LEDGER R16-KDF (692,064 configs); the overlap was not computed and S1 must de-duplicate.",
+   "lrand48 and Perl-drand48 are round10/L5-seed32/CENSUS.md section B generators 10 and 11, already covered over 2011-2015 unix-seconds; G1 re-implements them only for interface uniformity and S1 must NOT re-sweep that window.",
+   "/dev/urandom, bare shuf, `openssl rand`, and bash 5.1's $SRANDOM are UNREACHABLE -- no seed and no record. Not swept, and NO NULL IS REPORTED for them.",
+   "The auto-seeded 77.6M subset is an upper bound on the seed SET; the joint distribution of (tv_sec, tv_usec, pid) was not modelled, so the subset cannot yet be ordered by likelihood.",
+   "glibc bit-stability from 2.15 (Ubuntu 12.04) to 2.43 (the reference here) is CORROBORATED (the canonical srandom(1) sequence reproduces) but not PROVED. Reopen: diff stdlib/random_r.c across the two releases or run ref_glibc.c in an Ubuntu 12.04 container."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round19/G1/PREREG.md",
+   "liber-primus/analysis/round19/G1/RESULTS.md",
+   "liber-primus/analysis/round19/G1/READY.md",
+   "liber-primus/analysis/round19/G1/validation.json",
+   "liber-primus/analysis/round19/G1/gen_bash.py",
+   "liber-primus/analysis/round19/G1/gen_glibc.py",
+   "liber-primus/analysis/round19/G1/gen_coreutils.py",
+   "liber-primus/analysis/round19/G1/keystream.py",
+   "liber-primus/analysis/round19/G1/reduce29.py",
+   "liber-primus/analysis/round19/G1/ref_bash.c",
+   "liber-primus/analysis/round19/G1/ref_glibc.c",
+   "liber-primus/analysis/round19/G1/orbit.c",
+   "liber-primus/analysis/round19/G1/plant.py",
+   "liber-primus/analysis/round19/G1/plant.json",
+   "liber-primus/analysis/round19/G1/pilot.json",
+   "liber-primus/analysis/round19/G1/fetch_bash_src.sh",
+   "liber-primus/analysis/round19/G1/orbit_measured.txt"
+  ],
+  "reproduce": "cd liber-primus/analysis/round19/G1 && sh fetch_bash_src.sh && python3 validate.py && gcc -O2 -o /tmp/orbit orbit.c && /tmp/orbit bash4.2 bash4.2_i32 && python3 plant.py --seeds=200",
+  "reopens_if": "This lane is not closed and never was: it is the INPUT to Phase 2. It is consumed when Round 19's I1/I2/I3 gates pass and S1 runs READY.md section 5. Independently, NC-1 (a real 32-bit bash 4.2 via gcc-multilib) upgrades bash4.2_i32 from L4 to L1, and NC-2 (a real coreutils 8.13 shuf) makes the shuf oracle era-correct.",
+  "notes": "THREE CORRECTIONS THIS LANE MADE TO THE REPO'S OWN FRAMING. (1) round18/L1-toolchain RESULTS.md section 6.2 row 4 describes $RANDOM as 'a 15-bit glibc rand() derivative'. It is not, in any bash release: bash 3.2 uses its own LCG and bash 4.0-5.2 their own Park-Miller/Schrage generator in variables.c / lib/sh/random.c. $RANDOM never calls libc rand(). The PRIOR stands; the mechanism claim does not, and $RANDOM must be swept as an independent generator. (2) 'openssl rand with a short passphrase' does not name a real command -- no OpenSSL 1.0.x gives `rand` a seed or passphrase option; the real object with that shape is `openssl enc -k`. (3) A naive reading of bash 4.2 suggests a script that never assigns RANDOM starts deterministically from rseed=1; it does NOT -- initialize_shell_variables() calls seedrand() at variables.c:537. Reading the source killed that hypothesis before it cost anything. ALSO: bash's $RANDOM has ALWAYS wrapped brand() in `do rv = brand(); while (rv == last_random_value);` -- a rejection loop in the standard library of the shell L1 puts on the author's box. At 15-bit granularity it suppresses ~1/32768 of draws and CANNOT produce LP2's mod-29 doublet deficit (0.664% vs 3.45% expected). Recorded as a shape-match only; it is NOT offered as evidence.",
+  "supersedes": null,
+  "superseded_by": null,
+  "priority": "high",
+  "source_register": "liber-primus/analysis/round19/CAMPAIGN-PLAN.md (Phase 1, lane G1)",
+  "evidence_missing": []
+ }
+]

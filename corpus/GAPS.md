@@ -37,6 +37,14 @@ re-run a battery on files that are not here.
 
 ## G-02 — PGP signature verification status is recorded nowhere ★★★★★
 
+> **CLOSED 2026-08-26 (Round 18, L8).** The table now exists:
+> `liber-primus/analysis/round18/L8-provenance/`. **228 `.asc` files** repo-wide (not the
+> 42 stated below) → 192 PASS / 3 FAIL / 22 NO-SIG / 11 KEY; deduplicated to **54 distinct
+> signed messages, 54 of which verify** against a single key id, `181F01E57A35090F`.
+> The 3 FAILs are one message mirrored three times, broken by a dropped blank line after
+> `Hash: SHA1`. **19 of the 22 NO-SIGs are 199-byte HTTP `429` pages** that have been
+> sitting in the tree posing as communications since Round 10.
+
 **Verified state:** the signed message *texts* are quoted in `research/03-*.md` and 42 `.asc`
 files sit under `round10/L6-archives/fetched/jaxonkuipers/corpus/`. But **no file in this
 repository records which signatures verify against key `7A35090F` and which do not.**

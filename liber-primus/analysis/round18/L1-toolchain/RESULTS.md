@@ -49,8 +49,9 @@ Ghostscript** — see §3.2, where the discriminator is a single control run.
 | I2 | Pipeline discrimination | `pipeline_control.py` | **PC2** — ≥2 pipelines must fingerprint differently | **PASS** (Huffman class separates Ghostscript from ImageMagick perfectly, 18 runs) |
 | I2b | Two-stage chain reproduction | `chain_control.py` | reproduce the LP2 vector | **PASS** — exact, both classes (§3.3) |
 | I3 | Per-rune glyph bitmaps | `glyph_extract.py` | uses the **validated** R9 template-DP reader (96.93% agreement on 5,207 compared glyphs, `analysis/retranscribe/diff_report.json`) — explicitly **not** `round12/frontB/forceseg.py`, which fails its control at 12.9% | 29/29 runes recovered |
-| I4 | Runic-face matcher | `font_match.py` | **PC3** — leave-one-in self-match + degraded self-match band | see §5 |
-| I5 | ICC release probe | `icc_version_probe.sh` | byte-exact profile comparison across Ghostscript tags | see §4 |
+| I4 | Runic-face matcher | `font_match.py`, `font_sheet.py`, `font_verdict.py` | **PC3a/b/c** — clean leave-one-in, degraded self-match, and LP2 split-half noise floor | **all PASS**; 11/11 faces self-rank 1st (§5.1) |
+| I5 | ICC release probe | `icc_version_probe.sh`, `icc_oldpath_probe.sh` | byte-exact profile comparison across ghostpdl tags 9.00–10.06 | **two-sided bound, gs 9.04–9.21** (§4) |
+| I6 | Local source-document hunt | `pdf_hunt.py` | a re-wrap has no fonts and no text layer; the original would have both | §7 NC-6 |
 
 **PC1** (`python3 jpeg_fingerprint.py --selftest`): planted qualities 50, 75, 85, 90, 92, 95;
 recovered `[50] [75] [85] [90] [92] [95]`; **6/6 exact**. The inversion is interval arithmetic over
@@ -177,11 +178,33 @@ carries both X and Z one LSB low. Artifex corrected this at some release; the co
 `Copyright Artifex Software 2011` plus the fact that Artifex's ICC-based colour architecture only
 arrived in Ghostscript 9.00 (2010) is a lower bound.
 
-`icc_version_probe.sh` fetches `iccprofiles/srgb.icc` from the ghostpdl tags and records md5 and
-the illuminant bytes per release into `icc_versions.json`; see that file for the measured
-boundary. **Bound as of writing: Ghostscript ≥ 9.0x and < 10.06.0**, refined by
-`icc_versions.json`. This is consistent with, and independently supports, the Ubuntu-12.04-era
-platform inferred in §6 (Ubuntu 12.04 LTS shipped Ghostscript 9.05, February 2012).
+`icc_version_probe.sh` and `icc_oldpath_probe.sh` fetch `iccprofiles/srgb.icc` (and, for the early
+releases, `gs/iccprofiles/srgb.icc`, where Artifex kept it before the tree was reorganised) from
+the ghostpdl tags, and record the md5 and the illuminant bytes per release into
+`icc_versions.json` / `icc_versions_early.json`. The result is a **two-sided, byte-exact version
+bound**:
+
+| Ghostscript release | released | `srgb.icc` size | illuminant 68..79 | md5 | matches LP2? |
+|---|---|---:|---|---|:---:|
+| 9.00, 9.01, 9.02 | 2010-09 … 2011-03 | **3144 B** | `0000f6d6 … 0000d32d` | — | **no** |
+| **9.04 … 9.21** | **2011-08-05 … 2017-03-16** | **2576 B** | **`0000f6d5 … 0000d32c`** | **`e409cef13cd06f6b371f6cddc8e31fcf`** | **YES — byte-identical** |
+| 9.22, 9.26, 9.50, 9.53.3, 10.06.0 | 2017-10-04 → | 2576 B | `0000f6d6 … 0000d32d` | `27d2435a749ae91e9974bf7a109a03e5` | no |
+
+Measured releases inside the matching band: **9.04, 9.05, 9.06, 9.07, 9.09, 9.10, 9.12, 9.14,
+9.15, 9.16, 9.17, 9.18, 9.19, 9.20, 9.21** — all byte-identical to the LP2 profile.
+
+> **Bound: the renderer is Ghostscript ≥ 9.04 and ≤ 9.21.** Artifex introduced the 2576-byte
+> profile at 9.04 (2011-08-05) and corrected the two illuminant bytes at 9.22 (2017-10-04).
+
+Intersected with the artifact's own publication date (the onion7 dump, May 2014), the last release
+that could have been used is **9.14** (2014-03-26); 9.15 did not ship until September 2014. So the
+operative window is **Ghostscript 9.04 – 9.14, i.e. August 2011 – March 2014**. The lower bound is
+the sharper of the two facts: it is *later* than the profile's own `2011` copyright string, and it
+is a measurement rather than an inference.
+
+**Ubuntu 12.04 LTS shipped Ghostscript 9.05 (February 2012)** — inside the window, and the same
+distro generation that ships the GnuPG 1.4.11 the author signed with for three years (§6, F6/F7).
+The two independent dating channels agree.
 
 **This ICC observation appears to be new.** No published Liber Primus analysis located in this
 lane's search has noted the Artifex profile, the quality-92 encode, or the two-stage chain.
@@ -193,10 +216,11 @@ lane's search has noted the Artifex profile, the quality-92 encode, or the two-s
 `glyph_extract.py` recovers **29/29** rune bitmaps from the page images using the validated R9
 template-DP reader and its bijective class→rune mapping, cropped to ink bounding box
 (`runes_observed.npz`, contact sheet `runes_observed.png`, per-rune metadata in
-`runes_observed_meta.json`). Every rune renders at the same nominal height (114 px in the template
-frame) with a constant stroke width and flat, unserifed terminals: **the runes are typeset from a
-font, not drawn.** Widths vary from 34 px (`ᚠ`, `ᚪ`, `ᚾ`, `ᛁ`) to 64 px (`ᛉ`, `ᛝ`), i.e. the face
-is proportional, not monospaced.
+`runes_observed_meta.json`). Constant stroke width, flat unserifed terminals, and 29 cleanly
+separable designs: **the runes are typeset from a font, not drawn.** Widths in the template frame
+vary from 34 px (`ᚠ`, `ᚪ`, `ᚾ`, `ᛁ`) to 64 px (`ᛉ`, `ᛝ`), so the face is proportional, not
+monospaced. (Heights are all exactly 114 px, which is a normalisation artefact of the extraction
+pipeline, not a property of the face — see §5.1.)
 
 Candidate bank assembled in `fonts/` (`get_fonts.sh`, `get_fonts2.sh`), all with a Runic block and
 all with a 2012–2014 lineage: GNU FreeFont **FreeSerif / FreeSans / FreeMono**, **Noto Sans Runic**,
@@ -207,14 +231,69 @@ be fetched from any mirror tried and are recorded in §7 as not covered.
 
 Matching results and the PC3 calibration are in `font_match_results.json` and §5.1.
 
-### 5.1 Match
+### 5.1 PC3 calibration, and the metric that had to be thrown out
 
-See `font_match_results.json`. Per the pre-registered thresholds a face is **identified** only if
-its mean per-glyph distance sits inside the PC3 degraded-self-match band *and* beats the runner-up
-by ≥2σ over ≥20 rune classes; anything weaker is reported as ranked evidence, not an
-identification.
+`font_match.py` computes two distances per rune, both in [0,1] as one minus intersection-over-union:
+`D_aspect` (aspect-preserving fit into a common box) and `D_stretch` (both bitmaps stretched
+independently to the box, so only stroke topology is compared).
 
----
+**`D_aspect` is disqualified.** `runes_observed_meta.json` shows every one of the 29 observed
+bitmaps has height *exactly* 114 px. No real runic face has 29 glyphs of identical height, so that
+uniformity is an artefact of the R9 template pipeline, which normalises cluster heights. The
+observed aspect ratios are therefore not the font's aspect ratios and must not be scored.
+`font_verdict.py` re-runs the entire calibration on the aspect-free `D_stretch` metric; that is the
+number reported below. (The confound was found *after* the first run and is recorded here rather
+than quietly dropped — the pre-registered threshold rule is unchanged, only the metric it is
+applied to.)
+
+Three controls, all passing:
+
+| control | what it measures | result |
+|---|---|---|
+| **PC3a** clean leave-one-in | each bank face scored as if it were the observed set | **PASS** — every face ranks itself 1st at distance ≈ 0 |
+| **PC3b** degraded self-match | each bank face pushed through a render → JPEG q92 → downsample-to-114px → threshold simulation, then re-matched against the clean bank | **PASS 11/11** — every face still ranks itself 1st; self-distance band **[0.0126, 0.0926]**, mean **0.0371** |
+| **PC3c** LP2 split-half | the 29 rune classes' glyph instances split into two disjoint halves, two independent centroid sets built, compared to each other | LP2's own reproducibility floor = **0.0301** over 28 classes |
+
+PC3c is the important one: it says the observed bitmaps reproduce *themselves* at 0.0301, which
+sits inside the PC3b self-match band. So if the true face were in the bank, it should have scored
+around 0.03–0.09. For contrast, the **cross-face** distribution over 110 wrong-face pairs has mean
+**0.610**, minimum **0.292**, 5th percentile **0.340**.
+
+### 5.2 Match — result
+
+| rank | face | `D_stretch` vs LP2 |
+|---:|---|---:|
+| 1 | **Noto Sans Runic** | **0.4096** |
+| 2 | BabelStone Runic | 0.4420 |
+| 3 | GNU Unifont | 0.4731 |
+| 4 | BabelStone Runic Elder Futhark | 0.5297 |
+| 5 | FreeMono | 0.5449 |
+| 6 | Quivira | 0.6310 |
+| 7 | FreeSans | 0.7210 |
+| 8 | BabelStone Modern | 0.7254 |
+| 9 | Segoe UI Symbol | 0.7295 |
+| 10 | Symbola | 0.7318 |
+| 11 | FreeSerif | 0.7536 |
+
+**Verdict: none of the eleven faces is the Liber Primus rune face.** The best candidate is at
+**13.6×** the measured LP2 reproducibility floor, sits *outside* the PC3b self-match band by a
+factor of 4.4, and is not even below the 5th percentile of the wrong-face distribution. Separation
+from the runner-up is 0.23σ — i.e. the top of the ranking is a tie among near-misses, which is what
+a ranking looks like when the right answer is absent. The instrument had ample power to see a
+match had one been present (PC3b, 11/11).
+
+What the ranking *does* say is design-family information: Noto Sans Runic and BabelStone Runic —
+the two modern reference designs of the Anglo-Saxon futhorc — are markedly closer to LP2 (0.41,
+0.44) than the wrong-face mean (0.61). The LP2 face is a member of that design tradition; it is
+simply not one of these files.
+
+The side-by-side sheet `font_match_sheet.png` shows why. All 29 glyph *topologies* agree — same
+strokes, same joins, same variant choices for ᚷ, ᛄ, ᛝ, ᛞ. The divergence is **proportion**: the LP2
+runes are markedly taller and narrower than every candidate. That is consistent with either a
+condensed face, or a face rendered with a non-unit horizontal scale — the sort of thing a
+typesetting program does when a `\scalebox` or an XY-scaled font matrix is applied. Both readings
+point at a **typeset** document rather than a font dropped into an image editor, which is the same
+conclusion §3 reaches from the encoder chain.
 
 ## 6. THE PAYOFF — ranked prior over generator / language families
 
@@ -227,13 +306,14 @@ and rough magnitude of the shift. Rows with no measured support are marked *unmo
 |---|---|---|---|
 | **F1** | JPEG encoder is **ImageMagick** (optimised Huffman, q92, auto-gray, ICC pass-through) | §3.2–3.3, `chain_results.json` | ImageMagick is a Unix-first CLI tool; `convert`/`mogrify` over a numbered page set is a **shell/scripting** idiom |
 | **F2** | Renderer is **Ghostscript** with an **Artifex sRGB ICC** | §3.1, §4 | Ghostscript-on-Linux; the source was a **PDF or PostScript** document |
-| **F3** | ICC illuminant bytes place the build **before** the modern correction | §4, `icc_versions.json` | a **2011–2014-era** Ghostscript, i.e. a distro package, not a fresh build |
+| **F3** | ICC profile is **byte-identical to ghostpdl 9.04–9.21** and differs from 9.00–9.02 and from 9.22+ | §4, `icc_versions.json`, `icc_versions_early.json` | **Ghostscript ≥ 9.04 (2011-08-05) and ≤ 9.21**; with the May-2014 dump date, **9.04–9.14**. A distro package of exactly the Ubuntu-12.04 generation (gs 9.05), not a fresh build, and **not** a later re-render |
 | **F4** | 400 dpi, 2400×3600 px = exactly **6.00 × 9.00 inches** | §3.1 | a **trade-paperback page size**, i.e. a real typesetting job with a page geometry, not an image editor canvas |
-| **F5** | Runes are **typeset from a proportional font**, uniform stroke, 29 distinct glyphs | §5 | a **text-based** authoring path (LaTeX / a word processor / a PS or PDF generator), so the runes existed as **character data** before they were pixels |
+| **F5** | Runes are **typeset from a proportional font**, uniform stroke, 29 distinct glyphs; and the face is **none of the 11 stock Unicode runic faces tested**, differing from all of them chiefly in *proportion* (taller/narrower) | §5.1–5.2, `font_verdict.json` | a **text-based** authoring path, so the runes existed as **character data** before they were pixels — and one that applied a **non-unit horizontal scale or a condensed face**, which is a typesetting-program behaviour, not an image-editor one |
 | **F6** | **46/46** curated 3301 PGP messages, 2012→2014, are `GnuPG v1.4.11 (GNU/Linux)` | `corpus/A-primary-artifacts/ibotpeaches/messages/`, verified this lane | the author's working machine is **GNU/Linux**, one environment, three years, no drift |
 | **F7** | GnuPG **1.4.11** specifically (released 2010-10-18) — not 1.4.12+, not 2.x | F6 | a **Debian/Ubuntu package pinned to a 2011-era release**; Ubuntu 11.04–12.04 LTS shipped exactly 1.4.11, Debian wheezy shipped 1.4.12 |
 | **F8** | ImageMagick default quality **92** was used rather than an explicit `-quality` | §3.1 | the author ran the tool **with defaults**, i.e. a short, unfussy script — consistent with a few-line shell pipeline, not an engineered application |
 | **F9** | No EXIF, no XMP, no COM, zero trailing bytes, restart interval unused | §3.1 | a **plain CLI** invocation; no GUI editor, no web pipeline, no `jpegtran`/`jpegoptim` post-pass |
+| **F10** | The rune face is **not** Noto Sans Runic, BabelStone Runic (either), Unifont, FreeSerif/FreeSans/FreeMono, Quivira, Symbola, BabelStone Modern or Segoe UI Symbol — measured with three passing controls | §5.2 | the author did **not** simply type Unicode runes in a default desktop font. Either a specialist scholarly face (Junicode, Everson Mono — NC-4) or a **LaTeX runic package** (`allrunes` — NC-5) is still live, and the latter would promote row 5 of §6.2 sharply |
 
 **The composite platform inference: an Ubuntu 11.04–12.04-LTS-class GNU/Linux workstation, used
 unchanged from early 2012 through May 2014.** F6+F7 fix the OS family and era from the author's own
@@ -248,7 +328,7 @@ probabilities of being the answer.
 
 | rank | generator / language family | shift | why (cite the fact) | swept before? |
 |---:|---|---:|---|---|
-| **1** | **C `rand()` / `random()` / `drand48` from glibc** (incl. anything calling libc from a shell tool) | **×3** | F6/F7 fix glibc-on-Linux as the runtime; `random()`'s TYPE_3 additive-feedback generator is *the* default PRNG a 2012 Linux C program gets for free | Round 8 covered 10 generators over ~3% of each seed space (`round10/L5-seed32/CENSUS.md`) — **not exhausted** |
+| **1** | **C `rand()` / `random()` / `drand48` from glibc** (incl. anything calling libc from a shell tool) | **×3** | F6/F7 fix glibc-on-Linux as the runtime; `random()`'s TYPE_3 additive-feedback generator is *the* default PRNG a 2012 Linux C program gets for free | Round 8 covered 10 generators over ~3% of each seed space (`round10/L5-seed32/CENSUS.md`) — that is a **~3% coverage bound**, not a sweep of the family |
 | **2** | **Python 2.7 `random` (Mersenne Twister, `random.seed(str)`)** | **×3** | F1/F8: whoever drives `convert` over 58 numbered files on Linux in 2012 is scripting; Python 2.7.3 is Ubuntu 12.04's system Python. Python's `seed()` on a *string* has a 2.x-specific hashing path that a Python-3-era sweep would miss | partially |
 | **3** | **Perl 5.14 `rand`/`srand`** (drand48 under the hood) | **×2.5** | F7's era: Perl 5.14.2 is Ubuntu 12.04's system Perl and the default text-munging language of that generation of Unix user | **never swept** |
 | **4** | **Bash/coreutils composites** — `$RANDOM`, `/dev/urandom`, `shuf --random-source`, `openssl rand` | **×2** | F8/F9: defaults-only CLI usage says the author reached for the shell first. `$RANDOM` is a 15-bit glibc `rand()` derivative with a tiny seed space | **never swept** |
@@ -303,12 +383,12 @@ Concretely, and in priority order:
 
 | # | not covered | reopens if |
 |---|---|---|
-| NC-1 | **The exact Ghostscript point release.** The ICC bound is an interval, not a version. | `icc_versions.json` shows a single-release boundary, or a second dated artefact (a Ghostscript-specific rounding artefact in the rendered glyph edges) is found |
+| NC-1 | **The exact Ghostscript point release.** The measured bound is the interval **9.04 ≤ gs ≤ 9.21** (§4), narrowed by the May-2014 publication date to **9.04–9.14**; it is not a single version. Eleven releases sit inside it and ship a byte-identical profile. | a second dated artefact separates them — e.g. a release-specific rasteriser change visible in the rendered glyph edges, or a `pdfmark`/`DOCINFO` residue in some other 3301 artifact |
 | NC-2 | **The exact ImageMagick version.** Only "an ImageMagick that inherits input sampling factors and defaults to q92" is established. | someone measures the 6.x releases' `coders/jpeg.c` behaviour directly against the LP2 vector |
 | NC-3 | **Whether stage 2 was `convert` or `mogrify`, and whether a single command or a loop.** | file-order or size-ordering evidence emerges, or a `-define` residue is found in some other 3301 image |
-| NC-4 | **Junicode and Everson Mono** — two strong period candidate faces that could not be downloaded from any mirror tried. | either font is obtained; both are one file each and the matcher runs in seconds |
+| NC-4 | **Junicode and Everson Mono** — two strong period candidate faces that no mirror tried would serve. The bank covers **11** faces; these two are the named gaps. | either font is obtained; both are one file each and `font_verdict.py` re-runs in about a minute |
 | NC-5 | **The `allrunes` Type-1 faces** are in the bank as files but are custom-encoded (not Unicode-mapped), so matching them requires an unordered glyph-slot search rather than a codepoint lookup. | the slot-search variant of `font_match.py` is run |
-| NC-6 | **No source PDF or PostScript document has been located.** The renders prove one existed; nothing found is more than a community re-wrap of the 58 JPEGs. | any PDF surfaces with an extractable text layer or an embedded font subset — a subset's `/BaseFont` name would identify the typesetting program and the face outright, and would be the single highest-value artifact in this puzzle after the ciphertext itself |
+| NC-6 | **No source PDF or PostScript document located.** §3–§4 prove one existed (a typeset 6.00×9.00-inch page rendered at 400 dpi). `pdf_hunt.py` scanned **493 distinct PDFs** held locally (a 530-entry file list; some documents are vendored more than once) for a Unicode-Runic text layer or an embedded runic font subset — a re-wrap of the published JPEGs has neither. **6** carry Runic in a text layer and all are derivative: saved Wikipedia *Anglo-Saxon runes* pages, the 2016 puzzle write-up, and a 2023 academic paper on runic cryptography. **No local PDF embeds a runic font subset that could be the LP face**, and none is a source document (`pdf_hunt_summary.json`). **No off-repo web/archive search was completed inside this lane**, so the outside world is unsearched, not searched-and-empty. | any PDF surfaces with an extractable text layer or an embedded font subset. A subset's `/BaseFont` name (and its six-letter subset tag) would name the typesetting program *and* the rune face outright — the single highest-value unrecovered artifact in this puzzle after the ciphertext itself |
 | NC-7 | **The onion7 index holds no non-JPEG assets.** The archived `index.html` (byte-identical in two independent copies: `analysis/structure/origsearch/onion7_index.html` and the cijhho123 dropbox) is 1,640 bytes containing exactly 58 `<img>` tags for `0.jpg`…`57.jpg`, `<title>133</title>` and `<div id="331">`. **No CSS, no scripts, no alternative formats, no unfetched assets.** | a fuller crawl of onion7 (headers, 404 behaviour, sibling paths) is recovered from an archive — the *page* is clean, the *server* was never enumerated |
 | NC-8 | The prior in §6 is a **prior**, not a result. It re-weights a search; it does not decode anything. | it is consumed by an actual sweep, which is L6's and B-04's ground, not this lane's |
 

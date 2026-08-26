@@ -57,3 +57,49 @@ ceiling instead of claiming a negative.
 That per-component ink intensity in these renders is consistent with a single tone plus
 JPEG/antialiasing noise, down to the measured power ceiling in grey levels. It does not
 close the layout channel; §5 of `RESULTS.md` governs coverage.
+
+---
+
+# ADDENDUM #2 · the Aiming Test (ARMADA-DOCTRINE §1)
+
+_`liber-primus/ARMADA-DOCTRINE.md` was written 2026-08-26, after Round 18 opened, and binds
+from Round 19. It is answered here anyway, because a lane that cannot answer it is a lane
+that should not have run._
+
+**Q1 — What would a hit look like, and would this instrument recognise it?**
+A hit is a short run of runes, set at ornament scale in a band the segmentation pipeline
+discarded, that reads as language or as an index. Control **C-2** plants exactly that — real
+glyph bitmaps composited into band-shaped strips on P-9's own 16/8/4/3/1 ladder — and the
+pipeline recovers **93.8%** of the planted glyphs. It also showed the *recogniser* was
+broken: the exact-substring form of H1 does not fire on a correctly recovered plant, because
+of one `I→L` confusable. The recogniser was repaired before the search (`fuzzy.py`), not
+after.
+
+**Q2 — What measured fact raises this family's prior above the flat rate?**
+`research/ROUND-8-RESULTS.md` §D: 47 non-text bands across 23 pages exist, are catalogued,
+and were explicitly left as "inventory, not a result … nobody has read them". That is a
+measurement on a held artifact, not lore. `ARMADA-DOCTRINE.md` §R5 independently ranks "47
+unread ornament bands" as a **rank-1 bounded object**. The prior on a *message* is still low
+(ornaments in a hand-set book are usually ornaments); the prior on *learning something the
+repo does not know* is high, and that is what the lane returned.
+
+**Q3 — Is the space bounded, and by what?**
+**Enumerable and tiny.** 109 band records, 30 of them short, ~9,900 glyphs of ink. There is
+no sampling fraction to apologise for: the object was covered exhaustively.
+
+**Q4 — What are the three conditionals your negative carries?**
+1. *Key space* — not applicable; no key was swept. The covered set is the band inventory
+   itself, and its bound is Round 8's rejection rule (see `RESULTS.md` §7 item 6).
+2. *Decoder transition model* — the R9 template DP over a closed 29-symbol alphabet at rune
+   scale, plus an upscaled re-read for sub-rune-height bands. It cannot represent ink that
+   is not a rune-shaped mark.
+3. *Adjudicator register* — English. 24 named strings plus an English quadgram model. This
+   is the same **English-only** conditional Round 18 L7-A found on every negative here, and
+   it is named in `not_covered` rather than buried.
+
+**Q5 — What single observation would have killed this lane at 10% of budget?**
+It nearly did, and the checkpoint fired: if gate G-A had shown the reader could not read a
+*known* line, the lane would have stopped and reported an accuracy bound instead of a
+reading. G-A failed at the whole-page level (44.2% pooled), the lane did **not** proceed on
+that basis, and instead built C-2 — a control matched to the actual task — which passed at
+93.8%. The readings in `RESULTS.md` rest on C-2, not on G-A.

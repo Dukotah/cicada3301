@@ -1,0 +1,776 @@
+{
+ "instrument": "native-resolution nearest-exemplar glyph match (pixelmatch.py) + 3 independent visual passes (visualpass.py)",
+ "calibration": {
+  "visual_blind_40_cell": "40/40 exact-token (calibration.json), case-ambiguous subset 22/22",
+  "pixel_leave_one_out_symbol": "236/237 = 99.58%, case-ambiguous subset 74/74 = 100%",
+  "pixel_leave_one_out_digit": "242/242 = 100%",
+  "gate": "PREREG A.3 gate was >=38/40; measured 40/40 -- PASS"
+ },
+ "sha256_resolved": "3b9b07d9a26e6d55c432d94d2661fdff3c2b348daed06821f2bdb23184a4b290",
+ "sha256_canon_256_bin": "4c8dc85531d256793a6d0d318b8845869b4983e672077b094ed955bde92226d5",
+ "identical_to_canon_256_bin": false,
+ "bytes_changed": [
+  45,
+  50,
+  246
+ ],
+ "cells": {
+  "25": {
+   "digit": {
+    "best": "3",
+    "best_iou": 1.0,
+    "margin": 0.5268,
+    "top": [
+     {
+      "cls": "3",
+      "iou": 1.0
+     },
+     {
+      "cls": "0",
+      "iou": 0.4732
+     },
+     {
+      "cls": "2",
+      "iou": 0.4594
+     },
+     {
+      "cls": "4",
+      "iou": 0.303
+     },
+     {
+      "cls": "1",
+      "iou": 0.115
+     }
+    ]
+   },
+   "symbol": {
+    "best": "I",
+    "best_iou": 1.0,
+    "margin": 0.0915,
+    "top": [
+     {
+      "cls": "I",
+      "iou": 1.0
+     },
+     {
+      "cls": "l",
+      "iou": 0.9085
+     },
+     {
+      "cls": "L",
+      "iou": 0.719
+     },
+     {
+      "cls": "i",
+      "iou": 0.6752
+     },
+     {
+      "cls": "t",
+      "iou": 0.6623
+     }
+    ]
+   },
+   "token": "3I",
+   "byte": 198,
+   "canon_byte": 198,
+   "decpref_byte": 224,
+   "agrees_with_canon": true,
+   "agrees_with_decimal": false,
+   "class": "pre-registered contested (tokens agree, decimal dissents)",
+   "visual_passes": [
+    "3I",
+    "3I",
+    "3I"
+   ],
+   "visual_concordant": true,
+   "visual_matches_pixel": true
+  },
+  "45": {
+   "digit": {
+    "best": "1",
+    "best_iou": 1.0,
+    "margin": 0.8371,
+    "top": [
+     {
+      "cls": "1",
+      "iou": 1.0
+     },
+     {
+      "cls": "2",
+      "iou": 0.1629
+     },
+     {
+      "cls": "0",
+      "iou": 0.1259
+     },
+     {
+      "cls": "3",
+      "iou": 0.1151
+     },
+     {
+      "cls": "4",
+      "iou": 0.1014
+     }
+    ]
+   },
+   "symbol": {
+    "best": "l",
+    "best_iou": 1.0,
+    "margin": 0.0915,
+    "top": [
+     {
+      "cls": "l",
+      "iou": 1.0
+     },
+     {
+      "cls": "I",
+      "iou": 0.9085
+     },
+     {
+      "cls": "L",
+      "iou": 0.6648
+     },
+     {
+      "cls": "j",
+      "iou": 0.6531
+     },
+     {
+      "cls": "i",
+      "iou": 0.6144
+     }
+    ]
+   },
+   "token": "1l",
+   "byte": 107,
+   "canon_byte": 81,
+   "decpref_byte": 81,
+   "agrees_with_canon": false,
+   "agrees_with_decimal": false,
+   "class": "token-split (canonicalize.py used the decimal column as tie-breaker)",
+   "visual_passes": [
+    "1l",
+    "1l",
+    "1l"
+   ],
+   "visual_concordant": true,
+   "visual_matches_pixel": true
+  },
+  "50": {
+   "digit": {
+    "best": "0",
+    "best_iou": 1.0,
+    "margin": 0.5274,
+    "top": [
+     {
+      "cls": "0",
+      "iou": 1.0
+     },
+     {
+      "cls": "3",
+      "iou": 0.4726
+     },
+     {
+      "cls": "2",
+      "iou": 0.3706
+     },
+     {
+      "cls": "4",
+      "iou": 0.1937
+     },
+     {
+      "cls": "1",
+      "iou": 0.1256
+     }
+    ]
+   },
+   "symbol": {
+    "best": "l",
+    "best_iou": 1.0,
+    "margin": 0.0915,
+    "top": [
+     {
+      "cls": "l",
+      "iou": 1.0
+     },
+     {
+      "cls": "I",
+      "iou": 0.9085
+     },
+     {
+      "cls": "L",
+      "iou": 0.6648
+     },
+     {
+      "cls": "j",
+      "iou": 0.6531
+     },
+     {
+      "cls": "i",
+      "iou": 0.6144
+     }
+    ]
+   },
+   "token": "0l",
+   "byte": 47,
+   "canon_byte": 21,
+   "decpref_byte": 21,
+   "agrees_with_canon": false,
+   "agrees_with_decimal": false,
+   "class": "token-split (canonicalize.py used the decimal column as tie-breaker)",
+   "visual_passes": [
+    "0l",
+    "0l",
+    "0l"
+   ],
+   "visual_concordant": true,
+   "visual_matches_pixel": true
+  },
+  "165": {
+   "digit": {
+    "best": "0",
+    "best_iou": 0.9992,
+    "margin": 0.5259,
+    "top": [
+     {
+      "cls": "0",
+      "iou": 0.9992
+     },
+     {
+      "cls": "3",
+      "iou": 0.4732
+     },
+     {
+      "cls": "2",
+      "iou": 0.3711
+     },
+     {
+      "cls": "4",
+      "iou": 0.1939
+     },
+     {
+      "cls": "1",
+      "iou": 0.1251
+     }
+    ]
+   },
+   "symbol": {
+    "best": "I",
+    "best_iou": 1.0,
+    "margin": 0.0915,
+    "top": [
+     {
+      "cls": "I",
+      "iou": 1.0
+     },
+     {
+      "cls": "l",
+      "iou": 0.9085
+     },
+     {
+      "cls": "L",
+      "iou": 0.719
+     },
+     {
+      "cls": "i",
+      "iou": 0.6752
+     },
+     {
+      "cls": "t",
+      "iou": 0.6623
+     }
+    ]
+   },
+   "token": "0I",
+   "byte": 18,
+   "canon_byte": 18,
+   "decpref_byte": 18,
+   "agrees_with_canon": true,
+   "agrees_with_decimal": true,
+   "class": "token-split (canonicalize.py used the decimal column as tie-breaker)"
+  },
+  "172": {
+   "digit": {
+    "best": "2",
+    "best_iou": 1.0,
+    "margin": 0.5406,
+    "top": [
+     {
+      "cls": "2",
+      "iou": 1.0
+     },
+     {
+      "cls": "3",
+      "iou": 0.4594
+     },
+     {
+      "cls": "0",
+      "iou": 0.3713
+     },
+     {
+      "cls": "4",
+      "iou": 0.204
+     },
+     {
+      "cls": "1",
+      "iou": 0.1628
+     }
+    ]
+   },
+   "symbol": {
+    "best": "S",
+    "best_iou": 1.0,
+    "margin": 0.3159,
+    "top": [
+     {
+      "cls": "S",
+      "iou": 1.0
+     },
+     {
+      "cls": "3",
+      "iou": 0.6841
+     },
+     {
+      "cls": "8",
+      "iou": 0.6702
+     },
+     {
+      "cls": "B",
+      "iou": 0.5208
+     },
+     {
+      "cls": "0",
+      "iou": 0.4503
+     }
+    ]
+   },
+   "token": "2S",
+   "byte": 148,
+   "canon_byte": 148,
+   "decpref_byte": 148,
+   "agrees_with_canon": true,
+   "agrees_with_decimal": true,
+   "class": "token-split (canonicalize.py used the decimal column as tie-breaker)"
+  },
+  "175": {
+   "digit": {
+    "best": "0",
+    "best_iou": 1.0,
+    "margin": 0.5274,
+    "top": [
+     {
+      "cls": "0",
+      "iou": 1.0
+     },
+     {
+      "cls": "3",
+      "iou": 0.4726
+     },
+     {
+      "cls": "2",
+      "iou": 0.3706
+     },
+     {
+      "cls": "4",
+      "iou": 0.1937
+     },
+     {
+      "cls": "1",
+      "iou": 0.1256
+     }
+    ]
+   },
+   "symbol": {
+    "best": "I",
+    "best_iou": 1.0,
+    "margin": 0.0915,
+    "top": [
+     {
+      "cls": "I",
+      "iou": 1.0
+     },
+     {
+      "cls": "l",
+      "iou": 0.9085
+     },
+     {
+      "cls": "L",
+      "iou": 0.719
+     },
+     {
+      "cls": "i",
+      "iou": 0.6752
+     },
+     {
+      "cls": "t",
+      "iou": 0.6623
+     }
+    ]
+   },
+   "token": "0I",
+   "byte": 18,
+   "canon_byte": 18,
+   "decpref_byte": 44,
+   "agrees_with_canon": true,
+   "agrees_with_decimal": false,
+   "class": "pre-registered contested (tokens agree, decimal dissents)",
+   "visual_passes": [
+    "0I",
+    "0I",
+    "0I"
+   ],
+   "visual_concordant": true,
+   "visual_matches_pixel": true
+  },
+  "182": {
+   "digit": {
+    "best": "2",
+    "best_iou": 1.0,
+    "margin": 0.5406,
+    "top": [
+     {
+      "cls": "2",
+      "iou": 1.0
+     },
+     {
+      "cls": "3",
+      "iou": 0.4594
+     },
+     {
+      "cls": "0",
+      "iou": 0.3713
+     },
+     {
+      "cls": "4",
+      "iou": 0.204
+     },
+     {
+      "cls": "1",
+      "iou": 0.1628
+     }
+    ]
+   },
+   "symbol": {
+    "best": "l",
+    "best_iou": 1.0,
+    "margin": 0.0915,
+    "top": [
+     {
+      "cls": "l",
+      "iou": 1.0
+     },
+     {
+      "cls": "I",
+      "iou": 0.9085
+     },
+     {
+      "cls": "L",
+      "iou": 0.6648
+     },
+     {
+      "cls": "j",
+      "iou": 0.6531
+     },
+     {
+      "cls": "i",
+      "iou": 0.6144
+     }
+    ]
+   },
+   "token": "2l",
+   "byte": 167,
+   "canon_byte": 167,
+   "decpref_byte": 141,
+   "agrees_with_canon": true,
+   "agrees_with_decimal": false,
+   "class": "pre-registered contested (tokens agree, decimal dissents)",
+   "visual_passes": [
+    "2l",
+    "2l",
+    "2l"
+   ],
+   "visual_concordant": true,
+   "visual_matches_pixel": true
+  },
+  "199": {
+   "digit": {
+    "best": "0",
+    "best_iou": 1.0,
+    "margin": 0.5268,
+    "top": [
+     {
+      "cls": "0",
+      "iou": 1.0
+     },
+     {
+      "cls": "3",
+      "iou": 0.4732
+     },
+     {
+      "cls": "2",
+      "iou": 0.3703
+     },
+     {
+      "cls": "4",
+      "iou": 0.1933
+     },
+     {
+      "cls": "1",
+      "iou": 0.1258
+     }
+    ]
+   },
+   "symbol": {
+    "best": "l",
+    "best_iou": 1.0,
+    "margin": 0.0915,
+    "top": [
+     {
+      "cls": "l",
+      "iou": 1.0
+     },
+     {
+      "cls": "I",
+      "iou": 0.9085
+     },
+     {
+      "cls": "L",
+      "iou": 0.6648
+     },
+     {
+      "cls": "j",
+      "iou": 0.6531
+     },
+     {
+      "cls": "i",
+      "iou": 0.6144
+     }
+    ]
+   },
+   "token": "0l",
+   "byte": 47,
+   "canon_byte": 47,
+   "decpref_byte": 21,
+   "agrees_with_canon": true,
+   "agrees_with_decimal": false,
+   "class": "pre-registered contested (tokens agree, decimal dissents)",
+   "visual_passes": [
+    "0l",
+    "0l",
+    "0l"
+   ],
+   "visual_concordant": true,
+   "visual_matches_pixel": true
+  },
+  "215": {
+   "digit": {
+    "best": "1",
+    "best_iou": 1.0,
+    "margin": 0.8371,
+    "top": [
+     {
+      "cls": "1",
+      "iou": 1.0
+     },
+     {
+      "cls": "2",
+      "iou": 0.1629
+     },
+     {
+      "cls": "0",
+      "iou": 0.1259
+     },
+     {
+      "cls": "3",
+      "iou": 0.1151
+     },
+     {
+      "cls": "4",
+      "iou": 0.1014
+     }
+    ]
+   },
+   "symbol": {
+    "best": "O",
+    "best_iou": 0.9993,
+    "margin": 0.1327,
+    "top": [
+     {
+      "cls": "O",
+      "iou": 0.9993
+     },
+     {
+      "cls": "Q",
+      "iou": 0.8666
+     },
+     {
+      "cls": "G",
+      "iou": 0.7149
+     },
+     {
+      "cls": "C",
+      "iou": 0.6807
+     },
+     {
+      "cls": "0",
+      "iou": 0.3127
+     }
+    ]
+   },
+   "token": "1O",
+   "byte": 84,
+   "canon_byte": 84,
+   "decpref_byte": 5,
+   "agrees_with_canon": true,
+   "agrees_with_decimal": false,
+   "class": "pre-registered contested (tokens agree, decimal dissents)",
+   "visual_passes": [
+    "1O",
+    "1O",
+    "1O"
+   ],
+   "visual_concordant": true,
+   "visual_matches_pixel": true
+  },
+  "237": {
+   "digit": {
+    "best": "0",
+    "best_iou": 1.0,
+    "margin": 0.5274,
+    "top": [
+     {
+      "cls": "0",
+      "iou": 1.0
+     },
+     {
+      "cls": "3",
+      "iou": 0.4726
+     },
+     {
+      "cls": "2",
+      "iou": 0.3706
+     },
+     {
+      "cls": "4",
+      "iou": 0.1937
+     },
+     {
+      "cls": "1",
+      "iou": 0.1256
+     }
+    ]
+   },
+   "symbol": {
+    "best": "W",
+    "best_iou": 1.0,
+    "margin": 0.5213,
+    "top": [
+     {
+      "cls": "W",
+      "iou": 1.0
+     },
+     {
+      "cls": "V",
+      "iou": 0.4787
+     },
+     {
+      "cls": "9",
+      "iou": 0.2328
+     },
+     {
+      "cls": "M",
+      "iou": 0.1964
+     },
+     {
+      "cls": "w",
+      "iou": 0.1803
+     }
+    ]
+   },
+   "token": "0W",
+   "byte": 32,
+   "canon_byte": 32,
+   "decpref_byte": 58,
+   "agrees_with_canon": true,
+   "agrees_with_decimal": false,
+   "class": "pre-registered contested (tokens agree, decimal dissents)",
+   "visual_passes": [
+    "0W",
+    "0W",
+    "0W"
+   ],
+   "visual_concordant": true,
+   "visual_matches_pixel": true
+  },
+  "246": {
+   "digit": {
+    "best": "3",
+    "best_iou": 1.0,
+    "margin": 0.5268,
+    "top": [
+     {
+      "cls": "3",
+      "iou": 1.0
+     },
+     {
+      "cls": "0",
+      "iou": 0.4732
+     },
+     {
+      "cls": "2",
+      "iou": 0.4594
+     },
+     {
+      "cls": "4",
+      "iou": 0.303
+     },
+     {
+      "cls": "1",
+      "iou": 0.115
+     }
+    ]
+   },
+   "symbol": {
+    "best": "I",
+    "best_iou": 1.0,
+    "margin": 0.0915,
+    "top": [
+     {
+      "cls": "I",
+      "iou": 1.0
+     },
+     {
+      "cls": "l",
+      "iou": 0.9085
+     },
+     {
+      "cls": "L",
+      "iou": 0.719
+     },
+     {
+      "cls": "i",
+      "iou": 0.6752
+     },
+     {
+      "cls": "t",
+      "iou": 0.6623
+     }
+    ]
+   },
+   "token": "3I",
+   "byte": 198,
+   "canon_byte": 224,
+   "decpref_byte": 224,
+   "agrees_with_canon": false,
+   "agrees_with_decimal": false,
+   "class": "token-split (canonicalize.py used the decimal column as tie-breaker)",
+   "visual_passes": [
+    "3I",
+    "3I",
+    "3I"
+   ],
+   "visual_concordant": true,
+   "visual_matches_pixel": true
+  }
+ },
+ "hex": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576dc6ad1996428d857372c5273650850550541c49e66bc74cfd102f3b56ab9c50fe7692456ac47c337aff19c0c749a96ca44fcdb172902e528e3ac9c1ad1c6f41d3dcc631ec543823de96482253e520ce7a3f1fda0eb82073498fc5f736ab23b82aed56360d14a3c1c9b35678a98d48ab0a81e90df52ea0987dd25cadf6ae99bde7210e7034fbf9f8e9d9c0526912faf8f0e4fe369475d112eb83a6af9028a751809c135126c0aa21009b9f59b073692f6e4ad144c24c7f1539af063d4696fb548edb943b3a343397443449f9900075af6aeac479ee2081ad908d2ad61638c6c0719eace6b424bd50"
+}

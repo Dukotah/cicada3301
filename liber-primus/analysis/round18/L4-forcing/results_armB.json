@@ -1,5 +1,25 @@
 {
   "alpha_test": 4.761904761904762e-05,
+  "control": [
+    {
+      "shift": 0,
+      "best": -4.371830445385239,
+      "variant": "fwd/id/keepF/+0",
+      "null_max": -6.9594150677304,
+      "bar": -6.805969737065671,
+      "recovered": true,
+      "threshold_for": -5.5
+    },
+    {
+      "shift": 7,
+      "best": -4.371830445385239,
+      "variant": "fwd/id/keepF/+22",
+      "null_max": -7.0019465304647035,
+      "bar": -6.804828590175238,
+      "recovered": true,
+      "threshold_for": -5.5
+    }
+  ],
   "families": {
     "B1_line_initial_sequence": {
       "n_reads": 1,
@@ -43,6 +63,51 @@
       "null_max_sd": 0.2977738743459404,
       "null_max_max": -2.4480431446155757,
       "gumbel_bar_alpha_prereg": -1.0609050366197832,
+      "benchmark_threshold_for_nvariants": -5.5,
+      "verdict": "NEGATIVE"
+    },
+    "B4_every_Nth_line_initial": {
+      "n_reads": 77,
+      "n_variants": 17864,
+      "best_score_norm": -5.838333505552251,
+      "best_read_index": 51,
+      "best_variant": "rev/atb/dropF/+11",
+      "best_translit_head": "BPDWFGNGUDFEOEAHGJHFNGLEAPDIATNGDAEIIALUBWEHIATUNGM",
+      "null_replicates": 500,
+      "null_max_mean": -6.111370695427794,
+      "null_max_sd": 0.13146027837764201,
+      "null_max_max": -5.558481530705046,
+      "gumbel_bar_alpha_prereg": -5.150437164359081,
+      "benchmark_threshold_for_nvariants": -5.5,
+      "verdict": "NEGATIVE"
+    },
+    "B5_page_initial_and_final": {
+      "n_reads": 2,
+      "n_variants": 464,
+      "best_score_norm": -6.373541803416978,
+      "best_read_index": 0,
+      "best_variant": "fwd/id/dropF/+26",
+      "best_translit_head": "SAOELLRXHXYCIACGTFELEANPCNGUDHIAMPTHDTHLDMNGYNUS",
+      "null_replicates": 1000,
+      "null_max_mean": -6.47681349011338,
+      "null_max_sd": 0.16159553494884574,
+      "null_max_max": -5.6946738104184496,
+      "gumbel_bar_alpha_prereg": -5.295600655942617,
+      "benchmark_threshold_for_nvariants": -5.5,
+      "verdict": "NEGATIVE"
+    },
+    "B6_word_initial_and_final": {
+      "n_reads": 2,
+      "n_variants": 464,
+      "best_score_norm": -7.259606280055445,
+      "best_read_index": 1,
+      "best_variant": "rev/id/dropF/+11",
+      "best_translit_head": "FCAEOETHUTHIANTHXPFIAHUPTHGJYEOIAYNGNTHPEAYWFEBTHAEOJLEA",
+      "null_replicates": 500,
+      "null_max_mean": -7.298966131895504,
+      "null_max_sd": 0.026198563910671355,
+      "null_max_max": -7.199978507632222,
+      "gumbel_bar_alpha_prereg": -7.107462821250664,
       "benchmark_threshold_for_nvariants": -5.5,
       "verdict": "NEGATIVE"
     }

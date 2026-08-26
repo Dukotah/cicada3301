@@ -1,0 +1,27 @@
+{
+ "lane": "round19/G4",
+ "bench": "Phase-2 full-enumeration route",
+ "slice_phases": 16777216,
+ "full_phases": 2147483646,
+ "extrapolation_factor": 127.99999988079071,
+ "window": 32,
+ "build": {
+  "slice_s": 1.92,
+  "full_s_est": 246.0,
+  "full_bytes": 2147483646,
+  "full_gib": 2.0,
+  "distinct_symbols": 29
+ },
+ "prefilter_pass": {
+  "slice_s": 11.31,
+  "full_s_est": 1447.1,
+  "note": "one pass = one (stream family x sign x direction x atbash x c) cell; Phase 2 needs 8 cells per stream family",
+  "cells_per_stream_family": 8,
+  "full_all_cells_s_est": 11577.1
+ },
+ "cut_sizes": {
+  "0.01": 21474836,
+  "0.001": 2147483,
+  "0.0001": 214748
+ }
+}

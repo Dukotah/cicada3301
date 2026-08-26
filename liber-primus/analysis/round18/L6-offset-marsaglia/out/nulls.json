@@ -1,0 +1,53 @@
+{
+ "n": 200,
+ "max_skip": 8,
+ "beam_w": 120,
+ "families": {
+  "derived:sha512_ctr|mod29": {
+   "head400": {
+    "null_mean": -7.3139,
+    "null_max": -7.0024,
+    "bar_null_max_plus_0.5": -6.5024,
+    "seconds": 138.6
+   },
+   "head120": {
+    "null_mean": -7.3483,
+    "null_max": -6.7164,
+    "bar_null_max_plus_0.5": -6.2164,
+    "seconds": 6.4
+   }
+  },
+  "derived:iter_sha256_100000|rej29": {
+   "head400": {
+    "null_mean": -7.2979,
+    "null_max": -6.9947,
+    "bar_null_max_plus_0.5": -6.4947,
+    "seconds": 110.8
+   },
+   "head120": {
+    "null_mean": -7.3688,
+    "null_max": -6.5846,
+    "bar_null_max_plus_0.5": -6.0846,
+    "seconds": 4.6
+   }
+  },
+  "marsaglia:BITS.01|mod29": {
+   "head400": {
+    "null_mean": -7.267,
+    "null_max": -6.9847,
+    "bar_null_max_plus_0.5": -6.4847,
+    "seconds": 112.7
+   },
+   "head120": {
+    "null_mean": -7.3087,
+    "null_max": -6.6709,
+    "bar_null_max_plus_0.5": -6.1709,
+    "seconds": 6.5
+   }
+  }
+ },
+ "null_max_head400": -6.9847,
+ "null_max_head120": -6.5846,
+ "head400_null_is_lower_than_head120": true,
+ "note": "threshold_for()'s Gumbel constants are tail-calibrated on L~120 windows and the function ignores its segment_len argument. This lane adjudicates on L=400. The measured L=400 null max is LOWER than the L=120 null max, so applying the L~120-calibrated bar to L=400 scores is CONSERVATIVE - it can only make a hit harder to claim, never easier."
+}

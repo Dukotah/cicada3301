@@ -1,0 +1,53 @@
+{
+ "lane": "round19/G4",
+ "label": "PILOT \u2014 NOT A RESULT",
+ "decodes": 10000,
+ "elapsed_s": 770.2,
+ "segment_len": 120,
+ "per_preset": {
+  "exact": {
+   "decodes": 8000,
+   "elapsed_s": 135.7,
+   "s_per_decode": 0.01696,
+   "decodes_per_s": 59.0,
+   "kwargs": {
+    "mode": "keyskip1",
+    "max_skip": 3,
+    "max_free": 0,
+    "lam": 0.0,
+    "start_slack": 0
+   }
+  },
+  "pair": {
+   "decodes": 1000,
+   "elapsed_s": 15.5,
+   "s_per_decode": 0.01551,
+   "decodes_per_s": 64.5,
+   "kwargs": {
+    "mode": "keyskip2",
+    "max_skip": 8,
+    "max_free": 0,
+    "lam": 0.0,
+    "start_slack": 0
+   }
+  },
+  "drift": {
+   "decodes": 1000,
+   "elapsed_s": 619.0,
+   "s_per_decode": 0.619,
+   "decodes_per_s": 1.6,
+   "kwargs": {
+    "mode": "permissive",
+    "max_skip": 40,
+    "max_free": 2,
+    "lam": 8.0,
+    "start_slack": 2
+   }
+  }
+ },
+ "drift_over_exact_cost_ratio": 36.5,
+ "store": "pilot_sweeprows.jsonl",
+ "store_validates_against_I2": true,
+ "validator_error": null,
+ "interpretation": "NONE. Scores in the store are not interpreted and no candidate is escalated. Phase 2 (S1) adjudicates, after I1/I2/I3 PASS."
+}

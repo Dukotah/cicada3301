@@ -1,52 +1,96 @@
 {
- "$comment": "Round 18 lane L3 (ORNAMENTS & LAYOUT) ledger fragment. Merge into liber-primus/LEDGER.json. Written by the lane, not the coordinator; do not git commit from the lane.",
+ "$comment": "Round 18 lane L3 (ORNAMENTS & LAYOUT) ledger fragment. Merge into liber-primus/LEDGER.json. Written by the lane; the coordinator commits.",
  "generated": "2026-08-25",
  "entries": [
   {
    "id": "A-06",
    "lane": "recon-a",
-   "hypothesis": "Ornament bands. Round 8 catalogued 47 non-text bands over 23 pages (`geometry/ornaments.json` holds 62 rows) and states this \"is inventory, not a result\"; the short bands (1/3/4/8/16 glyphs) \"are the only real ornament candidates and nobody has read them\".",
-   "status": "IN-PROGRESS",
+   "hypothesis": "Ornament bands. Round 8 catalogued 47 non-text bands over 23 pages (`geometry/ornaments.json` holds 62 rows) and recorded this as \"inventory, not a result -- the one item in Round 8 left as an open thread\"; the short bands (1/3/4/8/16 glyphs) \"are the only real ornament candidates and nobody has read them\".",
+   "status": "negative",
    "round": "18",
    "date": "2026-08-25",
-   "threshold": "PENDING - see PREREG.md sections I-2 and 2.",
+   "threshold": "H1: a band decodes to an English word or known Cicada string of length >= 8 under a cipher validated on the solved pages (run confusable-tolerant, see control_detail). H2: identical short-band content recurring at >= 3 sites. H3/H4/H5: >= 3 exact matches (page index / prime index / one of 12 checksum forms), family-wise p < 1.67e-4, Bonferroni 8.3e-5 within H5. H6: >= 8-char English via a pointer reading, or doublet-landing p < 0.001. H7: p < 0.001 that band lengths are drawn from {2^k}, against a SIZE-MATCHED null. H8: p < 0.001 non-uniform position or a >= 8-char decode. Plus a quadgram-vs-null test per band: score must exceed its own size-matched null MAX over 2,000 draws from the LP2 rune frequency distribution.",
    "threshold_fixed_in_advance": true,
-   "positive_control": "pending",
-   "result": "PENDING",
-   "coverage": "PENDING",
-   "not_covered": [],
+   "positive_control": "passed",
+   "control_detail": {
+    "C-2 band plant": "Composited REAL glyph bitmaps lifted from the sha256-verified renders into band-shaped strips on P-9's own length ladder (16/8/4/3/1 glyphs) encoding 'THEPRIMESARESACRED', then ran the identical band pipeline. Recovery 30/32 planted glyphs = 93.8% (bar 90%). PASS.",
+    "detector repair forced by the control": "The EXACT-substring form of H1 does NOT fire on a correctly recovered plant -- the read is 'THEPRLMESARESACRE', one I->L substitution inside the shape-confusable family R9 named. An exact detector that fails its own positive control cannot declare a negative, so H1 was run confusable-tolerant (<=1 substitution, and that substitution must lie inside a named confusable family; liber-primus/analysis/round18/L3-ornaments/fuzzy.py). H1-prime fires on the plant.",
+    "G-A solved-page calibration": "FAILS the 90% whole-page bar: 44.2% pooled over 2,001 glyphs on 7 cryptographically solved pages. The split is structural: the two LP2-typeface solved pages (73.jpg = LP2 p56, 74.jpg = LP2 p57) score 86.5% and 81.7%; the LP1-typeface pages score 25-70% because templates.npz was clustered from LP2 renders. The residual on 73/74 is row segmentation, not glyph identity.",
+    "G-B discriminator false positive (measured)": "The RUNIC call (median template cost <= 300, known-text median 128) has a measured false positive: band B098, the p51 alphanumeric line which contains no runes by construction, is called RUNIC at cost 251.5. No hypothesis was scored on a band call alone."
+   },
+   "null": "10,000-resample content null (band glyph sequences replaced by i.i.d. draws from the LP2 rune-frequency distribution, lengths held fixed); 2,000-draw per-band quadgram null; size-matched small-n null for band lengths; binomial null against the measured residual-doublet base rate for pointer landings.",
+   "result": "NEGATIVE on every hypothesis, and the inventory is now READ. All 109 catalogued band records were cropped from sha256-verified renders and read: 9,899 glyphs with per-glyph template match cost (bands.json). They decompose into four populations: 82 mis-grouped rune TEXT lines (medh 114, cost 55-175) that Round 8's heuristic rejected because a marginal vine ornament merged rows; 10 vine/hairline components whose reads are DEGENERATE (a single vertical stroke matched repeatedly by the narrow I template, degeneracy 0.89-1.00); 3 woodcut illustrations (cost 348-2003); and 5 bands of NON-RUNIC DATA. NO BAND CONTAINS A RUNIC MESSAGE. Verdicts: H1 0 hits / H1-quadgram 5 of 25 bands beat their null max but ALL FIVE are the flagged DEGENERATE vine-stroke reads and 0 non-degenerate bands beat their null / H2 0 / H3 1 exact (bar 3) / H4 0 / H5 best form 2 exact (bar 3) / H6 0 English and 0 of 12 pointers land on a residual doublet against a base rate 0.0068, binomial p = 1.0 / H7 the apparent 1-3-4-8-16 binary ladder is an ARTIFACT: naive p = 6.7e-10 against an all-bands base rate set by TEXT lines at n = 20-40, but size-matched to small bands it is 22/30 at 2^k against an empirical base rate of 0.531 over all n<=16 image bands, p = 0.019 / H8 passes the letter of its statistic (KS uniformity p = 8e-11) but the statistic is uninformative because a uniform-position null is physically impossible for marginal decoration; H8b shows the coordinates are a REPEATED PAGE TEMPLATE, not data: 109 bands occupy 58 distinct boxes and 45 distinct x-spans, 69 of 109 share an exact box with another band, and the x-span [28,2372] recurs 21 times. POSITIVE FINDING (not a hypothesis, a correction): Round 8's ornament bucket contains the book's NON-RUNIC DATA. The alphanumeric blocks on pages 49/50/51 were binned as ornament by `analysis/geometry/*` and have never entered any analysis in this repository. P-9's '16-glyph bands' B096/B098 are not 16 runes -- they are 16 CHARACTERS, eight two-character base-60 tokens ('2M 0w 3L 3D 2r 0S 1p 15' on p50, '28 2a 0J 1L 0c 3C 2o 0X' on p51), cross-checked byte-for-byte against two independent vendored community transcriptions. The full block is 32 lines x 8 tokens = 256 tokens spanning exactly 0..255 under value = 60*index(c0)+index(c1): 256 bytes, NOT a permutation (161 distinct against a uniform-iid expectation of 162.0). Transcribed with derivation in nonrunic.json.",
+   "coverage": "All 109 band records in the deduped union of `geometry/ornaments.json` (62 rows) and `geometry_report.json:ornaments` (47 rows), across 39 pages, with the y coordinate RESTORED (ornaments.json stores [page, x_lo, x_hi, n, median_height] and drops y, which is the mechanical reason nobody could crop these bands). 30 bands with n <= 16; 12 short AND called RUNIC. 9,899 glyphs read. 8 pre-registered hypotheses plus a per-band quadgram-vs-null test. Measured power: 93.8% glyph recovery on a message planted in the exact target shape (C-2); 81.7-86.5% whole-page on LP2-typeface solved pages.",
+   "not_covered": [
+    "band content below the reader's resolution -- sub-rune marks, or deliberate stroke modifications inside a vine, that the template DP cannot segment at all. Reopens if a per-rune reader reaches >= 99% on the solved control pages (P-1's unpark condition).",
+    "H1's register: 24 named English/Cicada strings plus an English quadgram model. A message in Latin, Old English or an abbreviated register is invisible to both -- the same English-only conditional Round 18 L7-A found on every negative in this repo.",
+    "the 256 base-60 bytes of pp.49-51 are TRANSCRIBED, not attacked. Testing them as a key, keystream, seed or payload is a different lane's work and was not done here.",
+    "only the bands Round 8 catalogued were read. Round 8's rejection rule (outside the text column OR median height > 240 px) is itself a filter; a from-scratch inventory of all non-body ink on all 56 pages would strictly extend this.",
+    "the 226 light-ink components located by the H9 addendum were measured but not separately transcribed and diffed against canon (three grey text rows on p53, and the grey heading lines)."
+   ],
    "evidence": [
     "liber-primus/analysis/round18/L3-ornaments/PREREG.md",
-    "liber-primus/analysis/round18/L3-ornaments/RESULTS.md"
+    "liber-primus/analysis/round18/L3-ornaments/RESULTS.md",
+    "liber-primus/analysis/round18/L3-ornaments/bands.json",
+    "liber-primus/analysis/round18/L3-ornaments/inventory.json",
+    "liber-primus/analysis/round18/L3-ornaments/nonrunic.json",
+    "liber-primus/analysis/round18/L3-ornaments/hypotheses.json",
+    "liber-primus/analysis/round18/L3-ornaments/h1score.json",
+    "liber-primus/analysis/round18/L3-ornaments/controls.json",
+    "liber-primus/analysis/round18/L3-ornaments/calibration.json"
    ],
-   "reproduce": "cd liber-primus/analysis/round18/L3-ornaments && python3 inventory.py && python3 calibrate.py && python3 read_bands.py",
-   "reopens_if": "PENDING",
+   "reproduce": "cd liber-primus/analysis/round18/L3-ornaments && python3 inventory.py && python3 calibrate.py && python3 controls.py && python3 read_bands.py && python3 nonrunic.py && python3 hypotheses.py && python3 h1score.py",
+   "reopens_if": "(i) a per-rune reader reaches >= 99% on the solved control pages and finds runic content in any band this lane called VINE/WOODCUT; (ii) a multi-register (non-English) scorer finds language in a short band's read; (iii) anyone extends the inventory past Round 8's rejection rule.",
    "priority": "medium",
+   "notes": "The lane also established a provenance fact not previously recorded anywhere in the repo: the vendored 2014 render set under corpus/E-tooling/vendor/cicada-solvers__documenting-cicada3301-scream314/assets/2014/liber-primus-complete/ is the SAME LINEAGE as data/relikd/ -- asset 17.jpg is byte-identical by sha256 (197e1e153958b9a2..., 695,525 B) to data/relikd/p0.jpg. That set supplies the cryptographically solved pages (73.jpg = LP2 p56, 74.jpg = LP2 p57, plus LP1 01/03/05/06/14) at the identical 2400x3600 render, and therefore a genuine solved-page control for any glyph reader. NO page in data/relikd/ is solved; relikd serves p0..p55 only and p56/p57 return 404.",
    "raw_status": "never-run",
-   "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md"
+   "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
+   "supersedes": null,
+   "superseded_by": null,
+   "evidence_missing": []
   },
   {
    "id": "B-12",
    "lane": "recon-b",
-   "hypothesis": "Line geometry + line-fill / per-page word counts as a covert data channel independent of the rune stream.",
-   "status": "IN-PROGRESS",
+   "hypothesis": "Line geometry + line-fill / per-page word counts as a data channel independent of the rune stream. Round 17 established the anti-repeat filter is machine-applied, so the program that produced the pad also typeset the book -- and typesetting decisions (line fill, margins, where a line breaks) are a place a designer can put data without touching the ciphertext.",
+   "status": "negative",
    "round": "18",
    "date": "2026-08-25",
-   "threshold": "PENDING - see PREREG.md section I-3.",
+   "threshold": "Each of 11 channels tested three ways. (a) two-state screen: PASS iff GMM component separation >= 2.0 sigma AND dBIC > 10 for two components. (b) bit decode: median-threshold -> 8 packings (fwd/rev x 5-bit/8-bit) x 8 phases -> English 4-gram score; PASS iff p < 0.001 against a 2,000-draw size-matched shuffle null. (c) correlation: Spearman rho against per-line rune statistics, PASS iff p < 0.001 Bonferroni-corrected over the channel x statistic grid (3.7e-5).",
    "threshold_fixed_in_advance": true,
-   "positive_control": "pending",
-   "result": "PENDING",
-   "coverage": "PENDING",
-   "not_covered": [],
+   "positive_control": "passed",
+   "control_detail": {
+    "C-3b decoder validation": "Real ASCII planted noise-free in the bit channel is recovered by the same detector at p = 0.0005. PASS -- so the eight bit-decode nulls are silence from a working instrument, not from a dead one.",
+    "C-3a power ceiling": "Planting a 64-bit message in fill_ratio at k x the channel's own measured sd: the GMM screen sees a planted two-state channel from about 3 sd upward (2.26 sigma at 3 sd, 4.15 at 4 sd, 7.29 at 8 sd). Median-threshold bit recovery saturates at 0.859 because ASCII is not bit-balanced and a median threshold mis-assigns the minority bit -- a property of the pre-registered detector, reported rather than patched."
+   },
+   "null": "2,000-draw within-channel shuffle null for the bit decode; Bonferroni over the 24-test correlation grid; GMM BIC for the two-state screen.",
+   "result": "NEGATIVE. 616 text rows over 56 pages plus the canonical per-line rune/word statistics. (a) 5 of 11 channels clear the pre-registered two-state screen -- row_height 4.71 sigma / dBIC 2391, body_per_line 4.53 / 824, runes_per_line 2.89 / 394, words_per_page 2.62 / 22.8, lines_per_page 2.12 / 1433 -- but in every case the minority component is a FAT TAIL, not a second state: row_height is 92.8% at 114.5 px with sd 0.50 plus 7.2% at 131.6 px with sd 13.4, and lines_per_page is 61.4% at exactly 12.0 with sd 0.000 plus 38.6% at 8.36 with sd 2.76. Same shape Round 8 diagnosed for micro-spacing. Removing last rows and short pages does not kill it (row_height 4.71 -> 7.90 sigma), so it is glyph-repertoire driven, not paragraph-end driven. (b) ALL 8 channels FAIL the bit decode: every channel scores 0 English 4-grams where the null's own maximum is 1-3, p = 1.000 for all eight, against a decoder validated at p = 0.0005 on a planted message. (c) 1 of 24 correlations clears Bonferroni -- runes_per_line ~ mean_rune_idx, rho = -0.257, p = 1.5e-10 -- AND IT IS EXPLAINED: measuring mean glyph advance per rune class from the image itself gives runes_per_line ~ mean GLYPH WIDTH rho = -0.653 (p = 8.3e-75) and mean_rune_idx ~ mean GLYPH WIDTH rho = +0.367 (p = 9.5e-21), and the PARTIAL correlation of runes_per_line ~ mean_rune_idx controlling for width collapses to rho = -0.018, p = 0.66. The typesetter justified to a fixed column width, so a line packs more runes when its runes are narrower. Typographic justification, not a covert channel. ADDENDUM H9 (ink tone, pre-registered separately in PREREG-ADDENDUM.md, never measured anywhere in this repo before): the book uses a second, lighter ink tone. 226 components at 25 sites on 16 pages have minimum grey 44-51 and mean grey 57.4-57.6 at rune stroke weight (63.7-69.9 at thinner weight) where the book-wide median component minimum grey is 0.00. Most are section headings and drop-caps, plus three full grey text rows on p53 and single grey marks in the left margin of p36/p37/p38. ONE element is neither heading, drop-cap nor drawing: on page 15 the four digits of `3299` in the 4x4 numeric grid have minimum grey 47-51 and mean 68.1-69.1 while every other digit on that page has minimum grey 0.0 and mean 16-22 -- uniform across all four glyphs and all ~1,400 ink pixels of each, so not a JPEG artifact. 3299 is the prime immediately preceding 3301. The marking is absent from every transcription in this repository and from both vendored community transcriptions of that page, all of which record the digits and discard the tone. No interpretation is claimed.",
+   "coverage": "11 line/page geometry channels (fill ratio, left margin, right margin, row height, rune-body components per line, separator dots per line, mean inter-word gap, runes per line, words per line, words per page, lines per page) x 3 stages, over 616 image text rows on 56 pages and 604 canonical lines. Round 8's already-measured axes -- inter-glyph advance (1.86 sigma, unimodal) and baseline jitter (BIC-rejected) -- were deliberately NOT re-run. Ink tone measured over every connected component on all 56 sha256-verified renders. Measured power: the GMM screen detects a planted two-state line-fill channel from about 3 sd separation; the bit decoder recovers a planted ASCII message at p = 0.0005; the tone detector recovers a planted lightening of 2 grey levels at recall 1.00 with a robust (median/MAD) reference.",
+   "not_covered": [
+    "line-fill state separations below about 3 sd -- the measured ceiling of the pre-registered detector (C-3a).",
+    "inter-line leading (baseline-to-baseline distance) was not measured; it is a twelfth channel and is proposed, not tested.",
+    "the bit decode is English-4-gram adjudicated, so a non-English or binary payload in a geometry channel would be missed -- the same register conditional as A-06.",
+    "the p15 `3299` ink-tone marking is MEASURED, not interpreted: whether it points at 3301, at a prime index, at a cell coordinate, or at nothing is untested.",
+    "the grey text rows on p53 and the grey heading lines were located but not separately transcribed and diffed against canon."
+   ],
    "evidence": [
     "liber-primus/analysis/round18/L3-ornaments/PREREG.md",
-    "liber-primus/analysis/round18/L3-ornaments/RESULTS.md"
+    "liber-primus/analysis/round18/L3-ornaments/PREREG-ADDENDUM.md",
+    "liber-primus/analysis/round18/L3-ornaments/RESULTS.md",
+    "liber-primus/analysis/round18/L3-ornaments/linegeom.json",
+    "liber-primus/analysis/round18/L3-ornaments/linetests.json",
+    "liber-primus/analysis/round18/L3-ornaments/intensity.json",
+    "liber-primus/analysis/round18/L3-ornaments/greyglyphs.json"
    ],
-   "reproduce": "cd liber-primus/analysis/round18/L3-ornaments && python3 linegeom.py",
-   "reopens_if": "PENDING",
+   "reproduce": "cd liber-primus/analysis/round18/L3-ornaments && python3 linegeom.py && python3 linetests.py && python3 greyglyphs.py",
+   "reopens_if": "(i) a planted-signal detector with sensitivity below 3 sd on line fill; (ii) inter-line leading, or any channel not among the eleven measured here, proposed WITH a positive control; (iii) any falsifiable interpretation of the p15 `3299` ink-tone marking; (iv) transcription of the p53 grey text rows showing a difference from canon.",
    "priority": "medium",
+   "notes": "The first ink-tone detector (mean grey against a mean/sd reference) FAILED its own plant-and-recover control at recall 0.05-0.10, because a handful of genuinely lighter glyphs inflate the very dispersion they are tested against. Replacing the reference with median/MAD lifts recall to 1.00 at delta-L = 2 grey levels. The failure is recorded rather than hidden: it is exactly the failure mode this repository's discipline exists to catch, and the published result uses the repaired detector plus a near-confound-free statistic (component MINIMUM grey, which is insensitive to stroke width because a solid-black glyph reaches ~0 no matter how thin its strokes are).",
    "raw_status": "never-run",
-   "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md"
+   "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md",
+   "supersedes": null,
+   "superseded_by": null,
+   "evidence_missing": []
   }
  ]
 }

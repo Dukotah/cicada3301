@@ -1,0 +1,119 @@
+{
+ "lane": "round19/G4",
+ "probe": "allrunes ink-width profile vs LP2 observed (PREREG 8) \u2014 SCREEN, NOT A VERDICT",
+ "nc5_claim_under_test": "round18/L1 NC-5: 'the allrunes Type-1 faces are custom-encoded (not Unicode-mapped), so matching them requires an unordered glyph-slot search rather than a codepoint lookup'",
+ "nc5_finding": "FALSE as stated for these files. The .pfb charstrings carry ordinary Adobe glyph names that ARE the transliteration letters \u2014 f, u, eth, o, r, c, g, w, h, n, i, j, p, x, s, t, b, e, m, l, eng, oe, d, a, ae, y \u2014 so 26 of the 29 futhorc runes are a direct name lookup and no unordered slot search is needed. Only EO / EA / IA lack an unambiguous name.",
+ "n_faces": 72,
+ "n_skipped": 144,
+ "n_runes_compared": 26,
+ "runes_compared": [
+  "F",
+  "U",
+  "TH",
+  "O",
+  "R",
+  "C",
+  "G",
+  "W",
+  "H",
+  "N",
+  "I",
+  "J",
+  "P",
+  "X",
+  "S",
+  "T",
+  "B",
+  "E",
+  "M",
+  "L",
+  "NG",
+  "OE",
+  "D",
+  "A",
+  "AE",
+  "Y"
+ ],
+ "top10": [
+  {
+   "face": "fruabr",
+   "scale": 0.6909,
+   "rms_px": 6.643
+  },
+  {
+   "face": "fruamr",
+   "scale": 0.7077,
+   "rms_px": 6.71
+  },
+  {
+   "face": "fruakn",
+   "scale": 0.4389,
+   "rms_px": 6.717
+  },
+  {
+   "face": "fruaks",
+   "scale": 0.439,
+   "rms_px": 6.717
+  },
+  {
+   "face": "fruabn",
+   "scale": 0.6927,
+   "rms_px": 6.718
+  },
+  {
+   "face": "fruakr",
+   "scale": 0.439,
+   "rms_px": 6.718
+  },
+  {
+   "face": "frualr",
+   "scale": 0.7332,
+   "rms_px": 6.776
+  },
+  {
+   "face": "fruamn",
+   "scale": 0.7099,
+   "rms_px": 6.803
+  },
+  {
+   "face": "fruabs",
+   "scale": 0.6946,
+   "rms_px": 6.846
+  },
+  {
+   "face": "frualn",
+   "scale": 0.7346,
+   "rms_px": 6.882
+  }
+ ],
+ "worst3": [
+  {
+   "face": "frumlt",
+   "scale": 0.8412,
+   "rms_px": 17.075
+  },
+  {
+   "face": "frumlm",
+   "scale": 0.8357,
+   "rms_px": 17.156
+  },
+  {
+   "face": "frumlq",
+   "scale": 0.8294,
+   "rms_px": 17.258
+  }
+ ],
+ "scale_range": [
+  0.4002,
+  0.8412
+ ],
+ "permutation_control": {
+  "face": "fruabr",
+  "real_rms_px": 6.643,
+  "null_n": 200,
+  "null_min_rms_px": 10.113,
+  "null_median_rms_px": 15.296,
+  "p_value_le_real": 0.0
+ },
+ "verdict": "INFORMATIVE"
+}

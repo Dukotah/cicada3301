@@ -58,8 +58,12 @@ def detect(st, k_sigma=4.0):
     body = (st['h'] >= RUNE_BODY[0]) & (st['h'] <= RUNE_BODY[1])
     if body.sum() < 20:
         body = np.ones(len(st['h']), bool)
-    mu, sd = float(st['mean'][body].mean()), float(st['mean'][body].std())
-    sd = max(sd, 1e-6)
+    # ROBUST reference: a handful of genuinely lighter glyphs must not inflate the very
+    # dispersion they are being tested against.  (The first version of this detector used
+    # mean/sd and FAILED its own plant-and-recover control at recall 0.05-0.10.)
+    ref = st['mean'][body]
+    mu = float(np.median(ref))
+    sd = max(1.4826 * float(np.median(np.abs(ref - mu))), 0.05)
     z = (st['mean'] - mu) / sd
     cand = np.where(z > k_sigma)[0]
     out = []
@@ -69,7 +73,9 @@ def detect(st, k_sigma=4.0):
             (np.abs(st['h'] - st['h'][i]) < 0.20 * max(st['h'][i], 1))
         m[i] = False
         if m.sum() >= 10:
-            mu2, sd2 = float(st['mean'][m].mean()), max(float(st['mean'][m].std()), 1e-6)
+            r2 = st['mean'][m]
+            mu2 = float(np.median(r2))
+            sd2 = max(1.4826 * float(np.median(np.abs(r2 - mu2))), 0.05)
             z2 = (st['mean'][i] - mu2) / sd2
         else:
             z2 = float('nan')

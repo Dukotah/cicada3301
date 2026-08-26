@@ -292,3 +292,60 @@ pads (their bound is a window bound, not an offset bound, so it is not this lane
 
 Per Round 18 rule 6 and AGENTS.md §7, this lane's `RESULTS.md` will report **coverage and bounds**.
 The words "exhausted", "closed" and "unsolvable" will not appear as verdicts.
+
+---
+
+## ADDENDUM A — 2026-08-26 — the Aiming Test, answered retrospectively
+
+`liber-primus/ARMADA-DOCTRINE.md` was written on 2026-08-26, after this lane was
+pre-registered and while its sweeps were already running. It is binding from Round 19
+onward, so it does not govern this lane — but its five questions are worth answering here
+anyway, because two of them change how this lane's negative should be read, and hiding
+behind the date would be exactly the kind of thing this repository exists not to do.
+
+**Q1 — What would a hit look like, and would this instrument recognise it?**
+Answered before the run, in §3.4 and §5.4: English planted in the actual shape hunted (a
+constant key offset into a real derived keystream; a window of the real Marsaglia bytes),
+enciphered under the pinned filter, recovered through the identical pipeline. Measured:
+40/40 and 16/16 at >95 % of rune indices. **Passes.**
+
+**Q2 — What measured fact raises this family's prior above the flat rate?**
+For sub-lane B: `round17/P4`'s measurement that the anti-repeat filter is *machine*-applied
+(flat, unscoped, single-lag, 80.75 % suppression, <1/47 leakage to any other lag), which
+makes an imported public byte stream a more natural hypothesis than a hand-built pad, and
+P2's source table, which found this specific object retrievable. For sub-lane A: not a
+prior on the *family* but a measured **gap in coverage** — six sweeps totalling >2.5 × 10⁹
+decodes that fixed one dimension at a single value, quantified at ×8,192 by PARKED P-10.
+**Sub-lane A is, in the doctrine's vocabulary, closer to a completeness ritual than to an
+evidence-aimed lane, and should be read that way.** Its value is that it removes a
+multiplier from every future statement about the derived branch, not that it was likely to
+hit.
+
+**Q3 — Is the space bounded, and by what?**
+Sub-lane A: bounded and *enumerable* — 220 configs × 2²⁰ offsets, and 504 × 6 × 2 × 2¹⁸ —
+with the bound argued from artifact sizes in §3.1 rather than from budget. Sub-lane B:
+bounded and enumerable — 634,124,288 bytes × 6 builders × 2 byte orders × 2 signs. Both
+sub-lanes report the *fraction* actually covered rather than claiming the bound.
+
+**Q4 — The three conditionals this negative carries.** Named in `RESULTS.md` §5.5:
+(1) the key space swept, (2) the decoder's transition model — one rejection-loop
+implementation, per L7-B, (3) the adjudicator's register — English, per L7-A. All three.
+
+**Q5 — The kill condition.** This lane had no written kill condition, which is a real gap:
+the honest one would have been *"if the sub-lane-A control's survival falls below 0.3, the
+prefilter is the experiment and the sweep is theatre — stop and widen `keep` instead"*.
+Measured survival was 0.525, so the condition would not have fired, but it should have been
+written down in advance and was not.
+
+## ADDENDUM B — 2026-08-26 — partial R3 compliance, declared as partial
+
+Doctrine R3 requires language-agnostic statistics persisted **at sweep time, for every
+row**. This lane's sweeps were launched before R3 existed and store English score, offset
+and config only; the discarded rows cannot be recovered. `scripts/langagnostic.py`
+therefore applies the same measurement to every **survivor** — the top rows of each stage
+are re-decoded at their recorded offsets and scored under an 8-register trigram panel
+(EN / LP1's own plaintext / Latin / Old English / German / Welsh / vowel-dropped English)
+plus IoC·N, minimum distinct symbols over a 32-rune window, and zlib ratio, each against a
+matched null band. That is a genuine register-axis measurement on the survivors and **not**
+a substitute for R3 on the full sweep. The gap is recorded in `RESULTS.md` §5.5 rather than
+papered over.

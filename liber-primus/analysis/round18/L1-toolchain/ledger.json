@@ -18,9 +18,26 @@
    "ijg_quality": 92,
    "quality_is_singleton": true,
    "huffman_tables": "custom/optimised (optimize_coding = TRUE) on 58/58 files",
-   "geometry_px": [2400, 3600],
-   "geometry_inches_at_400dpi": [6.0, 9.0],
-   "jfif": {"version": "1.01", "units": 1, "density": [400, 400], "thumbnail": [0, 0]},
+   "geometry_px": [
+    2400,
+    3600
+   ],
+   "geometry_inches_at_400dpi": [
+    6.0,
+    9.0
+   ],
+   "jfif": {
+    "version": "1.01",
+    "units": 1,
+    "density": [
+     400,
+     400
+    ],
+    "thumbnail": [
+     0,
+     0
+    ]
+   },
    "icc": {
     "len": 2576,
     "md5": "e409cef13cd06f6b371f6cddc8e31fcf",
@@ -29,9 +46,33 @@
     "cprt": "Copyright Artifex Software 2011",
     "byte_identical_across_files": "58/58"
    },
-   "ghostscript_bound": "The LP2 profile's PCS-illuminant bytes (offset 68..79) are 0000f6d5 00010000 0000d32c. Measured against ghostpdl tags: gs9.18, gs9.19, gs9.20, gs9.21 carry the IDENTICAL profile (md5 e409cef13cd06f6b371f6cddc8e31fcf); ghostpdl-9.22, 9.26, 9.50, 9.53.3 and 10.06.0 carry a corrected profile (md5 27d2435a749ae91e9974bf7a109a03e5, illuminant 0000f6d6 00010000 0000d32d). The change landed at 9.22 (released 2017-10-04). So the renderer is a Ghostscript <= 9.21, which is every release in the 2011-2017 window and is consistent with the 2014 publication date; it also rules out the pages having been re-rendered with any post-2017 Ghostscript.",
+   "ghostscript_bound": "TWO-SIDED, BYTE-EXACT. The LP2 profile's PCS-illuminant bytes (offset 68..79) are 0000f6d5 00010000 0000d32c, md5 e409cef13cd06f6b371f6cddc8e31fcf. Measured against ghostpdl tags: 9.00/9.01/9.02 ship a 3144-byte profile with the canonical illuminant (no match); 9.04, 9.05, 9.06, 9.07, 9.09, 9.10, 9.12, 9.14, 9.15, 9.16, 9.17, 9.18, 9.19, 9.20, 9.21 all ship a 2576-byte profile BYTE-IDENTICAL to the LP2 one; 9.22, 9.26, 9.50, 9.53.3 and 10.06.0 ship the corrected profile (md5 27d2435a749ae91e9974bf7a109a03e5). Artifex introduced the matching profile at 9.04 (2011-08-05) and corrected the two illuminant bytes at 9.22 (2017-10-04). BOUND: Ghostscript >= 9.04 and <= 9.21. Intersected with the artifact's own publication date (onion7, May 2014) the operative window is 9.04-9.14, i.e. 2011-08 to 2014-03. Ubuntu 12.04 LTS shipped Ghostscript 9.05 (2012-02), inside the window and the same distro generation that ships the GnuPG 1.4.11 the author signed with for three years. This also rules out the pages having been re-rendered with any post-2017 Ghostscript.",
    "component_split": {
-    "grayscale_1comp": [16, 17, 18, 19, 20, 21, 24, 25, 28, 29, 30, 31, 41, 42, 43, 44, 45, 46, 47, 48, 50, 51, 52],
+    "grayscale_1comp": [
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     24,
+     25,
+     28,
+     29,
+     30,
+     31,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     50,
+     51,
+     52
+    ],
     "n_grayscale": 23,
     "n_colour": 35,
     "note": "All 23 grayscale files carry the sRGB (not sGray) profile. Ghostscript's own jpeggray device writes 'Artifex Software sGray ICC Profile'; the observed combination is only produced by a downstream automatic gray detection that passes the source profile through, which is ImageMagick's behaviour."
@@ -46,10 +87,82 @@
    "runes_are_typeset": "29/29 rune bitmaps recovered from the page images; uniform nominal height, constant stroke width, flat unserifed terminals, proportional widths 34-64 px. The runes are set from a font, not drawn.",
    "platform_corroboration": "46 of 46 curated 3301 PGP-signed messages spanning 2012, 2013 and 2014 carry 'Version: GnuPG v1.4.11 (GNU/Linux)' - a single unchanged GNU/Linux signing environment across three years. GnuPG 1.4.11 was released 2010-10-18 and is the version packaged by Ubuntu 11.04 through 12.04 LTS (Debian wheezy shipped 1.4.12). This string is present in the raw archives but had never been analysed or turned into a finding.",
    "source_document_existed": true,
-   "source_document_located": false
+   "source_document_located": false,
+   "rune_face": {
+    "typeset_not_drawn": true,
+    "n_runes_extracted": 29,
+    "bank_size": 11,
+    "metric": "D_stretch = 1 - IoU after independent stretch to a common box. The aspect-preserving metric was DISQUALIFIED: every observed bitmap is exactly 114 px tall, which is a height-normalisation artefact of the R9 template pipeline, not a property of the face.",
+    "controls": {
+     "PC3a_clean_leave_one_in": "PASS - every bank face ranks itself 1st at distance ~0",
+     "PC3b_degraded_self_match": "PASS 11/11 - after render -> JPEG q92 -> downsample-to-114px -> threshold, every face still ranks itself 1st; self-distance band [0.0126, 0.0926], mean 0.0371",
+     "PC3c_LP2_split_half": "LP2's own reproducibility floor = 0.0301 over 28 classes (disjoint halves of each rune class's glyph instances, independent centroids)"
+    },
+    "cross_face_distribution": {
+     "n_pairs": 110,
+     "mean": 0.6099,
+     "min": 0.2922,
+     "p05": 0.3396
+    },
+    "ranking": [
+     [
+      "NotoSansRunic",
+      0.4096
+     ],
+     [
+      "BabelStoneRunic",
+      0.442
+     ],
+     [
+      "Unifont",
+      0.4731
+     ],
+     [
+      "BabelStoneRunicElderFuthark",
+      0.5297
+     ],
+     [
+      "FreeMono",
+      0.5449
+     ],
+     [
+      "Quivira",
+      0.631
+     ],
+     [
+      "FreeSans",
+      0.721
+     ],
+     [
+      "BabelStoneModern",
+      0.7254
+     ],
+     [
+      "SegoeUISymbol",
+      0.7295
+     ],
+     [
+      "Symbola",
+      0.7318
+     ],
+     [
+      "FreeSerif",
+      0.7536
+     ]
+    ],
+    "verdict": "NOT IDENTIFIED, with power. None of the 11 faces is the LP2 rune face: the best candidate sits at 13.6x the measured LP2 reproducibility floor, 4.4x outside the PC3b self-match band, and above the 5th percentile of the wrong-face distribution; separation from the runner-up is 0.23 sigma, i.e. a tie among near-misses. Had the true face been in the bank the instrument would have scored it near 0.03-0.09 (PC3b, 11/11).",
+    "design_family": "Noto Sans Runic and BabelStone Runic - the two modern reference designs of the Anglo-Saxon futhorc - are markedly closer to LP2 (0.41, 0.44) than the wrong-face mean (0.61). All 29 glyph topologies agree, including the variant choices for gyfu, ger, ing and daeg. The divergence is PROPORTION: the LP2 runes are taller and narrower than every candidate, consistent with a condensed face or a non-unit horizontal font-matrix scale - i.e. a typesetting program."
+   },
+   "local_pdf_scan": "No Liber Primus source document present. Every PDF carrying Unicode Runic in its text layer is a derivative document - saved Wikipedia \"Anglo-Saxon runes\" pages, the 2016 puzzle write-up, and a 2023 academic paper on runic cryptography. No PDF in the local corpus embeds a runic font subset that could be the Liber Primus face.",
+   "local_pdf_scan_counts": {
+    "n_distinct_scanned": 493,
+    "n_interesting": 7,
+    "n_with_runic_text_layer": 6,
+    "n_image_only_no_fonts": 16
+   }
   },
-  "coverage": "All 58 LP2 page JPEGs, every marker, full DQT/DHT/ICC/JFIF/geometry/trailing-byte vector, byte-level. Prior work (corpus/G-forensics) covered pages 0-55 and recorded DQT sha1s only; this lane adds pages 56-57, the exact IJG quality, the Huffman-table classification, the ICC internals and release bound, the marker order and the trailing-byte check. 18 control renders across 9 pipelines x 2 source documents, plus 20 two-stage chain runs. 29/29 rune glyph bitmaps via the validated 96.93% reader. Ghostscript srgb.icc compared byte-exactly across ghostpdl tags 9.18-9.53.3 plus 10.06.0. 46/46 curated 3301 PGP messages checked for signer version. The archived onion7 index.html re-read in full, both copies.",
-  "not_covered": "NC-1 the exact Ghostscript point release (the ICC bound is an interval <= 9.21, not a version; the pre-9.18 tags could not be fetched at the probed paths). NC-2 the exact ImageMagick version (only 'an ImageMagick that inherits input sampling factors and defaults to quality 92' is established). NC-3 whether stage 2 was `convert` or `mogrify`, one command or a loop. NC-4 Junicode and Everson Mono, two strong period candidate faces that no mirror tried would serve. NC-5 the allrunes Type-1 faces are in the bank but are custom-encoded, so matching them needs an unordered glyph-slot search rather than a codepoint lookup. NC-6 NO source PDF or PostScript document located; everything circulating is a community re-wrap of the 58 JPEGs. NC-7 the onion7 *page* is clean but the onion7 *server* was never enumerated (headers, 404 behaviour, sibling paths). NC-8 the generator prior emitted by this lane is a prior, not a result: it re-weights a search, it decodes nothing.",
+  "coverage": "All 58 LP2 page JPEGs, every marker, full DQT/DHT/ICC/JFIF/geometry/trailing-byte vector, byte-level. Prior work (corpus/G-forensics) covered pages 0-55 and recorded DQT sha1s only; this lane adds pages 56-57, the exact IJG quality, the Huffman-table classification, the ICC internals and a two-sided release bound, the marker order and the trailing-byte check. 18 control renders across 9 pipelines x 2 source documents, plus 20 two-stage chain runs. 29/29 rune glyph bitmaps via the validated 96.93% reader, matched against 11 Unicode-encoded runic faces under three passing controls. Ghostscript srgb.icc compared byte-exactly across 22 ghostpdl tags from 9.00 to 9.53.3 plus the installed 10.06.0. 46/46 curated 3301 PGP messages checked for signer version. The archived onion7 index.html re-read in full, both copies. 493 distinct locally-held PDFs scanned for a runic text layer or an embedded runic font subset.",
+  "not_covered": "NC-1 the exact Ghostscript point release: the measured bound is the interval 9.04 <= gs <= 9.21 (9.04-9.14 once the May-2014 publication date is applied); eleven releases inside it ship a byte-identical profile, so no finer separation is available from the ICC alone. NC-2 the exact ImageMagick version (only 'an ImageMagick that inherits input sampling factors and defaults to quality 92' is established). NC-3 whether stage 2 was `convert` or `mogrify`, one command or a loop. NC-4 Junicode and Everson Mono, two strong period candidate faces that no mirror tried would serve; the bank covers 11 faces and these two are the named gaps. NC-5 the allrunes Type-1 family is on disk but is custom-encoded, so matching it needs an unordered glyph-slot search rather than a codepoint lookup. NC-6 NO source PDF or PostScript document located. The local scan covers the 493 distinct PDFs in this repo; NO off-repo web/archive search was completed inside this lane, so the outside world is unsearched rather than searched-and-empty. NC-7 the onion7 *page* is clean but the onion7 *server* was never enumerated (headers, 404 behaviour, sibling paths). NC-8 the generator prior emitted by this lane is a prior, not a result: it re-weights a search, it decodes nothing.",
   "evidence": [
    "liber-primus/analysis/round18/L1-toolchain/PREREG.md",
    "liber-primus/analysis/round18/L1-toolchain/RESULTS.md",
@@ -58,7 +171,12 @@
    "liber-primus/analysis/round18/L1-toolchain/chain_results.json",
    "liber-primus/analysis/round18/L1-toolchain/icc_versions.json",
    "liber-primus/analysis/round18/L1-toolchain/runes_observed_meta.json",
-   "liber-primus/analysis/round18/L1-toolchain/font_match_results.json"
+   "liber-primus/analysis/round18/L1-toolchain/font_match_results.json",
+   "liber-primus/analysis/round18/L1-toolchain/icc_versions_early.json",
+   "liber-primus/analysis/round18/L1-toolchain/font_verdict.json",
+   "liber-primus/analysis/round18/L1-toolchain/font_match_sheet.png",
+   "liber-primus/analysis/round18/L1-toolchain/pdf_hunt.jsonl",
+   "liber-primus/analysis/round18/L1-toolchain/pdf_hunt_summary.json"
   ],
   "reproduce": "python3 liber-primus/analysis/round18/L1-toolchain/jpeg_fingerprint.py --selftest && python3 liber-primus/analysis/round18/L1-toolchain/run_pages.py && python3 liber-primus/analysis/round18/L1-toolchain/pipeline_control.py && python3 liber-primus/analysis/round18/L1-toolchain/chain_control.py",
   "supersedes": null,
@@ -85,19 +203,93 @@
    "source_document_located": false,
    "runes_are_typeset_not_drawn": true,
    "n_runes_extracted": 29,
-   "candidate_bank": ["FreeSerif", "FreeSans", "FreeMono", "NotoSansRunic", "SegoeUISymbol", "Quivira", "BabelStoneRunic", "BabelStoneRunicElderFuthark", "BabelStoneModern", "Unifont", "Symbola", "allrunes (Type-1, custom-encoded)"],
-   "not_in_bank": ["Junicode", "Everson Mono"],
-   "match": "see liber-primus/analysis/round18/L1-toolchain/font_match_results.json and RESULTS.md section 5"
+   "candidate_bank": [
+    "FreeSerif",
+    "FreeSans",
+    "FreeMono",
+    "NotoSansRunic",
+    "SegoeUISymbol",
+    "Quivira",
+    "BabelStoneRunic",
+    "BabelStoneRunicElderFuthark",
+    "BabelStoneModern",
+    "Unifont",
+    "Symbola",
+    "allrunes (Type-1, custom-encoded)"
+   ],
+   "not_in_bank": [
+    "Junicode",
+    "Everson Mono"
+   ],
+   "match": "see liber-primus/analysis/round18/L1-toolchain/font_match_results.json and RESULTS.md section 5",
+   "font_identified": false,
+   "font_verdict": "NOT IDENTIFIED, with power. None of the 11 faces is the LP2 rune face: the best candidate sits at 13.6x the measured LP2 reproducibility floor, 4.4x outside the PC3b self-match band, and above the 5th percentile of the wrong-face distribution; separation from the runner-up is 0.23 sigma, i.e. a tie among near-misses. Had the true face been in the bank the instrument would have scored it near 0.03-0.09 (PC3b, 11/11).",
+   "font_ranking": [
+    [
+     "NotoSansRunic",
+     0.4096
+    ],
+    [
+     "BabelStoneRunic",
+     0.442
+    ],
+    [
+     "Unifont",
+     0.4731
+    ],
+    [
+     "BabelStoneRunicElderFuthark",
+     0.5297
+    ],
+    [
+     "FreeMono",
+     0.5449
+    ],
+    [
+     "Quivira",
+     0.631
+    ],
+    [
+     "FreeSans",
+     0.721
+    ],
+    [
+     "BabelStoneModern",
+     0.7254
+    ],
+    [
+     "SegoeUISymbol",
+     0.7295
+    ],
+    [
+     "Symbola",
+     0.7318
+    ],
+    [
+     "FreeSerif",
+     0.7536
+    ]
+   ],
+   "controls": {
+    "PC3a_clean_leave_one_in": "PASS - every bank face ranks itself 1st at distance ~0",
+    "PC3b_degraded_self_match": "PASS 11/11 - after render -> JPEG q92 -> downsample-to-114px -> threshold, every face still ranks itself 1st; self-distance band [0.0126, 0.0926], mean 0.0371",
+    "PC3c_LP2_split_half": "LP2's own reproducibility floor = 0.0301 over 28 classes (disjoint halves of each rune class's glyph instances, independent centroids)"
+   },
+   "local_pdf_scan": "No Liber Primus source document present. Every PDF carrying Unicode Runic in its text layer is a derivative document - saved Wikipedia \"Anglo-Saxon runes\" pages, the 2016 puzzle write-up, and a 2023 academic paper on runic cryptography. No PDF in the local corpus embeds a runic font subset that could be the Liber Primus face."
   },
-  "coverage": "29/29 rune glyph bitmaps recovered from the page images and compared against 11 Unicode-encoded runic faces with a 2012-2014 lineage. Existence of a typeset source document established from the render geometry and the two-stage encoder chain.",
-  "not_covered": "Junicode and Everson Mono (unfetchable from every mirror tried). The allrunes Type-1 family is on disk but needs an unordered glyph-slot search rather than a codepoint lookup. No source PDF located; every circulating 'Liber Primus PDF' checked is a re-wrap of the published JPEGs, not the original typesetting.",
+  "coverage": "29/29 rune glyph bitmaps recovered from the page images and compared against 11 Unicode-encoded runic faces with a 2012-2014 lineage, under three passing controls (clean leave-one-in, degraded self-match, and LP2's own split-half reproducibility floor). Existence of a typeset source document established from the render geometry (6.00 x 9.00 inches at 400 dpi) and the two-stage encoder chain. 493 distinct local PDFs scanned.",
+  "not_covered": "Junicode and Everson Mono (unfetchable from every mirror tried). The allrunes Type-1 family is on disk but needs an unordered glyph-slot search rather than a codepoint lookup. No source PDF located, and no off-repo web/archive search was completed inside this lane.",
   "evidence": [
    "liber-primus/analysis/round18/L1-toolchain/RESULTS.md",
    "liber-primus/analysis/round18/L1-toolchain/runes_observed_meta.json",
    "liber-primus/analysis/round18/L1-toolchain/runes_observed.png",
-   "liber-primus/analysis/round18/L1-toolchain/font_match_results.json"
+   "liber-primus/analysis/round18/L1-toolchain/font_match_results.json",
+   "liber-primus/analysis/round18/L1-toolchain/font_verdict.json",
+   "liber-primus/analysis/round18/L1-toolchain/font_match_sheet.png",
+   "liber-primus/analysis/round18/L1-toolchain/pdf_hunt.jsonl",
+   "liber-primus/analysis/round18/L1-toolchain/pdf_hunt_summary.json"
   ],
-  "reproduce": "python3 liber-primus/analysis/round18/L1-toolchain/glyph_extract.py && bash liber-primus/analysis/round18/L1-toolchain/get_fonts.sh && python3 liber-primus/analysis/round18/L1-toolchain/font_match.py",
+  "reproduce": "python3 liber-primus/analysis/round18/L1-toolchain/glyph_extract.py && bash liber-primus/analysis/round18/L1-toolchain/get_fonts.sh && python3 liber-primus/analysis/round18/L1-toolchain/font_match.py && python3 liber-primus/analysis/round18/L1-toolchain/font_sheet.py && python3 liber-primus/analysis/round18/L1-toolchain/font_verdict.py",
   "supersedes": null,
   "superseded_by": null,
   "reopens_if": "Junicode or Everson Mono is obtained; or the allrunes glyph-slot search is run; or any PDF with a text layer or an embedded font subset surfaces.",
