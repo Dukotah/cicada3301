@@ -1,6 +1,32 @@
 # PICKUP-HERE — where the work left off
 
-_Updated **2026-08-19**. Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
+_Updated **2026-08-26**. Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
+
+> ### ⚠️ READ THIS BEFORE ANYTHING ELSE (2026-08-26)
+>
+> **Round 18 found that this project has been searching with a broken magnet, and every
+> coverage claim below is narrower than it reads.**
+>
+> 1. **Every negative in this repository is an ENGLISH-ONLY negative.**
+>    (`analysis/round18/L7-redteam/RESULTS.md` §A.) Handed the *correct key*, the beam recovers
+>    **100 % of runes** for Latin, Old English, German, Welsh and abbreviated English — and the
+>    English quadgram adjudicator then scores the result as noise. Measured power at the −5.5
+>    bar: **0.33** Latin, **0.58** OE, **0.00** Welsh, **0.00** vowel-dropped English (where the
+>    correct key scores *below* a deliberately wrong one). Round 10b required a language-agnostic
+>    statistic be stored at sweep time; compliance was **0 of 15**, so 6,224,300 + 692,064 +
+>    52,556 decodes and ≈1.45 × 10¹⁰ offsets **cannot be retro-fitted**.
+> 2. **Every negative covers exactly ONE rejection-loop construction.** (§B.) The beam admits a
+>    key skip only if every skipped position would have reproduced the previous cipher rune —
+>    exact for `encipher_keyskip` and nothing else. **`skip_by_two`**, a one-character variant
+>    that **reproduces LP2's observed doublet rate** (0.84 % vs 0.664 %), is missed at **−6.90 /
+>    25.8 % recovery**, and beam width 1000 + `max_skip` 8 change that by *exactly* 0.000. It
+>    appears in no `not_covered` field anywhere.
+>
+> So **every "NEGATIVE" below carries three conditionals, not one**: the key space swept, the
+> decoder's transition model, and the adjudicator's register. If the true key were inside the
+> swept set, the sweep would probably have discarded it.
+>
+> **If you are about to run a round, read [`liber-primus/ARMADA-DOCTRINE.md`](liber-primus/ARMADA-DOCTRINE.md) first.** It is binding.
 
 ## 👉 Start with the canonical docs
 | Doc | What it holds |
@@ -200,6 +226,44 @@ short/periodic keys, number-theoretic keystreams, autokey, differencing/integrat
 keying, transposition-only, fractionation, substitution/homophonic, image stego, AI-vision
 re-transcription, or pp49–51 as a runic key. Every one is eliminated with a reason and a
 reproduce pointer.
+
+## Round 18 — "THE PAD CAME OUT OF A PROGRAM. FIND THE PROGRAM." (2026-08-25/26)
+
+Eight lanes, built on Round 17's finding that the anti-repeat filter is **machine**-applied.
+Full: [`analysis/round18/CAMPAIGN-PLAN.md`](liber-primus/analysis/round18/CAMPAIGN-PLAN.md).
+
+| Lane | Tested | Verdict |
+|---|---|---|
+| **L1** TOOLCHAIN | G-01/B-11 provenance, never-run | **FINDING** — the pages are **ImageMagick over Ghostscript**, not Ghostscript alone (q92, optimised Huffman, auto-gray, ICC pass-through, control-reproduced). 400 dpi × 2400×3600 = exactly **6.00×9.00 in**, a typeset trade-paperback page; runes typeset from a proportional font, i.e. character data before pixels. **46/46** signed 3301 messages 2012→2014 are `GnuPG v1.4.11 (GNU/Linux)`. Composite: an **Ubuntu 11.04–12.04-class box, unchanged for three years** — and the project's first **evidence-derived prior** over generator families |
+| **L2** FILTER AS A LEAK | Is the rejection sampler an information channel? | **BOUND** — the filter acts on the **ciphertext** (power 1.000); draw count 373.6 ± 19.6; `fastbeam` is bit-identical to the repo beam at **9× speed** (gate F0, max Δ 7.99e-15) and lands the **first full-book positive control at 12,956 runes** (−4.098, recovery 0.9997) |
+| **L3** ORNAMENTS | A-06/B-12, never-run | **IN PROGRESS** → carried to Round 19 C3. Restored the **y coordinate `ornaments.json` drops** (which is why nobody could ever crop these bands): **109 band records / 39 pages**, 30 with n ≤ 16. Also found a **solved-page control render** the relikd mirror does not carry |
+| **L4** FORCING | C-02, never-run | **NEGATIVE** — the line-initial distribution is non-uniform at p ≤ 5e-6, the first ciphertext-visible anomaly that is not the filter, and it is then **fully explained by a greedy line-breaker** (layout-aware null → p = 0.177). Leaves a measured **glyph-width table** and the layout-aware null every future positional attack must use |
+| **L5** PAYLOAD | A-04 + E-01 | **UNFINISHED** → Round 19 C1 |
+| **L6** OFFSET & MARSAGLIA | B-02 + the Marsaglia CDROM | **UNFINISHED** (data fetched, no results) → Round 19 C2 |
+| **L7** INSTRUMENT RED-TEAM | The repo's own instrument | **FOUND-ERROR ×2** — see the box at the top of this file. The most consequential result since D3 |
+| **L8** PROVENANCE | I-01/I-03 + G-02 | **UNFINISHED** (table built, no results) → Round 19 C3 |
+
+## Round 19 — "FIX THE MAGNET, THEN SWEEP THE SMALL HAYSTACK" (opened 2026-08-26)
+
+The first round built under [`ARMADA-DOCTRINE.md`](liber-primus/ARMADA-DOCTRINE.md). Thirteen
+lanes in four phases, with a **hard gate**: no sweep scores anything until the instrument's power
+envelope is measured. Plan:
+[`analysis/round19/CAMPAIGN-PLAN.md`](liber-primus/analysis/round19/CAMPAIGN-PLAN.md).
+
+- **Phase 0 — instrument (blocking).** `I1` drift-tolerant decoder (fix L7-B: cover `skip_by_two`,
+  free drift, unrepresentable advances, without admitting wrong keys); `I2` multi-register
+  adjudicator (fix L7-A: a 9-register panel + the four mandatory language-agnostic statistics
+  behind one `adjudicate()` call and a `SWEEPROW` schema); `I3` per-register and per-mode null
+  recalibration, including the panel-max multiple-comparison correction.
+- **Phase 1 — generators (concurrent, validation only).** The four families L1's prior promotes
+  and the repo has never swept: `G1` bash `$RANDOM` + glibc, `G2` Perl 5.14, `G3` **Python 2.7**
+  `random.seed(<string>)` (Py2 and Py3 hash seed strings differently — a silent hole in every
+  MT19937 cell), `G4` TeX/LaTeX-internal LCGs (never swept, never *considered*; `\pgfmathrandom`
+  is fully enumerable). Each must reproduce the real library byte-exactly before it may sweep.
+- **Phase 2 — the sweep (gated).** `S1` enumerate G1–G4 through the repaired instrument;
+  `S2` re-adjudicate the highest-prior slice of already-swept space.
+- **Phase 3 — red-team + closeout.** `R1` attacks Round 19's own instrument (the obvious failure
+  mode: a permissive decoder finding English in noise); `C1`/`C2`/`C3` finish L5/L6/L3+L8.
 
 ## Round 16 — Derived-keystream armada (2026-08-23)
 
