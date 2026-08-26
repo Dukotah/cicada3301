@@ -50,6 +50,7 @@ Also treat with suspicion, and check before repeating:
 | "Has X been tried?" | `liber-primus/LEDGER.json` — every hypothesis, threshold, coverage bound |
 | "Is this solution correct?" | `liber-primus/verify_solution.py` — the oracle, §3 |
 | You want to attack it yourself | `liber-primus/handoff/FOR-FUTURE-SOLVERS.md`, then `liber-primus/benchmark/` |
+| **You are about to run a round / campaign / armada** | **`liber-primus/ARMADA-DOCTRINE.md`** — binding. The Aiming Test (5 questions per lane) and the seven rules |
 | You have better tooling than 2026 | `liber-primus/handoff/PARKED.md` — items blocked on capability, each with a *testable* unpark threshold |
 | You need the raw data | `liber-primus/handoff/capsule/MANIFEST.json` — 103 inputs with measured SHA-256 |
 
@@ -93,6 +94,19 @@ These were learned expensively here. They generalise well beyond this puzzle.
 A fourth, more specific: measure decode recovery on **rune indices**, not on the
 transliteration string. Seven of 29 runes expand to two characters, so a single wrong rune
 shifts the alignment and makes a 98.6%-correct decode look 32% correct.
+
+A fifth, added after Round 18 and the most expensive of the lot: **a negative is conditional on
+your adjudicator's register and your decoder's transition model, not just on the space you
+swept.** Handed the *correct key*, this project's beam recovers 100% of runes for Latin, Old
+English, German, Welsh and abbreviated English — and then the English-trained quadgram scorer
+reports the result as noise (measured power 0.33 for Latin, 0.00 for vowel-dropped English,
+where the correct key ranks *below* a deliberately wrong one). Separately, the beam's transition
+relation is exact for one rejection-loop implementation and no other: `skip_by_two`, a
+one-character variant that reproduces LP2's observed doublet rate, is missed at -6.90 with 25.8%
+recovery, and raising the beam width and skip budget changes that by *exactly* 0.000. So ~10^10
+decodes of this repo's published coverage are English-only, single-construction coverage.
+See `liber-primus/analysis/round18/L7-redteam/RESULTS.md`. Always name all three conditionals:
+key space, transition model, adjudicator register.
 
 ## 5. Verify this repository — do not take its word
 

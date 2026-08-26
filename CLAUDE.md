@@ -1,6 +1,25 @@
 # Working in this repo
 
 ## Commit straight to `master`. Do not open branches.
+
+## If you are running a round, campaign or armada: read `liber-primus/ARMADA-DOCTRINE.md` first.
+
+It is binding, and it is short. It exists because between Round 8 and Round 17 this project
+ran ~10^10 decodes, all pre-registered and all honest, and gained almost nothing — because the
+rounds were aimed at an unbounded space under a flat prior, adjudicated by an instrument whose
+power nobody had measured. Round 18 proved that retroactively: every negative in this repo is
+an **English-only** negative (L7-A), and every one covers a decoder that can represent exactly
+**one** rejection-loop implementation (L7-B).
+
+The doctrine's core is the **Aiming Test** — five questions a lane answers in its `PREREG.md`
+before it is allowed to run — and seven rules, of which the load-bearing three are:
+
+- **Aim at the instrument before you aim at the space.** Every genuinely new finding this
+  project has produced came from auditing a closure, an instrument, an artifact or an input.
+  None came from a new key-space sweep.
+- **Value = coverage x power. Report both or report neither.**
+- **Persist language-agnostic statistics at sweep time.** Retro-fitting is impossible once the
+  decodes are discarded, and 10^10 of them already were.
 # Operational Persona & Guidance Architecture
 
 ## Primary Objective
