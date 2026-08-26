@@ -1,0 +1,67 @@
+[
+ {
+  "id": "T1-01",
+  "round": 19,
+  "lane": "T1",
+  "title": "Per-rune reader: G-READ-LP2 passes at 100% (180/180) on the solved LP2-typeface control pages",
+  "status": "measured",
+  "date": "2026-08-26",
+  "claim": "A reader that segments by connected component and classifies each crop at NATIVE resolution by translation-minimised Hamming distance to an unsupervised exemplar bank reads the two decryption-validated LP2 control pages (73.jpg = p56 AN END, 74.jpg = p57 PARABLE) at 180/180 = 100.0000%, with zero missing and zero spurious glyphs, and a diagonal 29-class confusion matrix.",
+  "coverage": "180 canon runes on the two solved LP2-typeface pages; leave-one-page-out (every crop on the page under test removed from the label consensus). Supported by 13,074 leave-one-page-out corpus positions at 99.99235% and 13,039 leave-one-bitmap-out positions at 99.9847%.",
+  "not_covered": "n=180 bounds true accuracy at >=98.34% (95%, rule of three) on the control set ALONE. LP1 typeface NOT covered: 94.60% recall, so the pooled gate G-READ-ALL FAILS at 1879/1976 = 95.09%. Illuminated initials are a weak sub-path (15/17, plus 50 corpus-wide false positives). One image lineage only (relikd masters + the byte-identical vendored set, 2400x3600).",
+  "reopens_if": "a per-image LP1 ground truth becomes available (the scream314 LP1 rune blocks are reflowed, which is what blocks LP1 scoring), or a higher-resolution master is obtained.",
+  "artifacts": ["round19/T1/out_gread_lp2.json", "round19/T1/out_gread_lp1.json", "round19/T1/RESULTS.md"]
+ },
+ {
+  "id": "T1-02",
+  "round": 19,
+  "lane": "T1",
+  "title": "FOUND-ERROR in every height-filtered component segmentation in this repo: the rune Y is drawn as TWO components and collapses to U",
+  "status": "found-error",
+  "date": "2026-08-26",
+  "claim": "Of the 29 runes, exactly one -- Y (futhorc 'yr') -- is typeset as two disconnected components: an outline identical to U plus a detached inner stroke of median height 58 px. 54 of 55 sampled Y glyphs carry one; no other rune carries one at all. A segmentation that filters components by rune height therefore discards the stroke and makes every Y in the book pixel-identical to a U (measured ink 2134 vs 2133 on the same 114x53 box). Repairing it moved this lane's bitmap purity from 97.15% to 100.0000% and page agreement from 95.76% to 98.98% in one step.",
+  "coverage": "measured on relikd p0-p5 (1,142 aligned glyph positions, per-rune inner-component census) and applied corpus-wide; the corpus-wide consequence is the purity/agreement jump.",
+  "not_covered": "the defect was not traced INTO analysis/geometry/segment.py or analysis/stones/pipeline.py's own outputs; both filter components by height in the same way and are therefore expected to carry it, but that was not re-measured here. Its contribution to the ('U','Y',6) top confusion in analysis/retranscribe/diff_report.json is inferred, not measured.",
+  "reopens_if": "someone re-runs geometry/segment.py or stones/pipeline.py with inner-component attachment and reports the delta.",
+  "artifacts": ["round19/T1/d9_ycomp.py", "round19/T1/t1_reader.py", "round19/T1/RESULTS.md#22"]
+ },
+ {
+  "id": "T1-03",
+  "round": 19,
+  "lane": "T1",
+  "title": "G-OAE PASSES: zero O/A/AE confusion in all six ordered directions over 1,404 family glyphs",
+  "status": "measured",
+  "date": "2026-08-26",
+  "claim": "Under leave-one-bitmap-out classification (each distinct bitmap matched against a bank with itself removed), the {O, A, AE} triple shows recall 464/464, 482/482, 458/458 -- 100.0000% each -- and all six ordered pairwise confusion rates are exactly 0. Separation is a factor of five in raw pixels: class A's maximum distance to its own class is 38 against a minimum distance to any other class of 189; AE's are 110 against 244.",
+  "coverage": "1,404 O/A/AE crops = 10.77% of the LP2 corpus; whole-book leave-one-bitmap-out is 13,037/13,039 = 99.9847% crop-weighted, with the only two errors a single reciprocal U<->B bitmap pair.",
+  "not_covered": "LP2 typeface only. On LP1 the triple also shows 100% recall but on only 19/69/54 positions. The triple's behaviour on illuminated initials is not measured.",
+  "reopens_if": "a source at higher resolution than 400 dpi shows a within-class distinction this render does not preserve in ink.",
+  "artifacts": ["round19/T1/out_loo.json", "round19/T1/p_loo.py"]
+ },
+ {
+  "id": "T1-04",
+  "round": 19,
+  "lane": "T1",
+  "title": "The 450 located O/A/AE disagreements are adjudicated: canon holds at 450/450",
+  "status": "measured",
+  "date": "2026-08-26",
+  "claim": "All 450 records of analysis/independent-read/oae_mismatch.json map into this lane's coordinates (canon rune matching at every one, 0 UNLOCATABLE), and the per-glyph reader AGREES WITH CANON at 450/450. Zero disagreements, zero undecidable. Margins are min 161 / p1 188 / median 195 against a control-derived decision cut of 5, so not one of the 450 is a close call. The direction breakdown (A->O 306, O->A 72, AE->A 70, A->AE 2) reproduces round19/T3's independently derived mapping exactly.",
+  "coverage": "450/450 of the pre-registered target, all on unsolved pages 0-54, stream positions 27..12,897. Powered: planted substitutions are detected 100% of the time conditional on the position surviving alignment (0 reader-blind misses in 122 plants, P-1 and P-2), and the reader's own error rate on ordinary LP2 glyphs is 1/13,074 = 0.008%, two and a half orders of magnitude below the 3.07% disagreement rate being adjudicated.",
+  "not_covered": "SUBSTITUTION errors only: a canon insertion or deletion would surface among the 113 positions that did not align 1:1 (31 canon runes with no glyph, 82 glyphs with no canon rune, 50 of the latter being false illuminated-initial detections), and those 113 are UNADJUDICATED, not adjudicated in canon's favour. None of them is among the 450. The bitmap->rune assignment is canon-derived (mitigated by consensus over hundreds of occurrences, never the judged position, whole-page hold-out, and check B1 which reproduces 74.jpg from its English plaintext) so a GLOBAL relabel of a whole rune class that also permuted the solved pages' decryption is outside what this instrument can see.",
+  "reopens_if": "a human inspection of image page 27, canon position 93 (canon U, T1 B, margin 5 -- the smallest margin in the corpus) finds canon wrong there; or someone adjudicates the 113 unaligned positions.",
+  "artifacts": ["round19/T1/adjudication.json", "round19/T1/j2_adjudicate.py", "round19/T1/out_summary.json"]
+ },
+ {
+  "id": "T1-05",
+  "round": 19,
+  "lane": "T1",
+  "title": "The LP2 transcription reads at 99.6346% corpus-wide; T3's IoC and delta-spectrum channels do not move",
+  "status": "measured",
+  "date": "2026-08-26",
+  "claim": "Independent per-glyph re-read of all 13,136 LP2 canon runes agrees with canon at 13,088 = 99.6346%; on ordinary glyphs and repaired merges alone, 13,073/13,074 = 99.99235%. Exactly ONE ordinary glyph in the book is read differently (p27 position 93, U->B, margin 5, the corpus minimum) and it is not an O/A/AE position and not one of the 450. Feeding W=0 on the 450 into round19/T3's section 8 lookup: IoC.N stays 0.99987 and does not leave the flatness band (T3 measured the band is left at k~167); delta-spectrum max|z| stays 2.641 against round18/L2's 3.57 bar rather than travelling 47% of the way to it; draw count stays 373.6. L2 section 2 recorded that statistic 'so that a future re-read can check whether it moves' -- it was checked and it does not move.",
+  "coverage": "13,136/13,136 canon positions attempted; 13,091 aligned 1:1 and adjudicated. Accuracy is flat in local page density (99.84% sparsest quartile to 99.51% densest), and the OTP dense block (image pages 45-55) reads at 99.7993% with ZERO 1:1 disagreements -- better than the rest of the book.",
+  "not_covered": "31 canon runes with no segmented glyph and 82 glyphs with no canon rune are unadjudicated. Illuminated initials read at 15/17 and produced 50 false positives corpus-wide. The near-blank image p50 has no canonical_pages.json entry, so canon entry k maps to image page k for k<=49 and k+1 thereafter -- a join any lane using both coordinate systems must apply.",
+  "reopens_if": "the 113 unaligned positions are adjudicated, or p27:93 resolves against canon.",
+  "artifacts": ["round19/T1/out_corpus_lp2.json", "round19/T1/out_density.json", "round19/T1/out_segcheck.json"]
+ }
+]

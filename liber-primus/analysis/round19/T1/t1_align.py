@@ -62,7 +62,7 @@ class Stream:
             if j is None:
                 j = len(keys); key2id[k] = j; keys.append(k)
             ids[i] = j
-        self.ids, self.keys = ids, keys
+        self.ids, self.keys, self.key2id = ids, keys, key2id
         self.n = len(ids)
         self.page, self.w = z['page'], z['w']
         self.small = np.array([w <= MAXW for h, w, p in keys])
@@ -106,8 +106,27 @@ def canon_by_page(S):
     return out
 
 
-def run(face='LP2', iters=8, verbose=True):
+def run(face='LP2', iters=8, verbose=True, cache=True):
+    """Bootstrap + iterate to a fixed point.  The converged bitmap->rune labelling is
+    cached (it is a pure function of the crops and canon), because it costs a few
+    minutes of BLAS and every downstream stage needs it."""
     S = Stream(face)
+    cpath = os.path.join(WORK, 'align_%s.json' % face)
+    if cache and os.path.exists(cpath):
+        d = json.load(open(cpath))
+        if d['nbitmaps'] == len(S.keys) and d['ncrops'] == S.n:
+            blab = {int(k): v for k, v in d['blab'].items()}
+            pred = np.array([blab.get(int(b), OVERSIZE) for b in S.ids])
+            if verbose:
+                print('  (loaded cached labelling: %d bitmaps, aligned %d/%d = %.4f%%)'
+                      % (len(blab), d['nmatch'], d['ntot'], 100.0*d['nmatch']/d['ntot']))
+            return dict(S=S, votes=None, lab=None, blab=blab, dmin=None,
+                        cpage=canon_by_page(S), pred=pred, hist=d['hist'])
+    return _run_uncached(S, iters, verbose, cpath if cache else None)
+
+
+def _run_uncached(S, iters, verbose, cpath):
+    face = S.face
     cpage = canon_by_page(S)
     votes = collections.defaultdict(collections.Counter)
     seeds = [p for p in S.pages if cpage[p] and len(S.idx_by_page[p]) == len(cpage[p])]
@@ -151,6 +170,11 @@ def run(face='LP2', iters=8, verbose=True):
                   % (it, len(lab), nmatch, ntot, 100.0 * nmatch / ntot, nforced))
         if it and hist[-1][1] == hist[-2][1] and hist[-1][0] == hist[-2][0]:
             break
+    if cpath:
+        json.dump(dict(nbitmaps=len(S.keys), ncrops=int(S.n), hist=hist,
+                       nmatch=hist[-1][1], ntot=hist[-1][2],
+                       blab={str(k): int(v) for k, v in blab.items()}),
+                  open(cpath, 'w'))
     return dict(S=S, votes=votes, lab=lab, blab=blab, dmin=dmin, cpage=cpage,
                 pred=pred_all, hist=hist)
 

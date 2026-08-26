@@ -1,21 +1,30 @@
 """Test the two repairs on the control pages and across LP2."""
 import numpy as np, collections, sys, os
-import t1_align as A, t1_reader as T, t1_split as SP, t1_bank as B
+import t1_align as A, t1_reader as T, t1_split as SP
+from t1_match import Matcher
 sys.path.insert(0, os.path.join(T.LP,'src'))
 from lp.gematria import IDX_TO_TRANS
 
 r = A.run('LP2', verbose=False)
 S, blab = r['S'], r['blab']
-ids = np.array(sorted(blab))
+import collections as _c
+freq = _c.Counter(int(b) for b in S.ids)
+rep = {}
+for b, l in blab.items():
+    if b not in S.sm_pos: continue
+    if l not in rep or freq[b] > freq[rep[l]]: rep[l] = b
+ids = np.array([rep[l] for l in sorted(rep)])
 Y = S.X[[S.sm_pos[int(k)] for k in ids]]
 BL = np.array([blab[int(k)] for k in ids])
+M = Matcher(Y, BL)
+print('representative bank: %d exemplars (one per rune class)' % len(ids))
 z = S.z
 
 print('--- merge repair on all %d merge candidates' % int((z['w'] > A.MAXW).sum()))
 res = collections.Counter()
 for i in np.where(z['w'] > A.MAXW)[0]:
     m = S.mask(i)
-    parts, cost = SP.split_wide(m, Y, BL)
+    parts, cost = SP.split_wide(m, M)
     tag = 'NONRUNE' if parts is None else '%d-part' % len(parts)
     res[(int(z['h'][i]), int(z['w'][i]), tag)] += 1
     if parts and int(z['page'][i]) in (56, 57):
@@ -32,7 +41,7 @@ for name in ['73.jpg', '74.jpg']:
     big = [c for c in comps if c['h'] > 200]
     big.sort(key=lambda c: (c['y0'], c['x0']))
     for c in big[:3]:
-        lab, d = SP.read_initial(c['mask'], Y, BL)
+        lab, d = SP.read_initial(c['mask'], M)
         print('   %s comp h=%d w=%d x0=%d y0=%d -> %s (d=%.0f)'
               % (name, c['h'], c['w'], c['x0'], c['y0'],
                  IDX_TO_TRANS[lab] if lab is not None else 'REJECT', d if d else -1))

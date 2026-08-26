@@ -309,3 +309,40 @@ in a more expensive form.
 `PREREG.md` (this file) · the reader and its tests · `RESULTS.md` (confusion matrix, G-READ
 verdict, the 450 adjudication, the does-canon-change answer) · `out_*.json` ·
 `adjudication.json` · `ledger.json`.
+
+---
+
+## ADDENDUM 1 — 2026-08-26, before any accuracy was measured
+
+Doctrine mechanic 1 allows a pre-registration to be amended by a dated addendum stating the
+reason. Two changes were made to §2.1's segmentation **during instrument construction and
+before any control-page accuracy figure existed**. No threshold was touched. Both are
+disclosed here because §2.1 as written said "no merging or splitting of components is
+performed", and both changes are departures from that sentence.
+
+**A1.1 — inner-stroke attachment (`t1_reader.attach_inner`).** §5's checkpoint was run first
+and passed (13,122 segmented vs 13,136 canon, −0.107 %), so the lane continued. The first
+labelling pass then showed a **97.15 %** bitmap purity whose *entire* impurity was `U` vs `Y`
+on bitmaps that were byte-identical. `d9_ycomp.py` established the cause: **Y (futhorc `yr`) is
+the only one of the 29 runes drawn as two disconnected components** — an outline identical to U
+plus a detached inner stroke of median height 58 px — and a rune-height filter discards the
+stroke, making every Y in the book pixel-identical to a U (measured ink 2134 vs 2133 on the
+same 114×53 box). 54 of 55 sampled Y glyphs carry an inner component; **no other rune carries
+one at all**. Components nested inside a rune's bounding box are therefore attached to it.
+This is a correction of a segmentation defect, not a tuned parameter: the rule is "nested
+components belong to their glyph", it has no free threshold beyond a 2 px / 4 px box tolerance,
+and it fires on exactly one rune class.
+
+**A1.2 — two repairs, each of which is itself a test (`t1_split.py`).** A component wider than
+90 px is *tested* for being a merge by asking whether it can be cut into pieces that each match
+a bank exemplar; a component taller than 200 px is *tested* for being an illuminated initial by
+asking whether a scale-normalised crop of it matches a bank exemplar. Neither is asserted: a
+wide component that cannot be cut into matching pieces is emitted as **NON-RUNE** (46 of the 83
+merge candidates were rejected this way, including the 32 copies of a repeated decorative
+element), and an oversize component that does not match is not read. Both repairs are
+adjudicated by the *same* distance the classifier uses, so neither can smuggle a glyph in.
+
+**A1.3 — reporting split.** Because A1.2 introduces two sub-paths of different reliability, the
+results report accuracy **separately for ordinary glyphs, for split parts, and for illuminated
+initials**, rather than pooling them into one number. This is a disclosure, not a threshold
+change: the G-READ bars in §3 are unchanged and are applied to the pooled figure.

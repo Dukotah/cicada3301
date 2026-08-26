@@ -16,8 +16,8 @@ does not actually produce runes cannot smuggle a glyph into the stream.
 """
 import numpy as np
 from PIL import Image
-import t1_bank as B
 import t1_align as A
+from t1_match import canvas as _canvas_impl, CH, CW
 
 
 def _trim(m):
@@ -27,28 +27,20 @@ def _trim(m):
     return m[ys.min():ys.max() + 1, xs.min():xs.max() + 1], int(xs.min())
 
 
-def _canvas(masks, ch=A.CH, cw=A.CW):
-    X = np.zeros((len(masks), ch, cw), np.float32)
-    for i, m in enumerate(masks):
-        h, w = m.shape
-        if h > ch or w > cw:
-            m = np.asarray(Image.fromarray((m * 255).astype(np.uint8))
-                           .resize((min(w, cw), min(h, ch)), Image.LANCZOS)) > 127
-            h, w = m.shape
-        y, x = (ch - h) // 2, (cw - w) // 2
-        X[i, y:y + h, x:x + w] = m
-    return X
+_canvas = _canvas_impl
 
 
-def split_wide(mask, Ybank, blabels, maxparts=3, min_w=20, accept=900.0):
+def split_wide(mask, M, maxparts=4, min_w=20, accept=900.0, maxw=200):
     """Try to cut `mask` into 2..maxparts rune pieces.  Returns
     (list of (label, x_offset, cost), total_cost) or (None, None) if no cut is good."""
     h, w = mask.shape
+    if w > maxw:
+        return None, None          # too wide to be a run of runes: ornament band
     best = None
     for nparts in range(2, maxparts + 1):
         if w < min_w * nparts:
             continue
-        cuts = _search(mask, Ybank, blabels, nparts, min_w)
+        cuts = _search(mask, M, nparts, min_w)
         if cuts is not None and (best is None or cuts[1] < best[1]):
             best = cuts
     if best is None or best[1] > accept * (len(best[0])):
@@ -56,17 +48,38 @@ def split_wide(mask, Ybank, blabels, maxparts=3, min_w=20, accept=900.0):
     return best
 
 
-def _search(mask, Ybank, blabels, nparts, min_w):
+def cut_candidates(mask, min_w=20, keep=8):
+    """Candidate cut columns: local minima of the column ink profile.  Two touching
+    typeset glyphs join at a NECK, so the cut is where the column ink is locally least.
+    This replaces an exhaustive scan and is what makes the repair affordable."""
+    prof = mask.sum(0).astype(np.int32)
+    w = len(prof)
+    lo, hi = min_w, w - min_w
+    if hi <= lo:
+        return []
+    xs = list(range(lo, hi + 1))
+    xs.sort(key=lambda x: (prof[x], abs(x - w / 2.0)))
+    out = []
+    for x in xs:
+        if all(abs(x - y) >= 8 for y in out):
+            out.append(x)
+        if len(out) >= keep:
+            break
+    return sorted(out)
+
+
+def _search(mask, M, nparts, min_w):
     h, w = mask.shape
-    if nparts == 2:
-        xs = list(range(min_w, w - min_w + 1))
-        parts = [[(0, x), (x, w)] for x in xs]
-    else:
-        parts = []
-        step = max(1, (w - 2 * min_w) // 40)
-        for x1 in range(min_w, w - 2 * min_w + 1, step):
-            for x2 in range(x1 + min_w, w - min_w + 1, step):
-                parts.append([(0, x1), (x1, x2), (x2, w)])
+    cands = cut_candidates(mask, min_w)
+    if not cands:
+        return None
+    import itertools
+    parts = []
+    for combo in itertools.combinations(cands, nparts - 1):
+        if any(b - a < min_w for a, b in zip((0,) + combo, combo + (w,))):
+            continue
+        bnds = (0,) + combo + (w,)
+        parts.append([(bnds[i], bnds[i + 1]) for i in range(nparts)])
     if not parts:
         return None
     flat, owner = [], []
@@ -75,9 +88,7 @@ def _search(mask, Ybank, blabels, nparts, min_w):
             t = _trim(mask[:, a:b])
             flat.append(t[0] if t else np.zeros((4, 4), bool))
             owner.append((pi, a + (t[1] if t else 0)))
-    X = _canvas(flat)
-    D = B.pairwise_cross(X, Ybank)
-    dmin = D.min(1); arg = D.argmin(1)
+    lab, dmin, _ = M.match(_canvas(flat))
     tot = np.zeros(len(parts))
     for k, (pi, off) in enumerate(owner):
         tot[pi] += dmin[k]
@@ -85,33 +96,31 @@ def _search(mask, Ybank, blabels, nparts, min_w):
     out = []
     for k, (pi, off) in enumerate(owner):
         if pi == bi:
-            out.append((int(blabels[arg[k]]), off, float(dmin[k])))
+            out.append((int(lab[k]), off, float(dmin[k])))
     return out, float(tot[bi])
 
 
-def read_initial(mask, Ybank, blabels, target_h=114, accept=1200.0):
+def read_initial(mask, M, target_h=114, accept=1200.0):
     """An illuminated initial: reduce the component to rune height and match.  Also
     tries the left/upper portions, since the initial is fused with vine ornament."""
     h, w = mask.shape
-    best = None
-    for fy in (1.0, 0.9, 0.8, 0.65, 0.5, 0.4, 0.33):
-        for fx in (1.0, 0.9, 0.8, 0.65, 0.5, 0.4, 0.33):
-            sub = mask[:int(h * fy), :int(w * fx)]
-            t = _trim(sub)
+    crops, tags = [], []
+    for fy in (1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.42, 0.33, 0.28):
+        for fx in (1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.42, 0.33, 0.28):
+            t = _trim(mask[:int(h * fy), :int(w * fx)])
             if t is None or t[0].shape[0] < 20:
                 continue
             m = t[0]
             s = float(target_h) / m.shape[0]
             nw = max(4, int(round(m.shape[1] * s)))
-            if nw > A.CW - 4:
+            if nw > CW - 4:
                 continue
             im = Image.fromarray((m * 255).astype(np.uint8)).resize((nw, target_h), Image.LANCZOS)
-            r = np.asarray(im) > 127
-            X = _canvas([r])
-            D = B.pairwise_cross(X, Ybank)
-            d = float(D.min()); lab = int(blabels[int(D.argmin())])
-            if best is None or d < best[1]:
-                best = (lab, d, fy, fx)
-    if best is None or best[1] > accept:
-        return None, (None if best is None else best[1])
-    return best[0], best[1]
+            crops.append(np.asarray(im) > 127); tags.append((fy, fx))
+    if not crops:
+        return None, None
+    lab, d0, _ = M.match(_canvas(crops))
+    k = int(np.argmin(d0))
+    if d0[k] > accept:
+        return None, float(d0[k])
+    return int(lab[k]), float(d0[k])
