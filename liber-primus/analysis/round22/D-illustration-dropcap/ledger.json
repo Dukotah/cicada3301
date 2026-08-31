@@ -1,0 +1,51 @@
+{
+  "round": 22,
+  "lane": "D",
+  "name": "Illustration / drop-cap channel (roadmap S3)",
+  "ran_utc": "2026-08-29",
+  "trust_anchor": "validate.py ALL VALIDATIONS PASSED",
+  "asset_verdict": "RUNNABLE (illustration data present; not blocked-on-assets)",
+  "assets": {
+    "page_scans": "corpus/E-tooling/vendor/cmbsolver__cmbcidada3301/LiberPrimusUi/input/images/LP/0..57.jpg (58 pages, 2400x3600); duplicate set at henkman__liberprimus/originals/",
+    "illuminated_rune_identity": "liber-primus/analysis/vision/canonical_pages.json (first rune of each page)",
+    "prior_catalog_existed": false,
+    "note": "prior vision OCR of dense runes is unreliable (0.145, see AVENUE-1-VISION-VERDICT.md) but does NOT block this lane: the drop-cap is one large RED glyph, colour-separable with no OCR."
+  },
+  "positive_control": {
+    "kind": "P0.2-style hand-count on 4 pages + page-0 rune identity",
+    "pages": {"0": true, "8": true, "15": true, "9": false},
+    "page0_illuminated_rune": "S",
+    "passed": true
+  },
+  "extracted": {
+    "n_pages": 58,
+    "n_illuminated": 15,
+    "n_illuminated_is_prime": false,
+    "n_illuminated_is_29": false,
+    "illuminated_pages": [0, 3, 6, 7, 8, 15, 23, 27, 33, 39, 40, 53, 54, 56, 57],
+    "presence_bits": "1001001110000001000000010001000001000001100000000000011011",
+    "illuminated_runes_read": "SLXHXFUMDSFAINGP"
+  },
+  "null_model": "seed 3301, 10000 shuffles / random-alphabet draws; size-matched",
+  "survivor_bar": "p < 0.01 (Bonferroni over 5 order/identity statistics)",
+  "statistics": {
+    "gap_var_p_clustered": 0.8213,
+    "gap_var_p_spread": 0.1795,
+    "presence_compress_p": 1.0,
+    "centroid_y_rankcorr_p": 0.5695,
+    "illuminated_rune_entropy_p": 0.571,
+    "min_p": 0.1795
+  },
+  "survivor": false,
+  "flagged_for_oracle": [],
+  "verdict": "NEGATIVE on the drop-cap channel (presence, order, gap, centroid, illuminated-rune identity) at p<0.01, control-validated. Not a verdict on figural motifs (crosses/trees/corpse/mayflies), which remain un-coded.",
+  "coverage": "Full drop-cap presence/position/identity channel over all 58 committed page scans. First LP2 drop-cap catalog built (features.json).",
+  "not_covered": "Figural-motif catalog (type/count/orientation of crosses, trees, shrouded-corpse figure, mayflies) per page. Needs hand-annotation or a black-channel shape pass entangled with the dense-rune OCR floor. Documented, not executed. Also: page 57's illuminated rune absent from canonical_pages.json (1-page gap).",
+  "reopens_if": "A per-page figural-motif integer sequence is catalogued and tested against the same seed-3301 null.",
+  "files": [
+    "PREREG.md", "RESULTS.md", "ledger.json",
+    "extract_illustration.py", "features.json",
+    "test_order.py", "order_results.json",
+    "test_illuminated_runes.py", "illuminated_rune_results.json"
+  ]
+}

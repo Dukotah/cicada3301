@@ -1,0 +1,2485 @@
+{
+  "lane": "round22/B-turtle-spatial-render",
+  "hypothesis": "the numbers are the direction (G1 turtle render + G3 coord decode)",
+  "coverage": {
+    "streams": [
+      "value",
+      "pi",
+      "phi"
+    ],
+    "moduli": [
+      4,
+      6,
+      8,
+      12,
+      29,
+      360
+    ],
+    "turn_interp": [
+      "absolute",
+      "relative"
+    ],
+    "step_rules": [
+      "unit",
+      "value"
+    ],
+    "render_combos": 72,
+    "stream_len": 12956,
+    "null_surrogates_per_combo": 200,
+    "refine_n": 2000
+  },
+  "power": {
+    "phase0_planted_shape_recognised": true,
+    "detector_stats": [
+      "closure",
+      "self_intersections",
+      "bbox_fill",
+      "caging",
+      "symmetry",
+      "components"
+    ],
+    "flag_bar_bonferroni": 2.3148148148148147e-05,
+    "phase0": true
+  },
+  "not_covered": [
+    "non-turtle 2D grid reads (Lane G2)",
+    "moduli outside {4,6,8,12,29,360}",
+    "step functions other than unit/value",
+    "3D lifts",
+    "L-system rewriting",
+    "interrupter-gated pen-up",
+    "per-page (vs book-concatenated) renders",
+    "English-along-path prose (geometry-only adjudicator)"
+  ],
+  "flagged_for_oracle": [],
+  "structure_beyond_null": false,
+  "rows": [
+    {
+      "combo": "value_M4_absolute_unit",
+      "stream": "value",
+      "modulus": 4,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.07835633777839136,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.01654052734375,
+        "caging": 0.07835633777839136,
+        "symmetry": 0.011194029850746268,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.07835633777839136,
+        "self_intersections": 1133.221652504731,
+        "bbox_fill": 0.01724945068359375,
+        "caging": 0.07835633777839136,
+        "symmetry": 0.011153817817262551,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 2.0,
+        "self_intersections": 0.92,
+        "bbox_fill": 0.17,
+        "caging": 2.0,
+        "symmetry": 0.68,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M4_absolute_value",
+      "stream": "value",
+      "modulus": 4,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.022708893159034713,
+        "self_intersections": 1399.0112857785853,
+        "bbox_fill": 0.0133056640625,
+        "caging": 0.022708893159034713,
+        "symmetry": 0.07389162561576355,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.02270889315903527,
+        "self_intersections": 937.3419967087076,
+        "bbox_fill": 0.0142205810546875,
+        "caging": 0.02270889315903527,
+        "symmetry": 0.09007910032859971,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.1,
+        "self_intersections": 0.63,
+        "bbox_fill": 0.57,
+        "caging": 0.1,
+        "symmetry": 0.81,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M4_relative_unit",
+      "stream": "value",
+      "modulus": 4,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.002166667003334457,
+        "self_intersections": 25182.203144014537,
+        "bbox_fill": 0.35101318359375,
+        "caging": 0.002166667003334457,
+        "symmetry": 0.34652306251463355,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.007340612288961299,
+        "self_intersections": 19628.41142991704,
+        "bbox_fill": 0.20223846435546874,
+        "caging": 0.007340612288961299,
+        "symmetry": 0.21816524331800796,
+        "components": 1.005
+      },
+      "null_p": {
+        "closure": 0.2,
+        "self_intersections": 0.38,
+        "bbox_fill": 0.02,
+        "caging": 0.2,
+        "symmetry": 0.2,
+        "components": 1.99
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M4_relative_value",
+      "stream": "value",
+      "modulus": 4,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.007389950814926639,
+        "self_intersections": 11192.090286228682,
+        "bbox_fill": 0.17706298828125,
+        "caging": 0.007389950814926639,
+        "symmetry": 0.16975806451612904,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.009159183725197901,
+        "self_intersections": 11332.147834883901,
+        "bbox_fill": 0.19447723388671875,
+        "caging": 0.009159183725197901,
+        "symmetry": 0.21011596947248848,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.76,
+        "self_intersections": 1.0,
+        "bbox_fill": 0.87,
+        "caging": 0.76,
+        "symmetry": 0.78,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M6_absolute_unit",
+      "stream": "value",
+      "modulus": 6,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.4126307614211947,
+        "self_intersections": 1399.0112857785853,
+        "bbox_fill": 0.00946044921875,
+        "caging": 0.4126307614211947,
+        "symmetry": 0.006493506493506494,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.4126307614211946,
+        "self_intersections": 685.5289427626791,
+        "bbox_fill": 0.01005767822265625,
+        "caging": 0.4126307614211946,
+        "symmetry": 0.17505930662721178,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.7,
+        "self_intersections": 0.54,
+        "bbox_fill": 0.24,
+        "caging": 0.7,
+        "symmetry": 0.0,
+        "components": 2.0
+      },
+      "hits_at_0.01": [
+        "symmetry"
+      ],
+      "refined": {
+        "symmetry": {
+          "emp_p": 0.002,
+          "z_tail_p": 0.1268100737362734,
+          "n": 2000,
+          "clears_bonferroni": 0.0
+        }
+      }
+    },
+    {
+      "combo": "value_M6_absolute_value",
+      "stream": "value",
+      "modulus": 6,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.4956821118821621,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.0091552734375,
+        "caging": 0.4956821118821621,
+        "symmetry": 0.006711409395973154,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.4956821118821623,
+        "self_intersections": 419.71353238676136,
+        "bbox_fill": 0.010087890625,
+        "caging": 0.4956821118821623,
+        "symmetry": 0.18763890944976033,
+        "components": 1.005
+      },
+      "null_p": {
+        "closure": 0.91,
+        "self_intersections": 1.51,
+        "bbox_fill": 0.04,
+        "caging": 0.91,
+        "symmetry": 0.02,
+        "components": 1.99
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M6_relative_unit",
+      "stream": "value",
+      "modulus": 6,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.009802408150671288,
+        "self_intersections": 4197.033857335756,
+        "bbox_fill": 0.16796875,
+        "caging": 0.009802408150671288,
+        "symmetry": 0.3067426400759734,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.01206599377694392,
+        "self_intersections": 7911.51543295487,
+        "bbox_fill": 0.19789031982421876,
+        "caging": 0.01206599377694392,
+        "symmetry": 0.20621665227534458,
+        "components": 1.37
+      },
+      "null_p": {
+        "closure": 0.82,
+        "self_intersections": 0.34,
+        "bbox_fill": 0.74,
+        "caging": 0.82,
+        "symmetry": 0.3,
+        "components": 1.54
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M6_relative_value",
+      "stream": "value",
+      "modulus": 6,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.01097604684367855,
+        "self_intersections": 5596.045143114341,
+        "bbox_fill": 0.19171142578125,
+        "caging": 0.01097604684367855,
+        "symmetry": 0.24544012688342584,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.013927651185803847,
+        "self_intersections": 5798.968270181532,
+        "bbox_fill": 0.18310211181640626,
+        "caging": 0.013927651185803847,
+        "symmetry": 0.20231244435549,
+        "components": 1.835
+      },
+      "null_p": {
+        "closure": 0.75,
+        "self_intersections": 1.01,
+        "bbox_fill": 0.81,
+        "caging": 0.75,
+        "symmetry": 0.58,
+        "components": 1.11
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M8_absolute_unit",
+      "stream": "value",
+      "modulus": 8,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.09862946478754916,
+        "self_intersections": 11192.090286228682,
+        "bbox_fill": 0.016357421875,
+        "caging": 0.09862946478754916,
+        "symmetry": 0.011320754716981131,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.0986294647875492,
+        "self_intersections": 6519.466546701342,
+        "bbox_fill": 0.01727508544921875,
+        "caging": 0.0986294647875492,
+        "symmetry": 0.0419803160025959,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.89,
+        "self_intersections": 0.16,
+        "bbox_fill": 0.07,
+        "caging": 0.89,
+        "symmetry": 0.28,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M8_absolute_value",
+      "stream": "value",
+      "modulus": 8,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.06440704115392001,
+        "self_intersections": 6995.056428892926,
+        "bbox_fill": 0.027587890625,
+        "caging": 0.06440704115392001,
+        "symmetry": 0.015730337078651686,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.06440704115392061,
+        "self_intersections": 7484.792969129869,
+        "bbox_fill": 0.02913665771484375,
+        "caging": 0.06440704115392061,
+        "symmetry": 0.03565533532713682,
+        "components": 1.04
+      },
+      "null_p": {
+        "closure": 0.37,
+        "self_intersections": 0.97,
+        "bbox_fill": 0.22,
+        "caging": 0.37,
+        "symmetry": 0.41,
+        "components": 1.93
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M8_relative_unit",
+      "stream": "value",
+      "modulus": 8,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.004187659013196153,
+        "self_intersections": 16788.135429343023,
+        "bbox_fill": 0.34771728515625,
+        "caging": 0.004187659013196153,
+        "symmetry": 0.34236569274269557,
+        "components": 3.0
+      },
+      "null_mean": {
+        "closure": 0.006980503702557872,
+        "self_intersections": 25021.694293421657,
+        "bbox_fill": 0.20808319091796876,
+        "caging": 0.006980503702557872,
+        "symmetry": 0.21779708294583794,
+        "components": 1.29
+      },
+      "null_p": {
+        "closure": 0.52,
+        "self_intersections": 0.26,
+        "bbox_fill": 0.04,
+        "caging": 0.52,
+        "symmetry": 0.2,
+        "components": 0.12
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M8_relative_value",
+      "stream": "value",
+      "modulus": 8,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.0024289511106911498,
+        "self_intersections": 27980.225715571705,
+        "bbox_fill": 0.403564453125,
+        "caging": 0.0024289511106911498,
+        "symmetry": 0.5401816911250874,
+        "components": 8.0
+      },
+      "null_mean": {
+        "closure": 0.009228655992574658,
+        "self_intersections": 14941.650136927934,
+        "bbox_fill": 0.199775390625,
+        "caging": 0.009228655992574658,
+        "symmetry": 0.20562660246855516,
+        "components": 1.95
+      },
+      "null_p": {
+        "closure": 0.07,
+        "self_intersections": 0.01,
+        "bbox_fill": 0.0,
+        "caging": 0.07,
+        "symmetry": 0.0,
+        "components": 0.0
+      },
+      "hits_at_0.01": [
+        "bbox_fill",
+        "symmetry",
+        "components"
+      ],
+      "refined": {
+        "bbox_fill": {
+          "emp_p": 0.002,
+          "z_tail_p": 0.0011211331949393388,
+          "n": 2000,
+          "clears_bonferroni": 0.0
+        },
+        "symmetry": {
+          "emp_p": 0.0,
+          "z_tail_p": 0.0004163874651507138,
+          "n": 2000,
+          "clears_bonferroni": false
+        },
+        "components": {
+          "emp_p": 0.012,
+          "z_tail_p": 2.1658235932475733e-06,
+          "n": 2000,
+          "clears_bonferroni": 0.0
+        }
+      }
+    },
+    {
+      "combo": "value_M12_absolute_unit",
+      "stream": "value",
+      "modulus": 12,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.04779589565337732,
+        "self_intersections": 9793.079000450098,
+        "bbox_fill": 0.02899169921875,
+        "caging": 0.04779589565337732,
+        "symmetry": 0.17866004962779156,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.047795895653377364,
+        "self_intersections": 9324.536076673321,
+        "bbox_fill": 0.03189849853515625,
+        "caging": 0.047795895653377364,
+        "symmetry": 0.12393774979422884,
+        "components": 1.015
+      },
+      "null_p": {
+        "closure": 0.42,
+        "self_intersections": 0.9,
+        "bbox_fill": 0.0,
+        "caging": 0.42,
+        "symmetry": 0.4,
+        "components": 1.97
+      },
+      "hits_at_0.01": [
+        "bbox_fill"
+      ],
+      "refined": {
+        "bbox_fill": {
+          "emp_p": 0.006,
+          "z_tail_p": 0.010104057216122508,
+          "n": 2000,
+          "clears_bonferroni": 0.0
+        }
+      }
+    },
+    {
+      "combo": "value_M12_absolute_value",
+      "stream": "value",
+      "modulus": 12,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.08120518452361548,
+        "self_intersections": 4197.033857335756,
+        "bbox_fill": 0.0169677734375,
+        "caging": 0.08120518452361548,
+        "symmetry": 0.1346938775510204,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.08120518452361523,
+        "self_intersections": 7233.0195636833005,
+        "bbox_fill": 0.018662109375,
+        "caging": 0.08120518452361523,
+        "symmetry": 0.08258818839112428,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.57,
+        "self_intersections": 0.35,
+        "bbox_fill": 0.01,
+        "caging": 0.57,
+        "symmetry": 0.36,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M12_relative_unit",
+      "stream": "value",
+      "modulus": 12,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.005183820786042577,
+        "self_intersections": 29379.23700135029,
+        "bbox_fill": 0.192626953125,
+        "caging": 0.005183820786042577,
+        "symmetry": 0.21384615384615385,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.0075654195981695715,
+        "self_intersections": 21440.19542288309,
+        "bbox_fill": 0.20075347900390625,
+        "caging": 0.0075654195981695715,
+        "symmetry": 0.21918954247593525,
+        "components": 1.62
+      },
+      "null_p": {
+        "closure": 0.61,
+        "self_intersections": 0.28,
+        "bbox_fill": 0.99,
+        "caging": 0.61,
+        "symmetry": 0.96,
+        "components": 1.16
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M12_relative_value",
+      "stream": "value",
+      "modulus": 12,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.01157106289664103,
+        "self_intersections": 11192.090286228682,
+        "bbox_fill": 0.14031982421875,
+        "caging": 0.01157106289664103,
+        "symmetry": 0.16523061327927013,
+        "components": 3.0
+      },
+      "null_mean": {
+        "closure": 0.009930246283312032,
+        "self_intersections": 12766.15982722465,
+        "bbox_fill": 0.18674285888671874,
+        "caging": 0.009930246283312032,
+        "symmetry": 0.20408284224099887,
+        "components": 2.245
+      },
+      "null_p": {
+        "closure": 0.7,
+        "self_intersections": 0.77,
+        "bbox_fill": 0.52,
+        "caging": 0.7,
+        "symmetry": 0.71,
+        "components": 0.62
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M29_absolute_unit",
+      "stream": "value",
+      "modulus": 29,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.10512574131583974,
+        "self_intersections": 2798.0225715571705,
+        "bbox_fill": 0.01885986328125,
+        "caging": 0.10512574131583974,
+        "symmetry": 0.01644736842105263,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.10512574131583965,
+        "self_intersections": 8436.145485360157,
+        "bbox_fill": 0.01892120361328125,
+        "caging": 0.10512574131583965,
+        "symmetry": 0.015625346290555512,
+        "components": 1.005
+      },
+      "null_p": {
+        "closure": 0.87,
+        "self_intersections": 0.07,
+        "bbox_fill": 0.91,
+        "caging": 0.87,
+        "symmetry": 0.71,
+        "components": 1.99
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M29_absolute_value",
+      "stream": "value",
+      "modulus": 29,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.22162474076082186,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.0142822265625,
+        "caging": 0.22162474076082186,
+        "symmetry": 0.0064516129032258064,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.2216247407608224,
+        "self_intersections": 4441.933032028473,
+        "bbox_fill": 0.0144952392578125,
+        "caging": 0.2216247407608224,
+        "symmetry": 0.009213346376336888,
+        "components": 1.01
+      },
+      "null_p": {
+        "closure": 0.33,
+        "self_intersections": 0.06,
+        "bbox_fill": 0.59,
+        "caging": 0.33,
+        "symmetry": 0.36,
+        "components": 1.98
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M29_relative_unit",
+      "stream": "value",
+      "modulus": 29,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.001882243421952793,
+        "self_intersections": 30778.248287128878,
+        "bbox_fill": 0.28997802734375,
+        "caging": 0.001882243421952793,
+        "symmetry": 0.3481838819523269,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.007232093466187821,
+        "self_intersections": 26301.8003571852,
+        "bbox_fill": 0.203638916015625,
+        "caging": 0.007232093466187821,
+        "symmetry": 0.22160029764307,
+        "components": 1.605
+      },
+      "null_p": {
+        "closure": 0.11,
+        "self_intersections": 0.53,
+        "bbox_fill": 0.2,
+        "caging": 0.11,
+        "symmetry": 0.26,
+        "components": 1.25
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M29_relative_value",
+      "stream": "value",
+      "modulus": 29,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.004367237919294195,
+        "self_intersections": 18187.14671512161,
+        "bbox_fill": 0.29132080078125,
+        "caging": 0.004367237919294195,
+        "symmetry": 0.43204320432043203,
+        "components": 6.0
+      },
+      "null_mean": {
+        "closure": 0.007914982025910572,
+        "self_intersections": 19915.20909501573,
+        "bbox_fill": 0.20256622314453124,
+        "caging": 0.007914982025910572,
+        "symmetry": 0.22167835334176608,
+        "components": 2.39
+      },
+      "null_p": {
+        "closure": 0.42,
+        "self_intersections": 0.87,
+        "bbox_fill": 0.14,
+        "caging": 0.42,
+        "symmetry": 0.04,
+        "components": 0.15
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M360_absolute_unit",
+      "stream": "value",
+      "modulus": 360,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.8265065595782495,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.0140380859375,
+        "caging": 0.8265065595782495,
+        "symmetry": 0.004366812227074236,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.8265065595782504,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.01404693603515625,
+        "caging": 0.8265065595782504,
+        "symmetry": 0.004375013979968919,
+        "components": 1.075
+      },
+      "null_p": {
+        "closure": 0.33,
+        "self_intersections": 2.0,
+        "bbox_fill": 1.64,
+        "caging": 0.33,
+        "symmetry": 1.65,
+        "components": 1.87
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M360_absolute_value",
+      "stream": "value",
+      "modulus": 360,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.8860532262459997,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.009765625,
+        "caging": 0.8860532262459997,
+        "symmetry": 0.006289308176100629,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.8860532262459975,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.00980224609375,
+        "caging": 0.8860532262459975,
+        "symmetry": 0.01009130247545787,
+        "components": 1.005
+      },
+      "null_p": {
+        "closure": 0.13,
+        "self_intersections": 2.0,
+        "bbox_fill": 1.03,
+        "caging": 0.13,
+        "symmetry": 0.8,
+        "components": 1.99
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M360_relative_unit",
+      "stream": "value",
+      "modulus": 360,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.0015494878104850497,
+        "self_intersections": 39172.31600180039,
+        "bbox_fill": 0.387451171875,
+        "caging": 0.0015494878104850497,
+        "symmetry": 0.5164835164835165,
+        "components": 3.0
+      },
+      "null_mean": {
+        "closure": 0.005529426695114239,
+        "self_intersections": 34800.907877118094,
+        "bbox_fill": 0.23963470458984376,
+        "caging": 0.005529426695114239,
+        "symmetry": 0.26684888194894524,
+        "components": 1.8
+      },
+      "null_p": {
+        "closure": 0.1,
+        "self_intersections": 0.67,
+        "bbox_fill": 0.05,
+        "caging": 0.1,
+        "symmetry": 0.04,
+        "components": 0.39
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "value_M360_relative_value",
+      "stream": "value",
+      "modulus": 360,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.002776369877543744,
+        "self_intersections": 156689.26400720156,
+        "bbox_fill": 0.25213623046875,
+        "caging": 0.002776369877543744,
+        "symmetry": 0.4373695198329854,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.002199764426159802,
+        "self_intersections": 178782.30381712562,
+        "bbox_fill": 0.3130474853515625,
+        "caging": 0.002199764426159802,
+        "symmetry": 0.3625358397089166,
+        "components": 6.67
+      },
+      "null_p": {
+        "closure": 0.58,
+        "self_intersections": 0.74,
+        "bbox_fill": 0.65,
+        "caging": 0.58,
+        "symmetry": 0.69,
+        "components": 0.74
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M4_absolute_unit",
+      "stream": "pi",
+      "modulus": 4,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.026270348439671187,
+        "self_intersections": 11192.090286228682,
+        "bbox_fill": 0.052001953125,
+        "caging": 0.026270348439671187,
+        "symmetry": 0.14670255720053835,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.026270348439671184,
+        "self_intersections": 11723.86982977046,
+        "bbox_fill": 0.0541717529296875,
+        "caging": 0.026270348439671184,
+        "symmetry": 0.12136319276030828,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 2.0,
+        "self_intersections": 1.01,
+        "bbox_fill": 0.54,
+        "caging": 2.0,
+        "symmetry": 0.63,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M4_absolute_value",
+      "stream": "pi",
+      "modulus": 4,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.042609690337232935,
+        "self_intersections": 9793.079000450098,
+        "bbox_fill": 0.05230712890625,
+        "caging": 0.042609690337232935,
+        "symmetry": 0.021454112038140644,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.042609690337233115,
+        "self_intersections": 8813.91818006728,
+        "bbox_fill": 0.05808563232421875,
+        "caging": 0.042609690337233115,
+        "symmetry": 0.0320115698087616,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.27,
+        "self_intersections": 0.84,
+        "bbox_fill": 0.07,
+        "caging": 0.27,
+        "symmetry": 0.5,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M4_relative_unit",
+      "stream": "pi",
+      "modulus": 4,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.006350726283030057,
+        "self_intersections": 16788.135429343023,
+        "bbox_fill": 0.25054931640625,
+        "caging": 0.006350726283030057,
+        "symmetry": 0.27662882910900327,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.0072574687421231784,
+        "self_intersections": 18103.453439347977,
+        "bbox_fill": 0.19222412109375,
+        "caging": 0.0072574687421231784,
+        "symmetry": 0.20284741654825708,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.84,
+        "self_intersections": 0.92,
+        "bbox_fill": 0.29,
+        "caging": 0.84,
+        "symmetry": 0.32,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M4_relative_value",
+      "stream": "pi",
+      "modulus": 4,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.006713829275217117,
+        "self_intersections": 19586.158000900195,
+        "bbox_fill": 0.21466064453125,
+        "caging": 0.006713829275217117,
+        "symmetry": 0.30355819125277983,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.009123342367006557,
+        "self_intersections": 12192.574410620597,
+        "bbox_fill": 0.1840478515625,
+        "caging": 0.009123342367006557,
+        "symmetry": 0.2061656794635657,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.63,
+        "self_intersections": 0.12,
+        "bbox_fill": 0.56,
+        "caging": 0.63,
+        "symmetry": 0.3,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M6_absolute_unit",
+      "stream": "pi",
+      "modulus": 6,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.034461565472987794,
+        "self_intersections": 11192.090286228682,
+        "bbox_fill": 0.0450439453125,
+        "caging": 0.034461565472987794,
+        "symmetry": 0.027855153203342618,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.0344615654729878,
+        "self_intersections": 12640.235402338412,
+        "bbox_fill": 0.0445172119140625,
+        "caging": 0.0344615654729878,
+        "symmetry": 0.05901117237350377,
+        "components": 1.015
+      },
+      "null_p": {
+        "closure": 0.95,
+        "self_intersections": 0.73,
+        "bbox_fill": 0.77,
+        "caging": 0.95,
+        "symmetry": 0.39,
+        "components": 1.97
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M6_absolute_value",
+      "stream": "pi",
+      "modulus": 6,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.07826902333866655,
+        "self_intersections": 2798.0225715571705,
+        "bbox_fill": 0.02423095703125,
+        "caging": 0.07826902333866655,
+        "symmetry": 0.015345268542199489,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.07826902333866657,
+        "self_intersections": 8051.393240670385,
+        "bbox_fill": 0.02428558349609375,
+        "caging": 0.07826902333866657,
+        "symmetry": 0.021709241644612333,
+        "components": 1.015
+      },
+      "null_p": {
+        "closure": 0.83,
+        "self_intersections": 0.04,
+        "bbox_fill": 1.0,
+        "caging": 0.83,
+        "symmetry": 0.84,
+        "components": 1.97
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M6_relative_unit",
+      "stream": "pi",
+      "modulus": 6,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.004208492090208248,
+        "self_intersections": 23783.19185823595,
+        "bbox_fill": 0.37640380859375,
+        "caging": 0.004208492090208248,
+        "symmetry": 0.3849090500785987,
+        "components": 7.0
+      },
+      "null_mean": {
+        "closure": 0.007234362625657009,
+        "self_intersections": 20733.65845261123,
+        "bbox_fill": 0.2022564697265625,
+        "caging": 0.007234362625657009,
+        "symmetry": 0.22185818158329645,
+        "components": 1.89
+      },
+      "null_p": {
+        "closure": 0.43,
+        "self_intersections": 0.6,
+        "bbox_fill": 0.0,
+        "caging": 0.43,
+        "symmetry": 0.07,
+        "components": 0.02
+      },
+      "hits_at_0.01": [
+        "bbox_fill"
+      ],
+      "refined": {
+        "bbox_fill": {
+          "emp_p": 0.012,
+          "z_tail_p": 0.008791289528161883,
+          "n": 2000,
+          "clears_bonferroni": 0.0
+        }
+      }
+    },
+    {
+      "combo": "pi_M6_relative_value",
+      "stream": "pi",
+      "modulus": 6,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.0059746096323988,
+        "self_intersections": 13990.112857785853,
+        "bbox_fill": 0.23822021484375,
+        "caging": 0.0059746096323988,
+        "symmetry": 0.19211973121563836,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.008225487528747643,
+        "self_intersections": 16123.847563506411,
+        "bbox_fill": 0.2018707275390625,
+        "caging": 0.008225487528747643,
+        "symmetry": 0.2177014992657364,
+        "components": 2.16
+      },
+      "null_p": {
+        "closure": 0.65,
+        "self_intersections": 0.7,
+        "bbox_fill": 0.49,
+        "caging": 0.65,
+        "symmetry": 0.8,
+        "components": 0.85
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M8_absolute_unit",
+      "stream": "pi",
+      "modulus": 8,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.08651527276867918,
+        "self_intersections": 15389.124143564439,
+        "bbox_fill": 0.029296875,
+        "caging": 0.08651527276867918,
+        "symmetry": 0.02127659574468085,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.08651527276867917,
+        "self_intersections": 8541.10199945909,
+        "bbox_fill": 0.028465576171875,
+        "caging": 0.08651527276867917,
+        "symmetry": 0.012781365215272235,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.33,
+        "self_intersections": 0.07,
+        "bbox_fill": 0.3,
+        "caging": 0.33,
+        "symmetry": 0.13,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M8_absolute_value",
+      "stream": "pi",
+      "modulus": 8,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.09172680557690222,
+        "self_intersections": 12591.101572007268,
+        "bbox_fill": 0.01983642578125,
+        "caging": 0.09172680557690222,
+        "symmetry": 0.017214397496087636,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.0917268055769035,
+        "self_intersections": 7701.678665906943,
+        "bbox_fill": 0.02024566650390625,
+        "caging": 0.0917268055769035,
+        "symmetry": 0.026977899273715508,
+        "components": 1.01
+      },
+      "null_p": {
+        "closure": 0.09,
+        "self_intersections": 0.18,
+        "bbox_fill": 0.55,
+        "caging": 0.09,
+        "symmetry": 0.71,
+        "components": 1.98
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M8_relative_unit",
+      "stream": "pi",
+      "modulus": 8,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.004987694873353173,
+        "self_intersections": 16788.135429343023,
+        "bbox_fill": 0.28814697265625,
+        "caging": 0.004987694873353173,
+        "symmetry": 0.4249924539692122,
+        "components": 4.0
+      },
+      "null_mean": {
+        "closure": 0.007092629414989445,
+        "self_intersections": 22902.112544426698,
+        "bbox_fill": 0.20983245849609375,
+        "caging": 0.007092629414989445,
+        "symmetry": 0.22530355028962445,
+        "components": 1.82
+      },
+      "null_p": {
+        "closure": 0.6,
+        "self_intersections": 0.33,
+        "bbox_fill": 0.27,
+        "caging": 0.6,
+        "symmetry": 0.03,
+        "components": 0.17
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M8_relative_value",
+      "stream": "pi",
+      "modulus": 8,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.009681296732828451,
+        "self_intersections": 16788.135429343023,
+        "bbox_fill": 0.2003173828125,
+        "caging": 0.009681296732828451,
+        "symmetry": 0.3368635437881874,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.008046867174003883,
+        "self_intersections": 18040.49151432978,
+        "bbox_fill": 0.20559326171875,
+        "caging": 0.008046867174003883,
+        "symmetry": 0.23015004602485686,
+        "components": 1.935
+      },
+      "null_p": {
+        "closure": 0.62,
+        "self_intersections": 0.89,
+        "bbox_fill": 0.97,
+        "caging": 0.62,
+        "symmetry": 0.19,
+        "components": 0.98
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M12_absolute_unit",
+      "stream": "pi",
+      "modulus": 12,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.13418686115114736,
+        "self_intersections": 5596.045143114341,
+        "bbox_fill": 0.01422119140625,
+        "caging": 0.13418686115114736,
+        "symmetry": 0.04954954954954955,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.13418686115114742,
+        "self_intersections": 7107.074262281746,
+        "bbox_fill": 0.01400299072265625,
+        "caging": 0.13418686115114742,
+        "symmetry": 0.08876244549892846,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.86,
+        "self_intersections": 0.61,
+        "bbox_fill": 0.61,
+        "caging": 0.86,
+        "symmetry": 0.72,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M12_absolute_value",
+      "stream": "pi",
+      "modulus": 12,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.13328846201383773,
+        "self_intersections": 6995.056428892926,
+        "bbox_fill": 0.0150146484375,
+        "caging": 0.13328846201383773,
+        "symmetry": 0.05128205128205128,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.13328846201383748,
+        "self_intersections": 6687.35256590527,
+        "bbox_fill": 0.01533660888671875,
+        "caging": 0.13328846201383748,
+        "symmetry": 0.03463085874192405,
+        "components": 1.005
+      },
+      "null_p": {
+        "closure": 0.47,
+        "self_intersections": 0.97,
+        "bbox_fill": 0.52,
+        "caging": 0.47,
+        "symmetry": 0.43,
+        "components": 1.99
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M12_relative_unit",
+      "stream": "pi",
+      "modulus": 12,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.000790164791106127,
+        "self_intersections": 12591.101572007268,
+        "bbox_fill": 0.20758056640625,
+        "caging": 0.000790164791106127,
+        "symmetry": 0.2971014492753623,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.00787103665430894,
+        "self_intersections": 21146.401880973786,
+        "bbox_fill": 0.20236114501953126,
+        "caging": 0.00787103665430894,
+        "symmetry": 0.22575062565798432,
+        "components": 1.515
+      },
+      "null_p": {
+        "closure": 0.01,
+        "self_intersections": 0.19,
+        "bbox_fill": 0.9,
+        "caging": 0.01,
+        "symmetry": 0.52,
+        "components": 1.32
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M12_relative_value",
+      "stream": "pi",
+      "modulus": 12,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.005049643183548096,
+        "self_intersections": 25182.203144014537,
+        "bbox_fill": 0.12957763671875,
+        "caging": 0.005049643183548096,
+        "symmetry": 0.10861618798955613,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.009240305773422027,
+        "self_intersections": 15473.295887227376,
+        "bbox_fill": 0.19469573974609375,
+        "caging": 0.009240305773422027,
+        "symmetry": 0.2139784985953174,
+        "components": 1.855
+      },
+      "null_p": {
+        "closure": 0.4,
+        "self_intersections": 0.06,
+        "bbox_fill": 0.33,
+        "caging": 0.4,
+        "symmetry": 0.3,
+        "components": 1.08
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M29_absolute_unit",
+      "stream": "pi",
+      "modulus": 29,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.016161070619824552,
+        "self_intersections": 25182.203144014537,
+        "bbox_fill": 0.13946533203125,
+        "caging": 0.016161070619824552,
+        "symmetry": 0.1311881188118812,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.016161070619824316,
+        "self_intersections": 17438.92389246126,
+        "bbox_fill": 0.13222625732421875,
+        "caging": 0.016161070619824316,
+        "symmetry": 0.0909032747671681,
+        "components": 1.22
+      },
+      "null_p": {
+        "closure": 0.34,
+        "self_intersections": 0.16,
+        "bbox_fill": 0.62,
+        "caging": 0.34,
+        "symmetry": 0.42,
+        "components": 1.61
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M29_absolute_value",
+      "stream": "pi",
+      "modulus": 29,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.31968334443901075,
+        "self_intersections": 1399.0112857785853,
+        "bbox_fill": 0.0113525390625,
+        "caging": 0.31968334443901075,
+        "symmetry": 0.03333333333333333,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.3196833444390095,
+        "self_intersections": 3105.853459718075,
+        "bbox_fill": 0.010914306640625,
+        "caging": 0.3196833444390095,
+        "symmetry": 0.023253447522821977,
+        "components": 1.005
+      },
+      "null_p": {
+        "closure": 0.17,
+        "self_intersections": 0.48,
+        "bbox_fill": 0.31,
+        "caging": 0.17,
+        "symmetry": 0.39,
+        "components": 1.99
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M29_relative_unit",
+      "stream": "pi",
+      "modulus": 29,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.007864695869547318,
+        "self_intersections": 16788.135429343023,
+        "bbox_fill": 0.17376708984375,
+        "caging": 0.007864695869547318,
+        "symmetry": 0.12219156484036263,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.0075667626375973155,
+        "self_intersections": 20243.953308929977,
+        "bbox_fill": 0.2069659423828125,
+        "caging": 0.0075667626375973155,
+        "symmetry": 0.22636388641362395,
+        "components": 1.545
+      },
+      "null_p": {
+        "closure": 0.82,
+        "self_intersections": 0.61,
+        "bbox_fill": 0.64,
+        "caging": 0.82,
+        "symmetry": 0.3,
+        "components": 1.2
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M29_relative_value",
+      "stream": "pi",
+      "modulus": 29,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.013533053054727344,
+        "self_intersections": 15389.124143564439,
+        "bbox_fill": 0.14166259765625,
+        "caging": 0.013533053054727344,
+        "symmetry": 0.13942071674030437,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.008715173994104496,
+        "self_intersections": 15382.30359584535,
+        "bbox_fill": 0.19784210205078126,
+        "caging": 0.008715173994104496,
+        "symmetry": 0.21294308746624024,
+        "components": 2.04
+      },
+      "null_p": {
+        "closure": 0.37,
+        "self_intersections": 1.02,
+        "bbox_fill": 0.44,
+        "caging": 0.37,
+        "symmetry": 0.39,
+        "components": 0.91
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M360_absolute_unit",
+      "stream": "pi",
+      "modulus": 360,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.9892387359079581,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.0098876953125,
+        "caging": 0.9892387359079581,
+        "symmetry": 0.006211180124223602,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.9892387359079581,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.00987396240234375,
+        "caging": 0.9892387359079581,
+        "symmetry": 0.009999588885122588,
+        "components": 1.045
+      },
+      "null_p": {
+        "closure": 1.15,
+        "self_intersections": 2.0,
+        "bbox_fill": 1.58,
+        "caging": 1.15,
+        "symmetry": 0.67,
+        "components": 1.91
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M360_absolute_value",
+      "stream": "pi",
+      "modulus": 360,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.9927322192341052,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.01055908203125,
+        "caging": 0.9927322192341052,
+        "symmetry": 0.005813953488372093,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.992732219234105,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.01054534912109375,
+        "caging": 0.992732219234105,
+        "symmetry": 0.005821609427124581,
+        "components": 1.08
+      },
+      "null_p": {
+        "closure": 1.04,
+        "self_intersections": 2.0,
+        "bbox_fill": 1.58,
+        "caging": 1.04,
+        "symmetry": 1.58,
+        "components": 1.84
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M360_relative_unit",
+      "stream": "pi",
+      "modulus": 360,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.0038062443018336833,
+        "self_intersections": 19586.158000900195,
+        "bbox_fill": 0.3619384765625,
+        "caging": 0.0038062443018336833,
+        "symmetry": 0.2660119555935098,
+        "components": 4.0
+      },
+      "null_mean": {
+        "closure": 0.004419461490411055,
+        "self_intersections": 31156.4417194322,
+        "bbox_fill": 0.3358251953125,
+        "caging": 0.004419461490411055,
+        "symmetry": 0.39255774972895535,
+        "components": 4.8
+      },
+      "null_p": {
+        "closure": 0.89,
+        "self_intersections": 0.31,
+        "bbox_fill": 0.77,
+        "caging": 0.89,
+        "symmetry": 0.4,
+        "components": 0.99
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "pi_M360_relative_value",
+      "stream": "pi",
+      "modulus": 360,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.0005847622601665869,
+        "self_intersections": 313378.5280144031,
+        "bbox_fill": 0.62060546875,
+        "caging": 0.0005847622601665869,
+        "symmetry": 0.8228755826461097,
+        "components": 51.0
+      },
+      "null_mean": {
+        "closure": 0.0005907043334081006,
+        "self_intersections": 300595.98405792785,
+        "bbox_fill": 0.5884951782226563,
+        "caging": 0.0005907043334081006,
+        "symmetry": 0.7133196478877211,
+        "components": 47.74
+      },
+      "null_p": {
+        "closure": 1.0,
+        "self_intersections": 0.75,
+        "bbox_fill": 0.77,
+        "caging": 1.0,
+        "symmetry": 0.33,
+        "components": 0.75
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M4_absolute_unit",
+      "stream": "phi",
+      "modulus": 4,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.07835633777839136,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.01666259765625,
+        "caging": 0.07835633777839136,
+        "symmetry": 0.007380073800738007,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.07835633777839136,
+        "self_intersections": 1140.2163591225008,
+        "bbox_fill": 0.01725311279296875,
+        "caging": 0.07835633777839136,
+        "symmetry": 0.011283519697571385,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 2.0,
+        "self_intersections": 0.91,
+        "bbox_fill": 0.26,
+        "caging": 2.0,
+        "symmetry": 0.59,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M4_absolute_value",
+      "stream": "phi",
+      "modulus": 4,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.02174419727728472,
+        "self_intersections": 4197.033857335756,
+        "bbox_fill": 0.01123046875,
+        "caging": 0.02174419727728472,
+        "symmetry": 0.12195121951219512,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.021744197277284504,
+        "self_intersections": 916.3599760098582,
+        "bbox_fill": 0.01141082763671875,
+        "caging": 0.021744197277284504,
+        "symmetry": 0.13744981395987316,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.57,
+        "self_intersections": 0.04,
+        "bbox_fill": 0.91,
+        "caging": 0.57,
+        "symmetry": 0.86,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M4_relative_unit",
+      "stream": "phi",
+      "modulus": 4,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.0027354191334739014,
+        "self_intersections": 19586.158000900195,
+        "bbox_fill": 0.12396240234375,
+        "caging": 0.0027354191334739014,
+        "symmetry": 0.1422947131608549,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.00723971606560368,
+        "self_intersections": 22573.38256099739,
+        "bbox_fill": 0.12000030517578125,
+        "caging": 0.00723971606560368,
+        "symmetry": 0.13224597743437794,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.23,
+        "self_intersections": 0.71,
+        "bbox_fill": 0.95,
+        "caging": 0.23,
+        "symmetry": 0.77,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M4_relative_value",
+      "stream": "phi",
+      "modulus": 4,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.007390805985166433,
+        "self_intersections": 12591.101572007268,
+        "bbox_fill": 0.111083984375,
+        "caging": 0.007390805985166433,
+        "symmetry": 0.1111111111111111,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.00905706378152295,
+        "self_intersections": 14955.708588656546,
+        "bbox_fill": 0.11975677490234375,
+        "caging": 0.00905706378152295,
+        "symmetry": 0.1315473128900985,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.8,
+        "self_intersections": 0.7,
+        "bbox_fill": 0.88,
+        "caging": 0.8,
+        "symmetry": 0.71,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M6_absolute_unit",
+      "stream": "phi",
+      "modulus": 6,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.4126307614211976,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.01275634765625,
+        "caging": 0.4126307614211976,
+        "symmetry": 0.00966183574879227,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.41263076142119764,
+        "self_intersections": 650.5512115359913,
+        "bbox_fill": 0.01301971435546875,
+        "caging": 0.41263076142119764,
+        "symmetry": 0.006288021477270972,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.89,
+        "self_intersections": 1.3,
+        "bbox_fill": 0.11,
+        "caging": 0.89,
+        "symmetry": 0.03,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M6_absolute_value",
+      "stream": "phi",
+      "modulus": 6,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.49732432174824154,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.01287841796875,
+        "caging": 0.49732432174824154,
+        "symmetry": 0.004761904761904762,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.4973243217482414,
+        "self_intersections": 356.7577911404707,
+        "bbox_fill": 0.01298004150390625,
+        "caging": 0.4973243217482414,
+        "symmetry": 0.006402496679852808,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.96,
+        "self_intersections": 1.56,
+        "bbox_fill": 0.73,
+        "caging": 0.96,
+        "symmetry": 1.0,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M6_relative_unit",
+      "stream": "phi",
+      "modulus": 6,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.007296673937895673,
+        "self_intersections": 11192.090286228682,
+        "bbox_fill": 0.22723388671875,
+        "caging": 0.007296673937895673,
+        "symmetry": 0.20817783546973875,
+        "components": 2.0
+      },
+      "null_mean": {
+        "closure": 0.008596076984954694,
+        "self_intersections": 18956.866886201446,
+        "bbox_fill": 0.1949713134765625,
+        "caging": 0.008596076984954694,
+        "symmetry": 0.20989347482826076,
+        "components": 1.5
+      },
+      "null_p": {
+        "closure": 0.87,
+        "self_intersections": 0.16,
+        "bbox_fill": 0.62,
+        "caging": 0.87,
+        "symmetry": 0.97,
+        "components": 0.65
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M6_relative_value",
+      "stream": "phi",
+      "modulus": 6,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.006661932641672162,
+        "self_intersections": 13990.112857785853,
+        "bbox_fill": 0.25640869140625,
+        "caging": 0.006661932641672162,
+        "symmetry": 0.21031403053874964,
+        "components": 7.0
+      },
+      "null_mean": {
+        "closure": 0.010677494660189489,
+        "self_intersections": 11821.82441086229,
+        "bbox_fill": 0.18918182373046874,
+        "caging": 0.010677494660189489,
+        "symmetry": 0.20147821769888158,
+        "components": 2.01
+      },
+      "null_p": {
+        "closure": 0.56,
+        "self_intersections": 0.61,
+        "bbox_fill": 0.34,
+        "caging": 0.56,
+        "symmetry": 0.91,
+        "components": 0.02
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M8_absolute_unit",
+      "stream": "phi",
+      "modulus": 8,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.09862946478755043,
+        "self_intersections": 11192.090286228682,
+        "bbox_fill": 0.02191162109375,
+        "caging": 0.09862946478755043,
+        "symmetry": 0.011267605633802818,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.09862946478755046,
+        "self_intersections": 6498.479861193211,
+        "bbox_fill": 0.0219354248046875,
+        "caging": 0.09862946478755046,
+        "symmetry": 0.012701992687597504,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.75,
+        "self_intersections": 0.14,
+        "bbox_fill": 1.0,
+        "caging": 0.75,
+        "symmetry": 0.94,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M8_absolute_value",
+      "stream": "phi",
+      "modulus": 8,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.063765843396513,
+        "self_intersections": 6995.056428892926,
+        "bbox_fill": 0.0286865234375,
+        "caging": 0.063765843396513,
+        "symmetry": 0.03070175438596491,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.06376584339651249,
+        "self_intersections": 7142.036834513268,
+        "bbox_fill": 0.03010955810546875,
+        "caging": 0.06376584339651249,
+        "symmetry": 0.029511081384983023,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.55,
+        "self_intersections": 1.03,
+        "bbox_fill": 0.21,
+        "caging": 0.55,
+        "symmetry": 0.76,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M8_relative_unit",
+      "stream": "phi",
+      "modulus": 8,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.00375055433144635,
+        "self_intersections": 22384.180572457364,
+        "bbox_fill": 0.26239013671875,
+        "caging": 0.00375055433144635,
+        "symmetry": 0.35401574803149605,
+        "components": 3.0
+      },
+      "null_mean": {
+        "closure": 0.007182611753533208,
+        "self_intersections": 23510.677677894582,
+        "bbox_fill": 0.1994366455078125,
+        "caging": 0.007182611753533208,
+        "symmetry": 0.2179895984748473,
+        "components": 2.64
+      },
+      "null_p": {
+        "closure": 0.42,
+        "self_intersections": 0.87,
+        "bbox_fill": 0.35,
+        "caging": 0.42,
+        "symmetry": 0.15,
+        "components": 0.64
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M8_relative_value",
+      "stream": "phi",
+      "modulus": 8,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.001169979385230683,
+        "self_intersections": 26581.214429793123,
+        "bbox_fill": 0.26397705078125,
+        "caging": 0.001169979385230683,
+        "symmetry": 0.33446467139771674,
+        "components": 4.0
+      },
+      "null_mean": {
+        "closure": 0.009086493245830536,
+        "self_intersections": 15536.237751073253,
+        "bbox_fill": 0.186563720703125,
+        "caging": 0.009086493245830536,
+        "symmetry": 0.21457246160078028,
+        "components": 2.775
+      },
+      "null_p": {
+        "closure": 0.04,
+        "self_intersections": 0.05,
+        "bbox_fill": 0.29,
+        "caging": 0.04,
+        "symmetry": 0.22,
+        "components": 0.53
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M12_absolute_unit",
+      "stream": "phi",
+      "modulus": 12,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.04779589565337764,
+        "self_intersections": 6995.056428892926,
+        "bbox_fill": 0.03485107421875,
+        "caging": 0.04779589565337764,
+        "symmetry": 0.02146690518783542,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.047795895653377655,
+        "self_intersections": 9009.752590342963,
+        "bbox_fill": 0.03728271484375,
+        "caging": 0.047795895653377655,
+        "symmetry": 0.036654230780700604,
+        "components": 1.02
+      },
+      "null_p": {
+        "closure": 0.9,
+        "self_intersections": 0.59,
+        "bbox_fill": 0.1,
+        "caging": 0.9,
+        "symmetry": 0.43,
+        "components": 1.96
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M12_absolute_value",
+      "stream": "phi",
+      "modulus": 12,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.08294047957797081,
+        "self_intersections": 4197.033857335756,
+        "bbox_fill": 0.0225830078125,
+        "caging": 0.08294047957797081,
+        "symmetry": 0.0136986301369863,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.0829404795779705,
+        "self_intersections": 7177.046984603291,
+        "bbox_fill": 0.02438140869140625,
+        "caging": 0.0829404795779705,
+        "symmetry": 0.014075580279000932,
+        "components": 1.065
+      },
+      "null_p": {
+        "closure": 0.44,
+        "self_intersections": 0.38,
+        "bbox_fill": 0.03,
+        "caging": 0.44,
+        "symmetry": 0.89,
+        "components": 1.87
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M12_relative_unit",
+      "stream": "phi",
+      "modulus": 12,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.0051106613515388265,
+        "self_intersections": 19586.158000900195,
+        "bbox_fill": 0.21038818359375,
+        "caging": 0.0051106613515388265,
+        "symmetry": 0.14632524110409045,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.007680454738356835,
+        "self_intersections": 20376.943923200077,
+        "bbox_fill": 0.1988519287109375,
+        "caging": 0.007680454738356835,
+        "symmetry": 0.22077343165030455,
+        "components": 2.43
+      },
+      "null_p": {
+        "closure": 0.55,
+        "self_intersections": 0.95,
+        "bbox_fill": 0.72,
+        "caging": 0.55,
+        "symmetry": 0.42,
+        "components": 0.74
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M12_relative_value",
+      "stream": "phi",
+      "modulus": 12,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.010247417395140969,
+        "self_intersections": 13990.112857785853,
+        "bbox_fill": 0.1639404296875,
+        "caging": 0.010247417395140969,
+        "symmetry": 0.05748031496062992,
+        "components": 2.0
+      },
+      "null_mean": {
+        "closure": 0.0099040657996932,
+        "self_intersections": 13570.625490314,
+        "bbox_fill": 0.1849609375,
+        "caging": 0.0099040657996932,
+        "symmetry": 0.20773043800401894,
+        "components": 2.655
+      },
+      "null_p": {
+        "closure": 0.88,
+        "self_intersections": 0.91,
+        "bbox_fill": 0.78,
+        "caging": 0.88,
+        "symmetry": 0.03,
+        "components": 1.19
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M29_absolute_unit",
+      "stream": "phi",
+      "modulus": 29,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.10512574131584289,
+        "self_intersections": 2798.0225715571705,
+        "bbox_fill": 0.02252197265625,
+        "caging": 0.10512574131584289,
+        "symmetry": 0.00819672131147541,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.10512574131584217,
+        "self_intersections": 8401.171252520797,
+        "bbox_fill": 0.0227459716796875,
+        "caging": 0.10512574131584217,
+        "symmetry": 0.011078852529060221,
+        "components": 1.02
+      },
+      "null_p": {
+        "closure": 0.05,
+        "self_intersections": 0.06,
+        "bbox_fill": 0.79,
+        "caging": 0.05,
+        "symmetry": 0.56,
+        "components": 1.96
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M29_absolute_value",
+      "stream": "phi",
+      "modulus": 29,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.2248739623178681,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.0126953125,
+        "caging": 0.2248739623178681,
+        "symmetry": 0.014634146341463415,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.224873962317868,
+        "self_intersections": 4371.978036269867,
+        "bbox_fill": 0.01282470703125,
+        "caging": 0.224873962317868,
+        "symmetry": 0.012313153516557335,
+        "components": 1.0
+      },
+      "null_p": {
+        "closure": 0.94,
+        "self_intersections": 0.08,
+        "bbox_fill": 0.74,
+        "caging": 0.94,
+        "symmetry": 0.52,
+        "components": 2.0
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M29_relative_unit",
+      "stream": "phi",
+      "modulus": 29,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.0095519901854948,
+        "self_intersections": 27980.225715571705,
+        "bbox_fill": 0.2164306640625,
+        "caging": 0.0095519901854948,
+        "symmetry": 0.14980544747081712,
+        "components": 2.0
+      },
+      "null_mean": {
+        "closure": 0.007352678040441967,
+        "self_intersections": 24448.087655214546,
+        "bbox_fill": 0.2002716064453125,
+        "caging": 0.007352678040441967,
+        "symmetry": 0.22164774797560163,
+        "components": 1.57
+      },
+      "null_p": {
+        "closure": 0.54,
+        "self_intersections": 0.57,
+        "bbox_fill": 0.77,
+        "caging": 0.54,
+        "symmetry": 0.47,
+        "components": 0.76
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M29_relative_value",
+      "stream": "phi",
+      "modulus": 29,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.010015737002680089,
+        "self_intersections": 16788.135429343023,
+        "bbox_fill": 0.2095947265625,
+        "caging": 0.010015737002680089,
+        "symmetry": 0.15273581738838538,
+        "components": 2.0
+      },
+      "null_mean": {
+        "closure": 0.007796806181612179,
+        "self_intersections": 20083.070506085685,
+        "bbox_fill": 0.20505157470703125,
+        "caging": 0.007796806181612179,
+        "symmetry": 0.22436340808595204,
+        "components": 2.295
+      },
+      "null_p": {
+        "closure": 0.55,
+        "self_intersections": 0.66,
+        "bbox_fill": 0.88,
+        "caging": 0.55,
+        "symmetry": 0.46,
+        "components": 1.22
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M360_absolute_unit",
+      "stream": "phi",
+      "modulus": 360,
+      "turn": "absolute",
+      "step": "unit",
+      "real": {
+        "closure": 0.8265065595782319,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.01422119140625,
+        "caging": 0.8265065595782319,
+        "symmetry": 0.004310344827586207,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.8265065595782314,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.01423309326171875,
+        "caging": 0.8265065595782314,
+        "symmetry": 0.004350131157793583,
+        "components": 1.08
+      },
+      "null_p": {
+        "closure": 0.44,
+        "self_intersections": 2.0,
+        "bbox_fill": 1.57,
+        "caging": 0.44,
+        "symmetry": 1.58,
+        "components": 1.84
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M360_absolute_value",
+      "stream": "phi",
+      "modulus": 360,
+      "turn": "absolute",
+      "step": "value",
+      "real": {
+        "closure": 0.888708980611791,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.0098876953125,
+        "caging": 0.888708980611791,
+        "symmetry": 0.006211180124223602,
+        "components": 1.0
+      },
+      "null_mean": {
+        "closure": 0.8887089806117914,
+        "self_intersections": 0.0,
+        "bbox_fill": 0.0099188232421875,
+        "caging": 0.8887089806117914,
+        "symmetry": 0.00888867737377361,
+        "components": 1.035
+      },
+      "null_p": {
+        "closure": 0.85,
+        "self_intersections": 2.0,
+        "bbox_fill": 1.15,
+        "caging": 0.85,
+        "symmetry": 1.13,
+        "components": 1.93
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M360_relative_unit",
+      "stream": "phi",
+      "modulus": 360,
+      "turn": "relative",
+      "step": "unit",
+      "real": {
+        "closure": 0.0039188535791948075,
+        "self_intersections": 61556.496574257755,
+        "bbox_fill": 0.32470703125,
+        "caging": 0.0039188535791948075,
+        "symmetry": 0.3174839029222387,
+        "components": 3.0
+      },
+      "null_mean": {
+        "closure": 0.005500790243121892,
+        "self_intersections": 33989.50628447885,
+        "bbox_fill": 0.24993865966796874,
+        "caging": 0.005500790243121892,
+        "symmetry": 0.2706943350956884,
+        "components": 1.96
+      },
+      "null_p": {
+        "closure": 0.65,
+        "self_intersections": 0.02,
+        "bbox_fill": 0.42,
+        "caging": 0.65,
+        "symmetry": 0.63,
+        "components": 0.46
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    },
+    {
+      "combo": "phi_M360_relative_value",
+      "stream": "phi",
+      "modulus": 360,
+      "turn": "relative",
+      "step": "value",
+      "real": {
+        "closure": 0.0020939014701888965,
+        "self_intersections": 200058.61386633772,
+        "bbox_fill": 0.35113525390625,
+        "caging": 0.0020939014701888965,
+        "symmetry": 0.289332138054684,
+        "components": 7.0
+      },
+      "null_mean": {
+        "closure": 0.002110257877769877,
+        "self_intersections": 175256.65391562055,
+        "bbox_fill": 0.32053802490234373,
+        "caging": 0.002110257877769877,
+        "symmetry": 0.37439891096276895,
+        "components": 7.025
+      },
+      "null_p": {
+        "closure": 0.91,
+        "self_intersections": 0.59,
+        "bbox_fill": 0.68,
+        "caging": 0.91,
+        "symmetry": 0.65,
+        "components": 0.65
+      },
+      "hits_at_0.01": [],
+      "refined": {}
+    }
+  ],
+  "runtime_sec": 208.3
+}

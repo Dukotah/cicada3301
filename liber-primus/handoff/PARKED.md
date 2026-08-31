@@ -1,6 +1,10 @@
 # PARKED — correct to attempt, blocked on capability
 
-_2026-08-19. Written for a reader with better tooling than existed when this was assembled._
+_2026-08-19, refreshed 2026-08-31 (current through Round 25). Written for a reader with better
+tooling than existed when this was assembled. **P-12 (the Round-25 Py2.7 seed grind) is the only
+item here that is currently RUNNING** — parked in the sense of a long, checkpointed grind you
+resume, not a capability you lack. It and the external/OSINT pointer below P-11 are the additions
+since the original assembly; the P-1…P-11 queue is unchanged except where marked superseded._
 
 Everything here is **parked because of a capability limit, not because it lacks merit**. That
 distinction is the whole point of the file: a dead end and a deferred experiment look identical
@@ -493,6 +497,101 @@ searchable.
 *Bar:* a **pre-2014-01** post referencing Liber Primus content, the Gematria Primus, or the
 onion7 material **before** its public release. Nothing weaker counts — post-hoc thematic
 resemblance in cypherpunk mailing lists is free.
+
+---
+
+## P-12 — The Python-2.7 MT 2³² seed tail · prior: **low** · **PARKED LIVE, mid-grind (Round 25)**
+
+_Added 2026-08-31. This is the one parked item that is **currently running** — a compute lane, not
+a capability-blocked one — parked in the sense that it is a long grind checkpointed to resume._
+
+**Hypothesis.** The pad is a keystream from Python-2.7 `random.seed(<str>)` → `init_by_array([w])`
+→ reducer `random29`, seeded from a 32-bit word `w`. On 32-bit Py2.7 `seed(str)` collapses
+bit-identically to `init_by_array([w])`, so the space is exactly 2³² = 4,294,967,296 words. This is
+the **one enumerable space that needs no sieve** — which matters because Round 20 proved the
+anti-repeat sieve **infeasible** (`analysis/round20/SYNTHESIS.md` §2), closing the sieve-gated route
+to every other generator family. So this is the single live door compute can still open.
+
+**Why this is a grind, not a gap.** The pipeline is fully control-validated — it is the R24-C2
+`skip_by_two` (`pair`/keyskip2) decoder + the R20 `HITFN` three-clause gate, both proven to recover
+a plant at recovery 1.000 (self-test seed 777: pmax 25.239 ≥ bar 7.384). **The instrument is not in
+question; only coverage is.** In pure Python it runs ~1,650–1,966 seeds/s across 6 cores (~384/s
+single-core), so the full 2³² is **~25–32 wall-days at this rate**.
+
+**State as of 2026-08-31 (parked here):**
+- Coverage **≈0.49% of 2³² (~20.9M of 4.29B seeds, incl. the C2/S-G3 baseline)** — advancing on
+  every resume; treat any single number as a snapshot and read the checkpoints for the live cursor.
+- **0 hits, 0 survivors flagged-for-oracle.** Best panel-max reached **6.826** (word 2149309687) vs
+  the pair claim bar **7.384** — the same noise ceiling C2 saw (~5.9–6.3). Nothing cleared the null,
+  so recovery/held-out never gated a live candidate. The in-band planted-seed control PASSES, so
+  **this null is a true negative, not a broken scan.**
+
+**The runner and its checkpoints.**
+- `analysis/round25/compute-tail/parallel_grind.py` — 6-core supervisor. It does **not** reimplement
+  the crypto: it imports `runner.py`'s control-validated `stage_a`/`stage_b`/`word_stream`/
+  `build_exclusion` and drives them across 6 disjoint contiguous seed bands, one worker per core.
+- `progress_w{0..5}.json` — per-worker checkpoints (band, cursor, seeds_done, best_pmax, best_word,
+  flagged_survivors). No shared mutable state; a crash loses at most ~30 s of one worker.
+- `progress.json` — the single-core chunk-1 record (the pre-parallel [3,000,000 → 3,506,593) slice,
+  `RESULTS-chunk1.md`). The parallel bands resume from that cursor.
+- The 45,975 prior+neighbourhood words already swept by C2/S-G3 are excluded per worker so coverage
+  is never double-counted.
+
+**Resume / poll / handle a hit.**
+```bash
+cd liber-primus
+python3 tests/validate.py                                     # 5/5 trust anchor first
+cd analysis/round25/compute-tail
+python3 parallel_grind.py                                     # resume the 6-core grind from checkpoints
+python3 parallel_grind.py --status                            # cheap poll of the 6 checkpoint files
+python3 parallel_grind.py --self-test                         # planted-seed recovery, then exit
+python3 parallel_grind.py --seconds 60                        # time-boxed smoke run
+```
+On a gate-clearing word the worker writes `HIT.json`, sets the shared stop-event that halts all
+workers, and the supervisor **exits non-zero** with the hit as headline. **A hit is
+FLAGGED-FOR-ORACLE (R21-L1), never auto-certified** — the no-oracle held-out proxy is leaky (~0.82
+catch < 0.90), so a bar-clearer requires human/oracle adjudication before it is called a solve.
+
+**Pass/fail bar.** HIT = the three-clause `hitfn20` gate: `pmax ≥ panel-max bar` (pair preset,
+N=1e6 → **7.384**) AND rune-index recovery ≥ 0.90 AND held-out-¾ recovery ≥ 0.90. Score alone is
+never a hit. Zero hits over a completed 2³² enumeration at this power is a **real** negative for
+this generator/reducer/offset and should be written into `ELIMINATION-LEDGER.md` as one — but note
+it does **not** touch the CSPRNG/external branch or the modal no-seed case (CENSUS §E).
+
+**Unparks to "finished" when.** Either the grind completes 2³² (~25–32 wall-days pure-Python), or —
+**the real unlock** — the decode-and-score inner loop is ported to **GPU/C**, which finishes the
+whole space in **hours** rather than weeks (same algorithm, only scale; validate with the runner's
+planted-seed self-test before trusting any output, exactly as P-10 requires).
+
+**What it does NOT close** (stated bounds, per doctrine R2): >99% of the 2³² tail still unswept;
+other generators (bash/perl/tex/sha256_ctr — R24-C2-ext swept only their prior-dense slices);
+the amd64 (2-word) MT image and the other Py2.7 reducers beyond `random29` (R21-L3 swept 884k words
+of those, still 0 hits); offsets ≠ 0; the `permissive`/free-drift preset. And it says **nothing**
+about the external-pad branch.
+
+**Prior: LOW.** It completes a finite space rather than opening a new one, it requires the author to
+have used a guessable 32-bit Py2.7 string seed, and the modal no-seed case holds the majority of the
+prior mass and is untouchable by any sweep. But it is genuinely runnable, genuinely control-detectable,
+and the cheapest live shot left to compute.
+
+---
+
+## The two doors analysis cannot close — external / OSINT (pointer, not a new lane)
+
+Everything above and in `ELIMINATION-LEDGER.md` is analysis of the ciphertext and its instruments.
+**Two branches are structurally unreachable by any of that**, and they are the only branches whose
+resolution would come from outside the repo rather than from more compute:
+
+1. **The external-pad branch.** If the keystream is a true external one-time pad, no sweep in this
+   file can ever touch it; it is solved only by the pad *surfacing* — via the "AN END" deep-web page
+   (**P-5**, closed-by-construction, passive-only — see `analysis/anend_hunt/FINDINGS.md`), an author
+   disclosure, or an archive nobody has looked in. This holds the majority of the honest prior mass.
+2. **Attribution.** The `mruzuki`/`cicadeur` keyserver actor and the 2011–2013 pre-disclosure mailing
+   lists (**P-11**, blocked on non-public archives — see the `attribution/` track and RECON-A I-01/I-03).
+   Even on success these yield at best a name, not a key, and **P-11's ethical wall stands: do not
+   pursue into private data or deanonymise a living person.**
+
+Neither is a compute lane. Both stay parked on archive availability / passive watch, not effort.
 
 ---
 

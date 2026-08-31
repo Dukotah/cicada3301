@@ -1,0 +1,72 @@
+{
+ "id": "R24-C1-EXT-NONENGLISH-READJUDICATION",
+ "lane": "round24/C1-ext-nonenglish",
+ "round": "24",
+ "date": "2026-08-30",
+ "hypothesis": "A B-04 decode that is a TRUE key but carries a non-English LANGUAGE plaintext (Latin/Greek/Old English poetic/Enochian) will score above a seed-3301 order-matched null under a genuinely LANGUAGE-AWARE rune-trigram panel built from that language's own corpus, where it did NOT under the English quadgram gate NOR under C1's orthography-corrected matched-runic scorer. This closes the axis C1 explicitly left not_covered: genuinely language-aware non-English models, not merely orthography-corrected English. Instrument/closure audit (doctrine R1+R6), NOT a new key-space sweep.",
+ "status": "negative",
+ "verdict": "NULL (control-validated). A genuinely language-aware non-English panel (EN/Latin/Greek/Old-English/Enochian) does NOT overturn the B-04 English-only negative on the strongest prior slice; zero survivors at 20,480 decodes. The English-only adjudicator was NOT hiding a non-English plaintext in this slice.",
+ "coverage": "Re-adjudicated the IDENTICAL C1 B-04 slice: top-40 R20-prior seeds (round20/P3/seedprior20.json, rank-1 1325734783) x 16 B-04 generators (round13/B04/ks.py) x 4 reductions (mod29/rej29/hi_nib/bits5) x 2 signs x 2 atbash x 2 seed-byte-forms, offset 0, L=120, target = real unsolved LP2 head. N = 20,480 decodes. Every decode adjudicated under the English quadgram scorer + a control-VALIDATED language-aware rune-trigram panel {EN, LA, GR, OE, EN0(Enochian)}, with the four R3 language-agnostic statistics (IoC.N, min distinct over 32-rune window, best panel LM, zlib compressibility) persisted per row. Value = coverage(20,480 in this slice) x power(all four non-English registers control-validated: language-LM d-prime STRICTLY exceeds the English quadgram d-prime on each register's own planted text).",
+ "not_covered": [
+  "Old Norse (native / non-translation): UNAVAILABLE - every Old Norse text in the repo (Poetic Edda, Prose Edda, Volsunga/Njal/Grettis/Heimskringla sagas, Kalevala) is an ENGLISH TRANSLATION; native Old-Icelandic mass is <25 special chars. An English translation is an English LM, not a Norse LM (PREREG red-team #1). NOT modelled - refused to fake.",
+  "Romanized Hebrew: UNAVAILABLE - the Kabbalah texts hold ~18.7k NATIVE-SCRIPT Hebrew characters (unmappable to the Latin-alphabet rune folder) but only isolated romanized proper nouns (Sephiroth, Kether...); no connected romanized-Hebrew body exists in-repo (measured: 2 parenthetical transliterations, ~20 letters). NOT modelled - refused to fake.",
+  "Seeds outside the R20-prior top-40, generators outside round13/B04/ks.py, offsets != 0, deeper R20-prior ranks - the slice is bounded, not the whole B-04 family (identical to C1).",
+  "Decoder transition models beyond beam_decode(max_skip=3): the ONE key-skip relation. INHERITS L7-B (skip_by_two, free drift unrepresentable) - lane C2.",
+  "Non-linguistic payloads (B6 proved undetectable in principle; degenerate null).",
+  "Enochian coverage is thin (~11k letters, the only clean phonetic Angelic corpus in-repo); its LM control-VALIDATED (d-prime 34.4 vs English 7.1 on planted Enochian) so the null over it is sound, but a larger Enochian corpus could tighten it further."
+ ],
+ "positive_control": "passed",
+ "threshold_fixed_in_advance": true,
+ "control_detail": "passed. validate.py 5/5. control.py plants LATIN, romanized GREEK, genuine OLD ENGLISH (>=2 thorn/edh/aesc lines from the bilingual Beowulf, macrons folded), phonetic ENOCHIAN (analysis/foundation/enoch_text.txt), plus EN_MODERN/EN_NOVOWEL/RAND, enciphers under sha256_ctr(CICADA3301)+encipher_keyskip(0.83), decodes with the CORRECT key at beam_decode(400,3). 100% rune-index recovery on every linguistic register (decoder works; only the adjudicator was in question). Each language-aware trigram LM discriminates its OWN planted language BETTER than the English quadgram scorer (d-prime: LATIN 19.9 vs EN 10.1; GREEK 32.9 vs 10.7; OLD_ENGLISH 17.9 vs 7.8; ENOCHIAN 34.4 vs 7.1; EN_NOVOWEL 17.8 vs -1.0). L7-A gap reproduced: the English scorer places genuine Latin (-5.52), Old English (-5.38) and Enochian (-5.83) AT/BELOW the -5.5 publication bar (would reject them) while each language LM places them ~18-34 SD above its noise floor. RAND floor non-discriminating for the LM (d-prime -0.47) - the LM does not reward arbitrary decodes. All four non-English registers VALIDATED and eligible for the real panel; Old Norse and romanized Hebrew UNAVAILABLE (no honest corpus) and dropped.",
+ "threshold": "A decode clears iff its panel-max score (max over the control-validated registers) exceeds BOTH (a) the seed-3301 order-matched wrong-key null MAX for the panel-max statistic and (b) the family-wise threshold_for(N=20,480) bar from benchmark/null.py. The panel-max statistic is computed identically for the observed decodes AND the null, so the null already carries the max-over-registers and the bar is correctly inflated for the WIDENED 5-language panel (no double-max). Bars: EN -4.775, panel-max -1.347. Pass conditions fixed in PREREG.md before scoring (control-pass = language-LM d-prime > English d-prime per register; HIT = clears both null-max and family-wise bar).",
+ "result": {
+  "control": {
+   "trust_anchor_validate_py": "5/5 PASS",
+   "rune_index_recovery": "100% on every linguistic register",
+   "dprime_language_LM_vs_English": {"LATIN": [19.89, 10.11], "GREEK": [32.87, 10.68], "OLD_ENGLISH": [17.94, 7.84], "ENOCHIAN": [34.37, 7.1], "EN_NOVOWEL": [17.79, -1.01], "RAND": [-0.47, 0.03]},
+   "median_correct_EN_score": {"LATIN": -5.523, "OLD_ENGLISH": -5.383, "ENOCHIAN": -5.827, "GREEK": -5.226},
+   "validated_registers": ["ENOCHIAN", "GREEK", "LATIN", "OLD_ENGLISH"],
+   "decisive_scope_finding": "Unlike C1's matched-runic scorer (which corrects ORTHOGRAPHY only and scored 0.00 on vowel-dropped English), a genuinely language-aware trigram LM built from each language's OWN corpus recovers that language far above the English scorer (2-5x d-prime), including the two registers C1 could not model (Old English poetic, Enochian). The language-aware instrument is real and measured."
+  },
+  "readjudication": {
+   "n_decodes": 20480,
+   "null_seed": 3301,
+   "null_panel_max": {"mean": -1.5391, "sd": 0.017, "max": -1.4875},
+   "family_wise_bars": {"en": -4.775, "panel_max": -1.3465},
+   "best_en": {"score": -6.374, "margin_below_bar": -1.60, "label": "seed1357458695|dec|hmac_sha256_ctr|mod29"},
+   "best_panel_max": {"score": -1.4602, "margin_below_bar": -0.1137, "register": "GR", "ioc_n": 1.0317, "min_distinct_32": 16, "compress": 0.8417, "head": "NGDIUYEAXSNBJIAEAEAUCONUJFPGRIAPTYJOENGROOHANTHR"},
+   "per_register_best": {"EN": -1.5022, "LA": -1.7005, "GR": -1.4602, "OE": -1.5929, "EN0": -1.4626},
+   "survivors": {"en": 0, "panel_max": 0}
+  },
+  "red_team": {
+   "verdict": "NO-ERROR-FOUND",
+   "english_translation_trap": "avoided by construction - Old English modelled ONLY from genuine thorn/edh/aesc-bearing poem lines, Enochian ONLY from phonetic Angelic text; Old Norse + Hebrew (translation-only / native-script-only) refused rather than faked.",
+   "unvalidated_dimension_inflation": "prevented - a register failing its control is dropped before the panel-max; all 4 non-English registers here validated, so none added a noisy max term.",
+   "double_max_fp_ceiling": {"english": 0.0101, "panel_max_widened": 0.0101, "alpha_design": 0.01, "note": "widening EN/LA/GR -> +OE +Enochian did NOT inflate the FP rate; identical to C1's 3-language panel and to the alpha=0.01 design, because the seed-3301 null carries the same max-over-registers as the observed statistic."},
+   "seal": "R21-L1 SEAL would apply to any bar-clearer (FLAGGED-FOR-ORACLE, never auto-certified); no survivor to flag."
+  },
+  "decision_relevant": "The English-only adjudicator was NOT structurally hiding a non-English plaintext in the strongest prior B-04 slice. A genuinely language-aware panel spanning Latin, Greek, Old English poetic and Enochian - each control-validated to recover its OWN language 2-5x better than the English scorer - yields ZERO survivors, 0.11 (panel) / 1.60 (EN) score-units below the family-wise bar, on decodes with flat IoC, high min-distinct and incompressible R3 stats. Old English and Latin never even beat the panel noise floor. The negatives HOLD across every non-English language that could be honestly modelled from in-repo corpora. Old Norse (translation-only) and romanized Hebrew (no connected corpus) could NOT be honestly tested and remain not_covered - refused rather than faked."
+ },
+ "reopens_if": "A larger/native Old Norse or connected romanized-Hebrew corpus becomes available in-repo (currently UNAVAILABLE), OR a wider R20-prior depth / non-zero offset / generator outside this slice produces a decode whose language-aware panel score clears the seed-3301 order-matched null max AND the family-wise threshold_for(N) bar. Any survivor is FLAGGED-FOR-ORACLE (R21-L1), never auto-certified.",
+ "supersedes": [],
+ "restates": ["R24-C1-MATCHED-RUNIC-READJUDICATION", "L7-A-SCORER-ENGLISH-ONLY"],
+ "artifacts": [
+  "PREREG.md",
+  "nonenglish_corpus.py",
+  "control.py",
+  "out_control.json",
+  "readjudicate.py",
+  "results.json",
+  "RESULTS.md",
+  "ledger.json"
+ ],
+ "evidence": [
+  "liber-primus/analysis/round24/C1-ext-nonenglish/PREREG.md",
+  "liber-primus/analysis/round24/C1-ext-nonenglish/nonenglish_corpus.py",
+  "liber-primus/analysis/round24/C1-ext-nonenglish/control.py",
+  "liber-primus/analysis/round24/C1-ext-nonenglish/out_control.json",
+  "liber-primus/analysis/round24/C1-ext-nonenglish/readjudicate.py",
+  "liber-primus/analysis/round24/C1-ext-nonenglish/results.json",
+  "liber-primus/analysis/round24/C1-ext-nonenglish/RESULTS.md"
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "summary": {
+  "guard_pass": true,
+  "panelmax_bar_exact_1e6": 7.6341931878728095,
+  "FAKE_hallucination": {
+   "what": "REAL vowel-dropped-English plaintext, correct key, exact preset -- clears the panel-max bar on pmax but the decode does not recover the plaintext",
+   "pmax": 9.29031185075832,
+   "score": -7.500949331413649,
+   "clears_null": true,
+   "true_rune_index_recovery": 0.4375,
+   "preg": "EN_NOVOWEL",
+   "is_hit_strict": false,
+   "strict_reason": "FAIL clause2: rune-index recovery 0.438 < 0.9 (source=truth_idx, preg=EN_NOVOWEL); score -7.501 clears the bar but the DECODE DOES NOT RECOVER -- a hallucinating decode, rejected.",
+   "is_hit_realmode_heldout": false,
+   "realmode_reason": "FAIL clause2: rune-index recovery 0.833 < 0.9 (source=heldout_selfconsistency, preg=EN_NOVOWEL); score -7.501 clears the bar but the DECODE DOES NOT RECOVER -- a hallucinating decode, rejected.",
+   "heldout_recovery": 0.8333333333333334,
+   "REJECTED": true
+  },
+  "REAL_genuine": {
+   "what": "correct key over English plaintext, recovery ~1.0",
+   "pmax": 26.406190035450425,
+   "score": -4.549943389897204,
+   "clears_null": true,
+   "true_rune_index_recovery": 1.0,
+   "preg": "LP1_REAL",
+   "is_hit_strict": true,
+   "strict_reason": "HIT: clears panel-max null AND recovery>=0.90 AND held-out 3/4 reproduces",
+   "is_hit_realmode_heldout": true,
+   "heldout_recovery": 1.0,
+   "ACCEPTED": true
+  }
+ },
+ "fake_src_meta": {
+  "rep": 1,
+  "seed": 501,
+  "pmax": 9.29031185075832,
+  "bar": 7.6341931878728095,
+  "recovery": 0.4375,
+  "preg": "EN_NOVOWEL"
+ },
+ "real_src_meta": {
+  "rep": 0,
+  "seed": 99,
+  "pmax": 26.406190035450425,
+  "bar": 7.6341931878728095,
+  "recovery": 1.0,
+  "preg": "LP1_REAL"
+ }
+}

@@ -1,0 +1,252 @@
+{
+ "lane": "L5-redteam-seal-and-notarerun",
+ "bar_exact_1e6": 7.6341931878728095,
+ "recovery_bar": 0.9,
+ "catch_bar": 0.9,
+ "L": 240,
+ "populations": {
+  "tuning": {
+   "kept": 45,
+   "reps_used": 60,
+   "true_recovery_max": 0.8875
+  },
+  "fresh": {
+   "kept": 45,
+   "reps_used": 74,
+   "true_recovery_max": 0.8958333333333334
+  },
+  "genuine_panel": {
+   "n": 10,
+   "true_recovery_min": 1.0
+  }
+ },
+ "positive_control": {
+  "planted_leaky_proxy": "single-cut 1/4->3/4 (hitfn20 clause-3 mechanism)",
+  "single_cut_catch_fresh": 0.28888888888888886,
+  "single_cut_catch_tuning": 0.3333333333333333,
+  "single_cut_heldouts_fresh": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   0.178,
+   0.028,
+   1.0,
+   1.0,
+   0.044,
+   1.0,
+   0.856,
+   0.006,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   0.867,
+   0.956,
+   0.372,
+   0.594,
+   1.0,
+   0.561,
+   0.039,
+   0.628,
+   1.0,
+   0.022,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   0.956,
+   1.0,
+   0.85,
+   0.906,
+   1.0,
+   1.0
+  ],
+  "expected_leaky_catch_approx": 0.33,
+  "PASS": true,
+  "rule": "PASS iff single-cut catch < 0.90 on the FRESH population (audit can detect a leaky seal on unseen data). If it cannot, the harness is broken -- abort (a)."
+ },
+ "subattack_a_overfit": {
+  "cell_scan": [
+   {
+    "k": 2,
+    "rule": "min",
+    "tuning_catch": 0.4222222222222222,
+    "genuine_false_reject": 0.1
+   },
+   {
+    "k": 2,
+    "rule": "mean",
+    "tuning_catch": 0.4222222222222222,
+    "genuine_false_reject": 0.1
+   },
+   {
+    "k": 3,
+    "rule": "min",
+    "tuning_catch": 0.6666666666666666,
+    "genuine_false_reject": 0.0
+   },
+   {
+    "k": 3,
+    "rule": "mean",
+    "tuning_catch": 0.5555555555555556,
+    "genuine_false_reject": 0.0
+   },
+   {
+    "k": 4,
+    "rule": "min",
+    "tuning_catch": 0.7555555555555555,
+    "genuine_false_reject": 0.2
+   },
+   {
+    "k": 4,
+    "rule": "mean",
+    "tuning_catch": 0.6444444444444445,
+    "genuine_false_reject": 0.0
+   },
+   {
+    "k": 5,
+    "rule": "min",
+    "tuning_catch": 0.8,
+    "genuine_false_reject": 0.2
+   },
+   {
+    "k": 5,
+    "rule": "mean",
+    "tuning_catch": 0.6888888888888889,
+    "genuine_false_reject": 0.2
+   }
+  ],
+  "frozen_cell": {
+   "k": 2,
+   "rule": "min",
+   "tuning_catch": 0.4222222222222222,
+   "genuine_false_reject": 0.1
+  },
+  "tuning_catch": 0.4222222222222222,
+  "fresh_catch": 0.4,
+  "fresh_false_reject": 0.1,
+  "fresh_heldouts": [
+   0.942,
+   1.0,
+   0.783,
+   0.917,
+   1.0,
+   0.85,
+   1.0,
+   1.0,
+   0.833,
+   0.958,
+   1.0,
+   1.0,
+   1.0,
+   0.017,
+   1.0,
+   0.917,
+   0.858,
+   1.0,
+   1.0,
+   0.883,
+   1.0,
+   0.933,
+   0.658,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   0.842,
+   1.0,
+   0.925,
+   0.842,
+   0.017,
+   1.0,
+   1.0,
+   1.0,
+   0.725,
+   0.517,
+   1.0,
+   0.033,
+   0.367,
+   0.933,
+   0.017,
+   0.025,
+   0.5,
+   0.033
+  ],
+  "verdict": "L1-KILL",
+  "note": "NO fold cell reaches >=0.90 catch on the tuning-45 without false-reject >0.10 -> the no-oracle gate is PROVABLY LEAKY (L1 Q5 KILL). Round 21 sweeps report bar-clearing survivors as flagged-for-oracle, never auto-certified. HIT auto-certification WITHHELD."
+ },
+ "subattack_b_notarerun": {
+  "per_cell": {
+   "L3.grb5_mod": {
+    "ledger_entry": "R19-G3",
+    "status_field": "measured",
+    "named_uncovered_at_power": true,
+    "needle": "no key space is cleared"
+   },
+   "L3.grb5_rej": {
+    "ledger_entry": "R19-G3",
+    "status_field": "measured",
+    "named_uncovered_at_power": true,
+    "needle": "no key space is cleared"
+   },
+   "L3.shuffle29": {
+    "ledger_entry": "R19-G3",
+    "status_field": "measured",
+    "named_uncovered_at_power": true,
+    "needle": "no key space is cleared"
+   },
+   "L3.64bit_map": {
+    "ledger_entry": "R19-G3",
+    "status_field": "measured",
+    "named_uncovered_at_power": true,
+    "needle": "i386"
+   },
+   "L4.gen0_full32": {
+    "ledger_entry": "R19-G3-CORRECTION",
+    "status_field": "audit",
+    "named_uncovered_at_power": true,
+    "needle": "still absent, still the one open row"
+   },
+   "L4.gen7_gen8_readjudicate": {
+    "ledger_entry": "R19-G3-CORRECTION",
+    "status_field": "audit",
+    "named_uncovered_at_power": true,
+    "needle": "RIGID decoder"
+   }
+  },
+  "verdict": "NO-ERROR-FOUND",
+  "note": "all 6 L3/L4 cells are named un-measured AT POWER in LEDGER coverage/not_covered (0 decodes cleared / RIGID -12.5 decoder = zero power); none is already power-covered."
+ },
+ "subattack_c_fp_inflation": {
+  "adjudicate_calls_per_decode_in_evaluate": 1,
+  "fold_proxy_touches_pmax_or_screening": false,
+  "sweeps_screened": false,
+  "condition_b_2p5e6_reintroduced": false,
+  "verdict": "NO-ERROR-FOUND",
+  "note": "fold machinery feeds clause-3 recovery only; exactly 1 pmax evaluation per adjudicated decode regardless of k_folds; sweeps unscreened -> condition (b)'s 2.5e6 double-max inflation is NOT re-introduced."
+ },
+ "subattack_d_row_gate": {
+  "is_hit_gates_clears_AND_recovery_AND_heldout": true,
+  "validate_row_v3_rejects_malformed": true,
+  "score_alone_can_be_hit": false,
+  "verdict": "NO-ERROR-FOUND",
+  "note": "every row routes through hitfn20.is_hit which requires clears_null AND recovery>=0.90 AND held-out>=0.90; validate_row_v3 raises on a HIT with clears_null False or held-out<0.90 -- score alone can never be a HIT."
+ },
+ "verdicts": {
+  "a": "L1-KILL",
+  "b": "NO-ERROR-FOUND",
+  "c": "NO-ERROR-FOUND",
+  "d": "NO-ERROR-FOUND"
+ },
+ "overall": "MIXED"
+}

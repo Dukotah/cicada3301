@@ -1,0 +1,39 @@
+{
+ "id": "R24-C2-SKIP-BY-TWO-DECODER",
+ "lane": "round24/C2-skip-by-two",
+ "round": "24",
+ "date": "2026-08-30",
+ "status": "negative",
+ "verdict": "CLEAN NULL (control-validated). Modeling skip_by_two does NOT change the bound: every beam-based negative survives over the skip_by_two transition on the swept top-prior slice. No corrected bound needed for this slice.",
+ "control_validated": true,
+ "power": {
+  "pair_decoder_recovery_on_skip_by_two_plant": 1.0,
+  "beam_recovery_on_same_plant_L7B": 0.258,
+  "note": "pair (keyskip2) recovers 100% at every supp where the beam gets 25.8% (reproduces L7-B -6.90/25.8% to 3 s.f.)"
+ },
+ "coverage": {
+  "words_screened": 245975,
+  "fraction_of_2pow32": 5.727e-05,
+  "prior_words": 433,
+  "prior_plus_neighbourhood": 45975,
+  "dense_baseline": 200000,
+  "decoder": "driftbeam mode=keyskip2 (preset 'pair'), max_skip=8 -- skip_by_two-exact",
+  "generator": "Py2.7 MT19937 init_by_array([w]); reducer random29 (S-G3 generator)",
+  "ciphertext": "lib_numchannel.unsolved(); screen L=120, gate L=240; sign=-1 o=0"
+ },
+ "result": {
+  "hits": 0,
+  "screen_survivors": 18,
+  "max_pmax_over_slice": 5.904,
+  "pair_claim_bar_1e6": 7.384,
+  "best_word_by_pmax": 143516,
+  "redteam_wrong_keys_tested": 4000,
+  "redteam_full_gate_false_positives": 0,
+  "redteam_null_max_pmax": 5.08,
+  "expected_fp_over_slice": "< 1 (essentially 0)"
+ },
+ "threshold": "hitfn20 three-clause gate at the PAIR panel-max bar (I19:driftbeam.pair+I2|pmax|L120), 7.384 at N=1e6 alpha=0.01 -- NEVER -5.5, NEVER another preset's bar. HIT iff pmax>=pair-bar AND rune-index recovery>=0.90 AND held-out-3/4 recovery>=0.90. Frozen in PREREG.md before scoring.",
+ "threshold_fixed_in_advance": true,
+ "reopens_if": "skip_by_two under a generator outside S-G3 (bash/perl/tex/sha256_ctr keytexts/public-pad), seeds outside this 246k slice, or offset != 0 produces a decode clearing the pair panel-max null AND recovery>=0.90 AND held-out>=0.90. Any survivor is FLAGGED-FOR-ORACLE (R21-L1), never auto-certified. Also unaddressed: free_drift/drift_at (permissive preset, not pair).",
+ "artifacts": ["PREREG.md", "control.py", "control.json", "sweep.py", "sweep.jsonl", "redteam.py", "redteam.json", "RESULTS.md", "ledger.json"]
+}

@@ -1,0 +1,375 @@
+{
+ "lane": "round20/P1",
+ "prereg_thresholds": {
+  "survival": 0.9,
+  "reduction": 100.0,
+  "gate_registers": [
+   "LP1_REAL",
+   "LATIN",
+   "OE",
+   "EN_HALFVOWEL"
+  ],
+  "kill_registers": [
+   "CY",
+   "EN_HALFVOWEL"
+  ],
+  "all9": [
+   "EN_MODERN",
+   "EN_KJV",
+   "LP1_REAL",
+   "LATIN",
+   "OE",
+   "DE",
+   "CY",
+   "EN_HALFVOWEL",
+   "EN_NOVOWEL"
+  ]
+ },
+ "cells": [
+  {
+   "file": "pilot_fA1e2_W32.json",
+   "mech": "keyskip",
+   "W": 32,
+   "fA": 0.01,
+   "fB": 0.1,
+   "stageB": "keyskip1",
+   "span": 200000,
+   "ntrials": 15,
+   "survival": {
+    "EN_MODERN": {
+     "A": 0.8,
+     "B": 0.8,
+     "median_reduction": 999.84
+    },
+    "EN_KJV": {
+     "A": 0.8,
+     "B": 0.8,
+     "median_reduction": 999.84
+    },
+    "LP1_REAL": {
+     "A": 0.9333333333333333,
+     "B": 0.9333333333333333,
+     "median_reduction": 999.84
+    },
+    "LATIN": {
+     "A": 0.7333333333333333,
+     "B": 0.7333333333333333,
+     "median_reduction": 999.84
+    },
+    "OE": {
+     "A": 0.8,
+     "B": 0.8,
+     "median_reduction": 999.84
+    },
+    "DE": {
+     "A": 0.8,
+     "B": 0.8,
+     "median_reduction": 999.84
+    },
+    "CY": {
+     "A": 0.6666666666666666,
+     "B": 0.6666666666666666,
+     "median_reduction": 999.84
+    },
+    "EN_HALFVOWEL": {
+     "A": 0.6666666666666666,
+     "B": 0.6666666666666666,
+     "median_reduction": 999.84
+    },
+    "EN_NOVOWEL": {
+     "A": 0.8666666666666667,
+     "B": 0.8,
+     "median_reduction": 999.84
+    },
+    "RAND": {
+     "A": 0.0,
+     "B": 0.0,
+     "median_reduction": 999.84
+    }
+   },
+   "verdict": "SHORTFALL",
+   "detail": {
+    "reduction_min_over_registers": 999.84,
+    "reduction_pass": true,
+    "all9_survival_pass": false,
+    "gate_survival_pass": false,
+    "kill_survival_pass": false,
+    "worst_register": "CY",
+    "worst_survival": 0.6666666666666666,
+    "CY_survival": 0.6666666666666666,
+    "EN_HALFVOWEL_survival": 0.6666666666666666
+   }
+  },
+  {
+   "file": "pilot_keyskip.json",
+   "mech": "keyskip",
+   "W": 32,
+   "fA": 0.001,
+   "fB": 0.1,
+   "stageB": "keyskip1",
+   "span": 200000,
+   "ntrials": 15,
+   "survival": {
+    "EN_MODERN": {
+     "A": 0.6,
+     "B": 0.6,
+     "median_reduction": 9998.4
+    },
+    "EN_KJV": {
+     "A": 0.7333333333333333,
+     "B": 0.7333333333333333,
+     "median_reduction": 9998.4
+    },
+    "LP1_REAL": {
+     "A": 0.9333333333333333,
+     "B": 0.9333333333333333,
+     "median_reduction": 9998.4
+    },
+    "LATIN": {
+     "A": 0.6666666666666666,
+     "B": 0.6666666666666666,
+     "median_reduction": 9998.4
+    },
+    "OE": {
+     "A": 0.8,
+     "B": 0.8,
+     "median_reduction": 9998.4
+    },
+    "DE": {
+     "A": 0.8,
+     "B": 0.8,
+     "median_reduction": 9998.4
+    },
+    "CY": {
+     "A": 0.6666666666666666,
+     "B": 0.6666666666666666,
+     "median_reduction": 9998.4
+    },
+    "EN_HALFVOWEL": {
+     "A": 0.5333333333333333,
+     "B": 0.5333333333333333,
+     "median_reduction": 9998.4
+    },
+    "EN_NOVOWEL": {
+     "A": 0.8,
+     "B": 0.7333333333333333,
+     "median_reduction": 9998.4
+    },
+    "RAND": {
+     "A": 0.0,
+     "B": 0.0,
+     "median_reduction": 9998.4
+    }
+   },
+   "verdict": "SHORTFALL",
+   "detail": {
+    "reduction_min_over_registers": 9998.4,
+    "reduction_pass": true,
+    "all9_survival_pass": false,
+    "gate_survival_pass": false,
+    "kill_survival_pass": false,
+    "worst_register": "EN_HALFVOWEL",
+    "worst_survival": 0.5333333333333333,
+    "CY_survival": 0.6666666666666666,
+    "EN_HALFVOWEL_survival": 0.5333333333333333
+   }
+  },
+  {
+   "file": "pilot_sbt_drift.json",
+   "mech": "skip_by_two",
+   "W": 32,
+   "fA": 0.001,
+   "fB": 0.5,
+   "stageB": "drift",
+   "span": 200000,
+   "ntrials": 12,
+   "survival": {
+    "LP1_REAL": {
+     "A": 1.0,
+     "B": 1.0,
+     "median_reduction": 1999.68
+    },
+    "LATIN": {
+     "A": 0.75,
+     "B": 0.6666666666666666,
+     "median_reduction": 1999.68
+    },
+    "OE": {
+     "A": 0.5833333333333334,
+     "B": 0.5833333333333334,
+     "median_reduction": 1999.68
+    },
+    "CY": {
+     "A": 0.6666666666666666,
+     "B": 0.6666666666666666,
+     "median_reduction": 1999.68
+    },
+    "EN_HALFVOWEL": {
+     "A": 0.6666666666666666,
+     "B": 0.6666666666666666,
+     "median_reduction": 1999.68
+    },
+    "EN_NOVOWEL": {
+     "A": 0.8333333333333334,
+     "B": 0.6666666666666666,
+     "median_reduction": 1999.68
+    },
+    "RAND": {
+     "A": 0.0,
+     "B": 0.0,
+     "median_reduction": 1999.68
+    }
+   },
+   "verdict": "SHORTFALL",
+   "detail": {
+    "reduction_min_over_registers": 1999.68,
+    "reduction_pass": true,
+    "all9_survival_pass": false,
+    "gate_survival_pass": false,
+    "kill_survival_pass": false,
+    "worst_register": "OE",
+    "worst_survival": 0.5833333333333334,
+    "CY_survival": 0.6666666666666666,
+    "EN_HALFVOWEL_survival": 0.6666666666666666
+   }
+  },
+  {
+   "file": "pilot_sbt_keyskip1.json",
+   "mech": "skip_by_two",
+   "W": 32,
+   "fA": 0.01,
+   "fB": 0.5,
+   "stageB": "keyskip1",
+   "span": 200000,
+   "ntrials": 15,
+   "survival": {
+    "EN_MODERN": {
+     "A": 0.7333333333333333,
+     "B": 0.7333333333333333,
+     "median_reduction": 199.968
+    },
+    "EN_KJV": {
+     "A": 0.8,
+     "B": 0.8,
+     "median_reduction": 199.968
+    },
+    "LP1_REAL": {
+     "A": 0.9333333333333333,
+     "B": 0.9333333333333333,
+     "median_reduction": 199.968
+    },
+    "LATIN": {
+     "A": 0.7333333333333333,
+     "B": 0.6666666666666666,
+     "median_reduction": 199.968
+    },
+    "OE": {
+     "A": 0.8,
+     "B": 0.7333333333333333,
+     "median_reduction": 199.968
+    },
+    "DE": {
+     "A": 0.8,
+     "B": 0.8,
+     "median_reduction": 199.968
+    },
+    "CY": {
+     "A": 0.7333333333333333,
+     "B": 0.7333333333333333,
+     "median_reduction": 199.968
+    },
+    "EN_HALFVOWEL": {
+     "A": 0.6666666666666666,
+     "B": 0.6666666666666666,
+     "median_reduction": 199.968
+    },
+    "EN_NOVOWEL": {
+     "A": 0.8,
+     "B": 0.6666666666666666,
+     "median_reduction": 199.968
+    },
+    "RAND": {
+     "A": 0.0,
+     "B": 0.0,
+     "median_reduction": 199.968
+    }
+   },
+   "verdict": "SHORTFALL",
+   "detail": {
+    "reduction_min_over_registers": 199.968,
+    "reduction_pass": true,
+    "all9_survival_pass": false,
+    "gate_survival_pass": false,
+    "kill_survival_pass": false,
+    "worst_register": "LATIN",
+    "worst_survival": 0.6666666666666666,
+    "CY_survival": 0.7333333333333333,
+    "EN_HALFVOWEL_survival": 0.6666666666666666
+   }
+  }
+ ],
+ "best_min(CY,HALFVOWEL)_at>=100x": 0.6666666666666666,
+ "OVERALL_VERDICT": "INFEASIBLE",
+ "c2_english_only_baseline": {
+  "EN_KJV": 0.8,
+  "EN_MODERN": 0.7666666666666667,
+  "LP1_REAL": 0.7666666666666667,
+  "LATIN": 0.7,
+  "OE": 0.6,
+  "DE": 0.6333333333333333,
+  "CY": 0.3,
+  "EN_HALFVOWEL": 0.06666666666666667,
+  "EN_NOVOWEL": 0.0,
+  "RAND": 0.0
+ },
+ "p1_best_multireg_survival_at>=100x": {
+  "EN_MODERN": 0.8,
+  "EN_KJV": 0.8,
+  "LP1_REAL": 1.0,
+  "LATIN": 0.7333333333333333,
+  "OE": 0.8,
+  "DE": 0.8,
+  "CY": 0.7333333333333333,
+  "EN_HALFVOWEL": 0.6666666666666666,
+  "EN_NOVOWEL": 0.8,
+  "RAND": 0.0
+ },
+ "improvement_table": {
+  "EN_MODERN": {
+   "C2_english_only": 0.7666666666666667,
+   "P1_multireg_best": 0.8
+  },
+  "EN_KJV": {
+   "C2_english_only": 0.8,
+   "P1_multireg_best": 0.8
+  },
+  "LP1_REAL": {
+   "C2_english_only": 0.7666666666666667,
+   "P1_multireg_best": 1.0
+  },
+  "LATIN": {
+   "C2_english_only": 0.7,
+   "P1_multireg_best": 0.7333333333333333
+  },
+  "OE": {
+   "C2_english_only": 0.6,
+   "P1_multireg_best": 0.8
+  },
+  "DE": {
+   "C2_english_only": 0.6333333333333333,
+   "P1_multireg_best": 0.8
+  },
+  "CY": {
+   "C2_english_only": 0.3,
+   "P1_multireg_best": 0.7333333333333333
+  },
+  "EN_HALFVOWEL": {
+   "C2_english_only": 0.06666666666666667,
+   "P1_multireg_best": 0.6666666666666666
+  },
+  "EN_NOVOWEL": {
+   "C2_english_only": 0.0,
+   "P1_multireg_best": 0.8
+  }
+ }
+}

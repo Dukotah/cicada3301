@@ -1,6 +1,16 @@
 # PICKUP-HERE — where the work left off
 
-_Updated **2026-08-26**. Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
+> ### ⚠️ SUPERSEDED AS THE CURRENT STATE — 2026-08-31
+>
+> This root-level file is **frozen at Round 18 (2026-08-26)** and is kept as the historical
+> entry point for everything up to that round. The **live** pickup document — current through
+> Round 25 (the hint-channel reads, the L7-A/L7-B discharge, and the parked Py2.7 seed grind) —
+> is **[`liber-primus/PICKUP-HERE.md`](liber-primus/PICKUP-HERE.md)**. Start there.
+> Everything below remains true *as of Round 18*; where a later round overturned an item, the
+> live file and [`liber-primus/ELIMINATION-LEDGER.md`](liber-primus/ELIMINATION-LEDGER.md) name
+> the round that closed it.
+
+_Updated **2026-08-26** (frozen; see the banner above). Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
 
 > ### ⚠️ READ THIS BEFORE ANYTHING ELSE (2026-08-26)
 >

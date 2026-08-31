@@ -1,0 +1,72 @@
+{
+ "id": "R24-C2-EXT-SKIP-GENERATORS",
+ "lane": "round24/C2-ext-skip-generators",
+ "round": "24",
+ "date": "2026-08-30",
+ "status": "negative",
+ "verdict": "CLEAN NULL on all 7 axes (8/8 positive controls validated). Broadening the skip_by_two audit beyond C2's Py2.7 offset-0 slice -- to bash $RANDOM, perl, tex (pgf+lcg), the full sha256_ctr keytext dictionary, non-zero Py2.7 offsets, and the continuous free_drift/drift_at cousin -- REOPENS NOTHING. L7-B closes across generators/offsets/drift-cousin too, FOR THE SWEPT PRIOR-DENSE SLICES (partial coverage, not full-space closure of any generator).",
+ "control_validated": true,
+ "power": {
+  "pair_decoder_recovery_on_skip_by_two": {
+   "A1_bash": 1.0, "A2_perl": 1.0, "A3t_texpgf": 1.0, "A3l_texlcg": 1.0,
+   "A4_sha": 1.0, "A5_py27off": 1.0
+  },
+  "drift_decoder_recovery_on_continuous_cousin": {"free_drift": 0.983, "drift_at": 0.983},
+  "beam_recovery_on_same_plants_range": "0.10-0.33",
+  "note": "each axis' decoder recovers >=0.90 on the axis' own-generator plant where the beam (keyskip1) gets 10-33%"
+ },
+ "coverage": {
+  "total_keys_screened": 113432,
+  "per_axis": {
+   "A1_bash": {"keys": 20487, "frac_of_2pow32": 4.77e-06, "coverage": "partial"},
+   "A2_perl": {"keys": 20487, "frac_of_2pow32": 4.77e-06, "coverage": "partial"},
+   "A3t_texpgf": {"keys": 24418, "frac_of_2pow31": 1.14e-05, "coverage": "partial"},
+   "A3l_texlcg": {"keys": 24418, "frac_of_2pow31": 1.14e-05, "coverage": "partial"},
+   "A4_sha": {"keys": 2165, "coverage": "FULL over the B04 seed dictionary"},
+   "A5_py27off": {"keys": 1024, "note": "top-64 seeds x offsets 1..16", "coverage": "partial"},
+   "A6_py27": {"keys": 20433, "frac_of_2pow32": 4.76e-06, "coverage": "partial", "decoder": "drift"}
+  },
+  "decoders": {
+   "pair": "driftbeam mode=keyskip2 (skip_by_two-exact) -- axes A1-A5",
+   "drift": "driftbeam mode=permissive lam=12 (free_drift/drift_at cousin) -- axis A6"
+  },
+  "ciphertext": "lib_numchannel.unsolved(); screen L=120, gate L=240; sign=-1"
+ },
+ "result": {
+  "hits": 0,
+  "screen_survivors_total": 1811,
+  "max_pmax_pair_axes": 5.715,
+  "pair_claim_bar_1e6": 7.384,
+  "max_stageb_pmax_A6_drift": 9.287,
+  "drift_claim_bar_1e6": 13.842,
+  "survivors_clearing_claim_bar": 0,
+  "closest_candidate": "A6 drift seed 4437 pmax 9.287 rec 0.911 held 0.911 -- 4.6 below the 13.842 drift claim bar, inside the wrong-key null tail",
+  "redteam_wrong_keys_per_axis": 2000,
+  "redteam_full_gate_FP_any_axis": 0,
+  "expected_FP_over_slice": "~0 (P(wrong clears full gate) < 1/2000 on every axis)"
+ },
+ "not_covered": [
+  "The full 2^32 (bash/perl/py27) and 2^31 (tex) seed tails -- compute-only, explicitly out of scope (PREREG 0); only the prior-dense slice + a 20k dense tail was swept per generator.",
+  "Py2.7 offsets beyond o=16 or seeds beyond the top-64; free_drift q / drift_at ndrift regimes beyond the control settings.",
+  "public-pad skip_by_two: excluded by construction -- a public pad has no seed to enumerate.",
+  "Decoder transition models beyond pair (keyskip2) and drift (permissive): those are the two the beam cannot represent; other relations remain L7-B-open."
+ ],
+ "positive_control": "passed (8/8 axes; control_ext.json)",
+ "threshold_fixed_in_advance": true,
+ "threshold": "HIT iff pmax clears the axis' panel-max claim bar (pair=7.384, drift=13.842 at N=1e6, alpha=0.01) AND rune-index recovery>=0.90 (held-out self-consistency on a real candidate) AND held-out 3/4 recovery>=0.90 under the same key -- hitfn20's three-clause gate, per axis' preset. Screen bar 5.0 << claim bar (promotion only).",
+ "reopens_if": "a prior-plausible key under bash/perl/tex/sha/py27 (skip_by_two, pair decoder) or the free_drift/drift_at cousin (drift decoder) clears the axis' three-clause claim-bar gate on the unsolved LP2 ciphertext -- i.e. a broader/deeper sweep of the same axis with the same committed scripts finds a survivor that clears the claim bar (none did over 113,432 keys).",
+ "supersedes": [],
+ "restates": ["R24-C2-SKIP-BY-TWO-DECODER"],
+ "artifacts": [
+  "analysis/round24/C2-ext-skip-generators/PREREG.md",
+  "analysis/round24/C2-ext-skip-generators/axes.py",
+  "analysis/round24/C2-ext-skip-generators/control_ext.py",
+  "analysis/round24/C2-ext-skip-generators/control_ext.json",
+  "analysis/round24/C2-ext-skip-generators/sweep_ext.py",
+  "analysis/round24/C2-ext-skip-generators/sweep_ext.json",
+  "analysis/round24/C2-ext-skip-generators/redteam_ext.py",
+  "analysis/round24/C2-ext-skip-generators/redteam_ext.json",
+  "analysis/round24/C2-ext-skip-generators/RESULTS.md"
+ ],
+ "evidence": "Extends R24-C2 one-for-one: same control-validated pair (keyskip2) decoder for axes A1-A5, plus the drift (permissive) decoder for the continuous free_drift/drift_at cousin (A6). 8/8 positive controls validated (pair 100% skip_by_two recovery, drift 98.3% free_drift/drift_at recovery, beam 10-33% on all). Sweep of the prior-dense slice of each OPEN axis: 0 hits over 113,432 keys; max pair-axis pmax 5.715 vs 7.384 bar; A6 drift best stage-B pmax 9.287 vs 13.842 bar. R6 red-team seed-3301 wrong-key null (2000/axis) under the same decoders: 0/2000 clear the full gate on every axis. Standing OTP-class verdict for LP2 0-54 UNCHANGED; this is a closure/coverage extension, not a new finding. Partial coverage flagged: bash/perl/tex full seed tails are compute-only and out of scope."
+}

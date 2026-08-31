@@ -1,0 +1,31 @@
+{
+ "date": "2026-08-28",
+ "objective": "off-repo mirror search for LP source PDF/PS with text layer or embedded runic font subset (L1 NC-6: outside world was unsearched)",
+ "mirrors_checked": {
+  "iBotPeaches/cicada_3301": {
+   "tree_entries_reachable": "full tree (truncated=false)",
+   "doc_font_assets": 0,
+   "note": "images + .asc keys + .gpg only; ZERO pdf/ps/tex/ttf/otf"
+  },
+  "micheloosterhof/cicada-2014": {"doc_font_assets": 0},
+  "micheloosterhof/cicada-2016": {"doc_font_assets": 0},
+  "krisyotam/cicada3301": {
+   "tree_entries_reachable": 4507,
+   "doc_source_assets_pdf_ps_tex": 351,
+   "note": "all PDFs are the already-vendored cijhho archive: solver write-ups, saved Wikipedia pages, 4chan/media captures. No LP source. runeslatin.pdf = solver transliteration tool (CIDFont+F1/F2/F3, no subset tag, non-runic, Latin text layer). '2014 - What Happened Part 2; Liber Primus' = Word-authored write-up, standard Windows fonts (Times/Arial/Courier/Wingdings), 0 runic text-layer chars."
+  },
+  "archive.org": {
+   "query_liber_primus_pdf": {"numFound": 0},
+   "item_liber-primus": {
+    "files": "Liber Primus.zip (9.09 MB) + torrent/metadata only",
+    "zip_contents": "64 files: 58 liberprimus_N.jpg (re-encoded published pages) + 1 mp3 + cover/title/chapter1 webp + liberprimus_key.jpg",
+    "doc_font_source_assets": 0,
+    "note": "derivative repackaging of the published 58 JPEGs; NOT a pre-render source document"
+   },
+   "item_cicada_202405": {"doc_font_source_assets": 0}
+  }
+ },
+ "verdict": "NEGATIVE. No surviving LP source PDF/PS with a text layer or an embedded runic font subset exists in the local corpus (195 distinct PDFs) or reachable across the 4 named mirrors. The only real-world runic font subset found in the ENTIRE corpus is in a 2023 academic runic-epigraphy paper (FAAAAA+RunlittBUnicode, GAAAAA+RunlittA-Bold, HAAAAA+Gullhornet) unrelated to LP2 (2014). L1 NC-6 is upheld and extended from local-only to local+off-repo-mirrors.",
+ "coverage": "local: 195/195 distinct PDFs (545 paths, 350 dup). mirrors: iBotPeaches full tree, micheloosterhof 2 repos full, krisyotam full tree (4507 entries, 351 doc assets all matching local), IA 2 LP-relevant items fully inspected incl. the 9MB zip.",
+ "archival_bound": "As of 2026-08-28, no Liber Primus typeset source document (PDF/PostScript with a runic text layer or embedded runic /BaseFont subset) is reachable in the repo's known-mirror set. The published artifact remains image-only (58 JPEGs), consistent with L1's Ghostscript->ImageMagick render chain, with the pre-render source not published anywhere reachable. S-TEX stays rank 5 (no font-subset promotion trigger fired)."
+}

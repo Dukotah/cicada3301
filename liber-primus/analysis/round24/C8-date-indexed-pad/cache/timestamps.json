@@ -1,0 +1,72 @@
+{
+ "corpus": "data/scream314_lp.md",
+ "n_signed_blocks": 8,
+ "signed_blocks": [
+  {
+   "section": "Liber Primus - 00.jpg",
+   "line": 62,
+   "sig_version": 4,
+   "sig_creation_unix": 1389064601,
+   "sig_creation_utc": "2014-01-07T03:16:41Z"
+  },
+  {
+   "section": "Runes - 01.jpg",
+   "line": 175,
+   "sig_version": 4,
+   "sig_creation_unix": 1389064604,
+   "sig_creation_utc": "2014-01-07T03:16:44Z"
+  },
+  {
+   "section": "Intus - 02.jpg",
+   "line": 243,
+   "sig_version": 4,
+   "sig_creation_unix": 1389064608,
+   "sig_creation_utc": "2014-01-07T03:16:48Z"
+  },
+  {
+   "section": "03.jpg",
+   "line": 814,
+   "sig_version": 4,
+   "sig_creation_unix": 1389332574,
+   "sig_creation_utc": "2014-01-10T05:42:54Z"
+  },
+  {
+   "section": "10.jpg - index.1.jpg",
+   "line": 1149,
+   "sig_version": 4,
+   "sig_creation_unix": 1390117197,
+   "sig_creation_utc": "2014-01-19T07:39:57Z"
+  },
+  {
+   "section": "11.jpg - index.2.jpg",
+   "line": 1215,
+   "sig_version": 4,
+   "sig_creation_unix": 1390117182,
+   "sig_creation_utc": "2014-01-19T07:39:42Z"
+  },
+  {
+   "section": "12.jpg - index.3.jpg",
+   "line": 1281,
+   "sig_version": 4,
+   "sig_creation_unix": 1390117190,
+   "sig_creation_utc": "2014-01-19T07:39:50Z"
+  },
+  {
+   "section": "13.jpg - index.4.jpg",
+   "line": 1358,
+   "sig_version": 4,
+   "sig_creation_unix": 1390117197,
+   "sig_creation_utc": "2014-01-19T07:39:57Z"
+  }
+ ],
+ "decrypt_target": {
+  "file": "data/krisyotam_runes.txt",
+  "n_pages": 57,
+  "note": "%-delimited; pages 0-54 unsolved runic ciphertext, last 2 solved. NONE of these runic pages carries a PGP signature block."
+ },
+ "premise1_verdict": "FAIL for decrypt target: all signatures cover intro/index PROSE or JPEG-hash wrappers; NO unsolved runic ciphertext page carries a PGP signature block. There is no per-page timestamp to index a dated pad by.",
+ "premise2_verdict": "dates covered: all sig-creation times are Jan-2014, after NIST Beacon genesis 2013-09-05; Bitcoin covers a fortiori. MOOT because premise1 fails.",
+ "beacon_genesis_unix": 1378395540,
+ "min_sig_unix": 1389064601,
+ "all_after_beacon_genesis": true
+}

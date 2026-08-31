@@ -1,0 +1,173 @@
+{
+ "aborted": false,
+ "poscontrol_PASS": true,
+ "poscontrol": {
+  "is_hit_strict": true,
+  "is_hit_realmode": true,
+  "rank1_among_wrong_keys": true,
+  "plant_pmax": 29.870538673887435,
+  "bar_exact_1e6": 7.6341931878728095,
+  "true_recovery": 1.0,
+  "wrong_keys_checked": 55,
+  "wrong_keys_beating_plant": 0
+ },
+ "negative_control": {
+  "found": true,
+  "pmax": 19.114413976725697,
+  "true_recovery": 0.7458333333333333,
+  "heldout_recovery": 1.0,
+  "is_hit_strict": false,
+  "is_hit_realmode": true,
+  "rejected": true,
+  "rejected_realmode": false
+ },
+ "heldout_proxy_audit": {
+  "n_en_novowel_hallucinations": 45,
+  "realmode_proxy_caught": 15,
+  "realmode_proxy_MISSED": 30,
+  "realmode_catch_rate": 0.3333333333333333,
+  "strict_mode_catch_rate": 1.0,
+  "heldout_recoveries_of_hallucinations": [
+   1.0,
+   1.0,
+   0.922,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   0.361,
+   0.878,
+   0.772,
+   0.639,
+   1.0,
+   1.0,
+   0.211,
+   1.0,
+   0.917,
+   0.117,
+   1.0,
+   1.0,
+   1.0,
+   0.228,
+   0.661,
+   0.744,
+   1.0,
+   0.55,
+   1.0,
+   0.033,
+   1.0,
+   1.0,
+   0.039,
+   0.867,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   0.422,
+   1.0,
+   1.0,
+   0.928,
+   0.211,
+   1.0,
+   1.0
+  ],
+  "finding": "The HITFN real-mode held-out self-consistency proxy is LEAKY on this lane's keyskip relation: it catches only 15/45 EN_NOVOWEL hallucinations (the rest reproduce their own wrong decode consistently on the held-out 3/4). STRICT mode (truth) catches 100%. On a REAL survivor no truth exists, so a survivor clearing the bar cannot be certified a HIT on the real-mode proxy alone -- clears_null is reported, is_hit is NOT trusted as a solve without strict recovery. This RE-OPENS red-team defect (d) at the deployable operating point."
+ },
+ "n_survivor_keys": 250,
+ "n_adjudications": 487,
+ "presets": [
+  "exact",
+  "drift"
+ ],
+ "L": 240,
+ "n_is_hit": 0,
+ "any_hit": false,
+ "best_survivor": {
+  "pmax": 7.985713191600917,
+  "row": {
+   "_stage": "B",
+   "seed": "firfumferenfe",
+   "gen": "sha1_chain",
+   "red": "mod29",
+   "sign": -1,
+   "atbash": 1,
+   "dir": "fwd",
+   "offset": 16,
+   "score": -6.353707980067622
+  },
+  "preset": "drift",
+  "recovery": 1.0,
+  "heldout": 1.0,
+  "bar": 13.84190459286581,
+  "preg": "EN_MODERN",
+  "clears_null": false,
+  "is_hit": false
+ },
+ "clears_null_by_register": {
+  "CY": [
+   0,
+   39
+  ],
+  "DE": [
+   0,
+   16
+  ],
+  "EN_HALFVOWEL": [
+   0,
+   39
+  ],
+  "EN_KJV": [
+   0,
+   83
+  ],
+  "EN_MODERN": [
+   0,
+   121
+  ],
+  "EN_NOVOWEL": [
+   0,
+   6
+  ],
+  "LATIN": [
+   0,
+   25
+  ],
+  "LP1_REAL": [
+   0,
+   62
+  ],
+  "OE": [
+   0,
+   96
+  ]
+ },
+ "n_clears_null_total": 0,
+ "payload_resolved_reseed": {
+  "skipped": false,
+  "sha256_payload": "3b9b07d9a26e6d55c432d94d2661fdff3c2b348daed06821f2bdb23184a4b290",
+  "n_adjudications": 96,
+  "n_is_hit": 0,
+  "any_hit": false,
+  "best": {
+   "seed": "first32",
+   "gen": "sha512_ctr",
+   "red": "rej29",
+   "sign": -1,
+   "preset": "drift",
+   "pmax": 8.1412,
+   "bar": 13.8419,
+   "clears_null": false,
+   "recovery": 1.0,
+   "is_hit": false
+  },
+  "changed_bytes": [
+   45,
+   50,
+   246
+  ]
+ },
+ "coverage_note": "150 stored survivor keys (Stage A/B/C top-50 + Stage-D) re-adjudicated under 2 presets = 487 adjudications. This is the RECOVERABLE fraction of the ~1,312 repo-wide English-argmax rows R1 D-iii names; the rest were either not stored with keys (R17 partial) or fall in the coverage HOLE R1 D-iii proves: B-04's -6.412 cutoff excluded any true skip_by_two key (scores -6.718, 0.31 below), so those keys were NEVER stored and cannot be re-adjudicated here."
+}

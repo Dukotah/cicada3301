@@ -1,0 +1,41 @@
+{
+ "id": "R24-C8-DATE-INDEXED-PAD",
+ "lane": "round24/C8-date-indexed-pad",
+ "round": "24",
+ "date": "2026-08-30",
+ "status": "measured",
+ "hypothesis": "A public dated random source (NIST Randomness Beacon v1 / dated block headers) is the OTP, JOINED to each page by that page's own PGP signature CREATION TIME -- a join key R17-PUBLIC-PAD never used (it swept beacon/blockchain as undated contiguous offsets only). Reduced-scope C8 survivor of Round-24 Gate-#1; needs a bounded external fetch, post-2013-09 pages only.",
+ "verdict": "UNAVAILABLE by premise. Step 0 shows the join key does not exist for the decrypt target: enumerating every PGP-signed Cicada artifact in data/scream314_lp.md yields exactly 8 clearsigned blocks (all key 7A35090F, GnuPG 1.4.11, all Jan-2014), and ALL 8 sign intro/index PROSE or JPEG-hash wrappers -- NONE of the unsolved LP2 runic ciphertext pages (data/krisyotam_runes.txt, 0-54) carries any PGP signature. The runic pages were distributed as a book/PDF with no per-page timestamp to index a dated pad by. Premise-2 (dates covered) PASSES -- all 8 timestamps postdate NIST Beacon genesis 2013-09-05 and the v1 legacy REST endpoint serves the real 2014 records -- but is MOOT. No timestamp->page mapping was fabricated. The PIPELINE was still built and CONTROL-VALIDATED, and the fullest defensible steelman probe returned a clean control-validated null.",
+ "positive_control": "passed",
+ "control_detail": "run_c8.py::positive_control -- Cicada-register English enciphered with a REAL beacon-derived pad (mod29 over concatenated consecutive v1 outputValues from the signing minute) UNDER the anti-repeat key-skip filter (skipdecode.encipher_keyskip supp=0.83, the R17 control model), planted at deep offset o=137, decoded via hitfn20 (driftbeam + 9-register panel-max + recovery>=0.90 + held-out-3/4). RIGHT date: recovery 1.000, held-out 1.000, pmax 29.44 vs bar 4.87, HIT=True. WRONG date (2014-01-19 real pulse): recovery 0.032. WRONG source (seed-3301 pad): recovery 0.032. Two pipeline bugs caught by the control before any verdict: (1) plain-additive encipherment with no filter desyncs the beam to 0.28-0.50; (2) tiling a single 512-bit pulse desyncs across the tile boundary. Both fixed.",
+ "threshold_fixed_in_advance": true,
+ "threshold": "hitfn20 three-clause gate at the per-row panel-max bar (never -5.5): HIT iff pmax>=panelmax_bar AND rune-index recovery>=0.90 AND held-out-3/4 recovery>=0.90. Frozen in PREREG.md before any fetch/decode. Steelman probe best row pmax 3.79 vs bar 7.63, recovery 0.594.",
+ "coverage": {
+  "premise_check": "all 8 PGP signature creation times enumerated + parsed from data/scream314_lp.md (step0_timestamps.py); decrypt target = data/krisyotam_runes.txt (LP2 0-54).",
+  "beacon_source": "NIST Beacon v1 legacy REST (reachable, User-Agent required); v2 API clamps to 2018 chain-1 (R17 caveat) so v1-legacy used; <=16 records fetched + cached.",
+  "positive_control": "1 plant, encipher-under-filter, right/wrong-date, wrong-source; recovery 1.000/0.032/0.032.",
+  "steelman_probe": "630 tests = 15 solved rune pages x 7 distinct sig timestamps x 6 R17 builders (mod29/hi_nibble/lo_nibble/byte_scaled/prime_to_idx/nibbles), pad capped at one pulse's rune length (no tiling), page runes treated as ciphertext indexed by timestamp."
+ },
+ "not_covered": "The join cannot be applied to the decrypt target because those pages carry no timestamp -- this is the finding, not a coverage gap. An EXTERNAL per-page timestamp for the LP2 rune-page images (e.g. verifiable original-upload dates of individual onion7 pages, if they were ever posted separately) is not held in-repo and would be an OSINT-provenance question; ARMADA-20-FINDINGS #21 evidences the rune pages were distributed as a single book/PDF, not individually dated. Also uncovered (as in R17): non-contiguous / decimated / XORed beacon constructions, dated Bitcoin headers, random.org and Marsaglia dated sources -- but all are moot here for the same reason (no index).",
+ "result": {
+  "n_signed_blocks": 8,
+  "signed_all_on_prose_or_jpeghash_wrappers": true,
+  "unsolved_runic_pages_with_signature": 0,
+  "all_sig_ts_after_beacon_genesis": true,
+  "min_sig_unix": 1389064601,
+  "control_right_date_recovery": 1.0,
+  "control_wrong_date_recovery": 0.032,
+  "control_wrong_source_recovery": 0.032,
+  "probe_tests": 630,
+  "probe_survivors_flagged_for_oracle": 0,
+  "probe_expected_fp_alpha0.01": 6.3,
+  "probe_best_pmax": 3.79,
+  "probe_best_pmax_bar": 7.63,
+  "probe_best_recovery": 0.594
+ },
+ "reopens_if": "an EXTERNAL, verifiable per-page timestamp for the LP2 rune ciphertext pages 0-54 is discovered (original individual-upload dates of the onion7 page images), providing the join key this lane found absent. Then index the beacon/dated-block value at-or-immediately-before that timestamp as keystream and run the hitfn20 gate; any survivor is FLAGGED-FOR-ORACLE, never auto-certified (and remains only suggestive because PGP/upload timestamps are settable). Absent such an external index, C8 is closed.",
+ "supersedes": [],
+ "restates": ["R17-PUBLIC-PAD"],
+ "artifacts": ["PREREG.md", "step0_timestamps.py", "run_c8.py", "cache/timestamps.json", "results.json", "RESULTS.md", "ledger.json"],
+ "evidence": ["analysis/round24/C8-date-indexed-pad/PREREG.md", "analysis/round24/C8-date-indexed-pad/step0_timestamps.py", "analysis/round24/C8-date-indexed-pad/run_c8.py", "analysis/round24/C8-date-indexed-pad/cache/timestamps.json", "analysis/round24/C8-date-indexed-pad/results.json", "analysis/round24/C8-date-indexed-pad/RESULTS.md"]
+}

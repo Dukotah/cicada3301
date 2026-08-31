@@ -1,0 +1,183 @@
+{
+ "id": "R21-L5-REDTEAM-SEAL",
+ "lane": "L5-redteam-seal-and-notarerun",
+ "round": 21,
+ "date": "2026-08-29",
+ "role": "red-team (doctrine R6) \u2014 audits THIS round's own claims; verdict FOUND-ERROR / NO-ERROR-FOUND",
+ "trust_anchor": "tests/validate.py = ALL VALIDATIONS PASSED (5/5) before lane",
+ "overall": "MIXED",
+ "deterministic": true,
+ "positive_control": {
+  "planted_leaky_proxy": "single-cut 1/4->3/4 (hitfn20 clause-3 mechanism)",
+  "PASS": true,
+  "single_cut_catch_fresh": 0.28888888888888886,
+  "single_cut_catch_tuning": 0.3333333333333333,
+  "on_disk_baseline": "15/45 = 0.333 (round20 S-RESCOPE out_heldout_proxy_audit.json)",
+  "rule": "PASS iff single-cut catch < 0.90 on FRESH population; validates audit before it is trusted"
+ },
+ "verdicts": {
+  "a": "L1-KILL",
+  "b": "NO-ERROR-FOUND",
+  "c": "NO-ERROR-FOUND",
+  "d": "NO-ERROR-FOUND"
+ },
+ "subattacks": {
+  "a_overfit_seal": {
+   "verdict": "L1-KILL",
+   "frozen_cell": {
+    "k": 2,
+    "rule": "min",
+    "tuning_catch": 0.4222222222222222,
+    "genuine_false_reject": 0.1
+   },
+   "tuning_catch": 0.4222222222222222,
+   "fresh_catch": 0.4,
+   "fresh_false_reject": 0.1,
+   "cell_scan": [
+    {
+     "k": 2,
+     "rule": "min",
+     "tuning_catch": 0.4222222222222222,
+     "genuine_false_reject": 0.1
+    },
+    {
+     "k": 2,
+     "rule": "mean",
+     "tuning_catch": 0.4222222222222222,
+     "genuine_false_reject": 0.1
+    },
+    {
+     "k": 3,
+     "rule": "min",
+     "tuning_catch": 0.6666666666666666,
+     "genuine_false_reject": 0.0
+    },
+    {
+     "k": 3,
+     "rule": "mean",
+     "tuning_catch": 0.5555555555555556,
+     "genuine_false_reject": 0.0
+    },
+    {
+     "k": 4,
+     "rule": "min",
+     "tuning_catch": 0.7555555555555555,
+     "genuine_false_reject": 0.2
+    },
+    {
+     "k": 4,
+     "rule": "mean",
+     "tuning_catch": 0.6444444444444445,
+     "genuine_false_reject": 0.0
+    },
+    {
+     "k": 5,
+     "rule": "min",
+     "tuning_catch": 0.8,
+     "genuine_false_reject": 0.2
+    },
+    {
+     "k": 5,
+     "rule": "mean",
+     "tuning_catch": 0.6888888888888889,
+     "genuine_false_reject": 0.2
+    }
+   ],
+   "consequence": "HIT auto-certification WITHHELD for Round 21; bar-clearing survivors are flagged-for-oracle, never auto-certified.",
+   "note": "NO fold cell reaches >=0.90 catch on the tuning-45 without false-reject >0.10 -> the no-oracle gate is PROVABLY LEAKY (L1 Q5 KILL). Round 21 sweeps report bar-clearing survivors as flagged-for-oracle, never auto-certified. HIT auto-certification WITHHELD."
+  },
+  "b_notarerun": {
+   "verdict": "NO-ERROR-FOUND",
+   "per_cell": {
+    "L3.grb5_mod": {
+     "ledger_entry": "R19-G3",
+     "status_field": "measured",
+     "named_uncovered_at_power": true,
+     "needle": "no key space is cleared"
+    },
+    "L3.grb5_rej": {
+     "ledger_entry": "R19-G3",
+     "status_field": "measured",
+     "named_uncovered_at_power": true,
+     "needle": "no key space is cleared"
+    },
+    "L3.shuffle29": {
+     "ledger_entry": "R19-G3",
+     "status_field": "measured",
+     "named_uncovered_at_power": true,
+     "needle": "no key space is cleared"
+    },
+    "L3.64bit_map": {
+     "ledger_entry": "R19-G3",
+     "status_field": "measured",
+     "named_uncovered_at_power": true,
+     "needle": "i386"
+    },
+    "L4.gen0_full32": {
+     "ledger_entry": "R19-G3-CORRECTION",
+     "status_field": "audit",
+     "named_uncovered_at_power": true,
+     "needle": "still absent, still the one open row"
+    },
+    "L4.gen7_gen8_readjudicate": {
+     "ledger_entry": "R19-G3-CORRECTION",
+     "status_field": "audit",
+     "named_uncovered_at_power": true,
+     "needle": "RIGID decoder"
+    }
+   },
+   "crosscheck": "ELIMINATION-LEDGER.md:328-384 forecloses PRNG re-runs under the OLD rigid/flat/English-only instrument only; L3/L4 propose beam+panel adjudications of cells named un-measured-at-power (0 decodes cleared / RIGID -12.5). Not a re-run.",
+   "note": "all 6 L3/L4 cells are named un-measured AT POWER in LEDGER coverage/not_covered (0 decodes cleared / RIGID -12.5 decoder = zero power); none is already power-covered."
+  },
+  "c_fp_inflation": {
+   "verdict": "NO-ERROR-FOUND",
+   "adjudicate_calls_per_decode": 1,
+   "fold_touches_pmax_or_screening": false,
+   "sweeps_screened": false,
+   "condition_b_2p5e6_reintroduced": false,
+   "note": "fold machinery feeds clause-3 recovery only; exactly 1 pmax evaluation per adjudicated decode regardless of k_folds; sweeps unscreened -> condition (b)'s 2.5e6 double-max inflation is NOT re-introduced."
+  },
+  "d_row_gate": {
+   "verdict": "NO-ERROR-FOUND",
+   "gates_all_three": true,
+   "validator_strict": true,
+   "note": "every row routes through hitfn20.is_hit which requires clears_null AND recovery>=0.90 AND held-out>=0.90; validate_row_v3 raises on a HIT with clears_null False or held-out<0.90 -- score alone can never be a HIT."
+  }
+ },
+ "populations": {
+  "tuning": {
+   "kept": 45,
+   "reps_used": 60,
+   "true_recovery_max": 0.8875
+  },
+  "fresh": {
+   "kept": 45,
+   "reps_used": 74,
+   "true_recovery_max": 0.8958333333333334
+  },
+  "genuine_panel": {
+   "n": 10,
+   "true_recovery_min": 1.0
+  }
+ },
+ "coverage": {
+  "a": "fold grid k in {2,3,4,5} x rule in {min,mean}; 45 tuning + 45 fresh EN_NOVOWEL bar-clearing hallucinations (true-recovery < 0.90) + 10 genuine EN_MODERN decodes; relation=exact(keyskip1).",
+  "b": "4 ledger entries (R19-G3, R16-PRNG, R19-G3-CORRECTION, B-13-MARSAGLIA) -> 6 L3/L4 cells; coverage/not_covered read verbatim.",
+  "c": "structural: adjudicate-call count in hitfn20.evaluate + fold-path source (no pmax/panelmax/screening ref) + unscreened sweep assertion.",
+  "d": "structural: three-clause is_hit gate + validate_row_v3 malformed-row rejection."
+ },
+ "power": {
+  "audit_instrument": "validated by positive control \u2014 catches single-cut leaky proxy at 0.289 (fresh) / 0.333 (tuning), matching on-disk 33%; accepts genuine decodes.",
+  "a": "exact on the swept fold grid; best cell k=5/min = 0.80 catch @ 0.20 false-reject; NO cell clears 0.90 at <=0.10 false-reject -> KILL robust to k=6/frac_pass extension.",
+  "b_c_d": "exactness (ledger reads / source structural proofs), not sampled."
+ },
+ "not_covered": [
+  "the seal on drift_rec relation or non-EN_NOVOWEL registers",
+  "fold grid k=6 and the frac_pass agreement rule (cannot flip KILL \u2014 best present cell already fails 0.90 @ 0.20 false-reject)",
+  "seal behaviour on SCREENED sweeps (this round's L3/L4 are unscreened)",
+  "no LP2 decode scored by L5"
+ ],
+ "reopens_when": "a fold/held-out construction reaches >=0.90 catch on a FRESH hallucination population at <=0.10 genuine false-reject; then Round-21+ HIT auto-certification may resume.",
+ "fp_inflation_status": "sieve x panel-max 2.5e6 FP inflation (R's Round-20 FOUND-ERROR, PICKUP open item #2) NOT re-introduced this round; L3/L4 sweeps unscreened, fold machinery FP-neutral. Item stands as R left it for any FUTURE screened sieve.",
+ "status": "NOTE: read coverage/not_covered, not this field. Overall MIXED: a=L1-KILL (auto-cert withheld), b/c/d=NO-ERROR-FOUND."
+}

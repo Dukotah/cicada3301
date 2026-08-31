@@ -1,0 +1,66 @@
+{
+ "id": "R24-C1-MATCHED-RUNIC-READJUDICATION",
+ "lane": "round24/C1-matched-runic",
+ "round": "24",
+ "date": "2026-08-30",
+ "hypothesis": "A stored/re-run B-04 decode that is a TRUE key but in a non-English register (Latin/Greek) or invisible to the English quadgram scorer will score above a seed-3301 order-matched null under the round16 matched-runic scorer + an EN/LA/GR rune-trigram panel, where it did not under the English-only gate. This audits the ONE adjudicator axis the ledger records as unadopted by any lane (L7-A-SCORER-ENGLISH-ONLY.not_covered[2], round19/I2.not_covered). Instrument/closure audit (doctrine R1+R6), NOT a new key-space sweep.",
+ "status": "negative",
+ "verdict": "NULL (control-validated). The matched-runic adjudicator does NOT overturn the B-04 English-only negative on the re-adjudicated slice.",
+ "coverage": "Re-adjudicated a bounded, R20-prior-ordered B-04 slice: top-40 R20-prior seeds (round20/P3/seedprior20.json, rank-1 1325734783) x 16 B-04 generators (round13/B04/ks.py) x 4 reductions (mod29/rej29/hi_nib/bits5) x 2 signs x 2 atbash x 2 seed-byte-forms (ASCII-decimal + raw big-endian), offset 0, L=120, target = real unsolved LP2 head. N = 20,480 decodes. Every decode adjudicated under EN quadgram + round16 matched-runic + EN/LA/GR rune-trigram panel, with the four R3 language-agnostic statistics (decrypt IoC.N, min distinct over 32-rune window, best panel LM, zlib compressibility) PERSISTED PER ROW at sweep time (doctrine R3; the axis L7-A-HANDOFF-NONCOMPLIANCE recorded as 0/15 for the original B-04 rows). Measured power (control): EN ~1.0, Latin 0.50 (EN) / 0.79 (matched) at fixed -5.5, Greek 1.0, EN_NOVOWEL 0.00 under both. Value = coverage(20,480 in this slice) x power(Latin 0.50->0.79, EN/Greek ~1.0, novowel 0.00).",
+ "not_covered": [
+  "Seeds outside the R20-prior top-40, generators outside round13/B04/ks.py, reductions other than the 4 swept, offsets != 0, deeper R20-prior ranks - the slice is bounded, not the whole B-04 family.",
+  "Decoder transition models beyond beam_decode(max_skip=3): the ONE key-skip relation. INHERITS L7-B (skip_by_two and free drift unrepresentable) - that closure is lane C2, not this one.",
+  "Registers whose LANGUAGE none of {English quadgram, round16 matched-runic (which corrects rune ORTHOGRAPHY, not language), EN/LA/GR rune-trigram panel} models: vowel-dropped English (power 0.00 under BOTH scorers - permanent blind spot inherited from L7-A), Welsh, Hebrew, Norse, Enochian, constructed languages.",
+  "Non-linguistic payloads (B6 proved undetectable in principle; degenerate null)."
+ ],
+ "positive_control": "passed",
+ "threshold": "Per-scorer, per-register: a decode clears iff its score exceeds BOTH (a) that register's seed-3301 order-matched wrong-key null MAX and (b) the family-wise threshold_for(N=20,480) bar from benchmark/null.py. Bars fixed in PREREG.md before scoring: EN -4.775, MATCHED -4.685, panel -1.306. Control PASS condition (fixed in PREREG): matched-scorer power > English-scorer power on >=1 non-English register at L=120.",
+ "result": {
+  "control": {
+   "trust_anchor_validate_py": "5/5 PASS",
+   "rune_index_recovery": "100% on every linguistic register (decoder works; only the adjudicator was in question)",
+   "power_L120_fixed_bar": {"EN_MODERN_EN": 1.0, "EN_MODERN_MATCHED": 1.0, "LATIN_EN": 0.50, "LATIN_MATCHED": 0.79, "GREEK_EN": 1.0, "GREEK_MATCHED": 1.0, "EN_NOVOWEL_EN": 0.0, "EN_NOVOWEL_MATCHED": 0.0},
+   "median_correct_score": {"LATIN_EN": -5.523, "LATIN_MATCHED": -5.241, "GREEK_EN": -5.226, "GREEK_MATCHED": -5.149},
+   "l7a_gap_reproduced": "YES - English Latin power 0.50 (L7-A measured 0.33-0.50); matched scorer rescues ~29pp of Latin decodes (0.50->0.79). EN_NOVOWEL 0.00 under both scorers reproduces L7-A's 0.00 exactly.",
+   "decisive_scope_finding": "The matched scorer corrects rune ORTHOGRAPHY (7 digraph expansions + K/Q->C,V->U,Z->S), NOT LANGUAGE. It rescues Latin (English-quadgram-shaped once orthography penalty removed) but not vowel-dropped English (a language gap). Its adjudicator widening is bounded by L7-A's -0.139 round-trip cost."
+  },
+  "readjudication": {
+   "n_decodes": 20480,
+   "null_seed": 3301,
+   "null_matched": {"mean": -7.2784, "sd": 0.229, "max": -6.6043},
+   "family_wise_bars": {"en": -4.775, "matched": -4.685, "panel_max": -1.306},
+   "best_en": {"score": -6.374, "margin_below_bar": -1.60},
+   "best_matched": {"score": -6.294, "margin_below_bar": -1.61, "ioc_n": 1.072, "min_distinct_32": 15, "compress": 0.82, "head": "EAEAMMXIATTHMPUTUNGERNGNGWOEONGCEORAETHOTHISLEAM"},
+   "best_panel_max": {"score": -1.460, "margin_below_bar": -0.15, "register": "GR", "head": "NGDIUYEAXSNBJIAEAEAUCONUJFPGRIAPTYJOENGROOHANTHR"},
+   "survivors": {"en": 0, "matched": 0, "panel_max": 0}
+  },
+  "red_team": {
+   "verdict": "NO-ERROR-FOUND",
+   "fp_ceiling_at_bar": {"english": 0.0101, "matched": 0.0100, "note": "identical, exactly the alpha=0.01 family-wise design; matched scorer does NOT inflate FP rate"},
+   "double_max_hazard": "not reintroduced - ONE adjudication per decode per register, ONE family-wise threshold_for per register; no sieve x panel-max compounding (R21-L5 / B-04 GATE-NOTE hazard honoured)",
+   "seal": "R21-L1 SEAL would apply to any bar-clearer (FLAGGED-FOR-ORACLE, never auto-certified); no survivor to flag"
+  },
+  "decision_relevant": "The matched-runic adjudicator is genuinely more powerful than English on Latin (L7-A gap reproduced), but turned on the strongest prior B-04 slice it yields ZERO survivors 1.6 score-units below the bar with flat IoC / incompressible decodes. The English-only B-04 negatives were NOT hiding a non-English survivor in this slice; the negatives HOLD under the corrected scorer."
+ },
+ "reopens_if": "A wider R20-prior depth, a non-zero offset, a generator/reduction outside this slice, OR a genuinely language-aware non-English adjudicator (Hebrew/Norse/Enochian LM, not merely orthography-corrected English) produces a decode clearing the seed-3301 order-matched null max AND the family-wise threshold_for(N) bar. Any survivor is FLAGGED-FOR-ORACLE (R21-L1), never auto-certified.",
+ "supersedes": [],
+ "restates": ["RESTATE-B-04", "L7-A-SCORER-ENGLISH-ONLY", "L7-A-ARCHIVE-RESCORE"],
+ "artifacts": [
+  "PREREG.md",
+  "greek_corpus.py",
+  "control.py",
+  "out_control.json",
+  "readjudicate.py",
+  "results.json",
+  "RESULTS.md"
+ ],
+ "evidence": [
+  "liber-primus/analysis/round24/C1-matched-runic/PREREG.md",
+  "liber-primus/analysis/round24/C1-matched-runic/control.py",
+  "liber-primus/analysis/round24/C1-matched-runic/out_control.json",
+  "liber-primus/analysis/round24/C1-matched-runic/readjudicate.py",
+  "liber-primus/analysis/round24/C1-matched-runic/results.json",
+  "liber-primus/analysis/round24/C1-matched-runic/RESULTS.md"
+ ],
+ "control_detail": "passed. validate.py 5/5. Control plants Latin + romanized Greek into rune space, enciphers under sha256_ctr(CICADA3301)+encipher_keyskip(0.83), decodes with the CORRECT key at beam_decode(400,3), adjudicates under EN and matched scorers. 100% rune recovery on every linguistic register; matched power > English power on Latin (0.79 vs 0.50, fixed bar), reproducing the L7-A gap; EN_NOVOWEL 0.00 under both reproduces L7-A's 0.00."
+}

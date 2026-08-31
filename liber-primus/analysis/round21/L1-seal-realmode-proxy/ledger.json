@@ -1,0 +1,42 @@
+[
+ {
+  "id": "R21-L1-SEAL",
+  "lane": "L1-seal-realmode-proxy",
+  "hypothesis": "The hitfn20 real-mode (no-oracle) clause-3 held-out proxy is a single 1/4->3/4 cut that catches only 15/45 (33%) of correct-key EN_NOVOWEL bar-clearing hallucinations (SYNTHESIS 8.4 FOUND-ERROR). A strengthened proxy that attributes the key phase on each of k disjoint contiguous folds, re-decodes the held-out complement under the same key, and aggregates fold-level rune-index self-consistency by an agreement rule can SEAL the gate: >=0.90 catch on the planted-45 AND on a fresh held-out surrogate, while keeping genuine-decode false-reject <=0.10. No plaintext oracle is used.",
+  "status": "audit",
+  "raw_status": "measured-bound / KILL (no-oracle gate provably leaky)",
+  "round": "21/L1",
+  "date": "2026-08-29",
+  "threshold": "Pre-registered in analysis/round21/L1-seal-realmode-proxy/PREREG.md Q5 BEFORE any measurement on the fold variant. PASS requires ALL of: (P-a) some frozen (k,rule) cell reaches >=0.90 catch on the planted-45 EN_NOVOWEL population (>=41/45); (P-b) the SAME frozen cell holds >=0.90 catch on a fresh held-out surrogate (fresh key seed, disjoint rng offsets); (P-c) genuine-decode false-reject <=0.10 on both tuning and surrogate genuine panels; (P-d) tests/validate.py still passes and SWEEPROW/3 field order unchanged. KILL (declare the no-oracle gate provably leaky, report bar-clearing survivors as flagged-for-oracle): if NO (k,rule) cell reaches >=0.90 catch without genuine false-reject exceeding 0.10. Winning cell chosen by max catch subject to false-reject <=0.10, tie-break smaller k. Threshold not editable after results.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "Run FIRST, gated everything. (1) Hallucination population reproduced BIT-IDENTICALLY from the S-RESCOPE recipe (Kfull=make_ks('sha256_ctr','mod29',b'CICADA',L*4+1024), L=240, rep in range(60), rng=Random(5000+rep), P=EN_NOVOWEL slice, C=encipher_keyskip(P,Kfull,sign=-1,supp=0.83,seed=600+rep), keep pmax>=bar & true-recovery<0.90): got 45/45. (2) hitfn20 single-cut baseline on those 45 caught EXACTLY 15/45 = 0.333 -- reproduces the FOUND-ERROR being fixed. (3) genuine-decode panel (correct key over EN_MODERN) 20/20 with true recovery >=0.971 (all >=0.95), so the harness demonstrably separates genuine from hallucinated when a proxy can. (4) panelmax_bar exact/1e6 = 7.6341931878728095, unchanged from R19/R20. Both controls PASS => the negative below is a real measured bound, not an unvalidated-instrument null.",
+  "null": "KILL fired: no disjoint-fold (k,rule) cell in the swept grid seals the no-oracle gate. Round 21 bar-clearing survivors are reported flagged-for-oracle, never auto-certified. Coverage x power bounds are unaffected; only auto-HIT-calling is withheld.",
+  "result": {
+   "SEAL_PASS": false,
+   "tuning_pass": false,
+   "heldout_surrogate_pass": false,
+   "single_cut_baseline_catch": "15/45 = 0.333 (reproduces S-RESCOPE FOUND-ERROR)",
+   "tuning_winner": {"k_folds": 5, "agree_rule": "min", "catch": "36/45 = 0.800", "genuine_false_reject": "0/20 = 0.000", "meets_0.90_catch": false},
+   "tuning_ceiling_observed": "k=6/min and k=6/frac_pass reach 39/45 = 0.867 catch but at genuine false-reject 7/20 = 0.35 (genuine-unsafe); no cell is both >=0.90 catch AND <=0.10 false-reject on the planted-45",
+   "heldout_surrogate": {"key_seed": "CICADA3301 (fresh, order-preserving)", "frozen_cell": {"k_folds": 5, "agree_rule": "min"}, "hallucination_n": 66, "single_cut_catch": 0.318, "kfold_catch": "54/66 = 0.818", "genuine_n": 24, "kfold_genuine_false_reject": "4/24 = 0.167"},
+   "generalisation": "frozen cell generalises its CATCH level (0.800 tuning -> 0.818 surrogate, not overfit to the 45) but false-reject drifts 0.000 -> 0.167 (over the 0.10 cap) and catch stays < 0.90; both surrogate gates fail",
+   "improvement_over_single_cut": "0.333 -> 0.800 (genuine-safe) / 0.867 (genuine-unsafe ceiling): the fold proxy is a large real improvement, just short of the seal"
+  },
+  "coverage": "Full pre-registered proxy-parameter grid: k in {2,3,4,5,6} x rule in {min, mean, frac_pass} = 15/15 cells, each scored for catch on the frozen planted-45 EN_NOVOWEL hallucination population AND genuine false-reject on a 20-case correct-key EN_MODERN panel. Winning cell (k=5/min) then FROZEN and audited on a DISJOINT held-out surrogate (fresh key seed CICADA3301, disjoint rng offsets): 66 hallucinations + 24 genuine. Conditionals held fixed: key space = correct key (hardest case); decoder relation = exact preset; adjudicator register = EN_NOVOWEL argmax. Language-agnostic held-out recovery (rune-index self-consistency, no plaintext oracle, no English LM) persisted per cell in catch_surface.json (doctrine R3).",
+  "not_covered": "NC-1 keyskip1-relation catch: the planted 45 are exact-preset overfits; Q4 named the keyskip1 relation axis but this lane did not populate a keyskip1 hallucination population, so catch along that axis is unmeasured. NC-2 registers other than EN_NOVOWEL: catch on Latin/Welsh/OE-register hallucinations not measured (EN_NOVOWEL is the FOUND-ERROR's register). NC-3 non-fold proxy families: a longer decrypt head than the 24-32 rune head that capped R20 P1's hard registers, a per-register fold bar, or a learned self-consistency gate could still reach 0.90; the disjoint-fold family alone is bounded here at 0.818 (genuine-safe, held-out) to 0.867 (genuine-unsafe ceiling). NC-4 the seal is a proxy-power bound, not a claim that any specific LP2 candidate is or is not a solve.",
+  "evidence": [
+   "liber-primus/analysis/round21/L1-seal-realmode-proxy/PREREG.md",
+   "liber-primus/analysis/round21/L1-seal-realmode-proxy/RESULTS.md",
+   "liber-primus/analysis/round21/L1-seal-realmode-proxy/catch_surface.json",
+   "liber-primus/analysis/round21/L1-seal-realmode-proxy/audit_catch.py",
+   "liber-primus/analysis/round21/L1-seal-realmode-proxy/hitfn21_folds.py"
+  ],
+  "reproduce": "cd liber-primus && python3 tests/validate.py && python3 analysis/round21/L1-seal-realmode-proxy/audit_catch.py",
+  "supersedes": null,
+  "superseded_by": null,
+  "reopens_if": "Any of: (a) a non-fold no-oracle proxy family (longer decrypt head, per-register fold bar, learned self-consistency) reaches >=0.90 catch with <=0.10 genuine false-reject on a held-out surrogate -- that would seal the gate the fold family could not; (b) a keyskip1-relation hallucination population is planted and changes the catch surface along the relation axis; (c) an oracle becomes available for a specific candidate (then STRICT mode's 45/45 catch applies and flagged-for-oracle is resolvable). Until sealed, Round 21 sweeps carry bar-clearing survivors as flagged-for-oracle, never auto-certified.",
+  "priority": "high",
+  "notes": "OPERATIVE CONSEQUENCE for Round 21: the no-oracle held-out gate is provably leaky at the class (exact, EN_NOVOWEL, correct key). The disjoint-fold strengthening lifts real-mode catch from the single-cut 0.33 to 0.80-0.87 -- a large, generalising improvement -- but not to the 0.90 seal, and its genuine-safe cell drops false-reject discipline on held-out data (0.00 -> 0.167). Therefore any bar-clearing real-mode survivor from Round 21's high-prior sweeps is FLAGGED-FOR-ORACLE, not auto-certified as a solve. Coverage x power lane bounds are unaffected; only auto-HIT-calling is withheld. tests/validate.py PASSES 5/5 before and after; SWEEPROW/3 field order untouched (the fold proxy is a drop-in behind recovery_source)."
+ }
+]

@@ -286,5 +286,21 @@ self-corrections are recorded rather than quietly dropped.
 > `R16-PRNG`, `R17-PUBLIC-PAD` and `B-21`, each preserving its original text in `restated_from`.
 > → [`liber-primus/analysis/round18/SYNTHESIS.md`](liber-primus/analysis/round18/SYNTHESIS.md)
 
-*Status current as of 2026-08-26 (Round 18). What would reopen the case: a new 7A35090F-signed
-Cicada release, a CicadaSolvers-accepted reproducible page solve, or the private pad surfacing.*
+*Status current as of 2026-08-31 (Round 25). The OTP-class headline is unchanged: Rounds 19–25
+moved the **instrument** and the **measured status of branches inside it**, not the verdict.
+**Round 22 read — for the first time — every channel the signed hints point at:** the hidden
+message inside the *already-solved* plaintext (X2, Lane A), the numbers-as-direction turtle render
+(G1, Lane B), the koans-as-operations (X1/X3/X4, Lane C), and the art-as-data drop-cap channel
+(S3, Lane D) — **all four clean, control-validated NEGATIVES**, with a red-team lane (R) returning
+**NO-ERROR-FOUND**. **Round 23** then read the sharpest surviving reopener — the
+printed-line-geometry acrostic at true page-image line breaks — and it too is a **clean null**;
+with it, every roadmap-named lens has been read at least once at the tested resolution.
+**Round 24 discharged the two instrument conditionals that had hung over every negative since
+Round 18:** re-adjudicating the strongest sweeps under non-English / matched-runic scorers (L7-A)
+and under a decoder that can represent `skip_by_two` (L7-B, across 7 generator axes) — **the
+negatives hold under both corrections**. (Round 21 had found the no-oracle seal **provably
+leaky** — HIT auto-certification is withheld, survivors flagged-for-oracle; the whole-book
+`n_skips` window is ≥ ~6000 runes.) **Round 25** is the owner-elected grind of the last runnable
+branch, the Py2.7-MT 2³² seed tail: **parked mid-sweep at 0.5015 % coverage, 0 hits, resumable
+from committed checkpoints.** What would reopen the case: a new 7A35090F-signed Cicada release, a
+CicadaSolvers-accepted reproducible page solve, or the private pad surfacing.*

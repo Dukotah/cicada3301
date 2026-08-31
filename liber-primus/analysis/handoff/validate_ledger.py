@@ -18,7 +18,7 @@ not fail the run: several are legitimately open (an in-flight lane has no result
 
     python3 validate_ledger.py [--strict]
 """
-import json, os, sys
+import glob, json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 LP = os.path.abspath(os.path.join(HERE, "..", ".."))
@@ -27,6 +27,44 @@ LEDGER = os.path.join(LP, "LEDGER.json")
 
 REQUIRED = ["id", "hypothesis", "status"]
 NEGATIVE_STATUSES = {"negative", "eliminated"}
+
+
+def lane_dirs(e):
+    """Candidate directories an entry's bare filenames are relative to.
+
+    Most entries write `evidence` as a bare filename (`PREREG.md`, `results.json`) that is
+    relative to the lane's own folder. Lane folder names are not identical to the `lane`
+    field (`lane: "L1"` lives in `round21/L1-seal-realmode-proxy/`), so glob the prefix.
+    """
+    rnd, lane = e.get("round"), e.get("lane")
+    if not rnd:
+        return []
+    base = os.path.join(LP, "analysis", f"round{rnd}")
+    if not lane:
+        return [base]
+    return [base] + [d for d in glob.glob(os.path.join(base, f"{lane}*")) if os.path.isdir(d)]
+
+
+def evidence_exists(p, bases):
+    """Does an `evidence` path point at something real?
+
+    The ledger was merged from rounds that used three different roots: paths relative to the
+    repository root (`liber-primus/analysis/...`), to `liber-primus/` itself (`analysis/...`),
+    and bare filenames relative to the entry's own lane folder. All three conventions are in
+    the file and none is wrong, so resolve against each before reporting a path as missing.
+    A trailing `#anchor` is a link into a document, not part of the filename; a `*` globs.
+    """
+    p = (p or "").split("#", 1)[0].strip()
+    if not p:
+        return True
+    for base in bases:
+        cand = os.path.join(base, p)
+        if glob.has_magic(cand):
+            if glob.glob(cand):
+                return True
+        elif os.path.exists(cand):
+            return True
+    return False
 
 
 def main():
@@ -67,9 +105,14 @@ def main():
             errors.append(f"[{eid}] positive_control FAILED but status is {e['status']} - "
                           f"must be `inconclusive`")
 
-        # 3. evidence
-        for p in e.get("evidence") or []:
-            if not os.path.exists(os.path.join(ROOT, p)):
+        # 3. evidence. A handful of entries store `evidence` as a single string rather
+        # than a list; iterating that directly walks it character by character.
+        ev = e.get("evidence") or []
+        if isinstance(ev, str):
+            ev = [ev]
+        bases = [ROOT, LP] + lane_dirs(e)
+        for p in ev:
+            if not evidence_exists(p, bases):
                 warns.append(f"[{eid}] evidence path does not exist: {p}")
 
         # 4. dangling links

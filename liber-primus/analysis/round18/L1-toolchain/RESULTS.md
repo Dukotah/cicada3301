@@ -35,6 +35,17 @@ The author's platform is **GNU/Linux**, corroborated independently by their own 
 46 curated 3301 signed messages spanning 2012, 2013 and 2014 carry
 `Version: GnuPG v1.4.11 (GNU/Linux)` — one signing environment, unchanged for three years.
 
+> **Corrected 2026-08-28 (Round 20, Lane C-prop; source: `round19/C3/RESULTS.md` §6.5).** The
+> `46/46` count and the "2012–2014 / no drift" span are both wrong, and Round 19 had no write scope
+> to fix them at source. The `ibotpeaches/messages/` directory holds **56 PASSing files / 54
+> distinct signed messages running to 2017-04-04**, and its armor `Version:` headers are **53 ×
+> `GnuPG v1.4.11 (GNU/Linux)`, 2 × `GnuPG v1`, 1 × `CicadaPG v.3301`** — so the **toolchain changed
+> twice, not once** (an armor-form change between 2014-04-02 and 2015-07-28, and a hand-set
+> `CicadaPG v.3301` + SHA-512 on the final 2017-04-04 message). L1's *conclusion* survives and
+> sharpens: the 1.4.11 environment is now bounded to **2012-01-05 → 2014-04-02 (818 days)**, which
+> still covers the entire Liber Primus release window. See the marked F6/F7 rows in §6.1 and
+> `LEDGER.json:L1-F6-CORRECTION` / `L1-PRIOR-PROPAGATION`.
+
 `analysis/stego/STEGO-VERDICT.md` and `AGENTS.md` currently describe the pages as
 "400-DPI Ghostscript renders". That is half the chain. **The JPEG encoder is ImageMagick, not
 Ghostscript** — see §3.2, where the discriminator is a single control run.
@@ -309,8 +320,8 @@ and rough magnitude of the shift. Rows with no measured support are marked *unmo
 | **F3** | ICC profile is **byte-identical to ghostpdl 9.04–9.21** and differs from 9.00–9.02 and from 9.22+ | §4, `icc_versions.json`, `icc_versions_early.json` | **Ghostscript ≥ 9.04 (2011-08-05) and ≤ 9.21**; with the May-2014 dump date, **9.04–9.14**. A distro package of exactly the Ubuntu-12.04 generation (gs 9.05), not a fresh build, and **not** a later re-render |
 | **F4** | 400 dpi, 2400×3600 px = exactly **6.00 × 9.00 inches** | §3.1 | a **trade-paperback page size**, i.e. a real typesetting job with a page geometry, not an image editor canvas |
 | **F5** | Runes are **typeset from a proportional font**, uniform stroke, 29 distinct glyphs; and the face is **none of the 11 stock Unicode runic faces tested**, differing from all of them chiefly in *proportion* (taller/narrower) | §5.1–5.2, `font_verdict.json` | a **text-based** authoring path, so the runes existed as **character data** before they were pixels — and one that applied a **non-unit horizontal scale or a condensed face**, which is a typesetting-program behaviour, not an image-editor one |
-| **F6** | **46/46** curated 3301 PGP messages, 2012→2014, are `GnuPG v1.4.11 (GNU/Linux)` | `corpus/A-primary-artifacts/ibotpeaches/messages/`, verified this lane | the author's working machine is **GNU/Linux**, one environment, three years, no drift |
-| **F7** | GnuPG **1.4.11** specifically (released 2010-10-18) — not 1.4.12+, not 2.x | F6 | a **Debian/Ubuntu package pinned to a 2011-era release**; Ubuntu 11.04–12.04 LTS shipped exactly 1.4.11, Debian wheezy shipped 1.4.12 |
+| **F6** ~~**46/46** … 2012→2014 … no drift~~ **[CORRECTED — see below]** | **56 PASSing files / 54 distinct messages, running to 2017**; **53 ×** `GnuPG v1.4.11 (GNU/Linux)`, **2 ×** `GnuPG v1`, **1 ×** `CicadaPG v.3301` | `corpus/A-primary-artifacts/ibotpeaches/messages/`, re-derived independently in `round19/C3` §6.5 | GNU/Linux **1.4.11 environment attested 2012-01-05 → 2014-04-02 (818 days)** — covers the whole LP release window; the toolchain then **changed twice** (armor form, then hand-set `CicadaPG v.3301`) |
+| **F7** | GnuPG **1.4.11** specifically (released 2010-10-18) — not 1.4.12+, not 2.x | F6 | a **Debian/Ubuntu package pinned to a 2011-era release**. ~~Ubuntu 11.04–12.04 LTS shipped exactly 1.4.11~~ **[bracket LOOSENED — Round 19 R1 §C + C3 §6.5b: GnuPG 1.4.11 shipped in ≥6 OS generations including Ubuntu 12.10, *outside* the 11.04–12.04 bracket. The era attribution stays; the distro bracket is looser than published.]** |
 | **F8** | ImageMagick default quality **92** was used rather than an explicit `-quality` | §3.1 | the author ran the tool **with defaults**, i.e. a short, unfussy script — consistent with a few-line shell pipeline, not an engineered application |
 | **F9** | No EXIF, no XMP, no COM, zero trailing bytes, restart interval unused | §3.1 | a **plain CLI** invocation; no GUI editor, no web pipeline, no `jpegtran`/`jpegoptim` post-pass |
 | **F10** | The rune face is **not** Noto Sans Runic, BabelStone Runic (either), Unifont, FreeSerif/FreeSans/FreeMono, Quivira, Symbola, BabelStone Modern or Segoe UI Symbol — measured with three passing controls | §5.2 | the author did **not** simply type Unicode runes in a default desktop font. Either a specialist scholarly face (Junicode, Everson Mono — NC-4) or a **LaTeX runic package** (`allrunes` — NC-5) is still live, and the latter would promote row 5 of §6.2 sharply |
@@ -319,6 +330,16 @@ and rough magnitude of the shift. Rows with no measured support are marked *unmo
 unchanged from early 2012 through May 2014.** F6+F7 fix the OS family and era from the author's own
 signatures; F1+F2+F3 put the *same* era's Ghostscript and ImageMagick on the same box; F5+F4 say a
 typesetting program produced a 6×9-inch PDF on it.
+
+> **Bracket loosened, 2026-08-28 (Round 20 C-prop; sources: `round19/R1/RESULTS.md` §C,
+> `round19/C3/RESULTS.md` §6.5b).** The *era* attribution is if anything tighter than L1 stated
+> (1.4.11 bounded to 2012-01-05 → 2014-04-02), but the *distro bracket* "Ubuntu 11.04–12.04" is
+> narrower than the evidence supports: two independent lanes (R1 from the render/packaging side, C3
+> from the signed corpus) found GnuPG 1.4.11 shipped across ≥6 OS generations, **including Ubuntu
+> 12.10**. The Phase-1 generator families (C/glibc, Python 2.7, Perl 5.14, bash `$RANDOM`, TeX LCGs)
+> are **not** weakened by this — the era they were ranked in still holds — but the bracket used to
+> rank them should be read as looser. Anyone re-deriving the ranking should read L1 §6, R1 §C and
+> C3 §6.5–6.6 together.
 
 ### 6.2 The ranked prior
 
@@ -330,7 +351,7 @@ probabilities of being the answer.
 |---:|---|---:|---|---|
 | **1** | **C `rand()` / `random()` / `drand48` from glibc** (incl. anything calling libc from a shell tool) | **×3** | F6/F7 fix glibc-on-Linux as the runtime; `random()`'s TYPE_3 additive-feedback generator is *the* default PRNG a 2012 Linux C program gets for free | Round 8 covered 10 generators over ~3% of each seed space (`round10/L5-seed32/CENSUS.md`) — that is a **~3% coverage bound**, not a sweep of the family |
 | **2** | **Python 2.7 `random` (Mersenne Twister, `random.seed(str)`)** | **×3** | F1/F8: whoever drives `convert` over 58 numbered files on Linux in 2012 is scripting; Python 2.7.3 is Ubuntu 12.04's system Python. Python's `seed()` on a *string* has a 2.x-specific hashing path that a Python-3-era sweep would miss | partially |
-| **3** | **Perl 5.14 `rand`/`srand`** (drand48 under the hood) | **×2.5** | F7's era: Perl 5.14.2 is Ubuntu 12.04's system Perl and the default text-munging language of that generation of Unix user | **never swept** |
+| **3** | **Perl 5.14 `rand`/`srand`** (drand48 under the hood) | **×2.5** | ~~F7's era: Perl 5.14.2 is Ubuntu 12.04's system Perl~~ **[prior RE-SOURCED 2026-08-28, C-prop — the distro inference is superseded by a stronger, dated fact: a signed, verifying 3301 message (2012-01-15, PASS) states "the Crypt::RSA Perl module available in CPAN" and pastes a live `Crypt::RSA::Key::Public` object as `Data::Dumper` output; the library's own `Version: 1.99 / Scheme: Crypt::RSA::ES::OAEP` armor recurs on a 2nd PASSing message 2014-01-06. The author's own dated authenticated statement of a working Perl+CPAN environment. Source: `round19/C3/RESULTS.md` §6.6.]** | **never swept** (built byte-exact but 0 seeds scored: `LEDGER.json:R19-G2`) |
 | **4** | **Bash/coreutils composites** — `$RANDOM`, `/dev/urandom`, `shuf --random-source`, `openssl rand` | **×2** | F8/F9: defaults-only CLI usage says the author reached for the shell first. `$RANDOM` is a 15-bit glibc `rand()` derivative with a tiny seed space | **never swept** |
 | **5** | **A LaTeX-side generator** (`pgf`'s `\pgfmathrandom`, `lcg` package, `random.tex`) | **×2** | F5+F4: a 6×9-inch typeset PDF full of runic characters is a LaTeX-shaped job, and `allrunes` is *the* LaTeX Anglo-Saxon runic package. If the pad was generated inside the document, the generator is a TeX LCG with a tiny period | **never swept, never considered** |
 | 6 | **OpenSSL / GnuPG-adjacent CSPRNGs seeded from a short passphrase** (`openssl enc -k`, EVP_BytesToKey, PBKDF/`S2K`) | ×1.5 | F6: GnuPG is demonstrably on the box and in daily use; an author who signs everything with GnuPG plausibly derives key material with the crypto tools already installed. R16-KDF covered a KDF family — check its `not_covered` before re-running | partly (R16-KDF, 692,064 configs) |
@@ -376,7 +397,7 @@ Concretely, and in priority order:
   order, and the trailing-byte check.)
 - **18** control renders across 9 pipelines × 2 source documents, plus **20** two-stage chain runs.
 - **29/29** rune glyph bitmaps via the validated (96.93%) reader.
-- **46/46** curated 3301 PGP messages checked for signer version string.
+- ~~**46/46**~~ **56 PASSing files / 54 distinct** curated 3301 PGP messages checked for signer version string. **[count corrected 2026-08-28, C-prop; see the §6.1 F6 note and `round19/C3` §6.5]**
 - The archived `onion7_index.html` (1,640 bytes) re-read in full — see below.
 
 **Not covered, and the concrete condition that reopens each.**

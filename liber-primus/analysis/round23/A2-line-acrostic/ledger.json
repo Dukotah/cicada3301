@@ -1,0 +1,48 @@
+{
+ "id": "R23-A2-LINE-ACROSTIC",
+ "lane": "23/A2-line-acrostic",
+ "hypothesis": "Roadmap A2 (R22-A not_covered): a self-embedded message ('seek within / test the knowledge') hides as a first-rune-of-each-PRINTED-LINE acrostic (and a per-word / first-rune-of-each-word acrostic) of the already-SOLVED plaintext pages, using the TRUE page-image line breaks and word spacing. Sole new input vs R22-A: the real printed-line/word geometry (R22-A had only the geometry-free concatenated transliteration and returned a clean NULL). This is the single most conventional hiding spot for a self-embedded message and the last plausible one at this resolution.",
+ "status": "negative",
+ "round": "23/A2",
+ "date": "2026-08-30",
+ "threshold": "Pre-registered before any candidate scored (PREREG.md). Recognizer: src/lp/score.py score_norm (KJV-weighted English quadgram). SURVIVOR iff score_norm > candidate's OWN size-matched null bar at FPR=0.001 (per read LENGTH, 1000 order-shuffles of the solved letter pool, seed 3301) AND it clears the FAMILY-WISE bar (max null score over all 20 length cells = -3.597). No fixed score bar; retired -5.5 bar not used. Phase-0 required planted line-first AND word-first acrostic recovery = 1.000 before the real sweep was trusted (Q5 kill gate).",
+ "threshold_fixed_in_advance": true,
+ "positive_control": "passed",
+ "control_detail": "PHASE0-GATE.py: (P0.1) planted a known English acrostic on the first rune of each LINE of an i.i.d. control page laid out to the SAME line/word widths as page 06 (20 lines, 194 words, seed 3301) -> line_first read recovered as winner above its size-matched bar (score -4.29 > bar -4.80). (P0.2) planted on the first rune of each WORD -> word_first recovered (score -4.02 > bar -6.26). Recognizer recovery/power = 2/2 = 1.000. (P0.3) extractor structural check: reproduces page 01's 10 printed lines and its line-first read = 'ABETFEDOEF' (first letters of the ten visible English lines); per-page flat decode matches validate.py plaintext for all 5 pages. All 3 gates PASS. The instrument provably sees a line/word acrostic when present, so the real-data null is a genuine bound.",
+ "null": "Per read LENGTH: distribution of score_norm over 1000 order-shuffles of the 5-page solved letter pool (1887 letters), each sliced to the read length (histogram-preserving, order-destroying, seed 3301). FPR=0.001 -> 99.9th-percentile per-cell bar. Family-wise bar = max over all length cells (-3.597). Controls for 'English letters leak through any acrostic of English text'.",
+ "result": {
+  "overall": "NEGATIVE / CLEAN NULL",
+  "trust_anchor": "tests/validate.py 5/5 PASS",
+  "n_reads": 48,
+  "family_survivors": 0,
+  "per_cell_survivors_fpr001": "1 vs 0.048 expected by chance over 48 reads -- consistent with zero; it is 06|word_last|rev, excess +0.025 over its own tiny-length-cell bar, score -6.223 (readable English ~-2.2, family bar -3.597), text 'YEOEEUNDREEGNARFDEOOEGN...' = gibberish; does NOT clear the family bar; refuted by default (R6).",
+  "best_read_score": -6.223,
+  "note": "First-rune-of-each-PRINTED-LINE and per-word acrostics of the rig-solved pages at the TRUE page-image line/word geometry are a CLEAN NEGATIVE, matching R22-A's geometry-free NULL. Language-agnostic secondary stats (IoC*N, min-distinct-32, base32 frac, gzip ratio) show no structured outlier. Visible line-first acrostics (e.g. page01 ABETFEDOEF) are just the first letters of the visible English lines and read as nothing."
+ },
+ "coverage": "READ coverage (NOT key space; the transform is identity on already-decrypted runes, so the acrostic read IS the swept axis; the NEW input is the printed line/word geometry). 48 reads = {line_first, line_last, word_first, word_last} x {5 per-page + 1 concat-in-book-order} x {forward, reversed}. Geometry source = data/scream314_lp.md via src/lp/corpus.py, the SAME transcription validate.py trusts (line breaks + '\u2022' word seps preserved); decrypted in place with each page's validated transform (simple 01/05/06; vigenere+interrupter beam 03/14), interrupters dropped as in solve.decode. 54 printed lines, ~500 words across the 5 pages. Power = Phase-0 recovery 1.000 on planted line-first + word-first acrostics of the same shape.",
+ "not_covered": [
+  "Keyword-cued and two-stage/recursive selections (e.g. every rune after a cue word)",
+  "Mixed line+word diagonal reads and k-th-rune-per-line reads for k>1",
+  "The wider community-solved LP corpus beyond the 5 rig-reproduced pages",
+  "Non-English target registers beyond the base32/IoC/gzip secondary screen",
+  "The /dev/urandom pad branch (an acrostic null says nothing about it)"
+ ],
+ "evidence": [
+  "liber-primus/analysis/round23/A2-line-acrostic/PREREG.md",
+  "liber-primus/analysis/round23/A2-line-acrostic/RESULTS.md",
+  "liber-primus/analysis/round23/A2-line-acrostic/ledger.json",
+  "liber-primus/analysis/round23/A2-line-acrostic/sweep_results.json",
+  "liber-primus/analysis/round23/A2-line-acrostic/PHASE0-GATE.py",
+  "liber-primus/analysis/round23/A2-line-acrostic/run_sweep.py",
+  "liber-primus/analysis/round23/A2-line-acrostic/lib_geom.py"
+ ],
+ "reproduce": "cd liber-primus && python3 tests/validate.py (5/5) && cd analysis/round23/A2-line-acrostic && python3 PHASE0-GATE.py (3/3 gates, recovery 1.000 PASS) && python3 run_sweep.py (0 family survivors -> NULL).",
+ "supersedes": "",
+ "superseded_by": null,
+ "reopens_if": "A keyword-cued or two-stage selection over the printed geometry; OR a self-embedded read over the WIDER community-solved LP corpus (pages beyond the rig's 5); OR a k-th-rune-per-line / mixed line+word read; OR a non-English target register with its own LM. None of these is expected to be productive after this NULL.",
+ "priority": "high-prior-bounded-novel",
+ "source_register": "English quadgram (KJV-weighted) primary + language-agnostic secondary panel (IoC*N, min-distinct-32, base32 fraction, gzip ratio)",
+ "raw_status": "NULL, control-validated. 48 printed-line/word acrostic reads over the 5 solved pages at TRUE page-image geometry; Phase-0 recovery 1.000 (line-first + word-first); 0 family-wise survivors; the 1 per-cell crosser (0.048 expected) is gibberish and sub-family-bar, refuted.",
+ "notes": "Roadmap lens A2 -- the SHARPEST reopener flagged by R22-A's not_covered (the one representation R22-A could not build). Now read at true resolution: CLEAN NULL, matching R22-A. Doctrine R2 coverage x power reported together; R3 language-agnostic stats persisted per candidate; R6 red-team refute-by-default applied to the lone per-cell crosser; R7 this is a BOUND over the enumerated read set on the rig-solved 5 pages, not 'A2 closed'. Seal note (R21 L1) moot: no survivor. DECISION LINE: A2 surfaced nothing justifying D2/B2; per the Round-23 roadmap seed the project sits at the natural stopping point at the tested resolution -- only the bounded-not-closed PRNG/seed tail (needs compute) and the /dev/urandom branch (needs the pad to surface) remain live, neither a Round-23 lane.",
+ "evidence_missing": null
+}

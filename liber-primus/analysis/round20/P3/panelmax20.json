@@ -1,0 +1,124 @@
+{
+ "generated": "2026-08-28T20:12:44Z",
+ "lane": "round20/P3 (P3a)",
+ "what_this_is": "THE single panel-max direct null every Round-20 Phase-S lane adjudicates against. Resolves I3's G-PANEL failure by adopting a directly-fitted panel-max curve (R1 B-i/B-ii) instead of a per-register bar with a disputed effective-test count.",
+ "claim_statistic": "pmax  (I2 max-over-9-registers, z scale; NEVER en, NEVER -5.5)",
+ "alpha_claim": 0.01,
+ "alpha_escalate": 0.05,
+ "why_not_keff": "I3 G-PANEL FAILED: the two per-register M_eff estimators disagree 2.06-2.45x (I3 S6.2); the panel penalty is not a constant of the panel (it shrinks with N: 2.27 z-units at N=1, 1.02 at N=1e6, 0.39 at N=1e9). A directly-fitted panel-max null needs no multiplicity model at all.",
+ "how_to_call": "from panelmax20 import panelmax_bar; panelmax_bar(preset='exact', n_round_adjudicated=N, alpha=0.01)",
+ "presets": {
+  "exact": {
+   "cell": "I19:vecbeam.keyskip1+I2|pmax|L120",
+   "mu": 2.3575370476498057,
+   "beta": 0.2865309308437171,
+   "M": 1000000,
+   "status": "CALIBRATED",
+   "decoder_relation": "keyskip1 (repo relation; max_skip=3, max_free=0, lam=0)",
+   "adjudicator_register": "I2 9-register panel {EN_MODERN,EN_KJV,LP1_REAL,LATIN,OE,DE,CY,EN_HALFVOWEL,EN_NOVOWEL}; pmax = max z. EN_NOVOWEL recovery 67-81% => a hit there is DETECTION, not readable plaintext (I2).",
+   "null_generator": "uniform-random rune ciphertext x uniform-random keystream, wrong-key beam decode (decoder-output null, NOT random runes); validated vs LP2 histogram-shuffle in I3 S1.2",
+   "bars_by_n_round": {
+    "10000": {
+     "claim_bar": 6.314669487787908,
+     "escalate_bar": 5.847637257315247
+    },
+    "100000": {
+     "claim_bar": 6.974431337830358,
+     "escalate_bar": 6.507399107357697
+    },
+    "1000000": {
+     "claim_bar": 7.6341931878728095,
+     "escalate_bar": 7.167160957400148
+    },
+    "100000000": {
+     "claim_bar": 8.953716887957711,
+     "escalate_bar": 8.48668465748505
+    }
+   }
+  },
+  "pair": {
+   "cell": "I19:driftbeam.pair+I2|pmax|L120",
+   "mu": 2.4199696989376633,
+   "beta": 0.2695287952432638,
+   "M": 60000,
+   "status": "PROVISIONAL",
+   "decoder_relation": "keyskip2 (pair-constrained; max_skip=8, max_free=0) -- covers L7-B skip_by_two",
+   "adjudicator_register": "I2 9-register panel {EN_MODERN,EN_KJV,LP1_REAL,LATIN,OE,DE,CY,EN_HALFVOWEL,EN_NOVOWEL}; pmax = max z. EN_NOVOWEL recovery 67-81% => a hit there is DETECTION, not readable plaintext (I2).",
+   "null_generator": "uniform-random rune ciphertext x uniform-random keystream, wrong-key beam decode (decoder-output null, NOT random runes); validated vs LP2 histogram-shuffle in I3 S1.2",
+   "bars_by_n_round": {
+    "10000": {
+     "claim_bar": 6.142294322209121,
+     "escalate_bar": 5.702974790288398
+    },
+    "100000": {
+     "claim_bar": 6.762907308268904,
+     "escalate_bar": 6.323587776348182
+    },
+    "1000000": {
+     "claim_bar": 7.383520294328688,
+     "escalate_bar": 6.944200762407966
+    },
+    "100000000": {
+     "claim_bar": 8.624746266448255,
+     "escalate_bar": 8.185426734527532
+    }
+   }
+  },
+  "exact_ms8": {
+   "cell": "I19:driftbeam.exact_ms8+I2|pmax|L120",
+   "mu": 2.0277877461679483,
+   "beta": 0.3201702257172439,
+   "M": 60000,
+   "status": "PROVISIONAL",
+   "decoder_relation": "keyskip1 max_skip=8",
+   "adjudicator_register": "I2 9-register panel {EN_MODERN,EN_KJV,LP1_REAL,LATIN,OE,DE,CY,EN_HALFVOWEL,EN_NOVOWEL}; pmax = max z. EN_NOVOWEL recovery 67-81% => a hit there is DETECTION, not readable plaintext (I2).",
+   "null_generator": "uniform-random rune ciphertext x uniform-random keystream, wrong-key beam decode (decoder-output null, NOT random runes); validated vs LP2 histogram-shuffle in I3 S1.2",
+   "bars_by_n_round": {
+    "10000": {
+     "claim_bar": 6.449495318266269,
+     "escalate_bar": 5.927632585306322
+    },
+    "100000": {
+     "claim_bar": 7.186714507223334,
+     "escalate_bar": 6.664851774263386
+    },
+    "1000000": {
+     "claim_bar": 7.923933696180399,
+     "escalate_bar": 7.402070963220451
+    },
+    "100000000": {
+     "claim_bar": 9.398372074094528,
+     "escalate_bar": 8.87650934113458
+    }
+   }
+  },
+  "drift": {
+   "cell": "I19:driftbeam.drift+I2|pmax|L120",
+   "mu": 5.899468268437203,
+   "beta": 0.43128709029527573,
+   "M": 15000,
+   "status": "PROVISIONAL",
+   "decoder_relation": "permissive drift_rec (max_skip=40, max_free=2, lam=12, start_slack=2)",
+   "adjudicator_register": "I2 9-register panel {EN_MODERN,EN_KJV,LP1_REAL,LATIN,OE,DE,CY,EN_HALFVOWEL,EN_NOVOWEL}; pmax = max z. EN_NOVOWEL recovery 67-81% => a hit there is DETECTION, not readable plaintext (I2).",
+   "null_generator": "uniform-random rune ciphertext x uniform-random keystream, wrong-key beam decode (decoder-output null, NOT random runes); validated vs LP2 histogram-shuffle in I3 S1.2",
+   "bars_by_n_round": {
+    "10000": {
+     "claim_bar": 11.855754143036453,
+     "escalate_bar": 11.152776034664164
+    },
+    "100000": {
+     "claim_bar": 12.84882936795113,
+     "escalate_bar": 12.145851259578844
+    },
+    "1000000": {
+     "claim_bar": 13.84190459286581,
+     "escalate_bar": 13.138926484493522
+    },
+    "100000000": {
+     "claim_bar": 15.82805504269517,
+     "escalate_bar": 15.12507693432288
+    }
+   }
+  }
+ }
+}

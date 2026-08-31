@@ -1,0 +1,49 @@
+{
+ "lane": "round25/compute-tail",
+ "space": 4294967296,
+ "generator": "Py2.7 MT19937 init_by_array([w]); reducer random29",
+ "decoder": "driftbeam preset 'pair' (keyskip2) -- skip_by_two-exact, control-validated (C2)",
+ "hit_gate": "hitfn20 three-clause: pmax>=panelmax_bar AND recovery>=0.90 AND heldout-3/4>=0.90",
+ "excluded_regions": {
+  "dense_baseline_contiguous": [
+   0,
+   200000
+  ],
+  "prior_plus_neighbourhood_words": 45975,
+  "note": "C2/S-G3 already swept [0,200000) plus the 433 prior words + their +/-512 nbhd (all >= 20.1M). Tail starts at 3000000 to avoid the dense baseline; scattered prior words are skipped via the exclusion set."
+ },
+ "tail_start": 3000000,
+ "next_seed": 3506593,
+ "seeds_done": 506593,
+ "seeds_skipped_excluded": 0,
+ "best_pmax": 5.863342341870797,
+ "best_word": 3311419,
+ "flagged_survivors": [],
+ "chunks": [
+  {
+   "chunk_index": 1,
+   "start_word": 3000000,
+   "end_word": 3506593,
+   "seeds_screened_this_chunk": 506593,
+   "seeds_skipped_excluded_this_chunk": 0,
+   "elapsed_s": 1320.0,
+   "throughput_seeds_per_s": 383.8,
+   "best_pmax_this_chunk": 5.863,
+   "best_word_this_chunk": 3311419,
+   "hit_flagged": false,
+   "hit_row": null,
+   "claim_bar_pair_1e6": 7.384,
+   "self_test": {
+    "seed": 777,
+    "recovery": 1.0,
+    "heldout": 1.0,
+    "pmax": 25.239,
+    "bar": 7.384,
+    "hit": true,
+    "recovery_1000": true
+   }
+  }
+ ],
+ "cumulative_words_covered_incl_baseline": 752568,
+ "cumulative_coverage_fraction_2pow32": 0.00017522089183330536
+}

@@ -17,6 +17,40 @@ cryptanalysis rig, a provenance-verified dataset, and the consolidated findings.
   the key. Solved pages used Atbash / Vigenère (DIVINITY, FIRFUMFERENFE) / totient
   keystreams + the ᚠ interrupter rule.
 
+## Latest rounds (2026-08)
+- **Round 18** proved the project had been searching with a *broken magnet* — every prior
+  negative is English-register-only, and the beam represented exactly one enciphering relation.
+- **Round 19** *rebuilt* the magnet (a drift-tolerant decoder, a nine-register adjudicator,
+  recalibrated nulls — the historical −5.5 bar was wrong in 14/14 sweeps, but **no verdict flips**),
+  and found it could not yet affordably sweep. Canon upheld **450/450**; 3 payload bytes corrected.
+- **Round 20** tried to build the missing *sieve* that would make the enumerable PRNG sweeps
+  affordable. It is **infeasible** at the required ≥100×-reduction / 0.90-survival target
+  (best 0.667) — but the round also shipped the **recovery-gated hit function** (`hitfn20`:
+  a decode is a HIT only if it clears the calibrated null AND recovers ≥0.90 of rune indices
+  AND reproduces on the held-out ¾), and its follow-up ran the project's **first power-1.00
+  sweep** (Py2.7 `random29`, 0.057 % of 2³², 0 hits).
+- **Round 21** found the **no-oracle mode of that gate provably leaky** (best fold 0.80 vs the
+  0.90 bar) — so any bar-clearing survivor is *flagged-for-oracle*, never auto-certified —
+  swept the three remaining Py2.7 reducers + the amd64 map clean (884,000 words, 0 hits), and
+  measured the `n_skips` window: **≥ ~6000 runes** before that statistic alone discriminates.
+- **Round 22** turned from the letter stream and **read every channel the signed hints point
+  at, for the first time** — message-inside-the-solved-plaintext, numbers-as-direction turtle
+  render, koans-as-operations, art-as-data drop-caps. All four: clean, control-validated
+  negatives; red-team NO-ERROR-FOUND.
+- **Round 23** read the one representation Round 22 could not — the **printed-line-geometry
+  acrostic** at true page-image line breaks. Clean null. With it, every roadmap-named lens has
+  been read at least once at the tested resolution.
+- **Round 24** discharged the two instrument conditionals hanging over every negative since
+  Round 18: re-adjudicated the strongest sweeps under **non-English / matched-runic scorers**
+  (L7-A) and under a decoder that **can represent `skip_by_two`** (L7-B), across 7 generator
+  axes. **The negatives hold under both corrections.**
+- **Round 25** is the owner-elected compute grind of the last runnable branch — the Py2.7-MT
+  2³² seed tail — **parked mid-sweep at 0.5015 % coverage, 0 hits**, fully resumable from
+  committed checkpoints.
+
+The standing verdict through all of it: **LP2 0–54 is OTP-class**, with a soft anti-repeat
+rewrite acting on the ciphertext output. → [`PICKUP-HERE.md`](PICKUP-HERE.md).
+
 ## Quickstart
 
 ```bash

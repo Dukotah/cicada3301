@@ -4,6 +4,19 @@ _Written 2026-08-19 for someone arriving cold — a researcher, or a model with 
 and better vision than anything available when this was written. It assumes you know
 cryptography and nothing about this repository. It should get you productive in under an hour._
 
+_Current through **Round 25** (refreshed 2026-08-31). Rounds 20–25 hardened the verdict rather
+than moving it: the anti-repeat sieve was proven **infeasible** (R20), the no-oracle certification
+gate was proven **leaky** so survivors are now flagged-for-oracle rather than auto-certified (R21),
+**every channel the signed hints name was finally read and all came back null** (R22–R23), the
+last un-audited decoder closure (`skip_by_two`) was **discharged** (R24), and the single remaining
+runnable door — brute-forcing the Python-2.7 MT seed space — is now **in progress and parked
+mid-grind** at ~0.5% coverage, 0 hits (R25; see `handoff/PARKED.md` P-12). None of it changed the
+standing verdict in §2. The navigation docs (`../PICKUP-HERE.md`, `../ELIMINATION-LEDGER.md`,
+`../analysis/README.md`, `../LEDGER.json`) were brought current through Round 25 on 2026-08-31 and
+agree with this document. If you are here to actually ATTACK the cipher rather than to survey it,
+read [`SOLVER-STRATEGY-2026.md`](SOLVER-STRATEGY-2026.md) next — it ranks where a new solver's
+marginal hour is best spent._
+
 Everything here traces to a document or a measurement in this repo. Where something is uncertain,
 it says so. **The most useful thing this project can give you is not a lead — it is an accurate
 map of where the walls are**, so you do not spend a month rediscovering them.
@@ -100,6 +113,24 @@ only path is obtaining the key. If it is derived, compute *does* apply. Nothing 
 tells you which. Both branches are live, and the honest split of prior mass favours "external or
 unseeded" (see §4).
 
+**State the verdict as a one-of-two indistinguishability class, and do not collapse it.** Pages
+0–54 are OTP-*class*: either (a) a true external pad — information-theoretically closed, unreachable
+by any analysis of the ciphertext — or (b) a short-seed-derived keystream — finite and enumerable.
+**Only the derived-key brute force can settle which**; the external-pad branch is settled only by
+the pad surfacing (§8). Every round since has *hardened* this framing without moving it:
+- **R22–R23 read every channel the signed hints name** — self-embedded acrostic (with true
+  page-image line geometry, R23-A2), turtle/spatial render, literal imperatives, drop-cap
+  illustrations — all clean, control-validated **NEGATIVE**, red-team NO-ERROR-FOUND. This largely
+  closes the long-standing "but nobody ever looked at the hinted channels" objection.
+- **R24 discharged the last un-audited decoder closure.** Every beam-based negative in the repo
+  covered only a *one-symbol-per-rejection* loop (ledger item L7-B); the `skip_by_two` decoder
+  (`driftbeam` `pair`/keyskip2) that models a two-draw-per-rejection sampler recovers a plant at
+  **100%** where the beam gets 25.8%, and re-decoding the top-prior slice under it still yields
+  **0 hits**. So the historic negatives are confirmed valid over that axis (for the swept slices).
+- **R24 also confirmed the negatives are not English-only artefacts** (matched-runic + language-aware
+  Latin/Greek/Old-English/Enochian adjudication, all null) and that the date-indexed-public-pad idea
+  is **unavailable by premise** (the unsolved pages carry no PGP signature to index a dated pad by).
+
 ---
 
 ## 3. Proven vs merely unrefuted
@@ -129,6 +160,27 @@ turns into folklore.
   argued: E[null max] over a completed 10-generator sweep = **−12.5707**, against a
   pre-registered threshold of −12.5 that required ≤ −12.60 to remain safe.
   (`analysis/round10/L5-seed32/nullcurve.py`, re-run 2026-08-19.)
+- **The anti-repeat "sieve" is infeasible (R20).** A cheap multi-register screen that would let a
+  full PRNG sweep run without decoding every candidate cannot simultaneously reach ≥0.90 true-key
+  survival per register at ≥100× reduction — best measured **0.667** (Wilson-95 upper 0.85 < 0.90,
+  so more samples cannot flip it). Survival, not reduction, is the binding constraint. It is a real
+  INFEASIBLE, not unvalidated silence: the negative control survives 0.000 and LP1_REAL survives
+  0.93–1.00. (`analysis/round20/SYNTHESIS.md` §2.) *Consequence:* the one enumerable space that
+  needs no sieve — Py2.7 `random.seed(str)` over 2³² — became the cheapest live shot, and is the
+  R25 grind (P-12).
+- **The no-oracle certification gate is leaky, so survivors are flagged, not certified (R21-L1).**
+  A real candidate carries no plaintext oracle, so a HIT can only be self-certified by held-out
+  reproduction. The strengthened disjoint-fold proxy tops out at ~0.82 catch of correct-key
+  hallucinations — **below** the pre-registered 0.90. **Therefore any bar-clearing survivor is now
+  FLAGGED-FOR-ORACLE and never auto-certified.** (`analysis/round21/L1-seal-realmode-proxy/RESULTS.md`.)
+- **`n_skips` is a full-book statistic, not a page-window one, with the crossover measured (R21-L2).**
+  It separates the correct key from a size-matched null only at window length **L\* = 6000 runes
+  (~11–12 pages)** and above; below that it does not. Any concatenated-page/whole-book `n_skips`
+  adjudication must respect that floor. (`analysis/round21/L2-nskips-crossover-length/RESULTS.md`.)
+- **The `skip_by_two` decoder recovers its own plant at 100% where the beam gets 25.8% (R24-C2).**
+  The one decoder-closure the repo's negatives had never covered is now built, control-validated,
+  and run — 0 hits over the top-prior slice, so the beam-based negatives hold over that axis.
+  (`analysis/round24/C2-skip-by-two/RESULTS.md`.)
 
 ### Unrefuted but not proven — treat as open questions, not results
 
@@ -242,9 +294,24 @@ and there is no recoverable key". These are ranked tails.
    *Honest prior: LOW-MEDIUM* — genuinely untested and control-detectable, which is rare here;
    but it requires the author to have used a *guessable* seed, and the dictionary is the whole
    bet.
-2. **Finish the 32-bit seed sweep at a corrected threshold** — `PARKED.md` P-2. ~11 h of
-   compute; the only blocker was that the old bar was invalid. *Prior: LOW-MEDIUM* — completes a
-   finite space rather than opening a new one.
+   > **STATUS UPDATE (through R25).** The dictionary/derived-key lane has now been swept hard and
+   > it is **NEGATIVE at every fraction reached**: the B-04/B-05 sweeps completed (0 hits over the
+   > dictionary), and Rounds 21/24/25 extended the derived-key search across the Py2.7-MT seed
+   > space (S-G3 + L3 reducers, the `skip_by_two` decoder, non-English adjudicators, bash/perl/tex/
+   > sha256_ctr generators) — still **0 hits**. The *guessable-seed dictionary* is effectively
+   > exhausted; what remains of this lane is the **flat-prior seed tail**, now being ground in R25
+   > (see #2 below and `PARKED.md` P-12). The prior on the remaining tail is honestly **low**.
+2. **Brute-force the Python-2.7 MT 2³² seed tail (R25, IN PROGRESS)** — `PARKED.md` **P-12**. With
+   the sieve proven infeasible (§3), this space — Py2.7 `random.seed(str)` → `init_by_array([w])`,
+   `random29` — is the one enumerable end-to-end *without* a sieve, and it is the single live door
+   compute can still open. A 6-core grind is running and **parked mid-sweep at ~0.5% coverage
+   (~20.9M of 4.29B seeds), 0 hits, best pmax 6.826 vs bar 7.384**, fully resumable from per-worker
+   checkpoints. Pure-Python it is ~25–32 wall-days for the whole space; **a GPU/C port would finish
+   in hours — that is the real unlock.** *Prior: LOW* — it completes a finite space rather than
+   opening a new one, and the modal no-seed case (§4 bottom) is untouchable by it.
+   *Sibling lane:* the older C-implemented `L5-seed32` sweep32 over the 10+4 Round-8/10 generators
+   at the corrected threshold — `PARKED.md` P-2, ~11 h of compute — is a distinct finite space
+   from the Py2.7 string-seed tail and also still runnable. *Prior: LOW-MEDIUM.*
 3. **Re-run Round 12 A1 over two pads it never really tested** — `PARKED.md` P-3.
    `DATA/560.13`, the largest authored CicadaOS blob, was recorded LOST; it is now **recovered
    and hash-verified** (`handoff/capsule/RECOVERY-560.13.md`). And cross-checking turned up that
@@ -284,6 +351,12 @@ equivalents.)*
 **Rounds 13 and 14 were mid-sweep as this was written.** Anything in `analysis/round13/` or
 `analysis/round14/` may have a result that postdates this document. Check those directories
 before trusting §6's ranking.
+
+**As of 2026-08-31, Round 25 is live and parked mid-sweep.** The R25 compute-tail grind
+(`analysis/round25/compute-tail/`) advances every time it is resumed; the coverage figure in §6
+item #2 is a snapshot. Read `analysis/round25/compute-tail/progress_w*.json` (or run
+`python3 parallel_grind.py --status`) for the current cursor before quoting a number. Rounds 20–24
+are complete; their per-lane `RESULTS.md` files are authoritative over any summary here.
 
 ---
 
@@ -357,6 +430,13 @@ The case is not closed, but it is *quiet*. Three things would genuinely change i
 
 Two lesser triggers, worth a passive watch at zero cost: a non-zero match appearing in
 `cicada-solvers/Cicada-DWH-HashcatAttempts`, or a hit logged by `tweqx/3301-hash-alarm`.
+
+A fourth, internal trigger exists **only for the derived branch**: the R25 seed grind clearing its
+three-clause gate. If that happens the grind stops and writes `HIT.json`, but note the R21-L1
+finding — the no-oracle certification proxy is leaky, so such a survivor is **FLAGGED-FOR-ORACLE,
+not a certified solve**. It would still require a human/oracle adjudication and (for community
+acceptance) a reproducible key+method, ideally a `7A35090F` signature. Do not announce a grind hit
+as a solve.
 
 ---
 

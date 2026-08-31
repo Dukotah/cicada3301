@@ -1,0 +1,83 @@
+{
+ "id": "R25-COMPUTE-TAIL-CHUNK1",
+ "lane": "round25/compute-tail",
+ "round": "25",
+ "date": "2026-08-30",
+ "status": "partially-run",
+ "verdict": "CLEAN NULL (control-validated), chunk 1 of a resumable campaign. Grinding the Py2.7-MT 2^32 seed tail -- the one remaining runnable lane (owner's call, low prior, per PICKUP-HERE 'PRNG/seed tail' untouched branch). 506,593 fresh tail words swept under the SAME control-validated pipeline as R24-C2 (pair/keyskip2 decoder + hitfn20 three-clause recovery gate); 0 hits. The tail remains >99.98% unswept.",
+ "control_validated": true,
+ "power": {
+  "planted_seed_recovery_pair_relation": 1.0,
+  "planted_seed_pmax": 25.239,
+  "planted_seed_bar": 7.384,
+  "planted_seed_hit": true,
+  "note": "Self-test each run: encipher held-out English under the skip_by_two relation with a chosen seed's random29 keystream, decode with the SAME seed via hitfn20 truth_idx path -> recovery 1.000, pmax 25.239 >> bar 7.384, HIT=True. Confirms the SAME instrument as C2/S-G3; a null is a true negative, not a broken scan."
+ },
+ "coverage": {
+  "seeds_swept_this_chunk": 506593,
+  "tail_start": 3000000,
+  "seed_range_this_chunk": [3000000, 3506593],
+  "cumulative_words_covered_incl_baseline": 752568,
+  "cumulative_coverage_fraction_2pow32": 0.00017522089183330536,
+  "cumulative_coverage_pct_2pow32": 0.017522089183330536,
+  "excluded_already_swept": {
+   "dense_baseline_contiguous": [0, 200000],
+   "prior_plus_neighbourhood_words": 45975,
+   "note": "C2/S-G3 dense baseline [0,200000) + 433 prior words + their +/-512 neighbourhood (all >= 20.1M). Not recounted."
+  },
+  "decoder": "driftbeam mode=keyskip2 (preset 'pair'), max_skip=8 -- skip_by_two-exact, control-validated (R24-C2)",
+  "generator": "Py2.7 MT19937 init_by_array([w]); reducer random29 (S-G3 generator)",
+  "ciphertext": "lib_numchannel.unsolved() (canonical LP2 0-54); screen L=120, gate L=240; sign=-1 o=0"
+ },
+ "result": {
+  "hits": 0,
+  "flagged_for_oracle": 0,
+  "best_pmax_this_chunk": 5.863,
+  "best_word_this_chunk": 3311419,
+  "pair_claim_bar_1e6": 7.384,
+  "margin_below_bar": 1.521,
+  "elapsed_s": 1320.0,
+  "throughput_seeds_per_s": 383.8,
+  "resume_cursor_next_seed": 3506593
+ },
+ "extrapolation": {
+  "remaining_words": 4294214728,
+  "single_core_core_hours": 3108,
+  "single_core_core_days": 129,
+  "equiv_20min_chunks_at_this_rate": 8480,
+  "note": "Single-core, one instrument. Embarrassingly parallel -- N cores divide the wall time. Consistent with S-G3's ~7 core-days for the exact-preset decoder (the pair decoder is ~2x heavier per word)."
+ },
+ "threshold": "hitfn20 three-clause gate at the PAIR panel-max bar (I19:driftbeam.pair+I2|pmax|L120), 7.384 at N=1e6 alpha=0.01 -- NEVER -5.5, NEVER another preset's bar. HIT iff pmax>=pair-bar AND rune-index recovery>=0.90 AND held-out-3/4 recovery>=0.90. Frozen (inherited from R24-C2 PREREG) before scoring.",
+ "threshold_fixed_in_advance": true,
+ "reopens_if": "Continue the campaign with the 6-core supervisor parallel_grind.py (each worker resumes from its own progress_w{i}.json cursor) or the single-core runner.py (resumes from progress.json 3506593). Any word clearing the full three-clause gate is FLAGGED-FOR-ORACLE (R21-L1: the no-oracle proxy is leaky), never auto-certified, and STOPS the sweep. The tail is >99.98% unswept.",
+ "parallel_upgrade": {
+  "date": "2026-08-31",
+  "artifact": "parallel_grind.py",
+  "what": "6-core multiprocessing supervisor (owner chose full power). Imports runner.py's control-validated pipeline verbatim -- stage_a/stage_b/word_stream/build_exclusion, the crypto is unchanged -- and drives it across 6 disjoint contiguous seed bands from the chunk-1 cursor 3,506,593 to 2^32. Each worker owns progress_w{0..5}.json (no shared mutable state); per-worker resumable; a full-gate clearance writes HIT.json + signals a shared Event that stops all 6 workers, then the supervisor exits non-zero with the hit FLAGGED-FOR-ORACLE (never auto-certified). --status polls the 6 files for aggregate 2^32 coverage.",
+  "partition": {
+   "resume_start": 3506593,
+   "n_workers": 6,
+   "band_width_words": 715243450,
+   "bands": [[3506593, 718750043], [718750043, 1433993493], [1433993493, 2149236943], [2149236943, 2864480393], [2864480393, 3579723843], [3579723843, 4294967296]]
+  },
+  "validated": {
+   "validate_py": "5/5 PASS",
+   "runner_self_test": {"seed": 777, "recovery": 1.0, "heldout": 1.0, "pmax": 25.239, "bar": 7.384, "hit": true},
+   "parallel_planted_hit": {"worker": 0, "seed": 3530000, "recovery": 1.0, "heldout": 1.0, "pmax": 25.239, "hit": true, "hit_json_written": true, "all_workers_stopped": true, "stop_latency_s": 10.8, "supervisor_exit_nonzero": true, "verdict": "PASS -- parallel HIT path flags a real full-gate clearance and halts the whole armada"},
+   "smoke_test_6core": {"seconds": 60, "all_6_workers_advanced": true, "parallel_seeds_screened": 119967, "checkpoints_written": true, "status_aggregates": true},
+   "measured_6core_throughput_seeds_per_s": 1966,
+   "single_core_throughput_seeds_per_s": 383.8,
+   "parallel_speedup_x": 5.1,
+   "smoke_state_after_test": "RESET to fresh band partition (worker checkpoints + HIT.json cleared) so the real launch starts clean from chunk-1 cursor 3,506,593. Chunk-1 single-core coverage (506,593 words) preserved in progress.json and still counted in aggregate --status."
+  },
+  "revised_full_tail_walltime": {
+   "remaining_words": 4294214728,
+   "aggregate_seeds_per_s_6core": 1966,
+   "wall_seconds": 2184240,
+   "wall_hours": 606,
+   "wall_days_continuous": 25,
+   "note": "Honest: ~25 continuous wall-days on 6 cores (vs ~129 single-core core-days). Low prior; the tail is a long grind by construction."
+  }
+ },
+ "artifacts": ["runner.py", "parallel_grind.py", "progress.json", "progress_w0..5.json (created at launch)", "HIT.json (only on a hit)", "RESULTS-chunk1.md", "ledger.json", "chunk1_stdout.json"]
+}

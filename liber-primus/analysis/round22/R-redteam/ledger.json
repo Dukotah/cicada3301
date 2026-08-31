@@ -1,0 +1,72 @@
+{
+  "lane": "round22/R-redteam",
+  "role": "standing red-team audit (doctrine R6) of Round-22 lanes A/B/C/D",
+  "posture": "refute-not-confirm; reports FOUND-ERROR or NO-ERROR-FOUND, never 'confirmed'",
+  "trust_anchor": {
+    "validate_py": "ALL VALIDATIONS PASSED",
+    "known_solves_reproduced": 5,
+    "stopped": false
+  },
+  "overall_verdict": "NO-ERROR-FOUND",
+  "found_errors": [],
+  "disclosure_gaps": [
+    {
+      "lane": "B",
+      "severity": "low",
+      "non_blocking": true,
+      "detail": "B/g3_coord_decode.py::digit_pairs_as_coords (coord_pair_rate) re-touches the channel of Round-11 N2 route (d) 'coordinate pairs' with a different statistic (plausible-range count vs top-pair concentration) and does not cite it. Headline G3 detectors (base32/onion pointer, low-entropy base32 run) are genuinely new. Both agree NEGATIVE. Recommend B cite N2 route (d) for the coord-pair sub-detector. Not a silent re-read of a full lens; changes no verdict."
+    }
+  ],
+  "audit_B_familywise": {
+    "target": "B's 4 flagged structure hits -> 0 flagged-for-oracle reduction",
+    "hit_counts_recomputed_from_ledger": {
+      "closure": 0, "self_intersections": 0, "bbox_fill": 3,
+      "caging": 0, "symmetry": 2, "components": 1
+    },
+    "hit_counts_match_B_table": true,
+    "mismatches": 0,
+    "family_full": {"n_tests": 432, "note": "6 stats x 72 combos", "expected_false_p_lt_0.01": 4.32},
+    "family_shape": {"n_tests": 288, "note": "4 shape stats x 72 combos (caging/closure recorded-not-refined)", "expected_false_p_lt_0.01": 2.88},
+    "observed_shape_hits": 6,
+    "P_ge6_poisson_lambda_2.88": 0.072,
+    "P_ge6_binomial_n288_p0.01": 0.071,
+    "consistent_with_multiple_comparisons_noise": true,
+    "bonferroni_flag_bar": 2.3148148148148147e-05,
+    "bonferroni_bar_sigma_equiv": 4.23,
+    "candidates_sigma": [
+      {"combo": "value_M8_relative_value", "stat": "components", "emp_p": 0.012, "emp_p_at_floor": false, "z_tail": 2.17e-06, "sigma": 4.74, "B_flagged": false, "audit_agrees_reject": true, "reason": "emp_p=0.012 (24/2000) contradicts a 4.7-sigma normal tail; components is a discrete skewed integer count (real=8 vs null mean 1.95) -> Gaussian z-tail invalid/inflated; double-gate (emp_p at floor AND z<bar) correctly rejects"},
+      {"combo": "value_M8_relative_value", "stat": "symmetry", "emp_p": 0.0, "emp_p_at_floor": true, "z_tail": 4.2e-04, "sigma": 3.53, "B_flagged": false, "audit_agrees_reject": true, "reason": "only floor-emp_p candidate; 3.53 sigma < 4.23 bar; Bonferroni-adjusted emp_p ~0.14"},
+      {"combo": "value_M8_relative_value", "stat": "bbox_fill", "emp_p": 0.002, "z_tail": 1.1e-03, "sigma": 3.26, "B_flagged": false, "audit_agrees_reject": true},
+      {"combo": "pi_M6_relative_unit", "stat": "bbox_fill", "emp_p": 0.012, "z_tail": 8.8e-03, "sigma": 2.4, "B_flagged": false, "audit_agrees_reject": true},
+      {"combo": "value_M12_absolute_unit", "stat": "bbox_fill", "emp_p": 0.006, "z_tail": 1.0e-02, "sigma": 2.3, "B_flagged": false, "audit_agrees_reject": true},
+      {"combo": "value_M6_absolute_unit", "stat": "symmetry", "emp_p": 0.002, "z_tail": 0.127, "sigma": 1.5, "B_flagged": false, "audit_agrees_reject": true}
+    ],
+    "phase0_reference": "planted square fired 5/6 stats at p=0, self_intersections ~170x null mean (tens of sigma); a real made figure is not subtle",
+    "methods_caveat": "Bonferroni divisor uses full 432-cell family though only 4 shape stats reach the flag decision (288-cell). Larger divisor = more conservative bar = harder to flag = cannot cause a false negative. Direction safe.",
+    "conclusion": "B's 0-flagged-for-oracle is SOUND. No combo reopens.",
+    "any_combo_reopened": false
+  },
+  "no_silent_reread": {
+    "round11_lenses_checked": ["N1", "N2", "N3", "N4", "N5", "S1", "S2"],
+    "A": {"overlap": "none", "disclosed": true, "note": "acrostic of DECRYPTED plaintext; Round 11 worked ciphertext/number channel"},
+    "B": {"overlap": "partial (G3 coord_pair_rate ~ N2 route d, different statistic)", "disclosed": false, "severity": "low", "verdict_impact": "none"},
+    "C": {"overlap": "X4-totient re-adjudicates N5 (repaired instrument); X4 raw-prime-value/index new", "disclosed": true, "disclosure_complete": true, "note": "N4 used digit-planes not raw prime keystream; N2 read primes as data not keystream. C accounting verified accurate."},
+    "D": {"overlap": "none", "disclosed": true, "note": "S2 = inline separator glyphs, not page-scan illustrations; first drop-cap catalog"},
+    "verdict": "No lane silently re-reads a Round-11 NEGATIVE as new. C's X4/N5 disclosure is complete and exemplary. One low-severity undisclosed partial overlap (B/G3)."
+  },
+  "control_spotcheck": {
+    "A": {"recovery": 1.0, "bar": "excess-over-null", "uses_retired_5.5_bar": false, "null_seed_3301": true, "pass": true},
+    "B": {"phase0_fires": true, "square_fired_stats": 5, "blockcomb_fired_stats": 2, "bar": "geometry Bonferroni 2.3e-5", "null_seed_3301": true, "pass": true},
+    "C": {"recovery_all_controls": 1.0, "x3b_x4_is_hit": true, "heldout": 1.0, "bar": "panel-max 5-6.39", "uses_retired_5.5_bar": false, "null_seed_3301": true, "pass": true},
+    "D": {"controls_passed": "4/4 + page0=S", "bar": "p<0.01 Bonferroni", "null_seed_3301": true, "pass": true},
+    "any_lane_on_unvalidated_instrument": false,
+    "retired_5.5_bar_used_anywhere": false
+  },
+  "coverage": "All 4 Round-22 lanes audited on 3 axes: (1) B family-wise correction independently recomputed from raw ledger rows; (2) no-silent-reread cross-checked vs all 7 Round-11 lenses read from source; (3) one positive control per lane re-read for recovery>=0.90, bar provenance (no -5.5), seed-3301 nulls.",
+  "power": "Would flag: a real geometric outlier B suppressed (proved the components candidate a discrete-stat artifact, not a suppressed hit); an undisclosed re-read (found B G3/N2 coord overlap); a -5.5 relapse or non-3301 null (none); a control with recovery<0.90 (none).",
+  "not_covered": [
+    "re-execution of the 72-combo/185-op sweeps from source (trusted committed ledger rows as faithful to code)",
+    "numerical correctness of B's self_intersections sampler and D's colour-mask extractor beyond their passing planted controls",
+    "regeneration of the .gitignore'd PNG renders"
+  ]
+}

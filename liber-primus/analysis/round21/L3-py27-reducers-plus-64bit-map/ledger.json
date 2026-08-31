@@ -1,0 +1,72 @@
+[
+ {
+  "id": "R21-L3-PY27-REDUCERS",
+  "lane": "keystream",
+  "hypothesis": "The LP2 keystream was produced by a short Python 2.7 script on the author's Ubuntu 11.04-12.04 box: random.seed(<a Cicada-flavoured string literal>) reduced to a rune index by one of the three era-idiomatic Py2.7 reducers S-G3 (round20) never covered -- grb5_mod (getrandbits(5)%29), grb5_rej (getrandbits(5) rejecting 29..31), shuffle29 (repeated shuffle(range(29))) -- or by random29 (int(random()*29)) under the amd64 2-word init_by_array map, applied under the pinned soft anti-repeat filter. S-G3 covered only random29/i386-1word; this lane closes the reducer axis and the 64-bit ABI map axis SYNTHESIS 8.5 thread 2 left open.",
+  "status": "measured-bound",
+  "raw_status": "clean negative at stated coverage x power; family bounded, not closed",
+  "round": "21/L3",
+  "date": "2026-08-29",
+  "threshold": "Pre-registered in analysis/round21/L3-py27-reducers-plus-64bit-map/PREREG.md and FROZEN before any word was scored. SCREEN_BAR (Stage-A promote) pmax>=5.0. Claim/HIT bar = P3a panel-max bar 7.6342 (exact preset, N=1e6, alpha=0.01) -- NEVER -5.5, NEVER -12.5. Recovery bar 0.90 on rune indices from the DECODE PATH (not score; R's A-iv decoupling hazard). Held-out 3/4 self-consistency bar 0.90. HIT iff ALL THREE (hitfn20.is_hit); score alone is never a hit. Kill condition (Q5): a config whose positive control does not recover rank-1 at pmax>=bar through is_hit is a wiring gap -> skip it, do not report its null. Not editable after results.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "poscontrol.py re-run FRESH this session (out_poscontrol.json, exit 0, PASS_all=true, wiring_gaps=[]). Per (reducer,map) config plant P3b top word 1325734783 as w (amd64 config given nonzero high word so the 2-word init path is genuinely exercised), encipher EN_MODERN[2000:2240] via keyskip supp 0.83, recover through I1 keyskip1 -> I2 9-panel -> P3a bar -> hitfn20.is_hit: all four configs strict hit=True, pmax=28.268, recovery=1.000, heldout=1.000, preg=LP1_REAL, rank 1 of 99 wrong words in a +-500 neighbourhood (wrong-neighbourhood max pmax 3.239-4.059). Panelmax bar exact/1e6/alpha0.01 = 7.6341931878728095, unchanged from R19/R20. Power ~1.0 on the win-condition registers; the negative below is a real measured bound, not an unvalidated-instrument null.",
+  "null": "884,000 words screened across 4 (reducer,map) configs; 95 Stage-B survivors; 0 hits; 0 survivors clearing the 7.6342 claim bar (all 95 clears=false); 0 rows meeting all three hit clauses; 0 rows even pmax>=bar (so nothing enters L1's flagged-for-oracle channel). Best decode over all 884k words: pmax=6.248 (shuffle29, w=27069, LP1_REAL) -- 1.39 units below the bar. The 71 survivors carrying recovery=heldout=1.000 are the self-consistency proxy trivially recovering the wrong-key decode (why hitfn20 gates on pmax clearing the null, not recovery in isolation), NOT suppressed hits.",
+  "result": {
+   "total_words_screened": 884000,
+   "total_hits": 0,
+   "total_stage_b_survivors": 95,
+   "survivors_clearing_bar": 0,
+   "best_pmax_overall": 6.248,
+   "claim_bar": 7.6342,
+   "per_config": [
+    {"config": "grb5_mod_i386",  "reducer": "grb5_mod",  "map": "i386",  "words_screened": 288000, "fraction_pct": 0.006706, "survivors_stage_b": 21, "hits": 0, "max_pmax": 6.089, "extrapolated_full_2pow32_core_days": 10.9, "prior_words_all_screened": true},
+    {"config": "grb5_rej_i386",  "reducer": "grb5_rej",  "map": "i386",  "words_screened": 216000, "fraction_pct": 0.005029, "survivors_stage_b": 25, "hits": 0, "max_pmax": 5.260, "extrapolated_full_2pow32_core_days": 14.3, "prior_words_all_screened": true},
+    {"config": "shuffle29_i386", "reducer": "shuffle29", "map": "i386",  "words_screened": 186000, "fraction_pct": 0.004331, "survivors_stage_b": 24, "hits": 0, "max_pmax": 6.248, "extrapolated_full_2pow32_core_days": 18.4, "prior_words_all_screened": true},
+    {"config": "random29_amd64", "reducer": "random29",  "map": "amd64", "words_screened": 194000, "fraction_pct": 0.004517, "survivors_stage_b": 25, "hits": 0, "max_pmax": 5.341, "extrapolated_full_2pow32_core_days": 18.0, "prior_words_all_screened": true}
+   ],
+   "n_prior_words_per_config": 45975,
+   "full_2pow32_all_four_core_days_approx": 61
+  },
+  "coverage": "Per config, fraction of the 2^32 Py2.7 init_by_array word space screened, prior-dense first with all 45,975 prior words (433 P3b top seeds + top-64 +-512 neighbourhoods) FULLY covered before any dense-from-0 baseline: grb5_mod_i386 288,000 (6.706e-5 = 0.006706%), grb5_rej_i386 216,000 (5.029e-5), shuffle29_i386 186,000 (4.331e-5), random29_amd64 194,000 (4.517e-5). TOTAL 884,000. POWER: positive-control measured recovery 1.000 strict rank-1 at pmax 28.268 (~20 units over the bar) on the LP1_REAL/EN register, all four configs -> power ~1.0 on the win-condition registers (LP1_REAL/LATIN/OE/EN_MODERN/EN_KJV/DE/CY), 0.70 EN_NOVOWEL detection-only (median recovery 0.84<0.90 -> HITFN rejects), RAND 0.00, wrong-key 0.00 (inherits the S-G3 envelope). VALUE = coverage x power = high-power (~1.0) exclusion of a low-coverage (~5e-5 of 2^32) high-prior slice per config; the 45,975-word prior-dense front is fully excluded per config. Language-agnostic statistics (pmax, bar, decode-path recovery, held-out self-consistency, argmax register, beam score, clears) persisted per survivor at sweep time in reducers_sweep.jsonl SWEEPROW/3 (doctrine R3).",
+  "not_covered": [
+   "NC-1: the flat-prior tail of 2^32 for all 4 configs (>99.99% of each word space). Reopens if someone spends the ~10.9-18.4 core-days/config full enumeration (throughput measured, ~61 core-days for all four).",
+   "NC-2: the amd64 2-word map beyond the folded w->(lo,hi) image. This lane folds one 32-bit w deterministically into a 64-bit long (w*phi^-1 mod 2^64) to exercise the 2-word path; the full 2^64 hash image is a superset not enumerated. Reopens if the amd64 seed dictionary is extended or the 2^64 image is sampled/enumerated.",
+   "NC-3: random29/i386-1word -- already swept by S-G3 (round20: 2,458,000 words, 0.05723%, 0 hits); deliberately NOT re-run here (doctrine mechanic 6). Subsumed by NC-1's full-2^32 i386 enumeration.",
+   "NC-4: decoder relations other than keyskip1 (skip_by_two/keyskip2/non-keyskip; L7-B conditional). Reopens if a relation-axis lane plants and measures.",
+   "NC-5: registers outside the I2 9-panel, and EN_NOVOWEL (detection-only, power 0.70<gate; L7-A conditional). Reopens if the panel is extended or a per-register bar is calibrated.",
+   "NC-6: PYTHONHASHSEED/-R randomised hash, WichmannHill, float/jumpahead seeds, Python 2.6/2.5 (inherits S-G3 NC-5..NC-10). Reopens if added to REDUCERS and validated against a real interpreter.",
+   "NC-7: the /dev/urandom / unseeded branch -- no seed, no key. Untouched by any PRNG sweep (doctrine section 5 branch no compute reaches)."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round21/L3-py27-reducers-plus-64bit-map/PREREG.md",
+   "liber-primus/analysis/round21/L3-py27-reducers-plus-64bit-map/RESULTS.md",
+   "liber-primus/analysis/round21/L3-py27-reducers-plus-64bit-map/poscontrol.py",
+   "liber-primus/analysis/round21/L3-py27-reducers-plus-64bit-map/out_poscontrol.json",
+   "liber-primus/analysis/round21/L3-py27-reducers-plus-64bit-map/sweep.py",
+   "liber-primus/analysis/round21/L3-py27-reducers-plus-64bit-map/reducers_sweep.jsonl",
+   "liber-primus/analysis/round21/L3-py27-reducers-plus-64bit-map/out_reducers.json"
+  ],
+  "reproduce": "cd liber-primus && python3 tests/validate.py && cd analysis/round21/L3-py27-reducers-plus-64bit-map && python3 poscontrol.py && python3 sweep.py --seconds-per-config 240 --procs 5",
+  "supersedes": null,
+  "superseded_by": null,
+  "reopens_if": "Any of NC-1..NC-7 landing. Primarily: the full-2^32 enumeration of any of the 4 configs is run (NC-1, ~10.9-18.4 core-days each), the amd64 2^64 image is enumerated (NC-2), a new decoder relation (NC-4) or register (NC-5) is added, or a new Py2.x seed family (NC-6) is validated. Doctrine R7: this is a bound, not a verdict; the family is bounded, not closed.",
+  "priority": "medium",
+  "notes": "Finishes the S-G3 sweep SYNTHESIS 8.5 thread 2 left open. The sweep had been started and killed mid-run (reducers_sweep.jsonl was 0 bytes; out_poscontrol.json already present). This run completed it: 884,000 words, 0 hits, 0 bar-clearing survivors -- consistent with the standing OTP-class verdict for LP2 0-54. Consistent with R21-L1 (no-oracle proxy leak): there is no bar-clearing survivor to flag-for-oracle, so the leak is moot here. tests/validate.py PASSES 5/5 before the sweep. The three reducers grb5_mod/grb5_rej/shuffle29 + the amd64 2-word map are now measured-bound at the stated coverage; random29/i386-1word remains the S-G3-covered cell (NC-3).",
+  "null_stats": {
+   "screen_bar_pmax": 5.0,
+   "claim_bar_pmax": 7.6342,
+   "best_pmax": 6.248,
+   "n_stage_b_survivors": 95,
+   "n_survivors_clearing_bar": 0,
+   "n_rows_all_three_hit_clauses": 0,
+   "n_rows_pmax_ge_bar": 0
+  },
+  "trust_anchor": {
+   "before": "python3 liber-primus/tests/validate.py -> ALL VALIDATIONS PASSED (5/5), 2026-08-29",
+   "positive_control": "python3 poscontrol.py -> PASS_all=true, 4/4 configs recover at recovery 1.000 rank-1 pmax 28.268, exit 0, 2026-08-29"
+  },
+  "source_register": "liber-primus/analysis/round20/SYNTHESIS.md section 8.5 thread 2 (sweep the other three Py2.7 reducers + the 64-bit ABI word map); liber-primus/analysis/round19/G3/RESULTS.md section 2.5; LEDGER R19-G3 not_covered",
+  "evidence_missing": []
+ }
+]
