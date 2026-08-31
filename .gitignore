@@ -323,3 +323,14 @@ liber-primus/analysis/round24/**/*.log
 # Only caches and worker scratch are excluded.
 liber-primus/analysis/round25/**/__pycache__/
 liber-primus/analysis/round25/**/*.npz
+
+# Round 26 armada — raw per-decode sweep rows and run logs, regenerable by each lane's
+# committed sweep script (round26/{A,B,C}/*.py). The committed record is the summarized
+# JSON (control.json, sweep_summary.json, summary.json, seeds.json) + PREREG/RESULTS.md
+# + per-lane ledger.json fragments.
+liber-primus/analysis/round26/A/sweep.jsonl
+liber-primus/analysis/round26/A/run.out
+liber-primus/analysis/round26/B/sweep.jsonl
+liber-primus/analysis/round26/B/sweep_partial_off8.jsonl
+liber-primus/analysis/round26/B/sweep.log
+liber-primus/analysis/round26/C/rows.jsonl

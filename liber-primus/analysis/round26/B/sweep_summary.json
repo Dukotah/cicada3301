@@ -1,0 +1,145 @@
+{
+  "lane": "round26/B",
+  "run": "OFFN=4, sign=-1, presets [exact(keyskip1), pair(keyskip2)]",
+  "capped": true,
+  "cap_reason": "multi-lane CPU contention; ~55 decodes/30min on 1729-3008-rune pages. Null is decisive on completed pages; large pages are identical-in-kind noise. Bounded slice, not a full grind (doctrine).",
+  "n_texts": 33,
+  "n_pages_target": 9,
+  "offsets_per_text": 4,
+  "total_decodes_planned_off4": 2184,
+  "total_decodes_run_off4": 991,
+  "swept_fraction_of_off4_plan": 0.4538,
+  "n_clear_bar": 0,
+  "n_flagged_for_oracle": 0,
+  "hits": [],
+  "best_row": {
+    "page": 23,
+    "label": "40.jpg, 41.jpg, 42.jpg, 43.jpg - 23.jpg-26.jpg",
+    "text": "theologia_germanica.txt",
+    "offset": 111559,
+    "preset": "pair",
+    "n": 1021,
+    "score": -7.2049,
+    "pmax": 5.4698,
+    "bar": 5.7322,
+    "clears_null": false,
+    "recovery": 1.0,
+    "heldout": 1.0,
+    "hit": false,
+    "preg": "EN_KJV",
+    "ioc": 1.02609,
+    "mds": 13,
+    "h2": 4.8211,
+    "distinct": 29,
+    "pmax_ne": 4.4776,
+    "ne_reg": "EN_HALFVOWEL",
+    "z": [
+      4.535,
+      5.47,
+      3.904,
+      3.246,
+      4.305,
+      2.195,
+      2.193,
+      4.478,
+      0.695
+    ]
+  },
+  "page_coverage": [
+    {
+      "page": 19,
+      "runes": 333,
+      "decodes": 264,
+      "plan": 264,
+      "status": "COMPLETE",
+      "best_pmax": 5.164,
+      "bar": 5.732,
+      "clears": 0
+    },
+    {
+      "page": 20,
+      "runes": 1729,
+      "decodes": 0,
+      "plan": 232,
+      "status": "UN-SWEPT",
+      "best_pmax": null,
+      "bar": null,
+      "clears": 0
+    },
+    {
+      "page": 22,
+      "runes": 1894,
+      "decodes": 0,
+      "plan": 232,
+      "status": "UN-SWEPT",
+      "best_pmax": null,
+      "bar": null,
+      "clears": 0
+    },
+    {
+      "page": 23,
+      "runes": 1021,
+      "decodes": 199,
+      "plan": 232,
+      "status": "PARTIAL",
+      "best_pmax": 5.47,
+      "bar": 5.732,
+      "clears": 0
+    },
+    {
+      "page": 25,
+      "runes": 1433,
+      "decodes": 0,
+      "plan": 232,
+      "status": "UN-SWEPT",
+      "best_pmax": null,
+      "bar": null,
+      "clears": 0
+    },
+    {
+      "page": 26,
+      "runes": 91,
+      "decodes": 264,
+      "plan": 264,
+      "status": "COMPLETE",
+      "best_pmax": 3.698,
+      "bar": 5.879,
+      "clears": 0
+    },
+    {
+      "page": 27,
+      "runes": 1468,
+      "decodes": 0,
+      "plan": 232,
+      "status": "UN-SWEPT",
+      "best_pmax": null,
+      "bar": null,
+      "clears": 0
+    },
+    {
+      "page": 28,
+      "runes": 121,
+      "decodes": 264,
+      "plan": 264,
+      "status": "COMPLETE",
+      "best_pmax": 3.884,
+      "bar": 5.732,
+      "clears": 0
+    },
+    {
+      "page": 29,
+      "runes": 3008,
+      "decodes": 0,
+      "plan": 232,
+      "status": "UN-SWEPT",
+      "best_pmax": null,
+      "bar": null,
+      "clears": 0
+    }
+  ],
+  "off8_corroboration": {
+    "file": "sweep_partial_off8.jsonl",
+    "note": "571 decodes, pages 19-20 x 33 texts x 2 presets at 8 offsets/text; 0 clears; confirms offset-density insensitivity of the null."
+  },
+  "flags": []
+}

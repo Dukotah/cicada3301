@@ -1,6 +1,6 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-08-31** at the park of Round 25 (originally opened 2026-08-29 at the close of
+_Refreshed **2026-08-31** at the close of Round 26 (originally opened 2026-08-29 at the close of
 Round 22). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md) and query
 [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare `status`)._
 
@@ -9,10 +9,10 @@ where to spend effort (rather than picking up this project's own threads), read
 [`handoff/SOLVER-STRATEGY-2026.md`](handoff/SOLVER-STRATEGY-2026.md). Trust anchor:
 `python liber-primus/tests/validate.py` → `ALL VALIDATIONS PASSED` (5/5), passing through
 Round 25 and re-verified 2026-08-31 (`pytest -m "not network"` 85 passed).
-`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **152 entries**
-(R22-A/B/C/D/R, R23-A2, R24 ×5, R25 merged — and, filed 2026-08-31, the ten Round-20 lanes
-that had never been transcribed into the ledger: R20-P1/P2/P3/HITFN/R/N1/N2/S-G3/S-RESCOPE/
-S-MARS).
+`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **156 entries**
+(R22-A/B/C/D/R, R23-A2, R24 ×5, R25 merged, the ten Round-20 lanes filed 2026-08-31, and now
+**Round 26 ×4**: R26-A-GEN-SWEEP-FIRST-FIRE [partially-run], R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE
+[partially-run], R26-C-SEMANTIC-SEED-ZOO [negative], R26-D-REDTEAM [audit]).
 
 **The Round 23 seed at the bottom of
 [`analysis/NEXT-ARMADA-ROADMAP.md`](analysis/NEXT-ARMADA-ROADMAP.md) ("ROUND 23 SEED") has been
@@ -24,14 +24,23 @@ conditionals (the negatives hold under the corrected scorers and the skip-aware 
 Round 25 began the owner-elected grind of the last runnable branch (the Py2.7-MT 2³² tail),
 **parked at 0.5015 % coverage, 0 hits, fully resumable**.
 
-> **Round 26 is IN FLIGHT as of this refresh (2026-08-31, parallel session, not yet closed into
-> the nav docs or the ledger).** Three lanes under `analysis/round26/`: **A** fires the
-> built-but-never-swept R19 derived-key generators (Perl G2 / TeX G4 / Py2.7 G3) through the
-> skip-aware gate (sweep running at write time); **B** executes R12-C2's staged-but-never-run
-> keytext running-key sweep (RESULTS filed: 1,562 decodes, 0 bar-clears, some large pages
-> honestly capped/un-swept); **C** enumerates semantic seeds × a generator zoo (RESULTS filed,
-> control min recovery 0.992). Whoever closes Round 26: merge its lane ledgers into
-> `LEDGER.json`, add the nav rows, and update this file — the doctrine's closeout rules apply.
+> **Round 26 is CLOSED (2026-08-31).** Merged, validated (Unsound-negatives = 0), trust anchor
+> 5/5. Four lanes under `analysis/round26/` (SYNTHESIS: [`analysis/round26/SYNTHESIS.md`](analysis/round26/SYNTHESIS.md)):
+> **A** fired the built-but-never-swept R19 generators — first-ever scored decodes for **Perl** (G2,
+> was zero seeds) and **TeX** (G4, was zero decodes), plus the Py2.7 reducers on the **distinct
+> amd64-w64 / non-zero-offset / `skip_by_two`** axis R21-L3 never ran; all control-validated at
+> 1.000 recovery, 0 clears over the prior-dense front (dense-from-0 baseline tail still running at
+> close-out → row is **partially-run**/interim). **B** executed R12-C2's staged-but-never-run
+> 33-keytext running-key sweep skip-aware: **0/1,562** clears, 3 of 9 pages complete at 4 offsets,
+> large pages honestly capped into `not_covered` (**partially-run**). **C** enumerated a bounded
+> **323-value corpus-semantic seed set × 7 generators × 2 decoders = 4,274 rows at 100 % coverage**
+> (incl. the page-56 totient/prime ladder), control min recovery 0.9917, best screen −6.578
+> (flat-random), **0 escalated** (**negative**). **D** red-team: **NO-ERROR-FOUND**, coverage×power
+> reproduced from raw rows, no silent re-run, no FP-inflation, two MINOR hygiene defects noted.
+> **0 oracle flags, no stop-and-alert. OTP-class verdict UNCHANGED — hardened along three
+> previously un-swept axes, not overturned.** One loose thread: Lane A's dense-from-0 baseline
+> sweep (`analysis/round26/A/sweep.py`) is still running in the background; it only extends the
+> same null and finalizes `control.json` on completion.
 
 ---
 

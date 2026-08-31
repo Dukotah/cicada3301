@@ -47,6 +47,16 @@ cryptanalysis rig, a provenance-verified dataset, and the consolidated findings.
 - **Round 25** is the owner-elected compute grind of the last runnable branch — the Py2.7-MT
   2³² seed tail — **parked mid-sweep at 0.5015 % coverage, 0 hits**, fully resumable from
   committed checkpoints.
+- **Round 26** fired the three *built-but-never-swept* instruments and one live reframe, each
+  control-validated first: the **Perl `rand`** (R19-G2, previously **zero** seeds) and **TeX RNG**
+  (G4-TEX, previously **zero** decodes) generators got their first-ever scored decodes; the Py2.7
+  reducers were swept on the **distinct amd64-w64 / non-zero-offset / `skip_by_two`** axis R21-L3
+  never touched (Lane A). **R12-C2's staged-but-never-run 33-keytext running-key sweep** finally ran,
+  skip-aware (Lane B, 0/1,562 clears). And the **semantic-seed** reframe — *the puzzle must be
+  solvable, so try each corpus value AS A SEED* through the generator zoo incl. the totient/prime
+  ladder that solves page 05 — swept **100 % of a bounded 323-value set × 7 generators** (Lane C,
+  flat-random, 0 escalated). All three **HARDEN** the branch along previously un-swept axes; red-team
+  **NO-ERROR-FOUND**, **0 oracle flags, no stop-and-alert**.
 
 The standing verdict through all of it: **LP2 0–54 is OTP-class**, with a soft anti-repeat
 rewrite acting on the ciphertext output. → [`PICKUP-HERE.md`](PICKUP-HERE.md).

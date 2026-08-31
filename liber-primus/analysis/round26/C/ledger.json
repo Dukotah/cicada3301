@@ -1,0 +1,44 @@
+{
+ "entries": [
+  {
+   "id": "R26-C-SEMANTIC-SEED-ZOO",
+   "lane": "round26/C",
+   "round": 26,
+   "date": "2026-08-31",
+   "hypothesis": "LP2 0-54 uses a DERIVED key whose seed, being part of a solvable-by-design puzzle, is SEMANTIC (a corpus value) rather than /dev/urandom. Enumerate the bounded corpus-semantic candidate SEED set and feed EACH value AS A SEED (not as a direct key) through a generator zoo that INCLUDES the totient/prime ladder generators that validate.py proves reproduce a solved LP page (05.jpg), then decode skip-aware and certify through hitfn20.",
+   "status": "NEGATIVE",
+   "verdict": "OTP-class hardened along the semantic-seed axis; 100% of the enumerated set swept, flat-random, zero survivors, zero oracle flags.",
+   "threshold": "hitfn20 three-clause gate: pmax >= P3 panel-max null bar AND rune-index recovery >= 0.90 AND held-out 3/4 recovery >= 0.90; screen escalation bar 5.0 (frozen, = C2 / S-G3).",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "control.py: enc_skip_by_two (j+=2 per rejection, supp=0.83) English plant, keystream from a SEMANTIC seed through EVERY generator; requires recovery >= 0.90 + HIT=True before any null counts.",
+   "control_detail": "measured control min recovery = 0.9917 (all 7 generators int-seed 3301 recover 1.000 HIT=True; py27 str-seed 'THE PRIMES ARE SACRED' recovers 0.992 HIT=True). ALL PASS. The pair (keyskip2) relation is required (plain beam ~0.26 on skip_by_two, L7-B).",
+   "result": "4,274 (seed x generator x decoder) rows, 100% of the enumerated 323-value semantic-seed set x 7 generators x 2 decoders at offset 0. best screen score = -6.578 (bar 5.0; gap > 11.5). 0 survivors escalated, 0 flagged_for_oracle. Language-agnostic: IoC*N median 0.999 (flat-random for N=29), entropy median 4.679 of 4.858 max, min-distinct-32 median 17. The single best decode (seed=3 through the page-56 prime_totient ladder) is still pure noise.",
+   "coverage": "323/323 deduplicated corpus-semantic SEEDS (292 int: primes/totients/prime-indices/notable Cicada ints incl 3301, 509/503, 0x7A35090F fragments, 2012 P.S. digits, telnet/onion primes, dates unix+cal, coords, canon256 sum; 31 str: gematria sums + string forms of solved-plaintext & koan phrases) x 7 generators (gen_py27 {random29, grb5_mod, grb5_rej}, gen_perl glibc g_r29, ciphers.py {prime, totient, prime_totient} ladders with start=seed) x 2 decoders (keyskip1 exact + keyskip2 pair). FULLY swept at offset 0. ~0% of raw 2^32 by construction -- the claim is the enumerated semantic set, not a 2^32 slice.",
+   "not_covered": [
+    "Offsets != 0 for any generator (only o=0 swept).",
+    "Semantic seeds outside the 323-value corpus enumeration (e.g. multi-word phrase permutations, per-page keyword cues, base-N re-encodings of the same constants).",
+    "Rejection loops burning > 2 draws per rejection, and permissive-drift decode relations (outside keyskip1/keyskip2).",
+    "Generators outside the zoo: Java LCG (no JVM on machine), xorshift/PCG/WELL/KISS, TeX-side RNGs (G4-TEX-RNG lane), KDF-wrapped semantic seeds (R16-KDF axis).",
+    "Ladder start-offset injection beyond seed % 5000 (the reduction chosen for enumerability); a raw >5000 start-index reopens per ladder.",
+    "Pre-language payload registers (base32/gzip/IoC-only) before English adjudication.",
+    "The raw 2^32 word-seed tail (R21-L3 / R25-COMPUTE-TAIL axis) -- a different, non-semantic seed source."
+   ],
+   "reopens_if": "a semantic seed source beyond the 323-value enumeration is proposed, OR a generator/decoder relation outside this zoo is added, OR offsets != 0 are swept for the semantic set.",
+   "supersedes": "",
+   "restates": "",
+   "artifacts": [
+    "analysis/round26/C/PREREG.md",
+    "analysis/round26/C/build_seeds.py",
+    "analysis/round26/C/seeds.json",
+    "analysis/round26/C/control.py",
+    "analysis/round26/C/control.json",
+    "analysis/round26/C/sweep.py",
+    "analysis/round26/C/rows.jsonl",
+    "analysis/round26/C/summary.json",
+    "analysis/round26/C/RESULTS.md"
+   ],
+   "evidence": "Extends R16-PRNG not_covered ('secrets outside the tested list', 'rejection samplers consuming more than one draw per rejection'), R16-KDF not_covered ('secrets outside the 534-item list', 'multi-stage constructions'), and R21-L3-PY27-REDUCERS (which swept RAW init_by_array word-integers, NOT semantic values through the py27_seed hash/abs+chunk SEED path, and never the glibc or ladder generators). Does NOT duplicate R25-COMPUTE-TAIL-CHUNK1 (contiguous 2^32 word-integer tail, offset 0, py27 random29 only) -- different generators + a different (semantic, enumerated) seed source. R11 tested corpus numbers as DATA/feedback channels, not as SEEDS of a generator zoo.",
+   "notes": "The page-56-class ladder generators (prime_totient / totient / prime) that validate.py proves reproduce solved page 05 produce only flat-random noise on 0-54 for every one of the 323 semantic seeds. This is the strongest available disproof of the 'puzzle must be solvable, so try the corpus value as a seed through the method that already solved a page' hope, for this bounded high-prior-per-item set. Instrument power proven (control 0.99); space bounded and fully swept; result flat-random (IoC*N median 0.999). No STOP-AND-ALERT."
+  }
+ ]
+}

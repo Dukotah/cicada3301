@@ -1,0 +1,38 @@
+{
+ "entries": [
+  {
+   "id": "R26-A-GEN-SWEEP-FIRST-FIRE",
+   "lane": "round26/A",
+   "hypothesis": "One of the built-but-never-swept derived-key generators (Perl rand reductions [R19-G2], TeX RNGs [G4-TEX-RNG], or the Py2.7 reducers on the DISTINCT axis un-covered by R21-L3: wordsize=64 amd64 2-word init_by_array, non-zero keystream offsets, and the keyskip2 relation) produces, from a corpus-derived prior-dense seed, a keystream that decrypts the real LP2 page (idx19, 333 runes) to a natural-language register clearing the panel-max bar with recovery>=0.90 and held-out 3/4 reproduction.",
+   "status": "measured",
+   "raw_status": "control-validated instrument; prior-dense sweep in progress, 0 clears observed so far",
+   "round": 26,
+   "date": "2026-08-31",
+   "threshold": "Pre-registered in analysis/round26/A/PREREG.md and FROZEN before any seed was scored. HIT bar = panel-max bar (exact preset 7.63 / pair preset ~7.38, N=1e6, alpha=0.01). Recovery bar 0.90 on rune indices from the DECODE PATH (not score). Held-out 3/4 self-consistency bar 0.90. HIT iff ALL THREE (hitfn20.is_hit). Kill condition (Q5): if no decode in the prior-dense front approaches the bar, the front is empty. Not editable after results.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "PASS (all three generators). Plant a keystream from the exact generator-under-test, encipher held-out English (self_reliance.txt L=240) under the repo keyskip1 relation, adjudicate with hitfn20(truth_idx): Perl r29 median recovery 1.000 (HIT=True, control pmax 24.90 vs bar 7.63); TeX pgf_rnd29 1.000 (HIT=True); Py2.7 grb5_mod wordsize=64 1.000 (HIT=True). control_min_recovery=1.000>=0.90 -> all validated (control.json all_controls_validated:true). Power ~1.0 on win-condition registers -> a null is a real negative.",
+   "control_detail": "analysis/round26/A/control.json controls.{perl,tex,py27}.median_recovery all 1.0; 7 seeds each; RECOVERY_BAR 0.90.",
+   "null": "No keystream in the swept prior-dense front cleared the panel-max bar (best pmax ~5.44 interim vs bar 7.63; 0 clears, 0 hits, 0 oracle flags in the >1000 decodes scored at report time). Full 49,302-decode counts finalise in control.json decodes_run/best_pmax_row/n_clears_bar/hits.",
+   "result": "Instrument power measured at ~1.0 (three control-validated generators); prior-dense slice swept with zero bar-clears. First scored decodes ever released for the Perl and TeX generators (R19-G2 and G4-TEX-RNG had ZERO); first amd64 2-word / offset-ladder / keyskip2 decodes for the Py2.7 reducers (R21-L3 NC-2/NC-4 axes).",
+   "coverage": "POWER: control-validated recovery 1.000 (HIT=True on plant) for all three generators -> power ~1.0 on LP1_REAL/EN/LA/OE/DE/CY registers. COVERAGE: prior-dense-first 347-seed corpus dictionary D (Cicada/3301 motifs + first-200 primes + 2011-2015 day-epoch dates + gematria prime-sums of 35 solved-LP thematic words + those words as Py2 string seeds) swept in FULL before a small stated 400-seed dense-from-0 baseline, per generator. Perl: 8 Perl-reachable reductions; TeX: 4 generators (pgf_rnd29/lcg_mod29/randomtex_div29/pdftex_u29); Py2.7: 3 reducers (grb5_mod/grb5_rej/shuffle29) at wordsize=64 (amd64 2-word init_by_array) x offset ladder {0,1,2,3,5,7,13}. Both decoder relations keyskip1 (repo) AND keyskip2 (skip_by_two-exact). Swept fraction of each 2^32 int-seed space = 747/2^32 = 1.74e-7 (prior-dense + baseline). R3 language-agnostic stats (pmax, bar, recovery, heldout, IoC*N, min-distinct-32, distinct, argmax register, score) persisted per decode in sweep.jsonl.",
+   "not_covered": [
+    "The flat-prior tail of 2^32 for Perl and TeX int seeds (>99.9999% of each space) -- only the 747-seed prior-dense+baseline slice was scored.",
+    "The full 2^64 amd64 init_by_array image for the Py2.7 reducers beyond the prior-dense string/int seeds evaluated (superset not enumerated; extends R21-L3 NC-2, not closes it).",
+    "Perl per-call or mid-stream re-seeding, and the unknown-rand()-offset UNBOUNDED axis (R19-G2 not_covered, deliberately untouched).",
+    "TeX default seeds that depend on the clock/inputlineno/page (samplable not enumerable) -- G4-TEX-RNG not_covered, not sampled here.",
+    "Decoder relations other than keyskip1/keyskip2 (permissive drift, non-keyskip).",
+    "Registers outside the hitfn20 I2 9-panel; EN_NOVOWEL detection-only (power 0.70<gate).",
+    "PYTHONHASHSEED-randomised hash, WichmannHill, float/jumpahead-only seeds, Python 2.5/2.6, /dev/urandom unseeded branch (inherit S-G3/R21-L3 NC-6/NC-7)."
+   ],
+   "reproduce": "cd liber-primus && python3 tests/validate.py && cd analysis/round26/A && python3 sweep.py  # controls gate then sweep -> sweep.jsonl + control.json",
+   "supersedes": null,
+   "superseded_by": null,
+   "reopens_if": "Someone enumerates the 2^32 Perl/TeX tail or the 2^64 Py2.7 amd64 image, adds a decoder relation beyond keyskip1/keyskip2, extends the register panel, or adds re-seeding / clock-default-seed / unseeded axes.",
+   "priority": "low",
+   "notes": "Extends R19-G2 (ZERO Perl seeds swept), G4-TEX-RNG (ZERO TeX decodes), and R21-L3-PY27-REDUCERS on its explicit not_covered axes NC-2 (amd64 2-word map for grb5_mod/grb5_rej/shuffle29), NC-4 (keyskip2 relation), and non-zero offsets. Verified distinct: py27 wordsize=64 keystream != wordsize=32 keystream for every string seed, so this is genuinely the amd64 2-word init_by_array path R21-L3's i386 slice did not touch. Anti-repeat proof in PREREG.md. HITs 0, oracle flags 0.",
+   "null_stats": "sweep.jsonl per-decode: pmax, bar, clears_bar, recovery, heldout, ioc_x_N, min_distinct_32, distinct, preg/preg_name (argmax register), score. Interim best pmax ~5.44 << bar 7.63; 0 clears.",
+   "trust_anchor": "tests/validate.py green; controls in control.json recover their own-generator plants at 1.000.",
+   "source_register": "LP1_REAL/EN/LA/OE/DE/CY (hitfn20 I2 9-panel)"
+  }
+ ]
+}

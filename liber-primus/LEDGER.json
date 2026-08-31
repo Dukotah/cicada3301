@@ -21,18 +21,18 @@
   "audit"
  ],
  "counts": {
-  "total": 152,
+  "total": 156,
   "by_status": {
    "measured": 47,
-   "negative": 37,
-   "audit": 22,
+   "negative": 38,
+   "audit": 23,
    "open": 21,
-   "partially-run": 12,
+   "partially-run": 14,
    "never-run": 6,
    "eliminated": 5,
    "superseded": 2
   },
-  "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF. Round 18 merged 2026-08-26: 8 lanes, 31 fragment entries. L7 restated the coverage of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD and B-21 -- every prior negative in this repo is an English-register negative, which no entry had stated. Original coverage text is preserved in each entry's `restated_from`. Two statuses were added in the Round 18 merge: `measured` (a definite non-null determination) and `audit` (a recomputation or coverage restatement, which has no null and no threshold). The positive-control gate still applies to `negative`/`eliminated` only, so it retains exactly its former force. | Round 19 merged 2026-08-26: 41 new entries, 10 restated. Instrument repaired (I1 decoder, I2 adjudicator, I3 thresholds); the -5.5 bar was wrong in 14/14 historical sweeps, usually too strict, and no verdict flips. Transcription closed by T1/T2/T3 from three independent directions: canon is correct. Payload bytes 45/50/246 corrected by C1, voiding B-05, which was re-run clean. | Round 21 merged 2026-08-29: 4 lane entries (R21-L1-SEAL, R21-L2-NSKIPS-CROSSOVER-LENGTH, R21-L3-PY27-REDUCERS, R21-L5-REDTEAM-SEAL). L1 KILL: the no-oracle disjoint-fold seal is provably leaky (best 0.80 catch @ 0.20 false-reject, cannot reach the pre-registered 0.90 bar; held-out false-reject drifts to 0.167) -> Round 21 HIT auto-certification WITHHELD, bar-clearing survivors flagged-for-oracle. L3 CLEAN NEGATIVE: 884k words across grb5_mod/grb5_rej/shuffle29 (i386) + random29 (amd64), 0 hits, 4/4 positive controls recover 1.000, best pmax 6.248 vs 7.634 bar; family bounded (>99.99% flat-prior tail + 2^64 amd64 image + S-G3 gaps) NOT closed. L2 (instrument): n_skips crossover L*=6000 on the exact keyskip1 relation (bracket (3600,6000]) -- any whole-book n_skips adjudication needs a window >= ~6000 runes; drift 'separation' is a left-tail artifact, skip_by_two is beam-unrepresentable. L5 red-team MIXED: confirms L1-KILL, and NO-ERROR-FOUND on no-silent-re-run, FP-inflation-not-reintroduced, and honest row gate. OTP-class verdict for LP2 0-54 UNCHANGED. NB: R20 lane bodies (P1/P2/P3/R/N1/N2) remain in analysis/round20/ prose; only L1-PRIOR-PROPAGATION and C-CANON-PAYLOAD-3BYTES were given central rows in the R20 merge. Round 22 merged 2026-08-29 (coordinator): 5 lanes. Lane B pre-merged R22-B-TURTLE + R22-C-LITERAL-IMPERATIVES (130->132); coordinator appended R22-A-SELFEMBEDDED-READ, R22-D-ILLUSTRATION-DROPCAP (both negative, control-validated) and R22-R-REDTEAM (audit, NO-ERROR-FOUND) -> 132->135. Round 22 read the four signed-hint channels for the first time: self-embedded plaintext acrostic (X2/A), numbers-as-direction (G1/B), koans-as-operations (X1/X3/X4/C), art-as-data (S3/D) -- all CLEAN control-validated NEGATIVES. Standing verdict unchanged: LP2 0-54 remains OTP-class. Sharpest surviving reopener = A's printed-line-geometry acrostic (real page-image line breaks). validate.py 5/5 and validate_ledger.py Unsound=0 before and after."
+  "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF. Round 18 merged 2026-08-26: 8 lanes, 31 fragment entries. L7 restated the coverage of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD and B-21 -- every prior negative in this repo is an English-register negative, which no entry had stated. Original coverage text is preserved in each entry's `restated_from`. Two statuses were added in the Round 18 merge: `measured` (a definite non-null determination) and `audit` (a recomputation or coverage restatement, which has no null and no threshold). The positive-control gate still applies to `negative`/`eliminated` only, so it retains exactly its former force. | Round 19 merged 2026-08-26: 41 new entries, 10 restated. Instrument repaired (I1 decoder, I2 adjudicator, I3 thresholds); the -5.5 bar was wrong in 14/14 historical sweeps, usually too strict, and no verdict flips. Transcription closed by T1/T2/T3 from three independent directions: canon is correct. Payload bytes 45/50/246 corrected by C1, voiding B-05, which was re-run clean. | Round 21 merged 2026-08-29: 4 lane entries (R21-L1-SEAL, R21-L2-NSKIPS-CROSSOVER-LENGTH, R21-L3-PY27-REDUCERS, R21-L5-REDTEAM-SEAL). L1 KILL: the no-oracle disjoint-fold seal is provably leaky (best 0.80 catch @ 0.20 false-reject, cannot reach the pre-registered 0.90 bar; held-out false-reject drifts to 0.167) -> Round 21 HIT auto-certification WITHHELD, bar-clearing survivors flagged-for-oracle. L3 CLEAN NEGATIVE: 884k words across grb5_mod/grb5_rej/shuffle29 (i386) + random29 (amd64), 0 hits, 4/4 positive controls recover 1.000, best pmax 6.248 vs 7.634 bar; family bounded (>99.99% flat-prior tail + 2^64 amd64 image + S-G3 gaps) NOT closed. L2 (instrument): n_skips crossover L*=6000 on the exact keyskip1 relation (bracket (3600,6000]) -- any whole-book n_skips adjudication needs a window >= ~6000 runes; drift 'separation' is a left-tail artifact, skip_by_two is beam-unrepresentable. L5 red-team MIXED: confirms L1-KILL, and NO-ERROR-FOUND on no-silent-re-run, FP-inflation-not-reintroduced, and honest row gate. OTP-class verdict for LP2 0-54 UNCHANGED. NB: R20 lane bodies (P1/P2/P3/R/N1/N2) remain in analysis/round20/ prose; only L1-PRIOR-PROPAGATION and C-CANON-PAYLOAD-3BYTES were given central rows in the R20 merge. Round 22 merged 2026-08-29 (coordinator): 5 lanes. Lane B pre-merged R22-B-TURTLE + R22-C-LITERAL-IMPERATIVES (130->132); coordinator appended R22-A-SELFEMBEDDED-READ, R22-D-ILLUSTRATION-DROPCAP (both negative, control-validated) and R22-R-REDTEAM (audit, NO-ERROR-FOUND) -> 132->135. Round 22 read the four signed-hint channels for the first time: self-embedded plaintext acrostic (X2/A), numbers-as-direction (G1/B), koans-as-operations (X1/X3/X4/C), art-as-data (S3/D) -- all CLEAN control-validated NEGATIVES. Standing verdict unchanged: LP2 0-54 remains OTP-class. Sharpest surviving reopener = A's printed-line-geometry acrostic (real page-image line breaks). validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 26 merged 2026-08-31 (coordinator): 4 entries (R26-A-GEN-SWEEP-FIRST-FIRE partially-run, R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE partially-run, R26-C-SEMANTIC-SEED-ZOO negative, R26-D-REDTEAM audit). Lane A fired the built-but-never-swept generators for the FIRST time (R19-G2 Perl: was ZERO seeds; G4-TEX: was ZERO decodes) plus the Py2.7 reducers on the DISTINCT amd64-w64 / non-zero-offset / keyskip2 axis un-covered by R21-L3 -- control-validated at 1.000 recovery per generator, 0 clears over the prior-dense front (baseline tail still running, interim). Lane B executed R12-C2s staged-but-never-run 33-keytext running-key sweep skip-aware (rigid was already doublet-excluded): 0/1,562 clears, 3 of 9 pages complete at 4 offsets, control 1.000 both presets. Lane C enumerated the bounded 323-value corpus-SEMANTIC seed set x 7 generators (incl. the page-56 totient/prime ladder that solves page 05) x 2 skip-aware decoders = 4,274 rows at 100% coverage, control min recovery 0.9917, best screen -6.578 (flat-random), 0 escalated. Lane D red-team: NO-ERROR-FOUND, coverage x power reproduced, no silent re-run, no FP-inflation, two MINOR hygiene defects noted. OTP-class verdict for LP2 0-54 UNCHANGED -- HARDENED along three previously un-swept instrument axes, not overturned. No oracle-flagged survivor, no STOP-AND-ALERT. validate.py 5/5 and validate_ledger.py Unsound=0 before and after."
  },
  "entries": [
   {
@@ -6146,6 +6146,109 @@
     "analysis/round20/S-MARS/out/control.json",
     "analysis/round20/SYNTHESIS.md"
    ]
+  },
+  {
+   "id": "R26-A-GEN-SWEEP-FIRST-FIRE",
+   "lane": "round26/A",
+   "hypothesis": "One of the built-but-never-swept derived-key generators (Perl rand reductions [R19-G2], TeX RNGs [G4-TEX-RNG], or the Py2.7 reducers on the DISTINCT axis un-covered by R21-L3: wordsize=64 amd64 2-word init_by_array, non-zero keystream offsets, and the keyskip2 relation) produces, from a corpus-derived prior-dense seed, a keystream that decrypts the real LP2 page (idx19, 333 runes) to a natural-language register clearing the panel-max bar with recovery>=0.90 and held-out 3/4 reproduction.",
+   "status": "partially-run",
+   "raw_status": "control-validated instrument (all 3 gens recover plant 1.000/HIT); prior-dense front COMPLETE + null; dense-from-0 baseline sweep in progress at close-out",
+   "round": 26,
+   "date": "2026-08-31",
+   "threshold": "Pre-registered in analysis/round26/A/PREREG.md and FROZEN before any seed was scored. HIT bar = panel-max bar (exact preset 7.63 / pair preset ~7.38, N=1e6, alpha=0.01). Recovery bar 0.90 on rune indices from the DECODE PATH (not score). Held-out 3/4 self-consistency bar 0.90. HIT iff ALL THREE (hitfn20.is_hit). Kill condition (Q5): if no decode in the prior-dense front approaches the bar, the front is empty. Not editable after results.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "PASS (all three generators). Plant a keystream from the exact generator-under-test, encipher held-out English (self_reliance.txt L=240) under the repo keyskip1 relation, adjudicate with hitfn20(truth_idx): Perl r29 median recovery 1.000 (HIT=True, control pmax 24.90 vs bar 7.63); TeX pgf_rnd29 1.000 (HIT=True); Py2.7 grb5_mod wordsize=64 1.000 (HIT=True). control_min_recovery=1.000>=0.90 -> all validated (control.json all_controls_validated:true). Power ~1.0 on win-condition registers -> a null is a real negative.",
+   "control_detail": "analysis/round26/A/control.json controls.{perl,tex,py27}.median_recovery all 1.0; 7 seeds each; RECOVERY_BAR 0.90.",
+   "null": "No keystream in the swept prior-dense front cleared the panel-max bar (best pmax ~5.44 interim vs bar 7.63; 0 clears, 0 hits, 0 oracle flags in the >1000 decodes scored at report time). Full 49,302-decode counts finalise in control.json decodes_run/best_pmax_row/n_clears_bar/hits.",
+   "result": "INTERIM null: >=7,194 of 49,302 planned decodes scored at close-out, 0 clear the panel-max bar, 0 HITs, 0 flagged-for-oracle. Best pmax 5.438 vs 7.63/7.38 bars (deep in noise). All 15 generator axes present (8 Perl reductions + 4 TeX + 3 Py2.7 reducers at wordsize=64/non-zero-offset/keyskip2). The 347-seed corpus-derived prior-dense FRONT is fully swept and empty (Q5 kill-checkpoint: front is empty). The remaining ~42k decodes are the flat-prior dense-from-0 baseline (near-zero information), running in background; it only confirms more of the same null. control.json finalize block had not executed at close-out.",
+   "coverage": "First-ever SCORED decodes for the Perl (R19-G2, was ZERO seeds) and TeX (G4-TEX-RNG, was ZERO decodes) generators, and first amd64 2-word init_by_array / non-zero-offset / keyskip2 decodes for the Py2.7 reducers (R21-L3 NC-2/NC-4 axes, py27 wordsize=64 keystream proven != i386 wordsize=32 for string seeds). 347 corpus-derived prior-dense seeds swept FULLY first (COMPLETE, 0 clears), then a stated dense-from-0 baseline. Slice = ~747 seeds / 2^32 int-seed space = 1.74e-7 per generator/reduction, x {keyskip1,keyskip2}.",
+   "not_covered": "The flat 2^32 (Perl/TeX) and 2^64 (Py2.7 amd64) seed tails (>99.99%). The ~42k dense-from-0 baseline decodes still running at close-out (interim). RE-RUN HYGIENE (red-team MINOR): 228 py27 int-seed rows at offset0/keyskip1/wordsize=64 are byte-identical to wordsize=32, contradicting A PREREG promise to skip that cell -- but they use semantic int seeds, NOT R21-L3 init_by_array words, so no existing negative is reproduced; scope-hygiene only, result unchanged (0 clears).",
+   "reproduce": "cd liber-primus && python3 tests/validate.py && cd analysis/round26/A && python3 sweep.py  # controls gate then sweep -> sweep.jsonl + control.json",
+   "supersedes": null,
+   "superseded_by": null,
+   "reopens_if": "A GPU/C port finishes the flat 2^32/2^64 tails; or a new corpus-derived seed family, generator (bash $RANDOM, .NET), or non-zero offset outside this slice is identified.",
+   "priority": "low",
+   "notes": "Extends R19-G2 (ZERO Perl seeds swept), G4-TEX-RNG (ZERO TeX decodes), and R21-L3-PY27-REDUCERS on its explicit not_covered axes NC-2 (amd64 2-word map for grb5_mod/grb5_rej/shuffle29), NC-4 (keyskip2 relation), and non-zero offsets. Verified distinct: py27 wordsize=64 keystream != wordsize=32 keystream for every string seed, so this is genuinely the amd64 2-word init_by_array path R21-L3's i386 slice did not touch. Anti-repeat proof in PREREG.md. HITs 0, oracle flags 0.",
+   "null_stats": "sweep.jsonl per-decode: pmax, bar, clears_bar, recovery, heldout, ioc_x_N, min_distinct_32, distinct, preg/preg_name (argmax register), score. Interim best pmax ~5.44 << bar 7.63; 0 clears.",
+   "trust_anchor": "tests/validate.py green; controls in control.json recover their own-generator plants at 1.000.",
+   "source_register": "LP1_REAL/EN/LA/OE/DE/CY (hitfn20 I2 9-panel)"
+  },
+  {
+   "id": "R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE",
+   "lane": "round26/B",
+   "hypothesis": "One of the 33 curated R12-C2 mysticism/philosophy texts, used as a letters-only RUNNING KEY (sliding at some start offset) over an unsolved LP2 page, decodes it under the skip-aware beam (keyskip1 exact and/or keyskip2 skip_by_two-exact). This is R12-C2's staged-but-never-executed keytext sweep, finally run.",
+   "status": "partially-run",
+   "round": 26,
+   "date": "2026-08-31",
+   "threshold": "hitfn20 3-clause: pmax >= panelmax20 family-wise bar AND rune-index recovery >= 0.90 AND held-out 3/4 reproduction; score alone never certifies; any bar-clearing survivor is FLAGGED-FOR-ORACLE, never auto-solved (R21-L1).",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "control.py plants plotinus_enneads_mackenna.txt as the running key over English self_reliance (L=240, 7 seeds, random keytext offsets), enciphered under BOTH keyskip1 and skip_by_two filters; the matched skip-aware presets recover it at median/min = 1.000/1.000 rune-index recovery (control.json). CONTROL_PASSED=True. Null is from a validated instrument.",
+   "result": "0 / 1,562 measured decodes clear the panel-max bar. 0 HITs, 0 flagged-for-oracle. Best decode pmax=5.470 (theologia_germanica, preset pair, page 23, register EN_KJV) vs family-wise bar 5.732 -- 0.262 below its own bar; nothing on any completed page approaches a clear. Language-agnostic channels all read as noise: median IoC*N ~1.0, median mds ~15/29, median h2 ~4.79 bits. off8 (double offset density, pages 19-20) reproduces the null exactly. NOTE: for a rigid running key the held-out self-consistency clause is non-discriminating (median heldout=1.000); the panel-max bar is the real gate and it is 0/1,562.",
+   "coverage": "33 R12-C2 texts x (4 offsets/text primary; 8 offsets/text on pages 19-20 corroborator) x 9 unsolved rune-pages x 2 presets (keyskip1, keyskip2), sign=-1. 1,562 decodes measured. Pages COMPLETE at 4 offsets/text: 19, 26, 28 (page 19 also at 8 offsets); page 23 to 86% (199/232); page 20 a thin off8 slice (43). off4 feasible plan run: 991/2,184 = 45.4%. Every decode persists language-agnostic stats (pmax,bar,ioc,mds,h2,distinct,pmax_ne,9-register z,score,recovery,heldout) in sweep.jsonl / sweep_partial_off8.jsonl.",
+   "not_covered": [
+    "Large pages CAPPED under multi-lane CPU contention and left UN-SWEPT: page 20 (mostly), 22, 25, 27, 29 (1,729-3,008 runes). Identical-in-kind cheap re-run for a future compute lane -- same instrument, same texts, just slower.",
+    "sign=+1 (only sign=-1 swept); offset densities >8/text; reversed texts; texts outside this 33-text corpus; per-line / per-page key restarts.",
+    "The 4 truncated 5,336-rune texts (achad_qbl, alghazali_alchemy_happiness, emerald_tablet_hermetic, sepher_yetzirah_westcott) cannot span the longest pages as a full running key -- those (text,page) cells are UNCOVERABLE by a running key, not merely un-run.",
+    "permissive drift decoder (lam=12), multi-rune correlated errors, transpositions -- the transition model here is keyskip1 + keyskip2 only.",
+    "Plaintext languages outside the 9-register panel (EN_MODERN/EN_KJV/LP1_REAL/LATIN/OE/DE/CY/EN_HALFVOWEL/EN_NOVOWEL)."
+   ],
+   "reproduce": "cd analysis/round26/B && python3 control.py && python3 sweep.py && python3 finalize.py  (control.json proves recovery=1.00; sweep.jsonl holds per-decode rows; finalize.py rebuilds sweep_summary.json + honest per-page coverage from whatever rows completed).",
+   "notes": "EXTENDS R12-C2 ('Texts fetched (29 files ~12 MB); the sweep was never run', not_covered:None) -- the never-run keytext sweep is now run and validated. Distinct from R12-A1 (those swept the 6 AUTHOR PADS as literal byte->symbol reductions into the RIGID stream, not letters-only running keys into the skip-aware decoder). Consumes the 'sha256_ctr keytexts' item that R24-C2-EXT-SKIP-GENERATORS explicitly left open in its not_covered. Reuses driftbeam presets exact/pair + hitfn20 + panelmax20 verbatim; no instrument rebuilt.",
+   "reopens_if": "The large un-swept pages (20-mostly, 22, 25, 27, 29) are run at 4+ offsets/text -- a cheap identical-in-kind extension; or a keytext outside the R12-C2 set of 33 is proposed."
+  },
+  {
+   "id": "R26-C-SEMANTIC-SEED-ZOO",
+   "lane": "round26/C",
+   "round": 26,
+   "date": "2026-08-31",
+   "hypothesis": "LP2 0-54 uses a DERIVED key whose seed, being part of a solvable-by-design puzzle, is SEMANTIC (a corpus value) rather than /dev/urandom. Enumerate the bounded corpus-semantic candidate SEED set and feed EACH value AS A SEED (not as a direct key) through a generator zoo that INCLUDES the totient/prime ladder generators that validate.py proves reproduce a solved LP page (05.jpg), then decode skip-aware and certify through hitfn20.",
+   "status": "negative",
+   "threshold": "hitfn20 three-clause gate: pmax >= P3 panel-max null bar AND rune-index recovery >= 0.90 AND held-out 3/4 recovery >= 0.90; screen escalation bar 5.0 (frozen, = C2 / S-G3).",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "control.py: enc_skip_by_two (j+=2 per rejection, supp=0.83) English plant, keystream from a SEMANTIC seed through EVERY generator; requires recovery >= 0.90 + HIT=True before any null counts.",
+   "result": "4,274 (seed x generator x decoder) rows, 100% of the enumerated 323-value semantic-seed set x 7 generators x 2 decoders at offset 0. best screen score = -6.578 (bar 5.0; gap > 11.5). 0 survivors escalated, 0 flagged_for_oracle. Language-agnostic: IoC*N median 0.999 (flat-random for N=29), entropy median 4.679 of 4.858 max, min-distinct-32 median 17. The single best decode (seed=3 through the page-56 prime_totient ladder) is still pure noise.",
+   "coverage": "323/323 deduplicated corpus-semantic SEEDS (292 int: primes/totients/prime-indices/notable Cicada ints incl 3301, 509/503, 0x7A35090F fragments, 2012 P.S. digits, telnet/onion primes, dates unix+cal, coords, canon256 sum; 31 str: gematria sums + string forms of solved-plaintext & koan phrases) x 7 generators (gen_py27 {random29, grb5_mod, grb5_rej}, gen_perl glibc g_r29, ciphers.py {prime, totient, prime_totient} ladders with start=seed) x 2 decoders (keyskip1 exact + keyskip2 pair). FULLY swept at offset 0. ~0% of raw 2^32 by construction -- the claim is the enumerated semantic set, not a 2^32 slice.",
+   "not_covered": [
+    "Offsets != 0 for any generator (only o=0 swept).",
+    "Semantic seeds outside the 323-value corpus enumeration (e.g. multi-word phrase permutations, per-page keyword cues, base-N re-encodings of the same constants).",
+    "Rejection loops burning > 2 draws per rejection, and permissive-drift decode relations (outside keyskip1/keyskip2).",
+    "Generators outside the zoo: Java LCG (no JVM on machine), xorshift/PCG/WELL/KISS, TeX-side RNGs (G4-TEX-RNG lane), KDF-wrapped semantic seeds (R16-KDF axis).",
+    "Ladder start-offset injection beyond seed % 5000 (the reduction chosen for enumerability); a raw >5000 start-index reopens per ladder.",
+    "Pre-language payload registers (base32/gzip/IoC-only) before English adjudication.",
+    "The raw 2^32 word-seed tail (R21-L3 / R25-COMPUTE-TAIL axis) -- a different, non-semantic seed source."
+   ],
+   "reopens_if": "a semantic seed source beyond the 323-value enumeration is proposed, OR a generator/decoder relation outside this zoo is added, OR offsets != 0 are swept for the semantic set.",
+   "supersedes": "",
+   "restates": "",
+   "artifacts": [
+    "analysis/round26/C/PREREG.md",
+    "analysis/round26/C/build_seeds.py",
+    "analysis/round26/C/seeds.json",
+    "analysis/round26/C/control.py",
+    "analysis/round26/C/control.json",
+    "analysis/round26/C/sweep.py",
+    "analysis/round26/C/rows.jsonl",
+    "analysis/round26/C/summary.json",
+    "analysis/round26/C/RESULTS.md"
+   ],
+   "notes": "The page-56-class ladder generators (prime_totient / totient / prime) that validate.py proves reproduce solved page 05 produce only flat-random noise on 0-54 for every one of the 323 semantic seeds. This is the strongest available disproof of the 'puzzle must be solvable, so try the corpus value as a seed through the method that already solved a page' hope, for this bounded high-prior-per-item set. Instrument power proven (control 0.99); space bounded and fully swept; result flat-random (IoC*N median 0.999). No STOP-AND-ALERT.",
+   "reproduce": "cd analysis/round26/C && python3 build_seeds.py && python3 sweep.py",
+   "anti_repeat": "Extends R16-PRNG not_covered ('secrets outside the tested list', 'rejection samplers consuming more than one draw per rejection'), R16-KDF not_covered ('secrets outside the 534-item list', 'multi-stage constructions'), and R21-L3-PY27-REDUCERS (which swept RAW init_by_array word-integers, NOT semantic values through the py27_seed hash/abs+chunk SEED path, and never the glibc or ladder generators). Does NOT duplicate R25-COMPUTE-TAIL-CHUNK1 (contiguous 2^32 word-integer tail, offset 0, py27 random29 only) -- different generators + a different (semantic, enumerated) seed source. R11 tested corpus numbers as DATA/feedback channels, not as SEEDS of a generator zoo.",
+   "evidence": "analysis/round26/C/RESULTS.md"
+  },
+  {
+   "id": "R26-D-REDTEAM",
+   "lane": "round26/D",
+   "hypothesis": "Adversarial audit of Round 26 A/B/C: refute every survivor, recompute coverage x power from raw rows, verify no silent re-run / no FP-inflation / no bare-closed claim.",
+   "status": "audit",
+   "round": 26,
+   "date": "2026-08-31",
+   "result": "NO-ERROR-FOUND. 0 survivors and 0 oracle flags across A/B/C; coverage x power independently reproduced from raw rows and AGREE with all three lanes (A best pmax 5.438, B 5.470 vs 5.732, C best screen -6.578). No silent re-run: A = first-fire on R19-G2/G4-TEX + a DISTINCT amd64/offset/keyskip2 axis vs R21-L3 (py27 w64 != w32 for string seeds) and does not touch random29 (so R25 compute-tail offset-0 tail uncollided); B = first execution of the staged R12-C2 lane, distinct from R12-A1 byte-reduction pads; C distinct from R16-PRNG/R16-KDF/R21-L3/R25/R11. No sieve x panel-max FP-inflation (all lanes use N-scaled panelmax20 family-wise bars, not a fixed bar at large N). Every closed-claim is an explicit swept-fraction statement.",
+   "coverage": "Recomputed A/B/C coverage x power from raw ledger/sweep rows; re-derived C control from scratch (correct-seed rec 1.000/HIT vs wrong-seed 9999 rec 0.054/no-HIT = discriminating).",
+   "not_covered": "Two MINOR non-fatal defects surfaced (neither reproduces a negative nor changes a verdict): (1) Lane A PREREG-vs-code overlap guard (228 int-seed rows re-tread a w32-identical cell, semantic ints not R21-L3 words); (2) Lane A delivered null is INTERIM (baseline still running at close-out) -- its row is recorded partially-run to reflect this.",
+   "notes": "Refute-by-default red-team. See analysis/round26/D/RESULTS.md.",
+   "reproduce": "analysis/round26/D/RESULTS.md"
   }
  ],
  "round18_merged": "2026-08-26"
