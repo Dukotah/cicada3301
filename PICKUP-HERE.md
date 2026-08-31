@@ -1,6 +1,31 @@
 # PICKUP-HERE — where the work left off
 
-_Updated **2026-08-19**. Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
+_Updated **2026-08-31**. Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
+
+## Round 18 — two RECON items closed, one lane blocked-here (2026-08-31)
+
+A fresh-tools pass on the cheapest open register items. Trust anchors re-verified on this
+checkout first (`validate.py`, `verify_solution.py --selftest`, `benchmark/` 8/8,
+`validate_ledger.py` 0 unsound).
+
+- **E-01 → NEGATIVE (was `partially-run`).** The 7A35090F Cicada signing key was fetched
+  (`keyserver.ubuntu.com`), its fingerprint verified byte-for-byte against
+  `research/05-crypto-techniques.md`, and both RSA-4096 moduli (primary + subkey) checked
+  against the pp49-51 payload — both endians, e∈{65537,3}, with a plant/noise-validated
+  PKCS#1 recogniser (planted sig recovered; 0/64 random false positives). No RSA signature
+  or ciphertext structure. Closes the "7A35090F moduli never fetched" gap named in Round 16
+  SYNTHESIS item C. → `analysis/round16/zeroFP/E01-COMPLETE.md`, `e01_complete.py`
+- **A-04 → RESOLVED (was `never-run`).** The 6 contested pp49-51 bytes (idx 25/175/182/199/
+  215/237) were adjudicated by high-zoom vision reads of the 400-DPI master JPGs. **All 6
+  confirm the majority stream `canon_256.bin`**; every scream314 decimal-column value is
+  refuted by the source glyph (I/i and l/L case confusion on footless bars, W/w height, one
+  typo). `canon_256_decpref.bin` is retired. Downstream key/seed uses (B-05) should use
+  `canon_256.bin` only. → `analysis/pp49_51/A04_glyph_adjudication/FINDINGS.md`, `adjudicate.py`
+- **Marsaglia CDROM (Round 17's cheapest live item) — BLOCKED, not swept.** archive.org and
+  all FSU hosts return 403 at this environment's agent proxy (network policy), so the 634 MB
+  ISO could not be fetched. The lane stays **open/unswept** — the `round17/lib_padsweep`
+  instrument and published-SHA-256 provenance are ready for an environment with archive.org
+  access. Recorded as unreachable-here, **not** a negative.
 
 ## 👉 Start with the canonical docs
 | Doc | What it holds |

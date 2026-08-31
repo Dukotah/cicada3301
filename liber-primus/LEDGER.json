@@ -86,7 +86,7 @@
    "superseded_by": [
     "VERDICT-OTP-CLASS"
    ],
-   "reopens_if": "Never — this wording is retired. The narrowed claim is VERDICT-OTP-CLASS.",
+   "reopens_if": "Never \u2014 this wording is retired. The narrowed claim is VERDICT-OTP-CLASS.",
    "notes": "Round 10's SYNTHESIS already stated the correction ('OTP-class, not a unique external pad'); it never propagated to README / ELIMINATION-LEDGER / PICKUP-HERE / Round 11 SYNTHESIS. Corrected in all four on 2026-08-19.",
    "control_detail": null,
    "null": null,
@@ -115,7 +115,7 @@
    "coverage": "2,165 seeds x 16 generators x 5 mod-29 reductions x 2 signs x 2 Atbash x 2 directions, offset 0 (Stage A); 504 core seeds x 10 offsets (Stage B); 504 core seeds x 55 per-page restarts (Stage C); top-300 escalated to page 0 full and the whole 12,956-rune stream (Stage D). ~6.22M decodes. KEY STRETCHING EXTENSION: see R16-KDF (covered 2026-08-23).",
    "not_covered": [
     "seeds outside the 2,165-entry dictionary",
-    "key stretching (PBKDF2/scrypt/Argon2, iterated hashes > 1) — COVERED BY R16-KDF (NEGATIVE, 692,064 decodes)",
+    "key stretching (PBKDF2/scrypt/Argon2, iterated hashes > 1) \u2014 COVERED BY R16-KDF (NEGATIVE, 692,064 decodes)",
     "salted constructions H(salt || seed) for unknown salt",
     "offsets beyond 3301, non-integer or per-line restarts",
     "filters other than the pinned soft key-skip at supp=0.83",
@@ -129,7 +129,7 @@
     "liber-primus/analysis/round13/B04/harness.py"
    ],
    "reproduce": "cd liber-primus/analysis/round13/B04 && python3 sweep.py --nproc 6",
-   "reopens_if": "Always extendable — a negative closes only the tabulated region above. The named extensions are key stretching and salted constructions.",
+   "reopens_if": "Always extendable \u2014 a negative closes only the tabulated region above. The named extensions are key stretching and salted constructions.",
    "notes": "Marked never-run in RECON-A since 2026-08-12; the iter-6 MDL kill ('incompressible => not algorithmically generated') has NO power here because a hash keystream is incompressible by construction. Round 8's 2.52e9 decodes covered hobbyist integer-seeded PRNGs only, never keyed hash/stream ciphers. CRITICAL: every prior seed sweep used RIGID alignment, which returns noise even on the CORRECT seed once the filter is applied - a guaranteed false negative. Beam is mandatory.",
    "raw_status": "never-run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -506,7 +506,7 @@
   {
    "id": "A-01",
    "lane": "recon-a",
-   "hypothesis": "Round 9 Track TEMPLATE, the only genuinely from-scratch re-transcription, stopped at stage 2. `read_lines.json` holds 16,245 image-read glyphs across 646 lines; `diff.py` (stage 3: recover the class→rune permutation, diff vs canon) has no output artifact on disk and no verdict was ever appended.",
+   "hypothesis": "Round 9 Track TEMPLATE, the only genuinely from-scratch re-transcription, stopped at stage 2. `read_lines.json` holds 16,245 image-read glyphs across 646 lines; `diff.py` (stage 3: recover the class\u2192rune permutation, diff vs canon) has no output artifact on disk and no verdict was ever appended.",
    "status": "partially-run",
    "raw_status": "partially-run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -564,7 +564,7 @@
   {
    "id": "A-03",
    "lane": "recon-a",
-   "hypothesis": "Haplography count-audit of the 86 doublet sites — crop the neighbourhoods and audit rune count (not identity) against canon. Flagged twice as \"documented but heavier\"; never run. Campaign IX's i9_ocr only spot-checked p0 lines 1-3. This is the cheap falsifier of the whole engineered-filter edifice: ~20 confirmed merges would put autokey back on the table.",
+   "hypothesis": "Haplography count-audit of the 86 doublet sites \u2014 crop the neighbourhoods and audit rune count (not identity) against canon. Flagged twice as \"documented but heavier\"; never run. Campaign IX's i9_ocr only spot-checked p0 lines 1-3. This is the cheap falsifier of the whole engineered-filter edifice: ~20 confirmed merges would put autokey back on the table.",
    "status": "negative",
    "raw_status": "negative",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -595,33 +595,32 @@
   {
    "id": "A-04",
    "lane": "recon-a",
-   "hypothesis": "pp49-51's 6 contested bytes (idx 25, 175, 182, 199, 215, 237) — flagged open in Campaign VII and repeated in Campaign IX; needs a Latin/digit OCR, which the rune classifier cannot do. Never done.",
-   "status": "never-run",
-   "raw_status": "never-run",
+   "hypothesis": "pp49-51's 6 contested bytes (idx 25, 175, 182, 199, 215, 237) \u2014 flagged open in Campaign VII and repeated in Campaign IX; needs a Latin/digit OCR, which the rune classifier cannot do. Never done.",
+   "status": "eliminated",
+   "raw_status": "resolved",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
-    "liber-primus/analysis/pp49_51/CAMPAIGN-VII-FINDINGS.md",
-    "CAMPAIGN-IX-FINDINGS.md"
+    "liber-primus/analysis/pp49_51/A04_glyph_adjudication/FINDINGS.md",
+    "liber-primus/analysis/pp49_51/A04_glyph_adjudication/results.json",
+    "liber-primus/analysis/pp49_51/CAMPAIGN-VII-FINDINGS.md"
    ],
-   "round": null,
-   "date": null,
-   "threshold": null,
-   "threshold_fixed_in_advance": null,
-   "positive_control": null,
-   "control_detail": null,
+   "round": 18,
+   "date": "2026-08-31",
+   "threshold": "Adjudication rule fixed in advance: for each contested cell, read the source glyph at high zoom; majority value stands unless the image shows the decimal-preferred glyph (dot for i, foot for L, cap-height for W). Re-checked: all 6 adjudicated values equal canon_256.bin.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "6 adjudicated values re-checked against canon_256.bin on every run (OK: all 6 match); font renders dots/descenders/L-feet visibly, verified against in-row reference glyphs.",
    "null": null,
-   "result": null,
-   "coverage": null,
-   "not_covered": null,
-   "reproduce": null,
+   "result": "All 6 contested cells confirm the MAJORITY stream (canon_256.bin). Every scream314 decimal-column value refuted by the source glyph (I/i, l/L, W/w case confusion on footless bars + 1 typo).",
+   "coverage": "High-zoom vision read of all 6 contested cells (idx 25,175,182,199,215,237) from the 400-DPI master JPGs p49-51.",
+   "not_covered": "None for these 6 cells. Residual capital-I vs lowercase-l identity (both footless bars) is a token-level question both witnesses already agreed on; canon value unaffected.",
+   "reproduce": "python analysis/pp49_51/A04_glyph_adjudication/adjudicate.py",
    "supersedes": null,
    "superseded_by": null,
-   "reopens_if": null,
+   "reopens_if": "A from-scratch independent transcription of pp49-51 disagrees with canon_256.bin at any of these 6 indices.",
    "priority": null,
-   "notes": null,
-   "evidence_missing": [
-    "CAMPAIGN-IX-FINDINGS.md"
-   ]
+   "notes": "Retires canon_256_decpref.bin; downstream key/seed uses (B-05) should use canon_256.bin only.",
+   "evidence_missing": []
   },
   {
    "id": "A-05",
@@ -654,7 +653,7 @@
   {
    "id": "A-06",
    "lane": "recon-a",
-   "hypothesis": "Ornament bands. Round 8 catalogued 47 non-text bands over 23 pages (`geometry/ornaments.json` holds 62 rows) and states this \"is inventory, not a result — the one item in Round 8 left as an open thread\"; the short bands (1/3/4/8/16 glyphs) \"are the only real ornament candidates and nobody has read them\".",
+   "hypothesis": "Ornament bands. Round 8 catalogued 47 non-text bands over 23 pages (`geometry/ornaments.json` holds 62 rows) and states this \"is inventory, not a result \u2014 the one item in Round 8 left as an open thread\"; the short bands (1/3/4/8/16 glyphs) \"are the only real ornament candidates and nobody has read them\".",
    "status": "never-run",
    "raw_status": "never-run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -683,7 +682,7 @@
   {
    "id": "B-01",
    "lane": "recon-a",
-   "hypothesis": "The full 32-bit sweep is 2/10 complete. `results_full32.txt` holds only gen=3 (MSVC) and gen=5 (MT19937); gen=0 (glibc — first in `run_full32.sh`'s priority order and the highest-prior generator) is absent, and no `DONE` line. PICKUP-HERE still describes it as \"still running\".",
+   "hypothesis": "The full 32-bit sweep is 2/10 complete. `results_full32.txt` holds only gen=3 (MSVC) and gen=5 (MT19937); gen=0 (glibc \u2014 first in `run_full32.sh`'s priority order and the highest-prior generator) is absent, and no `DONE` line. PICKUP-HERE still describes it as \"still running\".",
    "status": "partially-run",
    "raw_status": "partially-run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -715,7 +714,7 @@
   {
    "id": "B-02",
    "lane": "recon-a",
-   "hypothesis": "Keystream offset ≠ 0. Round 8 states its sweep \"assumes key index 0 aligns with the first rune of LP2 page 0\". An author who enciphered LP1 first, or started the pad mid-file, is invisible to it.",
+   "hypothesis": "Keystream offset \u2260 0. Round 8 states its sweep \"assumes key index 0 aligns with the first rune of LP2 page 0\". An author who enciphered LP1 first, or started the pad mid-file, is invisible to it.",
    "status": "open",
    "raw_status": "scope-limited",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -772,7 +771,7 @@
   {
    "id": "C-01",
    "lane": "recon-a",
-   "hypothesis": "SKELETON corpus extension. Round 8's word-length plaintext-identification is negative for 51 texts / 8.2M words, and says so explicitly: \"it eliminates a specific 8.2 M-word corpus, not 'any known text'… extending it to a full Gutenberg mirror is the obvious follow-up and `wordlen_search.py` is written for it\". Never extended.",
+   "hypothesis": "SKELETON corpus extension. Round 8's word-length plaintext-identification is negative for 51 texts / 8.2M words, and says so explicitly: \"it eliminates a specific 8.2 M-word corpus, not 'any known text'\u2026 extending it to a full Gutenberg mirror is the obvious follow-up and `wordlen_search.py` is written for it\". Never extended.",
    "status": "open",
    "raw_status": "scope-limited",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -802,7 +801,7 @@
   {
    "id": "C-02",
    "lane": "recon-a",
-   "hypothesis": "Line-initial / word-initial / page-initial ciphertext-rune uniformity test — the detector for forcing (an acrostic or layout constraint imposed in ciphertext). Proposed with a hard gate (p<0.001); no script and no result anywhere.",
+   "hypothesis": "Line-initial / word-initial / page-initial ciphertext-rune uniformity test \u2014 the detector for forcing (an acrostic or layout constraint imposed in ciphertext). Proposed with a hard gate (p<0.001); no script and no result anywhere.",
    "status": "never-run",
    "raw_status": "never-run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -830,7 +829,7 @@
   {
    "id": "D-02",
    "lane": "recon-a",
-   "hypothesis": "Higher-order model test against matched controls. The proposal asked for cross-validated bits/rune at PPM orders 1-8 vs 1,000 controls generated with campaign11's suppression model. What was actually run (`recon/i6_mdl/mdl_test.py`) uses 40 uniform-random controls and context order ≤5, with no cross-validation — so the one anomaly it found (order-1 entropy dip, z=−14.6) is exactly what an unmatched control makes inevitable.",
+   "hypothesis": "Higher-order model test against matched controls. The proposal asked for cross-validated bits/rune at PPM orders 1-8 vs 1,000 controls generated with campaign11's suppression model. What was actually run (`recon/i6_mdl/mdl_test.py`) uses 40 uniform-random controls and context order \u22645, with no cross-validation \u2014 so the one anomaly it found (order-1 entropy dip, z=\u221214.6) is exactly what an unmatched control makes inevitable.",
    "status": "open",
    "raw_status": "scope-limited",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -859,7 +858,7 @@
   {
    "id": "D-03",
    "lane": "recon-a",
-   "hypothesis": "Homophonic-downward (surjective 29→k, k=5..26) annealing/EM search. Closed only by an inference from bigram flatness (Campaign XIV P4, +0.81σ); the search the proposal specified — anneal the partition, validate on synthetic homophonic ciphertext, score against a 1,000-shuffle envelope, check generalisation to held-out pages — was never coded.",
+   "hypothesis": "Homophonic-downward (surjective 29\u2192k, k=5..26) annealing/EM search. Closed only by an inference from bigram flatness (Campaign XIV P4, +0.81\u03c3); the search the proposal specified \u2014 anneal the partition, validate on synthetic homophonic ciphertext, score against a 1,000-shuffle envelope, check generalisation to held-out pages \u2014 was never coded.",
    "status": "open",
    "raw_status": "declared-closed-but-thin",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -888,7 +887,7 @@
   {
    "id": "D-04",
    "lane": "recon-a",
-   "hypothesis": "Non-additive ciphertext-feedback coefficient sweep ran on 3 of 55 pages (p0/p5/p20) at orders k≤3 with 3 seeds, then was written up as \"closes the last additive-adjacent corner\".",
+   "hypothesis": "Non-additive ciphertext-feedback coefficient sweep ran on 3 of 55 pages (p0/p5/p20) at orders k\u22643 with 3 seeds, then was written up as \"closes the last additive-adjacent corner\".",
    "status": "open",
    "raw_status": "scope-limited",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -917,34 +916,40 @@
    "id": "E-01",
    "lane": "recon-a",
    "hypothesis": "Payload as an RSA signature/ciphertext under known Cicada moduli: compute `pow(s,e,n)` in both endiannesses for every published 3301 modulus and pattern-match PKCS#1 v1.5 / PSS structure. Zero-false-positive test, minutes of compute, never run. The ledger's \"not a prime / modulus is even\" result does not address it.",
-   "status": "partially-run",
-   "raw_status": "coverage-limited",
+   "status": "negative",
+   "raw_status": "negative",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "evidence": [
-    "liber-primus/analysis/campaign14/REDTEAM-PROPOSALS.md"
+    "liber-primus/analysis/round16/zeroFP/E01-COMPLETE.md",
+    "liber-primus/analysis/round16/zeroFP/e01_complete_results.json",
+    "liber-primus/analysis/round16/zeroFP/keys/moduli.json"
    ],
-   "round": null,
-   "date": null,
-   "threshold": null,
-   "threshold_fixed_in_advance": null,
-   "positive_control": null,
-   "control_detail": null,
-   "null": null,
-   "result": null,
-   "coverage": null,
-   "not_covered": null,
-   "reproduce": null,
+   "round": 18,
+   "date": "2026-08-31",
+   "threshold": "HIT iff pow(s,e,n) exhibits a PKCS#1 v1.5 signature block (00 01 FF..00 DigestInfo) or encryption block (00 02 ..00); zero-FP structural test validated by controls (planted RSA-4096 sig recovered; 0/64 random blobs false-positive).",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "PKCS#1 v1.5 SHA-256 sig planted under a throwaway RSA-4096 key is recovered (zero false negative); 64 random blobs under the real modulus give 0 false positives.",
+   "null": "0 PKCS#1 sig/enc structures across 16 checks.",
+   "result": "NEGATIVE. 7A35090F fetched, fingerprint verified against repo record; both RSA-4096 moduli (primary+subkey) checked against canon_256/decpref, both endians, e in {65537,3}. No RSA signature or ciphertext structure.",
+   "coverage": "Both 7A35090F RSA-4096 moduli x 2 payloads x 2 endians x e in {65537,3}, validated recogniser.",
+   "not_covered": [
+    "2048-bit or other Cicada key (none published/held)",
+    "OAEP/PSS encodings (need label/salt to recognise)",
+    "payload as a fragment of a 512-byte signature"
+   ],
+   "reproduce": "python analysis/round16/zeroFP/e01_complete.py",
    "supersedes": null,
    "superseded_by": null,
-   "reopens_if": null,
+   "reopens_if": "A 2048-bit Cicada key surfaces, or an OAEP/PSS label/salt is identified for the payload.",
    "priority": null,
-   "notes": null,
+   "notes": "Closes the \"7A35090F moduli never fetched\" gap named in Round 16 SYNTHESIS item C.",
    "evidence_missing": []
   },
   {
    "id": "E-02",
    "lane": "recon-a",
-   "hypothesis": "Payload as meta-parameters: (a) slide a 56-byte window and test for a permutation of 0-55 (chance ≈1e-24 per window); (b) read the payload as 85-128 gap values (8/16-bit LE/BE, varint) and rank-correlate against the real doublet gaps [122, 85, 249, 197, 129, …]. Both \"instant\"; neither run. Round 8 POINTERS correlated the gaps against primes and Fibonacci, never against the payload.",
+   "hypothesis": "Payload as meta-parameters: (a) slide a 56-byte window and test for a permutation of 0-55 (chance \u22481e-24 per window); (b) read the payload as 85-128 gap values (8/16-bit LE/BE, varint) and rank-correlate against the real doublet gaps [122, 85, 249, 197, 129, \u2026]. Both \"instant\"; neither run. Round 8 POINTERS correlated the gaps against primes and Fibonacci, never against the payload.",
    "status": "negative",
    "raw_status": "negative",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -975,7 +980,7 @@
   {
    "id": "F-01",
    "lane": "recon-a",
-   "hypothesis": "LP2-as-pad inversion — the unsolved pages are key material, not a message. Use the 12,956-rune stream (fwd/rev, ±, Atbash) as a running key against every other machine-readable Cicada object (2012/2013 fragments, the AN-END hash bytes, canon_256, onion names, PGP bodies). Finite candidate set, hours of compute, never run. Note it survives the iter-2 \"message-existence is undecidable\" finding rather than being killed by it.",
+   "hypothesis": "LP2-as-pad inversion \u2014 the unsolved pages are key material, not a message. Use the 12,956-rune stream (fwd/rev, \u00b1, Atbash) as a running key against every other machine-readable Cicada object (2012/2013 fragments, the AN-END hash bytes, canon_256, onion names, PGP bodies). Finite candidate set, hours of compute, never run. Note it survives the iter-2 \"message-existence is undecidable\" finding rather than being killed by it.",
    "status": "negative",
    "raw_status": "negative",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -1006,7 +1011,7 @@
   {
    "id": "F-02",
    "lane": "recon-a",
-   "hypothesis": "The 2016-01-01 signed message is the only signed methodological hint 3301 ever gave. Round 9 attacked \"their numbers are the direction\" (2,670 readings, negative) and both closing lines of Round 9 and DEAD_ENDS state that its other two clauses — \"its words are the map\" and \"their meaning is the road\" — remain uninterpreted. No lane has ever treated them as a first-class object.",
+   "hypothesis": "The 2016-01-01 signed message is the only signed methodological hint 3301 ever gave. Round 9 attacked \"their numbers are the direction\" (2,670 readings, negative) and both closing lines of Round 9 and DEAD_ENDS state that its other two clauses \u2014 \"its words are the map\" and \"their meaning is the road\" \u2014 remain uninterpreted. No lane has ever treated them as a first-class object.",
    "status": "open",
    "raw_status": "stated-but-uninterpreted",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -1063,7 +1068,7 @@
   {
    "id": "G-02",
    "lane": "recon-a",
-   "hypothesis": "STEGO-VERDICT's own \"decisive next experiment\" #1 — `outguess -r` on a blank/control JPEG through the same 400-DPI Ghostscript pipeline, to prove the shared 1417-byte prefix is a default-key artifact — was deferred because \"this Windows box has no way to run OutGuess (no WSL/Docker/compiler)\". That constraint has evaporated (WSL2 Ubuntu with gcc is present, and OutGuess 0.4 was later built for the OSINT sweep). The blank-control result appears nowhere. The 60-key sweep that did run was against the onion images, not pages 0/4/26.",
+   "hypothesis": "STEGO-VERDICT's own \"decisive next experiment\" #1 \u2014 `outguess -r` on a blank/control JPEG through the same 400-DPI Ghostscript pipeline, to prove the shared 1417-byte prefix is a default-key artifact \u2014 was deferred because \"this Windows box has no way to run OutGuess (no WSL/Docker/compiler)\". That constraint has evaporated (WSL2 Ubuntu with gcc is present, and OutGuess 0.4 was later built for the OSINT sweep). The blank-control result appears nowhere. The 60-key sweep that did run was against the onion images, not pages 0/4/26.",
    "status": "never-run",
    "raw_status": "never-run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -1093,7 +1098,7 @@
   {
    "id": "H-01",
    "lane": "recon-a",
-   "hypothesis": "Per-onion HTTP/server-status anomalies: ports 5240/5241/5242/5243, mock uptime \"1 days 0 hours 33 minutes 14 seconds\" → 1033, leaked host `li676-224.members.linode.com` / 106.186.123.224, and `<head>`/`</head>` malformation varying per onion (\"theorized to bind the onions together\"). Listed as item 6 and as \"still genuinely open\"; never resolved as a channel. Raw HTML is held locally.",
+   "hypothesis": "Per-onion HTTP/server-status anomalies: ports 5240/5241/5242/5243, mock uptime \"1 days 0 hours 33 minutes 14 seconds\" \u2192 1033, leaked host `li676-224.members.linode.com` / 106.186.123.224, and `<head>`/`</head>` malformation varying per onion (\"theorized to bind the onions together\"). Listed as item 6 and as \"still genuinely open\"; never resolved as a channel. Raw HTML is held locally.",
    "status": "never-run",
    "raw_status": "never-run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -1149,7 +1154,7 @@
   {
    "id": "H-03",
    "lane": "recon-a",
-   "hypothesis": "Two named micro-crosses recorded as never executed: the 2013 onion cookies (`167=6941…`, `761=7bc1…`) XOR'd against the four hex strings (\"that specific cross is untried\"), and the 2012 P.S. digit-string rotate-90°/matrix reading (\"never executed, but P/Q factorization is done; completeness-only\").",
+   "hypothesis": "Two named micro-crosses recorded as never executed: the 2013 onion cookies (`167=6941\u2026`, `761=7bc1\u2026`) XOR'd against the four hex strings (\"that specific cross is untried\"), and the 2012 P.S. digit-string rotate-90\u00b0/matrix reading (\"never executed, but P/Q factorization is done; completeness-only\").",
    "status": "negative",
    "raw_status": "negative",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -1180,7 +1185,7 @@
   {
    "id": "I-01",
    "lane": "recon-a",
-   "hypothesis": "`mruzuki` / `cicadeur` (keyid `02BD208AFB8AFF75`, `mruzuki@gmail.com`, key created 2012-01-12, self-revoked 2012-01-22 — seven days after the first 3301 image) is the earliest Cicada-adjacent keyserver actor and the auditor's own #1 remaining item. No identity resolution was attempted beyond public/sandbox sources.",
+   "hypothesis": "`mruzuki` / `cicadeur` (keyid `02BD208AFB8AFF75`, `mruzuki@gmail.com`, key created 2012-01-12, self-revoked 2012-01-22 \u2014 seven days after the first 3301 image) is the earliest Cicada-adjacent keyserver actor and the auditor's own #1 remaining item. No identity resolution was attempted beyond public/sandbox sources.",
    "status": "never-run",
    "raw_status": "never-run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -1208,7 +1213,7 @@
   {
    "id": "I-02",
    "lane": "recon-a",
-   "hypothesis": "A separate 2013/2014 winner forum — closer to the LP than the timeline-eliminated 2012 forum, and the only insider space that could have received a privately-delivered pad. Campaign XIX flags it as an open thread; nobody looked. Adjacent: the un-corroborated 2013-winner claimant \"Nox Populi\" (reachable, DEF CON 26 speaker) was rated \"worth a low-priority contact\" and never contacted; the 2026-07-27 Wanner outreach shows no logged response.",
+   "hypothesis": "A separate 2013/2014 winner forum \u2014 closer to the LP than the timeline-eliminated 2012 forum, and the only insider space that could have received a privately-delivered pad. Campaign XIX flags it as an open thread; nobody looked. Adjacent: the un-corroborated 2013-winner claimant \"Nox Populi\" (reachable, DEF CON 26 speaker) was rated \"worth a low-priority contact\" and never contacted; the 2026-07-27 Wanner outreach shows no logged response.",
    "status": "partially-run",
    "raw_status": "partially-run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -1236,7 +1241,7 @@
   {
    "id": "I-03",
    "lane": "recon-a",
-   "hypothesis": "Pre-disclosure search of archived cypherpunks / metzdowd / bitcointalk posts 2011-2013 — Campaign VIII's own #1 open thread, \"unresolved only because the archives are thin, not because it was cleared\". Never executed as a search.",
+   "hypothesis": "Pre-disclosure search of archived cypherpunks / metzdowd / bitcointalk posts 2011-2013 \u2014 Campaign VIII's own #1 open thread, \"unresolved only because the archives are thin, not because it was cleared\". Never executed as a search.",
    "status": "never-run",
    "raw_status": "never-run",
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
@@ -1323,7 +1328,7 @@
   {
    "id": "B-10",
    "lane": "recon-b",
-   "hypothesis": "OutGuess 0.2 Linux control — \"closed pending\" a run never made",
+   "hypothesis": "OutGuess 0.2 Linux control \u2014 \"closed pending\" a run never made",
    "status": "open",
    "raw_status": "declared-closed-but-thin",
    "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md",
@@ -1351,7 +1356,7 @@
   {
    "id": "B-08",
    "lane": "recon-b",
-   "hypothesis": "SEED residue — >2³² seeds, other generators, nonzero keystream offset",
+   "hypothesis": "SEED residue \u2014 >2\u00b3\u00b2 seeds, other generators, nonzero keystream offset",
    "status": "never-run",
    "raw_status": "never-run",
    "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md",
@@ -1435,7 +1440,7 @@
   {
    "id": "B-13",
    "lane": "recon-b",
-   "hypothesis": "O/A/AE per-glyph adjudication — bounded, never individually settled",
+   "hypothesis": "O/A/AE per-glyph adjudication \u2014 bounded, never individually settled",
    "status": "partially-run",
    "raw_status": "partially-run",
    "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md",
@@ -1491,7 +1496,7 @@
   {
    "id": "B-09",
    "lane": "recon-b",
-   "hypothesis": "OSINT residue — T2/T3 blobs, items 6–9",
+   "hypothesis": "OSINT residue \u2014 T2/T3 blobs, items 6\u20139",
    "status": "open",
    "raw_status": "scope-limited",
    "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md",
@@ -1603,7 +1608,7 @@
   {
    "id": "B-17",
    "lane": "recon-b",
-   "hypothesis": "Multiple-comparisons tally frozen at 5 across Rounds 8–9",
+   "hypothesis": "Multiple-comparisons tally frozen at 5 across Rounds 8\u20139",
    "status": "open",
    "raw_status": "declared-closed-but-thin",
    "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md",
@@ -1715,7 +1720,7 @@
   {
    "id": "B-20",
    "lane": "recon-b",
-   "hypothesis": "Round 9 DIRECTION: 400-rune reads, ≤64 starts → \"do not revive\"",
+   "hypothesis": "Round 9 DIRECTION: 400-rune reads, \u226464 starts \u2192 \"do not revive\"",
    "status": "open",
    "raw_status": "scope-limited",
    "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md",
@@ -1799,7 +1804,7 @@
   {
    "id": "R16-KDF",
    "lane": "keystream",
-   "hypothesis": "The LP2 keystream is derived from a Cicada-flavoured secret via a KDF with an iteration count (PBKDF2, scrypt, EVP_BytesToKey, iterated hash) — the primary extension named in B-04's not_covered list.",
+   "hypothesis": "The LP2 keystream is derived from a Cicada-flavoured secret via a KDF with an iteration count (PBKDF2, scrypt, EVP_BytesToKey, iterated hash) \u2014 the primary extension named in B-04's not_covered list.",
    "status": "negative",
    "round": "16/KDF",
    "date": "2026-08-23",
@@ -1830,7 +1835,7 @@
    ],
    "reproduce": "cd liber-primus/analysis/round16/KDF && python sweep.py  # reuses round15/KDF/sweep.py + kdf.py",
    "reopens_if": "A KDF config outside the 27 tested, or a salt/secret outside the covered ranges. The not_covered list is the complete extension spec.",
-   "notes": "Wall time 34.1 min (17.4 min Stage A, ~17 min K2 gate). First measured negative over key stretching — previously named only in B-04's not_covered list and never run.",
+   "notes": "Wall time 34.1 min (17.4 min Stage A, ~17 min K2 gate). First measured negative over key stretching \u2014 previously named only in B-04's not_covered list and never run.",
    "null": {
     "mean": -7.341,
     "sd": 0.232,
