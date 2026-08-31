@@ -19,15 +19,16 @@
   "in-flight"
  ],
  "counts": {
-  "total": 62,
+  "total": 63,
   "by_status": {
-   "eliminated": 2,
-   "negative": 13,
-   "inconclusive": 1,
-   "never-run": 15,
-   "partially-run": 11,
    "open": 18,
-   "superseded": 2
+   "superseded": 2,
+   "negative": 14,
+   "partially-run": 10,
+   "eliminated": 3,
+   "never-run": 14,
+   "inconclusive": 1,
+   "in-flight": 1
   },
   "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF."
  },
@@ -1925,6 +1926,40 @@
    "priority": "medium",
    "source_register": null,
    "raw_status": null,
+   "evidence_missing": []
+  },
+  {
+   "id": "R18-MARSAGLIA",
+   "lane": "keystream",
+   "hypothesis": "The LP2 keystream is a reading of the Marsaglia Random Number CDROM (1995) \u2014 the public-pad item Round 17 named FOUND-NOT-SWEPT as the cheapest live one. 630 MB (60x10MB bits.NN + 3 geographic .bit), fetched from the jeffThompson/DiehardCDROM GitHub mirror (Wayback of FSU FTP; archive.org egress-blocked here).",
+   "status": "in-flight",
+   "raw_status": "running",
+   "source_register": "liber-primus/analysis/round17/SYNTHESIS.md",
+   "round": 18,
+   "date": "2026-08-31",
+   "threshold": "HIT iff score_norm >= -5.5 AND >= null_max + 0.5 (A1's bar, fixed in advance). benchmark/null.threshold_for(n_offsets) reported alongside; stricter than the fixed bar at these trial counts.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "lib_padsweep.control(blob=bits.01): beam recovers 8/8 planted keystreams at 100% of runes; dense-prefilter survival 0.375. NOTE the control only passes after rebuilding the trigram model from committed quadgrams \u2014 on a fresh checkout the model silently goes uniform (gitignored corpus + Gutenberg blocked), which zeroed prefilter power; fix is analysis/round18/marsaglia/build_trigram_from_quadgrams.py.",
+   "null": null,
+   "result": null,
+   "coverage": "Dense every-offset scan of each fetched pad, 6 byte builders x {fwd,rev} x 2 signs, discounted by measured survival 0.375. In flight \u2014 see results.json for pads swept so far.",
+   "not_covered": [
+    "archive.org published SHA-256s not cross-checked (archive.org blocked); provenance is the GitHub mirror + measured digests in pads_manifest.json",
+    "non-byte readings of the pad (the pads are uniform binary, so digit/text builders do not classify)",
+    "the ~0.625 of offsets outside the prefilter's power on 10MB uniform pads (beam recovery was 100% on plants, so this is power not soundness)"
+   ],
+   "reproduce": "bash analysis/round18/marsaglia/fetch.sh; python analysis/round18/marsaglia/build_trigram_from_quadgrams.py; python analysis/round18/marsaglia/sweep.py --budget 100000",
+   "supersedes": null,
+   "superseded_by": null,
+   "reopens_if": "A configuration returns score_norm at or above its own null_max + 0.5.",
+   "priority": null,
+   "notes": "Instrument-bug find: lib_padsweep.trigram_model() falls back to a UNIFORM model on any checkout lacking data/{kjv,moby,pride,war}.txt, silently zeroing the dense-scan prefilter (README lesson #1 in the wild). Marsaglia sweep is the first lane to catch it because it is the first fresh-checkout run of that instrument.",
+   "evidence": [
+    "liber-primus/analysis/round18/marsaglia/PREREG.md",
+    "liber-primus/analysis/round18/marsaglia/sweep.py",
+    "liber-primus/analysis/round18/marsaglia/build_trigram_from_quadgrams.py"
+   ],
    "evidence_missing": []
   }
  ]

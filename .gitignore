@@ -236,3 +236,11 @@ liber-primus/analysis/round16/zeroFP/keys/7A35090F.asc
 #   A-04 pages: python liber-primus/analysis/pp49_51/A04_glyph_adjudication/adjudicate.py
 #               re-fetches p49-51 from the relikd mirror.
 liber-primus/data/relikd/pages/
+
+# Round 18 / Marsaglia sweep (2026-08-31) — regenerable. Scripts + manifest + results
+# are committed; the 630 MB of pads, the npy cache, per-pad checkpoints and the log are not.
+#   Refetch:  bash liber-primus/analysis/round18/marsaglia/fetch.sh
+#   Rebuild trigram cache:  python liber-primus/analysis/round18/marsaglia/build_trigram_from_quadgrams.py
+liber-primus/analysis/round18/marsaglia/data/
+liber-primus/analysis/round18/marsaglia/sweep.log
+liber-primus/analysis/round17/trigram_idx.npy
