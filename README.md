@@ -138,7 +138,10 @@ koan "seek within") read as *gated, not published*.
 > RAND's million digits, 3301's own published bytes, and every offset rather than the 8-offset
 > ladder prior sweeps used: **≈14.5 × 10⁹ offsets, 0 hits.** The branch is narrowed by
 > measurement, not closed — the Marsaglia Random Number CDROM (1995) is named, found and
-> unswept. Round 17 also established, against this repo's own prior claim, that the anti-repeat
+> unswept. **[Superseded 2026-09-01 (Round 18): the Marsaglia CDROM is now SWEPT —
+> `R18-MARSAGLIA`, another ≈14.5 × 10⁹ offsets over 63/63 pads, best −6.720 vs a −5.5 bar,
+> 0 hits. See `analysis/round18/marsaglia/RESULTS.md`.]** Round 17 also established, against
+> this repo's own prior claim, that the anti-repeat
 > filter was applied by a **machine, not by hand** (≥0.99 power).
 > → [`analysis/round17/SYNTHESIS.md`](liber-primus/analysis/round17/SYNTHESIS.md)
 

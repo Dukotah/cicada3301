@@ -21,11 +21,16 @@ checkout first (`validate.py`, `verify_solution.py --selftest`, `benchmark/` 8/8
   refuted by the source glyph (I/i and l/L case confusion on footless bars, W/w height, one
   typo). `canon_256_decpref.bin` is retired. Downstream key/seed uses (B-05) should use
   `canon_256.bin` only. → `analysis/pp49_51/A04_glyph_adjudication/FINDINGS.md`, `adjudicate.py`
-- **Marsaglia CDROM (Round 17's cheapest live item) — BLOCKED, not swept.** archive.org and
-  all FSU hosts return 403 at this environment's agent proxy (network policy), so the 634 MB
-  ISO could not be fetched. The lane stays **open/unswept** — the `round17/lib_padsweep`
-  instrument and published-SHA-256 provenance are ready for an environment with archive.org
-  access. Recorded as unreachable-here, **not** a negative.
+- **Marsaglia CDROM (Round 17's cheapest live item) → NEGATIVE (swept 2026-09-01).**
+  archive.org is egress-blocked here, so the 630 MB was fetched from the
+  `jeffThompson/DiehardCDROM` GitHub mirror (Wayback of Marsaglia's FSU FTP). Dense
+  every-offset sweep of all **63/63 pads**, 12 keystream readings × 2 signs =
+  **14.45 × 10⁹ offsets**, best **−6.720** vs a −5.5 bar and a threshold_for(n) of −5.222 —
+  **0 hits**. Control PASSES on the real pad (beam 8/8, survival 0.375). → `R18-MARSAGLIA`,
+  `analysis/round18/marsaglia/RESULTS.md`. **This lane also caught a silent instrument bug:**
+  `lib_padsweep`'s dense-scan prefilter falls back to a *uniform* model on any checkout
+  lacking the gitignored English corpus, zeroing its power — fixed by
+  `build_trigram_from_quadgrams.py` (rebuilds it offline from committed quadgrams).
 
 ## 👉 Start with the canonical docs
 | Doc | What it holds |

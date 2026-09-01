@@ -23,12 +23,11 @@
   "by_status": {
    "open": 18,
    "superseded": 2,
-   "negative": 14,
+   "negative": 15,
    "partially-run": 10,
    "eliminated": 3,
    "never-run": 14,
-   "inconclusive": 1,
-   "in-flight": 1
+   "inconclusive": 1
   },
   "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF."
  },
@@ -413,7 +412,7 @@
     "bar": -5.5
    },
    "coverage": "P0: 6 distinct CicadaOS blobs, 196 configs, full cross product on 560.13 plus nibbles and ms=8 passes, INCLUDING the 1,580,426-byte tail of _560.00 that A1 never held. P1: Bitcoin heights 0-303,726 verified contiguous - hashes and merkle roots in BOTH byte orders, nonces, timestamps. P2: NIST Beacon v1 2013-09-05 to 2013-11-13 and RANDOM.ORG 2013-09-01 to 2014-01-31, 153 daily files, 153/153 MD5-verified. P3: 28 pads / 112.6 MB swept twice (ms=3, then ms=8 with nibbles) - RAND's million digits plus 3301's own published bytes.",
-   "not_covered": "The Marsaglia Random Number CDROM (1995), 634,124,288 B with published SHA-256s - FOUND, NOT SWEPT, and the cheapest live item in this branch. Also: non-contiguous blockchain selections (every-Nth, retarget blocks), other chains, txids, coinbase scriptSigs, chainwork; the beacon beyond 2013-11-13; keystream builders outside the seven tested; 13 of P3's pads are shorter than ~13k symbols and were swept against the head window only. The dense prefilter's measured survival is 0.375-0.875 (non-monotone in pad size), so roughly 45-60% of offsets on large pads are a POWER blind spot - beam recovery was 100% on every plant, so this is power, not soundness.",
+   "not_covered": "The Marsaglia Random Number CDROM (1995) is now SWEPT \u2014 see R18-MARSAGLIA (NEGATIVE, 14.45e9 offsets, 63/63 pads). Also: non-contiguous blockchain selections (every-Nth, retarget blocks), other chains, txids, coinbase scriptSigs, chainwork; the beacon beyond 2013-11-13; keystream builders outside the seven tested; 13 of P3's pads are shorter than ~13k symbols and were swept against the head window only. The dense prefilter's measured survival is 0.375-0.875 (non-monotone in pad size), so roughly 45-60% of offsets on large pads are a POWER blind spot - beam recovery was 100% on every plant, so this is power, not soundness.",
    "evidence": [
     "liber-primus/analysis/round17/SYNTHESIS.md",
     "liber-primus/analysis/round17/PREREG.md",
@@ -1932,8 +1931,8 @@
    "id": "R18-MARSAGLIA",
    "lane": "keystream",
    "hypothesis": "The LP2 keystream is a reading of the Marsaglia Random Number CDROM (1995) \u2014 the public-pad item Round 17 named FOUND-NOT-SWEPT as the cheapest live one. 630 MB (60x10MB bits.NN + 3 geographic .bit), fetched from the jeffThompson/DiehardCDROM GitHub mirror (Wayback of FSU FTP; archive.org egress-blocked here).",
-   "status": "in-flight",
-   "raw_status": "running",
+   "status": "negative",
+   "raw_status": "negative",
    "source_register": "liber-primus/analysis/round17/SYNTHESIS.md",
    "round": 18,
    "date": "2026-08-31",
@@ -1941,9 +1940,9 @@
    "threshold_fixed_in_advance": true,
    "positive_control": "passed",
    "control_detail": "lib_padsweep.control(blob=bits.01): beam recovers 8/8 planted keystreams at 100% of runes; dense-prefilter survival 0.375. NOTE the control only passes after rebuilding the trigram model from committed quadgrams \u2014 on a fresh checkout the model silently goes uniform (gitignored corpus + Gutenberg blocked), which zeroed prefilter power; fix is analysis/round18/marsaglia/build_trigram_from_quadgrams.py.",
-   "null": null,
-   "result": null,
-   "coverage": "Dense every-offset scan of each fetched pad, 6 byte builders x {fwd,rev} x 2 signs, discounted by measured survival 0.375. In flight \u2014 see results.json for pads swept so far.",
+   "null": "A1 shuffle null per config (n=200) + benchmark/null.threshold_for(14453903260)=-5.222. Every one of 63 null bars exceeds the best score; no config HIT.",
+   "result": "NEGATIVE. 63/63 pads, 14,453,903,260 offsets (5,420,213,722 effective x0.375 survival), 6 byte builders x fwd/rev x 2 signs. Best -6.720 (bits.10/mod29_rev) vs bar -5.5 and threshold_for(n)=-5.222; best head decodes to gibberish. 0 hits.",
+   "coverage": "Every offset of all 63 fetched Marsaglia pads (630 MB), 12 keystream readings x 2 signs, control-validated (survival 0.375). 14,453,903,260 offsets scanned.",
    "not_covered": [
     "archive.org published SHA-256s not cross-checked (archive.org blocked); provenance is the GitHub mirror + measured digests in pads_manifest.json",
     "non-byte readings of the pad (the pads are uniform binary, so digit/text builders do not classify)",
@@ -1958,7 +1957,9 @@
    "evidence": [
     "liber-primus/analysis/round18/marsaglia/PREREG.md",
     "liber-primus/analysis/round18/marsaglia/sweep.py",
-    "liber-primus/analysis/round18/marsaglia/build_trigram_from_quadgrams.py"
+    "liber-primus/analysis/round18/marsaglia/build_trigram_from_quadgrams.py",
+    "liber-primus/analysis/round18/marsaglia/RESULTS.md",
+    "liber-primus/analysis/round18/marsaglia/results.json"
    ],
    "evidence_missing": []
   }
