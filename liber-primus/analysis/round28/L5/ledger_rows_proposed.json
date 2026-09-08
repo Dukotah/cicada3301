@@ -1,0 +1,35 @@
+{
+  "note": "Round 28 / L5 proposed LEDGER.json deltas. Coordinator merges; lane does not edit LEDGER.json directly (handoff/validate_ledger.py owns the schema).",
+  "proposed_updates": [
+    {
+      "id": "E-01",
+      "append_evidence": [
+        "liber-primus/analysis/round28/L5/PREREG.md",
+        "liber-primus/analysis/round28/L5/RESULTS.md",
+        "liber-primus/analysis/round28/L5/l5_payload_micro.py",
+        "liber-primus/analysis/round28/L5/results.json"
+      ],
+      "coverage_append": "R28/L5 closed not_covered (b): all 203 contiguous 54-byte windows of the payload x 3 variants (canon_256, canon_256_decpref, payload_resolved) x 2 byte orders under the 432-bit 2013 modulus, e in {65537,3,17} (831 pow-tuples evaluated + 387 s>=n exclusions per variant) plus 1,218 direct-EM reads per variant; same round19/C1 matcher set; positive control 10/10 v1.5 + 5/5 PSS plants recovered at exact offset, 0 strict FP in 200 random buffers. ZERO strict matches; one loose pslen=0 PSS row at offset 62 (identical across variants), consistent with the measured 1e-4 loose noise tier.",
+      "not_covered_amend": "(b) is CLOSED by round28/L5. Remaining: non-contiguous/bit-shifted windows, window sizes != 54, e outside {65537,3,17}, unpublished moduli (unchanged)."
+    },
+    {
+      "id": "E-02",
+      "append_evidence": [
+        "liber-primus/analysis/round28/L5/RESULTS.md",
+        "liber-primus/analysis/round28/L5/results.json"
+      ],
+      "coverage_append": "R28/L5 executed the varint reads named in the hypothesis but absent from round16's run: LEB128 and MSB-first base-128 over forward and byte-reversed payload x 3 variants (12 sequences, 127 values each) vs both the 85-gap and 86-value (leading 122) doublet sequences. Max |Spearman rho| = 0.119 vs bar 0.5 + perm-p<1e-4; 24/24 null. Control: real gaps re-encoded recover at 1.00.",
+      "not_covered_amend": "varint flavours beyond the 4 enumerated (zig-zag, base-64 chunked); gap definitions other than whole-book inter-doublet gaps."
+    },
+    {
+      "id": "H-03",
+      "append_evidence": [
+        "liber-primus/analysis/round28/L5/RESULTS.md",
+        "liber-primus/analysis/round28/L5/h03r_indented.py",
+        "liber-primus/analysis/round28/L5/results.json"
+      ],
+      "coverage_append": "R28/L5 executed the never-run second half: the 2012 P.S. digit-string (primary artifact, 3 lines 40+45+46=131 digits) rotate-90/matrix reading - 6 readings of the bare block + 4 of the 'P.S. '-indented visual block. NULL at both hit bars (pair-ASCII >=0.95 after Amendment-2 recalibration - the inherited 80% byte-bar false-fires at 18.5% on digit pairs; >=8-digit pinned-constant match). RESOLVED the community '3301/1033 under rotation' claim: it reproduces ONLY with the 5-column P.S. indent, is one 4-digit run read in two directions, p~5%, and leads nowhere (surrounding decode is noise). Controls 10/10, 0/200 FP at final bar.",
+      "not_covered_amend": "matrix widths outside the artifact's own 3-line layout (131 is prime; arbitrary widths have no artifact warrant)."
+    }
+  ]
+}
