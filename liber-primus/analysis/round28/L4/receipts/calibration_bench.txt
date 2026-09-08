@@ -1,0 +1,20 @@
+== php_mt_scale pair
+bench: 50000 seeds, 1 threads, 8.70 s -> 5746 seeds/s aggregate (5746 /s/thread); best pmax 5.878358 @ 3031661; candidates>=5.0: 4
+== php_mt_mod pair
+bench: 50000 seeds, 1 threads, 4.78 s -> 10460 seeds/s aggregate (10460 /s/thread); best pmax 5.128741 @ 3010865; candidates>=5.0: 2
+== php_php_scale pair
+bench: 50000 seeds, 1 threads, 8.07 s -> 6194 seeds/s aggregate (6194 /s/thread); best pmax 5.660382 @ 3003354; candidates>=5.0: 7
+== glibc_mod pair
+bench: 50000 seeds, 1 threads, 6.19 s -> 8074 seeds/s aggregate (8074 /s/thread); best pmax 5.804682 @ 3005644; candidates>=5.0: 6
+== grb5_mod pair
+bench: 50000 seeds, 1 threads, 9.66 s -> 5175 seeds/s aggregate (5175 /s/thread); best pmax 5.497285 @ 3044545; candidates>=5.0: 4
+== grb5_rej pair
+bench: 50000 seeds, 1 threads, 5.19 s -> 9635 seeds/s aggregate (9635 /s/thread); best pmax 5.308804 @ 3028632; candidates>=5.0: 7
+== shuffle29 pair
+bench: 50000 seeds, 1 threads, 6.47 s -> 7727 seeds/s aggregate (7727 /s/thread); best pmax 5.111512 @ 3012566; candidates>=5.0: 2
+== random29 pair
+bench: 50000 seeds, 1 threads, 4.54 s -> 11008 seeds/s aggregate (11008 /s/thread); best pmax 5.418060 @ 3010041; candidates>=5.0: 7
+== php_mt_scale exact
+bench: 50000 seeds, 1 threads, 4.54 s -> 11007 seeds/s aggregate (11007 /s/thread); best pmax 5.424977 @ 3030815; candidates>=5.0: 5
+== glibc_mod exact
+bench: 50000 seeds, 1 threads, 6.08 s -> 8224 seeds/s aggregate (8224 /s/thread); best pmax 5.401476 @ 3029350; candidates>=5.0: 3
