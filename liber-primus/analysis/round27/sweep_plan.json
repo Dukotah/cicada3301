@@ -1,0 +1,10 @@
+[
+ {"lane": "S1", "reducer": "random29", "relation": "pair", "offset": 0,
+  "from": 0, "to": 4294967296,
+  "cand_bar": 5.0, "claim_bar": 7.383520294328688,
+  "_note": "PREREG S1: the exact R25 configuration, full 2^32, restart from 0 (exclusion set dropped by design). Claim bar = panelmax_bar('pair', 1e6, 0.01)."},
+ {"lane": "S2", "reducer": "random29", "relation": "exact", "offset": 0,
+  "from": 0, "to": 4294967296,
+  "cand_bar": 5.0, "claim_bar": 7.6341931878728095,
+  "_note": "PREREG S2: keyskip1 'exact' relation (one-draw rejection loop), same space/reducer/offset. Claim bar = panelmax_bar('exact', 1e6, 0.01), cell I19:vecbeam.keyskip1+I2|pmax|L120. GATE: per PREREG S2 this lane needs its own planted control + V1-style vector file (encipher_keyskip plant) validated BEFORE its null counts; the engine will sweep it mechanically but the P0/P2 lanes own that validation."}
+]

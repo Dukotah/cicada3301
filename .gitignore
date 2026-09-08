@@ -334,3 +334,19 @@ liber-primus/analysis/round26/B/sweep.jsonl
 liber-primus/analysis/round26/B/sweep_partial_off8.jsonl
 liber-primus/analysis/round26/B/sweep.log
 liber-primus/analysis/round26/C/rows.jsonl
+
+# Round 27 — C-port 2^32 sweep: binaries/data regenerable by committed sources
+# (export_data.py rebuilds engine.dat + panel_lm.f32 from P0-spec/vectors.json +
+# round19/I2/models/panel.npz; gcc per BUILD.md rebuilds grind27; py_scores.jsonl
+# regenerates from frozen RNG 27002 via P2-harness/pyref.py; run/ is LIVE sweep state
+# — checkpoints, candidates.jsonl, histograms — summarized at completion in the
+# round's RESULTS; R-redteam/testrun is rebuilt by audit2.py + miniplan.json).
+liber-primus/analysis/round27/P1-engine/grind27
+liber-primus/analysis/round27/P1-engine/engine.dat
+liber-primus/analysis/round27/P1-engine/panel_lm.f32
+liber-primus/analysis/round27/P1-engine/run/
+liber-primus/analysis/round27/P2-harness/py_scores.jsonl
+liber-primus/analysis/round27/P2-harness/__pycache__/
+liber-primus/analysis/round27/R-redteam/testrun/
+liber-primus/analysis/round27/sweep.log
+liber-primus/analysis/round27/sweep.pid

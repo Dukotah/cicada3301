@@ -1,18 +1,53 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-08-31** at the close of Round 26 (originally opened 2026-08-29 at the close of
-Round 22). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md) and query
-[`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare `status`)._
+_Refreshed **2026-09-07** at the Round-27 closeout (sweep **IN-FLIGHT** — see the block below
+before anything else). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md) and
+query [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare `status`)._
+
+> ## ⚡ Round 27 is IN-FLIGHT (launched 2026-09-07): the full 2³² derived-key sweep is RUNNING
+>
+> The R25 Py2.7-MT branch — the only internally-runnable verdict-changer — is being **finished**,
+> not sampled. A bit-exact C port of the R25 stage-A screen (`grind27`, gate **GO at 128,529
+> seeds/s**: V1 64/64 vectors |Δ|=0, planted-screen margin 12.9, false-reject 0/6, K4 parity
+> 95/95 at zero relative difference; red-team **NO-ERROR-FOUND** on the gate) is sweeping
+> **S1 (pair/keyskip2, full 2³² from 0)** then **S2 (keyskip1 'exact', full 2³²)** per
+> [`analysis/round27/sweep_plan.json`](analysis/round27/sweep_plan.json). Detached via `setsid`
+> (survives session exit), ~11.3 h/lane at throttled-sustained ~106k/s; S1 completes
+> ~**2026-09-08 06:30 local**, S1+S2 ~22.5 h total. Full docs:
+> [`analysis/round27/SYNTHESIS.md`](analysis/round27/SYNTHESIS.md) ·
+> [`analysis/round27/MONITORING.md`](analysis/round27/MONITORING.md) ·
+> [`analysis/round27/PREREG.md`](analysis/round27/PREREG.md).
+>
+> **Check status:**
+> ```bash
+> cd /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round27/P1-engine && ./grind27 --status --run-dir run
+> ```
+>
+> **If `run/HIT-CANDIDATE.json` exists:** a seed's screen pmax cleared the CLAIM bar (S1
+> 7.383520294328688 / S2 7.6341931878728095). It is a **flag, not a verdict** — re-score with the
+> R25 Python pipeline (`analysis/round25/compute-tail/runner.py` stage_b), run the 3-clause
+> `analysis/round20/HITFN/hitfn20.py` with `analysis/round19/I2/adjudicate.py` as adjudicator of
+> record; even HIT=True stays **FLAGGED-FOR-ORACLE, never auto-certified** (R21-L1).
+>
+> **If the process died** (check `ps -p "$(cat analysis/round27/sweep.pid)"`): resume is proven
+> exact (no gap, no double-count, completed lanes skipped) — use the resume block in
+> `MONITORING.md`. Kill only by PID, never `pkill -f`.
+>
+> **When both lanes finish:** batch-re-score `run/candidates.jsonl` through Python stage_b (K4:
+> any C-vs-Python pmax disagreement > 1e-6 voids parity — halt), validate S2's own planted
+> control (its null does NOT count without it; `GRIND27_S2_CONTROL_OK=1` gates the lane), then
+> convert ledger row **R27-CPORT-MT32-FULLSWEEP** (in-flight) into the completed null or the
+> flagged survivor. Until then the OTP-class verdict is **UNCHANGED**.
 
 Binding: [`liber-primus/ARMADA-DOCTRINE.md`](ARMADA-DOCTRINE.md). For a NEW solver deciding
 where to spend effort (rather than picking up this project's own threads), read
 [`handoff/SOLVER-STRATEGY-2026.md`](handoff/SOLVER-STRATEGY-2026.md). Trust anchor:
 `python liber-primus/tests/validate.py` → `ALL VALIDATIONS PASSED` (5/5), passing through
 Round 25 and re-verified 2026-08-31 (`pytest -m "not network"` 85 passed).
-`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **156 entries**
-(R22-A/B/C/D/R, R23-A2, R24 ×5, R25 merged, the ten Round-20 lanes filed 2026-08-31, and now
-**Round 26 ×4**: R26-A-GEN-SWEEP-FIRST-FIRE [partially-run], R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE
-[partially-run], R26-C-SEMANTIC-SEED-ZOO [negative], R26-D-REDTEAM [audit]).
+`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **157 entries**
+(R22-A/B/C/D/R, R23-A2, R24 ×5, R25 merged, the ten Round-20 lanes filed 2026-08-31, Round 26 ×4
+[R26-A/B partially-run, R26-C negative, R26-D audit], and now **R27-CPORT-MT32-FULLSWEEP
+[in-flight]** — the running 2³² sweep, see the block above).
 
 **The Round 23 seed at the bottom of
 [`analysis/NEXT-ARMADA-ROADMAP.md`](analysis/NEXT-ARMADA-ROADMAP.md) ("ROUND 23 SEED") has been
