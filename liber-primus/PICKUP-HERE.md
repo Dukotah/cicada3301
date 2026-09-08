@@ -1,19 +1,30 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-09-07** at the Round-27 closeout (sweep **IN-FLIGHT** — see the block below
-before anything else). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md) and
-query [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare `status`)._
+_Refreshed **2026-09-08** at the S1 lane closeout (S1 **COMPLETE — NULL**, S2 **IN-FLIGHT** —
+see the block below before anything else). Read this first, then
+[`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md) and query [`LEDGER.json`](LEDGER.json)
+`coverage`/`not_covered` (never the bare `status`)._
 
-> ## ⚡ Round 27 is IN-FLIGHT (launched 2026-09-07): the full 2³² derived-key sweep is RUNNING
+> ## ⚡ Round 27: S1 is COMPLETE (first full-space sweep in project history) — NULL. S2 is RUNNING.
 >
 > The R25 Py2.7-MT branch — the only internally-runnable verdict-changer — is being **finished**,
-> not sampled. A bit-exact C port of the R25 stage-A screen (`grind27`, gate **GO at 128,529
-> seeds/s**: V1 64/64 vectors |Δ|=0, planted-screen margin 12.9, false-reject 0/6, K4 parity
-> 95/95 at zero relative difference; red-team **NO-ERROR-FOUND** on the gate) is sweeping
-> **S1 (pair/keyskip2, full 2³² from 0)** then **S2 (keyskip1 'exact', full 2³²)** per
-> [`analysis/round27/sweep_plan.json`](analysis/round27/sweep_plan.json). Detached via `setsid`
-> (survives session exit), ~11.3 h/lane at throttled-sustained ~106k/s; S1 completes
-> ~**2026-09-08 06:30 local**, S1+S2 ~22.5 h total. Full docs:
+> not sampled, by the bit-exact C port `grind27` (gate **GO**: V1 64/64 vectors |Δ|=0,
+> planted-screen margin 12.9, false-reject 0/6; red-team **NO-ERROR-FOUND** on the gate).
+>
+> **S1 (pair/keyskip2) COMPLETED 2026-09-08: all 2³² = 4,294,967,296 seeds scored exactly once**
+> (histogram sums to 2³² exactly). 392,131 flags at 1.31× the Gumbel prediction (K2 pass); three
+> claim-bar crossers — 35563892 (7.6707), 348625413 (7.6001), 86514964 (7.4210) — **all
+> oracle-adjudicated NOISE-CROSSER** (hitfn20 clause-1 FAIL at L=240: 4.96/4.53/5.78 vs bar
+> 7.384; parity Δ=0.0 on all three). **K4 discharged**: 10,971 flags (all 8,971 ≥ hard gate
+> 5.8835 + 2,000 random) batch re-scored in Python at **max |C−Python| = 0.0**. Lane verdict
+> ([`analysis/round27/S1-CLOSEOUT.md`](analysis/round27/S1-CLOSEOUT.md)): **S1 NULL — the
+> Py2.7-MT 2³² integer-seed space under the pair relation contains no key; branch EXHAUSTED**
+> (conditional on the 3 named conditionals: this seed space, this transition model, the
+> 9-register adjudicator). Oracle records: `analysis/round27/ORACLE-{35563892,348625413,86514964}.md`.
+>
+> **S2 (keyskip1 'exact', full 2³²) is IN-FLIGHT** per
+> [`analysis/round27/sweep_plan.json`](analysis/round27/sweep_plan.json) — detached via `setsid`
+> (survives session exit), ~11 h at sustained throughput. Full docs:
 > [`analysis/round27/SYNTHESIS.md`](analysis/round27/SYNTHESIS.md) ·
 > [`analysis/round27/MONITORING.md`](analysis/round27/MONITORING.md) ·
 > [`analysis/round27/PREREG.md`](analysis/round27/PREREG.md).
@@ -23,21 +34,24 @@ query [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare `sta
 > cd /mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round27/P1-engine && ./grind27 --status --run-dir run
 > ```
 >
-> **If `run/HIT-CANDIDATE.json` exists:** a seed's screen pmax cleared the CLAIM bar (S1
-> 7.383520294328688 / S2 7.6341931878728095). It is a **flag, not a verdict** — re-score with the
-> R25 Python pipeline (`analysis/round25/compute-tail/runner.py` stage_b), run the 3-clause
-> `analysis/round20/HITFN/hitfn20.py` with `analysis/round19/I2/adjudicate.py` as adjudicator of
-> record; even HIT=True stays **FLAGGED-FOR-ORACLE, never auto-certified** (R21-L1).
+> **If `run/HIT-CANDIDATE.json` grows a new S2 hit:** a seed's screen pmax cleared the S2 CLAIM
+> bar 7.6341931878728095. It is a **flag, not a verdict** — adjudicate exactly like the three S1
+> crossers (`analysis/round27/oracle_crosser.py`, adapting C_PMAX/claim bar for S2): Python
+> re-score parity, 3-clause `analysis/round20/HITFN/hitfn20.py` with
+> `analysis/round19/I2/adjudicate.py` as adjudicator of record; even HIT=True stays
+> **FLAGGED-FOR-ORACLE, never auto-certified** (R21-L1).
 >
 > **If the process died** (check `ps -p "$(cat analysis/round27/sweep.pid)"`): resume is proven
-> exact (no gap, no double-count, completed lanes skipped) — use the resume block in
+> exact (no gap, no double-count; the completed S1 is skipped) — use the resume block in
 > `MONITORING.md`. Kill only by PID, never `pkill -f`.
 >
-> **When both lanes finish:** batch-re-score `run/candidates.jsonl` through Python stage_b (K4:
-> any C-vs-Python pmax disagreement > 1e-6 voids parity — halt), validate S2's own planted
-> control (its null does NOT count without it; `GRIND27_S2_CONTROL_OK=1` gates the lane), then
-> convert ledger row **R27-CPORT-MT32-FULLSWEEP** (in-flight) into the completed null or the
-> flagged survivor. Until then the OTP-class verdict is **UNCHANGED**.
+> **When S2 finishes:** batch-re-score its `run/candidates.jsonl` rows through Python stage_b
+> (pattern: `analysis/round27/s1_batch_parity.py`; K4: any C-vs-Python pmax disagreement > 1e-6
+> voids parity — halt), validate S2's own planted control (its null does NOT count without it;
+> `GRIND27_S2_CONTROL_OK=1` gates the lane), then convert ledger row
+> **R27-CPORT-MT32-FULLSWEEP** (in-flight; S1 portion already recorded complete) into the
+> completed null or the flagged survivor. Until then the OTP-class verdict is **UNCHANGED —
+> hardened by the S1 null**.
 
 Binding: [`liber-primus/ARMADA-DOCTRINE.md`](ARMADA-DOCTRINE.md). For a NEW solver deciding
 where to spend effort (rather than picking up this project's own threads), read
@@ -47,7 +61,8 @@ Round 25 and re-verified 2026-08-31 (`pytest -m "not network"` 85 passed).
 `validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **157 entries**
 (R22-A/B/C/D/R, R23-A2, R24 ×5, R25 merged, the ten Round-20 lanes filed 2026-08-31, Round 26 ×4
 [R26-A/B partially-run, R26-C negative, R26-D audit], and now **R27-CPORT-MT32-FULLSWEEP
-[in-flight]** — the running 2³² sweep, see the block above).
+[in-flight]** — S1 complete with a measured-exhaustion NULL, S2 still sweeping, see the block
+above).
 
 **The Round 23 seed at the bottom of
 [`analysis/NEXT-ARMADA-ROADMAP.md`](analysis/NEXT-ARMADA-ROADMAP.md) ("ROUND 23 SEED") has been
