@@ -1,0 +1,55 @@
+{
+ "lane": "round28/L1/control",
+ "pad": "DATA__560.00.iso-authoritative",
+ "pad_sha256": "a24051a87f0eb25ca21accbd3158fdf7b4911243e5ee1b9778b81182f0d36573",
+ "offset_true": 49152,
+ "supp": 0.83,
+ "plain_len": 240,
+ "screen_bar": 5.0,
+ "recovery_bar": 0.9,
+ "plant_keyskip1": {
+  "n_skips": 9,
+  "screen_pmax": 32.286,
+  "screen_beam_score": -4.21,
+  "gate": {
+   "hit": true,
+   "reason": "HIT: clears panel-max null AND recovery>=0.90 AND held-out 3/4 reproduces",
+   "pmax": 32.286,
+   "bar": 7.634,
+   "recovery": 1.0,
+   "heldout": 1.0,
+   "score": -4.21,
+   "preg": "LP1_REAL",
+   "recovery_source": "truth_idx"
+  }
+ },
+ "plant_skip_by_two": {
+  "n_rejections": 9,
+  "screen_pmax": 32.538,
+  "screen_beam_score": -4.197,
+  "gate": {
+   "hit": true,
+   "reason": "HIT: clears panel-max null AND recovery>=0.90 AND held-out 3/4 reproduces",
+   "pmax": 32.538,
+   "bar": 7.384,
+   "recovery": 0.9958,
+   "heldout": 0.9944,
+   "score": -4.197,
+   "preg": "LP1_REAL",
+   "recovery_source": "truth_idx"
+  }
+ },
+ "crosscheck_beam_on_skip_by_two": {
+  "hit": false,
+  "reason": "FAIL clause1: pmax 2.319 < panel-max bar 7.634",
+  "pmax": 2.319,
+  "bar": 7.634,
+  "recovery": 0.0708,
+  "heldout": 0.0222,
+  "score": -7.2,
+  "preg": "EN_KJV",
+  "recovery_source": "truth_idx"
+ },
+ "PASS": true,
+ "verdict": "VALIDATED -- both relations recover their plant through the real screen+gate path"
+}

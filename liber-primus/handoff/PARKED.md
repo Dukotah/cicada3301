@@ -182,6 +182,15 @@ place at `analysis/round12/A1/pads/DATA_560.13` (gitignored; hash receipt commit
 `handoff/capsule/recovered/DATA_560.13.sha256`). **The A1 re-run was NOT performed** — that is
 this item's remaining work. See [`capsule/RECOVERY-560.13.md`](capsule/RECOVERY-560.13.md).
 
+> **CORRECTION OF RECORD (2026-09-08, R28-L1).** The line above is stale: the A1 re-run WAS
+> performed the same day the pads were recovered (2026-08-19) — `analysis/round12/A1/
+> results_560_13.json` (160 configs, 8 offsets, NEGATIVE) and `results_560_00_full.json`
+> (220 configs, 11 offsets, NEGATIVE), absorbed into ledger row R12-A1. What remained
+> genuinely uncovered — offset density (8–11 sampled positions per pad), the keyskip2/`pair`
+> relation, and the N-scaled hitfn20 gate — was swept by `analysis/round28/L1/` (dense
+> strides 16,384 / 331,777; both relations; planted controls for both). See
+> `analysis/round28/L1/RESULTS.md` for the verdict and the honest not-covered remainder.
+
 > ### ⚠ And a second, unplanned finding: A1's `_560.00` was TRUNCATED
 >
 > Cross-checking every pad against the authoritative ISO turned up a defect. The `_560.00` that

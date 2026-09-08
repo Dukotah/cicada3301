@@ -1,0 +1,82 @@
+==========================================================================
+R28-L1 sweep -- dense offsets x {exact,pair} on the authoritative pads
+==========================================================================
+pad 560.00auth: 3,992,970 B sha-OK  stride 16,384  offsets 244
+pad 560.13: 118,818,811 B sha-OK  stride 331,777  offsets 359
+null[exact]: mean pmax 2.414  max 4.193  (cand bar 5.0, claim bar 7.634)
+null[pair]: mean pmax 2.307  max 5.290  (cand bar 5.0, claim bar 7.384)
+==========================================================================
+R28-L1 sweep -- dense offsets x {exact,pair} on the authoritative pads
+==========================================================================
+pad 560.00auth: 3,992,970 B sha-OK  stride 16,384  offsets 244
+pad 560.13: 118,818,811 B sha-OK  stride 331,777  offsets 359
+resume: 0 rows already present
+null[exact]: mean pmax 2.414  max 4.193  (cand bar 5.0, claim bar 7.634)
+null[pair]: mean pmax 2.307  max 5.290  (cand bar 5.0, claim bar 7.384)
+  new best 3.444  560.00auth:mod29:s-1:o0:pair  DAEGEORORNGEAPEANGRBGBSWGMGYXNGGSWRTHJOIAOEOTBIA
+  new best 4.194  560.00auth:lo_nibble:s-1:o16384:exact  XREOAEDPATUNGIMFTJOOEXONLUEWHOONGFNNILEAAJLIIAYR
+  new best 4.629  560.00auth:lo_nibble:s-1:o16384:pair  XREOAEDPATUNGIMFTJOEOYAEXMYFUCCWLUMYYEUHDNGAETHP
+  new best 4.866  560.00auth:mod29:s-1:o32768:pair  PFNGGOMXDGOEONCTHEIATDYDSXAGTHBRRSRPYHTUHPTXEORE
+  new best 5.151  560.00auth:prime_to_idx_rev:s-1:o294912:exact  BREADAEEACGRAAELIALNGOAECTHIAHHISRRLTIRWUSICBIRE
+  CANDIDATE pmax=5.151 560.00auth:prime_to_idx_rev:s-1:o294912:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 4.024 < panel-max bar 7.634", "pmax": 4.024, "bar": 7.634, "recovery": 0.5222, "heldout": 0.5222, "preg": "OE", "score": -7.008, "full_score": -7.359, "ful
+  CANDIDATE pmax=5.136 560.00auth:mod29_rev:s+1:o540672:pair -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 4.949 < panel-max bar 7.384", "pmax": 4.949, "bar": 7.384, "recovery": 0.6111, "heldout": 0.6111, "preg": "EN_MODERN", "score": -7.182, "full_score": -7.33
+[ckpt] 2408/24080 rows  0.096s/decode  elapsed 3.9m  S2 pcpu=579
+  new best 5.262  560.00auth:hi_nibble_rev:s+1:o1015808:exact  NGEORXJEAISMGLACXXBIAILIAREWSNGNFGFAEDSWPAYPJJJB
+  CANDIDATE pmax=5.262 560.00auth:hi_nibble_rev:s+1:o1015808:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 3.239 < panel-max bar 7.634", "pmax": 3.239, "bar": 7.634, "recovery": 1.0, "heldout": 1.0, "preg": "EN_MODERN", "score": -6.978, "full_score": -7.264, "fu
+  CANDIDATE pmax=5.205 560.00auth:hi_nibble_rev:s-1:o1228800:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 4.147 < panel-max bar 7.634", "pmax": 4.147, "bar": 7.634, "recovery": 1.0, "heldout": 1.0, "preg": "OE", "score": -7.083, "full_score": -7.276, "full_pmax
+[ckpt] 4816/24080 rows  0.080s/decode  elapsed 6.5m  S2 pcpu=579
+[ckpt] 7224/24080 rows  0.082s/decode  elapsed 9.9m  S2 pcpu=578
+  CANDIDATE pmax=5.205 560.00auth:prime_to_idx_rev:s-1:o3063808:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 4.119 < panel-max bar 7.634", "pmax": 4.119, "bar": 7.634, "recovery": 0.7556, "heldout": 0.7556, "preg": "EN_KJV", "score": -6.998, "full_score": -7.318, 
+  new best 5.606  560.00auth:mod29:s+1:o3850240:pair  USHIAOEWIAEOIATHOEAENGGEAETHEANGYPTSEOHGDAEGYPEO
+  CANDIDATE pmax=5.606 560.00auth:mod29:s+1:o3850240:pair -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 3.801 < panel-max bar 7.384", "pmax": 3.801, "bar": 7.384, "recovery": 1.0, "heldout": 1.0, "preg": "LP1_REAL", "score": -7.197, "full_score": -7.344, "ful
+  CANDIDATE pmax=5.053 560.00auth:prime_to_idx_rev:s+1:o3883008:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 3.623 < panel-max bar 7.634", "pmax": 3.623, "bar": 7.634, "recovery": 1.0, "heldout": 1.0, "preg": "EN_MODERN", "score": -7.101, "full_score": -7.3, "full
+[ckpt] 9632/24080 rows  0.085s/decode  elapsed 13.7m  S2 pcpu=577
+pad 560.00auth complete: 9740 cumulative rows (833s)
+  CANDIDATE pmax=5.039 560.13:hi_nibble:s+1:o1658885:pair -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 3.271 < panel-max bar 7.384", "pmax": 3.271, "bar": 7.384, "recovery": 0.0611, "heldout": 0.0611, "preg": "EN_MODERN", "score": -7.267, "full_score": -7.31
+  CANDIDATE pmax=5.099 560.13:mod29_rev:s-1:o6303763:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 2.709 < panel-max bar 7.634", "pmax": 2.709, "bar": 7.634, "recovery": 1.0, "heldout": 1.0, "preg": "EN_KJV", "score": -7.237, "full_score": -7.269, "full_
+  CANDIDATE pmax=5.402 560.13:prime_to_idx:s+1:o14929965:pair -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 4.807 < panel-max bar 7.384", "pmax": 4.807, "bar": 7.384, "recovery": 1.0, "heldout": 1.0, "preg": "EN_HALFVOWEL", "score": -7.362, "full_score": -7.342, 
+  CANDIDATE pmax=5.197 560.13:byte_scaled_rev:s-1:o17252404:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 3.074 < panel-max bar 7.634", "pmax": 3.074, "bar": 7.634, "recovery": 1.0, "heldout": 1.0, "preg": "EN_MODERN", "score": -7.066, "full_score": -7.326, "fu
+[ckpt] 12040/24080 rows  0.090s/decode  elapsed 18.1m  S2 pcpu=576
+  CANDIDATE pmax=5.243 560.13:prime_to_idx_rev:s+1:o19243066:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 4.281 < panel-max bar 7.634", "pmax": 4.281, "bar": 7.634, "recovery": 1.0, "heldout": 1.0, "preg": "EN_MODERN", "score": -6.973, "full_score": -7.265, "fu
+  CANDIDATE pmax=5.044 560.13:hi_nibble:s+1:o33177700:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 3.848 < panel-max bar 7.634", "pmax": 3.848, "bar": 7.634, "recovery": 0.0944, "heldout": 0.0944, "preg": "EN_MODERN", "score": -7.131, "full_score": -7.30
+  CANDIDATE pmax=5.316 560.13:prime_to_idx:s+1:o35500139:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 4.402 < panel-max bar 7.634", "pmax": 4.402, "bar": 7.634, "recovery": 1.0, "heldout": 1.0, "preg": "CY", "score": -7.358, "full_score": -7.293, "full_pmax
+[ckpt] 14448/24080 rows  0.091s/decode  elapsed 21.9m  S2 pcpu=575
+  CANDIDATE pmax=5.002 560.13:prime_to_idx_rev:s+1:o47112334:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 3.764 < panel-max bar 7.634", "pmax": 3.764, "bar": 7.634, "recovery": 1.0, "heldout": 1.0, "preg": "EN_MODERN", "score": -6.896, "full_score": -7.283, "fu
+  CANDIDATE pmax=5.071 560.13:byte_scaled:s+1:o55738536:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 3.405 < panel-max bar 7.634", "pmax": 3.405, "bar": 7.634, "recovery": 1.0, "heldout": 1.0, "preg": "DE", "score": -7.118, "full_score": -7.311, "full_pmax
+  CANDIDATE pmax=5.100 560.13:byte_scaled_rev:s+1:o56733867:pair -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 2.792 < panel-max bar 7.384", "pmax": 2.792, "bar": 7.384, "recovery": 0.0167, "heldout": 0.0167, "preg": "EN_MODERN", "score": -7.372, "full_score": -7.31
+[ckpt] 16856/24080 rows  0.091s/decode  elapsed 25.7m  S2 pcpu=574
+  CANDIDATE pmax=5.438 560.13:lo_nibble_rev:s-1:o75313379:pair -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 3.390 < panel-max bar 7.384", "pmax": 3.39, "bar": 7.384, "recovery": 1.0, "heldout": 1.0, "preg": "EN_HALFVOWEL", "score": -7.147, "full_score": -7.266, "
+  CANDIDATE pmax=5.416 560.13:byte_scaled_rev:s+1:o78631149:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 4.675 < panel-max bar 7.634", "pmax": 4.675, "bar": 7.634, "recovery": 1.0, "heldout": 1.0, "preg": "OE", "score": -7.001, "full_score": -7.29, "full_pmax"
+[ckpt] 19264/24080 rows  0.090s/decode  elapsed 29.0m  S2 pcpu=573
+  CANDIDATE pmax=5.007 560.13:mod29_rev:s-1:o94224668:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 1.613 < panel-max bar 7.634", "pmax": 1.613, "bar": 7.634, "recovery": 1.0, "heldout": 1.0, "preg": "DE", "score": -7.312, "full_score": -7.343, "full_pmax
+  CANDIDATE pmax=5.084 560.13:hi_nibble_rev:s+1:o96878884:exact -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 4.484 < panel-max bar 7.634", "pmax": 4.484, "bar": 7.634, "recovery": 0.7333, "heldout": 0.7333, "preg": "EN_HALFVOWEL", "score": -6.957, "full_score": -7
+[ckpt] 21672/24080 rows  0.089s/decode  elapsed 32.3m  S2 pcpu=572
+  CANDIDATE pmax=5.313 560.13:lo_nibble_rev:s-1:o109486410:pair -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 2.784 < panel-max bar 7.384", "pmax": 2.784, "bar": 7.384, "recovery": 1.0, "heldout": 1.0, "preg": "OE", "score": -7.246, "full_score": -7.358, "full_pmax
+  CANDIDATE pmax=5.106 560.13:lo_nibble:s-1:o109818187:pair -> stage B
+    stage B: {"hit": false, "reason": "FAIL clause1: pmax 3.051 < panel-max bar 7.384", "pmax": 3.051, "bar": 7.384, "recovery": 0.55, "heldout": 0.55, "preg": "EN_KJV", "score": -7.179, "full_score": -7.283, "ful
+[ckpt] 24080/24080 rows  0.089s/decode  elapsed 35.8m  S2 pcpu=572
+pad 560.13 complete: 24080 cumulative rows (2151s)
+
+VERDICT: CANDIDATES-BELOW-GATE  rows=24080  best pmax=5.606 (560.00auth:mod29:s+1:o3850240:pair)  elapsed 35.9m
