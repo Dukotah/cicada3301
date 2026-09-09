@@ -1,0 +1,29 @@
+{
+  "metric": "delta seeds_done / delta updated_unix from round27/P1-engine/run/STATUS.json (read-only)",
+  "unloaded_reference": {
+    "lifetime_avg_seeds_per_s_at_first_sample": 125158.6,
+    "note": "S2 ran essentially alone 05:27-11:38; lifetime average is dominated by that window"
+  },
+  "samples": [
+    {"t": 1788895102, "seeds_done": 1418363447, "context": "baseline; L2 keysweep + L5 running, R-lane starting"},
+    {"t": 1788895916, "seeds_done": 1475600701, "context": "after R-lane T2/T3 compute + L2 + L5"},
+    {"t": 1788896006, "seeds_done": 1482901046, "context": "clean-window start; only L2 + S2 (+ untracked host activity)"},
+    {"t": 1788896338, "seeds_done": 1504592329, "context": "clean-window end"}
+  ],
+  "intervals": [
+    {"window": "1788895102-1788895916", "seconds": 814, "seeds": 57237254, "seeds_per_s": 70316, "drop_vs_unloaded": "43.8%"},
+    {"window": "1788896006-1788896338 (clean, R-lane idle)", "seconds": 332, "seeds": 21691283, "seeds_per_s": 65335, "drop_vs_unloaded": "47.8%"}
+  ],
+  "guard_bar": "10% (round PLAN + this lane's PREREG T5)",
+  "verdict": "FOUND-ERROR: breached by >4x the bar during round-28 concurrent execution",
+  "attribution_evidence": {
+    "grind27_nice": 10,
+    "round28_lanes_nice": 15,
+    "cfs_weight_ratio_grind_vs_lane_thread": "110:36 per thread (~4% expected steal per niced thread; cannot explain >40%)",
+    "unniced_host_activity_observed": "node/esbuild/claude dev processes at nice 0 (weight 1024 vs grind's 110) bursting 45-90% CPU; load avg 10.4-16.0 on 6 cores",
+    "instant_grind27_cpu_range_observed": "92%-468% vs ~572% unloaded",
+    "conclusion": "round-28 niced lanes contribute but the dominant steal is un-niced host activity out-prioritizing the nice-10 sweep; both breach the round's S2-dominance promise in effect"
+  },
+  "lane_guard_metric_defect": "L1 guarded with ps pcpu (580->572, 1.4%) - a CUMULATIVE average that structurally cannot see a >10% interval drop; interval STATUS.json deltas must be the guard metric",
+  "s2_impact": "2.79e9 seeds remained at last sample; 6.2h at unloaded rate vs ~12h at observed rate"
+}
