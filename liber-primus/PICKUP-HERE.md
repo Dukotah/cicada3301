@@ -1,7 +1,8 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-09-08** at the S1 lane closeout (S1 **COMPLETE — NULL**, S2 **IN-FLIGHT** —
-see the block below before anything else). Read this first, then
+_Refreshed **2026-09-15** at the Round-28 INTERIM closeout (S1 **COMPLETE — NULL**, S2
+**IN-FLIGHT ~43 %**, Round-28 L1/L2/L5/R **CLOSED**, L3 in-flight, 25-cell grind28 queue
+**ARMED** — see the Round-28 block below before anything else). Read this first, then
 [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md) and query [`LEDGER.json`](LEDGER.json)
 `coverage`/`not_covered` (never the bare `status`)._
 
@@ -53,58 +54,70 @@ see the block below before anything else). Read this first, then
 > completed null or the flagged survivor. Until then the OTP-class verdict is **UNCHANGED —
 > hardened by the S1 null**.
 
-> ## Round 28 (in progress, 2026-09-09) — 5 lanes + red-team; post-S2 chainer ARMED
+> ## Round 28 — INTERIM CLOSEOUT 2026-09-15 (round OPEN: S2 sweeping, grind28 queue armed)
 >
-> Aimed at the instrument/artifacts, not new flat-prior space. Lane status:
-> - **L1** (pad-densification re-sweep) — **committed**, NULL.
-> - **L2** (contested-bytes: blind re-read + direct-key battery) — **committed**.
->   *Read half FINAL: canon stands* — an independent blind instrument agrees with A-04
->   100 % on all 11 conflict cells (incl. the 3 byte flips) and first-verifies 186/209/210/211;
->   correct payload remains `round19/C1/payload_resolved.bin`. *Decode half in-flight*: its
->   `keysweep.py` process died at ~75 % overnight, **relaunched detached 2026-09-09**
->   (`nice -15`, `L2/keysweep.pid`); §2.4/§3 fill on completion.
-> - **L3** (string-seed Py2.7 `seed(str)` amd64 dictionary sweep) — **resumed detached
->   2026-09-09**, `setsid nice -n 15 python3 sweep28.py --budget 39600`
->   (`L3/sweep28.pid` 678469, ~48–160 seeds/s single-thread). Controls 5/5 PASS,
->   i386-subsumption 200/200. Tier-0 cells r29_pair/r29_exact/grbmod_pair/grbrej_pair
->   complete-NULL; now on shuffle29 + the ~390k wordlist tiers. Live: `L3/progress28.json`.
->   Static source committed; live progress/candidates finalize at lane close.
-> - **L4** (grind28: PHP/glibc/S3 generators, 25 cells, 2³² each) — **committed**, built +
->   gated + frozen in `L4/queued_cells.json`. **NOT fired** — waits for S2 to free the cores.
-> - **L5** (payload micro-structure: RSA-window / varint / rotate-90) — **committed**, NULL;
->   `L5/ledger_rows_proposed.json` (E-01(b), E-02, H-03) awaits coordinator ledger merge.
-> - **R** (red-team) — **committed**, NO-ERROR-FOUND on T2 (S1 closeout recompute, parity Δ0.0),
->   T3 (L3 i386-subsumption, 106/106 + 66/66 vs live CPython 2.7.18), T4 (PREREG↔code drift).
->   **T1 FOUND-ERROR** (ledger hygiene: `R12-A1.not_covered = null` despite real uncovered mass)
->   — fix in `R/T1-PATCH-PROPOSALS.md`, **DEFERRED to coordinator** (ledger content edit; lanes
->   don't touch `LEDGER.json`). **T5 FOUND-ERROR** (see next).
+> Interim synthesis: [`analysis/round28/SYNTHESIS-INTERIM.md`](analysis/round28/SYNTHESIS-INTERIM.md).
+> Ledger merged **157 → 162** (`R28-L1/L2/L5/R` + in-flight `R28-L4-UNSWEPT-GENERATORS-QUEUE`);
+> `validate_ledger.py` Unsound-negatives = **0**; `R12-A1.not_covered` filled per the T1 patch.
+> Lane state:
+> - **L1** (pad-densification + pair relation) — **CLOSED, NEGATIVE** (`R28-L1-CICADAOS-PADS-DENSE-PAIR`):
+>   24,080/24,080 rows, best 5.606 vs claim 7.384/7.634, 23 screeners all stage-B collapsed, 0 flagged.
+> - **L2** (contested-bytes) — **CLOSED** (`R28-L2-CONTESTED-BYTES`). *Read half FINAL: canon stands*
+>   (independent blind instrument = A-04 on all 11 conflict cells incl. the 3 byte flips;
+>   186/209/210/211 first-verified; payload remains `round19/C1/payload_resolved.bin`).
+>   *Decode half NEGATIVE*: 21,628,416 decodes, 0 ≥ family bar −5.7923, best −6.350 inside the null.
+> - **L3** (string-seed Py2.7 amd64 dictionary) — **IN-FLIGHT**, PID **689907**
+>   (`setsid nice -n 15 python3 sweep28.py --budget 345600`, resumed 21:34 PDT 09-15).
+>   Tier-0 cells ×5 complete-NULL; tier-1 r29_pair ~347k words, best 6.095. Live: `L3/progress28.json`.
+>   Coordinator decision of record (red-team D3): left running — measured cost ~4 %/thread at nice 15;
+>   T5's prescription amended to "niced single-thread lanes tolerated". Row files at lane close.
+> - **L4** (grind28: PHP both twists / glibc gen=0 / S3, 25 gated 2³² cells) — **QUEUED**
+>   (`R28-L4-UNSWEPT-GENERATORS-QUEUE`, in-flight, ZERO coverage claimed). Frozen in
+>   `L4/queued_cells.json` = merged `sweep_plan_r28.json` (set-verified); ≈15–19 days 6-core when fired.
+> - **L5** (payload-micro E-01w/E-02v/H-03r) — **CLOSED, NEGATIVE** (`R28-L5-PAYLOAD-MICRO`);
+>   the community "3301 in the 2012 P.S. digits" claim RESOLVED as a layout artifact.
+> - **R** (red-team ×2) — **CLOSED** (`R28-R-REDTEAM`, audit). Pass 1: T2/T3/T4 NO-ERROR-FOUND;
+>   T1 + T5 FOUND-ERROR (process-class). Pass 2 (`R-redteam/RESULTS.md`, 2026-09-16Z):
+>   **ERRORS-FOUND-NONE-SCIENTIFIC** — every lane headline reproduces from raw artifacts,
+>   0 dropped candidates (incl. the audited premature-grind28 orphan), 6 defects D1–D6 dispositioned
+>   in SYNTHESIS-INTERIM.md.
 >
-> **Post-S2 auto-chainer — ARMED & running:** `analysis/round28/chain_after_s2.sh`
-> (`chainer.pid` 678792, detached). Polls `round27/sweep.pid` every 60 s; on S2 exit it
-> (a) if `run/STATUS.json` `lanes_completed` lacks `S2` → resumes grind27 with
-> `GRIND27_S2_CONTROL_OK=1` per MONITORING.md and keeps polling; (b) if S2 complete →
-> writes `round28/S2-COMPLETE.marker` **first**, then launches the 25-cell grind28 queue
-> (`setsid nice -n 10`, run dir `round28/run/`, HIT-CANDIDATE flagged FOR-ORACLE, progress →
-> `round28/chain.log`). Adds **no compute now** — fully consistent with T5's "L4 waits for S2".
+> **Post-S2 auto-chainer — ARMED & running:** `analysis/round28/chain_after_s2.sh`, PID
+> **701073** (`chainer.pid`; relaunched 2026-09-16T05:02Z after a host outage killed grind27
+> 494140 at 41.7 % — chainer resumed it cleanly, checkpoint continuity verified). S2 = grind27
+> PID **701083** (`round27/sweep.pid`), ~43 % at ~76k seeds/s → exits in hours. Chainer logic:
+> polls `round27/sweep.pid` every 60 s; if grind27 dies with `lanes_completed` lacking `S2` →
+> resumes it (`GRIND27_S2_CONTROL_OK=1`, pgrep double-launch guard); when S2 completes → writes
+> `round28/S2-COMPLETE.marker` **first**, then launches the 25-cell grind28 queue
+> (`setsid nice -n 10`, run dir `round28/run/` — physically separate from S2's,
+> HIT-CANDIDATE copied + FLAGGED-FOR-ORACLE, progress → `round28/chain.log`).
 >
-> **⚠ T5 live defect (coordinator decision):** S2 interval throughput measured **~82.6k
-> seeds/s = ~34 % below** its ~125k unloaded baseline while L2+L3 + host activity run — the
-> round's >10 % non-interference guard is **breached**. Per R-lane attribution the dominant
-> steal is **un-niced host dev sessions** (node/esbuild/claude, weight 1024 vs grind's 110),
-> not the nice-15 lanes (~4 % each). Remedy is owner-level: `renice 0 494140` (or lower) on
-> grind27, or quiesce the dev sessions; the round cannot enforce it. S2 still completes,
-> slower (~12 h vs ~6 h on the remaining ~2.8e9 seeds).
+> **How to STOP it all** (kill by PID only, never `pkill -f`):
+> `kill $(cat analysis/round28/chainer.pid)` **first** (else it resumes what you stop), then
+> `kill $(cat analysis/round28/grind28.pid)` if the queue is live (checkpointed, resumable),
+> then — only if you truly mean to halt S2 — `kill $(cat analysis/round27/sweep.pid)`
+> (resume recipe in `round27/MONITORING.md`). L3: `kill $(cat analysis/round28/L3/sweep28.pid)`
+> (resumes from `progress28.json`). Never touch `round27/P1-engine/run/`.
+>
+> **Final-closeout checklist** (converts INTERIM → final; list also in SYNTHESIS-INTERIM.md):
+> (1) S2 done → planted-control validation + candidates batch parity + **S2-lane oracle
+> adjudication of crosser 35563892** (S1 verdict NOISE — must be recorded, not inherited) →
+> convert `R27-CPORT-MT32-FULLSWEEP`; (2) queue runs → per-cell `stage_a28.py` parity +
+> oracle on every crosser → convert `R28-L4-…-QUEUE`; (3) L3 close → own row;
+> (4) apply red-team **D1** chainer `flock` patch at next chainer restart + the **D4**
+> 8-row `not_covered` hygiene pass (`R/T1-PATCH-PROPOSALS.md` §3); (5) final SYNTHESIS.md.
 
 Binding: [`liber-primus/ARMADA-DOCTRINE.md`](ARMADA-DOCTRINE.md). For a NEW solver deciding
 where to spend effort (rather than picking up this project's own threads), read
 [`handoff/SOLVER-STRATEGY-2026.md`](handoff/SOLVER-STRATEGY-2026.md). Trust anchor:
 `python liber-primus/tests/validate.py` → `ALL VALIDATIONS PASSED` (5/5), passing through
 Round 25 and re-verified 2026-08-31 (`pytest -m "not network"` 85 passed).
-`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **157 entries**
+`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **162 entries**
 (R22-A/B/C/D/R, R23-A2, R24 ×5, R25 merged, the ten Round-20 lanes filed 2026-08-31, Round 26 ×4
-[R26-A/B partially-run, R26-C negative, R26-D audit], and now **R27-CPORT-MT32-FULLSWEEP
-[in-flight]** — S1 complete with a measured-exhaustion NULL, S2 still sweeping, see the block
-above).
+[R26-A/B partially-run, R26-C negative, R26-D audit], **R27-CPORT-MT32-FULLSWEEP [in-flight]**
+— S1 complete with a measured-exhaustion NULL, S2 still sweeping — and the Round-28 interim
+merge of 2026-09-15: **R28-L1/L2/L5 negative, R28-R audit, R28-L4 queue in-flight**, see the
+block above).
 
 **The Round 23 seed at the bottom of
 [`analysis/NEXT-ARMADA-ROADMAP.md`](analysis/NEXT-ARMADA-ROADMAP.md) ("ROUND 23 SEED") has been
