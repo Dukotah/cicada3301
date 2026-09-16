@@ -99,3 +99,30 @@ append the cells to `sweep_plan.json`, and relaunch (completed lanes are skipped
 - K2 @ 1% coverage (~43M seeds): candidate rate outside [0.2x, 5x] of 6.95e-5/seed → halt+audit.
 - K3 @ every restart: self-test must PASS.
 - K4 standing: C-vs-Python re-score disagreement > 1e-6 → halt.
+
+## Round 28 queue (post-S2 auto-chainer)
+
+**2026-09-15:** the Round-28 heavy sweeps (25 validated cells, all from lane R28-L4;
+L1/L2/L5/R reported no queued cells) are chained behind S2 by a detached watcher:
+
+- **Merged plan:** `analysis/round28/sweep_plan_r28.json` — 25/25 cells passed launch
+  validation (engine + gate file present, plant control hit=True recovery>=0.90 per
+  `round28/L4/receipts/gates_receipts.json`, claim_bar/reducer/relation/offset
+  cross-checked receipt-vs-cell), 0 dropped.
+- **Chainer:** `analysis/round28/chain_after_s2.sh`, PID in `round28/chainer.pid`,
+  log `round28/chain.log`. Polls `sweep.pid` every 60 s; if grind27 dies mid-S2 it
+  resumes it per the Resume recipe above (with a no-double-launch guard); once
+  `lanes_completed` contains "S2" it writes `round28/S2-COMPLETE.marker`, then
+  launches `round28/L4/grind28 --plan round28/sweep_plan_r28.json --run-dir
+  round28/run` (setsid nice -n 10, engine re-validates every gate structurally at
+  launch), PID -> `round28/grind28.pid`, and monitors with the same
+  HIT-CANDIDATE-is-FLAGGED-FOR-ORACLE protocol (never auto-certified; hitfn20 +
+  adjudicate.py are the adjudicators of record, per `round28/L4/QUEUE.md` §checklist).
+- **Incident log (in `round28/chain.log`):** host reboot 2026-09-11 killed grind27
+  (494140) and the original Sep-9 chainer (678792); on 2026-09-15 a premature
+  full-core grind28 launch (699322, against the QUEUE.md hold) was SIGTERM-stopped
+  with a clean checkpoint, S2 resumed from its 41.8 % checkpoint (new PID in
+  `sweep.pid`), and the queue returned behind the chainer.
+- **Queue order + ETAs:** `analysis/round28/L4/QUEUE.md` (whole queue ~15-19 days of
+  6-core wall time; S3 completeness rituals are last — cut from the bottom if needed
+  and record the cut in not_covered).

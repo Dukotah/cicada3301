@@ -38,6 +38,13 @@ PY
 }
 
 resume_s2() {
+  # guard: never double-launch (two grind27s on one run dir = corruption)
+  if pgrep -x grind27 >/dev/null 2>&1; then
+    existing=$(pgrep -x grind27 | head -1)
+    echo "$existing" > "$SWEEP_PID_FILE"
+    log "resume skipped: grind27 already running (PID $existing) -> sweep.pid updated"
+    return 0
+  fi
   log "S2 INCOMPLETE at sweep exit -> resuming grind27 (GRIND27_S2_CONTROL_OK=1) per MONITORING.md"
   cd "$P1" || { log "FATAL: cannot cd $P1"; exit 1; }
   GRIND27_S2_CONTROL_OK=1 setsid nice -n 10 nohup ./grind27 --plan ../sweep_plan.json \
@@ -53,11 +60,17 @@ resume_s2() {
 }
 
 launch_queue() {
-  log "S2 COMPLETE -> marker written; launching grind28 25-cell queue"
+  PLAN="$R28/sweep_plan_r28.json"   # merged + validated plan (R28 coordinator, 2026-09-15)
+  if [ ! -s "$PLAN" ]; then
+    log "FATAL: merged plan $PLAN missing/empty; falling back to $L4/queued_cells.json"
+    PLAN="$L4/queued_cells.json"
+  fi
+  n=$(python3 -c "import json,sys;print(len(json.load(open(sys.argv[1]))))" "$PLAN" 2>/dev/null || echo '?')
+  log "S2 COMPLETE -> marker written; launching grind28 queue ($n cells, plan $PLAN)"
   mkdir -p "$R28/run"
   cd "$L4" || { log "FATAL: cannot cd $L4"; exit 1; }
   export PANEL_PATH="$L4/panel_lm.f32"
-  setsid nice -n 10 nohup ./grind28 --plan queued_cells.json --run-dir "$R28/run" \
+  setsid nice -n 10 nohup ./grind28 --plan "$PLAN" --run-dir "$R28/run" \
       >> "$R28/run/grind28.log" 2>&1 &
   sleep 3
   qpid=$(pgrep -f 'grind28 --plan' | head -1)
