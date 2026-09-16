@@ -134,17 +134,32 @@ battery; Gumbel fitted from order statistics per `benchmark/null.py` doctrine
 **family-wise bar (N = 21,628,416, α = 0.01) = −5.7923** (historical single-battery bar
 −5.2 carried report-only, not used).
 
-### 2.4 Sweep result
+### 2.4 Sweep result — NEGATIVE, complete (2026-09-15)
 
-**IN-FLIGHT (decode half only).** The first execution of `keysweep.py` cleared the
-plant control and null calibration (both persisted, above) and then had its process
-terminate mid-sweep at ~75 % (4,185 of the 7,168 variant×target rows, no
-`sweep_summary.json` written) when the orchestrating session died overnight. The sweep
-was **relaunched detached** 2026-09-09 (`setsid nice -n 15`, single thread; deterministic
-restart — plant/null re-computed identically from fixed seeds). This section, §3, and the
-decode clause of §5 are filled on completion (`sweep_summary.json`); any row ≥ the
-family-wise bar −5.7923 is **FLAGGED-FOR-ORACLE, never auto-certified**. **The read-half
-verdict (§1, §5) stands independently of this sweep.**
+Execution note: the first `keysweep.py` process died mid-sweep at 74/128 variants when
+the host slept; the sweep was resumed with `resume_sweep.py` (deterministic battery,
+identical row format; the 74 complete variants' rows were kept, the partial variant
+re-run in full; `sweep_summary.json` records `resumed: true, kept_variants: 74`).
+Final state verified: **7,168 rows = 128 variants × 56 targets, no gaps** (asserted at
+summary time).
+
+| | |
+|---|---|
+| decodes evaluated | **21,628,416** (128 × 168,972) |
+| family-wise bar (α = 0.01) | **−5.7923** |
+| rows ≥ bar | **0** |
+| near-bar (within 0.15) | **0** |
+| best score anywhere | **−6.350** — `b0m16…23`, page54(len76), `r sign-1 beaufort off237` |
+| historical −5.2 bar | nothing within 1.1 of it either |
+
+The global best (−6.350) is **below the pooled null maximum (−6.2101)** from the
+12-run calibration — the sweep's extreme value sits inside the null's, which is the
+cleanest possible NULL: no near-miss to agonize over, nothing dropped silently. The
+8-way tie across masks 16–23 is expected mechanics, not signal: at that page/offset the
+131-byte key window misses the cells those masks differ in, so the streams coincide.
+R3 stats (IoC·N, min-distinct-32, panel-EN, best non-English z + register, zlib ratio)
+are persisted on every one of the 7,168 rows (`sweep_rows.jsonl`), so this negative
+remains reinterpretable under future registers.
 
 ---
 
@@ -156,10 +171,23 @@ blind by an instrument built independent of L5/C1 by construction. Power: the re
 passed a 100/100 exact-token gate on witnessed non-exemplar cells (min correct-read
 margin 0.0833) before any conflict cell was unblinded.
 
-**Decode half (in-flight).** Planned coverage: 128 payload variants (2 bases × 2⁶
-contested-cell masks) × 56 targets (55 unsolved pages + whole corpus), ≈21.6 M decodes,
-under the family-wise bar −5.7923 (§2.3). Power: the plant control recovered the planted
-variant top-1 at recovery 1.000 (§2.2) through the real pipeline. Filled on completion.
+**Decode half (complete).** Coverage: 128 payload variants (2 bases × 2⁶ contested-cell
+masks, all distinct mod 29) × 56 targets (55 unsolved pages + whole corpus) ×
+the full keytest construction set = 21,628,416 decodes, adjudicated against the
+family-wise bar −5.7923. Power: the plant control recovered the planted variant top-1
+at recovery 1.000 through the real pipeline (§2.2), and the planted-English score
+(−4.317) clears the bar by 1.48 — a real additive-family key inside this variant space
+could not have been missed.
+
+**Not covered (decode):** (a) the full 2¹¹ joint product over all 11 conflict cells —
+only the 2 bases × 2⁶ contested masks ran (the 5 token-split cells vary only jointly,
+canon-corner vs image-corner, never independently; ≈1,920 joint variants unrun at
+~32 s each ≈ 17 h, deprioritized because two independent 100 %-gated instruments now
+agree on those 5 cells); (b) constructions outside the battery (PRF expansion is B-05's
+axis, re-run on payload_resolved by C1's propagation; skip/drift relations are the S2
+axis); (c) non-English-register hits are only as visible as the I2 panel makes them —
+persisted z-scores allow re-adjudication. Reopens if: a new witness reading outside
+the recorded ones, a higher-DPI master, or a battery-family extension.
 
 ## 4. The three conditionals of the negative
 
@@ -185,6 +213,14 @@ instrument, 252 by two. The correct payload remains **`round19/C1/payload_resolv
 `C-CANON-PAYLOAD-3BYTES` stays a coordinator decision, now carrying a second independent
 instrument's agreement.
 
-**Decode half — PENDING** (sweep relaunched detached 2026-09-09; §2.4). No decode verdict
-is claimed until the family-bar sweep completes and §2.4/§3 are filled. Nothing above the
-bar was certifiable before the interruption; any crosser is FLAGGED-FOR-ORACLE.
+**Decode half — NEGATIVE.** 21,628,416 decodes over the complete 128-variant family,
+0 above the family-wise bar, 0 near-bar, best score inside the null's own extreme range.
+Under this battery's construction set and register panel (§4), **no contested-cell
+reading variant of the pp49-51 payload keys the runes as a direct additive/Beaufort/
+atbash stream** — the conditional "a contested byte hides the key" is now closed for
+this construction axis in both directions: the bytes are read (twice, independently)
+AND the reading-variant space is swept. Nothing was FLAGGED-FOR-ORACLE because nothing
+crossed or approached the bar.
+
+Per doctrine R7: this is a measured bound, not a terminal verdict — the reopening
+conditions are listed in §3.
