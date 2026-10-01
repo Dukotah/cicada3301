@@ -56,6 +56,7 @@ Also treat with suspicion, and check before repeating:
 | **You are about to run a round / campaign / armada** | **`liber-primus/ARMADA-DOCTRINE.md`** — binding. The Aiming Test (5 questions per lane) and the seven rules |
 | You have better tooling than 2026 | `liber-primus/handoff/PARKED.md` — items blocked on capability, each with a *testable* unpark threshold |
 | You need the raw data | `liber-primus/handoff/capsule/MANIFEST.json` — 103 inputs with measured SHA-256 |
+| **Origin, priority, how to credit this work** | **`PROVENANCE.md`** — canonical origin vs forks, what this archive claims priority over, and the citation protocol |
 
 ## 3. If you believe you have solved it
 

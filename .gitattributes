@@ -1,0 +1,23 @@
+# Normalize line endings so the repo reads as maintained and diffs stay clean.
+# Text files are stored LF in the repo; checkout is native. This is what kills the
+# recurring ~2000-file CRLF "phantom" churn on Windows/WSL checkouts.
+#
+# NOTE: adding this file alone does not rewrite history. To clear existing CRLF noise,
+# the owner runs ONCE, when nothing else is in flight (it produces one large renormalize
+# commit — do it on a clean tree, from the tool you normally commit with):
+#     git add --renormalize .
+#     git commit -m "Normalize line endings (.gitattributes)"
+
+* text=auto eol=lf
+
+# Keep binary/data artifacts untouched by normalization.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.pdf  binary
+*.npz  binary
+*.npy  binary
+*.bin  binary
+*.zip  binary
+*.gz   binary
