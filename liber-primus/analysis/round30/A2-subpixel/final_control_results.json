@@ -1,0 +1,33 @@
+{
+  "positive_e2e": {
+    "n": 400,
+    "injected_px": 0.6,
+    "bit_accuracy": 0.645,
+    "recovered_ascii": "........_...............................",
+    "ascii_printable": 0.06,
+    "tests": {
+      "n": 400,
+      "ones_frac": 0.94,
+      "runs_z": 0.3939733294003827,
+      "ent_o2": 0.32788715515509365,
+      "ent_o3": 0.3101684591980162,
+      "max_autocorr_lag2_63": 0.37911347517728833,
+      "peak_lag": 2,
+      "random_like": false
+    },
+    "verdict": "FAILED"
+  },
+  "bias_explanation_cls3_dy": {
+    "original": {
+      "ones": 0.7388888888888889,
+      "runs_z": -6.558663443331791,
+      "autocorr": 0.17227776889030846
+    },
+    "shuffled": {
+      "ones": 0.7388888888888889,
+      "runs_z": 1.107306815107967,
+      "autocorr": 0.12117838923549841
+    },
+    "note": "if runs_z survives shuffle -> it is BIAS not order-structure"
+  }
+}

@@ -1018,3 +1018,47 @@ table are seedless **and permanently public** — a third branch, enumerable, ne
 **Do NOT re-run:** the four pad families above at the stated bounds. **Do run:** the Marsaglia
 CDROM; register item **A-03** (haplography audit of the 86 doublet sites), which is now the
 cheapest falsifier of P4's *positive* result — ~20 merged doublet neighbourhoods would move it.
+
+---
+
+## Rounds 29–30 (2026-09-28) — the "active attack" armadas: pivot off the ciphertext, onto the container
+
+After Round 28 closed the runnable ciphertext residue, two armadas attacked the *artifacts, toolchain
+and people* instead of the runes. All lanes control-gated; Round 30's 8 lanes were each adversarially
+verified refute-by-default (none downgraded). Trust anchors green throughout; central `LEDGER.json`
+162→171, unsound=0.
+
+**Round 29 (`analysis/round29/`, 5 lanes):**
+- **R29-L1 onion-image stego** — NEGATIVE. First real large-dictionary key-attack on onion1/2/3
+  (4,013 Cicada keys × 3 imgs × 2 tools = 24,078 extractions), 0 hits. Correction: the chain was never
+  actually key-attacked before; `dl_onion3.jpg` is a chapter divider, the runic page is **onion2**;
+  prior "onion3 payload" == the keyless 1033 "Welcome" message. **Supersedes B-10.**
+- **L2 blob cross-XOR** — NEGATIVE. No shared pad, no pad-over-known-plaintext. Only 3 artifacts are
+  genuinely random: the 2.jpg stage04 payload, folly, canon_256.
+- **L3 chroma bitstream** — NEGATIVE. Rune-107/229 interior red is a constant DC offset (decoration),
+  not a modulated signal; can't carry bits.
+- **L4 image forensics** — POSITIVE. 2014 LP master = Ghostscript/Artifex render at 400dpi; 2012 images
+  a different libjpeg toolchain. Toolchain split identified.
+- **L5 OSINT** — NEGATIVE/tightened. mruzuki (earliest keyserver actor) is a zero-footprint burner,
+  resolved to a dead end.
+
+**Round 30 (`analysis/round30/`, 8 lanes; `SYNTHESIS.md`):**
+- **R30-A1 font** — NEGATIVE. Runes are a deterministic vector font (same rune byte-identical across
+  pages); no glyph-variant selection channel.
+- **R30-A2 sub-pixel** — NEGATIVE. No baseline/advance/kerning/jitter channel; ~2px threshold on 400dpi
+  q92, nothing near it.
+- **R30-A3 PDF forensics** — POSITIVE (measured). Embedded ICC byte-identical to **Ghostscript 9.06
+  Artifex srgb.icc** (MD5 e409cef13cd06f6b371f6cddc8e31fcf) → toolchain narrowed to GS 9.01-9.15.
+  Process-attribution only.
+- **R30-B1 blob crypto** — NEGATIVE. External-key symmetric battery (AES/RC4/Blowfish/DES/3DES × ~37
+  Cicada-derivable keys) on the 3 random blobs: 0 hits. Extends OTP-class closure to keyed external ciphers.
+- **R30-B2 RSA/GPG** — NEGATIVE. canon_256/folly/2.jpg carry no RSA modulus/ciphertext or OpenPGP structure.
+- **R30-C1 art attribution** — NEGATIVE. No attributable hand; processed public-domain imagery + generic
+  cipher-navigation line work.
+- **R30-D1 ledger audit** — AUDIT. Soundness holds; 2 bookkeeping gaps fixed (B-10 discharged, onion3 mislabel).
+- **R30-E1 render-reopen** — POSITIVE (measured). 6 contested pp49-51 bytes resolved from the 400dpi render
+  to exactly the reading canon_256 already held → **canon_256 unchanged**, decpref variant refuted, open item CLOSED.
+
+**Net:** OTP-class verdict UNCHANGED and reinforced. The only genuinely-new live threads are OFF-repo:
+recover the source PDF/PS (names the `/BaseFont` typeface + exposes TJ kerning), pin the exact GS release,
+close art attribution via reverse-image/Wayback. Do NOT re-run any R29/R30 lane.

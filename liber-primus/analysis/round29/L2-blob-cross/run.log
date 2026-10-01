@@ -1,0 +1,108 @@
+=== LOADED BLOBS ===
+  T1_onion3                 1498 bytes   H=6.010  IC=0.01629  printable=1.00
+  T2_2jpg                   7524 bytes   H=7.978  IC=0.00389  printable=0.39
+  T3_folly_extract          3368 bytes   H=7.938  IC=0.00393  printable=0.39
+  T4_blob1               2532309 bytes   H=7.998  IC=0.00392  printable=0.39
+  T4_blob2               2788983 bytes   H=7.766  IC=0.00874  printable=0.36
+  T4_blob3               1820649 bytes   H=7.403  IC=0.01039  printable=0.34
+  canon_256                  256 bytes   H=7.170  IC=0.00389  printable=0.41
+  folly                     3368 bytes   H=7.938  IC=0.00393  printable=0.39
+  folly_snap2               3368 bytes   H=7.938  IC=0.00393  printable=0.39
+  lpc02_out                 2899 bytes   H=5.214  IC=0.03630  printable=1.00
+  nokey_dl_1033             1498 bytes   H=6.010  IC=0.01629  printable=1.00
+  t5_nokey                  1136 bytes   H=5.974  IC=0.01698  printable=1.00
+  wisdom                    3368 bytes   H=7.938  IC=0.00393  printable=0.39
+
+=== CONTROLS ===
+  POSITIVE (shared pad, English^English): H=5.462 IC=0.02596 printable=0.37 crib_hits=31
+      crib b' the ' @ 30: b'ts a '
+      crib b' the ' @ 47: b'shes '
+      crib b' the ' @ 143: b' and '
+  NEGATIVE (independent random):          H=7.504 IC=0.00377 printable=0.36 crib_hits=0
+  DETECTOR VALID: positive fired=True  negative fired=False  -> PASS
+
+=== BATTERY 1: CROSS-XOR PAIR MATRIX ===
+  blob A               blob B                    ovl      H      IC   pr  run crib
+  T1_onion3            nokey_dl_1033            1498 -0.000 1.00000 0.00    0 14926
+  T3_folly_extract     folly                    3368 -0.000 1.00000 0.00    0 33626
+  T3_folly_extract     folly_snap2              3368 -0.000 1.00000 0.00    0 33626
+  T3_folly_extract     wisdom                   3368 -0.000 1.00000 0.00    0 33626
+  folly                folly_snap2              3368 -0.000 1.00000 0.00    0 33626
+  folly                wisdom                   3368 -0.000 1.00000 0.00    0 33626
+  folly_snap2          wisdom                   3368 -0.000 1.00000 0.00    0 33626
+  T4_blob2             lpc02_out                2899  5.775 0.02830 0.02    4    0
+  T1_onion3            T4_blob2                 1498  6.662 0.01135 0.04    4    0
+  T4_blob2             nokey_dl_1033            1498  6.662 0.01135 0.04    4    0
+  T4_blob2             t5_nokey                 1136  6.681 0.01105 0.05    3    0
+  T1_onion3            lpc02_out                1498  6.755 0.01074 0.70   17  431
+  lpc02_out            nokey_dl_1033            1498  6.755 0.01074 0.70   17  431
+  lpc02_out            t5_nokey                 1136  6.761 0.01059 0.71   25  417
+  T1_onion3            t5_nokey                 1136  6.777 0.01066 0.65   18  433
+  nokey_dl_1033        t5_nokey                 1136  6.777 0.01066 0.65   18  433
+  T4_blob3             canon_256                 256  7.136 0.00407 0.36    4    0
+  canon_256            t5_nokey                  256  7.148 0.00404 0.38    4    0
+  T2_2jpg              canon_256                 256  7.167 0.00377 0.39    4    0
+  canon_256            lpc02_out                 256  7.171 0.00398 0.38    4    0
+  T4_blob2             canon_256                 256  7.196 0.00371 0.36    4    0
+  T4_blob1             canon_256                 256  7.204 0.00374 0.37    4    0
+  T3_folly_extract     canon_256                 256  7.211 0.00365 0.36    4    0
+  canon_256            folly                     256  7.211 0.00365 0.36    4    0
+  canon_256            folly_snap2               256  7.211 0.00365 0.36    4    0
+  canon_256            wisdom                    256  7.211 0.00365 0.36    4    0
+  T1_onion3            canon_256                 256  7.233 0.00365 0.34    4    0
+  canon_256            nokey_dl_1033             256  7.233 0.00365 0.34    4    0
+  T4_blob3             lpc02_out                2899  7.404 0.00718 0.35   22    0
+  T4_blob3             t5_nokey                 1136  7.587 0.00549 0.26   31    0
+  T1_onion3            T4_blob3                 1498  7.626 0.00520 0.28   25    0
+  T4_blob3             nokey_dl_1033            1498  7.626 0.00520 0.28   25    0
+  T4_blob1             t5_nokey                 1136  7.800 0.00404 0.36    7    1
+  T3_folly_extract     t5_nokey                 1136  7.828 0.00387 0.38   11    0
+  folly                t5_nokey                 1136  7.828 0.00387 0.38   11    0
+  folly_snap2          t5_nokey                 1136  7.828 0.00387 0.38   11    0
+  t5_nokey             wisdom                   1136  7.828 0.00387 0.38   11    0
+  T2_2jpg              t5_nokey                 1136  7.834 0.00390 0.41    9    0
+  T1_onion3            T3_folly_extract         1498  7.863 0.00396 0.39    8    0
+  T1_onion3            folly                    1498  7.863 0.00396 0.39    8    0
+  T1_onion3            folly_snap2              1498  7.863 0.00396 0.39    8    0
+  T1_onion3            wisdom                   1498  7.863 0.00396 0.39    8    0
+  T3_folly_extract     nokey_dl_1033            1498  7.863 0.00396 0.39    8    0
+  folly                nokey_dl_1033            1498  7.863 0.00396 0.39    8    0
+  folly_snap2          nokey_dl_1033            1498  7.863 0.00396 0.39    8    0
+  nokey_dl_1033        wisdom                   1498  7.863 0.00396 0.39    8    0
+  T1_onion3            T2_2jpg                  1498  7.877 0.00385 0.39    7    0
+  T2_2jpg              nokey_dl_1033            1498  7.877 0.00385 0.39    7    0
+  T1_onion3            T4_blob1                 1498  7.900 0.00378 0.38    7    1
+  T4_blob1             nokey_dl_1033            1498  7.900 0.00378 0.38    7    1
+  T2_2jpg              lpc02_out                2899  7.923 0.00397 0.37    7    0
+  T4_blob1             lpc02_out                2899  7.933 0.00392 0.37    8    0
+  T3_folly_extract     T4_blob2                 3368  7.934 0.00395 0.37    7    0
+  T4_blob2             folly                    3368  7.934 0.00395 0.37    7    0
+  T4_blob2             folly_snap2              3368  7.934 0.00395 0.37    7    0
+  T4_blob2             wisdom                   3368  7.934 0.00395 0.37    7    0
+  T3_folly_extract     T4_blob1                 3368  7.938 0.00393 0.39    8    0
+  T4_blob1             folly                    3368  7.938 0.00393 0.39    8    0
+  T4_blob1             folly_snap2              3368  7.938 0.00393 0.39    8    0
+  T4_blob1             wisdom                   3368  7.938 0.00393 0.39    8    0
+  T3_folly_extract     lpc02_out                2899  7.940 0.00389 0.38    6    0
+  folly                lpc02_out                2899  7.940 0.00389 0.38    6    0
+  folly_snap2          lpc02_out                2899  7.940 0.00389 0.38    6    0
+  lpc02_out            wisdom                   2899  7.940 0.00389 0.38    6    0
+  T2_2jpg              T3_folly_extract         3368  7.941 0.00391 0.38    9    0
+  T2_2jpg              folly                    3368  7.941 0.00391 0.38    9    0
+  T2_2jpg              folly_snap2              3368  7.941 0.00391 0.38    9    0
+  T2_2jpg              wisdom                   3368  7.941 0.00391 0.38    9    0
+  T3_folly_extract     T4_blob3                 3368  7.947 0.00389 0.38    7    0
+  T4_blob3             folly                    3368  7.947 0.00389 0.38    7    0
+  T4_blob3             folly_snap2              3368  7.947 0.00389 0.38    7    0
+  T4_blob3             wisdom                   3368  7.947 0.00389 0.38    7    0
+  T2_2jpg              T4_blob3                 7524  7.970 0.00394 0.38    9    0
+  T2_2jpg              T4_blob1                 7524  7.979 0.00389 0.38    8    0
+  T2_2jpg              T4_blob2                 7524  7.980 0.00389 0.38   10    0
+  T4_blob2             T4_blob3              1820649  7.988 0.00399 0.38   43  447
+  T4_blob1             T4_blob3              1820649  8.000 0.00391 0.38   15   44
+  T4_blob1             T4_blob2              2532309  8.000 0.00391 0.38   15   59
+
+  pairs tested: 78   flagged for inspection: 63
+  FLAG T1_onion3^T4_blob1 [off0] H=7.900 IC=0.00378 pr=0.38 run=7 cribs=1
+       crib b' the ' @ 437: b'g NTH'
+  FLAG T1_onion3^T4_blob2 [off0] H

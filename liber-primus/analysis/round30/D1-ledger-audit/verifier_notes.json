@@ -1,0 +1,17 @@
+{
+  "verifier": "adversarial D1-ledger-audit",
+  "independently_reproduced": {
+    "validate_py": "5/5 PASS",
+    "validate_ledger_py": "unsound=0, errors=0, warnings=10, notes=27, 162 entries",
+    "B-10": "status=open, result/positive_control/control_detail/null all null CONFIRMED",
+    "no_overclaim": "no ledger entry (incl. outguess/steghide-mentioning G-01/G-02/I-03) claims the onion-image key-attack was executed",
+    "R29L1_positive_control": "reproduced: outguess -r dl_1033.jpg (keyless) -> md5 597414fb = 'Welcome. Good luck. 3301' PGP msg",
+    "R29L1_mislabel": "reproduced: T1-onion3-5x5-rune-outguess.bin md5 597414fb == keyless dl_1033.jpg payload, != true kl_onion3.bin (2aa43277)",
+    "coverage": "keys_big.txt=4013 lines; 4013*3*2=24078; outguess 0.4 + steghide both installed",
+    "audited_negatives": "B-04/C-02/F-01/R17-PUBLIC-PAD/H-03 all pc=passed with control_detail present"
+  },
+  "caveats": [
+    "sweep_log.tsv is header-only (0 data rows); the 24078-attempt aggregation lives only in FINDINGS.md prose + canonical/ artifacts, not in a per-attempt log. Coverage claim rests on FINDINGS.md + reproducible sweep_fast.py, not a persisted attempt-level table."
+  ],
+  "verdict": "UPHELD (PARTIAL). Ledger internal soundness holds; the two defects are genuine bookkeeping gaps, not falsely-closed lanes. R29-L1 already resolved the onion-stego question to a clean null with a passing control. Recommended bookkeeping fix opens no new ground."
+}

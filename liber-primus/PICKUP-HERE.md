@@ -6,6 +6,25 @@ _Refreshed **2026-09-15** at the Round-28 INTERIM closeout (S1 **COMPLETE — NU
 [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md) and query [`LEDGER.json`](LEDGER.json)
 `coverage`/`not_covered` (never the bare `status`)._
 
+> ## ⚡ Rounds 29–30 (2026-09-28): the attack pivoted OFF the ciphertext onto the CONTAINER — one real positive.
+>
+> After R28, two "active attack" armadas were run (no more ciphertext-only sweeps). **Round 29** (5 lanes,
+> `analysis/round29/`): onion-image large-dictionary stego crack (24,078 extractions, **0 hits** — and the
+> record was corrected: the onion chain had *never* actually been key-attacked; the "5×5-rune" page is
+> onion2 not onion3); opaque-blob two-time-pad cross-XOR (**NULL**, only 3 blobs are truly random —
+> 2.jpg-payload, folly, canon_256); rune-107/229 chroma-as-bitstream (**NULL**, constant red ink =
+> decoration); **image forensics (POSITIVE)**; OSINT people-hunt (mruzuki = zero-footprint burner, dead end).
+> **Round 30** (8 lanes, `analysis/round30/`, each adversarially verified): the big new fact is that
+> **the 2014 LP master is a machine-rendered PDF** — its embedded ICC profile is **byte-identical to
+> Ghostscript 9.06's Artifex `srgb.icc`** (toolchain narrowed to GS 9.01-9.15; A3 POSITIVE). Everything else
+> NULL/consolidation: rune glyphs are a deterministic vector font with no variant channel (A1); no sub-pixel
+> positioning channel (A2); the 3 random blobs carry no keyed-symmetric plaintext (B1) and no RSA/OpenPGP
+> structure (B2); no attributable artist (C1); the 6 contested pp49-51 bytes resolved from the render →
+> **canon_256 unchanged** (E1). **OTP-class verdict UNCHANGED + reinforced.** Ledger 162→**171**, unsound=0,
+> validate.py 5/5. See `analysis/round30/SYNTHESIS.md`. Live threads are now all OFF-repo: recover the source
+> PDF/PS (would name the `/BaseFont` typeface + expose TJ kerning), pin the exact GS release, close art
+> attribution via reverse-image/Wayback. Nothing committed (owner pushes from Windows).
+
 > ## ⚡ Round 27: S1 is COMPLETE (first full-space sweep in project history) — NULL. S2 is RUNNING.
 >
 > The R25 Py2.7-MT branch — the only internally-runnable verdict-changer — is being **finished**,

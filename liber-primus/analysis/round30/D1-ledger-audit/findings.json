@@ -1,0 +1,58 @@
+{
+  "lane": "D1 — Ledger integrity re-audit",
+  "round": 30,
+  "date": "2026-09-28",
+  "validator": {
+    "script": "analysis/handoff/validate_ledger.py",
+    "unsound_negatives": 0,
+    "errors": 0,
+    "warnings": 10,
+    "notes": 27,
+    "entries": 162,
+    "verdict": "PASS — no UNSOUND NEGATIVE, no dangling links, no missing-required-field, no failed-control-carrying-a-conclusion. The internal soundness invariant holds."
+  },
+  "audit_method": "AUDIT ONLY — no sweep re-run. Cross-checked CLAIM vs on-disk EVIDENCE for the highest-load-bearing negative/eliminated entries (B-04 keytext sweep, C-02 forcing, F-01 pad-inversion, R17-PUBLIC-PAD, H-03 micro-cross, the stego class). Verified: control_detail records a passing planted-recovery, scripts named in `reproduce` exist, evidence paths resolve.",
+  "sampled_entries_verified_clean": [
+    {"id": "B-04", "why_load_bearing": "the load-bearing derived-keystream negative; L7 restates coverage of many others on top of it", "checked": "control_detail G1/G2 plant-and-recover PASS; sweep.py/seeds.py/ks.py/harness.py all present in round13/B04; coverage explicitly bounds power per language register", "verdict": "claim matches evidence"},
+    {"id": "C-02", "why_load_bearing": "forcing / acrostic closure with a stated sensitivity floor", "checked": "7 result JSONs present in round18/L4-forcing; synthetic-null control described; sensitivity floor (>=60% forcing detected at p=1.0, blind at f<=0.20) is honestly scoped, not overclaimed", "verdict": "claim matches evidence"},
+    {"id": "F-01", "why_load_bearing": "LP2-as-pad inversion against all known Cicada objects", "checked": "PREREG/RESULTS/sweep.py/results.json present in round16/F-01; best -7.032 below its own null_max; scope honest", "verdict": "claim matches evidence"},
+    {"id": "R17-PUBLIC-PAD", "why_load_bearing": "closes the public-pad avenue", "checked": "status negative, pc passed", "verdict": "no gap found in sample"}
+  ],
+  "suspect_entries": [
+    {
+      "rank": 1,
+      "id": "B-10",
+      "current_status": "open",
+      "title": "OutGuess 0.2 Linux control — \"closed pending\" a run never made",
+      "gap_type": "FALSELY-STALLED / now-dischargeable open lane whose discharging evidence exists but was never linked",
+      "detail": "B-10 has result=null, positive_control=null, reopens_if=null, evidence=[analysis/stego/STEGO-VERDICT.md] only. It records an OutGuess control that was 'closed pending' but never run. Round 29 Lane L1 (analysis/round29/L1-onion3-crack/) actually executed the missing work: a 4,013-key Cicada-native-dictionary OutGuess-0.4 + steghide sweep over onion1/2/3 = 24,078 adjudicated extraction attempts, with a PASSING keyless positive control (outguess -r dl_1033.jpg reproduces the canonical payload). That lane exists on disk (FINDINGS.md, keys_big.txt, sweep_fast.py, sweep_log.tsv) but was NEVER entered into LEDGER.json. So B-10 sits 'open/pending' while its answer (CLEAN NULL) is already computed and unlinked.",
+      "impact": "Low new-ground: the R29-L1 result is a CLEAN NULL (no key produced a payload; the only stego content is the keyless public RSA message). Discharging B-10 does NOT open free ground — it closes a nuisance-open. But leaving it 'open' with the answer sitting uncited is exactly the ledger-integrity hazard R29-L1 warned about (a belief-vs-evidence mismatch).",
+      "recommended_action": "Enter an R29-L1 ledger entry (status negative, positive_control passed, coverage 24078 attempts / 3 onion images / 2 tools / 4013 keys, evidence round29/L1-onion3-crack/*, control = keyless 1033 recovery PASS) and set B-10 superseded_by that entry. This is a bookkeeping fix, not a re-run."
+    },
+    {
+      "rank": 2,
+      "id": "PRIOR-RECORD-CORRECTION (no entry id)",
+      "current_status": "unrecorded correction",
+      "title": "The mislabeled onion3 stego artifact / never-actually-run onion image key-attack",
+      "gap_type": "FALSE 'tested' belief in the repo record — the exact class R29-L1 discovered, not yet reflected in the central ledger",
+      "detail": "R29-L1 documents that armada_osint/extracts/T1-onion3-5x5-rune-outguess.bin is byte-identical (md5 597414fb...) to the 1033.jpg 'Welcome' payload, and the prior artifacts/keysweep/dl_1033__*.bin sweep ran against dl_1033.jpg, NOT against any onion image. Conclusion in R29-L1: 'The onion image chain had never actually been key-attacked before this lane.' The central LEDGER.json contains NO entry that ever claimed the onion-image key-attack was done (searched: onion/outguess/steghide/stego/5x5), so the false belief lived in OSINT memory + armada_osint artifact naming, NOT in LEDGER.json. That is good news for ledger integrity, but the CORRECTION itself is still absent from the ledger — a future reader querying the ledger for 'onion stego' finds only B-10 (pending) and H-03 (a different micro-cross), never the correction.",
+      "impact": "No falsely-closed lane in LEDGER.json here — the ledger never overclaimed this. Free ground: none (R29-L1 already swept it to a clean null). Value is documentary: record the correction so the mislabeled .bin can never re-seed a false 'onion3 payload' claim again.",
+      "recommended_action": "Fold the R29-L1 correction into the same new entry proposed for B-10, with an explicit note that T1-onion3-5x5-rune-outguess.bin == 1033 payload (mislabel), so the record is self-defending."
+    }
+  ],
+  "not_a_gap_clarifications": [
+    {
+      "id": "H-03",
+      "note": "H-03 (negative, pc passed) is NOT the onion-image stego attack. It covers the 2013 onion COOKIES (167/761) XOR'd against four hex blobs = 64 trials, plus the 2012 P.S. digit-string rotate-90 read. Its evidence (round16/zeroFP: zerofp_tests.py + results.json + PREREG/RESULTS) is present and its control is a validate.py-anchored EXACT test. Distinct avenue; claim matches evidence. Do not conflate with the R29-L1 onion IMAGE sweep."
+    },
+    {
+      "id": "B-13-MARSAGLIA / R19-C2-MARSAGLIA-GATE",
+      "note": "Validator WARNs (not ERRORs) that 3 Marsaglia evidence paths under round18/L6-offset-marsaglia/data/ (MANIFEST.json, checksums.sha256.txt, marsaglia-cdrom_files.xml) do not exist on disk. This is a gitignored 1.2 GB corpus (regeneratable per repo policy) — expected-missing, not a false claim. B-13-MARSAGLIA is correctly status=partially-run, not negative. No integrity gap."
+    },
+    {
+      "id": "L7-A/B/C threshold WARNs",
+      "note": "The four L7 'threshold not fixed in advance' WARNs are self-declared meta-audits of the repo's own scorer/beam envelope; they are honestly labeled and do not carry a false closure."
+    }
+  ],
+  "bottom_line": "LEDGER.json internal soundness HOLDS (unsound=0, errors=0). No entry in the central ledger was found to falsely claim a sweep at a scope it did not execute in the audited sample. The only integrity defects are around the image-stego class R29-L1 flagged: (1) B-10 remains 'open/pending' though its discharging null (R29-L1, 24,078 attempts, control passed) already exists unlinked; (2) the R29-L1 correction of the mislabeled onion3 artifact is not yet in the ledger. Both are bookkeeping fixes, not re-runs, and neither opens free new ground — R29-L1 already resolved the underlying question to a CLEAN NULL."
+}

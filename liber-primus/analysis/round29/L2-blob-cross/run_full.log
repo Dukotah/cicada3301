@@ -1,0 +1,460 @@
+=== LOADED BLOBS ===
+  T1_onion3                 1498 bytes   H=6.010  IC=0.01629  printable=1.00
+  T2_2jpg                   7524 bytes   H=7.978  IC=0.00389  printable=0.39
+  T3_folly_extract          3368 bytes   H=7.938  IC=0.00393  printable=0.39
+  T4_blob1               2532309 bytes   H=7.998  IC=0.00392  printable=0.39
+  T4_blob2               2788983 bytes   H=7.766  IC=0.00874  printable=0.36
+  T4_blob3               1820649 bytes   H=7.403  IC=0.01039  printable=0.34
+  canon_256                  256 bytes   H=7.170  IC=0.00389  printable=0.41
+  folly                     3368 bytes   H=7.938  IC=0.00393  printable=0.39
+  folly_snap2               3368 bytes   H=7.938  IC=0.00393  printable=0.39
+  lpc02_out                 2899 bytes   H=5.214  IC=0.03630  printable=1.00
+  nokey_dl_1033             1498 bytes   H=6.010  IC=0.01629  printable=1.00
+  t5_nokey                  1136 bytes   H=5.974  IC=0.01698  printable=1.00
+  wisdom                    3368 bytes   H=7.938  IC=0.00393  printable=0.39
+
+=== CONTROLS ===
+  POSITIVE (shared pad, English^English): H=5.462 IC=0.02596 printable=0.37 crib_hits=31
+      crib b' the ' @ 30: b'ts a '
+      crib b' the ' @ 47: b'shes '
+      crib b' the ' @ 143: b' and '
+  NEGATIVE (independent random):          H=7.504 IC=0.00377 printable=0.36 crib_hits=0
+  DETECTOR VALID: positive fired=True  negative fired=False  -> PASS
+
+=== BATTERY 1: CROSS-XOR PAIR MATRIX ===
+  blob A               blob B                    ovl      H      IC   pr  run crib
+  T1_onion3            nokey_dl_1033            1498 -0.000 1.00000 0.00    0 14926
+  T3_folly_extract     folly                    3368 -0.000 1.00000 0.00    0 33626
+  T3_folly_extract     folly_snap2              3368 -0.000 1.00000 0.00    0 33626
+  T3_folly_extract     wisdom                   3368 -0.000 1.00000 0.00    0 33626
+  folly                folly_snap2              3368 -0.000 1.00000 0.00    0 33626
+  folly                wisdom                   3368 -0.000 1.00000 0.00    0 33626
+  folly_snap2          wisdom                   3368 -0.000 1.00000 0.00    0 33626
+  T4_blob2             lpc02_out                2899  5.775 0.02830 0.02    4    0
+  T1_onion3            T4_blob2                 1498  6.662 0.01135 0.04    4    0
+  T4_blob2             nokey_dl_1033            1498  6.662 0.01135 0.04    4    0
+  T4_blob2             t5_nokey                 1136  6.681 0.01105 0.05    3    0
+  T1_onion3            lpc02_out                1498  6.755 0.01074 0.70   17  431
+  lpc02_out            nokey_dl_1033            1498  6.755 0.01074 0.70   17  431
+  lpc02_out            t5_nokey                 1136  6.761 0.01059 0.71   25  417
+  T1_onion3            t5_nokey                 1136  6.777 0.01066 0.65   18  433
+  nokey_dl_1033        t5_nokey                 1136  6.777 0.01066 0.65   18  433
+  T4_blob3             canon_256                 256  7.136 0.00407 0.36    4    0
+  canon_256            t5_nokey                  256  7.148 0.00404 0.38    4    0
+  T2_2jpg              canon_256                 256  7.167 0.00377 0.39    4    0
+  canon_256            lpc02_out                 256  7.171 0.00398 0.38    4    0
+  T4_blob2             canon_256                 256  7.196 0.00371 0.36    4    0
+  T4_blob1             canon_256                 256  7.204 0.00374 0.37    4    0
+  T3_folly_extract     canon_256                 256  7.211 0.00365 0.36    4    0
+  canon_256            folly                     256  7.211 0.00365 0.36    4    0
+  canon_256            folly_snap2               256  7.211 0.00365 0.36    4    0
+  canon_256            wisdom                    256  7.211 0.00365 0.36    4    0
+  T1_onion3            canon_256                 256  7.233 0.00365 0.34    4    0
+  canon_256            nokey_dl_1033             256  7.233 0.00365 0.34    4    0
+  T4_blob3             lpc02_out                2899  7.404 0.00718 0.35   22    0
+  T4_blob3             t5_nokey                 1136  7.587 0.00549 0.26   31    0
+  T1_onion3            T4_blob3                 1498  7.626 0.00520 0.28   25    0
+  T4_blob3             nokey_dl_1033            1498  7.626 0.00520 0.28   25    0
+  T4_blob1             t5_nokey                 1136  7.800 0.00404 0.36    7    1
+  T3_folly_extract     t5_nokey                 1136  7.828 0.00387 0.38   11    0
+  folly                t5_nokey                 1136  7.828 0.00387 0.38   11    0
+  folly_snap2          t5_nokey                 1136  7.828 0.00387 0.38   11    0
+  t5_nokey             wisdom                   1136  7.828 0.00387 0.38   11    0
+  T2_2jpg              t5_nokey                 1136  7.834 0.00390 0.41    9    0
+  T1_onion3            T3_folly_extract         1498  7.863 0.00396 0.39    8    0
+  T1_onion3            folly                    1498  7.863 0.00396 0.39    8    0
+  T1_onion3            folly_snap2              1498  7.863 0.00396 0.39    8    0
+  T1_onion3            wisdom                   1498  7.863 0.00396 0.39    8    0
+  T3_folly_extract     nokey_dl_1033            1498  7.863 0.00396 0.39    8    0
+  folly                nokey_dl_1033            1498  7.863 0.00396 0.39    8    0
+  folly_snap2          nokey_dl_1033            1498  7.863 0.00396 0.39    8    0
+  nokey_dl_1033        wisdom                   1498  7.863 0.00396 0.39    8    0
+  T1_onion3            T2_2jpg                  1498  7.877 0.00385 0.39    7    0
+  T2_2jpg              nokey_dl_1033            1498  7.877 0.00385 0.39    7    0
+  T1_onion3            T4_blob1                 1498  7.900 0.00378 0.38    7    1
+  T4_blob1             nokey_dl_1033            1498  7.900 0.00378 0.38    7    1
+  T2_2jpg              lpc02_out                2899  7.923 0.00397 0.37    7    0
+  T4_blob1             lpc02_out                2899  7.933 0.00392 0.37    8    0
+  T3_folly_extract     T4_blob2                 3368  7.934 0.00395 0.37    7    0
+  T4_blob2             folly                    3368  7.934 0.00395 0.37    7    0
+  T4_blob2             folly_snap2              3368  7.934 0.00395 0.37    7    0
+  T4_blob2             wisdom                   3368  7.934 0.00395 0.37    7    0
+  T3_folly_extract     T4_blob1                 3368  7.938 0.00393 0.39    8    0
+  T4_blob1             folly                    3368  7.938 0.00393 0.39    8    0
+  T4_blob1             folly_snap2              3368  7.938 0.00393 0.39    8    0
+  T4_blob1             wisdom                   3368  7.938 0.00393 0.39    8    0
+  T3_folly_extract     lpc02_out                2899  7.940 0.00389 0.38    6    0
+  folly                lpc02_out                2899  7.940 0.00389 0.38    6    0
+  folly_snap2          lpc02_out                2899  7.940 0.00389 0.38    6    0
+  lpc02_out            wisdom                   2899  7.940 0.00389 0.38    6    0
+  T2_2jpg              T3_folly_extract         3368  7.941 0.00391 0.38    9    0
+  T2_2jpg              folly                    3368  7.941 0.00391 0.38    9    0
+  T2_2jpg              folly_snap2              3368  7.941 0.00391 0.38    9    0
+  T2_2jpg              wisdom                   3368  7.941 0.00391 0.38    9    0
+  T3_folly_extract     T4_blob3                 3368  7.947 0.00389 0.38    7    0
+  T4_blob3             folly                    3368  7.947 0.00389 0.38    7    0
+  T4_blob3             folly_snap2              3368  7.947 0.00389 0.38    7    0
+  T4_blob3             wisdom                   3368  7.947 0.00389 0.38    7    0
+  T2_2jpg              T4_blob3                 7524  7.970 0.00394 0.38    9    0
+  T2_2jpg              T4_blob1                 7524  7.979 0.00389 0.38    8    0
+  T2_2jpg              T4_blob2                 7524  7.980 0.00389 0.38   10    0
+  T4_blob2             T4_blob3              1820649  7.988 0.00399 0.38   43  447
+  T4_blob1             T4_blob3              1820649  8.000 0.00391 0.38   15   44
+  T4_blob1             T4_blob2              2532309  8.000 0.00391 0.38   15   59
+
+  pairs tested: 78   flagged for inspection: 63
+  FLAG T1_onion3^T4_blob1 [off0] H=7.900 IC=0.00378 pr=0.38 run=7 cribs=1
+       crib b' the ' @ 437: b'g NTH'
+  FLAG T1_onion3^T4_blob2 [off0] H=6.662 IC=0.01135 pr=0.04 run=4 cribs=0
+  FLAG T1_onion3^T4_blob2 [slide off348432] H=6.010 IC=0.01629 pr=0.00 run=0 cribs=0
+  FLAG T1_onion3^T4_blob3 [off0] H=7.626 IC=0.00520 pr=0.28 run=25 cribs=0
+  FLAG T1_onion3^T4_blob3 [slide off1762288] H=7.064 IC=0.00799 pr=0.04 run=4 cribs=0
+  FLAG T1_onion3^canon_256 [off0] H=7.233 IC=0.00365 pr=0.34 run=4 cribs=0
+  FLAG T1_onion3^canon_256 [slide off950] H=7.101 IC=0.00420 pr=0.37 run=4 cribs=0
+  FLAG T1_onion3^lpc02_out [off0] H=6.755 IC=0.01074 pr=0.70 run=17 cribs=431
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG T1_onion3^lpc02_out [slide off0] H=6.755 IC=0.01074 pr=0.70 run=17 cribs=431
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG T1_onion3^nokey_dl_1033 [off0] H=-0.000 IC=1.00000 pr=0.00 run=0 cribs=14926
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG T1_onion3^t5_nokey [off0] H=6.777 IC=0.01066 pr=0.65 run=18 cribs=433
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG T1_onion3^t5_nokey [slide off0] H=6.777 IC=0.01066 pr=0.65 run=18 cribs=433
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG T2_2jpg^canon_256 [off0] H=7.167 IC=0.00377 pr=0.39 run=4 cribs=0
+  FLAG T2_2jpg^canon_256 [slide off227] H=7.051 IC=0.00472 pr=0.41 run=4 cribs=0
+  FLAG T3_folly_extract^canon_256 [off0] H=7.211 IC=0.00365 pr=0.36 run=4 cribs=0
+  FLAG T3_folly_extract^canon_256 [slide off2813] H=7.074 IC=0.00463 pr=0.36 run=4 cribs=0
+  FLAG T3_folly_extract^folly [off0] H=-0.000 IC=1.00000 pr=0.00 run=0 cribs=33626
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG T3_folly_extract^folly_snap2 [off0] H=-0.000 IC=1.00000 pr=0.00 run=0 cribs=33626
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG T3_folly_extract^wisdom [off0] H=-0.000 IC=1.00000 pr=0.00 run=0 cribs=33626
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG T4_blob1^T4_blob2 [off0] H=8.000 IC=0.00391 pr=0.38 run=15 cribs=59
+       crib b' the ' @ 97189: b'ltHbI'
+       crib b' the ' @ 402635: b'xPPth'
+       crib b' the ' @ 503866: b'GINZE'
+       crib b' the ' @ 512466: b'yZSIn'
+       crib b' the ' @ 567379: b'thnON'
+  FLAG T4_blob1^T4_blob3 [off0] H=8.000 IC=0.00391 pr=0.38 run=15 cribs=44
+       crib b' the ' @ 1334: b'hJerw'
+       crib b' the ' @ 29159: b'erRss'
+       crib b' the ' @ 45271: b'uNINo'
+       crib b' the ' @ 59651: b'lgOIn'
+       crib b' the ' @ 344934: b'RthnO'
+  FLAG T4_blob1^canon_256 [off0] H=7.204 IC=0.00374 pr=0.37 run=4 cribs=0
+  FLAG T4_blob1^canon_256 [slide off1266016] H=7.056 IC=0.00484 pr=0.36 run=4 cribs=0
+  FLAG T4_blob1^nokey_dl_1033 [off0] H=7.900 IC=0.00378 pr=0.38 run=7 cribs=1
+       crib b' the ' @ 437: b'g NTH'
+  FLAG T4_blob1^t5_nokey [off0] H=7.800 IC=0.00404 pr=0.36 run=7 cribs=1
+       crib b' you ' @ 873: b'inpjg'
+  FLAG T4_blob2^T4_blob3 [off0] H=7.988 IC=0.00399 pr=0.38 run=43 cribs=447
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG T4_blob2^canon_256 [off0] H=7.196 IC=0.00371 pr=0.36 run=4 cribs=0
+  FLAG T4_blob2^canon_256 [slide off2004381] H=7.084 IC=0.00447 pr=0.41 run=5 cribs=0
+  FLAG T4_blob2^lpc02_out [off0] H=5.775 IC=0.02830 pr=0.02 run=4 cribs=0
+  FLAG T4_blob2^lpc02_out [slide off348260] H=5.214 IC=0.03630 pr=0.00 run=0 cribs=0
+  FLAG T4_blob2^nokey_dl_1033 [off0] H=6.662 IC=0.01135 pr=0.04 run=4 cribs=0
+  FLAG T4_blob2^nokey_dl_1033 [slide off348432] H=6.010 IC=0.01629 pr=0.00 run=0 cribs=0
+  FLAG T4_blob2^t5_nokey [off0] H=6.681 IC=0.01105 pr=0.05 run=3 cribs=0
+  FLAG T4_blob2^t5_nokey [slide off348480] H=5.974 IC=0.01698 pr=0.00 run=0 cribs=0
+  FLAG T4_blob3^canon_256 [off0] H=7.136 IC=0.00407 pr=0.36 run=4 cribs=0
+  FLAG T4_blob3^canon_256 [slide off796418] H=7.015 IC=0.00487 pr=0.41 run=5 cribs=0
+  FLAG T4_blob3^lpc02_out [off0] H=7.404 IC=0.00718 pr=0.35 run=22 cribs=0
+  FLAG T4_blob3^lpc02_out [slide off1760924] H=6.617 IC=0.01432 pr=0.04 run=4 cribs=0
+  FLAG T4_blob3^nokey_dl_1033 [off0] H=7.626 IC=0.00520 pr=0.28 run=25 cribs=0
+  FLAG T4_blob3^nokey_dl_1033 [slide off1762288] H=7.064 IC=0.00799 pr=0.04 run=4 cribs=0
+  FLAG T4_blob3^t5_nokey [off0] H=7.587 IC=0.00549 pr=0.26 run=31 cribs=0
+  FLAG T4_blob3^t5_nokey [slide off1762629] H=7.032 IC=0.00805 pr=0.03 run=4 cribs=0
+  FLAG canon_256^folly [off0] H=7.211 IC=0.00365 pr=0.36 run=4 cribs=0
+  FLAG canon_256^folly [slide off2813] H=7.074 IC=0.00463 pr=0.36 run=4 cribs=0
+  FLAG canon_256^folly_snap2 [off0] H=7.211 IC=0.00365 pr=0.36 run=4 cribs=0
+  FLAG canon_256^folly_snap2 [slide off2813] H=7.074 IC=0.00463 pr=0.36 run=4 cribs=0
+  FLAG canon_256^lpc02_out [off0] H=7.171 IC=0.00398 pr=0.38 run=4 cribs=0
+  FLAG canon_256^lpc02_out [slide off328] H=7.058 IC=0.00463 pr=0.39 run=5 cribs=0
+  FLAG canon_256^nokey_dl_1033 [off0] H=7.233 IC=0.00365 pr=0.34 run=4 cribs=0
+  FLAG canon_256^nokey_dl_1033 [slide off950] H=7.101 IC=0.00420 pr=0.37 run=4 cribs=0
+  FLAG canon_256^t5_nokey [off0] H=7.148 IC=0.00404 pr=0.38 run=4 cribs=0
+  FLAG canon_256^t5_nokey [slide off540] H=7.055 IC=0.00487 pr=0.39 run=4 cribs=0
+  FLAG canon_256^wisdom [off0] H=7.211 IC=0.00365 pr=0.36 run=4 cribs=0
+  FLAG canon_256^wisdom [slide off2813] H=7.074 IC=0.00463 pr=0.36 run=4 cribs=0
+  FLAG folly^folly_snap2 [off0] H=-0.000 IC=1.00000 pr=0.00 run=0 cribs=33626
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG folly^wisdom [off0] H=-0.000 IC=1.00000 pr=0.00 run=0 cribs=33626
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG folly_snap2^wisdom [off0] H=-0.000 IC=1.00000 pr=0.00 run=0 cribs=33626
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG lpc02_out^nokey_dl_1033 [off0] H=6.755 IC=0.01074 pr=0.70 run=17 cribs=431
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG lpc02_out^nokey_dl_1033 [slide off0] H=6.755 IC=0.01074 pr=0.70 run=17 cribs=431
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG lpc02_out^t5_nokey [off0] H=6.761 IC=0.01059 pr=0.71 run=25 cribs=417
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG lpc02_out^t5_nokey [slide off0] H=6.761 IC=0.01059 pr=0.71 run=25 cribs=417
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG nokey_dl_1033^t5_nokey [off0] H=6.777 IC=0.01066 pr=0.65 run=18 cribs=433
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+  FLAG nokey_dl_1033^t5_nokey [slide off0] H=6.777 IC=0.01066 pr=0.65 run=18 cribs=433
+       crib b' the ' @ 0: b' the '
+       crib b' the ' @ 1: b' the '
+       crib b' the ' @ 2: b' the '
+       crib b' the ' @ 3: b' the '
+       crib b' the ' @ 4: b' the '
+
+=== BATTERY 2: BLOB AS OTP PAD OVER KNOWN PLAINTEXT ===
+  plaintexts: LP_A_WARNING(199), LP_SOME_WISDOM(169), LP_A_KOAN_(the_mast(772), LP_WELCOME(409), LP_A_KOAN_(the_circ(338), HOLY(34)
+  T1_onion3          ^ LP_A_WARNING         n= 199 off=     60 H=5.429 IC=0.0223 pr=0.86 run= 57 rep=None  <== HIT
+  T1_onion3          ^ LP_SOME_WISDOM       n= 169 off=     60 H=5.045 IC=0.0306 pr=0.96 run= 65 rep=None  <== HIT
+  T1_onion3          ^ LP_A_KOAN_(the_mast  n= 772 off=    682 H=6.461 IC=0.0113 pr=0.63 run= 13 rep=None
+  T1_onion3          ^ LP_WELCOME           n= 409 off=    799 H=6.300 IC=0.0117 pr=0.63 run= 13 rep=None
+  T1_onion3          ^ LP_A_KOAN_(the_circ  n= 338 off=      0 H=6.171 IC=0.0142 pr=0.76 run= 43 rep=None  <== HIT
+  T1_onion3          ^ HOLY                 n=  34 off=    110 H=4.374 IC=0.0250 pr=0.76 run=  5 rep=None
+  T2_2jpg            ^ LP_A_WARNING         n= 199 off=   5016 H=6.824 IC=0.0053 pr=0.44 run=  6 rep=None
+  T2_2jpg            ^ LP_SOME_WISDOM       n= 169 off=    684 H=6.651 IC=0.0054 pr=0.47 run=  5 rep=None
+  T2_2jpg            ^ LP_A_KOAN_(the_mast  n= 772 off=   5250 H=7.684 IC=0.0043 pr=0.38 run=  7 rep=None
+  T2_2jpg            ^ LP_WELCOME           n= 409 off=   2664 H=7.364 IC=0.0045 pr=0.35 run=  6 rep=None
+  T2_2jpg            ^ LP_A_KOAN_(the_circ  n= 338 off=   6272 H=7.260 IC=0.0047 pr=0.39 run=  5 rep=None
+  T2_2jpg            ^ HOLY                 n=  34 off=   6669 H=4.830 IC=0.0089 pr=0.35 run=  4 rep=None
+  T3_folly_extract   ^ LP_A_WARNING         n= 199 off=    588 H=6.866 IC=0.0049 pr=0.30 run=  3 rep=None
+  T3_folly_extract   ^ LP_SOME_WISDOM       n= 169 off=    882 H=6.670 IC=0.0051 pr=0.43 run=  7 rep=None
+  T3_folly_extract   ^ LP_A_KOAN_(the_mast  n= 772 off=   2240 H=7.671 IC=0.0043 pr=0.41 run=  5 rep=None
+  T3_folly_extract   ^ LP_WELCOME           n= 409 off=   2438 H=7.402 IC=0.0043 pr=0.39 run=  5 rep=None
+  T3_folly_extract   ^ LP_A_KOAN_(the_circ  n= 338 off=    893 H=7.257 IC=0.0045 pr=0.39 run=  7 rep=None
+  T3_folly_extract   ^ HOLY                 n=  34 off=   1560 H=4.735 IC=0.0107 pr=0.38 run=  4 rep=None
+  T4_blob1           ^ LP_A_WARNING         n= 199 off=2532096 H=6.805 IC=0.0053 pr=0.43 run= 15 rep=None
+  T4_blob1           ^ LP_SOME_WISDOM       n= 169 off=      0 H=6.719 IC=0.0046 pr=0.40 run=  6 rep=None
+  T4_blob1           ^ LP_A_KOAN_(the_mast  n= 772 off=1463535 H=7.700 IC=0.0041 pr=0.37 run=  7 rep=None
+  T4_blob1           ^ LP_WELCOME           n= 409 off=1107680 H=7.369 IC=0.0045 pr=0.32 run=  6 rep=None
+  T4_blob1           ^ LP_A_KOAN_(the_circ  n= 338 off=2215472 H=7.237 IC=0.0045 pr=0.36 run=  4 rep=None
+  T4_blob1           ^ HOLY                 n=  34 off=2373960 H=4.771 IC=0.0107 pr=0.26 run=  2 rep=None
+  T4_blob2           ^ LP_A_WARNING         n= 199 off= 348592 H=4.039 IC=0.0681 pr=0.00 run=  0 rep=None  <== HIT
+  T4_blob2           ^ LP_SOME_WISDOM       n= 169 off= 348600 H=4.084 IC=0.0597 pr=0.00 run=  0 rep=None  <== HIT
+  T4_blob2           ^ LP_A_KOAN_(the_mast  n= 772 off= 348520 H=3.991 IC=0.0719 pr=0.00 run=  0 rep=None  <== HIT
+  T4_blob2           ^ LP_WELCOME           n= 409 off= 348568 H=4.028 IC=0.0657 pr=0.00 run=  0 rep=None  <== HIT
+  T4_blob2           ^ LP_A_KOAN_(the_circ  n= 338 off= 348576 H=3.847 IC=0.0807 pr=0.00 run=  0 rep=None  <== HIT
+  T4_blob2           ^ HOLY                 n=  34 off= 174308 H=3.719 IC=0.0588 pr=0.00 run=  0 rep=None
+  T4_blob3           ^ LP_A_WARNING         n= 199 off=      0 H=4.673 IC=0.0486 pr=0.06 run=  4 rep=None  <== HIT
+  T4_blob3           ^ LP_SOME_WISDOM       n= 169 off=      0 H=4.634 IC=0.0448 pr=0.06 run=  4 rep=None  <== HIT
+  T4_blob3           ^ LP_A_KOAN_(the_mast  n= 772 off=1762970 H=6.029 IC=0.0182 pr=0.03 run=  1 rep=None
+  T4_blob3           ^ LP_WELCOME           n= 409 off=1763342 H=6.091 IC=0.0150 pr=0.03 run=  1 rep=None
+  T4_blob3           ^ LP_A_KOAN_(the_circ  n= 338 off=      0 H=5.882 IC=0.0262 pr=0.11 run= 17 rep=None  <== HIT
+  T4_blob3           ^ HOLY                 n=  34 off=      0 H=4.278 IC=0.0303 pr=0.18 run=  4 rep=None
+  canon_256          ^ LP_A_WARNING         n= 199 off=     31 H=6.852 IC=0.0051 pr=0.37 run=  4 rep=None
+  canon_256          ^ LP_SOME_WISDOM       n= 169 off=      3 H=6.697 IC=0.0049 pr=0.39 run=  4 rep=None
+  canon_256          ^ LP_A_KOAN_(the_mast  n= 256 off=      0 H=7.218 IC=0.0036 pr=0.35 run=  4 rep=None
+  canon_256          ^ LP_WELCOME           n= 256 off=      0 H=7.198 IC=0.0037 pr=0.38 run=  4 rep=None
+  canon_256          ^ LP_A_KOAN_(the_circ  n= 256 off=      0 H=7.167 IC=0.0039 pr=0.36 run=  4 rep=None
+  canon_256          ^ HOLY                 n=  34 off=     72 H=4.712 IC=0.0125 pr=0.38 run=  3 rep=None
+  folly              ^ LP_A_WARNING         n= 199 off=    588 H=6.866 IC=0.0049 pr=0.30 run=  3 rep=None
+  folly              ^ LP_SOME_WISDOM       n= 169 off=    882 H=6.670 IC=0.0051 pr=0.43 run=  7 rep=None
+  folly              ^ LP_A_KOAN_(the_mast  n= 772 off=   2240 H=7.671 IC=0.0043 pr=0.41 run=  5 rep=None
+  folly              ^ LP_WELCOME           n= 409 off=   2438 H=7.402 IC=0.0043 pr=0.39 run=  5 rep=None
+  folly              ^ LP_A_KOAN_(the_circ  n= 338 off=    893 H=7.257 IC=0.0045 pr=0.39 run=  7 rep=None
+  folly              ^ HOLY                 n=  34 off=   1560 H=4.735 IC=0.0107 pr=0.38 run=  4 rep=None
+  folly_snap2        ^ LP_A_WARNING         n= 199 off=    588 H=6.866 IC=0.0049 pr=0.30 run=  3 rep=None
+  folly_snap2        ^ LP_SOME_WISDOM       n= 169 off=    882 H=6.670 IC=0.0051 pr=0.43 run=  7 rep=None
+  folly_snap2        ^ LP_A_KOAN_(the_mast  n= 772 off=   2240 H=7.671 IC=0.0043 pr=0.41 run=  5 rep=None
+  folly_snap2        ^ LP_WELCOME           n= 409 off=   2438 H=7.402 IC=0.0043 pr=0.39 run=  5 rep=None
+  folly_snap2        ^ LP_A_KOAN_(the_circ  n= 338 off=    893 H=7.257 IC=0.0045 pr=0.39 run=  7 rep=None
+  folly_snap2        ^ HOLY                 n=  34 off=   1560 H=4.735 IC=0.0107 pr=0.38 run=  4 rep=None
+  lpc02_out          ^ LP_A_WARNING         n= 199 off=    126 H=5.405 IC=0.0225 pr=0.95 run= 56 rep=None  <== HIT
+  lpc02_out          ^ LP_SOME_WISDOM       n= 169 off=   1680 H=5.369 IC=0.0220 pr=0.96 run= 50 rep=None  <== HIT
+  lpc02_out          ^ LP_A_KOAN_(the_mast  n= 772 off=    330 H=5.729 IC=0.0202 pr=0.98 run=158 rep=None  <== HIT
+  lpc02_out          ^ LP_WELCOME           n= 409 off=   1064 H=5.661 IC=0.0207 pr=0.98 run=129 rep=None  <== HIT
+  lpc02_out          ^ LP_A_KOAN_(the_circ  n= 338 off=    600 H=5.522 IC=0.0221 pr=0.97 run= 70 rep=None  <== HIT
+  lpc02_out          ^ HOLY                 n=  34 off=   1408 H=4.374 IC=0.0250 pr=0.88 run=  9 rep=None  <== HIT
+  nokey_dl_1033      ^ LP_A_WARNING         n= 199 off=     60 H=5.429 IC=0.0223 pr=0.86 run= 57 rep=None  <== HIT
+  nokey_dl_1033      ^ LP_SOME_WISDOM       n= 169 off=     60 H=5.045 IC=0.0306 pr=0.96 run= 65 rep=None  <== HIT
+  nokey_dl_1033      ^ LP_A_KOAN_(the_mast  n= 772 off=    682 H=6.461 IC=0.0113 pr=0.63 run= 13 rep=None
+  nokey_dl_1033      ^ LP_WELCOME           n= 409 off=    799 H=6.300 IC=0.0117 pr=0.63 run= 13 rep=None
+  nokey_dl_1033      ^ LP_A_KOAN_(the_circ  n= 338 off=      0 H=6.171 IC=0.0142 pr=0.76 run= 43 rep=None  <== HIT
+  nokey_dl_1033      ^ HOLY                 n=  34 off=    110 H=4.374 IC=0.0250 pr=0.76 run=  5 rep=None
+  t5_nokey           ^ LP_A_WARNING         n= 199 off=     56 H=5.577 IC=0.0206 pr=0.97 run= 88 rep=None  <== HIT
+  t5_nokey           ^ LP_SOME_WISDOM       n= 169 off=     60 H=5.391 IC=0.0241 pr=0.98 run= 88 rep=None  <== HIT
+  t5_nokey           ^ LP_A_KOAN_(the_mast  n= 772 off=    320 H=6.429 IC=0.0117 pr=0.61 run= 10 rep=None
+  t5_nokey           ^ LP_WELCOME           n= 409 off=     11 H=6.277 IC=0.0131 pr=0.79 run= 88 rep=None  <== HIT
+  t5_nokey           ^ LP_A_KOAN_(the_circ  n= 338 off=     60 H=6.102 IC=0.0158 pr=0.85 run= 88 rep=None  <== HIT
+  t5_nokey           ^ HOLY                 n=  34 off=    204 H=4.359 IC=0.0267 pr=0.91 run= 13 rep=None  <== HIT
+  wisdom             ^ LP_A_WARNING         n= 199 off=    588 H=6.866 IC=0.0049 pr=0.30 run=  3 rep=None
+  wisdom             ^ LP_SOME_WISDOM       n= 169 off=    882 H=6.670 IC=0.0051 pr=0.43 run=  7 rep=None
+  wisdom             ^ LP_A_KOAN_(the_mast  n= 772 off=   2240 H=7.671 IC=0.0043 pr=0.41 run=  5 rep=None
+  wisdom             ^ LP_WELCOME           n= 409 off=   2438 H=7.402 IC=0.0043 pr=0.39 run=  5 rep=None
+  wisdom             ^ LP_A_KOAN_(the_circ  n= 338 off=    893 H=7.257 IC=0.0045 pr=0.39 run=  7 rep=None
+  wisdom             ^ HOLY                 n=  34 off=   1560 H=4.735 IC=0.0107 pr=0.38 run=  4 rep=None
+
+  battery2 hits: 25
+  HIT T1_onion3^LP_A_WARNING H=5.429 off=60 pr=0.86 run=57 rep=None
+      keystream[:60]=b"%w-'-%iHO\x7fzudODE^-nzfdzxg\x7fC=brotpmt|afb\x7fubiw`p{~a`{psccmwmwc"
+  HIT T1_onion3^LP_SOME_WISDOM H=5.045 off=60 pr=0.96 run=65 rep=None
+      keystream[:60]=b'7o!04"}NE~gxtZXCG s|rsftpeO*tuecza~|\x7ffsbzudqt}|beuw`sspt~mz~'
+  HIT T1_onion3^LP_A_KOAN_(the_circ H=6.171 off=0 pr=0.76 run=43 rep=None
+      keystream[:60]=b'lnblc\x06\x10\x15\x07\ta\x1c\x02\x03s\x1c\x07\x13\x06\x00\ta\x1e\x11\x16\x01\x04\x1f\x15aldchN\x1c)6!nh\x16\x01\x08b^B\x120#*,(*zBO\x04&='
+  HIT T4_blob2^LP_A_WARNING H=4.039 off=348592 pr=0.00 run=0 rep=None
+      keystream[:60]=b'\xbe\xa8\xbe\xad\xb1\xb1\xb8\xbd\xba\xb3\xb6\xba\xaa\xba\xb1\xb0\xab\xb7\xb1\xb8\xb9\xad\xb0\xb2\xab\xb7\xb6\xac\xbd\xb0\xb0\xbc\xba\xa7\xbc\xba\xaf\xab\xa8\xb7\xbe\xab\xa6\xb0\xaa\xbc\xb1\xb0\xa8\xab\xb0\xbd\xba\xab\xad\xaa\xba\xab\xba\xac'
+  HIT T4_blob2^LP_SOME_WISDOM H=4.084 off=348600 pr=0.00 run=0 rep=None
+      keystream[:60]=b'\xac\xb0\xb2\xba\xa8\xb6\xac\xbb\xb0\xb2\xab\xb7\xba\xaf\xad\xb6\xb2\xba\xac\xbe\xad\xba\xac\xbe\xbc\xad\xba\xbb\xab\xb7\xba\xab\xb0\xab\xb6\xba\xb1\xab\xb9\xaa\xb1\xbc\xab\xb6\xbe\xb1\xb6\xac\xac\xbe\xbc\xad\xba\xbb\xbe\xb3\xb3\xab\xb7\xb1'
+  HIT T4_blob2^LP_A_KOAN_(the_mast H=3.991 off=348520 pr=0.00 run=0 rep=None
+      keystream[:60]=b'\xbe\xbc\xb0\xbe\xb1\xbe\xb2\xbe\xb1\xbb\xba\xbc\xb6\xbb\xba\xbb\xab\xb0\xb8\xb0\xbe\xb1\xbb\xac\xab\xaa\xbb\xa6\xa8\xb6\xab\xb7\xbe\xb2\xbe\xac\xab\xba\xad\xb7\xba\xa8\xba\xb1\xab\xab\xb0\xab\xb7\xba\xbb\xb0\xb0\xad\xb0\xb9\xab\xb7\xba\xb2'
+  HIT T4_blob2^LP_WELCOME H=4.028 off=348568 pr=0.00 run=0 rep=None
+      keystream[:60]=b'\xa8\xba\xb3\xbc\xb0\xb2\xba\xa8\xba\xb3\xbc\xb0\xb2\xba\xaf\xb6\xb3\xb8\xad\xb6\xb2\xab\xb0\xab\xb7\xba\xb8\xad\xba\xbe\xab\xb5\xb0\xaa\xad\xb1\xba\xa6\xab\xb0\xa8\xbe\xad\xbb\xab\xb7\xba\xba\xb1\xbb\xb0\xbe\xb3\xb3\xab\xb7\xb1\xb8\xac\xb6'
+  HIT T4_blob2^LP_A_KOAN_(the_circ H=3.847 off=348576 pr=0.00 run=0 rep=None
+      keystream[:60]=b'\xbe\xbc\xb0\xbe\xb1\xbb\xaa\xad\xb1\xb8\xbe\xb3\xba\xac\xac\xb0\xb1\xab\xb7\xba\xb2\xbe\xac\xab\xba\xad\xba\xa7\xaf\xb3\xbe\xb6\xb1\xba\xbb\xab\xb7\xba\xb6\xab\xb7\xba\xb6\xb6\xac\xab\xb7\xba\xaa\xb0\xb6\xbc\xba\xb0\xab\xb7\xba\xbc\xb6\xad'
+  HIT T4_blob3^LP_A_WARNING H=4.673 off=0 pr=0.06 run=4 rep=None
+      keystream[:60]=b'ApAM\xb1\xa1\xf2\xfb\xf3\xf5\xb6\xbb\xab\xba\xb1\xb1\xab\xb6\xb1\xb8Fv\xb0\xf1\xab\xb6\xb7\xad\xbc\xb1\xb1\xbd\xbb\xa6\xbd\xbb\xae\xaa\xa9\xb6\xbf\xaa\xa7\xb1\xab\xbd\xb0\xb1\xa9\xaa\xb1\xbc\xbb\xaa\xac\xab\xbb\xaa\xbb\xad'
+  HIT T4_blob3^LP_SOME_WISDOM H=4.634 off=0 pr=0.06 run=4 rep=None
+      keystream[:60]=b'ShMZ\xa8\xa6\xe6\xfd\xf9\xf4\xab\xb6\xbb\xaf\xad\xb7\xb2\xbb\xac\xbeRa\xac\xfd\xbc\xac\xbb\xba\xaa\xb6\xbb\xaa\xb1\xaa\xb7\xbb\xb0\xaa\xb8\xab\xb0\xbd\xaa\xb7\xbf\xb0\xb7\xad\xad\xbf\xbd\xac\xbb\xba\xbf\xb2\xb2\xaa\xb6\xb0'
+  HIT T4_blob3^LP_A_KOAN_(the_circ H=5.882 off=0 pr=0.11 run=17 rep=None
+      keystream[:60]=b'AdO^\xb1\xab\xe0\xeb\xf8\xfe\xbe\xb2\xbb\xac\xac\xb1\xb1\xaa\xb7\xbaMe\xac\xe8\xba\xac\xbb\xa6\xae\xb2\xbf\xb7\xb0\xbb\xba\xaa\xb6\xbb\xb7\xaa\xb6\xbb\xb7\xb7\xad\xaa\xb6\xbb\xab\xb1\xb7\xbd\xbb\xb1\xaa\xb6\xbb\xbd\xb7\xac'
+  HIT lpc02_out^LP_A_WARNING H=5.405 off=126 pr=0.95 run=56 rep=None
+      keystream[:60]=b" fv1|-&sq{{#e}--6\x7f,r\x7fgz\x7f`{xct~{'}>zud`1\x7f'aS{l z}e5\x7f$tdgl|5&6"
+  HIT lpc02_out^LP_SOME_WISDOM H=5.369 off=1680 pr=0.96 run=50 rep=None
+      keystream[:60]=b"1y,tnyar~xby'Z7+,pb$cua'%4qqa)t6*7zq|` `+zlyq-\x7f`gtwdu'u*(2z}"
+  HIT lpc02_out^LP_A_KOAN_(the_mast H=5.729 off=330 pr=0.98 run=158 rep=None
+      keystream[:60]=b'wz-wz"|#(!w +stvc-u, Dse0dun5,lqxywea!6-|6t,`m)e~q}{*7+t7*!~'
+  HIT lpc02_out^LP_WELCOME H=5.661 off=1064 pr=0.98 run=129 rep=None
+      keystream[:60]=b'2 ~t-|&6|{!~(!fp}seC,`*1z&$3wtc(v0e|}?2wdt0ubzw}w"~p~-mx*u7,'
+  HIT lpc02_out^LP_A_KOAN_(the_circ H=5.522 off=600 pr=0.97 run=70 rep=None
+      keystream[:60]=b'"t\x7fsvu`4~#uyu`2}\x7ffpwu 7m\'`p=6-$x|\'}6)#+`, ++`2{}3yqqp)6+O{xb'
+  HIT lpc02_out^HOLY H=4.374 off=1408 pr=0.88 run=9 rep=None
+      keystream[:60]=b'"*dC\'op7l\x15c*zwu\x10cyum\x17*-7wc\x17-bFp}-;'
+  HIT nokey_dl_1033^LP_A_WARNING H=5.429 off=60 pr=0.86 run=57 rep=None
+      keystream[:60]=b"%w-'-%iHO\x7fzudODE^-nzfdzxg\x7fC=brotpmt|afb\x7fubiw`p{~a`{psccmwmwc"
+  HIT nokey_dl_1033^LP_SOME_WISDOM H=5.045 off=60 pr=0.96 run=65 rep=None
+      keystream[:60]=b'7o!04"}NE~gxtZXCG s|rsftpeO*tuecza~|\x7ffsbzudqt}|beuw`sspt~mz~'
+  HIT nokey_dl_1033^LP_A_KOAN_(the_circ H=6.171 off=0 pr=0.76 run=43 rep=None
+      keystream[:60]=b'lnblc\x06\x10\x15\x07\ta\x1c\x02\x03s\x1c\x07\x13\x06\x00\ta\x1e\x11\x16\x01\x04\x1f\x15aldchN\x1c)6!nh\x16\x01\x08b^B\x120#*,(*zBO\x04&='
+  HIT t5_nokey^LP_A_WARNING H=5.577 off=56 pr=0.97 run=88 rep=None
+      keystream[:60]=b')2a"/:/b)%,6u #? 1ug#"&=<)\'*b<*&.+c181w,$"6;0\'`E]\x18&  &r\x057=(&'
+  HIT t5_nokey^LP_SOME_WISDOM H=5.391 off=60 pr=0.98 run=88 rep=None
+      keystream[:60]=b'2;%e; 67o(981)ii(5:1:$=8c! !?;e \'1i!+")!+\'zCK\x02 163c\x027-,9?t!='
+  HIT t5_nokey^LP_WELCOME H=6.277 off=11 pr=0.79 run=88 rep=None
+      keystream[:60]=b'\x07\x02\x1cc\x1c\x04\x02\x19\x00\x08c\x02\x08\x16\x03\x08\x0b\x02\x7fd`yb^\x00$4:\x7fa\x07\x02\x0edXD\r<8#8oXN\x00  e>%;)l =-=g6$'
+  HIT t5_nokey^LP_A_KOAN_(the_circ H=6.102 off=60 pr=0.85 run=88 rep=None
+      keystream[:60]=b' 7\'a"-0!n",<1*ho+$!5% =-e! =;?a=& d0-3& -!gCY\x18!\'0=i\x137&9=6c !'
+  HIT t5_nokey^HOLY H=4.359 off=204 pr=0.91 run=13 rep=None
+      keystream[:60]=b"2'7\x00!?77:T=''`M*\x07-$?\x00-'2e*O<sW!# y"
+
+=== BATTERY 3: SELF-STRUCTURE ===
+  T1_onion3            H=6.010 IC=0.01629
+      repeated_block(8): None
+      autocorr peaks (lag,rate): [(1, 0.06546426185704743), (2, 0.053475935828877004), (379, 0.050044682752457555), (23, 0.03661016949152542), (3, 0.036120401337792644)]
+      header_hunt: [('raw', 'PGP/PEM')]
+  T2_2jpg              H=7.978 IC=0.00389
+      repeated_block(8): None
+      autocorr peaks (lag,rate): []
+      header_hunt: none
+  T3_folly_extract     H=7.938 IC=0.00393
+      repeated_block(8): None
+      autocorr peaks (lag,rate): []
+      header_hunt: none
+  T4_blob1             H=7.998 IC=0.00392
+      repeated_block(8): None
+      autocorr peaks (lag,rate): []
+      header_hunt: [('xor0xFF', 'GZIP')]
+  T4_blob2             H=7.766 IC=0.00874
+      repeated_block(8): 17701
+      autocorr peaks (lag,rate): [(1, 0.06021989005497251), (2, 0.05997001499250375), (4, 0.05997001499250375), (3, 0.05747126436781609), (6, 0.05472263868065967)]
+      header_hunt: [('xor0xFF', 'JPEG')]
+  T4_blob3             H=7.403 IC=0.01039
+      repeated_block(8): 1312
+      autocorr peaks (lag,rate): [(4, 0.16266866566716642), (8, 0.12443778110944528), (12, 0.09420289855072464), (16, 0.07596201899050475), (20, 0.06746626686656672)]
+      header_hunt: [('xor0xFF', 'JPEG')]
+  canon_256            H=7.170 IC=0.00389
+      repeated_block(8): None
+      autocorr peaks (lag,rate): [(103, 0.026143790849673203), (122, 0.022388059701492536), (69, 0.0213903743315508)]
+      header_hunt: none
+  folly                H=7.938 IC=0.00393
+      repeated_block(8): None
+      autocorr peaks (lag,rate): []
+      header_hunt: none
+  folly_snap2          H=7.938 IC=0.00393
+      repeated_block(8): None
+      autocorr peaks (lag,rate): []
+      header_hunt: none
+  lpc02_out            H=5.214 IC=0.03630
+      repeated_block(8): None
+      autocorr peaks (lag,rate): [(1, 0.061076604554865424), (732, 0.06045223811721274), (305, 0.058982266769468), (244, 0.05725047080979284), (427, 0.05703883495145631)]
+      header_hunt: [('raw', 'PGP/PEM')]
+  nokey_dl_1033        H=6.010 IC=0.01629
+      repeated_block(8): None
+      autocorr peaks (lag,rate): [(1, 0.06546426185704743), (2, 0.053475935828877004), (379, 0.050044682752457555), (23, 0.03661016949152542), (3, 0.036120401337792644)]
+      header_hunt: [('raw', 'PGP/PEM')]
+  t5_nokey             H=5.974 IC=0.01698
+      repeated_block(8): None
+      autocorr peaks (lag,rate): [(1, 0.04669603524229075), (10, 0.03818827708703375), (51, 0.03778801843317972), (65, 0.03734827264239029), (47, 0.03673094582185491)]
+      header_hunt: [('raw', 'PGP/PEM')]
+  wisdom               H=7.938 IC=0.00393
+      repeated_block(8): None
+      autocorr peaks (lag,rate): []
+      header_hunt: none
+
+=== DONE ===

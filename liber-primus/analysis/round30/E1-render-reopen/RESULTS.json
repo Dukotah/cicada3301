@@ -1,0 +1,21 @@
+{
+  "lane": "E1-render-reopen",
+  "task": "Render-aware adjudication of 6 contested pp49-51 base-60 cells at 400dpi",
+  "positive_control": {
+    "cells": ["idx24 '1n'", "idx172 '2S'"],
+    "result": "PASS - extractor cleanly recovers known non-contested values; digit-cap vs x-height metrics validated in-row"
+  },
+  "font_finding": "Both the base-60 Latin/digit table AND the runic pages are a single clean deterministic VECTOR font (Ghostscript-PDF render, per Round 29). Repeated glyphs render pixel-identical; NO dual-form variant channel exists in the base-60 alphabet (unlike A1 runic dual-glyph). 233/256 first-digit glyphs have a 0-37px nearest twin.",
+  "discriminator": "In-row cap-height baseline. Cap-height glyphs (P,U,L,D,digits) top at cap-line, h~=67. x-height glyphs (n,r) top lower, h~=43. Lowercase i/j carry a DOT (proven by idx198 '1j'). A dotless full-height bar is therefore I or l, never i. Capital I = cap-height (ascent 0, h67). Lowercase l = ascender (ascent +6/+7, h74/75).",
+  "contested_cells": [
+    {"idx":25,"page":49,"cell":"r3c1","token_witnesses":"3I (18)","decimal_witness":"224 -> 3i (44)","render":"dotless bar at cap-height, ascent -0, h67, w8; identical to idx175/idx246","VERDICT":"3I = 18","decimal_rejected":"i(44) impossible: no dot","byte":198},
+    {"idx":175,"page":50,"cell":"r11c7","token_witnesses":"0I (18)","decimal_witness":"44 -> 0i","render":"dotless bar at cap-height, ascent -1, h67, w8","VERDICT":"0I = 18","byte":18},
+    {"idx":182,"page":50,"cell":"r12c6","token_witnesses":"2l (47)","decimal_witness":"141 -> 2L (21)","render":"bar ascends +6 above cap, h74 = ascender height = lowercase l","VERDICT":"2l = 47","byte":167},
+    {"idx":199,"page":51,"cell":"r1c7","token_witnesses":"0l (47)","decimal_witness":"21 -> 0L","render":"bar ascends +7 above cap, h75 = ascender = lowercase l","VERDICT":"0l = 47","byte":47},
+    {"idx":215,"page":51,"cell":"r3c7","token_witnesses":"1O (84)","decimal_witness":"5 -> 05","render":"clear digit-1 (top flag) + round capital O; decimal=5 is a scream314 typo, not a glyph ambiguity","VERDICT":"1O = 84","byte":84},
+    {"idx":237,"page":51,"cell":"r6c5","token_witnesses":"0W (32)","decimal_witness":"58 -> 0w","render":"round 0 + cap-height 4-stroke W sitting on baseline = capital W","VERDICT":"0W = 32","byte":32}
+  ],
+  "canon_change": "NONE. Existing majority-vote canon_256.bin is CORRECT at all 6 bytes (idx 25=198,175=18,182=167,199=47,215=84,237=32). The decimal-preferred variant canon_256_decpref.bin is FALSIFIED at all 6 and should be retired.",
+  "runic_borderline": "None new. Runic pages are the same clean vector font; render resolution confirms glyph separability and introduces no new ambiguity. p24:172 aesc already resolved.",
+  "canon_256_hex_confirmed": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576dc6ad1996428d857372c5273650850550541c49e651c74cfd10153b56ab9c50fe7692456ac47c337aff19c0c749a96ca44fcdb172902e528e3ac9c1ad1c6f41d3dcc631ec543823de96482253e520ce7a3f1fda0eb82073498fc5f736ab23b82aed56360d14a3c1c9b35678a98d48ab0a81e90df52ea0987dd25cadf6ae99bde7210e7034fbf9f8e9d9c0526912faf8f0e4fe369475d112eb83a6af9028a751809c135126c0aa21009b9f59b073692f6e4ad144c24c7f1539af063d4696fb548edb943b3a343397443449f9900075af6aeac479ee2081ad908d2ad61638e0c0719eace6b424bd50"
+}

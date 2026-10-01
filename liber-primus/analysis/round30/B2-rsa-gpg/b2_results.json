@@ -1,0 +1,233 @@
+{
+  "lane": "B2-rsa-gpg",
+  "tests": {
+    "jpg_trailer_len": 0,
+    "canon_as_modulus": {
+      "nbits": 2048,
+      "byte_len": 256,
+      "top_bit_set": true,
+      "odd": false,
+      "trial_small_factors": [
+        2,
+        2,
+        2,
+        2,
+        5,
+        5,
+        5,
+        5,
+        5,
+        13
+      ],
+      "num_small_factors": 12,
+      "is_probable_prime": false,
+      "perfect_power": null,
+      "fermat_factored": null,
+      "fermat_iters_if_hit": null,
+      "plausible_rsa_modulus": false
+    },
+    "gcd_canon_cicadaN": {
+      "gcd_bits": 1,
+      "gcd_is_1": true
+    },
+    "canon_as_residue_mod_cicadaN": {
+      "canon_lt_n": true,
+      "canon_bits": 2048,
+      "c_pow_e_mod_n_entropy": 7.6149,
+      "c_pow_e_mod_n_printable_frac": 0.3691,
+      "c_pow_e_mod_n_head_hex": "af235861c0a82ab8b2baadcd2e9cba7d",
+      "note": "high entropy / low printable => no structure recovered (expected if not a genuine CT under this key)"
+    },
+    "openpgp_scan": {
+      "canon_256": {
+        "name": "canon_256",
+        "byte0": "0xcb",
+        "valid_pgp_header": true,
+        "newfmt": true,
+        "tag": 11,
+        "tag_name": "LiteralData",
+        "plausible_pgp_message_start": true
+      },
+      "folly": {
+        "name": "folly",
+        "byte0": "0xbf",
+        "valid_pgp_header": true,
+        "newfmt": false,
+        "tag": 15,
+        "tag_name": "UNKNOWN/invalid",
+        "plausible_pgp_message_start": false
+      },
+      "jpg_payload": {
+        "name": "jpg_payload",
+        "empty": true
+      }
+    },
+    "gpg_raw": {
+      "canon_256": {
+        "raw_stdout": "# off=0 ctb=cb tag=11 hlen=2 plen=0 partial new-ctb\n:literal data packet:\n\tmode ? (A7), created 553687967, name=\"a\\xed\\x7e\\xb7\\\\xf9\\x9c\\xde\\xf7\\x04\\xb7\\xd4y\\xca\\x0f!f\\x89;Wm\\xc6\\xad\\x19\\x96B\\x8d\\x85sr\\xc5'6P\\x85\\x05PT\\x1cI\\xe6Q\\xc7L\\xfd\\x10\\x15;V\\xab\\x9cP\\xfev\\x92Ej\\xc4\\x7c3z\\xff\\x19\\xc0\\xc7I\\xa9l\\xa4O\\xcd\\xb1r\\x90.R\\x8e:\\xc9\\xc1\\xad\\x1coA\\xd3\\xdc\\xc61\\xecT8#\\xde\\x96H\"S\\xe5 \\xcez?\\x1f\\xda\\x0e\\xb8 ",
+        "raw_stderr": "",
+        "raw_parsed_ok": true
+      },
+      "folly": {
+        "raw_stdout": "",
+        "raw_stderr": "gpg: no valid OpenPGP data found.\ngpg: processing message failed: Unknown system error",
+        "raw_parsed_ok": false
+      },
+      "jpg_payload": {
+        "empty": true
+      }
+    },
+    "gpg_header_prepend": {
+      "canon_256": {
+        "tag9_symenc_oldfmt": {
+          "parsed_ok": true,
+          "stderr": "gpg: packet(1) with unknown version 231\ngpg: packet(2) with unknown version 127"
+        },
+        "tag18_seip_newfmt": {
+          "parsed_ok": false,
+          "stderr": "gpg: encrypted_mdc packet with unknown version 203\ngpg: [don't know]: invalid packet (ctb=49)"
+        },
+        "tag8_compressed_zip": {
+          "parsed_ok": false,
+          "stderr": "gpg: zlib inflate problem: invalid distance too far back"
+        },
+        "tag11_literal": {
+          "parsed_ok": true,
+          "stderr": "gpg: packet(2) with unknown version 127"
+        }
+      },
+      "folly": {
+        "tag9_symenc_oldfmt": {
+          "parsed_ok": false,
+          "stderr": "gpg: packet(1) with unknown version 83\ngpg: packet(1) with unknown version 201\ngpg: [don't know]: invalid packet (ctb=6e"
+        },
+        "tag18_seip_newfmt": {
+          "parsed_ok": false,
+          "stderr": "gpg: encrypted_mdc packet with unknown version 191\ngpg: [don't know]: invalid packet (ctb=53)"
+        },
+        "tag8_compressed_zip": {
+          "parsed_ok": false,
+          "stderr": "gpg: zlib inflate problem: invalid block type"
+        },
+        "tag11_literal": {
+          "parsed_ok": false,
+          "stderr": "gpg: packet(1) with unknown version 201\ngpg: [don't know]: invalid packet (ctb=6e)\ngpg: [don't know]: invalid packet (ct"
+        }
+      }
+    },
+    "canon_as_aes256_key": {
+      "over_folly": {
+        "name": "folly",
+        "ECB": {
+          "entropy": 7.9494,
+          "printable_frac": 0.3658,
+          "pgp_header": true,
+          "head_hex": "f69eb95c013bfb070ce804961782f21d"
+        },
+        "CBC": {
+          "entropy": 7.9571,
+          "printable_frac": 0.3789,
+          "pgp_header": true,
+          "head_hex": "f69eb95c013bfb070ce804961782f21d"
+        },
+        "CTR_zero": {
+          "entropy": 7.9511,
+          "printable_frac": 0.3664,
+          "pgp_header": false,
+          "head_hex": "6c4d1a42d6e6bc19bd4a83cb4aed0067"
+        }
+      },
+      "over_jpg_payload": {
+        "empty": true
+      },
+      "over_canon_self": {
+        "name": "canon_tail",
+        "ECB": {
+          "entropy": 7.0896,
+          "printable_frac": 0.3839,
+          "pgp_header": true,
+          "head_hex": "914d90a68fdf0a0d8696d62d04de0924"
+        },
+        "CBC": {
+          "entropy": 7.0917,
+          "printable_frac": 0.3571,
+          "pgp_header": true,
+          "head_hex": "914d90a68fdf0a0d8696d62d04de0924"
+        },
+        "CTR_zero": {
+          "entropy": 7.1615,
+          "printable_frac": 0.3839,
+          "pgp_header": true,
+          "head_hex": "a06c1fa97fd0aa926d5d77461223e403"
+        }
+      }
+    }
+  },
+  "controls": {
+    "pos_real_rsa2048_modulus": {
+      "nbits": 2048,
+      "byte_len": 256,
+      "top_bit_set": true,
+      "odd": true,
+      "trial_small_factors": [],
+      "num_small_factors": 0,
+      "is_probable_prime": false,
+      "perfect_power": null,
+      "fermat_factored": null,
+      "fermat_iters_if_hit": null,
+      "plausible_rsa_modulus": true
+    },
+    "neg_random_256B": {
+      "nbits": 2048,
+      "byte_len": 256,
+      "top_bit_set": true,
+      "odd": false,
+      "trial_small_factors": [
+        2,
+        2,
+        2,
+        3,
+        3,
+        37,
+        797
+      ],
+      "num_small_factors": 7,
+      "is_probable_prime": false,
+      "perfect_power": null,
+      "fermat_factored": null,
+      "fermat_iters_if_hit": null,
+      "plausible_rsa_modulus": false
+    },
+    "gpg_positive_real_message": {
+      "built": true,
+      "list_packets_head": "# off=0 ctb=8c tag=3 hlen=2 plen=13\n:symkey enc packet: version 4, cipher 9, aead 0, s2k 3, hash 10\n\tsalt 6EC89D15BBCA348B, count 65011712 (255)\n# off=15 ctb=d2 tag=18 hlen=2 plen=90 new-ctb\n:encrypted data packet:\n\tlength: 90\n\tmdc_method: 2",
+      "openpgp_scan": {
+        "name": "real_gpg_message",
+        "byte0": "0x8c",
+        "valid_pgp_header": true,
+        "newfmt": false,
+        "tag": 3,
+        "tag_name": "SKESK",
+        "plausible_pgp_message_start": true
+      },
+      "parsed_ok": true
+    },
+    "gpg_negative_random": {
+      "stderr": "gpg: no valid OpenPGP data found.\ngpg: processing message failed: Unknown system error",
+      "stdout": "",
+      "parsed_as_valid": false
+    }
+  },
+  "ledgered_not_rerun": {
+    "canon_prime_or_clean_RSA_modulus": "ELIMINATION-LEDGER L151/L98: NULL (int is even, ends 0x50, small factors). Confirmed by our detector below.",
+    "canon_32byte_block_hash_preimage": "ELIMINATION-LEDGER L157: NULL (37-dict x 3 algos x 16 blocks -> 0).",
+    "canon_whole_file_preimage_vs_AN-END_512bit": "L601/L642/L663: >1572 preimage nulls incl SHA2/3/BLAKE2/Skein/Whirlpool/Streebog -> NULL.",
+    "T2_T3_folly_OpenPGP": "L802-803: folly byte0=0xbf invalid packet chain, T2 byte0=0x40 bit7-clear -> not PGP. Re-confirmed structurally here.",
+    "canon_as_RSA_private_exponent": "no meaningful standalone test without matching (n,e); a bare d has no verifiable structure -> not a productive test, noted."
+  },
+  "base_rate_false_positive": {
+    "random_byte0_bit7_set_frac": 0.486,
+    "leading_bytes_making_gpg_emit_packet": "53/256 = 0.207",
+    "interpretation": "canon_256 byte0=0xcb parsing as OpenPGP tag-11 LiteralData is a base-rate coincidence (~20% of leading bytes do this); the parsed literal packet has mode=? and garbage name/body. NOT evidence of PGP structure."
+  }
+}

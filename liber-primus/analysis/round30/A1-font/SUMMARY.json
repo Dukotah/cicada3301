@@ -1,0 +1,26 @@
+{
+ "lane": "A1 - rune font identification & glyph-variant forensics",
+ "positive_control": {
+   "extractor": "ground-truth-anchored: krisyotam rune sequence drives per-line cell count; 262/262 glyphs recovered on relikd p0 with correct 12-line alignment",
+   "same-rune byte-identical crops": "1150/22620 same-rune clean pairs are np.array_equal identical; e.g. p0 rune#5 == p37 rune#193 (shape 114x52, exactly equal pixels)",
+   "font signature (maxIoU across book, clean crops)": "28/29 runes reach maxIoU=1.000; 29th (H-haegl) = 0.986",
+   "verdict": "PASS - same rune renders pixel-identically -> deterministic vector font"
+ },
+ "negative_control": {
+   "different-rune byte-identical": "11/3000 (~0.4%), unsystematic across 18+ distinct rune-pairs at 1-2 hits each = segmentation noise floor, NOT structure",
+   "verdict": "PASS - different runes do NOT cluster together"
+ },
+ "font_identity": {
+   "finding": "already settled by Round 18 L1: NONE of 11 known 2012-2014 runic faces (Noto Sans Runic, BabelStone Runic/ElderFuthark/Modern, GNU Unifont, FreeSerif/Sans/Mono, Quivira, Segoe UI Symbol/seguisym, Symbola, allrunes Type-1) matches. Best = Noto Sans Runic D_stretch=0.4096, 13.6x the LP2 reproducibility floor, 4.4x outside self-match band.",
+   "verdict": "CUSTOM / bespoke rune face (or an XY-scaled member of the Noto/BabelStone design tradition), taller-and-narrower than every candidate. Design topology in the futhorc tradition; the specific outlines are not any surveyed font.",
+   "source_pdf": "Round 20 N1: no surviving source PDF with an embedded runic /BaseFont subset exists in local corpus (195 distinct PDFs) or reachable mirrors -> the subset tag that would NAME the face is unrecoverable."
+ },
+ "variant_channel": {
+   "question": "does one rune have >1 distinct glyph shape (a hidden selection/data channel)?",
+   "method": "single-linkage IoU>=0.90 clustering of clean crops per rune, across pp0-53",
+   "result": "every rune has ONE dominant shape cluster (33-50 of 60 sampled) + only tiny 2-6 member noise singletons. design-choice runes (G, J/ger, NG/ing) show a single fixed choice (66-78% in one cluster). runes that scatter (I, EA, IA, H, D) are thin/short glyphs where alignment is unreliable, still high canonical crispness 0.80-0.98.",
+   "verdict": "NULL - NO glyph-variant channel. Each of the 29 runes is a single vector glyph reused verbatim. There is no per-occurrence variant-selection sequence to extract as data."
+ },
+ "novel_contribution_vs_prior": "Round 18 L1 built rune CENTROIDS (averaging away per-instance variation) to match faces; it did NOT test the variant-SELECTION hypothesis. A1 tests it directly at the pixel level and closes it: byte-identical reuse proves a single deterministic glyph per rune, so the variant channel imagined in the ROADMAP does not exist.",
+ "confidence": "HIGH - byte-identical crops are a reproducible, control-gated hard fact"
+}
