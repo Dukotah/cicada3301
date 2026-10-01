@@ -71,26 +71,29 @@ layer** a future solve will stand on — and that is what this file asks to be c
 
 ## 4. Trust-surface hashes (origin binding)
 
-SHA-256 of the canonical trust surface at the release noted below. A clone or fork whose files
-hash to these values is faithful to this release; a divergence should be explained by its
-author. (Data-input hashes are separately pinned in
-`liber-primus/handoff/capsule/MANIFEST.json`, 103 inputs.)
+SHA-256 of the **git blob** of each canonical trust-surface file. Blob hashes are used (not a
+plain `sha256sum` of the working tree) because they are **line-ending independent** — a Windows
+checkout and a Linux checkout of the same release produce the same blob hash, whereas a raw
+file hash would not. A clone or fork whose blobs hash to these values is faithful to this
+release; a divergence should be explained by its author. (Data-input hashes are separately
+pinned in `liber-primus/handoff/capsule/MANIFEST.json`, 103 inputs.)
 
-- **Release:** see the annotated tag in this repository.
-- **Commit at manifest time:** `39bb664` (2026-10-01).
+- **Release:** annotated tag `v2026.10.1-round19` in this repository.
+- **Commit at manifest time:** `891861d` (2026-10-01).
 
 ```
 f011379daa25b4c102d372cb4c372598fafdff8bbf86f52d5211698154a55de0  llms.txt
-f6db3aceea338c57c7dee6c50b911ace4159e54795f235ffedbd710c9402f555  AGENTS.md
+942da42875cc2a75f80e77dc3628ae5e7453ff4a83fbeb66fa0a7c944d15f015  AGENTS.md
 c90a915edf74880f7a47c424a8aed3ce9840450515e1705d6c47ab8fa7a7915c  KNOWLEDGE.json
 22b4261a5f490b1f88c6864f1393e0f8f29c008d1a9fc49a9af6b63f4481a3cf  INDEX.json
 a8240047d0e765e9af468c3afbba609f0517f1bdc26a3f1e73e441f32a8f7299  CITATION.cff
 92bfd4b584597f8b66c59f27bbd5990fa030143d9362e83c4fefab304f73fd06  liber-primus/PROBLEM.json
-ac314ea295990edddc5bba2f01b6b687df44121e8ebe0bd3e7af2b9f4548c6c0  liber-primus/verify_solution.py
+c4e3a11f917177d53faaced629e41a76d15e67c6e4bc1b9b27eccc6e3e3a2891  liber-primus/verify_solution.py
 dacb4fefd467ce0a9fa150a2dd2b13922c5560814c47eb148e9fe3c45ec45ded  liber-primus/tests/validate.py
 120fe4e2f06084abbbc927ad293bb4c3e368056ecfbc5ad63e548d4798e9db29  liber-primus/ARMADA-DOCTRINE.md
 ec004d0fdd144c36767d659f0137619015227cda5b4dc39c4d44474a1bce70c7  liber-primus/ELIMINATION-LEDGER.md
 cd3c6d55800375dea4d5d95f87f758ba5e832396e63fb2130f1079eb63bafc85  liber-primus/SOLVED-PAGES.json
 ```
 
-Regenerate with: `sha256sum llms.txt AGENTS.md KNOWLEDGE.json INDEX.json CITATION.cff liber-primus/PROBLEM.json liber-primus/verify_solution.py liber-primus/tests/validate.py liber-primus/ARMADA-DOCTRINE.md liber-primus/ELIMINATION-LEDGER.md liber-primus/SOLVED-PAGES.json`
+Regenerate (EOL-independent) with:
+`for f in llms.txt AGENTS.md KNOWLEDGE.json INDEX.json CITATION.cff liber-primus/PROBLEM.json liber-primus/verify_solution.py liber-primus/tests/validate.py liber-primus/ARMADA-DOCTRINE.md liber-primus/ELIMINATION-LEDGER.md liber-primus/SOLVED-PAGES.json; do printf "%s  %s\n" "$(git show "v2026.10.1-round19:$f" | sha256sum | cut -d' ' -f1)" "$f"; done`
