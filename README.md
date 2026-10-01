@@ -77,8 +77,10 @@ let them decide. See [`AGENTS.md` §6](AGENTS.md) for why.
 > project produced instead is a **sharpened boundary**: the unsolved pages are
 > **OTP-class** — the ciphertext is indistinguishable between a true external pad
 > (information-theoretically closed) and a short-seed **derived** keystream (finite
-> keyspace, brute-forceable). The derived-key dictionary lane is untested; only running
-> it settles which. That is a result, not a consolation — and it is backed by ~20
+> keyspace, brute-forceable). The derived-key dictionary lane is **bounded, not untested**
+> — it is now one of the most-swept families in the repo (see the elimination ledger); what
+> stays open is the flat generator tails, KDF params outside the grid, and the `/dev/urandom`
+> branch. That is a result, not a consolation — and it is backed by ~20
 > campaigns, 12 pre-registered rounds, and a 22-lens multi-lens armada of falsified
 > attacks, each with a reproduce command. The armada also *corrected* two of our own
 > earlier claims: flat IoC does **not** force a full-length key (a period ≈400 key is
@@ -95,6 +97,14 @@ let them decide. See [`AGENTS.md` §6](AGENTS.md) for why.
 > has a finite, enumerable keyspace. Round 10's SYNTHESIS already stated the correction;
 > it had not propagated to this line. The reasoning is kept, the claim is narrowed. See
 > [`liber-primus/analysis/round12/D3/RESULTS.md`](liber-primus/analysis/round12/D3/RESULTS.md).
+>
+> **Round 19 (2026-10-01, first round under `ARMADA-DOCTRINE.md`).** Two instrument facts, no
+> new solve: (1) every prior **non-English** negative in this repo was a *scorer artifact*, not
+> a cipher fact — the English-quadgram adjudicator is blind off English (power 0.00 on Welsh /
+> vowel-dropped), and a matched per-register LM restores it; (2) the sweep beam reads an
+> interrupter page (AN-END) at only ~14% — interrupter-shaped constructions must route through
+> `src/lp/solve.py` before any such null is informative. AN-END is now CI-guarded in
+> `tests/validate.py`. OTP-class verdict unchanged. See `liber-primus/analysis/round19/`.
 
 ---
 

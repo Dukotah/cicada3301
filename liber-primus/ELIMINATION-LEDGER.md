@@ -20,8 +20,14 @@ keystream whose output was deliberately filtered to avoid writing the same rune 
 row (~83% suppression — Campaign XI). "OTP-class" is a precise claim and it is weaker than
 "one-time pad": the ciphertext is **indistinguishable between a true external pad
 (information-theoretically closed) and a short-seed *derived* keystream (finite keyspace,
-brute-forceable)**. The derived-key dictionary lane is untested; only running it settles
-which. The transcription is **not** the blocker (verified three independent ways). If the
+brute-forceable)**. The derived-key dictionary lane is **bounded, not untested** — it is now
+one of the most-swept families in the repo (R16-KDF 692k configs; R20/21/25/27 Py2.7-MT
+pair-decoder over [0,2³²) at coverage 1.00 / power 1.00; R24/R26 semantic-seed zoo 323/323
+incl. 3301 / 0x7A35090F / page hashes / primes / totients; R19-L2 confirmed the standing null
+with a DK-PC2 positive control). What remains open is enumerated in R19-L2's `not_covered`
+(flat generator tails beyond the prior-dense slices, KDF params outside the grid, un-modelable
+registers) plus the `/dev/urandom` branch, which is closed by construction. The transcription
+is **not** the blocker (verified three independent ways). If the
 keystream is a true external pad, the only path to a solve is **external** — the key itself,
 most plausibly via the never-recovered "AN END" deep-web page — because for any chosen
 plaintext a valid structureless key exists. If instead it is derived from a short seed, the

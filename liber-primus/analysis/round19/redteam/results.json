@@ -1,0 +1,256 @@
+{
+ "meta": {
+  "lane": "round19/redteam",
+  "generated": "2026-10-01T00:22:57",
+  "target_claim": "COVERAGE-MATRIX.md \u00a7A: 'Number-theoretic keystreams (primes, phi, totient, gaps, Fibonacci...) DONE-NULL, RUN-numeric.log 874 streams, best -5.57' -> claimed to COVER the totient keystream family that AN-END (p56) actually uses.",
+  "anend_source": "data/sources/relikd_p56_an_end.txt",
+  "anend_n_runes": 85,
+  "decoder": "skipdecode.beam_decode(beam_w=400,max_skip=3) -- the live LP2 beam",
+  "threshold_floor": -5.5,
+  "confirm_threshold_874_trials": -5.5,
+  "confirm_floor": -5.5,
+  "elapsed_s": 1.1
+ },
+ "holdout": {
+  "external_input": "the prime sequence 2,3,5,7,... (p05: primes+totient are sacred)",
+  "keystream_formula": "k_i = (p_i - 1) mod 29  [phi(prime), shift-DOWN]",
+  "handed_the_key": false,
+  "beam_decode_sign-1_prefix": "ANENDWITHINTHEDEEPWEBTHEREEXISTSAPAGETHATHASHESTOITISTHEDUTY",
+  "beam_decode_score": -5.2817,
+  "exhaustive_interrupter_best_plaintext": "ANENDWITHINTHEDEEPWEBTHEREEXISTSAPAGETHATHASHESTOITISTHEDUTYOEUERYPILGRIMTOSEECOUTTHISPAGE",
+  "exhaustive_interrupter_set_positions": [
+   56
+  ],
+  "phrases_recovered": 7,
+  "phrases_total": 7,
+  "outcome": "RECOVERED"
+ },
+ "crib_drag": {
+  "aligned_len": 84,
+  "recovered_keystream_first20": [
+   1,
+   2,
+   4,
+   6,
+   10,
+   12,
+   16,
+   18,
+   22,
+   28,
+   1,
+   7,
+   11,
+   13,
+   17,
+   23,
+   0,
+   2,
+   8,
+   12
+  ],
+  "recovered_equals_phi_prime": true,
+  "n_generators_tested": 96,
+  "generator_family_hits": [
+   {
+    "family": "phi_prime",
+    "transform": "value",
+    "sign": 1,
+    "atbash": false
+   },
+   {
+    "family": "phi_prime",
+    "transform": "value",
+    "sign": -1,
+    "atbash": true
+   }
+  ],
+  "note_atbash_mirror": "the (phi_prime,value,sign=-1,atbash=True) hit is the trivial algebraic mirror of (phi_prime,value,sign=+1,atbash=False): (N-(-k)) == k. It is the SAME stream, not a 2nd family.",
+  "distinct_families_fitting": [
+   "phi_prime"
+  ]
+ },
+ "coverage_gap_rows": [
+  {
+   "keystream": "phi_prime POSITIONAL (AN-END TRUE)",
+   "in_swept_catalog": false,
+   "sign": -1,
+   "beam_en_quadgram_score": -5.2817,
+   "clears_confirm_floor_-5.5": true,
+   "translit_prefix": "ANENDWITHINTHEDEEPWEBTHEREEXISTSAPAGETHATHASHESTOITISTH",
+   "r3_ioc_times_n": 1.6003,
+   "r3_min_distinct_32": 12,
+   "r3_best_nonenglish_lm": -1.4616,
+   "r3_best_nonenglish_lm_register": "OE",
+   "r3_compressibility": 1.0235
+  },
+  {
+   "keystream": "phi_prime POSITIONAL (AN-END TRUE)",
+   "in_swept_catalog": false,
+   "sign": 1,
+   "beam_en_quadgram_score": -7.6298,
+   "clears_confirm_floor_-5.5": false,
+   "translit_prefix": "YPYNGXTHPNAEWROTSDUWOERYBSHLOWTAEEATRDBRHCNPHJTUEDEFUMO",
+   "r3_ioc_times_n": 1.0398,
+   "r3_min_distinct_32": 17,
+   "r3_best_nonenglish_lm": -1.6174,
+   "r3_best_nonenglish_lm_register": "EN_NOVOWEL",
+   "r3_compressibility": 1.0471
+  },
+  {
+   "keystream": "totient_n phi(int) (campaign18 sweep)",
+   "in_swept_catalog": false,
+   "sign": -1,
+   "beam_en_quadgram_score": -7.3024,
+   "clears_confirm_floor_-5.5": false,
+   "translit_prefix": "ANLJTHPOEXEAIAEAPEADIALUTHBTHOETHCEAJCEWEAMWEITOEOENUFT",
+   "r3_ioc_times_n": 1.0641,
+   "r3_min_distinct_32": 15,
+   "r3_best_nonenglish_lm": -1.6103,
+   "r3_best_nonenglish_lm_register": "EN_NOVOWEL",
+   "r3_compressibility": 1.0353
+  },
+  {
+   "keystream": "totient_n phi(int) (campaign18 sweep)",
+   "in_swept_catalog": false,
+   "sign": 1,
+   "beam_en_quadgram_score": -7.6235,
+   "clears_confirm_floor_-5.5": false,
+   "translit_prefix": "YPAMGAEUYWEWHJIXDPNRYPBNGIGEOPCSNGIFPGBWTLOAAHOEFEOEIPF",
+   "r3_ioc_times_n": 1.0479,
+   "r3_min_distinct_32": 15,
+   "r3_best_nonenglish_lm": -1.6786,
+   "r3_best_nonenglish_lm_register": "EN_NOVOWEL",
+   "r3_compressibility": 1.0353
+  },
+  {
+   "keystream": "primes (campaign18 sweep)",
+   "in_swept_catalog": true,
+   "sign": -1,
+   "beam_en_quadgram_score": -7.7704,
+   "clears_confirm_floor_-5.5": false,
+   "translit_prefix": "DHBHOEGNUNHUBOEBBEOGBTUBOBBNWIPINHBOWEABNOBHCWEOJFYOCEO",
+   "r3_ioc_times_n": 1.4378,
+   "r3_min_distinct_32": 12,
+   "r3_best_nonenglish_lm": -1.653,
+   "r3_best_nonenglish_lm_register": "EN_NOVOWEL",
+   "r3_compressibility": 1.0235
+  },
+  {
+   "keystream": "primes (campaign18 sweep)",
+   "in_swept_catalog": true,
+   "sign": 1,
+   "beam_en_quadgram_score": -7.5673,
+   "clears_confirm_floor_-5.5": false,
+   "translit_prefix": "IAXIAOESOXIYHCRBTATHHDCIAETNNGRHBYFBCAECNGIXNEOBTHMAMUT",
+   "r3_ioc_times_n": 1.0398,
+   "r3_min_distinct_32": 17,
+   "r3_best_nonenglish_lm": -1.709,
+   "r3_best_nonenglish_lm_register": "EN_NOVOWEL",
+   "r3_compressibility": 1.0471
+  },
+  {
+   "keystream": "prime_gaps (campaign18 sweep)",
+   "in_swept_catalog": false,
+   "sign": -1,
+   "beam_en_quadgram_score": -7.8296,
+   "clears_confirm_floor_-5.5": false,
+   "translit_prefix": "ANLJTHSATYGYNGOIAFUCXNGEOYLWJMNGYROGMOAUODDMIJTHOEIAOPO",
+   "r3_ioc_times_n": 1.1779,
+   "r3_min_distinct_32": 18,
+   "r3_best_nonenglish_lm": -1.6096,
+   "r3_best_nonenglish_lm_register": "EN_NOVOWEL",
+   "r3_compressibility": 1.0353
+  },
+  {
+   "keystream": "prime_gaps (campaign18 sweep)",
+   "in_swept_catalog": false,
+   "sign": 1,
+   "beam_en_quadgram_score": -7.1453,
+   "clears_confirm_floor_-5.5": false,
+   "translit_prefix": "YPAMGDEAANINFWGEOPNYFTNEAMIAIAAECHJCIASEANGWGRFOEMXCRNI",
+   "r3_ioc_times_n": 1.1941,
+   "r3_min_distinct_32": 17,
+   "r3_best_nonenglish_lm": -1.6589,
+   "r3_best_nonenglish_lm_register": "DE",
+   "r3_compressibility": 1.0353
+  },
+  {
+   "keystream": "fib (campaign18 sweep)",
+   "in_swept_catalog": false,
+   "sign": -1,
+   "beam_en_quadgram_score": -7.7904,
+   "clears_confirm_floor_-5.5": false,
+   "translit_prefix": "AEINGPUXEWJOGDGUGCRSBUJMTBAOEUCCBEUPMFOAEYSPJDFTHLYIHRU",
+   "r3_ioc_times_n": 1.1373,
+   "r3_min_distinct_32": 18,
+   "r3_best_nonenglish_lm": -1.6773,
+   "r3_best_nonenglish_lm_register": "EN_NOVOWEL",
+   "r3_compressibility": 1.0353
+  },
+  {
+   "keystream": "fib (campaign18 sweep)",
+   "in_swept_catalog": false,
+   "sign": 1,
+   "beam_en_quadgram_score": -7.9004,
+   "clears_confirm_floor_-5.5": false,
+   "translit_prefix": "AEEODBWACRAPFIAROGHHOEEAMJHCALAEFWWNGAJFTPPMUPSJAETHGYW",
+   "r3_ioc_times_n": 0.9504,
+   "r3_min_distinct_32": 15,
+   "r3_best_nonenglish_lm": -1.6458,
+   "r3_best_nonenglish_lm_register": "CY",
+   "r3_compressibility": 1.0471
+  },
+  {
+   "keystream": "v_totient SELF-KEYED (R11/R22 'phi_prime')",
+   "in_swept_catalog": false,
+   "sign": -1,
+   "beam_en_quadgram_score": -7.0514,
+   "clears_confirm_floor_-5.5": false,
+   "translit_prefix": "EORIANGDWJGYSYEOOEIAMEEGEOHDJEOENGWEONGGNGHTHXISTIAXWNF",
+   "r3_ioc_times_n": 0.9423,
+   "r3_min_distinct_32": 15,
+   "r3_best_nonenglish_lm": -1.625,
+   "r3_best_nonenglish_lm_register": "LA",
+   "r3_compressibility": 1.0588
+  },
+  {
+   "keystream": "v_totient SELF-KEYED (R11/R22 'phi_prime')",
+   "in_swept_catalog": false,
+   "sign": 1,
+   "beam_en_quadgram_score": -7.2252,
+   "clears_confirm_floor_-5.5": false,
+   "translit_prefix": "NEBNXTHEOCNUNNBGOEAEAECNTHNRYTHAAOOEAECAHEOEBUBNTYDRGBN",
+   "r3_ioc_times_n": 1.2754,
+   "r3_min_distinct_32": 15,
+   "r3_best_nonenglish_lm": -1.6589,
+   "r3_best_nonenglish_lm_register": "EN_NOVOWEL",
+   "r3_compressibility": 1.0353
+  }
+ ],
+ "coverage_gap_summary": {
+  "best_anend_true_score": -5.2817,
+  "best_swept_stream_score": -7.0514,
+  "gap": 1.7697,
+  "anend_true_clears_confirm_floor": true,
+  "anend_true_in_campaign18_numeric_catalog": false,
+  "anend_true_in_R11_R22_v_totient": false,
+  "anend_true_IS_in_rosetta_key_phi_prime": true,
+  "rosetta_sweep_result": "RUN-rosetta.log: phi_prime swept skip-aware over all 55 unsolved pages, both signs/atbash, NULL (global best -6.334).",
+  "N5_result": "round11/N5: positional phi(prime) is the VALIDATED positive control (-5.282, matches here); totient LADDER swept over unsolved stream, NULL.",
+  "finding": "NO coverage gap after full audit. The campaign18 numeric_skip catalog and the R11/R22 v_totient (ciphertext-self-keyed) do NOT contain AN-END's exact positional phi(prime); BUT rosetta_keys.key_phi_prime IS byte-identical to it and WAS swept skip-aware over all 55 pages (RUN-rosetta.log, NULL), and N5 used it as a validated control. The totient family -- including AN-END's exact member -- is genuinely covered. NO-ERROR-FOUND on the coverage claim."
+ },
+ "spec_audit": {
+  "trust_anchor_pages": [
+   "Runes - 01.jpg",
+   "05.jpg",
+   "06.jpg",
+   "03.jpg",
+   "14.jpg"
+  ],
+  "anend_in_trust_anchor": false,
+  "anend_documented_in_prose": true,
+  "prose_doc": "docs/SOLVED-PAGES-AND-INTERRUPTERS.md line ~33 (page 73 / LP2 p56)",
+  "finding": "AN-END's phi(prime) solve is documented in prose but ABSENT from the machine trust anchor (SOLVED-PAGES.json / tests/validate.py validate only 01/03/05/06/14). The repo's trust instrument has never machine-reproduced the phi(prime) keystream. This run reproduces it BLIND; it SHOULD be added to the trust anchor."
+ }
+}

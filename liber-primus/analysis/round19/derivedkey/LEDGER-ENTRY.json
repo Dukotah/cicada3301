@@ -1,0 +1,18 @@
+{
+  "id": "R19-L2-DERIVEDKEY-COVERAGE",
+  "one_liner": "Round-19 derived-key dictionary lane: on reading LEDGER.json the PREREG hypothesis class (short-seed-derived keystreams: $RANDOM/glibc, TeX LCG, Py2.7 random, PBKDF2/scrypt over published Cicada seeds incl 3301/7A35090F/page-56 hash) was found ALREADY-MEASURED across R16-KDF/R20/R21/R24/R25/R26/R27/R28. No new sweep run (doctrine: do not re-run measured ground). Lane contributes a coverage map + two fresh instrument anchors + the AN-END blind holdout.",
+  "status": "negative",
+  "coverage": "NEGATIVE-by-prior-coverage. The derived-key class is swept at matched-LM power ~1.0 on EN/LP1/LA/OE/DE/CY+EN_NOVOWEL registers (R24-C1-EXT re-adjudicated the KDF/B-04 slice under the matched panel with R3 persisted) under keyskip + skip_by_two (R24-C2, 113,432 keys) for: the finite published-seed set and semantic-seed zoo (R26-C 323/323 seeds incl 3301/0x7A35090F fragments/page hashes/primes/totients, offset0), the full Py2.7-MT [0,2^32) pair-decoder space (R27-CPORT S1 coverage 1.00 power 1.00), the 692,064 KDF configs (R16-KDF), and prior-dense slices of the Perl/TeX/glibc flat tails (R26-A first-fire). Fresh THIS lane (dk_confirm.json): DK-PC2 plant-and-recover through the live beam = 100% recovery, correct-key EN-quad -4.79 vs wrong-seed -7.31, matched-LM -4.74, R3 persisted per row for all 12 rows -> the standing null is instrument-anchored. README's 'derived-key dictionary lane is untested' is STALE (pre-dates R16-R30).",
+  "not_covered": [
+    "Flat generator tails: $RANDOM/glibc/Perl/TeX 2^32 and Py2.7-amd64 2^64 seed images beyond prior-dense slices + the Py2.7 pair-decoder [0,2^32) (R26-A, R21-L3 NC-1/NC-2, R25, R28-L4).",
+    "KDF params outside R16-KDF's grid: Argon2, bcrypt, salts outside the 3 Stage-A set, iteration counts outside the tested set, KDF offset != 0, secrets outside the 534-list.",
+    "Offsets != 0 for the semantic-seed zoo and most generators (broadly only o=0 swept).",
+    "Un-modelable registers: native Old Norse, romanized Hebrew (no in-repo corpus), Welsh and vowel-dropped English (matched LM power ~0 -- permanent L7-A blind spot).",
+    "Constructions beyond keyskip1/keyskip2/skip_by_two + permissive-drift: free_drift q>0.02, multi-interrupter pages, page-boundary key resets (Lane-1 recovery < 0.85 -- need a decoder first).",
+    "The /dev/urandom branch: unrecoverable by construction; the honest live possibility."
+  ],
+  "reopens_if": "A flat generator tail is enumerated by a GPU/C port and a word clears the three-clause gate; OR a KDF config/salt/secret/offset outside the R16-KDF+semantic-zoo coverage is proposed; OR a new seed family or generator (e.g. .NET, PHP range-algo, a corpus-derived seed source) is validated; OR a construction with Lane-1 recovery >=0.85 outside {keyskip1,keyskip2,skip_by_two,permissive-drift} is built. Doctrine R7: the family is BOUNDED, not closed.",
+  "anend_holdout": "RECOVERED -- blind rediscovery of the totient keystream phi(prime)=(p-1) mod 29 shift-down from the stated prime input; interrupter-aware solver returns the known plaintext. Caveat (Lane-1 FOUND-ERROR): the keyskip beam alone recovers only ~14% of an interrupter page -- any derived-key candidate implying an interrupter page MUST use the interrupter-aware solver, not the beam.",
+  "artifacts": "liber-primus/analysis/round19/derivedkey/{PREREG.md,RESULTS.md,dk_confirm.py,dk_confirm.json}",
+  "generated": "2026-10-01"
+}

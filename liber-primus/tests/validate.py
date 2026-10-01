@@ -45,6 +45,30 @@ def brute_simple(idxs, scorer):
     return cands[0]
 
 
+def _is_prime(n):
+    if n < 2:
+        return False
+    i = 2
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+    return True
+
+
+def phi_prime(length):
+    """AN-END's (LP2 p56 / 73.jpg) keystream, derived from its STATED external input
+    (p05: "the primes are sacred, the totient function is sacred"): k_i = (p_i - 1) mod N
+    for consecutive primes p, applied shift-DOWN. Pure-Python prime gen — no new deps."""
+    out, p = [], 2
+    while len(out) < length:
+        out.append((p - 1) % gp.N)
+        p += 1
+        while not _is_prime(p):
+            p += 1
+    return out
+
+
 def main():
     scorer = _score.default()
     ok = True
@@ -55,6 +79,12 @@ def main():
         ("06.jpg",         "simple",  None,       ["MANDECIDED", "MASTER", "STUDY"]),
         ("03.jpg",         "vigenere", "DIVINITY", ["WELCOME", "PILGRIM", "JOURNEY", "NECESSARY"]),
         ("14.jpg",         "vigenere", "FIRFUMFERENFE", ["LESSON", "MASTER", "EXPLAINED", "STUDENT"]),
+        # AN-END (LP2 p56) — the only cipher-solved page inside the otherwise-unsolved
+        # LP2 block, and the project's AN-END blind-holdout anchor. Added R19 after the
+        # red-team found it was documented but NOT machine-guarded. phi(prime) keystream
+        # + F-interrupters; recovered blind from the prime sequence, not handed the key.
+        ("73.jpg",         "totient", None,       ["ANEND", "DEEPWEB", "HASHESTO", "DUTY",
+                                                    "EUERYPILGRIM", "SEECOUT", "THISPAGE"]),
     ]
     for label, kind, key, expect in SOLVED:
         page = corpus.page_by_label(label)
@@ -66,6 +96,12 @@ def main():
         if kind == "simple":
             lbl, txt, sc = brute_simple(idxs, scorer)
             method = lbl
+        elif kind == "totient":
+            stream = phi_prime(len(idxs))
+            res = solve.find_interrupters(page["runes"], stream, sign=-1,
+                                          beam_width=500, scorer=scorer)
+            txt, sc = res["plaintext"], res["score_norm"]
+            method = f"phi(prime) shift-down (+{res['n_interrupters']} interrupters)"
         else:
             nr = len(idxs)
             stream = ciphers.repeat_key(gp.keyword_to_indices(key), nr)
