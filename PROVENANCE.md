@@ -78,16 +78,23 @@ file hash would not. A clone or fork whose blobs hash to these values is faithfu
 release; a divergence should be explained by its author. (Data-input hashes are separately
 pinned in `liber-primus/handoff/capsule/MANIFEST.json`, 103 inputs.)
 
-- **Release:** annotated tag `v2026.10.1-round19` in this repository.
-- **Commit at manifest time:** `891861d` (2026-10-01).
+- **Release:** annotated tag `v2026.10.5-round30-handoff` in this repository.
+- **Commit at manifest time:** `ef12867` (2026-10-05).
+- **Superseded release:** `v2026.10.1-round19` (`891861d`). Its manifest is still correct
+  *for that tag* — the files below changed afterwards, which is why the tag is named.
+- `liber-primus/LEDGER.json` is **new to this list**. It is the artifact every front door
+  tells a reader to query and the one most likely to be forked, and it was the one not
+  pinned. It changes on every round merge, so a hash mismatch here means "a different
+  release", not "a corrupted copy" — resolve it by naming the tag you are citing.
 
 ```
-f011379daa25b4c102d372cb4c372598fafdff8bbf86f52d5211698154a55de0  llms.txt
-942da42875cc2a75f80e77dc3628ae5e7453ff4a83fbeb66fa0a7c944d15f015  AGENTS.md
+c59fa47abe3187e67be3f0a2b874860a6a6d3cd5ea65978cb0aa5a3249b4f910  llms.txt
+3a35fd4098b2d0261ff26216717b2617ad3a4a1fe983fafc8d285597f1608c77  AGENTS.md
 c90a915edf74880f7a47c424a8aed3ce9840450515e1705d6c47ab8fa7a7915c  KNOWLEDGE.json
 22b4261a5f490b1f88c6864f1393e0f8f29c008d1a9fc49a9af6b63f4481a3cf  INDEX.json
 a8240047d0e765e9af468c3afbba609f0517f1bdc26a3f1e73e441f32a8f7299  CITATION.cff
-92bfd4b584597f8b66c59f27bbd5990fa030143d9362e83c4fefab304f73fd06  liber-primus/PROBLEM.json
+8599ad0bec40c7b040f7009e9d34b5907c58355e0c76e33f208f8a8c1a148b81  liber-primus/PROBLEM.json
+7718bf90fb4cc6cc0fb98464d65ab898dd0e776da33d9b056bcd908d3b60558d  liber-primus/LEDGER.json
 c4e3a11f917177d53faaced629e41a76d15e67c6e4bc1b9b27eccc6e3e3a2891  liber-primus/verify_solution.py
 dacb4fefd467ce0a9fa150a2dd2b13922c5560814c47eb148e9fe3c45ec45ded  liber-primus/tests/validate.py
 120fe4e2f06084abbbc927ad293bb4c3e368056ecfbc5ad63e548d4798e9db29  liber-primus/ARMADA-DOCTRINE.md
@@ -96,4 +103,9 @@ cd3c6d55800375dea4d5d95f87f758ba5e832396e63fb2130f1079eb63bafc85  liber-primus/S
 ```
 
 Regenerate (EOL-independent) with:
-`for f in llms.txt AGENTS.md KNOWLEDGE.json INDEX.json CITATION.cff liber-primus/PROBLEM.json liber-primus/verify_solution.py liber-primus/tests/validate.py liber-primus/ARMADA-DOCTRINE.md liber-primus/ELIMINATION-LEDGER.md liber-primus/SOLVED-PAGES.json; do printf "%s  %s\n" "$(git show "v2026.10.1-round19:$f" | sha256sum | cut -d' ' -f1)" "$f"; done`
+
+```bash
+for f in llms.txt AGENTS.md KNOWLEDGE.json INDEX.json CITATION.cff liber-primus/PROBLEM.json liber-primus/LEDGER.json liber-primus/verify_solution.py liber-primus/tests/validate.py liber-primus/ARMADA-DOCTRINE.md liber-primus/ELIMINATION-LEDGER.md liber-primus/SOLVED-PAGES.json; do
+  printf "%s  %s\n" "$(git show "v2026.10.5-round30-handoff:$f" | sha256sum | cut -d" " -f1)" "$f"
+done
+```
