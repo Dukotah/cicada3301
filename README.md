@@ -81,8 +81,8 @@ let them decide. See [`AGENTS.md` §6](AGENTS.md) for why.
 > — it is now one of the most-swept families in the repo (see the elimination ledger); what
 > stays open is the flat generator tails, KDF params outside the grid, and the `/dev/urandom`
 > branch. That is a result, not a consolation — and it is backed by ~20
-> campaigns, 12 pre-registered rounds, and a 22-lens multi-lens armada of falsified
-> attacks, each with a reproduce command. The armada also *corrected* two of our own
+> campaigns and **30 numbered rounds** of pre-registered, falsified attacks — 172 ledger
+> rows, each with a reproduce command. The armada also *corrected* two of our own
 > earlier claims: flat IoC does **not** force a full-length key (a period ≈400 key is
 > IoC-invisible), and "one-time pad" is more precisely an **OTP-class**
 > ciphertext-indistinguishability set. See
@@ -296,21 +296,43 @@ self-corrections are recorded rather than quietly dropped.
 > `R16-PRNG`, `R17-PUBLIC-PAD` and `B-21`, each preserving its original text in `restated_from`.
 > → [`liber-primus/analysis/round18/SYNTHESIS.md`](liber-primus/analysis/round18/SYNTHESIS.md)
 
-*Status current as of 2026-08-31 (Round 25). The OTP-class headline is unchanged: Rounds 19–25
-moved the **instrument** and the **measured status of branches inside it**, not the verdict.
-**Round 22 read — for the first time — every channel the signed hints point at:** the hidden
-message inside the *already-solved* plaintext (X2, Lane A), the numbers-as-direction turtle render
-(G1, Lane B), the koans-as-operations (X1/X3/X4, Lane C), and the art-as-data drop-cap channel
-(S3, Lane D) — **all four clean, control-validated NEGATIVES**, with a red-team lane (R) returning
-**NO-ERROR-FOUND**. **Round 23** then read the sharpest surviving reopener — the
-printed-line-geometry acrostic at true page-image line breaks — and it too is a **clean null**;
-with it, every roadmap-named lens has been read at least once at the tested resolution.
-**Round 24 discharged the two instrument conditionals that had hung over every negative since
-Round 18:** re-adjudicating the strongest sweeps under non-English / matched-runic scorers (L7-A)
-and under a decoder that can represent `skip_by_two` (L7-B, across 7 generator axes) — **the
-negatives hold under both corrections**. (Round 21 had found the no-oracle seal **provably
-leaky** — HIT auto-certification is withheld, survivors flagged-for-oracle; the whole-book
-`n_skips` window is ≥ ~6000 runes.) **Round 25** is the owner-elected grind of the last runnable
-branch, the Py2.7-MT 2³² seed tail: **parked mid-sweep at 0.5015 % coverage, 0 hits, resumable
-from committed checkpoints.** What would reopen the case: a new 7A35090F-signed Cicada release, a
-CicadaSolvers-accepted reproducible page solve, or the private pad surfacing.*
+*Status current as of 2026-10-05 (Round 30 merged; nothing running). The OTP-class headline is
+unchanged: Rounds 19–30 moved the **instrument** and the **measured status of branches inside
+it**, not the verdict.* **Rounds 22–24** read every channel the signed hints point at — the
+hidden message inside the *already-solved* plaintext, the numbers-as-direction turtle render,
+the koans-as-operations, the art-as-data drop-cap channel, then the printed-line-geometry
+acrostic at true page-image line breaks — **all clean, control-validated NEGATIVES**, and
+discharged the two instrument conditionals that had hung over every negative since Round 18
+(non-English / matched-runic re-adjudication, and a decoder that can represent `skip_by_two`):
+**the negatives hold under both corrections**. (Round 21 found the no-oracle seal **provably
+leaky** — HIT auto-certification is withheld and survivors are flagged-for-oracle; the
+whole-book `n_skips` window is ≥ ~6000 runes.)
+
+**Round 27 produced the first full-space sweep in this project's history.** A bit-exact C port
+scored **all 2³² = 4,294,967,296** Py2.7-MT integer seeds exactly once under the `pair`
+relation; three claim-bar crossers were all oracle-adjudicated **NOISE-CROSSER**; the lane is
+**NULL** and that branch is **exhausted** (conditional on its seed space, its transition model
+and the nine-register adjudicator). **Rounds 29–30 then turned the attack off the ciphertext
+and onto the artifact**, which is where the one genuinely new fact of the last stretch came
+from: the 2014 master is a **machine-rendered PDF** whose embedded ICC profile is
+**byte-identical to Ghostscript 9.06's Artifex `srgb.icc`**, narrowing the rendering toolchain
+to **GS 9.01–9.15**. The runes are a deterministic vector font with no variant channel, there
+is no sub-pixel channel, the three genuinely-random blobs carry no keyed-symmetric plaintext
+and no RSA/OpenPGP structure, the onion images survived their first real key-attack (24,078
+extractions, 0 hits), and the six contested pp. 49–51 bytes resolved **in favour of the
+existing canon**.
+
+**And then it stopped — which this README now says instead of implying otherwise.** Every
+sweep here was killed by a host reboot on **2026-09-15** and **none was resumed**: R27/S2 is
+parked at **44.14 %** of its 2³² space, R28's 25-cell generator queue **never fired**, and
+R28/L3's finished sweep was **never written up**. Not because the branches were judged
+worthless — because the work ran out of machine, and the lanes that would actually move the
+verdict now need capability this project does not have. Exact coverage, state files and resume
+routes: [`liber-primus/handoff/PARKED-SWEEPS.md`](liber-primus/handoff/PARKED-SWEEPS.md).
+What a stronger model should pick up first, each with a testable threshold for when it is good
+enough: [`liber-primus/handoff/PARKED.md`](liber-primus/handoff/PARKED.md) and
+[`AGENTS.md` §8](AGENTS.md).
+
+*What would reopen the case: a new 7A35090F-signed Cicada release, a CicadaSolvers-accepted
+reproducible page solve, recovery of the source PDF/PostScript (it would name the `/BaseFont`
+typeface and expose the TJ kerning), or the private pad surfacing.*

@@ -1,10 +1,19 @@
 # PARKED — correct to attempt, blocked on capability
 
-_2026-08-19, refreshed 2026-08-31 (current through Round 25). Written for a reader with better
-tooling than existed when this was assembled. **P-12 (the Round-25 Py2.7 seed grind) is the only
-item here that is currently RUNNING** — parked in the sense of a long, checkpointed grind you
-resume, not a capability you lack. It and the external/OSINT pointer below P-11 are the additions
-since the original assembly; the P-1…P-11 queue is unchanged except where marked superseded._
+_2026-08-19, refreshed 2026-08-31, status corrected 2026-10-05. Written for a reader with better
+tooling than existed when this was assembled. The P-1…P-11 queue is unchanged except where marked
+superseded; P-12 and the external/OSINT pointer below P-11 are the additions since the original
+assembly._
+
+> **Correction, 2026-10-05.** This header used to say P-12 (the Py2.7 seed grind) was *currently
+> RUNNING*. **It is not, and nothing in this repository is.** Every sweep was killed by a host
+> reboot on 2026-09-15 and none was resumed. What P-12 became is on the record: Round 27 ported
+> the screen to C and **completed the whole 2³² space under the `pair` relation — lane NULL,
+> branch exhausted** — while its second lane (`exact`) is **parked at 44.14 %** and Round 28's
+> 25-cell successor queue **never fired**. Those are compute debts, not capability limits, and
+> they are tabulated separately in **[`PARKED-SWEEPS.md`](PARKED-SWEEPS.md)**. Everything below
+> this banner is the thing this file is actually for: items blocked because 2026's tooling could
+> not do them.
 
 Everything here is **parked because of a capability limit, not because it lacks merit**. That
 distinction is the whole point of the file: a dead end and a deferred experiment look identical

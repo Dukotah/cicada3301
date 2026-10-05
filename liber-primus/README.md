@@ -57,6 +57,40 @@ cryptanalysis rig, a provenance-verified dataset, and the consolidated findings.
   ladder that solves page 05 — swept **100 % of a bounded 323-value set × 7 generators** (Lane C,
   flat-random, 0 escalated). All three **HARDEN** the branch along previously un-swept axes; red-team
   **NO-ERROR-FOUND**, **0 oracle flags, no stop-and-alert**.
+- **Round 27** finished what Round 25 only sampled, and produced **the first full-space sweep in
+  this project's history**: a bit-exact C port of the stage-A screen scored **all 2³² =
+  4,294,967,296** Py2.7-MT integer seeds exactly once under the `pair` relation. Three claim-bar
+  crossers, **all three oracle-adjudicated NOISE-CROSSER**; lane **NULL**; that branch is
+  **exhausted** under its three named conditionals. Its second lane (`exact`/keyskip1) is
+  **parked at 44.14 %**.
+- **Round 28** closed the contested transcription bytes — an independent blind instrument agrees
+  with the canon **100 %**, all three byte flips included, so **`canon_256` stands** — plus the
+  CicadaOS dense-pair pads and the payload micro-remainders, all NEGATIVE. Two of its lanes never
+  finished: the 25-cell generator queue **never fired**, and L3's completed sweep was **never
+  written up**.
+- **Rounds 29–30** turned the attack **off the ciphertext and onto the artifact**, and that is
+  where the one genuinely new fact of the last stretch came from: the 2014 master is a
+  **machine-rendered PDF** whose embedded ICC profile is **byte-identical to Ghostscript 9.06's
+  Artifex `srgb.icc`**, narrowing the toolchain to **GS 9.01–9.15**. Around it: the runes are a
+  deterministic vector font with **no glyph-variant channel**, there is **no sub-pixel channel**,
+  the three genuinely-random blobs carry **no keyed-symmetric plaintext and no RSA/OpenPGP
+  structure**, the onion images survived their **first real key-attack** (24,078 extractions, 0
+  hits), chroma is decoration, and the six contested pp. 49–51 bytes resolved **in favour of the
+  existing canon**. Eight lanes, each adversarially verified; none downgraded.
+- **Round 19's second cohort** (2026-10-01, the first round run under
+  [`ARMADA-DOCTRINE.md`](ARMADA-DOCTRINE.md) — it reused the number, so `analysis/round19/` holds
+  two rounds; tell them apart by each lane's `PREREG.md` date) found that **every prior
+  non-English negative here was a scorer artifact**, that the sweep beam **cannot read an
+  interrupter page** (~14 % recovery, −7.04 on AN-END), and that AN-END's φ(prime) solve was
+  documented but **never machine-guarded** — `tests/validate.py` now carries page 73 as a CI
+  positive control, so the trust anchor is **6/6**. Its `finite` lane read **74/74 ornament
+  bands** under the nine-register panel: **0 showing language**.
+
+**Nothing in this repository is currently running.** Every sweep was killed by a host reboot on
+**2026-09-15** and none was resumed — not because the branches were judged worthless, but
+because the work ran out of machine. What is parked, at what coverage, and how to resume it:
+[`handoff/PARKED-SWEEPS.md`](handoff/PARKED-SWEEPS.md). What needs a more capable solver than
+2026 had, each with a testable threshold: [`handoff/PARKED.md`](handoff/PARKED.md).
 
 The standing verdict through all of it: **LP2 0–54 is OTP-class**, with a soft anti-repeat
 rewrite acting on the ciphertext output. → [`PICKUP-HERE.md`](PICKUP-HERE.md).

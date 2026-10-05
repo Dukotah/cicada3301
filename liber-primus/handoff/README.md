@@ -14,6 +14,7 @@ deleted one of them**. This directory exists so that a decade of work does not d
 |---|---|
 | **[`FOR-FUTURE-SOLVERS.md`](FOR-FUTURE-SOLVERS.md)** | **Start here.** The problem stated precisely, the current honest verdict, what is proven vs merely unrefuted, what not to waste time on, what is actually open, and a 30-minute quickstart. |
 | [`PARKED.md`](PARKED.md) | Attempts that are *correct* but blocked on a capability this project lacked — each with the threshold that unparks it, the procedure, a pre-registered pass/fail bar, cost, and an honest prior. |
+| **[`PARKED-SWEEPS.md`](PARKED-SWEEPS.md)** | Every sweep that is **stopped**, where exactly it stopped, the committed state file that proves the number, and how to resume it. Nothing in this repository is running — read this before any document that says IN-FLIGHT. |
 | [`capsule/MANIFEST.json`](capsule/MANIFEST.json) | Every essential input: SHA-256, size, provenance chain, every known mirror, and whether it is in-repo, gitignored-but-fetchable, or lost. |
 | [`capsule/RECOVERY-560.13.md`](capsule/RECOVERY-560.13.md) | How a previously-lost 118 MB input was recovered — and the truncated-pad defect found on the way, which partially reopens a completed negative. |
 
