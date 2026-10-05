@@ -1,10 +1,34 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-09-15** at the Round-28 INTERIM closeout (S1 **COMPLETE — NULL**, S2
-**IN-FLIGHT ~43 %**, Round-28 L1/L2/L5/R **CLOSED**, L3 in-flight, 25-cell grind28 queue
-**ARMED** — see the Round-28 block below before anything else). Read this first, then
-[`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md) and query [`LEDGER.json`](LEDGER.json)
-`coverage`/`not_covered` (never the bare `status`)._
+_Refreshed **2026-10-05**. Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+and query [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare `status`)._
+
+> ## 🛑 NOTHING IS RUNNING. Read this before any block below that says IN-FLIGHT.
+>
+> Every sweep in this repository was killed by a host reboot on **2026-09-15** and **none has
+> been resumed**. Every PID in the tree is dead. Until 2026-10-05 this document and the ledger
+> both still described three of them as in-flight, which told anyone arriving that those
+> branches were being handled. They are not. They are **parked and available**:
+>
+> | branch | real state |
+> |---|---|
+> | **R27 / S1** (Py2.7-MT 2³², `pair`) | **genuinely COMPLETE — NULL.** All 2³² seeds scored once; 3 claim-bar crossers all oracle-adjudicated NOISE-CROSSER. Closed; needs nobody. |
+> | **R27 / S2** (same space, `exact`) | **STOPPED at 44.14 %** (1,895,728,884 / 2³² seeds). Resumable. One unresolved flag on seed 35563892 to check first. |
+> | **R28 / L4** (25-cell generator queue) | **NEVER FIRED.** Zero authoritative coverage. The chainer that was waiting on S2 died with it. |
+> | **R28 / L3** (string-seed amd64 dict) | **sweep FINISHED** (all 11 items, 2,500,207 seeds, best pmax 6.3148, no survivors) but **never written up** — no RESULTS.md, no ledger row. Cheapest open item here. |
+>
+> Exact coverage numbers, the committed state files that prove them, and the resume route for
+> each: **[`handoff/PARKED-SWEEPS.md`](handoff/PARKED-SWEEPS.md)**. Ledger rows
+> `R27-CPORT-MT32-FULLSWEEP` and `R28-L4-UNSWEPT-GENERATORS-QUEUE` were moved off `in-flight`
+> on 2026-10-05 to `partially-run` and `never-run` respectively; the ledger now carries **no**
+> `in-flight` row, because nothing is in flight.
+>
+> **Why it stopped, stated plainly:** not because the branches were finished or judged
+> worthless. The work ran out of machine and out of instrument. S2 wanted ~9 more hours on
+> hardware that rebooted; L4 wanted 15–19 days of six-core wall. The lanes that would actually
+> move the verdict now need capability this project does not have — see
+> [`handoff/PARKED.md`](handoff/PARKED.md), each item with a testable threshold for when you
+> are good enough to unpark it, and `AGENTS.md` §8.
 
 > ## ⚡ Rounds 29–30 (2026-09-28): the attack pivoted OFF the ciphertext onto the CONTAINER — one real positive.
 >
@@ -23,9 +47,14 @@ _Refreshed **2026-09-15** at the Round-28 INTERIM closeout (S1 **COMPLETE — NU
 > **canon_256 unchanged** (E1). **OTP-class verdict UNCHANGED + reinforced.** Ledger 162→**171**, unsound=0,
 > validate.py 5/5. See `analysis/round30/SYNTHESIS.md`. Live threads are now all OFF-repo: recover the source
 > PDF/PS (would name the `/BaseFont` typeface + expose TJ kerning), pin the exact GS release, close art
-> attribution via reverse-image/Wayback. Nothing committed (owner pushes from Windows).
+> attribution via reverse-image/Wayback. (Committed and pushed since; `validate.py` is now 6/6, not 5/5, and the ledger is at 172.)
 
-> ## ⚡ Round 27: S1 is COMPLETE (first full-space sweep in project history) — NULL. S2 is RUNNING.
+> ## ⚡ Round 27: S1 is COMPLETE (first full-space sweep in project history) — NULL. S2 is STOPPED at 44.14 %.
+>
+> **(Status corrected 2026-10-05. The block below was written while S2 was live and still reads
+> that way; S2 died with the 2026-09-15 reboot at 44.14 % coverage and was never resumed.
+> Treat every "IN-FLIGHT" / "is sweeping" below as "parked, resumable" —
+> [`handoff/PARKED-SWEEPS.md`](handoff/PARKED-SWEEPS.md) §1 has the numbers and the resume route.)**
 >
 > The R25 Py2.7-MT branch — the only internally-runnable verdict-changer — is being **finished**,
 > not sampled, by the bit-exact C port `grind27` (gate **GO**: V1 64/64 vectors |Δ|=0,
@@ -42,7 +71,7 @@ _Refreshed **2026-09-15** at the Round-28 INTERIM closeout (S1 **COMPLETE — NU
 > (conditional on the 3 named conditionals: this seed space, this transition model, the
 > 9-register adjudicator). Oracle records: `analysis/round27/ORACLE-{35563892,348625413,86514964}.md`.
 >
-> **S2 (keyskip1 'exact', full 2³²) is IN-FLIGHT** per
+> **S2 (keyskip1 'exact', full 2³²) is PARKED at 44.14 % — it was IN-FLIGHT** per
 > [`analysis/round27/sweep_plan.json`](analysis/round27/sweep_plan.json) — detached via `setsid`
 > (survives session exit), ~11 h at sustained throughput. Full docs:
 > [`analysis/round27/SYNTHESIS.md`](analysis/round27/SYNTHESIS.md) ·

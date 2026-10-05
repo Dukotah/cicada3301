@@ -344,7 +344,7 @@ liber-primus/analysis/round26/C/rows.jsonl
 liber-primus/analysis/round27/P1-engine/grind27
 liber-primus/analysis/round27/P1-engine/engine.dat
 liber-primus/analysis/round27/P1-engine/panel_lm.f32
-liber-primus/analysis/round27/P1-engine/run/
+liber-primus/analysis/round27/P1-engine/run/*
 liber-primus/analysis/round27/P2-harness/py_scores.jsonl
 liber-primus/analysis/round27/P2-harness/__pycache__/
 liber-primus/analysis/round27/R-redteam/testrun/
@@ -362,7 +362,7 @@ liber-primus/analysis/round28/L4/engine.dat
 liber-primus/analysis/round28/L4/panel_lm.f32
 liber-primus/analysis/round28/L4/gates/
 liber-primus/analysis/round28/L4/smoke/
-liber-primus/analysis/round28/L4/run/
+liber-primus/analysis/round28/L4/run/*
 liber-primus/analysis/round28/L4/sweep28.log
 liber-primus/analysis/round28/L4/sweep28.pid
 liber-primus/analysis/round28/L4/__pycache__/
@@ -407,3 +407,17 @@ liber-primus/analysis/round30/**/*.bin
 # Round 26/27 harness scratch (markers / per-worker check dirs — regenerable)
 liber-primus/analysis/round26/A/sweep.done
 liber-primus/analysis/round27/P2-harness/s2check/
+
+# ---- 2026-10-05: the PARKED-SWEEP RECORDS are exceptions to the three `run/` rules above.
+# Every long sweep in this repo was killed by a machine reboot on 2026-09-15 and none has
+# been resumed. The run/ bulk (candidates.jsonl at 35 MB, the u64 histograms, the engines)
+# stays out; the small files that say WHERE each sweep stopped come in, for the same reason
+# Round 25's progress_w*.json are committed deliberately: they are the only place the parked
+# coverage numbers are verifiable, and a clone that lacks them cannot tell a stopped sweep
+# from a running one. Narrative + resume commands: liber-primus/handoff/PARKED-SWEEPS.md.
+!liber-primus/analysis/round27/P1-engine/run/STATUS.json
+!liber-primus/analysis/round27/P1-engine/run/top_S2.json
+!liber-primus/analysis/round27/P1-engine/run/HIT-CANDIDATE.json
+!liber-primus/analysis/round28/L4/run/STATUS.json
+!liber-primus/analysis/round28/L4/run/ORPHANED-PREMATURE-RUN.txt
+!liber-primus/analysis/round28/L3/progress28.json

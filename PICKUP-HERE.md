@@ -1,11 +1,11 @@
 # PICKUP-HERE — where the work left off
 
-> ### ⚠️ SUPERSEDED AS THE CURRENT STATE — 2026-08-31
+> ### ⚠️ SUPERSEDED AS THE CURRENT STATE — frozen at Round 18, pointer refreshed 2026-10-05
 >
 > This root-level file is **frozen at Round 18 (2026-08-26)** and is kept as the historical
 > entry point for everything up to that round. The **live** pickup document — current through
-> Round 25 (the hint-channel reads, the L7-A/L7-B discharge, and the parked Py2.7 seed grind) —
-> is **[`liber-primus/PICKUP-HERE.md`](liber-primus/PICKUP-HERE.md)**. Start there.
+> **Round 30**, and carrying the 2026-10-05 correction that no sweep in this repository is
+> running — is **[`liber-primus/PICKUP-HERE.md`](liber-primus/PICKUP-HERE.md)**. Start there.
 > Everything below remains true *as of Round 18*; where a later round overturned an item, the
 > live file and [`liber-primus/ELIMINATION-LEDGER.md`](liber-primus/ELIMINATION-LEDGER.md) name
 > the round that closed it.
