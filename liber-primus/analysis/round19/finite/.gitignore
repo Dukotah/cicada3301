@@ -1,6 +1,9 @@
 # round19/finite — rebuildable by `python3 run_bands.py` (reads round18/L3-ornaments/bands.json
-# + round19/I2/models/panel.npz,testhalves.npz, both themselves rebuildable). Commit the
-# scripts, PREREG, RESULTS and ledger; regenerate the data products.
-out_bands.json
-sweeprows.jsonl
+# + round19/I2/models/panel.npz,testhalves.npz, both themselves rebuildable).
+#
+# 2026-10-05: out_bands.json (34 KB) and sweeprows.jsonl (12 KB) are now COMMITTED deliberately,
+# the same exception Round 25's progress_w*.json carries. The ledger entry
+# R19-FINITE-ORNAMENT-REGISTER cites both as `evidence`, and the result's strength rests on the
+# per-band R3 columns (mds / ioc) they hold — a cited evidence path that resolves only after a
+# reader rebuilds two gitignored .npz models is not evidence a future researcher can check.
 __pycache__/

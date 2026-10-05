@@ -1,0 +1,49 @@
+{
+ "$comment": "Round 19 (2026-10-01 doctrine armada) lane FINITE ledger fragment. Merge into liber-primus/LEDGER.json. NOTE on the directory name: liber-primus/analysis/round19/ holds TWO cohorts. The 2026-08-26 instrument-repair round (lanes C1-C3, G1-G4, I1-I3, R1, T1-T3) and the 2026-10-01 first-round-under-ARMADA-DOCTRINE armada (lanes derivedkey, finite, instrument, redteam). Both are Round 19 by number; read each lane's PREREG.md date to tell them apart.",
+ "lane": "round19/finite",
+ "date": "2026-10-01",
+ "trust_anchor_before": "tests/validate.py ALL VALIDATIONS PASSED (6/6 known solves, incl. p73 AN-END)",
+ "trust_anchor_after": "tests/validate.py ALL VALIDATIONS PASSED (6/6 known solves); validate_ledger.py Unsound negatives = 0",
+ "entries": [
+  {
+   "id": "R19-FINITE-ORNAMENT-REGISTER",
+   "lane": "round19/finite (closeout of A-06 reopen (ii))",
+   "hypothesis": "The 74 already-extracted RUNIC ornament bands (round18/L3-ornaments/bands.json) carry content in a non-English register that A-06's English-only H1 read was blind to. Reads the finite object to completion under the I2 nine-register adjudicator, as plaintext-in-itself (no decryption key). Directly answers A-06 reopens_if (ii): 'a multi-register (non-English) scorer finds language in a short band's read.'",
+   "status": "negative",
+   "raw_status": "run",
+   "source_register": "liber-primus/analysis/round19/finite/PREREG.md",
+   "evidence": [
+    "liber-primus/analysis/round19/finite/RESULTS.md",
+    "liber-primus/analysis/round19/finite/PREREG.md",
+    "liber-primus/analysis/round19/finite/run_bands.py",
+    "liber-primus/analysis/round19/finite/out_bands.json",
+    "liber-primus/analysis/round19/finite/sweeprows.jsonl"
+   ],
+   "round": 19,
+   "date": "2026-10-01",
+   "threshold": "A band is a candidate iff its panel pmax clears the (1-0.001) quantile of pmax over 2,000 uniform-rune strings AT THE BAND'S OWN LENGTH, with a natural-language register (EN_MODERN/EN_KJV/LP1_REAL/LATIN/OE/DE/CY/EN_HALFVOWEL/EN_NOVOWEL) as the panel argmax, AND R3-consistency with language (min-distinct-over-32-window mds>=10 AND decrypt-IoC*N ioc<=2.5, to exclude restricted-alphabet decoration that trips a trigram LM). Threshold fixed before scoring the real bands.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": {
+    "recognizer-plant gate (PREREG Q5 kill gate)": "Held-out register text (testhalves.npz, not used to train the panel) cut to band lengths L in {8,16,32,48,89,128}, corrupted at the band-reader's measured 4.4% per-glyph error (95.6% recall, C3/A-06), scored; recovery = fraction clearing the length-L bar with the correct register as argmax (200 trials/cell). PASS for the non-English registers the reopen targets: LATIN/DE/EN_NOVOWEL recovery >=0.95 at L>=32, CY >=0.83 at L>=32, OE 0.81 at L=89, LP1 1.00 at L>=16. UNDERPOWERED (noisy recovery <0.80 at every band length) for EN_MODERN, EN_KJV, EN_HALFVOWEL -- the three English registers; their silence is reported as underpowered, not absence. The lane therefore recognises its own planted hit at the lengths the real bands have, for the registers it claims a negative over.",
+    "R3 disqualification check": "Real held-out OE at L=133 scores mds~12.5 / ioc~1.78 / pmax~14.6; real LATIN at L=33 mds~13.8 / ioc~1.94 / pmax~9.2. Every band that cleared a length bar in a natural-language register had mds<=13 with alphabet-collapse runs (B010 mds=5 ioc=2.88 pmax=5.30; B006 mds=5 ioc=2.29; B100 mds=13 ioc=9.50) -- restricted-alphabet decoration, not language, as the mandated R3 columns show."
+   },
+   "null": "Per-band 2,000-draw uniform-rune pmax null at the band's own length, matched-FP alpha=0.001; panel registers each null-standardised at the decode's own length from a 20,000-draw uniform-rune calibration (I2 panel.npz, seed 3301).",
+   "result": "NEGATIVE for ornament-band content in a natural-language register, over the nine-register panel. Of 74 RUNIC bands, 3 clear their own-length bar in a non-English register (B010 OE 5.30, B006 OE 4.50, B100 LATIN 4.30); all 3 are restricted-alphabet repeated-glyph decoration whose R3 stats (mds 5/5/13, ioc 2.88/2.29/9.50) are inconsistent with language (real OE/LATIN at these lengths: mds 11-16, ioc 1.5-2.1, pmax 8-22). Bands clearing the bar in a natural-language register AND R3-consistent with language (mds>=10 AND ioc<=2.5): 0/74. Band pmax distribution: min -62.3, median 0.90, max 5.30 (the typical band scores like the random-rune null). Extends A-06 from English-only to the nine-register panel at measured power. All 74 band rows persisted as CI-valid SWEEPROWs (R3 columns present).",
+   "coverage": "74/74 RUNIC bands, 7,796 readable rune-index glyphs (unreadable -1 stripped), lengths 8-314 (median 89), 9 registers, each band judged at its own length with a 2,000-draw null bar. No decryption key applied (ornaments-as-plaintext); scored on rune indices.",
+   "not_covered": "Registers outside the nine-panel (Hebrew/Greek/cipher-of-a-cipher/a tenth language). The three ENGLISH registers at band lengths: underpowered (noisy recovery <0.80), so their negative carries little information -- but that is the same English-only silence A-06 already held. Colour/chroma band channels (only 8-bit luminance read, unchanged from A-06). The 27 NON-RUNIC + 8 DEGENERATE bands and 256 base-60 tokens (A-06's scope, not re-run). Band-reader fidelity: conditional on round18/L3-ornaments's connected-component reader (95.6% per-glyph). Bands-as-key (the gated secondary pass) was NOT triggered, so it is uncovered by construction.",
+   "reproduce": "cd liber-primus/analysis/round19/finite && python3 run_bands.py",
+   "supersedes": null,
+   "superseded_by": null,
+   "reopens_if": "(a) a tenth register / non-panel language scores a band above its own-length bar WITH mds>=10 AND ioc<=2.5 (language, not alphabet-collapse); (b) a >=99%-per-glyph band reader changes a band's rune string so it clears the bar on genuine-language statistics; (c) chroma-channel extraction yields a readable band the luminance read missed; (d) the gated bands-as-key pass is ever triggered (and must then first clear the AN-END blind-rediscovery holdout before any unsolved-page claim).",
+   "priority": "low",
+   "notes": "Closes A-06 reopens_if (ii). The result's strength rests on the R3 statistics the doctrine mandates: without mds/ioc persisted per band, the 3 bar-clearances would read as 3 non-English hits, manufacturing the inverse of the L7-A failure (a low-entropy string fooling a language scorer). This is the disciplined 'use the illustrations': a bounded re-read of a finite data product under an instrument measured to have ~1.00 non-English recall where the original English quadgram scorer had 0.00-0.33.",
+   "evidence_missing": [],
+   "related": [
+    "A-06",
+    "L7-A-ARCHIVE-RESCORE",
+    "round19/I2"
+   ]
+  }
+ ]
+}
