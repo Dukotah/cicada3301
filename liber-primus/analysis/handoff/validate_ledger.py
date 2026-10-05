@@ -12,6 +12,13 @@ Checks, in order of how much they matter:
      with nothing behind it.
   4. DANGLING LINKS — supersedes / superseded_by pointing at ids that do not exist.
   5. SCHEMA — required keys present, status from the controlled vocabulary.
+  6. COUNT DRIFT — the published `counts` block must equal a recount of `entries`. The
+     ledger is now maintained by appending coordinator merges, not by re-running
+     build_ledger.py, so `counts` can silently fall behind the rows it summarises. It did:
+     R19-FINITE-ORNAMENT-REGISTER was appended on 2026-10-01 leaving `total` at 171 with 172
+     rows present, and this validator printed the stale block back without noticing, because
+     it echoed `counts` instead of checking it. A headline number that disagrees with the
+     data under it is exactly the defect this file exists to catch, so it is now an ERROR.
 
 Exit code is 0 if no ERROR-level problem is found. WARN-level findings are printed but do
 not fail the run: several are legitimately open (an in-flight lane has no result yet).
@@ -126,8 +133,31 @@ def main():
             notes.append(f"[{eid}] open lane with no `reopens_if` - a future reader cannot "
                          f"tell what would settle it")
 
-    print(f"LEDGER.json  schema {doc['schema_version']}  {len(entries)} entries")
-    for k, v in sorted(doc["counts"]["by_status"].items(), key=lambda x: -x[1]):
+    # 6. count drift. Recount from the rows and compare against the published block.
+    # Print the RECOUNT, never the stored numbers - a validator that echoes the field it is
+    # meant to check cannot catch an error in it.
+    recount = {}
+    for e in entries:
+        st = e.get("status")
+        recount[st] = recount.get(st, 0) + 1
+    stored = doc.get("counts") or {}
+    stored_total, stored_by = stored.get("total"), stored.get("by_status") or {}
+    if stored_total != len(entries):
+        errors.append(f"COUNT DRIFT: counts.total is {stored_total} but `entries` holds "
+                      f"{len(entries)} rows. Recount and rewrite the block.")
+    for st in sorted(set(recount) | set(stored_by)):
+        if stored_by.get(st) != recount.get(st):
+            errors.append(f"COUNT DRIFT: counts.by_status[{st!r}] is "
+                          f"{stored_by.get(st)!r} but {recount.get(st, 0)} rows carry that "
+                          f"status.")
+    for k in stored:
+        if k not in ("total", "by_status", "note"):
+            errors.append(f"COUNT DRIFT: unexpected key counts[{k!r}] - per-status numbers "
+                          f"belong in counts.by_status, not beside it.")
+
+    print(f"LEDGER.json  schema {doc['schema_version']}  {len(entries)} entries "
+          f"(recounted from the rows)")
+    for k, v in sorted(recount.items(), key=lambda x: -x[1]):
         print(f"   {k:18s} {v}")
     print()
 
@@ -147,7 +177,13 @@ def main():
     print(f"Unsound negatives: {len(unsound)}  "
           f"(this is the number that matters - it should be 0)")
 
-    bad = len(errors) if strict else len(unsound)
+    # Count drift fails the run in BOTH modes. Every other ERROR here can be legitimately
+    # open for a while (an in-flight lane, a lane whose evidence is still being written);
+    # a `counts` block that contradicts the rows beneath it never can. It is a mechanical
+    # disagreement between a headline number and its own data, which is the single failure
+    # mode this repository has published twice, so it is not left to --strict.
+    drift = [m for m in errors if m.startswith("COUNT DRIFT")]
+    bad = len(errors) if strict else len(unsound) + len(drift)
     return 1 if bad else 0
 
 

@@ -13,8 +13,25 @@ This script mines the STRUCTURED sources (the RECON-A / RECON-B registers) and m
 with hand-authored entries for the rounds and campaigns, emitting one queryable JSON file.
 It is a generator, not a one-off dump, so the ledger can be rebuilt as new rounds land.
 
-    python3 build_ledger.py            # writes ../../LEDGER.json
+    python3 build_ledger.py            # writes ../../LEDGER.json  -- SEE THE WARNING BELOW
     python3 validate_ledger.py         # checks it
+
+WARNING, READ BEFORE RUNNING THIS (2026-10-05)
+----------------------------------------------
+This generator is NO LONGER able to rebuild LEDGER.json. It knows the two RECON registers
+plus the 15 hand-authored entries below; the ledger it is pointed at holds 172 rows, because
+every round from 20 onward has been merged by a coordinator appending rows directly (and
+leaving a per-lane `ledger.json` fragment next to its lane). Running this script as-is would
+drop ~157 measured rows on the floor, silently, with a cheerful "wrote LEDGER.json".
+
+So it now refuses: if the ledger on disk has more entries than this script can produce, the
+write is blocked unless you pass --force. If you are reviving this generator, the right fix
+is to teach build() to merge the lane fragments
+(`liber-primus/analysis/**/ledger.json`) rather than to --force past the guard.
+
+LEDGER.json is therefore the AUTHORITATIVE artifact, not a derived one. Append to it, run
+validate_ledger.py (which recounts the `counts` block from the rows and fails on drift), and
+drop a lane fragment beside the lane.
 
 THE FIELD THAT MATTERS MOST is `positive_control`. A negative result whose instrument was
 never shown capable of detecting a planted signal is not a negative — it is an unknown.
@@ -636,7 +653,13 @@ def build():
 
     doc = {
         "schema_version": SCHEMA_VERSION,
-        "generated_by": "liber-primus/analysis/handoff/build_ledger.py",
+        "generated_by": "liber-primus/analysis/handoff/build_ledger.py (seed generator: the "
+                        "RECON registers + 15 hand entries). AUTHORITATIVE SINCE ROUND 20: "
+                        "this file is maintained by appending coordinator merges, not by "
+                        "re-running the generator, which can no longer reproduce it and now "
+                        "refuses to overwrite it. Per-lane rows also live next to their lane "
+                        "as liber-primus/analysis/**/ledger.json. Validate with "
+                        "liber-primus/analysis/handoff/validate_ledger.py.",
         "generated_for": "Anyone picking up Liber Primus later - human or model. Query this "
                          "instead of reading 40 prose documents.",
         "read_this_first": {
@@ -652,6 +675,28 @@ def build():
         "counts": {"total": len(merged), "by_status": by_status},
         "entries": merged,
     }
+    # Clobber guard. See the WARNING in this file's docstring: the ledger outgrew this
+    # generator at Round 20, and the failure mode of running it anyway is silent data loss
+    # of measured results, which is the worst thing that can happen to this repository.
+    if os.path.exists(OUT) and "--force" not in sys.argv:
+        try:
+            existing = len(json.load(open(OUT, encoding="utf-8"))["entries"])
+        except Exception:
+            existing = 0
+        if existing > len(merged):
+            msg = [
+                f"REFUSING TO WRITE {rel(OUT)}.",
+                f"  on disk: {existing} entries",
+                f"  this script would write: {len(merged)} entries",
+                f"  -> running it would delete {existing - len(merged)} measured rows.",
+                "LEDGER.json is maintained by appending coordinator merges; this",
+                "generator only knows the RECON registers and its own HAND list. To",
+                "revive it, teach build() to merge liber-primus/analysis/**/ledger.json.",
+                "Pass --force only if you have actually decided to discard those rows.",
+            ]
+            print("\n".join(msg), file=sys.stderr)
+            return None
+
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(doc, f, indent=1, ensure_ascii=False)
     print(f"wrote {rel(OUT)}: {len(merged)} entries")
@@ -661,4 +706,6 @@ def build():
 
 
 if __name__ == "__main__":
-    build()
+    # Non-zero exit when the clobber guard blocks the write, so a script or a CI step
+    # that calls this cannot mistake "refused" for "regenerated".
+    sys.exit(0 if build() else 1)
