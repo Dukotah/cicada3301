@@ -24,6 +24,7 @@ that first proves it can find the answers we already know.
 | 2 | [`liber-primus/verify_solution.py`](liber-primus/verify_solution.py) | **The oracle.** Think you solved it? Submit a key and get a mechanical verdict against criteria fixed in advance. Run `--selftest` first — it proves the judge accepts a known-good key and rejects a wrong one. |
 | 3 | [`liber-primus/LEDGER.json`](liber-primus/LEDGER.json) | Every hypothesis ever tested here, with its threshold, its coverage bound, whether its positive control passed, and what would reopen it. Query it instead of reading forty documents. |
 | 4 | [`liber-primus/benchmark/`](liber-primus/benchmark/) | Plant-and-recover gates. **Run these before trusting any null you produce.** |
+| 5 | [**`PAPER.md`**](PAPER.md) | **The write-up.** What ~10¹⁰ pre-registered decode attempts actually measured, the four instrument defects that bounded them, the three terminal verdicts this archive has retracted, and the generalisable lesson. Start here if you want the argument rather than the data. |
 
 ```bash
 python3 liber-primus/tests/validate.py            # 1. the rig reproduces known solves
@@ -42,6 +43,14 @@ jq -r '.entries[] | select(.status=="never-run") | .id' liber-primus/LEDGER.json
    several of our own.
 3. **A fixed score threshold is invalid at large trial counts.** The null's maximum grows
    like `sd·√(2 ln N)`. A "hit" that merely matches your own sweep's maximum is noise.
+
+All three are written up, with the measured power tables behind them, in
+[**`PAPER.md`**](PAPER.md) — *Every Negative Was an English-Only Negative*. The short version:
+handed the **correct key**, this project's adjudicator recovered 100% of rune indices against
+Latin, Old English, German and Welsh and scored all four as noise; against vowel-dropped
+English the correct key scored **below a deliberately wrong key**. Measured power at this
+repo's own −5.5 bar ran 1.00 (English) → 0.33 (Latin) → 0.00 (Welsh). Every negative here is
+an English-register negative, and for months none of them said so.
 
 The current verdict, stated precisely: LP2 is **OTP-*class***. The ciphertext cannot
 distinguish a true external pad (information-theoretically closed) from a keystream **derived

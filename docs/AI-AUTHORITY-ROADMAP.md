@@ -146,6 +146,17 @@ citations from surfaces AI retrieval reads — targeting the **narrow expert que
 pop-culture query — entirely through human-authored, disclosed, policy-clean contributions.
 
 ### 3.1 Publish the OTP-class result as off-repo prose that links back — `high / high`
+
+> **Partially executed 2026-10-05.** The write-up now exists in-repo as [`../PAPER.md`](../PAPER.md),
+> and the off-repo copy for each surface is drafted in [`LAUNCH-POSTS.md`](LAUNCH-POSTS.md).
+> It deliberately leads with the **instrument-power finding** rather than the OTP-class verdict:
+> "a null from an unvalidated instrument is not a negative" generalises to ML evals and A/B
+> testing, so it is shared by people with no interest in Cicada 3301 — which is the only way
+> this reaches the surfaces initiative 3.2 needs. The OTP-class result is carried along inside
+> it, correctly qualified. **Still open:** mint the DOI (H2), then post. `PAPER.md` is also not
+> yet wired into `AGENTS.md` / `INDEX.json`, because both are hash-pinned in `PROVENANCE.md` §4
+> to the already-published `v2026.10.5-round30-handoff` tag; do it at the next release tag
+> rather than mutating a published one.
 Answer engines pull Wikipedia/Reddit/explainer prose and preprints, never JSON in a GitHub
 repo. The novel findings (doublet ~17σ deficiency, key-skip no-repeat output rule, OTP-class
 indistinguishability, invalidation of rigid-decoder nulls) are already leaking into search
