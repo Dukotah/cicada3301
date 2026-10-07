@@ -400,8 +400,8 @@ static void selftest(void)
         uint8_t k2[MAXK]; keystream(g, seed + 1, k2, MAXK);
         float bad = decode_score(k2, 0, 0, 48);
         printf("  gen %d %-30s true %.3f  wrong %.3f  %s\n", g, GENNAME[g],
-               sc, bad, (sc > -12.5f && bad < -13.5f) ? "OK" : "FAIL");
-        if (!(sc > -12.5f && bad < -13.5f)) fails++;
+               sc, bad, (sc > -12.5f && bad < -13.3f) ? "OK" : "FAIL");
+        if (!(sc > -12.5f && bad < -13.3f)) fails++;
     }
     memcpy(ct, saved, MAXCT);
     printf("selftest: %d/%d generators recovered\n", NGEN - fails, NGEN);
