@@ -217,10 +217,24 @@ Four things worth more than a fresh sweep, roughly cheapest first:
    has the machine for it.
 4. **`liber-primus/handoff/PARKED.md`** — items that are correct to attempt and were blocked
    on capability rather than merit, each with a testable threshold that says when you are good
-   enough to unpark it. The clearest is per-rune vision re-transcription: whole-page vision
-   scored 0.145 alignment (noise) in 2026, and the entire statistical case in this repository
-   rests on a transcription that has never had a from-scratch independent re-read.
+   enough to unpark it. **Read P-1's superseding banner before you start there:** until
+   2026-10-07 this section told you the transcription had never had a from-scratch independent
+   re-read and sent you at it first. That was stale. Ledger entry **A-01** completed exactly
+   that re-read and **confirmed canon** — 0.9973 per-slot agreement over 13,121 slots on
+   604/604 lines and 57/57 pages, with **zero** disagreements showing a real rune-identity
+   error — and **T2-INDEL** bounds canon at ≤1 missing and ≤1 extra rune at 95% confidence.
 
-If you can read a single high-zoom rune at ≥99% accuracy on the solved control pages, you can
-do something here that nobody has been able to do yet. And if you can only do one thing, do
-item 4 — a transcription error would not narrow the search, it would invalidate the map.
+What is left of that lane is small and sharply named: 15 illuminated-initial slots no
+fixed-size template can match, and a **mid-size mark class** (ink 35–94 px) holding 21 of
+T2's 26 indel flags, where no height threshold clears the flags without breaking the lane's
+own control. That second one is roughly 26 crops adjudicated by eye, and it is the one place a
+vision model is strictly better than the instrument already in the tree. The failure modes
+nobody has touched are the ones the line map cannot see by construction — multi-rune
+correlated errors, transpositions, and whole-line omissions — and those want a **layout**
+read, not a per-rune one.
+
+The honest framing: the cheap, high-value work here is **finishing and auditing**, not
+sweeping. Item 1 is a write-up of compute already paid for. Item 2 is one seed. Item 3 is
+ordinary CPU nobody here has. If you want the thing most likely to still be wrong, audit a
+closure — that is where every genuinely new finding in this project has come from, and none
+have come from a new key-space sweep.

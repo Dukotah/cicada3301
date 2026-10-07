@@ -270,6 +270,15 @@ are byte-authentic 400-DPI renders with no recoverable steganography (56/56 SHA-
 archived dump); the onion images survived their first genuine key-attack at 24,078 extractions,
 0 hits; and 74 of 74 ornament bands, read under a nine-register panel, show no language.
 
+**The transcription is independently confirmed.** A template instrument built without
+reference to canon reproduces it at **0.9973 per slot across 13,121 slots, 604/604 lines and
+57/57 pages**, with **zero** disagreements carrying the signature of a rune-identity error, and
+a companion bound of **≤1 missing and ≤1 extra rune** at 95% confidence (`A-01`, `T2-INDEL`).
+Since every statistic in this paper — the doublet rate above all — is computed on that
+transcription, and since its two supposedly-independent public lineages share a single 2017
+root, this retro-validates a decade of negatives that had been resting on an unaudited input.
+It is the quietest result in the repository and arguably the most load-bearing.
+
 **The elimination map.** 172 ledger entries, each carrying its pre-registered threshold, its
 positive-control status, its honest coverage bound, and the concrete condition that would
 reopen it. Unsound negatives — entries claiming a negative whose instrument was never shown
@@ -364,12 +373,29 @@ it does not have the capability to push a solve on its own.
 
 Three further honest limits:
 
-- **The transcription has never had a from-scratch independent re-read.** The entire statistical
-  case rests on it. Label-free clustering of glyph bitmaps reproduces the canonical partition,
-  and an independent blind instrument agrees with the canon 100% on the contested bytes — but
-  whole-page AI vision scored 0.145 alignment (noise) in 2026. A per-rune re-transcription at
-  ≥99% accuracy on the solved control pages is the one task that could *invalidate the map*
-  rather than merely extend it, and it remains undone.
+- **The transcription is independently confirmed, and this paper's first draft said otherwise.**
+  Corrected 2026-10-07. The draft published on 2026-10-05 claimed a from-scratch independent
+  re-read "remains undone" and named it the one task that could invalidate the map. That was
+  wrong, and it was wrong in the exact way §9 is about: a stale handoff document
+  (`handoff/PARKED.md` item P-1, written 2026-08-19) was taken at its word instead of checked
+  against the ledger. Ledger entry **A-01** completed that re-read: a template-matching
+  instrument independent of canon agrees with it at **0.9973 per slot over 13,121 slots**, on
+  **604/604 lines and 57/57 pages** (99.89% of all rune slots; 1.0000 on the solved pages and
+  on the dense pages 45–54). Of 35 slot-level disagreements, **33 are segmentation artifacts,
+  0 are glyph confusions, and 0 have the signature of a real rune-identity error in canon.**
+  Companion entry **T2-INDEL** bounds canon at **≤1 missing and ≤1 extra rune** at 95%
+  confidence, from zero surviving candidates over 13,121 positions. So the correct statement is
+  the *converse* of the draft's: this is a measured retro-validation of the transcription every
+  negative in the repository is computed on.
+
+  What is still genuinely open there is narrow and named: **15 slots** (oversized illuminated
+  initials, 497–608 px against a 113 px rune body, which no fixed-size template can match),
+  plus multi-rune correlated errors, transpositions and whole-line omissions — the line map is
+  driven by canon's own line inventory, so a line canon omits entirely would not show up. The
+  one live mechanism is a **mid-size mark class** (ink 35–94 px, between a separator dot and a
+  rune body): 21 of T2's 26 indel flags sit in it, and no single height threshold removes the
+  flags without breaking the lane's own positive control. That is a real limit of
+  component-height stripping at this render, not a solved problem.
 - **The negatives remain conditional on nine registers and one transition model.** Broader than
   when they were English-only and single-construction, but still bounded. A tenth language or a
   second rejection-loop family is uncovered by construction.
@@ -413,6 +439,7 @@ method. License MIT; see [`PROVENANCE.md`](PROVENANCE.md).
 | Full 2³² sweep closeout (§8) | `liber-primus/analysis/round27/S1-CLOSEOUT.md` |
 | Ghostscript/ICC toolchain bound (§8) | `liber-primus/analysis/round30/SYNTHESIS.md` |
 | Ornament-band nine-register read (§8) | `liber-primus/analysis/round19/finite/RESULTS.md` |
+| Independent re-transcription, indel bound (§8, §12) | `liber-primus/analysis/round19/T2/RESULTS.md`, ledger `A-01` + `T2-INDEL` |
 | All 172 entries with thresholds and coverage | `liber-primus/LEDGER.json` |
 | The research discipline (§10) | `liber-primus/ARMADA-DOCTRINE.md` |
 | Parked sweeps and real coverage (§12) | `liber-primus/handoff/PARKED-SWEEPS.md` |

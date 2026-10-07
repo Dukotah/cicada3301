@@ -37,7 +37,43 @@ particular, do not attack LP2 with a rigid decoder. It scores the *correct* key 
 
 ---
 
-## P-1 — Per-rune vision re-transcription · prior: **medium** · the clearest "wait for better tooling" item
+## P-1 — Per-rune vision re-transcription · **LARGELY SUPERSEDED 2026-10-07** · see banner
+
+> **Superseded by A-01 / T2-INDEL, and this item should no longer be anyone's first stop.**
+> Everything below was written 2026-08-19, before the round19 T2 lane completed Round 9's
+> Track TEMPLATE. That lane did the from-scratch independent re-read this item asks for —
+> with template matching rather than vision — and the result is a **confirmation of canon**:
+> **0.9973 per-slot agreement over 13,121 slots, 604/604 lines, 57/57 pages** (99.89% of all
+> rune slots; 1.0000 on the solved pages and on dense pages 45–54). Of 35 slot-level
+> disagreements, **33 are segmentation, 0 are glyph confusions, and 0 have the signature of a
+> real rune-identity error.** `T2-INDEL` adds a length bound: **≤1 missing and ≤1 extra rune**
+> at 95% confidence over 13,121 positions. The "~20 confirmed merges would put autokey back on
+> the table" scenario below is therefore excluded by measurement, not merely untested.
+>
+> **What a vision pass is still worth, and it is small.** Three named residuals, none of which
+> needs 13,000 reads:
+> 1. **15 uncovered slots** — oversized illuminated initials (497–608 px against a 113 px rune
+>    body), which no fixed-size template can match. Fifteen crops.
+> 2. **The mid-size mark class** (ink 35–94 px, between a separator dot and a rune body). 21 of
+>    T2's 26 indel flags sit in it, and no single height threshold clears the flags without
+>    breaking T2's own positive control. ~26 crops, adjudicated by eye at high zoom. This is
+>    the one place a vision model is strictly better than the instrument that is there.
+> 3. **Failure modes the line map cannot see by construction** — multi-rune correlated errors,
+>    transpositions, and whole-line omissions, because the map is driven by canon's own line
+>    inventory. A whole-page layout read, not a per-rune one, is what would address these.
+>
+> **Measured 2026-10-07, worth recording before anyone re-reads the paragraph below:** on the
+> hash-verified canonical renders, individual runes at high zoom are crisp, high-contrast
+> vector glyphs and are plainly legible — the 2026 whole-page failure at 0.145 alignment was a
+> *place-losing* failure, not a legibility one. The real obstacle to a naive per-rune pass is
+> **segmentation**: adjacent runes' diagonals overlap in column projection, so simple
+> projection splitting merges them (a clean canonical line of ~20 runes segments to 7 blobs).
+> Use the validated template-DP segmenter, as step 2 below already says.
+
+<details>
+<summary>Original 2026-08-19 item, preserved — its premise is now false, its procedure is still correct for the residuals</summary>
+
+### P-1 (original text) — per-rune vision re-transcription · prior: **medium**
 
 **Hypothesis.** The canonical transcription contains rune errors that a from-scratch independent
 re-read would expose. This matters far more than it sounds: every statistical result in this
@@ -92,6 +128,10 @@ even if both were imperfect. **Prior that it is worth running anyway: HIGH.**
 
 **Related but cheaper:** item **P-8** below (haplography *count*-audit) tests the same worry at
 1/5th the volume by checking rune **count** rather than rune identity.
+
+---
+
+</details>
 
 ---
 
