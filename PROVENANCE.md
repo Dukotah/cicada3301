@@ -78,18 +78,18 @@ file hash would not. A clone or fork whose blobs hash to these values is faithfu
 release; a divergence should be explained by its author. (Data-input hashes are separately
 pinned in `liber-primus/handoff/capsule/MANIFEST.json`, 103 inputs.)
 
-- **Release:** annotated tag `v2026.10.5-round30-handoff` in this repository.
-- **Commit at manifest time:** `ef12867` (2026-10-05).
-- **Superseded release:** `v2026.10.1-round19` (`891861d`). Its manifest is still correct
-  *for that tag* — the files below changed afterwards, which is why the tag is named.
-- `liber-primus/LEDGER.json` is **new to this list**. It is the artifact every front door
-  tells a reader to query and the one most likely to be forked, and it was the one not
-  pinned. It changes on every round merge, so a hash mismatch here means "a different
-  release", not "a corrupted copy" — resolve it by naming the tag you are citing.
+- **Release:** annotated tag `v2026.10.7-transcription-correction` in this repository.
+- **Commit at manifest time:** `d0674c9` (2026-10-07).
+- **Previous releases:** `v2026.10.5-round30-handoff` (`ef12867`), `v2026.10.1-round19`
+  (`891861d`). Each manifest remains correct **for its own tag**; `AGENTS.md` changed after
+  the 2026-10-05 release to carry the A-01 transcription correction, which is why this tag
+  exists rather than the older one being moved. Published tags here are never rewritten.
+- `liber-primus/LEDGER.json` moves on every round merge, so a mismatch there means "a
+  different release", not "a corrupted copy" — resolve it by naming the tag you cite.
 
 ```
 c59fa47abe3187e67be3f0a2b874860a6a6d3cd5ea65978cb0aa5a3249b4f910  llms.txt
-3a35fd4098b2d0261ff26216717b2617ad3a4a1fe983fafc8d285597f1608c77  AGENTS.md
+c8bb4d823370db53f965038d31d11384445f2cdbe7553c9940879ee722e81218  AGENTS.md
 c90a915edf74880f7a47c424a8aed3ce9840450515e1705d6c47ab8fa7a7915c  KNOWLEDGE.json
 22b4261a5f490b1f88c6864f1393e0f8f29c008d1a9fc49a9af6b63f4481a3cf  INDEX.json
 a8240047d0e765e9af468c3afbba609f0517f1bdc26a3f1e73e441f32a8f7299  CITATION.cff
@@ -106,6 +106,6 @@ Regenerate (EOL-independent) with:
 
 ```bash
 for f in llms.txt AGENTS.md KNOWLEDGE.json INDEX.json CITATION.cff liber-primus/PROBLEM.json liber-primus/LEDGER.json liber-primus/verify_solution.py liber-primus/tests/validate.py liber-primus/ARMADA-DOCTRINE.md liber-primus/ELIMINATION-LEDGER.md liber-primus/SOLVED-PAGES.json; do
-  printf "%s  %s\n" "$(git show "v2026.10.5-round30-handoff:$f" | sha256sum | cut -d" " -f1)" "$f"
+  printf "%s  %s\n" "$(git show "v2026.10.7-transcription-correction:$f" | sha256sum | cut -d" " -f1)" "$f"
 done
 ```
