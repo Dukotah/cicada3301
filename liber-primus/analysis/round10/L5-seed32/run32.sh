@@ -36,7 +36,7 @@ export OMP_NUM_THREADS=${OMP_NUM_THREADS:-32}   # measured optimum on this box (
 CHUNK=67108864          # 2^26
 END=4294967296          # 2^32
 WINDOW=48               # pre-registered
-THRESH=-12.5            # pre-registered (Round 8)
+THRESH=-12.0602         # corrected FWER 0.01 threshold
 
 LOG=chunks_${TAG}.tsv
 if [ ! -f "$LOG" ]; then
@@ -50,7 +50,7 @@ n=0
 while [ "$LO" -lt "$END" ]; do
   if [ "$WANT" -gt 0 ] && [ "$n" -ge "$WANT" ]; then break; fi
   HI=$((LO + CHUNK)); [ "$HI" -gt "$END" ] && HI=$END
-  OUT=$(./sweep32 "$GEN" "$LO" "$HI" "$WINDOW" "$THRESH")
+  OUT=$(./sweep32x "$GEN" "$LO" "$HI" "$WINDOW" "$THRESH")
   echo "$OUT" | grep '^HIT' >> hits_${TAG}.txt 2>/dev/null
   # parse: gen=G NAME seeds=lo..hi best=B @S hits>-12.5=H  T s
   BEST=$(echo "$OUT" | grep -o 'best=[-0-9.]*'   | tail -1 | cut -d= -f2)
