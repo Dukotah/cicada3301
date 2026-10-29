@@ -1,0 +1,194 @@
+{
+ "date": "2026-10-29T14:11:38",
+ "universe_rows": 404284,
+ "rows_readjudicated": 404284,
+ "fraction_overall": 1.0,
+ "elapsed_run_s": 940.6,
+ "bars": {
+  "keyskip1": {
+   "N": 202142,
+   "pot_bar": 8.546,
+   "emp_max": 5.239,
+   "p99": 4.005,
+   "bar": 8.546,
+   "binds": "pot"
+  },
+  "keyskip2": {
+   "N": 202142,
+   "pot_bar": 8.373,
+   "emp_max": 5.666,
+   "p99": 3.992,
+   "bar": 8.373,
+   "binds": "pot"
+  }
+ },
+ "coverage": {
+  "B2|keyskip2": {
+   "n": 106109,
+   "universe": 106109,
+   "fraction": 1.0,
+   "best_pmax": 6.554,
+   "best_kid": "php:php_scale:562123959:keyskip2",
+   "best_preg": "EN_KJV",
+   "bar": 8.373,
+   "clears": false
+  },
+  "B2|keyskip1": {
+   "n": 106109,
+   "universe": 106109,
+   "fraction": 1.0,
+   "best_pmax": 6.856,
+   "best_kid": "php:mt_scale:3941606801:keyskip1",
+   "best_preg": "EN_KJV",
+   "bar": 8.546,
+   "clears": false
+  },
+  "B1|keyskip1": {
+   "n": 96033,
+   "universe": 96033,
+   "fraction": 1.0,
+   "best_pmax": 6.679,
+   "best_kid": "bash:bash4.2_i32:1375265595:keyskip1",
+   "best_preg": "EN_HALFVOWEL",
+   "bar": 8.546,
+   "clears": false
+  },
+  "B1|keyskip2": {
+   "n": 96033,
+   "universe": 96033,
+   "fraction": 1.0,
+   "best_pmax": 7.068,
+   "best_kid": "bash:bash4.2:1354603465:keyskip2",
+   "best_preg": "LP1_REAL",
+   "bar": 8.373,
+   "clears": false
+  }
+ },
+ "in_sample_tail": {
+  "keyskip1": {
+   "n": 202142,
+   "p50": 3.038,
+   "p99": 4.846,
+   "p9999": 6.087,
+   "max": 6.856
+  },
+  "keyskip2": {
+   "n": 202142,
+   "p50": 3.04,
+   "p99": 4.841,
+   "p9999": 6.168,
+   "max": 7.068
+  }
+ },
+ "control_power": {
+  "EN_MODERN|keyskip1": {
+   "plants": 30,
+   "recovered": 30,
+   "pmax_ge_bar": 30
+  },
+  "EN_NOVOWEL|keyskip1": {
+   "plants": 30,
+   "recovered": 30,
+   "pmax_ge_bar": 30
+  },
+  "EN_MODERN|keyskip2": {
+   "plants": 30,
+   "recovered": 30,
+   "pmax_ge_bar": 30
+  },
+  "EN_NOVOWEL|keyskip2": {
+   "plants": 30,
+   "recovered": 30,
+   "pmax_ge_bar": 30
+  }
+ },
+ "control_all_pass": true,
+ "flagged": [],
+ "top_keep": [
+  [
+   7.068,
+   "bash:bash4.2:1354603465:keyskip2"
+  ],
+  [
+   6.8560320331500115,
+   "php:mt_scale:3941606801:keyskip1"
+  ],
+  [
+   6.762366956470023,
+   "bash:bash4.2_i32:1354603465:keyskip2"
+  ],
+  [
+   6.679,
+   "bash:bash4.2_i32:1375265595:keyskip1"
+  ],
+  [
+   6.609817535810111,
+   "php:mt_mod:665827596:keyskip1"
+  ],
+  [
+   6.608,
+   "php:php_scale:1552094311:keyskip1"
+  ],
+  [
+   6.554190727003881,
+   "php:php_scale:562123959:keyskip2"
+  ],
+  [
+   6.512106947692655,
+   "bash:bash4.2_i32:1338600942:keyskip1"
+  ],
+  [
+   6.496,
+   "php:mt_mod:732294153:keyskip2"
+  ],
+  [
+   6.476,
+   "bash:bash4.2_i32:1373475591:keyskip2"
+  ],
+  [
+   6.439,
+   "php:php_scale:28777406:keyskip1"
+  ],
+  [
+   6.426,
+   "php:mt_mod:767981132:keyskip2"
+  ],
+  [
+   6.413,
+   "php:mt_mod:2289409906:keyskip1"
+  ],
+  [
+   6.388,
+   "php:php_scale:4257860900:keyskip1"
+  ],
+  [
+   6.350503648317637,
+   "bash:bash4.2:1353256166:keyskip1"
+  ],
+  [
+   6.343253137678046,
+   "php:mt_scale:522358509:keyskip2"
+  ],
+  [
+   6.343,
+   "php:mt_scale:522358509:keyskip1"
+  ],
+  [
+   6.315893724259998,
+   "bash:bash4.2:1398535392:keyskip1"
+  ],
+  [
+   6.31,
+   "php:mt_scale:239796724:keyskip2"
+  ],
+  [
+   6.309975332152479,
+   "php:mt_scale:1998506620:keyskip2"
+  ]
+ ],
+ "bar_note": "bars of record = POT fit to the 12,000-draw v3 null at N~1.2e5, MODELLED, extrapolated ~10x past the null; not re-fit at N=404284",
+ "earlier_partial_run": {
+  "rows": 239882,
+  "fraction": 0.5934
+ }
+}

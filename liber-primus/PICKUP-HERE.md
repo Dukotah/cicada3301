@@ -1,6 +1,23 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-10-28** (Round 32 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-10-29** (Round 33 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+
+> ## Round 33 (2026-10-29) — THE REGISTER-AWARE BEAM: shipped. Read `analysis/round33/SYNTHESIS.md` first.
+>
+> No survivor. The beam now searches all nine registers (`round33/I1-register-aware-beam/beam_v3.py`, panel-max
+> design): **EN_NOVOWEL recovery 0.72 → 1.000** with the correct key, no other register loses > 0.012, 1.4–2.3× cost.
+> Every stored survivor row of R32-B1 (bash `$RANDOM`) and R32-B2 (PHP `mt_rand`) re-decoded through it: 404,284 rows,
+> coverage 1.00 of stored survivors, 0 flagged (best 7.068 vs modelled bar 8.373). **The orbits were never searched
+> with a NOVOWEL-aware prefilter (0.47 power) — that is Round 34 B1.** The Round 18 `skip_by_two` doublet prior
+> (0.84 %) does not replicate (≈0.60 % for every construction incl. keyskip1) — superseded, relation kept.
+> Corrected payload bytes flip nothing in B-04/E-01/E-02 (R17 not re-runnable). Issue #12 separator correction landed
+> (two gaps, outside provenance); p27:93 = U; LP1 read-gate failure is image coverage (one 75-rune block), not
+> substitution. X1: the Round 32 C-engine patch could never have compiled — fixed, still **unbuilt**; S2 stays
+> do-not-resume. SEAL_PASS=false (D5c holds at L=240, fails at L=120).
+>
+> **Next:** `analysis/round34/CAMPAIGN-PLAN.md` — v3 null of record, NOVOWEL-aware prefilter + the two orbits under
+> v3, payload promotion done safely (five more readers + capsule manifest), D5c `m_NV(L)`, and a Linux sandbox for the
+> C engine / PHP 5 reference / Ghostscript render kill test.
 
 > ## Round 32 (2026-10-28) — INSTRUMENT & RED-TEAM armada: shipped. Read `analysis/round32/SYNTHESIS.md` first.
 >

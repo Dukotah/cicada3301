@@ -1072,6 +1072,37 @@ verified refute-by-default (none downgraded). Trust anchors green throughout; ce
 recover the source PDF/PS (names the `/BaseFont` typeface + exposes TJ kerning), pin the exact GS release,
 close art attribution via reverse-image/Wayback. Do NOT re-run any R29/R30 lane.
 
+## Round 33 — THE REGISTER-AWARE BEAM (2026-10-29)
+
+Seven lanes + one PREREG-only lane; full write-up `analysis/round33/SYNTHESIS.md`; rows `R33-*` in `LEDGER.json`.
+**No survivor.** The instrument moved again, and this time the search moved, not only the adjudicator:
+- **R33-I1** `beam_v3.py` (panel-max search over the nine register LMs): planted EN_NOVOWEL recovery **0.72 → 1.000**
+  in all six (relation × L) cells; 54/54 cells recovered vs driftbeam 48/54; worst Δ −0.012; 1.4–2.3× cost. A no-LM
+  search (design 3) also recovers NOVOWEL → the defect was the English-quadgram search bias. v3's shuffle-null max rises
+  (free/L=400 8.60 → 13.03), so the hitfn20 bars are not v3's bars.
+- **R33-I2** per-page/per-line resets and advance 3–5 planted. Doublet rate at full LP2 length ≈ 0.60 % for **every**
+  construction including keyskip1 (LP2 0.664 %) → the Round 18 L7-B 0.84 % `skip_by_two` figure (2 doublets in 239
+  pairs) is superseded; the relation is kept, the prior over keyskip1 is withdrawn. skip_by_3 is covered by `free`;
+  skip_by_4 (0.83), skip_by_5 (0.74), reset_per_page (0.51), reset_per_line (0.21) are unrepresented; the earned
+  `keyskipk` relation + segmentation wrapper is a queued completeness ritual (R4), not merged.
+- **R33-B1** `payload_resolved.bin` (idx 45/50/246) re-fed through the ORIGINAL harnesses: B-04 (7 payload-derived
+  seeds, 76,160 decodes, best 5.11 vs 7.38), E-01 (0 HIT, vacuous), E-02 (unchanged) — nothing flips. R17's prefilter
+  needs three gitignored corpora → `not_covered`. Promotion deferred: five more readers of `canon_256.bin` and the
+  capsule manifest (X1) → Round 34 P1.
+- **R33-B2** issue #12 (RETSAM3301): segment 8 gap 12 and segment 40 gap 8 `.` → `-`, validators byte-identical,
+  closed by commit 9b36692. p27:93 reads U (6 px from a mislabelled U exemplar, ~2,900 px from every real B) — canon
+  stands. LP1 read gate reproduces (94.60 %); 75 of 97 misses are one SOME WISDOM block absent from the vendored
+  images; without it 98.72 %. Not substitution.
+- **R33-B3** all 404,284 stored survivor rows of R32-B1/R32-B2 re-decoded under v3 (keyskip1 + keyskip2), 120/120
+  controls incl. 60 EN_NOVOWEL plants, 0 flagged; best 7.068 (bash seed 1354603465, the Round 32 near-miss) vs modelled
+  bar 8.373. Not covered: `free`, the prefilter-dropped orbits (NOVOWEL prefilter power 0.47), the I2 text-only lists.
+- **R33-O1** Ghostscript 9.04–9.14 render byte-compare: PREREG only, queued for a build box.
+- **R33-X1** FOUND-ERROR: the Round 32 grind27/28 patch had a raw newline in a string literal (fixed, unbuilt); Round 32
+  B2 numbers reproduce (control prefilter-conditional, unique coverage ≈ 0.9658 %); D5c holds at L=240 on a third key,
+  fails at L=120 → SEAL_PASS=false; 9 drafted `not_covered` texts confirmed, R30 nulls filled.
+
+Do NOT re-run any R33 lane as-is. Round 34 goes to the orbits with a NOVOWEL-aware prefilter and an observed v3 null.
+
 ## Round 32 — INSTRUMENT & RED-TEAM armada (2026-10-28)
 
 Eight lanes, every one with a passing planted-key control; full write-up in `analysis/round32/SYNTHESIS.md`;

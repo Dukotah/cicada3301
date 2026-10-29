@@ -1,0 +1,49 @@
+{
+ "$comment": "PROPOSED entry from round33/B3. NOT merged.",
+ "lane": "round33/B3",
+ "date": "2026-10-29",
+ "entries": [
+  {
+   "id": "R33-B3-V3-READJUDICATION",
+   "lane": "round33/B3",
+   "round": "33",
+   "date": "2026-10-29",
+   "status": "negative-bounded",
+   "verdict": "NEGATIVE-BOUNDED-ALL-STORED-SURVIVORS",
+   "hypothesis": "The R32 B1/B2 survivor rows hide a correct key that driftbeam's English-biased search mis-scored (esp. EN_NOVOWEL).",
+   "result": "404,284 of 404,284 stored B1+B2 survivor rows (coverage 1.00 of stored survivors) re-decoded by beam_decode_v3 panel_max under keyskip1/2; best pmax 7.068 vs modelled v3 bars 8.546 (keyskip1) / 8.373 (keyskip2); 0 flagged.",
+   "coverage": "1.00 of the stored survivor rows (B1 96,033 and B2 106,109, each x keyskip1/2) x L120; v3 power 30/30 EN_MODERN and 30/30 EN_NOVOWEL at the bar. Survivors only; orbits (prefilter-dropped seeds) not re-decoded.",
+   "not_covered": [
+    "free relation (3.7 decodes/s at L=120 for v3; ~1e5 s for the store)",
+    "the ORBITS: seeds the Round 32 prefilter dropped (26-55% of planted keys per R32 control; EN_NOVOWEL prefilter power 0.47) are never re-decoded -- v3 repairs the decoder, not the prefilter",
+    "R32 I2 survivor lists (B-04 225, R16-KDF 48, R16-PRNG 20, R17 5,730): stored as decoded texts without ciphertext/key, not re-decodable by v3",
+    "L=120 screen only (L=240 only for flagged rows; none)",
+    "cross-relation, advance>=3, resets, interrupters, registers outside the nine-register panel",
+    "bar is a POT exponential-tail extrapolation from N_null=12,000 to N~1.2e5 per relation (10x); the empirical-max bars are 5.24 / 5.67",
+    "control is the stage-2 path with the true key handed over (not the 2^16-seed chunk; prefilter not re-run); 5 plants per register per cell"
+   ],
+   "positive_control": "control.json all_pass: 120/120 planted (12 cells x 5 EN_MODERN + 5 EN_NOVOWEL) recovered via the B3 stage-2 path.",
+   "threshold": "v3 shuffle-null (N=12,000, seed 3301) POT bar 8.546 / 8.373, MODELLED, extrapolated ~10x past the null (not refit at final N=202,142); empirical max 5.24 / 5.67; hitfn20 bars not used.",
+   "three_conditionals": {
+    "key_space": "stored R32 B1+B2 survivors, 100%",
+    "transition_model": "keyskip1+keyskip2 under v3 panel_max, beam_w 400, L120",
+    "adjudicator_register": "R32 I2 nine-register panel"
+   },
+   "sweep_store": "analysis/round33/B3-v3-readjudication/readjud_rows.jsonl",
+   "panel": "analysis/round32/I2-multiregister-readjudication/models/panel.npz",
+   "deliverables": [
+    "PREREG.md",
+    "readjud.py",
+    "control.json",
+    "null_v3.json",
+    "readjud_rows.jsonl",
+    "readjud_summary.json",
+    "RESULTS.md",
+    "ledger.json",
+    "ledger_patches.json",
+    "resume.py"
+   ],
+   "reopens_if": "a NOVOWEL-aware prefilter re-opens the orbits; free relation is run; the v3 bar is observed at N~2e5 instead of extrapolated"
+  }
+ ]
+}

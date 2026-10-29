@@ -1,0 +1,55 @@
+{
+ "$comment": "PROPOSED coverage patches from round33/B3. LEDGER.json NOT edited.",
+ "patches": [
+  {
+   "id": "R32-B1-BASH42-RANDOM-AUTOSEED",
+   "coverage_add": "Round 33/B3: ALL 96,033 stored survivors re-decoded through v3 under keyskip1 and keyskip2 (coverage 1.00 of survivors). v3 panel_max cells: 120/120 planted EN_MODERN+EN_NOVOWEL recovered; best v3 pmax keyskip1 6.679, keyskip2 7.068 vs modelled bars 8.546/8.373; 0 flagged. Orbit (prefilter-dropped seeds) NOT re-decoded; prefilter EN_NOVOWEL power still 0.47.",
+   "not_covered_add": "prefilter-dropped seeds; free relation under v3; v3 bars are modelled (extrapolated ~10x)",
+   "evidence_add": [
+    "liber-primus/analysis/round33/B3-v3-readjudication/RESULTS.md",
+    "liber-primus/analysis/round33/B3-v3-readjudication/readjud_rows.jsonl"
+   ]
+  },
+  {
+   "id": "R32-B2-PHP-MT-RAND",
+   "coverage_add": "Round 33/B3: ALL 106,109 stored survivors re-decoded through v3 under keyskip1 and keyskip2 (coverage 1.00 of survivors). v3 panel_max cells: 120/120 planted recovered; best v3 pmax keyskip1 6.856, keyskip2 6.554 vs modelled bars 8.546/8.373; 0 flagged. Tier-b orbit (99.03% of 2^32) and prefilter-dropped seeds NOT re-decoded.",
+   "not_covered_add": "prefilter-dropped seeds; free relation under v3; v3 bars are modelled (extrapolated ~10x)",
+   "evidence_add": [
+    "liber-primus/analysis/round33/B3-v3-readjudication/RESULTS.md",
+    "liber-primus/analysis/round33/B3-v3-readjudication/readjud_rows.jsonl"
+   ]
+  },
+  {
+   "id": "B-04",
+   "coverage_add": "Round 33/B3: stored survivor heads are decoded TEXTS with no ciphertext/key pair, so they cannot be re-decoded through v3; their R32 I2 nine-register panel adjudication is unchanged.",
+   "not_covered_add": "v3 re-decode of the source decodes (requires regenerating ciphertext/key per source)",
+   "evidence_add": [
+    "liber-primus/analysis/round33/B3-v3-readjudication/RESULTS.md"
+   ]
+  },
+  {
+   "id": "R16-KDF",
+   "coverage_add": "Round 33/B3: stored survivor heads are decoded TEXTS with no ciphertext/key pair, so they cannot be re-decoded through v3; their R32 I2 nine-register panel adjudication is unchanged.",
+   "not_covered_add": "v3 re-decode of the source decodes (requires regenerating ciphertext/key per source)",
+   "evidence_add": [
+    "liber-primus/analysis/round33/B3-v3-readjudication/RESULTS.md"
+   ]
+  },
+  {
+   "id": "R16-PRNG",
+   "coverage_add": "Round 33/B3: stored survivor heads are decoded TEXTS with no ciphertext/key pair, so they cannot be re-decoded through v3; their R32 I2 nine-register panel adjudication is unchanged.",
+   "not_covered_add": "v3 re-decode of the source decodes (requires regenerating ciphertext/key per source)",
+   "evidence_add": [
+    "liber-primus/analysis/round33/B3-v3-readjudication/RESULTS.md"
+   ]
+  },
+  {
+   "id": "R17-PUBLIC-PAD",
+   "coverage_add": "Round 33/B3: stored survivor heads are decoded TEXTS with no ciphertext/key pair, so they cannot be re-decoded through v3; their R32 I2 nine-register panel adjudication is unchanged.",
+   "not_covered_add": "v3 re-decode of the source decodes (requires regenerating ciphertext/key per source)",
+   "evidence_add": [
+    "liber-primus/analysis/round33/B3-v3-readjudication/RESULTS.md"
+   ]
+  }
+ ]
+}
