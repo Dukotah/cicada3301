@@ -1,0 +1,19 @@
+{
+ "n_heads": 262144,
+ "variant": "bash4.2",
+ "single_process": true,
+ "pf_py_trigram_m16": {
+  "sec": 0.204,
+  "heads_per_s": 1282480
+ },
+ "pf_v3_lse_m16": {
+  "sec": 0.236,
+  "heads_per_s": 1111808,
+  "slowdown_vs_pf_py": 1.16
+ },
+ "pf_v3_lse_m20": {
+  "sec": 0.268,
+  "heads_per_s": 977563,
+  "slowdown_vs_pf_py": 1.31
+ }
+}
