@@ -1,0 +1,30 @@
+# Round 34 / P1 -- payload promotion: re-feed `payload_resolved.bin` to the five unfed readers -- PREREG
+
+_Dated 2026-10-29. Written BEFORE any reader was run. Only `stage_inputs.py` (copies of the pp49_51 files into `inputs/` plus the resolved variants) existed at the time of writing; no reader output exists. No git; writes only under this directory; one Python process at a time, nproc=1._
+
+## Question
+Does any reader of `analysis/pp49_51/canon_256.bin` change its result when fed `analysis/round19/C1/payload_resolved.bin` (3 bytes: idx 45 81->107, 50 21->47, 246 224->198)? If none does, the rename is GO; if any does, Q5: promotion stops, row flagged, Round 35.
+
+## Inputs (staged copies, so no canonical file is touched)
+`inputs/canon/{canon_256.bin, canon_256_decpref.bin, canon_256.hex}` = byte copies of the pp49_51 files. `inputs/resolved/` = same names; `canon_256.bin` = payload_resolved.bin (sha256 3b9b07d9...b290); `canon_256_decpref.bin` = decpref with idx 45/50/246 patched (Round 33 B1 assumption: no independently corrected decpref exists); `canon_256.hex` = hexlify of resolved. Each reader is run through its ORIGINAL source with only the input path (and, where unrunnable, an import shim) substituted; each run script records the substitution.
+
+## Readers, control, comparator
+| reader | harness plan | control (run first) | canon comparator |
+|---|---|---|---|
+| R16-KDF (`round15/KDF/sweep.py` via `round13/B04/seeds.py:289-294`) | original `kdf`, `sweep.run_stage` (nproc 1), `sk.beam_decode` beam 400, the `canon256_*` entries of the dictionary (7 of the 534 secrets), stage A (27 KDFs x 3 salts x 2 reductions x dir x sign x atbash, L=120 head) and stage B (8 best families from the published stage A x all salts) | original K2: plant PBKDF2-SHA256-10000/salt 3301/mod29 keystream of "THE PRIMES ARE SACRED", same stage-A cross product over (7 payload secrets + the plant secret): planted config must rank #1 above -5.5 | same 7 canon secrets, same stages |
+| R30-B1 (`round30/B1-blob-crypto`) | `T2.bin`, `folly.bin` are GITIGNORED/ABSENT and `pycryptodome` is absent. Faithful minimal re-implementation: original `battery.py` functions (key list, `fit_key`, `detect_success`, struct-ID) with a `cryptography`-package shim for AES/RC4/Blowfish/3DES/DES; canon blob only; plus the original gpg/openssl passphrase arm. Cross-XOR and `blob:T2`/`blob:folly` keys not re-runnable (stated) | original positive (AES-256-CBC plant recovered, detector fires) and negative (500 random decrypts, 0 false fires); shim fidelity (known-answer vectors) | same code on canon bytes; also compared with stored `results.json` |
+| R30-B2 (`round30/B2-rsa-gpg`) | `folly.bin`, `2.jpg` ABSENT. Original source exec'd for its function definitions (unmodified); canon-only legs: modulus detector, GCD with Cicada n, c^e mod n, OpenPGP header scan, `gpg --list-packets` raw + prepends, canon[:32] AES key over canon[32:] (`cryptography` shim). folly/2.jpg legs not re-runnable | original controls: planted RSA-2048 modulus flagged plausible, random 256 B not flagged, real gpg symmetric message parses, random blob does not parse | same on canon bytes; compared with stored `b2_results.json` |
+| recon `h1_index` | original script, table path substituted | its own gate (`FINDINGS.txt`): `[setup]` counts (55 pages, 12,956 runes, 594 lines, 256 bytes) and scorer sanity samples | canon table; compared with `FINDINGS.txt` |
+| campaign18 `payload_skip.py` | original source, path substituted (4 variants x 2 signs x 2 atbash x 55 pages, beam 320) | original has none; added: English plant enciphered with `encipher_keyskip` under payload-mod-29, decoded with the same `SW.beam`; must clear -5.5 | canon |
+| campaign18 `armada/payload_ciphertext.py` | original source, paths substituted | whatever internal gates it has; if none, "no control in original" | canon |
+| campaign18 `armada2/numeric2_skip.py` Part B (payload all offsets) + `payload_hex_nibbles` | original module imported, payload loaders patched, `sweep_payload_all_offsets` / `sweep_fixed_key` on the same pages the full run used | plant: English page-length message under payload-mod-29 at an offset inside the window, found by the same `_score_page` | canon |
+
+Further readers named by Round 33 X1 and not in the lane roster (`round29/L2-blob-cross/attack.py`, campaign11/12/14 forensics, `round28/L2/{reader,keysweep}.py`, `round17/P3_tables/pads_manifest.json`): inventoried and classified in RESULTS; run only if cheap and their inputs exist.
+
+## Pre-declared decision rules
+* **CHANGED** (Q5 trigger) = (a) a verdict flip against the canon comparator of the same harness (new HIT / flagged survivor / PARTIAL / English-or-magic detector fire / `plausible_rsa_modulus` / valid packet chain / gpg decrypt-with-hit / a T1-T3 p-value crossing 0.01), or (b) a best score that clears its bar (-5.5 legacy) when canon did not, or (c) the canon comparator fails to reproduce the stored published result (then that reader is "harness not faithfully re-run", reported as such, not as unchanged).
+* **NOT CHANGED**: same verdict, no bar crossing. Byte-level echoes of the 3 changed bytes (printed hex heads, gpg literal-data name fields, derived-bytes hashes) and score moves inside beam noise (|delta best| <= 0.3, the Round 33 B1 observed level) are "echo/noise".
+* Missing gitignored inputs: that leg is filed "corrected payload: harness not re-runnable" and listed in `not_covered`; the reader is run on the legs that exist.
+* Capsule: regenerate `MANIFEST.json` as a COPY in `manifest_regen/` with `payload.canon_256` sha256/size from the resolved bytes, run `verify_capsule.py` against the copy, diagnose the 13 INTACT-FAIL items by re-hashing LF-normalised content. No file in `data/` or `analysis/` is renamed or overwritten.
+* Recommendation: GO only if every reader is NOT CHANGED, every control passed and the capsule copy verifies with residual fails explained; else NO-GO.
+* Language: no "solved/closed/exhausted"; every result is conditional on the stated harness, recognizer and subset.

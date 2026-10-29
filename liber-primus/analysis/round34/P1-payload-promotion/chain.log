@@ -1,0 +1,104 @@
+skip canon done 128s
+pp49-51 payload as keystream (skip-aware): tested 4 variants x 2 signs x 2 atbash x 55 pages
+  BEST score = -6.756  via ('canon_256.bin', -1, 1, 'page15', 0)
+  (English -4.3 | confirm -5.5 | noise-max -6.82)
+  hits over -5.5: 0
+  -> NULL. Payload is not a skip-aware polyalphabetic key over any single page.
+
+skip resolved done 117s
+pp49-51 payload as keystream (skip-aware): tested 4 variants x 2 signs x 2 atbash x 55 pages
+  BEST score = -6.744  via ('canon_256.bin', -1, 1, 'page15', 0)
+  (English -4.3 | confirm -5.5 | noise-max -6.82)
+  hits over -5.5: 0
+  -> NULL. Payload is not a skip-aware polyalphabetic key over any single page.
+
+{
+ "offset0": {
+  "screen": -4.104966781183446,
+  "full": -4.185689309037688,
+  "translit_head": "THEPRIMESARESACREDANDTHETOTIENTFUNCTIONI",
+  "PASS": true
+ },
+ "offset17": {
+  "screen": -4.104966781183446,
+  "full": -4.185689309037688,
+  "translit_head": "THEPRIMESARESACREDANDTHETOTIENTFUNCTIONI",
+  "PASS": true
+ }
+}
+{'mode': 'canon', 'variants': ['payload_majority', 'payload_majority_rev', 'payload_decpref', 'payload_decpref_rev'], 'B_hits': [], 'B_best_screen': -5.832911521082234, 'hexnibble_hits': [], 'hexnibble_best_screen': -6.089427955428718, 'elapsed_s': 35.1}
+{'mode': 'resolved', 'variants': ['payload_majority', 'payload_majority_rev', 'payload_decpref', 'payload_decpref_rev'], 'B_hits': [], 'B_best_screen': -5.832911521082234, 'hexnibble_hits': [], 'hexnibble_best_screen': -6.089427955428718, 'elapsed_s': 34.8}
+{
+ "note": "payload_ciphertext tests the payload as CIPHERTEXT (hypothesis opposite to a key plant); its internal self-checks are the sniff/entropy routines; no planted control in original. Control here = recoverability of a skip-OTP message under a known key via the same skipdecode.beam_decode (the instrument section 1 calls)",
+ "beam_decode_known_key": {
+  "score": -4.185689309037688,
+  "PASS": true
+ }
+}
+ct canon done 14s
+bf8b6516f
+  block0 SUB block1: ent=5.844 print=21/64 run=3  sample=51e88efa9aa4d54bb8aacf2d
+  block0 XOR block2: ent=5.750 print=22/64 run=3  sample=0254f1c2c860361c567875d3
+  block0 SUB block2: ent=5.781 print=20/64 run=3  sample=02345142b860360c5278b3d1
+  block0 XOR block3: ent=5.781 print=25/64 run=2  sample=cb7c38e3d19e179832b34d9a
+  block0 SUB block3: ent=5.769 print=25/64 run=4  sample=cb4c0861b17a1588eeafcb9a
+  block1 XOR block2: ent=5.906 print=20/64 run=4  sample=b34c4fb86ec4e1c7aece24bc
+  block1 SUB block2: ent=5.781 print=25/64 run=5  sample=b14cc3481ebc61c19acee4a4
+  block1 XOR block3: ent=5.938 print=18/64 run=3  sample=7a648699773ac043ca051cf5
+  block1 SUB block3: ent=5.707 print=30/64 run=4  sample=7a647a6717d6403d3605fc6d
+  block2 XOR block3: ent=5.738 print=26/64 run=5  sample=c928c92119fe218464cb3849
+  block2 SUB block3: ent=5.644 print=27/64 run=5  sample=c918b71ff91adf7c9c3718c9
+
+[4b] four 64-rune segments decoded as ciphertext under page-56 hash key (mod 29):
+
+[4c] block-pair mod-29 subtraction -> English sniff:
+
+[4d] hash preimage / partial match (ANEND target):
+
+========================================================================
+SUMMARY  — payload_ciphertext.py
+========================================================================
+§1 skip-aware beam (mod-29 ciphertext, 12 keys):  best=-6.855  hits=0
+   English -4.0 / confirm -5.5 / noise-max -6.82
+§2 byte transforms (54 combos): best entropy=6.587 (P1 SUB ps_digits)
+   decompression hits: 0
+§3 raw-payload compression probes: (reported inline above — no output = all binary / no hits)
+
+All §§ null.  Payload is not a compressed or skip-OTP-enciphered message
+under any tested key from the Cicada key-discipline space.
+Consistent with: either a true OTP (key unknown) or public-key/hash material.
+
+ct resolved done 13s
+bf8b6516f
+  block0 SUB block1: ent=5.844 print=21/64 run=3  sample=51e88efa9aa4d54bb8aacf2d
+  block0 XOR block2: ent=5.750 print=21/64 run=3  sample=0254f1c2c860361c567875d3
+  block0 SUB block2: ent=5.750 print=19/64 run=3  sample=02345142b860360c5278b3d1
+  block0 XOR block3: ent=5.812 print=24/64 run=2  sample=cb7c38e3d19e179832b34d9a
+  block0 SUB block3: ent=5.801 print=25/64 run=4  sample=cb4c0861b17a1588eeafcb9a
+  block1 XOR block2: ent=5.906 print=20/64 run=4  sample=b34c4fb86ec4e1c7aece24bc
+  block1 SUB block2: ent=5.781 print=25/64 run=5  sample=b14cc3481ebc61c19acee4a4
+  block1 XOR block3: ent=5.938 print=18/64 run=3  sample=7a648699773ac043ca051cf5
+  block1 SUB block3: ent=5.707 print=30/64 run=4  sample=7a647a6717d6403d3605fc6d
+  block2 XOR block3: ent=5.738 print=26/64 run=5  sample=c928c92119fe218464cb3849
+  block2 SUB block3: ent=5.676 print=27/64 run=5  sample=c918b71ff91adf7c9c3718c9
+
+[4b] four 64-rune segments decoded as ciphertext under page-56 hash key (mod 29):
+
+[4c] block-pair mod-29 subtraction -> English sniff:
+
+[4d] hash preimage / partial match (ANEND target):
+
+========================================================================
+SUMMARY  — payload_ciphertext.py
+========================================================================
+§1 skip-aware beam (mod-29 ciphertext, 12 keys):  best=-6.927  hits=0
+   English -4.0 / confirm -5.5 / noise-max -6.82
+§2 byte transforms (54 combos): best entropy=6.602 (P1 SUB ps_digits)
+   decompression hits: 0
+§3 raw-payload compression probes: (reported inline above — no output = all binary / no hits)
+
+All §§ null.  Payload is not a compressed or skip-OTP-enciphered message
+under any tested key from the Cicada key-discipline space.
+Consistent with: either a true OTP (key unknown) or public-key/hash material.
+
+CHAIN-DONE

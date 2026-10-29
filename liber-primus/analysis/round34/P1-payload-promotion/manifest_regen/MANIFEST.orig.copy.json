@@ -1,0 +1,2314 @@
+{
+ "schema_version": "1.0",
+ "generated_utc": "2026-08-19T17:58:51Z",
+ "generator": "liber-primus/handoff/capsule/build_manifest.py",
+ "repo_root_relative_paths": true,
+ "trust_anchor": {
+  "command": "python3 liber-primus/tests/validate.py",
+  "must_print": "ALL VALIDATIONS PASSED",
+  "why": "reproduces all 5 solved LP2 pages from runes.canonical through this repo's cipher rig; nothing else in the capsule is trustworthy if this fails"
+ },
+ "status_vocabulary": {
+  "in-repo": "committed; a fresh clone has the bytes",
+  "gitignored-fetchable": "not committed; the mirrors below reproduce it",
+  "derived": "computed from another capsule item by a script in this repo",
+  "LOST": "authoritative bytes not retrievable from any known source",
+  "RECOVERED": "was LOST in a prior round; this capsule re-established a live source"
+ },
+ "summary": {
+  "n_items": 103,
+  "by_status": {
+   "in-repo": 23,
+   "derived": 1,
+   "gitignored-fetchable": 78,
+   "RECOVERED": 1
+  },
+  "hash_verified_locally": 103,
+  "published_sha1_cross_checked": 56,
+  "published_sha1_matches": 56
+ },
+ "items": [
+  {
+   "id": "runes.canonical",
+   "role": "THE PRIMARY INPUT. Canonical rune transcription of Liber Primus part 2 (onion7 pages 0-57), '%'-delimited per page. Every attack in this repo reads this file.",
+   "path": "liber-primus/data/krisyotam_runes.txt",
+   "status": "in-repo",
+   "provenance": [
+    "rtkd/iddqd 2017 community-root transcription lineage (krisyotam copy)",
+    "All community lineages verified rune-identical -- see liber-primus/analysis/transcription/",
+    "Independently corroborated: liber-primus/tests/validate.py reproduces all 5 solved pages from these exact runes, which a materially wrong transcription could not do."
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/rtkd/iddqd/master/liber-primus__transcription--master/liber-primus__transcription--master.txt",
+    "https://github.com/relikd/LiberPrayground/tree/master/pages"
+   ],
+   "notes": "If you replace this file you invalidate every result in the repo. Re-run tests/validate.py before and after any change.",
+   "sha256": "5e0003aa7f7dde3b238d17c5f964790dbf6bf9db5edacc4a5ec0bad81c6f4bce",
+   "sha1": "79e84e439aa12e698e933e0ec9e48b9a021da0b5",
+   "bytes": 43739,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "runes.unsolved_stream",
+   "role": "THE ATTACK TARGET. The 12,956 rune indices of the unsolved pages (LP2 pages 0-54), in reading order, as produced by analysis/round11/lib_numchannel.py nc.unsolved().",
+   "path": null,
+   "status": "derived",
+   "derived_from": [
+    "runes.canonical"
+   ],
+   "derivation": "python3 -c \"import sys; sys.path[:0]=['liber-primus/src','liber-primus/analysis/round11']; import lib_numchannel as nc; print(len(nc.unsolved()))\"",
+   "length_runes": 12956,
+   "sha256": "023312066df471005264b9cbe7997cb77d2a9a6a2dc9b3316d22674023af1585",
+   "sha256_of": "comma-joined decimal rune indices, ASCII, no trailing newline",
+   "bytes": 34480,
+   "hash_verified_locally": true,
+   "provenance": [
+    "derived from runes.canonical by this repo"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "This is the single number that must match for any future re-analysis to be comparable to this repo's: 12,956 runes. If your pipeline yields a different count or a different SHA-256 here, stop and reconcile before reading any result in this repo as a comparison."
+  },
+  {
+   "id": "dataset.liber_primus_json",
+   "role": "Machine-readable LP2 dataset: gematria table, per-page runes/transliteration/indices, verified image hashes, solved-page key reference. Built by dataset/build_dataset.py.",
+   "path": "liber-primus/dataset/liber_primus.json",
+   "status": "in-repo",
+   "provenance": [
+    "built in-repo from runes.canonical + images.onion7.* + analysis/stego/provenance.json"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "Rebuild: python3 liber-primus/dataset/build_dataset.py (needs data/relikd/ present).",
+   "sha256": "d404fb7a1b09751c4058f6a7603114fc3d6bb8de4446067b053846ad6e35b763",
+   "sha1": "81585352b3964ded54e584f29f03d1ad3be2f07a",
+   "bytes": 184132,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "gematria.primus",
+   "role": "The mod-29 Gematria Primus: rune -> index -> transliteration -> prime. The alphabet every cipher in this repo operates over.",
+   "path": "liber-primus/src/lp/gematria.py",
+   "status": "in-repo",
+   "provenance": [
+    "Cicada 3301's own published Gematria Primus table (2013 Liber Primus page 'A WARNING' context); universally agreed across the solver community"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "",
+   "sha256": "7b4f5c30137741ab3c33638fb91076c4b1f228229dc3634ba2e6ef232cd47f04",
+   "sha1": "c6b3a47384c71039cd97ffc328fcf865344dda68",
+   "bytes": 4283,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "groundtruth.validate",
+   "role": "THE TRUST ANCHOR. Reproduces all 5 solved LP2 pages from runes.canonical through this repo's cipher rig. Must print 'ALL VALIDATIONS PASSED' before any result here is trustworthy.",
+   "path": "liber-primus/tests/validate.py",
+   "status": "in-repo",
+   "provenance": [
+    "in-repo; asserts against community-accepted solved-page plaintexts"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "Run first, always: python3 liber-primus/tests/validate.py",
+   "sha256": "14d474baa289fcdec49c8bd479b59e69aa880ee9f3e4c918dd1c6033875988c6",
+   "sha1": "1ffa919e0adcbac1ebed1b274dba690ebf8dc113",
+   "bytes": 3607,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "groundtruth.scream314_lp",
+   "role": "THE VALIDATION CORPUS. scream314's Liber Primus markdown: per-page runes for LP1 (17 pages) and LP2 (58 pages, 0-57) with the solved pages' documented transforms. This is the file tests/validate.py actually parses (via src/lp/corpus.py) to re-derive the five solved pages.",
+   "path": "liber-primus/data/scream314_lp.md",
+   "status": "in-repo",
+   "provenance": [
+    "scream314's Liber Primus writeup, a community compilation of the published pages and their accepted solutions"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://github.com/scream314/cicada3301"
+   ],
+   "notes": "Without this file tests/validate.py cannot run, and without validate.py nothing in this repo is trustworthy. It is committed for exactly that reason.",
+   "sha256": "0f7545d470f2056b45b5de2c8c116ecdea66969fdca6be57ccbd8e591e40ee92",
+   "sha1": "8cb48462d5d9a3a40b4a3bb4a421d1db9db1a252",
+   "bytes": 137957,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "groundtruth.solved_plaintext",
+   "role": "Solved-page plaintexts (LP1 + LP2 pages 55-57 and the solved LP2 pages), used as the positive-control corpus and as a candidate keytext.",
+   "path": "liber-primus/data/keys/solved_plaintext.txt",
+   "status": "in-repo",
+   "provenance": [
+    "community-accepted solved-page decryptions, cross-checked by tests/validate.py"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "",
+   "sha256": "821cb3c89872bc33114055c9cdf81c7b38b33d3ac5711eaf753eeebaeefc6473",
+   "sha1": "b92e09db81b3607ef427a2a9d7a9f7314db5a7b0",
+   "bytes": 17388,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "groundtruth.provenance_stego",
+   "role": "The 56/56 SHA-1 provenance table tying the circulating page images to the archived onion7 dump. Cross-checked and extended to SHA-256 by this capsule.",
+   "path": "liber-primus/analysis/stego/provenance.json",
+   "status": "in-repo",
+   "provenance": [
+    "computed in-repo against archive.org item ky2khlqdf7qdznac.onion files.xml"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/metadata/ky2khlqdf7qdznac.onion",
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/ky2khlqdf7qdznac.onion_files.xml"
+   ],
+   "notes": "",
+   "sha256": "dac4f43441241977c39da07256e9195652663bf3d8d9735fea7eee04c442c395",
+   "sha1": "d6e8b091be1f87576418d47b4d12ad9d8583aceb",
+   "bytes": 9052,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "images.onion7.p00",
+   "role": "LP2 page image 0 (onion7 file 0.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p0.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/0.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "197e1e153958b9a2736b09c10eea7d8bb00e0632fd22a8d9606840becc79942e",
+   "sha1": "d7142bbee308885827562c13ba5acf21d5c8b328",
+   "bytes": 695525,
+   "hash_verified_locally": true,
+   "published_sha1": "d7142bbee308885827562c13ba5acf21d5c8b328",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p01",
+   "role": "LP2 page image 1 (onion7 file 1.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p1.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/1.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "f804fae06a68315eb6206158a2b34f55fe157c7d663fa961639fbe8dfc52a39f",
+   "sha1": "924396ab9595b410b3c9a31704c0bffa9c27f116",
+   "bytes": 667228,
+   "hash_verified_locally": true,
+   "published_sha1": "924396ab9595b410b3c9a31704c0bffa9c27f116",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p02",
+   "role": "LP2 page image 2 (onion7 file 2.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p2.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/2.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "74e955ebe248e6d7442e2d2cd3029951f258017987d5762f48e7897cf6611e34",
+   "sha1": "db77c83affded0aec5a2309ec4bffdc67cea0bda",
+   "bytes": 595338,
+   "hash_verified_locally": true,
+   "published_sha1": "db77c83affded0aec5a2309ec4bffdc67cea0bda",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p03",
+   "role": "LP2 page image 3 (onion7 file 3.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p3.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/3.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "1453ef27ea607c6ea378d6472c908e77c2881caba33c72d1893caddee8dc1117",
+   "sha1": "9912a8a4b1a41d582b01a268d9d6fa111d5d9eff",
+   "bytes": 599916,
+   "hash_verified_locally": true,
+   "published_sha1": "9912a8a4b1a41d582b01a268d9d6fa111d5d9eff",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p04",
+   "role": "LP2 page image 4 (onion7 file 4.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p4.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/4.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "72bea2bfcd4f1b8e2095f882811d0f294e329d4b1bfe68f8ed5ec726d0a1e9d6",
+   "sha1": "b28c04b2fc7fc1a04988543f0b899c0460124dd8",
+   "bytes": 676634,
+   "hash_verified_locally": true,
+   "published_sha1": "b28c04b2fc7fc1a04988543f0b899c0460124dd8",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p05",
+   "role": "LP2 page image 5 (onion7 file 5.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p5.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/5.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "bcef0a3b80532b25a013052ec4394ab47ab69ce675b5b3db59cbad044e7adabd",
+   "sha1": "c6703bb497b355093ba50bb5798af412dca44da4",
+   "bytes": 667716,
+   "hash_verified_locally": true,
+   "published_sha1": "c6703bb497b355093ba50bb5798af412dca44da4",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p06",
+   "role": "LP2 page image 6 (onion7 file 6.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p6.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/6.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "4c7dce370242c67a7b785828d75547c042717b221d9d565d7dd097834c7b25d7",
+   "sha1": "059bb504ee1660a6eed9661a39374b6ee4683b8f",
+   "bytes": 556991,
+   "hash_verified_locally": true,
+   "published_sha1": "059bb504ee1660a6eed9661a39374b6ee4683b8f",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p07",
+   "role": "LP2 page image 7 (onion7 file 7.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p7.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/7.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "91a726a7dd59c6caa4d736b9ce72ceba0a2fa827d6b69a2d4057562b9303636c",
+   "sha1": "a90f190a8d9cffa5726d7e45064e20d7de72c3cf",
+   "bytes": 580968,
+   "hash_verified_locally": true,
+   "published_sha1": "a90f190a8d9cffa5726d7e45064e20d7de72c3cf",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p08",
+   "role": "LP2 page image 8 (onion7 file 8.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p8.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/8.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "6b1026dfdfb447a5a76819883fe576254e8a47fdf1e97ecf1825166833bc6f00",
+   "sha1": "f01689641f91c4877587532c62c619d36f70c21c",
+   "bytes": 612380,
+   "hash_verified_locally": true,
+   "published_sha1": "f01689641f91c4877587532c62c619d36f70c21c",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p09",
+   "role": "LP2 page image 9 (onion7 file 9.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p9.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/9.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "b8b7ee73d51de45833b36d864cb1c9067432cb4efadcf6c319eaef94d52c929d",
+   "sha1": "c73790a4770481bf19276431d66b5f93bb93ec20",
+   "bytes": 639920,
+   "hash_verified_locally": true,
+   "published_sha1": "c73790a4770481bf19276431d66b5f93bb93ec20",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p10",
+   "role": "LP2 page image 10 (onion7 file 10.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p10.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/10.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "1716e282c1d5e8a9ff911c01621e9b195d4728c7fa55ac857176a473eaba3239",
+   "sha1": "3aacdab4ed03250e8df2afe6bffd7d9cc9cb5d2d",
+   "bytes": 618194,
+   "hash_verified_locally": true,
+   "published_sha1": "3aacdab4ed03250e8df2afe6bffd7d9cc9cb5d2d",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p11",
+   "role": "LP2 page image 11 (onion7 file 11.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p11.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/11.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "26f0cb307a23dcb2adf03a70fb9c6da89746258a90fd9be5383b2757ab4aad30",
+   "sha1": "4da8c96a532a8b345ada70ddfeb7086e361480cd",
+   "bytes": 609111,
+   "hash_verified_locally": true,
+   "published_sha1": "4da8c96a532a8b345ada70ddfeb7086e361480cd",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p12",
+   "role": "LP2 page image 12 (onion7 file 12.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p12.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/12.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "6961f3f8eedba5b802fee9b40ad91fa604cd4e4394f9ba72853141ad71b19b21",
+   "sha1": "e0be228226845a112f798ef802bba7533186ed6c",
+   "bytes": 609412,
+   "hash_verified_locally": true,
+   "published_sha1": "e0be228226845a112f798ef802bba7533186ed6c",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p13",
+   "role": "LP2 page image 13 (onion7 file 13.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p13.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/13.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "3481daeed3ab2bea6effbe36eec22f74955bce87ca4b4ae8674be1d3f84ea08d",
+   "sha1": "32f9199b0e7e5f346759a3191f818e87945104ca",
+   "bytes": 619368,
+   "hash_verified_locally": true,
+   "published_sha1": "32f9199b0e7e5f346759a3191f818e87945104ca",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p14",
+   "role": "LP2 page image 14 (onion7 file 14.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p14.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/14.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "861037ea304b4d3b347cce18d97f25146f6f318cb748e59e6140d9eeaef6abd4",
+   "sha1": "45ddd43cfc1c00a1577a0da1f5484cdbbc782f5b",
+   "bytes": 436699,
+   "hash_verified_locally": true,
+   "published_sha1": "45ddd43cfc1c00a1577a0da1f5484cdbbc782f5b",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p15",
+   "role": "LP2 page image 15 (onion7 file 15.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p15.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/15.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "5543cfce96493b86eece3195b3f5ea6e779ff41551676600b0c2479fc18c0ec5",
+   "sha1": "52ecfae46681976e25e4189f15acf9a58e65fee8",
+   "bytes": 512272,
+   "hash_verified_locally": true,
+   "published_sha1": "52ecfae46681976e25e4189f15acf9a58e65fee8",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p16",
+   "role": "LP2 page image 16 (onion7 file 16.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p16.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/16.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "39780578c48d318310c3bccb0bc30e96adcb5b2de6e4a965000c55465375861d",
+   "sha1": "074024bb902225f31e47090edef81fe30b2e4fb5",
+   "bytes": 550563,
+   "hash_verified_locally": true,
+   "published_sha1": "074024bb902225f31e47090edef81fe30b2e4fb5",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p17",
+   "role": "LP2 page image 17 (onion7 file 17.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p17.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/17.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "f123b66eefa1b4409750c5ea3879bfe64728c6aa1e1398cb8fbd0fa8b1cf1f50",
+   "sha1": "f6517191e1a6d6907cb4292ce6a697fa951f573a",
+   "bytes": 541530,
+   "hash_verified_locally": true,
+   "published_sha1": "f6517191e1a6d6907cb4292ce6a697fa951f573a",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p18",
+   "role": "LP2 page image 18 (onion7 file 18.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p18.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/18.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "90fa414c464e86435bdb22f051f9670e886e3dd1c0b6d8954be94b86188da94b",
+   "sha1": "cff96ab6f34872eb8de43883ed98b1c8eb2f15fc",
+   "bytes": 541718,
+   "hash_verified_locally": true,
+   "published_sha1": "cff96ab6f34872eb8de43883ed98b1c8eb2f15fc",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p19",
+   "role": "LP2 page image 19 (onion7 file 19.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p19.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/19.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "b57ec6b12cb9a505eec6a77c64ddf63bf30a1bfb44dd5cdca35d900feed1b651",
+   "sha1": "7ca3148df2550a0800ae0d0d77bf3193bbca9dd2",
+   "bytes": 540260,
+   "hash_verified_locally": true,
+   "published_sha1": "7ca3148df2550a0800ae0d0d77bf3193bbca9dd2",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p20",
+   "role": "LP2 page image 20 (onion7 file 20.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p20.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/20.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "1ceef52570621785a021febff39003538f810179e5767ef5279a59c0c05c9985",
+   "sha1": "50c9aa2f2fe066384f785544e45614446e671cc0",
+   "bytes": 535883,
+   "hash_verified_locally": true,
+   "published_sha1": "50c9aa2f2fe066384f785544e45614446e671cc0",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p21",
+   "role": "LP2 page image 21 (onion7 file 21.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p21.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/21.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "c453ad16212b335a065069e9f755791b909225ed250b579eab205655e7a80c10",
+   "sha1": "454b76179267d2319856b9e68d547321900e35ac",
+   "bytes": 550964,
+   "hash_verified_locally": true,
+   "published_sha1": "454b76179267d2319856b9e68d547321900e35ac",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p22",
+   "role": "LP2 page image 22 (onion7 file 22.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p22.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/22.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "e232eb4649f89125d0edeab7022cbe189185d46ccbf0823fd964b6e71e9bafe7",
+   "sha1": "0adda66252effb1cdceb60214242a18764a16153",
+   "bytes": 512143,
+   "hash_verified_locally": true,
+   "published_sha1": "0adda66252effb1cdceb60214242a18764a16153",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p23",
+   "role": "LP2 page image 23 (onion7 file 23.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p23.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/23.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "d31a23cb3a2e50b505e1c468ffbb0106f5353f469bb5958b87ab929fc88decee",
+   "sha1": "9ff909b23c90db950b710a024446498ba8ad098a",
+   "bytes": 484095,
+   "hash_verified_locally": true,
+   "published_sha1": "9ff909b23c90db950b710a024446498ba8ad098a",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p24",
+   "role": "LP2 page image 24 (onion7 file 24.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p24.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/24.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "62148ef272d17bcedf5df30f6cc9e52df127113c18c1cf57ea92c75feedfce80",
+   "sha1": "92d1f17255684072ea789962da4e411e8ef0fe82",
+   "bytes": 654761,
+   "hash_verified_locally": true,
+   "published_sha1": "92d1f17255684072ea789962da4e411e8ef0fe82",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p25",
+   "role": "LP2 page image 25 (onion7 file 25.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p25.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/25.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "a7d6e597debff4f7c5b3516e1b02ca2e4fa5b37d972f567264ed2ec845013cff",
+   "sha1": "aa6346b49071d331689070c3c8dbe28238daa623",
+   "bytes": 643754,
+   "hash_verified_locally": true,
+   "published_sha1": "aa6346b49071d331689070c3c8dbe28238daa623",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p26",
+   "role": "LP2 page image 26 (onion7 file 26.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p26.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/26.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "ed88f5fcdca3d1f846538caa8be979aa28cde969eb99c9464d60daa26c1f9af7",
+   "sha1": "96608fbbd057ed648c993842892a7cf21cab9096",
+   "bytes": 677224,
+   "hash_verified_locally": true,
+   "published_sha1": "96608fbbd057ed648c993842892a7cf21cab9096",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p27",
+   "role": "LP2 page image 27 (onion7 file 27.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p27.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/27.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "c92c972f41dd038e136d8589aa7b113e268c36f2860c279cce712cd037cb3a8e",
+   "sha1": "fb7121a6a79397fcf7f24286d92cc9a63611922a",
+   "bytes": 580041,
+   "hash_verified_locally": true,
+   "published_sha1": "fb7121a6a79397fcf7f24286d92cc9a63611922a",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p28",
+   "role": "LP2 page image 28 (onion7 file 28.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p28.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/28.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "318bb587f4dcab11b4db7ba3b8bb13b7913ca79bb409e1c987595503a22e0522",
+   "sha1": "62498d4dcc149d9234bcb497142d0f44dd315f52",
+   "bytes": 542267,
+   "hash_verified_locally": true,
+   "published_sha1": "62498d4dcc149d9234bcb497142d0f44dd315f52",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p29",
+   "role": "LP2 page image 29 (onion7 file 29.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p29.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/29.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "6f769f266865ddb30b0cb34e82c664a87ba409f674dc52ad3af7c85be443fb5c",
+   "sha1": "73abec11e7a661e011e45ea821b7dda979837c74",
+   "bytes": 546105,
+   "hash_verified_locally": true,
+   "published_sha1": "73abec11e7a661e011e45ea821b7dda979837c74",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p30",
+   "role": "LP2 page image 30 (onion7 file 30.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p30.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/30.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "701b66d1fe98f730dadc5d7d8e1bc3b9a8e20547c1ffb423011f436037dba8b0",
+   "sha1": "ae0564a39bb509667e7ec4183300b35e10a090a4",
+   "bytes": 539780,
+   "hash_verified_locally": true,
+   "published_sha1": "ae0564a39bb509667e7ec4183300b35e10a090a4",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p31",
+   "role": "LP2 page image 31 (onion7 file 31.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p31.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/31.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "0cb60ca12b1bf5f9fc03026314018a0d5ee73f813ac86ca4197629c60f2cb80a",
+   "sha1": "c81bd45df63c13dd2da1a7d8b062d93f051dd7d2",
+   "bytes": 531046,
+   "hash_verified_locally": true,
+   "published_sha1": "c81bd45df63c13dd2da1a7d8b062d93f051dd7d2",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p32",
+   "role": "LP2 page image 32 (onion7 file 32.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p32.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/32.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "c0f778187a8e9ddbfc667a65929ac567430a2e38278a2022377984ac084e5f72",
+   "sha1": "e2d1df4a1133451f74204e4e9aeaad9e779a2927",
+   "bytes": 362637,
+   "hash_verified_locally": true,
+   "published_sha1": "e2d1df4a1133451f74204e4e9aeaad9e779a2927",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p33",
+   "role": "LP2 page image 33 (onion7 file 33.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p33.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/33.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "13ff4c8d8ab934032a001b8c1fda16433aa44a38dd7272b3ff0dd7ac8300c62d",
+   "sha1": "33d4f93c96d60af268033d978f854ecdc103e329",
+   "bytes": 525652,
+   "hash_verified_locally": true,
+   "published_sha1": "33d4f93c96d60af268033d978f854ecdc103e329",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p34",
+   "role": "LP2 page image 34 (onion7 file 34.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p34.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/34.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "6f1b4c04b64ee54c689478bd3986bb6ab8a3b81f48780562094e9f248e4e87f8",
+   "sha1": "307cc4f2f33cd46670e4deecf4a0f2adffe7b352",
+   "bytes": 555050,
+   "hash_verified_locally": true,
+   "published_sha1": "307cc4f2f33cd46670e4deecf4a0f2adffe7b352",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p35",
+   "role": "LP2 page image 35 (onion7 file 35.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p35.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/35.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "d713dd913d9b835ac61f298e8c0855f5093599e348edaedef964710db8664afa",
+   "sha1": "8ac0a9c6241f052ecb6b23881d43d3aad3d887bb",
+   "bytes": 574580,
+   "hash_verified_locally": true,
+   "published_sha1": "8ac0a9c6241f052ecb6b23881d43d3aad3d887bb",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p36",
+   "role": "LP2 page image 36 (onion7 file 36.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p36.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/36.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "3b54a31a9e796e2c01b4e80d46e1092dee2e1142a7c61873e282078e2c776cb9",
+   "sha1": "844e74bea13a7a194de8d3059029e43b87331856",
+   "bytes": 511099,
+   "hash_verified_locally": true,
+   "published_sha1": "844e74bea13a7a194de8d3059029e43b87331856",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p37",
+   "role": "LP2 page image 37 (onion7 file 37.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p37.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/37.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "cee96d7e71b7de4d4e57237faacefad791229c153202e8224e4bedda45fb8f43",
+   "sha1": "8195e512c1f21a1f21c5a98d28f97c9249fff037",
+   "bytes": 503830,
+   "hash_verified_locally": true,
+   "published_sha1": "8195e512c1f21a1f21c5a98d28f97c9249fff037",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p38",
+   "role": "LP2 page image 38 (onion7 file 38.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p38.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/38.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "aec1898f599f57265d6422f3082a481db94a27f62230affbadee595d05077f8c",
+   "sha1": "daa51a5f8c664b17304be135f62eb7be59414584",
+   "bytes": 519224,
+   "hash_verified_locally": true,
+   "published_sha1": "daa51a5f8c664b17304be135f62eb7be59414584",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p39",
+   "role": "LP2 page image 39 (onion7 file 39.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p39.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/39.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "d1b7ea5a6ffb79709753e3565d1d46e05edbe3d82ca70c3ed6065d46b131bd00",
+   "sha1": "0ad4fe030f84cb08f0e7698be57982ac32a7a0cb",
+   "bytes": 541379,
+   "hash_verified_locally": true,
+   "published_sha1": "0ad4fe030f84cb08f0e7698be57982ac32a7a0cb",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p40",
+   "role": "LP2 page image 40 (onion7 file 40.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p40.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/40.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "3f5af995b39f94f268d4aa94825a10f2429f4a3affa1921a7f627e6d1bfcfb69",
+   "sha1": "b51cd93e469ddaa7eca21170a54005f8d58dfd74",
+   "bytes": 746355,
+   "hash_verified_locally": true,
+   "published_sha1": "b51cd93e469ddaa7eca21170a54005f8d58dfd74",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p41",
+   "role": "LP2 page image 41 (onion7 file 41.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p41.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/41.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "134052dd794a7d11185cc6d942de3f9839bd2b767e0845b0f059f711b269bee2",
+   "sha1": "06218dc8fe186512279c8c8ac7cd918f08f91935",
+   "bytes": 785555,
+   "hash_verified_locally": true,
+   "published_sha1": "06218dc8fe186512279c8c8ac7cd918f08f91935",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p42",
+   "role": "LP2 page image 42 (onion7 file 42.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p42.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/42.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "e523427112ec6259e97d1711f0420469d961324dedb7dc4eac67ecd9543729f6",
+   "sha1": "58178cbf869acbbd3d1bdaafefbe88a19a2d5a06",
+   "bytes": 788795,
+   "hash_verified_locally": true,
+   "published_sha1": "58178cbf869acbbd3d1bdaafefbe88a19a2d5a06",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p43",
+   "role": "LP2 page image 43 (onion7 file 43.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p43.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/43.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "dc4cf22565ccabb2b3d366eb8bd6b74520e3169133a7bd725373aad2f49ac415",
+   "sha1": "2a910316d17788802d14565e94e4639bc2affd98",
+   "bytes": 792166,
+   "hash_verified_locally": true,
+   "published_sha1": "2a910316d17788802d14565e94e4639bc2affd98",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p44",
+   "role": "LP2 page image 44 (onion7 file 44.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p44.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/44.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "463cf95229ccb6ae179cdd0fce2338df9f616da0db38813573a9fb1706846208",
+   "sha1": "37eec3154648634104b2a4fe0391ebc8bd9d5f69",
+   "bytes": 796475,
+   "hash_verified_locally": true,
+   "published_sha1": "37eec3154648634104b2a4fe0391ebc8bd9d5f69",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p45",
+   "role": "LP2 page image 45 (onion7 file 45.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p45.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/45.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "898b614af5473937a9abfcdc618160ba80ea44b07d4a479da4526be6e33f28d9",
+   "sha1": "662b1894d131d03988fd7140c42d9b8ad596bc85",
+   "bytes": 772704,
+   "hash_verified_locally": true,
+   "published_sha1": "662b1894d131d03988fd7140c42d9b8ad596bc85",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p46",
+   "role": "LP2 page image 46 (onion7 file 46.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p46.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/46.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "05538b8ebf9ed2a5716d94284a753dd26582a0227f139cc4a27dc3f07b15d301",
+   "sha1": "1bd1e43eae1c4010da97ecfc13d7e4262d69712f",
+   "bytes": 782516,
+   "hash_verified_locally": true,
+   "published_sha1": "1bd1e43eae1c4010da97ecfc13d7e4262d69712f",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p47",
+   "role": "LP2 page image 47 (onion7 file 47.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p47.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/47.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "08ed86be5561c09ce5c773d8001b290cc505436db89637d66ea0f5a15818d1c8",
+   "sha1": "368421565f904c82e1dde17238353d5f1aad560a",
+   "bytes": 792027,
+   "hash_verified_locally": true,
+   "published_sha1": "368421565f904c82e1dde17238353d5f1aad560a",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p48",
+   "role": "LP2 page image 48 (onion7 file 48.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p48.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/48.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "341da69e9d579528dd17b7659e23de210720429111dc76c512843eb1983100ea",
+   "sha1": "e10a201d5a6e4daa5783447a7f6fbe763664d576",
+   "bytes": 803285,
+   "hash_verified_locally": true,
+   "published_sha1": "e10a201d5a6e4daa5783447a7f6fbe763664d576",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p49",
+   "role": "LP2 page image 49 (onion7 file 49.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p49.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/49.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "aa3f89156756edf8b796a470a14a3db96516ad2fedf1ed98ccabc1a1cddc0335",
+   "sha1": "f67c79019c1530dfebad0df8a7761e8ff93e927d",
+   "bytes": 651504,
+   "hash_verified_locally": true,
+   "published_sha1": "f67c79019c1530dfebad0df8a7761e8ff93e927d",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p50",
+   "role": "LP2 page image 50 (onion7 file 50.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p50.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/50.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "bd6d4a3678fa37197bd43c58861273dc59604b5b68dfa20de1ec13f0704be776",
+   "sha1": "57a2e175515a32e32c3f36992dea3d9796460836",
+   "bytes": 581983,
+   "hash_verified_locally": true,
+   "published_sha1": "57a2e175515a32e32c3f36992dea3d9796460836",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p51",
+   "role": "LP2 page image 51 (onion7 file 51.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p51.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/51.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "2b9d60f62b2bc65d040f7ae1bc0960d5a44ca251d2730d049a618074a83e208b",
+   "sha1": "885108c54a97373ee9881b3b412e4cd3bddb4375",
+   "bytes": 661727,
+   "hash_verified_locally": true,
+   "published_sha1": "885108c54a97373ee9881b3b412e4cd3bddb4375",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p52",
+   "role": "LP2 page image 52 (onion7 file 52.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p52.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/52.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "d34a38f51759284f68fb916122ed6774c3b498dddb5537929355ac674453a0f3",
+   "sha1": "0d2253b312e6c7024f48ffd02446e647e38361ae",
+   "bytes": 792979,
+   "hash_verified_locally": true,
+   "published_sha1": "0d2253b312e6c7024f48ffd02446e647e38361ae",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p53",
+   "role": "LP2 page image 53 (onion7 file 53.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p53.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/53.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "4ec7293ba72bd52384787646d204c8a68fefaf2d22673c40d27f23812d424548",
+   "sha1": "9573f8e79e4dc37078943a067ff2401091123bb5",
+   "bytes": 753790,
+   "hash_verified_locally": true,
+   "published_sha1": "9573f8e79e4dc37078943a067ff2401091123bb5",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p54",
+   "role": "LP2 page image 54 (onion7 file 54.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p54.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/54.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "dbc2cfca46a150689e60ea83015dcd54ace81245711fefe114d6076b96412ec4",
+   "sha1": "20e52d4839ea75b094a5b188b5aa880c7f7947bb",
+   "bytes": 774295,
+   "hash_verified_locally": true,
+   "published_sha1": "20e52d4839ea75b094a5b188b5aa880c7f7947bb",
+   "published_sha1_match": true
+  },
+  {
+   "id": "images.onion7.p55",
+   "role": "LP2 page image 55 (onion7 file 55.jpg), 2400x3600 JPEG, 400 DPI, Artifex/Ghostscript sRGB ICC. The primary-source artifact behind runes.canonical.",
+   "path": "liber-primus/data/relikd/p55.jpg",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Cicada 3301 onion7 hidden service ky2khlqdf7qdznac.onion, May 2014 LP2 dump",
+    "archived: Internet Archive item ky2khlqdf7qdznac.onion",
+    "circulating copy: relikd/LiberPrayground -- proven SHA-1 identical to the archived onion dump, 56/56 (analysis/stego/provenance.json)"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/ky2khlqdf7qdznac.onion/55.jpg",
+    "https://github.com/relikd/LiberPrayground",
+    "https://github.com/rtkd/iddqd (unmodified files)",
+    "https://github.com/micheloosterhof/cicada-2014 (original 2014-05 capture)"
+   ],
+   "notes": "Gitignored under 'liber-primus/data/relikd/'. published_sha1 is the value in the archived onion7 files.xml; published_sha1_match true means the local copy IS the original bytes.",
+   "sha256": "a80191592add93a86ed3868f9e4e6ba3944ec20c9ffccc7d3e221b461344beba",
+   "sha1": "7470b215fc0b66c02512c109a0613ada2b881f81",
+   "bytes": 614928,
+   "hash_verified_locally": true,
+   "published_sha1": "7470b215fc0b66c02512c109a0613ada2b881f81",
+   "published_sha1_match": true
+  },
+  {
+   "id": "payload.canon_256",
+   "role": "The 256-byte binary payload canonicalised from LP2 pages 49-51 (the only non-runic payload in the unsolved corpus). Input to the B-05 'payload as PRF seed' lane.",
+   "path": "liber-primus/analysis/pp49_51/canon_256.bin",
+   "status": "in-repo",
+   "provenance": [
+    "canonicalised in-repo by analysis/pp49_51/canonicalize.py from the page 49-51 hex digits as transcribed off images.onion7.p49/p50/p51"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "CAVEAT recorded in analysis/pp49_51/CAMPAIGN-VII-FINDINGS.md and repeated in CAMPAIGN-IX: 6 bytes are CONTESTED (indices 25, 175, 182, 199, 215, 237). They have never been resolved by a Latin/digit OCR. Any negative result over this payload is conditional on those 6 bytes. See PARKED.md item P-07.",
+   "sha256": "4c8dc85531d256793a6d0d318b8845869b4983e672077b094ed955bde92226d5",
+   "sha1": "a26e545e456628f7eeb9228ab9fb9bcc01abab64",
+   "bytes": 256,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "payload.canon_256_decpref",
+   "role": "Alternate canonicalisation of the pages 49-51 payload (decimal-preferring reading).",
+   "path": "liber-primus/analysis/pp49_51/canon_256_decpref.bin",
+   "status": "in-repo",
+   "provenance": [
+    "canonicalised in-repo by analysis/pp49_51/canonicalize.py"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "",
+   "sha256": "0a3aa3c813eddcf7f99ef9794c0e790f2a3fd86ea810a100d7113eb1beebacbd",
+   "sha1": "b73196dfed572b3c16f9b365b63f3859fd53a5f0",
+   "bytes": 256,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "payload.canonicalize_script",
+   "role": "The script that turns the transcribed pages 49-51 characters into canon_256.bin.",
+   "path": "liber-primus/analysis/pp49_51/canonicalize.py",
+   "status": "in-repo",
+   "provenance": [
+    "in-repo"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "",
+   "sha256": "e02f4cb2899d791b2c0a8a61cbe44de7d39231af1e488d5fb444f5f201c28d6c",
+   "sha1": "1a800fd5d3795c6502e0900b75b416ac59c9fd2b",
+   "bytes": 5656,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "pads.cicadaos.DATA_560.17",
+   "role": "CicadaOS DATA/560.17 -- 1,183,811 B binary blob. Candidate authored key material; fed as a mod-29 keystream under the skip-aware beam decoder in Round 12 front A1 (result: NEGATIVE).",
+   "path": "liber-primus/analysis/round12/A1/pads/DATA_560.17",
+   "status": "in-repo",
+   "provenance": [
+    "CicadaOS 2013 bootable ISO shipped by Cicada 3301 (the '3301.iso' / Instar Emergence stage). These are the author's own binary blobs.",
+    "Round 12 front A1 fetched them from the cicada-solvers community archive."
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/3301.iso/3301.iso/DATA%2F560.17",
+    "https://archive.org/details/3301.iso",
+    "https://archive.org/download/3301.iso/3301.iso  (whole ISO, 136,398,848 B, sha1 df433cba87644b35cbc47f702a02e2b58d90af6a; supports HTTP Range)",
+    "https://archive.org/download/3301.iso/3301.iso/  (archive.org serves an inner-file listing and streams individual members)"
+   ],
+   "notes": "VERIFIED 2026-08-19 byte-identical to the copy inside the authoritative archive.org 3301.iso (sha256 d5676b1e...). This mirror copy is sound.",
+   "sha256": "d5676b1e01fd371cb13415b59b2eca4336e96f7bb05e789198b8d6baab580c19",
+   "sha1": "60635c1730e51aebbbe5f12679c1ce8239f02d73",
+   "bytes": 1183811,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "pads.cicadaos.DATA__560.00.TRUNCATED",
+   "role": "CicadaOS DATA/_560.00 as fetched from the cicada-solvers community archive and ACTUALLY TESTED by Round 12 front A1 -- 2,412,544 B.",
+   "path": "liber-primus/analysis/round12/A1/pads/DATA__560.00",
+   "status": "in-repo",
+   "provenance": [
+    "CicadaOS 2013 bootable ISO shipped by Cicada 3301 (the '3301.iso' / Instar Emergence stage). These are the author's own binary blobs.",
+    "Round 12 front A1 fetched them from the cicada-solvers community archive."
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "*** DEFECTIVE INPUT -- DO NOT USE FOR NEW WORK. *** This copy is 1,580,426 bytes SHORT of the file in the authoritative CicadaOS ISO (2,412,544 vs 3,992,970 -- ~40% missing), and the two have different sha256. Verified 2026-08-19; see handoff/capsule/RECOVERY-560.13.md. Round 12 A1 used this file both as a swept pad AND to build its positive control and null ceiling, so A1's _560.00 negative covers only ~60% of the real blob. Kept in place, unmodified, so A1's existing results stay reproducible against the input that produced them.",
+   "sha256": "a9ba66e3fc874ce429948b1ee52b48a00f230698ac7174ed9aefb7d82ba62b59",
+   "sha1": "bb02f137f9c9957a61759f9fd356ded130e6851d",
+   "bytes": 2412544,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "pads.cicadaos.DATA__560.00",
+   "role": "CicadaOS DATA/_560.00, AUTHORITATIVE copy -- 3,992,970 B, extracted from the archive.org 3301.iso first-party image. This is the real blob; use this one.",
+   "path": "liber-primus/analysis/round12/A1/pads/DATA__560.00.iso-authoritative",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "CicadaOS 2013 bootable ISO shipped by Cicada 3301 (the '3301.iso' / Instar Emergence stage). These are the author's own binary blobs.",
+    "Round 12 front A1 fetched them from the cicada-solvers community archive."
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/3301.iso/3301.iso/DATA%2F_560.00",
+    "https://archive.org/details/3301.iso",
+    "https://archive.org/download/3301.iso/3301.iso  (whole ISO, 136,398,848 B, sha1 df433cba87644b35cbc47f702a02e2b58d90af6a; supports HTTP Range)",
+    "https://archive.org/download/3301.iso/3301.iso/  (archive.org serves an inner-file listing and streams individual members)"
+   ],
+   "notes": "Recovered 2026-08-19 by this capsule after discovering the community-archive copy is truncated. NEVER swept -- Round 12 A1 tested the short file. Re-running A1 over this copy is part of PARKED.md P-3.",
+   "sha256": "a24051a87f0eb25ca21accbd3158fdf7b4911243e5ee1b9778b81182f0d36573",
+   "sha1": "3088f69cc05ef17309ce36cfd26c67ce685c5913",
+   "bytes": 3992970,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "pads.cicadaos.tmp_folly",
+   "role": "CicadaOS tmp/folly -- 3,368 B (byte-identical to tmp/wisdom; one pad)",
+   "path": "liber-primus/analysis/round12/A1/pads/tmp_folly",
+   "status": "in-repo",
+   "provenance": [
+    "CicadaOS 2013 bootable ISO shipped by Cicada 3301 (the '3301.iso' / Instar Emergence stage). These are the author's own binary blobs.",
+    "Round 12 front A1 fetched them from the cicada-solvers community archive."
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/details/3301.iso",
+    "https://archive.org/download/3301.iso/3301.iso  (whole ISO, 136,398,848 B, sha1 df433cba87644b35cbc47f702a02e2b58d90af6a; supports HTTP Range)",
+    "https://archive.org/download/3301.iso/3301.iso/  (archive.org serves an inner-file listing and streams individual members)"
+   ],
+   "notes": "",
+   "sha256": "7e5ec097728197f5c0dba0729980565658fba486965809ffa25e3910a31c385a",
+   "sha1": "a2feecd1b16d1507fcca96f99e4620f3a112d520",
+   "bytes": 3368,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "pads.cicadaos.tmp_wisdom",
+   "role": "CicadaOS tmp/wisdom -- 3,368 B (byte-identical to tmp/folly)",
+   "path": "liber-primus/analysis/round12/A1/pads/tmp_wisdom",
+   "status": "in-repo",
+   "provenance": [
+    "CicadaOS 2013 bootable ISO shipped by Cicada 3301 (the '3301.iso' / Instar Emergence stage). These are the author's own binary blobs.",
+    "Round 12 front A1 fetched them from the cicada-solvers community archive."
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/details/3301.iso",
+    "https://archive.org/download/3301.iso/3301.iso  (whole ISO, 136,398,848 B, sha1 df433cba87644b35cbc47f702a02e2b58d90af6a; supports HTTP Range)",
+    "https://archive.org/download/3301.iso/3301.iso/  (archive.org serves an inner-file listing and streams individual members)"
+   ],
+   "notes": "",
+   "sha256": "7e5ec097728197f5c0dba0729980565658fba486965809ffa25e3910a31c385a",
+   "sha1": "a2feecd1b16d1507fcca96f99e4620f3a112d520",
+   "bytes": 3368,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "pads.cicadaos.usr_local_bin_prime_echo",
+   "role": "CicadaOS usr/local/bin/prime_echo -- 12,248 B; the binary that CONSUMES the DATA pads",
+   "path": "liber-primus/analysis/round12/A1/pads/usr_local_bin_prime_echo",
+   "status": "in-repo",
+   "provenance": [
+    "CicadaOS 2013 bootable ISO shipped by Cicada 3301 (the '3301.iso' / Instar Emergence stage). These are the author's own binary blobs.",
+    "Round 12 front A1 fetched them from the cicada-solvers community archive."
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/details/3301.iso",
+    "https://archive.org/download/3301.iso/3301.iso  (whole ISO, 136,398,848 B, sha1 df433cba87644b35cbc47f702a02e2b58d90af6a; supports HTTP Range)",
+    "https://archive.org/download/3301.iso/3301.iso/  (archive.org serves an inner-file listing and streams individual members)"
+   ],
+   "notes": "",
+   "sha256": "1ab3a8f4520a3d93784aea137847e0c7f77d9fff4df02d481b62d13280753350",
+   "sha1": "1d8b268287256c69c1847520f49033dbb72197ad",
+   "bytes": 12248,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "pads.cicadaos.DATA_560.13",
+   "role": "CicadaOS DATA/560.13 -- 118,818,811 B, the LARGEST authored blob and the one pad Round 12 front A1 could never test. In both the cicada-solvers and krisyotam GitHub mirrors this path is a 134-byte Git-LFS pointer and the LFS batch API returns '404 Object does not exist on the server'.",
+   "path": "liber-primus/analysis/round12/A1/pads/DATA_560.13",
+   "status": "RECOVERED",
+   "provenance": [
+    "CicadaOS 2013 bootable ISO shipped by Cicada 3301 (the '3301.iso' / Instar Emergence stage). These are the author's own binary blobs.",
+    "Round 12 front A1 fetched them from the cicada-solvers community archive.",
+    "Git-LFS object deleted from both GitHub mirrors (verified Round 12, 2026-08-17). Only surviving avenue: the archive.org 3301.iso item."
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/3301.iso/3301.iso/DATA%2F560.13",
+    "https://archive.org/details/3301.iso",
+    "https://archive.org/download/3301.iso/3301.iso  (whole ISO, 136,398,848 B, sha1 df433cba87644b35cbc47f702a02e2b58d90af6a; supports HTTP Range)",
+    "https://archive.org/download/3301.iso/3301.iso/  (archive.org serves an inner-file listing and streams individual members)"
+   ],
+   "notes": "Round 12 A1's stated single remaining lever. See handoff/PARKED.md P-03 and handoff/capsule/RECOVERY-560.13.md. The bytes are deliberately NOT committed (118 MB); the manifest records the hash and the live fetch recipe.",
+   "expected_sha256": "db79072ce580efa54acf5f31f3ef0eb00aef867871a051d04e27ee5e7fbc112f",
+   "expected_bytes": 118818811,
+   "recovery_log": "handoff/capsule/RECOVERY-560.13.md",
+   "recovered_sha256": "db79072ce580efa54acf5f31f3ef0eb00aef867871a051d04e27ee5e7fbc112f",
+   "recovered_bytes": 118818811,
+   "sha256": "db79072ce580efa54acf5f31f3ef0eb00aef867871a051d04e27ee5e7fbc112f",
+   "sha1": "7a63b981a4924bc9dcc168b126fd67fa242a5940",
+   "bytes": 118818811,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "pads.lfs_request",
+   "role": "The exact Git-LFS batch request body that proves DATA/560.13's object is deleted upstream (oid + size).",
+   "path": "liber-primus/analysis/round12/A1/lfs_req.json",
+   "status": "in-repo",
+   "provenance": [
+    "written by Round 12 front A1"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "",
+   "sha256": "f9af88b5876df046cc71005d1d6fd66a1845c5fe4c041e30f138f70c07508c8d",
+   "sha1": "94c35da880deeff74f71b92b63af22fd760b99be",
+   "bytes": 151,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "audio.761_instar_emergence",
+   "role": "The 2013 '761 / The Instar Emergence' MP3 -- 4,010,732 B of author-shipped bytes, also tried as a pad in Round 12 A1 (NEGATIVE).",
+   "path": "puzzles/2013/artifacts/761_The-Instar-Emergence.mp3",
+   "status": "in-repo",
+   "provenance": [
+    "Cicada 3301 2013 puzzle round"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://archive.org/download/3301.iso/3301.iso/AUDIO%2F761.MP3"
+   ],
+   "notes": "",
+   "sha256": "83008217439110c3b824898af73b99cb2cf0657dda88cb363c3aa34a4ec0a460",
+   "sha1": "bedb958296f587d3c6bbb571e67c39264eeef6a7",
+   "bytes": 4010732,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "corpus.kjv",
+   "role": "King James Bible (Gutenberg #10) -- archaic register, closest to LP's own. One of the four texts the English quadgram scorer is built from.",
+   "path": "liber-primus/data/kjv.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Project Gutenberg, public domain",
+    "recipe: liber-primus/data/BUILD-QUADGRAMS.md"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://www.gutenberg.org/files/10/10-0.txt",
+    "https://www.gutenberg.org/ebooks/10",
+    "https://gutenberg.pglaf.org/ (official mirror)",
+    "https://aleph.gutenberg.org/ (official mirror)"
+   ],
+   "notes": "WARNING: Gutenberg re-issues files (header/footer edits, -0.txt vs .txt vs utf-8 variants). A refetch may NOT reproduce this SHA-256 even though the book is the same. That is why english_quadgrams.txt is committed: the DERIVED model is the reproducible artifact, not the raw corpus.",
+   "sha256": "0f1a83cbcdc1d3fae6bcc3daaa496d4fa723fcce9526e84e20df12ae33fda986",
+   "sha1": "fe40010eab3a073f046664a4fcfd5d028d82fc43",
+   "bytes": 4436268,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "corpus.moby",
+   "role": "Moby-Dick (Gutenberg #2701). One of the four texts the English quadgram scorer is built from.",
+   "path": "liber-primus/data/moby.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Project Gutenberg, public domain",
+    "recipe: liber-primus/data/BUILD-QUADGRAMS.md"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://www.gutenberg.org/files/2701/2701-0.txt",
+    "https://www.gutenberg.org/ebooks/2701",
+    "https://gutenberg.pglaf.org/ (official mirror)",
+    "https://aleph.gutenberg.org/ (official mirror)"
+   ],
+   "notes": "WARNING: Gutenberg re-issues files (header/footer edits, -0.txt vs .txt vs utf-8 variants). A refetch may NOT reproduce this SHA-256 even though the book is the same. That is why english_quadgrams.txt is committed: the DERIVED model is the reproducible artifact, not the raw corpus.",
+   "sha256": "0670d7bb10b99d05f095a28942801aa74d4921d1b34dbdc76900e2c4c2bd2189",
+   "sha1": "46d46b512a951278795787c60a7ab175f6b14f0a",
+   "bytes": 1234609,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "corpus.pride",
+   "role": "Pride and Prejudice (Gutenberg #1342). One of the four texts the English quadgram scorer is built from.",
+   "path": "liber-primus/data/pride.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Project Gutenberg, public domain",
+    "recipe: liber-primus/data/BUILD-QUADGRAMS.md"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://www.gutenberg.org/files/1342/1342-0.txt",
+    "https://www.gutenberg.org/ebooks/1342",
+    "https://gutenberg.pglaf.org/ (official mirror)",
+    "https://aleph.gutenberg.org/ (official mirror)"
+   ],
+   "notes": "WARNING: Gutenberg re-issues files (header/footer edits, -0.txt vs .txt vs utf-8 variants). A refetch may NOT reproduce this SHA-256 even though the book is the same. That is why english_quadgrams.txt is committed: the DERIVED model is the reproducible artifact, not the raw corpus.",
+   "sha256": "a5666f87abf2cbfdaa27ea8c73bd284da9649b9a2ab27b4e6c8f6aeab1bd1c88",
+   "sha1": "790e2406e4dc15914cf6f3d40af45195ab1a31b6",
+   "bytes": 738046,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "corpus.war",
+   "role": "War and Peace (Gutenberg #2600). One of the four texts the English quadgram scorer is built from.",
+   "path": "liber-primus/data/war.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Project Gutenberg, public domain",
+    "recipe: liber-primus/data/BUILD-QUADGRAMS.md"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://www.gutenberg.org/files/2600/2600-0.txt",
+    "https://www.gutenberg.org/ebooks/2600",
+    "https://gutenberg.pglaf.org/ (official mirror)",
+    "https://aleph.gutenberg.org/ (official mirror)"
+   ],
+   "notes": "WARNING: Gutenberg re-issues files (header/footer edits, -0.txt vs .txt vs utf-8 variants). A refetch may NOT reproduce this SHA-256 even though the book is the same. That is why english_quadgrams.txt is committed: the DERIVED model is the reproducible artifact, not the raw corpus.",
+   "sha256": "e4bcf9042609b62c7de72a6f1b311f54c412943a9d641b7efcf79a464b5f31c8",
+   "sha1": "cd67a80c8707c035da61e0afc2f98a5f23447636",
+   "bytes": 3359405,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "corpus.english_quadgrams",
+   "role": "THE SCORER. Committed English quadgram counts derived from the four corpora above. Every score in this repo (-4.x = English band, -7.x = noise) comes from this file.",
+   "path": "liber-primus/data/english_quadgrams.txt",
+   "status": "in-repo",
+   "provenance": [
+    "derived in-repo from corpus.kjv/moby/pride/war -- see data/BUILD-QUADGRAMS.md"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "This is the single most important committed derived artifact. If you rebuild it from a different corpus, every numeric threshold in this repo shifts and the repo's pre-registered bars stop being comparable. Prefer the committed file.",
+   "sha256": "fb82963d1fc4a64b9fc6121f8ca88139fd5b15083dddc9a59f8b14bdb8fe4062",
+   "sha1": "90d3722593d23320830d37ee6b0df47c97ec7056",
+   "bytes": 608938,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "keytext.mabinogion",
+   "role": "Candidate running-key text: The Mabinogion, tr. Lady Charlotte Guest. Part of the ~200-text exhaustion sweep (Round 7 / Campaigns XII-XIII). All null.",
+   "path": "liber-primus/data/keys/mabinogion.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Project Gutenberg #5160"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://www.gutenberg.org/ebooks/5160"
+   ],
+   "notes": "HONESTY NOTE: this repo has no fetch script for data/keys/*.txt, so the exact edition/URL was never recorded. The provenance above is reconstructed from the file's own opening lines. A refetch will very likely differ in bytes (headers/whitespace) while being the same work. For keytext sweeps that is usually harmless -- the scorer strips to A-Z -- but it means these SHA-256s are a record of WHAT WAS TESTED, not a reproducible fetch target.",
+   "sha256": "80dc6f0d8efc8398a2d1cc8cdf17237020c881cf4fbd2412dfa37ec8be19a5ed",
+   "sha1": "3fe3ae8acbdce97a30365f499f52961e9cf3e88a",
+   "bytes": 617362,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "keytext.king_in_yellow",
+   "role": "Candidate running-key text: The King in Yellow, R. W. Chambers. Part of the ~200-text exhaustion sweep (Round 7 / Campaigns XII-XIII). All null.",
+   "path": "liber-primus/data/keys/king_in_yellow.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "Project Gutenberg #8492"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://www.gutenberg.org/ebooks/8492"
+   ],
+   "notes": "HONESTY NOTE: this repo has no fetch script for data/keys/*.txt, so the exact edition/URL was never recorded. The provenance above is reconstructed from the file's own opening lines. A refetch will very likely differ in bytes (headers/whitespace) while being the same work. For keytext sweeps that is usually harmless -- the scorer strips to A-Z -- but it means these SHA-256s are a record of WHAT WAS TESTED, not a reproducible fetch target.",
+   "sha256": "a1fe8503649b13bc46c6b98c49000eb8a9da59f9d3bd7aa8f94fc1b258c53096",
+   "sha1": "f2aa52851dd8a5c6352f8bea36e25f1f353801bc",
+   "bytes": 441224,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "keytext.self_reliance",
+   "role": "Candidate running-key text: Self-Reliance, R. W. Emerson. Part of the ~200-text exhaustion sweep (Round 7 / Campaigns XII-XIII). All null.",
+   "path": "liber-primus/data/keys/self_reliance.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "public-domain text; exact edition NOT recorded by this repo"
+   ],
+   "provenance_confidence": "reconstructed-from-content",
+   "mirrors": [
+    "https://www.gutenberg.org/ebooks/16643",
+    "https://en.wikisource.org/wiki/Essays:_First_Series/Self-Reliance"
+   ],
+   "notes": "HONESTY NOTE: this repo has no fetch script for data/keys/*.txt, so the exact edition/URL was never recorded. The provenance above is reconstructed from the file's own opening lines. A refetch will very likely differ in bytes (headers/whitespace) while being the same work. For keytext sweeps that is usually harmless -- the scorer strips to A-Z -- but it means these SHA-256s are a record of WHAT WAS TESTED, not a reproducible fetch target.",
+   "sha256": "b2f3dbd3866e0bec5ae41ac29df09b537c2ef18fa1b88678966587b824ca92f0",
+   "sha1": "898d8eb41b73a60fb6801ab36f8be127c69619ee",
+   "bytes": 56483,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "keytext.book_of_the_law",
+   "role": "Candidate running-key text: Liber AL vel Legis (The Book of the Law), Crowley 1909. Part of the ~200-text exhaustion sweep (Round 7 / Campaigns XII-XIII). All null.",
+   "path": "liber-primus/data/keys/book_of_the_law.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "public-domain text; exact edition NOT recorded by this repo"
+   ],
+   "provenance_confidence": "reconstructed-from-content",
+   "mirrors": [
+    "https://en.wikisource.org/wiki/The_Book_of_the_Law",
+    "https://sacred-texts.com/oto/engccxx.htm"
+   ],
+   "notes": "HONESTY NOTE: this repo has no fetch script for data/keys/*.txt, so the exact edition/URL was never recorded. The provenance above is reconstructed from the file's own opening lines. A refetch will very likely differ in bytes (headers/whitespace) while being the same work. For keytext sweeps that is usually harmless -- the scorer strips to A-Z -- but it means these SHA-256s are a record of WHAT WAS TESTED, not a reproducible fetch target.",
+   "sha256": "b87b890efd2641cf452a0fb58553c40b7fbceeaab3c1dab1e5077bc01ab12030",
+   "sha1": "692f1cded9e5cae633ad622857ed29c0052c5bdf",
+   "bytes": 32792,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "keytext.agrippa",
+   "role": "Candidate running-key text: Agrippa (A Book of the Dead), William Gibson 1992. Part of the ~200-text exhaustion sweep (Round 7 / Campaigns XII-XIII). All null.",
+   "path": "liber-primus/data/keys/agrippa.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "public-domain text; exact edition NOT recorded by this repo"
+   ],
+   "provenance_confidence": "reconstructed-from-content",
+   "mirrors": [
+    "https://www.williamgibsonbooks.com/source/agrippa.asp",
+    "https://web.archive.org/web/*/williamgibsonbooks.com/source/agrippa.asp"
+   ],
+   "notes": "HONESTY NOTE: this repo has no fetch script for data/keys/*.txt, so the exact edition/URL was never recorded. The provenance above is reconstructed from the file's own opening lines. A refetch will very likely differ in bytes (headers/whitespace) while being the same work. For keytext sweeps that is usually harmless -- the scorer strips to A-Z -- but it means these SHA-256s are a record of WHAT WAS TESTED, not a reproducible fetch target.",
+   "sha256": "de3f9b90419db5db0addb713607d893c8fa4e4f86191387675dc441ae93ae954",
+   "sha1": "31717e5fdf0e3658ae13b44907f9ce4ecb437ef4",
+   "bytes": 9937,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "keytext.runepoem_oe",
+   "role": "The Old English Rune Poem (and its transliteration) -- the highest-prior thematic keytext for a runic cipher.",
+   "path": "liber-primus/data/keys/runepoem_oe.txt",
+   "status": "in-repo",
+   "provenance": [
+    "in-repo"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "",
+   "sha256": "01a5d48b64209823a8583afe2ad83f252b593a1b307e926253fb64cf21c13992",
+   "sha1": "b0c8ba29bc8a1c21a0a0ba599c9911fd78b4b0bd",
+   "bytes": 3411,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "keytext.runepoem_translit",
+   "role": "Transliterated Old English Rune Poem.",
+   "path": "liber-primus/data/keys/runepoem_translit.txt",
+   "status": "in-repo",
+   "provenance": [
+    "in-repo"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "",
+   "sha256": "a88258c515a2a1c0e5fab96ca8846c2ab942d47f7711ab9a92d720fc1840fd0c",
+   "sha1": "9df8961b762208d9472b01414543bfaa98964b04",
+   "bytes": 3411,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "transcription.rtkd_master",
+   "role": "rtkd/iddqd 2017 community-root transcription -- the lineage root of runes.canonical.",
+   "path": "liber-primus/data/sources/rtkd_master.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "rtkd/iddqd GitHub repository, 2017"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/rtkd/iddqd/master/liber-primus__transcription--master/liber-primus__transcription--master.txt",
+    "https://github.com/rtkd/iddqd"
+   ],
+   "notes": "Fetch: python3 liber-primus/data/fetch_sources.py",
+   "sha256": "e21743ccd9a07f3845d52a329c61b9fa69e9ca6a44ee3ba0db8f28a0d7065004",
+   "sha1": "2688eb1be0aee7ec76b1bc2483b1761c7e3d5f91",
+   "bytes": 54478,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "transcription.relikd_p0-2",
+   "role": "relikd/LiberPrayground per-page transcription chunk p0-2 -- the second lineage, used for cross-verification.",
+   "path": "liber-primus/data/sources/relikd_p0-2.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "relikd/LiberPrayground GitHub repository"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/relikd/LiberPrayground/master/pages/p0-2.txt",
+    "https://github.com/relikd/LiberPrayground"
+   ],
+   "notes": "Fetch: python3 liber-primus/data/fetch_sources.py",
+   "sha256": "c54b019ed29305e29c3fdafa792106e3249d27998f94473a2652e7c7bb787521",
+   "sha1": "23e9bdfedccca9017e703771ecdc3afed45ad2e5",
+   "bytes": 2695,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "transcription.relikd_p3-7",
+   "role": "relikd/LiberPrayground per-page transcription chunk p3-7 -- the second lineage, used for cross-verification.",
+   "path": "liber-primus/data/sources/relikd_p3-7.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "relikd/LiberPrayground GitHub repository"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/relikd/LiberPrayground/master/pages/p3-7.txt",
+    "https://github.com/relikd/LiberPrayground"
+   ],
+   "notes": "Fetch: python3 liber-primus/data/fetch_sources.py",
+   "sha256": "dad38fdac7a46e15ca19f38762225755bf3ddd553c83141e3bdfd9354f243486",
+   "sha1": "0e2da41e1dcae2d9c3358655ed9c5bbbde9ae601",
+   "bytes": 4272,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "transcription.relikd_p8-14",
+   "role": "relikd/LiberPrayground per-page transcription chunk p8-14 -- the second lineage, used for cross-verification.",
+   "path": "liber-primus/data/sources/relikd_p8-14.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "relikd/LiberPrayground GitHub repository"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/relikd/LiberPrayground/master/pages/p8-14.txt",
+    "https://github.com/relikd/LiberPrayground"
+   ],
+   "notes": "Fetch: python3 liber-primus/data/fetch_sources.py",
+   "sha256": "c010b87c379263fffc0e75eb6a170ac1dd090cf56a579db9f64c4b866f6eccc5",
+   "sha1": "cf0c841e409d4e43d376bce519a3502d2220a52b",
+   "bytes": 6430,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "transcription.relikd_p15-22",
+   "role": "relikd/LiberPrayground per-page transcription chunk p15-22 -- the second lineage, used for cross-verification.",
+   "path": "liber-primus/data/sources/relikd_p15-22.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "relikd/LiberPrayground GitHub repository"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/relikd/LiberPrayground/master/pages/p15-22.txt",
+    "https://github.com/relikd/LiberPrayground"
+   ],
+   "notes": "Fetch: python3 liber-primus/data/fetch_sources.py",
+   "sha256": "cbb16452f0c09ea894aaf14015dc980f6a6e17ac6a653cbda9ab1226f0b027cc",
+   "sha1": "8476597e0bf55661725a34cd5084367955192b68",
+   "bytes": 7229,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "transcription.relikd_p23-26",
+   "role": "relikd/LiberPrayground per-page transcription chunk p23-26 -- the second lineage, used for cross-verification.",
+   "path": "liber-primus/data/sources/relikd_p23-26.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "relikd/LiberPrayground GitHub repository"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/relikd/LiberPrayground/master/pages/p23-26.txt",
+    "https://github.com/relikd/LiberPrayground"
+   ],
+   "notes": "Fetch: python3 liber-primus/data/fetch_sources.py",
+   "sha256": "43bc3a968d536ddd9642947437d20ec9be716e77ea488c80ee56c9e048d2a094",
+   "sha1": "d5069228d60fd68ccccd496b17df00ac2399dd1a",
+   "bytes": 3783,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "transcription.relikd_p27-32",
+   "role": "relikd/LiberPrayground per-page transcription chunk p27-32 -- the second lineage, used for cross-verification.",
+   "path": "liber-primus/data/sources/relikd_p27-32.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "relikd/LiberPrayground GitHub repository"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/relikd/LiberPrayground/master/pages/p27-32.txt",
+    "https://github.com/relikd/LiberPrayground"
+   ],
+   "notes": "Fetch: python3 liber-primus/data/fetch_sources.py",
+   "sha256": "a3b2365a8172455f004ff1352f40298af6944d47106e5cf1f9418436861907ff",
+   "sha1": "ebbc93aa65cc4ca7e46491398fc5f46511a2aa1c",
+   "bytes": 5346,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "transcription.relikd_p33-39",
+   "role": "relikd/LiberPrayground per-page transcription chunk p33-39 -- the second lineage, used for cross-verification.",
+   "path": "liber-primus/data/sources/relikd_p33-39.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "relikd/LiberPrayground GitHub repository"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/relikd/LiberPrayground/master/pages/p33-39.txt",
+    "https://github.com/relikd/LiberPrayground"
+   ],
+   "notes": "Fetch: python3 liber-primus/data/fetch_sources.py",
+   "sha256": "00c7defc87a99774ada0c3ec9c1d4eeb656f1f2c2eac3c5bb4e6ea517f0bbb25",
+   "sha1": "8000a52c8627b9d4a585b7c97ca424b40bb4c893",
+   "bytes": 6270,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "transcription.relikd_p40-53",
+   "role": "relikd/LiberPrayground per-page transcription chunk p40-53 -- the second lineage, used for cross-verification.",
+   "path": "liber-primus/data/sources/relikd_p40-53.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "relikd/LiberPrayground GitHub repository"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/relikd/LiberPrayground/master/pages/p40-53.txt",
+    "https://github.com/relikd/LiberPrayground"
+   ],
+   "notes": "Fetch: python3 liber-primus/data/fetch_sources.py",
+   "sha256": "282ce106e92eb69a11fdf38382670ebd3b73acf777e88be9e7142768edd5a73b",
+   "sha1": "3eda4a22b3fc1d6f9895d9e3bf0177ff1ee5f479",
+   "bytes": 11962,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "transcription.relikd_p54-55",
+   "role": "relikd/LiberPrayground per-page transcription chunk p54-55 -- the second lineage, used for cross-verification.",
+   "path": "liber-primus/data/sources/relikd_p54-55.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "relikd/LiberPrayground GitHub repository"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/relikd/LiberPrayground/master/pages/p54-55.txt",
+    "https://github.com/relikd/LiberPrayground"
+   ],
+   "notes": "Fetch: python3 liber-primus/data/fetch_sources.py",
+   "sha256": "f4a2f9dde276a0ffa6c4f6e6319f37066e55a6e170722cc9b4f4b37d5b36aeba",
+   "sha1": "4e221250e5471814f4995ea7577f2fb08cb06ba2",
+   "bytes": 1137,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "transcription.relikd_p56_an_end",
+   "role": "relikd/LiberPrayground per-page transcription chunk p56_an_end -- the second lineage, used for cross-verification.",
+   "path": "liber-primus/data/sources/relikd_p56_an_end.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "relikd/LiberPrayground GitHub repository"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/relikd/LiberPrayground/master/pages/p56_an_end.txt",
+    "https://github.com/relikd/LiberPrayground"
+   ],
+   "notes": "Fetch: python3 liber-primus/data/fetch_sources.py",
+   "sha256": "ad3b79a3b1d21e696fff8d95c7652784a930a07a7b41b436f2ddbb7f0c8b886f",
+   "sha1": "57b94e29dd3c8b40bc0f7fea4f932e81c734c335",
+   "bytes": 475,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "transcription.relikd_p57_parable",
+   "role": "relikd/LiberPrayground per-page transcription chunk p57_parable -- the second lineage, used for cross-verification.",
+   "path": "liber-primus/data/sources/relikd_p57_parable.txt",
+   "status": "gitignored-fetchable",
+   "provenance": [
+    "relikd/LiberPrayground GitHub repository"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [
+    "https://raw.githubusercontent.com/relikd/LiberPrayground/master/pages/p57_parable.txt",
+    "https://github.com/relikd/LiberPrayground"
+   ],
+   "notes": "Fetch: python3 liber-primus/data/fetch_sources.py",
+   "sha256": "c2ddff01c66c6ed3a0bc3ab1b5a4cc441c58e38bcc0753ca3d1590ec40db7102",
+   "sha1": "68e6e04117b074a5bd77fa9761a3fb79421b2e24",
+   "bytes": 349,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "method.skipdecode",
+   "role": "The skip-aware (anti-repeat / desync-tolerant) beam decoder. The ONLY decoder that survives LP2's engineered doublet filter; every post-Campaign-XVIII result uses it.",
+   "path": "liber-primus/analysis/campaign18_skip/skipdecode.py",
+   "status": "in-repo",
+   "provenance": [
+    "in-repo, Campaign XVIII"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "A rigid decoder scores the CORRECT key as noise (~-6.8) on filtered ciphertext. If you attack LP2 with a rigid decoder you will produce a false negative. This is the single most-repeated mistake in this problem.",
+   "sha256": "49efcad017bb597abd11d6745c79ec1b4cd11d6ec00b483d08a3b22938762ee0",
+   "sha1": "67f38aeb4d0c5869728a40c1d1eda6ad385f240a",
+   "bytes": 9339,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "method.lib_numchannel",
+   "role": "Shared data/null/scorer harness: nc.unsolved(), nc.segments(), nc.shuffled (seed 3301), nc.eng_norm. Defines the null model every pre-registered bar is measured against.",
+   "path": "liber-primus/analysis/round11/lib_numchannel.py",
+   "status": "in-repo",
+   "provenance": [
+    "in-repo, Round 11"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "",
+   "sha256": "6d1821ab27dd0093bc10f070df1a8040473b27e71b5a72e2bea9796ec0faeab5",
+   "sha1": "157ba90309396df3f28f6a88d2dcce6062131024",
+   "bytes": 4156,
+   "hash_verified_locally": true
+  },
+  {
+   "id": "method.nullcurve",
+   "role": "Gumbel best-of-N null-growth model for the seed sweep; derives the scale-corrected family-wise thresholds that replace the invalid pre-registered -12.5.",
+   "path": "liber-primus/analysis/round10/L5-seed32/nullcurve.py",
+   "status": "in-repo",
+   "provenance": [
+    "in-repo, Round 10 lane L5"
+   ],
+   "provenance_confidence": "documented",
+   "mirrors": [],
+   "notes": "Run it before resuming the 32-bit sweep. See handoff/PARKED.md P-01.",
+   "sha256": "e9e2a483eccd8b61ea339cbc1df62b94d9486892dbb236eb866edded233c0790",
+   "sha1": "281e3c86bc2fef9bf9bcedc4a71c4385cf069b64",
+   "bytes": 10866,
+   "hash_verified_locally": true
+  }
+ ]
+}

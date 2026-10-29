@@ -1,0 +1,31 @@
+{
+ "lane": "round34/P1",
+ "date": "2026-10-29",
+ "entries": [
+  {
+   "id": "R34-P1-PAYLOAD-PROMOTION",
+   "lane": "round34/P1",
+   "round": 34,
+   "date": "2026-10-29",
+   "status": "audit",
+   "hypothesis": "Re-feeding payload_resolved.bin (idx 45 81->107, 50 21->47, 246 224->198) to the remaining readers of canon_256.bin (R16-KDF payload-derived secrets, R30-B1, R30-B2, recon h1_index, campaign18 payload scripts, plus the capsule MANIFEST) changes some reader's result, which would stop the promotion (Q5).",
+   "result": "NO READER CHANGED. R16-KDF best -6.464 -> -6.408 (bar -5.5); R30-B1 and R30-B2 canon legs identical verdicts; h1_index CLEAN NULL both; payload_skip -6.756 -> -6.744; payload_ciphertext -6.855 -> -6.927; numeric2 Part B identical -5.833; hash_hunt 0/120 both. Controls passed for every re-run reader; every canon comparator reproduces the published or stored canon result. Capsule: regenerated MANIFEST copy verifies the corrected payload; the 13 INTACT-FAIL are unchanged in number (9 CRLF checkout noise, 4 real drift unrelated to the payload). Recommendation: GO for the rename with documented not-re-runnable legs (T2/folly/2.jpg inputs absent).",
+   "coverage": "7 payload-derived KDF secrets x (stage A 9,072 + stage B 9,856) decodes x 2 arms; 880 payload_skip decodes x 2 arms; numeric2 Part B + hex nibbles x 2 arms; h1_index 11 decode models x 2; canon-blob crypto battery (38 keys) x 2; canon RSA/GPG structural legs x 2. SWEEPROW rows persisted for KDF stage A and payload_skip (validate_store passes).",
+   "not_covered": [
+    "R30-B1 canon-as-key legs over T2/folly and canon x T2/folly XOR; R30-B2 folly/2.jpg legs: inputs absent (gitignored), filed 'corrected payload: harness not re-runnable'.",
+    "SWEEPROW rows not persisted for numeric2_skip (~10^5 short screen beams), payload_ciphertext (12 decodes), h1_index (11 models), R16-KDF stage B and the K2 control.",
+    "pp49_51 campaign9/keytest/campaign20_extcipher/anend_preimage_*/blake_closure/characterize, campaign11/12/14 forensics and round29/L2 attack.py read canon_256.bin and were inventoried, not re-run (hash_hunt was).",
+    "canon_256.hex and canon_256_decpref.bin are not part of the promotion; the decpref correction is an assumption (idx 45/50/246 patched).",
+    "Conditional on the English-quadgram legacy score plus the I2 panel as before; non-English power of the KDF/campaign18 decoders was not re-measured."
+   ],
+   "threshold": "Q5: a reader CHANGES if its verdict flips vs its canon comparator, a best score newly clears its bar, or its canon comparator fails to reproduce the published result; movements <= 0.3 in best score and byte-level echoes are noise (PREREG).",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "Per reader, before the real run: R16-KDF K2 plant rank 1 -4.186; R30-B1 AES-256-CBC plant + 0/500 negative; R30-B2 RSA/gpg plants; h1_index scorer gate; payload_skip / numeric2 / payload_ciphertext known-key plants recovered at -4.186 (recovery 1.00 for payload_skip); hash_hunt planted target found.",
+   "evidence": [
+    "liber-primus/analysis/round34/P1-payload-promotion/RESULTS.md",
+    "liber-primus/analysis/round34/P1-payload-promotion/PREREG.md"
+   ],
+   "reopens_if": "A reader is found that reads canon_256.bin and is not on the list, or T2/folly/2.jpg are regenerated and the canon-as-key legs are re-run."
+  }
+ ]
+}

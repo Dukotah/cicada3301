@@ -1,0 +1,362 @@
+{
+ "shim_known_answers": {
+  "AES128_ECB_FIPS197": true,
+  "RC4_Secret": true,
+  "Blowfish_ECB_zero": true,
+  "DES_ECB_classic": true,
+  "3DES_ECB_roundtrip": null
+ },
+ "controls": {
+  "positive": {
+   "recovered": "THE PRIMES ARE SACRED AND CICADA 3301 WELCOMES THE PILGRIM HOME.",
+   "detector_fired": true,
+   "battery_path_hits": 2,
+   "battery_path_cipher": [
+    "AES-256-CBC(IV=0) k=hash",
+    "AES-256-CBC(IV=head) k=hash"
+   ],
+   "PASS": true
+  },
+  "negative": {
+   "trials": 500,
+   "false_fires": 0,
+   "PASS": true
+  }
+ },
+ "arms": {
+  "canon": {
+   "struct_id": {
+    "name": "canon",
+    "len": 256,
+    "len_mod_8": 0,
+    "len_mod_16": 0,
+    "entropy_bits_per_byte": 7.16965,
+    "distinct_byte_values": 161,
+    "chi_square_vs_uniform": 254.0,
+    "chi_df": 255,
+    "chi_consistent_uniform": true,
+    "repeated_16B_blocks": 0,
+    "first16_hex": "cbe7a7ba61ed7eb75cf99cdef704b7d4",
+    "min_count": 1,
+    "max_count": 4
+   },
+   "n_keys": 38,
+   "cipher_hits": [],
+   "gpg_openssl_rows": [
+    {
+     "tool": "gpg",
+     "pass": "3301",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "1595277641",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "509",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "503",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "hexstr",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "CICADA3301",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "WELCOME",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "PILGRIM",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "ANEND",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "INSTAR",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "THEPRIMESARESACRED",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "firfumferenfe",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "36367763ab73783c7af2",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    }
+   ]
+  },
+  "resolved": {
+   "struct_id": {
+    "name": "canon",
+    "len": 256,
+    "len_mod_8": 0,
+    "len_mod_16": 0,
+    "entropy_bits_per_byte": 7.16965,
+    "distinct_byte_values": 161,
+    "chi_square_vs_uniform": 254.0,
+    "chi_df": 255,
+    "chi_consistent_uniform": true,
+    "repeated_16B_blocks": 0,
+    "first16_hex": "cbe7a7ba61ed7eb75cf99cdef704b7d4",
+    "min_count": 1,
+    "max_count": 4
+   },
+   "n_keys": 38,
+   "cipher_hits": [],
+   "gpg_openssl_rows": [
+    {
+     "tool": "gpg",
+     "pass": "3301",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "1595277641",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "509",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "503",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "hexstr",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "CICADA3301",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "WELCOME",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "PILGRIM",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "ANEND",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "INSTAR",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "THEPRIMESARESACRED",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "firfumferenfe",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    },
+    {
+     "tool": "gpg",
+     "pass": "36367763ab73783c7af2",
+     "len": 22,
+     "hits": [],
+     "sha1": "7f54831c2c9814bae1bf4f7446b71bc999d59cd1"
+    }
+   ]
+  }
+ },
+ "stored_canon_struct": {
+  "name": "canon",
+  "len": 256,
+  "len_mod_8": 0,
+  "len_mod_16": 0,
+  "entropy_bits_per_byte": 7.16965,
+  "distinct_byte_values": 161,
+  "chi_square_vs_uniform": 254.0,
+  "chi_df": 255,
+  "chi_consistent_uniform": true,
+  "repeated_16B_blocks": 0,
+  "first16_hex": "cbe7a7ba61ed7eb75cf99cdef704b7d4",
+  "min_count": 1,
+  "max_count": 4
+ },
+ "stored_openssl_gpg_canon_rows": [
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "3301",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "1595277641",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "509",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "503",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "hexstr",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "CICADA3301",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "WELCOME",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "PILGRIM",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "ANEND",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "INSTAR",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "THEPRIMESARESACRED",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "firfumferenfe",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "36367763ab73783c7af2",
+   "len": 22,
+   "hits": []
+  }
+ ],
+ "canon_struct_reproduces_stored": true,
+ "verdict_same": true
+}

@@ -1,0 +1,49 @@
+[setup] pages=55  total_runes=12956  total_lines=594  table_bytes=256
+[setup] red pages (14): [0, 3, 6, 7, 8, 15, 23, 27, 33, 37, 39, 40, 53, 54]
+
+======================================================================
+T1 : do the 256 table values concentrate on red boundaries?
+======================================================================
+T1a page-index (byte%55): red hits 64/256  expected 65.2  p=0.5955
+T1b cumulative-offset into 594 lines: hits on red-page line-starts 5/256  expected 6.03  p=0.7202
+T1c direct byte-as-line (b<594, n=256): red-line hits 10  expected 6.03  p=0.0809
+T1d byte->rune-offset near red page-starts (+-2): 4/256  expected 1.38  p=0.0484
+
+======================================================================
+T2 : (section, offset) pair structural consistency
+======================================================================
+T2a first-digit (d0) range: 0..4  distinct=[0, 1, 2, 3, 4]
+    -> d0 max is 4; cannot index 14 sections (needs >= 13). FAIL geometry
+T2b red-section rune lengths (14 sections): [729, 741, 196, 208, 1729, 1903, 1021, 1433, 984, 456, 240, 3008, 232, 76]
+T2b offsets-within-section: 113/128  expected~116.3  (consistent w/ random)
+
+======================================================================
+T1e : does any index-decode yield English? (best score vs baseline)
+======================================================================
+   -7.200  E2 gather runes at scaled table indices
+   -7.387  E3 cumulative-offset gather into corpus
+   -7.455  D per-section prime-keystream offset=table[sec], sign=1
+   -7.475  D per-section prime-keystream offset=table[sec], sign=-1
+   -7.485  C table-as-repeating-key (control), sign=1
+   -7.486  B per-section table-key (advance 1/sec), sign=1
+   -7.488  A per-section const shift (table[sec]), sign=-1
+   -7.494  C table-as-repeating-key (control), sign=-1
+   -7.504  A per-section const shift (table[sec]), sign=1
+   -7.520  B per-section table-key (advance 1/sec), sign=-1
+   -7.606  E gather runes at table-byte indices (%N_RUNES)
+
+======================================================================
+T3 : sexagesimal margin-art pages 34-39 encode the table dims?
+======================================================================
+  page 34: runes=261 lines=12  dim-match=none
+  page 35: runes=271 lines=12  dim-match=none
+  page 36: runes=238 lines=11  dim-match=none
+  page 37: runes=228 lines=11  dim-match=none
+  page 38: runes=228 lines=11  dim-match=none
+  page 39: runes=240 lines=12  dim-match=none
+  lines 34-39: [12, 12, 11, 11, 11, 12]  sum=69  (table rows sum=10+13+9=32)
+
+======================================================================
+H1 BEST decode score = -7.200   (baseline English -4.0, threshold -5.2)
+H1 index-concentration p-values: T1a=0.5955 T1b=0.7202 T1c=0.0809 T1d=0.0484
+H1 VERDICT: CLEAN NULL (sealed)

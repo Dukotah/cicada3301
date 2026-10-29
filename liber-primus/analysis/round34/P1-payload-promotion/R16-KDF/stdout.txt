@@ -1,0 +1,22 @@
+build_secrets canon256_* entries == reconstruction: 7
+changed secrets: 6 ['canon256_raw', 'canon256_rev', 'canon256_tail32', 'canon256_hex', 'canon256_hex', 'canon256_decpref']
+null mean -7.399 max -6.773 bar -5.500
+
+=== K2 — plant-and-recover through this harness ===
+K2 plant: kdf=pbkdf2_sha256_10000 salt=3301 red=mod29 len=120 doublet_rate=0.0000 (LP2 is 0.0066)
+[K2] secrets=8 kdfs=27 salts=3 reds=2 -> 10,368 decodes on 1 procs
+    [K2] 2/2 chunks  10,368 decodes  68s  (153/s)  best=-4.186
+K2 rank#1: -4.186 secret='THE PRIMES ARE SACRED' kdf=pbkdf2_sha256_10000 salt=3301 red=mod29
+K2 planted config ranked #1 = True; clears bar = True -> PASS
+control K2 passed=True  68s
+[A_canon] secrets=7 kdfs=27 salts=3 reds=2 -> 9,072 decodes on 1 procs
+    [A_canon] 2/2 chunks  9,072 decodes  56s  (161/s)  best=-6.464
+[B_canon] secrets=7 kdfs=8 salts=11 reds=2 -> 9,856 decodes on 1 procs
+    [B_canon] 2/2 chunks  9,856 decodes  67s  (146/s)  best=-6.488
+canon: A best -6.464 (9072 dec)  B best -6.488 (9856 dec)  over-bar A=0 B=0
+[A_resolved] secrets=7 kdfs=27 salts=3 reds=2 -> 9,072 decodes on 1 procs
+    [A_resolved] 2/2 chunks  9,072 decodes  70s  (130/s)  best=-6.408
+[B_resolved] secrets=7 kdfs=8 salts=11 reds=2 -> 9,856 decodes on 1 procs
+    [B_resolved] 2/2 chunks  9,856 decodes  93s  (106/s)  best=-6.408
+resolved: A best -6.408 (9072 dec)  B best -6.408 (9856 dec)  over-bar A=0 B=0
+DONE 354s

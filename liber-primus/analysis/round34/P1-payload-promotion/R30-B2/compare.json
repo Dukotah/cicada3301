@@ -1,0 +1,76 @@
+{
+ "stored_vs_canon_rerun": {
+  "mod": true,
+  "gcd": true,
+  "res": true,
+  "pgp": true,
+  "gpg_raw": false,
+  "prep": true,
+  "aes": true
+ },
+ "canon_vs_resolved": {
+  "mod": false,
+  "gcd": true,
+  "res": false,
+  "pgp": true,
+  "gpg_raw": false,
+  "prep": true,
+  "aes": false
+ },
+ "controls_canon": {
+  "pos_real_rsa2048_modulus": {
+   "nbits": 2048,
+   "byte_len": 256,
+   "top_bit_set": true,
+   "odd": true,
+   "trial_small_factors": [],
+   "num_small_factors": 0,
+   "is_probable_prime": false,
+   "perfect_power": null,
+   "fermat_factored": null,
+   "fermat_iters_if_hit": null,
+   "plausible_rsa_modulus": true
+  },
+  "neg_random_256B": {
+   "nbits": 2048,
+   "byte_len": 256,
+   "top_bit_set": true,
+   "odd": false,
+   "trial_small_factors": [
+    2,
+    2,
+    2,
+    3,
+    3,
+    37,
+    797
+   ],
+   "num_small_factors": 7,
+   "is_probable_prime": false,
+   "perfect_power": null,
+   "fermat_factored": null,
+   "fermat_iters_if_hit": null,
+   "plausible_rsa_modulus": false
+  },
+  "gpg_positive_real_message": {
+   "built": true,
+   "list_packets_head": "# off=0 ctb=8c tag=3 hlen=2 plen=13\n:symkey enc packet: version 4, cipher 9, aead 0, s2k 3, hash 10\n\tsalt EC4CB875C70646A5, count 65536 (96)\n# off=15 ctb=d2 tag=18 hlen=2 plen=123 new-ctb\n:encrypted data packet:\n\tlength: 123\n\tmdc_method: 2",
+   "openpgp_scan": {
+    "name": "real_gpg_message",
+    "byte0": "0x8c",
+    "valid_pgp_header": true,
+    "newfmt": false,
+    "tag": 3,
+    "tag_name": "SKESK",
+    "plausible_pgp_message_start": true
+   },
+   "parsed_ok": true
+  },
+  "gpg_negative_random": {
+   "stderr": "gpg: no valid OpenPGP data found.\ngpg: processing message failed: Unknown system error",
+   "stdout": "",
+   "parsed_as_valid": false
+  }
+ },
+ "controls_resolved_equal": true
+}

@@ -1,0 +1,370 @@
+{
+ "changed_secrets": [
+  "canon256_raw",
+  "canon256_rev",
+  "canon256_tail32",
+  "canon256_hex",
+  "canon256_hex",
+  "canon256_decpref"
+ ],
+ "null": [
+  -7.398526119895681,
+  -6.773112051814613
+ ],
+ "bar": -5.5,
+ "control_K2": {
+  "passed": true,
+  "rank1": {
+   "score": -4.185689309037688,
+   "label": "slogan",
+   "secret_hex": "544845205052494d45532041524520534143524544",
+   "secret": "THE PRIMES ARE SACRED",
+   "kdf": "pbkdf2_sha256_10000",
+   "salt": "3301",
+   "reduction": "mod29",
+   "sign": -1,
+   "atbash": 0,
+   "dir": "fwd",
+   "head": "THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDALLTHINGSSHOULDBE"
+  },
+  "planted": {
+   "secret": "THE PRIMES ARE SACRED",
+   "kdf": "pbkdf2_sha256_10000",
+   "salt": "3301",
+   "reduction": "mod29",
+   "n_skips": 3,
+   "doublet_rate": 0.0
+  }
+ },
+ "stageB_families_from_published_A": [
+  "iter_sha256_100000",
+  "iter_sha256_3301",
+  "pbkdf2_sha512_4096",
+  "iter_sha256_1000",
+  "pbkdf2_sha1_100000",
+  "pbkdf2_sha512_1000",
+  "evp_sha256_3301",
+  "pbkdf2_sha1_10000"
+ ],
+ "canon": {
+  "A": {
+   "stage": "A_canon",
+   "n_decodes": 9072,
+   "elapsed_s": 56.5,
+   "best_score": -6.464160073099574,
+   "bar": -5.5,
+   "hit": false,
+   "over_bar": [],
+   "sample_mean": -7.330885578773722,
+   "sample_sd": 0.23629610376321733,
+   "sample_n": 247,
+   "top50": [
+    {
+     "score": -6.464160073099574,
+     "label": "canon256_tail32",
+     "secret_hex": "443449f9900075af6aeac479ee2081ad908d2ad61638e0c0719eace6b424bd50",
+     "secret": "D4I\ufffd\ufffd\u0000u\ufffdj\ufffd\ufffdy\ufffd \ufffd\ufffd\ufffd\ufffd*\ufffd\u00168\ufffd\ufffdq\ufffd\ufffd\ufffd$\ufffdP",
+     "kdf": "pbkdf2_sha256_4096",
+     "salt": "3301",
+     "reduction": "rej29",
+     "sign": 1,
+     "atbash": 1,
+     "dir": "fwd",
+     "head": "HXAEOTHEOSUITHPATHSDEAIAPMOAMSFLIBIACCELEAOSCMSEORIGNPDRJLRLYTHI"
+    },
+    {
+     "score": -6.508697632547704,
+     "label": "canon256_rev",
+     "secret_hex": "50bd24b4e6ac9e71c0e03816d62a8d90ad8120ee79c4ea6aaf750090f94934449733343a3b94db8e54fb96463d06af39157f4cc244d14a6e2f6973b0599f9b0021aac02651139c8051a72890afa683eb12d1759436fee4f0f8fa126952c0d9e9f8f9fb34700e21e7bd99aef6ad5cd27d98a02ef50de9810aab488da97856b3c9c1a3140d3656ed2ab823ab36f7c58f497320b80eda1f3f7ace20e553224896de233854ec31c6dcd3416f1cadc1c93a8e522e9072b1cd4fa46ca949c7c019ff7a337cc46a459276fe509cab563b1510fd4cc751e6491c54500585503627c57273858d429619adc66d573b8966210fca79d4b704f7de9cf95cb77eed61baa7e7cb",
+     "secret": "P\ufffd$\ufffd\u6b1eq\ufffd\ufffd8\u0016\ufffd*\ufffd\ufffd\ufffd\ufffd \ufffdy\ufffd\ufffdj\ufffdu\u0000\ufffd\ufffdI4D\ufffd34:;\ufffd\u06ceT\ufffd\ufffdF=\u0006\ufffd9\u0015\u007fL\ufffdD\ufffdJn/is\ufffdY\ufffd\ufffd\u0000!\ufffd\ufffd",
+     "kdf": "pbkdf2_sha1_3301",
+     "salt": "3301",
+     "reduction": "mod29",
+     "sign": -1,
+     "atbash": 0,
+     "dir": "rev",
+     "head": "THHIAJNEAUHNTHOEABXPLBAXFBWAFIAATHOEEONAEAIANGLBYIWGFAENTHETOEIL"
+    },
+    {
+     "score": -6.509079910911166,
+     "label": "canon256_rev",
+     "secret_hex": "50bd24b4e6ac9e71c0e03816d62a8d90ad8120ee79c4ea6aaf750090f94934449733343a3b94db8e54fb96463d06af39157f4cc244d14a6e2f6973b0599f9b0021aac02651139c8051a72890afa683eb12d1759436fee4f0f8fa126952c0d9e9f8f9fb34700e21e7bd99aef6ad5cd27d98a02ef50de9810aab488da97856b3c9c1a3140d3656ed2ab823ab36f7c58f497320b80eda1f3f7ace20e553224896de233854ec31c6dcd3416f1cadc1c93a8e522e9072b1cd4fa46ca949c7c019ff7a337cc46a459276fe509cab563b1510fd4cc751e6491c54500585503627c57273858d429619adc66d573b8966210fca79d4b704f7de9cf95cb77eed61baa7e7cb",
+     "secret": "P\ufffd$\ufffd\u6b1eq\ufffd\ufffd8\u0016\ufffd*\ufffd\ufffd\ufffd\ufffd \ufffdy\ufffd\ufffdj\ufffdu\u0000\ufffd\ufffdI4D\ufffd34:;\ufffd\u06ceT\ufffd\ufffdF=\u0006\ufffd9\u0015\u007fL\ufffdD\ufffdJn/is\ufffdY\ufffd\ufffd\u0000!\ufffd\ufffd",
+     "kdf": "pbkdf2_sha1_100000",
+     "salt": "empty",
+     "reduction": "mod29",
+     "sign": 1,
+     "atbash": 1,
+     "dir": "rev",
+     "head": "LMDBOATHNHUGXJMLSODREACUMBYNAMNEANGTHAETHEAOUTNNGEOYHUFGEORXTHIO"
+    },
+    {
+     "score": -6.514420370327007,
+     "label": "canon256_raw",
+     "secret_hex": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576dc6ad1996428d857372c5273650850550541c49e651c74cfd10153b56ab9c50fe7692456ac47c337aff19c0c749a96ca44fcdb172902e528e3ac9c1ad1c6f41d3dcc631ec543823de96482253e520ce7a3f1fda0eb82073498fc5f736ab23b82aed56360d14a3c1c9b35678a98d48ab0a81e90df52ea0987dd25cadf6ae99bde7210e7034fbf9f8e9d9c0526912faf8f0e4fe369475d112eb83a6af9028a751809c135126c0aa21009b9f59b073692f6e4ad144c24c7f1539af063d4696fb548edb943b3a343397443449f9900075af6aeac479ee2081ad908d2ad61638e0c0719eace6b424bd50",
+     "secret": "\ufffd\u79faa\ufffd~\ufffd\\\ufffd\ufffd\ufffd\ufffd\u0004\ufffd\ufffdy\ufffd\u000f!f\ufffd;Wm\u01ad\u0019\ufffdB\ufffd\ufffdsr\ufffd'6P\ufffd\u0005PT\u001cI\ufffdQ\ufffdL\ufffd\u0010\u0015;V\ufffd\ufffdP\ufffdv\ufffdEj\ufffd|3z\ufffd\u0019",
+     "kdf": "pbkdf2_sha1_10000",
+     "salt": "3301",
+     "reduction": "rej29",
+     "sign": 1,
+     "atbash": 0,
+     "dir": "rev",
+     "head": "BOEPGTHCPTCWYWENGPOCRUANGDEASITEAINGNGUOGOEAETHSNGMPMONGEOTCPPTI"
+    },
+    {
+     "score": -6.5497715581803595,
+     "label": "canon256_rev",
+     "secret_hex": "50bd24b4e6ac9e71c0e03816d62a8d90ad8120ee79c4ea6aaf750090f94934449733343a3b94db8e54fb96463d06af39157f4cc244d14a6e2f6973b0599f9b0021aac02651139c8051a72890afa683eb12d1759436fee4f0f8fa126952c0d9e9f8f9fb34700e21e7bd99aef6ad5cd27d98a02ef50de9810aab488da97856b3c9c1a3140d3656ed2ab823ab36f7c58f497320b80eda1f3f7ace20e553224896de233854ec31c6dcd3416f1cadc1c93a8e522e9072b1cd4fa46ca949c7c019ff7a337cc46a459276fe509cab563b1510fd4cc751e6491c54500585503627c57273858d429619adc66d573b8966210fca79d4b704f7de9cf95cb77eed61baa7e7cb",
+     "secret": "P\ufffd$\ufffd\u6b1eq\ufffd\ufffd8\u0016\ufffd*\ufffd\ufffd\ufffd\ufffd \ufffdy\ufffd\ufffdj\ufffdu\u0000\ufffd\ufffdI4D\ufffd34:;\ufffd\u06ceT\ufffd\ufffdF=\u0006\ufffd9\u0015\u007fL\ufffdD\ufffdJn/is\ufffdY\ufffd\ufffd\u0000!\ufffd\ufffd",
+     "kdf": "pbkdf2_sha1_100000",
+     "salt": "3301",
+     "reduction": "mod29",
+     "sign": 1,
+     "atbash": 1,
+     "dir": "rev",
+     "head": "AEHXCNGFWCUNEANGEAEISTFOWCFCPNGLOREADFUNEOEYIDPIAFGBELIAEOMSORHB"
+    }
+   ]
+  },
+  "B": {
+   "stage": "B_canon",
+   "n_decodes": 9856,
+   "elapsed_s": 67.5,
+   "best_score": -6.487551244140369,
+   "bar": -5.5,
+   "hit": false,
+   "over_bar": [],
+   "sample_mean": -7.350570971994036,
+   "sample_sd": 0.22370772948753587,
+   "sample_n": 268,
+   "top50": [
+    {
+     "score": -6.487551244140369,
+     "label": "canon256_raw",
+     "secret_hex": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576dc6ad1996428d857372c5273650850550541c49e651c74cfd10153b56ab9c50fe7692456ac47c337aff19c0c749a96ca44fcdb172902e528e3ac9c1ad1c6f41d3dcc631ec543823de96482253e520ce7a3f1fda0eb82073498fc5f736ab23b82aed56360d14a3c1c9b35678a98d48ab0a81e90df52ea0987dd25cadf6ae99bde7210e7034fbf9f8e9d9c0526912faf8f0e4fe369475d112eb83a6af9028a751809c135126c0aa21009b9f59b073692f6e4ad144c24c7f1539af063d4696fb548edb943b3a343397443449f9900075af6aeac479ee2081ad908d2ad61638e0c0719eace6b424bd50",
+     "secret": "\ufffd\u79faa\ufffd~\ufffd\\\ufffd\ufffd\ufffd\ufffd\u0004\ufffd\ufffdy\ufffd\u000f!f\ufffd;Wm\u01ad\u0019\ufffdB\ufffd\ufffdsr\ufffd'6P\ufffd\u0005PT\u001cI\ufffdQ\ufffdL\ufffd\u0010\u0015;V\ufffd\ufffdP\ufffdv\ufffdEj\ufffd|3z\ufffd\u0019",
+     "kdf": "iter_sha256_3301",
+     "salt": "onion2014",
+     "reduction": "mod29",
+     "sign": -1,
+     "atbash": 1,
+     "dir": "fwd",
+     "head": "AEOETHEEADYEOHMNSBANGREAXAEUNUPSTHJRROTHRYYBEODEONEOBYETEOOEPMEA"
+    },
+    {
+     "score": -6.509079910911166,
+     "label": "canon256_rev",
+     "secret_hex": "50bd24b4e6ac9e71c0e03816d62a8d90ad8120ee79c4ea6aaf750090f94934449733343a3b94db8e54fb96463d06af39157f4cc244d14a6e2f6973b0599f9b0021aac02651139c8051a72890afa683eb12d1759436fee4f0f8fa126952c0d9e9f8f9fb34700e21e7bd99aef6ad5cd27d98a02ef50de9810aab488da97856b3c9c1a3140d3656ed2ab823ab36f7c58f497320b80eda1f3f7ace20e553224896de233854ec31c6dcd3416f1cadc1c93a8e522e9072b1cd4fa46ca949c7c019ff7a337cc46a459276fe509cab563b1510fd4cc751e6491c54500585503627c57273858d429619adc66d573b8966210fca79d4b704f7de9cf95cb77eed61baa7e7cb",
+     "secret": "P\ufffd$\ufffd\u6b1eq\ufffd\ufffd8\u0016\ufffd*\ufffd\ufffd\ufffd\ufffd \ufffdy\ufffd\ufffdj\ufffdu\u0000\ufffd\ufffdI4D\ufffd34:;\ufffd\u06ceT\ufffd\ufffdF=\u0006\ufffd9\u0015\u007fL\ufffdD\ufffdJn/is\ufffdY\ufffd\ufffd\u0000!\ufffd\ufffd",
+     "kdf": "pbkdf2_sha1_100000",
+     "salt": "empty",
+     "reduction": "mod29",
+     "sign": 1,
+     "atbash": 1,
+     "dir": "rev",
+     "head": "LMDBOATHNHUGXJMLSODREACUMBYNAMNEANGTHAETHEAOUTNNGEOYHUFGEORXTHIO"
+    },
+    {
+     "score": -6.514420370327007,
+     "label": "canon256_raw",
+     "secret_hex": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576dc6ad1996428d857372c5273650850550541c49e651c74cfd10153b56ab9c50fe7692456ac47c337aff19c0c749a96ca44fcdb172902e528e3ac9c1ad1c6f41d3dcc631ec543823de96482253e520ce7a3f1fda0eb82073498fc5f736ab23b82aed56360d14a3c1c9b35678a98d48ab0a81e90df52ea0987dd25cadf6ae99bde7210e7034fbf9f8e9d9c0526912faf8f0e4fe369475d112eb83a6af9028a751809c135126c0aa21009b9f59b073692f6e4ad144c24c7f1539af063d4696fb548edb943b3a343397443449f9900075af6aeac479ee2081ad908d2ad61638e0c0719eace6b424bd50",
+     "secret": "\ufffd\u79faa\ufffd~\ufffd\\\ufffd\ufffd\ufffd\ufffd\u0004\ufffd\ufffdy\ufffd\u000f!f\ufffd;Wm\u01ad\u0019\ufffdB\ufffd\ufffdsr\ufffd'6P\ufffd\u0005PT\u001cI\ufffdQ\ufffdL\ufffd\u0010\u0015;V\ufffd\ufffdP\ufffdv\ufffdEj\ufffd|3z\ufffd\u0019",
+     "kdf": "pbkdf2_sha1_10000",
+     "salt": "3301",
+     "reduction": "rej29",
+     "sign": 1,
+     "atbash": 0,
+     "dir": "rev",
+     "head": "BOEPGTHCPTCWYWENGPOCRUANGDEASITEAINGNGUOGOEAETHSNGMPMONGEOTCPPTI"
+    },
+    {
+     "score": -6.541820097601106,
+     "label": "canon256_head32",
+     "secret_hex": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576dc6ad1996428d85",
+     "secret": "\ufffd\u79faa\ufffd~\ufffd\\\ufffd\ufffd\ufffd\ufffd\u0004\ufffd\ufffdy\ufffd\u000f!f\ufffd;Wm\u01ad\u0019\ufffdB\ufffd\ufffd",
+     "kdf": "iter_sha256_100000",
+     "salt": "Cicada",
+     "reduction": "rej29",
+     "sign": -1,
+     "atbash": 0,
+     "dir": "rev",
+     "head": "THTHOEJTEANINGBFIANETHIYJEJEATHENGEAONEAEAASSHFAEAXAEYUTYENGIGNG"
+    },
+    {
+     "score": -6.5497715581803595,
+     "label": "canon256_rev",
+     "secret_hex": "50bd24b4e6ac9e71c0e03816d62a8d90ad8120ee79c4ea6aaf750090f94934449733343a3b94db8e54fb96463d06af39157f4cc244d14a6e2f6973b0599f9b0021aac02651139c8051a72890afa683eb12d1759436fee4f0f8fa126952c0d9e9f8f9fb34700e21e7bd99aef6ad5cd27d98a02ef50de9810aab488da97856b3c9c1a3140d3656ed2ab823ab36f7c58f497320b80eda1f3f7ace20e553224896de233854ec31c6dcd3416f1cadc1c93a8e522e9072b1cd4fa46ca949c7c019ff7a337cc46a459276fe509cab563b1510fd4cc751e6491c54500585503627c57273858d429619adc66d573b8966210fca79d4b704f7de9cf95cb77eed61baa7e7cb",
+     "secret": "P\ufffd$\ufffd\u6b1eq\ufffd\ufffd8\u0016\ufffd*\ufffd\ufffd\ufffd\ufffd \ufffdy\ufffd\ufffdj\ufffdu\u0000\ufffd\ufffdI4D\ufffd34:;\ufffd\u06ceT\ufffd\ufffdF=\u0006\ufffd9\u0015\u007fL\ufffdD\ufffdJn/is\ufffdY\ufffd\ufffd\u0000!\ufffd\ufffd",
+     "kdf": "pbkdf2_sha1_100000",
+     "salt": "3301",
+     "reduction": "mod29",
+     "sign": 1,
+     "atbash": 1,
+     "dir": "rev",
+     "head": "AEHXCNGFWCUNEANGEAEISTFOWCFCPNGLOREADFUNEOEYIDPIAFGBELIAEOMSORHB"
+    }
+   ]
+  }
+ },
+ "resolved": {
+  "A": {
+   "stage": "A_resolved",
+   "n_decodes": 9072,
+   "elapsed_s": 69.6,
+   "best_score": -6.40764068089818,
+   "bar": -5.5,
+   "hit": false,
+   "over_bar": [],
+   "sample_mean": -7.327880174741331,
+   "sample_sd": 0.2294066621365076,
+   "sample_n": 247,
+   "top50": [
+    {
+     "score": -6.40764068089818,
+     "label": "canon256_hex",
+     "secret_hex": "6362653761376261363165643765623735636639396364656637303462376434373963613066323136363839336235373664633661643139393634323864383537333732633532373336353038353035353035343163343965363662633734636664313032663362353661623963353066653736393234353661633437633333376166663139633063373439613936636134346663646231373239303265353238653361633963316164316336663431643364636336333165633534333832336465393634383232353365353230636537613366316664613065623832303733343938666335663733366162323362383261656435363336306431346133633163396233353637386139386434386162306138316539306466353265613039383764643235636164663661653939626465373231306537303334666266396638653964396330353236393132666166386630653466653336393437356431313265623833613661663930323861373531383039633133353132366330616132313030396239663539623037333639326636653461643134346332346337663135333961663036336434363936666235343865646239343362336133343333393734343334343966393930303037356166366165616334373965653230383161643930386432616436313633386336633037313965616365366234323462643530",
+     "secret": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576dc6ad1996428d85",
+     "kdf": "iter_sha256_3301",
+     "salt": "3301",
+     "reduction": "mod29",
+     "sign": 1,
+     "atbash": 0,
+     "dir": "rev",
+     "head": "DAECTHEARTNCXBSACTHIAEEALYGNITHIGHPPTOTHTHEYTHIMOEOODTHGTEABTHDS"
+    },
+    {
+     "score": -6.456926875122966,
+     "label": "canon256_rev",
+     "secret_hex": "50bd24b4e6ac9e71c0c63816d62a8d90ad8120ee79c4ea6aaf750090f94934449733343a3b94db8e54fb96463d06af39157f4cc244d14a6e2f6973b0599f9b0021aac02651139c8051a72890afa683eb12d1759436fee4f0f8fa126952c0d9e9f8f9fb34700e21e7bd99aef6ad5cd27d98a02ef50de9810aab488da97856b3c9c1a3140d3656ed2ab823ab36f7c58f497320b80eda1f3f7ace20e553224896de233854ec31c6dcd3416f1cadc1c93a8e522e9072b1cd4fa46ca949c7c019ff7a337cc46a459276fe509cab563b2f10fd4cc76be6491c54500585503627c57273858d429619adc66d573b8966210fca79d4b704f7de9cf95cb77eed61baa7e7cb",
+     "secret": "P\ufffd$\ufffd\u6b1eq\ufffd\ufffd8\u0016\ufffd*\ufffd\ufffd\ufffd\ufffd \ufffdy\ufffd\ufffdj\ufffdu\u0000\ufffd\ufffdI4D\ufffd34:;\ufffd\u06ceT\ufffd\ufffdF=\u0006\ufffd9\u0015\u007fL\ufffdD\ufffdJn/is\ufffdY\ufffd\ufffd\u0000!\ufffd\ufffd",
+     "kdf": "pbkdf2_sha1_3301",
+     "salt": "self",
+     "reduction": "mod29",
+     "sign": -1,
+     "atbash": 0,
+     "dir": "rev",
+     "head": "FHNWRYXLAOPHIDGRSIAETHEODOBYAHBADPETHHEARSMOAEHNREANIADOEHBLUHCE"
+    },
+    {
+     "score": -6.5417281179491615,
+     "label": "canon256_rev",
+     "secret_hex": "50bd24b4e6ac9e71c0c63816d62a8d90ad8120ee79c4ea6aaf750090f94934449733343a3b94db8e54fb96463d06af39157f4cc244d14a6e2f6973b0599f9b0021aac02651139c8051a72890afa683eb12d1759436fee4f0f8fa126952c0d9e9f8f9fb34700e21e7bd99aef6ad5cd27d98a02ef50de9810aab488da97856b3c9c1a3140d3656ed2ab823ab36f7c58f497320b80eda1f3f7ace20e553224896de233854ec31c6dcd3416f1cadc1c93a8e522e9072b1cd4fa46ca949c7c019ff7a337cc46a459276fe509cab563b2f10fd4cc76be6491c54500585503627c57273858d429619adc66d573b8966210fca79d4b704f7de9cf95cb77eed61baa7e7cb",
+     "secret": "P\ufffd$\ufffd\u6b1eq\ufffd\ufffd8\u0016\ufffd*\ufffd\ufffd\ufffd\ufffd \ufffdy\ufffd\ufffdj\ufffdu\u0000\ufffd\ufffdI4D\ufffd34:;\ufffd\u06ceT\ufffd\ufffdF=\u0006\ufffd9\u0015\u007fL\ufffdD\ufffdJn/is\ufffdY\ufffd\ufffd\u0000!\ufffd\ufffd",
+     "kdf": "pbkdf2_sha512_4096",
+     "salt": "3301",
+     "reduction": "mod29",
+     "sign": -1,
+     "atbash": 0,
+     "dir": "rev",
+     "head": "OEOTOPEOEASFURIEOSOELXHWTHAWSAMWPEOTWEYEOEAMEONGLNGLUSPPFXEARNGL"
+    },
+    {
+     "score": -6.548600053292395,
+     "label": "canon256_decpref",
+     "secret_hex": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576de0ad1996428d857372c5273650850550541c49e66bc74cfd102f3b56ab9c50fe7692456ac47c337aff19c0c749a96ca44fcdb172902e528e3ac9c1ad1c6f41d3dcc631ec543823de96482253e520ce7a3f1fda0eb82073498fc5f736ab23b82aed56360d14a3c1c9b35678a98d48ab0a81e90df52ea0987dd25cadf6ae99bde7210e7034fbf9f8e9d9c0526912faf8f0e4fe369475d12ceb83a6af90288d51809c135126c0aa21009b9f59b07369156e4ad144c24c7f1539af063d4696fb058edb943b3a343397443449f9900075af6aeac479ee3a81ad908d2ad61638c6c0719eace6b424bd50",
+     "secret": "\ufffd\u79faa\ufffd~\ufffd\\\ufffd\ufffd\ufffd\ufffd\u0004\ufffd\ufffdy\ufffd\u000f!f\ufffd;Wm\ufffd\u0019\ufffdB\ufffd\ufffdsr\ufffd'6P\ufffd\u0005PT\u001cI\ufffdk\ufffdL\ufffd\u0010/;V\ufffd\ufffdP\ufffdv\ufffdEj\ufffd|3z\ufffd\u0019",
+     "kdf": "evp_sha256_3301",
+     "salt": "empty",
+     "reduction": "mod29",
+     "sign": -1,
+     "atbash": 1,
+     "dir": "rev",
+     "head": "BPJDAADTCHWOEWSNEAOEIAMYDANGSLAEEOLAECWOOEEJAXETHNGRUNROFMHAINTH"
+    },
+    {
+     "score": -6.568674368956763,
+     "label": "canon256_hex",
+     "secret_hex": "6362653761376261363165643765623735636639396364656637303462376434373963613066323136363839336235373664633661643139393634323864383537333732633532373336353038353035353035343163343965363662633734636664313032663362353661623963353066653736393234353661633437633333376166663139633063373439613936636134346663646231373239303265353238653361633963316164316336663431643364636336333165633534333832336465393634383232353365353230636537613366316664613065623832303733343938666335663733366162323362383261656435363336306431346133633163396233353637386139386434386162306138316539306466353265613039383764643235636164663661653939626465373231306537303334666266396638653964396330353236393132666166386630653466653336393437356431313265623833613661663930323861373531383039633133353132366330616132313030396239663539623037333639326636653461643134346332346337663135333961663036336434363936666235343865646239343362336133343333393734343334343966393930303037356166366165616334373965653230383161643930386432616436313633386336633037313965616365366234323462643530",
+     "secret": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576dc6ad1996428d85",
+     "kdf": "iter_sha256_1000",
+     "salt": "empty",
+     "reduction": "rej29",
+     "sign": -1,
+     "atbash": 0,
+     "dir": "fwd",
+     "head": "AHTHAEEUHIAIAMDROIYEAIMHGFCEALFMCAEEHJEEAILHEAAEYSEASHAHOCHTHIAN"
+    }
+   ]
+  },
+  "B": {
+   "stage": "B_resolved",
+   "n_decodes": 9856,
+   "elapsed_s": 93.0,
+   "best_score": -6.40764068089818,
+   "bar": -5.5,
+   "hit": false,
+   "over_bar": [],
+   "sample_mean": -7.351660007999716,
+   "sample_sd": 0.22564235622389897,
+   "sample_n": 268,
+   "top50": [
+    {
+     "score": -6.40764068089818,
+     "label": "canon256_hex",
+     "secret_hex": "6362653761376261363165643765623735636639396364656637303462376434373963613066323136363839336235373664633661643139393634323864383537333732633532373336353038353035353035343163343965363662633734636664313032663362353661623963353066653736393234353661633437633333376166663139633063373439613936636134346663646231373239303265353238653361633963316164316336663431643364636336333165633534333832336465393634383232353365353230636537613366316664613065623832303733343938666335663733366162323362383261656435363336306431346133633163396233353637386139386434386162306138316539306466353265613039383764643235636164663661653939626465373231306537303334666266396638653964396330353236393132666166386630653466653336393437356431313265623833613661663930323861373531383039633133353132366330616132313030396239663539623037333639326636653461643134346332346337663135333961663036336434363936666235343865646239343362336133343333393734343334343966393930303037356166366165616334373965653230383161643930386432616436313633386336633037313965616365366234323462643530",
+     "secret": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576dc6ad1996428d85",
+     "kdf": "iter_sha256_3301",
+     "salt": "3301",
+     "reduction": "mod29",
+     "sign": 1,
+     "atbash": 0,
+     "dir": "rev",
+     "head": "DAECTHEARTNCXBSACTHIAEEALYGNITHIGHPPTOTHTHEYTHIMOEOODTHGTEABTHDS"
+    },
+    {
+     "score": -6.53292547252476,
+     "label": "canon256_hex",
+     "secret_hex": "6362653761376261363165643765623735636639396364656637303462376434373963613066323136363839336235373664633661643139393634323864383537333732633532373336353038353035353035343163343965363662633734636664313032663362353661623963353066653736393234353661633437633333376166663139633063373439613936636134346663646231373239303265353238653361633963316164316336663431643364636336333165633534333832336465393634383232353365353230636537613366316664613065623832303733343938666335663733366162323362383261656435363336306431346133633163396233353637386139386434386162306138316539306466353265613039383764643235636164663661653939626465373231306537303334666266396638653964396330353236393132666166386630653466653336393437356431313265623833613661663930323861373531383039633133353132366330616132313030396239663539623037333639326636653461643134346332346337663135333961663036336434363936666235343865646239343362336133343333393734343334343966393930303037356166366165616334373965653230383161643930386432616436313633386336633037313965616365366234323462643530",
+     "secret": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576dc6ad1996428d85",
+     "kdf": "pbkdf2_sha512_1000",
+     "salt": "anend16",
+     "reduction": "mod29",
+     "sign": 1,
+     "atbash": 0,
+     "dir": "fwd",
+     "head": "IWEATHIYLALAIOFCLIRREATWOEBFTNGDNTHIAUEATHYXHPGIOXXLADIAUEOOWERD"
+    },
+    {
+     "score": -6.5417281179491615,
+     "label": "canon256_rev",
+     "secret_hex": "50bd24b4e6ac9e71c0c63816d62a8d90ad8120ee79c4ea6aaf750090f94934449733343a3b94db8e54fb96463d06af39157f4cc244d14a6e2f6973b0599f9b0021aac02651139c8051a72890afa683eb12d1759436fee4f0f8fa126952c0d9e9f8f9fb34700e21e7bd99aef6ad5cd27d98a02ef50de9810aab488da97856b3c9c1a3140d3656ed2ab823ab36f7c58f497320b80eda1f3f7ace20e553224896de233854ec31c6dcd3416f1cadc1c93a8e522e9072b1cd4fa46ca949c7c019ff7a337cc46a459276fe509cab563b2f10fd4cc76be6491c54500585503627c57273858d429619adc66d573b8966210fca79d4b704f7de9cf95cb77eed61baa7e7cb",
+     "secret": "P\ufffd$\ufffd\u6b1eq\ufffd\ufffd8\u0016\ufffd*\ufffd\ufffd\ufffd\ufffd \ufffdy\ufffd\ufffdj\ufffdu\u0000\ufffd\ufffdI4D\ufffd34:;\ufffd\u06ceT\ufffd\ufffdF=\u0006\ufffd9\u0015\u007fL\ufffdD\ufffdJn/is\ufffdY\ufffd\ufffd\u0000!\ufffd\ufffd",
+     "kdf": "pbkdf2_sha512_4096",
+     "salt": "3301",
+     "reduction": "mod29",
+     "sign": -1,
+     "atbash": 0,
+     "dir": "rev",
+     "head": "OEOTOPEOEASFURIEOSOELXHWTHAWSAMWPEOTWEYEOEAMEONGLNGLUSPPFXEARNGL"
+    },
+    {
+     "score": -6.541820097601106,
+     "label": "canon256_head32",
+     "secret_hex": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576dc6ad1996428d85",
+     "secret": "\ufffd\u79faa\ufffd~\ufffd\\\ufffd\ufffd\ufffd\ufffd\u0004\ufffd\ufffdy\ufffd\u000f!f\ufffd;Wm\u01ad\u0019\ufffdB\ufffd\ufffd",
+     "kdf": "iter_sha256_100000",
+     "salt": "Cicada",
+     "reduction": "rej29",
+     "sign": -1,
+     "atbash": 0,
+     "dir": "rev",
+     "head": "THTHOEJTEANINGBFIANETHIYJEJEATHENGEAONEAEAASSHFAEAXAEYUTYENGIGNG"
+    },
+    {
+     "score": -6.548600053292395,
+     "label": "canon256_decpref",
+     "secret_hex": "cbe7a7ba61ed7eb75cf99cdef704b7d479ca0f2166893b576de0ad1996428d857372c5273650850550541c49e66bc74cfd102f3b56ab9c50fe7692456ac47c337aff19c0c749a96ca44fcdb172902e528e3ac9c1ad1c6f41d3dcc631ec543823de96482253e520ce7a3f1fda0eb82073498fc5f736ab23b82aed56360d14a3c1c9b35678a98d48ab0a81e90df52ea0987dd25cadf6ae99bde7210e7034fbf9f8e9d9c0526912faf8f0e4fe369475d12ceb83a6af90288d51809c135126c0aa21009b9f59b07369156e4ad144c24c7f1539af063d4696fb058edb943b3a343397443449f9900075af6aeac479ee3a81ad908d2ad61638c6c0719eace6b424bd50",
+     "secret": "\ufffd\u79faa\ufffd~\ufffd\\\ufffd\ufffd\ufffd\ufffd\u0004\ufffd\ufffdy\ufffd\u000f!f\ufffd;Wm\ufffd\u0019\ufffdB\ufffd\ufffdsr\ufffd'6P\ufffd\u0005PT\u001cI\ufffdk\ufffdL\ufffd\u0010/;V\ufffd\ufffdP\ufffdv\ufffdEj\ufffd|3z\ufffd\u0019",
+     "kdf": "evp_sha256_3301",
+     "salt": "empty",
+     "reduction": "mod29",
+     "sign": -1,
+     "atbash": 1,
+     "dir": "rev",
+     "head": "BPJDAADTCHWOEWSNEAOEIAMYDANGSLAEEOLAECWOOEEJAXETHNGRUNROFMHAINTH"
+    }
+   ]
+  }
+ },
+ "elapsed_s": 354.2
+}
