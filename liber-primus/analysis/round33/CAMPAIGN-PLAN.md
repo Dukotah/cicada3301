@@ -182,8 +182,17 @@ are objects a person can settle at a desk.
   (`power.py`, L=120) to state the new power.
 - **Q5.** If the T1 harness cannot reproduce the 95.09% figure from committed code, stop and file that — the audit
   cannot proceed on an unreproducible gate.
-- **Deliverable.** `round33/B2-lp1-audit/` — `p27_93.md` (with crops), `lp1_misses.json`, `RESULTS.md`, and if the
-  panel changed, a rebuilt `panel.npz` + gate proof.
+- **Also in B2 — land GitHub issue #12.** An outside researcher (RETSAM3301, opened 2026-10-10) adjudicated two
+  separator-category discrepancies in `data/krisyotam_runes.txt` — segment 8 rune 11 `ᛒ.ᛡ` → `ᛒ-ᛡ` and segment 40
+  rune 7 `ᚻ.ᚪ` → `ᚻ-ᚪ` — cross-checked against relikd, Wulfic, the archived 2014 JPEGs (SHA-256 pinned in the
+  issue) and our own Round 19 `T2/out_separators.json`. The owner accepted it in the thread and promised a tracked
+  data-correction PR; **it never landed.** B2 lands it: apply the two-gap correction with a provenance line crediting
+  the contributor, re-run `tests/validate.py` and the drift/consistency CI, state whether either gap moves a segment
+  boundary any solved-page control depends on (not expected at a word gap), file a ledger row, and close #12 by
+  commit reference. This is the first outside adjudication of the 19 separator disagreements the roadmap's S2
+  channel named; the other 17 become B2's `not_covered` unless they fall out of the same audit cheaply.
+- **Deliverable.** `round33/B2-lp1-audit/` — `p27_93.md` (with crops), `lp1_misses.json`, `issue12_correction.md`
+  (diff + provenance + validate output), `RESULTS.md`, and if the panel changed, a rebuilt `panel.npz` + gate proof.
 
 ---
 
