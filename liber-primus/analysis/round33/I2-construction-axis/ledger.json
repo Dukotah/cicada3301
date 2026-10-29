@@ -1,0 +1,21 @@
+{
+ "id": "R33-I2",
+ "lane": "round33/I2",
+ "round": "33",
+ "date": "2026-10-29",
+ "hypothesis": "Constructions beyond {keyskip1, skip_by_two, free} (per-page/per-line key reset, skip_by_k k=3..5) are period-plausible, reproduce LP2's doublet rate, and are unrepresented by the existing transition relations.",
+ "status": "instrument-result",
+ "verdict": "UNREPRESENTED-CONSTRUCTIONS-FOUND; doublet prior non-discriminating",
+ "coverage": "7 constructions (5 new + 2 controls) x EN_MODERN/EN_NOVOWEL x L120/page-length x {rel1,rel2,free} x {driftbeam, v3 panel_max} x 20 plants; doublet priors 30 draws at L=12956",
+ "result": {
+  "kill_rule_fired": false,
+  "doublet_rates_pct": "0.595-0.603 for all seven vs LP2 0.664; no discrimination vs keyskip1",
+  "represented": ["skip_by_3 (free relation; v3 for NOVOWEL)"],
+  "unrepresented": ["skip_by_4", "skip_by_5", "reset_per_page", "reset_per_line"],
+  "resets_recovered_by_known_boundary_segmentation": true,
+  "patch": "relation_patch.md + relation_skip_by_k.py (proposal, not applied)"
+ },
+ "not_covered": ["reset to nonzero offset", "combined axes", "supp != 0.83", "k > 5", "v3 not validated by I1", "panel adjudication not run", "patch not validated on NOVOWEL"],
+ "reopens_if": "n/a",
+ "artifacts": ["PREREG.md", "enciphers.py", "priors.py", "rep.py", "rep_v3.py", "doublet_priors.json", "representability.json", "representability_v3.json", "relation_skip_by_k.py", "patch_validation.json", "relation_patch.md", "RESULTS.md"]
+}
