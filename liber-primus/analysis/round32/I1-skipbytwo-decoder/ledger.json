@@ -1,0 +1,59 @@
+{
+ "$comment": "Round 32 lane I1 ledger fragment (instrument measurement, not a sweep). Merge into liber-primus/LEDGER.json.",
+ "lane": "round32/I1",
+ "date": "2026-10-28",
+ "entries": [
+  {
+   "id": "R32-I1-SKIPBYTWO-ENVELOPE",
+   "lane": "round32/I1",
+   "round": "32",
+   "date": "2026-10-28",
+   "hypothesis": "An explicit-advance beam decoder (advance in {1,2,free}) recovers planted skip_by_two, keyskip1 and free-drift ciphertext at L=120/400 and is adjudicated above a seed-3301 shuffle null; measures what R19/I1 did not (L=120, non-English registers, panel, null).",
+   "status": "measured",
+   "verdict": "INSTRUMENT-ENVELOPE-MEASURED; kill rule did not fire",
+   "coverage": "3 enciphers x 3 advance decoders x L in {120,400} x 20 EN plants; L=6000 x 3 plants spot check; LATIN/OE/DE/EN_NOVOWEL x 5 enc/dec pairs x L{120,400} x 8-10 plants; shuffle null n=100 (n=4 at 6000); bounded re-adjudication of ONE seed (CICADA3301, sha256_ctr) on LP2 page-0 head, advance=2, offsets 0..3301, both signs, 0 flagged (best pmax 4.54 vs flag 10.0), control found true offset.",
+   "not_covered": [
+    "I2 nine-register panel (EN_KJV, CY/Welsh) - corpora absent, 7-register lite panel used",
+    "vowel-dropped English under skip_by_two: advance=2 recovery 0.72/0.71 < 0.85 (failed control, register-side hole in the English-quadgram beam)",
+    "free drift q=0.05 at L=6000: recovery 0.611",
+    "advance relations other than 1,2,free; resets; rewrite/keyside/plainside",
+    "B-04 seeds other than CICADA3301 (about 2164 of 2165), other generators/pages, key families KDF/PRNG/Py2.7-MT",
+    "L=6000 beyond 3 plants",
+    "I3 contract bars (lite panel z scale differs); bars here are empirical shuffle-null maxima"
+   ],
+   "positive_control": "passed (EN/LATIN/OE/DE matched recovery >=0.99 at L=120/400; replication of L7-B 0.30 vs 0.258); EN_NOVOWEL FAILED (0.72/0.71)",
+   "threshold": "RECOVERED iff median rune-index recovery >= 0.85 and >=80% seeds pmax above shuffle-null max (PREREG s3, fixed before running); re-adjudication flag pmax>10 (Addendum A).",
+   "result": {
+    "EN_L120_skip_by_two": {
+     "adv1": 0.3,
+     "adv2": 1.0,
+     "free": 1.0
+    },
+    "EN_L400_skip_by_two": {
+     "adv1": 0.168,
+     "adv2": 1.0,
+     "free": 1.0
+    },
+    "EN_L120_free_q05": {
+     "adv1": 0.329,
+     "adv2": 0.254,
+     "free": 0.992
+    },
+    "EN_NOVOWEL_L120_skip_by_two": {
+     "adv2": 0.721,
+     "free": 0.312
+    },
+    "kill_rule_fired": false,
+    "readjudication_flagged": 0
+   },
+   "overlap": "round19/I1/driftbeam.py already implements the three relations; beam_v2.py is a facade over it. Lane value = L=120 / register / panel / null measurement.",
+   "reopens_if": "a panel-aware or language-agnostic beam score is built (fixes EN_NOVOWEL); Welsh/KJV/Mabinogion corpora restored and the I2 panel rebuilt (re-run run_envelope.py against it); a different B-04 seed/page is re-adjudicated.",
+   "artifacts": [
+    "round32/I1-skipbytwo-decoder/power_envelope.json",
+    "round32/I1-skipbytwo-decoder/RESULTS.md",
+    "round32/I1-skipbytwo-decoder/PREREG.md",
+    "round32/I1-skipbytwo-decoder/beam_v2.py"
+   ]
+  }
+ ]
+}

@@ -32,6 +32,15 @@ DEFAULT_MU = -7.2517      # Gumbel location, L~120 segments, skip-aware beam
 DEFAULT_BETA = 0.0725     # Gumbel scale, fitted from real order statistics
 FIXED_BAR = -5.5          # the repo's historical confirm threshold
 
+# Length curve (Round 32 I3, analysis/round32/I3-r3-enforcement/null_curve32.json):
+# beta(L) = CURVE_BETA120 * (L/120)**CURVE_EXP, an OLS fit of ln beta on ln L over 5
+# measured cells (seed-3301 shuffle null, 200k decodes each; exponent SE 0.062, df 3).
+# mu(L) is linearly interpolated in ln L between CURVE_MU nodes (flat outside). Used only
+# when threshold_for(..., segment_len=L) is given; segment_len=None keeps the legacy L~120 constants.
+CURVE_BETA120 = 0.07095
+CURVE_EXP = -0.5675
+CURVE_MU = [(31, -6.8992), (60, -7.0618), (90, -7.1222), (120, -7.1179), (180, -7.0992)]
+
 # --- CALIBRATION, and a trap worth knowing about --------------------------------
 # The obvious way to get beta is from the null's standard deviation
 # (sd = beta*pi/sqrt(6)). For THIS statistic that is wrong by a factor of ~2.5, because
@@ -85,6 +94,23 @@ def expected_max(n_trials, mu=DEFAULT_MU, beta=DEFAULT_BETA):
     return mu + beta * (math.log(n_trials) + EULER_GAMMA)
 
 
+def curve_params(segment_len):
+    """(mu, beta) of the null max-Gumbel at segment length L, from the measured curve."""
+    L = float(segment_len)
+    beta = CURVE_BETA120 * (L / 120.0) ** CURVE_EXP
+    xs = [math.log(a) for a, _ in CURVE_MU]
+    ys = [b for _, b in CURVE_MU]
+    x = math.log(L)
+    if x <= xs[0]:
+        mu = ys[0]
+    elif x >= xs[-1]:
+        mu = ys[-1]
+    else:
+        i = max(j for j in range(len(xs)) if xs[j] <= x)
+        mu = ys[i] + (ys[i + 1] - ys[i]) * (x - xs[i]) / (xs[i + 1] - xs[i])
+    return mu, beta
+
+
 def threshold_for(n_trials, segment_len=None, alpha=0.01,
                   mu=DEFAULT_MU, beta=DEFAULT_BETA, floor=FIXED_BAR):
     """THE function to use. Family-wise threshold over n_trials at level alpha.
@@ -97,9 +123,18 @@ def threshold_for(n_trials, segment_len=None, alpha=0.01,
     True
     >>> threshold_for(10**9) > threshold_for(10**3)    # bigger sweep, higher bar
     True
+    >>> threshold_for(10**7, 31) > threshold_for(10**7, 400)   # short window, higher bar
+    True
+    >>> threshold_for(10**7, None) == threshold_for(10**7)     # legacy path unchanged
+    True
+
+    `segment_len=L` (new, Round 32) scales (mu, beta) along the measured length curve; it is
+    applied only when mu/beta are left at their defaults (explicit mu/beta win).
     """
     if n_trials < 2:
         return floor
+    if segment_len and mu == DEFAULT_MU and beta == DEFAULT_BETA:
+        mu, beta = curve_params(segment_len)
     fw = mu + beta * (math.log(n_trials) - math.log(-math.log(1 - alpha)))
     return max(floor, fw)
 

@@ -1,0 +1,42 @@
+{
+ "lane": "round32/B3",
+ "date": "2026-10-28",
+ "entries": [
+  {
+   "id": "R32-B3-CLOSEOUT",
+   "lane": "round32/B3",
+   "round": "32",
+   "status": "mixed",
+   "verdict": "L3-INCONCLUSIVE; GLIBC-GEN0-PRIORDENSE-NEGATIVE-BOUNDED",
+   "result": "See ledger_patches.json (R28-L3-PY27-STR-AMD64-DICT inconclusive; R32-B3-GLIBC-GEN0-PRIORDENSE negative bounded). No new sweep for L3.",
+   "coverage": "48,036 distinct 32-bit seeds (B04 ints/primes/3301 family, 433 seedprior20 PGP-time seconds, ints 0..2047, YYYYMMDD + unix-midnight UTC per day 2011-2015, unix top-of-hour UTC 2011-2015), glibc TYPE_3 random()%29, offset 0, sign -1, both relations, beam_w 64, L120 screen / L240 gate. = 1.12e-5 of 2^32.",
+   "not_covered": [
+    "99.9989% of the 2^32 gen=0 seed space (needs C prefilter or ~166 core-days Python)",
+    "offsets != 0, sign +1, initstate sizes other than TYPE_3, rand() variants, reject/scaled reductions",
+    "timestamp jitter around the listed instants; seconds not on the list",
+    "relations beyond keyskip1/keyskip2",
+    "panel is a lane-local REBUILD whose corpora hashes differ from round19/I2's committed build: the 7.38/7.63 bars are applied as frozen constants on a sibling panel",
+    "gens 1-9 and gen=7/8 re-adjudication (separate open item)",
+    "R28-L3: strings outside the dictionary (2^64 amd64 image not enumerable)",
+    "R28-L3: wordlist tiers for grb5_mod / grb5_rej / shuffle29",
+    "R28-L3: offsets != 0",
+    "R28-L3: Python != 2.7 hash semantics; PYTHONHASHSEED/-R",
+    "R28-L3: relations other than keyskip1 / keyskip2 (free drift); beam_w>64; L!=120 screen",
+    "R28-L3: non-linguistic payloads",
+    "R28-L3: candidates28.jsonl, dictionary.jsonl and any SWEEPROW bulk store are absent from this checkout, so the stage-B rows and the recount are unverified"
+   ],
+   "positive_control": "control.json: 6/6 planted glibc keys (seeds 1325734783, 3301, 20120105 x pair/exact) screen pmax 17.931, stage-B pmax 25.241, recovery 1.000, heldout 1.000, HIT=True; one plant text only; glibc port matches srandom(1) known outputs.",
+   "threshold": "screen 5.0; claim bars pair 7.3835 / exact 7.6342 (hitfn20 at N=1e6 reference)",
+   "deliverables": [
+    "PREREG.md",
+    "RESULTS.md",
+    "ledger_patches.json",
+    "sweep.py",
+    "sweep_rows.jsonl",
+    "control.json",
+    "analysis/round28/L3/RESULTS.md"
+   ],
+   "reopens_if": "see ledger_patches.json"
+  }
+ ]
+}

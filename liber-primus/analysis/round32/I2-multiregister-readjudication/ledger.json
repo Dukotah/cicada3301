@@ -1,0 +1,53 @@
+{
+ "$comment": "Round 32 lane I2 ledger fragment (round19/I2 convention). Coordinator merges into LEDGER.json.",
+ "lane": "round32/I2",
+ "date": "2026-10-28",
+ "entries": [
+  {
+   "id": "R32-I2-READJUDICATION",
+   "lane": "round32/I2",
+   "round": "32",
+   "date": "2026-10-28",
+   "hypothesis": "Rebuilding the round19/I2 nine-register panel and re-scoring stored survivors of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD gives each negative a stated powered register conditional, or flags a survivor.",
+   "status": "negative",
+   "verdict": "PANEL-REBUILT-GATE-PASSED; 0 SURVIVORS FLAGGED (survivor-level only)",
+   "gates": {
+    "G-POWER": "PASSED (min 0.92 at L=120, 1.00 at L=240; L=400 not run)"
+   },
+   "threshold": "pmax_ne/pcon >= round19/I3 escalate bar at lane N",
+   "threshold_fixed_in_advance": true,
+   "result": {
+    "B-04": {
+     "n": 225,
+     "best_pmax_ne": 5.361,
+     "best_pcon": 4.415,
+     "flagged": 0
+    },
+    "R16-KDF": {
+     "n": 48,
+     "best_pmax_ne": 3.966,
+     "best_pcon": 3.182,
+     "flagged": 0
+    },
+    "R16-PRNG": {
+     "n": 20,
+     "best_pmax_ne": 2.614,
+     "best_pcon": 2.314,
+     "flagged": 0
+    },
+    "R17-PUBLIC-PAD": {
+     "n": 5730,
+     "best_pmax_ne": 7.551,
+     "best_pcon": 5.631,
+     "flagged": 0
+    }
+   },
+   "coverage": "Stored top-N heads only (31-55 runes), English-ranked; substitute Welsh corpus.",
+   "not_covered": "Survivor-level only: top-N were ranked by the English scorer, so non-English decodes of the sweep were never stored; sweep-level non-English coverage is not recoverable. Heads are 31-55 runes. Greek/Hebrew/Norse unmeasured. CY is modern Welsh prose (substitute corpus), L=400 not run.",
+   "evidence": [
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/RESULTS.md",
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/gate_proof.json"
+   ]
+  }
+ ]
+}

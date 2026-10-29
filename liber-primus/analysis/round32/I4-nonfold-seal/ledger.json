@@ -1,0 +1,121 @@
+{
+ "$comment": "Round 32 lane I4 (non-fold oracle-seal proxy) ledger fragment, round19/I2 convention. Merge into liber-primus/LEDGER.json. Instrument measurement, not a key-space sweep; bounded result.",
+ "lane": "round32/I4-nonfold-seal",
+ "date": "2026-10-28",
+ "trust_anchor_before": "tests/validate.py not run before this lane's work",
+ "trust_anchor_after": "tests/validate.py ALL VALIDATIONS PASSED (5/5 known solves)",
+ "entries": [
+  {
+   "id": "R32-I4-NONFOLD-SEAL",
+   "lane": "round32/I4-nonfold-seal",
+   "round": "32/I4",
+   "date": "2026-10-28",
+   "hypothesis": "A non-fold, oracle-free proxy (longer decrypt head than the 24-32 runes that capped R20-P1; a per-register fold bar; a learned self-consistency gate; cheap hybrids) can reach >=0.90 catch of correct-key EN_NOVOWEL bar-clearing hallucinations at <=0.10 false-reject of genuine decodes with a tuning/held-out split, holding across the I2 register panel, where the round21/L1 disjoint-fold family topped out at 0.818/0.167.",
+   "status": "audit",
+   "verdict": "SEAL_PASS=false (unchanged) for the pre-registered non-fold designs D1-D4; SEAL_CANDIDATE=D5c (post-hoc per-register pmax margin) passes one virgin split at L=240 but is length-conditioned and unreplicated",
+   "gates": {
+    "threshold_fixed_in_advance": true,
+    "threshold": "PREREG.md: frozen operating point must score >=0.90 catch and <=0.10 false-reject on tuning AND held-out (L1-comparable) and <=0.10 false-reject on pooled register-spread genuine (strict). Addenda A/B (written before the virgin splits existed) apply the same criteria to D5/D5c on virgin data."
+   },
+   "coverage": "391 pre-registered cells: D1 longer-head cut (11 heads x 6 taus), D1b multi-head AND (66), D2 per-register fold bar (7 k x 6 tau_N), fold-family control (42), D3a/D3b learned LR (2 x 50 thresholds), D4 hybrids (54 + 21). Populations: tuning 40 halluc / 20 EN genuine (+5 NOVOWEL genuine); seen held-out 69 / 24 (+64 register-spread genuine); virgin-1 157 / 30 / 17 NOVOWEL / 56 spread; virgin-2 392 / 40 / 33 / 80; L=120 probe 272 / 39 / 92 / 78. Conditionals: key space = correct key; relation = exact preset; register = 8-register panel, EN_NOVOWEL-argmax hallucinations.",
+   "positive_control": "passed",
+   "control_detail": "Single-cut hitfn20 leak reproduced (12/40 tuning, 16/69 held-out caught); L1 fold family reproduces its ceiling (k5/min 0.825/0.050 tuning, 0.855/0.167 held-out, 0.803/0.133 virgin-1, 0.798/0.150 virgin-2); genuine EN_MODERN 20/20 and 24/24 true recovery>=0.95; bar 7.6341931878728095; hard-register genuine planted (correct-key EN_NOVOWEL, LATIN, DE, OE, EN_KJV) and shown to expose the D3 register detectors (13/13 NOVOWEL genuine rejected). Populations are NOT bit-identical to L1 (40/69 vs 45/66) because source corpora differ/are missing.",
+   "threshold": "see gates.threshold",
+   "result": {
+    "SEAL_PASS": false,
+    "SEAL_PASS_L1_comparable_criterion": "D3a/D3b only, via register detection (not a seal)",
+    "preregistered_frozen_cells_heldout": {
+     "CTRL_fold_k7_min0.85": {
+      "catch": 0.884,
+      "fr_EN": 0.167,
+      "reg_fr": 0.375
+     },
+     "D1_cut192_tau0.95": {
+      "catch": 0.536,
+      "fr_EN": 0.042,
+      "reg_fr": 0.078
+     },
+     "D1b_multihead_h144_tau0.98": {
+      "catch": 0.841,
+      "fr_EN": 0.208,
+      "reg_fr": 0.312
+     },
+     "D2_perreg_k7_tauN0.90": {
+      "catch": 0.884,
+      "fr_EN": 0.208,
+      "reg_fr": 0.375
+     },
+     "D3a_LR_register_blind": {
+      "catch": 1.0,
+      "fr_EN": 0.0,
+      "reg_fr": 0.156,
+      "novowel_genuine_rejected": "8/8 held-out (13/13 pooled)"
+     },
+     "D3b_LR_register_aware": {
+      "catch": 1.0,
+      "fr_EN": 0.042,
+      "reg_fr": 0.531
+     },
+     "D4_perreg_AND_cut96": {
+      "catch": 0.899,
+      "fr_EN": 0.167,
+      "reg_fr": 0.281
+     },
+     "D4b_LRblind_AND_fold5": {
+      "catch": 1.0,
+      "fr_EN": 0.167,
+      "reg_fr": 0.312
+     }
+    },
+    "measured_ceiling": "best held-out hindsight cell meeting FR_EN<=0.10 AND reg_FR<=0.10 anywhere in D1-D4 = 0.623 catch (D2 k=3 tau_N=0.90); fold family 0.74-0.86; frozen-cell results above",
+    "D5c_virgin2_L240": {
+     "m_NV": 14.0128,
+     "catch": "378/392=0.964",
+     "catch_wilson95": [
+      0.941,
+      0.979
+     ],
+     "fr_EN": "0/40",
+     "fr_NOVOWEL_genuine": "1/33",
+     "fr_LATIN_DE_OE_KJV": "0/80",
+     "fr_pooled": "1/113=0.009",
+     "pass_point_estimates": true,
+     "caveat": "post-hoc design; NOVOWEL FR Wilson upper 0.153"
+    },
+    "D5a_global_margin_virgin1": {
+     "catch": "154/157=0.981",
+     "fr_EN": "0/30",
+     "fr_pooled": "18/73=0.247",
+     "pass": false
+    },
+    "L120_probe": "L=240-frozen m_NV rejects 92/92 NOVOWEL genuine at L=120; in-sample refit m~7.3 gives 0.967 catch at FR 0.098 -> margin must be calibrated per length"
+   },
+   "deliverables": [
+    "PREREG.md",
+    "RESULTS.md",
+    "catch_surface.json",
+    "shim.py",
+    "extract.py",
+    "analyze.py",
+    "analyze_d5.py",
+    "analyze_d5c.py",
+    "analyze_l120.py",
+    "within_register.py",
+    "breakdown.py",
+    "feat_*.json",
+    "extract*.log",
+    "out_build.json"
+   ],
+   "not_covered": "CY/Welsh register (corpus missing; 8-register panel, 4000 null draws); populations not bit-identical to L1 (kjv/mabinogion substituted from analysis/bookcipher/books); wrong-key, keyskip2/drift and non-EN_NOVOWEL hallucination classes (EN_HALFVOWEL hallucinations get no protection from D5c); lengths other than 240 (120 probe only); genuine sets are synthetic corpus windows, small NOVOWEL genuine n; D5/D5c post-hoc and unreplicated; partial-recovery (0.90-0.95) cases excluded.",
+   "corpora_sha256": "see out_build.json (rebuilt 8-register panel in this lane)",
+   "trust_anchor_before": "tests/validate.py not run before",
+   "trust_anchor_after": "tests/validate.py ALL VALIDATIONS PASSED",
+   "reopens_if": "(a) a third virgin key reproduces D5c at >=0.90 catch / <=0.10 pooled FR AND an m_NV(L) curve over >=4 lengths is calibrated -> auto-certification of a crosser can be turned on for the measured class; (b) the Welsh corpus is restored and the 9-register panel changes margins; (c) a wrong-key / keyskip2 / HALFVOWEL hallucination population shows D5c leaks there; (d) a genuine solved-page decode set with lower language fit shows margins below m_NV.",
+   "artifacts": {
+    "models/panel.npz": "gitignored-style rebuildable artifact (python shim.py)"
+   },
+   "priority": "high",
+   "notes": "Operative consequence: until the coordinator accepts D5c, bar-clearing survivors stay flagged-for-oracle. Also: L1's EN_MODERN-only genuine panel is passable by a register detector; future seal audits must include hard-register genuine decodes."
+  }
+ ]
+}

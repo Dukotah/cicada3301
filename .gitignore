@@ -421,3 +421,9 @@ liber-primus/analysis/round27/P2-harness/s2check/
 !liber-primus/analysis/round28/L4/run/STATUS.json
 !liber-primus/analysis/round28/L4/run/ORPHANED-PREMATURE-RUN.txt
 !liber-primus/analysis/round28/L3/progress28.json
+
+# round32: rebuilt adjudicator panels (regenerable via each lane's build script) and
+# streamed SWEEPROW stores (15 MB each, regenerable; summaries + RESULTS.md are committed)
+liber-primus/analysis/round32/**/models/
+liber-primus/analysis/round32/**/*.npz
+liber-primus/analysis/round32/**/sweep_rows.jsonl

@@ -1,0 +1,91 @@
+{
+ "$comment": "PROPOSED LEDGER.json entries from round32/B3. NOT merged. Merge by hand into LEDGER.json; also append to the R19-G3-CORRECTION entry a pointer to R32-B3-GLIBC-GEN0-PRIORDENSE.",
+ "lane": "round32/B3",
+ "date": "2026-10-28",
+ "entries": [
+  {
+   "id": "R28-L3-PY27-STR-AMD64-DICT",
+   "lane": "round28/L3",
+   "round": "28",
+   "filed_by": "round32/B3",
+   "date": "2026-10-28",
+   "hypothesis": "The author's key is a Py2.7 random.seed(<string>) amd64 (64-bit-hash) seed drawn from a dictionary of Cicada/corpus strings and an English wordlist.",
+   "status": "inconclusive",
+   "verdict": "INCONCLUSIVE-ARTIFACTS-INCOMPLETE",
+   "result": "Sweep finished (11/11 items, 2,500,207 decodes, elapsed 7,828.7 s, 0 flagged) and best stage-A pmax is 6.3148 against frozen claim bars 7.3835 (pair) / 7.6342 (exact), but the 226 stage-B rows (candidates28.jsonl), the dictionary and any SWEEPROW bulk store are not on disk, so the kill rule applies. Not citable as an exclusion until recovered; then it upgrades to bounded negative with no re-sweep.",
+   "coverage": "Dictionary amd64 Py2.7 hash image (1,201,672 distinct strings: 32,329 corpus tier0 + 389,789 wordlist + UPPER 389,782 + Title 389,772): random29xpair and random29xexact over tiers 0,1,1b,1c; grb5_mod/grb5_rej/shuffle29 x pair over tier 0 only; 11 items, 2,500,207 decodes, offset 0, wordsize 64. ~1.4e-13 of the 2^64 image.",
+   "not_covered": [
+    "strings outside the dictionary (2^64 amd64 image not enumerable)",
+    "wordlist tiers for grb5_mod / grb5_rej / shuffle29",
+    "offsets != 0",
+    "Python != 2.7 hash semantics; PYTHONHASHSEED/-R",
+    "relations other than keyskip1 / keyskip2 (free drift); beam_w>64; L!=120 screen",
+    "non-linguistic payloads",
+    "candidates28.jsonl, dictionary.jsonl and any SWEEPROW bulk store are absent from this checkout, so the stage-B rows and the recount are unverified"
+   ],
+   "positive_control": "controls.json (pre-sweep, 5/5 cells HIT, recovery 0.9917-1.000); control_e2e.json 10 plants x 5 cells: end-to-end 1.0/1.0/1.0/0.9 (random29xexact)/0.8 (grb5_modxpair, cell pass:false), screen 50/50 at min pmax 17.931 vs 5.0; hash_gate 1,500/1,500 vs real CPython 2.7.18; subsumption 200/200.",
+   "threshold": "stage-A screen 5.0; claim bars pair 7.3835 / exact 7.6342 (N=1e6 reference, conservative per cell); I3 panel-max 7.634.",
+   "three_conditionals": {
+    "key_space": "dictionary amd64 hash image, offset 0",
+    "transition_model": "keyskip1+keyskip2, beam_w 64",
+    "adjudicator_register": "I2 nine-register panel pmax (original build); EN_NOVOWEL detection-only"
+   },
+   "evidence": [
+    "liber-primus/analysis/round28/L3/RESULTS.md",
+    "liber-primus/analysis/round28/L3/progress28.json",
+    "liber-primus/analysis/round28/L3/controls.json",
+    "liber-primus/analysis/round28/L3/control_e2e.json",
+    "liber-primus/analysis/round28/L3/hash_gate.json",
+    "liber-primus/analysis/round28/L3/subsumption.json",
+    "liber-primus/analysis/round28/L3/dict_meta.json"
+   ],
+   "reopens_if": "candidates28.jsonl + dictionary.jsonl are recovered (upgrade to bounded negative if all 226 stage-B rows < bar), or any tier/cell/offset outside coverage is run.",
+   "priority": "low"
+  },
+  {
+   "id": "R32-B3-GLIBC-GEN0-PRIORDENSE",
+   "lane": "round32/B3",
+   "round": "32",
+   "date": "2026-10-28",
+   "extends": "R19-G3-CORRECTION",
+   "hypothesis": "The author's key is a glibc srandom(seed);random()%29 keystream (seed_sweep gen=0) with seed among the repo's prior-dense values, under a key-skip transition.",
+   "status": "negative",
+   "verdict": "NEGATIVE-BOUNDED-PRIOR-DENSE",
+   "result": "48,036 seeds x {pair, exact} = 96,072 decodes complete; best pmax pair 5.74 (seed 1319400000), exact 5.393 (seed 1435017600) vs bars 7.3835 / 7.6342; 11 reached the 5.0 screen, 0 reached a claim bar, 0 flagged. Does NOT close the R19-G3-CORRECTION row: the full 2^32 gen=0 remains unrun.",
+   "coverage": "48,036 distinct 32-bit seeds (B04 ints/primes/3301 family, 433 seedprior20 PGP-time seconds, ints 0..2047, YYYYMMDD + unix-midnight UTC per day 2011-2015, unix top-of-hour UTC 2011-2015), glibc TYPE_3 random()%29, offset 0, sign -1, both relations, beam_w 64, L120 screen / L240 gate. = 1.12e-5 of 2^32.",
+   "not_covered": [
+    "99.9989% of the 2^32 gen=0 seed space (needs C prefilter or ~166 core-days Python)",
+    "offsets != 0, sign +1, initstate sizes other than TYPE_3, rand() variants, reject/scaled reductions",
+    "timestamp jitter around the listed instants; seconds not on the list",
+    "relations beyond keyskip1/keyskip2",
+    "panel is a lane-local REBUILD whose corpora hashes differ from round19/I2's committed build: the 7.38/7.63 bars are applied as frozen constants on a sibling panel",
+    "gens 1-9 and gen=7/8 re-adjudication (separate open item)"
+   ],
+   "positive_control": "control.json: 6/6 planted glibc keys (seeds 1325734783, 3301, 20120105 x pair/exact) screen pmax 17.931, stage-B pmax 25.241, recovery 1.000, heldout 1.000, HIT=True; one plant text only; glibc port matches srandom(1) known outputs.",
+   "threshold": "screen 5.0; claim bars pair 7.3835 / exact 7.6342 (hitfn20 at N=1e6 reference)",
+   "three_conditionals": {
+    "key_space": "listed seeds, offset 0, TYPE_3 random()%29",
+    "transition_model": "keyskip1+keyskip2, beam_w 64",
+    "adjudicator_register": "I2 nine-register panel (lane rebuild, differing corpora); EN_NOVOWEL detection-only"
+   },
+   "sweeprow": "analysis/round32/B3-closeout/sweep_rows.jsonl (96,072 rows, validate_store PASS)",
+   "evidence": [
+    "liber-primus/analysis/round32/B3-closeout/RESULTS.md",
+    "liber-primus/analysis/round32/B3-closeout/sweep.py",
+    "liber-primus/analysis/round32/B3-closeout/sweep_rows.jsonl",
+    "liber-primus/analysis/round32/B3-closeout/sweep_summary.json",
+    "liber-primus/analysis/round32/B3-closeout/control.json",
+    "liber-primus/analysis/round32/B3-closeout/out_build.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round32/B3-closeout && python build_panel.py && python -I sweep.py control && python -I sweep.py sweep 1100  (~15 min, <500 MB)",
+   "reopens_if": "full 2^32 gen=0 completes; a DONE marker appears; any listed-out axis is run.",
+   "priority": "low"
+  }
+ ],
+ "amend_existing": [
+  {
+   "id": "R19-G3-CORRECTION",
+   "add_to_notes": "R32-B3 filed a skip-aware prior-dense first-fire of gen=0 (48,036 seeds, negative, 1.12e-5 of 2^32); the row remains open for the full space."
+  }
+ ]
+}

@@ -20,6 +20,9 @@ Checks, in order of how much they matter:
      it echoed `counts` instead of checking it. A headline number that disagrees with the
      data under it is exactly the defect this file exists to catch, so it is now an ERROR.
 
+  7. R3 STORE COMPLIANCE — rows (round >= 19) declaring a sweep must point `sweep_store` at a
+     SWEEPROW JSONL that passes adjudicate.validate_store and carries ioc/mds/pmax_ne/zl.
+
 Exit code is 0 if no ERROR-level problem is found. WARN-level findings are printed but do
 not fail the run: several are legitimately open (an in-flight lane has no result yet).
 
@@ -74,6 +77,84 @@ def evidence_exists(p, bases):
     return False
 
 
+# --- R3 enforcement (ARMADA-DOCTRINE R3; Round 32 I3) -------------------------------
+# SCOPING (Q5 rule, recorded in analysis/round32/I3-r3-enforcement/RESULTS.md): only rows
+# with round >= R3_FIRST_ROUND that DECLARE a sweep are checked, so no historical row is
+# retro-broken. A row declares a sweep by (a) an explicit `sweep_store` field (str|list of
+# paths; a MISSING/non-compliant store is a hard ERROR) or (b) `declares_sweep: true`
+# (must also carry sweep_store), or (c) implicitly: an evidence `*.jsonl` whose basename
+# contains "sweep" -- (c) is advisory (WARN) because pre-R3-schema stores cannot be fixed.
+R3_FIRST_ROUND = 19
+R3_STATS = ("ioc", "mds", "pmax_ne", "zl")   # decrypt IoC*N, min-distinct/32, best non-EN LM, compressibility
+
+
+def _round_num(e):
+    try:
+        return int(str(e.get("round", "")).split("/")[0])
+    except ValueError:
+        return -1
+
+
+def resolve_path(p, bases):
+    p = (p or "").split("#", 1)[0].strip()
+    for b in bases:
+        c = os.path.join(b, p)
+        if os.path.exists(c):
+            return c
+    return None
+
+
+def check_r3_store(path):
+    """Return a list of problems with one SWEEPROW store ([] = compliant)."""
+    sys.path.insert(0, os.path.join(LP, "analysis", "round19", "I2"))
+    try:
+        import adjudicate as A
+    except Exception as ex:                      # pragma: no cover
+        return [f"cannot import adjudicate.validate_store: {ex}"]
+    try:
+        with open(path, encoding="utf-8") as f:
+            h = json.loads(f.readline())
+    except Exception as ex:
+        return [f"unreadable header: {ex}"]
+    if not isinstance(h, dict) or not str(h.get("v", "")).startswith("SWEEPROW"):
+        return ["line 1 is not a SWEEPROW header (R3 columns cannot be present)"]
+    missing = [k for k in R3_STATS if k not in (h.get("fields") or [])]
+    if missing:
+        return [f"header lacks R3 statistics {missing}"]
+    try:
+        A.validate_store(path)
+    except Exception as ex:
+        return [f"validate_store: {type(ex).__name__}: {ex}"]
+    return []
+
+
+def r3_problems(e, bases):
+    """(errors, warns) for one ledger row under the scoped R3 rule."""
+    errs, warns = [], []
+    if _round_num(e) < R3_FIRST_ROUND:
+        return errs, warns
+    eid = e.get("id", "<no id>")
+    decl = e.get("sweep_store")
+    decl = [decl] if isinstance(decl, str) else list(decl or [])
+    if e.get("declares_sweep") and not decl:
+        errs.append(f"[{eid}] R3: declares_sweep but names no sweep_store")
+    for p in decl:
+        path = resolve_path(p, bases)
+        if not path:
+            errs.append(f"[{eid}] R3: sweep_store does not exist: {p}")
+            continue
+        errs += [f"[{eid}] R3 VIOLATION in {p}: {m}" for m in check_r3_store(path)]
+    ev = e.get("evidence") or []
+    for p in ([ev] if isinstance(ev, str) else ev):
+        b = os.path.basename(p.split("#", 1)[0])
+        if b.endswith(".jsonl") and "sweep" in b.lower() and p not in decl:
+            path = resolve_path(p, bases)
+            if path:
+                for m in check_r3_store(path):
+                    warns.append(f"[{eid}] R3-UNVERIFIED (implicit sweep store, advisory): {p}: {m}")
+    return errs, warns
+
+
 def main():
     strict = "--strict" in sys.argv
     doc = json.load(open(LEDGER, encoding="utf-8"))
@@ -121,6 +202,11 @@ def main():
         for p in ev:
             if not evidence_exists(p, bases):
                 warns.append(f"[{eid}] evidence path does not exist: {p}")
+
+        # 7. R3 (scoped to round >= 19 sweep-declaring rows)
+        r3e, r3w = r3_problems(e, bases)
+        errors += r3e
+        warns += r3w
 
         # 4. dangling links
         for field in ("supersedes", "superseded_by"):
@@ -183,7 +269,8 @@ def main():
     # disagreement between a headline number and its own data, which is the single failure
     # mode this repository has published twice, so it is not left to --strict.
     drift = [m for m in errors if m.startswith("COUNT DRIFT")]
-    bad = len(errors) if strict else len(unsound) + len(drift)
+    r3 = [m for m in errors if "] R3" in m]
+    bad = len(errors) if strict else len(unsound) + len(drift) + len(r3)
     return 1 if bad else 0
 
 

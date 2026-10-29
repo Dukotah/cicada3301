@@ -70,3 +70,12 @@ def test_all_gates_pass():
     results = G.run_all(verbose=False)
     failed = [r["gate"] for r in results if not r["passed"]]
     assert not failed, f"gates failed: {failed}"
+
+
+def test_threshold_for_scales_with_segment_len():
+    """Round 32 I3: segment_len is no longer ignored; None keeps the legacy answer."""
+    import null as NU
+    assert NU.threshold_for(10**7) == NU.threshold_for(10**7, None)
+    assert NU.threshold_for(10**13, 31) > NU.threshold_for(10**13, 120) > NU.threshold_for(10**13, 400)
+    assert NU.threshold_for(200, 31) >= NU.FIXED_BAR
+    assert NU.threshold_for(10**7, 120, mu=-7.0, beta=0.1) == NU.threshold_for(10**7, mu=-7.0, beta=0.1)
