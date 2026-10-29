@@ -21,18 +21,19 @@
   "audit"
  ],
  "counts": {
-  "total": 172,
+  "total": 180,
   "by_status": {
-   "measured": 49,
-   "negative": 48,
-   "audit": 25,
    "open": 20,
+   "superseded": 3,
+   "negative": 50,
    "partially-run": 15,
-   "never-run": 7,
    "eliminated": 5,
-   "superseded": 3
+   "never-run": 7,
+   "measured": 51,
+   "audit": 28,
+   "inconclusive": 1
   },
-  "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF. Round 18 merged 2026-08-26: 8 lanes, 31 fragment entries. L7 restated the coverage of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD and B-21 -- every prior negative in this repo is an English-register negative, which no entry had stated. Original coverage text is preserved in each entry's `restated_from`. Two statuses were added in the Round 18 merge: `measured` (a definite non-null determination) and `audit` (a recomputation or coverage restatement, which has no null and no threshold). The positive-control gate still applies to `negative`/`eliminated` only, so it retains exactly its former force. | Round 19 merged 2026-08-26: 41 new entries, 10 restated. Instrument repaired (I1 decoder, I2 adjudicator, I3 thresholds); the -5.5 bar was wrong in 14/14 historical sweeps, usually too strict, and no verdict flips. Transcription closed by T1/T2/T3 from three independent directions: canon is correct. Payload bytes 45/50/246 corrected by C1, voiding B-05, which was re-run clean. | Round 21 merged 2026-08-29: 4 lane entries (R21-L1-SEAL, R21-L2-NSKIPS-CROSSOVER-LENGTH, R21-L3-PY27-REDUCERS, R21-L5-REDTEAM-SEAL). L1 KILL: the no-oracle disjoint-fold seal is provably leaky (best 0.80 catch @ 0.20 false-reject, cannot reach the pre-registered 0.90 bar; held-out false-reject drifts to 0.167) -> Round 21 HIT auto-certification WITHHELD, bar-clearing survivors flagged-for-oracle. L3 CLEAN NEGATIVE: 884k words across grb5_mod/grb5_rej/shuffle29 (i386) + random29 (amd64), 0 hits, 4/4 positive controls recover 1.000, best pmax 6.248 vs 7.634 bar; family bounded (>99.99% flat-prior tail + 2^64 amd64 image + S-G3 gaps) NOT closed. L2 (instrument): n_skips crossover L*=6000 on the exact keyskip1 relation (bracket (3600,6000]) -- any whole-book n_skips adjudication needs a window >= ~6000 runes; drift 'separation' is a left-tail artifact, skip_by_two is beam-unrepresentable. L5 red-team MIXED: confirms L1-KILL, and NO-ERROR-FOUND on no-silent-re-run, FP-inflation-not-reintroduced, and honest row gate. OTP-class verdict for LP2 0-54 UNCHANGED. NB: R20 lane bodies (P1/P2/P3/R/N1/N2) remain in analysis/round20/ prose; only L1-PRIOR-PROPAGATION and C-CANON-PAYLOAD-3BYTES were given central rows in the R20 merge. Round 22 merged 2026-08-29 (coordinator): 5 lanes. Lane B pre-merged R22-B-TURTLE + R22-C-LITERAL-IMPERATIVES (130->132); coordinator appended R22-A-SELFEMBEDDED-READ, R22-D-ILLUSTRATION-DROPCAP (both negative, control-validated) and R22-R-REDTEAM (audit, NO-ERROR-FOUND) -> 132->135. Round 22 read the four signed-hint channels for the first time: self-embedded plaintext acrostic (X2/A), numbers-as-direction (G1/B), koans-as-operations (X1/X3/X4/C), art-as-data (S3/D) -- all CLEAN control-validated NEGATIVES. Standing verdict unchanged: LP2 0-54 remains OTP-class. Sharpest surviving reopener = A's printed-line-geometry acrostic (real page-image line breaks). validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 26 merged 2026-08-31 (coordinator): 4 entries (R26-A-GEN-SWEEP-FIRST-FIRE partially-run, R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE partially-run, R26-C-SEMANTIC-SEED-ZOO negative, R26-D-REDTEAM audit). Lane A fired the built-but-never-swept generators for the FIRST time (R19-G2 Perl: was ZERO seeds; G4-TEX: was ZERO decodes) plus the Py2.7 reducers on the DISTINCT amd64-w64 / non-zero-offset / keyskip2 axis un-covered by R21-L3 -- control-validated at 1.000 recovery per generator, 0 clears over the prior-dense front (baseline tail still running, interim). Lane B executed R12-C2s staged-but-never-run 33-keytext running-key sweep skip-aware (rigid was already doublet-excluded): 0/1,562 clears, 3 of 9 pages complete at 4 offsets, control 1.000 both presets. Lane C enumerated the bounded 323-value corpus-SEMANTIC seed set x 7 generators (incl. the page-56 totient/prime ladder that solves page 05) x 2 skip-aware decoders = 4,274 rows at 100% coverage, control min recovery 0.9917, best screen -6.578 (flat-random), 0 escalated. Lane D red-team: NO-ERROR-FOUND, coverage x power reproduced, no silent re-run, no FP-inflation, two MINOR hygiene defects noted. OTP-class verdict for LP2 0-54 UNCHANGED -- HARDENED along three previously un-swept instrument axes, not overturned. No oracle-flagged survivor, no STOP-AND-ALERT. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 27 merged 2026-09-07 (closeout, sweep IN-FLIGHT): 1 entry (R27-CPORT-MT32-FULLSWEEP, in-flight). Bit-exact C port of the R25 Py2.7-MT stage-A screen, gate GO at 128,529 seeds/s (V1 64/64 |d|=0, planted screen margin 12.9, false-reject 0/6, K4 95/95 zero relative difference), red-team NO-ERROR-FOUND on the GO gate; full 2^32 sweep launched on S1 (pair) + S2 (exact, control-gated). 0 claim-bar hits at 2.46% live. Verdict UNCHANGED until the sweep completes and candidates are Python-adjudicated. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 28 INTERIM merge 2026-09-15 (round OPEN -- S2 still sweeping, grind28 queue armed): 5 entries (R28-L1-CICADAOS-PADS-DENSE-PAIR negative, R28-L2-CONTESTED-BYTES negative [read half MEASURED: canon stands, independent blind instrument agrees with A-04 100% incl. all 3 byte flips; decode half 21.6M-decode variant battery 0 >= family bar], R28-L5-PAYLOAD-MICRO negative [E-01w/E-02v/H-03r remainders closed; '3301 in the P.S. digits' resolved as a layout artifact], R28-R-REDTEAM audit [2 passes: T1+T5 FOUND-ERROR process-class, second pass ERRORS-FOUND-NONE-SCIENTIFIC, 0 dropped candidates], R28-L4-UNSWEPT-GENERATORS-QUEUE in-flight [25 gated 2^32 PHP/glibc/S3 cells, zero coverage claimed, post-S2 chainer armed]). L3 (string-seed amd64 dictionary) still in-flight, row at lane close. R12-A1 not_covered filled per R28-R T1 patch. OTP-class verdict UNCHANGED -- hardened. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 30 merged 2026-09-28 ('Rendered Book' armada, 8 lanes + R29-L1 backfill): A1-FONT negative (runes are a deterministic vector font, no glyph-variant channel), A2-SUBPIXEL negative (no sub-pixel/kerning channel, ~2px threshold), A3-PDF-FORENSICS measured (ICC byte-identical to Ghostscript 9.06 Artifex srgb.icc -> toolchain narrowed to GS 9.01-9.15), B1-BLOB-CRYPTO negative (external-key symmetric battery on the 3 random blobs, 0 hits), B2-RSA-GPG negative (canon_256/folly/2.jpg carry no RSA/OpenPGP structure), C1-ART-ATTRIBUTION negative (no attributable hand; processed public-domain imagery), D1-LEDGER-AUDIT audit (soundness holds; 2 bookkeeping gaps fixed), E1-RENDER-REOPEN measured (6 contested pp49-51 bytes resolved to the token reading, canon_256 unchanged, decpref refuted). Backfilled R29-L1-ONION-STEGO negative (first real onion-image key-attack, 24,078 extractions, 0 hits) which supersedes B-10. OTP-class verdict for LP2 0-54 UNCHANGED -- extended (keyed-external-cipher on the 3 blobs now also NULL) and canonical record hardened. All 8 attack lanes adversarially verified refute-by-default; none downgraded. validate.py 5/5."
+  "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF. Round 18 merged 2026-08-26: 8 lanes, 31 fragment entries. L7 restated the coverage of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD and B-21 -- every prior negative in this repo is an English-register negative, which no entry had stated. Original coverage text is preserved in each entry's `restated_from`. Two statuses were added in the Round 18 merge: `measured` (a definite non-null determination) and `audit` (a recomputation or coverage restatement, which has no null and no threshold). The positive-control gate still applies to `negative`/`eliminated` only, so it retains exactly its former force. | Round 19 merged 2026-08-26: 41 new entries, 10 restated. Instrument repaired (I1 decoder, I2 adjudicator, I3 thresholds); the -5.5 bar was wrong in 14/14 historical sweeps, usually too strict, and no verdict flips. Transcription closed by T1/T2/T3 from three independent directions: canon is correct. Payload bytes 45/50/246 corrected by C1, voiding B-05, which was re-run clean. | Round 21 merged 2026-08-29: 4 lane entries (R21-L1-SEAL, R21-L2-NSKIPS-CROSSOVER-LENGTH, R21-L3-PY27-REDUCERS, R21-L5-REDTEAM-SEAL). L1 KILL: the no-oracle disjoint-fold seal is provably leaky (best 0.80 catch @ 0.20 false-reject, cannot reach the pre-registered 0.90 bar; held-out false-reject drifts to 0.167) -> Round 21 HIT auto-certification WITHHELD, bar-clearing survivors flagged-for-oracle. L3 CLEAN NEGATIVE: 884k words across grb5_mod/grb5_rej/shuffle29 (i386) + random29 (amd64), 0 hits, 4/4 positive controls recover 1.000, best pmax 6.248 vs 7.634 bar; family bounded (>99.99% flat-prior tail + 2^64 amd64 image + S-G3 gaps) NOT closed. L2 (instrument): n_skips crossover L*=6000 on the exact keyskip1 relation (bracket (3600,6000]) -- any whole-book n_skips adjudication needs a window >= ~6000 runes; drift 'separation' is a left-tail artifact, skip_by_two is beam-unrepresentable. L5 red-team MIXED: confirms L1-KILL, and NO-ERROR-FOUND on no-silent-re-run, FP-inflation-not-reintroduced, and honest row gate. OTP-class verdict for LP2 0-54 UNCHANGED. NB: R20 lane bodies (P1/P2/P3/R/N1/N2) remain in analysis/round20/ prose; only L1-PRIOR-PROPAGATION and C-CANON-PAYLOAD-3BYTES were given central rows in the R20 merge. Round 22 merged 2026-08-29 (coordinator): 5 lanes. Lane B pre-merged R22-B-TURTLE + R22-C-LITERAL-IMPERATIVES (130->132); coordinator appended R22-A-SELFEMBEDDED-READ, R22-D-ILLUSTRATION-DROPCAP (both negative, control-validated) and R22-R-REDTEAM (audit, NO-ERROR-FOUND) -> 132->135. Round 22 read the four signed-hint channels for the first time: self-embedded plaintext acrostic (X2/A), numbers-as-direction (G1/B), koans-as-operations (X1/X3/X4/C), art-as-data (S3/D) -- all CLEAN control-validated NEGATIVES. Standing verdict unchanged: LP2 0-54 remains OTP-class. Sharpest surviving reopener = A's printed-line-geometry acrostic (real page-image line breaks). validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 26 merged 2026-08-31 (coordinator): 4 entries (R26-A-GEN-SWEEP-FIRST-FIRE partially-run, R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE partially-run, R26-C-SEMANTIC-SEED-ZOO negative, R26-D-REDTEAM audit). Lane A fired the built-but-never-swept generators for the FIRST time (R19-G2 Perl: was ZERO seeds; G4-TEX: was ZERO decodes) plus the Py2.7 reducers on the DISTINCT amd64-w64 / non-zero-offset / keyskip2 axis un-covered by R21-L3 -- control-validated at 1.000 recovery per generator, 0 clears over the prior-dense front (baseline tail still running, interim). Lane B executed R12-C2s staged-but-never-run 33-keytext running-key sweep skip-aware (rigid was already doublet-excluded): 0/1,562 clears, 3 of 9 pages complete at 4 offsets, control 1.000 both presets. Lane C enumerated the bounded 323-value corpus-SEMANTIC seed set x 7 generators (incl. the page-56 totient/prime ladder that solves page 05) x 2 skip-aware decoders = 4,274 rows at 100% coverage, control min recovery 0.9917, best screen -6.578 (flat-random), 0 escalated. Lane D red-team: NO-ERROR-FOUND, coverage x power reproduced, no silent re-run, no FP-inflation, two MINOR hygiene defects noted. OTP-class verdict for LP2 0-54 UNCHANGED -- HARDENED along three previously un-swept instrument axes, not overturned. No oracle-flagged survivor, no STOP-AND-ALERT. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 27 merged 2026-09-07 (closeout, sweep IN-FLIGHT): 1 entry (R27-CPORT-MT32-FULLSWEEP, in-flight). Bit-exact C port of the R25 Py2.7-MT stage-A screen, gate GO at 128,529 seeds/s (V1 64/64 |d|=0, planted screen margin 12.9, false-reject 0/6, K4 95/95 zero relative difference), red-team NO-ERROR-FOUND on the GO gate; full 2^32 sweep launched on S1 (pair) + S2 (exact, control-gated). 0 claim-bar hits at 2.46% live. Verdict UNCHANGED until the sweep completes and candidates are Python-adjudicated. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 28 INTERIM merge 2026-09-15 (round OPEN -- S2 still sweeping, grind28 queue armed): 5 entries (R28-L1-CICADAOS-PADS-DENSE-PAIR negative, R28-L2-CONTESTED-BYTES negative [read half MEASURED: canon stands, independent blind instrument agrees with A-04 100% incl. all 3 byte flips; decode half 21.6M-decode variant battery 0 >= family bar], R28-L5-PAYLOAD-MICRO negative [E-01w/E-02v/H-03r remainders closed; '3301 in the P.S. digits' resolved as a layout artifact], R28-R-REDTEAM audit [2 passes: T1+T5 FOUND-ERROR process-class, second pass ERRORS-FOUND-NONE-SCIENTIFIC, 0 dropped candidates], R28-L4-UNSWEPT-GENERATORS-QUEUE in-flight [25 gated 2^32 PHP/glibc/S3 cells, zero coverage claimed, post-S2 chainer armed]). L3 (string-seed amd64 dictionary) still in-flight, row at lane close. R12-A1 not_covered filled per R28-R T1 patch. OTP-class verdict UNCHANGED -- hardened. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 30 merged 2026-09-28 ('Rendered Book' armada, 8 lanes + R29-L1 backfill): A1-FONT negative (runes are a deterministic vector font, no glyph-variant channel), A2-SUBPIXEL negative (no sub-pixel/kerning channel, ~2px threshold), A3-PDF-FORENSICS measured (ICC byte-identical to Ghostscript 9.06 Artifex srgb.icc -> toolchain narrowed to GS 9.04-9.14 [X1/R32 corrected from 9.01-9.15, see round18/L1]), B1-BLOB-CRYPTO negative (external-key symmetric battery on the 3 random blobs, 0 hits), B2-RSA-GPG negative (canon_256/folly/2.jpg carry no RSA/OpenPGP structure), C1-ART-ATTRIBUTION negative (no attributable hand; processed public-domain imagery), D1-LEDGER-AUDIT audit (soundness holds; 2 bookkeeping gaps fixed), E1-RENDER-REOPEN measured (6 contested pp49-51 bytes resolved to the token reading, canon_256 unchanged, decpref refuted). Backfilled R29-L1-ONION-STEGO negative (first real onion-image key-attack, 24,078 extractions, 0 hits) which supersedes B-10. OTP-class verdict for LP2 0-54 UNCHANGED -- extended (keyed-external-cipher on the 3 blobs now also NULL) and canonical record hardened. All 8 attack lanes adversarially verified refute-by-default; none downgraded. validate.py 5/5. | Round 32 X1 merged 2026-10-28: nav docs scoped (GS bound 9.04-9.14; Py2.7-MT 'coverage 1.00' is per-relation; transcription claim LP2-typeface-only, p27:93 unresolved); 8 not_covered:null rows filled (R12-A1 had been filled in R28); lanes I1/I2(audit)/I3/I4(audit)/B3(x2)/B1 filed after refute-by-default audit; I2 restatements applied to B-04/R16-KDF/R16-PRNG/R17-PUBLIC-PAD via r32_i2_restatement (original restated_from preserved); R32 lane-patch statuses normalised to the vocabulary. B2 (php mt_rand) not yet filed."
  },
  "entries": [
   {
@@ -115,7 +116,7 @@
     "G2": "Plants a seed genuinely resident in the dictionary ('THE PRIMES ARE SACRED', family `slogan`) and runs the full Stage-A cross product against the synthetic ciphertext. The planted config ranks #1 at -4.186, reading 'THEPRIMESARESACREDANDTHETOTIENTFUNCTIONI...' in clear, against a runner-up of -6.621. PASS."
    },
    "result": "NEGATIVE. 6,224,300 decodes across stages A/B/C/D, 0 over the -5.5 bar. Stage bests: A -6.185, B -6.129, C -5.885, D -6.654 (page 0) / -7.239 (full stream). Stage A's own distribution: mean -7.344, sd 0.231, p99.999 -6.35 -- the campaign maximum sits exactly where the best-of-N order statistic of a null belongs. DECISIVE CHECK: escalating the top 150 configs onto longer text, 0/150 improved on page 0 and 0/150 improved on the full 12,956-rune stream (best decayed -6.654 -> -7.239). A correct key improves with more text; a lucky one decays. Every survivor decayed. KEY-STRETCHING EXTENSION: the 'key stretching (PBKDF2/scrypt/Argon2, iterated hashes > 1)' item listed under not_covered was subsequently run as Round 16/KDF (see R16-KDF) and returned NEGATIVE - 692,064 decodes, best -6.259 vs bar -5.500.",
-   "coverage": "NEGATIVE for a modern-English, archaic-English or LP1-register plaintext, at measured power 1.00 (the register the Liber Primus has demonstrably used scores -4.33). Measured power of the same sweep against a Latin plaintext 0.33-0.50, against half-vowel-abbreviated English 0.25-0.33, against Welsh 0.00, against vowel-dropped English 0.00 (where the correct key scores BELOW a wrong key). Re-scoring the stored top-50 (L7-A-ARCHIVE-RESCORE) extends the negative to Latin, Old English and half-vowel English at rank-1 power; it does not extend it to Welsh or vowel-dropped English. Separately, the decoder covers only a rejection sampler that advances the key by exactly one symbol per rejection with no other source of drift (L7-B-BEAM-ENVELOPE).",
+   "coverage": "NEGATIVE for a modern-English, archaic-English or LP1-register plaintext, at measured power 1.00 (the register the Liber Primus has demonstrably used scores -4.33). Measured power of the same sweep against a Latin plaintext 0.33-0.50, against half-vowel-abbreviated English 0.25-0.33, against Welsh 0.00, against vowel-dropped English 0.00 (where the correct key scores BELOW a wrong key). Re-scoring the stored top-50 (L7-A-ARCHIVE-RESCORE) extends the negative to Latin, Old English and half-vowel English at rank-1 power; it does not extend it to Welsh or vowel-dropped English. Separately, the decoder covers only a rejection sampler that advances the key by exactly one symbol per rejection with no other source of drift (L7-B-BEAM-ENVELOPE). [R32-I2 restatement: round32/I2: 225 stored survivor heads re-scored through the rebuilt 9-register panel (min L=120 power 0.92); best pmax_ne 5.36 (LP1_REAL) vs escalate bar 6.37; best pcon 4.42 (LP1_REAL) vs 5.98; 0 flagged. Status stays negative, conditional now: English-ranked survivors, non-English re-scored at survivor level only.]",
    "not_covered": [
     "seeds outside the 2,165-entry dictionary",
     "key stretching (PBKDF2/scrypt/Argon2, iterated hashes > 1) — COVERED BY R16-KDF (NEGATIVE, 692,064 decodes)",
@@ -123,16 +124,18 @@
     "offsets beyond 3301, non-integer or per-line restarts",
     "filters other than the pinned soft key-skip at supp=0.83",
     "composite plaintext transforms (interrupters, page-order permutations)",
-    "non-English plaintext registers, unstated until now",
     "rejection samplers that consume more than one draw per rejection",
-    "any independent key-drift source above ~1 event per 60 runes"
+    "any independent key-drift source above ~1 event per 60 runes",
+    "Survivor-level only: top-N were ranked by the English scorer, so non-English decodes of the sweep were never stored; sweep-level non-English coverage is not recoverable. Heads are 31-55 runes. Greek/Hebrew/Norse unmeasured. CY is modern Welsh prose (substitute corpus), L=400 not run."
    ],
    "evidence": [
     "liber-primus/analysis/round13/B04/PREREG.md",
     "liber-primus/analysis/round13/B04/sweep.py",
     "liber-primus/analysis/round13/B04/seeds.py",
     "liber-primus/analysis/round13/B04/ks.py",
-    "liber-primus/analysis/round13/B04/harness.py"
+    "liber-primus/analysis/round13/B04/harness.py",
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/RESULTS.md",
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/readjudication_table.json"
    ],
    "reproduce": "cd liber-primus/analysis/round13/B04 && python3 sweep.py --nproc 6",
    "reopens_if": "Always extendable — a negative closes only the tabulated region above. The named extensions are key stretching and salted constructions.",
@@ -146,7 +149,8 @@
    "evidence_missing": [],
    "restated_from": "2,165 seeds x 16 generators x 5 mod-29 reductions x 2 signs x 2 Atbash x 2 directions, offset 0 (Stage A); 504 core seeds x 10 offsets (Stage B); 504 core seeds x 55 per-page restarts (Stage C); top-300 escalated to page 0 full and the whole 12,956-rune stream (Stage D). ~6.22M decodes. KEY STRETCHING EXTENSION: see R16-KDF (covered 2026-08-23).",
    "restated_by": "RESTATE-B-04",
-   "restated_round": "18"
+   "restated_round": "18",
+   "r32_i2_restatement": "round32/I2: 225 stored survivor heads re-scored through the rebuilt 9-register panel (min L=120 power 0.92); best pmax_ne 5.36 (LP1_REAL) vs escalate bar 6.37; best pcon 4.42 (LP1_REAL) vs 5.98; 0 flagged. Status stays negative, conditional now: English-ranked survivors, non-English re-scored at survivor level only."
   },
   {
    "id": "B-05",
@@ -175,7 +179,12 @@
    "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
    "priority": "medium",
    "null": null,
-   "not_covered": null,
+   "not_covered": [
+    "Payload run through the canon_256.bin (and decpref) representations; the 3 bytes later corrected by R19-C1 (idx 45/50/246, payload_resolved.bin) are covered only to the extent the 64 all-combination masks + single-position sweeps cover them (re-run clean after R19 per the counts note); JOINT corruption of >=2 contested bytes beyond those masks not swept.",
+    "PRF expanders outside the tested set {SHA-256/512 ctr+chain, MD5/SHA-1 ctr, HMAC-DRBG, AES-CTR, RC4, ChaCha20}; salted expansion; key stretching of the payload (R16-KDF axis, English-register only).",
+    "Adjudication: fixed -5.5 bar, pre-hitfn20, English quadgram scorer - no N-scaled family-wise bar, non-English registers not powered at the time (R32-I2 panel re-adjudication is separate).",
+    "Relation: keyskip1-class beam only; keyskip2/'pair' and skip_by_two unrepresented (R18-L7-B). [X1/R32 draft text: the T1-PATCH-PROPOSALS file names this row but supplies no text.]"
+   ],
    "supersedes": null,
    "superseded_by": null,
    "evidence_missing": []
@@ -242,7 +251,11 @@
    "source_register": "liber-primus/analysis/round10/RECON-B/REGISTER.md",
    "priority": "high",
    "null": null,
-   "not_covered": null,
+   "not_covered": [
+    "Mechanism claim only: shows the keytext nulls are robust to a value-REWRITE filter as well as key-SKIP; says nothing about keytexts outside the ~200 texts tried, a third filter mechanism (reopens_if), or non-English registers.",
+    "Covers key-skip (keyskip1) and value-rewrite constructions; skip_by_two / free key drift (R18-L7-B; R32-I1) were not part of this row's arms.",
+    "Recovery measured at page length and 250 runes with up to 7% corruption on English plaintext only. [X1/R32 draft text.]"
+   ],
    "supersedes": null,
    "superseded_by": null,
    "evidence_missing": []
@@ -303,7 +316,11 @@
    "reopens_if": "k beyond the swept bound, or a feedback function outside the 21 tested.",
    "notes": null,
    "null": null,
-   "not_covered": null,
+   "not_covered": [
+    "History length k=2..6 only; k>=7 unswept. f restricted to 7 natural functions x {ct, pt, mix} sources x {+,-} x {fwd, rev} = 23,520 configs; feedback functions outside those (reopens_if names '21 tested' f x source combos) not covered.",
+    "pt/mix-source seeds swept only over the 29 all-equal seeds (eq0..eq28), a documented representative probe - NOT exhaustive over 29^k arbitrary seeds; only the ct-source family is exhaustive.",
+    "Scored on LP2 unsolved pages 0-54 (continuous 12,956-rune stream + 55 per-segment) with the English quadgram scorer at the then-fixed bar - no register panel, no N-scaled bar. [X1/R32 draft text.]"
+   ],
    "supersedes": null,
    "superseded_by": null,
    "priority": null,
@@ -362,7 +379,10 @@
    "reopens_if": "A transcription change (see R12-frontB and A-03) would change n and the doublet count.",
    "notes": null,
    "null": null,
-   "not_covered": null,
+   "not_covered": [
+    "Recomputation covers the 7 headline statistics (n=12,956; doublet rate 0.664%; IoC*N 0.9999; entropy 4.8565 bits; 86 doublets; p*=400; G3 floor 1.38-1.83% over 4 corpora) from the canon transcription; it re-derives counts, not the transcription itself.",
+    "If the transcription changes (reopens_if; note T1 pooled read gate failed at 95.09 % and p27:93 U->B is unresolved; C-CANON-PAYLOAD-3BYTES open) n and the doublet count would move and must be recomputed. Statistics outside the 7 were not audited. [X1/R32 draft text.]"
+   ],
    "supersedes": null,
    "superseded_by": null,
    "priority": null,
@@ -430,12 +450,12 @@
     },
     "bar": -5.5
    },
-   "coverage": "NEGATIVE for an English plaintext. The offsets were SELECTED by an English rune-index trigram prefilter (lib_padsweep.trigram_model, trained on the same kjv/moby/pride/war corpus) over a 24-rune head, and only the top 40 per sign were beam-escalated and adjudicated by the English quadgram beam. The measured prefilter survival (0.375-0.875, non-monotone in pad size) was measured on ENGLISH plants only, so it is not a coverage discount for a non-English plaintext - that coverage is unmeasured, neither zero nor one. Additionally the ms=8 correction R17 published covers constant key runs up to length 8, not beyond (measured: ms=8 fails at run 16 and 32 under a hard filter).",
+   "coverage": "NEGATIVE for an English plaintext. The offsets were SELECTED by an English rune-index trigram prefilter (lib_padsweep.trigram_model, trained on the same kjv/moby/pride/war corpus) over a 24-rune head, and only the top 40 per sign were beam-escalated and adjudicated by the English quadgram beam. The measured prefilter survival (0.375-0.875, non-monotone in pad size) was measured on ENGLISH plants only, so it is not a coverage discount for a non-English plaintext - that coverage is unmeasured, neither zero nor one. Additionally the ms=8 correction R17 published covers constant key runs up to length 8, not beyond (measured: ms=8 fails at run 16 and 32 under a hard filter). [R32-I2 restatement: round32/I2: 5730 stored survivor heads re-scored through the rebuilt 9-register panel (min L=120 power 0.92); best pmax_ne 7.55 (LP1_REAL) vs escalate bar 8.08; best pcon 5.63 (LP1_REAL) vs 7.44; 0 flagged. Status stays negative, conditional now: English-ranked survivors, non-English re-scored at survivor level only.]",
    "not_covered": [
     "The Marsaglia Random Number CDROM (1995), 634,124,288 B with published SHA-256s - FOUND, NOT SWEPT, and the cheapest live item in this branch. Also: non-contiguous blockchain selections (every-Nth, retarget blocks), other chains, txids, coinbase scriptSigs, chainwork; the beacon beyond 2013-11-13; keystream builders outside the seven tested; 13 of P3's pads are shorter than ~13k symbols and were swept against the head window only. The dense prefilter's measured survival is 0.375-0.875 (non-monotone in pad size), so roughly 45-60% of offsets on large pads are a POWER blind spot - beam recovery was 100% on every plant, so this is power, not soundness.",
-    "non-English plaintext registers, at BOTH the prefilter and the adjudication stage",
     "constant key runs longer than 8 under a hard filter, even at max_skip=8",
-    "rejection samplers consuming more than one draw per rejection"
+    "rejection samplers consuming more than one draw per rejection",
+    "Survivor-level only: top-N were ranked by the English scorer, so non-English decodes of the sweep were never stored; sweep-level non-English coverage is not recoverable. Heads are 31-55 runes. Greek/Hebrew/Norse unmeasured. CY is modern Welsh prose (substitute corpus), L=400 not run."
    ],
    "evidence": [
     "liber-primus/analysis/round17/SYNTHESIS.md",
@@ -443,7 +463,9 @@
     "liber-primus/analysis/round17/P0_dense/RESULTS.md",
     "liber-primus/analysis/round17/P1_blockchain/RESULTS.md",
     "liber-primus/analysis/round17/P2_beacons/RESULTS.md",
-    "liber-primus/analysis/round17/P3_tables/RESULTS.md"
+    "liber-primus/analysis/round17/P3_tables/RESULTS.md",
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/RESULTS.md",
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/readjudication_table.json"
    ],
    "reproduce": "python3 liber-primus/analysis/round17/lib_padsweep.py  # instrument gate, then each lane's sweep.py",
    "reopens_if": "The Marsaglia CDROM sweep, or any dated public randomness archive from before 2014-01 that is not in P2's source table, returns a score at or above its own null_max + 0.5.",
@@ -463,7 +485,8 @@
    ],
    "restated_from": "P0: 6 distinct CicadaOS blobs, 196 configs, full cross product on 560.13 plus nibbles and ms=8 passes, INCLUDING the 1,580,426-byte tail of _560.00 that A1 never held. P1: Bitcoin heights 0-303,726 verified contiguous - hashes and merkle roots in BOTH byte orders, nonces, timestamps. P2: NIST Beacon v1 2013-09-05 to 2013-11-13 and RANDOM.ORG 2013-09-01 to 2014-01-31, 153 daily files, 153/153 MD5-verified. P3: 28 pads / 112.6 MB swept twice (ms=3, then ms=8 with nibbles) - RAND's million digits plus 3301's own published bytes.",
    "restated_by": "RESTATE-R17-PUBLIC-PAD",
-   "restated_round": "18"
+   "restated_round": "18",
+   "r32_i2_restatement": "round32/I2: 5730 stored survivor heads re-scored through the rebuilt 9-register panel (min L=120 power 0.92); best pmax_ne 7.55 (LP1_REAL) vs escalate bar 8.08; best pcon 5.63 (LP1_REAL) vs 7.44; 0 flagged. Status stays negative, conditional now: English-ranked survivors, non-English re-scored at survivor level only."
   },
   {
    "id": "R17-P2-CENSUS-CORRECTION",
@@ -615,7 +638,10 @@
    "null": null,
    "result": "BOUND. K_bound=26 merges, against K_needed_for_autokey=93 -- a margin of 3.6x. K_est=0 on three independent channels: count-exact lines give image==canon at 0.7007%; delta+1 lines are not enriched in doublets (0.810% vs 0.865% baseline, wrong direction); the image-vs-canon surplus is 26 doublets at z=1.84, not significant. The doublet deficit is structural to this confidence and the OTP-class verdict is not overturned.",
    "coverage": null,
-   "not_covered": null,
+   "not_covered": [
+    "Bound, not a measurement of the true merge count: K_bound=26 merges vs K_needed_for_autokey=93 (margin 3.6x) at the reader's power; rune COUNT audit only, not identity.",
+    "Image reader covers the LP2 typeface; LP1-typeface pages not audited (T1 pooled read gate failed 95.09 %). Haplography (merge) errors only - insertions/dittography sites are not bounded by this row. [X1/R32 draft text.]"
+   ],
    "reproduce": "python3 liber-primus/analysis/round16/A-03/a03_hapl_bound.py",
    "supersedes": null,
    "superseded_by": null,
@@ -1117,7 +1143,10 @@
    "null": null,
    "result": "NULL (complete) -- verdict NULL. E-02A: all 201 consecutive 56-byte windows of the 256-byte payload checked, zero are a permutation of 0..55; 57-byte windows likewise zero. False-positive rate ~1e-24 per window, so this is a clean null with analytic certainty rather than a scored miss. E-02B: the 85 inter-doublet gaps carry no rank correlation above the bar.",
    "coverage": null,
-   "not_covered": null,
+   "not_covered": [
+    "Only two readings of the payload: (a) 56/57-byte windows as a permutation of 0..55 (201 windows, analytic null), (b) 85-128 gap values (8/16-bit LE/BE, varint) rank-correlated against the 85 inter-doublet gaps. Other meta-parameter readings (bit-fields, nibble streams, mod-29/prime-indexed reads, non-contiguous selections) not tested.",
+    "Run against canon_256.bin; the 3 corrected bytes (idx 45/50/246 in payload_resolved.bin, C-CANON-PAYLOAD-3BYTES open) not re-run - a permutation test is sensitive to a single byte. [X1/R32 draft text.]"
+   ],
    "reproduce": "python3 liber-primus/analysis/round16/zeroFP/zerofp_tests.py",
    "supersedes": null,
    "superseded_by": null,
@@ -1148,7 +1177,10 @@
    "null": null,
    "result": "NEGATIVE. 40 configs (5 Cicada target objects x 4 key variants x 2 signs), best -7.032 against a bar of -5.500 and that row's own null_max of -7.274/-6.972 -- below its own null. LP2 is not the pad for any known Cicada object tested. RECON-A register item F-01 closed.",
    "coverage": null,
-   "not_covered": null,
+   "not_covered": [
+    "40 configs only: 5 Cicada target objects x 4 key variants x 2 signs; other objects (other PGP bodies, onion pages, JPEG/MP3 payload bytes, the 2012/2013 fragments beyond the 5 used) and key reductions beyond fwd/rev/+/-/Atbash not run; no offset sweep stated.",
+    "English quadgram scorer, fixed -5.5 bar vs the row's own null_max; keyskip1-class beam only; non-English registers and skip_by_two unrepresented (R18-L7). [X1/R32 draft text.]"
+   ],
    "reproduce": "python3 liber-primus/analysis/round16/F-01/sweep.py",
    "supersedes": null,
    "superseded_by": null,
@@ -1485,7 +1517,10 @@
    "null": null,
    "result": "NULL (complete) -- verdict NULL. The two 2013 onion cookies (167 and 761, 32 bytes each) XOR'd against four 256-byte target blobs at every 32-byte offset = 64 trials. Zero trials cleared the 80% printable gate; the best was 62.5% (cookie761 XOR rsahex_avowy at offset 96), which is inside the noise band for 64 trials.",
    "coverage": null,
-   "not_covered": null,
+   "not_covered": [
+    "Only 64 trials: 2 cookies (167, 761; 32 B each) x 4 target 256-byte blobs x every 32-byte offset, gated at 80% printable ASCII; other XOR operands, other offset strides, non-ASCII plaintext hypotheses, and any other cookie/hex-string pairing untested.",
+    "The 2012 P.S. digit-string rotate-90 / matrix reading is recorded in the hypothesis but the result text reports only the cookie-XOR half; the matrix reading's coverage is not stated in the row. [X1/R32 draft text.]"
+   ],
    "reproduce": "python3 liber-primus/analysis/round16/zeroFP/zerofp_tests.py",
    "supersedes": null,
    "superseded_by": null,
@@ -1679,7 +1714,7 @@
     "R29-L1-ONION-STEGO"
    ],
    "reopens_if": null,
-   "notes": " Discharged by R29-L1-ONION-STEGO (24,078-extraction onion-image OutGuess/steghide sweep, keyless control passed).",
+   "notes": " Discharged by R29-L1-ONION-STEGO (24,078-extraction onion-image OutGuess/steghide sweep, keyless control passed). [X1/R32: superseded_by / supersedes links verified both ways, but the discharge is not exact - B-10 named OutGuess 0.2 Linux, R29-L1 ran OutGuess 0.4 + steghide; treat as superseded-with-tool-mismatch.]",
    "evidence_missing": []
   },
   {
@@ -2303,7 +2338,7 @@
     "K2": "Plant-and-recover: PBKDF2-SHA256('THE PRIMES ARE SACRED', 3301, 10000) ranked #1 at -4.186, reading 'THEPRIMESARESACRED...' in clear. PASS."
    },
    "result": "NEGATIVE. 692,064 Stage-A decodes. Best -6.259 vs bar -5.500. Score distribution mean -7.341, SD 0.232; best is ~4.7 SD above mean, consistent with upper-tail noise. Stage B not triggered (no Stage-A candidates cleared bar).",
-   "coverage": "Identical English-register conditionality and identical measured powers to RESTATE-B-04; the stored top-50 gives the same rank-1 extension to Latin, Old English and half-vowel English. Same beam-envelope limitation.",
+   "coverage": "Identical English-register conditionality and identical measured powers to RESTATE-B-04; the stored top-50 gives the same rank-1 extension to Latin, Old English and half-vowel English. Same beam-envelope limitation. [R32-I2 restatement: round32/I2: 48 stored survivor heads re-scored through the rebuilt 9-register panel (min L=120 power 0.92); best pmax_ne 3.97 (LP1_REAL) vs escalate bar 6.05; best pcon 3.18 (LP1_REAL) vs 5.57; 0 flagged. Status stays negative, conditional now: English-ranked survivors, non-English re-scored at survivor level only.]",
    "not_covered": [
     "Argon2 (anachronistic but non-zero prior)",
     "bcrypt",
@@ -2312,15 +2347,17 @@
     "multi-stage constructions",
     "KDF offset != 0",
     "iteration counts outside the tested set",
-    "non-English plaintext registers",
-    "rejection samplers consuming more than one draw per rejection"
+    "rejection samplers consuming more than one draw per rejection",
+    "Survivor-level only: top-N were ranked by the English scorer, so non-English decodes of the sweep were never stored; sweep-level non-English coverage is not recoverable. Heads are 31-55 runes. Greek/Hebrew/Norse unmeasured. CY is modern Welsh prose (substitute corpus), L=400 not run."
    ],
    "evidence": [
     "liber-primus/analysis/round16/KDF/PREREG.md",
     "liber-primus/analysis/round16/KDF/RESULTS.md",
     "liber-primus/analysis/round16/KDF/results_A.json",
     "liber-primus/analysis/round16/KDF/results_gates.json",
-    "liber-primus/analysis/round16/KDF/results_summary.json"
+    "liber-primus/analysis/round16/KDF/results_summary.json",
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/RESULTS.md",
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/readjudication_table.json"
    ],
    "reproduce": "cd liber-primus/analysis/round16/KDF && python sweep.py  # reuses round15/KDF/sweep.py + kdf.py",
    "reopens_if": "A KDF config outside the 27 tested, or a salt/secret outside the covered ranges. The not_covered list is the complete extension spec.",
@@ -2338,7 +2375,8 @@
    "evidence_missing": [],
    "restated_from": "27 KDF configs (PBKDF2-SHA1/256/512 at 1000/2048/4096/10000/100000/3301; PBKDF2-SHA512 at 1000/4096/10000; scrypt RFC-7914 interactive; iterated SHA-256/MD5 at 1000/10000/100000/3301; EVP_BytesToKey MD5 and SHA256 at 1 and 3301 rounds) x 534 secrets (504 B-04 core + 30 passphrase groups) x 3 salts (empty, '3301', self) x 2 signs x 2 atbash x 2 directions x offset=0 = 692,064 decodes at 120-rune head depth.",
    "restated_by": "RESTATE-R16-KDF",
-   "restated_round": "18"
+   "restated_round": "18",
+   "r32_i2_restatement": "round32/I2: 48 stored survivor heads re-scored through the rebuilt 9-register panel (min L=120 power 0.92); best pmax_ne 3.97 (LP1_REAL) vs escalate bar 6.05; best pcon 3.18 (LP1_REAL) vs 5.57; 0 flagged. Status stays negative, conditional now: English-ranked survivors, non-English re-scored at survivor level only."
   },
   {
    "id": "R16-PRNG",
@@ -2354,7 +2392,7 @@
     "php_mt_rand": "Planted php_mt_rand(seed=3301) keystream recovers at -4.155 / 100% char-match vs wrong-seed -6.935. PASS."
    },
    "result": "NEGATIVE. 52,556 decodes. Best -6.347 vs bar -5.500. Null mean/max -7.347/-6.709. Best inside the null band.",
-   "coverage": "Identical English-register conditionality and identical measured powers to RESTATE-B-04; stored top-20 gives the same rank-1 extension. Same beam-envelope limitation.",
+   "coverage": "Identical English-register conditionality and identical measured powers to RESTATE-B-04; stored top-20 gives the same rank-1 extension. Same beam-envelope limitation. [R32-I2 restatement: round32/I2: 20 stored survivor heads re-scored through the rebuilt 9-register panel (min L=120 power 0.92); best pmax_ne 2.61 (LATIN) vs escalate bar 6.25; best pcon 2.31 (OE) vs 5.75; 0 flagged. Status stays negative, conditional now: English-ranked survivors, non-English re-scored at survivor level only.]",
    "not_covered": [
     "unix-second seeds between daily samples (~23/24 of hour-stride space per generator)",
     "offsets != 0",
@@ -2362,14 +2400,16 @@
     "KISS/MWC/WELL/lagged Fibonacci generators",
     "full 2^32 seed sweep (~0.004% coverage per generator per orientation)",
     "PHP mt_rand runtime cross-validation (no PHP runtime on machine)",
-    "non-English plaintext registers",
-    "rejection samplers consuming more than one draw per rejection"
+    "rejection samplers consuming more than one draw per rejection",
+    "Survivor-level only: top-N were ranked by the English scorer, so non-English decodes of the sweep were never stored; sweep-level non-English coverage is not recoverable. Heads are 31-55 runes. Greek/Hebrew/Norse unmeasured. CY is modern Welsh prose (substitute corpus), L=400 not run."
    ],
    "evidence": [
     "liber-primus/analysis/round16/prng/PREREG.md",
     "liber-primus/analysis/round16/prng/prng_sweep.py",
     "liber-primus/analysis/round16/prng/results.json",
-    "liber-primus/analysis/round16/prng/RESULTS.md"
+    "liber-primus/analysis/round16/prng/RESULTS.md",
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/RESULTS.md",
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/readjudication_table.json"
    ],
    "reproduce": "cd liber-primus/analysis/round16/prng && python prng_sweep.py",
    "reopens_if": "Hour-stride or denser seed coverage; offset != 0; additional BBS moduli; KISS/MWC/WELL/Fibonacci; full 2^32 sweep with scale-corrected threshold.",
@@ -2388,7 +2428,8 @@
    "evidence_missing": [],
    "restated_from": "7 generators (php_mt_rand, dotnet_sysrandom, isaac, bbs_small, bbs_large, lfsr32, geffe) x 1,877 seeds (1,828 unix-second 2011-2015 at ~1/day stride + 49 lore/string seeds) x mod-29 reduction x 2 signs x 2 directions = 52,556 decodes.",
    "restated_by": "RESTATE-R16-PRNG",
-   "restated_round": "18"
+   "restated_round": "18",
+   "r32_i2_restatement": "round32/I2: 20 stored survivor heads re-scored through the rebuilt 9-register panel (min L=120 power 0.92); best pmax_ne 2.61 (LATIN) vs escalate bar 6.25; best pcon 2.31 (OE) vs 5.75; 0 flagged. Status stays negative, conditional now: English-ranked survivors, non-English re-scored at survivor level only."
   },
   {
    "id": "R16-scorer",
@@ -3651,7 +3692,8 @@
     "liber-primus/analysis/round19/T1/RESULTS.md",
     "liber-primus/analysis/round20/C/RESULTS.md"
    ],
-   "raw_status": "DECISION-PENDING"
+   "raw_status": "DECISION-PENDING",
+   "x1_r32_options": "X1/R32 evidence, NOT a decision. Dependency check: B-04 reads canon_256.bin as ONE seed source among 2,165 (round13/B04/seeds.py:251-262, plus canon_256_decpref.bin); R17 uses canon_256 as ONE of many pads (round17/P3_tables/build_pads.py:213-216); R16-zeroFP E-01/E-02 read canon_256.bin directly (round16/zeroFP/zerofp_tests.py:85,247); B-05 was re-run on the corrected bytes (R19). Whether R16-KDF's 534-item secret list contains payload-derived items was not checked. OPTION A (promote payload_resolved.bin): re-check B-04's payload-derived seeds, R17's canon_256 pad, E-01 and E-02 against payload_resolved.bin (cheap: a handful of seeds / one pad each, not re-sweeps), then restate coverage. OPTION B (leave canon_256.bin canonical): restate not_covered with this proposed text: 'Coverage is stated against canon_256.bin. The 3 bytes corrected by R19-C1 (idx 45/50/246, payload_resolved.bin) were not re-fed to B-04's payload-derived seeds, R16-KDF payload-derived secrets, R17's canon_256 pad or E-01/E-02; results could differ at those 3 bytes. Not covered: the corrected payload as input.' R28-L2's blind instrument agrees with the CORRECTED values (payload_resolved.bin), so the transcription evidence favours promotion; nav docs that said 'canon_256 stands' were inconsistent with that and were corrected by X1."
   },
   {
    "id": "R19-G3",
@@ -3717,7 +3759,8 @@
     "liber-primus/analysis/round10/L5-seed32/CENSUS.md",
     "liber-primus/analysis/round19/G3/RESULTS.md"
    ],
-   "raw_status": "FOUND-ERROR"
+   "raw_status": "FOUND-ERROR",
+   "notes": " [R32-B3] R32-B3 filed a skip-aware prior-dense first-fire of gen=0 (48,036 seeds, negative, 1.12e-5 of 2^32); the row remains open for the full space."
   },
   {
    "id": "G4-TEX-RNG",
@@ -6463,7 +6506,12 @@
    "null": null,
    "result": "First real large-dictionary key-attack on the onion images: 4,013 Cicada-native keys x 3 images x 2 tools (OutGuess 0.4 + steghide) = 24,078 adjudicated extractions, 0 hits. The only stego content is the already-public keyless RSA-signed message. RECORD CORRECTION: dl_onion3.jpg is authentic (md5 matches micheloosterhof stage03) but a 'Chapter1/Intus' DIVIDER, not the 5x5 rune grid; the runic 'A WARNING' page is onion2. Prior 'onion3 payload' artifact (T1-onion3-5x5-rune-outguess.bin, md5 597414fb) == the 1033 'Welcome' payload, a mislabel.",
    "coverage": "4013 keys x 3 images x 2 tools = 24,078 extractions",
-   "not_covered": null,
+   "not_covered": [
+    "Keys outside the 4,013-key Cicada-native dictionary; tools other than OutGuess 0.4 (/usr/local/bin/outguess) and steghide. OutGuess 0.2 (the Linux version B-10 named) was NOT the tool run.",
+    "onion5portrait (520 B stub) skipped; only onion1/2/3 attacked; legacy OutGuess -t mode covered only by a 30-run spot-check.",
+    "Non-keyed embeddings (LSB/F5/other stego); a different or higher-resolution onion2 capture.",
+    "Bookkeeping: sweep_log.tsv is header-only, so the 24,078-extraction coverage rests on FINDINGS.md + control artifacts + re-runnable sweep_fast.py, not on a persisted per-extraction log. [X1/R32 draft text]"
+   ],
    "evidence": [
     "analysis/round29/L1-onion3-crack/"
    ],
@@ -6547,7 +6595,7 @@
    "positive_control": "passed",
    "control_detail": "POS: GS 9.06 srgb.icc re-fetched fresh from a rsc/ghostscript-9.06 mirror -> same MD5, cmp byte-identical to p0 payload (not a relabeled copy). NEG logic: R29 GS 10.06 failed to reproduce optimized Huffman, forcing the /Optimize conclusion.",
    "null": null,
-   "result": "POSITIVE (process-attribution): the ICC profile in data/relikd/p0.jpg is BYTE-IDENTICAL (MD5 e409cef13cd06f6b371f6cddc8e31fcf, 2576B) to Ghostscript 9.06's iccprofiles/srgb.icc (Artifex, 'Copyright 2011'). Narrows the 2014 authoring toolchain to GS 9.01-9.15 (only 9.06 byte-confirmed; 9.05/9.07/9.10/9.14 tags 404'd, so single-version is inference). Optimized-Huffman = a deliberate /Optimize choice. No public source ever noted this signature; no source-PDF leak exists. NO plaintext, no cipher lane reopened.",
+   "result": "POSITIVE (process-attribution): the ICC profile in data/relikd/p0.jpg is BYTE-IDENTICAL (MD5 e409cef13cd06f6b371f6cddc8e31fcf, 2576B) to Ghostscript 9.06's iccprofiles/srgb.icc (Artifex, 'Copyright 2011'). Narrows the 2014 authoring toolchain to GS 9.04-9.14 [X1/R32: R18-L1 measured 9.00/9.01/9.02 NON-matching; 9.03 unmeasured; 9.15-9.21 byte-identical but post-date the May-2014 dump; A3 itself only byte-confirmed 9.06] (only 9.06 byte-confirmed; 9.05/9.07/9.10/9.14 tags 404'd, so single-version is inference). Optimized-Huffman = a deliberate /Optimize choice. No public source ever noted this signature; no source-PDF leak exists. NO plaintext, no cipher lane reopened.",
    "coverage": null,
    "not_covered": null,
    "evidence": [
@@ -6742,6 +6790,278 @@
     "L7-A-ARCHIVE-RESCORE",
     "round19/I2"
    ]
+  },
+  {
+   "id": "R32-I1-SKIPBYTWO-ENVELOPE",
+   "lane": "round32/I1",
+   "round": 32,
+   "date": "2026-10-28",
+   "hypothesis": "An explicit-advance beam decoder (advance in {1,2,free}) recovers planted skip_by_two, keyskip1 and free-drift ciphertext at L=120/400 and is adjudicated above a seed-3301 shuffle null; measures what R19/I1 did not (L=120, non-English registers, panel, null).",
+   "status": "measured",
+   "verdict": "INSTRUMENT-ENVELOPE-MEASURED; kill rule did not fire",
+   "coverage": "3 enciphers x 3 advance decoders x L in {120,400} x 20 EN plants; L=6000 x 3 plants spot check; LATIN/OE/DE/EN_NOVOWEL x 5 enc/dec pairs x L{120,400} x 8-10 plants; shuffle null n=100 (n=4 at 6000); bounded re-adjudication of ONE seed (CICADA3301, sha256_ctr) on LP2 page-0 head, advance=2, offsets 0..3301, both signs, 0 flagged (best pmax 4.54 vs flag 10.0), control found true offset.",
+   "not_covered": [
+    "I2 nine-register panel (EN_KJV, CY/Welsh) - corpora absent, 7-register lite panel used",
+    "vowel-dropped English under skip_by_two: advance=2 recovery 0.72/0.71 < 0.85 (failed control, register-side hole in the English-quadgram beam)",
+    "free drift q=0.05 at L=6000: recovery 0.611",
+    "advance relations other than 1,2,free; resets; rewrite/keyside/plainside",
+    "B-04 seeds other than CICADA3301 (about 2164 of 2165), other generators/pages, key families KDF/PRNG/Py2.7-MT",
+    "L=6000 beyond 3 plants",
+    "I3 contract bars (lite panel z scale differs); bars here are empirical shuffle-null maxima"
+   ],
+   "positive_control": "passed (EN/LATIN/OE/DE matched recovery >=0.99 at L=120/400; replication of L7-B 0.30 vs 0.258); EN_NOVOWEL FAILED (0.72/0.71)",
+   "threshold": "RECOVERED iff median rune-index recovery >= 0.85 and >=80% seeds pmax above shuffle-null max (PREREG s3, fixed before running); re-adjudication flag pmax>10 (Addendum A).",
+   "result": "{\"EN_L120_skip_by_two\": {\"adv1\": 0.3, \"adv2\": 1.0, \"free\": 1.0}, \"EN_L400_skip_by_two\": {\"adv1\": 0.168, \"adv2\": 1.0, \"free\": 1.0}, \"EN_L120_free_q05\": {\"adv1\": 0.329, \"adv2\": 0.254, \"free\": 0.992}, \"EN_NOVOWEL_L120_skip_by_two\": {\"adv2\": 0.721, \"free\": 0.312}, \"kill_rule_fired\": false, \"readjudication_flagged\": 0}",
+   "overlap": "round19/I1/driftbeam.py already implements the three relations; beam_v2.py is a facade over it. Lane value = L=120 / register / panel / null measurement.",
+   "reopens_if": "a panel-aware or language-agnostic beam score is built (fixes EN_NOVOWEL); Welsh/KJV/Mabinogion corpora restored and the I2 panel rebuilt (re-run run_envelope.py against it); a different B-04 seed/page is re-adjudicated.",
+   "source_register": "round32/I1",
+   "priority": "high",
+   "evidence": [
+    "liber-primus/analysis/round32/I1-skipbytwo-decoder/RESULTS.md",
+    "liber-primus/analysis/round32/I1-skipbytwo-decoder/PREREG.md",
+    "liber-primus/analysis/round32/I1-skipbytwo-decoder/power_envelope.json",
+    "liber-primus/analysis/round32/I1-skipbytwo-decoder/beam_v2.py"
+   ],
+   "notes": "X1/R32 audit: PREREG.md mtime (16:32) post-dates the envelope outputs (16:17-16:31) - Addendum A was edited in place; lite 7-register panel only (no EN_KJV/CY); EN_NOVOWEL under skip_by_two is a failed control reported as a result."
+  },
+  {
+   "id": "R32-I2-READJUDICATION",
+   "lane": "round32/I2",
+   "round": 32,
+   "date": "2026-10-28",
+   "hypothesis": "Rebuilding the round19/I2 nine-register panel and re-scoring stored survivors of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD gives each negative a stated powered register conditional, or flags a survivor.",
+   "status": "audit",
+   "verdict": "PANEL-REBUILT-GATE-PASSED; 0 SURVIVORS FLAGGED (survivor-level only)",
+   "gates": "{\"G-POWER\": \"PASSED (min 0.92 at L=120, 1.00 at L=240; L=400 not run)\"}",
+   "threshold": "pmax_ne/pcon >= round19/I3 escalate bar at lane N",
+   "threshold_fixed_in_advance": true,
+   "result": "{\"B-04\": {\"n\": 225, \"best_pmax_ne\": 5.361, \"best_pcon\": 4.415, \"flagged\": 0}, \"R16-KDF\": {\"n\": 48, \"best_pmax_ne\": 3.966, \"best_pcon\": 3.182, \"flagged\": 0}, \"R16-PRNG\": {\"n\": 20, \"best_pmax_ne\": 2.614, \"best_pcon\": 2.314, \"flagged\": 0}, \"R17-PUBLIC-PAD\": {\"n\": 5730, \"best_pmax_ne\": 7.551, \"best_pcon\": 5.631, \"flagged\": 0}}",
+   "coverage": "Stored top-N heads only (31-55 runes), English-ranked; substitute Welsh corpus.",
+   "not_covered": [
+    "Survivor-level only: top-N were ranked by the English scorer, so non-English decodes of the sweep were never stored; sweep-level non-English coverage is not recoverable. Heads are 31-55 runes. Greek/Hebrew/Norse unmeasured. CY is modern Welsh prose (substitute corpus), L=400 not run.",
+    "Greek/Hebrew/Norse registers; L=400; sweep-level decodes; Middle-Welsh Mabinogion (CY = modern Welsh substitute, Gutenberg 3680/57981/56275/67424, now rebuildable via data/fetch_sources.py --welsh); EN_NOVOWEL L=120 power is 22/24 = 0.917 (reported 0.92), below the 0.92 pre-reg target, above the 0.90 gate."
+   ],
+   "evidence": [
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/RESULTS.md",
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/gate_proof.json",
+    "liber-primus/analysis/round32/I2-multiregister-readjudication/readjudication_table.json"
+   ],
+   "source_register": "round32/I2",
+   "priority": "high",
+   "notes": "Status set to audit by X1/R32 (a re-score, not a null: no positive-control field). Restatements applied to B-04/R16-KDF/R16-PRNG/R17-PUBLIC-PAD via r32_i2_restatement; their original restated_from text is preserved."
+  },
+  {
+   "id": "R32-I3-R3-ENFORCEMENT",
+   "round": 32,
+   "lane": "I3",
+   "status": "measured",
+   "raw_status": "run",
+   "date": "2026-10-28",
+   "hypothesis": "R3 can be CI-enforced for sweep-declaring post-R18 lanes, and the legacy bar can be made length-aware with a >2-point null curve.",
+   "threshold": "Failing-then-passing test (missing field fails, compliant passes); no historical ERROR newly raised; fitted exponent within 2 SE of -0.583. Fixed in advance (PREREG.md).",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "{\"validator\": \"test_validate_ledger_r3.py: each of ioc/mds/pmax_ne/zl dropped -> fails; compliant -> passes\", \"benchmark\": \"pytest benchmark/ 9 passed incl. new segment_len test\"}",
+   "result": "validate_ledger.py now calls adjudicate.validate_store for round>=19 sweep-declaring rows (hard ERROR; implicit jsonl detection WARN-only). Ledger: 0 errors before and after; 4 new advisory R3-UNVERIFIED warns (R20-SG3, R21-L3, R24-C2, R28-L1). threshold_for(segment_len=L) now scales: beta=0.07095*(L/120)^-0.5675, exponent SE 0.062 (5 pts, 3 DOF; pooled 8 pts -0.579 SE 0.032).",
+   "coverage": "Legacy EN quadgram keyskip1 beam_w400 only; L=31,60,90,120,180 measured at 200k decodes each, seed 3301.",
+   "not_covered": "L>=240 not measured here (mu flat-extrapolated); other registers/modes/beam widths; stores in rows lacking a sweep_store declaration.",
+   "evidence": [
+    "liber-primus/analysis/round32/I3-r3-enforcement/RESULTS.md",
+    "liber-primus/analysis/round32/I3-r3-enforcement/PREREG.md",
+    "liber-primus/analysis/round32/I3-r3-enforcement/null_curve32.json",
+    "liber-primus/analysis/round32/I3-r3-enforcement/cells32.json",
+    "liber-primus/tests/test_validate_ledger_r3.py"
+   ],
+   "reopens_if": "A post-R18 sweep row declares sweep_store and fails; or an L>=240 measurement departs from the fitted curve by more than 2 SE.",
+   "supersedes": null,
+   "superseded_by": null,
+   "priority": "high",
+   "source_register": "round32/I3",
+   "notes": "PREREG written after first calibration smoke runs and after null_curve32.json (file mtime) - disclosed in its own honesty note; acceptance criteria stated before the fit. X1/R32 recomputed exponent -0.5675 SE 0.0623 from null_curve32.json."
+  },
+  {
+   "id": "R32-I4-NONFOLD-SEAL",
+   "lane": "round32/I4-nonfold-seal",
+   "round": 32,
+   "date": "2026-10-28",
+   "hypothesis": "A non-fold, oracle-free proxy (longer decrypt head than the 24-32 runes that capped R20-P1; a per-register fold bar; a learned self-consistency gate; cheap hybrids) can reach >=0.90 catch of correct-key EN_NOVOWEL bar-clearing hallucinations at <=0.10 false-reject of genuine decodes with a tuning/held-out split, holding across the I2 register panel, where the round21/L1 disjoint-fold family topped out at 0.818/0.167.",
+   "status": "audit",
+   "verdict": "SEAL_PASS=false (unchanged) for the pre-registered non-fold designs D1-D4; SEAL_CANDIDATE=D5c (post-hoc per-register pmax margin) passes one virgin split at L=240 but is length-conditioned and unreplicated",
+   "coverage": "391 pre-registered cells: D1 longer-head cut (11 heads x 6 taus), D1b multi-head AND (66), D2 per-register fold bar (7 k x 6 tau_N), fold-family control (42), D3a/D3b learned LR (2 x 50 thresholds), D4 hybrids (54 + 21). Populations: tuning 40 halluc / 20 EN genuine (+5 NOVOWEL genuine); seen held-out 69 / 24 (+64 register-spread genuine); virgin-1 157 / 30 / 17 NOVOWEL / 56 spread; virgin-2 392 / 40 / 33 / 80; L=120 probe 272 / 39 / 92 / 78. Conditionals: key space = correct key; relation = exact preset; register = 8-register panel, EN_NOVOWEL-argmax hallucinations.",
+   "positive_control": "passed",
+   "control_detail": "Single-cut hitfn20 leak reproduced (12/40 tuning, 16/69 held-out caught); L1 fold family reproduces its ceiling (k5/min 0.825/0.050 tuning, 0.855/0.167 held-out, 0.803/0.133 virgin-1, 0.798/0.150 virgin-2); genuine EN_MODERN 20/20 and 24/24 true recovery>=0.95; bar 7.6341931878728095; hard-register genuine planted (correct-key EN_NOVOWEL, LATIN, DE, OE, EN_KJV) and shown to expose the D3 register detectors (13/13 NOVOWEL genuine rejected). Populations are NOT bit-identical to L1 (40/69 vs 45/66) because source corpora differ/are missing.",
+   "threshold": "PREREG.md: >=0.90 catch and <=0.10 false-reject on tuning AND held-out, plus <=0.10 false-reject on pooled register-spread genuine (strict); Addenda A/B apply the same criteria to D5/D5c on virgin data.",
+   "result": "{\"SEAL_PASS\": false, \"SEAL_PASS_L1_comparable_criterion\": \"D3a/D3b only, via register detection (not a seal)\", \"preregistered_frozen_cells_heldout\": {\"CTRL_fold_k7_min0.85\": {\"catch\": 0.884, \"fr_EN\": 0.167, \"reg_fr\": 0.375}, \"D1_cut192_tau0.95\": {\"catch\": 0.536, \"fr_EN\": 0.042, \"reg_fr\": 0.078}, \"D1b_multihead_h144_tau0.98\": {\"catch\": 0.841, \"fr_EN\": 0.208, \"reg_fr\": 0.312}, \"D2_perreg_k7_tauN0.90\": {\"catch\": 0.884, \"fr_EN\": 0.208, \"reg_fr\": 0.375}, \"D3a_LR_register_blind\": {\"catch\": 1.0, \"fr_EN\": 0.0, \"reg_fr\": 0.156, \"novowel_genuine_rejected\": \"8/8 held-out (13/13 pooled)\"}, \"D3b_LR_register_aware\": {\"catch\": 1.0, \"fr_EN\": 0.042, \"reg_fr\": 0.531}, \"D4_perreg_AND_cut96\": {\"catch\": 0.899, \"fr_EN\": 0.167, \"reg_fr\": 0.281}, \"D4b_LRblind_AND_fold5\": {\"catch\": 1.0, \"fr_EN\": 0.167, \"reg_fr\": 0.312}}, \"measured_ceiling\": \"best held-out hindsight cell meeting FR_EN<=0.10 AND reg_FR<=0.10 anywhere in D1-D4 = 0.623 catch (D2 k=3 tau_N=0.90); fold family 0.74-0.86; frozen-cell results above\", \"D5c_virgin2_L240\": {\"m_NV\": 14.0128, \"catch\": \"378/392=0.964\", \"catch_wilson95\": [0.941, 0.979], \"fr_EN\": \"0/40\", \"fr_NOVOWEL_genuine\": \"1/33\", \"fr_LATIN_DE_OE_KJV\": \"0/80\", \"fr_pooled\": \"1/113=0.009\", \"pass_point_estimates\": true, \"caveat\": \"post-hoc design; NOVOWEL FR Wilson upper 0.153\"}, \"D5a_global_margin_virgin1\": {\"catch\": \"154/157=0.981\", \"fr_EN\": \"0/30\", \"fr_pooled\": \"18/73=0.247\", \"pass\": false}, \"L120_probe\": \"L=240-frozen m_NV rejects 92/92 NOVOWEL genuine at L=120; in-sample refit m~7.3 gives 0.967 catch at FR 0.098 -> margin must be calibrated per length\"}",
+   "deliverables": [
+    "PREREG.md",
+    "RESULTS.md",
+    "catch_surface.json",
+    "shim.py",
+    "extract.py",
+    "analyze.py",
+    "analyze_d5.py",
+    "analyze_d5c.py",
+    "analyze_l120.py",
+    "within_register.py",
+    "breakdown.py",
+    "feat_*.json",
+    "extract*.log",
+    "out_build.json"
+   ],
+   "not_covered": "CY/Welsh register (corpus missing; 8-register panel, 4000 null draws); populations not bit-identical to L1 (kjv/mabinogion substituted from analysis/bookcipher/books); wrong-key, keyskip2/drift and non-EN_NOVOWEL hallucination classes (EN_HALFVOWEL hallucinations get no protection from D5c); lengths other than 240 (120 probe only); genuine sets are synthetic corpus windows, small NOVOWEL genuine n; D5/D5c post-hoc and unreplicated; partial-recovery (0.90-0.95) cases excluded.",
+   "corpora_sha256": "see out_build.json (rebuilt 8-register panel in this lane)",
+   "trust_anchor_before": "tests/validate.py not run before",
+   "trust_anchor_after": "tests/validate.py ALL VALIDATIONS PASSED",
+   "reopens_if": "(a) a third virgin key reproduces D5c at >=0.90 catch / <=0.10 pooled FR AND an m_NV(L) curve over >=4 lengths is calibrated -> auto-certification of a crosser can be turned on for the measured class; (b) the Welsh corpus is restored and the 9-register panel changes margins; (c) a wrong-key / keyskip2 / HALFVOWEL hallucination population shows D5c leaks there; (d) a genuine solved-page decode set with lower language fit shows margins below m_NV.",
+   "artifacts": "{\"models/panel.npz\": \"gitignored-style rebuildable artifact (python shim.py)\"}",
+   "priority": "high",
+   "notes": "SEAL_PASS stays false. D5c is post-hoc (Addenda A/B written after seen data / after virgin-1) and is NOT adopted. X1/R32: catch_surface.json key PASS_point_and_wilson_upper_le_0.10=true omits the NOVOWEL class whose Wilson upper bound is 0.153 > 0.10 - read it as a point-estimate pass only.",
+   "source_register": "round32/I4",
+   "evidence": [
+    "liber-primus/analysis/round32/I4-nonfold-seal/RESULTS.md",
+    "liber-primus/analysis/round32/I4-nonfold-seal/PREREG.md",
+    "liber-primus/analysis/round32/I4-nonfold-seal/catch_surface.json"
+   ]
+  },
+  {
+   "id": "R28-L3-PY27-STR-AMD64-DICT",
+   "lane": "round28/L3",
+   "round": 28,
+   "date": "2026-10-28",
+   "hypothesis": "The author's key is a Py2.7 random.seed(<string>) amd64 (64-bit-hash) seed drawn from a dictionary of Cicada/corpus strings and an English wordlist.",
+   "status": "inconclusive",
+   "verdict": "INCONCLUSIVE-ARTIFACTS-INCOMPLETE",
+   "result": "Sweep finished (11/11 items, 2,500,207 decodes, elapsed 7,828.7 s, 0 flagged) and best stage-A pmax is 6.3148 against frozen claim bars 7.3835 (pair) / 7.6342 (exact), but the 226 stage-B rows (candidates28.jsonl), the dictionary and any SWEEPROW bulk store are not on disk, so the kill rule applies. Not citable as an exclusion until recovered; then it upgrades to bounded negative with no re-sweep.",
+   "coverage": "Dictionary amd64 Py2.7 hash image (1,201,672 distinct strings: 32,329 corpus tier0 + 389,789 wordlist + UPPER 389,782 + Title 389,772): random29xpair and random29xexact over tiers 0,1,1b,1c; grb5_mod/grb5_rej/shuffle29 x pair over tier 0 only; 11 items, 2,500,207 decodes, offset 0, wordsize 64. ~1.4e-13 of the 2^64 image.",
+   "not_covered": [
+    "strings outside the dictionary (2^64 amd64 image not enumerable)",
+    "wordlist tiers for grb5_mod / grb5_rej / shuffle29",
+    "offsets != 0",
+    "Python != 2.7 hash semantics; PYTHONHASHSEED/-R",
+    "relations other than keyskip1 / keyskip2 (free drift); beam_w>64; L!=120 screen",
+    "non-linguistic payloads",
+    "candidates28.jsonl, dictionary.jsonl and any SWEEPROW bulk store are absent from this checkout, so the stage-B rows and the recount are unverified"
+   ],
+   "positive_control": "n/a",
+   "threshold": "stage-A screen 5.0; claim bars pair 7.3835 / exact 7.6342 (N=1e6 reference, conservative per cell); I3 panel-max 7.634.",
+   "three_conditionals": "{\"key_space\": \"dictionary amd64 hash image, offset 0\", \"transition_model\": \"keyskip1+keyskip2, beam_w 64\", \"adjudicator_register\": \"I2 nine-register panel pmax (original build); EN_NOVOWEL detection-only\"}",
+   "evidence": [
+    "liber-primus/analysis/round28/L3/RESULTS.md",
+    "liber-primus/analysis/round28/L3/progress28.json",
+    "liber-primus/analysis/round28/L3/controls.json",
+    "liber-primus/analysis/round28/L3/control_e2e.json",
+    "liber-primus/analysis/round28/L3/hash_gate.json",
+    "liber-primus/analysis/round28/L3/subsumption.json",
+    "liber-primus/analysis/round28/L3/dict_meta.json"
+   ],
+   "reopens_if": "candidates28.jsonl + dictionary.jsonl are recovered (upgrade to bounded negative if all 226 stage-B rows < bar), or any tier/cell/offset outside coverage is run.",
+   "priority": "low",
+   "source_register": "round32/B3",
+   "control_detail": "controls.json (pre-sweep, 5/5 cells HIT, recovery 0.9917-1.000); control_e2e.json 10 plants x 5 cells: end-to-end 1.0/1.0/1.0/0.9 (random29xexact)/0.8 (grb5_modxpair, cell pass:false), screen 50/50 at min pmax 17.931 vs 5.0; hash_gate 1,500/1,500 vs real CPython 2.7.18; subsumption 200/200.",
+   "notes": "X1/R32: 'inconclusive' kept (pre-registered kill rule). On-disk record nonetheless shows 0 flagged_survivors from a non-hardcoded writer (round28/L3/sweep28.py:271-277) and best stage-A pmax 6.3148 < 7.38/7.63; only the per-row stage-B file and the dictionary recount are missing. round28/L3/RESULTS.md line 92 ('every one had pmax < a claim bar per best_pmax') conflates stage-A (L=120) best_pmax with stage-B L=240 pmax."
+  },
+  {
+   "id": "R32-B3-GLIBC-GEN0-PRIORDENSE",
+   "lane": "round32/B3",
+   "round": 32,
+   "date": "2026-10-28",
+   "hypothesis": "The author's key is a glibc srandom(seed);random()%29 keystream (seed_sweep gen=0) with seed among the repo's prior-dense values, under a key-skip transition.",
+   "status": "negative",
+   "verdict": "NEGATIVE-BOUNDED-PRIOR-DENSE",
+   "result": "48,036 seeds x {pair, exact} = 96,072 decodes complete; best pmax pair 5.74 (seed 1319400000), exact 5.393 (seed 1435017600) vs bars 7.3835 / 7.6342; 11 reached the 5.0 screen, 0 reached a claim bar, 0 flagged. Does NOT close the R19-G3-CORRECTION row: the full 2^32 gen=0 remains unrun.",
+   "coverage": "48,036 distinct 32-bit seeds (B04 ints/primes/3301 family, 433 seedprior20 PGP-time seconds, ints 0..2047, YYYYMMDD + unix-midnight UTC per day 2011-2015, unix top-of-hour UTC 2011-2015), glibc TYPE_3 random()%29, offset 0, sign -1, both relations, beam_w 64, L120 screen / L240 gate. = 1.12e-5 of 2^32.",
+   "not_covered": [
+    "99.9989% of the 2^32 gen=0 seed space (needs C prefilter or ~166 core-days Python)",
+    "offsets != 0, sign +1, initstate sizes other than TYPE_3, rand() variants, reject/scaled reductions",
+    "timestamp jitter around the listed instants; seconds not on the list",
+    "relations beyond keyskip1/keyskip2",
+    "panel is a lane-local REBUILD whose corpora hashes differ from round19/I2's committed build: the 7.38/7.63 bars are applied as frozen constants on a sibling panel",
+    "gens 1-9 and gen=7/8 re-adjudication (separate open item)"
+   ],
+   "positive_control": "passed",
+   "threshold": "screen 5.0; claim bars pair 7.3835 / exact 7.6342 (hitfn20 at N=1e6 reference)",
+   "three_conditionals": "{\"key_space\": \"listed seeds, offset 0, TYPE_3 random()%29\", \"transition_model\": \"keyskip1+keyskip2, beam_w 64\", \"adjudicator_register\": \"I2 nine-register panel (lane rebuild, differing corpora); EN_NOVOWEL detection-only\"}",
+   "evidence": [
+    "liber-primus/analysis/round32/B3-closeout/RESULTS.md",
+    "liber-primus/analysis/round32/B3-closeout/sweep.py",
+    "liber-primus/analysis/round32/B3-closeout/sweep_rows.jsonl",
+    "liber-primus/analysis/round32/B3-closeout/sweep_summary.json",
+    "liber-primus/analysis/round32/B3-closeout/control.json",
+    "liber-primus/analysis/round32/B3-closeout/out_build.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round32/B3-closeout && python build_panel.py && python -I sweep.py control && python -I sweep.py sweep 1100  (~15 min, <500 MB)",
+   "reopens_if": "full 2^32 gen=0 completes; a DONE marker appears; any listed-out axis is run.",
+   "priority": "low",
+   "source_register": "round32/B3",
+   "control_detail": "control.json: 6/6 planted glibc keys (seeds 1325734783, 3301, 20120105 x pair/exact) screen pmax 17.931, stage-B pmax 25.241, recovery 1.000, heldout 1.000, HIT=True; one plant text only; glibc port matches srandom(1) known outputs.",
+   "sweep_store": "analysis/round32/B3-closeout/sweep_rows.jsonl",
+   "threshold_fixed_in_advance": true
+  },
+  {
+   "id": "R32-B1-BASH42-RANDOM-AUTOSEED",
+   "lane": "round32/B1",
+   "round": 32,
+   "date": "2026-10-28",
+   "status": "negative",
+   "verdict": "NEGATIVE-BOUNDED-PREFILTER-LOSSY",
+   "hypothesis": "The keystream is bash 4.2 $RANDOM%29 auto-seeded (tv_sec^tv_usec^pid), 2012-01-01..2014-06-01, offset 0.",
+   "result": "77,594,624 seeds x {LP64,ILP32} prefiltered (head trigram prefilter, FPR 6e-4); 96,033 survivors decoded under keyskip1+keyskip2 = 192,066 decodes in 2022.9 s; 0 flagged, 0 hitfn20 crossers. Best screen pmax keyskip2 7.068 (actual-N bar 6.939, declared-N bar 7.3835; L=240 gate 4.66/6.09 fails clause 1), keyskip1 6.679 vs 7.6342.",
+   "coverage": "Seeds 1.00 prefiltered (both ABIs); decode stage = prefilter survivors, ~6.2e-4 of seeds. Prefilter power 0.74 EN, 0.70 LATIN, 0.74 DE, 0.47 EN_NOVOWEL (planted).",
+   "not_covered": [
+    "bash 3.2/4.0/4.1/5.x",
+    "explicit RANDOM=n outside the auto-seed set / outside 2012-01..2014-06",
+    "reductions other than %29; sign +1; reversed; atbash",
+    "free-drift and relations beyond keyskip1/2",
+    "25-55% of planted keys dropped by the prefilter (skips in head, vowel-dropped text)",
+    "registers EN_KJV/OE/CY/HALFVOWEL not planted",
+    "ILP32 is L4-validated only",
+    "LP2 beyond rune 120/240 and pads not starting at rune 0",
+    "flat prior over the auto-seed set"
+   ],
+   "positive_control": "passed",
+   "threshold": "hitfn20 panelmax_bar pair 7.3835 / exact 7.6342 (N=1e6 declared; 6.939/7.161 at actual N=192,066); I3 threshold_for(192066, segment_len=120) = -5.5 (floor binds, legacy en statistic)",
+   "three_conditionals": "{\"key_space\": \"bash 4.2 auto-seed set 74x2^20, %29, offset 0, sign -1, LP64+ILP32\", \"transition_model\": \"keyskip1+keyskip2, beam_w 64, L120 screen/L240 gate\", \"adjudicator_register\": \"round32/I2 nine-register panel (EN_NOVOWEL detection-only)\"}",
+   "sweep_store": "analysis/round32/B1-bash-random/sweep_rows.jsonl",
+   "reopens_if": "a higher-power skip-tolerant prefilter or an un-prefiltered stated-fraction sample shows the dropped fraction hides a hit; a real 32-bit bash 4.2; other bash versions or reductions",
+   "source_register": "round32/B1",
+   "control_detail": "control.json all_pass: 25/26 prefilter-passing planted keys recovered end-to-end (LP64 5/5, 6/6; ILP32 6/7, 8/8) at stage-B pmax ~24-28 vs bars 7.3835/7.6342; vectorised head == exact generator on 4000/4000 seeds.",
+   "threshold_fixed_in_advance": true,
+   "notes": "X1/R32 re-screened near-miss seed 1354603465 under both relations (X1-redteam/rescreen_1354603465.json): reproduces keyskip2 7.068 (LP64) / 6.762 (ILP32), keyskip1 2.80 / 2.86; L240 gate fails clause 1 (4.66 / 6.09). Lane patch status 'negative-bounded' is outside the status vocabulary and was normalised to 'negative'. Prefilter drops 25-55% of planted keys: power, not seed coverage, is the binding term.",
+   "evidence": [
+    "liber-primus/analysis/round32/B1-bash-random/RESULTS.md",
+    "liber-primus/analysis/round32/B1-bash-random/PREREG.md",
+    "liber-primus/analysis/round32/B1-bash-random/control.json",
+    "liber-primus/analysis/round32/B1-bash-random/sweep_summary.json",
+    "liber-primus/analysis/round32/B1-bash-random/sweep.py"
+   ]
+  },
+  {
+   "id": "R32-X1-REDTEAM",
+   "lane": "round32/X1",
+   "round": 32,
+   "date": "2026-10-28",
+   "source_register": "round32/X1",
+   "status": "audit",
+   "hypothesis": "The repository's own standing claims (toolchain bound, Py2.7-MT coverage, transcription closure, payload-canon downstream coverage, not_covered hygiene, STATUS/HIT-CANDIDATE reconciliation, D1 bookkeeping) and the finished Round 32 lanes contain errors that a refute-by-default recomputation from on-disk artifacts can find.",
+   "result": "FOUND-ERROR on targets 1,2,4,5(partly: 8 of 9 rows; R12-A1 already filled), 6 (engine resume bug, S2 crosser re-screened: NOISE under exact too), 7 (tool-mismatch + missing not_covered); target 3 documented as two options for the coordinator, not decided. Lane audits: FOUND-ERROR (minor) on I1 PREREG timing, I2 power rounding, I4 PASS flag label, B3 wording, lane-patch vocabulary violations; NO-ERROR-FOUND on I3 numerics, B1 numerics, B3 'inconclusive' label (conservative but defensible). See RESULTS.md.",
+   "coverage": "Seven plan targets; six round32 lanes audited from on-disk JSON; two single-seed re-screens (35563892 py27mt random29, 1354603465 bash4.2/ILP32) under keyskip1 and keyskip2 with the round32/I2 panel, beam_w 64, L120 screen, L240 hitfn20 gate (N=1e6 declared). Not a re-run of any sweep.",
+   "not_covered": [
+    "Lane audits recompute headline numbers from each lane's own JSON; they do not re-run the sweeps, the power cells or the null fits.",
+    "The grind27.c/grind28.c patch is NOT compiled or tested (no C compiler on this machine) - it must be built and run against the parked S2 state before being trusted.",
+    "round19/I2 panel is not on disk; both re-screens use the rebuilt round32/I2 panel (sibling, not identical, to the panel behind the 7.634 bar).",
+    "B2 (php mt_rand) lane not audited (still running).",
+    "Target 3 (C-CANON-PAYLOAD-3BYTES) is a governance decision and is left open."
+   ],
+   "threshold": "n/a - audit (no null, no threshold)",
+   "positive_control": "n/a - audit; recomputations reproduce lane-reported numbers (I3 exponent -0.5675 SE 0.0623; B1 near-miss 7.068/6.762; S2 crosser 7.6706 vs engine 7.6707).",
+   "evidence": [
+    "liber-primus/analysis/round32/X1-redteam/RESULTS.md",
+    "liber-primus/analysis/round32/X1-redteam/rescreen_35563892.json",
+    "liber-primus/analysis/round32/X1-redteam/rescreen_1354603465.json",
+    "liber-primus/analysis/round32/X1-redteam/rescreen.py"
+   ],
+   "reopens_if": "A claim corrected here is re-asserted with new evidence; the grind27 patch fails to build or changes S2 resume behaviour; the coordinator promotes payload_resolved.bin.",
+   "priority": "high"
   }
  ],
  "round18_merged": "2026-08-26"

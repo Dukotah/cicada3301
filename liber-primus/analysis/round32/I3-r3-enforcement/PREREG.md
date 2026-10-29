@@ -5,7 +5,7 @@ written to disk after the first calibration smoke runs (L=120, M=1024 and 200k).
 criteria below were stated before the fit was computed.
 
 - **Q1 recognizer.** `validate_ledger.py` must reject a SWEEPROW store lacking any of ioc, mds, pmax_ne, zl
-  (or the 9-vector z), and accept a compliant one. Proven by `analysis/handoff/test_validate_ledger_r3.py`
+  (or the 9-vector z), and accept a compliant one. Proven by `tests/test_validate_ledger_r3.py`
   (each field dropped in turn must fail; compliant must pass). For the curve: the fitted exponent must be
   within 2 SE of round19's -0.583, or the discrepancy is reported.
 - **Q2 prior.** R3 had 0/15 compliance in R10b; round19/I2/SWEEPROW.md s7 recorded wiring as never done.

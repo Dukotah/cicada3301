@@ -42,7 +42,7 @@ Also treat with suspicion, and check before repeating:
   **two-stage `gs` → ImageMagick** pipeline (IJG quality 92, optimised Huffman tables, an
   Artifex ICC). **Narrowed again 2026-09-28 (Round 30, A3):** that Artifex ICC is
   **byte-identical to Ghostscript 9.06's `srgb.icc`**, which bounds the Ghostscript release to
-  **9.01–9.15**. The stego and provenance conclusions are unaffected throughout; only the
+  **9.04–9.14 [R18-L1: 9.00–9.02 measured non-matching, 9.03 unmeasured]**. The stego and provenance conclusions are unaffected throughout; only the
   toolchain attribution moves. Recovering the source PDF/PostScript — which would name the
   `/BaseFont` typeface and expose the TJ kerning — is the live thread, and it is off-repo.
 

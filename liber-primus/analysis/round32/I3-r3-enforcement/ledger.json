@@ -17,7 +17,7 @@
   "result": "validate_ledger.py now calls adjudicate.validate_store for round>=19 sweep-declaring rows (hard ERROR; implicit jsonl detection WARN-only). Ledger: 0 errors before and after; 4 new advisory R3-UNVERIFIED warns (R20-SG3, R21-L3, R24-C2, R28-L1). threshold_for(segment_len=L) now scales: beta=0.07095*(L/120)^-0.5675, exponent SE 0.062 (5 pts, 3 DOF; pooled 8 pts -0.579 SE 0.032).",
   "coverage": "Legacy EN quadgram keyskip1 beam_w400 only; L=31,60,90,120,180 measured at 200k decodes each, seed 3301.",
   "not_covered": "L>=240 not measured here (mu flat-extrapolated); other registers/modes/beam widths; stores in rows lacking a sweep_store declaration.",
-  "evidence": ["RESULTS.md", "PREREG.md", "null_curve32.json", "cells32.json", "analysis/handoff/test_validate_ledger_r3.py"],
+  "evidence": ["RESULTS.md", "PREREG.md", "null_curve32.json", "cells32.json", "tests/test_validate_ledger_r3.py"],
   "reopens_if": "A post-R18 sweep row declares sweep_store and fails; or an L>=240 measurement departs from the fitted curve by more than 2 SE.",
   "related": ["R19-I3-NULLS"],
   "supersedes": null,

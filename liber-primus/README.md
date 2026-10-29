@@ -61,17 +61,17 @@ cryptanalysis rig, a provenance-verified dataset, and the consolidated findings.
   this project's history**: a bit-exact C port of the stage-A screen scored **all 2³² =
   4,294,967,296** Py2.7-MT integer seeds exactly once under the `pair` relation. Three claim-bar
   crossers, **all three oracle-adjudicated NOISE-CROSSER**; lane **NULL**; that branch is
-  **exhausted** under its three named conditionals. Its second lane (`exact`/keyskip1) is
+  a complete null under its three named conditionals **for the `pair` relation only**. Its second lane (`exact`/keyskip1) is
   **parked at 44.14 %**.
-- **Round 28** closed the contested transcription bytes — an independent blind instrument agrees
-  with the canon **100 %**, all three byte flips included, so **`canon_256` stands** — plus the
+- **Round 28** re-read the contested transcription bytes — an independent blind instrument agrees
+  with the canon **100 %** (on the contested cells, *with the three byte flips applied* — which means `payload_resolved.bin`, NOT `canon_256.bin`, is what it vouches for; whether to promote it is the still-open `C-CANON-PAYLOAD-3BYTES` coordinator decision [X1/R32]) — plus the
   CicadaOS dense-pair pads and the payload micro-remainders, all NEGATIVE. Two of its lanes never
   finished: the 25-cell generator queue **never fired**, and L3's completed sweep was **never
   written up**.
 - **Rounds 29–30** turned the attack **off the ciphertext and onto the artifact**, and that is
   where the one genuinely new fact of the last stretch came from: the 2014 master is a
   **machine-rendered PDF** whose embedded ICC profile is **byte-identical to Ghostscript 9.06's
-  Artifex `srgb.icc`**, narrowing the toolchain to **GS 9.01–9.15**. Around it: the runes are a
+  Artifex `srgb.icc`**, narrowing the toolchain to **GS 9.04–9.14 [R18-L1: 9.00–9.02 measured non-matching, 9.03 unmeasured]**. Around it: the runes are a
   deterministic vector font with **no glyph-variant channel**, there is **no sub-pixel channel**,
   the three genuinely-random blobs carry **no keyed-symmetric plaintext and no RSA/OpenPGP
   structure**, the onion images survived their **first real key-attack** (24,078 extractions, 0

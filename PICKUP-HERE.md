@@ -56,7 +56,7 @@ consecutive-equal runes (soft, ~83% suppression). "OTP-class" is precise and it 
 than "one-time pad" — the ciphertext is **indistinguishable between a true external pad
 (information-theoretically closed) and a short-seed *derived* keystream (finite keyspace,
 brute-forceable)**. The derived-key dictionary lane is untested; only running it settles which.
-The transcription is verified four independent ways and is **not** the blocker. On attribution,
+The transcription is verified four independent ways (**LP2-typeface-only**: T1's pooled LP1+LP2 read gate FAILED at 95.09 % vs 99 %; p27:93 U→B, margin 5, is flagged for a human and UNRESOLVED) and is **not** known to be the blocker. On attribution,
 there is **no falsifiable
 name** — stylometry is *provably* impossible at 359 words of authentic connected prose — but the
 loop produced the tightest honest **profile** yet, anchored on a technique fingerprint
@@ -281,7 +281,7 @@ was redirected mid-flight. What it produced instead is a working instrument and 
   what L7-A diagnosed as an English-only *scorer* was an English-only *bar*.** `threshold_for` was
   fed offsets not decodes in 4/4 R17 lanes; L7-C.6's tally is inflated **6.7x**.
 
-**2. THE TRANSCRIPTION IS NOT THE BLOCKER — closed from three independent directions.**
+**2. THE TRANSCRIPTION IS NOT THE BLOCKER — three independent directions, scoped to the LP2 typeface [X1/R32: T1 pooled read gate FAILED 95.09 % vs 99 % (LP1 94.60 % recall, undiagnosed); p27:93 U→B unresolved; payload bytes 45/50/246 canon decision open].**
 
 - **T1** built a per-rune reader scoring **100.0000% (180/180)** on the decryption-proven LP2
   control pages — meeting `AGENTS.md` section 8's own unpark threshold — and adjudicated the 450

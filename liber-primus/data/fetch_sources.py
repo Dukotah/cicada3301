@@ -34,6 +34,44 @@ def _get(url, dst):
     return len(data)
 
 
+# --- R32 / X1: key corpora the nine-register panel (round19/I2, round32/I2) needs --------------------
+# Round 32 I2 found data/keys/welsh/welsh_mabinogion.txt was never fetched by this script (the panel
+# could not be rebuilt on a fresh clone). The ORIGINAL corpus (524,561 B, Middle-Welsh Mabinogion,
+# sha 4b3fd926...) is NOT recoverable from here; I2 used a SUBSTITUTE of modern Welsh prose from four
+# Project Gutenberg texts (716,409 chars after boilerplate strip). Panel numbers built from it are a
+# sibling of, not identical to, round19/I2's. Pass --welsh to fetch it (opt-in; ~1 MB).
+WELSH_GUTENBERG_IDS = [3680, 57981, 56275, 67424]   # Cartrefi Cymru, Brethyn Cartref, I'r Aifft Ac Yn Ol, Nedw
+WELSH_DST = os.path.join(os.path.dirname(HERE), "data", "keys", "welsh", "welsh_mabinogion.txt")
+
+
+def _strip_gutenberg(txt):
+    s = txt.find("*** START")
+    if s != -1:
+        s = txt.find("\n", s) + 1
+    else:
+        s = 0
+    e = txt.find("*** END")
+    return txt[s:e if e != -1 else len(txt)]
+
+
+def ensure_welsh_substitute(force=False, verbose=True):
+    """Rebuild the I2 Welsh (CY) substitute corpus from Project Gutenberg (see note above)."""
+    if os.path.exists(WELSH_DST) and not force:
+        return WELSH_DST
+    os.makedirs(os.path.dirname(WELSH_DST), exist_ok=True)
+    parts = []
+    for gid in WELSH_GUTENBERG_IDS:
+        url = f"https://www.gutenberg.org/cache/epub/{gid}/pg{gid}.txt"
+        req = urllib.request.Request(url, headers={"User-Agent": "cicada3301-rig"})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            parts.append(_strip_gutenberg(r.read().decode("utf-8", "replace")))
+    with open(WELSH_DST, "w", encoding="utf-8", newline="") as f:
+        f.write("".join(parts))
+    if verbose:
+        print(f"  built Welsh substitute corpus ({sum(map(len, parts))} chars) -> {WELSH_DST}")
+    return WELSH_DST
+
+
 def ensure_sources(force=False, verbose=True):
     """Download any missing source files; return the sources dir path."""
     os.makedirs(SRC, exist_ok=True)
@@ -51,4 +89,6 @@ if __name__ == "__main__":
     force = "--force" in sys.argv
     print(f"fetching {len(FILES)} source files -> {SRC}")
     ensure_sources(force=force)
+    if "--welsh" in sys.argv:
+        ensure_welsh_substitute(force=force)
     print("done.")

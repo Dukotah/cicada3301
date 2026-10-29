@@ -816,6 +816,13 @@ static void write_status(const Lane *ln, int final) {
             (unsigned long long)done, (unsigned long long)cov,
             (double)cov / (double)(ln->to - ln->from), best, (unsigned long long)bw,
             (unsigned long long)cand, G_NHITS, thr);
+    /* X1/R32 fix: top-level flagged_survivors lists the claim-bar hit seeds (the per-worker field is
+     * still a hardcoded []; HIT-CANDIDATE.json remains the record of pmax values). */
+    fprintf(f, " \"flagged_survivors\": [");
+    for (int i = 0; i < G_NHITS; i++)
+        fprintf(f, "%s%llu", i ? ", " : "", (unsigned long long)G_HITS[i].seed);
+    fprintf(f, "],
+");
     fprintf(f, " \"final_flush\": %s, \"updated_unix\": %ld\n}\n",
             final ? "true" : "false", (long)time(NULL));
     fclose(f);
@@ -876,6 +883,24 @@ static void load_lane_state(const Lane *ln) {
                 }
                 if (i == G_NW)
                     printf("resumed lane %s from STATUS.json\n", ln->name);
+            }
+        }
+        free(s);
+    }
+    /* X1/R32 fix: restore this lane's already-flagged claim-bar hits on resume, so that
+     * n_claim_bar_hits / write_hits_file() do not forget (and later overwrite) pre-restart hits. */
+    snprintf(p, sizeof p, "%s/HIT-CANDIDATE.json", G_RUNDIR);
+    s = slurp(p, &n);
+    if (s) {
+        char hl[64] = "";
+        jstr(s, s + n, "lane", hl, sizeof hl);
+        const char *ha = jkey(s, s + n, "hits");
+        if (ha && !strcmp(hl, ln->name)) {
+            const char *pp = ha, *os, *oe;
+            while (G_NHITS < MAX_HITS && jnext_obj(&pp, s + n, &os, &oe)) {
+                G_HITS[G_NHITS].seed = (uint64_t)jnum(os, oe, "seed", 0);
+                G_HITS[G_NHITS].pmax = jnum(os, oe, "pmax", -1e30);
+                G_NHITS++;
             }
         }
         free(s);
@@ -980,7 +1005,9 @@ static int run_lane(const Lane *ln, double seconds) {
                             ln->name, (unsigned long long)w, o.pmax);
                     fflush(G_CANDF);
                     W->n_cand++;
-                    if (o.pmax >= ln->claim_bar && G_NHITS < MAX_HITS) {
+                    int dup_hit = 0;   /* X1/R32: a resume re-scans seeds after the last checkpoint */
+                    for (int hi = 0; hi < G_NHITS; hi++) if (G_HITS[hi].seed == (uint64_t)w) dup_hit = 1;
+                    if (o.pmax >= ln->claim_bar && G_NHITS < MAX_HITS && !dup_hit) {
                         G_HITS[G_NHITS].seed = w; G_HITS[G_NHITS].pmax = o.pmax; G_NHITS++;
                         write_hits_file(ln);
                         printf("*** claim-bar candidate (KEEP SWEEPING): lane %s seed %llu "

@@ -25,7 +25,7 @@ real R3 gaps in post-R19 sweeps, surfaced but not failed. The one compliant stor
 (`round19/finite/sweeprows.jsonl`) passes `check_r3_store`.
 
 ## 3. Tests
-- `python -m pytest analysis/handoff/test_validate_ledger_r3.py benchmark -q` -> **13 passed**. Covers:
+- `python -m pytest tests/test_validate_ledger_r3.py benchmark -q` -> **13 passed**. Covers:
   compliant store passes; dropping each of ioc/mds/pmax_ne/zl fails; English-only store fails; scoping (round 18
   untouched, round-32 bad store fails, declared-without-store fails, missing file fails). Synthetic rows are used
   because `round19/I2/models/panel.npz` is gitignored and absent on a fresh checkout (a first draft that built

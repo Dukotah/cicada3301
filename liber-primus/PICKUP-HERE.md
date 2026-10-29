@@ -1,6 +1,8 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
 _Refreshed **2026-10-05**. Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+
+> **Round 32 X1 (2026-10-28) corrections applied throughout this file and the other nav docs:** GS bound 9.04-9.14; Py2.7-MT coverage is per-relation; transcription claim LP2-typeface-only with p27:93 still needing a human; seed 35563892 now has an S2-lane (`exact`) re-screen (NOISE at L=240) -- the 'one unresolved flag' on S2 is discharged at the one-seed level. **Before resuming S2, build the patched `P1-engine/grind27.c` (hit-restore on resume) and test it against the parked state.** Coordinator decision still open: `C-CANON-PAYLOAD-3BYTES`.
 and query [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare `status`)._
 
 > ## 🛑 NOTHING IS RUNNING. Read this before any block below that says IN-FLIGHT.
@@ -40,7 +42,7 @@ and query [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare 
 > decoration); **image forensics (POSITIVE)**; OSINT people-hunt (mruzuki = zero-footprint burner, dead end).
 > **Round 30** (8 lanes, `analysis/round30/`, each adversarially verified): the big new fact is that
 > **the 2014 LP master is a machine-rendered PDF** — its embedded ICC profile is **byte-identical to
-> Ghostscript 9.06's Artifex `srgb.icc`** (toolchain narrowed to GS 9.01-9.15; A3 POSITIVE). Everything else
+> Ghostscript 9.06's Artifex `srgb.icc`** (toolchain narrowed to GS 9.04–9.14 (9.00–9.02 measured non-matching; 9.03 unmeasured; 9.15–9.21 byte-identical but post-date the May-2014 dump); A3 POSITIVE). Everything else
 > NULL/consolidation: rune glyphs are a deterministic vector font with no variant channel (A1); no sub-pixel
 > positioning channel (A2); the 3 random blobs carry no keyed-symmetric plaintext (B1) and no RSA/OpenPGP
 > structure (B2); no attributable artist (C1); the 6 contested pp49-51 bytes resolved from the render →
@@ -421,6 +423,10 @@ Tracked as `LEDGER.json:C-CANON-PAYLOAD-3BYTES` (status `open`).
 ---
 
 ## One transcription candidate flagged for a human (C-eyeball)
+
+> **[X1/R32 scope note]** "Transcription closed / verified three ways" holds for the **LP2 typeface only**: T1's
+> pooled G-READ-ALL FAILED (1,879/1,976 = 95.09 %, bar 99 %; LP1 94.60 % recall, undiagnosed). **p27:93 (U→B, margin 5,
+> smallest in corpus; `round19/T1/RESULTS.md` line 414/488) is STILL UNRESOLVED and still needs a human to look at the glyph.**
 
 **T1 p27:93, U→B, margin 5.** This is the single weakest transcription disagreement Round 19's T1
 audit surfaced (canon upheld 450/450 overall, but this cell's margin is thin). It wants a human eye

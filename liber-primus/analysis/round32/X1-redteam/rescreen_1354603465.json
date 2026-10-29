@@ -1,0 +1,86 @@
+{
+ "seed": 1354603465,
+ "note": "X1 re-screen, round32/I2 panel, beam_w 64, L120 screen / L240 hitfn20 gate, N=1e6 declared; B1 actual-N bar 6.939 from B1 RESULTS.md",
+ "variants": {
+  "bash4.2": {
+   "generator": "bash4.2",
+   "seed": 1354603465,
+   "panel": "round32/I2 models/panel.npz",
+   "N_adjudicated": 1000000,
+   "relations": {
+    "keyskip2": {
+     "preset": "pair",
+     "screen_pmax": 7.068050415466602,
+     "screen_pmax_repr": "7.068050415466602",
+     "screen_register": "LP1_REAL",
+     "beam_score": -6.32998979670295,
+     "n_skips": 8,
+     "L240_gate": {
+      "hit": false,
+      "reason": "FAIL clause1: pmax 4.662 < panel-max bar 7.384",
+      "stage_b_pmax": 4.6622190231809,
+      "bar": 7.383520294328688,
+      "recovery": 0.6111111111111112,
+      "heldout": 0.6111111111111112
+     }
+    },
+    "keyskip1": {
+     "preset": "exact",
+     "screen_pmax": 2.800052873731619,
+     "screen_pmax_repr": "2.800052873731619",
+     "screen_register": "EN_MODERN",
+     "beam_score": -6.8624804448158985,
+     "n_skips": 8,
+     "L240_gate": {
+      "hit": false,
+      "reason": "FAIL clause1: pmax 3.620 < panel-max bar 7.634",
+      "stage_b_pmax": 3.6202873543318064,
+      "bar": 7.6341931878728095,
+      "recovery": 1.0,
+      "heldout": 1.0
+     }
+    }
+   }
+  },
+  "bash4.2_i32": {
+   "generator": "bash4.2_i32",
+   "seed": 1354603465,
+   "panel": "round32/I2 models/panel.npz",
+   "N_adjudicated": 1000000,
+   "relations": {
+    "keyskip2": {
+     "preset": "pair",
+     "screen_pmax": 6.762366956470023,
+     "screen_pmax_repr": "6.762366956470023",
+     "screen_register": "LP1_REAL",
+     "beam_score": -6.615128617836764,
+     "n_skips": 6,
+     "L240_gate": {
+      "hit": false,
+      "reason": "FAIL clause1: pmax 6.086 < panel-max bar 7.384",
+      "stage_b_pmax": 6.0861076617789465,
+      "bar": 7.383520294328688,
+      "recovery": 0.8722222222222222,
+      "heldout": 0.8722222222222222
+     }
+    },
+    "keyskip1": {
+     "preset": "exact",
+     "screen_pmax": 2.8629356814132825,
+     "screen_pmax_repr": "2.8629356814132825",
+     "screen_register": "EN_HALFVOWEL",
+     "beam_score": -6.934505643490975,
+     "n_skips": 3,
+     "L240_gate": {
+      "hit": false,
+      "reason": "FAIL clause1: pmax 1.827 < panel-max bar 7.634",
+      "stage_b_pmax": 1.8271633865371053,
+      "bar": 7.6341931878728095,
+      "recovery": 1.0,
+      "heldout": 1.0
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "entries": [
+  {
+   "id": "R32-X1-REDTEAM",
+   "lane": "round32/X1",
+   "round": 32,
+   "date": "2026-10-28",
+   "source_register": "round32/X1",
+   "status": "audit",
+   "hypothesis": "The repository's own standing claims (toolchain bound, Py2.7-MT coverage, transcription closure, payload-canon downstream coverage, not_covered hygiene, STATUS/HIT-CANDIDATE reconciliation, D1 bookkeeping) and the finished Round 32 lanes contain errors that a refute-by-default recomputation from on-disk artifacts can find.",
+   "result": "FOUND-ERROR on targets 1,2,4,5(partly: 8 of 9 rows; R12-A1 already filled), 6 (engine resume bug, S2 crosser re-screened: NOISE under exact too), 7 (tool-mismatch + missing not_covered); target 3 documented as two options for the coordinator, not decided. Lane audits: FOUND-ERROR (minor) on I1 PREREG timing, I2 power rounding, I4 PASS flag label, B3 wording, lane-patch vocabulary violations; NO-ERROR-FOUND on I3 numerics, B1 numerics, B3 'inconclusive' label (conservative but defensible). See RESULTS.md.",
+   "coverage": "Seven plan targets; six round32 lanes audited from on-disk JSON; two single-seed re-screens (35563892 py27mt random29, 1354603465 bash4.2/ILP32) under keyskip1 and keyskip2 with the round32/I2 panel, beam_w 64, L120 screen, L240 hitfn20 gate (N=1e6 declared). Not a re-run of any sweep.",
+   "not_covered": [
+    "Lane audits recompute headline numbers from each lane's own JSON; they do not re-run the sweeps, the power cells or the null fits.",
+    "The grind27.c/grind28.c patch is NOT compiled or tested (no C compiler on this machine) - it must be built and run against the parked S2 state before being trusted.",
+    "round19/I2 panel is not on disk; both re-screens use the rebuilt round32/I2 panel (sibling, not identical, to the panel behind the 7.634 bar).",
+    "B2 (php mt_rand) lane not audited (still running).",
+    "Target 3 (C-CANON-PAYLOAD-3BYTES) is a governance decision and is left open."
+   ],
+   "threshold": "n/a - audit (no null, no threshold)",
+   "positive_control": "n/a - audit; recomputations reproduce lane-reported numbers (I3 exponent -0.5675 SE 0.0623; B1 near-miss 7.068/6.762; S2 crosser 7.6706 vs engine 7.6707).",
+   "evidence": [
+    "liber-primus/analysis/round32/X1-redteam/RESULTS.md",
+    "liber-primus/analysis/round32/X1-redteam/rescreen_35563892.json",
+    "liber-primus/analysis/round32/X1-redteam/rescreen_1354603465.json",
+    "liber-primus/analysis/round32/X1-redteam/rescreen.py"
+   ],
+   "reopens_if": "A claim corrected here is re-asserted with new evidence; the grind27 patch fails to build or changes S2 resume behaviour; the coordinator promotes payload_resolved.bin.",
+   "priority": "high"
+  }
+ ]
+}

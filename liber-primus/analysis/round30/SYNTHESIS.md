@@ -16,7 +16,7 @@ upheld, but both are process/bookkeeping positives, not solving positives.
 |---|---|---|
 | A1 font | NULL (HIGH) | Runes are a deterministic vector font — same rune renders byte-identically everywhere; the imagined glyph-variant channel does not exist |
 | A2 sub-pixel | NULL (HIGH) | No hidden channel in baseline/advance/kerning/jitter; ~2px detection threshold on 400dpi q92, nothing near it |
-| **A3 PDF forensics** | **POSITIVE (HIGH)** | ICC profile **byte-identical to Ghostscript 9.06 Artifex srgb.icc** → toolchain narrowed to GS 9.01-9.15; process-attribution only |
+| **A3 PDF forensics** | **POSITIVE (HIGH)** | ICC profile **byte-identical to Ghostscript 9.06 Artifex srgb.icc** → toolchain narrowed to GS 9.04–9.14 (9.00–9.02 measured non-matching; 9.03 unmeasured; 9.15–9.21 byte-identical but post-date the May-2014 dump); process-attribution only |
 | B1 blob crypto | NULL (HIGH) | External-key symmetric battery (AES/RC4/Blowfish/DES/3DES × ~37 keys) on the 3 random blobs: 0 hits |
 | B2 RSA/GPG | NULL (HIGH) | canon_256/folly/2.jpg carry no RSA modulus/ciphertext or OpenPGP structure; canon_256 is even with small factors |
 | C1 art | NULL (HIGH) | No attributable individual hand; art = processed public-domain imagery + generic cipher-nav line work |
@@ -27,7 +27,7 @@ upheld, but both are process/bookkeeping positives, not solving positives.
 
 - **A3** — the 2014 book's embedded ICC profile is a byte-for-byte match to Ghostscript 9.06's Artifex
   `srgb.icc` (MD5 `e409cef13cd06f6b371f6cddc8e31fcf`), refetched fresh and `cmp`-confirmed. This narrows the
-  authoring toolchain to the GS 9.01-9.15 family (only 9.06 was byte-confirmed; the window is inference).
+  authoring toolchain to the GS 9.04–9.14 (9.00–9.02 measured non-matching; 9.03 unmeasured; 9.15–9.21 byte-identical but post-date the May-2014 dump) family (only 9.06 was byte-confirmed; the window is inference).
   Optimized Huffman = a deliberate `/Optimize` choice. No public source ever noted this signature. Yields
   zero plaintext but is a genuine, novel process-attribution.
 - **E1** — all 6 previously-contested pp49-51 base-60 bytes adjudicated from the 400dpi render to exactly

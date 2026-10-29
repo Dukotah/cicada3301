@@ -251,7 +251,7 @@ different places — start with whichever you actually have:
 
 **Can claim:** every attack we could concretely construct has been built, run and
 falsified; the cipher's mechanism is described to a parameter; the transcription is
-verified three independent ways (including a **label-free audit** — glyphs clustered by
+verified three independent ways, **LP2-typeface-only** (pooled LP1+LP2 read gate FAILED at 95.09 % vs 99 %; p27:93 U→B unresolved) (including a **label-free audit** — glyphs clustered by
 shape with the canon never shown, and the canon turned out to *be* the natural visual
 partition); the source images are byte-identical to the original onion release
 (56/56 SHA1); autokey — the community's decade-old leading hypothesis — is **positively
@@ -320,16 +320,18 @@ whole-book `n_skips` window is ≥ ~6000 runes.)
 **Round 27 produced the first full-space sweep in this project's history.** A bit-exact C port
 scored **all 2³² = 4,294,967,296** Py2.7-MT integer seeds exactly once under the `pair`
 relation; three claim-bar crossers were all oracle-adjudicated **NOISE-CROSSER**; the lane is
-**NULL** and that branch is **exhausted** (conditional on its seed space, its transition model
-and the nine-register adjudicator). **Rounds 29–30 then turned the attack off the ciphertext
+**NULL under the `pair` relation only** — that relation's 2³² space is a complete null (conditional on its seed space,
+its transition model and the nine-register adjudicator). The same space under the `exact`/keyskip1 relation (S2) is
+only 44.14 % swept and R28-L4 has zero coverage, so "coverage 1.00" is per-relation, not closure of the Py2.7-MT space. **Rounds 29–30 then turned the attack off the ciphertext
 and onto the artifact**, which is where the one genuinely new fact of the last stretch came
 from: the 2014 master is a **machine-rendered PDF** whose embedded ICC profile is
 **byte-identical to Ghostscript 9.06's Artifex `srgb.icc`**, narrowing the rendering toolchain
-to **GS 9.01–9.15**. The runes are a deterministic vector font with no variant channel, there
+to **GS 9.04–9.14 [R18-L1: 9.00–9.02 measured non-matching, 9.03 unmeasured]**. The runes are a deterministic vector font with no variant channel, there
 is no sub-pixel channel, the three genuinely-random blobs carry no keyed-symmetric plaintext
 and no RSA/OpenPGP structure, the onion images survived their first real key-attack (24,078
 extractions, 0 hits), and the six contested pp. 49–51 bytes resolved **in favour of the
-existing canon**.
+existing canon** for the six contested cells (three further token-split bytes, idx 45/50/246, were *changed* in
+`payload_resolved.bin`; whether to promote that file is the open `C-CANON-PAYLOAD-3BYTES` decision).
 
 **And then it stopped — which this README now says instead of implying otherwise.** Every
 sweep here was killed by a host reboot on **2026-09-15** and **none was resumed**: R27/S2 is

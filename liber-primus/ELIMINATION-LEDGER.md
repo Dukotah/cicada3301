@@ -22,12 +22,15 @@ row (~83% suppression — Campaign XI). "OTP-class" is a precise claim and it is
 (information-theoretically closed) and a short-seed *derived* keystream (finite keyspace,
 brute-forceable)**. The derived-key dictionary lane is **bounded, not untested** — it is now
 one of the most-swept families in the repo (R16-KDF 692k configs; R20/21/25/27 Py2.7-MT
-pair-decoder over [0,2³²) at coverage 1.00 / power 1.00; R24/R26 semantic-seed zoo 323/323
+pair-decoder over [0,2³²) at coverage 1.00 / power 1.00 **under the `pair` relation only (R27-S1)** — the same
+space under the `exact`/keyskip1 relation (R27-S2) is PARKED at 44.14 % (1,895,728,884 / 2³²) with one unresolved
+flag (seed 35563892), and the R28-L4 25-cell generator queue has ZERO coverage; "coverage 1.00" is a per-relation
+figure, not closure of the Py2.7-MT space [X1/R32 restatement]; R24/R26 semantic-seed zoo 323/323
 incl. 3301 / 0x7A35090F / page hashes / primes / totients; R19-L2 confirmed the standing null
 with a DK-PC2 positive control). What remains open is enumerated in R19-L2's `not_covered`
 (flat generator tails beyond the prior-dense slices, KDF params outside the grid, un-modelable
 registers) plus the `/dev/urandom` branch, which is closed by construction. The transcription
-is **not** the blocker (verified three independent ways). If the
+is **not** the blocker (verified three independent ways) [X1/R32 scope: the reader gate passed on the **LP2 typeface only** (G-READ-LP2 180/180); pooled G-READ-ALL FAILED at 95.09 % vs the 99 % bar (LP1 recall 94.60 %, un-diagnosed, 75 of 89 misses in one section); p27:93 (U→B, margin 5) is flagged for human review and UNRESOLVED; the 3-byte payload canon question (C-CANON-PAYLOAD-3BYTES) is open]. If the
 keystream is a true external pad, the only path to a solve is **external** — the key itself,
 most plausibly via the never-recovered "AN END" deep-web page — because for any chosen
 plaintext a valid structureless key exists. If instead it is derived from a short seed, the
@@ -1054,7 +1057,7 @@ verified refute-by-default (none downgraded). Trust anchors green throughout; ce
 - **R30-A2 sub-pixel** — NEGATIVE. No baseline/advance/kerning/jitter channel; ~2px threshold on 400dpi
   q92, nothing near it.
 - **R30-A3 PDF forensics** — POSITIVE (measured). Embedded ICC byte-identical to **Ghostscript 9.06
-  Artifex srgb.icc** (MD5 e409cef13cd06f6b371f6cddc8e31fcf) → toolchain narrowed to GS 9.01-9.15.
+  Artifex srgb.icc** (MD5 e409cef13cd06f6b371f6cddc8e31fcf) → toolchain narrowed to GS 9.04–9.14 (9.00–9.02 measured non-matching; 9.03 unmeasured; 9.15–9.21 byte-identical but post-date the May-2014 dump).
   Process-attribution only.
 - **R30-B1 blob crypto** — NEGATIVE. External-key symmetric battery (AES/RC4/Blowfish/DES/3DES × ~37
   Cicada-derivable keys) on the 3 random blobs: 0 hits. Extends OTP-class closure to keyed external ciphers.
@@ -1068,3 +1071,12 @@ verified refute-by-default (none downgraded). Trust anchors green throughout; ce
 **Net:** OTP-class verdict UNCHANGED and reinforced. The only genuinely-new live threads are OFF-repo:
 recover the source PDF/PS (names the `/BaseFont` typeface + exposes TJ kerning), pin the exact GS release,
 close art attribution via reverse-image/Wayback. Do NOT re-run any R29/R30 lane.
+
+## Round 32 X1 red-team corrections (2026-10-28)
+
+Refute-by-default audit of standing claims; details and citations in `analysis/round32/X1-redteam/RESULTS.md`.
+- **GS bound** corrected to 9.04-9.14 (R18-L1 byte-compared 9.00/9.01/9.02 = non-matching; 9.03 unmeasured).
+- **"coverage 1.00"** for R20/21/25/27 Py2.7-MT is per-relation (`pair`). S2 (`exact`) is parked at 44.14 %; R28-L4 has zero coverage.
+- **Transcription** "closed" claims are LP2-typeface-only; T1 pooled read gate failed at 95.09 % vs 99 %; p27:93 (U->B, margin 5) unresolved.
+- **S2 crosser 35563892**: re-screened under keyskip1 `exact` with the R32 I2 panel: screen 7.6706 (>= 7.634) but L240 hitfn20 clause 1 fails (5.78 < 7.63) -- identical decode to `pair` (0 key skips). Not a hit; still a one-seed result, not an S2 closure.
+- **Engine bug** (grind27.c/grind28.c): hits were forgotten across a resume and `flagged_survivors` was a hardcoded `[]`; source patched, not yet compiled.

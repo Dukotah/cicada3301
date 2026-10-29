@@ -264,7 +264,7 @@ Lane verdict: NULL, branch exhausted, conditional on its three named conditional
 
 **The artifact is machine-rendered, and the toolchain is narrowed.** The 2014 master is a
 rendered PDF whose embedded ICC profile is **byte-identical to Ghostscript 9.06's Artifex
-`srgb.icc`**, bounding the renderer to **GS 9.01–9.15**. The runes are a deterministic vector
+`srgb.icc`**, bounding the renderer to **GS 9.04–9.14 [R18-L1: 9.00–9.02 measured non-matching, 9.03 unmeasured]**. The runes are a deterministic vector
 font with no glyph-variant channel; there is no sub-pixel positioning channel; the page images
 are byte-authentic 400-DPI renders with no recoverable steganography (56/56 SHA-1s match the
 archived dump); the onion images survived their first genuine key-attack at 24,078 extractions,
