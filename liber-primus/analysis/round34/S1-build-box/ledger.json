@@ -1,11 +1,12 @@
 {
  "lane": "S1", "round": 34, "date": "2026-10-29", "sandbox_obtained": true,
- "wall_ms": 1252665, "active_cpu_ms": 952907,
+ "wall_ms": {"pass1": 1252665, "pass2": 1273971},
  "items": {
   "engine": {"verdict": "COMPILE_OK_RESUME_PATH_PASS_SELFTEST_BLOCKED", "compile_errors": 0, "compile_warnings": {"grind27": 2, "grind28": 2}, "resume_tests": {"a": "PASS", "a2": "PASS", "b": "PASS", "c": "PASS"}, "blocker": "round19/I2/models/panel.npz (sha 14a23d36...) missing; K3 self-test fails on substitute (V1 26/64)", "real_S2_touched": false},
   "php5": {"verdict": "NO-ERROR-FOUND", "php": "5.6.40", "first_draw": 1244335972, "mt_rand_20_match": true, "mt_rand_0_28_20_match": true},
-  "o1": {"verdict": "O1_LIVE", "stage1_jpeg_identical": false, "decoded_pixels_identical": "false on text page (AE 3029), true on font-free page (AE 0)", "discriminator": "9.14 embeds ICC e409cef1 (APP2 2592 B), 9.04 embeds none", "input": "ctrl.ps synthetic (page-0 source not in repo)"}
+  "o1": {"verdict": "O1_LIVE", "discriminator": "jpeg device embeds ICC e409cef1 from 9.05; 9.04 does not (although the 9.04 tree ships the file)", "per_release": {"9.04": false, "9.05": true, "9.06": true, "9.07": true, "9.09": true, "9.10": true, "9.12": true, "9.14": true}, "render_band_after_S1": "9.05-9.14 (single-page, single-device, unpinned within band)", "r18_l1_reconciliation": "R18-L1 measured source-tree profile files, not renders; S1 measured embedding in render output", "input": "nofont.ps and ctrl.ps synthetic (page-0 source not in repo)"}
  },
+ "sandbox_remaining": {"sandbox": "moccasin-certain-whippet-5ZiipV (stopped, non-persistent)", "snapshot": "snap_84wyROyjgjBX7veiBuxb8bqgyJYU 1.28 GB, expires ~2026-11-05, no delete tool available"},
  "claims_not_made": ["solved", "closed", "exhausted"],
  "git_run": false, "pickup_here_edited": false
 }

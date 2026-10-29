@@ -54,3 +54,40 @@ Built Ghostscript 9.04 and 9.14 from ghostpdl tags; PS/PDF page-0 source is not 
 2. Whether to spend a second sandbox run on the 9.05-9.12 bisect (cheap) - O1 is live and this would narrow the pin.
 3. Delete the leftover sandbox `moccasin-certain-whippet-5ZiipV` / snapshot `snap_84wyROyjgjBX7veiBuxb8bqgyJYU` if unwanted.
 4. A temporary secret GitHub gist carried the 543 KB round32 panel to the sandbox; it was deleted (`gh gist list` shows none).
+
+---
+## Section 4 addendum (2026-10-29): ICC embedding by release, and what R18-L1 actually measured
+
+**Per-release table** (font-free page, `-sDEVICE=jpeg -dJPEGQ=92 -r400`; `gs_icc_by_release.json`). All six requested releases built.
+
+| gs release | ICC embedded in the JPEG | ICC md5 | JPEG bytes |
+|---|---|---|---|
+| 9.04 | **no** (no APP2) | - | 332,761 |
+| 9.05 | yes, 2576 B | e409cef13cd06f6b371f6cddc8e31fcf | 335,355 |
+| 9.06 | yes | e409cef1... | 335,355 |
+| 9.07 | yes | e409cef1... | 335,355 |
+| 9.09 | yes | e409cef1... | 335,355 |
+| 9.10 | yes | e409cef1... | 335,355 |
+| 9.12 | yes | e409cef1... | 335,355 |
+| 9.14 | yes | e409cef1... | 335,355 |
+
+Decoded pixels are identical across all eight; 9.05-9.14 are byte-identical to each other on this page.
+
+**Reconciliation with R18-L1 section 4.** R18-L1 measured *files in source trees*, not renders: `icc_version_probe.sh` fetches
+`iccprofiles/srgb.icc` per ghostpdl tag from raw.githubusercontent.com and records length, md5 and the PCS-illuminant bytes
+(`icc_versions.json`); the 9.00-9.17 tags returned "fetch failed" at that path, and `icc_oldpath_probe.sh` re-probed `gs/iccprofiles/srgb.icc`
+(`icc_versions_early.json`: 9.00-9.02 = 3144 B, 9.04+ = 2576 B e409cef1). The sentence "Artifex introduced the 2576-byte profile at 9.04"
+is therefore a statement about when the **file first ships in the tree**, and the "operative window 9.04-9.14" combines that with the
+May-2014 date bound. R18-L1 never ran an old Ghostscript; its chain control used the modern system gs 10.06 and showed that the *render*
+output carries an Artifex ICC. S1 now supplies the missing link: the 9.04 tree does ship the e409cef1 file (md5 re-verified here in
+`gs/iccprofiles/`), yet the 9.04 `jpeg` device does **not** embed it; 9.05 is the first release that does. The two claims do not
+conflict; they bound different things:
+- file-in-tree window (R18-L1): 9.04 to 9.21, upper edge 9.14 by date;
+- ICC-embedded-in-jpeg-device-output window (S1, this build recipe): 9.05 onward, so 9.05 to 9.14 under the same date bound.
+
+Effect on O1: the render-level band for LP2's stage 1 narrows from 9.04-9.14 to 9.05-9.14 (still containing Ubuntu 12.04's 9.05).
+It does **not** single out a release inside 9.05-9.14 (same bytes on this page). The 9.04 exclusion rests on one device, one parameter set,
+a gcc-15 compatibility build, and an assumption that LP2's ICC came from gs rather than being added later by ImageMagick/another tool
+(R18-L1's chain control showed IM only carries an existing ICC through). Per the doctrine: a measured constraint, not a pin and not a solve.
+
+**Sandbox, second pass:** resumed the stopped sandbox from its snapshot; 1,274 s (21.2 min) wall, 2,225 s active CPU; stopped before the 25 min kill.

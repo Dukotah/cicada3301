@@ -22,3 +22,12 @@ Lane S1, Round 34. Compute only in a Linux sandbox; local files only here. No gi
   (`-sDEVICE=jpeg -dJPEGQ=92 -r400`, then IM `-quality 92`) and byte-compare (and decoded planes).
 - Identical -> O1 KILL "band not resolvable at render level" (for that input only; a synthetic PS is weaker than page 0).
   Different -> O1 live. Budget: stop at ~40 min of builds and record progress.
+
+---
+## ADDENDUM A (2026-10-29, written before the second sandbox pass; coordinator decision)
+- Recognizer: for each gs release built from its ghostpdl tag (9.05, 9.06, 9.07, 9.09, 9.10, 9.12; 9.04 and 9.14 already measured:
+  no ICC / ICC), render the font-free synthetic page (`nofont.ps`) with `-sDEVICE=jpeg -dJPEGQ=92 -r400` and record whether the JPEG
+  carries an APP2 ICC_PROFILE of 2576 B with md5 e409cef13cd06f6b371f6cddc8e31fcf; also record file size and decoded-pixel md5.
+- Kill: stop at ~25 min sandbox wall; a release that fails to build in a few minutes is skipped and reported.
+- Reconcile first: re-read round18/L1-toolchain/RESULTS.md section 4 + icc_version_probe.sh to state what R18-L1 measured
+  (profile FILE in source tree vs ICC actually embedded in a render).

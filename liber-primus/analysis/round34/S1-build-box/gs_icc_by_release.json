@@ -1,0 +1,22 @@
+{
+ "addendum": "PREREG ADDENDUM A, 2026-10-29",
+ "page": "nofont.ps (font-free: blue rect, grey disc, red stroke)",
+ "params": "gs -sDEVICE=jpeg -dJPEGQ=92 -r400 (single stage; no ImageMagick)",
+ "builds": "ghostpdl-<tag> via GitHub archive, gs/ configure, gcc 15.2, -std=gnu89 -fcommon -w -D_GNU_SOURCE -DHAVE_SYS_TIME_H + -Wno-error=* ; every requested release built (about 200 s each at -j2); none skipped",
+ "recognizer": "APP2 ICC_PROFILE of 2576 B with md5 e409cef13cd06f6b371f6cddc8e31fcf",
+ "per_release": [
+  {"release": "9.04", "icc_embedded_in_jpeg": false, "jpeg_size": 332761, "markers": "E0,DB,DB,C0,C4x4,DA", "source_tree_profile_file": "gs/iccprofiles/srgb.icc and default_rgb.icc, 2576 B, md5 e409cef1 (present in tree)"},
+  {"release": "9.05", "icc_embedded_in_jpeg": true, "icc_len": 2576, "icc_md5": "e409cef13cd06f6b371f6cddc8e31fcf", "jpeg_size": 335355, "markers": "E0,E2,DB,DB,C0,C4x4,DA"},
+  {"release": "9.06", "icc_embedded_in_jpeg": true, "icc_len": 2576, "icc_md5": "e409cef13cd06f6b371f6cddc8e31fcf", "jpeg_size": 335355},
+  {"release": "9.07", "icc_embedded_in_jpeg": true, "icc_len": 2576, "icc_md5": "e409cef13cd06f6b371f6cddc8e31fcf", "jpeg_size": 335355},
+  {"release": "9.09", "icc_embedded_in_jpeg": true, "icc_len": 2576, "icc_md5": "e409cef13cd06f6b371f6cddc8e31fcf", "jpeg_size": 335355},
+  {"release": "9.10", "icc_embedded_in_jpeg": true, "icc_len": 2576, "icc_md5": "e409cef13cd06f6b371f6cddc8e31fcf", "jpeg_size": 335355},
+  {"release": "9.12", "icc_embedded_in_jpeg": true, "icc_len": 2576, "icc_md5": "e409cef13cd06f6b371f6cddc8e31fcf", "jpeg_size": 335355},
+  {"release": "9.14", "icc_embedded_in_jpeg": true, "icc_len": 2576, "icc_md5": "e409cef13cd06f6b371f6cddc8e31fcf", "jpeg_size": 335355}
+ ],
+ "decoded_pixels_md5_all_eight_releases": "ea593d0b... (identical across 9.04-9.14 on this page)",
+ "all_source_trees_ship_matching_file": "every built tree contains gs/iccprofiles/{srgb,default_rgb}.icc, 2576 B, md5 e409cef1 (including 9.04)",
+ "reading": "The jpeg device first EMBEDS the e409cef1 profile at 9.05, not 9.04, although the 9.04 source tree already SHIPS the same file. Among 9.05-9.14 this probe cannot discriminate (identical JPEG size and ICC bytes; the only tested differentiator left is glyph rasterisation, untested per-release).",
+ "caveats": ["one page, one device, one parameter set; other devices/flags (e.g. -dUseCIEColor, pdfwrite) not tried", "gcc 15 builds with compiler-compat patches, not period toolchains; ICC embedding is device-source logic but a 9.04 build quirk is not excluded", "9.15-9.21 not built (R18 upper bound 9.14 comes from the May 2014 dump date)", "synthetic page, not LP2 page 0"],
+ "sandbox_second_pass": {"session": "sbx_MmpM3LGfjy8Fny88wrgT1x8mlSRV (resumed from snapshot)", "duration_ms": 1273971, "active_cpu_ms": 2225231}
+}

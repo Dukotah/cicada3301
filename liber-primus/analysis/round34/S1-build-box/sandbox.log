@@ -13,3 +13,12 @@ Cost signals: none returned by the API. stop_session auto-created a persistent s
 the named persistent sandbox record also remains - coordinator may delete both.
 Own mistakes (time only): two `pkill -f` calls matched their own shell; gcc-15 needed gnu89 + -Wno-error flags for gs and PHP 5.6;
 PHP configure mis-detected readdir_r and crypt under gcc 15 (php_config.h patched by hand).
+
+--- Second pass (ADDENDUM A) ---
+get_named_sandbox resume=true restored the first pass filesystem cleanly (new session sbx_MmpM3LGfjy8Fny88wrgT1x8mlSRV). extend_session_timeout +1.3e6 ms.
+Builds: 9.12/9.10/9.09/9.07/9.06/9.05 ~200-210 s each at -j2 (one script, per-release 2x200 s make with timeout). No failures.
+Tool quirk: get_session_command wait:true blocks ~60 s then reports "operation timed out" but later calls succeed; command finished normally.
+Wall (stop_session): duration 1,273,971 ms (21.2 min); active CPU 2,225,231 ms; cumulative sandbox ingress 513 MB.
+Cleanup: update_sandbox persistent=false, then stop_session -> sandbox status stopped, no new snapshot. No delete-sandbox or delete-snapshot tool exists in this toolset
+(only snapshot create/get/list), so the snapshot snap_84wyROyjgjBX7veiBuxb8bqgyJYU (1.28 GB, source sbx_9Dpm...) remains and auto-expires at epoch ms 1793914827527 (~2026-11-05).
+The sandbox record moccasin-certain-whippet-5ZiipV remains as a stopped, non-persistent entry.
