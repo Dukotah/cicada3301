@@ -1,0 +1,50 @@
+{
+ "$comment": "Round 33 lane I1 ledger fragment (instrument measurement, not a sweep). Merge into liber-primus/LEDGER.json.",
+ "lane": "round33/I1",
+ "date": "2026-10-29",
+ "entries": [
+  {
+   "id": "R33-I1-REGISTER-AWARE-BEAM",
+   "lane": "round33/I1",
+   "round": "33",
+   "date": "2026-10-29",
+   "hypothesis": "Replacing the English-quadgram search score of the driftbeam with a register-aware score (design 1: max over the nine I2 register trigram LMs) lifts planted EN_NOVOWEL recovery to >= 0.90 at L=120 without costing any register > 0.05.",
+   "status": "positive",
+   "verdict": "INSTRUMENT-REPAIRED (design 1, panel_max); kill rule did not fire; null/bars need a v3-specific refit before sweep use",
+   "coverage": "9 registers x 3 matched relations (keyskip1/1, skip_by_two/2, free_q05/free) x L{120,400} x 20 plants for driftbeam and v3 panel_max; shuffle null n=100 per decoder x relation x L; Q5 checkpoint 80 decodes; tuning seeds 500-509; designs 2 and 3 only at L=120 on EN_NOVOWEL + EN_MODERN x 3 relations x 20 plants; speed on 4 decodes per cell. Correct key + offset handed to decoder.",
+   "not_covered": [
+    "cross-relation (mismatched decoder) cells for all nine registers",
+    "L=6000, sign +1, plants with wrong key/offset, supp != 0.83, non-SHA-256-CTR keystreams",
+    "transition model: resets, advance >= 3, interrupters, rewrite/keyside/plainside constructions, > 2 unexplained advances per rune",
+    "adjudicator registers outside the nine-register trigram panel (Greek, Hebrew, Norse, mixed/unknown)",
+    "null on the real shuffled LP2 stream (R32 I1's planted-shuffle null was reused)",
+    "Gumbel refit of v3 wrong-key pmax at large N (hitfn20 panelmax bars were fitted on driftbeam and do not apply to v3)",
+    "designs 2 and 3 on the full grid; design 3 fails V2 on EN_MODERN free (0.896 vs 0.979)",
+    "plants are clean corpus windows; real LP2 text not tested"
+   ],
+   "positive_control": "passed",
+   "threshold": "VALID iff EN_NOVOWEL median recovery >= 0.90 at L=120 skip_by_two/advance 2 AND no register x matched relation x L cell falls > 0.05 below same-plant driftbeam (or R32 I1 published median); fixed in PREREG.md before any output.",
+   "result": {
+    "EN_NOVOWEL_L120_skip_by_two_adv2": {"driftbeam_same_plants": 0.721, "r32_i1_published": 0.721, "v3_panel_max": 1.0},
+    "EN_NOVOWEL_L120_free": {"driftbeam_same_plants": 0.275, "r32_i1_published": 0.567, "v3_panel_max": 0.979},
+    "EN_NOVOWEL_L400_skip_by_two_adv2": {"driftbeam_same_plants": 0.655, "r32_i1_published": 0.705, "v3_panel_max": 1.0},
+    "cells_recovered_R32_rule": {"driftbeam": "48/54", "v3_panel_max": "54/54"},
+    "v2_violations": 0,
+    "kill_rule_fired": false,
+    "shuffle_null_max_pmax_driftbeam_to_v3": {"adv1_L120": [4.05, 4.08], "adv1_L400": [4.45, 6.33], "adv2_L120": [4.17, 4.32], "adv2_L400": [4.83, 5.36], "free_L120": [6.20, 7.62], "free_L400": [8.60, 13.03]},
+    "bars": "threshold_for(N, segment_len=L) = -5.5 (floor) at N=100 and 1e6, both L; en bar blind to NOVOWEL (planted en about -7.9). hitfn20 panelmax bars (N=1e6: 7.63/7.38/13.84) were fitted on driftbeam; v3 own shuffle-null max pmax binds.",
+    "speed_ratio_vs_driftbeam": {"panel_max": "1.4-2.3x", "register_cond": "8.6-11x", "agnostic": "1.4-3.1x"},
+    "supplement_L120": {"register_cond_NOVOWEL_skip_by_two": 1.0, "agnostic_NOVOWEL_skip_by_two": 1.0, "agnostic_MODERN_free": 0.896}
+   },
+   "overlap": "transition relations are round19/I1 driftbeam (unchanged); envelope grid follows round32/I1 with the nine-register I2 panel and I2 testhalves plants (driftbeam re-run on identical plants as baseline).",
+   "reopens_if": "any of: the transition model is extended (resets, advance >= 3) and the envelope re-run; a register outside the nine-register panel is hypothesised; a v3 wrong-key Gumbel refit shows plants no longer clear the sweep-scale bar; wrong-key / non-planted real-LP2 text shows the search score hallucinating a register.",
+   "artifacts": [
+    "round33/I1-register-aware-beam/PREREG.md",
+    "round33/I1-register-aware-beam/beam_v3.py",
+    "round33/I1-register-aware-beam/power_envelope.json",
+    "round33/I1-register-aware-beam/speed.json",
+    "round33/I1-register-aware-beam/RESULTS.md"
+   ]
+  }
+ ]
+}
