@@ -64,7 +64,7 @@ cryptanalysis rig, a provenance-verified dataset, and the consolidated findings.
   a complete null under its three named conditionals **for the `pair` relation only**. Its second lane (`exact`/keyskip1) is
   **parked at 44.14 %**.
 - **Round 28** re-read the contested transcription bytes — an independent blind instrument agrees
-  with the canon **100 %** (on the contested cells, *with the three byte flips applied* — which means `payload_resolved.bin`, NOT `canon_256.bin`, is what it vouches for; whether to promote it is the still-open `C-CANON-PAYLOAD-3BYTES` coordinator decision [X1/R32]) — plus the
+  with the canon **100 %** (on the contested cells, *with the three byte flips applied* — which means `payload_resolved.bin`, NOT `canon_256.bin`, is what it vouches for; owner chose Option A on 2026-10-29 (promote; file move and downstream re-feeds pending, see LEDGER `C-CANON-PAYLOAD-3BYTES`); whether to promote it is the still-open `C-CANON-PAYLOAD-3BYTES` coordinator decision [X1/R32]) — plus the
   CicadaOS dense-pair pads and the payload micro-remainders, all NEGATIVE. Two of its lanes never
   finished: the 25-cell generator queue **never fired**, and L3's completed sweep was **never
   written up**.

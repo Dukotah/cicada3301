@@ -28,6 +28,8 @@ _Refreshed **2026-10-28** (Round 32 closeout). Read this first, then [`ELIMINATI
 > (X1 §3, both written); (2) build + test the patched `grind27.c`/`grind28.c` before resuming S2 (no C toolchain
 > here); (3) confirm X1's 8 drafted `not_covered` texts; (4) R30-A1/A2/B1/B2/C1 still carry `not_covered: null`.
 
+> **Round 33 X1 (2026-10-29):** the R32 `grind27.c`/`grind28.c` patch had a syntax error (raw newline in a string literal) - fixed, still UNBUILT; **S2: do not resume until compiled and tested**. Owner chose Option A on `C-CANON-PAYLOAD-3BYTES` (file move pending, coordinator). p27:93 machine-resolved to U (B2). The `0.84 %` skip_by_two doublet prior is superseded (full-length 0.595 % = keyskip1). D5c replicates at L=240, fails at L=120. See `analysis/round33/X1-redteam/RESULTS.md`.
+>
 > **Round 32 X1 (2026-10-28) corrections applied throughout this file and the other nav docs:** GS bound 9.04-9.14; Py2.7-MT coverage is per-relation; transcription claim LP2-typeface-only with p27:93 still needing a human; seed 35563892 now has an S2-lane (`exact`) re-screen (NOISE at L=240) -- the 'one unresolved flag' on S2 is discharged at the one-seed level. **Before resuming S2, build the patched `P1-engine/grind27.c` (hit-restore on resume) and test it against the parked state.** Coordinator decision still open: `C-CANON-PAYLOAD-3BYTES`.
 and query [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare `status`)._
 

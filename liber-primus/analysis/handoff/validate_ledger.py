@@ -188,6 +188,14 @@ def main():
                 warns.append(f"[{eid}] negative whose threshold was not fixed in advance "
                              f"(post-hoc bars are not tests)")
 
+        # 2b. (R33/X1) a negative with no not_covered statement is an unbounded claim (warning only)
+        if e.get("status") in NEGATIVE_STATUSES and not e.get("not_covered"):
+            import re as _re
+            _m = _re.match(r"\s*(\d+)", str(e.get("round", "")))
+            if _m and int(_m.group(1)) >= 19:
+                warns.append(f"[{eid}] NULL-NOT-COVERED: negative (round >= 19) with not_covered "
+                             f"null/empty - state what the null does not cover")
+
         # a failed control must not be carrying a conclusion
         if e.get("positive_control") == "failed" and e.get("status") in NEGATIVE_STATUSES:
             errors.append(f"[{eid}] positive_control FAILED but status is {e['status']} - "

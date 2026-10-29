@@ -1,0 +1,28 @@
+{
+  "lane": "round33/X1",
+  "date": "2026-10-29",
+  "entries": [
+    {
+      "id": "R33-X1-REDTEAM",
+      "lane": "round33/X1",
+      "round": 33,
+      "date": "2026-10-29",
+      "status": "audit",
+      "hypothesis": "Round 32 B2/I4 carry-overs, the uncompiled C patch, drafted not_covered texts and the Round 33 lanes contain errors that refute-by-default recomputation can find.",
+      "result": "See analysis/round33/X1-redteam/RESULTS.md. FOUND-ERROR: C patch (raw newline in a string literal, both .c files), R18-L7 0.84 % doublet figure, R32-B2 row source_register/control wording, B1 missed readers (R16-KDF, R30-B1/B2, capsule MANIFEST). D5c replicates at L=240 on a third key (catch 0.971, FR 0/64) and fails at L=120 (NOVOWEL FR 53/53). NO-ERROR-FOUND: I1 numerics (re-runs bit-identical), I2 table, B2 diagnosis.",
+      "coverage": "Targets 1-7 of the X1 brief; I1 3 cells x 2 designs x 10 plants; D5c 2 lengths x 300 draws; doublet 3 variants.",
+      "not_covered": [
+        "grind27.c/grind28.c still NOT compiled (no gcc/cl); parse-level checks only.",
+        "PHP 5 binary cross-check of the legacy twist unavailable.",
+        "D5c replication uses the same I4 recipe; no independent recipe."
+      ],
+      "threshold": "n/a - audit (no null, no threshold)",
+      "threshold_fixed_in_advance": true,
+      "positive_control": "n/a - audit; recomputations reproduce lane numbers (I1 re-runs identical; I1/I2 tables match JSON).",
+      "evidence": [
+        "liber-primus/analysis/round33/X1-redteam/RESULTS.md"
+      ],
+      "reopens_if": "A corrected claim is re-asserted without new evidence."
+    }
+  ]
+}

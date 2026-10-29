@@ -1111,8 +1111,7 @@ static void write_status(const Lane *ln, int final) {
     fprintf(f, " \"flagged_survivors\": [");
     for (int i = 0; i < G_NHITS; i++)
         fprintf(f, "%s%llu", i ? ", " : "", (unsigned long long)G_HITS[i].seed);
-    fprintf(f, "],
-");
+    fprintf(f, "],\n");
     fprintf(f, " \"final_flush\": %s, \"updated_unix\": %ld\n}\n",
             final ? "true" : "false", (long)time(NULL));
     fclose(f);

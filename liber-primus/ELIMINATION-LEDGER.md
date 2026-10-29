@@ -1095,3 +1095,13 @@ Refute-by-default audit of standing claims; details and citations in `analysis/r
 - **Transcription** "closed" claims are LP2-typeface-only; T1 pooled read gate failed at 95.09 % vs 99 %; p27:93 (U->B, margin 5) unresolved.
 - **S2 crosser 35563892**: re-screened under keyskip1 `exact` with the R32 I2 panel: screen 7.6706 (>= 7.634) but L240 hitfn20 clause 1 fails (5.78 < 7.63) -- identical decode to `pair` (0 key skips). Not a hit; still a one-seed result, not an S2 closure.
 - **Engine bug** (grind27.c/grind28.c): hits were forgotten across a resume and `flagged_survivors` was a hardcoded `[]`; source patched, not yet compiled.
+
+
+## Round 33 X1 corrections (2026-10-29)
+
+- **p27:93** (B2): machine-resolved to U (6 px from a mislabelled singleton B exemplar, bitmap 421, itself a U glyph from p13; 11 px from the real U; ~2,900 px from real Bs). Canon stands; a human glance is optional. The T1 pooled read gate is still FAIL 95.09 %: 75 of the 97 LP1 misses are one SOME WISDOM block (an image-coverage gap), without it LP1 = 98.72 %.
+- **Issue #12** (B2): two separator characters in `data/krisyotam_runes.txt` corrected (`.` to `-`, seg 8 gap 12, seg 40 gap 8); verified by X1/R33 against the capsule MANIFEST sha (reverting exactly those two characters reproduces it). Commit + closing #12 pending. Capsule MANIFEST sha for that file is now stale.
+- **C-CANON-PAYLOAD-3BYTES**: owner chose **Option A** (promote `payload_resolved.bin`) on 2026-10-29; the file move is a coordinator action and is NOT yet done. B-04 payload subset, E-01, E-02 re-fed with no flip; R17 pad harness not re-runnable; R16-KDF, R30-B1, R30-B2, capsule MANIFEST still to re-feed/regenerate.
+- **skip_by_two doublet prior** (R18-L7 `0.84 % vs 0.664 %`) is **superseded in part**: 0.84 % = 2 doublets in 239 pairs. Re-run: L=240 mean 0.57-0.61 %, full length 0.593-0.596 %, identical to keyskip1 (0.598 %). All output-side filters give ~0.60 %; the statistic still excludes key-side/plain-side filters but does not favour skip_by_two.
+- **Engine patch** (`grind27.c`/`grind28.c`): X1/R33 found a real syntax error in the R32 patch (a raw newline inside a string literal in `write_status`); fixed in both files. Still **UNBUILT** (no compiler on this machine). **S2 stays do-not-resume until the patched engine is compiled and tested against the parked state.**
+- **D5c** (R32 I4): replicates at L=240 on a third key (catch 0.971, pooled FR 0/64) and fails at L=120 (NOVOWEL FR 53/53): length-conditioned, SEAL_PASS stays false.

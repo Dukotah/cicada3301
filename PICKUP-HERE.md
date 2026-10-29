@@ -28,7 +28,7 @@ _Updated **2026-08-26** (frozen; see the banner above). Repo: https://github.com
 > 2. **Every negative covers exactly ONE rejection-loop construction.** (§B.) The beam admits a
 >    key skip only if every skipped position would have reproduced the previous cipher rune —
 >    exact for `encipher_keyskip` and nothing else. **`skip_by_two`**, a one-character variant
->    that **reproduces LP2's observed doublet rate** (0.84 % vs 0.664 %), is missed at **−6.90 /
+>    that **was reported to reproduce LP2's observed doublet rate** (0.84 % vs 0.664 %; **superseded in part, X1/R33: 0.84 % was 2 doublets in 239 pairs; at full length skip_by_two gives 0.595 %, the same as keyskip1**), is missed at **−6.90 /
 >    25.8 % recovery**, and beam width 1000 + `max_skip` 8 change that by *exactly* 0.000. It
 >    appears in no `not_covered` field anywhere.
 >
@@ -56,7 +56,7 @@ consecutive-equal runes (soft, ~83% suppression). "OTP-class" is precise and it 
 than "one-time pad" — the ciphertext is **indistinguishable between a true external pad
 (information-theoretically closed) and a short-seed *derived* keystream (finite keyspace,
 brute-forceable)**. The derived-key dictionary lane is untested; only running it settles which.
-The transcription is verified four independent ways (**LP2-typeface-only**: T1's pooled LP1+LP2 read gate FAILED at 95.09 % vs 99 %; p27:93 U→B, margin 5, is flagged for a human and UNRESOLVED) and is **not** known to be the blocker. On attribution,
+The transcription is verified four independent ways (**LP2-typeface-only**: T1's pooled LP1+LP2 read gate FAILED at 95.09 % vs 99 %; p27:93 U→B, margin 5, was flagged for a human; Round 33 B2 machine-resolved it to U - canon stands, human glance optional) and is **not** known to be the blocker. On attribution,
 there is **no falsifiable
 name** — stylometry is *provably* impossible at 359 words of authentic connected prose — but the
 loop produced the tightest honest **profile** yet, anchored on a technique fingerprint

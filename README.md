@@ -251,7 +251,7 @@ different places — start with whichever you actually have:
 
 **Can claim:** every attack we could concretely construct has been built, run and
 falsified; the cipher's mechanism is described to a parameter; the transcription is
-verified three independent ways, **LP2-typeface-only** (pooled LP1+LP2 read gate FAILED at 95.09 % vs 99 %; p27:93 U→B unresolved) (including a **label-free audit** — glyphs clustered by
+verified three independent ways, **LP2-typeface-only** (pooled LP1+LP2 read gate FAILED at 95.09 % vs 99 %; p27:93 U→B machine-resolved to U in Round 33 B2, human glance optional) (including a **label-free audit** — glyphs clustered by
 shape with the canon never shown, and the canon turned out to *be* the natural visual
 partition); the source images are byte-identical to the original onion release
 (56/56 SHA1); autokey — the community's decade-old leading hypothesis — is **positively
@@ -331,7 +331,7 @@ is no sub-pixel channel, the three genuinely-random blobs carry no keyed-symmetr
 and no RSA/OpenPGP structure, the onion images survived their first real key-attack (24,078
 extractions, 0 hits), and the six contested pp. 49–51 bytes resolved **in favour of the
 existing canon** for the six contested cells (three further token-split bytes, idx 45/50/246, were *changed* in
-`payload_resolved.bin`; whether to promote that file is the open `C-CANON-PAYLOAD-3BYTES` decision).
+`payload_resolved.bin`; owner chose Option A (promote) on 2026-10-29; the file move and downstream re-feeds are pending under `C-CANON-PAYLOAD-3BYTES`).
 
 **And then it stopped — which this README now says instead of implying otherwise.** Every
 sweep here was killed by a host reboot on **2026-09-15** and **none was resumed**: R27/S2 is
