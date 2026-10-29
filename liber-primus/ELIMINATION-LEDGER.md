@@ -1057,7 +1057,7 @@ verified refute-by-default (none downgraded). Trust anchors green throughout; ce
 - **R30-A2 sub-pixel** — NEGATIVE. No baseline/advance/kerning/jitter channel; ~2px threshold on 400dpi
   q92, nothing near it.
 - **R30-A3 PDF forensics** — POSITIVE (measured). Embedded ICC byte-identical to **Ghostscript 9.06
-  Artifex srgb.icc** (MD5 e409cef13cd06f6b371f6cddc8e31fcf) → toolchain narrowed to GS 9.04–9.14 (9.00–9.02 measured non-matching; 9.03 unmeasured; 9.15–9.21 byte-identical but post-date the May-2014 dump).
+  Artifex srgb.icc** (MD5 e409cef13cd06f6b371f6cddc8e31fcf) → toolchain narrowed to GS ~~9.04–9.14~~ → 9.05–9.14 (render level, R34-S1: 9.04 ships the e409cef1 srgb.icc file, which was R18-L1's evidence, but its jpeg device does not embed it; 9.05 first does; one synthetic page, gcc-15 build, no pin inside 9.05–9.14) (9.00–9.02 measured non-matching; 9.03 unmeasured; 9.15–9.21 byte-identical but post-date the May-2014 dump).
   Process-attribution only.
 - **R30-B1 blob crypto** — NEGATIVE. External-key symmetric battery (AES/RC4/Blowfish/DES/3DES × ~37
   Cicada-derivable keys) on the 3 random blobs: 0 hits. Extends OTP-class closure to keyed external ciphers.
@@ -1084,7 +1084,7 @@ Seven lanes + one PREREG-only lane; full write-up `analysis/round33/SYNTHESIS.md
   construction including keyskip1 (LP2 0.664 %) → the Round 18 L7-B 0.84 % `skip_by_two` figure (2 doublets in 239
   pairs) is superseded; the relation is kept, the prior over keyskip1 is withdrawn. skip_by_3 is covered by `free`;
   skip_by_4 (0.83), skip_by_5 (0.74), reset_per_page (0.51), reset_per_line (0.21) are unrepresented; the earned
-  `keyskipk` relation + segmentation wrapper is a queued completeness ritual (R4), not merged.
+  `keyskipk` relation + segmentation wrapper is a queued completeness ritual (R4), not merged. **[X1/R34: "earned" STRUCK - the doublet prior is non-discriminating (every construction 0.88-1.00x skip_by_two's error, so the "within 2x" gate is vacuous); representability numbers reproduce (two cells re-run bit-identical). Nothing is earned; ritual, queued last.]**
 - **R33-B1** `payload_resolved.bin` (idx 45/50/246) re-fed through the ORIGINAL harnesses: B-04 (7 payload-derived
   seeds, 76,160 decodes, best 5.11 vs 7.38), E-01 (0 HIT, vacuous), E-02 (unchanged) — nothing flips. R17's prefilter
   needs three gitignored corpora → `not_covered`. Promotion deferred: five more readers of `canon_256.bin` and the
@@ -1096,7 +1096,7 @@ Seven lanes + one PREREG-only lane; full write-up `analysis/round33/SYNTHESIS.md
 - **R33-B3** all 404,284 stored survivor rows of R32-B1/R32-B2 re-decoded under v3 (keyskip1 + keyskip2), 120/120
   controls incl. 60 EN_NOVOWEL plants, 0 flagged; best 7.068 (bash seed 1354603465, the Round 32 near-miss) vs modelled
   bar 8.373. Not covered: `free`, the prefilter-dropped orbits (NOVOWEL prefilter power 0.47), the I2 text-only lists.
-- **R33-O1** Ghostscript 9.04–9.14 render byte-compare: PREREG only, queued for a build box.
+- **R33-O1** Ghostscript 9.04–9.14 render byte-compare: PREREG only, queued for a build box. **[R34-S1 ran the synthetic-page form: the jpeg device embeds the e409cef1 ICC from gs 9.05, not 9.04; O1 live on that input only.]**
 - **R33-X1** FOUND-ERROR: the Round 32 grind27/28 patch had a raw newline in a string literal (fixed, unbuilt); Round 32
   B2 numbers reproduce (control prefilter-conditional, unique coverage ≈ 0.9658 %); D5c holds at L=240 on a third key,
   fails at L=120 → SEAL_PASS=false; 9 drafted `not_covered` texts confirmed, R30 nulls filled.
@@ -1136,3 +1136,13 @@ Refute-by-default audit of standing claims; details and citations in `analysis/r
 - **skip_by_two doublet prior** (R18-L7 `0.84 % vs 0.664 %`) is **superseded in part**: 0.84 % = 2 doublets in 239 pairs. Re-run: L=240 mean 0.57-0.61 %, full length 0.593-0.596 %, identical to keyskip1 (0.598 %). All output-side filters give ~0.60 %; the statistic still excludes key-side/plain-side filters but does not favour skip_by_two.
 - **Engine patch** (`grind27.c`/`grind28.c`): X1/R33 found a real syntax error in the R32 patch (a raw newline inside a string literal in `write_status`); fixed in both files. Still **UNBUILT** (no compiler on this machine). **S2 stays do-not-resume until the patched engine is compiled and tested against the parked state.**
 - **D5c** (R32 I4): replicates at L=240 on a third key (catch 0.971, pooled FR 0/64) and fails at L=120 (NOVOWEL FR 53/53): length-conditioned, SEAL_PASS stays false.
+
+## Round 34 X1 corrections (2026-10-29)
+
+Refute-by-default audit; citations and re-runs in `analysis/round34/X1-redteam/RESULTS.md`.
+- **R34 I2 prefilter reach** (FOUND-ERROR): the lane's "real `U[:40]` has no doublets, so the true-key head is skip-free, so the operative power is 0.998" is wrong. `U[:40]` and `U[:120]` do have zero doublets, but a key skip is invisible in the emitted ciphertext; 37-51 % of true-key heads of 18-24 runes contain a skip, with or without a cipher doublet. Operative power of the lse m=20 screen is ~0.66 EN_NOVOWEL / ~0.71 EN_MODERN at FPR 1e-3 (the lane's own with-skip column). R32-B1/B2's 0.47 NOVOWEL is **not** a planting artefact (R32 logic re-run: 0.555-0.62). R32-B1 RESULTS and ledger row stand unchanged. Lever left: a skip-tolerant head screen.
+- **R34 I1 Q5**: the -0.55 exponent was fitted on a raw legacy quadgram score; v3 `pmax` is a per-length z-score (sd ~ n^-1/2), predicting ~-0.05; observed -0.105/-0.136. The trigger was a comparator error, not a non-Gumbel tail. Gumbel bars conservative at L <= 240, not shown at L = 400. R33 B3's bars were 0.08-0.28 below I1's at N = 202,142 (not material; best row 7.068).
+- **R33 I2 "earned" relations** struck (see the R33 block above).
+- **Ghostscript band**: render-level 9.05-9.14 (R34-S1); 9.04-9.14 is file-in-tree evidence (R18-L1) and is superseded for the render claim. R18-L1's `RESULTS.md` is annotated by this ledger, not rewritten.
+- **Capsule** INTACT-FAIL (13): 9 CRLF checkout noise; `runes.canonical` stale by the issue-12 separator edit; `tests/validate.py` grew from 3,607 B to 5,133 B by exactly the Round 19 AN-END (73.jpg) guard (removing it reproduces the recorded sha) - refresh the manifest; `corpus.kjv` / `keytext.mabinogion` are Round 32 I2's substitute copies of different downloads. Memo: `analysis/round34/X1-redteam/manifest_decision.md` (not applied).
+- **P1**: no reader changed; GO for the `payload_resolved.bin` rename recommended. R30-B1 canon-as-key over T2/folly and R30-B2 folly/2.jpg legs are **unmeasured** (inputs absent), not null. `C-CANON-PAYLOAD-3BYTES` stays `open` until the coordinator renames.

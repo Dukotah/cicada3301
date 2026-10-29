@@ -108,3 +108,11 @@ Matched relations (keyskip1 with advance 1; skip_by_two enciphering with advance
 1. Q5 fired. Accept the Gumbel bars as conservative bars of record for B1 (above every observed null value; lenient only if the true tail were heavier than exponential, which xi<0 argues against), or require an empirical-quantile bar (not available at B1's N without about 1e5 to 1e6 more null draws at L=240/400)?
 2. L=31 and `free` have a failed control: B1 should use L >= 120 with keyskip1/keyskip2 and not claim L=31 or free reach.
 3. If more null is wanted, spend it on lp2 L=240/400 (4,679 and 960 draws) and `free` (1000).
+
+---
+
+## X1/R34 addendum (2026-10-29) -- appended by the red-team lane; text above unchanged
+
+* **Q5 comparator.** The -0.55 +/- 0.04 exponent is for R32 I3's raw legacy EN quadgram score (`round32/I3-r3-enforcement/RESULTS.md:71`); this lane's `pmax` is a per-length z-score (`round32/I2-multiregister-readjudication/adjudicate.py:111`, sd ~ n^-1/2), which adds about +0.5 to the exponent: like-for-like prediction ~ -0.05, observed -0.105 +/- 0.012 / -0.136 +/- 0.014 (1.4 / 2.1 combined SE). Q5 "fired" on a mis-specified comparator; it is not evidence of a non-Gumbel tail.
+* **"Gumbel conservative"** holds at L = 31-240 (observed max below the predicted median in 13 of 16 cells; X1 `rerun_i1_gumbel_conservative.json`); at L = 400 (n = 960 / 695) the observed max meets or exceeds the predicted median in 3 of 4 cells, so conservatism is not demonstrated there.
+* **B3 comparison.** At N = 202,142, L = 120, B3's 8.546 / 8.373 are 0.08 / 0.08 (lp2) and 0.28 / 0.09 (register) below this lane's bars: marginally lenient, not material (B3's best row 7.068). Bars re-derived from `fit.json`: N = 1e6, L = 120 = 9.235 / 9.034 (lp2), 9.456 / 9.053 (register); `bars_v3.py` returns them.

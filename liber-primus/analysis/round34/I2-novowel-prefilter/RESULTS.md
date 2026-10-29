@@ -64,3 +64,9 @@ PHP generators use heads_all/reduce_heads vectorised (no anti-repeat nuance); Io
 ## Coordinator decisions
 1. Accept m=20 lse thr 3.905 as B1's prefilter (survivors ~1.7x vs R32). 2. Confirm C[0]-aligned head assumption (else with-skip power applies). 3. B1 PHP use of pf_v3.screen requires passing reduce_heads output as K.
 Stray-file note: an early run of run.py wrote roc.json/_norm.json into round32/B1-bash-random (common.py shadowed HERE); both deleted, nothing else touched there.
+
+---
+
+## X1/R34 addendum (2026-10-29) -- appended by the red-team lane; text above unchanged
+
+**FOUND-ERROR in "Key measurement finding".** `U[:40]` does have zero doublets (X1 re-checked: also `U[:120]`), but that does not make the true-key head skip-free. A key skip happens when the *candidate* cipher rune equals the previous emitted one and is **invisible in the emitted ciphertext**, so a doublet-free head says nothing about skips. X1 `rerun_i2_skipfree.py` (600 R32-style plants per cell, bash4.2, enc_pair/enc_exact): the fraction of heads with no skip in the first m = 18 / 20 / 24 runes is 0.63 / 0.57-0.59 / 0.49-0.54, and 0.54-0.64 even among plants whose cipher head contains no doublet. The operative power is therefore the **with-skip column** (about 0.62-0.66 for every register at FPR 1e-3; X1 re-run: this screen 0.655-0.663 EN_NOVOWEL, 0.707-0.713 EN_MODERN), not the no-skip 0.998. R32-B1's 0.47 NOVOWEL prefilter power reproduces under its own logic (0.555-0.62 at m=18/24) and is not a planting artefact; `round32/B1-bash-random/RESULTS.md` and its ledger row stand. What I2 genuinely shows: on skip-free heads the lse screen lifts the weakest registers (HALFVOWEL 0.853 -> 0.932 at m=16), and FPR re-checks at 1.07-1.08e-3 on fresh seeds. Any B1 reach statement must use the with-skip power. A skip-tolerant head screen (DP over advance 1/2 on the first ~20 runes) is the untried lever.

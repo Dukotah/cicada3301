@@ -1,0 +1,191 @@
+"""X1/R34: merge the audited Round 34 rows + patches into LEDGER.json (idempotent; originals kept in x1_r34 / *_original fields)."""
+import json, collections
+LP = 'C:/Users/Jeff/cicada3301/liber-primus/'
+A = LP + 'analysis/round34/'
+LJ = LP + 'LEDGER.json'
+L = json.load(open(LJ, encoding='utf-8'))
+E = {e['id']: e for e in L['entries']}
+ev = lambda *p: ['liber-primus/analysis/round34/' + x for x in p]
+new = []
+
+
+def add(row):
+    if row['id'] in E:
+        return
+    new.append(row)
+    E[row['id']] = row
+
+
+add({
+    "id": "R34-I1-V3-NULL-OF-RECORD", "lane": "round34/I1", "round": 34, "date": "2026-10-29", "status": "measured",
+    "hypothesis": "beam_v3 (panel_max, hard max, lam_u=4, beam_w=400) wrong-key panel pmax has a Gumbel-or-lighter tail whose scale beta(L) follows Round 32 I3's L^-0.55, so family-wise bars can be fitted per (L, relation) from observed draws instead of extrapolated from a 12,000-draw null.",
+    "verdict": "OBSERVED-NULL-AND-GUMBEL-BARS-OF-RECORD (keyskip1/keyskip2, L=120/240/400); positive control FAILED at L=31 and for free L=120; the Q5 'exponent mismatch' compares unlike statistics (X1/R34)",
+    "result": "Wrong-key null: 40,000 draws per relation at L=31 and L=120 (lp2 family), 4,679 at L=240, 960 at L=400, 1,000 for free L=120; register family b 3,000 per register at L31/L120 down to 141-200 at L=400. Max observed 5.12-6.07 (keyskip); tail exponential-or-lighter (GPD xi about -0.12). beta(L) exponent -0.105 +/- 0.012 / -0.136 +/- 0.014 (lp2 keyskip1/2) vs the plan's -0.55 +/- 0.04. bars_v3.bar_v3(N=1e6, L=120): 9.24 / 9.03 (lp2), 9.46 / 9.05 (register); at N=2e5 L=120 8.62 / 8.45 (B3's modelled 8.546 / 8.373). Planted correct key clears the N=1e6 bar 20/20 at all nine registers for L=120/240/400 x keyskip1/2 (bars 9.0-10.5); 0/20 at L=31 for four registers; free L=120 clears for 3 of 9 registers.",
+    "coverage": "Shuffled-LP2 and shuffled held-out EN_NOVOWEL/LATIN/OE/DE nulls, six B1/B2 key families (stored survivor seeds), keyskip1 + keyskip2 at L in {31,120,240,400}, free at L=120 only; control 81 cells x 20 plants.",
+    "not_covered": [
+        "empirical quantiles beyond n_draws (bars at N=1e5-1e9 are exponential-tail extrapolation; the Gumbel bar is conservative at L<=240 but NOT shown conservative at L=400, X1/R34)",
+        "null with real (non-shuffled) LP2 structure",
+        "decoders other than panel_max hard-max lam_u=4 beam_w=400",
+        "relations other than keyskip1/keyskip2/free; free only at L=120 with 1000 draws",
+        "L=31 and free: control failed, no reach claimed",
+        "the cause of the beta(L) exponent difference was not separated from non-Gumbel tails by the lane (X1/R34: the -0.55 comparator is a raw legacy quadgram score, the pmax is a per-length z-score whose sd scales ~n^-1/2, predicting about -0.05)"],
+    "positive_control": "passed at L=120/240/400 keyskip1+keyskip2 (20/20, 9 registers, two families); FAILED at L=31 and free L=120 (strict pre-registered rule)",
+    "threshold": "bar = mu + beta ln(N/-ln(1-alpha)), alpha 0.01, exponential POT above the empirical 90th percentile; control: >=19/20 planted seeds per register clear the N=1e6 bar",
+    "threshold_fixed_in_advance": True,
+    "reopens_if": "a v3 sweep needs an empirical-quantile bar at N>1e5 (spend more null at lp2 L=240/400 and free), or the v3 statistic/search changes.",
+    "evidence": ev("I1-v3-null/RESULTS.md", "I1-v3-null/PREREG.md", "I1-v3-null/fit.json", "I1-v3-null/control.json", "I1-v3-null/bars_v3.py", "X1-redteam/RESULTS.md"),
+    "x1_r34": "NO-ERROR-FOUND on numerics: N=1e6 L=120 bars re-derived from fit.json and bar_v3 returns them (9.235/9.034/9.456/9.053); control counts reproduce RESULTS (9/9 cells at L=120/240/400, 1/9 at L=31, 3/9 free). FOUND-ERROR (substantive framing): Q5 'FIRED, 8-11 SE' compares the v3 pmax (a per-length z-score, sd ~ n^-1/2 per round32/I2 adjudicate.py:111) with R32 I3's raw legacy EN quadgram statistic (round32/I3 RESULTS:71); z-normalising adds about +0.5 to the exponent, so the like-for-like prediction is about -0.05 and the observed -0.105/-0.136 are 1.4/2.1 combined SE from it. The trigger was a false alarm on a mis-specified comparator, not evidence of a non-Gumbel tail. FOUND-ERROR (minor): 'Gumbel conservative' holds at L=31-240 (observed max below the predicted median in 13 of 16 cells; P(model max<=obs) 0.000-0.07 in the 40k cells) but at L=400 the observed max meets or exceeds the predicted median in 3 of 4 cells. 'B3 bars not lenient' is too strong: at N=202,142 L=120 B3's 8.546/8.373 sit 0.08/0.08 (lp2) and 0.28/0.09 (register) below this lane's bars (rerun_b3_bars.json)."
+})
+add({
+    "id": "R34-I2-NOVOWEL-PREFILTER", "lane": "round34/I2", "round": 34, "date": "2026-10-29", "status": "measured",
+    "hypothesis": "A panel-aware short-head screen (lse over the nine registers' head trigram LLR, first 16-24 decoded runes) lifts the bash/PHP orbit prefilter's EN_NOVOWEL power from R32-B1's 0.47 to >=0.85 (every other register >=0.90) at FPR <= 1e-3.",
+    "verdict": "PREFILTER-STATISTIC-IMPROVED; THE 'NO-SKIP = OPERATIVE POWER' REACH CLAIM (0.998) IS NOT SUPPORTED - operative power with the natural skip process is about 0.62-0.66 (all registers), measured by the lane's own with-skip column and X1/R34's re-run",
+    "result": "lse on the first m=20 decoded runes, threshold 3.9054 nats, pooled null FPR 1.03e-3 (X1 fresh-seed re-check 1.07-1.08e-3). Skip-free plants (no key skip inside the head): EN_NOVOWEL 0.998, worst other 0.9905 (2000 plants/register). Plants through the real skip process (enc_pair/enc_exact, the B1-comparable column): EN_NOVOWEL about 0.62-0.66, every other register about 0.65; X1/R34 re-run on 600 plants per cell: NOVOWEL 0.655-0.663, EN_MODERN 0.707-0.713 with the same screen; R32's zmax screen on the same plants 0.555-0.62 (NOVOWEL) / 0.68-0.74 (EN_MODERN). Throughput 1.31x slower than pf.py at m=20.",
+    "coverage": "9 registers x {16,20,24} x 5 statistics ROC on 262,144 heads x 6 generators; 2000 skip-free plants per register; 200-600 plants with-skip.",
+    "not_covered": [
+        "heads past a first key skip (a skip falls inside a 20-rune head for about 40-45% of true-key heads: power there 0.14-0.22 NOVOWEL / 0.32-0.40 EN_MODERN)",
+        "C[0]-alignment assumption (key offset 0)",
+        "free relation; registers outside the nine",
+        "PHP generators use vectorised reduce_heads (no anti-repeat nuance)",
+        "a skip-tolerant head screen was not tried"],
+    "positive_control": "skip-free plants recover at 0.998 (NOVOWEL); with-skip plants 0.62-0.66",
+    "threshold": "NOVOWEL >=0.85 and every other register >=0.90 at FPR <=1e-3 (PREREG; defined on skip-free plants, which X1/R34 finds is not the operative case)",
+    "threshold_fixed_in_advance": True,
+    "reopens_if": "a skip-tolerant head screen (DP over advance 1/2) is built and measured on with-skip plants; or evidence shows the true key head is skip-free.",
+    "evidence": ev("I2-novowel-prefilter/RESULTS.md", "I2-novowel-prefilter/roc.json", "I2-novowel-prefilter/power_per_register.json", "X1-redteam/rerun_i2_skipfree.json", "X1-redteam/RESULTS.md"),
+    "x1_r34": "FOUND-ERROR (substantive) against I2 RESULTS 'Key measurement finding'. The argument 'real U[:40] has zero doublets (TRUE: also zero in U[:120]) so the true-key head decode is skip-free' is wrong for the output-side filter: a key skip happens when the CANDIDATE cipher rune equals the previous one and is invisible in the emitted ciphertext. In 600 R32-style plants per cell, P(no skip inside m=18..24) is 0.49-0.63 and is 0.54-0.64 even among plants whose cipher head contains no doublet (rerun_i2_skipfree.json). So R32-B1's 0.47 NOVOWEL prefilter power is NOT a planting artefact: re-run on R32's own logic gives 0.555-0.62 (m=18/24, q0.999) against R32's stored 0.51-0.62. NO-ERROR-FOUND against round32/B1-bash-random RESULTS and the R32-B1 row (left unchanged). The honest R34-I2 reach for B1/B2 is the with-skip column (about 0.66 NOVOWEL, 0.71 EN_MODERN at FPR 1e-3, i.e. NOVOWEL up from about 0.47-0.6, EN_MODERN not improved), not 0.998."
+})
+add({
+    "id": "R34-I3-D5C-CALIBRATION", "lane": "round34/I3", "round": 34, "date": "2026-10-29", "status": "measured",
+    "hypothesis": "D5c's NOVOWEL margin m_NV can be fitted per length L in {120,180,240,400} on one tuning key and hold on three held-out keys (catch >=0.90, FR EN_MODERN <=0.10, FR pooled register-spread <=0.10, Wilson-95 upper of NOVOWEL-only FR <=0.10).",
+    "verdict": "RECIPE-1 (per-L m_NV) PASSES HELD-OUT AT ALL FOUR L AFTER A DISCLOSED L=400 SAMPLE EXTENSION; RECIPE-2 (null-beta normalised) DROPPED; SEAL_PASS REMAINS FALSE",
+    "result": "m_NV(L) = 6.95 / 10.45 / 13.58 / 20.21 (L=120/180/240/400), about 0.055 per rune. Held-out catch 0.936 / 0.913 / 0.940 / 0.962; NOVOWEL-only FR Wilson upper 0.063 / 0.036 / 0.046 / 0.085 (L=400 after the extension: 3/100; before: 2/44, upper 0.151 = fail). Recipe 2 fails at every L. Ceiling (held-out-oracle m) 0.955 / 0.957 / 0.967 / 0.940.",
+    "coverage": "Tuning key CICADA-X1R33, held-out CICADA-I4b / I4c / R34I3 at four lengths; hallucination set = EN_NOVOWEL-stream correct-key over-bar decodes; ~450 NV (L=400: 1250) / 30 EN / 60 spread draws per key per L.",
+    "not_covered": [
+        "EN_HALFVOWEL-argmax hallucinations (m=0 under D5c)",
+        "wrong-key overfits",
+        "non-exact relations",
+        "lengths between nodes or above 400",
+        "real (non-planted) pages",
+        "the L=400 tuning fit rests on 14 genuine NOVOWEL decodes",
+        "the L=400 extension was decided after seeing n=44"],
+    "positive_control": "tuning-key m_NV at L=120/240 brackets Round 32/33 values; L=120 genuine NOVOWEL now accepted (10/289 rejected vs 53/53 with the L=240 constant)",
+    "threshold": "per-L catch>=0.90, FR EN<=0.10, FR pooled<=0.10, NOVOWEL-only Wilson upper<=0.10; SEAL_PASS stays false by instruction",
+    "threshold_fixed_in_advance": True,
+    "reopens_if": "m_NV ~ 0.055*L is pre-registered and validated on new keys and intermediate L; or an independent seal replaces the flagged-for-oracle protocol.",
+    "evidence": ev("I3-d5c-calibration/RESULTS.md", "I3-d5c-calibration/PREREG.md", "I3-d5c-calibration/m_nv_curve.json", "X1-redteam/rerun_i3_wilson.json"),
+    "x1_r34": "NO-ERROR-FOUND on the pooled L=400 interval: recomputed 3/100 Wilson [0.0103, 0.0845] (Clopper-Pearson upper 0.0852), threshold 20.2089 identical to the tuning-key fit, original 450 draws kept and the 800 added draws disjoint by rep (overlap 0). The extension followed the n=44 failure (disclosed); using only the independent added draws the NOVOWEL-only FR is 1/56, Wilson upper 0.0945 (<0.10, marginal), so the pass does not depend on the optional-stopping pooling. Minor: PREREG mtime (14:32:36) post-dates all feature tables because the addendum rewrote the file; the claim 'written before any feature table' cannot be verified from disk (same class as R33 I1)."
+})
+add({
+    "id": "R34-S1-BUILD-BOX", "lane": "round34/S1", "round": 34, "date": "2026-10-29", "status": "measured",
+    "hypothesis": "A Linux sandbox can (1) compile and resume-test the fixed grind27/28 C engine, (2) give a real PHP 5.x mt_srand(1); mt_rand() reference for php_mt.py's legacy twist, (3) render a repo PostScript page through gs 9.04 vs 9.14 (and 9.05-9.12) and byte-compare.",
+    "verdict": "ENGINE-COMPILES-AND-RESUME-PATH-PASSES (self-test blocked on a missing panel); PHP5-REFERENCE NO-ERROR-FOUND; O1 LIVE ON A SYNTHETIC PAGE - gs 9.05-9.14 embed the LP2 ICC profile in the jpeg device output, 9.04 does not",
+    "result": "grind27.c/grind28.c: gcc -O2 -Wall -Wextra rc 0 (2 benign format-truncation warnings each); resume restores the parked hit 35563892 once, dedupes it on re-scan, restores a planted hit into flagged_survivors, bounded window advances cursors (on COPIES; harness copy with the launch self-test neutralised). engine.dat cannot be regenerated: round19/I2/models/panel.npz (sha 14a23d36...) is absent, the round32 substitute fails V1 26/64. PHP 5.6.40 built from source: mt_srand(1); mt_rand() = 1244335972; 20 mt_rand() and 20 mt_rand(0,28) equal php_mt.py legacy twist + scale reduction. gs: ctrl.ps page differs 9.04 vs 9.14 (glyph rasterisation); font-free page decodes identical, JPEG differs only by the APP2 ICC segment (2576 B, md5 e409cef1...) present from 9.05 through 9.14 and absent in 9.04; 9.05-9.14 byte-identical on that page. Addendum A: per-release table for 9.04, 9.05, 9.06, 9.07, 9.09, 9.10, 9.12, 9.14.",
+    "coverage": "gcc 15.2 on Ubuntu 26.04 (2 vCPU); two sandbox passes of 20.9 and 21.2 min; seed 1 only for PHP; one synthetic page, one device (jpeg), one parameter set for gs.",
+    "not_covered": [
+        "real S2 resume (blocked: panel.npz missing); grind28 gate files; wall-clock throughput",
+        "PHP wrap-around >624 draws and seeds other than 1",
+        "LP2 page-0 source (not in repo): synthetic ctrl.ps and nofont.ps only",
+        "gs 9.15-9.21; other devices/flags; period compilers (gcc-15 compat builds); glyph rasterisation per release inside 9.05-9.14",
+        "assumption that LP2's ICC came from gs rather than a later tool"],
+    "positive_control": "same-version re-render byte-identical; JPEGQ 91 vs 92 differs; comparator separates 9.04 from 9.14; hash/value checks vs working tree",
+    "threshold": "compiles + tests pass / value equals php_mt.py / renders differ (PREREG)",
+    "threshold_fixed_in_advance": True,
+    "reopens_if": "round19/I2/models/panel.npz is restored (S2 resume gate); a real LP2 page-0 PS/PDF source or period gs builds become available.",
+    "evidence": ev("S1-build-box/RESULTS.md", "S1-build-box/engine_tests.json", "S1-build-box/php5_reference.json", "S1-build-box/gs_render_compare.json", "S1-build-box/gs_icc_by_release.json", "X1-redteam/rerun_php5_check.json"),
+    "r34_s1_supersession": "The render-level Ghostscript band is 9.05-9.14; the earlier 9.04-9.14 (R18-L1 / R30-A3) is superseded for the render claim. Reason: R18-L1 measured the profile FILE in each source tree (9.04 ships srgb.icc 2576 B e409cef1); S1 measured the ICC EMBEDDED in the jpeg device OUTPUT (9.04 does not embed it, 9.05 first does). Both facts stand; they bound different things.",
+    "x1_r34": "NO-ERROR-FOUND. PHP: independently re-ran php_mt.py (stream31 seed 1, legacy twist) = 1244335972 and 20/20 + 20/20 equal to S1's PHP 5.6.40 lists (rerun_php5_check.json); the PHP binary itself was not re-run by X1 and the raw PHP output is not in sandbox.log (values were transcribed from command logs). Engine tests ran on a substitute panel (disclosed; pmax values are not evidence about the real null). Minor: PREREG mtime 14:40:28 post-dates the first outputs (14:38) because Addendum A was appended; the 'before any sandbox call' text cannot be verified from disk. A temporary secret gist carried the 543 KB round32 panel (deleted, per lane). A 1.28 GB sandbox snapshot remains (expires ~2026-11-05). 'O1 LIVE' is on a synthetic page only."
+})
+add({
+    "id": "R34-P1-PAYLOAD-PROMOTION", "lane": "round34/P1", "round": 34, "date": "2026-10-29", "status": "audit",
+    "hypothesis": "Re-feeding payload_resolved.bin (idx 45 81->107, 50 21->47, 246 224->198) to the remaining readers of canon_256.bin (R16-KDF payload-derived secrets, R30-B1, R30-B2, recon h1_index, campaign18 payload scripts, hash_hunt, plus the capsule MANIFEST) changes some reader's result, which would stop the promotion (Q5).",
+    "result": "NO READER CHANGED (verdict flip / new bar crossing / comparator mismatch). R16-KDF best -6.464 -> -6.408 (bar -5.5); R30-B1 and R30-B2 canon legs same verdicts; h1_index CLEAN NULL both; payload_skip -6.756 -> -6.744; payload_ciphertext -6.855 -> -6.927; numeric2 Part B -5.833 both; hash_hunt 0/120 both. Capsule: regenerated MANIFEST copy verifies the corrected payload; the 13 INTACT-FAIL items are the same 13 as with the current manifest (9 CRLF checkout noise; runes.canonical stale by the R32-B2/R33 separator edit; validate.py grew with the R19 AN-END guard; kjv and mabinogion are the Round 32 I2 substitute copies) - none caused by the payload. GO recommended for the rename.",
+    "coverage": "7 payload-derived KDF secrets x (9,072 stage A + 9,856 stage B) x 2 arms; 880 payload_skip x 2; numeric2 Part B + hex nibbles x 2; h1_index 11 models x 2; canon-blob crypto battery (38 keys) x 2; canon RSA/GPG legs x 2; SWEEPROW rows for KDF stage A and payload_skip.",
+    "not_covered": [
+        "UNMEASURED, not null: R30-B1 canon-as-key legs over T2/folly and canon x T2/folly XOR; R30-B2 folly/2.jpg legs (inputs gitignored/absent)",
+        "SWEEPROW rows not persisted for KDF stage B, K2 control, numeric2_skip, payload_ciphertext, h1_index",
+        "inventoried, not re-run: pp49_51 campaign9/keytest/campaign20_extcipher/anend_preimage_*/blake_closure/characterize, campaign11/12/14 forensics, round29/L2 attack.py",
+        "canon_256.hex and canon_256_decpref.bin stay at the old bytes unless the coordinator regenerates them; the decpref correction is an assumption",
+        "conditional on the English-quadgram legacy score and the I2 panel as before"],
+    "threshold": "Q5: a reader CHANGES if its verdict flips vs its canon comparator, a best score newly clears its bar, or its canon comparator fails to reproduce the published result",
+    "threshold_fixed_in_advance": True,
+    "positive_control": "per reader: K2 plant rank 1 (-4.186), AES-CBC plant + 0/500 negative, RSA/gpg plants, scorer gate, known-key plants, planted hash target found",
+    "evidence": ev("P1-payload-promotion/RESULTS.md", "P1-payload-promotion/PREREG.md", "P1-payload-promotion/ledger_patches.json", "X1-redteam/manifest_decision.md"),
+    "reopens_if": "a reader of canon_256.bin is found that is not on the list, or T2/folly/2.jpg are regenerated and the canon-as-key legs are re-run.",
+    "x1_r34": "NO-ERROR-FOUND on the verdict: canon comparators reproduce stored/published results in the spot-checks (payload_skip -6.756 = campaign18_skip/RUN-payload-skip.log; payload_ciphertext -6.855 = RUN-payload-ct.log; numeric2 -5.833 = RUN-numeric2-full.log; h1_index T1a 0.5955/T1b 0.7202 = recon/lp2h_index/FINDINGS.txt); staged resolved sha 3b9b07d9... differs from canon in exactly idx 45/50/246. FOUND-ERROR (minor wording): RESULTS says the R30-B2 'raw gpg stdout identical'; R30-B2/results.json shows the stdout text differs at the echoed literal-data name bytes (Q->k at idx 45, 0x15->'/' at idx 50 and the escape shifts after it); the packet parse (tag 11, created 553687967) is identical. The two not-re-runnable legs are UNMEASURED, not null."
+})
+add({
+    "id": "R34-X1-REDTEAM", "lane": "round34/X1", "round": 34, "date": "2026-10-29", "status": "audit",
+    "hypothesis": "Round 33 B3, Round 33 I2's 'earned' relations, the 13 capsule INTACT-FAIL items and Round 34's I1/I2/I3/S1/P1 (+ B1 where available) contain errors that refute-by-default recomputation can find.",
+    "result": "See analysis/round34/X1-redteam/RESULTS.md. FOUND-ERROR: R34-I2's 'real head has no doublets so the true-key head is skip-free' (skip is invisible in the ciphertext; operative prefilter power about 0.62-0.66, not 0.998); R34-I1's Q5 comparator (unlike statistics; false alarm); R33-I2 'earned' relations (non-discriminating prior, struck); P1 wording on R30-B2 gpg stdout; gs band 9.04-9.14 superseded by 9.05-9.14 at render level (S1). NO-ERROR-FOUND: R33-B3 row counts (404,284 = 192,066 + 212,218; 994 duplicate B2 rows), R32-B1 0.47 NOVOWEL prefilter power (reproduced), I3 Wilson/threshold, P1 verdict, S1 PHP value. Capsule: validate.py growth identified exactly (the R19 AN-END guard; removing it reproduces the manifest sha), kjv/mabinogion are Round 32 I2 substitute copies.",
+    "coverage": "Targets 1-6 of the X1 brief; B3 bars/rows, I2 two cells x 5 plants, I2 prefilter 600 plants x 4 cells + FPR on 2^18 fresh seeds x 2 ABIs, I3 pooled L=400, PHP 20+20 draws, validate.py reconstruction.",
+    "not_covered": [
+        "B1 (concurrent sweep): see RESULTS.md section on B1",
+        "the PHP 5.6.40 binary and the gs builds were not re-run by X1 (no PHP/gs here)",
+        "S1 engine tests rely on a substitute panel",
+        "P1 readers other than the four spot-checked were not re-run"],
+    "threshold": "n/a - audit (no null, no threshold)", "threshold_fixed_in_advance": True,
+    "positive_control": "n/a - audit; recomputations reproduce lane numbers where stated",
+    "evidence": ev("X1-redteam/RESULTS.md", "X1-redteam/manifest_decision.md"),
+    "reopens_if": "A corrected claim is re-asserted without new evidence."
+})
+
+
+def append_text(e, key, txt):
+    if txt and txt not in str(e.get(key, '')):
+        e[key] = (e.get(key) or '') + txt
+
+
+def replace_nc(e, containing, repl):
+    nc = e.get('not_covered')
+    if isinstance(nc, list):
+        for j, it in enumerate(nc):
+            if containing in it:
+                nc[j] = repl
+                return True
+        if repl not in nc:
+            nc.append(repl)
+    return False
+
+
+P = json.load(open(A + 'P1-payload-promotion/ledger_patches.json', encoding='utf-8'))
+for p in P['patches']:
+    e = E[p['id']]
+    ca = p.get('coverage_append', '')
+    if p['id'] == 'R30-B2-RSA-GPG':
+        ca = ca.replace('gpg --list-packets parse unchanged', 'gpg --list-packets PARSE unchanged (the printed literal-data name text differs at the echoed corrected bytes, X1/R34)')
+    append_text(e, 'coverage', ca)
+    if 'not_covered_replace_item_containing' in p:
+        replace_nc(e, p['not_covered_replace_item_containing'], p['not_covered_replacement'])
+    if 'not_covered_append' in p:
+        if isinstance(e.get('not_covered'), list):
+            if p['not_covered_append'] not in e['not_covered']:
+                e['not_covered'].append(p['not_covered_append'])
+        else:
+            append_text(e, 'not_covered', ' ' + p['not_covered_append'])
+E['C-CANON-PAYLOAD-3BYTES']['x1_r34_p1_audit'] = "X1/R34 audited P1: NO-ERROR-FOUND on the no-reader-changed verdict; status stays `open` until the coordinator performs the rename (canon_256.bin -> canon_256_superseded.bin; payload_resolved.bin -> canon_256.bin) together with the manifest regeneration and the canon_256.hex / canon_256_decpref.bin decision. GO recommended (see round34/X1-redteam/RESULTS.md). Unmeasured legs: R30-B1 canon-as-key over T2/folly and XOR rows; R30-B2 folly/2.jpg legs."
+
+e = E['R33-I2-CONSTRUCTION-AXIS']
+e.setdefault('verdict_r33_original', e['verdict'])
+e['verdict'] = "UNREPRESENTED-CONSTRUCTIONS-MEASURED; NOT EARNED - the doublet prior is non-discriminating (all seven constructions within 0.88-1.00x of skip_by_two's error), so the 'within 2x' gate that 'earned' skip_by_4/5 and the reset wrappers is vacuous; queued completeness ritual (R4), no relation to merge"
+e['x1_r34'] = "X1/R34 STRIKES the 'earned' label (R33 I2 RESULTS s3 contradicts its own s1). Representability numbers REPRODUCE: skip_by_4|EN_MODERN|L120 and skip_by_3|EN_NOVOWEL|L120, 5 plants each, relation 1/2/free recoveries bit-identical to representability.json (rerun_i2_rep.json); medians over 20 plants unchanged (skip_by_4 MODERN free 0.7875, skip_by_3 NOVOWEL free 0.254). Standing statement: skip_by_3 is represented by `free`; skip_by_4/5 and reset_per_page/line are unrepresented by driftbeam and v3 at the 0.85 bar (skip_by_4 MODERN L120 free is close, 0.79); the resets are recovered by oracle segmentation. None has an evidence prior; keyskipk and decode_with_resets stay unmerged and last in the queue."
+E['R33-B3-V3-READJUDICATION']['x1_r34'] = "X1/R34 audit: NO-ERROR-FOUND on counts. 404,284 rows = 192,066 (B1) + 212,218 (B2) = the two source stores, multiset-equal to the re-decoded kids; 994 B2 rows are exact-duplicate kids (seeds drawn with replacement), so unique decodes are 403,290; the null/bar N is therefore overstated by 0.25 % (conservative). POT bars reproduce (8.55 / 8.366 at the stated N 119,879 / 120,003). Bars were computed at N~1.2e5 but applied at N=202,142: at the actual N B3's own fit gives 8.752 / 8.560, and R34-I1's observed-null Gumbel bars give 8.63 / 8.45 (lp2) and 8.83 / 8.47 (register), so B3's bars were lenient by 0.08-0.28 (not material: best row 7.068). '95 % lower bound ~0.90' for 30/30 is Wilson 0.886. The control handed the key over (stage 2 only, prefilter outside), declared. Verdict unchanged: 0 rows clear."
+for i in ('R32-B1-BASH42-RANDOM-AUTOSEED', 'R32-B2-PHP-MT-RAND'):
+    E[i]['x1_r34'] = "X1/R34: the 0.47 EN_NOVOWEL prefilter power REPRODUCES (R32 logic re-run: 0.555-0.62 at m=18/24, q0.999, vs stored 0.51-0.62); it is a property of the skip process, not a planting artefact (R34-I2's contrary claim is the FOUND-ERROR). R34-I2's replacement screen (lse, m=20) has operative power about 0.66 NOVOWEL / 0.71 EN_MODERN at FPR 1e-3 on skip-process plants. No change to this row's numbers."
+e = E['R33-O1-GS-RENDER-COMPARE']
+e.setdefault('status_original_r33', e['status'])
+e['status'] = 'partially-run'
+e['r34_s1'] = "Round 34 S1 ran the synthetic-page form (ctrl.ps / nofont.ps; page-0 source not in repo) on a Linux sandbox: 9.04 vs 9.14 renders differ (glyph rasterisation; and the ICC APP2 segment), the jpeg device embeds the e409cef1 profile from 9.05 and not in 9.04. O1 is LIVE (not killed) on that input; the LP2 page-0 comparison is still not run. See R34-S1-BUILD-BOX."
+e['coverage'] = "Round 34 S1: two synthetic pages through gs 9.04 / 9.05 / 9.06 / 9.07 / 9.09 / 9.10 / 9.12 / 9.14 (gcc-15 compat builds). Real LP2 page 0: none."
+for i in ('G-01', 'R30-A3-PDF-FORENSICS'):
+    E[i]['r34_s1_supersession'] = "R34-S1: the render-level Ghostscript band is 9.05-9.14; 9.04-9.14 (file-in-tree evidence, R18-L1) is superseded for the render claim - 9.04 ships the e409cef1 srgb.icc file but its jpeg device does not embed it; 9.05 first does (one synthetic page, one device, gcc-15 build; not a pin inside 9.05-9.14)."
+
+L['entries'].extend(new)
+c = collections.Counter(x.get('status') for x in L['entries'])
+L['counts']['total'] = len(L['entries'])
+L['counts']['by_status'] = dict(c)
+tag = "Round 34 X1 merged 2026-10-29: rows I1/I2/I3/S1/P1/X1 added; P1 reader-coverage extensions applied to C-CANON-PAYLOAD-3BYTES (status stays open until the rename), R16-KDF, R30-B1, R30-B2; R33-I2 'earned' relations struck, R33-B3/R32-B1/R32-B2 annotated, R33-O1 never-run -> partially-run; GS render band 9.05-9.14 noted on G-01 / R30-A3 (R34-S1 supersession of 9.04-9.14 at render level)."
+if 'Round 34 X1 merged' not in L['counts']['note']:
+    L['counts']['note'] += ' | ' + tag
+json.dump(L, open(LJ, 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
+print('added', [n['id'] for n in new], 'total', len(L['entries']))

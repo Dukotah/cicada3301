@@ -83,3 +83,9 @@ Run here: the seven above and `hash_hunt.py`. Already on the corrected bytes: R1
 ## Files
 
 `PREREG.md`, `RESULTS.md`, `ledger_patches.json`, `ledger.json`, `make_ledger.py`; drivers `stage_inputs.py`, `run_kdf.py`, `run_b1.py`, `run_b2.py`, `run_scripts.py`, `run_rows.py`, `shim/Crypto/`; staged inputs `inputs/{canon,resolved}/`; `chain.log`, `rows_chain.log`; per reader: `R16-KDF/` (results_*.json, rows_summary_*.json, sweep_rows_A_*.jsonl, run.log, stdout.txt), `R30-B1/` (results.json, run.log), `R30-B2/` (results.json, compare.json), `recon-h1/` (stdout_*.txt, control.json), `c18-payload_skip/` (control.json, stdout_*.txt, sweep_rows_*.jsonl, rows_stdout_*.txt), `c18-payload_ciphertext/` (control.json, stdout_*.txt), `c18-numeric2/` (control.json, results_*.json), `extra-hash_hunt/` (stdout_*.txt, control.txt), `manifest_regen/`.
+
+---
+
+## X1/R34 addendum (2026-10-29) -- appended by the red-team lane; text above unchanged
+
+Verdict audited: NO-ERROR-FOUND (canon comparators reproduce the stored/published results in four spot-checks: payload_skip -6.756, payload_ciphertext -6.855, numeric2 -5.833, h1_index T1a 0.5955 / T1b 0.7202). One wording correction: for R30-B2 the table's "raw gpg stdout identical" is not literally true -- `R30-B2/results.json` shows the printed literal-data name text differs at the echoed corrected bytes (idx 45 `Q` -> `k`, idx 50 0x15 -> `/`, plus the escape shifts after it); the packet parse (tag 11, created 553687967) is identical. R30-B1/B2 canon-as-key / folly / 2.jpg legs are **unmeasured**, not null.

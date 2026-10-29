@@ -326,7 +326,7 @@ only 44.14 % swept and R28-L4 has zero coverage, so "coverage 1.00" is per-relat
 and onto the artifact**, which is where the one genuinely new fact of the last stretch came
 from: the 2014 master is a **machine-rendered PDF** whose embedded ICC profile is
 **byte-identical to Ghostscript 9.06's Artifex `srgb.icc`**, narrowing the rendering toolchain
-to **GS 9.04–9.14 [R18-L1: 9.00–9.02 measured non-matching, 9.03 unmeasured]**. The runes are a deterministic vector font with no variant channel, there
+to **GS ~~9.04–9.14~~ → 9.05–9.14 (render level, R34-S1: 9.04 ships the e409cef1 srgb.icc file, which was R18-L1's evidence, but its jpeg device does not embed it; 9.05 first does; one synthetic page, gcc-15 build, no pin inside 9.05–9.14) [R18-L1: 9.00–9.02 measured non-matching, 9.03 unmeasured]**. The runes are a deterministic vector font with no variant channel, there
 is no sub-pixel channel, the three genuinely-random blobs carry no keyed-symmetric plaintext
 and no RSA/OpenPGP structure, the onion images survived their first real key-attack (24,078
 extractions, 0 hits), and the six contested pp. 49–51 bytes resolved **in favour of the

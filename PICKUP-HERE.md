@@ -456,7 +456,7 @@ entry's `restated_from`. **This does not void them** — the register LP2 demons
 
 | Lane | Tested | Verdict |
 |---|---|---|
-| **L1** | Toolchain forensics → a generator prior (G-01/B-11, never-run) | **MEASURED** — two-stage `gs` → ImageMagick; `gs` **9.04–9.14**; ranked prior promotes glibc/Python 2.7/Perl/`$RANDOM`, demotes .NET to ×0.05 |
+| **L1** | Toolchain forensics → a generator prior (G-01/B-11, never-run) | **MEASURED** — two-stage `gs` → ImageMagick; `gs` **~~9.04–9.14~~ → 9.05–9.14 (render level, R34-S1: 9.04 ships the e409cef1 srgb.icc file, which was R18-L1's evidence, but its jpeg device does not embed it; 9.05 first does; one synthetic page, gcc-15 build, no pin inside 9.05–9.14)**; ranked prior promotes glibc/Python 2.7/Perl/`$RANDOM`, demotes .NET to ×0.05 |
 | **L2** | The filter as a side channel (new) | **MEASURED** — the filter acts on the **ciphertext**; drift **373.6 ± 19.6** draws; SAT route proved dead; a **language-free key-side screen** at 3.08 sd |
 | **L3** | The 47 unread ornament bands (A-06/B-12, never-run) | **NEGATIVE** — 109 bands, 9,899 glyphs read; found **256 non-runic tokens the analysis tree never held** |
 | **L4** | The forcing/acrostic detector (C-02, never-run) | **NEGATIVE** — and C-02's *specified* detector has **FPR 0.490**; running it as written would likely have announced a false discovery |

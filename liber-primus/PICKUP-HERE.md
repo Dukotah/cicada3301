@@ -45,6 +45,14 @@ _Refreshed **2026-10-29** (Round 33 closeout). Read this first, then [`ELIMINATI
 > (X1 §3, both written); (2) build + test the patched `grind27.c`/`grind28.c` before resuming S2 (no C toolchain
 > here); (3) confirm X1's 8 drafted `not_covered` texts; (4) R30-A1/A2/B1/B2/C1 still carry `not_covered: null`.
 
+> **Round 34 X1 (2026-10-29) red-team corrections** (details and citations: `analysis/round34/X1-redteam/RESULTS.md`):
+>
+> - **R34 I2's "the real ciphertext head is skip-free" is WRONG.** `U[:40]` (and `U[:120]`) really have zero doublets, but a key skip is *invisible* in the emitted ciphertext (it happens when the candidate rune would equal the previous one). In 600 R32-style plants per cell, 37-51 % of heads contain a skip inside m = 18-24 and that holds even among plants whose cipher head has no doublet. The operative prefilter power of I2's screen is **about 0.66 EN_NOVOWEL / 0.71 EN_MODERN at FPR 1e-3, not 0.998**; R32-B1's 0.47 NOVOWEL is *not* a plant artefact (re-run reproduces 0.555-0.62). B1's reach must be stated from the with-skip column. A skip-tolerant head screen is the open lever.
+> - R34 I1's "Q5 fired" compared v3's z-scored `pmax` with R32 I3's raw quadgram exponent (-0.55); z-normalisation adds ~+0.5, predicting ~-0.05 (observed -0.105 / -0.136): a false alarm, not evidence of a non-Gumbel tail. The Gumbel bars hold (conservative) at L <= 240 and are not shown conservative at L = 400.
+> - R33 I2's "earned" relations (`keyskipk`, `decode_with_resets`) are **struck**: the doublet prior is non-discriminating, so nothing is earned (completeness ritual, last in queue).
+> - Ghostscript render band is now **9.05-9.14** (R34 S1); ~~9.04-9.14~~ was file-in-tree evidence, S1 measured ICC embedded in the jpeg output (9.04 does not embed it). Synthetic page only; O1 is live, not solved.
+> - Capsule: the 13 INTACT-FAIL items are settled (`analysis/round34/X1-redteam/manifest_decision.md`): 9 CRLF checkout noise (fix the checker), `runes.canonical` stale by the issue-12 edit, `tests/validate.py` grew by exactly the Round 19 AN-END guard (refresh the manifest), `kjv`/`mabinogion` are Round 32 I2's substitute copies. Payload rename: GO (P1, nothing flipped); `C-CANON-PAYLOAD-3BYTES` stays `open` until the coordinator renames.
+
 > **Round 33 X1 (2026-10-29):** the R32 `grind27.c`/`grind28.c` patch had a syntax error (raw newline in a string literal) - fixed, still UNBUILT; **S2: do not resume until compiled and tested**. Owner chose Option A on `C-CANON-PAYLOAD-3BYTES` (file move pending, coordinator). p27:93 machine-resolved to U (B2). The `0.84 %` skip_by_two doublet prior is superseded (full-length 0.595 % = keyskip1). D5c replicates at L=240, fails at L=120. See `analysis/round33/X1-redteam/RESULTS.md`.
 >
 > **Round 32 X1 (2026-10-28) corrections applied throughout this file and the other nav docs:** GS bound 9.04-9.14; Py2.7-MT coverage is per-relation; transcription claim LP2-typeface-only with p27:93 still needing a human; seed 35563892 now has an S2-lane (`exact`) re-screen (NOISE at L=240) -- the 'one unresolved flag' on S2 is discharged at the one-seed level. **Before resuming S2, build the patched `P1-engine/grind27.c` (hit-restore on resume) and test it against the parked state.** Coordinator decision still open: `C-CANON-PAYLOAD-3BYTES`.
@@ -87,7 +95,7 @@ and query [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare 
 > decoration); **image forensics (POSITIVE)**; OSINT people-hunt (mruzuki = zero-footprint burner, dead end).
 > **Round 30** (8 lanes, `analysis/round30/`, each adversarially verified): the big new fact is that
 > **the 2014 LP master is a machine-rendered PDF** — its embedded ICC profile is **byte-identical to
-> Ghostscript 9.06's Artifex `srgb.icc`** (toolchain narrowed to GS 9.04–9.14 (9.00–9.02 measured non-matching; 9.03 unmeasured; 9.15–9.21 byte-identical but post-date the May-2014 dump); A3 POSITIVE). Everything else
+> Ghostscript 9.06's Artifex `srgb.icc`** (toolchain narrowed to GS ~~9.04–9.14~~ → 9.05–9.14 (render level, R34-S1: 9.04 ships the e409cef1 srgb.icc file, which was R18-L1's evidence, but its jpeg device does not embed it; 9.05 first does; one synthetic page, gcc-15 build, no pin inside 9.05–9.14) (9.00–9.02 measured non-matching; 9.03 unmeasured; 9.15–9.21 byte-identical but post-date the May-2014 dump); A3 POSITIVE). Everything else
 > NULL/consolidation: rune glyphs are a deterministic vector font with no variant channel (A1); no sub-pixel
 > positioning channel (A2); the 3 random blobs carry no keyed-symmetric plaintext (B1) and no RSA/OpenPGP
 > structure (B2); no attributable artist (C1); the 6 contested pp49-51 bytes resolved from the render →

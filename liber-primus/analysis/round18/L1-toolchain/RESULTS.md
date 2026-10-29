@@ -435,3 +435,9 @@ bash    liber-primus/analysis/round18/L1-toolchain/icc_version_probe.sh         
 
 Requires Ghostscript, ImageMagick, Python 3 with numpy/scipy/Pillow. All present under WSL Ubuntu
 on the machine this was run on (`gs 10.06.0`, `ImageMagick 7.1.2-18`, `Pillow 12.1.1`).
+
+---
+
+## Addendum (2026-10-29, Round 34 S1 / X1) -- annotation only; nothing above was changed
+
+Section 4's window "Ghostscript 9.04 - 9.14" is a statement about **when the 2576-byte `srgb.icc` file first ships in the source tree** (this lane never ran an old Ghostscript; the chain control used the modern system `gs 10.06`). `round34/S1-build-box/` then built gs 9.04, 9.05, 9.06, 9.07, 9.09, 9.10, 9.12 and 9.14 from their ghostpdl tags and measured the ICC profile **embedded in the `jpeg` device output** (font-free synthetic page, `-sDEVICE=jpeg -dJPEGQ=92 -r400`): 9.04 embeds none, 9.05 through 9.14 embed the e409cef1 profile (`gs_icc_by_release.json`). The render-level band is therefore **9.05 - 9.14** (superseding 9.04 - 9.14 for the render claim); the source-tree statement above is unchanged. Caveats (S1): one synthetic page, one device, gcc-15 compatibility builds, and an assumption that the LP2 ICC came from gs; no pin inside 9.05 - 9.14. Recorded in `LEDGER.json` on `G-01`, `R30-A3-PDF-FORENSICS` and `R34-S1-BUILD-BOX`.
