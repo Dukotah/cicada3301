@@ -1,0 +1,48 @@
+{
+ "$comment": "PROPOSED top-level LEDGER.json entry from round32/B2. NOT merged.",
+ "lane": "round32/B2",
+ "date": "2026-10-28",
+ "entries": [
+  {
+   "id": "R32-B2-PHP-MT-RAND",
+   "lane": "round32/B2",
+   "round": "32",
+   "date": "2026-10-28",
+   "status": "negative-bounded",
+   "verdict": "NEGATIVE-BOUNDED-TIERB-0.97PCT-PREFILTER-LOSSY",
+   "hypothesis": "The keystream is PHP (5.x) mt_rand seeded by mt_srand(uint32), reduced to 0..28, canonical or pre-7.1 broken twist, offset 0, sign -1.",
+   "result": "Tier a: 487 core seeds decoded unfiltered + 47,549 dense seeds prefiltered; tier b: 41,680,896 uniform seeds (0.970% of 2^32, np default_rng(3301)) prefiltered at FPR 6e-4; 212,218 decodes over 4 cells (mt/php x scale29/mod29) x keyskip1+keyskip2; 0 flagged, 0 gate-3 crossers, 0 near-misses. Best screen pmax 6.856 (canonical scale29 keyskip1) vs actual-N bar 6.991 / declared 7.6342; keyskip2 best 6.426 vs 6.779 / 7.3835.",
+   "coverage": "tier a: 1.00 of the stated prior-dense list; tier b: 0.97% of 2^32 per twist; remaining 99.03% deferred to bigger hardware (R28-L4 queue). Prefilter power 0.72 EN, 0.71 LATIN, 0.74 DE, 0.47 NOVOWEL.",
+   "not_covered": [
+    "99.03% of the 2^32 seed space",
+    "26-53% of planted keys dropped by the prefilter",
+    "other PHP usages (rand/srand, mt_rand(1,29), random_int, time-hash auto-seed)",
+    "offset != 0; sign +1; reversed; atbash",
+    "free-drift and relations beyond keyskip1/2",
+    "registers EN_KJV/OE/CY/HALFVOWEL not planted",
+    "legacy twist checked against R28-L4 gen28 (php 8.5.4 MT_RAND_PHP), not a PHP 5 binary"
+   ],
+   "positive_control": "control.json all_pass: 8 plants x 8 (twist x reduction x relation) cells through the real chunk path; every prefilter-passing plant recovered (4/4,8/8,6/6,4/4,7/7,6/6,6/6,7/7); selftest vs numpy MT19937 and gen28 passes.",
+   "threshold": "hitfn20 panelmax_bar pair 7.3835 / exact 7.6342 (N=1e6 declared; 6.779 / 6.991 at actual N ~106k per preset)",
+   "three_conditionals": {
+    "key_space": "PHP mt_srand uint32; tier a prior list + 0.97% uniform; mt+php twists; scale29+mod29; offset 0; sign -1",
+    "transition_model": "keyskip1+keyskip2, beam_w 64, L120 screen / L240 gate",
+    "adjudicator_register": "round32/I2 nine-register panel (EN_NOVOWEL detection-only)"
+   },
+   "sweep_store": "analysis/round32/B2-php-mtrand/sweep_rows.jsonl",
+   "panel": "analysis/round32/I2-multiregister-readjudication/models/panel.npz",
+   "deliverables": [
+    "PREREG.md",
+    "RESULTS.md",
+    "php_mt.py",
+    "sweep.py",
+    "common.py",
+    "pf_tri.py",
+    "control.json",
+    "sweep_rows.jsonl",
+    "sweep_summary.json"
+   ],
+   "reopens_if": "full 2^32 on bigger hardware; unfiltered sample bounding prefilter loss; PHP 5 binary cross-check; other PHP usages/offsets"
+  }
+ ]
+}

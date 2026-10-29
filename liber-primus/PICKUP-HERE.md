@@ -1,6 +1,32 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-10-05**. Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-10-28** (Round 32 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+
+> ## Round 32 (2026-10-28) — INSTRUMENT & RED-TEAM armada: shipped. Read `analysis/round32/SYNTHESIS.md` first.
+>
+> Eight lanes, all with passing positive controls, all filed in `LEDGER.json` (181 rows, 0 errors).
+> No survivor. What changed is the **instrument**, not the board:
+> - **I1** the three-relation decoder already existed (`round19/I1/driftbeam.py`); it now has a measured power
+>   envelope — planted `skip_by_two` recovers 1.00 under `advance=2` (legacy relation: 0.30). **Vowel-dropped
+>   English is still not recovered by any relation (0.72)** → Round 33 #1.
+> - **I2** nine-register panel rebuilt (Welsh/KJV/Mabinogion corpora were missing; `fetch_sources.py --welsh`
+>   now restores them). Historical negatives B-04 / R16-KDF / R16-PRNG / R17 re-scored at survivor level: nothing
+>   clears the escalate bar — but only English-ranked heads were ever stored, so the sweeps keep an English-only
+>   conditional (restated in their rows).
+> - **I3** R3 is now a hard validator check (round >= 19, sweep-declaring rows); `threshold_for(n, segment_len=L)`
+>   scales with L; null curve refit on 6 points (exponent -0.546 +/- 0.041).
+> - **I4** `SEAL_PASS=false` stands; learned gates that look perfect are register detectors. Post-hoc rule D5c clears
+>   0.90/0.10 on one L=240 split — unreplicated, NOT adopted.
+> - **B1** bash 4.2 `$RANDOM` auto-seed orbit (77.6M x 2 ABIs) prefiltered in full, 192k survivors decoded under
+>   keyskip1+2: 0 flagged (prefilter-lossy, power 0.47–0.74). **B2** PHP `mt_rand`, both twists x 2 reductions x
+>   2 relations: prior-dense tier fully decoded + 0.97 % uniform sample of 2^32: 0 flagged. Remaining 99.03 %
+>   → `R28-L4` queue (~71 h at laptop rate). **B3** R28-L3 filed `inconclusive` (bulk store never reached this
+>   machine); glibc `gen=0` prior-dense first-fire: 0 flagged over 48k seeds.
+> - **X1** FOUND-ERROR on all seven standing claims (see banner below and `round32/X1-redteam/RESULTS.md`).
+>
+> **Open for the owner:** (1) `C-CANON-PAYLOAD-3BYTES` — promote `payload_resolved.bin` or restate `not_covered`
+> (X1 §3, both written); (2) build + test the patched `grind27.c`/`grind28.c` before resuming S2 (no C toolchain
+> here); (3) confirm X1's 8 drafted `not_covered` texts; (4) R30-A1/A2/B1/B2/C1 still carry `not_covered: null`.
 
 > **Round 32 X1 (2026-10-28) corrections applied throughout this file and the other nav docs:** GS bound 9.04-9.14; Py2.7-MT coverage is per-relation; transcription claim LP2-typeface-only with p27:93 still needing a human; seed 35563892 now has an S2-lane (`exact`) re-screen (NOISE at L=240) -- the 'one unresolved flag' on S2 is discharged at the one-seed level. **Before resuming S2, build the patched `P1-engine/grind27.c` (hit-restore on resume) and test it against the parked state.** Coordinator decision still open: `C-CANON-PAYLOAD-3BYTES`.
 and query [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare `status`)._

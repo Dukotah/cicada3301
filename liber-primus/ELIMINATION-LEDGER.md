@@ -1072,6 +1072,21 @@ verified refute-by-default (none downgraded). Trust anchors green throughout; ce
 recover the source PDF/PS (names the `/BaseFont` typeface + exposes TJ kerning), pin the exact GS release,
 close art attribution via reverse-image/Wayback. Do NOT re-run any R29/R30 lane.
 
+## Round 32 — INSTRUMENT & RED-TEAM armada (2026-10-28)
+
+Eight lanes, every one with a passing planted-key control; full write-up in `analysis/round32/SYNTHESIS.md`;
+rows `R32-*` in `LEDGER.json`. **No survivor, no crosser.** What moved is the instrument:
+- **R32-I1** `skip_by_two` power envelope: the round19 `driftbeam` relations recover it at 1.00 (legacy 0.30); EN/LA/OE/DE 0.93–1.00; **EN_NOVOWEL 0.72 — not recovered**. Bounded B-04 SHA256-CTR re-adjudication under `advance=2`: 0 flagged (<1 % of B-04).
+- **R32-I2** nine-register panel rebuilt and gate-passed (min 0.917 @ L=120). B-04 / R16-KDF / R16-PRNG / R17-PUBLIC-PAD survivors re-scored: best pmax_ne 5.36 / 3.97 / 2.61 / 7.55 vs escalate bars 6.37 / 6.05 / 6.25 / 8.08. The sweeps keep an **English-only** conditional (only English-ranked heads were ever stored) — restated on each row.
+- **R32-I3** R3 CI-enforced (`validate_ledger.py` check 7, round ≥ 19); L-aware `threshold_for`; null exponent −0.546 ± 0.041.
+- **R32-I4** no non-fold seal proxy clears 0.90/0.10 across registers; SEAL_PASS=false; survivors stay flagged-for-oracle.
+- **R32-B1** bash 4.2 `$RANDOM` auto-seed orbit (77,594,624 × LP64/ILP32, `%29`, keyskip1+2): full orbit prefiltered (power 0.47–0.74), 192,066 decodes, best 7.068 vs bar 7.38, 0 flagged. NEGATIVE, prefilter-lossy. Not covered: other bash versions, non-`%29` reductions, free drift, prefilter-lost mass.
+- **R32-B2** PHP ≤7.0 `mt_rand` (canonical + legacy twist × scale29/mod29 × keyskip1+2): 48,036 prior-dense seeds fully decoded + 0.970 % uniform sample of 2³² per twist; 212,218 decodes, best 6.856 vs bar 7.63, 0 flagged. NEGATIVE-BOUNDED; remaining 99.03 % → `R28-L4` queue (~71 h laptop).
+- **R32-B3** R28-L3 (string-seed amd64 dictionary, 2,500,207 decodes, 0 flagged) filed `inconclusive`: bulk SWEEPROW store never reached this machine. glibc `gen=0` prior-dense first-fire: 48,036 seeds × 2 relations, 0 flagged; `R19-G3-CORRECTION` stays open.
+- **R32-X1** see the corrections section directly below.
+
+Do NOT re-run any R32 lane as-is. The next instrument target is a register-aware beam (Round 33 #1).
+
 ## Round 32 X1 red-team corrections (2026-10-28)
 
 Refute-by-default audit of standing claims; details and citations in `analysis/round32/X1-redteam/RESULTS.md`.

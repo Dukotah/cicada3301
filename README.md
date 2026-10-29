@@ -305,8 +305,8 @@ self-corrections are recorded rather than quietly dropped.
 > `R16-PRNG`, `R17-PUBLIC-PAD` and `B-21`, each preserving its original text in `restated_from`.
 > → [`liber-primus/analysis/round18/SYNTHESIS.md`](liber-primus/analysis/round18/SYNTHESIS.md)
 
-*Status current as of 2026-10-05 (Round 30 merged; nothing running). The OTP-class headline is
-unchanged: Rounds 19–30 moved the **instrument** and the **measured status of branches inside
+*Status current as of 2026-10-28 (Round 32 merged; nothing running). **Round 32** was an instrument-and-red-team armada: the `skip_by_two` blind spot now has a measured power envelope (recovered 1.00 under the round19 relations; vowel-dropped English still 0.72), the pre-R19 negatives carry a written English-only conditional, R3 is CI-enforced, the null bar is segment-length-aware, the auto-certification seal is still below bar, bash `$RANDOM` and PHP `mt_rand` fired through the repaired instrument with 0 flagged, and the red-team found errors in all seven standing claims it audited (GS bound is 9.04–9.14; Py2.7-MT coverage is `pair`-only; the transcription claim is LP2-typeface-only). → [`liber-primus/analysis/round32/SYNTHESIS.md`](liber-primus/analysis/round32/SYNTHESIS.md). The OTP-class headline is
+unchanged: Rounds 19–32 moved the **instrument** and the **measured status of branches inside
 it**, not the verdict.* **Rounds 22–24** read every channel the signed hints point at — the
 hidden message inside the *already-solved* plaintext, the numbers-as-direction turtle render,
 the koans-as-operations, the art-as-data drop-cap channel, then the printed-line-geometry

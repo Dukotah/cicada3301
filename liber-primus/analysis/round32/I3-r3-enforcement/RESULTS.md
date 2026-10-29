@@ -70,3 +70,12 @@ floor binds out to ~1e13 trials.
 ## 7. Not covered
 Only the legacy EN quadgram statistic; per-register and panel-max cells remain in `round19/I3/nullcurve19.py`.
 `ARMADA-DOCTRINE.md` not edited (enforcement location unchanged: `validate_ledger.py`).
+
+## Addendum (coordinator, 2026-10-28, after the lane closed)
+
+The L=320 shuffle-null cell that the lane had queued in the background finished after this file was written
+and was appended to `cells32.json` (M=200,000, seed 3301). `fit32.py` was re-run over the six new cells
+(L = 31, 60, 90, 120, 180, 320): **exponent −0.546, SE 0.041** (new cells only); **−0.559, SE 0.028** pooled
+with the three round19 uniform cells. The five-cell figures quoted above (−0.5675 ± 0.062) are superseded by
+these; the conclusion is unchanged (the exponent is ~0.6–1.3 SE from round19's −0.583, and the L-aware bar
+behaves as described). `null_curve32.json` carries the six-cell fit. L=240 and L=400 remain unmeasured here.
