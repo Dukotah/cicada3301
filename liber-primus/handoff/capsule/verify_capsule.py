@@ -108,6 +108,16 @@ def check(it, args):
                 return SKIP, f"no recorded sha256 to compare ({n} B on disk)"
             if got == want:
                 return OK, f"sha256 intact ({n} B)"
+            # Text items checked out with CRLF (Windows, no eol=lf) hash differently from the LF
+            # bytes the manifest records; compare LF-normalised bytes before failing (R34-X1: 9/13).
+            if ap.endswith((".txt", ".py", ".json", ".md", ".csv", ".tsv")):
+                with open(ap, "rb") as f:
+                    lf = f.read().replace(b"\r\n", b"\n")
+                if hashlib.sha256(lf).hexdigest() == want:
+                    return OK, f"sha256 intact after LF normalisation ({len(lf)} B; CRLF on disk)"
+            sub = it.get("sha256_substitute_r32")
+            if sub and got == sub:
+                return INTACT_FAIL, f"sha256 is the Round 32 SUBSTITUTE copy, not the original download\n      manifest {want}\n      on disk  {got}"
             return INTACT_FAIL, f"sha256 CHANGED\n      manifest {want}\n      on disk  {got}"
 
     # ---- not on disk. Offline run: absence of a gitignored file is expected, not a failure.
