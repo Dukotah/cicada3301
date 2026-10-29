@@ -1,0 +1,255 @@
+{
+ "payload_diff_idx": [
+  45,
+  50,
+  246
+ ],
+ "decpref_corrected_diff_vs_decpref": [
+  45,
+  50,
+  246
+ ],
+ "control": {
+  "E-01_planted": {
+   "verdict": "HIT",
+   "n_hit_rows": 2,
+   "digest": "DigestInfo SHA-1: digest=54fe521f35031bf",
+   "random_payload_fp_trials": 300,
+   "random_payload_fp": 0,
+   "PASS": true
+  },
+  "E-02_planted": {
+   "planted_found_at_100": true,
+   "verdict": "HIT",
+   "one_byte_broken_verdict": "NULL",
+   "PASS": true
+  },
+  "ALL_PASS": true
+ },
+ "canon": {
+  "E-01": {
+   "test": "E-01",
+   "verdict": "NULL",
+   "moduli_tested": 1,
+   "pow_checks": 8,
+   "notes": "2013 365-bit modulus: payload (2048-bit) is larger than n (365-bit), so all pow checks skip (s >= n). The payload cannot be a signature under this small modulus. 7A35090F 4096-bit key not held locally. No PKCS#1 padding found."
+  },
+  "E-01_results": [
+   {
+    "payload": "canon_256",
+    "endian": "big",
+    "modulus": "2013_puzzle_365bit",
+    "e": 65537,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "canon_256",
+    "endian": "little",
+    "modulus": "2013_puzzle_365bit",
+    "e": 65537,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "decpref",
+    "endian": "big",
+    "modulus": "2013_puzzle_365bit",
+    "e": 65537,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "decpref",
+    "endian": "little",
+    "modulus": "2013_puzzle_365bit",
+    "e": 65537,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "canon_256",
+    "endian": "big",
+    "modulus": "2013_puzzle_365bit",
+    "e": 3,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "canon_256",
+    "endian": "little",
+    "modulus": "2013_puzzle_365bit",
+    "e": 3,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "decpref",
+    "endian": "big",
+    "modulus": "2013_puzzle_365bit",
+    "e": 3,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "decpref",
+    "endian": "little",
+    "modulus": "2013_puzzle_365bit",
+    "e": 3,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   }
+  ],
+  "E-02": {
+   "test": "E-02",
+   "verdict": "NULL",
+   "E-02A_windows_checked": 201,
+   "E-02A_perm56_hits": [],
+   "E-02A_perm57_hits": [],
+   "doublet_gaps_n": 85,
+   "notes": "No 56-byte permutation window found in the 256-byte payload. Spearman correlations of payload-as-ints vs doublet gap sequence reported in stdout. See results JSON for details."
+  },
+  "E-02_stdout": [
+   "",
+   "============================================================",
+   "E-02: pp49-51 payload as meta-parameters",
+   "============================================================",
+   "",
+   "[E-02A] 56-byte window permutation of 0..55",
+   "  No 56-byte permutation window found (expected \u2014 FP rate ~1e-24 per window)",
+   "  Windows checked: 201",
+   "  57-byte permutation (0..56): no hits",
+   "",
+   "[E-02B] Doublet-gap rank correlation",
+   "  Rune stream: 12956 runes, 86 doublets",
+   "  Inter-doublet gaps: 85 gaps",
+   "  First 10 gaps: [85, 249, 197, 129, 127, 23, 47, 59, 553, 390]",
+   "  uint8: payload[:n_gaps]=[203, 231, 167, 186, 97], gaps[:5]=[85, 249, 197, 129, 127]",
+   "    Spearman r=0.0426, p=0.699",
+   "  uint16_LE: payload[:n_gaps]=[59339, 47783, 60769, 46974, 63836], gaps[:5]=[85, 249, 197, 129, 127]",
+   "    Spearman r=-0.0175, p=0.8735",
+   "  uint16_BE: payload[:n_gaps]=[52199, 42938, 25069, 32439, 23801], gaps[:5]=[85, 249, 197, 129, 127]",
+   "    Spearman r=-0.0262, p=0.812"
+  ]
+ },
+ "resolved": {
+  "E-01": {
+   "test": "E-01",
+   "verdict": "NULL",
+   "moduli_tested": 1,
+   "pow_checks": 8,
+   "notes": "2013 365-bit modulus: payload (2048-bit) is larger than n (365-bit), so all pow checks skip (s >= n). The payload cannot be a signature under this small modulus. 7A35090F 4096-bit key not held locally. No PKCS#1 padding found."
+  },
+  "E-01_results": [
+   {
+    "payload": "canon_256",
+    "endian": "big",
+    "modulus": "2013_puzzle_365bit",
+    "e": 65537,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "canon_256",
+    "endian": "little",
+    "modulus": "2013_puzzle_365bit",
+    "e": 65537,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "decpref",
+    "endian": "big",
+    "modulus": "2013_puzzle_365bit",
+    "e": 65537,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "decpref",
+    "endian": "little",
+    "modulus": "2013_puzzle_365bit",
+    "e": 65537,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "canon_256",
+    "endian": "big",
+    "modulus": "2013_puzzle_365bit",
+    "e": 3,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "canon_256",
+    "endian": "little",
+    "modulus": "2013_puzzle_365bit",
+    "e": 3,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "decpref",
+    "endian": "big",
+    "modulus": "2013_puzzle_365bit",
+    "e": 3,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   },
+   {
+    "payload": "decpref",
+    "endian": "little",
+    "modulus": "2013_puzzle_365bit",
+    "e": 3,
+    "skip": "s >= n (out of range for this modulus)",
+    "verdict": "SKIP"
+   }
+  ],
+  "E-02": {
+   "test": "E-02",
+   "verdict": "NULL",
+   "E-02A_windows_checked": 201,
+   "E-02A_perm56_hits": [],
+   "E-02A_perm57_hits": [],
+   "doublet_gaps_n": 85,
+   "notes": "No 56-byte permutation window found in the 256-byte payload. Spearman correlations of payload-as-ints vs doublet gap sequence reported in stdout. See results JSON for details."
+  },
+  "E-02_stdout": [
+   "",
+   "============================================================",
+   "E-02: pp49-51 payload as meta-parameters",
+   "============================================================",
+   "",
+   "[E-02A] 56-byte window permutation of 0..55",
+   "  No 56-byte permutation window found (expected \u2014 FP rate ~1e-24 per window)",
+   "  Windows checked: 201",
+   "  57-byte permutation (0..56): no hits",
+   "",
+   "[E-02B] Doublet-gap rank correlation",
+   "  Rune stream: 12956 runes, 86 doublets",
+   "  Inter-doublet gaps: 85 gaps",
+   "  First 10 gaps: [85, 249, 197, 129, 127, 23, 47, 59, 553, 390]",
+   "  uint8: payload[:n_gaps]=[203, 231, 167, 186, 97], gaps[:5]=[85, 249, 197, 129, 127]",
+   "    Spearman r=0.0418, p=0.7039",
+   "  uint16_LE: payload[:n_gaps]=[59339, 47783, 60769, 46974, 63836], gaps[:5]=[85, 249, 197, 129, 127]",
+   "    Spearman r=-0.0185, p=0.8665",
+   "  uint16_BE: payload[:n_gaps]=[52199, 42938, 25069, 32439, 23801], gaps[:5]=[85, 249, 197, 129, 127]",
+   "    Spearman r=-0.0191, p=0.8619"
+  ]
+ },
+ "published": {
+  "E-01": "NULL",
+  "E-01_pow_checks": 8,
+  "E-02": "NULL",
+  "E-02A_windows_checked": 201
+ },
+ "changed_vs_canon": {
+  "E-01": false,
+  "E-02": false
+ },
+ "canon_reproduces_published": {
+  "E-01": true,
+  "E-02": true
+ }
+}

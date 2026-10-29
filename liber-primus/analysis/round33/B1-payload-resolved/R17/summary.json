@@ -1,0 +1,168 @@
+{
+ "Q5": {
+  "trigram_inputs_present": {
+   "kjv.txt": true,
+   "moby.txt": false,
+   "pride.txt": false,
+   "war.txt": false
+  },
+  "trigram_idx_cache_found": [],
+  "data_pads_dir_exists": false,
+  "pad_sha_matches_manifest": true,
+  "original_harness_rerunnable": false
+ },
+ "control_exhaustive_offsets_on_corrected_pad": {
+  "plants": [
+   {
+    "variant": "mod29",
+    "o_true": 0,
+    "head": 61,
+    "recovered_offset": 0,
+    "score": -4.018824386895351,
+    "recovery": 1.0,
+    "PASS": true
+   },
+   {
+    "variant": "mod29",
+    "o_true": 2,
+    "head": 61,
+    "recovered_offset": 2,
+    "score": -4.018824386895351,
+    "recovery": 1.0,
+    "PASS": true
+   },
+   {
+    "variant": "hi_nibble",
+    "o_true": 0,
+    "head": 61,
+    "recovered_offset": 0,
+    "score": -4.018824386895351,
+    "recovery": 1.0,
+    "PASS": true
+   },
+   {
+    "variant": "hi_nibble",
+    "o_true": 2,
+    "head": 61,
+    "recovered_offset": 2,
+    "score": -4.018824386895351,
+    "recovery": 1.0,
+    "PASS": true
+   },
+   {
+    "variant": "lo_nibble",
+    "o_true": 0,
+    "head": 61,
+    "recovered_offset": 0,
+    "score": -4.018824386895351,
+    "recovery": 1.0,
+    "PASS": true
+   },
+   {
+    "variant": "lo_nibble",
+    "o_true": 2,
+    "head": 61,
+    "recovered_offset": 2,
+    "score": -4.018824386895351,
+    "recovery": 1.0,
+    "PASS": true
+   },
+   {
+    "variant": "byte_scaled",
+    "o_true": 0,
+    "head": 61,
+    "recovered_offset": 0,
+    "score": -4.018824386895351,
+    "recovery": 1.0,
+    "PASS": true
+   },
+   {
+    "variant": "byte_scaled",
+    "o_true": 2,
+    "head": 61,
+    "recovered_offset": 2,
+    "score": -4.018824386895351,
+    "recovery": 1.0,
+    "PASS": true
+   },
+   {
+    "variant": "mod29_rev",
+    "o_true": 0,
+    "head": 61,
+    "recovered_offset": 0,
+    "score": -4.018824386895351,
+    "recovery": 1.0,
+    "PASS": true
+   },
+   {
+    "variant": "mod29_rev",
+    "o_true": 2,
+    "head": 61,
+    "recovered_offset": 2,
+    "score": -4.018824386895351,
+    "recovery": 1.0,
+    "PASS": true
+   }
+  ],
+  "ALL_PASS": true
+ },
+ "supplementary_canon": {
+  "n_decodes": 98,
+  "n_variants": 12,
+  "heads_used": [
+   42,
+   43,
+   61
+  ],
+  "best_score": {
+   "cfg": "hexchars s+1 o1 head42",
+   "score": -6.663482545081311,
+   "pmax": 0.9797655922366458,
+   "head": "OYPLUHNGEOTHEYEALJDMCGOELOWREOUOEFRIABIS"
+  },
+  "best_pmax": 3.204,
+  "flagged": [],
+  "bar_L_aware_threshold_for_N": {
+   "42": -5.5,
+   "43": -5.5,
+   "61": -5.5
+  },
+  "bar_hitfn20_exact": 7.6342,
+  "validate_store_rows": 98
+ },
+ "supplementary_resolved": {
+  "n_decodes": 106,
+  "n_variants": 12,
+  "heads_used": [
+   42,
+   43,
+   61
+  ],
+  "best_score": {
+   "cfg": "prime_to_idx_rev s+1 o1 head61",
+   "score": -6.744082448847544,
+   "pmax": 2.190889281696619,
+   "head": "USAUROTAPHTHBRUANTHCRAOEIONBAHEAEEACRNGB"
+  },
+  "best_pmax": 3.103,
+  "flagged": [],
+  "bar_L_aware_threshold_for_N": {
+   "42": -5.5,
+   "43": -5.5,
+   "61": -5.5
+  },
+  "bar_hitfn20_exact": 7.6342,
+  "validate_store_rows": 106
+ },
+ "published_lane_canon_256_best": {
+  "offset": 1,
+  "sign": 1,
+  "pre": -1.9889377355575562,
+  "score": -6.663482545081311,
+  "head": 42,
+  "pad": "canon_256",
+  "variant": "hexchars",
+  "ks_len": 181
+ },
+ "elapsed_s": 0.3
+}

@@ -1,0 +1,36 @@
+{
+ "$comment": "PROPOSED patches from round33/B1. NOT merged: the coordinator applies them. Cite the owner's Option A decision (per the task brief) when applying.",
+ "lane": "round33/B1",
+ "date": "2026-10-29",
+ "patches": [
+  {
+   "id": "B-04",
+   "coverage_append": " [R33-B1 2026-10-29: the 7 payload-derived seeds (canon256_raw/rev/head32/tail32/hex-lower/hex-UPPER/decpref; 6 change bytes, head32 identical) were re-fed payload_resolved.bin through the original engine: stages A (4,480 exact + 4,480 keyskip2-pair), B (17,920), C (49,280) = 76,160 decodes; planted controls PASS (slogan plant and payload-derived plant both rank 1 at -4.157). Best score -6.211 vs L-aware bar -5.5; best pmax 5.11 vs hitfn20 7.3835/7.6342; 0 flagged; not changed vs the canon_256 comparator (best -6.339, pmax 5.50). decpref corrected by patching idx 45/50/246 (assumption). Coverage is now stated against the corrected payload for the payload-derived subset only.]",
+   "not_covered_append": "Corrected-payload re-run: stages B and C were not repeated under keyskip2 (pair); only stage A was."
+  },
+  {
+   "id": "R17-PUBLIC-PAD",
+   "not_covered_append": "corrected payload: harness not re-runnable. The canon_256 pad was swept from canon_256.bin; the 3 bytes later corrected by R19-C1 (idx 45/50/246, payload_resolved.bin) were not re-fed through the original dense-prefilter harness, because its trigram prefilter inputs (data/moby.txt, pride.txt, war.txt; trigram_idx.npy) are gitignored and absent. A supplementary exhaustive-offset beam over the corrected pad (106 decodes; best -6.744, pmax 3.10, 0 flagged; the same procedure on canon_256 reproduces the published best -6.6635) is informational only and is not the lane's instrument. [R33-B1 2026-10-29]"
+  },
+  {
+   "id": "E-01",
+   "coverage_append": " [R33-B1: the R16 zeroFP E-01 test itself (round16/zeroFP/zerofp_tests.py:85, unmodified) was re-run with payload_resolved.bin and a corrected decpref: planted PKCS#1 v1.5 control HIT, 0/300 random-payload FP; result identical to canon (8 pow checks, all skipped s>=n, NULL). The R19-C1 738-tuple matrix already includes payload_resolved.bin.]"
+  },
+  {
+   "id": "E-02",
+   "coverage_set": "E-02A: all 201 56-byte windows (and 200 57-byte windows) of BOTH canon_256.bin and payload_resolved.bin tested as permutations of 0..55 / 0..56 by the unmodified round16/zeroFP test: 0 hits (a planted permutation is found; the same plant with one byte broken is not - single-byte sensitivity demonstrated). E-02B: uint8 / uint16-LE / uint16-BE reads vs the 85 inter-doublet gaps, Spearman r 0.042 / -0.019 / -0.019 (p 0.70 / 0.87 / 0.86) on the corrected payload; bar abs(r)>0.5 and p<1e-6. Verdict NULL, unchanged vs canon. [R33-B1 2026-10-29]",
+   "not_covered_replace_item_containing": "Run against canon_256.bin; the 3 corrected bytes",
+   "not_covered_replacement": "Corrected payload (payload_resolved.bin) HAS been re-run (R33-B1): verdict unchanged. [R33-B1 2026-10-29]"
+  },
+  {
+   "id": "C-CANON-PAYLOAD-3BYTES",
+   "coverage_append": " [R33-B1: rows B-04, E-01, E-02 re-fed the corrected payload with no flip; R17-PUBLIC-PAD filed as harness-not-re-runnable (Q5). Still NOT re-fed: R16-KDF payload-derived secrets (not one of B1's four rows).]",
+   "not_covered_replace_item_containing": "Whether B-04's 6.22M-decode sweep changes",
+   "not_covered_replacement": "B-04's payload-derived seed subset (7 seeds) was re-fed: no change (R33-B1). The other 2,158 seeds are not payload-derived and are unaffected."
+  }
+ ],
+ "promotion_text": {
+  "target": "analysis/pp49_51/canon_256.bin (coordinator action only; this lane moved no file)",
+  "text": "payload_resolved.bin (analysis/round19/C1/payload_resolved.bin == analysis/round18/L5-payload/payload_resolved.bin) is promoted to the canonical 256-byte pp49-51 payload per the owner's Option A decision (cite the owner's message and date). It differs from the former canon_256.bin at exactly idx 45 (81->107), 50 (21->47), 246 (224->198), vouched for by the R19-C1 pixel instrument and the R28-L2 blind instrument. Before promotion the four rows that read canon_256.bin directly (B-04 payload-derived seeds, R17-PUBLIC-PAD canon_256 pad, R16 zeroFP E-01 and E-02) were re-fed the corrected bytes (R33-B1): no flips; the R17 harness was not re-runnable (Q5). The old file should be retained as canon_256_superseded.bin. canon_256_decpref.bin carries the same three uncorrected bytes; B1 used a patched copy (idx 45/50/246) and did not write it. Dependents not covered by B1: R16-KDF payload-derived secrets."
+ }
+}

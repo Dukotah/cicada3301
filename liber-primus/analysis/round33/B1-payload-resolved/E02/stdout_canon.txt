@@ -1,0 +1,20 @@
+
+============================================================
+E-02: pp49-51 payload as meta-parameters
+============================================================
+
+[E-02A] 56-byte window permutation of 0..55
+  No 56-byte permutation window found (expected — FP rate ~1e-24 per window)
+  Windows checked: 201
+  57-byte permutation (0..56): no hits
+
+[E-02B] Doublet-gap rank correlation
+  Rune stream: 12956 runes, 86 doublets
+  Inter-doublet gaps: 85 gaps
+  First 10 gaps: [85, 249, 197, 129, 127, 23, 47, 59, 553, 390]
+  uint8: payload[:n_gaps]=[203, 231, 167, 186, 97], gaps[:5]=[85, 249, 197, 129, 127]
+    Spearman r=0.0426, p=0.699
+  uint16_LE: payload[:n_gaps]=[59339, 47783, 60769, 46974, 63836], gaps[:5]=[85, 249, 197, 129, 127]
+    Spearman r=-0.0175, p=0.8735
+  uint16_BE: payload[:n_gaps]=[52199, 42938, 25069, 32439, 23801], gaps[:5]=[85, 249, 197, 129, 127]
+    Spearman r=-0.0262, p=0.812

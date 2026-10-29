@@ -1,0 +1,15 @@
+
+============================================================
+E-01: RSA/PKCS#1 check on pp49-51 payload
+============================================================
+Payload: 256 bytes, entropy=7.170 b/B
+2013 modulus (n): 432 bits
+Moduli tested: 1
+Total pow() checks: 8
+Skipped (s>=n): 8, Nulls: 0, Partials: 0, HITs: 0
+All NULL (no PKCS#1 padding structure found)
+
+NOTE: 7A35090F 4096-bit key modulus not on disk (fetch was planned but not done).
+  The payload is 256 bytes (2048-bit); under a 4096-bit modulus, pow(s,e,n)
+  would trivially return s^e as-is (s << n), so PKCS1 padding is impossible.
+  For a 2048-bit signing key (not present): the payload fits but no such key is held.

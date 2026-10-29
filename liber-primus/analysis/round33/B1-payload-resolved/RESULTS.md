@@ -1,0 +1,35 @@
+# Round 33 / B1 -- `payload_resolved.bin` fed to the four rows -- RESULTS
+
+_2026-10-29. PREREG.md written first and followed. One Python process at a time, ~15 min total compute. No git, nothing written outside this directory, LEDGER.json and canonical files untouched._
+
+## Summary table
+
+| row | harness used | control (run first) | subset re-fed | decodes / checks | best vs bar | flagged | changed vs canon_256? |
+|---|---|---|---|---|---|---|---|
+| **B-04** | original round13/B04 engine (`harness` cross-product logic, `seeds.py`, `ks.py`, `sk.beam_decode` beam 400, max_skip 3), run in-process; G1 (round12/D3 subprocess) not re-run | PASS: planted `THE PRIMES ARE SACRED` rank 1 at -4.157 (best other -6.268), recovery 1.00; planted payload-derived seed (resolved tail32) rank 1 at -4.157 (best other -6.278), recovery 1.00 (`B04/control.json`) | **7 payload-derived seeds of 2,165** (raw, rev, head32, tail32, hex lower, hex UPPER, decpref); **6 of 7 change bytes**, head32 is byte-identical (idx 0..31 holds no corrected index) | 76,160 (A 4,480 exact + 4,480 keyskip2-pair; B 17,920; C 49,280) | legacy score A -6.496, B -6.551, C -6.211 vs L-aware `threshold_for(N, segment_len=L)` = -5.5 (floor binds); best pmax 4.79 (A) / 5.11 (B) / 5.10 (C) vs hitfn20 panelmax bar 7.3835 (pair) / 7.6342 (exact) | **0** | No. Canon comparator (6 changed seeds, stages A+B, 19,200 decodes): best -6.362 / -6.339, pmax 4.64 / 5.50, 0 flagged. Per-seed bests move by <= ~0.25 in score, which is beam noise. |
+| **R17** (`canon_256` pad) | **NOT re-runnable (Q5).** Supplementary exhaustive-offset beam only, not the original harness | PASS (supplementary instrument): planted English recovered at the true offset 10/10 (mod29, hi/lo nibble, byte_scaled, mod29_rev; offsets 0 and 2; recovery 1.00) | the one pad (256 B) | 106 decodes (12 keystream variants x sign, EVERY beam-valid offset) | -6.744 (L-aware bar -5.5), pmax 3.10 vs 7.6342 | 0 | No. Canon comparator (98 decodes) reproduces the published `canon_256` best exactly (hexchars sign+1 offset 1 head 42, -6.6635); resolved best -6.744 |
+| **E-01** | original `zerofp_tests.e01_rsa_pkcs1`, unmodified, bytes substituted via `load_bytes` | PASS: planted genuine PKCS#1 v1.5 type-1 SHA-1 signature under a planted 365-bit modulus -> unmodified function returns HIT (DigestInfo SHA-1); 0/300 random payloads false-positive. `tests/validate.py`: ALL VALIDATIONS PASSED | the test itself (canon and decpref both corrected) | 8 pow checks | 0 HIT / 0 PARTIAL; **all 8 are `SKIP s >= n`** (432-bit modulus vs a 256-byte payload) | 0 | No: identical 8 result rows, verdict NULL; the canon run reproduces the published `results.json` (NULL, 8 checks) |
+| **E-02** | original `e02_meta_parameters`, unmodified | PASS: planted 56-permutation at offset 100 found (HIT); same buffer with one byte broken -> NULL (single-byte sensitivity demonstrated) | the test itself | 201 56-byte windows (plus 200 57-byte), 3 Spearman reads vs 85 gaps | 0 permutation windows; Spearman r = 0.042 / -0.019 / -0.019, p = 0.70 / 0.87 / 0.86 (bar abs(r)>0.5 and p<1e-6) | 0 | Verdict NULL both ways. Spearman values shift in the 3rd-4th decimal (canon 0.0426 / -0.0175 / -0.0262 -> 0.0418 / -0.0185 / -0.0191), all null |
+
+## Notes per row
+
+**B-04.** The stage A/B/C cross-products are those of `round13/B04/sweep.py` with the seed list restricted to the payload-derived subset. The seed reconstruction was asserted equal to `seeds.build()`'s `canon256_*` entries before use. `canon256_decpref` corrected = decpref with idx 45/50/246 patched to the resolved values (PREREG assumption; decpref is a separate object and no independently corrected version exists). Every decode was adjudicated through the round32 I2 panel and persisted as a SWEEPROW (`B04/sweep_rows.jsonl`, 76,160 rows, `validate_store` passes; comparator store 19,200 rows, passes). Published whole-lane bests (2,165 seeds) were -6.185 / -6.129 / -5.885, so a 7-seed subset sitting below those is expected and not informative on its own. Keyskip relations: the lane's own engine is keyskip1 (`exact`); keyskip2 (`pair`, driftbeam beam 64) was added at stage A only (best -6.512, pmax 4.59). Stages B and C were not re-run under `pair`. Bars use the declared N=1e6 hitfn20 values; the L-aware `threshold_for` returns the -5.5 floor at all stage sizes.
+
+**R17.** Q5 triggered. `round17/P3_tables/sweep.py` needs `data/pads/canon_256.bin` (gitignored, absent; its sha matches the manifest so it is recreatable) and, decisively, the dense prefilter's `trigram_idx.npy`, which is rebuilt from `data/{kjv,moby,pride,war}.txt`; moby, pride and war are absent and there is no cached .npy, so the prefilter model would differ from the lane's. The row is filed as "corrected payload: harness not re-runnable". The supplementary run is informational: for a 256 B pad only a handful of offsets per variant are beam-valid, so exhaustive offsets are a superset of whatever the prefilter kept, and its canon comparator reproducing the published best exactly is evidence the builders and beam were imported faithfully. It does not substitute for the lane's coverage statement. SWEEPROW stores: `R17/sweep_rows.jsonl` (106 rows), `R17/sweep_rows_canon_comparator.jsonl` (98 rows), both validate.
+
+**E-01.** The R16 zeroFP E-01 is nearly vacuous by construction: its only modulus is the 2013 modulus (comments and PREREG say 365-bit; the run prints 432 bits), and a 256-byte payload is always >= n, so every pow is skipped before any structure is tested. The corrected payload cannot change that. The substantive E-01 (LEDGER row E-01, R19-C1, 738 tuples incl. the 4096-bit 7A35090F keys) already lists `payload_resolved.bin` as a payload variant.
+
+**E-02.** E-02A is a hard analytic test (a 56-byte window must be an exact permutation of 0..55); the corrected bytes do not create one. E-02B correlations stay at noise.
+
+## Flagged survivors
+None in any row: no decode reached the L-aware legacy bar or the hitfn20 panelmax bar, and there is no E-01/E-02 HIT. Nothing is flagged for oracle.
+
+## Honest limits
+* B-04 coverage is the 7-seed payload-derived subset over the lane's own axes (offset 0 plus ten offsets at 16 gens x 2 reductions; 55 page heads at L=100); seeds outside the 2,165 dictionary and the lane's other not_covered items are unchanged.
+* The B-04 result is conditional on the English-quadgram recognizer plus the I2 panel at survivor level, as before; non-English planted power was not re-measured here.
+* The decpref correction rests on the stated PREREG assumption.
+* R16-KDF is NOT one of the four rows and was not re-fed (see coordinator questions).
+* Stage C canon comparator was not re-run (published `results_C.json` best -5.885 is lane-wide).
+
+## Files
+`PREREG.md`, `RESULTS.md`, `ledger_patches.json`, `run_b04.py`, `run_r17.py`, `run_e.py`; `B04/{control.json,summary.json,sweep_rows.jsonl,sweep_rows_canon_comparator.jsonl,run.log}`; `R17/{summary.json,sweep_rows.jsonl,sweep_rows_canon_comparator.jsonl}`; `E01/{e01_e02_results.json,stdout_canon.txt,stdout_resolved.txt}`; `E02/{stdout_canon.txt,stdout_resolved.txt}`.
