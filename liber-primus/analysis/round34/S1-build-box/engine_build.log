@@ -1,0 +1,12 @@
+# engine_build.log  (sandbox: Ubuntu 26.04, gcc 15.2.0, 2 vCPU; sources verified by sha256 against the working tree / GitHub master)
+# NOTE: sha256 of data/english_quadgrams.txt differs only by CRLF (local Windows copy); LF form fb82963d1fc4... == GitHub copy.
+cmd: gcc -O2 -Wall -Wextra -std=gnu17 -fopenmp -ffp-contract=off -o grind27 grind27.c -lm   -> rc=27:0  (0 errors, 2 warnings, real 1.5s)
+cmd: gcc -O2 -Wall -Wextra -std=gnu17 -fopenmp -ffp-contract=off -o grind28 grind28.c -lm   -> rc=28:0  (0 errors, 2 warnings, real 1.4s)
+warnings (all -Wformat-truncation, snprintf of "%s/hist_%s.u64" and "%s/top_%s.json" into char[2048]; benign, run-dir path is short):
+  grind27.c:907:36  grind27.c:915:35  grind28.c:1197:36  grind28.c:1205:35
+-Wextra: no other warnings.
+Data regeneration: python3 export_data.py (needs analysis/round19/I2/models/panel.npz, NOT on disk, NOT on GitHub).
+  Substitute used: round32/I2-multiregister-readjudication/models/panel.npz (sha256 36a01dcb..., engine.dat expects panel sha 14a23d3619fa02df...).
+  Result: ./grind27 --self-test  -> V1 26/64 seeds exact (worst |dpmax| 1.165), V2 pmax 17.9332641744991 vs ref 17.931158509762 -> SELF-TEST FAIL (39)
+          ./grind28 --self-test  -> same FAIL (shares the anchor).  ptr/skips/nchars matched 64/64 in every V1 line shown: decode is right, only the LM table differs.
+  => the REAL self-test cannot pass on this box until the original round19/I2 panel.npz (sha 14a23d36...) is supplied. grind28 gate-check not run (gates/*.dat need make_gates.py + that panel).

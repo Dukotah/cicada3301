@@ -1,0 +1,14 @@
+{
+ "lane": "S1", "item": 1, "sandbox": "Ubuntu 26.04 gcc 15.2.0 2vCPU",
+ "compile": {"grind27": {"rc": 0, "errors": 0, "warnings": 2}, "grind28": {"rc": 0, "errors": 0, "warnings": 2}, "flags": "-O2 -Wall -Wextra -std=gnu17 -fopenmp -ffp-contract=off", "warning_class": "-Wformat-truncation (benign)"},
+ "real_self_test": {"status": "FAIL_ON_SUBSTITUTE_PANEL", "reason": "original round19/I2/models/panel.npz (sha 14a23d36...) absent from disk and GitHub; round32 panel (sha 36a01dcb...) substituted", "V1_exact": "26/64", "V2_pmax": 17.9332641744991, "V2_ref": 17.931158509762},
+ "resume_test_harness": "COPY grind27_nost.c = grind27.c with ONLY the launch self-test abort neutralised (if (0 && self_test(NULL))); GRIND27_S2_CONTROL_OK=1; --threads 6; all runs on copies of the parked S2 STATUS/HIT-CANDIDATE/top_S2 (hashes verified vs. GitHub). The real S2 run dir was NOT touched. pmax values below come from the SUBSTITUTE panel and are not evidence about the real null.",
+ "tests": {
+  "a_resume_restores_parked_hit": {"result": "PASS", "detail": "resumed lane S2 from STATUS.json; HIT-CANDIDATE hits=[35563892 @7.670723299260088] (once); top-level flagged_survivors=[35563892]; n_claim_bar_hits=1"},
+  "a2_rewound_rescan_dedupe": {"result": "PASS", "detail": "worker0 cursor rewound to 35563800 (window covers 35563892); (i) with hit file pmax planted 1.0: after rescan hit list still [35563892 @1.0], n=1 -> not duplicated, original kept; (ii) with HIT-CANDIDATE.json deleted: seed re-found at pmax 7.672200030319517 (>= lowered claim bar 7.0), n=1 -> re-find path works; (iii) with true hit file: n=1"},
+  "b_synthetic_hit_restored": {"result": "PASS", "detail": "planted {seed 123456789, pmax 7.7}; after resume HIT-CANDIDATE.json=[35563892, 123456789], flagged_survivors=[35563892, 123456789], n_claim_bar_hits=2"},
+  "c_bounded_sweep_window": {"result": "PASS", "detail": "4-6 s windows; all 6 worker cursors advanced (e.g. w0 319436286 -> 319452669, ~16k seeds/worker/4s); exit rc=1 with 'interrupted (checkpointed; re-run to resume)' (the timebox exit path)"}
+ },
+ "not_tested": ["grind28 resume (compiles; source shows same X1 fix at L1181/L1297; gate files unbuildable here)", "the original-panel self-test"],
+ "parked_state_note": "parked run/STATUS.json has NO top-level flagged_survivors key (written by the pre-fix binary); the fixed binary writes it on first checkpoint"
+}

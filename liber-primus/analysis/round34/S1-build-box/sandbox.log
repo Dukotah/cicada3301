@@ -1,0 +1,15 @@
+Vercel Sandbox (MCP). Team dukotahs-projects (team_QgF2LHBhaJTplY1NHVemdkxy); project skyfling used only as the required projectId anchor.
+create_sandboxes_v4: 3 attempts with name/timeout/persistent/memory fields -> HTTP 400; success with minimal body {projectId}
+  (default: 2 vCPU, 4 GB, Ubuntu 26.04, persistent=true, initial timeout 300 s). create_sandboxes_v3 also 400.
+extend_session_timeout +3.3e6 ms refused (exceeds max); +2.4e6 accepted -> total 2.7e6 ms (45 min) session cap.
+sandbox moccasin-certain-whippet-5ZiipV  session sbx_9DpmDMIkWgY0iZ3hGUhrp14RzoSp  region iad1
+Tool calls (approx): 1 create (+4 failed), ~30 run_session_command, ~18 get_session_command_logs, 1 extend (+1 refused), 1 stop.
+write_session_files / read_session_file NOT used (a 1.2 MB base64 tarball cannot be typed through the tool). Inputs were fetched inside the sandbox
+from raw.githubusercontent.com (sha256-verified against the working tree); the one gitignored-absent input, panel.npz (543 KB),
+went via a temporary secret gist (since deleted). Results were read back through get_session_command_logs.
+Tool quirk: run_session_command wait:true with sleep > ~55 s returns "operation timed out"; background scripts survive.
+Wall time (stop_session): duration 1,252,665 ms (20.9 min); active CPU 952,907 ms (15.9 min); ingress 259 MB, egress 0.53 MB.
+Cost signals: none returned by the API. stop_session auto-created a persistent snapshot snap_84wyROyjgjBX7veiBuxb8bqgyJYU (1.28 GB, expires 2026-11-05);
+the named persistent sandbox record also remains - coordinator may delete both.
+Own mistakes (time only): two `pkill -f` calls matched their own shell; gcc-15 needed gnu89 + -Wno-error flags for gs and PHP 5.6;
+PHP configure mis-detected readdir_r and crypt under gcc 15 (php_config.h patched by hand).

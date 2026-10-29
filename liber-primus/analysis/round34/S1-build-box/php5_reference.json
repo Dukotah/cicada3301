@@ -1,0 +1,13 @@
+{
+ "php_version": "5.6.40 (built from php.net source, --disable-all, gcc 15.2 with gnu89 + php_config.h patched: HAVE_POSIX_READDIR_R, HAVE_CRYPT)",
+ "mt_srand_1_first_draw": 1244335972,
+ "expected_first_draw_prereg": 1244335972,
+ "php_mt_rand_20": [1244335972,15217923,1546885062,2002651684,2135443977,1865258162,1509498899,2145423170,1837306065,1634983062,1956263230,1300815158,399990758,1324153429,1399889920,720488840,852051651,2009054860,1002178351,1817438858],
+ "php_mt_rand_0_28_20": [16,0,20,27,28,25,20,28,24,22,26,17,5,17,18,9,11,27,13,24],
+ "php_mt_py_legacy_twist_mt_rand_match": true,
+ "php_mt_py_canonical_twist_mt_rand_match": false,
+ "php_mt_py_range_scale_(n*29)>>31_match": true,
+ "php_mt_py_range_mod_29_match": false,
+ "cross_check_php_8.5.4_MT_RAND_PHP": "mt_srand(1, MT_RAND_PHP): identical 20 + 20 values (deprecated in 8.3+ but still emitted)",
+ "verdict": "NO-ERROR-FOUND (php_mt.py legacy mode == real PHP 5.6.40 for 20 mt_rand() and 20 mt_rand(0,28) draws, seed 1)"
+}

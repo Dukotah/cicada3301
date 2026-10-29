@@ -1,0 +1,22 @@
+{
+ "input": "analysis/round29/L4-image-forensics/ctrl.ps (synthetic: Helvetica text + blue rect). LP2 page-0 PS/PDF source is NOT in the repo, so this is the fallback form of item 3.",
+ "builds": "ghostpdl tags ghostpdl-9.04 and ghostpdl-9.14 (GitHub archive), gs/ configure, gcc 15.2 with -std=gnu89 -fcommon -w -D_GNU_SOURCE + -Wno-error=implicit-*; 9.04 additionally -DHAVE_SYS_TIME_H; bin/gs --version = 9.04 / 9.14. 9.14 built in ~104 s (-j2); 9.04 needed several fix-and-resume attempts (~5 min total).",
+ "params": "-sDEVICE=jpeg -dJPEGQ=92 -r400 ; stage 2: ImageMagick 7.1.2-18 convert -quality 92",
+ "page_with_text_ctrl_ps": {
+  "stage1_jpeg_identical": false, "stage2_jpeg_identical": false, "decoded_pixels_identical": false, "png16m_identical": false,
+  "gs9.04_stage1_md5": "00da2e15fe5a2ce391bdc428ff9450c4", "gs9.14_stage1_md5": "6429595f5f8bc407444399ee0a9d04b1",
+  "gs9.04_stage2_md5": "3ee9ca86c949a72f6cca5c171e61f1cf", "gs9.14_stage2_md5": "73873972c6340ecea0e71eb506eb10d3",
+  "stage1_sizes": [311219, 313703],
+  "pixel_diff_png16m_AE": "87 px (glyph rasterisation)", "pixel_diff_jpeg_AE": 3029,
+  "segment_diff": "9.14 has APP2 ICC_PROFILE (2576 B payload, md5 e409cef13cd06f6b371f6cddc8e31fcf = the LP2 profile); 9.04 has NO APP2; DQT/SOF identical; entropy-coded scan differs (glyph pixels)"
+ },
+ "page_without_text_nofont_ps": {
+  "png16m_pixels_identical_AE": 0, "jpeg_decoded_pixels_AE": 0, "jpeg_file_identical": false,
+  "jpeg_9.04_bytes": 332761, "jpeg_9.14_bytes": 335355, "delta_bytes": 2594,
+  "segment_diff": "ONLY difference = APP2 ICC segment (2592 B) present in 9.14, absent in 9.04. DQT, SOF, all four DHT, SOS header and the 332138-byte entropy-coded scan are byte-identical."
+ },
+ "controls": {"rerun_same_version_byte_identical": {"9.04": true, "9.14": true}, "JPEGQ91_vs_92_differs": {"9.04": true, "9.14": true}, "comparator_distinguishes_9.04_from_9.14": true},
+ "decision_rule": "different -> O1 live",
+ "verdict": "O1 LIVE (not killed). 9.04 and 9.14 are byte-distinguishable at render level on the repo's own test PS; discriminator = ICC embedding (9.14 embeds the e409cef1 profile in jpeg-device output; 9.04 does not), plus text-glyph raster differences.",
+ "caveats": ["synthetic PS, not LP2 page 0", "Helvetica font source/substitution not verified identical between the two trees (could explain the glyph diff)", "built with gcc 15, not a 2011-14 toolchain; ICC embedding is gs source logic, but only two versions were built (9.05-9.13 untested, so the release where embedding starts is unknown)", "LP2 evidence is the stage-2 file; IM is assumed to carry ICC through (R18-L1 chain control did)"]
+}
