@@ -1,0 +1,50 @@
+{
+ "$comment": "PROPOSED top-level LEDGER.json entries from round33/B2. NOT merged; LEDGER.json untouched.",
+ "lane": "round33/B2",
+ "date": "2026-10-29",
+ "entries": [
+  {
+   "id": "R33-B2-ISSUE12-SEPARATOR-CORRECTION",
+   "lane": "round33/B2",
+   "round": "33",
+   "date": "2026-10-29",
+   "status": "data-correction",
+   "verdict": "DATA-CORRECTION-APPLIED-NO-BOUNDARY-MOVE",
+   "hypothesis": "Two word gaps in krisyotam_runes.txt (seg 8 gap 12, seg 40 gap 8) were mis-categorised '.' where the image shows a single word-separator dot.",
+   "result": "Applied '.'->'-' at both gaps (2 characters; '.' 183->181, '-' 2764->2766). Credit RETSAM3301, issue #12 (opened 2026-10-10). Gate: own R19 T2 rows (gline 88 gap 12, gline 444 gap 8), rune pairs and on-disk relikd p8/p40 crops agree. validate.py and check_consistency.py byte-identical before/after; pytest 13 passed. No %, /, $, &, newline or rune moved; no solved-page control uses segments 8/40.",
+   "coverage": "Those two gaps. The roadmap's '19 separator disagreements' are the Round 8 shortlist, already read by R19 T2 as 0 disagreements.",
+   "not_covered": [
+    "archived 2014 JPEG SHA-256 (8.jpg c679eb08..., 40.jpg d9c4e3dc...) not on disk, unverified",
+    "22 other T2 positionally-disagreeing lines (separator_other_candidates.json) not human-adjudicated, not applied",
+    "CI drift-regeneration and network smoke scripts not run in lane",
+    "issue ZIP not downloaded"
+   ],
+   "artifacts": [
+    "analysis/round33/B2-lp1-audit/issue12_correction.md",
+    "data/krisyotam_runes.txt"
+   ]
+  },
+  {
+   "id": "R33-B2-P2793-LP1-AUDIT",
+   "lane": "round33/B2",
+   "round": "33",
+   "date": "2026-10-29",
+   "status": "audit",
+   "verdict": "P27-93-ARTIFACT-OF-MISLABELLED-EXEMPLAR; LP1-GATE-REPRODUCED-FAIL-COVERAGE",
+   "hypothesis": "p27:93 may be a canon U/B error; the LP1 recall shortfall may be a transcription problem.",
+   "result": "p27:93 glyph is 6 px from singleton B-labelled bitmap 421 (a U-shaped glyph from p13 mislabelled by a forced pairing beside a merged C+B glyph), 11 px from the 57x U exemplar, ~2,900 px from real B: U, canon stands. T1 G-READ-LP1 reproduced exactly 1699/1796=94.5991% (pooled 1879/1976=95.0911%, FAIL). 75 of 97 misses are one contiguous SOME WISDOM block absent from the vendored images; no LP1 cell changed; LP1_REAL not re-fit; I2 gate not re-run.",
+   "coverage": "p27:93; the five decryption-validated LP1 sections against the vendored LP1 images.",
+   "not_covered": [
+    "human eye on p27:93 (machine-side unambiguous only)",
+    "LP1 images beyond the vendored set (missing SOME WISDOM block)",
+    "LP1_REAL re-fit / I2 power gate (not triggered)",
+    "T1 bank relabel of bitmap 421 and re-run of its LP2 gates"
+   ],
+   "artifacts": [
+    "analysis/round33/B2-lp1-audit/p27_93.md",
+    "analysis/round33/B2-lp1-audit/lp1_misses.json",
+    "analysis/round33/B2-lp1-audit/RESULTS.md"
+   ]
+  }
+ ]
+}
