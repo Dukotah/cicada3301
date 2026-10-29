@@ -1,0 +1,49 @@
+{
+ "lane": "round32/B1",
+ "date": "2026-10-28",
+ "entries": [
+  {
+   "id": "R32-B1-BASH42-RANDOM-AUTOSEED",
+   "lane": "round32/B1",
+   "round": "32",
+   "date": "2026-10-28",
+   "status": "negative-bounded",
+   "verdict": "NEGATIVE-BOUNDED-PREFILTER-LOSSY",
+   "hypothesis": "The keystream is bash 4.2 $RANDOM%29 auto-seeded (tv_sec^tv_usec^pid), 2012-01-01..2014-06-01, offset 0.",
+   "result": "77,594,624 seeds x {LP64,ILP32} prefiltered (head trigram prefilter, FPR 6e-4); 96,033 survivors decoded under keyskip1+keyskip2 = 192,066 decodes in 2022.9 s; 0 flagged, 0 hitfn20 crossers. Best screen pmax keyskip2 7.068 (actual-N bar 6.939, declared-N bar 7.3835; L=240 gate 4.66/6.09 fails clause 1), keyskip1 6.679 vs 7.6342.",
+   "coverage": "Seeds 1.00 prefiltered (both ABIs); decode stage = prefilter survivors, ~6.2e-4 of seeds. Prefilter power 0.74 EN, 0.70 LATIN, 0.74 DE, 0.47 EN_NOVOWEL (planted).",
+   "not_covered": [
+    "bash 3.2/4.0/4.1/5.x",
+    "explicit RANDOM=n outside the auto-seed set / outside 2012-01..2014-06",
+    "reductions other than %29; sign +1; reversed; atbash",
+    "free-drift and relations beyond keyskip1/2",
+    "25-55% of planted keys dropped by the prefilter (skips in head, vowel-dropped text)",
+    "registers EN_KJV/OE/CY/HALFVOWEL not planted",
+    "ILP32 is L4-validated only",
+    "LP2 beyond rune 120/240 and pads not starting at rune 0",
+    "flat prior over the auto-seed set"
+   ],
+   "positive_control": "control.json all_pass: 25/26 prefilter-passing planted keys recovered end-to-end (LP64 5/5, 6/6; ILP32 6/7, 8/8) at stage-B pmax ~24-28 vs bars 7.3835/7.6342; vectorised head == exact generator on 4000/4000 seeds.",
+   "threshold": "hitfn20 panelmax_bar pair 7.3835 / exact 7.6342 (N=1e6 declared; 6.939/7.161 at actual N=192,066); I3 threshold_for(192066, segment_len=120) = -5.5 (floor binds, legacy en statistic)",
+   "three_conditionals": {
+    "key_space": "bash 4.2 auto-seed set 74x2^20, %29, offset 0, sign -1, LP64+ILP32",
+    "transition_model": "keyskip1+keyskip2, beam_w 64, L120 screen/L240 gate",
+    "adjudicator_register": "round32/I2 nine-register panel (EN_NOVOWEL detection-only)"
+   },
+   "sweep_store": "analysis/round32/B1-bash-random/sweep_rows.jsonl",
+   "panel": "analysis/round32/I2-multiregister-readjudication/models/panel.npz",
+   "deliverables": [
+    "PREREG.md",
+    "RESULTS.md",
+    "sweep.py",
+    "common.py",
+    "pf.py",
+    "control.json",
+    "sweep_rows.jsonl",
+    "sweep_summary.json",
+    "prefilter_power_trigram.json"
+   ],
+   "reopens_if": "a higher-power skip-tolerant prefilter or an un-prefiltered stated-fraction sample shows the dropped fraction hides a hit; a real 32-bit bash 4.2; other bash versions or reductions"
+  }
+ ]
+}

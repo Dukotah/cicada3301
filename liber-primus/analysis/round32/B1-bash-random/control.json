@@ -1,0 +1,741 @@
+{
+ "date": "2026-10-28T17:22:33",
+ "construction": "bash 4.2 $RANDOM, RANDOM%29, sign -1, offset 0, seed=tv_sec^tv_usec^pid; LP64 and ILP32",
+ "m_prefilter": 16,
+ "fpr_target": 0.0006,
+ "prefilter_calibration": {
+  "bash4.2": {
+   "mu": [
+    -27.887882232666016,
+    -27.794452667236328,
+    -24.975421905517578,
+    -28.31988525390625,
+    -26.955049514770508,
+    -27.111059188842773,
+    -27.973989486694336,
+    -27.00737762451172,
+    -25.326641082763672
+   ],
+   "sd": [
+    2.421412706375122,
+    2.329505205154419,
+    1.5699114799499512,
+    2.496908664703369,
+    2.4523932933807373,
+    2.105975866317749,
+    2.524350166320801,
+    2.5041544437408447,
+    1.9699640274047852
+   ],
+   "thr": 4.105865001678467,
+   "null_n": 524288,
+   "null_exceed": 0.0006008148193359375
+  },
+  "bash4.2_i32": {
+   "mu": [
+    -27.894113540649414,
+    -27.798377990722656,
+    -24.97774314880371,
+    -28.317129135131836,
+    -26.959211349487305,
+    -27.1197452545166,
+    -27.974153518676758,
+    -27.011341094970703,
+    -25.333696365356445
+   ],
+   "sd": [
+    2.4231152534484863,
+    2.3331456184387207,
+    1.5685597658157349,
+    2.498924493789673,
+    2.4524693489074707,
+    2.1021640300750732,
+    2.5226948261260986,
+    2.5062363147735596,
+    1.968293309211731
+   ],
+   "thr": 4.1013689041137695,
+   "null_n": 524288,
+   "null_exceed": 0.0006008148193359375
+  }
+ },
+ "head_vs_exact": {
+  "bash4.2": {
+   "seeds": 2000,
+   "head_mismatch": 0
+  },
+  "bash4.2_i32": {
+   "seeds": 2000,
+   "head_mismatch": 0
+  }
+ },
+ "prefilter_power": [
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "register": "EN_MODERN",
+   "n": 250,
+   "power": 0.744
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "register": "LATIN",
+   "n": 250,
+   "power": 0.688
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "register": "DE",
+   "n": 250,
+   "power": 0.76
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "register": "EN_NOVOWEL",
+   "n": 250,
+   "power": 0.432
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "register": "EN_MODERN",
+   "n": 250,
+   "power": 0.752
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "register": "LATIN",
+   "n": 250,
+   "power": 0.696
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "register": "DE",
+   "n": 250,
+   "power": 0.724
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "register": "EN_NOVOWEL",
+   "n": 250,
+   "power": 0.488
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "register": "EN_MODERN",
+   "n": 250,
+   "power": 0.744
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "register": "LATIN",
+   "n": 250,
+   "power": 0.708
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "register": "DE",
+   "n": 250,
+   "power": 0.752
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "register": "EN_NOVOWEL",
+   "n": 250,
+   "power": 0.508
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "register": "EN_MODERN",
+   "n": 250,
+   "power": 0.736
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "register": "LATIN",
+   "n": 250,
+   "power": 0.708
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "register": "DE",
+   "n": 250,
+   "power": 0.716
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "register": "EN_NOVOWEL",
+   "n": 250,
+   "power": 0.464
+  }
+ ],
+ "e2e_plants": [
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "seed": 1368780314,
+   "register": "EN_MODERN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 40,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "seed": 1382319204,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 38,
+   "pmax": 18.61723854116221,
+   "stage_b_pmax": 26.732262711686552,
+   "bar": 7.383520294328688,
+   "recovery": 0.9958333333333333
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "seed": 1398914676,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 51,
+   "pmax": 20.334050595692347,
+   "stage_b_pmax": 28.551759027352603,
+   "bar": 7.383520294328688,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "seed": 1338618560,
+   "register": "LATIN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 44,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "seed": 1343247379,
+   "register": "EN_MODERN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 40,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "seed": 1350457305,
+   "register": "LATIN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 35,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "seed": 1341448350,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 50,
+   "pmax": 15.922827353030199,
+   "stage_b_pmax": 25.378764220282292,
+   "bar": 7.383520294328688,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "seed": 1373479538,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 47,
+   "pmax": 17.564083814152394,
+   "stage_b_pmax": 25.16697604261347,
+   "bar": 7.383520294328688,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "seed": 1400264397,
+   "register": "EN_MODERN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 35,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "seed": 1378585240,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 42,
+   "pmax": 16.169479406739875,
+   "stage_b_pmax": 24.339515372141435,
+   "bar": 7.383520294328688,
+   "recovery": 1.0
+  },
+  {
+   "summary": true,
+   "variant": "bash4.2",
+   "rel": "keyskip2",
+   "tries": 10,
+   "prefilter_pass": 5,
+   "recovered_hit": 5
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "seed": 1366896048,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 37,
+   "pmax": 16.46465246302705,
+   "stage_b_pmax": 23.261456854983113,
+   "bar": 7.6341931878728095,
+   "recovery": 0.9958333333333333
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "seed": 1347913417,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 38,
+   "pmax": 18.22275607034385,
+   "stage_b_pmax": 25.046259530791016,
+   "bar": 7.6341931878728095,
+   "recovery": 0.9916666666666667
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "seed": 1387891154,
+   "register": "EN_MODERN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 42,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "seed": 1378825544,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 47,
+   "pmax": 20.031412685528657,
+   "stage_b_pmax": 27.734436876835506,
+   "bar": 7.6341931878728095,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "seed": 1353460098,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 47,
+   "pmax": 17.15317803798291,
+   "stage_b_pmax": 25.889943790945967,
+   "bar": 7.6341931878728095,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "seed": 1361544919,
+   "register": "LATIN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 42,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "seed": 1353796293,
+   "register": "EN_MODERN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 36,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "seed": 1377511954,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 23,
+   "pmax": 17.237660812168293,
+   "stage_b_pmax": 25.485964929912253,
+   "bar": 7.6341931878728095,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "seed": 1388144240,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 28,
+   "pmax": 18.350981863146238,
+   "stage_b_pmax": 27.03777948100203,
+   "bar": 7.6341931878728095,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "seed": 1344539863,
+   "register": "LATIN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 41,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "summary": true,
+   "variant": "bash4.2",
+   "rel": "keyskip1",
+   "tries": 10,
+   "prefilter_pass": 6,
+   "recovered_hit": 6
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "seed": 1373376174,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 36,
+   "pmax": 19.337020539269936,
+   "stage_b_pmax": 26.515477736408872,
+   "bar": 7.383520294328688,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "seed": 1361771740,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 37,
+   "pmax": 17.018886085396996,
+   "stage_b_pmax": 23.52062725746526,
+   "bar": 7.383520294328688,
+   "recovery": 0.9958333333333333
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "seed": 1361078401,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 51,
+   "pmax": 16.98763249773687,
+   "stage_b_pmax": 25.205288950129987,
+   "bar": 7.383520294328688,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "seed": 1333832972,
+   "register": "LATIN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 43,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "seed": 1388044036,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": false,
+   "survivors_in_chunk": 48,
+   "pmax": 18.02998684357913,
+   "stage_b_pmax": 25.70221215989472,
+   "bar": 7.383520294328688,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "seed": 1395630667,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 32,
+   "pmax": 18.63452760961769,
+   "stage_b_pmax": 25.133905394342186,
+   "bar": 7.383520294328688,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "seed": 1398762323,
+   "register": "EN_MODERN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 44,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "seed": 1396334935,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 36,
+   "pmax": 19.796582783751337,
+   "stage_b_pmax": 26.964475119421916,
+   "bar": 7.383520294328688,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "seed": 1339734554,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 36,
+   "pmax": 20.30925085788177,
+   "stage_b_pmax": 27.5590394070298,
+   "bar": 7.383520294328688,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "seed": 1334140609,
+   "register": "LATIN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 49,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "summary": true,
+   "variant": "bash4.2_i32",
+   "rel": "keyskip2",
+   "tries": 10,
+   "prefilter_pass": 7,
+   "recovered_hit": 6
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "seed": 1392230249,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 42,
+   "pmax": 17.554748676550624,
+   "stage_b_pmax": 27.155437754448506,
+   "bar": 7.6341931878728095,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "seed": 1397887373,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 41,
+   "pmax": 18.747471331967947,
+   "stage_b_pmax": 25.544687202630104,
+   "bar": 7.6341931878728095,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "seed": 1366916199,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 40,
+   "pmax": 18.563052836339036,
+   "stage_b_pmax": 26.136057893402587,
+   "bar": 7.6341931878728095,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "seed": 1397128347,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 53,
+   "pmax": 18.44910400452556,
+   "stage_b_pmax": 24.20200563140973,
+   "bar": 7.6341931878728095,
+   "recovery": 0.9458333333333333
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "seed": 1336579395,
+   "register": "EN_MODERN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 50,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "seed": 1376329182,
+   "register": "LATIN",
+   "prefilter_pass": false,
+   "recovered_hit": false,
+   "survivors_in_chunk": 41,
+   "pmax": null,
+   "stage_b_pmax": null,
+   "bar": null,
+   "recovery": null
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "seed": 1361009449,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 52,
+   "pmax": 17.412601230274767,
+   "stage_b_pmax": 26.651839303931304,
+   "bar": 7.6341931878728095,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "seed": 1350004322,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 39,
+   "pmax": 16.596576776138846,
+   "stage_b_pmax": 24.521372550281516,
+   "bar": 7.6341931878728095,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "seed": 1330736545,
+   "register": "EN_MODERN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 33,
+   "pmax": 17.93940007640047,
+   "stage_b_pmax": 24.246626079795647,
+   "bar": 7.6341931878728095,
+   "recovery": 1.0
+  },
+  {
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "seed": 1395821815,
+   "register": "LATIN",
+   "prefilter_pass": true,
+   "recovered_hit": true,
+   "survivors_in_chunk": 39,
+   "pmax": 19.20030059799063,
+   "stage_b_pmax": 27.720653390316365,
+   "bar": 7.6341931878728095,
+   "recovery": 1.0
+  },
+  {
+   "summary": true,
+   "variant": "bash4.2_i32",
+   "rel": "keyskip1",
+   "tries": 10,
+   "prefilter_pass": 8,
+   "recovered_hit": 8
+  }
+ ],
+ "all_pass": true
+}
