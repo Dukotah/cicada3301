@@ -1471,7 +1471,7 @@
   "120": true,
   "180": true,
   "240": true,
-  "400": false
+  "400": true
  },
  "pass_R2": {
   "120": false,
@@ -1479,7 +1479,84 @@
   "240": false,
   "400": false
  },
- "R1_all_L": false,
+ "R1_all_L": true,
  "R2_all_L": false,
- "SEAL_PASS": false
+ "SEAL_PASS": false,
+ "addendum1_L400": {
+  "frozen_threshold": 20.208897612857392,
+  "added": {
+   "CICADA-I4b": {
+    "added_draws": 800,
+    "added_genuine": 17
+   },
+   "CICADA-I4c": {
+    "added_draws": 800,
+    "added_genuine": 22
+   },
+   "CICADA-R34I3": {
+    "added_draws": 800,
+    "added_genuine": 17
+   }
+  },
+  "held": {
+   "thr": 20.2089,
+   "catch": [
+    3158,
+    3282,
+    0.962
+   ],
+   "catch_w": [
+    0.955,
+    0.968
+   ],
+   "FR_EN": [
+    0,
+    90,
+    0.0
+   ],
+   "FR_EN_w": [
+    0.0,
+    0.041
+   ],
+   "FR_pooled": [
+    3,
+    279,
+    0.011
+   ],
+   "FR_pooled_w": [
+    0.004,
+    0.031
+   ],
+   "FR_NV": [
+    3,
+    100,
+    0.03
+   ],
+   "FR_NV_w": [
+    0.01,
+    0.085
+   ],
+   "FR_spread": [
+    0,
+    179,
+    0.0
+   ],
+   "underpowered_NV": false,
+   "PASS": true
+  },
+  "NV_rejects_per_key": {
+   "CICADA-I4b": [
+    0,
+    28
+   ],
+   "CICADA-I4c": [
+    1,
+    37
+   ],
+   "CICADA-R34I3": [
+    2,
+    35
+   ]
+  }
+ }
 }

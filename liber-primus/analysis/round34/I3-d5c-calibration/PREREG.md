@@ -24,3 +24,8 @@ catch >= 0.90 AND FR(EN_MODERN) <= 0.10 AND FR(pooled register-spread) <= 0.10 A
 If NOVOWEL-only held-out n is too small for the Wilson upper to reach 0.10 even at 0 rejects (n<37), that L is recorded "underpowered" = NOT passed.
 Round passes only if both-or-either recipe passes at ALL four L; SEAL_PASS stays false regardless (no ledger flag flipped); the measured ceiling per L
 (max held-out catch s.t. NOVOWEL FR upper<=0.10 and pooled FR<=0.10, with m free -- an oracle-on-held-out optimistic bound) is reported as a diagnostic only.
+
+## ADDENDUM 1 (2026-10-29, coordinator decision, written after the main results were seen)
+L=400 NOVOWEL-only held-out genuine n=44 was too small for the Wilson clause. Extension: for each held-out key only, generate NV reps 450..1249
+(`ext_add.py`, same seed stream, so the original 450 draws are kept and the new ones are disjoint -> 1250 draws/key). NOT a re-tune: threshold
+stays 20.2089, tuning key/held-out keys unchanged, EN/spread sets unchanged. Pass criterion unchanged. Recipe 2 is recorded as dropped.

@@ -37,3 +37,19 @@ EN_HALFVOWEL-argmax hallucinations (m=0 under D5c, unprotected; planted set is N
 1. Accept "3 of 4 L" as progress or demand a rerun at L=400 with larger NV-genuine sample (cheap: ~2 min per 450 draws/key; ~1500 draws per key would give ~30 genuine each).
 2. Whether to adopt the linear working rule m_NV ~ 0.055*L (empirical, not pre-registered) as a Round 35 pre-reg.
 3. Drop R2 (null-beta normalisation) as a candidate.
+
+## ADDENDUM 1 -- L=400 enlarged NOVOWEL sample (coordinator decision; PREREG Addendum 1; frozen threshold 20.209, same keys, NOT a re-tune)
+
+Added NV reps 450-1249 per held-out key (`ext_add.py`, 800 new draws/key, disjoint from the original 450). New L=400 held-out row:
+
+| L | recipe | threshold | catch | FR EN_MODERN | FR pooled spread | FR NOVOWEL-only | PASS |
+|---|---|---|---|---|---|---|---|
+| 400 | R1 (frozen) | 20.209 | 3158/3282 = 0.962 [0.955,0.968] | 0/90 [0,0.041] | 3/279 = 0.011 [0.004,0.031] | 3/100 = 0.030 [0.010,0.085] | **yes** |
+
+NOVOWEL-only rejects per key: I4b 0/28, I4c 1/37, R34I3 2/35 (pooled n=100). Updated verdict: **Recipe 1 passes all four lengths (120/180/240/400)** on held-out with frozen per-L thresholds; the earlier L=400 fail was the n=44 small-sample artefact. Caveats: the addendum was written after seeing the n=44 result (data-dependent decision to extend, threshold itself untouched); the NOVOWEL upper 0.085 is close to the 0.10 limit; the tuning fit at L=400 (14 genuine) was not enlarged. **SEAL_PASS remains false** by instruction (candidate remains flagged-for-oracle; not_covered above still applies).
+
+## Round 35 candidate (NOT pre-registered)
+Empirical rule m_NV ~ 0.055 * L (fitted values 6.95/10.45/13.58/20.21 -> m/L 0.058/0.058/0.057/0.051) is recorded as an unregistered Round 35 candidate; it must be pre-registered and validated on new keys and intermediate L before use.
+
+## Recipe 2 -- DROPPED
+Null-beta(L) normalisation (R2) fails at all four L structurally (beta falls ~L^-0.55; needed margin rises ~L); dropped as a candidate.
