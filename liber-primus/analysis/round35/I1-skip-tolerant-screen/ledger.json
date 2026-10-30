@@ -1,0 +1,7 @@
+{"lane": "R35-I1", "date": "2026-10-30", "status": "measured", "positive_control": "passed",
+ "positive_control_note": "natural-rate plants through the real encipherer (with-skip heads pass at 0.92-0.99, k=0 baseline reproduces pf_v3 exactly and its low with-skip power); k=0 check max|diff| vs pf_v3.lse_stat = 0.0",
+ "bar_met": true, "bar": "EN_NOVOWEL>=0.85, others>=0.90, natural-rate, FPR<=1e-3",
+ "frozen": {"m": 24, "k": 2, "rel": "both", "pen": 2, "thr": {"a1": 7.0994, "a2": 7.1761}, "fpr_heldout": 0.00084},
+ "cost_vs_pf_v3": 10.9, "cost_target_3x_met": false,
+ "cheaper_alt": {"m": 24, "k": 1, "rel": "both", "cost": 3.5, "bar_met_at_fpr": 0.003},
+ "not_covered": ["heads past 24 runes", "3+ skips in head at k=2", "free relation", "registers outside the nine", "generators outside the six", "PHP/ILP32 plant power", "other ciphertext heads (recalibrate)"]}
