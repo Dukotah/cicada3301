@@ -1,0 +1,30 @@
+{
+ "lane": "round35/B2",
+ "date": "2026-10-30",
+ "entries": [
+  {
+   "id": "R35-B2-PAYLOAD-LEGS",
+   "lane": "round35/B2",
+   "round": 35,
+   "date": "2026-10-30",
+   "status": "audit",
+   "hypothesis": "The previously unmeasured R30-B1 (canon-as-key over T2/folly, 8 canon x T2/folly XOR rows) and R30-B2 (folly, 2.jpg) legs change under the promoted canon_256.bin (sha 3b9b07d9...) relative to canon_256_superseded.bin.",
+   "result": "NO CHANGE. Comparator reproduces the stored R30-B1 and R30-B2 results (inputs fetched from github cicada-solvers/iddqd). Promoted canon: 0 cipher hits, 0 detector fires, 12/12 XOR rows structureless (min H 7.0876), 13 gpg rows identical; B2 folly/2.jpg legs identical. These legs are now measured, null in the same sense as before.",
+   "positive_control": "R30-B1 original AES-256-CBC plant recovered; R30-B2 original RSA-2048 plant flagged, real gpg message parses.",
+   "negative_control": "R30-B1 0/500 (comparator and promoted rerun), 1/500 in the first promoted run (unseeded urandom); R30-B2 random not flagged.",
+   "threshold": "A leg changes if the comparator fails to reproduce the stored result, a detector fires, or a verdict flips (R34-P1 rule).",
+   "threshold_fixed_in_advance": true,
+   "not_covered": [
+    "Corrected payload (R35-B2): canon-as-key over T2/folly and canon x T2/folly XOR rows re-run with matching inputs; no change. Residual: T2.bin identity rests on size + entropy + chi2 + byte0 and reproduction of the stored XOR rows, not a recorded full hash (none exists); T2 was fetched from a community OutGuess extract (iddqd lp_outguessed/04.txt), not regenerated (outguess absent).",
+    "Corrected payload (R35-B2): folly and 2.jpg legs re-run; no change. Residual: 2.jpg identity rests on the JPEG structural fingerprint and size (no full hash was recorded); the 2.jpg leg only examines bytes after the final FFD9 (zero here); T2 (the OutGuess payload of 2.jpg) was covered by R30-B1 only, never by the B2 OpenPGP/gpg legs.",
+    "Identity of T2.bin and 2.jpg to the original files is statistical/structural: no full hash was ever recorded."
+   ],
+   "evidence": [
+    "liber-primus/analysis/round35/B2-payload-legs/RESULTS.md",
+    "liber-primus/analysis/round35/B2-payload-legs/PREREG.md",
+    "liber-primus/analysis/round35/B2-payload-legs/inputs.json"
+   ],
+   "reopens_if": "Original T2.bin / 2.jpg bytes are found with a hash that differs from the fetched files."
+  }
+ ]
+}

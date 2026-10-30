@@ -1,0 +1,56 @@
+C:\Users\Jeff\cicada3301\liber-primus\analysis\round35\B2-payload-legs\shim\Crypto\Cipher\__init__.py:50: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  return _Dec(_alg.TripleDES(key), _mode(mode, iv, 8))   # 8-byte key == single DES
+C:\Users\Jeff\cicada3301\liber-primus\analysis\round35\B2-payload-legs\shim\Crypto\Cipher\__init__.py:50: CryptographyDeprecationWarning: Single-key TripleDES (8-byte keys) is deprecated and support will be removed in a future release. Use 24-byte keys instead (e.g., key + key + key).
+  return _Dec(_alg.TripleDES(key), _mode(mode, iv, 8))   # 8-byte key == single DES
+C:\Users\Jeff\cicada3301\liber-primus\analysis\round35\B2-payload-legs\shim\Crypto\Cipher\__init__.py:67: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  return _Dec(_alg.TripleDES(k), _mode(mode, iv, 8))
+CONTROL positive: True
+CONTROL negative: True fp_rate= 0.0
+
+keys loaded: 37   blobs: ['T2', 'folly', 'canon']
+
+[T2] len=7524 (mod8=4 mod16=4) H=7.97833 chi=226.43 unif=True rep16=0
+
+[folly] len=3368 (mod8=0 mod16=8) H=7.93767 chi=277.57 unif=True rep16=0
+
+[canon] len=256 (mod8=0 mod16=0) H=7.16965 chi=254.0 unif=True rep16=0
+
+cipher battery: 0 success-hits (over ~40 keys x 3 blobs x many ciphers)
+  XOR T2 ^ folly:fwd  H=7.9414
+  XOR T2 ^ folly:rev  H=7.9527
+  XOR T2 ^ canon:fwd  H=7.1666
+  XOR T2 ^ canon:rev  H=7.0828
+  XOR folly ^ T2:fwd  H=7.9414
+  XOR folly ^ T2:rev  H=7.9387
+  XOR folly ^ canon:fwd  H=7.2106
+  XOR folly ^ canon:rev  H=7.2487
+  XOR canon ^ T2:fwd  H=7.1666
+  XOR canon ^ T2:rev  H=7.2024
+  XOR canon ^ folly:fwd  H=7.2106
+  XOR canon ^ folly:rev  H=7.1380
+  GPG DECRYPT canon pass=3301 -> 22B hits=[]
+  GPG DECRYPT canon pass=1595277641 -> 22B hits=[]
+  GPG DECRYPT canon pass=509 -> 22B hits=[]
+  GPG DECRYPT canon pass=503 -> 22B hits=[]
+  GPG DECRYPT canon pass=hexstr -> 22B hits=[]
+  GPG DECRYPT canon pass=CICADA3301 -> 22B hits=[]
+  GPG DECRYPT canon pass=WELCOME -> 22B hits=[]
+  GPG DECRYPT canon pass=PILGRIM -> 22B hits=[]
+  GPG DECRYPT canon pass=ANEND -> 22B hits=[]
+  GPG DECRYPT canon pass=INSTAR -> 22B hits=[]
+  GPG DECRYPT canon pass=THEPRIMESARE -> 22B hits=[]
+  GPG DECRYPT canon pass=firfumferenf -> 22B hits=[]
+  GPG DECRYPT canon pass=36367763ab73 -> 22B hits=[]
+
+openssl/gpg recorded hits: 13
+
+=== SUMMARY ===
+{
+ "cipher_success_hits": 0,
+ "cross_xor_structure": 0,
+ "openssl_gpg_hits": 13,
+ "control_positive_PASS": true,
+ "control_negative_PASS": true,
+ "negative_fp_rate": 0.0,
+ "all_three_random": true
+}

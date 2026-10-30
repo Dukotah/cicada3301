@@ -1,0 +1,269 @@
+{
+ "controls": {
+  "positive": {
+   "recovered": "THE PRIMES ARE SACRED AND CICADA 3301 WELCOMES THE PILGRIM HOME.",
+   "detector_fired": true,
+   "hits": [
+    [
+     "english",
+     "printable=1.00 words=['THE', 'AND', 'CICADA', '3301', 'PRIME', 'WELCOME', 'PILGRIM', 'SACRED', 'the ', 'and ']"
+    ]
+   ],
+   "PASS": true
+  },
+  "negative": {
+   "trials": 500,
+   "false_fires": 0,
+   "fp_rate": 0.0,
+   "PASS": true
+  }
+ },
+ "structural": {
+  "T2": {
+   "name": "T2",
+   "len": 7524,
+   "len_mod_8": 4,
+   "len_mod_16": 4,
+   "entropy_bits_per_byte": 7.97833,
+   "distinct_byte_values": 256,
+   "chi_square_vs_uniform": 226.43,
+   "chi_df": 255,
+   "chi_consistent_uniform": true,
+   "repeated_16B_blocks": 0,
+   "first16_hex": "40a479d587733d7a5a12f747a2fc5c85",
+   "min_count": 17,
+   "max_count": 48
+  },
+  "folly": {
+   "name": "folly",
+   "len": 3368,
+   "len_mod_8": 0,
+   "len_mod_16": 8,
+   "entropy_bits_per_byte": 7.93767,
+   "distinct_byte_values": 256,
+   "chi_square_vs_uniform": 277.57,
+   "chi_df": 255,
+   "chi_consistent_uniform": true,
+   "repeated_16B_blocks": 0,
+   "first16_hex": "bf53c0cc9f66938e8043e8c4be9f2328",
+   "min_count": 3,
+   "max_count": 24
+  },
+  "canon": {
+   "name": "canon",
+   "len": 256,
+   "len_mod_8": 0,
+   "len_mod_16": 0,
+   "entropy_bits_per_byte": 7.16965,
+   "distinct_byte_values": 161,
+   "chi_square_vs_uniform": 254.0,
+   "chi_df": 255,
+   "chi_consistent_uniform": true,
+   "repeated_16B_blocks": 0,
+   "first16_hex": "cbe7a7ba61ed7eb75cf99cdef704b7d4",
+   "min_count": 1,
+   "max_count": 4
+  }
+ },
+ "cipher_hits": [],
+ "cross_xor": [
+  {
+   "a": "T2",
+   "b": "folly:fwd",
+   "xlen": 3368,
+   "entropy": 7.9414,
+   "hits": [],
+   "head_hex": "fff7b9191815aef4da511f831c637fad"
+  },
+  {
+   "a": "T2",
+   "b": "folly:rev",
+   "xlen": 3368,
+   "entropy": 7.9527,
+   "hits": [],
+   "head_hex": "7c9597da63ddc3ec3e4543a38e05f5b5"
+  },
+  {
+   "a": "T2",
+   "b": "canon:fwd",
+   "xlen": 256,
+   "entropy": 7.1666,
+   "hits": [],
+   "head_hex": "8b43de6fe69e43cd06eb6b9955f8eb51"
+  },
+  {
+   "a": "T2",
+   "b": "canon:rev",
+   "xlen": 256,
+   "entropy": 7.0828,
+   "hits": [],
+   "head_hex": "10195d6161dfa30b9af2cf5174d6d115"
+  },
+  {
+   "a": "folly",
+   "b": "T2:fwd",
+   "xlen": 3368,
+   "entropy": 7.9414,
+   "hits": [],
+   "head_hex": "fff7b9191815aef4da511f831c637fad"
+  },
+  {
+   "a": "folly",
+   "b": "T2:rev",
+   "xlen": 3368,
+   "entropy": 7.9387,
+   "hits": [],
+   "head_hex": "edb55574aab30d8a3dff4397de236b09"
+  },
+  {
+   "a": "folly",
+   "b": "canon:fwd",
+   "xlen": 256,
+   "entropy": 7.2106,
+   "hits": [],
+   "head_hex": "74b46776fe8bed39dcba741a499b94fc"
+  },
+  {
+   "a": "folly",
+   "b": "canon:rev",
+   "xlen": 256,
+   "entropy": 7.2487,
+   "hits": [],
+   "head_hex": "efeee47879ca0dff40a3d0d268b5aeb8"
+  },
+  {
+   "a": "canon",
+   "b": "T2:fwd",
+   "xlen": 256,
+   "entropy": 7.1666,
+   "hits": [],
+   "head_hex": "8b43de6fe69e43cd06eb6b9955f8eb51"
+  },
+  {
+   "a": "canon",
+   "b": "T2:rev",
+   "xlen": 256,
+   "entropy": 7.2024,
+   "hits": [],
+   "head_hex": "990132025438e0b3e145378d97b8fff5"
+  },
+  {
+   "a": "canon",
+   "b": "folly:fwd",
+   "xlen": 256,
+   "entropy": 7.2106,
+   "hits": [],
+   "head_hex": "74b46776fe8bed39dcba741a499b94fc"
+  },
+  {
+   "a": "canon",
+   "b": "folly:rev",
+   "xlen": 256,
+   "entropy": 7.138,
+   "hits": [],
+   "head_hex": "f7d649b58543802138ae283adbfd1ee4"
+  }
+ ],
+ "openssl_gpg": [
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "3301",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "1595277641",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "509",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "503",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "hexstr",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "CICADA3301",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "WELCOME",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "PILGRIM",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "ANEND",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "INSTAR",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "THEPRIMESARESACRED",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "firfumferenfe",
+   "len": 22,
+   "hits": []
+  },
+  {
+   "tool": "gpg",
+   "blob": "canon",
+   "pass": "36367763ab73783c7af2",
+   "len": 22,
+   "hits": []
+  }
+ ],
+ "summary": {
+  "cipher_success_hits": 0,
+  "cross_xor_structure": 0,
+  "openssl_gpg_hits": 13,
+  "control_positive_PASS": true,
+  "control_negative_PASS": true,
+  "negative_fp_rate": 0.0,
+  "all_three_random": true
+ }
+}

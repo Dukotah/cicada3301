@@ -1,0 +1,81 @@
+{
+ "folly.bin": {
+  "origin": "fetched (data only, not executed): https://raw.githubusercontent.com/cicada-solvers/iddqd/HEAD/2013/02/folly (identical to .../2013/02/wisdom, same sha256); upstream = 2013 Cicada ISO /tmp file",
+  "recorded": {
+   "bytes": 3368,
+   "md5_prefix": "0c7d18e8",
+   "source": "round29/L2-blob-cross/FINDINGS.md l.54; ELIMINATION-LEDGER.md l.811"
+  },
+  "obtained": {
+   "bytes": 3368,
+   "sha256": "7e5ec097728197f5c0dba0729980565658fba486965809ffa25e3910a31c385a",
+   "md5": "0c7d18e82cdac189d165706db4064a84"
+  },
+  "match": true,
+  "match_basis": "size + md5 prefix (8 hex) + all 12 R30-B1 cross-XOR rows and structural stats reproduce stored values to 4 d.p."
+ },
+ "T2.bin": {
+  "origin": "fetched (data only): https://raw.githubusercontent.com/cicada-solvers/iddqd/HEAD/lp_outguessed/04.txt = community OutGuess extract of 2.jpg (seed 38370); not regenerable here (outguess absent, no C compiler); not derivable from vendored data/",
+  "recorded": {
+   "bytes": 7524,
+   "entropy": 7.978,
+   "chi2": 226,
+   "byte0": "0x40",
+   "md5": null,
+   "sha256": null,
+   "source": "armada_osint/t2_keytest.py; round29 L2 FINDINGS; round30 B2 b2_results note; no full hash recorded anywhere"
+  },
+  "obtained": {
+   "bytes": 7524,
+   "sha256": "35d31e61275c6b0420e7729161d5f6272122ea7edb87076fe84f3fe3c70af6db",
+   "md5": "8c6c06e51928905cfcb85adca2f5db19",
+   "entropy": 7.978,
+   "chi2": 226.4,
+   "byte0": "0x40"
+  },
+  "match": "statistical (no recorded hash)",
+  "match_basis": "size, entropy, chi2, byte0 equal; stronger: the 4 T2^folly and 4 T2^canon cross-XOR rows and T2 structural-ID of the stored R30-B1 results.json reproduce exactly (entropy to 4 d.p., head_hex)"
+ },
+ "2.jpg": {
+  "origin": "fetched (data only): https://raw.githubusercontent.com/cicada-solvers/iddqd/HEAD/liber-primus__images--unsolved/2.jpg",
+  "recorded": {
+   "size": "595 kB (exif_authored.json)",
+   "dqt_sig": "3e0f1ac7d0b3",
+   "markers": "APP0>APP2>DQT>DQT>SOF0>DHT x4>SOS",
+   "dims": "2400x3600",
+   "jpg_trailer_len": 0,
+   "full_hash": null
+  },
+  "obtained": {
+   "bytes": 595338,
+   "sha256": "74e955ebe248e6d7442e2d2cd3029951f258017987d5762f48e7897cf6611e34",
+   "md5": "c7d1943adc0db3c818080b50a91152ad",
+   "dqt_sig": "3e0f1ac7d0b3 (round29 jpeg_fingerprint.py, run unmodified)",
+   "jpg_trailer_len": 0
+  },
+  "match": "structural (no recorded hash)",
+  "match_basis": "JPEG DQT signature, marker sequence, size class, and the stored R30-B2 jpg_trailer_len=0 reproduce"
+ },
+ "canon_256 (superseded)": {
+  "origin": "committed analysis/pp49_51/canon_256_superseded.bin",
+  "recorded": {
+   "sha256": "4c8dc855..."
+  },
+  "obtained": {
+   "bytes": 256,
+   "sha256": "4c8dc85531d256793a6d0d318b8845869b4983e672077b094ed955bde92226d5"
+  },
+  "match": true
+ },
+ "canon_256 (promoted)": {
+  "origin": "committed analysis/pp49_51/canon_256.bin",
+  "recorded": {
+   "sha256": "3b9b07d9..."
+  },
+  "obtained": {
+   "bytes": 256,
+   "sha256": "3b9b07d9a26e6d55c432d94d2661fdff3c2b348daed06821f2bdb23184a4b290"
+  },
+  "match": true
+ }
+}
