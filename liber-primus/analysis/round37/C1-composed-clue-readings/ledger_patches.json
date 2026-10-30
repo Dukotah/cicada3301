@@ -1,0 +1,77 @@
+{
+ "$comment": "R37 C1 ledger patches (not applied by the lane). F-02 is stale: Round 10 L2-map and L3-road treated the clauses first-class but are absent from LEDGER.json.",
+ "patches": [
+  {
+   "id": "F-02",
+   "set": {
+    "status": "measured",
+    "raw_status": "stale: clauses 1-2 were attacked in Round 10 (L2-map M1-M9, L3-road T1-T5) and clause 3 in Round 9 DIRECTION; all English-only, cleartext-layer; composed/keyed readings run in R37 C1",
+    "coverage": "Round 9 DIRECTION (2,670 readings, negative, no positive control); Round 10 L2-map M1-M9 and L3-road T1-T5 (English-only, cleartext layer of the ciphertext); Round 37 C1: clause strings as seeds/keys (8,832 decodes), LP1 numbers as key schedules (3,072), composed map-road-direction rule (4,176), all panel-R36 12 registers, controls passed, all below bars at actual N.",
+    "not_covered": "meaning as dictionary semantics; reads of the clauses other than C1's operationalizations; non-English reads of the Round 10 cleartext streams (O4 U5)",
+    "superseded_by": [
+     "R37-C1-U1-CLUE-STRINGS",
+     "R37-C1-U2-LP1-NUMBER-SCHEDULES",
+     "R37-C1-U3-COMPOSED-MAP-ROAD-DIRECTION",
+     "R10-L2-MAP",
+     "R10-L3-ROAD"
+    ]
+   }
+  }
+ ],
+ "new_rows": [
+  {
+   "id": "R10-L2-MAP",
+   "round": 10,
+   "lane": "L2-map",
+   "date": "2026-08 (round 10; documented by O4 2026-10-30)",
+   "status": "measured",
+   "kind": "retro-row written by C1 from O4 readings.json; code not re-run",
+   "hypothesis": "'Its words are the map': the ciphertext's own word/line/page structure (initials, finals, word sums, lengths, pointers into LP1, walks, addresses) carries the message.",
+   "result": "R01: NEGATIVE; G1 fired on line-initial (z=6.35) and was adjudicated as width-greedy typesetting (r=0.72) | R02: NEGATIVE (z=-0.12) | R03: NEGATIVE | R04: NEGATIVE (best -4.05 is repeated-word artefact) | R05: NEGATIVE (z=-0.03) | R06: NEGATIVE | R07: EXCLUDED analytically | R08: NEGATIVE (7 vs null max 8) | R09: NEGATIVE (z=0.32)",
+   "coverage": "R01 R10 L2 M1/G1 word/line/page-initial & final acrostic streams; R02 R10 L2 M2 word gematria sums -> symbol stream; R03 R10 L2 M3 word-length bits (ASCII/Baconian); R04 R10 L2 M4 LP2 word numbers as pointers into the solved LP1 English word list ('its words are the map', 'meaning = LP1'); R05 R10 L2 M5 word-level walk w <- w +/- f(word); R06 R10 L2 M6 structural counts (words/line, per page) as message; R07 R10 L2 M7 word-level transposition (IoC*N=1.0000); R08 R10 L2 M8 LP1 English word-length skeleton vs LP2 word lengths; R09 R10 L2 M9 word numbers as direct addresses into the rune stream",
+   "three_conditionals": {
+    "key_space": "ciphertext word/line boundary positions, 29 shifts x atbash x reverse; 2,928 word sums mod 29/26; 4 predicates x polarity x offsets; 6 pointer families, ~750-word target; 6 f x 32 starts x 2 dirs; 5 sequences; n/a; LP1+AN END+PARABLE ~752 words; 10 families x 29 shifts",
+    "transition_model": "none: cleartext-layer / key-free reads of the CIPHERTEXT's word, line and page structure",
+    "adjudicator_register": "ENGLISH ONLY: rune 4-gram trained on English-in-futhorc and English score_norm (no non-English register, no panel)"
+   },
+   "positive_control": "none for the Round 9/10 reads except the L3 T2-T4 validation gate (oracle z=79.7); round10/SYNTHESIS.md 'Instrument caveats'",
+   "not_covered": "; counts used as KEY SCHEDULE for decode (not as message); multi-bit predicates; non-English; no positive control recorded for the walk family (inherits R9); non-English; sums as keystream (not symbol stream); only English LP1 register as skeleton; target = LP1 only; no gematria-sum-of-LP1 as pointer INTO LP2; no Latin/other target; words of the DECODED plaintext; non-English registers; acrostic over word-numbers; the DECODED (keyed) plaintext layer; non-English registers; anything under beam_v3 / panel-R36 (R37 C1 re-reads the clue as keys/schedules, not these cleartext reads)",
+   "evidence": [
+    "liber-primus/analysis/round10/L2-map/PREREG-ADDENDUM-E.md:23-35",
+    "liber-primus/analysis/round10/L2-map/PREREG.md:102-108",
+    "liber-primus/analysis/round10/L2-map/PREREG.md:109-114",
+    "liber-primus/analysis/round10/L2-map/PREREG.md:115-120",
+    "liber-primus/analysis/round10/L2-map/PREREG.md:121-130",
+    "liber-primus/analysis/round10/L2-map/PREREG.md:59-76; round10/L2-map/results.json G1,M1; diag_lineinit.json D1",
+    "liber-primus/analysis/round10/L2-map/PREREG.md:77-83",
+    "liber-primus/analysis/round10/L2-map/PREREG.md:84-90",
+    "liber-primus/analysis/round10/L2-map/PREREG.md:91-100; results.json M4"
+   ],
+   "notes": "M1 pooled best z=6.94 (first-of-word/noF atbash/rev/+28; absolute -16.51 vs English threshold -13.5) never re-scored outside English (O4 U5). G1 fired on line-initial (z=6.35), explained by width-greedy typesetting r=0.72."
+  },
+  {
+   "id": "R10-L3-ROAD",
+   "round": 10,
+   "lane": "L3-road",
+   "date": "2026-08 (round 10; documented by O4 2026-10-30)",
+   "status": "measured",
+   "kind": "retro-row written by C1 from O4 readings.json; code not re-run",
+   "hypothesis": "'Their meaning is the road': word/sentence/line/page gematria sums marked, mapped to symbols, used for selection/reordering, or as pointers into key text.",
+   "result": "R10: NEGATIVE | R11: NEGATIVE; validation gate oracle z=79.7 | R12: NEGATIVE (confirmatory only)",
+   "coverage": "R10 R10 L3 T1 word/sentence/line/page gematria sums marked (prime/emirp/phi-shaped/Cicada constants); R11 R10 L3 T2-T4 sum -> symbol / word selection by predicate / reorder by sum; R12 R10 L3 T5 sum as pointer into a key text",
+   "three_conditionals": {
+    "key_space": "all LP2 CIPHERTEXT word sums; 5 readings; high-prior key texts",
+    "transition_model": "none: cleartext-layer / key-free reads of the CIPHERTEXT's word, line and page structure",
+    "adjudicator_register": "ENGLISH ONLY: rune 4-gram trained on English-in-futhorc and English score_norm (no non-English register, no panel)"
+   },
+   "positive_control": "none for the Round 9/10 reads except the L3 T2-T4 validation gate (oracle z=79.7); round10/SYNTHESIS.md 'Instrument caveats'",
+   "not_covered": "; applies to ciphertext words only; never to DECODED lines (LP1 line sums are all prime - designed property); texts predate B-16 correction; the DECODED (keyed) plaintext layer; non-English registers; anything under beam_v3 / panel-R36 (R37 C1 re-reads the clue as keys/schedules, not these cleartext reads)",
+   "evidence": [
+    "liber-primus/analysis/round10/L3-road/PREREG.md:116-124; road_results.json T1a/T1b",
+    "liber-primus/analysis/round10/L3-road/PREREG.md:116-125",
+    "liber-primus/analysis/round10/L3-road/PREREG.md:124"
+   ],
+   "notes": "Sums were of the LP2 ciphertext's own words only (never LP1 plaintext numbers as a key schedule; that is R37 C1 U2)."
+  }
+ ]
+}

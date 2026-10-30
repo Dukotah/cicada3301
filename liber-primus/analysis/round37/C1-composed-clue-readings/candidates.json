@@ -1,0 +1,758 @@
+{
+ "note": "dedupe key = letters-only uppercase; covered_by = normalized string present among round13/B04 build() text seeds (all 4 byte forms -> SHA/PBKDF2 routes, 534 secrets incl.) or round26/C str seeds. Covered strings are NOT re-run; direct-text-key route for them was only done as legacy-beam Vigenere keywords in round10b (B1).",
+ "n_candidates": 42,
+ "n_covered": 41,
+ "candidates": [
+  {
+   "as_written": "Liber Primus is the way.",
+   "upper": "LIBER PRIMUS IS THE WAY",
+   "norm": "LIBERPRIMUSISTHEWAY",
+   "source": "C-2016-2",
+   "group": "2016-clause",
+   "id": "U1-000"
+  },
+  {
+   "as_written": "Its words are the map,",
+   "upper": "ITS WORDS ARE THE MAP",
+   "norm": "ITSWORDSARETHEMAP",
+   "source": "C-2016-3",
+   "group": "2016-clause",
+   "id": "U1-001"
+  },
+  {
+   "as_written": "their meaning is the road,",
+   "upper": "THEIR MEANING IS THE ROAD",
+   "norm": "THEIRMEANINGISTHEROAD",
+   "source": "C-2016-4",
+   "group": "2016-clause",
+   "id": "U1-002"
+  },
+  {
+   "as_written": "and their numbers are the direction.",
+   "upper": "AND THEIR NUMBERS ARE THE DIRECTION",
+   "norm": "ANDTHEIRNUMBERSARETHEDIRECTION",
+   "source": "C-2016-5",
+   "group": "2016-clause",
+   "id": "U1-003"
+  },
+  {
+   "as_written": "The path lies empty; epiphany seeks the devoted.",
+   "upper": "THE PATH LIES EMPTY EPIPHANY SEEKS THE DEVOTED",
+   "norm": "THEPATHLIESEMPTYEPIPHANYSEEKSTHEDEVOTED",
+   "source": "C-2016-1",
+   "group": "2016-clause",
+   "id": "U1-004"
+  },
+  {
+   "as_written": "The path lies empty",
+   "upper": "THE PATH LIES EMPTY",
+   "norm": "THEPATHLIESEMPTY",
+   "source": "C-2016-1",
+   "group": "2016-clause",
+   "id": "U1-005"
+  },
+  {
+   "as_written": "epiphany seeks the devoted",
+   "upper": "EPIPHANY SEEKS THE DEVOTED",
+   "norm": "EPIPHANYSEEKSTHEDEVOTED",
+   "source": "C-2016-1",
+   "group": "2016-clause",
+   "id": "U1-006"
+  },
+  {
+   "as_written": "Its words are the map, their meaning is the road, and their numbers are the direction.",
+   "upper": "ITS WORDS ARE THE MAP THEIR MEANING IS THE ROAD AND THEIR NUMBERS ARE THE DIRECTION",
+   "norm": "ITSWORDSARETHEMAPTHEIRMEANINGISTHEROADANDTHEIRNUMBERSARETHEDIRECTION",
+   "source": "C-2016-3..5",
+   "group": "2016-composition",
+   "id": "U1-007"
+  },
+  {
+   "as_written": "Liber Primus is the way. Its words are the map, their meaning is the road, and their numbers are the direction.",
+   "upper": "LIBER PRIMUS IS THE WAY ITS WORDS ARE THE MAP THEIR MEANING IS THE ROAD AND THEIR NUMBERS ARE THE DIRECTION",
+   "norm": "LIBERPRIMUSISTHEWAYITSWORDSARETHEMAPTHEIRMEANINGISTHEROADANDTHEIRNUMBERSARETHEDIRECTION",
+   "source": "C-2016-2..5",
+   "group": "2016-composition",
+   "id": "U1-008"
+  },
+  {
+   "as_written": "Its words are the map, their meaning is the road, and their numbers are the direction. Liber Primus is the way.",
+   "upper": "ITS WORDS ARE THE MAP THEIR MEANING IS THE ROAD AND THEIR NUMBERS ARE THE DIRECTION LIBER PRIMUS IS THE WAY",
+   "norm": "ITSWORDSARETHEMAPTHEIRMEANINGISTHEROADANDTHEIRNUMBERSARETHEDIRECTIONLIBERPRIMUSISTHEWAY",
+   "source": "C-2016-2..5",
+   "group": "2016-composition",
+   "id": "U1-009"
+  },
+  {
+   "as_written": "words map meaning road numbers direction",
+   "upper": "WORDS MAP MEANING ROAD NUMBERS DIRECTION",
+   "norm": "WORDSMAPMEANINGROADNUMBERSDIRECTION",
+   "source": "C-2016-3..5 keywords",
+   "group": "2016-composition",
+   "id": "U1-010"
+  },
+  {
+   "as_written": "the way",
+   "upper": "THE WAY",
+   "norm": "THEWAY",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-011"
+  },
+  {
+   "as_written": "the map",
+   "upper": "THE MAP",
+   "norm": "THEMAP",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-012"
+  },
+  {
+   "as_written": "the road",
+   "upper": "THE ROAD",
+   "norm": "THEROAD",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-013"
+  },
+  {
+   "as_written": "the direction",
+   "upper": "THE DIRECTION",
+   "norm": "THEDIRECTION",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-014"
+  },
+  {
+   "as_written": "map",
+   "upper": "MAP",
+   "norm": "MAP",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-015"
+  },
+  {
+   "as_written": "road",
+   "upper": "ROAD",
+   "norm": "ROAD",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-016"
+  },
+  {
+   "as_written": "direction",
+   "upper": "DIRECTION",
+   "norm": "DIRECTION",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-017"
+  },
+  {
+   "as_written": "seeks",
+   "upper": "SEEKS",
+   "norm": "SEEKS",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-018"
+  },
+  {
+   "as_written": "the devoted",
+   "upper": "THE DEVOTED",
+   "norm": "THEDEVOTED",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-019"
+  },
+  {
+   "as_written": "devoted",
+   "upper": "DEVOTED",
+   "norm": "DEVOTED",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-020"
+  },
+  {
+   "as_written": "the path",
+   "upper": "THE PATH",
+   "norm": "THEPATH",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-021"
+  },
+  {
+   "as_written": "path",
+   "upper": "PATH",
+   "norm": "PATH",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-022"
+  },
+  {
+   "as_written": "its words",
+   "upper": "ITS WORDS",
+   "norm": "ITSWORDS",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-023"
+  },
+  {
+   "as_written": "their meaning",
+   "upper": "THEIR MEANING",
+   "norm": "THEIRMEANING",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-024"
+  },
+  {
+   "as_written": "their numbers",
+   "upper": "THEIR NUMBERS",
+   "norm": "THEIRNUMBERS",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-025"
+  },
+  {
+   "as_written": "meaning",
+   "upper": "MEANING",
+   "norm": "MEANING",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-026"
+  },
+  {
+   "as_written": "the words",
+   "upper": "THE WORDS",
+   "norm": "THEWORDS",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-027"
+  },
+  {
+   "as_written": "the numbers",
+   "upper": "THE NUMBERS",
+   "norm": "THENUMBERS",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-028"
+  },
+  {
+   "as_written": "the meaning",
+   "upper": "THE MEANING",
+   "norm": "THEMEANING",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-029"
+  },
+  {
+   "as_written": "an empty path",
+   "upper": "AN EMPTY PATH",
+   "norm": "ANEMPTYPATH",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-030"
+  },
+  {
+   "as_written": "epiphany seeks",
+   "upper": "EPIPHANY SEEKS",
+   "norm": "EPIPHANYSEEKS",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-031"
+  },
+  {
+   "as_written": "seek epiphany",
+   "upper": "SEEK EPIPHANY",
+   "norm": "SEEKEPIPHANY",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-032"
+  },
+  {
+   "as_written": "the path lies empty epiphany",
+   "upper": "THE PATH LIES EMPTY EPIPHANY",
+   "norm": "THEPATHLIESEMPTYEPIPHANY",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "id": "U1-033"
+  },
+  {
+   "as_written": "QUESTION ALL THINGS",
+   "upper": "QUESTION ALL THINGS",
+   "norm": "QUESTIONALLTHINGS",
+   "source": "LP1-0.4.1.1 standard spelling",
+   "group": "LP1-imperative-fragment",
+   "id": "U1-034"
+  },
+  {
+   "as_written": "BE PREPARED",
+   "upper": "BE PREPARED",
+   "norm": "BEPREPARED",
+   "source": "LP1-0.3.1.3 head",
+   "group": "LP1-imperative-fragment",
+   "id": "U1-035"
+  },
+  {
+   "as_written": "DISCOVER TRUTH",
+   "upper": "DISCOVER TRUTH",
+   "norm": "DISCOVERTRUTH",
+   "source": "LP1-0.4.1.2 head",
+   "group": "LP1-imperative-fragment",
+   "id": "U1-036"
+  },
+  {
+   "as_written": "SEEK OUT THIS PAGE",
+   "upper": "SEEK OUT THIS PAGE",
+   "norm": "SEEKOUTTHISPAGE",
+   "source": "LP1-0.13.0.2 tail",
+   "group": "LP1-imperative-fragment",
+   "id": "U1-037"
+  },
+  {
+   "as_written": "BELIEVE NOTHING",
+   "upper": "BELIEVE NOTHING",
+   "norm": "BELIEVENOTHING",
+   "source": "LP1-0.0.0.1 head",
+   "group": "LP1-imperative-fragment",
+   "id": "U1-038"
+  },
+  {
+   "as_written": "QUESTION",
+   "upper": "QUESTION",
+   "norm": "QUESTION",
+   "source": "std spelling",
+   "group": "LP1-imperative-fragment",
+   "id": "U1-039"
+  },
+  {
+   "as_written": "IMPOSE NOTHING",
+   "upper": "IMPOSE NOTHING",
+   "norm": "IMPOSENOTHING",
+   "source": "LP1-0.4.1.4 head",
+   "group": "LP1-imperative-fragment",
+   "id": "U1-040"
+  },
+  {
+   "as_written": "NEVER BECOME ATTACHED",
+   "upper": "NEVER BECOME ATTACHED",
+   "norm": "NEVERBECOMEATTACHED",
+   "source": "LP1-0.3.1.2 head",
+   "group": "LP1-imperative-fragment",
+   "id": "U1-041"
+  }
+ ],
+ "already_covered": [
+  {
+   "as_written": "their numbers are the direction",
+   "upper": "THEIR NUMBERS ARE THE DIRECTION",
+   "norm": "THEIRNUMBERSARETHEDIRECTION",
+   "source": "C-2016-5",
+   "group": "2016-clause",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "way",
+   "upper": "WAY",
+   "norm": "WAY",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "epiphany",
+   "upper": "EPIPHANY",
+   "norm": "EPIPHANY",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "seek",
+   "upper": "SEEK",
+   "norm": "SEEK",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "words",
+   "upper": "WORDS",
+   "norm": "WORDS",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "numbers",
+   "upper": "NUMBERS",
+   "norm": "NUMBERS",
+   "source": "C-2016 noun phrase",
+   "group": "2016-noun-phrase",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "BELIEVE NOTHING FROM THIS BOOK",
+   "upper": "BELIEVE NOTHING FROM THIS BOOK",
+   "norm": "BELIEVENOTHINGFROMTHISBOOK",
+   "source": "LP1-0.0.0.1",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "EXCEPT WHAT YOU KNOW TO BE TRUE",
+   "upper": "EXCEPT WHAT YOU KNOW TO BE TRUE",
+   "norm": "EXCEPTWHATYOUKNOWTOBETRUE",
+   "source": "LP1-0.0.0.2",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "TEST THE KNOWLEDGE",
+   "upper": "TEST THE KNOWLEDGE",
+   "norm": "TESTTHEKNOWLEDGE",
+   "source": "LP1-0.0.0.3",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "FIND YOUR TRUTH",
+   "upper": "FIND YOUR TRUTH",
+   "norm": "FINDYOURTRUTH",
+   "source": "LP1-0.0.0.4",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "EXPERIENCE YOUR DEATH",
+   "upper": "EXPERIENCE YOUR DEATH",
+   "norm": "EXPERIENCEYOURDEATH",
+   "source": "LP1-0.0.0.5",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "DO NOT EDIT OR CHANGE THIS BOOK",
+   "upper": "DO NOT EDIT OR CHANGE THIS BOOK",
+   "norm": "DONOTEDITORCHANGETHISBOOK",
+   "source": "LP1-0.0.0.6",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "OR THE MESSAGE CONTAINED WITHIN",
+   "upper": "OR THE MESSAGE CONTAINED WITHIN",
+   "norm": "ORTHEMESSAGECONTAINEDWITHIN",
+   "source": "LP1-0.0.0.7",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "EITHER THE WORDS OR THEIR NUMBERS",
+   "upper": "EITHER THE WORDS OR THEIR NUMBERS",
+   "norm": "EITHERTHEWORDSORTHEIRNUMBERS",
+   "source": "LP1-0.0.0.8",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "FOR ALL IS SACRED",
+   "upper": "FOR ALL IS SACRED",
+   "norm": "FORALLISSACRED",
+   "source": "LP1-0.0.0.9",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "JOURNEY DEEP WITHIN AND YOU WILL ARRIVE OUTSIDE",
+   "upper": "JOURNEY DEEP WITHIN AND YOU WILL ARRIVE OUTSIDE",
+   "norm": "JOURNEYDEEPWITHINANDYOUWILLARRIVEOUTSIDE",
+   "source": "LP1-0.1.0.6",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "AN INSTRUCTION COMMAND YOUR OWN SELF",
+   "upper": "AN INSTRUCTION COMMAND YOUR OWN SELF",
+   "norm": "ANINSTRUCTIONCOMMANDYOUROWNSELF",
+   "source": "LP1-0.1.1.5",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "ALL THINGS SHOULD BE ENCRYPTED",
+   "upper": "ALL THINGS SHOULD BE ENCRYPTED",
+   "norm": "ALLTHINGSSHOULDBEENCRYPTED",
+   "source": "LP1-0.1.2.3",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "KNOW THIS",
+   "upper": "KNOW THIS",
+   "norm": "KNOWTHIS",
+   "source": "LP1-0.1.3.0",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04",
+    "round26/C"
+   ]
+  },
+  {
+   "as_written": "DO FOUR UNREASONABLE THINGS EACH DAY",
+   "upper": "DO FOUR UNREASONABLE THINGS EACH DAY",
+   "norm": "DOFOURUNREASONABLETHINGSEACHDAY",
+   "source": "LP1-0.2.1.1",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "AMASS GREAT WEALTH",
+   "upper": "AMASS GREAT WEALTH",
+   "norm": "AMASSGREATWEALTH",
+   "source": "LP1-0.3.1.1",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "NEVER BECOME ATTACHED TO WHAT YOU OWN",
+   "upper": "NEVER BECOME ATTACHED TO WHAT YOU OWN",
+   "norm": "NEVERBECOMEATTACHEDTOWHATYOUOWN",
+   "source": "LP1-0.3.1.2",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "BE PREPARED TO DESTROY ALL THAT YOU OWN",
+   "upper": "BE PREPARED TO DESTROY ALL THAT YOU OWN",
+   "norm": "BEPREPAREDTODESTROYALLTHATYOUOWN",
+   "source": "LP1-0.3.1.3",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "PROGRAM YOUR MIND",
+   "upper": "PROGRAM YOUR MIND",
+   "norm": "PROGRAMYOURMIND",
+   "source": "LP1-0.3.2.1",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "PROGRAM REALITY",
+   "upper": "PROGRAM REALITY",
+   "norm": "PROGRAMREALITY",
+   "source": "LP1-0.3.2.2",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "KWESTION ALL THINGS",
+   "upper": "KWESTION ALL THINGS",
+   "norm": "KWESTIONALLTHINGS",
+   "source": "LP1-0.4.1.1",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "DISCOVER TRUTH INSIDE YOURSELF",
+   "upper": "DISCOVER TRUTH INSIDE YOURSELF",
+   "norm": "DISCOVERTRUTHINSIDEYOURSELF",
+   "source": "LP1-0.4.1.2",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "FOLLOW YOUR TRUTH",
+   "upper": "FOLLOW YOUR TRUTH",
+   "norm": "FOLLOWYOURTRUTH",
+   "source": "LP1-0.4.1.3",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "IMPOSE NOTHING ON OTHERS",
+   "upper": "IMPOSE NOTHING ON OTHERS",
+   "norm": "IMPOSENOTHINGONOTHERS",
+   "source": "LP1-0.4.1.4",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "IT IS THE DUTY OF EVERY PILGRIM TO SEEK OUT THIS PAGE",
+   "upper": "IT IS THE DUTY OF EVERY PILGRIM TO SEEK OUT THIS PAGE",
+   "norm": "ITISTHEDUTYOFEVERYPILGRIMTOSEEKOUTTHISPAGE",
+   "source": "LP1-0.13.0.2",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "WITHIN THE DEEP WEB, THERE EXISTS A PAGE THAT HASHES TO",
+   "upper": "WITHIN THE DEEP WEB THERE EXISTS A PAGE THAT HASHES TO",
+   "norm": "WITHINTHEDEEPWEBTHEREEXISTSAPAGETHATHASHESTO",
+   "source": "LP1-0.13.0.1",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "FIND THE DIVINITY WITHIN AND EMERGE",
+   "upper": "FIND THE DIVINITY WITHIN AND EMERGE",
+   "norm": "FINDTHEDIVINITYWITHINANDEMERGE",
+   "source": "LP1-0.14.0.3",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "WE MUST SHED OUR OWN CIRCUMFERENCES",
+   "upper": "WE MUST SHED OUR OWN CIRCUMFERENCES",
+   "norm": "WEMUSTSHEDOUROWNCIRCUMFERENCES",
+   "source": "LP1-0.14.0.2",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "WELCOME, PILGRIM, TO THE GREAT JOURNEY TOWARD THE END OF ALL THINGS",
+   "upper": "WELCOME PILGRIM TO THE GREAT JOURNEY TOWARD THE END OF ALL THINGS",
+   "norm": "WELCOMEPILGRIMTOTHEGREATJOURNEYTOWARDTHEENDOFALLTHINGS",
+   "source": "LP1-0.1.0.1",
+   "group": "LP1-imperative",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "COMMAND YOUR OWN SELF",
+   "upper": "COMMAND YOUR OWN SELF",
+   "norm": "COMMANDYOUROWNSELF",
+   "source": "LP1-0.1.1.5 tail",
+   "group": "LP1-imperative-fragment",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "PROGRAM",
+   "upper": "PROGRAM",
+   "norm": "PROGRAM",
+   "source": "LP1-0.3.2.1/2 head",
+   "group": "LP1-imperative-fragment",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "AMASS",
+   "upper": "AMASS",
+   "norm": "AMASS",
+   "source": "LP1-0.3.1.1 head",
+   "group": "LP1-imperative-fragment",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "EMERGE",
+   "upper": "EMERGE",
+   "norm": "EMERGE",
+   "source": "LP1-0.14.0.3 tail",
+   "group": "LP1-imperative-fragment",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "TEST",
+   "upper": "TEST",
+   "norm": "TEST",
+   "source": "LP1-0.0.0.3 head",
+   "group": "LP1-imperative-fragment",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "EXPERIENCE",
+   "upper": "EXPERIENCE",
+   "norm": "EXPERIENCE",
+   "source": "LP1-0.0.0.5 head",
+   "group": "LP1-imperative-fragment",
+   "covered_by": [
+    "round13/B04"
+   ]
+  },
+  {
+   "as_written": "KWESTION",
+   "upper": "KWESTION",
+   "norm": "KWESTION",
+   "source": "LP1-0.4.1.1 head",
+   "group": "LP1-imperative-fragment",
+   "covered_by": [
+    "round13/B04"
+   ]
+  }
+ ],
+ "b04_norm_seed_count": 804,
+ "r26c_str_seeds": 31
+}
