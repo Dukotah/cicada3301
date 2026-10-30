@@ -1,0 +1,27 @@
+{
+ "$comment": "written by R36 O3 lane agent",
+ "entries": [
+  {
+   "id": "R36-O3-NEARMISS-1354603465",
+   "round": 36,
+   "lane": "O3",
+   "date": "2026-10-30",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "plant.json: bash 4.2 seed 1354603465 as key, enc_pair supp .83, 3 held-out plaintexts (2 EN_MODERN windows + LP1 pages 0-2) x L {120,240,262,400,729}: recovery 0.992-1.000, pmax 13.8-70.8 growing with L, above every null q99.9/max, decodes read as the plaintext.",
+   "hypothesis": "bash 4.2 $RANDOM%29 seed 1354603465 (keyskip2, LP64; pmax 7.068 LP1_REAL at L=120, R32 B1 / R33 X1 / R35 B1) is the true LP2 keystream generator.",
+   "coverage": "Reproduced exactly (7.068 LP64, 6.762 ILP32, beam_w 400). Grid 2,383/2,972 cells: both ABIs x keyskip1/keyskip2/free x sign +-1 x L {120,240,262,400,729} x key offset 0..28 and cipher offset 0..28 (one axis at a time); full for L<=262, partial for L=400/729. Nulls: 2000 LP64 + 1000 ILP32 ks2 L120, 1000 L262, 400 L729, 500 ks1 L120, free 300/150/100 at L 120/262/729, 30-seed grid-matched null; 9- and 12-register panels.",
+   "result": "NOISE. A: 0/2000 per-draw but family-wise P(best of 69,017 >= 7.068)=0.20 (ILP32 0.56); excess over size-matched null falls 4.85 -> 3.58 -> 1.08 with L (pmax 7.068 -> 6.64 -> 5.75; L=729 at the 97.5th pct). B: argmax wanders over 5 registers; held-out windows 1-5 mean pmax 1.73 vs null median 2.19. C: decode has no word structure (IoC*N 0.99-1.02, word hits at null level) while plants read verbatim.",
+   "threshold": "bar_v3 lp2 keyskip2: 8.06 (N=69,017) / 9.03 (1e6) at L=120; POT 8.24 / 9.25; verifier-A empirical quantiles at L=262/729.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "this seed only, bash 4.2 LP64/ILP32 %29, offsets 0..28 one axis at a time",
+    "transition_model": "keyskip1/keyskip2/free beam_v3 panel_max beam_w 400",
+    "adjudicator_register": "R32 9-register + R36 12-register trigram panels; null = unfiltered random in-orbit seeds"
+   },
+   "not_covered": "589 offset-axis cells at L=400 (ILP32) and L=729 (all but LP64 ks2 sign -1); offset product grid; pf_v4-filtered null; free-relation null beyond n=100 at L=729 (ILP32 free L=729 15.15 > null max 14.33); other generators/constructions.",
+   "flagged_for_oracle": false,
+   "artifacts": ["PREREG.md", "autopsy.py", "report.py", "cells.json", "nulls.json", "plant.json", "verif_raw.json", "verifiers.json", "decode_text.md", "RESULTS.md"]
+  }
+ ]
+}
