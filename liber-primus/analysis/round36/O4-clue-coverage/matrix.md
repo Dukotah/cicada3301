@@ -1,3 +1,5 @@
+> **Counts superseded (coordinator, 2026-10-30):** NEVER 68 → 66 (Round 36 X1: H7×F2, H12×F2 were run English-only/legacy) → **60** after Round 37 C1/C2/C3 (recount in `../../round37/X1-redteam/o4_recount.json`); English-only/legacy 46, TRIED 31, PARTIAL 3.
+
 # O4 matrix - clue row x reading family
 
 Cell codes: T = TRIED (instrument-independent or current instrument, controls stated); T-EN = TRIED-ENGLISH-ONLY; T-LEG = TRIED-LEGACY-BEAM (pre-beam_v3 decoder, 9-register or English panel); PART = PARTIAL; T-NOCTL = tried, no positive control; NEVER = applicable cell with no reading; '.' = family not applicable to that clue. Reading ids (R01..R49) are listed in each cell and defined in readings.json.

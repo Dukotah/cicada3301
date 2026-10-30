@@ -1,0 +1,33 @@
+{
+  "lane": "X1",
+  "date": "2026-10-30",
+  "entries": [
+    {
+      "id": "R37-X1-REDTEAM",
+      "round": 37,
+      "lane": "X1",
+      "lane_dir": "X1-redteam",
+      "date": "2026-10-30",
+      "status": "audit",
+      "hypothesis": "Round 37's own claims (C1 composed clue readings, C2 U4/U7/U8, C3 re-scores, T1 plumbing) and the Round 36 X1 carry-overs survive a refute-by-default audit.",
+      "result": "FOUND-ERROR: (1) U4 line boundaries misaligned on pages with interrupters (03: 4/8 -> 3/8, pooled 22 -> 21/60, pages p<0.05 2 -> 1; verdict NO-SEPARATION unchanged); (2) C1 candidates.json omits 2 of the 7 signed-2016 clauses ('Seek and you will be found', 'Beware false paths. Verify OpenPGP 7A35090F'), and U2's 'line' sequences use koans-file lines that match the printed lines (data/scream314_lp.md) only on A WARNING, contrary to C1's 'not otherwise recorded'; (3) C1 U3 'literal' label is C1's operationalization (skipped: lagged cipher-word gematria pointer, O4 U3 seed orders, & $ boundaries; semantic 'meaning' untested); (4) C3 swapped the null (and added a two-statistic rule) after seeing first-pass real-data p(Z) < 0.01 on N1-PT, N2, N4-read -> threshold_fixed_in_advance=false on 4 rows; (5) C3 patch wording 'replaced ... remains negative' wrong for measured rows (applied corrected); (6) O4 matrix.md / untried.md / counts.json still say NEVER 68 although RESULTS says 66 (H7xF2, H12xF2 not edited). (7) I1 RESULTS.md headline predates the coordinator-ordered control completion (says no register passed at L=400/729; addendum, ledger and stream say 12/12 at L=400 (OE 19/20) and 12/12 at L=729), and bar_v3(..,120,'free') still returns the R34 9-register node while L>=240 are 12-register nodes. NO-ERROR-FOUND: I1 fit/bars/controls recomputed from raw streams, I2 FPR/power/store/bars recomputed (every register >= 0.952, 0 flagged), C1 re-runs (U1 x2, U3 x3 fresh-seed plants), C1 addendum append (17,392 rows, header unchanged), U4 decision rule fixed before data, U7 index-alphabet null and control-B explanation, U8 inconclusive label, C3 degenerate filter (constant outputs only), C3 z=6.94 re-score (pmax 3.94, single-reading p ~0.07), N5 bars (6.897), T1 backward compatibility, I1-R36 doc corrections, B2/S1 patch supersession, capsule PASS. See analysis/round37/X1-redteam/RESULTS.md.",
+      "coverage": "Targets 1-8 of the Round 37 X1 brief; re-run artefacts rerun_*.json in the lane dir. I1 (free null) and I2 (pf_v4_12 orbit re-screen) were audited LAST, after their RESULTS.md existed (I1 14:54, I2 15:15).",
+      "positive_control": "n/a (audit: recomputation and coverage restatement; no null)",
+      "threshold": "n/a (audit)",
+      "threshold_fixed_in_advance": true,
+      "not_covered": "The C3 doublet-matched null itself was spot-checked on one stream, not re-derived for the other families; O4 applicability judgments (the NEVER recount uses X1's own cell assignments, listed in o4_recount.json); the semantic reading of 'meaning'; I1 null draws (562-1335) and the I2 chunk path were not re-run (statistics recomputed from persisted streams only).",
+      "reproduce": "python analysis/round37/X1-redteam/rerun_c1.py; rerun_u4.py; rerun_u7_controlB.py; rerun_z694.py; rerun_t1.py; o4_recount.py; apply_ledger.py; rerun_i1_fit.json (inline), apply_nav.py",
+      "evidence": [
+        "liber-primus/analysis/round37/X1-redteam/RESULTS.md",
+        "liber-primus/analysis/round37/X1-redteam/rerun_c1.json",
+        "liber-primus/analysis/round37/X1-redteam/rerun_u4.json",
+        "liber-primus/analysis/round37/X1-redteam/rerun_u7_controlB.json",
+        "liber-primus/analysis/round37/X1-redteam/rerun_z694.json",
+        "liber-primus/analysis/round37/X1-redteam/rerun_t1.json",
+        "liber-primus/analysis/round37/X1-redteam/o4_recount.json",
+        "liber-primus/analysis/round37/X1-redteam/rerun_i1_fit.json"
+      ],
+      "notes": "O4 recount after R36-X1 correction and Round 37 lanes: NEVER 60 (was 68 as filed, 66 after R36 X1), TRIED-EN/LEG 46, TRIED 31, PARTIAL 3 (sum 140). Seven FOUND-ERRORs, none changes a verdict."
+    }
+  ]
+}

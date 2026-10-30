@@ -1,3 +1,5 @@
+> **Counts superseded (coordinator, 2026-10-30):** NEVER 68 → 66 (Round 36 X1: H7×F2, H12×F2 were run English-only/legacy) → **60** after Round 37 C1/C2/C3 (recount in `../../round37/X1-redteam/o4_recount.json`); English-only/legacy 46, TRIED 31, PARTIAL 3.
+
 # O4 untried.md - ranked NEVER and English-only/legacy cells
 
 Date 2026-10-30. Source: matrix.md (34 clue rows x 11 families, 140 applicable cells: 68 NEVER, 24 TRIED-ENGLISH-ONLY,

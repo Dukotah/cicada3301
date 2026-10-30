@@ -21,19 +21,19 @@
     "audit"
   ],
   "counts": {
-    "total": 220,
+    "total": 244,
     "by_status": {
-      "open": 19,
-      "measured": 71,
+      "open": 18,
       "superseded": 3,
-      "negative": 59,
+      "negative": 74,
+      "partially-run": 18,
+      "eliminated": 5,
       "never-run": 8,
-      "partially-run": 17,
-      "audit": 37,
-      "inconclusive": 1,
-      "eliminated": 5
+      "measured": 76,
+      "audit": 38,
+      "inconclusive": 4
     },
-    "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF. Round 18 merged 2026-08-26: 8 lanes, 31 fragment entries. L7 restated the coverage of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD and B-21 -- every prior negative in this repo is an English-register negative, which no entry had stated. Original coverage text is preserved in each entry's `restated_from`. Two statuses were added in the Round 18 merge: `measured` (a definite non-null determination) and `audit` (a recomputation or coverage restatement, which has no null and no threshold). The positive-control gate still applies to `negative`/`eliminated` only, so it retains exactly its former force. | Round 19 merged 2026-08-26: 41 new entries, 10 restated. Instrument repaired (I1 decoder, I2 adjudicator, I3 thresholds); the -5.5 bar was wrong in 14/14 historical sweeps, usually too strict, and no verdict flips. Transcription closed by T1/T2/T3 from three independent directions: canon is correct. Payload bytes 45/50/246 corrected by C1, voiding B-05, which was re-run clean. | Round 21 merged 2026-08-29: 4 lane entries (R21-L1-SEAL, R21-L2-NSKIPS-CROSSOVER-LENGTH, R21-L3-PY27-REDUCERS, R21-L5-REDTEAM-SEAL). L1 KILL: the no-oracle disjoint-fold seal is provably leaky (best 0.80 catch @ 0.20 false-reject, cannot reach the pre-registered 0.90 bar; held-out false-reject drifts to 0.167) -> Round 21 HIT auto-certification WITHHELD, bar-clearing survivors flagged-for-oracle. L3 CLEAN NEGATIVE: 884k words across grb5_mod/grb5_rej/shuffle29 (i386) + random29 (amd64), 0 hits, 4/4 positive controls recover 1.000, best pmax 6.248 vs 7.634 bar; family bounded (>99.99% flat-prior tail + 2^64 amd64 image + S-G3 gaps) NOT closed. L2 (instrument): n_skips crossover L*=6000 on the exact keyskip1 relation (bracket (3600,6000]) -- any whole-book n_skips adjudication needs a window >= ~6000 runes; drift 'separation' is a left-tail artifact, skip_by_two is beam-unrepresentable. L5 red-team MIXED: confirms L1-KILL, and NO-ERROR-FOUND on no-silent-re-run, FP-inflation-not-reintroduced, and honest row gate. OTP-class verdict for LP2 0-54 UNCHANGED. NB: R20 lane bodies (P1/P2/P3/R/N1/N2) remain in analysis/round20/ prose; only L1-PRIOR-PROPAGATION and C-CANON-PAYLOAD-3BYTES were given central rows in the R20 merge. Round 22 merged 2026-08-29 (coordinator): 5 lanes. Lane B pre-merged R22-B-TURTLE + R22-C-LITERAL-IMPERATIVES (130->132); coordinator appended R22-A-SELFEMBEDDED-READ, R22-D-ILLUSTRATION-DROPCAP (both negative, control-validated) and R22-R-REDTEAM (audit, NO-ERROR-FOUND) -> 132->135. Round 22 read the four signed-hint channels for the first time: self-embedded plaintext acrostic (X2/A), numbers-as-direction (G1/B), koans-as-operations (X1/X3/X4/C), art-as-data (S3/D) -- all CLEAN control-validated NEGATIVES. Standing verdict unchanged: LP2 0-54 remains OTP-class. Sharpest surviving reopener = A's printed-line-geometry acrostic (real page-image line breaks). validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 26 merged 2026-08-31 (coordinator): 4 entries (R26-A-GEN-SWEEP-FIRST-FIRE partially-run, R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE partially-run, R26-C-SEMANTIC-SEED-ZOO negative, R26-D-REDTEAM audit). Lane A fired the built-but-never-swept generators for the FIRST time (R19-G2 Perl: was ZERO seeds; G4-TEX: was ZERO decodes) plus the Py2.7 reducers on the DISTINCT amd64-w64 / non-zero-offset / keyskip2 axis un-covered by R21-L3 -- control-validated at 1.000 recovery per generator, 0 clears over the prior-dense front (baseline tail still running, interim). Lane B executed R12-C2s staged-but-never-run 33-keytext running-key sweep skip-aware (rigid was already doublet-excluded): 0/1,562 clears, 3 of 9 pages complete at 4 offsets, control 1.000 both presets. Lane C enumerated the bounded 323-value corpus-SEMANTIC seed set x 7 generators (incl. the page-56 totient/prime ladder that solves page 05) x 2 skip-aware decoders = 4,274 rows at 100% coverage, control min recovery 0.9917, best screen -6.578 (flat-random), 0 escalated. Lane D red-team: NO-ERROR-FOUND, coverage x power reproduced, no silent re-run, no FP-inflation, two MINOR hygiene defects noted. OTP-class verdict for LP2 0-54 UNCHANGED -- HARDENED along three previously un-swept instrument axes, not overturned. No oracle-flagged survivor, no STOP-AND-ALERT. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 27 merged 2026-09-07 (closeout, sweep IN-FLIGHT): 1 entry (R27-CPORT-MT32-FULLSWEEP, in-flight). Bit-exact C port of the R25 Py2.7-MT stage-A screen, gate GO at 128,529 seeds/s (V1 64/64 |d|=0, planted screen margin 12.9, false-reject 0/6, K4 95/95 zero relative difference), red-team NO-ERROR-FOUND on the GO gate; full 2^32 sweep launched on S1 (pair) + S2 (exact, control-gated). 0 claim-bar hits at 2.46% live. Verdict UNCHANGED until the sweep completes and candidates are Python-adjudicated. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 28 INTERIM merge 2026-09-15 (round OPEN -- S2 still sweeping, grind28 queue armed): 5 entries (R28-L1-CICADAOS-PADS-DENSE-PAIR negative, R28-L2-CONTESTED-BYTES negative [read half MEASURED: canon stands, independent blind instrument agrees with A-04 100% incl. all 3 byte flips; decode half 21.6M-decode variant battery 0 >= family bar], R28-L5-PAYLOAD-MICRO negative [E-01w/E-02v/H-03r remainders closed; '3301 in the P.S. digits' resolved as a layout artifact], R28-R-REDTEAM audit [2 passes: T1+T5 FOUND-ERROR process-class, second pass ERRORS-FOUND-NONE-SCIENTIFIC, 0 dropped candidates], R28-L4-UNSWEPT-GENERATORS-QUEUE in-flight [25 gated 2^32 PHP/glibc/S3 cells, zero coverage claimed, post-S2 chainer armed]). L3 (string-seed amd64 dictionary) still in-flight, row at lane close. R12-A1 not_covered filled per R28-R T1 patch. OTP-class verdict UNCHANGED -- hardened. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 30 merged 2026-09-28 ('Rendered Book' armada, 8 lanes + R29-L1 backfill): A1-FONT negative (runes are a deterministic vector font, no glyph-variant channel), A2-SUBPIXEL negative (no sub-pixel/kerning channel, ~2px threshold), A3-PDF-FORENSICS measured (ICC byte-identical to Ghostscript 9.06 Artifex srgb.icc -> toolchain narrowed to GS 9.04-9.14 [X1/R32 corrected from 9.01-9.15, see round18/L1]), B1-BLOB-CRYPTO negative (external-key symmetric battery on the 3 random blobs, 0 hits), B2-RSA-GPG negative (canon_256/folly/2.jpg carry no RSA/OpenPGP structure), C1-ART-ATTRIBUTION negative (no attributable hand; processed public-domain imagery), D1-LEDGER-AUDIT audit (soundness holds; 2 bookkeeping gaps fixed), E1-RENDER-REOPEN measured (6 contested pp49-51 bytes resolved to the token reading, canon_256 unchanged, decpref refuted). Backfilled R29-L1-ONION-STEGO negative (first real onion-image key-attack, 24,078 extractions, 0 hits) which supersedes B-10. OTP-class verdict for LP2 0-54 UNCHANGED -- extended (keyed-external-cipher on the 3 blobs now also NULL) and canonical record hardened. All 8 attack lanes adversarially verified refute-by-default; none downgraded. validate.py 5/5. | Round 32 X1 merged 2026-10-28: nav docs scoped (GS bound 9.04-9.14; Py2.7-MT 'coverage 1.00' is per-relation; transcription claim LP2-typeface-only, p27:93 unresolved); 8 not_covered:null rows filled (R12-A1 had been filled in R28); lanes I1/I2(audit)/I3/I4(audit)/B3(x2)/B1 filed after refute-by-default audit; I2 restatements applied to B-04/R16-KDF/R16-PRNG/R17-PUBLIC-PAD via r32_i2_restatement (original restated_from preserved); R32 lane-patch statuses normalised to the vocabulary. B2 (php mt_rand) not yet filed. | Round 33 X1 merged 2026-10-29: B1 patches applied (owner Option A on C-CANON-PAYLOAD-3BYTES; file move left to coordinator), B2 issue-12 + p27:93 rows, I1/I2/O1/X1 rows, drafted not_covered texts confirmed (tags dropped; F-01/H-03 reworded), R30-A1/A2/B1/B2/C1 not_covered filled, R18-L7 0.84 % doublet figure marked superseded in part, R32-B2 row corrected. | Round 34 X1 merged 2026-10-29: rows I1/I2/I3/S1/P1/X1 added; P1 reader-coverage extensions applied to C-CANON-PAYLOAD-3BYTES (status stays open until the rename), R16-KDF, R30-B1, R30-B2; R33-I2 'earned' relations struck, R33-B3/R32-B1/R32-B2 annotated, R33-O1 never-run -> partially-run; GS render band 9.05-9.14 noted on G-01 / R30-A3 (R34-S1 supersession of 9.04-9.14 at render level). | Round 35 X1 merged 2026-10-30 (partial: I1/P1/S1(skipped)/B2/X1; B1 and I3 not available at audit): I1 measured (bar met at 10.9x cost); P1 NO-MATCH (Welsh corpus unrecoverable, panel not rebuilt, S2 NOT resumed, S1 never-run); B2 legs measured, no change (R30-B1/B2 patched); R34-B1 corrected (PHP dense tier is prefiltered, store holds PHP rows only, sleep-gap misread). | Round 36 X1 merged 2026-10-30: lane rows I1/I2/I3/P1/S1/B2/O2/O3/O4 + X1 filed (B1 not available at audit time); S1 coverage recorded as mixed-instrument (44.138 % Round 19-gated + 1.28 % panel-R36); B2 patches applied to the real ids R32-B2-PHP-MT-RAND / R34-B1-ORBITS-V3-PFV3 with the shared-stream correction (R36 tier b is a subset of R32-B2's draw); O2 filed partially-run (a search has no positive control); I1 hash-seed finding recorded."
+    "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF. Round 18 merged 2026-08-26: 8 lanes, 31 fragment entries. L7 restated the coverage of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD and B-21 -- every prior negative in this repo is an English-register negative, which no entry had stated. Original coverage text is preserved in each entry's `restated_from`. Two statuses were added in the Round 18 merge: `measured` (a definite non-null determination) and `audit` (a recomputation or coverage restatement, which has no null and no threshold). The positive-control gate still applies to `negative`/`eliminated` only, so it retains exactly its former force. | Round 19 merged 2026-08-26: 41 new entries, 10 restated. Instrument repaired (I1 decoder, I2 adjudicator, I3 thresholds); the -5.5 bar was wrong in 14/14 historical sweeps, usually too strict, and no verdict flips. Transcription closed by T1/T2/T3 from three independent directions: canon is correct. Payload bytes 45/50/246 corrected by C1, voiding B-05, which was re-run clean. | Round 21 merged 2026-08-29: 4 lane entries (R21-L1-SEAL, R21-L2-NSKIPS-CROSSOVER-LENGTH, R21-L3-PY27-REDUCERS, R21-L5-REDTEAM-SEAL). L1 KILL: the no-oracle disjoint-fold seal is provably leaky (best 0.80 catch @ 0.20 false-reject, cannot reach the pre-registered 0.90 bar; held-out false-reject drifts to 0.167) -> Round 21 HIT auto-certification WITHHELD, bar-clearing survivors flagged-for-oracle. L3 CLEAN NEGATIVE: 884k words across grb5_mod/grb5_rej/shuffle29 (i386) + random29 (amd64), 0 hits, 4/4 positive controls recover 1.000, best pmax 6.248 vs 7.634 bar; family bounded (>99.99% flat-prior tail + 2^64 amd64 image + S-G3 gaps) NOT closed. L2 (instrument): n_skips crossover L*=6000 on the exact keyskip1 relation (bracket (3600,6000]) -- any whole-book n_skips adjudication needs a window >= ~6000 runes; drift 'separation' is a left-tail artifact, skip_by_two is beam-unrepresentable. L5 red-team MIXED: confirms L1-KILL, and NO-ERROR-FOUND on no-silent-re-run, FP-inflation-not-reintroduced, and honest row gate. OTP-class verdict for LP2 0-54 UNCHANGED. NB: R20 lane bodies (P1/P2/P3/R/N1/N2) remain in analysis/round20/ prose; only L1-PRIOR-PROPAGATION and C-CANON-PAYLOAD-3BYTES were given central rows in the R20 merge. Round 22 merged 2026-08-29 (coordinator): 5 lanes. Lane B pre-merged R22-B-TURTLE + R22-C-LITERAL-IMPERATIVES (130->132); coordinator appended R22-A-SELFEMBEDDED-READ, R22-D-ILLUSTRATION-DROPCAP (both negative, control-validated) and R22-R-REDTEAM (audit, NO-ERROR-FOUND) -> 132->135. Round 22 read the four signed-hint channels for the first time: self-embedded plaintext acrostic (X2/A), numbers-as-direction (G1/B), koans-as-operations (X1/X3/X4/C), art-as-data (S3/D) -- all CLEAN control-validated NEGATIVES. Standing verdict unchanged: LP2 0-54 remains OTP-class. Sharpest surviving reopener = A's printed-line-geometry acrostic (real page-image line breaks). validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 26 merged 2026-08-31 (coordinator): 4 entries (R26-A-GEN-SWEEP-FIRST-FIRE partially-run, R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE partially-run, R26-C-SEMANTIC-SEED-ZOO negative, R26-D-REDTEAM audit). Lane A fired the built-but-never-swept generators for the FIRST time (R19-G2 Perl: was ZERO seeds; G4-TEX: was ZERO decodes) plus the Py2.7 reducers on the DISTINCT amd64-w64 / non-zero-offset / keyskip2 axis un-covered by R21-L3 -- control-validated at 1.000 recovery per generator, 0 clears over the prior-dense front (baseline tail still running, interim). Lane B executed R12-C2s staged-but-never-run 33-keytext running-key sweep skip-aware (rigid was already doublet-excluded): 0/1,562 clears, 3 of 9 pages complete at 4 offsets, control 1.000 both presets. Lane C enumerated the bounded 323-value corpus-SEMANTIC seed set x 7 generators (incl. the page-56 totient/prime ladder that solves page 05) x 2 skip-aware decoders = 4,274 rows at 100% coverage, control min recovery 0.9917, best screen -6.578 (flat-random), 0 escalated. Lane D red-team: NO-ERROR-FOUND, coverage x power reproduced, no silent re-run, no FP-inflation, two MINOR hygiene defects noted. OTP-class verdict for LP2 0-54 UNCHANGED -- HARDENED along three previously un-swept instrument axes, not overturned. No oracle-flagged survivor, no STOP-AND-ALERT. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 27 merged 2026-09-07 (closeout, sweep IN-FLIGHT): 1 entry (R27-CPORT-MT32-FULLSWEEP, in-flight). Bit-exact C port of the R25 Py2.7-MT stage-A screen, gate GO at 128,529 seeds/s (V1 64/64 |d|=0, planted screen margin 12.9, false-reject 0/6, K4 95/95 zero relative difference), red-team NO-ERROR-FOUND on the GO gate; full 2^32 sweep launched on S1 (pair) + S2 (exact, control-gated). 0 claim-bar hits at 2.46% live. Verdict UNCHANGED until the sweep completes and candidates are Python-adjudicated. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 28 INTERIM merge 2026-09-15 (round OPEN -- S2 still sweeping, grind28 queue armed): 5 entries (R28-L1-CICADAOS-PADS-DENSE-PAIR negative, R28-L2-CONTESTED-BYTES negative [read half MEASURED: canon stands, independent blind instrument agrees with A-04 100% incl. all 3 byte flips; decode half 21.6M-decode variant battery 0 >= family bar], R28-L5-PAYLOAD-MICRO negative [E-01w/E-02v/H-03r remainders closed; '3301 in the P.S. digits' resolved as a layout artifact], R28-R-REDTEAM audit [2 passes: T1+T5 FOUND-ERROR process-class, second pass ERRORS-FOUND-NONE-SCIENTIFIC, 0 dropped candidates], R28-L4-UNSWEPT-GENERATORS-QUEUE in-flight [25 gated 2^32 PHP/glibc/S3 cells, zero coverage claimed, post-S2 chainer armed]). L3 (string-seed amd64 dictionary) still in-flight, row at lane close. R12-A1 not_covered filled per R28-R T1 patch. OTP-class verdict UNCHANGED -- hardened. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 30 merged 2026-09-28 ('Rendered Book' armada, 8 lanes + R29-L1 backfill): A1-FONT negative (runes are a deterministic vector font, no glyph-variant channel), A2-SUBPIXEL negative (no sub-pixel/kerning channel, ~2px threshold), A3-PDF-FORENSICS measured (ICC byte-identical to Ghostscript 9.06 Artifex srgb.icc -> toolchain narrowed to GS 9.04-9.14 [X1/R32 corrected from 9.01-9.15, see round18/L1]), B1-BLOB-CRYPTO negative (external-key symmetric battery on the 3 random blobs, 0 hits), B2-RSA-GPG negative (canon_256/folly/2.jpg carry no RSA/OpenPGP structure), C1-ART-ATTRIBUTION negative (no attributable hand; processed public-domain imagery), D1-LEDGER-AUDIT audit (soundness holds; 2 bookkeeping gaps fixed), E1-RENDER-REOPEN measured (6 contested pp49-51 bytes resolved to the token reading, canon_256 unchanged, decpref refuted). Backfilled R29-L1-ONION-STEGO negative (first real onion-image key-attack, 24,078 extractions, 0 hits) which supersedes B-10. OTP-class verdict for LP2 0-54 UNCHANGED -- extended (keyed-external-cipher on the 3 blobs now also NULL) and canonical record hardened. All 8 attack lanes adversarially verified refute-by-default; none downgraded. validate.py 5/5. | Round 32 X1 merged 2026-10-28: nav docs scoped (GS bound 9.04-9.14; Py2.7-MT 'coverage 1.00' is per-relation; transcription claim LP2-typeface-only, p27:93 unresolved); 8 not_covered:null rows filled (R12-A1 had been filled in R28); lanes I1/I2(audit)/I3/I4(audit)/B3(x2)/B1 filed after refute-by-default audit; I2 restatements applied to B-04/R16-KDF/R16-PRNG/R17-PUBLIC-PAD via r32_i2_restatement (original restated_from preserved); R32 lane-patch statuses normalised to the vocabulary. B2 (php mt_rand) not yet filed. | Round 33 X1 merged 2026-10-29: B1 patches applied (owner Option A on C-CANON-PAYLOAD-3BYTES; file move left to coordinator), B2 issue-12 + p27:93 rows, I1/I2/O1/X1 rows, drafted not_covered texts confirmed (tags dropped; F-01/H-03 reworded), R30-A1/A2/B1/B2/C1 not_covered filled, R18-L7 0.84 % doublet figure marked superseded in part, R32-B2 row corrected. | Round 34 X1 merged 2026-10-29: rows I1/I2/I3/S1/P1/X1 added; P1 reader-coverage extensions applied to C-CANON-PAYLOAD-3BYTES (status stays open until the rename), R16-KDF, R30-B1, R30-B2; R33-I2 'earned' relations struck, R33-B3/R32-B1/R32-B2 annotated, R33-O1 never-run -> partially-run; GS render band 9.05-9.14 noted on G-01 / R30-A3 (R34-S1 supersession of 9.04-9.14 at render level). | Round 35 X1 merged 2026-10-30 (partial: I1/P1/S1(skipped)/B2/X1; B1 and I3 not available at audit): I1 measured (bar met at 10.9x cost); P1 NO-MATCH (Welsh corpus unrecoverable, panel not rebuilt, S2 NOT resumed, S1 never-run); B2 legs measured, no change (R30-B1/B2 patched); R34-B1 corrected (PHP dense tier is prefiltered, store holds PHP rows only, sleep-gap misread). | Round 36 X1 merged 2026-10-30: lane rows I1/I2/I3/P1/S1/B2/O2/O3/O4 + X1 filed (B1 not available at audit time); S1 coverage recorded as mixed-instrument (44.138 % Round 19-gated + 1.28 % panel-R36); B2 patches applied to the real ids R32-B2-PHP-MT-RAND / R34-B1-ORBITS-V3-PFV3 with the shared-stream correction (R36 tier b is a subset of R32-B2's draw); O2 filed partially-run (a search has no positive control); I1 hash-seed finding recorded. | Round 37 X1 merged 2026-10-30: lanes T1/C1/C2(U4,U7,U8)/C3 filed after refute-by-default audit (+24 rows incl. retro-rows R10-L2-MAP, R10-L3-ROAD and X1; I1/I2 only if their RESULTS.md existed); F-02 -> partially-run; R11-*/R22-C/R10-* restated with an added 12-register result (original English-only result kept); U4 line-alignment error corrected; C3 post-data null swap recorded as threshold_fixed_in_advance=false on 4 rows."
   },
   "entries": [
     {
@@ -1184,12 +1184,13 @@
       "id": "F-02",
       "lane": "recon-a",
       "hypothesis": "The 2016-01-01 signed message is the only signed methodological hint 3301 ever gave. Round 9 attacked \"their numbers are the direction\" (2,670 readings, negative) and both closing lines of Round 9 and DEAD_ENDS state that its other two clauses — \"its words are the map\" and \"their meaning is the road\" — remain uninterpreted. No lane has ever treated them as a first-class object.",
-      "status": "open",
-      "raw_status": "stated-but-uninterpreted",
+      "status": "partially-run",
+      "raw_status": "stale: clauses 1-2 were attacked in Round 10 (L2-map M1-M9, L3-road T1-T5) and clause 3 in Round 9 DIRECTION; all English-only, cleartext-layer; composed/keyed readings run in R37 C1",
       "source_register": "liber-primus/analysis/round10/RECON-A/REGISTER.md",
       "evidence": [
         "research/ROUND-9-RESULTS.md",
-        "research/DEAD_ENDS.md"
+        "research/DEAD_ENDS.md",
+        "liber-primus/analysis/round37/C1-composed-clue-readings/RESULTS.md"
       ],
       "round": null,
       "date": null,
@@ -1199,15 +1200,29 @@
       "control_detail": null,
       "null": null,
       "result": null,
-      "coverage": null,
-      "not_covered": null,
+      "coverage": "Round 9 DIRECTION (2,670 readings, negative, no positive control); Round 10 L2-map M1-M9 and L3-road T1-T5 (English-only, cleartext layer of the ciphertext); Round 37 C1: clause strings as seeds/keys (8,832 decodes), LP1 numbers as key schedules (3,072), composed map-road-direction rule (4,176), all panel-R36 12 registers, controls passed, all below bars at actual N.",
+      "not_covered": "meaning as dictionary semantics; reads of the clauses other than C1's operationalizations; non-English reads of the Round 10 cleartext streams (O4 U5)",
       "reproduce": null,
       "supersedes": null,
       "superseded_by": null,
-      "reopens_if": null,
+      "reopens_if": "a bounded, non-lore definition of the semantic ('dictionary meaning') reading of 'their meaning is the road' is specified; or a pointer from the cipher word's own gematria (lagged) / the O4 U3 seed orders is run under beam_v3 + panel-R36.",
       "priority": null,
       "notes": null,
-      "evidence_missing": []
+      "evidence_missing": [],
+      "restated_from": {
+        "status": "open",
+        "raw_status": "stated-but-uninterpreted",
+        "coverage": null,
+        "not_covered": null
+      },
+      "related": [
+        "R37-C1-U1-CLUE-STRINGS",
+        "R37-C1-U2-LP1-NUMBER-SCHEDULES",
+        "R37-C1-U3-COMPOSED-MAP-ROAD-DIRECTION",
+        "R10-L2-MAP",
+        "R10-L3-ROAD"
+      ],
+      "x1_r37": "X1/R37: C1's patch set status=measured; X1 sets partially-run because the semantic reading of 'meaning' and several literal alternatives of the composed rule are untested (R7: bounds, not verdicts)."
     },
     {
       "id": "G-01",
@@ -5108,12 +5123,13 @@
         "bar_approx": 5.1,
         "note": "X4's four >0.90-recovery decodes correctly rejected at the panel-max clause (the hallucination pattern the recovery gate catches). X4 totient config re-adjudicates Round-11 N5 under the repaired instrument, re-confirms NEGATIVE."
       },
-      "coverage": "185 enumerated operations over LP2 0-54: X1 (every-4th decimation x4 phases x cipher ladder, iterate x{2,3,4}, 4-way interleave/de-interleave), X3 (whole-stream reversal re-enciphered forward; solved-plaintext running key both signs), X4 (prime-value/index/totient keystream over letters, +/-sign +/-atbash). Size-matched seed-3301 null empty (0 bar-clears, 0 hits).",
+      "coverage": "185 enumerated operations over LP2 0-54: X1 (every-4th decimation x4 phases x cipher ladder, iterate x{2,3,4}, 4-way interleave/de-interleave), X3 (whole-stream reversal re-enciphered forward; solved-plaintext running key both signs), X4 (prime-value/index/totient keystream over letters, +/-sign +/-atbash). Size-matched seed-3301 null empty (0 bar-clears, 0 hits). | R37-C3 (2026-10-30): U6b_R22C_structural: best X1a_decim_phase2_shift8 pmax 3.18, Z 2.47, family p(Z)=0.751, raw-best p=0.598; keyed U6b_R22C_keyed_L240: best non-degenerate pmax 5.46 (ks1) / 5.46 (ks2) vs 12-reg bars actual-N 6.04/6.14, declared-N 8.98/9.28 (84 rows/rel, 12 degenerate rows/rel)",
       "not_covered": [
         "non-zero offsets on keyed lanes",
         "interleave/decimation widths != 4",
         "phi(phi(p))/lambda(p)/digit-plane keystreams (Round 11 N4/N5 territory)",
-        "decoder constructions outside driftbeam exact/drift"
+        "decoder constructions outside driftbeam exact/drift",
+        "keyless structural ops have no keyskip axis; non-zero offsets; width!=4"
       ],
       "reopens_if": "a width!=4 interleave/decimation, a non-zero keyed offset, or a phi(phi)/lambda/digit-plane keystream clears the panel-max bar with recovery>=0.90 and held-out>=0.90.",
       "evidence": [
@@ -5121,7 +5137,13 @@
         "liber-primus/analysis/round22/C-literal-imperatives/RESULTS.md"
       ],
       "notes": "Roadmap Phase 4 (X1/X3/X4). Closes those three lenses NEGATIVE under the repaired instrument; X2 (Lane A) and S3 (Lane D) remain OPEN in the Round-22 seed.",
-      "threshold": "Frozen in PREREG.md (FROZEN THRESHOLDS table) before any LP2 scoring, reusing the Round-19/20 instrument stack and never the retired -5.5 bar: panel-max clear = pmax >= panelmax20.panelmax_bar(preset, N_adj, alpha=0.01); recovery clause = rune-index recovery >= 0.90 (hitfn20.RECOVERY_BAR); held-out 3/4 reproduction >= 0.90 under the same key. A keyed decode is a HIT only on all three (hitfn20.is_hit); a structural stream flag needs pmax >= panelmax_bar at that lane's N_adj plus a language-agnostic corroborator, and a bar-clear without the oracle is FLAGGED-FOR-ORACLE, never auto-certified. (Transcribed into the ledger 2026-08-31 from the frozen PREREG; no bar changed.)"
+      "threshold": "Frozen in PREREG.md (FROZEN THRESHOLDS table) before any LP2 scoring, reusing the Round-19/20 instrument stack and never the retired -5.5 bar: panel-max clear = pmax >= panelmax20.panelmax_bar(preset, N_adj, alpha=0.01); recovery clause = rune-index recovery >= 0.90 (hitfn20.RECOVERY_BAR); held-out 3/4 reproduction >= 0.90 under the same key. A keyed decode is a HIT only on all three (hitfn20.is_hit); a structural stream flag needs pmax >= panelmax_bar at that lane's N_adj plus a language-agnostic corroborator, and a bar-clear without the oracle is FLAGGED-FOR-ORACLE, never auto-certified. (Transcribed into the ledger 2026-08-31 from the frozen PREREG; no bar changed.)",
+      "three_conditionals_r37_c3": {
+        "key_space": "only what R37 C3 regenerated (see coverage); a keystream is covered only at the listed windows",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
+        "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
+      },
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`negative`). The R37 verdict for the data-dependent / derived-stream halves uses a doublet-matched null chosen after the first pass (see the R37-C3 rows)."
     },
     {
       "id": "R22-B-TURTLE-SPATIAL-RENDER",
@@ -7808,13 +7830,13 @@
       "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
       "threshold_fixed_in_advance": true,
       "result": "best -7.438 vs null_max -7.446; no hit",
-      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only. | R37-C3 (2026-10-30): CT-feedback 24 configs x 10 windows x keyskip1/2 L=120 under beam_v3 + panel-R36 (best non-degenerate 4.76/4.61 vs actual-N bars 6.07/6.02); PT-feedback 24 configs skip-free direct (raw p 0.50).",
       "three_conditionals": {
         "key_space": "the Round 11 N1 lens configuration set only; the other six lenses are separate rows",
         "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
         "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
       },
-      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen; PT-feedback under skip relations; windows beyond 10",
       "evidence": [
         "liber-primus/analysis/round11/N1/RESULTS.md",
         "liber-primus/analysis/round11/N1/results.json",
@@ -7823,7 +7845,13 @@
       ],
       "reproduce": "python liber-primus/analysis/round11/N1/n1.py",
       "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
-      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated.",
+      "three_conditionals_r37_c3": {
+        "key_space": "only what R37 C3 regenerated (see coverage); a keystream is covered only at the listed windows",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
+        "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
+      },
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`). The R37 verdict for the data-dependent / derived-stream halves uses a doublet-matched null chosen after the first pass (see the R37-C3 rows)."
     },
     {
       "id": "R11-N2-NUMBER-CHANNEL",
@@ -7836,13 +7864,13 @@
       "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
       "threshold_fixed_in_advance": true,
       "result": "best -6.951 vs -6.901 (prime_gap has only 5 distinct values; printable-ratio 1.0 is a mapping artifact)",
-      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only. | R37-C3 (2026-10-30): U6a_N2: best prime_index:mod29 pmax 1.80, Z 1.65, family p(Z)=0.413, raw-best p=0.667",
       "three_conditionals": {
         "key_space": "the Round 11 N2 lens configuration set only; the other six lenses are separate rows",
         "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
         "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
       },
-      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen; ASCII/coordinate routes",
       "evidence": [
         "liber-primus/analysis/round11/N2/RESULTS.md",
         "liber-primus/analysis/round11/N2/results.json",
@@ -7851,7 +7879,13 @@
       ],
       "reproduce": "python liber-primus/analysis/round11/N2/n2.py",
       "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
-      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated.",
+      "three_conditionals_r37_c3": {
+        "key_space": "only what R37 C3 regenerated (see coverage); a keystream is covered only at the listed windows",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
+        "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
+      },
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`). The R37 verdict for the data-dependent / derived-stream halves uses a doublet-matched null chosen after the first pass (see the R37-C3 rows)."
     },
     {
       "id": "R11-N3-NUMBER-CHANNEL",
@@ -7864,7 +7898,7 @@
       "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
       "threshold_fixed_in_advance": true,
       "result": "0 primes / perfect powers / Mersenne-ish / notable bit-lengths across 55 segments; real structure total 0 vs null mean 0.125",
-      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only. | R37-C3 (2026-10-30): not re-scored: no adjudicator involved",
       "three_conditionals": {
         "key_space": "the Round 11 N3 lens configuration set only; the other six lenses are separate rows",
         "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
@@ -7879,7 +7913,13 @@
       ],
       "reproduce": "python liber-primus/analysis/round11/N3/n3.py",
       "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
-      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated.",
+      "three_conditionals_r37_c3": {
+        "key_space": "only what R37 C3 regenerated (see coverage); a keystream is covered only at the listed windows",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
+        "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
+      },
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`)."
     },
     {
       "id": "R11-N4-NUMBER-CHANNEL",
@@ -7892,13 +7932,13 @@
       "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
       "threshold_fixed_in_advance": true,
       "result": "best -5.728 vs -5.722; no hit",
-      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only. | R37-C3 (2026-10-30): U6a_N4_ks: best non-degenerate pmax 5.56 (ks1) / 5.56 (ks2) vs 12-reg bars actual-N 5.94/5.89, declared-N 9.10/9.00 (168 rows/rel, 0 degenerate rows/rel); U6a_N4_read: best b3_p3 pmax 44.03, Z 1.71, family p(Z)=0.505, raw-best p=0.425",
       "three_conditionals": {
         "key_space": "the Round 11 N4 lens configuration set only; the other six lenses are separate rows",
         "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
         "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
       },
-      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen; other bases",
       "evidence": [
         "liber-primus/analysis/round11/N4/RESULTS.md",
         "liber-primus/analysis/round11/N4/results.json",
@@ -7907,7 +7947,13 @@
       ],
       "reproduce": "python liber-primus/analysis/round11/N4/n4.py",
       "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
-      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated.",
+      "three_conditionals_r37_c3": {
+        "key_space": "only what R37 C3 regenerated (see coverage); a keystream is covered only at the listed windows",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
+        "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
+      },
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`). The R37 verdict for the data-dependent / derived-stream halves uses a doublet-matched null chosen after the first pass (see the R37-C3 rows)."
     },
     {
       "id": "R11-N5-NUMBER-CHANNEL",
@@ -7920,13 +7966,13 @@
       "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
       "threshold_fixed_in_advance": true,
       "result": "best -6.667 vs -6.722; no hit (R22-C X4 later re-adjudicated N5 on its totient config only)",
-      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only. | R37-C3 (2026-10-30): U6a_N5: best non-degenerate pmax 6.30 (ks1) / 6.30 (ks2) vs 12-reg bars actual-N 6.90/6.83, declared-N 9.10/9.00 (2320 rows/rel, 0 degenerate rows/rel)",
       "three_conditionals": {
         "key_space": "the Round 11 N5 lens configuration set only; the other six lenses are separate rows",
         "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
         "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
       },
-      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen; 5 windows per keystream",
       "evidence": [
         "liber-primus/analysis/round11/N5/RESULTS.md",
         "liber-primus/analysis/round11/N5/results.json",
@@ -7935,7 +7981,13 @@
       ],
       "reproduce": "python liber-primus/analysis/round11/N5/n5.py",
       "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
-      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated.",
+      "three_conditionals_r37_c3": {
+        "key_space": "only what R37 C3 regenerated (see coverage); a keystream is covered only at the listed windows",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
+        "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
+      },
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`)."
     },
     {
       "id": "R11-S1-NUMBER-CHANNEL",
@@ -7948,13 +8000,13 @@
       "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
       "threshold_fixed_in_advance": true,
       "result": "best -5.994 vs -5.997; no hit",
-      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only. | R37-C3 (2026-10-30): U6a_S1: best mod5 pmax 17.45, Z 1.40, family p(Z)=0.482, raw-best p=n/a",
       "three_conditionals": {
         "key_space": "the Round 11 S1 lens configuration set only; the other six lenses are separate rows",
         "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
         "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
       },
-      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen; ASCII/bit/indicator routes",
       "evidence": [
         "liber-primus/analysis/round11/S1/RESULTS.md",
         "liber-primus/analysis/round11/S1/results.json",
@@ -7963,7 +8015,13 @@
       ],
       "reproduce": "python liber-primus/analysis/round11/S1/s1.py",
       "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
-      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated.",
+      "three_conditionals_r37_c3": {
+        "key_space": "only what R37 C3 regenerated (see coverage); a keystream is covered only at the listed windows",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
+        "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
+      },
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`)."
     },
     {
       "id": "R11-S2-NUMBER-CHANNEL",
@@ -7976,13 +8034,13 @@
       "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
       "threshold_fixed_in_advance": true,
       "result": "mean run before '/'=2.39, '.'=4.13, '-'=3.96; var ratio 0.307; separators read as typography",
-      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only. | R37-C3 (2026-10-30): U6a_S2: best runs_mod29 pmax 37.83, Z 0.16, family p(Z)=0.442, raw-best p=n/a",
       "three_conditionals": {
         "key_space": "the Round 11 S2 lens configuration set only; the other six lenses are separate rows",
         "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
         "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
       },
-      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen; binary/ternary byte routes",
       "evidence": [
         "liber-primus/analysis/round11/S2/RESULTS.md",
         "liber-primus/analysis/round11/S2/results.json",
@@ -7991,7 +8049,13 @@
       ],
       "reproduce": "python liber-primus/analysis/round11/S2/s2.py",
       "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
-      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated.",
+      "three_conditionals_r37_c3": {
+        "key_space": "only what R37 C3 regenerated (see coverage); a keystream is covered only at the listed windows",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
+        "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
+      },
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`)."
     },
     {
       "id": "R36-I1-NEW-REGISTERS",
@@ -8454,6 +8518,836 @@
       "sweep_store": "analysis/round36/B1-orbit-12reg/readjud_rows.jsonl",
       "source_register": "round36/P1-panel-r36 panel12.npz a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
       "notes": "Coordinator audit 2026-10-30: PREREG 11:56:17 predates null12.json (12:24) and the store (12:56); 276,242 rows, 12-wide z, header names panel-R36; summary cells match RESULTS. The recovery120 diagnostic in control.json is mis-scored (120-rune decode vs 240-rune plaintext) and is not used in any decision. Stock validate_store/check_r3_store default to 9 registers and fail 12-wide rows -> Round 37 T1 makes them read the width from the header; until then sweep_store is undeclared on this row (sweep_store_note). Reach for GREEK/HEBREW/NORSE (0.91/0.68/0.64) is bounded by pf_v4's nine-register calibration -> Round 37 I2."
+    },
+    {
+      "round": 37,
+      "lane": "C1",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": true,
+      "positive_control": "passed",
+      "sweep_store": "analysis/round37/C1-composed-clue-readings/sweep_rows.jsonl",
+      "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+      "evidence": [
+        "analysis/round37/C1-composed-clue-readings/PREREG.md",
+        "analysis/round37/C1-composed-clue-readings/RESULTS.md",
+        "analysis/round37/C1-composed-clue-readings/control.json",
+        "analysis/round37/C1-composed-clue-readings/sweep_summary_final.json",
+        "analysis/round37/C1-composed-clue-readings/sweep_rows.jsonl"
+      ],
+      "threshold": "bars_v3 (alpha 0.01, family lp2) at actual N and N=1e6, L=120 screen / L=240 gate, cross-checked with bar12 from round36/B1 null12.json; fixed in PREREG.md before any output. Clearer -> L=240 -> flagged-for-oracle.",
+      "id": "R37-C1-U1-CLUE-STRINGS",
+      "status": "negative",
+      "hypothesis": "The LP2 keystream is derived from a 2016-message clause, a short noun phrase of it, or an LP1 imperative, via the direct text key, SHA-256-CTR(string) (B-04 code) or PBKDF2-SHA256(string,'3301',10000) (R16 K2 config).",
+      "control_detail": "Plant under ONE candidate per route and relation (6 plants: direct U1-001, sha256ctr U1-002, pbkdf2 U1-003; EN_MODERN held-out L=240; real enc_exact/enc_pair): planted string ranked #1 in the full route grid in 6/6 (of 83/76/117 keys), L=120 pmax 17.7-21.3 vs bar_v3(1e6) 9.03-9.24, L=240 recovery >= 0.99, runner-up pmax 5.2-6.6.",
+      "coverage": "42 new + 41 B04-covered clue strings (candidates.json); strata N all 3 routes (hash routes x {UPPER, as-written}), stratum R direct+PBKDF2 only; x rel{ks1,ks2} x sign +-1 x offset 0..7 on LP2[:120]; 8,832 decodes (4,416 per relation); keyskip1 N=4416 best 5.239 (direct|U1-032|UP, NORSE) vs bar_v3 7.179 actual-N / 9.235 N=1e6 (bar12 7.131 / 9.102); keyskip2 N=4416 best 4.836 (direct|R-TESTTHEKNOWLEDGE|UP, GREEK) vs bar_v3 7.055 actual-N / 9.034 N=1e6 (bar12 7.061 / 8.999). 0 clear the actual-N bar, 0 gate runs, 0 flagged, 0 near-miss. ADDENDUM 2026-10-30: the 41 covered strings were also run on the SHA-256-CTR route (UPPER form, 1,312 decodes, 656 per relation; U1 total 10,144, N=5,072 per relation): best ks1 4.477 (LATIN) vs bar 7.231 actual N / 9.235; ks2 4.428 (EN_HALFVOWEL) vs 7.105 / 9.034; 0 gate runs, 0 flagged.",
+      "result": "negative (bounded): best 5.239/4.836, bars 7.18/7.06 at actual N; the 2016 clauses specifically: best 5.078 (U1-001 'ITS WORDS ARE THE MAP' direct, LP1_REAL).",
+      "three_conditionals": {
+        "key_space": "83 clue-derived strings (see candidates.json) x routes direct / sha256_ctr mod29 (B-04) / PBKDF2-SHA256-10000 salt '3301' mod29 (R16 K2); forms UPPER + as-written; offsets 0..7; sign +-1",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max (beam_w 400, lam_u 4), L120 screen / L240 gate; no free relation; no atbash; no pf_v4 screen (full grid decoded)",
+        "adjudicator_register": "panel-R36 12 registers; planted control is EN_MODERN only (power for the other registers under these specific constructions not re-measured; R36 B1 measured v3 recovery for GREEK/HEBREW/NORSE with other keys)"
+      },
+      "not_covered": "lower-case and despaced hash forms; other KDFs/iterations/salts (only pbkdf2_sha256_10000 salt '3301'); rej29/other reductions; other hashes/CTR byte orders; atbash; offsets > 7; strings not derived from the 2016 clauses/LP1 imperatives (other signed texts, 2012-14 clues); lower-case/despaced SHA forms for the 41 covered strings; heads with >2 skips in 24 runes; free relation; L=31.",
+      "reopens_if": "a clue-derived string beyond candidates.json is proposed with a stated reading; or the key is shown to be a hash/KDF output of a string whose form is not UPPER/as-written.",
+      "notes": "Correction to O4 untried.md U1: 38 of 41 LP1-imperative/clue strings were already in round13/B04 lp_line/lp_word seeds (SHA/legacy route); only round26/C and the R16 core list lacked them.",
+      "lane_dir": "C1-composed-clue-readings",
+      "x1_r37": "X1/R37: (i) candidates.json holds 5 of the 7 clauses of the signed 2016 message (C-2016-1..5); C-2016-6 'Seek and you will be found' and C-2016-7 'Beware false paths. Verify OpenPGP 7A35090F' (O4 clues.json) are in neither stratum, so the U1 claim '2016 clauses' is 5/7 (the two were run only as legacy Vigenere keywords, R10b B1). (ii) the U3 composition labelled 'literal' (map = LP1 word list, road = position/rune offset/length, direction = LP1-entry number) is C1's operationalization, not the only literal reading: 'its words' may be LP2's own words; a cipher-word gematria pointer (lagged one word, so well-formed) and the O4 untried.md U3 seed orders/value types (6 orders, 4 v, atbash, '&' '$' boundaries) were not run. (ii-b) U2's 'line' sequences come from the koans file, which matches the printed lines (data/scream314_lp.md, used by C2-U4) only on A WARNING (05/06/03/14/73 differ); the literal printed-line sums were not run, contrary to C1's 'not otherwise recorded'. (iii) re-runs: fresh-seed U1 plants (direct/ks2, sha256ctr/ks1) rank 1 of 83/76; U3 rho1-A3 ks1/ks2 and rho3-A2 plants recovered 1.000; sweep_rows.jsonl = header + 17,392 rows, stock validate_store ok."
+    },
+    {
+      "round": 37,
+      "lane": "C1",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": true,
+      "positive_control": "passed",
+      "sweep_store": "analysis/round37/C1-composed-clue-readings/sweep_rows.jsonl",
+      "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+      "evidence": [
+        "analysis/round37/C1-composed-clue-readings/PREREG.md",
+        "analysis/round37/C1-composed-clue-readings/RESULTS.md",
+        "analysis/round37/C1-composed-clue-readings/control.json",
+        "analysis/round37/C1-composed-clue-readings/sweep_summary_final.json",
+        "analysis/round37/C1-composed-clue-readings/sweep_rows.jsonl"
+      ],
+      "threshold": "bars_v3 (alpha 0.01, family lp2) at actual N and N=1e6, L=120 screen / L=240 gate, cross-checked with bar12 from round36/B1 null12.json; fixed in PREREG.md before any output. Clearer -> L=240 -> flagged-for-oracle.",
+      "id": "R37-C1-U2-LP1-NUMBER-SCHEDULES",
+      "status": "negative",
+      "hypothesis": "LP2 is enciphered with a key schedule built from LP1's own Gematria sums (per word / line / sentence / running cumulative; prime or index channel; mod 29 or 28), as an additive keystream or as pointer jumps through the LP1 rune stream at ciphertext word boundaries.",
+      "control_detail": "32/32 planted variants (16 variants x mode a/b; EN_MODERN held-out L=240, real keyskip encipherers, random offset): min L=120 pmax 14.6, min L=240 pmax 22.3 (bars 9.0-9.5), min recovery240 0.992.",
+      "coverage": "16 variants x {additive a, pointer-jump b} x rel{ks1,ks2} x sign +-1 x offset 0..7 x page heads {0,1,2} (key restarts per page) = 3,072 decodes (1,536 per relation); keyskip1 N=1536 best 4.793 (prime|line|m28|a, EN_MODERN) vs bar_v3 6.778 actual-N / 9.235 N=1e6 (bar12 6.747 / 9.102); keyskip2 N=1536 best 4.548 (prime|sentence|m28|b, EN_KJV) vs bar_v3 6.670 actual-N / 9.034 N=1e6 (bar12 6.684 / 8.999). 0 clear, 0 flagged, 0 near-miss.",
+      "result": "negative (bounded); best 4.793 / 4.548 vs bars 6.78 / 6.67 at actual N.",
+      "three_conditionals": {
+        "key_space": "LP1 sequences from the 94 clues.json LP1 sentences (726 words; line sums from armada18 text lines = convenient, not the printed lines); 2 channels x 4 sequences x 2 moduli x 2 modes; offsets 0..7; page heads 0-2",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max; schedule K' indexed by cipher-rune position (skips do not re-time the word-boundary jumps); no free relation",
+        "adjudicator_register": "panel-R36 12 registers; control EN_MODERN only"
+      },
+      "not_covered": "phi(p)/prime-index channels; atbash; schedules applied per ciphertext line or per page; jump direction minus; base keys other than the LP1 rune stream (b); starting sequence index other than 0 with offset only 0..7 in the sequence; pages > 2 as separate restarts; per-word constant (non-stream) application is U3 A1; LP1 printed line breaks; heads with >2 skips; free relation.",
+      "reopens_if": "a stated reading fixes the base key / sequence start for (b), or the printed LP1 line layout is recovered and per-line sums differ from the text lines used here.",
+      "lane_dir": "C1-composed-clue-readings",
+      "x1_r37": "X1/R37: (i) candidates.json holds 5 of the 7 clauses of the signed 2016 message (C-2016-1..5); C-2016-6 'Seek and you will be found' and C-2016-7 'Beware false paths. Verify OpenPGP 7A35090F' (O4 clues.json) are in neither stratum, so the U1 claim '2016 clauses' is 5/7 (the two were run only as legacy Vigenere keywords, R10b B1). (ii) the U3 composition labelled 'literal' (map = LP1 word list, road = position/rune offset/length, direction = LP1-entry number) is C1's operationalization, not the only literal reading: 'its words' may be LP2's own words; a cipher-word gematria pointer (lagged one word, so well-formed) and the O4 untried.md U3 seed orders/value types (6 orders, 4 v, atbash, '&' '$' boundaries) were not run. (ii-b) U2's 'line' sequences come from the koans file, which matches the printed lines (data/scream314_lp.md, used by C2-U4) only on A WARNING (05/06/03/14/73 differ); the literal printed-line sums were not run, contrary to C1's 'not otherwise recorded'. (iii) re-runs: fresh-seed U1 plants (direct/ks2, sha256ctr/ks1) rank 1 of 83/76; U3 rho1-A3 ks1/ks2 and rho3-A2 plants recovered 1.000; sweep_rows.jsonl = header + 17,392 rows, stock validate_store ok."
+    },
+    {
+      "round": 37,
+      "lane": "C1",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": true,
+      "positive_control": "passed",
+      "sweep_store": "analysis/round37/C1-composed-clue-readings/sweep_rows.jsonl",
+      "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+      "evidence": [
+        "analysis/round37/C1-composed-clue-readings/PREREG.md",
+        "analysis/round37/C1-composed-clue-readings/RESULTS.md",
+        "analysis/round37/C1-composed-clue-readings/control.json",
+        "analysis/round37/C1-composed-clue-readings/sweep_summary_final.json",
+        "analysis/round37/C1-composed-clue-readings/sweep_rows.jsonl"
+      ],
+      "threshold": "bars_v3 (alpha 0.01, family lp2) at actual N and N=1e6, L=120 screen / L=240 gate, cross-checked with bar12 from round36/B1 null12.json; fixed in PREREG.md before any output. Clearer -> L=240 -> flagged-for-oracle.",
+      "id": "R37-C1-U3-COMPOSED-MAP-ROAD-DIRECTION",
+      "status": "negative",
+      "hypothesis": "'Its words are the map, their meaning is the road, their numbers are the direction': LP1's word list is a codebook; each unsolved word reaches an entry by position k / rune offset / length; the entry's Gematria value (mod 29 or 28) is the signed advance applied at each cleartext word boundary (per-word shift A1, cumulative shift A2, or key-pointer advance through the LP1 rune stream A3).",
+      "control_detail": "24/24 planted cells (rho x M x {A1,A2,A3-ks1,A3-ks2}; independent encipherer; EN_MODERN held-out L=240 on page-0 word structure; random start s and sign): min L=120 pmax 16.1 (bar 9.0-9.2), recovery240 >= 0.988. A1/A2 are beam-free exact inversions (recovery trivial, power shown by pmax).",
+      "coverage": "rho{position, rune offset, word length} x M{29,28} x start s 0..28 x sigma +-1 x modes {A1,A2,A3 rel1,rel2} x page heads {0,1,2} (k restarts per page) = 4,176 decodes (2,088 direct, 1,044 ks1, 1,044 ks2); keyskip1 N=1044 best 4.484 (rho1|M29|A3, HEBREW) vs bar_v3 6.632 actual-N / 9.235 N=1e6 (bar12 6.606 / 9.102); keyskip2 N=1044 best 4.660 (rho2|M28|A3, EN_KJV) vs bar_v3 6.529 actual-N / 9.034 N=1e6 (bar12 6.546 / 8.999); direct N=2088 best 5.085 (rho3|M29|A2, CY) vs bar_v3 6.895 actual-N / 9.235 N=1e6 (bar12 6.858 / 9.102). The literal composition (rho1 x A3, M29, s=0) best 3.035. 0 clear, 0 flagged, 0 near-miss.",
+      "result": "negative (bounded); best 5.085 (direct A2) vs keyskip1 bar 6.90 at actual N.",
+      "three_conditionals": {
+        "key_space": "the composed rule family as written in PREREG section 3 (3 roads x 2 moduli x 29 starts x 2 signs x 3 modes x 3 pages); pointer from the ciphertext word's own gematria sum EXCLUDED (not a well-formed cipher) [X1: 'most literal composition' means C1's most direct operationalization; other literal readings of 'its words'/'meaning'/'numbers' were not run]",
+        "transition_model": "A1/A2 direct (no key stream, no skip relation); A3 under keyskip1/keyskip2 beam_v3 panel_max with K' indexed by cipher position; the rule itself is a new relation and was planted",
+        "adjudicator_register": "panel-R36 12 registers; A1/A2 judged against the keyskip1 beam bar (conservative); control EN_MODERN only"
+      },
+      "not_covered": "semantic (dictionary-meaning) indexing of ciphertext words; pointer from word gematria; alternative codebooks (LP1 sentences/lines, other books); rule applied across page boundaries with k not restarting beyond page-0 head; atbash; start index beyond 28; M other than 29/28; detail of how a real author would handle interrupters inside words; composition orders other than road-then-direction; pages > 2 as heads; free relation.",
+      "reopens_if": "a reading of 'meaning' that yields a determinate per-word index (not position/length) is stated; or the LP1 codebook order is shown to differ from document order.",
+      "lane_dir": "C1-composed-clue-readings",
+      "x1_r37": "X1/R37: (i) candidates.json holds 5 of the 7 clauses of the signed 2016 message (C-2016-1..5); C-2016-6 'Seek and you will be found' and C-2016-7 'Beware false paths. Verify OpenPGP 7A35090F' (O4 clues.json) are in neither stratum, so the U1 claim '2016 clauses' is 5/7 (the two were run only as legacy Vigenere keywords, R10b B1). (ii) the U3 composition labelled 'literal' (map = LP1 word list, road = position/rune offset/length, direction = LP1-entry number) is C1's operationalization, not the only literal reading: 'its words' may be LP2's own words; a cipher-word gematria pointer (lagged one word, so well-formed) and the O4 untried.md U3 seed orders/value types (6 orders, 4 v, atbash, '&' '$' boundaries) were not run. (ii-b) U2's 'line' sequences come from the koans file, which matches the printed lines (data/scream314_lp.md, used by C2-U4) only on A WARNING (05/06/03/14/73 differ); the literal printed-line sums were not run, contrary to C1's 'not otherwise recorded'. (iii) re-runs: fresh-seed U1 plants (direct/ks2, sha256ctr/ks1) rank 1 of 83/76; U3 rho1-A3 ks1/ks2 and rho3-A2 plants recovered 1.000; sweep_rows.jsonl = header + 17,392 rows, stock validate_store ok."
+    },
+    {
+      "id": "R10-L2-MAP",
+      "round": 10,
+      "lane": "L2-map",
+      "date": "2026-08 (round 10; documented by O4 2026-10-30)",
+      "status": "measured",
+      "kind": "retro-row written by C1 from O4 readings.json; code not re-run",
+      "hypothesis": "'Its words are the map': the ciphertext's own word/line/page structure (initials, finals, word sums, lengths, pointers into LP1, walks, addresses) carries the message.",
+      "result": "R01: NEGATIVE; G1 fired on line-initial (z=6.35) and was adjudicated as width-greedy typesetting (r=0.72) | R02: NEGATIVE (z=-0.12) | R03: NEGATIVE | R04: NEGATIVE (best -4.05 is repeated-word artefact) | R05: NEGATIVE (z=-0.03) | R06: NEGATIVE | R07: EXCLUDED analytically | R08: NEGATIVE (7 vs null max 8) | R09: NEGATIVE (z=0.32)",
+      "coverage": "R01 R10 L2 M1/G1 word/line/page-initial & final acrostic streams; R02 R10 L2 M2 word gematria sums -> symbol stream; R03 R10 L2 M3 word-length bits (ASCII/Baconian); R04 R10 L2 M4 LP2 word numbers as pointers into the solved LP1 English word list ('its words are the map', 'meaning = LP1'); R05 R10 L2 M5 word-level walk w <- w +/- f(word); R06 R10 L2 M6 structural counts (words/line, per page) as message; R07 R10 L2 M7 word-level transposition (IoC*N=1.0000); R08 R10 L2 M8 LP1 English word-length skeleton vs LP2 word lengths; R09 R10 L2 M9 word numbers as direct addresses into the rune stream | R37-C3 (2026-10-30): streams regenerated and re-scored under panel-R36: z=6.94 reading pmax 3.94, family p(Z)=0.95 (U5-L2).",
+      "three_conditionals": {
+        "key_space": "ciphertext word/line boundary positions, 29 shifts x atbash x reverse; 2,928 word sums mod 29/26; 4 predicates x polarity x offsets; 6 pointer families, ~750-word target; 6 f x 32 starts x 2 dirs; 5 sequences; n/a; LP1+AN END+PARABLE ~752 words; 10 families x 29 shifts",
+        "transition_model": "none: cleartext-layer / key-free reads of the CIPHERTEXT's word, line and page structure",
+        "adjudicator_register": "ENGLISH ONLY: rune 4-gram trained on English-in-futhorc and English score_norm (no non-English register, no panel)"
+      },
+      "positive_control": "none for the Round 9/10 reads except the L3 T2-T4 validation gate (oracle z=79.7); round10/SYNTHESIS.md 'Instrument caveats'",
+      "not_covered": "; counts used as KEY SCHEDULE for decode (not as message); multi-bit predicates; non-English; no positive control recorded for the walk family (inherits R9); non-English; sums as keystream (not symbol stream); only English LP1 register as skeleton; target = LP1 only; no gematria-sum-of-LP1 as pointer INTO LP2; no Latin/other target; words of the DECODED plaintext; non-English registers; acrostic over word-numbers; the DECODED (keyed) plaintext layer; non-English registers; anything under beam_v3 / panel-R36 (R37 C1 re-reads the clue as keys/schedules, not these cleartext reads); M3/M4/M6/M7/M8",
+      "evidence": [
+        "liber-primus/analysis/round10/L2-map/PREREG-ADDENDUM-E.md:23-35",
+        "liber-primus/analysis/round10/L2-map/PREREG.md:102-108",
+        "liber-primus/analysis/round10/L2-map/PREREG.md:109-114",
+        "liber-primus/analysis/round10/L2-map/PREREG.md:115-120",
+        "liber-primus/analysis/round10/L2-map/PREREG.md:121-130",
+        "liber-primus/analysis/round10/L2-map/PREREG.md:59-76; round10/L2-map/results.json G1,M1; diag_lineinit.json D1",
+        "liber-primus/analysis/round10/L2-map/PREREG.md:77-83",
+        "liber-primus/analysis/round10/L2-map/PREREG.md:84-90",
+        "liber-primus/analysis/round10/L2-map/PREREG.md:91-100; results.json M4"
+      ],
+      "notes": "M1 pooled best z=6.94 (first-of-word/noF atbash/rev/+28; absolute -16.51 vs English threshold -13.5) never re-scored outside English (O4 U5). G1 fired on line-initial (z=6.35), explained by width-greedy typesetting r=0.72.",
+      "lane_dir": "round10/L2-map",
+      "three_conditionals_r37_c3": {
+        "key_space": "only what R37 C3 regenerated (see coverage); a keystream is covered only at the listed windows",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
+        "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
+      },
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`)."
+    },
+    {
+      "id": "R10-L3-ROAD",
+      "round": 10,
+      "lane": "L3-road",
+      "date": "2026-08 (round 10; documented by O4 2026-10-30)",
+      "status": "measured",
+      "kind": "retro-row written by C1 from O4 readings.json; code not re-run",
+      "hypothesis": "'Their meaning is the road': word/sentence/line/page gematria sums marked, mapped to symbols, used for selection/reordering, or as pointers into key text.",
+      "result": "R10: NEGATIVE | R11: NEGATIVE; validation gate oracle z=79.7 | R12: NEGATIVE (confirmatory only)",
+      "coverage": "R10 R10 L3 T1 word/sentence/line/page gematria sums marked (prime/emirp/phi-shaped/Cicada constants); R11 R10 L3 T2-T4 sum -> symbol / word selection by predicate / reorder by sum; R12 R10 L3 T5 sum as pointer into a key text | R37-C3 (2026-10-30): U5_L3_T234: best T3:s%29==23:whole pmax 2.94, Z 2.33, family p(Z)=0.960, raw-best p=0.880",
+      "three_conditionals": {
+        "key_space": "all LP2 CIPHERTEXT word sums; 5 readings; high-prior key texts",
+        "transition_model": "none: cleartext-layer / key-free reads of the CIPHERTEXT's word, line and page structure",
+        "adjudicator_register": "ENGLISH ONLY: rune 4-gram trained on English-in-futhorc and English score_norm (no non-English register, no panel)"
+      },
+      "positive_control": "none for the Round 9/10 reads except the L3 T2-T4 validation gate (oracle z=79.7); round10/SYNTHESIS.md 'Instrument caveats'",
+      "not_covered": "; applies to ciphertext words only; never to DECODED lines (LP1 line sums are all prime - designed property); texts predate B-16 correction; the DECODED (keyed) plaintext layer; non-English registers; anything under beam_v3 / panel-R36 (R37 C1 re-reads the clue as keys/schedules, not these cleartext reads); T1 count tests; T5 60 null draws",
+      "evidence": [
+        "liber-primus/analysis/round10/L3-road/PREREG.md:116-124; road_results.json T1a/T1b",
+        "liber-primus/analysis/round10/L3-road/PREREG.md:116-125",
+        "liber-primus/analysis/round10/L3-road/PREREG.md:124"
+      ],
+      "notes": "Sums were of the LP2 ciphertext's own words only (never LP1 plaintext numbers as a key schedule; that is R37 C1 U2).",
+      "lane_dir": "round10/L3-road",
+      "three_conditionals_r37_c3": {
+        "key_space": "only what R37 C3 regenerated (see coverage); a keystream is covered only at the listed windows",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
+        "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
+      },
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`)."
+    },
+    {
+      "id": "R37-C2-U4-PRIME-LINE-SUMS",
+      "round": 37,
+      "lane": "C2-U4",
+      "date": "2026-10-30",
+      "status": "measured",
+      "positive_control": "passed",
+      "control_detail": "measure.py: prime-by-construction lines at the six pages' lengths score 60/60 (f=1.0), pooled p=1e-4 (floor) under shuffle and random nulls; 01,05,06,03,14 each p=1e-4; 73 p=9e-4 (4 lines).",
+      "hypothesis": "Every physical line's Gematria Primus sum being prime is a language-free recognizer of designed text.",
+      "coverage": "Six solved pages (01,05,06,03,14,73; 60 physical lines), plaintext side and ciphertext side, 10,000 shuffles + 10,000 uniform-random strings per page; English KJV-window control.",
+      "result": "NO-SEPARATION: plaintext pooled 22/60 vs null 0.162 (p=1e-4) but only 2/6 pages p<0.05 (01: 9/10, p=1e-4; 03: 4/8, p=0.025); excluding A WARNING 13/50=0.26 vs 0.164 p(shuffle)=0.053. Ciphertext 8/60 vs 0.156 (p=0.74). English control prime rate 0.155. Top-row plinefrac scoring not run. [X1 correction: 03 = 3/8 and pooled 21/60 after re-alignment; pages p<0.05 = 1; verdict unchanged]",
+      "threshold": "pooled p<0.01 AND >=4/6 pages p<0.05 (PREREG.md, fixed before computing).",
+      "power": "control detects constructed all-prime pages at p<=1e-4; per-page power limited by 4-20 lines.",
+      "notes": "Signal is a single-page (A WARNING) property; not a general gate.",
+      "evidence": [
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U4-prime-line-sums/PREREG.md",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U4-prime-line-sums/measure.py",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U4-prime-line-sums/results.json",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U4-prime-line-sums/RESULTS.md"
+      ],
+      "threshold_fixed_in_advance": true,
+      "lane_dir": "C2-recognizer-index-readings/U4-prime-line-sums",
+      "three_conditionals": {
+        "key_space": "six solved pages, all physical rune lines incl. titles; Gematria Primus line sums",
+        "transition_model": "none (measured on decoded plaintext and on ciphertext; no decoder)",
+        "adjudicator_register": "language-free statistic (primality of line sums); n/a register"
+      },
+      "not_covered": "LP2 pages (no decode exists); title-excluded variants as primary; sentence/word sums; unsolved pages",
+      "x1_r37": "X1/R37 CORRECTION: measure.py builds plaintext line boundaries from plaintext-rune counts (plens) but sums over the position array that still holds zero-valued interrupter slots, so lines are misaligned on pages with interrupters (03: 7, 14: 2, 73: 1). Re-aligned (rerun_u4.py): 03 = 3/8 (not 4/8), p(shuffle) 0.09-0.13 (not 0.025); pooled 21/60 (not 22/60), p 5e-4; pages p<0.05 = 1 (01 only), not 2. Pages 01/05/06 have no interrupters and are unchanged. Verdict NO-SEPARATION unchanged (stronger)."
+    },
+    {
+      "id": "R37-C2-U7-BOOK-CODE",
+      "round": 37,
+      "lane": "C2-U7",
+      "date": "2026-10-30",
+      "status": "negative",
+      "positive_control": "passed",
+      "control_detail": "A (60-rune LP1 phrase via triple-digit list into LP1 runes) p=5e-4 floor; C (60-rune phrase via UNS word-first-rune indices) p=5e-4 floor; random-index controls not detected. R/F readouts only.",
+      "hypothesis": "The signed numeric strings (P.S. integer, @1231507051321, location numbers) are book-code indices into LP1 plaintext / the LP2 rune stream.",
+      "coverage": "240 R/F selections (144 with n>=30 powered; 96 short S2/whole unpowered): 3 strings (S1,S2,LOC) x pair/triple/single (+LOCW whole) x {LP1,UNS} x {rune, first-rune-of-word, first-rune-of-line} x 0/1-based x reversed; panel-R36 pmax_ne vs index-alphabet null and order-shuffle null, M=2000 (refine 100k/20k), family bar 3.1e-5 over 320.",
+      "result": "0 selections flagged; best p_gate 0.027 (noise level).",
+      "threshold": "p_gate<=0.01/320 after refinement",
+      "power": "controls at n=56-60 detected at the p floor; S2 and whole-number selections (n<=13) unpowered",
+      "not_covered": "page:line:char addressing; indices into non-LP books; overlapping digit windows / other radices; short-selection power; 96 short-selection cells unpowered",
+      "evidence": [
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U7-book-code/PREREG.md",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U7-book-code/u7.py",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U7-book-code/results.json",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U7-book-code/RESULTS.md",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U7-book-code/run.log"
+      ],
+      "three_conditionals": {
+        "key_space": "exactly the 240 R/F-word/F-line selections (3 strings x pair/triple/single/whole x LP1/UNS x 0/1-based x fwd/rev)",
+        "transition_model": "verbatim index->letter retrieval with mod wrap (no cipher/decoder); page:line:char, other books, sliding windows missed",
+        "adjudicator_register": "panel-R36 pmax_ne trigram z, powered only n>=~40 (controls A,C at n=56-60); 96 of 240 cells (S2, whole-number) are n<30 and unpowered"
+      },
+      "threshold_fixed_in_advance": true,
+      "lane_dir": "C2-recognizer-index-readings/U7-book-code",
+      "x1_r37": "X1/R37: random-index null over the scheme's own digit alphabet is the right null for a book code (the real indices can only address that range; the order-shuffle null is the second); control B failure explanation reproduced (rerun_u7_controlB.json: random bags of LP1 words mean pmax_ne 12.16, real sentence 14.53, 1.25 % of bags >= real; uniform random runes 1.26). threshold_fixed_in_advance stays true: Addendum 1 corrected the null after run 1 but 0 selections were flagged in either run."
+    },
+    {
+      "id": "R37-C2-U7-BOOK-CODE-W",
+      "round": 37,
+      "lane": "C2-U7",
+      "date": "2026-10-30",
+      "status": "inconclusive",
+      "positive_control": "failed",
+      "control_detail": "B: LP1 sentence located by word indices, W readout: p_a 0.065, p_b 0.022 (null max 16.6 > real 14.5). LP1_REAL register contains LP1 words so random LP1 word bags score as high as a real sentence.",
+      "hypothesis": "Same as R37-C2-U7-BOOK-CODE with the whole indexed word retrieved.",
+      "coverage": "80 word-whole readout selections swept (0 flagged) but the readout has no measured power.",
+      "result": "inconclusive: instrument cannot see a planted word-whole retrieval from LP1.",
+      "threshold": "as parent",
+      "power": "control failed",
+      "not_covered": "any word-whole retrieval verdict; needs an LP1-excluded register or a word-order statistic",
+      "evidence": [
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U7-book-code/results.json",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U7-book-code/RESULTS.md"
+      ],
+      "three_conditionals": {
+        "key_space": "80 W-readout (whole indexed word) selections",
+        "transition_model": "verbatim retrieval",
+        "adjudicator_register": "panel-R36 pmax_ne: UNPOWERED for LP1 words (control B failed)"
+      },
+      "threshold_fixed_in_advance": true,
+      "lane_dir": "C2-recognizer-index-readings/U7-book-code",
+      "x1_r37": "X1/R37: control B failure reproduced (rerun_u7_controlB.json); inconclusive is the right label."
+    },
+    {
+      "id": "R37-C2-U8-GEOMETRY",
+      "round": 37,
+      "lane": "C2-U8",
+      "date": "2026-10-30",
+      "status": "inconclusive",
+      "positive_control": "failed",
+      "control_detail": "5 planted glyphs (octagon, 29-gon, T, L, 12-gon) in LP2 page-0 noise: none exceeded its 200-shuffle null max (best V3-T 4.09 vs 4.21).",
+      "hypothesis": "Numbers are the direction: per-page, interrupter-gated turtle renders of page numbers (and LP1 word sums) draw a glyph.",
+      "coverage": "232 renders (58 pages x 4 variants), 200 shuffles each; 0/232 above own null max; no oracle PNGs; diagnostic only.",
+      "result": "inconclusive: recognizer has no measured power at 24-30 step glyphs.",
+      "threshold": "refined p <= 0.01/232 after beating the page null max",
+      "power": "failed on all 5 plants",
+      "not_covered": "power-adequate glyph recognizer; other moduli/steps; 55-page grid; L-systems; glyphs >2 strokes",
+      "evidence": [
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U8-geometry/PREREG.md",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U8-geometry/u8.py",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U8-geometry/results.json",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U8-geometry/RESULTS.md",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U8-geometry/png/contact_V1_prime_mod8_rel.png",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U8-geometry/png/contact_V2_idx_rel_29.png",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U8-geometry/png/contact_V3_idx_abs_card.png",
+        "liber-primus/analysis/round37/C2-recognizer-index-readings/U8-geometry/png/contact_V4_wordsum_rel12.png"
+      ],
+      "three_conditionals": {
+        "key_space": "4 turtle rules x 58 pages",
+        "transition_model": "deterministic turtle; F = pen-up",
+        "adjudicator_register": "glyph-template NCC/z: UNPOWERED (5/5 planted glyphs missed under two recognizers)"
+      },
+      "threshold_fixed_in_advance": true,
+      "lane_dir": "C2-recognizer-index-readings/U8-geometry",
+      "x1_r37": "X1/R37: inconclusive is right (planted 24-30 step glyphs not separable from shuffled strokes); the 232-render sweep is diagnostic only and is labelled so in RESULTS and in this row (result/coverage)."
+    },
+    {
+      "round": 37,
+      "lane": "C3",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": true,
+      "evidence": [
+        "liber-primus/analysis/round37/C3-rescore-reopened/PREREG.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/RESULTS.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/rescore_summary.json"
+      ],
+      "reproduce": "cd liber-primus/analysis/round37/C3-rescore-reopened; python rescore.py control; python rescore.py u6a; python rescore.py u6b; python rescore.py u5; python rescore.py final; python build_deliverables.py",
+      "sweep_store": "analysis/round37/C3-rescore-reopened/rescore_rows.jsonl",
+      "id": "R37-C3-U5-L2-MAP",
+      "hypothesis": "Round 10 L2-map cleartext streams (M1/M2/M5/M9) re-scored outside English: the z=6.94 first-of-word near-flag and its family.",
+      "status": "negative",
+      "coverage": "REGENERATED (no stored streams): M1 pooled 464 readings (2000 null_A + 2000 doublet-matched draws), M1 per-page 21,808 short streams (200 draws), M2 348, M9 290 (300 draws), M5 1,486 paths (100 draws); 12-register panel-R36 direct pmax per stream. NOT covered: M3/M4/M6/M7/M8 (bits, LP1 pointers, counts, analytic, run pattern).",
+      "result": "NEGATIVE. The original z=6.94 reading (first-of-word/noF atbash/rev/+28) has panel pmax 3.94 (EN_MODERN) = Z 1.63 within its family (p(Z)=0.947, raw best-of-464 p=0.739; Wilson 95% on exceedance rate [0.719, 0.758]). The English-gated flag was an artefact of the retired scorer. U5_L2_M1_pooled: best M1:last/noF:id/fwd/+19 pmax 3.26, Z 2.50, family p(Z)=0.947, raw-best p=0.739 | U5_L2_M1_pooled_dfnull: best M1:last/noF:id/fwd/+19 pmax 3.26, Z 2.57, family p(Z)=0.922, raw-best p=0.731 | U5_L2_M1_perpage: best p34:M1:last/noF:id/fwd/+8 pmax 4.62, Z 5.07, family p(Z)=0.095, raw-best p=0.647 | U5_L2_M2: best M2:Sprime:noF:atbash+24 pmax 2.63, Z 3.40, family p(Z)=0.233, raw-best p=0.738 | U5_L2_M5: best M5:first/self/-1/start2184/initials pmax 3.45, Z 3.20, family p(Z)=0.327, raw-best p=0.644 | U5_L2_M9: best M9:Sidx->word-initial+16 pmax 12.35, Z 3.29, family p(Z)=0.392, raw-best p=0.156",
+      "three_conditionals": {
+        "key_space": "regenerated streams: 464 pooled M1 readings, per-page M1, M2 348, M9 290, M5 1,486",
+        "transition_model": "none: cleartext-layer reads of the ciphertext's word/line/page structure (key-free)",
+        "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); self-calibrating shuffle null for direct streams, 12-register POT bars (null12.json) for beam rows; positive controls planted EN_MODERN/LATIN/GREEK only (not CY/HEBREW/NORSE/EN_NOVOWEL) for these key families"
+      },
+      "not_covered": "M3/M4/M6/M7/M8 (not rune streams or analytic; LP1-pointer text reads stay English-only); the decoded (keyed) layer; the lane's own null kept alongside a doublet-matched null for M1 pooled only",
+      "threshold": "family-wise exceedance of per-stream standardised pmax vs same-draw family max of >=200 size-matched nulls (alpha 0.01), raw best-of-family pmax reported beside it",
+      "positive_control": "passed",
+      "reopens_if": "a stream whose panel pmax and standardised Z both clear the family-wise null with non-degenerate IoC/mds",
+      "control_detail": "control.json direct: planted EN_MODERN/LATIN/GREEK text at the family's n beats the family-null q99 by >1 Z for every L2 family",
+      "lane_dir": "C3-rescore-reopened",
+      "x1_r37": "X1/R37: the z=6.94 reading re-scored independently: pmax 3.942 (EN_MODERN) under panel-R36; single-reading p 0.073 (plain shuffle) / 0.070 (doublet-matched), 300 draws each (rerun_z694.json). The near-flag was an English-gated artefact."
+    },
+    {
+      "round": 37,
+      "lane": "C3",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": true,
+      "evidence": [
+        "liber-primus/analysis/round37/C3-rescore-reopened/PREREG.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/RESULTS.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/rescore_summary.json"
+      ],
+      "reproduce": "cd liber-primus/analysis/round37/C3-rescore-reopened; python rescore.py control; python rescore.py u6a; python rescore.py u6b; python rescore.py u5; python rescore.py final; python build_deliverables.py",
+      "sweep_store": "analysis/round37/C3-rescore-reopened/rescore_rows.jsonl",
+      "id": "R37-C3-U5-L3-ROAD",
+      "hypothesis": "Round 10 L3-road word-sum cleartext streams (T2/T3/T4/T5) re-scored in 12 registers.",
+      "status": "negative",
+      "coverage": "REGENERATED by exec of road.py::readings (208 T2/T3/T4 streams, 300 lane-null draws) and T5 book-code streams (15 usable, 60 draws); direct panel-R36 pmax. NOT covered: T1 count tests (no stream).",
+      "result": "NEGATIVE. U5_L3_T234: best T3:s%29==23:whole pmax 2.94, Z 2.33, family p(Z)=0.960, raw-best p=0.880 | U5_L3_T5: best T5:runepoem_oe.txt:s%M pmax 26.62, Z 2.00, family p(Z)=0.377, raw-best p=0.557",
+      "three_conditionals": {
+        "key_space": "208 T2-T4 readings + 15 T5 streams (road.py code unchanged)",
+        "transition_model": "none: key-free reads",
+        "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); self-calibrating shuffle null for direct streams, 12-register POT bars (null12.json) for beam rows; positive controls planted EN_MODERN/LATIN/GREEK only (not CY/HEBREW/NORSE/EN_NOVOWEL) for these key families"
+      },
+      "not_covered": "T1a/T1b count tests (no adjudicator); T5 with 60 null draws only; decoded layer",
+      "threshold": "as U5-L2",
+      "positive_control": "passed",
+      "reopens_if": "as U5-L2",
+      "control_detail": "control.json direct",
+      "lane_dir": "C3-rescore-reopened"
+    },
+    {
+      "round": 37,
+      "lane": "C3",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": true,
+      "evidence": [
+        "liber-primus/analysis/round37/C3-rescore-reopened/PREREG.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/RESULTS.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/rescore_summary.json"
+      ],
+      "reproduce": "cd liber-primus/analysis/round37/C3-rescore-reopened; python rescore.py control; python rescore.py u6a; python rescore.py u6b; python rescore.py u5; python rescore.py final; python build_deliverables.py",
+      "sweep_store": "analysis/round37/C3-rescore-reopened/rescore_rows.jsonl",
+      "id": "R37-C3-U6A-N1-CT",
+      "hypothesis": "R11-N1 cumulative-gematria CT-feedback autokey under beam_v3 keyskip1+2 on panel-R36.",
+      "status": "negative",
+      "coverage": "24 CT-feedback configs REGENERATED (no top-N stored) x 10 windows x 2 relations = 480 decodes, L=120.",
+      "result": "NEGATIVE. U6a_N1_ct: best non-degenerate pmax 4.76 (ks1) / 4.61 (ks2) vs 12-reg bars actual-N 6.07/6.02, declared-N 9.10/9.00 (240 rows/rel, 0 degenerate rows/rel)",
+      "three_conditionals": {
+        "key_space": "24 N1 CT-feedback key configs, sign +/-, fwd/rev, continuous/per-segment",
+        "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max, L=120 (U6b also L=240); wrong-key bars transferred from the bash-orbit null (data-dependent keys: degenerate decodes filtered by IoC/mds)",
+        "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); self-calibrating shuffle null for direct streams, 12-register POT bars (null12.json) for beam rows; positive controls planted EN_MODERN/LATIN/GREEK only (not CY/HEBREW/NORSE/EN_NOVOWEL) for these key families"
+      },
+      "not_covered": "PT-feedback under skip relations; windows beyond the 10; offsets",
+      "threshold": "12-register POT bar at actual N (240/rel) and 1e6",
+      "positive_control": "passed",
+      "reopens_if": "a window clearing the actual-N bar then L=240",
+      "control_detail": "control.json beam N1ct 12/12 (3 registers x 2 relations x 2 plants)",
+      "lane_dir": "C3-rescore-reopened"
+    },
+    {
+      "round": 37,
+      "lane": "C3",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": false,
+      "evidence": [
+        "liber-primus/analysis/round37/C3-rescore-reopened/PREREG.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/RESULTS.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/rescore_summary.json"
+      ],
+      "reproduce": "cd liber-primus/analysis/round37/C3-rescore-reopened; python rescore.py control; python rescore.py u6a; python rescore.py u6b; python rescore.py u5; python rescore.py final; python build_deliverables.py",
+      "sweep_store": "analysis/round37/C3-rescore-reopened/rescore_rows.jsonl",
+      "id": "R37-C3-U6A-N1-PT",
+      "hypothesis": "R11-N1 plaintext-feedback (self-keying) autokey under the 12-register panel.",
+      "status": "negative",
+      "coverage": "24 PT-feedback configs regenerated; skip-free direct decode of the 12,956 stream scored on panel-R36. The key depends on recovered plaintext so the fixed-K keyskip beam cannot represent it.",
+      "result": "NEGATIVE on a skip-free transition model only. U6a_N1_pt: best PT_totient_s+1_fwd_reset pmax 2.72, Z 78.45, family p(Z)=0.007, raw-best p=0.503. The Z=78 is a null-variance artefact: raw pmax 2.7 is noise level and raw best-of-24 p=0.50.",
+      "three_conditionals": {
+        "key_space": "24 N1 PT-feedback configs",
+        "transition_model": "skip-free (legacy) exact decode only",
+        "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); self-calibrating shuffle null for direct streams, 12-register POT bars (null12.json) for beam rows; positive controls planted EN_MODERN/LATIN/GREEK only (not CY/HEBREW/NORSE/EN_NOVOWEL) for these key families"
+      },
+      "not_covered": "PT-feedback under any skip relation (not representable)",
+      "threshold": "Z and raw statistics both required",
+      "positive_control": "passed",
+      "control_detail": "control.json direct U6a_N1_pt",
+      "lane_dir": "C3-rescore-reopened",
+      "x1_r37": "X1/R37: the doublet-matched null (and, for N1-PT, the two-statistic rule) replaced the first-pass plain-shuffle null AFTER the first-pass real-data results existed (superseded_plain_shuffle_null/: p(Z) 0.0066 N1-PT, 0.0050 N2, 0.0033 N4-read, all < 0.01, became 0.41-0.50 under the final null). The replacement is mechanically justified (LP2 has 86 adjacent equal pairs; a plain shuffle gives ~447) and moves toward fewer hits, but it is a post-data change to the test, so threshold_fixed_in_advance is false for this row and the verdict rests on the final null being right. The raw-pmax statistic has marginal planted power in N2 (LATIN plant 111.31 vs null q99 111.12)."
+    },
+    {
+      "round": 37,
+      "lane": "C3",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": false,
+      "evidence": [
+        "liber-primus/analysis/round37/C3-rescore-reopened/PREREG.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/RESULTS.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/rescore_summary.json"
+      ],
+      "reproduce": "cd liber-primus/analysis/round37/C3-rescore-reopened; python rescore.py control; python rescore.py u6a; python rescore.py u6b; python rescore.py u5; python rescore.py final; python build_deliverables.py",
+      "sweep_store": "analysis/round37/C3-rescore-reopened/rescore_rows.jsonl",
+      "id": "R37-C3-U6A-N2",
+      "hypothesis": "R11-N2 prime gap/index streams read as data under 12 registers.",
+      "status": "negative",
+      "coverage": "12 streams (4 x mod29, base29-2, base29-3), derived-stream null from doublet-matched shuffled LP2 sources (200 draws); ASCII/coordinate routes not rune streams.",
+      "result": "NEGATIVE. U6a_N2: best prime_index:mod29 pmax 1.80, Z 1.65, family p(Z)=0.413, raw-best p=0.667",
+      "three_conditionals": {
+        "key_space": "4 integer streams x 3 interpretations",
+        "transition_model": "none: data read",
+        "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); self-calibrating shuffle null for direct streams, 12-register POT bars (null12.json) for beam rows; positive controls planted EN_MODERN/LATIN/GREEK only (not CY/HEBREW/NORSE/EN_NOVOWEL) for these key families"
+      },
+      "not_covered": "ASCII printable and coordinate-structure routes; other bases",
+      "threshold": "family-wise vs derived-source null",
+      "positive_control": "passed",
+      "control_detail": "control.json direct U6a_N2",
+      "lane_dir": "C3-rescore-reopened",
+      "x1_r37": "X1/R37: the doublet-matched null (and, for N1-PT, the two-statistic rule) replaced the first-pass plain-shuffle null AFTER the first-pass real-data results existed (superseded_plain_shuffle_null/: p(Z) 0.0066 N1-PT, 0.0050 N2, 0.0033 N4-read, all < 0.01, became 0.41-0.50 under the final null). The replacement is mechanically justified (LP2 has 86 adjacent equal pairs; a plain shuffle gives ~447) and moves toward fewer hits, but it is a post-data change to the test, so threshold_fixed_in_advance is false for this row and the verdict rests on the final null being right. The raw-pmax statistic has marginal planted power in N2 (LATIN plant 111.31 vs null q99 111.12)."
+    },
+    {
+      "round": 37,
+      "lane": "C3",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": true,
+      "evidence": [
+        "liber-primus/analysis/round37/C3-rescore-reopened/PREREG.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/RESULTS.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/rescore_summary.json"
+      ],
+      "reproduce": "cd liber-primus/analysis/round37/C3-rescore-reopened; python rescore.py control; python rescore.py u6a; python rescore.py u6b; python rescore.py u5; python rescore.py final; python build_deliverables.py",
+      "sweep_store": "analysis/round37/C3-rescore-reopened/rescore_rows.jsonl",
+      "id": "R37-C3-U6A-N3",
+      "hypothesis": "R11-N3 whole-book integer structure (primality/factors).",
+      "status": "inconclusive",
+      "coverage": "Not re-scored: N3 never used an adjudicator or decoder.",
+      "result": "NOT RE-SCORED. The English-only conditional never applied to N3; its original structural result stands.",
+      "three_conditionals": {
+        "key_space": "55 segments + full number",
+        "transition_model": "n/a",
+        "adjudicator_register": "n/a: no scorer; positive controls planted EN_MODERN/LATIN/GREEK only (not CY/HEBREW/NORSE/EN_NOVOWEL) for these key families"
+      },
+      "not_covered": "everything adjudicator-related",
+      "threshold": "n/a",
+      "positive_control": "n/a",
+      "control_detail": "no control: nothing to re-score",
+      "lane_dir": "C3-rescore-reopened"
+    },
+    {
+      "round": 37,
+      "lane": "C3",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": false,
+      "evidence": [
+        "liber-primus/analysis/round37/C3-rescore-reopened/PREREG.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/RESULTS.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/rescore_summary.json"
+      ],
+      "reproduce": "cd liber-primus/analysis/round37/C3-rescore-reopened; python rescore.py control; python rescore.py u6a; python rescore.py u6b; python rescore.py u5; python rescore.py final; python build_deliverables.py",
+      "sweep_store": "analysis/round37/C3-rescore-reopened/rescore_rows.jsonl",
+      "id": "R37-C3-U6A-N4",
+      "hypothesis": "R11-N4 digit planes: as keystream (beam_v3) and as read symbol streams (direct).",
+      "status": "negative",
+      "coverage": "Keystream: 28 (14 planes x 2 signs) x 6 windows x 2 relations = 336 decodes at L=120 (regenerated; no top-N stored). Read: 14 plane streams, derived-source null.",
+      "result": "NEGATIVE. U6a_N4_ks: best non-degenerate pmax 5.56 (ks1) / 5.56 (ks2) vs 12-reg bars actual-N 5.94/5.89, declared-N 9.10/9.00 (168 rows/rel, 0 degenerate rows/rel) | U6a_N4_read: best b3_p3 pmax 44.03, Z 1.71, family p(Z)=0.505, raw-best p=0.425",
+      "three_conditionals": {
+        "key_space": "bases 3,5,7,10, all digit places, both signs",
+        "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max, L=120 (U6b also L=240); wrong-key bars transferred from the bash-orbit null (data-dependent keys: degenerate decodes filtered by IoC/mds)",
+        "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); self-calibrating shuffle null for direct streams, 12-register POT bars (null12.json) for beam rows; positive controls planted EN_MODERN/LATIN/GREEK only (not CY/HEBREW/NORSE/EN_NOVOWEL) for these key families"
+      },
+      "not_covered": "base 29/other bases; plane combinations",
+      "threshold": "POT bars + family-wise Z",
+      "positive_control": "passed",
+      "control_detail": "control.json beam N4ks 12/12; direct U6a_N4_read",
+      "lane_dir": "C3-rescore-reopened",
+      "x1_r37": "X1/R37: the doublet-matched null (and, for N1-PT, the two-statistic rule) replaced the first-pass plain-shuffle null AFTER the first-pass real-data results existed (superseded_plain_shuffle_null/: p(Z) 0.0066 N1-PT, 0.0050 N2, 0.0033 N4-read, all < 0.01, became 0.41-0.50 under the final null). The replacement is mechanically justified (LP2 has 86 adjacent equal pairs; a plain shuffle gives ~447) and moves toward fewer hits, but it is a post-data change to the test, so threshold_fixed_in_advance is false for this row and the verdict rests on the final null being right. The raw-pmax statistic has marginal planted power in N2 (LATIN plant 111.31 vs null q99 111.12)."
+    },
+    {
+      "round": 37,
+      "lane": "C3",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": true,
+      "evidence": [
+        "liber-primus/analysis/round37/C3-rescore-reopened/PREREG.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/RESULTS.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/rescore_summary.json"
+      ],
+      "reproduce": "cd liber-primus/analysis/round37/C3-rescore-reopened; python rescore.py control; python rescore.py u6a; python rescore.py u6b; python rescore.py u5; python rescore.py final; python build_deliverables.py",
+      "sweep_store": "analysis/round37/C3-rescore-reopened/rescore_rows.jsonl",
+      "id": "R37-C3-U6A-N5",
+      "hypothesis": "R11-N5 totient-ladder keystreams (464) under beam_v3 keyskip1+2 on panel-R36.",
+      "status": "negative",
+      "coverage": "8 generators x 2 signs x 29 offsets = 464 keystreams (continuous windows 0/4800/9600 + per-segment restart on pages 18 and 36) x 2 relations = 4,640 decodes at L=120. AN END (real keyed page) decoded with phi(prime): recovery 1.00/0.93.",
+      "result": "NEGATIVE. U6a_N5: best non-degenerate pmax 6.30 (ks1) / 6.30 (ks2) vs 12-reg bars actual-N 6.90/6.83, declared-N 9.10/9.00 (2320 rows/rel, 0 degenerate rows/rel)",
+      "three_conditionals": {
+        "key_space": "464 totient-ladder keystreams (regenerated from n5.py)",
+        "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max, L=120 (U6b also L=240); wrong-key bars transferred from the bash-orbit null (data-dependent keys: degenerate decodes filtered by IoC/mds)",
+        "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); self-calibrating shuffle null for direct streams, 12-register POT bars (null12.json) for beam rows; positive controls planted EN_MODERN/LATIN/GREEK only (not CY/HEBREW/NORSE/EN_NOVOWEL) for these key families"
+      },
+      "not_covered": "5 windows per keystream; offsets beyond additive; generators beyond the 8",
+      "threshold": "POT bars actual N (2,320/rel) and 1e6",
+      "positive_control": "passed",
+      "reopens_if": "a window clearing the actual-N bar then L=240",
+      "control_detail": "control.json beam N5 12/12 + AN END real artifact (recovery 1.00/0.93; pmax 8.93/9.00 at n=85 < L=120)",
+      "lane_dir": "C3-rescore-reopened",
+      "x1_r37": "X1/R37: best 6.304 (CY) vs actual-N bar 6.897 recomputed from null12.json; under the transferred GPD tail P(max of 2,320 >= 6.304) ~ 0.05, and the next row (6.244, same generator phi_phi_prime_RI s-1, window 9600) is similar: the closest row is not noise-level by construction. Neither went to L=240 (rule: only actual-N clearers do). An L=240 follow-up on the top-5 is cheap."
+    },
+    {
+      "round": 37,
+      "lane": "C3",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": true,
+      "evidence": [
+        "liber-primus/analysis/round37/C3-rescore-reopened/PREREG.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/RESULTS.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/rescore_summary.json"
+      ],
+      "reproduce": "cd liber-primus/analysis/round37/C3-rescore-reopened; python rescore.py control; python rescore.py u6a; python rescore.py u6b; python rescore.py u5; python rescore.py final; python build_deliverables.py",
+      "sweep_store": "analysis/round37/C3-rescore-reopened/rescore_rows.jsonl",
+      "id": "R37-C3-U6A-S1",
+      "hypothesis": "R11-S1 interrupter-position gaps under 12 registers.",
+      "status": "negative",
+      "coverage": "8 rune-valued routes of the F-gap stream (mod29, base29-2, mod n); count-preserving random position null (300 draws); raw-best not computed for S1 (family p(Z)>0.4).",
+      "result": "NEGATIVE. U6a_S1: best mod5 pmax 17.45, Z 1.40, family p(Z)=0.482, raw-best p=n/a",
+      "three_conditionals": {
+        "key_space": "gaps mod29, base29-2/3, mod n in {2,3,4,5,8}",
+        "transition_model": "none",
+        "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); self-calibrating shuffle null for direct streams, 12-register POT bars (null12.json) for beam rows; positive controls planted EN_MODERN/LATIN/GREEK only (not CY/HEBREW/NORSE/EN_NOVOWEL) for these key families"
+      },
+      "not_covered": "ASCII/bit/indicator byte routes",
+      "threshold": "family-wise Z",
+      "positive_control": "passed",
+      "control_detail": "control.json direct U6a_S1",
+      "lane_dir": "C3-rescore-reopened"
+    },
+    {
+      "round": 37,
+      "lane": "C3",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": true,
+      "evidence": [
+        "liber-primus/analysis/round37/C3-rescore-reopened/PREREG.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/RESULTS.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/rescore_summary.json"
+      ],
+      "reproduce": "cd liber-primus/analysis/round37/C3-rescore-reopened; python rescore.py control; python rescore.py u6a; python rescore.py u6b; python rescore.py u5; python rescore.py final; python build_deliverables.py",
+      "sweep_store": "analysis/round37/C3-rescore-reopened/rescore_rows.jsonl",
+      "id": "R37-C3-U6A-S2",
+      "hypothesis": "R11-S2 separator run-lengths mod 29 under 12 registers.",
+      "status": "negative",
+      "coverage": "1 stream (run lengths mod29), shuffle null 1000 draws; raw-best not computed.",
+      "result": "NEGATIVE. U6a_S2: best runs_mod29 pmax 37.83, Z 0.16, family p(Z)=0.442, raw-best p=n/a",
+      "three_conditionals": {
+        "key_space": "run lengths between - / .",
+        "transition_model": "none",
+        "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); self-calibrating shuffle null for direct streams, 12-register POT bars (null12.json) for beam rows; positive controls planted EN_MODERN/LATIN/GREEK only (not CY/HEBREW/NORSE/EN_NOVOWEL) for these key families"
+      },
+      "not_covered": "binary/ternary separator-byte routes (bytes/text, not rune space)",
+      "threshold": "family-wise Z",
+      "positive_control": "passed",
+      "control_detail": "control.json direct U6a_S2",
+      "lane_dir": "C3-rescore-reopened"
+    },
+    {
+      "round": 37,
+      "lane": "C3",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": false,
+      "evidence": [
+        "liber-primus/analysis/round37/C3-rescore-reopened/PREREG.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/RESULTS.md",
+        "liber-primus/analysis/round37/C3-rescore-reopened/rescore_summary.json"
+      ],
+      "reproduce": "cd liber-primus/analysis/round37/C3-rescore-reopened; python rescore.py control; python rescore.py u6a; python rescore.py u6b; python rescore.py u5; python rescore.py final; python build_deliverables.py",
+      "sweep_store": "analysis/round37/C3-rescore-reopened/rescore_rows.jsonl",
+      "id": "R37-C3-U6B-R22C",
+      "hypothesis": "R22-C: 185 operations under the 12-register panel: 169 structural (direct) + 14 keyed op-configs x keyskip1/2.",
+      "status": "negative",
+      "coverage": "169 structural streams (X1 138, X3a 31; ops regenerated with R22-C's code; 300 doublet-matched source-null draws); 14 keyed op-configs (X3b 2 signs, X4 12) x 6 page-start windows x 2 relations = 168 decodes at L=120 and 168 at L=240. The plan's '185 x keyskip1/2' does not apply to the keyless structural ops. Degenerate constant decodes (e.g. X4 prime_index atbash_pre sign+1: constant stream, pmax 12.4 in OE, IoC*N=29, mds=1) are filtered by the IoC/mds rule.",
+      "result": "NEGATIVE. U6b_R22C_structural: best X1a_decim_phase2_shift8 pmax 3.18, Z 2.47, family p(Z)=0.751, raw-best p=0.598 | U6b_R22C_keyed_L120: best non-degenerate pmax 4.78 (ks1) / 4.78 (ks2) vs 12-reg bars actual-N 5.69/5.64, declared-N 9.10/9.00 (84 rows/rel, 12 degenerate rows/rel) | L=240: U6b_R22C_keyed_L240: best non-degenerate pmax 5.46 (ks1) / 5.46 (ks2) vs 12-reg bars actual-N 6.04/6.14, declared-N 8.98/9.28 (84 rows/rel, 12 degenerate rows/rel)",
+      "three_conditionals": {
+        "key_space": "the same 185 operations (not widened)",
+        "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max, L=120 (U6b also L=240); wrong-key bars transferred from the bash-orbit null (data-dependent keys: degenerate decodes filtered by IoC/mds); structural ops skip-free",
+        "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); self-calibrating shuffle null for direct streams, 12-register POT bars (null12.json) for beam rows; positive controls planted EN_MODERN/LATIN/GREEK only (not CY/HEBREW/NORSE/EN_NOVOWEL) for these key families"
+      },
+      "not_covered": "non-zero offsets, width!=4 interleave/decimation, phi(phi)/lambda keystreams beyond N4/N5",
+      "threshold": "POT bars + family-wise Z",
+      "positive_control": "passed",
+      "reopens_if": "as R22-C: width!=4, non-zero offsets, drift constructions beyond keyskip",
+      "control_detail": "control.json: inverse-op plants (decimation, deinterleave, reversal+shift) for X1/X3a; beam plants for X3b/X4 12/12",
+      "lane_dir": "C3-rescore-reopened",
+      "x1_r37": "X1/R37: the doublet-matched null (and, for N1-PT, the two-statistic rule) replaced the first-pass plain-shuffle null AFTER the first-pass real-data results existed (superseded_plain_shuffle_null/: p(Z) 0.0066 N1-PT, 0.0050 N2, 0.0033 N4-read, all < 0.01, became 0.41-0.50 under the final null). The replacement is mechanically justified (LP2 has 86 adjacent equal pairs; a plain shuffle gives ~447) and moves toward fewer hits, but it is a post-data change to the test, so threshold_fixed_in_advance is false for this row and the verdict rests on the final null being right. The raw-pmax statistic has marginal planted power in N2 (LATIN plant 111.31 vs null q99 111.12). Degenerate-decode filter (mds<=6 or IoC*N>=4.24, decided after the keyed pass) removed only constant-output decodes (X4 prime_index atbash_pre/none, mds=1, IoC*N 27-29; 12 rows/rel/L): audited, no non-constant row removed."
+    },
+    {
+      "id": "R37-T1-12REG-PLUMBING",
+      "round": 37,
+      "lane": "T1",
+      "date": "2026-10-30",
+      "status": "measured",
+      "positive_control": "passed",
+      "control_detail": "tests/test_12reg_plumbing.py 8/8: 12-wide R36 B1 store (276,242 rows) validates via stock A.validate_store and check_r3_store (failed pre-patch per R36 B1 readjud_summary.json); R35 9-wide store still validates; beam_v3 loads panel-R36 with 10 derived clusters and recovers one planted L=120 key under panel_max and register_cond; hitfn20/panelmax20 raise on panel-R36.",
+      "hypothesis": "Tooling can be made header/panel-driven so that 12-register panels flow through beam_v3, SWEEPROW validation and the hit predicate without workarounds.",
+      "result": "Patched beam_v3 (PANEL_PATH env/set_panel, derived clusters), both adjudicate.py copies (row_dtype, header-driven validate_row), panelmax20/hitfn20 (panel=/decoder=, refusal of mismatched bar). R36-B1-ORBIT-12REG now declares its 12-wide sweep_store; validate_ledger 0 errors; tests/ benchmark/ 34 passed; validate.py passed.",
+      "coverage": "Listed call sites only. Not covered: other consumers of ROW_DTYPE/validate_row(n_registers=9) positional use; a Round 19 bar for 12 registers (use round34 bars_v3 / I2 recalibration).",
+      "threshold": "n/a - tooling",
+      "threshold_fixed_in_advance": true,
+      "not_covered": "bars for 12-register panels in hitfn20 (refused, not supplied); FITTED_PANEL_SHA256 pins the R32 rebuild because the R19 panel file is lost",
+      "reopens_if": "a consumer outside the listed call sites still hard-codes 9 registers, or a 9-register panel other than the R32 rebuild must use the R19 bar.",
+      "evidence": [
+        "analysis/round37/T1-12reg-plumbing/PREREG.md",
+        "analysis/round37/T1-12reg-plumbing/RESULTS.md",
+        "tests/test_12reg_plumbing.py"
+      ],
+      "lane_dir": "T1-12reg-plumbing",
+      "x1_r37": "X1/R37: NO-ERROR-FOUND. Stock validate_store on the R35 B1 9-wide store (276,242 rows) and the R36 B1 12-wide store (276,242 rows) ok; check_r3_store [] on both; derive_clusters(panel-R36) = 10 clusters, derive_clusters(R32 9-register panel) = the old 7; panelmax_bar/contract and hitfn20 refuse panel-R36 (rerun_t1.json); ci.yml:53 runs tests/test_12reg_plumbing.py."
+    },
+    {
+      "id": "R37-I1-FREE-NULL-LMATCHED",
+      "round": 37,
+      "lane": "I1",
+      "lane_dir": "I1-free-null",
+      "date": "2026-10-30",
+      "status": "measured",
+      "hypothesis": "The `free` relation can be adjudicated as evidence at L=240/400/729 once an L-matched wrong-key null is fitted under panel-R36 and a planted-key control is passed per register.",
+      "positive_control": "passed for 10 registers at L=240 (OE 3/20 and EN_HALFVOWEL 7/20 fail; CY 19/20); L=400: 12/12 registers >= 19/20 (OE 19/20); L=729: 12/12 20/20 (after the coordinator-ordered completion; see x1_r37)",
+      "control_detail": "free, panel-R36, bars of record (Gumbel N=1e6) 20.59/21.67/24.86. 20 plants x 12 registers at each L. L=240: FAIL OE 3/20, EN_HALFVOWEL 7/20, CY 19/20, rest 20/20. L=400: all 20/20 except OE 19/20. L=729: all 12 registers 20/20. GPD bar = sensitivity only.",
+      "threshold": "Gumbel/POT bars of record at N=1e6 (alpha 0.01): 20.59 / 21.67 / 24.86 at L=240/400/729; GPD bars are sensitivity only",
+      "threshold_fixed_in_advance": true,
+      "result": "bar_v3(N,L,'free') now returns panel-R36 nodes for L in {240,400,729}; free usable at L=240 for 10 registers (not OE, EN_HALFVOWEL), at L=400 and L=729 for all 12; O3 ILP32 free L=729 cell re-decoded 15.157 (LP1_REAL) = NOISE (null max 15.54 of 562 draws; family-wise p ~0.95).",
+      "coverage": "null draws 701 / 1335 / 726 / 562 at L=120/240/400/729 (target 2,000 not met; fitted from what ran), shuffled-LP2 wrong keys from the six B1/B2 survivor families; controls 20 free_q05 plants x 12 registers x 3 L (720 plants).",
+      "three_conditionals": {
+        "key_space": "free-relation null from the six B1/B2 survivor key families, key length 41L+64; plants use SHA-CTR keys",
+        "transition_model": "beam_v3 free (max_skip 40, max_free 2), beam_w 400, lam_u 4; free_q05 enciphering only",
+        "adjudicator_register": "panel-R36 12 registers (beam objective and pmax); not comparable with the 9-register R34 node"
+      },
+      "not_covered": "2,000 draws at any L; real-LP2-structure null; other free-like enciphering rates; other beam widths; L=120 12-register control; N=1e6 bars are far-tail extrapolations (+-1)",
+      "reopens_if": "a (L, register) pair outside the licensed set is needed, or a real-structure null is drawn",
+      "evidence": [
+        "liber-primus/analysis/round37/I1-free-null/RESULTS.md",
+        "liber-primus/analysis/round37/I1-free-null/ADDENDUM-2026-10-30-b.md",
+        "liber-primus/analysis/round37/I1-free-null/PREREG.md",
+        "liber-primus/analysis/round37/I1-free-null/null_free.json",
+        "liber-primus/analysis/round37/I1-free-null/fit_free.json",
+        "liber-primus/analysis/round37/I1-free-null/control_free.json",
+        "liber-primus/analysis/round37/I1-free-null/o3_cell_rejudged.json",
+        "liber-primus/analysis/round37/I1-free-null/ledger.json"
+      ],
+      "lane_ledger_raw": {
+        "lane": "round37/I1-free-null",
+        "date": "2026-10-30",
+        "status": "measured",
+        "positive_control": "passed_L400_L729_failed_L240_OE_HALFVOWEL",
+        "positive_control_detail": "free, panel-R36, bars of record (Gumbel N=1e6) 20.59/21.67/24.86. 20 plants x 12 registers at each L. L=240: FAIL OE 3/20, EN_HALFVOWEL 7/20, CY 19/20, rest 20/20. L=400: all 20/20 except OE 19/20. L=729: all 12 registers 20/20. GPD bar = sensitivity only.",
+        "free_usable": {
+          "L240": [
+            "EN_MODERN",
+            "EN_KJV",
+            "LP1_REAL",
+            "LATIN",
+            "DE",
+            "CY",
+            "EN_NOVOWEL",
+            "GREEK",
+            "HEBREW",
+            "NORSE"
+          ],
+          "L240_not": [
+            "OE",
+            "EN_HALFVOWEL"
+          ],
+          "L400": "all 12 registers (OE 19/20, at threshold)",
+          "L729": "all 12 registers"
+        },
+        "panel": "panel-r36 (12 registers) beam and pmax",
+        "decoder": "beam_v3 free panel_max beam_w400 lam_u4",
+        "draws": {
+          "L120": 701,
+          "L240": 1335,
+          "L400": 726,
+          "L729": 562
+        },
+        "draw_target_2000_met": false,
+        "fit": {
+          "120": {
+            "u": 6.7202,
+            "beta": 0.5328,
+            "mu": 5.49
+          },
+          "240": {
+            "u": 8.674,
+            "beta": 0.7392,
+            "mu": 6.97
+          },
+          "400": {
+            "u": 10.663,
+            "beta": 0.6829,
+            "mu": 9.09
+          },
+          "729": {
+            "u": 13.185,
+            "beta": 0.7242,
+            "mu": 11.53
+          },
+          "beta_exponent": [
+            0.149,
+            0.091
+          ],
+          "mu_vs_lnL_slope": 3.39
+        },
+        "bars_N1e3_1e5_1e6": {
+          "240": [
+            15.48,
+            18.89,
+            20.59
+          ],
+          "400": [
+            16.95,
+            20.1,
+            21.67
+          ],
+          "729": [
+            19.86,
+            23.2,
+            24.86
+          ]
+        },
+        "o3_cell": {
+          "pmax12_r36": 15.157,
+          "null_max": 15.54,
+          "emp_quantile": 0.9964,
+          "gumbel_p_single": 0.0067,
+          "familywise_p_460": 0.95,
+          "verdict": "NOISE"
+        },
+        "edits_outside_lane": [
+          "analysis/round34/I1-v3-null/bars_v3.py",
+          "analysis/round34/I1-v3-null/RESULTS.md (addendum)"
+        ],
+        "deliverables": [
+          "PREREG.md",
+          "run_null_free.py",
+          "finalize_free.py",
+          "o3_rejudge.py",
+          "null_free.json",
+          "fit_free.json",
+          "control_free.json",
+          "o3_cell_rejudged.json",
+          "RESULTS.md",
+          "ledger.json",
+          "ADDENDUM-2026-10-30-b.md",
+          "control_more.py"
+        ],
+        "claim": "instrument measurement only; says nothing about any key",
+        "addendum": "ADDENDUM-2026-10-30-b.md"
+      },
+      "x1_r37": "X1/R37: NO-ERROR-FOUND on the numbers: the fit (u, beta, mu, N=1e3/1e6 bars) reproduced from the raw null stream (rerun_i1_fit.json, equal to the table); control pass counts recomputed from control_free_stream.jsonl (720 plants); bars_v3 returns 15.48/16.95/19.86 (N=1e3) and 20.59/21.67/24.86 (N=1e6) at L=240/400/729 and raises at other L. FOUND-ERROR (documentation, minor): RESULTS.md (14:54) still says 5/5 and 3/3 plants and 'no register is passed at L=400 and L=729'; ADDENDUM-b, ledger.json and the stream (20 plants x 12 x 3) say all 12 pass at 400 (OE 19/20, at the threshold) and 729 -- the addendum is the claim of record. Also `bar_v3(..,120,'free')` still returns the R34 9-register node (17.43) while L>=240 returns 12-register nodes (L=120 12-register node needs panel='r36', 15.30)."
+    },
+    {
+      "id": "R37-I2-PFV4-12REG-ORBIT",
+      "round": 37,
+      "lane": "I2",
+      "date": "2026-10-30",
+      "status": "negative",
+      "positive_control": "passed",
+      "control_detail": "control.json: 160 natural-rate plants (10 each EN_MODERN/EN_NOVOWEL/HEBREW/NORSE per ABI x relation) through the real 2^16-seed chunk path (pf_v4_12 frozen -> v3 L120 both rels -> v3 L240, panel-R36, N=1e6 12-register bars); pooled recoveries per register x skip split (recover/n, skip-free then with-skip): EN_MODERN 17/17, 22/23; EN_NOVOWEL 22/22, 17/18; HEBREW 18/18, 20/22; NORSE 21/21, 18/19; 155/155 prefilter-passers recovered; 5 misses all with-skip prefilter misses. Natural-rate pf_v4_12 power 500 plants/register/relation, all 12 registers >= 0.952.",
+      "hypothesis": "The LP2 key is in the bash 4.2 auto-seed orbit (LP64 or ILP32), with <= 2 key skips in the first 24 runes, and its plaintext is in one of the 12 panel-R36 registers.",
+      "coverage": "Both ABIs screened in full: 296/296 chunks each, 77,594,624 seeds per ABI, with pf_v4_12 (pf_v4 Viterbi, lse over the 12 panel-R36 LMs, frozen per-relation FPR 5e-4, total held-out 8.9e-4); 65,815 (LP64) + 65,971 (ILP32) survivors, all decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 under panel-R36 (263,572 rows). Natural-rate screen power per register: EN_MODERN 0.985, EN_KJV 0.989, LP1_REAL 0.994, LATIN 0.967, OE 0.970, DE 0.984, CY 0.972, EN_HALFVOWEL 0.952, EN_NOVOWEL 0.985, GREEK 0.985, HEBREW 0.982, NORSE 0.981 (R36 nine-register screen had GREEK 0.91, HEBREW 0.68, NORSE 0.64). Reach = power x v3 recovery (1.00) x fraction 1.000.",
+      "result": "0 flagged, 0 near-miss. Best 7.065 (LP64 keyskip2 seed 1354603465, LP1_REAL) vs 12-register bar 8.027 at actual N (8.999 at N=1e6); LP64 ks1 6.347 (8.113/9.102); ILP32 ks1 6.506 (8.114/9.102), ks2 6.763 (8.028/8.999).",
+      "threshold": "12-register POT bars from round36/B1 null12.json (mu, beta per cell) at actual N and N=1e6; screen thresholds 7.4155 (keyskip1) / 7.4412 (keyskip2) fixed in PREREG design and frozen on the calibration half before the sweep.",
+      "threshold_fixed_in_advance": true,
+      "three_conditionals": {
+        "key_space": "bash 4.2 auto-seed orbit, 74 x 2^20 seeds, LP64 and ILP32 both full, %29, offset 0, sign -1, C[0]-aligned",
+        "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max, L120 screen / L240 gate; screen heads with <= 2 skips in 24 runes; not free, not L31",
+        "adjudicator_register": "panel-R36, 12 registers; reach 0.95-0.99 per register"
+      },
+      "not_covered": "Heads with >= 3 skips in 24 runes; free relation; L=31; offsets != 0; other reductions/bash versions/seedings; PHP tiers and PHP FPR under the 12-register point (not measured); registers outside the twelve; unpointed Hebrew and other orthographies; v3 recovery of seven registers assumed from pooled controls; actual-N bars scale from R36 null12 POT fit (L240 from 4,000 draws); thresholds calibrated to the real C[:24] head.",
+      "reopens_if": "oracle/verifier flags a row (none); a true-key head with > 2 skips in 24 runes is shown; or a register outside the twelve is added.",
+      "evidence": [
+        "analysis/round37/I2-pfv4-12reg/RESULTS.md",
+        "analysis/round37/I2-pfv4-12reg/PREREG.md",
+        "analysis/round37/I2-pfv4-12reg/roc12.json",
+        "analysis/round37/I2-pfv4-12reg/power12_per_register.json",
+        "analysis/round37/I2-pfv4-12reg/throughput.json",
+        "analysis/round37/I2-pfv4-12reg/control.json",
+        "analysis/round37/I2-pfv4-12reg/sweep_summary.json",
+        "analysis/round37/I2-pfv4-12reg/sweep_summary_final.json",
+        "analysis/round37/I2-pfv4-12reg/sweep_rows.jsonl"
+      ],
+      "sweep_store": "analysis/round37/I2-pfv4-12reg/sweep_rows.jsonl",
+      "lane_dir": "I2-pfv4-12reg",
+      "x1_r37": "X1/R37: NO-ERROR-FOUND. Recomputed from _null_scores.npz / _plant_scores.npz: thresholds 7.4155 / 7.4412 give FPR 8.81e-4 (calibration half) / 8.89e-4 (held-out) / per ABI 8.75e-4, 8.95e-4; min plant power 0.952 (EN_HALFVOWEL), every register >= 0.952; sweep store validates (263,572 rows, 12 registers), check_r3_store []; survivors 65,815 + 65,971; actual-N bars 8.113 / 8.027 recomputed from null12.json; best rows ks1 6.506 (ILP32), ks2 7.065 (LP64, seed 1354603465) equal the R36 B1 re-decode. Limits kept: PHP FPR not re-measured; reach assumes v3 recovery 1.00 for seven registers; same orbit as R35/R36 B1 (no new seed coverage, new screen power)."
+    },
+    {
+      "id": "R37-X1-REDTEAM",
+      "round": 37,
+      "lane": "X1",
+      "lane_dir": "X1-redteam",
+      "date": "2026-10-30",
+      "status": "audit",
+      "hypothesis": "Round 37's own claims (C1 composed clue readings, C2 U4/U7/U8, C3 re-scores, T1 plumbing) and the Round 36 X1 carry-overs survive a refute-by-default audit.",
+      "result": "FOUND-ERROR: (1) U4 line boundaries misaligned on pages with interrupters (03: 4/8 -> 3/8, pooled 22 -> 21/60, pages p<0.05 2 -> 1; verdict NO-SEPARATION unchanged); (2) C1 candidates.json omits 2 of the 7 signed-2016 clauses ('Seek and you will be found', 'Beware false paths. Verify OpenPGP 7A35090F'), and U2's 'line' sequences use koans-file lines that match the printed lines (data/scream314_lp.md) only on A WARNING, contrary to C1's 'not otherwise recorded'; (3) C1 U3 'literal' label is C1's operationalization (skipped: lagged cipher-word gematria pointer, O4 U3 seed orders, & $ boundaries; semantic 'meaning' untested); (4) C3 swapped the null (and added a two-statistic rule) after seeing first-pass real-data p(Z) < 0.01 on N1-PT, N2, N4-read -> threshold_fixed_in_advance=false on 4 rows; (5) C3 patch wording 'replaced ... remains negative' wrong for measured rows (applied corrected); (6) O4 matrix.md / untried.md / counts.json still say NEVER 68 although RESULTS says 66 (H7xF2, H12xF2 not edited). (7) I1 RESULTS.md headline predates the coordinator-ordered control completion (says no register passed at L=400/729; addendum, ledger and stream say 12/12 at L=400 (OE 19/20) and 12/12 at L=729), and bar_v3(..,120,'free') still returns the R34 9-register node while L>=240 are 12-register nodes. NO-ERROR-FOUND: I1 fit/bars/controls recomputed from raw streams, I2 FPR/power/store/bars recomputed (every register >= 0.952, 0 flagged), C1 re-runs (U1 x2, U3 x3 fresh-seed plants), C1 addendum append (17,392 rows, header unchanged), U4 decision rule fixed before data, U7 index-alphabet null and control-B explanation, U8 inconclusive label, C3 degenerate filter (constant outputs only), C3 z=6.94 re-score (pmax 3.94, single-reading p ~0.07), N5 bars (6.897), T1 backward compatibility, I1-R36 doc corrections, B2/S1 patch supersession, capsule PASS. See analysis/round37/X1-redteam/RESULTS.md.",
+      "coverage": "Targets 1-8 of the Round 37 X1 brief; re-run artefacts rerun_*.json in the lane dir. I1 (free null) and I2 (pf_v4_12 orbit re-screen) were audited LAST, after their RESULTS.md existed (I1 14:54, I2 15:15).",
+      "positive_control": "n/a (audit: recomputation and coverage restatement; no null)",
+      "threshold": "n/a (audit)",
+      "threshold_fixed_in_advance": true,
+      "not_covered": "The C3 doublet-matched null itself was spot-checked on one stream, not re-derived for the other families; O4 applicability judgments (the NEVER recount uses X1's own cell assignments, listed in o4_recount.json); the semantic reading of 'meaning'; I1 null draws (562-1335) and the I2 chunk path were not re-run (statistics recomputed from persisted streams only).",
+      "reproduce": "python analysis/round37/X1-redteam/rerun_c1.py; rerun_u4.py; rerun_u7_controlB.py; rerun_z694.py; rerun_t1.py; o4_recount.py; apply_ledger.py; rerun_i1_fit.json (inline), apply_nav.py",
+      "evidence": [
+        "liber-primus/analysis/round37/X1-redteam/RESULTS.md",
+        "liber-primus/analysis/round37/X1-redteam/rerun_c1.json",
+        "liber-primus/analysis/round37/X1-redteam/rerun_u4.json",
+        "liber-primus/analysis/round37/X1-redteam/rerun_u7_controlB.json",
+        "liber-primus/analysis/round37/X1-redteam/rerun_z694.json",
+        "liber-primus/analysis/round37/X1-redteam/rerun_t1.json",
+        "liber-primus/analysis/round37/X1-redteam/o4_recount.json",
+        "liber-primus/analysis/round37/X1-redteam/rerun_i1_fit.json"
+      ],
+      "notes": "O4 recount after R36-X1 correction and Round 37 lanes: NEVER 60 (was 68 as filed, 66 after R36 X1), TRIED-EN/LEG 46, TRIED 31, PARTIAL 3 (sum 140). Seven FOUND-ERRORs, none changes a verdict."
     }
   ],
   "round18_merged": "2026-08-26"

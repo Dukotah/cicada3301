@@ -2,6 +2,8 @@
 
 _Refreshed **2026-10-30** (Round 35 closeout; R36 audit corrections applied same day: bounded-not-closed wording, reopen list, ledger count 209). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
 
+> **Round 37 X1 (red-team, 2026-10-30):** the untried clue readings (C1/C2/C3) and the 12-register plumbing (T1) are filed; no survivor; `LEDGER.json` now holds **244 entries**. X1 FOUND-ERROR x5 -> `analysis/round37/X1-redteam/RESULTS.md`. **Still open:** the semantic reading of "their meaning is the road" (19 NEVER F5 cells) and C1's skipped literal alternatives (lagged cipher-word pointer, printed-line sums, C-2016-6/7); N5 top rows at L=240; a power-adequate U8 glyph recognizer; O4 `matrix.md` still says NEVER 68 (true: 60 after Round 37). **Time-critical:** the sandbox S2 window lists expire ~2026-11-06 and are not exported. I1 (free null) and I2 (pf_v4_12 orbit re-screen) were audited last and filed: I1 measured (free licensed at L=240 for 10 registers, L=400/729 for 12; O3 cell = noise), I2 negative (every register screen power >= 0.952, 0 flagged).
+
 > **Round 36 closeout (coordinator, 2026-10-30):** B1 landed — the whole persisted bash orbit (276,242 rows)
 > re-decoded under the 12-register panel-R36: **0 flagged**, best 7.065 (seed 1354603465 again) vs 8.04 bar; reach
 > GREEK 0.91 / HEBREW 0.68 / NORSE 0.64 because pf_v4 was frozen on nine registers → Round 37 I2 recalibrates it.
@@ -82,7 +84,7 @@ _Refreshed **2026-10-30** (Round 35 closeout; R36 audit corrections applied same
 
 > ## Round 32 (2026-10-28) — INSTRUMENT & RED-TEAM armada: shipped. Read `analysis/round32/SYNTHESIS.md` first.
 >
-> Eight lanes, all with passing positive controls, all filed in `LEDGER.json` (220 rows as of the R36 X1 merge, 2026-10-30; was 181 when written; 0 errors).
+> Eight lanes, all with passing positive controls, all filed in `LEDGER.json` (244 rows as of the R37 X1 merge, 2026-10-30; was 220 at R36 X1, 181 when written; 0 errors).
 > No survivor. What changed is the **instrument**, not the board:
 > - **I1** the three-relation decoder already existed (`round19/I1/driftbeam.py`); it now has a measured power
 >   envelope — planted `skip_by_two` recovers 1.00 under `advance=2` (legacy relation: 0.30). **Vowel-dropped
@@ -299,7 +301,7 @@ where to spend effort (rather than picking up this project's own threads), read
 [`handoff/SOLVER-STRATEGY-2026.md`](handoff/SOLVER-STRATEGY-2026.md). Trust anchor:
 `python liber-primus/tests/validate.py` → `ALL VALIDATIONS PASSED` (5/5), passing through
 Round 25 and re-verified 2026-08-31 (`pytest -m "not network"` 85 passed).
-`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **220 entries** (R36 X1-merge count; was 162 when this line was written)
+`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **244 entries** (R37 X1-merge count; was 220 at R36 X1, 162 when this line was written)
 (R22-A/B/C/D/R, R23-A2, R24 ×5, R25 merged, the ten Round-20 lanes filed 2026-08-31, Round 26 ×4
 [R26-A/B partially-run, R26-C negative, R26-D audit], **R27-CPORT-MT32-FULLSWEEP [in-flight]**
 — S1 complete with a measured-exhaustion NULL, S2 still sweeping — and the Round-28 interim
