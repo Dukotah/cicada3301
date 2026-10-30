@@ -1,0 +1,51 @@
+{
+ "id": "R36-O4-CLUE-COVERAGE",
+ "lane": "O4",
+ "round": 36,
+ "date": "2026-10-30",
+ "status": "audit",
+ "kind": "closure audit (documents + light web)",
+ "hypothesis": "Owner theory: clues were overlooked/not-yet-usefully-applied. Audit: build clue x reading-family matrix from ledger and findings docs; rank cells with no row or only English-only/legacy rows.",
+ "threshold": "PREREG.md: recognizer = clue x family cell with no ledger/findings row or only English-only/legacy/no-control row; kill = none (audit)",
+ "threshold_fixed_in_advance": true,
+ "positive_control": "n/a (audit; every cell cites file:line or ledger id)",
+ "result": {
+  "clue_entries": 154,
+  "clue_entries_mapped_to_34_matrix_rows": 132,
+  "readings": 49,
+  "applicable_cells": 140,
+  "NEVER": 68,
+  "TRIED_ENGLISH_ONLY": 24,
+  "TRIED_LEGACY_BEAM": 29,
+  "PARTIAL": 3,
+  "TRIED": 16,
+  "top8": [
+   "U1",
+   "U2",
+   "U3",
+   "U4",
+   "U6",
+   "U8",
+   "U5",
+   "U7"
+  ]
+ },
+ "coverage": "Documents read: signed messages (pgp/messages), LP1 solved translation, SOLVED-PAGES.json, LEDGER.json rows R11/R22/R23/R26/R10b/R13/R16, round10 L2/L3 PREREG+results, research/ROUND-9-RESULTS.md, campaign7 findings, ELIMINATION-LEDGER sections. Cells are classified by reading the row text, not by re-running anything.",
+ "not_covered": [
+  "Rows R10 L2/L3, R9 DIRECTION and campaign7 wordsum/hill5 were classified from PREREG/results docs; their code was not re-run.",
+  "Matrix rows group clues; per-message cells for the 2012-2013 puzzle messages are collapsed into H11/H12.",
+  "Community readings: uncovering-cicada wiki fetch returned HTTP 402; coverage from the vendored boards.net threads and 2 web searches only.",
+  "Applicability of a family to a clue is the auditor's judgement (build_matrix.py ROWS); NEVER counts move with it.",
+  "ELIMINATION-LEDGER/LEDGER.json status fields were not trusted; coverage and not_covered used."
+ ],
+ "caveat": "NEVER means no row found by grep and reading, not proven absent. Not a verdict on any reading; no reading is called solved/closed/exhausted.",
+ "evidence": [
+  "liber-primus/analysis/round36/O4-clue-coverage/PREREG.md",
+  "liber-primus/analysis/round36/O4-clue-coverage/clues.json",
+  "liber-primus/analysis/round36/O4-clue-coverage/readings.json",
+  "liber-primus/analysis/round36/O4-clue-coverage/matrix.md",
+  "liber-primus/analysis/round36/O4-clue-coverage/untried.md",
+  "liber-primus/analysis/round36/O4-clue-coverage/RESULTS.md"
+ ],
+ "reproduce": "py analysis/round36/O4-clue-coverage/build_data.py && py analysis/round36/O4-clue-coverage/build_matrix.py"
+}

@@ -105,13 +105,19 @@
   "submit": {
    "keystream": "python3 verify_solution.py --keystream FILE",
    "key_module": "python3 verify_solution.py --key-module FILE.py",
-   "self_test_the_oracle": "python3 verify_solution.py --selftest"
+   "self_test_the_oracle": "python3 verify_solution.py --selftest  (plants a key in EN_MODERN, LATIN, EN_NOVOWEL and GREEK at L=120)"
   },
-  "english_band_threshold": -5.5,
-  "strong_band_threshold": -4.6,
+  "decoder": "analysis/round33/I1-register-aware-beam/beam_v3.py panel_max under keyskip1, keyskip2 and free (rigid is never used)",
+  "score": "panel pmax (max z over the register panel) of the decode, argmax register named; panel-R36 (12 registers, sha256 a0682f0c...) with a printed fallback to the Round 32 nine-register panel if absent",
+  "bar": "analysis/round34/I1-v3-null bars_v3.bar_v3(N=1, L, relation, alpha=0.01, family='lp2') for ONE submitted key; free has an observed bar at L=120 only",
   "min_pages_passing_independently": 2,
-  "null": "size-matched shuffle, n=200; candidate must beat null max by 0.5",
-  "score_semantics": "per-quadgram log-probability; NEGATIVE, and HIGHER is more English. Genuine solved pages land -4.1 to -5.0. Noise is about -7.5.",
+  "pass_means": "flagged-for-oracle: at least 2 pages clear the bar under the same relation; a human must read two independent pages (HUMAN-ORACLE.md) before any ledger row moves",
+  "fail_means": "negative under these registers/relations only (L7 caveat): tested under keyskip1/keyskip2/free, the panel registers, key offset 0 per page, sign -1, N=1",
+  "legacy_informational": {
+   "english_band_threshold": -5.5,
+   "note": "the old English-only quadgram score is still printed, labelled LEGACY, and is NOT used in the verdict (Round 18 L7-A defect)"
+  },
+  "score_semantics": "panel pmax is a z-score: POSITIVE and HIGHER is better, for any register in the panel (not English only).",
   "scale_warning": "A fixed -5.5 bar is INVALID at very large trial counts: the null maximum grows like sd*sqrt(2 ln N). Use benchmark/null.py threshold_for(n_trials, segment_len). This is the single most common way a large sweep fools its operator."
  },
  "current_verdict": {

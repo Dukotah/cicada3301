@@ -1,0 +1,1188 @@
+[
+ {
+  "id": "R01",
+  "name": "R10 L2 M1/G1 word/line/page-initial & final acrostic streams",
+  "rows": [
+   "H2"
+  ],
+  "families": [
+   "F10"
+  ],
+  "round": "10",
+  "ledger_row": "NONE (round10 not in LEDGER.json)",
+  "decoder": "none (cleartext layer, key-free)",
+  "adjudicator": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)",
+  "conditionals": {
+   "key_space": "ciphertext word/line boundary positions, 29 shifts x atbash x reverse",
+   "decoder_transition": "none (cleartext layer, key-free)",
+   "adjudicator_register": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)"
+  },
+  "verdict": "NEGATIVE; G1 fired on line-initial (z=6.35) and was adjudicated as width-greedy typesetting (r=0.72)",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "words of the DECODED plaintext; non-English registers; acrostic over word-numbers",
+  "cite": "liber-primus/analysis/round10/L2-map/PREREG.md:59-76; round10/L2-map/results.json G1,M1; diag_lineinit.json D1"
+ },
+ {
+  "id": "R02",
+  "name": "R10 L2 M2 word gematria sums -> symbol stream",
+  "rows": [
+   "H2",
+   "H3"
+  ],
+  "families": [
+   "F3"
+  ],
+  "round": "10",
+  "ledger_row": "NONE",
+  "decoder": "none",
+  "adjudicator": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)",
+  "conditionals": {
+   "key_space": "2,928 word sums mod 29/26",
+   "decoder_transition": "none",
+   "adjudicator_register": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)"
+  },
+  "verdict": "NEGATIVE (z=-0.12)",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "non-English; sums as keystream (not symbol stream)",
+  "cite": "liber-primus/analysis/round10/L2-map/PREREG.md:77-83"
+ },
+ {
+  "id": "R03",
+  "name": "R10 L2 M3 word-length bits (ASCII/Baconian)",
+  "rows": [
+   "H2"
+  ],
+  "families": [
+   "F10"
+  ],
+  "round": "10",
+  "ledger_row": "NONE",
+  "decoder": "none",
+  "adjudicator": "ASCII printability + English score_norm",
+  "conditionals": {
+   "key_space": "4 predicates x polarity x offsets",
+   "decoder_transition": "none",
+   "adjudicator_register": "ASCII printability + English score_norm"
+  },
+  "verdict": "NEGATIVE",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "multi-bit predicates; non-English",
+  "cite": "liber-primus/analysis/round10/L2-map/PREREG.md:84-90"
+ },
+ {
+  "id": "R04",
+  "name": "R10 L2 M4 LP2 word numbers as pointers into the solved LP1 English word list ('its words are the map', 'meaning = LP1')",
+  "rows": [
+   "H2",
+   "H3"
+  ],
+  "families": [
+   "F7"
+  ],
+  "round": "10",
+  "ledger_row": "NONE",
+  "decoder": "none",
+  "adjudicator": "English score_norm of retrieved LP1 words (repeating words inflate the score; flagged artefact)",
+  "conditionals": {
+   "key_space": "6 pointer families, ~750-word target",
+   "decoder_transition": "none",
+   "adjudicator_register": "English score_norm of retrieved LP1 words (repeating words inflate the score; flagged artefact)"
+  },
+  "verdict": "NEGATIVE (best -4.05 is repeated-word artefact)",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "target = LP1 only; no gematria-sum-of-LP1 as pointer INTO LP2; no Latin/other target",
+  "cite": "liber-primus/analysis/round10/L2-map/PREREG.md:91-100; results.json M4"
+ },
+ {
+  "id": "R05",
+  "name": "R10 L2 M5 word-level walk w <- w +/- f(word)",
+  "rows": [
+   "H2",
+   "H4"
+  ],
+  "families": [
+   "F6"
+  ],
+  "round": "10",
+  "ledger_row": "NONE",
+  "decoder": "none",
+  "adjudicator": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)",
+  "conditionals": {
+   "key_space": "6 f x 32 starts x 2 dirs",
+   "decoder_transition": "none",
+   "adjudicator_register": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)"
+  },
+  "verdict": "NEGATIVE (z=-0.03)",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "no positive control recorded for the walk family (inherits R9)",
+  "cite": "liber-primus/analysis/round10/L2-map/PREREG.md:102-108"
+ },
+ {
+  "id": "R06",
+  "name": "R10 L2 M6 structural counts (words/line, per page) as message",
+  "rows": [
+   "H2"
+  ],
+  "families": [
+   "F6"
+  ],
+  "round": "10",
+  "ledger_row": "NONE",
+  "decoder": "none",
+  "adjudicator": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only) letters mod 26",
+  "conditionals": {
+   "key_space": "5 sequences",
+   "decoder_transition": "none",
+   "adjudicator_register": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only) letters mod 26"
+  },
+  "verdict": "NEGATIVE",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "counts used as KEY SCHEDULE for decode (not as message)",
+  "cite": "liber-primus/analysis/round10/L2-map/PREREG.md:109-114"
+ },
+ {
+  "id": "R07",
+  "name": "R10 L2 M7 word-level transposition (IoC*N=1.0000)",
+  "rows": [
+   "H2"
+  ],
+  "families": [
+   "F10"
+  ],
+  "round": "10",
+  "ledger_row": "NONE",
+  "decoder": "analytic",
+  "adjudicator": "IoC",
+  "conditionals": {
+   "key_space": "n/a",
+   "decoder_transition": "analytic",
+   "adjudicator_register": "IoC"
+  },
+  "verdict": "EXCLUDED analytically",
+  "status_class": "TRIED",
+  "not_covered": "",
+  "cite": "liber-primus/analysis/round10/L2-map/PREREG.md:115-120"
+ },
+ {
+  "id": "R08",
+  "name": "R10 L2 M8 LP1 English word-length skeleton vs LP2 word lengths",
+  "rows": [
+   "H2",
+   "H3"
+  ],
+  "families": [
+   "F7"
+  ],
+  "round": "10",
+  "ledger_row": "NONE (C-01 open: skeleton corpus extension)",
+  "decoder": "none",
+  "adjudicator": "longest exact word-length run",
+  "conditionals": {
+   "key_space": "LP1+AN END+PARABLE ~752 words",
+   "decoder_transition": "none",
+   "adjudicator_register": "longest exact word-length run"
+  },
+  "verdict": "NEGATIVE (7 vs null max 8)",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "only English LP1 register as skeleton",
+  "cite": "liber-primus/analysis/round10/L2-map/PREREG.md:121-130"
+ },
+ {
+  "id": "R09",
+  "name": "R10 L2 M9 word numbers as direct addresses into the rune stream",
+  "rows": [
+   "H2",
+   "H4"
+  ],
+  "families": [
+   "F6"
+  ],
+  "round": "10",
+  "ledger_row": "NONE",
+  "decoder": "none",
+  "adjudicator": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)",
+  "conditionals": {
+   "key_space": "10 families x 29 shifts",
+   "decoder_transition": "none",
+   "adjudicator_register": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)"
+  },
+  "verdict": "NEGATIVE (z=0.32)",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "",
+  "cite": "liber-primus/analysis/round10/L2-map/PREREG-ADDENDUM-E.md:23-35"
+ },
+ {
+  "id": "R10",
+  "name": "R10 L3 T1 word/sentence/line/page gematria sums marked (prime/emirp/phi-shaped/Cicada constants)",
+  "rows": [
+   "H3",
+   "L16"
+  ],
+  "families": [
+   "F3"
+  ],
+  "round": "10",
+  "ledger_row": "NONE",
+  "decoder": "none",
+  "adjudicator": "counts vs permutation null (language-free)",
+  "conditionals": {
+   "key_space": "all LP2 CIPHERTEXT word sums",
+   "decoder_transition": "none",
+   "adjudicator_register": "counts vs permutation null (language-free)"
+  },
+  "verdict": "NEGATIVE",
+  "status_class": "TRIED",
+  "not_covered": "applies to ciphertext words only; never to DECODED lines (LP1 line sums are all prime - designed property)",
+  "cite": "liber-primus/analysis/round10/L3-road/PREREG.md:116-124; road_results.json T1a/T1b"
+ },
+ {
+  "id": "R11",
+  "name": "R10 L3 T2-T4 sum -> symbol / word selection by predicate / reorder by sum",
+  "rows": [
+   "H3"
+  ],
+  "families": [
+   "F3"
+  ],
+  "round": "10",
+  "ledger_row": "NONE",
+  "decoder": "none",
+  "adjudicator": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)",
+  "conditionals": {
+   "key_space": "5 readings",
+   "decoder_transition": "none",
+   "adjudicator_register": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)"
+  },
+  "verdict": "NEGATIVE; validation gate oracle z=79.7",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "",
+  "cite": "liber-primus/analysis/round10/L3-road/PREREG.md:116-125"
+ },
+ {
+  "id": "R12",
+  "name": "R10 L3 T5 sum as pointer into a key text",
+  "rows": [
+   "H3"
+  ],
+  "families": [
+   "F4"
+  ],
+  "round": "10",
+  "ledger_row": "NONE",
+  "decoder": "none",
+  "adjudicator": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)",
+  "conditionals": {
+   "key_space": "high-prior key texts",
+   "decoder_transition": "none",
+   "adjudicator_register": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)"
+  },
+  "verdict": "NEGATIVE (confirmatory only)",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "texts predate B-16 correction",
+  "cite": "liber-primus/analysis/round10/L3-road/PREREG.md:124"
+ },
+ {
+  "id": "R13",
+  "name": "R9 DIRECTION: 2,670 rune-level positional walks/sieves",
+  "rows": [
+   "H4"
+  ],
+  "families": [
+   "F6"
+  ],
+  "round": "9",
+  "ledger_row": "NONE (F-02 open row is stale)",
+  "decoder": "none (positional reads of ciphertext)",
+  "adjudicator": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)",
+  "conditionals": {
+   "key_space": "walk p <- p +/- f(c[p]), 7 f, 64 starts",
+   "decoder_transition": "none (positional reads of ciphertext)",
+   "adjudicator_register": "rune 4-gram trained on English-in-futhorc + English score_norm (English-only)"
+  },
+  "verdict": "NEGATIVE z=-0.40; PA-2: NO positive control",
+  "status_class": "TRIED-NO-CONTROL",
+  "not_covered": "word-level and key-schedule uses of the numbers; no control",
+  "cite": "research/ROUND-9-RESULTS.md:65-124"
+ },
+ {
+  "id": "R14",
+  "name": "campaign7 wordsum_selfkey: word gematria sums drive next-word shift",
+  "rows": [
+   "H4",
+   "L2"
+  ],
+  "families": [
+   "F3"
+  ],
+  "round": "campaign7",
+  "ledger_row": "NONE",
+  "decoder": "rigid/legacy",
+  "adjudicator": "English quadgram",
+  "conditionals": {
+   "key_space": "5 variants per page",
+   "decoder_transition": "rigid/legacy",
+   "adjudicator_register": "English quadgram"
+  },
+  "verdict": "NEGATIVE (-6.897)",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "legacy decoder, English only",
+  "cite": "corpus/H-branch-recovery/recovered/claude_master-roadmap-libra-qk527u/liber-primus/analysis/campaign7/CAMPAIGN-VII-FINDINGS.md:25"
+ },
+ {
+  "id": "R15",
+  "name": "campaign7 hill5_magic: the three book matrices as Hill keys (M, M^T, inv)",
+  "rows": [
+   "L15"
+  ],
+  "families": [
+   "F2"
+  ],
+  "round": "campaign7",
+  "ledger_row": "NONE",
+  "decoder": "Hill, rigid",
+  "adjudicator": "English quadgram",
+  "conditionals": {
+   "key_space": "6 matrices x 4 forms",
+   "decoder_transition": "Hill, rigid",
+   "adjudicator_register": "English quadgram"
+  },
+  "verdict": "NEGATIVE (-6.873)",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "matrices as column/row key schedules, as permutations, or via word-number fills",
+  "cite": "campaign7 CAMPAIGN-VII-FINDINGS.md:24"
+ },
+ {
+  "id": "R16",
+  "name": "R11 N1 cumulative-gematria feedback autokey",
+  "rows": [
+   "L2",
+   "L4",
+   "H4"
+  ],
+  "families": [
+   "F2"
+  ],
+  "round": "11",
+  "ledger_row": "R11-N1-NUMBER-CHANNEL",
+  "decoder": "legacy skip beam",
+  "adjudicator": "English quadgram (lib_numchannel)",
+  "conditionals": {
+   "key_space": "48 configs",
+   "decoder_transition": "legacy skip beam",
+   "adjudicator_register": "English quadgram (lib_numchannel)"
+  },
+  "verdict": "NEGATIVE, control validated; ledger 'measured'",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "beam_v3/pf_v4/12 registers (reopen is cheap per ledger)",
+  "cite": "ELIMINATION-LEDGER.md:935-960"
+ },
+ {
+  "id": "R17",
+  "name": "R11 N2 prime-gap / prime-index as data",
+  "rows": [
+   "L4"
+  ],
+  "families": [
+   "F2"
+  ],
+  "round": "11",
+  "ledger_row": "R11-N2-NUMBER-CHANNEL",
+  "decoder": "legacy",
+  "adjudicator": "English quadgram",
+  "conditionals": {
+   "key_space": "route (d) coordinate pairs too",
+   "decoder_transition": "legacy",
+   "adjudicator_register": "English quadgram"
+  },
+  "verdict": "NEGATIVE",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "same reopen",
+  "cite": "ELIMINATION-LEDGER.md:935-960"
+ },
+ {
+  "id": "R18",
+  "name": "R11 N3 whole-book/segments as number-theoretic objects",
+  "rows": [
+   "L4",
+   "L14"
+  ],
+  "families": [
+   "F2"
+  ],
+  "round": "11",
+  "ledger_row": "R11-N3-NUMBER-CHANNEL",
+  "decoder": "none",
+  "adjudicator": "number-theory counts vs null",
+  "conditionals": {
+   "key_space": "55 segments + prime-concat",
+   "decoder_transition": "none",
+   "adjudicator_register": "number-theory counts vs null"
+  },
+  "verdict": "NEGATIVE, ANTI-special",
+  "status_class": "TRIED",
+  "not_covered": "",
+  "cite": "ELIMINATION-LEDGER.md:935-960"
+ },
+ {
+  "id": "R19",
+  "name": "R11 N4 digit planes (bases 3/5/7/10)",
+  "rows": [
+   "L4"
+  ],
+  "families": [
+   "F2"
+  ],
+  "round": "11",
+  "ledger_row": "R11-N4-NUMBER-CHANNEL",
+  "decoder": "legacy",
+  "adjudicator": "English quadgram",
+  "conditionals": {
+   "key_space": "4 bases",
+   "decoder_transition": "legacy",
+   "adjudicator_register": "English quadgram"
+  },
+  "verdict": "NEGATIVE",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "same reopen",
+  "cite": "ELIMINATION-LEDGER.md:935-960"
+ },
+ {
+  "id": "R20",
+  "name": "R11 N5 totient ladder (phi(phi(p)), Carmichael, totient of running sum)",
+  "rows": [
+   "L4",
+   "S1"
+  ],
+  "families": [
+   "F2"
+  ],
+  "round": "11",
+  "ledger_row": "R11-N5-NUMBER-CHANNEL",
+  "decoder": "legacy",
+  "adjudicator": "English quadgram",
+  "conditionals": {
+   "key_space": "ladder",
+   "decoder_transition": "legacy",
+   "adjudicator_register": "English quadgram"
+  },
+  "verdict": "NEGATIVE; control reproduced AN END via phi(prime)",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "same reopen",
+  "cite": "ELIMINATION-LEDGER.md:935-960"
+ },
+ {
+  "id": "R21",
+  "name": "R11 S1 interrupter-position gap channel",
+  "rows": [
+   "S2"
+  ],
+  "families": [
+   "F10"
+  ],
+  "round": "11",
+  "ledger_row": "R11-S1-NUMBER-CHANNEL",
+  "decoder": "legacy",
+  "adjudicator": "English quadgram",
+  "conditionals": {
+   "key_space": "457 gaps",
+   "decoder_transition": "legacy",
+   "adjudicator_register": "English quadgram"
+  },
+  "verdict": "NEGATIVE, plant recovered",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "",
+  "cite": "ELIMINATION-LEDGER.md:935-960"
+ },
+ {
+  "id": "R22",
+  "name": "R11 S2 separators = typography",
+  "rows": [
+   "S4"
+  ],
+  "families": [
+   "F8"
+  ],
+  "round": "11",
+  "ledger_row": "R11-S2-NUMBER-CHANNEL",
+  "decoder": "none",
+  "adjudicator": "run-length stats",
+  "conditionals": {
+   "key_space": "",
+   "decoder_transition": "none",
+   "adjudicator_register": "run-length stats"
+  },
+  "verdict": "NEGATIVE",
+  "status_class": "TRIED",
+  "not_covered": "19 disagreements (A-05)",
+  "cite": "ELIMINATION-LEDGER.md:935-960"
+ },
+ {
+  "id": "R23",
+  "name": "R22-C X1 'do four unreasonable things' (every-4th x4 phases, cipher x{2,3,4}, 4-way interleave)",
+  "rows": [
+   "L8"
+  ],
+  "families": [
+   "F1"
+  ],
+  "round": "22",
+  "ledger_row": "R22-C-LITERAL-IMPERATIVES",
+  "decoder": "driftbeam exact/drift (legacy)",
+  "adjudicator": "R19/R20 nine-register panel-max + recovery gate",
+  "conditionals": {
+   "key_space": "185 ops total; width 4 only",
+   "decoder_transition": "driftbeam exact/drift (legacy)",
+   "adjudicator_register": "R19/R20 nine-register panel-max + recovery gate"
+  },
+  "verdict": "NEGATIVE (best pmax 1.53 vs bar ~5.1)",
+  "status_class": "TRIED-LEGACY-BEAM",
+  "not_covered": "widths != 4; 'each day' / temporal; four as 4 DIFFERENT keys; beam_v3/pf_v4/12 reg",
+  "cite": "LEDGER.json R22-C-LITERAL-IMPERATIVES"
+ },
+ {
+  "id": "R24",
+  "name": "R22-C X3 reversal re-enciphered forward; solved plaintext as running key (+/-)",
+  "rows": [
+   "L1",
+   "L10",
+   "H3"
+  ],
+  "families": [
+   "F7"
+  ],
+  "round": "22",
+  "ledger_row": "R22-C-LITERAL-IMPERATIVES",
+  "decoder": "driftbeam (legacy)",
+  "adjudicator": "nine-register panel-max",
+  "conditionals": {
+   "key_space": "both signs; zero offset only",
+   "decoder_transition": "driftbeam (legacy)",
+   "adjudicator_register": "nine-register panel-max"
+  },
+  "verdict": "NEGATIVE (pmax 2.6)",
+  "status_class": "TRIED-LEGACY-BEAM",
+  "not_covered": "non-zero offsets; per-page solved text as per-page key; map/road/direction composition",
+  "cite": "LEDGER.json R22-C-LITERAL-IMPERATIVES"
+ },
+ {
+  "id": "R25",
+  "name": "R22-C X4 'words OR numbers': prime/index/totient value as keystream over letters (+/-, atbash)",
+  "rows": [
+   "L2",
+   "L4"
+  ],
+  "families": [
+   "F2"
+  ],
+  "round": "22",
+  "ledger_row": "R22-C-LITERAL-IMPERATIVES",
+  "decoder": "driftbeam (legacy)",
+  "adjudicator": "nine-register panel-max",
+  "conditionals": {
+   "key_space": "value/pi/phi x signs",
+   "decoder_transition": "driftbeam (legacy)",
+   "adjudicator_register": "nine-register panel-max"
+  },
+  "verdict": "NEGATIVE (4 decodes >0.90 recovery rejected at panel clause)",
+  "status_class": "TRIED-LEGACY-BEAM",
+  "not_covered": "phi(phi), lambda, digit planes; offsets",
+  "cite": "LEDGER.json R22-C-LITERAL-IMPERATIVES"
+ },
+ {
+  "id": "R26",
+  "name": "R22-B turtle/spatial render of value, pi(p), phi(p) streams (+G3 pointer decoders)",
+  "rows": [
+   "H4"
+  ],
+  "families": [
+   "F8"
+  ],
+  "round": "22",
+  "ledger_row": "R22-B-TURTLE-SPATIAL-RENDER",
+  "decoder": "geometry (decoder-independent)",
+  "adjudicator": "shape statistics vs seed-3301 shuffle null; eye",
+  "conditionals": {
+   "key_space": "72 combos, moduli {4,6,8,12,29,360}",
+   "decoder_transition": "geometry (decoder-independent)",
+   "adjudicator_register": "shape statistics vs seed-3301 shuffle null; eye"
+  },
+  "verdict": "CLEAN NULL",
+  "status_class": "TRIED",
+  "not_covered": "per-page renders; other step functions; L-systems; interrupter-gated pen-up; English-along-path",
+  "cite": "LEDGER.json R22-B"
+ },
+ {
+  "id": "R27",
+  "name": "R22-A self-embedded selection (every-k, diagonals) of solved plaintext",
+  "rows": [
+   "L10",
+   "L11",
+   "H10"
+  ],
+  "families": [
+   "F10"
+  ],
+  "round": "22",
+  "ledger_row": "R22-A-SELFEMBEDDED-READ",
+  "decoder": "identity (selection axis)",
+  "adjudicator": "English quadgram score_norm vs per-length null (+agnostic secondary stats)",
+  "conditionals": {
+   "key_space": "3,508 selection functions over 5 rig-solved pages",
+   "decoder_transition": "identity (selection axis)",
+   "adjudicator_register": "English quadgram score_norm vs per-length null (+agnostic secondary stats)"
+  },
+  "verdict": "CLEAN NULL",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "AN END/PARABLE/community-solved LP1 pages (only 5 pages used); keyword-cued selections; k>40",
+  "cite": "LEDGER.json R22-A"
+ },
+ {
+  "id": "R28",
+  "name": "R23 A2 printed-line / word acrostics of solved pages at true geometry",
+  "rows": [
+   "L10",
+   "L11",
+   "H10",
+   "H8"
+  ],
+  "families": [
+   "F10"
+  ],
+  "round": "23",
+  "ledger_row": "R23-A2-LINE-ACROSTIC",
+  "decoder": "identity",
+  "adjudicator": "English quadgram score_norm + agnostic stats",
+  "conditionals": {
+   "key_space": "48 reads, 5 pages",
+   "decoder_transition": "identity",
+   "adjudicator_register": "English quadgram score_norm + agnostic stats"
+  },
+  "verdict": "CLEAN NULL",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "cue-word selections; k-th rune per line; the other community-solved pages",
+  "cite": "LEDGER.json R23-A2"
+ },
+ {
+  "id": "R29",
+  "name": "R22-D drop-cap channel (presence/order/gap/identity)",
+  "rows": [
+   "S4"
+  ],
+  "families": [
+   "F8"
+  ],
+  "round": "22",
+  "ledger_row": "R22-D-ILLUSTRATION-DROPCAP",
+  "decoder": "none",
+  "adjudicator": "permutation null, Bonferroni over 5",
+  "conditionals": {
+   "key_space": "15 illuminated of 58 scans",
+   "decoder_transition": "none",
+   "adjudicator_register": "permutation null, Bonferroni over 5"
+  },
+  "verdict": "NEGATIVE (min p 0.18)",
+  "status_class": "PARTIAL",
+  "not_covered": "figural motifs (crosses/trees/corpse/mayflies) never coded",
+  "cite": "LEDGER.json R22-D"
+ },
+ {
+  "id": "R30",
+  "name": "R10b B1 artifact-derived keys (168 alpha incl. all 2016 clauses, BEWAREFALSEPATHS; 16 numeric) rigid + interrupter beam",
+  "rows": [
+   "H1",
+   "H2",
+   "H3",
+   "H4",
+   "H5",
+   "H6",
+   "H7",
+   "H8"
+  ],
+  "families": [
+   "F4"
+  ],
+  "round": "10b",
+  "ledger_row": "NONE (round10b; see RESULTS.md)",
+  "decoder": "rigid additive + legacy interrupter beam",
+  "adjudicator": "English quadgram (break bar -5.2)",
+  "conditionals": {
+   "key_space": "168+16 keys x 55 pages x signs x phases",
+   "decoder_transition": "rigid additive + legacy interrupter beam",
+   "adjudicator_register": "English quadgram (break bar -5.2)"
+  },
+  "verdict": "NEGATIVE; real scored below shuffled null",
+  "status_class": "TRIED-LEGACY-BEAM",
+  "not_covered": "keys as seeds (hash/PRNG); sentence-level compositions; non-English register; skip_by_two",
+  "cite": "liber-primus/analysis/round10b/B1-overlooked-artifact/RESULTS.md; b1_keys.py:85-91"
+ },
+ {
+  "id": "R31",
+  "name": "R10b B3 page-local semantic keys, orthography-expanded (crib readouts)",
+  "rows": [
+   "S1",
+   "L12",
+   "L13"
+  ],
+  "families": [
+   "F5"
+  ],
+  "round": "10b",
+  "ledger_row": "NONE",
+  "decoder": "crib readout",
+  "adjudicator": "English",
+  "conditionals": {
+   "key_space": "168k readouts; recovered DIVINITY and FIRFUMFERENFE from scratch",
+   "decoder_transition": "crib readout",
+   "adjudicator_register": "English"
+  },
+  "verdict": "NEGATIVE",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "keys from LP1 words only",
+  "cite": "liber-primus/analysis/round10b/SYNTHESIS (B3 row in round10/SYNTHESIS.md)"
+ },
+ {
+  "id": "R32",
+  "name": "R13 B-04 + R16 KDF: SLOGAN list (LP1 lines, 'THEIR NUMBERS ARE THE DIRECTION', 'BEWARE FALSE PATHS', ...) as hash-chain / KDF secrets",
+  "rows": [
+   "L1",
+   "L2",
+   "L4",
+   "L5",
+   "L7",
+   "L8",
+   "H4",
+   "H6",
+   "L17",
+   "L18",
+   "L11"
+  ],
+  "families": [
+   "F4"
+  ],
+  "round": "13/16",
+  "ledger_row": "B-04, R16-KDF (restated RESTATE-*; R32-I2 re-scored survivors)",
+  "decoder": "legacy beam (English-ranked heads only stored)",
+  "adjudicator": "English quadgram; 9-register re-score of stored survivors only",
+  "conditionals": {
+   "key_space": "692k+ decodes",
+   "decoder_transition": "legacy beam (English-ranked heads only stored)",
+   "adjudicator_register": "English quadgram; 9-register re-score of stored survivors only"
+  },
+  "verdict": "NEGATIVE; English-only conditional recorded",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "map/road/way/epiphany/seek sentences absent from SLOGANS (round13/B04/seeds.py:71-111); non-stored heads",
+  "cite": "liber-primus/analysis/round13/B04/seeds.py:71-111; LEDGER.json B-04, R16-KDF"
+ },
+ {
+  "id": "R33",
+  "name": "R26 C semantic-seed zoo: 323 corpus values (primes, totients, Cicada ints, dates, coords, 16 sums + 31 solved/koan phrases) x 7 generators x {keyskip1,pair}",
+  "rows": [
+   "L4",
+   "L5",
+   "L2",
+   "L12",
+   "L13",
+   "L8",
+   "S5",
+   "H12",
+   "L16"
+  ],
+  "families": [
+   "F4",
+   "F9"
+  ],
+  "round": "26",
+  "ledger_row": "R26-C-SEMANTIC-SEED-ZOO",
+  "decoder": "legacy keyskip1 + pair beam, hitfn20",
+  "adjudicator": "R19/20 panel-max recovery-gated",
+  "conditionals": {
+   "key_space": "4,274 rows, 100% of enumerated set, offset 0",
+   "decoder_transition": "legacy keyskip1 + pair beam, hitfn20",
+   "adjudicator_register": "R19/20 panel-max recovery-gated"
+  },
+  "verdict": "NEGATIVE (best -6.578)",
+  "status_class": "TRIED-LEGACY-BEAM",
+  "not_covered": "seeds absent: 2016 sentences (verified: no THE MAP/ROAD/WAY/EPIPHANY in seeds.json); offsets; v3/pf_v4/12 reg",
+  "cite": "liber-primus/analysis/round26/C/RESULTS.md; seeds.json"
+ },
+ {
+  "id": "R34",
+  "name": "R26 A page-56 ladders (ladder_prime/totient/prime_totient) as generator zoo",
+  "rows": [
+   "L17",
+   "S1"
+  ],
+  "families": [
+   "F11"
+  ],
+  "round": "26",
+  "ledger_row": "R26-A-GEN-SWEEP-FIRST-FIRE (partially-run)",
+  "decoder": "legacy",
+  "adjudicator": "panel",
+  "conditionals": {
+   "key_space": "ladder generators",
+   "decoder_transition": "legacy",
+   "adjudicator_register": "panel"
+  },
+  "verdict": "partial",
+  "status_class": "PARTIAL",
+  "not_covered": "full sweep; v3",
+  "cite": "LEDGER.json R26-A"
+ },
+ {
+  "id": "R35",
+  "name": "R12-C2 / R26 B keytext running keys (33 curated texts), skip-aware",
+  "rows": [
+   "H7",
+   "H8"
+  ],
+  "families": [
+   "F4"
+  ],
+  "round": "12/26",
+  "ledger_row": "R12-C2 (never-run), R26-B (partially-run), B-16 (eliminated=unsound)",
+  "decoder": "legacy skip beam",
+  "adjudicator": "English",
+  "conditionals": {
+   "key_space": "33 texts",
+   "decoder_transition": "legacy skip beam",
+   "adjudicator_register": "English"
+  },
+  "verdict": "partial",
+  "status_class": "PARTIAL",
+  "not_covered": "most of R12-C2; R7 'keytext killed by mechanism' was unsound (B-16)",
+  "cite": "LEDGER.json R12-C2, R26-B, B-16"
+ },
+ {
+  "id": "R36",
+  "name": "R17 public pad + R24 C8 date-indexed pad (NIST beacon, block headers)",
+  "rows": [
+   "H7",
+   "H12",
+   "S5"
+  ],
+  "families": [
+   "F9"
+  ],
+  "round": "17/24",
+  "ledger_row": "R17-PUBLIC-PAD (+restatement), R24-C8-DATE-INDEXED-PAD",
+  "decoder": "legacy",
+  "adjudicator": "English quadgram (R17); measured (C8)",
+  "conditionals": {
+   "key_space": "dated public sources",
+   "decoder_transition": "legacy",
+   "adjudicator_register": "English quadgram (R17); measured (C8)"
+  },
+  "verdict": "NEGATIVE/measured",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "R17 not re-runnable post payload promotion; non-English",
+  "cite": "LEDGER.json R17-PUBLIC-PAD, R24-C8"
+ },
+ {
+  "id": "R37",
+  "name": "bash 4.2 $RANDOM auto-seed orbit (2012-2014 timestamp seeds) under beam_v3 + pf_v4; glibc gen0 prior-dense; PHP",
+  "rows": [
+   "S5",
+   "H12"
+  ],
+  "families": [
+   "F9"
+  ],
+  "round": "32-35",
+  "ledger_row": "R32-B1, R32-B3, R34-B1, R35-B1-BASH-ORBIT-PFV4",
+  "decoder": "beam_v3 + pf_v4",
+  "adjudicator": "nine-register panel + observed null",
+  "conditionals": {
+   "key_space": "77.6M x 2 ABIs (fraction 1.000)",
+   "decoder_transition": "beam_v3 + pf_v4",
+   "adjudicator_register": "nine-register panel + observed null"
+  },
+  "verdict": "NEGATIVE (best 7.068 vs bar 8.06)",
+  "status_class": "TRIED",
+  "not_covered": "re-score under 12 registers (R36 B1); other generators; non-signature dates",
+  "cite": "LEDGER.json R35-B1-BASH-ORBIT-PFV4"
+ },
+ {
+  "id": "R38",
+  "name": "R8 SEED unix-second sweep 2011-2015 x 10 generators",
+  "rows": [
+   "S5",
+   "H12"
+  ],
+  "families": [
+   "F9"
+  ],
+  "round": "8",
+  "ledger_row": "B-21 (partially-run; restated)",
+  "decoder": "rigid, legacy",
+  "adjudicator": "English",
+  "conditionals": {
+   "key_space": "2.52e9 decodes",
+   "decoder_transition": "rigid, legacy",
+   "adjudicator_register": "English"
+  },
+  "verdict": "NEGATIVE",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "non-English; skip_by_two",
+  "cite": "LEDGER.json B-21, RESTATE-B-21-ROUND8-BAR"
+ },
+ {
+  "id": "R39",
+  "name": "G-09 / R18-L8 timestamp seed prior (signed-message times as ranked seeds)",
+  "rows": [
+   "S5",
+   "H12"
+  ],
+  "families": [
+   "F9"
+  ],
+  "round": "18",
+  "ledger_row": "G-09 (measured)",
+  "decoder": "none (prior only)",
+  "adjudicator": "n/a",
+  "conditionals": {
+   "key_space": "ranked tiers A-D",
+   "decoder_transition": "none (prior only)",
+   "adjudicator_register": "n/a"
+  },
+  "verdict": "prior built; no decode of tier A under current instrument stated",
+  "status_class": "PARTIAL",
+  "not_covered": "tier-A seconds under v3/pf_v4/12 reg",
+  "cite": "liber-primus/analysis/round18/L8-provenance/TIMESTAMP-SEED-CANDIDATES.json; LEDGER.json G-09"
+ },
+ {
+  "id": "R40",
+  "name": "Ornaments, line geometry, glyph variants, sub-pixel, render forensics",
+  "rows": [
+   "S4"
+  ],
+  "families": [
+   "F8"
+  ],
+  "round": "8/19/30",
+  "ledger_row": "A-06, B-12, R19-FINITE-ORNAMENT-REGISTER, R30-A1, R30-A2, R30-A3",
+  "decoder": "none",
+  "adjudicator": "agnostic stats / nulls",
+  "conditionals": {
+   "key_space": "47+74 bands, 58 pages",
+   "decoder_transition": "none",
+   "adjudicator_register": "agnostic stats / nulls"
+  },
+  "verdict": "NEGATIVE/measured",
+  "status_class": "TRIED",
+  "not_covered": "figural motifs; 30 small bands content",
+  "cite": "LEDGER.json (ids listed)"
+ },
+ {
+  "id": "R41",
+  "name": "pp49-51 payload family: RSA ct (E-01), meta-params (E-02), PRF seed (B-05), per-section index (LP2-H1), micro (R28-L5), as pad (R30-B1/B2, R35-B2)",
+  "rows": [
+   "S3"
+  ],
+  "families": [
+   "F2",
+   "F6"
+  ],
+  "round": "13-35",
+  "ledger_row": "E-01,E-02,B-05,R28-L2,R28-L5,R30-B1,R30-B2,R35-B2",
+  "decoder": "mixed",
+  "adjudicator": "mixed",
+  "conditionals": {
+   "key_space": "256 B + contested bytes",
+   "decoder_transition": "mixed",
+   "adjudicator_register": "mixed"
+  },
+  "verdict": "NEGATIVE",
+  "status_class": "TRIED",
+  "not_covered": "payload as schedule of the SOLVED-page ladder; payload x clue strings",
+  "cite": "LEDGER.json (ids listed); ELIMINATION-LEDGER.md:551-569"
+ },
+ {
+  "id": "R42",
+  "name": "AN END hash hunt (2,706 corpus hash tests; archive/Tor crawl; B-07 never-run archive)",
+  "rows": [
+   "L17"
+  ],
+  "families": [
+   "F11"
+  ],
+  "round": "anend",
+  "ledger_row": "B-07 (never-run), F-01",
+  "decoder": "none",
+  "adjudicator": "SHA-512 match",
+  "conditionals": {
+   "key_space": "held blobs + corpora",
+   "decoder_transition": "none",
+   "adjudicator_register": "SHA-512 match"
+  },
+  "verdict": "NULL (sourced)",
+  "status_class": "PARTIAL",
+  "not_covered": "archived-object recovery (not computable)",
+  "cite": "liber-primus/analysis/anend_hunt/FINDINGS.md; ELIMINATION-LEDGER.md:623-664"
+ },
+ {
+  "id": "R43",
+  "name": "R10b B5 composed keys W (word) xor G (gematria stream) with start offset",
+  "rows": [
+   "S1",
+   "L2"
+  ],
+  "families": [
+   "F4"
+  ],
+  "round": "10b",
+  "ledger_row": "NONE",
+  "decoder": "legacy",
+  "adjudicator": "English",
+  "conditionals": {
+   "key_space": "6/55 pages",
+   "decoder_transition": "legacy",
+   "adjudicator_register": "English"
+  },
+  "verdict": "NEGATIVE",
+  "status_class": "PARTIAL",
+  "not_covered": "49 pages; v3",
+  "cite": "liber-primus/analysis/round10/SYNTHESIS.md (B5 row)"
+ },
+ {
+  "id": "R44",
+  "name": "campaign XVII / bookcipher: LP numbers as pointers into Cicada's known books",
+  "rows": [
+   "H12",
+   "H2"
+  ],
+  "families": [
+   "F7"
+  ],
+  "round": "XVII",
+  "ledger_row": "NONE",
+  "decoder": "pointer",
+  "adjudicator": "English word-salad test",
+  "conditionals": {
+   "key_space": "known 2012-14 books",
+   "decoder_transition": "pointer",
+   "adjudicator_register": "English word-salad test"
+  },
+  "verdict": "word salad",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "books from H12 book-code puzzles as targets for LP1-sum pointers; non-English books",
+  "cite": "liber-primus/analysis/CAMPAIGN-XVII-FINDINGS.md; bookcipher/"
+ },
+ {
+  "id": "R45",
+  "name": "LP2-H2 red-join continuity / per-section reset (14 red heads)",
+  "rows": [
+   "S2"
+  ],
+  "families": [
+   "F6"
+  ],
+  "round": "recon",
+  "ledger_row": "NONE (ELIMINATION-LEDGER section)",
+  "decoder": "permutation stat",
+  "adjudicator": "doublet statistic",
+  "conditionals": {
+   "key_space": "14 heads",
+   "decoder_transition": "permutation stat",
+   "adjudicator_register": "doublet statistic"
+  },
+  "verdict": "NEGATIVE (p=1.0)",
+  "status_class": "TRIED",
+  "not_covered": "",
+  "cite": "ELIMINATION-LEDGER.md:551-569"
+ },
+ {
+  "id": "R46",
+  "name": "Solved-page skip rule as decoder transition model (rejection loop, skip_by_two, beams)",
+  "rows": [
+   "S1",
+   "S2"
+  ],
+  "families": [
+   "F1"
+  ],
+  "round": "18-35",
+  "ledger_row": "R18-L2-*, I1-*, R24-C2*, R32-I1, R33-I2",
+  "decoder": "keyskip1/2, free (beam_v3)",
+  "adjudicator": "9-12 register panel",
+  "conditionals": {
+   "key_space": "construction axis measured",
+   "decoder_transition": "keyskip1/2, free (beam_v3)",
+   "adjudicator_register": "9-12 register panel"
+  },
+  "verdict": "instrument measured; applied via B/I lanes",
+  "status_class": "TRIED",
+  "not_covered": "per-page key reset, skip_by_k (R33-I2 struck as unearned)",
+  "cite": "LEDGER.json R32-I1, R33-I2"
+ },
+ {
+  "id": "R47",
+  "name": "LP2-as-pad inversion / all-pairs page XOR / canon as key",
+  "rows": [
+   "S2"
+  ],
+  "families": [
+   "F7"
+  ],
+  "round": "16/30",
+  "ledger_row": "F-01, R30-B1",
+  "decoder": "XOR/sub",
+  "adjudicator": "English",
+  "conditionals": {
+   "key_space": "12,956-run pad",
+   "decoder_transition": "XOR/sub",
+   "adjudicator_register": "English"
+  },
+  "verdict": "NEGATIVE",
+  "status_class": "TRIED-ENGLISH-ONLY",
+  "not_covered": "internal pad under beam_v3 with solved-page offsets",
+  "cite": "LEDGER.json F-01, R30-B1"
+ },
+ {
+  "id": "R48",
+  "name": "Non-cipher framings (image/DSP/message-existence)",
+  "rows": [
+   "S4"
+  ],
+  "families": [
+   "F8"
+  ],
+  "round": "recon",
+  "ledger_row": "NONE",
+  "decoder": "none",
+  "adjudicator": "image/DSP stats",
+  "conditionals": {
+   "key_space": "",
+   "decoder_transition": "none",
+   "adjudicator_register": "image/DSP stats"
+  },
+  "verdict": "NULL; message existence undecidable",
+  "status_class": "TRIED",
+  "not_covered": "",
+  "cite": "ELIMINATION-LEDGER.md:570-590"
+ },
+ {
+  "id": "R49",
+  "name": "Onion-image stego with large dictionaries; OutGuess hash blocks",
+  "rows": [
+   "H10",
+   "H11"
+  ],
+  "families": [
+   "F10"
+  ],
+  "round": "29",
+  "ledger_row": "R29-L1-ONION-STEGO",
+  "decoder": "stego extractors",
+  "adjudicator": "agnostic",
+  "conditionals": {
+   "key_space": "24,078 extractions",
+   "decoder_transition": "stego extractors",
+   "adjudicator_register": "agnostic"
+  },
+  "verdict": "NEGATIVE",
+  "status_class": "TRIED",
+  "not_covered": "",
+  "cite": "LEDGER.json R29-L1"
+ }
+]

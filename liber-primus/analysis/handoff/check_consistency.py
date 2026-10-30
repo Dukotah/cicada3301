@@ -167,7 +167,7 @@ def check_verdict_wording_present():
 def check_thresholds_agree():
     """The acceptance bar must be the same number everywhere it is stated."""
     prob = jload("liber-primus/PROBLEM.json")
-    bar = prob["acceptance_criteria"]["english_band_threshold"] if prob else None
+    bar = prob["acceptance_criteria"]["legacy_informational"]["english_band_threshold"] if prob else None  # legacy line only (R36 item 1)
     vs = read("liber-primus/verify_solution.py") or ""
     m = re.search(r"ENGLISH_BAR\s*=\s*(-?\d+\.?\d*)", vs)
     if m and bar is not None and float(m.group(1)) != float(bar):

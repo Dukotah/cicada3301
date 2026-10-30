@@ -76,13 +76,17 @@ python3 liber-primus/verify_solution.py --selftest             # validate the ju
 python3 liber-primus/verify_solution.py --key-module mykey.py  # adjudicate your candidate
 ```
 
-It applies criteria fixed in advance: the English band (≥ −5.5), at least two pages passing
-**independently**, and beating a size-matched shuffle null. On failure it tells you how far
-short you were and what that distance means — because "close" is precisely where false
-claims are born.
+It applies criteria fixed in advance: the key is decoded with the register-aware beam
+(`beam_v3`, panel-max) under three key-advance relations (keyskip1, keyskip2, free), each decode
+is scored by the max z over the 12-register panel (English, Latin, Old English, vowel-dropped,
+Greek, ...), and at least two pages must clear the observed-null bar for one submitted key
+(`bars_v3`, N=1) under the same relation. The old English-only −5.5 score is printed only as a
+labelled LEGACY line. A FAIL lists the three conditionals it was tested under and is negative
+under those registers/relations only; it says how far short you were — because "close" is
+precisely where false claims are born.
 
-A PASS is not proof. It is the point at which the claim becomes worth a human's time and
-should go to the CicadaSolvers community for independent reproduction.
+A PASS is "flagged-for-oracle", not proof: it prints the HUMAN-ORACLE bundle skeleton, and a human
+must read two independent pages before the ledger moves (`liber-primus/HUMAN-ORACLE.md`).
 
 ## 4. Three lessons that will save you months
 

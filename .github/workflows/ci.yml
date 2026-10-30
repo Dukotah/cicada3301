@@ -70,6 +70,7 @@ jobs:
         run: python tests/validate.py
 
       - name: "Front-door claim: the solution oracle accepts a good key, rejects a bad one"
+        # exit 3 = the gitignored register panel is not built on a fresh clone (reported, not a pass)
         run: python verify_solution.py --selftest
 
       - name: "Front-door claim: instrument gates recover planted signals (both directions)"
