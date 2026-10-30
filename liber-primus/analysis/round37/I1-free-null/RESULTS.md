@@ -67,3 +67,23 @@ Note: these `free` bars are **panel-R36 / 12-register** numbers; do not apply th
 * The planted control uses `free_q05` (5% unrelated advance) only; other free-like enciphering rates not tested.
 * Contention: Lane T1 shared the CPU, so throughput at L>=240 was 40-60% of the quiet timing; the statistics do not depend on it.
 * Operational note: a path bug briefly wrote two new stream files into round34/I1-v3-null/ (nothing overwritten); they were moved here and the path fixed.
+
+## 6. ADDENDUM 2026-10-30 (b): free control completed to 20 plants/register at L=400 and L=729 (coordinator order; see ADDENDUM-2026-10-30-b.md)
+This supersedes the "indicative only" wording in sections 0, 2 and 5 for L=400 / L=729. Bar of record = conservative Gumbel N=1e6 (GPD = sensitivity only, unchanged). 12 registers x 20 plants at each of L=240/400/729; ~12.5 min extra compute (RAM gate on).
+
+| register | L=240 | L=400 (bar 21.67) | L=729 (bar 24.86) |
+|---|---|---|---|
+| EN_MODERN | 20/20 | 20/20 | 20/20 |
+| EN_KJV | 20/20 | 20/20 | 20/20 |
+| LP1_REAL | 20/20 | 20/20 | 20/20 |
+| LATIN | 20/20 | 20/20 | 20/20 |
+| OE | **3/20 FAIL** | 19/20 (min 21.3) | 20/20 |
+| DE | 20/20 | 20/20 | 20/20 (min 29.0) |
+| CY | 19/20 | 20/20 | 20/20 |
+| EN_HALFVOWEL | **7/20 FAIL** | 20/20 | 20/20 |
+| EN_NOVOWEL | 20/20 | 20/20 | 20/20 |
+| GREEK | 20/20 | 20/20 | 20/20 |
+| HEBREW | 20/20 | 20/20 | 20/20 |
+| NORSE | 20/20 | 20/20 | 20/20 |
+
+**Licensing verdict (>=19/20 at the N=1e6 bar of record):** `free` carries claims at **L=400 for all 12 registers** (OE at the threshold, 19/20) and at **L=729 for all 12 registers**; at **L=240 for 10 registers (all except OE and EN_HALFVOWEL)**. No claim at L=240 for OE/EN_HALFVOWEL. Caveats: the bars at 400/729 rest on 726/562 null draws (+-~1 on the N=1e6 bar); OE at L=400 passes with zero margin (one miss, 19/20); plants are SHA-CTR keys with `free_q05` enciphering only, so the licence is for a real `free`-type signal of that kind, not a statement about any key. The O3 re-judgement (NOISE) is unchanged.
