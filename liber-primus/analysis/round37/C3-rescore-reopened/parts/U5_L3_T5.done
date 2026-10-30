@@ -1,0 +1,84 @@
+{
+ "family": "U5_L3_T5",
+ "kind": "direct",
+ "control": {
+  "EN_MODERN": {
+   "n": 2835,
+   "plant_pmax": 94.173,
+   "null_mean": 38.456,
+   "Z_plant": 75.39,
+   "family_null_maxZ_q99": 2.559,
+   "pass": true
+  },
+  "LATIN": {
+   "n": 2835,
+   "plant_pmax": 90.042,
+   "null_mean": 49.769,
+   "Z_plant": 55.63,
+   "family_null_maxZ_q99": 2.559,
+   "pass": true
+  },
+  "GREEK": {
+   "n": 2835,
+   "plant_pmax": 96.873,
+   "null_mean": 44.566,
+   "Z_plant": 59.59,
+   "family_null_maxZ_q99": 2.559,
+   "pass": true
+  },
+  "all_pass": true
+ },
+ "n_streams": 15,
+ "D": 60,
+ "best_stream": "T5:runepoem_oe.txt:s%M",
+ "best_pmax": 26.62256441232816,
+ "best_Z": 1.9988465048843245,
+ "null_max_Z_q99": 2.5594411849975587,
+ "null_max_Z_max": 2.564060688018799,
+ "exceed": 22,
+ "p_family": 0.3770491803278688,
+ "wilson95_exceed_rate": [
+  0.2562073884620827,
+  0.4931723263320326
+ ],
+ "top5": [
+  [
+   1.999,
+   26.623,
+   "T5:runepoem_oe.txt:s%M"
+  ],
+  [
+   1.862,
+   34.277,
+   "T5:mabinogion.txt:cumsum%M"
+  ],
+  [
+   -0.016,
+   30.899,
+   "T5:self_reliance.txt:(s*i)%M"
+  ],
+  [
+   -0.04,
+   31.552,
+   "T5:mabinogion.txt:s%M"
+  ],
+  [
+   -0.407,
+   30.366,
+   "T5:self_reliance.txt:cumsum%M"
+  ]
+ ],
+ "raw_best": {
+  "obs_best_pmax": 34.277452116329584,
+  "obs_best_stream": "T5:mabinogion.txt:cumsum%M",
+  "null_best_mean": 34.359067853291826,
+  "null_best_max": 36.89425277709961,
+  "null_best_q99": 36.75802188873291,
+  "exceed": 33,
+  "p": 0.5573770491803278,
+  "wilson95_exceed_rate": [
+   0.424917145489815,
+   0.6690654614623919
+  ]
+ }
+}

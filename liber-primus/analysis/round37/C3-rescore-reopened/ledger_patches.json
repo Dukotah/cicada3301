@@ -1,0 +1,65 @@
+{
+ "$comment": "R37 C3 patches (not applied by the lane); R10-L2-MAP / R10-L3-ROAD are C1's proposed rows",
+ "patches": [
+  {
+   "id": "R11-N1-NUMBER-CHANNEL",
+   "coverage_add": "R37-C3 (2026-10-30): CT-feedback 24 configs x 10 windows x keyskip1/2 L=120 under beam_v3 + panel-R36 (best non-degenerate 4.76/4.61 vs actual-N bars 6.07/6.02); PT-feedback 24 configs skip-free direct (raw p 0.50).",
+   "not_covered_add": "PT-feedback under skip relations; windows beyond 10",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional; remains negative"
+  },
+  {
+   "id": "R11-N2-NUMBER-CHANNEL",
+   "coverage_add": "R37-C3 (2026-10-30): U6a_N2: best prime_index:mod29 pmax 1.80, Z 1.65, family p(Z)=0.413, raw-best p=0.667",
+   "not_covered_add": "ASCII/coordinate routes",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional; remains negative"
+  },
+  {
+   "id": "R11-N3-NUMBER-CHANNEL",
+   "coverage_add": "R37-C3 (2026-10-30): not re-scored: no adjudicator involved",
+   "not_covered_add": "",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional; remains negative"
+  },
+  {
+   "id": "R11-N4-NUMBER-CHANNEL",
+   "coverage_add": "R37-C3 (2026-10-30): U6a_N4_ks: best non-degenerate pmax 5.56 (ks1) / 5.56 (ks2) vs 12-reg bars actual-N 5.94/5.89, declared-N 9.10/9.00 (168 rows/rel, 0 degenerate rows/rel); U6a_N4_read: best b3_p3 pmax 44.03, Z 1.71, family p(Z)=0.505, raw-best p=0.425",
+   "not_covered_add": "other bases",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional; remains negative"
+  },
+  {
+   "id": "R11-N5-NUMBER-CHANNEL",
+   "coverage_add": "R37-C3 (2026-10-30): U6a_N5: best non-degenerate pmax 6.30 (ks1) / 6.30 (ks2) vs 12-reg bars actual-N 6.90/6.83, declared-N 9.10/9.00 (2320 rows/rel, 0 degenerate rows/rel)",
+   "not_covered_add": "5 windows per keystream",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional; remains negative"
+  },
+  {
+   "id": "R11-S1-NUMBER-CHANNEL",
+   "coverage_add": "R37-C3 (2026-10-30): U6a_S1: best mod5 pmax 17.45, Z 1.40, family p(Z)=0.482, raw-best p=n/a",
+   "not_covered_add": "ASCII/bit/indicator routes",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional; remains negative"
+  },
+  {
+   "id": "R11-S2-NUMBER-CHANNEL",
+   "coverage_add": "R37-C3 (2026-10-30): U6a_S2: best runs_mod29 pmax 37.83, Z 0.16, family p(Z)=0.442, raw-best p=n/a",
+   "not_covered_add": "binary/ternary byte routes",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional; remains negative"
+  },
+  {
+   "id": "R22-C-LITERAL-IMPERATIVES",
+   "coverage_add": "R37-C3 (2026-10-30): U6b_R22C_structural: best X1a_decim_phase2_shift8 pmax 3.18, Z 2.47, family p(Z)=0.751, raw-best p=0.598; keyed U6b_R22C_keyed_L240: best non-degenerate pmax 5.46 (ks1) / 5.46 (ks2) vs 12-reg bars actual-N 6.04/6.14, declared-N 8.98/9.28 (84 rows/rel, 12 degenerate rows/rel)",
+   "not_covered_add": "keyless structural ops have no keyskip axis; non-zero offsets; width!=4",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional; remains negative"
+  },
+  {
+   "id": "R10-L2-MAP",
+   "coverage_add": "R37-C3 (2026-10-30): streams regenerated and re-scored under panel-R36: z=6.94 reading pmax 3.94, family p(Z)=0.95 (U5-L2).",
+   "not_covered_add": "M3/M4/M6/M7/M8",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional; remains negative"
+  },
+  {
+   "id": "R10-L3-ROAD",
+   "coverage_add": "R37-C3 (2026-10-30): U5_L3_T234: best T3:s%29==23:whole pmax 2.94, Z 2.33, family p(Z)=0.960, raw-best p=0.880",
+   "not_covered_add": "T1 count tests; T5 60 null draws",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional; remains negative"
+  }
+ ]
+}
