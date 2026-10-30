@@ -1,0 +1,19 @@
+# Round 37 / I2 - pf_v4 on twelve registers + bash orbit re-screen: PREREG
+Dated 2026-10-30 13:25 (local), written BEFORE any code in this lane ran. Bounded instrument + re-screen lane. No git; one Python process, nproc=1; RAM >= 0.4 GB check before heavy stages (wait <= 20 min); append-mode streaming; hard cap ~2 h.
+
+## Aiming test
+- Q1 recognizer: beam_v3 panel_max (lam_u=4, beam_w=400), keyskip1+keyskip2, adjudicated by panel-R36 (`data/panels/panel-r36.npz`, sha256 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c, 12 registers), via `beam_v3.set_panel()` + `AD._PANEL` repoint. Natural-rate control through the real chunk path first.
+- Q2 prior: R36 B1 measured the nine-register pf_v4's reach on GREEK 0.91 / HEBREW 0.68 / NORSE 0.64. Screen power, not decoder, is the limiting factor for those registers.
+- Q3 space: bash 4.2 auto-seed orbit, 74 x 2^20 = 77,594,624 seeds per ABI (LP64, ILP32), 296 chunks of 2^18 shuffled Random(3301).
+- Q4 three conditionals: key space (bash orbit, offset 0, sign -1, %29); transition (keyskip1+keyskip2, <=2 skips in the 24-rune head for the screen); registers (panel-R36's twelve).
+- Q5 action: pf_v4_12 survivor -> v3 L=120 under both relations -> pmax >= 12-register bar (null12.json, actual N) -> L=240 -> flagged-for-oracle per HUMAN-ORACLE.md; clearing actual-N but not N=1e6 = near-miss. Nothing is certified here.
+
+## Frozen design (set now)
+1. pf_v4_12 = pf_v4's Viterbi (m=24, k=2, pen=2 nats/skip, rel keyskip1/keyskip2) with the final lse taken over the twelve panel-R36 LMs (LMT = panel LM reshaped (29^3,12), float32). Nothing else changes.
+2. Thresholds: per relation at FPR 5e-4 (1e-3 total, OR), from the CALIBRATION half of >= 2^18 wrong-key heads per ABI (bash4.2 LP64, bash4.2_i32), keys random from the 74-prefix space, scored against the real LP2 head C[:24]; FPR re-measured on the HELD-OUT half (random split, seed 3701). PHP cells: FPR only, checked at the frozen point if time allows (not used to set thresholds).
+3. Power: 500 natural-rate plants per register per relation (1000 per register, 12 registers), ABI alternating, text from testhalves-r36, real encipher (enc_exact / enc_pair, supp 0.83), only filter = realised C[:40] doublet-free, NO skip-free selection; a plant passes if either relation's score exceeds that relation's threshold. Split skip-free (no key skip in first 24) / with-skip. Wilson 95% intervals. Requirement: every register >= 0.85.
+4. Q5 fallback: if any register < 0.85, report the best curve (power vs FPR at 5e-4..1e-2 per relation, and pen in {1,2,3} if run) and the operating point at a STATED higher FPR. The orbit sweep still uses the frozen 1e-3 point unless I state otherwise before the sweep starts; no re-tuning on the orbit.
+5. Sweep: both ABIs, 296/296 chunks each in the order LP64 then ILP32, pf_v4_12 at the frozen point, survivors decoded with beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36. Control first: >= 10 plants each of EN_MODERN, EN_NOVOWEL, HEBREW, NORSE per ABI x relation through the real 2^16-seed chunk path; skip split reported; >= 3 recoveries per skip split pooled (recover = prefilter AND L120/L240 pmax >= N=1e6 12-reg bars AND L240 recovery >= 0.90). If the control gate fails the sweep is refused. If the cap is hit, ILP32's fraction is reported honestly.
+6. Bars: null12.json (R36 B1) POT fit: bar = mu + beta*ln(N/-ln 0.99) from the cell's stored mu/beta, at actual N and N=1e6 (8.130/8.044 at N~69k, 9.102/8.999 at 1e6 for L=120 ks1/ks2).
+7. Store: 12-wide SWEEPROW rows, header registers = panel-R36's 12 and names the panel sha and the pf_v4_12 frozen point; stock `AD.validate_store` and `check_r3_store` must pass.
+8. Expected: survivor counts near R35's (~69k per ABI at total FPR 1e-3); expected negative. No "solved/closed/exhausted" wording.

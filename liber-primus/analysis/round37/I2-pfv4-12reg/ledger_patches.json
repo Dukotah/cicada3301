@@ -1,0 +1,19 @@
+{
+ "$comment": "R37 I2 extends R35-B1 / R36-B1 (not applied by lane)",
+ "patches": [
+  {
+   "id": "R35-B1-BASH-ORBIT-PFV4",
+   "coverage_add": "R37-I2: orbit re-screened in full (296/296 chunks, both ABIs) with pf_v4_12 (lse over the 12 panel-R36 LMs, held-out FPR 8.9e-4) and every survivor (65,815 LP64 + 65,971 ILP32) decoded under beam_v3 panel_max + panel-R36: 0 flagged, 0 near-miss, best 7.065 vs 12-register bar 8.027 at actual N. Natural-rate screen power now >= 0.952 on all 12 registers (GREEK 0.985, HEBREW 0.982, NORSE 0.981). See R37-I2-PFV4-12REG-ORBIT.",
+   "not_covered_remove": "pf_v4 not recalibrated for 12 registers; GREEK/HEBREW/NORSE orbit reach below 0.95."
+  },
+  {
+   "id": "R36-B1-ORBIT-12REG",
+   "coverage_add": "R37-I2: the screen limitation noted there (HEBREW ~0.68, NORSE ~0.64, GREEK 0.91) is removed by pf_v4_12: 0.982 / 0.981 / 0.985 natural power; the reopen condition 'pf_v4 recalibrated with the three new registers and the orbit re-screened' was executed with a negative result.",
+   "reopens_if_update": "pf_v4 recalibration + re-screen done (R37-I2); remaining: oracle flag (none), >2 skips in 24 runes, or a thirteenth register."
+  },
+  {
+   "id": "R32-B1-BASH42-RANDOM-AUTOSEED",
+   "coverage_add": "R37-I2: bash 4.2 orbit re-screened under 12 registers; negative (same seed 1354603465 near-miss at 7.065, 0.96 below the actual-N bar)."
+  }
+ ]
+}

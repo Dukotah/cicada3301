@@ -1,0 +1,38 @@
+{
+ "$comment": "written by R37 I2 lane agent",
+ "entries": [
+  {
+   "id": "R37-I2-PFV4-12REG-ORBIT",
+   "round": 37,
+   "lane": "I2",
+   "date": "2026-10-30",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "control.json: 160 natural-rate plants (10 each EN_MODERN/EN_NOVOWEL/HEBREW/NORSE per ABI x relation) through the real 2^16-seed chunk path (pf_v4_12 frozen -> v3 L120 both rels -> v3 L240, panel-R36, N=1e6 12-register bars); pooled recoveries per register x skip split (recover/n, skip-free then with-skip): EN_MODERN 17/17, 22/23; EN_NOVOWEL 22/22, 17/18; HEBREW 18/18, 20/22; NORSE 21/21, 18/19; 155/155 prefilter-passers recovered; 5 misses all with-skip prefilter misses. Natural-rate pf_v4_12 power 500 plants/register/relation, all 12 registers >= 0.952.",
+   "hypothesis": "The LP2 key is in the bash 4.2 auto-seed orbit (LP64 or ILP32), with <= 2 key skips in the first 24 runes, and its plaintext is in one of the 12 panel-R36 registers.",
+   "coverage": "Both ABIs screened in full: 296/296 chunks each, 77,594,624 seeds per ABI, with pf_v4_12 (pf_v4 Viterbi, lse over the 12 panel-R36 LMs, frozen per-relation FPR 5e-4, total held-out 8.9e-4); 65,815 (LP64) + 65,971 (ILP32) survivors, all decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 under panel-R36 (263,572 rows). Natural-rate screen power per register: EN_MODERN 0.985, EN_KJV 0.989, LP1_REAL 0.994, LATIN 0.967, OE 0.970, DE 0.984, CY 0.972, EN_HALFVOWEL 0.952, EN_NOVOWEL 0.985, GREEK 0.985, HEBREW 0.982, NORSE 0.981 (R36 nine-register screen had GREEK 0.91, HEBREW 0.68, NORSE 0.64). Reach = power x v3 recovery (1.00) x fraction 1.000.",
+   "result": "0 flagged, 0 near-miss. Best 7.065 (LP64 keyskip2 seed 1354603465, LP1_REAL) vs 12-register bar 8.027 at actual N (8.999 at N=1e6); LP64 ks1 6.347 (8.113/9.102); ILP32 ks1 6.506 (8.114/9.102), ks2 6.763 (8.028/8.999).",
+   "threshold": "12-register POT bars from round36/B1 null12.json (mu, beta per cell) at actual N and N=1e6; screen thresholds 7.4155 (keyskip1) / 7.4412 (keyskip2) fixed in PREREG design and frozen on the calibration half before the sweep.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "bash 4.2 auto-seed orbit, 74 x 2^20 seeds, LP64 and ILP32 both full, %29, offset 0, sign -1, C[0]-aligned",
+    "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max, L120 screen / L240 gate; screen heads with <= 2 skips in 24 runes; not free, not L31",
+    "adjudicator_register": "panel-R36, 12 registers; reach 0.95-0.99 per register"
+   },
+   "not_covered": "Heads with >= 3 skips in 24 runes; free relation; L=31; offsets != 0; other reductions/bash versions/seedings; PHP tiers and PHP FPR under the 12-register point (not measured); registers outside the twelve; unpointed Hebrew and other orthographies; v3 recovery of seven registers assumed from pooled controls; actual-N bars scale from R36 null12 POT fit (L240 from 4,000 draws); thresholds calibrated to the real C[:24] head.",
+   "reopens_if": "oracle/verifier flags a row (none); a true-key head with > 2 skips in 24 runes is shown; or a register outside the twelve is added.",
+   "evidence": [
+    "analysis/round37/I2-pfv4-12reg/RESULTS.md",
+    "analysis/round37/I2-pfv4-12reg/PREREG.md",
+    "analysis/round37/I2-pfv4-12reg/roc12.json",
+    "analysis/round37/I2-pfv4-12reg/power12_per_register.json",
+    "analysis/round37/I2-pfv4-12reg/throughput.json",
+    "analysis/round37/I2-pfv4-12reg/control.json",
+    "analysis/round37/I2-pfv4-12reg/sweep_summary.json",
+    "analysis/round37/I2-pfv4-12reg/sweep_summary_final.json",
+    "analysis/round37/I2-pfv4-12reg/sweep_rows.jsonl"
+   ],
+   "sweep_store": "analysis/round37/I2-pfv4-12reg/sweep_rows.jsonl"
+  }
+ ]
+}
