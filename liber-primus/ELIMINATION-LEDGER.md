@@ -1072,6 +1072,16 @@ verified refute-by-default (none downgraded). Trust anchors green throughout; ce
 recover the source PDF/PS (names the `/BaseFont` typeface + exposes TJ kerning), pin the exact GS release,
 close art attribution via reverse-image/Wayback. Do NOT re-run any R29/R30 lane.
 
+**Closeout (coordinator, 2026-10-30):**
+- **R35-B1** bash 4.2 LP64 + ILP32 auto-seed orbits, 77,594,624 seeds each, fraction 1.000, pf_v4 (m=24, k≤2) screen →
+  69,017 / 69,104 survivors decoded by beam_v3 under keyskip1 + keyskip2 (276,242 rows persisted); natural-rate control
+  96 plants: 93/96 recovered, the 3 misses all at the prefilter; 0 flagged, 0 near-miss; best 7.068 (seed 1354603465,
+  keyskip2) vs 8.058 actual-N / 9.034 declared-N. NEGATIVE, bounded, **reach 0.95–0.99 per register** (pf_v4 natural
+  power × v3 recovery 1.00). Not covered: ≥3 skips in a head, heads past 24, `free`, L=31, ILP32/PHP plant power.
+- **R35-I3** pre-registered linear D5c m_NV = 0.055·L FAILS at every tested length on two new keys (L=150 catch 0.853;
+  L=300 NV-only FR 0.158; L=400 NV-only FR 0.41; HALFVOWEL genuine rejected wholesale; HALFVOWEL-argmax hallucinations
+  0/30 caught by D5c-as-written). Rule retired; SEAL_PASS=false.
+
 ## Round 34 — CLOSE THE LOOP (2026-10-29/30)
 
 Seven lanes + a Vercel sandbox; write-up `analysis/round34/SYNTHESIS.md`; rows `R34-*` in `LEDGER.json`. **No survivor.**
@@ -1106,7 +1116,7 @@ Do NOT re-run any R34 lane as-is. Round 35: skip-tolerant screen → orbit re-sc
 > `sweep_rows.jsonl` holds **PHP rows only** (26,050): the resumed invocation truncated the store, so the 324,798 bash
 > decodes are not persisted (summary/log only). Verdict (NEGATIVE, bounded) and the 12-cell table stand.
 
-## Round 35 — THE SKIP-TOLERANT SCREEN, THE RESTORED INPUTS (2026-10-30; PARTIAL: B1 and I3 not yet filed)
+## Round 35 — THE SKIP-TOLERANT SCREEN (2026-10-30)
 
 Rows `R35-*` in `LEDGER.json` (I1, P1, S1, B2, X1 filed after refute-by-default audit; B1 and I3 were still running at audit time).
 - **R35-I1** `pf_v4` skip-tolerant head screen (Viterbi over advance 1/2, ≤2 skips, nine-register lse): at the frozen point

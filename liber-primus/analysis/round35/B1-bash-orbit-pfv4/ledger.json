@@ -1,0 +1,37 @@
+{
+ "$comment": "written by R35 B1 lane agent",
+ "entries": [
+  {
+   "id": "R35-B1-BASH-ORBIT-PFV4",
+   "round": 35,
+   "lane": "B1",
+   "date": "2026-10-30",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "control.json: 96 natural-rate plants (12 EN_MODERN + 12 EN_NOVOWEL per ABI x relation, real enc_exact/enc_pair, no skip-free selection) through pf_v4 -> v3 L120 -> v3 L240 -> panel. Pooled recover: MODERN skip-free 23/23, with-skip 24/25; NOVOWEL skip-free 28/28, with-skip 18/20. 3 failures, all prefilter misses (2 of them NOVOWEL with-skip). Gate >=3 recoveries each split passed. Coordinator to decide whether the 2 NOVOWEL with-skip screen misses meet the 'fix harness' rule (judged consistent with I1 power 0.96).",
+   "hypothesis": "The LP2 key is a bash 4.2 $RANDOM auto-seed (LP64 or ILP32) whose head contains key skips, missed ~30-35% of the time by pf_v3; the skip-tolerant pf_v4 lifts reach to ~0.95-0.99.",
+   "coverage": "bash 4.2 LP64 and ILP32 auto-seed orbits 77,594,624 seeds EACH, fraction 1.000 (296/296 chunks), %29, offset 0, sign -1, C[0]-aligned; pf_v4 frozen (m=24,k=2,rel=both, thr 7.0994/7.1761, FPR ~1e-3) -> survivors 69,017 (LP64) / 69,104 (ILP32) decoded under keyskip1+keyskip2 by beam_v3 panel_max. Store 276,243 SWEEPROW rows (validate_store ok, check_r3_store []).",
+   "result": "0 flagged, 0 near-miss. Best 7.068 (LP64 keyskip2 seed 1354603465, the recurring near-miss) vs bar 8.058 actual N / 9.034 N=1e6. LP64 keyskip1 best 6.349 (bar 8.221/9.235); ILP32 keyskip1 6.679 (8.222/9.235), keyskip2 6.762 (8.059/9.034).",
+   "threshold": "round34/I1-v3-null/bars_v3.py bar_v3(N,L,rel,lp2,gumbel) at actual N and N=1e6; fixed in advance (PREREG).",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "as coverage",
+    "transition_model": "keyskip1+keyskip2 under beam_v3; pf_v4 handles <=2 skips in 24 runes; free, L=31, >=3 skips not covered",
+    "adjudicator_register": "nine-register panel; reach per register = pf_v4 natural power 0.948-0.994 x v3 recovery (control)"
+   },
+   "not_covered": "heads with >=3 skips in 24 runes; free relation; L=31; offsets != 0; other reductions; other bash versions/seeding; PHP not re-run; pf_v4 power measured on LP64 plants only; ILP32 keyskip2 NOVOWEL with-skip control n=3.",
+   "reopens_if": "oracle/third verifier flags a row, or a true-key head with >2 skips is shown.",
+   "evidence": [
+    "analysis/round35/B1-bash-orbit-pfv4/RESULTS.md",
+    "analysis/round35/B1-bash-orbit-pfv4/PREREG.md",
+    "analysis/round35/B1-bash-orbit-pfv4/control.json",
+    "analysis/round35/B1-bash-orbit-pfv4/sweep_summary_final.json",
+    "analysis/round35/B1-bash-orbit-pfv4/sweep_summary.json",
+    "analysis/round35/B1-bash-orbit-pfv4/keep_rows.json",
+    "analysis/round35/B1-bash-orbit-pfv4/sweep.log"
+   ],
+   "sweep_store": "analysis/round35/B1-bash-orbit-pfv4/sweep_rows.jsonl",
+   "source_register": "round32/B1"
+  }
+ ]
+}

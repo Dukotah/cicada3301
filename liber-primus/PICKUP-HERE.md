@@ -1,15 +1,25 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-10-30** (Round 34 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-10-30** (Round 35 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
 
-> ## Round 35 (2026-10-30) — PARTIAL (I1, P1, B2, X1 filed; B1 bash re-screen and I3 D5c were still running). Read `analysis/round35/X1-redteam/RESULTS.md`.
+> ## Round 35 (2026-10-30) — THE SKIP-TOLERANT SCREEN: shipped. Read `analysis/round35/SYNTHESIS.md` first.
 >
-> **I1:** `pf_v4` skip-tolerant head screen meets the bar at (m=24, k=2, keyskip1∪keyskip2, FPR 1e-3): natural-rate power EN_NOVOWEL 0.98 / worst
-> other 0.948, at 10.9× pf_v3's cost (≤3× target missed). **P1: the Round 19 panel was NOT rebuilt** — KJV and Mabinogion are back byte-exact
-> (`data/fetch_sources.py --r19`), the **Welsh corpus (4b3fd926…, 524,561 B) is unrecoverable**. **S1 was skipped with cause; S2 was NOT resumed** (parked
-> 44.14 %; blocked on the panel gate, i.e. on the Welsh file or a governance decision to re-gate on a new recorded panel). **B2:** R30 T2/folly/2.jpg legs
-> measured, no change (T2/2.jpg identity statistical/structural only). **X1 corrections:** R34-B1's PHP dense tier was prefiltered (reach ≈0.65–0.71, not ≈1.0);
-> its store holds PHP rows only; the 38,223 s gap is a sleep that consumed the cap (the 0.061 % is an artefact).
+> No survivor. **I1** `pf_v4` (Viterbi over ≤2 key skips in the first 24 runes, nine-register lse) lifts natural-rate
+> head-screen power to **0.95–0.99 in every register** (EN_NOVOWEL 0.98; pf_v3-equivalent was 0.65–0.78), FPR 8.4e-4,
+> at 10.9× the cost. **B1** both bash 4.2 `$RANDOM` auto-seed orbits (77.6 M seeds each, fraction 1.000) re-screened
+> with it and decoded by beam_v3 under the observed null: **0 flagged**; best 7.068 (seed 1354603465, keyskip2 — the
+> same near-miss since Round 32) vs 8.06 actual-N bar. Rows persisted (276 k). The bash orbit is now a negative at
+> reach ≈0.95–0.99 across the nine registers. **P1** original KJV + Mabinogion restored byte-exact (capsule now PASS);
+> **the Welsh corpus is unrecoverable** (no source ever recorded; 4b3fd926…, 524,561 B) → the Round 19 panel cannot
+> be rebuilt → **S2 stays parked; S1 skipped with cause.** **I3** the pre-registered linear D5c rule FAILS at
+> L=150/300/400 on new keys → retired; SEAL_PASS=false. **B2** the last unmeasured payload legs (R30-B1 T2/folly,
+> R30-B2 folly/2.jpg) measured under the promoted canon: unchanged. **X1** corrected the coordinator's R34-B1 write-up
+> (bash rows had not been persisted; PHP tier was mostly prefiltered; 0.061 % was a sleep artefact).
+>
+> **Next:** `analysis/round36/CAMPAIGN-PLAN.md` — Greek/Hebrew/Norse registers (absent since Round 32) → 12-register
+> panel → re-adjudicate the persisted R35-B1 survivors; a NEW recorded panel to re-gate the S2 engine (Welsh-free,
+> governance change recorded) → S2 window on the sandbox; pf_v4 power on ILP32/PHP keystreams + PHP tier awake with
+> rows persisted; a D5c successor pre-registered on independent keys.
 
 > ## Round 34 (2026-10-29/30) — CLOSE THE LOOP: shipped. Read `analysis/round34/SYNTHESIS.md` first.
 >

@@ -1,0 +1,13 @@
+{
+ "$comment": "R35 B1 extends R32-B1 and R34-B1 (not applied by lane)",
+ "patches": [
+  {
+   "id": "R32-B1-BASH42-RANDOM-AUTOSEED",
+   "coverage_add": "R35-B1: full LP64+ILP32 orbit re-screened with skip-tolerant pf_v4 (reach ~0.95-0.99 vs ~0.65-0.70 in R34); survivors 69,017/69,104; best 7.068 vs bar 8.058 actual-N; 0 flagged. See R35-B1-BASH-ORBIT-PFV4."
+  },
+  {
+   "id": "R34-B1-ORBITS-V3-PFV3",
+   "coverage_add": "R35-B1 closes the R34 reopens_if: skip-tolerant screen (pf_v4, natural power 0.948-0.994) re-screened both bash orbits in full; the R34 control caveat (skip-free plants) is replaced by a natural-rate control (96 plants, skip split reported). Result negative, bounded. PHP tiers unchanged."
+  }
+ ]
+}
