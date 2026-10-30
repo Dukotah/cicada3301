@@ -1,0 +1,275 @@
+{
+ "rule": "m(L)=0.055*L on EN_NOVOWEL and EN_HALFVOWEL argmax; 0 otherwise",
+ "per_L": {
+  "150": {
+   "m": 8.25,
+   "draws": {
+    "EN_NOVOWEL": 2200,
+    "EN_HALFVOWEL": 200
+   },
+   "catch_H_NV": {
+    "n": 1355,
+    "k": 1156,
+    "rate": 0.8531,
+    "wilson95": [
+     0.833,
+     0.871
+    ]
+   },
+   "catch_H_HV": {
+    "n": 9,
+    "k": 9,
+    "rate": 1.0,
+    "wilson95": [
+     0.701,
+     1.0
+    ]
+   },
+   "catch_H_pooled": {
+    "n": 1364,
+    "k": 1165,
+    "rate": 0.8541,
+    "wilson95": [
+     0.834,
+     0.872
+    ]
+   },
+   "diag_catch_H_HV_if_margin0": {
+    "n": 9,
+    "k": 0,
+    "rate": 0.0,
+    "wilson95": [
+     0.0,
+     0.299
+    ]
+   },
+   "FR_NV_only": {
+    "n": 324,
+    "k": 0,
+    "rate": 0.0,
+    "wilson95": [
+     -0.0,
+     0.012
+    ]
+   },
+   "FR_HV_only": {
+    "n": 134,
+    "k": 97,
+    "rate": 0.7239,
+    "wilson95": [
+     0.643,
+     0.793
+    ]
+   },
+   "FR_spreadonly_other": {
+    "n": 470,
+    "k": 0,
+    "rate": 0.0,
+    "wilson95": [
+     0.0,
+     0.008
+    ]
+   },
+   "FR_pooled": {
+    "n": 984,
+    "k": 97,
+    "rate": 0.0986,
+    "wilson95": [
+     0.081,
+     0.119
+    ]
+   },
+   "n_gray_excluded": 185,
+   "clauses": {
+    "catch_NV>=.90": false,
+    "catch_HV>=.90": true,
+    "FR_pooled<=.10": true,
+    "NV_wilson_upper<=.10": true,
+    "HV_wilson_upper<=.10": false
+   },
+   "PASS": false,
+   "per_key_FR_NV_HV": {}
+  },
+  "300": {
+   "m": 16.5,
+   "draws": {
+    "EN_NOVOWEL": 2200,
+    "EN_HALFVOWEL": 200
+   },
+   "catch_H_NV": {
+    "n": 1760,
+    "k": 1725,
+    "rate": 0.9801,
+    "wilson95": [
+     0.972,
+     0.986
+    ]
+   },
+   "catch_H_HV": {
+    "n": 9,
+    "k": 9,
+    "rate": 1.0,
+    "wilson95": [
+     0.701,
+     1.0
+    ]
+   },
+   "catch_H_pooled": {
+    "n": 1769,
+    "k": 1734,
+    "rate": 0.9802,
+    "wilson95": [
+     0.973,
+     0.986
+    ]
+   },
+   "diag_catch_H_HV_if_margin0": {
+    "n": 9,
+    "k": 0,
+    "rate": 0.0,
+    "wilson95": [
+     0.0,
+     0.299
+    ]
+   },
+   "FR_NV_only": {
+    "n": 101,
+    "k": 16,
+    "rate": 0.1584,
+    "wilson95": [
+     0.1,
+     0.242
+    ]
+   },
+   "FR_HV_only": {
+    "n": 146,
+    "k": 146,
+    "rate": 1.0,
+    "wilson95": [
+     0.974,
+     1.0
+    ]
+   },
+   "FR_spreadonly_other": {
+    "n": 478,
+    "k": 0,
+    "rate": 0.0,
+    "wilson95": [
+     0.0,
+     0.008
+    ]
+   },
+   "FR_pooled": {
+    "n": 776,
+    "k": 162,
+    "rate": 0.2088,
+    "wilson95": [
+     0.182,
+     0.239
+    ]
+   },
+   "n_gray_excluded": 194,
+   "clauses": {
+    "catch_NV>=.90": true,
+    "catch_HV>=.90": true,
+    "FR_pooled<=.10": false,
+    "NV_wilson_upper<=.10": false,
+    "HV_wilson_upper<=.10": false
+   },
+   "PASS": false,
+   "per_key_FR_NV_HV": {}
+  },
+  "400": {
+   "m": 22.0,
+   "draws": {
+    "EN_NOVOWEL": 2200,
+    "EN_HALFVOWEL": 200
+   },
+   "catch_H_NV": {
+    "n": 1924,
+    "k": 1915,
+    "rate": 0.9953,
+    "wilson95": [
+     0.991,
+     0.998
+    ]
+   },
+   "catch_H_HV": {
+    "n": 12,
+    "k": 12,
+    "rate": 1.0,
+    "wilson95": [
+     0.757,
+     1.0
+    ]
+   },
+   "catch_H_pooled": {
+    "n": 1936,
+    "k": 1927,
+    "rate": 0.9954,
+    "wilson95": [
+     0.991,
+     0.998
+    ]
+   },
+   "diag_catch_H_HV_if_margin0": {
+    "n": 12,
+    "k": 0,
+    "rate": 0.0,
+    "wilson95": [
+     0.0,
+     0.243
+    ]
+   },
+   "FR_NV_only": {
+    "n": 56,
+    "k": 23,
+    "rate": 0.4107,
+    "wilson95": [
+     0.292,
+     0.541
+    ]
+   },
+   "FR_HV_only": {
+    "n": 148,
+    "k": 148,
+    "rate": 1.0,
+    "wilson95": [
+     0.975,
+     1.0
+    ]
+   },
+   "FR_spreadonly_other": {
+    "n": 478,
+    "k": 0,
+    "rate": 0.0,
+    "wilson95": [
+     0.0,
+     0.008
+    ]
+   },
+   "FR_pooled": {
+    "n": 731,
+    "k": 171,
+    "rate": 0.2339,
+    "wilson95": [
+     0.205,
+     0.266
+    ]
+   },
+   "n_gray_excluded": 134,
+   "clauses": {
+    "catch_NV>=.90": true,
+    "catch_HV>=.90": true,
+    "FR_pooled<=.10": false,
+    "NV_wilson_upper<=.10": false,
+    "HV_wilson_upper<=.10": false
+   },
+   "PASS": false,
+   "per_key_FR_NV_HV": {}
+  }
+ },
+ "all_L_pass": false,
+ "SEAL_PASS": false,
+ "SEAL_note": "SEAL_PASS stays false by lane rule; all_L_pass=True would only RECOMMEND coordinator review"
+}
