@@ -31,3 +31,12 @@ in the D1 trials AND add a normalised turning-function term; no new data). If D2
 U8's 232 renders (4 variants x 58 pages) recomputed from u8.py; per render score vs its own 200-shuffle null p5. Report per variant renders below p5
 (expected 0.05*58 = 2.9 by chance) and below null MIN (oracle bundle PNG for human eye per HUMAN-ORACLE.md); else negative with the three U8 conditionals.
 - D1 amendment before any power run: Hu limited to the first four invariants with |h|+1e-5 floor (h5/h6 were numerically unstable on symmetric shapes; seen in a 5-trial smoke test, not a power run).
+
+## D1 result and the ONE revision D2 (written 2026-10-30 after seeing power_D1.json, before any D2 output)
+D1 (power_D1.json): detection oct 29/40, gon29 40/40, T 40/40, L 40/40, gon12 40/40; realised FPR 21/200 = 0.105 (all 21 in V2: the 29-gon variant).
+Diagnoses: (a) oct failures are all the L=1 scale (8 steps < MINSTEPS 12: not a candidate) -- a design bug; (b) U8's shuffle null is NOT a valid null for
+real text under V2 (real strokes close up more than shuffled ones: real-page score median 2.47 vs shuffle 2.77), so p5-of-shuffle gives FPR 0.42 on V2.
+D2 = D1 plus exactly two changes, nothing else (features, weights, bank frozen): (1) candidate minimum steps 8 for V1-V3 (V4 stays 10);
+(2) the null is a REAL-TEXT WINDOW null: 200 (power test: 100, for runtime) windows cut at random word boundaries from the OTHER LP pages (tested page's own
+page excluded; page 0 excluded in the power test), matched to the tested page in rune count (V4: word count); threshold = 5th percentile of the window scores.
+Detection = score < threshold. Pass rule unchanged. If D2 fails: ceiling recorded, U8 retired.

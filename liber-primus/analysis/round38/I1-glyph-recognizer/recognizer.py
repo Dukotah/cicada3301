@@ -3,6 +3,7 @@ import numpy as np
 U8DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'round37', 'C2-recognizer-index-readings', 'U8-geometry'))
 spec = importlib.util.spec_from_file_location('u8', os.path.join(U8DIR, 'u8.py')); u8 = importlib.util.module_from_spec(spec); spec.loader.exec_module(u8)
 PR = u8.PR; M = u8.M
+D2 = os.environ.get('D2') == '1'
 W = dict(k=1.0, c=1.0, h=1.0, hu=1.0, tf=0.0)   # D1 weights
 YY, XX = np.mgrid[0:64, 0:64].astype(np.float64)
 
@@ -60,7 +61,7 @@ def make_bank():
 BANK = make_bank()
 
 def cands(segs, var):
-    st = u8.strokes(segs); ms = u8.MINSTEPS[var]
+    st = u8.strokes(segs); ms = u8.MINSTEPS[var] if (var == 'V4_wordsum_rel12' or not D2) else 8
     c = [s for s in st if ms <= len(s) <= 80]
     c += [st[i] + st[i+1] for i in range(len(st)-1) if ms <= len(st[i]) + len(st[i+1]) <= 80 and len(st[i]) >= 2 and len(st[i+1]) >= 2]
     return c
@@ -125,3 +126,43 @@ if __name__ == '__main__':
             words, var = trial_words(g, r); s, tg = score(u8.walk(words, var), var); print(g, s, tg)
         ns = null_scores(words, var, 20, r); print('null20', time.time()-t0, ns.min(), ns.mean())
     elif sys.argv[1] == 'power': power(sys.argv[2], int(sys.argv[3]), int(sys.argv[4]))
+
+
+# ---------------- D2: real-text window null
+_P = M.parse(max_page=60)
+POOL = [(w, p) for w, p in zip(_P['words'], _P['w_page']) if p <= 56]
+def window_null(n_words, n_runes, var, n, r, exclude_page):
+    pool = [w for w, p in POOL if p != exclude_page]; L = len(pool); out = []
+    for _ in range(n):
+        s = int(r.integers(L)); win = []; acc = 0; i = s
+        while (len(win) < n_words) if var == 'V4_wordsum_rel12' else (acc < n_runes):
+            w = pool[i % L]; win.append(w); acc += len(w); i += 1
+        out.append(score(u8.walk(win, var), var)[0])
+    return np.array(out)
+def null_for(words, var, n, r, exclude_page):
+    return window_null(len(words), sum(len(w) for w in words), var, n, r, exclude_page)
+
+def power2(tag, ntr=40, nnull=100):
+    global null_scores
+    r = np.random.default_rng(3939); out = {'design': 'D2', 'weights': dict(W), 'glyphs': {}}; t0 = time.time()
+    for g in GLYPHS:
+        det = 0; rows = []
+        for t in range(ntr):
+            words, var = trial_words(g, r)
+            s, tg = score(u8.walk(words, var), var); ns = null_for(words, var, nnull, r, 0); thr = float(np.quantile(ns, 0.05))
+            ok = bool(s < thr); det += ok; rows.append(dict(score=s, thr=thr, ok=ok, tmpl=tg, correct=tg == g))
+        out['glyphs'][g] = dict(detected=det, n=ntr, rate=det/ntr, wilson=wilson(det, ntr), correct_template=sum(x['correct'] for x in rows if x['ok']), trials=rows)
+        print(tag, g, det, ntr, round(time.time()-t0), flush=True)
+    fp = 0; nfp = 0; per = {}
+    for v in ['V1_prime_mod8_rel', 'V2_idx_rel_29', 'V3_idx_abs_card', 'V4_wordsum_rel12']:
+        k = 0
+        for t in range(50):
+            words = trial_words(None, r, planted=False); s, _ = score(u8.walk(words, v), v)
+            ns = null_for(words, v, nnull, r, 0); k += bool(s < np.quantile(ns, 0.05))
+        per[v] = k; fp += k; nfp += 50
+        print(tag, 'fpr', v, k, flush=True)
+    out['fpr'] = dict(hits=fp, n=nfp, rate=fp/nfp, wilson=wilson(fp, nfp), per_variant=per)
+    out['pass'] = bool(all(out['glyphs'][g]['rate'] >= 0.9 for g in GLYPHS) and out['fpr']['rate'] <= 0.05)
+    out['seconds'] = round(time.time()-t0)
+    json.dump(out, open(f'power_{tag}.json', 'w'), indent=1); print(tag, 'PASS' if out['pass'] else 'FAIL', out['fpr'], flush=True)
+if __name__ == '__main__' and sys.argv[1] == 'power2': power2(sys.argv[2], int(sys.argv[3]), int(sys.argv[4]))
