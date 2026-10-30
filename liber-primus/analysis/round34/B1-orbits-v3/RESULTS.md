@@ -105,3 +105,14 @@ the Round 35 target (a skip-tolerant head screen), not a decoder problem.
 `PREREG.md`, `sweep.py`, `common.py`, `control.json`, `control.log`, `sweep.log`, `sweep_php.log`,
 `sweep_summary.json`, `sweep_summary_final.json`, `keep_rows.json`, `sweep_rows.jsonl` (gitignored, 4.2 MB,
 regenerable with `sweep.py`), `ledger.json`, `ledger_patches.json` (written by the coordinator).
+
+
+## Addendum (Round 35 X1, 2026-10-30) -- corrections to the text above
+
+Re-derived from the on-disk artifacts (`round35/X1-redteam/rerun_b1_r34.py` / `.json`). The verdict, the 12-cell table, the 296/296 chunk count and the reach arithmetic stand; these statements do not:
+
+1. **PHP prior-dense tier was prefiltered.** Only the 487 "core" seeds were decoded unfiltered; the 47,549 "dense" seeds went through `chunk_php` (pf_v3), `sweep.py:51-56, 200-212`. So "decoded with no prefilter / reach ~1.00" is wrong for ~99 % of that tier: reach there is ~0.65-0.71 like the bash orbit.
+2. **The 38,223 s gap.** `sweep_php.log` shows 1,966,080 seeds at t=110 s and 2,621,440 seeds AT t=38,223 s (not "2,621,440 at t=110 s"). The laptop slept inside the last block and wall-clock consumed the 2,100 s cap; at the pre-sleep rate (~17.9 k seeds/s) the cap alone would have reached ~1 % of 2^32. The 0.061 % is a sleep artefact, not the compute budget. The first sweep invocation also crashed at `php_tier_a` (NameError, `sweep.log`), and PHP ran in a resumed invocation.
+3. **`sweep_rows.jsonl` holds PHP rows only (26,050).** The resumed invocation reopened the rows file with mode "w" (`sweep.py:161`; resume skips the bash loop), so the 324,798 bash decodes are not persisted (R3 persistence lost for bash; bash numbers survive in `sweep_summary_final.json`, `keep_rows.json`, `sweep.log`).
+4. **Store header fields are stale:** `power_EN_NOVOWEL: 0.998` is the pre-X1 skip-free number (superseded by ~0.66 operative) and `key_space` says "ILP32 stated fraction" although ILP32 ran 296/296 chunks.
+5. Timing: the bash phases took 933.7 s (LP64) and 911.1 s (ILP32), not 911 s each.

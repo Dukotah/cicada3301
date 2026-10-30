@@ -13,3 +13,8 @@ Tried six archive.org OCR djvu texts (Rhys-Evans Text of the Mabinogion x3, Edwa
 Whether numpy or Welsh differs does not matter yet: panel depends on CY, so no byte-exact rebuild is possible. Not built; no per-model hash comparison possible (out_build.json stores no per-model hashes).
 Power gate not run (gated on match). No files written outside the lane dir; matched downloads remain in dl_kjv_10-0/ and dl_mab_5160b/ (not placed); substitutes untouched.
 Decision for coordinator: S2 stays parked unless the original Welsh file is found (another checkout/backup, e.g. ._round31_stale_backup in the home dir, or an older clone) or a decision is made to accept a CY-substitute panel, which cannot pass the 14a23d36 gate.
+
+
+## Addendum (Round 35 X1, 2026-10-30)
+
+The sentence "No files written outside the lane dir ... substitutes untouched" was true when written (09:30:29) and is **no longer true**: afterwards `data/kjv.txt` and `data/keys/mabinogion.txt` were replaced with the matched originals (sha 0f1a83cb... / 80dc6f0d...), `handoff/capsule/MANIFEST.json` was refreshed and `data/fetch_sources.py` edited. The Round 32 substitutes (sha 0204adae... / e177d7c2... / welsh 624ffc97...) are preserved only in `backup/`. X1 also found that the fetch_sources.py edit had altered the Welsh SUBSTITUTE recipe (cache/epub -> /files/N/N-0.txt, ~20 KB different bytes) and that the script had no fetch for KJV/Mabinogion; both were fixed (Welsh URL form restored; `ensure_r19_corpora()` / `--r19` added, sha-verified). The Welsh CY corpus remains unrecoverable (tried, not found); the panel was not rebuilt. See `round35/X1-redteam/RESULTS.md`.

@@ -61,9 +61,10 @@ def ensure_welsh_substitute(force=False, verbose=True):
     os.makedirs(os.path.dirname(WELSH_DST), exist_ok=True)
     parts = []
     for gid in WELSH_GUTENBERG_IDS:
-        # R35-P1: the /files/N/N-0.txt form is the byte-exact source of the Round 19 corpora (recorded
-        # hashes 0f1a83cb... for #10, 80dc6f0d... for #5160); cache/epub/pgN.txt serves a re-issued text.
-        url = f"https://www.gutenberg.org/files/{gid}/{gid}-0.txt"
+        # R35-X1: this is the Round 32 SUBSTITUTE recipe (cache/epub). R35-P1 had changed it to the
+        # /files/N/N-0.txt form, which yields ~20 KB different bytes (781,166 vs 761,024 B measured);
+        # that URL form is the byte-exact source for the Round 19 KJV/Mabinogion only (ensure_r19_corpora).
+        url = f"https://www.gutenberg.org/cache/epub/{gid}/pg{gid}.txt"
         req = urllib.request.Request(url, headers={"User-Agent": "cicada3301-rig"})
         with urllib.request.urlopen(req, timeout=60) as r:
             parts.append(_strip_gutenberg(r.read().decode("utf-8", "replace")))
@@ -72,6 +73,35 @@ def ensure_welsh_substitute(force=False, verbose=True):
     if verbose:
         print(f"  built Welsh substitute corpus ({sum(map(len, parts))} chars) -> {WELSH_DST}")
     return WELSH_DST
+
+
+# --- R35 / P1 + X1: the two Round 19 corpora that ARE byte-recoverable (raw bytes, no stripping) --------
+# Recorded in analysis/round19/I2/out_build.json. The third (Welsh CY, 4b3fd926..., 524,561 B) is not.
+R19_CORPORA = {
+    "kjv.txt": ("https://www.gutenberg.org/files/10/10-0.txt",
+                "0f1a83cbcdc1d3fae6bcc3daaa496d4fa723fcce9526e84e20df12ae33fda986", 4436268),
+    os.path.join("keys", "mabinogion.txt"): ("https://www.gutenberg.org/files/5160/5160-0.txt",
+                "80dc6f0d8efc8398a2d1cc8cdf17237020c881cf4fbd2412dfa37ec8be19a5ed", 617362),
+}
+
+
+def ensure_r19_corpora(force=False, verbose=True):
+    """Fetch data/kjv.txt and data/keys/mabinogion.txt byte-exact (sha256-verified); raises on mismatch."""
+    import hashlib
+    for rel, (url, sha, n) in R19_CORPORA.items():
+        dst = os.path.join(HERE, rel)
+        if os.path.exists(dst) and not force and hashlib.sha256(open(dst, "rb").read()).hexdigest() == sha:
+            continue
+        req = urllib.request.Request(url, headers={"User-Agent": "cicada3301-rig"})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            data = r.read()
+        if hashlib.sha256(data).hexdigest() != sha or len(data) != n:
+            raise RuntimeError(f"{url}: sha/size differs from the recorded Round 19 corpus (mirror re-issued?)")
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        with open(dst, "wb") as f:
+            f.write(data)
+        if verbose:
+            print(f"  fetched {rel} ({n} B, sha verified)")
 
 
 def ensure_sources(force=False, verbose=True):
@@ -91,6 +121,8 @@ if __name__ == "__main__":
     force = "--force" in sys.argv
     print(f"fetching {len(FILES)} source files -> {SRC}")
     ensure_sources(force=force)
+    if "--r19" in sys.argv:
+        ensure_r19_corpora(force=force)
     if "--welsh" in sys.argv:
         ensure_welsh_substitute(force=force)
     print("done.")

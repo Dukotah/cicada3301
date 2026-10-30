@@ -23,7 +23,7 @@ row (~83% suppression — Campaign XI). "OTP-class" is a precise claim and it is
 brute-forceable)**. The derived-key dictionary lane is **bounded, not untested** — it is now
 one of the most-swept families in the repo (R16-KDF 692k configs; R20/21/25/27 Py2.7-MT
 pair-decoder over [0,2³²) at coverage 1.00 / power 1.00 **under the `pair` relation only (R27-S1)** — the same
-space under the `exact`/keyskip1 relation (R27-S2) is PARKED at 44.14 % (1,895,728,884 / 2³²) with one unresolved
+space under the `exact`/keyskip1 relation (R27-S2) is PARKED at 44.14 % (1,895,728,884 / 2³²; R35-P1: resume still blocked, the Welsh corpus behind the engine's panel gate is unrecoverable) with one unresolved
 flag (seed 35563892), and the R28-L4 25-cell generator queue has ZERO coverage; "coverage 1.00" is a per-relation
 figure, not closure of the Py2.7-MT space [X1/R32 restatement]; R24/R26 semantic-seed zoo 323/323
 incl. 3301 / 0x7A35090F / page hashes / primes / totients; R19-L2 confirmed the standing null
@@ -1098,6 +1098,29 @@ Seven lanes + a Vercel sandbox; write-up `analysis/round34/SYNTHESIS.md`; rows `
 - **R34-X1** R33-I2 "earned" relations STRUCK; capsule INTACT-FAIL settled; GS band applied.
 
 Do NOT re-run any R34 lane as-is. Round 35: skip-tolerant screen → orbit re-screen; restore the R19 panel → S2 window.
+
+> **R35-X1 correction to R34-B1 (2026-10-30, `analysis/round35/X1-redteam/RESULTS.md`):** the PHP prior-dense tier is **not**
+> "decoded with no prefilter / reach ≈1.00" — only its 487 core seeds are unfiltered; 47,549 dense seeds went through pf_v3
+> (reach ≈0.65–0.71 there too). The 38,223 s gap: 2,621,440 seeds is reached **at** t=38,223 s (1,966,080 at t=110 s); the
+> laptop slept and consumed the 2,100 s cap, so the 0.061 % is a sleep artefact (the cap alone would have reached ≈1 %).
+> `sweep_rows.jsonl` holds **PHP rows only** (26,050): the resumed invocation truncated the store, so the 324,798 bash
+> decodes are not persisted (summary/log only). Verdict (NEGATIVE, bounded) and the 12-cell table stand.
+
+## Round 35 — THE SKIP-TOLERANT SCREEN, THE RESTORED INPUTS (2026-10-30; PARTIAL: B1 and I3 not yet filed)
+
+Rows `R35-*` in `LEDGER.json` (I1, P1, S1, B2, X1 filed after refute-by-default audit; B1 and I3 were still running at audit time).
+- **R35-I1** `pf_v4` skip-tolerant head screen (Viterbi over advance 1/2, ≤2 skips, nine-register lse): at the frozen point
+  (m=24, k=2, keyskip1∪keyskip2, FPR 1e-3) held-out **natural-rate** power is EN_NOVOWEL 0.98 / worst other 0.948 (pf_v3:
+  0.65–0.78), at **10.9× pf_v3's cost** (the ≤3× target is not met). X1 re-ran two cells independently: same power.
+- **R35-P1** Round 19 panel **NOT rebuilt (NO-MATCH, Q5 stop).** `data/kjv.txt` and `data/keys/mabinogion.txt` are now the
+  byte-exact originals (sha 0f1a83cb… / 80dc6f0d…; `data/fetch_sources.py --r19`); the **Welsh CY corpus (4b3fd926…, 524,561 B)
+  is unrecoverable** (six archive.org candidates tried, none match). Round 32 substitutes are kept in `analysis/round35/P1-restore-r19-panel/backup/`.
+- **R35-S1 skipped with cause (never-run):** P1 NO-MATCH. **S2 was NOT resumed** — still PARKED at 44.14 %; resume stays blocked
+  on the panel (14a23d36…), i.e. on the Welsh corpus or a governance decision to re-gate on a new, recorded panel.
+- **R35-B2** R30-B1 / R30-B2 T2, folly and 2.jpg legs measured with fetched inputs (T2/2.jpg identity is statistical/structural
+  only — no full hash was ever recorded): comparator reproduces the stored results, promoted canon changes nothing.
+- **R35-X1** FOUND-ERROR on R34-B1 (above) and on P1 (data/ files replaced contrary to its RESULTS; `fetch_sources.py` had no
+  KJV/Mabinogion fetch and its Welsh recipe had been altered — both fixed); NO-ERROR-FOUND on I1 and B2.
 
 ## Round 33 — THE REGISTER-AWARE BEAM (2026-10-29)
 

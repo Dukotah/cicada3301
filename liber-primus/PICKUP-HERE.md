@@ -2,6 +2,15 @@
 
 _Refreshed **2026-10-30** (Round 34 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
 
+> ## Round 35 (2026-10-30) — PARTIAL (I1, P1, B2, X1 filed; B1 bash re-screen and I3 D5c were still running). Read `analysis/round35/X1-redteam/RESULTS.md`.
+>
+> **I1:** `pf_v4` skip-tolerant head screen meets the bar at (m=24, k=2, keyskip1∪keyskip2, FPR 1e-3): natural-rate power EN_NOVOWEL 0.98 / worst
+> other 0.948, at 10.9× pf_v3's cost (≤3× target missed). **P1: the Round 19 panel was NOT rebuilt** — KJV and Mabinogion are back byte-exact
+> (`data/fetch_sources.py --r19`), the **Welsh corpus (4b3fd926…, 524,561 B) is unrecoverable**. **S1 was skipped with cause; S2 was NOT resumed** (parked
+> 44.14 %; blocked on the panel gate, i.e. on the Welsh file or a governance decision to re-gate on a new recorded panel). **B2:** R30 T2/folly/2.jpg legs
+> measured, no change (T2/2.jpg identity statistical/structural only). **X1 corrections:** R34-B1's PHP dense tier was prefiltered (reach ≈0.65–0.71, not ≈1.0);
+> its store holds PHP rows only; the 38,223 s gap is a sleep that consumed the cap (the 0.061 % is an artefact).
+
 > ## Round 34 (2026-10-29/30) — CLOSE THE LOOP: shipped. Read `analysis/round34/SYNTHESIS.md` first.
 >
 > No survivor. **B1** screened the FULL bash 4.2 `$RANDOM` auto-seed orbit (both ABIs, 77.6 M seeds each) with a

@@ -1,0 +1,31 @@
+{
+ "lane": "round35/X1",
+ "date": "2026-10-30",
+ "entries": [
+  {
+   "id": "R35-X1-REDTEAM",
+   "lane": "round35/X1",
+   "round": 35,
+   "date": "2026-10-30",
+   "status": "audit",
+   "hypothesis": "Round 34 B1 (as written by the coordinator), R35 I1/P1/B2 and the lanes' pre-registration discipline contain errors that survive refute-by-default review.",
+   "result": "FOUND-ERROR: R34-B1 x5 (PHP dense tier is prefiltered; 38,223 s gap misread; bash rows missing from the store; stale header fields; timing); P1 x2 (data/ files replaced contrary to RESULTS; fetch_sources.py had no KJV/Mabinogion fetch and its Welsh recipe was altered; both fixed). NO-ERROR-FOUND on I1 numerics and harness (natural-rate, re-run within 2 SE, k=0 identity exact, fresh FPR 7.8-8.7e-4), on B2 (identity caveat present; comparator numbers reproduce), on PREREG-before-output for I1/P1/B2/I3. B1-bash-orbit-pfv4 and I3 RESULTS not available at audit time (B1 directory absent; I3 mid-run).",
+   "coverage": "see round35/X1-redteam/RESULTS.md",
+   "not_covered": [
+    "round35 B1 (not yet available at audit time)",
+    "round35 I3 RESULTS (running)",
+    "re-download of the six archive.org Welsh candidates",
+    "pf_v4 FPR on ciphertext heads other than the real C[:24]"
+   ],
+   "threshold": "n/a - audit (no null, no threshold)",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "n/a - audit; recomputations reproduce lane numbers where stated",
+   "evidence": [
+    "liber-primus/analysis/round35/X1-redteam/RESULTS.md",
+    "liber-primus/analysis/round35/X1-redteam/rerun_i1.json",
+    "liber-primus/analysis/round35/X1-redteam/rerun_b1_r34.json"
+   ],
+   "reopens_if": "A corrected claim is re-asserted without new evidence."
+  }
+ ]
+}

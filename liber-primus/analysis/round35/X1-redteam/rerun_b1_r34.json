@@ -1,0 +1,209 @@
+{
+ "cells": {
+  "bash4.2|keyskip1": {
+   "N": 81414,
+   "best": 6.674,
+   "seed": 1394038718,
+   "reg": "DE",
+   "bar120_actual": 8.284,
+   "bar120_decl": 9.235,
+   "clears": false
+  },
+  "bash4.2|keyskip2": {
+   "N": 81414,
+   "best": 7.068,
+   "seed": 1354603465,
+   "reg": "LP1_REAL",
+   "bar120_actual": 8.118,
+   "bar120_decl": 9.034,
+   "clears": false
+  },
+  "bash4.2_i32|keyskip1": {
+   "N": 80985,
+   "best": 6.679,
+   "seed": 1375265595,
+   "reg": "EN_HALFVOWEL",
+   "bar120_actual": 8.282,
+   "bar120_decl": 9.235,
+   "clears": false
+  },
+  "bash4.2_i32|keyskip2": {
+   "N": 80985,
+   "best": 6.762,
+   "seed": 1354603465,
+   "reg": "LP1_REAL",
+   "bar120_actual": 8.116,
+   "bar120_decl": 9.034,
+   "clears": false
+  },
+  "mt_scale|keyskip1": {
+   "N": 3190,
+   "best": 5.521,
+   "seed": 2519349145,
+   "reg": "DE",
+   "bar120_actual": 7.055,
+   "bar120_decl": 9.235,
+   "clears": false
+  },
+  "mt_scale|keyskip2": {
+   "N": 3190,
+   "best": 5.911,
+   "seed": 603089414,
+   "reg": "EN_KJV",
+   "bar120_actual": 6.936,
+   "bar120_decl": 9.034,
+   "clears": false
+  },
+  "mt_mod|keyskip1": {
+   "N": 3297,
+   "best": 5.806,
+   "seed": 1026419850,
+   "reg": "LATIN",
+   "bar120_actual": 7.068,
+   "bar120_decl": 9.235,
+   "clears": false
+  },
+  "mt_mod|keyskip2": {
+   "N": 3297,
+   "best": 5.918,
+   "seed": 784279659,
+   "reg": "LP1_REAL",
+   "bar120_actual": 6.948,
+   "bar120_decl": 9.034,
+   "clears": false
+  },
+  "php_scale|keyskip1": {
+   "N": 3293,
+   "best": 5.826,
+   "seed": 2459008296,
+   "reg": "EN_NOVOWEL",
+   "bar120_actual": 7.067,
+   "bar120_decl": 9.235,
+   "clears": false
+  },
+  "php_scale|keyskip2": {
+   "N": 3293,
+   "best": 5.779,
+   "seed": 4188522223,
+   "reg": "EN_KJV",
+   "bar120_actual": 6.948,
+   "bar120_decl": 9.034,
+   "clears": false
+  },
+  "php_mod|keyskip1": {
+   "N": 3245,
+   "best": 6.216,
+   "seed": 3921430680,
+   "reg": "DE",
+   "bar120_actual": 7.062,
+   "bar120_decl": 9.235,
+   "clears": false
+  },
+  "php_mod|keyskip2": {
+   "N": 3245,
+   "best": 5.454,
+   "seed": 1213528315,
+   "reg": "EN_MODERN",
+   "bar120_actual": 6.943,
+   "bar120_decl": 9.034,
+   "clears": false
+  }
+ },
+ "phase": {
+  "bash4.2": {
+   "chunks_total": 296,
+   "chunks_done": 296,
+   "cap_s": 3600,
+   "elapsed_s": 933.7,
+   "fraction_of_orbit": 1.0,
+   "complete": true
+  },
+  "bash4.2_i32": {
+   "chunks_total": 296,
+   "chunks_done": 296,
+   "cap_s": 1500,
+   "elapsed_s": 911.1,
+   "fraction_of_orbit": 1.0,
+   "complete": true
+  },
+  "php": {
+   "cap_s": 2100,
+   "tier_a_core": 487,
+   "tier_a_dense": 47549,
+   "tier_b_seeds": 2621440,
+   "tier_a_done_s": 20.8,
+   "elapsed_s": 38223.2,
+   "tier_b_fraction_of_2p32": 0.0006103515625
+  }
+ },
+ "chunk_arith": {
+  "2^18": 262144,
+  "296*2^18": 77594624,
+  "74*2^20": 77594624
+ },
+ "log_progress_lines": {
+  "bash4.2": 74,
+  "bash4.2_i32": 74
+ },
+ "log_last": {
+  "bash4.2": [
+   "296",
+   "934"
+  ],
+  "bash4.2_i32": [
+   "296",
+   "911"
+  ]
+ },
+ "sweep_php_log": [
+  "php tier a done 21s",
+  "php b seeds=655360 t=49s",
+  "php b seeds=1310720 t=80s",
+  "php b seeds=1966080 t=110s",
+  "php b seeds=2621440 t=38223s",
+  "SWEEP DONE",
+  ""
+ ],
+ "php_seeds_per_cell": {
+  "bash4.2": 77594624,
+  "bash4.2_i32": 77594624,
+  "mt_scale": 2669476,
+  "mt_mod": 2669476,
+  "php_scale": 2669476,
+  "php_mod": 2669476
+ },
+ "php_tier_a_core_unfiltered": 487,
+ "php_tier_a_dense_prefiltered": 47549,
+ "tier_b_fraction": 0.0006103515625,
+ "store_rows": 26050,
+ "store_rows_by_cell": {
+  "php:mt_scale": 6380,
+  "php:mt_mod": 6594,
+  "php:php_scale": 6586,
+  "php:php_mod": 6490
+ },
+ "bash_decodes_expected_unstored": 324798,
+ "store_header_flags": {
+  "key_space_says_ILP32_stated_fraction": true,
+  "power_EN_NOVOWEL": 0.998
+ },
+ "reach": {
+  "pf_v3_operative": [
+   0.66,
+   0.71
+  ],
+  "v3_recovery": [
+   0.98,
+   1.0
+  ],
+  "NOVOWEL": [
+   0.647,
+   0.66
+  ],
+  "MODERN": [
+   0.696,
+   0.71
+  ]
+ },
+ "gap_reading": "2,621,440 seeds is logged AT t=38223 s; the last pre-sleep line is 1,966,080 at t=110 s; rate ~17.9k seeds/s -> cap 2100 s alone would reach ~1.07% of 2^32"
+}
