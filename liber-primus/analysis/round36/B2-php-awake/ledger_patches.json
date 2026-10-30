@@ -1,13 +1,14 @@
 {
- "$comment": "R36 B2 extends R32-B2 and R34-B1 (not applied by lane)",
- "patches": [
-  {
-   "id": "R32-B2-PHP-MTRAND",
-   "coverage_add": "R36-B2: four PHP mt_rand cells re-run awake under pf_v4 + v3; tier a 48,036 seeds (9,767 decoded unfiltered, 38,269 via pf_v4), tier b 0.607 % of 2^32 per cell (26.08 M seeds); 0 flagged, best 6.608 vs bar 7.941. See R36-B2-PHP-AWAKE-PFV4."
-  },
-  {
-   "id": "R34-B1-ORBITS-V3-PFV3",
-   "coverage_add": "R36-B2 supersedes the PHP tiers: R34 tier-b 0.061 % and the lost rows (R35 X1 1b/1c) are replaced by 0.607 % per cell with 263,906 persisted, validated rows; tier a no longer prefilter-only; natural-rate control (160 plants, skip split). The deferred uniform fraction (99.39 %) remains not_covered."
-  }
- ]
+  "$comment": "R36 B2 extends R32-B2 and R34-B1 (not applied by lane)",
+  "patches": [
+    {
+      "id": "R32-B2-PHP-MTRAND",
+      "coverage_add": "R36-B2: four PHP mt_rand cells re-run awake under pf_v4 + v3; tier a 48,036 seeds (9,767 decoded unfiltered, 38,269 via pf_v4), tier b 0.607 % of 2^32 per cell (26.08 M seeds); 0 flagged, best 6.608 vs bar 7.941. See R36-B2-PHP-AWAKE-PFV4."
+    },
+    {
+      "id": "R34-B1-ORBITS-V3-PFV3",
+      "coverage_add": "R36-B2 supersedes the PHP tiers: R34 tier-b 0.061 % and the lost rows (R35 X1 1b/1c) are replaced by 0.607 % per cell with 263,906 persisted, validated rows; tier a no longer prefilter-only; natural-rate control (160 plants, skip split). The deferred uniform fraction (99.39 %) remains not_covered."
+    }
+  ],
+  "$superseded": "SUPERSEDED (R36 X1): target id was R32-B2-PHP-MTRAND (nonexistent; real id R32-B2-PHP-MT-RAND); tier (b) is NOT new seed coverage \u2014 R32-B2, R34-B1 and R36-B2 draw the same default_rng(3301) stream (R36 = first 199 of R32's 318 blocks); what R36 adds is pf_v4 screen power on those seeds and 263,906 persisted rows. Applied in corrected form by X1 directly to LEDGER.json."
 }

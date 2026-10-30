@@ -2,7 +2,20 @@
 
 _Refreshed **2026-10-30** (Round 35 closeout; R36 audit corrections applied same day: bounded-not-closed wording, reopen list, ledger count 209). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
 
-> ## Round 35 (2026-10-30) — THE SKIP-TOLERANT SCREEN: shipped. Read `analysis/round35/SYNTHESIS.md` first.
+> ## Round 36 (2026-10-30) — THE 12-REGISTER PANEL, THE RE-GATE, AND THE CLUE AUDIT: filed (B1 still sweeping at X1's audit). Read `analysis/round36/X1-redteam/RESULTS.md` first.
+>
+> No survivor, no crosser. **I1** Greek/Hebrew/Norse registers pass the power gate (1.000 at L=120/240) and no existing register loses power.
+> **P1** panel-R36 (12 registers, built from disk, 53 hashed inputs, byte-reproducible under three hash seeds, sha `a0682f0c…`) is the recorded S2 gate;
+> the Round 19 gate is retired (`P1-panel-r36/GATE-CHANGE.md`: S2 rows after it are a NEW measurement). **S1** engine self-test 64/64 exact, then one 35-min sandbox
+> window: **+54,967,546 seeds, 0 crossers, best 7.1256** — but the 45.418 % cursor coverage is MIXED-instrument (44.138 % Round 19-gated + **1.28 % panel-R36**).
+> **B2** the four PHP cells re-run awake with rows persisted: 0 flagged, best 6.608 vs 7.941; its tier-b seeds are the first 199 blocks of the SAME
+> `default_rng(3301)` stream R32-B2 already drew 318 blocks from (no new key space, higher screen power). **I2** pf_v4 power ≥0.94 on ILP32/PHP. **I3** the two-margin D5c rule
+> FAILS at L=150 (SEAL_PASS=false; pause seal work). **O3** the recurring near-miss (bash 4.2 seed 1354603465, 7.068) is the order statistic of the sweep (NOISE; held-out windows at null level).
+> **O2** no alternate-format source found (Wayback leg unsearched). **O4** clue-coverage matrix: 68 NEVER cells of 140 applicable (X1: ≥2 misclassified), 53 English-only/legacy; top untried readings in `O4-clue-coverage/untried.md`.
+> **X1** found hash-seed-dependent Hebrew mapping in I1, the mixed-instrument S1 wording, B2's wrong patch id and shared seed stream, two O4 cells.
+> **Next (Round 37):** see `analysis/round36/X1-redteam/RESULTS.md` section 7 (U1–U3 composed clue readings; re-score the R10/R11/R22-C streams under the 12-panel; S2 windows; PHP remainder; deferred tooling fixes).
+>
+> ## ~~Round 35~~ (2026-10-30) — THE SKIP-TOLERANT SCREEN: shipped (the "Next:" at its end is superseded by Round 36 above). Read `analysis/round35/SYNTHESIS.md` first.
 >
 > No survivor. **I1** `pf_v4` (Viterbi over ≤2 key skips in the first 24 runes, nine-register lse) lifts natural-rate
 > head-screen power to **0.95–0.99 in every register** (EN_NOVOWEL 0.98; pf_v3-equivalent was 0.65–0.78), FPR 8.4e-4,
@@ -61,7 +74,7 @@ _Refreshed **2026-10-30** (Round 35 closeout; R36 audit corrections applied same
 
 > ## Round 32 (2026-10-28) — INSTRUMENT & RED-TEAM armada: shipped. Read `analysis/round32/SYNTHESIS.md` first.
 >
-> Eight lanes, all with passing positive controls, all filed in `LEDGER.json` (209 rows as of the R36 audit, 2026-10-30; was 181 when written; 0 errors).
+> Eight lanes, all with passing positive controls, all filed in `LEDGER.json` (219 rows as of the R36 X1 merge, 2026-10-30; was 181 when written; 0 errors).
 > No survivor. What changed is the **instrument**, not the board:
 > - **I1** the three-relation decoder already existed (`round19/I1/driftbeam.py`); it now has a measured power
 >   envelope — planted `skip_by_two` recovers 1.00 under `advance=2` (legacy relation: 0.30). **Vowel-dropped
@@ -278,7 +291,7 @@ where to spend effort (rather than picking up this project's own threads), read
 [`handoff/SOLVER-STRATEGY-2026.md`](handoff/SOLVER-STRATEGY-2026.md). Trust anchor:
 `python liber-primus/tests/validate.py` → `ALL VALIDATIONS PASSED` (5/5), passing through
 Round 25 and re-verified 2026-08-31 (`pytest -m "not network"` 85 passed).
-`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **209 entries** (R36 audit count; was 162 when this line was written)
+`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **219 entries** (R36 X1-merge count; was 162 when this line was written)
 (R22-A/B/C/D/R, R23-A2, R24 ×5, R25 merged, the ten Round-20 lanes filed 2026-08-31, Round 26 ×4
 [R26-A/B partially-run, R26-C negative, R26-D audit], **R27-CPORT-MT32-FULLSWEEP [in-flight]**
 — S1 complete with a measured-exhaustion NULL, S2 still sweeping — and the Round-28 interim

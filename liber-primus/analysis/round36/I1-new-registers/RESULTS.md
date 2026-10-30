@@ -58,3 +58,12 @@ The shuffled and real-LP2 nulls agree, each new register wins the argmax 7-10% o
 
 ## Conditionals (Doctrine Q4)
 1. Key space: none swept (instrument lane). 2. Decoder transition model: Round 32 keyskip beam (400,3) with the CORRECT key handed over; other relations are not measured here. 3. Adjudicator register: 12 registers, the new three only as written by the stated romanisations; unpointed Hebrew, other Greek/Norse conventions, other scripts and non-trigram-detectable text remain uncovered. L=400 not run; 24 replicates; plants are same-register held-out text, not independent authors.
+
+## Correction (Round 36 X1, applied by the coordinator 2026-10-30)
+
+The "fully deterministic" claim above and in `mappings.md` is WRONG as written: `mappings_r36.py` (lines ~88, 98, 102)
+iterates Python sets of combining marks, so the Hebrew stream differs under different `PYTHONHASHSEED` values (three
+seeds → three different sha256 prefixes on all seven files). This lane's own `models/panel12.npz` (sha ea8ef0fd…) is
+therefore not run-to-run reproducible. The reproducible panel of record is P1's `panel-R36` (`build_r36.py` sorts the
+mark set; byte-identical under seeds 1, 2 and 7). Nothing in the gate numbers changes: X1 re-ran GREEK and NORSE on
+panel-R36 (8/8 lane plants reproduce z-for-z; 8/8 fresh plants clear, own register argmax 8/8).

@@ -1,0 +1,68 @@
+==========================================================================
+LIBER PRIMUS LP2 — SOLUTION ORACLE (register-aware)
+==========================================================================
+
+[0] problem identity
+    runes            : 12,956  (expected 12,956)
+    sha256(indices)  : 023312066df471005264b9cbe7997cb77d2a9a6a2dc9b3316d22674023af1585
+    -> canonical. This is the same problem the repo's results describe.
+
+[1] trust anchor (re-derive the five known-decoded pages)
+    -> PASS
+
+[2] candidate key: 13,000 symbols (sha256 6be3d0751463be3d...)
+
+[3] instruments
+    panel: panel-R36, 12 registers, sha256 a0682f0c...
+
+[4] decoding 6 pages (first <= 240 runes each) under keyskip1, keyskip2 and free
+    beam_v3 panel_max, sign -1, key offset 0 per page; score = panel pmax
+    (free is decoded on the first 120 runes only: it has an observed null at L=120 only)
+    page  0  keyskip1 L=240  pmax    2.03 [LP1_REAL]  bar   4.64
+    page  0  keyskip2 L=240  pmax    4.10 [LATIN]  bar   4.56
+    page  0  free     L=120  pmax    6.33 [DE]  bar   8.19
+    page  1  keyskip1 L=240  pmax    2.89 [OE]  bar   4.64
+    page  1  keyskip2 L=240  pmax    3.82 [OE]  bar   4.56
+    page  1  free     L=120  pmax    5.25 [DE]  bar   8.19
+    page  2  keyskip1 L=201  pmax    2.55 [EN_NOVOWEL]  bar   4.48
+    page  2  keyskip2 L=201  pmax    2.08 [DE]  bar   4.41
+    page  2  free     L=120  pmax    8.56 [NORSE]  bar   8.19  <-- clears bar
+    page  3  keyskip1 L=217  pmax    2.48 [DE]  bar   4.55
+    page  3  keyskip2 L=217  pmax    4.60 [LATIN]  bar   4.48  <-- clears bar
+    page  3  free     L=120  pmax    6.20 [LATIN]  bar   8.19
+    page  4  keyskip1 L=240  pmax    2.55 [NORSE]  bar   4.64
+    page  4  keyskip2 L=240  pmax    2.97 [OE]  bar   4.56
+    page  4  free     L=120  pmax    5.09 [OE]  bar   8.19
+    page  5  keyskip1 L=240  pmax    2.02 [NORSE]  bar   4.64
+    page  5  keyskip2 L=240  pmax    2.83 [NORSE]  bar   4.56
+    page  5  free     L=120  pmax    7.26 [LP1_REAL]  bar   8.19
+
+[5] bar: bars_v3.bar_v3(N=1, L, relation, alpha=0.01, family='lp2')
+    N=1: this is the bar for ONE submitted key fixed in advance. If you swept many keys,
+    the bar for your sweep's N is higher; this oracle does not know your N.
+    Three relations are tried, so the family-wise alpha is up to ~0.03.
+    CAVEAT: `free` has no observed bar above L=120; it is decoded at L=120 only.
+
+[6] criteria (pre-committed; see PROBLEM.json)
+    keyskip1: 0/6 pages clear the bar (need >= 2)  best margin -1.75 on page 1 (argmax OE)
+    keyskip2: 1/6 pages clear the bar (need >= 2)  best margin +0.12 on page 3 (argmax LATIN)
+    free    : 1/6 pages clear the bar (need >= 2)  best margin +0.37 on page 2 (argmax NORSE)
+
+    LEGACY (informational only, English-only band, NOT used in the verdict): best rigid/beam score -7.184 on page 0  (< -5.5)
+
+==========================================================================
+VERDICT: FAIL
+==========================================================================
+Closest: relation free, page 2, pmax 8.56 [NORSE] vs bar 8.19 (margin +0.37); a PASS needs >= 2 pages clearing the bar under ONE relation.
+
+This FAIL was tested under exactly three conditionals:
+  1. relation in {keyskip1, keyskip2, free} (key advance 1 / 2 / free; free at L=120 only)
+  2. registers = the 12-register panel: EN_MODERN, EN_KJV, LP1_REAL, LATIN, OE, DE, CY, EN_HALFVOWEL, EN_NOVOWEL, GREEK, HEBREW, NORSE
+  3. the key applied as given, restarting at each page (o=0), sign -1, one key (N=1)
+L7 caveat: NEGATIVE UNDER THESE REGISTERS/RELATIONS ONLY. A plaintext in a language or
+construction outside the panel, a different key offset/sign, or a key needing a
+different rejection rule is NOT detected, and 'close' is the trap: do not tune to the bar.
+Before reading anything into it, prove the instrument can recover a plant:
+  python3 verify_solution.py --selftest
+
+wrote analysis/round36/X1-redteam/rerun_verify_rk12.json

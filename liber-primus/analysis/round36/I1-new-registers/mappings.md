@@ -1,5 +1,7 @@
 # Round 36 / I1 — alphabet mappings (the mapping IS the register)
 
+> **SUPERSEDED (R36 X1):** the mapping code iterates Python sets (hash-seed-dependent order in the Hebrew mapper); see RESULTS.md "Correction". The documented letter rules below are the intended, deterministic mapping; P1's build_r36.py implements them deterministically.
+
 All three are two-step and fully deterministic: (1) a corpus-specific romanisation to uppercase ASCII
 (`mappings_r36.py`, function names below), then (2) the **unchanged** Round 32 step `detectors.text_to_runes(s, "EN")`:
 fold K,Q->C, V->U, Z->S; every non-A-Z char is a word break (digraphs never straddle a break); then greedy

@@ -28,7 +28,7 @@ produced by a soft anti-repeat rewrite that reveals nothing about which branch i
 statistically inseparable from a true pad, max |z| = 1.60). No clever cryptanalysis moves this;
 only two things can — an **external key/page surfacing**, or **brute-forcing the finite
 derived-key branch to exhaustion**. As of 2026-08-31 the verdict is **hardened, not overturned**,
-across **36 rounds**, on the order of **10^10 logged decodes**, and **209 ledger entries** (live count, R36 audit; was 142 when written)
+across **36 rounds**, on the order of **10^10 logged decodes**, and **219 ledger entries** (live count, R36 X1 merge; was 142 when written)
 (`LEDGER.json`). The prior mass sits on "external or unseeded pad, no recoverable key." Read this
 document as a map of the two doors that remain and which modern tooling opens them.
 

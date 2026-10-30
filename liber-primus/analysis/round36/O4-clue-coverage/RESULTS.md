@@ -30,3 +30,10 @@ Everything above is a bound on what has and has not been run, not a verdict on a
 3. U4 requires a decision to add a prime-sum clause to hitfn20; it is language-free but only partly supported by LP1 (A WARNING 9/9, WELCOME 3/5).
 4. Applicability judgments (build_matrix.py ROWS) are mine; the NEVER count moves with them.
 Files: clues.json, readings.json, matrix.md, untried.md, counts.json, ledger.json, PREREG.md, build_data.py, build_matrix.py.
+
+## Correction (Round 36 X1, applied by the coordinator 2026-10-30)
+
+Cells H7×F2 and H12×F2 (the P.S. digit string and `@1231507051321` as numeric keys) were marked NEVER but were run
+as numeric keys in R10b B1 (`b1_keys.py:138`) and skip-aware in campaign18 `numeric2_skip.py:170-205` — both
+English-only / legacy-beam, so they belong in TRIED-ENGLISH-ONLY / TRIED-LEGACY-BEAM. Corrected counts: NEVER 66
+(was 68); English-only/legacy cells 55 (was 53). The top-8 list is unaffected (neither cell was in it).

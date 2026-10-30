@@ -279,7 +279,7 @@ transcription, and since its two supposedly-independent public lineages share a 
 root, this retro-validates a decade of negatives that had been resting on an unaudited input.
 It is the quietest result in the repository and arguably the most load-bearing.
 
-**The elimination map.** 209 ledger entries, each carrying its pre-registered threshold, its
+**The elimination map.** 219 ledger entries, each carrying its pre-registered threshold, its
 positive-control status, its honest coverage bound, and the concrete condition that would
 reopen it. Unsound negatives — entries claiming a negative whose instrument was never shown
 able to detect a planted signal — **0**.
@@ -440,7 +440,7 @@ method. License MIT; see [`PROVENANCE.md`](PROVENANCE.md).
 | Ghostscript/ICC toolchain bound (§8) | `liber-primus/analysis/round30/SYNTHESIS.md` |
 | Ornament-band nine-register read (§8) | `liber-primus/analysis/round19/finite/RESULTS.md` |
 | Independent re-transcription, indel bound (§8, §12) | `liber-primus/analysis/round19/T2/RESULTS.md`, ledger `A-01` + `T2-INDEL` |
-| All 209 entries with thresholds and coverage | `liber-primus/LEDGER.json` |
+| All 219 entries with thresholds and coverage | `liber-primus/LEDGER.json` |
 | The research discipline (§10) | `liber-primus/ARMADA-DOCTRINE.md` |
 | Parked sweeps and real coverage (§12) | `liber-primus/handoff/PARKED-SWEEPS.md` |
 | Capability-blocked work with unpark thresholds (§12) | `liber-primus/handoff/PARKED.md` |

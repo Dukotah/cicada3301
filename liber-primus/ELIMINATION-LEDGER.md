@@ -1135,6 +1135,16 @@ Do NOT re-run any R34 lane as-is. Round 35: skip-tolerant screen → orbit re-sc
 > `sweep_rows.jsonl` holds **PHP rows only** (26,050): the resumed invocation truncated the store, so the 324,798 bash
 > decodes are not persisted (summary/log only). Verdict (NEGATIVE, bounded) and the 12-cell table stand.
 
+## Round 36 — THE 12-REGISTER PANEL AND THE RE-GATE (2026-10-30)
+
+Rows `R36-*` in `LEDGER.json` (I1, I2, I3, P1, S1, B2, O2, O3, O4, X1 filed after refute-by-default audit; B1 was still sweeping at audit time). Full write-up `analysis/round36/X1-redteam/RESULTS.md`.
+- **R36-I1** Greek (Nestle 1904), Hebrew (WLC, pointed) and Norse (heimskringla) registers: power 1.000 at L=120/240; nine existing registers unmoved. **X1:** the Hebrew mapper iterates python sets, so I1's own `panel12.npz` is hash-seed dependent (superseded by panel-R36).
+- **R36-P1** panel-R36 (`panel12.npz` a0682f0c…, 12 registers, 53 hashed inputs, byte-identical under PYTHONHASHSEED 1, 2 and X1's 7) replaces the unrebuildable Round 19 gate; GATE-CHANGE.md records S2 after the change as a NEW measurement. CY remains the modern-Welsh substitute.
+- **R36-S1** C engine self-test V1 64/64, V2 17.931158509762; S2 window +54,967,546 seeds (**1.28 % panel-R36**; the 44.138 % before it stays Round 19-gated, so the 45.418 % cursor figure is mixed-instrument), 0 claim-bar crossers, best 7.1256. Live `run/` untouched; state_after resumable; window lists only in sandbox snapshot (expires ~2026-11-06).
+- **R36-B2** PHP mt_rand 4 cells awake, pf_v4 + v3, 263,906 rows persisted: 0 flagged (best 6.608 vs 7.941). Tier b (0.6073 %/cell) is a SUBSET of R32-B2's draw (same `default_rng(3301)` stream); **not** new seed coverage. **R36-I2** pf_v4 power ≥0.94 on ILP32/PHP, FPR 6.6e-4–9.6e-4. **R36-I3** two-margin D5c rule FAILS at L=150: SEAL_PASS=false.
+- **R36-O3** the recurring near-miss seed 1354603465 (7.068) is NOISE (family-wise P≈0.20; held-out windows 1.73 vs null median 2.19; plants read verbatim). `free` relation needs an L-matched null before it can be evidence. **R36-O2** no source artifact found (partially-run; Wayback unsearched). **R36-O4** clue x reading-family audit: 68 NEVER of 140 applicable cells (X1: ≥2 misclassified); 53 English-only/legacy cells.
+- **R36-X1** FOUND-ERROR (minor): I1 reproducibility claim, P1 build_twice records no seeds and 5 unresolvable Norse paths, S1 mixed-instrument coverage, B2 patch id + shared stream, O4 H7/H12 x F2. NO-ERROR-FOUND elsewhere (see RESULTS).
+
 ## Round 35 — THE SKIP-TOLERANT SCREEN (2026-10-30)
 
 Rows `R35-*` in `LEDGER.json` (I1, P1, S1, B2, X1 filed after refute-by-default audit; B1 and I3 were still running at audit time).
