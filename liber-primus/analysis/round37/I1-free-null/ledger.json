@@ -1,0 +1,18 @@
+{
+ "lane": "round37/I1-free-null",
+ "date": "2026-10-30",
+ "status": "measured",
+ "positive_control": "failed",
+ "positive_control_detail": "free, panel-R36, N=1e6 Gumbel bars 20.59/21.67/24.86 at L=240/400/729. L=240 (20 plants x 12 registers): 20/20 for EN_MODERN, EN_KJV, LP1_REAL, LATIN, DE, EN_NOVOWEL, GREEK, HEBREW, NORSE; CY 19/20; FAIL OE 3/20, EN_HALFVOWEL 7/20. L=400 5/5 and L=729 3/3 all registers (n<20: indicative only, no formal pass). All plants clear the GPD sensitivity bar (not of record).",
+ "free_usable": {"L240": ["EN_MODERN", "EN_KJV", "LP1_REAL", "LATIN", "DE", "CY", "EN_NOVOWEL", "GREEK", "HEBREW", "NORSE"], "L240_not": ["OE", "EN_HALFVOWEL"], "L400": "indicative_only_n5", "L729": "indicative_only_n3"},
+ "panel": "panel-r36 (12 registers) beam and pmax",
+ "decoder": "beam_v3 free panel_max beam_w400 lam_u4",
+ "draws": {"L120": 701, "L240": 1335, "L400": 726, "L729": 562},
+ "draw_target_2000_met": false,
+ "fit": {"120": {"u": 6.7202, "beta": 0.5328, "mu": 5.49}, "240": {"u": 8.674, "beta": 0.7392, "mu": 6.97}, "400": {"u": 10.663, "beta": 0.6829, "mu": 9.09}, "729": {"u": 13.185, "beta": 0.7242, "mu": 11.53}, "beta_exponent": [0.149, 0.091], "mu_vs_lnL_slope": 3.39},
+ "bars_N1e3_1e5_1e6": {"240": [15.48, 18.89, 20.59], "400": [16.95, 20.10, 21.67], "729": [19.86, 23.20, 24.86]},
+ "o3_cell": {"pmax12_r36": 15.157, "null_max": 15.54, "emp_quantile": 0.9964, "gumbel_p_single": 0.0067, "familywise_p_460": 0.95, "verdict": "NOISE"},
+ "edits_outside_lane": ["analysis/round34/I1-v3-null/bars_v3.py", "analysis/round34/I1-v3-null/RESULTS.md (addendum)"],
+ "deliverables": ["PREREG.md", "run_null_free.py", "finalize_free.py", "o3_rejudge.py", "null_free.json", "fit_free.json", "control_free.json", "o3_cell_rejudged.json", "RESULTS.md", "ledger.json"],
+ "claim": "instrument measurement only; says nothing about any key"
+}

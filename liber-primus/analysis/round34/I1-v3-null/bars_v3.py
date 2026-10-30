@@ -7,7 +7,10 @@ empirical 90th percentile of v3 wrong-key pmax, per (family, relation, L) node; 
 (ln beta ~ ln L), mu(L) = u + beta ln p_u is interpolated linearly in ln L between nodes L=31,120,240,400 (flat outside).
 bar = mu + beta * ln(N / -ln(1-alpha)): P(max over N independent wrong-key decodes >= bar) = alpha.
 `family="lp2"`: shuffled real LP2 stream.  `family="register"`: shuffled held-out EN_NOVOWEL/LATIN/OE/DE pooled.
-`relation` in {"keyskip1","keyskip2"}; "free" exists at L=120 only (nodes from 1000 draws, own beta).
+`relation` in {"keyskip1","keyskip2"}; "free" exists at L=120 (R34, 9-register panel, 1000 draws, own beta) and, added Round 37 I1
+(analysis/round37/I1-free-null, PANEL-R36 = 12 registers, 12-register pmax, free beam_v3 panel_max under panel-R36), at L in {120 (panel="r36"), 240, 400, 729}
+(1335/726/562 draws; L=400 and 729 are below the 2,000 target, SEs in that RESULTS.md).  `bar_v3(N, L, "free")` returns the R34 node at L=120 and the
+R37 panel-R36 node at L in {240,400,729}; pass panel="r36" for the L=120 R37 node.  The free control at L=240 FAILS for OE and EN_HALFVOWEL (see R37 RESULTS).
 method="gpd" gives the lighter-tailed (xi<0) sensitivity bar -- NOT the bar of record (extrapolates a bounded tail).
 Round 34 Q5 fired (beta exponent far from Round 32 I3's -0.55): see RESULTS.md; the Gumbel bar is the conservative one
 (it over-predicts the observed max at the observed N), the empirical quantile exists only up to N~n_draws.
@@ -20,6 +23,8 @@ True
 True
 >>> round(bar_v3(1e5, 120, "free"), 1) > 10
 True
+>>> round(bar_v3(1e6, 729, "free"), 1)
+24.9
 """
 import json, math, os
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -33,13 +38,22 @@ def _fit():
     return _FIT
 
 
-def _params(L, relation, family):
+# Round 37 I1: free relation, panel-R36 (12 registers).  (u, p_u, beta) of the exponential POT fit above the 90th percentile of
+# shuffled-LP2 wrong-key free-decode pmax12; draws 701/1335/726/562.  Source: analysis/round37/I1-free-null/null_free.json.
+_FREE_R36 = {120: (6.7202, 0.09985734664764621, 0.532791), 240: (8.67428, 0.10037453183520599, 0.739248),
+             400: (10.66275, 0.10055096418732783, 0.682892), 729: (13.18524, 0.10142348754448399, 0.724207)}
+
+
+def _params(L, relation, family, panel=None):
     F = _fit()
     if relation == "free":
-        if L != 120:
-            raise ValueError("free relation has a null at L=120 only")
-        n = F["free"]["120"]
-        return n["u"], n["p_u"], n["beta"], n
+        if (L == 120 and panel != "r36"):
+            n = F["free"]["120"]
+            return n["u"], n["p_u"], n["beta"], n
+        if L not in _FREE_R36:
+            raise ValueError("free relation has nulls at L in 120 (R34 9-reg / R37 panel='r36'), 240, 400, 729 only")
+        u, pu, b = _FREE_R36[L]
+        return u, pu, b, {"u": u, "p_u": pu, "beta": b}
     ser = F["series"]["%s|%s" % (family, relation)]
     nodes = sorted((int(k), v) for k, v in ser["nodes"].items())
     beta = lambda l: math.exp(ser["ln_a"] + ser["exponent"] * math.log(l))
@@ -54,7 +68,7 @@ def _params(L, relation, family):
     return mu, None, beta(L), nodes
 
 
-def bar_v3(N, L, relation, alpha=0.01, family="lp2", method="gumbel"):
+def bar_v3(N, L, relation, alpha=0.01, family="lp2", method="gumbel", panel=None):
     if relation not in ("keyskip1", "keyskip2", "free"):
         raise ValueError(relation)
     if family not in ("lp2", "register"):
@@ -63,6 +77,8 @@ def bar_v3(N, L, relation, alpha=0.01, family="lp2", method="gumbel"):
     if method == "gpd":
         F = _fit()
         if relation == "free":
+            if L != 120:
+                raise ValueError("method='gpd' for free exists at L=120 (R34 node) only")
             n = F["free"]["120"]
         else:
             n = None
@@ -73,7 +89,7 @@ def bar_v3(N, L, relation, alpha=0.01, family="lp2", method="gumbel"):
         t = N * n["p_u"] / -math.log1p(-alpha)
         return n["u"] + (sg / xi * (t ** xi - 1) if abs(xi) > 1e-6 else sg * math.log(t))
     if relation == "free":
-        u, pu, beta, n = _params(L, relation, family)
+        u, pu, beta, n = _params(L, relation, family, panel)
         return u + beta * math.log(pu) + beta * math.log(N / -math.log1p(-alpha))
     mu, _, beta, _n = _params(L, relation, family)
     return mu + beta * math.log(N / -math.log1p(-alpha))
