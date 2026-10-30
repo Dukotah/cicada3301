@@ -1,0 +1,5 @@
+{"harness":"unmodified grind27 (self-test PASSes so no neutralised copy needed); GRIND27_S2_CONTROL_OK=1; --threads 6; all on copies of run/",
+ "a_restore":"PASS: resumed S2 from STATUS; hit file [35563892 @7.670723299260088] kept, flagged_survivors [35563892], n_claim_bar_hits 1; all 6 cursors advanced",
+ "a2_rewound_rescan_dedupe":"PASS: w0 cursor rewound to 35563800, claim bar 7.0: (i) hit file pmax planted 1.0 -> list still [35563892@1.0], n=1, not duplicated; (ii) hit file deleted -> re-found at 7.670723299260088 (identical to the Round 19-gated value), n=1",
+ "b_planted_hit":"PASS: planted {123456789, 7.7}; hit file [35563892,123456789], both flagged, n=2",
+ "c_bounded":"PASS: 6 s window, all 6 cursors advanced ~14-24k, exit 'interrupted (checkpointed; re-run to resume)' rc 0"}

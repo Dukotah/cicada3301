@@ -1,0 +1,10 @@
+{"lane":"S1","round":36,"date":"2026-10-30","lane_name":"S2 (exact relation, random29, offset 0)","measurement":"panel-R36 (12 registers)",
+ "sandbox":{"name":"emerald-coming-prawn-hDdhox","session":"sbx_c5XR0NmCP4Olr090pvakDJOeu8AU","vcpus":2,"mem_gb":4,"session_wall_ms":2294994,"active_cpu_ms":4267842,"ingress_bytes":93895711,"egress_bytes":712878,"snapshot":"snap_fWma12lA4k5RXsR6LHPwhV2p0DnN","snapshot_bytes":921935239,"snapshot_expires_unix_ms":1793993590719,"persistent":true},
+ "wall_log_unix_s":{"sandbox_created":1793386495,"build_selftest_tests_done":1793386600,"window_start":1793386609,"window_end":1793388709,"stop":1793388790},
+ "window":{"seconds":2100,"threads":6,"seeds_before":1895728884,"seeds_after":1950696430,"seeds_advanced":54967546,"fraction_before":0.441383776,"fraction_after":0.454181905,"fraction_gain_pp":1.2798,"decode_rate_seeds_per_s":26174.5,"remaining_seeds":2344270866,"est_windows_remaining_same_rate_35min":42.6},
+ "per_worker_cursor_before":[319436286,1031534504,1746718802,2463219964,3177684646,3894552912],
+ "per_worker_cursor_after":[328686333,1040747175,1755896913,2472374267,3186858917,3903551055],
+ "results_panel_R36":{"n_candidates_ge_5.0":6280,"n_claim_bar_hits_ge_7.6342":0,"near_misses_ge_7.5342":0,"best_pmax":7.125634315257355,"best_seed":325254043,"histogram_ge":{"5.5":790,"6.0":79,"6.5":4,"7.0":1,"7.3":0,"7.5342":0},"top1024_range":[5.4407,7.1256]},
+ "resets":"per-worker best_pmax/best_word/n_candidates, HIT-CANDIDATE hits, top-1024 and histogram all reset at window start; the Round19-gated hit 35563892 @7.6707 is kept only in state_before/ (re-scored under panel-R36 in test a2(ii): 7.670723299260088, identical)",
+ "state_after_local":"STATUS.json (sha a8f61e89c09e94b3f13522245aa9cc434f0f6e98b9b2281efbb838a6b849167a, byte-exact) and HIT-CANDIDATE.json (sha b05fd0ba..) only; top_S2.json (fb0c65f1..), hist_S2.u64 (ece87b0d..), candidates.jsonl (4daecdff..) live ONLY in the sandbox snapshot (too large to transfer through the tool channel)",
+ "resume_command":"cd in && GRIND27_S2_CONTROL_OK=1 ./grind27 --data engine.dat --plan sweep_plan.json --threads 6 --run-dir ../run_r36 --seconds N"}
