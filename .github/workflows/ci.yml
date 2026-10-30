@@ -50,7 +50,7 @@ jobs:
         run: pip install numpy pytest
 
       - name: Test suite (validate + attack/lp-try selftests + OTP-flat guard)
-        run: pytest tests/test_rig.py tests/test_validate_ledger_r3.py -q
+        run: pytest tests/test_rig.py tests/test_validate_ledger_r3.py tests/test_12reg_plumbing.py -q
 
       - name: Fetch third-party transcription sources (gitignored)
         run: python data/fetch_sources.py

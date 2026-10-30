@@ -4,7 +4,7 @@ Transition algebra (enumeration of admissible key advances, the 29-bin skipped-w
 max_free / pair rules) is copied from round19/I1/driftbeam.py::beam_decode unchanged.  What changes is what
 ranks the hypotheses in the beam: driftbeam ranks by the English quadgram of the transliteration; v3 ranks by
 
-  design "panel_max"      max_r U_r  (or tau-softmax) over the nine register trigram LMs of the I2 panel
+  design "panel_max"      max_r U_r  (or tau-softmax) over the register trigram LMs of the panel (9 or 12)
   design "register_cond"  7 parallel beams (one per register cluster), merged by panel pmax at the end
   design "agnostic"       negative adaptive order-0/order-1 code length (no language model at all)
 
@@ -29,14 +29,44 @@ import adjudicate as A                          # noqa: E402
 
 N = 29
 ADVANCE = B2.ADVANCE
-PANEL_PATH = os.path.join(R32, "I2-multiregister-readjudication", "models", "panel.npz")
+DEFAULT_PANEL_PATH = os.path.join(R32, "I2-multiregister-readjudication", "models", "panel.npz")
+PANEL_PATH = os.environ.get("BEAM_V3_PANEL") or DEFAULT_PANEL_PATH     # Round 37 T1: env override
 
-CLUSTERS = [("EN", ["EN_MODERN", "EN_KJV", "LP1_REAL"]), ("LATIN", ["LATIN"]), ("OE", ["OE"]),
-            ("DE", ["DE"]), ("CY", ["CY"]), ("EN_HALFVOWEL", ["EN_HALFVOWEL"]),
-            ("EN_NOVOWEL", ["EN_NOVOWEL"])]
+_EN_FAMILY = ("EN_MODERN", "EN_KJV", "LP1_REAL")
+
+
+def derive_clusters(registers):
+    """register_cond clusters from a panel's register list: the EN family (EN_MODERN/EN_KJV/LP1_REAL,
+    whichever are present) is one cluster 'EN'; every other register -- including any unknown one --
+    is its own cluster.  For the nine-register panel this reproduces the old hard-coded 7."""
+    out, en = [], [r for r in registers if r in _EN_FAMILY]
+    if en:
+        out.append(("EN", en))
+    out += [(r, [r]) for r in registers if r not in _EN_FAMILY]
+    return out
+
+
+def _registers_at(path):
+    return [str(x) for x in np.load(path, allow_pickle=False)["registers"]]
+
+
+try:
+    CLUSTERS = derive_clusters(_registers_at(PANEL_PATH))
+except (OSError, KeyError):         # default panel .npz is gitignored/absent in CI: supply via set_panel()
+    CLUSTERS = []
 
 _PAN = None
 _WCACHE = {}
+
+
+def set_panel(path=None):
+    """Point beam_v3 at another panel .npz (None = default); resets caches and re-derives CLUSTERS."""
+    global PANEL_PATH, CLUSTERS, _PAN
+    PANEL_PATH = path or os.environ.get("BEAM_V3_PANEL") or DEFAULT_PANEL_PATH
+    _PAN = None
+    _WCACHE.clear()
+    CLUSTERS = derive_clusters(_registers_at(PANEL_PATH))
+    return CLUSTERS
 
 
 def panel():

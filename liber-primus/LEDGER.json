@@ -8451,7 +8451,7 @@
         "analysis/round36/B1-orbit-12reg/pfpower_new.json",
         "analysis/round36/B1-orbit-12reg/readjud_rows.jsonl"
       ],
-      "sweep_store_note": "readjud_rows.jsonl is a 12-register SWEEPROW store: AD.validate_row(n_registers=12) passes on all 276,242 rows; stock AD.validate_store / check_r3_store default n_registers=9 and fail on 12-wide z until validate_store reads the register count from the header (not patched, outside lane). Not declared as sweep_store to avoid tripping CI.",
+      "sweep_store": "analysis/round36/B1-orbit-12reg/readjud_rows.jsonl",
       "source_register": "round36/P1-panel-r36 panel12.npz a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
       "notes": "Coordinator audit 2026-10-30: PREREG 11:56:17 predates null12.json (12:24) and the store (12:56); 276,242 rows, 12-wide z, header names panel-R36; summary cells match RESULTS. The recovery120 diagnostic in control.json is mis-scored (120-rune decode vs 240-rune plaintext) and is not used in any decision. Stock validate_store/check_r3_store default to 9 registers and fail 12-wide rows -> Round 37 T1 makes them read the width from the header; until then sweep_store is undeclared on this row (sweep_store_note). Reach for GREEK/HEBREW/NORSE (0.91/0.68/0.64) is bounded by pf_v4's nine-register calibration -> Round 37 I2."
     }

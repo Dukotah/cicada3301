@@ -77,6 +77,7 @@ class Panel:
             raise FileNotFoundError(
                 f"{path} not found — run `python3 build_models.py` first "
                 "(models/ is gitignored and rebuildable).")
+        self.path = path                      # Round 37 T1: lets bar-consumers check provenance
         d = np.load(path, allow_pickle=False)
         self.registers = [str(s) for s in d["registers"]]
         self.R = len(self.registers)
@@ -354,11 +355,16 @@ def to_row(res, kid):
             [round(v, p["z"]) for v in res["z"]]]
 
 
-ROW_DTYPE = np.dtype([("kid", "<u8"), ("n", "<u2"), ("en", "<f4"),
-                      ("pmax", "<f4"), ("preg", "u1"), ("pmax_ne", "<f4"),
-                      ("pcon", "<f4"), ("pcreg", "u1"),
-                      ("ioc", "<f4"), ("mds", "u1"), ("h2", "<f4"), ("zl", "<f4"),
-                      ("z", "<f4", (9,))])   # 77 bytes/row -> 10^7 rows = 770 MB
+def row_dtype(n_registers=9):
+    """Binary SWEEPROW dtype sized to the panel's register count (Round 37 T1)."""
+    return np.dtype([("kid", "<u8"), ("n", "<u2"), ("en", "<f4"),
+                     ("pmax", "<f4"), ("preg", "u1"), ("pmax_ne", "<f4"),
+                     ("pcon", "<f4"), ("pcreg", "u1"),
+                     ("ioc", "<f4"), ("mds", "u1"), ("h2", "<f4"), ("zl", "<f4"),
+                     ("z", "<f4", (n_registers,))])   # 9 regs: 77 bytes/row
+
+
+ROW_DTYPE = row_dtype(9)
 
 
 def to_record(res, kid_int):
@@ -366,7 +372,7 @@ def to_record(res, kid_int):
     return np.array([(kid_int, res["n"], res["en"], res["pmax"], res["preg"],
                       res["pmax_ne"], res["pcon"], res["pcreg"], res["ioc"],
                       min(res["mds"], 255), res["h2"], res["zl"],
-                      tuple(res["z"]))], dtype=ROW_DTYPE)[0]
+                      tuple(res["z"]))], dtype=row_dtype(len(res["z"])))[0]
 
 
 def header(sweep_id, pan=None, **extra):
@@ -392,13 +398,21 @@ class RowError(ValueError):
     pass
 
 
-def validate_row(row, hdr=None, n_registers=9):
+def _hdr_registers(hdr, default=9):
+    """Register count from a store header's `registers` list; `default` only if absent."""
+    regs = (hdr or {}).get("registers")
+    return len(regs) if isinstance(regs, (list, tuple)) and regs else default
+
+
+def validate_row(row, hdr=None, n_registers=None):
     """Raise RowError unless `row` is a well-formed SWEEPROW.  CI-callable.
 
     This is the check doctrine R3 says must be enforced: a sweep that stores only
     (parameters, English score, head) is exactly what produced 10^10 un-reinterpretable
     decodes, and it must fail here rather than three rounds later.
     """
+    if n_registers is None:
+        n_registers = _hdr_registers(hdr)
     if isinstance(row, dict):
         missing = [f for f in ROW_FIELDS if f != "kid" and f not in row]
         if missing:

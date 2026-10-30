@@ -33,6 +33,36 @@ PRESET_CELLS = {
 # L=31 variant (short-window screens) -- keyskip1 only, per I3 S10.0
 PRESET_CELLS_L31 = {"exact": "I19:vecbeam.keyskip1+I2|pmax|L31"}
 
+# Round 37 T1: the constants above were fitted on the Round 19 NINE-register panel.  That exact
+# file is lost; the only 9-register rebuild in the repo is the Round 32 I2 panel (sha below).
+# A bar fitted on one panel is meaningless for another, so refuse rather than silently apply it.
+FITTED_N_REGISTERS = 9
+FITTED_PANEL_SHA256 = "36a01dcb5083"     # prefix; round32/I2 models/panel.npz (rebuild of the R19 panel)
+
+
+def check_panel_matches_bar(panel=None):
+    """No-op for panel=None (legacy call, old panel).  Otherwise `panel` is an adjudicate.Panel,
+    a path, or an object with `.registers`; raise ValueError if its register count or file sha
+    differs from the panel these Round 19 bar constants were fitted on."""
+    if panel is None:
+        return True
+    import hashlib
+    path = panel if isinstance(panel, (str, os.PathLike)) else getattr(panel, "path", None)
+    if isinstance(panel, (str, os.PathLike)):
+        import numpy as _np
+        nreg = len(_np.load(panel, allow_pickle=False)["registers"])
+    else:
+        nreg = len(panel.registers)
+    sha = hashlib.sha256(open(path, "rb").read()).hexdigest() if path and os.path.exists(path) else None
+    if nreg != FITTED_N_REGISTERS or (sha is not None and not sha.startswith(FITTED_PANEL_SHA256)):
+        raise ValueError(
+            f"REFUSED: the Round 19 panel-max bar constants were fitted on a {FITTED_N_REGISTERS}-register "
+            f"panel (sha {FITTED_PANEL_SHA256}...); the supplied panel has {nreg} registers"
+            f"{'' if sha is None else ' and sha ' + sha[:12]}.  Compute a bar for the supplied panel "
+            f"(e.g. round34/I1-v3-null/bars_v3.py) instead of reusing this one.")
+    return True
+
+
 ALPHA_CLAIM = NC.ALPHA_ROUND19    # 0.01
 ALPHA_ESC = NC.ALPHA_ESCALATE     # 0.05
 
@@ -50,16 +80,18 @@ def _cell(preset, L=120):
     return key, c
 
 
-def panelmax_bar(preset="exact", n_round_adjudicated=10 ** 6, alpha=ALPHA_CLAIM, L=120):
+def panelmax_bar(preset="exact", n_round_adjudicated=10 ** 6, alpha=ALPHA_CLAIM, L=120, panel=None):
     """The panel-max (`pmax`) family-wise bar at `n_round_adjudicated`, level `alpha`.
 
     ALWAYS the panel-max statistic. There is no `en` path and no -5.5 floor here by design."""
+    check_panel_matches_bar(panel)
     _, c = _cell(preset, L)
     return NC._fw(n_round_adjudicated, c["mu"], c["beta"], alpha)
 
 
-def panelmax_contract(preset="exact", n_round_adjudicated=10 ** 6, L=120):
+def panelmax_contract(preset="exact", n_round_adjudicated=10 ** 6, L=120, panel=None):
     """Both tiers + every conditional, as a dict to store in the SWEEPROW header."""
+    check_panel_matches_bar(panel)
     key, c = _cell(preset, L)
     return {
         "statistic": "pmax",

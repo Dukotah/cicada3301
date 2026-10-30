@@ -71,6 +71,20 @@ class HitDecode:
     truth_idx: Optional[Sequence[int]] = None       # plaintext indices -- CONTROLS ONLY
     # optional pre-computed full-page decode (skips one beam call when the caller already has it)
     _decoded: Optional[dict] = field(default=None, repr=False)
+    # Round 37 T1: optional panel (adjudicate.Panel or .npz path) and decoder callable
+    # decoder(C, K, sign=, o=, beam_w=, want_path=, **preset_kw) -> dict(plain_idx, ptr_end, score).
+    # Defaults (None) keep the legacy 9-register panel + driftbeam behaviour.
+    panel: Optional[object] = field(default=None, repr=False)
+    decoder: Optional[object] = field(default=None, repr=False)
+
+    def beam(self, C, K, o):
+        fn = self.decoder or DB.beam_decode
+        return fn(C, K, sign=self.sign, o=o, beam_w=400, want_path=True, **self.preset_kw())
+
+    def resolved_panel(self):
+        if self.panel is None:
+            return AD.panel()
+        return AD.Panel(self.panel) if isinstance(self.panel, (str, os.PathLike)) else self.panel
 
     def preset_kw(self):
         return DB.PRESETS[self.preset]
@@ -98,8 +112,7 @@ class HitVerdict:
 # --------------------------------------------------------------------------- helpers
 def _full_decode(dec: HitDecode) -> dict:
     if dec._decoded is None:
-        dec._decoded = DB.beam_decode(list(dec.C), list(dec.K), sign=dec.sign, o=dec.o,
-                                      beam_w=400, want_path=True, **dec.preset_kw())
+        dec._decoded = dec.beam(list(dec.C), list(dec.K), dec.o)
     return dec._decoded
 
 
@@ -128,14 +141,12 @@ def _heldout_recovery(dec: HitDecode, full_idx: Sequence[int]) -> float:
     if len(tail_C) < 3 or len(head_C) < 1:
         return 0.0
     # FIT: attribute the key phase on the first quarter (its ending key pointer).
-    head_dec = DB.beam_decode(head_C, K, sign=dec.sign, o=dec.o, beam_w=400,
-                              want_path=True, **dec.preset_kw())
+    head_dec = dec.beam(head_C, K, dec.o)
     # ptr_end is the key index consumed by the head's LAST rune; the tail's first rune consumes
     # the NEXT key position, so the attributed phase entering the tail is ptr_end + 1.
     kp = head_dec["ptr_end"] + 1                   # attributed key pointer entering the tail
     # VERIFY: decode the held-out 3/4 from the attributed phase with the SAME key.
-    tail_dec = DB.beam_decode(tail_C, K, sign=dec.sign, o=kp, beam_w=400,
-                              want_path=True, **dec.preset_kw())
+    tail_dec = dec.beam(tail_C, K, kp)
     tail_idx = tail_dec["plain_idx"]
     if dec.truth_idx is not None:
         # STRICT control path: compare the held-out re-decode to GROUND TRUTH on the tail.
@@ -155,15 +166,17 @@ def _heldout_recovery(dec: HitDecode, full_idx: Sequence[int]) -> float:
 # --------------------------------------------------------------------------- THE PREDICATE
 def evaluate(dec: HitDecode) -> HitVerdict:
     """Full adjudication returning every measured field. `is_hit` is the boolean of this."""
+    PM.check_panel_matches_bar(dec.panel)      # refuse the R19 bar for a different panel (before any work)
     d = _full_decode(dec)
     plain_idx = d["plain_idx"]
-    a = AD.adjudicate(plain_idx, translit=d.get("translit"))
+    pan = dec.resolved_panel()
+    a = AD.adjudicate(plain_idx, translit=d.get("translit"), pan=pan)
     pmax = float(a["pmax"])
     preg = int(a["preg"])
-    preg_name = AD.panel().registers[preg]
+    preg_name = pan.registers[preg]
 
     bar = PM.panelmax_bar(preset=dec.preset, n_round_adjudicated=dec.n_round_adjudicated,
-                          alpha=dec.alpha)
+                          alpha=dec.alpha, panel=dec.panel)
     clears = pmax >= bar
 
     # clause (2): rune-INDEX recovery from the DECODE PATH, never from score.

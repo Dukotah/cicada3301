@@ -1,0 +1,29 @@
+{
+ "$comment": "Round 37 T1 ledger row",
+ "entries": [
+  {
+   "id": "R37-T1-12REG-PLUMBING",
+   "round": 37,
+   "lane": "T1",
+   "date": "2026-10-30",
+   "status": "measured",
+   "positive_control": "passed",
+   "control_detail": "tests/test_12reg_plumbing.py 8/8: 12-wide R36 B1 store (276,242 rows) validates via stock A.validate_store and check_r3_store (failed pre-patch per R36 B1 readjud_summary.json); R35 9-wide store still validates; beam_v3 loads panel-R36 with 10 derived clusters and recovers one planted L=120 key under panel_max and register_cond; hitfn20/panelmax20 raise on panel-R36.",
+   "hypothesis": "Tooling can be made header/panel-driven so that 12-register panels flow through beam_v3, SWEEPROW validation and the hit predicate without workarounds.",
+   "result": "Patched beam_v3 (PANEL_PATH env/set_panel, derived clusters), both adjudicate.py copies (row_dtype, header-driven validate_row), panelmax20/hitfn20 (panel=/decoder=, refusal of mismatched bar). R36-B1-ORBIT-12REG now declares its 12-wide sweep_store; validate_ledger 0 errors; tests/ benchmark/ 34 passed; validate.py passed.",
+   "coverage": "Listed call sites only. Not covered: other consumers of ROW_DTYPE/validate_row(n_registers=9) positional use; a Round 19 bar for 12 registers (use round34 bars_v3 / I2 recalibration).",
+   "threshold": "n/a - tooling",
+   "threshold_fixed_in_advance": true,
+   "not_covered": [
+    "bars for 12-register panels in hitfn20 (refused, not supplied)",
+    "FITTED_PANEL_SHA256 pins the R32 rebuild because the R19 panel file is lost"
+   ],
+   "reopens_if": "a consumer outside the listed call sites still hard-codes 9 registers, or a 9-register panel other than the R32 rebuild must use the R19 bar.",
+   "evidence": [
+    "analysis/round37/T1-12reg-plumbing/PREREG.md",
+    "analysis/round37/T1-12reg-plumbing/RESULTS.md",
+    "tests/test_12reg_plumbing.py"
+   ]
+  }
+ ]
+}
