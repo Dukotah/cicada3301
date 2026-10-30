@@ -1,0 +1,34 @@
+{
+ "id": "R36-I3",
+ "status": "negative",
+ "positive_control": "passed",
+ "hypothesis": "Separate frozen per-L margins m_NV(L), m_HV(L) (from R34/R35 feature files) catch >=0.90 of NOVOWEL- and HALFVOWEL-argmax hallucinations while keeping genuine false-reject <=0.10 (pooled and Wilson upper on NV-only/HV-only) on two fresh keys in new sum(key) mod 997 classes at L in {150,240,300}.",
+ "coverage": "keys CICADA-R36I3a-x (class 26), CICADA-R36I3b-zzz (class 273); L=150/240/300; per key per L 1100 NOVOWEL + 100 HALFVOWEL + 4x60 spread draws; exact keyskip, beam 400, supp 0.83, bar 7.6342; margins NV 8.7/12.8/14.9, HV 5.3/4.5(interp)/3.9",
+ "result": "L=150 FAIL (H-HV catch 7/8=0.875; H-NV 0.926, FR clean); L=240 PASS (H-NV 0.903, H-HV 13/13, FR 0); L=300 PASS (H-NV 0.904, H-HV 18/18, FR 0). all_L_pass=false; SEAL_PASS=false.",
+ "threshold": "every L: catch>=0.90 per class (point), pooled FR<=0.10, Wilson95 upper<=0.10 on NV-only and HV-only genuine",
+ "three_conditionals": {
+  "if_power": "Positive control = genuine decodes of planted keyed streams are accepted (FR<=0.004 all L); hallucination catch measured directly on 1353-1788 H-NV and 8-18 H-HV cases per L.",
+  "if_coverage": "Only exact-relation planted streams at 3 lengths and 2 keys; H-HV classes under 30 at every L; m_HV(240) interpolated.",
+  "if_wrong": "A one-hallucination miss at L=150 H-HV (n=8) fails the point rule; tables were set at the 0.90 edge so passes at 240/300 are marginal (H-NV 0.903/0.904)."
+ },
+ "not_covered": [
+  "wrong-key overfits",
+  "non-exact relations",
+  "L other than 150/240/300",
+  "real (non-planted) pages",
+  "Welsh/CY register",
+  "only two keys",
+  "H-HV n<30 each L",
+  "m_HV(240) interpolated",
+  "margin tables set at the 0.90 catch edge"
+ ],
+ "evidence": [
+  "analysis/round36/I3-d5c-two-margin/PREREG.md",
+  "analysis/round36/I3-d5c-two-margin/results.json",
+  "analysis/round36/I3-d5c-two-margin/RESULTS.md",
+  "analysis/round36/I3-d5c-two-margin/feat/",
+  "analysis/round36/I3-d5c-two-margin/derive_margins.py"
+ ],
+ "SEAL_PASS": false,
+ "recommendation": "do not adopt; pause seal-instrument work one round"
+}
