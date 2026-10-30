@@ -1,0 +1,26 @@
+{
+ "$comment": "written by R37 C2-U4 lane agent",
+ "entries": [
+  {
+   "id": "R37-C2-U4-PRIME-LINE-SUMS",
+   "round": 37,
+   "lane": "C2-U4",
+   "date": "2026-10-30",
+   "status": "measured",
+   "positive_control": "passed",
+   "control_detail": "measure.py: prime-by-construction lines at the six pages' lengths score 60/60 (f=1.0), pooled p=1e-4 (floor) under shuffle and random nulls; 01,05,06,03,14 each p=1e-4; 73 p=9e-4 (4 lines).",
+   "hypothesis": "Every physical line's Gematria Primus sum being prime is a language-free recognizer of designed text.",
+   "coverage": "Six solved pages (01,05,06,03,14,73; 60 physical lines), plaintext side and ciphertext side, 10,000 shuffles + 10,000 uniform-random strings per page; English KJV-window control.",
+   "result": "NO-SEPARATION: plaintext pooled 22/60 vs null 0.162 (p=1e-4) but only 2/6 pages p<0.05 (01: 9/10, p=1e-4; 03: 4/8, p=0.025); excluding A WARNING 13/50=0.26 vs 0.164 p(shuffle)=0.053. Ciphertext 8/60 vs 0.156 (p=0.74). English control prime rate 0.155. Top-row plinefrac scoring not run.",
+   "threshold": "pooled p<0.01 AND >=4/6 pages p<0.05 (PREREG.md, fixed before computing).",
+   "power": "control detects constructed all-prime pages at p<=1e-4; per-page power limited by 4-20 lines.",
+   "artifacts": [
+    "PREREG.md",
+    "measure.py",
+    "results.json",
+    "RESULTS.md"
+   ],
+   "notes": "Signal is a single-page (A WARNING) property; not a general gate."
+  }
+ ]
+}
