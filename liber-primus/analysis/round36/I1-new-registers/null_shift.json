@@ -1,0 +1,81 @@
+{
+ "what": "shift of the panel-max statistic pmax when the panel grows 9 -> 12 registers, L=120, same decodes scored both ways",
+ "shuffled_LP2": {
+  "definition": "L=120 runes drawn without replacement from the 12,956-rune real LP2 stream (i.e. a shuffled LP2), random uniform 29-ary key, round32 keyskip beam (400,3), n=2000, seed 36036",
+  "pmax9": {
+   "n": 2000,
+   "mean": 1.6691959499999998,
+   "sd": 0.799376932747563,
+   "q0.5": 1.6208,
+   "q0.9": 2.6824900000000005,
+   "q0.99": 3.6652909999999994,
+   "q0.999": 4.522634099999985,
+   "max": 5.1711,
+   "emp_bar_1e-3": 4.522634099999985,
+   "gpd_bar_1e-3": 4.632657417212938
+  },
+  "pmax12": {
+   "n": 2000,
+   "mean": 1.7903044,
+   "sd": 0.7750939835673615,
+   "q0.5": 1.74915,
+   "q0.9": 2.8131700000000004,
+   "q0.99": 3.7363869999999997,
+   "q0.999": 4.522634099999985,
+   "max": 5.1711,
+   "emp_bar_1e-3": 4.522634099999985,
+   "gpd_bar_1e-3": 4.654881944186384
+  },
+  "argmax_register_share_12": {
+   "EN_MODERN": 0.071,
+   "EN_KJV": 0.061,
+   "LP1_REAL": 0.0875,
+   "LATIN": 0.1095,
+   "OE": 0.094,
+   "DE": 0.0705,
+   "CY": 0.097,
+   "EN_HALFVOWEL": 0.0785,
+   "EN_NOVOWEL": 0.0795,
+   "GREEK": 0.098,
+   "HEBREW": 0.069,
+   "NORSE": 0.0845
+  }
+ },
+ "realLP2_wrongkey_L120_n20000": {
+  "pmax9": {
+   "n": 20000,
+   "mean": 1.64146518,
+   "sd": 0.7933271468061965,
+   "q0.5": 1.6186500000000001,
+   "q0.9": 2.6654200000000006,
+   "q0.99": 3.6072779999999875,
+   "q0.999": 4.3848087000000024,
+   "max": 5.3004,
+   "emp_bar_1e-3": 4.3848087000000024,
+   "gpd_bar_1e-3": 4.374053679471598
+  },
+  "pmax12": {
+   "n": 20000,
+   "mean": 1.77311273,
+   "sd": 0.766490264864632,
+   "q0.5": 1.7482,
+   "q0.9": 2.7584,
+   "q0.99": 3.7099299999999955,
+   "q0.999": 4.428415300000003,
+   "max": 5.3004,
+   "emp_bar_1e-3": 4.428415300000003,
+   "gpd_bar_1e-3": 4.439278341690741
+  }
+ },
+ "bars_alpha_1e-3": {
+  "L120_realLP2_n20000": {
+   "pmax9": 4.3848087000000024,
+   "pmax12": 4.439278341690741
+  },
+  "L240_realLP2_n10000": {
+   "pmax9": 4.741657908127842,
+   "pmax12": 4.777566457817569
+  }
+ },
+ "note": "Mean pmax rises ~0.12-0.13 and q0.99 ~0.1; 1e-3 bar moves +0.02 to +0.07 at L=120 (n=2000 tail is noisy; q0.999 of shuffled is identical to 3 d.p. because the extreme draws are the same 9-register maxima). B1 must refit its own 12-register v3 null; this is the gate-beam estimate, NOT the v3 bars. Hard guidance: the family-wise bar at N~1e6 is a far-tail quantity not estimated here."
+}

@@ -1,0 +1,63 @@
+{
+ "$comment": "Round 36 lane I1 ledger fragment. Coordinator merges into LEDGER.json.",
+ "lane": "round36/I1",
+ "date": "2026-10-30",
+ "entries": [
+  {
+   "id": "R36-I1-NEW-REGISTERS",
+   "lane": "round36/I1",
+   "round": "36",
+   "date": "2026-10-30",
+   "status": "measured",
+   "positive_control": "passed",
+   "hypothesis": "Adding Greek, Hebrew and Norse registers (documented romanisation -> Latin->rune map, public-domain corpora, Round 32 trigram machinery) yields a 12-register panel with pmax power >= 0.90 per new register at L=120 and no existing register losing > 0.02.",
+   "coverage": "12 registers x L in {120,240} x 24 planted reps over held-out text; wrong-key null 20000/10000 real-LP2 decodes (+4000/2000 pre-registered run); shuffled-LP2 null 2000 at L=120.",
+   "result": {
+    "GREEK": {
+     "pow_L120": 1.0,
+     "pow_L240": 1.0
+    },
+    "HEBREW": {
+     "pow_L120": 1.0,
+     "pow_L240": 1.0
+    },
+    "NORSE": {
+     "pow_L120": 1.0,
+     "pow_L240": 1.0
+    },
+    "existing_nine": "all within 0.02 of Round 32 at both L (EN_NOVOWEL 0.917 vs 0.92 at L=120)",
+    "mapping_revisions_used": 0,
+    "panel_admitted": [
+     "GREEK",
+     "HEBREW",
+     "NORSE"
+    ],
+    "bars_pmax12": {
+     "L120": 4.439,
+     "L240": 4.778
+    },
+    "null_shift_L120_shuffledLP2": {
+     "mean_9": 1.669,
+     "mean_12": 1.79,
+     "gpd_bar_9": 4.633,
+     "gpd_bar_12": 4.655
+    }
+   },
+   "threshold": "new register power(pmax, L=120) >= 0.90 (target 0.92); every existing register >= Round 32 value - 0.02; fixed in PREREG.md before any output",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "none swept (instrument lane)",
+    "decoder_transition_model": "Round 32 keyskip beam(400,3) with correct key handed over; v3/other relations unmeasured here",
+    "adjudicator_register": "12 registers; new three as defined by mappings.md romanisations only (pointed Hebrew, Nestle-1904 Greek eta->E/omega->O, Gudni-Jonsson normalised Norse)"
+   },
+   "not_covered": "Other romanisation conventions (unpointed Hebrew, eta/omega distinguished, runic-inscription Norse), other scripts, L=400, >24 replicates (24/24 Wilson lower bound 0.86), v3 beam bars (B1 refits), beam_v3 register_cond CLUSTERS and SWEEPROW 9-wide ROW_DTYPE/validate_row not updated, rebuilt Round 32 nine differ from the original panel (EN-family corpus drift).",
+   "evidence": [
+    "liber-primus/analysis/round36/I1-new-registers/RESULTS.md",
+    "liber-primus/analysis/round36/I1-new-registers/gate_proof.json",
+    "liber-primus/analysis/round36/I1-new-registers/null_shift.json",
+    "liber-primus/analysis/round36/I1-new-registers/fetch_log.json",
+    "liber-primus/analysis/round36/I1-new-registers/mappings.md"
+   ]
+  }
+ ]
+}
