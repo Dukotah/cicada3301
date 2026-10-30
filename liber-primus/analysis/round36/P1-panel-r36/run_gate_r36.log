@@ -1,0 +1,54 @@
+  null L=120 wk 500/4000  2s
+  null L=120 wk 1000/4000  6s
+  null L=120 wk 1500/4000  9s
+  null L=120 wk 2000/4000  13s
+  null L=120 wk 2500/4000  17s
+  null L=120 wk 3000/4000  21s
+  null L=120 wk 3500/4000  25s
+  null L=120 wk 4000/4000  29s
+saved null wk120
+  null L=240 wk 500/2000  52s
+  null L=240 wk 1000/2000  93s
+  null L=240 wk 1500/2000  139s
+  null L=240 wk 2000/2000  183s
+saved null wk240
+  null L=120 shuf 500/2000  2s
+  null L=120 shuf 1000/2000  5s
+  null L=120 shuf 1500/2000  7s
+  null L=120 shuf 2000/2000  10s
+saved null sh120
+plant EN_MODERN|120 n=24 0s med_rec=1.000
+plant EN_KJV|120 n=24 0s med_rec=1.000
+plant LP1_REAL|120 n=24 0s med_rec=1.000
+plant LATIN|120 n=24 0s med_rec=1.000
+plant OE|120 n=24 0s med_rec=1.000
+plant DE|120 n=24 0s med_rec=1.000
+plant CY|120 n=24 0s med_rec=1.000
+plant EN_HALFVOWEL|120 n=24 0s med_rec=1.000
+plant EN_NOVOWEL|120 n=24 0s med_rec=0.800
+plant GREEK|120 n=24 0s med_rec=1.000
+plant HEBREW|120 n=24 0s med_rec=1.000
+plant NORSE|120 n=24 1s med_rec=1.000
+plant EN_MODERN|240 n=24 3s med_rec=1.000
+plant EN_KJV|240 n=24 3s med_rec=1.000
+plant LP1_REAL|240 n=24 3s med_rec=1.000
+plant LATIN|240 n=24 3s med_rec=1.000
+plant OE|240 n=24 3s med_rec=1.000
+plant DE|240 n=24 3s med_rec=1.000
+plant CY|240 n=24 3s med_rec=0.998
+plant EN_HALFVOWEL|240 n=24 3s med_rec=1.000
+plant EN_NOVOWEL|240 n=24 3s med_rec=0.808
+plant GREEK|240 n=24 3s med_rec=1.000
+plant HEBREW|240 n=24 3s med_rec=1.000
+Traceback (most recent call last):
+  File "C:\Users\Jeff\cicada3301\liber-primus\analysis\round36\P1-panel-r36\run_gate_r36.py", line 14, in <module>
+    exec(compile(src, os.path.join(I1, "run_gate.py"), "exec"), g)
+  File "C:\Users\Jeff\cicada3301\liber-primus\analysis\round36\I1-new-registers\run_gate.py", line 81, in <module>
+    out["plant"][key] = rows; save()
+                              ^^^^^^
+  File "C:\Users\Jeff\cicada3301\liber-primus\analysis\round36\I1-new-registers\run_gate.py", line 32, in save
+    def save(): json.dump(out, open(OUT, "w"))
+                               ^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\Jeff\\cicada3301\\liber-primus\\analysis\\round36\\P1-panel-r36\\out_gate_r36.json'
+plant NORSE|240 n=24 4s med_rec=1.000
+done

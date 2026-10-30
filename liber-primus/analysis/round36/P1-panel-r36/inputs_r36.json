@@ -1,0 +1,958 @@
+{
+ "panel": "panel-R36",
+ "registers": [
+  "EN_MODERN",
+  "EN_KJV",
+  "LP1_REAL",
+  "LATIN",
+  "OE",
+  "DE",
+  "CY",
+  "EN_HALFVOWEL",
+  "EN_NOVOWEL",
+  "GREEK",
+  "HEBREW",
+  "NORSE"
+ ],
+ "inputs": [
+  {
+   "path": "data/keys/welsh/welsh_mabinogion.txt",
+   "sha256": "624ffc97186b62b6dc70ae4e968c03d9ed44fc5361452e170780657c09e63329",
+   "bytes": 761030,
+   "used_by": [
+    "CY"
+   ],
+   "r32_sha256": "624ffc97186b62b6dc70ae4e968c03d9ed44fc5361452e170780657c09e63329",
+   "r19_sha256": "4b3fd9261e284a8aa653d2d84d5766aa67ab8f0f161f6102981cb0c0bbb1e237",
+   "matches_round32": true,
+   "matches_round19": false,
+   "how_obtained": "SUBSTITUTE - copy analysis/round36/P1-panel-r36/inputs_frozen/welsh_mabinogion.txt (fetch_sources.py --welsh does NOT reproduce it: re-fetch gives sha da02fef6.., 761,024 B)",
+   "url": "gutenberg.org/cache/epub/{3680,57981,56275,67424}/pg*.txt, boilerplate-stripped (Round 32 recipe)",
+   "status": "Round 32 substitute (NOT the Round 19 'diplomatic edition', sha 4b3fd926.., lost)",
+   "refetch_verified": false
+  },
+  {
+   "path": "analysis/round10b/B6-non-english-plaintext/corpora/de_2.txt",
+   "sha256": "359d3f5983c812393f4bd7ee49a350ffffc7d476015e58d6b84b6c848dd2b0e9",
+   "bytes": 145983,
+   "used_by": [
+    "DE"
+   ],
+   "r32_sha256": "359d3f5983c812393f4bd7ee49a350ffffc7d476015e58d6b84b6c848dd2b0e9",
+   "r19_sha256": "359d3f5983c812393f4bd7ee49a350ffffc7d476015e58d6b84b6c848dd2b0e9",
+   "matches_round32": true,
+   "matches_round19": true,
+   "how_obtained": "in the repo (tracked file)",
+   "url": null,
+   "status": "in-repo, hash identical to Round 32/Round 19 record",
+   "refetch_verified": "n/a (tracked in repo)"
+  },
+  {
+   "path": "analysis/round10b/B6-non-english-plaintext/corpora/de_faust.txt",
+   "sha256": "fed2a58edd6910ee96d27ada614d34bcc41f03750d86541c41246bb74c564ff7",
+   "bytes": 218440,
+   "used_by": [
+    "DE"
+   ],
+   "r32_sha256": "fed2a58edd6910ee96d27ada614d34bcc41f03750d86541c41246bb74c564ff7",
+   "r19_sha256": "fed2a58edd6910ee96d27ada614d34bcc41f03750d86541c41246bb74c564ff7",
+   "matches_round32": true,
+   "matches_round19": true,
+   "how_obtained": "in the repo (tracked file)",
+   "url": null,
+   "status": "in-repo, hash identical to Round 32/Round 19 record",
+   "refetch_verified": "n/a (tracked in repo)"
+  },
+  {
+   "path": "data/kjv.txt",
+   "sha256": "0f1a83cbcdc1d3fae6bcc3daaa496d4fa723fcce9526e84e20df12ae33fda986",
+   "bytes": 4436268,
+   "used_by": [
+    "EN_KJV"
+   ],
+   "r32_sha256": "0204adaed1f25700aa854218cae63c7172228c41088f335e99167a071eed83c0",
+   "r19_sha256": "0f1a83cbcdc1d3fae6bcc3daaa496d4fa723fcce9526e84e20df12ae33fda986",
+   "matches_round32": false,
+   "matches_round19": true,
+   "how_obtained": "python data/fetch_sources.py --r19",
+   "url": "https://www.gutenberg.org/files/10/10-0.txt",
+   "status": "Round 19 original, byte-exact (sha-verified by fetch_sources)",
+   "refetch_verified": true
+  },
+  {
+   "path": "data/keys/mabinogion.txt",
+   "sha256": "80dc6f0d8efc8398a2d1cc8cdf17237020c881cf4fbd2412dfa37ec8be19a5ed",
+   "bytes": 617362,
+   "used_by": [
+    "EN_MODERN",
+    "EN_HALFVOWEL",
+    "EN_NOVOWEL"
+   ],
+   "r32_sha256": "e177d7c2ff357bc5e3f506c7131d158d8b8f5e05883110bdf495f0d9d7f49886",
+   "r19_sha256": "80dc6f0d8efc8398a2d1cc8cdf17237020c881cf4fbd2412dfa37ec8be19a5ed",
+   "matches_round32": false,
+   "matches_round19": true,
+   "how_obtained": "python data/fetch_sources.py --r19",
+   "url": "https://www.gutenberg.org/files/5160/5160-0.txt",
+   "status": "Round 19 original, byte-exact (sha-verified by fetch_sources)",
+   "refetch_verified": true
+  },
+  {
+   "path": "data/keys/self_reliance.txt",
+   "sha256": "b2f3dbd3866e0bec5ae41ac29df09b537c2ef18fa1b88678966587b824ca92f0",
+   "bytes": 56483,
+   "used_by": [
+    "EN_MODERN",
+    "EN_HALFVOWEL",
+    "EN_NOVOWEL"
+   ],
+   "r32_sha256": "b2f3dbd3866e0bec5ae41ac29df09b537c2ef18fa1b88678966587b824ca92f0",
+   "r19_sha256": "b2f3dbd3866e0bec5ae41ac29df09b537c2ef18fa1b88678966587b824ca92f0",
+   "matches_round32": true,
+   "matches_round19": true,
+   "how_obtained": "in the repo (tracked file)",
+   "url": null,
+   "status": "in-repo, hash identical to Round 32/Round 19 record",
+   "refetch_verified": "n/a (tracked in repo)"
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/1-Corinthians-ap.xhtml",
+   "sha256": "29adfbfec208ada63649b02ee702e1a4e942a6c64d8a90d4d6d4b58aaaea5228",
+   "bytes": 102029,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/1-Corinthians-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/1-John-ap.xhtml",
+   "sha256": "ec395f1c4e24d5bc7c8f2485a46e51489d7e7ecb54f88b7fda30e953b342d79a",
+   "bytes": 31451,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/1-John-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/1-Peter-ap.xhtml",
+   "sha256": "aac999c16019091186b3d248c45bde26167392fd11d07c65b05fce3278f5b202",
+   "bytes": 35271,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/1-Peter-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/1-Thessalonians-ap.xhtml",
+   "sha256": "1641a15dd85f55f60c3eaa26e5d9cb7dd81a06b0f1852e80982ced9a2e075aeb",
+   "bytes": 25782,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/1-Thessalonians-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/1-Timothy-ap.xhtml",
+   "sha256": "907da93785045940589e9c92ff7ed8e47304c24bcb023c00cc7c8fe1a1ddd4bd",
+   "bytes": 29491,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/1-Timothy-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/2-Corinthians-ap.xhtml",
+   "sha256": "01dc9683a3d303b09bd5872747c989700a862dbddfc71ee29f9a0fa1e7721e35",
+   "bytes": 69921,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/2-Corinthians-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/2-John-ap.xhtml",
+   "sha256": "eff8a91b94255f61d34d6d24bb548d13063d7b2223ec7dbe29e7db86d439441b",
+   "bytes": 6810,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/2-John-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/2-Peter-ap.xhtml",
+   "sha256": "01aa905a9e3aeae77e0896ed03d8a0eff7f3e6943d1c59f052a36ca07c4e50c8",
+   "bytes": 20538,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/2-Peter-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/2-Thessalonians-ap.xhtml",
+   "sha256": "5671c0a4f687a47658322b32e085b489e4929fa3ae3ff2d0678982e1cdcd2256",
+   "bytes": 15782,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/2-Thessalonians-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/2-Timothy-ap.xhtml",
+   "sha256": "8d87adfeff58ade40124411872ad4679589da0a8c9d1cced8d23afa42e9f5268",
+   "bytes": 22607,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/2-Timothy-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/3-John-ap.xhtml",
+   "sha256": "2220c039b058df3c3ff742e76b2d61e9567b3faf16fe72aa95892d54506abe24",
+   "bytes": 6791,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/3-John-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Acts-ap.xhtml",
+   "sha256": "062c37d8aec9ea5858414e22a99c607973a5519c4e9f7c62d94badc7f73cb504",
+   "bytes": 286589,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Acts-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Colossians-ap.xhtml",
+   "sha256": "cc2628c28a8dd233fb875d408e4116fcc0c5b2e5ce1bcad7ec44c89ea6f1fc2f",
+   "bytes": 26607,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Colossians-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Ephesians-ap.xhtml",
+   "sha256": "072165256c4b1bf3111136595577eeb08e6176cd2f726a3ad78a25771efec15f",
+   "bytes": 39666,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Ephesians-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Galatians-ap.xhtml",
+   "sha256": "bc284b6a46a10a046ada7a885de57087b6dd596cf8aaec2d5462e1b816a87da0",
+   "bytes": 37167,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Galatians-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Hebrews-ap.xhtml",
+   "sha256": "9cfe820d7db365aff3b1824495daf8c7a4434092e307165f17544fad61773186",
+   "bytes": 88069,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Hebrews-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/James-ap.xhtml",
+   "sha256": "a1dca6ad572758211388f23db1478b03c064594d55ad0749f726de3fded0224b",
+   "bytes": 29712,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/James-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/John-ap.xhtml",
+   "sha256": "9db036d9b75f0e1e83fdc2b1d4dba7bae810106472151677444e082d71b913a3",
+   "bytes": 214018,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/John-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Jude-ap.xhtml",
+   "sha256": "32dbdef104cc22b2810e9925d7e68d3be0d6c0e37c2e206d09619a67d80de613",
+   "bytes": 10664,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Jude-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Luke-ap.xhtml",
+   "sha256": "ab9e24268d06ae19303b373a4f4a227bd90d2a826f1219a00423da5fcb6b3450",
+   "bytes": 287062,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Luke-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Mark-ap.xhtml",
+   "sha256": "66e09a519f26d1f578495c108ec029e6d2e16483be5e2a67019d6e4ef4a8619b",
+   "bytes": 169525,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Mark-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Matthew-ap.xhtml",
+   "sha256": "351a15993ab3edd95722ac7ab23348bdd0c45e9d3884c5c022b3b166615d7213",
+   "bytes": 271520,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Matthew-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Philemon-ap.xhtml",
+   "sha256": "a515e595877fc8898a46c271a3e34f5ce234060c449c354baba6acdb4a836bce",
+   "bytes": 8271,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Philemon-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Philippians-ap.xhtml",
+   "sha256": "1595674014882e3085f2bc3503f636d808b66a9a5a2a359041b1928fff5ca1d5",
+   "bytes": 27268,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Philippians-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Revelation-ap.xhtml",
+   "sha256": "1c365b8e4e18cb9053cff694df5fc40e79732b74109186adcab232a9479cd528",
+   "bytes": 166142,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Revelation-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Romans-ap.xhtml",
+   "sha256": "b5c55bff8381c2f787ca02898b15a170f242d13c9781a840a445e8b945a944ad",
+   "bytes": 109342,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Romans-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/greek_nestle1904/Titus-ap.xhtml",
+   "sha256": "28b1b91c1171e3277158000cb74b2052d94a404008f17539cd8249f812321fc0",
+   "bytes": 14487,
+   "used_by": [
+    "GREEK"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/biblicalhumanities/Nestle1904/master/xhtml/Titus-ap.xhtml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/hebrew_wlc/Deut.xml",
+   "sha256": "04f8087442a1e67a631cd70f2ac4e42fe0a780ae132edb165a3a29f3f290358f",
+   "bytes": 1315399,
+   "used_by": [
+    "HEBREW"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Deut.xml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/hebrew_wlc/Exod.xml",
+   "sha256": "04868367cdacb6ccdc61488e923e20f918172042e6437842a0621f63ac5b847f",
+   "bytes": 1524391,
+   "used_by": [
+    "HEBREW"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Exod.xml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/hebrew_wlc/Gen.xml",
+   "sha256": "0526e5c9a5fb4d907847645f954ed3d1268fa69decbd872056cedd2668d86449",
+   "bytes": 1859928,
+   "used_by": [
+    "HEBREW"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Gen.xml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/hebrew_wlc/Josh.xml",
+   "sha256": "a066200ab2269c0a86a2e9ba119a3d0fce8c5f7ecc44bb53ec134b83dffc6006",
+   "bytes": 919916,
+   "used_by": [
+    "HEBREW"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Josh.xml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/hebrew_wlc/Judg.xml",
+   "sha256": "3b3a909f04041dbd52dc6b7293a96ce75d94db8a90fdeda878943db7b8fac57f",
+   "bytes": 904347,
+   "used_by": [
+    "HEBREW"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Judg.xml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/hebrew_wlc/Lev.xml",
+   "sha256": "e21e70265c9ef500182f8ccb4f4e1186e5a79e1169d24cef23cc479baf07b191",
+   "bytes": 1085066,
+   "used_by": [
+    "HEBREW"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Lev.xml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/hebrew_wlc/Num.xml",
+   "sha256": "02e4febfcc027d10b3e35e4f091eae67a40d26f37b6254faac6b4af053fe4896",
+   "bytes": 1496830,
+   "used_by": [
+    "HEBREW"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://raw.githubusercontent.com/openscriptures/morphhb/master/wlc/Num.xml",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/latin/latin_218.txt",
+   "sha256": "84ac8411841a4d8f5f4a49b6a2cd1f466917c6a5af72916d5e0b2b1ecb2f659c",
+   "bytes": 169899,
+   "used_by": [
+    "LATIN"
+   ],
+   "r32_sha256": "84ac8411841a4d8f5f4a49b6a2cd1f466917c6a5af72916d5e0b2b1ecb2f659c",
+   "r19_sha256": "84ac8411841a4d8f5f4a49b6a2cd1f466917c6a5af72916d5e0b2b1ecb2f659c",
+   "matches_round32": true,
+   "matches_round19": true,
+   "how_obtained": "in the repo (tracked file)",
+   "url": null,
+   "status": "in-repo, hash identical to Round 32/Round 19 record",
+   "refetch_verified": "n/a (tracked in repo)"
+  },
+  {
+   "path": "analysis/latin/latin_28233.txt",
+   "sha256": "cc3f9845acd902a26bb58e268499472da99c7c39d7825aa1a86ad8959450b2e8",
+   "bytes": 851822,
+   "used_by": [
+    "LATIN"
+   ],
+   "r32_sha256": "cc3f9845acd902a26bb58e268499472da99c7c39d7825aa1a86ad8959450b2e8",
+   "r19_sha256": "cc3f9845acd902a26bb58e268499472da99c7c39d7825aa1a86ad8959450b2e8",
+   "matches_round32": true,
+   "matches_round19": true,
+   "how_obtained": "in the repo (tracked file)",
+   "url": null,
+   "status": "in-repo, hash identical to Round 32/Round 19 record",
+   "refetch_verified": "n/a (tracked in repo)"
+  },
+  {
+   "path": "SOLVED-PAGES.json",
+   "sha256": "855eed739c8d598044e16d9ace14cb1572e633db0b4137e281f1258f76099aac",
+   "bytes": 4493,
+   "used_by": [
+    "LP1_REAL"
+   ],
+   "r32_sha256": "855eed739c8d598044e16d9ace14cb1572e633db0b4137e281f1258f76099aac",
+   "r19_sha256": "855eed739c8d598044e16d9ace14cb1572e633db0b4137e281f1258f76099aac",
+   "matches_round32": true,
+   "matches_round19": true,
+   "how_obtained": "in the repo (tracked file)",
+   "url": null,
+   "status": "in-repo, hash identical to Round 32/Round 19 record",
+   "refetch_verified": "n/a (tracked in repo)"
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/norse_heimskringla/Egils_saga_Skalla-Grímssonar.html",
+   "sha256": "e8ab4d8a4bfd2f7f0a142b4cda540490418f4e7ae8affdc1d0636ddcf5daffd2",
+   "bytes": 450084,
+   "used_by": [
+    "NORSE"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://heimskringla.no/wiki/Egils_saga_Skalla-Gr%C3%ADmssonar",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/norse_heimskringla/Eyrbyggja_saga.html",
+   "sha256": "47b1c0cdc9f2f93533205bf576cafef8f324a1c12f237f81f513c4707248a745",
+   "bytes": 302611,
+   "used_by": [
+    "NORSE"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://heimskringla.no/wiki/Eyrbyggja_saga",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/norse_heimskringla/Fóstbræðra_saga.html",
+   "sha256": "ab8d46869c682b9d07b65c4d6eddecc752a83c00f07f18b1c32d5519e530e0c6",
+   "bytes": 271062,
+   "used_by": [
+    "NORSE"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://heimskringla.no/wiki/F%C3%B3stbr%C3%A6%C3%B0ra_saga",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/norse_heimskringla/Gunnlaugs_saga_ormstungu.html",
+   "sha256": "c939ba3f75bea19757dbde1962eb02819ebf5fc258950b082867c74bcf577af5",
+   "bytes": 95263,
+   "used_by": [
+    "NORSE"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://heimskringla.no/wiki/Gunnlaugs_saga_ormstungu",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/norse_heimskringla/Gísla_saga_Súrssonar.html",
+   "sha256": "f2bcf903ae916a66386a4636aebbaca8035bf3a7899a866513b7faa4790c549c",
+   "bytes": 177400,
+   "used_by": [
+    "NORSE"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://heimskringla.no/wiki/G%C3%ADsla_saga_S%C3%BArssonar",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/norse_heimskringla/Hrafnkels_saga_Freysgoða.html",
+   "sha256": "afca90b24883bbae0711abb25e9eee8aff43ed559a4bbde79761cda02daa7ad9",
+   "bytes": 83991,
+   "used_by": [
+    "NORSE"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://heimskringla.no/wiki/Hrafnkels_saga_Freysgo%C3%B0a",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/norse_heimskringla/Völsunga_saga.html",
+   "sha256": "9151ff63ca799acd7855b79be267c56a551069bc63782fd5090ba7aab12eff78",
+   "bytes": 181050,
+   "used_by": [
+    "NORSE"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://heimskringla.no/wiki/V%C3%B6lsunga_saga",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round36/I1-new-registers/corpora/norse_heimskringla/Ynglinga_saga.html",
+   "sha256": "00c7e0a91b6a528c533bdbd921a72c0c27aa8da19eb68d4937c355453f1c1175",
+   "bytes": 100301,
+   "used_by": [
+    "NORSE"
+   ],
+   "r32_sha256": null,
+   "r19_sha256": null,
+   "matches_round32": "n/a (new in Round 36)",
+   "matches_round19": "n/a (new in Round 36)",
+   "how_obtained": "python analysis/round36/I1-new-registers/fetch_r36.py (URL below; logged in I1 fetch_log.json)",
+   "url": "https://heimskringla.no/wiki/Ynglinga_saga",
+   "status": "new in Round 36 (I1); re-fetched by P1 on 2026-10-30: identical",
+   "refetch_verified": true
+  },
+  {
+   "path": "analysis/round10b/B6-non-english-plaintext/corpora/oe_beowulf.txt",
+   "sha256": "5190b80b0829da81b1b375a5494909dc751aa365de6a88a816b576c048c54839",
+   "bytes": 959391,
+   "used_by": [
+    "OE"
+   ],
+   "r32_sha256": "5190b80b0829da81b1b375a5494909dc751aa365de6a88a816b576c048c54839",
+   "r19_sha256": "5190b80b0829da81b1b375a5494909dc751aa365de6a88a816b576c048c54839",
+   "matches_round32": true,
+   "matches_round19": true,
+   "how_obtained": "in the repo (tracked file)",
+   "url": null,
+   "status": "in-repo, hash identical to Round 32/Round 19 record",
+   "refetch_verified": "n/a (tracked in repo)"
+  },
+  {
+   "path": "data/keys/runepoem_oe.txt",
+   "sha256": "01a5d48b64209823a8583afe2ad83f252b593a1b307e926253fb64cf21c13992",
+   "bytes": 3411,
+   "used_by": [
+    "OE"
+   ],
+   "r32_sha256": "01a5d48b64209823a8583afe2ad83f252b593a1b307e926253fb64cf21c13992",
+   "r19_sha256": "01a5d48b64209823a8583afe2ad83f252b593a1b307e926253fb64cf21c13992",
+   "matches_round32": true,
+   "matches_round19": true,
+   "how_obtained": "in the repo (tracked file)",
+   "url": null,
+   "status": "in-repo, hash identical to Round 32/Round 19 record",
+   "refetch_verified": "n/a (tracked in repo)"
+  }
+ ],
+ "summary": {
+  "n_inputs": 53,
+  "n_registers_inputs": {
+   "EN_MODERN": 2,
+   "EN_KJV": 1,
+   "LP1_REAL": 1,
+   "LATIN": 2,
+   "OE": 2,
+   "DE": 2,
+   "CY": 1,
+   "EN_HALFVOWEL": 2,
+   "EN_NOVOWEL": 2,
+   "GREEK": 27,
+   "HEBREW": 7,
+   "NORSE": 8
+  },
+  "match_round32": [
+   "SOLVED-PAGES.json",
+   "analysis/latin/latin_218.txt",
+   "analysis/latin/latin_28233.txt",
+   "analysis/round10b/B6-non-english-plaintext/corpora/de_2.txt",
+   "analysis/round10b/B6-non-english-plaintext/corpora/de_faust.txt",
+   "analysis/round10b/B6-non-english-plaintext/corpora/oe_beowulf.txt",
+   "data/keys/runepoem_oe.txt",
+   "data/keys/self_reliance.txt",
+   "data/keys/welsh/welsh_mabinogion.txt"
+  ],
+  "differ_from_round32": [
+   "data/keys/mabinogion.txt",
+   "data/kjv.txt"
+  ],
+  "new_in_round36": [
+   "analysis/round36/I1-new-registers/corpora/greek_nestle1904/1-Corinthians-ap.xhtml",
+   "analysis/round36/I1-new-registers/corpora/greek_nestle1904/1-John-ap.xhtml",
+   "analysis/round36/I1-new-registers/corpora/greek_nestle1904/1-Peter-ap.xhtml",
+   "... (42 files)"
+  ]
+ },
+ "code_sha256": {
+  "analysis/round36/I1-new-registers/build_models_r36.py": "0f513da9407b879beb056ffefa4e33dd13df89bd36bf45c4f7ad11d66f5f031f",
+  "analysis/round36/I1-new-registers/mappings_r36.py": "8e109c4c9c87f9b2cba134ba2f2303cf51311b2e4320009644c4e14264f6b785",
+  "analysis/round10b/B6-non-english-plaintext/detectors.py": "cbe1bb77c8214df7d4ee49c492f4085042a52bb44382ade5d9ea472e9e533e6b",
+  "benchmark/plant.py": "88d2a57227642a80e9e64474860875992bb9641bd00821ee2172e05e1008c25d",
+  "analysis/campaign18_skip/skipdecode.py": "49efcad017bb597abd11d6745c79ec1b4cd11d6ec00b483d08a3b22938762ee0",
+  "analysis/round32/I2-multiregister-readjudication/adjudicate.py": "3d007a7e2084954d87a595d758f6f08a49cfe93c1e5583db1856b1a432b387af",
+  "analysis/round32/I2-multiregister-readjudication/power.py": "54ce4d516cc73de53f3abbf62eb199cf66dd0792653ba1e336b71fa29adee9c8",
+  "analysis/round36/I1-new-registers/run_gate.py": "6bea42517588f5b263261beec55422d530da22bcf60b1764b2d0f1a9ac3fa099",
+  "analysis/round36/P1-panel-r36/build_r36.py": "149433085d50f9f1d72ac28bb73dc00f19cf1f886aa41bf46827647c246b0f07",
+  "data/fetch_sources.py": "2631ff5eac6054e646868ce577bec9acd207197be7898742b92b635423f7bb49"
+ },
+ "environment": {
+  "python": "3.12.10",
+  "numpy": "2.4.6",
+  "platform": "Windows-11-10.0.26200-SP0"
+ },
+ "build_params": {
+  "mode": "--nine=rebuild",
+  "lambdas": [
+   0.7,
+   0.2,
+   0.09,
+   0.01
+  ],
+  "null_draws_per_length": 20000,
+  "null_seed": 3301,
+  "len_grid": [
+   32,
+   48,
+   64,
+   96,
+   128,
+   160,
+   200,
+   240,
+   320,
+   400,
+   500,
+   640,
+   800,
+   1000
+  ],
+  "mapping_variant": {
+   "GREEK": 1,
+   "HEBREW": 1,
+   "NORSE": 1
+  }
+ }
+}

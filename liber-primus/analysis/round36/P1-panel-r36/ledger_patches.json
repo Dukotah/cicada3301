@@ -1,0 +1,15 @@
+{
+ "$comment": "PROPOSED patches for liber-primus/LEDGER.json; NOT applied. Source: analysis/round36/P1-panel-r36",
+ "patches": [
+  {
+   "id": "R27-CPORT-MT32-FULLSWEEP",
+   "note_add": "Round 36 P1 (2026-10-30): the Round 19 panel gate (panel_lm.f32 sha 14a23d36..) is unrebuildable (Welsh corpus lost). The 44.14 % S2 coverage and the completed S1 lane were produced under that gate and remain recorded as such, not re-scored. Any S2 work after the re-gate is adjudicated by panel-R36 (12 registers, panel12.npz sha a0682f0c.., engine blob sha e46d4bb7..) and is a NEW measurement, not a continuation of the Round 19-gated rows; pmax values are not comparable across the change (28/64 V1 vectors move). Claim bars 7.3835 / 7.6342 are Round 19-panel quantities and are not recalibrated. See round36/P1-panel-r36/GATE-CHANGE.md.",
+   "not_covered_add": "S2 rows after the re-gate use a 12-register panel with a modern-Welsh CY substitute; claim bars not recalibrated for 12 registers; the S2 histogram/top list before the change point is Round 19-gated.",
+   "evidence_add": [
+    "liber-primus/analysis/round36/P1-panel-r36/GATE-CHANGE.md",
+    "liber-primus/analysis/round36/P1-panel-r36/RESULTS.md",
+    "liber-primus/analysis/round36/P1-panel-r36/engine_config_diff.txt"
+   ]
+  }
+ ]
+}

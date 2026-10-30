@@ -1,0 +1,88 @@
+{
+ "$comment": "Round 36 lane P1 ledger fragment. Coordinator merges into LEDGER.json.",
+ "lane": "round36/P1",
+ "date": "2026-10-30",
+ "entries": [
+  {
+   "id": "R36-P1-PANEL-R36-GATE",
+   "lane": "round36/P1",
+   "round": "36",
+   "date": "2026-10-30",
+   "status": "measured",
+   "positive_control": "passed",
+   "hypothesis": "A 12-register panel built from disk with every corpus input recorded (panel-R36) can replace the unrebuildable Round 19 panel as the S2 engine's recorded gate: byte-reproducible from a clone, power >= 0.90 for every register at L=120 and L=240.",
+   "coverage": "12 registers x L in {120,240} x 24 planted reps over held-out text; wrong-key null 4000 (L=120) / 2000 (L=240) real-LP2 decodes; 53 input files hashed; build run twice (different PYTHONHASHSEED).",
+   "result": {
+    "panel_R36_npz_sha256": "a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+    "panel_lm_f32_sha256": "e46d4bb73d16adeb02262361325b2a6ff578ae436b1374a7725a0a240f7e9928",
+    "retired_gate_sha256": "14a23d3619fa02dfb6aa20efafdd0fc0ff633c83d8dc5f02ac4d5d035b996297",
+    "build_twice_byte_identical": true,
+    "first_attempt_identical": false,
+    "first_attempt_cause": "I1 mappings_r36.hebrew_to_ascii iterates a python set (PYTHONHASHSEED-dependent) for 15/384147 two-vowel-mark Hebrew clusters; fixed in build_r36.py by sorting",
+    "bars_pmax12": {
+     "120": 4.393726450260903,
+     "240": 4.717348402862401
+    },
+    "all_12_registers_ge_0.90_at_both_L": true,
+    "power": {
+     "EN_MODERN|120": 1.0,
+     "EN_KJV|120": 1.0,
+     "LP1_REAL|120": 1.0,
+     "LATIN|120": 1.0,
+     "OE|120": 1.0,
+     "DE|120": 1.0,
+     "CY|120": 1.0,
+     "EN_HALFVOWEL|120": 1.0,
+     "EN_NOVOWEL|120": 0.9166666666666666,
+     "GREEK|120": 1.0,
+     "HEBREW|120": 1.0,
+     "NORSE|120": 1.0,
+     "EN_MODERN|240": 1.0,
+     "EN_KJV|240": 1.0,
+     "LP1_REAL|240": 1.0,
+     "LATIN|240": 1.0,
+     "OE|240": 1.0,
+     "DE|240": 1.0,
+     "CY|240": 1.0,
+     "EN_HALFVOWEL|240": 1.0,
+     "EN_NOVOWEL|240": 1.0,
+     "GREEK|240": 1.0,
+     "HEBREW|240": 1.0,
+     "NORSE|240": 1.0
+    },
+    "thinnest_cell": "EN_NOVOWEL L=120 22/24=0.917 (same as Round 32)",
+    "inputs": {
+     "n": 53,
+     "match_round32": 9,
+     "differ_from_round32": [
+      "data/kjv.txt",
+      "data/keys/mabinogion.txt (Round 19 originals now on disk)"
+     ],
+     "substitute": "CY = Round 32 modern-Welsh prose (624ffc97), not Round 19's lost 4b3fd926; fetch_sources.py --welsh does not reproduce it (da02fef6), so frozen in inputs_frozen/",
+     "new_in_R36": 42
+    },
+    "relationship_to_round19": "8 of 9 original registers reproduce Round 19 n=120 mu/sd to <=5e-16; only CY differs",
+    "engine_copy": "grind27.c NREG 9->12; engine.dat/panel_lm.f32 re-pointed; 28/64 V1 pmax change (-0.66..+1.34), V2 17.931158509762 unchanged; grind27.c does not verify PANEL_SHA256 (check_panel_gate.py added); C self-test NOT run (no compiler)"
+   },
+   "threshold": "build-twice byte-identical; per-register pmax power >= 0.90 at L=120 and L=240; fixed in PREREG.md before any build",
+   "threshold_fixed_in_advance": true,
+   "governance": "S2 results after the re-gate are adjudicated by panel-R36 and are a NEW measurement, not a continuation of Round 19-gated rows. Claim bars NOT recalibrated for 12 registers.",
+   "three_conditionals": {
+    "key_space": "none swept (instrument/governance lane)",
+    "decoder_transition_model": "Round 32 keyskip beam (400,3), correct key handed over; the engine's pair/keyskip2 beam-64 screen power not re-measured",
+    "adjudicator_register": "12 registers; CY is a modern-Welsh substitute"
+   },
+   "not_covered": "C --self-test (S1); cross-machine byte-exactness of the null-calibration floats; claim-bar recalibration (decision D1); 24 replicates (Wilson lower bound 0.86); S2 run-dir/histogram policy (D2).",
+   "evidence": [
+    "liber-primus/analysis/round36/P1-panel-r36/RESULTS.md",
+    "liber-primus/analysis/round36/P1-panel-r36/GATE-CHANGE.md",
+    "liber-primus/analysis/round36/P1-panel-r36/PREREG.md",
+    "liber-primus/analysis/round36/P1-panel-r36/inputs_r36.json",
+    "liber-primus/analysis/round36/P1-panel-r36/build_twice.json",
+    "liber-primus/analysis/round36/P1-panel-r36/gate_proof_r36.json",
+    "liber-primus/analysis/round36/P1-panel-r36/engine_config_diff.txt",
+    "liber-primus/analysis/round36/P1-panel-r36/verify_fetch.json"
+   ]
+  }
+ ]
+}

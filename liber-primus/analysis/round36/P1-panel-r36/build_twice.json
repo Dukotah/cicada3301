@@ -1,0 +1,26 @@
+{
+ "protocol": "python build_r36.py build1 (PYTHONHASHSEED=1) and python build_r36.py build2 (PYTHONHASHSEED=2): separate processes, same parameters, same disk; hash seeds differ on purpose",
+ "files": {
+  "out_build12.json": {
+   "build1_sha256": "405c3ccd174581c630ec219bafe25565e2dff4fac347ce7f4208c8f734d4ca63",
+   "build2_sha256": "4180ae72230ccec49ea44b48c99cc1e4af5c31a2ec1506eb77ead2c88b3c89aa",
+   "identical": false
+  },
+  "panel12.npz": {
+   "build1_sha256": "a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+   "build2_sha256": "a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+   "identical": true
+  },
+  "testhalves12.npz": {
+   "build1_sha256": "cdd55adac8c9731116d3e059afa183503b21f1a532706720f58e7c9873736494",
+   "build2_sha256": "cdd55adac8c9731116d3e059afa183503b21f1a532706720f58e7c9873736494",
+   "identical": true
+  }
+ },
+ "out_build12_identical_except_wallclock_fields(built,elapsed_s)": true,
+ "arrays_identical": true,
+ "panel_R36_sha256": "a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+ "testhalves_sha256": "cdd55adac8c9731116d3e059afa183503b21f1a532706720f58e7c9873736494",
+ "byte_identical": true,
+ "first_attempt_note": "The first pair of builds (default hash randomisation) was NOT identical: HEBREW test half and the LM/mu/sd/corr arrays differed. Root cause: I1 mappings_r36.hebrew_to_ascii iterates python sets of combining marks (PYTHONHASHSEED-dependent order) - 15 of 384,147 Hebrew clusters carry two vowel marks. Fixed in build_r36.py by sorting the marks (code-point order) at import time; I1's file is unmodified."
+}
