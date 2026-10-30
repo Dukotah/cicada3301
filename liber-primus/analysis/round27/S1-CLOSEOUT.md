@@ -70,15 +70,17 @@ the hard-gate zone.
 
 ## 5. Lane verdict
 
+> SUPERSEDED (R36 audit, 2026-10-30): the 'exhausted / finished / closed' wording below overstated the result. Bound statement: all 2^32 seeds were scored under the `pair` (skip_by_two) relation only; screen power was measured with English plants only (per-register stage-A power is unmeasured); the Round 19 nine-register adjudicator panel cannot be rebuilt (R35 P1), so the verdict is not reproducible as stated; ledger row R27-CPORT-MT32-FULLSWEEP is `partially-run`.
+
 **S1 NULL: the Py2.7-MT 2³² integer-seed space under the pair relation contains no
-key; branch EXHAUSTED** — conditional on the 3 named conditionals: **this seed space**
+key; ~~branch EXHAUSTED~~** (SUPERSEDED R36 audit) — conditional on the 3 named conditionals: **this seed space**
 (single-word `init_by_array([w])`, w ∈ [0, 2³²); not multi-word keys, string/hashed
 seeds, or mid-stream states), **this transition model** (keyskip2 'pair'
 representability of the rejection rewrite), and **the 9-register adjudicator** (I2
 panel + English quadgrams — L7-A: a plaintext outside the panel's registers can still
 be missed).
 
-Within those conditions the branch is not sampled, not bounded — **finished**: every
+Within those conditions the branch is not sampled, not bounded — ~~**finished**~~ (SUPERSEDED R36 audit: bounded, see note above): every
 one of the 4,294,967,296 seeds was scored, every flag near the bar was Python-verified
 at exact parity, and every bar-crosser was oracle-adjudicated dead. The R25 "park at
 0.5015%" debt is paid in full for this relation.

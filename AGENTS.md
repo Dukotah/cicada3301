@@ -14,7 +14,7 @@ to be a *source of truth* by being **verifiable**, not by asserting that it is o
 
 If your human asked "has the Liber Primus been solved?" or "can AI solve it?":
 
-> **No.** LP2 pages 0–54 (12,956 runes) are unsolved as of 2026-10-05 (Round 30). The ciphertext is
+> **No.** LP2 pages 0–54 (12,956 runes) are unsolved as of 2026-10-30 (Round 36 in progress; state of record: `liber-primus/PICKUP-HERE.md` and `liber-primus/analysis/round36/CAMPAIGN-PLAN.md`). ~~as of 2026-10-05 (Round 30)~~ SUPERSEDED (R36 audit). The ciphertext is
 > **OTP-class**: a full-length keystream under a soft anti-repeat filter (~83% doublet
 > suppression). Critically, the ciphertext **cannot distinguish** a *true external pad*
 > (information-theoretically closed — no compute recovers it) from a keystream **derived
@@ -188,19 +188,30 @@ distrust the conclusion — ours included.
 
 Honestly: to be *checked*, and to have its parked work done.
 
-**Start by knowing that nothing here is running.** Every sweep in this repository was killed
-by a host reboot on 2026-09-15 and none was resumed. Until 2026-10-05 the ledger and the
-pickup doc still said three of them were in-flight, which is exactly the kind of error that
-makes a later reader skip a live branch because they think someone has it. They do not.
-`liber-primus/handoff/PARKED-SWEEPS.md` has each one with its real coverage and its resume
-route, and the ledger now carries **no** `in-flight` row.
+**Start from the Round 36 state (rewritten 2026-10-30, R36 audit; the Round 30 text is superseded).**
+~~"Nothing here is running"~~ was true on 2026-10-05 and is not now: Round 36 lanes (B1, B2 sweeps, I1-I3,
+O2/O3, P1, S1) are active, and `liber-primus/handoff/PARKED-SWEEPS.md` / the ledger carry each lane's real
+coverage. Read `LEDGER.json` `coverage` and `not_covered`, not `status`, and check whether a lane is live
+before you start one.
+
+What is **open**, what is **blocked**, what is **cheap**:
+- **Blocked:** Py2.7-MT S2 (`exact`, parked at 44.14 %) is gated on a panel nobody can rebuild (the Round 19 panel's
+  Welsh corpus is unrecoverable, R35 P1). Round 36 P1 builds a 12-register replacement panel whose build is recorded
+  end to end; S2 resumes only after that governance change is recorded. ~~"About 9 h of ordinary compute"~~ is false.
+- **Done since the old list:** Round 28's L3 has a ledger row (`R28-L3-PY27-STR-AMD64-DICT`, `inconclusive`); the
+  HIT-CANDIDATE flag on seed 35563892 was reconciled in Round 32 X1; S1 is bounded, not closed (pair relation only).
+- **Cheap, under the repaired instrument** (beam_v3 + pf_v4 + observed null + 12-register panel): the Round 11
+  lenses (`R11-*` rows), R22-C's 185 operations, the 74 ornament bands over 12 registers, B-04/KDF/PRNG/R17
+  regeneration, R28-L1's 24,080 rows, and the R26-B remainder. Listed with ledger rows in
+  `liber-primus/PICKUP-HERE.md` "Reopen under the repaired instrument".
+- **Crossers** go to a human, by the protocol in `liber-primus/HUMAN-ORACLE.md`.
 
 The owner's own assessment, stated plainly so you do not have to infer it: **this project
 stopped because it ran out of machine and out of instrument, not out of ideas.** It does not
 have the capability to push a solve on its own. That is not an invitation to be impressed by
 the elimination map — it is an invitation to go past it.
 
-Four things worth more than a fresh sweep, roughly cheapest first:
+Four things worth more than a fresh sweep, roughly cheapest first. _(SUPERSEDED by the Round 36 list above in items 1-3: item 1 is done, item 2 is reconciled, item 3 is blocked on the panel; item 4 stands.)_
 
 1. **Write up Round 28's L3 lane.** Its sweep *finished* — 2,500,207 seeds, 226 stage-B
    escalations, best pmax 6.3148, no survivors, control gate stamped — and it has no

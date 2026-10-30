@@ -39,7 +39,7 @@ def _get(url, dst):
 # could not be rebuilt on a fresh clone). The ORIGINAL corpus (524,561 B, Middle-Welsh Mabinogion,
 # sha 4b3fd926...) is NOT recoverable from here; I2 used a SUBSTITUTE of modern Welsh prose from four
 # Project Gutenberg texts (716,409 chars after boilerplate strip). Panel numbers built from it are a
-# sibling of, not identical to, round19/I2's. Pass --welsh to fetch it (opt-in; ~1 MB).
+# sibling of, not identical to, round19/I2's. Pass --welsh to fetch it (opt-in; ~1 MB). R36 audit: --welsh now verifies the result against the pinned sha (check_welsh_pin) and fails with a clear message if the mirror drifted; --r36 fetches the sha-pinned Greek/Hebrew/Norse corpora.
 WELSH_GUTENBERG_IDS = [3680, 57981, 56275, 67424]   # Cartrefi Cymru, Brethyn Cartref, I'r Aifft Ac Yn Ol, Nedw
 WELSH_DST = os.path.join(os.path.dirname(HERE), "data", "keys", "welsh", "welsh_mabinogion.txt")
 
@@ -104,6 +104,58 @@ def ensure_r19_corpora(force=False, verbose=True):
             print(f"  fetched {rel} ({n} B, sha verified)")
 
 
+# --- R36 audit item 14: pin the Welsh substitute by sha ----------------------------------------------
+# The on-disk Round 32/35 substitute (data/keys/welsh/welsh_mabinogion.txt) is 761,030 B, sha 624ffc97...
+# R35 P1's refetch gave 761,024 B (sha da02fef6...): the Gutenberg mirror no longer serves the same bytes.
+WELSH_SUBSTITUTE_SHA256 = "624ffc97186b62b6dc70ae4e968c03d9ed44fc5361452e170780657c09e63329"
+WELSH_SUBSTITUTE_BYTES = 761030
+
+
+def check_welsh_pin(path=None):
+    """Return True if the Welsh substitute on disk matches the pinned sha; raise with a clear message if not."""
+    import hashlib
+    path = path or WELSH_DST
+    data = open(path, "rb").read()
+    got = hashlib.sha256(data).hexdigest()
+    if got != WELSH_SUBSTITUTE_SHA256 or len(data) != WELSH_SUBSTITUTE_BYTES:
+        raise RuntimeError(
+            f"Welsh substitute is NOT the pinned one: got {len(data)} B sha {got[:8]}..., pinned "
+            f"{WELSH_SUBSTITUTE_BYTES} B sha {WELSH_SUBSTITUTE_SHA256[:8]}.... The Project Gutenberg mirror no "
+            f"longer serves the bytes the Round 32/35 panel was built from (R35 P1 refetch: 761,024 B, da02fef6...). "
+            f"Panels built from this file are NOT the pinned sibling; obtain the frozen 761,030 B input "
+            f"(release asset / the owner's copy) or record the new sha as a governance change. The original "
+            f"Round 19 Welsh corpus (524,561 B, 4b3fd926...) is unrecoverable.")
+    return True
+
+
+# --- R36 audit item 14: --r36 Greek / Hebrew / Norse corpora (sha-pinned) -----------------------------
+# Table: data/r36_corpora.json, generated from analysis/round36/I1-new-registers/fetch_log.json (same URLs as
+# fetch_r36.py). Output goes where the Round 36 panel build reads it (gitignored: .gitignore round36/**/corpora/).
+R36_TABLE = os.path.join(HERE, "r36_corpora.json")
+R36_DST = os.path.join(os.path.dirname(HERE), "analysis", "round36", "I1-new-registers", "corpora")
+
+
+def ensure_r36_corpora(force=False, verbose=True):
+    """Fetch the Round 36 I1 corpora; REFUSE (raise) on any sha256/size mismatch. heimskringla.no is a live wiki."""
+    import hashlib, json
+    table = json.load(open(R36_TABLE, encoding="utf-8"))["files"]
+    for f in table:
+        dst = os.path.join(R36_DST, f["register_dir"], f["file"])
+        if os.path.exists(dst) and not force and hashlib.sha256(open(dst, "rb").read()).hexdigest() == f["sha256"]:
+            continue
+        req = urllib.request.Request(f["url"], headers={"User-Agent": "cicada3301-rig"})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            data = r.read()
+        if hashlib.sha256(data).hexdigest() != f["sha256"] or len(data) != f["bytes"]:
+            raise RuntimeError(f"{f['url']}: sha/size differs from the recorded Round 36 corpus "
+                               f"(upstream re-edited?); refusing to write {dst}")
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        with open(dst, "wb") as fh:
+            fh.write(data)
+        if verbose:
+            print(f"  fetched {f['register_dir']}/{f['file']} ({f['bytes']} B, sha verified)")
+
+
 def ensure_sources(force=False, verbose=True):
     """Download any missing source files; return the sources dir path."""
     os.makedirs(SRC, exist_ok=True)
@@ -125,4 +177,7 @@ if __name__ == "__main__":
         ensure_r19_corpora(force=force)
     if "--welsh" in sys.argv:
         ensure_welsh_substitute(force=force)
+        check_welsh_pin()
+    if "--r36" in sys.argv:
+        ensure_r36_corpora(force=force)
     print("done.")

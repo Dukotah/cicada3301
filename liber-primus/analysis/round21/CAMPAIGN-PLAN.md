@@ -96,7 +96,7 @@ one-time pad under every tested class, with a soft anti-repeat rewrite on the ci
 Per doctrine mechanic 6 and R7, none of the following is a lane; each is dead with a recorded reason:
 
 - **Published-keytext / running-key** — doublet-excluded by mechanism (z≈−16.9), skip-aware
-  un-anchorable. (Round 7.)
+  un-anchorable. (Round 7.) **SUPERSEDED (R36 audit, 2026-10-30; R12-D1 retraction + R26-B):** the 'foreclosed by mechanism' claim was retracted (README/PAPER) and R26-B ran skip-aware presets on keytexts with control recovery 1.000; keytext is a *bounded* class (see `R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE` not_covered, `R12-C2`). Do not copy this bullet into later plans.
 - **The number channel** (primes/gaps/digits/base-conversion/totient) — Round 11, 7 lenses, NULL.
 - **OSINT / AN-END retrieval** — unreachable by construction; preimage battery complete-negative.
 - **Attribution to a name** — 359-word corpus < floor; provably impossible.

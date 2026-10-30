@@ -168,6 +168,7 @@ measured power envelope covering that space's construction and register classes.
 8. **Keep the navigation docs true** — `README.md`, `ELIMINATION-LEDGER.md`,
    `analysis/README.md`, `PICKUP-HERE.md`. A result that exists only in its own folder is a
    result nobody will find.
+9. **A bar-clearing survivor is flagged-for-oracle, never auto-certified.** The concrete path (bundle, adjudicator, what "pass" means) is [`HUMAN-ORACLE.md`](HUMAN-ORACLE.md).
 
 ---
 

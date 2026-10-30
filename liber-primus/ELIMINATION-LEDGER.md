@@ -342,20 +342,39 @@ ciphertext can close them:
    IoC, normal doublets). There is **no new *unsolved* material**; pages 0–55 are the
    complete unsolved corpus.
 
-## Do NOT re-run (proven dead — reasons recorded above)
-More keywords • more short/periodic keys • more number-theoretic or PRNG keystreams •
-autokey/autoclave • differencing/integration • page-on-page keying • transposition-only •
-fractionation • substitution/homophonic • image stego • AI-vision re-transcription •
-treating pp49–51 as a runic key. All eliminated with the reason and a reproduce pointer.
+## Measured bounds and their reopen conditions
+> **Retitled R36 audit (2026-10-30).** Was "Do NOT re-run (proven dead - reasons recorded above)".
+> ARMADA-DOCTRINE R7 forbids "dead/closed/proven dead" as a verdict: every item below is a
+> *measured bound* on one (key space, transition model, adjudicator register) triple, and
+> every underlying negative is English-only (L7-A). Each item ends with what would reopen it.
+> Do not re-run it AS-IS; do re-run it when the named conditional changes.
 
-**Added by Rounds 1–8 (2026-08):** **another keytext** (dead by exhaustion over ~200 texts,
-verified robust to skip and rewrite — Round 7 + Round 12 D1) • **integer-seeded PRNG pads over
-the swept generators** (2.52×10⁹ decodes, 0 hits — Round 8 SEED; **bounded — read the correction
-below**) • **glyph-shape / micro-spacing / baseline stego** in the page renders (Round 8
-GEOMETRY) • **compressed or binary plaintext** (Round 8 PAYLOAD) • **residual doublets as
-book-cipher pointers** (Round 8 POINTERS) • **the interrupter-artifact explanation** of the
-doublet deficit (Round 1) • **second-order structure in the no-repeat rule** — it is a pure
-lag-1 identity (Round 6).
+More keywords - more short/periodic keys - more number-theoretic keystreams (bounded by
+the Round 11 rows `R11-N1..N5-NUMBER-CHANNEL`; reopen = register-aware beam_v3 + 12-register panel) -
+~~PRNG keystreams~~ **SUPERSEDED (R36 audit): not foreclosed.** PRNG families are live lanes (bash,
+PHP, Perl, TeX, Py2.7-MT: R26, R32, R34-R36, R28-L4); reopen = a generator not yet swept, or the
+PHP/Perl/TeX tails in `R28-L4-UNSWEPT-GENERATORS-QUEUE`, or a re-score of `R16-PRNG` with pf_v4 + beam_v3 -
+autokey/autoclave (bounded by `R11-N1-NUMBER-CHANNEL` for the feedback class; reopen = non-English
+registers / skip-tolerant screen) - differencing/integration - page-on-page keying - transposition-only -
+fractionation - substitution/homophonic - image stego (bounded at resolution by R8 GEOMETRY,
+`R29-L1`, R30-A1/A2, R20-N1; reopen = a new capture route, not a re-extraction) - AI-vision
+re-transcription - treating pp49-51 as a runic key. Each was eliminated with a reason and a
+reproduce pointer *under the English-only conditional*; their ledger rows carry the coverage.
+
+**Added by Rounds 1-8 (2026-08):** ~~**another keytext** (dead by exhaustion over ~200 texts,
+verified robust to skip and rewrite - Round 7 + Round 12 D1)~~ **SUPERSEDED (R36 audit):** the
+"by exhaustion/by mechanism" claim was retracted (README/PAPER, R12-D1) and R26-B ran the lane;
+the keytext class is *bounded*, not closed. Reopen = the `R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE`
+`not_covered` list (pages 20/22/25/27/29, sign=+1, 4 of 33 texts truncated) and `R12-C2` (never-run,
+`threshold_fixed_in_advance:false`) - **integer-seeded PRNG pads over the swept generators**
+(2.52x10^9 decodes, 0 hits - Round 8 SEED; bounded to ~3 % of each seed space - read the correction
+below; reopen = larger/other seed spaces, or the re-decode of the source decodes with beam_v3, per the
+`not_covered` of `B-04`/`R16-KDF`/`R16-PRNG`) - **glyph-shape / micro-spacing / baseline stego** in the page renders (Round 8
+GEOMETRY; reopen = a different capture or a vector-level source) - **compressed or binary plaintext** (Round 8 PAYLOAD; reopen
+= `R28-L5-PAYLOAD-MICRO` not_covered) - **residual doublets as
+book-cipher pointers** (Round 8 POINTERS; reopen = a held book-cipher source) - the **interrupter-artifact explanation** of the
+doublet deficit (Round 1; reopen = a non-doublet-deficit model) - **second-order structure in the no-repeat rule** - it is a pure
+lag-1 identity (Round 6; this one is a proved identity, not a bound).
 
 **Added by Rounds 9–12 (2026-08):** the **number/value channel** in every form Round 11 tested
 (feedback autokey, prime-gap/index, number-theoretic structure, digit planes, totient ladder,
@@ -946,7 +965,7 @@ NET: the hint-literal number channel — the most-cited "surely they meant the p
 in the whole mystery — is now a measured, control-validated NEGATIVE. Verdict tightened, not
 reopened. Only roadmap residue left is external/low-prior (PA-3 binary pads under skip-aware
 decode; dense-OTP re-segmentation) — inputs/imaging, not more transforms of the held stream.
-Do NOT re-run any Round-11 lens.
+~~Do NOT re-run any Round-11 lens.~~ **REOPEN NOTE (R36 audit, 2026-10-30):** the Round 11 scores are English quadgram scores through `lib_numchannel` and the legacy skip beam; they are English-only, legacy-decoder bounds. Now indexed as ledger rows `R11-N1..N5-NUMBER-CHANNEL`, `R11-S1-NUMBER-CHANNEL`, `R11-S2-NUMBER-CHANNEL` (status `measured`). Reopen under beam_v3 + pf_v4 + the 12-register panel: cheap (minutes to about 1 h, a few hundred decodes).
 
 ---
 

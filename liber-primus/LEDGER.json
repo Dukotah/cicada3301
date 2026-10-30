@@ -21,12 +21,12 @@
     "audit"
   ],
   "counts": {
-    "total": 202,
+    "total": 209,
     "by_status": {
       "open": 19,
       "never-run": 8,
       "partially-run": 16,
-      "measured": 60,
+      "measured": 67,
       "superseded": 3,
       "negative": 55,
       "inconclusive": 1,
@@ -7786,6 +7786,202 @@
       ],
       "source_register": null,
       "notes": "Row constructed by the R35 coordinator from the lane's RESULTS.md/results.json (its ledger.json is a summary, not a row). Coordinator 2026-10-30: the linear D5c rule m_NV=0.055*L is RETIRED; Round 34 I3's '4/4 lengths' validated per-L fitted thresholds, not this rule, and is marked unreplicated for the linear form. Any successor (separate NOVOWEL / HALFVOWEL margins) must be pre-registered on independent keys (the R35 keys were a 7-rep shift of each other)."
+    },
+    {
+      "id": "R11-N1-NUMBER-CHANNEL",
+      "lane": "round11/N1",
+      "hypothesis": "Round 11 number-channel lens N1: cumulative-gematria FEEDBACK autokey (48 configs: PT/CT feedback x f{mod29,totient,digitsum} x sign x direction x reset/continuous).",
+      "status": "measured",
+      "raw_status": "negative (as filed in 2026-08)",
+      "round": 11,
+      "date": "2026-08-17",
+      "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
+      "threshold_fixed_in_advance": true,
+      "result": "best -7.438 vs null_max -7.446; no hit",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "three_conditionals": {
+        "key_space": "the Round 11 N1 lens configuration set only; the other six lenses are separate rows",
+        "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
+        "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
+      },
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "evidence": [
+        "liber-primus/analysis/round11/N1/RESULTS.md",
+        "liber-primus/analysis/round11/N1/results.json",
+        "liber-primus/analysis/round11/SYNTHESIS.md",
+        "liber-primus/analysis/round11/PREREG.md"
+      ],
+      "reproduce": "python liber-primus/analysis/round11/N1/n1.py",
+      "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+    },
+    {
+      "id": "R11-N2-NUMBER-CHANNEL",
+      "lane": "round11/N2",
+      "hypothesis": "Round 11 number-channel lens N2: prime-gap / prime-index as a keystream/data channel.",
+      "status": "measured",
+      "raw_status": "negative (as filed in 2026-08)",
+      "round": 11,
+      "date": "2026-08-17",
+      "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
+      "threshold_fixed_in_advance": true,
+      "result": "best -6.951 vs -6.901 (prime_gap has only 5 distinct values; printable-ratio 1.0 is a mapping artifact)",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "three_conditionals": {
+        "key_space": "the Round 11 N2 lens configuration set only; the other six lenses are separate rows",
+        "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
+        "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
+      },
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "evidence": [
+        "liber-primus/analysis/round11/N2/RESULTS.md",
+        "liber-primus/analysis/round11/N2/results.json",
+        "liber-primus/analysis/round11/SYNTHESIS.md",
+        "liber-primus/analysis/round11/PREREG.md"
+      ],
+      "reproduce": "python liber-primus/analysis/round11/N2/n2.py",
+      "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+    },
+    {
+      "id": "R11-N3-NUMBER-CHANNEL",
+      "lane": "round11/N3",
+      "hypothesis": "Round 11 number-channel lens N3: whole-book / segments as number-theoretic objects (primes, perfect powers, Mersenne-ish, bit-lengths).",
+      "status": "measured",
+      "raw_status": "negative (as filed in 2026-08)",
+      "round": 11,
+      "date": "2026-08-17",
+      "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
+      "threshold_fixed_in_advance": true,
+      "result": "0 primes / perfect powers / Mersenne-ish / notable bit-lengths across 55 segments; real structure total 0 vs null mean 0.125",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "three_conditionals": {
+        "key_space": "the Round 11 N3 lens configuration set only; the other six lenses are separate rows",
+        "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
+        "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
+      },
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "evidence": [
+        "liber-primus/analysis/round11/N3/RESULTS.md",
+        "liber-primus/analysis/round11/N3/results.json",
+        "liber-primus/analysis/round11/SYNTHESIS.md",
+        "liber-primus/analysis/round11/PREREG.md"
+      ],
+      "reproduce": "python liber-primus/analysis/round11/N3/n3.py",
+      "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+    },
+    {
+      "id": "R11-N4-NUMBER-CHANNEL",
+      "lane": "round11/N4",
+      "hypothesis": "Round 11 number-channel lens N4: digit-plane separation (bases 3/5/7/10) as keystream.",
+      "status": "measured",
+      "raw_status": "negative (as filed in 2026-08)",
+      "round": 11,
+      "date": "2026-08-17",
+      "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
+      "threshold_fixed_in_advance": true,
+      "result": "best -5.728 vs -5.722; no hit",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "three_conditionals": {
+        "key_space": "the Round 11 N4 lens configuration set only; the other six lenses are separate rows",
+        "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
+        "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
+      },
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "evidence": [
+        "liber-primus/analysis/round11/N4/RESULTS.md",
+        "liber-primus/analysis/round11/N4/results.json",
+        "liber-primus/analysis/round11/SYNTHESIS.md",
+        "liber-primus/analysis/round11/PREREG.md"
+      ],
+      "reproduce": "python liber-primus/analysis/round11/N4/n4.py",
+      "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+    },
+    {
+      "id": "R11-N5-NUMBER-CHANNEL",
+      "lane": "round11/N5",
+      "hypothesis": "Round 11 number-channel lens N5: totient-ladder escalation (phi(phi(p)), Carmichael lambda, totient-of-running-sum).",
+      "status": "measured",
+      "raw_status": "negative (as filed in 2026-08)",
+      "round": 11,
+      "date": "2026-08-17",
+      "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
+      "threshold_fixed_in_advance": true,
+      "result": "best -6.667 vs -6.722; no hit (R22-C X4 later re-adjudicated N5 on its totient config only)",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "three_conditionals": {
+        "key_space": "the Round 11 N5 lens configuration set only; the other six lenses are separate rows",
+        "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
+        "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
+      },
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "evidence": [
+        "liber-primus/analysis/round11/N5/RESULTS.md",
+        "liber-primus/analysis/round11/N5/results.json",
+        "liber-primus/analysis/round11/SYNTHESIS.md",
+        "liber-primus/analysis/round11/PREREG.md"
+      ],
+      "reproduce": "python liber-primus/analysis/round11/N5/n5.py",
+      "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+    },
+    {
+      "id": "R11-S1-NUMBER-CHANNEL",
+      "lane": "round11/S1",
+      "hypothesis": "Round 11 number-channel lens S1: interrupter-position channel (458 F-runes / 457 gaps).",
+      "status": "measured",
+      "raw_status": "negative (as filed in 2026-08)",
+      "round": 11,
+      "date": "2026-08-17",
+      "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
+      "threshold_fixed_in_advance": true,
+      "result": "best -5.994 vs -5.997; no hit",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "three_conditionals": {
+        "key_space": "the Round 11 S1 lens configuration set only; the other six lenses are separate rows",
+        "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
+        "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
+      },
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "evidence": [
+        "liber-primus/analysis/round11/S1/RESULTS.md",
+        "liber-primus/analysis/round11/S1/results.json",
+        "liber-primus/analysis/round11/SYNTHESIS.md",
+        "liber-primus/analysis/round11/PREREG.md"
+      ],
+      "reproduce": "python liber-primus/analysis/round11/S1/s1.py",
+      "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
+    },
+    {
+      "id": "R11-S2-NUMBER-CHANNEL",
+      "lane": "round11/S2",
+      "hypothesis": "Round 11 number-channel lens S2: separator/ornament channel (separators as typography vs payload).",
+      "status": "measured",
+      "raw_status": "negative (as filed in 2026-08)",
+      "round": 11,
+      "date": "2026-08-17",
+      "threshold": "English quadgram score vs a seed-3301 histogram-preserving null max (per analysis/round11/PREREG.md)",
+      "threshold_fixed_in_advance": true,
+      "result": "mean run before '/'=2.39, '.'=4.13, '-'=3.96; var ratio 0.307; separators read as typography",
+      "coverage": "Few-hundred-decode, 48-config-scale lane; scored through lib_numchannel and the legacy skip beam; English quadgram score only.",
+      "three_conditionals": {
+        "key_space": "the Round 11 S2 lens configuration set only; the other six lenses are separate rows",
+        "transition_model": "legacy skip beam / rigid read via lib_numchannel (not the repaired beam_v3 or pf_v4)",
+        "adjudicator_register": "English quadgram score only (L7-A): English-only conditional"
+      },
+      "not_covered": "non-English registers; register-aware beam; skip-tolerant screen",
+      "evidence": [
+        "liber-primus/analysis/round11/S2/RESULTS.md",
+        "liber-primus/analysis/round11/S2/results.json",
+        "liber-primus/analysis/round11/SYNTHESIS.md",
+        "liber-primus/analysis/round11/PREREG.md"
+      ],
+      "reproduce": "python liber-primus/analysis/round11/S2/s2.py",
+      "reopens_if": "Reopen under the repaired instrument (beam_v3 + pf_v4 + the 12-register panel): cheap, minutes to about 1 h. The old 'Do NOT re-run any Round-11 lens' is scoped to the English-only legacy decoder (R36 audit, 2026-10-30).",
+      "notes": "Backfilled by the R36 audit (2026-10-30): this pre-doctrine lane had no ledger row. No positive_control field is recorded in doctrine-schema form (pre-doctrine lane; no planted control recorded under the R3 schema); the Round 11 SYNTHESIS states an in-lane plant control passed, which is NOT re-verified here. English-only conditional stated."
     }
   ],
   "round18_merged": "2026-08-26"

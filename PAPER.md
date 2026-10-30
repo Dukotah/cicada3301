@@ -253,14 +253,14 @@ anti-repeat filter, and it **cannot distinguish** a true external one-time pad
 short seed** (finite keyspace, brute-forceable). Which of the two it is remains unsettled. This
 phrasing is load-bearing and the qualifier is not optional; §9 explains why.
 
-**One search family is genuinely exhausted.** Round 27 ported the screening stage to a
+**One search family was fully swept (bounded, not exhausted).** ~~genuinely exhausted~~ SUPERSEDED (R36 audit, 2026-10-30): the 'exhausted / finished / closed' wording below overstated the result. Bound statement: all 2^32 seeds were scored under the `pair` (skip_by_two) relation only; screen power was measured with English plants only (per-register stage-A power is unmeasured); the Round 19 nine-register adjudicator panel cannot be rebuilt (R35 P1), so the verdict is not reproducible as stated; ledger row R27-CPORT-MT32-FULLSWEEP is `partially-run`. Round 27 ported the screening stage to a
 bit-exact C implementation and completed the **first full-space sweep in the project's
 history**: all **2³² = 4,294,967,296** Python-2.7 Mersenne Twister integer seeds scored exactly
 once under the `pair` relation, with the histogram summing to 2³² exactly. It produced 392,131
 candidate flags at **1.31×** the Gumbel prediction — the expected pure-noise shape, no second
 mode — and **three** claim-bar crossers, **all three** oracle-adjudicated NOISE-CROSSER under a
 three-clause gate. C-versus-Python parity on 10,971 re-scored flags: **max |Δ| = 0.0 exactly**.
-Lane verdict: NULL, branch exhausted, conditional on its three named conditionals.
+Lane verdict: NULL under `pair`, English-plant power only, panel unrebuildable (~~branch exhausted~~ SUPERSEDED R36 audit); conditional on its three named conditionals.
 
 **The artifact is machine-rendered, and the toolchain is narrowed.** The 2014 master is a
 rendered PDF whose embedded ICC profile is **byte-identical to Ghostscript 9.06's Artifex
@@ -279,7 +279,7 @@ transcription, and since its two supposedly-independent public lineages share a 
 root, this retro-validates a decade of negatives that had been resting on an unaudited input.
 It is the quietest result in the repository and arguably the most load-bearing.
 
-**The elimination map.** 172 ledger entries, each carrying its pre-registered threshold, its
+**The elimination map.** 209 ledger entries, each carrying its pre-registered threshold, its
 positive-control status, its honest coverage bound, and the concrete condition that would
 reopen it. Unsound negatives — entries claiming a negative whose instrument was never shown
 able to detect a planted signal — **0**.
@@ -440,7 +440,7 @@ method. License MIT; see [`PROVENANCE.md`](PROVENANCE.md).
 | Ghostscript/ICC toolchain bound (§8) | `liber-primus/analysis/round30/SYNTHESIS.md` |
 | Ornament-band nine-register read (§8) | `liber-primus/analysis/round19/finite/RESULTS.md` |
 | Independent re-transcription, indel bound (§8, §12) | `liber-primus/analysis/round19/T2/RESULTS.md`, ledger `A-01` + `T2-INDEL` |
-| All 172 entries with thresholds and coverage | `liber-primus/LEDGER.json` |
+| All 209 entries with thresholds and coverage | `liber-primus/LEDGER.json` |
 | The research discipline (§10) | `liber-primus/ARMADA-DOCTRINE.md` |
 | Parked sweeps and real coverage (§12) | `liber-primus/handoff/PARKED-SWEEPS.md` |
 | Capability-blocked work with unpark thresholds (§12) | `liber-primus/handoff/PARKED.md` |

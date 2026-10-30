@@ -4,7 +4,7 @@ _Written 2026-08-19 for someone arriving cold — a researcher, or a model with 
 and better vision than anything available when this was written. It assumes you know
 cryptography and nothing about this repository. It should get you productive in under an hour._
 
-_Current through **Round 25** (refreshed 2026-08-31). Rounds 20–25 hardened the verdict rather
+_**Frozen at Round 25** (refreshed 2026-08-31; the live state is `../PICKUP-HERE.md`, current through Round 36 - R36 audit, 2026-10-30). Rounds 20–25 hardened the verdict rather
 than moving it: the anti-repeat sieve was proven **infeasible** (R20), the no-oracle certification
 gate was proven **leaky** so survivors are now flagged-for-oracle rather than auto-certified (R21),
 **every channel the signed hints name was finally read and all came back null** (R22–R23), the
@@ -239,7 +239,7 @@ produced a false negative and did not know it.
 
 **The null model to use:** `nc.shuffled` (seed 3301) — length-matched shuffles of the real
 ciphertext, N ≥ 200. Report `null_mean` and `null_max`, and set your bar at
-`max(−5.5, null_max + 0.5)`.
+`max(−5.5, null_max + 0.5)` *(valid only for the English quadgram score on the legacy keyskip1 beam; R36 audit - for the register panel use `analysis/round20/P3/panelmax20.py`, and for beam_v3 `analysis/round34/I1-v3-null/bars_v3.py`; `benchmark/null.py` has no panel-max or v3 mode)*.
 
 **One statistical trap to internalise.** Best-of-N under a null grows as μ + β·ln N. A threshold
 calibrated at one search size is invalid at another, and **bigger searches raise the bar**. This
@@ -250,24 +250,26 @@ longer report a hit even if one exists.
 
 ---
 
-## 5. What NOT to waste time on
+## 5. Bounded: do not re-run as-is
+_Retitled R36 audit (2026-10-30); was "What NOT to waste time on". "Closed" is not a verdict this
+repo may issue (ARMADA-DOCTRINE R7). Each row is a measured bound; the **Conditionals** column names
+which of the three (key space / transition model / adjudicator register) limits it, and the
+**Reopen cost** says what would change the answer. The full record is `liber-primus/ELIMINATION-LEDGER.md`
+("Measured bounds and their reopen conditions") and `liber-primus/LEDGER.json`._
 
-Each of these is closed with a reason and a place to reproduce it. The full record, ~30 rows
-deep, is `liber-primus/ELIMINATION-LEDGER.md`.
-
-| Don't | Why | Reproduce / read |
-|---|---|---|
-| **Attack with a rigid (1:1) decoder** | LP2's anti-repeat filter desynchronises key from ciphertext. The *correct* key scores −6.8 (noise) rigidly and −4.2 (English) under the beam. This is the single most expensive mistake in this problem. | `analysis/campaign18_skip/skipdecode.py`; D3 control |
-| **Try another book as a running key** | ~200 texts swept, best −5.75…−5.88, all noise. *Caveat: closed by exhaustion, not by mechanism — see §3.* | `analysis/CAMPAIGN-XII/XIII-FINDINGS.md` |
-| **Re-run integer-seeded hobbyist PRNGs over the time-seed slice** | 2.52e9 decodes, 0 hits. *But the class is not closed — §3, and `PARKED.md` P-2/P-4 for what genuinely remains.* | `analysis/seed_sweep/`, `round10/L5-seed32/CENSUS.md` |
-| **Autokey** | Positively refuted (not merely unfound). *Reopens only if P-8 finds ~20 haplography merges.* | `ELIMINATION-LEDGER.md` |
-| **Image steganography** | Every channel empty; the pages are Ghostscript renders, not stego carriers. | `analysis/stego/STEGO-VERDICT.md` |
-| **Whole-page AI vision re-transcription** | Mean alignment vs canonical **0.145** across 56 pages — the model confabulates. The canonical is right and vision was wrong. | `analysis/vision/AVENUE-1-VISION-VERDICT.md` |
-| **Hunting the "AN END" deep-web page by OSINT** | Unreachable **by construction**: its address is gated behind solving pages 0–54. No retrievable in-scope Tor-v2 corpus exists; organised hashcat efforts report zero matches as recently as 2025-10-29. | `analysis/anend_hunt/FINDINGS.md` |
-| **CT-log brute force for that hash** | Non-viable by construction — CT logs hold CA-issued cert domains, not page contents or v2 onions. **More compute does not help.** | `ELIMINATION-LEDGER.md:168` |
-| **Transposition-only, fractionation/Polybius/trifid, Hill, homophonic-IoC-preserving substitution, page-on-page keying, differencing/integration, alphabet reordering** | All killed by structural gates. | `ELIMINATION-LEDGER.md`, `research/DEAD_ENDS.md` |
-| **PCG, xoroshiro, xorshift128+ as the generator** | **Excluded by date.** Published Aug 2014 / 2014; LP2 was posted January 2014. | `round10/L5-seed32/CENSUS.md` §C |
-| **Claiming a solve without a PGP signature** | The community's gating test for any claim is a valid signature from key **7A35090F**. The 2026 Zenodo "complete translation" (AI-generated) is rejected on exactly this basis. | `analysis/KEY-HINT-RESEARCH.md` |
+| Don't (as-is) | Why | Conditionals | Reproduce / read |
+|---|---|---|---|
+| **Attack with a rigid (1:1) decoder** | LP2's anti-repeat filter desynchronises key from ciphertext. The *correct* key scores -6.8 (noise) rigidly and -4.2 (English) under the beam. This is the single most expensive mistake in this problem. | Transition model (rigid is invalid; legacy beam handles only keyskip1; `skip_by_two` needs the Round 19+ presets). Reopen cost: use `beam_v3`/`driftbeam`. | `analysis/campaign18_skip/skipdecode.py`; D3 control |
+| **Try another book as a running key** | ~200 texts swept, best -5.75...-5.88, all noise. ~~closed by exhaustion~~ **Bounded, not closed (R12-D1 retraction; R26-B ran the lane).** | English-only + legacy beam; R26-B un-swept pages 20/22/25/27/29, sign +1. Reopen cost: hours, identical-in-kind. | `analysis/CAMPAIGN-XII/XIII-FINDINGS.md`; ledger `R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE`, `R12-C2` |
+| **Re-run integer-seeded hobbyist PRNGs over the time-seed slice** | 2.52e9 decodes, 0 hits; ~3 % of each seed space in Round 8. Class not closed: PHP/Perl/TeX tails and other generators remain. | Key space (seed slice) + English-only + legacy beam. Reopen cost: minutes to hours per generator with pf_v4 + beam_v3. | `analysis/seed_sweep/`, `round10/L5-seed32/CENSUS.md`; `R28-L4-UNSWEPT-GENERATORS-QUEUE`, `R16-PRNG` |
+| **Autokey** | Refuted for the classes tested (feedback autokey, Round 11 N1). *Reopens if P-8 finds ~20 haplography merges.* | English-only, legacy beam (`R11-N1-NUMBER-CHANNEL`). Reopen cost: minutes under beam_v3. | `ELIMINATION-LEDGER.md` |
+| **Image steganography** | Every channel tested was empty; the pages are Ghostscript renders. | Input (render level) rather than the three: reopens only with a new capture route. | `analysis/stego/STEGO-VERDICT.md`; `R29-L1-ONION-STEGO` |
+| **Whole-page AI vision re-transcription** | Mean alignment vs canonical **0.145** across 56 pages - the model confabulates. | Instrument (vision model). Reopens with a better, independently validated reader. | `analysis/vision/AVENUE-1-VISION-VERDICT.md` |
+| **Hunting the "AN END" deep-web page by OSINT** | *Assumed* unreachable: the address is believed gated behind solving pages 0-54 (2014 chain grammar - lore, not a measurement on a held artifact; doctrine R4). Hash batteries are coverage-only. | Input/premise, no ledger row yet. Reopen cost: any non-gated retrieval route. | `analysis/anend_hunt/FINDINGS.md` |
+| **CT-log brute force for that hash** | Non-viable on the stated premise: CT logs hold CA-issued cert domains, not page contents or v2 onions. | Premise (what CT logs contain). | `ELIMINATION-LEDGER.md:168` |
+| **Transposition-only, fractionation/Polybius/trifid, Hill, homophonic-IoC-preserving substitution, page-on-page keying, differencing/integration, alphabet reordering** | Killed by structural gates (statistics independent of language). | Largely language-agnostic structural gates; model class stated per row. | `ELIMINATION-LEDGER.md`, `research/DEAD_ENDS.md` |
+| **PCG, xoroshiro, xorshift128+ as the generator** | Excluded by date: published 2014; LP2 was posted January 2014. | Key space (historical premise). | `round10/L5-seed32/CENSUS.md` section C |
+| **Claiming a solve without a PGP signature** | The community's gating test is a valid signature from key **7A35090F**. The 2026 Zenodo "complete translation" (AI-generated) is rejected on this basis. | n/a (social, not statistical). See also `liber-primus/HUMAN-ORACLE.md`. | `analysis/KEY-HINT-RESEARCH.md` |
 
 ---
 
@@ -397,7 +399,7 @@ python3 analysis/round12/D3/pc_derivedkey.py
 #    meaningful negative.
 
 # 7. query what has already been tried — do this before designing anything
-python3 -c "import json; d=json.load(open('LEDGER.json')); print(len(d))"
+python3 -c "import json; d=json.load(open('LEDGER.json')); print(len(d['entries']))"
 #    (or read ELIMINATION-LEDGER.md and analysis/round10/RECON-A/REGISTER.md)
 
 # 8. run your first attack, correctly                                  (~10 min)

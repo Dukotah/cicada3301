@@ -92,11 +92,11 @@ left on the board — not a promise of a solve.
 ## 4. What Round 20 will NOT do (foreclosed — see `ELIMINATION-LEDGER.md:328–384`)
 
 Per doctrine mechanic 6 ("do not re-run measured ground") and R7, none of the following appears as a
-lane. Each is dead with a recorded reason; do not revive:
+lane. Each is bounded with a recorded reason (R36 audit: 'dead/do not revive' is superseded by R7 wording; see the ledger rows for conditionals):
 
 - **Published-keytext / running-key of any text** — foreclosed *by mechanism*, independent of text
   choice: rigid running keys are doublet-excluded (z≈−16.9) and skip-aware decoders are un-anchorable
-  on it (`c[i]≠c[i-1]` false on all solved pages). (Round 7 external-input exhaustion.)
+  on it (`c[i]≠c[i-1]` false on all solved pages). (Round 7 external-input exhaustion.) **SUPERSEDED (R36 audit, 2026-10-30; R12-D1 retraction + R26-B):** the 'foreclosed by mechanism' claim was retracted (README/PAPER) and R26-B ran skip-aware presets on keytexts with control recovery 1.000; keytext is a *bounded* class (see `R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE` not_covered, `R12-C2`). Do not copy this bullet into later plans.
 - **The number channel** (primes / gaps / digits / base-conversion / totient ladders) — Round 11,
   7 lenses, all control-validated NULL.
 - **OSINT / AN-END page retrieval** — closed; AN-END is gated behind solving LP2 0–54, no independent

@@ -1,6 +1,6 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-10-30** (Round 35 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-10-30** (Round 35 closeout; R36 audit corrections applied same day: bounded-not-closed wording, reopen list, ledger count 209). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
 
 > ## Round 35 (2026-10-30) — THE SKIP-TOLERANT SCREEN: shipped. Read `analysis/round35/SYNTHESIS.md` first.
 >
@@ -61,7 +61,7 @@ _Refreshed **2026-10-30** (Round 35 closeout). Read this first, then [`ELIMINATI
 
 > ## Round 32 (2026-10-28) — INSTRUMENT & RED-TEAM armada: shipped. Read `analysis/round32/SYNTHESIS.md` first.
 >
-> Eight lanes, all with passing positive controls, all filed in `LEDGER.json` (181 rows, 0 errors).
+> Eight lanes, all with passing positive controls, all filed in `LEDGER.json` (209 rows as of the R36 audit, 2026-10-30; was 181 when written; 0 errors).
 > No survivor. What changed is the **instrument**, not the board:
 > - **I1** the three-relation decoder already existed (`round19/I1/driftbeam.py`); it now has a measured power
 >   envelope — planted `skip_by_two` recovers 1.00 under `advance=2` (legacy relation: 0.30). **Vowel-dropped
@@ -98,7 +98,30 @@ _Refreshed **2026-10-30** (Round 35 closeout). Read this first, then [`ELIMINATI
 > **Round 32 X1 (2026-10-28) corrections applied throughout this file and the other nav docs:** GS bound 9.04-9.14; Py2.7-MT coverage is per-relation; transcription claim LP2-typeface-only with p27:93 still needing a human; seed 35563892 now has an S2-lane (`exact`) re-screen (NOISE at L=240) -- the 'one unresolved flag' on S2 is discharged at the one-seed level. **Before resuming S2, build the patched `P1-engine/grind27.c` (hit-restore on resume) and test it against the parked state.** Coordinator decision still open: `C-CANON-PAYLOAD-3BYTES`.
 and query [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare `status`)._
 
-> ## 🛑 NOTHING IS RUNNING. Read this before any block below that says IN-FLIGHT.
+## Reopen under the repaired instrument (R36 audit, 2026-10-30)
+
+_These foreclosures rest on English-only, legacy-decoder, or nine-register measurements. Under the repaired instrument
+(register-aware `beam_v3` + `pf_v4` head screen + observed null + the 12-register panel) each is cheap to re-measure.
+Costs are estimates from stated throughputs (pf_v4 56.6k heads/s; v3 ~3.7 decodes/s free relation), not measurements.
+Source: `analysis/round36/AUDIT-inhibitors.md` "Re-open candidates". Before running any of them, check the lane is not live and pre-register it._
+
+| Candidate | Ledger row(s) | Why it is cheap | Rough cost |
+|---|---|---|---|
+| Round 11 lenses N1 (48 configs), N2, N3, N4, N5, S1, S2 | `R11-N1..N5-NUMBER-CHANNEL`, `R11-S1-NUMBER-CHANNEL`, `R11-S2-NUMBER-CHANNEL` (backfilled R36 audit) | English-only, legacy skip-beam; a few hundred decodes in total | minutes to ~1 h |
+| R22-C (185 operations) | `R22-C-LITERAL-IMPERATIVES` | judged under the nine-register panel and driftbeam only | under 1 h |
+| The 74 ornament bands x 12 registers | `R19-FINITE-ORNAMENT-REGISTER` | band lengths 8-314 (median 89), English registers underpowered; Hebrew/Greek now exist (R36 I1) | minutes |
+| B-04 / R16-KDF / R16-PRNG / R17 source regeneration + pf_v4 head screen + v3 on survivors | `B-04`, `R16-KDF`, `R16-PRNG`, `R17-PUBLIC-PAD` | `not_covered` names the v3 re-decode of the source decodes; R17's English trigram prefilter kept only the top 40 per sign | ~6.2 M decodes at pf_v4 speed: minutes to hours; needs glue per generator |
+| R28-L1 pads (24,080 rows), R12-A1 | `R28-L1-CICADAOS-PADS-DENSE-PAIR`, `R12-C1` | offsets covered 0.006 % and 0.0003 % | ~2 h of v3 |
+| R26-B keytext remainder: pages 20/22/25/27/29 and sign +1 (and R12-C2 never-run) | `R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE`, `R12-C2` | identical-in-kind re-run of an already validated instrument; `R12-C2` has `threshold_fixed_in_advance:false` | hours |
+
+Not cheap, noted: the exact Viterbi/DP decoder (Round 3 H1/H2, never executed) is a medium build; R20-SMARS (679 Marsaglia units, 21 CPU-h) is gated.
+
+---
+
+## Historical (Rounds 28-30 state and IN-FLIGHT blocks; superseded - kept for the reasoning)
+_Archived in place by the R36 audit (2026-10-30) rather than moved, so existing links keep working. Every "IN-FLIGHT" / "NOTHING IS RUNNING" statement from here to "The one-paragraph state of the board" is historical._
+
+> ## ~~🛑 NOTHING IS RUNNING.~~ SUPERSEDED (R36 audit, 2026-10-30): true on 2026-10-05 only; Round 36 sweeps (B1, B2) are active. Historical text, kept for the reasoning. Read this before any block below that says IN-FLIGHT.
 >
 > Every sweep in this repository was killed by a host reboot on **2026-09-15** and **none has
 > been resumed**. Every PID in the tree is dead. Until 2026-10-05 this document and the ledger
@@ -107,10 +130,10 @@ and query [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare 
 >
 > | branch | real state |
 > |---|---|
-> | **R27 / S1** (Py2.7-MT 2³², `pair`) | **genuinely COMPLETE — NULL.** All 2³² seeds scored once; 3 claim-bar crossers all oracle-adjudicated NOISE-CROSSER. Closed; needs nobody. |
+> | **R27 / S1** (Py2.7-MT 2³², `pair`) | **genuinely COMPLETE — NULL.** All 2³² seeds scored once; 3 claim-bar crossers all oracle-adjudicated NOISE-CROSSER. ~~Closed; needs nobody.~~ SUPERSEDED (R36 audit, 2026-10-30): bounded, not closed - `pair` relation only, English-plant power only, R19 panel unrebuildable; ledger row is `partially-run`. |
 > | **R27 / S2** (same space, `exact`) | **STOPPED at 44.14 %** (1,895,728,884 / 2³² seeds). Resumable. One unresolved flag on seed 35563892 to check first. |
 > | **R28 / L4** (25-cell generator queue) | **NEVER FIRED.** Zero authoritative coverage. The chainer that was waiting on S2 died with it. |
-> | **R28 / L3** (string-seed amd64 dict) | **sweep FINISHED** (all 11 items, 2,500,207 seeds, best pmax 6.3148, no survivors) but **never written up** — no RESULTS.md, no ledger row. Cheapest open item here. |
+> | **R28 / L3** (string-seed amd64 dict) | **sweep FINISHED** (all 11 items, 2,500,207 seeds, best pmax 6.3148, no survivors) but ~~**never written up** — no RESULTS.md, no ledger row. Cheapest open item here.~~ SUPERSEDED (R36 audit): ledger row `R28-L3-PY27-STR-AMD64-DICT` exists (`inconclusive`, filed in Round 32 B3). |
 >
 > Exact coverage numbers, the committed state files that prove them, and the resume route for
 > each: **[`handoff/PARKED-SWEEPS.md`](handoff/PARKED-SWEEPS.md)**. Ledger rows
@@ -162,7 +185,7 @@ and query [`LEDGER.json`](LEDGER.json) `coverage`/`not_covered` (never the bare 
 > 7.384; parity Δ=0.0 on all three). **K4 discharged**: 10,971 flags (all 8,971 ≥ hard gate
 > 5.8835 + 2,000 random) batch re-scored in Python at **max |C−Python| = 0.0**. Lane verdict
 > ([`analysis/round27/S1-CLOSEOUT.md`](analysis/round27/S1-CLOSEOUT.md)): **S1 NULL — the
-> Py2.7-MT 2³² integer-seed space under the pair relation contains no key; branch EXHAUSTED**
+> Py2.7-MT 2³² integer-seed space under the pair relation contains no key; ~~branch EXHAUSTED~~** (SUPERSEDED R36 audit: pair relation only; English plants only; panel unrebuildable)
 > (conditional on the 3 named conditionals: this seed space, this transition model, the
 > 9-register adjudicator). Oracle records: `analysis/round27/ORACLE-{35563892,348625413,86514964}.md`.
 >
@@ -255,7 +278,7 @@ where to spend effort (rather than picking up this project's own threads), read
 [`handoff/SOLVER-STRATEGY-2026.md`](handoff/SOLVER-STRATEGY-2026.md). Trust anchor:
 `python liber-primus/tests/validate.py` → `ALL VALIDATIONS PASSED` (5/5), passing through
 Round 25 and re-verified 2026-08-31 (`pytest -m "not network"` 85 passed).
-`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **162 entries**
+`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **209 entries** (R36 audit count; was 162 when this line was written)
 (R22-A/B/C/D/R, R23-A2, R24 ×5, R25 merged, the ten Round-20 lanes filed 2026-08-31, Round 26 ×4
 [R26-A/B partially-run, R26-C negative, R26-D audit], **R27-CPORT-MT32-FULLSWEEP [in-flight]**
 — S1 complete with a measured-exhaustion NULL, S2 still sweeping — and the Round-28 interim
@@ -528,7 +551,7 @@ resolving before the next transcription-dependent sweep.
 
 ---
 
-## Do NOT re-run (foreclosed — `ELIMINATION-LEDGER.md:328–384`)
+## ~~Do NOT re-run (foreclosed)~~ Measured bounds (SUPERSEDED R36 audit: see `ELIMINATION-LEDGER.md` "Measured bounds and their reopen conditions" and "Reopen under the repaired instrument" above)
 
 Published-keytext/running-key (doublet-excluded by mechanism); the number channel (Round 11, 7 lenses
 NULL); OSINT/AN-END retrieval (unreachable by construction); attribution-to-a-name (359-word corpus

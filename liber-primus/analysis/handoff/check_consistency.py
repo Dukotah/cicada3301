@@ -274,7 +274,7 @@ def check_no_terminal_instructions():
     supersede the terminals.
     """
     pat = re.compile(r"(wind down to synthesis|further rotation re-derives|"
-                     r"nothing left to try|the work is (over|finished|complete))", re.I)
+                     r"nothing left to try|the work is (over|finished|complete)\b)", re.I)
     ctx = re.compile(r"(supersed|corrected|retract|overtaken|no longer|was written before|"
                      r"⚠)", re.I)
     for doc in ("README.md", "AGENTS.md", "PICKUP-HERE.md",
@@ -292,6 +292,28 @@ def check_no_terminal_instructions():
                     f"the work is over; state a coverage bound instead.")
 
 
+def check_ledger_counts_in_nav_docs():
+    """(R36 audit) 'N ledger entries/rows' in the nav docs must equal LEDGER.json counts.total.
+
+    Pure text check. Lines that are explicitly historical (contain 'was', 'from', '->' or an arrow,
+    'merged') are skipped so dated history is not rewritten.
+    """
+    led = jload("liber-primus/LEDGER.json")
+    if not led:
+        return
+    total = led["counts"]["total"]
+    pat = re.compile(r"(\d{3})\s+(?:ledger\s+)?(?:entries|rows)", re.I)
+    hist = re.compile(r"\bwas\b|merged|→|->|from \d|\bto \d|now holds \*\*\d+ entries\*\* \(R36|as of the R36", re.I)
+    for doc in ("README.md", "PAPER.md", "liber-primus/handoff/SOLVER-STRATEGY-2026.md"):
+        t = read(doc)
+        if t is None:
+            continue
+        for i, line in enumerate(t.splitlines(), 1):
+            for m in pat.finditer(line):
+                if int(m.group(1)) != total and not hist.search(line):
+                    err(f"{doc}:{i} says '{m.group(0)}' but LEDGER.json counts.total = {total}")
+
+
 CHECKS = [
     ("ciphertext identity agrees everywhere", check_rune_count_and_hash),
     ("no terminal 'work is over' instructions", check_no_terminal_instructions),
@@ -303,6 +325,7 @@ CHECKS = [
     ("solved-page corpus matches the rig", check_solved_pages_match_rig),
     ("ledger has no unsound negatives", check_ledger_integrity),
     ("no LLM scratch text in published prose", check_no_scratch_text),
+    ("ledger counts in nav docs match LEDGER.json", check_ledger_counts_in_nav_docs),
 ]
 
 

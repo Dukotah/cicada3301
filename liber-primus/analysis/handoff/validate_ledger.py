@@ -196,6 +196,14 @@ def main():
                 warns.append(f"[{eid}] NULL-NOT-COVERED: negative (round >= 19) with not_covered "
                              f"null/empty - state what the null does not cover")
 
+        # 2c. (R36 audit, item 12) WARN only: a negative should carry the three conditionals and a coverage.
+        if e.get("status") in NEGATIVE_STATUSES:
+            if _round_num(e) >= R3_FIRST_ROUND and not e.get("three_conditionals"):
+                warns.append(f"[{eid}] NO-THREE-CONDITIONALS: negative (round >= 19) without "
+                             f"`three_conditionals` (key_space / transition_model / adjudicator_register)")
+            if e.get("coverage") is None:
+                warns.append(f"[{eid}] NULL-COVERAGE: negative with coverage null - the claim is unbounded")
+
         # a failed control must not be carrying a conclusion
         if e.get("positive_control") == "failed" and e.get("status") in NEGATIVE_STATUSES:
             errors.append(f"[{eid}] positive_control FAILED but status is {e['status']} - "

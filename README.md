@@ -90,7 +90,7 @@ let them decide. See [`AGENTS.md` §6](AGENTS.md) for why.
 > — it is now one of the most-swept families in the repo (see the elimination ledger); what
 > stays open is the flat generator tails, KDF params outside the grid, and the `/dev/urandom`
 > branch. That is a result, not a consolation — and it is backed by ~20
-> campaigns and **30 numbered rounds** of pre-registered, falsified attacks — 172 ledger
+> campaigns and **36 numbered rounds** of pre-registered, falsified attacks — 209 ledger
 > rows, each with a reproduce command. The armada also *corrected* two of our own
 > earlier claims: flat IoC does **not** force a full-length key (a period ≈400 key is
 > IoC-invisible), and "one-time pad" is more precisely an **OTP-class**

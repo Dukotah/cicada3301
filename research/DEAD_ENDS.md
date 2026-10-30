@@ -42,6 +42,8 @@ plaintext (page-0 underdetermination). Number-theoretic keystreams incl. totient
 **Do not revive** without a non-synthetic ground-truth anchor AND an argument that the seed space is
 small enough not to manufacture English by construction.
 
+> **SUPERSEDED (R36 audit, 2026-10-30):** skip-encipherment is the core decoder's model today (`skipdecode.beam`, `driftbeam`, `beam_v3`); the "not invertible" argument was disproved by Campaign XVIII and "Do not revive" below no longer holds. The exact Viterbi/DP version (Round 3 H1/H2) was never executed - an open item.
+
 ### KILLED (Gate #1, pre-execution) — H3 "Skip-encipherment / doublet-triggered key stall"
 **Mechanism:** c = p + k mod 29, but "if c[i] would equal c[i−1], advance the key one extra step and
 re-encipher" — a rejection stall guaranteeing c[i] ≠ c[i−1].
