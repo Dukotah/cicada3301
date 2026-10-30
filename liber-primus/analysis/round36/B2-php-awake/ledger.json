@@ -1,0 +1,37 @@
+{
+ "$comment": "written by R36 B2 lane agent",
+ "entries": [
+  {
+   "id": "R36-B2-PHP-AWAKE-PFV4",
+   "round": 36,
+   "lane": "B2",
+   "date": "2026-10-30",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "control.json: 160 natural-rate plants (10 per cell x relation x register; 4 PHP cells, EN_MODERN + EN_NOVOWEL), real enc_exact/enc_pair, no skip-free selection, real chunk path pf_v4 -> v3 L120 -> L240 -> panel. Pooled recover: MODERN skip-free 35/35, with-skip 44/45; NOVOWEL skip-free 37/37, with-skip 42/43; unfiltered v3 recovery 160/160. Gate >=3 per split passed.",
+   "hypothesis": "The LP2 key is a PHP 5.x mt_rand stream (canonical or legacy twist, scale29 or mod29) whose head may contain <=2 key skips; the R34 PHP tier under-covered it (prior-dense prefiltered, uniform 0.061 % with rows lost).",
+   "coverage": "Tier a: 48,036 prior-dense seeds per cell (487 core + 9,280 dense decoded UNFILTERED = 9,767; 38,269 dense via pf_v4 frozen m=24,k=2,rel=both). Tier b: numpy default_rng(3301), 199 blocks of 2^17 = 26,083,328 seeds per cell = 0.6073 % of 2^32 (target 1 % not reached: 60-min cap). Four cells mt/php x scale/mod, keyskip1+keyskip2, offset 0, sign -1, C[0]-aligned. 263,906 SWEEPROW rows (validate_store ok, check_r3_store []), N ~33.0k decodes per cell x relation, store opened once, resume path append.",
+   "result": "0 flagged, 0 near-miss. Best 6.608 (php_scale keyskip1 seed 1552094311, tier b, LP1_REAL) vs L120 bar 7.941 actual N / 9.235 N=1e6. Per cell x rel best (k1/k2): mt_scale 6.281/6.055, mt_mod 6.045/6.496, php_scale 6.608/6.317, php_mod 6.179/6.271; bars 7.94/7.79 actual N, 9.235/9.034 N=1e6.",
+   "threshold": "round34/I1-v3-null/bars_v3.py bar_v3(N,L,rel) at actual N and N=1e6; fixed in advance (PREREG).",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "as coverage: tier a 48,036 seeds (20.3 % unfiltered, 79.7 % pf_v4), tier b 0.607 % of 2^32 per cell",
+    "transition_model": "keyskip1+keyskip2 under beam_v3; pf_v4 handles <=2 skips in 24 runes; free, L=31, >=3 skips not covered",
+    "adjudicator_register": "round32/I2 nine-register panel; reach per register = R36-I2 pf_v4 natural power 0.940-0.992 x v3 recovery 1.00 (control, n=40 per rel x reg, Wilson LB ~0.91) x fraction; tier a overall ~0.98-0.99, tier b ~0.006"
+   },
+   "not_covered": "uniform tier beyond 0.607 % (99.39 % deferred); 38,269 dense tier-a seeds not decoded unfiltered; heads with >=3 skips; free relation; L=31; offsets != 0; other reductions / PHP variants; non-uniform seed structure outside tier a; registers outside the nine; v3 recovery for HALFVOWEL/LATIN unmeasured; per-cell control skip-split n=3-7.",
+   "reopens_if": "oracle/third verifier flags a row, a true-key head with >2 skips is shown, or the remaining tier-b fraction is funded (resumable in append mode).",
+   "evidence": [
+    "analysis/round36/B2-php-awake/RESULTS.md",
+    "analysis/round36/B2-php-awake/PREREG.md",
+    "analysis/round36/B2-php-awake/control.json",
+    "analysis/round36/B2-php-awake/sweep_summary_final.json",
+    "analysis/round36/B2-php-awake/sweep_summary.json",
+    "analysis/round36/B2-php-awake/keep_rows.json",
+    "analysis/round36/B2-php-awake/sweep.log"
+   ],
+   "sweep_store": "analysis/round36/B2-php-awake/sweep_rows.jsonl",
+   "source_register": "round32/B2"
+  }
+ ]
+}
