@@ -21,3 +21,19 @@ Conditionals: glyph set = five U8 shapes only; V2 is not calibratable against th
 page-matched null for V2 are open options.
 
 Files: PREREG.md, recognizer.py, rescore.py, power_D1.json, power_D2.json, power.json, rescore_u8.json, ledger.json, d2.log.
+
+## Addendum 2026-10-30 (variant-limited diagnostic, see ADDENDUM-2026-10-30.md)
+| variant | pages below null p5 (chance ~2.9) | pages below null max | note |
+|---|---|---|---|
+| V1 prime mod8 | 5/58 | 1 (p28) | FPR 0/50 |
+| V3 idx abs card | 5/58 | 1 (p30) | over FPR limit (0.06) |
+| V4 wordsum rel12 | 5/58 | 1 (p53) | FPR 0/50 |
+V2 excluded. Counts are near chance (100-draw null: ~0.6 below-max expected per variant), so no page is a hit by statistics; the three PNGs in `oracle/` are for a human eye only
+(variant-limited diagnostic). Overall status unchanged: inconclusive / control failed.
+
+## Human-eye check (coordinator, 2026-10-30)
+
+The three variant-limited above-null-max renders (`oracle/V1_prime_mod8_rel_p28.png`, `V3_idx_abs_card_p30.png`,
+`V4_wordsum_rel12_p53.png`) were viewed. All three are undirected random walks on the lattice (V1/V4 on diagonals,
+V3 rectilinear) with no closed figure, letterform or repeated motif; they look like every other page's render. Consistent
+with the chance-level counts (one above-max page per variant, ~0.6 expected). Human-eye verdict: nothing to escalate.
