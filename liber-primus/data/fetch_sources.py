@@ -61,7 +61,9 @@ def ensure_welsh_substitute(force=False, verbose=True):
     os.makedirs(os.path.dirname(WELSH_DST), exist_ok=True)
     parts = []
     for gid in WELSH_GUTENBERG_IDS:
-        url = f"https://www.gutenberg.org/cache/epub/{gid}/pg{gid}.txt"
+        # R35-P1: the /files/N/N-0.txt form is the byte-exact source of the Round 19 corpora (recorded
+        # hashes 0f1a83cb... for #10, 80dc6f0d... for #5160); cache/epub/pgN.txt serves a re-issued text.
+        url = f"https://www.gutenberg.org/files/{gid}/{gid}-0.txt"
         req = urllib.request.Request(url, headers={"User-Agent": "cicada3301-rig"})
         with urllib.request.urlopen(req, timeout=60) as r:
             parts.append(_strip_gutenberg(r.read().decode("utf-8", "replace")))

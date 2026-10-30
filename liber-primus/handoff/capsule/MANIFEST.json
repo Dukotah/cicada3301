@@ -1839,13 +1839,11 @@
         "https://gutenberg.pglaf.org/ (official mirror)",
         "https://aleph.gutenberg.org/ (official mirror)"
       ],
-      "notes": "WARNING: Gutenberg re-issues files (header/footer edits, -0.txt vs .txt vs utf-8 variants). A refetch may NOT reproduce this SHA-256 even though the book is the same. That is why english_quadgrams.txt is committed: the DERIVED model is the reproducible artifact, not the raw corpus. R34-X1: the recorded sha is of the original download, absent on this checkout; the on-disk file is Round 32 I2's substitute copy from analysis/bookcipher/books/ (a different download; LF sha recorded in sha256_substitute_r32). An INTACT-FAIL against the original sha is expected until the original is re-fetched via data/fetch_sources.py.",
+      "notes": "WARNING: Gutenberg re-issues files (header/footer edits, -0.txt vs .txt vs utf-8 variants). A refetch may NOT reproduce this SHA-256 even though the book is the same. That is why english_quadgrams.txt is committed: the DERIVED model is the reproducible artifact, not the raw corpus. R34-X1: the recorded sha is of the original download, absent on this checkout; the on-disk file is Round 32 I2's substitute copy from analysis/bookcipher/books/ (a different download; LF sha recorded in sha256_substitute_r32). An INTACT-FAIL against the original sha is expected until the original is re-fetched via data/fetch_sources.py. R35-P1 (2026-10-30): original download restored byte-exact from the /files/N/N-0.txt Gutenberg URL; the Round 32 substitute is no longer on disk.",
       "sha256": "0f1a83cbcdc1d3fae6bcc3daaa496d4fa723fcce9526e84e20df12ae33fda986",
       "sha1": "fe40010eab3a073f046664a4fcfd5d028d82fc43",
       "bytes": 4436268,
-      "hash_verified_locally": true,
-      "sha256_substitute_r32": "9c4cfad6760a8a27df1041c25c5804ecd04d900b91e5d997dbe99bf96105f87c",
-      "bytes_substitute_r32": 4355979
+      "hash_verified_locally": true
     },
     {
       "id": "corpus.moby",
@@ -1941,13 +1939,11 @@
       "mirrors": [
         "https://www.gutenberg.org/ebooks/5160"
       ],
-      "notes": "HONESTY NOTE: this repo has no fetch script for data/keys/*.txt, so the exact edition/URL was never recorded. The provenance above is reconstructed from the file's own opening lines. A refetch will very likely differ in bytes (headers/whitespace) while being the same work. For keytext sweeps that is usually harmless -- the scorer strips to A-Z -- but it means these SHA-256s are a record of WHAT WAS TESTED, not a reproducible fetch target. R34-X1: the recorded sha is of the original download, absent on this checkout; the on-disk file is Round 32 I2's substitute copy from analysis/bookcipher/books/ (a different download; LF sha recorded in sha256_substitute_r32). An INTACT-FAIL against the original sha is expected until the original is re-fetched via data/fetch_sources.py.",
+      "notes": "HONESTY NOTE: this repo has no fetch script for data/keys/*.txt, so the exact edition/URL was never recorded. The provenance above is reconstructed from the file's own opening lines. A refetch will very likely differ in bytes (headers/whitespace) while being the same work. For keytext sweeps that is usually harmless -- the scorer strips to A-Z -- but it means these SHA-256s are a record of WHAT WAS TESTED, not a reproducible fetch target. R34-X1: the recorded sha is of the original download, absent on this checkout; the on-disk file is Round 32 I2's substitute copy from analysis/bookcipher/books/ (a different download; LF sha recorded in sha256_substitute_r32). An INTACT-FAIL against the original sha is expected until the original is re-fetched via data/fetch_sources.py. R35-P1 (2026-10-30): original download restored byte-exact from the /files/N/N-0.txt Gutenberg URL; the Round 32 substitute is no longer on disk.",
       "sha256": "80dc6f0d8efc8398a2d1cc8cdf17237020c881cf4fbd2412dfa37ec8be19a5ed",
       "sha1": "3fe3ae8acbdce97a30365f499f52961e9cf3e88a",
       "bytes": 617362,
-      "hash_verified_locally": true,
-      "sha256_substitute_r32": "cfaf6c0c94dd2faa2c772c05f710ef893b12d394f847859a97f55f1c0f090a16",
-      "bytes_substitute_r32": 607632
+      "hash_verified_locally": true
     },
     {
       "id": "keytext.king_in_yellow",
