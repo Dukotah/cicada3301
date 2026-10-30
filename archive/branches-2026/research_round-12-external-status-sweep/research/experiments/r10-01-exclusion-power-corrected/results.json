@@ -1,0 +1,1925 @@
+{
+  "pre_registration": "r10-01-exclusion-power-corrected/PRE-REGISTRATION.md",
+  "seed": 3301,
+  "max_chunks_per_author": 30,
+  "N_q": {
+    "arm1_connected_prose": 424,
+    "arm2_all_prose": 729
+  },
+  "fw_density": {
+    "arm1": 0.49764150943396224,
+    "arm2": 0.5006858710562414
+  },
+  "MFW_basis": {
+    "n_authors_in_reference": 10,
+    "K_intersection": 150,
+    "K_sweep": [
+      50,
+      100,
+      150
+    ],
+    "mfw_list_top50": [
+      "the",
+      "of",
+      "and",
+      "to",
+      "in",
+      "a",
+      "is",
+      "that",
+      "it",
+      "as",
+      "which",
+      "for",
+      "with",
+      "by",
+      "be",
+      "are",
+      "he",
+      "or",
+      "not",
+      "i",
+      "his",
+      "this",
+      "was",
+      "but",
+      "from",
+      "all",
+      "they",
+      "on",
+      "have",
+      "we",
+      "one",
+      "their",
+      "at",
+      "an",
+      "will",
+      "so",
+      "who",
+      "s",
+      "there",
+      "had",
+      "them",
+      "its",
+      "him",
+      "no",
+      "my",
+      "were",
+      "man",
+      "when",
+      "these",
+      "into"
+    ],
+    "cyphernomicon_included": true
+  },
+  "arms": {
+    "arm1_connected_prose": {
+      "N_q": 424,
+      "fw_density": 0.49764150943396224,
+      "K_results": {
+        "50": {
+          "mfw_K": 50,
+          "n_authors_used": 10,
+          "authors": [
+            "Blavatsky",
+            "Agrippa",
+            "Levi",
+            "ManlyHall",
+            "KJB",
+            "Emerson",
+            "Poe",
+            "Lovecraft",
+            "GospelBuddha",
+            "TimothyMay"
+          ],
+          "control_A": {
+            "correct": 207,
+            "total": 300,
+            "accuracy": 0.69,
+            "ci_95_wilson": [
+              0.6355381623460284,
+              0.7396573342548319
+            ],
+            "chance": 0.1,
+            "n_authors": 10,
+            "passes": true
+          },
+          "control_B": {
+            "false_exclusions": 3,
+            "total_held": 300,
+            "FER": 0.01,
+            "FER_wilson_ci_95": [
+              0.0034065567627181124,
+              0.028984004635062833
+            ],
+            "holm_bonferroni_m": 10,
+            "percentile_used": 99.5,
+            "gate_passes": true
+          },
+          "control_C": {
+            "false_inclusions": 2170,
+            "total_impostor_chunks": 2700,
+            "FIR": 0.8037037037037037,
+            "FIR_wilson_ci_95": [
+              0.7882943428372367,
+              0.8182500642019923
+            ],
+            "power": 0.1962962962962963,
+            "power_wilson_lower": 0.1817499357980077,
+            "holm_bonferroni_m": 10,
+            "percentile_used": 99.5,
+            "gate_passes": false,
+            "per_X": {
+              "Blavatsky": {
+                "false_inclusions": 197,
+                "total_impostor_chunks": 270,
+                "FIR": 0.7296296296296296,
+                "FIR_wilson_ci_95": [
+                  0.6737034954512167,
+                  0.7791130232953873
+                ],
+                "power": 0.27037037037037037,
+                "power_wilson_lower": 0.22088697670461266
+              },
+              "Agrippa": {
+                "false_inclusions": 260,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9629629629629629,
+                "FIR_wilson_ci_95": [
+                  0.9331763477857064,
+                  0.9797601819453498
+                ],
+                "power": 0.03703703703703709,
+                "power_wilson_lower": 0.02023981805465025
+              },
+              "Levi": {
+                "false_inclusions": 149,
+                "total_impostor_chunks": 270,
+                "FIR": 0.5518518518518518,
+                "FIR_wilson_ci_95": [
+                  0.4922181749076109,
+                  0.6100307164222674
+                ],
+                "power": 0.4481481481481482,
+                "power_wilson_lower": 0.38996928357773264
+              },
+              "ManlyHall": {
+                "false_inclusions": 247,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9148148148148149,
+                "FIR_wilson_ci_95": [
+                  0.8754234081718314,
+                  0.942567722467195
+                ],
+                "power": 0.08518518518518514,
+                "power_wilson_lower": 0.057432277532805
+              },
+              "KJB": {
+                "false_inclusions": 267,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9888888888888889,
+                "FIR_wilson_ci_95": [
+                  0.9678467469452553,
+                  0.9962142284507401
+                ],
+                "power": 0.011111111111111072,
+                "power_wilson_lower": 0.003785771549259853
+              },
+              "Emerson": {
+                "false_inclusions": 232,
+                "total_impostor_chunks": 270,
+                "FIR": 0.8592592592592593,
+                "FIR_wilson_ci_95": [
+                  0.8127234483271836,
+                  0.895715298744116
+                ],
+                "power": 0.14074074074074072,
+                "power_wilson_lower": 0.10428470125588396
+              },
+              "Poe": {
+                "false_inclusions": 262,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9703703703703703,
+                "FIR_wilson_ci_95": [
+                  0.9426320668659238,
+                  0.9849114473408291
+                ],
+                "power": 0.029629629629629672,
+                "power_wilson_lower": 0.015088552659170862
+              },
+              "Lovecraft": {
+                "false_inclusions": 224,
+                "total_impostor_chunks": 270,
+                "FIR": 0.8296296296296296,
+                "FIR_wilson_ci_95": [
+                  0.7802366784369271,
+                  0.8697741307315848
+                ],
+                "power": 0.1703703703703704,
+                "power_wilson_lower": 0.13022586926841517
+              },
+              "GospelBuddha": {
+                "false_inclusions": 270,
+                "total_impostor_chunks": 270,
+                "FIR": 1.0,
+                "FIR_wilson_ci_95": [
+                  0.9859714521095407,
+                  1.0
+                ],
+                "power": 0.0,
+                "power_wilson_lower": 0.0
+              },
+              "TimothyMay": {
+                "false_inclusions": 62,
+                "total_impostor_chunks": 270,
+                "FIR": 0.22962962962962963,
+                "FIR_wilson_ci_95": [
+                  0.18346220589906262,
+                  0.2833828607380006
+                ],
+                "power": 0.7703703703703704,
+                "power_wilson_lower": 0.7166171392619993
+              }
+            }
+          },
+          "roc_sweep": [
+            {
+              "percentile": 50,
+              "FER": 0.22666666666666666,
+              "FER_wilson_upper": 0.2773263068683335,
+              "FIR": 0.14333333333333334,
+              "power": 0.8566666666666667,
+              "power_wilson_lower": 0.8429419586524483,
+              "viable": false
+            },
+            {
+              "percentile": 55,
+              "FER": 0.17,
+              "FER_wilson_upper": 0.21661519144191346,
+              "FIR": 0.16925925925925925,
+              "power": 0.8307407407407408,
+              "power_wilson_lower": 0.8161287134195251,
+              "viable": false
+            },
+            {
+              "percentile": 60,
+              "FER": 0.14,
+              "FER_wilson_upper": 0.18383249974730587,
+              "FIR": 0.20185185185185187,
+              "power": 0.7981481481481482,
+              "power_wilson_lower": 0.7825891471174845,
+              "viable": false
+            },
+            {
+              "percentile": 65,
+              "FER": 0.10666666666666667,
+              "FER_wilson_upper": 0.14670411773420264,
+              "FIR": 0.25,
+              "power": 0.75,
+              "power_wilson_lower": 0.7333192111049657,
+              "viable": false
+            },
+            {
+              "percentile": 70,
+              "FER": 0.08666666666666667,
+              "FER_wilson_upper": 0.12395674551002385,
+              "FIR": 0.28888888888888886,
+              "power": 0.7111111111111111,
+              "power_wilson_lower": 0.6937241381957608,
+              "viable": false
+            },
+            {
+              "percentile": 75,
+              "FER": 0.06333333333333334,
+              "FER_wilson_upper": 0.09679203948257407,
+              "FIR": 0.32814814814814813,
+              "power": 0.6718518518518519,
+              "power_wilson_lower": 0.6539074721305723,
+              "viable": false
+            },
+            {
+              "percentile": 80,
+              "FER": 0.05,
+              "FER_wilson_upper": 0.08084771970710952,
+              "FIR": 0.37777777777777777,
+              "power": 0.6222222222222222,
+              "power_wilson_lower": 0.6037727856926277,
+              "viable": false
+            },
+            {
+              "percentile": 85,
+              "FER": 0.04,
+              "FER_wilson_upper": 0.06860486345997804,
+              "FIR": 0.4737037037037037,
+              "power": 0.5262962962962963,
+              "power_wilson_lower": 0.507438274599771,
+              "viable": false
+            },
+            {
+              "percentile": 90,
+              "FER": 0.01,
+              "FER_wilson_upper": 0.028984004635062833,
+              "FIR": 0.5662962962962963,
+              "power": 0.4337037037037037,
+              "power_wilson_lower": 0.4151173583519524,
+              "viable": false
+            },
+            {
+              "percentile": 95,
+              "FER": 0.0033333333333333335,
+              "FER_wilson_upper": 0.018637164554943353,
+              "FIR": 0.6555555555555556,
+              "power": 0.34444444444444444,
+              "power_wilson_lower": 0.32675268254232903,
+              "viable": false
+            },
+            {
+              "percentile": 97,
+              "FER": 0.0033333333333333335,
+              "FER_wilson_upper": 0.018637164554943353,
+              "FIR": 0.7022222222222222,
+              "power": 0.2977777777777778,
+              "power_wilson_lower": 0.2808262075502992,
+              "viable": false
+            },
+            {
+              "percentile": 98,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.7444444444444445,
+              "power": 0.25555555555555554,
+              "power_wilson_lower": 0.23945834298887503,
+              "viable": false
+            },
+            {
+              "percentile": 99,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.7859259259259259,
+              "power": 0.21407407407407408,
+              "power_wilson_lower": 0.19901395419928603,
+              "viable": false
+            },
+            {
+              "percentile": 99.5,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.8025925925925926,
+              "power": 0.19740740740740736,
+              "power_wilson_lower": 0.18282759589130304,
+              "viable": false
+            },
+            {
+              "percentile": 99.9,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.8133333333333334,
+              "power": 0.18666666666666665,
+              "power_wilson_lower": 0.17241810222788934,
+              "viable": false
+            }
+          ],
+          "roc_any_viable_operating_point": false,
+          "decision_branch": "NEGATIVE_POWER_GATE",
+          "lp_exclusion": null
+        },
+        "100": {
+          "mfw_K": 100,
+          "n_authors_used": 10,
+          "authors": [
+            "Blavatsky",
+            "Agrippa",
+            "Levi",
+            "ManlyHall",
+            "KJB",
+            "Emerson",
+            "Poe",
+            "Lovecraft",
+            "GospelBuddha",
+            "TimothyMay"
+          ],
+          "control_A": {
+            "correct": 229,
+            "total": 300,
+            "accuracy": 0.7633333333333333,
+            "ci_95_wilson": [
+              0.712095744869948,
+              0.8079120486645778
+            ],
+            "chance": 0.1,
+            "n_authors": 10,
+            "passes": true
+          },
+          "control_B": {
+            "false_exclusions": 3,
+            "total_held": 300,
+            "FER": 0.01,
+            "FER_wilson_ci_95": [
+              0.0034065567627181124,
+              0.028984004635062833
+            ],
+            "holm_bonferroni_m": 10,
+            "percentile_used": 99.5,
+            "gate_passes": true
+          },
+          "control_C": {
+            "false_inclusions": 1968,
+            "total_impostor_chunks": 2700,
+            "FIR": 0.7288888888888889,
+            "FIR_wilson_ci_95": [
+              0.7118045519410828,
+              0.7453228182421411
+            ],
+            "power": 0.2711111111111111,
+            "power_wilson_lower": 0.2546771817578589,
+            "holm_bonferroni_m": 10,
+            "percentile_used": 99.5,
+            "gate_passes": false,
+            "per_X": {
+              "Blavatsky": {
+                "false_inclusions": 114,
+                "total_impostor_chunks": 270,
+                "FIR": 0.4222222222222222,
+                "FIR_wilson_ci_95": [
+                  0.3648029611659004,
+                  0.48182370183928214
+                ],
+                "power": 0.5777777777777777,
+                "power_wilson_lower": 0.5181762981607179
+              },
+              "Agrippa": {
+                "false_inclusions": 263,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9740740740740741,
+                "FIR_wilson_ci_95": [
+                  0.947460942097765,
+                  0.9873860643468367
+                ],
+                "power": 0.025925925925925908,
+                "power_wilson_lower": 0.012613935653163266
+              },
+              "Levi": {
+                "false_inclusions": 207,
+                "total_impostor_chunks": 270,
+                "FIR": 0.7666666666666667,
+                "FIR_wilson_ci_95": [
+                  0.7126908121561106,
+                  0.8131606289689779
+                ],
+                "power": 0.23333333333333328,
+                "power_wilson_lower": 0.1868393710310221
+              },
+              "ManlyHall": {
+                "false_inclusions": 259,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9592592592592593,
+                "FIR_wilson_ci_95": [
+                  0.9285315925065161,
+                  0.9771014449866917
+                ],
+                "power": 0.040740740740740744,
+                "power_wilson_lower": 0.022898555013308286
+              },
+              "KJB": {
+                "false_inclusions": 194,
+                "total_impostor_chunks": 270,
+                "FIR": 0.7185185185185186,
+                "FIR_wilson_ci_95": [
+                  0.6620988620887324,
+                  0.7688071799443262
+                ],
+                "power": 0.28148148148148144,
+                "power_wilson_lower": 0.23119282005567376
+              },
+              "Emerson": {
+                "false_inclusions": 221,
+                "total_impostor_chunks": 270,
+                "FIR": 0.8185185185185185,
+                "FIR_wilson_ci_95": [
+                  0.7681824194673441,
+                  0.8599179129876227
+                ],
+                "power": 0.18148148148148147,
+                "power_wilson_lower": 0.14008208701237734
+              },
+              "Poe": {
+                "false_inclusions": 170,
+                "total_impostor_chunks": 270,
+                "FIR": 0.6296296296296297,
+                "FIR_wilson_ci_95": [
+                  0.5705860280145746,
+                  0.6850362003101212
+                ],
+                "power": 0.37037037037037035,
+                "power_wilson_lower": 0.31496379968987875
+              },
+              "Lovecraft": {
+                "false_inclusions": 248,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9185185185185185,
+                "FIR_wilson_ci_95": [
+                  0.8797170949781553,
+                  0.9455775278987196
+                ],
+                "power": 0.08148148148148149,
+                "power_wilson_lower": 0.05442247210128037
+              },
+              "GospelBuddha": {
+                "false_inclusions": 266,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9851851851851852,
+                "FIR_wilson_ci_95": [
+                  0.962533267597707,
+                  0.9942242155604399
+                ],
+                "power": 0.014814814814814836,
+                "power_wilson_lower": 0.005775784439560061
+              },
+              "TimothyMay": {
+                "false_inclusions": 26,
+                "total_impostor_chunks": 270,
+                "FIR": 0.0962962962962963,
+                "FIR_wilson_ci_95": [
+                  0.06656356247509951,
+                  0.1373557835994195
+                ],
+                "power": 0.9037037037037037,
+                "power_wilson_lower": 0.8626442164005805
+              }
+            }
+          },
+          "roc_sweep": [
+            {
+              "percentile": 50,
+              "FER": 0.17,
+              "FER_wilson_upper": 0.21661519144191346,
+              "FIR": 0.08962962962962963,
+              "power": 0.9103703703703704,
+              "power_wilson_lower": 0.8990044053668234,
+              "viable": false
+            },
+            {
+              "percentile": 55,
+              "FER": 0.14666666666666667,
+              "FER_wilson_upper": 0.19116340961996847,
+              "FIR": 0.10740740740740741,
+              "power": 0.8925925925925926,
+              "power_wilson_lower": 0.8803504474745534,
+              "viable": false
+            },
+            {
+              "percentile": 60,
+              "FER": 0.10333333333333333,
+              "FER_wilson_upper": 0.14294099521210313,
+              "FIR": 0.12703703703703703,
+              "power": 0.8729629629629629,
+              "power_wilson_lower": 0.8598694286732718,
+              "viable": false
+            },
+            {
+              "percentile": 65,
+              "FER": 0.07333333333333333,
+              "FER_wilson_upper": 0.10853209579892667,
+              "FIR": 0.14814814814814814,
+              "power": 0.8518518518518519,
+              "power_wilson_lower": 0.8379521516248176,
+              "viable": false
+            },
+            {
+              "percentile": 70,
+              "FER": 0.05,
+              "FER_wilson_upper": 0.08084771970710952,
+              "FIR": 0.1962962962962963,
+              "power": 0.8037037037037037,
+              "power_wilson_lower": 0.7882943428372367,
+              "viable": false
+            },
+            {
+              "percentile": 75,
+              "FER": 0.04,
+              "FER_wilson_upper": 0.06860486345997804,
+              "FIR": 0.23777777777777778,
+              "power": 0.7622222222222222,
+              "power_wilson_lower": 0.7457984070556399,
+              "viable": false
+            },
+            {
+              "percentile": 80,
+              "FER": 0.02666666666666667,
+              "FER_wilson_upper": 0.051729540297546284,
+              "FIR": 0.3025925925925926,
+              "power": 0.6974074074074075,
+              "power_wilson_lower": 0.6798090478226261,
+              "viable": false
+            },
+            {
+              "percentile": 85,
+              "FER": 0.02,
+              "FER_wilson_upper": 0.042940186730055147,
+              "FIR": 0.3592592592592593,
+              "power": 0.6407407407407407,
+              "power_wilson_lower": 0.6224550011566281,
+              "viable": false
+            },
+            {
+              "percentile": 90,
+              "FER": 0.016666666666666666,
+              "FER_wilson_upper": 0.038415943621705605,
+              "FIR": 0.4351851851851852,
+              "power": 0.5648148148148149,
+              "power_wilson_lower": 0.5460348129818019,
+              "viable": false
+            },
+            {
+              "percentile": 95,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.5614814814814815,
+              "power": 0.43851851851851853,
+              "power_wilson_lower": 0.4199019838835637,
+              "viable": false
+            },
+            {
+              "percentile": 97,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.6174074074074074,
+              "power": 0.3825925925925926,
+              "power_wilson_lower": 0.36443889049326694,
+              "viable": false
+            },
+            {
+              "percentile": 98,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.6644444444444444,
+              "power": 0.3355555555555556,
+              "power_wilson_lower": 0.3179894259513897,
+              "viable": false
+            },
+            {
+              "percentile": 99,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.7118518518518518,
+              "power": 0.28814814814814815,
+              "power_wilson_lower": 0.27137513037610006,
+              "viable": false
+            },
+            {
+              "percentile": 99.5,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.7303703703703703,
+              "power": 0.26962962962962966,
+              "power_wilson_lower": 0.253226629513993,
+              "viable": false
+            },
+            {
+              "percentile": 99.9,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.7385185185185185,
+              "power": 0.26148148148148154,
+              "power_wilson_lower": 0.24525284769171696,
+              "viable": false
+            }
+          ],
+          "roc_any_viable_operating_point": false,
+          "decision_branch": "NEGATIVE_POWER_GATE",
+          "lp_exclusion": null
+        },
+        "150": {
+          "mfw_K": 150,
+          "n_authors_used": 10,
+          "authors": [
+            "Blavatsky",
+            "Agrippa",
+            "Levi",
+            "ManlyHall",
+            "KJB",
+            "Emerson",
+            "Poe",
+            "Lovecraft",
+            "GospelBuddha",
+            "TimothyMay"
+          ],
+          "control_A": {
+            "correct": 231,
+            "total": 300,
+            "accuracy": 0.77,
+            "ci_95_wilson": [
+              0.7191436245386645,
+              0.8140289232625583
+            ],
+            "chance": 0.1,
+            "n_authors": 10,
+            "passes": true
+          },
+          "control_B": {
+            "false_exclusions": 3,
+            "total_held": 300,
+            "FER": 0.01,
+            "FER_wilson_ci_95": [
+              0.0034065567627181124,
+              0.028984004635062833
+            ],
+            "holm_bonferroni_m": 10,
+            "percentile_used": 99.5,
+            "gate_passes": true
+          },
+          "control_C": {
+            "false_inclusions": 2007,
+            "total_impostor_chunks": 2700,
+            "FIR": 0.7433333333333333,
+            "FIR_wilson_ci_95": [
+              0.7265197261164974,
+              0.7594554878161531
+            ],
+            "power": 0.2566666666666667,
+            "power_wilson_lower": 0.24054451218384687,
+            "holm_bonferroni_m": 10,
+            "percentile_used": 99.5,
+            "gate_passes": false,
+            "per_X": {
+              "Blavatsky": {
+                "false_inclusions": 144,
+                "total_impostor_chunks": 270,
+                "FIR": 0.5333333333333333,
+                "FIR_wilson_ci_95": [
+                  0.47377452821457033,
+                  0.5919569019260656
+                ],
+                "power": 0.4666666666666667,
+                "power_wilson_lower": 0.40804309807393435
+              },
+              "Agrippa": {
+                "false_inclusions": 267,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9888888888888889,
+                "FIR_wilson_ci_95": [
+                  0.9678467469452553,
+                  0.9962142284507401
+                ],
+                "power": 0.011111111111111072,
+                "power_wilson_lower": 0.003785771549259853
+              },
+              "Levi": {
+                "false_inclusions": 217,
+                "total_impostor_chunks": 270,
+                "FIR": 0.8037037037037037,
+                "FIR_wilson_ci_95": [
+                  0.7522059853552031,
+                  0.8466803781483697
+                ],
+                "power": 0.1962962962962963,
+                "power_wilson_lower": 0.15331962185163028
+              },
+              "ManlyHall": {
+                "false_inclusions": 255,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9444444444444444,
+                "FIR_wilson_ci_95": [
+                  0.9103717920986683,
+                  0.9660472764431456
+                ],
+                "power": 0.05555555555555558,
+                "power_wilson_lower": 0.033952723556854414
+              },
+              "KJB": {
+                "false_inclusions": 160,
+                "total_impostor_chunks": 270,
+                "FIR": 0.5925925925925926,
+                "FIR_wilson_ci_95": [
+                  0.5330823823310695,
+                  0.6495049236151416
+                ],
+                "power": 0.40740740740740744,
+                "power_wilson_lower": 0.35049507638485844
+              },
+              "Emerson": {
+                "false_inclusions": 213,
+                "total_impostor_chunks": 270,
+                "FIR": 0.7888888888888889,
+                "FIR_wilson_ci_95": [
+                  0.736330695475857,
+                  0.833341699076322
+                ],
+                "power": 0.21111111111111114,
+                "power_wilson_lower": 0.16665830092367795
+              },
+              "Poe": {
+                "false_inclusions": 247,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9148148148148149,
+                "FIR_wilson_ci_95": [
+                  0.8754234081718314,
+                  0.942567722467195
+                ],
+                "power": 0.08518518518518514,
+                "power_wilson_lower": 0.057432277532805
+              },
+              "Lovecraft": {
+                "false_inclusions": 224,
+                "total_impostor_chunks": 270,
+                "FIR": 0.8296296296296296,
+                "FIR_wilson_ci_95": [
+                  0.7802366784369271,
+                  0.8697741307315848
+                ],
+                "power": 0.1703703703703704,
+                "power_wilson_lower": 0.13022586926841517
+              },
+              "GospelBuddha": {
+                "false_inclusions": 265,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9814814814814815,
+                "FIR_wilson_ci_95": [
+                  0.9573891721299217,
+                  0.9920648187903769
+                ],
+                "power": 0.01851851851851849,
+                "power_wilson_lower": 0.00793518120962311
+              },
+              "TimothyMay": {
+                "false_inclusions": 15,
+                "total_impostor_chunks": 270,
+                "FIR": 0.05555555555555555,
+                "FIR_wilson_ci_95": [
+                  0.033952723556854414,
+                  0.08962820790133164
+                ],
+                "power": 0.9444444444444444,
+                "power_wilson_lower": 0.9103717920986684
+              }
+            }
+          },
+          "roc_sweep": [
+            {
+              "percentile": 50,
+              "FER": 0.13,
+              "FER_wilson_upper": 0.17278130076316203,
+              "FIR": 0.11222222222222222,
+              "power": 0.8877777777777778,
+              "power_wilson_lower": 0.8753165401047035,
+              "viable": false
+            },
+            {
+              "percentile": 55,
+              "FER": 0.12666666666666668,
+              "FER_wilson_upper": 0.16908203594800147,
+              "FIR": 0.12962962962962962,
+              "power": 0.8703703703703703,
+              "power_wilson_lower": 0.8571721724651249,
+              "viable": false
+            },
+            {
+              "percentile": 60,
+              "FER": 0.08333333333333333,
+              "FER_wilson_upper": 0.12012238097512637,
+              "FIR": 0.15814814814814815,
+              "power": 0.8418518518518519,
+              "power_wilson_lower": 0.8276040108006948,
+              "viable": false
+            },
+            {
+              "percentile": 65,
+              "FER": 0.07333333333333333,
+              "FER_wilson_upper": 0.10853209579892667,
+              "FIR": 0.17777777777777778,
+              "power": 0.8222222222222222,
+              "power_wilson_lower": 0.8073459860165195,
+              "viable": false
+            },
+            {
+              "percentile": 70,
+              "FER": 0.05333333333333334,
+              "FER_wilson_upper": 0.08486983874726851,
+              "FIR": 0.21777777777777776,
+              "power": 0.7822222222222223,
+              "power_wilson_lower": 0.7662586659288342,
+              "viable": false
+            },
+            {
+              "percentile": 75,
+              "FER": 0.043333333333333335,
+              "FER_wilson_upper": 0.07271812912806098,
+              "FIR": 0.2777777777777778,
+              "power": 0.7222222222222222,
+              "power_wilson_lower": 0.7050205383103514,
+              "viable": false
+            },
+            {
+              "percentile": 80,
+              "FER": 0.02,
+              "FER_wilson_upper": 0.042940186730055147,
+              "FIR": 0.3296296296296296,
+              "power": 0.6703703703703704,
+              "power_wilson_lower": 0.6524077878495704,
+              "viable": false
+            },
+            {
+              "percentile": 85,
+              "FER": 0.01,
+              "FER_wilson_upper": 0.028984004635062833,
+              "FIR": 0.397037037037037,
+              "power": 0.6029629629629629,
+              "power_wilson_lower": 0.584373318299171,
+              "viable": false
+            },
+            {
+              "percentile": 90,
+              "FER": 0.006666666666666667,
+              "FER_wilson_upper": 0.023978074231461442,
+              "FIR": 0.5025925925925926,
+              "power": 0.4974074074074074,
+              "power_wilson_lower": 0.4785646380717926,
+              "viable": false
+            },
+            {
+              "percentile": 95,
+              "FER": 0.006666666666666667,
+              "FER_wilson_upper": 0.023978074231461442,
+              "FIR": 0.617037037037037,
+              "power": 0.38296296296296295,
+              "power_wilson_lower": 0.3648053727646713,
+              "viable": false
+            },
+            {
+              "percentile": 97,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.674074074074074,
+              "power": 0.32592592592592595,
+              "power_wilson_lower": 0.30850387114967637,
+              "viable": false
+            },
+            {
+              "percentile": 98,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.707037037037037,
+              "power": 0.292962962962963,
+              "power_wilson_lower": 0.27609951240368025,
+              "viable": false
+            },
+            {
+              "percentile": 99,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.7377777777777778,
+              "power": 0.26222222222222225,
+              "power_wilson_lower": 0.24597743618218737,
+              "viable": false
+            },
+            {
+              "percentile": 99.5,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.7459259259259259,
+              "power": 0.2540740740740741,
+              "power_wilson_lower": 0.23801033513159164,
+              "viable": false
+            },
+            {
+              "percentile": 99.9,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012643429997735661,
+              "FIR": 0.7537037037037037,
+              "power": 0.24629629629629635,
+              "power_wilson_lower": 0.23041243210899798,
+              "viable": false
+            }
+          ],
+          "roc_any_viable_operating_point": false,
+          "decision_branch": "NEGATIVE_POWER_GATE",
+          "lp_exclusion": null
+        }
+      }
+    },
+    "arm2_all_prose": {
+      "N_q": 729,
+      "fw_density": 0.5006858710562414,
+      "K_results": {
+        "50": {
+          "mfw_K": 50,
+          "n_authors_used": 10,
+          "authors": [
+            "Blavatsky",
+            "Agrippa",
+            "Levi",
+            "ManlyHall",
+            "KJB",
+            "Emerson",
+            "Poe",
+            "Lovecraft",
+            "GospelBuddha",
+            "TimothyMay"
+          ],
+          "control_A": {
+            "correct": 213,
+            "total": 293,
+            "accuracy": 0.726962457337884,
+            "ci_95_wilson": [
+              0.6732573322552002,
+              0.7747930757738632
+            ],
+            "chance": 0.1,
+            "n_authors": 10,
+            "passes": true
+          },
+          "control_B": {
+            "false_exclusions": 1,
+            "total_held": 293,
+            "FER": 0.0034129692832764505,
+            "FER_wilson_ci_95": [
+              0.0006027116470742576,
+              0.019076470785576692
+            ],
+            "holm_bonferroni_m": 10,
+            "percentile_used": 99.5,
+            "gate_passes": true
+          },
+          "control_C": {
+            "false_inclusions": 2009,
+            "total_impostor_chunks": 2637,
+            "FIR": 0.7618505877891544,
+            "FIR_wilson_ci_95": [
+              0.7452192828598395,
+              0.7777200710188633
+            ],
+            "power": 0.23814941221084562,
+            "power_wilson_lower": 0.2222799289811367,
+            "holm_bonferroni_m": 10,
+            "percentile_used": 99.5,
+            "gate_passes": false,
+            "per_X": {
+              "Blavatsky": {
+                "false_inclusions": 224,
+                "total_impostor_chunks": 263,
+                "FIR": 0.8517110266159695,
+                "FIR_wilson_ci_95": [
+                  0.8037067794481348,
+                  0.8895884189017474
+                ],
+                "power": 0.14828897338403046,
+                "power_wilson_lower": 0.11041158109825255
+              },
+              "Agrippa": {
+                "false_inclusions": 261,
+                "total_impostor_chunks": 263,
+                "FIR": 0.9923954372623575,
+                "FIR_wilson_ci_95": [
+                  0.9727011625975782,
+                  0.9979121150922573
+                ],
+                "power": 0.0076045627376425395,
+                "power_wilson_lower": 0.0020878849077426986
+              },
+              "Levi": {
+                "false_inclusions": 151,
+                "total_impostor_chunks": 263,
+                "FIR": 0.5741444866920152,
+                "FIR_wilson_ci_95": [
+                  0.5137379119368597,
+                  0.632416210958521
+                ],
+                "power": 0.42585551330798477,
+                "power_wilson_lower": 0.36758378904147904
+              },
+              "ManlyHall": {
+                "false_inclusions": 249,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9222222222222223,
+                "FIR_wilson_ci_95": [
+                  0.8840294262474708,
+                  0.9485686888672527
+                ],
+                "power": 0.07777777777777772,
+                "power_wilson_lower": 0.05143131113274735
+              },
+              "KJB": {
+                "false_inclusions": 253,
+                "total_impostor_chunks": 263,
+                "FIR": 0.9619771863117871,
+                "FIR_wilson_ci_95": [
+                  0.9314345045171724,
+                  0.9792181073694299
+                ],
+                "power": 0.03802281368821292,
+                "power_wilson_lower": 0.020781892630570065
+              },
+              "Emerson": {
+                "false_inclusions": 148,
+                "total_impostor_chunks": 263,
+                "FIR": 0.5627376425855514,
+                "FIR_wilson_ci_95": [
+                  0.5023088981225388,
+                  0.6213599750966294
+                ],
+                "power": 0.43726235741444863,
+                "power_wilson_lower": 0.37864002490337056
+              },
+              "Poe": {
+                "false_inclusions": 179,
+                "total_impostor_chunks": 263,
+                "FIR": 0.6806083650190115,
+                "FIR_wilson_ci_95": [
+                  0.6220056111595709,
+                  0.7340108420471256
+                ],
+                "power": 0.31939163498098855,
+                "power_wilson_lower": 0.26598915795287437
+              },
+              "Lovecraft": {
+                "false_inclusions": 256,
+                "total_impostor_chunks": 263,
+                "FIR": 0.973384030418251,
+                "FIR_wilson_ci_95": [
+                  0.946089057390485,
+                  0.9870488041723298
+                ],
+                "power": 0.026615969581749055,
+                "power_wilson_lower": 0.012951195827670237
+              },
+              "GospelBuddha": {
+                "false_inclusions": 262,
+                "total_impostor_chunks": 263,
+                "FIR": 0.9961977186311787,
+                "FIR_wilson_ci_95": [
+                  0.9787798552826267,
+                  0.9993285056326126
+                ],
+                "power": 0.0038022813688213253,
+                "power_wilson_lower": 0.0006714943673874485
+              },
+              "TimothyMay": {
+                "false_inclusions": 26,
+                "total_impostor_chunks": 263,
+                "FIR": 0.09885931558935361,
+                "FIR_wilson_ci_95": [
+                  0.06835923215561285,
+                  0.1409094875642509
+                ],
+                "power": 0.9011406844106464,
+                "power_wilson_lower": 0.8590905124357491
+              }
+            }
+          },
+          "roc_sweep": [
+            {
+              "percentile": 50,
+              "FER": 0.22525597269624573,
+              "FER_wilson_upper": 0.27646820012944306,
+              "FIR": 0.10769814182783466,
+              "power": 0.8923018581721653,
+              "power_wilson_lower": 0.8798939486936125,
+              "viable": false
+            },
+            {
+              "percentile": 55,
+              "FER": 0.18430034129692832,
+              "FER_wilson_upper": 0.23268327248299334,
+              "FIR": 0.1236253318164581,
+              "power": 0.8763746681835419,
+              "power_wilson_lower": 0.8632611863907793,
+              "viable": false
+            },
+            {
+              "percentile": 60,
+              "FER": 0.16040955631399317,
+              "FER_wilson_upper": 0.2067837377085519,
+              "FIR": 0.14258627227910503,
+              "power": 0.857413727720895,
+              "power_wilson_lower": 0.8435478741874318,
+              "viable": false
+            },
+            {
+              "percentile": 65,
+              "FER": 0.13310580204778158,
+              "FER_wilson_upper": 0.17678800180339227,
+              "FIR": 0.17595752749336366,
+              "power": 0.8240424725066363,
+              "power_wilson_lower": 0.8090402006071875,
+              "viable": false
+            },
+            {
+              "percentile": 70,
+              "FER": 0.10921501706484642,
+              "FER_wilson_upper": 0.15011407311819516,
+              "FIR": 0.2248767538869928,
+              "power": 0.7751232461130072,
+              "power_wilson_lower": 0.7587943514261735,
+              "viable": false
+            },
+            {
+              "percentile": 75,
+              "FER": 0.07849829351535836,
+              "FER_wilson_upper": 0.11503216054429513,
+              "FIR": 0.2870686386044748,
+              "power": 0.7129313613955253,
+              "power_wilson_lower": 0.6953643624650936,
+              "viable": false
+            },
+            {
+              "percentile": 80,
+              "FER": 0.03754266211604096,
+              "FER_wilson_upper": 0.06596506723989139,
+              "FIR": 0.3302995828593098,
+              "power": 0.6697004171406902,
+              "power_wilson_lower": 0.6515136438252306,
+              "viable": false
+            },
+            {
+              "percentile": 85,
+              "FER": 0.030716723549488054,
+              "FER_wilson_upper": 0.05733742433457672,
+              "FIR": 0.3716344330678802,
+              "power": 0.6283655669321198,
+              "power_wilson_lower": 0.6097468824947497,
+              "viable": false
+            },
+            {
+              "percentile": 90,
+              "FER": 0.027303754266211604,
+              "FER_wilson_upper": 0.05294371551268258,
+              "FIR": 0.4524080394387562,
+              "power": 0.5475919605612438,
+              "power_wilson_lower": 0.5285390024697594,
+              "viable": false
+            },
+            {
+              "percentile": 95,
+              "FER": 0.010238907849829351,
+              "FER_wilson_upper": 0.029666300263103858,
+              "FIR": 0.6234357224118316,
+              "power": 0.37656427758816835,
+              "power_wilson_lower": 0.35826303678970095,
+              "viable": false
+            },
+            {
+              "percentile": 97,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012941582311913155,
+              "FIR": 0.6932119833143724,
+              "power": 0.3067880166856276,
+              "power_wilson_lower": 0.2894779973968423,
+              "viable": false
+            },
+            {
+              "percentile": 98,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012941582311913155,
+              "FIR": 0.726583238528631,
+              "power": 0.27341676147136895,
+              "power_wilson_lower": 0.2567435175848187,
+              "viable": false
+            },
+            {
+              "percentile": 99,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012941582311913155,
+              "FIR": 0.7542662116040956,
+              "power": 0.24573378839590443,
+              "power_wilson_lower": 0.22967925497003527,
+              "viable": false
+            },
+            {
+              "percentile": 99.5,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012941582311913155,
+              "FIR": 0.7626090254076602,
+              "power": 0.23739097459233982,
+              "power_wilson_lower": 0.22154038208820326,
+              "viable": false
+            },
+            {
+              "percentile": 99.9,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012941582311913155,
+              "FIR": 0.7694349639742131,
+              "power": 0.23056503602578693,
+              "power_wilson_lower": 0.21488768562267868,
+              "viable": false
+            }
+          ],
+          "roc_any_viable_operating_point": false,
+          "decision_branch": "NEGATIVE_POWER_GATE",
+          "lp_exclusion": null
+        },
+        "100": {
+          "mfw_K": 100,
+          "n_authors_used": 10,
+          "authors": [
+            "Blavatsky",
+            "Agrippa",
+            "Levi",
+            "ManlyHall",
+            "KJB",
+            "Emerson",
+            "Poe",
+            "Lovecraft",
+            "GospelBuddha",
+            "TimothyMay"
+          ],
+          "control_A": {
+            "correct": 244,
+            "total": 293,
+            "accuracy": 0.8327645051194539,
+            "ci_95_wilson": [
+              0.7857861014593088,
+              0.871129910312626
+            ],
+            "chance": 0.1,
+            "n_authors": 10,
+            "passes": true
+          },
+          "control_B": {
+            "false_exclusions": 1,
+            "total_held": 293,
+            "FER": 0.0034129692832764505,
+            "FER_wilson_ci_95": [
+              0.0006027116470742576,
+              0.019076470785576692
+            ],
+            "holm_bonferroni_m": 10,
+            "percentile_used": 99.5,
+            "gate_passes": true
+          },
+          "control_C": {
+            "false_inclusions": 1936,
+            "total_impostor_chunks": 2637,
+            "FIR": 0.7341676147136899,
+            "FIR_wilson_ci_95": [
+              0.7169740529895039,
+              0.750679894903471
+            ],
+            "power": 0.26583238528631015,
+            "power_wilson_lower": 0.24932010509652902,
+            "holm_bonferroni_m": 10,
+            "percentile_used": 99.5,
+            "gate_passes": false,
+            "per_X": {
+              "Blavatsky": {
+                "false_inclusions": 87,
+                "total_impostor_chunks": 263,
+                "FIR": 0.33079847908745247,
+                "FIR_wilson_ci_95": [
+                  0.2767285450654873,
+                  0.3897402514040287
+                ],
+                "power": 0.6692015209125475,
+                "power_wilson_lower": 0.6102597485959713
+              },
+              "Agrippa": {
+                "false_inclusions": 238,
+                "total_impostor_chunks": 263,
+                "FIR": 0.9049429657794676,
+                "FIR_wilson_ci_95": [
+                  0.8634425311698,
+                  0.9347838323357403
+                ],
+                "power": 0.09505703422053235,
+                "power_wilson_lower": 0.06521616766425975
+              },
+              "Levi": {
+                "false_inclusions": 178,
+                "total_impostor_chunks": 263,
+                "FIR": 0.6768060836501901,
+                "FIR_wilson_ci_95": [
+                  0.6180861707439466,
+                  0.7304351992373458
+                ],
+                "power": 0.3231939163498099,
+                "power_wilson_lower": 0.2695648007626542
+              },
+              "ManlyHall": {
+                "false_inclusions": 257,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9518518518518518,
+                "FIR_wilson_ci_95": [
+                  0.9193766972044798,
+                  0.9716493558130311
+                ],
+                "power": 0.04814814814814816,
+                "power_wilson_lower": 0.028350644186968865
+              },
+              "KJB": {
+                "false_inclusions": 220,
+                "total_impostor_chunks": 263,
+                "FIR": 0.8365019011406845,
+                "FIR_wilson_ci_95": [
+                  0.7870207325000744,
+                  0.8762941329481915
+                ],
+                "power": 0.16349809885931554,
+                "power_wilson_lower": 0.12370586705180853
+              },
+              "Emerson": {
+                "false_inclusions": 201,
+                "total_impostor_chunks": 263,
+                "FIR": 0.7642585551330798,
+                "FIR_wilson_ci_95": [
+                  0.7093829777363818,
+                  0.8115253064292054
+                ],
+                "power": 0.23574144486692017,
+                "power_wilson_lower": 0.1884746935707946
+              },
+              "Poe": {
+                "false_inclusions": 223,
+                "total_impostor_chunks": 263,
+                "FIR": 0.8479087452471483,
+                "FIR_wilson_ci_95": [
+                  0.7995219562970565,
+                  0.8862781588274219
+                ],
+                "power": 0.15209125475285168,
+                "power_wilson_lower": 0.11372184117257811
+              },
+              "Lovecraft": {
+                "false_inclusions": 260,
+                "total_impostor_chunks": 263,
+                "FIR": 0.9885931558935361,
+                "FIR_wilson_ci_95": [
+                  0.9670049216796418,
+                  0.9961132727847896
+                ],
+                "power": 0.011406844106463865,
+                "power_wilson_lower": 0.0038867272152104393
+              },
+              "GospelBuddha": {
+                "false_inclusions": 250,
+                "total_impostor_chunks": 263,
+                "FIR": 0.9505703422053232,
+                "FIR_wilson_ci_95": [
+                  0.9172784833739291,
+                  0.9708888788364609
+                ],
+                "power": 0.049429657794676785,
+                "power_wilson_lower": 0.02911112116353909
+              },
+              "TimothyMay": {
+                "false_inclusions": 22,
+                "total_impostor_chunks": 263,
+                "FIR": 0.08365019011406843,
+                "FIR_wilson_ci_95": [
+                  0.055888232335732,
+                  0.12340015448251518
+                ],
+                "power": 0.9163498098859315,
+                "power_wilson_lower": 0.8765998455174848
+              }
+            }
+          },
+          "roc_sweep": [
+            {
+              "percentile": 50,
+              "FER": 0.20136518771331058,
+              "FER_wilson_upper": 0.25101390452098205,
+              "FIR": 0.06257110352673492,
+              "power": 0.9374288964732651,
+              "power_wilson_lower": 0.9275334695548594,
+              "viable": false
+            },
+            {
+              "percentile": 55,
+              "FER": 0.17064846416382254,
+              "FER_wilson_upper": 0.21791960838582303,
+              "FIR": 0.07811907470610542,
+              "power": 0.9218809252938945,
+              "power_wilson_lower": 0.9110135314565428,
+              "viable": false
+            },
+            {
+              "percentile": 60,
+              "FER": 0.13993174061433447,
+              "FER_wilson_upper": 0.1843313047948893,
+              "FIR": 0.09215017064846416,
+              "power": 0.9078498293515358,
+              "power_wilson_lower": 0.89620895537498,
+              "viable": false
+            },
+            {
+              "percentile": 65,
+              "FER": 0.1296928327645051,
+              "FER_wilson_upper": 0.17300423794890973,
+              "FIR": 0.10693970420932879,
+              "power": 0.8930602957906713,
+              "power_wilson_lower": 0.8806878862347314,
+              "viable": false
+            },
+            {
+              "percentile": 70,
+              "FER": 0.10580204778156997,
+              "FER_wilson_upper": 0.14626462599902088,
+              "FIR": 0.13879408418657566,
+              "power": 0.8612059158134243,
+              "power_wilson_lower": 0.8474836813470475,
+              "viable": false
+            },
+            {
+              "percentile": 75,
+              "FER": 0.07508532423208192,
+              "FER_wilson_upper": 0.1110639024259691,
+              "FIR": 0.18354190367842246,
+              "power": 0.8164580963215775,
+              "power_wilson_lower": 0.8012260493074419,
+              "viable": false
+            },
+            {
+              "percentile": 80,
+              "FER": 0.06143344709897611,
+              "FER_wilson_upper": 0.095009329843175,
+              "FIR": 0.22639362912400454,
+              "power": 0.7736063708759955,
+              "power_wilson_lower": 0.7572417757450927,
+              "viable": false
+            },
+            {
+              "percentile": 85,
+              "FER": 0.034129692832764506,
+              "FER_wilson_upper": 0.06167547000794135,
+              "FIR": 0.3318164580963216,
+              "power": 0.6681835419036783,
+              "power_wilson_lower": 0.6499782377941614,
+              "viable": false
+            },
+            {
+              "percentile": 90,
+              "FER": 0.013651877133105802,
+              "FER_wilson_upper": 0.03457065531787204,
+              "FIR": 0.4592339780053091,
+              "power": 0.5407660219946909,
+              "power_wilson_lower": 0.5216999329145906,
+              "viable": false
+            },
+            {
+              "percentile": 95,
+              "FER": 0.006825938566552901,
+              "FER_wilson_upper": 0.024542902982458342,
+              "FIR": 0.5987864998103906,
+              "power": 0.40121350018960944,
+              "power_wilson_lower": 0.38266237478944054,
+              "viable": false
+            },
+            {
+              "percentile": 97,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012941582311913155,
+              "FIR": 0.6697004171406902,
+              "power": 0.3302995828593098,
+              "power_wilson_lower": 0.3126065317894311,
+              "viable": false
+            },
+            {
+              "percentile": 98,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012941582311913155,
+              "FIR": 0.69548729616989,
+              "power": 0.30451270383011,
+              "power_wilson_lower": 0.2872425472669935,
+              "viable": false
+            },
+            {
+              "percentile": 99,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012941582311913155,
+              "FIR": 0.720515737580584,
+              "power": 0.27948426241941604,
+              "power_wilson_lower": 0.2626867068512082,
+              "viable": false
+            },
+            {
+              "percentile": 99.5,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012941582311913155,
+              "FIR": 0.7315130830489193,
+              "power": 0.26848691695108073,
+              "power_wilson_lower": 0.25191758601200576,
+              "viable": false
+            },
+            {
+              "percentile": 99.9,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012941582311913155,
+              "FIR": 0.7372013651877133,
+              "power": 0.2627986348122867,
+              "power_wilson_lower": 0.24635250818933152,
+              "viable": false
+            }
+          ],
+          "roc_any_viable_operating_point": false,
+          "decision_branch": "NEGATIVE_POWER_GATE",
+          "lp_exclusion": null
+        },
+        "150": {
+          "mfw_K": 150,
+          "n_authors_used": 10,
+          "authors": [
+            "Blavatsky",
+            "Agrippa",
+            "Levi",
+            "ManlyHall",
+            "KJB",
+            "Emerson",
+            "Poe",
+            "Lovecraft",
+            "GospelBuddha",
+            "TimothyMay"
+          ],
+          "control_A": {
+            "correct": 244,
+            "total": 293,
+            "accuracy": 0.8327645051194539,
+            "ci_95_wilson": [
+              0.7857861014593088,
+              0.871129910312626
+            ],
+            "chance": 0.1,
+            "n_authors": 10,
+            "passes": true
+          },
+          "control_B": {
+            "false_exclusions": 3,
+            "total_held": 293,
+            "FER": 0.010238907849829351,
+            "FER_wilson_ci_95": [
+              0.0034880824110226794,
+              0.029666300263103858
+            ],
+            "holm_bonferroni_m": 10,
+            "percentile_used": 99.5,
+            "gate_passes": true
+          },
+          "control_C": {
+            "false_inclusions": 2015,
+            "total_impostor_chunks": 2637,
+            "FIR": 0.764125900644672,
+            "FIR_wilson_ci_95": [
+              0.7475448615174508,
+              0.7799384983326819
+            ],
+            "power": 0.235874099355328,
+            "power_wilson_lower": 0.22006150166731808,
+            "holm_bonferroni_m": 10,
+            "percentile_used": 99.5,
+            "gate_passes": false,
+            "per_X": {
+              "Blavatsky": {
+                "false_inclusions": 127,
+                "total_impostor_chunks": 263,
+                "FIR": 0.4828897338403042,
+                "FIR_wilson_ci_95": [
+                  0.4231778698941393,
+                  0.543094255591542
+                ],
+                "power": 0.5171102661596958,
+                "power_wilson_lower": 0.456905744408458
+              },
+              "Agrippa": {
+                "false_inclusions": 263,
+                "total_impostor_chunks": 263,
+                "FIR": 1.0,
+                "FIR_wilson_ci_95": [
+                  0.9856034441406437,
+                  0.9999999999999999
+                ],
+                "power": 0.0,
+                "power_wilson_lower": 1.1102230246251565e-16
+              },
+              "Levi": {
+                "false_inclusions": 256,
+                "total_impostor_chunks": 263,
+                "FIR": 0.973384030418251,
+                "FIR_wilson_ci_95": [
+                  0.946089057390485,
+                  0.9870488041723298
+                ],
+                "power": 0.026615969581749055,
+                "power_wilson_lower": 0.012951195827670237
+              },
+              "ManlyHall": {
+                "false_inclusions": 258,
+                "total_impostor_chunks": 270,
+                "FIR": 0.9555555555555556,
+                "FIR_wilson_ci_95": [
+                  0.9239333951008266,
+                  0.9743961501545328
+                ],
+                "power": 0.0444444444444444,
+                "power_wilson_lower": 0.025603849845467153
+              },
+              "KJB": {
+                "false_inclusions": 245,
+                "total_impostor_chunks": 263,
+                "FIR": 0.9315589353612167,
+                "FIR_wilson_ci_95": [
+                  0.8944189547313727,
+                  0.9562729913519966
+                ],
+                "power": 0.0684410646387833,
+                "power_wilson_lower": 0.043727008648003385
+              },
+              "Emerson": {
+                "false_inclusions": 126,
+                "total_impostor_chunks": 263,
+                "FIR": 0.4790874524714829,
+                "FIR_wilson_ci_95": [
+                  0.41944743760187053,
+                  0.5393296046584066
+                ],
+                "power": 0.5209125475285171,
+                "power_wilson_lower": 0.4606703953415934
+              },
+              "Poe": {
+                "false_inclusions": 211,
+                "total_impostor_chunks": 263,
+                "FIR": 0.8022813688212928,
+                "FIR_wilson_ci_95": [
+                  0.7499440817409021,
+                  0.8459150346787264
+                ],
+                "power": 0.19771863117870725,
+                "power_wilson_lower": 0.15408496532127358
+              },
+              "Lovecraft": {
+                "false_inclusions": 248,
+                "total_impostor_chunks": 263,
+                "FIR": 0.9429657794676806,
+                "FIR_wilson_ci_95": [
+                  0.9080415455458376,
+                  0.9651356502137439
+                ],
+                "power": 0.057034220532319435,
+                "power_wilson_lower": 0.03486434978625608
+              },
+              "GospelBuddha": {
+                "false_inclusions": 262,
+                "total_impostor_chunks": 263,
+                "FIR": 0.9961977186311787,
+                "FIR_wilson_ci_95": [
+                  0.9787798552826267,
+                  0.9993285056326126
+                ],
+                "power": 0.0038022813688213253,
+                "power_wilson_lower": 0.0006714943673874485
+              },
+              "TimothyMay": {
+                "false_inclusions": 19,
+                "total_impostor_chunks": 263,
+                "FIR": 0.07224334600760456,
+                "FIR_wilson_ci_95": [
+                  0.04673388801633136,
+                  0.11006924912570343
+                ],
+                "power": 0.9277566539923955,
+                "power_wilson_lower": 0.8899307508742966
+              }
+            }
+          },
+          "roc_sweep": [
+            {
+              "percentile": 50,
+              "FER": 0.18430034129692832,
+              "FER_wilson_upper": 0.23268327248299334,
+              "FIR": 0.08949563898369359,
+              "power": 0.9105043610163064,
+              "power_wilson_lower": 0.8990033743657249,
+              "viable": false
+            },
+            {
+              "percentile": 55,
+              "FER": 0.17064846416382254,
+              "FER_wilson_upper": 0.21791960838582303,
+              "FIR": 0.10049298445202882,
+              "power": 0.8995070155479712,
+              "power_wilson_lower": 0.8874440022430571,
+              "viable": false
+            },
+            {
+              "percentile": 60,
+              "FER": 0.13310580204778158,
+              "FER_wilson_upper": 0.17678800180339227,
+              "FIR": 0.12779673871824043,
+              "power": 0.8722032612817596,
+              "power_wilson_lower": 0.8589166445979646,
+              "viable": false
+            },
+            {
+              "percentile": 65,
+              "FER": 0.10921501706484642,
+              "FER_wilson_upper": 0.15011407311819516,
+              "FIR": 0.15358361774744028,
+              "power": 0.8464163822525597,
+              "power_wilson_lower": 0.8321517465723289,
+              "viable": false
+            },
+            {
+              "percentile": 70,
+              "FER": 0.09556313993174062,
+              "FER_wilson_upper": 0.1346490312262144,
+              "FIR": 0.180128934395146,
+              "power": 0.819871065604854,
+              "power_wilson_lower": 0.8047412228885229,
+              "viable": false
+            },
+            {
+              "percentile": 75,
+              "FER": 0.06143344709897611,
+              "FER_wilson_upper": 0.095009329843175,
+              "FIR": 0.22184300341296928,
+              "power": 0.7781569965870307,
+              "power_wilson_lower": 0.7619004072274389,
+              "viable": false
+            },
+            {
+              "percentile": 80,
+              "FER": 0.040955631399317405,
+              "FER_wilson_upper": 0.07021195683242522,
+              "FIR": 0.291998483124763,
+              "power": 0.7080015168752369,
+              "power_wilson_lower": 0.6903545754656258,
+              "viable": false
+            },
+            {
+              "percentile": 85,
+              "FER": 0.027303754266211604,
+              "FER_wilson_upper": 0.05294371551268258,
+              "FIR": 0.36291240045506257,
+              "power": 0.6370875995449374,
+              "power_wilson_lower": 0.6185476850517078,
+              "viable": false
+            },
+            {
+              "percentile": 90,
+              "FER": 0.017064846416382253,
+              "FER_wilson_upper": 0.03931914157057606,
+              "FIR": 0.4467197572999621,
+              "power": 0.5532802427000378,
+              "power_wilson_lower": 0.5342409748758452,
+              "viable": false
+            },
+            {
+              "percentile": 95,
+              "FER": 0.0034129692832764505,
+              "FER_wilson_upper": 0.019076470785576692,
+              "FIR": 0.5851346226772848,
+              "power": 0.4148653773227152,
+              "power_wilson_lower": 0.3961970997404718,
+              "viable": false
+            },
+            {
+              "percentile": 97,
+              "FER": 0.0034129692832764505,
+              "FER_wilson_upper": 0.019076470785576692,
+              "FIR": 0.6556693211983314,
+              "power": 0.34433067880166857,
+              "power_wilson_lower": 0.32643333624032045,
+              "viable": false
+            },
+            {
+              "percentile": 98,
+              "FER": 0.0034129692832764505,
+              "FER_wilson_upper": 0.019076470785576692,
+              "FIR": 0.7000379218809253,
+              "power": 0.2999620781190747,
+              "power_wilson_lower": 0.28277316688298226,
+              "viable": false
+            },
+            {
+              "percentile": 99,
+              "FER": 0.0034129692832764505,
+              "FER_wilson_upper": 0.019076470785576692,
+              "FIR": 0.7447857413727721,
+              "power": 0.2552142586272279,
+              "power_wilson_lower": 0.23893803459051166,
+              "viable": false
+            },
+            {
+              "percentile": 99.5,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012941582311913155,
+              "FIR": 0.7633674630261661,
+              "power": 0.2366325369738339,
+              "power_wilson_lower": 0.2208009062385986,
+              "viable": false
+            },
+            {
+              "percentile": 99.9,
+              "FER": 0.0,
+              "FER_wilson_upper": 0.012941582311913155,
+              "FIR": 0.7796738718240425,
+              "power": 0.22032612817595754,
+              "power_wilson_lower": 0.20491982441399925,
+              "viable": false
+            }
+          ],
+          "roc_any_viable_operating_point": false,
+          "decision_branch": "NEGATIVE_POWER_GATE",
+          "lp_exclusion": null
+        }
+      }
+    }
+  }
+}

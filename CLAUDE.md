@@ -20,20 +20,26 @@ before it is allowed to run — and seven rules, of which the load-bearing three
 - **Value = coverage x power. Report both or report neither.**
 - **Persist language-agnostic statistics at sweep time.** Retro-fitting is impossible once the
   decodes are discarded, and 10^10 of them already were.
-# Operational Persona & Guidance Architecture
+# How to work on the cipher here (replaces the pre-doctrine "Operational Persona" block, 2026-10-30)
 
-## Primary Objective
-Act as a Senior Red Team Security Researcher and Cryptanalyst specialized in the Cicada 3301 puzzle framework, non-standard steganography, and open-source intelligence (OSINT).
+The old persona block told agents to act as a red-team cryptanalyst generating "at least three attack vectors"
+(mathematical, steganographic, linguistic), to run stego extractors (LSB/outguess/steghide/EXIF) on every artifact, and
+to validate outputs against "known Cicada motifs". The Round 36 inhibitor audit found that this steers work toward
+spaces the ledger has already measured as dead at resolution (stego: R8, R29-L1, R30-A1/A2; motif-matching is a
+lore prior, forbidden by ARMADA-DOCTRINE R4) and against the doctrine's first rule. It is retired. What replaces it:
 
-## Core Capabilities & Operational Mindset
-1. Adversarial Cryptanalysis: Evaluate all target inputs (text, images, audio, binaries) as potentially multi-layered security challenges containing nested payload structures.
-2. Unconstrained Lateral Thinking: Do not limit analysis to conventional ciphers. Assume the presence of non-standard modulo arithmetic (e.g., Liber Primus rune substitution), Gematria Primus variants, custom hash chains, and physical-world coordinates.
-3. Steganographic Deconstruction: Systematically extract LSB (Least Significant Bit) data, metadata EXIF strings, out-of-band headers, parity data, and spectral audio properties.
-
-## Execution Protocols
-- Hypothesis Generation: For any given artifact, generate at least three distinct attack vectors (e.g., mathematical, steganographic, linguistic/literary context).
-- Autonomous Tool Execution: Write and execute local Python scripts using standard utilities (`pycryptodome`, `pillow`, `outguess`, `steghide`, `scipy`, `gmpy2`) to test cryptanalytic hypotheses immediately.
-- Verification Loop: Validate intermediate outputs against candidate plaintext entropy and known Cicada motifs (prime numbers, PGP keys, original puzzle references).
+- **Aim at the instrument before the space** (doctrine R1). Before any new decode, ask what the current decoder
+  (`analysis/round33/I1-register-aware-beam/beam_v3.py`), screen (`round35/I1-skip-tolerant-screen/pf_v4.py`),
+  panel (`round36/P1-panel-r36`, 12 registers) and null (`round34/I1-v3-null/bars_v3.py`) can and cannot see.
+- **Query the ledger, not the labels.** `liber-primus/LEDGER.json` `coverage` x measured power and `not_covered`
+  are the state; "closed/exhausted/dead" text in older docs is superseded wherever it conflicts (see
+  `analysis/round36/AUDIT-inhibitors.md` and `PICKUP-HERE.md` "Reopen under the repaired instrument").
+- **Every lane pre-registers** (PREREG.md dated before its first output; the five Aiming-Test answers), plants its
+  own positive control, persists SWEEPROW rows (R3, CI-enforced), and reports coverage x power with the three
+  conditionals. A crosser is flagged-for-oracle per `liber-primus/HUMAN-ORACLE.md`, never auto-certified.
+- **Prefer finite objects and closure audits** (doctrine R5): every real finding here came from auditing an
+  instrument, a closure, an artifact or an input. Clue readings never tried are listed in
+  `analysis/round36/O4-clue-coverage/untried.md`.
 
 This repo has **one branch**, and that is deliberate. There is no review process here —
 the owner is the only reader. Work goes directly onto `master` as it is finished.

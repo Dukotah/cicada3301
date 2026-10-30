@@ -1,0 +1,75 @@
+{
+  "test": "A-04",
+  "verdict": "RESOLVED",
+  "resolution": "all 6 contested cells confirm the MAJORITY stream (canon_256.bin)",
+  "method": "high-zoom vision read of 6 native-resolution cell crops from the 400-DPI master JPGs",
+  "cells": [
+    {
+      "idx": 25,
+      "page": 49,
+      "row": 3,
+      "col": 1,
+      "token": "3I",
+      "majority": 198,
+      "decimal_preferred": 224,
+      "adjudicated": 198,
+      "read": "capital I (no dot); decpref dotted-i refuted"
+    },
+    {
+      "idx": 175,
+      "page": 50,
+      "row": 11,
+      "col": 7,
+      "token": "0I",
+      "majority": 18,
+      "decimal_preferred": 44,
+      "adjudicated": 18,
+      "read": "capital I (no dot); decpref dotted-i refuted"
+    },
+    {
+      "idx": 182,
+      "page": 50,
+      "row": 12,
+      "col": 6,
+      "token": "2l",
+      "majority": 167,
+      "decimal_preferred": 141,
+      "adjudicated": 167,
+      "read": "lowercase l (no foot vs adjacent 1L); decpref L refuted"
+    },
+    {
+      "idx": 199,
+      "page": 51,
+      "row": 1,
+      "col": 7,
+      "token": "0l",
+      "majority": 47,
+      "decimal_preferred": 21,
+      "adjudicated": 47,
+      "read": "lowercase l (no foot); decpref L refuted"
+    },
+    {
+      "idx": 215,
+      "page": 51,
+      "row": 3,
+      "col": 7,
+      "token": "1O",
+      "majority": 84,
+      "decimal_preferred": 5,
+      "adjudicated": 84,
+      "read": "round letter O; decpref 5 is a typo, refuted"
+    },
+    {
+      "idx": 237,
+      "page": 51,
+      "row": 6,
+      "col": 5,
+      "token": "0W",
+      "majority": 32,
+      "decimal_preferred": 58,
+      "adjudicated": 32,
+      "read": "capital W (full height vs adjacent 3w); decpref w refuted"
+    }
+  ],
+  "consequence": "canon_256.bin is image-verified as the canonical pp49-51 payload. canon_256_decpref.bin is retired: all 6 scream314 decimal-column values are refuted by the source glyphs (case confusion + 1 typo). Downstream key/seed uses (e.g. B-05) should use canon_256.bin only."
+}

@@ -1,0 +1,246 @@
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Work scratch
+scratch/
+*.tmp
+
+# Large media (commit transcriptions/notes, not raw dumps)
+*.wav
+*.flac
+
+# Raw training corpus (Gutenberg) — large; the derived english_quadgrams.txt is
+# committed instead. Rebuild: see liber-primus/data/BUILD-QUADGRAMS.md
+liber-primus/data/kjv.txt
+liber-primus/data/moby.txt
+liber-primus/data/pride.txt
+liber-primus/data/war.txt
+
+# Fetched public-domain key texts (large) and scratch attack outputs.
+# NOTE: self_reliance.txt is deliberately NOT listed here. It is the keytext the
+# benchmark/ plant-and-recover gates plant with, so it is an input to the trust
+# anchor rather than a fetched corpus. Ignoring it made `pytest benchmark/` fail on
+# every fresh checkout from 2026-08-19 (when CI started running the gates) until
+# 2026-08-25. Anything benchmark/ opens must be committed.
+liber-primus/data/keys/mabinogion.txt
+liber-primus/data/keys/king_in_yellow.txt
+liber-primus/data/keys/book_of_the_law.txt
+liber-primus/data/keys/agrippa.txt
+liber-primus/data/keys/campaign12/
+liber-primus/out_*.json
+cicada_page.html
+cicada_text.txt
+cicada_page.html
+liber-primus/data/relikd/
+
+# vision-agent scratch crops
+_*.png
+*.png
+
+# stego: downloaded image sets + bulky derived scan output (commit scripts + verdict + REPORT only)
+liber-primus/data/onion7/
+liber-primus/data/outguessed/
+liber-primus/analysis/stego/out_relikd/
+liber-primus/analysis/stego/**/carved/
+
+# transcription: fetched third-party source copies (refetch via crossdiff.py URLs)
+liber-primus/data/sources/
+
+# OSINT sweep (2026-07-27): commit scripts + text results + README + verdict,
+# gitignore the ~79 MB of re-downloadable raw dumps and extracted binaries.
+# Reproduce via the mirror URLs in analysis/OSINT-SWEEP-2026-07-27.md.
+liber-primus/analysis/armada_osint/artifacts/
+liber-primus/analysis/armada_osint/extracts/*.bin
+
+# Python build artifacts
+*.egg-info/
+build/
+dist/
+__pycache__/
+
+# Campaign VI scratch + fetched inputs (commit reports/scripts, not raw dumps)
+liber-primus/analysis/armada20/og_out/
+liber-primus/analysis/armada20/*.html
+liber-primus/analysis/armada20/*.bin
+liber-primus/analysis/foundation/*.html
+liber-primus/analysis/foundation/*.pdf
+liber-primus/analysis/foundation/*_raw.txt
+liber-primus/analysis/foundation/_streams.json
+liber-primus/analysis/structure/origsearch/
+liber-primus/analysis/structure/ORIGINAL_*.jpg
+liber-primus/analysis/structure/*.npy
+liber-primus/analysis/stones/onion-archive/
+liber-primus/analysis/stones/*.npy
+liber-primus/analysis/stones/*.npz
+liber-primus/analysis/vision-rerun/
+puzzles/2013/artifacts/*.mp3
+# fetched public-domain source texts + scratch logs (provenance is the *_key.txt + scripts)
+liber-primus/analysis/foundation/*_text.txt
+liber-primus/analysis/foundation/*_letters.txt
+liber-primus/analysis/foundation/*_clean.txt
+liber-primus/analysis/foundation/*_body.txt
+liber-primus/analysis/foundation/ps.txt
+liber-primus/analysis/armada20/*.log
+liber-primus/analysis/armada20/taoteching2.txt
+liber-primus/analysis/armada20/mhh_*.txt
+liber-primus/analysis/armada20/pgp_all_bodies.txt
+liber-primus/analysis/armada20/forensics_full.json
+liber-primus/analysis/foundation/nicomachus_dooge.txt
+liber-primus/analysis/foundation/rosi_*_full.txt
+liber-primus/data/keys/campaign13/
+liber-primus/data/campaign14/
+
+# T1 chroma follow-up: re-downloadable source pages + scratch intermediates (keep marked_*.png + script)
+liber-primus/analysis/armada_osint/t1_chroma/*.jpg
+liber-primus/analysis/armada_osint/t1_chroma/view_*.png
+liber-primus/analysis/armada_osint/t1_chroma/crop_*.png
+liber-primus/analysis/armada_osint/t1_chroma/color_*.png
+liber-primus/analysis/armada_osint/t1_chroma/redx_*.png
+
+# Session 2026-07-28 auditor-loop: fetched raw corpora + onion binary dumps
+# (re-fetchable; keep the scripts, MANIFESTs, READMEs, decoded notes, and small .bin extracts)
+liber-primus/analysis/bookcipher/books/
+liber-primus/data/keys/welsh/
+liber-primus/analysis/armada_osint/onions_ibotpeaches/*.jpg
+liber-primus/analysis/armada_osint/onions_ibotpeaches/*.jpeg
+liber-primus/analysis/armada_osint/onions_ibotpeaches/*.png
+liber-primus/analysis/armada_osint/onions_ibotpeaches/*.html
+liber-primus/analysis/pp49_51/blake_closure/__pycache__/
+
+# Round 8 (2026-08-11) derived artifacts — commit scripts + reports + verdicts only;
+# every file below regenerates from committed code. See research/ROUND-8-RESULTS.md.
+liber-primus/analysis/geometry/*.npz
+liber-primus/analysis/seed_sweep/ngram.bin
+liber-primus/analysis/seed_sweep/ct.bin
+liber-primus/analysis/seed_sweep/anchor.bin
+liber-primus/analysis/seed_sweep/sweep
+liber-primus/analysis/skeleton/corpus/
+liber-primus/analysis/skeleton/lang/
+
+# AN-END hunt (2026-08) — re-fetchable corpus; the verdict is anend_hunt/FINDINGS.md
+liber-primus/analysis/anend_hunt/fetched/
+
+# Test/tooling caches
+.pytest_cache/
+__pycache__/
+*.tmp.*
+
+# Round 9/10 multi-lens armada (2026-08, liber-primus/analysis/round10, round10b,
+# retranscribe) — commit scripts + PREREG/RESULTS/verdict docs + result JSON + small
+# logs only. Everything below re-derives from committed code (see each lens PREREG.md).
+#   L6-archives/fetched/  = re-fetchable community corpora (Reddit/Discord/GitHub mirrors)
+#   *.bin bitstreams / *.npy / *.npz = derived arrays and ciphertext binaries
+#   L1 *.png = rendered glyph crops; sweep32/sweep32x = compiled C, rebuild from *.c
+liber-primus/analysis/round10/L6-archives/fetched/
+liber-primus/analysis/round10/**/*.png
+liber-primus/analysis/round10/**/*.npy
+liber-primus/analysis/round10/**/*.bin
+liber-primus/analysis/round10/L5-seed32/sweep32
+liber-primus/analysis/round10/L5-seed32/sweep32x
+liber-primus/analysis/round10b/**/*.npy
+liber-primus/analysis/round10b/**/*.bin
+liber-primus/analysis/retranscribe/*.npz
+liber-primus/analysis/retranscribe/*.png
+
+# Round 12 "honest best shot" campaign (liber-primus/analysis/round12) — commit scripts +
+# CAMPAIGN-PLAN/RESULTS docs + result JSON only. Everything below re-fetches from committed
+# code (A1/RESULTS.md names each pad's source; C2/fetch.sh rebuilds the corpus).
+#   A1/pads/   = the author's CicadaOS binary pads (~3.6 MB), fetched from mirrors
+#   C2/texts/  = fresh esoteric Gutenberg corpus (~12 MB), rebuild with C2/fetch.sh
+#   frontB *.png/*.npy = rendered line crops and template arrays
+liber-primus/analysis/round12/A1/pads/
+liber-primus/analysis/round12/C2/texts/
+liber-primus/analysis/round12/**/*.png
+liber-primus/analysis/round12/**/*.npy
+liber-primus/analysis/round12/**/*.npz
+
+# handoff capsule (agent H-3): the capsule's VALUE is MANIFEST.json (hashes + provenance +
+# mirrors), not the bytes. Anything the capsule fetches to verify a hash is re-fetchable from
+# the mirrors recorded per item in liber-primus/handoff/capsule/MANIFEST.json, and is deleted
+# again after hashing. Reproduce: python3 liber-primus/handoff/capsule/verify_capsule.py --net --fetch
+# The one exception kept in-tree is capsule/recovered/*.sha256 — tiny hash receipts, committed
+# on purpose so a future clone knows a recovery succeeded without re-downloading 118 MB.
+liber-primus/handoff/capsule/fetched/
+liber-primus/handoff/capsule/recovered/*.bin
+liber-primus/handoff/capsule/recovered/*.iso
+liber-primus/handoff/capsule/recovered/DATA_560.13
+liber-primus/handoff/capsule/*.iso
+
+# Round 12 A1 completion + Round 13/14 (2026-08-19) — commit scripts, PREREG/RESULTS docs,
+# result JSON and small logs only. Regenerate the rest from committed code:
+#   DATA_560.13.recovered = 118 MB pad, re-fetch per analysis/round12/A1/sweep_560_13.py
+#   handoff/capsule fetched artifacts = re-fetch via handoff/capsule/verify_capsule.py
+liber-primus/analysis/round12/A1/pads/DATA_560.13.recovered
+liber-primus/analysis/round13/**/*.npy
+liber-primus/analysis/round13/**/*.bin
+liber-primus/analysis/round14/**/*.png
+liber-primus/analysis/round14/**/*.npy
+liber-primus/handoff/capsule/fetched/
+
+# Round 12 A1: recovered CicadaOS pads (large, re-fetchable from the archive.org 3301.iso item).
+# Hashes + fetch routes: liber-primus/handoff/capsule/MANIFEST.json and RECOVERY-560.13.md.
+# Reproduce: python3 liber-primus/handoff/capsule/iso_extract.py 3301.iso --extract DATA/560.13
+liber-primus/analysis/round12/A1/pads/DATA_560.13
+liber-primus/analysis/round12/A1/pads/DATA__560.00.iso-authoritative
+
+# ---- corpus sweep (2026-08-19). Commit MANIFESTS, findings, reports and small
+# structured data. Ignore bulk fetched/vendored payloads: every one is re-fetchable
+# from its MANIFEST row (path + sha256 + source_url + retrieved_utc), which is the
+# whole point of recording provenance.
+corpus/E-tooling/vendor/
+corpus/A-primary-artifacts/wiki-uncovering-cicada/
+corpus/A-primary-artifacts/cijhho123/
+corpus/A-primary-artifacts/krisyotam/
+corpus/A-primary-artifacts/Hadyn_cicada/
+corpus/F-press-academic/papers/
+corpus/D-archives/captures/
+corpus/G-forensics/raw/
+corpus/**/*.pdf
+corpus/**/*.jpg
+corpus/**/*.jpeg
+corpus/**/*.png
+corpus/**/*.mp3
+corpus/**/*.iso
+corpus/**/*.warc*
+# G-forensics RESULTS.jsonl is 48 MB of tool output; keep it out of git but keep the
+# report and the per-test summary. Regenerate with corpus/G-forensics/ scripts.
+corpus/G-forensics/RESULTS.jsonl
+
+# Lane B (corpus/B-liber-primus) - Liber Primus corpus sweep.
+# `corpus/**/*.png` above already covers crops/; named here so it is findable.
+# Regenerate:  python corpus/B-liber-primus/make_crops.py
+corpus/B-liber-primus/crops/
+# Third-party transcriptions and API dumps refetched by the hunt tools.
+# Regenerate:  python corpus/B-liber-primus/hunt_transcriptions.py <owner/repo> ...
+#              (hashes + URLs for every file are recorded in MANIFEST.json)
+corpus/B-liber-primus/fetched/
+
+# Round 16 (2026-08-23) — regenerable: `python liber-primus/analysis/round16/zeroFP/gen_ct.py` rebuilds it
+liber-primus/analysis/round16/zeroFP/ct_local.bin
+
+# Fetched corpora for experiments — re-download via each dir's fetch script
+research/experiments/
+
+# A-04 / E-01 (2026-08-31) — regenerable fetched artifacts; committed code + tiny derived
+# JSON stay in git, the large source files do not.
+#   E-01 key: python liber-primus/analysis/round16/zeroFP/e01_complete.py re-fetches it
+#             (keyserver.ubuntu.com 0x6D854CD7933322A601C3286D181F01E57A35090F);
+#             keys/moduli.json (the derived, provenance-pinned moduli) IS committed.
+liber-primus/analysis/round16/zeroFP/keys/7A35090F.asc
+#   A-04 pages: python liber-primus/analysis/pp49_51/A04_glyph_adjudication/adjudicate.py
+#               re-fetches p49-51 from the relikd mirror.
+liber-primus/data/relikd/pages/
+
+# Round 18 / Marsaglia sweep (2026-08-31) — regenerable. Scripts + manifest + results
+# are committed; the 630 MB of pads, the npy cache, per-pad checkpoints and the log are not.
+#   Refetch:  bash liber-primus/analysis/round18/marsaglia/fetch.sh
+#   Rebuild trigram cache:  python liber-primus/analysis/round18/marsaglia/build_trigram_from_quadgrams.py
+liber-primus/analysis/round18/marsaglia/data/
+liber-primus/analysis/round18/marsaglia/sweep.log
+liber-primus/analysis/round17/trigram_idx.npy

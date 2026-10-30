@@ -1,0 +1,58 @@
+==========================================================================
+P8 TOTAL-STRUCTURE CLOSURE -- LP2 = 12956 runes
+  observed  IoC.N = 0.9999   doublet = 0.664%
+==========================================================================
+
+calibrated suppression s* = 0.8363  (analytic, single-resample soft rule)
+control[0] IoC.N = 1.0002   doublet = 0.633%
+
+computing predictors on real LP2 ...
+  LP2 context bits/rune by order: o1=4.8825 o2=5.3190 o3=5.6207 o4=5.6316 o5=5.6323 o6=5.6323 o7=5.6323 o8=5.6323
+  LP2 LZMA bits/rune = 5.0707
+  LP2 dispersion = 0.8856   drift chi2 = 298.8
+
+positive control (English->runes, 12956 syms):
+  English context bits/rune by order: o1=3.6986 o2=2.7946 o3=1.5446 o4=0.7443 o5=0.3268 o6=0.1478 o7=0.0651 o8=0.0304
+  English LZMA bits/rune = 1.9710  (uniform ceiling = 4.8580)
+
+generating 1000 filtered-uniform controls (order-8 + LZMA)...
+  ... 100/1000
+  ... 200/1000
+  ... 300/1000
+  ... 400/1000
+  ... 500/1000
+  ... 600/1000
+  ... 700/1000
+  ... 800/1000
+  ... 900/1000
+  ... 1000/1000
+
+==========================================================================
+RESULTS -- LP2 percentile within the filtered-uniform control band
+==========================================================================
+  control signature check: doublet mean=0.663% (LP2 0.664%)  IoC.N mean=0.9999 (LP2 0.9999)
+
+  predictor                 LP2       band[mean]  band[1st pct]  LP2 %ile
+  ----------------------------------------------------------------------
+  context order-1 bits    4.8825    4.8848      4.8653         41.2%
+  context order-2 bits    5.3190    5.3082      5.2541         67.5%
+  context order-3 bits    5.6207    5.6128      5.5640         63.8%
+  context order-4 bits    5.6316    5.6274      5.5829         57.3%
+  context order-5 bits    5.6323    5.6279      5.5835         57.1%
+  context order-6 bits    5.6323    5.6279      5.5835         57.1%
+  context order-7 bits    5.6323    5.6279      5.5835         57.1%
+  context order-8 bits    5.6323    5.6279      5.5835         57.1%
+  LZMA bits/rune          5.0707    5.0697      5.0633         79.3%
+  dispersion (ID)         0.8856    0.9060            --         16.2%
+  monogram drift chi2       298.8     317.5           --         22.0%
+
+==========================================================================
+POSITIVE-CONTROL SANITY (English->runes vs the SAME band):
+  English LZMA 1.9710 bits/rune  vs band mean 5.0697  -> English %ile 0.0% (must be ~0 = detectable)
+  English order-8 ctx 0.0304 vs band mean 5.6279  (English far below => predictor works)
+==========================================================================
+
+SIGNAL FIRED (any LP2 predictor below 1st pct): False
+VERDICT: LP2 sits INSIDE the filtered-uniform band on every predictor.
+  => No computable structure beyond the two signature statistics.
+  => OTP-class upgraded from low-order-verified to MODEL-CLASS-verified.
