@@ -1,0 +1,41 @@
+{
+ "$comment": "written by R37 C2-U8 lane agent",
+ "entries": [
+  {
+   "id": "R37-C2-U8-GEOMETRY",
+   "round": 37,
+   "lane": "C2-U8",
+   "date": "2026-10-30",
+   "status": "inconclusive",
+   "positive_control": "failed",
+   "control_detail": "5 planted glyphs (octagon, 29-gon, T, L, 12-gon) in LP2 page-0 noise: none exceeded its 200-shuffle null max (best V3-T 4.09 vs 4.21).",
+   "hypothesis": "Numbers are the direction: per-page, interrupter-gated turtle renders of page numbers (and LP1 word sums) draw a glyph.",
+   "coverage": "232 renders (58 pages x 4 variants), 200 shuffles each; 0/232 above own null max; no oracle PNGs; diagnostic only.",
+   "result": "inconclusive: recognizer has no measured power at 24-30 step glyphs.",
+   "threshold": "refined p <= 0.01/232 after beating the page null max",
+   "power": "failed on all 5 plants",
+   "conditionals": [
+    "rule space: 4 rules x 58 pages only (R22-B covered 72 book-concatenated combos)",
+    "decoder: unit/word-length steps, F = pen-up",
+    "adjudicator: glyph-template NCC unpowered"
+   ],
+   "not_covered": [
+    "power-adequate glyph recognizer",
+    "other moduli/steps",
+    "55-page grid",
+    "L-systems",
+    "glyphs >2 strokes"
+   ],
+   "artifacts": [
+    "PREREG.md",
+    "u8.py",
+    "results.json",
+    "RESULTS.md",
+    "png/contact_V1_prime_mod8_rel.png",
+    "png/contact_V2_idx_rel_29.png",
+    "png/contact_V3_idx_abs_card.png",
+    "png/contact_V4_wordsum_rel12.png"
+   ]
+  }
+ ]
+}

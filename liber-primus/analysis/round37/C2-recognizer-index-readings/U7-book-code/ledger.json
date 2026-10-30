@@ -1,0 +1,63 @@
+{
+ "$comment": "written by R37 C2-U7 lane agent",
+ "entries": [
+  {
+   "id": "R37-C2-U7-BOOK-CODE",
+   "round": 37,
+   "lane": "C2-U7",
+   "date": "2026-10-30",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "A (60-rune LP1 phrase via triple-digit list into LP1 runes) p=5e-4 floor; C (60-rune phrase via UNS word-first-rune indices) p=5e-4 floor; random-index controls not detected. R/F readouts only.",
+   "hypothesis": "The signed numeric strings (P.S. integer, @1231507051321, location numbers) are book-code indices into LP1 plaintext / the LP2 rune stream.",
+   "coverage": "240 R/F selections (144 with n>=30 powered; 96 short S2/whole unpowered): 3 strings (S1,S2,LOC) x pair/triple/single (+LOCW whole) x {LP1,UNS} x {rune, first-rune-of-word, first-rune-of-line} x 0/1-based x reversed; panel-R36 pmax_ne vs index-alphabet null and order-shuffle null, M=2000 (refine 100k/20k), family bar 3.1e-5 over 320.",
+   "result": "0 selections flagged; best p_gate 0.027 (noise level).",
+   "threshold": "p_gate<=0.01/320 after refinement",
+   "power": "controls at n=56-60 detected at the p floor; S2 and whole-number selections (n<=13) unpowered",
+   "conditionals": [
+    "rule space: 320 enumerated selections only; no page:line:char, no reverse-direction books",
+    "decoder: verbatim mod-wrap retrieval from koans-file LP1 transliteration",
+    "adjudicator: panel-R36 pmax_ne, powered only n>=~40"
+   ],
+   "not_covered": [
+    "page:line:char addressing",
+    "indices into non-LP books",
+    "overlapping digit windows / other radices",
+    "short-selection power"
+   ],
+   "artifacts": [
+    "PREREG.md",
+    "u7.py",
+    "results.json",
+    "RESULTS.md",
+    "run.log"
+   ]
+  },
+  {
+   "id": "R37-C2-U7-BOOK-CODE-W",
+   "round": 37,
+   "lane": "C2-U7",
+   "date": "2026-10-30",
+   "status": "inconclusive",
+   "positive_control": "failed",
+   "control_detail": "B: LP1 sentence located by word indices, W readout: p_a 0.065, p_b 0.022 (null max 16.6 > real 14.5). LP1_REAL register contains LP1 words so random LP1 word bags score as high as a real sentence.",
+   "hypothesis": "Same as R37-C2-U7-BOOK-CODE with the whole indexed word retrieved.",
+   "coverage": "80 word-whole readout selections swept (0 flagged) but the readout has no measured power.",
+   "result": "inconclusive: instrument cannot see a planted word-whole retrieval from LP1.",
+   "threshold": "as parent",
+   "power": "control failed",
+   "conditionals": [
+    "rule space as parent",
+    "decoder as parent",
+    "adjudicator cannot separate LP1-word bags (register contains LP1)"
+   ],
+   "not_covered": [
+    "any word-whole retrieval verdict; needs an LP1-excluded register or a word-order statistic"
+   ],
+   "artifacts": [
+    "results.json",
+    "RESULTS.md"
+   ]
+  }
+ ]
+}
