@@ -1,0 +1,30 @@
+{
+ "id": "R36-I2",
+ "lane": "R36-I2",
+ "date": "2026-10-30",
+ "status": "measured",
+ "positive_control": "passed",
+ "hypothesis": "pf_v4 at frozen thresholds keeps natural-rate power >=0.85 on ILP32 and the four PHP mt_rand cells, as on LP64.",
+ "coverage": "bash LP64/ILP32 + 4 PHP cells x EN_MODERN, EN_NOVOWEL, EN_HALFVOWEL, LATIN x keyskip1/2; 500 plants each (24000 total); FPR 2^16 per generator",
+ "result": "min natural power 0.940 over 48 cells; none under 0.85; LP64 reproduces R35 I1; FPR 6.56e-04-9.61e-04",
+ "threshold": "frozen: m=24,k=2,both, a1 7.099447749731914, a2 7.176139668549184",
+ "three_conditionals": [
+  "plants use the real encipherer with natural skip rate",
+  "keystream heads from the stated generator models (PHP seeds uniform 32-bit; bash seeds 2012-2014 window)",
+  "ciphertext head and panel registers as in R35 I1"
+ ],
+ "not_covered": [
+  "other 5 registers on non-LP64 generators",
+  "Greek/Hebrew/Norse",
+  "heads past 24",
+  "3+ skips in head",
+  "free relation",
+  "non-uniform PHP seed structure"
+ ],
+ "evidence": [
+  "power_by_generator.json",
+  "fpr_by_generator.json",
+  "run.log",
+  "RESULTS.md"
+ ]
+}
