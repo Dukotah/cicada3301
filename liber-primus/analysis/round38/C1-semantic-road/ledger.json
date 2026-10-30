@@ -1,0 +1,114 @@
+{
+ "$comment": "Round 38 C1: bounded, definition-conditional negatives; never solved/closed/exhausted. Not merged into LEDGER.json by the lane.",
+ "lane": "C1",
+ "entries": [
+  {
+   "round": 38,
+   "lane": "C1",
+   "date": "2026-10-30",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed (36/36 plants, 18/18 cells)",
+   "sweep_store": "analysis/round38/C1-semantic-road/sweep_rows.jsonl",
+   "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+   "evidence": [
+    "analysis/round38/C1-semantic-road/PREREG.md",
+    "analysis/round38/C1-semantic-road/RESULTS.md",
+    "analysis/round38/C1-semantic-road/control.json",
+    "analysis/round38/C1-semantic-road/sweep_summary_final.json",
+    "analysis/round38/C1-semantic-road/lexicon_manifest.json",
+    "analysis/round38/C1-semantic-road/sweep_rows.jsonl"
+   ],
+   "threshold": "bars_v3 + bar12 at actual N and N=1e6, L=120 screen / L=240 gate; fixed in PREREG.md before any download or decode",
+   "id": "R38-C1-SEMANTIC-WORDNET",
+   "status": "negative",
+   "hypothesis": "Direction for the LP2 cipher words = reduction (mod 29 / mod 28 / digit-sum mod 29) of the WordNet 3.1 first noun/verb/adj synset offset of the successive LP1 words ('their meaning is the road'), applied per-word, cumulatively, or as key-pointer advance in the LP1 rune stream.",
+   "coverage": "3 reductions x A1/A2 (s=0..28, sigma +-1, pages 0-2: 348 decodes each) and A3 (s=0..725 step 1, sigma +-1, pages 0-2: 4356 decodes each); keyskip1 only; L=120 head, panel-R36 12 registers; 6 value variants total N=28224 (shift 2088, A3 26136)",
+   "best_pmax_per_cell": {
+    "A-R29|A1": 4.62,
+    "A-R29|A2": 3.12,
+    "A-R28|A1": 3.247,
+    "A-R28|A2": 3.453,
+    "A-D29|A1": 3.88,
+    "A-D29|A2": 4.163,
+    "A-R29|A3": 5.1,
+    "A-R28|A3": 5.045,
+    "A-D29|A3": 4.715
+   },
+   "best_overall_bars": {
+    "shift": {
+     "best": 4.62,
+     "bar_actualN": 6.895,
+     "bar_1e6": 9.235
+    },
+    "A3": {
+     "best": 5.296,
+     "bar_actualN": 7.853,
+     "bar_1e6": 9.235
+    }
+   },
+   "not_covered": "other senses than first synset; other lexicons/frequency lists; lemmatiser variants; rho=2,3 (d indexed by word index only); keyskip2/free; pages >2; shift-mode starts beyond 0..28; meaning as dictionary semantics under any non-frozen definition; non-English plaintext",
+   "lexicon": {
+    "name": "Princeton WordNet 3.1",
+    "url": "https://wordnetcode.princeton.edu/wn3.1.dict.tar.gz",
+    "archive_sha256": "3f7d8be8ef6ecc7167d39b10d66954ec734280b5bdcd57f7d9eafe429d11c22a",
+    "files": {
+     "index.noun": "799fad7c8084eb0f6f2a32ec737a251c85f51adb8b2603eb02bfebc4ce5ffa3d",
+     "index.verb": "e65b2d67274c8a5f9ba6f696fdc73f4546db2a138b362a3be582e3787c879c7a",
+     "index.adj": "7d2b4d4037f0571ca309ce2ebadbe860a1607d494a70cd40f9bd61bc25a57016"
+    }
+   }
+  },
+  {
+   "round": 38,
+   "lane": "C1",
+   "date": "2026-10-30",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed (36/36 plants, 18/18 cells)",
+   "sweep_store": "analysis/round38/C1-semantic-road/sweep_rows.jsonl",
+   "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+   "evidence": [
+    "analysis/round38/C1-semantic-road/PREREG.md",
+    "analysis/round38/C1-semantic-road/RESULTS.md",
+    "analysis/round38/C1-semantic-road/control.json",
+    "analysis/round38/C1-semantic-road/sweep_summary_final.json",
+    "analysis/round38/C1-semantic-road/lexicon_manifest.json",
+    "analysis/round38/C1-semantic-road/sweep_rows.jsonl"
+   ],
+   "threshold": "bars_v3 + bar12 at actual N and N=1e6, L=120 screen / L=240 gate; fixed in PREREG.md before any download or decode",
+   "id": "R38-C1-SEMANTIC-FREQRANK",
+   "status": "negative",
+   "hypothesis": "Same, with the word's frequency rank (Norvig count_1w top 50000; unknown = 50001) as the meaning value.",
+   "coverage": "3 reductions x A1/A2 (s=0..28, sigma +-1, pages 0-2: 348 decodes each) and A3 (s=0..725 step 1, sigma +-1, pages 0-2: 4356 decodes each); keyskip1 only; L=120 head, panel-R36 12 registers; 6 value variants total N=28224 (shift 2088, A3 26136)",
+   "best_pmax_per_cell": {
+    "B-R29|A1": 3.003,
+    "B-R29|A2": 3.433,
+    "B-R28|A1": 3.014,
+    "B-R28|A2": 3.53,
+    "B-D29|A1": 4.202,
+    "B-D29|A2": 3.718,
+    "B-R29|A3": 5.296,
+    "B-R28|A3": 4.829,
+    "B-D29|A3": 5.095
+   },
+   "best_overall_bars": {
+    "shift": {
+     "best": 4.62,
+     "bar_actualN": 6.895,
+     "bar_1e6": 9.235
+    },
+    "A3": {
+     "best": 5.296,
+     "bar_actualN": 7.853,
+     "bar_1e6": 9.235
+    }
+   },
+   "not_covered": "other senses than first synset; other lexicons/frequency lists; lemmatiser variants; rho=2,3 (d indexed by word index only); keyskip2/free; pages >2; shift-mode starts beyond 0..28; meaning as dictionary semantics under any non-frozen definition; non-English plaintext",
+   "lexicon": {
+    "name": "Norvig count_1w.txt (Google Web Trillion Word Corpus), top 50000",
+    "url": "https://norvig.com/ngrams/count_1w.txt",
+    "sha256": "51df159fd3de12b20e403c108f526e96dbd723d9cabdd5f17955cdc16059e690",
+    "N": 50000
+   }
+  }
+ ]
+}
