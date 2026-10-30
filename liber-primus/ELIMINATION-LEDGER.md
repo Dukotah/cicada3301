@@ -1072,6 +1072,33 @@ verified refute-by-default (none downgraded). Trust anchors green throughout; ce
 recover the source PDF/PS (names the `/BaseFont` typeface + exposes TJ kerning), pin the exact GS release,
 close art attribution via reverse-image/Wayback. Do NOT re-run any R29/R30 lane.
 
+## Round 34 — CLOSE THE LOOP (2026-10-29/30)
+
+Seven lanes + a Vercel sandbox; write-up `analysis/round34/SYNTHESIS.md`; rows `R34-*` in `LEDGER.json`. **No survivor.**
+- **R34-B1** bash 4.2 `$RANDOM` auto-seed orbit, LP64 + ILP32, **77,594,624 seeds each, fraction 1.000**, pf_v3 head screen
+  (lse, m=20, FPR ≈1e-3) → 81,414 / 80,985 survivors decoded by beam_v3 under keyskip1 + keyskip2; PHP ≤7.0 `mt_rand`
+  prior-dense 48,036 (full) + uniform 2,621,440 per cell (0.061 % of 2³²). Bars: observed R34-I1 Gumbel null. 0 flagged,
+  0 near-miss; best 7.068 (seed 1354603465, keyskip2 — the R32/R33 near-miss) vs 8.118 actual-N / 9.034 declared-N.
+  NEGATIVE, bounded. **Orbit-level reach ≈0.65–0.70:** the screen is not skip-aware (R34-X1). Not covered: with-skip heads,
+  `free`, L=31, PHP tails, other bash versions.
+- **R34-I1** observed v3 null: 40 k draws at L=31/120, fewer at 240/400; Gumbel conservative at L≤240; bars 9.24/9.03 at
+  L=120, N=1e6; control fails at L=31 and `free` (no v3 claims there). The "not Gumbel" Q5 alarm was a z-scored-vs-raw
+  like-for-like error (R34-X1).
+- **R34-I2** register-aware head screen: 0.998 NOVOWEL on skip-free heads, **≈0.66 operative** (R34-X1: 37–51 % of
+  true-key heads contain a skip; those pass at 0.19–0.34). R32-B1's 0.47 was not an artefact.
+- **R34-I3** D5c recipe 1 calibrates at L=120/180/240/400 (`m_NV` 6.95/10.45/13.58/20.21 ≈ 0.055·L, post-hoc; L=400
+  pass after a disclosed sample extension); recipe 2 dropped; SEAL_PASS=false; EN_HALFVOWEL hallucinations unprotected.
+- **R34-S1** sandbox: grind27/28 compile clean, 4/4 resume tests on copies; S2 resume blocked only on
+  `round19/I2/models/panel.npz` (sha 14a23d36…, absent everywhere); PHP 5.6.40 `mt_srand(1); mt_rand()` = 1244335972
+  (40/40 vs `php_mt.py`); gs 9.04 ships the Artifex ICC but does not embed it, 9.05–9.14 do → **band 9.05–9.14**.
+- **R34-P1 + coordinator** `canon_256.bin` ← `payload_resolved.bin` (idx 45/50/246) after re-feeding R16-KDF, R30-B1/B2
+  canon legs, recon h1_index, campaign18 scripts, hash_hunt (none changed; R33-B1 had done B-04/E-01/E-02); superseded
+  bytes kept; capsule manifest refreshed; `verify_capsule.py` CRLF-tolerant (13 → 2 INTACT-FAIL, the R32 substitute
+  corpora). C-CANON-PAYLOAD-3BYTES → measured. Unmeasured: R30-B1 canon-as-key over T2/folly, R30-B2 folly/2.jpg legs.
+- **R34-X1** R33-I2 "earned" relations STRUCK; capsule INTACT-FAIL settled; GS band applied.
+
+Do NOT re-run any R34 lane as-is. Round 35: skip-tolerant screen → orbit re-screen; restore the R19 panel → S2 window.
+
 ## Round 33 — THE REGISTER-AWARE BEAM (2026-10-29)
 
 Seven lanes + one PREREG-only lane; full write-up `analysis/round33/SYNTHESIS.md`; rows `R33-*` in `LEDGER.json`.

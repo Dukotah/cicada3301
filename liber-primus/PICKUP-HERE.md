@@ -1,6 +1,27 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-10-29** (Round 33 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-10-30** (Round 34 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+
+> ## Round 34 (2026-10-29/30) — CLOSE THE LOOP: shipped. Read `analysis/round34/SYNTHESIS.md` first.
+>
+> No survivor. **B1** screened the FULL bash 4.2 `$RANDOM` auto-seed orbit (both ABIs, 77.6 M seeds each) with a
+> register-aware head prefilter and decoded 162 k survivors with the register-aware beam under an observed null: 0
+> flagged (best 7.068 = the Round 32 near-miss seed again, vs 8.12 actual-N bar). PHP prior-dense tier full, uniform
+> tier 0.061 % of 2³². **The remaining hole is the head screen:** 37–51 % of true-key heads contain a key skip and
+> pass the screen at only 0.19–0.34 (X1) → orbit reach ≈0.65–0.70, not the beam's 0.98. Round 35 I1 = skip-tolerant
+> screen. **I1** v3 has an observed Gumbel null (`round34/I1-v3-null/bars_v3.py`; L≥120, keyskip1/2 only).
+> **P1 + coordinator:** `canon_256.bin` is now the R19-C1 resolved payload (every re-runnable reader re-fed first,
+> none changed; superseded bytes kept); capsule manifest refreshed, verifier CRLF-tolerant (INTACT-FAIL 13 → 2 labelled
+> substitutes). **S1 (Vercel sandbox):** fixed grind27/28 compile clean and pass 4/4 resume tests on copies — **S2
+> resume is blocked only by the missing Round 19 panel (sha 14a23d36…)**; PHP 5.6 `mt_srand(1); mt_rand()` =
+> 1244335972 matches `php_mt.py`; Ghostscript band tightened to **9.05–9.14** (9.04 ships the ICC file but does not
+> embed it). **I3:** D5c calibrates at L=120/180/240/400 (recipe 1, `m_NV≈0.055·L`, post-hoc); SEAL_PASS=false.
+> **X1:** I2's "0.998 prefilter power" was an artefact of skip-free plants (operative ≈0.66); I1's "not Gumbel" alarm
+> was a like-for-like error; Round 33 I2's "earned" relations struck.
+>
+> **Next:** `analysis/round35/CAMPAIGN-PLAN.md` — skip-tolerant head screen + bash orbit re-screen; restore the Round 19
+> panel byte-exact (fetch original corpora) and, if it matches, resume S2 for a stated window on the sandbox;
+> pre-registered D5c rule; the R30-B1/B2 T2/folly payload legs.
 
 > ## Round 33 (2026-10-29) — THE REGISTER-AWARE BEAM: shipped. Read `analysis/round33/SYNTHESIS.md` first.
 >

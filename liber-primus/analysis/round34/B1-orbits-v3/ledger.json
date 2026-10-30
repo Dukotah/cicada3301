@@ -1,0 +1,37 @@
+{
+  "$comment": "written by the R34 coordinator",
+  "entries": [
+    {
+      "id": "R34-B1-ORBITS-V3-PFV3",
+      "round": 34,
+      "lane": "B1",
+      "date": "2026-10-30",
+      "status": "negative",
+      "positive_control": "passed",
+      "control_detail": "control.json ALL_PASS: 12 cells x (5 EN_MODERN + 5 EN_NOVOWEL) = 120/120 through pf_v3 -> v3 L120 -> v3 L240 -> panel. CAVEAT (R34 X1): plant windows were selected skip-free (sweep.py:70-71), so the prefilter pass is by construction; the control proves the decode/adjudication path only.",
+      "hypothesis": "The bash 4.2 $RANDOM auto-seed orbit (LP64+ILP32) and the PHP mt_rand tiers contain the LP2 key, now searchable for vowel-dropped English (beam_v3) and screened by a register-aware head prefilter (pf_v3).",
+      "coverage": "bash 4.2 LP64 and ILP32 auto-seed orbits 77,594,624 seeds EACH, fraction 1.000, %29, offset 0, sign -1, C[0]-aligned, pf_v3 lse m=20 thr 3.9054 (FPR ~1e-3) -> survivors 81,414 (LP64) / 80,985 (ILP32) decoded under keyskip1 + keyskip2 by beam_v3 panel_max; PHP <=7.0 mt_rand canonical+legacy x scale29/mod29: prior-dense 48,036 seeds fraction 1.000 (no prefilter) + uniform default_rng(3301) 2,621,440 seeds per cell = 0.00061 of 2^32. Store: 26,050 SWEEPROW rows (validate_store passes, check_r3_store []).",
+      "result": "0 flagged, 0 near-miss. Best 7.068 (bash LP64 keyskip2 seed 1354603465 - the R32-B1/R33-B3 near-miss again) vs bar 8.118 at actual N / 9.034 at N=1e6 (round34/I1 bars_v3, Gumbel, lp2). All 12 cells below their actual-N bar.",
+      "threshold": "round34/I1-v3-null/bars_v3.py bar_v3(N, L=120, relation, family=lp2, gumbel) at actual N and at N=1e6; L=240 gate bars likewise. Fixed before the sweep (I1 closed before B1 launched).",
+      "threshold_fixed_in_advance": true,
+      "three_conditionals": {
+        "key_space": "as in coverage",
+        "transition_model": "keyskip1 + keyskip2 under beam_v3 only; free, L=31, resets, advance>=3 not covered",
+        "adjudicator_register": "nine-register panel; search register-aware (v3); head screen NOT skip-aware"
+      },
+      "not_covered": "Heads containing a key skip within the first 20 runes (~37-51 % of true-key heads; pf_v3 passes them at 0.19-0.34; operative prefilter power ~0.66 EN_NOVOWEL / ~0.71 EN_MODERN per R34 X1) -> orbit-level reach ~0.65-0.70. free relation; L=31; offsets != 0; other reductions; PHP 2^32 tails (99.94 % per cell -> R28-L4 queue); bash 3.2/4.0/4.1/5.x; registers outside the nine.",
+      "reopens_if": "a skip-tolerant head screen (Round 35 I1) with measured power >= 0.85 on natural-rate heads exists - then re-screen the orbit (Round 35 B1).",
+      "evidence": [
+        "analysis/round34/B1-orbits-v3/RESULTS.md",
+        "analysis/round34/B1-orbits-v3/PREREG.md",
+        "analysis/round34/B1-orbits-v3/control.json",
+        "analysis/round34/B1-orbits-v3/sweep_summary_final.json",
+        "analysis/round34/B1-orbits-v3/keep_rows.json",
+        "analysis/round34/B1-orbits-v3/sweep.log"
+      ],
+      "sweep_store": "analysis/round34/B1-orbits-v3/sweep_rows.jsonl",
+      "source_register": "round32/B1",
+      "notes": "RESULTS.md and this row written by the R34 coordinator from on-disk artifacts: the lane agent completed controls and the full sweep (sweep.log SWEEP DONE, sweep_summary_final.json) then stalled before writing them. PHP tier (b) log shows a 38,223 s gap (laptop slept) before SWEEP DONE; tier (b) did not advance past 2,621,440 seeds per cell. Coordinator cross-checked summary vs keep_rows vs store header: consistent."
+    }
+  ]
+}
