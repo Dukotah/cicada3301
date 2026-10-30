@@ -1,0 +1,37 @@
+{
+ "$comment": "written by R36 B1 lane agent",
+ "entries": [
+  {
+   "id": "R36-B1-ORBIT-12REG",
+   "round": 36,
+   "lane": "B1",
+   "date": "2026-10-30",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "control.json: stage-2 planted keys GREEK/HEBREW/NORSE 16/16 each (8 per relation, v3 true-key + panel-R36, L120 and L240 vs 12-register N=1e6 bars, recovery240>=0.90, own-register argmax 16/16); R35 B1 natural-rate control (96 EN_MODERN/EN_NOVOWEL plants through pf_v4 + v3 + panel-R36) re-scored: identical counts to R35 (23/23, 24/25, 28/28, 18/20), gate passed.",
+   "hypothesis": "The LP2 key is in the bash 4.2 auto-seed orbit (LP64 or ILP32) and its plaintext is in one of the 12 panel registers, including GREEK/HEBREW/NORSE that the R35 adjudication did not read.",
+   "coverage": "All 276,242 stored R35-B1 pf_v4 survivor rows (138,121 seeds x 2 relations; LP64 69,017 + ILP32 69,104) re-decoded (rows hold stats only, not text) under beam_v3 panel_max with panel-R36 (sha256 a0682f0c...), fraction 1.000. Orbit itself swept in full in R35. Reach per register = pf_v4 natural power x v3 recovery: nine existing 0.95-0.99; GREEK 0.91, HEBREW 0.68, NORSE 0.64 (pf_v4 power for the three measured here at n=50/relation).",
+   "result": "0 flagged, 0 near-miss. Best 7.065 (LP64 keyskip2 seed 1354603465, LP1_REAL) vs 12-register bar 8.044 actual N / 8.999 N=1e6; LP64 ks1 6.347 (bar 8.130/9.102); ILP32 ks1 6.506 (8.130/9.102), ks2 6.763 (8.044/8.999). New-register best z: GREEK 5.88, HEBREW 6.14, NORSE 6.08.",
+   "threshold": "12-register shuffled-LP2 wrong-key Gumbel/POT bars (null12.json: 25,000 draws L120, 4,000 L240), at actual N and N=1e6; fixed in PREREG before any output.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "138,121 pf_v4 survivor seeds of the bash 4.2 LP64+ILP32 auto-seed orbit (full), %29, offset 0, sign -1, C[0]-aligned; pf_v4 frozen on the 9-register LMT, not re-run",
+    "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max, L120 screen / L240 gate; heads <=2 skips in 24 runes; not free, not L31",
+    "adjudicator_register": "panel-R36 12 registers (new three as romanised by R36 I1); reach 0.64-0.99 per register, HEBREW/NORSE limited by pf_v4 power"
+   },
+   "not_covered": "PHP tiers; heads >=3 skips in 24; free relation; L=31; offsets != 0; other reductions/bash versions/seedings; pf_v4 not recalibrated for 12 registers (HEBREW ~0.68, NORSE ~0.64 reach); pf_v4 power for new three at n=50 per relation; v3 recovery of 7 existing registers assumed from pooled control; L=240 bars from 4,000 null draws; unpointed Hebrew and other orthographies.",
+   "reopens_if": "oracle/verifier flags a row (none); a true-key head with >2 skips in 24 runes is shown; or pf_v4 is recalibrated with the three new registers and the orbit re-screened.",
+   "evidence": [
+    "analysis/round36/B1-orbit-12reg/RESULTS.md",
+    "analysis/round36/B1-orbit-12reg/PREREG.md",
+    "analysis/round36/B1-orbit-12reg/control.json",
+    "analysis/round36/B1-orbit-12reg/null12.json",
+    "analysis/round36/B1-orbit-12reg/readjud_summary.json",
+    "analysis/round36/B1-orbit-12reg/pfpower_new.json",
+    "analysis/round36/B1-orbit-12reg/readjud_rows.jsonl"
+   ],
+   "sweep_store_note": "readjud_rows.jsonl is a 12-register SWEEPROW store: AD.validate_row(n_registers=12) passes on all 276,242 rows; stock AD.validate_store / check_r3_store default n_registers=9 and fail on 12-wide z until validate_store reads the register count from the header (not patched, outside lane). Not declared as sweep_store to avoid tripping CI.",
+   "source_register": "round36/P1-panel-r36 panel12.npz a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c"
+  }
+ ]
+}

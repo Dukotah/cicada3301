@@ -2,6 +2,14 @@
 
 _Refreshed **2026-10-30** (Round 35 closeout; R36 audit corrections applied same day: bounded-not-closed wording, reopen list, ledger count 209). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
 
+> **Round 36 closeout (coordinator, 2026-10-30):** B1 landed — the whole persisted bash orbit (276,242 rows)
+> re-decoded under the 12-register panel-R36: **0 flagged**, best 7.065 (seed 1354603465 again) vs 8.04 bar; reach
+> GREEK 0.91 / HEBREW 0.68 / NORSE 0.64 because pf_v4 was frozen on nine registers → Round 37 I2 recalibrates it.
+> Read `analysis/round36/SYNTHESIS.md`. **Next:** `analysis/round37/CAMPAIGN-PLAN.md` — THE UNTRIED READINGS: the
+> composed map → road → direction rule, LP1's own numbers as a key schedule, the 2016 clauses as seeds (O4 U1–U3), the
+> recognizer/index/geometry readings (U4/U7/U8), the English-only clue readings re-scored under the repaired
+> instrument (U5/U6), 12-register tooling, an L-matched `free` null.
+
 > ## Round 36 (2026-10-30) — THE 12-REGISTER PANEL, THE RE-GATE, AND THE CLUE AUDIT: filed (B1 still sweeping at X1's audit). Read `analysis/round36/X1-redteam/RESULTS.md` first.
 >
 > No survivor, no crosser. **I1** Greek/Hebrew/Norse registers pass the power gate (1.000 at L=120/240) and no existing register loses power.
@@ -74,7 +82,7 @@ _Refreshed **2026-10-30** (Round 35 closeout; R36 audit corrections applied same
 
 > ## Round 32 (2026-10-28) — INSTRUMENT & RED-TEAM armada: shipped. Read `analysis/round32/SYNTHESIS.md` first.
 >
-> Eight lanes, all with passing positive controls, all filed in `LEDGER.json` (219 rows as of the R36 X1 merge, 2026-10-30; was 181 when written; 0 errors).
+> Eight lanes, all with passing positive controls, all filed in `LEDGER.json` (220 rows as of the R36 X1 merge, 2026-10-30; was 181 when written; 0 errors).
 > No survivor. What changed is the **instrument**, not the board:
 > - **I1** the three-relation decoder already existed (`round19/I1/driftbeam.py`); it now has a measured power
 >   envelope — planted `skip_by_two` recovers 1.00 under `advance=2` (legacy relation: 0.30). **Vowel-dropped
@@ -291,7 +299,7 @@ where to spend effort (rather than picking up this project's own threads), read
 [`handoff/SOLVER-STRATEGY-2026.md`](handoff/SOLVER-STRATEGY-2026.md). Trust anchor:
 `python liber-primus/tests/validate.py` → `ALL VALIDATIONS PASSED` (5/5), passing through
 Round 25 and re-verified 2026-08-31 (`pytest -m "not network"` 85 passed).
-`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **219 entries** (R36 X1-merge count; was 162 when this line was written)
+`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **220 entries** (R36 X1-merge count; was 162 when this line was written)
 (R22-A/B/C/D/R, R23-A2, R24 ×5, R25 merged, the ten Round-20 lanes filed 2026-08-31, Round 26 ×4
 [R26-A/B partially-run, R26-C negative, R26-D audit], **R27-CPORT-MT32-FULLSWEEP [in-flight]**
 — S1 complete with a measured-exhaustion NULL, S2 still sweeping — and the Round-28 interim

@@ -1,0 +1,14 @@
+{
+ "$comment": "R36 B1 extends R35-B1 (not applied by lane)",
+ "patches": [
+  {
+   "id": "R35-B1-BASH-ORBIT-PFV4",
+   "coverage_add": "R36-B1: all 276,242 stored rows re-decoded (v3 panel_max) and adjudicated under panel-R36 (12 registers, sha a0682f0c...): 0 flagged, 0 near-miss; best 7.065 vs 12-register bar 8.044 actual N (8.999 N=1e6). Reach for GREEK 0.91, HEBREW 0.68, NORSE 0.64 (pf_v4 power measured n=50/relation; capped by the 9-register-calibrated prefilter). See R36-B1-ORBIT-12REG.",
+   "not_covered_add": "pf_v4 not recalibrated for 12 registers; GREEK/HEBREW/NORSE orbit reach below 0.95."
+  },
+  {
+   "id": "R32-B1-BASH42-RANDOM-AUTOSEED",
+   "coverage_add": "R36-B1: bash 4.2 orbit survivors read under 12 registers; negative (same near-miss seed 1354603465 at 7.065, 1.0 below the bar)."
+  }
+ ]
+}
