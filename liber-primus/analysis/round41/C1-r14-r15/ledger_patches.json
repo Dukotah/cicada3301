@@ -1,0 +1,48 @@
+{
+ "$comment": "R41 C1 patches by real LEDGER.json ids; coordinator applies",
+ "patches": [
+  {
+   "id": "R40-C1-INCONCLUSIVE-R14",
+   "status": "superseded",
+   "coverage_add": "R41-C1: re-scored from archive code (verbatim copy, reproduces -6.897): 20 variants, panel-R36 direct, blockperm matched null 100/250/1000; negative, level W p(Z)/p(raw) 0.538/0.374; control 120/120. See R41-C1-R14-WORDSUM-SELFKEY.",
+   "status_note": "superseded by R41-C1-R14-WORDSUM-SELFKEY (negative)",
+   "not_covered_replace": "other sum operators/segmentations; skip-aware variants",
+   "reopens_if_replace": "a variant outside W1-W5 is defined"
+  },
+  {
+   "id": "R40-C1-INCONCLUSIVE-R15",
+   "status": "superseded",
+   "coverage_add": "R41-C1: 24 Hill variants re-scored from archived code (reproduces -6.873); negative, level W p(Z)/p(raw) 0.641/0.749; control 144/144. See R41-C1-R15-HILL5-MAGIC.",
+   "status_note": "superseded by R41-C1-R15-HILL5-MAGIC (negative)",
+   "not_covered_replace": "matrices as key schedules/permutations/word-number fills",
+   "reopens_if_replace": "a matrix-derived key schedule is defined"
+  },
+  {
+   "id": "R40-C1-INCONCLUSIVE-R31",
+   "coverage_add": "R41-C1: premise corrected - readouts are regenerable (round10b/B3 code, ~4 min) and T1-RESULTS.json stores top-50 readouts + top-15 promoted decodes; blocker is the 32-rune panel floor.",
+   "status_note": "stays inconclusive (instrument floor, not absent artefact)"
+  },
+  {
+   "id": "R40-C1-INCONCLUSIVE-R35",
+   "coverage_add": "R41-C1: verified absent from working tree, archive/ and corpus/ (33 texts per fetch.sh; gitignored; not hash-pinned).",
+   "status_note": "stays inconclusive"
+  },
+  {
+   "id": "R40-C1-INCONCLUSIVE-R36",
+   "coverage_add": "R41-C1: verified absent (R17 P1 Bitcoin data and P2 NIST/random.org data; C8 cache only timestamps.json). The 28 P3 table pads are covered by R40-B3, not the dated pads.",
+   "status_note": "stays inconclusive"
+  },
+  {
+   "id": "R40-C1-INCONCLUSIVE-R44",
+   "status": "partially-run",
+   "coverage_add": "R41-C1: premise partly false - the 5 books of bookcipher.py (kjv, mabinogion, miltonPL, blake, agrippa) and the code are in analysis/bookcipher/. Scoring attempted: pointer-crafted control kill fired (recovery 0.74-0.82 < 0.90), so not scored. The 6 books of bookcipher_expand.py are absent.",
+   "status_note": "partially-run; control must be redesigned before scoring",
+   "not_covered_replace": "expanded 6 books absent; scoring not run",
+   "reopens_if_replace": "a pointer-crafted control reaching >=0.90 recovery is pre-registered"
+  },
+  {
+   "id": "R40-C1-R30-B1-ARTIFACT-KEYS",
+   "not_covered_add": "R41-C1: the 43 auto keys are not reproducible: raw/{2012..2017}.md absent; scream314 year files in archive/corpus are a different artefact (reproduce MIDISCV, not WORKING)."
+  }
+ ]
+}

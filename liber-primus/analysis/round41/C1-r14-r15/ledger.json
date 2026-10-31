@@ -1,0 +1,160 @@
+{
+ "$comment": "R41 C1 ledger rows (LEDGER.json schema)",
+ "entries": [
+  {
+   "round": 41,
+   "lane": "C1",
+   "lane_dir": "C1-r14-r15",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "id": "R41-C1-R14-WORDSUM-SELFKEY",
+   "status": "negative",
+   "hypothesis": "campaign7 wordsum_selfkey (W1..W5 word-gematria-sum self-keying, sign x atbash) decodes the unsolved LP2 text; cells H4xF3, L2xF3.",
+   "positive_control": "passed",
+   "control_detail": "planted-text analogue for EVERY one of the 20 variants x EN_MODERN/LATIN/EN_NOVOWEL (60 plants at level W, 60 at level P) enciphered with the exact inverse; exact recovery 1.000 asserted; 120/120 recognised (plant pmax > max of 3000 matched-null family bests; level W null max 4.62, level P 5.50). Archived-code copy reproduced campaign7's -6.897 and per-variant scores exactly.",
+   "threshold": "direct panel-R36 (round40 lib copied unchanged), standing matched null bars_matched.matched_shuffle blockperm 100/250/1000, D=1000 each; alpha 0.0025 per (family, level); decision p = max of the three block p's; crosses only if Z-family p AND raw p both <= alpha",
+   "result": "negative: level W (20 whole-stream variants) best pmax 2.705, decision p(Z)=0.538, p(raw)=0.374 (blocks 100/250/1000: Z 0.353/0.491/0.538, raw 0.368/0.374/0.366); level P (1,100 page units) best pmax 3.642, decision p(Z)=0.886, p(raw)=0.893. alpha 0.0025: no crossing.",
+   "coverage": "20 variants (W1-W5 x sign x atbash) x 55 unsolved pages, panel-R36 direct, 12 registers, matched null at page/region scale with word and page segmentation held.",
+   "not_covered": "other prime tables, sum operators, word segmentations than the transcription's; skip-aware / doublet-aware variants; non-listed registers beyond plant-level EN_MODERN/LATIN/EN_NOVOWEL; key-sweep survivor bar not applicable (direct reading).",
+   "reopens_if": "a variant outside W1-W5 (different sum/segmentation) is defined, or a segmentation of LP2 other than the transcription's is shown to be the author's",
+   "evidence": [
+    "liber-primus/analysis/round41/C1-r14-r15/PREREG.md",
+    "liber-primus/analysis/round41/C1-r14-r15/RESULTS.md",
+    "liber-primus/analysis/round41/C1-r14-r15/result_R14.json",
+    "liber-primus/analysis/round41/C1-r14-r15/result_R15.json"
+   ],
+   "notes": "Supersedes the inconclusive R14 reading in R40-C1-INCONCLUSIVE-R14 (premise 'code not committed' false; archive path used)."
+  },
+  {
+   "round": 41,
+   "lane": "C1",
+   "lane_dir": "C1-r14-r15",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "id": "R41-C1-R15-HILL5-MAGIC",
+   "status": "negative",
+   "hypothesis": "the book's three printed matrices and r4nd0m phi variants (6 matrices x M, MT, Minv, MTinv) as Hill keys mod 29 decode the unsolved text; cell L15xF2.",
+   "positive_control": "passed",
+   "control_detail": "planted-text analogue for all 24 variants x 3 registers (72 plants per level, levels W and P) via the inverse matrix; exact recovery; 144/144 recognised (level W null max 3.92, level P 4.80). numpy Hill verified identical to archived apply_hill on all variants. Archived copy reproduced -6.873 and per-matrix scores exactly.",
+   "threshold": "direct panel-R36 (round40 lib copied unchanged), standing matched null bars_matched.matched_shuffle blockperm 100/250/1000, D=1000 each; alpha 0.0025 per (family, level); decision p = max of the three block p's; crosses only if Z-family p AND raw p both <= alpha",
+   "result": "negative: level W (24 whole streams) best pmax 2.443, decision p(Z)=0.641, p(raw)=0.749; level P (1,320 page units) best pmax 4.094, decision p(Z)=0.771, p(raw)=0.424. No crossing at alpha 0.0025.",
+   "coverage": "24 variants, whole and per page, panel-R36 direct, matched null (blockperm 100/250/1000).",
+   "not_covered": "matrices as column/row key schedules, as permutations, or with word-number fills; block sizes other than the matrix order; other register coverage than plants.",
+   "reopens_if": "a matrix-derived key schedule (not block multiply) is defined",
+   "evidence": [
+    "liber-primus/analysis/round41/C1-r14-r15/PREREG.md",
+    "liber-primus/analysis/round41/C1-r14-r15/RESULTS.md",
+    "liber-primus/analysis/round41/C1-r14-r15/result_R14.json",
+    "liber-primus/analysis/round41/C1-r14-r15/result_R15.json"
+   ],
+   "notes": ""
+  },
+  {
+   "round": 41,
+   "lane": "C1",
+   "lane_dir": "C1-r14-r15",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "id": "R41-C1-R44-BOOKCIPHER-BOOKS-FOUND",
+   "status": "partially-run",
+   "hypothesis": "R44: LP numbers as pointers into Cicada's known books (bookcipher.py L1/L2/W1/W2/G over kjv, mabinogion, miltonPL, blake, agrippa).",
+   "positive_control": "failed",
+   "control_detail": "pre-registered pointer-crafted control (PREREG-ADDENDUM-1-R44) kill fired: first six L1 plants recovered 0.743-0.815 of target letters (< 0.90) because a 1..29-letter forward window cannot reach every target letter; per the addendum the scoring was NOT run.",
+   "threshold": "direct panel-R36 (round40 lib copied unchanged), standing matched null bars_matched.matched_shuffle blockperm 100/250/1000, D=1000 each; alpha 0.0025 per (family, level); decision p = max of the three block p's; crosses only if Z-family p AND raw p both <= alpha",
+   "result": "not scored. Artefact found: the 5 books and bookcipher.py are in analysis/bookcipher/; the premise 'books not committed' is false for them.",
+   "coverage": "verification only",
+   "not_covered": "the 6 books of bookcipher_expand.py (liber_al, kybalion, blake_mhh, goetia_g, thunder, thomas_gnosis) are absent; R44 scoring under panel-R36 not run (control kill).",
+   "reopens_if": "a pointer-crafted control reaching >=0.90 recovery (e.g. a lookahead beyond one step, or a non-greedy craft) is pre-registered, then the 130-unit family is scored against the blockperm null",
+   "evidence": [
+    "liber-primus/analysis/round41/C1-r14-r15/PREREG-ADDENDUM-1-R44.md",
+    "liber-primus/analysis/round41/C1-r14-r15/run_r44.out",
+    "liber-primus/analysis/bookcipher/bookcipher.py"
+   ],
+   "notes": "Scripts run_r44.py ready; it exits before scoring."
+  },
+  {
+   "round": 41,
+   "lane": "C1",
+   "lane_dir": "C1-r14-r15",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "id": "R41-C1-R31-CRIB-READOUTS-VERIFIED",
+   "status": "inconclusive",
+   "hypothesis": "Verify whether the R31 artefact is really absent (R40-C1 blocked-cell premise).",
+   "positive_control": "n/a (no control run)",
+   "control_detail": "verification-only row, no scoring performed",
+   "threshold": "n/a (verification)",
+   "result": "artefact is regenerable (round10b/B3-semantic-keys code, ~4 min); T1-RESULTS.json stores the top-50 readouts and top-15 promoted page decodes. The blocker is the instrument floor, not absence.",
+   "coverage": "searched working tree, archive/, corpus/ (Glob/Grep, in-repo only)",
+   "not_covered": "readouts below panel floor; promoted decodes use phase-flexible decode not re-scored",
+   "reopens_if": "a short-string scorer with a measured control is built, or the promoted page decodes are re-scored as a separate lane",
+   "evidence": [
+    "liber-primus/analysis/round41/C1-r14-r15/RESULTS.md"
+   ],
+   "notes": ""
+  },
+  {
+   "round": 41,
+   "lane": "C1",
+   "lane_dir": "C1-r14-r15",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "id": "R41-C1-R35-KEYTEXTS-VERIFIED",
+   "status": "inconclusive",
+   "hypothesis": "Verify whether the R35 artefact is really absent (R40-C1 blocked-cell premise).",
+   "positive_control": "n/a (no control run)",
+   "control_detail": "verification-only row, no scoring performed",
+   "threshold": "n/a (verification)",
+   "result": "analysis/round12/C2/texts/ (33 texts; fetch.sh has 33 pg/url lines) is absent from the working tree, archive/ and corpus/; no distinctive-title file match; gitignored (.gitignore line 158). Not hash-pinned; sweep_summary.json of round26/B records no per-text hashes. data/keys/armada18-19 hold different texts.",
+   "coverage": "searched working tree, archive/, corpus/ (Glob/Grep, in-repo only)",
+   "not_covered": "analysis/round12/C2/texts/ (33 texts; fetch.sh has 33 pg/url lines) is absent from the working tree, archive/ and corpus/; no distinctive-title file match; gitignored (.gitignore line 158). Not hash-pinned; sweep_summary.json of round26/B records no per-text hashes. data/keys/armada18-19 hold different texts.",
+   "reopens_if": "artefact supplied/pinned",
+   "evidence": [
+    "liber-primus/analysis/round41/C1-r14-r15/RESULTS.md"
+   ],
+   "notes": ""
+  },
+  {
+   "round": 41,
+   "lane": "C1",
+   "lane_dir": "C1-r14-r15",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "id": "R41-C1-R36-DATED-PADS-VERIFIED",
+   "status": "inconclusive",
+   "hypothesis": "Verify whether the R36 artefact is really absent (R40-C1 blocked-cell premise).",
+   "positive_control": "n/a (no control run)",
+   "control_detail": "verification-only row, no scoring performed",
+   "threshold": "n/a (verification)",
+   "result": "R17 P1 (Bitcoin heights 0-303,726 data/*.bin) and P2 (NIST beacon v1 + random.org) data absent from working tree, archive/, corpus/; R24 C8 cache holds only a 2 KB timestamps.json. The 28 P3 table pads are regenerable and were re-decoded in R40-B3 (that part is not the dated pads).",
+   "coverage": "searched working tree, archive/, corpus/ (Glob/Grep, in-repo only)",
+   "not_covered": "R17 P1 (Bitcoin heights 0-303,726 data/*.bin) and P2 (NIST beacon v1 + random.org) data absent from working tree, archive/, corpus/; R24 C8 cache holds only a 2 KB timestamps.json. The 28 P3 table pads are regenerable and were re-decoded in R40-B3 (that part is not the dated pads).",
+   "reopens_if": "artefact supplied/pinned",
+   "evidence": [
+    "liber-primus/analysis/round41/C1-r14-r15/RESULTS.md"
+   ],
+   "notes": ""
+  },
+  {
+   "round": 41,
+   "lane": "C1",
+   "lane_dir": "C1-r14-r15",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "id": "R41-C1-B1-43-AUTO-KEYS-VERIFIED",
+   "status": "inconclusive",
+   "hypothesis": "Verify whether the R30 43 auto keys artefact is really absent (R40-C1 blocked-cell premise).",
+   "positive_control": "n/a (no control run)",
+   "control_detail": "verification-only row, no scoring performed",
+   "threshold": "n/a (verification)",
+   "result": "analysis/armada_osint/artifacts/raw/{2012..2017}.md absent (gitignored). Partial substitute: archive/corpus scream314_2012/2013/2014/2017 md (no 2015/2016). Of the 43 auto keys only MIDISCV (auto-2012-tick) and WORKING (auto-2013-caps) appear verbatim in b1_results.json; the substitute reproduces MIDISCV but not WORKING, so it is a different artefact and a regeneration would not be the same 43 keys.",
+   "coverage": "searched working tree, archive/, corpus/ (Glob/Grep, in-repo only)",
+   "not_covered": "analysis/armada_osint/artifacts/raw/{2012..2017}.md absent (gitignored). Partial substitute: archive/corpus scream314_2012/2013/2014/2017 md (no 2015/2016). Of the 43 auto keys only MIDISCV (auto-2012-tick) and WORKING (auto-2013-caps) appear verbatim in b1_results.json; the substitute reproduces MIDISCV but not WORKING, so it is a different artefact and a regeneration would not be the same 43 keys.",
+   "reopens_if": "artefact supplied/pinned",
+   "evidence": [
+    "liber-primus/analysis/round41/C1-r14-r15/RESULTS.md"
+   ],
+   "notes": ""
+  }
+ ]
+}
