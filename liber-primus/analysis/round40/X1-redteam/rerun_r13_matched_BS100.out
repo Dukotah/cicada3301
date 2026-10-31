@@ -1,0 +1,89 @@
+[     2s] RAM wait: free 0.37 GB
+[   112s] X1_R13_blockperm100 null 100 of 500 49.6s
+[   169s] X1_R13_blockperm100 null 200 of 500 105.9s
+[   232s] X1_R13_blockperm100 null 300 of 500 169.3s
+[   290s] X1_R13_blockperm100 null 400 of 500 227.6s
+[   350s] X1_R13_blockperm100 null 500 of 500 287.5s
+{
+ "L": 12956,
+ "best_stream": "A:idx:s60:b1:f1",
+ "len": 400,
+ "obs_pmax_best": 4.733283068486452,
+ "path_len_visits": 400,
+ "perm_null": {
+  "n": 1000,
+  "mean": 1.998357594449471,
+  "sd": 0.6068038697031007,
+  "max": 3.769466437344073,
+  "exceed_ge_obs": 0
+ },
+ "shift_null": {
+  "n": 12956,
+  "mean": 1.4304171991096721,
+  "sd": 0.748951214861308,
+  "q99": 3.2848276876675313,
+  "max": 5.140694804619168,
+  "exceed_ge_obs": 1,
+  "p_single_stream": 0.00015435671837616733,
+  "shift0_val": [
+   4.713981259480274
+  ]
+ },
+ "blockperm_family": {
+  "n_streams": 2274,
+  "D": 500,
+  "best_stream": "A:idx:s61:b1:f1",
+  "best_pmax": 4.733283068486452,
+  "best_Z": 4.719829131369891,
+  "null_max_Z_q99": 4.336529273986816,
+  "null_max_Z_max": 4.801651477813721,
+  "exceed": 1,
+  "p_family": 0.003992015968063872,
+  "wilson95_exceed_rate": [
+   0.000353127309584542,
+   0.011240992747195207
+  ],
+  "top5": [
+   [
+    4.72,
+    4.733,
+    "A:idx:s61:b1:f1"
+   ],
+   [
+    4.687,
+    4.733,
+    "A:idx:s60:b1:f1"
+   ],
+   [
+    4.399,
+    4.533,
+    "A:idx:s5:b1:f1"
+   ],
+   [
+    4.366,
+    4.475,
+    "A:idx:s12:b1:f1"
+   ],
+   [
+    4.359,
+    4.518,
+    "A:idx:s35:b1:f1"
+   ]
+  ],
+  "raw_best": {
+   "obs_best_pmax": 4.733283068486452,
+   "obs_best_stream": "A:idx:s60:b1:f1",
+   "null_best_mean": 3.284638774871826,
+   "null_best_max": 4.977502346038818,
+   "null_best_q99": 4.456366653442381,
+   "exceed": 2,
+   "p": 0.005988023952095809,
+   "wilson95_exceed_rate": [
+    0.0010976075412372677,
+    0.01446601404141887
+   ]
+  },
+  "BS": 100,
+  "elapsed": 288.2
+ }
+}

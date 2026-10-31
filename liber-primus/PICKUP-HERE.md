@@ -2,6 +2,8 @@
 
 _Refreshed **2026-10-30** (Round 35 closeout; R36 audit corrections applied same day: bounded-not-closed wording, reopen list, ledger count 209). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
 
+> **Round 40 X1 (red-team, 2026-10-31):** B1 (bash 3.2 / 4.0 / 4.1 / 5.1), B3 (English-era grids), C1 (46 cells) and I1 (re-plants) are filed; no survivor; `LEDGER.json` now holds **290 entries**; `MEASURED-CEILING.md` refreshed (`check_ceiling.py` PASS). X1 FOUND-ERROR (all bounded; `analysis/round40/X1-redteam/RESULTS.md`). **Sandbox lanes S1/S2 were not run in Round 40; lane B2 (key offsets) was still sweeping and is not audited.** **Time-critical (unchanged):** recover S2 window 2 from snapshot `snap_ff0SWU76EW32OqbWJvp00fnORypR` after 2026-11-01 00:00 UTC and before ~2026-11-07, export the lists, then persistent-session windows; the PHP retry persists control and FPR first. **Owner decisions pending:** whether R13 DIRECTION moves from `open` to `negative`; the KDF noise-crosser (adjudicated by the coordinator, X1 concurs); whether the null12 bars are refit on the survivor population. **Still open:** the R14/R15 re-score from the archived code; the five other blocked C1 cells; bash 3.2 binary check; the 5.1 PIE orbit; B2 offsets.
+
 > **Round 39 X1 (red-team, 2026-10-31):** read [`MEASURED-CEILING.md`](MEASURED-CEILING.md) first (what is excluded at what power, and what is not). P1/T1/C1 are filed, I1 too; no survivor; `LEDGER.json` now holds **262 entries**. X1 FOUND-ERROR on the page and checker (all bounded; `analysis/round39/X1-redteam/RESULTS.md`). **Sandbox lanes S1/S2 were not run in Round 39.** **Time-critical (unchanged):** recover S2 window 2 from snapshot `snap_ff0SWU76EW32OqbWJvp00fnORypR` after 2026-11-01 00:00 UTC and before ~2026-11-07, export the lists, then persistent-session windows; the PHP retry persists control and FPR first. **Owner decisions pending:** the N5/N4 L=240 bundle read; whether the page's scope edits stand; whether `with_degenerate` becomes the SWEEPROW default. **Still open:** the 18 F5 cells' clue-specific readings (now PARTIAL, not NEVER); the 14 EN_MODERN-only controls re-planted in LATIN/GREEK/EN_NOVOWEL; `skip_by_two` re-runs of the SHA/KDF/public-pad grids; the Marsaglia CDROM (77 of 756 units); O4 `matrix.md` table bodies still say NEVER 68 (true after Round 39: 0 NEVER, 25 PARTIAL).
 
 > **Round 38 X1 (red-team, 2026-10-31):** S1/S2/C1/C2/I1/I2 are filed; no survivor; `LEDGER.json` now holds **256 entries**. X1 FOUND-ERROR x12 (all bounded) -> `analysis/round38/X1-redteam/RESULTS.md`. **Time-critical:** recover S2 window 2 from snapshot `snap_ff0SWU76EW32OqbWJvp00fnORypR` after the Vercel quota resets (2026-11-01 00:00 UTC) and before ~2026-11-07, and export the R36/after-window-1 lists (snapshots expire ~2026-11-06). **Owner decision pending:** the N5/N4 L=240 oracle bundle (`round38/C2-never-cells/n5n4/oracle/bundle.json`; expected NOISE-CROSSER, matched-null p 0.16 / 0.74). **Still open:** 18 NEVER F5 (semantic) cells and sense-similarity readings of "meaning" (C1 tested only the first-synset file offset); 34 O4 cells closed only as "no operation stated"; a page-matched null for the V2 geometry render; the pre-registered I1 D2 never run; O4 `matrix.md` table bodies still say NEVER 68 (true after Round 38: 18).
@@ -88,7 +90,7 @@ _Refreshed **2026-10-30** (Round 35 closeout; R36 audit corrections applied same
 
 > ## Round 32 (2026-10-28) — INSTRUMENT & RED-TEAM armada: shipped. Read `analysis/round32/SYNTHESIS.md` first.
 >
-> Eight lanes, all with passing positive controls, all filed in `LEDGER.json` (262 rows as of the R39 X1 merge, 2026-10-31; was 256 at R38 X1, 244 at R37 X1, 220 at R36 X1, 181 when written; 0 errors).
+> Eight lanes, all with passing positive controls, all filed in `LEDGER.json` (290 rows as of the R40 X1 merge, 2026-10-31; was 262 at R39 X1, was 256 at R38 X1, 244 at R37 X1, 220 at R36 X1, 181 when written; 0 errors).
 > No survivor. What changed is the **instrument**, not the board:
 > - **I1** the three-relation decoder already existed (`round19/I1/driftbeam.py`); it now has a measured power
 >   envelope — planted `skip_by_two` recovers 1.00 under `advance=2` (legacy relation: 0.30). **Vowel-dropped
@@ -305,7 +307,7 @@ where to spend effort (rather than picking up this project's own threads), read
 [`handoff/SOLVER-STRATEGY-2026.md`](handoff/SOLVER-STRATEGY-2026.md). Trust anchor:
 `python liber-primus/tests/validate.py` → `ALL VALIDATIONS PASSED` (5/5), passing through
 Round 25 and re-verified 2026-08-31 (`pytest -m "not network"` 85 passed).
-`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **262 entries** (R39 X1-merge count; was 256 at R38 X1, 244 at R37 X1, 220 at R36 X1, 162 when this line was written)
+`validate_ledger.py` Unsound-negatives = **0**. `LEDGER.json` now holds **290 entries** (R40 X1-merge count; was 262 at R39 X1, 256 at R38 X1, 244 at R37 X1, 220 at R36 X1, 162 when this line was written)
 (R22-A/B/C/D/R, R23-A2, R24 ×5, R25 merged, the ten Round-20 lanes filed 2026-08-31, Round 26 ×4
 [R26-A/B partially-run, R26-C negative, R26-D audit], **R27-CPORT-MT32-FULLSWEEP [in-flight]**
 — S1 complete with a measured-exhaustion NULL, S2 still sweeping — and the Round-28 interim

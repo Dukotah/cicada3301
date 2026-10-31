@@ -1,0 +1,28 @@
+{
+  "$comment": "R40 X1 lane row (also filed in LEDGER.json by apply_ledger.py)",
+  "entries": [
+    {
+      "id": "R40-X1-REDTEAM",
+      "round": 40,
+      "lane": "X1",
+      "lane_dir": "X1-redteam",
+      "date": "2026-10-31",
+      "status": "audit",
+      "hypothesis": "Round 40's own claims (B1 generators, B3 grids and the KDF crosser, C1 re-scores and the R13 near-miss, I1 re-plants, the ceiling-page refreshes) survive a refute-by-default audit.",
+      "result": "FOUND-ERROR (none flips a stored negative). B1: NO-ERROR-FOUND on the four generators (20 values re-derived from the tarball sources, live bash 5.3.9 equal for 5.1-family streams, 4.0=4.1 diff empty, 2 of 8 replication chunks re-run identical, arithmetic 76,237,568 / 88 prefixes / 4.3 %); the ceiling patch understated the 3.2 caveat (generator unverified). B3: the null12 bars are fitted on a survivor population that is less English-like than the sweeps' own (median 2.8 vs 2.33; empirical bar at N=131,786 is 9.6 vs the stored 8.3), so 'actual-N' is not a 1 % bar; the KDF cell (6.528) is a noise-crosser independently (pooled bar 7.37, P=0.075; score falls 6.528 -> 5.531; no words); the coordinator's 'screened-N is primary' note is unsupported; canon_256 cascade explains the P3 mismatch. C1: the R14/R15 'code not committed' premise is false (archive/branches-2026); four patch ids do not exist; H4xF6 cannot be TRIED while its R13 reading is open; the R13 near-miss does not survive page- and region-scale matched nulls (Z-statistic p 0.018 / 0.070) and is the top of 923 trajectories at ~3 sd. I1: 15/15 fresh re-plants recovered; L2-MAP weakness confirmed (EN_MODERN 8/10, EN_NOVOWEL 2/10); line 80 split; the cite form fixed; 'power 1.00' was a point estimate. B2 incomplete at audit time (not audited). S1/S2 (sandbox) not run this round.",
+      "not_covered": "B2 (running, no RESULTS.md at audit); S1/S2 not run; the R14/R15 re-score; the five unverified blocked C1 cells; claims of cited rows were checked against row fields, not re-run, except where listed.",
+      "reopens_if": "S2 window 2 is recovered (snap_ff0SWU76EW32OqbWJvp00fnORypR before about 2026-11-07); B2 files RESULTS.md (audit its offset alignment); the owner overrules the KDF noise-crosser or the R13 demotion.",
+      "evidence": [
+        "liber-primus/analysis/round40/X1-redteam/RESULTS.md",
+        "liber-primus/analysis/round40/X1-redteam/apply_ledger.py",
+        "liber-primus/analysis/round40/X1-redteam/rerun_generators.json",
+        "liber-primus/analysis/round40/X1-redteam/rerun_bars.json",
+        "liber-primus/analysis/round40/X1-redteam/rerun_noise.json",
+        "liber-primus/analysis/round40/X1-redteam/rerun_r13_clusters.json",
+        "liber-primus/analysis/round40/X1-redteam/rerun_c1_cells.json",
+        "liber-primus/analysis/round40/X1-redteam/rerun_i1_l2map.json",
+        "liber-primus/MEASURED-CEILING.md"
+      ]
+    }
+  ]
+}

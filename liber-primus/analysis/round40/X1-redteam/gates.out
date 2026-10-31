@@ -1,0 +1,49 @@
+== validate_ledger
+LEDGER.json  schema 1.0.0  290 entries (recounted from the rows)
+ERRORS: 0
+WARNINGS: 102
+Unsound negatives: 0  (this is the number that matters - it should be 0)
+== tests/validate.py
+PASS  14.jpg           4/4 words  score= -4.24  via vigenere FIRFUMFERENFE (+2 interrupters)
+      ACOANDURNGALESSONTHEMASTEREXPLAINEDTHEITHEIISTHEUOICEOTHECIRCUMERENCEHESAIDWHENASCEDBYASTUDENTTO
+PASS  73.jpg           7/7 words  score= -4.57  via phi(prime) shift-down (+1 interrupters)
+      ANENDWITHINTHEDEEPWEBTHEREEXISTSAPAGETHATHASHESTOITISTHEDUTYOEUERYPILGRIMTOSEECOUTTHISPAGE
+
+=== ALL VALIDATIONS PASSED — rig reproduces known solves. ===
+== check_ceiling
+check_ceiling: MEASURED-CEILING.md vs LEDGER.json (290 rows)
+  claim lines (tables, sections 1-3): 58   strong-verdict lines: 26
+  distinct rows cited: 123   pins checked: 89
+PASS
+== pytest tests/ benchmark/ -q
+.........................................                                [100%]
+41 passed in 29.14s
+== capsule
+  SKIP        : 1
+========================================================================
+PASS — every checked item is intact / reachable.
+build_index exit 0
+build_problem exit 0
+build_knowledge exit 0
+build_solved_pages exit 0
+== check_consistency
+==========================================================================
+CROSS-DOCUMENT CONSISTENCY CHECK
+==========================================================================
+  [ok  ] ciphertext identity agrees everywhere
+  [ok  ] no terminal 'work is over' instructions
+  [ok  ] retracted claim is not asserted
+  [ok  ] corrected verdict is present in every front door
+  [ok  ] acceptance thresholds agree
+  [ok  ] machine-readable pointers resolve
+  [ok  ] documented commands name real files
+  [ok  ] solved-page corpus matches the rig
+  [ok  ] ledger has no unsound negatives
+  [ok  ] no LLM scratch text in published prose
+  [ok  ] ledger counts in nav docs match LEDGER.json
+
+All entry points agree. No document drift detected.
+== selftest
+==========================================================================
+The oracle recovers a planted key in every tested register and rejects wrong keys.
+(Plants use keyskip1; keyskip2/free decoding is not recovery-gated here.)

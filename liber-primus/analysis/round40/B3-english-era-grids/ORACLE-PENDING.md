@@ -25,6 +25,4 @@ Read per `HUMAN-ORACLE.md` by the coordinator on the owner's delegated authority
 (`FICNIFGEWWIAOORSNCENSUWENCLACOY…`) contain no words in any of the twelve registers; the score falls monotonically as the
 read is extended (6.528 → 5.531); the row fails the bar at the number of configurations screened (8.868) and the N=1e6
 bar (8.999); the forward twin scores 1.957. **NOISE-CROSSER.** The owner may overrule by reading the bundle. Ledger row:
-`measured`, note "flagged-by-protocol; adjudicated noise-crosser (coordinator)". Policy note for hash/KDF grids: report
-both bars; the screened-configuration bar is the primary one for a head-only key family, since actual-N (survivors) is
-lenient at small N.
+`measured`, note "flagged-by-protocol; adjudicated noise-crosser (coordinator)". Policy note (revised after Round 40 X1): report both bars; neither actual-N nor screened-N is the bar of record for a flag until null12 is refit on the sweep survivor population (Round 41 I1) — until then only the N=1e6 bar gates a flag.
