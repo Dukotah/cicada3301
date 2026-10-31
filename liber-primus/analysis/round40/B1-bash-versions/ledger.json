@@ -1,0 +1,142 @@
+{
+ "$comment": "written by R40 B1 lane agent",
+ "entries": [
+  {
+   "id": "R40-B1-BASH41-RANDOM-AUTOSEED",
+   "round": 40,
+   "lane": "B1",
+   "date": "2026-10-31",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "control_4.1.json: 60 natural-rate plants (10 EN_MODERN + 10 EN_NOVOWEL + 10 HEBREW per relation (60 plants), pooled >=3 recoveries in every register x skip split) through the real 2^16-seed chunk path; 60 recovered end-to-end (pmax>=N=1e6 bars at L120 and L240, recovery>=0.90); gate (>=3 per pooled split) True",
+   "hypothesis": "The LP2 key is the bash 4.1 auto-seed $RANDOM stream (tv_sec ^ tv_usec ^ pid orbit, LP64 or ILP32), <= 2 key skips in the first 24 runes, plaintext in one of the 12 panel-R36 registers.",
+   "coverage": "Covered BY IDENTITY, not re-run in full: the RANDOM code of bash 4.0 and 4.1 is textually identical and differs from 4.2 only in the zero-state branch (seedrand() vs the constant 123459876); state 0 is reachable only from s = m*(2^31-1), heuristic expected orbit seeds touching it in 1024 steps: LP64 2e-7, ILP32 ~37 of 77.6M. Every other orbit seed therefore emits the bash 4.2 stream, so R37-I2's complete bash 4.2 sweeps (296/296 chunks, LP64 65,815 + ILP32 65,971 survivors, all decoded) are the 4.x result. Independent re-execution through the 4.1 generator and the full pipeline: 8 of 296 chunks (2097152 seeds, 1795 survivors), survivor/decode sets identical to R37's and pmax equal to the stored 3 dp (max |diff| 0.0005 = rounding).",
+   "result": "0 flagged, 0 near-miss. LP64: keyskip1 best 6.347 vs 8.113 (N=65815; 9.102 at N=1e6); keyskip2 best 7.065 vs 8.027 (N=65815; 8.999 at N=1e6). ILP32: keyskip1 best 6.506 vs 8.114 (N=65971; 9.102 at N=1e6); keyskip2 best 6.763 vs 8.028 (N=65971; 8.999 at N=1e6).",
+   "threshold": "12-register POT bars from round36/B1 null12.json (mu, beta per cell) at actual N and N=1e6; pf_v4_12 frozen point (round37/I2 frozen_op12.json) unchanged",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "bash 4.0/4.1 auto-seed sbrand(tv_sec ^ tv_usec ^ getpid()): the same 74 x 2^20 = 77,594,624-seed orbit as 4.2, LP64 and ILP32, %29, offset 0, sign -1",
+    "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max, L120 screen / L240 gate; heads with <= 2 skips in 24 runes; not free, not L31",
+    "adjudicator_register": "panel-R36, 12 registers; pf_v4_12 reach 0.952-0.994 per register x v3 recovery (60-plant control: 59-60/60)"
+   },
+   "not_covered": "Heads with >= 3 skips in 24 runes; free relation; L=31; key offsets != 0 and sign +1; $RANDOM first used inside a command/process substitution (subshell reseed); registers outside the twelve; other reductions than %29; the seeds' time window outside tv_sec 2012-01-01..2014-06-01. Seeds whose stream enters state 0 (nondeterministic re-seed). No bash 4.1 binary was run (generator verified by source identity to the L1-verified 4.2).",
+   "reopens_if": "a bash 4.0/4.1 binary run shows a stream differing from 4.2's on an orbit seed; the oracle flags a row; or a true-key head with > 2 skips in 24 runes is shown; or a register outside the twelve is added.",
+   "evidence": [
+    "analysis/round40/B1-bash-versions/RESULTS.md",
+    "analysis/round40/B1-bash-versions/PREREG.md",
+    "analysis/round40/B1-bash-versions/PREREG-ADDENDUM-1.md",
+    "analysis/round40/B1-bash-versions/generators.py",
+    "analysis/round40/B1-bash-versions/verification.json",
+    "analysis/round40/B1-bash-versions/sweep.py",
+    "analysis/round40/B1-bash-versions/sweep_summary_final.json",
+    "analysis/round40/B1-bash-versions/control_4.1.json",
+    "analysis/round40/B1-bash-versions/replication_rows_bash4.1.jsonl"
+   ],
+   "sweep_store": "analysis/round40/B1-bash-versions/replication_rows_bash4.1.jsonl",
+   "declares_sweep": true,
+   "generator_verification": "source-identity to bash 4.2 (R19-G1 L1 binary) + R19-G1 cross-implementation 0/2000 mismatches (verification.json)"
+  },
+  {
+   "id": "R40-B1-BASH40-RANDOM-AUTOSEED",
+   "round": 40,
+   "lane": "B1",
+   "date": "2026-10-31",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "control_4.0.json: 60 natural-rate plants (10 EN_MODERN + 10 EN_NOVOWEL + 10 HEBREW per relation (60 plants), pooled >=3 recoveries in every register x skip split) through the real 2^16-seed chunk path; 59 recovered end-to-end (pmax>=N=1e6 bars at L120 and L240, recovery>=0.90); gate (>=3 per pooled split) True",
+   "hypothesis": "The LP2 key is the bash 4.0 auto-seed $RANDOM stream (tv_sec ^ tv_usec ^ pid orbit, LP64 or ILP32), <= 2 key skips in the first 24 runes, plaintext in one of the 12 panel-R36 registers.",
+   "coverage": "Covered BY IDENTITY: the bash 4.0 RANDOM code block is textually identical to bash 4.1 (empty diff, verification.json) and so shares the 4.1 -> 4.2 equivalence and R37-I2's complete 4.2 sweeps (296/296 chunks per ABI). Own control (control_4.0.json) run through the 4.0 generator. No separate orbit re-execution (the 4.1 replication of 8 chunks stands for both).",
+   "result": "0 flagged, 0 near-miss. LP64: keyskip1 best 6.347 vs 8.113 (N=65815; 9.102 at N=1e6); keyskip2 best 7.065 vs 8.027 (N=65815; 8.999 at N=1e6). ILP32: keyskip1 best 6.506 vs 8.114 (N=65971; 9.102 at N=1e6); keyskip2 best 6.763 vs 8.028 (N=65971; 8.999 at N=1e6).",
+   "threshold": "12-register POT bars from round36/B1 null12.json (mu, beta per cell) at actual N and N=1e6; pf_v4_12 frozen point (round37/I2 frozen_op12.json) unchanged",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "bash 4.0/4.1 auto-seed sbrand(tv_sec ^ tv_usec ^ getpid()): the same 74 x 2^20 = 77,594,624-seed orbit as 4.2, LP64 and ILP32, %29, offset 0, sign -1",
+    "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max, L120 screen / L240 gate; heads with <= 2 skips in 24 runes; not free, not L31",
+    "adjudicator_register": "panel-R36, 12 registers; pf_v4_12 reach 0.952-0.994 per register x v3 recovery (60-plant control: 59-60/60)"
+   },
+   "not_covered": "Heads with >= 3 skips in 24 runes; free relation; L=31; key offsets != 0 and sign +1; $RANDOM first used inside a command/process substitution (subshell reseed); registers outside the twelve; other reductions than %29; the seeds' time window outside tv_sec 2012-01-01..2014-06-01. Seeds whose stream enters state 0. No bash 4.0 binary was run.",
+   "reopens_if": "a bash 4.0/4.1 binary run shows a stream differing from 4.2's on an orbit seed; the oracle flags a row; or a true-key head with > 2 skips in 24 runes is shown; or a register outside the twelve is added.",
+   "evidence": [
+    "analysis/round40/B1-bash-versions/RESULTS.md",
+    "analysis/round40/B1-bash-versions/PREREG.md",
+    "analysis/round40/B1-bash-versions/PREREG-ADDENDUM-1.md",
+    "analysis/round40/B1-bash-versions/generators.py",
+    "analysis/round40/B1-bash-versions/verification.json",
+    "analysis/round40/B1-bash-versions/sweep.py",
+    "analysis/round40/B1-bash-versions/sweep_summary_final.json",
+    "analysis/round40/B1-bash-versions/control_4.0.json"
+   ],
+   "generator_verification": "source-identity to bash 4.1/4.2 (empty 4.0-vs-4.1 diff)"
+  },
+  {
+   "id": "R40-B1-BASH32-RANDOM-AUTOSEED",
+   "round": 40,
+   "lane": "B1",
+   "date": "2026-10-31",
+   "status": "partially-run",
+   "positive_control": "passed",
+   "control_detail": "control_3.2.json: 60 natural-rate plants (10 EN_MODERN + 10 EN_NOVOWEL + 10 HEBREW per relation (60 plants), pooled >=3 recoveries in every register x skip split) through the real 2^16-seed chunk path; 59 recovered end-to-end (pmax>=N=1e6 bars at L120 and L240, recovery>=0.90); gate (>=3 per pooled split) True",
+   "hypothesis": "The LP2 key is the bash 3.2 auto-seed $RANDOM stream (seed = pid + time(0); ANSI-C LCG 1103515245/12345), <= 2 key skips in the first 24 runes, plaintext in one of the 12 panel-R36 registers.",
+   "coverage": "Full enumerated orbit: 291/291 chunks, 76,237,568 seeds = every integer in [SEC0+1, SEC1+32768] (tv_sec 2012-01-01..2014-06-01 + pid 1..32768); 64511 survivors, all decoded under both relations (64511 decodes each).",
+   "result": "0 flagged, 0 near-miss. keyskip1 best 7.098 (seed 1326767047, LP1_REAL) vs 12-register bar 8.105 at actual N=64511 (9.102 at N=1e6); keyskip2 best 6.567 (seed 1367421463, EN_MODERN) vs 12-register bar 8.020 at actual N=64511 (8.999 at N=1e6).",
+   "threshold": "12-register POT bars from round36/B1 null12.json (mu, beta per cell) at actual N and N=1e6; pf_v4_12 frozen point (round37/I2 frozen_op12.json) unchanged",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "bash 3.2 sbrand(getpid() + shell_start_time): 76,237,568 consecutive integer seeds (pid <= 32768), LCG stream, %29, offset 0, sign -1 (ABI-independent)",
+    "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max, L120 screen / L240 gate; heads with <= 2 skips in 24 runes; not free, not L31",
+    "adjudicator_register": "panel-R36, 12 registers; pf_v4_12 reach 0.952-0.994 per register x v3 recovery (60-plant control: 59-60/60)"
+   },
+   "not_covered": "Heads with >= 3 skips in 24 runes; free relation; L=31; key offsets != 0 and sign +1; $RANDOM first used inside a command/process substitution (subshell reseed); registers outside the twelve; other reductions than %29; the seeds' time window outside tv_sec 2012-01-01..2014-06-01. pid_max > 32768 (up to 4,194,304; ~5.5% more seeds); a bash 3.2 binary was not available: the generator is source-derived and cross-checked only against R19-G1's second transcription and the ISO-C-sample LCG sequence (RANDOM=1 -> 16838, 5758, 10113, ...).",
+   "reopens_if": "a bash 3.2 binary (or its published sequence for a stated seed) confirms the generator, which would upgrade this row to negative; or a pid_max > 32768 extension is run; or the oracle flags a row.",
+   "evidence": [
+    "analysis/round40/B1-bash-versions/RESULTS.md",
+    "analysis/round40/B1-bash-versions/PREREG.md",
+    "analysis/round40/B1-bash-versions/PREREG-ADDENDUM-1.md",
+    "analysis/round40/B1-bash-versions/generators.py",
+    "analysis/round40/B1-bash-versions/verification.json",
+    "analysis/round40/B1-bash-versions/sweep.py",
+    "analysis/round40/B1-bash-versions/sweep_summary_final.json",
+    "analysis/round40/B1-bash-versions/control_3.2.json",
+    "analysis/round40/B1-bash-versions/sweep_rows.jsonl"
+   ],
+   "sweep_store": "analysis/round40/B1-bash-versions/sweep_rows.jsonl",
+   "declares_sweep": true,
+   "generator_verification": "source-derived, unverified (no bash 3.2 binary): Q5 -> partially-run"
+  },
+  {
+   "id": "R40-B1-BASH51-RANDOM-AUTOSEED",
+   "round": 40,
+   "lane": "B1",
+   "date": "2026-10-31",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "control_5.1.json: 60 natural-rate plants (10 EN_MODERN + 10 EN_NOVOWEL + 10 HEBREW per relation (60 plants), pooled >=3 recoveries in every register x skip split) through the real 2^16-seed chunk path; 59 recovered end-to-end (pmax>=N=1e6 bars at L120 and L240, recovery>=0.90); gate (>=3 per pooled split) True",
+   "hypothesis": "The LP2 key is the bash 5.1 auto-seed $RANDOM stream of a NON-PIE build (genseed() with constant address term; folded output), <= 2 key skips in the first 24 runes, plaintext in one of the 12 panel-R36 registers.",
+   "coverage": "Full enumerated family: 352/352 chunks, 92,274,688 seeds = prefixes (tv_sec>>20) XOR {0..7} (88 x 2^20); the x=4 image (one build, 74 x 2^20 = 77,594,624 seeds, 296 chunks) first; 77772 survivors, all decoded under both relations. PIE/ASLR builds (effective orbit ~2^31 = 2.15e9 seeds) NOT covered: enumerated fraction of that orbit ~4.3%.",
+   "result": "0 flagged, 0 near-miss. keyskip1 best 6.455 (seed 1363452256, LP1_REAL) vs 12-register bar 8.173 at actual N=77772 (9.102 at N=1e6); keyskip2 best 6.522 (seed 1368058002, EN_MODERN) vs 12-register bar 8.086 at actual N=77772 (8.999 at N=1e6).",
+   "threshold": "12-register POT bars from round36/B1 null12.json (mu, beta per cell) at actual N and N=1e6; pf_v4_12 frozen point (round37/I2 frozen_op12.json) unchanged",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "bash 5.1 genseed() = tv_sec ^ tv_usec ^ pid ^ ppid ^ uid ^ constant (non-PIE): 88 x 2^20 seeds, 32-bit Lehmer, folded output (compat > 50), %29, offset 0, sign -1",
+    "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max, L120 screen / L240 gate; heads with <= 2 skips in 24 runes; not free, not L31",
+    "adjudicator_register": "panel-R36, 12 registers; pf_v4_12 reach 0.952-0.994 per register x v3 recovery (60-plant control: 59-60/60)"
+   },
+   "not_covered": "Heads with >= 3 skips in 24 runes; free relation; L=31; key offsets != 0 and sign +1; $RANDOM first used inside a command/process substitution (subshell reseed); registers outside the twelve; other reductions than %29; the seeds' time window outside tv_sec 2012-01-01..2014-06-01. PIE/ASLR 5.1 builds (the address term randomises seed bits 12-31); BASH_COMPAT<=50 (unfolded output); bash 5.0, 5.2, 5.3 seeding differences not read; the 2012-2014 time window is anachronistic for 5.1 (released 2020) and was kept only for comparability.",
+   "reopens_if": "the oracle flags a row; a PIE-orbit (2^31) sweep is run; a BASH_COMPAT=50 or other 5.x build is hypothesised with evidence; or a true-key head with > 2 skips is shown.",
+   "evidence": [
+    "analysis/round40/B1-bash-versions/RESULTS.md",
+    "analysis/round40/B1-bash-versions/PREREG.md",
+    "analysis/round40/B1-bash-versions/PREREG-ADDENDUM-1.md",
+    "analysis/round40/B1-bash-versions/generators.py",
+    "analysis/round40/B1-bash-versions/verification.json",
+    "analysis/round40/B1-bash-versions/sweep.py",
+    "analysis/round40/B1-bash-versions/sweep_summary_final.json",
+    "analysis/round40/B1-bash-versions/control_5.1.json",
+    "analysis/round40/B1-bash-versions/sweep_rows.jsonl"
+   ],
+   "sweep_store": "analysis/round40/B1-bash-versions/sweep_rows.jsonl",
+   "declares_sweep": true,
+   "generator_verification": "verified against a live bash 5.3.9 binary (6 seeds x 200 values, all match) + R19-G1 cross-implementation 0/2000 mismatches"
+  }
+ ]
+}

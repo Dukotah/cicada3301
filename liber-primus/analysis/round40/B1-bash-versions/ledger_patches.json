@@ -1,0 +1,22 @@
+{
+ "$comment": "R40 B1 (not applied by lane). Replaces the MEASURED-CEILING section-3 'Other bash versions and seedings' line; pins must be added next to it. The new line says 'partial' (a not-excluded remainder stays), cites only rows that exist in ledger.json of this lane once applied.",
+ "measured_ceiling_replace_line_starting": "| Other bash versions and seedings; other PHP variants; offsets other than 0; sign +1 on most rows |",
+ "measured_ceiling_new_line": "| Other bash versions and seedings; other PHP variants; offsets other than 0; sign +1 on most rows | bash 3.2 (pid_max > 32768 only), bash 5.x PIE/ASLR builds (orbit ~2^31) and BASH_COMPAT<=50, a real 32-bit bash 4.2 beyond the swept ILP32 orbit, non-zero key offsets | partial | [[R40-B1-BASH41-RANDOM-AUTOSEED]] [[R40-B1-BASH40-RANDOM-AUTOSEED]] [[R40-B1-BASH32-RANDOM-AUTOSEED]] [[R40-B1-BASH51-RANDOM-AUTOSEED]] [[R32-B1-BASH42-RANDOM-AUTOSEED]] | a stated offset, a pid_max extension, a PIE-orbit sweep, or a bash 3.2 binary confirming the generator |",
+ "pins_to_add": [
+  "<!-- pin: R40-B1-BASH32-RANDOM-AUTOSEED | 76,237,568 -->",
+  "<!-- pin: R40-B1-BASH51-RANDOM-AUTOSEED | 92,274,688 -->",
+  "<!-- pin: R40-B1-BASH32-RANDOM-AUTOSEED | 7.098 -->",
+  "<!-- pin: R40-B1-BASH51-RANDOM-AUTOSEED | 6.522 -->",
+  "<!-- pin: R40-B1-BASH41-RANDOM-AUTOSEED | 7.065 -->"
+ ],
+ "patches": [
+  {
+   "id": "R32-B1-BASH42-RANDOM-AUTOSEED",
+   "coverage_add": "R40-B1: bash 4.0/4.1 share the 4.2 LP64/ILP32 stream except the zero-state branch (covered by identity with R37-I2); bash 3.2 (76,237,568 seeds) and bash 5.1 non-PIE (92,274,688 seeds) orbits swept in full under pf_v4_12 + beam_v3 + panel-R36: 0 flagged, 0 near-miss."
+  },
+  {
+   "id": "R37-I2-PFV4-12REG-ORBIT",
+   "coverage_add": "R40-B1: 8/296 chunks re-executed through the bash 4.1 generator: identical survivor and decode sets, pmax equal at 3 dp."
+  }
+ ]
+}

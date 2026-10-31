@@ -1,0 +1,339 @@
+{
+ "lane": "round40/B1",
+ "date": "2026-10-31T10:47:36",
+ "tarballs": {
+  "3.2": {
+   "url": "https://ftp.gnu.org/gnu/bash/bash-3.2.tar.gz",
+   "sha256": "26c99025b59e30779300b68adb764f824974d267a4d7cc1b347d14a2393f9fb4",
+   "bytes": 2529838
+  },
+  "4.0": {
+   "url": "https://ftp.gnu.org/gnu/bash/bash-4.0.tar.gz",
+   "sha256": "9793d394f640a95030c77d5ac989724afe196921956db741bcaf141801c50518",
+   "bytes": 6230779
+  },
+  "4.1": {
+   "url": "https://ftp.gnu.org/gnu/bash/bash-4.1.tar.gz",
+   "sha256": "3f627124a83c6d34db503a923e20710d370573a29dd5d11d6f116d1aee7be1da",
+   "bytes": 6598300
+  },
+  "4.2": {
+   "url": "https://ftp.gnu.org/gnu/bash/bash-4.2.tar.gz",
+   "sha256": "a27a1179ec9c0830c65c6aa5d7dab60f7ce1a2a608618570f96bfa72e95ab3d8",
+   "bytes": 7009201
+  },
+  "5.1": {
+   "url": "https://ftp.gnu.org/gnu/bash/bash-5.1.tar.gz",
+   "sha256": "cc012bc860406dcf42f64431bcd3d2fa7560c02915a601aba9cd597a39329baa",
+   "bytes": 10458638
+  }
+ },
+ "reference_levels": {
+  "L1": "real binary of the SAME version",
+  "L2": "real binary of a neighbouring version whose RANDOM code is diffed against the target",
+  "L3": "source-identity to an L1-verified generator",
+  "L4": "source-derived transcription, cross-checked against a second implementation (R19-G1 gen_bash / ref_bash.c), no binary",
+  "L5": "source-derived, unverified"
+ },
+ "versions": {
+  "bash3.2": {
+   "source": "bash-3.2 variables.c (tarball bash-3.2.tar.gz sha256 26c99025b59e3077): brand() l.1156, sbrand() l.1164, init sbrand(dollar_dollar_pid + shell_start_time) l.498, get_random_number() anti-repeat loop; NO lib/sh/random.c",
+   "diff_from_4.2": "DIFFERENT generator: brand() is the ANSI-C-sample LCG rseed = rseed*1103515245 + 12345 (unsigned long), output (rseed>>16)&32767 (4.0+ made this #if 0 and replaced it with Park-Miller 16807). Auto-seed is sbrand(pid + time(0)) - NOT tv_sec^tv_usec^pid; no seedrand(); a $RANDOM first used in a subshell reseeds sbrand(rseed + getpid() + NOW) (state-dependent, not enumerated). ABI-independent: low 32 bits of an LCG mod 2^64 equal the LCG mod 2^32 (R19-G1 validated both).",
+   "auto_seed_formula": "seed = getpid() + shell_start_time(time(0)); enumeration = every integer in [SEC0+1, SEC1+32768] (tv_sec 2012-01-01..2014-06-01 plus pid 1..32768) = 76,237,568 seeds = 291 chunks of 2^18. pid_max > 32768 (64-bit kernels with raised pid_max, up to 4,194,304) NOT covered (would add ~5.5%).",
+   "first20_after_RANDOM_eq_1": [
+    16838,
+    5758,
+    10113,
+    17515,
+    31051,
+    5627,
+    23010,
+    7419,
+    16212,
+    4086,
+    2749,
+    12767,
+    9084,
+    12060,
+    32225,
+    17543,
+    25089,
+    21183,
+    25137,
+    25566
+   ],
+   "reference_check": {
+    "level": "L4/L5",
+    "status": "source-derived, unverified against a bash 3.2 binary (no 3.2 binary or compiler on this machine)",
+    "cross_implementation": "equals R19-G1 gen_bash 'bash3.2' on 2000 seeds x 1024 values: 0 mismatches (R19-G1 itself recorded PASS vs its ref_bash.c transcription, also source-derived)",
+    "corroboration": "RANDOM=1 -> 16838, 5758, 10113, 17515, 31051, 5627, 23010, 7419, 16212, 4086 is the classic output of the ISO C (C99 7.20.2.2 sample) rand() LCG with srand(1) (recollection-level citation, not fetched); it is consistent with the formula but is not a bash binary."
+   },
+   "ledger_status_consequence": "partially-run (Q5: generator source-derived, unverified)"
+  },
+  "bash4.0": {
+   "source": "bash-4.0 variables.c (sha256 9793d394f640a950): brand() l.1217, sbrand() l.1243, seedrand() l.1251, init seedrand() l.522, get_random_number() l.1273",
+   "diff_from_4.2": "RANDOM code block is TEXTUALLY IDENTICAL to 4.1 (empty diff, see variables_c_random_block_diffs.4.0_vs_4.1) and differs from 4.2 only in the zero branch: 4.0/4.1 `if (rseed == 0) seedrand();` (non-deterministic re-seed from the clock) vs 4.2 `if (rseed == 0) rseed = 123459876;`. Same unsigned-long/long ABI fork as 4.2 (LP64 vs ILP32 differ).",
+   "auto_seed_formula": "seedrand(): sbrand(tv.tv_sec ^ tv.tv_usec ^ getpid()) - identical to 4.2 => the same 74 x 2^20 = 77,594,624-seed orbit (both ABIs).",
+   "zero_state": {
+    "preimages_of_zero_LP64": 46,
+    "all_step_to_zero": true,
+    "argument": "f(s)=16807*l-2836*h with s=127773h+l; |16807*l|<2.2e9 and 2836*h<4.2e17 << 2^64 so f(s)==0 mod 2^64 iff 16807*l==2836*h; gcd(16807,2836)=1 => l=2836m,h=16807m, l<127773 => m<=45, s=m*2147483647. Same for ILP32 (m<=2). Lehmer states below 2^31-1 never equal m*(2^31-1), m>=1; a state can reach 0 only by hitting one of 45 specific 64-bit (2 specific 32-bit) values after a negative-residue wrap.",
+    "expected_orbit_seeds_with_zero_in_first_1024_steps_heuristic": {
+     "LP64": 1.9383151084184647e-07,
+     "ILP32": 37.0
+    }
+   },
+   "first20_after_RANDOM_eq_1": [
+    16807,
+    15089,
+    11481,
+    3114,
+    14210,
+    23240,
+    3800,
+    2558,
+    12099,
+    1101,
+    6296,
+    15445,
+    4748,
+    23522,
+    21683,
+    14151,
+    14615,
+    16657,
+    17304,
+    18772
+   ],
+   "reference_check": {
+    "level": "L3 (source-identity to the L1-verified 4.2 generator)",
+    "status": "verified-by-identity: for every seed whose stream never enters state 0 the 4.0 stream equals the 4.2 stream; 4.2 was validated against a real built 4.2.0 binary in R19-G1 (validation.json level L1). No 4.0 binary on this machine.",
+    "cross_implementation": "equals R19-G1 gen_bash 'bash4.2' (LP64) on 2000 seeds x 1024 values: 0 mismatches (seeds that hit state 0 would be skipped; none occurred)"
+   },
+   "ledger_status_consequence": "negative by source-identity with the R37-I2 complete bash 4.2 sweeps; independent re-execution only on the 4.1 replication subset"
+  },
+  "bash4.1": {
+   "source": "bash-4.1 variables.c (sha256 3f627124a83c6d34): brand() l.1229, sbrand() l.1255, seedrand() l.1263, init seedrand() l.534, get_random_number() l.1285",
+   "diff_from_4.2": "see bash4.0: identical RANDOM code to 4.0; differs from 4.2 only in the zero branch (seedrand() vs constant 123459876).",
+   "auto_seed_formula": "sbrand(tv_sec ^ tv_usec ^ getpid()); same 74 x 2^20 orbit as 4.2; a new subshell calls seedrand() again (same formula).",
+   "first20_after_RANDOM_eq_1": [
+    16807,
+    15089,
+    11481,
+    3114,
+    14210,
+    23240,
+    3800,
+    2558,
+    12099,
+    1101,
+    6296,
+    15445,
+    4748,
+    23522,
+    21683,
+    14151,
+    14615,
+    16657,
+    17304,
+    18772
+   ],
+   "reference_check": {
+    "level": "L3",
+    "status": "verified-by-identity (see bash4.0); ILP32: equals R19-G1 bash4.2_i32 on 2000 seeds x 1024: 0 mismatches; LP64: 2000 seeds x 1024: 0 mismatches",
+    "zero_state_note": "state 0 is reached only from s = m*(2^31-1); heuristic expected orbit seeds touching it in the first 1024 steps: LP64 1.9e-07, ILP32 37"
+   },
+   "ledger_status_consequence": "negative by source-identity with R37-I2 + replication"
+  },
+  "bash5.1": {
+   "source": "bash-5.1 lib/sh/random.c (sha256 of the extracted file 2fddd31f886b7ca9; tarball cc012bc860406dcf): intrand32() Lehmer/Schrage, brand() fold, genseed(), seedrand(); variables.c l.608 seedrand(); l.1363 get_random_number()",
+   "diff_from_4.2": "DIFFERENT generator: 32-bit u_bits32_t state, signed h,l,t Schrage with the `t<0 -> t+0x7fffffff` correction ENABLED (a true Lehmer minimal-standard single cycle of length 2^31-2; 4.x has it #if 0'd on a 64-bit unsigned), zero -> 123459876, output folded (rseed>>16)^(rseed&65535) & 32767 when shell_compatibility_level > 50 (default). Auto-seed is genseed() = tv_sec ^ tv_usec ^ getpid() ^ getppid() ^ uid ^ (u32)(address of seedrand()).",
+   "auto_seed_formula": "iv = tv_sec ^ tv_usec ^ getpid() ^ getppid() ^ current_user.uid ^ (u32)&seedrand. Under ASLR/PIE the address term randomises bits 12..31, making the effective seed space the whole 2^31 cycle (27.7x the 4.2 orbit; not enumerated). Enumerated here: NON-PIE builds, where the term is a constant c and only x=(c>>20) (text at 0x400000-0x5fffff => x in {4,5}) shifts the prefix: seed prefix = (tv_sec>>20) XOR x, low 20 bits free (usec, pid, ppid, uid, c-low all < 2^20). Union over x in 0..7 = 88 x 2^20 = 92,274,688 seeds (352 chunks); one build = exactly 74 x 2^20; chunk order x=4 image first. Compat level <= 50 (BASH_COMPAT=50) would give the unfolded output and is NOT covered.",
+   "first20_after_RANDOM_eq_1": [
+    16807,
+    10791,
+    19566,
+    13983,
+    29619,
+    18126,
+    2269,
+    24347,
+    31152,
+    29673,
+    10638,
+    32297,
+    30929,
+    24462,
+    21092,
+    29834,
+    27903,
+    16877,
+    29323,
+    16858
+   ],
+   "reference_check": {
+    "level": "L2",
+    "status": "VERIFIED against a live binary: GNU bash, version 5.3.9(1)-release (x86_64-pc-cygwin) - RANDOM=seed then 200 values, seeds 1,3301,12345,1354603465,2147483646,4000000000, all match: True. The binary is 5.3.9 not 5.1; the 5.1 random.c RANDOM path is bit-identical on these cases (the 5.1 -> 5.3 difference, if any, is not visible in $RANDOM).",
+    "cross_implementation": "equals R19-G1 gen_bash 'bash5.1' on 2000 seeds x 1024: 0 mismatches",
+    "live_cases": {
+     "1": true,
+     "3301": true,
+     "12345": true,
+     "1354603465": true,
+     "2147483646": true,
+     "4000000000": true
+    }
+   },
+   "ledger_status_consequence": "negative (bounded: non-PIE address family only)"
+  }
+ },
+ "vector_heads_vs_scalar_no_antirepeat": {
+  "bash3.2": {
+   "seeds": 3000,
+   "mismatches": 0
+  },
+  "bash4.0": {
+   "seeds": 3000,
+   "mismatches": 0
+  },
+  "bash4.1": {
+   "seeds": 3000,
+   "mismatches": 0
+  },
+  "bash4.1_i32": {
+   "seeds": 3000,
+   "mismatches": 0
+  },
+  "bash4.0_i32": {
+   "seeds": 3000,
+   "mismatches": 0
+  },
+  "bash5.1": {
+   "seeds": 3000,
+   "mismatches": 0
+  }
+ },
+ "orbit": {
+  "bash3.2": {
+   "seeds": 76237568,
+   "chunks": 291
+  },
+  "bash4.1": {
+   "seeds": 77594624,
+   "chunks": 296
+  },
+  "bash5.1": {
+   "seeds": 92274688,
+   "chunks": 352
+  }
+ },
+ "variables_c_random_block_diffs": {
+  "4.0_vs_4.1": "",
+  "4.1_vs_4.2": "--- variables.c@4.1\n+++ variables.c@4.2\n@@ -14,4 +13,0 @@\n-#if 0\n-  rseed = rseed * 1103515245 + 12345;\n-  return ((unsigned int)((rseed >> 16) & 32767));\t/* was % 32768 */\n-#else\n@@ -22,0 +19 @@\n+  /* Can't seed with 0. */\n@@ -24 +21 @@\n-    seedrand ();\n+    rseed = 123459876;\n@@ -33 +29,0 @@\n-#endif\n",
+  "3.2_vs_4.0": "--- variables.c@3.2\n+++ variables.c@4.0\n@@ -13,0 +14 @@\n+#if 0\n@@ -15,0 +17,17 @@\n+#else\n+  /* From \"Random number generators: good ones are hard to find\",\n+     Park and Miller, Communications of the ACM, vol. 31, no. 10,\n+     October 1988, p. 1195. filtered through FreeBSD */\n+  long h, l;\n+\n+  if (rseed == 0)\n+    seedrand ();\n+  h = rseed / 127773;\n+  l = rseed % 127773;\n+  rseed = 16807 * l - 2836 * h;\n+#if 0\n+  if (rseed < 0)\n+    rseed += 0x7fffffff;\n+#endif\n+  return ((unsigned int)(rseed & 32767));\t/* was % 32768 */\n+#endif\n@@ -26,0 +45,9 @@\n+static void\n+seedrand ()\n+{\n+  struct timeval tv;\n+\n+  gettimeofday (&tv, NULL);\n+  sbrand (tv.tv_sec ^ tv.tv_usec ^ getpid ());\n+}\n+\n@@ -28 +55 @@\n-assign_random (self, value, unused)\n+assign_random (self, value, unused, key)\n@@ -31,0 +59 @@\n+     char *key;\n@@ -35 +63 @@\n-    seeded_subshell = 1;\n+    seeded_subshell = getpid ();\n@@ -42 +70 @@\n-  int rv;\n+  int rv, pid;\n@@ -45 +73,2 @@\n-  if (subshell_environment && seeded_subshell == 0)\n+  pid = getpid ();\n+  if (subshell_environment && seeded_subshell != pid)\n@@ -47,2 +76,2 @@\n-      sbrand (rseed + getpid() + NOW);\n-      seeded_subshell = 1;\n+      seedrand ();\n+      seeded_subshell = pid;\n"
+ },
+ "source_lines": {
+  "3.2": {
+   "variables.c": {
+    "^brand \\(\\)": [
+     1156
+    ],
+    "^sbrand \\(": [
+     1164
+    ],
+    "^seedrand \\(\\)": [],
+    "rseed = ": [
+     1146,
+     1158,
+     1167
+    ],
+    "seedrand \\(\\);|sbrand \\(dollar": [
+     498
+    ]
+   }
+  },
+  "4.0": {
+   "variables.c": {
+    "^brand \\(\\)": [
+     1217
+    ],
+    "^sbrand \\(": [
+     1243
+    ],
+    "^seedrand \\(\\)": [
+     1251
+    ],
+    "rseed = ": [
+     1207,
+     1220,
+     1232,
+     1246
+    ],
+    "seedrand \\(\\);|sbrand \\(dollar": [
+     522,
+     1229,
+     1281
+    ]
+   }
+  },
+  "4.1": {
+   "variables.c": {
+    "^brand \\(\\)": [
+     1229
+    ],
+    "^sbrand \\(": [
+     1255
+    ],
+    "^seedrand \\(\\)": [
+     1263
+    ],
+    "rseed = ": [
+     1219,
+     1232,
+     1244,
+     1258
+    ],
+    "seedrand \\(\\);|sbrand \\(dollar": [
+     534,
+     1241,
+     1293
+    ]
+   }
+  },
+  "4.2": {
+   "variables.c": {
+    "^brand \\(\\)": [
+     1236
+    ],
+    "^sbrand \\(": [
+     1258
+    ],
+    "^seedrand \\(\\)": [
+     1266
+    ],
+    "rseed = ": [
+     1226,
+     1245,
+     1248,
+     1261
+    ],
+    "seedrand \\(\\);|sbrand \\(dollar": [
+     537,
+     1296
+    ]
+   }
+  },
+  "5.1": {
+   "variables.c": {
+    "^brand \\(\\)": [],
+    "^sbrand \\(": [],
+    "^seedrand \\(\\)": [],
+    "rseed = ": [],
+    "seedrand \\(\\);|sbrand \\(dollar": [
+     608,
+     1371
+    ]
+   }
+  }
+ }
+}
