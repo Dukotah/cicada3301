@@ -1,0 +1,52 @@
+{
+ "$comment": "Round 39 C1: bounded, definition-conditional negative; never solved/closed/exhausted. Not merged into LEDGER.json.",
+ "lane": "C1",
+ "entries": [
+  {
+   "round": 39,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "id": "R39-C1-SENSE-SIMILARITY",
+   "status": "negative",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed (18/18 plants, 9/9 cells)",
+   "sweep_store": "analysis/round39/C1-sense-similarity/sweep_rows.jsonl",
+   "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+   "hypothesis": "Direction for LP2 cipher words = WordNet 3.1 sense position (first-synset hypernym depth D; lexicographer-file index L, mod 29/28) of successive LP1 words ('their meaning is the road'), applied per-word, cumulatively, or as key-pointer advance in K0.",
+   "coverage": "variants D (R28==R29 merged), L-R29, L-R28 x A1/A2 (s=0..28) and A3 (s=0..725 step 1), sigma +-1, pages 0-2, keyskip1, L=120 heads / L=240 gate, panel-R36; N=14112 (shift 1044, A3 13068)",
+   "best_pmax_per_cell": {
+    "D-R29|A1": 3.427,
+    "D-R29|A2": 3.182,
+    "L-R29|A1": 3.887,
+    "L-R29|A2": 3.997,
+    "L-R28|A1": 3.989,
+    "L-R28|A2": 4.004,
+    "D-R29|A3": 5.351,
+    "L-R29|A3": 5.052,
+    "L-R28|A3": 5.052
+   },
+   "best_overall_bars": {
+    "shift": {
+     "best": 4.004,
+     "bar_actualN": 6.632,
+     "bar_1e6": 9.235
+    },
+    "A3": {
+     "best": 5.351,
+     "bar_actualN": 7.59,
+     "bar_1e6": 9.235
+    }
+   },
+   "evidence": [
+    "analysis/round39/C1-sense-similarity/PREREG.md",
+    "analysis/round39/C1-sense-similarity/RESULTS.md",
+    "analysis/round39/C1-sense-similarity/control.json",
+    "analysis/round39/C1-sense-similarity/sweep_summary_final.json",
+    "analysis/round39/C1-sense-similarity/lp1_sense_index.json",
+    "analysis/round39/C1-sense-similarity/sweep_rows.jsonl"
+   ],
+   "threshold": "bars_v3 + bar12 at actual N and N=1e6, L=120 screen / L=240 gate; fixed in PREREG.md before any build or decode",
+   "not_covered": "senses beyond first synset; non-first hypernym paths; lexname-category depth (no hierarchy); other lexicons / similarity metrics (path, Lin, embeddings); rho=2/3; keyskip2/free; shift starts beyond 0..28; pages >2; heads beyond L=120/240; non-English plaintext; any non-frozen definition of 'meaning'"
+  }
+ ]
+}
