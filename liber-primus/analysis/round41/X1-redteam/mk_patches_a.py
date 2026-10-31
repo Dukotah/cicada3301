@@ -1,0 +1,39 @@
+import json, os
+HERE = os.path.dirname(os.path.abspath(__file__))
+P = {
+    "$comment": "X1/R41 part A ledger patches (I1 audit). Real ids only (checked against LEDGER.json). Nothing applied by the lane. B2's corrected row and its patches are in ledger_b2_corrected.json.",
+    "patches": [
+        {"id": "R41-I1-NULL-REFIT-SURVIVOR12",
+         "text_replace": [
+             {"field": "result.rejudge.kdf_flag_withdrawn", "old": "refit bar 7.435 at N=591", "new": "refit bar 7.438 at N=591 (bars_v3 and rejudged_rounds36_40.json give 7.4384; 7.435 in RESULTS.md is a transcription slip, the 0.91 gap is unchanged)"}
+         ],
+         "notes_add": "X1/R41 audit: (1) population = wrong-key seeds screened on the REAL head; not conditioned on real survivors (seeds are drawn from a seeded RNG before any real row is read; KS of the 40,482 null survivors against the 131,786 R37-I2 survivors at L=120: D 0.0041 / 0.0047, p 0.67 / 0.49); the real rows enter only through the pooled-POT max rule, which can only raise the bar. (2) The pre-registered Q5 rule ('if the Gumbel fit disagrees with the empirical data by >2 SE, the empirical quantile is the bar of record') fired and was NOT followed; the exponential bar was kept by a post-hoc argument (an empirical 1 % FWER quantile at N~1.3e5 is unmeasurable). Direction is conservative, so no verdict depends on it, but the row must say 'Q5 fired and was overridden', not 'Q5 fired in the conservative direction' alone. (3) Q1a was met by definition (bar of record = max(refit, pooled POT)), not by the refit: refit minus pooled POT is -0.047 (keyskip1), +0.042 (keyskip2). (4) Real pooled rows (307,377) exceed 6.0 on 32 / 38 rows (keyskip1 / keyskip2) against 160 / 175 expected from the exponential tail, and exceed 7.0 on 1 / 1 against 13.6 / 15.2: the bar of record is an upper bracket, 5x to 14x lighter-tailed than assumed in the data; a GPD (xi about -0.14) gives 6.7-6.9 at N=131,786 and 1e6 but sits below the real maxima 7.065 / 7.098, so the true 1 % level at N=131,786 lies between about 7.1 and 9.6 and at N=1e6 between about 7.1 and 10.5. The bootstrap SEs (0.07-0.09 at L=120, 0.2-0.24 at L=240) measure sampling noise only, not this model band. (5) Power cost: planted correct keys have min pmax 12.35 (L=120), 17.71 (L=240), so a bar of 9.4-10.5 loses nothing for keys that pass the screen, but a partially decoded true key scoring 7.1-9.4 is below the bar and above every row ever stored; those rows are neither flagged nor gate-decoded. (6) The 18/20 cells (LATIN keyskip1, OE keyskip2) are screen misses in 4/4 lost plants, as the row says; the screen power for those two registers is 38/40 = 0.95 pooled (the page already states 0.952-0.994).",
+         "add_field": {"rejudged_bars_cited_on_page": "bar of record at actual N: R37-I2 bash 4.2 keyskip2 9.370 at N=65,815; R40-B1 3.2 keyskip1 9.339 at N=64,511; R40-B1 5.1 keyskip2 9.439 at N=77,772; R40-B3 B04 8.367 / 8.391 at N=6,041; R40-B3 KDF 7.413 / 7.438 at N=591; R40-B3 COSPAD 8.790 / 8.814 at N=16,940; R40-B3 R17PAD 8.570 / 8.594 at N=9,908"},
+         "pin_fix": {"old": "7.435", "new": "7.438"}},
+        {"id": "R37-I2-PFV4-12REG-ORBIT", "notes_add": "X1/R41: the 12-register bar 8.027 / 8.999 quoted in 'result' is superseded by the Round 41 bar of record (9.370 at N=65,815 keyskip2, 10.4856 at N=1e6); best 7.065 sits 2.3 below it. The existing notes line already says so; the MEASURED-CEILING row 51 did not (see measured_ceiling_edits)."}
+    ],
+    "measured_ceiling_edits": [
+        {"where": "row 34 (Observed wrong-key nulls), replace the sentence", "old": "N=1e6 bars are tail extrapolations.",
+         "new": "N=1e6 bars are exponential-tail upper brackets: bootstrap SE 0.09 (L=120) and 0.22-0.24 (L=240) measure sampling noise only; the real survivor rows (307,377) exceed 6.0 on 32 / 38 rows against 160 / 175 expected from the exponential tail and 7.0 on one row against 14 expected, so the 1 % family-wise level at N=1e6 lies between about 7.1 and 10.5 and the number quoted is its upper end."},
+        {"where": "row 34, after 'smallest gap 0.9, the withdrawn KDF flag'", "old": "(smallest gap 0.9, the withdrawn KDF flag)", "new": "(smallest gap 0.91, the withdrawn KDF flag, 6.528 vs 7.438 at N=591)", "note": "only if the sentence is not already worded exactly so; keeps the 7.438 pin visible on the line"},
+        {"where": "row 34, planted-key sentence", "old": "(480 plants, bar of record at N=1e6)", "new": "(480 plants, 470/480 passing the pf_v4_12 screen, bar of record at N=1e6)", "note": "puts the pinned token '470/480' on the line"},
+        {"where": "row 51 (bash 4.2 orbit), result cell", "old": "best 7.065 vs 12-register bar 8.027 at actual N (8.999 at N=1e6) | bash 4.2 auto-seed set",
+         "new": "best 7.065 vs the 12-register null12 bar 8.027 at actual N (8.999 at N=1e6), both superseded by the survivor-population bar of record 9.370 at N=65,815 and 10.4856 at N=1e6 | bash 4.2 auto-seed set", "refs_add": "[[R41-I1-NULL-REFIT-SURVIVOR12]]"},
+        {"where": "row 52 (bash 4.0 / 4.1 orbit)", "old": "best 7.065 vs 8.027 at actual N (8.999 at N=1e6) | bash 4.0 / 4.1 auto-seed set",
+         "new": "best 7.065 vs null12 8.027 at actual N (8.999 at N=1e6), superseded by the bar of record 9.370 and 10.4856 | bash 4.0 / 4.1 auto-seed set", "refs_add": "[[R41-I1-NULL-REFIT-SURVIVOR12]]"},
+        {"where": "row 53 (bash 3.2 / 5.1)", "old": "best 3.2 `keyskip1` 7.098 vs 8.105 (9.102 at N=1e6), 5.1 `keyskip2` 6.522 vs 8.086",
+         "new": "best 3.2 `keyskip1` 7.098 vs null12 8.105 (9.102 at N=1e6; bar of record 9.339 at N=64,511 and 10.4645), 5.1 `keyskip2` 6.522 vs null12 8.086 (bar of record 9.439 at N=77,772)", "refs_add": "[[R41-I1-NULL-REFIT-SURVIVOR12]]"},
+        {"where": "row 61 (B3 B04 / KDF)", "old": "vs actual-N bars 7.244 / 7.173 and 6.399 / 6.342 (9.102 / 8.999 at N=1e6)",
+         "new": "vs null12 actual-N bars 7.244 / 7.173 and 6.399 / 6.342 (9.102 / 8.999 at N=1e6), superseded by the bars of record 8.367 / 8.391 and 7.413 / 7.438 (10.4645 / 10.4856 at N=1e6)", "refs_add": "[[R41-I1-NULL-REFIT-SURVIVOR12]]"},
+        {"where": "row 66 (COSPAD)", "old": "vs actual-N bars 7.619 / 7.542 (9.102 / 8.999 at N=1e6)", "new": "vs null12 actual-N bars 7.619 / 7.542 (9.102 / 8.999 at N=1e6), superseded by the bars of record 8.790 / 8.814 (10.4645 / 10.4856)", "refs_add": "[[R41-I1-NULL-REFIT-SURVIVOR12]]"},
+        {"where": "row 67 (R17 public pad)", "old": "vs actual-N bars 7.424 / 7.350 (9.102 / 8.999 at N=1e6)", "new": "vs null12 actual-N bars 7.424 / 7.350 (9.102 / 8.999 at N=1e6), superseded by the bars of record 8.570 / 8.594 (10.4645 / 10.4856)", "refs_add": "[[R41-I1-NULL-REFIT-SURVIVOR12]]"},
+        {"where": "pins", "old": "<!-- pin: R41-I1-NULL-REFIT-SURVIVOR12 | 7.435 -->", "new": "<!-- pin: R41-I1-NULL-REFIT-SURVIVOR12 | 7.438 -->",
+         "add": ["<!-- pin: R41-I1-NULL-REFIT-SURVIVOR12 | 9.370 -->", "<!-- pin: R41-I1-NULL-REFIT-SURVIVOR12 | 9.439 -->", "<!-- pin: R41-I1-NULL-REFIT-SURVIVOR12 | 8.814 -->"], "note": "the added tokens exist in the row only after the add_field patch above"}
+    ],
+    "policy_for_coordinator": [
+        "Q5 override: either amend PREREG-level wording so the row says 'fired and overridden', or adopt a stated empirical bar. Recommendation: keep the exponential bar as the FLAG gate and add a WATCH band (pmax above the largest stored survivor row, 7.10, at any N) that triggers an L=240 gate decode and a human look but no oracle bundle; a flat 9.4-10.5 gate silently drops the 8.0-9.4 rows the old null12 gate decoded.",
+        "State the N=1e6 bar as 'upper bracket, true level 7.1-10.5' wherever it is quoted as the flag gate."
+    ]
+}
+json.dump(P, open(os.path.join(HERE, "ledger_patches_a.json"), "w"), indent=1)
+print("ok")
