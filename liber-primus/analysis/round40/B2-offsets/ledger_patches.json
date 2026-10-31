@@ -1,0 +1,22 @@
+{
+ "$comment": "R40 B2 (not applied by lane). The MEASURED-CEILING section-3 line at row 107 ('Other bash versions and seedings; ... non-zero key offsets (a Round 40 offset lane was still running ...)') should have its 'non-zero key offsets' clause replaced by the clause below; the bash 4.2 orbit row (row 51) gets the offsets note. Pins must sit next to the lines.",
+ "measured_ceiling_row107_replace_clause": "non-zero key offsets (a Round 40 offset lane was still running at the audit and is not audited here)",
+ "measured_ceiling_row107_new_clause": "key offsets and sign on the bash 4.2 LP64 orbit: R40-B2 measured (offset 0, sign +1), (1,-1), (2,-1) in full and (3,-1) at 143/296 chunks, 0 flagged / 0 near-miss, best 6.831 vs bar 8.109; NOT covered: offset 28, offsets 4-27 (sign -1), offsets 1-28 at sign +1, ILP32 at any offset (4 of 58 offset x sign cells fully measured counting R37-I2's (0,-1), plus (3,-1) half; 53 cells, 91.4 %, untouched)",
+ "measured_ceiling_row51_append": "Round 40 B2 extends the orbit to (offset, sign) cells (0,+1), (1,-1), (2,-1) full and (3,-1) 48 % under the same instrument: see [[R40-B2-BASH42-OFFSETS-SIGN]]",
+ "measured_ceiling_new_line_if_whole_row_replaced": "| Other bash versions and seedings; other PHP variants; offsets other than 0; sign +1 on most rows | (as R40-B1 audit line) and, for the bash 4.2 LP64 orbit, key offsets 4-28 at sign -1 (offset 3 half done), offsets 1-28 at sign +1, and ILP32 at every offset; offsets and signs measured: (0,+1), (1,-1), (2,-1) full and (3,-1) 143/296 chunks, best 6.831 vs bar 8.109 | partial | [[R40-B2-BASH42-OFFSETS-SIGN]] (added to the cell's existing refs) | a stated offset or sign, the remaining cells, or ILP32 at an offset |",
+ "pins_to_add": [
+  "<!-- pin: R40-B2-BASH42-OFFSETS-SIGN | 77,594,624 -->",
+  "<!-- pin: R40-B2-BASH42-OFFSETS-SIGN | 6.831 -->",
+  "<!-- pin: R40-B2-BASH42-OFFSETS-SIGN | 143/296 -->"
+ ],
+ "patches": [
+  {
+   "id": "R35-B1-BASH-ORBIT-PFV4",
+   "coverage_add": "R40-B2: offsets 0(+1),1,2,3(half) under the same instrument: 0 flagged."
+  },
+  {
+   "id": "R37-I2-PFV4-12REG-ORBIT",
+   "coverage_add": "R40-B2: offset / sign extension (0,+1), (1,-1), (2,-1), (3,-1 half): 0 flagged; misaligned-control finding: an offset-1 plant screened at offset 0 passes pf_v4_12 16/20 and recovers 6/20."
+  }
+ ]
+}

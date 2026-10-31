@@ -1,0 +1,129 @@
+{
+ "$comment": "written by R40 B2 lane agent",
+ "entries": [
+  {
+   "id": "R40-B2-BASH42-OFFSETS-SIGN",
+   "round": 40,
+   "lane": "B2",
+   "date": "2026-10-31",
+   "status": "partially-run",
+   "positive_control": "passed",
+   "control_detail": "control_<cell>.json per cell: 10 EN_MODERN + 10 EN_NOVOWEL per relation (40 natural-rate plants), enciphered from the TRUE K_raw[offset:] with the TRUE sign, through the real 2^16-seed chunk path (pf_v4_12 -> v3 L120 both rels -> L240 -> panel-R36), >= 3 recoveries in every register x skip split pooled; o0_sp 39/40 recovered (prefilter 39); o1_sm 40/40 recovered (prefilter 40); o2_sm 39/40 recovered (prefilter 39); o3_sm 40/40 recovered (prefilter 40); o28_sm 40/40 recovered (prefilter 40). Misaligned negative control (offset-1 plants screened at offset 0): 16/20 pass the prefilter, 6/20 recover (0/7 with-skip heads), so the offset-0 instrument had only partial reach at offset 1.",
+   "hypothesis": "The LP2 key is the bash 4.2 LP64 auto-seed $RANDOM%29 stream with the first k draws discarded (k = 1, 2, 3 swept; 28 not run) and/or with the decode sign +1 (offset 0), <= 2 key skips in the first 24 runes, plaintext in one of the 12 panel-R36 registers.",
+   "coverage": "Cells run in the pre-registered prior-weighted order. offset 0, sign +1: 296/296 chunks (77594624 seeds, 100.0% of the orbit), 65314 survivors, each decoded under both relations; offset 1, sign -1: 296/296 chunks (77594624 seeds, 100.0% of the orbit), 65229 survivors, each decoded under both relations; offset 2, sign -1: 296/296 chunks (77594624 seeds, 100.0% of the orbit), 65358 survivors, each decoded under both relations; offset 3, sign -1: 143/296 chunks (37486592 seeds, 48.3% of the orbit), 31731 survivors, each decoded under both relations. Offset 28 (sign -1) was NOT run (cap). Of the 58-cell offset x sign axis: 1 cell done by R37-I2 (offset 0, sign -1), 3 full + 0.48 of a cell here, 53 cells untouched (91.4%). Cells here: 3.48 of 58 = 6.0% of the axis (4.48/58 = 7.7% with R37-I2). LP64 only; ILP32 not run at any offset.",
+   "result": "0 flagged, 0 near-miss in any cell. offset 0, sign +1: keyskip1 best 6.557 (seed 1351506977, LP1_REAL) vs 12-register bar 8.110 at actual N=65314 (9.102 at N=1e6); keyskip2 best 6.588 (seed 1360905550, EN_KJV) vs 8.024 (8.999 at N=1e6). offset 1, sign -1: keyskip1 best 6.831 (seed 1329866581, LP1_REAL) vs 12-register bar 8.109 at actual N=65229 (9.102 at N=1e6); keyskip2 best 6.713 (seed 1364795802, LP1_REAL) vs 8.024 (8.999 at N=1e6). offset 2, sign -1: keyskip1 best 6.794 (seed 1399396022, LP1_REAL) vs 12-register bar 8.110 at actual N=65358 (9.102 at N=1e6); keyskip2 best 6.696 (seed 1393579878, EN_HALFVOWEL) vs 8.024 (8.999 at N=1e6). offset 3, sign -1: keyskip1 best 6.348 (seed 1360556499, CY) vs 12-register bar 7.847 at actual N=31731 (9.102 at N=1e6); keyskip2 best 6.332 (seed 1370298412, EN_HALFVOWEL) vs 7.766 (8.999 at N=1e6).",
+   "threshold": "12-register POT bars from round36/B1 null12.json at actual N and N=1e6; pf_v4_12 frozen point unchanged",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "bash 4.2 LP64 auto-seed orbit (74 x 2^20 seeds), %29, at the cells (0,+1), (1,-1), (2,-1), (3,-1 half); ciphertext C[0] paired with K_raw[offset]; effective key K_raw[k:] (sign -1) or 29-K_raw[k:] (sign +1)",
+    "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max, L120 screen / L240 gate; heads with <= 2 skips in 24 runes; not free, not L31",
+    "adjudicator_register": "panel-R36, 12 registers; pf_v4_12 reach 0.952-0.994 per register x v3 recovery (this lane's controls: 198/200 end-to-end over EN_MODERN and EN_NOVOWEL only)"
+   },
+   "not_covered": "Offset 28 (sign -1) and the second half of offset 3; offsets 4-27 at sign -1; offsets 1-28 at sign +1; ILP32 at every offset; offsets > 28; heads with >= 3 skips; free relation; L=31; registers outside the twelve; control plants cover EN_MODERN and EN_NOVOWEL only; a nondeterministic offset (k depends on shell activity).",
+   "reopens_if": "the oracle flags a row; a stated offset or sign is hypothesised with evidence; the remaining cells (28; 4-27; sign +1 offsets) or ILP32 are run.",
+   "evidence": [
+    "analysis/round40/B2-offsets/RESULTS.md",
+    "analysis/round40/B2-offsets/PREREG.md",
+    "analysis/round40/B2-offsets/sweep.py",
+    "analysis/round40/B2-offsets/sweep_summary.json",
+    "analysis/round40/B2-offsets/sweep_progress.json",
+    "analysis/round40/B2-offsets/wrapcheck.json",
+    "analysis/round40/B2-offsets/control_gates.json",
+    "analysis/round40/B2-offsets/run.log",
+    "analysis/round40/B2-offsets/sweep_rows.jsonl",
+    "analysis/round40/B2-offsets/control_o0_sp.json",
+    "analysis/round40/B2-offsets/control_o1_sm.json",
+    "analysis/round40/B2-offsets/control_o2_sm.json",
+    "analysis/round40/B2-offsets/control_o3_sm.json",
+    "analysis/round40/B2-offsets/control_o28_sm.json"
+   ],
+   "sweep_store": "analysis/round40/B2-offsets/sweep_rows.jsonl",
+   "declares_sweep": true,
+   "per_cell_coverage": {
+    "o0_sp": {
+     "offset": 0,
+     "sign": 1,
+     "chunks_done": 296,
+     "chunks_total": 296,
+     "survivors": 65314,
+     "best": {
+      "keyskip2": {
+       "pmax": 6.588,
+       "seed": 1360905550,
+       "preg": "EN_KJV"
+      },
+      "keyskip1": {
+       "pmax": 6.557,
+       "seed": 1351506977,
+       "preg": "LP1_REAL"
+      }
+     }
+    },
+    "o1_sm": {
+     "offset": 1,
+     "sign": -1,
+     "chunks_done": 296,
+     "chunks_total": 296,
+     "survivors": 65229,
+     "best": {
+      "keyskip2": {
+       "pmax": 6.713,
+       "seed": 1364795802,
+       "preg": "LP1_REAL"
+      },
+      "keyskip1": {
+       "pmax": 6.831,
+       "seed": 1329866581,
+       "preg": "LP1_REAL"
+      }
+     }
+    },
+    "o2_sm": {
+     "offset": 2,
+     "sign": -1,
+     "chunks_done": 296,
+     "chunks_total": 296,
+     "survivors": 65358,
+     "best": {
+      "keyskip2": {
+       "pmax": 6.696,
+       "seed": 1393579878,
+       "preg": "EN_HALFVOWEL"
+      },
+      "keyskip1": {
+       "pmax": 6.794,
+       "seed": 1399396022,
+       "preg": "LP1_REAL"
+      }
+     }
+    },
+    "o3_sm": {
+     "offset": 3,
+     "sign": -1,
+     "chunks_done": 143,
+     "chunks_total": 296,
+     "survivors": 31731,
+     "best": {
+      "keyskip2": {
+       "pmax": 6.332,
+       "seed": 1370298412,
+       "preg": "EN_HALFVOWEL"
+      },
+      "keyskip1": {
+       "pmax": 6.348,
+       "seed": 1360556499,
+       "preg": "CY"
+      }
+     }
+    },
+    "o28_sm": {
+     "offset": 28,
+     "sign": -1,
+     "chunks_done": 0,
+     "chunks_total": 296,
+     "note": "control passed (40/40); sweep not run (cap)"
+    }
+   }
+  }
+ ]
+}
