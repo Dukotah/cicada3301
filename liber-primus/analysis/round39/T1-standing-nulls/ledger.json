@@ -1,0 +1,8 @@
+{"id":"R39-T1-STANDING-NULLS","round":39,"lane":"T1","date":"2026-10-31","type":"instrument","status":"measured",
+"claim":"Tooling: degenerate flag (mds<=6 or IoC*N>=4.24) as optional header-driven SWEEPROW field + pmax_nondegenerate in both adjudicate.py copies; generic key-matched null benchmark/bars_keymatched.py reproducing the I2-R38 X4 L=120 bar 6.994 from stored per-shuffle rows; bar_v3 free L=120 moved to the 12-register node (17.43 -> 15.30 at N=1e6; panel='r32' escape).",
+"positive_control":"tests/test_standing_nulls.py (7 tests): constant decode flagged degenerate vs random decode not; header-driven 13/14-field validation; key-matched fixture 6.994; free L=120 node. Fail on pre-patch code by construction (missing API / old 17.43), pass after. Also tests/ benchmark/ 41 passed, validate.py passed, validate_ledger 0 errors.",
+"control":"see positive_control",
+"result":"all green; key-matched fixture 6.99419 (ks1 and ks2)",
+"verdict":"no cipher claim; instrument change only. Full beam_v3 end-to-end run of bar_keymatched not exercised (stub-adjudicator toy in CI).",
+"flagged_for_oracle":[],
+"files":["PREREG.md","RESULTS.md"]}
