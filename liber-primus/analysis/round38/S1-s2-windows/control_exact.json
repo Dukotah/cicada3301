@@ -1,0 +1,69 @@
+{
+ "lane": "R38-S1 (a)",
+ "verdict": "PASS 3/3: each planted seed ranked first in its 4096-seed band under relation exact, pmax >= claim bar 7.6341931878728095 by >= 10.3, flagged-for-oracle by the engine; no other seed in any band crossed 5.0 except 1271 (5.156) in the 777 band",
+ "generator": "gen_control.py in this dir: python3 stdlib random.Random(w).random() -> int(x*29) (== Py2.7 init_by_array([w]) + randrange(29) reducer; verified equal to the engine's own ks128 for all 3 seeds via --mode score --full), keyskip1 one-draw rejection enciphering written in this lane (sign=-1, supp=0.83, rejection RNG random.Random(90000+i)); plaintext = self_reliance.txt rune slice (only eng_to_idx imported from the repo).",
+ "engine_path": "stock grind27 sha 7be592b0... rebuilt bit-identical (BUILD flags); control binary grind27_ctl = stock source + 2 lines (env GRIND27_CTL_CIPHER replaces C_SCREEN AFTER the unmodified launch self-test passes V1 64/64 + V2); plan lane 'CTL' relation exact, reducer random29, offset 0, band [seed-2048, seed+2048), run_lane path with 4 threads. Panel = panel-R36 (gate PASS).",
+ "guard_note": "GRIND27_S2_CONTROL_OK=1 had to be set for the engine to accept an exact lane at all (it is only a lane guard); it is not what is being evidenced here. The evidence is that an independently generated exact-relation ciphertext is recovered at the right seed.",
+ "claim_bar": 7.6341931878728095,
+ "cand_bar": 5.0,
+ "seeds": [
+  {
+   "seed": 777,
+   "plaintext_offset": 5000,
+   "key_skips_in_first_120_runes": 5,
+   "key_skips_in_240": 8,
+   "band": [
+    0,
+    4096
+   ],
+   "rank": 1,
+   "pmax": 17.93115850976196,
+   "margin_over_claim_bar": 10.297,
+   "second_best": {
+    "seed": 1271,
+    "pmax": 5.156329262665503
+   },
+   "flagged_hit_candidate": true,
+   "pass": true
+  },
+  {
+   "seed": 1234567891,
+   "plaintext_offset": 7000,
+   "key_skips_in_first_120_runes": 2,
+   "key_skips_in_240": 6,
+   "band": [
+    1234565843,
+    1234569939
+   ],
+   "rank": 1,
+   "pmax": 19.81452418236752,
+   "margin_over_claim_bar": 12.18,
+   "second_best": {
+    "seed": 1234566462,
+    "pmax": 4.734968541121583
+   },
+   "flagged_hit_candidate": true,
+   "pass": true
+  },
+  {
+   "seed": 3000000017,
+   "plaintext_offset": 9000,
+   "key_skips_in_first_120_runes": 3,
+   "key_skips_in_240": 5,
+   "band": [
+    2999997969,
+    3000002065
+   ],
+   "rank": 1,
+   "pmax": 20.795665056000843,
+   "margin_over_claim_bar": 13.161,
+   "second_best": {
+    "seed": 3000001035,
+    "pmax": 4.552686469691803
+   },
+   "flagged_hit_candidate": true,
+   "pass": true
+  }
+ ],
+ "caveat": "Seed 777 uses the same truth slice (offset 5000) as the Round 27 plant, so its pmax equals the R27 value 17.93115851 by construction (pmax depends only on the recovered plaintext); the other two use fresh slices (7000, 9000) and fresh skip patterns. The full hitfn20 3-clause Python gate was not re-run (stage-A screen only, which is what the sweep relies on)."
+}
