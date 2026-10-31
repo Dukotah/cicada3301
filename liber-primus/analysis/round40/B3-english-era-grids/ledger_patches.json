@@ -1,0 +1,49 @@
+{
+ "$comment": "R40 B3 patches (not applied by the lane); MEASURED-CEILING lines for B-04/R16-KDF/R17-PUBLIC-PAD/CicadaOS pads to refresh with the pin suggestions",
+ "patches": [
+  {
+   "id": "B-04",
+   "coverage_add": "R40-B3: the 2,165-seed dictionary (504 core) re-decoded under pf_v4_12 + beam_v3 panel_max keyskip1+keyskip2 on panel-R36, 16 generators x 5 reductions x dir x sign x atbash; stages A, B (offsets 0..7 + ladder), C (55 page heads): 6998144 configs, best 6.336/6.049 vs actual-N bars 7.244/7.173, flagged 0. Planted controls EN_MODERN/EN_NOVOWEL/LATIN. See R40-B3-B04-REDECODE.",
+   "not_covered_remove": "English-only / keyskip1-only decode of the seed dictionary (now keyskip1+keyskip2, 12 registers, plants in 3 registers)",
+   "pin_suggestion": "<!-- pin: R40-B3-B04-REDECODE | 6,998,144 -->"
+  },
+  {
+   "id": "R16-KDF",
+   "coverage_add": "R40-B3: 534 secrets x 27 KDFs x 3 salts re-decoded under the same instrument: 692064 configs, best 5.150/6.528 vs actual-N bars 6.399/6.342, flagged 1. See R40-B3-R16KDF-REDECODE.",
+   "not_covered_remove": "English-only / keyskip1-only decode of the KDF grid",
+   "pin_suggestion": "<!-- pin: R40-B3-R16KDF-REDECODE | 692,064 -->"
+  },
+  {
+   "id": "R17-PUBLIC-PAD",
+   "coverage_add": "R40-B3: the regenerated R17-P3 pads (RAND digits, 3301's published bytes) re-decoded at a STATED SAMPLED FRACTION of offsets (0..7 + ladder + capped stride): 15013222 configs, best 5.745/5.846 vs actual-N bars 7.424/7.350, flagged 0. R17-P1/P2 not regenerated. See R40-B3-R17-PUBLIC-PAD-REDECODE.",
+   "not_covered_remove": "none (dense offsets and P1/P2 remain)",
+   "pin_suggestion": "<!-- pin: R40-B3-R17-PUBLIC-PAD-REDECODE | configs -->"
+  },
+  {
+   "id": "R12-A1",
+   "coverage_add": "R40-B3: the four ISO pads (560.00 authoritative, 560.13, 560.17, 761.mp3) re-decoded under keyskip1+keyskip2 on panel-R36 at a sampled offset fraction: 20012680 configs, best 6.066/5.967 vs actual-N bars 7.619/7.542, flagged 0. See R40-B3-COSPAD-REDECODE.",
+   "not_covered_remove": "keyskip2 / twelve-register decode of the sampled offsets"
+  },
+  {
+   "id": "R28-L1-CICADAOS-PADS-DENSE-PAIR",
+   "coverage_add": "R40-B3: R28-L1 stride grids re-included in the offset set and re-decoded under pf_v4_12 + beam_v3 12-register panel with the R28 reductions plus 560.17/761.mp3: 20012680 configs, best 6.066/5.967 vs actual-N bars 7.619/7.542, flagged 0.",
+   "not_covered_remove": "nine-register-panel-only adjudication of the stride-grid offsets"
+  }
+ ],
+ "ceiling_refresh": [
+  {
+   "ceiling_line": "SHA-256-CTR / HMAC-DRBG / AES-CTR / RC4 / ChaCha20 seed lists; PBKDF2 and the 27 tested KDF configs; payload-as-seed",
+   "append_to_coverage": "R40-B3 re-decode of the regenerated lists under pf_v4_12 + beam_v3 keyskip1+keyskip2 on panel-R36: B-04 6998144 configs, best 6.336/6.049 vs actual-N bars 7.244/7.173, flagged 0; R16-KDF 692064 configs, best 5.150/6.528 vs actual-N bars 6.399/6.342, flagged 1 [pins: R40-B3-B04-REDECODE | 6998144 ; R40-B3-R16KDF-REDECODE | 692064]",
+   "replace_in_measured_power": "the English-register-only / keyskip1-only 'excluded at power 1.00' qualifier now has a keyskip1+keyskip2, 12-register re-decode for the regenerated lists (planted EN_MODERN / EN_NOVOWEL / LATIN only: [plants: EN_MODERN / EN_NOVOWEL / LATIN]); the original sweeps keep their legacy conditional",
+   "status_note": "one KDF row (rev, 184-symbol buffer, keyskip2, 6.528 vs actual-N bar 6.342) is flagged-for-oracle by protocol, below the N=1e6 and screened-N bars; see ORACLE-PENDING.md"
+  },
+  {
+   "ceiling_line": "Public randomness: blockchain, beacon, archives (English plaintext) and a date-indexed pad",
+   "append_to_coverage": "R40-B3: the regenerated R17-P3 pad list re-decoded under beam_v3 keyskip1+keyskip2 on panel-R36 at a stated sampled offset fraction (15013222 configs, best 5.745/5.846 vs actual-N bars 7.424/7.350, flagged 0); P1/P2 pads not regenerated [pin: R40-B3-R17-PUBLIC-PAD-REDECODE | 15013222]"
+  },
+  {
+   "ceiling_line": "The author's own CicadaOS pads and literal pad files as byte-to-symbol reductions",
+   "append_to_coverage": "R40-B3: ISO pads 560.00 auth / 560.13 / 560.17 / 761.mp3 re-decoded with pf_v4_12 + beam_v3 12-register panel, sampled offsets incl. the R28 stride grids (20012680 configs, best 6.066/5.967 vs actual-N bars 7.619/7.542, flagged 0) [pin: R40-B3-COSPAD-REDECODE | 20012680]"
+  }
+ ]
+}

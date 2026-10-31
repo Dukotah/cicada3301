@@ -1,0 +1,99 @@
+{
+ "grid": "KDF",
+ "complete": true,
+ "capped": false,
+ "screened": 692064,
+ "survivors": 591,
+ "decode_errors": 0,
+ "elapsed_s": 1251.6,
+ "rels": {
+  "keyskip1": {
+   "N_actual": 591,
+   "N_screened": 692064,
+   "bar120_actualN": 6.399,
+   "bar240_actualN": 6.648,
+   "bar120_declN": 9.102,
+   "bar240_declN": 8.978,
+   "bar120_screenedN": 8.968,
+   "best_pmax": 5.15,
+   "best_preg": "GREEK",
+   "best_kid": "KDF|687474703a2f2f6375333433:evp_sha256_1:empty:mod29:rev|v10|U|keyskip1",
+   "best_degenerate": false,
+   "clears_actualN": false,
+   "clears_declN": false,
+   "clears_screenedN": false,
+   "hist": {
+    "2": 238,
+    "3": 198,
+    "0": 9,
+    "1": 107,
+    "4": 36,
+    "5": 3
+   },
+   "top5": []
+  },
+  "keyskip2": {
+   "N_actual": 591,
+   "N_screened": 692064,
+   "bar120_actualN": 6.342,
+   "bar240_actualN": 6.797,
+   "bar120_declN": 8.999,
+   "bar240_declN": 9.282,
+   "bar120_screenedN": 8.868,
+   "best_pmax": 6.528,
+   "best_preg": "EN_MODERN",
+   "best_kid": "KDF|03000000:iter_md5_1000:self:mod29:rev|v01|U|keyskip2",
+   "best_degenerate": false,
+   "clears_actualN": true,
+   "clears_declN": false,
+   "clears_screenedN": false,
+   "hist": {
+    "2": 239,
+    "4": 46,
+    "0": 8,
+    "3": 204,
+    "1": 92,
+    "6": 1,
+    "5": 1
+   },
+   "top5": [
+    [
+     6.528,
+     "EN_MODERN",
+     "KDF|03000000:iter_md5_1000:self:mod29:rev|v01|U|keyskip2",
+     false
+    ]
+   ]
+  }
+ },
+ "flagged": [
+  {
+   "rel": "keyskip2",
+   "kid": "KDF|03000000:iter_md5_1000:self:mod29:rev|v01|U|keyskip2",
+   "pmax120": 6.528,
+   "preg120": "EN_MODERN",
+   "degenerate": false,
+   "bar120_actualN": 6.342,
+   "bar240_actualN": 6.797,
+   "clears_declN_L120": false,
+   "gate": "unavailable (rev buffer 184); FLAGGED_FOR_ORACLE directly",
+   "FLAGGED_FOR_ORACLE": true,
+   "certified": false
+  }
+ ],
+ "near_miss": [],
+ "by_group": {
+  "KDF|mod29": {
+   "screened": 346032,
+   "survivors": 303,
+   "rate": 0.0008756415591621584
+  },
+  "KDF|rej29": {
+   "screened": 346032,
+   "survivors": 288,
+   "rate": 0.0008322929671244278
+  }
+ },
+ "validate_store": "ok",
+ "check_r3_store": []
+}

@@ -1,0 +1,126 @@
+{
+ "$comment": "written by R40 B3 lane agent; not merged into LEDGER.json",
+ "lane": "B3",
+ "entries": [
+  {
+   "round": 40,
+   "lane": "B3",
+   "date": "2026-10-31",
+   "id": "R40-B3-B04-REDECODE",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "control_B04.json: 60 plants (10 each EN_MODERN/EN_NOVOWEL/LATIN x keyskip1/keyskip2) through the grid's real key route and the sweep's screen; recovered per register x skip split: EN_MODERN|skip_free 11/11; EN_MODERN|with_skip 9/9; EN_NOVOWEL|skip_free 13/13; EN_NOVOWEL|with_skip 7/7; LATIN|skip_free 11/11; LATIN|with_skip 9/9; decoy screen FPR 8.46e-04.",
+   "hypothesis": "The LP2 key is a hash/MAC/stream-cipher expansion of one of the 2,165 regenerated B-04 seeds (16 generators x 5 reductions, direction, sign, atbash; offsets 0..7 + ladder; per-page restarts).",
+   "coverage": "6998144 configs screened with pf_v4_12; 6041 survivors decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36 (12082 rows in the store); 2,165 seeds (504 core) regenerated; stage A offset 0 (1,385,600), stage B offsets {0..7,16,29,64,128,256,512,1024,3301} on core (2,064,384), stage C 55 page heads (3,548,160)",
+   "result": "flagged 0, near-miss 0. Best keyskip1 6.336 (OE) vs 12-register bar 7.244 at actual N (N=6041; 9.102 at N=1e6); keyskip2 6.049 (DE) vs 7.173 (8.999 at N=1e6).",
+   "threshold": "round36 null12.json POT bars at actual N and N=1e6 (L=120 screen, L=240 gate); screen thresholds frozen R37 (7.4155 / 7.4412)",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "2,165 seeds (504 core) regenerated; stage A offset 0 (1,385,600), stage B offsets {0..7,16,29,64,128,256,512,1024,3301} on core (2,064,384), stage C 55 page heads (3,548,160)",
+    "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max; heads with <=2 skips in 24 runes screened; not free, skip_by_4/5, resets",
+    "adjudicator_register": "panel-R36 12 registers; planted controls EN_MODERN / EN_NOVOWEL / LATIN only"
+   },
+   "not_covered": "Seeds outside the 2,165; key stretching; salts; offsets beyond 3301 and per-line restarts; B-05 payload-as-seed; heads with >=3 skips in 24 runes; registers beyond EN_MODERN/EN_NOVOWEL/LATIN planted; page heads <120 runes use an uncalibrated bar",
+   "reopens_if": "a seed outside the dictionary, a stretching/salting construction, or an oracle flag",
+   "evidence": [
+    "analysis/round40/B3-english-era-grids/RESULTS.md",
+    "analysis/round40/B3-english-era-grids/PREREG.md",
+    "analysis/round40/B3-english-era-grids/final_B04.json",
+    "analysis/round40/B3-english-era-grids/control_B04.json",
+    "analysis/round40/B3-english-era-grids/rows_B04.jsonl"
+   ],
+   "sweep_store": "analysis/round40/B3-english-era-grids/rows_B04.jsonl"
+  },
+  {
+   "round": 40,
+   "lane": "B3",
+   "date": "2026-10-31",
+   "id": "R40-B3-R16KDF-REDECODE",
+   "status": "partially-run",
+   "positive_control": "passed",
+   "control_detail": "control_KDF.json: 60 plants (10 each EN_MODERN/EN_NOVOWEL/LATIN x keyskip1/keyskip2) through the grid's real key route and the sweep's screen; recovered per register x skip split: EN_MODERN|skip_free 14/14; EN_MODERN|with_skip 6/6; EN_NOVOWEL|skip_free 11/11; EN_NOVOWEL|with_skip 9/9; LATIN|skip_free 10/10; LATIN|with_skip 10/10; decoy screen FPR 7.49e-04.",
+   "hypothesis": "The LP2 key is a KDF (PBKDF2/scrypt/iterated/EVP, 27 configs) expansion of one of 534 regenerated secrets with salt empty/3301/self.",
+   "coverage": "692064 configs screened with pf_v4_12; 591 survivors decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36 (1182 rows in the store); 534 secrets x 27 KDFs x 3 salts x 2 reductions x 8 variants, offset 0, 184-symbol buffer",
+   "result": "flagged 1, near-miss 0. Best keyskip1 5.150 (GREEK) vs 12-register bar 6.399 at actual N (N=591; 9.102 at N=1e6); keyskip2 6.528 (EN_MODERN) vs 6.342 (8.999 at N=1e6).",
+   "threshold": "round36 null12.json POT bars at actual N and N=1e6 (L=120 screen, L=240 gate); screen thresholds frozen R37 (7.4155 / 7.4412)",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "534 secrets x 27 KDFs x 3 salts x 2 reductions x 8 variants, offset 0, 184-symbol buffer",
+    "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max; heads with <=2 skips in 24 runes screened; not free, skip_by_4/5, resets",
+    "adjudicator_register": "panel-R36 12 registers; planted controls EN_MODERN / EN_NOVOWEL / LATIN only"
+   },
+   "not_covered": "KDF configs outside the 27; salts beyond empty/3301/self (Stage B never run); offsets != 0; rev-direction L=240 gate unavailable",
+   "reopens_if": "a KDF config, salt or secret outside the covered lists, or the owner's oracle read of the flagged row says PASS",
+   "evidence": [
+    "analysis/round40/B3-english-era-grids/RESULTS.md",
+    "analysis/round40/B3-english-era-grids/PREREG.md",
+    "analysis/round40/B3-english-era-grids/final_KDF.json",
+    "analysis/round40/B3-english-era-grids/control_KDF.json",
+    "analysis/round40/B3-english-era-grids/rows_KDF.jsonl"
+   ],
+   "sweep_store": "analysis/round40/B3-english-era-grids/rows_KDF.jsonl",
+   "flagged_for_oracle": [
+    "KDF|03000000:iter_md5_1000:self:mod29:rev|v01|U|keyskip2"
+   ],
+   "oracle_note": "analysis/round40/B3-english-era-grids/ORACLE-PENDING.md; below the N=1e6 and screened-N bars; no L=240 gate for rev; protocol flag, not a finding"
+  },
+  {
+   "round": 40,
+   "lane": "B3",
+   "date": "2026-10-31",
+   "id": "R40-B3-R17-PUBLIC-PAD-REDECODE",
+   "status": "partially-run",
+   "positive_control": "passed",
+   "control_detail": "control_R17PAD.json: 60 plants (10 each EN_MODERN/EN_NOVOWEL/LATIN x keyskip1/keyskip2) through the grid's real key route and the sweep's screen; recovered per register x skip split: EN_MODERN|skip_free 9/9; EN_MODERN|with_skip 11/11; EN_NOVOWEL|skip_free 11/11; EN_NOVOWEL|with_skip 8/9; LATIN|skip_free 14/15; LATIN|with_skip 5/5; decoy screen FPR 1.07e-03.",
+   "hypothesis": "The LP2 key is a slice of one of the R17-P3 public pads (RAND digits or 3301's published bytes) under a byte-to-symbol builder.",
+   "coverage": "15013222 configs screened with pf_v4_12; 9908 survivors decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36 (19816 rows in the store); R17-P3 28-pad list regenerated, builders as listed, offsets = 0..7 + A1 ladder + capped stride sample per cell (a sampled fraction of the 5.76e9 dense offsets, NOT a dense re-sweep); R17-P1/P2 not regenerated",
+   "result": "flagged 0, near-miss 0. Best keyskip1 5.745 (EN_MODERN) vs 12-register bar 7.424 at actual N (N=9908; 9.102 at N=1e6); keyskip2 5.846 (LP1_REAL) vs 7.350 (8.999 at N=1e6).",
+   "threshold": "round36 null12.json POT bars at actual N and N=1e6 (L=120 screen, L=240 gate); screen thresholds frozen R37 (7.4155 / 7.4412)",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "R17-P3 28-pad list regenerated, builders as listed, offsets = 0..7 + A1 ladder + capped stride sample per cell (a sampled fraction of the 5.76e9 dense offsets, NOT a dense re-sweep); R17-P1/P2 not regenerated",
+    "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max; heads with <=2 skips in 24 runes screened; not free, skip_by_4/5, resets",
+    "adjudicator_register": "panel-R36 12 registers; planted controls EN_MODERN / EN_NOVOWEL / LATIN only"
+   },
+   "not_covered": "Dense offsets; R17-P1 Bitcoin and R17-P2 beacon/random.org pads; Marsaglia CDROM; hexchars for pads >2 MB; builders outside the list",
+   "reopens_if": "the dense offsets or any unregenerated public pad are screened under beam_v3 and a row crosses",
+   "evidence": [
+    "analysis/round40/B3-english-era-grids/RESULTS.md",
+    "analysis/round40/B3-english-era-grids/PREREG.md",
+    "analysis/round40/B3-english-era-grids/final_R17PAD.json",
+    "analysis/round40/B3-english-era-grids/control_R17PAD.json",
+    "analysis/round40/B3-english-era-grids/rows_R17PAD.jsonl"
+   ],
+   "sweep_store": "analysis/round40/B3-english-era-grids/rows_R17PAD.jsonl"
+  },
+  {
+   "round": 40,
+   "lane": "B3",
+   "date": "2026-10-31",
+   "id": "R40-B3-COSPAD-REDECODE",
+   "status": "partially-run",
+   "positive_control": "passed",
+   "control_detail": "control_COSPAD.json: 60 plants (10 each EN_MODERN/EN_NOVOWEL/LATIN x keyskip1/keyskip2) through the grid's real key route and the sweep's screen; recovered per register x skip split: EN_MODERN|skip_free 11/11; EN_MODERN|with_skip 9/9; EN_NOVOWEL|skip_free 10/10; EN_NOVOWEL|with_skip 9/10; LATIN|skip_free 11/11; LATIN|with_skip 8/9; decoy screen FPR 8.14e-04.",
+   "hypothesis": "The LP2 key is a literal byte-to-symbol reduction of a CicadaOS ISO pad (560.00 authoritative, 560.13, 560.17, 761.mp3).",
+   "coverage": "20012680 configs screened with pf_v4_12; 16940 survivors decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36 (33880 rows in the store); 4 ISO pads, 5 reductions x fwd/rev x sign; offsets 0..7 + ladder + R28-L1 stride grids + capped stride sample per cell (sampled fraction, not dense)",
+   "result": "flagged 0, near-miss 0. Best keyskip1 6.066 (DE) vs 12-register bar 7.619 at actual N (N=16940; 9.102 at N=1e6); keyskip2 5.967 (EN_NOVOWEL) vs 7.542 (8.999 at N=1e6).",
+   "threshold": "round36 null12.json POT bars at actual N and N=1e6 (L=120 screen, L=240 gate); screen thresholds frozen R37 (7.4155 / 7.4412)",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "4 ISO pads, 5 reductions x fwd/rev x sign; offsets 0..7 + ladder + R28-L1 stride grids + capped stride sample per cell (sampled fraction, not dense)",
+    "transition_model": "keyskip1+keyskip2 under beam_v3 panel_max; heads with <=2 skips in 24 runes screened; not free, skip_by_4/5, resets",
+    "adjudicator_register": "panel-R36 12 registers; planted controls EN_MODERN / EN_NOVOWEL / LATIN only"
+   },
+   "not_covered": "Dense offsets; the truncated 2,412,544 B `_560.00`, folly, prime_echo (unregenerable here); pads as PRF seed/salt; atbash",
+   "reopens_if": "dense offsets screened under beam_v3 and a row crosses, or the pads are used as a PRF seed/salt",
+   "evidence": [
+    "analysis/round40/B3-english-era-grids/RESULTS.md",
+    "analysis/round40/B3-english-era-grids/PREREG.md",
+    "analysis/round40/B3-english-era-grids/final_COSPAD.json",
+    "analysis/round40/B3-english-era-grids/control_COSPAD.json",
+    "analysis/round40/B3-english-era-grids/rows_COSPAD.jsonl"
+   ],
+   "sweep_store": "analysis/round40/B3-english-era-grids/rows_COSPAD.jsonl"
+  }
+ ]
+}
