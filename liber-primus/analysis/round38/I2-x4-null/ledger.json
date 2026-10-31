@@ -1,0 +1,8 @@
+{"id":"R38-I2-X4-NULL","round":38,"lane":"I2","date":"2026-10-31","type":"instrument",
+"claim":"Bespoke X4 null (key re-derived from each doublet-matched LP2 shuffle): L=120, 2000 draws, bar 6.994 (ks1 and ks2); L=240, 121 draws (partial), bar 7.92/7.93; transferred actual-N bars 5.64-5.69 / 6.04-6.15 were too low.",
+"control":"pass: 24/24 (L=120) and 24/24 (L=240) recovered >=0.90 on the 2 bijective X4 configs; 8 image-limited configs supplementary 21-24/24; only 2 of 12 configs can carry a general plaintext",
+"result":"0 of 120 non-degenerate X4 rows clear at either L; best 4.779 (L=120) and 5.455 (L=240); family-wise p 0.87 / 0.98",
+"filter_audit":"48 real rows removed (2 constant configs, mds=1, IoC*N=29): raw pmax 6.89/8.70 (L=120), 9.75-9.89/12.40 (L=240); numerically above the bespoke bar = recognizer failure, not hits",
+"verdict":"negative, conditional on key space (12 configs, o=0, 6 windows) x keyskip1/2 x panel-R36; L=240 null partial (121 draws)",
+"flagged_for_oracle":[],
+"files":["null_x4.json","control.json","rejudged.json","filter_audit.json","RESULTS.md"]}
