@@ -1,0 +1,498 @@
+{
+ "$comment": "R40 C1 ledger rows (not applied to LEDGER.json by the lane)",
+ "entries": [
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-R30-B1-ARTIFACT-KEYS",
+   "hypothesis": "Round 10b B1 artifact-derived Vigenere keys (125 curated alpha + 16 numeric streams) re-scored under panel-R36 + beam_v3 (+ pf_v4_12 head screen) at every page start.",
+   "status": "negative",
+   "coverage": "REGENERATED (b1_keys.build; the 43 auto-extracted alpha keys need the uncommitted armada_osint raw archive and are absent): 3,258 (key, phase<=12, sign) entries x 104 page-start windows (52 pages >= 120 runes, atbash 0/1) at L=120. best non-degenerate 4.829 (ks1) / 5.310 (ks2) vs 12-reg bars actual-N 8.708 / 8.612, declared-N 9.102 / 8.999; 338832 heads screened, 259 survivors decoded (259 / 259 rows per rel), 0 / 0 degenerate rows",
+   "result": "NEGATIVE. Best non-degenerate pmax is below the actual-N bar in both relations; 0 flagged, 0 near-miss.",
+   "three_conditionals": {
+    "key_space": "125 alpha + 16 numeric key strings x <=12 phases x sign x atbash x 52 page starts (L=120)",
+    "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max after the pf_v4_12 head screen (frozen point, per-relation FPR 5e-4, min power over the 12 registers 0.952, so up to ~5% of true-key heads could be dropped by the screen)",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "43 auto-extracted alpha keys (raw archive not committed); the interrupter-beam arm (F-rune interrupters inside the beam); pages < 120 runes; windows beyond the page-start head; phases beyond 12 for alpha keys",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "passed",
+   "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-C18-NUMERIC-PS-TWEET-MAYAN",
+   "hypothesis": "R10b/campaign18 numeric keystreams (end-of-puzzle P.S. digit string, @1231507051321 handle, Mayan rotation list; single/pairs/disjoint pairs/reversed) re-scored with ALL phases.",
+   "status": "negative",
+   "coverage": "REGENERATED (digit strings and Mayan list copied from campaign18_skip/armada2/numeric2_skip.py): 1,338 (stream, phase, sign) entries x 104 page-start windows at L=120. best non-degenerate 5.011 (ks1) / 4.818 (ks2) vs 12-reg bars actual-N 8.385 / 8.294, declared-N 9.102 / 8.999; 139152 heads screened, 114 survivors decoded (114 / 114 rows per rel), 0 / 0 degenerate rows",
+   "result": "NEGATIVE; 0 flagged, 0 near-miss.",
+   "three_conditionals": {
+    "key_space": "P.S. digits, tweet-handle digits (5 readings each, all phases), Mayan list and reverse, sign x atbash x 52 page starts",
+    "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max after the pf_v4_12 head screen (frozen point, per-relation FPR 5e-4, min power over the 12 registers 0.952, so up to ~5% of true-key heads could be dropped by the screen)",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "other digit readings (base-N, digit sums); other pointer constants; windows beyond the page-start head",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "passed",
+   "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-R32-B04-SLOGAN-SEEDS",
+   "hypothesis": "Round 13 B-04 SLOGAN seeds (139 text forms) as hash-chain/KDF secrets under the 16 B04 generators x 5 reductions x dir x sign x atbash, stage A + stage C per-page restarts, re-scored under panel-R36 + beam_v3.",
+   "status": "negative",
+   "coverage": "REGENERATED (round13/B04 seeds.py/ks.py/harness constants unchanged; nsym=728): 44,480 keystreams x 104 windows (52 pages incl. the page-0 head, atbash 0/1). best non-degenerate 5.882 (ks1) / 5.881 (ks2) vs 12-reg bars actual-N 9.659 / 9.547, declared-N 9.102 / 8.999; 4625920 heads screened, 3903 survivors decoded (3903 / 3903 rows per rel), 0 / 0 degenerate rows",
+   "result": "NEGATIVE; 0 flagged, 0 near-miss. R37 C1 U1 had already re-scored the 41 B04-covered clue strings on 3 routes; this extends to the whole SLOGAN seed set over all B04 generators.",
+   "three_conditionals": {
+    "key_space": "139 SLOGAN seed byte-strings x 16 generators x 5 reductions x fwd/rev x sign (44,480 keystreams), offset 0",
+    "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max after the pf_v4_12 head screen (frozen point, per-relation FPR 5e-4, min power over the 12 registers 0.952, so up to ~5% of true-key heads could be dropped by the screen)",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "stage B offset ladder (10 offsets); core seeds other than slogan/lp (thematic, solvedkey, num_, primes_, onion, lore); pages < 120 runes; stage D escalation",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "passed",
+   "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-R32-B04-LP-SEEDS-STAGE-A",
+   "hypothesis": "Round 13 B-04 LP-line/word seeds (1,256 'lp' labels) under the 16 generators x 5 reductions x dir x sign, stage A (LP2 head, atbash 0/1) re-scored under panel-R36 + beam_v3.",
+   "status": "negative",
+   "coverage": "REGENERATED: 401,920 keystreams x 2 windows. best non-degenerate 5.328 (ks1) / 5.749 (ks2) vs 12-reg bars actual-N 9.022 / 8.921, declared-N 9.102 / 8.999; 803840 heads screened, 678 survivors decoded (678 / 678 rows per rel), 0 / 0 degenerate rows",
+   "result": "NEGATIVE; 0 flagged, 0 near-miss.",
+   "three_conditionals": {
+    "key_space": "1,256 lp seed byte-strings x 16 x 5 x 2 x 2, offset 0, LP2 head",
+    "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max after the pf_v4_12 head screen (frozen point, per-relation FPR 5e-4, min power over the 12 registers 0.952, so up to ~5% of true-key heads could be dropped by the screen)",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "per-page restarts and offsets for lp seeds; the other label groups (lore, onion, num, ...)",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "passed",
+   "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-R33-SEMANTIC-SEED-ZOO",
+   "hypothesis": "Round 26 C semantic-seed zoo (323 corpus values x 7 generators) re-scored under panel-R36 + beam_v3 keyskip1/keyskip2, L=120 window 0.",
+   "status": "negative",
+   "coverage": "REGENERATED from seeds.json + sweep.ZOO: 2,137 keystreams (= the original 4,274 rows over 2 presets), window 0, L=120, keyskip1+2. best non-degenerate 4.812 / 4.901 vs 12-reg bars actual-N 6.867 / 6.802 (declared-N 9.102 / 8.999); 2137 / 2137 rows per rel; 0 / 0 degenerate rows",
+   "result": "NEGATIVE; 0 flagged, 0 near-miss.",
+   "three_conditionals": {
+    "key_space": "323 corpus values + phrases x 7 generators (str seeds only on the py27 generators), offset 0",
+    "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max, no head screen (direct decode of all 2,137)",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "offsets != 0; semantic seeds outside the 323-value enumeration; other generators",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "passed",
+   "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-R43-B5-COMPOSED-KEYS",
+   "hypothesis": "Round 10b B5 composed keys K = cw*W + cg*G (44 words x 3 generators x 8 coefficient pairs x all wphases x goff 0..63 = 289,344 configs) re-scored with pf_v4_12 + beam_v3 on pages 0,1,2,5,20.",
+   "status": "negative",
+   "coverage": "REGENERATED (composed_key.py logic; 289,344 configs, equal to the original tier-1 count): 5 pages x 289,344. best non-degenerate 5.964 (ks1) / 5.964 (ks2) vs 12-reg bars actual-N 9.236 / 9.131, declared-N 9.102 / 8.999; 1446720 heads screened, 1291 survivors decoded (1291 / 1291 rows per rel), 0 / 0 degenerate rows",
+   "result": "NEGATIVE; 0 flagged, 0 near-miss.",
+   "three_conditionals": {
+    "key_space": "289,344 composed configs x 5 pages (L=120), sign +1 (the 8 coefficient pairs cover -1)",
+    "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max after the pf_v4_12 head screen (frozen point, per-relation FPR 5e-4, min power over the 12 registers 0.952, so up to ~5% of true-key heads could be dropped by the screen)",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "page 54 (76 runes < 120); the other 49 pages; atbash arm; goff > 63",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "passed",
+   "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-R47-F01-LP2-AS-PAD",
+   "hypothesis": "Round 16 F-01 LP2 (fwd/rev/atbash/neg) x sign as a running key over Cicada target objects re-scored under panel-R36 + beam_v3.",
+   "status": "negative",
+   "coverage": "REGENERATED (F-01 loaders unchanged): T1 2012-13 texts, T2 solved LP1, T3 PGP bodies (500 runes each; L=120 windows at 0,120,240,360), T6 LP2 head 200 (windows 0,80). best non-degenerate 4.184 / 4.464 vs 12-reg bars actual-N 5.795 / 5.748 (declared-N 9.102 / 8.999); 112 / 112 rows per rel; 6 / 6 degenerate rows (the degenerate rows are T6 self-key: constant output, top degenerate pmax 8.70)",
+   "result": "NEGATIVE; 0 flagged, 0 near-miss.",
+   "three_conditionals": {
+    "key_space": "4 LP2 key variants x 2 signs x 4 targets x windows",
+    "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "T4 AN-END hash (63 values < L=120) and T5 payload (absent); all-pairs page XOR and canon-as-key parts of the reading; other target objects; windows beyond 500 runes",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "passed",
+   "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-R04-M4-LP1-POINTER",
+   "hypothesis": "Round 10 L2 M4 LP2 word numbers as pointers into the solved LP1 English word list, re-scored under panel-R36.",
+   "status": "negative",
+   "coverage": "REGENERATED 16 pointer streams (~12k runes each). 16 scorable streams, D=300 null draws: best M4:len:base1 pmax 224.78, Z 5784.46, p(Z)=0.0033, raw-best p=0.7243, n_degenerate=3. The Z statistic is a null defect: the 'len' and 'len-1' pointer families depend only on word lengths, which null_A holds fixed, so their null sd is 0 (Z 5784); the raw best-of-family statistic (obs 224.98 vs null best mean 226.1) is the valid one. The stream is English by construction (words copied from the book), which is why pmax is ~225 regardless of LP2.",
+   "result": "NEGATIVE on the valid statistic (raw p 0.72); the Z statistic is invalid for this family and is not used.",
+   "three_conditionals": {
+    "key_space": "16 pointer streams into the solved English word list",
+    "transition_model": "none (cleartext layer)",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "decoded-word pointers; lags; pointers from other sources",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "passed",
+   "control_detail": "direct_control: held-out EN_MODERN/LATIN/GREEK text at the family's stream length beats the family-null max-Z q99 by > 1 in all three registers"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-R06-M6-STRUCTURAL-COUNTS",
+   "hypothesis": "Round 10 L2 M6 structural counts as a message, re-scored under panel-R36.",
+   "status": "negative",
+   "coverage": "REGENERATED 5 sequences x (29 shifts x id/atbash + 26 letter shifts). 420 scorable streams, D=300 null draws: best M6:runes-per-page:letters26+7 pmax 7.06, Z 3.36, p(Z)=0.3090, raw-best p=0.5748, n_degenerate=168 (168 of 420 streams degenerate: small-count mod 29 streams)",
+   "result": "NEGATIVE.",
+   "three_conditionals": {
+    "key_space": "5 count sequences x 84 transforms",
+    "transition_model": "none",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "other count sequences (F-count/page etc.); bases other than mod 26/29",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "passed",
+   "control_detail": "direct_control: held-out EN_MODERN/LATIN/GREEK text at the family's stream length beats the family-null max-Z q99 by > 1 in all three registers"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-R13-R9-DIRECTION-WALKS",
+   "hypothesis": "Round 9 DIRECTION: 2,670 positional walks/sieves of the LP2 ciphertext re-scored under panel-R36 (direction.py unchanged).",
+   "status": "open",
+   "coverage": "REGENERATED 2,670 reads (2,274 scorable >= 32 runes). Three null runs (doublet-matched shuffled LP2, different seeds): D=150 p(Z)=0.0066 raw 0.0066; D=800 p(Z)=0.0062 raw 0.0062; D=500 p(Z)=0.0040 raw 0.0040. Best A:idx:s60/s61:b1:f1 (backward self-indexing walk, step = rune index, F skipped; both starts reach the same 400-rune path), pmax 4.733, non-degenerate (IoC*N 1.01, mds 16).",
+   "result": "NEAR-MISS (both statistics < 0.01, replicated on independent null seeds). Amplitude is noise-level in absolute terms (a readable 400-rune stream in a panel register scores pmax in the tens; planted controls Z 11-18), the stream's transliteration reads as noise, and contiguous 400-windows of LP2 sit at pmax 1.3 (max 2.99). Not flagged: no beam row, no key, nothing to run through the L=240/oracle path. Coordinator decides whether a human read is wanted.",
+   "three_conditionals": {
+    "key_space": "2,670 fixed positional reads of the LP2 ciphertext",
+    "transition_model": "none (key-free reads)",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "walk families beyond direction.py's parameter grid; reads of the keyed (decoded) layer",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "passed",
+   "control_detail": "direct_control: held-out EN_MODERN/LATIN/GREEK text at the family's stream length beats the family-null max-Z q99 by > 1 in all three registers",
+   "reopens_if": "a replication of the excess under a null that also matches the positional/selection structure of the walk, or a human read judging the stream as language"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-R27-R22A-SELFEMBEDDED",
+   "hypothesis": "Round 22 A self-embedded selections (every-k / diagonal / anti-diagonal / reverse of the solved plaintext) re-scored under panel-R36.",
+   "status": "negative",
+   "coverage": "REGENERATED selections of the solved-plaintext rune-index stream (lib_selfread.enumerate_selections unchanged). 1718 scorable streams, D=200 null draws: best everyk_k34_o12 pmax 8.99, Z 4.33, p(Z)=0.0945, raw-best p=0.8706, n_degenerate=0",
+   "result": "NEGATIVE.",
+   "three_conditionals": {
+    "key_space": "every-k / diagonal / anti-diagonal / reverse selections of the solved rune-index stream",
+    "transition_model": "none",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "printed-line geometry is covered by R28; keyword-cued selections; the wider community-solved corpus",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "passed",
+   "control_detail": "direct_control: held-out EN_MODERN/LATIN/GREEK text at the family's stream length beats the family-null max-Z q99 by > 1 in all three registers"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-R28-R23A2-LINE-ACROSTIC",
+   "hypothesis": "Round 23 A2 printed-line / word acrostics of the solved pages re-scored under panel-R36.",
+   "status": "negative",
+   "coverage": "REGENERATED 48 reads, 24 scorable (>= 32 runes). Lane null (order-shuffled letter pool): p(Z) 0.0033, raw 0.0033 (best 06|word_last|rev pmax 13.46; CONCAT|word_last|rev 17.1). Matched null (each read's own letters shuffled): p(Z) 0.0066, raw 0.103. Natural-English baseline (a2_natural_baseline.json): word-final-letter streams of running English score at the same level (CONCAT|word_last|rev obs 17.1 vs natural windows mean 17.4, 67% of windows >= obs; 06|word_last|rev obs 13.46 vs 12 natural windows max 13.09).",
+   "result": "NEGATIVE. The lane-null excess is the natural English first/last-letter skew and suffix structure, not a message; listed for the red team (06 word_last/rev is 0.4 above the max of 12 natural windows).",
+   "three_conditionals": {
+    "key_space": "24 scorable acrostic reads of 5 solved pages",
+    "transition_model": "none",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "24 of 48 reads are below the panel floor (< 32 runes); wider solved corpus; keyword-cued selections",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "passed",
+   "control_detail": "direct_control: held-out EN_MODERN/LATIN/GREEK text at the family's stream length beats the family-null max-Z q99 by > 1 in all three registers"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-INCONCLUSIVE-R14",
+   "hypothesis": "campaign7 wordsum_selfkey (word gematria sums drive the next-word shift) (not re-scorable under panel-R36 + beam_v3 from committed code).",
+   "status": "inconclusive",
+   "coverage": "NOT re-scored: campaign7 code not committed (only CAMPAIGN-VII-FINDINGS.md in a recovered corpus path); no wordsum_selfkey in any committed .py. (R08, the M8 word-length run statistic, involves no adjudicator and is not affected by the English-only conditional.)",
+   "result": "INCONCLUSIVE: the English-only/legacy conditional of this reading is unchanged.",
+   "three_conditionals": {
+    "key_space": "not regenerated",
+    "transition_model": "n/a",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "campaign7 code not committed (only CAMPAIGN-VII-FINDINGS.md in a recovered corpus path); no wordsum_selfkey in any committed .py",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "not applicable",
+   "control_detail": "no control run: no artefact to run it on",
+   "reopens_if": "the missing artefact (campaign7 code not committed (only CAMPAIGN-VII-FINDINGS.md in a recovered corpus path); no wordsum_selfkey in any committed .py) is supplied or committed"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-INCONCLUSIVE-R15",
+   "hypothesis": "campaign7 hill5_magic (three book matrices as Hill keys) (not re-scorable under panel-R36 + beam_v3 from committed code).",
+   "status": "inconclusive",
+   "coverage": "NOT re-scored: campaign7 code not committed; no hill5_magic in any committed .py. (R08, the M8 word-length run statistic, involves no adjudicator and is not affected by the English-only conditional.)",
+   "result": "INCONCLUSIVE: the English-only/legacy conditional of this reading is unchanged.",
+   "three_conditionals": {
+    "key_space": "not regenerated",
+    "transition_model": "n/a",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "campaign7 code not committed; no hill5_magic in any committed .py",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "not applicable",
+   "control_detail": "no control run: no artefact to run it on",
+   "reopens_if": "the missing artefact (campaign7 code not committed; no hill5_magic in any committed .py) is supplied or committed"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-INCONCLUSIVE-R31",
+   "hypothesis": "Round 10b B3 page-local semantic keys / crib readouts (not re-scorable under panel-R36 + beam_v3 from committed code).",
+   "status": "inconclusive",
+   "coverage": "NOT re-scored: readouts are 5-9 runes (< the 32-rune panel floor); T1 was already INCONCLUSIVE by its own weak control; no stored top-N full-page promotions. (R08, the M8 word-length run statistic, involves no adjudicator and is not affected by the English-only conditional.)",
+   "result": "INCONCLUSIVE: the English-only/legacy conditional of this reading is unchanged.",
+   "three_conditionals": {
+    "key_space": "not regenerated",
+    "transition_model": "n/a",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "readouts are 5-9 runes (< the 32-rune panel floor); T1 was already INCONCLUSIVE by its own weak control; no stored top-N full-page promotions",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "not applicable",
+   "control_detail": "no control run: no artefact to run it on",
+   "reopens_if": "the missing artefact (readouts are 5-9 runes (< the 32-rune panel floor); T1 was already INCONCLUSIVE by its own weak control; no stored top-N full-page promotions) is supplied or committed"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-INCONCLUSIVE-R35",
+   "hypothesis": "R12-C2 / R26-B 33 keytexts as running keys (not re-scorable under panel-R36 + beam_v3 from committed code).",
+   "status": "inconclusive",
+   "coverage": "NOT re-scored: round12/C2/texts (the 29-33 curated key texts, ~12 MB) are not in the repo and fetch.sh needs network; texts not hash-pinned. (R08, the M8 word-length run statistic, involves no adjudicator and is not affected by the English-only conditional.)",
+   "result": "INCONCLUSIVE: the English-only/legacy conditional of this reading is unchanged.",
+   "three_conditionals": {
+    "key_space": "not regenerated",
+    "transition_model": "n/a",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "round12/C2/texts (the 29-33 curated key texts, ~12 MB) are not in the repo and fetch.sh needs network; texts not hash-pinned",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "not applicable",
+   "control_detail": "no control run: no artefact to run it on",
+   "reopens_if": "the missing artefact (round12/C2/texts (the 29-33 curated key texts, ~12 MB) are not in the repo and fetch.sh needs network; texts not hash-pinned) is supplied or committed"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-INCONCLUSIVE-R36",
+   "hypothesis": "R17 public pad + R24 C8 date-indexed pad (NIST beacon, Random.org, block headers) (not re-scorable under panel-R36 + beam_v3 from committed code).",
+   "status": "inconclusive",
+   "coverage": "NOT re-scored: dated public-pad data not committed; round17/P*/fetch.py needs network. (R08, the M8 word-length run statistic, involves no adjudicator and is not affected by the English-only conditional.)",
+   "result": "INCONCLUSIVE: the English-only/legacy conditional of this reading is unchanged.",
+   "three_conditionals": {
+    "key_space": "not regenerated",
+    "transition_model": "n/a",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "dated public-pad data not committed; round17/P*/fetch.py needs network",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "not applicable",
+   "control_detail": "no control run: no artefact to run it on",
+   "reopens_if": "the missing artefact (dated public-pad data not committed; round17/P*/fetch.py needs network) is supplied or committed"
+  },
+  {
+   "round": 40,
+   "lane": "C1",
+   "date": "2026-10-31",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "liber-primus/analysis/round40/C1-rescore-46/PREREG.md",
+    "liber-primus/analysis/round40/C1-rescore-46/RESULTS.md",
+    "liber-primus/analysis/round40/C1-rescore-46/rescore_summary.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round40/C1-rescore-46; see RESULTS.md 'Files' (run_screened.py / run_beam.py / direct.py stages, then final.py, build_deliverables.py)",
+   "sweep_store": "analysis/round40/C1-rescore-46/rescore_rows.jsonl",
+   "id": "R40-C1-INCONCLUSIVE-R44",
+   "hypothesis": "campaign XVII bookcipher: LP numbers as pointers into Cicada's known books (not re-scorable under panel-R36 + beam_v3 from committed code).",
+   "status": "inconclusive",
+   "coverage": "NOT re-scored: the 2012-14 book texts are not committed as inputs and the original adjudicator was an English word-salad test with no rune stream. (R08, the M8 word-length run statistic, involves no adjudicator and is not affected by the English-only conditional.)",
+   "result": "INCONCLUSIVE: the English-only/legacy conditional of this reading is unchanged.",
+   "three_conditionals": {
+    "key_space": "not regenerated",
+    "transition_model": "n/a",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c); 12-register POT bars (null12.json) for beam rows, self-calibrating shuffle null for direct streams; 14-field rows with degenerate flag"
+   },
+   "not_covered": "the 2012-14 book texts are not committed as inputs and the original adjudicator was an English word-salad test with no rune stream",
+   "threshold": "beam rows: 12-register POT bar (round36/B1-orbit-12reg/null12.json) at actual N (heads screened / rows per relation) and declared N=1e6; direct rows: per-stream-Z family p < 0.01 AND raw best-of-family p < 0.01",
+   "positive_control": "not applicable",
+   "control_detail": "no control run: no artefact to run it on",
+   "reopens_if": "the missing artefact (the 2012-14 book texts are not committed as inputs and the original adjudicator was an English word-salad test with no rune stream) is supplied or committed"
+  }
+ ]
+}

@@ -1,0 +1,162 @@
+{
+ "family": "R32_B04_lp_seeds_stageA",
+ "table": {
+  "keyskip1": {
+   "n": 6,
+   "recover": 6,
+   "decode_only_recover": 6
+  },
+  "keyskip2": {
+   "n": 6,
+   "recover": 6,
+   "decode_only_recover": 6
+  }
+ },
+ "gate_ge4_of_6_per_relation": true,
+ "plants": [
+  {
+   "register": "EN_MODERN",
+   "rel": "keyskip1",
+   "entry": "lp_word#680:TWO|sha1_chain|bits5|rev|s-1",
+   "screen_pass_own_rel": true,
+   "screen_pass_any": true,
+   "pmax120": 20.198,
+   "pmax240": 29.082,
+   "recovery240": 1.0,
+   "decode_recover": true,
+   "recover": true
+  },
+  {
+   "register": "EN_MODERN",
+   "rel": "keyskip1",
+   "entry": "lp_word#698:VANISH|sha256_ctr_asc|bits5|rev|s+1",
+   "screen_pass_own_rel": true,
+   "screen_pass_any": true,
+   "pmax120": 15.619,
+   "pmax240": 26.574,
+   "recovery240": 0.9792,
+   "decode_recover": true,
+   "recover": true
+  },
+  {
+   "register": "EN_MODERN",
+   "rel": "keyskip2",
+   "entry": "lp_line#817:beware false paths alway|aes_ctr_deriviv|bits5|rev|s-1",
+   "screen_pass_own_rel": true,
+   "screen_pass_any": true,
+   "pmax120": 21.889,
+   "pmax240": 30.198,
+   "recovery240": 1.0,
+   "decode_recover": true,
+   "recover": true
+  },
+  {
+   "register": "EN_MODERN",
+   "rel": "keyskip2",
+   "entry": "lp_line#947:liketheinstaritisonlythr|sha512_chain|hi_nib|rev|s+1",
+   "screen_pass_own_rel": true,
+   "screen_pass_any": true,
+   "pmax120": 17.697,
+   "pmax240": 27.422,
+   "recovery240": 1.0,
+   "decode_recover": true,
+   "recover": true
+  },
+  {
+   "register": "LATIN",
+   "rel": "keyskip1",
+   "entry": "lp_word#538:RIDDLE|sha1_ctr|lo_nib|fwd|s-1",
+   "screen_pass_own_rel": true,
+   "screen_pass_any": true,
+   "pmax120": 16.437,
+   "pmax240": 24.745,
+   "recovery240": 1.0,
+   "decode_recover": true,
+   "recover": true
+  },
+  {
+   "register": "LATIN",
+   "rel": "keyskip1",
+   "entry": "lp_word#663:told|rc4|rej29|fwd|s-1",
+   "screen_pass_own_rel": true,
+   "screen_pass_any": true,
+   "pmax120": 19.067,
+   "pmax240": 26.112,
+   "recovery240": 1.0,
+   "decode_recover": true,
+   "recover": true
+  },
+  {
+   "register": "LATIN",
+   "rel": "keyskip2",
+   "entry": "lp_word#222:EXPLAINED|hmac_sha256_ctr|hi_nib|fwd|s+1",
+   "screen_pass_own_rel": true,
+   "screen_pass_any": true,
+   "pmax120": 13.748,
+   "pmax240": 22.954,
+   "recovery240": 0.9958,
+   "decode_recover": true,
+   "recover": true
+  },
+  {
+   "register": "LATIN",
+   "rel": "keyskip2",
+   "entry": "lp_word#196:EMERGE|aes_ctr_zeroiv|lo_nib|rev|s-1",
+   "screen_pass_own_rel": true,
+   "screen_pass_any": true,
+   "pmax120": 18.302,
+   "pmax240": 25.829,
+   "recovery240": 1.0,
+   "decode_recover": true,
+   "recover": true
+  },
+  {
+   "register": "GREEK",
+   "rel": "keyskip1",
+   "entry": "lp_word#128:CONSUMING|hmac_sha256_ctr|bits5|rev|s+1",
+   "screen_pass_own_rel": true,
+   "screen_pass_any": true,
+   "pmax120": 19.388,
+   "pmax240": 28.171,
+   "recovery240": 1.0,
+   "decode_recover": true,
+   "recover": true
+  },
+  {
+   "register": "GREEK",
+   "rel": "keyskip1",
+   "entry": "lp_line#983:oncedictatedtoabeast|sha256_chain|bits5|rev|s-1",
+   "screen_pass_own_rel": true,
+   "screen_pass_any": true,
+   "pmax120": 19.147,
+   "pmax240": 26.942,
+   "recovery240": 1.0,
+   "decode_recover": true,
+   "recover": true
+  },
+  {
+   "register": "GREEK",
+   "rel": "keyskip2",
+   "entry": "lp_word#237:fifth|md5_ctr|bits5|fwd|s-1",
+   "screen_pass_own_rel": true,
+   "screen_pass_any": true,
+   "pmax120": 18.622,
+   "pmax240": 27.98,
+   "recovery240": 1.0,
+   "decode_recover": true,
+   "recover": true
+  },
+  {
+   "register": "GREEK",
+   "rel": "keyskip2",
+   "entry": "lp_word#53:available|hmac_sha256_ctr|hi_nib|rev|s+1",
+   "screen_pass_own_rel": true,
+   "screen_pass_any": true,
+   "pmax120": 20.211,
+   "pmax240": 29.144,
+   "recovery240": 1.0,
+   "decode_recover": true,
+   "recover": true
+  }
+ ]
+}

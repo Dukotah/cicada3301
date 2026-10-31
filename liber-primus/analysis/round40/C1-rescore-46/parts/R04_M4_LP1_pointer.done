@@ -1,0 +1,88 @@
+{
+ "family": "R04_M4_LP1_pointer",
+ "kind": "direct",
+ "control": {
+  "EN_MODERN": {
+   "n": 3000,
+   "plant_pmax": 97.041,
+   "null_mean": 39.48,
+   "Z_plant": 75.17,
+   "family_null_maxZ_q99": 2.942,
+   "pass": true
+  },
+  "LATIN": {
+   "n": 3000,
+   "plant_pmax": 92.712,
+   "null_mean": 51.155,
+   "Z_plant": 60.78,
+   "family_null_maxZ_q99": 2.942,
+   "pass": true
+  },
+  "GREEK": {
+   "n": 3000,
+   "plant_pmax": 99.816,
+   "null_mean": 46.083,
+   "Z_plant": 65.84,
+   "family_null_maxZ_q99": 2.942,
+   "pass": true
+  },
+  "all_pass": true
+ },
+ "n_streams": 16,
+ "D": 300,
+ "best_stream": "M4:len:base1",
+ "best_pmax": 224.78281218094355,
+ "best_Z": 5784.459176538803,
+ "null_max_Z_q99": 2.9415096926689146,
+ "null_max_Z_max": 4.562254428863525,
+ "exceed": 0,
+ "p_family": 0.0033222591362126247,
+ "wilson95_exceed_rate": [
+  0.0,
+  0.012643429997735661
+ ],
+ "top5": [
+  [
+   5784.459,
+   224.783,
+   "M4:len:base1"
+  ],
+  [
+   5784.459,
+   224.783,
+   "M4:len-1:base0"
+  ],
+  [
+   339.058,
+   218.99,
+   "M4:len:base0"
+  ],
+  [
+   1.308,
+   214.785,
+   "M4:idx+Sprime:base0"
+  ],
+  [
+   1.055,
+   214.73,
+   "M4:idx+Sidx:base0"
+  ]
+ ],
+ "raw_best": {
+  "obs_best_pmax": 224.97839071285085,
+  "obs_best_stream": "M4:Sidx:base0",
+  "null_best_mean": 226.1010892232259,
+  "null_best_max": 229.78729248046875,
+  "null_best_q99": 229.18035736083985,
+  "exceed": 217,
+  "p": 0.7242524916943521,
+  "wilson95_exceed_rate": [
+   0.6701290366526464,
+   0.7708902312816984
+  ]
+ },
+ "universe": 16,
+ "null": "null_A (rune content shuffled, word boundaries held), pointer family re-derived, 300 draws",
+ "n_degenerate_streams": 3,
+ "n_streams_total": 16
+}

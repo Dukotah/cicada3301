@@ -1,0 +1,133 @@
+{
+ "patches": [
+  {
+   "id": "O4-matrix",
+   "set": {
+    "cells_to_TRIED": [
+     "H2xF6",
+     "H3xF7",
+     "H4xF6",
+     "H6xF4",
+     "H7xF2",
+     "H8xF10",
+     "H12xF2",
+     "H12xF4",
+     "L1xF4",
+     "L1xF7",
+     "L2xF4",
+     "L2xF9",
+     "L4xF4",
+     "L4xF9",
+     "L5xF4",
+     "L5xF9",
+     "L7xF4",
+     "L8xF1",
+     "L8xF4",
+     "L8xF9",
+     "L10xF7",
+     "L10xF10",
+     "L11xF4",
+     "L11xF10",
+     "L12xF4",
+     "L12xF9",
+     "L13xF4",
+     "L13xF9",
+     "L16xF4",
+     "L16xF9",
+     "L17xF4",
+     "L18xF4",
+     "S2xF7",
+     "S2xF10",
+     "S5xF4"
+    ],
+    "cells_to_PARTIAL": [
+     "H2xF7",
+     "H7xF4",
+     "H8xF4"
+    ],
+    "cells_unchanged_inconclusive": [
+     "H4xF3",
+     "H7xF9",
+     "H12xF7",
+     "L2xF3",
+     "L12xF5",
+     "L13xF5",
+     "L15xF2",
+     "S1xF5"
+    ],
+    "recount": {
+     "before_R40_C1": {
+      "T-EN": 21,
+      "T-LEG": 25
+     },
+     "TRIED_added": 35,
+     "PARTIAL_added": 3,
+     "T-EN_T-LEG_remaining": 8
+    },
+    "note": "TRIED = every re-scorable reading in the cell's record was re-scored here or in R37-C3 under panel-R36 (12 registers) + beam_v3 with a passed control (R08 has no adjudicator and is not counted against a cell); PARTIAL = at least one reading re-scored but another reading in the record is inconclusive (missing artefact); H4xF6 and any cell citing R13 carries the R13 near-miss caveat."
+   }
+  },
+  {
+   "id": "B-04",
+   "coverage_add": "R40-C1 (2026-10-31): SLOGAN seeds (139) x 16 gens x 5 reds x dir x sign x atbash, stage A + per-page restarts, and 1,256 lp seeds stage A, re-screened with pf_v4_12 and decoded with beam_v3 under panel-R36: slogan best 5.88 (ks1) vs actual-N 9.66; lp 5.75 (ks2) vs 8.92.",
+   "not_covered_add": "stage B offsets; non-slogan/lp core seeds",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional for these seed groups; remains negative"
+  },
+  {
+   "id": "R16-KDF",
+   "coverage_add": "R40-C1: see B-04 (slogan seed groups only).",
+   "not_covered_add": "",
+   "status_note": "unchanged otherwise"
+  },
+  {
+   "id": "R26-C-SEMANTIC-SEED-ZOO",
+   "coverage_add": "R40-C1: all 2,137 keystreams re-decoded with beam_v3 keyskip1+2 under panel-R36 at L=120 window 0: best 4.81/4.90 vs actual-N 6.87/6.80.",
+   "not_covered_add": "",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional; remains negative"
+  },
+  {
+   "id": "R22-A-SELFEMBEDDED-READ",
+   "coverage_add": "R40-C1: rune-index selections re-scored under panel-R36: p(Z)=0.0945, raw p=0.87.",
+   "not_covered_add": "",
+   "status_note": "English-only conditional replaced by the 12-register conditional for the rune-index representation; remains negative"
+  },
+  {
+   "id": "R23-A2-LINE-ACROSTIC",
+   "coverage_add": "R40-C1: 24 of 48 reads scorable under panel-R36; the lane-null excess is explained by the natural English first/last-letter baseline (a2_natural_baseline.json).",
+   "not_covered_add": "24 reads below the 32-rune panel floor",
+   "status_note": "remains negative; 06 word_last/rev listed for the red team"
+  },
+  {
+   "id": "F-01",
+   "coverage_add": "R40-C1: 8 (variant, sign) pairs x T1/T2/T3/T6 windows re-decoded with beam_v3 keyskip1+2 under panel-R36: best 4.18/4.46 vs actual-N 5.80/5.75.",
+   "not_covered_add": "T4 (63 values < L), T5; all-pairs page XOR; canon-as-key",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional for the covered configs; remains negative"
+  },
+  {
+   "id": "R10-L2-MAP",
+   "coverage_add": "R40-C1: M4 (16 pointer streams) and M6 (420 count streams) re-scored under panel-R36; M4 Z invalid (null sd 0 for length pointers), raw p 0.72; M6 p(Z)=0.31.",
+   "not_covered_remove": "M4, M6 (M3/M7/M8 remain; M8 has no adjudicator)",
+   "status_note": "remains negative"
+  },
+  {
+   "id": "R9-DIRECTION",
+   "coverage_add": "R40-C1: 2,670 reads re-scored under panel-R36; best A:idx:s60/61 backward walk pmax 4.73, p 0.004-0.0066 on three null runs (both statistics): near-miss, noise-level amplitude, no readable text.",
+   "not_covered_add": "",
+   "status_note": "proposed status open pending coordinator decision on a human read; not flagged",
+   "set_status": "open"
+  },
+  {
+   "id": "R10b-B1-ARTIFACT-KEYS",
+   "coverage_add": "R40-C1: 125 curated alpha + 16 numeric keys (+ c18 numeric: P.S. digits, tweet handle, Mayan, all phases) re-scored with pf_v4_12 + beam_v3 under panel-R36 at 52 page starts: best 5.31 vs actual-N 8.61; c18 5.01 vs 8.29.",
+   "not_covered_add": "43 auto-extracted alpha keys (raw archive not committed)",
+   "status_note": "English-only/legacy-beam conditional replaced by the 12-register conditional; remains negative"
+  },
+  {
+   "id": "R10b-B5-COMPOSED-KEYS",
+   "coverage_add": "R40-C1: 289,344 composed configs x pages 0,1,2,5,20 screened with pf_v4_12 and decoded with beam_v3 under panel-R36: best 5.96 vs actual-N 9.24.",
+   "not_covered_add": "page 54 (<120 runes) and the other 49 pages",
+   "status_note": "remains negative"
+  }
+ ],
+ "new_rows": "ledger.json"
+}

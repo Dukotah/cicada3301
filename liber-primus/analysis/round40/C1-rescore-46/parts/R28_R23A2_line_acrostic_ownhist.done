@@ -1,0 +1,89 @@
+{
+ "family": "R28_R23A2_line_acrostic_ownhist",
+ "kind": "direct",
+ "control": {
+  "EN_MODERN": {
+   "n": 120,
+   "plant_pmax": 19.793,
+   "null_mean": 7.982,
+   "Z_plant": 17.37,
+   "family_null_maxZ_q99": 3.655,
+   "pass": true
+  },
+  "LATIN": {
+   "n": 120,
+   "plant_pmax": 18.21,
+   "null_mean": 11.856,
+   "Z_plant": 9.95,
+   "family_null_maxZ_q99": 3.655,
+   "pass": true
+  },
+  "GREEK": {
+   "n": 120,
+   "plant_pmax": 19.801,
+   "null_mean": 9.769,
+   "Z_plant": 12.76,
+   "family_null_maxZ_q99": 3.655,
+   "pass": true
+  },
+  "all_pass": true
+ },
+ "n_streams": 24,
+ "D": 300,
+ "best_stream": "06|word_last|rev",
+ "best_pmax": 13.459265635159541,
+ "best_Z": 3.8133021917140244,
+ "null_max_Z_q99": 3.655307204723358,
+ "null_max_Z_max": 4.1352033615112305,
+ "exceed": 1,
+ "p_family": 0.006644518272425249,
+ "wilson95_exceed_rate": [
+  0.0005886425761407378,
+  0.018637164554943353
+ ],
+ "top5": [
+  [
+   3.813,
+   13.459,
+   "06|word_last|rev"
+  ],
+  [
+   1.815,
+   7.879,
+   "14|word_first|rev"
+  ],
+  [
+   1.716,
+   11.389,
+   "06|word_last|fwd"
+  ],
+  [
+   1.577,
+   17.1,
+   "CONCAT|word_last|rev"
+  ],
+  [
+   0.327,
+   5.119,
+   "CONCAT|line_first|rev"
+  ]
+ ],
+ "raw_best": {
+  "obs_best_pmax": 17.09984521635719,
+  "obs_best_stream": "CONCAT|word_last|rev",
+  "null_best_mean": 16.146772324244182,
+  "null_best_max": 18.803709030151367,
+  "null_best_q99": 18.1969181060791,
+  "exceed": 30,
+  "p": 0.10299003322259136,
+  "wilson95_exceed_rate": [
+   0.07094746564722294,
+   0.1391672783509656
+  ]
+ },
+ "universe": 24,
+ "below_floor": 24,
+ "null": "each read's OWN letters histogram-shuffled (matched: keeps the English first/last-letter skew), 300 draws",
+ "n_degenerate_streams": 0,
+ "n_streams_total": 24
+}

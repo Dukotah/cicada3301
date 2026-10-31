@@ -1,0 +1,29 @@
+
+## Flagged / near-miss
+- **Flagged-for-oracle (clears actual-N, beam): none.** No family proceeded to L=240 or to an oracle bundle (nothing cleared). R47's top row (8.70) is degenerate (T6 self-key, constant output) and excluded.
+- **R13 DIRECTION (direct near-miss, not flagged).** Best `A:idx:s60:b1:f1` / `s61` (a backward self-indexing walk: p <- p - idx(c[p]), F skipped; both starts reach the same 400-rune path): pmax 4.733 (EN_MODERN-class register argmax per rows), non-degenerate (IoC*N 1.01, mds 16). Against doublet-matched shuffled-LP2 nulls: D=150 p(Z)=raw=0.0066; D=800 p(Z)=raw=0.0062; D=500 on other seeds p(Z)=raw=0.0040 (pooled about 5 of 1,450 null draws reach it; Wilson upper bound ~0.013). By the pre-registered two-statistic rule this is a near-miss. Why it is not flagged: (a) amplitude - a readable 400-rune stream in a panel register scores pmax in the tens (planted controls Z 11-18; contiguous 400-windows of LP2 itself sit at pmax 1.3, max 2.99), 4.7 is the random-level scale for the best of ~2,300 correlated reads; (b) the transliteration of the stream (`GDINCIAESRBAEBXLAJNGXOWHUJOEAIMROCODHWMNEAELGEUYOBLEAOBX...`) reads as noise; (c) there is no key or relation to re-test or to take to L=240. Listed for the red team and for the coordinator: a human read is cheap if wanted.
+- **R28 06|word_last|rev** (pmax 13.46): 0.37 above the max of 12 natural English word-final windows of the same length; the larger CONCAT streams are at the natural level. Listed for the red team, not a near-miss under the matched null (raw p 0.103).
+- Closest beam rows (all far below actual-N): R43 5.964 (ks1/ks2) vs 9.24 / 9.13; R32 slogan 5.882 / 5.881 vs 9.66 / 9.55; R32 lp 5.749 (ks2) vs 8.92; R30 5.310 (ks2) vs 8.61; c18 5.011 (ks1) vs 8.39; R33 4.901 vs 6.80; R47 4.464 vs 5.75.
+
+## Conditionals now carried (Aiming Test Q4)
+(1) key space = exactly what was regenerated: R30 125 alpha + 16 numeric keys (<= 12 phases, sign, atbash, 52 page starts); c18 P.S./tweet-handle/Mayan streams (all phases); R32 139 slogan seeds x 16 generators x 5 reductions x dir x sign x atbash (stage A + per-page restarts) and 1,256 lp seeds (stage A); R33 2,137 keystreams at offset 0; R43 289,344 composed configs on pages 0,1,2,5,20; R47 4 LP2 variants x 2 signs on T1/T2/T3/T6; direct families as listed. (2) transition model = keyskip1 + keyskip2 under beam_v3 (head-screened by pf_v4_12 at its frozen point where used, per-relation FPR 5e-4, min power 0.952), skip-free for direct streams. (3) adjudicator = panel-R36, 12 registers.
+
+## not_covered (collected; also in `ledger.json` per row)
+43 auto-extracted B1 alpha keys (raw archive not committed); the B1 interrupter-beam arm; pages < 120 runes (all page-start heads need L=120; page 54 for B5); B04 stage B offsets and non-slogan/lp seed groups; R33 offsets != 0; R43 atbash arm, goff > 63, the other 49 pages; R47 T4 (63 values), T5, all-pairs page XOR, canon-as-key; R04 decoded-word / lagged pointers; R06 other count sequences; R13 walks beyond direction.py's grid and the keyed layer; R27 keyword-cued selections; R28 24 of 48 reads below the panel floor; HEBREW / NORSE not planted in the beam controls (EN_MODERN / LATIN / GREEK only, as C3). The pf_v4_12 screen can drop up to ~5% of true-key heads.
+
+## Could not be re-run (inconclusive, with what is missing)
+- R14 wordsum_selfkey, R15 hill5_magic (cells H4xF3, L2xF3, L15xF2): the campaign7 code is not committed.
+- R31 B3 crib readouts (L12xF5, L13xF5, S1xF5): 5-9-rune readouts are below the panel's 32-rune floor and the original T1 was INCONCLUSIVE by its own control.
+- R35 keytexts (H7xF4, H8xF4 partial): `round12/C2/texts/` is not in the repo; `fetch.sh` needs network and the texts are not hash-pinned.
+- R36 public pad (H7xF9): dated pad data not committed (network fetch).
+- R44 bookcipher (H12xF7; H2xF7 partial): the 2012-14 book texts are not committed as inputs; the original test had no rune adjudicator.
+- R08 (M8 word-length run) involves no adjudicator and is not affected by the English-only conditional.
+
+## Coordinator decisions
+1. Apply `ledger.json` (18 rows: 12 re-scored families incl. R13 as `open`, 6 inconclusive) and `ledger_patches.json` (matrix: 35 cells -> TRIED, 3 -> PARTIAL, 8 unchanged; `not_covered` narrowed on B-04, R16-KDF, R26-C, R22-A, R23-A2, F-01, R10-L2-MAP, R10b rows)? Note R13 is proposed as `open` (not `negative`) because of the replicated direct near-miss.
+2. R13: want a human read of the 400-rune stream / a stronger positional-structure-matched null? (Cheap; the stream is in `parts/R13_R9_DIRECTION_walks_D800.jsonl` and regenerable from `direction.py`.)
+3. Supply or commit the missing artefacts if these readings matter: campaign7 code (R14/R15), `round12/C2/texts` (R35), dated pads (R36), 2012-14 book texts (R44), `armada_osint/artifacts/raw` (43 B1 keys).
+4. The R04 M4 Z statistic is invalid for any pointer family that depends only on word lengths under `null_A`; recommend recording that for the next direct-family lane.
+
+## Files
+PREREG.md, RESULTS.md, ledger.json, ledger_patches.json, rescore_summary.json, rescore_rows.jsonl (28,236 SWEEPROW rows, 12-wide + degenerate; header sweep `round40/C1/rescore-all`), cell_table.json / cell_table.md / cell_counts.json, cells46.py / cells_raw.json (the 46 cells), controls/*.json, parts/ (per-family rows + `.done` metadata), a2_natural_baseline.json, c1.log, d_*.out; code: lib.py (C3 machinery repointed), c1common.py, engine.py, keysets.py, run_screened.py, run_beam.py, direct.py, a2base.py, final.py, build_deliverables.py, ledger_build.py, build_results.py. Reproduce: `python run_screened.py {r30|c18|r43|r32|r32lp}; python run_beam.py {r33|r47}; python direct.py {m6|m4|a2|self|dir}` (`DIR_D=800`, `DIR_D=500 DIR_SEED=50000`, `A2_NULL=own`), `python a2base.py`, `python final.py`, `python build_deliverables.py`, `python build_results.py`.

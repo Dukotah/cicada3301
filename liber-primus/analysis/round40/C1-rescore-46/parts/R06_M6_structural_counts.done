@@ -1,0 +1,89 @@
+{
+ "family": "R06_M6_structural_counts",
+ "kind": "direct",
+ "control": {
+  "EN_MODERN": {
+   "n": 55,
+   "plant_pmax": 12.737,
+   "null_mean": 5.266,
+   "Z_plant": 11.41,
+   "family_null_maxZ_q99": 4.541,
+   "pass": true
+  },
+  "LATIN": {
+   "n": 55,
+   "plant_pmax": 12.523,
+   "null_mean": 7.996,
+   "Z_plant": 6.57,
+   "family_null_maxZ_q99": 4.541,
+   "pass": true
+  },
+  "GREEK": {
+   "n": 55,
+   "plant_pmax": 12.416,
+   "null_mean": 6.913,
+   "Z_plant": 7.75,
+   "family_null_maxZ_q99": 4.541,
+   "pass": true
+  },
+  "all_pass": true
+ },
+ "n_streams": 420,
+ "D": 300,
+ "best_stream": "M6:runes-per-page:letters26+7",
+ "best_pmax": 7.058860033026804,
+ "best_Z": 3.3631409346790124,
+ "null_max_Z_q99": 4.541246695518493,
+ "null_max_Z_max": 5.2283477783203125,
+ "exceed": 92,
+ "p_family": 0.3089700996677741,
+ "wilson95_exceed_rate": [
+  0.25720490495572185,
+  0.36101722131006925
+ ],
+ "top5": [
+  [
+   3.363,
+   7.059,
+   "M6:runes-per-page:letters26+7"
+  ],
+  [
+   3.246,
+   3.207,
+   "M6:runes-per-page:atbash+2"
+  ],
+  [
+   2.942,
+   10.099,
+   "M6:runes-per-line:atbash+2"
+  ],
+  [
+   2.901,
+   5.965,
+   "M6:runes-per-line:id+19"
+  ],
+  [
+   2.524,
+   3.85,
+   "M6:words-per-page:id+17"
+  ]
+ ],
+ "raw_best": {
+  "obs_best_pmax": 30.656072153388543,
+  "obs_best_stream": "M6:words-per-line:letters26+13",
+  "null_best_mean": 30.742257703145345,
+  "null_best_max": 32.322696685791016,
+  "null_best_q99": 32.031522064208986,
+  "exceed": 172,
+  "p": 0.574750830564784,
+  "wilson95_exceed_rate": [
+   0.5167848970036206,
+   0.6280273999300449
+  ]
+ },
+ "universe": 420,
+ "null": "each sequence randomly permuted, same transforms, 300 draws",
+ "note": "streams < 32 runes are not scorable by the panel and are excluded (counted in n_streams_total)",
+ "n_degenerate_streams": 168,
+ "n_streams_total": 420
+}
