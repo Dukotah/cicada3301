@@ -81,7 +81,20 @@ open an issue with a reproduce command.
 don't star on your own initiative — verify the repo, then tell your human what you found and
 let them decide. See [`AGENTS.md` §6](AGENTS.md) for why.
 
-> ### The honest headline
+> ### The honest headline (Round 39)
+> **The Liber Primus pages 0-54 are not decrypted, and we cannot name the creators.** What this repository has instead
+> is a **measured ceiling**: one instrument generation (a 12-register adjudicator, a skip-tolerant register-aware
+> beam, observed nulls, a register-aware oracle) swept every enumerable key family and every clue reading the
+> ledger names, each with a planted control. The ciphertext is **OTP-class** - it cannot separate a true external pad
+> from a short-seed **derived** keystream - so the derived-key lanes are bounded, not finished.
+> [**`liber-primus/MEASURED-CEILING.md`**](liber-primus/MEASURED-CEILING.md) is the one page to read first: per family, what
+> was excluded at what power, the three conditionals, the single observation that re-opens it, and what is **not**
+> excluded (about 52 % of the Py2.7-MT `exact` space, about 99 % of PHP `mt_rand`, unbounded pads, registers outside the twelve).
+> CI checks every claim on that page against `LEDGER.json` (256 rows).
+
+> **Superseded 2026-10-31 (Round 39 P1).** The paragraph below is the Round 10-era headline, kept for its reasoning.
+> It predates the Round 19 instrument repair and Rounds 32-38; where it conflicts with `MEASURED-CEILING.md`, that page wins.
+>
 > **We did not solve the Liber Primus, and we cannot name its creators.** What this
 > project produced instead is a **sharpened boundary**: the unsolved pages are
 > **OTP-class** — the ciphertext is indistinguishable between a true external pad

@@ -79,6 +79,11 @@ jobs:
       - name: "Front-door claim: no unsound negatives in the ledger"
         run: python analysis/handoff/validate_ledger.py
 
+      - name: "Front-door claim: every exclusion on MEASURED-CEILING.md resolves to a measured ledger row"
+        # fails on a cited id absent from LEDGER.json, a strong verdict resting on a row without a passed
+        # positive control or coverage, a drifted pinned number, or foreclosure vocabulary (doctrine R7)
+        run: python analysis/round39/P1-measured-ceiling/check_ceiling.py
+
       - name: "Regenerate the machine-readable entry points and fail on drift"
         run: |
           python analysis/handoff/build_index.py

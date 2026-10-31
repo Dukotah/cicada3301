@@ -1,0 +1,28 @@
+{
+ "lane": "P1",
+ "round": 39,
+ "entries": [
+  {
+   "id": "R39-P1-MEASURED-CEILING",
+   "round": 39,
+   "lane": "P1",
+   "lane_dir": "P1-measured-ceiling",
+   "date": "2026-10-31",
+   "type": "closure audit",
+   "status": "audit",
+   "hypothesis": "The exclusions of the panel-R36 instrument generation can be stated on one page, each claim tied to a LEDGER.json row with a passed positive control and coverage, with the three conditionals and the one re-opening observation, and enforced by a script.",
+   "positive_control": "n/a (audit; check_ceiling.py negative self-test: injected nonexistent id, strong verdict on a row with positive_control None, drifted pin, and forbidden word each FAIL)",
+   "coverage": "256 ledger rows read; 87 cited; 50 table claim lines (25 strong-verdict); 63 numeric pins verified against row JSON.",
+   "result": "MEASURED-CEILING.md written; check_ceiling.py PASS (0 violations). Added to root ci.yml after validate_ledger.py. FOR-FUTURE-SOLVERS sections 1-3 rewritten (Round 25 text kept, marked superseded); root README headline replaced with an 8-line summary linking the page.",
+   "not_covered": "Round 39 T1/S1/S2/I1/C1 results (not in the ledger when written); claims are no stronger than the cited rows (power assumed for seven registers at orbit level; PHP rows are nine-register; Py2.7 pair is Round 19 panel); the >=3-skip ~3 % figure is an estimate outside the ledger.",
+   "reopens_if": "any cited row changes its coverage, positive_control or a pinned number (the checker fails); a Round 39 lane adds or moves a row the page cites; X1 overrules an admissibility call listed in RESULTS.md.",
+   "threshold_fixed_in_advance": true,
+   "threshold": "admissibility rule in PREREG.md (dated before the page): cited id exists; strong verdict needs positive_control prefix 'pass' and non-empty coverage; pins match; no foreclosure vocabulary.",
+   "reproduce": "python analysis/round39/P1-measured-ceiling/check_ceiling.py",
+   "evidence": [
+    "liber-primus/MEASURED-CEILING.md",
+    "liber-primus/analysis/round39/P1-measured-ceiling/check_ceiling.py"
+   ]
+  }
+ ]
+}

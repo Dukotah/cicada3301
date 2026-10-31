@@ -4,6 +4,8 @@ _Written 2026-08-19 for someone arriving cold — a researcher, or a model with 
 and better vision than anything available when this was written. It assumes you know
 cryptography and nothing about this repository. It should get you productive in under an hour._
 
+> **Round 39:** sections 1-3 below were rewritten around [`../MEASURED-CEILING.md`](../MEASURED-CEILING.md), the one page of measured exclusions, powers, conditionals and re-opening observations (CI-checked against `LEDGER.json`). The Round 25 text of those sections is kept, collapsed and marked superseded. Sections 4 onward are the Round 25 text; where they conflict with the ceiling page, the ceiling page wins.
+
 _**Frozen at Round 25** (refreshed 2026-08-31; the live state is `../PICKUP-HERE.md`, current through Round 36 - R36 audit, 2026-10-30). Rounds 20–25 hardened the verdict rather
 than moving it: the anti-repeat sieve was proven **infeasible** (R20), the no-oracle certification
 gate was proven **leaky** so survivors are now flagged-for-oracle rather than auto-certified (R21),
@@ -23,7 +25,60 @@ map of where the walls are**, so you do not spend a month rediscovering them.
 
 ---
 
-## 1. The problem, stated precisely
+## 1. The problem, stated precisely  _(rewritten Round 39; Round 25 text kept below, superseded)_
+
+> **Read [`../MEASURED-CEILING.md`](../MEASURED-CEILING.md) first.** It is the one page that says what the current instrument
+> generation (panel-R36) excludes, at what power, under which three conditionals, and what single observation re-opens each
+> item. Every claim on it resolves to a `LEDGER.json` row and CI enforces that. Sections 1-3 here now only orient you to it.
+
+- **Target.** Liber Primus part 2 (LP2), pages 0-54: **12,956 runes**, alphabet of 29 (Gematria Primus, all arithmetic mod 29),
+  F (index 0) is an interrupter on decrypted pages. If your pipeline does not produce 12,956 runes, stop and reconcile
+  (`handoff/capsule/MANIFEST.json`, `runes.unsolved_stream`). Pages 56 and 57 have known decryptions; `python tests/validate.py`
+  reproduces five known pages and is the trust anchor.
+- **Machine-readable statement:** [`../PROBLEM.json`](../PROBLEM.json). **Oracle:** `python verify_solution.py` (register-aware,
+  `--selftest` first); a pass is *flagged-for-oracle*, never a declared solution (`SEAL_PASS=false`; [`../HUMAN-ORACLE.md`](../HUMAN-ORACLE.md)).
+- **Scoring scale.** Legacy -5.5 English quadgram bars are superseded: current bars are panel-max (`pmax`) over 12 registers at
+  actual N and N=1e6 (`analysis/round34/I1-v3-null/bars_v3.py`, `round36/B1-orbit-12reg/null12.json`).
+
+## 2. The current honest verdict  _(rewritten Round 39)_
+
+> **LP2 pages 0-54 are OTP-*class*.** A full-length keystream under a soft anti-repeat filter (about 83 % doublet
+> suppression). The ciphertext cannot separate a true external pad from a keystream *derived from a short seed*; only the
+> derived-key search, and the pad surfacing, can. Do not collapse the pair into "unsolvable" (a retracted overreach).
+
+State of the measurement at Round 38 (2026-10-31), all rows in `MEASURED-CEILING.md` section 2:
+
+- **Excluded at stated power** (planted control recovered, no survivor above the pre-registered bar): the bash 4.2 `$RANDOM`
+  auto-seed orbit (both ABIs, full, reach 0.95-0.99 per register in 12 registers, at most 2 skips in the head); the PHP
+  `mt_rand` prior-dense tier (nine registers); the Py2.7-MT `pair` relation over the full 2^32 (Round 19 panel, power 1.00);
+  the SHA-256 / PBKDF2 / KDF seed lists in the English register.
+- **Measured negative with coverage stated:** Py2.7-MT `exact` at 47.95 % cumulative (44.138 % Round 19 panel + 3.809 pp
+  panel-R36); PHP uniform tier at about 1 %; glibc gen=0 prior-dense; every clue reading the matrix named (composed map / road /
+  direction, LP1 numbers as a schedule, clue strings as seeds, book-code indices, prime line sums, semantic address, printed-line
+  sums, lagged pointers, literal imperatives); the Round 10 / 11 / 22-C families re-scored in 12 registers.
+- **Unmeasured or inconclusive:** V2 geometry, the auto-certification seal, the Py2.7 string-seed dictionary, the 18
+  sense-similarity cells.
+- **Not excluded:** unbounded pads; constructions outside `keyskip1` / `keyskip2` / `free` with up to 2 skips; registers outside
+  the twelve; about 52 % of Py2.7-MT `exact`; about 99 % of PHP `mt_rand`; the 34 clue cells with no stated operation; the flat tails of
+  the other generators. Each has a named re-opening observation on the page.
+
+This is a **bound set by the panel-R36 instrument generation, not a verdict on the puzzle.**
+
+## 3. Proven vs merely unrefuted  _(rewritten Round 39)_
+
+- **Proven (measured, reproducible, planted control passing):** the instrument facts. The anti-repeat filter is machine-applied;
+  every pre-Round-19 negative was English-register on a one-rejection decoder (L7-A, L7-B); the 12-register panel recovers planted
+  keys at 0.90 or better per register at L=120 and 240; the `free` relation is licensed at L=240 for 10 registers and L=400 / 729 for
+  all 12; ciphertext-derived key families need a key-matched null; the exclusion rows in `MEASURED-CEILING.md` section 2, at the powers stated there.
+  The commands that re-derive them are in `MEASURED-CEILING.md` section 5.
+- **Unrefuted, not proven:** everything in `MEASURED-CEILING.md` section 3. Treat each as an open question with a named instrument
+  requirement, not as a result. Prior mass is flat or low for most of it; the S2 tail (about 52 %) carries a deadline (snapshots expire
+  about 2026-11-07), the rest carries none.
+
+<details>
+<summary><strong>Superseded: the Round 25 text of sections 1-3</strong> (kept for the reasoning; where it conflicts with the sections above, those win)</summary>
+
+### (Round 25) 1. The problem, stated precisely
 
 Cicada 3301 published a runic book, the **Liber Primus**, in two parts. Part 1 (LP1, 17 pages)
 is essentially solved. Part 2 (**LP2**, 58 pages numbered 0–57, dumped in May 2014 from the Tor
@@ -82,7 +137,7 @@ enthusiastic false positives in this field come from.
 
 ---
 
-## 2. The current honest verdict
+### (Round 25) 2. The current honest verdict
 
 > **LP2 pages 0–54 are OTP-class.** The keystream runs the full length of the message, and its
 > output was deliberately filtered so the same rune is almost never written twice in a row
@@ -133,7 +188,7 @@ the pad surfacing (§8). Every round since has *hardened* this framing without m
 
 ---
 
-## 3. Proven vs merely unrefuted
+### (Round 25) 3. Proven vs merely unrefuted
 
 Keeping these apart is the whole point of this repo. Conflating them is how a decade of work
 turns into folklore.
@@ -205,6 +260,11 @@ turns into folklore.
 - **The engineered-filter model itself.** Never audited against the alternative explanation that
   transcribers merged doubled glyphs (haplography). The audit is cheap and has never been run
   (`handoff/PARKED.md` P-8).
+
+---
+
+
+</details>
 
 ---
 
