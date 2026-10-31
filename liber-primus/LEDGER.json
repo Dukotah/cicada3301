@@ -21,19 +21,19 @@
     "audit"
   ],
   "counts": {
-    "total": 244,
+    "total": 256,
     "by_status": {
       "open": 18,
       "superseded": 3,
-      "negative": 74,
+      "negative": 80,
       "partially-run": 18,
       "eliminated": 5,
-      "never-run": 8,
-      "measured": 76,
-      "audit": 38,
-      "inconclusive": 4
+      "never-run": 9,
+      "measured": 79,
+      "audit": 39,
+      "inconclusive": 5
     },
-    "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF. Round 18 merged 2026-08-26: 8 lanes, 31 fragment entries. L7 restated the coverage of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD and B-21 -- every prior negative in this repo is an English-register negative, which no entry had stated. Original coverage text is preserved in each entry's `restated_from`. Two statuses were added in the Round 18 merge: `measured` (a definite non-null determination) and `audit` (a recomputation or coverage restatement, which has no null and no threshold). The positive-control gate still applies to `negative`/`eliminated` only, so it retains exactly its former force. | Round 19 merged 2026-08-26: 41 new entries, 10 restated. Instrument repaired (I1 decoder, I2 adjudicator, I3 thresholds); the -5.5 bar was wrong in 14/14 historical sweeps, usually too strict, and no verdict flips. Transcription closed by T1/T2/T3 from three independent directions: canon is correct. Payload bytes 45/50/246 corrected by C1, voiding B-05, which was re-run clean. | Round 21 merged 2026-08-29: 4 lane entries (R21-L1-SEAL, R21-L2-NSKIPS-CROSSOVER-LENGTH, R21-L3-PY27-REDUCERS, R21-L5-REDTEAM-SEAL). L1 KILL: the no-oracle disjoint-fold seal is provably leaky (best 0.80 catch @ 0.20 false-reject, cannot reach the pre-registered 0.90 bar; held-out false-reject drifts to 0.167) -> Round 21 HIT auto-certification WITHHELD, bar-clearing survivors flagged-for-oracle. L3 CLEAN NEGATIVE: 884k words across grb5_mod/grb5_rej/shuffle29 (i386) + random29 (amd64), 0 hits, 4/4 positive controls recover 1.000, best pmax 6.248 vs 7.634 bar; family bounded (>99.99% flat-prior tail + 2^64 amd64 image + S-G3 gaps) NOT closed. L2 (instrument): n_skips crossover L*=6000 on the exact keyskip1 relation (bracket (3600,6000]) -- any whole-book n_skips adjudication needs a window >= ~6000 runes; drift 'separation' is a left-tail artifact, skip_by_two is beam-unrepresentable. L5 red-team MIXED: confirms L1-KILL, and NO-ERROR-FOUND on no-silent-re-run, FP-inflation-not-reintroduced, and honest row gate. OTP-class verdict for LP2 0-54 UNCHANGED. NB: R20 lane bodies (P1/P2/P3/R/N1/N2) remain in analysis/round20/ prose; only L1-PRIOR-PROPAGATION and C-CANON-PAYLOAD-3BYTES were given central rows in the R20 merge. Round 22 merged 2026-08-29 (coordinator): 5 lanes. Lane B pre-merged R22-B-TURTLE + R22-C-LITERAL-IMPERATIVES (130->132); coordinator appended R22-A-SELFEMBEDDED-READ, R22-D-ILLUSTRATION-DROPCAP (both negative, control-validated) and R22-R-REDTEAM (audit, NO-ERROR-FOUND) -> 132->135. Round 22 read the four signed-hint channels for the first time: self-embedded plaintext acrostic (X2/A), numbers-as-direction (G1/B), koans-as-operations (X1/X3/X4/C), art-as-data (S3/D) -- all CLEAN control-validated NEGATIVES. Standing verdict unchanged: LP2 0-54 remains OTP-class. Sharpest surviving reopener = A's printed-line-geometry acrostic (real page-image line breaks). validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 26 merged 2026-08-31 (coordinator): 4 entries (R26-A-GEN-SWEEP-FIRST-FIRE partially-run, R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE partially-run, R26-C-SEMANTIC-SEED-ZOO negative, R26-D-REDTEAM audit). Lane A fired the built-but-never-swept generators for the FIRST time (R19-G2 Perl: was ZERO seeds; G4-TEX: was ZERO decodes) plus the Py2.7 reducers on the DISTINCT amd64-w64 / non-zero-offset / keyskip2 axis un-covered by R21-L3 -- control-validated at 1.000 recovery per generator, 0 clears over the prior-dense front (baseline tail still running, interim). Lane B executed R12-C2s staged-but-never-run 33-keytext running-key sweep skip-aware (rigid was already doublet-excluded): 0/1,562 clears, 3 of 9 pages complete at 4 offsets, control 1.000 both presets. Lane C enumerated the bounded 323-value corpus-SEMANTIC seed set x 7 generators (incl. the page-56 totient/prime ladder that solves page 05) x 2 skip-aware decoders = 4,274 rows at 100% coverage, control min recovery 0.9917, best screen -6.578 (flat-random), 0 escalated. Lane D red-team: NO-ERROR-FOUND, coverage x power reproduced, no silent re-run, no FP-inflation, two MINOR hygiene defects noted. OTP-class verdict for LP2 0-54 UNCHANGED -- HARDENED along three previously un-swept instrument axes, not overturned. No oracle-flagged survivor, no STOP-AND-ALERT. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 27 merged 2026-09-07 (closeout, sweep IN-FLIGHT): 1 entry (R27-CPORT-MT32-FULLSWEEP, in-flight). Bit-exact C port of the R25 Py2.7-MT stage-A screen, gate GO at 128,529 seeds/s (V1 64/64 |d|=0, planted screen margin 12.9, false-reject 0/6, K4 95/95 zero relative difference), red-team NO-ERROR-FOUND on the GO gate; full 2^32 sweep launched on S1 (pair) + S2 (exact, control-gated). 0 claim-bar hits at 2.46% live. Verdict UNCHANGED until the sweep completes and candidates are Python-adjudicated. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 28 INTERIM merge 2026-09-15 (round OPEN -- S2 still sweeping, grind28 queue armed): 5 entries (R28-L1-CICADAOS-PADS-DENSE-PAIR negative, R28-L2-CONTESTED-BYTES negative [read half MEASURED: canon stands, independent blind instrument agrees with A-04 100% incl. all 3 byte flips; decode half 21.6M-decode variant battery 0 >= family bar], R28-L5-PAYLOAD-MICRO negative [E-01w/E-02v/H-03r remainders closed; '3301 in the P.S. digits' resolved as a layout artifact], R28-R-REDTEAM audit [2 passes: T1+T5 FOUND-ERROR process-class, second pass ERRORS-FOUND-NONE-SCIENTIFIC, 0 dropped candidates], R28-L4-UNSWEPT-GENERATORS-QUEUE in-flight [25 gated 2^32 PHP/glibc/S3 cells, zero coverage claimed, post-S2 chainer armed]). L3 (string-seed amd64 dictionary) still in-flight, row at lane close. R12-A1 not_covered filled per R28-R T1 patch. OTP-class verdict UNCHANGED -- hardened. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 30 merged 2026-09-28 ('Rendered Book' armada, 8 lanes + R29-L1 backfill): A1-FONT negative (runes are a deterministic vector font, no glyph-variant channel), A2-SUBPIXEL negative (no sub-pixel/kerning channel, ~2px threshold), A3-PDF-FORENSICS measured (ICC byte-identical to Ghostscript 9.06 Artifex srgb.icc -> toolchain narrowed to GS 9.04-9.14 [X1/R32 corrected from 9.01-9.15, see round18/L1]), B1-BLOB-CRYPTO negative (external-key symmetric battery on the 3 random blobs, 0 hits), B2-RSA-GPG negative (canon_256/folly/2.jpg carry no RSA/OpenPGP structure), C1-ART-ATTRIBUTION negative (no attributable hand; processed public-domain imagery), D1-LEDGER-AUDIT audit (soundness holds; 2 bookkeeping gaps fixed), E1-RENDER-REOPEN measured (6 contested pp49-51 bytes resolved to the token reading, canon_256 unchanged, decpref refuted). Backfilled R29-L1-ONION-STEGO negative (first real onion-image key-attack, 24,078 extractions, 0 hits) which supersedes B-10. OTP-class verdict for LP2 0-54 UNCHANGED -- extended (keyed-external-cipher on the 3 blobs now also NULL) and canonical record hardened. All 8 attack lanes adversarially verified refute-by-default; none downgraded. validate.py 5/5. | Round 32 X1 merged 2026-10-28: nav docs scoped (GS bound 9.04-9.14; Py2.7-MT 'coverage 1.00' is per-relation; transcription claim LP2-typeface-only, p27:93 unresolved); 8 not_covered:null rows filled (R12-A1 had been filled in R28); lanes I1/I2(audit)/I3/I4(audit)/B3(x2)/B1 filed after refute-by-default audit; I2 restatements applied to B-04/R16-KDF/R16-PRNG/R17-PUBLIC-PAD via r32_i2_restatement (original restated_from preserved); R32 lane-patch statuses normalised to the vocabulary. B2 (php mt_rand) not yet filed. | Round 33 X1 merged 2026-10-29: B1 patches applied (owner Option A on C-CANON-PAYLOAD-3BYTES; file move left to coordinator), B2 issue-12 + p27:93 rows, I1/I2/O1/X1 rows, drafted not_covered texts confirmed (tags dropped; F-01/H-03 reworded), R30-A1/A2/B1/B2/C1 not_covered filled, R18-L7 0.84 % doublet figure marked superseded in part, R32-B2 row corrected. | Round 34 X1 merged 2026-10-29: rows I1/I2/I3/S1/P1/X1 added; P1 reader-coverage extensions applied to C-CANON-PAYLOAD-3BYTES (status stays open until the rename), R16-KDF, R30-B1, R30-B2; R33-I2 'earned' relations struck, R33-B3/R32-B1/R32-B2 annotated, R33-O1 never-run -> partially-run; GS render band 9.05-9.14 noted on G-01 / R30-A3 (R34-S1 supersession of 9.04-9.14 at render level). | Round 35 X1 merged 2026-10-30 (partial: I1/P1/S1(skipped)/B2/X1; B1 and I3 not available at audit): I1 measured (bar met at 10.9x cost); P1 NO-MATCH (Welsh corpus unrecoverable, panel not rebuilt, S2 NOT resumed, S1 never-run); B2 legs measured, no change (R30-B1/B2 patched); R34-B1 corrected (PHP dense tier is prefiltered, store holds PHP rows only, sleep-gap misread). | Round 36 X1 merged 2026-10-30: lane rows I1/I2/I3/P1/S1/B2/O2/O3/O4 + X1 filed (B1 not available at audit time); S1 coverage recorded as mixed-instrument (44.138 % Round 19-gated + 1.28 % panel-R36); B2 patches applied to the real ids R32-B2-PHP-MT-RAND / R34-B1-ORBITS-V3-PFV3 with the shared-stream correction (R36 tier b is a subset of R32-B2's draw); O2 filed partially-run (a search has no positive control); I1 hash-seed finding recorded. | Round 37 X1 merged 2026-10-30: lanes T1/C1/C2(U4,U7,U8)/C3 filed after refute-by-default audit (+24 rows incl. retro-rows R10-L2-MAP, R10-L3-ROAD and X1; I1/I2 only if their RESULTS.md existed); F-02 -> partially-run; R11-*/R22-C/R10-* restated with an added 12-register result (original English-only result kept); U4 line-alignment error corrected; C3 post-data null swap recorded as threshold_fixed_in_advance=false on 4 rows."
+    "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF. Round 18 merged 2026-08-26: 8 lanes, 31 fragment entries. L7 restated the coverage of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD and B-21 -- every prior negative in this repo is an English-register negative, which no entry had stated. Original coverage text is preserved in each entry's `restated_from`. Two statuses were added in the Round 18 merge: `measured` (a definite non-null determination) and `audit` (a recomputation or coverage restatement, which has no null and no threshold). The positive-control gate still applies to `negative`/`eliminated` only, so it retains exactly its former force. | Round 19 merged 2026-08-26: 41 new entries, 10 restated. Instrument repaired (I1 decoder, I2 adjudicator, I3 thresholds); the -5.5 bar was wrong in 14/14 historical sweeps, usually too strict, and no verdict flips. Transcription closed by T1/T2/T3 from three independent directions: canon is correct. Payload bytes 45/50/246 corrected by C1, voiding B-05, which was re-run clean. | Round 21 merged 2026-08-29: 4 lane entries (R21-L1-SEAL, R21-L2-NSKIPS-CROSSOVER-LENGTH, R21-L3-PY27-REDUCERS, R21-L5-REDTEAM-SEAL). L1 KILL: the no-oracle disjoint-fold seal is provably leaky (best 0.80 catch @ 0.20 false-reject, cannot reach the pre-registered 0.90 bar; held-out false-reject drifts to 0.167) -> Round 21 HIT auto-certification WITHHELD, bar-clearing survivors flagged-for-oracle. L3 CLEAN NEGATIVE: 884k words across grb5_mod/grb5_rej/shuffle29 (i386) + random29 (amd64), 0 hits, 4/4 positive controls recover 1.000, best pmax 6.248 vs 7.634 bar; family bounded (>99.99% flat-prior tail + 2^64 amd64 image + S-G3 gaps) NOT closed. L2 (instrument): n_skips crossover L*=6000 on the exact keyskip1 relation (bracket (3600,6000]) -- any whole-book n_skips adjudication needs a window >= ~6000 runes; drift 'separation' is a left-tail artifact, skip_by_two is beam-unrepresentable. L5 red-team MIXED: confirms L1-KILL, and NO-ERROR-FOUND on no-silent-re-run, FP-inflation-not-reintroduced, and honest row gate. OTP-class verdict for LP2 0-54 UNCHANGED. NB: R20 lane bodies (P1/P2/P3/R/N1/N2) remain in analysis/round20/ prose; only L1-PRIOR-PROPAGATION and C-CANON-PAYLOAD-3BYTES were given central rows in the R20 merge. Round 22 merged 2026-08-29 (coordinator): 5 lanes. Lane B pre-merged R22-B-TURTLE + R22-C-LITERAL-IMPERATIVES (130->132); coordinator appended R22-A-SELFEMBEDDED-READ, R22-D-ILLUSTRATION-DROPCAP (both negative, control-validated) and R22-R-REDTEAM (audit, NO-ERROR-FOUND) -> 132->135. Round 22 read the four signed-hint channels for the first time: self-embedded plaintext acrostic (X2/A), numbers-as-direction (G1/B), koans-as-operations (X1/X3/X4/C), art-as-data (S3/D) -- all CLEAN control-validated NEGATIVES. Standing verdict unchanged: LP2 0-54 remains OTP-class. Sharpest surviving reopener = A's printed-line-geometry acrostic (real page-image line breaks). validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 26 merged 2026-08-31 (coordinator): 4 entries (R26-A-GEN-SWEEP-FIRST-FIRE partially-run, R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE partially-run, R26-C-SEMANTIC-SEED-ZOO negative, R26-D-REDTEAM audit). Lane A fired the built-but-never-swept generators for the FIRST time (R19-G2 Perl: was ZERO seeds; G4-TEX: was ZERO decodes) plus the Py2.7 reducers on the DISTINCT amd64-w64 / non-zero-offset / keyskip2 axis un-covered by R21-L3 -- control-validated at 1.000 recovery per generator, 0 clears over the prior-dense front (baseline tail still running, interim). Lane B executed R12-C2s staged-but-never-run 33-keytext running-key sweep skip-aware (rigid was already doublet-excluded): 0/1,562 clears, 3 of 9 pages complete at 4 offsets, control 1.000 both presets. Lane C enumerated the bounded 323-value corpus-SEMANTIC seed set x 7 generators (incl. the page-56 totient/prime ladder that solves page 05) x 2 skip-aware decoders = 4,274 rows at 100% coverage, control min recovery 0.9917, best screen -6.578 (flat-random), 0 escalated. Lane D red-team: NO-ERROR-FOUND, coverage x power reproduced, no silent re-run, no FP-inflation, two MINOR hygiene defects noted. OTP-class verdict for LP2 0-54 UNCHANGED -- HARDENED along three previously un-swept instrument axes, not overturned. No oracle-flagged survivor, no STOP-AND-ALERT. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 27 merged 2026-09-07 (closeout, sweep IN-FLIGHT): 1 entry (R27-CPORT-MT32-FULLSWEEP, in-flight). Bit-exact C port of the R25 Py2.7-MT stage-A screen, gate GO at 128,529 seeds/s (V1 64/64 |d|=0, planted screen margin 12.9, false-reject 0/6, K4 95/95 zero relative difference), red-team NO-ERROR-FOUND on the GO gate; full 2^32 sweep launched on S1 (pair) + S2 (exact, control-gated). 0 claim-bar hits at 2.46% live. Verdict UNCHANGED until the sweep completes and candidates are Python-adjudicated. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 28 INTERIM merge 2026-09-15 (round OPEN -- S2 still sweeping, grind28 queue armed): 5 entries (R28-L1-CICADAOS-PADS-DENSE-PAIR negative, R28-L2-CONTESTED-BYTES negative [read half MEASURED: canon stands, independent blind instrument agrees with A-04 100% incl. all 3 byte flips; decode half 21.6M-decode variant battery 0 >= family bar], R28-L5-PAYLOAD-MICRO negative [E-01w/E-02v/H-03r remainders closed; '3301 in the P.S. digits' resolved as a layout artifact], R28-R-REDTEAM audit [2 passes: T1+T5 FOUND-ERROR process-class, second pass ERRORS-FOUND-NONE-SCIENTIFIC, 0 dropped candidates], R28-L4-UNSWEPT-GENERATORS-QUEUE in-flight [25 gated 2^32 PHP/glibc/S3 cells, zero coverage claimed, post-S2 chainer armed]). L3 (string-seed amd64 dictionary) still in-flight, row at lane close. R12-A1 not_covered filled per R28-R T1 patch. OTP-class verdict UNCHANGED -- hardened. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 30 merged 2026-09-28 ('Rendered Book' armada, 8 lanes + R29-L1 backfill): A1-FONT negative (runes are a deterministic vector font, no glyph-variant channel), A2-SUBPIXEL negative (no sub-pixel/kerning channel, ~2px threshold), A3-PDF-FORENSICS measured (ICC byte-identical to Ghostscript 9.06 Artifex srgb.icc -> toolchain narrowed to GS 9.04-9.14 [X1/R32 corrected from 9.01-9.15, see round18/L1]), B1-BLOB-CRYPTO negative (external-key symmetric battery on the 3 random blobs, 0 hits), B2-RSA-GPG negative (canon_256/folly/2.jpg carry no RSA/OpenPGP structure), C1-ART-ATTRIBUTION negative (no attributable hand; processed public-domain imagery), D1-LEDGER-AUDIT audit (soundness holds; 2 bookkeeping gaps fixed), E1-RENDER-REOPEN measured (6 contested pp49-51 bytes resolved to the token reading, canon_256 unchanged, decpref refuted). Backfilled R29-L1-ONION-STEGO negative (first real onion-image key-attack, 24,078 extractions, 0 hits) which supersedes B-10. OTP-class verdict for LP2 0-54 UNCHANGED -- extended (keyed-external-cipher on the 3 blobs now also NULL) and canonical record hardened. All 8 attack lanes adversarially verified refute-by-default; none downgraded. validate.py 5/5. | Round 32 X1 merged 2026-10-28: nav docs scoped (GS bound 9.04-9.14; Py2.7-MT 'coverage 1.00' is per-relation; transcription claim LP2-typeface-only, p27:93 unresolved); 8 not_covered:null rows filled (R12-A1 had been filled in R28); lanes I1/I2(audit)/I3/I4(audit)/B3(x2)/B1 filed after refute-by-default audit; I2 restatements applied to B-04/R16-KDF/R16-PRNG/R17-PUBLIC-PAD via r32_i2_restatement (original restated_from preserved); R32 lane-patch statuses normalised to the vocabulary. B2 (php mt_rand) not yet filed. | Round 33 X1 merged 2026-10-29: B1 patches applied (owner Option A on C-CANON-PAYLOAD-3BYTES; file move left to coordinator), B2 issue-12 + p27:93 rows, I1/I2/O1/X1 rows, drafted not_covered texts confirmed (tags dropped; F-01/H-03 reworded), R30-A1/A2/B1/B2/C1 not_covered filled, R18-L7 0.84 % doublet figure marked superseded in part, R32-B2 row corrected. | Round 34 X1 merged 2026-10-29: rows I1/I2/I3/S1/P1/X1 added; P1 reader-coverage extensions applied to C-CANON-PAYLOAD-3BYTES (status stays open until the rename), R16-KDF, R30-B1, R30-B2; R33-I2 'earned' relations struck, R33-B3/R32-B1/R32-B2 annotated, R33-O1 never-run -> partially-run; GS render band 9.05-9.14 noted on G-01 / R30-A3 (R34-S1 supersession of 9.04-9.14 at render level). | Round 35 X1 merged 2026-10-30 (partial: I1/P1/S1(skipped)/B2/X1; B1 and I3 not available at audit): I1 measured (bar met at 10.9x cost); P1 NO-MATCH (Welsh corpus unrecoverable, panel not rebuilt, S2 NOT resumed, S1 never-run); B2 legs measured, no change (R30-B1/B2 patched); R34-B1 corrected (PHP dense tier is prefiltered, store holds PHP rows only, sleep-gap misread). | Round 36 X1 merged 2026-10-30: lane rows I1/I2/I3/P1/S1/B2/O2/O3/O4 + X1 filed (B1 not available at audit time); S1 coverage recorded as mixed-instrument (44.138 % Round 19-gated + 1.28 % panel-R36); B2 patches applied to the real ids R32-B2-PHP-MT-RAND / R34-B1-ORBITS-V3-PFV3 with the shared-stream correction (R36 tier b is a subset of R32-B2's draw); O2 filed partially-run (a search has no positive control); I1 hash-seed finding recorded. | Round 37 X1 merged 2026-10-30: lanes T1/C1/C2(U4,U7,U8)/C3 filed after refute-by-default audit (+24 rows incl. retro-rows R10-L2-MAP, R10-L3-ROAD and X1; I1/I2 only if their RESULTS.md existed); F-02 -> partially-run; R11-*/R22-C/R10-* restated with an added 12-register result (original English-only result kept); U4 line-alignment error corrected; C3 post-data null swap recorded as threshold_fixed_in_advance=false on 4 rows. | Round 38 X1 merged 2026-10-31: lanes S1 (window 1 only; window 2 unrecovered, not counted; coverage per instrument on R27-CPORT-MT32-FULLSWEEP), S2 (never-run, zero coverage on R32-B2), C1 (2 rows; F-02 stays partially-run; O4 H3xF5 NEVER -> PARTIAL), I1 (inconclusive, control failed; D2 not the pre-registered D2) filed after refute-by-default audit; C2 (G1/G2/G3, N5N4-L240 [flagged, pending owner], 7 O4 cells run: 4 TRIED + 3 PARTIAL, 34 no-operation-stated) and I2 (X4 bespoke null) filed after audit (+12 rows incl. X1)."
   },
   "entries": [
     {
@@ -1200,7 +1200,7 @@
       "control_detail": null,
       "null": null,
       "result": null,
-      "coverage": "Round 9 DIRECTION (2,670 readings, negative, no positive control); Round 10 L2-map M1-M9 and L3-road T1-T5 (English-only, cleartext layer of the ciphertext); Round 37 C1: clause strings as seeds/keys (8,832 decodes), LP1 numbers as key schedules (3,072), composed map-road-direction rule (4,176), all panel-R36 12 registers, controls passed, all below bars at actual N.",
+      "coverage": "Round 9 DIRECTION (2,670 readings, negative, no positive control); Round 10 L2-map M1-M9 and L3-road T1-T5 (English-only, cleartext layer of the ciphertext); Round 37 C1: clause strings as seeds/keys (8,832 decodes), LP1 numbers as key schedules (3,072), composed map-road-direction rule (4,176), all panel-R36 12 registers, controls passed, all below bars at actual N. | Round 38 C1: 'meaning' operationalized as WordNet 3.1 first-synset FILE OFFSET (arbitrary address, not sense similarity) and as Norvig frequency rank (not a meaning at all), 3 reductions x 3 modes x pages 0-2, 28,224 decodes, all below bars (best 5.30 vs 7.85).",
       "not_covered": "meaning as dictionary semantics; reads of the clauses other than C1's operationalizations; non-English reads of the Round 10 cleartext streams (O4 U5)",
       "reproduce": null,
       "supersedes": null,
@@ -1220,9 +1220,12 @@
         "R37-C1-U2-LP1-NUMBER-SCHEDULES",
         "R37-C1-U3-COMPOSED-MAP-ROAD-DIRECTION",
         "R10-L2-MAP",
-        "R10-L3-ROAD"
+        "R10-L3-ROAD",
+        "R38-C1-SEMANTIC-WORDNET",
+        "R38-C1-SEMANTIC-FREQRANK"
       ],
-      "x1_r37": "X1/R37: C1's patch set status=measured; X1 sets partially-run because the semantic reading of 'meaning' and several literal alternatives of the composed rule are untested (R7: bounds, not verdicts)."
+      "x1_r37": "X1/R37: C1's patch set status=measured; X1 sets partially-run because the semantic reading of 'meaning' and several literal alternatives of the composed rule are untested (R7: bounds, not verdicts).",
+      "x1_r38": "X1/R38: stays partially-run. C1-R38 operationalized 'meaning' only as the first-synset file offset (an identifier) and as a frequency rank; sense similarity / hypernym classes / synonym sets, all senses, other lexicons are untested."
     },
     {
       "id": "G-01",
@@ -5143,7 +5146,8 @@
         "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
         "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
       },
-      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`negative`). The R37 verdict for the data-dependent / derived-stream halves uses a doublet-matched null chosen after the first pass (see the R37-C3 rows)."
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`negative`). The R37 verdict for the data-dependent / derived-stream halves uses a doublet-matched null chosen after the first pass (see the R37-C3 rows).",
+      "r38_i2": "R38 I2: the transferred actual-N bars undercut the true X4 null (bespoke q99 6.994 vs 5.69 at L=120; 7.92 vs 6.04 at L=240); 0 of 120 non-degenerate X4 rows clear at either L (best 4.779 / 5.455, family-wise p 0.87 / 0.98); the degenerate filter removes only the two constant-decode configs (raw 8.70 / 12.40 = recognizer failure). Verdict negative, unchanged; the L=240 null is partial (121 draws)."
     },
     {
       "id": "R22-B-TURTLE-SPATIAL-RENDER",
@@ -6350,11 +6354,20 @@
         "liber-primus/analysis/round27/P1-engine/run/HIT-CANDIDATE.json",
         "liber-primus/handoff/PARKED-SWEEPS.md",
         "liber-primus/analysis/round36/P1-panel-r36/GATE-CHANGE.md",
-        "liber-primus/analysis/round36/S1-s2-window/RESULTS.md"
+        "liber-primus/analysis/round36/S1-s2-window/RESULTS.md",
+        "liber-primus/analysis/round38/S1-s2-windows/RESULTS.md"
       ],
       "r35_p1": "R35-P1 (2026-10-30): resume of S2 remains BLOCKED. The engine self-test gates on round19/I2/models/panel.npz (sha 14a23d36...), which needs the Welsh CY corpus (recorded sha 4b3fd926..., 524,561 B); that corpus is unrecoverable (R35-P1-R19-PANEL-RESTORE) and R35-S1 was skipped. S2 was NOT resumed in Round 35: still PARKED at 44.14 % (1,895,728,884 / 2^32).",
       "r36_p1": "Round 36 P1 (2026-10-30): the Round 19 panel gate (panel_lm.f32 sha 14a23d36..) is unrebuildable (Welsh corpus lost). The 44.14 % S2 coverage and the completed S1 lane were produced under that gate and remain recorded as such, not re-scored. Any S2 work after the re-gate is adjudicated by panel-R36 (12 registers, panel12.npz a0682f0c.., engine blob e46d4bb7..) and is a NEW measurement, not a continuation of the Round 19-gated rows; pmax values are not comparable across the change (28/64 V1 vectors move). Claim bars 7.3835 / 7.6342 are Round 19-panel quantities, not recalibrated. See round36/P1-panel-r36/GATE-CHANGE.md.",
-      "r36_s1": "Round 36 S1 (2026-10-30): S2 cursor coverage advanced 44.138 % -> 45.418 % (1,895,728,884 -> 1,950,696,430 of 2^32) by a 35-min sandbox window; 54,967,546 seeds, 0 claim-bar crossers, 0 near-misses (best pmax 7.1256). MIXED-INSTRUMENT (X1): only the 1.2798 pp window is adjudicated by panel-R36; the 44.138 % stays Round 19-gated and unre-scored, so the panel-R36 coverage is 1.28 %. Histogram/top list reset; claim bars uncalibrated. State: STATUS cursors in round36/S1-s2-window/state_after/; lists only in sandbox snapshot snap_fWma12lA4k5RXsR6LHPwhV2p0DnN. See R36-S1-S2-WINDOW."
+      "r36_s1": "Round 36 S1 (2026-10-30): S2 cursor coverage advanced 44.138 % -> 45.418 % (1,895,728,884 -> 1,950,696,430 of 2^32) by a 35-min sandbox window; 54,967,546 seeds, 0 claim-bar crossers, 0 near-misses (best pmax 7.1256). MIXED-INSTRUMENT (X1): only the 1.2798 pp window is adjudicated by panel-R36; the 44.138 % stays Round 19-gated and unre-scored, so the panel-R36 coverage is 1.28 %. Histogram/top list reset; claim bars uncalibrated. State: STATUS cursors in round36/S1-s2-window/state_after/; lists only in sandbox snapshot snap_fWma12lA4k5RXsR6LHPwhV2p0DnN. See R36-S1-S2-WINDOW.",
+      "r38_s1": "Round 38 S1 (2026-10-30/31; X1-audited): S2 (exact) coverage BY INSTRUMENT: Round 19 panel 44.138 % (cursor 1,895,728,884, unchanged, not re-scored); panel-R36 3.809 pp (163,579,124 seeds = R36 54,967,546 + R38 window 1 108,611,578), 0 claim-bar crossers, 0 near-misses (best 7.3007 @ 3905907872). Engine cursor sum 2,059,308,008 = 47.947 % is mixed-instrument, not a single-instrument fraction. Window 2 was launched but is NOT counted (end state unrecovered, snap_ff0SWU76EW32OqbWJvp00fnORypR). The S2 exact-relation control is now independently validated (3/3, control_exact.json); this discharges the 'S2 null does not count until its own planted control passes' clause for the exact-lane stage-A control only (the full hitfn20 gate was not re-run).",
+      "coverage_by_instrument": {
+        "round19_panel_fraction": 0.441383776,
+        "panel_R36_fraction": 0.038086,
+        "panel_R36_seeds": 163579124,
+        "engine_cursor_sum_mixed": 0.479470009,
+        "window_2": "unrecovered, not counted"
+      }
     },
     {
       "id": "R28-L1-CICADAOS-PADS-DENSE-PAIR",
@@ -7147,7 +7160,8 @@
       "notes": "Filed by the R32 coordinator from the lane's ledger_patches.json; status/positive_control vocabulary normalised as X1 did for B1/B3. Legacy twist cross-checked against php 8.5.4 MT_RAND_PHP via round28/L4/gen28.py, not a PHP 5 binary. Tier (b) = 0.970% uniform sample of 2^32 per twist; remainder deferred to the R28-L4 queue (~71 h at laptop rate). analysis/round32/I2-multiregister-readjudication/models/panel.npz",
       "x1_r33": "NO-ERROR-FOUND on counts/arithmetic; FOUND-ERROR (minor) on source_register, control wording, with-replacement coverage (corrected in this row).",
       "x1_r34": "X1/R34: the 0.47 EN_NOVOWEL prefilter power REPRODUCES (R32 logic re-run: 0.555-0.62 at m=18/24, q0.999, vs stored 0.51-0.62); it is a property of the skip process, not a planting artefact (R34-I2's contrary claim is the FOUND-ERROR). R34-I2's replacement screen (lse, m=20) has operative power about 0.66 NOVOWEL / 0.71 EN_MODERN at FPR 1e-3 on skip-process plants. No change to this row's numbers.",
-      "r36_b2": "R36-B2 (2026-10-30, X1-audited): re-ran the four PHP cells awake under pf_v4 + v3 on tier a (48,036: 9,767 unfiltered, 38,269 via pf_v4) and tier b = the first 199 blocks (26,083,328 seeds, 0.6073 % of 2^32) of the SAME default_rng(3301) stream this row drew 318 blocks from. So R36 adds no new seeds beyond this row's 0.9705 %; it raises screen power on 62.6 % of them (pf_v4 0.94-0.99 vs 0.47-0.74), v3-decodes every survivor and persists 263,906 validated rows. 0 flagged, best 6.608 vs bar 7.941 (actual N). The other 119 blocks of this row's draw keep the R32 prefilter power. See R36-B2-PHP-AWAKE-PFV4."
+      "r36_b2": "R36-B2 (2026-10-30, X1-audited): re-ran the four PHP cells awake under pf_v4 + v3 on tier a (48,036: 9,767 unfiltered, 38,269 via pf_v4) and tier b = the first 199 blocks (26,083,328 seeds, 0.6073 % of 2^32) of the SAME default_rng(3301) stream this row drew 318 blocks from. So R36 adds no new seeds beyond this row's 0.9705 %; it raises screen power on 62.6 % of them (pf_v4 0.94-0.99 vs 0.47-0.74), v3-decodes every survivor and persists 263,906 validated rows. 0 flagged, best 6.608 vs bar 7.941 (actual N). The other 119 blocks of this row's draw keep the R32 prefilter power. See R36-B2-PHP-AWAKE-PFV4.",
+      "r38_s2": "Round 38 S2 (X1-audited): tier (b) coverage added = ZERO seeds. The sandbox sessions were lost with no retained rows, control or FPR file; the log-observed numbers (12-register FPR 8.58e-4, 240 plants, throughput) are NOT evidence. R32 tier-b 0.970 % per twist and R36's 0.607 % per cell are unchanged. See R38-S2-PHP-SANDBOX (never-run)."
     },
     {
       "id": "R33-I1-REGISTER-AWARE-BEAM",
@@ -7953,7 +7967,8 @@
         "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
         "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
       },
-      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`). The R37 verdict for the data-dependent / derived-stream halves uses a doublet-matched null chosen after the first pass (see the R37-C3 rows)."
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`). The R37 verdict for the data-dependent / derived-stream halves uses a doublet-matched null chosen after the first pass (see the R37-C3 rows).",
+      "r38_c2": "R38 C2 n5n4: top-50 rows re-run at L=240 (L=120 reproduction 200/200 exact): best N5 7.446 (LATIN; screen-N bar 7.376), N4 8.553/8.572 (EN_HALFVOWEL; screen-N bar 6.45); below the N=1e6 bars (9.51/9.15); inside a cipher-derived-key matched null (fixed-config, D=22/30: p 0.74-0.78 / 0.16; X1 recomputed from null_N4/N5.jsonl); decodes are non-language. Flagged-for-oracle bundle pending owner. Verdict unchanged (negative, conditional)."
     },
     {
       "id": "R11-N5-NUMBER-CHANNEL",
@@ -7987,7 +8002,8 @@
         "transition_model": "keyskip1 + keyskip2 under beam_v3 panel_max for beam families; skip-free for N1-PT PT-feedback and for all direct (key-free) streams",
         "adjudicator_register": "panel-R36, 12 registers; positive controls planted EN_MODERN/LATIN/GREEK only"
       },
-      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`)."
+      "x1_r37": "X1/R37: C3's patch text 'English-only/legacy-beam conditional replaced ... remains negative' is corrected: the ORIGINAL result stays an English-only/legacy-beam result (kept above); R37 C3 ADDS a second, re-scored result under the 12-register conditional (three_conditionals_r37_c3, coverage); status unchanged (`measured`).",
+      "r38_c2": "R38 C2 n5n4: top-50 rows re-run at L=240 (L=120 reproduction 200/200 exact): best N5 7.446 (LATIN; screen-N bar 7.376), N4 8.553/8.572 (EN_HALFVOWEL; screen-N bar 6.45); below the N=1e6 bars (9.51/9.15); inside a cipher-derived-key matched null (fixed-config, D=22/30: p 0.74-0.78 / 0.16; X1 recomputed from null_N4/N5.jsonl); decodes are non-language. Flagged-for-oracle bundle pending owner. Verdict unchanged (negative, conditional)."
     },
     {
       "id": "R11-S1-NUMBER-CHANNEL",
@@ -8456,7 +8472,8 @@
         "liber-primus/analysis/round36/O4-clue-coverage/RESULTS.md"
       ],
       "reproduce": "py analysis/round36/O4-clue-coverage/build_data.py && py analysis/round36/O4-clue-coverage/build_matrix.py",
-      "x1_r36": "X1/R36: counts reproduce (68+24+29+3+16 = 140 applicable of 374; 154 clue entries incl. 7 clause entries; 132 mapped); pgp/messages holds 58 files = 37 covered + 21 'ky_*' duplicates (bodies already in clues.json; the gap is undocumented but not a coverage hole). FOUND-ERROR (classification): matrix cells H7 x F2 and H12 x F2 are NEVER, but the 2012 P.S. digit string and the 2013 handle 1231507051321 were run as numeric additive keystreams in R10b B1 (b1_keys.py:138, 'NUMER' keys, row R30) and, skip-aware, in campaign18 numeric2_skip.py:170-205, and the P.S. digits as seeds in R26-C; these are F4 in O4's scheme but are number-as-key readings, so NEVER count is overstated by >= 2 (66). Not re-run."
+      "x1_r36": "X1/R36: counts reproduce (68+24+29+3+16 = 140 applicable of 374; 154 clue entries incl. 7 clause entries; 132 mapped); pgp/messages holds 58 files = 37 covered + 21 'ky_*' duplicates (bodies already in clues.json; the gap is undocumented but not a coverage hole). FOUND-ERROR (classification): matrix cells H7 x F2 and H12 x F2 are NEVER, but the 2012 P.S. digit string and the 2013 handle 1231507051321 were run as numeric additive keystreams in R10b B1 (b1_keys.py:138, 'NUMER' keys, row R30) and, skip-aware, in campaign18 numeric2_skip.py:170-205, and the P.S. digits as seeds in R26-C; these are F4 in O4's scheme but are number-as-key readings, so NEVER count is overstated by >= 2 (66). Not re-run.",
+      "x1_r38_cell_moves": "X1/R38: C1's patch id 'O4-MATRIX-H-F5' names no row; the only O4 F5 cell whose clue is 'their meaning is the road' is H3 x F5 (matrix.md line 13). NEVER -> PARTIAL (one lexicon, first sense only, offset value). The other 18 F5 cells are NOT touched by C1-R38 (C2 labelled all 19 'C1-R38'; that overstates). C2's seven run cells: H5xF1, H6xF2, L17xF7, L4xF3 -> TRIED; L8xF6 (period-4 AP keys only), L15xF6, L15xF7 (held 5x5 only) -> PARTIAL (subfamily, not the cell); 34 -> NO-OPERATION-STATED. Recount (o4_recount_r38.json): NEVER 60 -> 18; TRIED 31 -> 35; TRIED-EN 21; TRIED-LEG 25; PARTIAL 3 -> 7; NO-OPERATION-STATED 34 (sum 140). The coordinator may move the judgement calls."
     },
     {
       "id": "R36-X1-REDTEAM",
@@ -8550,7 +8567,11 @@
       "reopens_if": "a clue-derived string beyond candidates.json is proposed with a stated reading; or the key is shown to be a hash/KDF output of a string whose form is not UPPER/as-written.",
       "notes": "Correction to O4 untried.md U1: 38 of 41 LP1-imperative/clue strings were already in round13/B04 lp_line/lp_word seeds (SHA/legacy route); only round26/C and the R16 core list lacked them.",
       "lane_dir": "C1-composed-clue-readings",
-      "x1_r37": "X1/R37: (i) candidates.json holds 5 of the 7 clauses of the signed 2016 message (C-2016-1..5); C-2016-6 'Seek and you will be found' and C-2016-7 'Beware false paths. Verify OpenPGP 7A35090F' (O4 clues.json) are in neither stratum, so the U1 claim '2016 clauses' is 5/7 (the two were run only as legacy Vigenere keywords, R10b B1). (ii) the U3 composition labelled 'literal' (map = LP1 word list, road = position/rune offset/length, direction = LP1-entry number) is C1's operationalization, not the only literal reading: 'its words' may be LP2's own words; a cipher-word gematria pointer (lagged one word, so well-formed) and the O4 untried.md U3 seed orders/value types (6 orders, 4 v, atbash, '&' '$' boundaries) were not run. (ii-b) U2's 'line' sequences come from the koans file, which matches the printed lines (data/scream314_lp.md, used by C2-U4) only on A WARNING (05/06/03/14/73 differ); the literal printed-line sums were not run, contrary to C1's 'not otherwise recorded'. (iii) re-runs: fresh-seed U1 plants (direct/ks2, sha256ctr/ks1) rank 1 of 83/76; U3 rho1-A3 ks1/ks2 and rho3-A2 plants recovered 1.000; sweep_rows.jsonl = header + 17,392 rows, stock validate_store ok."
+      "x1_r37": "X1/R37: (i) candidates.json holds 5 of the 7 clauses of the signed 2016 message (C-2016-1..5); C-2016-6 'Seek and you will be found' and C-2016-7 'Beware false paths. Verify OpenPGP 7A35090F' (O4 clues.json) are in neither stratum, so the U1 claim '2016 clauses' is 5/7 (the two were run only as legacy Vigenere keywords, R10b B1). (ii) the U3 composition labelled 'literal' (map = LP1 word list, road = position/rune offset/length, direction = LP1-entry number) is C1's operationalization, not the only literal reading: 'its words' may be LP2's own words; a cipher-word gematria pointer (lagged one word, so well-formed) and the O4 untried.md U3 seed orders/value types (6 orders, 4 v, atbash, '&' '$' boundaries) were not run. (ii-b) U2's 'line' sequences come from the koans file, which matches the printed lines (data/scream314_lp.md, used by C2-U4) only on A WARNING (05/06/03/14/73 differ); the literal printed-line sums were not run, contrary to C1's 'not otherwise recorded'. (iii) re-runs: fresh-seed U1 plants (direct/ks2, sha256ctr/ks1) rank 1 of 83/76; U3 rho1-A3 ks1/ks2 and rho3-A2 plants recovered 1.000; sweep_rows.jsonl = header + 17,392 rows, stock validate_store ok.",
+      "r38_c2": "clauses 6/7 now run (R38-C2-G1-CLAUSES-6-7, 384 decodes, best 4.26/4.32 vs 5.99/5.91); the '2016 clauses' conditional is now 7/7 for the three routes (direct, SHA-256-CTR, PBKDF2)",
+      "related": [
+        "R38-C2-G1-CLAUSES-6-7"
+      ]
     },
     {
       "round": 37,
@@ -8582,7 +8603,11 @@
       "not_covered": "phi(p)/prime-index channels; atbash; schedules applied per ciphertext line or per page; jump direction minus; base keys other than the LP1 rune stream (b); starting sequence index other than 0 with offset only 0..7 in the sequence; pages > 2 as separate restarts; per-word constant (non-stream) application is U3 A1; LP1 printed line breaks; heads with >2 skips; free relation.",
       "reopens_if": "a stated reading fixes the base key / sequence start for (b), or the printed LP1 line layout is recovered and per-line sums differ from the text lines used here.",
       "lane_dir": "C1-composed-clue-readings",
-      "x1_r37": "X1/R37: (i) candidates.json holds 5 of the 7 clauses of the signed 2016 message (C-2016-1..5); C-2016-6 'Seek and you will be found' and C-2016-7 'Beware false paths. Verify OpenPGP 7A35090F' (O4 clues.json) are in neither stratum, so the U1 claim '2016 clauses' is 5/7 (the two were run only as legacy Vigenere keywords, R10b B1). (ii) the U3 composition labelled 'literal' (map = LP1 word list, road = position/rune offset/length, direction = LP1-entry number) is C1's operationalization, not the only literal reading: 'its words' may be LP2's own words; a cipher-word gematria pointer (lagged one word, so well-formed) and the O4 untried.md U3 seed orders/value types (6 orders, 4 v, atbash, '&' '$' boundaries) were not run. (ii-b) U2's 'line' sequences come from the koans file, which matches the printed lines (data/scream314_lp.md, used by C2-U4) only on A WARNING (05/06/03/14/73 differ); the literal printed-line sums were not run, contrary to C1's 'not otherwise recorded'. (iii) re-runs: fresh-seed U1 plants (direct/ks2, sha256ctr/ks1) rank 1 of 83/76; U3 rho1-A3 ks1/ks2 and rho3-A2 plants recovered 1.000; sweep_rows.jsonl = header + 17,392 rows, stock validate_store ok."
+      "x1_r37": "X1/R37: (i) candidates.json holds 5 of the 7 clauses of the signed 2016 message (C-2016-1..5); C-2016-6 'Seek and you will be found' and C-2016-7 'Beware false paths. Verify OpenPGP 7A35090F' (O4 clues.json) are in neither stratum, so the U1 claim '2016 clauses' is 5/7 (the two were run only as legacy Vigenere keywords, R10b B1). (ii) the U3 composition labelled 'literal' (map = LP1 word list, road = position/rune offset/length, direction = LP1-entry number) is C1's operationalization, not the only literal reading: 'its words' may be LP2's own words; a cipher-word gematria pointer (lagged one word, so well-formed) and the O4 untried.md U3 seed orders/value types (6 orders, 4 v, atbash, '&' '$' boundaries) were not run. (ii-b) U2's 'line' sequences come from the koans file, which matches the printed lines (data/scream314_lp.md, used by C2-U4) only on A WARNING (05/06/03/14/73 differ); the literal printed-line sums were not run, contrary to C1's 'not otherwise recorded'. (iii) re-runs: fresh-seed U1 plants (direct/ks2, sha256ctr/ks1) rank 1 of 83/76; U3 rho1-A3 ks1/ks2 and rho3-A2 plants recovered 1.000; sweep_rows.jsonl = header + 17,392 rows, stock validate_store ok.",
+      "r38_c2": "printed-line sums now run (R38-C2-G2-PRINTED-LINE-SUMS, 768 decodes, best 4.57/4.54 vs 6.25/6.16); X1 re-checked that the position array is aligned with the physical line lengths on all six pages (rerun_g2_align.json; the R37 U4 misalignment class is absent)",
+      "related": [
+        "R38-C2-G2-PRINTED-LINE-SUMS"
+      ]
     },
     {
       "round": 37,
@@ -8614,7 +8639,11 @@
       "not_covered": "semantic (dictionary-meaning) indexing of ciphertext words; pointer from word gematria; alternative codebooks (LP1 sentences/lines, other books); rule applied across page boundaries with k not restarting beyond page-0 head; atbash; start index beyond 28; M other than 29/28; detail of how a real author would handle interrupters inside words; composition orders other than road-then-direction; pages > 2 as heads; free relation.",
       "reopens_if": "a reading of 'meaning' that yields a determinate per-word index (not position/length) is stated; or the LP1 codebook order is shown to differ from document order.",
       "lane_dir": "C1-composed-clue-readings",
-      "x1_r37": "X1/R37: (i) candidates.json holds 5 of the 7 clauses of the signed 2016 message (C-2016-1..5); C-2016-6 'Seek and you will be found' and C-2016-7 'Beware false paths. Verify OpenPGP 7A35090F' (O4 clues.json) are in neither stratum, so the U1 claim '2016 clauses' is 5/7 (the two were run only as legacy Vigenere keywords, R10b B1). (ii) the U3 composition labelled 'literal' (map = LP1 word list, road = position/rune offset/length, direction = LP1-entry number) is C1's operationalization, not the only literal reading: 'its words' may be LP2's own words; a cipher-word gematria pointer (lagged one word, so well-formed) and the O4 untried.md U3 seed orders/value types (6 orders, 4 v, atbash, '&' '$' boundaries) were not run. (ii-b) U2's 'line' sequences come from the koans file, which matches the printed lines (data/scream314_lp.md, used by C2-U4) only on A WARNING (05/06/03/14/73 differ); the literal printed-line sums were not run, contrary to C1's 'not otherwise recorded'. (iii) re-runs: fresh-seed U1 plants (direct/ks2, sha256ctr/ks1) rank 1 of 83/76; U3 rho1-A3 ks1/ks2 and rho3-A2 plants recovered 1.000; sweep_rows.jsonl = header + 17,392 rows, stock validate_store ok."
+      "x1_r37": "X1/R37: (i) candidates.json holds 5 of the 7 clauses of the signed 2016 message (C-2016-1..5); C-2016-6 'Seek and you will be found' and C-2016-7 'Beware false paths. Verify OpenPGP 7A35090F' (O4 clues.json) are in neither stratum, so the U1 claim '2016 clauses' is 5/7 (the two were run only as legacy Vigenere keywords, R10b B1). (ii) the U3 composition labelled 'literal' (map = LP1 word list, road = position/rune offset/length, direction = LP1-entry number) is C1's operationalization, not the only literal reading: 'its words' may be LP2's own words; a cipher-word gematria pointer (lagged one word, so well-formed) and the O4 untried.md U3 seed orders/value types (6 orders, 4 v, atbash, '&' '$' boundaries) were not run. (ii-b) U2's 'line' sequences come from the koans file, which matches the printed lines (data/scream314_lp.md, used by C2-U4) only on A WARNING (05/06/03/14/73 differ); the literal printed-line sums were not run, contrary to C1's 'not otherwise recorded'. (iii) re-runs: fresh-seed U1 plants (direct/ks2, sha256ctr/ks1) rank 1 of 83/76; U3 rho1-A3 ks1/ks2 and rho3-A2 plants recovered 1.000; sweep_rows.jsonl = header + 17,392 rows, stock validate_store ok.",
+      "r38_c2": "lag-1 cipher-word / decoded-word pointers now run (R38-C2-G3-LAGGED-POINTERS, 576 decodes, best 4.91 vs 5.73); not run: dw inside the beam, lag > 1, s > 0",
+      "related": [
+        "R38-C2-G3-LAGGED-POINTERS"
+      ]
     },
     {
       "id": "R10-L2-MAP",
@@ -9005,7 +9034,8 @@
       "positive_control": "passed",
       "control_detail": "control.json beam N4ks 12/12; direct U6a_N4_read",
       "lane_dir": "C3-rescore-reopened",
-      "x1_r37": "X1/R37: the doublet-matched null (and, for N1-PT, the two-statistic rule) replaced the first-pass plain-shuffle null AFTER the first-pass real-data results existed (superseded_plain_shuffle_null/: p(Z) 0.0066 N1-PT, 0.0050 N2, 0.0033 N4-read, all < 0.01, became 0.41-0.50 under the final null). The replacement is mechanically justified (LP2 has 86 adjacent equal pairs; a plain shuffle gives ~447) and moves toward fewer hits, but it is a post-data change to the test, so threshold_fixed_in_advance is false for this row and the verdict rests on the final null being right. The raw-pmax statistic has marginal planted power in N2 (LATIN plant 111.31 vs null q99 111.12)."
+      "x1_r37": "X1/R37: the doublet-matched null (and, for N1-PT, the two-statistic rule) replaced the first-pass plain-shuffle null AFTER the first-pass real-data results existed (superseded_plain_shuffle_null/: p(Z) 0.0066 N1-PT, 0.0050 N2, 0.0033 N4-read, all < 0.01, became 0.41-0.50 under the final null). The replacement is mechanically justified (LP2 has 86 adjacent equal pairs; a plain shuffle gives ~447) and moves toward fewer hits, but it is a post-data change to the test, so threshold_fixed_in_advance is false for this row and the verdict rests on the final null being right. The raw-pmax statistic has marginal planted power in N2 (LATIN plant 111.31 vs null q99 111.12).",
+      "r38_c2": "R38 C2 n5n4: top-50 rows re-run at L=240 (L=120 reproduction 200/200 exact): best N5 7.446 (LATIN; screen-N bar 7.376), N4 8.553/8.572 (EN_HALFVOWEL; screen-N bar 6.45); below the N=1e6 bars (9.51/9.15); inside a cipher-derived-key matched null (fixed-config, D=22/30: p 0.74-0.78 / 0.16; X1 recomputed from null_N4/N5.jsonl); decodes are non-language. Flagged-for-oracle bundle pending owner. Verdict unchanged (negative, conditional)."
     },
     {
       "round": 37,
@@ -9035,7 +9065,8 @@
       "reopens_if": "a window clearing the actual-N bar then L=240",
       "control_detail": "control.json beam N5 12/12 + AN END real artifact (recovery 1.00/0.93; pmax 8.93/9.00 at n=85 < L=120)",
       "lane_dir": "C3-rescore-reopened",
-      "x1_r37": "X1/R37: best 6.304 (CY) vs actual-N bar 6.897 recomputed from null12.json; under the transferred GPD tail P(max of 2,320 >= 6.304) ~ 0.05, and the next row (6.244, same generator phi_phi_prime_RI s-1, window 9600) is similar: the closest row is not noise-level by construction. Neither went to L=240 (rule: only actual-N clearers do). An L=240 follow-up on the top-5 is cheap."
+      "x1_r37": "X1/R37: best 6.304 (CY) vs actual-N bar 6.897 recomputed from null12.json; under the transferred GPD tail P(max of 2,320 >= 6.304) ~ 0.05, and the next row (6.244, same generator phi_phi_prime_RI s-1, window 9600) is similar: the closest row is not noise-level by construction. Neither went to L=240 (rule: only actual-N clearers do). An L=240 follow-up on the top-5 is cheap.",
+      "r38_c2": "R38 C2 n5n4: top-50 rows re-run at L=240 (L=120 reproduction 200/200 exact): best N5 7.446 (LATIN; screen-N bar 7.376), N4 8.553/8.572 (EN_HALFVOWEL; screen-N bar 6.45); below the N=1e6 bars (9.51/9.15); inside a cipher-derived-key matched null (fixed-config, D=22/30: p 0.74-0.78 / 0.16; X1 recomputed from null_N4/N5.jsonl); decodes are non-language. Flagged-for-oracle bundle pending owner. Verdict unchanged (negative, conditional)."
     },
     {
       "round": 37,
@@ -9121,7 +9152,8 @@
       "reopens_if": "as R22-C: width!=4, non-zero offsets, drift constructions beyond keyskip",
       "control_detail": "control.json: inverse-op plants (decimation, deinterleave, reversal+shift) for X1/X3a; beam plants for X3b/X4 12/12",
       "lane_dir": "C3-rescore-reopened",
-      "x1_r37": "X1/R37: the doublet-matched null (and, for N1-PT, the two-statistic rule) replaced the first-pass plain-shuffle null AFTER the first-pass real-data results existed (superseded_plain_shuffle_null/: p(Z) 0.0066 N1-PT, 0.0050 N2, 0.0033 N4-read, all < 0.01, became 0.41-0.50 under the final null). The replacement is mechanically justified (LP2 has 86 adjacent equal pairs; a plain shuffle gives ~447) and moves toward fewer hits, but it is a post-data change to the test, so threshold_fixed_in_advance is false for this row and the verdict rests on the final null being right. The raw-pmax statistic has marginal planted power in N2 (LATIN plant 111.31 vs null q99 111.12). Degenerate-decode filter (mds<=6 or IoC*N>=4.24, decided after the keyed pass) removed only constant-output decodes (X4 prime_index atbash_pre/none, mds=1, IoC*N 27-29; 12 rows/rel/L): audited, no non-constant row removed."
+      "x1_r37": "X1/R37: the doublet-matched null (and, for N1-PT, the two-statistic rule) replaced the first-pass plain-shuffle null AFTER the first-pass real-data results existed (superseded_plain_shuffle_null/: p(Z) 0.0066 N1-PT, 0.0050 N2, 0.0033 N4-read, all < 0.01, became 0.41-0.50 under the final null). The replacement is mechanically justified (LP2 has 86 adjacent equal pairs; a plain shuffle gives ~447) and moves toward fewer hits, but it is a post-data change to the test, so threshold_fixed_in_advance is false for this row and the verdict rests on the final null being right. The raw-pmax statistic has marginal planted power in N2 (LATIN plant 111.31 vs null q99 111.12). Degenerate-decode filter (mds<=6 or IoC*N>=4.24, decided after the keyed pass) removed only constant-output decodes (X4 prime_index atbash_pre/none, mds=1, IoC*N 27-29; 12 rows/rel/L): audited, no non-constant row removed.",
+      "r38_i2": "R38 I2: the transferred actual-N bars undercut the true X4 null (bespoke q99 6.994 vs 5.69 at L=120; 7.92 vs 6.04 at L=240); 0 of 120 non-degenerate X4 rows clear at either L (best 4.779 / 5.455, family-wise p 0.87 / 0.98); the degenerate filter removes only the two constant-decode configs (raw 8.70 / 12.40 = recognizer failure). Verdict negative, unchanged; the L=240 null is partial (121 draws)."
     },
     {
       "id": "R37-T1-12REG-PLUMBING",
@@ -9348,6 +9380,518 @@
         "liber-primus/analysis/round37/X1-redteam/rerun_i1_fit.json"
       ],
       "notes": "O4 recount after R36-X1 correction and Round 37 lanes: NEVER 60 (was 68 as filed, 66 after R36 X1), TRIED-EN/LEG 46, TRIED 31, PARTIAL 3 (sum 140). Seven FOUND-ERRORs, none changes a verdict."
+    },
+    {
+      "id": "R38-S1-S2-WINDOWS",
+      "round": 38,
+      "lane": "S1",
+      "lane_dir": "S1-s2-windows",
+      "date": "2026-10-31",
+      "status": "measured",
+      "raw_status": "measured (partial: window 2 end state not recovered)",
+      "hypothesis": "The Round 27 S2 (exact / keyskip1) lane, resumed under panel-R36, recovers an independently generated exact-relation plant and then advances; no seed crosses the claim bar.",
+      "positive_control": "passed",
+      "control_detail": "3/3 independently generated exact-relation plants (seeds 777, 1234567891, 3000000017) ranked first in a 4096-seed band through the engine's run_lane path, pmax 17.93/19.81/20.80 vs claim bar 7.6342 (control_exact.json, gen_control.py); stdlib-MT keystream equal to the engine's ks128; X1 regenerated the first 64 keystream values for all 3 seeds (rerun_s1.json). GRIND27_S2_CONTROL_OK is only a lane guard and is not the evidence.",
+      "threshold": "claim bar 7.6341931878728095 (round27 panelmax_bar exact N=1e6; NOT recalibrated for 12 registers), candidate bar 5.0",
+      "threshold_fixed_in_advance": true,
+      "result": "Window 1 (panel-R36): 108,611,578 seeds, 0 claim-bar crossers, 0 near-misses (best pmax 7.3007 @ 3905907872). Window 2 was launched but its end state is UNRECOVERED (snapshot snap_ff0SWU76EW32OqbWJvp00fnORypR, Vercel 402 until 2026-11-01 UTC): no coverage, crosser or near-miss statement is made for it. Round 19 top-1024 re-scored under panel-R36: only 35563892 (7.6707) crosses (known R27 noise-crosser; 7.511 at L=240).",
+      "coverage": "panel-R36 S2: 163,579,124 seeds = 3.809 pp of 2^32 (R36 window 54,967,546 + R38 window 1 108,611,578); window 2 NOT counted. Round 19-gated 44.138 % unchanged and not re-scored. Engine cursor sum 2,059,308,008 = 47.947 % is mixed-instrument.",
+      "not_covered": "S2 window 2 (unrecovered); remaining ~52 % of the cursor space under panel-R36 and the 44.138 % under panel-R36 re-scoring; claim bars not recalibrated for 12 registers; the full hitfn20 3-clause gate on the control plants; full candidate/histogram lists (partial export, snapshots expire ~2026-11-06/07).",
+      "three_conditionals": {
+        "key_space": "Py2.7 MT19937 init_by_array([w]) w in uint32, random29 reducer, offset 0",
+        "transition_model": "keyskip1 'exact' (one-draw rejection), relation exact only",
+        "adjudicator_register": "panel-R36 12 registers, stage-A screen, claim bars from the Round 19 panel"
+      },
+      "reopens_if": "recover window 2 from snap_ff0SWU76EW32OqbWJvp00fnORypR after 2026-11-01 00:00 UTC and before ~2026-11-07; or continue S2 windows with persistent sessions.",
+      "evidence": [
+        "liber-primus/analysis/round38/S1-s2-windows/RESULTS.md",
+        "liber-primus/analysis/round38/S1-s2-windows/PREREG.md",
+        "liber-primus/analysis/round38/S1-s2-windows/control_exact.json",
+        "liber-primus/analysis/round38/S1-s2-windows/gen_control.py",
+        "liber-primus/analysis/round38/S1-s2-windows/control_inputs.json",
+        "liber-primus/analysis/round38/S1-s2-windows/top_rescored.json",
+        "liber-primus/analysis/round38/S1-s2-windows/rescreen_l240.json",
+        "liber-primus/analysis/round38/S1-s2-windows/state_after_1/STATUS_summary.json",
+        "liber-primus/analysis/round38/S1-s2-windows/exported/R36_snapshot_summary.json"
+      ],
+      "lane_ledger_raw": {
+        "id": "R38-S1-S2-WINDOWS",
+        "status": "measured (partial: window 2 end state not recovered)",
+        "verdict": "negative so far: control (a) PASS 3/3; window 1 0 crossers, 0 near-misses; window 2 unknown",
+        "gate": "panel-R36 (12 registers; panel_lm.f32 e46d4bb7..)",
+        "self_test": {
+          "V1": "64/64",
+          "V2": 17.931158509762
+        },
+        "control_exact": {
+          "seeds": [
+            777,
+            1234567891,
+            3000000017
+          ],
+          "all_rank1": true,
+          "pmax": [
+            17.93115851,
+            19.81452418,
+            20.79566506
+          ]
+        },
+        "rescore_top_S2": {
+          "n": 1024,
+          "moved_gt_0.01": 75,
+          "crossers": [
+            35563892
+          ],
+          "largest_riser": [
+            2286867315,
+            6.58,
+            7.462
+          ]
+        },
+        "l240_diagnostics": {
+          "35563892": 7.511,
+          "2286867315": 6.765
+        },
+        "windows": [
+          {
+            "k": 1,
+            "seeds_advanced": 108611578,
+            "coverage_before": 0.454181905,
+            "coverage_after": 0.479470009,
+            "rate_seeds_per_s": 55697.7,
+            "best_pmax": 7.300666,
+            "best_seed": 3905907872,
+            "n_candidates_ge_5": 12361,
+            "crossers": 0,
+            "near_misses": 0
+          },
+          {
+            "k": 2,
+            "status": "ran; end state unrecovered (snapshot snap_ff0SWU76EW32OqbWJvp00fnORypR; Vercel 402 quota until 2026-11-01 UTC)"
+          }
+        ],
+        "sandbox": {
+          "s1_wall_ms": 2200262,
+          "s1_active_cpu_ms": 7820459,
+          "s2_wall_ms": 2703851,
+          "s2_active_cpu_ms": 9014214,
+          "vcpus": 4
+        },
+        "export": "partial (hashes, aggregated histogram, >=6.0/6.5 candidate lists)",
+        "files": "analysis/round38/S1-s2-windows/"
+      },
+      "x1_r38": "X1/R38: NO-ERROR-FOUND on control independence and arithmetic. Ciphertext from a separate generator (gen_control.py: stdlib MT keystream, own one-draw rejection loop with rejection RNG 90000+i); X1 regenerated the keystream (rerun_s1.json): first 32 values equal control_inputs.json for all 3 seeds, first 128 of seed 777 equal R27 vectors_s2 keystream_first128; the seed-777 ciphertext differs from the R27 plant at 154/240 positions (same plaintext slice, so pmax 17.9312 is equal by construction, as RESULTS says). Window 1: 2,059,308,008 - 1,950,696,430 = 108,611,578 = 2.5288 pp, 55,698 seeds/s at 1,950 s (matches STATUS 55,697.7); cumulative 54,967,546 + 108,611,578 = 163,579,124 = 3.8086 pp. Worker seeds_done sums to 2,059,308,008. round27 run/ mtimes 2026-10-28, untouched. FOUND-ERROR (minor, wording): 'window 2 ran' is not verified (only session CPU 9.01e6 ms and a stopped snapshot); stated here as 'launched'. Limits kept: the control binary is stock+2 lines (its own sha not recorded), the engine under test is also the scorer, the full hitfn20 gate was not run on the plants, claim bars not recalibrated."
+    },
+    {
+      "id": "R38-S2-PHP-SANDBOX",
+      "round": 38,
+      "lane": "S2",
+      "date": "2026-10-31",
+      "status": "never-run",
+      "positive_control": "not-persisted",
+      "control_detail": "Sandbox log only (control.json lost): 240 natural-rate plants, gate passed; EN_MODERN 46/46 skip-free, 33/34 with-skip; EN_NOVOWEL 47/47, 31/33; HEBREW 44/44, 34/36. No ledger weight.",
+      "hypothesis": "The LP2 key is a PHP 5.x mt_rand stream (canonical or legacy twist, scale29 or mod29) with <=2 key skips in the head; continue tier (b) under pf_v4_12 + beam_v3 panel-R36 on the sandbox.",
+      "coverage": "none: no rows persisted. Zero seeds added.",
+      "result": "not run to a retained result. Sandbox sessions (two, 45-min hard cap) were lost while the agent was blocked on a hung MCP call (2573 s); no snapshot, checkpoint URL unrecoverable; re-creation refused with 402 Hobby usage limit until 2026-11-01T00:00Z.",
+      "threshold": "null12.json POT bars at actual N and N=1e6 (PREREG); never applied.",
+      "threshold_fixed_in_advance": true,
+      "three_conditionals": {
+        "key_space": "none covered",
+        "transition_model": "keyskip1+keyskip2 (not run)",
+        "adjudicator_register": "panel-R36 12 registers (not run)"
+      },
+      "not_covered": "all of tier (b) beyond R36's 0.607 % per cell; PHP-cell FPR under the 12-register point only log-observed (pooled 8.58e-4, 450/524288), not persisted.",
+      "reopens_if": "sandbox quota resets (2026-11-01T00:00Z) or a Pro plan; run run_commands.sh.",
+      "evidence": [
+        "liber-primus/analysis/round38/S2-php-sandbox/RESULTS.md",
+        "liber-primus/analysis/round38/S2-php-sandbox/PREREG.md",
+        "liber-primus/analysis/round38/S2-php-sandbox/sweep_s2.py",
+        "liber-primus/analysis/round38/S2-php-sandbox/run_commands.sh"
+      ],
+      "source_register": "round32/B2",
+      "lane_dir": "S2-php-sandbox",
+      "x1_r38": "X1/R38: NO-ERROR-FOUND. RESULTS line 1 and the ledger row say never-run; 'Coverage / seeds added' says ZERO seeds; the log-observed FPR (8.58e-4, 450/524,288) and 240-plant control sit under a heading marked 'not persisted; informational only' and carry no ledger weight; no rows/control/FPR file exists (the lane directory holds only the harness, drivers and docs). The S2 PREREG itself says W1 would have added ~0 new seeds relative to R32 B2."
+    },
+    {
+      "round": 38,
+      "lane": "C1",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": true,
+      "positive_control": "passed",
+      "sweep_store": "liber-primus/analysis/round38/C1-semantic-road/sweep_rows.jsonl",
+      "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+      "evidence": [
+        "liber-primus/analysis/round38/C1-semantic-road/PREREG.md",
+        "liber-primus/analysis/round38/C1-semantic-road/RESULTS.md",
+        "liber-primus/analysis/round38/C1-semantic-road/control.json",
+        "liber-primus/analysis/round38/C1-semantic-road/sweep_summary_final.json",
+        "liber-primus/analysis/round38/C1-semantic-road/lexicon_manifest.json",
+        "liber-primus/analysis/round38/C1-semantic-road/sweep_rows.jsonl"
+      ],
+      "threshold": "bars_v3 + bar12 at actual N and N=1e6, L=120 screen / L=240 gate; fixed in PREREG.md before any download or decode",
+      "id": "R38-C1-SEMANTIC-WORDNET",
+      "status": "negative",
+      "hypothesis": "Direction for the LP2 cipher words = reduction (mod 29 / mod 28 / digit-sum mod 29) of the WordNet 3.1 first noun/verb/adj synset offset of the successive LP1 words ('their meaning is the road'), applied per-word, cumulatively, or as key-pointer advance in the LP1 rune stream.",
+      "coverage": "3 reductions x A1/A2 (s=0..28, sigma +-1, pages 0-2: 348 decodes each) and A3 (s=0..725 step 1, sigma +-1, pages 0-2: 4356 decodes each); keyskip1 only; L=120 head, panel-R36 12 registers; 6 value variants total N=28224 (shift 2088, A3 26136)",
+      "best_pmax_per_cell": {
+        "A-R29|A1": 4.62,
+        "A-R29|A2": 3.12,
+        "A-R28|A1": 3.247,
+        "A-R28|A2": 3.453,
+        "A-D29|A1": 3.88,
+        "A-D29|A2": 4.163,
+        "A-R29|A3": 5.1,
+        "A-R28|A3": 5.045,
+        "A-D29|A3": 4.715
+      },
+      "best_overall_bars": {
+        "shift": {
+          "best": 4.62,
+          "bar_actualN": 6.895,
+          "bar_1e6": 9.235
+        },
+        "A3": {
+          "best": 5.296,
+          "bar_actualN": 7.853,
+          "bar_1e6": 9.235
+        }
+      },
+      "not_covered": "other senses than first synset; other lexicons/frequency lists; lemmatiser variants; rho=2,3 (d indexed by word index only); keyskip2/free; pages >2; shift-mode starts beyond 0..28; meaning as dictionary semantics under any non-frozen definition; non-English plaintext",
+      "lexicon": {
+        "name": "Princeton WordNet 3.1",
+        "url": "https://wordnetcode.princeton.edu/wn3.1.dict.tar.gz",
+        "archive_sha256": "3f7d8be8ef6ecc7167d39b10d66954ec734280b5bdcd57f7d9eafe429d11c22a",
+        "files": {
+          "index.noun": "799fad7c8084eb0f6f2a32ec737a251c85f51adb8b2603eb02bfebc4ce5ffa3d",
+          "index.verb": "e65b2d67274c8a5f9ba6f696fdc73f4546db2a138b362a3be582e3787c879c7a",
+          "index.adj": "7d2b4d4037f0571ca309ce2ebadbe860a1607d494a70cd40f9bd61bc25a57016"
+        }
+      },
+      "lane_dir": "C1-semantic-road",
+      "control_detail": "36/36 plants, 18/18 cells (6 variants x A1/A2/A3, 2 plants each, sigma +-1): recovery 0.996-1.0, pmax120 ~16-21 vs 9.235, pmax240 ~21-31 vs 9.514. X1 re-ran 2 cells with a fresh seed (A-R29/A3, B-R28/A1; 4 plants, recovered 1.0, wrong-s decodes 0-5.1; rerun_c1_controls.json).",
+      "three_conditionals": {
+        "key_space": "WordNet 3.1 first-synset offset (A) or Norvig rank (B) of LP1 codebook words, 3 reductions, rho=1, pages 0-2, start s",
+        "transition_model": "keyskip1 only (A3); A1/A2 direct shifts judged vs keyskip1 bar",
+        "adjudicator_register": "panel-R36 12 registers; plants EN_MODERN only"
+      },
+      "x1_r38": "X1/R38: lexicon frozen before use: PREREG mtime 15:19:18 precedes the tarball (15:19:25), count_1w.txt (15:19:28) and lp1_meaning_index.json (15:19:45) (mtimes are weak evidence, no external timestamp). All 726 A offsets re-derived by X1 from lex_download/dict/index.{noun,verb,adj} under the PREREG lemma rule with independent code: 0 mismatches (e.g. is -> i 14665575, warning 7238811, believe 685199). Controls re-run with a fresh seed (rerun_c1_controls.json): 4/4 recovered, wrong-s decodes 0-5.1. sweep_rows.jsonl: 28,224 rows, best 4.62 shift / 5.296 A3, equal to the summary. RESULTS is honest that an offset is a file address, not sense content. FOUND-ERROR (labelling/quality): the frozen lemma rule maps 22 'is' tokens to the noun 'i' (and was -> 'wa', his -> 'hi', lives -> 'liv'); 53 covered tokens come through a stripped lemma, several of them non-words, and content words (realities, practices, circumferences, went, told, replied, totient) get 0 under the rule, so the 'function words have no synset' sentence is incomplete (56 distinct words, 258 tokens are 0). A property of the frozen definition, not a hidden hit."
+    },
+    {
+      "round": 38,
+      "lane": "C1",
+      "date": "2026-10-30",
+      "threshold_fixed_in_advance": true,
+      "positive_control": "passed",
+      "sweep_store": "liber-primus/analysis/round38/C1-semantic-road/sweep_rows.jsonl",
+      "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+      "evidence": [
+        "liber-primus/analysis/round38/C1-semantic-road/PREREG.md",
+        "liber-primus/analysis/round38/C1-semantic-road/RESULTS.md",
+        "liber-primus/analysis/round38/C1-semantic-road/control.json",
+        "liber-primus/analysis/round38/C1-semantic-road/sweep_summary_final.json",
+        "liber-primus/analysis/round38/C1-semantic-road/lexicon_manifest.json",
+        "liber-primus/analysis/round38/C1-semantic-road/sweep_rows.jsonl"
+      ],
+      "threshold": "bars_v3 + bar12 at actual N and N=1e6, L=120 screen / L=240 gate; fixed in PREREG.md before any download or decode",
+      "id": "R38-C1-SEMANTIC-FREQRANK",
+      "status": "negative",
+      "hypothesis": "Same, with the word's frequency rank (Norvig count_1w top 50000; unknown = 50001) as the meaning value.",
+      "coverage": "3 reductions x A1/A2 (s=0..28, sigma +-1, pages 0-2: 348 decodes each) and A3 (s=0..725 step 1, sigma +-1, pages 0-2: 4356 decodes each); keyskip1 only; L=120 head, panel-R36 12 registers; 6 value variants total N=28224 (shift 2088, A3 26136)",
+      "best_pmax_per_cell": {
+        "B-R29|A1": 3.003,
+        "B-R29|A2": 3.433,
+        "B-R28|A1": 3.014,
+        "B-R28|A2": 3.53,
+        "B-D29|A1": 4.202,
+        "B-D29|A2": 3.718,
+        "B-R29|A3": 5.296,
+        "B-R28|A3": 4.829,
+        "B-D29|A3": 5.095
+      },
+      "best_overall_bars": {
+        "shift": {
+          "best": 4.62,
+          "bar_actualN": 6.895,
+          "bar_1e6": 9.235
+        },
+        "A3": {
+          "best": 5.296,
+          "bar_actualN": 7.853,
+          "bar_1e6": 9.235
+        }
+      },
+      "not_covered": "other senses than first synset; other lexicons/frequency lists; lemmatiser variants; rho=2,3 (d indexed by word index only); keyskip2/free; pages >2; shift-mode starts beyond 0..28; meaning as dictionary semantics under any non-frozen definition; non-English plaintext",
+      "lexicon": {
+        "name": "Norvig count_1w.txt (Google Web Trillion Word Corpus), top 50000",
+        "url": "https://norvig.com/ngrams/count_1w.txt",
+        "sha256": "51df159fd3de12b20e403c108f526e96dbd723d9cabdd5f17955cdc16059e690",
+        "N": 50000
+      },
+      "lane_dir": "C1-semantic-road",
+      "control_detail": "36/36 plants, 18/18 cells (6 variants x A1/A2/A3, 2 plants each, sigma +-1): recovery 0.996-1.0, pmax120 ~16-21 vs 9.235, pmax240 ~21-31 vs 9.514. X1 re-ran 2 cells with a fresh seed (A-R29/A3, B-R28/A1; 4 plants, recovered 1.0, wrong-s decodes 0-5.1; rerun_c1_controls.json).",
+      "three_conditionals": {
+        "key_space": "WordNet 3.1 first-synset offset (A) or Norvig rank (B) of LP1 codebook words, 3 reductions, rho=1, pages 0-2, start s",
+        "transition_model": "keyskip1 only (A3); A1/A2 direct shifts judged vs keyskip1 bar",
+        "adjudicator_register": "panel-R36 12 registers; plants EN_MODERN only"
+      },
+      "x1_r38": "X1/R38: FOUND-ERROR (labelling): frequency rank carries no sense content, so a row named SEMANTIC-FREQRANK is not a reading of 'meaning'; it is a lexical-value control. Kept as a negative of that value only; it does not support any claim about the semantic F5 cell. Numbers and store as for the WordNet row."
+    },
+    {
+      "id": "R38-I1-GLYPH-RECOGNIZER",
+      "round": 38,
+      "lane": "I1",
+      "date": "2026-10-30",
+      "status": "inconclusive",
+      "positive_control": "failed",
+      "control_detail": "D2 recognizer detects all 5 planted glyphs 40/40 each (Wilson 0.912-1.0) but realised FPR on 200 noise-only LP2 page-0 renders is 32/200=0.16 (V2 29/50, V3 3/50, V1 0/50, V4 0/50) vs required <=0.05; D1: oct 29/40 (8-step plant below candidate minimum), FPR 0.105 under shuffle null.",
+      "hypothesis": "A stroke-aware rotation-invariant recognizer (strokes/closure/turning histogram/Hu) with a 95th-percentile null has power >=0.9 at FPR<=0.05 for glyphs in LP page noise.",
+      "coverage": "power test only (5 glyphs x 40 trials x D1 and D2, 400 null renders). The U8 232-render re-score was NOT run under the kill rule; a coordinator-licensed variant-limited diagnostic (V1/V3/V4, 3 x 58 = 174 renders, D2, 100-draw nulls) was run afterwards and is NOT evidence (control failed).",
+      "result": "inconclusive: planted-glyph detection 1.0 (D2) but realised FPR 0.16 (V2 29/50, V3 3/50) vs <=0.05, so the control FAILED. The D2 actually run (min 8 steps + real-text window null) is NOT the D2 pre-registered (reweight + turning-function term; weights unchanged, tf=0.0 in both runs), so U8 is not retired by the kill rule's pre-registered revision. The three variant-limited above-null-max PNGs were viewed by the coordinator and by X1: nothing to escalate.",
+      "threshold": "detection>=0.9 per glyph AND FPR<=0.05",
+      "power": "detection 1.0 (D2), FPR 0.16",
+      "conditionals": [
+        "glyphs: only the five U8 planted shapes (complete closed/2-stroke figures of 8-87 steps)",
+        "null: shuffle (D1) and real-text-window (D2) both miscalibrated for V2 on page-0 noise",
+        "rule space unchanged from U8: 4 rules x 58 pages"
+      ],
+      "not_covered": [
+        "V1/V3/V4-only re-score (they met FPR<=0.05 at D2 except V3 0.06) was not run because the gate is all-or-nothing",
+        "per-page-matched null",
+        "glyphs >2 strokes"
+      ],
+      "variant_limited_measurement": "Addendum re-score (D2, 100-draw page nulls): V1 5/58 below p5 (chance 2.9), 1 below null max (p28); V3 [over FPR limit] 5/58, 1 below max (p30); V4 5/58, 1 below max (p53). Roughly chance-level counts (expected ~0.6 below-max per variant with 100 draws); V2 excluded. Diagnostic only; oracle PNGs for human eye.",
+      "lane_dir": "I1-glyph-recognizer",
+      "evidence": [
+        "liber-primus/analysis/round38/I1-glyph-recognizer/PREREG.md",
+        "liber-primus/analysis/round38/I1-glyph-recognizer/recognizer.py",
+        "liber-primus/analysis/round38/I1-glyph-recognizer/rescore.py (unrun)",
+        "liber-primus/analysis/round38/I1-glyph-recognizer/power_D1.json",
+        "liber-primus/analysis/round38/I1-glyph-recognizer/power_D2.json",
+        "liber-primus/analysis/round38/I1-glyph-recognizer/power.json",
+        "liber-primus/analysis/round38/I1-glyph-recognizer/rescore_u8.json",
+        "liber-primus/analysis/round38/I1-glyph-recognizer/RESULTS.md",
+        "liber-primus/analysis/round38/I1-glyph-recognizer/ADDENDUM-2026-10-30.md",
+        "liber-primus/analysis/round38/I1-glyph-recognizer/oracle"
+      ],
+      "three_conditionals": {
+        "key_space": "five U8 planted glyphs (octagon, 29-gon, T, L, 12-gon) in 4 turtle rules x 58 pages",
+        "transition_model": "deterministic turtle render; templates identical to the planted polylines",
+        "adjudicator_register": "recognizer D2 (corner count, closure, turning histogram, Hu 1-4) vs real-text window null; FPR gate failed"
+      },
+      "x1_r38": "X1/R38: FOUND-ERROR (process): PREREG 'Kill' pre-registered the ONE revision D2 as 'reweight + add a normalised turning-function term; no new data'. The D2 that was run is different (candidate minimum 8 steps + a real-text window null), chosen after D1 (disclosed in PREREG and RESULTS); the weights are unchanged (tf = 0.0 in power_D1.json and power_D2.json), so the pre-registered D2 was never run. RESULTS 'One revision was pre-registered and used' is therefore wrong; the kill rule's 'U8 retired' conclusion rests on a substituted revision (ledger text reworded). Recomputed from power_D2.json: FPR 32/200 = 0.160 (Wilson 0.116-0.217), per variant V1 0/50, V2 29/50, V3 3/50, V4 0/50; D1 21/200 = 0.105 (all V2); detection 40/40 x5 (D2). Planted shapes are identical to the template bank, so power 1.0 is an upper bound. The variant-limited re-score is labelled diagnostic in RESULTS/ledger and the row stays inconclusive / control failed. FOUND-ERROR (documentation): RESULTS calls rescore_u8.json a 'not-run stub' and the ledger says the 232 renders were not re-scored; the file now holds the 174-render diagnostic (3 variants x 58) with a 100-draw null (expected below-max 0.57 per variant). X1 eye verdict on the three PNGs: nothing to escalate."
+    },
+    {
+      "round": 38,
+      "lane": "C2",
+      "date": "2026-10-30",
+      "id": "R38-C2-G1-CLAUSES-6-7",
+      "status": "negative",
+      "hypothesis": "The 2016 clauses 'Seek and you will be found.' and 'Beware false paths. Verify OpenPGP 7A35090F.' (omitted from R37 C1 U1's candidate list), as direct / SHA-256-CTR / PBKDF2 keys, are the LP2 key.",
+      "coverage": "384 decodes: 2 clauses x forms x 3 routes x rel x sign x off 0..7",
+      "result": "best 4.259/4.323 vs bar 5.99/5.91 at actual N",
+      "positive_control": "passed",
+      "threshold_fixed_in_advance": true,
+      "evidence": [
+        "liber-primus/analysis/round38/C2-never-cells/RESULTS.md",
+        "liber-primus/analysis/round38/C2-never-cells/PREREG.md",
+        "liber-primus/analysis/round38/C2-never-cells/closed_no_operation.md"
+      ],
+      "three_conditionals": {
+        "key_space": "384 decodes: 2 clauses x forms x 3 routes x rel x sign x off 0..7",
+        "transition_model": "beam_v3 keyskip1+keyskip2 (direct modes beam-free), L120/L240",
+        "adjudicator_register": "panel-R36 12 registers; EN_MODERN-only planted control"
+      },
+      "not_covered": "free relation; other KDFs; atbash; offsets>7",
+      "lane_dir": "C2-never-cells",
+      "sweep_store": "liber-primus/analysis/round38/C2-never-cells/gaps/sweep_rows.jsonl",
+      "x1_r38": "X1/R38: NO-ERROR-FOUND. The two clause strings are verbatim in corpus/A-primary-artifacts/pgp/messages/2016-01-liber-primus.asc (lines 11, 19); grid 384 decodes; controls 6/6 rank 1."
+    },
+    {
+      "round": 38,
+      "lane": "C2",
+      "date": "2026-10-30",
+      "id": "R38-C2-G2-PRINTED-LINE-SUMS",
+      "status": "negative",
+      "hypothesis": "R37 C1 U2's LP1 number schedule, rebuilt from the PRINTED lines (60 physical rune lines of six solved pages, data/scream314_lp.md) instead of the koans-file lines, is the LP2 key schedule (additive or pointer).",
+      "coverage": "768 decodes: additive+pointer, prime/index, mod 29/28, 3 heads",
+      "result": "best 4.567/4.537 vs 6.25/6.16",
+      "positive_control": "passed",
+      "threshold_fixed_in_advance": true,
+      "evidence": [
+        "liber-primus/analysis/round38/C2-never-cells/RESULTS.md",
+        "liber-primus/analysis/round38/C2-never-cells/PREREG.md",
+        "liber-primus/analysis/round38/C2-never-cells/closed_no_operation.md"
+      ],
+      "three_conditionals": {
+        "key_space": "768 decodes: additive+pointer, prime/index, mod 29/28, 3 heads",
+        "transition_model": "beam_v3 keyskip1+keyskip2 (direct modes beam-free), L120/L240",
+        "adjudicator_register": "panel-R36 12 registers; EN_MODERN-only planted control"
+      },
+      "not_covered": "other page orders; per-page restarts; phi channel",
+      "lane_dir": "C2-never-cells",
+      "sweep_store": "liber-primus/analysis/round38/C2-never-cells/gaps/sweep_rows.jsonl",
+      "x1_r38": "X1/R38: NO-ERROR-FOUND. The R37 U4 misalignment class is absent: for all six pages len(plain) == sum(physical line lengths) and X1's own cumulative-sum alignment reproduces printed_lines.json prime sums exactly (rerun_g2_align.json). Page order is ascending label (01, 03, 05, 06, 14, 73)."
+    },
+    {
+      "round": 38,
+      "lane": "C2",
+      "date": "2026-10-30",
+      "id": "R38-C2-G3-LAGGED-POINTERS",
+      "status": "negative",
+      "hypothesis": "A pointer from the gematria/index of the PREVIOUS cipher word (cw) or decoded word (dw), lag 1, in the R37 C1 U3 composed map-road-direction rule, is the LP2 key.",
+      "coverage": "576 decodes: cw A1/A2/A3, dw A1/A2; A3 control skip-free",
+      "result": "best 4.911 (ks1), direct 4.038 vs 5.73/6.25",
+      "positive_control": "passed",
+      "threshold_fixed_in_advance": true,
+      "evidence": [
+        "liber-primus/analysis/round38/C2-never-cells/RESULTS.md",
+        "liber-primus/analysis/round38/C2-never-cells/PREREG.md",
+        "liber-primus/analysis/round38/C2-never-cells/closed_no_operation.md"
+      ],
+      "three_conditionals": {
+        "key_space": "576 decodes: cw A1/A2/A3, dw A1/A2; A3 control skip-free",
+        "transition_model": "beam_v3 keyskip1+keyskip2 (direct modes beam-free), L120/L240; the A3/cw plant is skip-free while the search relations are keyskip1/2 (power under skips unmeasured)",
+        "adjudicator_register": "panel-R36 12 registers; EN_MODERN-only planted control"
+      },
+      "not_covered": "dw inside the beam; lag>1; s>0; skip-circular A3 plant",
+      "lane_dir": "C2-never-cells",
+      "sweep_store": "liber-primus/analysis/round38/C2-never-cells/gaps/sweep_rows.jsonl",
+      "x1_r38": "X1/R38: FOUND-ERROR (minor): the A3/cw planted control is skip-free (the pointer is circular under skips) while the searched relations are keyskip1/2, so A3/cw power under skips is unmeasured; the dw channel is direct-only. Declared in RESULTS; carried into the conditionals."
+    },
+    {
+      "round": 38,
+      "lane": "C2",
+      "date": "2026-10-30",
+      "id": "R38-C2-N5N4-L240",
+      "status": "measured",
+      "hypothesis": "The top-50 R37 C3 N5 / N4-keystream rows, re-run at L=240, separate from a cipher-derived-key matched null.",
+      "coverage": "200 decodes; screen N 2320/168",
+      "result": "N5 7.446, N4 8.572: above bars_v3 at screen N, inside matched cipher-derived-key null (p .74-.78 / .16), below N=1e6 bar; flagged-for-oracle bundle (expected NOISE-CROSSER)",
+      "positive_control": "passed",
+      "threshold_fixed_in_advance": true,
+      "evidence": [
+        "liber-primus/analysis/round38/C2-never-cells/RESULTS.md",
+        "liber-primus/analysis/round38/C2-never-cells/PREREG.md",
+        "liber-primus/analysis/round38/C2-never-cells/closed_no_operation.md"
+      ],
+      "three_conditionals": {
+        "key_space": "200 decodes; screen N 2320/168",
+        "transition_model": "beam_v3 keyskip1+keyskip2 (direct modes beam-free), L120/L240",
+        "adjudicator_register": "panel-R36 12 registers; EN_MODERN-only planted control"
+      },
+      "not_covered": "full two-stage matched null (fixed-config D=22/30 only); second page / held-out clause",
+      "lane_dir": "C2-never-cells",
+      "sweep_store": "liber-primus/analysis/round38/C2-never-cells/n5n4/rows_L240.jsonl",
+      "x1_r38": "X1/R38: numbers reproduced: bars_v3(240) = 6.023/5.860 (N=50), 6.45/6.263 (N=168), 7.376/7.135 (N=2320), 9.514/9.150 (N=1e6); matched null from null_N4/N5.jsonl: N4 D=30 mean 7.82 max 9.56, 4 draws >= 8.553 (p 0.161); N5 D=22 mean 8.05 max 9.37, 16/17 draws >= 7.446 (p 0.74/0.78). FOUND-ERROR (status): the lane row said 'negative' while a flagged-for-oracle bundle awaits the owner (HUMAN-ORACLE.md: no status moves before the owner reads two independent pages); set to measured. The matched null is fixed-config (anti-conservative) and small; the expectation is NOISE-CROSSER, not certified.",
+      "raw_status": "negative",
+      "flagged_for_oracle": "bundle C2-never-cells/n5n4/oracle/bundle.json: PENDING OWNER (HUMAN-ORACLE.md); lane + X1 expectation NOISE-CROSSER (matched null p 0.16 N4 / 0.74-0.78 N5; non-language decode); status not moved by this ledger"
+    },
+    {
+      "round": 38,
+      "lane": "C2",
+      "date": "2026-10-30",
+      "id": "R38-C2-NEVER-CELLS-RUN",
+      "status": "negative",
+      "hypothesis": "Seven O4 NEVER cells with a literal operation (H5xF1, H6xF2, L8xF6, L15xF6/F7, L17xF7, L4xF3) are run once under a bounded recognizer with a planted control.",
+      "coverage": "~1,730 decodes + 5,760 hashes + one word-primality measurement",
+      "result": "all below bars/null; no hash match",
+      "positive_control": "passed",
+      "threshold_fixed_in_advance": true,
+      "evidence": [
+        "liber-primus/analysis/round38/C2-never-cells/RESULTS.md",
+        "liber-primus/analysis/round38/C2-never-cells/PREREG.md",
+        "liber-primus/analysis/round38/C2-never-cells/closed_no_operation.md"
+      ],
+      "three_conditionals": {
+        "key_space": "~1,730 decodes + 5,760 hashes + one word-primality measurement",
+        "transition_model": "beam_v3 keyskip1+keyskip2 (direct modes beam-free), L120/L240",
+        "adjudicator_register": "panel-R36 12 registers; EN_MODERN-only planted control"
+      },
+      "not_covered": "see RESULTS cell conditionals",
+      "lane_dir": "C2-never-cells",
+      "x1_r38": "X1/R38: partition check (o4_recount_r38.py): the 60 NEVER cells of o4_recount.json = 19 F5 + 7 run + 34 no-operation-stated, no overlap, no omission. FOUND-ERROR (labelling): 'reclassify NEVER -> TRIED' overstates three cells that cover only a subfamily (L8xF6: period-4 AP keys, 841 of 29^4; L15xF6/F7: the held 5x5 only); recorded as PARTIAL."
+    },
+    {
+      "id": "R38-I2-X4-NULL",
+      "round": 38,
+      "lane": "I2",
+      "lane_dir": "I2-x4-null",
+      "date": "2026-10-31",
+      "status": "measured",
+      "type": "instrument",
+      "hypothesis": "A bespoke null for the data-dependent X4 key family (key re-derived from each doublet-matched LP2 shuffle) sets a higher bar than the bars transferred from random-key nulls, and re-judging the R37 C3 X4 rows against it changes no verdict.",
+      "positive_control": "passed",
+      "control_detail": "pass: 24/24 (L=120) and 24/24 (L=240) recovered >=0.90 on the 2 bijective X4 configs; 8 image-limited configs supplementary 21-24/24; only 2 of 12 configs can carry a general plaintext",
+      "threshold": "empirical q99 of the family-max pmax over 60 non-degenerate rows per relation (L=120: 6.994 from 2,000 draws; L=240: 7.919/7.931 from 121 draws); fixed in PREREG before any null ran",
+      "threshold_fixed_in_advance": true,
+      "result": "0 of 120 non-degenerate X4 rows clear at either L; best 4.779 (L=120) and 5.455 (L=240); family-wise p 0.87 / 0.98; 48 real rows removed (2 constant configs, mds=1, IoC*N=29): raw pmax 6.89/8.70 (L=120), 9.75-9.89/12.40 (L=240); numerically above the bespoke bar = recognizer failure, not hits",
+      "coverage": "L=120: 2,000 draws x 60 non-degenerate rows/rel; L=240: 121 analysed draws (the store holds 122); 12 X4 configs, offset 0, 6 page-start windows, keyskip1/2, panel-R36; real rows 72/rel/L (60 non-degenerate).",
+      "not_covered": "L=240 null of 2,000 draws; offsets > 0; other windows; the free relation; N4/N5-class data-dependent keys (C2 has a fixed-config matched null only); 8 of 12 X4 configs cannot carry a general plaintext (|image| 20-21 of 29) and 2 are constant maps",
+      "three_conditionals": {
+        "key_space": "X4: K[i]=f(S[i]) mod 29, f in prime value / prime index / totient, letters S or atbash(S), sign +-1; 12 configs; 6 windows",
+        "transition_model": "beam_v3 keyskip1 + keyskip2",
+        "adjudicator_register": "panel-R36 12 registers; plants EN_MODERN/LATIN/GREEK on the 2 bijective configs only"
+      },
+      "reopens_if": "an X4-class family with a general-purpose map is needed at other offsets, or the L=240 null is extended to 2,000 draws",
+      "evidence": [
+        "liber-primus/analysis/round38/I2-x4-null/RESULTS.md",
+        "liber-primus/analysis/round38/I2-x4-null/PREREG.md",
+        "liber-primus/analysis/round38/I2-x4-null/null_x4.json",
+        "liber-primus/analysis/round38/I2-x4-null/control.json",
+        "liber-primus/analysis/round38/I2-x4-null/rejudged.json",
+        "liber-primus/analysis/round38/I2-x4-null/filter_audit.json",
+        "liber-primus/analysis/round38/I2-x4-null/null_rows_L120.jsonl",
+        "liber-primus/analysis/round38/I2-x4-null/null_rows_L240.jsonl"
+      ],
+      "lane_ledger_raw": {
+        "id": "R38-I2-X4-NULL",
+        "round": 38,
+        "lane": "I2",
+        "date": "2026-10-31",
+        "type": "instrument",
+        "claim": "Bespoke X4 null (key re-derived from each doublet-matched LP2 shuffle): L=120, 2000 draws, bar 6.994 (ks1 and ks2); L=240, 121 draws (partial), bar 7.92/7.93; transferred actual-N bars 5.64-5.69 / 6.04-6.15 were too low.",
+        "control": "pass: 24/24 (L=120) and 24/24 (L=240) recovered >=0.90 on the 2 bijective X4 configs; 8 image-limited configs supplementary 21-24/24; only 2 of 12 configs can carry a general plaintext",
+        "result": "0 of 120 non-degenerate X4 rows clear at either L; best 4.779 (L=120) and 5.455 (L=240); family-wise p 0.87 / 0.98",
+        "filter_audit": "48 real rows removed (2 constant configs, mds=1, IoC*N=29): raw pmax 6.89/8.70 (L=120), 9.75-9.89/12.40 (L=240); numerically above the bespoke bar = recognizer failure, not hits",
+        "verdict": "negative, conditional on key space (12 configs, o=0, 6 windows) x keyskip1/2 x panel-R36; L=240 null partial (121 draws)",
+        "flagged_for_oracle": [],
+        "files": [
+          "null_x4.json",
+          "control.json",
+          "rejudged.json",
+          "filter_audit.json",
+          "RESULTS.md"
+        ]
+      },
+      "x1_r38": "X1/R38: NO-ERROR-FOUND on the numbers (rerun_i2.txt, independent recomputation from null_rows_L*.jsonl and the C3 real rows): L=120 family-max mean 5.395 sd 0.579, q99 6.994, 2,000 draws; best real 4.779 p 0.871; L=240 q99 7.919/7.931, best real 5.455 p 0.984; the filter removes 24 rows/L, all from the two constant configs (raw max 8.70 / 12.40). FOUND-ERROR (documentation, trivial): null_rows_L240.jsonl now holds 122 draws (j 0..121) while null_x4.json/RESULTS analysed 121 (mean 6.646 -> 6.651, q99 unchanged). The L=240 q99 of ~121 draws is rough (about the 2nd-largest value); the Gumbel q99 (8.48) is the conservative alternative; neither changes the verdict."
+    },
+    {
+      "id": "R38-X1-REDTEAM",
+      "round": 38,
+      "lane": "X1",
+      "lane_dir": "X1-redteam",
+      "date": "2026-10-31",
+      "status": "audit",
+      "hypothesis": "Round 38's own claims (S1 exact-lane control and window 1, S2 never-run, C1 semantic road, C2 never-cells and C1-R37 gaps, I1 glyph recognizer, I2 X4 null) and the Round 37 X1 carry-overs survive a refute-by-default audit.",
+      "result": "FOUND-ERROR (all bounded; no verdict flipped): (1) I1: the D2 actually run (min 8 steps + real-text window null) is not the D2 pre-registered in the Kill clause (reweight + turning-function term; weights unchanged, tf=0.0), so 'one pre-registered revision used / U8 retired' is wrong; RESULTS/ledger also call rescore_u8.json a not-run stub although it holds the 174-render variant-limited diagnostic. (2) C2: three of the seven 'run' O4 cells (L8xF6, L15xF6, L15xF7) cover only a subfamily and are PARTIAL, not TRIED; 'all 19 F5 cells -> C1-R38' overstates (C1-R38 operationalized only H3xF5; 18 remain NEVER); the N5/N4 row said 'negative' while a flagged-for-oracle bundle awaits the owner (set measured); G3's A3/cw plant is skip-free. (3) C1: the FREQRANK row is not a reading of meaning (label); the frozen lemma rule maps 22 'is' tokens to the noun 'i' (quality); patch id O4-MATRIX-H-F5 names no row (it is H3xF5) and 'measured (bounded)' is not in the status vocabulary; positive_control strings broke the validator. (4) S1: 'window 2 ran' unverified (stated as launched). (5) I2: L=240 store holds 122 draws vs 121 analysed (trivial). NO-ERROR-FOUND: S1 control independence and arithmetic (keystream regenerated, 154/240 cipher positions differ from the R27 plant, window arithmetic exact, round27 run/ untouched); S2 never-run with zero coverage and non-evidential log numbers; C1 lexicon frozen before use and all 726 offsets re-derived (0 mismatches), controls re-run 4/4, store equals summary; I1 FPR recomputed and variant-limited re-score labelled diagnostic; C2 G1/G2 (aligned) and N5/N4 numbers; I2 numbers; capsule PASS. Carry-overs: C1-R37 clauses 6/7 and printed-line sums done (C2 G1/G2); O4 count files carry superseded banners only (tables still 68); R37 I1 header banner present; bar_v3(N,120,'free') still the R34 nine-register node.",
+      "not_covered": "S2 window 2 content; the 18 untouched F5 cells and the 34 no-operation-stated closures as hidden-operation candidates (read, not re-run); the sandbox snapshots (not accessible before 2026-11-01); C2's cell-level controls beyond the lane's own files (spot-checked, not all re-run)",
+      "reopens_if": "S2 window 2 is recovered (snap_ff0SWU76EW32OqbWJvp00fnORypR, after 2026-11-01 and before ~2026-11-07); the owner reads the N5/N4 oracle bundle; the O4 judgement calls (PARTIAL moves, 18 NEVER F5 cells) are changed.",
+      "evidence": [
+        "liber-primus/analysis/round38/X1-redteam/RESULTS.md",
+        "liber-primus/analysis/round38/X1-redteam/rerun_s1.json",
+        "liber-primus/analysis/round38/X1-redteam/rerun_c1_controls.json",
+        "liber-primus/analysis/round38/X1-redteam/rerun_g2_align.json",
+        "liber-primus/analysis/round38/X1-redteam/o4_recount_r38.json"
+      ],
+      "related": [
+        "R38-S1-S2-WINDOWS",
+        "R38-S2-PHP-SANDBOX",
+        "R38-C1-SEMANTIC-WORDNET",
+        "R38-C1-SEMANTIC-FREQRANK",
+        "R38-I1-GLYPH-RECOGNIZER",
+        "R38-C2-N5N4-L240",
+        "R38-I2-X4-NULL"
+      ]
     }
   ],
   "round18_merged": "2026-08-26"

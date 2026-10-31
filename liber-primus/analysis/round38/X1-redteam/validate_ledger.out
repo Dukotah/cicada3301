@@ -1,0 +1,55 @@
+LEDGER.json  schema 1.0.0  256 entries (recounted from the rows)
+   negative           80
+   measured           79
+   audit              39
+   open               18
+   partially-run      18
+   never-run          9
+   eliminated         5
+   inconclusive       5
+   superseded         3
+
+ERRORS: 0
+
+WARNINGS: 76
+   [R12-frontB] NO-THREE-CONDITIONALS: negative (round >= 19) without `three_conditionals` (key_space / transition_model / adjudicator_register)
+   [A-03] NULL-COVERAGE: negative with coverage null - the claim is unbounded
+   [A-04] NO-THREE-CONDITIONALS: negative (round >= 19) without `three_conditionals` (key_space / transition_model / adjudicator_register)
+   [A-05] negative with no recorded threshold
+   [A-05] NO-THREE-CONDITIONALS: negative (round >= 19) without `three_conditionals` (key_space / transition_model / adjudicator_register)
+   [E-01] NO-THREE-CONDITIONALS: negative (round >= 19) without `three_conditionals` (key_space / transition_model / adjudicator_register)
+   [F-01] NULL-COVERAGE: negative with coverage null - the claim is unbounded
+   [G-01] evidence path does not exist: liber-primus/analysis/round18/L1-toolchain/font_match_sheet.png
+   [G-01] evidence path does not exist: liber-primus/analysis/round18/L1-toolchain/pdf_hunt.jsonl
+   [H-03] NULL-COVERAGE: negative with coverage null - the claim is unbounded
+   [B-11] evidence path does not exist: liber-primus/analysis/round18/L1-toolchain/runes_observed.png
+   [B-11] evidence path does not exist: liber-primus/analysis/round18/L1-toolchain/font_match_sheet.png
+   [B-11] evidence path does not exist: liber-primus/analysis/round18/L1-toolchain/pdf_hunt.jsonl
+   [B-23] negative with no recorded threshold
+   [B-23] NO-THREE-CONDITIONALS: negative (round >= 19) without `three_conditionals` (key_space / transition_model / adjudicator_register)
+   [B-13-MARSAGLIA] evidence path does not exist: liber-primus/analysis/round18/L6-offset-marsaglia/data/MANIFEST.json
+   [L7-A-SCORER-ENGLISH-ONLY] negative whose threshold was not fixed in advance (post-hoc bars are not tests)
+   [L7-A-ARCHIVE-RESCORE] negative whose threshold was not fixed in advance (post-hoc bars are not tests)
+   [L7-B-BEAM-ENVELOPE] negative whose threshold was not fixed in advance (post-hoc bars are not tests)
+   [L7-C-THRESHOLD-CALIBRATION] negative whose threshold was not fixed in advance (post-hoc bars are not tests)
+   [R19-C2-MARSAGLIA-GATE] evidence path does not exist: liber-primus/analysis/round18/L6-offset-marsaglia/data/checksums.sha256.txt
+   [R19-C2-MARSAGLIA-GATE] evidence path does not exist: liber-primus/analysis/round18/L6-offset-marsaglia/data/marsaglia-cdrom_files.xml
+   [CORPUS-G-02] evidence path does not exist: liber-primus/analysis/round19/C3/verify_rerun.log
+   [L1-F6-CORRECTION] evidence path does not exist: liber-primus/analysis/round19/C3/l8/crosscheck.log
+   [R19-G3] evidence path does not exist: liber-primus/analysis/round19/G3/pilot.jsonl
+   ... and 51 more
+
+NOTES: 25
+   [A-02] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [B-01] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [B-03] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [C-01] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [D-02] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [D-03] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [D-04] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [H-01] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [H-02] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [I-02] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   ... and 15 more
+
+Unsound negatives: 0  (this is the number that matters - it should be 0)

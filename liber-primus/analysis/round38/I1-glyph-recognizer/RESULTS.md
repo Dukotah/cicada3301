@@ -1,3 +1,5 @@
+> **Correction (Round 38 X1, applied by the coordinator 2026-10-31):** the D2 that ran (candidate minimum 8 + real-text window null) is NOT the revision pre-registered in the kill clause (reweight + turning-function term; `tf` weight stayed 0.0). So 'one pre-registered revision used, U8 retired' is wrong: the pre-registered revision never ran (Round 39 I1 runs it alongside the page-matched null), and `rescore_u8.json` holds the 174-render variant-limited diagnostic, not a stub.
+
 # I1-R38 RESULTS: glyph recognizer with measured power -- status inconclusive (positive control: failed on FPR)
 
 Instrument: `recognizer.py` (imports U8's `walk/strokes/raster/pages/shuffled_words` unchanged). Features: corner count, closure, 24-bin turning histogram,

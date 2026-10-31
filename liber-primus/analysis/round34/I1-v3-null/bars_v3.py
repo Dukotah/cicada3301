@@ -9,8 +9,9 @@ bar = mu + beta * ln(N / -ln(1-alpha)): P(max over N independent wrong-key decod
 `family="lp2"`: shuffled real LP2 stream.  `family="register"`: shuffled held-out EN_NOVOWEL/LATIN/OE/DE pooled.
 `relation` in {"keyskip1","keyskip2"}; "free" exists at L=120 (R34, 9-register panel, 1000 draws, own beta) and, added Round 37 I1
 (analysis/round37/I1-free-null, PANEL-R36 = 12 registers, 12-register pmax, free beam_v3 panel_max under panel-R36), at L in {120 (panel="r36"), 240, 400, 729}
-(1335/726/562 draws; L=400 and 729 are below the 2,000 target, SEs in that RESULTS.md).  `bar_v3(N, L, "free")` returns the R34 node at L=120 and the
-R37 panel-R36 node at L in {240,400,729}; pass panel="r36" for the L=120 R37 node.  The free control at L=240 FAILS for OE and EN_HALFVOWEL (see R37 RESULTS).
+(1335/726/562 draws; L=400 and 729 are below the 2,000 target, SEs in that RESULTS.md).  `bar_v3(N, L, "free")` returns the R37 panel-R36 (12-register)
+node at every L in {120,240,400,729} (Round 39 T1: the L=120 default MOVED from the R34 9-register node to the 12-register node,
+fit_free.json "120"); pass panel="r32" for the old R34 9-register L=120 node (panel="r36" is still accepted and means the default).  The free control at L=240 FAILS for OE and EN_HALFVOWEL (see R37 RESULTS).
 method="gpd" gives the lighter-tailed (xi<0) sensitivity bar -- NOT the bar of record (extrapolates a bounded tail).
 Round 34 Q5 fired (beta exponent far from Round 32 I3's -0.55): see RESULTS.md; the Gumbel bar is the conservative one
 (it over-predicts the observed max at the observed N), the empirical quantile exists only up to N~n_draws.
@@ -25,6 +26,10 @@ True
 True
 >>> round(bar_v3(1e6, 729, "free"), 1)
 24.9
+>>> round(bar_v3(1e6, 120, "free"), 2)          # Round 39 T1: 12-register node (default)
+15.3
+>>> round(bar_v3(1e6, 120, "free", panel="r32"), 2)   # the old R34 9-register node
+17.43
 """
 import json, math, os
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -44,14 +49,26 @@ _FREE_R36 = {120: (6.7202, 0.09985734664764621, 0.532791), 240: (8.67428, 0.1003
              400: (10.66275, 0.10055096418732783, 0.682892), 729: (13.18524, 0.10142348754448399, 0.724207)}
 
 
+def _free12_120():
+    """Round 37 I1 12-register L=120 free node (fit_free.json, incl. GPD fields); used since Round 39 T1."""
+    global _F12
+    if _F12 is None:
+        p = os.path.join(HERE, "..", "..", "round37", "I1-free-null", "fit_free.json")
+        _F12 = json.load(open(p, encoding="utf-8"))["fit"]["120"]
+    return _F12
+
+
+_F12 = None
+
+
 def _params(L, relation, family, panel=None):
     F = _fit()
     if relation == "free":
-        if (L == 120 and panel != "r36"):
+        if (L == 120 and panel == "r32"):
             n = F["free"]["120"]
             return n["u"], n["p_u"], n["beta"], n
         if L not in _FREE_R36:
-            raise ValueError("free relation has nulls at L in 120 (R34 9-reg / R37 panel='r36'), 240, 400, 729 only")
+            raise ValueError("free relation has nulls at L in 120 (12-reg default / R34 9-reg panel='r32'), 240, 400, 729 only")
         u, pu, b = _FREE_R36[L]
         return u, pu, b, {"u": u, "p_u": pu, "beta": b}
     ser = F["series"]["%s|%s" % (family, relation)]
@@ -78,8 +95,8 @@ def bar_v3(N, L, relation, alpha=0.01, family="lp2", method="gumbel", panel=None
         F = _fit()
         if relation == "free":
             if L != 120:
-                raise ValueError("method='gpd' for free exists at L=120 (R34 node) only")
-            n = F["free"]["120"]
+                raise ValueError("method='gpd' for free exists at L=120 only")
+            n = F["free"]["120"] if panel == "r32" else _free12_120()
         else:
             n = None
             ser = F["series"]["%s|%s" % (family, relation)]["nodes"]

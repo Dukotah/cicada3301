@@ -1,0 +1,34 @@
+{
+ "lane": "X1",
+ "round": 38,
+ "entries": [
+  {
+   "id": "R38-X1-REDTEAM",
+   "round": 38,
+   "lane": "X1",
+   "lane_dir": "X1-redteam",
+   "date": "2026-10-31",
+   "status": "audit",
+   "hypothesis": "Round 38's own claims (S1 exact-lane control and window 1, S2 never-run, C1 semantic road, C2 never-cells and C1-R37 gaps, I1 glyph recognizer, I2 X4 null) and the Round 37 X1 carry-overs survive a refute-by-default audit.",
+   "result": "FOUND-ERROR (all bounded; no verdict flipped): (1) I1: the D2 actually run (min 8 steps + real-text window null) is not the D2 pre-registered in the Kill clause (reweight + turning-function term; weights unchanged, tf=0.0), so 'one pre-registered revision used / U8 retired' is wrong; RESULTS/ledger also call rescore_u8.json a not-run stub although it holds the 174-render variant-limited diagnostic. (2) C2: three of the seven 'run' O4 cells (L8xF6, L15xF6, L15xF7) cover only a subfamily and are PARTIAL, not TRIED; 'all 19 F5 cells -> C1-R38' overstates (C1-R38 operationalized only H3xF5; 18 remain NEVER); the N5/N4 row said 'negative' while a flagged-for-oracle bundle awaits the owner (set measured); G3's A3/cw plant is skip-free. (3) C1: the FREQRANK row is not a reading of meaning (label); the frozen lemma rule maps 22 'is' tokens to the noun 'i' (quality); patch id O4-MATRIX-H-F5 names no row (it is H3xF5) and 'measured (bounded)' is not in the status vocabulary; positive_control strings broke the validator. (4) S1: 'window 2 ran' unverified (stated as launched). (5) I2: L=240 store holds 122 draws vs 121 analysed (trivial). NO-ERROR-FOUND: S1 control independence and arithmetic (keystream regenerated, 154/240 cipher positions differ from the R27 plant, window arithmetic exact, round27 run/ untouched); S2 never-run with zero coverage and non-evidential log numbers; C1 lexicon frozen before use and all 726 offsets re-derived (0 mismatches), controls re-run 4/4, store equals summary; I1 FPR recomputed and variant-limited re-score labelled diagnostic; C2 G1/G2 (aligned) and N5/N4 numbers; I2 numbers; capsule PASS. Carry-overs: C1-R37 clauses 6/7 and printed-line sums done (C2 G1/G2); O4 count files carry superseded banners only (tables still 68); R37 I1 header banner present; bar_v3(N,120,'free') still the R34 nine-register node.",
+   "not_covered": "S2 window 2 content; the 18 untouched F5 cells and the 34 no-operation-stated closures as hidden-operation candidates (read, not re-run); the sandbox snapshots (not accessible before 2026-11-01); C2's cell-level controls beyond the lane's own files (spot-checked, not all re-run)",
+   "reopens_if": "S2 window 2 is recovered (snap_ff0SWU76EW32OqbWJvp00fnORypR, after 2026-11-01 and before ~2026-11-07); the owner reads the N5/N4 oracle bundle; the O4 judgement calls (PARTIAL moves, 18 NEVER F5 cells) are changed.",
+   "evidence": [
+    "liber-primus/analysis/round38/X1-redteam/RESULTS.md",
+    "liber-primus/analysis/round38/X1-redteam/rerun_s1.json",
+    "liber-primus/analysis/round38/X1-redteam/rerun_c1_controls.json",
+    "liber-primus/analysis/round38/X1-redteam/rerun_g2_align.json",
+    "liber-primus/analysis/round38/X1-redteam/o4_recount_r38.json"
+   ],
+   "related": [
+    "R38-S1-S2-WINDOWS",
+    "R38-S2-PHP-SANDBOX",
+    "R38-C1-SEMANTIC-WORDNET",
+    "R38-C1-SEMANTIC-FREQRANK",
+    "R38-I1-GLYPH-RECOGNIZER",
+    "R38-C2-N5N4-L240",
+    "R38-I2-X4-NULL"
+   ]
+  }
+ ]
+}

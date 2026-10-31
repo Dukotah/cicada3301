@@ -63,6 +63,19 @@ WINDOW = 32                     # the 32-rune window doctrine R3 names for `mds`
 #: fixed field order of a SWEEPROW.  See SWEEPROW.md.  NEVER reorder; append only.
 ROW_FIELDS = ["kid", "n", "en", "pmax", "preg", "pmax_ne", "pcon", "pcreg",
               "ioc", "mds", "h2", "zl", "z"]
+#: Round 39 T1: optional 14th field.  Header-driven: a store opts in by listing it in `fields`.
+ROW_FIELDS_DEG = ROW_FIELDS + ["degenerate"]
+#: the standing degenerate-decode guard (R38 I2): a constant/near-constant decode scores high on the
+#: panel content-independently, so it is a recognizer failure, never a candidate.
+DEG_MDS = 6
+DEG_IOC_N = 4.24
+
+
+def is_degenerate(mds, ioc_n_value):
+    """True iff mds <= 6 or IoC*N >= 4.24 (R38 I2 filter; real language IoC*N <= 3.24)."""
+    return bool(mds <= DEG_MDS or ioc_n_value >= DEG_IOC_N)
+
+
 ROW_PRECISION = {"en": 4, "pmax": 3, "pmax_ne": 3, "pcon": 3,
                  "ioc": 4, "h2": 4, "zl": 4, "z": 2}
 
@@ -300,7 +313,7 @@ def adjudicate(plain_idx, translit=None, pan=None, lm_override=None):
     ine = zne.argmax()
     ipc = r_ne.argmax()
 
-    return {
+    res = {
         "v": SCHEMA_VERSION,
         "n": int(n),
         "en": en,
@@ -313,6 +326,8 @@ def adjudicate(plain_idx, translit=None, pan=None, lm_override=None):
         "h2": h2_cond(x),
         "zl": zlib_ratio(x),
     }
+    res["degenerate"] = is_degenerate(res["mds"], res["ioc"])
+    return res
 
 
 def adjudicate_batch(X, pan=None):
@@ -342,8 +357,18 @@ def adjudicate_batch(X, pan=None):
 
 
 # ------------------------------------------------------------------ the record
-def to_row(res, kid):
-    """Full SWEEPROW as a fixed-order JSON array.  See SWEEPROW.md."""
+def to_row(res, kid, with_degenerate=False):
+    """Full SWEEPROW as a fixed-order JSON array.  See SWEEPROW.md.
+
+    with_degenerate=True appends the optional 14th field `degenerate` (Round 39 T1)."""
+    row = _to_row13(res, kid)
+    if with_degenerate:
+        row.append(bool(res["degenerate"]) if "degenerate" in res
+                   else is_degenerate(res["mds"], res["ioc"]))
+    return row
+
+
+def _to_row13(res, kid):
     p = ROW_PRECISION
     return [kid, res["n"],
             round(res["en"], p["en"]),
@@ -375,13 +400,13 @@ def to_record(res, kid_int):
                       tuple(res["z"]))], dtype=row_dtype(len(res["z"])))[0]
 
 
-def header(sweep_id, pan=None, **extra):
+def header(sweep_id, pan=None, with_degenerate=False, **extra):
     """The once-per-sweep header a SWEEPROW store MUST carry.  See SWEEPROW.md §2."""
     pan = pan or panel()
     b = os.path.join(HERE, "out_build.json")
     build = json.load(open(b, encoding="utf-8")) if os.path.exists(b) else {}
     h = {"v": SCHEMA_VERSION, "sweep": sweep_id,
-         "fields": ROW_FIELDS, "registers": pan.registers,
+         "fields": ROW_FIELDS_DEG if with_degenerate else ROW_FIELDS, "registers": pan.registers,
          "english_ref": "EN_MODERN", "window": WINDOW,
          "panel_build": build.get("built"), "lambdas": pan.lambdas,
          "null": {"draws": pan.null_draws, "seed": pan.null_seed,
@@ -417,13 +442,18 @@ def validate_row(row, hdr=None, n_registers=None):
         missing = [f for f in ROW_FIELDS if f != "kid" and f not in row]
         if missing:
             raise RowError(f"dict row missing fields: {missing}")
-        row = to_row(row, row.get("kid", 0))
+        row = to_row(row, row.get("kid", 0), with_degenerate="degenerate" in row)
     if not isinstance(row, (list, tuple)):
         raise RowError(f"row must be a list/tuple/dict, got {type(row).__name__}")
-    if len(row) != len(ROW_FIELDS):
+    hf = (hdr or {}).get("fields")
+    if hdr is not None and hf not in (ROW_FIELDS, ROW_FIELDS_DEG):
+        raise RowError("header field order does not match this schema version")
+    want = len(hf) if hf else None
+    if len(row) not in (len(ROW_FIELDS), len(ROW_FIELDS_DEG)) or (want and len(row) != want):
         raise RowError(f"row has {len(row)} fields, schema {SCHEMA_VERSION} needs "
-                       f"{len(ROW_FIELDS)}: {ROW_FIELDS}")
-    d = dict(zip(ROW_FIELDS, row))
+                       f"{want or len(ROW_FIELDS)} (or {len(ROW_FIELDS_DEG)} with the optional "
+                       f"`degenerate`): {ROW_FIELDS}")
+    d = dict(zip(ROW_FIELDS_DEG, row))
     if not isinstance(d["n"], int) or d["n"] < 0:
         raise RowError("n must be a non-negative int (rune length of the decode)")
     for f in ("en", "pmax", "pmax_ne", "pcon", "ioc", "h2", "zl"):
@@ -443,12 +473,33 @@ def validate_row(row, hdr=None, n_registers=None):
                        "the R3 violation that made 10^10 decodes un-reinterpretable.")
     if abs(max(z) - d["pmax"]) > 0.02:
         raise RowError(f"pmax {d['pmax']} disagrees with max(z) {max(z)}")
-    if hdr is not None:
-        if hdr.get("v") != SCHEMA_VERSION:
-            raise RowError(f"header schema {hdr.get('v')} != {SCHEMA_VERSION}")
-        if hdr.get("fields") != ROW_FIELDS:
-            raise RowError("header field order does not match this schema version")
+    if "degenerate" in d:
+        if not isinstance(d["degenerate"], bool):
+            raise RowError("degenerate must be a bool")
+        if d["degenerate"] != is_degenerate(d["mds"], d["ioc"]):
+            raise RowError("degenerate flag disagrees with (mds, ioc)")
+    if hdr is not None and hdr.get("v") != SCHEMA_VERSION:
+        raise RowError(f"header schema {hdr.get('v')} != {SCHEMA_VERSION}")
     return True
+
+
+def pmax_nondegenerate(rows, hdr=None):
+    """Max `pmax` over the NON-degenerate rows (Round 39 T1); None if every row is degenerate.
+
+    rows: SWEEPROW arrays (13 or 14 fields) or `adjudicate` result dicts.  The flag is always
+    recomputed from (mds, ioc), never trusted from the row.  A degenerate decode (constant
+    stream) scores high content-independently and must not set a family maximum."""
+    best = None
+    for r in rows:
+        if isinstance(r, dict):
+            pm, mds, ioc = r["pmax"], r["mds"], r["ioc"]
+        else:
+            pm, mds, ioc = r[3], r[9], r[8]
+        if is_degenerate(mds, ioc):
+            continue
+        if best is None or pm > best:
+            best = pm
+    return best
 
 
 def validate_store(path, hdr=None, limit=None):

@@ -1,4 +1,4 @@
-> **Counts superseded (coordinator, 2026-10-30):** NEVER 68 → 66 (Round 36 X1: H7×F2, H12×F2 were run English-only/legacy) → **60** after Round 37 C1/C2/C3 (recount in `../../round37/X1-redteam/o4_recount.json`); English-only/legacy 46, TRIED 31, PARTIAL 3.
+> **Counts superseded (coordinator, 2026-10-31; final after Round 38):** NEVER **18** (all semantic F5; sense-similarity → Round 39 C1), TRIED 35, English-only 21, legacy 25, PARTIAL 7, no-operation-stated 34 (`../../round38/X1-redteam/o4_recount_r38.json`). Earlier note: NEVER 68 → 66 (Round 36 X1: H7×F2, H12×F2 were run English-only/legacy) → **60** after Round 37 C1/C2/C3 (recount in `../../round37/X1-redteam/o4_recount.json`); English-only/legacy 46, TRIED 31, PARTIAL 3.
 
 # O4 matrix - clue row x reading family
 

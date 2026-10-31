@@ -1135,6 +1135,17 @@ Do NOT re-run any R34 lane as-is. Round 35: skip-tolerant screen → orbit re-sc
 > `sweep_rows.jsonl` holds **PHP rows only** (26,050): the resumed invocation truncated the store, so the 324,798 bash
 > decodes are not persisted (summary/log only). Verdict (NEGATIVE, bounded) and the 12-cell table stand.
 
+## Round 38 — THE SANDBOX WINDOWS, THE SEMANTIC ROAD AND THE NEVER CELLS (2026-10-31)
+
+Rows `R38-*` in `LEDGER.json` (S1, S2 never-run, C1 x2, C2 x5, I1, I2, X1); `R27-CPORT-MT32-FULLSWEEP` carries S2 coverage per instrument; `R32-B2-PHP-MT-RAND` records zero added seeds; `F-02` stays partially-run; `R36-O4-CLUE-COVERAGE` carries the recount. Full write-up `analysis/round38/X1-redteam/RESULTS.md`; every verdict is conditional on key space x transition model x register panel.
+- **R38-S1** the S2 (exact) lane's planted control is now independently generated and recovered 3/3 (pmax 17.9-20.8 vs claim bar 7.634); window 1 under panel-R36 advanced 108,611,578 seeds, 0 claim-bar crossers, 0 near-misses (best 7.3007); panel-R36 coverage 3.809 pp of 2^32 (Round 19-gated 44.138 % unchanged). Window 2 was launched but its end state is unrecovered (snapshot `snap_ff0SWU76EW32OqbWJvp00fnORypR`, Vercel quota until 2026-11-01 UTC) and is NOT counted.
+- **R38-S2** PHP mt_rand tier (b) on the sandbox: never-run (no retained rows); zero seeds added; log-observed FPR/control numbers are not evidence.
+- **R38-C1** "their meaning is the road" as WordNet 3.1 first-synset FILE OFFSET (an identifier, not sense content) and Norvig frequency rank (not a meaning): 28,224 decodes, best 4.62 / 5.296 vs actual-N bars 6.90 / 7.85; negative, definition-conditional. O4 H3xF5 NEVER -> PARTIAL.
+- **R38-C2** C1-R37 gaps closed (clauses 6/7, printed-line sums, lag-1 pointers: all below bars); seven O4 NEVER cells run (4 TRIED, 3 PARTIAL); 34 closed as "no operation stated" (a reopen condition, not a verdict); N5/N4 top-50 at L=240: N5 7.446, N4 8.572, above the screen-N bar, below the N=1e6 bar, inside a cipher-derived-key matched null (p 0.74 / 0.16), non-language: flagged-for-oracle bundle pending the owner.
+- **R38-I1** stroke-aware glyph recognizer: planted-glyph detection 1.0 but FPR 0.16 (V2 29/50): control failed, inconclusive; the D2 run is not the pre-registered D2; the variant-limited re-score is diagnostic only (three PNGs viewed: nothing to escalate).
+- **R38-I2** bespoke X4 null: transferred bars undercut it (6.994 vs 5.69 at L=120); 0 of 120 non-degenerate X4 rows clear; the degenerate filter removes only constant decodes (raw 8.70 / 12.40 = recognizer failure).
+- **R38-X1** FOUND-ERROR x12 (all bounded) and O4 recount: NEVER 60 -> 18; TRIED 35; PARTIAL 7; NO-OPERATION-STATED 34.
+
 ## Round 37 — THE UNTRIED READINGS AND THE 12-REGISTER TOOLING (2026-10-30)
 
 Rows `R37-*` in `LEDGER.json` (T1, C1 x3, C2 U4/U7/U7-W/U8, C3 x11, X1) plus retro-rows `R10-L2-MAP`, `R10-L3-ROAD`; `F-02` -> partially-run; `R11-*`, `R22-C` restated with an ADDED 12-register result (the original English-only result is kept). I1 (free null) and I2 (pf_v4_12 orbit re-screen) were audited last and filed: I1 measured (free licensed at L=240 for 10 registers, L=400/729 for 12; O3 cell = noise), I2 negative (every register screen power >= 0.952, 0 flagged). Full write-up `analysis/round37/X1-redteam/RESULTS.md`; every verdict below is conditional on key space x transition model x register panel, with positive controls planted in EN_MODERN (C1) or EN_MODERN/LATIN/GREEK (C3) only.

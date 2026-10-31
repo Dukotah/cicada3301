@@ -79,6 +79,7 @@ Fixed. **Never reorder; append only, with a version bump.**
 | 10 | `h2` | float | 4dp | **R3 statistic (4a)** — plug-in order-2 conditional entropy, bits/rune |
 | 11 | `zl` | float | 4dp | **R3 statistic (4b)** — `len(zlib.compress(bytes,9)) / n` |
 | 12 | `z` | float[9] | 2dp | per-register standardised score, in `registers` order |
+| 13 | `degenerate` | bool | — | **optional** (Round 39 T1; a store opts in by listing it last in the header `fields`). `mds <= 6 or ioc >= 4.24` (IoC·N): a constant/near-constant decode that scores high content-independently (R38 I2). Recomputable from fields 8-9; `validate_row` accepts rows with or without it and, if present, checks it agrees. Use `pmax_nondegenerate(rows)` for any family maximum. Writers: `to_row(res, kid, with_degenerate=True)`, `header(..., with_degenerate=True)`. |
 
 Example row:
 
