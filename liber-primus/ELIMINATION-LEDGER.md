@@ -1135,6 +1135,16 @@ Do NOT re-run any R34 lane as-is. Round 35: skip-tolerant screen → orbit re-sc
 > `sweep_rows.jsonl` holds **PHP rows only** (26,050): the resumed invocation truncated the store, so the 324,798 bash
 > decodes are not persisted (summary/log only). Verdict (NEGATIVE, bounded) and the 12-cell table stand.
 
+## Round 39 — THE MEASURED CEILING (2026-10-31)
+
+**Read first: [`MEASURED-CEILING.md`](MEASURED-CEILING.md)** (per family: what the panel-R36 instrument generation excludes, at what measured power, under which three conditionals, what re-opens it, and what is not excluded; `analysis/round39/P1-measured-ceiling/check_ceiling.py` fails CI on any claim without a ledger row). Rows `R39-*` in `LEDGER.json` (P1 audit, T1, C1, S1/S2 never-run, X1, I1); `R36-O4-CLUE-COVERAGE` carries the cell moves. Full write-up `analysis/round39/X1-redteam/RESULTS.md`.
+- **R39-P1** MEASURED-CEILING.md written and checker-enforced; X1 corrected its register scope (14 strong-verdict lines had planted EN_MODERN only), 3 undisclosed post-data nulls, the Py2.7 `pair` / SHA-KDF / PHP power scopes and the section-3 omissions (Marsaglia CDROM 77 of 756 units, transcription and additive-cipher assumptions).
+- **R39-T1** degenerate-decode flag (optional SWEEPROW field), key-matched null benchmark (reproduces the X4 L=120 bar 6.994), `bar_v3(..., 'free')` at L=120 on the 12-register node (17.43 -> 15.30). No cipher claim.
+- **R39-C1** "their meaning is the road" as WordNet 3.1 first-synset hypernym depth and lexicographer-file index (mod 29/28; A1/A2/A3): 14,112 decodes, best 5.351 vs actual-N bar 7.59; negative, definition-conditional. The 18 NEVER F5 cells move to PARTIAL (one generic operationalization), O4 recount: NEVER 0, PARTIAL 25.
+- **R39-I1** see `analysis/round39/I1-v2-page-null/RESULTS.md`.
+- **R39-S1-S2-WINDOWS** never-run: the sandbox lanes S1 (S2 window 2 and further windows) and S2 (PHP retry) were not run in Round 39 and moved to Round 40.
+- **R39-X1** FOUND-ERROR (all bounded, no stored verdict flipped); see RESULTS.md.
+
 ## Round 38 — THE SANDBOX WINDOWS, THE SEMANTIC ROAD AND THE NEVER CELLS (2026-10-31)
 
 Rows `R38-*` in `LEDGER.json` (S1, S2 never-run, C1 x2, C2 x5, I1, I2, X1); `R27-CPORT-MT32-FULLSWEEP` carries S2 coverage per instrument; `R32-B2-PHP-MT-RAND` records zero added seeds; `F-02` stays partially-run; `R36-O4-CLUE-COVERAGE` carries the recount. Full write-up `analysis/round38/X1-redteam/RESULTS.md`; every verdict is conditional on key space x transition model x register panel.

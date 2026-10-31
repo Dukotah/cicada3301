@@ -1,0 +1,165 @@
+### python analysis/round39/P1-measured-ceiling/check_ceiling.py
+check_ceiling: MEASURED-CEILING.md vs LEDGER.json (262 rows)
+  claim lines (tables, sections 1-3): 53   strong-verdict lines: 24
+  distinct rows cited: 96   pins checked: 75
+PASS
+exit 0
+### python analysis/handoff/validate_ledger.py
+LEDGER.json  schema 1.0.0  262 entries (recounted from the rows)
+   negative           81
+   measured           80
+   audit              41
+   open               18
+   partially-run      18
+   never-run          10
+   inconclusive       6
+   eliminated         5
+   superseded         3
+
+ERRORS: 0
+
+WARNINGS: 76
+   [R12-frontB] NO-THREE-CONDITIONALS: negative (round >= 19) without `three_conditionals` (key_space / transition_model / adjudicator_register)
+   [A-03] NULL-COVERAGE: negative with coverage null - the claim is unbounded
+   [A-04] NO-THREE-CONDITIONALS: negative (round >= 19) without `three_conditionals` (key_space / transition_model / adjudicator_register)
+   [A-05] negative with no recorded threshold
+   [A-05] NO-THREE-CONDITIONALS: negative (round >= 19) without `three_conditionals` (key_space / transition_model / adjudicator_register)
+   [E-01] NO-THREE-CONDITIONALS: negative (round >= 19) without `three_conditionals` (key_space / transition_model / adjudicator_register)
+   [F-01] NULL-COVERAGE: negative with coverage null - the claim is unbounded
+   [G-01] evidence path does not exist: liber-primus/analysis/round18/L1-toolchain/font_match_sheet.png
+   [G-01] evidence path does not exist: liber-primus/analysis/round18/L1-toolchain/pdf_hunt.jsonl
+   [H-03] NULL-COVERAGE: negative with coverage null - the claim is unbounded
+   [B-11] evidence path does not exist: liber-primus/analysis/round18/L1-toolchain/runes_observed.png
+   [B-11] evidence path does not exist: liber-primus/analysis/round18/L1-toolchain/font_match_sheet.png
+   [B-11] evidence path does not exist: liber-primus/analysis/round18/L1-toolchain/pdf_hunt.jsonl
+   [B-23] negative with no recorded threshold
+   [B-23] NO-THREE-CONDITIONALS: negative (round >= 19) without `three_conditionals` (key_space / transition_model / adjudicator_register)
+   [B-13-MARSAGLIA] evidence path does not exist: liber-primus/analysis/round18/L6-offset-marsaglia/data/MANIFEST.json
+   [L7-A-SCORER-ENGLISH-ONLY] negative whose threshold was not fixed in advance (post-hoc bars are not tests)
+   [L7-A-ARCHIVE-RESCORE] negative whose threshold was not fixed in advance (post-hoc bars are not tests)
+   [L7-B-BEAM-ENVELOPE] negative whose threshold was not fixed in advance (post-hoc bars are not tests)
+   [L7-C-THRESHOLD-CALIBRATION] negative whose threshold was not fixed in advance (post-hoc bars are not tests)
+   [R19-C2-MARSAGLIA-GATE] evidence path does not exist: liber-primus/analysis/round18/L6-offset-marsaglia/data/checksums.sha256.txt
+   [R19-C2-MARSAGLIA-GATE] evidence path does not exist: liber-primus/analysis/round18/L6-offset-marsaglia/data/marsaglia-cdrom_files.xml
+   [CORPUS-G-02] evidence path does not exist: liber-primus/analysis/round19/C3/verify_rerun.log
+   [L1-F6-CORRECTION] evidence path does not exist: liber-primus/analysis/round19/C3/l8/crosscheck.log
+   [R19-G3] evidence path does not exist: liber-primus/analysis/round19/G3/pilot.jsonl
+   ... and 51 more
+
+NOTES: 25
+   [A-02] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [B-01] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [B-03] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [C-01] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [D-02] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [D-03] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [D-04] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [H-01] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [H-02] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   [I-02] open lane with no `reopens_if` - a future reader cannot tell what would settle it
+   ... and 15 more
+
+Unsound negatives: 0  (this is the number that matters - it should be 0)
+exit 0
+### python tests/validate.py
+PASS  Runes - 01.jpg   4/4 words  score= -4.48  via atbash+shift+0
+      AWARNNGBELIEUENOTHNGFROMTHISBOOCEXCEPTWHATYOUCNOWTOBETRUETESTTHECNOWLEDGEFINDYOURTRUTHEXPERIENCE
+PASS  05.jpg           3/3 words  score= -4.98  via shift+0
+      SOMEWISDOMTHEPRIMESARESACREDTHETOTIENTFUNCTIANISSACREDALLTHNGSSHOULDBEENCRYPTEDCNOWTHISSHADOWSAE
+PASS  06.jpg           3/3 words  score= -4.13  via atbash+shift+3
+      ACOANAMANDECIDEDTOGOANDSTUDYWITHAMASTERHEWENTTOTHEDOOROFTHEMASTERWHOAREYOUWHOWISHESTOSTUDYHEREAS
+PASS  03.jpg           4/4 words  score= -4.34  via vigenere DIVINITY (+7 interrupters)
+      WELCOMEWELCOMEPILGRIMTOTHEGREATJOURNEYTOWARDTHEENDOALLTHNGSITISNOTANEASYTRIPBUTORTHOSEWHOINDTHEI
+PASS  14.jpg           4/4 words  score= -4.24  via vigenere FIRFUMFERENFE (+2 interrupters)
+      ACOANDURNGALESSONTHEMASTEREXPLAINEDTHEITHEIISTHEUOICEOTHECIRCUMERENCEHESAIDWHENASCEDBYASTUDENTTO
+PASS  73.jpg           7/7 words  score= -4.57  via phi(prime) shift-down (+1 interrupters)
+      ANENDWITHINTHEDEEPWEBTHEREEXISTSAPAGETHATHASHESTOITISTHEDUTYOEUERYPILGRIMTOSEECOUTTHISPAGE
+
+=== ALL VALIDATIONS PASSED — rig reproduces known solves. ===
+exit 0
+### python -m pytest tests/ benchmark/ -q -p no:cacheprovider
+.........................................                                [100%]
+41 passed in 23.62s
+exit 0
+### python handoff/capsule/verify_capsule.py
+capsule: C:\Users\Jeff\cicada3301\liber-primus\handoff\capsule\MANIFEST.json
+generated 2026-08-19T17:58:51Z  schema 1.0
+checking 104 of 104 items  [offline]
+
+  [SKIP       ] runes.unsolved_stream
+      derived item — recompute via the 'derivation' field in the manifest
+  [ABSENT     ] pads.cicadaos.DATA_560.17
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] pads.cicadaos.DATA__560.00.TRUNCATED
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] pads.cicadaos.DATA__560.00
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] pads.cicadaos.tmp_folly
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] pads.cicadaos.tmp_wisdom
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] pads.cicadaos.usr_local_bin_prime_echo
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] pads.cicadaos.DATA_560.13
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] audio.761_instar_emergence
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] corpus.moby
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] corpus.pride
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] corpus.war
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] keytext.king_in_yellow
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] keytext.book_of_the_law
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+  [ABSENT     ] keytext.agrippa
+      not on disk (expected for gitignored items; use --net to probe mirrors)
+
+========================================================================
+  ABSENT      : 14
+  OK          : 89
+  SKIP        : 1
+========================================================================
+PASS — every checked item is intact / reachable.
+exit 0
+### python analysis/handoff/build_index.py
+wrote INDEX.json  (16 entry points, 13 task routes)
+   all entry-point paths resolve
+exit 0
+### python analysis/handoff/build_problem.py
+wrote liber-primus\PROBLEM.json
+  n=12956  sha256=023312066df471005264b9cb...  doublets=86
+exit 0
+### python analysis/handoff/build_knowledge.py
+wrote KNOWLEDGE.json  (10 timeline entries, 8 misconceptions, 29-rune table)
+   all cited source paths resolve
+exit 0
+### python analysis/handoff/build_solved_pages.py
+  Runes - 01.jpg   atbash+shift+0         score= -4.48  AWARNNGBELIEUENOTHNGFROMTHISBOOCEXCEPTWHATYOUCNOWTOB
+  05.jpg           shift+0                score= -4.98  SOMEWISDOMTHEPRIMESARESACREDTHETOTIENTFUNCTIANISSACR
+  06.jpg           atbash+shift+3         score= -4.13  ACOANAMANDECIDEDTOGOANDSTUDYWITHAMASTERHEWENTTOTHEDO
+  03.jpg           vigenere(DIVINITY)     score= -4.34  WELCOMEWELCOMEPILGRIMTOTHEGREATJOURNEYTOWARDTHEENDOA
+  14.jpg           vigenere(FIRFUMFERENFE) score= -4.24  ACOANDURNGALESSONTHEMASTEREXPLAINEDTHEITHEIISTHEUOIC
+
+wrote liber-primus\SOLVED-PAGES.json  (5 solved pages)
+exit 0
+### python analysis/handoff/check_consistency.py
+==========================================================================
+CROSS-DOCUMENT CONSISTENCY CHECK
+==========================================================================
+  [ok  ] ciphertext identity agrees everywhere
+  [ok  ] no terminal 'work is over' instructions
+  [ok  ] retracted claim is not asserted
+  [ok  ] corrected verdict is present in every front door
+  [ok  ] acceptance thresholds agree
+  [ok  ] machine-readable pointers resolve
+  [ok  ] documented commands name real files
+  [ok  ] solved-page corpus matches the rig
+  [ok  ] ledger has no unsound negatives
+  [ok  ] no LLM scratch text in published prose
+  [ok  ] ledger counts in nav docs match LEDGER.json
+
+All entry points agree. No document drift detected.
+exit 0

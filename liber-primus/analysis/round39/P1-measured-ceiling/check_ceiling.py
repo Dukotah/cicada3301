@@ -4,7 +4,9 @@
 Rule set (pre-registered in PREREG.md, dated before this file existed):
   1. every table line in sections 1-3 carries >=1 [[ROW-ID]] citation; every id exists in LEDGER.json;
   2. a section-2 line whose Verdict cell says "excluded at power" or "measured negative" may cite only rows whose
-     positive_control begins with "pass" (case-insensitive) and whose coverage is non-empty;
+     positive_control is exactly "passed" (X1/R39: the P1 prefix rule was tightened; PC_ALLOW lists the one reasoned exception),
+     whose coverage is non-empty, whose threshold_fixed_in_advance is not false unless the line says "post-data null",
+     and, if the row's controls are register-narrow, whose line carries a "[plants: ...]" scope;
   3. every section-2 line has a Verdict from the controlled phrases, a non-empty measured-power cell, a conditionals
      cell with three " / "-separated parts, and a non-empty "Re-opens if" cell;
   4. every "<!-- pin: ROW-ID | substring -->" must occur in that row's JSON (numbers cannot drift);
@@ -25,7 +27,11 @@ LEDGER = os.path.join(LP, "LEDGER.json")
 
 STRONG = ("excluded at power", "measured negative")
 WEAK = ("partial", "unmeasured", "inconclusive", "not excluded")
-FORBIDDEN = re.compile(r"\b(exhausted|exhaustion|exhaustive\s+closure|closed|solved|dead|impossible)\b", re.I)
+FORBIDDEN = re.compile(r"\b(exhausted|exhaustion|exhaustive\s+closure|closed|solved|dead|impossible|unsolvable|foreclosed|frontier\s+(?:is|are)\s+complete)\b", re.I)   # X1/R39: + R7's "unsolvable", "the frontier is complete"
+# X1/R39: rows whose positive_control is not exactly "passed" but may still be cited on a strong line (reason recorded)
+PC_ALLOW = {"R37-I1-FREE-NULL-LMATCHED": "cited only as the free-relation qualifier (OE 3/20, EN_HALFVOWEL 7/20 fail at L=240); not support for a negative"}
+# X1/R39: a row whose adjudicator_register says the plants were English-only (or EN/LATIN/GREEK only) must be flagged on the line
+NARROW_PLANTS = re.compile(r"(plants?|controls?)\s+(?:planted\s+)?EN_MODERN|EN_MODERN[- ]only|control EN_MODERN only", re.I)
 CITE = re.compile(r"\[\[([^\[\]\s]+)\]\]")
 PIN = re.compile(r"<!--\s*pin:\s*(\S+)\s*\|\s*(.*?)\s*-->")
 
@@ -100,8 +106,14 @@ def main():
                 r = rows[i]
                 pc = str(r.get("positive_control") or "").strip().lower()
                 cov = r.get("coverage")
-                if not pc.startswith("pass"):
+                if pc != "passed" and i not in PC_ALLOW:
                     err(f"line {n}: strong verdict cites [[{i}]] whose positive_control is {str(r.get('positive_control'))[:50]!r}")
+                if r.get("threshold_fixed_in_advance") is False and "post-data null" not in l:
+                    err(f"line {n}: strong verdict cites [[{i}]] whose threshold_fixed_in_advance is false; the line must say 'post-data null'")
+                tc = r.get("three_conditionals")
+                reg = str(tc.get("adjudicator_register")) if isinstance(tc, dict) else ""
+                if NARROW_PLANTS.search(reg) and "[plants:" not in l:
+                    err(f"line {n}: strong verdict cites [[{i}]] whose controls are register-narrow ({reg[:60]!r}); the line must carry a '[plants: ...]' scope")
                 if cov in (None, "", [], {}):
                     err(f"line {n}: strong verdict cites [[{i}]] whose coverage is null/empty")
             if not any(rows[i].get("reopens_if") or rows[i].get("not_covered") for i in known):
