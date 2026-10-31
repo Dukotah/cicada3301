@@ -1,0 +1,223 @@
+{
+ "$comment": "R41 I1 lane row; the coordinator files it in LEDGER.json",
+ "entries": [
+  {
+   "id": "R41-I1-NULL-REFIT-SURVIVOR12",
+   "round": 41,
+   "lane": "I1",
+   "lane_dir": "I1-null-refit",
+   "date": "2026-10-31",
+   "status": "measured",
+   "hypothesis": "A bar fitted on the population it is applied to (wrong-key seeds from the six generator families that pass pf_v4_12 on the real LP2 head and are decoded by beam_v3 panel_max under panel-R36) reproduces the survivors the real sweeps produce, and every Round 36-40 best row stays below it.",
+   "positive_control": "failed",
+   "control_detail": "480 plants (20 x 12 registers x 2 relations) through the real chunk path: 470/480 passed the pf_v4_12 screen; every one of the 470 cleared the bar of record at N=1e6 at BOTH L=120 and L=240 (min pmax120 12.35, min pmax240 17.71 against 10.46/10.49 and 10.05/10.35). The pre-registered gate (>=19/20 in every register x relation cell) fails in two cells, LATIN keyskip1 and OE keyskip2 (18/20 each), solely through screen misses (10 plants lost to the screen: EN_KJV 1, LP1_REAL 1, LATIN 2, OE 2, CY 1, EN_HALFVOWEL 1, GREEK 1, HEBREW 1; 7 of the 10 have a skip inside the 24-rune head).",
+   "threshold": "Gumbel/POT bar of record at N=1e6 and at actual N (alpha 0.01); fixed in PREREG.md before the first draw",
+   "threshold_fixed_in_advance": true,
+   "result": {
+    "population": "wrong-key seeds uniform over six generator families (bash 4.2 LP64, bash 4.2 ILP32, PHP mt_scale, mt_mod, php_scale, php_mod), real LP2 head, passed through pf_v4_12 at the frozen point, survivors decoded by beam_v3 panel_max under panel-R36",
+    "heads_screened": 48758784,
+    "survivor_draws_raw": 41149,
+    "distinct_survivors_L120": 40482,
+    "per_family_distinct": {
+     "bash4.2": 6484,
+     "bash4.2_i32": 6596,
+     "mt_scale": 6837,
+     "mt_mod": 6914,
+     "php_scale": 6782,
+     "php_mod": 6869
+    },
+    "L240_distinct_survivors": 5194,
+    "survivor_median_pmax_L120": {
+     "keyskip1": 2.809,
+     "keyskip2": 2.828,
+     "null12": 2.334
+    },
+    "fit_L120": {
+     "keyskip1": {
+      "mu": 2.9298,
+      "beta": 0.4061,
+      "beta_se": 0.0064,
+      "k_tail": 4049
+     },
+     "keyskip2": {
+      "mu": 2.9366,
+      "beta": 0.4099,
+      "beta_se": 0.0064,
+      "k_tail": 4049
+     }
+    },
+    "fit_L240": {
+     "keyskip1": {
+      "mu": 3.494,
+      "beta": 0.3562,
+      "beta_se": 0.0156,
+      "k_tail": 520
+     },
+     "keyskip2": {
+      "mu": 3.5185,
+      "beta": 0.3712,
+      "beta_se": 0.0163,
+      "k_tail": 520
+     }
+    },
+    "bar_of_record_L120": {
+     "keyskip1": {
+      "N=131786": 9.6325,
+      "N=1e+05": 9.5192,
+      "N=1e+06": 10.4645,
+      "N=1e+09": 13.3004
+     },
+     "keyskip2": {
+      "N=131786": 9.6549,
+      "N=1e+05": 9.5417,
+      "N=1e+06": 10.4856,
+      "N=1e+09": 13.3173
+     }
+    },
+    "bar_of_record_L240": {
+     "keyskip1": {
+      "N=131786": 9.3311,
+      "N=1e+06": 10.0529,
+      "N=1e+09": 12.5132
+     },
+     "keyskip2": {
+      "N=131786": 9.6017,
+      "N=1e+06": 10.3539,
+      "N=1e+09": 12.9179
+     }
+    },
+    "null12_bars_for_comparison": {
+     "L120_N1e6": {
+      "keyskip1": 9.102,
+      "keyskip2": 8.999
+     },
+     "L120_survivorN_69k": {
+      "keyskip1": 8.13,
+      "keyskip2": 8.044
+     },
+     "L120_N131786": {
+      "keyskip1": 8.365,
+      "keyskip2": 8.275
+     }
+    },
+    "Q1a": {
+     "keyskip1": {
+      "refit_gumbel_bar_N131786": 9.5852,
+      "pooled_real_sweep_POT_bar_N131786": 9.6325,
+      "strict_pass": false
+     },
+     "keyskip2": {
+      "refit_gumbel_bar_N131786": 9.6549,
+      "pooled_real_sweep_POT_bar_N131786": 9.6125,
+      "strict_pass": true
+     }
+    },
+    "Q1b": {
+     "n_plants": 480,
+     "prefilter_pass": 470,
+     "clear_both_bars_given_prefilter": 470,
+     "cells_below_19_of_20": [
+      {
+       "cell": "LATIN|keyskip1|L120",
+       "clear_path": 18,
+       "of": 20,
+       "prefilter_pass": 18,
+       "clear_given_prefilter": 18
+      },
+      {
+       "cell": "LATIN|keyskip1|L240",
+       "clear_path": 18,
+       "of": 20,
+       "prefilter_pass": 18,
+       "clear_given_prefilter": 18
+      },
+      {
+       "cell": "OE|keyskip2|L120",
+       "clear_path": 18,
+       "of": 20,
+       "prefilter_pass": 18,
+       "clear_given_prefilter": 18
+      },
+      {
+       "cell": "OE|keyskip2|L240",
+       "clear_path": 18,
+       "of": 20,
+       "prefilter_pass": 18,
+       "clear_given_prefilter": 18
+      }
+     ],
+     "gate": false
+    },
+    "Q5": "fired in the conservative direction: observed real-sweep maxima sit 0.7-2.8 SE BELOW the Gumbel-implied location (11 of 12 store x relation cells negative; R37-I2 keyskip1 -2.78, R40-B1 keyskip2 -2.80), and the null's own tail counts are 2-4 SE below exponential expectation at q99.9 / q99.97 (xi_gpd about -0.13): the exponential tail over-predicts; the GPD sensitivity bar (about 6.8-7.0) is crossed by the real stores' own maxima (7.065, 7.098), so it cannot be the bar. Bar of record = the higher of the Gumbel refit and the pooled real-sweep POT line at L=120; Gumbel refit at L=240.",
+    "rejudge": {
+     "rows": 34,
+     "cross_actualN": 0,
+     "cross_1e6": 0,
+     "smallest_margin_to_bar_at_actualN": {
+      "row": "R40-B3 KDF keyskip2",
+      "best_pmax": 6.528,
+      "refit_bar_actualN": 7.438,
+      "margin": -0.91
+     },
+     "kdf_flag_withdrawn": "R40-B3 KDF keyskip2 6.528 vs refit bar 7.435 at N=591 (stored null12 bar 6.342 had flagged it)"
+    },
+    "matched_null_fixture_R13": {
+     "100": {
+      "D": 500,
+      "p_family": 0.003992015968063872,
+      "exceed": 1,
+      "best_stream": "A:idx:s61:b1:f1",
+      "best_Z": 4.719829131369891,
+      "null_max_Z_q99": 4.336529273986816,
+      "x1_p_family": 0.003992015968063872,
+      "x1_exceed": 1,
+      "elapsed": 327.5
+     },
+     "250": {
+      "D": 500,
+      "p_family": 0.017964071856287425,
+      "exceed": 8,
+      "best_stream": "A:idx:s60:b1:f1",
+      "best_Z": 3.822589897078191,
+      "null_max_Z_q99": 3.988131501674652,
+      "x1_p_family": 0.017964071856287425,
+      "x1_exceed": 8,
+      "elapsed": 346.4
+     },
+     "1000": {
+      "D": 500,
+      "p_family": 0.06986027944111776,
+      "exceed": 34,
+      "best_stream": "A:idx:s61:b1:f1",
+      "best_Z": 3.523362457607196,
+      "null_max_Z_q99": 4.295211024284363,
+      "x1_p_family": 0.06986027944111776,
+      "x1_exceed": 34,
+      "elapsed": 343.1
+     }
+    }
+   },
+   "coverage": "48,758,784 wrong-key heads screened (8,126,464 per family x 6); 41,149 survivor draws, 40,482 distinct (key, family) decoded at L=120 under both relations and 5,194 distinct at L=240 (floors 40,000 / 5,000 met on distinct keys); 480 plants through the real chunk path; the three real-sweep survivor stores (R37-I2 131,786, R40-B1 142,283, R40-B3 33,308 rows per relation) used as the empirical comparison; 34 best rows re-judged (R36-B1, R37-I2, R40-B1, R40-B3, R40-C1 screened families).",
+   "three_conditionals": {
+    "key_space": "wrong keys drawn uniformly from six generator families (bash 4.2 LP64/ILP32 orbit prefixes, PHP mt_rand four cells over 2^32 seeds); a bar for survivors of the six-family mixture, not for any generator outside them and not for the unscreened (no-prefilter) or direct-stream populations",
+    "transition_model": "beam_v3 panel_max keyskip1 and keyskip2 only, beam_w 400, lam_u 4, after pf_v4_12 (frozen point m=24, k=2, rel both); not the free relation",
+    "adjudicator_register": "panel-R36 12 registers, pmax; L=120 and L=240 on LP2[:120] / LP2[:240] (nodes only at these two lengths; no extrapolation in L)"
+   },
+   "not_covered": "L other than 120 and 240; the free relation; direct (non-key) families (see benchmark/bars_matched.py); unscreened populations (null12 still describes shuffled-LP2 wrong keys with no prefilter, and its bars are not made stricter by this refit); draws are with replacement (1.6 % repeat keys, deduplicated for the fit); L=240 has no real-sweep survivor rows to compare, so its bar is the Gumbel refit alone (n about 5,194, bar SE about 0.2); bars at N>=1e6 are tail extrapolations (the observed tail is lighter than exponential, so they are conservative); the 1 % family-wise level at N~1.3e5 cannot be measured empirically (it would need ~100 independent sweeps of that size).",
+   "reopens_if": "a sweep's survivor median or q99 departs from 2.80 / 4.76 (the population changed); a family beyond the six (for example Perl, Python MT, PHP with another seed range) is screened; the pf_v4_12 frozen point is changed; or a real sweep produces a survivor row above 9.0 at L=120 (re-decode at L=240 and re-judge against these bars).",
+   "evidence": [
+    "liber-primus/analysis/round41/I1-null-refit/PREREG.md",
+    "liber-primus/analysis/round41/I1-null-refit/RESULTS.md",
+    "liber-primus/analysis/round41/I1-null-refit/null_survivor12.json",
+    "liber-primus/analysis/round41/I1-null-refit/fit.json",
+    "liber-primus/analysis/round41/I1-null-refit/control.json",
+    "liber-primus/analysis/round41/I1-null-refit/rejudged_rounds36_40.json",
+    "liber-primus/analysis/round41/I1-null-refit/null_stream.jsonl",
+    "liber-primus/analysis/round41/I1-null-refit/null_stream240.jsonl",
+    "liber-primus/analysis/round34/I1-v3-null/bars_v3.py",
+    "liber-primus/benchmark/bars_matched.py",
+    "liber-primus/tests/test_null_refit.py"
+   ]
+  }
+ ]
+}

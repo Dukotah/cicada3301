@@ -1,6 +1,6 @@
 """Round 34 / I1: observed-null family-wise bars for beam_v3 (panel_max, hard max, lam_u=4, beam_w=400) panel pmax.
 
-    bar_v3(N, L, relation, alpha=0.01, family="lp2"|"register", method="gumbel"|"gpd")
+    bar_v3(N, L, relation, alpha=0.01, family="lp2"|"register"|"survivor12", method="gumbel"|"gpd")
 
 Model (fit.json, built by fit.py from null_stream.jsonl): exponential (Gumbel-max) peaks-over-threshold tail above the
 empirical 90th percentile of v3 wrong-key pmax, per (family, relation, L) node; beta(L) is the fitted power law over L
@@ -12,6 +12,9 @@ bar = mu + beta * ln(N / -ln(1-alpha)): P(max over N independent wrong-key decod
 (1335/726/562 draws; L=400 and 729 are below the 2,000 target, SEs in that RESULTS.md).  `bar_v3(N, L, "free")` returns the R37 panel-R36 (12-register)
 node at every L in {120,240,400,729} (Round 39 T1: the L=120 default MOVED from the R34 9-register node to the 12-register node,
 fit_free.json "120"); pass panel="r32" for the old R34 9-register L=120 node (panel="r36" is still accepted and means the default).  The free control at L=240 FAILS for OE and EN_HALFVOWEL (see R37 RESULTS).
+`family="survivor12"` (Round 41 I1; round41/I1-null-refit/null_survivor12.json, RESULTS.md): the bar of record for the population the sweeps
+apply it to (wrong-key seeds from six generator families, real LP2 head, pf_v4_12 survivors, beam_v3 panel_max, panel-R36), keyskip1/keyskip2, L in
+[120, 240] (nodes at 120 and 240, no extrapolation); at L=120 the higher of the null Gumbel refit and the pooled real-sweep-survivor POT line.
 method="gpd" gives the lighter-tailed (xi<0) sensitivity bar -- NOT the bar of record (extrapolates a bounded tail).
 Round 34 Q5 fired (beta exponent far from Round 32 I3's -0.55): see RESULTS.md; the Gumbel bar is the conservative one
 (it over-predicts the observed max at the observed N), the empirical quantile exists only up to N~n_draws.
@@ -30,6 +33,14 @@ True
 15.3
 >>> round(bar_v3(1e6, 120, "free", panel="r32"), 2)   # the old R34 9-register node
 17.43
+>>> round(bar_v3(131786, 120, "keyskip1", family="survivor12"), 2)   # Round 41 I1: bar of record on the pf_v4_12-survivor population
+9.63
+>>> round(bar_v3(1e6, 120, "keyskip2", family="survivor12"), 2)
+10.49
+>>> round(bar_v3(1e6, 240, "keyskip1", family="survivor12"), 2)
+10.05
+>>> bar_v3(131786, 120, "keyskip1", family="survivor12") > bar_v3(131786, 120, "keyskip1")    # the null12-era bar was lenient at survivor N
+True
 """
 import json, math, os
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -85,12 +96,41 @@ def _params(L, relation, family, panel=None):
     return mu, None, beta(L), nodes
 
 
+_S12 = None
+
+
+def _survivor12(N, L, relation, alpha=0.01):
+    """Round 41 I1 bar of record (round41/I1-null-refit/null_survivor12.json), exponential POT tail of the pf_v4_12-SURVIVOR
+    wrong-key population (six generator families, real LP2 head, beam_v3 panel_max, panel-R36).  L=120: the HIGHER of the null's
+    Gumbel refit and the pooled real-sweep-survivor POT line (Q5 fired conservatively, see RESULTS); L=240: the Gumbel refit.
+    120 < L < 240: linear in ln L between the two node bars at the same N; outside [120, 240] raises (no extrapolation)."""
+    global _S12
+    if _S12 is None:
+        p = os.path.join(HERE, "..", "..", "round41", "I1-null-refit", "null_survivor12.json")
+        _S12 = json.load(open(p, encoding="utf-8"))
+    if not 120 <= L <= 240:
+        raise ValueError("family='survivor12' has nodes at L=120 and L=240 only (no extrapolation)")
+    z = -math.log1p(-alpha)
+    a, b = _S12["cells"]["L120|%s" % relation], _S12["cells"]["L240|%s" % relation]
+    r = _S12["pooled_real_line_L120"][relation]
+    b120 = max(a["mu"] + a["beta"] * math.log(N / z), r["mu"] + r["beta"] * math.log(N / z))
+    b240 = b["mu"] + b["beta"] * math.log(N / z)
+    t = (math.log(L) - math.log(120)) / (math.log(240) - math.log(120))
+    return b120 + t * (b240 - b120)
+
+
 def bar_v3(N, L, relation, alpha=0.01, family="lp2", method="gumbel", panel=None):
     if relation not in ("keyskip1", "keyskip2", "free"):
         raise ValueError(relation)
-    if family not in ("lp2", "register"):
+    if family not in ("lp2", "register", "survivor12"):
         raise ValueError(family)
     N = float(N)
+    if family == "survivor12":
+        if relation == "free":
+            raise ValueError("family='survivor12' exists for keyskip1/keyskip2 only")
+        if method != "gumbel":
+            raise ValueError("family='survivor12' has the Gumbel/POT bar of record only")
+        return _survivor12(N, L, relation, alpha)
     if method == "gpd":
         F = _fit()
         if relation == "free":

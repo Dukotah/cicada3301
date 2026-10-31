@@ -21,19 +21,18 @@
     "audit"
   ],
   "counts": {
-    "total": 290,
+    "total": 291,
     "by_status": {
-      "never-run": 10,
-      "negative": 97,
-      "superseded": 3,
-      "inconclusive": 12,
-      "measured": 81,
       "audit": 42,
       "eliminated": 5,
+      "inconclusive": 12,
+      "measured": 82,
+      "negative": 97,
+      "never-run": 10,
+      "open": 18,
       "partially-run": 22,
-      "open": 18
-    },
-    "note": "Merged 2026-08-24. Two rounds were independently numbered 16: origin's derived-keystream armada (2026-08-23) keeps the number; the public-pad round (2026-08-19/20) is renumbered 17. Union of both: Round 16 moved A-03/E-02/F-01/H-03 never-run->negative and E-01 never-run->partially-run; Round 17 moved D-01 never-run->negative (the filter is MACHINE). B-04 is NEGATIVE on its own 6,224,300-decode sweep, with the key-stretching extension covered separately by R16-KDF. Round 18 merged 2026-08-26: 8 lanes, 31 fragment entries. L7 restated the coverage of B-04, R16-KDF, R16-PRNG, R17-PUBLIC-PAD and B-21 -- every prior negative in this repo is an English-register negative, which no entry had stated. Original coverage text is preserved in each entry's `restated_from`. Two statuses were added in the Round 18 merge: `measured` (a definite non-null determination) and `audit` (a recomputation or coverage restatement, which has no null and no threshold). The positive-control gate still applies to `negative`/`eliminated` only, so it retains exactly its former force. | Round 19 merged 2026-08-26: 41 new entries, 10 restated. Instrument repaired (I1 decoder, I2 adjudicator, I3 thresholds); the -5.5 bar was wrong in 14/14 historical sweeps, usually too strict, and no verdict flips. Transcription closed by T1/T2/T3 from three independent directions: canon is correct. Payload bytes 45/50/246 corrected by C1, voiding B-05, which was re-run clean. | Round 21 merged 2026-08-29: 4 lane entries (R21-L1-SEAL, R21-L2-NSKIPS-CROSSOVER-LENGTH, R21-L3-PY27-REDUCERS, R21-L5-REDTEAM-SEAL). L1 KILL: the no-oracle disjoint-fold seal is provably leaky (best 0.80 catch @ 0.20 false-reject, cannot reach the pre-registered 0.90 bar; held-out false-reject drifts to 0.167) -> Round 21 HIT auto-certification WITHHELD, bar-clearing survivors flagged-for-oracle. L3 CLEAN NEGATIVE: 884k words across grb5_mod/grb5_rej/shuffle29 (i386) + random29 (amd64), 0 hits, 4/4 positive controls recover 1.000, best pmax 6.248 vs 7.634 bar; family bounded (>99.99% flat-prior tail + 2^64 amd64 image + S-G3 gaps) NOT closed. L2 (instrument): n_skips crossover L*=6000 on the exact keyskip1 relation (bracket (3600,6000]) -- any whole-book n_skips adjudication needs a window >= ~6000 runes; drift 'separation' is a left-tail artifact, skip_by_two is beam-unrepresentable. L5 red-team MIXED: confirms L1-KILL, and NO-ERROR-FOUND on no-silent-re-run, FP-inflation-not-reintroduced, and honest row gate. OTP-class verdict for LP2 0-54 UNCHANGED. NB: R20 lane bodies (P1/P2/P3/R/N1/N2) remain in analysis/round20/ prose; only L1-PRIOR-PROPAGATION and C-CANON-PAYLOAD-3BYTES were given central rows in the R20 merge. Round 22 merged 2026-08-29 (coordinator): 5 lanes. Lane B pre-merged R22-B-TURTLE + R22-C-LITERAL-IMPERATIVES (130->132); coordinator appended R22-A-SELFEMBEDDED-READ, R22-D-ILLUSTRATION-DROPCAP (both negative, control-validated) and R22-R-REDTEAM (audit, NO-ERROR-FOUND) -> 132->135. Round 22 read the four signed-hint channels for the first time: self-embedded plaintext acrostic (X2/A), numbers-as-direction (G1/B), koans-as-operations (X1/X3/X4/C), art-as-data (S3/D) -- all CLEAN control-validated NEGATIVES. Standing verdict unchanged: LP2 0-54 remains OTP-class. Sharpest surviving reopener = A's printed-line-geometry acrostic (real page-image line breaks). validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 26 merged 2026-08-31 (coordinator): 4 entries (R26-A-GEN-SWEEP-FIRST-FIRE partially-run, R26-B-KEYTEXT-RUNNINGKEY-SKIPAWARE partially-run, R26-C-SEMANTIC-SEED-ZOO negative, R26-D-REDTEAM audit). Lane A fired the built-but-never-swept generators for the FIRST time (R19-G2 Perl: was ZERO seeds; G4-TEX: was ZERO decodes) plus the Py2.7 reducers on the DISTINCT amd64-w64 / non-zero-offset / keyskip2 axis un-covered by R21-L3 -- control-validated at 1.000 recovery per generator, 0 clears over the prior-dense front (baseline tail still running, interim). Lane B executed R12-C2s staged-but-never-run 33-keytext running-key sweep skip-aware (rigid was already doublet-excluded): 0/1,562 clears, 3 of 9 pages complete at 4 offsets, control 1.000 both presets. Lane C enumerated the bounded 323-value corpus-SEMANTIC seed set x 7 generators (incl. the page-56 totient/prime ladder that solves page 05) x 2 skip-aware decoders = 4,274 rows at 100% coverage, control min recovery 0.9917, best screen -6.578 (flat-random), 0 escalated. Lane D red-team: NO-ERROR-FOUND, coverage x power reproduced, no silent re-run, no FP-inflation, two MINOR hygiene defects noted. OTP-class verdict for LP2 0-54 UNCHANGED -- HARDENED along three previously un-swept instrument axes, not overturned. No oracle-flagged survivor, no STOP-AND-ALERT. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 27 merged 2026-09-07 (closeout, sweep IN-FLIGHT): 1 entry (R27-CPORT-MT32-FULLSWEEP, in-flight). Bit-exact C port of the R25 Py2.7-MT stage-A screen, gate GO at 128,529 seeds/s (V1 64/64 |d|=0, planted screen margin 12.9, false-reject 0/6, K4 95/95 zero relative difference), red-team NO-ERROR-FOUND on the GO gate; full 2^32 sweep launched on S1 (pair) + S2 (exact, control-gated). 0 claim-bar hits at 2.46% live. Verdict UNCHANGED until the sweep completes and candidates are Python-adjudicated. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 28 INTERIM merge 2026-09-15 (round OPEN -- S2 still sweeping, grind28 queue armed): 5 entries (R28-L1-CICADAOS-PADS-DENSE-PAIR negative, R28-L2-CONTESTED-BYTES negative [read half MEASURED: canon stands, independent blind instrument agrees with A-04 100% incl. all 3 byte flips; decode half 21.6M-decode variant battery 0 >= family bar], R28-L5-PAYLOAD-MICRO negative [E-01w/E-02v/H-03r remainders closed; '3301 in the P.S. digits' resolved as a layout artifact], R28-R-REDTEAM audit [2 passes: T1+T5 FOUND-ERROR process-class, second pass ERRORS-FOUND-NONE-SCIENTIFIC, 0 dropped candidates], R28-L4-UNSWEPT-GENERATORS-QUEUE in-flight [25 gated 2^32 PHP/glibc/S3 cells, zero coverage claimed, post-S2 chainer armed]). L3 (string-seed amd64 dictionary) still in-flight, row at lane close. R12-A1 not_covered filled per R28-R T1 patch. OTP-class verdict UNCHANGED -- hardened. validate.py 5/5 and validate_ledger.py Unsound=0 before and after. | Round 30 merged 2026-09-28 ('Rendered Book' armada, 8 lanes + R29-L1 backfill): A1-FONT negative (runes are a deterministic vector font, no glyph-variant channel), A2-SUBPIXEL negative (no sub-pixel/kerning channel, ~2px threshold), A3-PDF-FORENSICS measured (ICC byte-identical to Ghostscript 9.06 Artifex srgb.icc -> toolchain narrowed to GS 9.04-9.14 [X1/R32 corrected from 9.01-9.15, see round18/L1]), B1-BLOB-CRYPTO negative (external-key symmetric battery on the 3 random blobs, 0 hits), B2-RSA-GPG negative (canon_256/folly/2.jpg carry no RSA/OpenPGP structure), C1-ART-ATTRIBUTION negative (no attributable hand; processed public-domain imagery), D1-LEDGER-AUDIT audit (soundness holds; 2 bookkeeping gaps fixed), E1-RENDER-REOPEN measured (6 contested pp49-51 bytes resolved to the token reading, canon_256 unchanged, decpref refuted). Backfilled R29-L1-ONION-STEGO negative (first real onion-image key-attack, 24,078 extractions, 0 hits) which supersedes B-10. OTP-class verdict for LP2 0-54 UNCHANGED -- extended (keyed-external-cipher on the 3 blobs now also NULL) and canonical record hardened. All 8 attack lanes adversarially verified refute-by-default; none downgraded. validate.py 5/5. | Round 32 X1 merged 2026-10-28: nav docs scoped (GS bound 9.04-9.14; Py2.7-MT 'coverage 1.00' is per-relation; transcription claim LP2-typeface-only, p27:93 unresolved); 8 not_covered:null rows filled (R12-A1 had been filled in R28); lanes I1/I2(audit)/I3/I4(audit)/B3(x2)/B1 filed after refute-by-default audit; I2 restatements applied to B-04/R16-KDF/R16-PRNG/R17-PUBLIC-PAD via r32_i2_restatement (original restated_from preserved); R32 lane-patch statuses normalised to the vocabulary. B2 (php mt_rand) not yet filed. | Round 33 X1 merged 2026-10-29: B1 patches applied (owner Option A on C-CANON-PAYLOAD-3BYTES; file move left to coordinator), B2 issue-12 + p27:93 rows, I1/I2/O1/X1 rows, drafted not_covered texts confirmed (tags dropped; F-01/H-03 reworded), R30-A1/A2/B1/B2/C1 not_covered filled, R18-L7 0.84 % doublet figure marked superseded in part, R32-B2 row corrected. | Round 34 X1 merged 2026-10-29: rows I1/I2/I3/S1/P1/X1 added; P1 reader-coverage extensions applied to C-CANON-PAYLOAD-3BYTES (status stays open until the rename), R16-KDF, R30-B1, R30-B2; R33-I2 'earned' relations struck, R33-B3/R32-B1/R32-B2 annotated, R33-O1 never-run -> partially-run; GS render band 9.05-9.14 noted on G-01 / R30-A3 (R34-S1 supersession of 9.04-9.14 at render level). | Round 35 X1 merged 2026-10-30 (partial: I1/P1/S1(skipped)/B2/X1; B1 and I3 not available at audit): I1 measured (bar met at 10.9x cost); P1 NO-MATCH (Welsh corpus unrecoverable, panel not rebuilt, S2 NOT resumed, S1 never-run); B2 legs measured, no change (R30-B1/B2 patched); R34-B1 corrected (PHP dense tier is prefiltered, store holds PHP rows only, sleep-gap misread). | Round 36 X1 merged 2026-10-30: lane rows I1/I2/I3/P1/S1/B2/O2/O3/O4 + X1 filed (B1 not available at audit time); S1 coverage recorded as mixed-instrument (44.138 % Round 19-gated + 1.28 % panel-R36); B2 patches applied to the real ids R32-B2-PHP-MT-RAND / R34-B1-ORBITS-V3-PFV3 with the shared-stream correction (R36 tier b is a subset of R32-B2's draw); O2 filed partially-run (a search has no positive control); I1 hash-seed finding recorded. | Round 37 X1 merged 2026-10-30: lanes T1/C1/C2(U4,U7,U8)/C3 filed after refute-by-default audit (+24 rows incl. retro-rows R10-L2-MAP, R10-L3-ROAD and X1; I1/I2 only if their RESULTS.md existed); F-02 -> partially-run; R11-*/R22-C/R10-* restated with an added 12-register result (original English-only result kept); U4 line-alignment error corrected; C3 post-data null swap recorded as threshold_fixed_in_advance=false on 4 rows. | Round 38 X1 merged 2026-10-31: lanes S1 (window 1 only; window 2 unrecovered, not counted; coverage per instrument on R27-CPORT-MT32-FULLSWEEP), S2 (never-run, zero coverage on R32-B2), C1 (2 rows; F-02 stays partially-run; O4 H3xF5 NEVER -> PARTIAL), I1 (inconclusive, control failed; D2 not the pre-registered D2) filed after refute-by-default audit; C2 (G1/G2/G3, N5N4-L240 [flagged, pending owner], 7 O4 cells run: 4 TRIED + 3 PARTIAL, 34 no-operation-stated) and I2 (X4 bespoke null) filed after audit (+12 rows incl. X1). | Round 39 X1 merged 2026-10-31: lanes P1 (MEASURED-CEILING audit row; page and checker corrected), T1 (standing nulls, measured), C1 (sense similarity, negative; the 18 NEVER F5 cells -> PARTIAL on R36-O4-CLUE-COVERAGE), I1 (if filed), R39-S1-S2-WINDOWS (never-run: sandbox lanes S1/S2 moved to Round 40) and X1 filed after refute-by-default audit. | Round 40 X1 merged 2026-10-31: lanes B1 (4 rows: bash 4.1/4.0 negative by identity, 3.2 partially-run, 5.1 non-PIE negative), B3 (4 re-decode rows; KDF flagged cell adjudicated noise-crosser), C1 (18 rows; R13 open; 35 cells re-scored: 34 -> TRIED, 4 -> PARTIAL incl. H4xF6; 8 unchanged), I1 (measured; 17 of 18 harness rows pass in 5 registers), and X1 filed after refute-by-default audit; B2 not available at audit; sandbox lanes S1/S2 were not run."
+      "superseded": 3
+    }
   },
   "entries": [
     {
@@ -116,7 +115,7 @@
         "G2": "Plants a seed genuinely resident in the dictionary ('THE PRIMES ARE SACRED', family `slogan`) and runs the full Stage-A cross product against the synthetic ciphertext. The planted config ranks #1 at -4.186, reading 'THEPRIMESARESACREDANDTHETOTIENTFUNCTIONI...' in clear, against a runner-up of -6.621. PASS."
       },
       "result": "NEGATIVE. 6,224,300 decodes across stages A/B/C/D, 0 over the -5.5 bar. Stage bests: A -6.185, B -6.129, C -5.885, D -6.654 (page 0) / -7.239 (full stream). Stage A's own distribution: mean -7.344, sd 0.231, p99.999 -6.35 -- the campaign maximum sits exactly where the best-of-N order statistic of a null belongs. DECISIVE CHECK: escalating the top 150 configs onto longer text, 0/150 improved on page 0 and 0/150 improved on the full 12,956-rune stream (best decayed -6.654 -> -7.239). A correct key improves with more text; a lucky one decays. Every survivor decayed. KEY-STRETCHING EXTENSION: the 'key stretching (PBKDF2/scrypt/Argon2, iterated hashes > 1)' item listed under not_covered was subsequently run as Round 16/KDF (see R16-KDF) and returned NEGATIVE - 692,064 decodes, best -6.259 vs bar -5.500.",
-      "coverage": "NEGATIVE for a modern-English, archaic-English or LP1-register plaintext, at measured power 1.00 (the register the Liber Primus has demonstrably used scores -4.33). Measured power of the same sweep against a Latin plaintext 0.33-0.50, against half-vowel-abbreviated English 0.25-0.33, against Welsh 0.00, against vowel-dropped English 0.00 (where the correct key scores BELOW a wrong key). Re-scoring the stored top-50 (L7-A-ARCHIVE-RESCORE) extends the negative to Latin, Old English and half-vowel English at rank-1 power; it does not extend it to Welsh or vowel-dropped English. Separately, the decoder covers only a rejection sampler that advances the key by exactly one symbol per rejection with no other source of drift (L7-B-BEAM-ENVELOPE). [R32-I2 restatement: round32/I2: 225 stored survivor heads re-scored through the rebuilt 9-register panel (min L=120 power 0.92); best pmax_ne 5.36 (LP1_REAL) vs escalate bar 6.37; best pcon 4.42 (LP1_REAL) vs 5.98; 0 flagged. Status stays negative, conditional now: English-ranked survivors, non-English re-scored at survivor level only.] [R33-B1 2026-10-29: the 7 payload-derived seeds (canon256_raw/rev/head32/tail32/hex-lower/hex-UPPER/decpref; 6 change bytes, head32 identical) were re-fed payload_resolved.bin through the original engine: stages A (4,480 exact + 4,480 keyskip2-pair), B (17,920), C (49,280) = 76,160 decodes; planted controls PASS (slogan plant and payload-derived plant both rank 1 at -4.157). Best score -6.211 vs L-aware bar -5.5; best pmax 5.11 vs hitfn20 7.3835/7.6342; 0 flagged; not changed vs the canon_256 comparator (best -6.339, pmax 5.50). decpref corrected by patching idx 45/50/246 (assumption). Coverage is now stated against the corrected payload for the payload-derived subset only.] Round 33/B3: stored survivor heads are decoded TEXTS with no ciphertext/key pair, so they cannot be re-decoded through v3; their R32 I2 nine-register panel adjudication is unchanged. | R40-B3: the 2,165-seed dictionary re-decoded under pf_v4_12 + beam_v3 keyskip1+keyskip2 on panel-R36 (6,998,144 configs): best 6.336 / 6.049 vs actual-N bars 7.244 / 7.173 (N=1e6 9.102 / 8.999), 0 flagged; planted controls EN_MODERN / EN_NOVOWEL / LATIN only. | R40-C1: SLOGAN seeds (139) x 16 gens x 5 reds x dir x sign x atbash, stage A + per-page restarts, and 1,256 lp seeds stage A, re-screened with pf_v4_12 and decoded with beam_v3 under panel-R36: slogan best 5.88 (ks1) vs bar 9.66 (heads-screened N), lp 5.75 (ks2) vs 8.92; plants EN_MODERN / LATIN / GREEK.",
+      "coverage": "NEGATIVE for a modern-English, archaic-English or LP1-register plaintext, at measured power 1.00 (the register the Liber Primus has demonstrably used scores -4.33). Measured power of the same sweep against a Latin plaintext 0.33-0.50, against half-vowel-abbreviated English 0.25-0.33, against Welsh 0.00, against vowel-dropped English 0.00 (where the correct key scores BELOW a wrong key). Re-scoring the stored top-50 (L7-A-ARCHIVE-RESCORE) extends the negative to Latin, Old English and half-vowel English at rank-1 power; it does not extend it to Welsh or vowel-dropped English. Separately, the decoder covers only a rejection sampler that advances the key by exactly one symbol per rejection with no other source of drift (L7-B-BEAM-ENVELOPE). [R32-I2 restatement: round32/I2: 225 stored survivor heads re-scored through the rebuilt 9-register panel (min L=120 power 0.92); best pmax_ne 5.36 (LP1_REAL) vs escalate bar 6.37; best pcon 4.42 (LP1_REAL) vs 5.98; 0 flagged. Status stays negative, conditional now: English-ranked survivors, non-English re-scored at survivor level only.] [R33-B1 2026-10-29: the 7 payload-derived seeds (canon256_raw/rev/head32/tail32/hex-lower/hex-UPPER/decpref; 6 change bytes, head32 identical) were re-fed payload_resolved.bin through the original engine: stages A (4,480 exact + 4,480 keyskip2-pair), B (17,920), C (49,280) = 76,160 decodes; planted controls PASS (slogan plant and payload-derived plant both rank 1 at -4.157). Best score -6.211 vs L-aware bar -5.5; best pmax 5.11 vs hitfn20 7.3835/7.6342; 0 flagged; not changed vs the canon_256 comparator (best -6.339, pmax 5.50). decpref corrected by patching idx 45/50/246 (assumption). Coverage is now stated against the corrected payload for the payload-derived subset only.] Round 33/B3: stored survivor heads are decoded TEXTS with no ciphertext/key pair, so they cannot be re-decoded through v3; their R32 I2 nine-register panel adjudication is unchanged. | R40-B3: the 2,165-seed dictionary re-decoded under pf_v4_12 + beam_v3 keyskip1+keyskip2 on panel-R36 (6,998,144 configs): best 6.336 / 6.049 vs actual-N bars 7.244 / 7.173 (N=1e6 9.102 / 8.999), 0 flagged; planted controls EN_MODERN / EN_NOVOWEL / LATIN only. | R40-C1: SLOGAN seeds (139) x 16 gens x 5 reds x dir x sign x atbash, stage A + per-page restarts, and 1,256 lp seeds stage A, re-screened with pf_v4_12 and decoded with beam_v3 under panel-R36: slogan best 5.88 (ks1) vs bar 9.66 (heads-screened N), lp 5.75 (ks2) vs 8.92; plants EN_MODERN / LATIN / GREEK. R41-I1: the declared N=1e6 bars 9.102 / 8.999 quoted here are null12 quantities; the bar of record at N=1e6 on the pf_v4_12-survivor population is 10.4645 / 10.4856 (L=120, keyskip1 / keyskip2). The stored re-decode rows remain below it.",
       "not_covered": "v3 re-decode of the ORIGINAL source decode stores (the regenerated key lists were re-decoded by R40-B3 under keyskip1+keyskip2 and panel-R36 with plants in three registers; B-04 stage B/D, dense offsets and registers outside EN_MODERN / EN_NOVOWEL / LATIN remain)",
       "evidence": [
         "liber-primus/analysis/round13/B04/PREREG.md",
@@ -2354,7 +2353,7 @@
         "K2": "Plant-and-recover: PBKDF2-SHA256('THE PRIMES ARE SACRED', 3301, 10000) ranked #1 at -4.186, reading 'THEPRIMESARESACRED...' in clear. PASS."
       },
       "result": "NEGATIVE. 692,064 Stage-A decodes. Best -6.259 vs bar -5.500. Score distribution mean -7.341, SD 0.232; best is ~4.7 SD above mean, consistent with upper-tail noise. Stage B not triggered (no Stage-A candidates cleared bar).",
-      "coverage": "Identical English-register conditionality and identical measured powers to RESTATE-B-04; the stored top-50 gives the same rank-1 extension to Latin, Old English and half-vowel English. Same beam-envelope limitation. [R32-I2 restatement: round32/I2: 48 stored survivor heads re-scored through the rebuilt 9-register panel (min L=120 power 0.92); best pmax_ne 3.97 (LP1_REAL) vs escalate bar 6.05; best pcon 3.18 (LP1_REAL) vs 5.57; 0 flagged. Status stays negative, conditional now: English-ranked survivors, non-English re-scored at survivor level only.] Round 33/B3: stored survivor heads are decoded TEXTS with no ciphertext/key pair, so they cannot be re-decoded through v3; their R32 I2 nine-register panel adjudication is unchanged. [R34-P1 2026-10-29: the 7 payload-derived secrets of the 534-secret dictionary (canon256_raw/rev/head32/tail32/hex-lower/hex-UPPER/decpref; 6 change bytes, head32 identical) were re-fed payload_resolved.bin through the original round15/KDF code (kdf.py, sweep.run_stage nproc 1, sk.beam_decode beam 400 max_skip 3, L=120 head): stage A 9,072 decodes and a stage B over the 8 best published-A families x 11 salts 9,856 decodes per arm (the original run never executed stage B). K2 plant-and-recover (PBKDF2-SHA256-10000 / 3301 / mod29, THE PRIMES ARE SACRED) PASS at rank 1, -4.186. Best canon -6.464 (A) / -6.488 (B), resolved -6.408 / -6.408, vs bar -5.5 (null band reproduces: mean -7.399, max -6.773); best pmax 5.07 canon / 4.89 resolved vs hitfn20 7.6342; 0 over bar; not changed. SWEEPROW rows persisted for stage A (9,072 per arm).] | R40-B3: 534 secrets x 27 KDFs x 3 salts re-decoded under the same instrument (692,064 configs): best 5.150 / 6.528 vs actual-N bars 6.399 / 6.342 (N=1e6 9.102 / 8.999; screened-N 8.968 / 8.868); one rev-buffer cell flagged by protocol and adjudicated noise-crosser (coordinator; X1 concurs); planted controls EN_MODERN / EN_NOVOWEL / LATIN only. | R40-C1: see B-04 (slogan seed groups only).",
+      "coverage": "Identical English-register conditionality and identical measured powers to RESTATE-B-04; the stored top-50 gives the same rank-1 extension to Latin, Old English and half-vowel English. Same beam-envelope limitation. [R32-I2 restatement: round32/I2: 48 stored survivor heads re-scored through the rebuilt 9-register panel (min L=120 power 0.92); best pmax_ne 3.97 (LP1_REAL) vs escalate bar 6.05; best pcon 3.18 (LP1_REAL) vs 5.57; 0 flagged. Status stays negative, conditional now: English-ranked survivors, non-English re-scored at survivor level only.] Round 33/B3: stored survivor heads are decoded TEXTS with no ciphertext/key pair, so they cannot be re-decoded through v3; their R32 I2 nine-register panel adjudication is unchanged. [R34-P1 2026-10-29: the 7 payload-derived secrets of the 534-secret dictionary (canon256_raw/rev/head32/tail32/hex-lower/hex-UPPER/decpref; 6 change bytes, head32 identical) were re-fed payload_resolved.bin through the original round15/KDF code (kdf.py, sweep.run_stage nproc 1, sk.beam_decode beam 400 max_skip 3, L=120 head): stage A 9,072 decodes and a stage B over the 8 best published-A families x 11 salts 9,856 decodes per arm (the original run never executed stage B). K2 plant-and-recover (PBKDF2-SHA256-10000 / 3301 / mod29, THE PRIMES ARE SACRED) PASS at rank 1, -4.186. Best canon -6.464 (A) / -6.488 (B), resolved -6.408 / -6.408, vs bar -5.5 (null band reproduces: mean -7.399, max -6.773); best pmax 5.07 canon / 4.89 resolved vs hitfn20 7.6342; 0 over bar; not changed. SWEEPROW rows persisted for stage A (9,072 per arm).] | R40-B3: 534 secrets x 27 KDFs x 3 salts re-decoded under the same instrument (692,064 configs): best 5.150 / 6.528 vs actual-N bars 6.399 / 6.342 (N=1e6 9.102 / 8.999; screened-N 8.968 / 8.868); one rev-buffer cell flagged by protocol and adjudicated noise-crosser (coordinator; X1 concurs); planted controls EN_MODERN / EN_NOVOWEL / LATIN only. | R40-C1: see B-04 (slogan seed groups only). R41-I1: the declared N=1e6 bars 9.102 / 8.999 quoted here are null12 quantities; the bar of record at N=1e6 on the pf_v4_12-survivor population is 10.4645 / 10.4856 (L=120, keyskip1 / keyskip2). The stored re-decode rows remain below it.",
       "not_covered": "v3 re-decode of the ORIGINAL source decode stores (the regenerated key lists were re-decoded by R40-B3 under keyskip1+keyskip2 and panel-R36 with plants in three registers; B-04 stage B/D, dense offsets and registers outside EN_MODERN / EN_NOVOWEL / LATIN remain) Stage B of the corrected-payload run used the families of the PUBLISHED stage A (not re-derived); stage B has no counterpart in the original run. Only the 7 payload-derived secrets were re-fed; the other 527 secrets are not payload-derived and are unaffected.",
       "evidence": [
         "liber-primus/analysis/round16/KDF/PREREG.md",
@@ -7793,7 +7792,7 @@
       "positive_control": "passed",
       "control_detail": "control.json: 96 natural-rate plants (12 EN_MODERN + 12 EN_NOVOWEL per ABI x relation, real enc_exact/enc_pair, no skip-free selection) through pf_v4 -> v3 L120 -> v3 L240 -> panel. Pooled recover: MODERN skip-free 23/23, with-skip 24/25; NOVOWEL skip-free 28/28, with-skip 18/20. 3 failures, all prefilter misses (2 of them NOVOWEL with-skip). Gate >=3 recoveries each split passed. Coordinator to decide whether the 2 NOVOWEL with-skip screen misses meet the 'fix harness' rule (judged consistent with I1 power 0.96).",
       "hypothesis": "The LP2 key is a bash 4.2 $RANDOM auto-seed (LP64 or ILP32) whose head contains key skips, missed ~30-35% of the time by pf_v3; the skip-tolerant pf_v4 lifts reach to ~0.95-0.99.",
-      "coverage": "bash 4.2 LP64 and ILP32 auto-seed orbits 77,594,624 seeds EACH, fraction 1.000 (296/296 chunks), %29, offset 0, sign -1, C[0]-aligned; pf_v4 frozen (m=24,k=2,rel=both, thr 7.0994/7.1761, FPR ~1e-3) -> survivors 69,017 (LP64) / 69,104 (ILP32) decoded under keyskip1+keyskip2 by beam_v3 panel_max. Store 276,243 SWEEPROW rows (validate_store ok, check_r3_store []). R36-B1: all 276,242 stored rows re-decoded (v3 panel_max) and adjudicated under panel-R36 (12 registers, sha a0682f0c...): 0 flagged, 0 near-miss; best 7.065 vs 12-register bar 8.044 actual N (8.999 N=1e6). Reach for GREEK 0.91, HEBREW 0.68, NORSE 0.64 (pf_v4 power measured n=50/relation; capped by the 9-register-calibrated prefilter). See R36-B1-ORBIT-12REG.",
+      "coverage": "bash 4.2 LP64 and ILP32 auto-seed orbits 77,594,624 seeds EACH, fraction 1.000 (296/296 chunks), %29, offset 0, sign -1, C[0]-aligned; pf_v4 frozen (m=24,k=2,rel=both, thr 7.0994/7.1761, FPR ~1e-3) -> survivors 69,017 (LP64) / 69,104 (ILP32) decoded under keyskip1+keyskip2 by beam_v3 panel_max. Store 276,243 SWEEPROW rows (validate_store ok, check_r3_store []). R36-B1: all 276,242 stored rows re-decoded (v3 panel_max) and adjudicated under panel-R36 (12 registers, sha a0682f0c...): 0 flagged, 0 near-miss; best 7.065 vs 12-register bar 8.044 actual N (8.999 N=1e6). Reach for GREEK 0.91, HEBREW 0.68, NORSE 0.64 (pf_v4 power measured n=50/relation; capped by the 9-register-calibrated prefilter). See R36-B1-ORBIT-12REG. R41-I1: the 12-register 'actual-N' bar quoted for this sweep's stored survivors (8.044) is superseded by the survivor12 bar of record (9.385 at N=69,017 for keyskip2, 9.367 for keyskip1); the stored best (7.065) is below it.",
       "result": "0 flagged, 0 near-miss. Best 7.068 (LP64 keyskip2 seed 1354603465, the recurring near-miss) vs bar 8.058 actual N / 9.034 N=1e6. LP64 keyskip1 best 6.349 (bar 8.221/9.235); ILP32 keyskip1 6.679 (8.222/9.235), keyskip2 6.762 (8.059/9.034).",
       "threshold": "round34/I1-v3-null/bars_v3.py bar_v3(N,L,rel,lp2,gumbel) at actual N and N=1e6; fixed in advance (PREREG).",
       "threshold_fixed_in_advance": true,
@@ -8623,7 +8622,7 @@
       "positive_control": "passed",
       "control_detail": "control.json: stage-2 planted keys GREEK/HEBREW/NORSE 16/16 each (8 per relation, v3 true-key + panel-R36, L120 and L240 vs 12-register N=1e6 bars, recovery240>=0.90, own-register argmax 16/16); R35 B1 natural-rate control (96 EN_MODERN/EN_NOVOWEL plants through pf_v4 + v3 + panel-R36) re-scored: identical counts to R35 (23/23, 24/25, 28/28, 18/20), gate passed.",
       "hypothesis": "The LP2 key is in the bash 4.2 auto-seed orbit (LP64 or ILP32) and its plaintext is in one of the 12 panel registers, including GREEK/HEBREW/NORSE that the R35 adjudication did not read.",
-      "coverage": "All 276,242 stored R35-B1 pf_v4 survivor rows (138,121 seeds x 2 relations; LP64 69,017 + ILP32 69,104) re-decoded (rows hold stats only, not text) under beam_v3 panel_max with panel-R36 (sha256 a0682f0c...), fraction 1.000. Orbit itself swept in full in R35. Reach per register = pf_v4 natural power x v3 recovery: nine existing 0.95-0.99; GREEK 0.91, HEBREW 0.68, NORSE 0.64 (pf_v4 power for the three measured here at n=50/relation).",
+      "coverage": "All 276,242 stored R35-B1 pf_v4 survivor rows (138,121 seeds x 2 relations; LP64 69,017 + ILP32 69,104) re-decoded (rows hold stats only, not text) under beam_v3 panel_max with panel-R36 (sha256 a0682f0c...), fraction 1.000. Orbit itself swept in full in R35. Reach per register = pf_v4 natural power x v3 recovery: nine existing 0.95-0.99; GREEK 0.91, HEBREW 0.68, NORSE 0.64 (pf_v4 power for the three measured here at n=50/relation). R41-I1 re-judge: bash4.2_i32 1 best 6.506 vs refit bar 9.367 at N=69104 (10.464 at 1e6); bash4.2_i32 2 best 6.763 vs refit bar 9.390 at N=69104 (10.486 at 1e6); bash4.2 1 best 6.347 vs refit bar 9.367 at N=69017 (10.464 at 1e6); bash4.2 2 best 7.065 vs refit bar 9.390 at N=69017 (10.486 at 1e6). The stored 12-register 'actual-N' bars (8.130 / 8.044) were null12 quantities and were lenient (survivor population median 2.81, not 2.33); bar of record is now round41/I1-null-refit (survivor12). No verdict moves.",
       "result": "0 flagged, 0 near-miss. Best 7.065 (LP64 keyskip2 seed 1354603465, LP1_REAL) vs 12-register bar 8.044 actual N / 8.999 N=1e6; LP64 ks1 6.347 (bar 8.130/9.102); ILP32 ks1 6.506 (8.130/9.102), ks2 6.763 (8.044/8.999). New-register best z: GREEK 5.88, HEBREW 6.14, NORSE 6.08.",
       "threshold": "12-register shuffled-LP2 wrong-key Gumbel/POT bars (null12.json: 25,000 draws L120, 4,000 L240), at actual N and N=1e6; fixed in PREREG before any output.",
       "threshold_fixed_in_advance": true,
@@ -8645,7 +8644,7 @@
       ],
       "sweep_store": "analysis/round36/B1-orbit-12reg/readjud_rows.jsonl",
       "source_register": "round36/P1-panel-r36 panel12.npz a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
-      "notes": "Coordinator audit 2026-10-30: PREREG 11:56:17 predates null12.json (12:24) and the store (12:56); 276,242 rows, 12-wide z, header names panel-R36; summary cells match RESULTS. The recovery120 diagnostic in control.json is mis-scored (120-rune decode vs 240-rune plaintext) and is not used in any decision. Stock validate_store/check_r3_store default to 9 registers and fail 12-wide rows -> Round 37 T1 makes them read the width from the header; until then sweep_store is undeclared on this row (sweep_store_note). Reach for GREEK/HEBREW/NORSE (0.91/0.68/0.64) is bounded by pf_v4's nine-register calibration -> Round 37 I2."
+      "notes": "Coordinator audit 2026-10-30: PREREG 11:56:17 predates null12.json (12:24) and the store (12:56); 276,242 rows, 12-wide z, header names panel-R36; summary cells match RESULTS. The recovery120 diagnostic in control.json is mis-scored (120-rune decode vs 240-rune plaintext) and is not used in any decision. Stock validate_store/check_r3_store default to 9 registers and fail 12-wide rows -> Round 37 T1 makes them read the width from the header; until then sweep_store is undeclared on this row (sweep_store_note). Reach for GREEK/HEBREW/NORSE (0.91/0.68/0.64) is bounded by pf_v4's nine-register calibration -> Round 37 I2. R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 37,
@@ -10110,7 +10109,7 @@
       "positive_control": "passed",
       "control_detail": "control.json: 160 natural-rate plants (10 each EN_MODERN/EN_NOVOWEL/HEBREW/NORSE per ABI x relation) through the real 2^16-seed chunk path (pf_v4_12 frozen -> v3 L120 both rels -> v3 L240, panel-R36, N=1e6 12-register bars); pooled recoveries per register x skip split (recover/n, skip-free then with-skip): EN_MODERN 17/17, 22/23; EN_NOVOWEL 22/22, 17/18; HEBREW 18/18, 20/22; NORSE 21/21, 18/19; 155/155 prefilter-passers recovered; 5 misses all with-skip prefilter misses. Natural-rate pf_v4_12 power 500 plants/register/relation, all 12 registers >= 0.952.",
       "hypothesis": "The LP2 key is in the bash 4.2 auto-seed orbit (LP64 or ILP32), with <= 2 key skips in the first 24 runes, and its plaintext is in one of the 12 panel-R36 registers.",
-      "coverage": "Both ABIs screened in full: 296/296 chunks each, 77,594,624 seeds per ABI, with pf_v4_12 (pf_v4 Viterbi, lse over the 12 panel-R36 LMs, frozen per-relation FPR 5e-4, total held-out 8.9e-4); 65,815 (LP64) + 65,971 (ILP32) survivors, all decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 under panel-R36 (263,572 rows). Natural-rate screen power per register: EN_MODERN 0.985, EN_KJV 0.989, LP1_REAL 0.994, LATIN 0.967, OE 0.970, DE 0.984, CY 0.972, EN_HALFVOWEL 0.952, EN_NOVOWEL 0.985, GREEK 0.985, HEBREW 0.982, NORSE 0.981 (R36 nine-register screen had GREEK 0.91, HEBREW 0.68, NORSE 0.64). Reach = power x v3 recovery (1.00) x fraction 1.000. | R40-B1: 8/296 chunks re-executed through the bash 4.1 generator by the lane and 2 of them again by X1: identical survivor and decode sets, pmax equal at 3 dp.",
+      "coverage": "Both ABIs screened in full: 296/296 chunks each, 77,594,624 seeds per ABI, with pf_v4_12 (pf_v4 Viterbi, lse over the 12 panel-R36 LMs, frozen per-relation FPR 5e-4, total held-out 8.9e-4); 65,815 (LP64) + 65,971 (ILP32) survivors, all decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 under panel-R36 (263,572 rows). Natural-rate screen power per register: EN_MODERN 0.985, EN_KJV 0.989, LP1_REAL 0.994, LATIN 0.967, OE 0.970, DE 0.984, CY 0.972, EN_HALFVOWEL 0.952, EN_NOVOWEL 0.985, GREEK 0.985, HEBREW 0.982, NORSE 0.981 (R36 nine-register screen had GREEK 0.91, HEBREW 0.68, NORSE 0.64). Reach = power x v3 recovery (1.00) x fraction 1.000. | R40-B1: 8/296 chunks re-executed through the bash 4.1 generator by the lane and 2 of them again by X1: identical survivor and decode sets, pmax equal at 3 dp. R41-I1 re-judge: bash4.2 1 best 6.347 vs refit bar 9.347 at N=65815 (10.464 at 1e6); bash4.2 2 best 7.065 vs refit bar 9.370 at N=65815 (10.486 at 1e6); bash4.2_i32 1 best 6.506 vs refit bar 9.348 at N=65971 (10.464 at 1e6); bash4.2_i32 2 best 6.763 vs refit bar 9.371 at N=65971 (10.486 at 1e6). Stored actual-N bars were 8.113 / 8.027 (keyskip1 / keyskip2, LP64) and the N=1e6 declared 9.102 / 8.999; the bars of record are 10.4645 / 10.4856 at N=1e6 and ~9.35 at N=65,8xx.",
       "result": "0 flagged, 0 near-miss. Best 7.065 (LP64 keyskip2 seed 1354603465, LP1_REAL) vs 12-register bar 8.027 at actual N (8.999 at N=1e6); LP64 ks1 6.347 (8.113/9.102); ILP32 ks1 6.506 (8.114/9.102), ks2 6.763 (8.028/8.999).",
       "threshold": "12-register POT bars from round36/B1 null12.json (mu, beta per cell) at actual N and N=1e6; screen thresholds 7.4155 (keyskip1) / 7.4412 (keyskip2) fixed in PREREG design and frozen on the calibration half before the sweep.",
       "threshold_fixed_in_advance": true,
@@ -10134,7 +10133,8 @@
       ],
       "sweep_store": "analysis/round37/I2-pfv4-12reg/sweep_rows.jsonl",
       "lane_dir": "I2-pfv4-12reg",
-      "x1_r37": "X1/R37: NO-ERROR-FOUND. Recomputed from _null_scores.npz / _plant_scores.npz: thresholds 7.4155 / 7.4412 give FPR 8.81e-4 (calibration half) / 8.89e-4 (held-out) / per ABI 8.75e-4, 8.95e-4; min plant power 0.952 (EN_HALFVOWEL), every register >= 0.952; sweep store validates (263,572 rows, 12 registers), check_r3_store []; survivors 65,815 + 65,971; actual-N bars 8.113 / 8.027 recomputed from null12.json; best rows ks1 6.506 (ILP32), ks2 7.065 (LP64, seed 1354603465) equal the R36 B1 re-decode. Limits kept: PHP FPR not re-measured; reach assumes v3 recovery 1.00 for seven registers; same orbit as R35/R36 B1 (no new seed coverage, new screen power)."
+      "x1_r37": "X1/R37: NO-ERROR-FOUND. Recomputed from _null_scores.npz / _plant_scores.npz: thresholds 7.4155 / 7.4412 give FPR 8.81e-4 (calibration half) / 8.89e-4 (held-out) / per ABI 8.75e-4, 8.95e-4; min plant power 0.952 (EN_HALFVOWEL), every register >= 0.952; sweep store validates (263,572 rows, 12 registers), check_r3_store []; survivors 65,815 + 65,971; actual-N bars 8.113 / 8.027 recomputed from null12.json; best rows ks1 6.506 (ILP32), ks2 7.065 (LP64, seed 1354603465) equal the R36 B1 re-decode. Limits kept: PHP FPR not re-measured; reach assumes v3 recovery 1.00 for seven registers; same orbit as R35/R36 B1 (no new seed coverage, new screen power).",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "id": "R37-X1-REDTEAM",
@@ -11214,7 +11214,7 @@
       "positive_control": "passed",
       "control_detail": "control_4.1.json: 60 natural-rate plants (10 EN_MODERN + 10 EN_NOVOWEL + 10 HEBREW per relation (60 plants), pooled >=3 recoveries in every register x skip split) through the real 2^16-seed chunk path; 60 recovered end-to-end (pmax>=N=1e6 bars at L120 and L240, recovery>=0.90); gate (>=3 per pooled split) True",
       "hypothesis": "The LP2 key is the bash 4.1 auto-seed $RANDOM stream (tv_sec ^ tv_usec ^ pid orbit, LP64 or ILP32), <= 2 key skips in the first 24 runes, plaintext in one of the 12 panel-R36 registers.",
-      "coverage": "Covered BY IDENTITY, not re-run in full: the RANDOM code of bash 4.0 and 4.1 is textually identical and differs from 4.2 only in the zero-state branch (seedrand() vs the constant 123459876); state 0 is reachable only from s = m*(2^31-1), heuristic expected orbit seeds touching it in 1024 steps: LP64 2e-7, ILP32 ~37 of 77.6M. Every other orbit seed therefore emits the bash 4.2 stream, so R37-I2's complete bash 4.2 sweeps (296/296 chunks, LP64 65,815 + ILP32 65,971 survivors, all decoded) are the 4.x result. Independent re-execution through the 4.1 generator and the full pipeline: 8 of 296 chunks (2097152 seeds, 1795 survivors), survivor/decode sets identical to R37's and pmax equal to the stored 3 dp (max |diff| 0.0005 = rounding).",
+      "coverage": "Covered BY IDENTITY, not re-run in full: the RANDOM code of bash 4.0 and 4.1 is textually identical and differs from 4.2 only in the zero-state branch (seedrand() vs the constant 123459876); state 0 is reachable only from s = m*(2^31-1), heuristic expected orbit seeds touching it in 1024 steps: LP64 2e-7, ILP32 ~37 of 77.6M. Every other orbit seed therefore emits the bash 4.2 stream, so R37-I2's complete bash 4.2 sweeps (296/296 chunks, LP64 65,815 + ILP32 65,971 survivors, all decoded) are the 4.x result. Independent re-execution through the 4.1 generator and the full pipeline: 8 of 296 chunks (2097152 seeds, 1795 survivors), survivor/decode sets identical to R37's and pmax equal to the stored 3 dp (max |diff| 0.0005 = rounding). R41-I1: carried by identity with the 4.2 orbit; the R37-I2 rows are re-judged against the survivor12 bar of record (no crossing).",
       "result": "0 flagged, 0 near-miss. LP64: keyskip1 best 6.347 vs 8.113 (N=65815; 9.102 at N=1e6); keyskip2 best 7.065 vs 8.027 (N=65815; 8.999 at N=1e6). ILP32: keyskip1 best 6.506 vs 8.114 (N=65971; 9.102 at N=1e6); keyskip2 best 6.763 vs 8.028 (N=65971; 8.999 at N=1e6).",
       "threshold": "12-register POT bars from round36/B1 null12.json (mu, beta per cell) at actual N and N=1e6; pf_v4_12 frozen point (round37/I2 frozen_op12.json) unchanged",
       "threshold_fixed_in_advance": true,
@@ -11243,7 +11243,8 @@
       "declares_sweep": true,
       "generator_verification": "source-identity to bash 4.2 (R19-G1 L1 binary) + R19-G1 cross-implementation 0/2000 mismatches (verification.json)",
       "lane_dir": "B1-bash-versions",
-      "x1_r40": "X1/R40: NO-ERROR-FOUND on the generator and the identity claim. From the downloaded GNU tarballs (sha256 equal to verification.json) X1 read variables.c: the 4.0 and 4.1 RANDOM blocks are textually identical (empty diff), and differ from 4.2 only in the zero branch (seedrand() vs 123459876). RANDOM=1 first 20 values re-derived by independent code (rerun_generators.py, LP64 and ILP32): equal to verification.json. X1 re-ran 2 of the 8 replication chunks (1329/786432 and 1306/262144): 423 survivors, 846 rows, identical keys to R37-I2 4.2 rows, max pmax diff 0.0005 (rerun_replication.json). Limits: no 4.1 binary; the planted controls use the same generator (they validate the pipeline, not the generator); the 8 replication chunks are the first 8 of the Random(3301)-shuffled order, not a fresh random draw."
+      "x1_r40": "X1/R40: NO-ERROR-FOUND on the generator and the identity claim. From the downloaded GNU tarballs (sha256 equal to verification.json) X1 read variables.c: the 4.0 and 4.1 RANDOM blocks are textually identical (empty diff), and differ from 4.2 only in the zero branch (seedrand() vs 123459876). RANDOM=1 first 20 values re-derived by independent code (rerun_generators.py, LP64 and ILP32): equal to verification.json. X1 re-ran 2 of the 8 replication chunks (1329/786432 and 1306/262144): 423 survivors, 846 rows, identical keys to R37-I2 4.2 rows, max pmax diff 0.0005 (rerun_replication.json). Limits: no 4.1 binary; the planted controls use the same generator (they validate the pipeline, not the generator); the 8 replication chunks are the first 8 of the Random(3301)-shuffled order, not a fresh random draw.",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "id": "R40-B1-BASH40-RANDOM-AUTOSEED",
@@ -11254,7 +11255,7 @@
       "positive_control": "passed",
       "control_detail": "control_4.0.json: 60 natural-rate plants (10 EN_MODERN + 10 EN_NOVOWEL + 10 HEBREW per relation (60 plants), pooled >=3 recoveries in every register x skip split) through the real 2^16-seed chunk path; 59 recovered end-to-end (pmax>=N=1e6 bars at L120 and L240, recovery>=0.90); gate (>=3 per pooled split) True",
       "hypothesis": "The LP2 key is the bash 4.0 auto-seed $RANDOM stream (tv_sec ^ tv_usec ^ pid orbit, LP64 or ILP32), <= 2 key skips in the first 24 runes, plaintext in one of the 12 panel-R36 registers.",
-      "coverage": "Covered BY IDENTITY: the bash 4.0 RANDOM code block is textually identical to bash 4.1 (empty diff, verification.json) and so shares the 4.1 -> 4.2 equivalence and R37-I2's complete 4.2 sweeps (296/296 chunks per ABI). Own control (control_4.0.json) run through the 4.0 generator. No separate orbit re-execution (the 4.1 replication of 8 chunks stands for both).",
+      "coverage": "Covered BY IDENTITY: the bash 4.0 RANDOM code block is textually identical to bash 4.1 (empty diff, verification.json) and so shares the 4.1 -> 4.2 equivalence and R37-I2's complete 4.2 sweeps (296/296 chunks per ABI). Own control (control_4.0.json) run through the 4.0 generator. No separate orbit re-execution (the 4.1 replication of 8 chunks stands for both). R41-I1: carried by identity with the 4.2 orbit; the R37-I2 rows are re-judged against the survivor12 bar of record (no crossing).",
       "result": "0 flagged, 0 near-miss. LP64: keyskip1 best 6.347 vs 8.113 (N=65815; 9.102 at N=1e6); keyskip2 best 7.065 vs 8.027 (N=65815; 8.999 at N=1e6). ILP32: keyskip1 best 6.506 vs 8.114 (N=65971; 9.102 at N=1e6); keyskip2 best 6.763 vs 8.028 (N=65971; 8.999 at N=1e6).",
       "threshold": "12-register POT bars from round36/B1 null12.json (mu, beta per cell) at actual N and N=1e6; pf_v4_12 frozen point (round37/I2 frozen_op12.json) unchanged",
       "threshold_fixed_in_advance": true,
@@ -11280,7 +11281,8 @@
       ],
       "generator_verification": "source-identity to bash 4.1/4.2 (empty 4.0-vs-4.1 diff)",
       "lane_dir": "B1-bash-versions",
-      "x1_r40": "X1/R40: NO-ERROR-FOUND; same audit as R40-B1-BASH41-RANDOM-AUTOSEED (4.0 and 4.1 RANDOM blocks diff empty; read from bash-4.0 variables.c l.1207-1257). No 4.0 binary; covered by identity."
+      "x1_r40": "X1/R40: NO-ERROR-FOUND; same audit as R40-B1-BASH41-RANDOM-AUTOSEED (4.0 and 4.1 RANDOM blocks diff empty; read from bash-4.0 variables.c l.1207-1257). No 4.0 binary; covered by identity.",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "id": "R40-B1-BASH32-RANDOM-AUTOSEED",
@@ -11291,7 +11293,7 @@
       "positive_control": "passed",
       "control_detail": "control_3.2.json: 60 natural-rate plants (10 EN_MODERN + 10 EN_NOVOWEL + 10 HEBREW per relation (60 plants), pooled >=3 recoveries in every register x skip split) through the real 2^16-seed chunk path; 59 recovered end-to-end (pmax>=N=1e6 bars at L120 and L240, recovery>=0.90); gate (>=3 per pooled split) True",
       "hypothesis": "The LP2 key is the bash 3.2 auto-seed $RANDOM stream (seed = pid + time(0); ANSI-C LCG 1103515245/12345), <= 2 key skips in the first 24 runes, plaintext in one of the 12 panel-R36 registers.",
-      "coverage": "Full enumerated orbit: 291/291 chunks, 76,237,568 seeds = every integer in [SEC0+1, SEC1+32768] (tv_sec 2012-01-01..2014-06-01 + pid 1..32768); 64511 survivors, all decoded under both relations (64511 decodes each).",
+      "coverage": "Full enumerated orbit: 291/291 chunks, 76,237,568 seeds = every integer in [SEC0+1, SEC1+32768] (tv_sec 2012-01-01..2014-06-01 + pid 1..32768); 64511 survivors, all decoded under both relations (64511 decodes each). R41-I1 re-judge: bash3.2 2 best 6.567 vs refit bar 9.362 at N=64511 (10.486 at 1e6); bash3.2 1 best 7.098 vs refit bar 9.339 at N=64511 (10.464 at 1e6).",
       "result": "0 flagged, 0 near-miss. keyskip1 best 7.098 (seed 1326767047, LP1_REAL) vs 12-register bar 8.105 at actual N=64511 (9.102 at N=1e6); keyskip2 best 6.567 (seed 1367421463, EN_MODERN) vs 12-register bar 8.020 at actual N=64511 (8.999 at N=1e6).",
       "threshold": "12-register POT bars from round36/B1 null12.json (mu, beta per cell) at actual N and N=1e6; pf_v4_12 frozen point (round37/I2 frozen_op12.json) unchanged",
       "threshold_fixed_in_advance": true,
@@ -11320,7 +11322,8 @@
       "declares_sweep": true,
       "generator_verification": "source-derived, unverified (no bash 3.2 binary): Q5 -> partially-run",
       "lane_dir": "B1-bash-versions",
-      "x1_r40": "X1/R40: NO-ERROR-FOUND on the arithmetic (76,237,568 = 76,204,800 + 32,768; 291 chunks of 2^18). X1 read bash-3.2 variables.c independently (brand l.1156-1159: rseed*1103515245+12345, (rseed>>16)&32767; init l.498 sbrand(dollar_dollar_pid + shell_start_time); shell_start_time set at shell.c:424 and dollar_dollar_pid at variables.c:376, both before initialize_shell_variables) and re-derived RANDOM=1 -> 16838 5758 10113 17515 31051 ... Still no 3.2 binary: stays partially-run. The ceiling patch as filed said only 'pid_max > 32768' remained for 3.2; the generator being source-derived and the subshell reseed are also not excluded (page line corrected)."
+      "x1_r40": "X1/R40: NO-ERROR-FOUND on the arithmetic (76,237,568 = 76,204,800 + 32,768; 291 chunks of 2^18). X1 read bash-3.2 variables.c independently (brand l.1156-1159: rseed*1103515245+12345, (rseed>>16)&32767; init l.498 sbrand(dollar_dollar_pid + shell_start_time); shell_start_time set at shell.c:424 and dollar_dollar_pid at variables.c:376, both before initialize_shell_variables) and re-derived RANDOM=1 -> 16838 5758 10113 17515 31051 ... Still no 3.2 binary: stays partially-run. The ceiling patch as filed said only 'pid_max > 32768' remained for 3.2; the generator being source-derived and the subshell reseed are also not excluded (page line corrected).",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "id": "R40-B1-BASH51-RANDOM-AUTOSEED",
@@ -11331,7 +11334,7 @@
       "positive_control": "passed",
       "control_detail": "control_5.1.json: 60 natural-rate plants (10 EN_MODERN + 10 EN_NOVOWEL + 10 HEBREW per relation (60 plants), pooled >=3 recoveries in every register x skip split) through the real 2^16-seed chunk path; 59 recovered end-to-end (pmax>=N=1e6 bars at L120 and L240, recovery>=0.90); gate (>=3 per pooled split) True",
       "hypothesis": "The LP2 key is the bash 5.1 auto-seed $RANDOM stream of a NON-PIE build (genseed() with constant address term; folded output), <= 2 key skips in the first 24 runes, plaintext in one of the 12 panel-R36 registers.",
-      "coverage": "Full enumerated family: 352/352 chunks, 92,274,688 seeds = prefixes (tv_sec>>20) XOR {0..7} (88 x 2^20); the x=4 image (one build, 74 x 2^20 = 77,594,624 seeds, 296 chunks) first; 77772 survivors, all decoded under both relations. PIE/ASLR builds (effective orbit ~2^31 = 2.15e9 seeds) NOT covered: enumerated fraction of that orbit ~4.3%.",
+      "coverage": "Full enumerated family: 352/352 chunks, 92,274,688 seeds = prefixes (tv_sec>>20) XOR {0..7} (88 x 2^20); the x=4 image (one build, 74 x 2^20 = 77,594,624 seeds, 296 chunks) first; 77772 survivors, all decoded under both relations. PIE/ASLR builds (effective orbit ~2^31 = 2.15e9 seeds) NOT covered: enumerated fraction of that orbit ~4.3%. R41-I1 re-judge: bash5.1 2 best 6.522 vs refit bar 9.439 at N=77772 (10.486 at 1e6); bash5.1 1 best 6.455 vs refit bar 9.416 at N=77772 (10.464 at 1e6).",
       "result": "0 flagged, 0 near-miss. keyskip1 best 6.455 (seed 1363452256, LP1_REAL) vs 12-register bar 8.173 at actual N=77772 (9.102 at N=1e6); keyskip2 best 6.522 (seed 1368058002, EN_MODERN) vs 12-register bar 8.086 at actual N=77772 (8.999 at N=1e6).",
       "threshold": "12-register POT bars from round36/B1 null12.json (mu, beta per cell) at actual N and N=1e6; pf_v4_12 frozen point (round37/I2 frozen_op12.json) unchanged",
       "threshold_fixed_in_advance": true,
@@ -11360,7 +11363,8 @@
       "declares_sweep": true,
       "generator_verification": "verified against a live bash 5.3.9 binary (6 seeds x 200 values, all match) + R19-G1 cross-implementation 0/2000 mismatches",
       "lane_dir": "B1-bash-versions",
-      "x1_r40": "X1/R40: NO-ERROR-FOUND. X1 read bash-5.1 lib/sh/random.c (intrand32 Schrage with +0x7fffffff correction, brand fold (r>>16)^(r&65535) when compat > 50, genseed = tv_sec^tv_usec^pid^ppid^uid^(u32)&seedrand) and re-derived 20 values; the live bash 5.3.9 binary matches the model on 7 seeds incl. 2147483646, 3000000000, 4000000000 (a 5.3 binary, not 5.1: the RANDOM=s stream is equal, the 5.1 auto-seed is source-read only). 88 prefixes confirmed (74 base 1263..1336 XOR {0..7}); 92,274,688 / 2^31 = 4.297 %. Filed negative only for the non-PIE family: ~95.7 % of the PIE/ASLR orbit is not covered."
+      "x1_r40": "X1/R40: NO-ERROR-FOUND. X1 read bash-5.1 lib/sh/random.c (intrand32 Schrage with +0x7fffffff correction, brand fold (r>>16)^(r&65535) when compat > 50, genseed = tv_sec^tv_usec^pid^ppid^uid^(u32)&seedrand) and re-derived 20 values; the live bash 5.3.9 binary matches the model on 7 seeds incl. 2147483646, 3000000000, 4000000000 (a 5.3 binary, not 5.1: the RANDOM=s stream is equal, the 5.1 auto-seed is source-read only). 88 prefixes confirmed (74 base 1263..1336 XOR {0..7}); 92,274,688 / 2^31 = 4.297 %. Filed negative only for the non-PIE family: ~95.7 % of the PIE/ASLR orbit is not covered.",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 40,
@@ -11371,7 +11375,7 @@
       "positive_control": "passed",
       "control_detail": "control_B04.json: 60 plants (10 each EN_MODERN/EN_NOVOWEL/LATIN x keyskip1/keyskip2) through the grid's real key route and the sweep's screen; recovered per register x skip split: EN_MODERN|skip_free 11/11; EN_MODERN|with_skip 9/9; EN_NOVOWEL|skip_free 13/13; EN_NOVOWEL|with_skip 7/7; LATIN|skip_free 11/11; LATIN|with_skip 9/9; decoy screen FPR 8.46e-04.",
       "hypothesis": "The LP2 key is a hash/MAC/stream-cipher expansion of one of the 2,165 regenerated B-04 seeds (16 generators x 5 reductions, direction, sign, atbash; offsets 0..7 + ladder; per-page restarts).",
-      "coverage": "6998144 configs screened with pf_v4_12; 6041 survivors decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36 (12082 rows in the store); 2,165 seeds (504 core) regenerated; stage A offset 0 (1,385,600), stage B offsets {0..7,16,29,64,128,256,512,1024,3301} on core (2,064,384), stage C 55 page heads (3,548,160)",
+      "coverage": "6998144 configs screened with pf_v4_12; 6041 survivors decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36 (12082 rows in the store); 2,165 seeds (504 core) regenerated; stage A offset 0 (1,385,600), stage B offsets {0..7,16,29,64,128,256,512,1024,3301} on core (2,064,384), stage C 55 page heads (3,548,160) R41-I1 re-judge: B04 1 best 6.336 vs refit bar 8.367 at N=6041 (10.464 at 1e6); B04 2 best 6.049 vs refit bar 8.391 at N=6041 (10.486 at 1e6).",
       "result": "flagged 0, near-miss 0. Best keyskip1 6.336 (OE) vs 12-register bar 7.244 at actual N (N=6041; 9.102 at N=1e6); keyskip2 6.049 (DE) vs 7.173 (8.999 at N=1e6).",
       "threshold": "round36 null12.json POT bars at actual N and N=1e6 (L=120 screen, L=240 gate); screen thresholds frozen R37 (7.4155 / 7.4412)",
       "threshold_fixed_in_advance": true,
@@ -11396,7 +11400,8 @@
       ],
       "sweep_store": "liber-primus/analysis/round40/B3-english-era-grids/rows_B04.jsonl",
       "lane_dir": "B3-english-era-grids",
-      "x1_r40": "X1/R40: bars recomputed from null12.json at actual N / N=1e6 / screened N: equal to the stored values (max diff < 6e-4, rerun_bars.json). SURVIVOR-POPULATION MISMATCH (FOUND-ERROR): the stored survivors' L=120 pmax is shifted up against the null12 cells (median 2.74-2.86 vs 2.33; q99 4.7 vs 4.06) in every B3 grid, in the B1 sweeps and in R37-I2 (131,786 rows: median 2.81, q99 4.76), so the 'actual-N' bar is not a 1 % family-wise bar (empirical POT bar at N=131,786: 9.62-9.64 vs the stored 8.27-8.37). No verdict flips (nothing within 1.5 of any bar except the KDF cell below); the N=1e6 bar is the effective one. Planted controls re-counted from control_*.json: 80/80, 78/80, 78/80 per register (Wilson lower bounds 0.954, 0.913, 0.913)."
+      "x1_r40": "X1/R40: bars recomputed from null12.json at actual N / N=1e6 / screened N: equal to the stored values (max diff < 6e-4, rerun_bars.json). SURVIVOR-POPULATION MISMATCH (FOUND-ERROR): the stored survivors' L=120 pmax is shifted up against the null12 cells (median 2.74-2.86 vs 2.33; q99 4.7 vs 4.06) in every B3 grid, in the B1 sweeps and in R37-I2 (131,786 rows: median 2.81, q99 4.76), so the 'actual-N' bar is not a 1 % family-wise bar (empirical POT bar at N=131,786: 9.62-9.64 vs the stored 8.27-8.37). No verdict flips (nothing within 1.5 of any bar except the KDF cell below); the N=1e6 bar is the effective one. Planted controls re-counted from control_*.json: 80/80, 78/80, 78/80 per register (Wilson lower bounds 0.954, 0.913, 0.913).",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 40,
@@ -11407,7 +11412,7 @@
       "positive_control": "passed",
       "control_detail": "control_KDF.json: 60 plants (10 each EN_MODERN/EN_NOVOWEL/LATIN x keyskip1/keyskip2) through the grid's real key route and the sweep's screen; recovered per register x skip split: EN_MODERN|skip_free 14/14; EN_MODERN|with_skip 6/6; EN_NOVOWEL|skip_free 11/11; EN_NOVOWEL|with_skip 9/9; LATIN|skip_free 10/10; LATIN|with_skip 10/10; decoy screen FPR 7.49e-04.",
       "hypothesis": "The LP2 key is a KDF (PBKDF2/scrypt/iterated/EVP, 27 configs) expansion of one of 534 regenerated secrets with salt empty/3301/self.",
-      "coverage": "692064 configs screened with pf_v4_12; 591 survivors decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36 (1182 rows in the store); 534 secrets x 27 KDFs x 3 salts x 2 reductions x 8 variants, offset 0, 184-symbol buffer",
+      "coverage": "692064 configs screened with pf_v4_12; 591 survivors decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36 (1182 rows in the store); 534 secrets x 27 KDFs x 3 salts x 2 reductions x 8 variants, offset 0, 184-symbol buffer R41-I1 re-judge: KDF 1 best 5.150 vs refit bar 7.413 at N=591 (10.464 at 1e6); KDF 2 best 6.528 vs refit bar 7.438 at N=591 (10.486 at 1e6).",
       "result": "flagged 1, near-miss 0. Best keyskip1 5.150 (GREEK) vs 12-register bar 6.399 at actual N (N=591; 9.102 at N=1e6); keyskip2 6.528 (EN_MODERN) vs 6.342 (8.999 at N=1e6).",
       "threshold": "round36 null12.json POT bars at actual N and N=1e6 (L=120 screen, L=240 gate); screen thresholds frozen R37 (7.4155 / 7.4412)",
       "threshold_fixed_in_advance": true,
@@ -11437,7 +11442,8 @@
       "oracle_note": "analysis/round40/B3-english-era-grids/ORACLE-PENDING.md; below the N=1e6 and screened-N bars; no L=240 gate for rev; protocol flag, not a finding",
       "lane_dir": "B3-english-era-grids",
       "x1_r40": "X1/R40: bars recomputed from null12.json at actual N / N=1e6 / screened N: equal to the stored values (max diff < 6e-4, rerun_bars.json). SURVIVOR-POPULATION MISMATCH (FOUND-ERROR): the stored survivors' L=120 pmax is shifted up against the null12 cells (median 2.74-2.86 vs 2.33; q99 4.7 vs 4.06) in every B3 grid, in the B1 sweeps and in R37-I2 (131,786 rows: median 2.81, q99 4.76), so the 'actual-N' bar is not a 1 % family-wise bar (empirical POT bar at N=131,786: 9.62-9.64 vs the stored 8.27-8.37). No verdict flips (nothing within 1.5 of any bar except the KDF cell below); the N=1e6 bar is the effective one. Planted controls re-counted from control_*.json: 80/80, 78/80, 78/80 per register (Wilson lower bounds 0.954, 0.913, 0.913). FLAGGED CELL (KDF|03000000:iter_md5_1000:self:mod29:rev, keyskip2, 6.528): X1 re-decoded it at L=120 and L=174 under both relations (rerun_noise_cell.json): keyskip2 6.528 (EN_MODERN) -> 5.531 (EN_HALFVOWEL), keyskip1 4.520 -> 4.483; transliteration has digraph flavour and no words (e.g. FICNIFGEWWIAOORSNCENSUWENCLACOY...); the forward twin scores 1.957. Pooled empirical bar from 32,717 other-grid survivor decodes per relation (POT refit, N=591): 7.37 / 7.38 and P(max of 591 >= 6.528) = 0.075 / 0.078 (stored fit: 0.6 %), 0 of 32,717 other-grid rows and 1 of 142,283 B1 rows reach 6.528. X1 verdict: NOISE-CROSSER, concurring independently with the coordinator. The coordinator's policy note that the screened-configuration bar is primary is not supported: the null12 cells are fitted on screen survivors, so survivor N is the matching count; screened N (8.87) happens to land near the empirical bar only because the null12 location is too low.",
-      "oracle_adjudication": "coordinator 2026-10-31 (owner's delegated authority): NOISE-CROSSER; X1 independent re-decode and pooled-null check concur (not the owner's read). Cleared actual-N 6.342 but not N=1e6 8.999 nor screened-N 8.868; no L=240 gate exists for rev keys. Status stays partially-run; the flagged cell is closed as a noise-crosser unless the owner overrules."
+      "oracle_adjudication": "coordinator 2026-10-31 (owner's delegated authority): NOISE-CROSSER; X1 independent re-decode and pooled-null check concur (not the owner's read). Cleared actual-N 6.342 but not N=1e6 8.999 nor screened-N 8.868; no L=240 gate exists for rev keys. Status stays partially-run; the flagged cell is closed as a noise-crosser unless the owner overrules.",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2). The flagged KDF cell (6.528, keyskip2) is BELOW the bar of record at its actual N (7.435): the flag raised against the stored null12 bar (6.342) is withdrawn.  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 40,
@@ -11448,7 +11454,7 @@
       "positive_control": "passed",
       "control_detail": "control_R17PAD.json: 60 plants (10 each EN_MODERN/EN_NOVOWEL/LATIN x keyskip1/keyskip2) through the grid's real key route and the sweep's screen; recovered per register x skip split: EN_MODERN|skip_free 9/9; EN_MODERN|with_skip 11/11; EN_NOVOWEL|skip_free 11/11; EN_NOVOWEL|with_skip 8/9; LATIN|skip_free 14/15; LATIN|with_skip 5/5; decoy screen FPR 1.07e-03.",
       "hypothesis": "The LP2 key is a slice of one of the R17-P3 public pads (RAND digits or 3301's published bytes) under a byte-to-symbol builder.",
-      "coverage": "15013222 configs screened with pf_v4_12; 9908 survivors decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36 (19816 rows in the store); R17-P3 28-pad list regenerated, builders as listed, offsets = 0..7 + A1 ladder + capped stride sample per cell (a sampled fraction of the 5.76e9 dense offsets, NOT a dense re-sweep); R17-P1/P2 not regenerated",
+      "coverage": "15013222 configs screened with pf_v4_12; 9908 survivors decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36 (19816 rows in the store); R17-P3 28-pad list regenerated, builders as listed, offsets = 0..7 + A1 ladder + capped stride sample per cell (a sampled fraction of the 5.76e9 dense offsets, NOT a dense re-sweep); R17-P1/P2 not regenerated R41-I1 re-judge: R17PAD 1 best 5.745 vs refit bar 8.570 at N=9908 (10.464 at 1e6); R17PAD 2 best 5.846 vs refit bar 8.594 at N=9908 (10.486 at 1e6).",
       "result": "flagged 0, near-miss 0. Best keyskip1 5.745 (EN_MODERN) vs 12-register bar 7.424 at actual N (N=9908; 9.102 at N=1e6); keyskip2 5.846 (LP1_REAL) vs 7.350 (8.999 at N=1e6).",
       "threshold": "round36 null12.json POT bars at actual N and N=1e6 (L=120 screen, L=240 gate); screen thresholds frozen R37 (7.4155 / 7.4412)",
       "threshold_fixed_in_advance": true,
@@ -11473,7 +11479,8 @@
       ],
       "sweep_store": "liber-primus/analysis/round40/B3-english-era-grids/rows_R17PAD.jsonl",
       "lane_dir": "B3-english-era-grids",
-      "x1_r40": "X1/R40: bars recomputed from null12.json at actual N / N=1e6 / screened N: equal to the stored values (max diff < 6e-4, rerun_bars.json). SURVIVOR-POPULATION MISMATCH (FOUND-ERROR): the stored survivors' L=120 pmax is shifted up against the null12 cells (median 2.74-2.86 vs 2.33; q99 4.7 vs 4.06) in every B3 grid, in the B1 sweeps and in R37-I2 (131,786 rows: median 2.81, q99 4.76), so the 'actual-N' bar is not a 1 % family-wise bar (empirical POT bar at N=131,786: 9.62-9.64 vs the stored 8.27-8.37). No verdict flips (nothing within 1.5 of any bar except the KDF cell below); the N=1e6 bar is the effective one. Planted controls re-counted from control_*.json: 80/80, 78/80, 78/80 per register (Wilson lower bounds 0.954, 0.913, 0.913). P3 regeneration: 25 of 28 pads sha-equal; the 3 mismatches (canon_256, cicada_all_pub, cicada_all_rev) are one cause: round34/SYNTHESIS.md:41 replaced canon_256.bin with R19-C1's resolved bytes and build_pads.py:248 concatenates canon_256 into cicada_all_*, so R17's original sweep covers the old bytes of those three pads. Offset fractions 7,506,611 / 1,577,174,689 = 0.4760 % re-derived from counts_pads.json (PREREG quoted a 5.76e9 dense space; the 1.577e9 figure is the builder x direction count actually used)."
+      "x1_r40": "X1/R40: bars recomputed from null12.json at actual N / N=1e6 / screened N: equal to the stored values (max diff < 6e-4, rerun_bars.json). SURVIVOR-POPULATION MISMATCH (FOUND-ERROR): the stored survivors' L=120 pmax is shifted up against the null12 cells (median 2.74-2.86 vs 2.33; q99 4.7 vs 4.06) in every B3 grid, in the B1 sweeps and in R37-I2 (131,786 rows: median 2.81, q99 4.76), so the 'actual-N' bar is not a 1 % family-wise bar (empirical POT bar at N=131,786: 9.62-9.64 vs the stored 8.27-8.37). No verdict flips (nothing within 1.5 of any bar except the KDF cell below); the N=1e6 bar is the effective one. Planted controls re-counted from control_*.json: 80/80, 78/80, 78/80 per register (Wilson lower bounds 0.954, 0.913, 0.913). P3 regeneration: 25 of 28 pads sha-equal; the 3 mismatches (canon_256, cicada_all_pub, cicada_all_rev) are one cause: round34/SYNTHESIS.md:41 replaced canon_256.bin with R19-C1's resolved bytes and build_pads.py:248 concatenates canon_256 into cicada_all_*, so R17's original sweep covers the old bytes of those three pads. Offset fractions 7,506,611 / 1,577,174,689 = 0.4760 % re-derived from counts_pads.json (PREREG quoted a 5.76e9 dense space; the 1.577e9 figure is the builder x direction count actually used).",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 40,
@@ -11484,7 +11491,7 @@
       "positive_control": "passed",
       "control_detail": "control_COSPAD.json: 60 plants (10 each EN_MODERN/EN_NOVOWEL/LATIN x keyskip1/keyskip2) through the grid's real key route and the sweep's screen; recovered per register x skip split: EN_MODERN|skip_free 11/11; EN_MODERN|with_skip 9/9; EN_NOVOWEL|skip_free 10/10; EN_NOVOWEL|with_skip 9/10; LATIN|skip_free 11/11; LATIN|with_skip 8/9; decoy screen FPR 8.14e-04.",
       "hypothesis": "The LP2 key is a literal byte-to-symbol reduction of a CicadaOS ISO pad (560.00 authoritative, 560.13, 560.17, 761.mp3).",
-      "coverage": "20012680 configs screened with pf_v4_12; 16940 survivors decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36 (33880 rows in the store); 4 ISO pads, 5 reductions x fwd/rev x sign; offsets 0..7 + ladder + R28-L1 stride grids + capped stride sample per cell (sampled fraction, not dense)",
+      "coverage": "20012680 configs screened with pf_v4_12; 16940 survivors decoded under beam_v3 panel_max keyskip1+keyskip2 at L=120 on panel-R36 (33880 rows in the store); 4 ISO pads, 5 reductions x fwd/rev x sign; offsets 0..7 + ladder + R28-L1 stride grids + capped stride sample per cell (sampled fraction, not dense) R41-I1 re-judge: COSPAD 1 best 6.066 vs refit bar 8.790 at N=16940 (10.464 at 1e6); COSPAD 2 best 5.967 vs refit bar 8.814 at N=16940 (10.486 at 1e6).",
       "result": "flagged 0, near-miss 0. Best keyskip1 6.066 (DE) vs 12-register bar 7.619 at actual N (N=16940; 9.102 at N=1e6); keyskip2 5.967 (EN_NOVOWEL) vs 7.542 (8.999 at N=1e6).",
       "threshold": "round36 null12.json POT bars at actual N and N=1e6 (L=120 screen, L=240 gate); screen thresholds frozen R37 (7.4155 / 7.4412)",
       "threshold_fixed_in_advance": true,
@@ -11509,7 +11516,8 @@
       ],
       "sweep_store": "liber-primus/analysis/round40/B3-english-era-grids/rows_COSPAD.jsonl",
       "lane_dir": "B3-english-era-grids",
-      "x1_r40": "X1/R40: bars recomputed from null12.json at actual N / N=1e6 / screened N: equal to the stored values (max diff < 6e-4, rerun_bars.json). SURVIVOR-POPULATION MISMATCH (FOUND-ERROR): the stored survivors' L=120 pmax is shifted up against the null12 cells (median 2.74-2.86 vs 2.33; q99 4.7 vs 4.06) in every B3 grid, in the B1 sweeps and in R37-I2 (131,786 rows: median 2.81, q99 4.76), so the 'actual-N' bar is not a 1 % family-wise bar (empirical POT bar at N=131,786: 9.62-9.64 vs the stored 8.27-8.37). No verdict flips (nothing within 1.5 of any bar except the KDF cell below); the N=1e6 bar is the effective one. Planted controls re-counted from control_*.json: 80/80, 78/80, 78/80 per register (Wilson lower bounds 0.954, 0.913, 0.913). Offset fraction 10,006,340 / 1,280,055,240 = 0.7817 % re-derived."
+      "x1_r40": "X1/R40: bars recomputed from null12.json at actual N / N=1e6 / screened N: equal to the stored values (max diff < 6e-4, rerun_bars.json). SURVIVOR-POPULATION MISMATCH (FOUND-ERROR): the stored survivors' L=120 pmax is shifted up against the null12 cells (median 2.74-2.86 vs 2.33; q99 4.7 vs 4.06) in every B3 grid, in the B1 sweeps and in R37-I2 (131,786 rows: median 2.81, q99 4.76), so the 'actual-N' bar is not a 1 % family-wise bar (empirical POT bar at N=131,786: 9.62-9.64 vs the stored 8.27-8.37). No verdict flips (nothing within 1.5 of any bar except the KDF cell below); the N=1e6 bar is the effective one. Planted controls re-counted from control_*.json: 80/80, 78/80, 78/80 per register (Wilson lower bounds 0.954, 0.913, 0.913). Offset fraction 10,006,340 / 1,280,055,240 = 0.7817 % re-derived.",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 40,
@@ -11527,7 +11535,7 @@
       "id": "R40-C1-R30-B1-ARTIFACT-KEYS",
       "hypothesis": "Round 10b B1 artifact-derived Vigenere keys (125 curated alpha + 16 numeric streams) re-scored under panel-R36 + beam_v3 (+ pf_v4_12 head screen) at every page start.",
       "status": "negative",
-      "coverage": "REGENERATED (b1_keys.build; the 43 auto-extracted alpha keys need the uncommitted armada_osint raw archive and are absent): 3,258 (key, phase<=12, sign) entries x 104 page-start windows (52 pages >= 120 runes, atbash 0/1) at L=120. best non-degenerate 4.829 (ks1) / 5.310 (ks2) vs 12-reg bars actual-N 8.708 / 8.612, declared-N 9.102 / 8.999; 338832 heads screened, 259 survivors decoded (259 / 259 rows per rel), 0 / 0 degenerate rows",
+      "coverage": "REGENERATED (b1_keys.build; the 43 auto-extracted alpha keys need the uncommitted armada_osint raw archive and are absent): 3,258 (key, phase<=12, sign) entries x 104 page-start windows (52 pages >= 120 runes, atbash 0/1) at L=120. best non-degenerate 4.829 (ks1) / 5.310 (ks2) vs 12-reg bars actual-N 8.708 / 8.612, declared-N 9.102 / 8.999; 338832 heads screened, 259 survivors decoded (259 / 259 rows per rel), 0 / 0 degenerate rows R41-I1 re-judge (N = decodes in the family): R30_B1_artifact_keys 1 best 4.829 vs refit bar 7.074 at N=259 (10.464 at 1e6); R30_B1_artifact_keys 2 best 5.310 vs refit bar 7.100 at N=259 (10.486 at 1e6). The lane's 'actual-N' / heads-screened bars were null12 quantities; the screened-N sensitivity is also below every best row (see rejudged_rounds36_40.json).",
       "result": "NEGATIVE. Best non-degenerate pmax is below the actual-N bar in both relations; 0 flagged, 0 near-miss.",
       "three_conditionals": {
         "key_space": "125 alpha + 16 numeric key strings x <=12 phases x sign x atbash x 52 page starts (L=120)",
@@ -11539,7 +11547,8 @@
       "positive_control": "passed",
       "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90",
       "lane_dir": "C1-rescore-46",
-      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit."
+      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit.",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 40,
@@ -11557,7 +11566,7 @@
       "id": "R40-C1-C18-NUMERIC-PS-TWEET-MAYAN",
       "hypothesis": "R10b/campaign18 numeric keystreams (end-of-puzzle P.S. digit string, @1231507051321 handle, Mayan rotation list; single/pairs/disjoint pairs/reversed) re-scored with ALL phases.",
       "status": "negative",
-      "coverage": "REGENERATED (digit strings and Mayan list copied from campaign18_skip/armada2/numeric2_skip.py): 1,338 (stream, phase, sign) entries x 104 page-start windows at L=120. best non-degenerate 5.011 (ks1) / 4.818 (ks2) vs 12-reg bars actual-N 8.385 / 8.294, declared-N 9.102 / 8.999; 139152 heads screened, 114 survivors decoded (114 / 114 rows per rel), 0 / 0 degenerate rows",
+      "coverage": "REGENERATED (digit strings and Mayan list copied from campaign18_skip/armada2/numeric2_skip.py): 1,338 (stream, phase, sign) entries x 104 page-start windows at L=120. best non-degenerate 5.011 (ks1) / 4.818 (ks2) vs 12-reg bars actual-N 8.385 / 8.294, declared-N 9.102 / 8.999; 139152 heads screened, 114 survivors decoded (114 / 114 rows per rel), 0 / 0 degenerate rows R41-I1 re-judge (N = decodes in the family): C18_numeric_PS_tweet_mayan 1 best 5.011 vs refit bar 6.737 at N=114 (10.464 at 1e6); C18_numeric_PS_tweet_mayan 2 best 4.818 vs refit bar 6.764 at N=114 (10.486 at 1e6). The lane's 'actual-N' / heads-screened bars were null12 quantities; the screened-N sensitivity is also below every best row (see rejudged_rounds36_40.json).",
       "result": "NEGATIVE; 0 flagged, 0 near-miss.",
       "three_conditionals": {
         "key_space": "P.S. digits, tweet-handle digits (5 readings each, all phases), Mayan list and reverse, sign x atbash x 52 page starts",
@@ -11569,7 +11578,8 @@
       "positive_control": "passed",
       "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90",
       "lane_dir": "C1-rescore-46",
-      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit."
+      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit.",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 40,
@@ -11587,7 +11597,7 @@
       "id": "R40-C1-R32-B04-SLOGAN-SEEDS",
       "hypothesis": "Round 13 B-04 SLOGAN seeds (139 text forms) as hash-chain/KDF secrets under the 16 B04 generators x 5 reductions x dir x sign x atbash, stage A + stage C per-page restarts, re-scored under panel-R36 + beam_v3.",
       "status": "negative",
-      "coverage": "REGENERATED (round13/B04 seeds.py/ks.py/harness constants unchanged; nsym=728): 44,480 keystreams x 104 windows (52 pages incl. the page-0 head, atbash 0/1). best non-degenerate 5.882 (ks1) / 5.881 (ks2) vs 12-reg bars actual-N 9.659 / 9.547, declared-N 9.102 / 8.999; 4625920 heads screened, 3903 survivors decoded (3903 / 3903 rows per rel), 0 / 0 degenerate rows",
+      "coverage": "REGENERATED (round13/B04 seeds.py/ks.py/harness constants unchanged; nsym=728): 44,480 keystreams x 104 windows (52 pages incl. the page-0 head, atbash 0/1). best non-degenerate 5.882 (ks1) / 5.881 (ks2) vs 12-reg bars actual-N 9.659 / 9.547, declared-N 9.102 / 8.999; 4625920 heads screened, 3903 survivors decoded (3903 / 3903 rows per rel), 0 / 0 degenerate rows R41-I1 re-judge (N = decodes in the family): R32_B04_slogan_seeds 1 best 5.882 vs refit bar 8.188 at N=3903 (10.464 at 1e6); R32_B04_slogan_seeds 2 best 5.881 vs refit bar 8.212 at N=3903 (10.486 at 1e6). The lane's 'actual-N' / heads-screened bars were null12 quantities; the screened-N sensitivity is also below every best row (see rejudged_rounds36_40.json).",
       "result": "NEGATIVE; 0 flagged, 0 near-miss. R37 C1 U1 had already re-scored the 41 B04-covered clue strings on 3 routes; this extends to the whole SLOGAN seed set over all B04 generators.",
       "three_conditionals": {
         "key_space": "139 SLOGAN seed byte-strings x 16 generators x 5 reductions x fwd/rev x sign (44,480 keystreams), offset 0",
@@ -11599,7 +11609,8 @@
       "positive_control": "passed",
       "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90",
       "lane_dir": "C1-rescore-46",
-      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit."
+      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit.",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 40,
@@ -11617,7 +11628,7 @@
       "id": "R40-C1-R32-B04-LP-SEEDS-STAGE-A",
       "hypothesis": "Round 13 B-04 LP-line/word seeds (1,256 'lp' labels) under the 16 generators x 5 reductions x dir x sign, stage A (LP2 head, atbash 0/1) re-scored under panel-R36 + beam_v3.",
       "status": "negative",
-      "coverage": "REGENERATED: 401,920 keystreams x 2 windows. best non-degenerate 5.328 (ks1) / 5.749 (ks2) vs 12-reg bars actual-N 9.022 / 8.921, declared-N 9.102 / 8.999; 803840 heads screened, 678 survivors decoded (678 / 678 rows per rel), 0 / 0 degenerate rows",
+      "coverage": "REGENERATED: 401,920 keystreams x 2 windows. best non-degenerate 5.328 (ks1) / 5.749 (ks2) vs 12-reg bars actual-N 9.022 / 8.921, declared-N 9.102 / 8.999; 803840 heads screened, 678 survivors decoded (678 / 678 rows per rel), 0 / 0 degenerate rows R41-I1 re-judge (N = decodes in the family): R32_B04_lp_seeds_stageA 1 best 5.328 vs refit bar 7.469 at N=678 (10.464 at 1e6); R32_B04_lp_seeds_stageA 2 best 5.749 vs refit bar 7.495 at N=678 (10.486 at 1e6). The lane's 'actual-N' / heads-screened bars were null12 quantities; the screened-N sensitivity is also below every best row (see rejudged_rounds36_40.json).",
       "result": "NEGATIVE; 0 flagged, 0 near-miss.",
       "three_conditionals": {
         "key_space": "1,256 lp seed byte-strings x 16 x 5 x 2 x 2, offset 0, LP2 head",
@@ -11629,7 +11640,8 @@
       "positive_control": "passed",
       "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90",
       "lane_dir": "C1-rescore-46",
-      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit."
+      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit.",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 40,
@@ -11647,7 +11659,7 @@
       "id": "R40-C1-R33-SEMANTIC-SEED-ZOO",
       "hypothesis": "Round 26 C semantic-seed zoo (323 corpus values x 7 generators) re-scored under panel-R36 + beam_v3 keyskip1/keyskip2, L=120 window 0.",
       "status": "negative",
-      "coverage": "REGENERATED from seeds.json + sweep.ZOO: 2,137 keystreams (= the original 4,274 rows over 2 presets), window 0, L=120, keyskip1+2. best non-degenerate 4.812 / 4.901 vs 12-reg bars actual-N 6.867 / 6.802 (declared-N 9.102 / 8.999); 2137 / 2137 rows per rel; 0 / 0 degenerate rows",
+      "coverage": "REGENERATED from seeds.json + sweep.ZOO: 2,137 keystreams (= the original 4,274 rows over 2 presets), window 0, L=120, keyskip1+2. best non-degenerate 4.812 / 4.901 vs 12-reg bars actual-N 6.867 / 6.802 (declared-N 9.102 / 8.999); 2137 / 2137 rows per rel; 0 / 0 degenerate rows R41-I1 re-judge (N = decodes in the family): R33_R26C_semantic_seed_zoo 1 best 4.812 vs refit bar 7.940 at N=2137 (10.464 at 1e6); R33_R26C_semantic_seed_zoo 2 best 4.901 vs refit bar 7.965 at N=2137 (10.486 at 1e6). The lane's 'actual-N' / heads-screened bars were null12 quantities; the screened-N sensitivity is also below every best row (see rejudged_rounds36_40.json).",
       "result": "NEGATIVE; 0 flagged, 0 near-miss.",
       "three_conditionals": {
         "key_space": "323 corpus values + phrases x 7 generators (str seeds only on the py27 generators), offset 0",
@@ -11659,7 +11671,8 @@
       "positive_control": "passed",
       "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90",
       "lane_dir": "C1-rescore-46",
-      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit."
+      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit.",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 40,
@@ -11677,7 +11690,7 @@
       "id": "R40-C1-R43-B5-COMPOSED-KEYS",
       "hypothesis": "Round 10b B5 composed keys K = cw*W + cg*G (44 words x 3 generators x 8 coefficient pairs x all wphases x goff 0..63 = 289,344 configs) re-scored with pf_v4_12 + beam_v3 on pages 0,1,2,5,20.",
       "status": "negative",
-      "coverage": "REGENERATED (composed_key.py logic; 289,344 configs, equal to the original tier-1 count): 5 pages x 289,344. best non-degenerate 5.964 (ks1) / 5.964 (ks2) vs 12-reg bars actual-N 9.236 / 9.131, declared-N 9.102 / 8.999; 1446720 heads screened, 1291 survivors decoded (1291 / 1291 rows per rel), 0 / 0 degenerate rows",
+      "coverage": "REGENERATED (composed_key.py logic; 289,344 configs, equal to the original tier-1 count): 5 pages x 289,344. best non-degenerate 5.964 (ks1) / 5.964 (ks2) vs 12-reg bars actual-N 9.236 / 9.131, declared-N 9.102 / 8.999; 1446720 heads screened, 1291 survivors decoded (1291 / 1291 rows per rel), 0 / 0 degenerate rows R41-I1 re-judge (N = decodes in the family): R43_B5_composed_keys 1 best 5.964 vs refit bar 7.733 at N=1291 (10.464 at 1e6); R43_B5_composed_keys 2 best 5.964 vs refit bar 7.759 at N=1291 (10.486 at 1e6). The lane's 'actual-N' / heads-screened bars were null12 quantities; the screened-N sensitivity is also below every best row (see rejudged_rounds36_40.json).",
       "result": "NEGATIVE; 0 flagged, 0 near-miss.",
       "three_conditionals": {
         "key_space": "289,344 composed configs x 5 pages (L=120), sign +1 (the 8 coefficient pairs cover -1)",
@@ -11689,7 +11702,8 @@
       "positive_control": "passed",
       "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90",
       "lane_dir": "C1-rescore-46",
-      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit."
+      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit.",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 40,
@@ -11707,7 +11721,7 @@
       "id": "R40-C1-R47-F01-LP2-AS-PAD",
       "hypothesis": "Round 16 F-01 LP2 (fwd/rev/atbash/neg) x sign as a running key over Cicada target objects re-scored under panel-R36 + beam_v3.",
       "status": "negative",
-      "coverage": "REGENERATED (F-01 loaders unchanged): T1 2012-13 texts, T2 solved LP1, T3 PGP bodies (500 runes each; L=120 windows at 0,120,240,360), T6 LP2 head 200 (windows 0,80). best non-degenerate 4.184 / 4.464 vs 12-reg bars actual-N 5.795 / 5.748 (declared-N 9.102 / 8.999); 112 / 112 rows per rel; 6 / 6 degenerate rows (the degenerate rows are T6 self-key: constant output, top degenerate pmax 8.70)",
+      "coverage": "REGENERATED (F-01 loaders unchanged): T1 2012-13 texts, T2 solved LP1, T3 PGP bodies (500 runes each; L=120 windows at 0,120,240,360), T6 LP2 head 200 (windows 0,80). best non-degenerate 4.184 / 4.464 vs 12-reg bars actual-N 5.795 / 5.748 (declared-N 9.102 / 8.999); 112 / 112 rows per rel; 6 / 6 degenerate rows (the degenerate rows are T6 self-key: constant output, top degenerate pmax 8.70) R41-I1 re-judge (N = decodes in the family): R47_F01_LP2_as_pad 1 best 4.184 vs refit bar 6.730 at N=112 (10.464 at 1e6); R47_F01_LP2_as_pad 2 best 4.464 vs refit bar 6.757 at N=112 (10.486 at 1e6). The lane's 'actual-N' / heads-screened bars were null12 quantities; the screened-N sensitivity is also below every best row (see rejudged_rounds36_40.json).",
       "result": "NEGATIVE; 0 flagged, 0 near-miss.",
       "three_conditionals": {
         "key_space": "4 LP2 key variants x 2 signs x 4 targets x windows",
@@ -11719,7 +11733,8 @@
       "positive_control": "passed",
       "control_detail": "controls/<family>.json: plants (EN_MODERN/LATIN/GREEK, real enc_exact/enc_pair, the family's own keys) recovered 6/6 per relation (gate >= 4/6); recovered = pf_v4_12 head screen passes (screened families) AND L=120 pmax >= declared-N bar AND L=240 pmax >= bar AND recovery240 >= 0.90",
       "lane_dir": "C1-rescore-46",
-      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit."
+      "x1_r40": "X1/R40: see R40-C1-R13-R9-DIRECTION-WALKS x1_r40 for the lane-level audit.",
+      "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
     },
     {
       "round": 40,
@@ -11804,7 +11819,7 @@
       "id": "R40-C1-R13-R9-DIRECTION-WALKS",
       "hypothesis": "Round 9 DIRECTION: 2,670 positional walks/sieves of the LP2 ciphertext re-scored under panel-R36 (direction.py unchanged).",
       "status": "negative",
-      "coverage": "REGENERATED 2,670 reads (2,274 scorable >= 32 runes). Three null runs (doublet-matched shuffled LP2, different seeds): D=150 p(Z)=0.0066 raw 0.0066; D=800 p(Z)=0.0062 raw 0.0062; D=500 p(Z)=0.0040 raw 0.0040. Best A:idx:s60/s61:b1:f1 (backward self-indexing walk, step = rune index, F skipped; both starts reach the same 400-rune path), pmax 4.733, non-degenerate (IoC*N 1.01, mds 16).",
+      "coverage": "REGENERATED 2,670 reads (2,274 scorable >= 32 runes). Three null runs (doublet-matched shuffled LP2, different seeds): D=150 p(Z)=0.0066 raw 0.0066; D=800 p(Z)=0.0062 raw 0.0062; D=500 p(Z)=0.0040 raw 0.0040. Best A:idx:s60/s61:b1:f1 (backward self-indexing walk, step = rune index, F skipped; both starts reach the same 400-rune path), pmax 4.733, non-degenerate (IoC*N 1.01, mds 16). R41-I1: the survivor12 bar does not apply (direct family). The standing page-/region-scale matched null benchmark/bars_matched.py reproduces the R13 family p at block sizes 100 / 250 / 1000 (fixture_r13.json: {\"100\": 0.003992015968063872, \"250\": 0.017964071856287425, \"1000\": 0.06986027944111776}); the near-miss does not survive the matched nulls.",
       "result": "NEAR-MISS (both statistics < 0.01, replicated on independent null seeds). Amplitude is noise-level in absolute terms (a readable 400-rune stream in a panel register scores pmax in the tens; planted controls Z 11-18), the stream's transliteration reads as noise, and contiguous 400-windows of LP2 sit at pmax 1.3 (max 2.99). Not flagged: no beam row, no key, nothing to run through the L=240/oracle path. Coordinator decides whether a human read is wanted.",
       "three_conditionals": {
         "key_space": "2,670 fixed positional reads of the LP2 ciphertext",
@@ -12261,6 +12276,224 @@
         "liber-primus/analysis/round40/X1-redteam/rerun_c1_cells.json",
         "liber-primus/analysis/round40/X1-redteam/rerun_i1_l2map.json",
         "liber-primus/MEASURED-CEILING.md"
+      ]
+    },
+    {
+      "id": "R41-I1-NULL-REFIT-SURVIVOR12",
+      "round": 41,
+      "lane": "I1",
+      "lane_dir": "I1-null-refit",
+      "date": "2026-10-31",
+      "status": "measured",
+      "hypothesis": "A bar fitted on the population it is applied to (wrong-key seeds from the six generator families that pass pf_v4_12 on the real LP2 head and are decoded by beam_v3 panel_max under panel-R36) reproduces the survivors the real sweeps produce, and every Round 36-40 best row stays below it.",
+      "positive_control": "failed",
+      "control_detail": "480 plants (20 x 12 registers x 2 relations) through the real chunk path: 470/480 passed the pf_v4_12 screen; every one of the 470 cleared the bar of record at N=1e6 at BOTH L=120 and L=240 (min pmax120 12.35, min pmax240 17.71 against 10.46/10.49 and 10.05/10.35). The pre-registered gate (>=19/20 in every register x relation cell) fails in two cells, LATIN keyskip1 and OE keyskip2 (18/20 each), solely through screen misses (10 plants lost to the screen: EN_KJV 1, LP1_REAL 1, LATIN 2, OE 2, CY 1, EN_HALFVOWEL 1, GREEK 1, HEBREW 1; 7 of the 10 have a skip inside the 24-rune head).",
+      "threshold": "Gumbel/POT bar of record at N=1e6 and at actual N (alpha 0.01); fixed in PREREG.md before the first draw",
+      "threshold_fixed_in_advance": true,
+      "result": {
+        "population": "wrong-key seeds uniform over six generator families (bash 4.2 LP64, bash 4.2 ILP32, PHP mt_scale, mt_mod, php_scale, php_mod), real LP2 head, passed through pf_v4_12 at the frozen point, survivors decoded by beam_v3 panel_max under panel-R36",
+        "heads_screened": 48758784,
+        "survivor_draws_raw": 41149,
+        "distinct_survivors_L120": 40482,
+        "per_family_distinct": {
+          "bash4.2": 6484,
+          "bash4.2_i32": 6596,
+          "mt_scale": 6837,
+          "mt_mod": 6914,
+          "php_scale": 6782,
+          "php_mod": 6869
+        },
+        "L240_distinct_survivors": 5194,
+        "survivor_median_pmax_L120": {
+          "keyskip1": 2.809,
+          "keyskip2": 2.828,
+          "null12": 2.334
+        },
+        "fit_L120": {
+          "keyskip1": {
+            "mu": 2.9298,
+            "beta": 0.4061,
+            "beta_se": 0.0064,
+            "k_tail": 4049
+          },
+          "keyskip2": {
+            "mu": 2.9366,
+            "beta": 0.4099,
+            "beta_se": 0.0064,
+            "k_tail": 4049
+          }
+        },
+        "fit_L240": {
+          "keyskip1": {
+            "mu": 3.494,
+            "beta": 0.3562,
+            "beta_se": 0.0156,
+            "k_tail": 520
+          },
+          "keyskip2": {
+            "mu": 3.5185,
+            "beta": 0.3712,
+            "beta_se": 0.0163,
+            "k_tail": 520
+          }
+        },
+        "bar_of_record_L120": {
+          "keyskip1": {
+            "N=131786": 9.6325,
+            "N=1e+05": 9.5192,
+            "N=1e+06": 10.4645,
+            "N=1e+09": 13.3004
+          },
+          "keyskip2": {
+            "N=131786": 9.6549,
+            "N=1e+05": 9.5417,
+            "N=1e+06": 10.4856,
+            "N=1e+09": 13.3173
+          }
+        },
+        "bar_of_record_L240": {
+          "keyskip1": {
+            "N=131786": 9.3311,
+            "N=1e+06": 10.0529,
+            "N=1e+09": 12.5132
+          },
+          "keyskip2": {
+            "N=131786": 9.6017,
+            "N=1e+06": 10.3539,
+            "N=1e+09": 12.9179
+          }
+        },
+        "null12_bars_for_comparison": {
+          "L120_N1e6": {
+            "keyskip1": 9.102,
+            "keyskip2": 8.999
+          },
+          "L120_survivorN_69k": {
+            "keyskip1": 8.13,
+            "keyskip2": 8.044
+          },
+          "L120_N131786": {
+            "keyskip1": 8.365,
+            "keyskip2": 8.275
+          }
+        },
+        "Q1a": {
+          "keyskip1": {
+            "refit_gumbel_bar_N131786": 9.5852,
+            "pooled_real_sweep_POT_bar_N131786": 9.6325,
+            "strict_pass": false
+          },
+          "keyskip2": {
+            "refit_gumbel_bar_N131786": 9.6549,
+            "pooled_real_sweep_POT_bar_N131786": 9.6125,
+            "strict_pass": true
+          }
+        },
+        "Q1b": {
+          "n_plants": 480,
+          "prefilter_pass": 470,
+          "clear_both_bars_given_prefilter": 470,
+          "cells_below_19_of_20": [
+            {
+              "cell": "LATIN|keyskip1|L120",
+              "clear_path": 18,
+              "of": 20,
+              "prefilter_pass": 18,
+              "clear_given_prefilter": 18
+            },
+            {
+              "cell": "LATIN|keyskip1|L240",
+              "clear_path": 18,
+              "of": 20,
+              "prefilter_pass": 18,
+              "clear_given_prefilter": 18
+            },
+            {
+              "cell": "OE|keyskip2|L120",
+              "clear_path": 18,
+              "of": 20,
+              "prefilter_pass": 18,
+              "clear_given_prefilter": 18
+            },
+            {
+              "cell": "OE|keyskip2|L240",
+              "clear_path": 18,
+              "of": 20,
+              "prefilter_pass": 18,
+              "clear_given_prefilter": 18
+            }
+          ],
+          "gate": false
+        },
+        "Q5": "fired in the conservative direction: observed real-sweep maxima sit 0.7-2.8 SE BELOW the Gumbel-implied location (11 of 12 store x relation cells negative; R37-I2 keyskip1 -2.78, R40-B1 keyskip2 -2.80), and the null's own tail counts are 2-4 SE below exponential expectation at q99.9 / q99.97 (xi_gpd about -0.13): the exponential tail over-predicts; the GPD sensitivity bar (about 6.8-7.0) is crossed by the real stores' own maxima (7.065, 7.098), so it cannot be the bar. Bar of record = the higher of the Gumbel refit and the pooled real-sweep POT line at L=120; Gumbel refit at L=240.",
+        "rejudge": {
+          "rows": 34,
+          "cross_actualN": 0,
+          "cross_1e6": 0,
+          "smallest_margin_to_bar_at_actualN": {
+            "row": "R40-B3 KDF keyskip2",
+            "best_pmax": 6.528,
+            "refit_bar_actualN": 7.438,
+            "margin": -0.91
+          },
+          "kdf_flag_withdrawn": "R40-B3 KDF keyskip2 6.528 vs refit bar 7.435 at N=591 (stored null12 bar 6.342 had flagged it)"
+        },
+        "matched_null_fixture_R13": {
+          "100": {
+            "D": 500,
+            "p_family": 0.003992015968063872,
+            "exceed": 1,
+            "best_stream": "A:idx:s61:b1:f1",
+            "best_Z": 4.719829131369891,
+            "null_max_Z_q99": 4.336529273986816,
+            "x1_p_family": 0.003992015968063872,
+            "x1_exceed": 1,
+            "elapsed": 327.5
+          },
+          "250": {
+            "D": 500,
+            "p_family": 0.017964071856287425,
+            "exceed": 8,
+            "best_stream": "A:idx:s60:b1:f1",
+            "best_Z": 3.822589897078191,
+            "null_max_Z_q99": 3.988131501674652,
+            "x1_p_family": 0.017964071856287425,
+            "x1_exceed": 8,
+            "elapsed": 346.4
+          },
+          "1000": {
+            "D": 500,
+            "p_family": 0.06986027944111776,
+            "exceed": 34,
+            "best_stream": "A:idx:s61:b1:f1",
+            "best_Z": 3.523362457607196,
+            "null_max_Z_q99": 4.295211024284363,
+            "x1_p_family": 0.06986027944111776,
+            "x1_exceed": 34,
+            "elapsed": 343.1
+          }
+        }
+      },
+      "coverage": "48,758,784 wrong-key heads screened (8,126,464 per family x 6); 41,149 survivor draws, 40,482 distinct (key, family) decoded at L=120 under both relations and 5,194 distinct at L=240 (floors 40,000 / 5,000 met on distinct keys); 480 plants through the real chunk path; the three real-sweep survivor stores (R37-I2 131,786, R40-B1 142,283, R40-B3 33,308 rows per relation) used as the empirical comparison; 34 best rows re-judged (R36-B1, R37-I2, R40-B1, R40-B3, R40-C1 screened families).",
+      "three_conditionals": {
+        "key_space": "wrong keys drawn uniformly from six generator families (bash 4.2 LP64/ILP32 orbit prefixes, PHP mt_rand four cells over 2^32 seeds); a bar for survivors of the six-family mixture, not for any generator outside them and not for the unscreened (no-prefilter) or direct-stream populations",
+        "transition_model": "beam_v3 panel_max keyskip1 and keyskip2 only, beam_w 400, lam_u 4, after pf_v4_12 (frozen point m=24, k=2, rel both); not the free relation",
+        "adjudicator_register": "panel-R36 12 registers, pmax; L=120 and L=240 on LP2[:120] / LP2[:240] (nodes only at these two lengths; no extrapolation in L)"
+      },
+      "not_covered": "L other than 120 and 240; the free relation; direct (non-key) families (see benchmark/bars_matched.py); unscreened populations (null12 still describes shuffled-LP2 wrong keys with no prefilter, and its bars are not made stricter by this refit); draws are with replacement (1.6 % repeat keys, deduplicated for the fit); L=240 has no real-sweep survivor rows to compare, so its bar is the Gumbel refit alone (n about 5,194, bar SE about 0.2); bars at N>=1e6 are tail extrapolations (the observed tail is lighter than exponential, so they are conservative); the 1 % family-wise level at N~1.3e5 cannot be measured empirically (it would need ~100 independent sweeps of that size).",
+      "reopens_if": "a sweep's survivor median or q99 departs from 2.80 / 4.76 (the population changed); a family beyond the six (for example Perl, Python MT, PHP with another seed range) is screened; the pf_v4_12 frozen point is changed; or a real sweep produces a survivor row above 9.0 at L=120 (re-decode at L=240 and re-judge against these bars).",
+      "evidence": [
+        "liber-primus/analysis/round41/I1-null-refit/PREREG.md",
+        "liber-primus/analysis/round41/I1-null-refit/RESULTS.md",
+        "liber-primus/analysis/round41/I1-null-refit/null_survivor12.json",
+        "liber-primus/analysis/round41/I1-null-refit/fit.json",
+        "liber-primus/analysis/round41/I1-null-refit/control.json",
+        "liber-primus/analysis/round41/I1-null-refit/rejudged_rounds36_40.json",
+        "liber-primus/analysis/round41/I1-null-refit/null_stream.jsonl",
+        "liber-primus/analysis/round41/I1-null-refit/null_stream240.jsonl",
+        "liber-primus/analysis/round34/I1-v3-null/bars_v3.py",
+        "liber-primus/benchmark/bars_matched.py",
+        "liber-primus/tests/test_null_refit.py"
       ]
     }
   ],
