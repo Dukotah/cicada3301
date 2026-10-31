@@ -1,0 +1,9 @@
+{
+ "$comment": "R38 S2 adds NO coverage: no rows were persisted. Patches below are intentionally empty of coverage; they only record the attempt.",
+ "patches": [
+  {
+   "id": "R32-B2-PHP-MT-RAND",
+   "coverage_add": "R38-S2: none. Seeds added: 0 (default_rng(3301) blocks 199-317 would not have been new vs R32 anyway; blocks >=318 and default_rng(3302) were run on a sandbox but results were lost). Fraction per cell per stream unchanged from R36 (0.607 % of 2^32 per cell, 3301 blocks 0-198). See R38-S2-PHP-SANDBOX (never-run)."
+  }
+ ]
+}

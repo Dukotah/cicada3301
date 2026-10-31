@@ -1,0 +1,25 @@
+{
+ "$comment": "written by R38 S2 lane agent",
+ "entries": [
+  {
+   "id": "R38-S2-PHP-SANDBOX",
+   "round": 38,
+   "lane": "S2",
+   "date": "2026-10-31",
+   "status": "never-run",
+   "positive_control": "observed_in_logs_not_persisted",
+   "control_detail": "Sandbox log only (control.json lost): 240 natural-rate plants, gate passed; EN_MODERN 46/46 skip-free, 33/34 with-skip; EN_NOVOWEL 47/47, 31/33; HEBREW 44/44, 34/36. No ledger weight.",
+   "hypothesis": "The LP2 key is a PHP 5.x mt_rand stream (canonical or legacy twist, scale29 or mod29) with <=2 key skips in the head; continue tier (b) under pf_v4_12 + beam_v3 panel-R36 on the sandbox.",
+   "coverage": "none: no rows persisted. Zero seeds added.",
+   "result": "not run to a retained result. Sandbox sessions (two, 45-min hard cap) were lost while the agent was blocked on a hung MCP call (2573 s); no snapshot, checkpoint URL unrecoverable; re-creation refused with 402 Hobby usage limit until 2026-11-01T00:00Z.",
+   "threshold": "null12.json POT bars at actual N and N=1e6 (PREREG); never applied.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {"key_space": "none covered", "transition_model": "keyskip1+keyskip2 (not run)", "adjudicator_register": "panel-R36 12 registers (not run)"},
+   "not_covered": "all of tier (b) beyond R36's 0.607 % per cell; PHP-cell FPR under the 12-register point only log-observed (pooled 8.58e-4, 450/524288), not persisted.",
+   "reopens_if": "sandbox quota resets (2026-11-01T00:00Z) or a Pro plan; run run_commands.sh.",
+   "evidence": ["analysis/round38/S2-php-sandbox/RESULTS.md", "analysis/round38/S2-php-sandbox/PREREG.md", "analysis/round38/S2-php-sandbox/sweep_s2.py", "analysis/round38/S2-php-sandbox/run_commands.sh"],
+   "sweep_store": null,
+   "source_register": "round32/B2"
+  }
+ ]
+}
