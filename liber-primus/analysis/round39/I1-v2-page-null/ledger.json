@@ -1,0 +1,31 @@
+{
+ "$comment": "written by R39 I1 lane agent",
+ "entries": [
+  {
+   "id": "R39-I1-V2-PAGE-NULL",
+   "round": 39,
+   "lane": "I1",
+   "date": "2026-10-31",
+   "status": "negative",
+   "positive_control": "failed",
+   "control_detail": "Variant A (within-line shuffle): planted detection oct 40/40, 29-gon 40/40, T 38/40, L 35/40, 12-gon 40/40; leak 0.006; but realised FPR on 50 clean V2 page-0 windows 15/50=0.30 [0.19,0.44] vs required <=0.05. Variant B (within-word): oct 4/40, 29-gon 3/40, T 35/40, L 25/40, 12-gon 15/40; leak 0.21; FPR 11/50=0.22.",
+   "hypothesis": "A page-matched null (shuffle within physical line, or within word, interrupters fixed) calibrates the R38 D2 glyph recognizer on the V2 render (FPR<=0.05 with detection>=0.9).",
+   "coverage": "2 null variants x (5 glyphs x 40 trials + 50 clean pages) x 200 draws; plus own-line sensitivity 20 trials x 100 draws; U8 58 V2 renders NOT re-scored.",
+   "result": "negative for the instrument: V2 stays uncalibratable; recorded unmeasurable by this recognizer family. Geometry: V1/V3/V4 chance-level (R38), V2 unmeasured. Not a statement that V2 holds no glyph.",
+   "threshold": "detection>=0.9 per glyph AND realised FPR<=0.05 AND leak<=0.05",
+   "power": "A: detection 0.875-1.0, FPR 0.30; B: detection 0.075-0.875, FPR 0.22",
+   "conditionals": [
+    "glyphs: five U8 shapes as V2-quantised realisations (idx steps of 12.41 degrees, zigzag straights)",
+    "noise: LP page 0 text windows only; nulls: 200 draws, within-line / within-word",
+    "recognizer family fixed (R38 D2); rule space 4 rules x 58 pages unchanged"
+   ],
+   "not_covered": [
+    "other recognizer families or feature sets",
+    "nulls preserving local n-gram / rune-pair statistics",
+    "glyph bank beyond the five shapes",
+    "multi-word plants for variant B"
+   ],
+   "artifacts": ["PREREG.md", "run.py", "rescore.py (unrun)", "power_v2_A_B.json", "rescore_v2.json", "run.log", "RESULTS.md"]
+  }
+ ]
+}
