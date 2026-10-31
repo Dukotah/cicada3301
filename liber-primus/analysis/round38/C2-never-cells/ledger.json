@@ -1,0 +1,116 @@
+{
+ "lane": "C2",
+ "date": "2026-10-30",
+ "entries": [
+  {
+   "round": 38,
+   "lane": "C2",
+   "date": "2026-10-30",
+   "id": "R38-C2-G1-CLAUSES-6-7",
+   "status": "negative",
+   "hypothesis": "Clauses 6/7 of the 2016 message as seeds on direct/SHA-CTR/PBKDF2",
+   "coverage": "384 decodes: 2 clauses x forms x 3 routes x rel x sign x off 0..7",
+   "result": "best 4.259/4.323 vs bar 5.99/5.91 at actual N",
+   "positive_control": "passed",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "analysis/round38/C2-never-cells/PREREG.md",
+    "analysis/round38/C2-never-cells/RESULTS.md"
+   ],
+   "three_conditionals": {
+    "key_space": "384 decodes: 2 clauses x forms x 3 routes x rel x sign x off 0..7",
+    "transition_model": "beam_v3 keyskip1+keyskip2 (direct modes beam-free), L120/L240",
+    "adjudicator_register": "panel-R36 12 registers; EN_MODERN-only planted control"
+   },
+   "not_covered": "free relation; other KDFs; atbash; offsets>7"
+  },
+  {
+   "round": 38,
+   "lane": "C2",
+   "date": "2026-10-30",
+   "id": "R38-C2-G2-PRINTED-LINE-SUMS",
+   "status": "negative",
+   "hypothesis": "Printed-line gematria sums (60 lines, 6 solved pages) as U2 key schedule",
+   "coverage": "768 decodes: additive+pointer, prime/index, mod 29/28, 3 heads",
+   "result": "best 4.567/4.537 vs 6.25/6.16",
+   "positive_control": "passed",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "analysis/round38/C2-never-cells/PREREG.md",
+    "analysis/round38/C2-never-cells/RESULTS.md"
+   ],
+   "three_conditionals": {
+    "key_space": "768 decodes: additive+pointer, prime/index, mod 29/28, 3 heads",
+    "transition_model": "beam_v3 keyskip1+keyskip2 (direct modes beam-free), L120/L240",
+    "adjudicator_register": "panel-R36 12 registers; EN_MODERN-only planted control"
+   },
+   "not_covered": "other page orders; per-page restarts; phi channel"
+  },
+  {
+   "round": 38,
+   "lane": "C2",
+   "date": "2026-10-30",
+   "id": "R38-C2-G3-LAGGED-POINTERS",
+   "status": "negative",
+   "hypothesis": "Lag-1 cipher-word and decoded-word gematria pointers in the composed rule",
+   "coverage": "576 decodes: cw A1/A2/A3, dw A1/A2; A3 control skip-free",
+   "result": "best 4.911 (ks1), direct 4.038 vs 5.73/6.25",
+   "positive_control": "passed",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "analysis/round38/C2-never-cells/PREREG.md",
+    "analysis/round38/C2-never-cells/RESULTS.md"
+   ],
+   "three_conditionals": {
+    "key_space": "576 decodes: cw A1/A2/A3, dw A1/A2; A3 control skip-free",
+    "transition_model": "beam_v3 keyskip1+keyskip2 (direct modes beam-free), L120/L240",
+    "adjudicator_register": "panel-R36 12 registers; EN_MODERN-only planted control"
+   },
+   "not_covered": "dw inside the beam; lag>1; s>0; skip-circular A3 plant"
+  },
+  {
+   "round": 38,
+   "lane": "C2",
+   "date": "2026-10-30",
+   "id": "R38-C2-N5N4-L240",
+   "status": "negative",
+   "hypothesis": "Top-50 N5 and N4 rows of C3-R37 re-run at L=240",
+   "coverage": "200 decodes; screen N 2320/168",
+   "result": "N5 7.446, N4 8.572: above bars_v3 at screen N, inside matched cipher-derived-key null (p .74-.78 / .16), below N=1e6 bar; flagged-for-oracle bundle (expected NOISE-CROSSER)",
+   "positive_control": "passed",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "analysis/round38/C2-never-cells/PREREG.md",
+    "analysis/round38/C2-never-cells/RESULTS.md"
+   ],
+   "three_conditionals": {
+    "key_space": "200 decodes; screen N 2320/168",
+    "transition_model": "beam_v3 keyskip1+keyskip2 (direct modes beam-free), L120/L240",
+    "adjudicator_register": "panel-R36 12 registers; EN_MODERN-only planted control"
+   },
+   "not_covered": "full two-stage matched null (fixed-config D=22/30 only); second page / held-out clause"
+  },
+  {
+   "round": 38,
+   "lane": "C2",
+   "date": "2026-10-30",
+   "id": "R38-C2-NEVER-CELLS-RUN",
+   "status": "negative",
+   "hypothesis": "Seven NEVER cells with a literal operation: H5xF1, H6xF2, L8xF6, L15xF6/F7, L17xF7, L4xF3",
+   "coverage": "~1,730 decodes + 5,760 hashes + one word-primality measurement",
+   "result": "all below bars/null; no hash match",
+   "positive_control": "passed",
+   "threshold_fixed_in_advance": true,
+   "evidence": [
+    "analysis/round38/C2-never-cells/PREREG.md",
+    "analysis/round38/C2-never-cells/RESULTS.md"
+   ],
+   "three_conditionals": {
+    "key_space": "~1,730 decodes + 5,760 hashes + one word-primality measurement",
+    "transition_model": "beam_v3 keyskip1+keyskip2 (direct modes beam-free), L120/L240",
+    "adjudicator_register": "panel-R36 12 registers; EN_MODERN-only planted control"
+   },
+   "not_covered": "see RESULTS cell conditionals"
+  }
+ ]
+}

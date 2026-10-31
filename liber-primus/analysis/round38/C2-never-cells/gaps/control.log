@@ -1,0 +1,49 @@
+G2 ctrl prime 2s
+G2 ctrl index 3s
+G3 ctrl cw|prime|M29|self|A1 3s
+G3 ctrl cw|prime|M29|self|A2 3s
+G3 ctrl cw|prime|M29|self|A3 3s
+G3 ctrl cw|prime|M29|cb|A1 3s
+G3 ctrl cw|prime|M29|cb|A2 3s
+G3 ctrl cw|prime|M29|cb|A3 4s
+G3 ctrl cw|prime|M28|self|A1 4s
+G3 ctrl cw|prime|M28|self|A2 4s
+G3 ctrl cw|prime|M28|self|A3 4s
+G3 ctrl cw|prime|M28|cb|A1 4s
+G3 ctrl cw|prime|M28|cb|A2 4s
+G3 ctrl cw|prime|M28|cb|A3 4s
+G3 ctrl cw|index|M29|self|A1 4s
+G3 ctrl cw|index|M29|self|A2 4s
+G3 ctrl cw|index|M29|self|A3 4s
+G3 ctrl cw|index|M29|cb|A1 4s
+G3 ctrl cw|index|M29|cb|A2 4s
+G3 ctrl cw|index|M29|cb|A3 5s
+G3 ctrl cw|index|M28|self|A1 5s
+G3 ctrl cw|index|M28|self|A2 5s
+G3 ctrl cw|index|M28|self|A3 5s
+G3 ctrl cw|index|M28|cb|A1 5s
+G3 ctrl cw|index|M28|cb|A2 5s
+G3 ctrl cw|index|M28|cb|A3 5s
+G3 ctrl dw|prime|M29|self|A1 5s
+G3 ctrl dw|prime|M29|self|A2 5s
+G3 ctrl dw|prime|M29|cb|A1 5s
+G3 ctrl dw|prime|M29|cb|A2 5s
+G3 ctrl dw|prime|M28|self|A1 5s
+G3 ctrl dw|prime|M28|self|A2 5s
+G3 ctrl dw|prime|M28|cb|A1 5s
+G3 ctrl dw|prime|M28|cb|A2 5s
+G3 ctrl dw|index|M29|self|A1 5s
+G3 ctrl dw|index|M29|self|A2 5s
+G3 ctrl dw|index|M29|cb|A1 5s
+G3 ctrl dw|index|M29|cb|A2 5s
+G3 ctrl dw|index|M28|self|A1 5s
+G3 ctrl dw|index|M28|self|A2 5s
+G3 ctrl dw|index|M28|cb|A1 5s
+G3 ctrl dw|index|M28|cb|A2 5s
+G1 ctrl direct keyskip1 rank 1 of 32 14s
+G1 ctrl direct keyskip2 rank 1 of 32 21s
+G1 ctrl sha256ctr keyskip1 rank 1 of 35 33s
+G1 ctrl sha256ctr keyskip2 rank 1 of 35 42s
+G1 ctrl pbkdf2 keyskip1 rank 1 of 35 114s
+G1 ctrl pbkdf2 keyskip2 rank 1 of 35 124s
+{"G1_routes_valid": "3/3", "G2_valid": "8/8", "G3_valid": "40/40", "G2_plants": "16/16", "G3_plants": "80/80", "elapsed_s": 124} {"direct": true, "sha256ctr": true, "pbkdf2": true}

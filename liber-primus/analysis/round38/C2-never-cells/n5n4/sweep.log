@@ -1,0 +1,9 @@
+DONE 200 flagged 41 repro mismatches 0 47s
+Traceback (most recent call last):
+  File "C:\Users\Jeff\cicada3301\liber-primus\analysis\round38\C2-never-cells\n5n4\run_b.py", line 168, in <module>
+    sys.exit({"control": control, "sweep": sweep, "final": final}[sys.argv[1]]())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeff\cicada3301\liber-primus\analysis\round38\C2-never-cells\n5n4\run_b.py", line 142, in sweep
+    os.makedirs(BF("oracle"), exist_ok=True); json.dump(flagged, open(BF("oracle", "flagged.json"), "w"), indent=1)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: <lambda>() takes 1 positional argument but 2 were given

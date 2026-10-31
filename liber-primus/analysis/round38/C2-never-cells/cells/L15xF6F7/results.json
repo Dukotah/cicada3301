@@ -1,0 +1,143 @@
+{
+ "cell": "L15xF6F7",
+ "N": {
+  "keyskip1": 192,
+  "keyskip2": 192
+ },
+ "control": [
+  {
+   "plant": "row|m29",
+   "rel": "keyskip1",
+   "offset": 2,
+   "n_keys": 12,
+   "rank": 1,
+   "pmax120_in_grid": 18.56,
+   "runner_up": [
+    "diag_first|m29",
+    5.436
+   ],
+   "pmax120": 18.56,
+   "pmax240": 25.59,
+   "recovery240": 1.0,
+   "bar120_N1e6": 9.235,
+   "bar240_N1e6": 9.514,
+   "recover": true
+  },
+  {
+   "plant": "row|m29",
+   "rel": "keyskip2",
+   "offset": 0,
+   "n_keys": 12,
+   "rank": 1,
+   "pmax120_in_grid": 17.481,
+   "runner_up": [
+    "snake|m29",
+    4.99
+   ],
+   "pmax120": 17.481,
+   "pmax240": 26.727,
+   "recovery240": 1.0,
+   "bar120_N1e6": 9.034,
+   "bar240_N1e6": 9.15,
+   "recover": true
+  },
+  {
+   "plant": "spiral_out|m28",
+   "rel": "keyskip1",
+   "offset": 0,
+   "n_keys": 12,
+   "rank": 1,
+   "pmax120_in_grid": 18.409,
+   "runner_up": [
+    "diag_first|m29",
+    4.576
+   ],
+   "pmax120": 18.409,
+   "pmax240": 26.456,
+   "recovery240": 0.9833,
+   "bar120_N1e6": 9.235,
+   "bar240_N1e6": 9.514,
+   "recover": true
+  },
+  {
+   "plant": "spiral_out|m28",
+   "rel": "keyskip2",
+   "offset": 3,
+   "n_keys": 12,
+   "rank": 1,
+   "pmax120_in_grid": 17.946,
+   "runner_up": [
+    "snake|m28",
+    5.817
+   ],
+   "pmax120": 17.946,
+   "pmax240": 23.999,
+   "recovery240": 1.0,
+   "bar120_N1e6": 9.034,
+   "bar240_N1e6": 9.15,
+   "recover": true
+  }
+ ],
+ "best_by_rel": {
+  "keyskip1": {
+   "pmax": 3.596,
+   "preg": "DE",
+   "kid": "L15:snake|m28:keyskip1:-1:2",
+   "bar_v3_L120_actualN": 5.99,
+   "bar12_actualN": 5.991,
+   "bar_v3_N1e6": 9.235,
+   "clears_actualN": false
+  },
+  "keyskip2": {
+   "pmax": 4.097,
+   "preg": "HEBREW",
+   "kid": "L15:spiral_out|m28:keyskip2:-1:7",
+   "bar_v3_L120_actualN": 5.911,
+   "bar12_actualN": 5.94,
+   "bar_v3_N1e6": 9.034,
+   "clears_actualN": false
+  }
+ },
+ "validate_store": "ok",
+ "check_r3_store": [],
+ "valid": true,
+ "matrix": [
+  [
+   434,
+   1311,
+   312,
+   278,
+   966
+  ],
+  [
+   204,
+   812,
+   934,
+   280,
+   1071
+  ],
+  [
+   626,
+   620,
+   809,
+   620,
+   626
+  ],
+  [
+   1071,
+   280,
+   934,
+   812,
+   204
+  ],
+  [
+   966,
+   278,
+   312,
+   1311,
+   434
+  ]
+ ],
+ "at_or_above_bar_L120": [],
+ "elapsed_s": 19
+}
