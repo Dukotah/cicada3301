@@ -19,6 +19,13 @@ S9 = os.path.join(AN, "round35", "B1-bash-orbit-pfv4", "sweep_rows.jsonl")
 TH36 = os.path.join(LP, "data", "panels", "testhalves-r36.npz")
 NL = chr(10)
 
+# The sweep stores below are large derived corpora (gitignored; see .gitignore), so they are
+# absent on a fresh CI checkout exactly as panel-R36 is. Guard the store-reading tests the same
+# way `needs36` guards the panel tests, so CI stays green while they still run wherever the store
+# has been regenerated locally (analysis/round36 / round35).
+needs_s12 = pytest.mark.skipif(not os.path.exists(S12), reason="R36 B1 12-wide store absent (gitignored)")
+needs_s9 = pytest.mark.skipif(not os.path.exists(S9), reason="R35 B1 9-wide store absent (gitignored)")
+
 
 def _head(path):
     with open(path, encoding="utf-8") as f:
@@ -34,6 +41,7 @@ def _copy_head(src, dst, n=50):
     return dst
 
 
+@needs_s12
 def test_12wide_store_validates_stock(tmp_path):
     p = _copy_head(S12, str(tmp_path / "s12.jsonl"))
     r = A.validate_store(p)
@@ -41,18 +49,21 @@ def test_12wide_store_validates_stock(tmp_path):
     assert V.check_r3_store(p) == []
 
 
+@needs_s12
 def test_12wide_full_store_validates_stock():
     r = A.validate_store(S12)
     assert r["rows_validated"] == 276242
     assert V.check_r3_store(S12) == []
 
 
+@needs_s9
 def test_9wide_store_still_validates(tmp_path):
     p = _copy_head(S9, str(tmp_path / "s9.jsonl"))
     assert A.validate_store(p)["rows_validated"] == 50
     assert V.check_r3_store(p) == []
 
 
+@needs_s12
 def test_header_width_is_enforced(tmp_path):
     """A 12-register header with a 9-vector z must FAIL; a header without `registers` falls back to 9."""
     h = _head(S12)

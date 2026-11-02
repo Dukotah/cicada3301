@@ -16,6 +16,9 @@ import bars_v3 as B               # noqa: E402
 P36 = os.path.join(LP, "data", "panels", "panel-r36.npz")
 NULL120 = os.path.join(AN, "round38", "I2-x4-null", "null_rows_L120.jsonl")
 needs_panel = pytest.mark.skipif(not os.path.exists(P36), reason="panel-r36 not present")
+# The R38 X4 per-shuffle null store is a large gitignored corpus, absent on a fresh CI checkout;
+# guard it like needs_panel so the fixture-reproduction test runs only where the store was regenerated.
+needs_null120 = pytest.mark.skipif(not os.path.exists(NULL120), reason="R38 X4 null rows absent (gitignored)")
 
 
 def _res(x, panel=True):
@@ -69,6 +72,7 @@ def test_adjudicate_copies_identical():
     assert open(A.__file__, "rb").read() == open(other, "rb").read()
 
 
+@needs_null120
 def test_keymatched_fixture_reproduces_r38_x4_bar():
     """I2-R38 X4 L=120 bar 6.994 from the stored per-shuffle rows (no re-decoding)."""
     for rel in ("keyskip1", "keyskip2"):

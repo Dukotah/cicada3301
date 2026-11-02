@@ -81,9 +81,18 @@ def evidence_exists(p, bases):
 # SCOPING (Q5 rule, recorded in analysis/round32/I3-r3-enforcement/RESULTS.md): only rows
 # with round >= R3_FIRST_ROUND that DECLARE a sweep are checked, so no historical row is
 # retro-broken. A row declares a sweep by (a) an explicit `sweep_store` field (str|list of
-# paths; a MISSING/non-compliant store is a hard ERROR) or (b) `declares_sweep: true`
-# (must also carry sweep_store), or (c) implicitly: an evidence `*.jsonl` whose basename
-# contains "sweep" -- (c) is advisory (WARN) because pre-R3-schema stores cannot be fixed.
+# paths; a store that is PRESENT-but-non-compliant is always a hard ERROR) or (b)
+# `declares_sweep: true` (must also carry sweep_store), or (c) implicitly: an evidence
+# `*.jsonl` whose basename contains "sweep" -- (c) is advisory (WARN) because pre-R3-schema
+# stores cannot be fixed.
+#
+# A declared store that is simply ABSENT is handled by checkout: the sweep stores are large
+# derived corpora, gitignored by design (.gitignore groups them by campaign), so a fresh CI
+# checkout legitimately has none of them. An absent store therefore cannot be R3-verified
+# either way -- on the machine that ran the sweep it is present and gets checked; on a clean
+# checkout it is expected to be missing. So absence is a WARN in the default (CI) run and a
+# hard ERROR only under --strict (the author's full local audit, where the store should
+# exist). The gate keeps its teeth exactly where a store is present and wrong.
 R3_FIRST_ROUND = 19
 R3_STATS = ("ioc", "mds", "pmax_ne", "zl")   # decrypt IoC*N, min-distinct/32, best non-EN LM, compressibility
 
@@ -128,7 +137,7 @@ def check_r3_store(path):
     return []
 
 
-def r3_problems(e, bases):
+def r3_problems(e, bases, strict=False):
     """(errors, warns) for one ledger row under the scoped R3 rule."""
     errs, warns = [], []
     if _round_num(e) < R3_FIRST_ROUND:
@@ -141,7 +150,11 @@ def r3_problems(e, bases):
     for p in decl:
         path = resolve_path(p, bases)
         if not path:
-            errs.append(f"[{eid}] R3: sweep_store does not exist: {p}")
+            # Absent gitignored corpus: hard error only in the author's full --strict audit;
+            # advisory on a clean/CI checkout where its absence is expected (see header note).
+            msg = f"[{eid}] R3: sweep_store does not exist: {p}"
+            (errs if strict else warns).append(
+                msg if strict else msg + " (absent on this checkout; gitignored, regenerate to verify)")
             continue
         errs += [f"[{eid}] R3 VIOLATION in {p}: {m}" for m in check_r3_store(path)]
     ev = e.get("evidence") or []
@@ -220,7 +233,7 @@ def main():
                 warns.append(f"[{eid}] evidence path does not exist: {p}")
 
         # 7. R3 (scoped to round >= 19 sweep-declaring rows)
-        r3e, r3w = r3_problems(e, bases)
+        r3e, r3w = r3_problems(e, bases, strict)
         errors += r3e
         warns += r3w
 
