@@ -53,4 +53,13 @@ def test_scoping_declared_vs_historical():
         assert not V.r3_problems({"id": "T", "round": 32, "sweep_store": _store(d, name="g.jsonl")}, [d])[0]
         assert not V.r3_problems({"id": "T", "round": 18, "sweep_store": bad}, [d])[0]   # pre-R19: untouched
         assert V.r3_problems({"id": "T", "round": 32, "declares_sweep": True}, [d])[0]
-        assert V.r3_problems({"id": "T", "round": 32, "sweep_store": "nope.jsonl"}, [d])[0]
+        # An ABSENT declared store (2026-11-02): the sweep stores are gitignored derived
+        # corpora, legitimately missing on a fresh checkout, so absence is advisory (WARN) in
+        # the default/CI run and a hard ERROR only under --strict (the author's full audit,
+        # where the store should exist). A PRESENT-but-noncompliant store stays a hard ERROR
+        # in both modes (the `bad` case above).
+        gone = {"id": "T", "round": 32, "sweep_store": "nope.jsonl"}
+        errs, warns = V.r3_problems(gone, [d])
+        assert not errs and warns and "does not exist" in warns[0]
+        errs_s, warns_s = V.r3_problems(gone, [d], strict=True)
+        assert errs_s and "does not exist" in errs_s[0] and not warns_s

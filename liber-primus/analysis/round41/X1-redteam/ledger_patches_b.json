@@ -1,0 +1,37 @@
+{
+  "$comment": "X1/R41 part B ledger patches (C1 audit, 2026-11-02). Real ids only. notes_add appends to `notes`; not_covered_add appends to `not_covered`. The load-bearing finding: C1's artefact-absence claims were made from a FRESH CLONE, where gitignored corpora do not exist; in the canonical working tree (this machine) the artefacts are present with mtimes months before the lane ran. No status flips: the cells stay inconclusive/partially-run because they were not RUN -- but they are not blocked, they are runnable here. C1's one unapplied patch (R40-C1-R30-B1 not_covered_add) is superseded by the corrected text below, not applied as written.",
+  "patches": [
+    {
+      "id": "R40-C1-R30-B1-ARTIFACT-KEYS",
+      "not_covered_add": "R41-X1B: C1's patch text ('raw/{2012..2017}.md absent') was clone-scoped and is superseded: the raw source IS present in the canonical tree (analysis/armada_osint/artifacts/raw/2012..2017.md, all six files, mtime 2026-07-27, gitignored at .gitignore:58). Reproduction of the 43 auto keys from it is still untested -- C1's substitute test used the different archive/corpus scream314 set and reproduced MIDISCV but not WORKING."
+    },
+    {
+      "id": "R41-C1-R35-KEYTEXTS-VERIFIED",
+      "notes_add": "R41-X1B FOUND-ERROR (clone-scoped absence claim): analysis/round12/C2/texts/ holds all 33 texts in the canonical tree (mtime 2026-08-17, gitignored at .gitignore:158). The lane ran in a fresh clone where gitignored corpora do not exist, and its in-repo search therefore reported ABSENT. The H7xF4/H8xF4 cells are not artefact-blocked on the canonical machine; they are runnable. Status stays inconclusive because nothing was scored."
+    },
+    {
+      "id": "R41-C1-R36-DATED-PADS-VERIFIED",
+      "notes_add": "R41-X1B FOUND-ERROR (clone-scoped absence claim): round17/P1_blockchain/data (147 MB: blocks.tsv, hash_display/internal.bin, merkle, nonce) and round17/P2_beacons (376 MB incl. NIST beacon and random.org results) are present in the canonical tree (mtime 2026-08-19, gitignored per P1_blockchain/.gitignore). The H7xF9 cell is runnable here without the multi-GB refetch the row describes. Status stays inconclusive because nothing was scored."
+    },
+    {
+      "id": "R41-C1-B1-43-AUTO-KEYS-VERIFIED",
+      "notes_add": "R41-X1B FOUND-ERROR (clone-scoped absence claim): analysis/armada_osint/artifacts/raw/{2012..2017}.md -- all six year files -- are present in the canonical tree (mtime 2026-07-27, gitignored at .gitignore:58). The 43 auto keys are re-derivable from the true artefact here; the substitute-set non-reproduction (MIDISCV yes, WORKING no) stands as a fact about the substitute, not the artefact. Status stays inconclusive because the re-derivation was not run."
+    },
+    {
+      "id": "R41-C1-R44-BOOKCIPHER-BOOKS-FOUND",
+      "notes_add": "R41-X1B correction: 'the 6 books of bookcipher_expand.py are absent' is wrong for the canonical tree -- blake_mhh, goetia_g, kybalion, liber_al, thomas_gnosis, thunder are all in analysis/bookcipher/books/ (gitignored at .gitignore:108) and krisyotam_runes.txt is tracked at data/krisyotam_runes.txt, so every expand book is locatable. The lane's kill stands on its own ground (pointer-crafted control 0.743-0.815 < 0.90, re-checked from r44_first6.json): the cell is control-blocked, not artefact-blocked."
+    },
+    {
+      "id": "R41-C1-R14-WORDSUM-SELFKEY",
+      "notes_add": "R41-X1B: p_raw recount from null_draws.jsonl matches stored exceedances at 11 of 12 (family x block x level) cells; at b1000/P, 21 of 1000 draws tie the observed best page EXACTLY (block-1000 shuffles can leave whole pages intact, so the observed decode recurs in the null) and the stored float32 matrix rounded the ties below the float64 observed value: ties-in exceed 854 vs stored 833 (p 0.854 vs 0.833). The decision p for the level is 0.893 (from b250) under either convention -- no verdict change. Instrument note: at P level the b1000 blockperm is weak (it preserves pages); b100/b250 carry the real constraint. The RESULTS SS1 parenthetical null maxima (4.62/5.50) quote b1000 only; recognition used the all-blocks maxima (5.23/5.81) per the plant records."
+    },
+    {
+      "id": "R40-C1-INCONCLUSIVE-R35",
+      "notes_add": "R41-X1B: the applied R41-C1 coverage line ('verified absent from working tree, archive/ and corpus/') was true of the lane's fresh clone only; the canonical tree holds all 33 texts (gitignored). See R41-C1-R35-KEYTEXTS-VERIFIED notes."
+    },
+    {
+      "id": "R40-C1-INCONCLUSIVE-R36",
+      "notes_add": "R41-X1B: the applied R41-C1 coverage line ('verified absent') was true of the lane's fresh clone only; the canonical tree holds the P1/P2 data (523 MB). See R41-C1-R36-DATED-PADS-VERIFIED notes."
+    }
+  ]
+}

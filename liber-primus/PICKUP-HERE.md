@@ -1,6 +1,33 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-10-30** (Round 35 closeout; R36 audit corrections applied same day: bounded-not-closed wording, reopen list, ledger count 209). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-11-02** (Round 41 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+
+> ## Round 41 closeout (coordinator + X1 parts A/B, 2026-11-02) — THE BAR OF RECORD: filed. Read `analysis/round41/SYNTHESIS.md` first.
+>
+> No survivor. **I1** refit the twelve-register null on the real sweep-survivor population: the bar of record is
+> `bars_v3(family="survivor12")` — ≈9.34–9.44 at actual N, 10.46–10.49 at N=1e6 (an upper bracket; true 1 % level
+> ≈7.1–10.5); all 34 Round 36–40 best rows re-judged, **0 cross** (stored best 7.10 sits ≥2.3 below); the withdrawn KDF
+> flag stays withdrawn (6.528 vs 7.438). Every null12 "actual-N" number in rows and on `MEASURED-CEILING.md` is
+> superseded and patched (`check_ceiling.py` PASS). **B2** filed from X1's corrected text: four LP64 offset/sign cells of
+> the bash 4.2 orbit (77.6 M seeds each; offset 3 half), 0 flagged, best 6.831 vs 9.344; the misaligned control is
+> relation-specific (offset 1: keyskip1 10/15, keyskip2 0/15) — only 4.7 % of the 116-cell offset×sign×ABI axis is
+> measured, and offsets ≥3 need a widened (>2-skip) screen before they can be swept honestly. **C1** re-scored R14/R15
+> from the recovered campaign7 code (archived bests reproduce exactly): both **negative** under matched nulls, 120/120 +
+> 144/144 plants recognised; cells H4×F3, L2×F3, L15×F2 → TRIED; R44 killed by its own control (0.743–0.815 < 0.90).
+> **X1 part B found the round's blind spot:** C1's "artefact absent" checks ran in a fresh clone where gitignored corpora
+> don't exist — **four cells are NOT blocked**: the R35 keytexts (33 texts), R36 dated pads (523 MB), 43-B1 OSINT raw
+> (all six year files) and the R44 expand books are all present in the canonical tree, three with zero network. Also
+> X1-B: a float32 tie recount at R14-b1000/P (p 0.854 vs 0.833, decision unchanged; page-level nulls need blocks <
+> page length), and the documented full pytest gate had been red since Round 32 (repaired; CI runs a subset — run the
+> full gate). `LEDGER.json` **299 entries**, 0 errors, 0 unsound negatives.
+> **Sandbox lanes S1/S2/S3 were NOT run in Round 41.** **TIME-CRITICAL:** the S2 window-2 snapshot
+> `snap_ff0SWU76EW32OqbWJvp00fnORypR` (window open since 2026-11-01 00:00 UTC) **expires ~2026-11-06** — recover it and
+> export the R36/after-window-1 lists FIRST, before any other Round 42 work.
+> **Owner decisions pending:** the WATCH band (rows with pmax > 7.10 get an L=240 decode + human look — recommended
+> before the next mass sweep); R13 DIRECTION open→negative; KDF noise-crosser sign-off; `with_degenerate` SWEEPROW
+> default; the N5/N4 L=240 bundle read.
+> **Next:** `analysis/round42/CAMPAIGN-PLAN.md` — THE WASTING ASSET AND THE OPEN CELLS (S1/S2/S3 before the snapshot
+> dies; the four unblocked artefact cells C1–C3; WATCH band + widened screen I1; B2 remainder deferred behind it).
 
 > **Round 40 X1 (red-team, 2026-10-31):** B1 (bash 3.2 / 4.0 / 4.1 / 5.1), B3 (English-era grids), C1 (46 cells) and I1 (re-plants) are filed; no survivor; `LEDGER.json` now holds **290 entries**; `MEASURED-CEILING.md` refreshed (`check_ceiling.py` PASS). X1 FOUND-ERROR (all bounded; `analysis/round40/X1-redteam/RESULTS.md`). **Sandbox lanes S1/S2 were not run in Round 40; lane B2 (key offsets) was still sweeping and is not audited.** **Time-critical (unchanged):** recover S2 window 2 from snapshot `snap_ff0SWU76EW32OqbWJvp00fnORypR` after 2026-11-01 00:00 UTC and before ~2026-11-07, export the lists, then persistent-session windows; the PHP retry persists control and FPR first. **Owner decisions pending:** whether R13 DIRECTION moves from `open` to `negative`; the KDF noise-crosser (adjudicated by the coordinator, X1 concurs); whether the null12 bars are refit on the survivor population. **Still open:** the R14/R15 re-score from the archived code; the five other blocked C1 cells; bash 3.2 binary check; the 5.1 PIE orbit; B2 offsets.
 

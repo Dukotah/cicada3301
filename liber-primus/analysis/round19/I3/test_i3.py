@@ -30,14 +30,32 @@ ALPHAS = [0.001, 0.01, 0.05, 0.1]
 
 # ------------------------------------------------------------------ G-BACKCOMPAT
 def test_backcompat_default_signature():
-    """threshold_for(n) and threshold_for(n, L) must be bit-identical to benchmark/null.py."""
+    """threshold_for(n) must be bit-identical to benchmark/null.py in the DEFAULT signature.
+
+    Scope narrowed 2026-11-02 (R41 X1-B): when this test was written both functions ignored
+    `segment_len`, so it asserted equality over L too. Round 32 then gave benchmark/null.py
+    an L-scaling path ("segment_len=L (new, Round 32)"), while this module's legacy cell
+    keeps its published contract of ignoring L (`length_correct=False` "so the legacy answer
+    never changes") -- so the two deliberately diverge wherever the scaled bar clears the
+    -5.5 floor. The published LEDGER numbers were computed without L: THAT is the backcompat
+    surface, and it is what this test now pins. The L-path divergence is asserted explicitly
+    so a silent re-merge of the two behaviours cannot pass unnoticed.
+    """
     bad = []
     for n in NS:
+        a, b = NC.threshold_for(n, None), LEGACY.threshold_for(n, None)
+        if a != b:
+            bad.append((n, None, a, b))
         for L in LS:
-            a, b = NC.threshold_for(n, L), LEGACY.threshold_for(n, L)
-            if a != b:
-                bad.append((n, L, a, b))
+            if NC.threshold_for(n, L) != a:              # NC ignores L in the legacy cell
+                bad.append((n, L, NC.threshold_for(n, L), a))
     assert not bad, f"legacy cell diverged in {len(bad)} places: {bad[:5]}"
+    # The post-R32 LEGACY L-path: scaled, never below the floor, equal to the legacy value
+    # wherever the floor binds or L is None.
+    for n in NS:
+        for L in LS:
+            v = LEGACY.threshold_for(n, L)
+            assert v >= LEGACY.FIXED_BAR or v == LEGACY.threshold_for(n, None)
 
 
 def test_backcompat_every_keyword():
