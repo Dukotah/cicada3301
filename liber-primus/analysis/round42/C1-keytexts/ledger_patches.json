@@ -1,0 +1,30 @@
+{
+  "$comment": "R42 C1: ran H7xF4/H8xF4 keytext cells under panel-R36 (T-LEG -> TRIED). 23 real texts swept, 0 crossers (best 5.479 vs bar 17.42). Data-integrity finding: 10 of 33 keytexts are globalgrey 404 HTML, excluded + listed. New row + patch the inconclusive verification row.",
+  "new_rows": [
+    {
+      "id": "R42-C1-R35-KEYTEXTS-RUN",
+      "round": 42,
+      "lane": "C1",
+      "date": "2026-11-02",
+      "status": "negative",
+      "positive_control": "passed",
+      "control_detail": "Standing free-null bar of record (bars_v3 'free', the measured 12-register null; plant-recover calibration from R34/R37 I1). Data-integrity gate: 10 of 33 files classified as fetch-error HTML and excluded before scoring, so the negative is over intact texts only.",
+      "hypothesis": "One of the R35 esoteric keytexts ('the key is all around you' / 'right in front of your eyes', H7xF4/H8xF4) is the LP2 running key.",
+      "result": "NEGATIVE. 23 intact texts (of 33; 10 are globalgrey 'Page Not Found' HTML, excluded) swept as running keys over 55 unsolved pages, ~150 stride-sampled start offsets x 2 signs x 2 atbash, adjudicated under panel-R36. Global best pmax 5.479 (boehme_aurora.txt, page 26, L=265, start 100800, sign-1 atb1, reg LP1_REAL) vs free bar of record 17.42 at N~13,800; 0 crossers, no near-miss. Upgrades H7xF4/H8xF4 from T-LEG (legacy) to TRIED (panel-R36).",
+      "coverage": "23 of 33 keytexts (intact), running-key Vigenere + atbash, ~150 offsets/text, both signs, over all 55 unsolved pages; panel-max over 12 registers.",
+      "threshold": "bars_v3.bar_v3(N~13800, L in {120,240,400} nearest-and-conservative, 'free'); crosses iff non-degenerate grid-max >= bar.",
+      "threshold_fixed_in_advance": true,
+      "three_conditionals": {"key_space": "the 23 intact R35 esoteric keytexts as running keys (offset-swept)", "transition_model": "running-key Vigenere c +/- key, non-repeating, start offset swept, both signs, atbash", "adjudicator_register": "panel-R36, panel-max over 12 registers; free-null bar of record"},
+      "not_covered": "The 10 corrupt 404 captures (achad_qbl, alghazali_alchemy_happiness, dee_hieroglyphic_monad, emerald_tablet_hermetic, iamblichus_mysteries, meister_eckhart_pfeiffer, porphyry_life_plotinus, sepher_yetzirah_westcott, theologia_germanica, waite_holy_kabbalah) - need a fresh hash-pinned re-download; running-key offsets beyond the ~150 stride-sample per text; texts outside this corpus; a fresh per-shuffle null.",
+      "reopens_if": "the 10 corrupt texts are re-fetched (hash-pinned) and swept; the oracle flags a page; a finer offset sweep is run.",
+      "evidence": ["analysis/round42/C1-keytexts/RESULTS.md", "analysis/round42/C1-keytexts/PREREG.md", "analysis/round42/C1-keytexts/run_c1.py", "analysis/round42/C1-keytexts/c1_results.json", "analysis/round12/C2/texts"],
+      "notes": "Data-integrity finding: 10 of the 33 R35 keytexts are stale globalgrey 404 HTML pages, not the esoteric books. The intact 23 are a measured negative under panel-R36."
+    }
+  ],
+  "patches": [
+    {
+      "id": "R41-C1-R35-KEYTEXTS-VERIFIED",
+      "notes_add": "R42-C1: the texts dir was present all along (clone-scoped absence, X1-B B-2). Running the cell under panel-R36 gives a measured negative (R42-C1-R35-KEYTEXTS-RUN, best 5.479 vs bar 17.42) over the 23 INTACT texts; 10 of 33 are globalgrey 404 HTML captures and are excluded pending a hash-pinned re-fetch."
+    }
+  ]
+}

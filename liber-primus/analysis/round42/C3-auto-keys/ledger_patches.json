@@ -1,0 +1,30 @@
+{
+  "$comment": "R42 C3: ran the 43-auto-key cell that round41-C1 reported blocked (clone-scoped 'raw absent', X1-B B-2). Raw is present; keys re-derive (MIDISCV + WORKING reproduce); 485,760 panel-R36 decodes, best 5.496 vs bar 17.09, 0 crossers -> measured negative. New row + patch the inconclusive verification row.",
+  "new_rows": [
+    {
+      "id": "R42-C3-B1-43-AUTO-KEYS-RUN",
+      "round": 42,
+      "lane": "C3",
+      "date": "2026-11-02",
+      "status": "negative",
+      "positive_control": "passed",
+      "control_detail": "The free-null bar of record (bars_v3 'free', the measured 12-register null) is the standing instrument; its plant-and-recover calibration was established in R34/R37 I1. MIDISCV + WORKING reproduce from the present raw (the cell's own provenance control).",
+      "hypothesis": "One of the 43 OSINT-raw auto-extracted keys (ALL-CAPS/backtick tokens from armada_osint/artifacts/raw/{2012..2017}.md), or the curated artefact keys, is the LP2 Vigenere/running key.",
+      "result": "NEGATIVE. 485,760 decodes (184 keys incl. all 43 auto keys x 2 signs x 2 atbash x 12 phases x 55 unsolved pages) adjudicated under panel-R36. Global best pmax 5.496 (SHAMIRSSECRETSHARINGSCHEME, page 24, L=270, sign+1 atb0 ph9, reg LP1_REAL) vs free bar of record 17.09 at N=8,832; 0 pages cross, no near-miss. Dominates the original R30-B1 English-only negative (best -6.3).",
+      "coverage": "All 43 auto keys + 125 curated/variant ALPHA + 16 NUMER streams, repeating-key Vigenere + atbash, phase 0..11, both signs, over all 55 unsolved pages; panel-max over 12 registers. MIDISCV + WORKING verified to re-derive from the present raw.",
+      "threshold": "bars_v3.bar_v3(N=8832, L in {120,240,400} nearest-and-conservative, 'free') per page; crosses iff non-degenerate grid-max >= bar.",
+      "threshold_fixed_in_advance": true,
+      "three_conditionals": {"key_space": "the catalogued 2012-2017 artefact tokens (43 auto-scraped + curated) as repeating Vigenere/running keys + 16 numeric streams mod 29", "transition_model": "Vigenere c +/- key and atbash, phase 0..11, both signs (the R30-B1 grid; not the keyskip beam or interrupter arms)", "adjudicator_register": "panel-R36, panel-max over 12 registers; free-null bar of record"},
+      "not_covered": "Non-tokenised prose keys; numeric schedules beyond the 16 streams; the keyskip-beam and interrupter arms (R30-B1's other arms); a fresh per-shuffle matched null (the standing free bar is used instead; a full-grid null would be ~10^8 decodes).",
+      "reopens_if": "the oracle flags a page; a new artefact token surfaces; or the keyskip/interrupter arm is run on these keys under panel-R36.",
+      "evidence": ["analysis/round42/C3-auto-keys/RESULTS.md", "analysis/round42/C3-auto-keys/PREREG.md", "analysis/round42/C3-auto-keys/run_c3.py", "analysis/round42/C3-auto-keys/c3_results.json", "analysis/round10b/B1-overlooked-artifact/b1_keys.py", "analysis/armada_osint/artifacts/raw/2012.md"],
+      "notes": "Closes the round41-C1 'artefact absent (clone-scoped)' verification for this cell. The raw IS present; the cell is a measured negative, not blocked."
+    }
+  ],
+  "patches": [
+    {
+      "id": "R41-C1-B1-43-AUTO-KEYS-VERIFIED",
+      "notes_add": "R42-C3: SUPERSEDED as a verification stub. The raw was present all along (clone-scoped absence, X1-B B-2); the 43 auto keys re-derive (MIDISCV + WORKING reproduce) and the cell was RUN under panel-R36 -> measured negative, see R42-C3-B1-43-AUTO-KEYS-RUN. This row's 'absent' result stands only as the record of the clone-scoped search."
+    }
+  ]
+}

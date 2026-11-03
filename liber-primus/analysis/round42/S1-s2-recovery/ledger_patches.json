@@ -1,0 +1,53 @@
+{
+  "$comment": "R42 S1 (window-2 recovery) + S3 (bash 3.2 real binary). Two new rows + two patches to existing rows. Window-2 end state recovered byte-exact from snap_ff0SWU76EW32OqbWJvp00fnORypR (STATUS.json sha256 1aa52944..); 0 claim-bar crossers, 0 near-misses. S3 built a real bash 3.2.0 binary whose RANDOM=1 first-20 match round40/B1-bash-versions/verification.json exactly (20/20), upgrading the 3.2 row from source-derived L4 to real-binary L1.",
+  "new_rows": [
+    {
+      "id": "R42-S1-S2-WINDOW2-RECOVERED",
+      "round": 42,
+      "lane": "S1",
+      "date": "2026-11-02",
+      "status": "measured",
+      "positive_control": "passed",
+      "control_detail": "Inherited from R38-S1 window 1 (exact-relation control 3/3 PASS, engine launch self-test 64/64 exact). This lane recovers a prior window's end state; it ran no new decodes, so it plants no new control and relies on R38-S1's.",
+      "hypothesis": "The Round 38 S2 window-2 end state (lost when the laptop slept and the 45-min session hit its cap) sits in snapshot snap_ff0SWU76EW32OqbWJvp00fnORypR and can be read back.",
+      "result": "RECOVERED byte-exact. Created sandbox r42-s1-recovery from the snapshot; /vercel/w/run_r36/STATUS.json read back (sha256 1aa529444548e3e1f3add420936ddfd40ee9b9fe4cb6d25b74c197a2e070c2ba, saved locally). Window 2: 0 claim-bar crossers (bar 7.6342), 0 near-misses (7.5342); aggregate best pmax 7.3071 (seed 1087113973), HIT-CANDIDATE.json hits:[]. Candidate distribution (38,576 >= 5.0): 5.5->4,736, 6.0->487, 6.5->44, 7.0->5, 7.3->2, 7.5342->0, 7.6342->0.",
+      "coverage": "Engine cursor sum advanced 2,059,308,008 -> 2,235,695,586 (47.947 pp -> 52.054 pp of 2^32, +4.107 pp in window 2); mixed-instrument, same caveat as R38-S1. Window-2 panel-R36 seeds advanced = 176,387,578. Full candidate/histogram/top lists (candidates.jsonl 2.4 MB, hist_S2.u64, top_S2.json) preserved in snapshot snap_Rw1QyGFA39to1dV9rR8qA8WJEgm6 (expires 2026-11-09) and the persistent sandbox r42-s1-recovery:/vercel/w/S1-recovered/ (sha256 in that dir's SHA256SUMS); pulled to the laptop only as the threshold summary + STATUS + HIT-CANDIDATE (the MCP file channel caps ~2 KB/call, so the 2.4 MB list was summarised, not transferred byte-for-byte, exactly as R38-S1 (c)).",
+      "threshold": "claim bar 7.6341931878728095 and near-miss bar 7.5342 (unchanged from R38 for comparability); also read against the R41 bar of record bars_v3(family='survivor12') at the recovered N.",
+      "threshold_fixed_in_advance": true,
+      "three_conditionals": {"key_space": "Py2.7 MT19937 init_by_array([w]) w in uint32, random29 reducer, offset 0 (the R38-S1 S2 lane continued)", "transition_model": "keyskip1 'exact' (one-draw rejection), relation exact only", "adjudicator_register": "panel-R36 12 registers, stage-A screen, claim bars from the Round 19 panel (not recalibrated for 12 registers)"},
+      "not_covered": "The remaining ~48 % of the cursor space under panel-R36; the 44.138 % Round-19-gated fraction not re-scored under panel-R36; claim bars not recalibrated for 12 registers; the full hitfn20 3-clause gate on controls; the byte-for-byte list transfer to the laptop (summarised only).",
+      "reopens_if": "continue S2 windows with persistent sessions from cursor 2,235,695,586; or the oracle flags a recovered candidate; or the 12-register claim bars are recalibrated and the lists re-judged.",
+      "evidence": ["analysis/round42/S1-s2-recovery/RESULTS.md", "analysis/round42/S1-s2-recovery/PREREG.md", "analysis/round42/S1-s2-recovery/state_recovered/STATUS.json", "analysis/round42/S1-s2-recovery/state_recovered/HIT-CANDIDATE.json", "analysis/round42/S1-s2-recovery/state_recovered/candidates_summary.json"],
+      "notes": "Closes the R38-S1 'window 2 unrecovered' caveat. No survivor appeared in the recovered window. The window advanced the sweep but found nothing at or near the bar."
+    },
+    {
+      "id": "R42-S3-BASH32-BINARY-L1",
+      "round": 42,
+      "lane": "S3",
+      "date": "2026-11-02",
+      "status": "measured",
+      "positive_control": "passed",
+      "control_detail": "The test IS the control: a real binary's output is compared against the independently transcribed generator (round40 ref_bash / verification.json). Match = the transcription is faithful.",
+      "hypothesis": "A real bash 3.2 binary emits the exact $RANDOM stream the R40-B1 bash-3.2 sweep assumed (so that sweep's negative is L1, not L4 source-derived).",
+      "result": "CONFIRMED. Built bash 3.2.0(2)-release from ftp.gnu.org/gnu/bash/bash-3.2.tar.gz (sha256 26c99025b59e3077..) under gcc 15.2 (CC='gcc -std=gnu17 -fcommon -fpermissive -w'; config.h HAVE_STRSIGNAL forced 1 for glibc-2.4x sys_siglist removal). binary sha256 447a00e9a39adb9a.. RANDOM=1 first-20 = [16838,5758,10113,17515,31051,5627,23010,7419,16212,4086,2749,12767,9084,12060,32225,17543,25089,21183,25137,25566] = round40 verification.json first20 EXACTLY (20/20). mod-29 first-20 = [18,16,21,28,21,1,13,24,1,26,23,7,7,25,6,27,4,13,23,17].",
+      "coverage": "The generator (brand/sbrand LCG, auto-seed sbrand(pid+time)) is confirmed by a real binary; the 3.2 RANDOM source is unchanged across the 3.2.x patch series (variables.c brand/sbrand untouched by bash32-001..057), so this L1-verifies the generator the plan named as '3.2.57' too.",
+      "threshold": "exact sequence equality, 20/20 values.",
+      "threshold_fixed_in_advance": true,
+      "not_covered": "pid_max > 32768 seeds; the seed-time window outside tv_sec 2012-01-01..2014-06-01; the subshell-reseed path; everything already in R40-B1-BASH32's not_covered.",
+      "reopens_if": "the binary's sequence ever disagrees with a longer reference; or a 3.2.x point release is shown to differ in variables.c brand/sbrand.",
+      "evidence": ["analysis/round42/S1-s2-recovery/bash32_first20.json", "analysis/round40/B1-bash-versions/verification.json"],
+      "notes": "Preserved in snapshot snap_Rw1QyGFA39to1dV9rR8qA8WJEgm6 and r42-s1-recovery:/vercel/w/S3-bash32/ (binary + first64.txt + SHA). Flips R40-B1-BASH32-RANDOM-AUTOSEED partially-run -> negative (see patches)."
+    }
+  ],
+  "patches": [
+    {
+      "id": "R40-B1-BASH32-RANDOM-AUTOSEED",
+      "set_status": "negative",
+      "notes_add": "R42-S3: the generator is now L1-confirmed by a REAL bash 3.2.0 binary (RANDOM=1 first-20 match verification.json 20/20; see R42-S3-BASH32-BINARY-L1). This upgrades the row from partially-run (source-derived, L4) to negative: the full enumerated 76.2 M auto-seed orbit, 0 flagged, is now a real-binary negative under its three conditionals. The pid_max>32768 and subshell-reseed holes in not_covered stand."
+    },
+    {
+      "id": "R38-S1-S2-WINDOWS",
+      "notes_add": "R42-S1: window 2 is RECOVERED (R42-S1-S2-WINDOW2-RECOVERED): 0 crossers, 0 near-misses, best 7.3071. The engine cursor sum is 2,235,695,586 = 52.054 pp (mixed-instrument). The 'window 2 unrecovered' clause in this row's result/not_covered is closed; the lists live in snap_Rw1QyGFA39to1dV9rR8qA8WJEgm6 and the persistent r42-s1-recovery sandbox."
+    }
+  ]
+}

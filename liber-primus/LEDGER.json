@@ -21,16 +21,16 @@
   "audit"
  ],
  "counts": {
-  "total": 299,
+  "total": 304,
   "by_status": {
    "audit": 42,
    "eliminated": 5,
    "inconclusive": 13,
-   "measured": 82,
-   "negative": 99,
+   "measured": 84,
+   "negative": 103,
    "never-run": 10,
    "open": 18,
-   "partially-run": 25,
+   "partially-run": 24,
    "superseded": 5
   }
  },
@@ -10294,7 +10294,8 @@
     "export": "partial (hashes, aggregated histogram, >=6.0/6.5 candidate lists)",
     "files": "analysis/round38/S1-s2-windows/"
    },
-   "x1_r38": "X1/R38: NO-ERROR-FOUND on control independence and arithmetic. Ciphertext from a separate generator (gen_control.py: stdlib MT keystream, own one-draw rejection loop with rejection RNG 90000+i); X1 regenerated the keystream (rerun_s1.json): first 32 values equal control_inputs.json for all 3 seeds, first 128 of seed 777 equal R27 vectors_s2 keystream_first128; the seed-777 ciphertext differs from the R27 plant at 154/240 positions (same plaintext slice, so pmax 17.9312 is equal by construction, as RESULTS says). Window 1: 2,059,308,008 - 1,950,696,430 = 108,611,578 = 2.5288 pp, 55,698 seeds/s at 1,950 s (matches STATUS 55,697.7); cumulative 54,967,546 + 108,611,578 = 163,579,124 = 3.8086 pp. Worker seeds_done sums to 2,059,308,008. round27 run/ mtimes 2026-10-28, untouched. FOUND-ERROR (minor, wording): 'window 2 ran' is not verified (only session CPU 9.01e6 ms and a stopped snapshot); stated here as 'launched'. Limits kept: the control binary is stock+2 lines (its own sha not recorded), the engine under test is also the scorer, the full hitfn20 gate was not run on the plants, claim bars not recalibrated."
+   "x1_r38": "X1/R38: NO-ERROR-FOUND on control independence and arithmetic. Ciphertext from a separate generator (gen_control.py: stdlib MT keystream, own one-draw rejection loop with rejection RNG 90000+i); X1 regenerated the keystream (rerun_s1.json): first 32 values equal control_inputs.json for all 3 seeds, first 128 of seed 777 equal R27 vectors_s2 keystream_first128; the seed-777 ciphertext differs from the R27 plant at 154/240 positions (same plaintext slice, so pmax 17.9312 is equal by construction, as RESULTS says). Window 1: 2,059,308,008 - 1,950,696,430 = 108,611,578 = 2.5288 pp, 55,698 seeds/s at 1,950 s (matches STATUS 55,697.7); cumulative 54,967,546 + 108,611,578 = 163,579,124 = 3.8086 pp. Worker seeds_done sums to 2,059,308,008. round27 run/ mtimes 2026-10-28, untouched. FOUND-ERROR (minor, wording): 'window 2 ran' is not verified (only session CPU 9.01e6 ms and a stopped snapshot); stated here as 'launched'. Limits kept: the control binary is stock+2 lines (its own sha not recorded), the engine under test is also the scorer, the full hitfn20 gate was not run on the plants, claim bars not recalibrated.",
+   "notes": "R42-S1: window 2 is RECOVERED (R42-S1-S2-WINDOW2-RECOVERED): 0 crossers, 0 near-misses, best 7.3071. The engine cursor sum is 2,235,695,586 = 52.054 pp (mixed-instrument). The 'window 2 unrecovered' clause in this row's result/not_covered is closed; the lists live in snap_Rw1QyGFA39to1dV9rR8qA8WJEgm6 and the persistent r42-s1-recovery sandbox."
   },
   {
    "id": "R38-S2-PHP-SANDBOX",
@@ -11321,7 +11322,7 @@
    "round": 40,
    "lane": "B1",
    "date": "2026-10-31",
-   "status": "partially-run",
+   "status": "negative",
    "positive_control": "passed",
    "control_detail": "control_3.2.json: 60 natural-rate plants (10 EN_MODERN + 10 EN_NOVOWEL + 10 HEBREW per relation (60 plants), pooled >=3 recoveries in every register x skip split) through the real 2^16-seed chunk path; 59 recovered end-to-end (pmax>=N=1e6 bars at L120 and L240, recovery>=0.90); gate (>=3 per pooled split) True",
    "hypothesis": "The LP2 key is the bash 3.2 auto-seed $RANDOM stream (seed = pid + time(0); ANSI-C LCG 1103515245/12345), <= 2 key skips in the first 24 runes, plaintext in one of the 12 panel-R36 registers.",
@@ -11355,7 +11356,7 @@
    "generator_verification": "source-derived, unverified (no bash 3.2 binary): Q5 -> partially-run",
    "lane_dir": "B1-bash-versions",
    "x1_r40": "X1/R40: NO-ERROR-FOUND on the arithmetic (76,237,568 = 76,204,800 + 32,768; 291 chunks of 2^18). X1 read bash-3.2 variables.c independently (brand l.1156-1159: rseed*1103515245+12345, (rseed>>16)&32767; init l.498 sbrand(dollar_dollar_pid + shell_start_time); shell_start_time set at shell.c:424 and dollar_dollar_pid at variables.c:376, both before initialize_shell_variables) and re-derived RANDOM=1 -> 16838 5758 10113 17515 31051 ... Still no 3.2 binary: stays partially-run. The ceiling patch as filed said only 'pid_max > 32768' remained for 3.2; the generator being source-derived and the subshell reseed are also not excluded (page line corrected).",
-   "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6."
+   "notes": "R41-I1 bar of record (survivor12): the 'actual-N' / N=1e6 bars quoted from null12 for this row were fitted on shuffled-LP2 wrong keys with no prefilter and are superseded. On the pf_v4_12-survivor population the L=120 bars are 9.6325 / 9.6549 at N=131,786, 10.4645 / 10.4856 at N=1e6 (keyskip1 / keyskip2).  See [R41-I1] rejudged_rounds36_40.json: no best row crosses at its actual N or at 1e6. R42-S3: the generator is now L1-confirmed by a REAL bash 3.2.0 binary (RANDOM=1 first-20 match verification.json 20/20; see R42-S3-BASH32-BINARY-L1). This upgrades the row from partially-run (source-derived, L4) to negative: the full enumerated 76.2 M auto-seed orbit, 0 flagged, is now a real-binary negative under its three conditionals. The pid_max>32768 and subshell-reseed holes in not_covered stand."
   },
   {
    "id": "R40-B1-BASH51-RANDOM-AUTOSEED",
@@ -12647,7 +12648,7 @@
    "evidence": [
     "liber-primus/analysis/round41/C1-r14-r15/RESULTS.md"
    ],
-   "notes": "R41-X1B FOUND-ERROR (clone-scoped absence claim): analysis/round12/C2/texts/ holds all 33 texts in the canonical tree (mtime 2026-08-17, gitignored at .gitignore:158). The lane ran in a fresh clone where gitignored corpora do not exist, and its in-repo search therefore reported ABSENT. The H7xF4/H8xF4 cells are not artefact-blocked on the canonical machine; they are runnable. Status stays inconclusive because nothing was scored."
+   "notes": "R41-X1B FOUND-ERROR (clone-scoped absence claim): analysis/round12/C2/texts/ holds all 33 texts in the canonical tree (mtime 2026-08-17, gitignored at .gitignore:158). The lane ran in a fresh clone where gitignored corpora do not exist, and its in-repo search therefore reported ABSENT. The H7xF4/H8xF4 cells are not artefact-blocked on the canonical machine; they are runnable. Status stays inconclusive because nothing was scored. R42-C1: the texts dir was present all along (clone-scoped absence, X1-B B-2). Running the cell under panel-R36 gives a measured negative (R42-C1-R35-KEYTEXTS-RUN, best 5.479 vs bar 17.42) over the 23 INTACT texts; 10 of 33 are globalgrey 404 HTML captures and are excluded pending a hash-pinned re-fetch."
   },
   {
    "round": 41,
@@ -12668,7 +12669,7 @@
    "evidence": [
     "liber-primus/analysis/round41/C1-r14-r15/RESULTS.md"
    ],
-   "notes": "R41-X1B FOUND-ERROR (clone-scoped absence claim): round17/P1_blockchain/data (147 MB: blocks.tsv, hash_display/internal.bin, merkle, nonce) and round17/P2_beacons (376 MB incl. NIST beacon and random.org results) are present in the canonical tree (mtime 2026-08-19, gitignored per P1_blockchain/.gitignore). The H7xF9 cell is runnable here without the multi-GB refetch the row describes. Status stays inconclusive because nothing was scored."
+   "notes": "R41-X1B FOUND-ERROR (clone-scoped absence claim): round17/P1_blockchain/data (147 MB: blocks.tsv, hash_display/internal.bin, merkle, nonce) and round17/P2_beacons (376 MB incl. NIST beacon and random.org results) are present in the canonical tree (mtime 2026-08-19, gitignored per P1_blockchain/.gitignore). The H7xF9 cell is runnable here without the multi-GB refetch the row describes. Status stays inconclusive because nothing was scored. R42-C2: the P1/P2 pad data (523 MB) was present all along (clone-scoped absence, X1-B B-2). Ran the dated-pad cell under panel-R36 -> measured negative (R42-C2-R36-DATED-PADS-RUN, best 5.003 vs bar 16.94)."
   },
   {
    "round": 41,
@@ -12689,7 +12690,7 @@
    "evidence": [
     "liber-primus/analysis/round41/C1-r14-r15/RESULTS.md"
    ],
-   "notes": "R41-X1B FOUND-ERROR (clone-scoped absence claim): analysis/armada_osint/artifacts/raw/{2012..2017}.md -- all six year files -- are present in the canonical tree (mtime 2026-07-27, gitignored at .gitignore:58). The 43 auto keys are re-derivable from the true artefact here; the substitute-set non-reproduction (MIDISCV yes, WORKING no) stands as a fact about the substitute, not the artefact. Status stays inconclusive because the re-derivation was not run."
+   "notes": "R41-X1B FOUND-ERROR (clone-scoped absence claim): analysis/armada_osint/artifacts/raw/{2012..2017}.md -- all six year files -- are present in the canonical tree (mtime 2026-07-27, gitignored at .gitignore:58). The 43 auto keys are re-derivable from the true artefact here; the substitute-set non-reproduction (MIDISCV yes, WORKING no) stands as a fact about the substitute, not the artefact. Status stays inconclusive because the re-derivation was not run. R42-C3: SUPERSEDED as a verification stub. The raw was present all along (clone-scoped absence, X1-B B-2); the 43 auto keys re-derive (MIDISCV + WORKING reproduce) and the cell was RUN under panel-R36 -> measured negative, see R42-C3-B1-43-AUTO-KEYS-RUN. This row's 'absent' result stands only as the record of the clone-scoped search."
   },
   {
    "id": "R40-B2-BASH42-OFFSETS-SIGN",
@@ -12822,6 +12823,144 @@
    },
    "x1_r41": "X1/R41 part A: wrapper heads re-derived from an independent generator, 300 seeds x 28 values x 5 cells, 0 mismatches; two cells re-planted independently (offset 2 sign -1: 4/5; offset 0 sign +1: 5/5, the loss a screen miss); best rows re-judged against the bar of record (none crosses; gap >= 2.51); misaligned control re-scoped by relation (see control_detail). The lane's null12 bars are superseded.",
    "notes": "Filed with X1/R41 corrections: bars of record replace null12; misaligned-control scope is relation-specific; ILP32 denominator stated."
+  },
+  {
+   "id": "R42-S1-S2-WINDOW2-RECOVERED",
+   "round": 42,
+   "lane": "S1",
+   "date": "2026-11-02",
+   "status": "measured",
+   "positive_control": "passed",
+   "control_detail": "Inherited from R38-S1 window 1 (exact-relation control 3/3 PASS, engine launch self-test 64/64 exact). This lane recovers a prior window's end state; it ran no new decodes, so it plants no new control and relies on R38-S1's.",
+   "hypothesis": "The Round 38 S2 window-2 end state (lost when the laptop slept and the 45-min session hit its cap) sits in snapshot snap_ff0SWU76EW32OqbWJvp00fnORypR and can be read back.",
+   "result": "RECOVERED byte-exact. Created sandbox r42-s1-recovery from the snapshot; /vercel/w/run_r36/STATUS.json read back (sha256 1aa529444548e3e1f3add420936ddfd40ee9b9fe4cb6d25b74c197a2e070c2ba, saved locally). Window 2: 0 claim-bar crossers (bar 7.6342), 0 near-misses (7.5342); aggregate best pmax 7.3071 (seed 1087113973), HIT-CANDIDATE.json hits:[]. Candidate distribution (38,576 >= 5.0): 5.5->4,736, 6.0->487, 6.5->44, 7.0->5, 7.3->2, 7.5342->0, 7.6342->0.",
+   "coverage": "Engine cursor sum advanced 2,059,308,008 -> 2,235,695,586 (47.947 pp -> 52.054 pp of 2^32, +4.107 pp in window 2); mixed-instrument, same caveat as R38-S1. Window-2 panel-R36 seeds advanced = 176,387,578. Full candidate/histogram/top lists (candidates.jsonl 2.4 MB, hist_S2.u64, top_S2.json) preserved in snapshot snap_Rw1QyGFA39to1dV9rR8qA8WJEgm6 (expires 2026-11-09) and the persistent sandbox r42-s1-recovery:/vercel/w/S1-recovered/ (sha256 in that dir's SHA256SUMS); pulled to the laptop only as the threshold summary + STATUS + HIT-CANDIDATE (the MCP file channel caps ~2 KB/call, so the 2.4 MB list was summarised, not transferred byte-for-byte, exactly as R38-S1 (c)).",
+   "threshold": "claim bar 7.6341931878728095 and near-miss bar 7.5342 (unchanged from R38 for comparability); also read against the R41 bar of record bars_v3(family='survivor12') at the recovered N.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "Py2.7 MT19937 init_by_array([w]) w in uint32, random29 reducer, offset 0 (the R38-S1 S2 lane continued)",
+    "transition_model": "keyskip1 'exact' (one-draw rejection), relation exact only",
+    "adjudicator_register": "panel-R36 12 registers, stage-A screen, claim bars from the Round 19 panel (not recalibrated for 12 registers)"
+   },
+   "not_covered": "The remaining ~48 % of the cursor space under panel-R36; the 44.138 % Round-19-gated fraction not re-scored under panel-R36; claim bars not recalibrated for 12 registers; the full hitfn20 3-clause gate on controls; the byte-for-byte list transfer to the laptop (summarised only).",
+   "reopens_if": "continue S2 windows with persistent sessions from cursor 2,235,695,586; or the oracle flags a recovered candidate; or the 12-register claim bars are recalibrated and the lists re-judged.",
+   "evidence": [
+    "analysis/round42/S1-s2-recovery/RESULTS.md",
+    "analysis/round42/S1-s2-recovery/PREREG.md",
+    "analysis/round42/S1-s2-recovery/state_recovered/STATUS.json",
+    "analysis/round42/S1-s2-recovery/state_recovered/HIT-CANDIDATE.json",
+    "analysis/round42/S1-s2-recovery/state_recovered/candidates_summary.json"
+   ],
+   "notes": "Closes the R38-S1 'window 2 unrecovered' caveat. No survivor appeared in the recovered window. The window advanced the sweep but found nothing at or near the bar."
+  },
+  {
+   "id": "R42-S3-BASH32-BINARY-L1",
+   "round": 42,
+   "lane": "S3",
+   "date": "2026-11-02",
+   "status": "measured",
+   "positive_control": "passed",
+   "control_detail": "The test IS the control: a real binary's output is compared against the independently transcribed generator (round40 ref_bash / verification.json). Match = the transcription is faithful.",
+   "hypothesis": "A real bash 3.2 binary emits the exact $RANDOM stream the R40-B1 bash-3.2 sweep assumed (so that sweep's negative is L1, not L4 source-derived).",
+   "result": "CONFIRMED. Built bash 3.2.0(2)-release from ftp.gnu.org/gnu/bash/bash-3.2.tar.gz (sha256 26c99025b59e3077..) under gcc 15.2 (CC='gcc -std=gnu17 -fcommon -fpermissive -w'; config.h HAVE_STRSIGNAL forced 1 for glibc-2.4x sys_siglist removal). binary sha256 447a00e9a39adb9a.. RANDOM=1 first-20 = [16838,5758,10113,17515,31051,5627,23010,7419,16212,4086,2749,12767,9084,12060,32225,17543,25089,21183,25137,25566] = round40 verification.json first20 EXACTLY (20/20). mod-29 first-20 = [18,16,21,28,21,1,13,24,1,26,23,7,7,25,6,27,4,13,23,17].",
+   "coverage": "The generator (brand/sbrand LCG, auto-seed sbrand(pid+time)) is confirmed by a real binary; the 3.2 RANDOM source is unchanged across the 3.2.x patch series (variables.c brand/sbrand untouched by bash32-001..057), so this L1-verifies the generator the plan named as '3.2.57' too.",
+   "threshold": "exact sequence equality, 20/20 values.",
+   "threshold_fixed_in_advance": true,
+   "not_covered": "pid_max > 32768 seeds; the seed-time window outside tv_sec 2012-01-01..2014-06-01; the subshell-reseed path; everything already in R40-B1-BASH32's not_covered.",
+   "reopens_if": "the binary's sequence ever disagrees with a longer reference; or a 3.2.x point release is shown to differ in variables.c brand/sbrand.",
+   "evidence": [
+    "analysis/round42/S1-s2-recovery/bash32_first20.json",
+    "analysis/round40/B1-bash-versions/verification.json"
+   ],
+   "notes": "Preserved in snapshot snap_Rw1QyGFA39to1dV9rR8qA8WJEgm6 and r42-s1-recovery:/vercel/w/S3-bash32/ (binary + first64.txt + SHA). Flips R40-B1-BASH32-RANDOM-AUTOSEED partially-run -> negative (see patches)."
+  },
+  {
+   "id": "R42-C3-B1-43-AUTO-KEYS-RUN",
+   "round": 42,
+   "lane": "C3",
+   "date": "2026-11-02",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "The free-null bar of record (bars_v3 'free', the measured 12-register null) is the standing instrument; its plant-and-recover calibration was established in R34/R37 I1. MIDISCV + WORKING reproduce from the present raw (the cell's own provenance control).",
+   "hypothesis": "One of the 43 OSINT-raw auto-extracted keys (ALL-CAPS/backtick tokens from armada_osint/artifacts/raw/{2012..2017}.md), or the curated artefact keys, is the LP2 Vigenere/running key.",
+   "result": "NEGATIVE. 485,760 decodes (184 keys incl. all 43 auto keys x 2 signs x 2 atbash x 12 phases x 55 unsolved pages) adjudicated under panel-R36. Global best pmax 5.496 (SHAMIRSSECRETSHARINGSCHEME, page 24, L=270, sign+1 atb0 ph9, reg LP1_REAL) vs free bar of record 17.09 at N=8,832; 0 pages cross, no near-miss. Dominates the original R30-B1 English-only negative (best -6.3).",
+   "coverage": "All 43 auto keys + 125 curated/variant ALPHA + 16 NUMER streams, repeating-key Vigenere + atbash, phase 0..11, both signs, over all 55 unsolved pages; panel-max over 12 registers. MIDISCV + WORKING verified to re-derive from the present raw.",
+   "threshold": "bars_v3.bar_v3(N=8832, L in {120,240,400} nearest-and-conservative, 'free') per page; crosses iff non-degenerate grid-max >= bar.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "the catalogued 2012-2017 artefact tokens (43 auto-scraped + curated) as repeating Vigenere/running keys + 16 numeric streams mod 29",
+    "transition_model": "Vigenere c +/- key and atbash, phase 0..11, both signs (the R30-B1 grid; not the keyskip beam or interrupter arms)",
+    "adjudicator_register": "panel-R36, panel-max over 12 registers; free-null bar of record"
+   },
+   "not_covered": "Non-tokenised prose keys; numeric schedules beyond the 16 streams; the keyskip-beam and interrupter arms (R30-B1's other arms); a fresh per-shuffle matched null (the standing free bar is used instead; a full-grid null would be ~10^8 decodes).",
+   "reopens_if": "the oracle flags a page; a new artefact token surfaces; or the keyskip/interrupter arm is run on these keys under panel-R36.",
+   "evidence": [
+    "analysis/round42/C3-auto-keys/RESULTS.md",
+    "analysis/round42/C3-auto-keys/PREREG.md",
+    "analysis/round42/C3-auto-keys/run_c3.py",
+    "analysis/round42/C3-auto-keys/c3_results.json",
+    "analysis/round10b/B1-overlooked-artifact/b1_keys.py",
+    "analysis/armada_osint/artifacts/raw/2012.md"
+   ],
+   "notes": "Closes the round41-C1 'artefact absent (clone-scoped)' verification for this cell. The raw IS present; the cell is a measured negative, not blocked."
+  },
+  {
+   "id": "R42-C1-R35-KEYTEXTS-RUN",
+   "round": 42,
+   "lane": "C1",
+   "date": "2026-11-02",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "Standing free-null bar of record (bars_v3 'free', the measured 12-register null; plant-recover calibration from R34/R37 I1). Data-integrity gate: 10 of 33 files classified as fetch-error HTML and excluded before scoring, so the negative is over intact texts only.",
+   "hypothesis": "One of the R35 esoteric keytexts ('the key is all around you' / 'right in front of your eyes', H7xF4/H8xF4) is the LP2 running key.",
+   "result": "NEGATIVE. 23 intact texts (of 33; 10 are globalgrey 'Page Not Found' HTML, excluded) swept as running keys over 55 unsolved pages, ~150 stride-sampled start offsets x 2 signs x 2 atbash, adjudicated under panel-R36. Global best pmax 5.479 (boehme_aurora.txt, page 26, L=265, start 100800, sign-1 atb1, reg LP1_REAL) vs free bar of record 17.42 at N~13,800; 0 crossers, no near-miss. Upgrades H7xF4/H8xF4 from T-LEG (legacy) to TRIED (panel-R36).",
+   "coverage": "23 of 33 keytexts (intact), running-key Vigenere + atbash, ~150 offsets/text, both signs, over all 55 unsolved pages; panel-max over 12 registers.",
+   "threshold": "bars_v3.bar_v3(N~13800, L in {120,240,400} nearest-and-conservative, 'free'); crosses iff non-degenerate grid-max >= bar.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "the 23 intact R35 esoteric keytexts as running keys (offset-swept)",
+    "transition_model": "running-key Vigenere c +/- key, non-repeating, start offset swept, both signs, atbash",
+    "adjudicator_register": "panel-R36, panel-max over 12 registers; free-null bar of record"
+   },
+   "not_covered": "The 10 corrupt 404 captures (achad_qbl, alghazali_alchemy_happiness, dee_hieroglyphic_monad, emerald_tablet_hermetic, iamblichus_mysteries, meister_eckhart_pfeiffer, porphyry_life_plotinus, sepher_yetzirah_westcott, theologia_germanica, waite_holy_kabbalah) - need a fresh hash-pinned re-download; running-key offsets beyond the ~150 stride-sample per text; texts outside this corpus; a fresh per-shuffle null.",
+   "reopens_if": "the 10 corrupt texts are re-fetched (hash-pinned) and swept; the oracle flags a page; a finer offset sweep is run.",
+   "evidence": [
+    "analysis/round42/C1-keytexts/RESULTS.md",
+    "analysis/round42/C1-keytexts/PREREG.md",
+    "analysis/round42/C1-keytexts/run_c1.py",
+    "analysis/round42/C1-keytexts/c1_results.json",
+    "analysis/round12/C2/texts"
+   ],
+   "notes": "Data-integrity finding: 10 of the 33 R35 keytexts are stale globalgrey 404 HTML pages, not the esoteric books. The intact 23 are a measured negative under panel-R36."
+  },
+  {
+   "id": "R42-C2-R36-DATED-PADS-RUN",
+   "round": 42,
+   "lane": "C2",
+   "date": "2026-11-02",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "Standing free-null bar of record (bars_v3 'free', the measured 12-register null; R34/R37 I1 plant-recover calibration). The pad artefacts (R17 P1/P2) are present and byte-exact (MANIFEST.json shas).",
+   "hypothesis": "A dated public pad (Bitcoin block hash/merkle/nonce/time, NIST beacon, or random.org pre-generated bytes) is the LP2 one-time pad.",
+   "result": "NEGATIVE. 12 pad byte streams (P1 hash/merkle/nonce/time + 2013 variants; P2 beacon output/seed + random.org aggregates) applied as additive mod-29 pads over 55 unsolved pages, ~150 stride-sampled offsets x 2 signs x 2 atbash, adjudicated under panel-R36. Global best pmax 5.003 (hash_internal_2013.bin, page 46, L=270, start 1,664,190, sign-1 atb0, reg LP1_REAL) vs free bar of record 16.94 at N=7,200; 0 crossers, no near-miss. Consistent with the doublet exclusion of additive full-entropy keystreams.",
+   "coverage": "12 dated-pad streams, additive mod-29, ~150 offsets each (4 MB prefix), both signs, atbash, over all 55 unsolved pages; panel-max over 12 registers.",
+   "threshold": "bars_v3.bar_v3(N=7200, L in {120,240,400} nearest-and-conservative, 'free'); crosses iff non-degenerate grid-max >= bar.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "R17 P1 (Bitcoin hash/merkle/nonce/time) + P2 (NIST beacon, random.org) dated-pad byte streams as additive mod-29 pads, offset-swept (4 MB prefix per pad)",
+    "transition_model": "pad add/subtract c +/- pad + atbash",
+    "adjudicator_register": "panel-R36, panel-max over 12 registers; free-null bar of record"
+   },
+   "not_covered": "Offsets beyond the 4 MB prefix of each pad (the random.org aggregates are 65-95 MB); date->offset anchoring beyond the offset sweep; byte%29 bias (256=8*29+24); the per-day random.org files individually (only the aggregates swept); a fresh per-shuffle null.",
+   "reopens_if": "the oracle flags a page; a specific date->offset anchor is hypothesised with evidence; the full pad length (beyond 4 MB) is swept.",
+   "evidence": [
+    "analysis/round42/C2-dated-pads/RESULTS.md",
+    "analysis/round42/C2-dated-pads/PREREG.md",
+    "analysis/round42/C2-dated-pads/run_c2.py",
+    "analysis/round42/C2-dated-pads/c2_results.json",
+    "analysis/round17/P1_blockchain/data/MANIFEST.json"
+   ],
+   "notes": "Closes the round41-C1 'dated-pad data absent (clone-scoped)' verification; the 523 MB of P1/P2 pad data is present and the cell is a measured negative, not blocked."
   }
  ],
  "round18_merged": "2026-08-26"

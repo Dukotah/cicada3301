@@ -1,0 +1,25 @@
+PASS S1 STATUS.json sha == recorded 1aa52944..  1aa529444548
+PASS S1 window-2 cursor sum > window-1 (2,059,308,008)  2235695586
+PASS S1 window-2 n_claim_bar_hits == 0
+PASS S1 best_pmax below near-miss bar 7.5342  7.307137323008033
+PASS S3 bash first20 == verification.json (20/20)
+PASS C3 auto-key count == 43  43
+PASS C3 MIDISCV re-derives
+PASS C3 WORKING re-derives
+PASS C3 verdict NEGATIVE, 0 crossers
+PASS C3 best well below bar
+PASS C1 corrupt count reproduces (10)  10
+PASS C1 real count reproduces (23)  23
+PASS C1 verdict NEGATIVE
+PASS C2 verdict NEGATIVE
+PASS C2 best well below bar
+PASS free bar increases with N (more trials -> higher bar)  16.941 -> 17.422
+PASS free bars in sane range 8..20
+PASS ledger has R42-S1-S2-WINDOW2-RECOVERED
+PASS ledger has R42-S3-BASH32-BINARY-L1
+PASS ledger has R42-C3-B1-43-AUTO-KEYS-RUN
+PASS ledger has R42-C1-R35-KEYTEXTS-RUN
+PASS ledger has R42-C2-R36-DATED-PADS-RUN
+PASS ledger counts.total == len(entries)  304 vs 304
+
+X1/R42 FAILS: 0 []

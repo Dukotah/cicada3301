@@ -1,6 +1,32 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-11-02** (Round 41 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-11-03** (Round 42 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+
+> ## Round 42 closeout (lanes 2026-11-02, X1 + closeout 2026-11-03) — THE WASTING ASSET AND THE OPEN CELLS: filed. Read `analysis/round42/SYNTHESIS.md` first.
+>
+> No survivor. **S1** recovered the S2 window-2 end state **byte-exact** from the expiring snapshot (sha-verified
+> STATUS.json): 0 claim-bar hits, best 7.3071 vs the 7.6342 claim bar; 2³² cursor coverage 47.95 → **52.05 %**
+> (mixed-instrument — only 7.9 pp is panel-R36-judged). The Round 38 recovery debt is paid. **S3** built the real
+> bash 3.2 binary from the pinned tarball (`RANDOM=1` first-20 = verification.json 20/20) →
+> `R40-B1-BASH32-RANDOM-AUTOSEED` flips partially-run → **negative** (real-binary L1). **The three "blocked"
+> artefact cells all ran, all negative at 12-register power:** C1 R35 keytexts (23 intact texts, best 5.479 vs bar
+> 17.42 — and **10 of the 33 are corrupt globalgrey 404 captures**, recorded not-covered-pending-refetch); C2 R36
+> dated pads (523 MB, best 5.003 vs 16.94); C3 the 43 auto keys re-derived from the present raw, MIDISCV+WORKING
+> reproduce (best 5.496 vs 17.09). Cells H7×F4, H8×F4, H7×F9 + 43-B1 → **TRIED (panel-R36)**. **X1: 23/23
+> independent checks PASS, 0 fails**; one bounded FOUND-DEVIATION — the C lanes planted no fresh controls through
+> their own glue (declared pre-output; negatives 11–12 below bar; binding rule for future artefact lanes).
+> `LEDGER.json` **304 entries**, 0 errors, 0 unsound negatives; `check_ceiling.py` PASS.
+> **S2 (PHP retry) and I1 (WATCH band + widened screen) were NOT run in Round 42** — they head Round 43; the whole
+> B2 offset remainder (110.5 of 116 cells) stays gated behind the widened (k≤3–4) screen's measured power.
+> **TIME-SENSITIVE:** the S1 full candidate lists live only sandbox-side — snapshot
+> `snap_Rw1QyGFA39to1dV9rR8qA8WJEgm6` **expires ~2026-11-09** (persistent sandbox `r42-s1-recovery` also holds
+> them). Export to the laptop or record a deliberate lapse (Round 43 lane D1). Summaries + shas are already local.
+> **Owner decisions pending:** WATCH band (pmax > 7.10 → L=240 decode + human look); the snapshot export-or-lapse;
+> R13 DIRECTION open→negative; KDF noise-crosser sign-off; `with_degenerate` SWEEPROW default; the N5/N4 L=240
+> bundle read.
+> **Next:** `analysis/round43/CAMPAIGN-PLAN.md` — THE SCREEN AND THE REMAINDER (I1(b) widened screen gates
+> everything; S2 PHP retry; the 10-keytext refetch with a through-the-glue control; B2 only behind the measured
+> screen).
 
 > ## Round 41 closeout (coordinator + X1 parts A/B, 2026-11-02) — THE BAR OF RECORD: filed. Read `analysis/round41/SYNTHESIS.md` first.
 >
