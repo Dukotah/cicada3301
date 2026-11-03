@@ -24,9 +24,13 @@ _Refreshed **2026-11-03** (Round 42 closeout). Read this first, then [`ELIMINATI
 > **Owner decisions pending:** WATCH band (pmax > 7.10 → L=240 decode + human look); the snapshot export-or-lapse;
 > R13 DIRECTION open→negative; KDF noise-crosser sign-off; `with_degenerate` SWEEPROW default; the N5/N4 L=240
 > bundle read.
-> **Next:** `analysis/round43/CAMPAIGN-PLAN.md` — THE SCREEN AND THE REMAINDER (I1(b) widened screen gates
-> everything; S2 PHP retry; the 10-keytext refetch with a through-the-glue control; B2 only behind the measured
-> screen).
+> **Next:** `analysis/round43/CAMPAIGN-PLAN.md` — FIRST PRINCIPLES: THE FRESH ARMADA (owner-directed 2026-11-03,
+> supersedes the same-day "screen and remainder" draft; that draft's lanes defer to Round 44). Blind re-derivation
+> agents on primary material only + total physical-channel inventory + the hand-feasibility constraint, all behind
+> a ledger-diff firewall (X0: cite the row or PREREG as new — never re-run eliminated lists); plus the
+> verified-open stored-material threads (the R36-O2 Wayback leg that was BLOCKED not searched; payload-as-
+> ciphertext; the 256B payload × the 256B onion-2/3/4 RSA hex cross never run; T2/T3 blob identification). D1
+> snapshot export-or-lapse still first (~2026-11-09).
 
 > ## Round 41 closeout (coordinator + X1 parts A/B, 2026-11-02) — THE BAR OF RECORD: filed. Read `analysis/round41/SYNTHESIS.md` first.
 >
