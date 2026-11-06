@@ -1,0 +1,1974 @@
+{
+ "final_string_sha_note": "FINAL embedded from export_cur_00120.xml; W1 dumps verified byte-exact against it",
+ "attested_exact_cells": 112,
+ "attested_span": [
+  143,
+  256
+ ],
+ "cells_multi_witness": 31,
+ "cells_single_witness": 81,
+ "cells_unconfirmed_by_witness": 9,
+ "bounded_bridge": {
+  "positions": [
+   190,
+   191
+  ],
+  "sum_min": 30,
+  "variants_k": [
+   [
+    1,
+    5
+   ],
+   [
+    2,
+    4
+   ],
+   [
+    3,
+    3
+   ],
+   [
+    4,
+    2
+   ],
+   [
+    5,
+    1
+   ]
+  ]
+ },
+ "value_disagreements": [],
+ "all_findings": [
+  {
+   "type": "W2-internal-minute-vs-elapsed",
+   "pos": 168,
+   "byte": "fc",
+   "minute_implies": 15,
+   "elapsed_says": 5
+  },
+  {
+   "type": "W2-internal-minute-vs-elapsed",
+   "pos": 169,
+   "byte": "9b",
+   "minute_implies": 5,
+   "elapsed_says": 15
+  },
+  {
+   "type": "W3-vs-W2-clock-digit",
+   "pos": 168,
+   "byte": "fc",
+   "W3_clock": "15",
+   "W2_minute": "25"
+  }
+ ],
+ "notes": [
+  "Cripion block1 = bytes 152-173; block2 = bytes 174-182 (contiguous); wiki tables start at 152.",
+  "W4 25-sample aligned to bytes 143-167 (tail matches W2/W3 exactly); first 10 (bytes 143-152) are the witness's own 'cannot confirm' values.",
+  "Bytes 190-191: W1 offline (restart dump 18:56); interval sum = 30 min (t189 18:30 -> t191 19:00); 5 bounded variants."
+ ],
+ "cells": [
+  {
+   "pos": 143,
+   "byte": "49",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness-unconfirmed",
+   "witnesses": [
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 10,
+     "confidence": "unconfirmed-by-witness"
+    }
+   ]
+  },
+  {
+   "pos": 144,
+   "byte": "bf",
+   "interval_min": 30,
+   "k": 6,
+   "confidence": "single-witness-unconfirmed",
+   "witnesses": [
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 30,
+     "confidence": "unconfirmed-by-witness"
+    }
+   ]
+  },
+  {
+   "pos": 145,
+   "byte": "28",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness-unconfirmed",
+   "witnesses": [
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 10,
+     "confidence": "unconfirmed-by-witness"
+    }
+   ]
+  },
+  {
+   "pos": 146,
+   "byte": "fa",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "single-witness-unconfirmed",
+   "witnesses": [
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 15,
+     "confidence": "unconfirmed-by-witness"
+    }
+   ]
+  },
+  {
+   "pos": 147,
+   "byte": "67",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness-unconfirmed",
+   "witnesses": [
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 5,
+     "confidence": "unconfirmed-by-witness"
+    }
+   ]
+  },
+  {
+   "pos": 148,
+   "byte": "4d",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness-unconfirmed",
+   "witnesses": [
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 5,
+     "confidence": "unconfirmed-by-witness"
+    }
+   ]
+  },
+  {
+   "pos": 149,
+   "byte": "2a",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness-unconfirmed",
+   "witnesses": [
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 10,
+     "confidence": "unconfirmed-by-witness"
+    }
+   ]
+  },
+  {
+   "pos": 150,
+   "byte": "d2",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "single-witness-unconfirmed",
+   "witnesses": [
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 15,
+     "confidence": "unconfirmed-by-witness"
+    }
+   ]
+  },
+  {
+   "pos": 151,
+   "byte": "f7",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness-unconfirmed",
+   "witnesses": [
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 5,
+     "confidence": "unconfirmed-by-witness"
+    }
+   ]
+  },
+  {
+   "pos": 152,
+   "byte": "26",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 5,
+     "confidence": "unconfirmed-by-witness"
+    }
+   ]
+  },
+  {
+   "pos": 153,
+   "byte": "e1",
+   "interval_min": 20,
+   "k": 4,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 20,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 20,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 20,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 20,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 154,
+   "byte": "97",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 155,
+   "byte": "83",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 10,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 10,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 10,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 156,
+   "byte": "99",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 157,
+   "byte": "56",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 158,
+   "byte": "92",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 10,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 10,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 10,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 159,
+   "byte": "1d",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 160,
+   "byte": "ab",
+   "interval_min": 25,
+   "k": 5,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 25,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 25,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 25,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 25,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 161,
+   "byte": "29",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 162,
+   "byte": "72",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 163,
+   "byte": "4c",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 164,
+   "byte": "d4",
+   "interval_min": 20,
+   "k": 4,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 20,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 20,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 20,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 20,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 165,
+   "byte": "8e",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 166,
+   "byte": "1a",
+   "interval_min": 20,
+   "k": 4,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 20,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 20,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 20,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 20,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 167,
+   "byte": "81",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-25sample",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 168,
+   "byte": "fc",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 169,
+   "byte": "9b",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 170,
+   "byte": "ab",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 10,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 10,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 171,
+   "byte": "35",
+   "interval_min": 35,
+   "k": 7,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 35,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 35,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W3-wiki00120",
+     "interval": 35,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W4-wiki00140-table",
+     "interval": 35,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 172,
+   "byte": "65",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 173,
+   "byte": "f7",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 174,
+   "byte": "51",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 175,
+   "byte": "3e",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 176,
+   "byte": "3e",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 177,
+   "byte": "36",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 178,
+   "byte": "8c",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 179,
+   "byte": "d0",
+   "interval_min": 25,
+   "k": 5,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 25,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 25,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 180,
+   "byte": "32",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 181,
+   "byte": "7b",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 182,
+   "byte": "47",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "multi-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    },
+    {
+     "witness": "W2-Cripion-elapsed",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 183,
+   "byte": "cf",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 184,
+   "byte": "59",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 185,
+   "byte": "5a",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 186,
+   "byte": "fe",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 187,
+   "byte": "bb",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 188,
+   "byte": "78",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 189,
+   "byte": "d6",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 192,
+   "byte": "a9",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 193,
+   "byte": "2b",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 194,
+   "byte": "a0",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 195,
+   "byte": "21",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 196,
+   "byte": "cd",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 197,
+   "byte": "67",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 198,
+   "byte": "34",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 199,
+   "byte": "f4",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 200,
+   "byte": "36",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 201,
+   "byte": "2a",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 202,
+   "byte": "0b",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 203,
+   "byte": "34",
+   "interval_min": 20,
+   "k": 4,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 20,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 204,
+   "byte": "1f",
+   "interval_min": 25,
+   "k": 5,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 25,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 205,
+   "byte": "35",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 206,
+   "byte": "91",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 207,
+   "byte": "57",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 208,
+   "byte": "17",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 209,
+   "byte": "3b",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 210,
+   "byte": "53",
+   "interval_min": 20,
+   "k": 4,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 20,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 211,
+   "byte": "d4",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 212,
+   "byte": "9e",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 213,
+   "byte": "a5",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 214,
+   "byte": "df",
+   "interval_min": 25,
+   "k": 5,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 25,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 215,
+   "byte": "f5",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 216,
+   "byte": "88",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 217,
+   "byte": "9d",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 218,
+   "byte": "2c",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 219,
+   "byte": "9d",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 220,
+   "byte": "e6",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 221,
+   "byte": "b0",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 222,
+   "byte": "d7",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 223,
+   "byte": "e8",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 224,
+   "byte": "c6",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 225,
+   "byte": "15",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 226,
+   "byte": "28",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 227,
+   "byte": "6c",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 228,
+   "byte": "e5",
+   "interval_min": 30,
+   "k": 6,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 30,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 229,
+   "byte": "96",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 230,
+   "byte": "bf",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 231,
+   "byte": "a8",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 232,
+   "byte": "3f",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 233,
+   "byte": "50",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 234,
+   "byte": "b6",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 235,
+   "byte": "ee",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 236,
+   "byte": "ab",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 237,
+   "byte": "d1",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 238,
+   "byte": "53",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 239,
+   "byte": "aa",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 240,
+   "byte": "f5",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 241,
+   "byte": "0c",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 242,
+   "byte": "d7",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 243,
+   "byte": "5f",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 244,
+   "byte": "39",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 245,
+   "byte": "92",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 246,
+   "byte": "9b",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 247,
+   "byte": "a1",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 248,
+   "byte": "1f",
+   "interval_min": 15,
+   "k": 3,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 15,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 249,
+   "byte": "b0",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 250,
+   "byte": "f8",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 251,
+   "byte": "e8",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 252,
+   "byte": "d6",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 253,
+   "byte": "11",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 254,
+   "byte": "44",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 255,
+   "byte": "28",
+   "interval_min": 5,
+   "k": 1,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 5,
+     "confidence": "exact"
+    }
+   ]
+  },
+  {
+   "pos": 256,
+   "byte": "46",
+   "interval_min": 10,
+   "k": 2,
+   "confidence": "single-witness",
+   "witnesses": [
+    {
+     "witness": "W1-BotSottile",
+     "interval": 10,
+     "confidence": "exact"
+    }
+   ]
+  }
+ ]
+}

@@ -1,6 +1,27 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-11-03** (Round 42 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-11-05** (Round 43 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+
+> ## Round 43 closeout (lanes 2026-11-03, X1 + closeout 2026-11-05) — FIRST PRINCIPLES: THE FRESH ARMADA: filed. Read `analysis/round43/SYNTHESIS.md` first.
+>
+> No survivor — the product is a **measurement of the hypothesis space**. Six blind agents (X1-audited
+> BLIND-CLEAN; primary material only, no ledger/analysis/web) independently re-derived the central verdict
+> (6/6 on the output-aware chained/filtered cipher; the doublet suppression, the pp49–51 payload and the
+> 05.jpg magic square all re-found blind). X0 adjudicated their 34 deduplicated hypotheses against the
+> ledger: **17 CITED (zero letter-stream items missed — the strongest external validation the elimination
+> record has had), 9 REOPEN (all self-disclosed edges), 7 NEW + 1 split — every NEW item is a
+> never-represented PHYSICAL-PAGE channel** (red ink at 4/6 convergence; the p15 4×4 grid; punctuation
+> identity; onion blobs as per-page pads; …). **F5b-T:** the recovered onion-2 timing channel is witness-
+> consistent (112/255 intervals attested, exact agreement at every overlap) and **NEGATIVE as keystream**
+> (plant 3/3, 1,906,740 cells, best pmax 5.36 vs bar 18.10; X1 NO-ERROR-FOUND). **D1:** the R42-S1 export
+> LAPSED — the Vercel project was deleted ~24 min before the lane ran, snapshots + sandbox destroyed;
+> verdict unaffected (local shas); lesson filed: pull load-bearing artifacts into the repo before a lane
+> closes. **F6:** payload×onion-blobs, blob structure, page-56-hash-as-key all null; T4 blobs identified
+> (complete JPEGs). **F5a/F5b** (committed 11-03): Wayback leg closed R36-O2's caveat; the IRC hunt
+> recovered the timing channel + confirmed 0-57 ordering byte-exact. `LEDGER.json` **309 rows**, 0 unsound;
+> full gate green. **Next:** `analysis/round44/CAMPAIGN-PLAN.md` — THE PAGE AS A PHYSICAL OBJECT (P1
+> red-ink channel first). Owner decisions still pending: WATCH band, R13 DIRECTION, KDF sign-off,
+> `with_degenerate` default, N5/N4 bundle.
 
 > ## Round 42 closeout (lanes 2026-11-02, X1 + closeout 2026-11-03) — THE WASTING ASSET AND THE OPEN CELLS: filed. Read `analysis/round42/SYNTHESIS.md` first.
 >

@@ -1274,3 +1274,28 @@ Refute-by-default audit; citations and re-runs in `analysis/round34/X1-redteam/R
 - **Ghostscript band**: render-level 9.05-9.14 (R34-S1); 9.04-9.14 is file-in-tree evidence (R18-L1) and is superseded for the render claim. R18-L1's `RESULTS.md` is annotated by this ledger, not rewritten.
 - **Capsule** INTACT-FAIL (13): 9 CRLF checkout noise; `runes.canonical` stale by the issue-12 separator edit; `tests/validate.py` grew from 3,607 B to 5,133 B by exactly the Round 19 AN-END (73.jpg) guard (removing it reproduces the recorded sha) - refresh the manifest; `corpus.kjv` / `keytext.mabinogion` are Round 32 I2's substitute copies of different downloads. Memo: `analysis/round34/X1-redteam/manifest_decision.md` (not applied).
 - **P1**: no reader changed; GO for the `payload_resolved.bin` rename recommended. R30-B1 canon-as-key over T2/folly and R30-B2 folly/2.jpg legs are **unmeasured** (inputs absent), not null. `C-CANON-PAYLOAD-3BYTES` stays `open` until the coordinator renames.
+
+## Rounds 36–43 (2026-10-30 → 2026-11-05) — per-row record moved to LEDGER.json; Round 43 measured the hypothesis space
+
+From Round 36 on, the per-test record lives **only** in the machine ledger
+(`liber-primus/LEDGER.json`, now **309 rows**, `validate_ledger.py` 0 unsound) plus each round's
+`analysis/round3x..4x/SYNTHESIS.md`; this narrative file is no longer the per-row index for those
+rounds. Headlines: R36 inhibitor audit + panel-R36 (the 12-register instrument of record); R37–R41
+clue-reading / artifact-key / re-adjudication sweeps, all negative under panel-R36; R42 (THE
+WASTING ASSET) recovered the expiring S2 sandbox state byte-exact (0 hits, 2³² coverage 52.05%)
+and ran the three "blocked" artefact cells, all negative.
+
+**Round 43 — FIRST PRINCIPLES: THE FRESH ARMADA (`analysis/round43/SYNTHESIS.md`)** answered the
+owner's "something has been overlooked" bet by measurement: six X1-audited BLIND agents (primary
+material only) re-derived the central verdict 6/6 and produced 34 deduplicated hypotheses; the X0
+ledger-diff stamped **17 CITED — zero letter-stream items the ledger missed — 9 REOPEN (all
+self-disclosed edges), 7 NEW + 1 split, every NEW item a never-represented physical-page channel**
+(red ink 4/6 convergence, p15 grid, punctuation identity, onion blobs as per-page pads). The
+onion-2 growing-string **timing channel** was recovered from live 2014 pastebins (112/255
+intervals attested, witnesses exactly consistent) and is **negative as keystream**
+(`R43-F5BT-TIMING-KEYSTREAM`: plant 3/3, 1.9M cells, best 5.36 vs bar 18.10). F6 joined the open
+objects: payload×onion-blobs null, blobs not RSA moduli, page-56-hash-as-key null, T4 blobs
+identified as complete JPEGs. The R42-S1 full-list export **lapsed** (project deleted upstream;
+verdict unaffected, fingerprints recorded). The letter-stream hypothesis space is now *measured*
+as exhausted at blind resolution; Round 44 (`analysis/round44/CAMPAIGN-PLAN.md`) spends its budget
+on the physical-page channels.

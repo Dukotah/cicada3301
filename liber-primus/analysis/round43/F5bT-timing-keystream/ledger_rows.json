@@ -1,0 +1,38 @@
+{
+ "$comment": "R43 F5b-T draft rows - parent applies to LEDGER.json (this lane does not modify the ledger itself).",
+ "new_rows": [
+  {
+   "id": "R43-F5BT-TIMING-KEYSTREAM",
+   "round": 43,
+   "lane": "F5b-T",
+   "date": "2026-11-03",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "Three plants through the identical sweep glue: known English-register plaintexts encrypted with interval-derived keys at pre-registered cells (S_AB(3,3) fwd m1 vig- rot17; S_B rev m3 beaufort rot5; S_A fwd m2 vig+atbash rot0). All three recovered byte-exactly at the planted cell, non-degenerate, pmax 38.32/33.40/32.32 vs bars 18.10/13.51/18.10.",
+   "hypothesis": "The cu343l33nqaekrnw.onion (Jan 6-7 2014) growing-string inter-arrival intervals, divided by 5, are deliberate numeric key material for the unsolved LP2 pages.",
+   "result": "NEGATIVE (measured, panel-R36). Witness merge FIRST: BotSottile absolute timestamps + Cripion101 31 samples + two wiki tables reconciled byte-exactly against the final 256-byte string; 112 of 255 inter-byte intervals attested exactly (bytes 143-256 minus the bounded 190-191 pair), 31 cells multi-witness; independent witnesses agree EXACTLY on all 14 BotSottile/Cripion overlap cells and all 19 shared table values; the only inconsistency is a single clock-minute transcription slip at byte 168 (Cripion 25 vs wiki 15), with the interval value (05) never in dispute. Keystream sweep: 7 streams (S_A 47, S_B 65, 5 bridge variants of S_AB 114) x 2 directions x 3 mappings (k, 5k, GP-prime, all mod 29) x 6 configs (vig+/-, Beaufort, each +/- atbash) x {repeating all rotations, one-shot page-start suffixes >= 60} = 34,668 decodes/page over 55 unsolved pages (1,906,740 decodes). 0 crossers; global best pmax 5.364 (page 30, S_B fwd m2 beaufort+atbash rot36, L=263) vs free bar of record 18.103 - 12.7z below bar, no near-miss.",
+   "coverage": "Interval cells bytes 143-256 (112 exact + 2 bounded of 255, ~44% of the channel) as interval/5 key material; 7x2x3x6 x {repeating all rotations, one-shot suffix >= 60} over all 55 unsolved pages; panel-max over 12 registers (panel-R36).",
+   "threshold": "bars_v3.bar_v3(34668, L_cap, 'free') with L_cap = largest of {120,240,400,729} <= decode length, floor 120: 13.513 (L_cap 120), 18.103 (L_cap 240). Crosses iff a non-degenerate decode pmax >= bar; named in PREREG.md before the merge and before any decode.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "the onion-2 interval/5 sequences from the merged four-witness table: 7 streams (S_A bytes 143-189, S_B bytes 192-256, 5 bounded bridge variants S_AB) x 2 directions x 3 value mappings (k mod 29, 5k mod 29, Gematria-Primus prime mod 29); bytes 1-142 unattested and NOT in the space",
+    "transition_model": "position-independent additive/Beaufort substitution mod 29 (vig+, vig-, beaufort) x atbash pre-composition; key repeating (all rotations) or one-shot page-start aligned (suffix sweep, min decode 60)",
+    "adjudicator_register": "panel-R36, panel-max over 12 registers (adjudicate/adjudicate_batch); free-null bar of record bars_v3 'free'"
+   },
+   "not_covered": "Intervals of bytes 2-142 (never witnessed in any held source - a true key requiring that span at fixed absolute alignment is invisible here); the byte VALUES as key (separate held object); intervals as transposition/permutation/skip/page-selection material; arithmetic beyond the three pre-registered mappings; interval-value interleavings; sub-runs shorter than the attested runs; sub-60-rune one-shot alignments; a fresh per-shuffle null.",
+   "reopens_if": "a witness for the bytes 2-142 intervals surfaces (e.g. a fuller IRC log or pastebin capture); the oracle flags a page; a pre-registered transposition/selection reading of the intervals is specified; the instrument's power at sub-60 decode lengths is measured.",
+   "evidence": [
+    "analysis/round43/F5bT-timing-keystream/PREREG.md",
+    "analysis/round43/F5bT-timing-keystream/RESULTS.md",
+    "analysis/round43/F5bT-timing-keystream/merge_witnesses.py",
+    "analysis/round43/F5bT-timing-keystream/merged_intervals.json",
+    "analysis/round43/F5bT-timing-keystream/key_streams.json",
+    "analysis/round43/F5bT-timing-keystream/run_f5bt.py",
+    "analysis/round43/F5bT-timing-keystream/f5bt_results.json",
+    "analysis/round43/F5-stored/onion2-timing_BotSottile_qn8jmPJr.txt",
+    "analysis/round43/F5-stored/onion2-timing_Cripion101_5bTLHqCN.txt"
+   ],
+   "notes": "Closes the F5b RESULTS-irc.md 1a follow-on. The timing channel's consistency finding stands on its own: four partially-independent witnesses reconcile to one interval table with a single one-digit slip, so the merged table (merged_intervals.json) is now the project's record of the channel regardless of the keystream negative. The class-C caveat on the timestamps is retired for the 112 attested cells (multi-witness agreement where checkable, exact)."
+  }
+ ]
+}
