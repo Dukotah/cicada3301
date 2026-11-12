@@ -93,3 +93,29 @@ with the flagged list, not as hits.
      near-uniform over 29 symbols is not covered.
 - **Q5 (kill):** if the control flags fewer than 23 of 24 plants, stop before the sweep. If the first
   2^26 seeds send more than 1e-3 of pairs to stage 3, stop: the calibration did not transfer.
+
+---
+
+## Addendum 2026-11-12, written while the sweep was at chunk 17 of 256 and before any of its output was read
+
+Reason: lane S2 (`../S2-blind-glibc-clock/`, same instrument and thresholds) finished first, and it
+shows that section 5 above mis-estimated the null at stage 3. A wrong key that reaches stage 3 is not
+an unselected random key: it got there on a head with a fluke-high index of coincidence, and the
+full-page search then has thousands of paths with which to keep agreeing with that head. Over S2's
+7.2e8 seed-mode pairs the largest full-page IoC x 29 of a wrong key was **1.388**, not "about 1.1 with
+a spread of a few hundredths". This lane evaluates 1.7e10 pairs, 24 times as many, so by ordinary
+extreme-value scaling it should be expected to produce a few values between 1.40 and about 1.45 from
+wrong keys alone. The weakest of the 432 calibration plants scored 1.614 on the full page.
+
+The threshold in section 3 is not changed (it is the registered one, and every pair at or above 1.40
+is reported and decoded). What is added, before looking:
+
+- a pair with full-page IoC x 29 **>= 1.50** is a **strong flag** and goes to the human read;
+- a pair in **[1.40, 1.50)** is a **weak flag**: reported, decoded and adjudicated by panel-R36 like the
+  others, and classed *null-consistent* if its full-page value is lower than its own L = 120 value by
+  more than 0.15 (a true key's statistic does not decay with length; a head fluke's does) and its
+  decode shows no panel score above the bar. A weak flag that is not null-consistent by that rule is
+  treated as a strong flag.
+
+The verdict rule of section 7 is read accordingly: NEGATIVE requires no strong flag and every weak
+flag null-consistent; the "more than 20 flagged" clause applies to the total.
