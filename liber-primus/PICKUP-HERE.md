@@ -23,7 +23,18 @@ _Refreshed **2026-11-12** (Round 44 lane A0, the fresh-eyes audit; before that 2
 > mis-specified and identical resets are already excluded key-free; P4 must not reuse the rigid R28-L2 harness; the N5/N4
 > owner decision is moot. **Next, in order:** the blind (language-model-free) adjudicator specified in AUDIT.md section 5,
 > then the finite spaces above through it at every section head, then the cleartext structure (letter-wise skeleton scan of
-> the quote spans, the eight section titles), then the corrected physical-page lanes. `LEDGER.json` **321 rows**, 0 unsound.
+> the quote spans, the eight section titles), then the corrected physical-page lanes.
+>
+> **Lanes I1 / S1 / S2 (same day, after the audit).** <!-- R44-S1S2 --> The audit's instrument was built: a language-model-free adjudicator (`liber-primus/analysis/round44/S1-blind-perl/blind.c`): skip sites are fixed by key and ciphertext, paths are scored by index of coincidence, so one decoder covers any language, spelling, plaintext numbering, combiner constant, Atbash and Beaufort. Calibrated on
+> 2,000,000 random keys and 432 plants, thresholds fixed in `analysis/round44/S1-blind-perl/PREREG.md` before any real seed.
+> **S1:** all 4,294,967,296 seeds of Perl `rand` x 4 modes: no key found: 19 weak flags between 1.40 and 1.433 by the letter of the pre-registration, every one a noise-crosser on the held-out page (owner sign-off pending), nothing above 1.50 and the weakest plant at 1.614, largest full-page IoC x 29 1.433 against a 1.40 threshold (control 24/24). **S2:** glibc `rand()` for every second of 2011-12-01..2014-04-03 and every integer below 2^24, two reductions (181,125,632 keystreams x 4 modes): NEGATIVE, largest 1.388 (control 16/16).
+> Both controls drew their keystreams from the real binary (`perl`, libc), in English and Latin, relabelled, with a combiner
+> constant, as Beaufort, under three filter constructions and both key signs. Conditionals: one draw per rune from rune 0 of
+> page 0, a rejection consumes one or two draws; **no register conditional and no combiner-constant conditional**. Not
+> covered: a warm-up, another stream start, other reductions, a stalled key pointer, deletion or rewrite without a draw.
+> The kernel costs about 4-5 microseconds per seed for four modes, so the full 2^32 of glibc (two reductions), the bash 4.2
+> state cycle and every section head are each a matter of hours: **that is the next thing to run.**
+> `LEDGER.json` **324 rows**, 0 unsound.
 
 > ## Round 43 closeout (lanes 2026-11-03, X1 + closeout 2026-11-05) — FIRST PRINCIPLES: THE FRESH ARMADA: filed. Read `analysis/round43/SYNTHESIS.md` first.
 >

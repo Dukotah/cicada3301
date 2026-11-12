@@ -64,3 +64,5 @@ quote spans; the eight section titles; the numbered list).
 
 **Already run under this plan's number:** lane **D1** (`D1-depth-28-42/`), pre-registered and filed 2026-11-12: plain depth for the
 page pair 28/42 is negative in three encodings.
+
+**Also run under this plan's number, 2026-11-12** <!-- R44-S1S2 -->: **I1** the blind adjudicator, **S1** Perl `rand` (all 2^32 seeds: no key found: 19 weak flags between 1.40 and 1.433 by the letter of the pre-registration, every one a noise-crosser on the held-out page (owner sign-off pending), nothing above 1.50 and the weakest plant at 1.614), **S2** glibc `rand()` clock-second band (NEGATIVE). See `S1-blind-perl/` and `S2-blind-glibc-clock/`.

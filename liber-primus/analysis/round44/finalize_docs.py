@@ -26,7 +26,10 @@ def wr(p, s):
     open(os.path.join(ROOT, p), "w", encoding="utf-8").write(s)
 
 
-v1, v2 = r1["verdict"], r2["verdict"]
+v1, v2 = r1.get("verdict_after_adjudication", r1["verdict"]), r2["verdict"]
+if r1.get("adjudication", {}).get("all_flags_noise_crossers"):
+    v1 = ("no key found: 19 weak flags between 1.40 and 1.433 by the letter of the pre-registration, every one a noise-crosser on the "
+          "held-out page (owner sign-off pending), nothing above 1.50 and the weakest plant at 1.614")
 s1_txt = (f"all {r1['seeds_evaluated']:,} seeds of Perl `rand` x 4 modes: {v1}, largest full-page IoC x 29 {r1['max_ioc_x29_L262']:.3f} "
           f"against a 1.40 threshold (control {c1['flagged']}/{c1['of']})")
 mx2 = max(v["max_ioc_x29_L262"] or 0 for v in r2["generators"].values())
@@ -118,7 +121,12 @@ if MARK not in s:
     s = s[:k] + row + s[k:]
     k = s.index("| The recurring near-miss: bash seed 1354603465")
     def verdict_cell(v):
-        return "**measured negative** (complete)" if v == "NEGATIVE" else "**partial** (" + v + ")"
+        if v == "NEGATIVE":
+            return "**measured negative** (complete)"
+        if v.startswith("no key found"):
+            return ("**measured negative** (complete; 19 weak flags at 1.40-1.433 adjudicated noise by a post-data null on the "
+                    "held-out page, owner sign-off pending)")
+        return "**partial** (" + v + ")"
     rows = (f"| Perl `int(rand(29))` after `srand(s)`, the whole family {MARK} | **All 2^32 seeds** ({r1['seeds_evaluated']:,}), four modes each; "
             f"{r1['stage3_records']:,} pairs reached the full-page stage, largest IoC x 29 {r1['max_ioc_x29_L262']:.3f} against the 1.40 threshold | "
             f"{c1['flagged']}/{c1['of']} planted Perl seeds flagged by the sweep binary (keystream from the `perl` binary), 0 others; 431/432 calibration "

@@ -224,19 +224,24 @@ rows = [
          reopens_if="n/a (open)"),
     base("R44-A0-UNSWEPT-FINITE-SPACES", "A0-fresh-eyes-audit",
          "The enumerable high-prior seed spaces have been swept at power: the 2012-2014 clock-second band for glibc, Perl and "
-         "PHP; Perl rand's whole 2^32; the whole bash 4.2 state cycle; TeX's default seeds.", "never-run",
+         "PHP; Perl rand's whole 2^32; the whole bash 4.2 state cycle; TeX's default seeds.", "partially-run",
          threshold="n/a", threshold_fixed_in_advance=False, positive_control="n/a",
-         result="NEVER RUN at power. Clock seconds: only bash 3.2 and Py2.7 integer seeds cover every second under the "
+         notes="Two of these were run the same day through the blind adjudicator: Perl's whole 2^32 (R44-S1-BLIND-PERL-2E32) and the "
+               "glibc clock-second band in two reductions (R44-S2-BLIND-GLIBC-CLOCK). Still unswept at power: PHP mt_rand's clock band, "
+               "the rest of glibc's 2^32, the bash 4.2 state cycle, TeX's 8,627 default seeds, and every stream start other than rune 0 "
+               "of page 0.",
+         result="As found by the audit: NEVER RUN at power. Clock seconds: only bash 3.2 and Py2.7 integer seeds cover every second under the "
                 "repaired instrument (Round 8's per-second sweep was a rigid 48-rune English kernel). Perl: the only generator "
                 "with signed first-party evidence (round19/C3 section 2c'), family exactly 2^32, about 25k seeds decoded, the "
                 "one prior-dense run mis-targeted (R44-A0-LOADER-CORPUS-PARSE). bash 4.2: the swept 'full orbit' is 3.6 % of the "
                 "single 2,147,483,646-state LP64 cycle (ILP32 cycle 343,896), and seed = offset on that cycle (round19/G1). "
                 "TeX pgf: 8,627 default seeds, pilot only. Two server timestamps (1396427599, 1389478032) recorded by "
                 "round43/F5b are absent from the seed prior.",
-         coverage="none", not_covered="all of it",
+         coverage="Perl 2^32 and the glibc clock-second band (see the two R44-S rows); nothing else",
+         not_covered="PHP clock band; glibc beyond the clock band; bash 4.2 cycle; TeX default seeds; other stream starts",
          evidence=[A0 + "AUDIT.md", A0 + "readers/E-round-19.md", A0 + "readers/L-ledger-health.md", A0 + "readers/D-round-18.md",
                    A0 + "readers/B-rounds-1-10b.md"],
-         reproduce="n/a", priority="high", reopens_if="n/a (never-run)"),
+         reproduce="n/a", priority="high", reopens_if="n/a (partially-run: the remainder is listed in not_covered)"),
 ]
 
 json.dump(rows, open(os.path.join(HERE, "ledger_rows.json"), "w"), indent=1, ensure_ascii=False)

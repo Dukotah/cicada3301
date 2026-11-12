@@ -1323,3 +1323,13 @@ Record: `analysis/round44/A0-fresh-eyes-audit/AUDIT.md`; rows `R44-A0-*` and `R4
 - **Round 26 A/B** negatives: aimed at a mid-book slice by a loader defect (`R44-A0-LOADER-CORPUS-PARSE`).
 - **Round 42 C1-C3, Round 43 F6 / F5b-T, R28-L2** object-as-key negatives: rigid decode against a free-beam bar; they do not cover a
   key applied under the anti-repeat rule (AUDIT.md 3.1).
+
+## Round 44 lanes I1 / S1 / S2 — the blind adjudicator and its first two sweeps (2026-11-12) <!-- R44-S1S2 -->
+
+Rows `R44-I1-BLIND-ADJUDICATOR`, `R44-S1-BLIND-PERL-2E32`, `R44-S2-BLIND-GLIBC-CLOCK` (`LEDGER.json` now **324 rows**).
+
+- **I1.** A language-model-free adjudicator (`liber-primus/analysis/round44/S1-blind-perl/blind.c`): skip sites are fixed by key and ciphertext, paths are scored by index of coincidence, so one decoder covers any language, spelling, plaintext numbering, combiner constant, Atbash and Beaufort. Null measured on 2,000,000 random keys; 431 of 432 calibration plants pass stage 1 and all pass the later stages.
+- **S1.** All 4,294,967,296 seeds of Perl `rand` x 4 modes: no key found: 19 weak flags between 1.40 and 1.433 by the letter of the pre-registration, every one a noise-crosser on the held-out page (owner sign-off pending), nothing above 1.50 and the weakest plant at 1.614, largest full-page IoC x 29 1.433 against a 1.40 threshold (control 24/24). Perl is the only generator with signed first-party evidence and its family is exactly 2^32; this is the first complete enumeration of it.
+- **S2.** Glibc `rand()` for every second of 2011-12-01..2014-04-03 and every integer below 2^24, two reductions (181,125,632 keystreams x 4 modes): NEGATIVE, largest 1.388 (control 16/16). The window contains both server timestamps Round 43 F5b recorded.
+
+Both carry two conditionals instead of three: key space and transition model. There is no register conditional and no combiner-constant conditional. Not covered: a warm-up, a stream start other than rune 0 of page 0, other reductions, a stalled key pointer, deletion or rewrite without a draw.

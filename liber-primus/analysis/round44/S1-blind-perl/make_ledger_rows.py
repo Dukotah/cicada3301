@@ -15,7 +15,9 @@ p2 = os.path.join(HERE, "..", "S2-blind-glibc-clock")
 c2 = json.load(open(os.path.join(p2, "control.json")))
 r2 = json.load(open(os.path.join(p2, "results.json")))
 DATE = "2026-11-12"
-STATUS = lambda v: "negative" if v == "NEGATIVE" else "open" if v.startswith("FLAGGED") else "partially-run" if "incomplete" in v else "inconclusive"
+STATUS = lambda v: "negative" if v.startswith("NEGATIVE") else "open" if v.startswith("FLAGGED") else "partially-run" if "incomplete" in v else "inconclusive"
+V1 = r1.get("verdict_after_adjudication", r1["verdict"])
+AD = r1.get("adjudication", {})
 COND = ("one draw per rune from rune 0 of page 0, no draws before it; a rejection consumes one draw or two (with or without the "
         "in-stream coin); at most 8/12/24 rejections in the first 64/120/262 runes; both key signs; any combiner constant, Atbash "
         "and Beaufort covered; no register conditional (any plaintext with IoC x 29 of about 1.4 or more over the page)")
@@ -46,7 +48,7 @@ rows = [
                   "liber-primus/analysis/round44/A0-fresh-eyes-audit/blind_adjudicator_poc.py"],
      "reproduce": "cd " + S1 + " && python3 calibrate.py 2000000 && python3 run_s1.py control",
      "supersedes": [], "superseded_by": None, "reopens_if": "a plant in the covered class is shown to fail"},
-    {"id": "R44-S1-BLIND-PERL-2E32", "lane": "S1-blind-perl", "round": "44/S1", "date": DATE, "status": STATUS(r1["verdict"]),
+    {"id": "R44-S1-BLIND-PERL-2E32", "lane": "S1-blind-perl", "round": "44/S1", "date": DATE, "status": STATUS(V1),
      "hypothesis": "The LP2 keystream is Perl int(rand(29)) after srand(s) for some 32-bit s (explicit or automatic): the whole "
                    "family, 2^32 keystreams.",
      "threshold": "PREREG section 3 and 7: FLAGGED if a (seed, mode) pair clears IoC x 29 >= 1.316 / 1.436 / 1.40 at L = 64 / 120 / 262; "
@@ -56,11 +58,21 @@ rows = [
                        f"perl binary itself), {c1['other_seeds_flagged']} other seeds flagged in 24 windows of 2^18 seeds.",
      "result": {"seeds_evaluated": r1["seeds_evaluated"], "complete": r1["complete"], "pairs_evaluated": r1["pairs_evaluated"],
                 "stage3_records": r1["stage3_records"], "flagged": r1["flagged"], "max_ioc_x29_L262": r1["max_ioc_x29_L262"],
-                "best_panel_pmax_among_top_rows": r1.get("best_panel_pmax_among_top_rows"), "verdict": r1["verdict"]},
+                "best_panel_pmax_among_top_rows": r1.get("best_panel_pmax_among_top_rows"),
+                "verdict_by_protocol": r1["verdict"], "verdict": V1,
+                "weak_flags": {"count": AD.get("weak_flags"), "range_ioc_x29": "1.402-1.433 (threshold 1.40; weakest plant 1.614; none >= 1.50)",
+                               "null_consistent_by_prereg_decay_rule": AD.get("weak_flags_null_consistent_by_prereg_decay_rule"),
+                               "adjudication": "NOISE-CROSSER x19, post-data, each check with a control: held-out page 1 (plants >= "
+                                               f"{AD.get('heldout_page1', {}).get('plants_min', 0):.3f}, flags <= {AD.get('heldout_page1', {}).get('flags_max', 0):.3f}), "
+                                               "back half of page 0, substitution reading, tail shape",
+                               "owner_signoff": "pending: " + S1 + "ORACLE-PENDING.md"}},
+     "notes": "FLAGGED by the letter of the pre-registration (19 weak flags); filed negative on the coordinator's NOISE-CROSSER "
+              "adjudication, which is post-data and awaits the owner's sign-off per HUMAN-ORACLE.md.",
      "coverage": "All 2^32 srand seeds; the idiom int(rand(29)); " + COND + " [plants: English letter-wise, English multigraph, Latin]",
      "not_covered": NOTCOV, "null": "the sweep itself (all but at most one seed are wrong keys)",
      "declares_sweep": True, "sweep_store": S1 + "sweep_rows_top.jsonl",
-     "evidence": [S1 + "PREREG.md", S1 + "RESULTS.md", S1 + "results.json", S1 + "hist.json", S1 + "control.json"],
+     "evidence": [S1 + "PREREG.md", S1 + "RESULTS.md", S1 + "results.json", S1 + "hist.json", S1 + "control.json",
+                  S1 + "ORACLE-PENDING.md", S1 + "flags_adjudication.json", S1 + "heldout_page1.json"],
      "reproduce": "cd " + S1 + " && python3 run_s1.py sweep 4 && python3 run_s1.py finalize",
      "supersedes": [], "superseded_by": None,
      "reopens_if": "a warm-up, another stream start or another reduction is given a reason; or a covered-class plant is shown to fail"},

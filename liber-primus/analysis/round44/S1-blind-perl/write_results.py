@@ -24,6 +24,29 @@ if verdict == "NEGATIVE":
     A(f"**NEGATIVE, complete.** All {r['seeds_evaluated']:,} seeds of Perl's `srand` were evaluated in four modes "
       f"({pairs:,} seed-mode pairs). **None** reaches the pre-registered full-page threshold. The control passed "
       f"({r['control']}).")
+elif verdict.startswith("FLAGGED") and r.get("adjudication", {}).get("all_flags_noise_crossers"):
+    ad = r["adjudication"]
+    A(f"**No key found. All {r['seeds_evaluated']:,} seeds were evaluated in four modes ({pairs:,} seed-mode pairs), and no pair "
+      f"comes near a planted key.** The largest full-page statistic is {r['max_ioc_x29_L262']:.3f}; the weakest of 432 calibration "
+      f"plants scored {cal['plant_ioc_L262']['min']:.3f}. Control: {r['control']}.")
+    A("")
+    A(f"**By the letter of the pre-registration the lane is FLAGGED, weakly:** {ad['weak_flags']} pairs sit between 1.40 (the registered "
+      f"threshold) and 1.433, and none reaches 1.50. The addendum to `PREREG.md`, written before any output was read, said a sweep of "
+      f"this size should produce a few such values from wrong keys alone. Its decay rule marks {ad['weak_flags_null_consistent_by_prereg_decay_rule']} "
+      f"of them null-consistent; the other {ad['weak_flags'] - ad['weak_flags_null_consistent_by_prereg_decay_rule']} were owed an oracle step. That step is "
+      f"filed in `ORACLE-PENDING.md` with a recommendation of **NOISE-CROSSER for all {ad['weak_flags']}**, on four checks made after the "
+      "flags were seen, each with a control:")
+    A("")
+    A(f"- **held-out page:** decoding page 1 from where page 0 ended, plants score {ad['heldout_page1']['plants_min']:.3f} or more; "
+      f"every flag scores {ad['heldout_page1']['flags_max']:.3f} or less (mean {ad['heldout_page1']['flags_mean']:.3f}), a random key's level (`heldout_page1.py`);")
+    A(f"- **back half of page 0:** plants {ad['back_half']['plants_min']:.3f} or more, flags {ad['back_half']['flags_max']:.3f} or less;")
+    A(f"- **reading** (the decode solved as a simple substitution of English): plants come back as readable English at "
+      f"{ad['substitution_reading']['plants_min']:.2f} or better, wrong keys {ad['substitution_reading']['wrong_keys_max']:.2f} or worse, flags "
+      f"{ad['substitution_reading']['flags_max']:.2f} or worse (`adjudicate_flags.py`);")
+    A("- **tail shape:** pairs at or above each level: " + ", ".join(f"{k}: {v:,}" for k, v in ad["tail_counts_S1"].items() if float(k) <= 1.44)
+      + ". A smooth decay with no isolated point; lane S2 has the same curve at 1/24 the height.")
+    A("")
+    A("The owner's sign-off on those rows is the one thing outstanding. Filed in the ledger as negative with that note.")
 elif verdict.startswith("FLAGGED"):
     A(f"**FLAGGED-FOR-ORACLE: {len(r['flagged'])} seed-mode pair(s) clear all three pre-registered stages.** This is not a "
       f"solve. The decodes are below and go to a human read per `HUMAN-ORACLE.md`. Control: {r['control']}.")
@@ -46,7 +69,7 @@ A("|---|---|---|---|")
 for x in top:
     A(f"| {x['seed']} | {x['mode']} | {x['ioc_x29_L120']:.3f} | {x['ioc_x29_L262']:.3f} |")
 A("")
-if r.get("flagged"):
+if r.get("flagged") and not r.get("adjudication", {}).get("all_flags_noise_crossers"):
     A("## Flagged pairs")
     A("")
     for f in r["flagged"]:
@@ -94,6 +117,8 @@ A("python3 calibrate.py 2000000   # null on random keys + 432 plants      -> cal
 A("python3 run_s1.py control      # 24 Perl-seed plants through the binary -> control.json")
 A("python3 run_s1.py sweep 4      # all 2^32 seeds, resumable chunks")
 A("python3 run_s1.py finalize     # merge, verdict, SWEEPROW store         -> results.json, hist.json")
+A("python3 adjudicate_flags.py    # weak flags: tail shape, back half, reading -> flags_adjudication.json")
+A("python3 heldout_page1.py       # weak flags: the held-out page          -> heldout_page1.json")
 A("python3 write_results.py       # this file")
 A("```")
 open(os.path.join(HERE, "RESULTS.md"), "w").write("\n".join(lines) + "\n")

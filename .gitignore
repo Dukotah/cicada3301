@@ -486,3 +486,7 @@ liber-primus/analysis/round44/S2-blind-glibc-clock/chunks/
 liber-primus/analysis/round44/S2-blind-glibc-clock/survivors.bin
 liber-primus/analysis/round44/S2-blind-glibc-clock/SWEEP_DONE
 liber-primus/analysis/round44/S2-blind-glibc-clock/sweep.log
+# The two blind-sweep SWEEPROW stores are small (the best 2,000 / 1,000 rows) and cost core-hours to
+# regenerate, so they are committed despite the round4x row-store rule above.
+!liber-primus/analysis/round44/S1-blind-perl/sweep_rows_top.jsonl
+!liber-primus/analysis/round44/S2-blind-glibc-clock/sweep_rows_top.jsonl

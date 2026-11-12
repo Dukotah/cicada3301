@@ -437,7 +437,7 @@
   "id": "R44-A0-UNSWEPT-FINITE-SPACES",
   "lane": "A0-fresh-eyes-audit",
   "hypothesis": "The enumerable high-prior seed spaces have been swept at power: the 2012-2014 clock-second band for glibc, Perl and PHP; Perl rand's whole 2^32; the whole bash 4.2 state cycle; TeX's default seeds.",
-  "status": "never-run",
+  "status": "partially-run",
   "round": "44/A0",
   "date": "2026-11-12",
   "supersedes": [],
@@ -445,9 +445,10 @@
   "threshold": "n/a",
   "threshold_fixed_in_advance": false,
   "positive_control": "n/a",
-  "result": "NEVER RUN at power. Clock seconds: only bash 3.2 and Py2.7 integer seeds cover every second under the repaired instrument (Round 8's per-second sweep was a rigid 48-rune English kernel). Perl: the only generator with signed first-party evidence (round19/C3 section 2c'), family exactly 2^32, about 25k seeds decoded, the one prior-dense run mis-targeted (R44-A0-LOADER-CORPUS-PARSE). bash 4.2: the swept 'full orbit' is 3.6 % of the single 2,147,483,646-state LP64 cycle (ILP32 cycle 343,896), and seed = offset on that cycle (round19/G1). TeX pgf: 8,627 default seeds, pilot only. Two server timestamps (1396427599, 1389478032) recorded by round43/F5b are absent from the seed prior.",
-  "coverage": "none",
-  "not_covered": "all of it",
+  "notes": "Two of these were run the same day through the blind adjudicator: Perl's whole 2^32 (R44-S1-BLIND-PERL-2E32) and the glibc clock-second band in two reductions (R44-S2-BLIND-GLIBC-CLOCK). Still unswept at power: PHP mt_rand's clock band, the rest of glibc's 2^32, the bash 4.2 state cycle, TeX's 8,627 default seeds, and every stream start other than rune 0 of page 0.",
+  "result": "As found by the audit: NEVER RUN at power. Clock seconds: only bash 3.2 and Py2.7 integer seeds cover every second under the repaired instrument (Round 8's per-second sweep was a rigid 48-rune English kernel). Perl: the only generator with signed first-party evidence (round19/C3 section 2c'), family exactly 2^32, about 25k seeds decoded, the one prior-dense run mis-targeted (R44-A0-LOADER-CORPUS-PARSE). bash 4.2: the swept 'full orbit' is 3.6 % of the single 2,147,483,646-state LP64 cycle (ILP32 cycle 343,896), and seed = offset on that cycle (round19/G1). TeX pgf: 8,627 default seeds, pilot only. Two server timestamps (1396427599, 1389478032) recorded by round43/F5b are absent from the seed prior.",
+  "coverage": "Perl 2^32 and the glibc clock-second band (see the two R44-S rows); nothing else",
+  "not_covered": "PHP clock band; glibc beyond the clock band; bash 4.2 cycle; TeX default seeds; other stream starts",
   "evidence": [
    "liber-primus/analysis/round44/A0-fresh-eyes-audit/AUDIT.md",
    "liber-primus/analysis/round44/A0-fresh-eyes-audit/readers/E-round-19.md",
@@ -457,6 +458,6 @@
   ],
   "reproduce": "n/a",
   "priority": "high",
-  "reopens_if": "n/a (never-run)"
+  "reopens_if": "n/a (partially-run: the remainder is listed in not_covered)"
  }
 ]

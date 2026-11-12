@@ -2,8 +2,9 @@
 
 _Run 2026-11-12 at the owner's request ("a full sweep of all 43 rounds and the repo as a whole; see if
 anything was left over; a fresh set of eyes to move the ball"). Doctrine: `../../../ARMADA-DOCTRINE.md`
-R1 and R6. This lane audits closures, instruments, inputs and the tracking layer. It opened no new key
-space. One small pre-registered lane came out of it (`../D1-depth-28-42/`)._
+R1 and R6. This lane audits closures, instruments, inputs and the tracking layer; it opened no key
+space itself. One small pre-registered lane came out of it (`../D1-depth-28-42/`), and the instrument
+it proposes was then built and used the same day (section 7b)._
 
 ## How it was done
 
@@ -44,9 +45,10 @@ used (only its mean was, and that closure was contaminated, see 3.6). LP2 has 2,
 
 Consequences, in order of weight:
 
-1. **The plaintext is English.** The register axis that Round 18 opened (Latin, Welsh, Greek, Hebrew,
-   Norse) is answered by the cleartext for the purposes of prioritising; panel breadth costs bar
-   height and buys little.
+1. **The plaintext is very probably English.** The register axis that Round 18 opened (Latin, Welsh,
+   Greek, Hebrew, Norse) is answered by the cleartext for the purposes of prioritising; panel breadth
+   costs bar height and buys little. (A non-English or article-free register that happens to match
+   the histogram is not excluded by this.)
 2. **The unsolved pages were prepared differently from the solved ones.** The same release spells
    THE with two runes on pages 56-57. A script that maps Latin letters to runes one at a time would
    produce exactly this, which sits well with the machine-applied filter (ledger D-01).
@@ -54,8 +56,8 @@ Consequences, in order of weight:
    encipherer: letter-wise plants score pmax 13.5-18.8 at L=120 and 20.5-26.7 at L=240 (24/24 clear
    each; recovery 0.999), against 15.8-20.6 and 23.2-29.1 for the multigraph control
    (`instrument_power_letterwise.py`). **No sweep negative is retro-invalidated.**
-4. A correct decode would use at most 22 of the 29 runes (the seven digraph runes never appear).
-   That is a language-free recognizer. R3 already persists `mds`, but only for rows that survive a
+4. If the spelling is strictly letter-wise, a correct decode uses at most 22 of the 29 runes (the
+   seven digraph runes never appear). That is a language-free recognizer. R3 already persists `mds`, but only for rows that survive a
    language-model screen.
 5. The Round 8 skeleton scan, Round 9's length closure and Campaign XVIII item 2b all used folded
    lengths, so they are conditional on the wrong orthography. Ledger row `B-19` has been open with
@@ -180,7 +182,8 @@ was confirmed by handing the repo's own instrument a correct key (probes in `rea
 
 **The unifying observation (coordinator; reader A1 reached it independently).** Under key-skip, a
 rejection at cipher position i with key pointer j is only *possible* if
-`K[j+1] - K[j] = C[i] - C[i-1] (mod 29)`. Skip sites are fixed by the key and the ciphertext alone, at
+`K[j+1] - K[j] = C[i] - C[i-1] (mod 29)` (if several draws in a row were rejected they are all equal,
+and the accepted one differs from them by that amount). Skip sites are fixed by the key and the ciphertext alone, at
 about one admissible site per 16 runes, half of them real. So a decoder needs no language model to
 track the key: it can branch at admissible sites and score each path by a statistic that does not
 care how the plaintext is labelled (index of coincidence, distinct-symbol count). Such a **blind
@@ -368,6 +371,16 @@ differencing exclusions; the Round 32 X1 corrections (all propagated but one lin
 `KNOWLEDGE.json`).
 
 ---
+
+## 7b. Run after the audit, the same day <!-- R44-S1S2 -->
+
+Section 5's first item (I1) was built and its two cheapest uses run, each under its own pre-registration:
+
+- **I1, the blind adjudicator** (`../S1-blind-perl/blind.c`, `calibration.json`): a language-model-free adjudicator (`liber-primus/analysis/round44/S1-blind-perl/blind.c`): skip sites are fixed by key and ciphertext, paths are scored by index of coincidence, so one decoder covers any language, spelling, plaintext numbering, combiner constant, Atbash and Beaufort. About 4-5 microseconds per seed for four modes.
+- **S1** (`../S1-blind-perl/RESULTS.md`): all 4,294,967,296 seeds of Perl `rand` x 4 modes: no key found: 19 weak flags between 1.40 and 1.433 by the letter of the pre-registration, every one a noise-crosser on the held-out page (owner sign-off pending), nothing above 1.50 and the weakest plant at 1.614, largest full-page IoC x 29 1.433 against a 1.40 threshold (control 24/24).
+- **S2** (`../S2-blind-glibc-clock/RESULTS.md`): glibc `rand()` for every second of 2011-12-01..2014-04-03 and every integer below 2^24, two reductions (181,125,632 keystreams x 4 modes): NEGATIVE, largest 1.388 (control 16/16).
+
+Still to run from section 5, in order: the full 2^32 of glibc for both reductions; the bash 4.2 state cycle; the same generators at every section head; I2 and I3; C1 and C2.
 
 ## 8. Reproduce
 

@@ -1,0 +1,287 @@
+[
+ {
+  "id": "R44-I1-BLIND-ADJUDICATOR",
+  "lane": "S1-blind-perl",
+  "round": "44/S1",
+  "date": "2026-11-12",
+  "status": "measured",
+  "hypothesis": "A correct key can be recognised without any language model, whatever the plaintext's language, spelling or numbering and whatever constant or reflection sits in the combiner.",
+  "threshold": "fixed in S1 PREREG section 3 from the null on 2,000,000 random keys: sums of squares >= 247 / 828 / 3564 at L = 64 / 120 / 262 (IoC x 29 >= 1.316 / 1.436 / 1.40)",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "432 calibration plants (random keys; English letter-wise, English multigraph, Latin; as written / random relabelling / +7 constant / Beaufort; keyskip1 / skip_by_two / coin_from_key; both key signs): 431 pass stage 1, IoC x 29 minimum 1.482 at L=120 and 1.614 at L=262. Through the sweep binary: 24/24 Perl-seed plants and 16/16 glibc-seed plants flagged, 0 other seeds flagged in 40 windows of 2^18 seeds.",
+  "result": {
+   "statistic": "largest sum of squared symbol counts of the decode over key-pointer paths that jump only at admissible sites (rejected draws equal; accepted draw differs from them by C[i]-C[i-1])",
+   "null_stage1_pass_rate": 0.06,
+   "null_stage2_pass_rate_measured": 7.74202635511756e-05,
+   "null_full_page_ioc_x29": "about 1.10 +- 0.03 for an unselected random key",
+   "cost": "about 4-5 microseconds per seed for four modes on one core",
+   "verdict": "MEASURED: a language-model-free adjudicator with power >= 0.99 on plants and a directly measured null. It covers the combiner-constant, reflection, numbering and register conditionals at once."
+  },
+  "coverage": "one draw per rune from rune 0 of page 0, no draws before it; a rejection consumes one draw or two (with or without the in-stream coin); at most 8/12/24 rejections in the first 64/120/262 runes; both key signs; any combiner constant, Atbash and Beaufort covered; no register conditional (any plaintext with IoC x 29 of about 1.4 or more over the page)",
+  "not_covered": "a warm-up before rune 0; a stream that starts at another section or page head; other reductions of the generator; a key pointer that stalls (F left in clear); rejection by deletion or rewrite without a draw; separators that consume draws; a plaintext that is near-uniform over 29 symbols",
+  "null": "2,000,000 random keys per stage length on the real page-0 head; the sweeps themselves",
+  "evidence": [
+   "liber-primus/analysis/round44/S1-blind-perl/blind.c",
+   "liber-primus/analysis/round44/S1-blind-perl/calibration.json",
+   "liber-primus/analysis/round44/S1-blind-perl/control.json",
+   "liber-primus/analysis/round44/S1-blind-perl/PREREG.md",
+   "liber-primus/analysis/round44/A0-fresh-eyes-audit/blind_adjudicator_poc.py"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/S1-blind-perl/ && python3 calibrate.py 2000000 && python3 run_s1.py control",
+  "supersedes": [],
+  "superseded_by": null,
+  "reopens_if": "a plant in the covered class is shown to fail"
+ },
+ {
+  "id": "R44-S1-BLIND-PERL-2E32",
+  "lane": "S1-blind-perl",
+  "round": "44/S1",
+  "date": "2026-11-12",
+  "status": "negative",
+  "hypothesis": "The LP2 keystream is Perl int(rand(29)) after srand(s) for some 32-bit s (explicit or automatic): the whole family, 2^32 keystreams.",
+  "threshold": "PREREG section 3 and 7: FLAGGED if a (seed, mode) pair clears IoC x 29 >= 1.316 / 1.436 / 1.40 at L = 64 / 120 / 262; NEGATIVE if none does, the control passed and all 2^32 seeds were evaluated",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "24/24 planted Perl seeds flagged in their true mode by the sweep binary (keystream from the perl binary itself), 0 other seeds flagged in 24 windows of 2^18 seeds.",
+  "result": {
+   "seeds_evaluated": 4294967296,
+   "complete": true,
+   "pairs_evaluated": 17179869184,
+   "stage3_records": 1330070,
+   "flagged": [
+    {
+     "seed": 2206085107,
+     "mode": "s=-1 q=2",
+     "ioc_x29_L64": 1.4816468253968254,
+     "ioc_x29_L120": 1.5271708683473388,
+     "ioc_x29_L262": 1.4325699745547074,
+     "decode_gematria_order": "EANGTNGXCIEAIABIAEMTHEXOETHXLNGIAIAXRYEOCNGOXTHGBTSTOXYYTHOEXIAXDSENGOLIAIAWIAUELJIOEBUTMHOBLIARCRIAAOEAEITHCNGMHTBAEXXXBIOEDBEAEACEOFTHTIAHIAIAIALOETOLNGXOEIAEAIAFIATHOEIAATHNIACGAEXHJXCEDXOEOIAMEDISPUFDSBTDEOIACEDRCCCPXXBSIACIMLOOLLIATHHFROEXEAIAIAYTMMENGIAYEOEAEXXGXIAEIIAEACUOEPIATTFJGIAFRHCXNOIATIAWAENUAETHBNFNGEAJHTIIALSIARIAXTMEOIASRIAETHTLP"
+    },
+    {
+     "seed": 2298247635,
+     "mode": "s=-1 q=1",
+     "ioc_x29_L64": 1.3665674603174602,
+     "ioc_x29_L120": 1.4906162464985995,
+     "ioc_x29_L262": 1.4274809160305344,
+     "decode_gematria_order": "OOJOEEAPWXUEOOEGJOMUCOEEJENGTTHATHMCAAWDOEAJEAXXEOOGPWUMCJEORODXFRXOWWMMDMHAWYGAAEONMOWDYRXMEATPJOWNUOEOMPINGYOEBJJCMUOJOOYWMABTHWEAEOAEBGWXONGUHWHWOOLPEJEAJHNEATWBNGCNOEWTHIAIAYTHFTHHOEFNNEOEAIEAOYOSOIOOOAEOJAFADEAXIAECUOWOJOOMAEHGJWPEOOEAXBGWEOBAEEAIAOEOMSCJEOWXWITHEAOTHIAGSIAOYUEOOBCAEAOEAOHWOAHBEHOEJOIADTHIOEIOUNGYEAS"
+    },
+    {
+     "seed": 2264892615,
+     "mode": "s=-1 q=2",
+     "ioc_x29_L64": 1.4672619047619047,
+     "ioc_x29_L120": 1.6287114845938375,
+     "ioc_x29_L262": 1.4266327396098388,
+     "decode_gematria_order": "LTHYTHEUFWODSTHITHTHUDMAELERLIYITHMTHAETHLWRLTYMNYEPDEXAEMLHEONGBMXCMLEYPTPJNGISYXEOXXIRRTHMYYIAAETHDLNGEOTHJEAIDETUILSOIAETHLWYMJICCLTHTHTHIAGTHAETHIDLOEHASODMLRRDHYXAEITHITHWHPUNXTHREANGIMAEOPAEXHNAAAETSCLIADYLLTHJCEATHTHMNEEAALGARLNGTIAEOEOTHBDBNTITHIPTHSBXYJNGRRJOEEOGYIYTOEAOENLPYTHYTHTHWIADTHRYNGOELEODTMMMNRURIADXYTHTHYYITHEAAEUY"
+    },
+    {
+     "seed": 2669644562,
+     "mode": "s=-1 q=2",
+     "ioc_x29_L64": 1.5535714285714286,
+     "ioc_x29_L120": 1.6368347338935574,
+     "ioc_x29_L262": 1.4257845631891433,
+     "decode_gematria_order": "BNTHXGJDHJLNFDWSAEIOEBTGDMDEONXPDDEADPOEWGOECUHRHEADADNGGGEAIWDIAIABDOLCDEAOONGXAOETHGAJJDEODNGIBXSIAGEILOHTOOIDIWWNIADDMWONOIAXSUIGOHDDYDDERNEAGONFEOLHSWDTGGETHOEYBIADOEANGAEHBYNEAIADXIAAEEYYEAEBDDOEFCIAEWNGYDXYIAUDRAALDLTHIOTHEAENGDPGHLTHNJTWNNOTHTHOOEBDTHJAEEHNGGLDPBTHPMIENGIEADCAAECDNGENGXFXYAWXDTHNXOEDNGBDAYHGDFD"
+    },
+    {
+     "seed": 2254161132,
+     "mode": "s=-1 q=2",
+     "ioc_x29_L64": 1.539186507936508,
+     "ioc_x29_L120": 1.5109243697478991,
+     "ioc_x29_L262": 1.4189991518235794,
+     "decode_gematria_order": "SXYXIJUEAUGBUBHMEOUIAAEACHBJDLIMOEYTOEREMWJMJJTEABDCCEMTUIANWUHMUUYNGUULPULWDOETFAEUDUOEDSOEDURXOEAEIUUAEOEJGULOETREASNGTUSEOPYURYBMNMPDICDAELJERREWNGIAOEUEAAEAPFUMSUDXNHTUWBFOWJDIJHTHNBRGJRHUNCIXULUIAMOELRNLDEOWAEEOUTHEOUTHEEAUGOEHTSUTJBEAMNTHUMTBSDCBDEAOEAEAUTIAWRHUBOIAULNGBUXUHUEWAEEOMUHEOOTHIAXOEATCOEOEWYBUWNGNB"
+    },
+    {
+     "seed": 3260260163,
+     "mode": "s=+1 q=2",
+     "ioc_x29_L64": 1.8125,
+     "ioc_x29_L120": 1.5109243697478991,
+     "ioc_x29_L262": 1.4147582697201018,
+     "decode_gematria_order": "BEACEAALWCEAIAGBUUIATHUUAEPTWCUBAWEAMBTUXIOETAEHOEIAIIRCWUYOOEHUHBUTHWUAEGEOUEAUIAYTJNDNEAEONGRUCTSWTAEAUIATHIALTBETHIAUPXUDNGEAXWUMTNOIWOEEAXDTHEOMAEUHSURLFXAETUIBBMDULLAEDJGETIARIHBTWDCUIAUNIGYXLBUUMOWHEOEOBGCHOJWEOWBTWUAORJBTHTHTHWAETWNDWAEUAETMEOSUGUXNGNGEAEACGOIAIAOEBULIAHUIIRBOUBWRAEWBEAEORTGAENGAETHEAIAUBEORYUDNWEIUGEAE"
+    },
+    {
+     "seed": 4262316153,
+     "mode": "s=-1 q=2",
+     "ioc_x29_L64": 1.4816468253968254,
+     "ioc_x29_L120": 1.5109243697478991,
+     "ioc_x29_L262": 1.4147582697201018,
+     "decode_gematria_order": "EAFUMNGLOEDRNIGFNEADNGOERTHBINIIAMXIEODXIAHIIARCDIEABIIXTHIAERWEOFMJROEPOERAEIAJDITIEAIFTHAEIEAHXIPRWTHLICDMEOXEOATHOLOGITHAEEAXIEOIIAPHUPAEOENGIYCRPCCHEIYIFYETWGUTHOEEANEOEOICTHSIIAIAIYIDBLGYEIFIYGWEONGIHCUIAEUGWTHJDMRIAIWYMTDITWPAEMCEANHLCNGFTTEOIRTHTHMINIHDRLCJIALENGEAHUOEIMPLCNGEOJYDHCJBPCGIWJSIEOIEASYRUWEOGCBTHRTHIAELEAX"
+    },
+    {
+     "seed": 2007729473,
+     "mode": "s=+1 q=2",
+     "ioc_x29_L64": 1.6111111111111112,
+     "ioc_x29_L120": 1.519047619047619,
+     "ioc_x29_L262": 1.4130619168787109,
+     "decode_gematria_order": "OOEOTHJNGEAUTYEXWTHUJUEABAEIUOTOXMAERBJFWNREAMJUOWAEOOEOJPIYOEAYXCUULUIUIAAUMYIARUCNUUJUNGTHRAFOYJEAIOBJAEJSMEUWGEEAEEAOEFIAGOTHUTHHEIXTTOEAWUIAWNEAUFYOEOUXBUAEAHTHMEAALNGUBUWIOOIAHWGDJBSIAGOEWCREACWEOIIAORLFGOWEAXCWEEAUOOEPBUWGCLDEOIUXDNGCUITHYEOXAGXCMNGUWUGHNXBUUJDHRUSUEOOEIAUBUJTHPWLETBTPMUCHWIATNTUBIAEOFMEAYYUU"
+    },
+    {
+     "seed": 1198237473,
+     "mode": "s=+1 q=2",
+     "ioc_x29_L64": 1.496031746031746,
+     "ioc_x29_L120": 1.5109243697478991,
+     "ioc_x29_L262": 1.4096692111959288,
+     "decode_gematria_order": "TCNGXAEPNGIAEAXNXHXXTIALWHEACSXBYOWCCYEANGNLENXDXFWEANGOENGNGWIARTHSWDXNGNDAEDRAETTMNGOEOEDSCNXNGGCFNGNEAUTXFIAHHOENNNGXCSRNGMUIXXPNGTEAUTHTEAXOMNGITMEATEOXNGXCMPTPRXTOEXEASEAUJTHEAHYSLWCXNISPWIALJGXXEAOEEAMMXGPOEHNTMIURNLNGEAYAXONWFWEAOEMNTUOENAEHCMOETUHEAGTHPOTJEAGTONGTHIAAHEAUFXMCFNTDWREYFUNXPNWNXNGXNGXXIIATHIARTHCDXNGUTSEOO"
+    },
+    {
+     "seed": 1344471619,
+     "mode": "s=+1 q=2",
+     "ioc_x29_L64": 1.3953373015873016,
+     "ioc_x29_L120": 1.738375350140056,
+     "ioc_x29_L262": 1.4088210347752332,
+     "decode_gematria_order": "BBTSTHHJNNEAESFTNGBIAEBBUNGNLIAYPIAXUNTBFGJTHYITHTHNEOJOBHOCNBPPLNGTHTHHGNGWBCGNGDPRNNBNNNJNWNPNTORJNTHNGYPOEOEJBPGWTFTHNTFNPBOENDJTHXGFIAEAEOFATHFBEORNJJGNAEOEEARGIAJSBLCAEOSRGAEAEAETHBNAOENGMNEAOESNUCLAYAAECSIAAETEAEOOACUHCIAIBIDOENGSNIATHFJLAIAEOJNCHTHBPBAEYMCBNSFTHIANGAETHNYOEFNGTHEOAEHEOIANOEUBNNNEAEIABTNIBEAMOEWANGADIALONIA"
+    },
+    {
+     "seed": 142997270,
+     "mode": "s=+1 q=2",
+     "ioc_x29_L64": 1.4816468253968254,
+     "ioc_x29_L120": 1.514985994397759,
+     "ioc_x29_L262": 1.4071246819338423,
+     "decode_gematria_order": "SLTHHCULYGGPEOOYEATEAHYTIAEACCSLBBNGXRLLFLIAJLBPWGURBIABGJALIAIOELCOEJBWBLANGYLLLPEOJLTNGHLEOFULNGDJOECENGGGDLAEIAOSADNEASTEAXBYHTHLAEOETJLGLMGHTGCIJIAODGJEOXLLOEYTHOXHJCTHNYFGCGYAEGYHNGHBTHPIAYOJYSNGTJUGDFTULNCIAJNAIHFGLYDOTHHYTDNCOTLULAYWCUOENGCJHXSTHEAOJLFHFYYOCLYFEOAEIANGYIAUIJYNGLXLHOGLXBCLFJPBLTOMXEANGL"
+    },
+    {
+     "seed": 4193912973,
+     "mode": "s=+1 q=1",
+     "ioc_x29_L64": 1.3953373015873016,
+     "ioc_x29_L120": 1.514985994397759,
+     "ioc_x29_L262": 1.4062765055131468,
+     "decode_gematria_order": "RYIAAEPYINSEAEOLEASPTITHUOIAPEATHWPLRPMHITLEAIAILPMMGMEAIAIAMEODEPOEMREDCPDAEEAGEOOEHNSEAMYPPBBJFFGEAPHYLSPIPEOPEEADTHRTXEAIAAHAEERIADEAPBNGTHSPRHPLEAUPLAEYNGSFMNYDFNGDCUTHPFPIAATHAEHEOIPIIRSHDHFMDACEABFXTCPPYSWRNGLSWRCDNGUEOPEAJINGPNEAMTHYRDAIAEPEACJTBWCEFHEEOPPGYTODPEEFCDWTHIOEMPEAGTPHPPRTISDPAEOIDEPPLEOIATCFCEAEAFIRD"
+    },
+    {
+     "seed": 2205610001,
+     "mode": "s=+1 q=2",
+     "ioc_x29_L64": 1.5248015873015872,
+     "ioc_x29_L120": 1.44187675070028,
+     "ioc_x29_L262": 1.4054283290924512,
+     "decode_gematria_order": "XFBGYNEABNGBMILUAEFDEBPEUCPFTCBCIGGBBBTHRDCYPGTHNGGBNGYYOYEOIPHIASBSDEOJXEUIATIPBEAAEXTEEAWNGWGRSGWBDAEGDBNEDFEAWIUIABPEAWXNGRJBDTBEAAEBMAYSBEOTEABIAEOYBOEAEBGHAEENHGAEGIAIIACGEADIAHBWJYIAWJBOSYSEGNBYDPIIAHJBUYSYIASGEGOEIEOESBEACITEAWBPPOEIAMSGNDNGWJAIRINFBBIDBTRBNHFGFOEXEGHYEAIPPPNGCDEAIAWTFBBEEADYTGEOIMGGJIABJO"
+    },
+    {
+     "seed": 517150155,
+     "mode": "s=-1 q=1",
+     "ioc_x29_L64": 1.9995039682539681,
+     "ioc_x29_L120": 1.6896358543417367,
+     "ioc_x29_L262": 1.4045801526717556,
+     "decode_gematria_order": "BDAPPIAMMINGJMEOALPACTHTHCNGNGPLAAPWPURTHPJEOGYURPIEPSIAAPROENGJPNGNGSEOABFPNGSAHPXEOOYNGSTHNGEEAAUJGMMWEGGOERAEGRNGOEYNGMEAEPNGDHGCGPONGNGAMEHXPNGERAPGNGDEMTHIATHYXBHLYTHGAEOEYMTCPPFAEAEJPFNGIPIAYDWOEPNPWTSIAIAIAUAYRNLUENGDEEDIAJALWTHPMJTHUDEOEAFOEAINGUWPEOYPMYPLPPYGEYEOYIAIAOLEYUPWTEAEPCPCPFGLUMYPGANOEEOXNGRPDHOEBLNGAECUEOFF"
+    },
+    {
+     "seed": 2948922096,
+     "mode": "s=+1 q=2",
+     "ioc_x29_L64": 1.380952380952381,
+     "ioc_x29_L120": 1.4581232492997198,
+     "ioc_x29_L262": 1.4037319762510603,
+     "decode_gematria_order": "OYOOENGEAEAEAPXDGOEPHHDLJJXEACLYEAFEAEOLFOEEAAEOELWWRAEAEXXEXJAEEAEAMNCNGEOIAUPNGEOPBTHEUSEAMIAEAAEOEEAWFEAJCPTHUMEAAEWPGAEDTEAJOEEAIAHNGEAOEEALEATAENEARDIATHOTHYGTHCTHSAJIAFOLHMSOETHIAEATTHEAEAEOYSWDNXXMAMEAAEGTEALOYEEATEOLPTBFUEAAEIAJEATHAEAEAMEAEAWHAEAPNCWWUNTHAETHOEOXUAERWNTAELIBEAMEAFUEAFCPFEMLEAEAEOEEATOEOEFHAEENGRTPNJUHGSOCAETEOSXREOEATAINGUGEOMIEAEAES"
+    },
+    {
+     "seed": 3767868758,
+     "mode": "s=+1 q=2",
+     "ioc_x29_L64": 1.4241071428571428,
+     "ioc_x29_L120": 1.4540616246498599,
+     "ioc_x29_L262": 1.4037319762510603,
+     "decode_gematria_order": "RREAEAOIOEOOHEFJAETNGDOMYOMDTHNGHMUIAIDOLUAUIDUADUIACDGSSLJNGNGAIIDNGHINGTTUBCDJMPTUDIAAPEOURIEOJHOAEOSSHPIUSNGEOHJEOIPCCAMIOMITMTODAJXCCYTTLOPHDAWNATAETXTHURYIDMEOOJDLSDOILTHESDSNGEOHTMAJDOAYLIOEGHIAIEAOUEADANGDOCMRGTIEJYUAIDNGEAYNGDSLHOEYEOTCTJIEOEAIAJWDNGMIBEOUEADOMEOGNGTIACHMTIAIAUYAIALRGDTNGEOFTAIOETHLAUA"
+    },
+    {
+     "seed": 3037903454,
+     "mode": "s=-1 q=2",
+     "ioc_x29_L64": 1.337797619047619,
+     "ioc_x29_L120": 1.5718487394957983,
+     "ioc_x29_L262": 1.4028837998303647,
+     "decode_gematria_order": "IAFNGMOEOEMTHIAEOHDMNGDPEAEDOTTHEADTYIYBAOENGTAOELFJOUYOEOOEHFOXDAEUDHCPOEOIDYYODDDUSHONFOCFOEFGIFOIGODDEAYUAEFNGDODEUUNITHCCDWTHYOECYAXONYIGOEODYONOEOUDUHDOEPTOTOYFXIWBDTIEOOEXIIOENOWDOENITJROEXIADUOFLTAEGIRHLJNWAETHHTYILCOEDHWUCFAIAEOIHUSTJOETHOEDDYOEDNGTHIGDEAPTEOTHEHPSRDRXDTHILDFJOTHHLJYCLLRUOEBUUDDEASEACTHDEACI"
+    },
+    {
+     "seed": 3217961791,
+     "mode": "s=+1 q=2",
+     "ioc_x29_L64": 1.4672619047619047,
+     "ioc_x29_L120": 1.44593837535014,
+     "ioc_x29_L262": 1.4028837998303647,
+     "decode_gematria_order": "TNTYPMIANFFIRUJEOHGGTTPYTBNABFFPSFTHLRXUNGFBOECTLTJNGNGYPTEOETFXUIETMCNEOXIAEGOEIAIAHPEUOEXTCDOELPJFTRTSANGTGFIXWFFDCCHCTOEIAETFFNGLRFPTHIUEOTHGPPPGEOTHTHGDTANEAIETXSTUXWAEAEGBPEYAEPFCSFFAETBFNGELNCMYGOFLPTFCXLIATTBEARCOJSEABEOUJTLPPTNGCTHHEIFOEEAYHOTTHYDJICEAFCEOLLLOETOFUFNTOEOLXJJTJIWEGYDAEBTATFGCEIAFOETFT"
+    },
+    {
+     "seed": 794670246,
+     "mode": "s=-1 q=2",
+     "ioc_x29_L64": 1.7693452380952381,
+     "ioc_x29_L120": 1.5434173669467788,
+     "ioc_x29_L262": 1.4020356234096691,
+     "decode_gematria_order": "STTOPDUAEOBYOSXTHAEARRBASRONOGOEFOOCBGYEOETHHETHSNGOUOWHREOFOOEARNGANGSOEWOOFOEOEOIASRCCEABHPGCDLAEOOEYLYOTLDAEOWNGIALUTHOJJTOLUECEAUOWTHUUNOEOGMOLTJMCDOINNGOROEAJTJLYOEAJOEUWWTWORTHHLNWWOMJTAEEATHRMBUEYGNMAEMTHROEEASTHMSRIAOIUPFAEMOOAHEOAEROTHOEUEALNGAOEAXHTHDOABGCYSUUSIWPGCIANRTAMIABOLPTFCCOLTIBOGIABSAWRLOC"
+    }
+   ],
+   "max_ioc_x29_L262": 1.4325699745547074,
+   "best_panel_pmax_among_top_rows": 5.743,
+   "verdict_by_protocol": "FLAGGED-FOR-ORACLE",
+   "verdict": "NEGATIVE (19 weak flags, all NOISE-CROSSER; no strong flag)",
+   "weak_flags": {
+    "count": 19,
+    "range_ioc_x29": "1.402-1.433 (threshold 1.40; weakest plant 1.614; none >= 1.50)",
+    "null_consistent_by_prereg_decay_rule": 5,
+    "adjudication": "NOISE-CROSSER x19, post-data, each check with a control: held-out page 1 (plants >= 1.797, flags <= 1.175), back half of page 0, substitution reading, tail shape",
+    "owner_signoff": "pending: liber-primus/analysis/round44/S1-blind-perl/ORACLE-PENDING.md"
+   }
+  },
+  "notes": "FLAGGED by the letter of the pre-registration (19 weak flags); filed negative on the coordinator's NOISE-CROSSER adjudication, which is post-data and awaits the owner's sign-off per HUMAN-ORACLE.md.",
+  "coverage": "All 2^32 srand seeds; the idiom int(rand(29)); one draw per rune from rune 0 of page 0, no draws before it; a rejection consumes one draw or two (with or without the in-stream coin); at most 8/12/24 rejections in the first 64/120/262 runes; both key signs; any combiner constant, Atbash and Beaufort covered; no register conditional (any plaintext with IoC x 29 of about 1.4 or more over the page) [plants: English letter-wise, English multigraph, Latin]",
+  "not_covered": "a warm-up before rune 0; a stream that starts at another section or page head; other reductions of the generator; a key pointer that stalls (F left in clear); rejection by deletion or rewrite without a draw; separators that consume draws; a plaintext that is near-uniform over 29 symbols",
+  "null": "the sweep itself (all but at most one seed are wrong keys)",
+  "declares_sweep": true,
+  "sweep_store": "liber-primus/analysis/round44/S1-blind-perl/sweep_rows_top.jsonl",
+  "evidence": [
+   "liber-primus/analysis/round44/S1-blind-perl/PREREG.md",
+   "liber-primus/analysis/round44/S1-blind-perl/RESULTS.md",
+   "liber-primus/analysis/round44/S1-blind-perl/results.json",
+   "liber-primus/analysis/round44/S1-blind-perl/hist.json",
+   "liber-primus/analysis/round44/S1-blind-perl/control.json",
+   "liber-primus/analysis/round44/S1-blind-perl/ORACLE-PENDING.md",
+   "liber-primus/analysis/round44/S1-blind-perl/flags_adjudication.json",
+   "liber-primus/analysis/round44/S1-blind-perl/heldout_page1.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/S1-blind-perl/ && python3 run_s1.py sweep 4 && python3 run_s1.py finalize",
+  "supersedes": [],
+  "superseded_by": null,
+  "reopens_if": "a warm-up, another stream start or another reduction is given a reason; or a covered-class plant is shown to fail"
+ },
+ {
+  "id": "R44-S2-BLIND-GLIBC-CLOCK",
+  "lane": "S2-blind-glibc-clock",
+  "round": "44/S2",
+  "date": "2026-11-12",
+  "status": "negative",
+  "hypothesis": "The LP2 keystream is glibc rand() after srand(t), t a unix second between 2011-12-01 and 2014-04-03 UTC or an integer below 2^24, reduced as rand() % 29 or as floor(29 * rand() / 2^31).",
+  "threshold": "as R44-S1-BLIND-PERL-2E32 (S2 PREREG sections 2 and 4)",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "16/16 planted seeds flagged in their true mode (keystream from the system C library itself), 0 other seeds flagged in 16 windows of 2^18 seeds.",
+  "result": {
+   "keystreams_evaluated": 181125632,
+   "complete": true,
+   "per_reduction": {
+    "glibcmod": {
+     "seeds": 90562816,
+     "stage3_records": 28270,
+     "flagged": [],
+     "max_ioc_x29_L262": 1.38676844783715
+    },
+    "glibcscale": {
+     "seeds": 90562816,
+     "stage3_records": 27863,
+     "flagged": [],
+     "max_ioc_x29_L262": 1.3884648006785412
+    }
+   },
+   "best_panel_pmax_among_top_rows": 5.126,
+   "verdict": "NEGATIVE"
+  },
+  "coverage": "Seeds [0, 2^24) and [1322697600, 1396483200) (both server timestamps 1389478032 and 1396427599 inside), two reductions; one draw per rune from rune 0 of page 0, no draws before it; a rejection consumes one draw or two (with or without the in-stream coin); at most 8/12/24 rejections in the first 64/120/262 runes; both key signs; any combiner constant, Atbash and Beaufort covered; no register conditional (any plaintext with IoC x 29 of about 1.4 or more over the page) [plants: English letter-wise, English multigraph, Latin]",
+  "not_covered": "seeds outside the two ranges (time ^ pid, microseconds, the rest of 2^32); other C libraries; a warm-up before rune 0; a stream that starts at another section or page head; other reductions of the generator; a key pointer that stalls (F left in clear); rejection by deletion or rewrite without a draw; separators that consume draws; a plaintext that is near-uniform over 29 symbols",
+  "null": "the sweep itself",
+  "declares_sweep": true,
+  "sweep_store": "liber-primus/analysis/round44/S2-blind-glibc-clock/sweep_rows_top.jsonl",
+  "evidence": [
+   "liber-primus/analysis/round44/S2-blind-glibc-clock/PREREG.md",
+   "liber-primus/analysis/round44/S2-blind-glibc-clock/RESULTS.md",
+   "liber-primus/analysis/round44/S2-blind-glibc-clock/results.json",
+   "liber-primus/analysis/round44/S2-blind-glibc-clock/hist.json",
+   "liber-primus/analysis/round44/S2-blind-glibc-clock/control.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/S2-blind-glibc-clock/ && python3 run_s2.py sweep 4 && python3 run_s2.py finalize",
+  "supersedes": [],
+  "superseded_by": null,
+  "reopens_if": "the full 2^32 is run (about ten core-hours with this kernel) and a pair clears; or a reason for a seed outside the ranges"
+ }
+]
