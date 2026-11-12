@@ -1299,3 +1299,24 @@ identified as complete JPEGs. The R42-S1 full-list export **lapsed** (project de
 verdict unaffected, fingerprints recorded). The letter-stream hypothesis space is now *measured*
 as exhausted at blind resolution; Round 44 (`analysis/round44/CAMPAIGN-PLAN.md`) spends its budget
 on the physical-page channels.
+
+## Round 44 (2026-11-09 → 11) — THE PAGE AS A PHYSICAL OBJECT + the first live anomaly in months
+
+The scaled armada (Fable planned a 16-cell matrix over every disclosed ledger edge; sub-agents
+swept it; the xhigh X1 red-team judged). 22 cells across 2 waves; per-row record in
+`LEDGER.json` (**348 rows**, 0 unsound) + `analysis/round44/SYNTHESIS.md`. Every decode family =
+powered negative at 8–19 bar-units EXCEPT **B3 / T7: the anti-repeat filter's slip rate is
+non-stationary across the book** (per-1,000-rune doublet blocks [8,3,7,2,6,9,10,8,11,2,9,6,5],
+gap autocorrelation +0.380, battery p=0.0010; X1's independent permutation null p=0.00025) —
+filed `measured`, never certified, the best-aimed Round 45 lane. Closed NEGATIVE: the red-ink
+channel (census corrected 187→213 red runes), the p15 4×4 grid, punctuation/quote channels,
+onion-blob pads, 51-key per-page/per-line resets, the 7-gram cipher readings (same- and
+different-plaintext incl. a new AN-END boundary crib), chained-presentation constructions,
+hash-block stride parse, cuneiform/dot census, all-pairs page-XOR / canon-as-key (6.4M decodes),
+delta composites k≥7, short pages at honest matched-length bars (which also found **canon p55 is
+stored as ciphertext** — a premise fix for four standing sweeps). The short-stream null instrument
+(A1) exposed an L<13 recognizer floor, so the 30-bit red dot stream stays measured-only. Human
+oracle queue (nothing certified): B4 p55 ghost-tree, C1 figural-motif fire, B3 T7. A resume-lane
+tail (A3/C4/C7/C9 + B4-S3) completes across sleep cycles under a new dead-man rule and folds into
+a follow-up commit. The verdict is unchanged and hardened: both the letter-stream and the
+physical-page hypothesis spaces are exhausted at tested resolution; T7 is the one open anomaly.

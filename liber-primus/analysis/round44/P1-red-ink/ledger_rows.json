@@ -1,0 +1,113 @@
+[
+ {
+  "id": "R44-P1-RED-CENSUS",
+  "lane": "round44/P1-red-ink",
+  "hypothesis": "Book-wide census of every red mark on the 56 relikd masters (rule R-(G+B)/2>40 & R>120 & G<80, components >=20px): what red objects exist, and is the prior-art 187-rune red extraction (armada_osint/redrune, 2026-07) complete and correct?",
+  "status": "measured",
+  "round": "44",
+  "date": "2026-11-09",
+  "threshold": "census validation gate: must reproduce the prior-art 187 glyph-level reds and canon-p0 HEOGMIAFSYENGC exactly (it did); classification deterministic, every component classified exactly once",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "P1 (120-rune known plaintext painted as a red selection over 13 no-red page copies; own extractor recovered 120/120 exactly, direct reading pmax 26.367 >= bar 12.8507) and P2 (planted 13-dot + 10-dot blocks recovered as [13,10]) through the lane's own census code path. plant_results.json.",
+  "result": {
+   "components": {"RUNE_OVERLAP": 191, "DROP_CAP": 13, "DOT": 420, "OTHER": 21},
+   "corrections_to_prior_art": [
+    "img37 'red rune R' (gli418) is the red Arabic numeral 4 missegmented as a rune",
+    "img33 gli369 gi4 wide red box is TWO canon runes C+OE merged (phantom U in the 187)",
+    "p15 red TITLE 'FULM AEAYOEA' (canon 3603-3611, 9 runes) was never segmented/extracted",
+    "red closing word 'URPN' (canon 12644-12647) was never segmented/extracted",
+    "13 red drop-cap initials (SLPAXLUMDNGIAFA) excluded from every prior red read"
+   ],
+   "complete_red_selection": "213 canon runes on 13 canon pages (channel.json 'full'); every red run is still that page/section's own opening words - the rubrication verdict survives the corrections",
+   "red_numerals": "margin list labels 1,2,3,4,5 all red (imgs 36-38); grid cell 3299 red (p15)",
+   "dot_blocks": "27x 13-dot diamonds, 3x 10-dot diamonds (imgs 36,38,49), 31+2+1 red word-separator dots; 13/10 stream (30 symbols) bits 13->1 = 111111111111111111111001110111"
+  },
+  "coverage": "All 56 masters, all 645 red components >=20px enumerated and classified; 100% of red marks consumed by readings A (216 comps) + B (429 comps). Dot/numeral streams fully enumerated verbatim (L=30 and L=6, below any adjudicable bar).",
+  "not_covered": "Sub-20-px red components (JPEG chroma noise floor); chroma bands outside the red rule (a second non-red ink tone would be invisible); red on non-page artifacts (0_wisdom.jpg); pp56-57 masters (outside the relikd 56).",
+  "evidence": [
+   "liber-primus/analysis/round44/P1-red-ink/census.json",
+   "liber-primus/analysis/round44/P1-red-ink/channel.json",
+   "liber-primus/analysis/round44/P1-red-ink/RESULTS.md"
+  ],
+  "reproduce": "python3 liber-primus/analysis/round44/P1-red-ink/census.py && python3 liber-primus/analysis/round44/P1-red-ink/extract_channel.py",
+  "reopens_if": "(i) a bar is built for L<60 symbol streams (dot/numeral enumerations preserved ready-to-score); (ii) higher-resolution masters reveal red below the 20px floor; (iii) a second ink tone is established on any page.",
+  "notes": "Discharges the colour/chroma not_covered disclaimers of A-06, B-12 and R19-FINITE-ORNAMENT-REGISTER for the RED band specifically. B-12 reopens_if (iii) (the p15 3299 ink-tone marking): the marking is confirmed red and is one of the 16 grid values; the grid-as-key readings belong to lane P2.",
+  "null": null,
+  "supersedes": [],
+  "superseded_by": null,
+  "priority": null,
+  "source_register": null,
+  "raw_status": null
+ },
+ {
+  "id": "R44-P1-RED-SELECTION",
+  "lane": "round44/P1-red-ink",
+  "hypothesis": "The red-rune SELECTION channel carries a message or key: the subsequence of canon at red positions (legacy187 / census-corrected200 / full213 incl. drop-caps), book-wide and per-section, fwd/rev, read directly (affine family) and as a repeating key over the non-red remainder.",
+  "status": "negative",
+  "round": "44",
+  "date": "2026-11-09",
+  "threshold": "bars_v3 'free' at N=10,000 fixed in PREREG before any run: L_cap 120 -> 12.8507, 240 -> 17.1842, 400 -> 18.5252, 729 -> 21.5296; crosser = non-degenerate AND pmax >= bar; any crosser FLAGGED-FOR-ORACLE per HUMAN-ORACLE.md",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "P1: 120-rune known plaintext planted as synthetic red marks in page-image copies, recovered END-TO-END through the lane's own red-mask extractor + reader, exact selection recovery, pmax 26.367 >= 12.8507 non-degenerate (R42 X1 rule: own glue, not a borrowed control). plant_results.json.",
+  "result": {
+   "n_decodes": 5264,
+   "A1_affine_348": {"best_pmax": 2.852, "bar": 12.8507},
+   "A2_section_116": {"best_pmax": 3.164, "bar": 12.8507, "note": "only section 7 (68 reds) >= 60; sections 0-6 have 11-44 reds, below adjudicable length"},
+   "A3_red_as_key_4800": {"best_pmax": 1.239, "bar": 21.5296, "L_black": 12923},
+   "crossers": 0
+  },
+  "coverage": "3 stream variants x fwd/rev x 58 affine maps; red-as-key {legacy187, full213} x fwd/rev x {vigm,vigp,beau} x {+-atbash} x ALL rotations over the 12,923-rune black remainder; panel-R36 (12 registers). Supersedes the register axis of the prior-art redrune cryptanalysis (English-only score_norm, ~30 configs).",
+  "not_covered": "Per-section/per-page substreams with L<60 (no bar exists; enumerated in channel.json); red positions as transposition/permutation order; chained/output-aware constructions taking red as input; registers outside panel-R36; one-shot (non-repeating) red key alignments other than rotation.",
+  "evidence": [
+   "liber-primus/analysis/round44/P1-red-ink/results.json",
+   "liber-primus/analysis/round44/P1-red-ink/plant_results.json",
+   "liber-primus/analysis/round44/P1-red-ink/RESULTS.md"
+  ],
+  "reproduce": "python3 liber-primus/analysis/round44/P1-red-ink/plant.py && python3 liber-primus/analysis/round44/P1-red-ink/readings.py",
+  "reopens_if": "(i) a reset-capable or chained decoder is built that can take a selection channel as plaintext or key (R33-I2's unrepresented list); (ii) a bar for L<60 streams exists; (iii) the census stream changes (new masters, second ink tone).",
+  "notes": "three_conditionals: key_space = affine selection reads + rotated repeating red keys + red-derived offsets only; transition_model = monoalphabetic affine + periodic additive/Beaufort/atbash streams (no chained/output-aware); adjudicator_register = panel-R36 12 registers. Doctrine-R3 statistics persisted per best row (results.json best_full_stats).",
+  "null": "best observed pmax 3.684 across the whole lane vs lowest bar 12.8507",
+  "supersedes": [],
+  "superseded_by": null,
+  "priority": null,
+  "source_register": null,
+  "raw_status": null
+ },
+ {
+  "id": "R44-P1-RED-KEYPARAM",
+  "lane": "round44/P1-red-ink",
+  "hypothesis": "Red marks are a KEY-PARAMETER carrier: per-page red statistics (red-rune count r_p, first-red position firstpos_p, cumulative red count cum_p) are offsets into the solved-page generator family (prime, prime-1, totient streams) applied to that page through the standing decoder configs.",
+  "status": "negative",
+  "round": "44",
+  "date": "2026-11-09",
+  "threshold": "bars_v3 'free' at N=10,000 fixed in PREREG before any run (120 -> 12.8507, 240 -> 17.1842, 400 -> 18.5252); crosser = non-degenerate AND pmax >= bar at the page's L_cap; FLAGGED-FOR-ORACLE on cross",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "P3: known 240-rune plaintext enciphered with prime_totient offset 17 (vigm) and fed through the IDENTICAL sweep_reading_c glue; planted cell found, plaintext recovered, pmax 38.321 >= 17.1842. plant_results.json.",
+  "result": {
+   "n_decodes": 2196,
+   "pages": 55,
+   "offsets_per_page": "dedup{r_p, firstpos_p, cum_p} from the census-corrected full213 stream",
+   "best": {"pmax": 3.684, "page": 50, "gen": "totient", "offset": 153, "cfg": "beau_atb", "bar": 12.8507},
+   "crossers": 0
+  },
+  "coverage": "All 55 unsolved canon pages x 3 generators x <=3 red-derived offsets x 6 configs (vigm/vigp/beau x +-atbash), panel-R36. This tests exactly the red-pinned cells of the generator space; the generator families themselves are swept broadly elsewhere (R11-N2/N5, B-04, R37-C3).",
+  "not_covered": "Other red->parameter maps (red counts as per-LINE resets, red positions as skip/transposition schedules, dot-block counts as per-page offsets - enumerated in census.json, untested as keys); generators outside {prime, prime-1, totient}; chained constructions parameterised by red; registers outside panel-R36.",
+  "evidence": [
+   "liber-primus/analysis/round44/P1-red-ink/results.json",
+   "liber-primus/analysis/round44/P1-red-ink/plant_results.json",
+   "liber-primus/analysis/round44/P1-red-ink/RESULTS.md"
+  ],
+  "reproduce": "python3 liber-primus/analysis/round44/P1-red-ink/plant.py && python3 liber-primus/analysis/round44/P1-red-ink/readings.py",
+  "reopens_if": "(i) a reset-capable decoder takes per-page red parameters (the R1 lane's territory); (ii) lane P2 finds the p15 grid is a key schedule (the red 3299 cell would then re-enter as a parameter); (iii) the dot-block counts are shown to vary beyond 13/10 on better masters.",
+  "notes": "three_conditionals as in R44-P1-RED-SELECTION. The dot/numeral standalone channel (reading B) produced no adjudicable stream (max L=30 < 60): recorded as enumeration in census.json/results.json under the census row, not as a negative.",
+  "null": "best observed pmax 3.684 vs bar 12.8507",
+  "supersedes": [],
+  "superseded_by": null,
+  "priority": null,
+  "source_register": null,
+  "raw_status": null
+ }
+]

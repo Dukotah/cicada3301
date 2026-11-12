@@ -1,0 +1,131 @@
+[
+ {
+  "id": "R44-W2A1-SHORT-NULL-INSTRUMENT",
+  "lane": "round44/W2-A1-short-null",
+  "hypothesis": "Instrument build: a calibrated family-wise bar + measured power exists for panel-R36 adjudication of streams BELOW the bars_v3 floor (L in {13,26,30,40}, +120 validation node) -- the short-stream instrument of record, discharging R44-P1-RED-SELECTION / R44-P1-RED-CENSUS reopens_if (i).",
+  "status": "measured",
+  "round": "44/W2-A1",
+  "date": "2026-11-09",
+  "threshold": "bars = bars_v3's exponential-POT model refit on matched-length surrogates (SEL order-preserving canon selections + WIN contiguous canon windows, 1000 x 116-map grid each, seed 3301), alpha=0.01 at fixed N=600; bar of record = max over the two families; verdict power floor 0.5 EN, all fixed in PREREG before any run",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "Glue plant: held-out English L=120 window through the cell's own 116-map grid + collect path, pmax 15.7133 >= own bar 5.8323, identity cell byte-intact (plant_power.json). POT fits all had 11,599-11,600 tail exceedances (Q5(ii) never fired).",
+  "result": {
+   "bars_of_record": {
+    "13": 10.5184,
+    "26": 6.8897,
+    "30": 6.335,
+    "40": 6.0856,
+    "120": 5.8323
+   },
+   "power_EN": {
+    "13": 0.2533,
+    "26": 0.97,
+    "30": 1.0,
+    "40": 1.0,
+    "120": 1.0
+   },
+   "power_LATIN": {
+    "13": 0.0533,
+    "26": 0.9367,
+    "30": 1.0,
+    "40": 1.0,
+    "120": 1.0
+   },
+   "verdict_capable_nodes": [
+    26,
+    30,
+    40,
+    120
+   ],
+   "L13_is_measured_only": "EN power 0.2533 < 0.5 floor -- L=13 streams cannot yield negatives under this instrument; said loudly per PREREG Q1"
+  },
+  "coverage": "Family-wise bars for single short rune streams read through a 116-map affine grid under panel-R36 (12 registers), null = canon-derived surrogates (selection + window families), at L nodes 13/26/30/40/120. Power measured for held-out English and Latin. The panel's length-calibration grid floors at 32; all L<32 scoring (null, plants, reals alike) is clamped to the 32-node calibration -- bars are self-consistent through the clamp.",
+  "not_covered": [
+   "L outside {13,26,30,40,120} (interpolation NOT validated; refit per new L)",
+   "reading grids other than the 116-map affine family (a wider grid needs a refit at its own grid size)",
+   "registers outside panel-R36; power for the 10 non-EN/LA registers not separately measured",
+   "2-symbol-alphabet streams: structurally degenerate under the standing R38 guard; these bars do not apply to them",
+   "beam/keyed decoders (this is a direct-read instrument, not a sweep bar)"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round44/W2-A1-short-null/PREREG.md",
+   "liber-primus/analysis/round44/W2-A1-short-null/short_null.json",
+   "liber-primus/analysis/round44/W2-A1-short-null/plant_power.json"
+  ],
+  "reopens_if": "a lane needs a node at another L or a bigger grid (refit with null_bars.py, minutes); or a non-EN/LA register power claim is load-bearing"
+ },
+ {
+  "id": "R44-W2A1-GRAND26-DIRECT",
+  "lane": "round44/W2-A1-short-null",
+  "hypothesis": "The 26 short-red canon runes wave 1 proved were excluded from every prior red read (13 drop-cap initials SLPAXLUMDNGIAFA + red title FULMAEAYOEA + URPN), concatenated in canon position order, are a direct or affine-dressed natural-language fragment.",
+  "status": "negative",
+  "round": "44/W2-A1",
+  "date": "2026-11-09",
+  "threshold": "bar of record 6.8897 at L=26 (short_null.json, alpha=0.01, N=600, fixed in PREREG Addendum 1 before the read)",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "L=120 glue plant through the identical grid passed (15.7133 >= 5.8323); node power measured 0.97 EN / 0.94 LA (plant_power.json) -- above the 0.5 verdict floor, so this negative is power-backed.",
+  "result": {
+   "n_decodes": 116,
+   "best_pmax": 3.0319,
+   "bar": 6.8897,
+   "crossers": 0
+  },
+  "coverage": "grand26 x {fwd,rev} x affine(a in {1,28}, s in 0..28) = 116 decodes, panel-R36, at measured power 0.97 (EN) / 0.94 (LATIN).",
+  "not_covered": [
+   "keyed/derived/transposition readings of the 26 runes; use as key or parameters",
+   "other concatenation orders (only canon position order read)",
+   "registers outside panel-R36; power conditional on EN/LA measurement only",
+   "the component L=13 streams separately (see R44-W2A1-L13-DOT-MEASURED: below instrument power)"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round44/W2-A1-short-null/results.json",
+   "liber-primus/analysis/round44/P1-red-ink/channel.json"
+  ],
+  "reopens_if": "a keyed reading family or a new register is brought with its own calibrated short bar"
+ },
+ {
+  "id": "R44-W2A1-L13-DOT-MEASURED",
+  "lane": "round44/W2-A1-short-null",
+  "hypothesis": "The L<26 red short streams -- dropcaps13 (SLPAXLUMDNGIAFA), titleURPN13 (FULMAEAYOEA+URPN), the 30-symbol 13/10-dot stream, the red margin numerals -- read under the new short-stream instrument and a pre-registered structural table (binary constants 3301/1033/761/..., base groupings, gematria-prime sums).",
+  "status": "measured",
+  "round": "44/W2-A1",
+  "date": "2026-11-09",
+  "threshold": "same instrument bars (10.5184 at L=13, 6.335 at L=30); PREREG rule: EN power < 0.5 at a node => measured-only, no negative; structural matches = exact equality/containment vs the pre-registered constant list only",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "L=120 glue plant passed through the identical grid (15.7133 >= 5.8323). The L=13 node's power was then MEASURED at 0.2533 EN / 0.0533 LA -- the instrument sees only ~25% of true English at L=13, so these reads are recorded, not adjudicated.",
+  "result": {
+   "dropcaps13": {
+    "best_pmax": 4.3678,
+    "bar": 10.5184,
+    "note": "measured-only, power floor"
+   },
+   "titleURPN13": {
+    "best_pmax": 4.788,
+    "bar": 10.5184,
+    "note": "measured-only, power floor"
+   },
+   "dotvals30": {
+    "best_pmax": 8.9287,
+    "bar": 6.335,
+    "note": "raw crossing is the R38 degenerate-decode artifact (mds=2 <= 6, 2-symbol alphabet scores content-independently); NOT a crosser, NOT flagged; measured-only by construction"
+   },
+   "structural_matches": "NONE vs {3301,1033,761,509,311,3299,1595277641}; only the trivial '11101' (=29) substring inside 27 ones. 30-bit values: fwd 1073741431 = 7 x 153391633; rev 1000341503 = 7 x 97 x 1473257; comp 392 = 2^3 x 7^2; revcomp 73400320. Zeros at positions 22,23,27 (1-based; 10-dot diamonds on imgs 36,38,49). Gematria-prime sums: dropcaps 834, title 638, urpn 86, all26 1558 -- none prime, no 3301 relation. Margin numerals 1-5 = futhorc U,TH,O,R,C trivially; grid 3299 mod 29 = 22 (OE)."
+  },
+  "coverage": "dropcaps13 + titleURPN13 x 116 affine maps (recorded at power 0.25); dotvals30 x 116 (degenerate class); full structural table over 4 bit-variants x pre-registered constants, 6 bit-groupings, run-lengths, zero positions, numerals, gematria sums (structural.json, exhaustive for the pre-registered list).",
+  "not_covered": [
+   "ANY verdict on the L=13 streams -- the instrument's measured power there is 0.25 EN / 0.05 LA; a hit could sit in these reads unseen",
+   "dot stream as key/parameters (R44-P1-RED-KEYPARAM not_covered stands), as positional selector over canon, or joined with other channels",
+   "constants outside the pre-registered list; bases beyond {2-,3-,5-,6-,10-,15-bit}; keyed readings of the numerals",
+   "registers outside panel-R36"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round44/W2-A1-short-null/results.json",
+   "liber-primus/analysis/round44/W2-A1-short-null/structural.json",
+   "liber-primus/analysis/round44/P1-red-ink/results.json"
+  ],
+  "reopens_if": "a higher-power short-stream recognizer exists (e.g. a word-level or dictionary scorer validated at L=13), or a keyed reading consumes these streams with its own calibrated bar"
+ }
+]

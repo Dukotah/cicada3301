@@ -1,0 +1,68 @@
+2026-11-09T15:32:45 PREREG hash-stamp (before first execution): 484683cac97b3c09952fa3795722a288132b1627ce1445b9fe3e27daa05984b7  PREREG.md
+PC1 PASS ('revxff', 0)
+PC2 PASS pmax 30.38 bar 14.8 cal_max 3.42 over 0
+OVERALL PASS
+building corpus sha index ...
+index: 1024 shas
+identified cijhho123/2014/Liber Primus/liber primus images full/10.jpg 3486295 segs: [('jpeg', 0, 712733), ('jpeg', 712733, 1416161), ('jpeg', 1416161, 3486295)]
+identified wiki-uncovering-cicada/images/ONION_2_JPG.jpg 1651773 segs: [('jpeg', 0, 1476614), ('residue', 1476614, 1651773)]
+identified cijhho123/2014/Liber Primus/liber primus images full/05.jpg 336713 segs: [('residue', 0, 336713)]
+identified cijhho123/2014/additional images/Liber primus pages/Huh2.jpg 175159 segs: [('residue', 0, 175159)]
+identified wiki-uncovering-cicada/images/Outt.png 13592 segs: [('residue', 0, 13592)]
+identified signed-payloads/2014-01-onion5-liber-primus.jpg 10923 segs: [('jpeg', 0, 1635), ('residue', 1635, 10923)]
+identified wiki-uncovering-cicada/images/-016477-.jpg 424 segs: [('residue', 0, 424)]
+identified cijhho123/2012/additional media/images/1CcV1.jpg 61 segs: [('residue', 0, 61)]
+identified wiki-uncovering-cicada/images/Songs_of_Innocence_and_of_Experience__copy_L__1795__Yale_Center_for_British_Art__The_Human_Abstract.jpg 3 segs: [('residue', 0, 3)]
+accounted Huh2.jpg trailer (175159B, starts d9ff)
+accounted 05.jpg / relikd 0_wisdom.jpg trailer (336713B)
+outt analysed
+unparseable: cijhho123/2014/Liber Primus/liber primus images full/04.jpg {'end': None, 'why': 'entropy scan ran past EOF (scan started 450)'} FAIL: image file is truncated (42 bytes not processed)
+unparseable: Hadyn_cicada/2014/ky2khlqdf7qdznac.onion/54.jpg {'end': None, 'why': 'entropy scan ran past EOF (scan started 3030)'} FAIL: image file is truncated (103 bytes not processed)
+unparseable: wiki-uncovering-cicada/images/1378789231968.jpg {'end': None, 'why': 'entropy scan ran past EOF (scan started 639)'} FAIL: image file is truncated (58 bytes not processed)
+unparseable: wiki-uncovering-cicada/images/1399181864285.png {'end': None, 'why': 'no IEND chunk before EOF'} FAIL: image file is truncated
+unparseable: wiki-uncovering-cicada/images/1399181864285_large.png {'end': None, 'why': 'no IEND chunk before EOF'} FAIL: image file is truncated
+unparseable: wiki-uncovering-cicada/images/2026-03-06_174310.png {'end': None, 'why': 'no IEND chunk before EOF'} FAIL: image file is truncated
+unparseable: wiki-uncovering-cicada/images/53.jpg {'end': None, 'why': 'entropy scan ran past EOF (scan started 3016)'} FAIL: image file is truncated (29 bytes not processed)
+unparseable: wiki-uncovering-cicada/images/LiberPrimuspage5_with_overlays.jpg {'end': None, 'why': 'entropy scan ran past EOF (scan started 645)'} FAIL: image file is truncated (4 bytes not processed)
+unparseable: wiki-uncovering-cicada/images/Pintogram.png {'end': None, 'why': 'no IEND chunk before EOF'} FAIL: image file is truncated
+WROTE results/inventory.json
+=== 05 gap reversed ===
+32373220202020203133382020202020333431202020202031333120202020203135310a333636202020202031393920202020203133302020202020333230202020202031380a32323620202020203234352020202020393120202020202032343520202020203232360a31382020202020203332302020202020313330202020202031393920202020203336360a31353120202020203133312020202020333431202020202031333820202020203237320a
+
+
+outt: mismatches vs unit15: 13 bit30 breaks: 42
+onion5 residue: [None, 'no SOI'] FAIL: cannot identify image file <_io.BytesIO object at 0x7f9bb85da7a0> prefix-of: []
+WROTE results/deepdive.json
+T2_2jpg premise_ok True | structured decompressions: 19 | win_H 7.9538 - 7.96 | period None | palin_core 0
+T3_folly premise_ok True | structured decompressions: 11 | win_H 7.9377 - 7.9377 | period None | palin_core 0
+canon_256 premise_ok True | structured decompressions: 1 | win_H 7.1697 - 7.1697 | period None | palin_core 0
+WROTE results/t2t3_battery.json
+T2_2jpg|id|mod29 L 729 pmax 1.196 bar 19.198 deg False crosses False
+T2_2jpg|id|5bit_skip L 729 pmax 0.428 bar 19.198 deg False crosses False
+T2_2jpg|id|pair_mod29 L 729 pmax 1.561 bar 19.198 deg False crosses False
+T2_2jpg|rev|mod29 L 729 pmax 1.204 bar 19.198 deg False crosses False
+T2_2jpg|rev|5bit_skip L 729 pmax 0.393 bar 19.198 deg False crosses False
+T2_2jpg|rev|pair_mod29 L 729 pmax 0.685 bar 19.198 deg False crosses False
+T2_2jpg|xff|mod29 L 729 pmax 2.106 bar 19.198 deg False crosses False
+T2_2jpg|xff|5bit_skip L 729 pmax 0.919 bar 19.198 deg False crosses False
+T2_2jpg|xff|pair_mod29 L 729 pmax 1.544 bar 19.198 deg False crosses False
+T3_folly|id|mod29 L 729 pmax 1.525 bar 19.198 deg False crosses False
+T3_folly|id|5bit_skip L 729 pmax 2.099 bar 19.198 deg False crosses False
+T3_folly|id|pair_mod29 L 729 pmax 0.618 bar 19.198 deg False crosses False
+T3_folly|rev|mod29 L 729 pmax 0.87 bar 19.198 deg False crosses False
+T3_folly|rev|5bit_skip L 729 pmax 1.629 bar 19.198 deg False crosses False
+T3_folly|rev|pair_mod29 L 729 pmax 0.768 bar 19.198 deg False crosses False
+T3_folly|xff|mod29 L 729 pmax 1.015 bar 19.198 deg False crosses False
+T3_folly|xff|5bit_skip L 729 pmax 2.026 bar 19.198 deg False crosses False
+T3_folly|xff|pair_mod29 L 729 pmax 0.857 bar 19.198 deg False crosses False
+canon_256|id|mod29 L 240 pmax 1.216 bar 14.805 deg False crosses False
+canon_256|id|5bit_skip L 240 pmax 2.165 bar 14.805 deg False crosses False
+canon_256|id|pair_mod29 L 120 pmax 2.185 bar 11.136 deg False crosses False
+canon_256|rev|mod29 L 240 pmax 1.494 bar 14.805 deg False crosses False
+canon_256|rev|5bit_skip L 240 pmax 0.379 bar 14.805 deg False crosses False
+canon_256|rev|pair_mod29 L 120 pmax 3.285 bar 11.136 deg False crosses False
+canon_256|xff|mod29 L 240 pmax 2.044 bar 14.805 deg False crosses False
+canon_256|xff|5bit_skip L 240 pmax 0.988 bar 14.805 deg False crosses False
+canon_256|xff|pair_mod29 L 120 pmax 1.329 bar 11.136 deg False crosses False
+N = 27 crossers: 0 best: {'kid': 'canon_256|rev|pair_mod29', 'L': 120, 'n_symbols': 128, 'pmax': np.float64(3.285), 'preg': 2, 'pmax_ne': np.float64(3.285), 'en': -7.3493, 'ioc': 0.9017, 'mds': 17, 'h2': 0.1928, 'zl': 0.8167, 'degenerate': False, 'bar': 11.136, 'crosses': False}
+2026-11-09T15:51:51 FINAL: inventory MEASURED (all residue identified except 13 Outt bytes), T2/T3/canon extended-transform battery NEGATIVE (best pmax 3.285 vs bar 11.136, 0 crossers), plants PC1+PC2 PASS, urandom calibrations clean. RESULTS.md + ledger_rows.json written.

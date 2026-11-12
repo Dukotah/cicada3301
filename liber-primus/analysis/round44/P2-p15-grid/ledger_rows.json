@@ -1,0 +1,93 @@
+{
+  "note": "DRAFT rows for LEDGER.json entries[] — NOT applied by this lane. Schema mirrors existing entries.",
+  "rows": [
+    {
+      "id": "R44-P2-P15GRID-TRANSCRIPTION",
+      "lane": "round44/P2-p15-grid",
+      "hypothesis": "The 16 printed Arabic numbers on page 15 (relikd master), their 3301-minus-prime structure, and the red-ink singling of one cell, transcribed and verified as a standing measured object (discharges B-12 reopens_if (iii): the p15 3299 ink-tone marking now has a tested falsifiable interpretation).",
+      "status": "measured",
+      "round": "44/P2",
+      "date": "2026-11-09",
+      "threshold": "PREREG.md: transcription accepted only if re-derived in-lane from the 2400x3600 master at full resolution with the red cell localized by pixel analysis; structure claim accepted only if reproduced arithmetically in-lane.",
+      "threshold_fixed_in_advance": true,
+      "positive_control": "passed",
+      "control_detail": "Red-channel pixel threshold localizes red ink to exactly one grid cell (r2c2, bbox x913-1147 y1016-1093 abs); full-res digits independently match two prior blind readings (R43 F1 A2, F2 #11) made without ledger access; the 14/16 = 3301-minus-prime structure reproduced with both a pure sieve and sympy.",
+      "result": {
+        "grid_rowmajor": [3258, 3222, 3152, 3038, 3278, 3299, 3298, 2838, 3288, 3294, 3296, 2472, 4516, 1206, 708, 1820],
+        "red_cell": "r2c2 = 3299 (the only red number)",
+        "deltas_3301_minus_g": [43, 79, 149, 263, 23, 2, 3, 463, 13, 7, 5, 829, -1215, 2095, 2593, 1481],
+        "n_prime_deltas": "14/16 (breakers: 4516 -> -1215; 1206 -> 2095 = 5*419)",
+        "red_delta": "2 = Gematria Primus value of rune F (the solved pages' interrupter)",
+        "prime_indices_1based": [14, 22, 35, 56, 9, 1, 2, 90, 6, 4, 3, 145, 378, 234]
+      },
+      "coverage": "The printed numerals, their colour, and their arithmetic structure. Does NOT cover: why 4516 and 1206 break the pattern; any join with other p15 marks (infinity lemniscate, red title, dot blocks).",
+      "evidence": [
+        "liber-primus/analysis/round44/P2-p15-grid/RESULTS.md",
+        "liber-primus/data/relikd/p15.jpg"
+      ],
+      "reproduce": "python3: crop data/relikd/p15.jpg box (500,800,1900,1450); see run_p2.py G16/D16 asserts",
+      "supersedes": [],
+      "reopens_if": "A higher-resolution or alternate-edition scan contradicts any digit or the red-cell identification.",
+      "notes": "Blind agents' reading (R43 F1 A2-H3) confirmed digit-for-digit, not trusted: this lane re-derived it from the master before any test ran."
+    },
+    {
+      "id": "R44-P2-P15GRID-KEYSCHEDULE",
+      "lane": "round44/P2-p15-grid",
+      "hypothesis": "The p15 4x4 grid is a key schedule for the 55 unsolved LP2 pages: values / 3301-values / the 14 prime deltas / their prime indices / decimal digits as repeating or one-shot mod-29 additive-Beaufort-atbash keystreams under 16 cell orders (4 traversals x 4 red-cell treatments); value ranks as period-16 block transpositions; values as seeds into the solved-page prime/totient ladder family.",
+      "status": "negative",
+      "round": "44/P2",
+      "date": "2026-11-09",
+      "threshold": "PREREG.md (before running): a page crosses iff a non-degenerate panel-R36 pmax >= bars_v3(12184, L_cap, 'free') = 12.9560 (L_cap 120) / 17.3303 (L_cap 240), R42-C1 L_cap convention, alpha=0.01 family-wise per page; any crosser FLAGGED-FOR-ORACLE per HUMAN-ORACLE.md.",
+      "threshold_fixed_in_advance": true,
+      "positive_control": "passed",
+      "control_detail": "3/3 plants encrypted and swept through this lane's own glue, each recovered at exactly its planted cell, non-degenerate, recovery 1.00: PA delta-keystream vig- rot7 pmax 38.321 vs bar 17.330; PB rank-perm transposition pmax 35.882 vs bar 12.956; PC phi-of-prime ladder at pi(2593)=378 vig+ atbash pmax 32.322 vs bar 17.330.",
+      "result": {
+        "n_decodes_total": 670120,
+        "grid_per_page": 12184,
+        "n_pages": 55,
+        "observed_global_best": {"pmax": 5.341, "kid": "a:RMr-drop/v3:vigm_atb:rot12", "page": 21, "L": 273, "degenerate": false},
+        "bar_at_best": 17.3303,
+        "n_crossers": 0,
+        "verdict": "NEGATIVE - best decode sits 12.0 z-units below the bar; R3 agnostic stats persisted per page"
+      },
+      "coverage": "All grid-derived key sets (values, 3301-values, 14 prime deltas, prime indices, 63 decimal digits) x 16 cell orders x 6 configs x all rotations + one-shot digits (decode>=60) + 8 rank permutations x atbash + 44 grid-seeded prime/totient ladders (starts to pi(2593)=378, outside R37-C3-U6A-N5's 0-28 offsets) over all 55 unsolved pages at panel-R36 power.",
+      "not_covered": "Interrupter/skip/rejection-loop constructions composing the grid key with the solved-page F-interrupter convention (beam_v3-class models not run); traversals beyond the 4 named (spirals/diagonals/boustrophedon); digit bases != 10; one-shot for keys < 60; joins with other presentation channels (red dots, quote spans); line-indexed selection; grid as crib positions; per-page different grid keys.",
+      "evidence": [
+        "liber-primus/analysis/round44/P2-p15-grid/p2_results.json",
+        "liber-primus/analysis/round44/P2-p15-grid/RESULTS.md",
+        "liber-primus/analysis/round44/P2-p15-grid/PREREG.md"
+      ],
+      "reproduce": "python3 liber-primus/analysis/round44/P2-p15-grid/run_p2.py",
+      "supersedes": [],
+      "reopens_if": "A beam_v3-class run composes the grid keys with interrupter/skip transition models; or a second numeric panel (e.g. the pp49-51 table) suggests a multi-page schedule; or the 4516/1206 pattern-breakers acquire an independent interpretation changing the derived key sets.",
+      "notes": "three_conditionals: key_space = grid-derived material only; transition_model = position-independent additive/Beaufort mod 29 x atbash, repeating/one-shot, period-16 block transposition, NO interrupters; adjudicator_register = panel-R36 12 registers, degenerate guard on, free bars_v3 of record."
+    },
+    {
+      "id": "R44-P2-P15GRID-INDEXMAP",
+      "lane": "round44/P2-p15-grid",
+      "hypothesis": "The 16 p15 numbers select pages (mod 55) or runes (as absolute indices into the 12,956-rune unsolved stream).",
+      "status": "measured",
+      "round": "44/P2",
+      "date": "2026-11-09",
+      "threshold": "PREREG.md (d): measured-only census; n=16 is below any adjudication floor, so no pass/fail bar exists and no verdict is claimable from the extracted strings.",
+      "threshold_fixed_in_advance": true,
+      "positive_control": "passed",
+      "control_detail": "Extraction glue is the same loader stack (run_stats.load_pages / gematria indices) whose integrity is plant-demonstrated in R44-P2-P15GRID-KEYSCHEDULE (3/3 plants through identical index arithmetic); extraction indices verified in-range against stream length 12,956.",
+      "result": {
+        "page_select_G_mod55": [13, 32, 17, 13, 33, 54, 53, 33, 43, 49, 51, 52, 6, 51, 48, 5],
+        "rune_at_G_rowmajor": "MULHUOEWTLYAGMUBAE",
+        "rune_at_posD_sorted": "EOMFTHNPPGIJJJNM",
+        "observation": "No visible structure in any of the four extracted strings or two selection sequences; recorded as measurement only"
+      },
+      "coverage": "G mod 55 and positive-delta mod 55 page selection; G and positive-delta as 0-based rune indices, row-major and sorted orders.",
+      "not_covered": "1-based indexing variants; line-indexed selection (lines are not represented in the solver input); selection composed across orders; the selected runes as key material for anything downstream.",
+      "evidence": [
+        "liber-primus/analysis/round44/P2-p15-grid/p2_census.json"
+      ],
+      "reproduce": "python3 liber-primus/analysis/round44/P2-p15-grid/run_p2.py",
+      "supersedes": [],
+      "reopens_if": "A principled reading assigns meaning to the selected positions (e.g. the numbers are shown to index a different stream such as the full-book or LP1+LP2 concatenation).",
+      "notes": "Census strings use multi-character transliterations (TH/OE/EA...), so apparent letter counts exceed 16."
+    }
+  ]
+}

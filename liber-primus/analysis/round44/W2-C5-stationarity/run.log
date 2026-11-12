@@ -1,0 +1,18 @@
+2026-11-09T15:41:31 PREREG stamp before first execution: a287d1433f9e3b706ef0736ffeac7d5332ffb113362c49be25401a43f2874601  PREREG.md
+2026-11-09T15:42:46 plant_gate.py start
+k=1.0    power_any=0.003 (G 0.000 / Z 0.000 / minp 0.003) elev-page doublets ~8.8
+k=1.5    power_any=0.022 (G 0.007 / Z 0.013 / minp 0.010) elev-page doublets ~13.3
+k=2.0    power_any=0.048 (G 0.018 / Z 0.025 / minp 0.025) elev-page doublets ~17.5
+k=2.5    power_any=0.128 (G 0.052 / Z 0.095 / minp 0.055) elev-page doublets ~21.9
+k=3.0    power_any=0.312 (G 0.190 / Z 0.263 / minp 0.150) elev-page doublets ~26.6
+k=4.0    power_any=0.743 (G 0.575 / Z 0.715 / minp 0.492) elev-page doublets ~34.6
+k=5.1728 power_any=0.975 (G 0.932 / Z 0.973 / minp 0.853) elev-page doublets ~45.6
+GATE PASS: power@unfiltered=0.975, specificity=0.0025, MDE(0.8)=5.1728, MDE(0.5)=4.0, 66.5s
+2026-11-09T15:44:24 run_real.py start (gate PASS in plants.json)
+T1 G=67.94 p=0.2764 | T2 Z=0.539 p=0.4890 | T3 minp=0.02077 family-p=0.4647 | bar 0.00333 | ANY FIRED: False
+  page 19: 5/270 (1.85%) exact p=0.0359 bonf55=1.000 fires=False
+  page 24: 5/269 (1.86%) exact p=0.0354 bonf55=1.000 fires=False
+  page 27: 5/233 (2.15%) exact p=0.0208 bonf55=1.000 fires=False
+  page 29: 4/276 (1.45%) exact p=0.1146 bonf55=1.000 fires=False
+  page 44: 4/272 (1.47%) exact p=0.1102 bonf55=1.000 fires=False
+2026-11-09T15:46:13 cell complete: RESULTS.md + ledger_rows.json written; verdict NEGATIVE (no fire), gate PASS 0.975, no oracle flag

@@ -1,0 +1,1237 @@
+2026-11-09 PREREG hash-stamp (before first execution): ee903573adc0686954eb245e1689265800c0333227f67325bed336f22717d19a  PREREG.md
+2026-11-09T14:02:33-08:00 RUN plant_solver.py
+{
+ "PLANT_S1": {
+  "s": 11,
+  "count_at_s": 16,
+  "recovered": false
+ },
+ "PLANT_S2": {
+  "ab": [
+   4,
+   3
+  ],
+  "count_at_ab": 12,
+  "recovered": true
+ },
+ "PLANT_S3": {
+  "o1o2": [
+   57,
+   141
+  ],
+  "cell_count7": 4,
+  "grid_sat7_total": 47254,
+  "recovered": true
+ },
+ "passed": false
+}
+exit=1
+2026-11-09T14:03:04-08:00 RERUN plant_solver.py (per-row listing cap fix in a2lib.ap_scan; threshold/criteria unchanged)
+{
+ "PLANT_S1": {
+  "s": 11,
+  "count_at_s": 16,
+  "recovered": true
+ },
+ "PLANT_S2": {
+  "ab": [
+   4,
+   3
+  ],
+  "count_at_ab": 12,
+  "recovered": true
+ },
+ "PLANT_S3": {
+  "o1o2": [
+   57,
+   141
+  ],
+  "cell_count7": 4,
+  "grid_sat7_total": 47254,
+  "recovered": true
+ },
+ "passed": true
+}
+exit=0
+2026-11-09T14:03:17-08:00 RUN plant_crib.py
+{
+ "o_star": 137,
+ "cfg": "vigm",
+ "key": "G-bash-1033",
+ "required_k": 25,
+ "n_surviving_offsets": 9,
+ "o_star_flagged": true,
+ "best_offset": 137,
+ "best_pmax": 18.589541149717142,
+ "bar": 14.8161,
+ "recovery_at_best": 1.0,
+ "others_below_bar": true,
+ "propagation_T": 30,
+ "T_cap": 30,
+ "n_adjudicated": 9,
+ "passed": true
+}
+exit=0
+2026-11-09T14:03:57-08:00 RUN run_diffplain.py
+{
+ "V3": 244,
+ "H": 25,
+ "constant": {
+  "satisfiable_shifts": [
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   14,
+   15,
+   17,
+   18,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25
+  ],
+  "pairs_per_shift": {
+   "4": 9,
+   "5": 1,
+   "6": 16,
+   "7": 4,
+   "8": 16,
+   "9": 4,
+   "10": 4,
+   "11": 4,
+   "12": 9,
+   "14": 36,
+   "15": 36,
+   "17": 9,
+   "18": 4,
+   "20": 4,
+   "21": 16,
+   "22": 4,
+   "23": 16,
+   "24": 1,
+   "25": 9
+  },
+  "total_pairs": 202
+ },
+ "AP": {
+  "cells_satisfiable": 530,
+  "cells": 812,
+  "total_pairs": 4188,
+  "max_cell": 55,
+  "head_free_cells_satisfiable": 608
+ },
+ "null_constant_pairs": {
+  "mean": 195.675,
+  "sd": 64.11029071061837,
+  "min": 75,
+  "max": 420
+ },
+ "null_AP_cells": {
+  "mean": 584.115,
+  "sd": 20.048734997500464,
+  "min": 522,
+  "max": 631
+ },
+ "null_generator": {
+  "grid_sat7_fraction": {
+   "mean": 0.8134559582703329,
+   "sd": 0.022036639205822963
+  },
+  "diag_section_sat7_total": {
+   "mean": 8367.9,
+   "sd": 236.56328962880102
+  },
+  "diag_global_sat7_total": {
+   "mean": 8368.2,
+   "sd": 246.52152035877114
+  }
+ },
+ "wall_s": 48.7,
+ "generator_summary": {
+  "grid_cells_per_key": 68121,
+  "grid_sat7_fraction_mean": 0.6851579844515424,
+  "diag_section_sat7_total": 7121,
+  "diag_global_sat7_total": 7195,
+  "anchored_diag_cells": [
+   {
+    "key": "P-prime",
+    "diag": "diag_section",
+    "sat7": 144,
+    "max7": 60,
+    "argmax_o": [
+     127
+    ]
+   },
+   {
+    "key": "P-prime",
+    "diag": "diag_global",
+    "sat7": 150,
+    "max7": 40,
+    "argmax_o": [
+     89
+    ]
+   },
+   {
+    "key": "P-totient",
+    "diag": "diag_section",
+    "sat7": 144,
+    "max7": 60,
+    "argmax_o": [
+     127
+    ]
+   },
+   {
+    "key": "P-totient",
+    "diag": "diag_global",
+    "sat7": 150,
+    "max7": 40,
+    "argmax_o": [
+     89
+    ]
+   },
+   {
+    "key": "P-phi",
+    "diag": "diag_section",
+    "sat7": 128,
+    "max7": 40,
+    "argmax_o": [
+     89
+    ]
+   },
+   {
+    "key": "P-phi",
+    "diag": "diag_global",
+    "sat7": 140,
+    "max7": 112,
+    "argmax_o": [
+     76
+    ]
+   },
+   {
+    "key": "G-bash-1325734783",
+    "diag": "diag_section",
+    "sat7": 134,
+    "max7": 42,
+    "argmax_o": [
+     103
+    ]
+   },
+   {
+    "key": "G-bash-1325734783",
+    "diag": "diag_global",
+    "sat7": 128,
+    "max7": 48,
+    "argmax_o": [
+     61
+    ]
+   },
+   {
+    "key": "G-bash-1325735163",
+    "diag": "diag_section",
+    "sat7": 142,
+    "max7": 36,
+    "argmax_o": [
+     116
+    ]
+   },
+   {
+    "key": "G-bash-1325735163",
+    "diag": "diag_global",
+    "sat7": 132,
+    "max7": 42,
+    "argmax_o": [
+     139
+    ]
+   },
+   {
+    "key": "G-bash-1325881710",
+    "diag": "diag_section",
+    "sat7": 139,
+    "max7": 36,
+    "argmax_o": [
+     196
+    ]
+   },
+   {
+    "key": "G-bash-1325881710",
+    "diag": "diag_global",
+    "sat7": 129,
+    "max7": 50,
+    "argmax_o": [
+     58
+    ]
+   },
+   {
+    "key": "G-bash-1325922790",
+    "diag": "diag_section",
+    "sat7": 145,
+    "max7": 80,
+    "argmax_o": [
+     193
+    ]
+   },
+   {
+    "key": "G-bash-1325922790",
+    "diag": "diag_global",
+    "sat7": 135,
+    "max7": 40,
+    "argmax_o": [
+     18
+    ]
+   },
+   {
+    "key": "G-bash-1325930871",
+    "diag": "diag_section",
+    "sat7": 135,
+    "max7": 48,
+    "argmax_o": [
+     141
+    ]
+   },
+   {
+    "key": "G-bash-1325930871",
+    "diag": "diag_global",
+    "sat7": 132,
+    "max7": 76,
+    "argmax_o": [
+     88
+    ]
+   },
+   {
+    "key": "G-bash-1325965524",
+    "diag": "diag_section",
+    "sat7": 140,
+    "max7": 64,
+    "argmax_o": [
+     194
+    ]
+   },
+   {
+    "key": "G-bash-1325965524",
+    "diag": "diag_global",
+    "sat7": 135,
+    "max7": 30,
+    "argmax_o": [
+     113
+    ]
+   },
+   {
+    "key": "G-bash-1326062075",
+    "diag": "diag_section",
+    "sat7": 154,
+    "max7": 48,
+    "argmax_o": [
+     124
+    ]
+   },
+   {
+    "key": "G-bash-1326062075",
+    "diag": "diag_global",
+    "sat7": 149,
+    "max7": 36,
+    "argmax_o": [
+     10
+    ]
+   },
+   {
+    "key": "G-bash-1326065944",
+    "diag": "diag_section",
+    "sat7": 151,
+    "max7": 36,
+    "argmax_o": [
+     114
+    ]
+   },
+   {
+    "key": "G-bash-1326065944",
+    "diag": "diag_global",
+    "sat7": 158,
+    "max7": 42,
+    "argmax_o": [
+     64
+    ]
+   },
+   {
+    "key": "G-bash-1326258479",
+    "diag": "diag_section",
+    "sat7": 144,
+    "max7": 49,
+    "argmax_o": [
+     79
+    ]
+   },
+   {
+    "key": "G-bash-1326258479",
+    "diag": "diag_global",
+    "sat7": 139,
+    "max7": 40,
+    "argmax_o": [
+     129
+    ]
+   },
+   {
+    "key": "G-bash-1326266538",
+    "diag": "diag_section",
+    "sat7": 139,
+    "max7": 60,
+    "argmax_o": [
+     166
+    ]
+   },
+   {
+    "key": "G-bash-1326266538",
+    "diag": "diag_global",
+    "sat7": 132,
+    "max7": 42,
+    "argmax_o": [
+     46
+    ]
+   },
+   {
+    "key": "G-bash-1326591582",
+    "diag": "diag_section",
+    "sat7": 125,
+    "max7": 54,
+    "argmax_o": [
+     192
+    ]
+   },
+   {
+    "key": "G-bash-1326591582",
+    "diag": "diag_global",
+    "sat7": 144,
+    "max7": 80,
+    "argmax_o": [
+     113
+    ]
+   },
+   {
+    "key": "G-bash-1326629812",
+    "diag": "diag_section",
+    "sat7": 145,
+    "max7": 50,
+    "argmax_o": [
+     68
+    ]
+   },
+   {
+    "key": "G-bash-1326629812",
+    "diag": "diag_global",
+    "sat7": 138,
+    "max7": 24,
+    "argmax_o": [
+     94
+    ]
+   },
+   {
+    "key": "G-bash-1327031860",
+    "diag": "diag_section",
+    "sat7": 147,
+    "max7": 60,
+    "argmax_o": [
+     138
+    ]
+   },
+   {
+    "key": "G-bash-1327031860",
+    "diag": "diag_global",
+    "sat7": 147,
+    "max7": 39,
+    "argmax_o": [
+     48
+    ]
+   },
+   {
+    "key": "G-bash-1328569180",
+    "diag": "diag_section",
+    "sat7": 134,
+    "max7": 128,
+    "argmax_o": [
+     56
+    ]
+   },
+   {
+    "key": "G-bash-1328569180",
+    "diag": "diag_global",
+    "sat7": 140,
+    "max7": 56,
+    "argmax_o": [
+     66
+    ]
+   },
+   {
+    "key": "G-bash-1334770902",
+    "diag": "diag_section",
+    "sat7": 132,
+    "max7": 42,
+    "argmax_o": [
+     179
+    ]
+   },
+   {
+    "key": "G-bash-1334770902",
+    "diag": "diag_global",
+    "sat7": 145,
+    "max7": 30,
+    "argmax_o": [
+     111
+    ]
+   },
+   {
+    "key": "G-bash-1357171691",
+    "diag": "diag_section",
+    "sat7": 121,
+    "max7": 48,
+    "argmax_o": [
+     93
+    ]
+   },
+   {
+    "key": "G-bash-1357171691",
+    "diag": "diag_global",
+    "sat7": 139,
+    "max7": 60,
+    "argmax_o": [
+     75
+    ]
+   },
+   {
+    "key": "G-bash-1357187609",
+    "diag": "diag_section",
+    "sat7": 135,
+    "max7": 30,
+    "argmax_o": [
+     150
+    ]
+   },
+   {
+    "key": "G-bash-1357187609",
+    "diag": "diag_global",
+    "sat7": 145,
+    "max7": 56,
+    "argmax_o": [
+     119
+    ]
+   },
+   {
+    "key": "G-bash-1357271251",
+    "diag": "diag_section",
+    "sat7": 131,
+    "max7": 45,
+    "argmax_o": [
+     70
+    ]
+   },
+   {
+    "key": "G-bash-1357271251",
+    "diag": "diag_global",
+    "sat7": 142,
+    "max7": 91,
+    "argmax_o": [
+     132
+    ]
+   },
+   {
+    "key": "G-bash-1357457899",
+    "diag": "diag_section",
+    "sat7": 148,
+    "max7": 54,
+    "argmax_o": [
+     91
+    ]
+   },
+   {
+    "key": "G-bash-1357457899",
+    "diag": "diag_global",
+    "sat7": 145,
+    "max7": 49,
+    "argmax_o": [
+     106
+    ]
+   },
+   {
+    "key": "G-bash-1357458695",
+    "diag": "diag_section",
+    "sat7": 158,
+    "max7": 49,
+    "argmax_o": [
+     89
+    ]
+   },
+   {
+    "key": "G-bash-1357458695",
+    "diag": "diag_global",
+    "sat7": 140,
+    "max7": 100,
+    "argmax_o": [
+     8
+    ]
+   },
+   {
+    "key": "G-bash-1357837635",
+    "diag": "diag_section",
+    "sat7": 150,
+    "max7": 48,
+    "argmax_o": [
+     196
+    ]
+   },
+   {
+    "key": "G-bash-1357837635",
+    "diag": "diag_global",
+    "sat7": 139,
+    "max7": 49,
+    "argmax_o": [
+     47
+    ]
+   },
+   {
+    "key": "G-bash-1357946428",
+    "diag": "diag_section",
+    "sat7": 152,
+    "max7": 40,
+    "argmax_o": [
+     127
+    ]
+   },
+   {
+    "key": "G-bash-1357946428",
+    "diag": "diag_global",
+    "sat7": 161,
+    "max7": 35,
+    "argmax_o": [
+     71
+    ]
+   },
+   {
+    "key": "G-bash-1357980065",
+    "diag": "diag_section",
+    "sat7": 144,
+    "max7": 36,
+    "argmax_o": [
+     55
+    ]
+   },
+   {
+    "key": "G-bash-1357980065",
+    "diag": "diag_global",
+    "sat7": 148,
+    "max7": 133,
+    "argmax_o": [
+     193
+    ]
+   },
+   {
+    "key": "G-bash-1358023191",
+    "diag": "diag_section",
+    "sat7": 147,
+    "max7": 42,
+    "argmax_o": [
+     45
+    ]
+   },
+   {
+    "key": "G-bash-1358023191",
+    "diag": "diag_global",
+    "sat7": 125,
+    "max7": 36,
+    "argmax_o": [
+     107
+    ]
+   },
+   {
+    "key": "G-bash-1358023599",
+    "diag": "diag_section",
+    "sat7": 133,
+    "max7": 36,
+    "argmax_o": [
+     97
+    ]
+   },
+   {
+    "key": "G-bash-1358023599",
+    "diag": "diag_global",
+    "sat7": 134,
+    "max7": 56,
+    "argmax_o": [
+     89
+    ]
+   },
+   {
+    "key": "G-bash-1358141467",
+    "diag": "diag_section",
+    "sat7": 137,
+    "max7": 45,
+    "argmax_o": [
+     192
+    ]
+   },
+   {
+    "key": "G-bash-1358141467",
+    "diag": "diag_global",
+    "sat7": 126,
+    "max7": 36,
+    "argmax_o": [
+     181
+    ]
+   },
+   {
+    "key": "G-bash-1358280342",
+    "diag": "diag_section",
+    "sat7": 149,
+    "max7": 48,
+    "argmax_o": [
+     37
+    ]
+   },
+   {
+    "key": "G-bash-1358280342",
+    "diag": "diag_global",
+    "sat7": 134,
+    "max7": 40,
+    "argmax_o": [
+     16
+    ]
+   },
+   {
+    "key": "G-bash-1358280344",
+    "diag": "diag_section",
+    "sat7": 145,
+    "max7": 63,
+    "argmax_o": [
+     181
+    ]
+   },
+   {
+    "key": "G-bash-1358280344",
+    "diag": "diag_global",
+    "sat7": 135,
+    "max7": 72,
+    "argmax_o": [
+     178
+    ]
+   },
+   {
+    "key": "G-bash-1358454523",
+    "diag": "diag_section",
+    "sat7": 123,
+    "max7": 45,
+    "argmax_o": [
+     200
+    ]
+   },
+   {
+    "key": "G-bash-1358454523",
+    "diag": "diag_global",
+    "sat7": 145,
+    "max7": 80,
+    "argmax_o": [
+     58
+    ]
+   },
+   {
+    "key": "G-bash-1358529318",
+    "diag": "diag_section",
+    "sat7": 134,
+    "max7": 36,
+    "argmax_o": [
+     52
+    ]
+   },
+   {
+    "key": "G-bash-1358529318",
+    "diag": "diag_global",
+    "sat7": 138,
+    "max7": 50,
+    "argmax_o": [
+     120
+    ]
+   },
+   {
+    "key": "G-bash-1358633759",
+    "diag": "diag_section",
+    "sat7": 139,
+    "max7": 63,
+    "argmax_o": [
+     131
+    ]
+   },
+   {
+    "key": "G-bash-1358633759",
+    "diag": "diag_global",
+    "sat7": 152,
+    "max7": 40,
+    "argmax_o": [
+     172
+    ]
+   },
+   {
+    "key": "G-bash-1358633804",
+    "diag": "diag_section",
+    "sat7": 155,
+    "max7": 49,
+    "argmax_o": [
+     21
+    ]
+   },
+   {
+    "key": "G-bash-1358633804",
+    "diag": "diag_global",
+    "sat7": 145,
+    "max7": 50,
+    "argmax_o": [
+     61
+    ]
+   },
+   {
+    "key": "G-bash-1358633868",
+    "diag": "diag_section",
+    "sat7": 138,
+    "max7": 36,
+    "argmax_o": [
+     127
+    ]
+   },
+   {
+    "key": "G-bash-1358633868",
+    "diag": "diag_global",
+    "sat7": 147,
+    "max7": 42,
+    "argmax_o": [
+     74
+    ]
+   },
+   {
+    "key": "G-bash-1359231981",
+    "diag": "diag_section",
+    "sat7": 132,
+    "max7": 28,
+    "argmax_o": [
+     15
+    ]
+   },
+   {
+    "key": "G-bash-1359231981",
+    "diag": "diag_global",
+    "sat7": 139,
+    "max7": 50,
+    "argmax_o": [
+     126
+    ]
+   },
+   {
+    "key": "G-bash-1359619704",
+    "diag": "diag_section",
+    "sat7": 136,
+    "max7": 40,
+    "argmax_o": [
+     159
+    ]
+   },
+   {
+    "key": "G-bash-1359619704",
+    "diag": "diag_global",
+    "sat7": 145,
+    "max7": 30,
+    "argmax_o": [
+     134
+    ]
+   },
+   {
+    "key": "G-bash-1362288778",
+    "diag": "diag_section",
+    "sat7": 131,
+    "max7": 56,
+    "argmax_o": [
+     131
+    ]
+   },
+   {
+    "key": "G-bash-1362288778",
+    "diag": "diag_global",
+    "sat7": 136,
+    "max7": 49,
+    "argmax_o": [
+     20
+    ]
+   },
+   {
+    "key": "G-bash-1362288781",
+    "diag": "diag_section",
+    "sat7": 133,
+    "max7": 60,
+    "argmax_o": [
+     130
+    ]
+   },
+   {
+    "key": "G-bash-1362288781",
+    "diag": "diag_global",
+    "sat7": 151,
+    "max7": 50,
+    "argmax_o": [
+     154
+    ]
+   },
+   {
+    "key": "G-bash-1388984366",
+    "diag": "diag_section",
+    "sat7": 134,
+    "max7": 60,
+    "argmax_o": [
+     174
+    ]
+   },
+   {
+    "key": "G-bash-1388984366",
+    "diag": "diag_global",
+    "sat7": 143,
+    "max7": 45,
+    "argmax_o": [
+     54
+    ]
+   },
+   {
+    "key": "G-bash-1388993727",
+    "diag": "diag_section",
+    "sat7": 121,
+    "max7": 64,
+    "argmax_o": [
+     7
+    ]
+   },
+   {
+    "key": "G-bash-1388993727",
+    "diag": "diag_global",
+    "sat7": 148,
+    "max7": 48,
+    "argmax_o": [
+     164
+    ]
+   },
+   {
+    "key": "G-bash-1389063631",
+    "diag": "diag_section",
+    "sat7": 130,
+    "max7": 36,
+    "argmax_o": [
+     97
+    ]
+   },
+   {
+    "key": "G-bash-1389063631",
+    "diag": "diag_global",
+    "sat7": 146,
+    "max7": 36,
+    "argmax_o": [
+     63
+    ]
+   },
+   {
+    "key": "G-bash-3301",
+    "diag": "diag_section",
+    "sat7": 142,
+    "max7": 28,
+    "argmax_o": [
+     24
+    ]
+   },
+   {
+    "key": "G-bash-3301",
+    "diag": "diag_global",
+    "sat7": 145,
+    "max7": 88,
+    "argmax_o": [
+     139
+    ]
+   },
+   {
+    "key": "G-bash-1033",
+    "diag": "diag_section",
+    "sat7": 152,
+    "max7": 88,
+    "argmax_o": [
+     60
+    ]
+   },
+   {
+    "key": "G-bash-1033",
+    "diag": "diag_global",
+    "sat7": 151,
+    "max7": 102,
+    "argmax_o": [
+     52
+    ]
+   },
+   {
+    "key": "G-bash-761",
+    "diag": "diag_section",
+    "sat7": 149,
+    "max7": 45,
+    "argmax_o": [
+     196
+    ]
+   },
+   {
+    "key": "G-bash-761",
+    "diag": "diag_global",
+    "sat7": 137,
+    "max7": 119,
+    "argmax_o": [
+     197
+    ]
+   },
+   {
+    "key": "G-bash-509",
+    "diag": "diag_section",
+    "sat7": 148,
+    "max7": 49,
+    "argmax_o": [
+     187
+    ]
+   },
+   {
+    "key": "G-bash-509",
+    "diag": "diag_global",
+    "sat7": 132,
+    "max7": 30,
+    "argmax_o": [
+     186
+    ]
+   },
+   {
+    "key": "G-bash-29",
+    "diag": "diag_section",
+    "sat7": 135,
+    "max7": 60,
+    "argmax_o": [
+     139
+    ]
+   },
+   {
+    "key": "G-bash-29",
+    "diag": "diag_global",
+    "sat7": 130,
+    "max7": 76,
+    "argmax_o": [
+     129
+    ]
+   },
+   {
+    "key": "G-bash-58",
+    "diag": "diag_section",
+    "sat7": 139,
+    "max7": 56,
+    "argmax_o": [
+     47
+    ]
+   },
+   {
+    "key": "G-bash-58",
+    "diag": "diag_global",
+    "sat7": 145,
+    "max7": 63,
+    "argmax_o": [
+     75
+    ]
+   },
+   {
+    "key": "G-bash-2",
+    "diag": "diag_section",
+    "sat7": 126,
+    "max7": 42,
+    "argmax_o": [
+     50
+    ]
+   },
+   {
+    "key": "G-bash-2",
+    "diag": "diag_global",
+    "sat7": 138,
+    "max7": 64,
+    "argmax_o": [
+     47
+    ]
+   },
+   {
+    "key": "G-bash-1",
+    "diag": "diag_section",
+    "sat7": 152,
+    "max7": 60,
+    "argmax_o": [
+     114
+    ]
+   },
+   {
+    "key": "G-bash-1",
+    "diag": "diag_global",
+    "sat7": 146,
+    "max7": 45,
+    "argmax_o": [
+     173
+    ]
+   }
+  ]
+ }
+}
+exit=0
+2026-11-09T14:05:51-08:00 RUN run_numerology.py
+{
+ "matches": [
+  "pageA_0b (27) divisible by 3",
+  "pageB_0b (54) divisible by 2",
+  "pageB_0b (54) divisible by 3",
+  "pageA_1b (28) divisible by 2",
+  "posA (28) divisible by 2",
+  "posB (70) divisible by 2",
+  "globalA (6555) divisible by 3",
+  "globalB (12950) divisible by 2",
+  "p55_global (12956) divisible by 2",
+  "lenA (234) divisible by 2",
+  "lenA (234) divisible by 3",
+  "lenB (76) divisible by 2",
+  "dpos (42) divisible by 2",
+  "dpos (42) divisible by 3",
+  "dpage (27) divisible by 3",
+  "idxsum (105) divisible by 3",
+  "doubling_residual (-160) divisible by 2",
+  "|pageA_0b-pageA_1b| = 1 in constants",
+  "|pageA_0b-posA| = 1 in constants",
+  "|pageA_0b-len55| = 58 in constants",
+  "|pageB_0b-pageB_1b| = 1 in constants",
+  "|pageA_1b-dpage| = 1 in constants",
+  "|posA-dpage| = 1 in constants",
+  "|lenB-idxsum| = 29 in constants",
+  "|len55-dpage| = 58 in constants"
+ ],
+ "prime_members": [
+  "gpsum"
+ ],
+ "mod29": {
+  "pageA_0b": 27,
+  "pageB_0b": 25,
+  "pageA_1b": 28,
+  "pageB_1b": 26,
+  "posA": 28,
+  "posB": 12,
+  "globalA": 1,
+  "globalB": 16,
+  "p55_global": 22,
+  "lenA": 2,
+  "lenB": 18,
+  "len55": 27,
+  "dpos": 13,
+  "dpage": 27,
+  "dglobal": 15,
+  "dglobal_p55": 21,
+  "idxsum": 18,
+  "gpsum": 12,
+  "sumglobals": 17,
+  "doubling_residual": 14
+ }
+}
+exit=0
+2026-11-09T14:06:04-08:00 RUN run_crib.py
+{
+ "premise": {
+  "gA": 6555,
+  "gB": 12950,
+  "p54_len": 76,
+  "p55_first": 25
+ },
+ "p55": {
+  "T_max": 30,
+  "head": "ANENDWITHINTHE",
+  "n_interrupters": 1
+ },
+ "required_k": {
+  "vigm": 1,
+  "vigp": 28,
+  "beau": 20,
+  "vigm_atb": 8,
+  "vigp_atb": 21,
+  "beau_atb": 27
+ },
+ "n_crib_checks": 113832,
+ "n_cells": 3905,
+ "n_section_flags_o_le_29": 308,
+ "depth_hist": {
+  "1": 3776,
+  "2": 125,
+  "3": 4
+ },
+ "depth_max": 3,
+ "depth_flag_threshold": 5,
+ "depth_flags": [],
+ "n_tier1_decodes": 215325,
+ "bars": {
+  "120": 14.8161,
+  "240": 19.9112
+ },
+ "n_bar": 400000,
+ "best": {
+  "pmax": 4.921880452791492,
+  "page": 18,
+  "key": "G-bash-1325735163",
+  "cfg": "vigm",
+  "mode": "section",
+  "offset": 33,
+  "L": 260,
+  "bar": 19.9112,
+  "depth": 1
+ },
+ "n_crossers": 0,
+ "crossers": [],
+ "tier2": [
+  {
+   "key": "G-bash-1325735163",
+   "cfg": "vigm",
+   "mode": "section",
+   "offset": 33,
+   "page": 18,
+   "tier1_pmax": 4.921880452791492,
+   "beam_pmax": 4.255681439041366,
+   "degenerate": false,
+   "bar": 19.9112,
+   "crossed": false
+  },
+  {
+   "key": "G-bash-1325930871",
+   "cfg": "vigp_atb",
+   "mode": "global",
+   "offset": 197,
+   "page": 45,
+   "tier1_pmax": 4.8968521227935415,
+   "beam_pmax": 3.285544225287902,
+   "degenerate": false,
+   "bar": 19.9112,
+   "crossed": false
+  },
+  {
+   "key": "G-bash-1325930871",
+   "cfg": "vigp",
+   "mode": "global",
+   "offset": 185,
+   "page": 29,
+   "tier1_pmax": 4.843699392641055,
+   "beam_pmax": 2.6566217476975744,
+   "degenerate": false,
+   "bar": 19.9112,
+   "crossed": false
+  }
+ ],
+ "wall_s": 4.8
+}
+exit=0
+2026-11-09T14:06:54-08:00 RUN loud2 cross-reference
+{"anchored_diag_sat_cells": 14316, "also_crib_consistent_LOUD2": 2760, "note": "every crib-consistent cell was decoded in part 3; 0 crossers"}
+exit=0
+2026-11-09T14:09:36-08:00 CELL CLOSEOUT: diffplain measured-at-null, numerology measured (no tie), crib sweep NEGATIVE 0/215335 vs bars 14.8161/19.9112, depth max 3 (<5), tier2 0 crossers. Nothing flagged for oracle.

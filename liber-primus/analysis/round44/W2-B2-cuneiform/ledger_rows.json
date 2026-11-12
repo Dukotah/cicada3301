@@ -1,0 +1,62 @@
+[
+ {
+  "id": "R44-B2-BLACK-NONRUNIC-CENSUS",
+  "lane": "round44/W2-B2-cuneiform",
+  "round": "44",
+  "date": "2026-11-09",
+  "hypothesis": "Book-wide census of all black non-runic ink on the 57 relikd masters (mask mean(RGB)<128 AND not-red, 8-conn, >=20px): what unlogged black marks exist outside the rune glyphs, the canon punctuation, the 109 A-06 band boxes and R44-P1's red census? (R43 X0 NEW item 20: cuneiform clusters p33/p36-37, 5-dot constellation p23, 3-dot rows.)",
+  "status": "measured",
+  "threshold": "census validation gate = positive controls through the lane's own glue: PC-A planted cluster + 7-dot constellation found/classified UNLOGGED with centers within 3px (measured 0.71px); each component classified exactly once; all objects dispositioned exactly once (catalog.json completeness check true)",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "PC-A: synthetic 6-glyph cuneiform-like cluster + 7-dot constellation painted in black on a copy of real p1, run through the identical census code path: both found, classified UNLOGGED, 7/7 dots, center error 0.71 px vs 3 px bar. Two control-forced glue fixes (run.log, dated; thresholds untouched): BAND_COVERED restricted to non-TEXT band boxes; reading order row-bucketed (ROW_GAP 40px).",
+  "result": "18,051 components: 15,186 RUNE_GLYPH / 1,118 TEXT_PUNCT / 835 BAND_COVERED / 912 UNLOGGED -> 124 objects, all dispositioned (catalog.json). THREE corrections to the R43 blind inventory: (1) the cuneiform-like device is on SEVEN pages, not two - p33 bottom + tops of p34/p35/p36/p37/p38/p39, bracketing exactly the p33-p39 section; (2) the p34-p39 instances are bitwise identical (translation-aligned IoU 1.0000) and p33 is the same device at IoU 0.853 (sub-pixel resampling) - a repeated digital stamp whose only degree of freedom is placement; (3) the p23 5-dot 'constellation' has an unreported exact vertical-mirror twin on p7 bottom (same five x-centers to 0.0px, y23 = 3675 - y7, max deviation 0.5px) - a mirrored ornament pair, not an irregular star map. Remaining unlogged classes resolve to cited territory: margin art (R22-D reopener, first bbox-level catalog), unsegmented runic text lines (T1-05's 31 unaligned canon runes / R44-P1 corrections 3-4), punctuation-diamond fragments (lane P3, item 19), p15 grid digits (lane P2, item 18), p49 alphanumeric payload line (A-04/R28-L2), 0_wisdom solved-page content, one edge artifact.",
+  "coverage": "100% of >=20px black components on all 57 masters classified exactly once; 124/124 objects cropped + dispositioned; cluster identity measured pairwise over all 7 instances; both 5-dot constellations and both 3-dot rows enumerated to the pixel.",
+  "not_covered": "Ink with mean(RGB)>=128 (the p55 ghost tree is only partially above threshold; its faint remainder is R43-item-30 territory). Sub-20px components. Marks inside non-TEXT band boxes (A-06 territory by the registered rule). 0_wisdom reads (no stones glyphs exist for it). Identification of the 6 cluster glyphs against real cuneiform sign lists (no network in-lane; shapes persisted).",
+  "evidence": [
+   "liber-primus/analysis/round44/W2-B2-cuneiform/PREREG.md",
+   "liber-primus/analysis/round44/W2-B2-cuneiform/RESULTS.md",
+   "liber-primus/analysis/round44/W2-B2-cuneiform/census.py",
+   "liber-primus/analysis/round44/W2-B2-cuneiform/census.json",
+   "liber-primus/analysis/round44/W2-B2-cuneiform/catalog.json",
+   "liber-primus/analysis/round44/W2-B2-cuneiform/plant_results.json",
+   "liber-primus/analysis/round44/W2-B2-cuneiform/run.log"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-B2-cuneiform && python3 plant.py && python3 census.py",
+  "reopens_if": "a second-ink-tone or sub-threshold pass extends the mask; or anyone extends the census to the vendored 2014 render set (same lineage per A-06 notes) to difference the stamps across mirrors.",
+  "supersedes": null,
+  "superseded_by": null
+ },
+ {
+  "id": "R44-B2-UNLOGGED-DOT-STREAM-AFFINE",
+  "lane": "round44/W2-B2-cuneiform",
+  "round": "44",
+  "date": "2026-11-09",
+  "hypothesis": "The book-wide unlogged black dot stream (356 UNLOGGED is_dot components p0-p55 in row-major reading order, each mapped to its nearest stones glyph's rune index) reads as language under fwd/rev x all 812 affine maps at panel-R36.",
+  "status": "negative",
+  "threshold": "bars_v3(N=2000, L, 'free') fixed in PREREG before any run: L120 11.9933 / L240 15.9945 / L400 17.4261 / L729 20.3640; L_cap rule = largest node <= L; stream L=356 -> bar 15.9945; any non-degenerate crosser FLAGGED-FOR-ORACLE, never certified",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "PC-B: 120 runes of the solved 'A WARNING...' plaintext planted as black dots under the canon glyphs spelling it, on real page copies, extracted through the IDENTICAL census + dot->nearest-glyph glue: 120/120 exact rune-index recovery, direct reading pmax 26.668 >= bar 11.9933, non-degenerate.",
+  "result": "NEGATIVE. 1,624 decodes (fwd/rev x 812 affine), best pmax 8.185 (rev, a=11, s=2) vs bar 15.9945 - 7.8 below; 0 crossers; nothing flagged. Doctrine-R3 stats persisted for the best row (en -7.78, ioc*N 1.207, mds 7, h2 0.962, zl 0.570, pmax_ne 8.185, pcon 8.004, non-degenerate). Composition note: 336/356 dots sit >150px from any glyph (margin-art side dots dominate), so the nearest-rune selection is a weak construction a priori; it was the one registered adjudicable stream.",
+  "coverage": "The full 356-dot unlogged stream read fwd/rev over all 812 affine maps at 12-register panel power. Short streams enumerated with NO verdict (pending W2-A1 short-stream bars): p23 constellation n=5 + its p7 mirror twin n=5, 3-dot rows p33/p39, per-page counts (56 values), cluster placements (7), cluster glyph geometry (~42 components).",
+  "not_covered": "Transposition/placement-as-key/marks-as-key constructions over the rune stream (not registered); keyskip/chained/output-aware transitions; non-panel registers (numeric, schema, Hebrew, Greek); every L<60 enumeration above carries no verdict; big dots (>60px: the 70px constellation/row dots) are outside the registered is_dot class and were read only via the R-E enumerations.",
+  "three_conditionals": {
+   "key_space": "fwd/rev x 812 affine symbol maps of the nearest-rune dot stream only",
+   "transition_model": "direct (skip-free) reads; no keyed or chained construction represented",
+   "adjudicator_register": "panel-R36's 12 registers; L<60 streams unadjudicable by construction"
+  },
+  "evidence": [
+   "liber-primus/analysis/round44/W2-B2-cuneiform/PREREG.md",
+   "liber-primus/analysis/round44/W2-B2-cuneiform/RESULTS.md",
+   "liber-primus/analysis/round44/W2-B2-cuneiform/reads.py",
+   "liber-primus/analysis/round44/W2-B2-cuneiform/glue.py",
+   "liber-primus/analysis/round44/W2-B2-cuneiform/results.json",
+   "liber-primus/analysis/round44/W2-B2-cuneiform/plant_results.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-B2-cuneiform && python3 reads.py",
+  "reopens_if": "W2-A1 ships bars for L<60 (all short enumerations are persisted ready-to-score in results.json); or a registered placement-as-key / marks-as-key lane takes the stamp placements and mirror pair as input.",
+  "supersedes": null,
+  "superseded_by": null
+ }
+]

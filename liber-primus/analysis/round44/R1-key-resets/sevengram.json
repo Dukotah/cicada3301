@@ -1,0 +1,102 @@
+{
+ "n_pages": 57,
+ "total_runes": 13136,
+ "unsolved_runes_0_54": 12956,
+ "expected_matching_pairs_uniform_iid": 0.004996666843056143,
+ "n_repeated_7grams_concatenated": 1,
+ "repeats": [
+  {
+   "gram_idx": [
+    23,
+    11,
+    1,
+    17,
+    18,
+    10,
+    25
+   ],
+   "gram_translit": "DJUBEIAE",
+   "occurrences": [
+    {
+     "page": 27,
+     "pos": 28,
+     "page_len": 234,
+     "crosses_into_page": null,
+     "word_gap_pattern": "001001",
+     "line": 1,
+     "section_start_page": 27,
+     "section_offset": 28,
+     "page_is_section_start": true
+    },
+    {
+     "page": 54,
+     "pos": 70,
+     "page_len": 76,
+     "crosses_into_page": 55,
+     "word_gap_pattern": "001001",
+     "line": 3,
+     "section_start_page": 54,
+     "section_offset": 70,
+     "page_is_section_start": true
+    }
+   ],
+   "word_gap_patterns_identical": true
+  }
+ ],
+ "note_first_run": "a per-page scan finds ZERO repeated 7-grams: the p54 occurrence crosses the p54->p55 page boundary (p54 len 76, site at 70).",
+ "claimed_p27_p54": [
+  {
+   "gram_idx": [
+    23,
+    11,
+    1,
+    17,
+    18,
+    10,
+    25
+   ],
+   "gram_translit": "DJUBEIAE",
+   "occurrences": [
+    {
+     "page": 27,
+     "pos": 28,
+     "page_len": 234,
+     "crosses_into_page": null,
+     "word_gap_pattern": "001001",
+     "line": 1,
+     "section_start_page": 27,
+     "section_offset": 28,
+     "page_is_section_start": true
+    },
+    {
+     "page": 54,
+     "pos": 70,
+     "page_len": 76,
+     "crosses_into_page": 55,
+     "word_gap_pattern": "001001",
+     "line": 3,
+     "section_start_page": 54,
+     "section_offset": 70,
+     "page_is_section_start": true
+    }
+   ],
+   "word_gap_patterns_identical": true
+  }
+ ],
+ "claim_verified": true,
+ "anchor": {
+  "gram": "DJUBEIAE",
+  "page_mode": {
+   "a_page": 27,
+   "a_pos": 28,
+   "b_page": 54,
+   "b_pos": 70,
+   "b_crossing": "7th rune = p55 pos 0 -> key index o+0 under page reset"
+  },
+  "section_mode": {
+   "a_secoff": 28,
+   "b_secoff": 70,
+   "note": "p27 and p54 both OPEN red-head sections; p55 continues the p54 section, so the b site is contiguous 70..76"
+  }
+ }
+}

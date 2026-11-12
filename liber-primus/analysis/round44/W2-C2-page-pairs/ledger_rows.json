@@ -1,0 +1,62 @@
+[
+ {
+  "round": 44,
+  "lane": "W2-C2",
+  "date": "2026-11-09",
+  "id": "R44-W2C2-PAGE-PAIRS",
+  "hypothesis": "All 55x54 directed unsolved-page pairs: page_i as mod-29 running key over page_j (the 'all-pairs page XOR' clause of R40-C1-R47-F01's not_covered), key fwd/rev, sign patterns {sub,add,negadd} x shifts {0,1,28} (= the full order-swap/shift closure of F-01's {fwd,rev,atbash,neg} x {vigenere,beaufort,add} variant set), offsets {0..29} UNION key-page line starts, under panel-R36 + bars_v3.",
+  "status": "negative",
+  "result": "NEGATIVE. 0 bar-crossers, 0 near-misses; best non-degenerate pmax 5.925 vs fixed bar 16.7816 (margin -10.86). The p27/p54 7-gram pairs (run first): best 4.16 / 3.81 - the unique repeated 7-gram is NOT explained by either page keying the other under this closure.",
+  "coverage": "1,927,476 cells (+146,772 short-window skips counted): 2,970 directed pairs x {fwd,rev} x {sub,add,negadd} x shifts {0,1,28} x (offsets 0..29 UNION line starts >29), window L=min(len_j, len_i-o) >= 60, bars bar_v3(16e6, L-node, 'free') = 16.7816 (L<240) / 22.6382 (L>=240) fixed in PREREG before any run; degenerate guard active (0 degenerate in top-100); sanity checkpoint passed (top-100 median 4.17).",
+  "not_covered": "Shifts outside {0,1,28} (full Caesar layer); interrupter/null-F/skip/autokey constructions over page keys (exact position-wise decode only); multi-page composite keys; solved pages 55-56 as pair keys; cells with usable window <60 runes; registers outside panel-R36.",
+  "three_conditionals": {
+   "key_space": "unsolved pages 0..54 as running keys over each other: 2,970 directed pairs x {fwd,rev} x {sub,add,negadd} x shifts {0,1,28} x (offsets 0..29 UNION key line starts >29); order-swap closure covers beaufort and ct-side line-start alignments",
+   "transition_model": "exact position-wise mod-29 group operation p = eps_j*C_j + eps_i*K_i + s; no beam, no skips, no interrupters, no autokey",
+   "adjudicator_register": "panel-R36 (12 registers) pmax vs bars_v3 free bars at N_bar=16e6 (actual N 8.08M across the cell); 120-node bar applied to L in [60,240) (lenient-only for L<120); R38-I2 degenerate guard"
+  },
+  "threshold": "bar_v3(16_000_000, 120, 'free') = 16.7816 for cells L<240; bar_v3(16_000_000, 240, 'free') = 22.6382 for L>=240; non-degenerate crosser => FLAGGED-FOR-ORACLE per HUMAN-ORACLE.md",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "3/3 plants through the identical runner before any real target: (A) EN_KJV 200 sub key-page-13 fwd at line-start o=45 s=0 -> 24.65; (B) LATIN 150 add key-page-40 REVERSED o=17 s=1 -> 19.69; (C) EN_KJV 180 sub canon-stream o=7001 s=0 -> 26.38; each recovered at exactly the planted coordinates (argmax of its ct page's cells), non-degenerate, over bar 16.78, best non-neighbour cell 5.0-5.2 (plant_pair.json, plant_canon.json)",
+  "evidence": [
+   "liber-primus/analysis/round44/W2-C2-page-pairs/PREREG.md",
+   "liber-primus/analysis/round44/W2-C2-page-pairs/RESULTS.md",
+   "liber-primus/analysis/round44/W2-C2-page-pairs/pair_results.json",
+   "liber-primus/analysis/round44/W2-C2-page-pairs/plant_pair.json"
+  ],
+  "sweep_store": "liber-primus/analysis/round44/W2-C2-page-pairs/pair_results.json",
+  "reproduce": "cd liber-primus/analysis/round44/W2-C2-page-pairs; python3 plant_run.py && python3 run_pairs.py",
+  "lane_dir": "W2-C2-page-pairs",
+  "notes": "Discharges the 'all-pairs page XOR' clause of R40-C1-R47-F01-LP2-AS-PAD not_covered. PREREG sha256 2d980e5da9adfd60754f523f3926eb29e96597dec94668d6790cecab285d5d5b hash-stamped in run.log before first execution (R44 X1 hygiene). Reopens if: a skip-tolerant instrument is applied to page-pair keys, a new register is added with measured power, or the full shift layer is argued above flat prior."
+ },
+ {
+  "round": 44,
+  "lane": "W2-C2",
+  "date": "2026-11-09",
+  "id": "R44-W2C2-CANON-AS-KEY",
+  "hypothesis": "The full 13,136-rune canon stream (data/krisyotam_runes.txt, fwd) as running key over each of the 55 unsolved pages at EVERY offset (the 'canon-as-key' clause of R40-C1-R47-F01's not_covered), sign patterns {sub,add,negadd} x shifts {0,1,28}, under panel-R36 + bars_v3.",
+  "status": "negative",
+  "result": "NEGATIVE. 0 bar-crossers in the verdict family and 0 non-degenerate crossers in the self-overlap family; best non-degenerate pmax 6.141 vs fixed bar 22.6382 (margin -16.50). Self-overlap top row (13.31) is the expected degenerate self-key constant diagonal, matching F-01's T6 self-key note.",
+  "coverage": "6,155,874 verdict cells + 230,337 self-overlap cells (computed, reported separately, excluded from verdict family): 55 pages x all offsets 0..13136-len_j x {sub,add,negadd} x shifts {0,1,28}, fwd canon, full-page windows (L=66..277); bars bar_v3(16e6, L-node, 'free') fixed in PREREG; degenerate guard active; sanity checkpoint passed (top-100 median 4.44).",
+  "not_covered": "Reversed or atbash canon stream (pair lane covers reversed PAGE keys only); shifts outside {0,1,28}; interrupter/skip/autokey constructions; ct windows other than page start; registers outside panel-R36.",
+  "three_conditionals": {
+   "key_space": "fwd canon stream over each unsolved page at every offset 0..13136-len_j x {sub,add,negadd} x shifts {0,1,28}; solved pages' segments covered as key material at their canon offsets",
+   "transition_model": "exact position-wise mod-29 group operation; no beam, no skips, no interrupters, no autokey",
+   "adjudicator_register": "panel-R36 (12 registers) pmax vs bars_v3 free bars at N_bar=16e6; R38-I2 degenerate guard"
+  },
+  "threshold": "bar_v3(16_000_000, 120, 'free') = 16.7816 for cells L<240; bar_v3(16_000_000, 240, 'free') = 22.6382 for L>=240; non-degenerate crosser => FLAGGED-FOR-ORACLE per HUMAN-ORACLE.md",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "Plant C through the identical canon runner before any real target: EN_KJV 180 enciphered with the real canon stream at offset 7001 (sub, s=0), recovered at exactly (sub, fwd, s=0, o=7001) as argmax over 116,613 cells, pmax 26.38 vs bar 16.78, non-degenerate, best non-neighbour 5.00 (plant_canon.json); pair-lane plants A/B also passed (plant_pair.json)",
+  "evidence": [
+   "liber-primus/analysis/round44/W2-C2-page-pairs/PREREG.md",
+   "liber-primus/analysis/round44/W2-C2-page-pairs/RESULTS.md",
+   "liber-primus/analysis/round44/W2-C2-page-pairs/canon_results.json",
+   "liber-primus/analysis/round44/W2-C2-page-pairs/plant_canon.json"
+  ],
+  "sweep_store": "liber-primus/analysis/round44/W2-C2-page-pairs/canon_results.json",
+  "reproduce": "cd liber-primus/analysis/round44/W2-C2-page-pairs; python3 plant_run.py && python3 run_canon.py",
+  "lane_dir": "W2-C2-page-pairs",
+  "notes": "Discharges the 'canon-as-key' clause of R40-C1-R47-F01-LP2-AS-PAD not_covered. PREREG sha256 2d980e5da9adfd60754f523f3926eb29e96597dec94668d6790cecab285d5d5b hash-stamped before first execution. Reopens if: reversed/atbash canon lane or full shift layer argued above flat prior; skip-tolerant instrument applied to canon-as-key."
+ }
+]

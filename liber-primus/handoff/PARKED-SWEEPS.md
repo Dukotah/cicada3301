@@ -21,7 +21,29 @@ branches of the derived-key family. The honest summary of why they are parked is
 
 ---
 
-## 1. Round 27 / S2 — Py2.7-MT 2³² `exact` (keyskip1) lane — **44.14 % covered**
+> **Update, 2026-11-09 — read before trusting the three sections below.** All state-file paths
+> below were re-verified on disk and exist. But two claims are superseded by later rounds:
+>
+> - **§1's 44.14 % is no longer the cumulative figure.** The S2 `exact`-relation cursor was pushed
+>   in Vercel-sandbox windows across Rounds 36–42; after R42-S1 recovered the window-2 end state
+>   byte-exact, cumulative 2³² cursor coverage is **52.05 %** (mixed-instrument — only ~7.9 pp is
+>   panel-R36-judged; `analysis/round42/SYNTHESIS.md`). The §1 "check first" contradiction
+>   (seed 35563892) is also informed by R42-S1: the recovered sha-verified `STATUS.json` records
+>   **0 claim-bar hits**, supporting the counter over the carried-over flag file.
+> - **§1a (new): the sandbox-side S2 full lists are PERMANENTLY LOST.** The R42-S1 recovery's
+>   bulk artifacts (`candidates.jsonl`, `top_S2.json`, `hist_S2.u64`) lived only in the hosting
+>   Vercel project `skyfling`, which was **deleted upstream 2026-11-03** — snapshots and the
+>   persistent sandbox were project-scoped and died with it; every restore path 404s
+>   (`analysis/round43/D1-export/RESULTS.md`). What remains is local and sha-verified:
+>   `analysis/round42/S1-s2-recovery/state_recovered/{STATUS.json,HIT-CANDIDATE.json,candidates_summary.json}`
+>   (shas `1aa52944…` / `b05fd0ba…` — the verdict rests on these). The lost files' fingerprints
+>   (`bd5c8289…`, `f60eece8…`, `60c1744a…`) are recorded; only a re-run regenerates them.
+> - **§3 is closed, not open.** The "cheapest open item" was taken: Round 32 lane B3 wrote
+>   `analysis/round28/L3/RESULTS.md` (2026-10-28, verdict **`inconclusive`** — bounded-negative
+>   evidence on disk, bulk artifacts missing) and the ledger row `R28-L3-PY27-STR-AMD64-DICT`
+>   exists. §3's text is kept below as written, superseded.
+
+## 1. Round 27 / S2 — Py2.7-MT 2³² `exact` (keyskip1) lane — **44.14 % covered** *(superseded 2026-11-09: cumulative 52.05 % — see the update banner)*
 
 | | |
 |---|---|
@@ -78,7 +100,7 @@ bar was dropped (finding D5, `analysis/round28/R-redteam/RESULTS.md`).
 designated output path is `analysis/round28/run/`, which does not exist yet — nothing has
 ever legitimately run there — and a resumption starts from seed 0 in it.
 
-## 3. Round 28 / L3 — string-seed amd64 dictionary — **11 of 11 queued items complete, lane row never filed**
+## 3. Round 28 / L3 — string-seed amd64 dictionary — ~~11 of 11 queued items complete, lane row never filed~~ *(superseded 2026-11-09: closed out by R32-B3 — see the update banner)*
 
 | | |
 |---|---|

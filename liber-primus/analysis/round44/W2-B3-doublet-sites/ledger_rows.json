@@ -1,0 +1,71 @@
+[
+ {
+  "id": "R44-W2B3-DOUBLET-CHANNEL",
+  "lane": "round44/W2-B3-doublet-sites",
+  "hypothesis": "The ~86 surviving doublet sites of the unsolved LP2 stream are a deliberate low-rate channel: the doubled rune values in site order, the inter-site gaps, the site positions (mod 29), and the per-page site counts carry a readable message (R43 X0 ADJUDICATION item 21 / blind agent A2-H2).",
+  "status": "negative",
+  "round": "44/W2-B3",
+  "date": "2026-11-09",
+  "threshold": "Pre-registered (PREREG.md sha-stamped in run.log before first execution): per-channel bar of record = max(F1, F2) POT bar (bars_v3 model refit) at N=928 real readings, alpha=0.01. F1 = 1,000 site_matched_shuffle draws (histogram-preserving, exactly-86/89-doublet, position-unbiased surrogate; PREREG Addendum 1) through the identical glue; F2 = 1,000 SEL canon selections at matched L (W2-A1 family). Verdict requires measured plant power >= 0.5 at the channel's L.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": {
+   "PLANT-V": "86 doubled values = held-out English rune window injected into a doublet-free base and recovered through the full own glue: 40/40 mechanical recovery, power 1.00 (median pmax 15.21 vs bar 6.00)",
+   "PLANT-G": "85 gaps = English window + 3, recovered via the grid's shift maps: 40/40, power 1.00",
+   "PLANT-P": "86 positions mod 29 = English window via constructed gaps: 40/40, power 1.00",
+   "PLANT-C": "55 per-page counts = English window: 40/40 mechanical recovery, power 0.25 < 0.5 floor - the counts channel is verdict-incapable under this instrument (degenerate-null bar inflation, W2-A1 dotvals30 precedent) and is reported measured-only",
+   "specificity": "25 untouched surrogate draws through the full pipeline: 0 channel crossers, 0 battery fires"
+  },
+  "null": "F1 site_matched_shuffle (PREREG Addendum 1; the standing dfshuffle was measured positionally biased - residual sites cluster at the stream end, KS 0.844, count undershoot 56-vs-86 - and replaced for site-null purposes) + F2 SEL; POT bars at actual channel L in {55,85,86,57,88,89}.",
+  "result": "NEGATIVE. 0 of 928 readings crossed (8 streams x 116 affine/reversal maps; both the 86-site unsolved tuple and the 89-site full-canon tuple). Best: dblvals 3.58 vs bar 6.00, gapsmod29 3.60 vs 6.00, posmod29 2.79 vs 6.03 (power 1.00 each); pagecounts 6.77 vs 12.84 measured-only (real stream degenerate: mds 6, IoC*N 6.37, R38 guard; plant power 0.25). bars_v3(928,120,'free')=11.58 reported as non-binding cross-check (no free node below L=120). Site tuple persisted in results.json (positions, gaps, values, counts; count reconciliation 86/88/89 = segment inclusion, pinned).",
+  "coverage": "Both site tuples as value/gap/position/count channels under 116 identity/affine/reversal maps each, panel-R36 (12 registers), bars refit at actual L and N=928, measured power 1.00 for the three verdict-capable channel types (0.25 for counts).",
+  "not_covered": [
+   "Keyed or derived readings of the channel streams; cross-channel joins/interleavings; site-sets under other doublet definitions (triplet runs, lag-2 pairs); gap encodings outside mod-29 shift reach (base-29 multi-digit, varint); sites-as-cribs gating key sweeps (VERDICT-OTP-CLASS cap); positions mod 60 as a read (tested only as uniformity statistic T4).",
+   "Transition model: memoryless monoalphabetic on the channel stream only; no chained/output-aware channel construction represented.",
+   "Register: panel-R36's 12 registers at the measured powers; the per-page-counts channel carries NO verdict (degenerate real stream + power 0.25) - a higher-power counts recognizer reopens it; numeric/schema registers untested."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round44/W2-B3-doublet-sites/PREREG.md",
+   "liber-primus/analysis/round44/W2-B3-doublet-sites/RESULTS.md",
+   "liber-primus/analysis/round44/W2-B3-doublet-sites/results.json",
+   "liber-primus/analysis/round44/W2-B3-doublet-sites/nulls.json",
+   "liber-primus/analysis/round44/W2-B3-doublet-sites/plants.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-B3-doublet-sites && python3 nulls.py && python3 plant_gate.py && python3 run_real.py",
+  "reopens_if": "(i) a higher-power recognizer for the 6-symbol counts alphabet; (ii) a keyed/derived reading family consumes these streams with its own refit bar; (iii) the companion row R44-W2B3-D01-FALSIFIER's heterogeneity finding resolves into a mechanism that re-parameterises the site set.",
+  "notes": "Charter: R43 X0 item 21 (prior LOW by its own adjudication; run as the cheap half of a D-01 falsifier cell). Cited rows D-01 / A-06 (H6) / E-02 (part B) verified open on this question and untouched. Incidental instrument finding: the standing dfshuffle's positional bias + a latent IndexError at i=n-2 (RESULTS.md section 4)."
+ },
+ {
+  "id": "R44-W2B3-D01-FALSIFIER",
+  "lane": "round44/W2-B3-doublet-sites",
+  "hypothesis": "D-01's measured model - residual doublets are the machine filter's own flat-Bernoulli leakage, uniform and structureless - survives a power-controlled uniformity battery on the 86-site tuple (the falsifier framing of R43 X0 item 21; D-01's own coverage field discloses its drift/constancy family at power 0.075-0.195).",
+  "status": "measured",
+  "round": "44/W2-B3",
+  "date": "2026-11-09",
+  "threshold": "Pre-registered: 7 statistics (position KS, gap CV^2, chi2 mod 29, chi2 mod 60, value-count chi2, per-page dispersion, lag-1 gap autocorrelation), empirical add-one p against the site_matched_shuffle null, family alpha 0.01 Bonferroni/7 -> per-test p <= 0.001428. Addendum 2 (dated, before any verdict): null extended D=1,000 -> 10,000 because the two-sided minimum attainable p (0.001998) exceeded the bar - statistics, alpha and decision rule unchanged.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": {
+   "battery plant": "PLANT-G's clustered-position plants must fire T1 through the identical glue: 40/40 at p=0.000999 (power 1.00)",
+   "specificity": "25 untouched surrogate draws: 0 battery fires",
+   "caveat": "no plant class exercised SMOOTH rate heterogeneity (the structure actually found), so T7's power against its own alternative is not separately measured; its false-positive rate is (10,000-draw null) and the finding carries leave-one-out + Spearman robustness checks instead"
+  },
+  "null": "site_matched_shuffle of the unsolved stream (histogram-preserving, exactly 86 doublets, position-unbiased; PREREG Addendum 1), D=10,000 fresh draws (battery_ext.json).",
+  "result": "LOUD FLAG - the flat-Bernoulli residue model is REJECTED on the registered battery. T7 lag-1 gap autocorrelation: observed +0.380 vs null -0.011 +/- 0.106 (z=+3.69), two-sided add-one p=0.0010 <= 0.001428 (family-wise ~0.007 < 0.01). Robust: leave-any-one-gap-pair-out Pearson in [+0.218,+0.420]; Spearman +0.269. All six other statistics null (p >= 0.23): the signature is SMOOTH multi-hundred-rune-scale rate heterogeneity (doublets per 1,000-rune block: 8,3,7,2,6,9,10,8,11,2,9,6,5), not clustering, positional code or value code. The channel reads (companion row) are all negative - this is structure in the slip RATE, not a message.",
+  "coverage": "The 7-statistic battery at D=10,000 with measured T1 power 1.00 and 0/25 specificity fires; gap serial correlation was in NO prior row (D-01 measured gap dispersion only, power 0.065).",
+  "not_covered": [
+   "Mechanism identification: non-stationary filter parameter vs sessioned generation vs stateful rejection-loop variant vs local plaintext/key composition effects are NOT discriminated here.",
+   "Per-page/per-section localisation of the heterogeneity (this is X0 item 22's named lane, now with measured cause).",
+   "Any structure class outside the 7 registered statistics."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round44/W2-B3-doublet-sites/PREREG.md",
+   "liber-primus/analysis/round44/W2-B3-doublet-sites/RESULTS.md",
+   "liber-primus/analysis/round44/W2-B3-doublet-sites/battery_ext.json",
+   "liber-primus/analysis/round44/W2-B3-doublet-sites/results.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-B3-doublet-sites && python3 nulls.py && python3 plant_gate.py && python3 run_real.py && python3 battery_ext.py",
+  "reopens_if": "Standing open item: the heterogeneity mechanism lane (X0 item 22 REOPEN) should consume this finding; D-01's row itself is NOT modified by this cell (its machine-vs-hand verdict is about the randomness SOURCE and stands; what falls is the informal 'uniform slips' residue picture its underpowered placement family could not test).",
+  "notes": "LOUD FLAG per the pre-registered decision rule - not a plaintext candidate, so no HUMAN-ORACLE decode bundle exists; the flag is this row + RESULTS.md. Direct measured support for X0 ADJUDICATION item 22 (five elevated-doublet pages / nonstationarity, previously disclaimed underpowered at 0.075). Suggested priority for Round 44 synthesis: route to the item-22 lane with a heterogeneity-plant positive control."
+ }
+]

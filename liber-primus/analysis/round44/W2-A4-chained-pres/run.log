@@ -1,0 +1,118 @@
+2026-11-09T13:58:21-08:00 PREREG hash-stamp (R44 X1 hygiene fix, before first execution): a88cf91713dff342670d234fc3f404695a912ac009be77b9330dbad889e25b03  PREREG.md
+2026-11-09T14:00:28-08:00 PREREG re-stamp after Addendum 0 (wording fix, pre-run): 1620b3e811da48eb68a7f4fc35a915f19786c1fce002d361a7123b6d1352b82e  PREREG.md
+GATE PASSED in 1.4 s
+[
+ {
+  "name": "G1",
+  "theta": {
+   "ch": "s3",
+   "f": "prime_index",
+   "sig3": -1,
+   "s": 17,
+   "s1": 1,
+   "s2": -1,
+   "k": 1,
+   "scope": "page"
+  },
+  "pages": [
+   {
+    "page": 10,
+    "L": 263,
+    "bar": 18.374,
+    "o_p": 6,
+    "planted_pmax": 39.74942997350329,
+    "grid_max": 39.74942997350329,
+    "argmax_cell": [
+     1,
+     -1,
+     1,
+     "page",
+     6
+    ],
+    "recovery": 1.0,
+    "degenerate": false,
+    "ok": true,
+    "differential": {
+     "wrong_offset": {
+      "recovery": 0.0,
+      "pmax": 4.769666335210679
+     },
+     "wrong_fb_sign": {
+      "recovery": 0.03802281368821293,
+      "pmax": 1.8976257226377817
+     }
+    }
+   },
+   {
+    "page": 20,
+    "L": 269,
+    "bar": 18.374,
+    "o_p": 14,
+    "planted_pmax": 39.77928806287179,
+    "grid_max": 39.77928806287179,
+    "argmax_cell": [
+     1,
+     -1,
+     1,
+     "page",
+     14
+    ],
+    "recovery": 1.0,
+    "degenerate": false,
+    "ok": true,
+    "differential": {
+     "wrong_offset": {
+      "recovery": 0.0,
+      "pmax": 3.3714158626006814
+     },
+     "wrong_fb_sign": {
+      "recovery": 0.026022304832713755,
+      "pmax": 1.8109307298415316
+     }
+    }
+   }
+  ],
+  "ok": true
+ },
+ {
+  "name": "G2",
+  "theta": {
+   "ch": "r",
+   "f": "cumulative",
+   "sig3": 1,
+   "s": 5,
+   "s1": -1,
+   "s2": 1,
+   "k": 2,
+   "scope": "continuous"
+  },
+  "planted_key": [
+   -1,
+   1,
+   2,
+   "continuous",
+   18,
+   18,
+   18
+  ],
+  "argmax_key": [
+   -1,
+   1,
+   2,
+   "continuous",
+   18,
+   18,
+   18
+  ],
+  "n_thetas": 13920,
+  "n_unique": 8816,
+  "pmax": 62.3290609909033,
+  "bar": 22.6951,
+  "recovery": 1.0,
+  "ok": true
+ }
+]
+cells 34336 verdict NEGATIVE in 0.9 s
+tierA best: {"page": 40, "L": 231, "bar": 13.7082, "pmax": 5.774496492994624, "preg": 2, "s1": 1, "s2": -1, "k": 2, "scope": "continuous", "o": 24, "stats": {"pmax": 5.7745, "preg": 2.0, "pmax_ne": 5.7745, "ioc": 0.9945, "mds": 16.0, "h2": 0.2894, "zl": 0.7186, "en": -7.0832, "degenerate": 0.0}}
+tierB best: {"key": [-1, -1, 2, "page", 16, 15, 13], "pmax": 3.782039858336163, "preg": 11, "stats": {"pmax": 3.782, "preg": 11.0, "pmax_ne": 3.782, "ioc": 1.0009, "mds": 15.0, "h2": 0.7062, "zl": 0.6516, "en": -7.4195, "degenerate": 0.0}, "thetas": [{"s1": -1, "s2": -1, "k": 2, "scope": "page", "ch": "page", "f": "prime_index", "sig3": -1, "s": 18}, {"s1": -1, "s2": -1, "k": 2, "scope": "page", "ch": "page",
+2026-11-09T14:02:47-08:00 sweep complete: 34336 cells, 0 crossers, NEGATIVE; RESULTS.md + ledger_rows.json written

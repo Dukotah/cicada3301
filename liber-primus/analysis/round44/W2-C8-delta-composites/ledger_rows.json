@@ -1,0 +1,45 @@
+{
+ "$comment": "R44 WAVE-2 cell C8 draft row - coordinator applies to LEDGER.json (this cell does not modify the ledger itself).",
+ "new_rows": [
+  {
+   "id": "R44-W2C8-DELTA-COMPOSITES-K7-13",
+   "round": 44,
+   "lane": "W2-C8-delta-composites",
+   "date": "2026-11-09",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "20/20 round-trip asserts (every family x source branch incl. mix, k in {7,13}) + FIVE plants pushed through the IDENTICAL full-enumeration sweep path (21,196 rows each) before any real target: P1 lag-7 ct difference composite (a,b)=(1,28) EN pmax 53.03, P2 pt-affine k=9 (1,1) seed eq4 REV EN 53.02, P3 ct-window prod k=13 sign+1 EN 53.10, P4 = P1 construction over LATIN 42.51 flagged via a NON-English panel register (the L7-A axis), P5 240-rune EN segment via the segment driver 26.44 vs bar 15.52. Every plant: exact recovery on [k:], global argmax at the planted cell, 0 non-planted crossers. Short-L power measured: crosses at scored n=113 (18.49 >= 15.52), does not cross at n=59 (12.19). plant_results.json.",
+   "hypothesis": "The R12-C1 not_covered edge (R43 X0 'item 1 edge'): LP2 is a self-referential delta-stream composite cipher with history length k>=7 - lag-(1,k) affine composites K_i=(a*s[i-1]+b*s[i-k]) mod 29 for k=7..13 (the hinted constants; contains the lag-k difference/sum composites and pure lag-k autokey), or an out-of-set window feedback f in {product mod 29, max, min} over the last k runes - over ct/pt/mix source streams, both orientations, continuous or per-segment. First panel-adjudicated look at ANY k-history feedback family (R12-C1's own negative was English-quadgram-era).",
+   "result": "NEGATIVE, clean. 0 crossers in 1,186,976 rows. Best overall pmax 5.397 (segment 1, fwd, k=13, ct-affine (1,15), n=253) vs its bar 20.8883; continuous-scope best 1.356 vs bar 25.1583. Family bests (cont/seg): ct-affine 1.356/5.397, ct-window 0.995/4.619, pt-mix-affine 1.101/5.193, pt-mix-window 1.109/5.247. Diagnostic deterministic-null gap: 200 shuffled-stream draws x the 812-cell ct-affine k=7 batch give per-draw max pmax mean 1.065 / max 1.423, so the free bar is hugely conservative for this seedless decoder yet the plants clear it 2x at primary lengths.",
+   "coverage": "Exact enumeration, no sampling except the pre-registered 29-all-equal-seed probe (R12-C1's documented bound): lag-(1,k) affine k=7..13 FULL 29x28 (a,b) grid on ct source (seedless => exhaustive) + the negation-closed 6-cell composite set {(1,1),(1,28),(28,1),(28,28),(0,1),(0,28)} on pt/mix x 29 seeds; window f in {prod,max,min} x both signs x 3 sources x 29 seeds; both orientations; continuous 12,956-rune stream + all 55 segments = 21,196 rows/stream x 56 streams = 1,186,976 rows (1,096,136 at scored length >= 120). Measured power: 5/5 planted constructions recovered 1.0 and bar-crossed through the identical glue; bar-crossing power validated down to scored n~113; register axis demonstrated by the LATIN plant.",
+   "threshold": "bars_v3(N_bar=1.5e6, L, 'free') from the committed fit, panel-R36 nodes 120:15.5204 240:20.8883 400:21.9469 729:25.1583, applied at the largest node <= scored length (clamped to 120 below); free-beam null strictly dominates this deterministic single-pass decoder so the bar is conservative (W2-A2/R44-R1 precedent). Crosser additionally requires non-degenerate (R38-I2 mds/IoC guard). Frozen in PREREG.md, hash-stamped in run.log before first execution (R44 X1 hygiene); one pre-run dated addendum (6b, plant-equivalence handling) also stamped before any execution.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "ONLY the PREREG section-2 enumeration: lag-(1,k) 2-term affine k=7..13 (full grid ct, 6 composite cells pt/mix, 29 all-equal seeds), window prod/max/min, both signs/orientations, continuous+per-segment.",
+    "decoder_transition_model": "deterministic single-pass left-to-right feedback decode p=(c +/- K) mod 29; NO rejection loop, skips, or interrupter/null-F handling (the L7-B axis is not represented).",
+    "adjudicator_register": "panel-R36's 12 registers (EN_MODERN EN_KJV LP1_REAL LATIN OE DE CY EN_HALFVOWEL EN_NOVOWEL GREEK HEBREW NORSE); registers outside them are not seen."
+   },
+   "not_covered": [
+    "k >= 14; lag pairs other than (1,k); 3-term and higher affine combos; nonlinear f outside {affine-2-term, prod, max, min}; b=0 scaled lag-1 (not a k>=7 object, excluded by design).",
+    "The full 29x28 affine grid under pt/mix sources (only the 6 named composite cells swept there) and arbitrary non-all-equal seeds (29 eq-seed probe only - the same documented bound as R12-C1).",
+    "Composite + skip/interrupter hybrids: the decoder models no rejection loop, so a lag-k composite feeding a skip-consuming construction is unrepresented (L7-B class).",
+    "Scored lengths below ~113 at guaranteed power: segments 49/50/54, segment 32 at all k, segment 22 at k in {12,13} were swept and recorded but the measured plant power at n=59 is 0 under the conservative free bar (diagnostic-only rows, 90,840 of the 1,186,976).",
+    "R12-C1's ORIGINAL k=2..6 x 7-f ground is NOT re-adjudicated here; it remains an English-quadgram-only negative per its own row (not_covered clause 3 there)."
+   ],
+   "reopens_if": "k >= 14 or a feedback function outside this f-set under a decoder+panel instrument of measured power; a skip-aware composite decoder (the L7-B hybrid above); a register outside panel-R36; or any construction here re-swept with arbitrary seeds under pt/mix. Any survivor is FLAGGED-FOR-ORACLE per HUMAN-ORACLE.md, never auto-certified.",
+   "evidence": [
+    "liber-primus/analysis/round44/W2-C8-delta-composites/PREREG.md",
+    "liber-primus/analysis/round44/W2-C8-delta-composites/c8lib.py",
+    "liber-primus/analysis/round44/W2-C8-delta-composites/plant_gate.py",
+    "liber-primus/analysis/round44/W2-C8-delta-composites/plant_results.json",
+    "liber-primus/analysis/round44/W2-C8-delta-composites/sweep.py",
+    "liber-primus/analysis/round44/W2-C8-delta-composites/sweep_results.json",
+    "liber-primus/analysis/round44/W2-C8-delta-composites/null_diag.json",
+    "liber-primus/analysis/round44/W2-C8-delta-composites/RESULTS.md",
+    "liber-primus/analysis/round44/W2-C8-delta-composites/run.log"
+   ],
+   "reproduce": "cd liber-primus/analysis/round44/W2-C8-delta-composites && python3 plant_gate.py && python3 sweep.py",
+   "notes": "Discharges the R43 X0 section-(b) residual 'Delta-stream composites outside R12-C1's f-set (item 1 edge)' for the enumerated space. Cited rows verified open before run: R12-C1 not_covered clause 1; nearest rows R37-C3-U6A-N1-CT/PT (24 cumulative-gematria configs), R41-C1-R14 (wordsum self-key), R20-N2, R24-C2 are disjoint. rows.npz persists per-row pmax/pmax_ne/pcon/IoC (R3 stats; mds/h2/zl on top-200 + crossers per the adjudicate fast-path split)."
+  }
+ ]
+}

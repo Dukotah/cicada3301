@@ -1,6 +1,32 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-11-05** (Round 43 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-11-11** (Round 44 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+
+> ## Round 44 closeout (wave 1 2026-11-09, wave 2 2026-11-09→11) — THE PAGE AS A PHYSICAL OBJECT: filed. Read `analysis/round44/SYNTHESIS.md` first.
+>
+> **The scaled armada: Fable planned a 16-cell matrix, sub-agents swept it, judgment stayed at X1.** 22 cells
+> ran across 2 waves; every decode family is a **powered negative (8–19 bar-units)** EXCEPT one live positive.
+> **B3 / T7 — the anti-repeat filter's slip rate is NON-STATIONARY across the book** (per-1,000-rune doublet
+> blocks [8,3,7,2,6,9,10,8,11,2,9,6,5], gap autocorr +0.380, battery p=0.0010; X1's own independent
+> permutation null p=0.00025). Filed `measured`, never certified — a generation-process anomaly, the single
+> best-aimed Round 45 lane (needs an ordering-sensitive statistic + smooth-heterogeneity plant; ties to the
+> A-LOCUS/D-01 stack). **Everything else closed:** wave 1 P1 red-ink census corrected+read in full (187→213
+> red runes) / P2 p15 grid / P3 punctuation / P4 blob-pads / R1 51-key resets — all NEGATIVE, and the UNIQUE
+> boundary-crossing 7-gram confirmed. Wave 2 A2 killed both 7-gram cipher readings incl. the new p55 crib;
+> C2 killed all-pairs page-keying (6.4M decodes); B1 hash-stride, B2 cuneiform, A4 chained, C8 delta-k≥7 all
+> NEGATIVE; C3 mirror residue byte-exactly identified; C5 stationarity powered 0.075→0.975; C6 short pages
+> at honest bars NEGATIVE + found **canon p55 is ciphertext** (premise fix for 4 sweeps); A1 built the
+> short-stream null (L<13 recognizer floor → 30-bit dot stream stays measured-only). `LEDGER.json` **348 rows**,
+> 0 unsound. **HUMAN-ORACLE QUEUE (owner, ~10 min each, nothing certified):** B4 p55 "ghost tree"
+> (`W2-B4-trees/ORACLE-T4-p55-ghost/`), C1 figural-motif fire (`W2-C1-motifs/ORACLE-S1S3/`), B3 T7
+> (`W2-B3-doublet-sites/ORACLE-T7-QUEUE.md`).
+> **RESUME-LANE TAIL (in flight across sleep cycles — not yet filed):** A3 reset+skip full grid (sweep running),
+> C4 stego ARM-G (ARM-D done clean/unfiled, ARM-G partial), C7 audio (page ~45/55), C9 homophonic
+> (~1422/2001 rows), B4 S3 deconvolution (running). All under the new **dead-man rule** (>30-min arms heartbeat;
+> no wave closes over a cell with no closing stamp — binding from R45). They file into a follow-up commit.
+> **Next:** `analysis/round44/SYNTHESIS.md` §6 — Round 45 is narrow by design (T7 follow-on + oracle reads +
+> a short-recognizer instrument lane + fold the tail). Owner decisions still pending: WATCH band, R13 DIRECTION,
+> KDF sign-off, `with_degenerate` default, N5/N4 bundle. **S1 snapshot export already LAPSED (R43-D1).**
 
 > ## Round 43 closeout (lanes 2026-11-03, X1 + closeout 2026-11-05) — FIRST PRINCIPLES: THE FRESH ARMADA: filed. Read `analysis/round43/SYNTHESIS.md` first.
 >

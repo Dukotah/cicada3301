@@ -1,0 +1,66 @@
+{
+  "$comment": "R44 R1 draft rows - coordinator applies to LEDGER.json (this lane does not modify the ledger itself).",
+  "new_rows": [
+    {
+      "id": "R44-R1-SEVENGRAM",
+      "round": 44,
+      "lane": "R1-key-resets",
+      "date": "2026-11-09",
+      "status": "measured",
+      "positive_control": "passed",
+      "control_detail": "Scanner control: the concatenated-stream n-gram scan independently re-finds the two 5-gram repeats blind agent A5 reported from primary material alone (BMRNM p22:73/p48:224; OUNWM p28:224/p33:56) plus the claimed 7-gram at the claimed positions. Anchor-function control: a synthetic key constructed to satisfy the 7-gram constraint at o=35 is recovered by anchor_offsets() in both page and section modes (asserted in run_sweep.py before the sweep).",
+      "hypothesis": "The repeated ciphertext 7-gram reported by R43 X0 item 4 / F3 s1 / blind A5 (p27:28, p54:70) exists in canon as claimed and is a usable alignment constraint for reset-keystream schemes.",
+      "result": "VERIFIED AND MEASURED. The 7-gram DJUBEIAE (indices 23 11 1 17 18 10 25) occurs at p27 pos 28 and p54 pos 70 and is the ONLY repeated 7-gram in the full 57-page concatenated canon stream (13,136 runes; expected matching pairs under uniform iid 0.0050). Word-gap patterns identical (001001) at both sites. NEW FACT: the p54 occurrence CROSSES the page boundary - p54 is 76 runes, positions 70-75 are its last six runes and the 7th matching rune is the FIRST rune of p55 (a solved page), so every per-page scan is structurally blind to this object (this lane's first scan returned zero and was corrected). Both p27 and p54 open red-head sections (map [0,3,6,7,8,15,23,27,33,39,40,53,54]); section offsets 28 and 70, the second site contiguous 70..76 in section coordinates. ANCHOR-AS-FALSIFIER: under the same-plaintext reading, the constraint K[o+28+j]=K[o+70+j] (j=0..6 section mode; j=0..5 plus K[o+34]=K[o+0] page mode) is satisfied by NONE of the 51 R44-R1 keys at ANY offset o in 0..200 - those streams with page/section resets cannot produce LP2 under that reading.",
+      "coverage": "100% of the concatenated 57-page canon stream (data/krisyotam_runes.txt via the % page split), all repeated n-grams n>=7 enumerated; word boundaries from the canon -/./&/$ and line/page separators; anchor constraint checked for all 51 R44-R1 keys x offsets 0..200 x {page, section} modes.",
+      "threshold": "claim_verified iff the p27:28 and p54:70 occurrences exist with identical word-gap patterns (fixed in PREREG step 1); no score bar applies to a measurement row.",
+      "threshold_fixed_in_advance": true,
+      "three_conditionals": {
+        "key_space": "n/a (measurement of a finite canon object); the anchor falsifier is conditional on the 51 R44-R1 keys",
+        "transition_model": "the anchor reading assumes additive position-indexed substitution with page/section resets and SAME plaintext at both sites; the different-plaintext reading is unconstrained",
+        "adjudicator_register": "n/a"
+      },
+      "not_covered": "The different-plaintext reading of the 7-gram (two plaintext phrases colliding under different key segments); the p55-rune-0 known-plaintext crib on the second site (p55 is solved - a 1-rune crib never exploited by any row); n-gram repeats under alternative transcriptions; anchor constraints for keys outside the 51.",
+      "reopens_if": "A reset/derived-key lane with a different key family wants the anchor (the constraint check is anchor_offsets() in resets.py, seconds per key); a pre-registered different-plaintext model is specified; a transcription revision moves either site.",
+      "evidence": [
+        "liber-primus/analysis/round44/R1-key-resets/verify_7gram.py",
+        "liber-primus/analysis/round44/R1-key-resets/sevengram.json",
+        "liber-primus/analysis/round44/R1-key-resets/RESULTS.md"
+      ],
+      "reproduce": "python3 liber-primus/analysis/round44/R1-key-resets/verify_7gram.py",
+      "notes": "First ledger row to hold the 7-gram (X0 item 4 named its absence). The boundary-crossing detail means the object ties the END of the p54/p55 join, not merely 'end of p54'; blind A5's crib-alignment IoC test (no extended keystream sharing around the sites) remains the strongest evidence it is an isolated enciphered-phrase repeat or coincidence."
+    },
+    {
+      "id": "R44-R1-RESET-SWEEP",
+      "round": 44,
+      "lane": "R1-key-resets",
+      "date": "2026-11-09",
+      "status": "negative",
+      "positive_control": "passed",
+      "control_detail": "Three plants through this lane's own encipher+decode glue (R42 X1 rule), gated BEFORE the sweep with a required rigid/reset DIFFERENTIAL: G1 (page resets, direct, P-totient o=7 vigp, 3x120) planted cell = grid max on all 3 pages (27,540 cells each), exact recovery, pmax 26.35-26.97 vs bar 15.674, while the rigid continuation recovers 0.008/0.067 at pmax 1.86/1.13; G2 (line resets, direct, G-bash-1325734783 o=3 beau, 240) exact at pmax 37.22 vs 21.101, rigid 0.133/4.92; G3 (page resets, keyskip1-filtered supp 0.83, P-prime o=0 vigm) reset-aware keyskip beam recovery 0.989 vs rigid beam 0.364. Measured tier-1 power against the FILTERED construction ~0 (G3 pages pmax 13.02/0.92/1.23, below bar).",
+      "hypothesis": "The LP2 keystream is a small deterministic generator stream (solved-page prime/totient family or a top R18-L1 evidence-ranked generator) that RESETS at page, canon-line, or red-section boundaries at a fixed offset - the construction axis R33-I2 measured as unrepresented by every existing negative's decoder - with the p27/p54 7-gram as alignment anchor.",
+      "result": "NEGATIVE (measured, panel-R36). Tier 1: 51 keys (P-prime, P-totient, P-phi + bash-4.2-LP64 $RANDOM mod 29 for seedprior20 top-40 + 8 Cicada integers) x 30 offsets x 6 configs (vig+/-, Beaufort, each x atbash) x 3 reset modes (page/line/section) x 55 pages = 1,514,700 cells, 0 crossers; global best pmax 5.631 (page 47, G-bash-1358633868, line, o=26, beau_atb, L=274) vs bar of record 21.101 - 15.5z below, no near-miss. The 7-gram-anchored offset extension is EMPTY: no swept key satisfies the same-plaintext constraint at any offset 0..200 (page or section mode), so the anchor independently excludes all 51 streams under page/section resets. Tier 2: reset-aware keyskip1 beam (the R33-I2 relation_skip_by_k patch, adapted and applied to real data for the first time) on the top-20 tier-1 cells: best pmax 5.423, 0 crossers.",
+      "coverage": "100% of the pre-registered grid (no truncation; 17.6 s): 1,514,700 tier-1 cells at measured power 1.0 for UNFILTERED reset constructions (G1/G2 exact through identical glue) + 20 tier-2 beam cells at measured power 0.989 for the keyskip1-filtered application; panel-max over 12 registers (panel-R36). Closes R33-I2's unrepresented-constructions hole FOR THIS KEY SPACE: resets now have a validated decoder and a measured negative instead of no coverage.",
+      "threshold": "bars_v3.bar_v3(2000000, L_cap, 'free'), L_cap = largest of {120,240,400,729} <= decode length, floor 120: 15.674 (L_cap 120), 21.101 (L_cap 240); N_bar=2,000,000 is an upper bound on cells actually run (1,514,720), conservative. Crosses iff non-degenerate pmax >= bar. Named in PREREG.md before any decode.",
+      "threshold_fixed_in_advance": true,
+      "three_conditionals": {
+        "key_space": "the 51 fixed keys: P-prime (p_i mod 29), P-totient ((p_i-1) mod 29), P-phi (phi(n) mod 29, n>=2), bash-4.2-LP64 $RANDOM (get_random_number anti-repeat, mod-29 reduction) for seedprior20.json top-40 seeds + [3301,1033,761,509,29,58,2,1]; offsets 0..29 (anchored extension measured empty); no reversed streams, no other reductions",
+        "transition_model": "key-pointer reset at canon page / canon-'/'-line / red-head-section boundaries at fixed offset; tier-1 unfiltered position-indexed substitution (vig+, vig-, beaufort, x atbash-pre); keyskip1-filtered application covered ONLY by the tier-2 beam on the top-20 cells (measured tier-1 power ~0 against it); keyskip2/drift/skip_by_k with resets not represented; interrupters treated as ordinary ciphertext",
+        "adjudicator_register": "panel-R36 (12 registers), pmax vs bars_v3 'free' at N_bar 2e6; tier-2 beam search internally English-quadgram-guided (R33-I2 patch limitation), final scoring panel-R36"
+      },
+      "not_covered": "Generators/seeds/reductions outside the 51 keys (other bash variants/ABIs, Perl 5.14, Py2.7 MT, TeX LCGs, the 2^31 seed tails, rejection-sampled/scaled reductions, reversed streams); unanchored offsets >29 and all offsets >200; keyskip1-filtered resets beyond the 20 tier-2 cells; keyskip2/free-drift/skip_by_k>=3 combined with resets; mixed reset modes; reset boundaries other than page/canon-line/red-section (sentence, paragraph '&'); per-line results conditional on the canon '/' line map (R33-I2 physical-line caveat carries); interrupter-as-null handling; the different-plaintext reading of the 7-gram.",
+      "reopens_if": "A generator family outside the 51 keys gains an evidence prior (source/artifact find) - the committed glue re-runs 51-key batches in ~20 s; a cheap full-grid keyskip-filtered reset decoder is built (removes the tier-1 unfiltered-only limitation); a measured physical line map supersedes the canon '/' map; the oracle is handed a crosser from an adjacent lane using the anchor.",
+      "evidence": [
+        "liber-primus/analysis/round44/R1-key-resets/PREREG.md",
+        "liber-primus/analysis/round44/R1-key-resets/RESULTS.md",
+        "liber-primus/analysis/round44/R1-key-resets/resets.py",
+        "liber-primus/analysis/round44/R1-key-resets/plant_gate.py",
+        "liber-primus/analysis/round44/R1-key-resets/gate.json",
+        "liber-primus/analysis/round44/R1-key-resets/run_sweep.py",
+        "liber-primus/analysis/round44/R1-key-resets/r1_results.json",
+        "liber-primus/analysis/round44/R1-key-resets/sevengram.json"
+      ],
+      "reproduce": "cd liber-primus/analysis/round44/R1-key-resets && python3 verify_7gram.py && python3 plant_gate.py && python3 run_sweep.py",
+      "notes": "Discharges X0 REOPEN #1 (R33-I2's own 'unrepresented: [reset_per_page, reset_per_line]' list) for the highest-prior key families: the reset axis is no longer decoder-blind, and the first reset-aware negative is on record. The anchored-sweep design collapsed to the base sweep because the anchor measured empty over this key space - that emptiness is itself the stronger statement (see R44-R1-SEVENGRAM)."
+    }
+  ]
+}

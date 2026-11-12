@@ -1,0 +1,150 @@
+{
+ "controls": [
+  {
+   "name": "PC1",
+   "planted": {
+    "stream": "PC1:pcm_u8",
+    "dir": "fwd",
+    "cfg": "vigm",
+    "mode": "O",
+    "rot": 4096
+   },
+   "n_decodes": 15756,
+   "pcm_deterministic": true,
+   "grid_best": {
+    "pmax": 38.32138850940156,
+    "preg": 2,
+    "L": 240,
+    "bar": 22.8032,
+    "stream": "PC1:pcm_u8",
+    "dir": "fwd",
+    "map": "id",
+    "cfg": "vigm",
+    "mode": "O",
+    "rot": 4096
+   },
+   "found_planted_cell": true,
+   "plaintext_recovered": true,
+   "passed": true
+  },
+  {
+   "name": "PC2",
+   "planted": {
+    "stream": "PC2:onset_iv",
+    "dir": "fwd",
+    "map": "m1",
+    "cfg": "beau",
+    "mode": "R",
+    "rot": 7
+   },
+   "n_decodes": 64008,
+   "designed_vs_recovered": "3/80",
+   "recovered_frac": 0.037,
+   "reduction_ok": false,
+   "grid_best": {
+    "pmax": 33.39790918044707,
+    "preg": 2,
+    "L": 200,
+    "bar": 17.4858,
+    "stream": "PC2:onset_iv",
+    "dir": "fwd",
+    "map": "m1",
+    "cfg": "beau",
+    "mode": "R",
+    "rot": 7
+   },
+   "found_planted_cell": true,
+   "plaintext_recovered": true,
+   "passed": false
+  },
+  {
+   "name": "PC3",
+   "planted": {
+    "stream": "PC3:spec_peak",
+    "dir": "fwd",
+    "map": "m2",
+    "cfg": "vigp_atb",
+    "mode": "R",
+    "rot": 0
+   },
+   "n_decodes": 54108,
+   "designed_vs_recovered": "1/70",
+   "recovered_frac": 0.014,
+   "reduction_ok": false,
+   "grid_best": {
+    "pmax": 32.322316621914936,
+    "preg": 2,
+    "L": 240,
+    "bar": 23.6153,
+    "stream": "PC3:spec_peak",
+    "dir": "fwd",
+    "map": "m2",
+    "cfg": "vigp_atb",
+    "mode": "R",
+    "rot": 0
+   },
+   "found_planted_cell": true,
+   "plaintext_recovered": true,
+   "passed": false
+  },
+  {
+   "name": "PC4",
+   "planted": {
+    "stream": "PC1:frame_sz",
+    "dir": "fwd",
+    "map": "m1",
+    "cfg": "vigm",
+    "mode": "R",
+    "rot": 11
+   },
+   "n_decodes": 100548,
+   "walker_checks": [
+    {
+     "file": "PC1",
+     "walker_frames": 1151,
+     "ffprobe_packets": 1150,
+     "sample_rate": 44100,
+     "xing": true,
+     "resyncs": 0,
+     "ok": true
+    },
+    {
+     "file": "761",
+     "walker_frames": 6397,
+     "ffprobe_packets": 6396,
+     "sample_rate": 44100,
+     "xing": true,
+     "resyncs": 0,
+     "ok": true
+    },
+    {
+     "file": "onion5",
+     "walker_frames": 10610,
+     "ffprobe_packets": 10610,
+     "sample_rate": 44100,
+     "xing": false,
+     "resyncs": 0,
+     "ok": true
+    }
+   ],
+   "walker_ok": true,
+   "grid_best": {
+    "pmax": 38.32138850940156,
+    "preg": 2,
+    "L": 240,
+    "bar": 23.6153,
+    "stream": "PC1:frame_sz",
+    "dir": "fwd",
+    "map": "m1",
+    "cfg": "vigm",
+    "mode": "R",
+    "rot": 11
+   },
+   "found_planted_cell": true,
+   "plaintext_recovered": true,
+   "passed": true
+  }
+ ],
+ "gate": "FAILED",
+ "elapsed_s": 9.3
+}

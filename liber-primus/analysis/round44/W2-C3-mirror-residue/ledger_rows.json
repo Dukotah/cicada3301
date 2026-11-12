@@ -1,0 +1,66 @@
+[
+ {
+  "id": "R44-W2C3-TRAILING-RESIDUE-IDENTIFIED",
+  "lane": "W2-C3-mirror-residue",
+  "hypothesis": "The corpus byte-residue channel (post-EOI/IEND trailers, unparseable files) contains unidentified machine-readable objects, possibly under the attested transform family (reverse / complement / append-chain).",
+  "status": "measured",
+  "round": "44/W2-C3",
+  "date": "2026-11-09",
+  "threshold": "PREREG.md §5: identification legs deterministic (valid decompression / valid image decode / exact sha match); randomness bound requires windowed entropy >= 7.9 throughout for objects >= 8 KiB.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "PC1: gzip(known sentence) -> complement -> byte-reverse -> appended after IEND of a real corpus PNG copy; the cell's own pipeline located it (revxff, offset 0) and returned the exact sentence. PREREG sha256 484683ca... stamped in run.log before first execution.",
+  "null": null,
+  "result": "All 13 TRAILING-DATA.json rows sha-verified and identified; 9/9 unparseable files classified. 10.jpg/onion6 trailer = 11.jpg+12.jpg+13.jpg sha-exact; ONION_2_JPG = complete 01.jpg + the Huh2 trailer; Huh2 trailer = COMPLETE byte-reversed 02.jpg/Intus.jpg (sha-exact, zero leftover; the R43 blind 'truncated' question closed: no gap); 05.jpg==relikd 0_wisdom.jpg trailer = 360-B hex-ASCII of the known 1033 magic square + complete byte-reversed copy of the host page's own image (zero unexplained bytes; the blind '72,700-B truncated' claim refuted); onion5-liber-primus.jpg = Eyebyext.jpg (onion5v2 b.jpg) + complete onion5v2 c.mp3 byte-identical; -016477-.jpg trailer = Firefox necko cache metadata; 1CcV1/Final 61-B = the known 2012 TIBERIVS step; Blake 3-B = 0xFF padding. Outt.png trailer (13,592 B, community-wiki provenance): NOT a palindrome (blind claim refuted); = 13,579 B of an exactly 15-byte-periodic carrier (true period 30 bits; 5-bit groups 27,29,30,19,11,20 - not valid rune indices) + 13 terminal bytes 7101f04fdc61fd247513e235a2, unique in corpus, unidentified. The 9 unparseable files are all TRUNCATED mirror copies (walkers run past EOF, PIL confirms; Hadyn 54.jpg is a byte-exact 13x16KiB prefix of the complete onion7 master; wiki 53/54 are wikia ICC re-encodes truncated in the mirror; no extra-byte residue anywhere).",
+  "coverage": "13/13 trailing rows + 9/9 unparseable files under {id, rev, xff, rev-of-xff} magic scan at all offsets + decompression at header offsets (brute raw-deflate for <=64 KiB objects); recursive appended-image chain walk matched sha-exact against a corpus image index (1,024 shas incl. image-prefix shas); byte accounting of the 05/0_wisdom and Huh2 trailers to zero unexplained bytes; Outt trailer periodicity decomposition + corpus-wide substring search for its unit and residue.",
+  "not_covered": [
+   "The 13 terminal Outt.png trailer bytes (7101f04fdc61fd247513e235a2): below the 120-symbol adjudication floor, no magic under the transform family, no corpus match; community-wiki provenance keeps the prior low.",
+   "B-09 items 6-9 proper (HTTP/port anomalies, whitespace re-audit at scale, 2012 '7 images' endpoint, Columbus GA Shamir onion): network-dependent, UNAVAILABLE-BY-PREMISE in this cell.",
+   "Bytes past the truncation point of the 9 cut files (absent from every in-corpus copy; the complete onion7 53/54 masters measured trailer-free, so the residual is the wiki re-encodes + cijhho 04.jpg only).",
+   "Pixel/DCT stego inside the decoded images (R8/R29-L1/R30 govern); the R43-F6 blob2-vs-blob3 diff region (stays with that row)."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round44/W2-C3-mirror-residue/RESULTS.md",
+   "liber-primus/analysis/round44/W2-C3-mirror-residue/results/inventory.json",
+   "liber-primus/analysis/round44/W2-C3-mirror-residue/results/deepdive.json",
+   "liber-primus/analysis/round44/W2-C3-mirror-residue/results/plant.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-C3-mirror-residue && python3 scripts/run_plant.py && python3 scripts/run_inventory.py && python3 scripts/run_deepdive.py",
+  "supersedes": null,
+  "superseded_by": null,
+  "reopens_if": "The 13 Outt bytes match a future artifact; a complete off-corpus copy of cijhho 04.jpg or the wiki 53/54 re-encodes surfaces with bytes past the truncation point; a network-capable lane takes up B-09 items 6-9.",
+  "notes": "Partially discharges B-09 (the T2/T3-blob + residue half; the network half stays open). Corrects R43-F6's note 'no T2*/T3*.bin in artifacts/ (absent)': T2.bin lives in armada_osint/extracts/, folly.bin in armada_osint/artifacts/."
+ },
+ {
+  "id": "R44-W2C3-OPAQUE-BLOBS-EXTENDED-TRANSFORMS",
+  "lane": "W2-C3-mirror-residue",
+  "hypothesis": "T2_2jpg / T3-folly / canon_256 reveal structure or a linguistic payload under transforms outside R29-L2/R30-B1 coverage (all-offset decompression under the attested family; rot5/rot6, nibble-swap, bit-reverse, delta, cumsum, xor-index) or under direct symbol-mapped reads (bytes-as-plaintext, a construction in no ledger row).",
+  "status": "negative",
+  "round": "44/W2-C3",
+  "date": "2026-11-09",
+  "threshold": "PREREG.md §5 (fixed before run): panel bar bar_v3(N_CAP=400, L, 'free') = 11.136 (L=120), 14.805 (L=240), 19.198 (L=729); degenerate guard mds<=6 or IoC*N>=4.24; identification legs deterministic.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "PC2 through the identical map+panel glue: bytes with b mod 29 = rune indices of a 240+-rune English passage scored pmax 30.38 vs bar 14.805 (recognizer fires); 200 urandom blobs through the same glue: max pmax 3.42, 0/200 over the bar. PC1 (container plant) also passed. PREREG sha256 484683ca... stamped before first execution.",
+  "null": "urandom calibration: brute raw-deflate false-fire rate 15/31/23 hits per same-size blob under identical criteria (results/brute_calibration.json); panel calibration 0/200 over bar.",
+  "result": "0 hits. Identity pins passed (T2 sha256 35d31e61..., folly md5 0c7d18e8..., promoted canon). No magic, no decompression yielding structured output above the urandom noise floor (real blobs 19/11/1 brute hits vs calibration 15-31), no period, no palindrome core; T2 windowed entropy 7.954-7.960, folly 7.938. Adjudication: 27 direct symbol-mapped decodes ({id,rev,xff} x {mod29, 5bit-skip, pair-mod29}), best pmax 3.285 vs bar 11.136 (canon_256|rev|pair_mod29), zero degenerate, zero crossers. R29-L2's true-opaque verdict extends to this transform family.",
+  "coverage": "3 blobs x all-offset magic scan under 11 transforms (id, rev, xff, revxff, rot5, rot6, nib, bitrev, delta, cumsum, xoridx) + brute raw-deflate at every offset + windowed entropy/period/palindrome; 27 panel-R36 decodes at L in {120,240,729}, N=27 <= N_CAP=400.",
+  "not_covered": [
+   "Keyed-cipher constructions (R30-B1 and its not_covered govern: ~37 Cicada-derivable keys only, no AEAD/KDF).",
+   "Registers outside panel-R36 and non-linguistic structured payloads (keys, coordinates, machine formats with no magic).",
+   "Transforms outside the enumerated family (e.g. bit-level transposition, LFSR descrambling).",
+   "The 'free' null family is shuffled-LP2 wrong-key pmax, the closest standing null for non-LP symbol streams (stated in PREREG §5); the 0/200 urandom calibration is reported alongside."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round44/W2-C3-mirror-residue/results/t2t3_battery.json",
+   "liber-primus/analysis/round44/W2-C3-mirror-residue/results/adjudication.json",
+   "liber-primus/analysis/round44/W2-C3-mirror-residue/results/brute_calibration.json",
+   "liber-primus/analysis/round44/W2-C3-mirror-residue/RESULTS.md"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-C3-mirror-residue && python3 scripts/run_t2t3.py && python3 scripts/run_adjudicate.py",
+  "supersedes": null,
+  "superseded_by": null,
+  "reopens_if": "A key or construction outside the enumerated family becomes evidence-backed (R30-B1's own reopens_if), or a register/payload class outside panel-R36 gains a validated recognizer.",
+  "notes": "Direct read-as-plaintext of these blobs appeared in no prior row (pad/keystream legs R12-A1/R28/R44-P4 are different constructions and stay closed)."
+ }
+]

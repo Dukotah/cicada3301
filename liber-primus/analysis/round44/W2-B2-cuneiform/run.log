@@ -1,0 +1,10 @@
+2026-11-09T14:03:17 PREREG hash-stamp BEFORE first execution: 6bfdde40cca1651701b728679286e613ad55e8b9a26ea6618e152a813d7f795f  PREREG.md
+2026-11-09T14:06:00 run plant.py (positive controls FIRST)
+2026-11-09T14:06:33 PC-B setup fix: plant page range 4..12 -> 4..21 (placement only, thresholds untouched)
+2026-11-09T14:08:39 GLUE FIX 1 (forced by PC-B): BAND_COVERED restricted to ink_class != TEXT band boxes; TEXT band boxes are the rune text column (B000 spans x601-2343 y619-1903) and swallowed in-text marks. Thresholds untouched.
+2026-11-09T14:09:57 plant-harness fix (not glue): baseline subtraction exact-bbox -> center-proximity 6px (JPEG re-encode jitter leaked 4 genuine comps)
+2026-11-09T14:11:56 plant placement fix: skip cells inside non-TEXT band bboxes (BAND_COVERED by the registered rule; p14 B040 VINE/WOODCUT ate 3 dots)
+2026-11-09T14:13:26 GLUE FIX 2 (forced by PC-B): reading order raw (y0,x0) -> row-bucketed (ROW_GAP 40px, then x). Thresholds untouched.
+2026-11-09T14:14:18 controls ALL PASSED; real census begins
+2026-11-09T14:19:05 run reads.py (registered reads R-A..R-E)
+2026-11-09T15:23:31 lane complete: census MEASURED (124 objects dispositioned), R-C read NEGATIVE (1624 decodes, best 8.185 vs 15.9945, 0 crossers), short streams measured-only. RESULTS.md + ledger_rows.json written.

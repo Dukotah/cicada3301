@@ -1,0 +1,45 @@
+{
+ "$comment": "R44 WAVE-2 cell C9 draft row - coordinator applies to LEDGER.json (this cell does not modify the ledger itself). X1 binding condition (REPORT-WAVE2.md section C9) honored: the mandated recovery-power clause appears verbatim in not_covered.",
+ "new_rows": [
+  {
+   "id": "R44-W2C9-D03-HOMOPHONIC-SCREEN",
+   "round": 44,
+   "lane": "W2-C9-homophonic",
+   "date": "2026-11-11",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "DETECTION-CONDITIONED per the dated pre-screen addendum ruled acceptable-as-narrowed by X1. PC2 (EN k=15 repeat-avoiding homophones - the shape matching ALL measured LP2 statistics, i.e. the shape hunted) passed BOTH clauses: T=0.3270 vs env100_max -0.0193, ARI 0.513. PC3 (LATIN k=12 uniform) passed both: T=0.2976, ARI 0.761. PC1 (EN k=15 uniform) passed detection at ~16x the null spread (T=0.3047 vs -0.0196) but FAILED the ARI>=0.5 recovery clause (ARI 0.326); addendum appended BEFORE any real-stream run narrowed the claim to detection-level, bars untouched. Supplementary PC4 (flat-IoC LP2-matched, k=19, addendum plant, thresholds untouched): T=0.3709, ARI 0.711, detection pass. Detection margins +0.31..+0.41 bits/bigram; measured detection power ~1 for all planted shapes. results/plants.json, results/pc4_flat.json.",
+   "hypothesis": "LEDGER D-03 (open, declared-closed-but-thin): LP2 is a stationary book-wide homophonic-downward cipher - a surjective map 29->k (k=5..26) whose class stream has real sequential (bigram) structure. The specified-but-never-coded search: anneal the partition, validate on synthetic homophonic ciphertext, score against a 1,000-shuffle control envelope, require generalisation to held-out pages, natural partitions first.",
+   "result": "NEGATIVE (detection-conditioned), clean. 0 crossers in 49 cells (22 annealed k=5..26 + 27 natural partitions) x 2,001 replicates (1 real + 1,000 family-A whole-stream shuffles + 1,000 family-B doublet-matched filtered-uniform, n=1,000 at every cell). Real T range: annealed -0.0702..-0.0017, natural -0.0488..+0.0018. Closest approach to the both-families p999 bar: prime_mod_2 gap 0.0012 bits/bigram; 9 single-family exceedances disclosed, none survives the pre-registered conjunction. Best real cell sits ~2 orders of magnitude below the plant detection margins.",
+   "coverage": "The D-03-specified annealing search at the pre-registered bounded budget (2 restarts x 2,500 proposals, identical on every replicate), surjective 29->k for k=5..26; 27 frozen natural partitions (futhorc aetts, vowel/consonant, idx mod 2-13, prime-value mod 2-13, confusable-glyph merge); cross-validated even/odd page split, bigrams within pages; language-agnostic order-2 statistic (avoids the L7-A trap by construction); both control families at N=1,000; detection power measured ~1 on 3+1 planted shapes spanning EN/LATIN x uniform/repeat-avoiding/flat-IoC homophone selection.",
+   "threshold": "Crosser iff T_real > the 999th order statistic (empirical 99.9th pct) of BOTH null families at that cell; expected false crossers over 49 cells ~0.1 per family before the conjunction. Bars built through this cell's own glue per the D-03 spec (partition-anneal cross-validated gain is outside bars_v3's domain - bars_v3 addendum in PREREG section 5). Frozen in PREREG.md, hash-stamped in run.log before first execution; dated addendum re-stamped before the real screen.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "surjective 29->k, k=5..26, as reached by the bounded optimizer (2x2,500 SA proposals) + the 27 enumerated natural partitions. NOT all surjective maps.",
+    "decoder_transition_model": "fixed-rate, stationary, book-wide homophonic substitution (one rune = one plaintext symbol everywhere); bigrams within pages only. Variable-rate encodings, per-page/per-section partitions, keystream-driven homophones NOT covered.",
+    "adjudicator_register": "language-agnostic order-2 statistic - covers any plaintext with bigram structure at the measured detection power; plaintexts whose structure is ONLY order>=3 (bigram-flat) are NOT covered."
+   },
+   "not_covered": [
+    "partition-recovery power NOT established at k15-uniform (ARI 0.33)",
+    "EM optimizer arm (the proposal's alternative optimizer); optimizer-unreachable partitions beyond the plant-measured power envelope.",
+    "k outside 5..26.",
+    "Variable-rate encodings; non-stationary (per-page/per-section) partitions; keystream-driven homophone selection.",
+    "Plaintexts with no order-2 structure (bigram-flat, order>=3-only); trigram+ objectives."
+   ],
+   "reopens_if": "An EM or stronger optimizer with measured power at these k; a non-stationary or keystream-driven homophonic model under an instrument of measured power; k outside 5..26; an order>=3 class-stream objective. Any crosser is FLAGGED-FOR-ORACLE per HUMAN-ORACLE.md, never auto-certified.",
+   "evidence": [
+    "liber-primus/analysis/round44/W2-C9-homophonic/PREREG.md",
+    "liber-primus/analysis/round44/W2-C9-homophonic/scripts/homophonic.py",
+    "liber-primus/analysis/round44/W2-C9-homophonic/scripts/resume_screen.py",
+    "liber-primus/analysis/round44/W2-C9-homophonic/results/plants.json",
+    "liber-primus/analysis/round44/W2-C9-homophonic/results/pc4_flat.json",
+    "liber-primus/analysis/round44/W2-C9-homophonic/results/rows.jsonl",
+    "liber-primus/analysis/round44/W2-C9-homophonic/results/screen.json",
+    "liber-primus/analysis/round44/W2-C9-homophonic/RESULTS.md",
+    "liber-primus/analysis/round44/W2-C9-homophonic/run.log"
+   ],
+   "reproduce": "cd liber-primus/analysis/round44/W2-C9-homophonic/scripts && python3 homophonic.py plant && python3 resume_screen.py --procs 6 --max-minutes 600 && python3 resume_screen.py --finalize",
+   "notes": "Discharges D-03's named never-coded search exactly as specified (same k range, validation-first, 1,000-shuffle envelope, held-out generalisation, natural-partitions-first) plus the D-02-lesson second control family; D-02 itself (PPM bits/rune) NOT run here. Mid-run leaked-semaphore death at ~300/2,001 rows resumed exactly via per-tag seeds (spawn-context runner); disclosed in RESULTS section 4. rows.jsonl persists per-replicate R3 stats (T, train MI, ioc_k, mds32, zlib, partitions for the real stream per k in screen.json real_details)."
+  }
+ ]
+}

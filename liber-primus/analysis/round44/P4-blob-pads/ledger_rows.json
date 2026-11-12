@@ -1,0 +1,35 @@
+{
+ "$comment": "R44 P4 draft rows - parent applies to LEDGER.json (this lane does not modify the ledger itself).",
+ "new_rows": [
+  {
+   "id": "R44-P4-ONION-BLOB-PADS",
+   "round": 44,
+   "lane": "P4-blob-pads",
+   "date": "2026-11-09",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "Three plants through the identical extraction+sweep glue (R42 X1 rule: keys are this lane's own derived streams): known English-register plaintexts encrypted at pre-registered cells (P1 blob1033:div9 fwd vig- rot77 L240; P2 comb:decpref:blob761:xor rev beaufort rot201 L200; P3 blob3301:nib fwd vig+atbash rot500 L240). All three recovered byte-exactly at the planted cell as grid-best, non-degenerate, pmax 38.32/33.40/32.32 vs bars 18.826/14.034/18.826.",
+   "hypothesis": "One of the three onion pre-page 256-byte hex blobs (markers 761/1033/3301; extraction shas 05acf0d8/d8c0f83c/4f1cef87, re-extracted by this lane's own glue and digest-matched to R43-F6), or that blob joined byte-wise with the pp49-51 payload, is a repeating mod-29 keystream for the 55 unsolved LP2 pages - the F3-J6 join X0 item 31 found never run.",
+   "result": "NEGATIVE (measured, panel-R36). 27 derived keystreams (3 blobs x {byte mod 29, byte div 9, interleaved hi/lo nibbles} + {canon_256, canon_256_decpref} x 3 blobs x {XOR, ADD, SUB(canon-blob) mod 256} reduced mod 29) x {fwd, rev} x 6 configs (vig+/-, Beaufort, each +/- atbash) x all rotations (256 or 512) = 92,160 decodes/page over 55 unsolved pages = 5,068,800 decodes. 0 crossers; 0 mod-29 key collisions (family size exact); observed global best pmax 5.881 (page 14, blob3301:nib fwd vig+atbash rot337, L=137, preg EN_HALFVOWEL, ioc_n 1.027, mds 16, non-degenerate) vs its bar 14.034 - 8.2z below bar; per-page best pmax range 4.48-5.88, no near-miss anywhere.",
+   "coverage": "All 3 pre-page blobs under 3 byte->mod-29 reductions + all 18 canon-payload byte-wise joins under mod-29, both key directions, all whole-period rotations, 6 periodic substitution configs, every unsolved page; panel-max over 12 registers (panel-R36); R3 statistics persisted for every per-page best (p4_results.json).",
+   "threshold": "bars_v3.bar_v3(92160, L_cap, 'free') with L_cap = largest of {120,240,400,729} <= page length, floor 120: 14.0340 (L_cap 120), 18.8261 (L_cap 240; max page length 277). Crosses iff a non-degenerate full-adjudicate pmax >= bar; named in PREREG.md before any run (incl. a pre-data correction of a grid-arithmetic slip, documented in the PREREG itself).",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "the three onion pre-page 256-byte blobs under byte mod 29 / byte div 9 / interleaved-nibble reductions, plus the 18 {canon_256, canon_256_decpref} x blob x {XOR, ADD, SUB(canon-blob)} byte-joins under mod 29 only; x {fwd, rev} x all rotations. NOT: other reductions, blob-minus-canon SUB, div9/nib reductions of the joins, cross-blob joins, hash/PRF expansions of the blobs",
+    "transition_model": "periodic (repeating, constant per-page phase) additive/Beaufort substitution mod 29 x atbash pre-composition - no autokey, no per-line/per-page resets, no skips or rejection rules, no one-shot alignment, no transposition",
+    "adjudicator_register": "panel-R36, panel-max over 12 registers (adjudicate/adjudicate_batch); free-null bar bars_v3 'free' (R37 caveat: free control at L=240 fails for OE and EN_HALFVOWEL)"
+   },
+   "not_covered": "Reductions beyond the three pre-registered maps; the joined streams under div9/nib reductions; SUB in the blob-minus-canon direction; blob-x-blob joins; blobs as autokey seeds, offset/permutation tables, or PRF/KDF inputs; per-line or per-page key resets (R44 lane R1's axis); languages outside the 12-register panel. The F3 Section 4 aggregate constraint (any blind additive keystream excluded at 17-sigma by the book-wide doublet rate) independently bounds this family and is consistent with this per-page direct negative.",
+   "evidence": [
+    "liber-primus/analysis/round44/P4-blob-pads/PREREG.md",
+    "liber-primus/analysis/round44/P4-blob-pads/p4_results.json",
+    "liber-primus/analysis/round44/P4-blob-pads/RESULTS.md"
+   ],
+   "reproduce": "python3 liber-primus/analysis/round44/P4-blob-pads/extract_and_run.py",
+   "supersedes": [],
+   "superseded_by": null,
+   "reopens_if": "A measured fact ties a specific blob to a specific page subset (e.g. a provenance link between an onion pre-page and particular LP2 pages), motivating per-page offset schedules or reset models this grid cannot represent; or a fourth pre-page blob surfaces.",
+   "notes": "Discharges X0 (R43) adjudication item 31 (NEW-lite) and the F3-J6 test as specified (J6 asked offsets 0-20 quadgram-scored; this ran ALL rotations under the standing panel instrument instead - strictly wider). canon_256 ALONE as key is NOT in this family because R28-L2-CONTESTED-BYTES already covers it; adjacent rows cited in PREREG: R43-F6-ONION-BLOB-STRUCTURE, R43-F6-PAYLOAD-VS-ONION-BLOBS, R43-F6-PAGE56-HASH-AS-KEY, R30-B1-BLOB-CRYPTO, H-03, R12-A1/B-02/B-08/R17-PUBLIC-PAD, R43-F5BT-TIMING-KEYSTREAM (harness)."
+  }
+ ]
+}

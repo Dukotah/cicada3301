@@ -1,0 +1,181 @@
+[
+ {
+  "id": "R44-W2C6-SHORTPAGE-INSTRUMENT",
+  "lane": "round44/W2-C6-short-pages",
+  "hypothesis": "Instrument build: bespoke matched-length family-wise bars + measured power exist for panel-R36 adjudication at the shortest unsolved-page lengths L in {66,76,85,92,95} (p49/p54/p55/p50/p56-node), including bars at the four standing per-page sweeps' own N -- the measurement B-24 says was never disclosed.",
+  "status": "measured",
+  "round": "44/W2-C6",
+  "date": "2026-11-10",
+  "threshold": "bars_v3 exponential-POT refit on matched-length surrogates (SEL canon selections + WIN-U unsolved-prefix windows, 1000 x 116-map grid each, seed 3301), alpha=0.01; direct bars at N=600; re-adjudication bars at each lane's page-N and lane-N (12,184..5,068,800); classical bar = max(SEL,WIN-U,VIGK,ATTSEL) at N=160,000; verdict power floor 0.5 EN; all fixed in PREREG before any run",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "Glue plant = the real solved canon page p56 (Parable, L=95) through the cell's own 116-map grid: identity pmax 16.9518 >= bar 5.8395, identity = grid argmax. Classical glue plant (k=3, known key) RECOVERED through the full exhaust path (its pmax 11.4876 vs bar 11.8542 single-draw miss = the measured k=3 power 0.90, disclosed in Addendum 1; bar not lowered). POT fits all >= 11,600 exceedances. The intended second glue plant p55 turned out to be ciphertext, not plaintext -- premise correction, dated Addendum 1 before any real read.",
+  "result": {
+   "bars_N600": {
+    "66": 5.8403,
+    "76": 5.8545,
+    "85": 5.833,
+    "92": 5.8589,
+    "95": 5.8395
+   },
+   "power_EN_and_LA_all_nodes_all_bars": 1.0,
+   "EN_median_gridmax_by_L": {
+    "66": 13.38,
+    "76": 14.26,
+    "85": 15.29,
+    "92": 16.09,
+    "95": 16.4
+   },
+   "classical_bar_L66_N160k": 11.8542,
+   "classical_per_k_power_EN": {
+    "1": 0.8333,
+    "2": 0.9,
+    "3": 0.9,
+    "4": 0.8333,
+    "5": 0.8667,
+    "6": 0.7667,
+    "7": 0.6,
+    "8": 0.6
+   },
+   "classical_per_k_power_LA": {
+    "1": 0.8,
+    "2": 0.8333,
+    "3": 0.8333,
+    "4": 0.9333,
+    "5": 0.8,
+    "6": 0.7667,
+    "7": 0.6333,
+    "8": 0.3667
+   },
+   "headline": "The short-page lengths are NOT underpowered for direct-dress recognition: EN+LA power 1.0 at every (L, N) cell up to N=5.07M. The underpower lives only in the classical beam channel (k>=7, LA k=8 = 0.37 < floor)."
+  },
+  "coverage": "Family-wise bars + measured EN/LA power for short-PAGE streams under panel-R36 at L 66/76/85/92/95, over the 116-map affine grid and (L=66) the classical attack population incl. a selection-biased ATTSEL null (full attack on 20 surrogates, 3.15M pooled). Discharges the instrument gap R43 X0 item 24 names (standing sweeps adjudicated L=66-92 pages against L=120 bars with no power measurement).",
+  "not_covered": [
+   "L outside {66,76,85,92,95}",
+   "non-affine/non-periodic decode populations for the direct bars (each keyed sweep's own population approximated, stated conditional; bars_v3 keyskip cross-checks reported)",
+   "panel registers beyond the 12 (register axis conditional as always)"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-C6-short-pages && python3 null_bars.py && python3 plant_power.py",
+  "reopens_if": "a decode family is shown whose null pmax population at these L materially exceeds ATTSEL's (then these bars are lenient for it), or a register outside panel-R36 is made measurable at these lengths"
+ },
+ {
+  "id": "R44-W2C6-SHORTPAGE-DIRECT",
+  "lane": "round44/W2-C6-short-pages",
+  "hypothesis": "One of the shortest unsolved pages -- p49 (66), p54 (76), p50 (92), p55 (85, the B-24 AN-END body) -- is a direct or affine-dressed (incl. atbash, either direction) natural-language fragment in a panel-R36 register.",
+  "status": "negative",
+  "round": "44/W2-C6",
+  "date": "2026-11-10",
+  "threshold": "pmax >= bespoke matched-length bar of record at N=600 (5.833-5.859 per node), alpha=0.01, fixed in PREREG",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "p56 (solved Parable, L=95) identity read through the identical glue: pmax 16.9518 >= 5.8395, argmax = identity. Measured power at every target node: EN 1.0, LA 1.0.",
+  "result": {
+   "p49": {
+    "best": 2.8694,
+    "bar": 5.8403
+   },
+   "p54": {
+    "best": 3.5251,
+    "bar": 5.8545
+   },
+   "p50": {
+    "best": 3.6218,
+    "bar": 5.8589
+   },
+   "p55": {
+    "best": 3.4255,
+    "bar": 5.833
+   },
+   "n_decodes": 464,
+   "n_crossers": 0,
+   "note": "p55's read was executed at the Q5 checkpoint under the (wrong) plant premise and reclassified to a real read in dated Addendum 1 before any other real read; numbers frozen; disclosed for X1."
+  },
+  "coverage": "116 maps per page ({fwd,rev} x affine a in {1,28}, s 0..28), panel-R36, at measured power 1.0 EN+LA. This is p55's FIRST per-page adjudication of any kind.",
+  "not_covered": [
+   "keyed, derived, transposition, chained, autokey, running-key constructions on these pages",
+   "registers outside panel-R36"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-C6-short-pages && python3 direct.py",
+  "reopens_if": "a register outside panel-R36 becomes measurable at these lengths"
+ },
+ {
+  "id": "R44-W2C6-P49-CLASSICAL",
+  "lane": "round44/W2-C6-short-pages",
+  "hypothesis": "p49 (66 runes, shortest unsolved page) is enciphered with a classical cipher: shift, atbash, or Vigenere with period k<=8, optionally atbash-composed, either direction (the R43 X0 item-24 blind-agent ask, 3/6 convergence).",
+  "status": "negative",
+  "round": "44/W2-C6",
+  "date": "2026-11-10",
+  "threshold": "pmax >= 11.8542 = max(SEL, WIN-U, VIGK, ATTSEL selection-biased null) at N=160,000, alpha=0.01, fixed in PREREG Addendum 1 before the read",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "k=3 glue plant (held-out EN window, known key a=28 s=[5,17,23]) exactly RECOVERED through the full-exhaust code path. Measured per-k recovery power through the real attack glue: EN 0.83/0.90/0.90/0.83/0.87/0.77/0.60/0.60 for k=1..8; LA 0.80/0.83/0.83/0.93/0.80/0.77/0.63/0.37. | X1 patch: the k=3 glue plant was exactly RECOVERED but missed the classical bar by 0.37 single-draw (11.4876 < 11.8542); measured k=3 power 0.90 makes a ~10% single-draw miss expected; negative is per-k power-conditioned.",
+  "result": {
+   "n_adjudicated": 157532,
+   "best": 7.1074,
+   "bar": 11.8542,
+   "n_crossers": 0,
+   "best_cfg": "k=8 beam, rev, a=1 (non-degenerate, noise translit)",
+   "k_le_3": "FULL exhaust of Z29^k x {fwd,rev} x {plain,atbash-composed}: unconditional within the register panel",
+   "k_4_to_8": "EN-unigram per-column beam (B=4 for k=4..6, B=3 for k=7..8) at the per-k power above"
+  },
+  "coverage": "All periodic polyalphabetic shift keys k<=3 (complete), k=4..8 via unigram beam at measured power 0.60-0.90 EN, both directions, plain and atbash-composed, panel-R36, measured power stated per k.",
+  "not_covered": [
+   "k>8",
+   "k=4..8 keys outside the EN-unigram top-B column beam (10-40% of random keys by the power measurement)",
+   "LATIN-register Vigenere at k=8 (LA power 0.37 < 0.5 floor -- NOT excluded)",
+   "transposition, autokey, running-key, chained constructions",
+   "p50/p54/p55 classical (p49 only per the X0 item)"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-C6-short-pages && python3 classical.py",
+  "reopens_if": "a beam-free full exhaust at k in 4..8 becomes affordable (29^k adjudications), or a non-EN unigram guide is preregistered for the beam"
+ },
+ {
+  "id": "R44-W2C6-READJUDICATION",
+  "lane": "round44/W2-C6-short-pages",
+  "hypothesis": "The standing per-page sweeps' stored short-page bests (P2-p15-grid, P4-blob-pads, R1-key-resets, W2-A4-chained x p49/p50/p54), adjudicated in wave 1/2 against L=120 bars, hide a crosser under honest matched-length bars -- the B-24/B-19/B-20 'disclosed underpowered' worry.",
+  "status": "negative",
+  "round": "44/W2-C6",
+  "date": "2026-11-10",
+  "threshold": "stored best pmax >= bespoke matched-L bar at the lane's own N (page-N 7.09-9.23 and lane-N up to 9.62), alpha=0.01, fixed in PREREG; zero new decodes (stored R3 stats reused verbatim)",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "Same instrument as R44-W2C6-SHORTPAGE-INSTRUMENT (p56 glue plant passed); measured EN power 1.0 at every (L, lane-N) bar the 12 cells were tested against.",
+  "result": {
+   "n_cells": 12,
+   "n_crossers": 0,
+   "min_margin": 2.14,
+   "stored_bests": {
+    "P2": [
+     4.794,
+     4.471,
+     4.389
+    ],
+    "P4": [
+     4.964,
+     4.783,
+     5.748
+    ],
+    "R1": [
+     4.89,
+     4.678,
+     4.791
+    ],
+    "A4": [
+     4.433,
+     3.585,
+     3.301
+    ]
+   },
+   "direction_of_original_error": "the lanes' L=120 bars (12.96-15.67, their own null populations) were HIGHER than the honest matched-length bars at their N -- the standing adjudications were conservative, not lenient; the missing piece was power, now measured at 1.0",
+   "p55_gap": "p55 (85 runes, the AN-END body, B-24's object) is ABSENT from all four standing per-page sweeps (pages 0-54 only); no stored best exists; its only per-page record is R44-W2C6-SHORTPAGE-DIRECT"
+  },
+  "coverage": "All 12 stored short-page bests re-adjudicated under matched-length bars at both page-N and lane-N, with bars_v3 keyskip cross-checks; EN power 1.0 at every cell.",
+  "not_covered": [
+   "the bespoke null population is affine-grid surrogate decodes, not each lane's own decode population (conditional stated; bars_v3 keyskip cross-check reported at 9.1-11.6, same order)",
+   "p55 under every keyed per-page family the standing sweeps ran on pages 0-54 -- NEVER RUN; concrete reopener: extend any per-page sweep's page loop to 55",
+   "B-19/B-20's full LENGTH/DIRECTION ground (only the short-page {fwd,rev} fragment at L 66-95 is covered here, at power 1.0)"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-C6-short-pages && python3 readjud.py",
+  "reopens_if": "any per-page sweep extends to p55 (the named gap), or a lane-population-matched short-L null is built and disagrees with these bars"
+ }
+]

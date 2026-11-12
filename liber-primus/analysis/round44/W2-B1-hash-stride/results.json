@@ -1,0 +1,93 @@
+{
+ "cell": "R44-W2-B1-hash-stride",
+ "date": "2026-11-09",
+ "artifact_pins": {
+  "main": {
+   "path": "corpus/A-primary-artifacts/signed-payloads/2014-01-liber-primus-hash-block.bin",
+   "bytes": 991,
+   "sha256": "f8fa59ec133168d8aaf9c67d13152286eebcec191c5668f7f143a2c7764fc530",
+   "asc": "corpus/A-primary-artifacts/pgp/messages/2014-01-liber-primus-hash-block.asc",
+   "issuer_keyid": "181F01E57A35090F",
+   "verify_log": "corpus/A-primary-artifacts/_logs/verify_sigs_run3.log: VALID"
+  },
+  "outguess01": {
+   "path": "corpus/A-primary-artifacts/signed-payloads/2014-01-liber-primus-hash-block-outguess-01.bin",
+   "bytes": 991,
+   "sha256": "6600c94b199f30c70c58f5800ccf80537b335122bd66768b6049241d8b20f318",
+   "asc": "corpus/A-primary-artifacts/pgp/messages/2014-01-liber-primus-hash-block-outguess-01.asc",
+   "issuer_keyid": "181F01E57A35090F",
+   "verify_log": "corpus/A-primary-artifacts/_logs/verify_sigs_run3.log: VALID"
+  },
+  "outguess02": {
+   "path": "corpus/A-primary-artifacts/signed-payloads/2014-01-liber-primus-hash-block-outguess-02.bin",
+   "bytes": 991,
+   "sha256": "07d660d76e24dac92dc0350881ed7771263905a4a64f66c68f7f88ef77c9e07d",
+   "asc": "corpus/A-primary-artifacts/pgp/messages/2014-01-liber-primus-hash-block-outguess-02.asc",
+   "issuer_keyid": "181F01E57A35090F",
+   "verify_log": "corpus/A-primary-artifacts/_logs/verify_sigs_run3.log: VALID"
+  }
+ },
+ "positive_control": {
+  "status": "passed",
+  "detail": "copy of main block with sha1(seg00 runes-only utf8) injected at aligned offset 140 and md5(relikd/p0.jpg bytes) at unaligned offset 333; both recovered by the identical scan glue with correct attribution"
+ },
+ "grid": {
+  "n_candidates": 354,
+  "n_digests": 2832,
+  "entries_per_width": {
+   "16": 2832,
+   "20": 2124,
+   "32": 1416,
+   "64": 708
+  },
+  "widths": [
+   16,
+   20,
+   32,
+   64
+  ],
+  "algos": [
+   "md5",
+   "sha1",
+   "sha256",
+   "sha512"
+  ],
+  "orientations": [
+   "fwd",
+   "rev"
+  ]
+ },
+ "scan": {
+  "n_blocks": 3,
+  "n_windows": 11508,
+  "expected_false_positives_uniform_null": 2.436828001542804e-32,
+  "n_matches": 0,
+  "matches": []
+ },
+ "side_stats": {
+  "main": {
+   "entropy_bits_per_byte": 7.7914,
+   "chi2_255df": 267.3,
+   "dup_20byte_windows_within": {}
+  },
+  "outguess01": {
+   "entropy_bits_per_byte": 7.811,
+   "chi2_255df": 252.8,
+   "dup_20byte_windows_within": {}
+  },
+  "outguess02": {
+   "entropy_bits_per_byte": 7.7909,
+   "chi2_255df": 272.5,
+   "dup_20byte_windows_within": {}
+  },
+  "dup_20byte_windows_across_blocks": {},
+  "remainder_arithmetic": {
+   "991_is_prime": true,
+   "w20": "49*20+11",
+   "w32": "30*32+31",
+   "w16": "61*16+15",
+   "w64": "15*64+31"
+  }
+ },
+ "verdict": "NEGATIVE (structural, measured): 0 window<->digest matches"
+}

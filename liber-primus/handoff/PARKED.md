@@ -5,6 +5,39 @@ tooling than existed when this was assembled. The P-1…P-11 queue is unchanged 
 superseded; P-12 and the external/OSINT pointer below P-11 are the additions since the original
 assembly._
 
+> **Refresh, 2026-11-09 (through Round 43 closeout + Round 44 wave 1).** Four things, verified
+> not asserted:
+>
+> 1. **Every resume path below was re-checked on disk and is real.** The R25 grind
+>    (`analysis/round25/compute-tail/parallel_grind.py` + `progress_w{0..5}.json`), the R27 C-port
+>    engine and its run state (`analysis/round27/P1-engine/run/{STATUS.json,top_S2.json,HIT-CANDIDATE.json}`,
+>    `MONITORING.md`, `BUILD.md`), and the R28 state files (`L3/progress28.json`,
+>    `L4/run/STATUS.json` + `ORPHANED-PREMATURE-RUN.txt`) all exist. No dead paths. Two stale
+>    *claims* in [`PARKED-SWEEPS.md`](PARKED-SWEEPS.md) are corrected there (dated notes in place):
+>    R28-L3 **was** closed out (R32 lane B3 wrote `L3/RESULTS.md`, verdict `inconclusive`, ledger row
+>    `R28-L3-PY27-STR-AMD64-DICT`), and the R27-S2 44.14 % figure is superseded — cumulative Py2.7-MT
+>    `exact` cursor coverage is **52.05 %** after R42-S1 (mixed-instrument; only ~7.9 pp panel-R36-judged).
+> 2. **The R42-S1 full candidate lists are PERMANENTLY LOST** (the hosting Vercel project was
+>    deleted upstream 2026-11-03, ~24 min before the export lane ran; snapshots are project-scoped
+>    and died with it — `analysis/round43/D1-export/RESULTS.md`). **What remains, local and
+>    sha-verified, is sufficient for the verdict and is the record:**
+>    `analysis/round42/S1-s2-recovery/state_recovered/STATUS.json` (sha256 `1aa52944…`),
+>    `HIT-CANDIDATE.json` (`b05fd0ba…`, `hits: []`) and `candidates_summary.json`. Lost forever
+>    unless the sweep is re-run: `candidates.jsonl` (`bd5c8289…`), `top_S2.json` (`f60eece8…`),
+>    `hist_S2.u64` (`60c1744a…`) — fingerprints recorded so a re-run can prove identity.
+> 3. **Two items in this queue have live Round 44 lanes as this is written** (wave 2 in flight —
+>    do not double-run): **P-8**'s doublet-site audit has a cell at
+>    `analysis/round44/W2-B3-doublet-sites/` (the 86-site read, a D-01 falsifier), and the
+>    figural/ornament direction adjacent to **P-9** has `W2-C1-motifs/`. Check those lanes'
+>    RESULTS.md before resuming either item. Separately, Round 44 wave 1's red-ink census
+>    (`round44/P1-red-ink/RESULTS.md`) did the kind of per-component image adjudication P-1's
+>    residuals call for, over the red subset only: it found 5 concrete corrections to the prior-art
+>    red stream (187 → 213 red canon runes) while **confirming canon itself** — the corrections are
+>    segmentation/selection, not rune-identity errors, consistent with the A-01/T2 verdict.
+> 4. The ledger stands at **322 rows** (0 unsound) after Round 44 wave 1; Round 43's six blind
+>    agents produced **zero letter-stream hypotheses this file's parent ledger had missed** —
+>    the parked queue below remains the honest tail set, unchanged in substance.
+
 > **Correction, 2026-10-05.** This header used to say P-12 (the Py2.7 seed grind) was *currently
 > RUNNING*. **It is not, and nothing in this repository is.** Every sweep was killed by a host
 > reboot on 2026-09-15 and none was resumed. What P-12 became is on the record: Round 27 ported

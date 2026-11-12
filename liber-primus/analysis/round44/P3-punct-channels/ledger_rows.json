@@ -1,0 +1,125 @@
+{
+ "$comment": "R44 P3 draft rows - parent applies to LEDGER.json (this lane does not modify the ledger itself).",
+ "new_rows": [
+  {
+   "id": "R44-P3-QUOTESPAN-SELECTION",
+   "round": 44,
+   "lane": "P3",
+   "date": "2026-11-09",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "Plant-A through the lane's OWN extraction+decode glue (R42 X1 rule): a synthetic relikd-format witness with a quoted 160-rune English span Caesar-shifted +11 was parsed by the same extractor and swept by the same 116-dressing grid; extraction reproduced the ground-truth offsets exactly, the planted cell (fwd, atbash off, shift 18) was the grid best with exact plaintext recovery, pmax 26.30 vs bar 11.584.",
+   "hypothesis": "The 7 double-quote-delimited spans (405 runes at canon offsets 1659-1677/5459-5478/9715-9727/9811-9869/10211-10279/10279-10439/12522-12592, F2b position map) are a SELECTION channel: read per-span or concatenated, forward or reversed, they are plaintext in a panel register under a monoalphabetic dressing.",
+   "result": "NEGATIVE. Witness gate first: relikd rune stream = krisyotam canon 12,956/12,956; all 7 spans extracted at exactly the F2b offsets AND found quoted verbatim in scream314_lp.md (two independent transcriptions agree on contents and quoting). Sweep: 8 streams (concat 405 + 7 spans L 12-160) x 2 directions x 2 atbash x 29 shifts = 928 decodes, panel-R36, degenerate guard on. 0 crossers; concat best pmax 2.865 vs bar 16.902 (L_cap 400); best per-span 7.259 (span3, L=12, small-N inflation) vs bar 11.584.",
+   "coverage": "All 7 spans, both witnesses cross-verified; per-span and concatenated; fwd/rev x atbash x all 29 Caesar shifts; panel-max over 12 registers (panel-R36).",
+   "threshold": "bars_v3.bar_v3(928, L_cap, 'free'), L_cap = largest of {120,240,400,729} <= L floored at 120: 11.584 (120), 16.902 (400). Crosses iff non-degenerate pmax >= bar; fixed in PREREG.md before extraction.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "monoalphabetic dressings only: 2 directions x 2 atbash x 29 Caesar shifts over the quote-span selection (per-span and concatenated)",
+    "transition_model": "position-independent substitution mod 29, rigid alignment, no skips/resets",
+    "adjudicator_register": "panel-R36, 12 registers, direct-decode panel-max pmax, free-null bars of record, R38-I2 degenerate guard"
+   },
+   "not_covered": "Quote spans as keys or selectors over OTHER pages; polyalphabetic/keyed dressing within spans; span order permutations; registers outside the 12-register panel; sub-120-rune bar nodes (bars floored at 120; the three shortest spans are L 12-19).",
+   "reopens_if": "a witness changes a span boundary; a preregistered polyalphabetic within-span reading is specified; the panel gains a register.",
+   "evidence": [
+    "analysis/round44/P3-punct-channels/PREREG.md",
+    "analysis/round44/P3-punct-channels/extract_channels.py",
+    "analysis/round44/P3-punct-channels/channels.json",
+    "analysis/round44/P3-punct-channels/plants.py",
+    "analysis/round44/P3-punct-channels/plants_results.json",
+    "analysis/round44/P3-punct-channels/run_p3.py",
+    "analysis/round44/P3-punct-channels/p3_results.json",
+    "analysis/round44/P3-punct-channels/RESULTS.md",
+    "analysis/round43/F2-inventory/token-channels.md"
+   ],
+   "notes": "X0 R43 item 19 (NEW, 4-touch blind convergence), selection half. First time any decode has been able to see these marks: F2b measured the loader deletes them at load time."
+  },
+  {
+   "id": "R44-P3-SEPARATOR-IDENTITY",
+   "round": 44,
+   "lane": "P3",
+   "date": "2026-11-09",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "Three plants through the lane's own witness-parse + sweep glue: Plant-B (180 synthetic separator identities carrying a 60-rune English text in base-3 triples) recovered exactly at the planted cell as grid argmax, pmax 17.45 vs bar 11.943 - power proven AT THE REAL CHANNEL LENGTH; Plant-B2 (2,911 identities, 5-bit packing, 1,164-rune text) exact, argmax, 63.39 vs 20.296; Plant-D (separator-adjacent +v shifts, map (1,2,3)) 100% recovery at the planted config, per-page argmax, 28.55 vs 11.943.",
+   "hypothesis": "The inter-word separator IDENTITY (the hierarchy word-sep/clause ⁘/⁚/heavy ⁜ that the solver input flattens; B-12 not_covered 'Inter-word separator SHAPE', R11-S2 covered run-lengths only) is a data channel: a base-3/4 token stream read as values, or a mod-29 keystream over separator-adjacent runes.",
+   "result": "NEGATIVE. (b1) base-3 over the 180-token book-wide identity stream (6 symbol assignments x 2 directions x triple/pair packings x grid-incl/excl variants = 48 decodes) and (b2) base-4 incl. word separators (2,911 tokens, 2 assignments x 2 directions x pair16/5-bit/tri64 = 12 decodes): 0 crossers - every real decode trips the standing degenerate guard, and that is the measurement: the real identity stream is 145 ⁘ / 4 ⁚ / 31 ⁜ = 0.81 bits/token (0.385 with •), far too skewed to carry register text under any packing, while Plant-B proves a data-bearing stream of identical shape and length decodes and crosses. (b3) identity as sparse keystream over adjacent runes, 32 value-map configs x 55 pages = 1,760 decodes: 0 crossers, best non-degenerate pmax 3.577 vs bar 15.925. The separator hierarchy reads as typography, extending R11-S2's run-length verdict to identity/shape and closing B-12's named not_covered.",
+   "coverage": "Book-wide separator stream pages 0-54 (relikd witness, counts cross-checked vs krisyotam): identity as base-3 (6 assignments x 2 dir x 2 packings x 2 variants) and base-4 (2 assignments x 2 dir x 3 packings) data streams, and as sparse mod-29 keystreams over separator-adjacent runes (6 perms of (1,2,3) + 2 base-4 maps, x sign x next/prev, x 55 pages); N_b = 1,820 decodes, panel-R36.",
+   "threshold": "bars_v3.bar_v3(1820, L_cap, 'free'), L_cap floored at 120: 11.943 (120), 15.925 (240), 17.362 (400), 20.296 (729). Crosses iff non-degenerate pmax >= bar; fixed in PREREG.md before extraction.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "separator-identity symbol assignments (all 6 perms base-3; canonical+reverse base-4), 2 directions, 5 packings (triple/pair base-3; pair16/5-bit/tri64 base-4), and 8 sparse value maps x sign x next/prev for the keystream reading",
+    "transition_model": "direct value-stream read (no cipher), and sparse additive shifts mod 29 at separator-adjacent positions only; rigid alignment, no skips/resets",
+    "adjudicator_register": "panel-R36, 12 registers, panel-max pmax, free-null bars of record, R38-I2 degenerate guard"
+   },
+   "not_covered": "Packings/assignments beyond those fixed (e.g. variable-length or keyed encodings); binary/Baconian payloads shorter than ~60 symbols read with an external key (the channel's 146-bit total entropy bounds any payload); separator identity combined with run-lengths or positions as a joint channel; registers outside the panel.",
+   "reopens_if": "a witness disagreement on separator identity surfaces; a preregistered sub-register (non-panel) reading of the 0.81-bit/token stream is specified with its own recognizer.",
+   "evidence": [
+    "analysis/round44/P3-punct-channels/PREREG.md",
+    "analysis/round44/P3-punct-channels/extract_channels.py",
+    "analysis/round44/P3-punct-channels/plants_results.json",
+    "analysis/round44/P3-punct-channels/run_p3.py",
+    "analysis/round44/P3-punct-channels/p3_results.json",
+    "analysis/round44/P3-punct-channels/RESULTS.md"
+   ],
+   "notes": "X0 R43 item 19, separator-shape half. The degenerate-by-skew finding is load-bearing: it is a property of the channel (measured), not of the instrument (Plant-B crossed at the same L)."
+  },
+  {
+   "id": "R44-P3-QUOTESPAN-CRIB-DERIVED",
+   "round": 44,
+   "lane": "P3",
+   "date": "2026-11-09",
+   "status": "negative",
+   "positive_control": "passed",
+   "control_detail": "Plant-C through the lane's own glue: a synthetic witness page (240 runes English) enciphered with a period-7 additive key, with the crib THE PRIMES ARE SACRED inside a quoted 58-rune span; the same crib sweep found the placement, the screen fired (period 7), the extension decoded the full page exactly, pmax 31.28 vs bar 17.913.",
+   "hypothesis": "A quote span is a CRIB: under a candidate plaintext from the 2014 signed messages / LP1-solved vocabulary, the implied additive/Beaufort key fragment belongs to a DERIVED key family (exact period <=13 or exact arithmetic progression mod 29) and extends over the rest of its page (the one crib use VERDICT-OTP-CLASS permits: crib paired with a derived/running key family).",
+   "result": "NEGATIVE at the screen. 24 fixed cribs (all >=10 runes) x 7 spans x every in-span alignment x {additive, Beaufort} x {atbash off,on} = 26,784 derived key fragments; ZERO are exactly periodic (p<=13, len>=2p) or an exact AP mod 29, so zero page extensions existed to adjudicate (the N=26,784 bars 13.376/17.913 were never reached). No crib from the fixed list implies a derived-family key anywhere in any span.",
+   "coverage": "All 7 spans x 24 cribs x all alignments x 2 derivations x 2 atbash = 26,784 derivations; screen = exact period 1-13 (len>=2p) OR exact AP mod 29; survivors (none) would have been extended over every touched page and adjudicated under panel-R36.",
+   "threshold": "bars_v3.bar_v3(26784, L_cap, 'free'): 13.376 (120), 17.913 (240); fixed in PREREG.md with the frozen crib list (cribs.py) before extraction.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "derived families: exact period 1-13 and exact AP mod 29, seeded by the 24 fixed cribs at all in-span alignments; additive and Beaufort derivations, atbash off/on. Keytext running keys NOT in the space (R26-B/R42-C1 ground)",
+    "transition_model": "position-independent additive/Beaufort substitution mod 29, rigid alignment, page-wide extension anchored at the placement",
+    "adjudicator_register": "panel-R36, 12 registers, panel-max pmax, free bars of record (never reached: 0 survivors)"
+   },
+   "not_covered": "Crib texts beyond the 24; near-periodic / periodic-with-errors fragments (the screen is exact); derived families beyond period/AP (polynomial, LFSR, keytext running keys); per-line/per-page reset families (lane R1); spans as cribs against OTHER pages' keys.",
+   "reopens_if": "a new attested phrase list is preregistered; a tolerant (error-budgeted) screen with its own null is preregistered; lane R1's reset decoder wants the spans as alignment anchors.",
+   "evidence": [
+    "analysis/round44/P3-punct-channels/PREREG.md",
+    "analysis/round44/P3-punct-channels/cribs.py",
+    "analysis/round44/P3-punct-channels/plants_results.json",
+    "analysis/round44/P3-punct-channels/run_p3.py",
+    "analysis/round44/P3-punct-channels/p3_results.json",
+    "analysis/round44/P3-punct-channels/RESULTS.md"
+   ],
+   "notes": "VERDICT-OTP-CLASS cap respected: bare crib fits were never adjudicated or reported; only derived-family extensions were reportable, and none existed."
+  },
+  {
+   "id": "R44-P3-APOSTROPHE-NUMERAL-CENSUS",
+   "round": 44,
+   "lane": "P3",
+   "date": "2026-11-09",
+   "status": "measured",
+   "positive_control": "passed",
+   "control_detail": "Census shares the lane's extraction glue, whose Plant-A control passed (ground-truth offsets reproduced exactly); no decode verdict is attached to this row by design.",
+   "hypothesis": "Apostrophe and inline-numeral POSITIONS are a positional channel (parameters, pointers, or a micro-payload).",
+   "result": "MEASURED (census; no verdict - every candidate stream is length <=12, below the L=120 bar node, as preregistered). Apostrophes at canon rune offsets 1110/5138/8515/10089 (mod 29: 8,5,18,26); runes before->after: I->W, O->Y, E->T, J->C (corrects F2b section 4's example: the 'ᚳ glyph is the 4th instance only; all 4 positions confirmed); gaps 4028/3377/1574 (mod 29: 26,13,8). Inline numerals: '7' at canon offset 2566; list labels 1-5 at 8805/8944/9035/9133/9229; the 16-number p15 grid digits all at offset 3612 (lane P2's object); base-60 table digits at offset 12114 (pp49-51, covered by A-04/R28-L2). No adjudicable stream exists at this channel's size.",
+   "coverage": "Full book-wide census of apostrophe and numeral positions from the relikd witness, cross-checked against F2b; no decode sweep (preregistered as census-only).",
+   "threshold": "none applicable (streams below the smallest calibrated bar node); preregistered outcome class 'measured'.",
+   "threshold_fixed_in_advance": true,
+   "three_conditionals": {
+    "key_space": "none swept (census)",
+    "transition_model": "none (census)",
+    "adjudicator_register": "none (census; panel bar nodes start at L=120, streams are <=12)"
+   },
+   "not_covered": "Any keyed/derived reading that consumes these 4+6 positions as parameters into another construction (e.g. offsets as key indices into a future derived-key lane); sub-120 adjudication power in general.",
+   "reopens_if": "a preregistered construction names these positions as parameters; a calibrated short-stream recognizer (L<32) is built.",
+   "evidence": [
+    "analysis/round44/P3-punct-channels/extract_channels.py",
+    "analysis/round44/P3-punct-channels/p3_results.json",
+    "analysis/round44/P3-punct-channels/RESULTS.md"
+   ],
+   "notes": "The numeral census also independently re-locates lane P2's grid (canon offset 3612, matching F2b's position-diff row) and the pp49-51 table block (offset 12114)."
+  }
+ ]
+}

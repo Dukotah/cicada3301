@@ -87,3 +87,42 @@ No git commit (WSL no creds; owner pushes from Windows).
 `ELIMINATION-LEDGER.md`, `analysis/README.md`) are **also stale** past ~R19 and were intentionally
 NOT touched here — they are a separate task. Everything this session is UNCOMMITTED on disk
 (`?? analysis/round23,24,25`, edited `handoff/*`).
+
+---
+
+## Handoff-doc refresh — 2026-11-09 (Rounds 26→43 + Round 44 wave 1 folded in)
+
+The handoff docs had drifted again (PROGRESS/PARKED frozen at R25-era state from 2026-08-31/10-05;
+FOR-FUTURE-SOLVERS and SOLVER-STRATEGY last touched 2026-10-30/31 and still quoting the 0.50%
+seed-tail figure and "25 rounds"). Brought current through **Round 43 closeout + Round 44 wave 1**
+(wave 2 is in flight; its lanes are noted as such, never summarized as settled). Superseded passages
+marked in place per repo doctrine, nothing deleted. Trust anchor re-run after the edits:
+`python3 tests/validate.py` → **ALL VALIDATIONS PASSED**. All edits UNCOMMITTED (the round-closeout
+coordinator commits).
+
+**What the refresh folded in:**
+- **R43 (the fresh armada, closed 2026-11-05):** six blind agents (X1-audited BLIND-CLEAN)
+  independently re-derived the central verdict from primary material alone; of their 34 deduplicated
+  hypotheses the ledger already held every letter-stream item at power (17 CITED, 9 self-disclosed
+  REOPENs, 7 NEW + 1 split — every NEW item a physical-page channel). The letter-stream hypothesis
+  space is now *measured* as exhausted at blind resolution. `analysis/round43/SYNTHESIS.md`.
+- **LEDGER.json 309 → 322 rows** (R44 wave 1 filed), 0 unsound negatives.
+- **The R42-S1 snapshot LAPSE is permanent** — full candidate lists destroyed with the deleted
+  hosting project; verdict stands on local sha-verified summaries. Recorded in PARKED.md header +
+  PARKED-SWEEPS.md §1a; detail `analysis/round43/D1-export/RESULTS.md`.
+- **R44 wave 1 (2026-11-09):** the red-ink channel read in full — census CORRECTS the prior-art
+  red stream **187 → 213 red canon runes** (five concrete corrections incl. the never-extracted p15
+  red title + p53 URPN + 13 red drop-caps); rubrication verdict survives; all readings negative
+  (`round44/P1-red-ink/RESULTS.md` — read-only, armada territory). p15 grid / punctuation channels /
+  blob pads / key resets all negative. And R1 verified the **unique boundary-crossing 7-gram**:
+  ᛞᛄᚢᛒᛖᛁᚫ at p27:28 and p54:70 — the only repeated 7-gram in the whole 13,136-rune canon, whose
+  p54 occurrence crosses into p55's first rune, so every per-page analysis is structurally blind
+  to it (`round44/R1-key-resets/RESULTS.md`).
+- **PARKED resume paths all re-verified on disk 2026-11-09** (R25 grind, R27 engine+run state,
+  R28 L3/L4 state files) — no dead paths; two stale *claims* in PARKED-SWEEPS corrected (L3 was
+  closed out by R32-B3; the R27 S2 coverage figure is superseded by R42-S1's 52.05%).
+- **New:** [`ARCHIVAL-BUNDLE.md`](ARCHIVAL-BUNDLE.md) + `build_archival_manifest.py` +
+  `archival-bundle.manifest.tsv` (3,625 files / 1,128.6 MB of gitignored IRREPLACEABLE primary
+  material, sha256-manifested, with the one-command tar line and the Zenodo destination), and
+  [`OWNER-DOI-STEPS.md`](OWNER-DOI-STEPS.md) (`.zenodo.json` verified valid + refreshed to name
+  the 322-row elimination ledger).

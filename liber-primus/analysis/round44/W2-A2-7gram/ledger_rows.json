@@ -1,0 +1,90 @@
+[
+ {
+  "id": "R44-W2A2-7GRAM-DIFFPLAIN",
+  "round": 44,
+  "lane": "W2-A2-7gram",
+  "date": "2026-11-09",
+  "status": "measured",
+  "positive_control": "passed",
+  "control_detail": "Three engineered pairs injected into vocabulary copies and recovered through the identical scan code before any real target: PLANT-S1 constant shift s=11 (count 16 >= 1 at s=11, planted pair listed verbatim; this plant exposed and fixed a listing-cap bug before the real run), PLANT-S2 AP (a,b)=(4,3) (count 12 at exactly that cell), PLANT-S3 generator window pair G-bash-3301 (o1,o2)=(57,141) (cell count 4 >= 1). plant_solver.json.",
+  "hypothesis": "The repeated ciphertext 7-gram at p27:28/p54:70 (R44-R1-SEVENGRAM) arises from TWO DIFFERENT plaintexts colliding under key segments related by a low-complexity relation (constant shift, arithmetic progression mod 29, or the same generator at two offsets) - the reading R44-R1 left unconstrained.",
+  "result": "MEASURED - everything at or below the vocab-null rate; no low-complexity key relation is preferred by real plaintext vocabulary. Under k1-k2 = +-(P1-P2) with both sites shaped (3-rune word, 3-rune word, word-head) from a 244-word vocabulary (solved-page + top KJV English + top Latin 3-rune words; site-B head FIXED at A=24 by the p55 crib): constant shifts satisfiable at 202 pairs vs null 195.7+-64.1 (z~+0.1, pure chance; all 202 listed verbatim); AP cells 530/812 vs null 584+-20 (BELOW null); same-generator window pairs over the 51 R44-R1 keys (o1,o2 <= 260^2) satisfiable fraction 0.685 vs null 0.813+-0.022 (below null); the two physically-anchored diagonals (section K[o+28+i]-K[o+70+i], global K[o+6555+i]-K[o+12950+i]) 7121/7195 cells vs null ~8368+-240 (below null). The real vocabulary is LESS compatible with a different-plaintext collision than random triples. The 2760 diagonal cells that are both vocab-satisfiable and crib-consistent were ALL decoded by R44-W2A2-P55-CRIB-SWEEP: 0 crossers (loud2.json).",
+  "coverage": "100% exact enumeration (counts, not samples) of the three pre-registered relation classes over the full vocabulary: 29 constant shifts, 29x28 AP cells, 51 keys x 261^2 free window pairs + 2x201 anchored diagonals; both collision signs; null of record = 200 (constant/AP) / 20 (generator) random-vocabulary trials, seed 3301.",
+  "threshold": "Exact-count instrument; LOUD criteria fixed in PREREG section 7 (LOUD-1 any constant pair - fired at chance rate, listed; LOUD-2 anchored+crib-consistent cells - cross-referenced into the decode sweep, 0 crossers; no verdict language attaches to counts).",
+  "threshold_fixed_in_advance": true,
+  "three_conditionals": {
+   "key_space": "the 51 R44-R1 keys for the generator relation; vocabulary V3 = 244 EN/Latin/solved-page 3-rune words + 25 head runes, built by the PREREG rule; window pairs (o1,o2) <= 260, diagonals o <= 200",
+   "transition_model": "additive/Beaufort x atbash-pre collision algebra k1-k2 = +-(P1-P2); both sites carry (3,3,1)-shaped word tuples per the measured 001001 gap pattern; relations tested: constant, AP mod 29, same-generator-two-offsets; two UNRELATED streams are unconstrainable by construction (stated)",
+   "adjudicator_register": "none (exact counting vs random-vocab null, seed 3301); the paired decode scrutiny lives in R44-W2A2-P55-CRIB-SWEEP under panel-R36"
+  },
+  "not_covered": "Plaintext shapes other than (3-rune word, 3-rune word, word-head); words outside the 244-word V3 (proper names, other registers); key relations beyond constant/AP/same-generator (polynomial >= 2, keyed permutations, two unrelated streams); keys outside the 51; window offsets beyond 260/200.",
+  "reopens_if": "A vocabulary for another register or a larger word-shape model is specified (the scan re-runs by rule in ~50 s); a key family outside the 51 gains an evidence prior; a crosser from any lane makes one specific plaintext pair testable directly.",
+  "evidence": [
+   "liber-primus/analysis/round44/W2-A2-7gram/PREREG.md",
+   "liber-primus/analysis/round44/W2-A2-7gram/RESULTS.md",
+   "liber-primus/analysis/round44/W2-A2-7gram/diffplain.json",
+   "liber-primus/analysis/round44/W2-A2-7gram/loud2.json",
+   "liber-primus/analysis/round44/W2-A2-7gram/plant_solver.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-A2-7gram && python3 plant_solver.py && python3 plant_crib.py && python3 run_diffplain.py",
+  "notes": "Discharges the 'different-plaintext reading' clause of R44-R1-SEVENGRAM/R44-R1-RESET-SWEEP not_covered. Read with R1's same-plaintext exclusion: BOTH cipher readings of the 7-gram are now measured against the 51 standing streams - the object increasingly looks like either a coincidence (expected 0.005 makes that uncomfortable) or a construction outside the swept key families."
+ },
+ {
+  "id": "R44-W2A2-P55-CRIB-SWEEP",
+  "round": 44,
+  "lane": "W2-A2-7gram",
+  "date": "2026-11-09",
+  "status": "negative",
+  "positive_control": "passed",
+  "control_detail": "PLANT-C1 through the identical filter->decode->adjudicate glue: 120 held-out English runes + the real p55 plaintext prefix enciphered CONTINUOUSLY with G-bash-1033 at offset 137 (vigm); the crib filter flagged o*=137 (9 surviving offsets), the grid best was o*, plaintext recovered 1.000, pmax 18.59 >= bar 14.8161, every other surviving offset below bar, propagation depth 30/30. plant_crib.json.",
+  "hypothesis": "A standing keystream flows CONTINUOUSLY across the p54->p55 page boundary (section-continuation or one global stream); then the first rune of solved p55 (AN END: ciphertext AE=25, plaintext A=24, consumed key totient[0]=1) is a 1-rune known-plaintext crib on the key stream at that index - the crib R44-R1-SEVENGRAM's not_covered says no row ever exploited.",
+  "result": "NEGATIVE (measured, panel-R36). Required boundary key value per config: vigm 1, vigp 28, beau 20, vigm_atb 8, vigp_atb 21, beau_atb 27. Filter: 113,832 checks (51 keys x 6 configs x (section offsets 30..200 + global offsets 0..200)) -> 3,905 consistent cells (chance rate 1/29); every cell decoded on ALL 55 unsolved pages = 214,775 tier-1 (+550 rescans +10 beams = 215,335 total) tier-1 decodes: 0 crossers, best pmax 4.922 (page 18, G-bash-1325735163, section, o=33, vigm, L=260) vs bar 19.9112. Tier 2: top-10 cells under the R1 reset-aware keyskip1 beam: best 4.785, 0 crossers. FULL-p55 PROPAGATION: depth histogram 3776/125/4 at T=1/2/3, none >= 4 (geometric 1/29 null expects ~130/4.5/0.16) - no standing key continues through the p54/p55 boundary in agreement with the known solve beyond chance, so the red-section containing p54+p55 cannot be enciphered by any single one of the 51 streams in any of the 6 configs at any offset <= 200. The 308 section flags at o <= 29 map onto R44-R1-RESET-SWEEP cells (already negative) and were not re-decoded.",
+  "coverage": "100% of the pre-registered crib grid, no truncation (113,832 filter checks; 3,905/3,905 surviving cells x 55 pages; 4.8 s) at measured power 1.0 for unfiltered continuous-stream constructions (PLANT-C1 exact recovery + bar crossing through identical glue) plus tier-2 beam power 0.989 (R44-R1 G3 measurement, same code) on the top-10 cells; panel-max over 12 registers.",
+  "threshold": "bars_v3.bar_v3(400000, L_cap, 'free'), L_cap = 240 if length >= 240 else 120: 14.8161 / 19.9112; N_bar = 400,000 >= actual 215,335 panel decodes, conservative. Crosses iff non-degenerate pmax >= bar. Propagation flag threshold T >= 5 (expected 0.0056 over the survivor count). All fixed in PREREG.md before any run (sha256-stamped in run.log).",
+  "threshold_fixed_in_advance": true,
+  "three_conditionals": {
+   "key_space": "the 51 R44-R1 keys only (P-prime, P-totient, P-phi, bash-4.2-LP64 $RANDOM mod-29 anti-repeat for seedprior20 top-40 + 8 Cicada integers); crib offsets section 30..200 / global 0..200; nothing else",
+   "transition_model": "position-indexed substitution mod 29 (vig+-, Beaufort, x atbash-pre) with the key stream continuous across the p54->p55 boundary (red-section phase or global canon phase); tier-1 unfiltered; keyskip1-filtered application only via the tier-2 beam on the top-10 cells; line mode excluded by construction (the stream cannot cross the boundary under the canon line map); interrupters ordinary ciphertext except p55's known null-F (propagation window capped at 30, truncated before it)",
+   "adjudicator_register": "panel-R36 (12 registers), pmax vs bars_v3 'free' at N_bar 400,000; the negative extends only to those registers"
+  },
+  "not_covered": "Keys outside the 51; crib offsets > 200; keyskip1-filtered cells beyond the tier-2 top-10; keyskip2/drift/skip_by_k>=3 with continuous phase; p55 propagation beyond 30 positions / past the first null-F / under interrupter conventions other than the known solve's; line-mode boundary crossing (excluded by construction); the 308 section o <= 29 flags (R44-R1 ground); mixed constructions where p54 and p55 use different configs of the same stream.",
+  "reopens_if": "A key family outside the 51 gains an evidence prior (the committed filter+decode glue re-runs a 51-key batch in ~5 s); a measured physical line map lets a stream cross the boundary under line phase; an adjacent lane's crosser is crib-consistent (crib_results.json ranks it instantly via the propagation table).",
+  "evidence": [
+   "liber-primus/analysis/round44/W2-A2-7gram/PREREG.md",
+   "liber-primus/analysis/round44/W2-A2-7gram/RESULTS.md",
+   "liber-primus/analysis/round44/W2-A2-7gram/crib_results.json",
+   "liber-primus/analysis/round44/W2-A2-7gram/plant_crib.json",
+   "liber-primus/analysis/round44/W2-A2-7gram/a2lib.py"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-A2-7gram && python3 plant_solver.py && python3 plant_crib.py && python3 run_crib.py",
+  "notes": "First exploitation of the only known-plaintext constraint inside the LP2 cipher region boundary (p55 rune 0). The propagation result is the strongest piece: it independently re-derives, by a second route, that the key material changes at the p54->p55 page boundary even though the red-section continues - consistent with R44-R1's observation that the sole cipher-solved LP2 page uses a stream reset fresh at its own page start."
+ },
+ {
+  "id": "R44-W2A2-SITE-NUMEROLOGY",
+  "round": 44,
+  "lane": "W2-A2-7gram",
+  "date": "2026-11-09",
+  "status": "measured",
+  "positive_control": "passed",
+  "control_detail": "The predicate engine is the same exact-arithmetic table pattern as R44 W2-A1 section 5 (enumerative, fixed lists, no search); its companion instruments in this cell were plant-gated (plant_solver.json, plant_crib.json) and the premise facts (site coordinates) were re-verified from canon before the table ran (crib_results.json premise block).",
+  "hypothesis": "The 7-gram sites' coordinates (pages 27/54, positions 28/70, globals 6555/12950, deltas, length and gematria sums) carry an arithmetic tie to the book's constants (3301, 1033, 761, 509, 311, 29, 3299, 1595277641).",
+  "result": "MEASURED - no non-trivial tie. Fixed predicate table (equality, divisibility both ways, pairwise sums/differences/products in the constant set, mod-29/mod-3301 residues, primality) over 20 site-derived numbers x 12 constants: only trivial matches (divisibility by 2/3; difference-of-1 adjacencies; |76-105|=29; |85-27|=58). Nothing touches 311/509/761/1033/3299/3301/1595277641. Recorded curiosity: the 7-gram's gematria-prime sum 89+37+3+61+67+31+101 = 389 is prime (the only prime member of the site-number set).",
+  "coverage": "The fixed PREREG section 5 predicate table, exhaustively: 20 site numbers x 12 constants x the named predicates + all pairwise site combinations. No open-ended search was run, by design.",
+  "threshold": "Exact matches only, against the pre-registered lists; measured-only by construction (any exact constant match would be reported loudly and routed to the oracle path, none occurred).",
+  "threshold_fixed_in_advance": true,
+  "three_conditionals": {
+   "key_space": "n/a (finite arithmetic table)",
+   "transition_model": "n/a",
+   "adjudicator_register": "n/a (exact predicates, no scoring)"
+  },
+  "not_covered": "Predicates outside the fixed table (digit games, other bases, concatenations); constants outside the 12; coordinates under alternative transcriptions or 1-based/line-based coordinate systems beyond the four recorded variants.",
+  "reopens_if": "A new book constant is established by measurement elsewhere (one-line addition to the table), or a transcription revision moves either site.",
+  "evidence": [
+   "liber-primus/analysis/round44/W2-A2-7gram/PREREG.md",
+   "liber-primus/analysis/round44/W2-A2-7gram/RESULTS.md",
+   "liber-primus/analysis/round44/W2-A2-7gram/numerology.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-A2-7gram && python3 run_numerology.py",
+  "notes": "Discharges the 'positional numerology' limb of the W2-A2 cell charter. 389's primality is a recorded observation, not a claim."
+ }
+]

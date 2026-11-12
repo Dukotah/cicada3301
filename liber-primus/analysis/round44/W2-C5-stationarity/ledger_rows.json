@@ -1,0 +1,39 @@
+[
+ {
+  "id": "R44-W2C5-STATIONARITY",
+  "lane": "round44/W2-C5-stationarity",
+  "hypothesis": "The residual doublet rate is NON-stationary at page granularity - specifically R43 blind A4-H10: pages 19/24/27/29/44 use a different scheme (elevated or absent anti-doublet filter) - against D-01's stationary flat-filter model, whose per-page constancy was previously tested only at power 0.075-0.195 (D-01 coverage; R18-L2-A-LOCUS not_covered; R43 X0 ADJUDICATION item 22 REOPEN).",
+  "status": "negative",
+  "round": "44/W2-C5",
+  "date": "2026-11-09",
+  "threshold": "Pre-registered (PREREG.md sha256 a287d143... stamped in run.log before first execution): family alpha 0.01 Bonferroni/3 -> per-test p <= 0.0033333 on T1 G-test (upper), T2 Tarone overdispersion Z (two-sided), T3 family-wise min of per-page exact binomial upper tails; all calibrated by parametric bootstrap (c_i ~ Binom(m_i, r-hat), refit per draw, D=10,000, add-one). Flagged pages individually at Bonferroni x55 (selection was data-driven over 55 pages). Gate before the real run: plant power >= 0.8 at the unfiltered-5-pages mechanism, specificity <= 0.03. bars_v3/panel-R36 declared N/A in PREREG (zero panel readings; no decode by charter).",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": {
+   "plant": "synthetic books through the full own glue (exact filtered-chain sampler at calibrated p_keep=0.1879 over a uniform base -> same census -> same statistics -> same bootstrap decision rule), real page lengths, the real flagged pages' lengths elevated at k x global rate; 400 replicates per k",
+   "gate": "power 0.975 at k=5.173 (p_keep=1, i.e. five pages with NO anti-doublet filter - A4-H10's literal mechanism) - PASS",
+   "power_curve_any_test": {"k1.0": 0.0025, "k1.5": 0.022, "k2.0": 0.048, "k2.5": 0.128, "k3.0": 0.312, "k4.0": 0.743, "k5.173_unfiltered": 0.975},
+   "specificity": "400 pure-H0 books: false-fire rate 0.0025 at family alpha 0.01",
+   "sampler": "verified unbiased (emitted repeat rate within 1 sigma of target at n=5M, three seeds)"
+  },
+  "null": "Exact binomial per page: c_i ~ Binom(m_i, r) with one book-wide r, which is EXACT for the pinned mechanism (memoryless base + flat ciphertext filter => i.i.d. pair indicators; A-LOCUS CIPHERTEXT verdict, D-01 flat/unscoped/single-lag). Census halt-gate: 86 within-page doublets / 12,901 within-page pairs, per-page tuple identical to W2-B3 real_sites_U86 and R12-D2.",
+  "result": "NEGATIVE at real power. T1 G=67.94 p=0.2764; T2 Z=+0.539 p=0.4890; T3 minp=0.0208 family-p=0.4647 - nothing within an order of magnitude of the 0.00333 bar. The five flagged pages individually: exact p 0.021-0.115, all Bonferroni-x55 p = 1.0; the family calibration shows a stationary book produces a top page this extreme 46% of the time - the 'five elevated-doublet pages' observation is the expected extreme of 55 binomials, not a signal. CONSEQUENCES: (1) A4-H10's literal mechanism (unfiltered pages) EXCLUDED at measured power 0.975; >=4x elevations at 0.743. (2) D-01/A-LOCUS stationarity disclaimer upgraded from power 0.075 to 0.975 against that class. (3) Method boundary localized: 5-page elevations below k~4 (page rate < ~2.7%) are invisible to ANY per-page count test at n=12,956 (expected count ~1.6/page); MDE(power 0.8) ~ k=4.3 interpolated, MDE(0.5) ~ k=3.4.",
+  "coverage": "Page-granularity rate heterogeneity on the 55-segment unsolved stream in the binomial family, three registered statistics at family alpha 0.01, D=10,000 bootstrap, with a measured power curve (0.975 at unfiltered-5-pages, 0.743 at 4x, 0.312 at 3x, 0.128 at 2.5x); the five blind-flagged pages individually under x55 control.",
+  "not_covered": [
+   "Serial/ordering structure across pages and sub-page drift: G/Tarone/min-p are exchangeable-across-pages statistics, blind to smooth regional trends by construction - W2-B3's T7 LOUD FLAG (gap lag-1 autocorrelation p=0.0010, block-scale heterogeneity) is neither confirmed nor retired by this row; the two results are compatible (smooth multi-page variation too mild for per-page overdispersion). The T7 follow-on needs an ordering-sensitive registered test with its own plant.",
+   "Elevation shapes other than the planted 5-page subset (1-page, 20-page, section-boundary shapes have different power curves).",
+   "5-page elevations below k~4: power 0.05-0.31, NOT excluded - including the k~2-3 scale; a different observable than per-page counts is required to reach them at this n.",
+   "A base stream with strong serial structure would break the binomial null's pair-independence (risk bounded by IoC*N 0.9999 and D-01's zero lag-2..8 bleed, not erased)."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round44/W2-C5-stationarity/PREREG.md",
+   "liber-primus/analysis/round44/W2-C5-stationarity/RESULTS.md",
+   "liber-primus/analysis/round44/W2-C5-stationarity/plants.json",
+   "liber-primus/analysis/round44/W2-C5-stationarity/results.json",
+   "liber-primus/analysis/round44/W2-C5-stationarity/run.log"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-C5-stationarity && python3 plant_gate.py && python3 run_real.py",
+  "reopens_if": "(i) a transcription change moves the 86-site census (A-03 reopens_if chain); (ii) an ordering-sensitive stationarity test (the T7 follow-on) localizes the block-scale heterogeneity to specific pages, giving a pre-registered page subset with a sharper alternative; (iii) an observable with per-page power below k~4 (e.g. pooled within-page gap statistics) is built and plant-validated.",
+  "notes": "Charter: R43 X0 ADJUDICATION item 22 (REOPEN, 'a per-page-heterogeneity test with a real positive control is the named gap'). Stayed inside the cited rows' not_covered wording: W2-B3's T6 (one unpowered dispersion statistic, no heterogeneity plant) was not re-run - this cell is the powered instrument both B3 and item 22 named as the follow-on. No bar-crosser; nothing flagged for the oracle."
+ }
+]

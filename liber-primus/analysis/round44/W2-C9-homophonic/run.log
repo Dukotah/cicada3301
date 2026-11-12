@@ -1,0 +1,31 @@
+2026-11-09T16:07:08 PREREG frozen before first execution: sha256 d7b57348b94f831e2d41a57f2fee90788e7ee9ed9b40cc4910d3c55bf707ec95  PREREG.md
+2026-11-09T16:09:23 instrument sanity check (mode=check)
+pages 55 runes 12956 doublet 0.0066661499108596235
+testhalves: {'EN_MODERN': (175829,), 'LATIN': (288366,)}
+anneal k=15: 0.09s train_mi=0.0475 T=-0.0207
+2026-11-09T16:09:32 PLANT phase (PC1/PC2/PC3) begins
+PC1_EN_k15_uniform T=0.3047 env_max=-0.0196 ARI=0.326 pass=False
+PC2_EN_k15_filtered T=0.3270 env_max=-0.0193 ARI=0.513 pass=True
+PC3_LA_k12_uniform T=0.2976 env_max=-0.0106 ARI=0.761 pass=True
+2026-11-09T16:10:42 ADDENDUM appended before real screen: sha256 83f0f20cbc69e1b5017aea9f7de87451ced52ffe9177f421aa9b6f66c80bf59f  PREREG.md
+2026-11-09T16:10:47 REAL SCREEN begins (1 real + 1000 famA + 1000 famB, 22 annealed + 27 natural cells, procs=8)
+2026-11-09T16:12:10 PC4 supplementary plant (flat-IoC LP2-matched shape) begins — addendum plant, thresholds untouched
+PC4 k=19 T=0.3709 env_max=-0.0360 ARI=0.711 iocN=1.036 doublet=0.0153 pass=True
+/usr/lib/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown: {'/mp-ttqk7xq5', '/mp-r0x678pf', '/mp-4udsc19m', '/mp-uqtc3ff1', '/mp-_3fwigjc', '/mp-k1lljln4'}
+  warnings.warn(
+2026-11-09T16:41:43 RESUME after leaked-semaphore death at ~300/2001 rows: scripts/resume_screen.py (spawn ctx, maxtasksperchild=40, per-row flush, tag-seeded streams => order-independent exact resume; no statistic/seed/bar change)
+2026-11-09T16:41:44 RESUME slice start: 300/2001 rows done, 1701 remaining, procs=6 spawn maxtasksperchild=40
+2026-11-09T16:50:24 RESUME slice end: +337 rows in 8.7 min, 1364 remaining
+2026-11-09T16:50:33 RESUME slice start: 637/2001 rows done, 1364 remaining, procs=6 spawn maxtasksperchild=40
+2026-11-09T16:59:09 RESUME slice end: +274 rows in 8.6 min, 1090 remaining
+2026-11-09T16:59:20 RESUME slice start: 911/2001 rows done, 1090 remaining, procs=6 spawn maxtasksperchild=40
+2026-11-11T21:14:23 HEARTBEAT: 1037/2001 rows (126 this slice, 1492.9 s/row)
+2026-11-11T21:14:24 RESUME slice end: +126 rows in 3135.1 min, 964 remaining
+2026-11-11T21:15:23 RESUME slice start: 1037/2001 rows done, 964 remaining, procs=6 spawn maxtasksperchild=40
+2026-11-11T21:23:59 RESUME slice end: +385 rows in 8.6 min, 579 remaining
+2026-11-11T21:24:04 RESUME slice start: 1422/2001 rows done, 579 remaining, procs=6 spawn maxtasksperchild=40
+2026-11-11T21:32:41 RESUME slice end: +520 rows in 8.6 min, 59 remaining
+2026-11-11T21:32:45 RESUME slice start: 1942/2001 rows done, 59 remaining, procs=6 spawn maxtasksperchild=40
+2026-11-11T21:34:00 RESUME slice end: +59 rows in 1.2 min, 0 remaining
+2026-11-11T21:34:07 FINALIZE: 49 cells, 0 crossers, rows=2001
+2026-11-11T21:36:23 SCREEN COMPLETE: 2001/2001 rows, 49 cells, 0 crossers (results/screen.json). RESULTS.md + ledger_rows.json written (detection-conditioned negative per addendum + X1 binding condition). CLOSING STAMP: sha256 83f0f20cbc69e1b5017aea9f7de87451ced52ffe9177f421aa9b6f66c80bf59f  PREREG.md (unchanged since addendum stamp)

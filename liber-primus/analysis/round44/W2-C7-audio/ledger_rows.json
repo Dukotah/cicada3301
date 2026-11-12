@@ -1,0 +1,59 @@
+[
+  {
+    "id": "R44-W2C7-AUDIO-DERIVED-KEYSTREAMS",
+    "lane": "round44/W2-C7-audio",
+    "hypothesis": "The two held audio artifacts (761_The-Instar-Emergence.mp3, onion5 'Interconnectedness' mp3) carry the LP2 key in a DERIVED channel beyond their literal file bytes: decoded PCM as a byte pad, onset/beat intervals, spectral-peak sequence, or frame-size/metadata number streams, used as a mod-29 keystream over the 55 unsolved pages.",
+    "status": "negative",
+    "round": "44/W2-C7",
+    "date": "2026-11-12",
+    "threshold": "bars_v3 'free' at fixed family sizes, frozen in PREREG section 6 before any run: battery S (N=6e7) 17.4858/23.6153/24.4660/27.8298 at L120/240/400/729; battery P (N=2e7) 16.9004/22.8032/23.7158/27.0342. Crosser iff non-degenerate panel-R36 pmax >= battery bar at the decode's L_cap.",
+    "threshold_fixed_in_advance": true,
+    "positive_control": "passed",
+    "control_detail": "4/4 plants through the IDENTICAL sweep code before any real decode (after dated addendum A1 extractor fix; failed pre-gate file retained as results/plants.pregate-A1.json): PC1 full audio round trip (synth noise -> libmp3lame -> own ffmpeg-decode glue -> pad) pmax 38.32 vs bar 22.80; PC2 onset intervals 80/80 exact, 33.40 vs 17.49; PC3 spectral peaks 70/70 bins exact, 32.32 vs 23.62; PC4 frame walker within 1 frame of ffprobe on plant AND both real artifacts. All planted cells grid-max, plaintext byte-exact. ffmpeg double-decode sha256 determinism held on both artifacts.",
+    "result": {
+      "battery_S": {
+        "total_decodes": 42468048,
+        "n_crossers": 0,
+        "observed_global_best": {
+          "pmax": 6.173,
+          "cell": "onion5:meta_digits/rev/m2/vigp_atb rot 27 page 49 L66",
+          "bar_at_L": 17.4858,
+          "margin": -11.31
+        }
+      },
+      "battery_P": {
+        "total_decodes": 12655368,
+        "n_crossers": 0,
+        "observed_global_best": {
+          "pmax": 6.014,
+          "cell": "onion5:pcm_s16samp/fwd/vigm offset 278528 page 2 L201",
+          "bar_at_L": 16.9004,
+          "margin": -10.89
+        }
+      },
+      "verdict": "NEGATIVE both batteries, all 55 pages; every reduction leg >= 10.9 units below the lowest bar",
+      "restart_note": "first run died at page 12/55 with no per-page persistence (X1 WAVE2 sec C7); restarted from page 0 with per-page checkpointing + dead-man heartbeat, zero analytic change; restart reproduced the dead run's pages 0-12 byte-for-byte (same counts, same gbest)"
+    },
+    "coverage": "Both artifacts PRESENT (sha256-asserted every slice; onion5 attested by 3 byte-identical in-repo copies -- the 'unavailable half' premise is FALSE). Battery S: 5 derived streams per artifact (onset_iv, spec_peak, frame_sz, br_idx, meta_digits) x fwd/rev x m1/m2/m3 x 6 exact Vig+-/Beaufort +-atbash configs x every rotation (minimal-period dedup) + one-shot page-aligned suffixes >= 60, dense, 55 pages. Battery P: 3 PCM reductions (u8, s16-bytes, s16-samples, 44.1k mono via declared local ffmpeg 8.0.1, deterministic) x fwd/rev x 6 configs x offsets {0..7} union stride-4096, one-shot full-page, 55 pages. Power: plant margins >= 8.7 units ABOVE bar through the identical code path.",
+    "not_covered": [
+      "dense single-byte literal-file offsets (still open from R40-B3; this cell stayed off the literal-byte axis entirely)",
+      "the krisyotam re-encode of the onion5 track (different bytes, same audio; not swept)",
+      "PCM at sample rates/channels other than 44.1 kHz mono downmix; sub-stride PCM offsets (off the {0..7} union stride-4096 grid)",
+      "reductions beyond those named: bit-planes of PCM, stereo L-R, phase, MFCC, spectrogram-image pixel channels",
+      "intervals/peaks as transposition or skip material; mappings beyond m1/m2/m3",
+      "rejection-loop/skip constructions (R18-L7-B conditional)",
+      "registers outside panel-R36 (L7-A conditional)",
+      "PRF/seed/salt uses of any stream"
+    ],
+    "evidence": [
+      "liber-primus/analysis/round44/W2-C7-audio/PREREG.md",
+      "liber-primus/analysis/round44/W2-C7-audio/RESULTS.md",
+      "liber-primus/analysis/round44/W2-C7-audio/run.log",
+      "liber-primus/analysis/round44/W2-C7-audio/results/sweep_S.json",
+      "liber-primus/analysis/round44/W2-C7-audio/results/sweep_P.json",
+      "liber-primus/analysis/round44/W2-C7-audio/results/plants.json",
+      "liber-primus/analysis/round44/W2-C7-audio/results/pcm_manifest.json"
+    ],
+    "reopens_if": "a measured anomaly names a specific audio channel outside this grid (e.g. a skip/rejection-loop keystream, an off-grid PCM offset, or a transposition use of the interval stream); or the krisyotam re-encode is shown to be the authoritative encode"
+  }
+]

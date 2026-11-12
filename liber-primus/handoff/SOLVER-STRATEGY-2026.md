@@ -8,6 +8,36 @@ you have read `handoff/FOR-FUTURE-SOLVERS.md` (the cold-start map) and will cons
 this repo; where a prior is low, it says so plainly. This repo's ethos is rigor over hope — hold
 this document to it._
 
+> **Targeting update, 2026-11-09 (through Round 43 closeout + Round 44 wave 1).** The ranking
+> below survives, with four corrections a solver should load before spending an hour:
+>
+> 1. **Scale correction.** This is now **44 rounds** and `LEDGER.json` holds **322 rows** (was
+>    "36 rounds / 220 entries" in §1, "25 rounds" in §3/§6). And the §4.1/§5.2 figure "~0.50 %
+>    swept" is long stale: the Py2.7-MT `exact` cursor is at **52.05 % cumulative** after the
+>    R36–R42 sandbox windows (mixed-instrument; `analysis/round42/SYNTHESIS.md`). The GPU/C-port
+>    advice stands for the remaining ~48 % + the untouched reducers/offsets. One honest loss on
+>    that lane: the R42-S1 full candidate lists are **permanently gone** with their deleted
+>    hosting project — the verdict rests on local sha-verified summaries
+>    (`handoff/PARKED-SWEEPS.md` §1a).
+> 2. **The strongest new datum is a measurement of the hypothesis space itself (R43).** Six blind
+>    agents on primary material alone re-derived the central verdict and surfaced **zero
+>    letter-stream hypotheses the ledger had missed**. Marginal hours aimed at the rune stream now
+>    carry a measured, not merely asserted, near-zero prior. `analysis/round43/SYNTHESIS.md`.
+> 3. **The live internal frontier moved to the page as a physical object** — the channels the
+>    loader never represented (red ink, the p15 grid, punctuation identity, dot clusters; every NEW
+>    blind-armada item lives there). Round 44 wave 1 already swept the top of that queue negative
+>    at 12-register power — including the corrected red channel (**187 → 213 red canon runes**;
+>    census in `analysis/round44/P1-red-ink/RESULTS.md`) — and verified the canon's **unique
+>    boundary-crossing 7-gram** (p27:28 / p54:70→p55:0), negative as a reset/crib anchor. Wave 2
+>    is in flight; read `analysis/round44/*/RESULTS.md` before pointing effort there. §5.5's
+>    figural-motif entry is partially superseded by these lanes.
+> 4. **Preservation is now part of the strategy** (the external door is the highest-EV one, and
+>    external sources keep dying — 10 of 33 R35 keytexts are already corrupt-at-source). The
+>    irreplaceable gitignored primary material is manifested in
+>    [`ARCHIVAL-BUNDLE.md`](ARCHIVAL-BUNDLE.md) (1.13 GB, sha256 per file) for a Zenodo release
+>    asset ([`OWNER-DOI-STEPS.md`](OWNER-DOI-STEPS.md)). A solver arriving via a bare clone should
+>    fetch that bundle first.
+
 > **Trust anchor.** `python3 tests/validate.py` → `ALL VALIDATIONS PASSED` (5/5), confirmed
 > 2026-08-31 before this doc was written. It re-derives every known solved page (atbash / atbash+shift /
 > Vigenère `DIVINITY` / Vigenère `FIRFUMFERENFE` / totient) from the canonical runes. If it ever

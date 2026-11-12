@@ -1,0 +1,32 @@
+[
+ {
+  "id": "R44-W2A4-CHAINED-PRESENTATION",
+  "round": 44,
+  "lane": "round44/W2-A4-chained-pres",
+  "date": "2026-11-09",
+  "status": "negative",
+  "hypothesis": "LP2 0-54 is an output-aware CHAINED cipher (ciphertext-feedback lag-k, k=1,2) whose per-page additive offset is a function of the wave-1-censused presentation channels: o_p = (sig3*f(ch_p)+s) mod 29 over ch in {red count r_p (P1 census), sep3 count, sep-all count (P3 glue), page index, red-head section index} and f in {identity, mod29, prime-index, cumulative}, both signs, decode p_i = (sig1*c_i + sig2*c_{i-k} + o_p) mod 29 with page-restart or book-continuous feedback. The stated intersection of R44-P1's and R44-R1's not_covered: the VERDICT-OTP-CLASS retained-open chained member, parameterized by physical channels.",
+  "positive_control": "passed",
+  "control_detail": "Two plants through this cell's OWN encipher+sweep glue (R42 X1 rule), gated BEFORE the sweep (gate.json): G1 (tier A) F5b-T English enciphered with theta*=(+1,-1,k=1,page; o from s3 x prime-index, sig3=-1, s=17) onto pages 10/20 of a corpus copy -> planted cell = grid max on both pages, exact recovery, pmax 39.75/39.78 >= bar 18.374, non-degenerate; differentials: wrong offset recovery 0.0 (pmax 3.4-4.8), wrong feedback sign recovery 0.03-0.04. G2 (tier B) English enciphered with theta**=(-1,+1,k=2,continuous; o from r x cumulative, sig3=+1, s=5) onto pages 0-2 -> argmax of the full 13,920-theta enumeration = the planted key class, exact recovery, pmax 62.33 >= 22.6951. plant_results.json.",
+  "threshold": "bars_v3.bar_v3(50000, L_cap, 'free') fixed in PREREG before any run: 13.7082 (L_cap 120), 18.3740 (L_cap 240) for tier-A pages (L_cap = largest of {120,240,400,729} <= page length, floor 120, the R44-R1 protocol); 22.6951 (L=729) for tier-B head decodes; N_bar=50,000 >= 34,336 cells actually adjudicated. Crosses iff non-degenerate pmax >= bar; any crosser FLAGGED-FOR-ORACLE per HUMAN-ORACLE.md, never certified.",
+  "threshold_fixed_in_advance": true,
+  "result": "NEGATIVE: 0 crossers in 34,336 cells. Tier A (25,520 cells = 4 sign pairs x k{1,2} x scope{page,continuous} x 29 offsets x 55 pages; by the collapse lemma a COMPLETE page-granularity cover of the family): best pmax 5.774 (page 40, L 231, s1=+1 s2=-1 k=2 continuous o=24, preg 2) vs lowest bar 13.7082. Tier B (13,920 nominal thetas -> 8,816 unique decoded head-729 streams, all adjudicated): best pmax 3.782 vs bar 22.6951. Doctrine-R3 statistics persisted per page-best row and tier-B best (results.json).",
+  "coverage": "100% of the pre-registered grid (0.9 s): every unsolved page x the ENTIRE per-page offset space the channel x f x sign x shift family can produce (collapse lemma, asserted at runtime) x all 16 (sig1,sig2,k,scope) variants, measured end-to-end power 1.0 (G1 exact through identical glue); plus all 13,920 named book-wide constructions scored jointly on head-729 = pages 0+1+2 exactly (G2 power through identical glue). First panel-R36 negative on ciphertext-feedback at k in {1,2} (R12-C1 was English-quadgram-only, k=2..6, constant seeds, no per-page parameters). Discharges the chained/output-aware not_covered of R44-P1-RED-SELECTION and R44-P1-RED-KEYPARAM for this bounded family.",
+  "not_covered": "Offsets beyond per-page-additive form (per-line/per-word offsets, offsets varying within a page, channel algebra outside the named f-set: differences, products, exclusive-cumulative); dot-block counts as a channel (exist on 3 pages only, never formed); reversed reading direction; multiplicative feedback coefficients a not in {+-1} (D-04's open ground); k>=3; plaintext-feedback (R37-C3-U6A-N1-PT ground); mixed pt/ct feedback sources; hybrid keystream+feedback constructions with a rejection loop (not representable by this exact decoder); registers outside panel-R36; tier-B joint scoring on page subsets other than the head (implied only via tier A's per-page completeness).",
+  "three_conditionals": {
+   "key_space": "per-page additive offsets from the named presentation-channel family, covered exhaustively as Z_29 per page (collapse lemma); unit (+-1) coefficients on c_i and c_{i-k} only; lag k in {1,2}; forward direction only",
+   "transition_model": "exact skip-free ciphertext-feedback decode p_i=(sig1*c_i+sig2*c_{i-k}+o_p) mod 29, zero-fill at scope starts, scope in {per-page restart, book-continuous}; no skip/rejection-loop relation exists for a pure ct-feedback key (no pointer), but hybrid keystream+feedback constructions are outside this model",
+   "adjudicator_register": "panel-R36 (12 registers), pmax vs bars_v3 'free' at N_bar 50,000; R3 statistics persisted per best row"
+  },
+  "reopens_if": "A per-page channel outside the five used is censused (e.g. dot blocks on better masters, a second ink tone); a multiplicative-coefficient (D-04) or k>=3 chained cell is pre-registered with its own plant (the committed glue re-runs the 34k grid in ~1 s); a register outside panel-R36 gains a prior.",
+  "evidence": [
+   "liber-primus/analysis/round44/W2-A4-chained-pres/PREREG.md",
+   "liber-primus/analysis/round44/W2-A4-chained-pres/RESULTS.md",
+   "liber-primus/analysis/round44/W2-A4-chained-pres/results.json",
+   "liber-primus/analysis/round44/W2-A4-chained-pres/plant_results.json",
+   "liber-primus/analysis/round44/W2-A4-chained-pres/chained.py"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-A4-chained-pres && python3 plant_gate.py && python3 run_sweep.py",
+  "notes": "Wave-2 cell A4. The 2026-07 auditor-loop gate (analysis/campaign18_skip/ctfeedback_coeffs.py) is prior art for the decode side only; glue built fresh. Tier A carries 232 structural duplicate rows (page 0's scope twins), kept for enumeration simplicity. identity == mod29 under mod-29 arithmetic: 4 named f, 3 effective, dedup recorded."
+ }
+]

@@ -1,0 +1,26 @@
+[
+ {
+  "id": "R44-W2B1-HASHBLOCK-STRIDE-PARSE",
+  "lane": "W2-B1-hash-stride",
+  "round": 44,
+  "date": "2026-11-09",
+  "hypothesis": "The PGP-signed 991-byte liber-primus hash-block (and its two outguess siblings, all 7A35090F-signed, armor 'Hash: SHA1') is a concatenation of per-page digests: some 16/20/32/64-byte stride equals MD5/SHA-1/SHA-256/SHA-512 of a Liber Primus page under an enumerable encoding recipe (rune utf8, runes-only, index-csv, transliteration, solved plaintext, relikd image bytes). R43 X0 NEW item 5 / ADJUDICATION item 29 NEW-lite half.",
+  "status": "negative",
+  "threshold": "Fixed in PREREG (sha256 587f087f6861311195b3cd0d1d5a7f976e85c9b1385373bc68026b4b64e30034, stamped in run.log before first execution): >=1 exact window<->digest byte match => FLAGGED-FOR-ORACLE; 0 => structural negative. E[FP|uniform null] = 2.4e-32 at the full grid. bars_v3/panel-R36 not engaged: no plaintext stream is produced (CAMPAIGN-PLAN P5 'pure structural'); adjudication is register-free byte equality.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "Plant through the identical scan glue BEFORE any real target: copy of the main block with sha1(canon seg00 runes-only utf8) injected at aligned offset 140 and md5(data/relikd/p0.jpg bytes) at unaligned offset 333; both recovered with correct candidate/algo/width/offset/alignment attribution, 0 spurious hits outside injection zones (plant.bin persisted).",
+  "result": "NEGATIVE (structural, measured). Artifact identity pinned first: THREE distinct 991-byte signed blocks exist (main f8fa59ec..., outguess-01 6600c94b..., outguess-02 07d660d7...), all VALID against 7A35090F (verify_sigs_run2/3.log; issuer key-id 181F01E57A35090F re-asserted in-cell from each signature packet); '1005 bytes' is the wrapped hex text, 991 the binary; 991 is prime so no stride tiles exactly. Scan: 3 blocks x 3,836 windows (every byte offset, widths 16/20/32/64 - superset of all aligned stride parses) = 11,508 windows vs 2,832 digests (354 candidate byte-strings x 4 algos x 2 byte-orders, prefix-truncated per width): 0 matches - neither unsolved-page candidates nor the solved-page/plaintext recipe-discovery direction fired. Side stats: entropy 7.79-7.81 b/B, chi2 252.8-272.5 (255 df, all ~uniform), zero duplicate 20-byte windows within or across blocks - indistinguishable from uniform random; consistent with digests of UNHELD preimages or with random/encrypted filler.",
+  "coverage": "All 3 signed 991-byte blocks; every contiguous window at widths 16/20/32/64 at every byte offset; MD5/SHA-1/SHA-256/SHA-512, fwd + byte-reversed, prefix truncation; 354 candidates = 57 krisyotam canon segments x 5 encodings (raw utf8, runes-only utf8, comma-joined index csv, translit upper/lower) + 5 SOLVED-PAGES plaintexts x 2 cases + 57 relikd page images (p0-p55.jpg, 0_wisdom.jpg) + full canon file + flattened unsolved index csv.",
+  "not_covered": "HMAC/keyed, salted or iterated hashes; non-prefix truncation; RIPEMD-160/Whirlpool/Tiger/SHA-3; digests of hex-ASCII rather than binary windows; image bytes from mirrors other than relikd; plaintexts nobody holds (if the block is a verification oracle for future decrypts its preimages are unmatchable by construction - this negative is silent on that reading); cross-block concatenated windows; widths outside {16,20,32,64}.",
+  "evidence": [
+   "liber-primus/analysis/round44/W2-B1-hash-stride/RESULTS.md",
+   "liber-primus/analysis/round44/W2-B1-hash-stride/results.json",
+   "liber-primus/analysis/round44/W2-B1-hash-stride/run.log"
+  ],
+  "reproduce": "python3 liber-primus/analysis/round44/W2-B1-hash-stride/parse_block.py",
+  "supersedes": [],
+  "reopens_if": "Any unsolved LP2 page is decrypted (hash the new plaintext under all 4 algos / both orders / all 5 encodings against the pinned blocks - minutes of compute and the artifact's strongest use), or a variant signed block / original outguess carrier with different bytes surfaces.",
+  "notes": "Companion to R43-F6-PAGE56-HASH-AS-KEY (that row = page-56 hash as keystream; this row = the 2014 signed block parsed as digest strides - the gap X0 item 29 named). Doctrine R5 class-1 bounded-object audit; no decode, so the three conditionals collapse to the digest-recipe grid (named in coverage/not_covered)."
+ }
+]

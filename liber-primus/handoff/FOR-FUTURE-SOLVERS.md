@@ -6,7 +6,39 @@ cryptography and nothing about this repository. It should get you productive in 
 
 > **Round 39:** sections 1-3 below were rewritten around [`../MEASURED-CEILING.md`](../MEASURED-CEILING.md), the one page of measured exclusions, powers, conditionals and re-opening observations (CI-checked against `LEDGER.json`). The Round 25 text of those sections is kept, collapsed and marked superseded. Sections 4 onward are the Round 25 text; where they conflict with the ceiling page, the ceiling page wins.
 
-_**Frozen at Round 25** (refreshed 2026-08-31; the live state is `../PICKUP-HERE.md`, current through Round 36 - R36 audit, 2026-10-30). Rounds 20–25 hardened the verdict rather
+> **Rounds 40–43 + Round 44 wave 1 (refreshed 2026-11-09).** The verdict in §2 has not moved; what
+> moved is how hard it is now *measured*. The headlines a cold-arriving solver needs:
+>
+> - **The letter-stream hypothesis space is measured as exhausted at blind resolution (R43).** Six
+>   blind agents — six professional lenses, given ONLY the primary material (no ledger, no
+>   analysis/, no web; red-team-audited BLIND-CLEAN) — independently re-derived this project's
+>   central verdict, and of their 34 deduplicated hypotheses the ledger already held **every
+>   letter-stream item at adequate power** (17 CITED, 9 self-disclosed REOPENs). That is the
+>   strongest external validation the elimination record has had: if you arrive with a rune-stream
+>   idea, the honest prior is that `LEDGER.json` (now **322 rows**, 0 unsound) already holds its
+>   grave. Read `analysis/round43/SYNTHESIS.md`.
+> - **The open frontier is the page as a PHYSICAL object.** Every genuinely NEW blind-armada item
+>   (7 + 1 split) is a channel the loader has never represented — red ink, the p15 number grid,
+>   punctuation identity, dot clusters. Round 44 is sweeping them: wave 1 (2026-11-09) read the
+>   red-ink channel in full (census corrected the prior-art red stream **187 → 213 red canon
+>   runes** — five concrete corrections including two never-extracted red lines — and all readings
+>   came back negative at 12-register power), plus the p15 grid, punctuation/quote-span channels
+>   and onion-blob pads: all negative. Wave 2 is in flight as this is written — check
+>   `analysis/round44/*/RESULTS.md` before touching anything there.
+> - **One new measured object worth knowing cold:** the canon's **only repeated 7-gram**
+>   (ᛞᛄᚢᛒᛖᛁᚫ, p27 pos 28 and p54 pos 70; expected matching pairs under iid ≈ 0.005) — and its
+>   p54 occurrence **crosses the page boundary into p55's first rune**, so every per-page analysis
+>   ever run is structurally blind to it. Verified + swept negative as a key-reset/crib anchor
+>   (`analysis/round44/R1-key-resets/RESULTS.md`, `W2-A2-7gram/RESULTS.md`).
+> - **Seed-tail coverage correction:** the Py2.7-MT `exact` cursor stands at **52.05 %** cumulative
+>   after R42-S1 (not the ~0.5 % the Round-25 text below quotes, nor R39's 47.95 %); the R42-S1
+>   full candidate lists are **permanently lost** with their hosting sandbox (verdict intact on
+>   local shas — `handoff/PARKED-SWEEPS.md` §1a, `analysis/round43/D1-export/RESULTS.md`).
+> - **If you are cloning this repo fresh:** the gitignored primary corpora (~1.1 GB, irreplaceable
+>   if their sources die — some already have) do NOT ship with a clone. See
+>   [`ARCHIVAL-BUNDLE.md`](ARCHIVAL-BUNDLE.md) for the manifest and the Zenodo bundle.
+
+_**Frozen at Round 25** (refreshed 2026-08-31; the live state is `../PICKUP-HERE.md`, current through Round 43 closeout + Round 44 in flight — banner above refreshed 2026-11-09). Rounds 20–25 hardened the verdict rather
 than moving it: the anti-repeat sieve was proven **infeasible** (R20), the no-oracle certification
 gate was proven **leaky** so survivors are now flagged-for-oracle rather than auto-certified (R21),
 **every channel the signed hints name was finally read and all came back null** (R22–R23), the
