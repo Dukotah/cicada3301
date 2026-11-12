@@ -467,3 +467,15 @@ liber-primus/analysis/round4[0-9]/**/*.npz
 # Round 43 F5a Wayback leg: downloaded archive payloads (regenerate: URLs+timestamps in
 # liber-primus/analysis/round43/F5-stored/wayback-log.md; sha256 recorded there)
 liber-primus/analysis/round43/F5-stored/fetched/
+
+# --- Round 44 lane S1 (blind adjudicator, Perl rand full 2^32) ---
+# The compiled kernel, the per-chunk outputs and the merged survivor list are rebuilt by
+#   cd liber-primus/analysis/round44/S1-blind-perl && python3 run_s1.py sweep && python3 run_s1.py finalize
+# (about 8-10 core-hours). Committed instead: PREREG, the code, calibration.json, control.json,
+# hist.json (complete stage-1 histogram), sweep_rows_top.jsonl (SWEEPROW/1), results.json, RESULTS.md.
+liber-primus/analysis/round44/S1-blind-perl/blind
+liber-primus/analysis/round44/S1-blind-perl/page0.txt
+liber-primus/analysis/round44/S1-blind-perl/chunks/
+liber-primus/analysis/round44/S1-blind-perl/survivors.bin
+liber-primus/analysis/round44/S1-blind-perl/SWEEP_DONE
+liber-primus/analysis/round44/S1-blind-perl/sweep.log
