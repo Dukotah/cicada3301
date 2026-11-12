@@ -15,7 +15,9 @@
  * build:  gcc -O3 -march=native -o blind blind.c
  * usage:  blind GEN LO HI CIPHER L1 T1 L2 T2 L3 OUT [HIST]
  *   GEN   perl   = Perl rand: srand48(seed), int(rand(29))      (seed in [LO,HI))
+ *         glibcmod / glibcscale = glibc srand(seed); rand() % 29  /  floor(29 * rand() / 2^31)   (lane S2)
  *         rnd    = splitmix64-derived uniform keys (calibration; "seed" is just a counter)
+ *         dump:G = print the first 24 key values of generator G for seed LO and exit (generator checks)
  *         file:P = one keystream read from text file P (plants / spot checks)
  *   T1,T2 = integer thresholds on the sum of squared counts at L1, L2
  */
@@ -90,6 +92,26 @@ static void gen_perl(uint32_t seed, uint8_t *K, int n)
     }
 }
 
+/* glibc rand()/random(), TYPE_3 additive feedback, after srand(seed). how = 0: rand() % 29;
+ * how = 1: floor(29 * rand() / 2^31), the scaling PHP 5's rand(0, 28) and much C code use. */
+static void gen_glibc(uint32_t seed, uint8_t *K, int n, int how)
+{
+    static uint32_t r[344 + KN];
+    int32_t w = (int32_t)seed; if (w == 0) w = 1;
+    r[0] = (uint32_t)w;
+    for (int i = 1; i < 31; i++) {
+        int32_t hi = w / 127773, lo = w % 127773;
+        w = 16807 * lo - 2836 * hi; if (w < 0) w += 2147483647;
+        r[i] = (uint32_t)w;
+    }
+    for (int i = 31; i < 34; i++) r[i] = r[i - 31];
+    for (int i = 34; i < 344 + n; i++) r[i] = r[i - 31] + r[i - 3];
+    for (int t = 0; t < n; t++) {
+        uint32_t o = r[344 + t] >> 1;
+        K[t] = how ? (uint8_t)(((uint64_t)o * 29) >> 31) : (uint8_t)(o % 29);
+    }
+}
+
 static void gen_rnd(uint64_t ctr, uint8_t *K, int n)
 {
     sm_state = ctr * 0xD1B54A32D192ED03ULL + 0x1234567;
@@ -101,6 +123,13 @@ int main(int argc, char **argv)
     if (argc < 11) { fprintf(stderr, "usage: blind GEN LO HI CIPHER L1 T1 L2 T2 L3 OUT [HIST]\n"); return 2; }
     const char *gen = argv[1];
     uint64_t lo = strtoull(argv[2], 0, 10), hi = strtoull(argv[3], 0, 10);
+    if (!strncmp(gen, "dump:", 5)) {
+        uint8_t D[KN];
+        if (gen[5] == 'p') gen_perl((uint32_t)lo, D, KN);
+        else gen_glibc((uint32_t)lo, D, KN, !strcmp(gen + 5, "glibcscale"));
+        for (int t = 0; t < 24; t++) printf("%d ", D[t]);
+        printf("\n"); return 0;
+    }
     FILE *f = fopen(argv[4], "r"); if (!f) { perror("cipher"); return 2; }
     int v; CL = 0; while (CL < MAXL && fscanf(f, "%d", &v) == 1) C[CL++] = (uint8_t)v; fclose(f);
     int L1 = atoi(argv[5]), T1 = atoi(argv[6]), L2 = atoi(argv[7]), T2 = atoi(argv[8]), L3 = atoi(argv[9]);
@@ -124,6 +153,8 @@ int main(int argc, char **argv)
     for (uint64_t sd = lo; sd < hi; sd++) {
         if (isfile) memcpy(K, filekey, KN);
         else if (gen[0] == 'p') gen_perl((uint32_t)sd, K, KN);
+        else if (!strcmp(gen, "glibcmod")) gen_glibc((uint32_t)sd, K, KN, 0);
+        else if (!strcmp(gen, "glibcscale")) gen_glibc((uint32_t)sd, K, KN, 1);
         else gen_rnd(sd, K, KN);
         for (int si = 0; si < 2; si++) for (int q = 1; q <= 2; q++) {
             int mode = si * 2 + (q - 1);
