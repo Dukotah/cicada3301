@@ -111,6 +111,17 @@ Additional computed facts that any key hypothesis must satisfy:
 - Word lengths pass through unencrypted (mean 3.51 runes/word, 536 one-rune words):
   plaintext segmentation was released intact — no nulls, no transposition.
 
+> **Corrected 2026-11-12 (Round 44 lane A0, `../../round44/A0-fresh-eyes-audit/AUDIT.md` 1.4).** Three statements in the list above
+> are wrong and are kept only as the record of what this lane wrote. (1) The repeat is not a 7-gram and its runes are not
+> ᛉᛚᛒᚱᛋᚳᛋ (that string occurs zero times in the data): it is the 6-rune two-word phrase ᛞᛄᚢ-ᛒᛖᛁ (D J U - B E I) at page 27
+> runes 28-33 and page 54 runes 70-75, the last two words of the unsolved book. The "7th rune" is the first rune of the decoded
+> page AN END, counted because this lane measured 13,041 runes with AN END included. (2) "Expected count 0.005, p about 0.5 %" is
+> the 7-gram figure; the calibrated range for the real object is 9.2e-5 (closed whole-word repeat) to 5.9e-3 (identical boundary
+> pattern), and 0.14 for any 6-gram. (3) "Mean 3.51 runes/word, 536 one-rune words" counts line wraps as word breaks; the true
+> figures are 2,928 words, mean 4.425, 99 one-rune words. Also: this file ranks natural-language keys at the top of its
+> localisation table although `TOOLKIT.md` records the monogram-flatness argument that rules them out (AUDIT.md 1.3), and "no pad
+> reuse anywhere" rests on kappa at page starts only (see AUDIT.md 1.5 for the one aligned page pair that stands out).
+
 ---
 
 ## 2. The author's production workflow, and where key material can leak into the release

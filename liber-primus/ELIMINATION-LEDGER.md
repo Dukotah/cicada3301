@@ -1299,3 +1299,27 @@ identified as complete JPEGs. The R42-S1 full-list export **lapsed** (project de
 verdict unaffected, fingerprints recorded). The letter-stream hypothesis space is now *measured*
 as exhausted at blind resolution; Round 44 (`analysis/round44/CAMPAIGN-PLAN.md`) spends its budget
 on the physical-page channels.
+
+## Round 44 lane A0 — the fresh-eyes audit of Rounds 1-43 (2026-11-12)
+
+Record: `analysis/round44/A0-fresh-eyes-audit/AUDIT.md`; rows `R44-A0-*` and `R44-D1-DEPTH-28-42` in `LEDGER.json` (now **321 rows**,
+0 unsound). No key space was opened. What it changes in this file's older passages:
+
+- **Running keytexts** (every keytext sweep above): a natural-language running key over English predicts a monogram chi-square of
+  600-770 at N = 12,956 against 26.4 observed (12 planted ciphertexts: 515-914). The family is ruled out key-free, at any offset and
+  skip relation (`R44-A0-RUNNINGKEY-MONOGRAM-GATE`). The earlier "by exhaustion over ~200 texts" and the open R12-C2 / R26-B remainders
+  are superseded by this.
+- **"Autokey refuted by simulation"** and **"long-period keys killed by the doublet floor"**: the arguments cited are not the valid
+  ones (one offset simulated; the floor argument was retracted). The conclusions stand on different evidence: flat lag structure at
+  every lag, rigid and drift-smeared (`R44-A0-PERIODIC-KEY-DRIFT`; reader notes A1, B, F).
+- **"The keystream is continuous across the whole book"** (STRUCTURE-FINDINGS section 2): 0 doublets at 54 page joins shows filter
+  memory at most; it does not measure the key. Identical key restarts at page, line, sentence and word are ruled out separately by
+  depth columns (readers C, D, F, H); a restart to a different key state is not.
+- **The DJU-BEI repeat** ("chance, P about 13 %"): superseded by `R44-A0-DJUBEI-REPEAT` (a two-word, word-aligned, book-final repeat;
+  9e-5 to 6e-3).
+- **Round 9's word-length closure** ("do not re-open"): the shape of the histogram, never tested, fits English spelled one rune per
+  letter (`R44-A0-ORTHOGRAPHY-LETTERWISE`); the +0.32 mean excess that closure explained away as register variance is what
+  letter-wise spelling predicts.
+- **Round 26 A/B** negatives: aimed at a mid-book slice by a loader defect (`R44-A0-LOADER-CORPUS-PARSE`).
+- **Round 42 C1-C3, Round 43 F6 / F5b-T, R28-L2** object-as-key negatives: rigid decode against a free-beam bar; they do not cover a
+  key applied under the anti-repeat rule (AUDIT.md 3.1).

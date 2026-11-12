@@ -93,7 +93,8 @@ def main():
                 "keystream": "python3 verify_solution.py --keystream FILE",
                 "key_module": "python3 verify_solution.py --key-module FILE.py",
                 "self_test_the_oracle": "python3 verify_solution.py --selftest  (plants a key "
-                                        "in EN_MODERN, LATIN, EN_NOVOWEL and GREEK at L=120)",
+                                        "in EN_MODERN, LATIN, EN_NOVOWEL and GREEK at L=120, once "
+                                        "restarting at each page and once as one continuous stream)",
             },
             "decoder": "analysis/round33/I1-register-aware-beam/beam_v3.py panel_max under "
                        "keyskip1, keyskip2 and free (rigid is never used)",
@@ -103,12 +104,17 @@ def main():
             "bar": "analysis/round34/I1-v3-null bars_v3.bar_v3(N=1, L, relation, alpha=0.01, "
                    "family='lp2') for ONE submitted key; free has an observed bar at L=120 only",
             "min_pages_passing_independently": 2,
+            "page_models": "two, both judged (Round 44 audit A0): the key restarting at each page "
+                           "(offset 0 per page), and ONE CONTINUOUS STREAM from rune 0 of page 0 "
+                           "(page 1 decoded from where the stream had reached, over a window of key "
+                           "offsets, bar at N = window size). Until 2026-11-12 only the first was "
+                           "judged, so a correct seeded-generator key returned FAIL",
             "pass_means": "flagged-for-oracle: at least 2 pages clear the bar under the same "
-                          "relation; a human must read two independent pages (HUMAN-ORACLE.md) "
-                          "before any ledger row moves",
+                          "relation and the same page model; a human must read two independent "
+                          "pages (HUMAN-ORACLE.md) before any ledger row moves",
             "fail_means": "negative under these registers/relations only (L7 caveat): tested "
-                          "under keyskip1/keyskip2/free, the panel registers, key offset 0 per "
-                          "page, sign -1, N=1",
+                          "under keyskip1/keyskip2/free, the panel registers, both page models, "
+                          "sign -1, additive combination with no constant, N=1",
             "legacy_informational": {"english_band_threshold": -5.5,
                                      "note": "the old English-only quadgram score is still printed, "
                                              "labelled LEGACY, and is NOT used in the verdict "

@@ -1,0 +1,96 @@
+{
+ "repeated_5grams": {
+  "count": 6,
+  "expected_uniform": 4.091554792956748,
+  "sites": null
+ },
+ "repeated_6grams": {
+  "count": 1,
+  "expected_uniform": 0.14108809630885336,
+  "sites": [
+   {
+    "runes": "D J U B E I",
+    "at": [
+     [
+      27,
+      28
+     ],
+     [
+      54,
+      70
+     ]
+    ]
+   }
+  ]
+ },
+ "repeated_7grams": {
+  "count": 0,
+  "expected_uniform": 0.004865106769270806,
+  "sites": []
+ },
+ "repeated_8grams": {
+  "count": 0,
+  "expected_uniform": 0.00016776230238864847,
+  "sites": []
+ },
+ "the_repeat": {
+  "runes": "ᛞᛄᚢ-ᛒᛖᛁ",
+  "translit": "D J U - B E I",
+  "site_1": {
+   "page": 27,
+   "offset": 28,
+   "flat": 6555
+  },
+  "site_2": {
+   "page": 54,
+   "offset": 70,
+   "flat": 12950,
+   "note": "the last six runes of the unsolved stream"
+  },
+  "flat_distance": 6395,
+  "factorisation": "5 x 1279",
+  "seventh_rune": "site 1 is followed by AE; site 2 is followed by the first rune of the SOLVED page AN END, also AE (a 1-in-29 coincidence across a cipher boundary, which is how a 13,041-rune count made it a '7-gram')",
+  "next_after_site_1": "AE",
+  "first_rune_of_AN_END": "AE"
+ },
+ "expected_counts_under_uniform_runes": {
+  "any_repeated_6gram": 0.14108809630885336,
+  "repeated_6gram_with_identical_word_boundary_pattern": 0.0058986809631157685,
+  "closed_whole_word_repeat_ge6_runes": 9.235593208292161e-05,
+  "closed_multiword_repeat_ge6_runes": 3.784066176464039e-05
+ },
+ "observed_closed_word_repeats_ge4_runes": [
+  {
+   "words": 2,
+   "runes": 6,
+   "word_index": [
+    1477,
+    2926
+   ]
+  }
+ ],
+ "n_words": 2928,
+ "monte_carlo": {
+  "trials": 3000,
+  "any_closed_repeat_ge6": 0.0,
+  "any_closed_repeat_ge5": 0.0023333333333333335
+ },
+ "offsets_of_the_two_sites": {
+  "page": [
+   28,
+   70
+  ],
+  "line": [
+   8,
+   2
+  ],
+  "section": [
+   28,
+   3310
+  ],
+  "sentence": [
+   9,
+   "~290"
+  ]
+ }
+}

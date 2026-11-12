@@ -83,3 +83,22 @@ All evidence is gathered. Composing the adjudication now.
 ## (c) Headline
 
 **The letter-stream hypothesis space is measured as exhausted at blind resolution; the physical-channel space is not.** All six blind agents, working from primary material alone, converged (6/6) on the ledger's own central verdict — an output-aware chained/filtered cipher — and every one of their letter-stream attack families (gematria sums, prime/totient streams, running keys, short Vigenère+skip, LP-as-pad, payload-as-key, magic squares, reversal, glyph stego) lands on an existing row at adequate power: **~24 of 34 deduplicated items stamp CITED**. That independent rediscovery, with zero letter-stream items the ledger missed, is the strongest external validation the elimination record has ever received. The genuine excess is concentrated exactly where lane F2 independently pointed: the never-represented presentation channels — led by the **red-ink channel at 4/6 blind convergence** and the **p15 number grid** — plus ~10 REOPEN edges the ledger already discloses against itself (resets, colour, page-pairs, mirror residue, stationarity power 0.075). The blind armada's visible hypothesis space therefore *exceeds the ledger only in the page-as-physical-object direction*; on the rune stream it confirms the measured ceiling. PREREG budget should go to NEW items 1-4 first: all are finite objects, three have ready-made harnesses, and two carry multi-agent blind convergence.
+
+---
+
+## Addendum 2026-11-12 — corrections from the Round 44 fresh-eyes audit (`../../round44/A0-fresh-eyes-audit/AUDIT.md`)
+
+Recorded here, not rewritten above.
+
+- **Item 4 (the "repeated 7-gram" anchor):** it is a 6-rune two-word repeat (ᛞᛄᚢ-ᛒᛖᛁ) at offsets that no visible reset can align
+  (page 28 / 70, line 8 / 2, section 28 / 3310). Identical key resets at page, line, sentence and word were already ruled out
+  key-free by depth columns. The REOPEN stands only for resets to a *different* key state.
+- **Item 18 (p15 grid, NEW):** all 16 cells equal |3301 - p_F| (p_0 = 2, F Fibonacci 0..987). No free information. It was also run as a
+  Hill key in Round 41 C1 (`M3_4x4`).
+- **Item 29 / P5 (hash-block):** the three signed 991-byte blobs are reported to be XOR shares of the decoded 2014 transposition
+  message (audit reader K, byte-exact).
+- **CITED items 1, 7, 10, 12:** the cited rows are, respectively, a 29-seed feedback sweep, a three-start totient re-score, an F-01
+  target list that omits the signed blocks, and a rigid decode (audit reader J). "Zero letter-stream items missed" should be read
+  as "none missed at the level of naming the family", not "each covered at power".
+- **Running key plus skip (CITED on R26-B):** that lane was aimed at 545 runes of three mid-book sections by a loader defect; the
+  family is ruled out instead by monogram flatness (`R44-A0-RUNNINGKEY-MONOGRAM-GATE`).

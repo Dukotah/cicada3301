@@ -15,6 +15,14 @@ genuine contribution (more ruled out + one real structural insight).
   the key or method.
 
 ## 2. The keystream is CONTINUOUS across the whole book (no boundary reset)
+
+> **Narrowed 2026-11-12 (Round 44 lane A0).** The table below measures where the *anti-repeat rule* is active, not the key. Zero
+> doublets at 54 page joins has probability 0.155 even with no suppression there (1.9 expected); with suppression it shows that
+> the rule remembers the previous rune across a join, which says nothing about whether the key restarts. Identical key restarts
+> at page, line, sentence and word are ruled out separately by depth columns; a restart to a *different* key state at a page or
+> section head is not, and every solved cipher page restarts its key. This heading is where the "key starts at rune 0 of page 0
+> and never restarts" premise of every later sweep came from. See `round44/A0-fresh-eyes-audit/AUDIT.md` 3.4 and 3.5.
+
 Doublet rate (a proxy for "is the no-repeat rule active here") by what separates
 each adjacent rune pair:
 

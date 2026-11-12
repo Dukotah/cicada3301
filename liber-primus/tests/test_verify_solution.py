@@ -20,6 +20,26 @@ def test_selftest_four_registers_recovered(capsys):
     out = capsys.readouterr().out
     for reg in ("EN_MODERN", "LATIN", "EN_NOVOWEL", "GREEK"):
         assert f"{reg}=ok" in out
+        # Round 44 audit A0: a key that runs as ONE stream across the page break must also pass
+        assert f"{reg}:cont=ok" in out
+
+
+def test_continuous_key_passes_where_restart_judge_fails():
+    """The defect closed on 2026-11-12: every seeded-generator sweep assumes one continuous key
+    stream, but the oracle decoded every page from K[0]. A correct continuous key must PASS the
+    continuous judge; the per-page-restart judge alone must not be what decides it."""
+    vs.load_instruments(quiet=True)
+    rnd = random.Random(20261112)
+    plain = vs._plant_pages("EN_MODERN")
+    K = [rnd.randrange(29) for _ in range(4096)]
+    c_flat = vs._encipher([x for pg in plain for x in pg], K, seed=7)[0]
+    pages = [c_flat[:len(plain[0])], c_flat[len(plain[0]):]]
+    ok_c, rel, _ = vs.decide_continuous(vs.judge_continuous(K, pages, relations=("keyskip1",)))
+    ok_r, _, _ = vs.decide(vs.judge_register(K, pages, relations=("keyskip1",)))
+    assert ok_c and rel == "keyskip1"
+    assert not ok_r
+    wrong = [random.Random(5).randrange(29) for _ in range(4096)]
+    assert not vs.decide_continuous(vs.judge_continuous(wrong, pages, relations=("keyskip1",)))[0]
 
 
 def test_random_key_fails_with_conditionals(tmp_path):

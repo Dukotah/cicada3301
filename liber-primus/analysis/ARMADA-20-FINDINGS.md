@@ -80,6 +80,12 @@ hidden-payload-on-rune-pages hypothesis very unlikely regardless.
 
 Reinforced (not new): the DJU BEI 6-gram repeat on pages 27/55 is chance (Poisson P≈13%) — not a same-key crib.
 
+> **Superseded 2026-11-12 (Round 44 lane A0).** 13 % is the chance of *any* repeated 6-gram. This one is two whole words with the
+> same 3+3 division at both sites, and the second site is the last two words of the unsolved book (page 54 runes 70-75; "27/55"
+> above counts pages from 1). With the word skeleton held fixed the expected count is 9.2e-5 for a closed whole-word repeat and
+> 5.9e-3 for a repeat with an identical boundary pattern. It is still not a same-key crib in any simple sense: no reset at a visible
+> boundary puts the two sites at one key position. See `round44/A0-fresh-eyes-audit/AUDIT.md` 1.4 and `repeats.py`.
+
 ## 5. Verdict on "the key is already out there"
 
 A **public, Cicada-published LP2 key almost certainly does not exist.** Convergent OSINT/research

@@ -2,7 +2,14 @@
 
 The source (data/scream314_lp.md) documents each page under a '## <label>'
 header, with labelled indented code blocks: 'Runes:', 'Key:', 'Outguess:',
-plaintext after 'Reversing the cipher yields:' etc. We extract, per page:
+plaintext after 'Reversing the cipher yields:' etc.
+
+WARNING - this loader is for the SOLVED pages (tests/validate.py). It is NOT the canonical
+unsolved stream: it keeps only the FIRST rune block of each '##' section (15,241 of the file's
+15,938 runes) and its sections are not pages. For the 12,956-rune unsolved text use
+analysis/run_stats.load_pages() (data/krisyotam_runes.txt, SHA-pinned in PROBLEM.json).
+
+We extract, per page:
   - label
   - runes        : the raw runic string (runes + '•' word seps + newlines)
   - key_note     : the **Key:** annotation line, if any
@@ -44,12 +51,28 @@ def _indented_block(lines, start):
 HEX_RE = re.compile(r"^[0-9a-f\s]+$")
 
 
+# A block that only records what OutGuess returned for the page images ("17.jpg - Outguessing
+# the image yields 58,2kB garbage output." / "18.jpg - none") is a NOTE, not a plaintext.
+# Until 2026-11-12 it was classified "latin", so it became the section's `plaintext` and three
+# UNSOLVED sections were flagged solved: canonical pages 0-2, the first 119 runes of page 3 and
+# pages 53-54 (1,156 of the 12,956 unsolved runes). Any lane that picked its targets with
+# `not page["plaintext"]` silently lost the book head and tail (Round 44 audit A0, finding 6).
+NOTE_RE = re.compile(r"^\s*(?:\d+\.jpg\s*-\s*)?(?:none\b|Outguess)", re.I)
+
+
+def _is_stego_note(blk):
+    lines = [ln for ln in blk.strip().splitlines() if ln.strip()]
+    return bool(lines) and all(NOTE_RE.match(ln) for ln in lines)
+
+
 def _classify(blk):
     if RUNE_RE.search(blk):
         return "runes"
     s = blk.strip()
     if not s:
         return "empty"
+    if _is_stego_note(s):
+        return "note"
     if HEX_RE.match(s) and len(s.replace(" ", "").replace("\n", "")) > 40:
         return "hex"
     letters = sum(c.isalpha() for c in s)

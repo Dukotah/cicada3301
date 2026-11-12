@@ -269,6 +269,103 @@ def judge_register(K, pages, relations=RELATIONS, o=0, sign=-1, beam_w=400):
     return rows
 
 
+# ---- continuous-key judging (added 2026-11-12, Round 44 audit A0) ----------------------------
+# judge_register() above decodes EVERY page from K[0]: it assumes the key restarts at each page.
+# Every seeded-generator sweep in this repository assumes the opposite - one stream that starts at
+# rune 0 of page 0 and keeps running. A correct key of that kind cleared page 0 and then failed
+# every later page here, so the oracle returned FAIL on the very family the sweeps hunt
+# (analysis/round44/A0-fresh-eyes-audit/AUDIT.md, finding 2). judge_continuous() closes that:
+# page i is decoded from the key position where page i-1 ended, searched over a window that
+# covers the key draws the rejection rule may have consumed on the way.
+CONT_SKIP_RATE = {"keyskip1": 0.07, "keyskip2": 0.14, "free": 0.14}   # generous: measured ~0.029 / ~0.058 per rune
+CONT_SLACK = 4
+CONT_PROBE_L = 60          # short decode used only to rank the offsets in the window
+CONT_KEEP = 3              # offsets decoded at full length
+CONT_PAGES = 2             # pages judged in continuous mode (page 0 plus this many - 1 following pages)
+
+
+def cont_window(base, relation):
+    """Key offsets tried for a page whose first rune follows `base` earlier runes of one stream."""
+    import math
+    return list(range(base, base + int(math.ceil(CONT_SKIP_RATE[relation] * base)) + CONT_SLACK + 1))
+
+
+def page_bar_n(L, relation, n):
+    _, BR, _ = load_instruments(quiet=True)
+    return float(BR.bar_v3(max(1, int(n)), L, relation, alpha=ALPHA, family="lp2"))
+
+
+def judge_continuous(K, pages, relations=RELATIONS, sign=-1, beam_w=400, npages=CONT_PAGES):
+    """Decode page 0 from K[0] and each following page from where the stream would have reached.
+
+    For page i >= 1 every offset in cont_window() is probed on the first CONT_PROBE_L runes, the
+    best CONT_KEEP are decoded at full length, and the bar is taken at N = window size, so trying
+    many offsets cannot manufacture a pass.
+    """
+    V, _, pan = load_instruments(quiet=True)
+    A = V.A
+    rows = []
+    for rel in relations:
+        base = 0
+        for i, seg in enumerate(pages[:npages]):
+            c = plan_page(seg, rel)
+            if c is None:
+                rows.append({"page": i, "relation": rel, "L": len(seg), "pmax": None, "preg": None, "bar": None,
+                             "margin": None, "clears": False, "plain_idx": None, "translit": "", "z": None,
+                             "o": None, "n_offsets": 0, "note": f"free needs >= {FREE_L} runes"})
+                base += len(seg)
+                continue
+            offs = [0] if i == 0 else [o for o in cont_window(base, rel) if o + len(c) + 64 <= len(K)]
+            if len(offs) > CONT_KEEP:
+                probe = []
+                for o in offs:
+                    r = V.beam_decode_v3(c[:CONT_PROBE_L], K, ADV[rel], design="panel_max", sign=sign, o=o,
+                                         beam_w=beam_w)
+                    probe.append((float(A.adjudicate(r["plain_idx"], pan=pan)["pmax"]), o))
+                probe.sort(reverse=True)
+                finalists = [o for _, o in probe[:CONT_KEEP]]
+            else:
+                finalists = offs
+            best = None
+            for o in finalists:
+                r = V.beam_decode_v3(c, K, ADV[rel], design="panel_max", sign=sign, o=o, beam_w=beam_w)
+                res = A.adjudicate(r["plain_idx"], pan=pan)
+                pm = float(res["pmax"])
+                if best is None or pm > best[0]:
+                    best = (pm, o, r, res)
+            if best is None:
+                rows.append({"page": i, "relation": rel, "L": len(c), "pmax": None, "preg": None, "bar": None,
+                             "margin": None, "clears": False, "plain_idx": None, "translit": "", "z": None,
+                             "o": None, "n_offsets": 0, "note": "keystream too short for this page"})
+                base += len(seg)
+                continue
+            pm, o, r, res = best
+            bar = page_bar_n(len(c), rel, len(offs))
+            rows.append({"page": i, "relation": rel, "L": len(c), "pmax": pm,
+                         "preg": pan.registers[int(res["preg"])], "bar": bar, "margin": pm - bar,
+                         "clears": pm >= bar, "plain_idx": [int(v) for v in r["plain_idx"]],
+                         "translit": A.idx_to_trans(r["plain_idx"]),
+                         "z": {pan.registers[j]: float(v) for j, v in enumerate(res["z"])},
+                         "n_skips": r.get("n_skips"), "o": o, "n_offsets": len(offs)})
+            base += len(seg)
+    return rows
+
+
+def decide_continuous(rows):
+    """PASS iff, under ONE relation, page 0 clears its bar AND at least one later page clears its own."""
+    per = {}
+    for rel in RELATIONS:
+        rr = [r for r in rows if r["relation"] == rel and r["pmax"] is not None]
+        clearing = [r for r in rr if r["clears"]]
+        head = any(r["page"] == 0 for r in clearing)
+        later = any(r["page"] > 0 for r in clearing)
+        per[rel] = {"tested": len(rr), "clearing": len(clearing), "ok": head and later,
+                    "best": max(rr, key=lambda r: r["margin"]) if rr else None}
+    ok_rels = [rel for rel in RELATIONS if per[rel]["ok"]]
+    best_rel = max(ok_rels, key=lambda r: per[r]["clearing"]) if ok_rels else None
+    return (best_rel is not None), best_rel, per
+
+
 def decide(rows):
     """PASS iff, under ONE relation, at least MIN_PAGES distinct pages clear that relation's bar."""
     per = {}
@@ -354,12 +451,47 @@ def selftest(regs=SELFTEST_REGS):
         out[reg] = {"recovered": res["CORRECT"] == "PASS", "wrong_rejected": res["WRONG"] == "FAIL",
                     "ok": good}
         all_ok &= good
+    # ---- the same gate for ONE CONTINUOUS key stream across the page break (Round 44 audit A0):
+    # the two pages are enciphered as one run, so page 1 starts wherever the stream had reached.
+    print("\n  continuous-key plants (one stream across the page break; judged by judge_continuous):")
+    cont = {}
+    for n_reg, reg in enumerate(regs):
+        plain = _plant_pages(reg)
+        K_true = [rnd.randrange(N) for _ in range(4096)]
+        K_wrong = [random.Random(5252 + n_reg).randrange(N) for _ in range(4096)]
+        c_flat = _encipher([x for pg in plain for x in pg], K_true, seed=4401 + n_reg)[0]
+        C_pages, s0 = [], 0
+        for pg in plain:
+            C_pages.append(c_flat[s0:s0 + len(pg)])
+            s0 += len(pg)
+        res = {}
+        for name, K in (("CORRECT", K_true), ("WRONG", K_wrong)):
+            rows = judge_continuous(K, C_pages, relations=("keyskip1",))
+            ok, rel, per = decide_continuous(rows)
+            res[name] = "PASS" if ok else "FAIL"
+            pm = ", ".join(f"{r['pmax']:.1f}/{r['bar']:.1f}@o={r['o']}" for r in rows)
+            print(f"  {reg:11s} {name:7s} key: pmax/bar per page = {pm}  -> {res[name]}")
+        restart_ok, _, _ = decide(judge_register(K_true, C_pages, relations=("keyskip1",)))
+        print(f"  {reg:11s} (the per-page-restart judge alone on this plant: "
+              f"{'PASS' if restart_ok else 'FAIL - this is the defect the continuous judge closes'})")
+        good = res["CORRECT"] == "PASS" and res["WRONG"] == "FAIL"
+        cont[reg] = {"recovered": res["CORRECT"] == "PASS", "wrong_rejected": res["WRONG"] == "FAIL", "ok": good}
+        all_ok &= good
+
     print("\n" + "=" * 74)
     print(f"SELF-TEST: {'PASS' if all_ok else 'FAIL'}   "
           + "  ".join(f"{k}={'ok' if v['ok'] else 'BAD'}" for k, v in out.items()))
+    print("  continuous key:   "
+          + "  ".join(f"{k}:cont={'ok' if v['ok'] else 'BAD'}" for k, v in cont.items()))
     print("=" * 74)
+    for k, v in cont.items():
+        if not v["recovered"]:
+            print(f"  - CONTINUOUS: it rejected a correct one-stream key planted in {k}")
+        if not v["wrong_rejected"]:
+            print(f"  - CONTINUOUS: it accepted a wrong key against {k} text")
     if all_ok:
-        print("The oracle recovers a planted key in every tested register and rejects wrong keys.")
+        print("The oracle recovers a planted key in every tested register and rejects wrong keys,")
+        print("both when the key restarts at each page and when one stream runs across the page break.")
         print("(Plants use keyskip1; keyskip2/free decoding is not recovery-gated here.)")
     else:
         print("The oracle FAILED its own control. Do not trust any verdict it gives:")
@@ -378,7 +510,9 @@ def print_bundle(rows, rel, src, K_sha, panel_info):
     print("-" * 74)
     print(f"  provenance : submitted via --{src}")
     print(f"  key sha256 : {K_sha}   (seed / generator / parameters: YOU must add)")
-    print(f"  relation   : {rel} (advance {ADV[rel]!r}); sign -1; key offset o=0 (key restarts at each page)")
+    offs = sorted({(r["page"], r.get("o", 0)) for r in rows if r["relation"] == rel and r["clears"]})
+    mode = ("one continuous stream" if any(o for _, o in offs) else "key restarts at each page")
+    print(f"  relation   : {rel} (advance {ADV[rel]!r}); sign -1; {mode}; (page, key offset) = {offs}")
     print(f"  panel      : {panel_info['name']} sha256 {panel_info['sha256']}")
     print(f"  bar        : bars_v3.bar_v3(N={BAR_N}, L, {rel!r}, alpha={ALPHA}, family='lp2')")
     for r in [r for r in rows if r["relation"] == rel and r["clears"]]:
@@ -490,6 +624,16 @@ def main():
     print(f"    (free is decoded on the first {FREE_L} runes only: it has an observed null at L={FREE_L} only)")
     rows = judge_register(K, segments)
     print_rows(rows)
+    print(f"\n[4b] the same key as ONE CONTINUOUS STREAM: page 0 from K[0], page 1 from where the stream")
+    print(f"     had reached (window of key offsets after {len(segments[0])} runes; bar taken at N = window size)")
+    crows = judge_continuous(K, segments)
+    for r in crows:
+        if r["pmax"] is None:
+            print(f"    page {r['page']:2d}  {r['relation']:8s}  (not tested: {r['note']})")
+            continue
+        flag = "  <-- clears bar" if r["clears"] else ""
+        print(f"    page {r['page']:2d}  {r['relation']:8s} L={r['L']:3d}  best key offset {r['o']:4d} of "
+              f"{r['n_offsets']:2d} tried  pmax {r['pmax']:7.2f} [{r['preg']}]  bar {r['bar']:6.2f}{flag}")
 
     print(f"\n[5] bar: bars_v3.bar_v3(N={BAR_N}, L, relation, alpha={ALPHA}, family='lp2')")
     print(f"    N={BAR_N}: this is the bar for ONE submitted key fixed in advance. If you swept many keys,")
@@ -498,6 +642,11 @@ def main():
     print(f"    CAVEAT: `free` has no observed bar above L={FREE_L}; it is decoded at L={FREE_L} only.")
 
     ok, rel, per = decide(rows)
+    ok_c, rel_c, per_c = decide_continuous(crows)
+    page_model = "restart"
+    if ok_c and not ok:
+        ok, rel, page_model, rows = True, rel_c, "continuous", crows
+        per[rel] = {"tested": per_c[rel_c]["tested"], "clearing": per_c[rel_c]["clearing"], "best": per_c[rel_c]["best"]}
     print(f"\n[6] criteria (pre-committed; see PROBLEM.json)")
     for r_ in RELATIONS:
         p = per[r_]
@@ -505,6 +654,11 @@ def main():
         extra = (f"best margin {b['margin']:+.2f} on page {b['page']} (argmax {b['preg']})"
                  if b else "no page eligible")
         print(f"    {r_:8s}: {p['clearing']}/{p['tested']} pages clear the bar (need >= {MIN_PAGES})  {extra}")
+
+    for r_ in RELATIONS:
+        p = per_c[r_]
+        print(f"    {r_:8s}: continuous stream - {p['clearing']}/{p['tested']} of pages 0..{CONT_PAGES - 1} clear "
+              f"(need page 0 and a later page){'  <-- satisfied' if p['ok'] else ''}")
 
     ls, lp_, lin = legacy_line(K, segments)
     print(f"\n    LEGACY (informational only, English-only band, NOT used in the verdict): "
@@ -515,13 +669,17 @@ def main():
                    relations=list(RELATIONS),
                    per_relation={k: {"tested": v["tested"], "clearing": v["clearing"]} for k, v in per.items()},
                    legacy_best=ls, rows=[{k: v for k, v in r.items() if k != "plain_idx"} for r in rows],
+                   continuous={k: {"tested": v["tested"], "clearing": v["clearing"], "ok": v["ok"]}
+                               for k, v in per_c.items()},
+                   continuous_rows=[{k: v for k, v in r.items() if k != "plain_idx"} for r in crows],
+                   page_model=page_model if ok else None,
                    verdict="PASS" if ok else "FAIL", passing_relation=rel)
 
     print("\n" + "=" * 74)
     if ok:
         print("VERDICT: PASS  (flagged-for-oracle)")
         print("=" * 74)
-        print(f"Under relation '{rel}', {per[rel]['clearing']} pages clear the panel-max bar at N={BAR_N}.")
+        print(f"Under relation '{rel}' ({page_model} page model), {per[rel]['clearing']} pages clear the panel-max bar.")
         print("flagged-for-oracle: a human must read two independent pages before the ledger moves.")
         print("A PASS here is a reproduction gate, not a claim. Next, in order: re-run from a clean")
         print("checkout; run all 55 pages (--pages 55); read the decoded text as language (any panel")
@@ -541,7 +699,8 @@ def main():
         print("\nThis FAIL was tested under exactly three conditionals:")
         print(f"  1. relation in {{keyskip1, keyskip2, free}} (key advance 1 / 2 / free; free at L={FREE_L} only)")
         print(f"  2. registers = the {len(pinfo['registers'])}-register panel: {', '.join(pinfo['registers'])}")
-        print(f"  3. the key applied as given, restarting at each page (o=0), sign -1, one key (N={BAR_N})")
+        print(f"  3. the key applied as given, sign -1, one key (N={BAR_N}), under two page models: restarting at")
+        print(f"     each page (o=0), and one continuous stream across pages 0..{CONT_PAGES - 1} (offset window searched)")
         print("L7 caveat: NEGATIVE UNDER THESE REGISTERS/RELATIONS ONLY. A plaintext in a language or")
         print("construction outside the panel, a different key offset/sign, or a key needing a")
         print("different rejection rule is NOT detected, and 'close' is the trap: do not tune to the bar.")

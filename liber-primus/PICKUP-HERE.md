@@ -1,6 +1,29 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-11-05** (Round 43 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-11-12** (Round 44 lane A0, the fresh-eyes audit; before that 2026-11-05, Round 43 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+
+> ## Round 44 lane A0 (2026-11-12) — THE FRESH-EYES AUDIT of Rounds 1-43 and the repository: filed. Read `analysis/round44/A0-fresh-eyes-audit/AUDIT.md` first.
+>
+> No survivor, and no new key space was opened. Thirteen partition readers plus coordinator re-verification. **Fixed in the
+> same commit:** (1) `verify_solution.py` returned FAIL on a correct key of the kind every sweep hunts, because it decoded every
+> page from `K[0]`; it now also judges one continuous stream (self-test 8/8 plants, both page models). (2) `src/lp/corpus.py
+> parse()` took an OutGuess note for a plaintext and flagged pages 0-2, the head of page 3 and pages 53-54 as decoded; two
+> Round 26 lanes were aimed at a mid-book slice because of it. **Measured:** the cleartext word lengths fit English spelled
+> ONE RUNE PER LETTER (60 of 61 texts; best KS 0.0075 against 0.0586 for the decoded pages' spelling), and the instrument
+> recovers such text (24/24), so no sweep negative is voided; a natural-language running key is ruled out key-free (predicted
+> monogram chi2 600-770 against 26.4), which drops R12-C2, the R26-B remainder and the 10-keytext refetch from the queue; the
+> "repeated 7-gram" is a 6-rune two-word repeat (ᛞᛄᚢ-ᛒᛖᛁ) that ends the book, expected 9e-5 to 6e-3 by chance rather than
+> 13 %, at offsets no visible reset can align; pages 28 and 42 are position-wise related (chi2 74.1 on 28 df, family-wise about
+> 0.006) and the plain depth reading is **negative** under a pre-registered joint decoder (`analysis/round44/D1-depth-28-42/`,
+> plants 70-94 %, real pair = null). **Never swept at power:** the 2012-2014 clock-second band for glibc / Perl / PHP; Perl's
+> whole 2^32 (the only generator with signed first-party evidence); the whole bash 4.2 state cycle (the "full orbit" is 3.6 % of
+> it); TeX's 8,627 default seeds; and two server timestamps missing from the seed prior (1396427599, 1389478032).
+> **Round 44 plan corrections** (appended to `analysis/round44/CAMPAIGN-PLAN.md`): P2's grid is fully determined
+> (all 16 cells = |3301 - p_F|, F Fibonacci); P5's hash-block is XOR shares of a decoded 2014 message; R1's anchor is
+> mis-specified and identical resets are already excluded key-free; P4 must not reuse the rigid R28-L2 harness; the N5/N4
+> owner decision is moot. **Next, in order:** the blind (language-model-free) adjudicator specified in AUDIT.md section 5,
+> then the finite spaces above through it at every section head, then the cleartext structure (letter-wise skeleton scan of
+> the quote spans, the eight section titles), then the corrected physical-page lanes. `LEDGER.json` **321 rows**, 0 unsound.
 
 > ## Round 43 closeout (lanes 2026-11-03, X1 + closeout 2026-11-05) — FIRST PRINCIPLES: THE FRESH ARMADA: filed. Read `analysis/round43/SYNTHESIS.md` first.
 >

@@ -37,3 +37,30 @@ the lane PREREG verbatim so the blindness audit can audit it.
 
 WATCH band (gates I1(a)); R13 DIRECTION; KDF noise-crosser sign-off; `with_degenerate` default;
 the N5/N4 bundle read.
+
+---
+
+## 4. Addendum 2026-11-12 — corrections from lane A0 (the fresh-eyes audit)
+
+Recorded after the plan was drafted and before any lane above ran. Source and evidence:
+[`A0-fresh-eyes-audit/AUDIT.md`](A0-fresh-eyes-audit/AUDIT.md) sections 4 and 5. The roster above is kept as drafted; this table says
+what to change before each lane writes its PREREG.
+
+| lane | change |
+|---|---|
+| **P2** | The grid is fully determined: all 16 cells = \|3301 - p_F\|, p_0 = 2, F over the Fibonacci numbers 0..987 (`A0-fresh-eyes-audit/p15_grid.py`). "14/16" was a miscount. It was already run as a Hill key in Round 41 C1. Demote to a one-line ledger note unless the *rule* (Fibonacci-indexed primes) is proposed as a keystream. |
+| **P5** | Drop the hash-block parse: the three signed 991-byte blobs are XOR shares of a decoded 2014 message (reader K). The cuneiform clusters were read and run as keys in the recovered Campaign VII. |
+| **R1** | The anchor is a 6-rune two-word repeat at offsets no visible reset aligns, and identical resets are already ruled out by depth columns. Re-scope to: *every section head and page head as a possible stream start*, for every generator lane. |
+| **P4** | Do not reuse the R28-L2 harness: it is rigid and English-only with an unfiltered plant. Use a skip-aware harness (and re-run the Round 42 C1-C3 / Round 43 F6 object-as-key cells through the same one). |
+| **P1** | The Round 22 drop-cap catalog it inherits is wrong in about half its entries (reader F); rebuild the page-to-entry map first. `%` segments are not image pages. |
+| deferred | Drop the 10-keytext refetch and every keytext item: natural-language running keys are ruled out by monogram flatness. |
+| owner decisions | N5/N4 bundle read: moot (a pointwise function of the ciphertext rune; noise by construction). WATCH band: five S2 seeds above 7.10 survive locally; five decodes settle it. |
+
+**Lanes this plan lacked** (ranked in AUDIT.md section 5): **I1** the blind, language-model-free adjudicator; **I2** power envelopes
+for value rewrite, deletion-type avoidance, the F-stall and the in-stream coin; **I3** one skip-aware harness for object-as-key
+cells; then the four finite key spaces never swept at power (Perl 2^32, the clock-second band with the two server timestamps, the
+whole bash 4.2 state cycle, TeX's 8,627 default seeds); then **C1/C2** the cleartext structure (letter-wise skeleton scan of the
+quote spans; the eight section titles; the numbered list).
+
+**Already run under this plan's number:** lane **D1** (`D1-depth-28-42/`), pre-registered and filed 2026-11-12: plain depth for the
+page pair 28/42 is negative in three encodings.

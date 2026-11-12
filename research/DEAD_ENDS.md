@@ -464,6 +464,14 @@ actually resembles run longer than novels.
 **Do not re-open the word-length excess.** Anyone repeating it must compare like-sized passages,
 never a passage against a corpus.
 
+> **Re-opened 2026-11-12 (Round 44 lane A0), on the shape, not the mean.** This closure tested only the mean. The full
+> word-length histogram of pages 0-54 fits English spelled ONE RUNE PER LETTER (THE = 3 runes) and not the decoded pages'
+> multigraph spelling: letter-wise fits better in 60 of 61 texts by KS and 61 of 61 by chi-square (best KS 0.0075 against
+> 0.0586); two-rune words are 15.9 % in LP2 against 24.3 % on the decoded pages. The +0.32 mean excess is what letter-wise
+> spelling predicts. An audit reader also found that `length_anomaly.py` never strips the Project Gutenberg licence text, so
+> the "44 of 47 texts" figure above is contaminated (22 of 22 Gutenberg files peak at the file tail). See
+> `liber-primus/analysis/round44/A0-fresh-eyes-audit/AUDIT.md` 1.1 and 3.6.
+
 ### KILLED (Gate #2, executed then refuted) — R9-DIRECTION "their numbers are the direction"
 **Mechanism, and note it is licensed by a SIGNED 3301 statement rather than by speculation** — the
 2016-01-01 message (OpenPGP 7A35090F): *"Liber Primus is the way. Its words are the map, their

@@ -98,3 +98,11 @@ Plus the 9 REOPEN edges (per-page/per-line key resets + the unlogged p27/p54 7-g
 that list) and the Round-42 deferrals (I1(b) widened screen, S2 PHP retry, 10-keytext refetch,
 B2 remainder). Owner decisions still pending: WATCH band, R13 DIRECTION, KDF sign-off,
 `with_degenerate` default, N5/N4 bundle.
+
+---
+
+_Addendum 2026-11-12._ The Round 44 fresh-eyes audit (`../round44/A0-fresh-eyes-audit/AUDIT.md`) corrects four things in sections 1
+and 4 above: the p27/p54 "7-gram" is a 6-rune two-word repeat and anchors no visible reset; queue item 2 (the p15 grid) is fully
+determined by one rule; the hash-block half of item 5 is a decoded object; and "17 CITED at adequate power" overstates for at least
+four items. It also adds what the blind armada could not see from primary material alone: the cleartext word lengths fit English
+spelled one rune per letter, and the oracle rejected a correct continuous key until 2026-11-12.

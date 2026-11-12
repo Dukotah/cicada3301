@@ -105,14 +105,15 @@
   "submit": {
    "keystream": "python3 verify_solution.py --keystream FILE",
    "key_module": "python3 verify_solution.py --key-module FILE.py",
-   "self_test_the_oracle": "python3 verify_solution.py --selftest  (plants a key in EN_MODERN, LATIN, EN_NOVOWEL and GREEK at L=120)"
+   "self_test_the_oracle": "python3 verify_solution.py --selftest  (plants a key in EN_MODERN, LATIN, EN_NOVOWEL and GREEK at L=120, once restarting at each page and once as one continuous stream)"
   },
   "decoder": "analysis/round33/I1-register-aware-beam/beam_v3.py panel_max under keyskip1, keyskip2 and free (rigid is never used)",
   "score": "panel pmax (max z over the register panel) of the decode, argmax register named; panel-R36 (12 registers, sha256 a0682f0c...) with a printed fallback to the Round 32 nine-register panel if absent",
   "bar": "analysis/round34/I1-v3-null bars_v3.bar_v3(N=1, L, relation, alpha=0.01, family='lp2') for ONE submitted key; free has an observed bar at L=120 only",
   "min_pages_passing_independently": 2,
-  "pass_means": "flagged-for-oracle: at least 2 pages clear the bar under the same relation; a human must read two independent pages (HUMAN-ORACLE.md) before any ledger row moves",
-  "fail_means": "negative under these registers/relations only (L7 caveat): tested under keyskip1/keyskip2/free, the panel registers, key offset 0 per page, sign -1, N=1",
+  "page_models": "two, both judged (Round 44 audit A0): the key restarting at each page (offset 0 per page), and ONE CONTINUOUS STREAM from rune 0 of page 0 (page 1 decoded from where the stream had reached, over a window of key offsets, bar at N = window size). Until 2026-11-12 only the first was judged, so a correct seeded-generator key returned FAIL",
+  "pass_means": "flagged-for-oracle: at least 2 pages clear the bar under the same relation and the same page model; a human must read two independent pages (HUMAN-ORACLE.md) before any ledger row moves",
+  "fail_means": "negative under these registers/relations only (L7 caveat): tested under keyskip1/keyskip2/free, the panel registers, both page models, sign -1, additive combination with no constant, N=1",
   "legacy_informational": {
    "english_band_threshold": -5.5,
    "note": "the old English-only quadgram score is still printed, labelled LEGACY, and is NOT used in the verdict (Round 18 L7-A defect)"
@@ -140,14 +141,14 @@
   "$comment": "Summary only. LEDGER.json is authoritative and queryable.",
   "ledger": "liber-primus/LEDGER.json",
   "counts_by_status": {
-   "audit": 42,
+   "audit": 45,
    "eliminated": 5,
    "inconclusive": 13,
-   "measured": 82,
-   "negative": 99,
-   "never-run": 10,
-   "open": 18,
-   "partially-run": 25,
+   "measured": 90,
+   "negative": 109,
+   "never-run": 11,
+   "open": 19,
+   "partially-run": 24,
    "superseded": 5
   },
   "eliminated_families_note": "BOUNDED, not closed (R36 audit 2026-10-30): every item is an English-only measured bound on one key space / transition model / adjudicator register; read coverage and not_covered in the cited ledger row.",
