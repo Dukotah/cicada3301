@@ -86,6 +86,17 @@ e9d9c0526912faf8f0e4fe369475d112eb83a6af9028a751809c135126c0aa21
 _This canonical byte stream did not previously exist in the community and is itself a
 publishable primary source._
 
+> **SUPERSEDED at idx 45, 50, 246 (Round 34, commit `5213d19`, 2026-10-29).** The hex above is the
+> Campaign VII majority vote and is kept as written. The shipped `canon_256.bin` / `canon_256.hex`
+> differ from it at exactly three bytes: idx 45 `0x51`->`0x6b`, idx 50 `0x15`->`0x2f`, idx 246
+> `0xe0`->`0xc6`. Those three cells were settled from the page images in Round 19 C1
+> (`analysis/round19/C1/RESULTS.md`): cells 45 and 50 have no foot, so `l` not `L`; cell 246 is a bare
+> bar with no dot, so `3I` not `3i`. The owner promoted that result in Round 34 (Option A). The old
+> bytes are kept as `canon_256_superseded.bin`. **`canonicalize.py` still regenerates the superseded
+> stream**, because it only votes over the text witnesses; the shipped file is canonical.
+> Independent confirmation of idx 246 = `0xc6` from 68.jpg pixel measurement (w8xh67 bar, no dot) and a
+> from-scratch human read: njloof, [issue #14](https://github.com/Dukotah/cicada3301/issues/14).
+
 ---
 
 ## 2. Characterization — what kind of object is it? (`characterize.py`)

@@ -1,0 +1,19 @@
+name: Data / transcription correction
+description: A transcription, numbering or payload error, with image evidence.
+title: "[data] "
+labels: ["data-correction"]
+body:
+  - type: textarea
+    id: claim
+    attributes: { label: What is wrong, description: "File, segment/book page, index, current value, proposed value." }
+    validations: { required: true }
+  - type: textarea
+    id: evidence
+    attributes: { label: Evidence, description: "Image crops, pixel measurements, other transcriptions at pinned commits, hashes." }
+    validations: { required: true }
+  - type: textarea
+    id: impact
+    attributes: { label: Impact, description: "What results depend on this, if any." }
+  - type: input
+    id: tools
+    attributes: { label: AI tools used (if any) }

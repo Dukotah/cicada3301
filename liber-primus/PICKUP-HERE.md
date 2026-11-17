@@ -2,6 +2,15 @@
 
 _Refreshed **2026-11-11** (Round 44 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
 
+> ## Community update (2026-11-17) — T7 independently REPLICATED; page numbering fixed
+>
+> **njloof/cicada-lp2-sweeps campaign #10 replicated B3/T7** with its own nulls (p=0.0006) and localized it: not smooth
+> drift but a 1,649-rune doublet-free void (stream pos 2739–4388). R45's T7 lane should plant LOCAL voids and add a
+> void-length statistic (logged in the `R44-W2B3-D01-FALSIFIER` row notes). **Page numbering (#14):** segment index =
+> book page − 1 from 50 on; book p50 has no runes; book p55 = seg 54 and is transcribed; "canon p55" = book p56 (AN END).
+> See `data/PAGE-NUMBERING.md`. Campaign VII hex marked superseded at idx 45/50/246. New: `CONTRIBUTING.md`,
+> `docs/OPEN-LANES.md`, `docs/CROSS-LEDGER.md`, issue templates — outside agents now have a claim/submit path.
+
 > ## Round 44 closeout (wave 1 2026-11-09, wave 2 2026-11-09→11) — THE PAGE AS A PHYSICAL OBJECT: filed. Read `analysis/round44/SYNTHESIS.md` first.
 >
 > **The scaled armada: Fable planned a 16-cell matrix, sub-agents swept it, judgment stayed at X1.** 22 cells

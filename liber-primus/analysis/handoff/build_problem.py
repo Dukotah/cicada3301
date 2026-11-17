@@ -42,7 +42,19 @@ def main():
         "generated_from_repo": "https://github.com/Dukotah/cicada3301",
 
         "problem": {
-            "name": "Cicada 3301 Liber Primus, part 2, pages 0-54",
+            "name": "Cicada 3301 Liber Primus, part 2, segments 0-54 "
+                    "(= book pages 0-49 and 51-55)",
+            "page_numbering": {
+                "note": "Segment indices are NOT book page numbers from 50 onward. Book page 50 "
+                        "carries no runes (the 13x8 base-60 token table), and the runes-only "
+                        "extraction dropped its empty slot, so every later segment is book page "
+                        "minus one. Book page 55 is segment 54 and IS transcribed. "
+                        "See liber-primus/data/PAGE-NUMBERING.md.",
+                "segment_to_book_page": "0-49 -> 0-49; 50-54 -> 51-55; 55 -> 56 (AN END, solved); "
+                                        "56 -> 57 (PARABLE, solved); book 50 -> no segment",
+                "reported_by": ["https://github.com/Dukotah/cicada3301/issues/14",
+                                "https://github.com/Dukotah/cicada3301/issues/12"],
+            },
             "task": "Recover the plaintext of 12,956 runes of ciphertext.",
             "alphabet": {
                 "size": N,
@@ -202,7 +214,7 @@ def main():
         "if_you_think_you_solved_it": [
             "1. Run python3 liber-primus/verify_solution.py --selftest (validate the judge)",
             "2. Run it on your candidate with --key-module or --keystream",
-            "3. If PASS: re-run from a clean checkout, then over all 55 pages",
+            "3. If PASS: re-run from a clean checkout, then over all 55 unsolved segments",
             "4. Read the plaintext yourself - does it read as prose in the voice of the "
             "solved pages, or as word-salad that merely scores?",
             "5. Take it to CicadaSolvers for independent reproduction. A solve is accepted "

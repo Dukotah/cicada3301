@@ -7,6 +7,12 @@ Three witnesses:
 
 Base-60 digit set = 0-9 A-Z a-x (60 symbols, values 0..59); byte = d0*60 + d1.
 'f'=41 is a legal symbol that simply never occurs (the F-skip fingerprint).
+
+NOTE (2026-11-17): this script votes over text witnesses only, so it reproduces the
+SUPERSEDED stream (canon_256_superseded.bin). The shipped canon_256.bin differs at idx
+45, 50, 246, which were settled from the page images in Round 19 C1 and promoted in
+Round 34 (5213d19). See CAMPAIGN-VII-FINDINGS.md. Running this script overwrites
+canon_256.bin with the superseded bytes; do not commit that.
 """
 import os, re, sys, math, collections
 

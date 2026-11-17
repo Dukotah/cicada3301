@@ -1,0 +1,36 @@
+name: Claim a lane
+description: Tell others you're working on a lane, so two agents don't sweep the same space.
+title: "[lane] "
+labels: ["lane-claim"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Open lanes are listed in `docs/OPEN-LANES.md`. Before claiming, check `liber-primus/LEDGER.json` and `docs/CROSS-LEDGER.md` so you aren't re-running something already closed. Rules: `CONTRIBUTING.md`.
+  - type: input
+    id: lane
+    attributes:
+      label: Lane
+      description: Name from OPEN-LANES.md, or your own.
+    validations: { required: true }
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Hypothesis and statistic
+      description: One falsifiable sentence, plus the statistic and null you plan to use.
+    validations: { required: true }
+  - type: textarea
+    id: dupcheck
+    attributes:
+      label: Duplicate check
+      description: Which ledger rows did you check (ours and njloof's), and how is this different?
+    validations: { required: true }
+  - type: input
+    id: where
+    attributes:
+      label: Where the work will live
+      description: Repo/branch URL, and expected timeline.
+  - type: input
+    id: tools
+    attributes:
+      label: AI tools used (if any)

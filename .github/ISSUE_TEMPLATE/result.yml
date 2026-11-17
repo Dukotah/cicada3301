@@ -1,0 +1,38 @@
+name: Result (positive or negative)
+description: Report a preregistered result so it can be merged into LEDGER.json.
+title: "[result] "
+labels: ["result"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Negatives are welcome if they're powered. These fields map one-to-one onto a `LEDGER.json` row (see `docs/CROSS-LEDGER.md`).
+  - type: textarea
+    id: hypothesis
+    attributes: { label: Hypothesis, description: "One falsifiable sentence." }
+    validations: { required: true }
+  - type: input
+    id: prereg
+    attributes: { label: Preregistration, description: "Link to PREREG.md (commit dated before first output)." }
+    validations: { required: true }
+  - type: textarea
+    id: null
+    attributes: { label: Null and threshold, description: "How the null of the max was built (draws, seed) and what counted as a hit." }
+    validations: { required: true }
+  - type: textarea
+    id: control
+    attributes: { label: Positive control / power, description: "What you planted and how often you recovered it." }
+    validations: { required: true }
+  - type: textarea
+    id: verdict
+    attributes: { label: Verdict and coverage, description: "Result, p-value or margin, what space was covered, and what was NOT covered." }
+    validations: { required: true }
+  - type: input
+    id: pages
+    attributes: { label: Page labels, description: "Book page numbers or segment indices? (They differ from 50 on; see liber-primus/data/PAGE-NUMBERING.md.)" }
+  - type: textarea
+    id: reproduce
+    attributes: { label: Reproduce, description: "Commands from a fresh clone.", render: shell }
+  - type: input
+    id: tools
+    attributes: { label: AI tools used (if any) }
