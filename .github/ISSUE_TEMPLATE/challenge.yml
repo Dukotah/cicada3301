@@ -1,0 +1,46 @@
+name: Challenge submission (or claim)
+description: Claim or submit one of the challenges in CHALLENGES.md (C0-C6).
+title: "[challenge] "
+labels: ["challenge"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Each challenge in `CHALLENGES.md` has a checker and a finish line. Paste the checker's output so we can confirm it quickly. Claiming (for anything over a day, and per page for C4) is the same form with "Claiming" selected.
+  - type: dropdown
+    id: challenge
+    attributes:
+      label: Challenge
+      options:
+        - C0 Decode an LP2 page
+        - C1 Restore relikd's page map
+        - C2 Recognize plaintext in short windows
+        - C3 Certify your decoder
+        - C4 Read a page independently
+        - C5 Explain the T7 anomaly
+        - C6 Break one of our closures
+    validations: { required: true }
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Claiming or submitting?
+      options: [Claiming, Submitting]
+    validations: { required: true }
+  - type: input
+    id: page
+    attributes: { label: "C4 only: book page", description: "Book page number (not segment index)." }
+  - type: textarea
+    id: output
+    attributes:
+      label: Checker output
+      description: The exact command you ran and what it printed. Leave empty if claiming.
+      render: text
+  - type: input
+    id: link
+    attributes: { label: Link to your PR, branch or repo }
+  - type: textarea
+    id: notes
+    attributes: { label: What you did, description: "Approach, anything surprising, and what did NOT work." }
+  - type: input
+    id: tools
+    attributes: { label: AI tools used (if any), description: "Useful context, never a mark against you." }

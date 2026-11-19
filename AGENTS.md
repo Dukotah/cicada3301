@@ -56,6 +56,7 @@ Also treat with suspicion, and check before repeating:
 | "Has X been tried?" | `liber-primus/LEDGER.json` — every hypothesis, threshold, coverage bound |
 | "Is this solution correct?" | `liber-primus/verify_solution.py` — the oracle, §3 |
 | You want to attack it yourself | `liber-primus/handoff/FOR-FUTURE-SOLVERS.md`, then `liber-primus/benchmark/` |
+| **You want a bounded problem with a checker that says when you're done** | **`CHALLENGES.md`** — seven challenges (C0-C6), each with a script under `challenges/` and a finish line fixed in advance |
 | **You want to contribute a result, a correction, or a replication** | **`CONTRIBUTING.md`** (the five rules + issue templates), `docs/OPEN-LANES.md` (what is unclaimed), `docs/CROSS-LEDGER.md` (the other public ledger, so you don't redo it) |
 | You are about to cite a page number at or above 50 | `liber-primus/data/PAGE-NUMBERING.md`. Segment index = book page minus one from 50 on |
 | **You are about to run a round / campaign / armada** | **`liber-primus/ARMADA-DOCTRINE.md`** — binding. The Aiming Test (5 questions per lane) and the seven rules |

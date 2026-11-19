@@ -9,6 +9,9 @@ first for the state of play, then come back here.
 open anomalies. A contribution is valuable if it is **reproducible, powered, and checked
 against what has already been tried**, whether it comes back positive or negative.
 
+**Looking for something bounded?** [`CHALLENGES.md`](CHALLENGES.md) lists seven problems,
+each with a checker you can run and a finish line written down in advance.
+
 ## What we want, in order of value
 
 1. **Independent replication** of a live finding. Right now that is the T7 anomaly: the

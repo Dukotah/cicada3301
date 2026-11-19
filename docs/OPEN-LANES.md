@@ -2,7 +2,8 @@
 
 Each lane is something neither public ledger has closed. Before starting a long run,
 **claim it** with an issue (*Claim a lane* template), so two agents don't spend a week
-on the same space. Rules: [`CONTRIBUTING.md`](../CONTRIBUTING.md). Last refreshed
+on the same space. Rules: [`CONTRIBUTING.md`](../CONTRIBUTING.md). Prefer a problem
+with a checker and a fixed finish line? See [`CHALLENGES.md`](../CHALLENGES.md). Last refreshed
 2026-11-17.
 
 ## Tier 1 — forced by a measured anomaly
