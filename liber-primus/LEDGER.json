@@ -21,12 +21,12 @@
   "audit"
  ],
  "counts": {
-  "total": 350,
+  "total": 351,
   "by_status": {
    "audit": 42,
    "eliminated": 5,
    "inconclusive": 13,
-   "measured": 99,
+   "measured": 100,
    "negative": 132,
    "never-run": 10,
    "open": 19,
@@ -13339,7 +13339,41 @@
    "reproduce": "python3: crop data/relikd/p15.jpg box (500,800,1900,1450); see run_p2.py G16/D16 asserts",
    "supersedes": [],
    "reopens_if": "A higher-resolution or alternate-edition scan contradicts any digit or the red-cell identification.",
-   "notes": "Blind agents' reading (R43 F1 A2-H3) confirmed digit-for-digit, not trusted: this lane re-derived it from the master before any test ran."
+   "notes": "Blind agents' reading (R43 F1 A2-H3) confirmed digit-for-digit, not trusted: this lane re-derived it from the master before any test ran. SUPERSEDED IN PART 2026-11-19: the 14/16 structure is 16/16 as |3301 - prime(F+1)| over Fibonacci F (njloof #14); see R45-COMM-P15GRID-CLOSEDFORM. Transcription unchanged."
+  },
+  {
+   "id": "R45-COMM-P15GRID-CLOSEDFORM",
+   "lane": "round44/P2-p15-grid",
+   "hypothesis": "Every one of the 16 printed p15 grid numbers is |3301 - prime(F+1)| for a distinct Fibonacci F in {0,1,2,3,5,...,987}, and F advances along a square spiral starting at the red 3299 cell (r1,c1 0-based). Found by njloof (njloof/cicada-lp2-sweeps d12ed41, Dukotah/cicada3301#14), reproduced here.",
+   "status": "measured",
+   "round": "45/community",
+   "date": "2026-11-19",
+   "threshold": "Exact arithmetic identity on the R44-P2 transcription: all 16 cells and the spiral order must match with zero exceptions.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "closed_form_check.py asserts the 16/16 multiset match, the spiral order F=0,1,2,...,987, and that the only prime>3301 cells are exactly the two R44 'breakers' (4516, 1206); independent sieve, run 2026-11-19.",
+   "result": {
+    "cells_explained": "16/16",
+    "formula": "|3301 - prime(F+1)|, F Fibonacci 0..987",
+    "order": "square spiral from red 3299 = 3301 - prime(1) (F=0)",
+    "sign_flips": [
+     4516,
+     1206
+    ]
+   },
+   "coverage": "The arithmetic identity of the printed numerals and their layout. Does NOT cover: what the grid is FOR (key schedule, page map, or decoration); any join with other p15 marks.",
+   "not_covered": [
+    "Whether the grid carries LP2 key material at all: a key-schedule reading must now beat this closed form, not uniform noise (R44 P2's key-schedule sweep tested against noise)."
+   ],
+   "evidence": [
+    "liber-primus/analysis/round44/P2-p15-grid/closed_form_check.py",
+    "liber-primus/analysis/round44/P2-p15-grid/RESULTS.md",
+    "docs/CROSS-LEDGER.md"
+   ],
+   "reproduce": "python liber-primus/analysis/round44/P2-p15-grid/closed_form_check.py",
+   "supersedes": [],
+   "reopens_if": "A higher-resolution scan contradicts any digit or the red-cell location.",
+   "notes": "First complete read of a printed LP2 object. Credit: njloof (external contributor). njloof retracted their own p=3.3e-7 void-containment statistic as a construction artifact of this closed form (their LEDGER C2): the eleven small-F cells fall in 2838-3299 by construction, so pointer readings of the values are not evidence."
   },
   {
    "id": "R44-P2-P15GRID-KEYSCHEDULE",
@@ -14032,7 +14066,7 @@
    ],
    "reproduce": "cd liber-primus/analysis/round44/W2-B3-doublet-sites && python3 nulls.py && python3 plant_gate.py && python3 run_real.py && python3 battery_ext.py",
    "reopens_if": "Standing open item: the heterogeneity mechanism lane (X0 item 22 REOPEN) should consume this finding; D-01's row itself is NOT modified by this cell (its machine-vs-hand verdict is about the randomness SOURCE and stands; what falls is the informal 'uniform slips' residue picture its underpowered placement family could not test).",
-   "notes": "LOUD FLAG per the pre-registered decision rule - not a plaintext candidate, so no HUMAN-ORACLE decode bundle exists; the flag is this row + RESULTS.md. Direct measured support for X0 ADJUDICATION item 22 (five elevated-doublet pages / nonstationarity, previously disclaimed underpowered at 0.075). Suggested priority for Round 44 synthesis: route to the item-22 lane with a heterogeneity-plant positive control. EXTERNAL REPLICATION (2026-11-16, njloof/cicada-lp2-sweeps campaign #10, preregistered, logged here 2026-11-17): same 86-site tuple rebuilt independently (pos/gaps/vals bit-identical to U86); point-process nulls N1 hard-core gap>=6 and N2 unconstrained, D=10,000; Pearson gap ac1 +0.3795, p=0.0006 (N1) / 0.0008 (N2); null-equivalence check passed (N2 ac1 -0.009+-0.104 vs ours -0.011+-0.106). Their power curve shows the signal is NOT smooth drift: observed ac1 exceeds even the delta=0.9 sinusoid plant mean (+0.263); it localizes to a 1,649-rune doublet-free span (consecutive gaps 400+712+537, stream pos 2739-4388). Implication for R45: plant LOCAL voids and add a void-length statistic. Still measured, not certified. Source: https://github.com/njloof/cicada-lp2-sweeps/blob/main/sweeps/2026-11-t7-replication/REPORT.md"
+   "notes": "LOUD FLAG per the pre-registered decision rule - not a plaintext candidate, so no HUMAN-ORACLE decode bundle exists; the flag is this row + RESULTS.md. Direct measured support for X0 ADJUDICATION item 22 (five elevated-doublet pages / nonstationarity, previously disclaimed underpowered at 0.075). Suggested priority for Round 44 synthesis: route to the item-22 lane with a heterogeneity-plant positive control. EXTERNAL REPLICATION (2026-11-16, njloof/cicada-lp2-sweeps campaign #10, preregistered, logged here 2026-11-17): same 86-site tuple rebuilt independently (pos/gaps/vals bit-identical to U86); point-process nulls N1 hard-core gap>=6 and N2 unconstrained, D=10,000; Pearson gap ac1 +0.3795, p=0.0006 (N1) / 0.0008 (N2); null-equivalence check passed (N2 ac1 -0.009+-0.104 vs ours -0.011+-0.106). Their power curve shows the signal is NOT smooth drift: observed ac1 exceeds even the delta=0.9 sinusoid plant mean (+0.263); it localizes to three consecutive large gaps (400+712+537, stream pos 2739-4388). Implication for R45: plant LOCAL voids and add a void-length statistic. Still measured, not certified. Source: https://github.com/njloof/cicada-lp2-sweeps/blob/main/sweeps/2026-11-t7-replication/REPORT.md CORRECTION 2026-11-19 (njloof #13, their LEDGER C1): the span is NOT doublet-free - internal doublets at 2740/3140/3852 (second rune, 0-based), re-verified here from b3lib.sites(); what is localized is the three large gaps vs ~151 typical. Their analysis re-used the same 86 published sites with independent nulls: reproduced, not an independent observation."
   },
   {
    "id": "R44-W2B4-TREES-MIRROR-DIFF",

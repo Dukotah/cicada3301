@@ -23,11 +23,13 @@ were run before the relabel; their ids 50–54 are book pages 51–55.
 
 | item | first filed | confirmed / corrected by | status |
 |---|---|---|---|
-| **T7: doublet slip rate is non-stationary** | here, R44 `R44-W2B3-D01-FALSIFIER` (p=0.0010; X1 p=0.00025) | njloof #10 (p=0.0006, independent nulls), localized to a 1,649-rune doublet-free void at stream pos 2739–4388 | **replicated, measured, not certified**. Live lane for R45 |
+| **T7: doublet slip rate is non-stationary** | here, R44 `R44-W2B3-D01-FALSIFIER` (p=0.0010; X1 p=0.00025) | njloof #10 (p=0.0006, independent nulls), localized to three consecutive large doublet gaps (400/712/537 runes vs ~151 typical) spanning stream pos 2739–4388, internal doublets at 2740/3140/3852 (njloof #13 correction, 2026-11-19: not doublet-free) | **reproduced** (same 86 published sites, independent nulls: validates both null calibrations, not an independent observation), **measured, not certified**. Live lane for R45 |
 | Page numbering from 50 on (segment = book − 1) | RETSAM3301, #12 (mapping); njloof, #14 (root cause + proof) | adopted here 2026-11-17 | fixed in `PROBLEM.json`; old round docs read through the table |
 | Payload byte idx 246 = `0xc6` (`3I`) | here, R19 C1 (image) → promoted R34 | njloof #14 (pixel measurement + human read) | agreed. Campaign VII doc now marked superseded at 45/50/246 |
 | Payload bytes idx 165 = `0x12`, 172 = `0x94` | here, Campaign VII | njloof #14 (pixels) | agreed |
 | Separator corrections seg 8 / seg 40 | RETSAM3301, #12 | here, R33 B2 (`9b36692`) | landed |
+| p15 4×4 grid: 14/16 = 3301−prime | here, R44 P2 (`R44-P2-P15GRID-TRANSCRIPTION`) | njloof #14 (2026-11-19): **16/16 cells = \|3301 − prime(F+1)\|, F Fibonacci 0–987 along a square spiral from the red 3299**; the two R44 "breakers" are sign flips | **adopted** 2026-11-19 as `R45-COMM-P15GRID-CLOSEDFORM`; reproduced by `closed_form_check.py` |
+| T7 span "doublet-free void" | njloof #10, copied here at `6b94529` | njloof #13 (2026-11-19, their LEDGER C1) | corrected: internal doublets at 2740/3140/3852; three large gaps 400/712/537 |
 | English-only-negative failure mode | here, R18 L7-A | njloof adopted language-agnostic χ² as design rule | shared method |
 | `skip_by_two` stride pads | flagged uncovered here | njloof #3 (negative), #5 (products, negative) | closed in their ledger |
 | 32-bit seed sweeps: Perl, POSIX, Xorshift32 | mariostabile1, PR #11 | merged here 2026-10-28 | 0 hits |

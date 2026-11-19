@@ -87,6 +87,7 @@ ranked list of candidates rather than an empty set.
    read + 12-register panel all exist.
 2. **p15 4×4 Arabic grid** (14/16 cells = 3301−prime; red 3299 cell) as key schedule — B-12's own
    unanswered reopener; minutes to test.
+   > **Superseded 2026-11-19 (njloof, #14):** 16/16 cells = |3301 − prime(F+1)|, F Fibonacci 0–987 along a square spiral from the red 3299. See `R45-COMM-P15GRID-CLOSEDFORM`.
 3. **Quote-span / punctuation-identity token channels** (7 spans = 405 runes at mapped offsets) —
    F2b already position-mapped them; adjudication power capped unless paired with a key-family sweep.
 4. **Onion 256-byte blobs as per-page mod-29 pads** (F3-J6) — reuse the R28-L2 harness verbatim.

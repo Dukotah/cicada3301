@@ -56,6 +56,10 @@ All evidence is gathered. Composing the adjudication now.
 | 33 | Canon polluted by mirrors; only PGP-attested subset is real | A6-H8(part) (1) | **CITED** | CORPUS-G-02; L1-F6-CORRECTION; I-03; R30-D1 (standing audit that the LEDGER itself doesn't over-claim sweeps); A-01/T1-05 (canon independently re-read) | Provenance is signature-anchored and the false-belief failure mode has its own audit lane |
 | 34 | Word-length / line-geometry / separator channels (Baconian bits, line-fill data) | F2 (preserved-but-unused note); A1/A5 obs | **CITED** | B-12 (11 geometric channels, 8 bit packings, planted separations — negative with stated power ceiling); C-02 (positional forcing, 200k draws, typographic cause identified); R10-L2 M3/M8; R11-S2 | F2's "no module in src/lp consumes word lengths" is true of the *solver rig*, not of the analysis record — the ledger covers these channels with controls |
 
+> **Row 18 superseded 2026-11-19 (njloof, #14):** the grid is fully explained: 16/16 cells = |3301 − prime(F+1)|, F Fibonacci 0–987 along a square spiral from the red 3299
+> (4516 and 1206 are the sign flips). See `R45-COMM-P15GRID-CLOSEDFORM`.
+
+
 ## (a) NEW-stamped list, ranked by blind-convergence × testability
 
 1. **Red-ink channel** (red rune subsequence book-wide; red dot-matrix block patterns incl. the 13-dot vs 10-dot distinction; red p53 closing paragraph) — convergence **4/6** + F2 HIGH ×2; testability HIGH (HSV pass + A-06-style read + 12-register panel all exist). *Item 17.*

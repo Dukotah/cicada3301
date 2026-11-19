@@ -24,6 +24,10 @@ returning to the deferred instrument grind.
 | **R1** | **REOPEN head: per-page/per-line key resets** with the p27/p54 repeated 7-gram (in no ledger row) as a free alignment anchor — R33-I2's own `unrepresented` list. | X0 REOPEN #1 | PREREG; decoder must represent resets (do not reuse a sweep that can't) |
 | **X1** | Red-team last: extraction-glue audit on P1/P3 (the new channels' own pp49–51 risk is a bad extractor), stamp spot-checks, ledger patches, full gate, Round 45 critic. | doctrine | last |
 
+> **P2 premise superseded 2026-11-19 (njloof, #14):** not 14/16 but 16/16 cells = |3301 − prime(F+1)|, F Fibonacci 0–987 along a square spiral from the red 3299.
+> A key-schedule reading must now compete against this closed form, not uniform noise. See `R45-COMM-P15GRID-CLOSEDFORM`.
+
+
 Deferred (recorded, not cancelled — from Round 42): I1(b) widened k≤3–4 screen (still gates the
 110.5-cell B2 remainder), S2 PHP retry, the 10-keytext hash-pinned refetch, B2 behind the screen.
 

@@ -5,8 +5,10 @@ _Refreshed **2026-11-11** (Round 44 closeout). Read this first, then [`ELIMINATI
 > ## Community update (2026-11-17) — T7 independently REPLICATED; page numbering fixed
 >
 > **njloof/cicada-lp2-sweeps campaign #10 replicated B3/T7** with its own nulls (p=0.0006) and localized it: not smooth
-> drift but a 1,649-rune doublet-free void (stream pos 2739–4388). R45's T7 lane should plant LOCAL voids and add a
-> void-length statistic (logged in the `R44-W2B3-D01-FALSIFIER` row notes). **Page numbering (#14):** segment index =
+> drift but a localized slip-rate change: three consecutive large doublet gaps (400/712/537 vs ~151 typical) spanning
+> stream pos 2739–4388, internal doublets at 2740/3140/3852 ("doublet-free void" was a mislabel, corrected per njloof
+> #13, 2026-11-19; read "replicated" as "reproduced": same 86 sites, independent nulls). R45's T7 lane should plant
+> LOCAL gap structure and add a gap-length statistic (logged in the `R44-W2B3-D01-FALSIFIER` row notes). **Page numbering (#14):** segment index =
 > book page − 1 from 50 on; book p50 has no runes; book p55 = seg 54 and is transcribed; "canon p55" = book p56 (AN END).
 > See `data/PAGE-NUMBERING.md`. Campaign VII hex marked superseded at idx 45/50/246. New: `CONTRIBUTING.md`,
 > `docs/OPEN-LANES.md`, `docs/CROSS-LEDGER.md`, issue templates — outside agents now have a claim/submit path.

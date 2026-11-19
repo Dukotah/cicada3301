@@ -5,6 +5,10 @@ panel-R36 adjudicator (`analysis/round19/I2/adjudicate.py`, 12 registers) +
 `bars_v3` free bar of record. 670,120 decodes in 10.0 s; plants 3/3 PASS. No `git` from
 this lane._
 
+> **Superseded in part 2026-11-19 (njloof, #14):** the "14/16 = 3301−prime" structure below is 16/16 as
+> |3301 − prime(F+1)| over Fibonacci F, read along a square spiral from the red 3299 (`closed_form_check.py`;
+> ledger `R45-COMM-P15GRID-CLOSEDFORM`). The sweep's negatives are unaffected.
+
 ## Verdict
 
 **NEGATIVE** (status: the keystream/transposition/generator grid), plus two **measured**
