@@ -14229,7 +14229,7 @@
     "liber-primus/analysis/round44/W2-C2-page-pairs/pair_results.json",
     "liber-primus/analysis/round44/W2-C2-page-pairs/plant_pair.json"
    ],
-   "sweep_store": "liber-primus/analysis/round44/W2-C2-page-pairs/pair_results.json",
+   "r3_store": "summary JSON only, not a SWEEPROW per-cell store; the summary was mislabelled as sweep_store (fixed 2026-11-20). This lane is not R3-compliant until re-run with SWEEPROW persistence.",
    "reproduce": "cd liber-primus/analysis/round44/W2-C2-page-pairs; python3 plant_run.py && python3 run_pairs.py",
    "lane_dir": "W2-C2-page-pairs",
    "notes": "Discharges the 'all-pairs page XOR' clause of R40-C1-R47-F01-LP2-AS-PAD not_covered. PREREG sha256 2d980e5da9adfd60754f523f3926eb29e96597dec94668d6790cecab285d5d5b hash-stamped in run.log before first execution (R44 X1 hygiene). Reopens if: a skip-tolerant instrument is applied to page-pair keys, a new register is added with measured power, or the full shift layer is argued above flat prior."
@@ -14259,7 +14259,7 @@
     "liber-primus/analysis/round44/W2-C2-page-pairs/canon_results.json",
     "liber-primus/analysis/round44/W2-C2-page-pairs/plant_canon.json"
    ],
-   "sweep_store": "liber-primus/analysis/round44/W2-C2-page-pairs/canon_results.json",
+   "r3_store": "summary JSON only, not a SWEEPROW per-cell store; the summary was mislabelled as sweep_store (fixed 2026-11-20). This lane is not R3-compliant until re-run with SWEEPROW persistence.",
    "reproduce": "cd liber-primus/analysis/round44/W2-C2-page-pairs; python3 plant_run.py && python3 run_canon.py",
    "lane_dir": "W2-C2-page-pairs",
    "notes": "Discharges the 'canon-as-key' clause of R40-C1-R47-F01-LP2-AS-PAD not_covered. PREREG sha256 2d980e5da9adfd60754f523f3926eb29e96597dec94668d6790cecab285d5d5b hash-stamped before first execution. Reopens if: reversed/atbash canon lane or full shift layer argued above flat prior; skip-tolerant instrument applied to canon-as-key."
