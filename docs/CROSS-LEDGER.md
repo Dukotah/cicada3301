@@ -8,6 +8,11 @@ instead of rediscovered.
 |---|---|---|---|
 | **Dukotah/cicada3301** | [`liber-primus/LEDGER.json`](../liber-primus/LEDGER.json) | one row per lane/cell, `id` like `R44-W2B3-D01-FALSIFIER` | 350 |
 | **njloof/cicada-lp2-sweeps** | [`docs/LEDGER.md`](https://github.com/njloof/cicada-lp2-sweeps/blob/main/docs/LEDGER.md) | one row per campaign `#N`, with per-family verdicts | 17 campaigns |
+| **RiskAverseTech/cicada-ioc** | [`README.md`](https://github.com/RiskAverseTech/cicada-ioc) (numbered §§), [`results/`](https://github.com/RiskAverseTech/cicada-ioc/tree/main/results) | one numbered section per study | paused 2026-11-01 |
+| **micheloosterhof/aldegonde** | [`hypotheses/`](https://github.com/micheloosterhof/aldegonde/tree/master/hypotheses) ([`INDEX.md`](https://github.com/micheloosterhof/aldegonde/blob/master/hypotheses/INDEX.md)) | one file per hypothesis, from `TEMPLATE.md` | active 2026-11 |
+
+Individual contributors whose corrections landed here: **RETSAM3301** (page numbering and the seg 8 / seg 40
+separators, #12), **njloof** (#13, #14), **mariostabile1** (#11).
 
 Want your ledger listed? Open an issue or PR. The bar is the five rules in
 [`CONTRIBUTING.md`](../CONTRIBUTING.md).
@@ -28,6 +33,8 @@ were run before the relabel; their ids 50–54 are book pages 51–55.
 | Payload byte idx 246 = `0xc6` (`3I`) | here, R19 C1 (image) → promoted R34 | njloof #14 (pixel measurement + human read) | agreed. Campaign VII doc now marked superseded at 45/50/246 |
 | Payload bytes idx 165 = `0x12`, 172 = `0x94` | here, Campaign VII | njloof #14 (pixels) | agreed |
 | Separator corrections seg 8 / seg 40 | RETSAM3301, #12 | here, R33 B2 (`9b36692`) | landed |
+| **Independent blind re-read of the unsolved pages** | RiskAverseTech/cicada-ioc §38 (machine read of the page images, no access to the transcription) | agrees with the canonical transcription at 12,807/12,807 aligned glyphs (98.8 % of 12,956 positions) | cited 2026-11-20 in `TRANSCRIPTION-VERDICT.md` (supersedes its "no independent read exists") |
+| pp49–51 stale tokens in rtkd/iddqd master (`1L 0L 0l 2s 3i`) | tz18 (rtkd PR #8), Inky (PR #7); still open upstream | merged in cicada-solvers/iddqd 2024-10-12; matches our `canon_256.hex`; `fetch_sources.py` now pins the PR #8 head | open upstream, reviewed 2026-11-20 |
 | p15 4×4 grid: 14/16 = 3301−prime | here, R44 P2 (`R44-P2-P15GRID-TRANSCRIPTION`) | njloof #14 (2026-11-19): **16/16 cells = \|3301 − prime(F+1)\|, F Fibonacci 0–987 along a square spiral from the red 3299**; the two R44 "breakers" are sign flips | **adopted** 2026-11-19 as `R45-COMM-P15GRID-CLOSEDFORM`; reproduced by `closed_form_check.py` |
 | T7 span "doublet-free void" | njloof #10, copied here at `6b94529` | njloof #13 (2026-11-19, their LEDGER C1) | corrected: internal doublets at 2740/3140/3852; three large gaps 400/712/537 |
 | English-only-negative failure mode | here, R18 L7-A | njloof adopted language-agnostic χ² as design rule | shared method |

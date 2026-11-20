@@ -35,8 +35,13 @@ independently-"double-checked" copy converges *exactly* on the rtkd baseline.
 
 ## Finding 3 — the baseline is image-audited + spot-verified
 - The rtkd transcription was **error-corrected against the page images** by
-  multiple contributors over 2017–2021 (Lurker69, Inky, tz18/7he5haman PRs),
-  i.e. it is a community-audited read, not one unchecked pass.
+  multiple contributors over 2017–2023 (Lurker69, Inky, tz18/7he5haman),
+  i.e. it is a community-audited read, not one unchecked pass. *Correction
+  (2026-11-20):* the Inky and tz18 fixes were **never merged into rtkd/iddqd**;
+  they are still open there as PRs #7 and #8. Only the `cicada-solvers/iddqd`
+  fork merged them (2024-10-12). PR #8 changes five pp49–51 base-60 tokens and
+  no runes, so the rune verdict below stands; our fetch now pins the PR #8 head
+  (`data/fetch_sources.py`) so it doesn't pick up the stale tokens.
 - **Independent by-eye spot-check** (this work): high-zoom crops of the authentic
   images on a sample — p0 L1, p20 L6, p44 L5 — match canonical with no
   discrepancy (`linecrop.py`). Adds to the earlier vision-avenue p0 check.
@@ -50,7 +55,13 @@ the authentic originals, and functionally correct on every solved page. **No
 transcription error was found.**
 
 Honest limit: this is consensus + audit + sampling, not a full from-scratch
-independent re-transcription (none exists; vision can't deliver one). A
+independent re-transcription by this repo. *Update (2026-11-20):* an
+independent one now exists. `RiskAverseTech/cicada-ioc` §38 re-read the
+unsolved page images blind (no access to the transcription) and disagrees with
+it at **0 of 12,807 aligned glyphs** (98.8 % of 12,956 positions), see
+https://github.com/RiskAverseTech/cicada-ioc (README §38,
+`results/reread_echoes.md`). The original wording here ("none exists") was
+true on 2026-06-20 and is superseded. A
 systematic error common to the single 2017 root cannot be excluded with
 certainty — but it would have to have survived years of image-based PR
 corrections AND produce the correct decryptions on the solved pages, which is

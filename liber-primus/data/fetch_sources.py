@@ -15,7 +15,12 @@ import urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, "sources")
 
-RTKD_URL = ("https://raw.githubusercontent.com/rtkd/iddqd/master/"
+# Pinned to the head of rtkd/iddqd PR #8 (tz18), not rtkd master: master still carries five stale pp49-51
+# base-60 tokens (1L 0L 0l 2s 3i at payload bytes 45/50/165/172/246; canon = 1l 0l 0I 2S 3I, see
+# analysis/pp49_51/canon_256.hex). PR #8 is still open upstream (merged only in cicada-solvers/iddqd,
+# 2024-10-12); its head differs from master by exactly those five tokens and 0 runes.
+RTKD_PIN = "8ae822e689ed376daceea983412c29c5247d31a7"
+RTKD_URL = (f"https://raw.githubusercontent.com/rtkd/iddqd/{RTKD_PIN}/"
             "liber-primus__transcription--master/liber-primus__transcription--master.txt")
 RELIKD_BASE = "https://raw.githubusercontent.com/relikd/LiberPrayground/master/pages/"
 RELIKD_CHUNKS = ["p0-2", "p3-7", "p8-14", "p15-22", "p23-26", "p27-32",
