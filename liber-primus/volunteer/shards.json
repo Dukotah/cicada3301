@@ -1,0 +1,96 @@
+{
+ "kit_version": 1,
+ "about": "Volunteer shard table. Status: unclaimed -> claimed (issue opened) -> done (PR with results/<id>.json merged). 'test' shards are smoke tests and never count as coverage.",
+ "lanes": {
+  "S2": {
+   "title": "Round 27 S2: Py2.7 MT19937 init_by_array([w]) -> random29 -> keyskip1 'exact' relation (max_skip 3), offset 0, sign -1, beam 64, 12-register panel-R36 pmax at L=120",
+   "status_doc": "liber-primus/handoff/PARKED-SWEEPS.md section 1 + 2026-11-09 banner",
+   "engine_dir": "analysis/round36/P1-panel-r36/engine_inputs_copy",
+   "engine_source_sha256": {
+    "grind27.c": "5add8ba8fdd430c8e514543f354d2b1066065a1940031e43e5d9f55cb6025dca",
+    "engine.dat": "2b2335420c8a419dfcb58a640cccadc45518bf4a342e8060b81432e69558efef",
+    "panel_lm.f32": "e46d4bb73d16adeb02262361325b2a6ff578ae436b1374a7725a0a240f7e9928",
+    "english_quadgrams.txt": "fb82963d1fc4a64b9fc6121f8ca88139fd5b15083dddc9a59f8b14bdb8fe4062",
+    "check_panel_gate.py": "1ff1204b8c0567153b550debebf5bed93e724170c7dacee36cd1311296018e74"
+   },
+   "reducer": "random29",
+   "relation": "exact",
+   "offset": 0,
+   "sign": -1,
+   "cand_bar": 5.0,
+   "claim_bar": 7.6341931878728095,
+   "space": [
+    0,
+    4294967296
+   ],
+   "candidate_rate": 0.0001135,
+   "candidate_rate_source": "38,576 candidates >= 5.0 in the 339,966,702 panel-R36 seeds of R36 + R38 w1 + R42 (round36/38/42 RESULTS); re-measured 2026-11-17: 230 in 2,000,000 seeds [3231257507, 3233257507). Used only for the verifier's missing-stretch check.",
+   "control": {
+    "source": "analysis/round38/S1-s2-windows/control_exact.json",
+    "cipher": "analysis/round38/S1-s2-windows/ctl_cipher_1234567891.json",
+    "seed": 1234567891,
+    "band": [
+     1234565843,
+     1234569939
+    ],
+    "expect_pmax": 19.81452418236752,
+    "expect_second": [
+     1234566462,
+     4.734968541121583
+    ]
+   },
+   "anchor": {
+    "source": "analysis/round36/S1-s2-window/RESULTS.md (resume test a2) and round38 top_rescored.json",
+    "seed": 35563892,
+    "pmax": 7.670723299260088,
+    "note": "the S1/S2 claim-bar crosser adjudicated NOISE-CROSSER in analysis/round27/ORACLE-35563892.md"
+   },
+   "prior": {
+    "covered_seeds": 2235695586,
+    "source": "analysis/round42/S1-s2-recovery/state_recovered/STATUS.json",
+    "sha256": "1aa529444548e3e1f3add420936ddfd40ee9b9fe4cb6d25b74c197a2e070c2ba",
+    "n_claim_bar_hits": 0,
+    "note": "prior work, not volunteer work. Mixed instrument: seeds below each worker's R36 resume cursor (44.14 % of 2^32) were judged by the Round 19 9-register panel; only ~7.9 pp by panel-R36 (analysis/round42/SYNTHESIS.md). Volunteer shards are all panel-R36."
+   }
+  }
+ },
+ "shards": [
+  {"id": "S2-001", "lane": "S2", "from": 371757563, "to": 429102616, "seeds": 57345053, "gap": "R27 worker 0 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-002", "lane": "S2", "from": 429102616, "to": 486447669, "seeds": 57345053, "gap": "R27 worker 0 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-003", "lane": "S2", "from": 486447669, "to": 543792722, "seeds": 57345053, "gap": "R27 worker 0 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-004", "lane": "S2", "from": 543792722, "to": 601137775, "seeds": 57345053, "gap": "R27 worker 0 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-005", "lane": "S2", "from": 601137775, "to": 658482828, "seeds": 57345053, "gap": "R27 worker 0 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-006", "lane": "S2", "from": 658482828, "to": 715827882, "seeds": 57345054, "gap": "R27 worker 0 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-007", "lane": "S2", "from": 1090732453, "to": 1147553004, "seeds": 56820551, "gap": "R27 worker 1 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-008", "lane": "S2", "from": 1147553004, "to": 1204373556, "seeds": 56820552, "gap": "R27 worker 1 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-009", "lane": "S2", "from": 1204373556, "to": 1261194108, "seeds": 56820552, "gap": "R27 worker 1 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-010", "lane": "S2", "from": 1261194108, "to": 1318014660, "seeds": 56820552, "gap": "R27 worker 1 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-011", "lane": "S2", "from": 1318014660, "to": 1374835212, "seeds": 56820552, "gap": "R27 worker 1 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-012", "lane": "S2", "from": 1374835212, "to": 1431655764, "seeds": 56820552, "gap": "R27 worker 1 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-013", "lane": "S2", "from": 1806229583, "to": 1863105260, "seeds": 56875677, "gap": "R27 worker 2 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-014", "lane": "S2", "from": 1863105260, "to": 1919980937, "seeds": 56875677, "gap": "R27 worker 2 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-015", "lane": "S2", "from": 1919980937, "to": 1976856614, "seeds": 56875677, "gap": "R27 worker 2 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-016", "lane": "S2", "from": 1976856614, "to": 2033732291, "seeds": 56875677, "gap": "R27 worker 2 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-017", "lane": "S2", "from": 2033732291, "to": 2090607968, "seeds": 56875677, "gap": "R27 worker 2 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-018", "lane": "S2", "from": 2090607968, "to": 2147483646, "seeds": 56875678, "gap": "R27 worker 2 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-019", "lane": "S2", "from": 2519684857, "to": 2576955968, "seeds": 57271111, "gap": "R27 worker 3 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-020", "lane": "S2", "from": 2576955968, "to": 2634227080, "seeds": 57271112, "gap": "R27 worker 3 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-021", "lane": "S2", "from": 2634227080, "to": 2691498192, "seeds": 57271112, "gap": "R27 worker 3 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-022", "lane": "S2", "from": 2691498192, "to": 2748769304, "seeds": 57271112, "gap": "R27 worker 3 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-023", "lane": "S2", "from": 2748769304, "to": 2806040416, "seeds": 57271112, "gap": "R27 worker 3 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-024", "lane": "S2", "from": 2806040416, "to": 2863311528, "seeds": 57271112, "gap": "R27 worker 3 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-025", "lane": "S2", "from": 3231257507, "to": 3289237824, "seeds": 57980317, "gap": "R27 worker 4 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-026", "lane": "S2", "from": 3289237824, "to": 3347218141, "seeds": 57980317, "gap": "R27 worker 4 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-027", "lane": "S2", "from": 3347218141, "to": 3405198458, "seeds": 57980317, "gap": "R27 worker 4 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-028", "lane": "S2", "from": 3405198458, "to": 3463178775, "seeds": 57980317, "gap": "R27 worker 4 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-029", "lane": "S2", "from": 3463178775, "to": 3521159092, "seeds": 57980317, "gap": "R27 worker 4 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-030", "lane": "S2", "from": 3521159092, "to": 3579139410, "seeds": 57980318, "gap": "R27 worker 4 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-031", "lane": "S2", "from": 3953451853, "to": 4010371093, "seeds": 56919240, "gap": "R27 worker 5 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-032", "lane": "S2", "from": 4010371093, "to": 4067290334, "seeds": 56919241, "gap": "R27 worker 5 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-033", "lane": "S2", "from": 4067290334, "to": 4124209574, "seeds": 56919240, "gap": "R27 worker 5 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-034", "lane": "S2", "from": 4124209574, "to": 4181128815, "seeds": 56919241, "gap": "R27 worker 5 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-035", "lane": "S2", "from": 4181128815, "to": 4238048055, "seeds": 56919240, "gap": "R27 worker 5 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "S2-036", "lane": "S2", "from": 4238048055, "to": 4294967296, "seeds": 56919241, "gap": "R27 worker 5 band", "status": "unclaimed", "claimant": null, "result": null},
+  {"id": "TEST-S2", "lane": "S2", "from": 35561844, "to": 35565940, "seeds": 4096, "gap": "TEST ONLY: already-covered band around anchor seed 35563892 (a known noise-crosser); never counted as coverage", "status": "test", "claimant": null, "result": null}
+ ]
+}

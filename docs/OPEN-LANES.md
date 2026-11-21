@@ -13,6 +13,12 @@ with a checker and a fixed finish line? See [`CHALLENGES.md`](../CHALLENGES.md).
 | **T7-void** | Characterize the localized slip-rate change: three consecutive large doublet gaps (400/712/537 runes vs ~151 typical) spanning stream pos 2739–4388, internal doublets at 2740/3140/3852 (not a doublet-free void; corrected per njloof #13, 2026-11-19). Plant local gap structure (spans that may contain internal doublets), add a gap-length statistic, check whether the span lines up with page or section boundaries, red ink, or lattices. | T7 is the only reproduced positive in either ledger. A localized gap-structure change points to sessions or a stateful generator, not gentle drift. | `liber-primus/analysis/round44/W2-B3-doublet-sites/`; njloof `sweeps/2026-11-t7-replication/` |
 | **T7-mechanism** | Which generator families can produce a localized slip-rate change? Simulate candidates (per-session filter, state reset, hand vs machine) and test which match the observed gap pattern. | Turns an anomaly into a constraint on the key generator. | `LEDGER.json` rows `D-01`, `R18-L2-A-LOCUS` |
 
+## Donate compute
+
+| lane | what to do | starting point |
+|---|---|---|
+| **S2 seed sweep** | Claim and run shards of the parked Py2.7-MT `exact` sweep (47.95 % of 2³² left, 36 shards, ~15 min each on 6 threads). Results are rechecked in CI. | [`liber-primus/volunteer/`](../liber-primus/volunteer/) |
+
 ## Tier 2 — instrument work
 
 | lane | what to do | why |

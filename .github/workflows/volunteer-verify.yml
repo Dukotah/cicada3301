@@ -1,0 +1,82 @@
+name: volunteer-verify
+
+# Spot-checks volunteer shard results (liber-primus/volunteer/). Separate from ci.yml on purpose.
+# The verifier, the shard table it trusts and the engine it compiles all come from the BASE
+# branch, so a PR cannot weaken the check that judges it. Only results/*.json and the PR's
+# shards.json (whose immutable fields are compared against base) come from the PR.
+# Manual run with full=true re-sweeps whole shards: a proof instead of a spot check.
+
+on:
+  pull_request:
+    paths:
+      - "liber-primus/volunteer/results/**"
+  workflow_dispatch:
+    inputs:
+      files:
+        description: "Result files, space-separated, repo-relative (liber-primus/volunteer/results/S2-001.json ...)"
+        required: true
+      full:
+        description: "Re-sweep each whole shard (about 20-45 min per shard)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - name: Checkout PR / selected ref
+        uses: actions/checkout@v4
+        with:
+          path: pr
+          fetch-depth: 0
+
+      - name: Checkout trusted kit (base branch)
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+
+      - name: List result files
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          INPUT_FILES: ${{ inputs.files }}
+        run: |
+          if [ "$EVENT" = "pull_request" ]; then
+            git -C pr diff --name-only --diff-filter=AM "$BASE_SHA"...HEAD -- 'liber-primus/volunteer/results/*.json' > files.txt
+          else
+            printf '%s\n' $INPUT_FILES > files.txt
+          fi
+          echo "Result files:"; cat files.txt
+
+      - name: Verify (gates first, then re-score seeds and windows)
+        env:
+          EVENT: ${{ github.event_name }}
+          FULL: ${{ inputs.full }}
+        run: |
+          KIT=base/liber-primus/volunteer
+          if [ "$EVENT" != "pull_request" ] || [ ! -f "$KIT/verify_shard.py" ]; then
+            [ "$EVENT" = "pull_request" ] && echo "::warning::base branch has no volunteer kit yet; using the PR's copy"
+            KIT=pr/liber-primus/volunteer
+          fi
+          args=()
+          while read -r f; do [ -n "$f" ] && args+=("pr/$f"); done < files.txt
+          if [ ${#args[@]} -eq 0 ]; then echo "no added/modified result files"; exit 0; fi
+          extra=()
+          [ "$EVENT" = "pull_request" ] && extra+=(--pr-shards pr/liber-primus/volunteer/shards.json)
+          [ "$FULL" = "true" ] && extra+=(--full)
+          python3 "$KIT/verify_shard.py" "${args[@]}" "${extra[@]}" --threads 2
+
+      - name: Coverage after this PR
+        if: always()
+        run: |
+          KIT=base/liber-primus/volunteer
+          [ -f "$KIT/coverage.py" ] || KIT=pr/liber-primus/volunteer
+          python3 "$KIT/coverage.py" --no-write \
+            --shards pr/liber-primus/volunteer/shards.json \
+            --results-dir pr/liber-primus/volunteer/results | tee -a "$GITHUB_STEP_SUMMARY"

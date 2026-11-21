@@ -1,0 +1,97 @@
+[
+ {
+  "id": "R44-W2B4-TREES-MIRROR-DIFF",
+  "lane": "round44/W2-B4-trees",
+  "hypothesis": "Held mirror copies of p32/p55 differ in the tree regions (a swapped or edited plate carrying a channel).",
+  "status": "negative",
+  "round": "44/W2-B4",
+  "date": "2026-11-09",
+  "threshold": "T1 (PREREG + addendum 1, fixed before any real pair scored): p99.9|dY| in tree bbox >= 8.0 AND >= 2x p99.9|dY| over smooth reference (outside bbox, >8px from any master edge)",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "PC1 plant through the same glue: +10Y 40x40 block in the p32 tree region, q85 re-encode -> T1 fired (10.0 vs smooth-ref 1.0); clean q85 round-trip did not (4.0 < 8). Original T1 reference population failed the plant and was revised in a dated, re-stamped addendum BEFORE any real pair was scored (runlog.txt).",
+  "result": {
+   "p32_byte_identity": "relikd == Hadyn ky2khlqdf7qdznac.onion/32.jpg == cijhho123 2014onion7/32.jpg == cijhho123 'liber primus images full'/49.jpg (sha256 c0f77818...)",
+   "p55_byte_identity": "relikd == cijhho123 2014onion7/55.jpg == 'images full'/72.jpg (sha256 a8019159...); Hadyn mirror has no p55 (0-54 only)",
+   "wiki_copies": "different bytes, pixel-identical (max |dY| = 0.0 both pages; metadata-level re-save)",
+   "numbering_trap": "cijhho 'liber primus images full' numbering is OFFSET: its 32.jpg/55.jpg are different pages; true counterparts found by hash search (49.jpg / 72.jpg)",
+   "T1_fired_real_pairs": 0,
+   "verdict": "zero pixel variance across every held copy of both pages - the cross-mirror channel is EMPTY"
+  },
+  "coverage": "all held copies: 5 of p32, 4 of p55 (data/relikd + corpus/A-primary-artifacts: Hadyn, cijhho123 x2 sets, wiki-uncovering-cicada); byte hash + full-page pixel diff with plant-validated localization test; onions_ibotpeaches checked (holds no LP page images)",
+  "not_covered": [
+   "mirror copies not held in this repo (no network in this cell)",
+   "the Hadyn mirror's absent p55",
+   "semantic redraws that decode to identical pixels (vacuous)"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round44/W2-B4-trees/results/mirror_diff.json",
+   "liber-primus/analysis/round44/W2-B4-trees/scripts/s1_mirror_diff.py",
+   "liber-primus/analysis/round44/W2-B4-trees/runlog.txt"
+  ],
+  "reopens_if": "a new mirror copy of p32/p55 with different decoded pixels surfaces"
+ },
+ {
+  "id": "R44-W2B4-TREES-P32-BLUR-DECONV",
+  "lane": "round44/W2-B4-trees",
+  "hypothesis": "The p32 tree blur conceals legible text/structure recoverable by LSI deconvolution; the blur kernel class identifies the renderer.",
+  "status": "partially-run",
+  "round": "44/W2-B4",
+  "date": "2026-11-09",
+  "threshold": "T2: blur class by parametric model comparison (addendum 2, fixed before real spectrum scored). T3: flag iff >= 5 novel stroke-like components (area 30-3000, elongation 2-20, <30% overlap with dilated original dark mask) while both hallucination controls < 1; any emergent text readout -> adjudicate.py vs bar_v3(N_actual, L, 'free')",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "S2 (PC2) model-comparison classifier recovered all three blur plants exactly. S3 (2026-11-11 resume note): PC3a/PC3b power plants BOTH BELOW the 0.5 edge-energy recovery bar (0.326 / 0.402) at sigma~26 -> deconvolver underpowered to resolve text at the real tree's blur scale; S3 negative is power-conditioned. Hallucination controls: sharp-rune max_novel 566, blank-paper 8; real tree 8 (at the blank floor, far below sharp) -> T3 NOT fired (controls not <1-clean AND no novel structure). PC2 and the S3 power plants run through the same glue.",
+  "result": {
+   "s2_blur_class": "GAUSSIAN-like, isotropic, sigma~=26 px (SSE 2.63 vs motion 2.93 vs disk 3.15 under P = A f^-alpha |H|^2 + floor); no motion streak, no defocus rings -> deliberate content-blur over line art, not camera/process blur",
+   "s3_deconv": "2026-11-11 resume: grid 62 PSFs (gauss sigma 2-30, disk r 2-30, motion L{5,10,20,40}x8 angles) x {Wiener, RL-30} = 124 outputs/target over real tree + sharp-rune + blank-paper controls; deconvolution returns only a sharper bare-branch tree silhouette, zero glyph/letterform/sub-tree structure; max-novel example (motion40/22.5 Wiener) = tree outline + ringing fragments",
+   "s3_T3_fired": false,
+   "s3_power_conditioned": "PC3a/PC3b known-text restore recovery 0.326/0.402 < 0.5 bar at sigma~26; the LSI deconvolvers cannot restore legible runes at this blur scale, so the negative is explicitly power-conditioned",
+   "n_adjudicated": 0,
+   "verdict": "negative (power-conditioned): no legible structure emerges from the p32 blurred tree under full-grid LSI deconvolution; adjudicate.py/bar_v3 leg never triggered (no >=30-rune readout)"
+  },
+  "coverage": "S2: blur-class model comparison over Gaussian sigma 1-30 / disk r 1-30 / motion L 3-40 x angles (LSI). S3 (2026-11-11): full PREREG PSF grid (62 kernels) x {Wiener K=0.01, RL-30} = 124 deconvolutions each over the real p32 tree and two hallucination controls (sharp-rune + blank-paper); power-conditioned by PC3 (edge-energy recovery 0.33-0.40 < 0.5 at sigma~26). LSI (Wiener/RL) deconvolution only.",
+  "not_covered": [
+   "spatially varying / nonlinear blur (LSI Wiener + RL-30 only)",
+   "PSFs outside the PREREG grid (Gaussian sigma 2-30, disk r 2-30, motion L 5-40 x 8 angles)",
+   "stego channels (LSB/append/carve) - measured elsewhere (R8, R29-L1, R30-A1/A2), deliberately not re-run"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round44/W2-B4-trees/results/blur_freq.json",
+   "liber-primus/analysis/round44/W2-B4-trees/results/deconv.json",
+   "liber-primus/analysis/round44/W2-B4-trees/crops/"
+  ],
+  "reopens_if": "a validated spatially-varying deconvolution instrument is brought, or a sharper copy of the p32 art asset surfaces"
+ },
+ {
+  "id": "R44-W2B4-TREES-P55-GHOST-ALPHA",
+  "lane": "round44/W2-B4-trees",
+  "hypothesis": "The p55 grey 'ghost tree' encodes information beyond a flat grey rendering (chroma channel, modulated alpha, or content inside the fill).",
+  "status": "open",
+  "round": "44/W2-B4",
+  "date": "2026-11-09",
+  "threshold": "T4 (fixed in PREREG): mean chroma > 2.0 OR interior residual RMS > 3x black-ink control OR spectral peak ratio > 10",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "PC4 through the same glue: flat alpha=0.18 composite recovered at 0.1803, residual 1.04 below the 6.95 bar; planted 16px alpha modulation detected loudly (RMS 20.5, peak 1410).",
+  "result": {
+   "T4_fired": true,
+   "which_legs": "RMS 16.79 > 6.95 AND spectral peak 65 > 10; chroma leg clean (0.000, pure greyscale)",
+   "characterization": "null-model artifact: the ghost is a TWO-TONE outline drawing (outline Y~192 / alpha 0.247, fill Y~236-244 / alpha 0.059); fill interior RMS 3.06 = 1.3x black control (internally flat); bimodal histogram + AA ramp inflated the single-alpha residual; all spectral peaks at period >= 86 px (macro drawing structure, unlike the plant's sharp 16px peak); no content inside the fill band",
+   "oracle_bundle": "liber-primus/analysis/round44/W2-B4-trees/ORACLE-T4-p55-ghost/ORACLE-PENDING.md"
+  },
+  "coverage": "single-alpha compositing model + chroma + spectral-modulation recognizer (plant-validated) over the ghost interior (erode 3, 159k px) vs 170k-px black-ink control; two-tone decomposition; fill-band visual sweep",
+  "not_covered": [
+   "models beyond flat/two-tone alpha compositing (e.g., halftone microstructure below JPEG resolution)",
+   "art-historical identity of the asset (R30-C1 not_covered stands)",
+   "the side observation that p32/p55 trees are different assets (IoU 0.38) is characterization, not an exclusion"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round44/W2-B4-trees/results/p55_ghost.json",
+   "liber-primus/analysis/round44/W2-B4-trees/ORACLE-T4-p55-ghost/ORACLE-PENDING.md",
+   "liber-primus/analysis/round44/W2-B4-trees/crops/p55_ghost_fillband_236_250.png"
+  ],
+  "reopens_if": "the oracle overrules the two-tone characterization, or a non-JPEG source of p55 surfaces enabling sub-quantization level analysis",
+  "notes": "X1 patch 2026-11-09: FLAGGED-FOR-ORACLE per HUMAN-ORACLE.md (bundle ORACLE-T4-p55-ghost/ORACLE-PENDING.md); status stays open until the human oracle rules."
+ }
+]

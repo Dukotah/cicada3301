@@ -10,6 +10,10 @@ The rig's trust anchor is simple: `python tests/validate.py` **reproduces every 
 solved page** from the canonical runes. Everything ruled out below was ruled out by code
 that first proves it can find the answers we already know.
 
+> **Where it stands, 2026-11-17.** Still unsolved (OTP-class: a true external pad and a keystream derived from a short seed are not yet distinguished). The one live anomaly, T7 (the residual doublet rate is not stationary across the book), has now been **independently replicated** by [njloof/cicada-lp2-sweeps](https://github.com/njloof/cicada-lp2-sweeps) (p=0.0006) and localizes to a 1,649-rune doublet-free span. Measured, not a solve. Page numbering note: segments 0-54 are book pages 0-49 and 51-55 ([why](liber-primus/data/PAGE-NUMBERING.md)).
+>
+> **Want to help?** [`CONTRIBUTING.md`](CONTRIBUTING.md) (five rules) · [`docs/OPEN-LANES.md`](docs/OPEN-LANES.md) (unclaimed work) · [`docs/CROSS-LEDGER.md`](docs/CROSS-LEDGER.md) (what the other public ledger already closed) · [`liber-primus/volunteer/`](liber-primus/volunteer/) (donate CPU: claim a seed-sweep shard) · [Discussions](https://github.com/Dukotah/cicada3301/discussions)
+
 ---
 
 ## 🤖 Arriving here as an AI model, or a solver with better tools than 2026 had?

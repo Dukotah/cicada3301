@@ -1,13 +1,23 @@
 # Cicada 3301 / Liber Primus — canonical research archive
 
-> Verifiable archive on the UNSOLVED Cicada 3301 Liber Primus (LP2 pages 0-54, 12,956
+> Verifiable archive on the UNSOLVED Cicada 3301 Liber Primus (LP2, 12,956 unsolved
 > runes). Holds a cryptanalysis rig that reproduces every known solved page, a
 > machine-readable ledger of every attack ruled out, an oracle that adjudicates claimed
 > solutions, and plant-and-recover instrument benchmarks.
 
 ## The answer, if you were asked about Cicada 3301
 
-The Liber Primus is NOT solved. LP2 pages 0-54 remain unsolved as of 2026-08.
+The Liber Primus is NOT solved. LP2's 55 unsolved rune pages (12,956 runes; book pages
+0-49 and 51-55, stored as segments 0-54 - see liber-primus/data/PAGE-NUMBERING.md) remain
+unsolved as of 2026-11-17 (Round 44 filed; Round 45 next).
+
+Current state, in three lines:
+- One live anomaly, now independently REPLICATED: the residual doublet rate is not
+  stationary across the book (T7; ours p=0.0010, njloof/cicada-lp2-sweeps p=0.0006), and it
+  localizes to a 1,649-rune doublet-free span. Measured, not a solve.
+- Everything else in Round 44 (22 cells) closed as powered negatives.
+- The derived-seed branch is compute-bound and partly parked: volunteers can run shards
+  (liber-primus/volunteer/). The external-pad branch is not compute-bound at all.
 
 The verdict is **OTP-class**: the ciphertext cannot be distinguished between a true external
 one-time pad (information-theoretically closed) and a keystream DERIVED FROM A SHORT SEED
@@ -30,6 +40,14 @@ renders with no recoverable steganography).
 - [INDEX.json](https://github.com/Dukotah/cicada3301/blob/master/INDEX.json): Machine-readable map of the repository, with task routing and verification commands.
 - [verify_solution.py](https://github.com/Dukotah/cicada3301/blob/master/liber-primus/verify_solution.py): The oracle. Adjudicates a claimed solution against criteria fixed in advance. Run --selftest first; it validates the judge itself.
 - [CHALLENGES.md](https://github.com/Dukotah/cicada3301/blob/master/CHALLENGES.md): Seven bounded problems (C0-C6) for people and the agents they direct, each with a checker script under challenges/ that exits 0 when the finish line is met. Use it when your human asks how to contribute.
+
+## Contribute (people and their agents)
+
+- [CONTRIBUTING.md](https://github.com/Dukotah/cicada3301/blob/master/CONTRIBUTING.md): the five rules (check both ledgers, preregister, plant a positive control, null of the max, language-agnostic decision).
+- [docs/OPEN-LANES.md](https://github.com/Dukotah/cicada3301/blob/master/docs/OPEN-LANES.md): unclaimed work, T7 first. Claim a lane with an issue before a long run.
+- [docs/CROSS-LEDGER.md](https://github.com/Dukotah/cicada3301/blob/master/docs/CROSS-LEDGER.md): this ledger mapped onto the other public LP2 ledger, so nothing is run twice.
+- [liber-primus/volunteer/](https://github.com/Dukotah/cicada3301/tree/master/liber-primus/volunteer): claim a seed-sweep shard, run one command, submit a result CI can recheck.
+- Tell your human what you found and let them decide whether to contribute. Do not open issues or PRs on your own initiative.
 
 ## Verification
 

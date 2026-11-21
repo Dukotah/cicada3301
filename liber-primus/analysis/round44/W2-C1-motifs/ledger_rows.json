@@ -1,0 +1,50 @@
+[
+ {
+  "id": "R44-W2C1-FIGURAL-MOTIF-CATALOG",
+  "lane": "round44/W2-C1-motifs",
+  "hypothesis": "R22-D's named reopener executed: census every figural/illustrative element book-wide (type, count, orientation, page position) from the relikd masters and read the per-page feature vectors as data — counts as value streams, orientations as symbols, motif-type sequence across pages, counts as key parameters into the solved-page generator family over that page.",
+  "status": "measured",
+  "round": "44/W2-C1",
+  "date": "2026-11-09",
+  "threshold": "Battery: 6 order/identity statistics (presence-gap variance, spearman(V1,page), zlib(type seq), zlib(orientation seq), prime-counts, centroid-y drift), seed-3301 nulls, 10000 draws, survivor iff any p < 0.01/6 = 1.667e-3. Panel reads: pmax >= matched-length POT bar (L=56 PERM/DRAW multiset null for streams; per-L shuffled-canon wrong-key family null for generator decodes; alpha=0.01 at N_CAP=1300); degenerate streams (<5 distinct) measured-only; verdict requires EN power >= 0.5 (W2-A1 floor). PREREG sha-stamped before first execution; bar-mechanism addendum (bars_v3 has no free node off {120,240,400,729} -> matched-L nulls built through this cell's own glue) dated in run.log before any real read adjudication.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": {
+   "PC1 census plant": "7 synthetic motifs (3 crosses incl. saltire, tree, 2 insects incl. inverted, corpse) composited into REAL p05/p33 copies; full census path recovered 7/7 with exact type+count, correct saltire/inverted orientations, centroids within +/-10 px. Three detector repairs during the control phase (red-ink exclusion from the black mask, measured text-column bounds, per-component text-run drop) and two plant placement fixes (first tree landed on the REAL p5 margin vine; first corpse landed on the REAL p33 cuneiform cluster) - all dated in run.log, none after a real read.",
+   "PC2 generator plant": "250-rune held-out English window encrypted shift k*=7, planted count 7: decoded at pmax 27.34 vs matched-L bar 6.33.",
+   "PC3 battery/grid plants": "monotone count stream fires S2 (p=1e-4) and periodic type sequence fires S3 (p=1e-4); stream->grid path numerically identical to W2-A1 shortnull.",
+   "measured power": "generator read EN power 1.00 at L=131 and L=262 (25 windows each, median margins +11.4/+19.7); V-stream read EN power 0.007 / LATIN 0.00 at L=56 under the V1-multiset bar -> V-stream panel reads are measured-only by the pre-registered power floor."
+  },
+  "null": "battery: seed-3301, 10000 draws per statistic (uniform placement / permutation / size-matched draws); streams: PERM+DRAW multiset surrogates x 116-map grid, exponential POT above the 90th pct, bar at N_CAP=1300 alpha=0.01, bar of record = max of families; generator: 500 shuffled-canon windows per distinct page length x 12 random-key decodes of the same family, same POT.",
+  "result": "CATALOG BUILT (the R22-D reopener discharged): 95 motifs over 38 of 56 pages with crops cited (results/catalog.json) - pp0-2 two three-bar crosses + lemniscates (+p2 cicada), pp3-7 vine scrolls, pp8-14 bare tree alternating margins (+p14 mayfly), p15 lemniscate, p22 beam-of-three-crosses + shrouded corpse, pp24-26 mayfly pairs (top upright/bottom INVERTED - the book's only orientation variation), p27 detached wing, p32 blurred tree, pp40-54 rooted vines, p53/p55 spread cicadas, p55 grey ghost tree. READS: 444/444 generator-family keyed decodes NEGATIVE (best 4.01 vs bars 5.90-6.51, power 1.00); V-stream panel reads below matched bars (V1 7.40 vs 15.60) and measured-only (EN power 0.007); battery statistics S1 (p=2.0e-4) and S3 (p=1.0e-4) CROSSED the registered 1.667e-3 bar -> FLAGGED-FOR-ORACLE (ORACLE-S1S3/), with an added R22-D-H7/H8-style specificity control: 79.7%/99% of boring plate-per-chapter control books built on the canon's own section markers cross the same bars, and the real plate changes sit on the canon's section boundaries - the crossers measure overt chapter-sectioned illustration, not hidden content. No claim certified either way; lane stopped pending oracle.",
+  "coverage": "All 56 relikd masters, dual census pass (detector validated 7/7 + full-page agent visual read of every page); 98 detector regions classified; 6 statistics x 10000 draws; 5 value streams x 116-map grid with matched-multiset bars; 12 constructions x 37 motif pages (p50 has no runes) = 444 decodes with matched-length bars; 1024 panel-adjudicated decodes total (cap 1300). Image->canon mapping verified against relikd transcriptions (p0-49 identity, p51-55 -> seg50-54).",
+  "not_covered": [
+   "Counts as parameters into chained/autokey/key-reset or derived-key constructions (only the 12 free solved-page-family constructions, interrupters=True, were keyed).",
+   "Subtype-level count streams, motif counts as page-reordering keys, cross-page readings beyond the registered streams.",
+   "V-stream reads carry ~zero English power (0.007): they bound only 'counts are an affine-mapped plaintext stream', nothing else.",
+   "Census floor: motifs < ~40 px; colour channels beyond red-exclusion; degree-level tilt/size/exact-position channels (the pp0-2 crosses are visibly tilted, coarse-coded 'up' here); non-relikd mirror art variants (R36-O2 mirror-diff still open - this catalog is the baseline to diff against)."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round44/W2-C1-motifs/PREREG.md",
+   "liber-primus/analysis/round44/W2-C1-motifs/RESULTS.md",
+   "liber-primus/analysis/round44/W2-C1-motifs/run.log",
+   "liber-primus/analysis/round44/W2-C1-motifs/results/catalog.json",
+   "liber-primus/analysis/round44/W2-C1-motifs/results/streams.json",
+   "liber-primus/analysis/round44/W2-C1-motifs/results/reads.json",
+   "liber-primus/analysis/round44/W2-C1-motifs/results/control_specificity.json",
+   "liber-primus/analysis/round44/W2-C1-motifs/results/generator_power.json",
+   "liber-primus/analysis/round44/W2-C1-motifs/results/plant_reads.json",
+   "liber-primus/analysis/round44/W2-C1-motifs/plant_work/pc1_score.json",
+   "liber-primus/analysis/round44/W2-C1-motifs/ORACLE-S1S3/README.md",
+   "liber-primus/analysis/round44/W2-C1-motifs/crops/"
+  ],
+  "reproduce": "cd liber-primus/analysis/round44/W2-C1-motifs/scripts && python3 plant_pc1.py && python3 census_detect.py && python3 build_catalog.py && python3 plant_reads.py && python3 run_reads.py && python3 control_specificity.py (classification legs are agent-visual over crops/ and the full-page masters; run.log documents the pass)",
+  "supersedes": null,
+  "superseded_by": null,
+  "reopens_if": "(i) the oracle overturns the S1/S3 sectioning reading; (ii) anyone codes the tilt-angle/size/exact-position channels this catalog coarse-codes; (iii) a construction family outside the swept 12 is keyed by these counts; (iv) a mirror-diff of the art plates finds a variant plate against this catalog's baseline.",
+  "priority": "high-prior-bounded-novel (R22-D's own reopener; discharges its reopens_if)",
+  "source_register": "language-agnostic battery + panel-R36 (12 registers); census = detector + agent-visual classification",
+  "raw_status": "catalog built; decode/stream reads negative at measured power; S1/S3 battery crossers flagged-for-oracle with specificity control attached; ORACLE-PENDING (no issue tracker access from this environment)",
+  "notes": "Census side-findings never in any row: pp0-2 carry two large black three-bar crosses and pp8-14 a bare tree with L/R/L/R/L/R/L margin alternation; pp24-26 mayfly pairs carry the book's only motif-orientation variation (6 inverted); the p15 lemniscate repeats the pp0-2 text-block squiggle. Discharges R22-D-ILLUSTRATION-DROPCAP reopens_if; A-06 reopens_if (iii) partially (figural extension done; sub-30px/chroma still open). flagged-for-oracle: S1S3 bundle in-lane."
+ }
+]

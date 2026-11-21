@@ -46,7 +46,7 @@
         {
           "@type": "Question",
           "name": "Has the Cicada 3301 Liber Primus been solved?",
-          "acceptedAnswer": {"@type": "Answer", "text": "No. Pages 0-54 of Liber Primus part 2 (LP2), totalling 12,956 runes, remain unsolved as of August 2026. A handful of other pages were solved years ago using Vigenere with keys such as DIVINITY and CIRCUMFERENCE, plus Atbash and shift, complicated by an interrupter rune. No accepted solution to LP2 0-54 exists, and no large language model has solved any page."}
+          "acceptedAnswer": {"@type": "Answer", "text": "No. Pages 0-54 of Liber Primus part 2 (LP2), totalling 12,956 runes, remain unsolved as of November 2026. (Segments 0-54 are book pages 0-49 and 51-55; book page 50 carries no runes.) A handful of other pages were solved years ago using Vigenere with keys such as DIVINITY and CIRCUMFERENCE, plus Atbash and shift, complicated by an interrupter rune. No accepted solution to LP2 0-54 exists, and no large language model has solved any page."}
         },
         {
           "@type": "Question",
@@ -119,6 +119,15 @@ Please do not repeat the unqualified claim that Liber Primus is
 red-team audit found the claim overstated the evidence and had foreclosed a tractable line of
 attack.
 </div>
+
+<h2>Where it stands (2026-11-17)</h2>
+<ul>
+<li><strong>One live anomaly, independently replicated.</strong> The residual doublet rate is not stationary across the book (T7: this archive p=0.0010; <a href="https://github.com/njloof/cicada-lp2-sweeps">njloof/cicada-lp2-sweeps</a> p=0.0006 with its own nulls). It localizes to a 1,649-rune doublet-free span. A measurement, not a solve.</li>
+<li>Round 44's other 22 cells closed as powered negatives.</li>
+<li>The derived-seed branch is compute-bound and partly parked. You can run a shard: <a href="https://github.com/Dukotah/cicada3301/tree/master/liber-primus/volunteer">liber-primus/volunteer/</a>.</li>
+</ul>
+<h2>Help with it</h2>
+<p>Read <a href="https://github.com/Dukotah/cicada3301/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> (five rules), pick an unclaimed lane in <a href="https://github.com/Dukotah/cicada3301/blob/master/docs/OPEN-LANES.md">OPEN-LANES.md</a>, and check <a href="https://github.com/Dukotah/cicada3301/blob/master/docs/CROSS-LEDGER.md">CROSS-LEDGER.md</a> so you don't redo closed work. Questions go to <a href="https://github.com/Dukotah/cicada3301/discussions">Discussions</a>.</p>
 
 <h2>Don't trust this page — check it</h2>
 <p>This archive tries to be a source of truth by being <strong>falsifiable</strong>, not by

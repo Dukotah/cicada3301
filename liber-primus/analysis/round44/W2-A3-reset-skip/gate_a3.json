@@ -1,0 +1,111 @@
+{
+ "n_cells": 192780,
+ "bars": {
+  "120": 15.6736,
+  "240": 21.101
+ },
+ "controls": [
+  {
+   "name": "PA",
+   "cell": {
+    "key": "G-bash-3301",
+    "mode": "page",
+    "offset": 11,
+    "cfg": "beau_atb",
+    "keyskip": true,
+    "supp": 0.83,
+    "seed": 761
+   },
+   "bind_tid": "PA_1",
+   "recovery": 1.0,
+   "planted_pmax": 26.564,
+   "planted_degenerate": false,
+   "planted_is_grid_max": true,
+   "grid_max": {
+    "pmax": 26.56394166995644,
+    "mode": "page",
+    "key": "G-bash-3301",
+    "offset": 11,
+    "cfg": "beau_atb"
+   },
+   "bar": 15.6736,
+   "differential": "rigid (no reset) beam on the post-reset page",
+   "differential_recovery": 0.075,
+   "passed": true
+  },
+  {
+   "name": "PL",
+   "cell": {
+    "key": "P-totient",
+    "mode": "line",
+    "offset": 5,
+    "cfg": "vigp",
+    "keyskip": true,
+    "supp": 0.83,
+    "seed": 1033
+   },
+   "bind_tid": "PL_0",
+   "recovery": 1.0,
+   "planted_pmax": 26.367,
+   "planted_degenerate": false,
+   "planted_is_grid_max": true,
+   "grid_max": {
+    "pmax": 26.366980641336212,
+    "mode": "line",
+    "key": "P-totient",
+    "offset": 5,
+    "cfg": "vigp"
+   },
+   "bar": 15.6736,
+   "differential": "rigid (no line resets) beam",
+   "differential_recovery": 0.25,
+   "passed": true
+  },
+  {
+   "name": "PS",
+   "cell": {
+    "key": "G-bash-1325734783",
+    "mode": "section",
+    "offset": 3,
+    "cfg": "vigm",
+    "keyskip": true,
+    "supp": 0.83,
+    "seed": 29
+   },
+   "bind_tid": "PS_2",
+   "recovery": 1.0,
+   "planted_pmax": 26.966,
+   "planted_degenerate": false,
+   "planted_is_grid_max": true,
+   "grid_max": {
+    "pmax": 26.965665625460378,
+    "mode": "section",
+    "key": "G-bash-1325734783",
+    "offset": 2,
+    "cfg": "vigm"
+   },
+   "bar": 15.6736,
+   "differential": "R1-approx mid-section entry (zero-rejection assumption)",
+   "differential_recovery": 0.0333,
+   "passed": true
+  },
+  {
+   "name": "PD",
+   "cell": {
+    "key": "P-prime",
+    "mode": "section-depth-3400",
+    "offset": 0,
+    "cfg": "vigm",
+    "keyskip": true,
+    "supp": 0.83,
+    "seed": 58
+   },
+   "tail120_recovery": 1.0,
+   "full_recovery": 0.9976,
+   "passed": true
+  }
+ ],
+ "passed": true,
+ "verdict": "GATE-PASSED",
+ "elapsed_s": 190060.3
+}

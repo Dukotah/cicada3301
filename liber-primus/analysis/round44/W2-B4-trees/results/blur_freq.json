@@ -1,0 +1,107 @@
+{
+ "PC2": {
+  "gauss8": {
+   "label": "gaussian",
+   "per_class": {
+    "gaussian": {
+     "best_param": {
+      "sigma": 8
+     },
+     "sse": 2.9548
+    },
+    "disk": {
+     "best_param": {
+      "r": 5
+     },
+     "sse": 30.765
+    },
+    "motion": {
+     "best_param": {
+      "L": 14,
+      "theta": 90.0
+     },
+     "sse": 26.7464
+    }
+   },
+   "expected": "gaussian",
+   "correct": true
+  },
+  "disk8": {
+   "label": "disk",
+   "per_class": {
+    "gaussian": {
+     "best_param": {
+      "sigma": 1
+     },
+     "sse": 5.8876
+    },
+    "disk": {
+     "best_param": {
+      "r": 8
+     },
+     "sse": 2.9459
+    },
+    "motion": {
+     "best_param": {
+      "L": 3,
+      "theta": 75.0
+     },
+     "sse": 5.5328
+    }
+   },
+   "expected": "disk",
+   "correct": true
+  },
+  "motion20_30": {
+   "label": "motion",
+   "per_class": {
+    "gaussian": {
+     "best_param": {
+      "sigma": 1
+     },
+     "sse": 8.14
+    },
+    "disk": {
+     "best_param": {
+      "r": 1
+     },
+     "sse": 8.1091
+    },
+    "motion": {
+     "best_param": {
+      "L": 20,
+      "theta": 30.0
+     },
+     "sse": 2.9286
+    }
+   },
+   "expected": "motion",
+   "correct": true
+  }
+ },
+ "PC2_passed": true,
+ "real_p32_tree": {
+  "label": "gaussian",
+  "per_class": {
+   "gaussian": {
+    "best_param": {
+     "sigma": 26
+    },
+    "sse": 2.6345
+   },
+   "disk": {
+    "best_param": {
+     "r": 5
+    },
+    "sse": 3.1466
+   },
+   "motion": {
+    "best_param": {
+     "L": 40,
+     "theta": 90.0
+    },
+    "sse": 2.9252
+   }
+  }
+ }
+}

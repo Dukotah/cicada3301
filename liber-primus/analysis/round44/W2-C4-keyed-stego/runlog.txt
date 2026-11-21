@@ -1,0 +1,28 @@
+2026-11-09T23:44:17Z PREREG stamp BEFORE first scripted execution: 910e9f13964353925c355e4eabfdecdd2f85805dd668b19b4ec3e7fa2c7e57ab  PREREG.md
+identity OK: 56 sha1 matches; 57 segment rune-counts == dataset n_runes
+keys/page min 14 max 26 total 958
+sample p12 A1: CI | p33 D1: ['10765']
+{
+ "n": 10000,
+ "seed": 44,
+ "size_model": "log-uniform 16..85000 bytes",
+ "f1_fpr": 0.0001,
+ "f2_fpr": 0.0,
+ "f3_fpr": 0.0007,
+ "naive_fpr": 0.1823,
+ "f3_armed": true,
+ "prereg_rule": "F3 armed iff FPR < 0.5% on 10k random blobs; naive never flags"
+}
+PC1 (1033.jpg keyless, expect seed 102 len 1498, F1 armor): {'row': ['og', '1033', 'pc1', '<keyless>', 102, 1498, 1498, 6.0096, 1.0, 1, 1, 0, 0, 1], 'passed': True}
+PC2 (outguess keyed plant via page-12 keylist): {'planted_key': 'CI', 'flagged_keys': ['CI'], 'passed': True}
+PC3 (steghide keyed plant via page-33 keylist): {'planted_key': '10765', 'flagged_keys': ['10765'], 'passed': True}
+ALL CONTROLS PASSED: True
+  50/56 tasks 67s flags=0
+done 56 tasks in 70s, flags=0
+2026-11-09T23:48:00Z ARM-D done: 0 flags, 56 tasks/70s. ARM-G launch: projection ~4.5h <= 5h prereg cap -> full run.
+2026-11-09T23:50:03Z INSTRUMENT FIX pre-results: per-task wid%8 tmp naming had a cross-task clobber race (two concurrent tasks could share /dev/shm/c4_wN.bin; window between tool exit and payload read could eat a true hit). Fixed to per-PID tmp in work(); ALL rows from the racy runs (ARM-D tsv + started ARM-G tsv) DELETED; both arms re-run from zero. Controls (controls.py) were sequential single-process -> unaffected, controls.json kept.
+  50/56 tasks 78s flags=0
+done 56 tasks in 84s, flags=0
+1973 results/sweep_stats_derived.tsv
+2026-11-09T23:51:32Z ARM-G relaunch (race-free), projection ~4.7h <= 5h cap
+2026-11-10T00:42:19Z RESUME: ARM-G 23:51:32Z relaunch died ~1min in — armg_console.log shows resource_tracker leaked-semaphore warning = interpreter shutdown (backgrounded parent torn down at session end), NOT a code bug; 0-byte tsv = unflushed buffer. Deleted 0-byte tsv + stale /dev/shm/c4_w*. Re-run as FOREGROUND budgeted chunks, heartbeat to run.log (dead-man <=10min). Full ~4.7h intractable in-session -> prereg Q3 priority slice: first-K file-order keys_big.txt keys (file order IS priority order per R29-L1 provenance) x all 56 pages. sweep.py global mode gains key-slice args (task construction only; extraction/adjudication untouched, controls stand).

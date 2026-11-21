@@ -1,0 +1,212 @@
+{
+ "PC3": {
+  "PC3a_runes": {
+   "edge_energy_orig": 13830527,
+   "blurred": 1522826,
+   "restored": 5540960,
+   "recovery": 0.326,
+   "passed_050": false
+  },
+  "PC3b_runes3x": {
+   "edge_energy_orig": 11708900,
+   "blurred": 1633560,
+   "restored": 5685321,
+   "recovery": 0.402,
+   "passed_050": false
+  }
+ },
+ "PC3_passed_any_scale": false,
+ "grid_size": 62,
+ "control_sharp": {
+  "max_novel": 566,
+  "mean_novel": 96.556,
+  "n_outputs": 124,
+  "worst": [
+   {
+    "psf": "motion20_112.5",
+    "method": "wiener",
+    "novel": 566
+   },
+   {
+    "psf": "disk4",
+    "method": "rl30",
+    "novel": 501
+   },
+   {
+    "psf": "motion20_67.5",
+    "method": "wiener",
+    "novel": 490
+   },
+   {
+    "psf": "motion20_135",
+    "method": "wiener",
+    "novel": 418
+   },
+   {
+    "psf": "motion10_0",
+    "method": "rl30",
+    "novel": 399
+   }
+  ]
+ },
+ "control_blank": {
+  "max_novel": 8,
+  "mean_novel": 0.645,
+  "n_outputs": 124,
+  "worst": [
+   {
+    "psf": "gauss14",
+    "method": "rl30",
+    "novel": 8
+   },
+   {
+    "psf": "disk12",
+    "method": "rl30",
+    "novel": 8
+   },
+   {
+    "psf": "disk16",
+    "method": "rl30",
+    "novel": 8
+   },
+   {
+    "psf": "motion40_67.5",
+    "method": "rl30",
+    "novel": 6
+   },
+   {
+    "psf": "motion40_112.5",
+    "method": "rl30",
+    "novel": 6
+   }
+  ]
+ },
+ "real_tree": {
+  "max_novel": 8,
+  "mean_novel": 1.871,
+  "n_outputs": 124,
+  "worst": [
+   {
+    "psf": "motion40_22.5",
+    "method": "wiener",
+    "novel": 8
+   },
+   {
+    "psf": "motion40_67.5",
+    "method": "rl30",
+    "novel": 8
+   },
+   {
+    "psf": "motion40_45",
+    "method": "wiener",
+    "novel": 7
+   },
+   {
+    "psf": "motion40_67.5",
+    "method": "wiener",
+    "novel": 7
+   },
+   {
+    "psf": "motion40_112.5",
+    "method": "wiener",
+    "novel": 7
+   }
+  ],
+  "maxnovel_example": {
+   "psf": "motion40_22.5",
+   "method": "wiener",
+   "components": [
+    {
+     "area": 50,
+     "elong": 6.66,
+     "bbox": [
+      50,
+      54,
+      463,
+      484
+     ],
+     "overlap": 0.0
+    },
+    {
+     "area": 46,
+     "elong": 10.61,
+     "bbox": [
+      117,
+      120,
+      736,
+      761
+     ],
+     "overlap": 0.0
+    },
+    {
+     "area": 73,
+     "elong": 9.44,
+     "bbox": [
+      206,
+      209,
+      53,
+      84
+     ],
+     "overlap": 0.0
+    },
+    {
+     "area": 84,
+     "elong": 18.57,
+     "bbox": [
+      233,
+      277,
+      35,
+      38
+     ],
+     "overlap": 0.0
+    },
+    {
+     "area": 112,
+     "elong": 4.27,
+     "bbox": [
+      313,
+      320,
+      307,
+      339
+     ],
+     "overlap": 0.0
+    },
+    {
+     "area": 36,
+     "elong": 10.38,
+     "bbox": [
+      372,
+      389,
+      581,
+      582
+     ],
+     "overlap": 0.0
+    },
+    {
+     "area": 59,
+     "elong": 14.57,
+     "bbox": [
+      495,
+      498,
+      736,
+      774
+     ],
+     "overlap": 0.0
+    },
+    {
+     "area": 778,
+     "elong": 2.58,
+     "bbox": [
+      500,
+      528,
+      736,
+      802
+     ],
+     "overlap": 0.258
+    }
+   ]
+  }
+ },
+ "T3_controls_clean": false,
+ "T3_flag_for_oracle": false
+}

@@ -21,6 +21,9 @@ branches of the derived-key family. The honest summary of why they are parked is
 
 ---
 
+> **Update, 2026-11-17: §1 (S2) is now open to volunteers.** The remaining 47.95 % is cut into 36 claimable
+> shards with a gated runner and a CI verifier: `liber-primus/volunteer/`. Measured 62,000 seeds/s on 6 threads.
+
 > **Update, 2026-11-09 — read before trusting the three sections below.** All state-file paths
 > below were re-verified on disk and exist. But two claims are superseded by later rounds:
 >

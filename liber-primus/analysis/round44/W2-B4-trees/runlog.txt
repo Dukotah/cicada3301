@@ -1,0 +1,155 @@
+2026-11-09T22:07:25Z PREREG hash-stamp BEFORE first execution: 20d24e96181b494c424236ac81944eab8d1f81d4a78335d4877ae31a2068fe5e  PREREG.md
+--- input hashes ---
+c0f778187a8e9ddbfc667a65929ac567430a2e38278a2022377984ac084e5f72  /mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/p32.jpg
+a80191592add93a86ed3868f9e4e6ba3944ec20c9ffccc7d3e221b461344beba  /mnt/c/Users/dukot/projects/cicada3301/liber-primus/data/relikd/p55.jpg
+37ff0e87a030f2daeb20c9e7afbe5a876e5ed1f8931318526c7c72ecefe83c4e  /mnt/c/Users/dukot/projects/cicada3301/corpus/A-primary-artifacts/wiki-uncovering-cicada/images/32.jpg
+66c16ca48b7d86d76679cdc29faccbf951e1e7f62de1149bc8287f399927dd9a  /mnt/c/Users/dukot/projects/cicada3301/corpus/A-primary-artifacts/wiki-uncovering-cicada/images/55.jpg
+c0f778187a8e9ddbfc667a65929ac567430a2e38278a2022377984ac084e5f72  /mnt/c/Users/dukot/projects/cicada3301/corpus/A-primary-artifacts/Hadyn_cicada/2014/ky2khlqdf7qdznac.onion/32.jpg
+5543cfce96493b86eece3195b3f5ea6e779ff41551676600b0c2479fc18c0ec5  /mnt/c/Users/dukot/projects/cicada3301/corpus/A-primary-artifacts/cijhho123/2014/Liber Primus/liber primus images full/32.jpg
+aec1898f599f57265d6422f3082a481db94a27f62230affbadee595d05077f8c  /mnt/c/Users/dukot/projects/cicada3301/corpus/A-primary-artifacts/cijhho123/2014/Liber Primus/liber primus images full/55.jpg
+c0f778187a8e9ddbfc667a65929ac567430a2e38278a2022377984ac084e5f72  /mnt/c/Users/dukot/projects/cicada3301/corpus/A-primary-artifacts/cijhho123/2014/Liber Primus/A drop box of all unmodified files/2014onion7/32.jpg
+a80191592add93a86ed3868f9e4e6ba3944ec20c9ffccc7d3e221b461344beba  /mnt/c/Users/dukot/projects/cicada3301/corpus/A-primary-artifacts/cijhho123/2014/Liber Primus/A drop box of all unmodified files/2014onion7/55.jpg
+PC1 plant: {'p999_tree': 10.0, 'p999_rest': 11.0, 'max_tree': 15.0, 'max_rest': 26.0, 'T1_fired': False}
+PC1 clean baseline: {'p999_tree': 4.0, 'p999_rest': 11.0, 'max_tree': 7.0, 'max_rest': 26.0, 'T1_fired': False}
+Traceback (most recent call last):
+  File "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round44/W2-B4-trees/scripts/s1_mirror_diff.py", line 34, in <module>
+    assert pc1['T1_fired'], 'POSITIVE CONTROL PC1 FAILED - stop'
+           ~~~^^^^^^^^^^^^
+AssertionError: POSITIVE CONTROL PC1 FAILED - stop
+2026-11-09T22:09:53Z PC1 FAILED under original T1 (see above); PREREG addendum appended, re-stamp: e0dda126cfa6ae1a8c246b440bf7a42a6bb06609d6824359971fc3c610c4bd94  PREREG.md
+PC1 plant: {'p999_tree': 10.0, 'p999_smooth_ref': 9.0, 'p999_rest_all': 11.0, 'max_tree': 15.0, 'max_rest': 26.0, 'T1_fired': False}
+PC1 clean baseline: {'p999_tree': 4.0, 'p999_smooth_ref': 9.0, 'p999_rest_all': 11.0, 'max_tree': 7.0, 'max_rest': 26.0, 'T1_fired': False}
+Traceback (most recent call last):
+  File "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round44/W2-B4-trees/scripts/s1_mirror_diff.py", line 34, in <module>
+    assert pc1['T1_fired'], 'POSITIVE CONTROL PC1 FAILED - stop'
+           ~~~^^^^^^^^^^^^
+AssertionError: POSITIVE CONTROL PC1 FAILED - stop
+2026-11-09T22:10:38Z T1 smooth-ref refined (edge dilation 8), re-stamp: 8f8e90fe382323323b2d70d56c383e0a292855d5b90deefadf9f8b5b2ad17ef5  PREREG.md
+PC1 plant: {'p999_tree': 10.0, 'p999_smooth_ref': 1.0, 'p999_rest_all': 11.0, 'max_tree': 15.0, 'max_rest': 26.0, 'T1_fired': True}
+PC1 clean baseline: {'p999_tree': 4.0, 'p999_smooth_ref': 1.0, 'p999_rest_all': 11.0, 'max_tree': 7.0, 'max_rest': 26.0, 'T1_fired': False}
+p32_relikd vs p32_wiki: {'p999_tree': 0.0, 'p999_smooth_ref': 0.0, 'p999_rest_all': 0.0, 'max_tree': 0.0, 'max_rest': 0.0, 'T1_fired': False, 'argmax_diff_yx': [0, 0], 'mean_abs_diff': 0.0}
+p32_relikd vs p32_cijhho_full: {'p999_tree': 255.0, 'p999_smooth_ref': 255.0, 'p999_rest_all': 255.0, 'max_tree': 255.0, 'max_rest': 255.0, 'T1_fired': False, 'argmax_diff_yx': [673, 653], 'mean_abs_diff': 21.1666}
+p32_wiki vs p32_cijhho_full: {'p999_tree': 255.0, 'p999_smooth_ref': 255.0, 'p999_rest_all': 255.0, 'max_tree': 255.0, 'max_rest': 255.0, 'T1_fired': False, 'argmax_diff_yx': [673, 653], 'mean_abs_diff': 21.1666}
+p55_relikd vs p55_wiki: {'p999_tree': 0.0, 'p999_smooth_ref': 0.0, 'p999_rest_all': 0.0, 'max_tree': 0.0, 'max_rest': 0.0, 'T1_fired': False, 'argmax_diff_yx': [0, 0], 'mean_abs_diff': 0.0}
+p55_relikd vs p55_cijhho_full: {'p999_tree': 255.0, 'p999_smooth_ref': 255.0, 'p999_rest_all': 255.0, 'max_tree': 255.0, 'max_rest': 255.0, 'T1_fired': False, 'argmax_diff_yx': [157, 1386], 'mean_abs_diff': 26.8407}
+p55_wiki vs p55_cijhho_full: {'p999_tree': 255.0, 'p999_smooth_ref': 255.0, 'p999_rest_all': 255.0, 'max_tree': 255.0, 'max_rest': 255.0, 'T1_fired': False, 'argmax_diff_yx': [157, 1386], 'mean_abs_diff': 26.8407}
+T1 fired on any real pair: False
+PC1 plant: {'p999_tree': 10.0, 'p999_smooth_ref': 1.0, 'p999_rest_all': 11.0, 'max_tree': 15.0, 'max_rest': 26.0, 'T1_fired': True}
+PC1 clean baseline: {'p999_tree': 4.0, 'p999_smooth_ref': 1.0, 'p999_rest_all': 11.0, 'max_tree': 7.0, 'max_rest': 26.0, 'T1_fired': False}
+p32_relikd vs p32_wiki: {'p999_tree': 0.0, 'p999_smooth_ref': 0.0, 'p999_rest_all': 0.0, 'max_tree': 0.0, 'max_rest': 0.0, 'T1_fired': False, 'argmax_diff_yx': [0, 0], 'mean_abs_diff': 0.0}
+p55_relikd vs p55_wiki: {'p999_tree': 0.0, 'p999_smooth_ref': 0.0, 'p999_rest_all': 0.0, 'max_tree': 0.0, 'max_rest': 0.0, 'T1_fired': False, 'argmax_diff_yx': [0, 0], 'mean_abs_diff': 0.0}
+T1 fired on any real pair: False
+PC2 gauss8 {'label': 'motion', 'ring_minima': 0, 'anisotropy': 15.05, 'angular_nulls': 2, 'gauss_fit_R2': 0.9767, 'sigma_est_px': 0.0, 'expected': 'gaussian', 'correct': False}
+PC2 disk8 {'label': 'disk', 'ring_minima': 3, 'anisotropy': 5.11, 'angular_nulls': 0, 'gauss_fit_R2': 0.8904, 'sigma_est_px': 0.49, 'expected': 'disk', 'correct': True}
+PC2 motion20_30 {'label': 'gaussian', 'ring_minima': 0, 'anisotropy': 5.5, 'angular_nulls': 1, 'gauss_fit_R2': 0.9793, 'sigma_est_px': 0.0, 'expected': 'motion', 'correct': False}
+Traceback (most recent call last):
+  File "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round44/W2-B4-trees/scripts/s2_blur_freq.py", line 119, in <module>
+    assert ok, 'POSITIVE CONTROL PC2 FAILED - stop'
+           ^^
+AssertionError: POSITIVE CONTROL PC2 FAILED - stop
+2026-11-09T22:14:57Z PC2 FAILED under original T2; addendum 2 appended, re-stamp: d7203c3b0e254227c3ee51cc198c7cf422827c857e4e7c42c8681e59a62f7956  PREREG.md
+  [PC2 gauss8] -> gaussian {'gaussian': {'best_param': {'sigma': 8}, 'sse': 2.9548}, 'disk': {'best_param': {'r': 5}, 'sse': 30.765}, 'motion': {'best_param': {'L': 14, 'theta': 90.0}, 'sse': 26.7464}}
+  [PC2 disk8] -> disk {'gaussian': {'best_param': {'sigma': 1}, 'sse': 5.8876}, 'disk': {'best_param': {'r': 8}, 'sse': 2.9459}, 'motion': {'best_param': {'L': 3, 'theta': 90.0}, 'sse': 5.5328}}
+  [PC2 motion20_30] -> motion {'gaussian': {'best_param': {'sigma': 1}, 'sse': 8.14}, 'disk': {'best_param': {'r': 1}, 'sse': 8.1091}, 'motion': {'best_param': {'L': 3, 'theta': 45.0}, 'sse': 6.0097}}
+Traceback (most recent call last):
+  File "/mnt/c/Users/dukot/projects/cicada3301/liber-primus/analysis/round44/W2-B4-trees/scripts/s2_blur_freq.py", line 118, in <module>
+    assert ok, 'POSITIVE CONTROL PC2 FAILED - stop'
+           ^^
+AssertionError: POSITIVE CONTROL PC2 FAILED - stop
+   "best_param": {
+    "L": 40,
+    "theta": 90.0
+   },
+   "sse": 2.9252
+  }
+ }
+}
+PC2 passed: True
+gauss8 gaussian {'sigma': 8} correct: True
+disk8 disk {'r': 8} correct: True
+motion20_30 motion {'L': 20, 'theta': 30.0} correct: True
+REAL: {
+ "label": "gaussian",
+ "per_class": {
+  "gaussian": {
+   "best_param": {
+    "sigma": 26
+   },
+   "sse": 2.6345
+  },
+  "disk": {
+   "best_param": {
+    "r": 5
+   },
+   "sse": 3.1466
+  },
+  "motion": {
+   "best_param": {
+    "L": 40,
+    "theta": 90.0
+   },
+   "sse": 2.9252
+  }
+ }
+}
+PC4: {'alpha_true': 0.18, 'alpha_recovered': 0.1803, 'alpha_ok': True, 'rms_flat': 1.041, 'flat_below_bar': True, 'peak_flat': 7.1, 'rms_mod': 20.469, 'peak_mod': 1410.7, 'modulated_detected': True, 'bar_rms_3x_black': 6.954, 'passed': True}
+REAL: {
+ "ghost_interior": {
+  "n_px": 159326,
+  "meanY": 208.09,
+  "alpha": 0.184,
+  "rms": 16.788,
+  "p5": 191.0,
+  "p95": 240.0
+ },
+ "black_control_interior": {
+  "n_px": 170002,
+  "meanY": 1.24,
+  "alpha": 0.9951,
+  "rms": 2.318,
+  "p5": 0.0,
+  "p95": 6.0
+ },
+ "mean_chroma_ghost": 0.0,
+ "mean_chroma_black_control": 0.002,
+ "rms_ratio_ghost_vs_black": 7.242,
+ "spectral_peak_ghost": 65.0,
+ "T4_fired": true
+}
+T4 fired: True
+peak at fy,fx = 0.00417 0.01083 |f| = 0.01161 period px = 86.2
+  peak 0 f= 0.01161 mag= 105625.0
+  peak 1 f= 0.01161 mag= 105625.0
+  peak 2 f= 0.01265 mag= 104760.4
+  peak 3 f= 0.01265 mag= 104760.4
+  peak 4 f= 0.00128 mag= 103941.2
+  peak 5 f= 0.00128 mag= 103941.2
+  peak 6 f= 0.01483 mag= 100306.0
+  peak 7 f= 0.01483 mag= 100306.0
+  peak 8 f= 0.04917 mag= 95059.1
+  peak 9 f= 0.04917 mag= 95059.1
+far-interior px 60344 rms 17.32 | near-edge px 98982 rms 16.44
+erode 6 px 104919 rms 12.34 meanY 201.8
+erode 10 px 48246 rms 13.52 meanY 204.6
+erode 16 px 12864 rms 14.89 meanY 207.0
+histogram modes (Y, count): [(190, 16109), (192, 20397), (194, 15801), (196, 12219), (236, 12434), (238, 9898), (242, 9368), (244, 10059)]
+counts 180-248 by 4: [(180, 0), (184, 258), (188, 18160), (192, 36198), (196, 20646), (200, 10791), (204, 9814), (208, 11177), (212, 10151), (216, 10306), (220, 12785), (224, 8992), (228, 9880), (232, 10386), (236, 22332), (240, 16451), (244, 17566)]
+fill px 8674 mean 240.42 rms 3.059
+outline px 143191 mean 205.03 rms 13.281
+p32-vs-p55 silhouette IoU (scale-normalized): 0.383
+with p55 mirrored: 0.319
+2026-11-10T00:41:26Z S3 RESUME (X1 WAVE2 deviation: S3 never ran). PREREG re-stamp before S3 execution: d7203c3b0e254227c3ee51cc198c7cf422827c857e4e7c42c8681e59a62f7956  PREREG.md
+2026-11-10T00:42:06Z S3 resume note: first launch at 00:41Z was a wrapper cwd mistake (python3 could not find the script; exit 2, nothing executed); relaunching with absolute paths. No instrument or threshold change.
+PC3a_runes {'edge_energy_orig': 13830527, 'blurred': 1522826, 'restored': 5540960, 'recovery': 0.326, 'passed_050': False}
+PC3b_runes3x {'edge_energy_orig': 11708900, 'blurred': 1633560, 'restored': 5685321, 'recovery': 0.402, 'passed_050': False}
+2026-11-10T00:52:45Z S3 heartbeat: still running (pid 133624)
+2026-11-10T01:02:46Z S3 heartbeat: still running (pid 133624)
+2026-11-12T05:24:18Z S3 heartbeat: still running (pid 133624)
+2026-11-12T05:34:18Z S3 heartbeat: still running (pid 133624)
+2026-11-12T05:44:19Z S3 heartbeat: still running (pid 133624)
+control_sharp 566 96.556
+control_blank 8 0.645
+real_tree 8 1.871
+T3 controls clean: False | T3 flag: False
+2026-11-12T06:04:12Z S3 DONE. deconv.json written (grid 62 PSFs x 2 deconvolvers = 124 outputs/target). PC3a/PC3b power plants BOTH BELOW 0.5 recovery (0.326/0.402) at sigma~26 -> instrument cannot restore legible runes at the real tree's blur scale (upper-bounds S3). Hallucination controls: sharp max_novel 566, blank max_novel 8 (control-not-clean under the <1 rule) -> T3_controls_clean=False; real_tree max_novel 8 (< sharp 566), no structure absent from controls -> T3 NOT fired, nothing flagged. Real deconvolution yields only a sharper bare-branch tree silhouette, zero glyph/letterform structure; N_adjudicated stays 0 (no >=30-rune readout). Verdict: measured / negative, power-conditioned (instrument underpowered to resolve text at sigma~26).
+2026-11-12T06:04:12Z CELL W2-B4 CLOSING STAMP. Final PREREG sha256: d7203c3b0e254227c3ee51cc198c7cf422827c857e4e7c42c8681e59a62f7956 (matches pre-run stamp d7203c3b...). All lanes complete: S1 mirror-diff negative; S2 blur char (gaussian sigma~26); S3 deconv negative/power-conditioned; S4 p55 T4 crossed -> flagged-for-oracle (bundle unchanged). No certification anywhere. runlog closed.
