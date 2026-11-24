@@ -9,6 +9,8 @@
 > Everything below remains true *as of Round 18*; where a later round overturned an item, the
 > live file and [`liber-primus/ELIMINATION-LEDGER.md`](liber-primus/ELIMINATION-LEDGER.md) name
 > the round that closed it.
+>
+> _2026-11-23:_ Round 45 is in progress. See [`liber-primus/analysis/round45/CAMPAIGN-PLAN.md`](liber-primus/analysis/round45/CAMPAIGN-PLAN.md).
 
 _Updated **2026-08-26** (frozen; see the banner above). Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
 

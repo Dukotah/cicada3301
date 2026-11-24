@@ -6,10 +6,11 @@ instead of rediscovered.
 
 | ledger | where | unit | rows (2026-11-17) |
 |---|---|---|---|
-| **Dukotah/cicada3301** | [`liber-primus/LEDGER.json`](../liber-primus/LEDGER.json) | one row per lane/cell, `id` like `R44-W2B3-D01-FALSIFIER` | 350 |
+| **Dukotah/cicada3301** | [`liber-primus/LEDGER.json`](../liber-primus/LEDGER.json) | one row per lane/cell, `id` like `R44-W2B3-D01-FALSIFIER` | 365 (2026-11-23) |
 | **njloof/cicada-lp2-sweeps** | [`docs/LEDGER.md`](https://github.com/njloof/cicada-lp2-sweeps/blob/main/docs/LEDGER.md) | one row per campaign `#N`, with per-family verdicts | 17 campaigns |
 | **RiskAverseTech/cicada-ioc** | [`README.md`](https://github.com/RiskAverseTech/cicada-ioc) (numbered §§), [`results/`](https://github.com/RiskAverseTech/cicada-ioc/tree/main/results) | one numbered section per study | paused 2026-11-01 |
 | **micheloosterhof/aldegonde** | [`hypotheses/`](https://github.com/micheloosterhof/aldegonde/tree/master/hypotheses) ([`INDEX.md`](https://github.com/micheloosterhof/aldegonde/blob/master/hypotheses/INDEX.md)) | one file per hypothesis, from `TEMPLATE.md` | active 2026-11 |
+| **FlareZ123/liber-primus** | [`im-results/`](https://github.com/FlareZ123/liber-primus/tree/main/im-results), synthesis [`results/README.md`](https://github.com/FlareZ123/liber-primus/blob/main/results/README.md) | one study per `im-results/*.md` (≈50 agents, 2026-11-08 →). **Its rune corpus is derived from our `dataset/liber_primus.json`**, so it is not an independent transcription | reviewed at `65b9c44` (2026-11-23); 14 rows imported as `R45-IMPORT-*`, see [`round45/M0-imports`](../liber-primus/analysis/round45/M0-imports/RESULTS.md) |
 
 Individual contributors whose corrections landed here: **RETSAM3301** (page numbering and the seg 8 / seg 40
 separators, #12), **njloof** (#13, #14), **mariostabile1** (#11).
@@ -37,6 +38,11 @@ were run before the relabel; their ids 50–54 are book pages 51–55.
 | pp49–51 stale tokens in rtkd/iddqd master (`1L 0L 0l 2s 3i`) | tz18 (rtkd PR #8), Inky (PR #7); still open upstream | merged in cicada-solvers/iddqd 2024-10-12; matches our `canon_256.hex`; `fetch_sources.py` now pins the PR #8 head | open upstream, reviewed 2026-11-20 |
 | p15 4×4 grid: 14/16 = 3301−prime | here, R44 P2 (`R44-P2-P15GRID-TRANSCRIPTION`) | njloof #14 (2026-11-19): **16/16 cells = \|3301 − prime(F+1)\|, F Fibonacci 0–987 along a square spiral from the red 3299**; the two R44 "breakers" are sign flips | **adopted** 2026-11-19 as `R45-COMM-P15GRID-CLOSEDFORM`; reproduced by `closed_form_check.py` |
 | T7 span "doublet-free void" | njloof #10, copied here at `6b94529` | njloof #13 (2026-11-19, their LEDGER C1) | corrected: internal doublets at 2740/3140/3852; three large gaps 400/712/537 |
+| **Printed word lengths carry no word-order grammar** (adjacent-length MI z≈+0.4 vs solved-LP +7.4 at 875 words) | FlareZ123 `lp2-original-wordlength-grammar-mi.md` (2026-11-12) | here, Fable52 t4/t4b (2026-11-23, separate code) | **replicated**; imported as `R45-IMPORT-WORDLEN-GRAMMAR`; premise flag on every printed-word lane (Round 45 thesis) |
+| T7 under source conditioning | FlareZ123 `lp2-doublet-gap-source-boundary-conditional-gate.md`, `lp2-doublet-1649-gap-page-chapter-null-gate.md` | imported `R45-IMPORT-T7-CONDITIONED-NULLS` | T7 **survives** chapter (p=5e-5), page (0.005), page×13-dot, word/line class and exact word length (0.008) conditioning |
+| "T7 explained by printed-line occupancy" (p=0.23) | FlareZ123 `lp2-doublet-gap-original-source-conditioned.md` | here, Fable52 t3: that null is **saturated** (null 0.367±0.009 vs 0.380; power 0.04 vs a planted low-rate window) | **corrected**: uninformative, T7 stays live; their word-identity null (p=0.26) is the same class, power unmeasured |
+| p50 leading-zero cells enrich doublets (33/86, p≈6e-4) | FlareZ123 `lp2-p50-raw-tableau-allsecret-gate.md` | here, Fable52 t2: fails phase look-elsewhere under a clustering-preserving null (family p=0.54) | **rejected as signal** (`R45-IMPORT-REJECTED-P50-LEADZERO`) |
+| p0 heading = 13 red runes (8+5), 13-dot mark after rune 13 | FlareZ123 `lp2-p0-red13-13dot-blackbody-original-source-adjudication.md` | here, R44 P1 census (same indices, same pixel boxes) | **agreed** |
 | English-only-negative failure mode | here, R18 L7-A | njloof adopted language-agnostic χ² as design rule | shared method |
 | `skip_by_two` stride pads | flagged uncovered here | njloof #3 (negative), #5 (products, negative) | closed in their ledger |
 | 32-bit seed sweeps: Perl, POSIX, Xorshift32 | mariostabile1, PR #11 | merged here 2026-10-28 | 0 hits |

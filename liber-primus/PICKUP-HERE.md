@@ -1,6 +1,18 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-11-11** (Round 44 closeout). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-11-23** (Round 45 kickoff; Round 44 closeout 2026-11-11). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+
+> ## Round 45 kickoff (2026-11-23) — THE SPACES ARE NOT THE WORDS. Plan of record: `analysis/round45/CAMPAIGN-PLAN.md`.
+>
+> **Printed LP2 word breaks carry no word-order grammar** (adjacent word-length MI z≈+0.5 vs solved-LP +7.4 at 875 words;
+> found by FlareZ123, replicated by the Fable 5.2 pass in `analysis/fable52/`). Every lane that reads the printed spaces as the
+> plaintext's words in order is now conditional (`R45-IMPORT-WORDLEN-GRAMMAR` lists them). M0 folded 14 rows into `LEDGER.json`
+> (**365 rows**): FlareZ123 exact all-key bounds on D-03 (periodic maps), D-04 (predecessor tables), R12-C1 (plaintext history m=4–7),
+> the doublet-as-marker reading, plus agreements (p0 red 13, pp49–51, p27:93) and one rejection (p50 leading-zero enrichment).
+> **T7 stays live:** it is distributed rate heterogeneity (not one void; "1,649-rune doublet-free span" = three gaps 400/712/537 with two
+> doublets inside), it survives chapter/page/word-line conditioning, and the line-occupancy null that seemed to explain it is saturated
+> (power 0.04). Lanes I1 (decoy-space audit), W1 (what are the spaces), T1 (T7 mechanism), S1 (transcription audit), X1 (red team)
+> are open. Details: `analysis/round45/M0-imports/RESULTS.md`, `docs/CROSS-LEDGER.md` (FlareZ123 added).
 
 > ## Community update (2026-11-17) — T7 independently REPLICATED; page numbering fixed
 >

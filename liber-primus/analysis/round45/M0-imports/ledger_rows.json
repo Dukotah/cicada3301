@@ -1,0 +1,478 @@
+[
+ {
+  "id": "R45-IMPORT-WORDLEN-GRAMMAR",
+  "lane": "round45/M0-imports",
+  "hypothesis": "The printed word breaks of LP2 (2,896 words) are the plaintext's word boundaries in order, so their adjacent word-length sequence carries natural-language word-order grammar (adjacent-length mutual information above a within-chapter shuffle).",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "FlareZ: plug-in MI of clipped adjacent lengths vs 1,500 within-chapter length shuffles (z, upper tail). Fable52 t4/t4b: same statistic, own code, own shuffles; solved-LP and literary windows as controls.",
+  "threshold_fixed_in_advance": false,
+  "positive_control": "passed",
+  "control_detail": {
+   "FlareZ": "116 disjoint 2,896-word literary windows (Latin Vulgate GP, Old English Beowulf GP, Gibran, Shakespeare, Emerson; raw and GP-converted) ALL detect the grammar, min z +2.8 (Beowulf), typically +6..+21; punctuation-role MI controls all z > +9.8.",
+   "Fable52_t4": "English windows (kjv/moby/pride/war, 8 windows each) min z +5.4; power on pride: 1.00 with all words in natural order, 0.40 with half, 0.15 with a quarter.",
+   "Fable52_t4b": "solved-LP reference (875 words, 17 sections) z = +7.43 (p=0.002); scaled to 2,896 words ~ +22.8."
+  },
+  "result": "NO GRAMMAR. LP2 whole book MI z = +0.43 (FlareZ, p=0.30) / +0.51 (Fable52 t4, p=0.31); nine 875-word LP2 windows z in [-1.51, +2.30] against the solved-LP z = +7.43 at the same size. Sentence-role (length vs dot position) MI z = -1.37. A doubled-plaintext-rune insertion rule does not restore it (FlareZ, 15/15 controls keep z > +5). Independently found by FlareZ123 (2026-11-12), replicated by Fable52 with separate code.",
+  "coverage": "Whole-book and 875-word-window adjacent word-length MI and sentence-role MI on the 2,896 printed words of LP2 p0-55 (p50 runeless), within-chapter shuffles. Detection power 1.00 when the printed order is the plaintext's natural order.",
+  "not_covered": [
+   "Partial order preservation: power 0.40 at half the words in natural order, 0.15 at a quarter (Fable52 t4).",
+   "Plaintext registers with no word-length grammar (e.g. word lists, numerals, codebook output, constructed text).",
+   "Scope of any scrambling (global vs chapter/page/line/sentence): Fable52 t8 tried and its control FAILED, uninformative; open in R45 W1.",
+   "Whether the spaces are a decoy, keyed, shuffled, or the plaintext's lengths under a length-changing cipher: not discriminated."
+  ],
+  "three_conditionals": {
+   "key_space": "key-free: reads printed word lengths only",
+   "transition_model": "none (structural statistic on the ciphertext layout)",
+   "adjudicator_register": "language-agnostic MI; calibrated on Latin, Old English, English (raw + GP) and the solved LP pages"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md",
+   "liber-primus/analysis/fable52/t4_wordlen_burst.py",
+   "liber-primus/analysis/fable52/t4b_solved_control.py",
+   "liber-primus/analysis/fable52/OUTPUTS.txt"
+  ],
+  "reproduce": "python -I liber-primus/analysis/fable52/t4_wordlen_burst.py && python -I liber-primus/analysis/fable52/t4b_solved_control.py",
+  "reopens_if": "A plaintext register without length grammar is named and shown to fit, or a scrambling scope is found under which printed lengths ARE the plaintext's lengths (R45 W1).",
+  "notes": "PREMISE FLAG: every row that treats printed LP2 words as the plaintext's words in order is conditional on a premise this row contradicts. Annotated rows: C-01 (SKELETON word-length identification), R10-L2-MAP (word structure as map: M3/M4/M5/M8/M9), R37-C1-U3-COMPOSED-MAP-ROAD-DIRECTION, R37-C3-U5-L2-MAP, R38-C2-G3-LAGGED-POINTERS, R40-C1-R04-M4-LP1-POINTER. Also conditional on it (not annotated individually): R38-C1-SEMANTIC-*, R39-C1-SENSE-SIMILARITY, R41-C1-R14-WORDSUM-SELFKEY and other per-word key rules. Power of each under a decoy-space alternative is R45 I1's job. FlareZ123's rune corpus is DERIVED from this repo's dataset/liber_primus.json (fable52 reconcile.py), so agreement on ciphertext-side counts is not replication of the transcription (shared point of failure; R45 S1).",
+  "external_source": [
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-original-wordlength-grammar-mi.md"
+  ]
+ },
+ {
+  "id": "R45-IMPORT-D03-PHASEMAP-ALLPERIOD",
+  "lane": "round45/M0-imports",
+  "hypothesis": "LP2 is a deterministic per-phase GP29 substitution at a fixed period q (any secret map per phase, bijective OR many-to-one), with resets at book / chapter / 13-dot mark / page / printed line, and its plaintext is native GP29 English prose.",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "Exact key-independent invariant: for any deterministic per-phase map, same-phase equal-pair count M_cipher(q) >= M_plain(q). Exclusion iff M_original(q) < min over the 5 frozen donor windows at every q in range.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "FlareZ synthetic donor plants (incl. 29->15 many-to-one) satisfy the inequality at every tested period; nonaffine positive passes in their Windows CI. NOT re-run here. Original-side statistic reproduced locally from our canonical stream: M(840)=3277, M(3301)=634, identical to FlareZ (M0 verify_output.txt).",
+  "result": "EXCLUDED for the stated register at every tested period: book-global q=1..3301 (3301/3301), nine-chapter resets q=1..1033, 13-dot-mark resets q=1..1033, physical-page resets q=1..130, printed-line resets q=1..22 (q>=23 NOT excluded: a donor ties/undercuts at q23). Smallest donor-minus-original gaps: 404 (global, q=3151), 101 (chapter), 84 (13-dot), 131 (page), 5 (line, q=22).",
+  "coverage": "All deterministic per-phase maps 29->29 (permutation or not) at the listed periods and reset policies, over all 12,956 runes; native GP English represented by 5 donor windows (3 Crowley Book of the Law, 2 Blake Marriage of Heaven and Hell). This is a BOUNDED CLOSURE of the D-03 corner 'periodic/phase-indexed mono-rune maps' for that register; D-03 itself (stationary homophonic-downward class streams, other registers) stays as recorded in D-03 and R44-W2C9-D03-HOMOPHONIC-SCREEN.",
+  "not_covered": [
+   "Randomised / homophonic EMISSION (one plaintext rune -> several ciphertext runes): the inequality does not bind; this is D-03's core and stays open beyond R44-W2C9's detection-conditioned screen.",
+   "State that changes within a phase, variable clocks, state-dependent resets, transposition/moved positions, polygraphic transforms.",
+   "Registers other than the 5 donor windows (2 authors): not a universal statement about English, and nothing about non-English registers (R18 L7-A).",
+   "Printed-line clocks q>=23.",
+   "Five donors are overlapping windows of two works, not independent samples (FlareZ says so)."
+  ],
+  "three_conditionals": {
+   "key_space": "every deterministic map per (segment, phase), all 29^29 per phase, periods as listed",
+   "transition_model": "fixed-period phase clock with the five named reset policies; no skips, no state",
+   "adjudicator_register": "GP29 native English prose, 5 windows of Crowley + Blake (finite-source exclusion, not a p-value)"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md",
+   "liber-primus/analysis/round45/M0-imports/verify_imports.py",
+   "liber-primus/analysis/round45/M0-imports/verify_output.txt"
+  ],
+  "reproduce": "python -I liber-primus/analysis/round45/M0-imports/verify_imports.py  (original side only)",
+  "reopens_if": "A plaintext register with flatter same-phase repetition than the donors is proposed with a reason, or an emission model outside 'deterministic per phase' is in play.",
+  "notes": "Does not assume printed words are plaintext words (position-level invariant). FlareZ123's rune corpus is DERIVED from this repo's dataset/liber_primus.json (fable52 reconcile.py), so agreement on ciphertext-side counts is not replication of the transcription (shared point of failure; R45 S1).",
+  "external_source": [
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-allperiod-secret-phase-bijection-original-gate.md"
+  ]
+ },
+ {
+  "id": "R45-IMPORT-D04-PREDECESSOR-SBOX",
+  "lane": "round45/M0-imports",
+  "hypothesis": "LP2 is a previous-ciphertext-keyed secret substitution C_i = S[table, C_(i-1)](P_i) with fully secret rows: one 29x29 table per illuminated chapter (+ up to 3 extra page rekeys), or a GP28 no-repeat variant with one 29x28 table per chapter and resets at every printed word (and optionally page).",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "Exact row-majorization (all-key) invariant: the k most frequent plaintext symbols cannot exceed the sum of the k largest outgoing transition counts per row; exclusion iff the bound falls below the minimum native-control occupancy for some k.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "FlareZ: synthetic encoders with genuinely random row permutations (and the 63 repeat exceptions via sidecar) decrypt 12,956/12,956 and satisfy every majorization inequality. Not re-run here.",
+  "result": "EXCLUDED for the stated register: (a) 29-way predecessor S-box, nine chapter tables, 0-3 extra arbitrary page rekeys: 0 of 1+47+1,081+16,215 schedules pass (k=14 gap -628 with none); first histogram-compatible schedules appear at 4 extra rekeys (987/178,365, necessary condition only). (b) GP28 row-permutation, chapter tables, word resets, all 63 within-word repeats + word starts free: 256/256 plants per donor violate, min violation +71, EO- and OE-excluded alphabets, with or without page resets.",
+  "coverage": "Global/per-chapter previous-ciphertext-keyed secret substitution (full 29-way and GP28 derangement), all secret row permutations, native GP English (Gibran, Shakespeare, Emerson; ING/IO spelling variants) at every 12,956-rune window. Narrows D-04 (whose recorded sweep was 3 pages, k<=3, 3 seeds) for the predecessor-indexed table class.",
+  "not_covered": [
+   "Per-PAGE private tables (55 independent tables) and any schedule with >= 4 extra rekeys: OPEN (4-cut schedules already pass the necessary test).",
+   "Feedback of order >= 2 (state = several previous ciphertext runes) and non-substitution feedback (D-04's coefficient sweep family) beyond the order-1 table.",
+   "Plaintext registers other than the three donor authors; non-English (L7-A).",
+   "The GP28 word-reset variant assumes printed words are plaintext words. Word-position parts of this row inherit the 'printed spaces may not be plaintext word boundaries' caveat (R45-IMPORT-WORDLEN-GRAMMAR)."
+  ],
+  "three_conditionals": {
+   "key_space": "all secret row permutations per (chapter, previous ct rune); reset schedules as stated",
+   "transition_model": "order-1 ciphertext feedback selecting a row; deterministic; GP28 variant forbids self-successor",
+   "adjudicator_register": "native GP English, 3 authors, composite per-k minimum over all windows"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md"
+  ],
+  "reopens_if": "A per-page table schedule, an order>=2 feedback state, or a non-English register is proposed with a reason.",
+  "notes": "FlareZ123's rune corpus is DERIVED from this repo's dataset/liber_primus.json (fable52 reconcile.py), so agreement on ciphertext-side counts is not replication of the transcription (shared point of failure; R45 S1).",
+  "external_source": [
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-ninechapter-predecessor-spectrum-reset-majorization.md",
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-gp28-row-permutation-majorization-original-gate.md"
+  ]
+ },
+ {
+  "id": "R45-IMPORT-R12C1-PLAINHIST-M4-7",
+  "lane": "round45/M0-imports",
+  "hypothesis": "LP2 is a deterministic stationary plaintext-history cipher C_i = F(P_(i-m..i)) with ONE book-global table (arbitrary, including nonlinear 29^(m+1) tables and the four-sum state model), memory m = 4..7, preserving printed word boundaries.",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "Exact all-key suffix implication: two complete words sharing their final m+n plaintext runes must share their final n ciphertext runes. Original has 0 equal last-4 pairs among words >= 8 runes and 4 equal last-3 pairs among words >= 7; exclusion iff native controls need more.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "FlareZ: full 29x29 native forward plants satisfy both inequalities and reproduce their ciphertext exactly. Not re-run here. Original-side facts reproduced locally: 2,896 words, 0 last-4 pairs (words>=8), 4 last-3 pairs (words>=7) (M0 verify_output.txt).",
+  "result": "EXCLUDED for memory 4, 5, 6, 7 with a single global table: 384/384 original-word-length native control manuscripts (128 each Shakespeare/Gibran/Emerson) violate, for every possible table. At memory 8 some Emerson controls pass: do not extrapolate. Memories 1-3 are bounded by a companion FlareZ study (plainprev short-memory two-output suffix gate) that M0 did NOT read or import.",
+  "coverage": "Key-independent bound on the PLAINTEXT-source, global-table corner of R12-C1 (whose own sweep covered k=2..6 over 23,520 natural f and only 29 all-equal pt seeds) for m=4..7; also covers fully nonlinear history tables R12-C1 never represented.",
+  "not_covered": [
+   "Ciphertext-source history (R12-C1's exhaustive ct family is unaffected; this row is about pt/mix sources).",
+   "Page-private tables: some Emerson controls evade, NOT excluded.",
+   "m >= 8; m = 1..3 not imported here.",
+   "Space-changing ciphers: the bound REQUIRES printed words = plaintext words. Word-position parts of this row inherit the 'printed spaces may not be plaintext word boundaries' caveat (R45-IMPORT-WORDLEN-GRAMMAR).",
+   "Atypically low-repetition or non-English plaintext."
+  ],
+  "three_conditionals": {
+   "key_space": "every deterministic table F over the last m+1 plaintext runes, one global table",
+   "transition_model": "stationary plaintext-history lookup, no skips, word boundaries preserved",
+   "adjudicator_register": "native GP English, 3 authors x 128 original-word-length resamples"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md",
+   "liber-primus/analysis/round45/M0-imports/verify_imports.py",
+   "liber-primus/analysis/round45/M0-imports/verify_output.txt"
+  ],
+  "reproduce": "python -I liber-primus/analysis/round45/M0-imports/verify_imports.py  (original side only)",
+  "reopens_if": "Printed word boundaries are shown not to be plaintext boundaries (then this bound evaporates), or a page-local table schedule is proposed.",
+  "notes": "FlareZ123's rune corpus is DERIVED from this repo's dataset/liber_primus.json (fable52 reconcile.py), so agreement on ciphertext-side counts is not replication of the transcription (shared point of failure; R45 S1).",
+  "external_source": [
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-plainhist-sum4-original-gate.md"
+  ]
+ },
+ {
+  "id": "R45-IMPORT-DOUBLET-MARKER-GATES",
+  "lane": "round45/M0-imports",
+  "hypothesis": "The 86 surviving doublets are a reversible plaintext-marker channel: C_i == C_(i-1) iff P_i == r for one fixed plaintext rune r (any of 29), under any key, including GP28 predecessor-exclusion transports keyed by any periodic secret key of period 1..256.",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "FlareZ: (a) reserved-repeat transport - best-of-29 max coordinate deviation of (total, word-start, word-end) counts vs length-matched native expectation must be > 6 sigma in every reference; (b) all-29 zero-step markers - Bernoulli deviance vs 2,000 whole-word resampled books; (c) rank28 periodic keys - exact single-letter occupancy bounds (period 1..43 with secret ciphertext alphabet order, 1..256 with GP order) + phase-equality invariant for 233..256.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "FlareZ reports fully reversible positive controls / solved-source positives for each gate (source-shaped reversible plants recovered). Not re-run here.",
+  "result": "All three EXCLUDE the marker reading for their registers: (a) best S per reference still deviates 6.4-8.5 sigma (LP1 B 8.5, Shakespeare P 8.3, Gibran G 7.7, Emerson G 6.4; Old English + Latin Vulgate extensions also fail); 23 word-start / 19 word-end doublets contradict EA/NG directly. (b) all 29 r fail the word-shape control (corroborates two earlier FlareZ gates; not a new family). (c) every periodic 28-rank key, periods 1..256, excluded for native E occupancy.",
+  "coverage": "Strengthens R44-W2B3-DOUBLET-CHANNEL (which read the doublet VALUES/GAPS/POSITIONS/COUNTS as a message and found nothing) on the orthogonal reading 'doublet = plaintext letter marker', across all 29 marker runes and all periodic keys <= 256.",
+  "not_covered": [
+   "One-way markers (C_i==C_(i-1) => P_i==r without the converse).",
+   "Markers from a plaintext CLASS (several runes) or a stateful marker.",
+   "Registers outside the listed references; non-English (L7-A).",
+   "(a) and (b) are word-position statistics. Word-position parts of this row inherit the 'printed spaces may not be plaintext word boundaries' caveat (R45-IMPORT-WORDLEN-GRAMMAR)."
+  ],
+  "three_conditionals": {
+   "key_space": "any key for (a)/(b); every periodic key with period 1..256 for (c)",
+   "transition_model": "reversible predecessor-exclusion transport with one escape rune",
+   "adjudicator_register": "solved LP1, Shakespeare, Gibran, Emerson, Book of the Law, Blake, Old English, Latin Vulgate (study-dependent)"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md"
+  ],
+  "reopens_if": "A one-way or class-valued marker is proposed with a mechanism, or the spaces turn out not to be plaintext word boundaries (re-test (a)/(b) on the position-only part).",
+  "notes": "Agrees with R45-FABLE52-T5-PT-MARKER (plaintext-coupled rare events do not produce T7-like gap autocorrelation). FlareZ123's rune corpus is DERIVED from this repo's dataset/liber_primus.json (fable52 reconcile.py), so agreement on ciphertext-side counts is not replication of the transcription (shared point of failure; R45 S1).",
+  "external_source": [
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-reserved-ea-repeat-transport-original-gate.md",
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-all29-zero-step-wordshape-gate.md",
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-rank28-period1-256-allsecret-native-e-capacity.md"
+  ]
+ },
+ {
+  "id": "R45-IMPORT-P0-RED13-AGREEMENT",
+  "lane": "round45/M0-imports",
+  "hypothesis": "The p0 opening is a 13-rune red heading (8+5 runes, SHEOGMIAF . SYENGC) with a small red word-dot after rune 8 and a red 13-dot mark after rune 13, followed by black body (FlareZ123 image adjudication, retracting their own earlier red8/marker8 claim).",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "Agreement check against R44-P1-RED-CENSUS channel.json / census.json: rune indices of the p0 red run and pixel bboxes of the p0 dot components must match.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "R44-P1's census passed its own plants (R44-P1-RED-CENSUS control_detail); this row is a cross-check, not a new instrument.",
+  "result": "AGREEMENT. R44-P1 channel.json 'full' p0 run = GP [15,8,18,3,6,19,27,0,15,26,18,21,5] (13 runes, incl. the S drop-cap), per_page p0 r_p=13: identical to FlareZ's [15,8,18,3,6,19,27,0]+[15,26,18,21,5]. R44-P1 census.json img 0: 13-dot block bbox x1405-1444 y687-773 and single red dot x1123-1133 y725-735; FlareZ: 13 dots at x1405-1444, word dot at (1123,725)-(1133,735). Same scan, same pixels.",
+  "coverage": "p0 heading only.",
+  "not_covered": [
+   "Book-wide red totals are NOT reconciled: FlareZ cites a derivative 225-red-rune total and '30 red 13-dot marks across 58 pages'; R44-P1 has 213 red canon runes (incl. 13 drop caps) and 27 13-dot + 3 10-dot red blocks on 56 masters. Different units/scopes; not adjudicated here."
+  ],
+  "three_conditionals": {
+   "key_space": "n/a (transcription/ink census)",
+   "transition_model": "n/a",
+   "adjudicator_register": "n/a (pixel census)"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md",
+   "liber-primus/analysis/round44/P1-red-ink/channel.json",
+   "liber-primus/analysis/round44/P1-red-ink/census.json"
+  ],
+  "reopens_if": "A higher-resolution scan of p0 disagrees with either census.",
+  "notes": "Not an independent transcription check of the rune identities beyond p0 (FlareZ's corpus derives from ours).",
+  "external_source": [
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-p0-red13-13dot-blackbody-original-source-adjudication.md",
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/resources/liber-primus/lp2-p0-physical-ink-override.json"
+  ]
+ },
+ {
+  "id": "R45-IMPORT-T7-CONDITIONED-NULLS",
+  "lane": "round45/M0-imports",
+  "hypothesis": "T7 (lag-1 gap autocorrelation +0.380 of the 86 doublet sites) is explained by source structure: rate differences between chapters/pages/13-dot fragments, word/line delimiter classes, word lengths, printed-line occupancy, or which printed words carry events.",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "FlareZ count-preserving within-stratum nulls (20,000-100,000 draws each, add-one upper tails); FlareZ treats p<0.01 as unusual. Fable52 t3 measured the line-occupancy null's own power.",
+  "threshold_fixed_in_advance": false,
+  "positive_control": "failed",
+  "control_detail": "No heterogeneity plant was run by FlareZ for these nulls. Fable52 t3 planted a low-rate window (rate x0.2 over 1,650 runes): power 0.22 under the uniform null, 0.04 under the printed-line-count-conditioned null at alpha 0.05 - the line null is SATURATED (null mean 0.367, sd 0.009 vs observed 0.380). So the 'explained by line occupancy' reading is uninformative, not a negative.",
+  "result": "T7 SURVIVES every coarse conditioning: chapter counts fixed p=0.00005 (0/20,000); page p=0.0046; page x 13-dot p=0.0022; 4 word/line classes p=0.0004; page x word/line p=0.0058; page x 13-dot x word/line x exact word length (1,508 strata) p=0.0077; whole page-tape permutation within chapters p=0.00014. Page-half counts p=0.038. Only the SATURATED nulls go quiet: printed-line counts (594 strata for 86 events) p=0.232 and event-bearing-word identity p=0.259 - both condition on nearly the observed positions. T7 stays LIVE. The '1,649-rune span' is three consecutive gaps 400/712/537 with two internal doublets (first-rune 0-based sites 2739/3139/3851/4388); longest single gap 712 (p=0.52 under uniform, Fable52); max 3-gap sum p=0.035 flat / 0.505 page-conditioned.",
+  "coverage": "Context for R44-W2B3-D01-FALSIFIER (the T7 row): which source conditionings T7 does and does not survive.",
+  "not_covered": [
+   "Power of the event-bearing-word-identity null was not measured; by construction it is at least as saturated as the line null - treat as uninformative until R45 T1 measures it.",
+   "Mechanism (drifting filter parameter / sessioned generation / stateful rejection loop) - R45 T1.",
+   "These conditionings use the printed word/line layout as given."
+  ],
+  "three_conditionals": {
+   "key_space": "n/a (statistic on doublet positions)",
+   "transition_model": "n/a",
+   "adjudicator_register": "language-agnostic"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md",
+   "liber-primus/analysis/fable52/t3_t7_anatomy.py",
+   "liber-primus/analysis/fable52/OUTPUTS.txt",
+   "liber-primus/analysis/round45/M0-imports/verify_output.txt"
+  ],
+  "reproduce": "python -I liber-primus/analysis/fable52/t3_t7_anatomy.py",
+  "reopens_if": "A conditioning null with measured power >= 0.5 against a smooth-heterogeneity plant absorbs T7 (R45 T1).",
+  "notes": "Status 'measured' (context), positive_control recorded 'failed' because the imported saturated nulls have power 0.04; the non-saturated survivals stand on their own count-preserving construction. FlareZ123's rune corpus is DERIVED from this repo's dataset/liber_primus.json (fable52 reconcile.py), so agreement on ciphertext-side counts is not replication of the transcription (shared point of failure; R45 S1).",
+  "external_source": [
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-doublet-1649-gap-page-chapter-null-gate.md",
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-doublet-gap-source-boundary-conditional-gate.md",
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-doublet-gap-original-source-conditioned.md"
+  ]
+ },
+ {
+  "id": "R45-IMPORT-DOUBLET-ALLOGRAPH",
+  "lane": "round45/M0-imports",
+  "hypothesis": "The 86 transcribed doublets are two visually DIFFERENT glyphs (allographs) that the 29-rune transcription merged, i.e. the doublet deficit is partly a transcription artefact at identity level.",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "FlareZ: all 86 sites registered to the original JPEGs; shifted-raster Jaccard of the two glyphs; a stable distinct glyph class or ink change at any site would support the hypothesis.",
+  "threshold_fixed_in_advance": false,
+  "positive_control": "none",
+  "control_detail": "No planted allograph pair reported; the Jaccard floor (>= 0.90 on all 86, 60 true same-word same-line adjacencies) is descriptive. One low pair was a crop artefact, resolved by full-height recrop.",
+  "result": "NOT SUPPORTED: every one of the 86 pairs is the same glyph (Jaccard 0.90-1.00), no ink-colour change. Supports A-03's negative from the identity side (A-03 audited rune COUNT, and its not_covered says 'not identity').",
+  "coverage": "All 86 doublet sites on the original JPEGs, identity level, at the stated morphology resolution.",
+  "not_covered": [
+   "Sub-pixel / imperceptible image-level differences.",
+   "No planted-allograph power measurement: a real but subtle allograph pair might score >= 0.9."
+  ],
+  "three_conditionals": {
+   "key_space": "n/a",
+   "transition_model": "n/a",
+   "adjudicator_register": "n/a (pixel morphology)"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md"
+  ],
+  "reopens_if": "A higher-resolution source or a planted-allograph test shows the 0.9 Jaccard floor cannot separate known allographs.",
+  "notes": "Registration used the shared transcription as an aid (source-conditional).",
+  "external_source": [
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-adjacent-doublet-allograph-audit.md"
+  ]
+ },
+ {
+  "id": "R45-IMPORT-PP49-51-P27-AGREEMENT",
+  "lane": "round45/M0-imports",
+  "hypothesis": "FlareZ123's pixel adjudications of the pp49-51 table (all 256 cells incl. the ten I/l cells and eleven disputed tokens) and of p27 local offset 93 agree with this repo's resolved readings.",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "Agreement on: cells 45/50/246 = 1l/0l/3I -> bytes 107/47/198 (our R19 C1 / R33 B1 pixel-resolved payload); p27:93 = U (our R33 B2 p27_93 audit).",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "none",
+  "control_detail": "Agreement entry; no new instrument.",
+  "result": "AGREEMENT on every compared item: their 256/256-cell full read matches their canonical table after six I/l reads were resolved by glyph height; the three bytes match our resolved payload (and the CROSS-LEDGER 'idx 246 = 3I' row); p27:93 = U matches R33 B2. Their table is independent of ours only in the image read, not in the source JPEGs.",
+  "coverage": "pp49-51 token table (256 cells) and p27:93.",
+  "not_covered": [
+   "The radix (60 vs 59) and what the table is for: untouched."
+  ],
+  "three_conditionals": {
+   "key_space": "n/a",
+   "transition_model": "n/a",
+   "adjudicator_register": "n/a"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md",
+   "liber-primus/analysis/round33/B2-lp1-audit/p27_93.md",
+   "docs/CROSS-LEDGER.md"
+  ],
+  "reopens_if": "A different scan disagrees on any cell.",
+  "external_source": [
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-p50-original-jpeg-il-case-10bit-resolution.md",
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-grid-11-original-glyph-adjudication.md",
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-external-pp49-51-p27-93-source-discrepancy-adjudication.md"
+  ]
+ },
+ {
+  "id": "R45-IMPORT-REJECTED-P50-LEADZERO",
+  "lane": "round45/M0-imports",
+  "hypothesis": "(Reviewed, NOT imported as signal.) The p50 table under a global 256-rune phase-0 clock is associated with the doublets: 33 of 86 doublets land on the 60 leading-zero cells (exp ~20.6; FlareZ exact conditional p=0.0006; positive in 9/9 chapters).",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "Fable52 t2: does the enrichment survive the look-elsewhere of choosing the phase (and digit class), under a null that preserves T7's clustering?",
+  "threshold_fixed_in_advance": false,
+  "positive_control": "passed",
+  "control_detail": "Fable52 t2 power at the claimed odds ratio 2.43: fixed-phase one-sided 5% test 0.98, family-max test 0.48 (family 95% bar z=4.46).",
+  "result": "REJECTED as signal. Observed z: fixed phase -1.31 / max-phase 3.27 / family max |z| 4.50. Uniform null: p(max-phase)=0.30, p(family)=0.040. Circular-shift null (keeps the T7 clustering): p(max-phase)=0.53, p(family)=0.54. FlareZ's own scan found 4 of 1,280 (digit, shift) alternatives positive in all chapters; the phase-0 'natural' choice plus 9/9 chapters does not survive selection over phases with clustered events. Also not imported: the five stationary p50 tableau-selector exclusions in the same file (outside M0's import list).",
+  "coverage": "The leading-zero / doublet association in lp2-p50-raw-tableau-allsecret-gate.md and its word-identity follow-up lp2-doublet-gap-nonstationarity-ordering.md.",
+  "not_covered": [
+   "A pre-registered phase fixed on independent grounds before looking (then the fixed-phase test has power 0.98 - but the claimed fixed phase in Fable52's convention gives z = -1.31)."
+  ],
+  "three_conditionals": {
+   "key_space": "n/a (association test)",
+   "transition_model": "global 256-cell clock",
+   "adjudicator_register": "language-agnostic"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md",
+   "liber-primus/analysis/fable52/t2_p50_mask.py",
+   "liber-primus/analysis/fable52/OUTPUTS.txt"
+  ],
+  "reproduce": "python -I liber-primus/analysis/fable52/t2_p50_mask.py",
+  "reopens_if": "An author-selected phase/digit class is fixed on independent grounds and re-tested once.",
+  "external_source": [
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-p50-raw-tableau-allsecret-gate.md",
+   "https://github.com/FlareZ123/liber-primus/blob/65b9c444de106b2f0a77f42097728308596e4795/im-results/lp2-doublet-gap-nonstationarity-ordering.md"
+  ]
+ },
+ {
+  "id": "R45-FABLE52-D01-STREAM-FILTER",
+  "lane": "round45/M0-imports",
+  "hypothesis": "The anti-doublet filter acts on the ciphertext STREAM, blind to printed word, line and page structure, at a single lag (D-01's model).",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "Descriptive: doublet rates per boundary class within binomial noise of the global rate; lag 2..7 equality counts at expectation; nonzero difference histogram flat.",
+  "threshold_fixed_in_advance": false,
+  "positive_control": "none",
+  "control_detail": "No plant; descriptive rates with binomial noise. Page-break class has no power (54 pairs, P(0 | unsuppressed)=0.155).",
+  "result": "CONSISTENT WITH D-01. 86/12,955 = 0.66% (0.19 of uniform). In-word 0.63%, cross-word 0.79%, dash 0.81%, period 0.57%, line-break 0.67% - no class is suppressed differently. Lags 2..7 equalities 441/439/459/479/455/451 vs ~446.6 expected (single-lag filter). Nonzero differences chi2 41.4 on 27 df (p~0.04, unremarkable). Doubled values spread over 28 of 29 runes (max 7).",
+  "coverage": "Whole unsolved stream, structure from the printed layout (rune-identical to our dataset).",
+  "not_covered": [
+   "The per-page line printed by t1_doublet_structure.py is WRONG (page counter not wired) - ignore it.",
+   "Page-break and section-break classes: no power."
+  ],
+  "three_conditionals": {
+   "key_space": "n/a",
+   "transition_model": "n/a",
+   "adjudicator_register": "language-agnostic"
+  },
+  "evidence": [
+   "liber-primus/analysis/fable52/t1_doublet_structure.py",
+   "liber-primus/analysis/fable52/OUTPUTS.txt",
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md"
+  ],
+  "reproduce": "python -I liber-primus/analysis/fable52/t1_doublet_structure.py",
+  "reopens_if": "A boundary class with enough pairs shows a rate outside binomial noise.",
+  "notes": "Fable 5.2 fresh-eyes pass, 2026-11-23. Scripts read structure from the external clone's lp2-transcription.txt (path hard-coded in fable52/load.py)."
+ },
+ {
+  "id": "R45-FABLE52-T7-DISTRIBUTED",
+  "lane": "round45/M0-imports",
+  "hypothesis": "T7 is one localized doublet void (the '1,649-rune span') rather than rate heterogeneity distributed through the book.",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "Descriptive + uniform-null tails: r1 with the largest gaps winsorized / logged, r1 within segments before and after the large-gap run, scan statistics for longest gap and longest 3-gap span.",
+  "threshold_fixed_in_advance": false,
+  "positive_control": "none",
+  "control_detail": "No smooth-heterogeneity plant (the R44 gap remains; R45 T1). Uniform null of site positions.",
+  "result": "DISTRIBUTED, not a void. r1=0.380 (rank r1 0.268, p=0.003); winsorized at 300: 0.276; log gaps: 0.229 (p=0.010); r1 before the run 0.214 (n=18) and after 0.219 (n=66) - the correlation is present on both sides; after-run segment alone p=0.033. Longest single gap 712, p=0.52 (ordinary). Max 3-gap span 1,649, p=0.0495 (post hoc).",
+  "coverage": "The 86-site tuple (identical to R44 W2-B3 U86).",
+  "not_covered": [
+   "Mechanism discrimination; covariate model (R45 T1).",
+   "Smooth-heterogeneity plant power."
+  ],
+  "three_conditionals": {
+   "key_space": "n/a",
+   "transition_model": "n/a",
+   "adjudicator_register": "language-agnostic"
+  },
+  "evidence": [
+   "liber-primus/analysis/fable52/t3_t7_anatomy.py",
+   "liber-primus/analysis/fable52/OUTPUTS.txt",
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md"
+  ],
+  "reproduce": "python -I liber-primus/analysis/fable52/t3_t7_anatomy.py",
+  "reopens_if": "A covariate model localizes the heterogeneity to one span with measured power.",
+  "notes": "Corrects the README/njloof framing 'localizes to a 1,649-rune doublet-free span' (already corrected in CROSS-LEDGER and the D01-FALSIFIER notes by njloof #13)."
+ },
+ {
+  "id": "R45-FABLE52-T5-PT-MARKER",
+  "lane": "round45/M0-imports",
+  "hypothesis": "T7's gap autocorrelation is what PLAINTEXT-coupled rare events (a rare plaintext rune or plaintext doublets surfacing as ciphertext doublets) look like in English.",
+  "status": "measured",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "Fraction of English 12,956-rune windows whose rare-event gap lag-1 autocorrelation reaches the observed +0.380.",
+  "threshold_fixed_in_advance": false,
+  "positive_control": "none",
+  "control_detail": "Generative comparison, not a detection test; bernoulli-86 reference included.",
+  "result": "NOT FAVOURED. Rune-marker windows (n=727): median +0.021, 95th pct +0.247, fraction >= 0.380 = 0.008. Plaintext doublets (n=160): median +0.017, frac 0.000; thinned to 86: median 0.000, frac 0.000. Bernoulli-86: frac 0.006. Plaintext-coupled markers in English do not produce T7-sized autocorrelation more often than chance.",
+  "coverage": "English prose corpora (data/*.txt), marker = each rare rune / plaintext doublet.",
+  "not_covered": [
+   "Non-English registers; plaintext with strong topical burstiness at multi-hundred-rune scale (not modelled)."
+  ],
+  "three_conditionals": {
+   "key_space": "n/a",
+   "transition_model": "marker surfaced 1:1 into ciphertext",
+   "adjudicator_register": "English corpora only"
+  },
+  "evidence": [
+   "liber-primus/analysis/fable52/t4_wordlen_burst.py",
+   "liber-primus/analysis/fable52/OUTPUTS.txt",
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md"
+  ],
+  "reproduce": "python -I liber-primus/analysis/fable52/t4_wordlen_burst.py",
+  "reopens_if": "A register with multi-hundred-rune burstiness of one rune is shown to reach r1 ~ 0.38 routinely.",
+  "notes": "R45 T1 tests the plaintext-marker mechanism only as the null alternative."
+ },
+ {
+  "id": "R45-FABLE52-T6-WORDCOLUMNAR",
+  "lane": "round45/M0-imports",
+  "hypothesis": "The printed LP2 word sequence is a whole-book word-level columnar transposition (C columns) of natural-order plaintext words, detectable as a word-length correlation peak at the column lag.",
+  "status": "negative",
+  "round": "45/M0",
+  "date": "2026-11-23",
+  "threshold": "Lag-scan of word-length correlation over all lags; a peak below the null min-z 5% quantile (-3.88) counts as detection.",
+  "threshold_fixed_in_advance": false,
+  "positive_control": "passed",
+  "control_detail": "Pride and Prejudice words transposed at 2/7/29/56 columns: detected 6/6, 6/6, 6/6, 5/6. Partial transposition: f=0.5 0/6, f=0.3 0/6. Against Cicada's own register the statistic is weak: solved-LP lag-1 r=-0.039, z=-1.17.",
+  "result": "WEAK NEGATIVE. LP2 min z = -3.27 at lag 942, p(min)=0.59; lags 1..6 z = -0.81/1.05/-0.63/0.62/1.13/-0.5. No column lag stands out.",
+  "coverage": "Full whole-book word-level columnar transpositions of English-like plaintext, any column count up to the scanned lag range, power ~1 on English (2-56 columns).",
+  "not_covered": [
+   "LOW POWER against Cicada's own register (solved-LP lag-1 z only -1.17): a columnar transposition of LP-style text may be invisible to this statistic.",
+   "Partial transposition (f <= 0.5): power 0.",
+   "Transposition at chapter/page/line scope, keyed column orders with irregular columns, or rune-level transposition."
+  ],
+  "three_conditionals": {
+   "key_space": "column count C over the scanned lag range; whole-book scope",
+   "transition_model": "regular word-level columnar transposition, no substitution of lengths",
+   "adjudicator_register": "word-length correlation, calibrated on English (Pride and Prejudice); weak on solved-LP register"
+  },
+  "evidence": [
+   "liber-primus/analysis/fable52/t6_wordlen_lagscan.py",
+   "liber-primus/analysis/fable52/OUTPUTS.txt",
+   "liber-primus/analysis/round45/M0-imports/RESULTS.md"
+  ],
+  "reproduce": "python -I liber-primus/analysis/fable52/t6_wordlen_lagscan.py",
+  "reopens_if": "A statistic with measured power on the solved-LP register (R45 W1), or a scoped (per chapter/page) transposition hypothesis.",
+  "notes": "Threshold not pre-registered (fresh-eyes pass); filed negative only at the stated power."
+ }
+]

@@ -1,0 +1,75 @@
+fable52 raw outputs, 2026-11-23. All scripts: python -I <script>. Stream = canonical 12,956 runes (sha256 pin checked, see first line of report),
+structure (word/line/page separators) from the other repo's lp2-transcription.txt, which is rune-identical to our dataset over all 13,136 runes.
+
+== reconcile.py ==
+their lp2-corpus.json: 58 page records, sum 13,136 = 12,956 (pages 0-49, 51-55) + 0 (p50, inserted empty) + 85 (p56 AN END) + 95 (p57 PARABLE).
+Its "source" field is our own dataset/liber_primus.json -> NOT an independent transcription.
+
+== t1_doublet_structure.py ==
+all                pairs= 12955 doublets= 86 rate= 0.66% expected_uniform= 446.7 ratio=0.19
+inword             pairs= 10028 doublets= 63 rate= 0.63% ratio=0.18
+crossword          pairs=  2927 doublets= 23 rate= 0.79% ratio=0.23
+dash               pairs=  2721 doublets= 22 rate= 0.81% ratio=0.23
+period             pairs=   174 doublets=  1 rate= 0.57% ratio=0.17
+linebreak          pairs=   593 doublets=  4 rate= 0.67% ratio=0.20
+linebreak_inword   pairs=   388 doublets=  3 rate= 0.77% ratio=0.22
+pagebreak          pairs=    54 doublets=  0 (expected 1.9 if unsuppressed; P(0)=0.155 -> no power)
+sectionbreak       pairs=    16 doublets=  0
+doubled rune values spread over 28 of 29 runes (max 7).
+diff hist (c[i]-c[i-1] mod 29): [86, 459, 504, 440, 438, 446, 430, 470, 426, 510, 497, 455, 449, 504, 474, 470, 449, 404, 434, 474, 467, 463, 421, 486, 468, 467, 457, 476, 431]
+chi2 of the 28 nonzero differences (27 df): 41.4 (p ~ 0.04, unremarkable)
+lag 2..7 equalities: 441 439 459 479 455 451 (expected ~446.6)
+(NB the per-page line printed by this script is wrong: the page counter was not wired; ignore it.)
+
+== t2_p50_mask.py (other group's "p50 leading-zero doublet enrichment") ==
+lead0 cells 60
+hits at phase 255 (= predecessor rune, 0-based continuous clock, their convention): 33 ; phase 0: 15 ; phase 1: 21 ; mean over phases 20.16
+observed z: fixed(ph0) -1.31  max-phase 3.27  max-family(|z|) 4.50
+uniform null         p max-phase=0.2993  p family=0.0399
+circular-shift null  p max-phase=0.5262  p family=0.5362   (preserves the T7 clustering)
+power at OR=2.43: family-max test 0.48 ; fixed-phase one-sided 5% test 0.98 ; family 95% bar z=4.46
+
+== t3_t7_anatomy.py ==
+T7 r1 = 0.38  rank r1 = 0.2679
+largest gaps (idx,gap,start): [(18, 712, 3140), (63, 662, 8934), (8, 553, 1038), (19, 537, 3852), (17, 400, 2740)]
+r1 with gaps winsorized at 300: 0.2755 ; r1 of log gaps: 0.2294
+r1 before void (n=18): 0.214 ; after void (n=66): 0.219
+uniform null: p(r1)=0.0005 p(rank r1)=0.0030 p(log-gap r1)=0.0100
+  after-void segment alone vs uniform-in-segment: p=0.0330
+scan: max 3-gap span obs=1649 p=0.0495 ; max single gap obs=712 p=0.5206
+line-count-conditioned null: mean r1=0.367 sd=0.009 p=0.074  (other group: mean +0.373, p=0.232)
+power vs planted low-rate window (rate x0.2 over 1650 runes): uniform-null test 0.22 ; line-conditioned test 0.04 (alpha=0.05)
+
+== t4_wordlen_burst.py ==
+unsolved words 2896 len2 448 len1 83 mean 4.474
+T4 unsolved: MI obs=0.01230 null=0.01126 z=+0.51 p=0.306  | lag1 r obs=-0.0150 null=-0.0004 z=-0.84
+  control kjv.txt    MI z over 8 windows: min +13.0 med +21.6 ; lag1 r: min -0.194 max -0.132
+  control moby.txt   MI z over 8 windows: min +5.4 med +9.3 ; lag1 r: min -0.090 max -0.009
+  control pride.txt  MI z over 8 windows: min +8.9 med +13.6 ; lag1 r: min -0.183 max -0.123
+  control war.txt    MI z over 8 windows: min +8.0 med +12.4 ; lag1 r: min -0.143 max -0.082
+  power (pride, fraction of words left in natural order=1.00): 1.00 ; 0.50: 0.40 ; 0.25: 0.15
+T5: gap lag-1 autocorrelation of plaintext-coupled rare events in English (window = 12,956 runes), observed LP2 T7 = +0.380
+  rune-marker                n= 727  median +0.021  5%..95% [-0.126,+0.247]  frac >= 0.380: 0.008
+  pt-doublet(all)            n= 160  median +0.017  5%..95% [-0.055,+0.098]  frac >= 0.380: 0.000
+  pt-doublet thinned to 86   n= 160  median -0.000  5%..95% [-0.162,+0.203]  frac >= 0.380: 0.000
+  bernoulli-86               n= 160  median -0.012  5%..95% [-0.186,+0.152]  frac >= 0.380: 0.006
+
+== t4b_solved_control.py ==
+solved-LP reference: 875 words in 17 sections; mean len 4.01; MI z=7.43 p=0.002
+unsolved, 875-word windows (step 250): z values [-1.05, -1.51, 0.19, 0.95, 2.3, 1.63, 1.22, 0.48, 0.77]
+unsolved whole book (clip 7): z=0.09 p=0.419
+control pride.txt 875-word windows: z min 0.38 med 6.85 max 9.53
+control kjv.txt 875-word windows: z min 3.56 med 7.76 max 21.13
+control moby.txt 875-word windows: z min 0.11 med 2.76 max 5.08
+solved-LP z scaled to 2,896 words: about 22.8
+
+== t6_wordlen_lagscan.py ==
+unsolved: min z=-3.27 at lag 942 ; max z=3.74 ; null min-z 5% quantile=-3.88 median=-3.33 ; p(min)=0.590
+  lag1..6 z: [-0.81, 1.05, -0.63, 0.62, 1.13, -0.5]
+  control: pride + 2/7/29/56-column whole-book word transposition: detected 6/6, 6/6, 6/6, 5/6
+  dose f=0.5: detected 0/6 ; f=0.3: 0/6
+solved LP reference: 875 words, lag-1 r=-0.039 z=-1.17   (so the lag-scan has LOW power against Cicada's own register; MI is the usable statistic)
+
+== t8_wordlen_scope.py == CONTROL FAILED -> uninformative
+unsolved by page/sentence/chapter/block100: length z = +0.09 / +0.83 / -0.73 / -1.44
+English controls give z ~ 0 too (medians -1.7..+1.8): the statistic cannot see local composition even in real prose. No conclusion.

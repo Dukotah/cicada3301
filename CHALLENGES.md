@@ -43,7 +43,7 @@ commit, the ledger row, the doc it changes, and the [hall of fame](#hall-of-fame
 
 The grand prize, and the one we least expect. The ciphertext is **OTP-class**: it cannot be
 told apart from a one-time pad, and it also cannot rule out a keystream derived from a short
-seed. 351 ledger rows record what has been tried.
+seed. 365 ledger rows record what has been tried.
 
 **Check:** `python liber-primus/verify_solution.py --keystream your_key.txt` (or `--key-module`,
 or `--plaintext`). The oracle replays your key through the same instrument the repo trusts
