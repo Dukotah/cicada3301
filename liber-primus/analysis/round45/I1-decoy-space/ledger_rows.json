@@ -1,0 +1,171 @@
+[
+ {
+  "id": "R45-I1-SPACE-BLIND-PIPELINE",
+  "lane": "round45/I1-decoy-space",
+  "status": "measured",
+  "round": "45/I1",
+  "date": "2026-11-23",
+  "hypothesis": "The standing decode/adjudication pipeline (beam_v3 panel_max, panel-R36 adjudicate, bars_v3, verify_solution decide, pf_v4_12 head screen) silently depends on LP2's printed spaces being the plaintext's word boundaries in order.",
+  "threshold": "Space-blind iff conditions a-d give bit-identical decodes and pmax for 100% of plants; power = recovery>=0.90 AND pmax>=bar_v3(N,L,rel,'lp2') at N=1e6 and N=1; material loss if power under b/c/e < 0.80 or < 0.5x baseline (PREREG s3).",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "Condition (a) reproduces the documented envelope: power 1.00 at N=1e6 in all 8 cells (EN, EN_NOVOWEL x keyskip1, skip_by_two x L120, L240; N=20 each).",
+  "null": "bars_v3 lp2 family at N=1e6 and N=1 (bar of record); pf_v4_12 frozen_op12 thresholds.",
+  "result": "SPACE-BLIND: a-d bit-identical decodes 160/160 (the ciphertext page rendered with '-' separators per condition and parsed back as the loaders do). H-shuffle (e, words permuted within page before encipherment): power_1e6 1.00 in 8/8 cells, oracle 2-page PASS 10/10 pairs in 8/8 cells, median pmax drop <= 0.9 (e.g. EN keyskip1 L120 17.8 -> 17.5; EN_NOVOWEL skip_by_two L120 15.5 -> 14.7); pf_v4_12 head-screen power 0.95-1.00 in both a and e.",
+  "coverage": "160 plants (2 registers x 2 relations x 2 L x 20) x 5 conditions = 800 correct-key decodes; source-level grep of beam_v3, beam_v2, pf_v4, pf_v4_12, adjudicate, bars_v3, verify_solution.py: 0 word-boundary consumers.",
+  "not_covered": [
+   "free relation; registers other than EN/EN_NOVOWEL under H-shuffle (Latin/OE/DE/CY/GREEK/HEBREW/NORSE word reordering not planted)",
+   "H-shuffle at scopes larger than a page (book-wide word permutation) - expected to behave the same (trigram LMs are local) but not measured",
+   "the HUMAN-ORACLE.md read rule ('connected prose, not word-salad'): a correct key under H-shuffle yields word-salad by construction; the human step is not measured here"
+  ],
+  "three_conditionals": {
+   "key_space": "correct key handed over (power test, no sweep)",
+   "transition_model": "keyskip1 / skip_by_two (beam_v3 advance 1/2)",
+   "adjudicator_register": "panel-R36 12 registers; plants EN + EN_NOVOWEL from data/pride.txt (not a panel training text)"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/I1-decoy-space/PREREG.md",
+   "liber-primus/analysis/round45/I1-decoy-space/RESULTS.md",
+   "liber-primus/analysis/round45/I1-decoy-space/results.json",
+   "liber-primus/analysis/round45/I1-decoy-space/out_beam.json",
+   "liber-primus/analysis/round45/I1-decoy-space/arm_beam.py",
+   "liber-primus/analysis/round45/I1-decoy-space/inventory.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round45/I1-decoy-space && python -I inventory.py && python -I arm_beam.py && python -I arm_wordsched.py && python -I arm_skeleton.py && python -I arm_7gram.py && python -I finalize.py",
+  "reopens_if": "a decoder/adjudicator is added that reads printed separators (e.g. a word-level scorer), or plants for a non-English register are shown to lose power under word reordering.",
+  "notes": "Every key-space negative adjudicated by this pipeline (R32-R44 sweeps) is NOT conditional on the printed spaces, and survives the H-shuffle reading with no measured power loss."
+ },
+ {
+  "id": "R45-I1-WORDSCHED-CONDITIONAL",
+  "lane": "round45/I1-decoy-space",
+  "status": "measured",
+  "round": "45/I1",
+  "date": "2026-11-23",
+  "hypothesis": "Key schedules indexed by printed word boundaries (R37-C1 U2b/U3, R41-C1 R14 W1-W4, and the U3-form R38-C1/R39-C1/R38-C2-G3 rows) retain detection power if the printed spaces are not the plaintext's word boundaries.",
+  "threshold": "Each lane's own rule: R37 judge() (pmax120>=bar_v3(1e6,120) & pmax240>=bar_v3(1e6,240) & recovery>=0.90); R41 exact recovery and pmax > P-level null max 5.50. Reopen if power under b/c < 0.80 or < 0.5x baseline.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "Condition (a) (decoder handed the true segmentation): R37 56/56 recover (U2a 16, U2b 16, U3 A1/A2/A3k1/A3k2 6 each); R41 20/20 exact and over null. Space-blind controls inside the same glue: U2a 16/16 and W5 4/4 recover under every condition.",
+  "null": "bars_v3 lp2 N=1e6 (R37); R41 P-level matched-null max 5.50 (round41/C1-r14-r15/RESULTS.md).",
+  "result": "POWER COLLAPSES: under b (permuted lengths), c (LP2 printed lengths as decoy) and d (no spaces) every space-dependent schedule goes to 0: R37 U2b 0/16, U3 0/24 per condition (median recovery 0.02-0.22); R41 W1-W4 0/16 exact and 0/16 over null (max pmax 4.75 vs 5.50; baseline max 31.6). Only the space-blind controls survive (U2a, W5).",
+  "coverage": "R37: 16 U2b variants + 24 U3 plants (rho 1-3 x A1/A2/A3k1/A3k2 x 2), M=29; R41: 20 variants (W1-W5 x sign x atbash), 1 page each; plaintext = data/pride.txt with true word segmentation.",
+  "not_covered": [
+   "U3 with M=28 (not re-planted; same mechanism)",
+   "R38-C1 / R39-C1 / R38-C2-G3 inherit by construction (same lens-indexed d_k form) - not separately re-run",
+   "schedules keyed to a DIFFERENT (e.g. keyed/decoy) segmentation the author might have used - i.e. spaces as the key's own clock"
+  ],
+  "three_conditionals": {
+   "key_space": "lane's own schedules with the correct parameters handed over",
+   "transition_model": "R37 keyskip1/keyskip2 beam_v3 + direct A1/A2; R41 exact inverse",
+   "adjudicator_register": "panel-R36 12 registers; plants English (pride)"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/I1-decoy-space/PREREG.md",
+   "liber-primus/analysis/round45/I1-decoy-space/RESULTS.md",
+   "liber-primus/analysis/round45/I1-decoy-space/results.json",
+   "liber-primus/analysis/round45/I1-decoy-space/out_wordsched.json",
+   "liber-primus/analysis/round45/I1-decoy-space/arm_wordsched.py"
+  ],
+  "reproduce": "cd liber-primus/analysis/round45/I1-decoy-space && python -I inventory.py && python -I arm_beam.py && python -I arm_wordsched.py && python -I arm_skeleton.py && python -I arm_7gram.py && python -I finalize.py",
+  "reopens_if": "Always conditional: the negatives of R37-C1-U2 (U2b half), R37-C1-U3, R38-C1-SEMANTIC-WORDNET, R38-C1-SEMANTIC-FREQRANK, R39-C1-SENSE-SIMILARITY, R38-C2-G3-LAGGED-POINTERS and R41-C1-R14-WORDSUM-SELFKEY (W1-W4) hold ONLY if the printed spaces are the plaintext word boundaries in order; Round 45 W1 shows they may not be.",
+  "notes": "Under H-decoy these lanes did not test their hypotheses at all (power 0). Under H-shuffle (spaces true, words reordered) a word-boundary schedule computed on the printed (reordered) words is still consistent, so they keep power there - the collapse is specific to H-decoy."
+ },
+ {
+  "id": "R45-I1-SKELETON-CONDITIONAL",
+  "lane": "round45/I1-decoy-space",
+  "status": "measured",
+  "round": "45/I1",
+  "date": "2026-11-23",
+  "hypothesis": "Round 8 SKELETON (C-01; analysis/skeleton/wordlen_search.py) identifies a known plaintext from LP2's printed word lengths even if those lengths are permuted or decoy.",
+  "threshold": "Detection = global argmax offset is the planted one AND count > max of 5 shuffled-pattern scans; reopen if power under b/c < 0.80 or < 0.5x baseline.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "Condition (a): W=120 power 1.0, W=400 power 1.0 (N=20 each; corpus pride+moby via the lane's own corpus_lengths/scan).",
+  "null": "same-corpus scans of 5 shuffled patterns per plant.",
+  "result": "W=120: a 1.0 / b 0.0 / c 0.0 / d 0; W=400: a 1.0 / b 0.0 / c 0.0 / d 0. Permuting lengths within 53-word pages or substituting LP2's printed sequence destroys detection; no spaces = no pattern.",
+  "coverage": "40 plants (W 120/400 x 20) x 3 runnable conditions over a 2-text corpus.",
+  "not_covered": [
+   "a multiset (order-free) length matcher, which would retain power under within-page permutation (W1 lane territory)",
+   "corpora beyond pride+moby"
+  ],
+  "three_conditionals": {
+   "key_space": "known-text identification (no key)",
+   "transition_model": "none (cleartext length channel)",
+   "adjudicator_register": "English transliteration via wordlen_search.corpus_lengths"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/I1-decoy-space/PREREG.md",
+   "liber-primus/analysis/round45/I1-decoy-space/RESULTS.md",
+   "liber-primus/analysis/round45/I1-decoy-space/results.json",
+   "liber-primus/analysis/round45/I1-decoy-space/out_skeleton.json",
+   "liber-primus/analysis/round45/I1-decoy-space/arm_skeleton.py"
+  ],
+  "reproduce": "cd liber-primus/analysis/round45/I1-decoy-space && python -I inventory.py && python -I arm_beam.py && python -I arm_wordsched.py && python -I arm_skeleton.py && python -I arm_7gram.py && python -I finalize.py",
+  "reopens_if": "C-01 and the Round 8 SKELETON negative (51 texts / 8.2M words) are conditional on printed spaces = plaintext words in order; under within-page permutation an order-free (per-page multiset) matcher is the instrument that could still work.",
+  "notes": null
+ },
+ {
+  "id": "R45-I1-7GRAM-SHAPE-CONDITIONAL",
+  "lane": "round45/I1-decoy-space",
+  "status": "measured",
+  "round": "45/I1",
+  "date": "2026-11-23",
+  "hypothesis": "R44-W2A2-7GRAM-DIFFPLAIN's plaintext-shape model (3-rune word, 3-rune word, word head; read off the printed 001001 gaps) keeps its coverage if the printed gaps are decoy.",
+  "threshold": "Coverage retained = fraction of 7-rune held-out English windows whose TRUE segmentation is word-aligned 3|3|head.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "The same count over LP2's printed gaps gives 0.0141, matching English (0.0132 pride), i.e. the measurement reproduces what the print claims.",
+  "null": null,
+  "result": "Under H-decoy the shape holds for 1.32% (pride) / 1.09% (moby) of windows per site; for both sites jointly ~1.7e-04 if independent. The lane's exhaustive enumeration covered only that sliver of the plaintext-shape space.",
+  "coverage": "517,224 (pride) + 861,880 (moby) 7-rune windows.",
+  "not_covered": [
+   "the 7-gram under H-shuffle (shape still given by print: unaffected)"
+  ],
+  "three_conditionals": {
+   "key_space": "R44 W2A2 relation classes (not re-run)",
+   "transition_model": "n/a",
+   "adjudicator_register": "English held-out text"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/I1-decoy-space/RESULTS.md",
+   "liber-primus/analysis/round45/I1-decoy-space/out_7gram.json",
+   "liber-primus/analysis/round45/I1-decoy-space/arm_7gram.py"
+  ],
+  "reproduce": "cd liber-primus/analysis/round45/I1-decoy-space && python -I inventory.py && python -I arm_beam.py && python -I arm_wordsched.py && python -I arm_skeleton.py && python -I arm_7gram.py && python -I finalize.py",
+  "reopens_if": "R44-W2A2-7GRAM-DIFFPLAIN is conditional on the printed gaps at the two sites being true word boundaries.",
+  "notes": null
+ },
+ {
+  "id": "R45-I1-DECOY-SPACE-REOPEN-LIST",
+  "lane": "round45/I1-decoy-space",
+  "status": "audit",
+  "round": "45/I1",
+  "date": "2026-11-23",
+  "hypothesis": "AUDIT (doctrine R1/R6): which ledger negatives silently assume printed spaces = plaintext word boundaries, in order.",
+  "threshold": "Hand classification of every grep hit (81 of 365 rows) into A conditional / B printed-structure-as-channel / C solved-page spaces / D space-blind with in-order plants; A rows measured where runnable.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "see R45-I1-SPACE-BLIND-PIPELINE, R45-I1-WORDSCHED-CONDITIONAL, R45-I1-SKELETON-CONDITIONAL",
+  "null": null,
+  "result": "REOPEN (conditional on true in-order spaces; measured power under H-decoy 0.00 unless noted): C-01 (SKELETON, power 0), R37-C1-U2-LP1-NUMBER-SCHEDULES (U2b half only; U2a space-blind), R37-C1-U3-COMPOSED-MAP-ROAD-DIRECTION, R38-C1-SEMANTIC-WORDNET, R38-C1-SEMANTIC-FREQRANK, R39-C1-SENSE-SIMILARITY, R38-C2-G3-LAGGED-POINTERS (last four inherit U3), R41-C1-R14-WORDSUM-SELFKEY (W1-W4; W5 space-blind), R44-W2A2-7GRAM-DIFFPLAIN (coverage ~1.2%% per site), R40-C1-INCONCLUSIVE-R31 (already inconclusive). NOT conditional: every beam_v3/panel-R36/bars_v3/pf_v4 key-space negative (space-blind, H-shuffle loss 0); B-class rows that read the printed structure itself (C-02, R10-L2-MAP, R10-L3-ROAD, R37-C3-U5-*, R40-C1-R04-M4, B-12, R11-S2, R37-C3-U6A-S2, R44-P3-*) - these become the relevant prior art if the spaces are a keyed channel; C-class rows on solved pages. Rule-level dependency (unmeasured): HUMAN-ORACLE.md 'not word-salad' read rule.",
+  "coverage": "LEDGER.json 351 rows (grep) + 7 standing instruments (source grep + planted runs).",
+  "not_covered": [
+   "rows whose code was not inspected beyond the ledger text (classification by row text for B/C rows)",
+   "line-break-indexed constructions (R44-R1 per-line resets) - line breaks are a different layer, not audited"
+  ],
+  "three_conditionals": {
+   "key_space": "n/a (audit)",
+   "transition_model": "n/a",
+   "adjudicator_register": "n/a"
+  },
+  "evidence": [
+   "liber-primus/analysis/round45/I1-decoy-space/RESULTS.md",
+   "liber-primus/analysis/round45/I1-decoy-space/inventory.json",
+   "liber-primus/analysis/round45/I1-decoy-space/inventory.py",
+   "liber-primus/analysis/round45/I1-decoy-space/results.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round45/I1-decoy-space && python -I inventory.py && python -I arm_beam.py && python -I arm_wordsched.py && python -I arm_skeleton.py && python -I arm_7gram.py && python -I finalize.py",
+  "reopens_if": "Round 45 W1 establishes what the printed spaces are; if they are a deterministic function of a key, the A-class schedules should be re-run against THAT segmentation.",
+  "notes": "Recommend a HUMAN-ORACLE.md addendum: a crosser whose decode reads as English word-salad is not automatically NOISE-CROSSER under the H-shuffle reading; check bag-of-words fluency and word-level order statistics before ruling."
+ }
+]

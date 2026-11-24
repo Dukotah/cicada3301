@@ -1,0 +1,35 @@
+[
+ {
+  "id": "R45-S1B-HIDDEN-DOUBLETS",
+  "lane": "round45/S1b-hidden-doublets",
+  "hypothesis": "T7 (doublet gap autocorrelation +0.380) is a transcription artifact: an adjacent pair in T1's fragile intervals (pairs ~1565-1620, 3040-4035, 9570-9625) that canon records as two runes is one rune twice in the image, or a dropped/duplicated rune creates an extra equal pair; one such doublet would push T7 above p=0.01 (T1 E0b).",
+  "status": "negative",
+  "round": "45/S1b",
+  "date": "2026-11-24",
+  "threshold": "Pre-registered (PREREG.md before any output): hidden doublet = adjacent pair judged same rune at high confidence after unblinded adjudication; pass-P gate sensitivity and specificity >= 27/30; verdict HARDENED if none found and gate passed.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": {
+   "passP_true_doublets": "29/30 read SAME (CP95 [0.828,0.999])",
+   "passP_lookalike_nondoublets": "28/30 read DIFF (CP95 [0.779,0.992])",
+   "passL_control_lines": "9/9 known doublets on 8 shuffled control lines read equal",
+   "template_instrument": "257/257 TH/W, M/D, A/AE/O glyphs on target lines called = canon (templates from outside target lines; CP95 lower 0.986)"
+  },
+  "null": "n/a (finite-object census); T7 null = T1 plants.json M0 S1 (2,000 draws), reused unchanged",
+  "result": "NEGATIVE / T7 HARDENED. 0 hidden doublets, 0 count errors in 1,138 pairs (56 lines). 9 flagged look-alike pairs (5 TH/W, 4 M/D) all resolve to canon by validated template; 4 count discrepancies are segmenter artifacts (crop-edge stems, touching C+E/C+B, page-15 drop cap L). T7 unchanged r=+0.380, p=0.0010.",
+  "coverage": "all 1,138 adjacent pairs t in [1560,1625] U [3035,4040] U [9565,9630] of the 12,956-rune U stream (canon lines 73-76, 140-187, 440-443), blind line reads + blind pair deck (97) + template on every family glyph; miss bound <=2.8% per look-alike pair (template), <=17% (pass P), <=34% (pass L)",
+  "not_covered": [
+   "pairs outside the three intervals (positions where one insertion moves T7 p to 0.001-0.01)",
+   "errors common to the relikd render lineage itself (no higher-resolution master read)",
+   "pass-L reader could not separate M/D or TH/W at strip resolution; family discrimination rests on pass P + template"
+  ],
+  "evidence": [
+   "analysis/round45/S1b-hidden-doublets/RESULTS.md",
+   "analysis/round45/S1b-hidden-doublets/adjudications.json",
+   "analysis/round45/S1b-hidden-doublets/template.json"
+  ],
+  "reproduce": "cd liber-primus && PYTHONUTF8=1 python analysis/round45/S1b-hidden-doublets/build.py; then adjudicate.py, template.py, zoom.py, finalize.py in that folder (reads are agent input)",
+  "reopens_if": "a higher-resolution master shows a different glyph at a listed candidate (t=3087,9612,9630,3385,3500,3928,3394,1623,3782) or a fragility re-derivation places breakers outside these intervals",
+  "notes": "Uses S1 corrected_map.json, not analysis/stones/alignment.json. Reads frozen before unsealing (reads_frozen.sha256). Template instrument added at adjudication (PREREG Addendum B2)."
+ }
+]

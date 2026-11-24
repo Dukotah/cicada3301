@@ -1320,3 +1320,45 @@ oracle queue (nothing certified): B4 p55 ghost-tree, C1 figural-motif fire, B3 T
 tail (A3/C4/C7/C9 + B4-S3) completes across sleep cycles under a new dead-man rule and folds into
 a follow-up commit. The verdict is unchanged and hardened: both the letter-stream and the
 physical-page hypothesis spaces are exhausted at tested resolution; T7 is the one open anomaly.
+
+> **Superseded in part by Round 45 (2026-11-24).** "The anti-repeat filter's slip rate is non-stationary" above
+> is the Round 44 reading of T7. R45-T1 measured **no rate change** (a gate-passed smooth-drift test, power 0.865,
+> fits zero drift; block dispersion and change-point search null). T7 itself stands and is hardened; it is a
+> gap-ordering property, not a demonstrated rate heterogeneity. See the Round 45 section below.
+
+## Round 45 (2026-11-23 → 24) — THE SPACES ARE NOT THE WORDS
+
+Lanes M0 (imports), I1 (decoy-space audit), W1 (what are the spaces), T1 (T7 mechanism), S1 (transcription
+audit), S1b (hidden doublets), X1 (red team). No decode was run; verdict **OTP-class, unchanged**. Per-row
+record in `LEDGER.json` (**384 rows** after the round, 0 unsound; 351 → 365 at M0, 365 → 384 at closeout) +
+`analysis/round45/SYNTHESIS.md` + `analysis/round45/X1-redteam/AUDIT.md`.
+
+- **LP2's printed word breaks are not the plaintext's words in order, at any scale** (`R45-W1-ORDER-SCOPE`,
+  X1-upheld). Twelve order tests null (p ≥ 0.38) at 100 % power on English; LP2 z = −1.2 vs solved Cicada
+  ≈ +3.6…+11.4 at LP2's size. Not random spacing, not periodic/keyed up to period 300, inside English's length
+  spread (`R45-W1-LENGTH-MULTISET`, `R45-W1-BOUNDARY-LEAKAGE`). Scope of the scramble is not identifiable.
+- **The rune stream is contiguous in printed order** (`R45-W1-RUNE-ORDER`): treat LP2 as one stream.
+- **The standing instrument stack is space-blind** (`R45-I1-SPACE-BLIND-PIPELINE`): beam_v3, pf_v4, panel-R36,
+  bars_v3, verify_solution see only rune indices (by construction, code-read; X1 corrected the lane's
+  "bit-identical" plant check as a tautology). H-shuffle power is measured at 1.00. **The ~10^10-decode
+  negatives are not conditional on the spaces.**
+- **Reopen list** (`R45-I1-DECOY-SPACE-REOPEN-LIST`): these ten word-indexed rows go from power 1.0 to 0 if the
+  spaces are decoy, so their negatives are **conditional on printed spaces being plaintext words in order**
+  (statuses left as recorded; a dated R45 note is on each row):
+  `C-01`, `R37-C1-U2-LP1-NUMBER-SCHEDULES` (U2b half), `R37-C1-U3-COMPOSED-MAP-ROAD-DIRECTION`,
+  `R38-C1-SEMANTIC-WORDNET`, `R38-C1-SEMANTIC-FREQRANK`, `R39-C1-SENSE-SIMILARITY`, `R38-C2-G3-LAGGED-POINTERS`,
+  `R41-C1-R14-WORDSUM-SELFKEY`, `R44-W2A2-7GRAM-DIFFPLAIN`, `R40-C1-INCONCLUSIVE-R31` (inclusion unverified, X1).
+  **Plus an older defect** (`R45-X1-R41-LINEWRAP-SEGMENTATION`): R41's loader split words at line breaks (3,316 vs
+  2,896 words), so R41 W1–W4 recovered only 25–91 % of planted pages **even with true spaces**.
+- **The transcription holds** (`R45-S1-CANON-ERROR-RATE`, `R45-S1B-HIDDEN-DOUBLETS`): 0 canon errors in 398
+  blind-read glyphs (non-family bound 0–2.5 %; look-alike classes rest on a single reader, X1 caveat), all 86
+  doublet sites confirmed, no hidden doublet in the 1,138 adjacent pairs T7 is fragile to. RAT agrees with canon
+  at 12,807/12,807 aligned glyphs (the "149 disagreements" were unaligned positions). Defect found:
+  `analysis/stones/alignment.json` mis-pairs lines near 399/432 (`R45-S1-STONES-ALIGNMENT-DEFECT`).
+- **T7 is HARDENED but unexplained** (`R45-T1-T7-NOT-RATE`, `R45-T1-MECHANISM-SEPARATION`): r = +0.380,
+  p ≈ 0.001 (X1 0.00055). Not a rate change; no fitted mechanism reproduces it; 86 events cannot separate
+  mechanisms. The "top 5 gap pairs carry 0.29 of 0.38" figure is what chance produces at that r (X1), so it does
+  not localise T7. Neither "one void" nor "distributed" is established.
+- `HUMAN-ORACLE.md` §3 amended: a decode is not ruled noise solely for word-salad order (judge at the word level).
+- Post-hoc leads (need pre-registration): 2-rune words scarce in LP2 (15.5 % vs ≥ 19.7 % English); LP2 line
+  breaks fall inside words 71 % of the time vs LP1's 53 %.

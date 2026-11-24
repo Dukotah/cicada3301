@@ -1,0 +1,411 @@
+{
+ "n_ledger_rows": 365,
+ "n_grep_hits": 81,
+ "grep_hits": [
+  "R12-C1",
+  "R12-frontB",
+  "A-05",
+  "A-06",
+  "B-01",
+  "C-01",
+  "C-02",
+  "E-01",
+  "G-01",
+  "I-01",
+  "B-11",
+  "B-12",
+  "B-23",
+  "R19-G3-CORRECTION",
+  "T1-02",
+  "T2-INDEL",
+  "T3-PROPAGATION-MAP",
+  "T3-OAE450-STREAM-POSITIONS",
+  "R22-C-LITERAL-IMPERATIVES",
+  "R22-B-TURTLE-SPATIAL-RENDER",
+  "R22-A-SELFEMBEDDED-READ",
+  "R22-D-ILLUSTRATION-DROPCAP",
+  "R23-A2-LINE-ACROSTIC",
+  "R25-COMPUTE-TAIL-CHUNK1",
+  "R20-N2-HAPLOGRAPHY-AUTOKEY",
+  "R28-L2-CONTESTED-BYTES",
+  "R33-I2-CONSTRUCTION-AXIS",
+  "R33-B2-ISSUE12-SEPARATOR-CORRECTION",
+  "R34-S1-BUILD-BOX",
+  "R34-P1-PAYLOAD-PROMOTION",
+  "R34-B1-ORBITS-V3-PFV3",
+  "R11-S2-NUMBER-CHANNEL",
+  "R36-B2-PHP-AWAKE-PFV4",
+  "R36-O4-CLUE-COVERAGE",
+  "R37-C1-U2-LP1-NUMBER-SCHEDULES",
+  "R37-C1-U3-COMPOSED-MAP-ROAD-DIRECTION",
+  "R10-L2-MAP",
+  "R10-L3-ROAD",
+  "R37-C2-U4-PRIME-LINE-SUMS",
+  "R37-C2-U8-GEOMETRY",
+  "R37-C3-U5-L2-MAP",
+  "R37-C3-U5-L3-ROAD",
+  "R37-C3-U6A-S2",
+  "R38-C2-G3-LAGGED-POINTERS",
+  "R40-C1-R04-M4-LP1-POINTER",
+  "R40-C1-R13-R9-DIRECTION-WALKS",
+  "R40-C1-R28-R23A2-LINE-ACROSTIC",
+  "R40-C1-INCONCLUSIVE-R14",
+  "R40-C1-INCONCLUSIVE-R15",
+  "R40-C1-INCONCLUSIVE-R31",
+  "R40-C1-INCONCLUSIVE-R35",
+  "R40-C1-INCONCLUSIVE-R36",
+  "R40-C1-INCONCLUSIVE-R44",
+  "R41-I1-NULL-REFIT-SURVIVOR12",
+  "R41-C1-R14-WORDSUM-SELFKEY",
+  "R41-C1-R31-CRIB-READOUTS-VERIFIED",
+  "R41-C1-R36-DATED-PADS-VERIFIED",
+  "R42-S3-BASH32-BINARY-L1",
+  "R44-P1-RED-CENSUS",
+  "R44-P2-P15GRID-TRANSCRIPTION",
+  "R44-P2-P15GRID-KEYSCHEDULE",
+  "R44-P3-QUOTESPAN-SELECTION",
+  "R44-P3-SEPARATOR-IDENTITY",
+  "R44-P3-QUOTESPAN-CRIB-DERIVED",
+  "R44-R1-SEVENGRAM",
+  "R44-W2A2-7GRAM-DIFFPLAIN",
+  "R44-W2A2-P55-CRIB-SWEEP",
+  "R44-W2A2-SITE-NUMEROLOGY",
+  "R44-W2B3-DOUBLET-CHANNEL",
+  "R44-W2B3-D01-FALSIFIER",
+  "R44-W2C8-DELTA-COMPOSITES-K7-13",
+  "R45-IMPORT-WORDLEN-GRAMMAR",
+  "R45-IMPORT-D03-PHASEMAP-ALLPERIOD",
+  "R45-IMPORT-D04-PREDECESSOR-SBOX",
+  "R45-IMPORT-R12C1-PLAINHIST-M4-7",
+  "R45-IMPORT-DOUBLET-MARKER-GATES",
+  "R45-IMPORT-T7-CONDITIONED-NULLS",
+  "R45-IMPORT-DOUBLET-ALLOGRAPH",
+  "R45-FABLE52-D01-STREAM-FILTER",
+  "R45-FABLE52-T5-PT-MARKER",
+  "R45-FABLE52-T6-WORDCOLUMNAR"
+ ],
+ "classified": {
+  "C-01": {
+   "class": "A",
+   "how": "SKELETON word-length plaintext identification (Round 8, 51 texts / 8.2M words) aligns LP2 printed lengths to corpus lengths",
+   "measured_by": "arm_skeleton",
+   "status": "open"
+  },
+  "R37-C1-U2-LP1-NUMBER-SCHEDULES": {
+   "class": "A",
+   "how": "U2b pointer jumps applied at ciphertext word boundaries (encipherer assumes plaintext word lengths = cipher word lengths); U2a is space-blind",
+   "measured_by": "arm_wordsched U2a/U2b",
+   "status": "negative"
+  },
+  "R37-C1-U3-COMPOSED-MAP-ROAD-DIRECTION": {
+   "class": "A",
+   "how": "per-word shift / key advance at each cleartext word boundary, word index/offset/length from printed words",
+   "measured_by": "arm_wordsched U3",
+   "status": "negative"
+  },
+  "R38-C1-SEMANTIC-WORDNET": {
+   "class": "A",
+   "how": "per-cipher-word direction d_k (same lens-indexed A1/A2/A3 form as U3, round38/C1-semantic-road/enciphers.py)",
+   "measured_by": "inherits U3 (not separately run)",
+   "status": "negative"
+  },
+  "R38-C1-SEMANTIC-FREQRANK": {
+   "class": "A",
+   "how": "as R38-C1-SEMANTIC-WORDNET",
+   "measured_by": "inherits U3",
+   "status": "negative"
+  },
+  "R39-C1-SENSE-SIMILARITY": {
+   "class": "A",
+   "how": "per-cipher-word direction, same U3 form",
+   "measured_by": "inherits U3",
+   "status": "negative"
+  },
+  "R38-C2-G3-LAGGED-POINTERS": {
+   "class": "A",
+   "how": "pointer from previous cipher word / decoded word in the U3 rule",
+   "measured_by": "inherits U3",
+   "status": "negative"
+  },
+  "R41-C1-R14-WORDSUM-SELFKEY": {
+   "class": "A",
+   "how": "word gematria sums of printed words key the next word (W1-W4); W5 per-rune autokey is space-blind",
+   "measured_by": "arm_wordsched R14",
+   "status": "negative"
+  },
+  "R44-W2A2-7GRAM-DIFFPLAIN": {
+   "class": "A",
+   "how": "site plaintext modelled as (3-rune word, 3-rune word, head) from the printed 001001 gap pattern",
+   "measured_by": "arm_7gram",
+   "status": "measured"
+  },
+  "R40-C1-INCONCLUSIVE-R31": {
+   "class": "A",
+   "how": "R10b B3 page-local crib readouts placed at printed word positions (inconclusive already)",
+   "measured_by": "not run (inconclusive row)",
+   "status": "inconclusive"
+  },
+  "C-02": {
+   "class": "B",
+   "how": "ciphertext word/line initials+finals as a forced channel",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "R10-L2-MAP": {
+   "class": "B",
+   "how": "ciphertext word structure (initials, sums, lengths, pointers) read as message",
+   "measured_by": null,
+   "status": "measured"
+  },
+  "R10-L3-ROAD": {
+   "class": "B",
+   "how": "ciphertext word gematria sums as marks/symbols/pointers",
+   "measured_by": null,
+   "status": "measured"
+  },
+  "R37-C3-U5-L2-MAP": {
+   "class": "B",
+   "how": "R10 L2 streams re-scored in 12 registers",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "R37-C3-U5-L3-ROAD": {
+   "class": "B",
+   "how": "R10 L3 word-sum streams re-scored",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "R40-C1-R04-M4-LP1-POINTER": {
+   "class": "B",
+   "how": "LP2 printed word numbers/lengths as pointers into LP1 word list",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "B-12": {
+   "class": "B",
+   "how": "per-page word counts / line fill as data channel",
+   "measured_by": null,
+   "status": "measured"
+  },
+  "R11-S2-NUMBER-CHANNEL": {
+   "class": "B",
+   "how": "separator run-lengths as channel",
+   "measured_by": null,
+   "status": "measured"
+  },
+  "R37-C3-U6A-S2": {
+   "class": "B",
+   "how": "separator run-lengths mod 29",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "R44-P3-SEPARATOR-IDENTITY": {
+   "class": "B",
+   "how": "separator identity stream as channel",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "R44-P3-QUOTESPAN-SELECTION": {
+   "class": "B",
+   "how": "quote-delimited spans (punctuation layer, not word breaks) as selection",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "R44-P3-QUOTESPAN-CRIB-DERIVED": {
+   "class": "B",
+   "how": "cribs slid over ALL alignments inside quote spans (no word-position constraint); depends on quote marks, not word breaks",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "R22-A-SELFEMBEDDED-READ": {
+   "class": "C",
+   "how": "selections of the solved plaintext",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "R23-A2-LINE-ACROSTIC": {
+   "class": "C",
+   "how": "word/line acrostics of SOLVED pages with true spacing",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "R40-C1-R28-R23A2-LINE-ACROSTIC": {
+   "class": "C",
+   "how": "re-score of R23-A2",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "R37-C2-U7-BOOK-CODE": {
+   "class": "C",
+   "how": "indices into LP1 plaintext words",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "R37-C2-U7-BOOK-CODE-W": {
+   "class": "C",
+   "how": "whole LP1 word retrieval (row itself notes it needs a word-order statistic)",
+   "measured_by": null,
+   "status": "inconclusive"
+  },
+  "R44-W2A2-P55-CRIB-SWEEP": {
+   "class": "C",
+   "how": "1-rune crib from solved p55",
+   "measured_by": null,
+   "status": "negative"
+  },
+  "R33-I1-REGISTER-AWARE-BEAM": {
+   "class": "D",
+   "how": "beam_v3 power envelope: plants = contiguous held-out prose (no spaces consumed)",
+   "measured_by": "arm_beam",
+   "status": "measured"
+  },
+  "L7-B-BEAM-ENVELOPE": {
+   "class": "D",
+   "how": "beam transition envelope, English plaintext held fixed",
+   "measured_by": "arm_beam",
+   "status": "negative"
+  },
+  "R41-I1-NULL-REFIT-SURVIVOR12": {
+   "class": "D",
+   "how": "bars from wrong-key decodes; plants in-order prose",
+   "measured_by": "arm_beam",
+   "status": "measured"
+  },
+  "R44-R1-RESET-SWEEP": {
+   "class": "D",
+   "how": "key resets at page/LINE/section boundaries (line breaks, not word breaks); sentence '&' resets listed not_covered",
+   "measured_by": "arm_beam (rune stream); line layer not audited here",
+   "status": "negative"
+  }
+ },
+ "grep_hits_unclassified_reason": "remaining grep hits mention words/cribs/separators incidentally (generator seeds, string literals, interrupter bookkeeping, separator transcription audits) and consume no word boundary of LP2",
+ "instruments": {
+  "beam_v3": {
+   "path": "analysis/round33/I1-register-aware-beam/beam_v3.py",
+   "n_hits": 0,
+   "hits": []
+  },
+  "beam_v2 (enciphers, recovery)": {
+   "path": "analysis/round32/I1-skipbytwo-decoder/beam_v2.py",
+   "n_hits": 0,
+   "hits": []
+  },
+  "pf_v4": {
+   "path": "analysis/round35/I1-skip-tolerant-screen/pf_v4.py",
+   "n_hits": 0,
+   "hits": []
+  },
+  "pf_v4_12": {
+   "path": "analysis/round37/I2-pfv4-12reg/pf_v4_12.py",
+   "n_hits": 0,
+   "hits": []
+  },
+  "panel adjudicate": {
+   "path": "analysis/round32/I2-multiregister-readjudication/adjudicate.py",
+   "n_hits": 1,
+   "hits": [
+    [
+     21,
+     "* `z[9]`    a nine-register rune-space trigram panel, each standardised against a"
+    ]
+   ]
+  },
+  "bars_v3": {
+   "path": "analysis/round34/I1-v3-null/bars_v3.py",
+   "n_hits": 0,
+   "hits": []
+  },
+  "panel build (R36)": {
+   "path": "analysis/round36/I1-new-registers/build_models_r36.py",
+   "n_hits": 5,
+   "hits": [
+    [
+     22,
+     "probability space; plus five leave-one-page-out variants for the"
+    ],
+    [
+     61,
+     "for _r in sys.argv[_i + 1].split(\",\"):"
+    ],
+    [
+     145,
+     "oe = \"\\n\".join(l for l in oe_raw.split(\"\\n\") if re.search(r\"[þðæÞÐÆ]\", l))"
+    ],
+    [
+     170,
+     "htxt = \" \".join(MP.hebrew_to_ascii(MP.hebrew_osis_words(_read(f)), VARIANT[\"HEBREW\"]) for f in hf)"
+    ],
+    [
+     194,
+     "space as  mix*P(this corpus) + (1-mix)*P(extra corpus).  Used for LP1_REAL, whose 1,769"
+    ]
+   ]
+  },
+  "verify_solution.py (oracle)": {
+   "path": "verify_solution.py",
+   "n_hits": 4,
+   "hits": [
+    [
+     28,
+     "(whitespace/comma separated integers 0-28, at least 12,956 of them)"
+    ],
+    [
+     102,
+     "vals = [int(t) for t in txt.split() if t.lstrip(\"-\").isdigit()]"
+    ],
+    [
+     376,
+     "print(\"\\n\" + \"-\" * 74)"
+    ],
+    [
+     378,
+     "print(\"-\" * 74)"
+    ]
+   ]
+  },
+  "HUMAN-ORACLE.md": {
+   "path": "HUMAN-ORACLE.md",
+   "n_hits": 2,
+   "hits": [
+    [
+     32,
+     "6. **Stop-and-alert**: the lane STOPS, writes the bundle, and does not run further sweeps over the same space"
+    ],
+    [
+     48,
+     "non-English ones) and judges that it is connected prose, not word-salad that merely scores. Both pages must be"
+    ]
+   ]
+  },
+  "tests/validate.py (trust anchor)": {
+   "path": "tests/validate.py",
+   "n_hits": 6,
+   "hits": [
+    [
+     4,
+     "small space of simple transforms (direct / Atbash / shift, both directions) and"
+    ],
+    [
+     5,
+     "confirm the best-scoring output is real English containing the documented words."
+    ],
+    [
+     23,
+     "\"\"\"Collapse shared-rune transliteration ambiguities so word-matching is"
+    ],
+    [
+     75,
+     "# page label, type, (key), must-contain words"
+    ],
+    [
+     107,
+     "stream = ciphers.repeat_key(gp.keyword_to_indices(key), nr)"
+    ],
+    [
+     117,
+     "f\"words  score={sc:6.2f}  via {method}\")"
+    ]
+   ]
+  }
+ }
+}

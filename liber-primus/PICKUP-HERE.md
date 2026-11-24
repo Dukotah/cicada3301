@@ -1,7 +1,32 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-11-23** (Round 45 kickoff; Round 44 closeout 2026-11-11). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-11-24** (Round 45 closeout; Round 45 kickoff 2026-11-23; Round 44 closeout 2026-11-11). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
 
+> ## Round 45 closeout (2026-11-24) — THE SPACES ARE NOT THE WORDS: filed. Read `analysis/round45/SYNTHESIS.md` first.
+>
+> **Findings.** LP2's printed word breaks are **not the plaintext's words in order**, at any scale (`R45-W1-ORDER-SCOPE`,
+> power 1.00; X1-upheld). The standing instrument stack (beam_v3/pf_v4/panel-R36/bars_v3) is **space-blind by
+> construction**, so the core negatives are unaffected. **Ten word-indexed rows are reopened** (conditional on in-order
+> spaces; list in `ELIMINATION-LEDGER.md` Round 45 and `R45-I1-DECOY-SPACE-REOPEN-LIST`); R41's word-sum self-key also had a
+> line-break loader bug (25–91 % page recovery even with true spaces). Transcription **verified** where it matters (S1/S1b).
+> **T7 hardened but unexplained:** not a rate change, no mechanism reproduces it, top-gap concentration is chance-level (X1).
+> `HUMAN-ORACLE.md` §3 amended (word-salad order is not by itself grounds for `NOISE-CROSSER`). LEDGER: **384 rows**.
+>
+> ### Round 46 plan (SYNTHESIS §4) — CONTINUE, narrow
+>
+> 1. **One correct printed-word loader** (W1 rule: `- . & $ §` and numerals break; `/` and `%` do not). Re-run R41 W1–W4
+>    with it, and recheck R37 U2b/U3, with **planted shuffled-within-sentence controls on LP2's real layout**.
+> 2. **Pre-register** the 2-rune-word test (LP2 15.5 % vs ≥ 19.7 % English) and the line-break test (71 % in-word vs LP1 53 %).
+> 3. **Repair `analysis/stones/alignment.json`** from S1's `corrected_map.json`.
+> 4. **A second independent reader** for the look-alike classes (O/A/AE, M/D), fully blind — closes S1's single-reader caveat.
+> 5. **T7:** no generation-model sweep is warranted; separating mechanisms needs an independent stream of filtered
+>    events, and none is known.
+>
+> Housekeeping: Fable52 scripts hard-code external paths (`X1-redteam/AUDIT.md` §6); PREREG addenda must carry a sha256
+> stamp in the run log (T1's practice).
+
+> _Superseded in part by the Round 45 closeout above:_ the kickoff's "T7 ... is distributed rate heterogeneity" (R45-T1: no
+> rate change; R45-X1: neither one void nor distributed is established) and "lanes ... are open" (all filed).
 > ## Round 45 kickoff (2026-11-23) — THE SPACES ARE NOT THE WORDS. Plan of record: `analysis/round45/CAMPAIGN-PLAN.md`.
 >
 > **Printed LP2 word breaks carry no word-order grammar** (adjacent word-length MI z≈+0.5 vs solved-LP +7.4 at 875 words;
@@ -16,7 +41,7 @@ _Refreshed **2026-11-23** (Round 45 kickoff; Round 44 closeout 2026-11-11). Read
 
 > ## Community update (2026-11-17) — T7 independently REPLICATED; page numbering fixed
 >
-> **njloof/cicada-lp2-sweeps campaign #10 replicated B3/T7** with its own nulls (p=0.0006) and localized it: not smooth
+> **njloof/cicada-lp2-sweeps campaign #10 replicated B3/T7** with its own nulls (p=0.0006) and localized it _(localisation superseded by R45-X1: the top-gap concentration is what chance produces at this r)_: not smooth
 > drift but a localized slip-rate change: three consecutive large doublet gaps (400/712/537 vs ~151 typical) spanning
 > stream pos 2739–4388, internal doublets at 2740/3140/3852 ("doublet-free void" was a mislabel, corrected per njloof
 > #13, 2026-11-19; read "replicated" as "reproduced": same 86 sites, independent nulls). R45's T7 lane should plant

@@ -11,6 +11,8 @@
 > the round that closed it.
 >
 > _2026-11-23:_ Round 45 is in progress. See [`liber-primus/analysis/round45/CAMPAIGN-PLAN.md`](liber-primus/analysis/round45/CAMPAIGN-PLAN.md).
+>
+> _2026-11-24:_ Round 45 is filed ([`SYNTHESIS.md`](liber-primus/analysis/round45/SYNTHESIS.md)): the printed spaces are not the plaintext words in order; core negatives unaffected; 10 word-indexed rows reopened; transcription verified; T7 hardened, not a rate change. **Round 46 plan:** one correct printed-word loader and re-runs of R41 W1–W4 / R37 U2b-U3 with shuffled-word controls; pre-registered 2-rune-word and line-break tests; repair `stones/alignment.json`; a second blind reader for look-alike glyphs; no T7 generation-model sweep. Details in [`liber-primus/PICKUP-HERE.md`](liber-primus/PICKUP-HERE.md).
 
 _Updated **2026-08-26** (frozen; see the banner above). Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
 

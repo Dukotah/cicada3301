@@ -11,7 +11,7 @@ this document to it._
 > **Targeting update, 2026-11-09 (through Round 43 closeout + Round 44 wave 1).** The ranking
 > below survives, with four corrections a solver should load before spending an hour:
 >
-> 1. **Scale correction.** This is now **44 rounds** (Round 45 in progress) and `LEDGER.json` holds **365 rows**
+> 1. **Scale correction.** This is now **45 rounds** (Round 45 filed 2026-11-24) and `LEDGER.json` holds **384 rows**
 >    (was "36 rounds / 220 entries" in §1, "25 rounds" in §3/§6). And the §4.1/§5.2 figure "~0.50 %
 >    swept" is long stale: the Py2.7-MT `exact` cursor is at **52.05 % cumulative** after the
 >    R36–R42 sandbox windows (mixed-instrument; `analysis/round42/SYNTHESIS.md`). The GPU/C-port

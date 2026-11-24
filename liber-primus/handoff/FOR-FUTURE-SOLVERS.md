@@ -15,7 +15,7 @@ cryptography and nothing about this repository. It should get you productive in 
 >   central verdict, and of their 34 deduplicated hypotheses the ledger already held **every
 >   letter-stream item at adequate power** (17 CITED, 9 self-disclosed REOPENs). That is the
 >   strongest external validation the elimination record has had: if you arrive with a rune-stream
->   idea, the honest prior is that `LEDGER.json` (now **365 rows**, 0 unsound) already holds its
+>   idea, the honest prior is that `LEDGER.json` (now **384 rows**, 0 unsound) already holds its
 >   grave. Read `analysis/round43/SYNTHESIS.md`.
 > - **The open frontier is the page as a PHYSICAL object.** Every genuinely NEW blind-armada item
 >   (7 + 1 split) is a channel the loader has never represented — red ink, the p15 number grid,

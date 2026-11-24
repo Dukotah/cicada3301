@@ -1,0 +1,69 @@
+[
+ {
+  "id": "R45-T1-T7-NOT-RATE",
+  "lane": "round45/T1-t7-mechanism",
+  "hypothesis": "T7 (lag-1 gap autocorrelation +0.380 of LP2's 86 surviving doublets; R44-W2B3-D01-FALSIFIER) reflects non-stationarity of the doublet (filter-slip) RATE along the unsolved stream - smooth drift, sessioned generation, or regional rate heterogeneity - detectable by an ordering-sensitive rate statistic with a measured smooth-heterogeneity plant (the R44 SYNTHESIS section 2 gap).",
+  "status": "measured",
+  "round": "45/T1",
+  "date": "2026-11-23",
+  "threshold": "Pre-registered (PREREG.md sha-stamped in run.log before any output): primary S3 = random-walk log-rate HMM LRT (25-pair bins, 48 levels, 12-sigma grid) vs M0 null of 2,000 uniform 86-event draws; non-stationarity confirmed iff S3 p <= 0.01; gate = S3 power >= 0.5 at alpha 0.01 vs P-M2 sigma_L=0.8 AND M0 false-fire <= 0.02. Secondary S1 T7, S2 rank AC, S4 multi-scale Fano (W 250-2000), S5 free change-point LRT (K<=6, search inside the null).",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": {
+   "gate": "S3 power 0.865 vs P-M2 sigma_L=0.8 at alpha 0.01; M0 false fire 0.020 -> PASS",
+   "plant_classes": "7 classes x 2 strengths x 200 through the identical fit code: S3/S4/S5 power 0.59-0.99 vs session/drift/renewal plants at sigma_L=0.8; T7 power only 0.14-0.30 vs smooth drift (the previously unmeasured R44 caveat)",
+   "Q5_kill_check": "continue"
+  },
+  "null": "M0: 86 positions uniform without replacement on the 12,955-pair axis, D=2,000; E1 exploratory M0 D=10,000.",
+  "result": "S3 = 0.000 (sigma-hat = 0), p = 1.0 at gate-passed power 0.865 -> registered non-stationarity NOT confirmed; S4 p=0.38, S5 p=0.62 also null; only gap-ordering statistics fire (S1 T7 +0.380 p=0.0010, S2 +0.268 p=0.006). Exploratory E1: joint pattern (T7>=0.380 AND S3=0) 0/3,500 under rate plants (P-M1a, P-M1c, P-M2 at sigma_L 0.5/0.8, two-state switching) vs 1/10,000 under M0; whenever a rate process pushes T7 to 0.38, S3 sees it. Descriptive: T7 is concentrated (two gap pairs in the 2739-4388 void = 0.21 of 0.38; without top-5 pairs T7=0.09) and fragile - one extra doublet at any of ~740 positions (mostly runes 3040-4035, also 1565-1620, 9570-9625) drops T7 to p>0.01 (min 0.17, p=0.10).",
+  "coverage": "Five detection statistics with measured power against 7 rate/renewal plant classes x 2 strengths, on the 86-event lag-1 doublet set of the 12,956-rune unsolved stream; M2 posterior rate profile flat (6.64/1000 everywhere).",
+  "not_covered": [
+   "Model space: Hawkes/self-exciting and Markov-renewal (gap-dependent) loops; AR(1) mean-reverting drift; per-rune-value or plaintext-coupled rates. A Markov-renewal reading of T7 is not testable non-circularly on these 85 gaps.",
+   "Transition/generation model: lag-1 equality events only (no triplets, lag-2); conditional on the krisyotam/rtkd transcription, to which T7 is measured fragile (E0b).",
+   "Register: N/A (no plaintext adjudicator); covariate analogue = Z1 chapter, Z2 section, Z3 position-in-section, Z4 position-in-page."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round45/T1-t7-mechanism/PREREG.md",
+   "liber-primus/analysis/round45/T1-t7-mechanism/RESULTS.md",
+   "liber-primus/analysis/round45/T1-t7-mechanism/plants.json",
+   "liber-primus/analysis/round45/T1-t7-mechanism/results.json",
+   "liber-primus/analysis/round45/T1-t7-mechanism/addendum.json",
+   "liber-primus/analysis/round45/T1-t7-mechanism/fragility.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round45/T1-t7-mechanism && python3 run_plants.py && python3 run_real.py && python3 addendum.py && python3 fragility.py",
+  "reopens_if": "(i) the S1 transcription audit finds a hidden doublet in the E0b intervals (T7 likely dissolves) or confirms them clean (T7 hardens as a gap-sequence property); (ii) an independent filtered-event stream appears on which a Markov-renewal loop can be tested out of sample; (iii) a rate statistic with higher power at very short (<=3-event) scales is built.",
+  "notes": "Does not modify R44-W2B3-D01-FALSIFIER's p-value (T7 replicates at p=0.0010 here); it reinterprets it: T7 is a gap-ordering anomaly WITHOUT detectable rate heterogeneity, contrary to the R44 'smooth regional rate heterogeneity' reading. Coordinator: route fragility.json intervals to lane S1."
+ },
+ {
+  "id": "R45-T1-MECHANISM-SEPARATION",
+  "lane": "round45/T1-t7-mechanism",
+  "hypothesis": "The doublet-placement process can be attributed to one generation mechanism: M0 stationary Bernoulli leak; M1a/M1b sessioned generation at chapter/section boundaries; M1c sessions at free change points; M2 smoothly drifting slip rate; M3a/M3b rate driven by position-in-section/page; M4 stateful renewal rejection loop.",
+  "status": "measured",
+  "round": "45/T1",
+  "date": "2026-11-23",
+  "threshold": "Pre-registered: classifier = argmin BIC over the 8 models (Poisson point-process likelihood on the pair axis); 'favoured' = lowest BIC AND Stage-B recall >= 0.5 AND calibrated precision >= 0.6; 'decisive' adds dBIC >= 6 and precision >= 0.8; 'disfavoured' = dBIC >= 10 AND Stage-B recall >= 0.5; else 'not separable at n=86'. M4 excluded as T7 mechanism iff its plants' T7 95th pct < 0.380. Change-point coincidence per structure set at alpha 0.0025.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": {
+   "stageA": "fixed plants sigma_L 0.5/0.8 x 200: M3a/M3b recall ~1.0, M4 0.52-0.68, M1c 0.69-0.84; but M1a 0.02-0.13, M1b 0.00, M2 0.02-0.04 - session and drift plants collapse into M1c (e.g. P-M2 sigma_L=0.8 -> M1c 179/200)",
+   "stageB": "parametric bootstrap at real fits x 200: recall M0 0.80, M1a 0.00, M1b 0.00, M1c 0.43, M2 0.00, M3a 0.555 (precision 0.78), M3b 0.03, M4 0.205 - at the data's effect sizes most mechanisms are classified M0 57-80% of the time",
+   "specificity": "M0 draws classified as a heterogeneity model 23.4% (null) / 20% (Stage B), mostly M1c"
+  },
+  "null": "Stage-A/B plants through the identical fit_all code path; coincidence null = K uniform grid points, 10,000 draws.",
+  "result": "NOT SEPARABLE at n=86 for every mechanism except M3a, which the frozen rule labels 'favoured' (dBIC 1.11 over M0, BIC weight 0.51 vs 0.29, held-out +2.2 nats; recall 0.555, precision 0.78) - weak: nominal LRT p~0.018 before 2-covariate correction, picked under M0 2.5-3.5% of the time, and its Stage-B T7 95th pct is 0.19, so it does NOT explain T7. Fit: rate falls ~10.0 -> 4.1 per 1000 pairs from section start to end. M4 pure renewal EXCLUDED as the T7 mechanism (T7 95th pct 0.15-0.17). No model disfavoured (M1a/M1b lose by dBIC 27/61 but their Stage-B recall is 0). Best free change point K=1 at 4575 but BIC prefers K=0; no coincidence with chapter ends (p=0.82), section ends (0.95), page starts (0.11) or 10-dot pages (0.65). Chapter rates descriptive: chapters 5-6 ~2x chapters 1-4, not supported by BIC or held-out.",
+  "coverage": "8 models, 4 covariates, 6,400 simulated data sets (null + Stage A + Stage B) through one code path, real-data BIC + 2-fold held-out + coincidence tests.",
+  "not_covered": [
+   "Model space: Hawkes/self-exciting, Markov-renewal, AR(1) drift, value-coupled or plaintext-coupled rates; dot diamonds as rune-located boundaries (only approximately image-mapped, descriptive).",
+   "Generation model: lag-1 doublets only, transcribed unsolved stream only.",
+   "Register: N/A (no plaintext adjudicator)."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round45/T1-t7-mechanism/RESULTS.md",
+   "liber-primus/analysis/round45/T1-t7-mechanism/results.json",
+   "liber-primus/analysis/round45/T1-t7-mechanism/plants.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round45/T1-t7-mechanism && python3 run_plants.py && python3 run_real.py",
+  "reopens_if": "A larger or independent filtered-event sample (event count, not more statistics, is the binding constraint); out-of-sample replication of the M3a section-position decay; or a corrected transcription changing the event set.",
+  "notes": "Answers R44 SYNTHESIS section 2's mechanism question with a measured 'cannot discriminate at n=86' plus one exclusion (pure renewal loop). Follow-up of record is the transcription check of the E0b intervals (see R45-T1-T7-NOT-RATE), not a generation-model sweep."
+ }
+]

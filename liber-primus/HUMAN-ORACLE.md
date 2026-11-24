@@ -48,6 +48,22 @@ A **human reads the plaintext of two independent pages as language** (any regist
 non-English ones) and judges that it is connected prose, not word-salad that merely scores. Both pages must be
 readable without the reader being told what to expect. Only then:
 
+> **AMENDED 2026-11-24 (Round 45).** The "connected prose, not word-salad" clause above is kept as originally
+> written but no longer stands alone. R45-W1 measured that LP2's printed word breaks carry no plaintext word
+> order at any scope, and R45-I1 showed that under a shuffled-word plaintext (words permuted before
+> encipherment) a **correct key decodes to text that is right inside each word but scrambled in word order**:
+> it reads as word-salad by construction. Therefore:
+>
+> - A decode **must not be ruled `NOISE-CROSSER` solely because its word order reads as word-salad.**
+> - Judge it **at the word level**: are the decoded words real words of one language/register, spelled
+>   correctly, with a plausible vocabulary (bag-of-words fluency), across both pages?
+> - A decode that passes at the word level but fails on order is **routed to the oracle** with that stated in
+>   the bundle (`order: scrambled; words: valid`), not discarded. The adjudicator then decides, recording the
+>   word-level evidence alongside the order judgement.
+>
+> Sources: `analysis/round45/W1-spaces/RESULTS.md`, `analysis/round45/I1-decoy-space/RESULTS.md`,
+> `analysis/round45/SYNTHESIS.md` §2; ledger rows `R45-W1-ORDER-SCOPE`, `R45-I1-SPACE-BLIND-PIPELINE`.
+
 1. The adjudicator records `PASS` (or `NOISE-CROSSER`, with the reason) in the bundle and the issue.
 2. The coordinator may move the ledger row to `positive` and update `README.md`, `PICKUP-HERE.md`,
    `ELIMINATION-LEDGER.md` and `analysis/README.md` (CLAUDE.md "keep the navigation docs true").

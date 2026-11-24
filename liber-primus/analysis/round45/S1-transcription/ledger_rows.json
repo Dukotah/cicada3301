@@ -1,0 +1,70 @@
+[
+ {
+  "id": "R45-S1-CANON-ERROR-RATE",
+  "lane": "round45/S1-transcription",
+  "hypothesis": "The single shared LP2 transcription (canon, rtkd root; every public effort incl. FlareZ123 uses it) carries glyph-level errors at >= 1 % on the unsolved stream, or at any of the 86 doublet sites, such that a correction changes the doublet count or the PROBLEM.json stream sha256.",
+  "status": "measured",
+  "round": "45/S1",
+  "date": "2026-11-23",
+  "threshold": "Pre-registered (PREREG.md, dated before output): blind read of crops from the sha256-pinned relikd renders, sealed canon; canon-error only if unblinded zoom re-inspection shows a different Gematria Primus rune at high confidence; exact Clopper-Pearson 95 %; H1 if any canon-error or F1 CP lower bound > 1 %. Reader gate: control accuracy >= 90 %.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": {
+   "reader control": "31 solved-page glyphs (73.jpg, labels confirmed by decryption) through the identical crop glue: 31/31 (CP95 lower 0.888)",
+   "gate history": "first scored 4/24 because the control label map was broken by 73.jpg's drop-cap (Addendum A2); 74.jpg controls (13) unalignable and dropped; 20 extra controls added blind (A3)",
+   "blind agreement on canon items": "381/391 (97.4 %); all 10 disagreements inside look-alike families (A/AE/O 7, D->M 2, TH->W 1), all resolved to canon at zoom / M-D template correlation"
+  },
+  "null": "Binomial: 0 errors in n reads bounds the per-glyph error rate by the exact CP upper limit.",
+  "result": "NO CANON ERROR FOUND. 0/398 adjudicated canon glyphs (0 ambiguous): F1 stratified random 0/66 (CP95 [0, 5.44 %]); F1+F4 uniform 0/146 ([0, 2.49 %]); F2 doublet census 86/86 sites = 172 glyphs confirmed ([0, 2.12 %]); F3 near-doublets 0/80 ([0, 4.51 %]). No correction proposed; doublet count 86 unchanged; solved-page boundaries untouched; PROBLEM.json sha256 023312066df4...3af1585 unchanged. 7 glyphs (incl. doublet sites K075 F,F and K103 AE,AE) re-located after an alignment defect and re-read unblinded.",
+  "coverage": "398 canon glyphs (F1 66 + F2 172 + F3 80 + F4 80) of 12,956 plus 31 controls; F2 is a census of all 86 doublet sites. Reader detection power ~0.93 within look-alike families, ~1.0 elsewhere (blind agreement), 31/31 on controls.",
+  "not_covered": [
+   "The ~149 positions RiskAverseTech did not align: no per-position RAT data is committed and no pinned fetch exists, so not fetched (the repo record is RAT 0 disagreements / 12,807 aligned; the 149 are unaligned, not disagreements).",
+   "~12,560 positions outside the read set (uniform rate bounded at <= 2.5 % at 95 %, not measured below that).",
+   "Errors that are simultaneously segmentation and label errors on exact-box lines.",
+   "Look-alike calls below the resolution of the relikd 2400x3600 render (the crisp masters were not used)."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round45/S1-transcription/PREREG.md",
+   "liber-primus/analysis/round45/S1-transcription/RESULTS.md",
+   "liber-primus/analysis/round45/S1-transcription/adjudications.json",
+   "liber-primus/analysis/round45/S1-transcription/stats.json",
+   "liber-primus/analysis/round45/S1-transcription/blind_reads.json",
+   "liber-primus/analysis/round45/S1-transcription/reinspect.json"
+  ],
+  "reproduce": "cd liber-primus && PYTHONUTF8=1 python analysis/round45/S1-transcription/build_set.py && ... extra_controls.py && ... relabel_controls.py && ... correct_map.py && ... strip_registration.py && ... adjudicate.py && ... stats.py (blind reads are agent input)",
+  "reopens_if": "A pinned copy of RAT's per-position output is committed (adjudicate the 149 unaligned positions with this glue); or a higher-resolution master is available for look-alike-family positions.",
+  "notes": "Register/transition analogues per doctrine Q4 are in RESULTS.md. This row supports, at measured bounds, the TRANSCRIPTION-VERDICT corroboration; it does not prove the transcription error-free."
+ },
+ {
+  "id": "R45-S1-STONES-ALIGNMENT-DEFECT",
+  "lane": "round45/S1-transcription",
+  "hypothesis": "analysis/stones/alignment.json + build_dataset.py's positional clean[i] <-> alignment[i] pairing registers every segmented image line to its correct canon line.",
+  "status": "audit",
+  "round": "45/S1",
+  "date": "2026-11-23",
+  "threshold": "Audit (no pass/fail bar): page-membership check of alignment against canon '%' breaks, page-constrained DP registration of segment counts, and blind strip reads as registration evidence (Addenda A4/A5).",
+  "threshold_fixed_in_advance": false,
+  "positive_control": "n/a",
+  "control_detail": {
+   "direct verification": "item K075 (doublet site, canon line 402 = F,F) received an 'exact' crop that showed line 401; the blind read TH,P equals line 401's glyphs at that offset",
+   "DP fallibility": "the page-constrained DP mis-registered K250's strip (image 11) to line 128; the blind strip read fits line 127 at 0.80 vs 0.36"
+  },
+  "null": "n/a",
+  "result": "FOUND-ERROR. alignment.json assigns canon line 399 (page 36) to image 35 and 432 (page 39) to image 38, the only two page-break crossings; and dropping canon lines < 10 glyphs from 'clean' shifts every line above them by one. Where adjacent canon lines share a length the crop is 'exact' but on the wrong line: DP flags 4 false-exact lines (canon 76, 171, 173, 402 ~ 89 glyphs, ~0.8 % of the 10,774 labels in analysis/stones/dataset.npz); line 402 verified by blind read.",
+  "coverage": "All 56 relikd images registered by page-constrained DP; 38 window strips registered by blind read; 1 false-exact line verified by eye.",
+  "not_covered": [
+   "Lines 76, 171, 173 are DP-flagged only, not verified by eye.",
+   "Downstream impact on the Campaign-V SVC and on analysis/independent-read/ (its 450 O/A/AE disagreements) not re-measured."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round45/S1-transcription/RESULTS.md",
+   "liber-primus/analysis/round45/S1-transcription/PREREG.md",
+   "liber-primus/analysis/round45/S1-transcription/corrected_map.json",
+   "liber-primus/analysis/round45/S1-transcription/strip_registration.json",
+   "liber-primus/analysis/round45/S1-transcription/adjudicate.log"
+  ],
+  "reproduce": "cd liber-primus && PYTHONUTF8=1 python analysis/round45/S1-transcription/correct_map.py && PYTHONUTF8=1 python analysis/round45/S1-transcription/strip_registration.py",
+  "reopens_if": "alignment.json is repaired (page-break crossings at images 35/36 and 38/39; short-line drop shift) and dataset.npz rebuilt; then re-run analysis/independent-read/ and the Campaign-V classifier on corrected labels.",
+  "notes": "Reported, not repaired (lane writes only in its own dir). Does not affect canon itself or the PROBLEM.json stream; affects only tools that locate glyphs in images via alignment.json."
+ }
+]

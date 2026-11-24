@@ -1,0 +1,146 @@
+[
+ {
+  "id": "R45-X1-W1-AUDIT",
+  "hypothesis": "R45-W1's 'no order at any scale' is an artifact of segmentation (line/page-wrap handling), of a mis-specified solved reference, or of the size-scaling of z.",
+  "threshold": "Reproduce W1's A_global LLR/MI on LP2 and the solved reference (2,000 global shuffles, W1's own LLR model); any alternative segmentation giving LLR z >= 3.35 on LP2 = FOUND-ERROR.",
+  "positive_control": "passed",
+  "control_detail": {
+   "reproduction": "LP2 LLR z -1.16 (lane -1.18); solved +3.75 (lane +3.79)",
+   "segmentation sensitivity": "line-breaks-as-word-breaks lowers solved z to +2.81, i.e. the W1 rule is the right one"
+  },
+  "null": "global shuffle of word lengths, 2,000 draws",
+  "result": "NO-ERROR-FOUND with caveats. LP2 under line-break or page-break segmentation: LLR z +0.75 / -1.55, MI -0.49 / +0.26 (no order). Caveats: '+7.5 at matched size' is a point extrapolation, 95% range ~+3.6..+11.4 (still far above -1.18); solved-Cicada control is weak at its own size (LLR 3.79 vs bar 3.35, MI fails); PREREG mtime post-dates outputs (appended addenda, no sha stamp); q-hat<=0.20 contiguity bound assumes stationary leakage (T7 says not). Post-hoc lead: 71% of LP2 line breaks fall inside words (chance ~78%) vs 53% in LP1 (chance 75%).",
+  "coverage": "W1 Q1 A_global under 3 segmentations; solved reference membership; transliteration-rule selection logic; control/look-elsewhere bookkeeping.",
+  "not_covered": [
+   "W1 Q2 multiset/M4 and Q3 leakage nulls not re-run",
+   "English corpus cleaning not re-audited line by line"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round45/X1-redteam/AUDIT.md",
+   "liber-primus/analysis/round45/X1-redteam/x1_w1_segmentation.py",
+   "liber-primus/analysis/round45/X1-redteam/x1_w1_segmentation.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round45/X1-redteam && python x1_w1_segmentation.py",
+  "reopens_if": "a printed-word segmentation rule other than W1's is shown correct from the page images",
+  "notes": "Row R45-W1-ORDER-SCOPE should quote the z range, not '~+7.5'.",
+  "status": "audit",
+  "round": "45/X1",
+  "date": "2026-11-23",
+  "lane": "round45/X1-redteam",
+  "threshold_fixed_in_advance": true
+ },
+ {
+  "id": "R45-X1-I1-AUDIT",
+  "hypothesis": "R45-I1's 'bit-identical under 4 space conditions' is a measurement of space-blindness, and its reopen list is correct.",
+  "threshold": "Read the harness; check the real LP2 load path; diff the R41 enc_words copy; check reopen rows against LEDGER text.",
+  "positive_control": "n/a (code audit)",
+  "control_detail": {
+   "enc_words": "identical to round41 run_c1.py:107-124 modulo alias C->C7 (diff -w clean)"
+  },
+  "null": "n/a",
+  "result": "FOUND-ERROR (low): the a-d bit-identity is tautological -- arm_beam.py asserts parse(render(C))==C before decoding, so it cannot fail; space-blindness holds by construction (src/lp/gematria.runes_to_indices), not by measurement. Condition e (H-shuffle) is a genuine measurement and stands. Reopen rows verified word-indexed except R40-C1-INCONCLUSIVE-R31 (row text does not show word positions). Missed a pre-existing defect: see R45-X1-R41-LINEWRAP-SEGMENTATION. Closing stamp time (21:25) post-dates the file mtime (21:21).",
+  "coverage": "arm_beam/common45 harness, src/lp loaders, 10 reopen rows, R41 enc_words.",
+  "not_covered": [
+   "arm_skeleton / arm_7gram numerics not re-run",
+   "B/C class rows not re-read in code"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round45/X1-redteam/AUDIT.md"
+  ],
+  "reproduce": "read analysis/round45/I1-decoy-space/arm_beam.py render/parse/assert block",
+  "reopens_if": "an instrument is found that receives separators in its real LP2 path",
+  "notes": "Restate the R45-I1-SPACE-BLIND-PIPELINE threshold as 'space-blind by construction'.",
+  "status": "audit",
+  "round": "45/X1",
+  "date": "2026-11-23",
+  "lane": "round45/X1-redteam",
+  "threshold_fixed_in_advance": true
+ },
+ {
+  "id": "R45-X1-R41-LINEWRAP-SEGMENTATION",
+  "hypothesis": "The R41-C1-R14-WORDSUM-SELFKEY real run decoded LP2 with the printed word segmentation it assumed.",
+  "threshold": "Plant English with LP2's exact page lengths and line-break positions, encipher with true words (verbatim enc_words), decrypt with camp7.decrypt_variant under camp7.word_pages-style parsing vs '-'-only parsing; mean page recovery < 0.9 under the camp7 parse = FOUND-ERROR.",
+  "positive_control": "passed",
+  "control_detail": {
+   "dash-only parse": "recovery 1.00 for W1-W5, both signs",
+   "W5 (space-blind)": "1.00 under both parses"
+  },
+  "null": "n/a (power measurement)",
+  "result": "FOUND-ERROR (medium, pre-existing). camp7.word_pages breaks words at any non-rune incl. '/' and newline: LP2 = 3,316 words vs 2,896 (420 line-wrapped words split). R41's plants were recut with the same fragmented lengths, so could not see it. Mean page recovery under the real parse: W1 0.79-0.81, W2 0.25-0.26, W3 0.91, W4 0.78-0.80 (pages >= 0.9: 0.03 / 0.00 / 0.68 / 0.01-0.04). R41's W1-W4 negative is underpowered even under true in-order spaces, and under H-shuffle (not excluded by W1). Panel power at these recoveries not measured. mapcommon (R37/R38/R39) and skeleton handle '/' correctly but split at '%' (32 words); mapcommon ignores '&'/'$'.",
+  "coverage": "R14 W1-W5 x sign +/-1, atbash off, 3 English layouts x 55 pages.",
+  "not_covered": [
+   "panel-R36 pmax vs bar on the corrupted decodes",
+   "atbash variants",
+   "R37 U2b/U3 '%'/'&'/'$' effect not measured"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round45/X1-redteam/AUDIT.md",
+   "liber-primus/analysis/round45/X1-redteam/x1_r41_linewrap.py",
+   "liber-primus/analysis/round45/X1-redteam/x1_r41_linewrap.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round45/X1-redteam && python x1_r41_linewrap.py",
+  "reopens_if": "(already on the I1 reopen list) re-run R41-R14 W1-W4 with a W1-rule printed-word loader and H-shuffle plants on LP2's real layout",
+  "notes": "Attach to R41-C1-R14-WORDSUM-SELFKEY not_covered.",
+  "status": "audit",
+  "round": "45/X1",
+  "date": "2026-11-23",
+  "lane": "round45/X1-redteam",
+  "threshold_fixed_in_advance": true
+ },
+ {
+  "id": "R45-X1-S1-AUDIT",
+  "hypothesis": "R45-S1's 0-error bound and its alignment.json line-shift defect hold up under independent check.",
+  "threshold": "Verify the line-402 defect from alignment.json + canon '%' markers + page images; review the blinding/adjudication/control chain.",
+  "positive_control": "passed",
+  "control_detail": {
+   "image check": "p35 ends with canon 398; p36 first text line = canon 399 (23 glyphs, ...AE AE O . Y); canon 401 and 402 are both 22 glyphs, so clean[2] (physical 401) pairs with canon 402 as 'exact'; 401 opens TH,P = S1's blind read"
+  },
+  "null": "n/a",
+  "result": "NO-ERROR-FOUND with caveats. Defect verified. Caveats (medium, bound only): blinding is honour-system (same agent sealed and read); all 10 blind mismatches resolved toward canon by an unblinded adjudicator; family miss-rate (~7%) estimated circularly from canon-resolved disagreements; 31 controls from one page with few O/A/AE or M/D. The 0/146 bound is solid for non-family glyphs and conditional for O/A/AE, M/D. Control relabel honest (20/20 out-of-sample sealed controls). PREREG mtime post-dates the reads (appended addenda).",
+  "coverage": "alignment.json images 34-39, canon lines 396-404 and 429-435, S1 control and adjudication chain.",
+  "not_covered": [
+   "lines 76, 171, 173 false-exact claims not checked by eye",
+   "no re-read of any glyph"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round45/X1-redteam/AUDIT.md"
+  ],
+  "reproduce": "see AUDIT.md section 3",
+  "reopens_if": "an independent blind reader (a different agent) re-reads the O/A/AE and M/D items",
+  "notes": "",
+  "status": "audit",
+  "round": "45/X1",
+  "date": "2026-11-23",
+  "lane": "round45/X1-redteam",
+  "threshold_fixed_in_advance": true
+ },
+ {
+  "id": "R45-X1-T1-AUDIT",
+  "hypothesis": "R45-T1 claims hold: T7 replicates; S3 powered null; no fitted mechanism reproduces T7; top-5 gap pairs carry 0.29 of 0.38 (localisation); Fable52 called T7 distributed.",
+  "threshold": "Compare the observed top-5 share and residual-after-top-5 with the same quantities under 20,000 uniform 86-site draws.",
+  "positive_control": "passed",
+  "control_detail": {
+   "reproduction": "r=0.380, top5=0.291 (= T1 E0)"
+  },
+  "null": "86 sites uniform on 12,955 adjacencies, 20,000 draws, top-5 removal applied identically",
+  "result": "NO-ERROR-FOUND with interpretive caveat. PREREG sha chain verified append-only (prefix hashes up to each Addendum match run.log stamps 02c52532/45dd27d4/9b9459db). T7 p=0.00055 under independent uniform null. Caveat: concentration is generic -- null draws with r>=0.3 have median top-5 share 0.76 (observed 0.77); residual after removing top-5 pairs Pearson 0.126 p=0.040, rank 0.181 p=0.052. T1 item 3 should not be read as localisation; Fable52 and T1 are consistent. E0b fragility (~740 positions) is valid and is the best-aimed follow-up (targeted blind re-read).",
+  "coverage": "Pearson and rank lag-1 AC of the 86-site gap series, top-5 decomposition.",
+  "not_covered": [
+   "T1 Stage-B / mechanism fits",
+   "covariate models"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round45/X1-redteam/AUDIT.md",
+   "liber-primus/analysis/round45/X1-redteam/x1_t7_concentration.py",
+   "liber-primus/analysis/round45/X1-redteam/x1_t7_concentration.json"
+  ],
+  "reproduce": "cd liber-primus/analysis/round45/X1-redteam && python x1_t7_concentration.py",
+  "reopens_if": "a localisation claim is backed by a matched null, or the E0b targeted re-read finds a hidden doublet",
+  "notes": "Fable52 external-path inventory in AUDIT.md section 6.",
+  "status": "audit",
+  "round": "45/X1",
+  "date": "2026-11-23",
+  "lane": "round45/X1-redteam",
+  "threshold_fixed_in_advance": true
+ }
+]
