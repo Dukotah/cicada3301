@@ -21,15 +21,15 @@
   "audit"
  ],
  "counts": {
-  "total": 400,
+  "total": 420,
   "by_status": {
-   "audit": 55,
+   "audit": 62,
    "eliminated": 5,
    "inconclusive": 14,
-   "measured": 128,
-   "negative": 139,
+   "measured": 139,
+   "negative": 140,
    "never-run": 10,
-   "open": 19,
+   "open": 20,
    "partially-run": 25,
    "superseded": 5
   }
@@ -944,7 +944,7 @@
    "superseded_by": null,
    "reopens_if": null,
    "priority": null,
-   "notes": "R45 (2026-11-23): assumes printed LP2 words are the plaintext's words in order; R45-IMPORT-WORDLEN-GRAMMAR measures no word-order grammar in the printed lengths, so this row's negative/measurement is conditional on that premise (power under a decoy-space alternative: R45 I1). R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. R46 (2026-11-24): re-measured with the corrected printed-word loader words.py (R46-L1-SKELETON-RERUN): real re-run at chance (best 584/2,896 = 20.2%; a true plaintext sits near 100%). Power (a) true spaces in order 1.00 (legacy loader 0.25-0.50: the old negative was weakened even with true spaces); (b) words shuffled within sentence 0.00; (b') printed lengths permuted 0.00. Holds under (a) for the resident corpus; CONDITIONAL under (b)/(b'). See R46-L1-REOPEN-VERDICTS. Status left as recorded.",
+   "notes": "R45 (2026-11-23): assumes printed LP2 words are the plaintext's words in order; R45-IMPORT-WORDLEN-GRAMMAR measures no word-order grammar in the printed lengths, so this row's negative/measurement is conditional on that premise (power under a decoy-space alternative: R45 I1). R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. R46 (2026-11-24): re-measured with the corrected printed-word loader words.py (R46-L1-SKELETON-RERUN): real re-run at chance (best 584/2,896 = 20.2%; a true plaintext sits near 100%). Power (a) true spaces in order 1.00 (legacy loader 0.25-0.50: the old negative was weakened even with true spaces); (b) words shuffled within sentence 0.00; (b') printed lengths permuted 0.00. Holds under (a) for the resident corpus; CONDITIONAL under (b)/(b'). See R46-L1-REOPEN-VERDICTS. Status left as recorded. R47 (2026-11-25): (b') figures are each row's own decoder fed the printed lengths: a decoder conditional, not a blindness bound. With the key in hand the (b') loss is the decoder's, not the information's (R47-X1-C10-SEGMENTATION-BEAM-CROSSING: a position-synchronous segmentation beam recovers 0.962 / 0.976 of U2b plants); with an unknown key from a 65,536-key family, printed-start ranking + that arrangement beam recovers 78-88/100 (R47-H2-C10-UNKNOWN-KEY-BASELINES). Word-indexed negatives can be re-adjudicated under (b') with an arrangement-aware decoder where the key family is bounded (Round 48). Status left as recorded.",
    "evidence_missing": []
   },
   {
@@ -3050,7 +3050,8 @@
     "out_b1.json"
    ],
    "control_detail": "passed - keyskip supp=0.83 max_skip=3 beam_w=400 recovers at -4.303, 100% rune recovery, reproducing the published gate",
-   "r33_x1_supersession": "SUPERSEDED IN PART (X1/R33, round33/X1-redteam/rerun_i2_doublet.json): the 'skip_by_two ct_doublet 0.84 % reproduces LP2 0.664 %' figure does not replicate. 0.84 % = 2 doublets in 239 pairs (median of 7 seeds at L=240; granularity). 300 reps at L=240: mean 0.57-0.61 %, median 0.418 % (1 doublet); full length 12,956 (30 reps): 0.593-0.596 % for skip_by_two, same as keyskip1 (0.598 %). All output-side filters give ~0.60 % (analytic q(1-s)/(1-qs) = 0.6035 %); the observed statistic still excludes key-side/plain-side filters (3.77/3.80 %) but does not favour skip_by_two over keyskip1. Original text kept."
+   "r33_x1_supersession": "SUPERSEDED IN PART (X1/R33, round33/X1-redteam/rerun_i2_doublet.json): the 'skip_by_two ct_doublet 0.84 % reproduces LP2 0.664 %' figure does not replicate. 0.84 % = 2 doublets in 239 pairs (median of 7 seeds at L=240; granularity). 300 reps at L=240: mean 0.57-0.61 %, median 0.418 % (1 doublet); full length 12,956 (30 reps): 0.593-0.596 % for skip_by_two, same as keyskip1 (0.598 %). All output-side filters give ~0.60 % (analytic q(1-s)/(1-qs) = 0.6035 %); the observed statistic still excludes key-side/plain-side filters (3.77/3.80 %) but does not favour skip_by_two over keyskip1. Original text kept.",
+   "notes": "R47 (2026-11-25): a named representational gap. V-BACK (a backstepping rejection loop) is scored as noise by the reference beam and beam_v3 (0/40, median -7.01 / -6.79; R47-H1-C9-REJECTION-LOOP-BASELINE), so no beam-based negative covers it. A beam with one added backstep relation recovers 32/40 (dev seed; R47-X1-C9-VBACK-BACKSTEP-RELATION). V-BACK is consistent with LP2's surface statistics but no measured fact raises its prior (R47-X1-C9-VARIANT-SURFACE-STATS). Round 48: backstep-aware beam, certified on C3 gates, then re-adjudicate beam-based negatives under V-BACK. V-NULL (key not shifted) is a recovery gap only and is already covered at detection."
   },
   {
    "id": "L7-C-HEADLINE-STATS",
@@ -8862,7 +8863,7 @@
     "HEBREW"
    ],
    "r40_i1": "see R40-I1-REPLANT-CONTROLS",
-   "notes": "R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. Applies to the U2b half only; U2a is space-blind. R46 (2026-11-24): U2b half re-checked with words.py (R46-L1-R37-U2B-U3-RECHECK): decoded-head word boundaries identical, real decodes identical; plant power (a) 64/64, (b) 64/64, (b') 0/64. Holds under (a) and (b); conditional only under (b') (printed lengths not the plaintext's). See R46-L1-REOPEN-VERDICTS. Status left as recorded."
+   "notes": "R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. Applies to the U2b half only; U2a is space-blind. R46 (2026-11-24): U2b half re-checked with words.py (R46-L1-R37-U2B-U3-RECHECK): decoded-head word boundaries identical, real decodes identical; plant power (a) 64/64, (b) 64/64, (b') 0/64. Holds under (a) and (b); conditional only under (b') (printed lengths not the plaintext's). See R46-L1-REOPEN-VERDICTS. Status left as recorded. R47 (2026-11-25): (b') figures are each row's own decoder fed the printed lengths: a decoder conditional, not a blindness bound. With the key in hand the (b') loss is the decoder's, not the information's (R47-X1-C10-SEGMENTATION-BEAM-CROSSING: a position-synchronous segmentation beam recovers 0.962 / 0.976 of U2b plants); with an unknown key from a 65,536-key family, printed-start ranking + that arrangement beam recovers 78-88/100 (R47-H2-C10-UNKNOWN-KEY-BASELINES). Word-indexed negatives can be re-adjudicated under (b') with an arrangement-aware decoder where the key family is bounded (Round 48). For this U2b class the (b')-robust unknown-key re-run costs about 11-88 s per unit over a 2^16 family (R47-H2), so it is a Round 48 in-house item. Status left as recorded."
   },
   {
    "round": 37,
@@ -8955,7 +8956,7 @@
     "HEBREW"
    ],
    "r40_i1": "see R40-I1-REPLANT-CONTROLS",
-   "notes": "R45 (2026-11-23): assumes printed LP2 words are the plaintext's words in order; R45-IMPORT-WORDLEN-GRAMMAR measures no word-order grammar in the printed lengths, so this row's negative/measurement is conditional on that premise (power under a decoy-space alternative: R45 I1). R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. R46 (2026-11-24): re-checked with words.py (R46-L1-R37-U2B-U3-RECHECK): pages 1-2 open mid-word, so the 928 rho3 decodes were re-run with the full printed length; best ks1 4.352 / ks2 3.843 / direct 3.697, all below bars (6.632/6.529/6.895). Plant power (a) 48/48 (legacy 45/48), (b) 48/48, (b') 0/48. Holds under (a) and (b); conditional under (b'). See R46-L1-REOPEN-VERDICTS. Status left as recorded."
+   "notes": "R45 (2026-11-23): assumes printed LP2 words are the plaintext's words in order; R45-IMPORT-WORDLEN-GRAMMAR measures no word-order grammar in the printed lengths, so this row's negative/measurement is conditional on that premise (power under a decoy-space alternative: R45 I1). R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. R46 (2026-11-24): re-checked with words.py (R46-L1-R37-U2B-U3-RECHECK): pages 1-2 open mid-word, so the 928 rho3 decodes were re-run with the full printed length; best ks1 4.352 / ks2 3.843 / direct 3.697, all below bars (6.632/6.529/6.895). Plant power (a) 48/48 (legacy 45/48), (b) 48/48, (b') 0/48. Holds under (a) and (b); conditional under (b'). See R46-L1-REOPEN-VERDICTS. Status left as recorded. R47 (2026-11-25): (b') figures are each row's own decoder fed the printed lengths: a decoder conditional, not a blindness bound. With the key in hand the (b') loss is the decoder's, not the information's (R47-X1-C10-SEGMENTATION-BEAM-CROSSING: a position-synchronous segmentation beam recovers 0.962 / 0.976 of U2b plants); with an unknown key from a 65,536-key family, printed-start ranking + that arrangement beam recovers 78-88/100 (R47-H2-C10-UNKNOWN-KEY-BASELINES). Word-indexed negatives can be re-adjudicated under (b') with an arrangement-aware decoder where the key family is bounded (Round 48). Status left as recorded."
   },
   {
    "id": "R10-L2-MAP",
@@ -10449,7 +10450,7 @@
     "HEBREW"
    ],
    "r40_i1": "see R40-I1-REPLANT-CONTROLS",
-   "notes": "R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. R46 (2026-11-24): real decodes identical under the corrected loader words.py (rho1 word index; heads' boundaries unchanged), so the real result holds. Power under (a)/(b) for this row's own lexicon->key glue is NOT measured (R46-X1 §5.4: the U3 rho1 plants share decoder/judge only); under (b') every word-indexed row falls to <= 0.033. See R46-L1-REOPEN-VERDICTS. Status left as recorded."
+   "notes": "R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. R46 (2026-11-24): real decodes identical under the corrected loader words.py (rho1 word index; heads' boundaries unchanged), so the real result holds. Power under (a)/(b) for this row's own lexicon->key glue is NOT measured (R46-X1 §5.4: the U3 rho1 plants share decoder/judge only); under (b') every word-indexed row falls to <= 0.033. See R46-L1-REOPEN-VERDICTS. Status left as recorded. R47 (2026-11-25): power MEASURED through this row's own glue (R47-L2-SEMANTIC-WORDNET-POWER): 1.00 under (a) and (b), C0/CS/CE; real CS/CE re-run on pages 1-2 best shift 4.112 / A3 5.102 vs 7.216 / 8.174. Holds under (a)/(b); (b') 0.00 for its own decoder. (b') figures are each row's own decoder fed the printed lengths: a decoder conditional, not a blindness bound. With the key in hand the (b') loss is the decoder's, not the information's (R47-X1-C10-SEGMENTATION-BEAM-CROSSING: a position-synchronous segmentation beam recovers 0.962 / 0.976 of U2b plants); with an unknown key from a 65,536-key family, printed-start ranking + that arrangement beam recovers 78-88/100 (R47-H2-C10-UNKNOWN-KEY-BASELINES). Word-indexed negatives can be re-adjudicated under (b') with an arrangement-aware decoder where the key family is bounded (Round 48). Status left as recorded."
   },
   {
    "round": 38,
@@ -10566,7 +10567,7 @@
     "HEBREW"
    ],
    "r40_i1": "see R40-I1-REPLANT-CONTROLS",
-   "notes": "R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. R46 (2026-11-24): real decodes identical under the corrected loader words.py (rho1 word index), so the real result holds. Power under (a)/(b) for this row's own frequency-rank glue is NOT measured (R46-X1 §5.4); under (b') every word-indexed row falls to <= 0.033. See R46-L1-REOPEN-VERDICTS. Status left as recorded."
+   "notes": "R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. R46 (2026-11-24): real decodes identical under the corrected loader words.py (rho1 word index), so the real result holds. Power under (a)/(b) for this row's own frequency-rank glue is NOT measured (R46-X1 §5.4); under (b') every word-indexed row falls to <= 0.033. See R46-L1-REOPEN-VERDICTS. Status left as recorded. R47 (2026-11-25): power MEASURED through this row's own glue (R47-L2-SEMANTIC-FREQRANK-POWER): 1.00 under (a) and (b), C0/CS/CE; real CS/CE re-run on pages 1-2 best shift 3.324 / A3 5.896 vs 7.216 / 8.174. Holds under (a)/(b); (b') 0.00 for its own decoder. (b') figures are each row's own decoder fed the printed lengths: a decoder conditional, not a blindness bound. With the key in hand the (b') loss is the decoder's, not the information's (R47-X1-C10-SEGMENTATION-BEAM-CROSSING: a position-synchronous segmentation beam recovers 0.962 / 0.976 of U2b plants); with an unknown key from a 65,536-key family, printed-start ranking + that arrangement beam recovers 78-88/100 (R47-H2-C10-UNKNOWN-KEY-BASELINES). Word-indexed negatives can be re-adjudicated under (b') with an arrangement-aware decoder where the key family is bounded (Round 48). Status left as recorded."
   },
   {
    "id": "R38-I1-GLYPH-RECOGNIZER",
@@ -10857,7 +10858,7 @@
     "HEBREW"
    ],
    "r40_i1": "see R40-I1-REPLANT-CONTROLS",
-   "notes": "R45 (2026-11-23): assumes printed LP2 words are the plaintext's words in order; R45-IMPORT-WORDLEN-GRAMMAR measures no word-order grammar in the printed lengths, so this row's negative/measurement is conditional on that premise (power under a decoy-space alternative: R45 I1). R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. R46 (2026-11-24): NOT re-run. Pages 0 and 3 unchanged under words.py; pages 1, 2, 4, 5 open mid-word, so word 1's cw/dw pointer depends on the fragment convention (32 of 55 LP2 pages open mid-word). CONDITIONAL on the fragment convention and under (b'). Re-run scheduled for Round 47. See R46-L1-REOPEN-VERDICTS. Status left as recorded."
+   "notes": "R45 (2026-11-23): assumes printed LP2 words are the plaintext's words in order; R45-IMPORT-WORDLEN-GRAMMAR measures no word-order grammar in the printed lengths, so this row's negative/measurement is conditional on that premise (power under a decoy-space alternative: R45 I1). R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. R46 (2026-11-24): NOT re-run. Pages 0 and 3 unchanged under words.py; pages 1, 2, 4, 5 open mid-word, so word 1's cw/dw pointer depends on the fragment convention (32 of 55 LP2 pages open mid-word). CONDITIONAL on the fragment convention and under (b'). Re-run scheduled for Round 47. See R46-L1-REOPEN-VERDICTS. Status left as recorded. R47 (2026-11-25): RE-RUN (R47-L2-G3-RERUN). Fragment conventions C0/CS/CE stated for mid-word pages 1, 2, 4, 5; 768 real decodes, best ks1 5.440 / ks2 4.737 / direct 4.111 vs bars 6.048 / 5.967 / 6.574, 0 flagged. Power 1.00 under (a) and (b) for every convention; (b') 0.00 for the row's own printed-length decoder (segmentation search not run). The R46 fragment-convention CONDITIONAL is closed; conditional only under (b'). (b') figures are each row's own decoder fed the printed lengths: a decoder conditional, not a blindness bound. With the key in hand the (b') loss is the decoder's, not the information's (R47-X1-C10-SEGMENTATION-BEAM-CROSSING: a position-synchronous segmentation beam recovers 0.962 / 0.976 of U2b plants); with an unknown key from a 65,536-key family, printed-start ranking + that arrangement beam recovers 78-88/100 (R47-H2-C10-UNKNOWN-KEY-BASELINES). Word-indexed negatives can be re-adjudicated under (b') with an arrangement-aware decoder where the key family is bounded (Round 48). Status left as recorded."
   },
   {
    "round": 38,
@@ -11170,7 +11171,7 @@
     "HEBREW"
    ],
    "r40_i1": "see R40-I1-REPLANT-CONTROLS",
-   "notes": "R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. R46 (2026-11-24): real decodes identical under the corrected loader words.py (rho1 word index), so the real result holds. Power under (a)/(b) for this row's own sense-lookup glue is NOT measured (R46-X1 §5.4); under (b') every word-indexed row falls to <= 0.033. See R46-L1-REOPEN-VERDICTS. Status left as recorded."
+   "notes": "R45 (2026-11-24): reopened - this negative is conditional on LP2's printed spaces being the plaintext's words in order. R45-W1 measures no word order at any scope and R45-I1 measures power 1.0 -> 0 for this word-indexed construction under a decoy/shuffled-space reading (R45-I1-DECOY-SPACE-REOPEN-LIST). Status left as recorded; read it as conditional. R46 (2026-11-24): real decodes identical under the corrected loader words.py (rho1 word index), so the real result holds. Power under (a)/(b) for this row's own sense-lookup glue is NOT measured (R46-X1 §5.4); under (b') every word-indexed row falls to <= 0.033. See R46-L1-REOPEN-VERDICTS. Status left as recorded. R47 (2026-11-25): power MEASURED through this row's own glue (R47-L2-SENSE-POWER): 1.00 under (a) and (b), C0/CS/CE; real CS/CE re-run on pages 1-2 best shift 4.161 / A3 5.171 vs 6.953 / 7.912. Holds under (a)/(b); (b') 0.00 for its own decoder. (b') figures are each row's own decoder fed the printed lengths: a decoder conditional, not a blindness bound. With the key in hand the (b') loss is the decoder's, not the information's (R47-X1-C10-SEGMENTATION-BEAM-CROSSING: a position-synchronous segmentation beam recovers 0.962 / 0.976 of U2b plants); with an unknown key from a 65,536-key family, printed-start ranking + that arrangement beam recovers 78-88/100 (R47-H2-C10-UNKNOWN-KEY-BASELINES). Word-indexed negatives can be re-adjudicated under (b') with an arrangement-aware decoder where the key family is bounded (Round 48). Status left as recorded."
   },
   {
    "id": "R39-S1-S2-WINDOWS",
@@ -15588,7 +15589,7 @@
    ],
    "reproduce": "cd liber-primus && PYTHONUTF8=1 python analysis/round45/S1-transcription/build_set.py && ... extra_controls.py && ... relabel_controls.py && ... correct_map.py && ... strip_registration.py && ... adjudicate.py && ... stats.py (blind reads are agent input)",
    "reopens_if": "A pinned copy of RAT's per-position output is committed (adjudicate the 149 unaligned positions with this glue); or a higher-resolution master is available for look-alike-family positions.",
-   "notes": "Register/transition analogues per doctrine Q4 are in RESULTS.md. This row supports, at measured bounds, the TRANSCRIPTION-VERDICT corroboration; it does not prove the transcription error-free. R45-X1 (2026-11-24): single-reader caveat on the look-alike classes added to not_covered (R45-X1-S1-AUDIT). R46 (2026-11-24): the single-reader caveat on the look-alike classes is closed for the 179 exact-line family glyphs by a second blind reader (R46-S2-SECOND-READER-FAMILY-BOUND: 0/179 canon errors, kappa 0.969 vs S1, pooled two-reader bound <= 2.1%; O/A/AE <= 5.2%, M/D <= 14.8%). Still open: S1's 27 window-item family glyphs, which include 4 of S1's 10 canon-resolved mismatches (gpos 276, 5054, 6054, 9877)."
+   "notes": "Register/transition analogues per doctrine Q4 are in RESULTS.md. This row supports, at measured bounds, the TRANSCRIPTION-VERDICT corroboration; it does not prove the transcription error-free. R45-X1 (2026-11-24): single-reader caveat on the look-alike classes added to not_covered (R45-X1-S1-AUDIT). R46 (2026-11-24): the single-reader caveat on the look-alike classes is closed for the 179 exact-line family glyphs by a second blind reader (R46-S2-SECOND-READER-FAMILY-BOUND: 0/179 canon errors, kappa 0.969 vs S1, pooled two-reader bound <= 2.1%; O/A/AE <= 5.2%, M/D <= 14.8%). Still open: S1's 27 window-item family glyphs, which include 4 of S1's 10 canon-resolved mismatches (gpos 276, 5054, 6054, 9877). R47 (2026-11-25): S1's 27 window-line family glyphs read blind by a third reader (R47-T2-WINDOW-FAMILY-CLOSEOUT): T2 = canon 26/27. Disputed gpos 276, 5054, 6054 go to canon (S1's blind reads were the errors). 9877 (canon D; S1 and T2 both read M; template D 0.969) is canon-error-candidate, FLAGGED FOR ORACLE, not applied (R47-T2-9877-ORACLE-FLAG); M would create an MM doublet with 9876, so LP2's doublet rate favours canon D about 5.3:1 (R47-X1-T2-9877-DOUBLET-PRIOR). Bounds: O/A/AE <= 4.6 %, M/D <= 19.9 % (13.4 % if 9877 upheld), all five families <= 2.8 % (1.9 %)."
   },
   {
    "id": "R45-S1-STONES-ALIGNMENT-DEFECT",
@@ -15859,7 +15860,8 @@
     "liber-primus/analysis/round46/L1-word-loader/arm_r41.py",
     "liber-primus/analysis/round46/L1-word-loader/r41_judge.json",
     "liber-primus/analysis/round46/L1-word-loader/r41_plants.json"
-   ]
+   ],
+   "notes": "R47 (2026-11-25): (b') figures are each row's own decoder fed the printed lengths: a decoder conditional, not a blindness bound. With the key in hand the (b') loss is the decoder's, not the information's (R47-X1-C10-SEGMENTATION-BEAM-CROSSING: a position-synchronous segmentation beam recovers 0.962 / 0.976 of U2b plants); with an unknown key from a 65,536-key family, printed-start ranking + that arrangement beam recovers 78-88/100 (R47-H2-C10-UNKNOWN-KEY-BASELINES). Word-indexed negatives can be re-adjudicated under (b') with an arrangement-aware decoder where the key family is bounded (Round 48)."
   },
   {
    "lane": "round46/L1-word-loader",
@@ -15889,7 +15891,8 @@
     "liber-primus/analysis/round46/L1-word-loader/results.json",
     "liber-primus/analysis/round46/L1-word-loader/arm_r37.py",
     "liber-primus/analysis/round46/L1-word-loader/r37_results.json"
-   ]
+   ],
+   "notes": "R47 (2026-11-25): (b') figures are each row's own decoder fed the printed lengths: a decoder conditional, not a blindness bound. With the key in hand the (b') loss is the decoder's, not the information's (R47-X1-C10-SEGMENTATION-BEAM-CROSSING: a position-synchronous segmentation beam recovers 0.962 / 0.976 of U2b plants); with an unknown key from a 65,536-key family, printed-start ranking + that arrangement beam recovers 78-88/100 (R47-H2-C10-UNKNOWN-KEY-BASELINES). Word-indexed negatives can be re-adjudicated under (b') with an arrangement-aware decoder where the key family is bounded (Round 48). The printed-start rule still DETECTS U2b at 0.83 (FPR 0.01, key in hand; R47-H1-C10-SHUFFLED-LENGTHS-BASELINE)."
   },
   {
    "lane": "round46/L1-word-loader",
@@ -15921,7 +15924,8 @@
     "liber-primus/analysis/round46/L1-word-loader/arm_skeleton.py",
     "liber-primus/analysis/round46/L1-word-loader/skeleton_real.json",
     "liber-primus/analysis/round46/L1-word-loader/skeleton_plants.json"
-   ]
+   ],
+   "notes": "R47 (2026-11-25): (b') figures are each row's own decoder fed the printed lengths: a decoder conditional, not a blindness bound. With the key in hand the (b') loss is the decoder's, not the information's (R47-X1-C10-SEGMENTATION-BEAM-CROSSING: a position-synchronous segmentation beam recovers 0.962 / 0.976 of U2b plants); with an unknown key from a 65,536-key family, printed-start ranking + that arrangement beam recovers 78-88/100 (R47-H2-C10-UNKNOWN-KEY-BASELINES). Word-indexed negatives can be re-adjudicated under (b') with an arrangement-aware decoder where the key family is bounded (Round 48)."
   },
   {
    "lane": "round46/L1-word-loader",
@@ -15950,7 +15954,8 @@
     "liber-primus/analysis/round46/L1-word-loader/PREREG.md",
     "liber-primus/analysis/round46/L1-word-loader/RESULTS.md",
     "liber-primus/analysis/round46/L1-word-loader/results.json"
-   ]
+   ],
+   "notes": "R47 (2026-11-25): every 'conditional under (b')' here reads 'not re-run with a (b')-robust decoder', not 'blind'. (b') figures are each row's own decoder fed the printed lengths: a decoder conditional, not a blindness bound. With the key in hand the (b') loss is the decoder's, not the information's (R47-X1-C10-SEGMENTATION-BEAM-CROSSING: a position-synchronous segmentation beam recovers 0.962 / 0.976 of U2b plants); with an unknown key from a 65,536-key family, printed-start ranking + that arrangement beam recovers 78-88/100 (R47-H2-C10-UNKNOWN-KEY-BASELINES). Word-indexed negatives can be re-adjudicated under (b') with an arrangement-aware decoder where the key family is bounded (Round 48). R38-C2-G3 is now re-run (R47-L2-G3-RERUN) and the three lexicon rows' power is measured (R47-L2-*-POWER): every R45-voided word row is now measured."
   },
   {
    "round": "46/P1",
@@ -16217,7 +16222,7 @@
    ],
    "reproduce": "cd liber-primus && PYTHONUTF8=1 python analysis/round46/S2-second-reader/build.py && PYTHONUTF8=1 python analysis/round46/S2-second-reader/template_call.py && PYTHONUTF8=1 python analysis/round46/S2-second-reader/unseal.py (reads_batchNN.json are agent input, not regenerated)",
    "reopens_if": "A higher-resolution master shows a different glyph at any read position; or a third reader / human oracle disagrees with both readers at a family position; or the 27 window-item family glyphs are read and one disagrees.",
-   "notes": "Closes the X1 (round45/X1-redteam/AUDIT.md §3) single-reader / circular-adjudication caveat on S1's family bound, for the exact-line part of S1's set. S1's 4 O/A/AE and 1 M/D blind misreads on this set are resolved by independent blind evidence, not by an unblinded eye."
+   "notes": "Closes the X1 (round45/X1-redteam/AUDIT.md §3) single-reader / circular-adjudication caveat on S1's family bound, for the exact-line part of S1's set. S1's 4 O/A/AE and 1 M/D blind misreads on this set are resolved by independent blind evidence, not by an unblinded eye. R47 (2026-11-25): the remaining 27 window-item family glyphs are read (R47-T2-WINDOW-FAMILY-CLOSEOUT): 3 of 4 disputes to canon; 9877 flagged for oracle (doublet prior 5.3:1 for canon D, R47-X1-T2-9877-DOUBLET-PRIOR). Two-reader bounds updated: O/A/AE <= 4.6 %, M/D <= 19.9 % (13.4 % if 9877 upheld)."
   },
   {
    "id": "R46-S2-S1-READER-MISS-RATE",
@@ -16307,6 +16312,605 @@
    "date": "2026-11-24",
    "lane": "round46/X1-redteam",
    "threshold_fixed_in_advance": false
+  },
+  {
+   "id": "R47-T2-WINDOW-FAMILY-CLOSEOUT",
+   "lane": "round47/T2-transcription-closeout",
+   "hypothesis": "Canon (data/krisyotam_runes.txt) has a look-alike-family glyph error at one or more of S1's 27 window-line family positions, including the 4 canon-resolved disputes (gpos 276, 5054, 6054, 9877) that rested on S1's unblinded adjudication.",
+   "status": "measured",
+   "round": "47/T2",
+   "date": "2026-11-24",
+   "threshold": "Pre-registered (PREREG.md sha256 d9c40eb4..., logged in build_log.txt before any read): one strip per target line (repaired alignment.json v2 line registration, boxes floor/ceil(j*c/L) +-3), every glyph read blind left to right; reads frozen in 10 batches of <= 25 boxes before unsealing; sealed.json never loaded before unseal; semi-global edit-distance registration of reads to canon; verdicts from T2 + S1 frozen blind read + leave-line-out template only (no unblinded eye calls); gates W >= 6/8, C >= 90 %; exact Clopper-Pearson 95 %.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": {
+    "substitution control W": "8/8 sealed swapped look-alike glyphs embedded at unknown places in exact-line strips caught AND named (also tests the strip-registration glue)",
+    "reader control C": "24/24 solved-page 73.jpg glyphs in 4 strips (11/11 family runes), CP95 lower 0.858",
+    "plain W glyphs": "48/48 canon-labelled exact-line glyphs (18/18 family)",
+    "registration": "27/27 targets registered; alignment cost 0 on 13 strips, 0.6 on 2; margin >= 1.4"
+   },
+   "null": "Binomial: k flagged in n family glyphs read by S1 and one further blind reader bounds the canon family error rate by CP95_upper(k,n) / (1 - m_S1 * max(m_S2, m_T2)).",
+   "result": "T2 = canon on 26/27. Disputed: 276 A, 5054 TH, 6054 AE confirmed canon by an independent blind reader (S1's blind reads were the errors). 9877: T2 M = S1 M != canon D; template D 0.969 vs M 0.686 -> pre-registered verdict canon-error-candidate, FLAGGED FOR ORACLE, not applied. Post hoc (Addendum T2-A), T2 also read non-target canon D at gpos 280 as M where the template says D 0.949, consistent with a shared reader M-for-D bias rather than a canon error. Updated two-reader bounds: O/A/AE <= 4.6 % (82 glyphs, was 5.2 %); M/D <= 19.9 % with 9877 counted as error (27 glyphs, was 14.8 %), 13.4 % if the oracle upholds canon; all five families <= 2.8 % (1.9 % if upheld).",
+   "coverage": "Census of S1's 27 family glyphs on window (non-exact) lines, 15 strips, + 99 strip-neighbour glyphs (98/99 = canon) + 8 swap and 4 solved-page control strips. Reader power: 0/19 misses on family controls, m_T2 <= 17.6 % at 95 %.",
+   "not_covered": [
+    "gpos 9877 (line 455, D/M) remains open pending HUMAN-ORACLE.md or a higher-resolution master.",
+    "~1,800 other off-exact stream positions and RAT's 149 unaligned positions.",
+    "Errors common to the relikd 2400x3600 render (all readers share it; 9877 shows two readers can share a bias).",
+    "Template calls for 5054 and 6054 (their strips are not 1:1 tokens:boxes); those rest on T2 + canon vs S1."
+   ],
+   "evidence": [
+    "liber-primus/analysis/round47/T2-transcription-closeout/PREREG.md",
+    "liber-primus/analysis/round47/T2-transcription-closeout/RESULTS.md",
+    "liber-primus/analysis/round47/T2-transcription-closeout/results.json",
+    "liber-primus/analysis/round47/T2-transcription-closeout/reads_frozen.sha256",
+    "liber-primus/analysis/round47/T2-transcription-closeout/posthoc_md.json"
+   ],
+   "reproduce": "cd liber-primus && PYTHONUTF8=1 python analysis/round47/T2-transcription-closeout/build.py && PYTHONUTF8=1 python analysis/round47/T2-transcription-closeout/unseal.py (reads_batchNN.json are agent input, not regenerated)",
+   "reopens_if": "The oracle or a higher-resolution master rules on 9877 (D -> caveat fully closed; M -> one canon family error on line 455 that also creates an MM doublet at 9876-9877 (5.3:1 prior against, R47-X1)); or a further reader disagrees with T2 at 276, 5054 or 6054.",
+   "notes": "Closes the R46-X1 caveat for 26/27 window glyphs and 3/4 disputed positions; not for 9877. T2's measured D->M misses (280 certain) mean its family miss rate on this font is non-zero, beyond what 19 controls resolve."
+  },
+  {
+   "id": "R47-T2-9877-ORACLE-FLAG",
+   "lane": "round47/T2-transcription-closeout",
+   "hypothesis": "Canon D at gpos 9877 (page 41, line 455, offset 6) is an M.",
+   "status": "open",
+   "round": "47/T2",
+   "date": "2026-11-24",
+   "threshold": "PREREG §5: T2 != canon and T2 = S1 blind -> canon-error-candidate, flagged, never auto-applied.",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": {
+    "see": "R47-T2-WINDOW-FAMILY-CLOSEOUT"
+   },
+   "null": "n/a (single-position adjudication)",
+   "result": "Evidence: S1 blind M (L confidence), T2 blind M (M confidence), leave-line-out template D 0.969 vs M 0.686 (template validated MD 751/751 on exact lines), canon D. T2 made the same M-for-D read on a non-target canon D at gpos 280 (template D 0.949). No correction proposed; oracle bundle should show line 455 boxes 5-6 beside page-73 M and D exemplars.",
+   "coverage": "1 position.",
+   "not_covered": [
+    "Any rendering other than relikd 2400x3600."
+   ],
+   "evidence": [
+    "liber-primus/analysis/round47/T2-transcription-closeout/results.json",
+    "liber-primus/analysis/round47/T2-transcription-closeout/posthoc_md.json",
+    "liber-primus/analysis/round45/S1-transcription/adjudications.json"
+   ],
+   "reproduce": "cd liber-primus && PYTHONUTF8=1 python analysis/round47/T2-transcription-closeout/posthoc_md.py",
+   "reopens_if": "Oracle ruling or higher-resolution master.",
+   "notes": "Status open = flagged-for-oracle per HUMAN-ORACLE.md. The X1 caveat is not fully closed until this is ruled on."
+  },
+  {
+   "id": "R47-L2-G3-RERUN",
+   "round": "47/L2",
+   "lane": "round47/L2-g3-lexicon",
+   "date": "2026-11-24",
+   "status": "negative",
+   "hypothesis": "R38-C2-G3 (lag-1 cw/dw gematria pointers in the R37 composed rule) re-run through words.py on the pages that open mid-word, under fragment conventions CS (wrapped word on the page it starts on) and CE (on the page it ends on); C0 (split, legacy) = recorded decodes.",
+   "threshold": "bar_v3 at combined family N (orig + new) per relation, L=120 screen, L=min(240,unit) gate; plant rule = lane judge(); fixed in PREREG.md",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "words.py plants on LP2's real layout, lane's own encipherers/decoder/judge, 40 cells x 26 plants per regime. (a) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b') p0 0.00, mid-word C0 0.00 / CS 0.00 / CE 0.00 (own printed-length decoder; segmentation search not run; R47-X1). C0 faithfulness re-run reproduced 4.911/4.700/4.038 exactly.",
+   "result": "768 real decodes (pages 1,2,4,5 x CS,CE): best ks1 5.440, ks2 4.737, direct 4.111 vs combined-N bars 6.048/5.967/6.574; 0 gate runs, 0 flagged.",
+   "coverage": "R38-C2-G3's frozen space (40 cells, pages 0-5, sigma +-1, ks1/ks2 for A3, s=0) under C0 (recorded), CS and CE; total family 1,344 decodes",
+   "not_covered": [
+    "lag>1; dw inside the beam; skip-circular A3/cw plant; pointer carry across the page break (wrapped word's value as page p's first pointer)",
+    "(b') printed lengths not the plaintext's: power 0 under every convention for the row's own printed-length decoder (segmentation search not run; R47-X1)"
+   ],
+   "three_conditionals": {
+    "key_space": "R38-C2-G3 frozen space, conventions C0/CS/CE",
+    "transition_model": "A1/A2 beam-free direct; A3 beam_v3 keyskip1/keyskip2 with a skip-free A3/cw planted encipherer; per-page key restart",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c...); plants English only (data/pride.txt, B6 EN mapping via R46-L1 l1lib.make_plant)"
+   },
+   "sweep_store": "liber-primus/analysis/round47/L2-g3-lexicon/g3_sweep_rows.jsonl",
+   "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+   "evidence": [
+    "liber-primus/analysis/round47/L2-g3-lexicon/PREREG.md",
+    "liber-primus/analysis/round47/L2-g3-lexicon/RESULTS.md",
+    "liber-primus/analysis/round47/L2-g3-lexicon/results.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/g3_real.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/g3_plants.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/g3_faith.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/arm_g3.py",
+    "liber-primus/analysis/round47/L2-g3-lexicon/l2lib.py"
+   ],
+   "supersedes_note": "Closes the R46-L1 CONDITIONAL on R38-C2-G3's fragment convention: the negative holds under (a) and (b) for C0, CS and CE; conditional under (b')."
+  },
+  {
+   "id": "R47-L2-SEMANTIC-WORDNET-POWER",
+   "round": "47/L2",
+   "lane": "round47/L2-g3-lexicon",
+   "date": "2026-11-24",
+   "status": "measured",
+   "hypothesis": "R38-C1-SEMANTIC-WORDNET's own lexicon->key glue (enciphers.enc / sweep.dec_shift / dec_a3 / judge) has measured power on LP2's real layout via words.py under (a), (b), (b'), and its real result holds under fragment conventions CS and CE on pages 1-2.",
+   "threshold": "power >= 0.90 holds / 0.50-0.90 weakened / < 0.50 conditional; real re-run vs bar_v3 at combined family N; fixed in PREREG.md",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "9 cells x 14 plants per regime (pages 0,1,2; C0/CS/CE on 1,2). (a) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b') p0 0.00, mid-word C0 0.00 / CS 0.00 / CE 0.00 (own printed-length decoder; segmentation search not run; R47-X1). C0 faithfulness re-run reproduced the recorded family bests exactly.",
+   "result": "Power now MEASURED (was inherited, R46-X1 s5.4): verdict (a) holds, (b) holds, (b') conditional. Real CS+CE re-run on pages 1-2: best shift 4.112, A3 5.102 vs combined-N bars 7.216 / 8.174; 0 flagged.",
+   "coverage": "the row's frozen key space (vars x A1/A2 s=0..28 / A3 s=0..725, sigma +-1, pages 0-2) under C0 (recorded) + CS + CE on pages 1-2",
+   "not_covered": [
+    "the row's own not_covered (rho 2/3, keyskip2/free, pages>2, other senses/lexicons, non-English)",
+    "(b') and any space source not equal to the plaintext's words: power <= the b' figure above, for the row's own printed-length decoder (segmentation search not run; R47-X1)"
+   ],
+   "three_conditionals": {
+    "key_space": "row's frozen space, conventions C0/CS/CE",
+    "transition_model": "A1/A2 direct; A3 beam_v3 keyskip1; per-page restart",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c...); plants English only (data/pride.txt, B6 EN mapping via R46-L1 l1lib.make_plant)"
+   },
+   "sweep_store": "liber-primus/analysis/round47/L2-g3-lexicon/r38_sweep_rows.jsonl",
+   "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+   "evidence": [
+    "liber-primus/analysis/round47/L2-g3-lexicon/PREREG.md",
+    "liber-primus/analysis/round47/L2-g3-lexicon/RESULTS.md",
+    "liber-primus/analysis/round47/L2-g3-lexicon/results.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/r38_real.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/r38_plants.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/r38_faith.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/arm_lex.py",
+    "liber-primus/analysis/round47/L2-g3-lexicon/l2lib.py"
+   ],
+   "supersedes_note": "Replaces 'R38-C1-SEMANTIC-WORDNET power under (a)/(b) not measured' (R46-L1-REOPEN-VERDICTS / R46-X1 s5.4)."
+  },
+  {
+   "id": "R47-L2-SEMANTIC-FREQRANK-POWER",
+   "round": "47/L2",
+   "lane": "round47/L2-g3-lexicon",
+   "date": "2026-11-24",
+   "status": "measured",
+   "hypothesis": "R38-C1-SEMANTIC-FREQRANK's own lexicon->key glue (enciphers.enc / sweep.dec_shift / dec_a3 / judge) has measured power on LP2's real layout via words.py under (a), (b), (b'), and its real result holds under fragment conventions CS and CE on pages 1-2.",
+   "threshold": "power >= 0.90 holds / 0.50-0.90 weakened / < 0.50 conditional; real re-run vs bar_v3 at combined family N; fixed in PREREG.md",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "9 cells x 14 plants per regime (pages 0,1,2; C0/CS/CE on 1,2). (a) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b') p0 0.00, mid-word C0 0.00 / CS 0.00 / CE 0.00 (own printed-length decoder; segmentation search not run; R47-X1). C0 faithfulness re-run reproduced the recorded family bests exactly.",
+   "result": "Power now MEASURED (was inherited, R46-X1 s5.4): verdict (a) holds, (b) holds, (b') conditional. Real CS+CE re-run on pages 1-2: best shift 3.324, A3 5.896 vs combined-N bars 7.216 / 8.174; 0 flagged.",
+   "coverage": "the row's frozen key space (vars x A1/A2 s=0..28 / A3 s=0..725, sigma +-1, pages 0-2) under C0 (recorded) + CS + CE on pages 1-2",
+   "not_covered": [
+    "the row's own not_covered (rho 2/3, keyskip2/free, pages>2, other senses/lexicons, non-English)",
+    "(b') and any space source not equal to the plaintext's words: power <= the b' figure above, for the row's own printed-length decoder (segmentation search not run; R47-X1)"
+   ],
+   "three_conditionals": {
+    "key_space": "row's frozen space, conventions C0/CS/CE",
+    "transition_model": "A1/A2 direct; A3 beam_v3 keyskip1; per-page restart",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c...); plants English only (data/pride.txt, B6 EN mapping via R46-L1 l1lib.make_plant)"
+   },
+   "sweep_store": "liber-primus/analysis/round47/L2-g3-lexicon/r38_sweep_rows.jsonl",
+   "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+   "evidence": [
+    "liber-primus/analysis/round47/L2-g3-lexicon/PREREG.md",
+    "liber-primus/analysis/round47/L2-g3-lexicon/RESULTS.md",
+    "liber-primus/analysis/round47/L2-g3-lexicon/results.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/r38_real.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/r38_plants.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/r38_faith.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/arm_lex.py",
+    "liber-primus/analysis/round47/L2-g3-lexicon/l2lib.py"
+   ],
+   "supersedes_note": "Replaces 'R38-C1-SEMANTIC-FREQRANK power under (a)/(b) not measured' (R46-L1-REOPEN-VERDICTS / R46-X1 s5.4)."
+  },
+  {
+   "id": "R47-L2-SENSE-POWER",
+   "round": "47/L2",
+   "lane": "round47/L2-g3-lexicon",
+   "date": "2026-11-24",
+   "status": "measured",
+   "hypothesis": "R39-C1-SENSE-SIMILARITY's own lexicon->key glue (enciphers.enc / sweep.dec_shift / dec_a3 / judge) has measured power on LP2's real layout via words.py under (a), (b), (b'), and its real result holds under fragment conventions CS and CE on pages 1-2.",
+   "threshold": "power >= 0.90 holds / 0.50-0.90 weakened / < 0.50 conditional; real re-run vs bar_v3 at combined family N; fixed in PREREG.md",
+   "threshold_fixed_in_advance": true,
+   "positive_control": "passed",
+   "control_detail": "9 cells x 14 plants per regime (pages 0,1,2; C0/CS/CE on 1,2). (a) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b') p0 0.00, mid-word C0 0.00 / CS 0.00 / CE 0.00 (own printed-length decoder; segmentation search not run; R47-X1). C0 faithfulness re-run reproduced the recorded family bests exactly.",
+   "result": "Power now MEASURED (was inherited, R46-X1 s5.4): verdict (a) holds, (b) holds, (b') conditional. Real CS+CE re-run on pages 1-2: best shift 4.161, A3 5.171 vs combined-N bars 6.953 / 7.912; 0 flagged.",
+   "coverage": "the row's frozen key space (vars x A1/A2 s=0..28 / A3 s=0..725, sigma +-1, pages 0-2) under C0 (recorded) + CS + CE on pages 1-2",
+   "not_covered": [
+    "the row's own not_covered (rho 2/3, keyskip2/free, pages>2, other senses/lexicons, non-English)",
+    "(b') and any space source not equal to the plaintext's words: power <= the b' figure above, for the row's own printed-length decoder (segmentation search not run; R47-X1)"
+   ],
+   "three_conditionals": {
+    "key_space": "row's frozen space, conventions C0/CS/CE",
+    "transition_model": "A1/A2 direct; A3 beam_v3 keyskip1; per-page restart",
+    "adjudicator_register": "panel-R36 12 registers (sha a0682f0c...); plants English only (data/pride.txt, B6 EN mapping via R46-L1 l1lib.make_plant)"
+   },
+   "sweep_store": "liber-primus/analysis/round47/L2-g3-lexicon/r39_sweep_rows.jsonl",
+   "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+   "evidence": [
+    "liber-primus/analysis/round47/L2-g3-lexicon/PREREG.md",
+    "liber-primus/analysis/round47/L2-g3-lexicon/RESULTS.md",
+    "liber-primus/analysis/round47/L2-g3-lexicon/results.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/r39_real.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/r39_plants.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/r39_faith.json",
+    "liber-primus/analysis/round47/L2-g3-lexicon/arm_lex.py",
+    "liber-primus/analysis/round47/L2-g3-lexicon/l2lib.py"
+   ],
+   "supersedes_note": "Replaces 'R39-C1-SENSE-SIMILARITY power under (a)/(b) not measured' (R46-L1-REOPEN-VERDICTS / R46-X1 s5.4)."
+  },
+  {
+   "lane": "round47/H1-heavy-lifts",
+   "round": "47/H1",
+   "date": "2026-11-24",
+   "threshold_fixed_in_advance": true,
+   "id": "R47-H1-C7-CORPUS-FORGE-BASELINE",
+   "status": "measured",
+   "hypothesis": "A public checker (challenges/c7_corpus_forge.py) can validate a Gematria-Primus reference corpus from a declared transliteration table and public-domain source, and place LP2's 2-rune share and 9-class length profile against it with R46-P1's conventions.",
+   "threshold": "Self-test: the worked example (Latin, Aeneid, R-A table) validates with 500/500 sampled sentences re-derived, AND a copy with every 7th sentence altered FAILS (PREREG s1 C7, s2 Q1).",
+   "positive_control": "passed",
+   "control_detail": "Aeneid: 63,788 words, 3,279 sentences, unmapped 0.0%, 500/500 re-derived; corrupted copy rejected (82/500 sampled mismatches).",
+   "result": "Example row: Latin 2-rune share 8.36% (window p01-p99 6.87-9.70%), LP2 15.47% above all 1,000 windows of 2,896 words; T3 G = 1,348 vs within-text 99% bar 25.2: rejected (consistent with R46-P1 T3, Latin rejected). Covered register, so not a finish-line crossing.",
+   "coverage": "Checker + one worked example in a covered register. Covered registers: English (all), classical Latin, German, Welsh, Old English, solved pages.",
+   "not_covered": [
+    "every register outside that list (Greek, Hebrew, Norse, Middle English, Vulgate Latin, ...): the open challenge C7",
+    "the checker's G bar is within-text only (no between-text variance); a single-corpus 'rejected' is weak (R46-P1 X1 caveat)"
+   ],
+   "three_conditionals": {
+    "key_space": "n/a (no decode)",
+    "transition_model": "n/a",
+    "adjudicator_register": "the corpus's own register; LP2 printed words via round46/L1-word-loader/words.py (2,896)"
+   },
+   "crossing_changes": "R46-P1-TWO-RUNE-EXPLANATIONS and R46-P1-TWO-RUNE-DEFICIT-REPLICATION gain a reference register; their not_covered 'other languages' narrows.",
+   "evidence": [
+    "challenges/c7_corpus_forge.py",
+    "challenges/examples/c7_latin_aeneid/manifest.json",
+    "liber-primus/analysis/round47/H1-heavy-lifts/out_c7_selftest.txt",
+    "liber-primus/analysis/round47/H1-heavy-lifts/RESULTS.md"
+   ],
+   "reproduce": "python challenges/c7_corpus_forge.py --self-test"
+  },
+  {
+   "lane": "round47/H1-heavy-lifts",
+   "round": "47/H1",
+   "date": "2026-11-24",
+   "threshold_fixed_in_advance": true,
+   "id": "R47-H1-C8-REGISTER-SCORER-BASELINE",
+   "status": "measured",
+   "hypothesis": "Power of the English reference scorer and the incumbent panel-R36 pmax to detect correct-key decodes of held-out text at LP2 page size (L=236; also 120, 60), at FPR 0.01 against every one of four nulls (uniform, real LP2 windows, shuffled positives, beam wrong-key decodes of LP2).",
+   "threshold": "C8 finish line: power >= 0.80 at FPR 0.01, L=236, every null class, register outside panel-R36's 12. Self-test control: English scorer on English held-out >= 0.80.",
+   "positive_control": "passed",
+   "control_detail": "English scorer on English (Dracula) held-out: 1.000 at L=236/120/60 (seed 4703, 200 positives planted via keyskip + reference beam).",
+   "result": "L=236 power, English reference / panel-R36: English 1.00/1.00; Latin 1.00/1.00; German 1.00/1.00; vowel-dropped English 0.00/0.33 (panel >= 0.90 against the three wrong-key nulls; the shuffled null binds); reversed English (off-panel) 0.87/0.62. At L=60: Latin 0.955/1.00, German 0.98/1.00, reversed 0.24/0.15. At FPR 0.01 the register gap is not 'non-English languages' broadly: Latin and German are seen even by the English scorer; the gap is sequence-unlike registers, where the shuffled-text null defeats both instruments.",
+   "coverage": "5 held-out registers (3 in panel, 1 panel-register variant, 1 off-panel illustration) x L in {236,120,60}; 200 positives, 2,000 per cheap null class, 500 beam wrong-key nulls per length.",
+   "not_covered": [
+    "any real language outside panel-R36 (no corpus in the repo): the open challenge C8",
+    "FPR at sweep scale (1e-3 to 1e-6): only FPR 0.01 measured",
+    "keystreams other than SHA-256 counter; transition models other than keyskip1"
+   ],
+   "three_conditionals": {
+    "key_space": "none swept; correct key known for positives, fresh SHA-256 keys for wrong-key nulls",
+    "transition_model": "keyskip1 plant (supp = EXACT_SUPP), decoded by skipdecode.beam_decode w=400 max_skip 3",
+    "adjudicator_register": "English quadgram (lp.score) and panel-R36 (12 registers, sha a0682f0c...)"
+   },
+   "crossing_changes": "L7-A-SCORER-ENGLISH-ONLY not_covered ('languages not modelled') and panel-R36's register list; if the incumbent already reaches 0.80 the crossing files as 'already seen by panel-R36'.",
+   "evidence": [
+    "challenges/c8_register_scorer.py",
+    "liber-primus/analysis/round47/H1-heavy-lifts/out_c8_selftest.txt",
+    "liber-primus/analysis/round47/H1-heavy-lifts/out_c8_extra.txt",
+    "liber-primus/analysis/round47/H1-heavy-lifts/baseline_extra.json"
+   ],
+   "reproduce": "python challenges/c8_register_scorer.py --self-test --seed 4703 && python -I liber-primus/analysis/round47/H1-heavy-lifts/baseline_extra.py"
+  },
+  {
+   "lane": "round47/H1-heavy-lifts",
+   "round": "47/H1",
+   "date": "2026-11-24",
+   "threshold_fixed_in_advance": true,
+   "id": "R47-H1-C9-REJECTION-LOOP-BASELINE",
+   "status": "measured",
+   "hypothesis": "The C3 reference beam and beam_v3 (advance 1/2/free, panel-R36) recover plaintext enciphered under rejection loops outside their transition relations: V-BACK (key pointer steps back on a rejected doublet), V-NULL (a null that consumes no key is emitted and the rejected key discarded; PREREG Addendum 1), V-DEFER (rejected key used for the next rune; diagnostic).",
+   "threshold": "Plant passes iff rune recovery >= 0.85 AND checker-recomputed English score >= -5.2, with the wrong key <= -6.0; variant passes iff >= 80% of plants pass and wrong-key FP <= 5%. Finish line: C3 7/7 AND V-BACK and V-NULL pass at 40 sealed plants.",
+   "positive_control": "passed",
+   "control_detail": "keyskip control (the construction the beams represent): 40/40 for both beams (median -4.29); C3 gates 7/7 for the reference decoder. All variants reproduce LP2's lag-1 (0.66%) and lag-2 (3.40%) repeat rates at supp = EXACT_SUPP.",
+   "result": "40 plants, L=240, seed 4701. Reference beam / beam_v3: V-BACK 0/40 / 0/40 (mean recovery 0.19, median correct-key score -7.01 / -6.79: the correct key is scored as noise = a DETECTION gap); V-NULL 0/40 / 0/40 (median -4.54: still English, but mean positional recovery 0.17 because every null decodes to a junk rune = a RECOVERY gap, not a detection gap); V-DEFER 39/40 / 39/40 (inside both beams' tolerance). Wrong-key FP 0.00 throughout. The doublet-triggered null that keeps the rejected key (registered V-NULL) is excluded for LP2 by its lag-2 repeat rate (6.0% vs 3.40%). V-BACK gap is representational (R47-X1-C9-VBACK-BACKSTEP-RELATION).",
+   "coverage": "3 rejection-loop variants + keyskip control x 40 plants x 2 decoders, English plaintext, L=240, key offset 0.",
+   "not_covered": [
+    "other non-monotone or insertion loops; combinations with keyskip2/free drift",
+    "non-English plaintext (an English-only measurement, L7-A)",
+    "unknown key offset; lengths other than 240"
+   ],
+   "three_conditionals": {
+    "key_space": "none swept; correct key known, independent SHA-256 wrong key per plant",
+    "transition_model": "V-BACK, V-NULL (Addendum 1), V-DEFER, keyskip control; decoders skipdecode.beam_decode (keyskip1) and beam_v3 advance 1/2/free",
+    "adjudicator_register": "English quadgram recomputed by the checker (beam_v3 searched with panel-R36)"
+   },
+   "crossing_changes": "L7-B-BEAM-ENVELOPE: until a qualified decoder crosses, no beam-based negative in the ledger covers V-BACK (correct key scored as noise); beam negatives do detect V-NULL but would not have recovered its plaintext.",
+   "evidence": [
+    "challenges/c9_rejection_loops.py",
+    "liber-primus/analysis/round47/H1-heavy-lifts/out_c9_selftest_40.txt",
+    "liber-primus/analysis/round47/H1-heavy-lifts/out_c9_example.txt"
+   ],
+   "reproduce": "python challenges/c9_rejection_loops.py --self-test --v3 --plants 40 --seed 4701"
+  },
+  {
+   "lane": "round47/H1-heavy-lifts",
+   "round": "47/H1",
+   "date": "2026-11-24",
+   "threshold_fixed_in_advance": true,
+   "id": "R47-H1-C10-SHUFFLED-LENGTHS-BASELINE",
+   "status": "measured",
+   "hypothesis": "Under R46-L1 regime b' (printed word lengths permuted within sentence), the L1 battery's U2b rule (key jumps at the PRINTED word starts) recovers plaintext of the R37-U2b word-jump construction (pointer jumps by PRIMES[k mod 29] at each true word start, SHA-256-counter base key) given the correct key.",
+   "threshold": "Registered (PREREG s1): power at FPR 0.01 vs a matched wrong-key null >= max(0.80, baseline+0.30). Re-aimed (Addendum 2, after the registered metric proved unreachable): plant passes iff recovery >= 0.90 and English >= -5.2; nulls <= -5.2 on >= 95%; finish line >= 0.80 of 500 plants.",
+   "positive_control": "passed",
+   "control_detail": "True-start decode reproduces the plaintext exactly on 500/500 plants (both seeds); ceiling passes 500/500, detection power 1.00.",
+   "result": "Seeds 4702 / 4704, 500 plants + 500 nulls, units mean 300 runes: printed-start baseline recovers 0/500 / 0/500 plants (mean rune recovery 0.33 / 0.32; null FP 0.00). Registered detection metric: baseline power 0.830 (Wilson 0.795-0.860) / 0.812 at FPR 0.01. So under b' the U2b rule keeps DETECTION power at FPR 0.01 with the key in hand but loses RECOVERY entirely; R46-L1's 'b' power <= 0.033' is a recovery-at-sweep-scale-bar statement, not total blindness. A within-sentence segmentation beam recovers 0.962 / 0.976 (R47-X1-C10-SEGMENTATION-BEAM-CROSSING).",
+   "coverage": "U2b word-jump construction, English sentences (4 dev texts), 236-472-rune units, 2 seeds x 500 plants + 500 nulls.",
+   "not_covered": [
+    "the anti-repeat filter combined with word jumps; other jump sequences; unknown key",
+    "R41 W1-W4 per-word-constant keys (print-free difference statistics would see them; not measured)",
+    "non-English plaintext; book-scope shuffles"
+   ],
+   "three_conditionals": {
+    "key_space": "none swept; correct base key handed to the attack, independent key for nulls",
+    "transition_model": "R37-U2b word-jump, S[j] = GP PRIMES[j mod 29], no doublet filter",
+    "adjudicator_register": "English quadgram (lp.score); recovery on rune indices"
+   },
+   "crossing_changes": "R46-L1-REOPEN-VERDICTS and R46-L1-R37-U2B-U3-RECHECK: b' power for the word-jump class becomes a measured recovery power instead of <= 0.033.",
+   "evidence": [
+    "challenges/c10_shuffled_lengths.py",
+    "liber-primus/analysis/round47/H1-heavy-lifts/out_c10_selftest_4702.txt",
+    "liber-primus/analysis/round47/H1-heavy-lifts/out_c10_selftest_4704.txt",
+    "liber-primus/analysis/round47/H1-heavy-lifts/PREREG.md"
+   ],
+   "reproduce": "python challenges/c10_shuffled_lengths.py --self-test --seed 4702"
+  },
+  {
+   "lane": "round47/H2-harden",
+   "round": "47/H2",
+   "date": "2026-11-24",
+   "id": "R47-H2-CHECKER-ISOLATION",
+   "status": "measured",
+   "threshold_fixed_in_advance": true,
+   "hypothesis": "Running C8/C9/C10 submissions in an isolated `python -I` child that receives only the granted inputs, in os.urandom order, defeats R47-X1's in-process cheats.",
+   "threshold": "Each of R47-X1's four cheats (AUDIT.md §3.4) must fail its checker after the fix (brief, item 1).",
+   "positive_control": "passed",
+   "control_detail": "Before the fix the same cheats printed FINISH LINE MET / NEW REGISTER (R47-X1 out_x1_cheat_*.txt).",
+   "result": "All four fail: C7 Dracula-as-Old-Norse rejected by the label gate (JSD 0.024 to English); C8 frame probe power 0.000 at L=236; C9 frame cheat C3 7/7 but V-NULL 0/40 (seed 99); C10 old cheat 0/20 (signature) and a frame-walking cheat for the new signature 0/2 in pytest; a call-order cheat on C8 fails too. 11/11 challenges/test_heavy_checkers.py pass.",
+   "coverage": "In-process frame/object reading and call-order inference.",
+   "not_covered": [
+    "OS-level inspection of the parent process (command line, memory) by a hostile submission: code review remains required for credit",
+    "cross-call state inside one child (e.g. C8 shuffled-null multisets) is not blocked, only unordered"
+   ],
+   "evidence": [
+    "challenges/_sandbox.py",
+    "challenges/test_heavy_checkers.py",
+    "liber-primus/analysis/round47/H2-harden/out_cheat_c7.txt",
+    "…/out_cheat_c8.txt",
+    "…/out_cheat_c9.txt",
+    "…/out_cheat_c10.txt"
+   ],
+   "reproduce": "bash liber-primus/analysis/round47/H2-harden/run_cheats.sh; python -m pytest challenges/test_heavy_checkers.py -q"
+  },
+  {
+   "lane": "round47/H2-harden",
+   "round": "47/H2",
+   "date": "2026-11-24",
+   "id": "R47-H2-C7-LABEL-GATE",
+   "status": "measured",
+   "threshold_fixed_in_advance": false,
+   "hypothesis": "A GP bigram-profile distance separates an English corpus mislabelled as a new register from real other-language corpora.",
+   "threshold": "tau = 0.06 JSD, calibrated on in-repo texts (disclosed in H1 PREREG Addendum 3), not pre-registered.",
+   "positive_control": "passed",
+   "control_detail": "Latin worked example validates (0.122 from English); X1's English-as-Old-Norse fails (0.024).",
+   "result": "15 English texts 0.014-0.049 from the English dev pool; Latin-Latin 0.019, German-German 0.017; every cross-language pair >= 0.079 (Old English vs English). Gate rejects within 0.06 of English or of a covered language other than the claimed one.",
+   "coverage": "Mislabelled covered-language text with a GP-greedy-like table.",
+   "not_covered": [
+    "a table tuned to move the profile",
+    "close relatives of English (Middle English, Scots) may be flagged legitimately; no Middle English text was available to calibrate"
+   ],
+   "evidence": [
+    "challenges/c7_corpus_forge.py",
+    "liber-primus/analysis/round47/H2-harden/RESULTS.md"
+   ],
+   "reproduce": "python challenges/c7_corpus_forge.py --self-test"
+  },
+  {
+   "lane": "round47/H2-harden",
+   "round": "47/H2",
+   "date": "2026-11-24",
+   "id": "R47-H2-C9-RESCOPE",
+   "status": "audit",
+   "threshold_fixed_in_advance": true,
+   "hypothesis": "After R47-X1 (V-BACK closable in-house, 32/40), C9 should score only loop variants a backstep extension does not represent.",
+   "threshold": "Brief item 4; H1 PREREG Addendum 3.",
+   "result": "V-BACK diagnostic (still reported; Round 48: backstep-aware beam + re-adjudicate beam negatives). C9 scores V-NULL only (recovery gap; beams already score its key as English, -4.54; crossing changes no detection negative). Self-test seed 4711: keyskip 12/12, V-NULL 0/12, V-BACK 1/12.",
+   "evidence": [
+    "challenges/c9_rejection_loops.py",
+    "CHALLENGES.md"
+   ],
+   "reproduce": "python challenges/c9_rejection_loops.py --self-test",
+   "status_before_normalisation": "decision"
+  },
+  {
+   "lane": "round47/H2-harden",
+   "round": "47/H2",
+   "date": "2026-11-24",
+   "id": "R47-H2-C10-UNKNOWN-KEY-BASELINES",
+   "status": "measured",
+   "threshold_fixed_in_advance": true,
+   "hypothesis": "With the key unknown (F = 65,536 splitmix64 counter keys) and printed lengths shuffled within sentence, the repo's exhaustive decoder recovers U2b plants only with true spaces, and cheap compositions of the printed-start ranker with R47-X1's segmentation beam do not reach the finish line.",
+   "threshold": "H1 PREREG Addendum 3: (i) >= 0.95 control; FINISH = max(0.80, best of (ii), (iv m=64), (iv m=512) + 0.20) rounded up to 0.05; if > 0.95 C10 is not published as a heavy lift.",
+   "positive_control": "passed",
+   "control_detail": "(i) exhaustive with TRUE lengths: 100/100, null FP 0.0.",
+   "result": "seed 4710, n=100+100: (ii) printed starts 0/100 (mean rec 0.209); (iv m=64) 78/100 (true key in top 64: 0.80, null FP 0.0); (iv m=512) 88/100 (true key in top 512: 0.90, null FP 0.0, 88.33 s/unit under 7-way load); (iii) X1 beam per key: correct key beats all 1,024 sampled wrong keys on 1.00 of 16 units (recovery 0.968), 0.2022 s/key, ~13253 s/unit for full enumeration. B = 0.88; FINISH = 1.10; FINISH > 0.95: C10 not published as a heavy lift (re-scope to Round 48).",
+   "coverage": "U2b word-jump, unknown key from a stated 2^16 family, b' within-sentence shuffle, English plaintext.",
+   "not_covered": [
+    "the doublet filter",
+    "other word-indexed constructions (R41 W1-W4, G3 lagged pointers, lexicon rows)",
+    "families larger than 2^16 / clue-derived key families",
+    "non-English plaintext (L7-A)",
+    "(iii) measured against a 1,024-key sample, not the full family"
+   ],
+   "three_conditionals": {
+    "key_space": "2^16 splitmix64 counter keys, exhaustively searched by (i)/(ii)",
+    "transition_model": "U2b word jump, no doublet filter",
+    "adjudicator_register": "English"
+   },
+   "crossing_changes": "R46-L1-REOPEN-VERDICTS / R46-L1-R37-U2B-U3-RECHECK: an unknown-key b'-robust sweep for the word-jump class.",
+   "evidence": [
+    "challenges/c10_shuffled_lengths.py",
+    "liber-primus/analysis/round47/H2-harden/c10_baselines.py",
+    "…/c10_baselines.json",
+    "…/out_c10_*.txt"
+   ],
+   "reproduce": "python -I liber-primus/analysis/round47/H2-harden/c10_baselines.py --arm i_ii --n 100 --seed 4710 (and --arm iv/iii, see RESULTS)"
+  },
+  {
+   "lane": "round47/H2-harden",
+   "round": "47/H2",
+   "date": "2026-11-24",
+   "id": "R47-H2-C10-V1-KEYED-CROSSING-KEPT",
+   "status": "audit",
+   "threshold_fixed_in_advance": true,
+   "hypothesis": "R47-X1's crossing of the keyed C10 (Addendum 2) is a finding, not an error to erase.",
+   "result": "Kept: with the key in hand a position-synchronous beam recovers 0.962 / 0.976 (R47-X1-C10-SEGMENTATION-BEAM-CROSSING), so the (b') recovery loss at known key belongs to the printed-start decoder. The v1 checker is preserved verbatim (in-process, so not safe for outside submissions) at H2-harden/c10_v1_keyed.py; the H2 baselines add that the same beam also finds the correct key against 1,024 sampled wrong keys on 16/16 units.",
+   "evidence": [
+    "liber-primus/analysis/round47/H2-harden/c10_v1_keyed.py",
+    "liber-primus/analysis/round47/X1-redteam/AUDIT.md"
+   ],
+   "reproduce": "python liber-primus/analysis/round47/H2-harden/c10_v1_keyed.py liber-primus/analysis/round47/X1-redteam/x1_c10_beam_attack.py --n 500 --seed 4702",
+   "status_before_normalisation": "recorded"
+  },
+  {
+   "id": "R47-X1-C10-SEGMENTATION-BEAM-CROSSING",
+   "hypothesis": "C10 (attack under within-sentence-shuffled printed word lengths, R37-U2b word-jump plant, key in hand) is a heavy lift: the printed-start rule's 0/500 recovery reflects a hard search, not a weak decoder.",
+   "threshold": "The C10 checker's own Addendum-2 finish line, unchanged: >= 0.80 of 500 plants with rune recovery >= 0.90 and checker-recomputed English score >= -5.2, and attack output <= -5.2 on >= 95 % of 500 nulls (same print, independent key). Run as an ordinary submission through challenges/c10_shuffled_lengths.py.",
+   "positive_control": "passed",
+   "control_detail": {
+    "checker ceiling (true starts)": "500/500 at seed 4702 (dev texts); 499/500 at seed 4704 on Dracula (one plant's true decode scores below -5.2)",
+    "checker baseline reproduced": "printed-start rule 0/500, mean recovery 0.331, detection at FPR 0.01 = 0.830 (seed 4702), equal to R47-H1"
+   },
+   "null": "C10's own null arm: same unit and print, plant enciphered under an independent SHA-256 key K', attack handed K",
+   "result": "FOUND-ERROR (C10 is not a heavy lift). A 58-line position-synchronous beam (states bucketed by rune position; branch over the distinct remaining lengths of the current sentence's printed multiset; word k decoded at offset J_k = S[0]+...+S[k]; score = lp.score English quadgrams; beam 16) crosses the finish line: seed 4702, dev texts: 481/500 plants (0.962, Wilson 0.941-0.976), mean recovery 0.957, null FP 0.000, detection 1.000, 73 s; seed 4704, held-out Dracula: 488/500 (0.976, Wilson 0.959-0.986), mean recovery 0.958, null FP 0.000, 51 s. A first version that let prefixes of different lengths compete in one beam scored 0/30 (shorter prefixes win on total log-probability); bucketing by position is the whole fix.",
+   "coverage": "U2b word-jump construction (PRIMES jump at each true word start, SHA-256 counter key, no doublet filter), English sentence units of 236-472 runes, true sentence boundaries, within-sentence shuffle (b'), correct key in hand; 2 seeds x 500 plants + 500 nulls; 2 plaintext sources.",
+   "not_covered": [
+    "unknown key (a sweep): the beam costs ~0.1 s per unit-key vs microseconds for the printed-start rule; sweep-scale bars (N 1e6) not measured",
+    "the doublet filter combined with word jumps",
+    "constructions other than U2b: R38-C2-G3 lagged pointers, R38-WORDNET/FREQRANK, R39-SENSE, R41 W1-W4, SKELETON (their b' power remains that of their own printed-length decoders)",
+    "book-scope or borrowed-length (b') alternatives; untrue sentence boundaries",
+    "non-English plaintext"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round47/X1-redteam/AUDIT.md",
+    "liber-primus/analysis/round47/X1-redteam/x1_c10_beam_attack.py",
+    "liber-primus/analysis/round47/X1-redteam/out_x1_c10_beam16_4702.txt",
+    "liber-primus/analysis/round47/X1-redteam/out_x1_c10_beam16_4704_dracula.txt"
+   ],
+   "reproduce": "cd <repo root>; PYTHONUTF8=1 X1_BEAM=16 python challenges/c10_shuffled_lengths.py liber-primus/analysis/round47/X1-redteam/x1_c10_beam_attack.py --n 500 --seed 4702   (~75 s); add --seed 4704 --text liber-primus/data/keys/armada19/stoker_dracula.txt for the held-out run",
+   "reopens_if": "A maintainer-sealed run at a hidden seed and held-out text falls below 0.80 (would make this a dev-seed artefact).",
+   "notes": "Attach to R47-H1-C10-SHUFFLED-LENGTHS-BASELINE, R46-L1-REOPEN-VERDICTS and R46-L1-R37-U2B-U3-RECHECK. For the U2b class the (b') loss is a property of the printed-start decoder, not of the information in (C, K, printed): '(b') conditional' for R37-U2b means 'not re-run with a segmentation search', which is now known to be cheap at known key. X1 is not a public submitter; per the coordinator, this is recorded as an in-house crossing and C10 should be retired or re-scoped (e.g. unknown key / sweep-scale bars / doublet filter).",
+   "status": "audit",
+   "round": "47/X1",
+   "date": "2026-11-24",
+   "lane": "round47/X1-redteam",
+   "threshold_fixed_in_advance": true
+  },
+  {
+   "id": "R47-X1-C9-VBACK-BACKSTEP-RELATION",
+   "hypothesis": "R47-H1's V-BACK 0/40 (both beams score the correct key as noise) is a representational gap of monotone-pointer beams, not a bug in how the plants are fed to the beams.",
+   "threshold": "Descriptive, no PREREG: if a beam that differs from skipdecode.beam_decode only by one added transition (BACK: p = c - K[j-1], allowed iff p + K[j] == c_prev; pointer stays at j) recovers V-BACK plants through the unchanged C9 checker at its own pass rule, the gap is representational. Penalties (PEN 3, NULLCOST 7) were tuned on 8-12 plants at seed 4701 before the 40-plant run at the same seed (dev seed; not sealed).",
+   "positive_control": "passed",
+   "control_detail": {
+    "C3 gates": "7/7 (decoder returns the better of the extended beam and the C3 reference beam by recomputed English score)",
+    "keyskip control": "36/40 (0.90; reference beam alone 40/40, so the arbitration costs 4 plants)"
+   },
+   "null": "C9's wrong-key arm (same ciphertext, independent key): wrong FP 0.00 in every variant",
+   "result": "Gap is REPRESENTATIONAL, and cheap to close. Seed 4701, 40 plants, L=240: V-BACK 32/40 PASS (0.80, Wilson 0.652-0.895), mean recovery 0.909, median correct-key score -4.296 (reference beam on the same plants: 0/40, 0.188, -7.012). V-NULL 8/40 fail (0.20, mean recovery 0.398; a NULL transition with a lookahead consistency check deletes true runes as often as nulls). V-DEFER 31/40. Mechanism of the reference-beam failure: a backstep shifts the key alignment by -1 for the rest of the window, which no forward-only relation can follow; recovery 0.19 = runes before the first backstep (~29/supp ~ 36 runes) plus 1/29 chance agreement afterwards.",
+   "coverage": "One seed (4701), dev English texts, 40 plants per variant, keyskip/V-BACK/V-NULL/V-DEFER as implemented in challenges/c9_rejection_loops.py.",
+   "not_covered": [
+    "sealed maintainer seed and held-out text",
+    "unknown key offset; key lengths other than 6L; non-English plaintext",
+    "V-BACK combined with keyskip2/free drift; multi-step backsteps beyond what the plant produces"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round47/X1-redteam/AUDIT.md",
+    "liber-primus/analysis/round47/X1-redteam/x1_c9_ext_decoder.py",
+    "liber-primus/analysis/round47/X1-redteam/out_x1_c9_ext_40_4701.txt"
+   ],
+   "reproduce": "cd <repo root>; PYTHONUTF8=1 X1_PEN=3 X1_NC=7 python challenges/c9_rejection_loops.py liber-primus/analysis/round47/X1-redteam/x1_c9_ext_decoder.py --plants 40 --seed 4701   (~4 min)",
+   "reopens_if": "The extended beam fails V-BACK at a sealed seed / held-out text (would make 32/40 a dev-seed tuning artefact).",
+   "notes": "Attach to R47-H1-C9-REJECTION-LOOP-BASELINE and L7-B-BEAM-ENVELOPE. Upholds H1's V-BACK detection-gap claim and qualifies its weight: the beam-based negatives are blind to V-BACK, but adding the relation is a ~20-line change, so the gap is closable in-house; and nothing measured raises V-BACK's prior for LP2 beyond being a one-character variant that survives the surface statistics (R47-X1-C9-VARIANT-SURFACE-STATS).",
+   "status": "audit",
+   "round": "47/X1",
+   "date": "2026-11-24",
+   "lane": "round47/X1-redteam",
+   "threshold_fixed_in_advance": false
+  },
+  {
+   "id": "R47-X1-C9-VARIANT-SURFACE-STATS",
+   "hypothesis": "V-BACK (and the redefined V-NULL) are not excluded by LP2's surface statistics the way the registered V-NULL was.",
+   "threshold": "Descriptive: 20 replicate 12,956-rune English plants per variant (fresh SHA-256 key, supp = EXACT_SUPP 0.8074, the C9 encipherers, seed 4799); excluded iff LP2's value lies > 3 SD from the replicate mean on lag-1 repeat rate, lag-2 repeat rate or IoC*N.",
+   "positive_control": "passed",
+   "control_detail": {
+    "registered V-NULL (null then re-emit rejected value)": "lag-2 5.66-6.61 % over 5 replicates vs LP2 3.40 %: excluded (reproduces H1 Addendum 1's 6.0 %)"
+   },
+   "null": "n/a (consistency measurement)",
+   "result": "Not excluded. LP2: lag-1 0.664 %, lag-2 3.404 %, IoC*N 0.9999. z of LP2 vs replicates (lag-1 / lag-2 / IoC): keyskip -0.51 / -0.72 / -0.18; V-BACK -0.38 / -0.59 / -0.27; V-NULL +0.09 / -1.02 / -0.09; V-DEFER +0.15 / -0.44 / -0.27. V-BACK's only distinctive trace (key reuse: c_t - c_{t-1} = p_t - p_{t-1} at a backstep) needs the key and is invisible to keyless surface statistics.",
+   "coverage": "3 statistics, 20 replicates per variant, English plaintext.",
+   "not_covered": [
+    "higher-lag and n-gram ciphertext statistics",
+    "non-English plaintext",
+    "any statistic conditioned on a candidate key"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round47/X1-redteam/x1_surface_stats.py",
+    "liber-primus/analysis/round47/X1-redteam/x1_surface_stats.json"
+   ],
+   "reproduce": "cd <repo root>; PYTHONUTF8=1 python liber-primus/analysis/round47/X1-redteam/x1_surface_stats.py  (~1 min)",
+   "reopens_if": "A keyless ciphertext statistic separates V-BACK from keyskip on LP2-length plants.",
+   "notes": "Supports H1 Addendum 1 as a legitimate correction (registered V-NULL is excluded by LP2's lag-2 rate) and confirms V-BACK is consistent with LP2's surface statistics.",
+   "status": "audit",
+   "round": "47/X1",
+   "date": "2026-11-24",
+   "lane": "round47/X1-redteam",
+   "threshold_fixed_in_advance": false
+  },
+  {
+   "id": "R47-X1-CHECKER-INPROCESS-GAMEABILITY",
+   "hypothesis": "The C7-C10 checkers cannot be passed by a trivial or cheating submission at a fresh seed.",
+   "threshold": "FOUND-ERROR iff a submission that does not do the task prints the checker's finish-line message.",
+   "positive_control": "n/a",
+   "null": "n/a",
+   "result": "FOUND-ERROR for all four. C9/C10/C8 import the submission into the checker's own process, so it can read the checker's stack frame: x1_cheat_c9.py returns evaluate()'s local P when handed the plant key (C3 7/7 via the reference beam; V-BACK 40/40, V-NULL 40/40, wrong FP 0.00 -> 'FINISH LINE MET', seed 99); x1_cheat_c10.py returns c[3] (true plaintext) on plants and zeros on nulls (500/500, null FP 0.000 -> 'FINISH LINE MET', seed 99); x1_cheat_c8.py returns 1.0 while evaluate()'s 'sp' is unbound (positives) and 0.0 after (nulls): power 1.000 at L=236 against all four nulls (--direct, so the checker prints 'not yet'; the trick is protocol-independent). The seal (hidden seed, held-out text) does not help: the cheat reads the live plaintext. C7: Dracula (English) with language 'non' / register 'Old Norse saga prose' validates and prints 'NEW REGISTER: this crosses the C7 finish line. Submit it' (no language check).",
+   "coverage": "One cheat per checker at default/dev settings.",
+   "not_covered": [
+    "subprocess isolation as a fix (not implemented; X1 writes only in its folder)"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round47/X1-redteam/x1_cheat_c8.py",
+    "liber-primus/analysis/round47/X1-redteam/x1_cheat_c9.py",
+    "liber-primus/analysis/round47/X1-redteam/x1_cheat_c10.py",
+    "liber-primus/analysis/round47/X1-redteam/x1_cheat_c7_manifest.json",
+    "liber-primus/analysis/round47/X1-redteam/out_x1_cheat_c7.txt",
+    "liber-primus/analysis/round47/X1-redteam/out_x1_cheat_c8.txt",
+    "liber-primus/analysis/round47/X1-redteam/out_x1_cheat_c9.txt",
+    "liber-primus/analysis/round47/X1-redteam/out_x1_cheat_c10.txt"
+   ],
+   "reproduce": "see AUDIT.md section 4.4 (one command per checker, all < 1 min except C9 ~1 min)",
+   "reopens_if": "Checkers run submissions in a subprocess that receives only (C, K[, printed]) / idx and returns only plain_idx / a float, and C7 adds a language-ID screen (e.g. English quadgram score of the folded source) before printing a crossing.",
+   "notes": "Attach to R47-H1 rows C7-C10. Human code review at submission time catches all four cheats; the checkers' 'FINISH LINE MET' text should say 'pending code and source review'.",
+   "status": "audit",
+   "round": "47/X1",
+   "date": "2026-11-24",
+   "lane": "round47/X1-redteam",
+   "threshold_fixed_in_advance": false
+  },
+  {
+   "id": "R47-X1-T2-9877-DOUBLET-PRIOR",
+   "hypothesis": "R47-T2's statement that reading M at gpos 9877 'touches no doublet site' is correct.",
+   "threshold": "FOUND-ERROR iff the LP2 stream has canon M at gpos 9876 (so M at 9877 would create a ciphertext doublet).",
+   "positive_control": "n/a",
+   "null": "n/a",
+   "result": "FOUND-ERROR. In the 12,956-rune LP2 stream (challenges/_heavy.lp2_stream, the gpos frame T2 uses), gpos 9874-9879 = S Y M D Y S; T2's own results.json gives 9876 = M (T2 M, S1 M, template M 0.953). If 9877 were M the stream would gain an MM doublet (87th; LP2 has 86 doublets in 12,955 adjacent pairs). Under LP2's doublet suppression, P(next = previous) = 0.664 % vs P(next = a given other rune) = 3.55 %, so the doublet prior alone favours canon D over M by 5.3:1, independent of any reader. Both blind M reads sit immediately after a true M, which also fits a perseveration error. (T2's other D->M read, gpos 280, follows S, so that one is not perseveration.)",
+   "coverage": "One position.",
+   "not_covered": [
+    "the glyph image itself (the oracle's job)"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round47/X1-redteam/AUDIT.md",
+    "liber-primus/analysis/round47/T2-transcription-closeout/results.json"
+   ],
+   "reproduce": "python -c \"import sys; sys.path.insert(0,'challenges'); import _heavy as H, skipdecode as sk; s=H.lp2_stream(); print(sk.idx_to_trans(s[9874:9880]), sum(s[i]==s[i-1] for i in range(1,len(s))))\"",
+   "reopens_if": "The oracle or a higher-resolution master reads M at 9877 (then canon has a family error that also creates a doublet).",
+   "notes": "Attach to R47-T2 9877 row. Strengthens T2's 'leans toward reader error' reading; does not change the pre-registered verdict (canon-error-candidate -> oracle).",
+   "status": "audit",
+   "round": "47/X1",
+   "date": "2026-11-24",
+   "lane": "round47/X1-redteam",
+   "threshold_fixed_in_advance": true
   }
  ],
  "round18_merged": "2026-08-26"

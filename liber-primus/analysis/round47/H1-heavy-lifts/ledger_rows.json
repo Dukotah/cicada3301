@@ -1,0 +1,128 @@
+[
+ {
+  "lane": "round47/H1-heavy-lifts",
+  "round": "47/H1",
+  "date": "2026-11-24",
+  "threshold_fixed_in_advance": true,
+  "id": "R47-H1-C7-CORPUS-FORGE-BASELINE",
+  "status": "measured",
+  "hypothesis": "A public checker (challenges/c7_corpus_forge.py) can validate a Gematria-Primus reference corpus from a declared transliteration table and public-domain source, and place LP2's 2-rune share and 9-class length profile against it with R46-P1's conventions.",
+  "threshold": "Self-test: the worked example (Latin, Aeneid, R-A table) validates with 500/500 sampled sentences re-derived, AND a copy with every 7th sentence altered FAILS (PREREG s1 C7, s2 Q1).",
+  "positive_control": "passed",
+  "control_detail": "Aeneid: 63,788 words, 3,279 sentences, unmapped 0.0%, 500/500 re-derived; corrupted copy rejected (82/500 sampled mismatches).",
+  "result": "Example row: Latin 2-rune share 8.36% (window p01-p99 6.87-9.70%), LP2 15.47% above all 1,000 windows of 2,896 words; T3 G = 1,348 vs within-text 99% bar 25.2: rejected (consistent with R46-P1 T3, Latin rejected). Covered register, so not a finish-line crossing.",
+  "coverage": "Checker + one worked example in a covered register. Covered registers: English (all), classical Latin, German, Welsh, Old English, solved pages.",
+  "not_covered": [
+   "every register outside that list (Greek, Hebrew, Norse, Middle English, Vulgate Latin, ...): the open challenge C7",
+   "the checker's G bar is within-text only (no between-text variance); a single-corpus 'rejected' is weak (R46-P1 X1 caveat)"
+  ],
+  "three_conditionals": {
+   "key_space": "n/a (no decode)",
+   "transition_model": "n/a",
+   "adjudicator_register": "the corpus's own register; LP2 printed words via round46/L1-word-loader/words.py (2,896)"
+  },
+  "crossing_changes": "R46-P1-TWO-RUNE-EXPLANATIONS and R46-P1-TWO-RUNE-DEFICIT-REPLICATION gain a reference register; their not_covered 'other languages' narrows.",
+  "evidence": [
+   "challenges/c7_corpus_forge.py",
+   "challenges/examples/c7_latin_aeneid/manifest.json",
+   "liber-primus/analysis/round47/H1-heavy-lifts/out_c7_selftest.txt",
+   "liber-primus/analysis/round47/H1-heavy-lifts/RESULTS.md"
+  ],
+  "reproduce": "python challenges/c7_corpus_forge.py --self-test"
+ },
+ {
+  "lane": "round47/H1-heavy-lifts",
+  "round": "47/H1",
+  "date": "2026-11-24",
+  "threshold_fixed_in_advance": true,
+  "id": "R47-H1-C8-REGISTER-SCORER-BASELINE",
+  "status": "measured",
+  "hypothesis": "Power of the English reference scorer and the incumbent panel-R36 pmax to detect correct-key decodes of held-out text at LP2 page size (L=236; also 120, 60), at FPR 0.01 against every one of four nulls (uniform, real LP2 windows, shuffled positives, beam wrong-key decodes of LP2).",
+  "threshold": "C8 finish line: power >= 0.80 at FPR 0.01, L=236, every null class, register outside panel-R36's 12. Self-test control: English scorer on English held-out >= 0.80.",
+  "positive_control": "passed",
+  "control_detail": "English scorer on English (Dracula) held-out: 1.000 at L=236/120/60 (seed 4703, 200 positives planted via keyskip + reference beam).",
+  "result": "L=236 power, English reference / panel-R36: English 1.00/1.00; Latin 1.00/1.00; German 1.00/1.00; vowel-dropped English 0.00/0.33 (panel >= 0.90 against the three wrong-key nulls; the shuffled null binds); reversed English (off-panel) 0.87/0.62. At L=60: Latin 0.955/1.00, German 0.98/1.00, reversed 0.24/0.15. At FPR 0.01 the register gap is not 'non-English languages' broadly: Latin and German are seen even by the English scorer; the gap is sequence-unlike registers, where the shuffled-text null defeats both instruments.",
+  "coverage": "5 held-out registers (3 in panel, 1 panel-register variant, 1 off-panel illustration) x L in {236,120,60}; 200 positives, 2,000 per cheap null class, 500 beam wrong-key nulls per length.",
+  "not_covered": [
+   "any real language outside panel-R36 (no corpus in the repo): the open challenge C8",
+   "FPR at sweep scale (1e-3 to 1e-6): only FPR 0.01 measured",
+   "keystreams other than SHA-256 counter; transition models other than keyskip1"
+  ],
+  "three_conditionals": {
+   "key_space": "none swept; correct key known for positives, fresh SHA-256 keys for wrong-key nulls",
+   "transition_model": "keyskip1 plant (supp = EXACT_SUPP), decoded by skipdecode.beam_decode w=400 max_skip 3",
+   "adjudicator_register": "English quadgram (lp.score) and panel-R36 (12 registers, sha a0682f0c...)"
+  },
+  "crossing_changes": "L7-A-SCORER-ENGLISH-ONLY not_covered ('languages not modelled') and panel-R36's register list; if the incumbent already reaches 0.80 the crossing files as 'already seen by panel-R36'.",
+  "evidence": [
+   "challenges/c8_register_scorer.py",
+   "liber-primus/analysis/round47/H1-heavy-lifts/out_c8_selftest.txt",
+   "liber-primus/analysis/round47/H1-heavy-lifts/out_c8_extra.txt",
+   "liber-primus/analysis/round47/H1-heavy-lifts/baseline_extra.json"
+  ],
+  "reproduce": "python challenges/c8_register_scorer.py --self-test --seed 4703 && python -I liber-primus/analysis/round47/H1-heavy-lifts/baseline_extra.py"
+ },
+ {
+  "lane": "round47/H1-heavy-lifts",
+  "round": "47/H1",
+  "date": "2026-11-24",
+  "threshold_fixed_in_advance": true,
+  "id": "R47-H1-C9-REJECTION-LOOP-BASELINE",
+  "status": "measured",
+  "hypothesis": "The C3 reference beam and beam_v3 (advance 1/2/free, panel-R36) recover plaintext enciphered under rejection loops outside their transition relations: V-BACK (key pointer steps back on a rejected doublet), V-NULL (a null that consumes no key is emitted and the rejected key discarded; PREREG Addendum 1), V-DEFER (rejected key used for the next rune; diagnostic).",
+  "threshold": "Plant passes iff rune recovery >= 0.85 AND checker-recomputed English score >= -5.2, with the wrong key <= -6.0; variant passes iff >= 80% of plants pass and wrong-key FP <= 5%. Finish line: C3 7/7 AND V-BACK and V-NULL pass at 40 sealed plants.",
+  "positive_control": "passed",
+  "control_detail": "keyskip control (the construction the beams represent): 40/40 for both beams (median -4.29); C3 gates 7/7 for the reference decoder. All variants reproduce LP2's lag-1 (0.66%) and lag-2 (3.40%) repeat rates at supp = EXACT_SUPP.",
+  "result": "40 plants, L=240, seed 4701. Reference beam / beam_v3: V-BACK 0/40 / 0/40 (mean recovery 0.19, median correct-key score -7.01 / -6.79: the correct key is scored as noise = a DETECTION gap); V-NULL 0/40 / 0/40 (median -4.54: still English, but mean positional recovery 0.17 because every null decodes to a junk rune = a RECOVERY gap, not a detection gap); V-DEFER 39/40 / 39/40 (inside both beams' tolerance). Wrong-key FP 0.00 throughout. The doublet-triggered null that keeps the rejected key (registered V-NULL) is excluded for LP2 by its lag-2 repeat rate (6.0% vs 3.40%). V-BACK gap is representational (R47-X1-C9-VBACK-BACKSTEP-RELATION).",
+  "coverage": "3 rejection-loop variants + keyskip control x 40 plants x 2 decoders, English plaintext, L=240, key offset 0.",
+  "not_covered": [
+   "other non-monotone or insertion loops; combinations with keyskip2/free drift",
+   "non-English plaintext (an English-only measurement, L7-A)",
+   "unknown key offset; lengths other than 240"
+  ],
+  "three_conditionals": {
+   "key_space": "none swept; correct key known, independent SHA-256 wrong key per plant",
+   "transition_model": "V-BACK, V-NULL (Addendum 1), V-DEFER, keyskip control; decoders skipdecode.beam_decode (keyskip1) and beam_v3 advance 1/2/free",
+   "adjudicator_register": "English quadgram recomputed by the checker (beam_v3 searched with panel-R36)"
+  },
+  "crossing_changes": "L7-B-BEAM-ENVELOPE: until a qualified decoder crosses, no beam-based negative in the ledger covers V-BACK (correct key scored as noise); beam negatives do detect V-NULL but would not have recovered its plaintext.",
+  "evidence": [
+   "challenges/c9_rejection_loops.py",
+   "liber-primus/analysis/round47/H1-heavy-lifts/out_c9_selftest_40.txt",
+   "liber-primus/analysis/round47/H1-heavy-lifts/out_c9_example.txt"
+  ],
+  "reproduce": "python challenges/c9_rejection_loops.py --self-test --v3 --plants 40 --seed 4701"
+ },
+ {
+  "lane": "round47/H1-heavy-lifts",
+  "round": "47/H1",
+  "date": "2026-11-24",
+  "threshold_fixed_in_advance": true,
+  "id": "R47-H1-C10-SHUFFLED-LENGTHS-BASELINE",
+  "status": "measured",
+  "hypothesis": "Under R46-L1 regime b' (printed word lengths permuted within sentence), the L1 battery's U2b rule (key jumps at the PRINTED word starts) recovers plaintext of the R37-U2b word-jump construction (pointer jumps by PRIMES[k mod 29] at each true word start, SHA-256-counter base key) given the correct key.",
+  "threshold": "Registered (PREREG s1): power at FPR 0.01 vs a matched wrong-key null >= max(0.80, baseline+0.30). Re-aimed (Addendum 2, after the registered metric proved unreachable): plant passes iff recovery >= 0.90 and English >= -5.2; nulls <= -5.2 on >= 95%; finish line >= 0.80 of 500 plants.",
+  "positive_control": "passed",
+  "control_detail": "True-start decode reproduces the plaintext exactly on 500/500 plants (both seeds); ceiling passes 500/500, detection power 1.00.",
+  "result": "Seeds 4702 / 4704, 500 plants + 500 nulls, units mean 300 runes: printed-start baseline recovers 0/500 / 0/500 plants (mean rune recovery 0.33 / 0.32; null FP 0.00). Registered detection metric: baseline power 0.830 (Wilson 0.795-0.860) / 0.812 at FPR 0.01. So under b' the U2b rule keeps DETECTION power at FPR 0.01 with the key in hand but loses RECOVERY entirely; R46-L1's 'b' power <= 0.033' is a recovery-at-sweep-scale-bar statement, not total blindness. A within-sentence segmentation beam recovers 0.962 / 0.976 (R47-X1-C10-SEGMENTATION-BEAM-CROSSING).",
+  "coverage": "U2b word-jump construction, English sentences (4 dev texts), 236-472-rune units, 2 seeds x 500 plants + 500 nulls.",
+  "not_covered": [
+   "the anti-repeat filter combined with word jumps; other jump sequences; unknown key",
+   "R41 W1-W4 per-word-constant keys (print-free difference statistics would see them; not measured)",
+   "non-English plaintext; book-scope shuffles"
+  ],
+  "three_conditionals": {
+   "key_space": "none swept; correct base key handed to the attack, independent key for nulls",
+   "transition_model": "R37-U2b word-jump, S[j] = GP PRIMES[j mod 29], no doublet filter",
+   "adjudicator_register": "English quadgram (lp.score); recovery on rune indices"
+  },
+  "crossing_changes": "R46-L1-REOPEN-VERDICTS and R46-L1-R37-U2B-U3-RECHECK: b' power for the word-jump class becomes a measured recovery power instead of <= 0.033.",
+  "evidence": [
+   "challenges/c10_shuffled_lengths.py",
+   "liber-primus/analysis/round47/H1-heavy-lifts/out_c10_selftest_4702.txt",
+   "liber-primus/analysis/round47/H1-heavy-lifts/out_c10_selftest_4704.txt",
+   "liber-primus/analysis/round47/H1-heavy-lifts/PREREG.md"
+  ],
+  "reproduce": "python challenges/c10_shuffled_lengths.py --self-test --seed 4702"
+ }
+]

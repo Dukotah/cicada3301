@@ -1,0 +1,146 @@
+[
+ {
+  "id": "R47-L2-G3-RERUN",
+  "round": "47/L2",
+  "lane": "round47/L2-g3-lexicon",
+  "date": "2026-11-24",
+  "status": "negative",
+  "hypothesis": "R38-C2-G3 (lag-1 cw/dw gematria pointers in the R37 composed rule) re-run through words.py on the pages that open mid-word, under fragment conventions CS (wrapped word on the page it starts on) and CE (on the page it ends on); C0 (split, legacy) = recorded decodes.",
+  "threshold": "bar_v3 at combined family N (orig + new) per relation, L=120 screen, L=min(240,unit) gate; plant rule = lane judge(); fixed in PREREG.md",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "words.py plants on LP2's real layout, lane's own encipherers/decoder/judge, 40 cells x 26 plants per regime. (a) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b') p0 0.00, mid-word C0 0.00 / CS 0.00 / CE 0.00 (own printed-length decoder; segmentation search not run; R47-X1). C0 faithfulness re-run reproduced 4.911/4.700/4.038 exactly.",
+  "result": "768 real decodes (pages 1,2,4,5 x CS,CE): best ks1 5.440, ks2 4.737, direct 4.111 vs combined-N bars 6.048/5.967/6.574; 0 gate runs, 0 flagged.",
+  "coverage": "R38-C2-G3's frozen space (40 cells, pages 0-5, sigma +-1, ks1/ks2 for A3, s=0) under C0 (recorded), CS and CE; total family 1,344 decodes",
+  "not_covered": [
+   "lag>1; dw inside the beam; skip-circular A3/cw plant; pointer carry across the page break (wrapped word's value as page p's first pointer)",
+   "(b') printed lengths not the plaintext's: power 0 under every convention for the row's own printed-length decoder (segmentation search not run; R47-X1)"
+  ],
+  "three_conditionals": {
+   "key_space": "R38-C2-G3 frozen space, conventions C0/CS/CE",
+   "transition_model": "A1/A2 beam-free direct; A3 beam_v3 keyskip1/keyskip2 with a skip-free A3/cw planted encipherer; per-page key restart",
+   "adjudicator_register": "panel-R36 12 registers (sha a0682f0c...); plants English only (data/pride.txt, B6 EN mapping via R46-L1 l1lib.make_plant)"
+  },
+  "sweep_store": "liber-primus/analysis/round47/L2-g3-lexicon/g3_sweep_rows.jsonl",
+  "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+  "evidence": [
+   "liber-primus/analysis/round47/L2-g3-lexicon/PREREG.md",
+   "liber-primus/analysis/round47/L2-g3-lexicon/RESULTS.md",
+   "liber-primus/analysis/round47/L2-g3-lexicon/results.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/g3_real.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/g3_plants.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/g3_faith.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/arm_g3.py",
+   "liber-primus/analysis/round47/L2-g3-lexicon/l2lib.py"
+  ],
+  "supersedes_note": "Closes the R46-L1 CONDITIONAL on R38-C2-G3's fragment convention: the negative holds under (a) and (b) for C0, CS and CE; conditional under (b')."
+ },
+ {
+  "id": "R47-L2-SEMANTIC-WORDNET-POWER",
+  "round": "47/L2",
+  "lane": "round47/L2-g3-lexicon",
+  "date": "2026-11-24",
+  "status": "measured",
+  "hypothesis": "R38-C1-SEMANTIC-WORDNET's own lexicon->key glue (enciphers.enc / sweep.dec_shift / dec_a3 / judge) has measured power on LP2's real layout via words.py under (a), (b), (b'), and its real result holds under fragment conventions CS and CE on pages 1-2.",
+  "threshold": "power >= 0.90 holds / 0.50-0.90 weakened / < 0.50 conditional; real re-run vs bar_v3 at combined family N; fixed in PREREG.md",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "9 cells x 14 plants per regime (pages 0,1,2; C0/CS/CE on 1,2). (a) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b') p0 0.00, mid-word C0 0.00 / CS 0.00 / CE 0.00 (own printed-length decoder; segmentation search not run; R47-X1). C0 faithfulness re-run reproduced the recorded family bests exactly.",
+  "result": "Power now MEASURED (was inherited, R46-X1 s5.4): verdict (a) holds, (b) holds, (b') conditional. Real CS+CE re-run on pages 1-2: best shift 4.112, A3 5.102 vs combined-N bars 7.216 / 8.174; 0 flagged.",
+  "coverage": "the row's frozen key space (vars x A1/A2 s=0..28 / A3 s=0..725, sigma +-1, pages 0-2) under C0 (recorded) + CS + CE on pages 1-2",
+  "not_covered": [
+   "the row's own not_covered (rho 2/3, keyskip2/free, pages>2, other senses/lexicons, non-English)",
+   "(b') and any space source not equal to the plaintext's words: power <= the b' figure above, for the row's own printed-length decoder (segmentation search not run; R47-X1)"
+  ],
+  "three_conditionals": {
+   "key_space": "row's frozen space, conventions C0/CS/CE",
+   "transition_model": "A1/A2 direct; A3 beam_v3 keyskip1; per-page restart",
+   "adjudicator_register": "panel-R36 12 registers (sha a0682f0c...); plants English only (data/pride.txt, B6 EN mapping via R46-L1 l1lib.make_plant)"
+  },
+  "sweep_store": "liber-primus/analysis/round47/L2-g3-lexicon/r38_sweep_rows.jsonl",
+  "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+  "evidence": [
+   "liber-primus/analysis/round47/L2-g3-lexicon/PREREG.md",
+   "liber-primus/analysis/round47/L2-g3-lexicon/RESULTS.md",
+   "liber-primus/analysis/round47/L2-g3-lexicon/results.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/r38_real.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/r38_plants.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/r38_faith.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/arm_lex.py",
+   "liber-primus/analysis/round47/L2-g3-lexicon/l2lib.py"
+  ],
+  "supersedes_note": "Replaces 'R38-C1-SEMANTIC-WORDNET power under (a)/(b) not measured' (R46-L1-REOPEN-VERDICTS / R46-X1 s5.4)."
+ },
+ {
+  "id": "R47-L2-SEMANTIC-FREQRANK-POWER",
+  "round": "47/L2",
+  "lane": "round47/L2-g3-lexicon",
+  "date": "2026-11-24",
+  "status": "measured",
+  "hypothesis": "R38-C1-SEMANTIC-FREQRANK's own lexicon->key glue (enciphers.enc / sweep.dec_shift / dec_a3 / judge) has measured power on LP2's real layout via words.py under (a), (b), (b'), and its real result holds under fragment conventions CS and CE on pages 1-2.",
+  "threshold": "power >= 0.90 holds / 0.50-0.90 weakened / < 0.50 conditional; real re-run vs bar_v3 at combined family N; fixed in PREREG.md",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "9 cells x 14 plants per regime (pages 0,1,2; C0/CS/CE on 1,2). (a) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b') p0 0.00, mid-word C0 0.00 / CS 0.00 / CE 0.00 (own printed-length decoder; segmentation search not run; R47-X1). C0 faithfulness re-run reproduced the recorded family bests exactly.",
+  "result": "Power now MEASURED (was inherited, R46-X1 s5.4): verdict (a) holds, (b) holds, (b') conditional. Real CS+CE re-run on pages 1-2: best shift 3.324, A3 5.896 vs combined-N bars 7.216 / 8.174; 0 flagged.",
+  "coverage": "the row's frozen key space (vars x A1/A2 s=0..28 / A3 s=0..725, sigma +-1, pages 0-2) under C0 (recorded) + CS + CE on pages 1-2",
+  "not_covered": [
+   "the row's own not_covered (rho 2/3, keyskip2/free, pages>2, other senses/lexicons, non-English)",
+   "(b') and any space source not equal to the plaintext's words: power <= the b' figure above, for the row's own printed-length decoder (segmentation search not run; R47-X1)"
+  ],
+  "three_conditionals": {
+   "key_space": "row's frozen space, conventions C0/CS/CE",
+   "transition_model": "A1/A2 direct; A3 beam_v3 keyskip1; per-page restart",
+   "adjudicator_register": "panel-R36 12 registers (sha a0682f0c...); plants English only (data/pride.txt, B6 EN mapping via R46-L1 l1lib.make_plant)"
+  },
+  "sweep_store": "liber-primus/analysis/round47/L2-g3-lexicon/r38_sweep_rows.jsonl",
+  "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+  "evidence": [
+   "liber-primus/analysis/round47/L2-g3-lexicon/PREREG.md",
+   "liber-primus/analysis/round47/L2-g3-lexicon/RESULTS.md",
+   "liber-primus/analysis/round47/L2-g3-lexicon/results.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/r38_real.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/r38_plants.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/r38_faith.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/arm_lex.py",
+   "liber-primus/analysis/round47/L2-g3-lexicon/l2lib.py"
+  ],
+  "supersedes_note": "Replaces 'R38-C1-SEMANTIC-FREQRANK power under (a)/(b) not measured' (R46-L1-REOPEN-VERDICTS / R46-X1 s5.4)."
+ },
+ {
+  "id": "R47-L2-SENSE-POWER",
+  "round": "47/L2",
+  "lane": "round47/L2-g3-lexicon",
+  "date": "2026-11-24",
+  "status": "measured",
+  "hypothesis": "R39-C1-SENSE-SIMILARITY's own lexicon->key glue (enciphers.enc / sweep.dec_shift / dec_a3 / judge) has measured power on LP2's real layout via words.py under (a), (b), (b'), and its real result holds under fragment conventions CS and CE on pages 1-2.",
+  "threshold": "power >= 0.90 holds / 0.50-0.90 weakened / < 0.50 conditional; real re-run vs bar_v3 at combined family N; fixed in PREREG.md",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": "9 cells x 14 plants per regime (pages 0,1,2; C0/CS/CE on 1,2). (a) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b) p0 1.00, mid-word C0 1.00 / CS 1.00 / CE 1.00; (b') p0 0.00, mid-word C0 0.00 / CS 0.00 / CE 0.00 (own printed-length decoder; segmentation search not run; R47-X1). C0 faithfulness re-run reproduced the recorded family bests exactly.",
+  "result": "Power now MEASURED (was inherited, R46-X1 s5.4): verdict (a) holds, (b) holds, (b') conditional. Real CS+CE re-run on pages 1-2: best shift 4.161, A3 5.171 vs combined-N bars 6.953 / 7.912; 0 flagged.",
+  "coverage": "the row's frozen key space (vars x A1/A2 s=0..28 / A3 s=0..725, sigma +-1, pages 0-2) under C0 (recorded) + CS + CE on pages 1-2",
+  "not_covered": [
+   "the row's own not_covered (rho 2/3, keyskip2/free, pages>2, other senses/lexicons, non-English)",
+   "(b') and any space source not equal to the plaintext's words: power <= the b' figure above, for the row's own printed-length decoder (segmentation search not run; R47-X1)"
+  ],
+  "three_conditionals": {
+   "key_space": "row's frozen space, conventions C0/CS/CE",
+   "transition_model": "A1/A2 direct; A3 beam_v3 keyskip1; per-page restart",
+   "adjudicator_register": "panel-R36 12 registers (sha a0682f0c...); plants English only (data/pride.txt, B6 EN mapping via R46-L1 l1lib.make_plant)"
+  },
+  "sweep_store": "liber-primus/analysis/round47/L2-g3-lexicon/r39_sweep_rows.jsonl",
+  "source_register": "round36/P1-panel-r36 panel12 a0682f0c39978d75c4c9e6f491e3d046a1da5ee29501d3ec951c69ca3a5bbe6c",
+  "evidence": [
+   "liber-primus/analysis/round47/L2-g3-lexicon/PREREG.md",
+   "liber-primus/analysis/round47/L2-g3-lexicon/RESULTS.md",
+   "liber-primus/analysis/round47/L2-g3-lexicon/results.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/r39_real.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/r39_plants.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/r39_faith.json",
+   "liber-primus/analysis/round47/L2-g3-lexicon/arm_lex.py",
+   "liber-primus/analysis/round47/L2-g3-lexicon/l2lib.py"
+  ],
+  "supersedes_note": "Replaces 'R39-C1-SENSE-SIMILARITY power under (a)/(b) not measured' (R46-L1-REOPEN-VERDICTS / R46-X1 s5.4)."
+ }
+]

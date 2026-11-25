@@ -1,0 +1,62 @@
+[
+ {
+  "id": "R47-T2-WINDOW-FAMILY-CLOSEOUT",
+  "lane": "round47/T2-transcription-closeout",
+  "hypothesis": "Canon (data/krisyotam_runes.txt) has a look-alike-family glyph error at one or more of S1's 27 window-line family positions, including the 4 canon-resolved disputes (gpos 276, 5054, 6054, 9877) that rested on S1's unblinded adjudication.",
+  "status": "measured",
+  "round": "47/T2",
+  "date": "2026-11-24",
+  "threshold": "Pre-registered (PREREG.md sha256 d9c40eb4..., logged in build_log.txt before any read): one strip per target line (repaired alignment.json v2 line registration, boxes floor/ceil(j*c/L) +-3), every glyph read blind left to right; reads frozen in 10 batches of <= 25 boxes before unsealing; sealed.json never loaded before unseal; semi-global edit-distance registration of reads to canon; verdicts from T2 + S1 frozen blind read + leave-line-out template only (no unblinded eye calls); gates W >= 6/8, C >= 90 %; exact Clopper-Pearson 95 %.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": {
+   "substitution control W": "8/8 sealed swapped look-alike glyphs embedded at unknown places in exact-line strips caught AND named (also tests the strip-registration glue)",
+   "reader control C": "24/24 solved-page 73.jpg glyphs in 4 strips (11/11 family runes), CP95 lower 0.858",
+   "plain W glyphs": "48/48 canon-labelled exact-line glyphs (18/18 family)",
+   "registration": "27/27 targets registered; alignment cost 0 on 13 strips, 0.6 on 2; margin >= 1.4"
+  },
+  "null": "Binomial: k flagged in n family glyphs read by S1 and one further blind reader bounds the canon family error rate by CP95_upper(k,n) / (1 - m_S1 * max(m_S2, m_T2)).",
+  "result": "T2 = canon on 26/27. Disputed: 276 A, 5054 TH, 6054 AE confirmed canon by an independent blind reader (S1's blind reads were the errors). 9877: T2 M = S1 M != canon D; template D 0.969 vs M 0.686 -> pre-registered verdict canon-error-candidate, FLAGGED FOR ORACLE, not applied. Post hoc (Addendum T2-A), T2 also read non-target canon D at gpos 280 as M where the template says D 0.949, consistent with a shared reader M-for-D bias rather than a canon error. Updated two-reader bounds: O/A/AE <= 4.6 % (82 glyphs, was 5.2 %); M/D <= 19.9 % with 9877 counted as error (27 glyphs, was 14.8 %), 13.4 % if the oracle upholds canon; all five families <= 2.8 % (1.9 % if upheld).",
+  "coverage": "Census of S1's 27 family glyphs on window (non-exact) lines, 15 strips, + 99 strip-neighbour glyphs (98/99 = canon) + 8 swap and 4 solved-page control strips. Reader power: 0/19 misses on family controls, m_T2 <= 17.6 % at 95 %.",
+  "not_covered": [
+   "gpos 9877 (line 455, D/M) remains open pending HUMAN-ORACLE.md or a higher-resolution master.",
+   "~1,800 other off-exact stream positions and RAT's 149 unaligned positions.",
+   "Errors common to the relikd 2400x3600 render (all readers share it; 9877 shows two readers can share a bias).",
+   "Template calls for 5054 and 6054 (their strips are not 1:1 tokens:boxes); those rest on T2 + canon vs S1."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round47/T2-transcription-closeout/PREREG.md",
+   "liber-primus/analysis/round47/T2-transcription-closeout/RESULTS.md",
+   "liber-primus/analysis/round47/T2-transcription-closeout/results.json",
+   "liber-primus/analysis/round47/T2-transcription-closeout/reads_frozen.sha256",
+   "liber-primus/analysis/round47/T2-transcription-closeout/posthoc_md.json"
+  ],
+  "reproduce": "cd liber-primus && PYTHONUTF8=1 python analysis/round47/T2-transcription-closeout/build.py && PYTHONUTF8=1 python analysis/round47/T2-transcription-closeout/unseal.py (reads_batchNN.json are agent input, not regenerated)",
+  "reopens_if": "The oracle or a higher-resolution master rules on 9877 (D -> caveat fully closed; M -> one canon family error on line 455 that also creates an MM doublet at 9876-9877 (5.3:1 prior against, R47-X1)); or a further reader disagrees with T2 at 276, 5054 or 6054.",
+  "notes": "Closes the R46-X1 caveat for 26/27 window glyphs and 3/4 disputed positions; not for 9877. T2's measured D->M misses (280 certain) mean its family miss rate on this font is non-zero, beyond what 19 controls resolve."
+ },
+ {
+  "id": "R47-T2-9877-ORACLE-FLAG",
+  "lane": "round47/T2-transcription-closeout",
+  "hypothesis": "Canon D at gpos 9877 (page 41, line 455, offset 6) is an M.",
+  "status": "open",
+  "round": "47/T2",
+  "date": "2026-11-24",
+  "threshold": "PREREG §5: T2 != canon and T2 = S1 blind -> canon-error-candidate, flagged, never auto-applied.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": {"see": "R47-T2-WINDOW-FAMILY-CLOSEOUT"},
+  "null": "n/a (single-position adjudication)",
+  "result": "Evidence: S1 blind M (L confidence), T2 blind M (M confidence), leave-line-out template D 0.969 vs M 0.686 (template validated MD 751/751 on exact lines), canon D. T2 made the same M-for-D read on a non-target canon D at gpos 280 (template D 0.949). No correction proposed; oracle bundle should show line 455 boxes 5-6 beside page-73 M and D exemplars.",
+  "coverage": "1 position.",
+  "not_covered": ["Any rendering other than relikd 2400x3600."],
+  "evidence": [
+   "liber-primus/analysis/round47/T2-transcription-closeout/results.json",
+   "liber-primus/analysis/round47/T2-transcription-closeout/posthoc_md.json",
+   "liber-primus/analysis/round45/S1-transcription/adjudications.json"
+  ],
+  "reproduce": "cd liber-primus && PYTHONUTF8=1 python analysis/round47/T2-transcription-closeout/posthoc_md.py",
+  "reopens_if": "Oracle ruling or higher-resolution master.",
+  "notes": "Status open = flagged-for-oracle per HUMAN-ORACLE.md. The X1 caveat is not fully closed until this is ruled on."
+ }
+]

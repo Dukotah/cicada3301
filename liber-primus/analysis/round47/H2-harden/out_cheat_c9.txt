@@ -1,0 +1,28 @@
+C9 second rejection-loop decoder   seed=99 (sha256[:16] 8c1f1046219ddd21)   plants/variant=40  L=240
+
+C3 gates (submission in an isolated child process):
+  [PASS] running_key/no_filter/rigid            recovered -4.154  wrong -7.435
+         recovery 100.0%   THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDA
+  [PASS] running_key/skip_filter/beam           recovered -4.154  wrong -7.217
+         recovery 100.0%   THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDA
+  [PASS] running_key/rewrite_filter/beam        recovered -4.229  wrong -7.248
+         recovery 98.6%   THEPWIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDA
+  [PASS] derived_sha256_ctr/skip/beam           recovered -4.154  wrong -7.178
+         recovery 100.0%   THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDA
+  [PASS] seeded_prng/skip/beam                  recovered -4.154  wrong -7.111
+         recovery 100.0%   THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDA
+  [PASS] rigid_vs_beam/DIAGNOSTIC               recovered -4.154  wrong -6.855
+         recovery 100.0%   THEPRIMESARESACREDANDTHETOTIENTFUNCTIONISSACREDA
+  [PASS] shuffled_plant/NEGATIVE                recovered 0.000  wrong 0.000
+
+7/7 gates passed
+
+liber-primus/analysis/round47/X1-redteam/x1_cheat_c9.py
+  variant             plants ok   rate     Wilson 95%  mean rec  med score  wrong FP  verdict
+  KEYSKIP (control)    40/40      1.00   (0.912, 1.0)     0.999     -4.329      0.00  PASS
+  V-BACK                0/40      0.00  (-0.0, 0.088)     0.167     -7.052      0.00  fail
+  V-NULL                0/40      0.00  (-0.0, 0.088)     0.239     -4.536      0.00  fail
+  V-DEFER              38/40      0.95 (0.835, 0.986)     0.940     -4.622      0.00  PASS
+
+C3 gates 7/7; scored variants V-NULL fail
+not yet

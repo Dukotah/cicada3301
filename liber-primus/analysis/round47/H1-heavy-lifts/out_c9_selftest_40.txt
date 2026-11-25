@@ -1,0 +1,18 @@
+C9 second rejection-loop decoder   seed=4701 (sha256[:16] 75ca4e6929494268)   plants/variant=40  L=240
+
+reference beam (skipdecode.beam_decode, C3 reference)
+  variant             plants ok   rate     Wilson 95%  mean rec  med score  wrong FP  verdict
+  KEYSKIP (control)    40/40      1.00   (0.912, 1.0)     0.998     -4.286      0.00  PASS
+  V-BACK                0/40      0.00  (-0.0, 0.088)     0.188     -7.012      0.00  fail
+  V-NULL                0/40      0.00  (-0.0, 0.088)     0.171     -4.539      0.00  fail
+  V-DEFER              39/40      0.97 (0.871, 0.996)     0.941     -4.597      0.00  PASS
+
+beam_v3 panel_max, best of advance 1 / 2 / free (panel-R36)
+  variant             plants ok   rate     Wilson 95%  mean rec  med score  wrong FP  verdict
+  KEYSKIP (control)    40/40      1.00   (0.912, 1.0)     0.997     -4.286      0.00  PASS
+  V-BACK                0/40      0.00  (-0.0, 0.088)     0.194     -6.792      0.00  fail
+  V-NULL                0/40      0.00  (-0.0, 0.088)     0.171     -4.539      0.00  fail
+  V-DEFER              39/40      0.97 (0.871, 0.996)     0.950     -4.587      0.00  PASS
+
+control (keyskip, the construction the beam represents) held; 203s
+SELF-TEST PASS

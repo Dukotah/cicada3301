@@ -6,7 +6,7 @@ instead of rediscovered.
 
 | ledger | where | unit | rows (2026-11-17) |
 |---|---|---|---|
-| **Dukotah/cicada3301** | [`liber-primus/LEDGER.json`](../liber-primus/LEDGER.json) | one row per lane/cell, `id` like `R44-W2B3-D01-FALSIFIER` | 365 (2026-11-23) |
+| **Dukotah/cicada3301** | [`liber-primus/LEDGER.json`](../liber-primus/LEDGER.json) | one row per lane/cell, `id` like `R44-W2B3-D01-FALSIFIER` | 420 (2026-11-25) |
 | **njloof/cicada-lp2-sweeps** | [`docs/LEDGER.md`](https://github.com/njloof/cicada-lp2-sweeps/blob/main/docs/LEDGER.md) | one row per campaign `#N`, with per-family verdicts | 17 campaigns |
 | **RiskAverseTech/cicada-ioc** | [`README.md`](https://github.com/RiskAverseTech/cicada-ioc) (numbered §§), [`results/`](https://github.com/RiskAverseTech/cicada-ioc/tree/main/results) | one numbered section per study | paused 2026-11-01 |
 | **micheloosterhof/aldegonde** | [`hypotheses/`](https://github.com/micheloosterhof/aldegonde/tree/master/hypotheses) ([`INDEX.md`](https://github.com/micheloosterhof/aldegonde/blob/master/hypotheses/INDEX.md)) | one file per hypothesis, from `TEMPLATE.md` | active 2026-11 |

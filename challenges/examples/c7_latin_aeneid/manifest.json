@@ -1,0 +1,27 @@
+{
+ "_comment": "C7 worked example. Classical Latin is a COVERED register, so this validates but does not cross the finish line. Copy this directory, swap the source and table, and set language/register for a new register. The table is the R45-W1 / R46-P1 'R-A' rule (GP greedy: ING, then the digraphs, then single letters; K Q -> C, V -> U, Z -> S).",
+ "language": "lat",
+ "register": "classical verse (Virgil)",
+ "provenance": {
+  "title": "Aeneidos",
+  "author": "Publius Vergilius Maro",
+  "edition": "Project Gutenberg eBook #227 (updated 2021-01-01), as committed in this repo",
+  "url": "https://www.gutenberg.org/ebooks/227",
+  "license": "public domain (Project Gutenberg; text written c. 19 BC)",
+  "source_sha256": "adcda89e39c7429cbee028dbe3c246c3eab99b416c8a7a8ade71876446a141ca"
+ },
+ "source": "repo:liber-primus/data/keys/armada19/virgil_aeneid_latin.txt",
+ "start_after": "PUBLI VERGILI MARONIS",
+ "end_before": "Updated editions will replace",
+ "normalize": "NFD",
+ "casefold": true,
+ "drop_categories": ["Mn"],
+ "sentence_marks": ".!?",
+ "table": {
+  "ing": "NG",
+  "th": "TH", "eo": "EO", "ng": "NG", "oe": "OE", "ae": "AE", "ia": "IA", "io": "IA", "ea": "EA",
+  "a": "A", "b": "B", "c": "C", "d": "D", "e": "E", "f": "F", "g": "G", "h": "H", "i": "I", "j": "J",
+  "k": "C", "l": "L", "m": "M", "n": "N", "o": "O", "p": "P", "q": "C", "r": "R", "s": "S", "t": "T",
+  "u": "U", "v": "U", "w": "W", "x": "X", "y": "Y", "z": "S"
+ }
+}

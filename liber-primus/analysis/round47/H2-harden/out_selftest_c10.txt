@@ -1,0 +1,9 @@
+C10 unknown key + shuffled word lengths   seed=4713 (sha256[:16] c84344c3f5441a6b)   n=20 plants + 20 nulls, F=65536 keys
+units: mean 299 runes; true-key true-length decode exact 20/20
+
+  attack                                         plants ok   rate      Wilson 95%  mean rec  null FP      time
+  (i) exhaustive, TRUE lengths (ceiling)           20/20    1.000    (0.839, 1.0)     1.000    0.000       36s
+  (ii) exhaustive, PRINTED starts (L1 rule)         0/20    0.000   (-0.0, 0.161)     0.200    0.000       36s
+
+controls: exact decode 20/20, ceiling (i) 1.000 (need >= 0.95, null FP <= 0.05)
+SELF-TEST PASS

@@ -1,0 +1,11 @@
+C9 second rejection-loop decoder   seed=4711 (sha256[:16] de650d61f5bd166a)   plants/variant=12  L=240
+
+reference beam (skipdecode.beam_decode, C3 reference)
+  variant             plants ok   rate     Wilson 95%  mean rec  med score  wrong FP  verdict
+  KEYSKIP (control)    12/12      1.00   (0.757, 1.0)     1.000     -4.330      0.00  PASS
+  V-BACK                1/12      0.08 (0.015, 0.354)     0.228     -7.095      0.00  fail
+  V-NULL                0/12      0.00   (0.0, 0.243)     0.246     -4.531      0.00  fail
+  V-DEFER              12/12      1.00   (0.757, 1.0)     0.948     -4.625      0.00  PASS
+
+control (keyskip, the construction the beam represents) held; 10s
+SELF-TEST PASS

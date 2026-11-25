@@ -1,0 +1,70 @@
+C7 self-test: worked example (Latin, Aeneid, covered register) + a corrupted copy that must FAIL
+
+wrote C:\Users\dukot\AppData\Local\Temp\tmp1sff3qxs\corpus.txt: 3279 sentences
+C7 - corpus VALID
+
+{
+ "id": "C7-lat-classical_verse_(Virgil)",
+ "checker": "c7/1",
+ "seed": 4700,
+ "language": "lat",
+ "register": "classical verse (Virgil)",
+ "provenance": {
+  "title": "Aeneidos",
+  "author": "Publius Vergilius Maro",
+  "edition": "Project Gutenberg eBook #227 (updated 2021-01-01), as committed in this repo",
+  "url": "https://www.gutenberg.org/ebooks/227",
+  "license": "public domain (Project Gutenberg; text written c. 19 BC)",
+  "source_sha256": "adcda89e39c7429cbee028dbe3c246c3eab99b416c8a7a8ade71876446a141ca"
+ },
+ "n_words": 63788,
+ "n_sentences": 3279,
+ "unmapped_rate": 0.0,
+ "sample_rederived": "500/500",
+ "lp2_two_rune_share": 0.1547,
+ "corpus_two_rune_share": 0.0836,
+ "window_two_rune_share_p01_p50_p99": [
+  0.0687,
+  0.0836,
+  0.097
+ ],
+ "lp2_percentile_in_windows": 1.0,
+ "profile9_corpus": [
+  0.0041,
+  0.0836,
+  0.091,
+  0.1318,
+  0.188,
+  0.1648,
+  0.1418,
+  0.098,
+  0.0969
+ ],
+ "profile9_lp2": [
+  0.0288,
+  0.1546,
+  0.2484,
+  0.177,
+  0.1095,
+  0.0884,
+  0.0746,
+  0.054,
+  0.0646
+ ],
+ "G_lp2_vs_corpus": 1348.2,
+ "G_window_bar99": 25.2,
+ "T3_verdict": "rejected",
+ "T3_bar_scope": "within-text windows only: no between-text variance, so a single corpus's bar is narrow and a 'rejected' is weaker than it looks (R46-P1 X1 caveat). Two corpora of one register make a pooled bar.",
+ "register_already_covered": "Latin, classical (Aeneid, latin_218)",
+ "crosses_finish_line": false
+}
+
+Valid, but already covered: Latin, classical (Aeneid, latin_218). Not a crossing.
+
+-- corrupted copy (every 7th sentence altered) --
+C7 - FAIL
+  - re-derivation mismatch on 82/500 sampled sentences; first at line 3116:
+      corpus : ᚾᚢᛁᚳ-ᛗᛖᛋᛋᚪᛈᚢᛋ-ᚢᛏᛁ-ᛚᚫᚢᚪ-ᛞᚢᚩ-ᚠᚩᚱᛏᛖ-ᚷᛖᚱᛖᛒᚪᛏ-ᛚᛖᚾᛏᚪ-ᛚᛖᚢᛁᛋ-ᚳᚢᚱᛋᚢ-ᛈᚱᚫᚠᛁᛉᚪ-ᚻᚪᛋᛏᛁᛚᛡ-ᚠᛖᚱᚱᚩ
+      derived: ᚻᚢᛁᚳ-ᛗᛖᛋᛋᚪᛈᚢᛋ-ᚢᛏᛁ-ᛚᚫᚢᚪ-ᛞᚢᚩ-ᚠᚩᚱᛏᛖ-ᚷᛖᚱᛖᛒᚪᛏ-ᛚᛖᚾᛏᚪ-ᛚᛖᚢᛁᛋ-ᚳᚢᚱᛋᚢ-ᛈᚱᚫᚠᛁᛉᚪ-ᚻᚪᛋᛏᛁᛚᛡ-ᚠᛖᚱᚱᚩ
+
+SELF-TEST PASS

@@ -1,7 +1,40 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-11-24** (Round 46 closeout; Round 45 closeout 2026-11-24; Round 45 kickoff 2026-11-23; Round 44 closeout 2026-11-11). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-11-25** (Round 47 closeout; Round 46 closeout 2026-11-24; Round 45 closeout 2026-11-24; Round 45 kickoff 2026-11-23; Round 44 closeout 2026-11-11). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
 
+> ## Round 47 closeout (2026-11-25) — CLOSE THE CAVEATS, OPEN THE HEAVY LIFTS: filed. Read `analysis/round47/SYNTHESIS.md` first.
+>
+> **Findings.**
+> - **Transcription:** a third blind reader (T2) reads S1's 27 window-line family glyphs, 26/27 = canon. Disputed gpos **276, 5054,
+>   6054 go to canon**. **gpos 9877** (canon D; S1 and T2 read M; template D 0.969) is `canon-error-candidate`, **flagged for the
+>   oracle**, not applied. An M there would make an MM doublet with 9876, so the doublet rate favours canon D about 5.3 : 1 (R47-X1).
+>   Bounds: O/A/AE ≤ 4.6 %, M/D ≤ 19.9 % (13.4 % if upheld).
+> - **All R45-voided word rows are now measured** (L1 in R46 + L2 here): R38-C2-G3 re-run under fragment conventions C0/CS/CE
+>   (768 decodes, all below bars, power 1.00 under (a)/(b)); R38-WORDNET, R38-FREQRANK, R39-SENSE power measured 1.00 through their
+>   own glue; real CS/CE re-runs below bars.
+> - **(b′) is a decoder limitation, not an information barrier, for bounded key families.** With the key in hand the (b′) loss is the
+>   decoder's, not the information's (segmentation beam 0.962 / 0.976, R47-X1). With an unknown key from a 65,536-key family, ranking
+>   + arrangement beam recovers 78–88/100 (R47-H2). Word-indexed negatives can be re-adjudicated with an arrangement-aware decoder.
+> - **V-BACK** (backstepping rejection loop) is a gap in `beam_v3`: correct key scored as noise, 0/40. Closable: one backstep relation
+>   recovers 32/40 (dev seed). No evidence LP2 uses it.
+> - **Public challenges C7 (corpus forge), C8 (non-English adjudicator), C9 (V-NULL loop decoder)** are in `CHALLENGES.md` with
+>   checkers that run submissions isolated in a `python -I` child (R47-H2; all X1 cheats now fail). **C10 is retired** pending
+>   Round 48 (its pre-registered rule put the finish line at 1.10).
+> - **OTP-class unchanged.** LEDGER: **420 rows**.
+>
+> ### Round 48 plan (SYNTHESIS §4) — CONTINUE, narrow, in-house
+>
+> 1. Backstep-aware beam: add a BACK relation to `beam_v3`, certify on the C3 gates and sealed V-BACK plants, then re-adjudicate the
+>    beam-based negatives under V-BACK.
+> 2. Arrangement-aware decoder for word-indexed rows under (b′) where the key family is bounded (U2b first, then R41 W1–W4, G3, lexicon rows).
+> 3. Relaunch C10 with a finish line that passes its own rule.
+> 4. Oracle / high-resolution ruling on gpos 9877.
+> 5. R46 §4.5 hygiene carry-overs: rebuild `stones/dataset.npz`; canonical lineage for 2 separators + 5 grid cells; wire
+>    `check_prereg_stamps.py` into CI; consensus-clustering check before reusing O/A/AE candidates.
+
+> _Superseded in part by the Round 47 closeout above:_ Round 47 plan items 1–2 below are done (9877 still open for the oracle);
+> R38-C2-G3 is re-run and the lexicon rows' power is measured; "every word-indexed row is at ≤ 0.033 power under (b′)" is a
+> statement about each row's own printed-length decoder, not blindness.
 > ## Round 46 closeout (2026-11-24) — REPAIR THE WORD INSTRUMENTS, TEST THE TWO LEADS: filed. Read `analysis/round46/SYNTHESIS.md` first.
 >
 > **Findings.** One correct printed-word loader (`analysis/round46/L1-word-loader/words.py`, 2,896 LP2 words) re-measured the ten
@@ -16,7 +49,7 @@ _Refreshed **2026-11-24** (Round 46 closeout; Round 45 closeout 2026-11-24; Roun
 > uninformative; *Paradise Lost*). The line-break lead stays descriptive. **`stones/alignment.json` is repaired** (v1 kept;
 > 86/86 classifier disagreements resolved), and the "450 O/A/AE" count is a clustering-basin artefact (258-glyph stable core;
 > doctrine R5 example amended). A **second blind reader** finds 0/279 canon errors (bound ≤ 2.1 % pooled; O/A/AE ≤ 5.2 %,
-> M/D ≤ 14.8 %). **OTP-class unchanged.** LEDGER: **400 rows**.
+> M/D ≤ 14.8 %). **OTP-class unchanged.** LEDGER: 384 → 400 rows at R46 close.
 >
 > ### Round 47 plan (SYNTHESIS §4) — CONTINUE, narrow
 >

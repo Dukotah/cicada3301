@@ -27,7 +27,9 @@ oracle._
 - **Under (b), plaintext words shuffled within sentence,** every key-schedule row keeps full power. The rows that
   model word *order* — SKELETON — fall to 0.
 - **Under (b′), printed lengths permuted within sentence** (the plan's "spaces shuffled"), every word-indexed row
-  falls to ≤ 0.033 (7-gram shape 0.033; all others 0).
+  falls to ≤ 0.033 (7-gram shape 0.033; all others 0). That is each row's own decoder fed the printed lengths. For
+  the U2b class at known key, the printed-start rule still detects at 0.83 (FPR 0.01, R47-H1), and a segmentation beam
+  recovers 0.96 (R47-X1). So (b′) is a decoder conditional, not a blindness bound.
 
 ## 1. The loader (`words.py`, `test_words.py`, `reconcile.py` → `reconcile.json`)
 
@@ -197,3 +199,7 @@ CLOSED 2026-11-24T21:25 R46-L1 word-loader | words.py 2,896 LP2 words (sha = PRO
 ## X1 corrections applied
 
 _Applied by the Round 46 coordinator from `../X1-redteam/AUDIT.md` (2026-11-24); PREREG untouched._ §5.8 items 1–7: R41 legacy power restated as ≈ 0.64 by R41's own score-only rule (0.001 only under exact∧score), so the old R41 negative was weakened, not blind; pages are pseudo-replicates (32/32 streams, Wilson ≥ 0.89); R38-WORDNET/FREQRANK and R39-SENSE power is "not measured" (was "1.00 inherited"); under (b′) word-indexed rows fall to ≤ 0.033 (7-gram 0.033); SKELETON negative rests on distance from the planted-hit level, not on the weak shuffled null. Same edits in `ledger_rows.json`. Item 8 (.gitignore for `r41_null_b*.npz`) done in the root `.gitignore`. New row R46-X1-R41-LEGACY-SCORE-POWER.
+
+## R47 X1 corrections applied
+
+_Applied by the Round 47 coordinator from `../../round47/X1-redteam/AUDIT.md` §5 (2026-11-25); PREREG untouched._ The (b′) sentence in §0 now carries the decoder qualifier. With the key in hand the (b′) loss is the decoder's, not the information's (R47-X1: a segmentation beam recovers 0.962 / 0.976 of U2b plants); with an unknown key from a 65,536-key family, printed-start ranking plus that arrangement beam recovers 78–88/100 (R47-H2). Same qualifier added to `ledger_rows.json` rows R46-L1-R37-U2B-U3-RECHECK and R46-L1-REOPEN-VERDICTS, and as dated R47 notes in LEDGER.json.

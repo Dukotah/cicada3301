@@ -1387,9 +1387,10 @@ key-space sweep; verdict **OTP-class, unchanged**. Per-row record in `LEDGER.jso
   - R38-WORDNET, R38-FREQRANK and R39-SENSE: real decodes are identical, so the results hold. Power for their own
     glue is not measured.
   - R44-7GRAM: holds.
-  - R38-C2-G3: **not re-run**. It stays conditional on the fragment convention.
+  - R38-C2-G3: **not re-run**. It stays conditional on the fragment convention. _[Superseded by Round 47: re-run, `R47-L2-G3-RERUN`.]_
   - R40-R31: not word-indexed; the conditional does not apply.
-  - Under (b′), every word-indexed row is at ≤ 0.033 power.
+  - Under (b′), every word-indexed row is at ≤ 0.033 power. _[Qualified by Round 47: that is each row's own
+    printed-length decoder; a segmentation beam recovers U2b plants under (b′) (R47-X1, R47-H2). Decoder conditional, not blindness.]_
 - **2-rune deficit** (`R46-P1-TWO-RUNE-DEFICIT-REPLICATION`, `R46-P1-TWO-RUNE-EXPLANATIONS`): it replicates in
   every held-out part, and the text is homogeneous.
   - The fresh-English test is **uninformative** (size 0.033; *Paradise Lost* reaches 16.06 %), so its extremity
@@ -1408,4 +1409,33 @@ key-space sweep; verdict **OTP-class, unchanged**. Per-row record in `LEDGER.jso
   279. κ 0.969 against S1, and all 5 disagreements are S1 misreads.
   - Two-reader bound ≤ 2.1 % pooled (O/A/AE ≤ 5.2 %, M/D ≤ 14.8 %).
   - The single-reader caveat is closed for the 179 re-read glyphs only. gpos 276, 5054, 6054 and 9877 (and the
-    27 window-line family glyphs) remain open.
+    27 window-line family glyphs) remain open. _[Superseded by Round 47 T2: 276/5054/6054 canon; 9877 flagged for oracle.]_
+
+## Round 47 (2026-11-24 → 25) — CLOSE THE CAVEATS, OPEN THE HEAVY LIFTS TO OUTSIDE COMPUTE
+
+Lanes T2 (transcription close-out), L2 (R38-C2-G3 re-run + lexicon plants), H1 (public heavy-lift challenges C7–C10),
+X1 (red team; T2/L2/H1 UPHELD-WITH-CORRECTIONS, corrections applied), H2 (hardening of H1's checkers after X1). No
+key-space sweep; verdict **OTP-class, unchanged**. Per-row record in `LEDGER.json` (**420 rows** after the round,
+0 unsound; 400 → 420) + `analysis/round47/SYNTHESIS.md` + `analysis/round47/X1-redteam/AUDIT.md`.
+
+- **Transcription close-out** (`R47-T2-WINDOW-FAMILY-CLOSEOUT`): a third blind reader, 26/27 window-line family
+  glyphs = canon. Disputed gpos 276 (A), 5054 (TH), 6054 (AE) go to canon. **gpos 9877** stays open
+  (`R47-T2-9877-ORACLE-FLAG`, flagged for oracle, not applied); an M there would create an MM doublet, so the
+  doublet rate favours canon D about 5.3 : 1 (`R47-X1-T2-9877-DOUBLET-PRIOR`). Bounds O/A/AE ≤ 4.6 %, M/D ≤ 19.9 %
+  (13.4 % if upheld).
+- **Every R45-voided word row is now measured.** `R38-C2-G3-LAGGED-POINTERS` re-run under fragment conventions
+  C0/CS/CE (`R47-L2-G3-RERUN`: 768 decodes, best 5.440 vs 6.048, power 1.00 under (a)/(b)). `R38-C1-SEMANTIC-WORDNET`,
+  `R38-C1-SEMANTIC-FREQRANK`, `R39-C1-SENSE-SIMILARITY`: power measured 1.00 through each row's own glue
+  (`R47-L2-*-POWER`); real CS/CE re-runs below bars.
+- **(b′) is a decoder limitation, not an information barrier, for bounded key families.** With the key in hand a
+  segmentation beam recovers shuffled-length U2b plants (0.962 / 0.976, `R47-X1-C10-SEGMENTATION-BEAM-CROSSING`);
+  with an unknown key from a 2^16 family, printed-start ranking + that beam recovers 78–88/100
+  (`R47-H2-C10-UNKNOWN-KEY-BASELINES`). Word-indexed negatives can be re-adjudicated under (b′) with an
+  arrangement-aware decoder (Round 48).
+- **V-BACK rejection-loop gap** (`R47-H1-C9-REJECTION-LOOP-BASELINE`, `R47-X1-C9-VBACK-BACKSTEP-RELATION`): the
+  reference beam and beam_v3 score the correct key as noise (0/40); one backstep relation recovers 32/40 (dev seed).
+  No beam-based negative covers V-BACK; nothing measured raises its prior. Noted on `L7-B-BEAM-ENVELOPE`.
+- **Public challenges** (`CHALLENGES.md`, `challenges/`): C7 corpus forge, C8 non-English adjudicator, C9
+  rejection-loop decoder (V-NULL only). Checkers run submissions in an isolated `python -I` child
+  (`R47-H2-CHECKER-ISOLATION`; every `R47-X1-CHECKER-INPROCESS-GAMEABILITY` cheat now fails); C7 label gate
+  (`R47-H2-C7-LABEL-GATE`). **C10 retired** pending Round 48 by its own pre-registered rule (FINISH 1.10 > 0.95).

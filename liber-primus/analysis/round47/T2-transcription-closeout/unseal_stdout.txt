@@ -1,0 +1,197 @@
+C:\Users\dukot\projects\cicada3301\liber-primus\analysis\round47\T2-transcription-closeout\unseal.py:158: RuntimeWarning: invalid value encountered in scalar divide
+  return float((a * b).sum() / np.sqrt((a * a).sum() * (b * b).sum()))
+{
+ "gates": {
+  "W_caught_ge_6_of_8": true,
+  "C_accuracy": 1.0,
+  "C_ge_0.90": true
+ },
+ "T2_vs_canon": {
+  "n": 27,
+  "registered": 27,
+  "t2_eq_canon": 26,
+  "verdicts": {
+   "canon-confirmed (T2 blind)": 26,
+   "canon-error-candidate": 1
+  },
+  "by_family": {
+   "BE": {
+    "n": 6,
+    "t2_eq_canon": 6
+   },
+   "MD": {
+    "n": 3,
+    "t2_eq_canon": 2
+   },
+   "NI": {
+    "n": 2,
+    "t2_eq_canon": 2
+   },
+   "OA": {
+    "n": 12,
+    "t2_eq_canon": 12
+   },
+   "THWR": {
+    "n": 4,
+    "t2_eq_canon": 4
+   }
+  }
+ },
+ "T2_vs_S1": {
+  "n_with_S1_blind": 24,
+  "agree": 21,
+  "S1_ne_canon": [
+   {
+    "gpos": 276,
+    "canon": "A",
+    "t2": "A",
+    "s1_blind": "AE",
+    "verdict": "canon-confirmed (T2 blind)"
+   },
+   {
+    "gpos": 5054,
+    "canon": "TH",
+    "t2": "TH",
+    "s1_blind": "W",
+    "verdict": "canon-confirmed (T2 blind)"
+   },
+   {
+    "gpos": 6054,
+    "canon": "AE",
+    "t2": "AE",
+    "s1_blind": "A",
+    "verdict": "canon-confirmed (T2 blind)"
+   },
+   {
+    "gpos": 9877,
+    "canon": "D",
+    "t2": "M",
+    "s1_blind": "M",
+    "verdict": "canon-error-candidate"
+   }
+  ],
+  "no_S1_blind_read": [
+   1590,
+   1591,
+   1593
+  ]
+ },
+ "error_bound": {
+  "m_S1": 0.2646,
+  "m_S2": 0.1425,
+  "m_T2": 0.1765,
+  "m_T2_controls": {
+   "n": 19,
+   "misses": 0
+  },
+  "second_reader_m_used": 0.1765,
+  "joint_miss": 0.0467,
+  "assumption": "misses independent given the glyph (all readers share the relikd render)",
+  "by_family": {
+   "OA": {
+    "n_S2_exact": 72,
+    "n_T2_window": 10,
+    "n": 82,
+    "k": 0,
+    "cp95_upper": 0.044,
+    "eps_upper": 0.0462,
+    "R46_eps_upper_recomputed": 0.0519
+   },
+   "MD": {
+    "n_S2_exact": 24,
+    "n_T2_window": 3,
+    "n": 27,
+    "k": 1,
+    "cp95_upper": 0.1897,
+    "eps_upper": 0.199,
+    "R46_eps_upper_recomputed": 0.1481
+   },
+   "THWR": {
+    "n_S2_exact": 42,
+    "n_T2_window": 4,
+    "n": 46,
+    "k": 0,
+    "cp95_upper": 0.0771,
+    "eps_upper": 0.0809,
+    "R46_eps_upper_recomputed": 0.0874
+   },
+   "NI": {
+    "n_S2_exact": 22,
+    "n_T2_window": 2,
+    "n": 24,
+    "k": 0,
+    "cp95_upper": 0.1425,
+    "eps_upper": 0.1495,
+    "R46_eps_upper_recomputed": 0.1604
+   },
+   "BE": {
+    "n_S2_exact": 19,
+    "n_T2_window": 5,
+    "n": 24,
+    "k": 0,
+    "cp95_upper": 0.1425,
+    "eps_upper": 0.1495,
+    "R46_eps_upper_recomputed": 0.1834
+   },
+   "ALL": {
+    "n_S2_exact": 179,
+    "n_T2_window": 24,
+    "n": 203,
+    "k": 1,
+    "cp95_upper": 0.0271,
+    "eps_upper": 0.0284,
+    "R46_eps_upper_recomputed": 0.0212
+   }
+  },
+  "S1_family_census_second_reader_only": {
+   "n": 206,
+   "k": 1,
+   "eps_upper": 0.0324
+  }
+ }
+}
+W [('M', 'D', 'D'), ('AE', 'A', 'A'), ('W', 'TH', 'TH'), ('D', 'M', 'M'), ('A', 'O', 'O'), ('AE', 'A', 'A'), ('A', 'AE', 'AE'), ('D', 'M', 'M')]
+C {'n': 24, 'correct': 24, 'cp95': (0.8575, 1.0), 'family_n': 11, 'family_correct': 11, 'misses': []} plainW {'n': 48, 'correct': 48, 'family_n': 18, 'family_correct': 18, 'misses': []}
+276 A A H AE A canon-confirmed (T2 blind)
+5054 TH TH H W None canon-confirmed (T2 blind)
+6054 AE AE H A None canon-confirmed (T2 blind)
+9877 D M M M D canon-error-candidate
+277 AE AE H AE AE canon-confirmed (T2 blind)
+900 I I H I F canon-confirmed (T2 blind)
+1590 AE AE H None AE canon-confirmed (T2 blind)
+1591 AE AE H None AE canon-confirmed (T2 blind)
+1593 E E H None E canon-confirmed (T2 blind)
+5053 W W H W None canon-confirmed (T2 blind)
+5097 M M M M M canon-confirmed (T2 blind)
+5781 A A H A None canon-confirmed (T2 blind)
+5782 O O H O None canon-confirmed (T2 blind)
+6053 A A H A None canon-confirmed (T2 blind)
+6217 I I H I F canon-confirmed (T2 blind)
+6364 E E H E None canon-confirmed (T2 blind)
+6365 E E H E None canon-confirmed (T2 blind)
+6532 O O H O O canon-confirmed (T2 blind)
+6533 A A H A A canon-confirmed (T2 blind)
+7146 W W H W W canon-confirmed (T2 blind)
+9663 TH TH H TH TH canon-confirmed (T2 blind)
+9876 M M H M M canon-confirmed (T2 blind)
+11102 E E H E E canon-confirmed (T2 blind)
+11103 E E H E E canon-confirmed (T2 blind)
+11334 AE AE H AE AE canon-confirmed (T2 blind)
+11335 A A H A A canon-confirmed (T2 blind)
+11343 E E H E E canon-confirmed (T2 blind)
+T2-s02 41 6 6 0.0 2.0 [14, 19]
+T2-s05 327 4 4 0.0 2.0 [0, 3]
+T2-s06 284 4 4 0.0 2.0 [20, 23]
+T2-s08 445 8 8 0.0 2.0 [0, 7]
+T2-s10 277 7 8 0.0 2.0 [16, 23]
+T2-s11 74 11 11 0.0 2.0 [9, 19]
+T2-s12 509 8 8 0.0 2.0 [0, 7]
+T2-s13 519 13 13 0.0 2.0 [12, 24]
+T2-s16 234 8 8 0.0 2.0 [10, 17]
+T2-s17 232 9 10 0.0 2.0 [13, 22]
+T2-s18 291 8 10 0.0 2.0 [10, 19]
+T2-s21 299 9 9 0.0 2.0 [2, 10]
+T2-s25 455 9 9 0.6 2.0 [1, 9]
+T2-s26 265 8 9 0.0 2.0 [12, 20]
+T2-s27 12 9 9 0.6 1.4 [10, 18]
+byproduct {'n': 99, 'agree': 98, 'disagreements': [('D', 'M')]}

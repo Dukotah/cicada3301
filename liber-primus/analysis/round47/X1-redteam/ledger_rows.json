@@ -1,0 +1,150 @@
+[
+ {
+  "id": "R47-X1-C10-SEGMENTATION-BEAM-CROSSING",
+  "hypothesis": "C10 (attack under within-sentence-shuffled printed word lengths, R37-U2b word-jump plant, key in hand) is a heavy lift: the printed-start rule's 0/500 recovery reflects a hard search, not a weak decoder.",
+  "threshold": "The C10 checker's own Addendum-2 finish line, unchanged: >= 0.80 of 500 plants with rune recovery >= 0.90 and checker-recomputed English score >= -5.2, and attack output <= -5.2 on >= 95 % of 500 nulls (same print, independent key). Run as an ordinary submission through challenges/c10_shuffled_lengths.py.",
+  "positive_control": "passed",
+  "control_detail": {
+   "checker ceiling (true starts)": "500/500 at seed 4702 (dev texts); 499/500 at seed 4704 on Dracula (one plant's true decode scores below -5.2)",
+   "checker baseline reproduced": "printed-start rule 0/500, mean recovery 0.331, detection at FPR 0.01 = 0.830 (seed 4702), equal to R47-H1"
+  },
+  "null": "C10's own null arm: same unit and print, plant enciphered under an independent SHA-256 key K', attack handed K",
+  "result": "FOUND-ERROR (C10 is not a heavy lift). A 58-line position-synchronous beam (states bucketed by rune position; branch over the distinct remaining lengths of the current sentence's printed multiset; word k decoded at offset J_k = S[0]+...+S[k]; score = lp.score English quadgrams; beam 16) crosses the finish line: seed 4702, dev texts: 481/500 plants (0.962, Wilson 0.941-0.976), mean recovery 0.957, null FP 0.000, detection 1.000, 73 s; seed 4704, held-out Dracula: 488/500 (0.976, Wilson 0.959-0.986), mean recovery 0.958, null FP 0.000, 51 s. A first version that let prefixes of different lengths compete in one beam scored 0/30 (shorter prefixes win on total log-probability); bucketing by position is the whole fix.",
+  "coverage": "U2b word-jump construction (PRIMES jump at each true word start, SHA-256 counter key, no doublet filter), English sentence units of 236-472 runes, true sentence boundaries, within-sentence shuffle (b'), correct key in hand; 2 seeds x 500 plants + 500 nulls; 2 plaintext sources.",
+  "not_covered": [
+   "unknown key (a sweep): the beam costs ~0.1 s per unit-key vs microseconds for the printed-start rule; sweep-scale bars (N 1e6) not measured",
+   "the doublet filter combined with word jumps",
+   "constructions other than U2b: R38-C2-G3 lagged pointers, R38-WORDNET/FREQRANK, R39-SENSE, R41 W1-W4, SKELETON (their b' power remains that of their own printed-length decoders)",
+   "book-scope or borrowed-length (b') alternatives; untrue sentence boundaries",
+   "non-English plaintext"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round47/X1-redteam/AUDIT.md",
+   "liber-primus/analysis/round47/X1-redteam/x1_c10_beam_attack.py",
+   "liber-primus/analysis/round47/X1-redteam/out_x1_c10_beam16_4702.txt",
+   "liber-primus/analysis/round47/X1-redteam/out_x1_c10_beam16_4704_dracula.txt"
+  ],
+  "reproduce": "cd <repo root>; PYTHONUTF8=1 X1_BEAM=16 python challenges/c10_shuffled_lengths.py liber-primus/analysis/round47/X1-redteam/x1_c10_beam_attack.py --n 500 --seed 4702   (~75 s); add --seed 4704 --text liber-primus/data/keys/armada19/stoker_dracula.txt for the held-out run",
+  "reopens_if": "A maintainer-sealed run at a hidden seed and held-out text falls below 0.80 (would make this a dev-seed artefact).",
+  "notes": "Attach to R47-H1-C10-SHUFFLED-LENGTHS-BASELINE, R46-L1-REOPEN-VERDICTS and R46-L1-R37-U2B-U3-RECHECK. For the U2b class the (b') loss is a property of the printed-start decoder, not of the information in (C, K, printed): '(b') conditional' for R37-U2b means 'not re-run with a segmentation search', which is now known to be cheap at known key. X1 is not a public submitter; per the coordinator, this is recorded as an in-house crossing and C10 should be retired or re-scoped (e.g. unknown key / sweep-scale bars / doublet filter).",
+  "status": "audit",
+  "round": "47/X1",
+  "date": "2026-11-24",
+  "lane": "round47/X1-redteam",
+  "threshold_fixed_in_advance": true
+ },
+ {
+  "id": "R47-X1-C9-VBACK-BACKSTEP-RELATION",
+  "hypothesis": "R47-H1's V-BACK 0/40 (both beams score the correct key as noise) is a representational gap of monotone-pointer beams, not a bug in how the plants are fed to the beams.",
+  "threshold": "Descriptive, no PREREG: if a beam that differs from skipdecode.beam_decode only by one added transition (BACK: p = c - K[j-1], allowed iff p + K[j] == c_prev; pointer stays at j) recovers V-BACK plants through the unchanged C9 checker at its own pass rule, the gap is representational. Penalties (PEN 3, NULLCOST 7) were tuned on 8-12 plants at seed 4701 before the 40-plant run at the same seed (dev seed; not sealed).",
+  "positive_control": "passed",
+  "control_detail": {
+   "C3 gates": "7/7 (decoder returns the better of the extended beam and the C3 reference beam by recomputed English score)",
+   "keyskip control": "36/40 (0.90; reference beam alone 40/40, so the arbitration costs 4 plants)"
+  },
+  "null": "C9's wrong-key arm (same ciphertext, independent key): wrong FP 0.00 in every variant",
+  "result": "Gap is REPRESENTATIONAL, and cheap to close. Seed 4701, 40 plants, L=240: V-BACK 32/40 PASS (0.80, Wilson 0.652-0.895), mean recovery 0.909, median correct-key score -4.296 (reference beam on the same plants: 0/40, 0.188, -7.012). V-NULL 8/40 fail (0.20, mean recovery 0.398; a NULL transition with a lookahead consistency check deletes true runes as often as nulls). V-DEFER 31/40. Mechanism of the reference-beam failure: a backstep shifts the key alignment by -1 for the rest of the window, which no forward-only relation can follow; recovery 0.19 = runes before the first backstep (~29/supp ~ 36 runes) plus 1/29 chance agreement afterwards.",
+  "coverage": "One seed (4701), dev English texts, 40 plants per variant, keyskip/V-BACK/V-NULL/V-DEFER as implemented in challenges/c9_rejection_loops.py.",
+  "not_covered": [
+   "sealed maintainer seed and held-out text",
+   "unknown key offset; key lengths other than 6L; non-English plaintext",
+   "V-BACK combined with keyskip2/free drift; multi-step backsteps beyond what the plant produces"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round47/X1-redteam/AUDIT.md",
+   "liber-primus/analysis/round47/X1-redteam/x1_c9_ext_decoder.py",
+   "liber-primus/analysis/round47/X1-redteam/out_x1_c9_ext_40_4701.txt"
+  ],
+  "reproduce": "cd <repo root>; PYTHONUTF8=1 X1_PEN=3 X1_NC=7 python challenges/c9_rejection_loops.py liber-primus/analysis/round47/X1-redteam/x1_c9_ext_decoder.py --plants 40 --seed 4701   (~4 min)",
+  "reopens_if": "The extended beam fails V-BACK at a sealed seed / held-out text (would make 32/40 a dev-seed tuning artefact).",
+  "notes": "Attach to R47-H1-C9-REJECTION-LOOP-BASELINE and L7-B-BEAM-ENVELOPE. Upholds H1's V-BACK detection-gap claim and qualifies its weight: the beam-based negatives are blind to V-BACK, but adding the relation is a ~20-line change, so the gap is closable in-house; and nothing measured raises V-BACK's prior for LP2 beyond being a one-character variant that survives the surface statistics (R47-X1-C9-VARIANT-SURFACE-STATS).",
+  "status": "audit",
+  "round": "47/X1",
+  "date": "2026-11-24",
+  "lane": "round47/X1-redteam",
+  "threshold_fixed_in_advance": false
+ },
+ {
+  "id": "R47-X1-C9-VARIANT-SURFACE-STATS",
+  "hypothesis": "V-BACK (and the redefined V-NULL) are not excluded by LP2's surface statistics the way the registered V-NULL was.",
+  "threshold": "Descriptive: 20 replicate 12,956-rune English plants per variant (fresh SHA-256 key, supp = EXACT_SUPP 0.8074, the C9 encipherers, seed 4799); excluded iff LP2's value lies > 3 SD from the replicate mean on lag-1 repeat rate, lag-2 repeat rate or IoC*N.",
+  "positive_control": "passed",
+  "control_detail": {
+   "registered V-NULL (null then re-emit rejected value)": "lag-2 5.66-6.61 % over 5 replicates vs LP2 3.40 %: excluded (reproduces H1 Addendum 1's 6.0 %)"
+  },
+  "null": "n/a (consistency measurement)",
+  "result": "Not excluded. LP2: lag-1 0.664 %, lag-2 3.404 %, IoC*N 0.9999. z of LP2 vs replicates (lag-1 / lag-2 / IoC): keyskip -0.51 / -0.72 / -0.18; V-BACK -0.38 / -0.59 / -0.27; V-NULL +0.09 / -1.02 / -0.09; V-DEFER +0.15 / -0.44 / -0.27. V-BACK's only distinctive trace (key reuse: c_t - c_{t-1} = p_t - p_{t-1} at a backstep) needs the key and is invisible to keyless surface statistics.",
+  "coverage": "3 statistics, 20 replicates per variant, English plaintext.",
+  "not_covered": [
+   "higher-lag and n-gram ciphertext statistics",
+   "non-English plaintext",
+   "any statistic conditioned on a candidate key"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round47/X1-redteam/x1_surface_stats.py",
+   "liber-primus/analysis/round47/X1-redteam/x1_surface_stats.json"
+  ],
+  "reproduce": "cd <repo root>; PYTHONUTF8=1 python liber-primus/analysis/round47/X1-redteam/x1_surface_stats.py  (~1 min)",
+  "reopens_if": "A keyless ciphertext statistic separates V-BACK from keyskip on LP2-length plants.",
+  "notes": "Supports H1 Addendum 1 as a legitimate correction (registered V-NULL is excluded by LP2's lag-2 rate) and confirms V-BACK is consistent with LP2's surface statistics.",
+  "status": "audit",
+  "round": "47/X1",
+  "date": "2026-11-24",
+  "lane": "round47/X1-redteam",
+  "threshold_fixed_in_advance": false
+ },
+ {
+  "id": "R47-X1-CHECKER-INPROCESS-GAMEABILITY",
+  "hypothesis": "The C7-C10 checkers cannot be passed by a trivial or cheating submission at a fresh seed.",
+  "threshold": "FOUND-ERROR iff a submission that does not do the task prints the checker's finish-line message.",
+  "positive_control": "n/a",
+  "null": "n/a",
+  "result": "FOUND-ERROR for all four. C9/C10/C8 import the submission into the checker's own process, so it can read the checker's stack frame: x1_cheat_c9.py returns evaluate()'s local P when handed the plant key (C3 7/7 via the reference beam; V-BACK 40/40, V-NULL 40/40, wrong FP 0.00 -> 'FINISH LINE MET', seed 99); x1_cheat_c10.py returns c[3] (true plaintext) on plants and zeros on nulls (500/500, null FP 0.000 -> 'FINISH LINE MET', seed 99); x1_cheat_c8.py returns 1.0 while evaluate()'s 'sp' is unbound (positives) and 0.0 after (nulls): power 1.000 at L=236 against all four nulls (--direct, so the checker prints 'not yet'; the trick is protocol-independent). The seal (hidden seed, held-out text) does not help: the cheat reads the live plaintext. C7: Dracula (English) with language 'non' / register 'Old Norse saga prose' validates and prints 'NEW REGISTER: this crosses the C7 finish line. Submit it' (no language check).",
+  "coverage": "One cheat per checker at default/dev settings.",
+  "not_covered": [
+   "subprocess isolation as a fix (not implemented; X1 writes only in its folder)"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round47/X1-redteam/x1_cheat_c8.py",
+   "liber-primus/analysis/round47/X1-redteam/x1_cheat_c9.py",
+   "liber-primus/analysis/round47/X1-redteam/x1_cheat_c10.py",
+   "liber-primus/analysis/round47/X1-redteam/x1_cheat_c7_manifest.json",
+   "liber-primus/analysis/round47/X1-redteam/out_x1_cheat_c7.txt",
+   "liber-primus/analysis/round47/X1-redteam/out_x1_cheat_c8.txt",
+   "liber-primus/analysis/round47/X1-redteam/out_x1_cheat_c9.txt",
+   "liber-primus/analysis/round47/X1-redteam/out_x1_cheat_c10.txt"
+  ],
+  "reproduce": "see AUDIT.md section 4.4 (one command per checker, all < 1 min except C9 ~1 min)",
+  "reopens_if": "Checkers run submissions in a subprocess that receives only (C, K[, printed]) / idx and returns only plain_idx / a float, and C7 adds a language-ID screen (e.g. English quadgram score of the folded source) before printing a crossing.",
+  "notes": "Attach to R47-H1 rows C7-C10. Human code review at submission time catches all four cheats; the checkers' 'FINISH LINE MET' text should say 'pending code and source review'.",
+  "status": "audit",
+  "round": "47/X1",
+  "date": "2026-11-24",
+  "lane": "round47/X1-redteam",
+  "threshold_fixed_in_advance": false
+ },
+ {
+  "id": "R47-X1-T2-9877-DOUBLET-PRIOR",
+  "hypothesis": "R47-T2's statement that reading M at gpos 9877 'touches no doublet site' is correct.",
+  "threshold": "FOUND-ERROR iff the LP2 stream has canon M at gpos 9876 (so M at 9877 would create a ciphertext doublet).",
+  "positive_control": "n/a",
+  "null": "n/a",
+  "result": "FOUND-ERROR. In the 12,956-rune LP2 stream (challenges/_heavy.lp2_stream, the gpos frame T2 uses), gpos 9874-9879 = S Y M D Y S; T2's own results.json gives 9876 = M (T2 M, S1 M, template M 0.953). If 9877 were M the stream would gain an MM doublet (87th; LP2 has 86 doublets in 12,955 adjacent pairs). Under LP2's doublet suppression, P(next = previous) = 0.664 % vs P(next = a given other rune) = 3.55 %, so the doublet prior alone favours canon D over M by 5.3:1, independent of any reader. Both blind M reads sit immediately after a true M, which also fits a perseveration error. (T2's other D->M read, gpos 280, follows S, so that one is not perseveration.)",
+  "coverage": "One position.",
+  "not_covered": [
+   "the glyph image itself (the oracle's job)"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round47/X1-redteam/AUDIT.md",
+   "liber-primus/analysis/round47/T2-transcription-closeout/results.json"
+  ],
+  "reproduce": "python -c \"import sys; sys.path.insert(0,'challenges'); import _heavy as H, skipdecode as sk; s=H.lp2_stream(); print(sk.idx_to_trans(s[9874:9880]), sum(s[i]==s[i-1] for i in range(1,len(s))))\"",
+  "reopens_if": "The oracle or a higher-resolution master reads M at 9877 (then canon has a family error that also creates a doublet).",
+  "notes": "Attach to R47-T2 9877 row. Strengthens T2's 'leans toward reader error' reading; does not change the pre-registered verdict (canon-error-candidate -> oracle).",
+  "status": "audit",
+  "round": "47/X1",
+  "date": "2026-11-24",
+  "lane": "round47/X1-redteam",
+  "threshold_fixed_in_advance": true
+ }
+]
