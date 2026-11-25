@@ -55,7 +55,7 @@ for k in ("73.jpg", "74.jpg"):
     assert sha(os.path.join(CTRL_DIR, k)) == pins["control_renders"][k]["sha256"], k
 
 # ---------------------------------------------------------------- segmentation (all 56)
-align = json.load(open("analysis/stones/alignment.json"))
+align = json.load(open("analysis/stones/alignment.v1.json"))
 line_loc = {}  # global line -> dict(img, boxes, exact)
 grays = {}
 for n in range(56):

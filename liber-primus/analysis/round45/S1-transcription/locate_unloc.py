@@ -7,7 +7,7 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = os.path.dirname(os.path.abspath(__file__)); LP = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 os.chdir(LP); sys.path.insert(0, os.path.join(LP, "analysis", "stones")); import pipeline as P
 sealed = json.load(open(os.path.join(HERE, "sealed_manifest.json"), encoding="utf-8"))["items"]
-align = json.load(open("analysis/stones/alignment.json")); gl, po = P.global_lines()
+align = json.load(open("analysis/stones/alignment.v1.json")); gl, po = P.global_lines()
 where = {}
 for n in range(56):
     for i, g in enumerate(align[str(n)]): where[g] = (n, i)

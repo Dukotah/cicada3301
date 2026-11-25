@@ -1,0 +1,153 @@
+{
+ "summary": {
+  "selftest_pass": true,
+  "lanes": 10,
+  "addenda": 13,
+  "violations": 10
+ },
+ "lanes": [
+  {
+   "lane": "round45/I1-decoy-space",
+   "base_prereg": "UNSTAMPED",
+   "addenda": []
+  },
+  {
+   "lane": "round45/S1-transcription",
+   "base_prereg": "UNSTAMPED",
+   "addenda": [
+    {
+     "addendum": "A1",
+     "header": "## Addendum A1 (2026-11-23, after viewing one montage, before any read was recorded or any canon value seen)",
+     "status": "UNSTAMPED",
+     "evidence": null
+    },
+    {
+     "addendum": "A2",
+     "header": "## Addendum A2 (2026-11-23, after the Q5 gate first fired, before any non-control canon value was seen)",
+     "status": "UNSTAMPED",
+     "evidence": null
+    },
+    {
+     "addendum": "A3",
+     "header": "## Addendum A3 (same time)",
+     "status": "UNSTAMPED",
+     "evidence": null
+    },
+    {
+     "addendum": "A4",
+     "header": "## Addendum A4 (2026-11-23, after all blind reads were frozen — `blind_reads.json` sha256 `7b76c643…dfe62e` — and before the sealed manifest",
+     "status": "UNSTAMPED",
+     "evidence": null
+    },
+    {
+     "addendum": "A5",
+     "header": "## Addendum A5 (2026-11-23, at adjudication)",
+     "status": "UNSTAMPED",
+     "evidence": null
+    }
+   ]
+  },
+  {
+   "lane": "round45/S1b-hidden-doublets",
+   "base_prereg": "UNSTAMPED",
+   "addenda": [
+    {
+     "addendum": "B1",
+     "header": "## Addendum B1 (2026-11-23, after viewing the first line montage L00, before any read was recorded)",
+     "status": "UNSTAMPED",
+     "evidence": null
+    },
+    {
+     "addendum": "B2",
+     "header": "## Addendum B2 (2026-11-24, after reads were frozen — `reads_frozen.sha256` — and at adjudication)",
+     "status": "UNSTAMPED",
+     "evidence": null
+    }
+   ]
+  },
+  {
+   "lane": "round45/T1-t7-mechanism",
+   "base_prereg": "VERIFIED",
+   "addenda": [
+    {
+     "addendum": "1",
+     "header": "## Addendum 1 — 2026-11-23 (written after the real detection line was seen; EXPLORATORY ONLY)",
+     "status": "VERIFIED",
+     "evidence": [
+      "run.log",
+      "2026-11-24T05:14:31Z PREREG Addendum 1 sha256 45dd27d4fe82bb9a8049f1d7c64b3ee885fc4f1d3f416a2d87ec0488df75384a (before any addendum script)"
+     ]
+    },
+    {
+     "addendum": "2",
+     "header": "## Addendum 2 — 2026-11-23 (after Addendum 1 results; DESCRIPTIVE ONLY)",
+     "status": "VERIFIED",
+     "evidence": [
+      "run.log",
+      "2026-11-24T05:30:59Z PREREG Addendum 2 sha256 9b9459dba976f394ec11a1c882052bc97a9c0b6ac63b4ede6ecebf90267ae220"
+     ]
+    }
+   ]
+  },
+  {
+   "lane": "round45/W1-spaces",
+   "base_prereg": "UNSTAMPED",
+   "addenda": [
+    {
+     "addendum": "1",
+     "header": "### Addendum 1 — 2026-11-23 (before the full Q1 run; thresholds unchanged)",
+     "status": "UNSTAMPED",
+     "evidence": null
+    },
+    {
+     "addendum": "2",
+     "header": "### Addendum 2 — 2026-11-23 (after q1/q2 results were seen; no registered threshold changed)",
+     "status": "UNSTAMPED",
+     "evidence": null
+    }
+   ]
+  },
+  {
+   "lane": "round45/X1-redteam",
+   "base_prereg": "UNSTAMPED",
+   "addenda": []
+  },
+  {
+   "lane": "round46/A1-hygiene",
+   "base_prereg": "VERIFIED",
+   "addenda": [
+    {
+     "addendum": "1",
+     "header": "## Addendum 1 — 2026-11-24 (after the first repair run and downstream.py; before RESULTS)",
+     "status": "VERIFIED",
+     "evidence": [
+      "run.log",
+      "2026-11-24T23:54:33Z PREREG Addendum 1 sha256 47c12be545e5d0f3c18445d1ff41573a1db5a267e3bc5a6930c0ed5ef22e80c1 (before re-running repair with R-a5)"
+     ]
+    }
+   ]
+  },
+  {
+   "lane": "round46/L1-word-loader",
+   "base_prereg": "VERIFIED",
+   "addenda": []
+  },
+  {
+   "lane": "round46/P1-leads",
+   "base_prereg": "VERIFIED",
+   "addenda": []
+  },
+  {
+   "lane": "round46/S2-second-reader",
+   "base_prereg": "VERIFIED",
+   "addenda": [
+    {
+     "addendum": "S2",
+     "header": "## Addendum S2-A (2026-11-24, written after unsealing; disclosure only, no threshold changed)",
+     "status": "UNSTAMPED",
+     "evidence": null
+    }
+   ]
+  }
+ ]
+}

@@ -9,7 +9,7 @@ from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__)); LP = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 os.chdir(LP); sys.path.insert(0, os.path.join(LP, "analysis", "stones")); import pipeline as P
 gl, po = P.global_lines(); pos_map = [(li, j) for li, L in enumerate(gl) for j in range(len(L))]
-cmap = json.load(open(os.path.join(HERE, "corrected_map.json"))); align = json.load(open("analysis/stones/alignment.json"))
+cmap = json.load(open(os.path.join(HERE, "corrected_map.json"))); align = json.load(open("analysis/stones/alignment.v1.json"))
 adj = json.load(open(os.path.join(HERE, "adjudications.json"), encoding="utf-8"))["rows"]
 cache = {}
 def seg(n):

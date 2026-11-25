@@ -13,6 +13,8 @@
 > _2026-11-23:_ Round 45 is in progress. See [`liber-primus/analysis/round45/CAMPAIGN-PLAN.md`](liber-primus/analysis/round45/CAMPAIGN-PLAN.md).
 >
 > _2026-11-24:_ Round 45 is filed ([`SYNTHESIS.md`](liber-primus/analysis/round45/SYNTHESIS.md)): the printed spaces are not the plaintext words in order; core negatives unaffected; 10 word-indexed rows reopened; transcription verified; T7 hardened, not a rate change. **Round 46 plan:** one correct printed-word loader and re-runs of R41 W1–W4 / R37 U2b-U3 with shuffled-word controls; pre-registered 2-rune-word and line-break tests; repair `stones/alignment.json`; a second blind reader for look-alike glyphs; no T7 generation-model sweep. Details in [`liber-primus/PICKUP-HERE.md`](liber-primus/PICKUP-HERE.md).
+>
+> _2026-11-24:_ Round 46 is filed ([`SYNTHESIS.md`](liber-primus/analysis/round46/SYNTHESIS.md)). A correct printed-word loader re-measured the ten reopened rows: R41-R14 is re-run and negative at full power; SKELETON stays conditional; R37 holds; R38-C2-G3 is not re-run. The 2-rune deficit replicates across the whole text, but its extremity for English is register-dependent. The line-break lead is descriptive only. `stones/alignment.json` is repaired. A second blind reader finds 0/279 canon errors (4 disputed positions open). OTP-class unchanged. **Round 47 plan:** re-read the 4 open positions plus 27 window glyphs; re-run R38-C2-G3; collect Greek/Hebrew/Norse corpora; get more LP1-like data for the line-break test.
 
 _Updated **2026-08-26** (frozen; see the banner above). Repo: https://github.com/Dukotah/cicada3301 (default branch `master`)._
 

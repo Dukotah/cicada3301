@@ -3,7 +3,8 @@
 import sys,os,json,random,math,collections
 sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
 pos=json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'doublet_positions.json')))  # index of 2nd rune, 0-based
-G=json.load(open(r'C:\Users\dukot\AppData\Local\Temp\lpx\r\resources\liber-primus\lp2-grid-256.json',encoding='utf8'))
+# R46-A1: was the external lpx clone; now built in-repo by derive_grid.py from data/sources/rtkd_master.txt.
+G=json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'lp2-grid-256.json'),encoding='utf8'))
 tok=[t for p in G['pages'] for t in p['tokens']]; assert len(tok)==256
 A=G['alphabet']; val=[60*A.index(t[0])+A.index(t[1]) for t in tok]
 N=12956

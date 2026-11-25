@@ -13,7 +13,8 @@ def z(L,R=400):
     for _ in range(R):
         M=L[:]; random.shuffle(M); s.append(MI(M))
     m=sum(s)/R; sd=(sum((v-m)**2 for v in s)/R)**.5; return (o-m)/sd,(sum(v>=o for v in s)+1)/(R+1)
-ref=open(r'C:\Users\dukot\AppData\Local\Temp\lpx\r\resources\liber-primus\lp1-plaintext-reference.txt',encoding='utf8').read()
+# R46-A1: was the external lpx clone; the W1 inputs/ copy is sha256-identical (902e9db8...).
+ref=open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','round45','W1-spaces','inputs','lp1-plaintext-reference.txt'),encoding='utf8').read()
 secs=[];cur=[]
 for line in ref.splitlines():
     if line.startswith('#'):

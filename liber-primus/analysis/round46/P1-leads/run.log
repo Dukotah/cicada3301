@@ -1,0 +1,36 @@
+PREREG sha256 fd9fa7581caed9d40bd190cecb0382dab0c1bc5e9da83004dff6baef94425285 frozen 2026-11-24T15:46:47-08:00
+FE corpora kept 30, dropped []
+T1 stage1: bar1=0.1765 kill_frac(<=0.155)=0.0000 S1 size=0.0330 PC2 power=0.961 PC1 {'median': 0.2033839779005525, 'q01': 0.1464088397790055, 'q99': 0.26243093922651933, 'frac_le_0155': 0.028, 'power_vs_bar1': 0.12533333333333332}
+T2 stage1: H1 n=1448 bar05=0.2037 power=0.998, H2 n=1448 bar05=0.2037 power=1.000, S_odd n=1751 bar05=0.2056 power=1.000, S_even n=1145 bar05=0.2009 power=0.995
+T2 section heterogeneity plant power=0.980 (first-half sections [0, 1, 2, 3, 4])
+T3 stage1 bars: {"EN-FE": 688.2, "EN-noART": 712.1, "EN-merge10": 536.9, "EN-merge20": 390.5, "LA": 896.9, "DE": 121.1, "CY": 680.5, "OE": 137.3, "SOLVED": 90.6}
+  conf EN-FE      EN-FE=1.00 EN-noART=1.00 EN-merge10=1.00 EN-merge20=0.56 LA=0.00 DE=0.00 CY=0.00 OE=0.20 SOLVED=0.33
+  conf EN-noART   EN-FE=0.96 EN-noART=0.97 EN-merge10=0.98 EN-merge20=0.61 LA=0.00 DE=0.00 CY=0.00 OE=0.11 SOLVED=0.10
+  conf EN-merge10 EN-FE=0.96 EN-noART=0.96 EN-merge10=1.00 EN-merge20=0.99 LA=0.02 DE=0.00 CY=0.00 OE=0.00 SOLVED=0.13
+  conf EN-merge20 EN-FE=0.81 EN-noART=0.85 EN-merge10=0.93 EN-merge20=0.99 LA=0.18 DE=0.00 CY=0.00 OE=0.00 SOLVED=0.00
+  conf LA         EN-FE=0.05 EN-noART=0.05 EN-merge10=0.07 EN-merge20=0.07 LA=0.96 DE=0.00 CY=0.00 OE=0.00 SOLVED=0.00
+  conf DE         EN-FE=0.18 EN-noART=0.70 EN-merge10=0.14 EN-merge20=0.00 LA=0.10 DE=0.98 CY=0.00 OE=0.00 SOLVED=0.00
+  conf CY         EN-FE=0.00 EN-noART=0.00 EN-merge10=0.00 EN-merge20=0.00 LA=0.00 DE=0.00 CY=0.98 OE=0.00 SOLVED=0.00
+  conf OE         EN-FE=1.00 EN-noART=0.99 EN-merge10=0.86 EN-merge20=0.00 LA=0.00 DE=0.00 CY=0.14 OE=0.99 SOLVED=0.00
+  conf SOLVED     EN-FE=1.00 EN-noART=1.00 EN-merge10=1.00 EN-merge20=0.67 LA=0.00 DE=0.00 CY=0.00 OE=0.00 SOLVED=0.95
+T1 LP2: s=0.1547 p_FE=0.0000 replicates=True informative=False pooled min=0.1606
+T2 LP2: H1 s=0.1533 p=0.0000, H2 s=0.1561 p=0.0000, S_odd s=0.1536 p=0.0000, S_even s=0.1563 p=0.0006 replicate_all=True; section G p=0.8045
+T3 LP2: EN-FE G=233.9/688.2 ADMIT, EN-noART G=99.0/712.1 ADMIT, EN-merge10 G=151.7/536.9 ADMIT, EN-merge20 G=244.4/390.5 ADMIT, LA G=1159.3/896.9 reject, DE G=378.0/121.1 reject, CY G=1396.4/680.5 reject, OE G=383.8/137.3 reject, SOLVED G=193.2/90.6 reject
+T4 LP2: split n=3316 s_max=0.1873 fe_q01=0.1797 p=0.0217
+LP1: c=0.7545 running=126 inside=74 f_in=0.5873 pi=0.2216 | X1-def 146 breaks f_in=0.5342
+LP2 full: c=0.7773 running=532 inside=388 f_in=0.7293 pi=0.0617 | X1-def 593 breaks f_in=0.7083
+Q5 sanity: LP1 pi>0 binomial p=2.71e-05
+calibration: rho_LP2=0.06 (plant pi 0.0555 vs 0.0617), rho_LP1=0.24 (plant pi 0.2170 vs 0.2216)
+U1 plant P1: n=268 power(a)=0.230 power(b)=0.490 size(b)=0.000
+U1 plant P2: n=264 power(a)=0.260 power(b)=0.500 size(b)=0.000
+U1 plant S_odd: n=318 power(a)=0.220 power(b)=0.620 size(b)=0.000
+U1 plant S_even: n=214 power(a)=0.170 power(b)=0.460 size(b)=0.000
+U2 controls: power=0.270 size=0.005 LP1 D=2.860 p=0.0003
+U3 controls: bar=1.85 power {'1.0': {'power': 0.55, 'w_hat_median': 0.07}, '0.5': {'power': 0.245, 'w_hat_median': 0.04}} LP1 LR=0.00 w=0.00
+U1 LP2 P1: n=268 c=0.7777 f_in=0.7015 pi=0.0980 p(a)=0.00226 p(b)=0.0377
+U1 LP2 P2: n=264 c=0.7769 f_in=0.7576 pi=0.0249 p(a)=0.246 p(b)=0.0014
+U1 LP2 S_odd: n=318 c=0.7756 f_in=0.7170 pi=0.0756 p(a)=0.00855 p(b)=0.0114
+U1 LP2 S_even: n=214 c=0.7799 f_in=0.7477 pi=0.0413 p(a)=0.146 p(b)=0.0046
+U1 full LP2: p(a)=0.00527 p(b)=0.005099 replicate_all=False
+U2 LP2: D=0.271 p=0.0840
+U3 LP2: LR=0.00 (bar 1.85) w_hat=0.00 n_span=388

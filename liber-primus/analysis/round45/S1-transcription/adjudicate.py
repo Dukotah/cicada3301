@@ -47,7 +47,7 @@ sealed = json.load(open(os.path.join(HERE, "sealed_manifest.json"), encoding="ut
 meta, items = sealed, sealed["items"]
 relabel = json.load(open(os.path.join(HERE, "controls_relabel.json"), encoding="utf-8"))["items"]
 cmap = json.load(open(os.path.join(HERE, "corrected_map.json")))
-align = json.load(open("analysis/stones/alignment.json"))
+align = json.load(open("analysis/stones/alignment.v1.json"))
 sreg = json.load(open(os.path.join(HERE, "strip_registration.json")))  # addendum A5
 reinspect = {}
 rp = os.path.join(HERE, "reinspect.json")

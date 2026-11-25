@@ -1,0 +1,15 @@
+unsolved words 2896 len2 448 len1 83 mean 4.474
+T4 unsolved: MI obs=0.01230 null=0.01126 z=+0.51 p=0.306  | lag1 r obs=-0.0150 null=-0.0004 z=-0.84 p(upper)=0.801
+  control kjv.txt    MI z over 8 windows: min +13.0 med +21.6 ; lag1 r: min -0.194 max -0.132
+  control moby.txt   MI z over 8 windows: min +5.4 med +9.3 ; lag1 r: min -0.090 max -0.009
+  control pride.txt  MI z over 8 windows: min +8.9 med +13.6 ; lag1 r: min -0.183 max -0.123
+  control war.txt    MI z over 8 windows: min +8.0 med +12.4 ; lag1 r: min -0.143 max -0.082
+  power (pride, fraction of words left in natural order=1.00): 1.00
+  power (pride, fraction of words left in natural order=0.50): 0.40
+  power (pride, fraction of words left in natural order=0.25): 0.15
+
+T5: gap lag-1 autocorrelation of plaintext-coupled rare events in English (window = 12,956 runes), observed LP2 T7 = +0.380
+  rune-marker                n= 727  median +0.021  5%..95% [-0.126,+0.247]  frac >= 0.380: 0.008
+  pt-doublet(all,n~0)        n= 160  median +0.017  5%..95% [-0.055,+0.098]  frac >= 0.380: 0.000
+  pt-doublet thinned to 86   n= 160  median -0.000  5%..95% [-0.162,+0.203]  frac >= 0.380: 0.000
+  bernoulli-86               n= 160  median -0.012  5%..95% [-0.186,+0.152]  frac >= 0.380: 0.006

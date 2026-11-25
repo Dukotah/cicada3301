@@ -1,0 +1,64 @@
+[
+ {
+  "id": "R46-X1-OAE450-BASINS",
+  "hypothesis": "R46-A1's claim that the O/A/AE '450' KMeans mismatch list is basin-dependent (not a stable instrument output) holds, and is not specific to v1 or to the KMeans seed.",
+  "threshold": "Descriptive (no PREREG; rule fixed in the script docstring before it ran): 20 random 42-glyph removals from each of v1 and v2 labels (A1's own PCA(30)+KMeans(3)+Hungarian glue, exec'd read-only from A1 downstream.py), plus PCA random_state 0..4. Bimodal = both basins (~430-450 and ~620-670) reached from at least one label set. Stable core = glyphs mismatched in >= 90 % of the runs in which they are present.",
+  "positive_control": "passed",
+  "control_detail": {
+   "A1 Q5 gate re-run": "v1 labels reconstructed 10,774/10,774 EXACT; all downstream.json numbers reproduce",
+   "committed 450": "reproduced on v1 at PCA seeds 0-4 (450 x5)"
+  },
+  "null": "n/a (stability measurement)",
+  "result": "UPHELD and sharpened. PCA seed is irrelevant (v1 450 x5, v2 670 x5). v1 minus 42: 15/20 low basin (428-439), 5/20 high (621-628). v2 minus 42: 19/20 high (641-650), 1/20 low (447). Both label sets reach both basins; the repair moved the default basin, it did not create a new one. Stable core: 282 glyphs, of which 258 are in the committed 450 (258/450 = 57 %); the other ~190 of the 450 are basin-dependent.",
+  "coverage": "One perturbation family (random 42-glyph removal, 20 draws per label set) + 5 PCA seeds; KMeans seed 0 with n_init=10 as committed.",
+  "not_covered": [
+   "Other perturbations (PCA dimension, feature normalisation, glyph additions rather than removals).",
+   "Whether the 258-glyph core is a set of true look-alike ambiguities (needs a reader; S2's template is 1186/1186 = canon on exact-line O/A/AE, so the core is a clustering property, not a canon-error signal)."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round46/X1-redteam/AUDIT.md",
+   "liber-primus/analysis/round46/X1-redteam/x1_oae_basins.py",
+   "liber-primus/analysis/round46/X1-redteam/x1_oae_basins.json",
+   "liber-primus/analysis/round46/X1-redteam/x1_oae_basins.log"
+  ],
+  "reproduce": "wsl -d Ubuntu -- bash -lc \"cd /mnt/c/Users/dukot/projects/cicada3301/liber-primus && python3 analysis/round46/X1-redteam/x1_oae_basins.py\" (~3 min, needs sklearn)",
+  "reopens_if": "A different clustering (or supervised O/A/AE classifier) gives a stable mismatch list that a blind reader confirms as ambiguous.",
+  "notes": "Attach to R46-A1-OAE450-INSTABILITY. Any claim built on independent-read/oae_mismatch.json should cite the 258-glyph core, not the 450 count.",
+  "status": "audit",
+  "round": "46/X1",
+  "date": "2026-11-24",
+  "lane": "round46/X1-redteam",
+  "threshold_fixed_in_advance": false
+ },
+ {
+  "id": "R46-X1-R41-LEGACY-SCORE-POWER",
+  "hypothesis": "R46-L1's 'legacy power 0.001 (R41 negative uninformative)' measures R41's own decision criterion.",
+  "threshold": "Re-score L1's r41_plants_raw.json (32 W1-W4 plant streams x 55 pages per regime) with R41's criterion (page pmax > P-null max 5.591, no exact-recovery conjunct); FOUND-ERROR if legacy score-only power differs materially from 0.001.",
+  "positive_control": "passed",
+  "control_detail": {
+   "words.py loader": "1760/1760 under both rules",
+   "score bar cleanliness": "legacy pages with recovery < 0.1 cross 14/506; recovery >= 0.6 cross 997/997"
+  },
+  "null": "L1's matched blockperm null (P-level max over blocks 100/250/1000, D=400)",
+  "result": "FOUND-ERROR (medium). Legacy camp7 parse, score-only: regime a 1129/1760 (0.64), b 1134/1760 (0.64); exact-and-score 2/1760 and 1/1760. Power is carried by W1/W4 (mean recovery 0.77/0.76); W2/W3 ~0 (0.16/0.25). R41's page-level negative was weakened, not uninformative. W-level score-only is not interpretable (b' decodes at ~9 % recovery exceed the W null max 30/32: null not matched to plant ciphertext). Pages are pseudo-replicates of 32 streams.",
+  "coverage": "L1's plant set: 16 variants x 2 reps x 55 pages x regimes a/b/b', English (pride), panel-R36 scorer.",
+  "not_covered": [
+   "R41's original panel12 scorer (gitignored)",
+   "non-English plants",
+   "per-variant legacy power with more than 2 reps"
+  ],
+  "evidence": [
+   "liber-primus/analysis/round46/X1-redteam/AUDIT.md",
+   "liber-primus/analysis/round46/L1-word-loader/r41_plants_raw.json",
+   "liber-primus/analysis/round46/L1-word-loader/r41_judge.json"
+  ],
+  "reproduce": "see AUDIT.md §5.3 (re-score r41_plants_raw.json pages with pmax > r41_judge.json null_max.P, with and without recovery == 1.0)",
+  "reopens_if": "R41's panel12 scorer is rebuilt and gives a different page bar.",
+  "notes": "Attach to R46-L1-R41-R14-RERUN and R41-C1-R14-WORDSUM-SELFKEY; supersedes R45-X1 'mostly corrupted' wording for W1/W4.",
+  "status": "audit",
+  "round": "46/X1",
+  "date": "2026-11-24",
+  "lane": "round46/X1-redteam",
+  "threshold_fixed_in_advance": false
+ }
+]

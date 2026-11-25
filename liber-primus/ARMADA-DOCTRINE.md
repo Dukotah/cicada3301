@@ -112,8 +112,11 @@ page geometry. Lore, vibes and "it feels like something 3301 would do" are not p
 
 ### R5 — Prefer bounded objects to unbounded spaces.
 Ranked by how often it has actually worked here:
-1. a **finite, human-checkable object** (the 450 located O/A/AE disagreements; 6 contested
-   payload bytes; 47 unread ornament bands),
+1. a **finite, human-checkable object** (the 258-glyph stable core of the O/A/AE clustering
+   mismatches, a candidate list; 6 contested payload bytes; 47 unread ornament bands),
+   _[R46: the example used to read "the 450 located O/A/AE disagreements". R46-A1/X1 showed that
+   count is a KMeans basin artefact (450 vs 670 by basin); 258 of the 450 form a stable core, and
+   none is evidence of a canon error (R46-S2 template = canon on all exact-line O/A/AE).]_
 2. an **enumerable generator space** (`$RANDOM`, a TeX LCG, a 2³¹ seed range),
 3. an **instrument or a closure** to audit,
 4. a **samplable** space with a stated coverage fraction,

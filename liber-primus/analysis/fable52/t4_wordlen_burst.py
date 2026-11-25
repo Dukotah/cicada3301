@@ -4,7 +4,7 @@ import sys,os,json,random,math,collections,re
 sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
 import load2
 random.seed(5252)
-D=r'C:\Users\dukot\projects\cicada3301\liber-primus\data'
+D=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','..','data')  # R46-A1: repo-relative
 TR=['F','U','TH','O','R','C','G','W','H','N','I','J','EO','P','X','S','T','B','E','M','L','NG','OE','D','A','AE','Y','IA','EA']
 DG={'TH':2,'EO':12,'NG':21,'OE':22,'AE':25,'IA':27,'IO':27,'EA':28}
 SG={c:i for i,c in enumerate(TR) if len(c)==1}; SG.update({'K':5,'Q':5,'V':1,'Z':15})

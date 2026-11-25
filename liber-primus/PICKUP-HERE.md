@@ -1,7 +1,35 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-11-24** (Round 45 closeout; Round 45 kickoff 2026-11-23; Round 44 closeout 2026-11-11). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-11-24** (Round 46 closeout; Round 45 closeout 2026-11-24; Round 45 kickoff 2026-11-23; Round 44 closeout 2026-11-11). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
 
+> ## Round 46 closeout (2026-11-24) — REPAIR THE WORD INSTRUMENTS, TEST THE TWO LEADS: filed. Read `analysis/round46/SYNTHESIS.md` first.
+>
+> **Findings.** One correct printed-word loader (`analysis/round46/L1-word-loader/words.py`, 2,896 LP2 words) re-measured the ten
+> R45-reopened rows (dated R46 note on each; statuses left as recorded):
+> - **R41-R14 is re-run and negative at full power.** Its old page power was ≈ 0.64 (weakened, not blind; R46-X1).
+> - **SKELETON is at chance.** It is conditional on in-order spaces.
+> - **R37 U2b/U3 and the 7-gram hold.** The R38/R39 lexicon rows have identical real decodes; their glue power is not measured.
+> - **R38-C2-G3 was not re-run.** R40-R31 is not word-indexed.
+> - **If the printed lengths are not the plaintext's (b′),** every word-indexed row is at ≤ 0.033 power.
+>
+> The **2-rune deficit replicates across the whole text**, but whether it is extreme for English is register-dependent (T1
+> uninformative; *Paradise Lost*). The line-break lead stays descriptive. **`stones/alignment.json` is repaired** (v1 kept;
+> 86/86 classifier disagreements resolved), and the "450 O/A/AE" count is a clustering-basin artefact (258-glyph stable core;
+> doctrine R5 example amended). A **second blind reader** finds 0/279 canon errors (bound ≤ 2.1 % pooled; O/A/AE ≤ 5.2 %,
+> M/D ≤ 14.8 %). **OTP-class unchanged.** LEDGER: **400 rows**.
+>
+> ### Round 47 plan (SYNTHESIS §4) — CONTINUE, narrow
+>
+> 1. Blind re-read of S1's 4 remaining disputed positions (gpos 276, 5054, 6054, 9877) and the 27 window-line family glyphs.
+> 2. Re-run R38-C2-G3 through `words.py`, with a stated fragment convention. Plant the R38/R39 lexicon glue.
+> 3. Lead (i): collect Greek/Hebrew/Norse and more archaic-verse reference corpora. Then pre-register a held-out test with its
+>    outlier handling fixed in advance; no post-hoc re-analysis.
+> 4. Lead (ii): more LP1-like word-aware data. Re-plant through `struct()/summ()`.
+> 5. Hygiene: rebuild `stones/dataset.npz` from the v2 map; settle the canonical lineage for 2 separators and 5 grid cells;
+>    wire `check_prereg_stamps.py` into CI.
+
+> _Superseded in part by the Round 46 closeout above:_ the Round 45 plan below is done. "Ten word-indexed rows are reopened"
+> now has per-row verdicts. The R41 "25–91 % page recovery" now has a measured page power of ≈ 0.64.
 > ## Round 45 closeout (2026-11-24) — THE SPACES ARE NOT THE WORDS: filed. Read `analysis/round45/SYNTHESIS.md` first.
 >
 > **Findings.** LP2's printed word breaks are **not the plaintext's words in order**, at any scale (`R45-W1-ORDER-SCOPE`,

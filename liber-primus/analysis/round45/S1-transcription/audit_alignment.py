@@ -4,7 +4,7 @@ Output: alignment_audit.json (used by adjudicate.py to re-locate items; committe
 import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); LP = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 os.chdir(LP); sys.path.insert(0, os.path.join(LP, "analysis", "stones")); import pipeline as P
-gl, po = P.global_lines(); align = json.load(open("analysis/stones/alignment.json"))
+gl, po = P.global_lines(); align = json.load(open("analysis/stones/alignment.v1.json"))
 out = {}
 for n in range(56):
     lines, b, g = P.segment_image(f"data/relikd/p{n}.jpg"); clean = [len(L) for L in lines if len(L) >= 10]

@@ -1,0 +1,793 @@
+{
+ "lane": "R46-L1 word-loader",
+ "date": "2026-11-24",
+ "prereg_sha256": "8cf2c0ca125eff22d58ed1d19807149bd498ae037376f5481e2e6c81ff19da01",
+ "loader": {
+  "lp2_words": 2896,
+  "target": 2896,
+  "match": true,
+  "stream_sha256_matches_PROBLEM": true,
+  "line_wrapped_words_joined": 388,
+  "page_wrapped_words_joined": 32,
+  "legacy": {
+   "camp7": {
+    "n": 3316,
+    "extra_cuts": 420,
+    "missing_cuts": 0,
+    "where": {
+     "'/\u23ce'": 388,
+     "'/\u23ce%\u23ce'": 32
+    }
+   },
+   "mapcommon": {
+    "n": 2928,
+    "extra_cuts": 32,
+    "missing_cuts": 0,
+    "where": {
+     "'/\u23ce%\u23ce'": 32
+    }
+   },
+   "skeleton": {
+    "n": 2928,
+    "extra_cuts": 32,
+    "missing_cuts": 0,
+    "where": {
+     "'/\u23ce%\u23ce'": 32
+    }
+   }
+  },
+  "lp1_words": 694,
+  "solved_tail_words": 45,
+  "tests": "10/10 pass (test_words.py)"
+ },
+ "r41_R14": {
+  "real": {
+   "decision": {
+    "W": {
+     "p_Z_by_block": [
+      0.2344139650872818,
+      0.24937655860349128,
+      0.0199501246882793
+     ],
+     "p_raw_by_block": [
+      0.16458852867830423,
+      0.18703241895261846,
+      0.26184538653366585
+     ],
+     "decision_p_Z": 0.24937655860349128,
+     "decision_p_raw": 0.26184538653366585,
+     "alpha": 0.0025,
+     "crosses": false
+    },
+    "P": {
+     "p_Z_by_block": [
+      0.6982543640897756,
+      0.85785536159601,
+      0.6359102244389028
+     ],
+     "p_raw_by_block": [
+      0.7630922693266833,
+      0.7805486284289277,
+      0.7231920199501247
+     ],
+     "decision_p_Z": 0.85785536159601,
+     "decision_p_raw": 0.7805486284289277,
+     "alpha": 0.0025,
+     "crosses": false
+    }
+   },
+   "null_max": {
+    "W": 1.416,
+    "P": 5.591
+   },
+   "obs_top5_P": [
+    [
+     3.752,
+     "P:W1|s-1|a1|p39"
+    ],
+    [
+     3.6,
+     "P:W1|s-1|a0|p03"
+    ],
+    [
+     3.406,
+     "P:W4|s-1|a0|p22"
+    ],
+    [
+     3.362,
+     "P:W5|s+1|a1|p22"
+    ],
+    [
+     3.343,
+     "P:W2|s+1|a0|p47"
+    ]
+   ],
+   "best_W": 0.843,
+   "legacy_same_scorer": {
+    "best_W": 0.751,
+    "best_P": 3.642
+   },
+   "flagged_for_oracle": []
+  },
+  "plants_W1_W4": {
+   "a|L": {
+    "P_power": 1.0,
+    "P_k": 1760,
+    "P_n": 1760,
+    "P_wilson": [
+     0.998,
+     1.0
+    ],
+    "W_power": 1.0,
+    "mean_page_recovery": 1.0
+   },
+   "a|O": {
+    "P_power": 0.0011,
+    "P_k": 2,
+    "P_n": 1760,
+    "P_wilson": [
+     0.0,
+     0.004
+    ],
+    "W_power": 0.0,
+    "mean_page_recovery": 0.4843
+   },
+   "b|L": {
+    "P_power": 1.0,
+    "P_k": 1760,
+    "P_n": 1760,
+    "P_wilson": [
+     0.998,
+     1.0
+    ],
+    "W_power": 1.0,
+    "mean_page_recovery": 1.0
+   },
+   "b|O": {
+    "P_power": 0.0006,
+    "P_k": 1,
+    "P_n": 1760,
+    "P_wilson": [
+     0.0,
+     0.003
+    ],
+    "W_power": 0.0,
+    "mean_page_recovery": 0.4822
+   },
+   "bp|L": {
+    "P_power": 0.0,
+    "P_k": 0,
+    "P_n": 1760,
+    "P_wilson": [
+     0.0,
+     0.002
+    ],
+    "W_power": 0.0,
+    "mean_page_recovery": 0.0818
+   },
+   "bp|O": {
+    "P_power": 0.0,
+    "P_k": 0,
+    "P_n": 1760,
+    "P_wilson": [
+     0.0,
+     0.002
+    ],
+    "W_power": 0.0,
+    "mean_page_recovery": 0.0778
+   }
+  },
+  "plants_W5_control": {
+   "a|L": 1.0,
+   "a|O": 0.2523,
+   "b|L": 1.0,
+   "b|O": 0.2523,
+   "bp|L": 0.2159,
+   "bp|O": 0.2568
+  }
+ },
+ "r37_U2b_U3": {
+  "equality": {
+   "page0": {
+    "head_runes": 240,
+    "boundaries_in_head_identical": true,
+    "opens_mid_word": false,
+    "first_word_fragment_vs_full": [
+     8,
+     8
+    ],
+    "length_value_differs_at_word_index": [],
+    "affected": "none"
+   },
+   "page1": {
+    "head_runes": 240,
+    "boundaries_in_head_identical": true,
+    "opens_mid_word": true,
+    "first_word_fragment_vs_full": [
+     5,
+     6
+    ],
+    "length_value_differs_at_word_index": [
+     0
+    ],
+    "affected": "U3 rho3 (d_k uses l_k) on this page"
+   },
+   "page2": {
+    "head_runes": 201,
+    "boundaries_in_head_identical": true,
+    "opens_mid_word": true,
+    "first_word_fragment_vs_full": [
+     2,
+     5
+    ],
+    "length_value_differs_at_word_index": [
+     0
+    ],
+    "affected": "U3 rho3 (d_k uses l_k) on this page"
+   }
+  },
+  "real_rerun": {
+   "pages_rerun": [
+    1,
+    2
+   ],
+   "n_decodes": 928,
+   "best_by_relation": {
+    "direct": [
+     3.697,
+     "u3:rho3:M29:A1:p1:s9:sg1:direct",
+     "LATIN"
+    ],
+    "keyskip1": [
+     4.352,
+     "u3:rho3:M29:A3:p2:s24:sg1:keyskip1",
+     "CY"
+    ],
+    "keyskip2": [
+     3.843,
+     "u3:rho3:M28:A3:p1:s5:sg-1:keyskip2",
+     "GREEK"
+    ]
+   },
+   "bars_actual_N": {
+    "keyskip1": 6.632,
+    "keyskip2": 6.529,
+    "direct": 6.895
+   },
+   "clears": {
+    "direct": false,
+    "keyskip1": false,
+    "keyskip2": false
+   },
+   "gate_runs_flagged_for_oracle": []
+  },
+  "plants": {
+   "a|L|U2b": {
+    "power": 1.0,
+    "k": 64,
+    "n": 64,
+    "wilson": [
+     0.943,
+     1.0
+    ],
+    "median_pmax240": 25.886
+   },
+   "a|L|U3": {
+    "power": 1.0,
+    "k": 48,
+    "n": 48,
+    "wilson": [
+     0.926,
+     1.0
+    ],
+    "median_pmax240": 25.886
+   },
+   "a|L|U3-rho3": {
+    "power": 1.0,
+    "k": 16,
+    "n": 16,
+    "wilson": [
+     0.806,
+     1.0
+    ],
+    "median_pmax240": 25.886
+   },
+   "a|O|U2b": {
+    "power": 1.0,
+    "k": 64,
+    "n": 64,
+    "wilson": [
+     0.943,
+     1.0
+    ],
+    "median_pmax240": 25.886
+   },
+   "a|O|U3": {
+    "power": 0.938,
+    "k": 45,
+    "n": 48,
+    "wilson": [
+     0.832,
+     0.979
+    ],
+    "median_pmax240": 25.499
+   },
+   "a|O|U3-rho3": {
+    "power": 0.812,
+    "k": 13,
+    "n": 16,
+    "wilson": [
+     0.57,
+     0.934
+    ],
+    "median_pmax240": 25.499
+   },
+   "b|L|U2b": {
+    "power": 1.0,
+    "k": 64,
+    "n": 64,
+    "wilson": [
+     0.943,
+     1.0
+    ],
+    "median_pmax240": 27.2
+   },
+   "b|L|U3": {
+    "power": 1.0,
+    "k": 48,
+    "n": 48,
+    "wilson": [
+     0.926,
+     1.0
+    ],
+    "median_pmax240": 27.2
+   },
+   "b|L|U3-rho3": {
+    "power": 1.0,
+    "k": 16,
+    "n": 16,
+    "wilson": [
+     0.806,
+     1.0
+    ],
+    "median_pmax240": 27.2
+   },
+   "b|O|U2b": {
+    "power": 1.0,
+    "k": 64,
+    "n": 64,
+    "wilson": [
+     0.943,
+     1.0
+    ],
+    "median_pmax240": 27.027
+   },
+   "b|O|U3": {
+    "power": 0.938,
+    "k": 45,
+    "n": 48,
+    "wilson": [
+     0.832,
+     0.979
+    ],
+    "median_pmax240": 26.913
+   },
+   "b|O|U3-rho3": {
+    "power": 0.812,
+    "k": 13,
+    "n": 16,
+    "wilson": [
+     0.57,
+     0.934
+    ],
+    "median_pmax240": 26.913
+   },
+   "bp|L|U2b": {
+    "power": 0.0,
+    "k": 0,
+    "n": 64,
+    "wilson": [
+     0.0,
+     0.057
+    ],
+    "median_pmax240": 4.824
+   },
+   "bp|L|U3": {
+    "power": 0.0,
+    "k": 0,
+    "n": 48,
+    "wilson": [
+     0.0,
+     0.074
+    ],
+    "median_pmax240": 4.167
+   },
+   "bp|L|U3-rho3": {
+    "power": 0.0,
+    "k": 0,
+    "n": 16,
+    "wilson": [
+     0.0,
+     0.194
+    ],
+    "median_pmax240": 3.91
+   },
+   "bp|O|U2b": {
+    "power": 0.0,
+    "k": 0,
+    "n": 64,
+    "wilson": [
+     0.0,
+     0.057
+    ],
+    "median_pmax240": 4.824
+   },
+   "bp|O|U3": {
+    "power": 0.0,
+    "k": 0,
+    "n": 48,
+    "wilson": [
+     0.0,
+     0.074
+    ],
+    "median_pmax240": 4.167
+   },
+   "bp|O|U3-rho3": {
+    "power": 0.0,
+    "k": 0,
+    "n": 16,
+    "wilson": [
+     0.0,
+     0.194
+    ],
+    "median_pmax240": 3.91
+   }
+  }
+ },
+ "skeleton_C01": {
+  "real": [
+   {
+    "pattern": "words_py",
+    "window": 2896,
+    "slack": 0,
+    "best": 584.0,
+    "text": "keys/mabinogion.txt",
+    "offset": 54263,
+    "pct": 20.17,
+    "null_mean": 522.0,
+    "null_max": 579.0,
+    "z": 1.544,
+    "real_beats_all_shuffled": true
+   },
+   {
+    "pattern": "words_py",
+    "window": 2896,
+    "slack": 1,
+    "best": 1416.0,
+    "text": "keys/mabinogion.txt",
+    "offset": 54431,
+    "pct": 48.9,
+    "null_mean": 1324.79,
+    "null_max": 1434.0,
+    "z": 1.246,
+    "real_beats_all_shuffled": false
+   },
+   {
+    "pattern": "legacy_lp2_words",
+    "window": 2928,
+    "slack": 0,
+    "best": 581.0000000000001,
+    "text": "gutenberg/kjv_bible.txt",
+    "offset": 232168,
+    "pct": 19.84,
+    "null_mean": 534.02,
+    "null_max": 582.0,
+    "z": 2.056,
+    "real_beats_all_shuffled": false
+   },
+   {
+    "pattern": "legacy_lp2_words",
+    "window": 2928,
+    "slack": 1,
+    "best": 1441.0,
+    "text": "kjv.txt",
+    "offset": 658605,
+    "pct": 49.21,
+    "null_mean": 1347.85,
+    "null_max": 1439.0,
+    "z": 2.036,
+    "real_beats_all_shuffled": true
+   },
+   {
+    "pattern": "words_py",
+    "window": 400,
+    "slack": 0,
+    "best": 100.0,
+    "text": "gutenberg/quran.txt",
+    "offset": 124595,
+    "pct": 25.0,
+    "null_mean": 88.67,
+    "null_max": 99.0,
+    "z": 1.405,
+    "real_beats_all_shuffled": true
+   },
+   {
+    "pattern": "words_py",
+    "window": 400,
+    "slack": 1,
+    "best": 214.00000000000003,
+    "text": "gutenberg/kjv_bible.txt",
+    "offset": 158187,
+    "pct": 53.5,
+    "null_mean": 200.65,
+    "null_max": 215.0,
+    "z": 1.034,
+    "real_beats_all_shuffled": false
+   },
+   {
+    "pattern": "legacy_lp2_words",
+    "window": 400,
+    "slack": 0,
+    "best": 98.0,
+    "text": "kjv.txt",
+    "offset": 112086,
+    "pct": 24.5,
+    "null_mean": 88.17,
+    "null_max": 100.0,
+    "z": 1.199,
+    "real_beats_all_shuffled": false
+   },
+   {
+    "pattern": "legacy_lp2_words",
+    "window": 400,
+    "slack": 1,
+    "best": 213.0,
+    "text": "kjv.txt",
+    "offset": 201063,
+    "pct": 53.25,
+    "null_mean": 200.42,
+    "null_max": 214.00000000000003,
+    "z": 1.033,
+    "real_beats_all_shuffled": false
+   },
+   {
+    "pattern": "words_py",
+    "window": 120,
+    "slack": 0,
+    "best": 41.0,
+    "text": "kjv.txt",
+    "offset": 283219,
+    "pct": 34.17,
+    "null_mean": 35.92,
+    "null_max": 40.0,
+    "z": 1.396,
+    "real_beats_all_shuffled": true
+   },
+   {
+    "pattern": "words_py",
+    "window": 120,
+    "slack": 1,
+    "best": 76.0,
+    "text": "gutenberg/twain_huck.txt",
+    "offset": 99927,
+    "pct": 63.33,
+    "null_mean": 70.75,
+    "null_max": 76.0,
+    "z": 1.196,
+    "real_beats_all_shuffled": false
+   },
+   {
+    "pattern": "legacy_lp2_words",
+    "window": 120,
+    "slack": 0,
+    "best": 40.0,
+    "text": "kjv.txt",
+    "offset": 372632,
+    "pct": 33.33,
+    "null_mean": 36.06,
+    "null_max": 44.00000000000001,
+    "z": 1.123,
+    "real_beats_all_shuffled": false
+   },
+   {
+    "pattern": "legacy_lp2_words",
+    "window": 120,
+    "slack": 1,
+    "best": 78.0,
+    "text": "kjv.txt",
+    "offset": 146409,
+    "pct": 65.0,
+    "null_mean": 71.56,
+    "null_max": 77.0,
+    "z": 1.463,
+    "real_beats_all_shuffled": true
+   }
+  ],
+  "corpus_texts": 53,
+  "corpus_words": 8206267,
+  "plants": {
+   "W120": {
+    "a|L": {
+     "power": 1.0,
+     "k": 20,
+     "n": 20,
+     "wilson": [
+      0.839,
+      1.0
+     ],
+     "median_true_count_frac": 1.0
+    },
+    "a|O": {
+     "power": 0.5,
+     "k": 10,
+     "n": 20,
+     "wilson": [
+      0.299,
+      0.701
+     ],
+     "median_true_count_frac": 0.546
+    },
+    "b|L": {
+     "power": 0.0,
+     "k": 0,
+     "n": 20,
+     "wilson": [
+      -0.0,
+      0.161
+     ],
+     "median_true_count_frac": 0.208
+    },
+    "b|O": {
+     "power": 0.0,
+     "k": 0,
+     "n": 20,
+     "wilson": [
+      -0.0,
+      0.161
+     ],
+     "median_true_count_frac": 0.208
+    },
+    "bp|L": {
+     "power": 0.0,
+     "k": 0,
+     "n": 20,
+     "wilson": [
+      -0.0,
+      0.161
+     ],
+     "median_true_count_frac": 0.20400000000000001
+    },
+    "bp|O": {
+     "power": 0.0,
+     "k": 0,
+     "n": 20,
+     "wilson": [
+      -0.0,
+      0.161
+     ],
+     "median_true_count_frac": 0.192
+    }
+   },
+   "W400": {
+    "a|L": {
+     "power": 1.0,
+     "k": 20,
+     "n": 20,
+     "wilson": [
+      0.839,
+      1.0
+     ],
+     "median_true_count_frac": 1.0
+    },
+    "a|O": {
+     "power": 0.25,
+     "k": 5,
+     "n": 20,
+     "wilson": [
+      0.112,
+      0.469
+     ],
+     "median_true_count_frac": 0.27749999999999997
+    },
+    "b|L": {
+     "power": 0.0,
+     "k": 0,
+     "n": 20,
+     "wilson": [
+      -0.0,
+      0.161
+     ],
+     "median_true_count_frac": 0.20400000000000001
+    },
+    "b|O": {
+     "power": 0.0,
+     "k": 0,
+     "n": 20,
+     "wilson": [
+      -0.0,
+      0.161
+     ],
+     "median_true_count_frac": 0.1915
+    },
+    "bp|L": {
+     "power": 0.0,
+     "k": 0,
+     "n": 20,
+     "wilson": [
+      -0.0,
+      0.161
+     ],
+     "median_true_count_frac": 0.205
+    },
+    "bp|O": {
+     "power": 0.0,
+     "k": 0,
+     "n": 20,
+     "wilson": [
+      -0.0,
+      0.161
+     ],
+     "median_true_count_frac": 0.1865
+    }
+   }
+  }
+ },
+ "sevengram_R44": {
+  "sites": {
+   "A": {
+    "global_start": 6555,
+    "words_py_gap_pattern": "001001",
+    "words_py_starts_word": true,
+    "legacy_gap_pattern": "001001",
+    "legacy_starts_word": true,
+    "page_break_inside": [],
+    "line_break_inside": []
+   },
+   "B": {
+    "global_start": 12950,
+    "words_py_gap_pattern": "001001",
+    "words_py_starts_word": true,
+    "legacy_gap_pattern": "001001",
+    "legacy_starts_word": true,
+    "page_break_inside": [
+     6
+    ],
+    "line_break_inside": [
+     6
+    ]
+   }
+  },
+  "shape_precision": {
+   "a|L": {
+    "printed_331_windows": 1747,
+    "true_331": 1747,
+    "precision": 1.0
+   },
+   "a|O": {
+    "printed_331_windows": 1754,
+    "true_331": 1715,
+    "precision": 0.9778
+   },
+   "b|L": {
+    "printed_331_windows": 1755,
+    "true_331": 1755,
+    "precision": 1.0
+   },
+   "b|O": {
+    "printed_331_windows": 1768,
+    "true_331": 1727,
+    "precision": 0.9768
+   },
+   "bp|L": {
+    "printed_331_windows": 1650,
+    "true_331": 54,
+    "precision": 0.0327
+   },
+   "bp|O": {
+    "printed_331_windows": 1657,
+    "true_331": 53,
+    "precision": 0.032
+   }
+  }
+ }
+}

@@ -30,7 +30,7 @@ print('per-page doublets:',[(p,pp.get(p,0)) for p in range(55)])
 print('doubled rune values:',sorted(collections.Counter(S[i]['v'] for i in pos).items()))
 # position in word of doublet (index of 2nd rune within word) & word len
 import json
-json.dump(pos,open('doublet_positions.json','w'))
+json.dump(pos,open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'doublet_positions.json'),'w'))  # R46-A1: was cwd-relative
 # difference histogram
 dh=collections.Counter((S[i]['v']-S[i-1]['v'])%29 for i in range(1,N))
 print('diff hist:',[dh[d] for d in range(29)])

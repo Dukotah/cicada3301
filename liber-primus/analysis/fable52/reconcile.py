@@ -1,6 +1,11 @@
-import json,sys,hashlib
-ours=json.load(open(r'C:\Users\dukot\projects\cicada3301\liber-primus\dataset\liber_primus.json',encoding='utf8'))
-theirs=json.load(open(r'C:\Users\dukot\AppData\Local\Temp\lpx\r\resources\liber-primus\lp2-corpus.json',encoding='utf8'))
+import json,sys,hashlib,os
+# R46-A1: repo-relative. lp2-corpus.json is the external side by design; a sha256-pinned copy lives in inputs/.
+HERE=os.path.dirname(os.path.abspath(__file__))
+LPROOT=os.path.abspath(os.path.join(HERE,'..','..'))
+CORPUS=os.path.join(HERE,'inputs','lp2-corpus.json')
+assert hashlib.sha256(open(CORPUS,'rb').read()).hexdigest()=='7f311254d406b755df39510b8b3f4e53d7dfaea87a0320074c16507d46a07522', 'inputs/lp2-corpus.json drifted from its pin'
+ours=json.load(open(os.path.join(LPROOT,'dataset','liber_primus.json'),encoding='utf8'))
+theirs=json.load(open(CORPUS,encoding='utf8'))
 print(type(ours), list(ours.keys())[:20] if isinstance(ours,dict) else len(ours))
 print(list(theirs.keys()))
 tp=theirs['pages']

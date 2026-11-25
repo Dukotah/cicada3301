@@ -1,0 +1,202 @@
+{
+ "segmentation": "words.py (2,896 words; page = page the word starts on)",
+ "blocks": {
+  "100": {
+   "W": {
+    "n_units": 20,
+    "D": 400,
+    "best_Z": 2.341,
+    "best_Z_unit": "W:W4|s+1|a1",
+    "p_Z": 0.2344139650872818,
+    "obs_best_pmax": 0.843,
+    "obs_best_unit": "W:W4|s+1|a1",
+    "p_raw": 0.16458852867830423,
+    "null_best_max": 1.416,
+    "null_best_q99": 1.076
+   },
+   "P": {
+    "n_units": 1100,
+    "D": 400,
+    "best_Z": 3.368,
+    "best_Z_unit": "P:W1|s-1|a1|p39",
+    "p_Z": 0.6982543640897756,
+    "obs_best_pmax": 3.752,
+    "obs_best_unit": "P:W1|s-1|a1|p39",
+    "p_raw": 0.7630922693266833,
+    "null_best_max": 5.241,
+    "null_best_q99": 4.93
+   }
+  },
+  "250": {
+   "W": {
+    "n_units": 20,
+    "D": 400,
+    "best_Z": 2.284,
+    "best_Z_unit": "W:W4|s+1|a1",
+    "p_Z": 0.24937655860349128,
+    "obs_best_pmax": 0.843,
+    "obs_best_unit": "W:W4|s+1|a1",
+    "p_raw": 0.18703241895261846,
+    "null_best_max": 1.164,
+    "null_best_q99": 1.076
+   },
+   "P": {
+    "n_units": 1100,
+    "D": 400,
+    "best_Z": 3.113,
+    "best_Z_unit": "P:W2|s+1|a0|p47",
+    "p_Z": 0.85785536159601,
+    "obs_best_pmax": 3.752,
+    "obs_best_unit": "P:W1|s-1|a1|p39",
+    "p_raw": 0.7805486284289277,
+    "null_best_max": 5.591,
+    "null_best_q99": 5.1
+   }
+  },
+  "1000": {
+   "W": {
+    "n_units": 20,
+    "D": 400,
+    "best_Z": 3.239,
+    "best_Z_unit": "W:W5|s+1|a0",
+    "p_Z": 0.0199501246882793,
+    "obs_best_pmax": 0.843,
+    "obs_best_unit": "W:W4|s+1|a1",
+    "p_raw": 0.26184538653366585,
+    "null_best_max": 1.222,
+    "null_best_q99": 1.056
+   },
+   "P": {
+    "n_units": 1100,
+    "D": 400,
+    "best_Z": 3.065,
+    "best_Z_unit": "P:W5|s-1|a1|p43",
+    "p_Z": 0.6359102244389028,
+    "obs_best_pmax": 3.752,
+    "obs_best_unit": "P:W1|s-1|a1|p39",
+    "p_raw": 0.7231920199501247,
+    "null_best_max": 5.591,
+    "null_best_q99": 5.173
+   }
+  }
+ },
+ "decision": {
+  "W": {
+   "p_Z_by_block": [
+    0.2344139650872818,
+    0.24937655860349128,
+    0.0199501246882793
+   ],
+   "p_raw_by_block": [
+    0.16458852867830423,
+    0.18703241895261846,
+    0.26184538653366585
+   ],
+   "decision_p_Z": 0.24937655860349128,
+   "decision_p_raw": 0.26184538653366585,
+   "alpha": 0.0025,
+   "crosses": false
+  },
+  "P": {
+   "p_Z_by_block": [
+    0.6982543640897756,
+    0.85785536159601,
+    0.6359102244389028
+   ],
+   "p_raw_by_block": [
+    0.7630922693266833,
+    0.7805486284289277,
+    0.7231920199501247
+   ],
+   "decision_p_Z": 0.85785536159601,
+   "decision_p_raw": 0.7805486284289277,
+   "alpha": 0.0025,
+   "crosses": false
+  }
+ },
+ "null_max": {
+  "W": 1.416,
+  "P": 5.591
+ },
+ "obs_top5_P": [
+  [
+   3.752,
+   "P:W1|s-1|a1|p39"
+  ],
+  [
+   3.6,
+   "P:W1|s-1|a0|p03"
+  ],
+  [
+   3.406,
+   "P:W4|s-1|a0|p22"
+  ],
+  [
+   3.362,
+   "P:W5|s+1|a1|p22"
+  ],
+  [
+   3.343,
+   "P:W2|s+1|a0|p47"
+  ]
+ ],
+ "obs_W": {
+  "W:W1|s-1|a0": 0.221,
+  "W:W1|s-1|a1": 0.23,
+  "W:W1|s+1|a0": 0.621,
+  "W:W1|s+1|a1": 0.27,
+  "W:W2|s-1|a0": 0.385,
+  "W:W2|s-1|a1": 0.426,
+  "W:W2|s+1|a0": 0.395,
+  "W:W2|s+1|a1": 0.392,
+  "W:W3|s-1|a0": 0.438,
+  "W:W3|s-1|a1": 0.117,
+  "W:W3|s+1|a0": -0.0,
+  "W:W3|s+1|a1": 0.18,
+  "W:W4|s-1|a0": 0.543,
+  "W:W4|s-1|a1": 0.122,
+  "W:W4|s+1|a0": 0.481,
+  "W:W4|s+1|a1": 0.843,
+  "W:W5|s-1|a0": 0.528,
+  "W:W5|s-1|a1": 0.287,
+  "W:W5|s+1|a0": 0.361,
+  "W:W5|s+1|a1": 0.35
+ },
+ "legacy_camp7_same_scorer": {
+  "best_W": 0.751,
+  "best_P": 3.642
+ },
+ "top_units_stats": [
+  {
+   "unit": "P:W1|s-1|a1|p39",
+   "pmax": 3.752,
+   "ioc_n": 1.0273,
+   "min_distinct32": 16
+  },
+  {
+   "unit": "P:W1|s-1|a0|p03",
+   "pmax": 3.6,
+   "ioc_n": 1.0411,
+   "min_distinct32": 16
+  },
+  {
+   "unit": "P:W4|s-1|a0|p22",
+   "pmax": 3.406,
+   "ioc_n": 1.0116,
+   "min_distinct32": 17
+  },
+  {
+   "unit": "P:W5|s+1|a1|p22",
+   "pmax": 3.362,
+   "ioc_n": 1.0819,
+   "min_distinct32": 14
+  },
+  {
+   "unit": "P:W2|s+1|a0|p47",
+   "pmax": 3.343,
+   "ioc_n": 0.9822,
+   "min_distinct32": 16
+  }
+ ],
+ "flagged_for_oracle": []
+}

@@ -1350,8 +1350,11 @@ record in `LEDGER.json` (**384 rows** after the round, 0 unsound; 351 → 365 at
   `R41-C1-R14-WORDSUM-SELFKEY`, `R44-W2A2-7GRAM-DIFFPLAIN`, `R40-C1-INCONCLUSIVE-R31` (inclusion unverified, X1).
   **Plus an older defect** (`R45-X1-R41-LINEWRAP-SEGMENTATION`): R41's loader split words at line breaks (3,316 vs
   2,896 words), so R41 W1–W4 recovered only 25–91 % of planted pages **even with true spaces**.
+  _[Superseded by Round 46: the ten rows are re-measured with a correct loader (see the Round 46 section). R41 is
+  re-run and negative at full power; its old page power was ≈ 0.64, not ≈ 0; R40-R31 is not word-indexed.]_
 - **The transcription holds** (`R45-S1-CANON-ERROR-RATE`, `R45-S1B-HIDDEN-DOUBLETS`): 0 canon errors in 398
-  blind-read glyphs (non-family bound 0–2.5 %; look-alike classes rest on a single reader, X1 caveat), all 86
+  blind-read glyphs (non-family bound 0–2.5 %; look-alike classes rest on a single reader, X1 caveat, _closed by
+  Round 46 S2 for the 179 exact-line family glyphs; 4 disputed positions remain_), all 86
   doublet sites confirmed, no hidden doublet in the 1,138 adjacent pairs T7 is fragile to. RAT agrees with canon
   at 12,807/12,807 aligned glyphs (the "149 disagreements" were unaligned positions). Defect found:
   `analysis/stones/alignment.json` mis-pairs lines near 399/432 (`R45-S1-STONES-ALIGNMENT-DEFECT`).
@@ -1362,3 +1365,47 @@ record in `LEDGER.json` (**384 rows** after the round, 0 unsound; 351 → 365 at
 - `HUMAN-ORACLE.md` §3 amended: a decode is not ruled noise solely for word-salad order (judge at the word level).
 - Post-hoc leads (need pre-registration): 2-rune words scarce in LP2 (15.5 % vs ≥ 19.7 % English); LP2 line
   breaks fall inside words 71 % of the time vs LP1's 53 %.
+
+## Round 46 (2026-11-24) — REPAIR THE WORD INSTRUMENTS, TEST THE TWO LEADS
+
+Lanes L1 (printed-word loader + re-runs), P1 (pre-registered tests of the two R45 leads), A1 (instrument
+hygiene), S2 (second blind reader), X1 (red team; all four UPHELD-WITH-CORRECTIONS, corrections applied). No
+key-space sweep; verdict **OTP-class, unchanged**. Per-row record in `LEDGER.json` (**400 rows** after the round,
+0 unsound; 384 → 400) + `analysis/round46/SYNTHESIS.md` + `analysis/round46/X1-redteam/AUDIT.md`.
+
+- **One printed-word loader** (`R46-L1-WORD-LOADER`): `round46/L1-word-loader/words.py`, 2,896 LP2 words, 420
+  wrap joins. Legacy loaders only added cuts (camp7 +420, mapcommon/SKELETON +32).
+- **The ten R45-reopened rows, re-measured** (`R46-L1-REOPEN-VERDICTS`; a dated R46 note is on each row, and
+  statuses are left as recorded). The regimes are (a) true spaces, (b) words shuffled within sentence, and (b′)
+  printed lengths permuted.
+  - `R41-C1-R14-WORDSUM-SELFKEY`: **re-run, negative**, power 1.00 under (a) and (b) (`R46-L1-R41-R14-RERUN`).
+    The old loader's page power was ≈ 0.64 by R41's own score rule, so that negative was weakened, not blind
+    (`R46-X1-R41-LEGACY-SCORE-POWER`).
+  - `C-01` SKELETON: re-run, at chance. Power 1.00 under (a) (legacy 0.25–0.50) and 0 under (b), so it is
+    **conditional** on in-order spaces (`R46-L1-SKELETON-RERUN`).
+  - R37 U2b/U3: hold under (a) and (b). The 928 rho3 re-decodes are all below bars (`R46-L1-R37-U2B-U3-RECHECK`).
+  - R38-WORDNET, R38-FREQRANK and R39-SENSE: real decodes are identical, so the results hold. Power for their own
+    glue is not measured.
+  - R44-7GRAM: holds.
+  - R38-C2-G3: **not re-run**. It stays conditional on the fragment convention.
+  - R40-R31: not word-indexed; the conditional does not apply.
+  - Under (b′), every word-indexed row is at ≤ 0.033 power.
+- **2-rune deficit** (`R46-P1-TWO-RUNE-DEFICIT-REPLICATION`, `R46-P1-TWO-RUNE-EXPLANATIONS`): it replicates in
+  every held-out part, and the text is homogeneous.
+  - The fresh-English test is **uninformative** (size 0.033; *Paradise Lost* reaches 16.06 %), so its extremity
+    is register-dependent.
+  - Latin, German and Welsh are rejected. Old English is not distinguishable from English by the registered rule.
+  - "Fewer articles", "another register" and "missing separators" cannot be told apart.
+- **Line breaks inside words** (`R46-P1-LINEBREAK-INSIDE-WORDS`): every discriminator is uninformative (power
+  0.17–0.62). The full-data p = 0.005 is descriptive only: unregistered, on the discovery data.
+- **`stones/alignment.json` repaired** (`R46-A1-ALIGNMENT-REPAIR`): 25 entries changed (+4 flagged, unchanged),
+  +372 labels, 89 re-lined, and all 86 Campaign-V disagreements resolved. The "450 O/A/AE" count is a KMeans basin
+  artefact (`R46-A1-OAE450-INSTABILITY`, `R46-X1-OAE450-BASINS`: a 258-glyph stable core).
+  `R45-S1-STONES-ALIGNMENT-DEFECT` is closed.
+- **Fable52 runs from in-repo data** (`R46-A1-FABLE52-REPOINT`). The PREREG addendum stamp checker is live
+  (`R46-A1-PREREG-STAMPS`).
+- **Second blind reader** (`R46-S2-SECOND-READER-FAMILY-BOUND`, `R46-S2-S1-READER-MISS-RATE`): 0 canon errors in
+  279. κ 0.969 against S1, and all 5 disagreements are S1 misreads.
+  - Two-reader bound ≤ 2.1 % pooled (O/A/AE ≤ 5.2 %, M/D ≤ 14.8 %).
+  - The single-reader caveat is closed for the 179 re-read glyphs only. gpos 276, 5054, 6054 and 9877 (and the
+    27 window-line family glyphs) remain open.

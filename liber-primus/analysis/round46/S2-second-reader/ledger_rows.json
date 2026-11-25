@@ -1,0 +1,62 @@
+[
+ {
+  "id": "R46-S2-SECOND-READER-FAMILY-BOUND",
+  "lane": "round46/S2-second-reader",
+  "hypothesis": "Canon (data/krisyotam_runes.txt) carries glyph errors in the look-alike families (O/A/AE, M/D, TH/W/R, N/I, B/E) that S1's single, unblinded-adjudicated reader could not exclude; a second independent blind reader would detect them.",
+  "status": "measured",
+  "round": "46/S2",
+  "date": "2026-11-24",
+  "threshold": "Pre-registered (PREREG.md sha256 4f92cd4c..., logged in build_log.txt before any read): single-glyph crops from the sha-pinned relikd renders on S1 corrected_map exact lines; labels sealed in sealed.json; reads frozen in 13 batches of <= 24 (hashes in reads_frozen.sha256) before unsealing; no eye-based unblinded adjudication (verdicts from S1's frozen blind read + a leave-line-out template only); gates C >= 90 % and W >= 6/8; exact Clopper-Pearson 95 %; two-reader bound eps <= CP95_upper / (1 - m_S1 * m_S2).",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": {
+   "reader control C": "24/24 solved-page (73.jpg) glyphs, 16/16 family-rune (AE 5, E 2, W 2, D 2, R, O, M, TH, N), CP95 lower 0.858",
+   "substitution control W": "8/8 swapped look-alike crops (D<-M x2, O<-AE x2, A<-AE x2, TH<-W, AE<-O) caught AND named as the donor rune",
+   "Q5 gate after batch 1": "C+W 3/3",
+   "template instrument": "leave-line-out nearest class mean, validated on all exact-line family glyphs: OA 1186/1186, MD 751/751, THWR 1092/1092, BE 756/756; NI 471/787 (I is a bare stem, zero-variance bitmap; template unusable for I, not needed)"
+  },
+  "null": "Binomial: 0 errors in n reads bounds the per-glyph rate by the exact CP upper limit, inflated by 1/(1 - joint reader miss rate).",
+  "result": "NO CANON ERROR FOUND. S2 blind = canon on 279/279 (frame A: all 179 S1 look-alike-family glyphs on exact lines, 0/179, CP95 [0, 2.04 %]; frame R: 100 fresh uniform glyphs seed 46021, 0/100, [0, 3.62 %]). S2 vs S1 on the 179 shared glyphs: 174/179 agree, Cohen kappa 0.969 (OA 68/72 k 0.915; MD 23/24 k 0.916; THWR 42/42, NI 22/22, BE 19/19 k 1.0). All 5 disagreements are S1 misreads (O->A x2, AE->A, D->M, A->O) where S2 blind, canon and the template agree, which independently confirms S1's canon-ward adjudication without an unblinded reader. Two-reader family canon error bound: eps <= 2.12 % (0/179, joint miss <= 0.038); S2-only over 217 family glyphs <= 1.97 %.",
+  "coverage": "179 S1 family glyphs (census of S1's family set on exact-registered lines) + 100 uniform glyphs + 24 controls + 8 swaps = 311 crops. Reader power: 1.0 observed on 24 family controls (16 C-family + 8 W), miss rate <= 14.3 % at 95 %.",
+  "not_covered": [
+   "27 of S1's 206 family glyphs that sit on non-exact-registered lines (window items), and all 1,831 off-exact stream positions.",
+   "~12,680 stream positions outside the read set (uniform rate bounded at <= 3.6 % by R alone).",
+   "Errors common to the relikd 2400x3600 render itself (both readers read the same render, so reader misses are not fully independent).",
+   "Errors that are simultaneously segmentation and label errors (exact-box items only).",
+   "4 of S1's 10 canon-resolved family mismatches (gpos 276, 5054, 6054, 9877) lie outside frame A."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round46/S2-second-reader/PREREG.md",
+   "liber-primus/analysis/round46/S2-second-reader/RESULTS.md",
+   "liber-primus/analysis/round46/S2-second-reader/results.json",
+   "liber-primus/analysis/round46/S2-second-reader/reads_frozen.sha256",
+   "liber-primus/analysis/round46/S2-second-reader/sealed.json"
+  ],
+  "reproduce": "cd liber-primus && PYTHONUTF8=1 python analysis/round46/S2-second-reader/build.py && PYTHONUTF8=1 python analysis/round46/S2-second-reader/template_call.py && PYTHONUTF8=1 python analysis/round46/S2-second-reader/unseal.py (reads_batchNN.json are agent input, not regenerated)",
+  "reopens_if": "A higher-resolution master shows a different glyph at any read position; or a third reader / human oracle disagrees with both readers at a family position; or the 27 window-item family glyphs are read and one disagrees.",
+  "notes": "Closes the X1 (round45/X1-redteam/AUDIT.md §3) single-reader / circular-adjudication caveat on S1's family bound, for the exact-line part of S1's set. S1's 4 O/A/AE and 1 M/D blind misreads on this set are resolved by independent blind evidence, not by an unblinded eye."
+ },
+ {
+  "id": "R46-S2-S1-READER-MISS-RATE",
+  "lane": "round46/S2-second-reader",
+  "hypothesis": "S1's family-glyph blind reads are reproducible by an independent reader (S1's family miss rate can be measured without circularity).",
+  "status": "measured",
+  "round": "46/S2",
+  "date": "2026-11-24",
+  "threshold": "Pre-registered: raw agreement and Cohen kappa per family with >= 15 shared items; disagreements adjudicated by S2 blind + template (no unblinded eye).",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "passed",
+  "control_detail": {"S2 controls": "C 24/24, W 8/8 (see R46-S2-SECOND-READER-FAMILY-BOUND)"},
+  "null": "n/a (agreement statistic)",
+  "result": "S1 blind family miss rate measured independently: 5/179 = 2.8 % (CP95 [0.9 %, 6.4 %]); within O/A/AE 4/72 = 5.6 %, M/D 1/24, TH/W/R 0/42, N/I 0/22, B/E 0/19. Every S1 miss was a misread of a correct canon glyph (S2 and template agree with canon at all 5). S1 also read glyph 6158 twice inconsistently (A, AE; canon A). This replaces S1's circular ~7 % family miss estimate with an independent one. Exact-line glyphs only; S1's window-item family misses are >= 4/27.",
+  "coverage": "179 glyphs read by both readers.",
+  "not_covered": ["S1 window-item reads (27 family glyphs) and S1's unblinded re-reads."],
+  "evidence": [
+   "liber-primus/analysis/round46/S2-second-reader/results.json",
+   "liber-primus/analysis/round46/S2-second-reader/RESULTS.md"
+  ],
+  "reproduce": "cd liber-primus && PYTHONUTF8=1 python analysis/round46/S2-second-reader/unseal.py",
+  "reopens_if": "A third reader disagrees with S2 at any of the 5 positions (gpos 6159, 4867, 4773, 1724, 4580).",
+  "notes": "S2's montages were single glyphs at 200 px with solved-page reference strips; S1 read pairs and 170 px cells, which plausibly explains the O/A/AE difference (hook-vs-straight branch ends)."
+ }
+]

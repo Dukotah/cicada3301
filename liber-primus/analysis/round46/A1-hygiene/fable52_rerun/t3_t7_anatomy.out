@@ -1,0 +1,9 @@
+T7 r1 = 0.38  rank(Spearman-like) r1 = 0.2679
+largest gaps (idx,gap,start): [(18, 712, 3140), (63, 662, 8934), (8, 553, 1038), (19, 537, 3852), (17, 400, 2740)]
+r1 with gaps winsorized at 300: 0.2755 ; r1 of log gaps: 0.2294
+r1 before void (n=18): 0.214 ; after void (n=66): 0.219
+uniform null: p(r1)=0.0005 p(rank r1)=0.0030 p(log-gap r1)=0.0100
+  after-void segment alone vs uniform-in-segment: p=0.0330
+scan: max 3-gap span obs=1649 p=0.0495 ; max single gap obs=712 p=0.5206
+line-count-conditioned null: mean r1=0.367 sd=0.009 p=0.074  (other group: mean +0.373, p=0.232)
+power vs planted low-rate window (rate x0.2 over 1650 runes): uniform-null test 0.22 ; line-conditioned test 0.04 (alpha=0.05)

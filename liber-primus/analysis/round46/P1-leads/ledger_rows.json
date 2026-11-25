@@ -1,0 +1,133 @@
+[
+ {
+  "round": "46/P1",
+  "date": "2026-11-24",
+  "lane": "round46/P1-leads",
+  "threshold_fixed_in_advance": true,
+  "reproduce": "cd liber-primus/analysis/round46/P1-leads && python p1_lead_i.py && python p1_lead_ii.py && python assemble.py",
+  "id": "R46-P1-TWO-RUNE-DEFICIT-REPLICATION",
+  "hypothesis": "LP2's 2-rune printed-word share (15.47%) is below the English range on fresh reference corpora not used in R45, and the deficit is carried by every held-out half/chapter set of LP2.",
+  "status": "measured",
+  "threshold": "T1: equal-weight fraction of 6,000 fresh-English (FE, 30 corpora) 2,896-word windows with share <= LP2 must be <= 0.01; informative iff leave-one-corpus-out size <= 0.03 and LP2-size thinning plant power >= 0.8. T2: all four parts (halves, odd/even $-sections) p <= 0.05 vs FE windows of their size; section G permutation p <= 0.01 = heterogeneous.",
+  "positive_control": "partial",
+  "control_detail": {
+   "T1 size (leave-one-corpus-out)": "0.0330 -> FAILS the 0.03 bar; driven by one corpus (Paradise Lost: 0.99 of its windows below the others' 1st percentile)",
+   "T1 PC2 power (thinned to 15.5%)": 0.961,
+   "T2 PC2 power per part": {
+    "H1": 0.998,
+    "H2": 1.0,
+    "S_odd": 1.0,
+    "S_even": 0.995
+   },
+   "T2 section-heterogeneity plant power": 0.98
+  },
+  "null": "FE window distribution at the same word count (200 windows x 30 corpora; 60 per corpus for parts); 10,000 within-LP2 length permutations for section G.",
+  "result": "T1: LP2 15.47% vs FE pooled min 16.06%, 1st pct 17.65%; p_FE = 0 of 6,000, but T1 is formally UNINFORMATIVE (size control failed by Paradise Lost, whose windows reach 16.1%). Every other FE corpus min >= 19.2%. T2 REPLICATES: H1 15.3%, H2 15.6%, odd sections 15.4%, even 15.6%, all p <= 0.0006 (power >= 0.995). Sections homogeneous (G p = 0.80, plant power 0.98; per-section 12.5-17.7%).",
+  "coverage": "30 fresh English corpora (6 archaic, 11 translated, 12 modern prose, 1 verse) at power 0.96 for an LP2-size deficit; LP2 split two ways at power >= 0.995.",
+  "not_covered": [
+   "A reference panel whose size control passes with Milton-like verse included (needs a register-stratified null).",
+   "Registers outside the 30 FE corpora (e.g. technical, epistolary, 2010s web English)."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round46/P1-leads/PREREG.md",
+   "liber-primus/analysis/round46/P1-leads/RESULTS.md",
+   "liber-primus/analysis/round46/P1-leads/results.json",
+   "liber-primus/analysis/round46/P1-leads/p1_lead_i.py",
+   "liber-primus/analysis/round46/P1-leads/p1lib.py",
+   "liber-primus/analysis/round46/P1-leads/run.log"
+  ],
+  "reopens_if": "A pre-registered register-stratified null with a passing size control is built; or an English register is found whose windows routinely reach 15.5%.",
+  "notes": "Post-hoc lead from R45-W1 q2b; the LP2 value itself was seen. The deficit is whole-text (not one chapter). Only archaic verse (Paradise Lost) comes near it."
+ },
+ {
+  "round": "46/P1",
+  "date": "2026-11-24",
+  "lane": "round46/P1-leads",
+  "threshold_fixed_in_advance": true,
+  "reproduce": "cd liber-primus/analysis/round46/P1-leads && python p1_lead_i.py && python p1_lead_ii.py && python assemble.py",
+  "id": "R46-P1-TWO-RUNE-EXPLANATIONS",
+  "hypothesis": "LP2's 9-class word-length profile is consistent with (a) fresh English, (b) English without articles, (c) English with 10%/20% of separators missing, (d) Latin, (e) German, (f) Welsh, (g) Old English, (h) the solved Cicada pages; and dropped line-final separators could by themselves restore an English 2-rune share.",
+  "status": "measured",
+  "threshold": "T3: admitted iff G(LP2 vs first-half q_R) <= 99th pct of 300 second-half windows; diagonal of 100-window confusion matrix >= 0.95; distinguishable iff both off-diagonals <= 0.2. T4: split all line-spanning words; \"cannot explain\" iff s_max <= FE 1st pct at the new count.",
+  "positive_control": "passed",
+  "control_detail": {
+   "confusion diagonal": {
+    "EN-FE": 1.0,
+    "EN-noART": 0.97,
+    "EN-merge10": 1.0,
+    "EN-merge20": 0.99,
+    "LA": 0.96,
+    "DE": 0.98,
+    "CY": 0.98,
+    "OE": 0.99,
+    "SOLVED": 0.95
+   },
+   "EN-FE vs EN-noART vs EN-merge10": "mutual admit rates 0.96-1.00: NOT distinguishable",
+   "LA, CY vs English": "off-diagonal <= 0.18: distinguishable; OE vs EN-FE NOT distinguishable (OE->EN-FE 1.00)"
+  },
+  "null": "Second-half windows of each reference (equal weight per corpus); SOLVED by resample-then-multinomial bootstrap.",
+  "result": "Admitted: EN-FE (G 234 / bar 688), EN-noART (99 / 712), EN-merge10 (152 / 537), EN-merge20 (244 / 391). Rejected: LA 1159/897, DE 378/121, CY 1396/681, OE 384/137, SOLVED 193/91. The admitted four are mutually indistinguishable by this test (confusion 0.56-1.00). T4: splitting every line-spanning word gives 18.73% vs FE 1st pct 17.97% (p = 0.022) -> the line-merge ceiling DOES reach the bottom of the English range; T4 does not exclude dropped separators.",
+  "coverage": "9 generators, 9-class length profile, 2,896 words; German/Old English rejections are sharp (bars 121/137); English-family members are not separable from each other.",
+  "not_covered": [
+   "Lengths borrowed from a specific other text (unidentifiable from a multiset).",
+   "Greek, Hebrew, Norse (R36 corpora not on disk) and other languages.",
+   "Discrimination among English register / article deletion / missing separators (the G test cannot)."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round46/P1-leads/PREREG.md",
+   "liber-primus/analysis/round46/P1-leads/RESULTS.md",
+   "liber-primus/analysis/round46/P1-leads/results.json",
+   "liber-primus/analysis/round46/P1-leads/p1_lead_i.py",
+   "liber-primus/analysis/round46/P1-leads/p1lib.py"
+  ],
+  "reopens_if": "A statistic that separates article deletion from separator merging at power >= 0.8 (e.g. a 1-rune/3-rune joint test) is pre-registered.",
+  "notes": "Pooled-English bars are wide because between-corpus spread is large; admission into EN-FE is weak evidence. The solved Cicada pages are the one English-like reference that rejects LP2."
+ },
+ {
+  "round": "46/P1",
+  "date": "2026-11-24",
+  "lane": "round46/P1-leads",
+  "threshold_fixed_in_advance": true,
+  "reproduce": "cd liber-primus/analysis/round46/P1-leads && python p1_lead_i.py && python p1_lead_ii.py && python assemble.py",
+  "id": "R46-P1-LINEBREAK-INSIDE-WORDS",
+  "hypothesis": "LP2's line breaks prefer word boundaries less than LP1's in every held-out part (U1b); LP2 still prefers boundaries above chance (U1a); the residual preference shows the short-line signature of word-aware wrapping (U2); line-spanning LP2 words contain merged pairs from dropped separators (U3).",
+  "status": "inconclusive",
+  "threshold": "U1b one-sided permutation (10,000) p <= 0.01 in all four parts, informative iff typesetting-plant power >= 0.8 and size <= 0.02; U1a binomial p <= 0.01; U2 within-page label permutation p <= 0.01 (LP1 must pass, plant power >= 0.8 for an informative null); U3 LR > 99th pct of 1,000 layout plants, informative iff power(d=1) >= 0.8.",
+  "positive_control": "partial",
+  "control_detail": {
+   "U1b plant power per part": {
+    "P1": 0.49,
+    "P2": 0.5,
+    "S_odd": 0.62,
+    "S_even": 0.46
+   },
+   "U1b size": 0.0,
+   "U1a plant power": {
+    "P1": 0.23,
+    "P2": 0.26,
+    "S_odd": 0.22,
+    "S_even": 0.17
+   },
+   "U2": "LP1 real D=2.86 p=0.0003 (passes); plant power 0.27 (fails); size 0.005",
+   "U3": "power d=1.0 0.55, d=0.5 0.24 (fails 0.8); LP1 w_hat=0.00"
+  },
+  "null": "Permutation of boundary-excess indicators between LP1 and the part; binomial at (1-c); within-page shuffle of line end types; justified-typesetting layout simulation (blind cut / word-aware mixture, slack 6) on LP2 widths.",
+  "result": "Running-line definition: LP1 pi=0.22 (126 lines), LP2 pi=0.062 (532 lines). Full LP2 vs LP1 p=0.0051 (descriptive; unregistered, on the discovery data). U1b parts: P1 p=0.038, P2 0.0014, S_odd 0.011, S_even 0.0046 -> not all pass, and every part is UNINFORMATIVE (power 0.46-0.62, limited by LP1's 126 lines). U1a: full LP2 p=0.0053; parts uninformative (power <= 0.26). U2: LP2 D=0.27 p=0.084, null uninformative (power 0.27). U3: w_hat=0.00, LR=0.00 (bar 1.85), uninformative (power 0.55).",
+  "coverage": "All 532 LP2 and 126 LP1 running line breaks; layout models: blind fixed-width cut, word-aware mixture wrap (slack 6), blind cut with line-final separator drops.",
+  "not_covered": [
+   "A held-out replication with adequate power (needs more word-aware reference pages than LP1's 126 running lines).",
+   "Glyph-width-aware justification, hyphenation rules, keyed layouts.",
+   "Page images: whether line-final dots are printed but untranscribed."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round46/P1-leads/PREREG.md",
+   "liber-primus/analysis/round46/P1-leads/RESULTS.md",
+   "liber-primus/analysis/round46/P1-leads/results.json",
+   "liber-primus/analysis/round46/P1-leads/p1_lead_ii.py",
+   "liber-primus/analysis/round46/P1-leads/p1lib.py",
+   "liber-primus/analysis/round46/P1-leads/run.log"
+  ],
+  "reopens_if": "A larger word-aware reference layout (e.g. other Cicada-typeset pages) or an image check of line-final separators is available.",
+  "notes": "The LP1-vs-LP2 difference stands on the full data (p=0.005) but the pre-registered held-out replication cannot be powered with LP1 as the only comparator."
+ }
+]

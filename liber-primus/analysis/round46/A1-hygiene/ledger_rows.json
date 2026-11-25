@@ -1,0 +1,101 @@
+[
+ {
+  "id": "R46-A1-ALIGNMENT-REPAIR",
+  "lane": "round46/A1-hygiene",
+  "hypothesis": "Repairing analysis/stones/alignment.json from R45-S1 corrected_map.json (page-constrained DP + blind-read override + image-49 fix) gives the correct image-line -> canon-line registration, and the Campaign-V classifier's 86 canon disagreements are alignment artifacts.",
+  "status": "audit",
+  "round": "46/A1",
+  "date": "2026-11-24",
+  "threshold": "Pre-registered repair rules R-a1..R-a4 (+R-a5, stamped Addendum 1); Q5 gate = exact reconstruction of the 10,774 v1 labels.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "v1 labels rebuilt exactly (10,774/10,774) from alignment.v1.json + S1 box counts; image-49 crops re-cut bit-identical (45/45)",
+  "null": "n/a",
+  "result": "REPAIRED. 25 entries changed (+4 R-a2 rows flagged, unchanged), 10 dead tails dropped, new defect fixed (line 553 had been put on image 50, the grid page, so it was never cropped). Labels 10,774 -> 11,146 (+372, 0 removed); 89 v1 labels on lines 76/171/173/402 re-lined (87 change rune, 0.83 %). Classifier OOF agreement 10,687 -> 10,774/10,774; all 86 disagreements.json rows resolved; 351/351 agreement on newly labelled glyphs.",
+  "coverage": "All 56 images, 594 canon lines, 10,774 v1 labels; consumers found by grep.",
+  "not_covered": [
+   "dataset.npz not rebuilt in place (analysis/stones out of A1 scope); the arithmetic predicts it exactly.",
+   "Classifier not retrained (training script not in repo).",
+   "R45 S1 scripts assume v1 and must be repointed to alignment.v1.json to reproduce (correct_map.py raises IndexError on image 50)."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round46/A1-hygiene/RESULTS.md",
+   "liber-primus/analysis/round46/A1-hygiene/PREREG.md",
+   "liber-primus/analysis/round46/A1-hygiene/alignment_diff.json",
+   "liber-primus/analysis/round46/A1-hygiene/downstream.json",
+   "liber-primus/analysis/stones/alignment.json",
+   "liber-primus/analysis/stones/alignment.v1.json"
+  ],
+  "reproduce": "cd liber-primus && python analysis/round46/A1-hygiene/repair_alignment.py && wsl python3 analysis/round46/A1-hygiene/downstream.py",
+  "reopens_if": "A second reader (R46-S2) contradicts a re-lined line, or a rebuilt dataset.npz disagrees with downstream.json."
+ },
+ {
+  "id": "R46-A1-OAE450-INSTABILITY",
+  "lane": "round46/A1-hygiene",
+  "hypothesis": "The independent-read 450 O/A/AE unsupervised-vs-canon mismatches are a stable property of the glyphs.",
+  "status": "audit",
+  "round": "46/A1",
+  "date": "2026-11-24",
+  "threshold": "Descriptive: re-run oae_deepdive PCA+KMeans on v1 (control) and v2 labels across seeds 0-9, plus 10 draws removing 42 random family glyphs from v1.",
+  "threshold_fixed_in_advance": false,
+  "positive_control": "v1 re-run reproduces the committed 450-item list exactly",
+  "null": "n/a",
+  "result": "NOT STABLE. v1 gives 450 at every seed; v2 gives 670 at every seed, with only 4/450 on misregistered lines. Removing 42 random family glyphs from v1 gives 430-438 (8/10) or 623-630 (2/10): KMeans has two basins. The 450 list is basin-dependent and should be treated as a candidate list, not a count.",
+  "coverage": "One perturbation family (42-glyph removal), 10 seeds, 10 draws; PCA seed (measured by R46-X1: no effect; see R46-X1-OAE450-BASINS).",
+  "not_covered": [
+   "Other perturbations (PCA dimension, feature normalisation)."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round46/A1-hygiene/oae_stability.json",
+   "liber-primus/analysis/round46/A1-hygiene/downstream.json"
+  ],
+  "reproduce": "wsl python3 analysis/round46/A1-hygiene/oae_stability.py",
+  "reopens_if": "A clustering with a stability guarantee (e.g. consensus over perturbations) is used for the O/A/AE candidates."
+ },
+ {
+  "id": "R46-A1-FABLE52-REPOINT",
+  "lane": "round46/A1-hygiene",
+  "hypothesis": "analysis/fable52 OUTPUTS.txt reproduce from in-repo data once the external lpx paths are replaced (X1 AUDIT §6).",
+  "status": "audit",
+  "round": "46/A1",
+  "date": "2026-11-24",
+  "threshold": "Every OUTPUTS.txt number reproduces, or the residual is attributed to an input by a control run on the external files.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "Same scripts on the external files reproduce t1/t2/t8 OUTPUTS exactly",
+  "null": "n/a",
+  "result": "REPRODUCES modulo inputs. reconcile/t3/t4/t4b/t6 exact. t1 dash 2721->2723 and period 174->172, t8 sentence z 0.83->0.89 (krisyotam has '-' where the external file has '.' at 2 separators); t2 p(family) 0.0399->0.0374 and power 0.48->0.47 (5 grid cells differ in case between rtkd_master and the external 2021 corrections). No Fable52 conclusion changes.",
+  "coverage": "All 11 fable52 scripts.",
+  "not_covered": [
+   "Which lineage is canonical for the 2 separators and 5 grid cells (a transcription question)."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round46/A1-hygiene/RESULTS.md",
+   "liber-primus/analysis/round46/A1-hygiene/fable52_rerun/",
+   "liber-primus/analysis/fable52/derive_grid.py"
+  ],
+  "reproduce": "cd liber-primus/analysis/fable52 && python -I derive_grid.py && python -I t1_doublet_structure.py && python -I t2_p50_mask.py ...",
+  "reopens_if": "A canonical decision on the 2 separators / 5 grid cells."
+ },
+ {
+  "id": "R46-A1-PREREG-STAMPS",
+  "lane": "round46/A1-hygiene",
+  "hypothesis": "Every Addendum block in R45/R46 PREREG.md files carries a sha256 stamp of the PREREG prefix through that addendum.",
+  "status": "audit",
+  "round": "46/A1",
+  "date": "2026-11-24",
+  "threshold": "check_prereg_stamps.py: VERIFIED required for every addendum; plants stamped/stale/unstamped must classify correctly.",
+  "threshold_fixed_in_advance": true,
+  "positive_control": "3/3 synthetic plants; R45 T1 (known stamped) VERIFIED",
+  "null": "n/a",
+  "result": "FOUND-VIOLATIONS. 10 unstamped addenda: R45 W1 x2, R45 S1 x5 (known), R45 S1b x2 (new), R46 S2 S2-A x1 (in flight at check time). T1 x2 and A1 x1 VERIFIED. History not rewritten.",
+  "coverage": "All 10 lane PREREGs under analysis/round45 and analysis/round46 at check time.",
+  "not_covered": [
+   "Not wired into CI."
+  ],
+  "evidence": [
+   "liber-primus/analysis/round46/A1-hygiene/prereg_stamps.json",
+   "liber-primus/analysis/round46/A1-hygiene/check_prereg_stamps.py"
+  ],
+  "reproduce": "python analysis/round46/A1-hygiene/check_prereg_stamps.py",
+  "reopens_if": "New addenda are added; re-run the checker."
+ }
+]

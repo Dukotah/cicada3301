@@ -43,7 +43,8 @@ for f in (0.5,0.3):
         det+=min(scan(T,K))<=nul[3]
     print('  dose f=%.1f: detected %d/6'%(f,det))
 # solved-LP control at lag 1 (the other repo's LP1 plaintext reference, Latin transliteration -> GP rune lengths)
-ref=open(r'C:\Users\dukot\AppData\Local\Temp\lpx\r\resources\liber-primus\lp1-plaintext-reference.txt',encoding='utf8').read()
+# R46-A1: was the external lpx clone; the W1 inputs/ copy is sha256-identical (902e9db8...).
+ref=open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','round45','W1-spaces','inputs','lp1-plaintext-reference.txt'),encoding='utf8').read()
 lw=[len(gp.to_runes(w)) for line in ref.splitlines() if not line.startswith('#') for w in re.findall(r"[A-Za-z]+",line)]
 lw=[x for x in lw if x]
 zz=scan(lw,3); print('solved LP reference: %d words, lag-1 r=%.3f z=%.2f'%(len(lw),zz[0]/math.sqrt(len(lw)-1),zz[0]))

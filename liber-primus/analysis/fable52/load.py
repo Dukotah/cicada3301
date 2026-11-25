@@ -1,10 +1,15 @@
 # Loader: canonical unsolved stream with word/line/page structure from the other repo's
 # line-broken transcription, cross-checked against our dataset indices.
-import json,io,sys
+import json,io,sys,os
 try: sys.stdout.reconfigure(encoding='utf-8')
 except Exception: pass
-OURS=r'C:\Users\dukot\projects\cicada3301\liber-primus\dataset\liber_primus.json'
-THEIRS_TXT=r'C:\Users\dukot\AppData\Local\Temp\lpx\r\resources\liber-primus\lp2-transcription.txt'
+# R46-A1: repo-relative paths. THEIRS_TXT was an external clone (lpx\r\...\lp2-transcription.txt);
+# data/krisyotam_runes.txt is rune-identical to it (13,136/13,136) and differs at exactly 2 separators
+# ('-' in krisyotam vs '.' external, before unsolved runes 1886 and 9648). See analysis/round46/A1-hygiene/RESULTS.md.
+HERE=os.path.dirname(os.path.abspath(__file__))
+LPROOT=os.path.abspath(os.path.join(HERE,'..','..'))
+OURS=os.path.join(LPROOT,'dataset','liber_primus.json')
+THEIRS_TXT=os.path.join(LPROOT,'data','krisyotam_runes.txt')
 RUNES="ᚠᚢᚦᚩᚱᚳᚷᚹᚻᚾᛁᛄᛇᛈᛉᛋᛏᛒᛖᛗᛚᛝᛟᛞᚪᚫᚣᛡᛠ"
 IDX={r:i for i,r in enumerate(RUNES)}
 def ours():

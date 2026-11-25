@@ -11,7 +11,7 @@ Output: corrected_map.json  {image: [{"clean_i", "orig_gline", "true_gline", "co
 import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); LP = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 os.chdir(LP); sys.path.insert(0, os.path.join(LP, "analysis", "stones")); import pipeline as P
-gl, po = P.global_lines(); align = json.load(open("analysis/stones/alignment.json"))
+gl, po = P.global_lines(); align = json.load(open("analysis/stones/alignment.v1.json"))
 NEG = -10 ** 9
 def nw(a, b):
     n, m = len(a), len(b); S = [[0] * (m + 1) for _ in range(n + 1)]; T = [[None] * (m + 1) for _ in range(n + 1)]

@@ -13,7 +13,7 @@ def corr(a, b): a = a - a.mean(); b = b - b.mean(); return float((a * b).sum() /
 for n, ci in [(41, None), (19, None)]:
     lines, b, gray = P.segment_image(f"data/relikd/p{n}.jpg"); g = np.asarray(gray)
     clean = [L for L in lines if len(L) >= 10]
-    al = json.load(open("analysis/stones/alignment.json"))[str(n)]
+    al = json.load(open("analysis/stones/alignment.v1.json"))[str(n)]
     target_line = 455 if n == 41 else 220
     L = clean[al.index(target_line)]
     out = []
