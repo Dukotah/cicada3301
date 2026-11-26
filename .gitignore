@@ -529,3 +529,10 @@ liber-primus/analysis/round47/L2-g3-lexicon/r39_sweep_rows.jsonl
 liber-primus/analysis/round47/**/heartbeat*.txt
 liber-primus/analysis/round47/**/__pycache__/
 challenges/**/__pycache__/
+
+# Round 48 M1 (leak census + generator-reproduction sweep): the compiled sweep binary and the
+# rune-index stream it reads. Rebuild: `python common.py && gcc -O3 -march=native -fopenmp -o repro repro.c`
+# in liber-primus/analysis/round48/M1-leak-census/. Logs, JSON, PREREG/RESULTS ARE committed.
+liber-primus/analysis/round48/M1-leak-census/repro
+liber-primus/analysis/round48/M1-leak-census/stream.txt
+liber-primus/analysis/round48/**/__pycache__/

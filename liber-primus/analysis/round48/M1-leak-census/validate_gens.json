@@ -1,0 +1,50 @@
+{
+ "glibc": {
+  "reference": "live libc srand/rand via ctypes",
+  "seeds": 9,
+  "raws_each": 30,
+  "match": true
+ },
+ "drand48": {
+  "reference": "live perl srand/rand",
+  "seeds": 9,
+  "raws_each": 30,
+  "match": true
+ },
+ "py27": {
+  "reference": "CPython random.Random(int).random() (identical to 2.7 for int seeds)",
+  "seeds": 9,
+  "raws_each": 30,
+  "match": true
+ },
+ "bash42": {
+  "reference": "round19/G1/gen_bash.brand_42_lp64 + get_random_number loop",
+  "seeds": 9,
+  "raws_each": 30,
+  "match": true
+ },
+ "bash42_32": {
+  "reference": "round19/G1/gen_bash.brand_42_ilp32 + loop",
+  "seeds": 9,
+  "raws_each": 30,
+  "match": true
+ },
+ "msvc": {
+  "reference": "independent formula",
+  "seeds": 9,
+  "raws_each": 30,
+  "match": true
+ },
+ "ansi": {
+  "reference": "independent formula",
+  "seeds": 9,
+  "raws_each": 30,
+  "match": true
+ },
+ "minstd": {
+  "reference": "independent formula",
+  "seeds": 9,
+  "raws_each": 30,
+  "match": true
+ }
+}

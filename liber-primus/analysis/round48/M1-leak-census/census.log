@@ -1,0 +1,29 @@
+reject Z0 no filter                                                   D  445.3 [398,501]  dig 107.9  r1>=.38 0.000
+reject Z1 redraw once                                                 D   15.5 [6,29]  dig   3.7  r1>=.38 0.035
+reject Z2 redraw until different (= Z5, last-emitted memory)          D    0.0 [0,0]  dig   0.0  r1>=.38 0.000
+reject Z4(m=30) remembered-drop picker                                D   15.3 [7,24]  dig   3.6  r1>=.38 0.048
+reject Z4(m=31) remembered-drop picker                                D   29.3 [16,43]  dig   7.4  r1>=.38 0.018
+reject Z4(m=32) remembered-drop picker                                D   43.6 [30,59]  dig  10.3  r1>=.38 0.003
+reject Z4(m=33) remembered-drop picker                                D   55.6 [40,76]  dig  13.5  r1>=.38 0.005
+ADMIT  Z4(m=34) remembered-drop picker                                D   68.1 [49,88]  dig  16.8  r1>=.38 0.003
+ADMIT  Z4(m=35) remembered-drop picker                                D   78.3 [57,103]  dig  18.9  r1>=.38 0.000
+ADMIT  Z4(m=36) remembered-drop picker                                D   90.0 [69,112]  dig  22.0  r1>=.38 0.005
+ADMIT  Z4(m=37) remembered-drop picker                                D   99.4 [75,122]  dig  24.2  r1>=.38 0.000
+ADMIT  Z4(m=38) remembered-drop picker                                D  108.6 [82,135]  dig  26.4  r1>=.38 0.000
+reject Z4(m=39) remembered-drop picker                                D  118.4 [89,153]  dig  29.0  r1>=.38 0.000
+reject Z4(m=40) remembered-drop picker                                D  126.1 [101,157]  dig  30.5  r1>=.38 0.000
+reject Z4(m=64) remembered-drop picker                                D  248.0 [212,289]  dig  59.6  r1>=.38 0.000
+reject Z6 byte no-repeat, mod 29                                      D  398.5 [349,442]  dig  91.1  r1>=.38 0.000
+reject Z7 byte no-repeat, drop>=232, mod 29                           D  397.2 [356,443]  dig  96.2  r1>=.38 0.000
+reject Z9 Latin-letter no-repeat                                      D  114.5 [91,142]  dig 114.5  r1>=.38 0.000
+ADMIT  F1 coin (pinned model, fitted)                                 D   86.0 [62,110]  dig  20.9  r1>=.38 0.000
+ADMIT  F2 delete fraction 0.187 of a hard-filtered stream (fitted)    D   85.8 [65,110]  dig  20.8  r1>=.38 0.000
+ADMIT  F3 second-layer shift changing w.p. 0.186 (fitted)             D   86.4 [63,109]  dig  20.6  r1>=.38 0.000
+separability Z4(m=34) remembered-drop picker {'ks': 0.435, 'triples': 0.01, 'lag2': 0.065}
+separability Z4(m=35) remembered-drop picker {'ks': 0.1375, 'triples': 0.015, 'lag2': 0.045}
+separability Z4(m=36) remembered-drop picker {'ks': 0.0325, 'triples': 0.0175, 'lag2': 0.07}
+separability Z4(m=37) remembered-drop picker {'ks': 0.0975, 'triples': 0.0325, 'lag2': 0.0425}
+separability Z4(m=38) remembered-drop picker {'ks': 0.2875, 'triples': 0.0875, 'lag2': 0.045}
+separability F2 delete fraction 0.187 of a hard-filtered stream (fitted) {'ks': 0.055, 'triples': 0.0175, 'lag2': 0.06}
+separability F3 second-layer shift changing w.p. 0.186 (fitted) {'ks': 0.0525, 'triples': 0.0175, 'lag2': 0.06}
+LP2 {'D': 86, 'lag2_8': 3162, 'lag2': 441, 'dig': 24, 'triples': 0, 'r1': 0.38001968924100965, 'ks_vs_coin': 0.07119267198404784, 'ks_crit95': 0.1406076301051241}
