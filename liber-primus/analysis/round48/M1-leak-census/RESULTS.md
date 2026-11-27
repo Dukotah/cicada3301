@@ -63,6 +63,26 @@ LP2's own gap distribution against the coin: KS 0.071 (critical 0.141). It does 
 
 **T7.** Fraction of replicates with r1 ≥ 0.380: 0.000–0.005 for every admitted mechanism. None produces it.
 
+### Addendum (2026-11-27, after filing): the admitted mechanisms are one process, exactly
+
+"Not separable" above is not a sample-size statement. As processes on the printed runes, the coin, the picker,
+the deletion model and the two-layer model are **the same law**: independent increments c[t] − c[t−1] that are 0
+with probability p0 and otherwise uniform on the 28 non-zero values.
+
+- Picker Z4(m): after a printed rune r the last pick is r. The next printed rune is r only via a silent pick,
+  probability (m − 29)/((m − 1)·29); every other rune is equally likely. First-order Markov, uniform off-diagonal.
+- Deletion F2: the strict chain has i.i.d. uniform non-zero increments; deleting runes at random sums a
+  geometric number of them, independently per output rune.
+- Two layers F3: the sum of two independent-increment walks.
+
+So **no statistic of the ciphertext can distinguish them**; the powers in the table are the test's size plus the
+effect of a slightly different p0 (which is all that separates m = 34 or 38 from the fitted coin). The only
+ciphertext-level content of the picker reading is that p0 is not free: it takes the values
+(m − 29)/((m − 1)·29), and LP2's 86/12,955 sits between m = 35 and m = 36. The constructions still differ **as
+ciphers**: `challenges/c11_alt_constructions.py` plants English under each with the correct key, and the
+reference beam recovers 0/40 under all three (keyskip control 40/40; seed 4811). It also follows that every one
+of them predicts independent doublet gaps, so T7 contradicts all of them equally.
+
 ### What Arm A means
 
 - The repo's generative model says "uniform key, and a rejected doublet is redrawn with probability 0.813".

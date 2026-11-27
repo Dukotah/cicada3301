@@ -21,12 +21,12 @@
   "audit"
  ],
  "counts": {
-  "total": 423,
+  "total": 424,
   "by_status": {
    "audit": 62,
    "eliminated": 5,
    "inconclusive": 14,
-   "measured": 140,
+   "measured": 141,
    "negative": 142,
    "never-run": 10,
    "open": 20,
@@ -16941,7 +16941,7 @@
    ],
    "reproduce": "cd liber-primus/analysis/round48/M1-leak-census && python3 census.py",
    "reopens_if": "An artifact fixes the generating tool's symbol-table size, shows deleted material or a second layer, or an independent stream of filtered events allows the admitted mechanisms to be separated.",
-   "notes": "The pinned coin probability is a fit, not an identified mechanism: at least four constructions fit LP2's lag-1 statistics equally. Qualifies every row that assumes the coin as the generative model. Summary: analysis/round48/M1-INDEPENDENT-PASS.md."
+   "notes": "The pinned coin probability is a fit, not an identified mechanism: at least four constructions fit LP2's lag-1 statistics equally. Qualifies every row that assumes the coin as the generative model. Summary: analysis/round48/M1-INDEPENDENT-PASS.md. Addendum 2026-11-27: the admitted mechanisms (coin, picker, deletion, two-layer) are the same law on the printed runes (i.i.d. increments, zero w.p. p0), so non-separability is exact, not a sample-size limit; the picker only constrains p0 to (m-29)/((m-1)*29). They differ as ciphers: see R48-M1-C11-ALT-CONSTRUCTION-BASELINE."
   },
   {
    "round": "48/M1",
@@ -17020,6 +17020,34 @@
    "reproduce": "cd liber-primus/analysis/round48/M1-leak-census && python3 layout.py && gcc -O3 -march=native -fopenmp -o repro2 repro2.c && python3 plants2.py && ./run_sweep2.sh",
    "reopens_if": "An artifact names the generating program or shows where it called its generator.",
    "notes": "Motivated by R45 (word lengths: English-like multiset, no order) plus the document template visible in the transcription ($ sections, & paragraphs, a numbered list 1-5)."
+  },
+  {
+   "id": "R48-M1-C11-ALT-CONSTRUCTION-BASELINE",
+   "round": "48/M1",
+   "lane": "round48/M1-leak-census",
+   "date": "2026-11-27",
+   "status": "measured",
+   "threshold_fixed_in_advance": true,
+   "hypothesis": "Handed the correct key, the reference beam (skipdecode.beam_decode, the C3 reference) recovers English plants enciphered under the three constructions that share LP2's ciphertext law with the coin filter: strict filter + 18.7% deletion (V-DELETE), a mod-36 cipher with 7 silent symbols (V-SILENT), strict filter under a second shift layer changing w.p. 0.186 (V-TWOLAYER).",
+   "threshold": "Checker rule fixed in challenges/c11_alt_constructions.py before the baseline run: plant passes iff LCS recovery of the recoverable plaintext >= 0.85 and its English score beats the 95th percentile of wrong-key outputs; variant passes at >= 80% of plants.",
+   "positive_control": "passed",
+   "control_detail": "KEYSKIP control (the construction the beam represents): 40/40, mean recovery 1.000, median score -4.267.",
+   "null": "wrong-key outputs of the same decoder (95th percentile -7.04 to -7.11)",
+   "result": "V-DELETE 0/40 (mean recovery 0.308, median score -7.234); V-SILENT 0/40 (0.268, -7.256); V-TWOLAYER 0/40 (0.296, -7.285). Seed 4811, 40 plants per variant, ~240 printed runes each.",
+   "coverage": "The reference beam only, key in hand, English dev texts, one seed.",
+   "not_covered": [
+    "beam_v3 (3 relations, panel-R36) was not run on these plants",
+    "detection without recovery by a purpose-built decoder",
+    "whether V-TWOLAYER is recoverable at all from 240 runes",
+    "other silent-symbol counts (m = 35, 37) and other plaintext alphabets"
+   ],
+   "evidence": [
+    "challenges/c11_alt_constructions.py",
+    "liber-primus/analysis/round48/M1-leak-census/RESULTS.md"
+   ],
+   "reproduce": "python challenges/c11_alt_constructions.py --self-test --plants 40 --seed 4811",
+   "reopens_if": "A decoder crosses C11 (then the beam negatives can be re-adjudicated under these constructions), or beam_v3 is shown to read them.",
+   "notes": "Same shape as L7-B / V-BACK: a construction consistent with LP2's surface statistics that the standing decoder scores as noise with the correct key. Published as challenge C11."
   }
  ],
  "round18_merged": "2026-08-26"

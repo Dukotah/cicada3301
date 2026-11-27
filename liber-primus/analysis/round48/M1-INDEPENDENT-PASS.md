@@ -22,8 +22,9 @@ A rule with **no parameter at all** explains it equally well:
 
 That predicts N·(m − 29) / ((m − 1)·29) doublets: **79, 89, 99 for m = 35, 36, 37.** Two further one-parameter
 constructions (a strict filter followed by deleting 18.7 % of runes; a strict filter under a second shift layer
-that changes every ≈ 5.4 runes) also fit. At LP2's size none of these can be told from the coin or from each
-other (best test power 0.06–0.14).
+that changes every ≈ 5.4 runes) also fit. **None of these can be told from the coin by any test on the
+ciphertext**: all four are the same process on the printed runes (independent steps that are zero with
+probability p0; derivation in RESULTS §1 addendum). They differ only as ciphers.
 
 What this changes for you:
 
@@ -31,7 +32,10 @@ What this changes for you:
   constructions that fit the data equally**. Say so in the conditionals of any negative that depends on it.
 - Each alternative is a different object: a 35–37-symbol alphabet with silent symbols; a stream with a fifth of
   its runes missing; a two-layer cipher. The beam negatives in the ledger were not measured against plants made
-  any of these three ways. That is an instrument audit nobody has run.
+  any of these three ways.
+- **Measured after filing** (`challenges/c11_alt_constructions.py --self-test --plants 40 --seed 4811`): handed the
+  **correct key**, the reference beam recovers **0/40** plants under each of the three (keyskip control 40/40) and
+  scores them as noise (median −7.2 to −7.3). No beam negative in the ledger covers them. Public challenge C11.
 
 ### 2. No ordinary redraw loop over a uniform 29-rune key makes LP2's leak.
 
@@ -71,11 +75,9 @@ filter ran over the rune stream without regard to the printed word breaks.
 
 ## What I would do next, in order
 
-1. **Audit the decoder against the three other constructions** (doctrine R1). Plant English under (a) a mod-36
-   alphabet whose 7 extra symbols are consumed silently, (b) 19 % rune deletion after a strict filter, (c) a
-   strict-filtered layer over a slow second layer; hand `beam_v3` the correct key; read the score. If it scores
-   noise, as it did for V-BACK, then the beam negatives are silent on constructions that fit LP2 as well as the
-   one they assume. This is finite and takes a day.
+1. **Build a decoder for the three other constructions** (public challenge C11). The audit is done: the reference
+   beam reads none of them with the correct key (0/40 each). Until a decoder exists, the beam negatives are silent
+   on constructions that fit LP2 exactly as well as the one they assume.
 2. **Look for the symbol-table size in the artifacts, not in the runes.** Statement 1 turns "what alphabet did the
    author's tool use" into a question with a predicted answer (35–37). The solved pages already show which
    non-rune symbols the author's plaintexts used; count them. If the solved plaintext alphabet (runes + space +

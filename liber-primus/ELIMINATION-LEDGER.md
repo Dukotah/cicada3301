@@ -1443,7 +1443,7 @@ key-space sweep; verdict **OTP-class, unchanged**. Per-row record in `LEDGER.jso
 ## Round 48 / M1 (2026-11-26 → 27) — THE LEAK IS NOT A COIN (independent pass, outside the Round 48 plan of record)
 
 One lane, `analysis/round48/M1-leak-census/` (PREREG stamped; results `RESULTS.md`; summary
-`analysis/round48/M1-INDEPENDENT-PASS.md`). Verdict **OTP-class, unchanged**. `LEDGER.json` 420 → 423, 0 unsound.
+`analysis/round48/M1-INDEPENDENT-PASS.md`). Verdict **OTP-class, unchanged**. `LEDGER.json` 420 → 424, 0 unsound.
 
 - **Mechanism census** (`R48-M1-LEAK-MECHANISM-CENSUS`, measured): the pinned coin (redraw w.p. 0.813) is one of at least four
   constructions that reproduce LP2's 86 doublets and cannot be separated at N = 12,956: a zero-parameter no-repeat picker
@@ -1460,3 +1460,7 @@ One lane, `analysis/round48/M1-leak-census/` (PREREG stamped; results `RESULTS.m
   printed word start, page-start alignment, first five generators: 0 hits.
 - **Not covered:** seeds > 32 bits, other generators, shuffled symbol tables, library wrappers with their own rejection
   loops, extra draws elsewhere; decoder power against plants made with the picker, deletion or two-layer constructions.
+- **Alternative constructions vs the beam** (`R48-M1-C11-ALT-CONSTRUCTION-BASELINE`, measured): the admitted mechanisms are
+  one process on the printed runes (exact; RESULTS §1 addendum) but different ciphers. Correct key in hand, the reference
+  beam recovers 0/40 plants under deletion, silent symbols and two layers (keyskip control 40/40). Every beam-based
+  negative is silent on them. Public challenges C11 (decoder) and C12 (generator hunt beyond 2³² seeds) in `CHALLENGES.md`.

@@ -1,7 +1,7 @@
 # Challenges — bounded problems with a finish line you can check yourself
 
 **Nobody has solved Liber Primus 2**, and this page doesn't pretend you will this weekend.
-What it offers instead is ten problems (C10 is retired for now) that each have a **checker you can run**, a
+What it offers instead is twelve problems (C10 is retired for now) that each have a **checker you can run**, a
 **finish line written down in advance**, and **credit** in the ledger when you cross it.
 
 This is different from [`docs/OPEN-LANES.md`](docs/OPEN-LANES.md). A lane is a research
@@ -28,6 +28,8 @@ Read [`AGENTS.md`](AGENTS.md) §1 first so you know what has already been ruled 
 | **C8** | Score a register the panel can't *(heavy lift)* | NLP / LM people | days to weeks | `challenges/c8_register_scorer.py` | power ≥ 0.80 at 1% FPR on LP2-page windows | panel-R36: 12 registers |
 | **C9** | Recover through null insertion *(re-scoped R47-H2)* | search / decoding people | days | `challenges/c9_rejection_loops.py` | C3 7/7 + ≥ 0.80 of V-NULL plants recovered | both beams **0/40** (X1 probe 8/40) |
 | ~~C10~~ | Attack under shuffled word lengths *(retired pending Round 48)* | — | — | `challenges/c10_shuffled_lengths.py` (instrument only) | none: crossed in-house twice (R47-X1 0.962 at known key; R47-H2 0.88 at unknown key) | not offered |
+| **C11** | Decode the constructions the coin hides *(heavy lift)* | search / decoding people | days to weeks | `challenges/c11_alt_constructions.py` | ≥ 0.80 of V-DELETE and V-SILENT plants recovered | reference beam **0/40** on each |
+| **C12** | Reproduce 14 runes with a generator *(heavy compute)* | anyone with GPUs or a cluster | 10²–10⁵ core-hours per target | `challenges/c12_generator_hit.py` | an exact run long enough for your search size (≥ 14) | 8 generators × 2³² seeds: 0 hits, longest run 11 |
 
 ## How it works
 
@@ -386,6 +388,79 @@ the doublet filter, or the other word-indexed constructions (R41 W1–W4, G3 lag
 The (iv) result is itself useful: an unknown-key sweep that survives (b′) for the U2b class costs about 11–88 s
 per unit over a 2¹⁶-key family, so a (b′)-robust re-run of `R46-L1-R37-U2B-U3-RECHECK` is affordable in-house.
 
+### C11 — Decode the constructions the coin hides *(heavy lift, opened by Round 48 / M1)*
+
+LP2 has 86 doubled runes where chance gives 447. Every decoder here assumes one explanation: the encipherer
+skipped a key symbol on a would-be doublet, with probability 0.813. Round 48 / M1 showed that this is one of
+four constructions that produce **exactly the same statistics on the printed runes** (independent steps that
+are zero with a small probability), so no test on the ciphertext can prefer it. As ciphers they are different,
+and with the **correct key in hand** the reference beam reads none of the other three:
+
+| variant | what the encipherer did | reference beam, correct key |
+|---|---|---|
+| KEYSKIP (control) | the construction every beam here is built for | 40/40 |
+| **V-DELETE** *(scored)* | strict filter, then 18.7 % of the cipher runes were deleted | **0/40** (recovery 0.31, which is what two unrelated rune strings score; reads as noise) |
+| **V-SILENT** *(scored)* | cipher works mod 36; 7 symbols print nothing; word space is a plaintext symbol | **0/40** (0.27) |
+| V-TWOLAYER *(diagnostic)* | strict filter under a second shift that jumps every ≈ 5 runes; shift not given | 0/40 (0.30) |
+
+**Task:** `decode(C, K, variant) -> {"plain_idx": [...]}`. You get the printed runes and a key that is either
+right or wrong. A plant passes when you recover ≥ 0.85 of the recoverable plaintext (longest common
+subsequence) and your right-key output scores above your wrong-key outputs.
+
+**Finish line:** ≥ 80 % of plants on both scored variants at `--plants 40`, maintainers' seed, held-out text.
+
+**What a crossing changes:** it is the instrument needed to re-run the ledger's beam negatives under
+constructions that fit LP2 as well as the one they assumed. Until it exists, those negatives say nothing
+about three quarters of the constructions consistent with the data. V-TWOLAYER is open in a stronger sense:
+nobody has shown whether 240 runes carry enough redundancy to recover the unknown shift at all. A bound either
+way is a ledger row.
+
+**Rough cost:** 1–5 M agent tokens; the checker runs in under a minute with a fast decoder. V-DELETE is a
+beam over (key pointer, deletions); V-SILENT needs a decoder that tracks unseen symbols and works mod 36.
+
+```bash
+python challenges/c11_alt_constructions.py --self-test          # the baseline above
+python challenges/c11_alt_constructions.py my_decoder.py
+```
+
+### C12 — Reproduce 14 runes with a generator *(heavy compute, opened by Round 48 / M1)*
+
+One reading of LP2 has no language model, no scorer and no judgement call: **the pages are the output of a
+seeded pseudo-random generator**, either with no message at all or as a keystream somebody can regenerate. If
+that is true, some (generator, seed) reproduces a run of the printed runes **exactly**, and a 14-rune match
+cannot be argued with.
+
+Round 48 / M1 ran the cheap part: Perl `drand48`, bash 4.2 `$RANDOM` (64- and 32-bit), glibc `rand`, CPython 2.7
+`random`, MSVC `rand`, the ANSI C LCG and minstd, **every 32-bit seed**, a no-repeat picker over 29–40 symbols,
+two reductions, two rune orders, every alignment: ≈ 8.2 × 10¹¹ streams, **0 hits**, longest chance run 11
+(`liber-primus/analysis/round48/M1-leak-census/`, C source `repro.c`, ≈ 1–4 µs per seed per core).
+
+What is left needs compute this project does not have. Each line is a separate claimable target:
+
+| target | size | why it is plausible |
+|---|---|---|
+| `drand48` / Perl with the full 48-bit state | 2⁴⁸ | Perl seeds from more than 32 bits when it can; 65,536 × our run |
+| Java `java.util.Random` | 2⁴⁸ | same LCG family, different output bits |
+| MT19937 `init_genrand(seed)`: PHP `mt_rand`, C++ `std::mt19937`, NumPy `RandomState`, Ruby | 2³² each | we covered only CPython 2.7's `init_by_array` path |
+| CPython 3 `random.seed(int)`; `randrange` / `choice` / `shuffle` instead of `random()` | 2³² each | library wrappers add their own rejection loops |
+| TeX / pgf `\pgfmathrandom`, Lua `math.random`, awk `rand()` | ≤ 2³² each | the pages were typeset; see `round18/L1-toolchain` |
+| other pickers: shuffled symbol table, a draw per word, `randint(1, 29)` with its own retry | × your choice | our picker is one guess at the program |
+
+**Task:** adapt `repro.c` (or write your own), sweep a target, and feed any long run to the checker.
+**Finish line:** an exact run of length R with 2^B · 25,912 / 29^R < 0.001, where 2^B counts every stream you
+tried (R = 14 at our search size, 17 at 2⁵³·⁶, 19 at 2⁶⁴). Then we re-run your program and seed.
+
+**A clean negative counts**, if it comes with a planted control (splice a known-seed run into the stream and
+show your sweep finds it): it becomes a ledger row with your name and the exact coverage.
+
+**What a crossing changes:** everything. It would be the first key material for LP2 ever recovered.
+Stated prior, so nobody is misled: low, on the order of a percent across all targets.
+
+```bash
+python challenges/c12_generator_hit.py --self-test
+python challenges/c12_generator_hit.py emitted.txt --log2-search 53.6
+```
+
 ### Copy-paste prompts for your agent
 
 Each block below is self-contained. Paste it into your agent from the repo root.
@@ -448,6 +523,40 @@ inserted and the rejected key symbol is discarded). It must still pass the C3 ga
 ```
 </details>
 
+<details><summary><b>C11 prompt</b></summary>
+
+```text
+You are working in a clone of github.com/Dukotah/cicada3301. Goal: CHALLENGES.md challenge C11. Write a
+decoder that recovers English plaintext, key in hand, under V-DELETE (strict doublet filter, then 18.7 % of
+cipher runes deleted) and V-SILENT (cipher mod 36, 7 silent symbols, word space = plaintext symbol 29).
+1. Read CHALLENGES.md (C11), challenges/c11_alt_constructions.py (the enc_* functions are the ground truth),
+   liber-primus/analysis/round48/M1-leak-census/RESULTS.md section 1, and the reference beam
+   liber-primus/analysis/campaign18_skip/skipdecode.py.
+2. Run python challenges/c11_alt_constructions.py --self-test to see the baseline (0 plants on every variant).
+3. Write my_decoder.py with decode(C, K, variant) -> {"plain_idx": [...]}. It runs in an isolated child
+   process and gets only (C, K, variant). K may be the wrong key: do not force English out of every key.
+4. Iterate: python challenges/c11_alt_constructions.py my_decoder.py   then --plants 40.
+5. Report the full table. Do not edit the checker. If you conclude a variant is unrecoverable, show the bound.
+```
+</details>
+
+<details><summary><b>C12 prompt</b></summary>
+
+```text
+You are working in a clone of github.com/Dukotah/cicada3301. Goal: CHALLENGES.md challenge C12. Test whether
+the 12,956-rune unsolved stream is reproduced exactly by ONE generator target from the C12 table.
+1. Read CHALLENGES.md (C12) and liber-primus/analysis/round48/M1-leak-census/ (PREREG.md, RESULTS.md,
+   repro.c, validate_gens.py, plants.py). Build: python common.py && gcc -O3 -march=native -fopenmp -o repro repro.c
+2. Pick a target nobody has claimed (check the issues). Implement the generator in repro.c and validate its
+   first outputs against the real library before sweeping anything.
+3. Plant: splice a run from a known seed into the stream and show your sweep reports that seed.
+4. Sweep. Log every run of 10 or more runes. State exactly which seeds, pickers and alignments you covered.
+5. For any long run: write the emitted rune indices to a file and run
+   python challenges/c12_generator_hit.py emitted.txt --log2-search <log2 of all streams you tried>
+6. Report coverage, the plant result, the near-miss count against the chance count, and any hit.
+```
+</details>
+
 
 ---
 
@@ -457,7 +566,7 @@ inserted and the rejected key symbol is discarded). It must still pass the C3 ga
   ([`docs/LEDGER.md`](https://github.com/njloof/cicada-lp2-sweeps/blob/main/docs/LEDGER.md));
   [`docs/CROSS-LEDGER.md`](docs/CROSS-LEDGER.md) maps one onto the other.
 - **Don't tune to the checker's fixed inputs.** C2 and C5 are re-run on inputs you haven't
-  seen before we credit them; C8 and C9 are re-run at a sealed seed on held-out text, and C7's
+  seen before we credit them; C8, C9 and C11 are re-run at a sealed seed on held-out text, and C7's
   register is checked by a human reading your source and table.
 - **A clean negative counts.** If you work a challenge properly and it doesn't go, file what
   you tried; for C5 and C6 a documented failure is a ledger row.
