@@ -21,13 +21,13 @@
   "audit"
  ],
  "counts": {
-  "total": 420,
+  "total": 423,
   "by_status": {
    "audit": 62,
    "eliminated": 5,
    "inconclusive": 14,
-   "measured": 139,
-   "negative": 140,
+   "measured": 140,
+   "negative": 142,
    "never-run": 10,
    "open": 20,
    "partially-run": 25,
@@ -16911,6 +16911,115 @@
    "date": "2026-11-24",
    "lane": "round47/X1-redteam",
    "threshold_fixed_in_advance": true
+  },
+  {
+   "round": "48/M1",
+   "lane": "round48/M1-leak-census",
+   "date": "2026-11-27",
+   "threshold_fixed_in_advance": true,
+   "id": "R48-M1-LEAK-MECHANISM-CENSUS",
+   "status": "measured",
+   "hypothesis": "LP2's lag-1 leak (86 doublets, 447 expected) can be produced by a zero-parameter mechanism, and such mechanisms can be told apart from the pinned coin model (supp 0.813).",
+   "threshold": "ADMIT iff LP2's D, lag-2..8 equal count and two-letter-rune doublet count each fall inside the central 99% of 400 replicates; separability from the coin = best rejection rate at alpha 0.05 of {gap KS, triples, lag-2}, below 0.20 = NOT SEPARABLE. Fixed in PREREG.md (sha256 in run.log).",
+   "positive_control": "passed",
+   "control_detail": "The fitted coin F1 reproduces LP2 (D 86.0 [62,110]) and the unfiltered stream Z0 is rejected (D 445.3), i.e. the rule admits the known-fitting model and rejects the known-non-fitting one.",
+   "null": "400 simulated streams per mechanism at N = 12,956",
+   "result": "ADMITTED: remembered-drop no-repeat picker Z4 at m = 34,35,36,37,38 (0 parameters; D 68.1/78.3/90.0/99.4/108.6), coin F1, delete-fraction F2 (0.187), second-layer shift F3 (q 0.186). REJECTED: no filter, redraw-once (D 15.5), redraw-until-different (0), Z4 m<=33 and m>=39, byte no-repeat (398), Latin-letter no-repeat (114.5, all on two-letter runes vs LP2 24/86). Separability from the coin: m=35 0.138, m=36 0.070, m=37 0.098, F2 0.060, F3 0.060 (NOT SEPARABLE); m=34 0.435, m=38 0.288. r1 >= 0.380 (T7) in <= 0.5% of replicates of every admitted mechanism. Corollary checked post hoc: doublets straddling a printed word boundary 23/86 (19.2 expected under independence), so the printed separators are not the picker's silent symbols.",
+   "coverage": "11 zero-parameter mechanism families (Z0,Z1,Z2/Z5,Z4 m=30..40 and 64,Z6,Z7,Z9) and 3 one-parameter families (F1,F2,F3); statistics D, lag-2..8, two-letter-rune doublets, gap KS, triples, lag-2, T7 r1.",
+   "not_covered": [
+    "mechanisms outside the table",
+    "statistics beyond the six listed (separability is 'by these statistics at N = 12,956')",
+    "the m = 35-37 row is a replication of an exploratory observation (PREREG section 0)",
+    "decoder power against plants built with Z4, F2 or F3 (not measured)"
+   ],
+   "evidence": [
+    "liber-primus/analysis/round48/M1-leak-census/PREREG.md",
+    "liber-primus/analysis/round48/M1-leak-census/RESULTS.md",
+    "liber-primus/analysis/round48/M1-leak-census/census.py",
+    "liber-primus/analysis/round48/M1-leak-census/census.json",
+    "liber-primus/analysis/round48/M1-leak-census/census.log"
+   ],
+   "reproduce": "cd liber-primus/analysis/round48/M1-leak-census && python3 census.py",
+   "reopens_if": "An artifact fixes the generating tool's symbol-table size, shows deleted material or a second layer, or an independent stream of filtered events allows the admitted mechanisms to be separated.",
+   "notes": "The pinned coin probability is a fit, not an identified mechanism: at least four constructions fit LP2's lag-1 statistics equally. Qualifies every row that assumes the coin as the generative model. Summary: analysis/round48/M1-INDEPENDENT-PASS.md."
+  },
+  {
+   "round": "48/M1",
+   "lane": "round48/M1-leak-census",
+   "date": "2026-11-27",
+   "threshold_fixed_in_advance": true,
+   "id": "R48-M1-GENERATOR-REPRODUCTION",
+   "status": "negative",
+   "hypothesis": "The unsolved LP2 stream is the direct output (no plaintext) of a seeded library PRNG driving a no-repeat picker over m symbols with draws >= 29 dropped but remembered.",
+   "threshold": "HIT iff >= 14 consecutive printed runes are reproduced exactly; fixed in PREREG.md before the run. Expected false hits over the sweep < 1e-3.",
+   "positive_control": "passed",
+   "control_detail": "24/24 known-seed runs (8 generators x 3; 24-40 runes each, PREREG Addendum 1) spliced into LP2 and recovered by the sweep binary from a 1e6-seed window (plants.json). Generators 8/8 match live libc / perl / CPython / repo references (validate_gens.json).",
+   "null": "exact match; chance near-miss count ~7 per generator",
+   "result": "0 hits. Generators: Perl drand48, bash 4.2 $RANDOM LP64 and ILP32, glibc rand TYPE_3, CPython 2.7 random.seed(int)->random(), MSVC rand, ANSI LCG, minstd; all 2^32 seeds each. Near-misses 60 (58 of 10 runes, 2 of 11, none longer) vs ~55 by chance. 3 h 34 min wall clock.",
+   "coverage": "8 generators x 2^32 seeds x m = 29..40 x 2 reductions (x mod m, floor(x*m/range)) x 2 rune orders (gematria, Atbash), generator start aligned to any of the 12,956 positions: ~8.2e11 streams, complete. Power 1.00 inside this set (exact match).",
+   "not_covered": [
+    "seeds wider than 32 bits (48-bit drand48 state, MT19937 seeded from a long/string, OS entropy)",
+    "other generators (PHP mt_rand, Java Random, JavaScript, TeX LCGs, CryptoAPI)",
+    "shuffled symbol table or non-printing symbols not at indices 29..m-1",
+    "randint/choice/shuffle wrappers with their own rejection loops",
+    "extra generator calls between runes (word-start case: R48-M1-GENERATOR-REPRODUCTION-WORDSTART)",
+    "a generator already advanced before the first printed rune of its run"
+   ],
+   "three_conditionals": {
+    "key_space": "8 named generators, 32-bit seeds, fresh state at the aligned position",
+    "transition_model": "Z4 picker, one raw draw per symbol, runes at indices 0-28 or reversed",
+    "register": "none (exact match, no language scorer)"
+   },
+   "evidence": [
+    "liber-primus/analysis/round48/M1-leak-census/PREREG.md",
+    "liber-primus/analysis/round48/M1-leak-census/RESULTS.md",
+    "liber-primus/analysis/round48/M1-leak-census/repro.c",
+    "liber-primus/analysis/round48/M1-leak-census/sweep.log",
+    "liber-primus/analysis/round48/M1-leak-census/plants.json",
+    "liber-primus/analysis/round48/M1-leak-census/validate_gens.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round48/M1-leak-census && python3 common.py && gcc -O3 -march=native -fopenmp -o repro repro.c && python3 plants.py && ./run_sweep.sh",
+   "reopens_if": "An artifact names a generator, seed width or symbol table outside the coverage.",
+   "notes": "No decode is produced (exact-match recognizer), so there are no sweep rows to persist under R3; hits and near-hits are logged in full in sweep.log. Stated prior on the hypothesis before the run: ~1%."
+  },
+  {
+   "round": "48/M1",
+   "lane": "round48/M1-leak-census",
+   "date": "2026-11-27",
+   "threshold_fixed_in_advance": true,
+   "id": "R48-M1-GENERATOR-REPRODUCTION-WORDSTART",
+   "status": "negative",
+   "hypothesis": "As R48-M1-GENERATOR-REPRODUCTION, but the generating program draws 1 or 2 extra values at each printed word start (a word-length draw).",
+   "threshold": "HIT iff >= 14 consecutive printed runes are reproduced exactly; fixed in PREREG Addendum 2 before any sweep output was read.",
+   "positive_control": "passed",
+   "control_detail": "15/15 known (seed, m, reduction, order, e) runs spliced over a page start and recovered by the final binary (plants2.json).",
+   "null": "exact match",
+   "result": "0 hits; 1 near-miss(es). Seeds covered: drand48 2^32; bash42 2^32; bash42_32 2^32; glibc 2^32; py27 2^32.",
+   "coverage": "5 generators (Perl drand48, bash 4.2 LP64/ILP32, glibc rand, CPython 2.7) x seeds as in result x m = 29..40 x 2 reductions x 2 rune orders x e in {1,2}, aligned at the 55 page starts. Power 1.00 inside this set.",
+   "not_covered": [
+    "e > 2",
+    "extra draws at punctuation or line breaks",
+    "a length draw that feeds the picker's memory",
+    "generation not restarted at a page start",
+    "MSVC, ANSI, minstd",
+    "everything listed under R48-M1-GENERATOR-REPRODUCTION"
+   ],
+   "three_conditionals": {
+    "key_space": "5 named generators, 32-bit seeds, fresh state at a page start",
+    "transition_model": "Z4 picker plus e in {1,2} discarded draws at each printed word start",
+    "register": "none (exact match)"
+   },
+   "evidence": [
+    "liber-primus/analysis/round48/M1-leak-census/PREREG.md",
+    "liber-primus/analysis/round48/M1-leak-census/RESULTS.md",
+    "liber-primus/analysis/round48/M1-leak-census/repro2.c",
+    "liber-primus/analysis/round48/M1-leak-census/layout.py",
+    "liber-primus/analysis/round48/M1-leak-census/sweep2.log",
+    "liber-primus/analysis/round48/M1-leak-census/plants2.json"
+   ],
+   "reproduce": "cd liber-primus/analysis/round48/M1-leak-census && python3 layout.py && gcc -O3 -march=native -fopenmp -o repro2 repro2.c && python3 plants2.py && ./run_sweep2.sh",
+   "reopens_if": "An artifact names the generating program or shows where it called its generator.",
+   "notes": "Motivated by R45 (word lengths: English-like multiset, no order) plus the document template visible in the transcription ($ sections, & paragraphs, a numbered list 1-5)."
   }
  ],
  "round18_merged": "2026-08-26"

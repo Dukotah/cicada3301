@@ -1,6 +1,25 @@
 # PICKUP-HERE — where the work left off, and what is still open
 
-_Refreshed **2026-11-25** (Round 47 closeout; Round 46 closeout 2026-11-24; Round 45 closeout 2026-11-24; Round 45 kickoff 2026-11-23; Round 44 closeout 2026-11-11). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+_Refreshed **2026-11-27** (Round 48 / M1 independent pass; Round 47 closeout 2026-11-25; Round 46 closeout 2026-11-24; Round 45 closeout 2026-11-24; Round 45 kickoff 2026-11-23; Round 44 closeout 2026-11-11). Read this first, then [`ELIMINATION-LEDGER.md`](ELIMINATION-LEDGER.md)
+
+> ## Round 48 / M1 independent pass (2026-11-27) — THE LEAK IS NOT A COIN: filed. Read `analysis/round48/M1-INDEPENDENT-PASS.md` first.
+>
+> One lane, run as a fresh attempt outside the Round 48 plan below (which is **not started**). No solve; OTP-class unchanged.
+>
+> - **The pinned coin (`supp` 0.813) is a fit, not a mechanism** (`R48-M1-LEAK-MECHANISM-CENSUS`). A zero-parameter no-repeat picker over
+>   m symbols (29 print; the others are silent but remembered) predicts N·(m−29)/((m−1)·29) doublets: 79 / 89 / 99 for m = 35 / 36 / 37
+>   vs 86. A strict filter + 18.7 % deletion and a strict filter under a slow second layer also fit. None is separable from the coin
+>   at LP2's size (power 0.06–0.14). Redraw-once (15), redraw-until-different (0), byte-level (398) and Latin-letter (115) rules are rejected.
+> - **T7 is not a by-product** of any admitted mechanism (≤ 0.5 % of replicates reach r1 0.380).
+> - **LP2 is not raw generator output** for Perl `drand48`, bash 4.2 (LP64/ILP32), glibc, CPython 2.7, MSVC, ANSI, minstd × all 2³² seeds ×
+>   m 29–40 × 2 reductions × 2 rune orders × any alignment (`R48-M1-GENERATOR-REPRODUCTION`: 0 exact 14-rune hits, plants 24/24), nor with
+>   1–2 extra draws at each word start (`R48-M1-GENERATOR-REPRODUCTION-WORDSTART`, 5 generators, plants 15/15).
+> - The printed separators are not the picker's silent symbols (23/86 doublets straddle a word break; 19 expected by chance).
+>
+> **Open, in order:** (1) plant English under the three alternative constructions (mod-35…37 alphabet with silent symbols; 19 % deletion;
+> two layers), hand `beam_v3` the correct key, read the score: no beam negative has been measured against them. (2) Count the solved
+> pages' plaintext alphabet (runes + the separators, punctuation and digits actually used) against the 35–37 prediction. (3) No further
+> generator sweep without an artifact naming the generator or seed width. (4) The Round 48 plan of record below.
 
 > ## Round 47 closeout (2026-11-25) — CLOSE THE CAVEATS, OPEN THE HEAVY LIFTS: filed. Read `analysis/round47/SYNTHESIS.md` first.
 >

@@ -15,7 +15,8 @@ plan of record. No solve. Verdict on the cipher: **OTP-class, unchanged.**_
    mechanism reach it. T7 stays unexplained.
 4. **LP2 is not the direct output of a seeded library PRNG driving that picker**, for 8 generators × all 2³²
    seeds × 24 picker variants × 2 rune orders × every alignment: **0 exact reproductions** of 14 runes
-   (24/24 planted runs recovered). With an extra generator call at each word start (Arm B2): see §3.
+   (24/24 planted runs recovered). With an extra generator call at each word start (Arm B2, five generators):
+   **0** as well (§3).
 
 ## 1. Arm A — mechanism census (`census.py`, `census.json`, `census.log`)
 
@@ -122,18 +123,23 @@ was recovered, so it is reported, not explained.
 
 ## 3. Arm B2 — extra generator call at each word start (`repro2.c`, `sweep2.log`)
 
-_In progress when this section was first committed; final numbers below when the run closes._
-
 Same picker, with e ∈ {1, 2} raw draws skipped before the first rune of each printed word; alignment at the 55
-page starts. Plants 15/15 recovered by the final binary (`plants2.json`).
+page starts; m = 29…40, both reductions, both rune orders. Plants 15/15 recovered by the final binary
+(`plants2.json`). Run 2026-11-27T01:53:13Z → 2026-11-27T05:05:52Z.
 
-| generator | seeds covered | near | **hits** |
+| generator | seeds covered | near (10–13 runes) | **hits (≥ 14)** |
 |---|---|---|---|
 | Perl `drand48` | 2³² (all) | 0 | **0** |
-| bash 4.2 LP64 | PENDING | | |
-| bash 4.2 ILP32 | PENDING | | |
-| glibc `rand` | PENDING | | |
-| CPython 2.7 | PENDING | | |
+| bash 4.2 LP64 | 2³² (all) | 0 | **0** |
+| bash 4.2 ILP32 | 2³² (all) | 0 | **0** |
+| glibc `rand` | 2³² (all) | 1 | **0** |
+| CPython 2.7 | 2³² (all) | 0 | **0** |
+
+All five generators completed every seed. 1 near-miss in total, as expected: only 55 alignments are tried per stream instead of 12,956.
+
+Conditionals: as §2, with the transition model widened to "one raw draw per symbol plus e ∈ {1, 2} discarded draws
+at each printed word start". Not covered: e > 2, extra draws at punctuation or line breaks, a length draw that
+feeds the picker's memory, generation that did not restart at a page start, MSVC / ANSI / minstd.
 
 ## 4. Reproduce
 

@@ -1439,3 +1439,24 @@ key-space sweep; verdict **OTP-class, unchanged**. Per-row record in `LEDGER.jso
   rejection-loop decoder (V-NULL only). Checkers run submissions in an isolated `python -I` child
   (`R47-H2-CHECKER-ISOLATION`; every `R47-X1-CHECKER-INPROCESS-GAMEABILITY` cheat now fails); C7 label gate
   (`R47-H2-C7-LABEL-GATE`). **C10 retired** pending Round 48 by its own pre-registered rule (FINISH 1.10 > 0.95).
+
+## Round 48 / M1 (2026-11-26 → 27) — THE LEAK IS NOT A COIN (independent pass, outside the Round 48 plan of record)
+
+One lane, `analysis/round48/M1-leak-census/` (PREREG stamped; results `RESULTS.md`; summary
+`analysis/round48/M1-INDEPENDENT-PASS.md`). Verdict **OTP-class, unchanged**. `LEDGER.json` 420 → 423, 0 unsound.
+
+- **Mechanism census** (`R48-M1-LEAK-MECHANISM-CENSUS`, measured): the pinned coin (redraw w.p. 0.813) is one of at least four
+  constructions that reproduce LP2's 86 doublets and cannot be separated at N = 12,956: a zero-parameter no-repeat picker
+  over m = 35–37 symbols with silent-but-remembered non-rune symbols (D 78 / 90 / 99), strict filter + 18.7 % deletion,
+  strict filter under a second shift layer changing w.p. 0.186. Rejected: redraw-once (15.5), redraw-until-different (0),
+  picker m ≤ 33 or ≥ 39, byte no-repeat (398), Latin-letter no-repeat (114.5). No admitted mechanism reproduces T7.
+  _This qualifies every earlier passage that states the coin as the generative model: read "a fitted one-parameter
+  description", not "the mechanism"._
+- **Generator reproduction** (`R48-M1-GENERATOR-REPRODUCTION`, negative, power 1.00 by exact match, plants 24/24): LP2 is not
+  the direct output of Perl `drand48`, bash 4.2 `$RANDOM` (LP64, ILP32), glibc `rand`, CPython 2.7 `random`, MSVC `rand`,
+  ANSI LCG or minstd driving that picker, for all 2³² seeds, m = 29…40, two reductions, two rune orders, any alignment
+  (≈ 8.2 × 10¹¹ streams, 0 runs of ≥ 14 runes; near-misses at the chance rate).
+- **Same with a word-start draw** (`R48-M1-GENERATOR-REPRODUCTION-WORDSTART`, negative, plants 15/15): 1–2 extra draws at each
+  printed word start, page-start alignment, first five generators: 0 hits.
+- **Not covered:** seeds > 32 bits, other generators, shuffled symbol tables, library wrappers with their own rejection
+  loops, extra draws elsewhere; decoder power against plants made with the picker, deletion or two-layer constructions.
